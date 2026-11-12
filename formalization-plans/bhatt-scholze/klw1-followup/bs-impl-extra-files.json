@@ -23,5 +23,6 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardCoefficients.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardExt.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeCoefficientCompatibility.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductQuotientCompatibility.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductQuotientCompatibility.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorTargetCompatibility.lean"
 ]

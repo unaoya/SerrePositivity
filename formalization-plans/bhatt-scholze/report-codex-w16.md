@@ -3122,3 +3122,30 @@ main `e08a65880` を取り込み、§19 を読んだ。上限は 4,200 行で、
 二式 `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` と
 `J ≫ freeHopfComparison.hom = M` は未証明であり、
 §20.2・§40.2 の完了時の実測比較はまだ提出していない。
+
+
+## 53. 二色の具体的なテンソル側の図式を証明（実装途中）
+
+`TwoColorTargetCompatibility`（64 行）に `twoColorTargetSchurIso_quotient` を証明した。
+`twoColorTargetSchurIso` の順射に左右の `schurArityInputCoinvariantIso` の順射を後合成し、
+元の二色の全複体の指定商を前合成すると、四因子の `tensorμ` の後の左右の指定商のテンソルに
+厳密に一致する。後合成している二つの射は既存の同型の順射である。
+
+今回は一般補題の追加だけではなく、具体的な二色作用に対して、左右の入力作用の同定、
+表現の複体への等式の運搬、群変更、直積分離を適用した図式全体を閉じた。
+運搬の書き換えで 200,000 heartbeats の上限に達したため、この一補題だけ 800,000 にした。
+既存宣言や界面の型は変更していない。
+
+一対象の最終ビルド成功（`/tmp/bsw16/target-compatibility-05.log`）。
+別の鍵での所有宣言の監査も成功し、六モジュール・75 宣言・標準三公理のみ
+（`/tmp/bsw16/audit-target-compatibility.log`）。sorry・追加公理はない。
+各プロセスの終了を回収し、鍵を返した。新規の長い行はない。
+
+a の実測は **3,735 + 64 = 3,799 行**。承認上限は 4,200 行。
+残るのは、このテンソル側の式を係数比較の順射・軌道直和へ接続することと、
+厳密な Hopf 射の標準語上の式、および全射の一致・擬同型性への復帰。
+二つの `J ≫ hom = M` 全体の完了報告ではない。目標は継続中であり、規模停止は宣言しない。
+§20.2・§40.2 の完了時の比較と、凍結前の完了判定は依然として未提出である。
+
+登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility` を追加する。
+一覧は六本。共通入口・共通監査は編集していない。
