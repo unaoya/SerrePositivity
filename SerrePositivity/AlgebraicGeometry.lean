@@ -874,3 +874,11 @@ public import SerrePositivity.AlgebraicGeometry.TensorCokernelVanishing
 public import SerrePositivity.AlgebraicGeometry.CechScalarCokernelSupport
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechScalarConductor
+
+public import SerrePositivity.AlgebraicGeometry.FrobeniusThickeningMap
+
+public import SerrePositivity.AlgebraicGeometry.ReesClosedRingThickeningFrobenius
+
+public import SerrePositivity.AlgebraicGeometry.ReesClosedRingThickeningSemilinear
+
+public import SerrePositivity.AlgebraicGeometry.ReesClosedRingThickeningNaturality
