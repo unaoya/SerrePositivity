@@ -12,6 +12,7 @@
   - status：none 99、proved_special 35、drafts 30、proved 28、parts_in_body 8、e3_input 7、design_only 4
   - 目標に必要な 105 項目の status：proved_special 31、drafts 29、proved 28、parts_in_body 8、e3_input 6、design_only 2、none 1
 - 11-11 の更新（BS-W15 の停止点 1・2、BS-D69 の停止点 1 の後）：2.21・2.36・2.38・2.39・3.4 を本体（証明済み）、2.37・2.42 を本体（特別な場合）、4.18・6.4 を本体に部品に。
+- 11-12 夕の更新（BS-D69 停止点 3・BS-W17 停止点 5 の後）：7.3 を本体（特別な場合）に、5.1 を本体に部品に、7.10 に S′ と完全化を追記。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 14、drafts 11、e3_input 6、design_only 2
 - 11-12 朝の更新（BS-W17 停止点 4 の後）：7.10 を本体に部品に（有限 T の場合）。目標に必要な 105 項目：proved_special 37、proved 35、drafts 12、parts_in_body 13、e3_input 6、design_only 2
 - 11-11 夜の更新（BS-W17 停止点 1〜3 の後）：4.17 を本体（特別な場合）に、4.19・6.1・6.2 を本体に部品に。1.4・1.6 は本体に名前つきであったのを訂正。目標に必要な 105 項目：proved_special 37、proved 35、drafts 13、parts_in_body 12、e3_input 6、design_only 2
 - 11-11 の更新（BS-W15 停止点 4 の後）：7.8 を本体に、7.7・7.9 を本体に部品に（δ 構造・始性・envelope の側は本体、Δ_R/A との同一視は drafts）。目標に必要な 105 項目：proved_special 35、proved 34、drafts 17、parts_in_body 11、e3_input 6、design_only 2
