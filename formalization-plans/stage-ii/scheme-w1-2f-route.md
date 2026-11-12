@@ -160,3 +160,15 @@ F3 全体は未完。有限段の持ち上げを入力する一般補題まで�
 | `frobeniusConductorSquare_quotient_surjective` | B→B/K は Frobenius 順極限上で全射。 |
 
 未完：有限射の中心外の同型から I の冪が導手に入る評価、根基の逆像との照合、F3 の指定した中心の四角形、F4〜F8。次の材料として Mathlib `Module.support_eq_zeroLocus`（有限加群の台と零化イデアル）を確認した。2f 全体の完成目標を維持し、この条件付きの四角形を停止点とはしない。
+
+
+## F3・F5 途中：台から冪の評価（4403ddd9a）
+
+新規 `FiniteSupportPower`、2 宣言・38 行。2f 累計 7 本・449 行（入口込み 456 行）。対象と直接 importer は 4,553 jobs 成功、別実行の監査は 8,666 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行だけ取得した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `finiteSupport_exists_pow_le_annihilator` | 有限加群の台が有限生成イデアル I の零点集合に含まれると、ある Iⁿ が加群を消す。 |
+| `finiteQuotientSupport_exists_pow_smul_mem` | 有限加群 M の商 M/N の台が V(I) に含まれると、ある Iⁿ 倍の元はすべて N に入る。 |
+
+次は N を有限環拡大の元の環の像として導手の冪の評価に接続する。中心外の同型から商加群の台の包含を供給する段と、根基の逆像、F4〜F8 は未完。2f 全体は完成扱いにしない。
