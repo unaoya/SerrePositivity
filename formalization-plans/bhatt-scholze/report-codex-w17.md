@@ -407,3 +407,16 @@ zsh scripts/refactor/with_build_lock.sh --wait 3600 -- gtimeout --foreground 170
 - 採取器が独自のオプションで同期再解釈すること、通常の `lakefile.toml` に `maxSynthPendingDepth = 3` があることは確認したが、失敗との因果は未確認。通常 Lean 実行との比較診断は鍵の待ちに並べた後、ツール修正待ちで止めるため取り下げた。**新しい待ち・ビルド・監査は残っていない。**
 
 KL-W1 側で採取器の扱いを確認・修正してもらってから、同じ18本を main 取り込み前に採取し直し、rewrite・差分確認・main 取り込み・対象と直接の importer のビルドを再開する。W17 の数学の検証結果は §17 のまま。
+
+## 19. KL-W1 改名追従の完了（11-12、§18 の保留を解消）
+
+修正版 `8267bf808` の共有パスを使い、取り込み前の HEAD `0850731ff` の同じ18本を、**新しい出力先** `/tmp/serre-w17/klw1-follow-fixed/before_index` へ collect し直した。10:21以降に追加した Lean ファイルはなく、対象一覧は `klw1-follow-bs-classical-files.json` のまま。前回の部分採取は使っていない。18本すべて成功し、Lake の設定の継承も採取結果で確認した。
+
+- **rewrite 成功、`review.json` は `{}`（保留0件）。書き換え0ファイル・追加0行・削除0行。** 全18本のプレビューは元のソースとバイト単位で一致した。
+- main **`0f30e1f6c`**（指定の `23f47736c` を含む）を **`6c5f59489`** で衝突なく取り込んだ。取り込み後も対象18本がプレビューと同じハッシュであることを確認した。プレビューに差分がないため、対象ソースへの上書きは不要だった。
+- **対象ビルド成功：4,744 jobs。** 本体・監査スクリプトの import を走査し、対象18本を直接 import する12本はすべてその18本に含まれることを確認。集合を合わせた18モジュールを明示して `lake build` した。既存のスタイル警告のみでエラーなし。root ビルド・全監査は実施していない。
+- 鍵は collect の Lean 再解釈と対象ビルドの間だけ、`--wait 3600`・待ちは一枚で使用。今回、対象18本の数学の本文・型、drafts、入口、全体監査の登録は変更していない。
+
+証拠は `/tmp/serre-w17/klw1-follow-fixed/` の `collect.log`、`preview/review.json`、空の `source.diff`、`preview-receipt.json`（18本の前後ハッシュ）、`direct-importers.json`、`build-targets.json`、`build.log` に保存した。修正版道具と入力のハッシュは `before-receipt.json`。古い §18 の採取器の失敗はこの再採取で解消した。
+
+**⑤c の18本の追従は完了。** 停止点5aの14本・停止点5の4本の main 取り込みと入口・監査への登録は調整役に委ねる。
