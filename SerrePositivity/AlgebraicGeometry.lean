@@ -804,3 +804,4 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitMap
 public import SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitInvariance
 public import SerrePositivity.AlgebraicGeometry.ConductorSquareLift
 public import SerrePositivity.AlgebraicGeometry.FrobeniusSquareLift
+public import SerrePositivity.AlgebraicGeometry.FrobeniusConductorSquare
