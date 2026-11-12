@@ -184,3 +184,18 @@ F3 全体は未完。有限段の持ち上げを入力する一般補題まで�
 | `finiteSupport_exists_pow_map_lift` | その拡大イデアルの各元は元の環から来る。 |
 
 次の接続は、中心外の同型から商加群の台の包含を供給すること、Spec 全射性から根基の逆像を照合すること。後者は各 I を含む素イデアルを Spec の全射性で持ち上げ、`Ideal.radical_eq_sInf` を使う道で進める。F3 全体と F4〜F8 は未完であり、2f の完成目標を維持する。
+
+## F3 途中：局所化した余核と中心の根基（f15539df6）
+
+新規 `SurjectiveSpectrumRadical`・`FrobeniusQuotientFactor`・`LocalizedCokernelSupport`、6 宣言・128 行。2f 累計 11 本・620 行（入口の import 込み 631 行）。対象と直接 importer は 4,557 jobs 成功、別実行の監査は 8,674 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行中だけ取得した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `surjectiveSpectrum_comap_radical_map` | Spec 上全射な環準同型では、拡大イデアルの根基の逆像は元のイデアルの根基。 |
+| `surjectiveSpectrum_radical_comap_map` | 同じ仮定のもとで、拡大して戻したイデアルの根基は変わらない。 |
+| `quotientFactor_kernel_nil` | I⊆J⊆√I なら、実際の商の因子写像 A/I→A/J の核は nil。 |
+| `frobeniusQuotientFactor_bijective` | この因子写像が誘導する Frobenius 順極限の射は全単射。 |
+| `cokernel_support_subset_of_localized_surjective` | V(I) の外で局所化した線形写像が全射なら、余核の台は V(I) に含まれる。 |
+| `finiteLocalizedSurjective_exists_pow_map_lift` | 有限環拡大で上の局所全射性が成り立ち I が有限生成なら、ある IⁿB のすべての元は A から来る。 |
+
+F3 はなお未完。次は導手の四角形を指定された中心 I の商の四角形へ移し、核の nil 性による左の単射性と合わせて短完全性をまとめる。局所化した線形写像の全射性を幾何学的な中心外の同型から供給する接続も、利用時に明示する。F4〜F8 の H⁰ の環、射影 Čech の台、厚化を経由する Frobenius、全複体への接続を引き続き行う。今回の条件付きの補題を有限変更の完全な定理または停止点 2f とは呼ばない。
