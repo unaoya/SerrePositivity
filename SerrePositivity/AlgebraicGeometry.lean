@@ -819,3 +819,5 @@ public import SerrePositivity.AlgebraicGeometry.SquareLiftTransport
 public import SerrePositivity.AlgebraicGeometry.FrobeniusCenterSquare
 
 public import SerrePositivity.AlgebraicGeometry.FrobeniusFiniteModificationSquare
+
+public import SerrePositivity.AlgebraicGeometry.FrobeniusFiniteModificationExact
