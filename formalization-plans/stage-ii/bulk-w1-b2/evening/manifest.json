@@ -242,6 +242,30 @@
       "source": "bulk-comparator-sensitivity.json",
       "artifact": "bulk-comparator-sensitivity.json.gz",
       "sha256": "3b33ec1f3c3d6785e7891475f39a761192a002687cb4467f178257da3b112fbc"
+    },
+    {
+      "artifact": "build-parallelism-adjustment.json",
+      "sha256": "65bd6818516622ad3a4f973167f4416a89de440ca70dd78264ef89650a5b4f60"
+    },
+    {
+      "artifact": "final-source-preview-bundle-summary.json",
+      "sha256": "ec4a882db0037cda9934be3cb8ab119af48bdc5b15079efbae1b844f96166eeb"
+    },
+    {
+      "artifact": "final-source-preview-edits.json.gz",
+      "sha256": "5d402907e295ee4d514b8fc3e32f4f4af28be9706ac1d6cb813eef4ac004da64"
+    },
+    {
+      "artifact": "final-source-replay-measurement.json",
+      "sha256": "d16828c2df18f809c3c571f977aa6f8e24b648ae128fb1207e82cce79250878d"
+    },
+    {
+      "artifact": "historical-gate-measurement.json",
+      "sha256": "dfb9bd253cd88100fdd8f029a1315a4bc0403b1353d937b3e870d3da6c996185"
+    },
+    {
+      "artifact": "progress-2026-11-13.json",
+      "sha256": "3e5be1de4b943473d99d697e4a6117fcb1308759ef3eda8dcfd9f63881e2705f"
     }
   ]
 }
