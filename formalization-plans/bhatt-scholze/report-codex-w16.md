@@ -4957,3 +4957,64 @@ sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却
 監査 `/tmp/bsw16/audit-em-spectrum.log` は **81 本・650 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則どおり、自然性と native な降下へ続行する。
+
+
+## 76. D79(ii)：native な hammock 因子化と既存 D(A) への比較
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneNativeWeak | 49 |
+| ComplexHammockSource | 98 |
+| EilenbergMacLaneHammockFunctor | 60 |
+| ComplexHammockEssentialSurjectivity | 70 |
+
+追加 **277 行**、(ii) の検証済み累計 **4940 行**。
+登録候補は表の四本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`ComplexHammockSource`、`ComplexHammockEssentialSurjectivity` は **［一般∞］移動候補**。
+
+### 76.1 native な側で閉じた主張
+
+通常の複体図式から Sp への実写像は、元の準同型の辺を可逆辺へ送る。
+既存の `modelHammock_isLocalization` と構成済みの実射影モデル・右 frame の族を用い、
+全複体の同じ相対圏の hammock から native Sp への実関手
+`eilenbergMacLaneHammockFunctor` を構成した。
+元の複体図式へ戻る指定同型は点ごとの存在ではなく **全関手の `FunctorIso`**。
+満たせないモデル構造の仮定や、関手の存在の追加公理はない。
+
+同じ hammock から既存 `derivedInfinityCategory A` への実比較
+`complexHammockDerivedComparison` と、その指定全関手同型も構成した。
+元の半自由閉零圏上の比較を頂点へ評価し、
+`complexHammockDerivedComparison_essentiallySurjective` まで閉じた。
+Hom の宇宙の異なる通常 nerve の写像は元の同じ合成可能射列で作った。
+既存 D(A) を別模型へ定義変更していない。
+
+### 76.2 次の橋と現在の不足
+
+残る主張の型は、既存界面の型を変えるものではない：
+
+```lean
+-- 未証明の次の比較。まだ本体の宣言としては置いていない。
+lemma complexHammockDerivedComparison_fullyFaithful
+    (A : Type u) [CommRing A] :
+    IsFullyFaithful (complexHammockDerivedComparison A)
+```
+
+`normalizedOrdinaryDerivedHomMap_homotopyEquivalence` と
+`normalizedTensorElementOrdinaryPinchedMap_weak`（K-projective 入力）は本体にある。
+右 frame と hammock の全族比較も `FrameHom/` にある。
+これらを二つの写像空間の同値の存在として並べるだけでは不十分で、
+**指定比較関手とその sourceIso の下で、元の要素屋根族を運んだ射が一致すること**を
+照合する必要がある。その後に本質的全射性と合わせて同じ比較を同値にし、
+逆を通して既存 D(A) から Sp への V を作る。
+この充満忠実性は現時点で未完了。V の完成や D79(ii) の終了は宣言しない。
+整数 π/H の全鎖写像に対する自然性も続行中。
+
+### 76.3 検証
+
+対象ビルド `em-hammock-source-01.log`（NativeWeak の警告修正を含む成功）、
+`em-hammock-functor-01.log`（ComplexHammockSource の最終版の成功）、
+`em-hammock-essential-01.log`（HammockFunctor の改行版の成功）、
+`em-hammock-essential-04.log` は成功。最終版に警告なし。
+監査 `/tmp/bsw16/audit-em-native-hammock.log` は **85 本・695 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則どおり、報告後も自然性と指定屋根族の比較へ進む。
