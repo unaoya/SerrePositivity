@@ -45,6 +45,7 @@ def barrattEcclesTheory : EInfinityTheory.{u} where
   coprodWith_cocone := by sorry -- 各頂点で同じ余積関手の指定錐
   coproduct_tensor := by sorry -- HA 3.2.4.7 の自然比較
   discrete_initial := by sorry -- 基底環自身の離散像が始対象
+  coproduct_tensor_legs := by sorry -- 指定二脚を単位からの標準テンソル射へ送る
   restrictD := by sorry -- M13 の D 側
   restrictD_id := by sorry
   restrictD_comp := by sorry

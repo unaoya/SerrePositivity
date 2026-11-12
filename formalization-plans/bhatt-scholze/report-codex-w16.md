@@ -1385,3 +1385,60 @@ b の最終差分は **九本・1,022 行**。§23 の実測のうち `NativeCop
 ［一般∞］の移動候補は `CoproductFrames`・`CoproductFrameHom`・`AnodyneBinaryProducts`・`EnrichedPointPrecomposition`。KL-W1 の前なので全て `EInfinity/` の下に置いた。ほかの五本は BE 固有の比較・錐の供給である。既存の公開宣言・drafts・共通入口・共有監査は変更していない。界面の新しい二脚の欄はこの b ではまだ足していない（次の c で型を整える）。他レーンのファイルとの重複は零。
 
 ビルドと監査は一回の実行ごとに `--wait 3600` で鍵を取り、終わったら返す形。KL-W1 の取り込みと改名表への追従までは main への取り込みを依頼しない。b の後は指示の順に c、新しい二脚の欄を含む組み立て関数へ進む。
+
+
+## 25. c：指定二脚の厳密比較と、新欄 `coproduct_tensor_legs`
+
+### 25.1 閉じた照合
+
+`NativeCoproductLegs` で、**界面へ実際に供給した `barrattEcclesCoprodWith_cocone`** の第一・第二脚を、元の cofibrant な厳密余積の二包含の Kan 局所化の辺へ同定した。等式は `coherentCoconeLegMap` による **Δ[1] からの写像全体**の等式であり、零次の類だけの同定ではない。
+
+さらに、既存の全関手版の厳密自然変換 `barrattEcclesCoproductTensorNat` について、二包含との合成が `hopfTensorInl`・`hopfTensorInr` であることを証明した。台の複体に忘却した式も証明し、それぞれ
+
+```lean
+(ρ_ B.carrier).inv ≫ (𝟙 B.carrier ⊗ₘ unitD)
+(λ_ D.carrier).inv ≫ (unitB ⊗ₘ 𝟙 D.carrier)
+```
+
+という単位からの標準射そのものである。単位を与える零 arity の同型性も BE について無条件に証明して使う。c のこの厳密な照合に a・bar の実現・sifted 保存は使っていない。
+
+### 25.2 新しい欄の型と意味
+
+昼の指示 §12 の 4 に従い、新欄の名前を **`coproduct_tensor_legs`** とした。`EInfinityTheory` の既存の欄の型は変更していない。欄の型は次の補助を使う。
+
+```lean
+TensorCoproductLegCompatibility S toEInfinityCore x y (coprodWith S y)
+  (coprodWith_cocone S x y).val (coprodWith_cocone S x y).property.1
+  (coproduct_tensor S y)
+```
+
+この条件は、**既存の同じ全関手版の `FunctorIso`** の x での成分を、指定余錐の頂点からの同型に正規化し、忘却した二脚との合成が `derivedTensorInlHom`・`derivedTensorInrHom` に等しいことを要求する。二脚の可換式は D(S) の通常のホモトピー圏の式である。全関手版の同型を対象ごとの任意の同型へ弱めていない。
+
+標準射を界面内で定義する際に、BE の unit や Hopf 代数を参照しないようにした。離散基底代数から x・y への各射について、その忘却の像の単位の H⁰ の類を、`discrete_forget`、離散入力の既存の自由解像度の増大、代表の H⁰ との比較から読む。条件は、その**同じ単位の類を表す**複体のテンソル単位からの鎖写像の代表の存在と、その代表による二標準射との可換式を要求する。単位の正規化を落として任意の射を「標準射」として選ぶ条件にはしていない。EInfinityTheory の `discrete_initial` によって単位射は存在するので、単位射への量化が空で成り立つ条件でもない。
+
+`TensorLegs` で使うのは、固定された D(S) の既存の semifree 代表・閉 dg 射・複体の単位子である。**CAlg の模型の API は使っていない。** 三本の Interface モジュールに BE・hammock・ModelCategory の直接 import はなく、宣言・欄に `[ModelCategory SSet]` の仮定もない。
+
+`coproduct_tensor` 自体の全関手版の同型は経路 B の後段で供給するため、**新欄の BE における全実例の証明も、その同型と組で後段に残る**。今回の厳密な二包含の公式は、その実例を構成するための照合である。未構成の全関手版の同型や新欄の実例を無条件に証明済みとは扱わず、次の組み立て関数では、指示どおりこの新欄も引数に取る。
+
+### 25.3 規模・配置・検証
+
+| ファイル | 実測 | 役割 |
+| --- | --- | --- |
+| `EInfinity/NativeBinaryCoconeHom` | 44 行 | 指定二脚の始点を正規化したホモトピー圏の射。**［一般∞］の移動候補** |
+| `EInfinity/Interface/TensorLegs` | 91 行 | D(S) の二標準射と、同じ semifree 代表のテンソル頂点との等式 |
+| `EInfinity/Interface/TensorUnitClasses` | 77 行 | 離散基底代数・単位の H⁰ の類・単位の鎖写像の代表の正規化 |
+| `EInfinity/Interface/CoproductTensorLegs` | 55 行 | 全関手版の同じ成分と指定二脚の適合条件 |
+| `EInfinity/BarrattEccles/Theory/NativeCoproductLegs` | 115 行 | 実際の native な脚の同定、厳密自然変換の二包含と台の公式 |
+| `EInfinity/Interface/Theory.lean` の追加 | 6 行 | import と新欄 |
+| `drafts/Shared/BarrattEcclesTheory.lean` の追加 | 1 行 | 作業用の全実例に新しい未供給欄を反映（drafts 内の sorry） |
+| **合計** | **389 行** | |
+
+c の上限約 400 行以内。一般の二脚の補助は Interface の中へ混在させず、EInfinity の下の専用ファイルへ分けた。A1 の二本・A0・A3・items.csv は編集していない。共有の `Shared/BarrattEcclesTheory` は W14 のこの実例の持ち分で、今回の新欄一行だけを追加した。
+
+対象ビルドは `/tmp/bsw16/graded/tensor-legs-complete-02.log`（厳密照合）と `/tmp/bsw16/graded/tensor-legs-interface-final.log`（一般∞の補助の分離後の界面）で成功。追加ファイルの Lean 警告は零、依存先 `ZeroArity` の既報二件は残る。
+
+本体の六モジュール（新規五本と既存の `Interface.Theory`）の **163 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-coproduct-tensor-legs.log`）。追加本体に sorry・admit・新規公理・デバッグ宣言はない。
+
+作業用全実例 `drafts/Shared/BarrattEcclesTheory.lean` も、新欄を加えた状態で型検査が成功（`/tmp/bsw16/graded/draft-theory-tensor-legs.log`）。このファイルの既存・追加の sorry の警告は drafts の未供給欄であり、本体の監査には含めていない。鍵は各ビルド・監査・drafts の型検査の終了時に返却した。
+
+登録候補は上表の新規五モジュール。既存の `Interface.Theory` は新欄が加わったため、その監査も今回行う。b の九本と §22 の五本を含め、取り込み待ちの新規モジュールは合計十九本。KL-W1 の後の改名表に追従してから取り込む。c の後は、`coproduct_tensor_legs` を含む未供給の欄だけを引数に取る組み立て関数へ進む。

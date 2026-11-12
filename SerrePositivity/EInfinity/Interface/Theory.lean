@@ -5,6 +5,7 @@ public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.EInfinity.Interface.Core
 public import SerrePositivity.EInfinity.Interface.StrictInputs
+public import SerrePositivity.EInfinity.Interface.CoproductTensorLegs
 public import SerrePositivity.InfinityCategories.Derived.BaseChange
 public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
 public import SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction
@@ -118,6 +119,11 @@ structure EInfinityTheory extends EInfinityCore.{u} where
     letI := quasicategory S
     IsInitialVertex (atVertex (discrete S)
       (nerveVertex (Under.mk (𝟙 (CommRingCat.of S)))))
+
+  /-- HA 3.2.4.7 の全関手版の同型と、指定された余積錐の二脚との適合性。 -/
+  coproduct_tensor_legs (S : Type u) [CommRing S] (x y : (CAlg S) _⦋0⦌) :
+    TensorCoproductLegCompatibility S toEInfinityCore x y (coprodWith S y)
+      (coprodWith_cocone S x y).val (coprodWith_cocone S x y).property.1 (coproduct_tensor S y)
 
   restrictD {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
     derivedInfinityCategory T ⟶ derivedInfinityCategory S
