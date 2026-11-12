@@ -346,3 +346,19 @@ B1 の承認（citation-attributes.md §8）を受けて着手した。これは
 [付表](bulk-w1-b2/README.md) に元の187行の台帳と照合の差分、正本26表の全9,048行・2,387宣言参照のプレビューを保存した。本体候補1,860件の実在・型・所有元の確認を終え、現時点の案は付与1,835、除外537、保留15。元の台帳のうち宣言解決が必要だった29件も全件解決した。Kerodon partial831行は維持して新しいTagを付けない。これは付与計画の確定であり、移動後の全体検証の完了ではない。
 
 共有鍵は `--wait 3600 --class bulk`、一回580秒の打ち切りで取得する。移動先・前提のビルドと保存比較、属性全件のプレビューは継続中。B2 の停止点で、確定した件数・未説明差分・実測と凍結の所要時間をまとめる。
+
+### B2 の配置・改名の案（静的部分）
+
+元の本体は `0e8c85420` に固定した。主対象6,466本（Project 5,794、BhattScholze 604、KST 68）の全割当を作り、5,301本を移す。ディレクトリの主題分けだけの移動では既存の数学的な名前空間を保つ。文献の節へ入る41本とScalarTensorViewの1本に限り、公開515名の名前空間を変える。所有モジュール付きの表を使い、private 15束縛は別に検査する。これにより、ディレクトリ分けに伴う不要な全面改名を避ける。
+
+DerivedCategories は承認済みの主題をさらに分け、移動先で最大の直下ファイル数は FilteredExchange/KanReplacement の194本。③-b の DiagramComparison は現パスを保持する方針とする。固定したmainにはまだ0本なので、凍結前の差分の取り込みでその4本と後続を追加する。移動表はファイルごとに指定する。Prismatic は承認した節・構成を基に細分し、節をまたぐ引用は同じ宣言への複数引用として保持する。ファイルを複製しない。ModelCategory SSet 付き54本は、逆依存閉包を含む67本を Archive/KST/DescentConditional へ置く。DG診断4本もArchiveへ置く。ScalarTensorViewはCommutativeAlgebra/Moduleへ移す。
+
+旧パスの互換モジュールは外から使われる20本・90名に限る。InfinityCategories外の86名とScalarTensorViewの4名で、instance/simpの二重登録はしない。新しくArchiveへ置く条件付き67本には旧パスの互換モジュールを置かない。既存の無関係なArchive 291本は移植対象に広げない。既存Kerodonタグを持つArchiveの1本だけは照合対象なので、そのimportを更新し検証対象に含める。
+
+5段の設定はファイル単位を維持する。mainから来た新規5本にも層を割り当てた。元のmainにある§7.4 RightFibrationMappingOverNaturalityから§9.3 PointSlicePostcompIsoへの1辺は、新規例外の案として別表に出す。利用するのは端点スライスの後合成と同型計算で、Ind固有の仮定は使わない。文献への配置を保つ理由はあるが、調整役の承認済み例外と混ぜない。
+
+属性の付与計画は文献25略号を正本にし、全9,048行・2,387宣言参照を採否別に保持する。付与1,835件の関係は exact 618、special 408、direction 91、stronger-hyp 198、component 520。付与先は856ファイル。除外537件には外部・本体でない記述等527件と、明示的ModelCategory SSet付き10件がある。保留15件はprivate宣言1、Thomasonの文献・版が不整合の1、複数番号を一つに束ねた記述12、Stacks partialの扱い未決1である。Kerodon partial831行は別に維持し、追加のTagは付けない。表示名の古さ等8件は、元の場所の宣言範囲と実在する完全名で確認して補正した。
+
+監査の移動追従も隔離側で準備した。38ファイルのimport・実際に変わる定数名・所有モジュールの表を区別して書き換え、禁止する旧モジュール名は残す。KSTの条件付き監査はarchive側へ分け、通常の監査にはArchive/KST/DescentConditional全体への依存を禁ずる条件を足す。root全体・全監査・verifyはB3の凍結時の工程であり、B2の完了件数に含めない。
+
+検証済みの適用道具は `scripts/refactor/bulk_apply_preview.py`（既定は読取りのみ）、安全性の検査は `test_bulk_apply_preview.py`。Citation の検査は `test_bulk_citation.py --root <作業木> --output <一時ディレクトリ>`。新しいファイルとして追加し、既存の共用採取器・既存スクリプトは変更しない。隔離プレビューの移動後ビルド・全体保存比較は引き続き実行中。
