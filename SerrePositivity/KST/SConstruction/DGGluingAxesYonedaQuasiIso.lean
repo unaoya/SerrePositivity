@@ -17,11 +17,11 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  (X : DGGluingObject R C D M)
+  (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
 
 /-- 同じ元の Yoneda 円錐比較は、各実試験対象で準同型となる。 -/
-lemma dgGluingAxesYonedaConeComparison_eval_quasiIso (T : DGGluingObject R C D M) :
-    QuasiIso ((moduleEvaluation R (DGGluingObject R C D M) T).map
+lemma dgGluingAxesYonedaConeComparison_eval_quasiIso (T : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    QuasiIso ((moduleEvaluation R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) T).map
       (dgGluingAxesYonedaConeComparison R C D M zc hc zd hd X)) := by
   rw [dgGluingAxesYonedaConeComparison_eval]
   change QuasiIso (CochainComplex.mappingCone.descShortComplex
@@ -31,7 +31,7 @@ lemma dgGluingAxesYonedaConeComparison_eval_quasiIso (T : DGGluingObject R C D M
 
 /-- 同じ元の Yoneda 円錐比較は、実 dg 加群の対象別準同型である。 -/
 lemma dgGluingAxesYonedaConeComparison_moduleQuasiIso :
-    moduleQuasiIso R (DGGluingObject R C D M)
+    moduleQuasiIso R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
       (dgGluingAxesYonedaConeComparison R C D M zc hc zd hd X) :=
   dgGluingAxesYonedaConeComparison_eval_quasiIso R C D M zc hc zd hd X
 

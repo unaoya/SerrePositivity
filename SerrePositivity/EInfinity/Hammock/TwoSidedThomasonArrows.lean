@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckHomComponents
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBar
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckHomComponents
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar
 public import SerrePositivity.EInfinity.FrameHom.ThomasonSimplex
 
 /-!
@@ -21,18 +21,18 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedThomason
 open CategoryTheory Opposite
-open TwoSidedGrothendieck
+
 
 variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
-abbrev labels (n : ℕ) := TwoSidedElements.Element
+abbrev labels (n : ℕ) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element
   (FrameHom.Thomason.values F n) (FrameHom.Thomason.values G n)
 
 variable {n : ℕ} (e : ComposableArrows (labels F G n) n)
 
-def vertex (i : Fin (n + 1)) : total F G :=
-  mk F G (e.obj i).base ((e.obj i).left.obj i) ((e.obj i).right.obj i)
+def vertex (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.mk F G (e.obj i).base ((e.obj i).left.obj i) ((e.obj i).right.obj i)
 
 def leftArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
     (e.obj i).left.obj i ⟶ (F.map (e.map h).base.op).toFunctor.obj ((e.obj j).left.obj j) :=
@@ -43,7 +43,7 @@ def rightArrow {i j : Fin (n + 1)} (h : i ⟶ j) :
   eqToHom (congrArg (fun q => q.obj i) (e.map h).right) ≫ (e.obj j).right.map h
 
 def arrow {i j : Fin (n + 1)} (h : i ⟶ j) : vertex F G e i ⟶ vertex F G e j :=
-  homMk (e.map h).base (leftArrow F G e h) (rightArrow F G e h)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.homMk (e.map h).base (leftArrow F G e h) (rightArrow F G e h)
 
 lemma leftArrow_id_heq (i : Fin (n + 1)) :
     HEq (leftArrow F G e (𝟙 i)) (𝟙 ((e.obj i).left.obj i)) :=

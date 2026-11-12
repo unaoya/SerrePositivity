@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PullbackPiComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PullbackPiComparison
 public import SerrePositivity.KST.Spectra.Limits.SpectrumPullbackAdjoints
 
 /-!
@@ -29,10 +29,10 @@ lemma pullbackAdjointMap_piIsomorphism {E X B : KanSequence.{u}}
     (f : KanSequence.Hom E B) (g : KanSequence.Hom X B)
     [∀ n, Fibration (f.app n).right]
     (hE : E.OmegaCondition) (hX : X.OmegaCondition) (hB : B.OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pullbackAdjointMap f g n).right := by
-  let aE := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (E.sigma n)
-  let aX := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n)
-  let aB := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (B.sigma n)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pullbackAdjointMap f g n).right := by
+  let aE := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (E.sigma n)
+  let aX := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n)
+  let aB := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (B.sigma n)
   let pf := PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f.app (n + 1))
   let pg := PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (g.app (n + 1))
   have hi : pullback.fst (f.app n) (g.app n) ≫ aE =
@@ -48,8 +48,8 @@ lemma pullbackAdjointMap_piIsomorphism {E X B : KanSequence.{u}}
   have hp' := congrArg Under.Hom.right hp
   have hq' := congrArg Under.Hom.right hq
   simp only [Under.comp_right] at hi' hj' hp' hq'
-  exact pullbackComparison_piIsomorphism
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (f.app n) (g.app n)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback pf pg)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pullbackComparison_piIsomorphism
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (f.app n) (g.app n)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback pf pg)
     (pullbackAdjointMap f g n).right aE.right aX.right aB.right hi' hj' hp' hq'
     (hE n) (hX n) (hB n) (E.level n).space.basepoint
 

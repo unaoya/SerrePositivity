@@ -15,9 +15,9 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 全頂点の閉部分圏への恒等射の完全な持ち上げ。 -/
 def closedTopLift (X : StableModel.{u}) : X ⟶ closedStableModel (ClosedStablePredicate.top X) :=
-  ⟨fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial), by
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (𝟙 X.carrier) (fun _ => trivial), by
     apply preservesCofiberData_fullSubcomplex_of_comp (ClosedStablePredicate.top X).predicate
-    rw [fullSubcomplexLift_ι]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
     exact preservesCofiberData_id X.carrier⟩
 
 /-- 全頂点への持ち上げを含めると元の恒等射を回収する。 -/
@@ -33,7 +33,7 @@ def closedTopExactIso (X : StableModel.{u}) :
   hom_inv_id := by
     apply Subtype.ext
     have : Mono (closedStableInclusion (ClosedStablePredicate.top X)).val :=
-      inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier
+      inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier
         (ClosedStablePredicate.top X).predicate).ι)
     apply (cancel_mono (closedStableInclusion (ClosedStablePredicate.top X)).val).1
     change ((closedStableInclusion (ClosedStablePredicate.top X) ≫ closedTopLift X) ≫

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativePathDownComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeCompositeDownWhisker
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoWhiskerExchange
 
 /-!
 概要：小宇宙の native 可換式を四つの元の値比較の指定正方形として表示する。

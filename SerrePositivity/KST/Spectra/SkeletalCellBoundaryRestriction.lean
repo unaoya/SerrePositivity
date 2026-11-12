@@ -31,19 +31,19 @@ instance skeletalInclusion_mono (K : SSet.{u}) (n : ℕ) :
 def cellBoundarySource (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
     (boundary d : SSet.{u}) ⟶ (K.skeleton d : SSet.{u}) :=
-  c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.attachingMap K d
+  c.ιSigmaBoundary ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.attachingMap K d
 
 def cellSimplexSource (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
     (Δ[d] : SSet.{u}) ⟶ (K.skeleton (d + 1) : SSet.{u}) :=
-  c.ιSigmaStdSimplex ≫ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d
+  c.ιSigmaStdSimplex ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.characteristicMap K d
 
 lemma cellSourceSquare (K : SSet.{u}) (d : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton d).ι d) :
     cellBoundarySource K d c ≫
         Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)) =
       (boundary d).ι ≫ cellSimplexSource K d c := by
-  have h := congrArg (fun f ↦ c.ιSigmaBoundary ≫ f) (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).w
+  have h := congrArg (fun f ↦ c.ιSigmaBoundary ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.isPushout K d).w
   simpa only [cellBoundarySource, cellSimplexSource, relativeCellComplexOfMono.l,
     Sigma.ι_map_assoc, Category.assoc] using h
 
@@ -86,16 +86,16 @@ def cellBoundaryFiberMap (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : ℕ)
 lemma stageFiberCellIso_boundaryFiber (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : ℕ)
     (c : relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1)) :
     (stageFiberCellIso K Y n).hom ≫ cellBoundaryFiberMap K Y n c =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (cellSphereInclusion K (n + 1) c) Y ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (cellSphereInclusion K (n + 1) c) Y ≫
         (UnbasedPointedMapping.restrictionFiberIso (boundary (n + 1)).ι Y).hom := by
   change (((MonoidalClosed.pre (relativeCofiberIso K (n + 1)).hom).app Y) ≫
     (UnbasedPointedMapping.stageFiberIso K Y n).hom) ≫ _ = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (relativeCofiberIso K (n + 1)).hom Y ≫
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, Category.assoc]
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (relativeCofiberIso K (n + 1)).hom Y ≫
     ((UnbasedPointedMapping.restrictionFiberIso _ Y).hom ≫
       UnbasedPointedMapping.restrictionSourceFiberMap _ _ _ _ _ Y) = _
   rw [← UnbasedPointedMapping.restrictionFiberIso_source, ← Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, cellSourceMap_eq_inclusion,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, cellSourceMap_eq_inclusion,
     Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 @[reassoc]
@@ -104,7 +104,7 @@ lemma cellBoundaryFiberMap_sphere (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) 
     cellBoundaryFiberMap K Y n c ≫
         (UnbasedPointedMapping.restrictionFiberIso (boundary (n + 1)).ι Y).inv =
       (stageFiberCellIso K Y n).inv ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (cellSphereInclusion K (n + 1) c) Y := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (cellSphereInclusion K (n + 1) c) Y := by
   have h := congrArg (fun t ↦ (stageFiberCellIso K Y n).inv ≫ t ≫
       (UnbasedPointedMapping.restrictionFiberIso (boundary (n + 1)).ι Y).inv)
     (stageFiberCellIso_boundaryFiber K Y n c)
@@ -116,12 +116,12 @@ lemma cellBoundaryFiberMap_sphere (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) 
 使われ方：Goerss–Jardine VIII §1。連結準同型の自然性による微分の局所計算。 -/
 lemma stageFiberCoefficientEquiv_boundaryRestriction (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right r
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 1)) :
     stageFiberCoefficientEquiv K Y n r x s = SimplexCell.positiveHomotopyEquiv Y n r
       (pointedGroupMap r
         (UnbasedPointedMapping.restrictionFiberIso (boundary (n + 1)).ι Y).inv
-        (pointedGroupMap r (cellBoundaryFiberMap K Y n ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) x)) := by
+        (pointedGroupMap r (cellBoundaryFiberMap K Y n ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) x)) := by
   rw [stageFiberCoefficientEquiv_restriction, ← pointedGroupMap_comp,
     ← cellBoundaryFiberMap_sphere, pointedGroupMap_comp]
   rfl

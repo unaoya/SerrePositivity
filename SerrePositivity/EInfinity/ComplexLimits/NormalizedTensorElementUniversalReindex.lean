@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -23,12 +23,12 @@ lemma normalizedTensorElementUniversalFamily_reindex {n m : ℕ}
     SSet.uliftFunctor.{u + 1, u}.map (SSet.stdSimplex.map θ) ≫
       normalizedTensorElementUniversalFamily A X Y c =
     normalizedTensorElementUniversalFamily A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) ≫
-      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
         (homPostcompose X ((normalizedTensorElementDiagram A X Y).map
         (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))) := by
   dsimp only [normalizedTensorElementUniversalFamily]
   rw [← Category.assoc, ← SSet.uliftFunctor.map_comp, ← SSet.stdSimplex.map_comp]
-  have h := FrameHom.SimplexTerminalParameter.reindex
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.reindex
     (c ⋙ normalizedTensorElementDegree A X Y) θ
   change θ ≫ normalizedTensorElementTerminalParameter A X Y c =
     normalizedTensorElementTerminalParameter A X Y

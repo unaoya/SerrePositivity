@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameLeftRoof
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofPostcompose
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPostcompose
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PointActions
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitArrowMap
 public import SerrePositivity.EInfinity.FrameHom.FrameSpanTargetHomotopy
 
 /-!
@@ -21,69 +21,69 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.FrameHom
-open CategoryTheory Opposite Hammock SerrePositivity.HomotopyFunctionComplex
+open CategoryTheory Opposite SerrePositivity.HomotopyFunctionComplex
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   {X Y Z : C} (A : SimplexCategory ⥤ C) (p : A ⟶ (Functor.const SimplexCategory).obj X)
   (hp : ∀ n, W (p.app n)) (hA : ∀ {i j} (a : i ⟶ j), W (A.map a)) (g : Y ⟶ Z)
 
 lemma frameLeftRoofFunctor_postcompose :
     (frameLeftRoofFunctor W A p hp hA (Y := Y)).prod'
-        ((Functor.const _).obj (ForwardZigzag.obj (W := W) g)) ⋙
-      ZigzagAppend.functor ⋙ WordAction.functor LeftRoof.postCollapse =
-    ((cosimplicialHom A).map g).mapElements.op ⋙ frameLeftRoofFunctor W A p hp hA := by
-  have ho (s : (((cosimplicialHom A).obj Y).Elements)ᵒᵖ) :
-      WordAction.obj LeftRoof.postCollapse
-        (ZigzagAppend.obj ((frameLeftRoofFunctor W A p hp hA).obj s)
-          (ForwardZigzag.obj (W := W) g)) =
+        ((Functor.const _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse =
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map g).mapElements.op ⋙ frameLeftRoofFunctor W A p hp hA := by
+  have ho (s : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ) :
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.obj _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj ((frameLeftRoofFunctor W A p hp hA).obj s)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) =
       (frameLeftRoofFunctor W A p hp hA).obj
-        (((cosimplicialHom A).map g).mapElements.op.obj s) :=
-    LeftRoof.postCollapse_obj W (p.app s.unop.obj.unop) (hp _) s.unop.val g
+        (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map g).mapElements.op.obj s) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse_obj W (p.app s.unop.obj.unop) (hp _) s.unop.val g
   apply CategoryTheory.Functor.hext ho
   intro s t a
-  apply Zigzag.hom_hext (ho s) (ho t)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (ho s) (ho t)
   intro j
-  change HEq (ZigzagAppend.app ((frameLeftRoofFunctor W A p hp hA).map a)
-    (𝟙 (ForwardZigzag.obj (W := W) g)) (LeftRoof.postCollapse.cut j)) _
-  rw [LeftRoof.postCollapse_cut]
+  change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertical.app ((frameLeftRoofFunctor W A p hp hA).map a)
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse.cut j)) _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse_cut]
   fin_cases j
-  · exact ZigzagAppend.app_left_heq ((frameLeftRoofFunctor W A p hp hA).map a)
-      (𝟙 (ForwardZigzag.obj (W := W) g)) (0 : Fin 3)
-  · exact ZigzagAppend.app_left_heq ((frameLeftRoofFunctor W A p hp hA).map a)
-      (𝟙 (ForwardZigzag.obj (W := W) g)) (1 : Fin 3)
-  · exact ZigzagAppend.app_right_heq ((frameLeftRoofFunctor W A p hp hA).map a)
-      (𝟙 (ForwardZigzag.obj (W := W) g)) (1 : Fin 2)
+  · exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertical.app_left_heq ((frameLeftRoofFunctor W A p hp hA).map a)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) (0 : Fin 3)
+  · exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertical.app_left_heq ((frameLeftRoofFunctor W A p hp hA).map a)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) (1 : Fin 3)
+  · exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendVertical.app_right_heq ((frameLeftRoofFunctor W A p hp hA).map a)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) g)) (1 : Fin 2)
 
 def frameLeftRoofColimitMap :
-    nerve (ULiftHom.{max u v} (((cosimplicialHom A).obj Y).Elements)ᵒᵖ) ⟶ colimitGraph W X Y :=
-  frameLeftRoofNerveMap W A p hp hA ≫ graphInclusion W X Y LeftRoof.word
+    nerve (ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y :=
+  frameLeftRoofNerveMap W A p hp hA ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
 
 lemma frameLeftRoofColimitMap_postcompose :
     nerveMap (frameSpanTargetIndexMap A g) ≫ frameLeftRoofColimitMap W A p hp hA (Y := Z) =
       frameLeftRoofColimitMap W A p hp hA (Y := Y) ≫
-        postcomposePointMap X (arrowMap W g) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W g) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro σ
   let τ := σ ⋙ ULiftHom.down.{0, v, max u v}
   let Γ := τ ⋙ frameLeftRoofFunctor W A p hp hA (Y := Y)
-  let Γ' := τ ⋙ ((cosimplicialHom A).map g).mapElements.op ⋙
+  let Γ' := τ ⋙ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map g).mapElements.op ⋙
     frameLeftRoofFunctor W A p hp hA (Y := Z)
-  let T := Γ.prod' (arrowSimplex W g n) ⋙ ZigzagAppend.functor
-  have hΓ : Γ' = T ⋙ WordAction.functor LeftRoof.postCollapse :=
+  let T := Γ.prod' (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W g n) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor
+  have hΓ : Γ' = T ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse :=
     (congrArg (fun F => τ ⋙ F) (frameLeftRoofFunctor_postcompose W A p hp hA g)).symm
   have hι := congrArg (fun k => k.app n T)
-    (graphInclusion_naturality W X Z LeftRoof.postCollapse)
-  change (graphInclusion W X Z LeftRoof.word).app n Γ' =
-    composePoint W X Y Z ((graphInclusion W X Y LeftRoof.word).app n Γ) (arrowPoint W g n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion_naturality W X Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n Γ' =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W X Y Z ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n Γ) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W g n)
   calc
-    (graphInclusion W X Z LeftRoof.word).app n Γ' =
-        (graphInclusion W X Z LeftRoof.word).app n
-          (T ⋙ WordAction.functor LeftRoof.postCollapse) := congrArg _ hΓ
-    _ = (graphInclusion W X Z LeftRoof.postWord).app n T := hι
-    _ = composePoint W X Y Z ((graphInclusion W X Y LeftRoof.word).app n Γ)
-        (arrowPoint W g n) :=
-      (composePoint_inclusions W X Y Z LeftRoof.word (Word.single .forward)
-        Γ (arrowSimplex W g n)).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n Γ' =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n
+          (T ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postCollapse) := congrArg _ hΓ
+    _ = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postWord).app n T := hι
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W X Y Z ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n Γ)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W g n) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W X Y Z _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)
+        Γ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W g n)).symm
 
 end SerrePositivity.EInfinity.FrameHom

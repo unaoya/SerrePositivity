@@ -19,15 +19,15 @@ open scoped Simplicial
 variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {T U : SSet.{u}} (j : T ⟶ U)
   (f : ∀ n, U ⟶ (PointedObject.basedHom (X.level n).space (Y.level n).space).right)
   (H : ∀ n, SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step X Y n))
 
 /-- 元の適合区間を、同じ境界パラメータの段の二合成へ制限する。 -/
 def tracedSequenceBoundaryCompatibility (n : ℕ) :
     SSet.Homotopy
-      ((j ≫ f (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+      ((j ≫ f (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
       ((j ≫ f n) ≫ RawSpectrumMapping.step X Y n) := by
-  let V := functorHomotopyPrecomp (H n) j
+  let V := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (H n) j
   exact
     { h := V.h
       h₀ := V.h₀.trans (Category.assoc _ _ _).symm
@@ -43,11 +43,11 @@ structure TracedSequenceBoundaryData where
   /-- 零段の補正区間は空である。 -/
   zero_trace : familyHomotopyChainTrace (stage 0).chain = []
   /-- 境界の段は構造射と厳密可換。 -/
-  comm : ∀ n, (stage (n + 1)).val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+  comm : ∀ n, (stage (n + 1)).val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
     (stage n).val ≫ RawSpectrumMapping.step X Y n
   /-- 各段の全射影区間は元の適合区間と前段の全補正の像そのもの。 -/
   trace : ∀ n, (familyHomotopyChainTrace (stage (n + 1)).chain).map
-    (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
+    (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space) =
     ((j ▷ (Δ[1] : SSet.{u})) ≫ (H n).h) ::
       (familyHomotopyChainTrace (stage n).chain).map (· ≫ RawSpectrumMapping.step X Y n)
 

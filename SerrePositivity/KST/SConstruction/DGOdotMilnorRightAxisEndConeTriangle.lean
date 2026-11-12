@@ -12,16 +12,16 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisSmallArrow
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "I" => perfectDGModuleInclusion R (Q) Set.univ
 local notation "F" => DGFunctor.comp (dgOdotMilnorRightAxisQuotientSource R d) (I)
 local notation "G" => DGFunctor.comp (dgOdotMilnorRightAxisQuotientTarget R d) (I)
-local notation "η" => dgStrictNatTransPostcomp
+local notation "η" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp
   (dgOdotMilnorRightAxisQuotientStrictNatTrans R d) (I)
 
 /-- 概要：元実右軸比較の cone 零化を、同じ全加群関手圏の実二単体で保持する。
@@ -29,7 +29,7 @@ local notation "η" => dgStrictNatTransPostcomp
 規約：対象別の零化の選択なし。元全 Hom と次数 −1 成分を保持。
 使われ方：元実逆回転を cofiber 図式の全族へ接続する。 -/
 def dgOdotMilnorRightAxisEndConeTriangle :
-    Simplex R (DGFunctor R (P) (RightModule R (Q))) 2 :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R (DGFunctor R (P) (RightModule R (Q))) 2 :=
   dgModuleNaturalConeEndTriangle R (Q) (F) (G) (η)
 
 end SerrePositivity.KST.SConstruction

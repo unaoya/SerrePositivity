@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 open SpectrumMappingAcyclic
 namespace SerrePositivity.KST.LocalizingInvariants.Binary
@@ -27,7 +27,7 @@ local instance binaryMappingSimplicialCategory : SimplicialCategory OmegaSpectru
 variable {A X Y : OmegaSpectrum.{u}}
 
 def familyCone {T : SSet.{u}} (f : T ⟶ mappingSpace A X) (g : T ⟶ mappingSpace A Y) :
-    Cone (simplicialHomDiagram (spectrumBinaryProductDiagram X Y) A) where
+    Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductDiagram X Y) A) where
   pt := T
   π := Discrete.natTrans (by
     rintro ⟨⟨i⟩⟩
@@ -37,21 +37,21 @@ def familyCone {T : SSet.{u}} (f : T ⟶ mappingSpace A X) (g : T ⟶ mappingSpa
 
 def familyLift {T : SSet.{u}} (f : T ⟶ mappingSpace A X) (g : T ⟶ mappingSpace A Y) :
     T ⟶ mappingSpace A (obj X Y) :=
-  (spectrumBinaryProductCone_hom_isLimit X Y A).lift (familyCone f g)
+  (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit X Y A).lift (familyCone f g)
 
 lemma familyLift_fst {T : SSet.{u}} (f : T ⟶ mappingSpace A X) (g : T ⟶ mappingSpace A Y) :
     familyLift f g ≫ post A (fst X Y) = f :=
-  (spectrumBinaryProductCone_hom_isLimit X Y A).fac (familyCone f g) ⟨⟨WalkingPair.left⟩⟩
+  (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit X Y A).fac (familyCone f g) ⟨⟨WalkingPair.left⟩⟩
 
 lemma familyLift_snd {T : SSet.{u}} (f : T ⟶ mappingSpace A X) (g : T ⟶ mappingSpace A Y) :
     familyLift f g ≫ post A (snd X Y) = g :=
-  (spectrumBinaryProductCone_hom_isLimit X Y A).fac (familyCone f g) ⟨⟨WalkingPair.right⟩⟩
+  (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit X Y A).fac (familyCone f g) ⟨⟨WalkingPair.right⟩⟩
 
 lemma mapping_vertex_ext {v w : (mappingSpace A (obj X Y)) _⦋0⦌}
     (hfst : (post A (fst X Y)).app _ v = (post A (fst X Y)).app _ w)
     (hsnd : (post A (snd X Y)).app _ v = (post A (snd X Y)).app _ w) : v = w := by
   apply SSet.yonedaEquiv.symm.injective
-  apply (spectrumBinaryProductCone_hom_isLimit X Y A).hom_ext
+  apply (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumBinaryProductCone_hom_isLimit X Y A).hom_ext
   rintro ⟨⟨i⟩⟩
   cases i
   · change SSet.yonedaEquiv.symm v ≫ post A (fst X Y) =

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexLongNativeDiagonal
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalTransportConstantInterval
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawEdgeValues
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：元の長辺直接比較の値を、同じ全初期値・実長辺の指定対角比較の値へ戻す。

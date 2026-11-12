@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ClosedSubcategoryStability
-public import SerrePositivity.InfinityCategories.Stable.ExactFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.ExactFunctor
 
 /-! # 閉じた安定部分圏の逆像と交わり
 概要：完全関手による逆像と二つの条件の交わりは安定な閉性を保つ。
@@ -19,21 +19,21 @@ open scoped Simplicial
 
 /-- 本レーンの零対象・cofiber 保存条件は既存の完全関手の条件を与える。 -/
 lemma PreservesCofiberData.isExactFunctor {C D : SSet.{u}} {f : C ⟶ D}
-    (hf : PreservesCofiberData f) : IsExactFunctor f :=
+    (hf : PreservesCofiberData f) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f :=
   ⟨hf.1, hf.2⟩
 
 /-- 完全関手による閉じた頂点条件の逆像。 -/
 def ClosedStablePredicate.comap {X Y : StableModel.{u}} (P : ClosedStablePredicate Y)
     (f : X ⟶ Y) : ClosedStablePredicate X where
   predicate x := P.predicate (f.val.app (Opposite.op ⦋0⦌) x)
-  of_iso hx e := P.of_iso hx (VertexIso.map e f.val)
+  of_iso hx e := P.of_iso hx (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e f.val)
   zero_mem hz := P.zero_mem (f.property.1 _ hz)
   pushout_mem F hF h00 h10 h01 := by
-    have : IsExactFunctor f.val := f.property.isExactFunctor
-    exact P.pushout_mem (F ≫ f.val) (IsExactFunctor.preservesPushoutSquare f.val F hF) h00 h10 h01
+    have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := f.property.isExactFunctor
+    exact P.pushout_mem (F ≫ f.val) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare f.val F hF) h00 h10 h01
   pullback_mem F hF h10 h01 h11 := by
-    have : IsExactFunctor f.val := f.property.isExactFunctor
-    exact P.pullback_mem (F ≫ f.val) (IsExactFunctor.preservesPullbackSquare f.val F hF) h10 h01 h11
+    have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := f.property.isExactFunctor
+    exact P.pullback_mem (F ≫ f.val) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare f.val F hF) h10 h01 h11
 
 /-- 二つの安定な閉性条件の交わり。 -/
 def ClosedStablePredicate.inter {X : StableModel.{u}} (P Q : ClosedStablePredicate X) :

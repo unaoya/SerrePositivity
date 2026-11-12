@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramWitnessEndpointComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorCurryPostValue
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantTargetVertex
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionCurryComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantTargetVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorExtensionCurryComparison
 
 /-!
 概要：元の二実証拠の相対 curry 比較を、同じ二実輸送の指定比較の curry へ移す。

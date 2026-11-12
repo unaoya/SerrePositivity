@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageComparison
-public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
 
 /-!
 概要：同じ元 cone の dg 関手像を native 全関手同型で比較する。
@@ -12,20 +12,20 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransI
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]
   (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
   (Q : DGFunctor R (RightModule R D) (RightModule R E))
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FQ" => DGFunctor.comp F Q
 local notation "GQ" => DGFunctor.comp G Q
 local notation "CQ" => DGFunctor.comp (CF) Q
-local notation "ηQ" => dgStrictNatTransPostcomp η Q
+local notation "ηQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η Q
 local notation "ν" => dgModuleNaturalConeInr R D F G η
-local notation "νQ" => dgStrictNatTransPostcomp (ν) Q
+local notation "νQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) Q
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "s" => dgModuleNaturalConeImageInput R E D F G η Q
 
@@ -47,8 +47,8 @@ lemma dgModuleNaturalConeImage_cycle (x : P) :
 規約：成分同値の任意選択を使わない。
 使われ方：元 gluing 全実逆回転を実 realization へ運ぶ全比較。 -/
 def dgModuleNaturalConeImageNerveComparison :
-    FunctorIso (dgNerve.map (CηQ)) (dgNerve.map (CQ)) :=
-  dgModuleFunctorIsoOfStrictNatTrans R E (F := (CηQ)) (G := (CQ)) (θ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CηQ)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CQ)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorIsoOfStrictNatTrans R E (F := (CηQ)) (G := (CQ)) (θ)
     (fun x => dgModuleNaturalConeArrow R E (CηQ) (CQ) (θ) x)
     (dgModuleNaturalConeImage_cycle R E D F G η Q)
     (dgModuleNaturalConeImage_isIso R E D F G η Q)

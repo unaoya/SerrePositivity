@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "B" => dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
 local notation "I" => dgOdotQuotientInput R d
 local notation "T" => DGLaxQuotientEndInput.quotientObject (I)
 local notation "P" => dgOdotAlgebraInput R d
@@ -37,8 +37,8 @@ def dgOdotPerfectEquivalence : PerfectModuleCategory R (B) ≌ PerfectModuleCate
 
 /-- 元の実一回の dg Perf 延長の native nerve を順方向とする、同じ実同値。 -/
 def dgOdotPerfectNerveEquivalence :
-    QCatEquivalence (dgNerve R (PerfectDGModule R (B)))
-      (dgNerve R (PerfectDGModule R (T))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (B)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (T))) :=
   dgOdotAlgebraQuotientPerfectNerveEquivalence R d (dgOdotGeneratorConditions R d)
 
 /-- 固定 S 内でも元の ⊙→商辺の同じ主 Perf 延長が同値。 -/
@@ -48,7 +48,7 @@ lemma dgOdotInputMap_isMorita :
 
 /-- 元の固定 ν 辺の実完全射が、安定 ∞ 圏の同値を与える。 -/
 lemma dgOdotInputNuMap_isQCatEquivalence :
-    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
       (dgKInputStableValue R (P)) (dgKInputStableValue R (Q)) from dgKInputNuMap R (m)).hom :=
   dgOdotQuotientInputNuMap_isQCatEquivalence R d (dgOdotGeneratorConditions R d)
 
@@ -59,7 +59,7 @@ lemma dgOdotInputKMap_piIsomorphism :
 
 /-- 元の固定 K 辺そのものが、Sp 内の可逆辺。 -/
 lemma dgOdotInputKEdge_isInvertible :
-    IsInvertibleEdge ((coherentNerveEdge (m)).map (dgKInputK R)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).map (dgKInputK R)) :=
   dgOdotQuotientInputKEdge_isInvertible R d (dgOdotGeneratorConditions R d)
 
 end SerrePositivity.KST.SConstruction

@@ -24,10 +24,10 @@ variable (R : Type u) [CommRing R] {A B C : PerfDGInput.{u, v} R}
 規約：作用射を独立に選ばず、既存の全 native Hom 族の頂点を使う。
 使われ方：K-7 d4 の恒等入力との照合。 -/
 def dgKInputCompactNativeMap_idIso (A : PerfDGInput.{u, v} R) :
-    FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   unfold dgKInputCompactNativeMap
   rw [hν, CategoryTheory.Functor.map_id, Category.id_comp]
@@ -38,12 +38,12 @@ def dgKInputCompactNativeMap_idIso (A : PerfDGInput.{u, v} R) :
 規約：同じ実射と生成同値を使う。全高次合成整合の証明とは区別する。
 使われ方：K-7 d4 の元の厳密 dg 入力射での合成比較。 -/
 def dgKInputCompactNativeMap_compIso (f : A ⟶ B) (g : B ⟶ C) :
-    FunctorIso (dgKInputCompactNativeMap R A B f ≫ dgKInputCompactNativeMap R B C g)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputCompactNativeMap R A B f ≫ dgKInputCompactNativeMap R B C g)
       (dgKInputCompactNativeMap R A C (f ≫ g)) := by
   have hν : (dgKInputNuMap R (f ≫ g)).hom =
       (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   let F := (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map (dgKInputNuMap R f).hom
   let G := (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map (dgKInputNuMap R g).hom

@@ -31,26 +31,26 @@ instance coherentTriangleDirectVertexMap_mono : Mono (coherentTriangleDirectVert
   omega
 
 /-- 指定した上下二胞体族は、同じ直接 path 上で厳密に同じ関手族に制限される。 -/
-theorem verdierNullHomFamily_same_direct (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
+theorem verdierNullHomFamily_same_direct (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     coherentTriangleDirectVertexMap ≫ verdierNullHomFamily d j =
       coherentTriangleDirectVertexMap ≫ verdierNullHomFamily d k := by
   rw [coherentTriangleDirectVertexMap, SSet.yonedaEquiv_symm_comp,
     SSet.yonedaEquiv_symm_comp, verdierNullHomFamily_direct, verdierNullHomFamily_direct]
 
 /-- 元の上下二胞体族を、共有対角上の制限が同じ恒等一単体となる全可逆辺で結ぶ。 -/
-def verdierNullHomRelativeComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierNullHomRelativeComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     FixedRestrictionFunctorEdge coherentTriangleDirectVertexMap
       (verdierNullHomFamily d j) (verdierNullHomFamily d k) :=
   zeroStableHomFamilyRelativeComparison _ _ _ (verdierNullHomFamily_zero d j)
     (verdierNullHomFamily_zero d k) (verdierNullHomFamily_same_direct d j k)
 
 /-- 同じ対角上恒等の実比較辺から得る、元の両二胞体族の全関手同型。 -/
-def verdierNullHomRelativeIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
-    FunctorIso (verdierNullHomFamily d j) (verdierNullHomFamily d k) :=
+def verdierNullHomRelativeIso (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (verdierNullHomFamily d j) (verdierNullHomFamily d k) :=
   (verdierNullHomRelativeComparison d j k).iso
 
 /-- 元の全正反復 S• の全 Hom 作用後も、同じ共有対角上で恒等の全比較辺を保つ。 -/
-def verdierNullHomRelativeMultiComparison (r : ℕ) (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierNullHomRelativeMultiComparison (r : ℕ) (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     FixedRestrictionFunctorEdge coherentTriangleDirectVertexMap
       (verdierNullHomFamily d j ≫ (stableMultiKanEnrichedFunctor r).map
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩) ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩))

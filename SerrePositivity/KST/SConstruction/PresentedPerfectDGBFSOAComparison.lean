@@ -26,7 +26,7 @@ local instance presentedPerfectDGBFSOAComparisonLevel_kanComplex
 local instance presentedPerfectDGBFSOAComparisonBoundary_kanComplex
     (r : ℕ) (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ元の境界商の SOA Kan 値から、その Ex∞ Kan 値への比較。 -/
 def presentedPerfectDGBFBoundarySOAComparison (r : ℕ) (C : PerfDGInput.{u, v} A) :
@@ -38,7 +38,7 @@ def presentedPerfectDGBFBoundarySOAComparison (r : ℕ) (C : PerfDGInput.{u, v} 
 /-- 元の SOA 境界 Kan 値から同じ Ex∞ への比較は全基点 π 同型。 -/
 lemma presentedPerfectDGBFBoundarySOAComparison_piIsomorphism
     (r : ℕ) (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBFBoundarySOAComparison A r C).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (presentedPerfectDGBFBoundarySOAComparison A r C).right :=
   pointedSOAExInfinityComparison_piIsomorphism _
 
 /-- 同じ Perf の元の K 候補列から実再帰 BF 列への全段の前向き比較。 -/
@@ -53,13 +53,13 @@ def presentedPerfectDGBFRawSOAComparison (C : PerfDGInput.{u, v} A) : (n : ℕ) 
 /-- 同じ元の K 候補列からの全段比較は全基点 π 同型。 -/
 lemma presentedPerfectDGBFRawSOAComparison_piIsomorphism
     (C : PerfDGInput.{u, v} A) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBFRawSOAComparison A C n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (presentedPerfectDGBFRawSOAComparison A C n).right := by
   cases n with
   | zero => exact pointedSOAExInfinityComparison_loop_piIsomorphism _
   | succ r =>
       let : KanComplex (((presentedPerfectDGBFPositiveStage A r).functor.obj C).obj).right :=
         (presentedPerfectDGBFPositiveStage A r).kan C
-      have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+      have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
           (show ((presentedPerfectDGBFBoundaryFunctor A r).obj C).obj ⟶
             (((presentedPerfectDGBFPositiveStage A r).functor).obj C).obj from
               (presentedPerfectDGBFPositiveStage A r).comparison C).right :=
@@ -77,7 +77,7 @@ def presentedPerfectDGBFSOAComparison (C : PerfDGInput.{u, v} A) (n : ℕ) :
 /-- 元の実単射 BF K スペクトルからの同じ全段比較は全基点 π 同型。 -/
 lemma presentedPerfectDGBFSOAComparison_piIsomorphism
     (C : PerfDGInput.{u, v} A) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (presentedPerfectDGBFSOAComparison A C n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (presentedPerfectDGBFSOAComparison A C n).right :=
   (monicKKanSequenceProjection_piIsomorphism
     (stableCategoryModel (presentedPerfectDGStableCategory A C)) n).comp
     (presentedPerfectDGBFRawSOAComparison_piIsomorphism A C n)

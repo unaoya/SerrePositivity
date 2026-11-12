@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleNativeFactorization
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TetrahedronFamilyVertices
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TetrahedronFamilyVertices
 
 /-!
 概要：実供給済み因子分解三単体族の制御上側を、元の二短辺へ厳密に戻す。
@@ -18,13 +18,13 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ実因子分解族の指定欠面を制御上側全族として読む。
 方針：同じ供給済み三単体族の面二へ制限する。
 規約：新たな充填を選ばない。使われ方：元の二短辺と全 native Hom の同時照合。 -/
-def zeroMiddleNativeUpperFamily : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u} :=
+def zeroMiddleNativeUpperFamily : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   (stdSimplex.δ (2 : Fin 4) ▷ K) ≫ zeroMiddleNativeFactorizationTetra s hZ K
 
 /-- 概要：同じ実供給の面三は元の厳密な第一因子分解二胞体。
@@ -51,10 +51,10 @@ theorem zeroMiddleNativeFactorizationTetra_last :
 theorem zeroMiddleNativeUpperFamily_first :
     (stdSimplex.δ (2 : Fin 3) ▷ K) ≫ zeroMiddleNativeUpperFamily s hZ K =
       fst (Δ[1] : SSet.{u + 1}) K ≫
-        SSet.yonedaEquiv.symm (coherentNerveEdge
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
             fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-              SerrePositivity.KST.Comparison.exInfinity.map
+              _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
                 (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))).edge := by
   have hid : (stdSimplex.δ (2 : Fin 3) : (Δ[1] : SSet.{u + 1}) ⟶ Δ[2]) ≫
       stdSimplex.δ (2 : Fin 4) = stdSimplex.δ (2 : Fin 3) ≫ stdSimplex.δ (3 : Fin 4) :=
@@ -72,7 +72,7 @@ theorem zeroMiddleNativeUpperFamily_first :
 theorem zeroMiddleNativeUpperFamily_last :
     (stdSimplex.δ (0 : Fin 3) ▷ K) ≫ zeroMiddleNativeUpperFamily s hZ K =
       fst (Δ[1] : SSet.{u + 1}) K ≫
-        SSet.yonedaEquiv.symm (coherentNerveEdge (zeroMiddleFullSKanComposite s hZ)).edge := by
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (zeroMiddleFullSKanComposite s hZ)).edge := by
   have hid : (stdSimplex.δ (0 : Fin 3) : (Δ[1] : SSet.{u + 1}) ⟶ Δ[2]) ≫
       stdSimplex.δ (2 : Fin 4) = stdSimplex.δ (1 : Fin 3) ≫ stdSimplex.δ (0 : Fin 4) := by
     apply SSet.yonedaEquiv.injective
@@ -85,23 +85,23 @@ theorem zeroMiddleNativeUpperFamily_last :
     ← Category.assoc, whiskerRight_fst, Category.assoc]
   exact congrArg (fun f => fst (Δ[1] : SSet.{u + 1}) K ≫ f)
     ((zeroMiddleFullSKanLastTriangle s hZ).δ_one_yonedaEquiv_symm.trans
-      (congrArg (fun f => SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)
+      (congrArg (fun f => SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
         (zeroMiddleFullSKanComparison_last s hZ)))
 
 /-- 概要：同じ制御上側の各入力の全 native Hom は元の指定二胞体のもの。
 方針：同じ欠面とパラメータ評価を交換し、実 (9b) の native 回収を消費する。
 規約：二短辺と同じ実充填を保持。使われ方：再構成上側端点との全長 Hom 照合。 -/
 theorem zeroMiddleNativeUpperFamily_native (k : K _⦋0⦌) :
-    HEq ((SSet.yonedaEquiv (familyAtVertex (zeroMiddleNativeUpperFamily s hZ K) k)).map
+    HEq ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (zeroMiddleNativeUpperFamily s hZ K) k)).map
         ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
-      (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
-  have he : SSet.yonedaEquiv (familyAtVertex (zeroMiddleNativeUpperFamily s hZ K) k) =
-      SpaceInfinity.δ (2 : Fin 4)
-        (SSet.yonedaEquiv (familyAtVertex (zeroMiddleNativeFactorizationTetra s hZ K) k)) := by
+  have he : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (zeroMiddleNativeUpperFamily s hZ K) k) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 4)
+        (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (zeroMiddleNativeFactorizationTetra s hZ K) k)) := by
     apply SSet.yonedaEquiv.symm.injective
     rw [Equiv.symm_apply_apply, ← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
-    exact familyAtVertex_precomp _ _ _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp _ _ _
   rw [he]
   exact zeroMiddleNativeFactorizationTetra_longHom s hZ K k
 

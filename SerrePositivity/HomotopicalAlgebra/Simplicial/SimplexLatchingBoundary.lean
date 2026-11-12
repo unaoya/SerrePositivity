@@ -5,7 +5,7 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.C
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.ElementsMatchingEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalMatching
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexIndexFinite
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalMatching
 
 /-!
 # 単体圏上のパラメータ図式のlatching射を実際の単体境界射と同型で結ぶ
@@ -118,7 +118,7 @@ lemma source_eq : forget X s ⋙ latchingSource simplex (degree X s) =
 def boundaryIso : (latchingEvaluation (SimplexIndexFinite.reedy X) s).obj (parameters.{w, v} X) ≅
     (SSet.boundary.{v} (degree X s).len).toSSet :=
   asIso (colimit.pre (latchingSource simplex (degree X s) ⋙ SSet.stdSimplex.{v}) (forget X s)) ≪≫
-    BisimplicialModel.standardBoundaryIso (degree X s).len
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso (degree X s).len
 
 @[reassoc]
 lemma boundaryIso_fac : (boundaryIso.{w, v} X s).hom ≫ (SSet.boundary.{v} (degree X s).len).ι =
@@ -128,12 +128,12 @@ lemma boundaryIso_fac : (boundaryIso.{w, v} X s).hom ≫ (SSet.boundary.{v} (deg
   change colimit.ι (forget X s ⋙
       (latchingSource simplex (degree X s) ⋙ SSet.stdSimplex.{v})) q ≫
       (colimit.pre (latchingSource simplex (degree X s) ⋙ SSet.stdSimplex.{v}) (forget X s) ≫
-        (BisimplicialModel.standardBoundaryIso (degree X s).len).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso (degree X s).len).hom ≫
           (SSet.boundary.{v} (degree X s).len).ι) =
     colimit.ι (latchingSource (SimplexIndexFinite.reedy X) s ⋙ parameters.{w, v} X) q ≫
       colimit.desc _ (latchingCocone (SimplexIndexFinite.reedy X) (parameters.{w, v} X) s)
   rw [← Category.assoc, colimit.ι_pre,
-    BisimplicialModel.standardBoundaryIso_fac]
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso_fac]
   change colimit.ι (latchingSource simplex (degree X s) ⋙ SSet.stdSimplex.{v})
       ((forget X s).obj q) ≫
       colimit.desc _ (latchingCocone simplex SSet.stdSimplex.{v} (degree X s)) = _

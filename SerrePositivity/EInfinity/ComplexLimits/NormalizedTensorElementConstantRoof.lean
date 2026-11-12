@@ -19,10 +19,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
-def normalizedTensorElementDerivedRoofFamily : ConstantFunctorHom
-    (nerve (normalizedTensorElementIndex A X Y)) (derivedInfinityCategory A)
-    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
-    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex Y)) :=
+def normalizedTensorElementDerivedRoofFamily : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom
+    (nerve (normalizedTensorElementIndex A X Y)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+    ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) :=
   (complexOrdinaryDerivedConstantIso A (normalizedTensorElementIndex A X Y) X).inv ≫
     normalizedTensorElementDerivedRoof A X Y ≫
       (complexOrdinaryDerivedConstantIso A (normalizedTensorElementIndex A X Y) Y).hom

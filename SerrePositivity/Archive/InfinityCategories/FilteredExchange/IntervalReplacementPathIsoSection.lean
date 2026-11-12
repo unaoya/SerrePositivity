@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementPathSection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathSection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyConstantIso
 
 /-!

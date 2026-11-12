@@ -15,14 +15,14 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 任意の元の native HA 単体について、全次数の元の微分合成の差は零。 -/
-lemma simplexHADegreeDefect_zero {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHADegreeDefect_zero {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) (k : ℤ) :
     simplexHADegreeDefect A s.toSimplexData m v b hb k = 0 := by
   obtain ⟨F, hF⟩ := simplexHAChainLift_exists A s m v b hb
   exact simplexHADegreeDefect_zero_of_chain A s.toSimplexData m v b hb F hF k
 
 /-- 元の全次数の線形復元は、元の実 source・target 微分と可換。 -/
-lemma simplexHADegreeLift_comm {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHADegreeLift_comm {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) (k : ℤ) :
     simplexHADegreeLift A s.toSimplexData m v b hb k ≫
       (homObject A D (s.obj (v 0)) (s.obj b)).d k (k + 1) =
@@ -31,7 +31,7 @@ lemma simplexHADegreeLift_comm {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
   sub_eq_zero.mp (simplexHADegreeDefect_zero A s m v b hb k)
 
 /-- 元の全端点・辺生成元について、任意指定次数で元の実微分可換性を得る。 -/
-lemma simplexHADegreeLift_generator_comm {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHADegreeLift_generator_comm {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (N + 1))
     (b : Fin (N + 1)) (hb : v (Fin.last m) < b) (k : ℤ)
     (hi : serreCubeGeneratorDegree m i = k) :
@@ -46,7 +46,7 @@ lemma simplexHADegreeLift_generator_comm {N : ℕ} (s : DGNerve.Simplex A D N)
   ConcreteCategory.congr_hom (simplexHADegreeLift_comm A s m v b hb k) _
 
 /-- 元の全生成元の source 微分像は、元の独立に定義した HA 語境界値と一致する。 -/
-lemma simplexHADegreeLift_generator_source_boundary {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHADegreeLift_generator_source_boundary {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (N + 1))
     (b : Fin (N + 1)) (hb : v (Fin.last m) < b) (k : ℤ)
     (hi : serreCubeGeneratorDegree m i = k) :

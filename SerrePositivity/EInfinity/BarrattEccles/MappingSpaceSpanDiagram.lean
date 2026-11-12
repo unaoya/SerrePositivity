@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceSpans
 public import SerrePositivity.EInfinity.FrameHom.ArrowSpanGrothendieck
-public import SerrePositivity.InfinityCategories.ModelBridge.TargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.TargetInvariance
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 
@@ -27,7 +27,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra Opposite
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.SimplicialModel
 
 variable (A : Type u) [CommRing A]
@@ -100,8 +100,8 @@ lemma mappingSpaceSpanGrothendieckFunctor_fac (X Y : (operad A).Algebra) :
 def mappingRightHomDiagram (X Y : (operad A).Algebra) :
     algebraRightSpanBase A Y ⥤ SSet.{u} := by
   let := modelCategory A
-  exact FrameHom.ArrowSpan.rightSliceForget (trivialCofibrations (operad A).Algebra) Y ⋙
-    cosimplicialHom ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj X)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.rightSliceForget (trivialCofibrations (operad A).Algebra) Y ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj X)
 
 /-- 概要：全右脚の全遷移で同じ Hom の像は反転可能（Low 命題 3.7）。
 方針：元の両右脚の擬同型性と全代数の fibrancy から終域不変性を適用する。
@@ -117,7 +117,7 @@ lemma mappingRightHomDiagram_map_localized_isIso {X Y : (operad A).Algebra}
   have : WeakEquivalence f.right := ⟨hw⟩
   have : IsFibrant s.right := isFibrant A s.right
   have : IsFibrant t.right := isFibrant A t.right
-  exact FrameHom.target_weakEquivalence_isIso _
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_weakEquivalence_isIso _
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).cofibrant X)
     AnodyneHomotopy.anodyneQ (Localization.inverts _ SSet.anodyneExtensions) f.right
 

@@ -31,11 +31,11 @@ structure FirstRowCofiberData {A B C : SSet.{u}} (n : ℕ) (i : A ⟶ B)
 方針：零対角の枠を第一行の上で持ち上げ、Ar[n] 全体の cofiber を境界を固定して補完する。
 規約：C は安定な quasicategory、i は任意の単射。
 使われ方：第一行制限の境界持ち上げの実際の補完データ。 -/
-def firstRowCofiberData {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+def firstRowCofiberData {A B C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (n : ℕ) (i : A ⟶ B) [Mono i] (a : A ⟶ sConstruction n C)
     (d : B ⟶ (ihom (firstRowNerve n)).obj C) (h : a ≫ firstRowRestriction n C = i ≫ d) :
     FirstRowCofiberData n i a d := by
-  have := TrivialKanFibration.mem (p := frameRowRestriction n C) i inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := frameRowRestriction n C) i inferInstance
   have sq : CommSq (a ≫ gappedFrameRestriction n C) i (frameRowRestriction n C) d := by
     constructor
     rw [Category.assoc, firstRowRestriction_factor]
@@ -65,7 +65,7 @@ lemma FirstRowCofiberData.diagram_boundary {A B C : SSet.{u}} {n : ℕ} {i : A �
 lemma FirstRowCofiberData.diagram_isGapped_of_vertexSurjective {A B C : SSet.{u}}
     {n : ℕ} {i : A ⟶ B} {a : A ⟶ sConstruction n C} {d : B ⟶ (ihom (firstRowNerve n)).obj C}
     (c : FirstRowCofiberData n i a d) (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌)))
-    (v : B _⦋0⦌) : IsGapped ((functorVertexEquiv (arNerve n) C).symm
+    (v : B _⦋0⦌) : IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm
       (c.diagram.app (Opposite.op ⦋0⦌) v)) := by
   obtain ⟨u, hu⟩ := hi v
   have hh := ConcreteCategory.congr_hom (NatTrans.congr_app c.diagram_boundary (Opposite.op ⦋0⦌)) u
@@ -73,7 +73,7 @@ lemma FirstRowCofiberData.diagram_isGapped_of_vertexSurjective {A B C : SSet.{u}
     (a.app (Opposite.op ⦋0⦌) u).val at hh
   rw [hu] at hh
   rw [hh]
-  exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) u)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) u)
 
 /-- 概要：全頂点を含む部分からの cofiber 補完は S_n(C) に持ち上がる。
 方針：全頂点の gapped 条件で全部分複体へ持ち上げる。
@@ -83,7 +83,7 @@ def FirstRowCofiberData.toGapped {A B C : SSet.{u}} {n : ℕ} {i : A ⟶ B}
     {a : A ⟶ sConstruction n C} {d : B ⟶ (ihom (firstRowNerve n)).obj C}
     (c : FirstRowCofiberData n i a d) (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) :
     B ⟶ sConstruction n C :=
-  fullSubcomplexLift _ c.diagram (c.diagram_isGapped_of_vertexSurjective hi)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ c.diagram (c.diagram_isGapped_of_vertexSurjective hi)
 
 /-- 概要：S_n に持ち上げた補完の図式は元の右上角の図式。
 方針：全部分複体の持ち上げの包含後の式。
@@ -110,7 +110,7 @@ lemma boundary_vertex_surjective (r : ℕ) :
     Function.Surjective ((boundary.{u} (r + 1)).ι.app (Opposite.op ⦋0⦌)) := by
   intro v
   refine ⟨⟨v, ?_⟩, rfl⟩
-  have h := vertex_mem_boundary.{u} r (stdSimplex.obj₀Equiv.{u} v)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary.{u} r (stdSimplex.obj₀Equiv.{u} v)
   rw [Equiv.symm_apply_apply] at h
   exact h
 
@@ -119,7 +119,7 @@ lemma boundary_vertex_surjective (r : ℕ) :
 規約：得られた図式の第一行が指定充填に一致する等号は、この補題の結論には含めない。
 使われ方：第一行制限の持ち上げのうち、左側の境界条件と gapped 条件。 -/
 lemma exists_gappedBoundaryFilling_of_firstRowFilling (n r : ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (a : (boundary (r + 1) : SSet.{u}) ⟶ sConstruction n C)
     (d : (Δ[r + 1] : SSet.{u}) ⟶ (ihom (firstRowNerve n)).obj C)
     (h : a ≫ firstRowRestriction n C = (boundary (r + 1)).ι ≫ d) :

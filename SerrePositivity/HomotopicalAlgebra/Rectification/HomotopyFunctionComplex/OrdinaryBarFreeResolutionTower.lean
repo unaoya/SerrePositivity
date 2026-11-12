@@ -56,7 +56,7 @@ structure Pair (n : ℕ) where
     OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ SSet.stdSimplex.δ i) =
       FreeGeneratorFaces.fixedFace D (n + 1) i ⋙ previous
   degeneracyLaw : ∀ i : Fin (n + 1), degeneracyFunctor D n i ⋙ current =
-    previous ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i)
+    previous ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i)
 
 def next {n : ℕ} (A : Pair (C := C) hcof hfib D P n) : Pair (C := C) hcof hfib D P (n + 1) where
   current := OrdinaryBarFreeResolutionStep.filler hcof hfib D n P A.current A.previous
@@ -106,7 +106,7 @@ lemma diagram_face (m : ℕ) (i : Fin (m + 2)) : diagram hcof hfib D P A (m + 1)
 
 lemma diagram_degeneracy (m : ℕ) (i : Fin (m + 1)) : degeneracyFunctor D m i ⋙
     diagram hcof hfib D P A (m + 1) = diagram hcof hfib D P A m ⋙
-      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma m i) := by
+      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma m i) := by
   cases m with
   | zero => exact A.degeneracyLaw i
   | succ m => exact (fromSeed hcof hfib D P A (m + 1)).degeneracyLaw i

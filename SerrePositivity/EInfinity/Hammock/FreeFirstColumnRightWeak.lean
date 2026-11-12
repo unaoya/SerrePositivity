@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.FreeFirstColumnHomWeak
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramVertexCoefficientMap
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DiscreteNerveIso
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteNerveIso
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionHomRepresentation
 
 /-!
@@ -22,12 +22,12 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeFirstRightNerveDiagramIso :
     rightDiagram (D := freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeFirstMarkedObjectEquiv_naturality C w X Y) Z ⋙ nerveFunctor ≅
     freeResolutionHom C X Z ⋙ Functor.const SimplexCategoryᵒᵖ :=
-  NatIso.ofComponents (fun n => DiscreteNerve.iso
+  NatIso.ofComponents (fun n => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteNerveIso.iso
     (freeResolutionObject C n X ⟶ freeResolutionObject C n Z)) (by
       intro n m θ
       ext k σ
@@ -43,11 +43,11 @@ def freeFirstRightNerveDiagramIso :
       simp only [hZ, Category.assoc])
 
 def freeFirstTargetRightNerveDiagramIso :
-    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y))
+    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y))
       (freeFirstTargetObjectEquiv C w X Y) (freeFirstTargetObjectEquiv_naturality C w X Y) Z ⋙
         nerveFunctor ≅
       ((Functor.const SimplexCategoryᵒᵖ).obj (X ⟶ Z)) ⋙ Functor.const SimplexCategoryᵒᵖ :=
-  NatIso.ofComponents (fun _ => DiscreteNerve.iso (X ⟶ Z)) (by
+  NatIso.ofComponents (fun _ => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteNerveIso.iso (X ⟶ Z)) (by
     intro n m θ
     ext k σ
     change (σ.obj 0).as ≫ (𝟙 Z) = (σ.obj 0).as
@@ -56,14 +56,14 @@ def freeFirstTargetRightNerveDiagramIso :
 def freeFirstRightSpaceIso :
     rightSpace (freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeFirstMarkedObjectEquiv_naturality C w X Y) Z ≅ freeResolutionHom C X Z :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeFirstRightNerveDiagramIso C w X Y Z) ≪≫
-    DoubleSimplicial.diagonalDiscreteIso _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeFirstRightNerveDiagramIso C w X Y Z) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso _
 def freeFirstTargetRightSpaceIso :
-    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y))
+    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y))
       (freeFirstTargetObjectEquiv C w X Y) (freeFirstTargetObjectEquiv_naturality C w X Y) Z ≅
         (Functor.const SimplexCategoryᵒᵖ).obj (X ⟶ Z) :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeFirstTargetRightNerveDiagramIso C w X Y Z) ≪≫
-    DoubleSimplicial.diagonalDiscreteIso _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeFirstTargetRightNerveDiagramIso C w X Y Z) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso _
 def freeFirstRightSpaceMap :=
   rightSpaceMap (freeFirstMarkedObjectEquiv C) (freeFirstTargetObjectEquiv C w X Y)
     (freeFirstMarkedObjectEquiv_naturality C w X Y)
@@ -86,11 +86,11 @@ lemma freeFirstRightSpaceIso_augmentation :
   simp only [hZ, Category.assoc]
 
 lemma freeFirstRightSpaceMap_weak :
-    IsWeakHomotopyEquivalence (freeFirstRightSpaceMap C w X Y Z) := by
-  have h := (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeFirstRightSpaceMap C w X Y Z) := by
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstRightSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.comp
       (freeResolutionHomAugmentation_isWeakHomotopyEquivalence C X Z)
   rw [freeFirstRightSpaceIso_augmentation] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstTargetRightSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.cancel_right h
 end SerrePositivity.EInfinity.Hammock.FirstColumn

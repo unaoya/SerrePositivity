@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.VerdierFiniteSpanRecovery
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnodyneHomotopyExtension
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.VerdierFiniteSpanRecovery
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.AnchoredFiniteFactorization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.AnodyneHomotopyExtension
 
 /-!
 概要：指定実境界を、同じ実輸送円柱とともに完成分母族から回収する。
@@ -24,42 +24,42 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定実境界の輸送円柱を、完成族の比較円柱への厳密な制限として回収する。 -/
 lemma verdierDenominatorSpan_relative_finite_recovery
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (x y : B.obj _⦋0⦌)
     {S K : SSet.{u}} [S.Finite] [K.Finite] (j : S ⟶ K)
-    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y)
-    (f : K ⟶ F2.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y))
-    (ha : a ≫ F2.continuousKanReplacementUnit.app
-      (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) = j ≫ f) :
+    (a : S ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y)
+    (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y))
+    (ha : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y) = j ≫ f) :
     ∃ d : (verdierDenominatorOver i x : SSet.{u}) _⦋0⦌,
-      ∃ g : K ⟶ vertexFiber (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
+      ∃ g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d,
         ∃ L : SSet.Homotopy
-          (j ≫ g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d) a,
+          (j ≫ g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d) a,
         ∃ G : SSet.Homotopy
-          (g ≫ vertexFiberι (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
-            F2.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y)) f,
+          (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanProjection i x y) d ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y)) f,
           (j ▷ (Δ[1] : SSet.{u})) ≫ G.h = L.h ≫
-            F2.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y) := by
-  let E := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanFamily i x y
-  let p := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpanProjection i x y
+            _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y) := by
+  let E := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanFamily i x y
+  let p := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpanProjection i x y
   obtain ⟨J, a', r, ha', hjr, hrf⟩ :=
-    F2.continuousKanReplacement_anchored_finite_factorization j a f ha
-  obtain ⟨d, g₀, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
-  let V := vertexFiber p d
-  have : KanComplex V := vertexFiber_kanComplex p d
-  have hη := F2.continuousKanReplacementUnit_anodyne (J.val : SSet.{u})
+    _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.continuousKanReplacement_anchored_finite_factorization j a f ha
+  obtain ⟨d, g₀, ⟨H⟩⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.verdierDenominatorSpan_finite_fiber_detection h x y J.val.ι
+  let V := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p d
+  have : KanComplex V := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex p d
+  have hη := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit_anodyne (J.val : SSet.{u})
   have := hη (terminal.from V)
     (by rw [← HomotopicalAlgebra.fibration_iff]; infer_instance)
-  have sq : CommSq g₀ (F2.continuousKanReplacementUnit.app J.val)
-      (terminal.from V) (terminal.from (F2.continuousKanReplacement.obj J.val)) :=
+  have sq : CommSq g₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app J.val)
+      (terminal.from V) (terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj J.val)) :=
     ⟨terminalIsTerminal.hom_ext _ _⟩
   let R := sq.lift
-  have hR : F2.continuousKanReplacementUnit.app J.val ≫ R = g₀ := sq.fac_left
+  have hR : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app J.val ≫ R = g₀ := sq.fac_left
   let g := r ≫ R
   have hjg : j ≫ g = a' ≫ g₀ := by
     dsimp only [g]
     rw [← Category.assoc, hjr, Category.assoc, hR]
-  let L : SSet.Homotopy (j ≫ g ≫ vertexFiberι p d) a := {
+  let L : SSet.Homotopy (j ≫ g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p d) a := {
     h := (a' ▷ (Δ[1] : SSet.{u})) ≫ H.h
     h₀ := by
       rw [SSet.ι₀_comp_assoc, H.h₀, ← Category.assoc, ← hjg]
@@ -73,12 +73,12 @@ lemma verdierDenominatorSpan_relative_finite_recovery
       apply ConcreteCategory.hom_ext
       intro z
       exact False.elim z.1.property }
-  let u := F2.continuousKanReplacementUnit.app E
-  let F := R ≫ vertexFiberι p d ≫ u
-  let D := F2.continuousKanReplacement.map J.val.ι
+  let u := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app E
+  let F := R ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p d ≫ u
+  let D := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map J.val.ι
   let H₀ : SSet.Homotopy
-      (F2.continuousKanReplacementUnit.app J.val ≫ F)
-      (F2.continuousKanReplacementUnit.app J.val ≫ D) := {
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app J.val ≫ F)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app J.val ≫ D) := {
     h := H.h ≫ u
     h₀ := by
       rw [← Category.assoc, H.h₀]
@@ -87,16 +87,16 @@ lemma verdierDenominatorSpan_relative_finite_recovery
       rfl
     h₁ := by
       rw [← Category.assoc, H.h₁]
-      exact F2.continuousKanReplacementUnit.naturality J.val.ι
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.naturality J.val.ι
     rel := by
       apply SSet.hom_ext
       intro n
       apply ConcreteCategory.hom_ext
       intro z
       exact False.elim z.1.property }
-  obtain ⟨G₀, hG₀⟩ := F2.anodyne_homotopy_extension
-    (F2.continuousKanReplacementUnit.app J.val) hη F D H₀
-  let G : SSet.Homotopy (g ≫ vertexFiberι p d ≫ u) f := {
+  obtain ⟨G₀, hG₀⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_homotopy_extension
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app J.val) hη F D H₀
+  let G : SSet.Homotopy (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p d ≫ u) f := {
     h := (r ▷ (Δ[1] : SSet.{u})) ≫ G₀.h
     h₀ := by
       rw [SSet.ι₀_comp_assoc, G₀.h₀]

@@ -23,7 +23,7 @@ open scoped Simplicial
 使われ方：供給側 core S 実現の元の相対先頭実現への比較。 -/
 def completionClosedSFlagIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (sStableModel m (Fibration.Relative.closedFlagModel
       (completionImageClosedPredicate r ι f hf) n)).carrier ≅
         (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)

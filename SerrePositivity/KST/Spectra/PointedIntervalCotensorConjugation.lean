@@ -44,7 +44,7 @@ lemma VerticalPath.basedIhomMap_conjugate_path {A A' : PointedSimplicialSet.{u}}
     (K : PointedSimplicialSet.{u}) (e : A ≅ A') :
     ((((R.basedPost e.hom).pre e.inv).basedIhomMap K)).path =
       ((((R.basedIhomMap K).basedPost (cotensorIso K e).hom).pre (cotensorIso K e).inv)).path := by
-  have h := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap K e.inv)
+  have h := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap K e.inv)
     (PointedObject.basedHom K A')).right) (R.basedIhomMap_post_path K e.hom)
   exact ((R.basedPost e.hom).basedIhomMap_pre_path_natural K e.inv).trans h
 

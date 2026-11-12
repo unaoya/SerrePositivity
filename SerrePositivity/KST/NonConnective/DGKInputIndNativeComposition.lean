@@ -16,41 +16,41 @@ open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] {A B C : PerfDGInput.{u, v} R}
 
 /-- 元の全 native 族の指定頂点の Ind 作用は、同じ固定 ν 射へ Yoneda 上で比較される。 -/
 def dgKInputIndNativeMap_restrictionIso (f : A ⟶ B) :
-    FunctorIso (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
       dgKInputIndNativeMap R A B f)
       ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map
         (dgKInputNuMap R f).hom ≫
-          indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := by
   rw [dgKInputIndNativeMap_eq_extension]
   exact dgKInputIndExtension_restrictionIso R A B _
 
 /-- 同じ元の恒等 dg 射の実 Ind 作用は恒等関手と比較される。 -/
 def dgKInputIndNativeMap_idIso (A : PerfDGInput.{u, v} R) :
-    FunctorIso (dgKInputIndNativeMap R A A (𝟙 A)) (𝟙 _) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputIndNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   apply dgKInputIndFunctorIso_of_restriction R A A _ _
     (dgKInputIndNativeMap_preservesFilteredColimits R A A (𝟙 A))
-    (F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
-      (qCatEquivalenceOfIso (Iso.refl _)).isQCatEquivalence)
+    (_root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (Iso.refl _)).isQCatEquivalence)
   simpa only [hν, Functor.map_id, Category.id_comp, Category.comp_id] using!
     dgKInputIndNativeMap_restrictionIso R (𝟙 A)
 
 /-- 元の二つの厳密 dg 射の実 Ind 作用の合成は、同じ元の合成射の作用と比較される。 -/
 def dgKInputIndNativeMap_compIso (f : A ⟶ B) (g : B ⟶ C) :
-    FunctorIso (dgKInputIndNativeMap R A B f ≫ dgKInputIndNativeMap R B C g)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputIndNativeMap R A B f ≫ dgKInputIndNativeMap R B C g)
       (dgKInputIndNativeMap R A C (f ≫ g)) := by
   have hν : (dgKInputNuMap R (f ≫ g)).hom =
       (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue R A) (dgKInputStableValue R C) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   let F := dgKInputIndNativeMap R A B f
   let G := dgKInputIndNativeMap R B C g
@@ -60,18 +60,18 @@ def dgKInputIndNativeMap_compIso (f : A ⟶ B) (g : B ⟶ C) :
   have e₂ := (dgKInputIndNativeMap_restrictionIso R g).precomp fν
   have e₃ := (dgKInputIndNativeMap_restrictionIso R (f ≫ g)).symm
   apply dgKInputIndFunctorIso_of_restriction R A C _ _
-    (F2.Presentable.preservesSmallFilteredColimits_comp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallFilteredColimits_comp
       (dgKInputIndNativeMap_preservesFilteredColimits R A B f)
       (dgKInputIndNativeMap_preservesFilteredColimits R B C g))
     (dgKInputIndNativeMap_preservesFilteredColimits R A C (f ≫ g))
-  have e₁' : FunctorIso
-      (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ (F ≫ G))
-      (fν ≫ indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj ≫ G) := by
+  have e₁' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ (F ≫ G))
+      (fν ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj ≫ G) := by
     simpa only [Category.assoc] using! e₁
-  have e₃' : FunctorIso
+  have e₃' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (fν ≫ (SSet.uliftFunctor.map (dgKInputNuMap R g).hom) ≫
-        indYoneda Cardinal.aleph0 (dgKInputStableValue R C).obj)
-      (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R C).obj)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
         dgKInputIndNativeMap R A C (f ≫ g)) := by
     simpa only [hν, Functor.map_comp, Category.assoc, fν] using! e₃
   exact e₁' ≪≫ e₂ ≪≫ e₃'

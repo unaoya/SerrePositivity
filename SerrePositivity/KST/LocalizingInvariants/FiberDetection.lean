@@ -49,7 +49,7 @@ local instance fiberDetectionSimplicialCategory : SimplicialCategory OmegaSpectr
 /-- fiber の全整数群の消滅は、元の Sp の辺の可逆性を検出する。 -/
 theorem isInvertible_of_fiberGroups {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (h : ∀ j : ℤ, Subsingleton (homotopyGroup (homotopyFiber f) j)) :
-    IsInvertibleEdge (coherentNerveEdge f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) :=
   isInvertible_of_piIsomorphism f (piIsomorphism_of_fiberGroups f h)
 
 end FiberDetection

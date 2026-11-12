@@ -28,17 +28,17 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：π_(n+1) の Hom を π_(n+2) の標的へ移す。
 使われ方：Goerss–Jardine I §7、VIII §1。loop 値の球面の群の比較の終段。 -/
 def positiveHomotopyEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
         (PointedSimplicialSet.basepoint (PointedObject.basedHom space Y)) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1) Y.basepoint := by
-  let f : PointedObject.basedHom space.{u} Y ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y
-  have hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp unit
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1) Y.basepoint := by
+  let f : PointedObject.basedHom space.{u} Y ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed unit Y
+  have hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp unit
         (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Y)
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n f.right hf
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)).trans (loopPositiveHomotopyEquiv Y n)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n f.right hf
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f)).trans (loopPositiveHomotopyEquiv Y n)
 
 end
 

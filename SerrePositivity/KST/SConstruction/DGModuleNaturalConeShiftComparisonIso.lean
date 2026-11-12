@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftComparis
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma shiftedDescRecovery {M N : ModuleCategory R D} (s : ℤ) (f : M ⟶ N)
     (g : moduleShiftObj R D s M ⟶ moduleShiftObj R D s N)
@@ -31,12 +31,12 @@ private lemma shiftedDescRecovery {M N : ModuleCategory R D} (s : ℤ) (f : M �
   rfl
 
 variable {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "S" => moduleShiftDG R D
 local notation "CS" => fun s : ℤ => dgModuleNaturalConeFunctor R D (F.comp (S s)) (G.comp (S s))
-  (dgStrictNatTransPostcomp η (S s))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η (S s))
 
 /-- 概要：同じ cone shift 全比較の始域を元 shift 射の実 cone へ戻す指定同型。
 方針：元全比較の閉 shift 射回収だけで輸送する。
@@ -56,7 +56,7 @@ lemma dgModuleNaturalConeShiftComparison_arrow (s : ℤ) (x : P) :
       (dgModuleNaturalConeShiftComparisonInputIso R D F G η s x).hom ≫
         (moduleConeShiftIso R D s (dgModuleNaturalConeArrow R D F G η x)).inv := by
   exact (dgModuleNaturalConeDesc_arrow R D (F.comp (S s)) (G.comp (S s)) ((CF).comp (S s))
-    (dgStrictNatTransPostcomp η (S s)) (dgStrictNatTransPostcomp (ν) (S s))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η (S s)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) (S s))
     (dgModuleNaturalConeShiftNull R D F G η s)
     (dgModuleNaturalConeShiftComparison_boundary R D F G η s)
     (dgModuleNaturalConeShiftNull_naturality R D F G η s) x).trans

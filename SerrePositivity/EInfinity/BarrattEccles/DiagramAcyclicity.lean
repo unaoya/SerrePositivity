@@ -66,7 +66,7 @@ lemma generatingTrivialCofibrations_component (l : K) :
     have ht : trivialCofibrations (operad A).Algebra f :=
       (((projectiveGeneratingTrivialCofibrations A).strictMap
         (operad A).freeAlgebraFunctor).le_llp_rlp.trans
-          (ModelGeneration.trivialCofibrations_eq_generated
+          (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated
             ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
             ((projectiveGeneratingTrivialCofibrations A).strictMap
               (operad A).freeAlgebraFunctor)).symm.le) _ hf

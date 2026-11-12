@@ -17,24 +17,24 @@ open CategoryTheory Limits Simplicial SSet
 instance necklaceInSimplexInterval_cell_isIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     IsIso (necklaceCubicalCell (necklaceInSimplexInterval.{u} a b hab)) :=
   isIso_ι_of_isTerminal (necklaceInSimplexInterval_isTerminal a b hab)
-    (necklaceCubicalDiagram (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+    (necklaceCubicalDiagram (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
 
 /-- 元の区間 bead の表現可能立方体から、同じ両端間の実 cubical Hom への同型。 -/
 def simplexIntervalCubicalCoreIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     necklaceCubicalSet.obj (necklaceBead.{u} (b.val - a.val)) ≅
       necklaceCubicalMapping (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
   @asIso CubicalSet.{u} _ _ _ (necklaceCubicalCell (necklaceInSimplexInterval a b hab))
     (necklaceInSimplexInterval_cell_isIso a b hab)
 
 /-- 元の全区間の実 cubical Hom を、元の (b−a−1) 次元の表現可能立方体で回収する。 -/
 def simplexIntervalCubicalMappingIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≅
+    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≅
       necklaceCubicalMapping (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
   cubicalYoneda.mapIso
-      (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-        (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+      (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
         (necklaceBead_dimension.{u} (b.val - a.val)).symm) ≪≫
     simplexIntervalCubicalCoreIso a b hab
 
@@ -42,21 +42,21 @@ def simplexIntervalCubicalMappingIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ 
 lemma simplexIntervalCubicalMappingIso_hom {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     (simplexIntervalCubicalMappingIso.{u} a b hab).hom =
       cubicalYoneda.map
-          (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-            (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+          (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+            (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
             (necklaceBead_dimension.{u} (b.val - a.val)).symm).hom ≫
         necklaceCubicalCell (necklaceInSimplexInterval a b hab) := rfl
 
 /-- 元の全生成射を、元の区間 bead への可換三角形から厳密に回収する。 -/
 lemma simplexIntervalCubicalCoreIso_cell {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)) :
     necklaceCubicalSet.map (necklaceInToSimplexInterval a b hab T).necklaceHom ≫
         (simplexIntervalCubicalCoreIso a b hab).hom = necklaceCubicalCell T :=
   necklaceCubicalCell_relation (necklaceInToSimplexInterval a b hab T)
 
 /-- 元の比較の逆方向は、全生成射で元の区間への具体的 cube 射を回収する。 -/
 lemma simplexIntervalCubicalCoreIso_cell_inv {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)) :
     necklaceCubicalCell T ≫ (simplexIntervalCubicalCoreIso a b hab).inv =
       necklaceCubicalSet.map (necklaceInToSimplexInterval a b hab T).necklaceHom := by
   have h := simplexIntervalCubicalCoreIso_cell a b hab T
@@ -68,17 +68,17 @@ lemma simplexIntervalCubicalCoreIso_cell_inv {n : ℕ} (a b : Fin (n + 1)) (hab 
 
 /-- 元の次元移送も含めた逆比較は、全生成射で元の具体的 cube 射を回収する。 -/
 lemma simplexIntervalCubicalMappingIso_cell_inv {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)) :
     necklaceCubicalCell T ≫ (simplexIntervalCubicalMappingIso a b hab).inv =
       necklaceCubicalSet.map (necklaceInToSimplexInterval a b hab T).necklaceHom ≫
         cubicalYoneda.map
-          (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-            (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+          (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+            (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
             (necklaceBead_dimension.{u} (b.val - a.val)).symm).inv :=
   (Category.assoc _ _ _).symm.trans
     (congrArg (fun f => f ≫ cubicalYoneda.map
-      (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))
-        (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
+      (@concreteCubeDimensionIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (b.val - a.val)).down.dimension)
         (necklaceBead_dimension.{u} (b.val - a.val)).symm).inv)
       (simplexIntervalCubicalCoreIso_cell_inv a b hab T))
 

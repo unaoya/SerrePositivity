@@ -1,6 +1,6 @@
-import SerrePositivity.InfinityCategories.F1.Cocartesian
-import SerrePositivity.InfinityCategories.F1
-import SerrePositivity.InfinityCategories.F1B
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Cocartesian
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B
 
 /-!
 概要：F1 と F1B の集約を同時に読み込み、公開宣言の名前衝突を検査する。
@@ -11,19 +11,29 @@ import SerrePositivity.InfinityCategories.F1B
 
 open Lean in
 run_cmd do
+  let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F1
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
+  let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
+    if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
+  let oldAuditPrefix2 := `SerrePositivity.InfinityCategories.F1B
+  let klw1AuditLayout2 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout2 ← IO.ofExcept klw1AuditLayout2.getObj?
+  let klw1AuditOwners2 := Std.HashSet.ofList (klw1AuditLayout2.toList.filterMap fun (source, dest) =>
+    if oldAuditPrefix2.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let mut f1Count : Nat := 0
   let mut f1bCount : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    if `SerrePositivity.InfinityCategories.F1 |>.isPrefixOf mod then
+    if (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod) then
       f1Count := f1Count + 1
-    if `SerrePositivity.InfinityCategories.F1B |>.isPrefixOf mod then
+    if (oldAuditPrefix2.isPrefixOf mod || klw1AuditOwners2.contains mod) then
       f1bCount := f1bCount + 1
   if f1Count == 0 || f1bCount == 0 then
     throwError "F1/F1B collision audit did not load declarations from both lanes"
   logInfo m!"F1/F1B collision audit passed: {f1Count} F1 and {f1bCount} F1B declarations."
 
-#check @SerrePositivity.InfinityCategories.leftScaffoldBaseChange_overPullbackMap
-#check @SerrePositivity.InfinityCategories.F1B.cocartesianScaffoldBaseChange_overPullbackMap
+#check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.leftScaffoldBaseChange_overPullbackMap
+#check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.F1B.cocartesianScaffoldBaseChange_overPullbackMap

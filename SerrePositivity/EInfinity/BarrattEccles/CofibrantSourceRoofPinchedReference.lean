@@ -19,25 +19,25 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SSet SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison SerrePositivity.SimplicialModel
+open SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
 def cofibrantSourceRoofProductPinchedReferenceMap :
     nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
-      pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
         (cofibrantHammockVertex A Y) :=
   cofibrantSourceRoofProductDegreeHammockMap A X Y b ≫
-    exInfinityUnit.app (algebraReducedHammock A (cofibrantSourceRoofDegreeAlgebra A X Y b).obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (algebraReducedHammock A (cofibrantSourceRoofDegreeAlgebra A X Y b).obj
       Y.obj) ≫ cofibrantHammockPinchedReferenceMap A (cofibrantSourceRoofDegreeAlgebra A X Y b) Y
 
 lemma cofibrantSourceRoofProductPinchedReferenceMap_weak :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductPinchedReferenceMap A X Y b) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductPinchedReferenceMap A X Y b) := by
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
       (algebraReducedHammock A (cofibrantSourceRoofDegreeAlgebra A X Y b).obj Y.obj)) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (cofibrantSourceRoofProductDegreeHammockMap_weak A X Y b).comp
     (hu.comp (cofibrantHammockPinchedReferenceMap_weak A
       (cofibrantSourceRoofDegreeAlgebra A X Y b) Y))
@@ -45,7 +45,7 @@ lemma cofibrantSourceRoofProductPinchedReferenceMap_weak :
 lemma cofibrantSourceRoofProductHomMap_weak_of_reference_homotopy
     (H : SSet.Homotopy (cofibrantSourceRoofProductHomMap A X Y b)
       (cofibrantSourceRoofProductPinchedReferenceMap A X Y b)) :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) := by
   have h := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts H
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
@@ -57,7 +57,7 @@ lemma cofibrantSourceRoofMap_isLeftCofinal_of_reference_homotopy
     (H : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
       Nonempty (SSet.Homotopy (cofibrantSourceRoofProductHomMap A X Y b)
         (cofibrantSourceRoofProductPinchedReferenceMap A X Y b))) :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_productHom_weak A X Y
     (fun b => cofibrantSourceRoofProductHomMap_weak_of_reference_homotopy A X Y b (H b).some)
 

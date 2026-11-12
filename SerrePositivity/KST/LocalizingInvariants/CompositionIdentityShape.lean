@@ -22,7 +22,7 @@ lemma post_degenerate : SquareDiagonal.postShape ≫ stdSimplex.σ (1 : Fin 2) =
   rintro ⟨s, t⟩
   apply SSet.stdSimplex.ext
   intro i
-  change (1 : Fin 2).predAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (s i, t i)) = s i
+  change (1 : Fin 2).predAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex (s i, t i)) = s i
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -35,7 +35,7 @@ lemma pre_degenerate : SquareDiagonal.preShape ≫ stdSimplex.σ (0 : Fin 2) =
   rintro ⟨s, t⟩
   apply SSet.stdSimplex.ext
   intro i
-  change (0 : Fin 2).predAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i)) = s i
+  change (0 : Fin 2).predAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (s i, t i)) = s i
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl

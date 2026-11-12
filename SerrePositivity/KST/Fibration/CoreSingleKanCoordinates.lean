@@ -11,7 +11,7 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
+
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
@@ -20,30 +20,30 @@ theorem exInfinityKan_eqToHom {A B : SSet.{u}} (h : A = B) :
     eqToHom (congrArg (fun V : SSet.{u} => exInfinityClosedKanEnrichedFunctor.obj ⟨V⟩) h) =
       exInfinityKanMap (eqToHom h) := by
   cases h
-  change (𝟙 (exInfinity.obj A)) = exInfinity.map (𝟙 A)
-  exact (CategoryTheory.Functor.map_id exInfinity A).symm
+  change (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj A)) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (𝟙 A)
+  exact (CategoryTheory.Functor.map_id _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity A).symm
 
 /-- 元の core S の座標同型の同じ Ex∞ 像を、Kan 値の座標同型として保持する。 -/
-def coreSingleKanIso (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def coreSingleKanIso (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableCoreSingleKanObject C ≅ (stableMultiKanEnrichedFunctor 0).obj C where
-  hom := exInfinity.map (coreSingleRealizationIso (stableCategoryModel C)).hom
-  inv := exInfinity.map (coreSingleRealizationIso (stableCategoryModel C)).inv
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSingleRealizationIso (stableCategoryModel C)).hom
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSingleRealizationIso (stableCategoryModel C)).inv
   hom_inv_id := by
-    change exInfinity.map _ ≫ exInfinity.map _ = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = 𝟙 _
     rw [← CategoryTheory.Functor.map_comp, Iso.hom_inv_id, CategoryTheory.Functor.map_id]
   inv_hom_id := by
-    change exInfinity.map _ ≫ exInfinity.map _ = 𝟙 _
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = 𝟙 _
     rw [← CategoryTheory.Functor.map_comp, Iso.inv_hom_id, CategoryTheory.Functor.map_id]
 
 /-- 同じ Kan 座標同型の前向き射は、元の対象座標の等号による射そのもの。 -/
-theorem coreSingleKanIso_hom_eq (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem coreSingleKanIso_hom_eq (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (coreSingleKanIso C).hom = eqToHom (stableCoreSingleKan_object_eq C).symm := by
   change exInfinityKanMap (coreSingleRealizationIso (stableCategoryModel C)).hom = _
   rw [coreSingleRealizationIso_hom_eq]
   exact (exInfinityKan_eqToHom (coreSingleRealization_obj_eq (stableCategoryModel C))).symm
 
 /-- 同じ Kan 座標同型の逆射も、元の逆向きの対象座標の等号による射そのもの。 -/
-theorem coreSingleKanIso_inv_eq (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem coreSingleKanIso_inv_eq (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (coreSingleKanIso C).inv = eqToHom (stableCoreSingleKan_object_eq C) := by
   have he : coreSingleKanIso C = eqToIso (stableCoreSingleKan_object_eq C).symm :=
     Iso.ext (coreSingleKanIso_hom_eq C)
@@ -51,12 +51,12 @@ theorem coreSingleKanIso_inv_eq (C : _root_.SerrePositivity.InfinityCategories.S
   rfl
 
 /-- 同じ元の完全射を保った、Ex∞ 後の座標同型の自然性。 -/
-theorem coreSingleKanIso_naturality {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : C ⟶ D) :
+theorem coreSingleKanIso_naturality {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (f : C ⟶ D) :
     exInfinityKanMap (simplicialDiagonalFunctor.map (coreSExactMap f)) ≫
         (coreSingleKanIso D).hom =
-      (coreSingleKanIso C).hom ≫ exInfinity.map
+      (coreSingleKanIso C).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
         ((multiRealizationFunctor 1).map (stableExactInputMap f)) := by
-  change exInfinity.map _ ≫ exInfinity.map _ = exInfinity.map _ ≫ exInfinity.map _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map _
   rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
     coreSExactMap_realization_eq, coreSingleRealizationIso_naturality]
 

@@ -48,8 +48,8 @@ theorem evaluationGroupMap_injective_of_isZero :
   let ei : (obj (K.skeleton 1 : SSet.{u}) Y).right ≅ Y.right :=
     PointedSimplicialSet.forget.mapIso (asIso e)
   have hinj : Function.Injective (pointedGroupMap (r + 1) e) :=
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1) ei
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint e)).injective
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (r + 1) ei
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint e)).injective
   let f : obj K Y ⟶ obj (K.skeleton 1 : SSet.{u}) Y := pre (K.skeleton 1).ι Y
   have he : f ≫ e = evaluation (SSet.const v) Y := by
     change pre (K.skeleton 1).ι Y ≫ evaluation (initialVertexMap K v) Y = _

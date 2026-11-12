@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.FixedMarkedSpanQuasicategory
-public import SerrePositivity.InfinityCategories.Core.EquivalencePathIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.FixedMarkedSpanQuasicategory
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePathIso
 
 /-!
 概要：両端固定の分母付き span の頂点は、反転後には固定した第一終点と自然同型。
@@ -22,14 +22,14 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def markedSpanApex (X : SSet.{u}) (W : Set (X _⦋1⦌)) : markedSpans X W ⟶ X :=
   markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
 
 def fixedMarkedSpanApex (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x y : X _⦋0⦌) :
     fixedMarkedSpans X W x y ⟶ X := fixedMarkedSpanInclusion X W x y ≫ markedSpanApex X W
 
 lemma markedSpanBoundary_source (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
-    markedSpanBoundary X W ≫ evaluateFunctorAt
-      (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 2), vertex_mem_boundary 0 0⟩ :
+    markedSpanBoundary X W ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+      (⟨stdSimplex.obj₀Equiv.symm (0 : Fin 2), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.vertex_mem_boundary 0 0⟩ :
         (boundary 1 : SSet.{u}) _⦋0⦌) = markedSpanSource X W := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -42,38 +42,38 @@ lemma markedSpanBoundary_source (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
 lemma fixedMarkedSpan_source (X : SSet.{u}) (W : Set (X _⦋1⦌)) (x y : X _⦋0⦌) :
     fixedMarkedSpanInclusion X W x y ≫ markedSpanSource X W = SSet.const x := by
   rw [← markedSpanBoundary_source, ← Category.assoc, fixedMarkedSpanInclusion,
-    vertexFiberι_comp, SSet.const_comp, evaluateFunctorAt_functorVertex]
-  change SSet.const (PinchedHom.constant x 0) = _
-  rw [pinchedConstant_zero]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp, SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
+  change SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
 
 lemma evaluateFunctorAt_postcomp {A X Q : SSet.{u}} (F : X ⟶ Q) (a : A _⦋0⦌) :
-    (ihom A).map F ≫ evaluateFunctorAt a = evaluateFunctorAt a ≫ F := rfl
+    (ihom A).map F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a ≫ F := rfl
 
 def equivalenceSpanFirstEdgeIso {A Q : SSet.{u}} [Quasicategory Q]
-    (f : A ⟶ equivalenceSpans Q) : FunctorIso
+    (f : A ⟶ equivalenceSpans Q) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((f ≫ equivalenceSpanInclusion Q ≫ (pre horn₂₀.ι₀₁).app Q) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
       ((f ≫ equivalenceSpanInclusion Q ≫ (pre horn₂₀.ι₀₁).app Q) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
   let L := f ≫ equivalenceSpanInclusion Q ≫ (pre horn₂₀.ι₀₁).app Q
-  have hv : ∀ v : A _⦋0⦌, IsEquivalencePathVertex (L.app (Opposite.op ⦋0⦌) v) := by
+  have hv : ∀ v : A _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex (L.app (Opposite.op ⦋0⦌) v) := by
     intro v
-    exact fullSubcomplexOnVertices_vertex (f.app (Opposite.op ⦋0⦌) v)
-  have h := functorIsoOfEquivalenceHomotopy (uncurry L) (by
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (f.app (Opposite.op ⦋0⦌) v)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfEquivalenceHomotopy (uncurry L) (by
     intro v
-    rw [← intervalFunctorVertexEdge_curry, curry_uncurry]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_curry, curry_uncurry]
     exact hv v)
-  simpa only [← curry_evaluateFunctorAt_interval, curry_uncurry] using h
+  simpa only [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, curry_uncurry] using h
 
 def fixedMarkedSpanApexImageIso {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q)
-    (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) (x y : X _⦋0⦌) :
-    FunctorIso (fixedMarkedSpanApex X W x y ≫ F)
+    (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F W) (x y : X _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (fixedMarkedSpanApex X W x y ≫ F)
       (SSet.const (F.app (Opposite.op ⦋0⦌) x)) := by
   have h := equivalenceSpanFirstEdgeIso
     (fixedMarkedSpanInclusion X W x y ≫ invertedSpanMap F W hF)
   simp only [Category.assoc, ← Category.assoc (invertedSpanMap F W hF),
     invertedSpanMap_inclusion] at h
-  change FunctorIso (fixedMarkedSpanApex X W x y ≫ F)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (fixedMarkedSpanApex X W x y ≫ F)
     ((fixedMarkedSpanInclusion X W x y ≫ markedSpanSource X W) ≫ F) at h
   rw [fixedMarkedSpan_source, SSet.const_comp] at h
   exact h

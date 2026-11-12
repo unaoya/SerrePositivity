@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexComponents
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexComponents
 public import Mathlib.AlgebraicTopology.SimplicialSet.Subcomplex
 
 /-!
@@ -29,10 +29,10 @@ open scoped _root_.Simplicial
 使われ方：ĜL と連結成分の群との比較。
 -/
 def componentSubcomplex (X : SSet.{u}) (P : π₀ X → Prop) : X.Subcomplex where
-  obj n := {s | P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X s)}
+  obj n := {s | P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X s)}
   map f s hs := by
-    change P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (X.map f s))
-    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map X f.unop s).symm ▸ hs
+    change P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (X.map f s))
+    exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map X f.unop s).symm ▸ hs
 
 /--
 概要：指定した成分に属する頂点を部分単体集合へ持ち上げる。
@@ -43,8 +43,8 @@ def componentSubcomplex (X : SSet.{u}) (P : π₀ X → Prop) : X.Subcomplex whe
 def componentVertex (X : SSet.{u}) (P : π₀ X → Prop) (a : X _⦋0⦌) (ha : P (π₀.mk a)) :
     (componentSubcomplex X P : SSet) _⦋0⦌ :=
   ⟨a, by
-    change P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X a)
-    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using ha⟩
+    change P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X a)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero] using ha⟩
 
 /--
 概要：成分を指定した部分単体集合へ、両端を含む辺を持ち上げる。
@@ -56,11 +56,11 @@ def componentEdge (X : SSet.{u}) (P : π₀ X → Prop) {a b : X _⦋0⦌}
     (ha : P (π₀.mk a)) (hb : P (π₀.mk b)) (e : X.Edge a b) :
     (componentSubcomplex X P : SSet).Edge (componentVertex X P a ha) (componentVertex X P b hb) :=
   .mk ⟨e.edge, by
-    have h : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X e.edge = π₀.mk a := by
+    have h : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X e.edge = π₀.mk a := by
       change π₀.mk (X.map (SimplexCategory.const ⦋0⦌ ⦋1⦌ 0).op e.edge) = _
       rw [← SimplexCategory.δ_one_eq_const]
       exact congrArg π₀.mk e.src_eq
-    change P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X e.edge)
+    change P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X e.edge)
     rw [h]
     exact ha⟩
     (Subtype.ext e.src_eq) (Subtype.ext e.tgt_eq)
@@ -95,8 +95,8 @@ theorem componentVertex_sound (X : SSet.{u}) (P : π₀ X → Prop) {a b : X _�
 def componentClassMap (X : SSet.{u}) (P : π₀ X → Prop) :
     π₀ (componentSubcomplex X P : SSet) → {c : π₀ X // P c} :=
   π₀.lift (fun a => ⟨π₀.mk a.val, by
-    have ha : P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X a.val) := a.property
-    simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using ha⟩)
+    have ha : P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X a.val) := a.property
+    simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero] using ha⟩)
     (fun _ _ e => Subtype.ext (π₀.sound (e.map (componentSubcomplex X P).ι)))
 
 /--
@@ -112,9 +112,9 @@ noncomputable def componentClassEquiv (X : SSet.{u}) (P : π₀ X → Prop) :
     induction x using π₀.rec with | mk x => ?_
     induction y using π₀.rec with | mk y => ?_
     have hx : P (π₀.mk x.val) := by
-      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using (show P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X x.val) from x.property)
+      simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero] using (show P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X x.val) from x.property)
     have hy : P (π₀.mk y.val) := by
-      simpa only [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero] using (show P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X y.val) from y.property)
+      simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero] using (show P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X y.val) from y.property)
     exact componentVertex_sound X P (congrArg Subtype.val h) hx hy, by
     rintro ⟨c, hc⟩
     obtain ⟨a, rfl⟩ := π₀.mk_surjective c

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeFiberCospanEnd
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.StrictKanPullbackEndComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeSectionPullback
 
 /-!

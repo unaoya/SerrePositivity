@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCoconeIntervalTransportAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeActionComponents
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoTriangleEvaluation
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoTriangleEvaluation
 
 /-!
 概要：全 Hom の普遍作用比較の成分を、元の native 作用の指定成分へ戻す。

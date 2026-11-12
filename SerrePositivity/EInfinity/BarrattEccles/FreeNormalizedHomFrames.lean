@@ -18,11 +18,11 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 def freeNormalizedProbeHom : (Complex A)ᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u} :=
-  (freeNormalizedProbeFrame A).op ⋙ cosimplicialHomBifunctor
+  (freeNormalizedProbeFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def freeNormalizedCommonFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) := by
   let := modelCategory A
@@ -31,7 +31,7 @@ def freeNormalizedCommonFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Al
     (freeProbeFunctor A) (freeNormalizedProbeFrame A) (freeNormalizedProbeAugmentation A)
 
 def freeNormalizedHomMiddle : (Complex A)ᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u} :=
-  (freeNormalizedCommonFrame A).op ⋙ cosimplicialHomBifunctor
+  (freeNormalizedCommonFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def freeNormalizedHomFromStandard :
     (freeProbeFunctor A).op ⋙ sourceFrameHom A ⟶ freeNormalizedHomMiddle A := by
@@ -50,7 +50,7 @@ def freeNormalizedProbeHomAdjunctionIso :
     freeNormalizedProbeHom A ≅ ComplexLimits.normalizedProbeTensorHom A ⋙
       (Functor.whiskeringLeft (operad A).Algebra (Complex A) SSet.{u}).obj
         (Operad.Algebra.forget (operad A)) :=
-  adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.adjunctionFrameHomBifunctorIso (operad A).freeAlgebraAdjunction
     (ComplexLimits.normalizedProbeTensorFrame A) (𝟭 (operad A).Algebra)
 
 end SerrePositivity.EInfinity.BarrattEccles

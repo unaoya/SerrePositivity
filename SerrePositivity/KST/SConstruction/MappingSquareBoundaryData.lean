@@ -38,7 +38,7 @@ lemma MappingSquareBoundaryData.homMk_comp {E : SSet.{u}} {a b c d : E _⦋0⦌}
     (Q : MappingSquareBoundaryData bottom top left right) :
     SSet.HomotopyCategory.homMk bottom ≫ SSet.HomotopyCategory.homMk right =
       SSet.HomotopyCategory.homMk left ≫ SSet.HomotopyCategory.homMk top := by
-  apply homMk_comp_eq_of_square bottom.toTruncated top.toTruncated
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.homMk_comp_eq_of_square bottom.toTruncated top.toTruncated
     left.toTruncated right.toTruncated Q.square
   · rw [squareHorizontalEdge_yoneda]
     change SSet.yonedaEquiv (pastingSquareHorizontal 0 ≫ Q.square) = bottom.edge

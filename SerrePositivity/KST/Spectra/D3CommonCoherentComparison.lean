@@ -25,27 +25,27 @@ local instance commonCoherentHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 共通解像から元の Sp への全単体射影。 -/
 def commonOriginalInfinityMap : SimplicialNerve CommonObject ⟶ Sp.{u} :=
-  coherentNerveMap commonOriginalEnriched
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonOriginalEnriched
 
 /-- 比較射を含めた全 Hom の元の Sp への回収は完全忠実。 -/
-lemma commonOriginalInfinityMap_isFullyFaithful : IsFullyFaithful commonOriginalInfinityMap := by
-  apply (coherentNerveMap_isFullyFaithful_iff commonOriginalEnriched).mpr
+lemma commonOriginalInfinityMap_isFullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful commonOriginalInfinityMap := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff commonOriginalEnriched).mpr
   intro X Y
-  exact (qCatEquivalenceOfTrivialKanFibration (commonOriginalMap X.val Y.val)).isQCatEquivalence
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (commonOriginalMap X.val Y.val)).isQCatEquivalence
 
 /-- 同じ元の対象を包む射影は元の全頂点を回収する。 -/
 lemma commonOriginalInfinityMap_isEssentiallySurjective :
-    IsEssentiallySurjective commonOriginalInfinityMap := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective commonOriginalInfinityMap := by
   intro y
-  refine ⟨coherentNerveVertex (⟨coherentNerveObject y⟩ : CommonObject), ?_⟩
-  change Nonempty (VertexIso
-    ((coherentNerveMap commonOriginalEnriched).app _ (coherentNerveVertex _)) y)
-  rw [coherentNerveMap_vertex]
-  exact ⟨eqToIso (congrArg SSet.HomotopyCategory.mk (coherentNerveVertex_object y))⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject y⟩ : CommonObject), ?_⟩
+  change Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonOriginalEnriched).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _)) y)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
+  exact ⟨eqToIso (congrArg SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object y))⟩
 
 /-- 比較を含む同じ共通解像と元の Sp の実同値。 -/
-def commonOriginalInfinityEquivalence : QCatEquivalence (SimplicialNerve CommonObject) Sp.{u} :=
-  qCatEquivalenceOfFullyFaithfulEssentiallySurjective commonOriginalInfinityMap
+def commonOriginalInfinityEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (SimplicialNerve CommonObject) Sp.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective commonOriginalInfinityMap
     commonOriginalInfinityMap_isFullyFaithful commonOriginalInfinityMap_isEssentiallySurjective
 
 /-- 元の二段包含を成分とする厳密な豊穣自然変換。 -/
@@ -53,7 +53,7 @@ def commonGradedInclusion :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       commonOriginalEnriched commonRefinedEnriched where
   app X := eHomEquiv SSet (commonInclusion X.val)
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
     (commonInclusion X.val) (commonInclusion Y.val)
     (commonRefinedMap X.val Y.val) (commonOriginalMap X.val Y.val)).mp
       (common_left_whiskered X.val Y.val)).symm
@@ -63,7 +63,7 @@ def commonGradedComparison :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       commonRefinedEnriched commonMiddleEnriched where
   app X := eHomEquiv SSet (commonComparison X.val)
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
     (commonComparison X.val) (commonComparison Y.val)
     (commonMiddleMap X.val Y.val) (commonRefinedMap X.val Y.val)).mp
       (common_right_whiskered X.val Y.val).symm).symm
@@ -86,7 +86,7 @@ lemma commonComparison_componentHom (X : CommonObject) :
 
 /-- 指定二段包含を保つ、元の Sp と共通 BF 対象の全図式同型。 -/
 def commonInclusionFunctorIso :
-    FunctorIso (coherentNerveMap commonOriginalEnriched) (coherentNerveMap commonRefinedEnriched) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonOriginalEnriched) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched) :=
   StrictEnrichedTransformation.functorIso commonOriginalEnriched commonRefinedEnriched
     commonGradedInclusion (fun X ↦ by
       rw [commonInclusion_componentHom]
@@ -95,7 +95,7 @@ def commonInclusionFunctorIso :
 
 /-- 指定比較右脚を保つ、共通 BF 対象と元の相対 BF 対象の全図式同型。 -/
 def commonComparisonFunctorIso :
-    FunctorIso (coherentNerveMap commonRefinedEnriched) (coherentNerveMap commonMiddleEnriched) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonMiddleEnriched) :=
   StrictEnrichedTransformation.functorIso commonRefinedEnriched commonMiddleEnriched
     commonGradedComparison (fun X ↦ by
       rw [commonComparison_componentHom]

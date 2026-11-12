@@ -84,8 +84,8 @@ theorem rectify_component (n : ℕ) :
 方針：成分の等式を実際のホモトピーへ戻し、全基点同型性のホモトピー不変性を使う。
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。実際の比較射の同型性。 -/
-theorem rectify_levelwise (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((rectify hX f hf).app n).right := by
+theorem rectify_levelwise (hpi : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((rectify hX f hf).app n).right := by
   obtain ⟨H, _⟩ := (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).mp
     (rectify_component hX f hf n)
   exact (kanPiIsomorphism_iff_of_homotopy H).mpr (hpi n)

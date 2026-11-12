@@ -18,26 +18,26 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全 native Kan dg 入力族を保持する、全高次比較に自然な実 S• Perf 図式。 -/
 def presentedPerfectDGSimplicialEnrichedFunctor :
-    SimplicialObject (QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
+    SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
   sExactSimplicialEnrichedFunctor ⋙
     quasicategoryEnrichedPrecompositionFunctor (presentedPerfectDGFullEnrichedFunctor A)
 
 /-- 一つの元の dg 圏で評価した、同じ実 S• Perf の単体的図式。 -/
 def presentedPerfectDGSimplicialDiagram (C : PerfDGInput.{u, v} A) :
-    SimplicialObject QuasicategoryObject.{max (u + 1) v} :=
+    SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{max (u + 1) v} :=
   presentedPerfectDGSimplicialEnrichedFunctor A ⋙ quasicategoryEnrichedEvaluationFunctor C
 
 /-- 元の評価図式の各段は、同じラベル付き Perf の全 gapped S_n。 -/
 lemma presentedPerfectDGSimplicialDiagram_obj (C : PerfDGInput.{u, v} A)
     (n : SimplexCategoryᵒᵖ) :
     ((presentedPerfectDGSimplicialDiagram A C).obj n).obj =
-      sConstruction n.unop.len (dgNerve A (PresentedPerfectDGObject A C)) := rfl
+      sConstruction n.unop.len (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) := rfl
 
 /-- 元の評価図式の全ての面退化は、同じ元の実 S_n 添字制限。 -/
 lemma presentedPerfectDGSimplicialDiagram_map (C : PerfDGInput.{u, v} A)
     {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
     (presentedPerfectDGSimplicialDiagram A C).map f =
-      sMap (dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
+      sMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
 
 /-- 各段の全 Hom 作用は、元の全完全 Perf 関手族と元の全パラメータ S_n の合成。 -/
 lemma presentedPerfectDGSimplicialEnrichedFunctor_map (n : SimplexCategoryᵒᵖ)

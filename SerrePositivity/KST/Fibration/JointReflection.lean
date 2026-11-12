@@ -15,10 +15,10 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 二射影が元の零対象と実押し出しの普遍性を共同で反映するという性質。 -/
 structure JointlyReflectsSData {P X A : SSet.{u}} (p : P ⟶ X) (q : P ⟶ A) : Prop where
-  zero (v : P _⦋0⦌) : IsZeroVertex (p.app (Opposite.op ⦋0⦌) v) →
-    IsZeroVertex (q.app (Opposite.op ⦋0⦌) v) → IsZeroVertex v
+  zero (v : P _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (p.app (Opposite.op ⦋0⦌) v) →
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (q.app (Opposite.op ⦋0⦌) v) → _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v
   pushout (F : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ P) :
-    IsPushoutSquare (F ≫ p) → IsPushoutSquare (F ≫ q) → IsPushoutSquare F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ p) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (F ≫ q) → _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare F
 
 /-- 完全な両射影が共同反映するなら、全 gapped 条件も共同で正確に反映する。 -/
 lemma JointlyReflectsSData.isGapped_iff {P X A : StableModel.{u}}
@@ -48,14 +48,14 @@ lemma JointlyReflectsSData.ihom {P X A : StableModel.{u}} {p : P ⟶ X} {q : P �
     intro k
     have hp' := isZeroVertex_evaluateFunctorAt hp k
     have hq' := isZeroVertex_evaluateFunctorAt hq k
-    change IsZeroVertex ((((CategoryTheory.ihom K).map p.val ≫
-      evaluateFunctorAt k).app _ v)) at hp'
-    change IsZeroVertex ((((CategoryTheory.ihom K).map q.val ≫
-      evaluateFunctorAt k).app _ v)) at hq'
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((CategoryTheory.ihom K).map p.val ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _ v)) at hp'
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((CategoryTheory.ihom K).map q.val ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k).app _ v)) at hq'
     rw [ihom_postcomp_evaluate] at hp' hq'
     exact h.zero _ hp' hq'
   pushout F hp hq := by
-    apply isPushoutSquare_of_pointwise
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isPushoutSquare_of_pointwise
     intro k
     apply h.pushout
     · have hp' := (evaluateFunctorAt_preservesSConstructionData (C := X.carrier) k).2 _ hp
@@ -70,9 +70,9 @@ lemma JointlyReflectsSData.postcomp_left_iso {P X A Y : StableModel.{u}}
   have : IsIso e.hom.val := inferInstanceAs (IsIso (stableModelForget.map e.hom))
   constructor
   · intro v hp hq
-    exact h.zero v ((isZeroVertex_iff_map_of_trivialKanFibration e.hom.val _).2 hp) hq
+    exact h.zero v ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration e.hom.val _).2 hp) hq
   · intro F hp hq
     exact h.pushout F
-      ((isPushoutSquare_iff_postcomp_trivialKanFibration e.hom.val _).2 hp) hq
+      ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPushoutSquare_iff_postcomp_trivialKanFibration e.hom.val _).2 hp) hq
 
 end SerrePositivity.KST.Fibration

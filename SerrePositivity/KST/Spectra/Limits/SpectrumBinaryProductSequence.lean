@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanPiProducts
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiProducts
 public import SerrePositivity.KST.Spectra.KanSequence
 public import SerrePositivity.KST.Spectra.PointedGroupProduct
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
 public import Mathlib.CategoryTheory.Adjunction.Limits
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
@@ -43,37 +43,37 @@ def loopProductCone_isLimit (A B : PointedSimplicialSet.{u}) :
 規約：順射は二つの射影による loop の写像を組にした射。
 使われ方：BF 1978 §2、積の随伴構造射の Ω 条件の検証。 -/
 def loopProductIso (A B : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.prod A B) ≅ PointedObject.prod (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedObject.prod A B) ≅ PointedObject.prod (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B) :=
   (loopProductCone_isLimit A B).conePointUniqueUpToIso
-    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B))
+    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B))
 
 /-- 概要：loop と積の同型の第一射影は第一射影による loop の写像。
 方針：極限錐の一意同型の射影則を使う。
 規約：厳密な点つき射の等式。
 使われ方：HA §1.4.2 の積の Ω 条件の第一成分の計算。 -/
 lemma loopProductIso_hom_fst (A B : PointedSimplicialSet.{u}) :
-    (loopProductIso A B).hom ≫ PointedObject.prodFst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B) =
+    (loopProductIso A B).hom ≫ PointedObject.prodFst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B) =
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (PointedObject.prodFst A B) :=
   (loopProductCone_isLimit A B).conePointUniqueUpToIso_hom_comp
-    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B)) (.mk .left)
+    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B)) (.mk .left)
 
 /-- 概要：loop と積の同型の第二射影は第二射影による loop の写像。
 方針：極限錐の一意同型の射影則を使う。
 規約：厳密な点つき射の等式。
 使われ方：HA §1.4.2 の積の Ω 条件の第二成分の計算。 -/
 lemma loopProductIso_hom_snd (A B : PointedSimplicialSet.{u}) :
-    (loopProductIso A B).hom ≫ PointedObject.prodSnd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B) =
+    (loopProductIso A B).hom ≫ PointedObject.prodSnd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B) =
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (PointedObject.prodSnd A B) :=
   (loopProductCone_isLimit A B).conePointUniqueUpToIso_hom_comp
-    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B)) (.mk .right)
+    (PointedObject.prodIsLimit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B)) (.mk .right)
 
 /-- 概要：二つの懸垂の構造射から積の構造射を作る。
 方針：積の射影を懸垂して各構造射と合成し、次段の積へまとめる。
 規約：構造射の単射性はこの定義には不要。
 使われ方：BF 1978 §2 の実際の積の Kan 列の構造射。 -/
 def binaryProductSigma {A B A' B' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedObject.prod A B) ⟶ PointedObject.prod A' B' :=
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B ⟶ B') :
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedObject.prod A B) ⟶ PointedObject.prod A' B' :=
   PointedObject.prodLift
     (PointedSimplicialSet.circle.{u} ◁ PointedObject.prodFst A B ≫ s)
     (PointedSimplicialSet.circle.{u} ◁ PointedObject.prodSnd A B ≫ t)
@@ -83,13 +83,13 @@ def binaryProductSigma {A B A' B' : PointedSimplicialSet.{u}}
 規約：全ての点つき対象と射についての厳密な等式。
 使われ方：BF 1978 §2、HA §1.4.2 の積の Ω 条件の標準比較。 -/
 lemma binaryProductSigma_adjoint {A B A' B' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B ⟶ B') :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (binaryProductSigma s t) ≫ (loopProductIso A' B').hom =
-      PointedObject.prodMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ s) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ t) := by
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension A ⟶ A') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B ⟶ B') :
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (binaryProductSigma s t) ≫ (loopProductIso A' B').hom =
+      PointedObject.prodMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ s) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ t) := by
   apply PointedObject.prod_hom_ext
   · rw [Category.assoc, loopProductIso_hom_fst]
     simp only [PointedObject.prodMap, PointedObject.prodLift_fst]
-    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
+    unfold _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv
     let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
     change adj.homEquiv (PointedObject.prod A B) (PointedObject.prod A' B')
         (binaryProductSigma s t) ≫
@@ -101,7 +101,7 @@ lemma binaryProductSigma_adjoint {A B A' B' : PointedSimplicialSet.{u}}
     exact adj.homEquiv_naturality_left (PointedObject.prodFst A B) s
   · rw [Category.assoc, loopProductIso_hom_snd]
     simp only [PointedObject.prodMap, PointedObject.prodLift_snd]
-    unfold _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv
+    unfold _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv
     let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
     change adj.homEquiv (PointedObject.prod A B) (PointedObject.prod A' B')
         (binaryProductSigma s t) ≫
@@ -225,22 +225,22 @@ lemma binaryProductKanSequence_omega (X Y : KanSequence.{u})
     (hX : X.OmegaCondition) (hY : Y.OmegaCondition) :
     (binaryProductKanSequence X Y).OmegaCondition := by
   intro n
-  let a := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((binaryProductKanSequence X Y).sigma n)
+  let a := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((binaryProductKanSequence X Y).sigma n)
   let e := loopProductIso (X.level (n + 1)).space (Y.level (n + 1)).space
-  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (X := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedObject.prod
+  have he : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism e.hom.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (X := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedObject.prod
         (X.level (n + 1)).space (Y.level (n + 1)).space)).right)
-      (Y := (PointedObject.prod (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Y.level (n + 1)).space)).right)
+      (Y := (PointedObject.prod (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Y.level (n + 1)).space)).right)
       (PointedSimplicialSet.forget.mapIso e)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := e.hom.right) ?_ he
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := e.hom.right) ?_ he
   have h := congrArg Under.Hom.right (binaryProductSigma_adjoint (X.sigma n) (Y.sigma n))
   change a.right ≫ e.hom.right =
-    (PointedObject.prodMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma n))).right at h
+    (PointedObject.prodMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma n))).right at h
   rw [h, PointedObject.prodMap_right]
-  exact kanPiIsomorphism_tensor (hX n) (hY n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_tensor (hX n) (hY n)
 
 end
 

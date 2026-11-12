@@ -85,7 +85,7 @@ def localizedResolutionHom : Cᵒᵖ ⥤ FibrantObject C ⥤ H where
 @[simp]
 lemma localizedResolutionHom_obj (X : Cᵒᵖ) (Y : FibrantObject C) :
     ((localizedResolutionHom hcof L).obj X).obj Y =
-      L.obj ((cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj Y.obj) := rfl
+      L.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj Y.obj) := rfl
 
 lemma localizedResolutionHom_map_source_isIso {X X' : Cᵒᵖ}
     (f : X ⟶ X') (hf : weakEquivalences C f.unop) (Y : FibrantObject C) :

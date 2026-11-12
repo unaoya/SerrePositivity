@@ -31,18 +31,18 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 
 /-- 明示屋根と指定 Perf 同値に条件付きで、元の構造辺の可逆性は同じ K 四角形の引き戻し性。 -/
 theorem dgKappaSuspensionOriginalStructureMap_isInvertible_iff :
-    IsInvertibleEdge (coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R D I ρ e Z)) ↔
-      IsPullbackSquare (ρ.diagram.square ≫ dgKInputK R) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R D I ρ e Z)) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ρ.diagram.square ≫ dgKInputK R) := by
   letI : IsIso (Truncated.HomotopyCategory.homMk
-      (coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e)).toTruncated) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e)).toTruncated) :=
     dgKappaSuspensionKernelKComparison_isInvertible R D I ρ e
   change IsIso (Truncated.HomotopyCategory.homMk
-    (coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e ≫
       ρ.nativeStructureBFMap R D I Z)).toTruncated) ↔ _
   rw [← Truncated.HomotopyCategory.homMk_comp_homMk
-    (coherentNerveCompStruct (dgKappaSuspensionKernelKComparison R D I ρ e)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (dgKappaSuspensionKernelKComparison R D I ρ e)
       (ρ.nativeStructureBFMap R D I Z)).toTruncated, isIso_comp_left_iff]
-  exact (isInvertibleEdge_congr (ρ.nativeStructureBFMap_edge R D I Z)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (ρ.nativeStructureBFMap_edge R D I Z)).trans
     (ρ.nativeStructureEdge_isInvertible_iff R D I Z)
 
 end SerrePositivity.KST.NonConnective

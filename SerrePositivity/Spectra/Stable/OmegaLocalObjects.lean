@@ -15,14 +15,14 @@ independently defined level-fibrant Omega predicate.
 universe w v u
 noncomputable section
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.GeneralSymmetricSpectrum SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.GeneralSymmetricSpectrum
 
 namespace SerrePositivity.SpectrumStabilization
 variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C]
   [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] [ModelCategory C]
   [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsLocallyPresentable.{w} C]
   (K : C) [IsCofibrant K] (I J : MorphismProperty C)
-  [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory (GeneralSymmetricSpectrum C K)]
   (hW : weakEquivalences (GeneralSymmetricSpectrum C K) =
     SpectrumLevelModel.levelProperty K (weakEquivalences C))
@@ -35,7 +35,7 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
     (trivialCofibrations (GeneralSymmetricSpectrum C K))
     (fibrations (GeneralSymmetricSpectrum C K)))
   [ModelCategory SSet.{w}] [ModelCategory SSet.{v}] [ModelCategory SSet.{max v w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcofW : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfibW : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -56,7 +56,7 @@ lemma exists_omega_localizingMaps :
   obtain ⟨ι, G, hc, hd⟩ :=
     Bousfield.HomotopyGenerators.exists_small_cofibrant_resolution_generators
       I J IS JS hcofW hfibW hcofV hfibV hcofM hfibM hw
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration I J
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration I J
   let cofC := MorphismProperty.functorialFactorizationData (cofibrations C) (trivialFibrations C)
   have : ∀ i, IsCofibrant (G i) := hc
   have : ∀ n : ℕ, Quillen.IsLeftQuillen (freeAt (K := K) n) := fun n ↦

@@ -33,7 +33,7 @@ def stablePathFirstRowDiagram (X : StableModel.{u}) : SimplicialObject StableMod
     carrier := (pathFirstRowDiagram X.carrier).obj d
     quasicategory := inferInstance
     stable := by
-      change IsStable ((ihom (firstRowNerve (d.unop.len + 1))).obj X.carrier)
+      change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable ((ihom (firstRowNerve (d.unop.len + 1))).obj X.carrier)
       infer_instance }
   map f := ⟨(pathFirstRowDiagram X.carrier).map f, by
     change PreservesCofiberData ((pre (pathFirstRowNerveFunctor.map f.unop)).app X.carrier)
@@ -55,7 +55,7 @@ def stablePathFirstRowRestriction (X : StableModel.{u}) :
 方針：元の第一行制限の充填性を使う。
 規約：全単体次数で成立。使われ方：反復による充填性の保存の入力。 -/
 instance stablePathFirstRowRestriction_trivialKanFibration (X : StableModel.{u})
-    (d : SimplexCategoryᵒᵖ) : TrivialKanFibration (((stablePathFirstRowRestriction X).app d).val) :=
+    (d : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (((stablePathFirstRowRestriction X).app d).val) :=
   firstRowRestriction_trivialKanFibration _ X.carrier
 
 /-- 概要：安定な入力の圏へ束ねた比較を忘れると元の第一行の自然変換になる。

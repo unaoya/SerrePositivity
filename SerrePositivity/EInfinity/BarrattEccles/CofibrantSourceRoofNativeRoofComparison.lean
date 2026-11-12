@@ -33,11 +33,11 @@ lemma cofibrantSourceRoofProductCommaDiagram_map_weak
 
 def cofibrantSourceRoofProductCommaAugmentationRoofGraphMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-    Hammock.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences Hammock.LeftRoof.word
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap _
-    (Hammock.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation_weak A X Y b)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b)
@@ -45,11 +45,11 @@ def cofibrantSourceRoofProductCommaAugmentationRoofGraphMap :
 
 def cofibrantSourceRoofProductCommaAugmentationRoofMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-    Hammock.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
-    (Hammock.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation A X Y b)
       (cofibrantSourceRoofProductCommaAugmentation_weak A X Y b)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b)
@@ -57,11 +57,11 @@ def cofibrantSourceRoofProductCommaAugmentationRoofMap :
 
 def cofibrantSourceRoofProductCommaEvaluationRoofMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-    Hammock.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       ((cofibrantDKSourceFrame A X).obj (cofibrantSourceRoofDegree A X Y b))
       (show (cofibrantAlgebraRelativeCategory A).category from Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
-    (Hammock.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b)
@@ -70,8 +70,8 @@ def cofibrantSourceRoofProductCommaEvaluationRoofMap :
 lemma cofibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison :
     AnodyneHomotopy.anodyneQ.map (cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b) =
       AnodyneHomotopy.anodyneQ.map (cofibrantSourceRoofProductCommaAugmentationRoofMap A X Y b) ≫
-        AnodyneHomotopy.anodyneQ.map (Hammock.precomposePointMap
-          (Hammock.arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (cofibrantAlgebraRelativeCategory A).weakEquivalences
             ((cofibrantDKSourceFrameAugmentation A X).app (cofibrantSourceRoofDegree A X Y b)))
           (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
   have h : (𝟙 (cofibrantSourceRoofProductCommaDiagram A X Y b)) ≫

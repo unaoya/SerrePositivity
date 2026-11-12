@@ -19,9 +19,9 @@ open scoped Simplicial
 variable {U E : SSet.{u}} {a b c : U ⟶ E}
   {first : SSet.Homotopy a b} {second : SSet.Homotopy b c} {direct : SSet.Homotopy a c}
   (t : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy first))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy second))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy direct)))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy second))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy direct)))
 
 /-- 同じ実二単体を、元の全パラメータを持つ全三角形へ復号する。 -/
 def familyCompStructRealization : U ⊗ (Δ[2] : SSet.{u}) ⟶ E :=

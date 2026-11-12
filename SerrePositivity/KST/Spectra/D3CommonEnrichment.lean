@@ -26,7 +26,7 @@ local instance commonEnrichmentSpectrumCategory : SimplicialCategory OmegaSpectr
 instance commonHom_kanComplex (X Y : OmegaSpectrum.{u}) : KanComplex (commonHom X Y) := by
   let : HomotopicalAlgebra.Fibration (commonBaseMap X Y) :=
     (SSet.modelCategoryQuillen.fibration_iff _).2
-      (fun _ _ j hj ↦ (TrivialKanFibration.mem (p := commonBaseMap X Y)) j
+      (fun _ _ j hj ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := commonBaseMap X Y)) j
         (SSet.modelCategoryQuillen.J_le_monomorphisms j hj))
   change HomotopicalAlgebra.Fibration (terminal.from (commonHom X Y))
   rw [show terminal.from (commonHom X Y) = commonBaseMap X Y ≫

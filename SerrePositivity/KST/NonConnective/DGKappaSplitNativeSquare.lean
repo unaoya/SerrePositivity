@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGKappaFullPerfAction
 public import SerrePositivity.KST.NonConnective.DGKappaSplitRelations
-public import SerrePositivity.InfinityCategories.Derived.NerveInclusion
-public import SerrePositivity.InfinityCategories.Stable.SuspensionSquare
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SuspensionSquare
 
 /-!
 概要：同じ実注入・射影・零自己関手から作る、全 native Perf 作用の実四角形。
@@ -31,12 +31,12 @@ abbrev DGKappaClosedFunctorCategory :=
 /-- 閉射の通常 nerve を、同じ全 native 入力へ持ち上げる実写像。 -/
 def dgKappaClosedFunctorNativeMap :
     nerve (DGKappaClosedFunctorCategory R D I) ⟶ dgKappaFullPerfParameter R D I where
-  app n := ↾fun x ↦ ULift.up ((closedNerveInclusion R
+  app n := ↾fun x ↦ ULift.up ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R
     (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))).app n x)
   naturality _ _ f := by
     ext x
     apply ULift.ext
-    exact NatTrans.naturality_apply (closedNerveInclusion R
+    exact NatTrans.naturality_apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R
       (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))) f x
 
 /-- 同じ左注入と右射影を持つ、元の閉関手圏の下二単体。 -/
@@ -62,7 +62,7 @@ lemma dgKappaSplitClosed_shared (Z : DGKappaZeroInput R D I) :
 /-- 同じ元の閉関手圏の両二単体を貼り合わせた実四角形。 -/
 def dgKappaSplitClosedSquare (Z : DGKappaZeroInput R D I) :
     (Δ[1] : SSet.{max (u + 1) v}) ⊗ Δ[1] ⟶ nerve (DGKappaClosedFunctorCategory R D I) :=
-  square_isPushout.desc (SSet.yonedaEquiv.symm (dgKappaSplitClosedUpper R D I Z))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout.desc (SSet.yonedaEquiv.symm (dgKappaSplitClosedUpper R D I Z))
     (SSet.yonedaEquiv.symm (dgKappaSplitClosedLower R D I)) (by
       rw [stdSimplex.δ_comp_yonedaEquiv_symm, stdSimplex.δ_comp_yonedaEquiv_symm,
         dgKappaSplitClosed_shared])

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndUnderlyingWeight
 universe u
 open CategoryTheory CategoryTheory.Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 namespace SerrePositivity.KST.Spectra.PointedWeightedEnd
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -27,7 +27,7 @@ lemma preMap_fibration {F G : CosimplicialObject SSet.{u}} (θ : F ⟶ G)
     (hX : reedyRight simplex J.rlp (terminal.from (X ⋙ PointedSimplicialSet.forget))) :
     Fibration (preMap (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)).right := by
   let f := preMap (Functor.whiskerLeft AsSmall.down θ) (AsSmall.down ⋙ X)
-  let g := weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down θ)
     ((AsSmall.down ⋙ X) ⋙ PointedSimplicialSet.forget)
   let e : Arrow.mk f.right ≅ Arrow.mk g :=
     Arrow.isoMk (underlyingIso (AsSmall.down ⋙ G) (AsSmall.down ⋙ X))

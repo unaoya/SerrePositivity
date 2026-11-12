@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPostcomposition
-public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionComponents
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionComponents
 
 /-!
 概要：元の複体射の閉 cochain との dg 合成を、同じ Hom 後合成へ回収する。
@@ -15,14 +15,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexPostcompose_graded (X : Complex A) {P Q : Complex A} (f : P ⟶ Q)
     (k : ℤ) (v : GradedHom A X P k) :
     compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map f)).val v
       (add_zero k) = (homPostcompose X f).f k v := by
-  have h := dgClosedPostcomposition_f A (Complex A) (x := X) ((complexToClosed A).map f) k v
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedPostcomposition_f A (Complex A) (x := X) ((complexToClosed A).map f) k v
   rw [complexToClosed_postcomposition] at h
   exact h.symm
 

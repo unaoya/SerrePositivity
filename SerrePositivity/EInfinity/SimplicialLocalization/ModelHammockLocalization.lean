@@ -3,9 +3,9 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantLocalization
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockSourceComparison
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LocalizationEquivalenceTransport
-public import SerrePositivity.InfinityCategories.F1B.Localization.WeakDeformationSource
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.NatTransHomotopyComponent
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LocalizationEquivalenceTransport
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.NatTransHomotopyComponent
 
 /-!
 概要：実 bifibrant hammock の局所化普遍性を同じ cofibrant 部分圏と全モデル圏へ戻す。
@@ -26,7 +26,7 @@ open scoped Simplicial
 /-- 概要：元の相対関手の nerve は同じ弱射の辺集合を保つ。
 方針：元の射の全 simplex 表示を同じ関手で送る。
 規約：元の指定弱辺。使われ方：Ind の源移送への入力。 -/
-lemma relativeNerve_mapsWeak {A B : RelativeCategory.{w}}
+lemma relativeNerve_mapsWeak {A B : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{w}}
     (F : LocalizerMorphism A.weakEquivalences B.weakEquivalences)
     (s : (nerve A.category) _⦋1⦌) (hs : s ∈ weakNerveEdges A) :
     (nerveMap F.functor).app (Opposite.op ⦋1⦌) s ∈ weakNerveEdges B := by
@@ -37,13 +37,13 @@ lemma relativeNerve_mapsWeak {A B : RelativeCategory.{w}}
 /-- 概要：同じ弱自然変換の nerve ホモトピーの全成分は元の弱辺。
 方針：同じ元の成分辺の厳密な回収を使う。
 規約：元のホモトピーの向きを変えない。使われ方：単位・余単位の源移送。 -/
-lemma relativeNerve_homotopy_component_weak {A : RelativeCategory.{w}}
+lemma relativeNerve_homotopy_component_weak {A : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{w}}
     {F G : A.category ⥤ A.category} (η : F ⟶ G)
     (hη : ∀ X, A.weakEquivalences (η.app X)) (x : (nerve A.category) _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (F1B.nerveNatTransHomotopy η) x).edge ∈ weakNerveEdges A := by
-  obtain ⟨X, rfl⟩ : ∃ X : A.category, x = nerveVertex X :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy η) x).edge ∈ weakNerveEdges A := by
+  obtain ⟨X, rfl⟩ : ∃ X : A.category, x = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X :=
     ⟨x.obj 0, ComposableArrows.ext₀ rfl⟩
-  rw [F1B.nerveNatTransHomotopy_component]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_component]
   exact ⟨F.obj X, G.obj X, η.app X, hη X, rfl⟩
 
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
@@ -56,24 +56,24 @@ include r in
 規約：同じ元の nerve 源写像を最後に回収する。
 使われ方：cofibrant 源の指定局所化と全 C への移送。 -/
 lemma modelCofibrantHammock_isLocalization :
-    IsLocalization (hammockLocalizationNerveMap (modelCofibrantRelativeCategory C))
-      (weakNerveEdges (modelCofibrantRelativeCategory C)) := by
-  have ht := isLocalization_of_weakDeformation_reverse
-    (nerveMap (modelBifibrantToCofibrantRelative (C := C)).functor)
-    (nerveMap (modelCofibrantToBifibrantRelative r).functor)
-    (hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
-    (weakNerveEdges (modelBifibrantRelativeCategory C))
-    (weakNerveEdges (modelCofibrantRelativeCategory C))
-    (relativeNerve_mapsWeak (modelBifibrantToCofibrantRelative (C := C)))
-    (relativeNerve_mapsWeak (modelCofibrantToBifibrantRelative r))
-    (F1B.nerveNatTransHomotopy (modelCofibrantBifibrantUnit r))
-    (F1B.nerveNatTransHomotopy (modelBifibrantCofibrantUnit r))
-    (relativeNerve_homotopy_component_weak _ (modelCofibrantBifibrantUnit_weak r))
-    (relativeNerve_homotopy_component_weak _ (modelBifibrantCofibrantUnit_weak r))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C)) := by
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation_reverse
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C)).functor)
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r).functor)
+    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantToCofibrantRelative (C := C)))
+    (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToBifibrantRelative r))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantBifibrantUnit r))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantCofibrantUnit r))
+    (relativeNerve_homotopy_component_weak _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantBifibrantUnit_weak r))
+    (relativeNerve_homotopy_component_weak _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantCofibrantUnit_weak r))
     (modelBifibrantHammock_isLocalization r)
   rw [← relativeKanHammockNerve_source] at ht
-  exact (Hammock.isLocalization_comp_equivalence_iff _ _
-    (hammockLocalizationNerveMap_inverts (modelCofibrantRelativeCategory C))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_comp_equivalence_iff _ _
+    (hammockLocalizationNerveMap_inverts (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
     (modelCofibrantToBifibrant_nerve_isQCatEquivalence r).choose).mp ht
 
 include r in
@@ -82,24 +82,24 @@ include r in
 規約：全 C と元の全射を保持し、source の cofibrancy を要求しない。
 使われ方：指定全圏局所化の pinched Hom と実 frame の全比較。 -/
 lemma modelHammock_isLocalization :
-    IsLocalization (hammockLocalizationNerveMap (modelRelativeCategory C))
-      (weakNerveEdges (modelRelativeCategory C)) := by
-  have ht := isLocalization_of_weakDeformation
-    (nerveMap (modelCofibrantToModelRelative C).functor)
-    (nerveMap (modelToCofibrantRelative C).functor)
-    (hammockLocalizationNerveMap (modelCofibrantRelativeCategory C))
-    (weakNerveEdges (modelCofibrantRelativeCategory C))
-    (weakNerveEdges (modelRelativeCategory C))
-    (relativeNerve_mapsWeak (modelCofibrantToModelRelative C))
-    (relativeNerve_mapsWeak (modelToCofibrantRelative C))
-    (F1B.nerveNatTransHomotopy (modelCofibrantCounit C))
-    (F1B.nerveNatTransHomotopy (cofibrantModelSmallCounit C))
-    (relativeNerve_homotopy_component_weak _ (modelCofibrantCounit_weak C))
-    (relativeNerve_homotopy_component_weak _ (cofibrantModelSmallCounit_weak C))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) := by
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_weakDeformation
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C).functor)
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C).functor)
+    (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative C))
+    (relativeNerve_mapsWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelToCofibrantRelative C))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit C))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit C))
+    (relativeNerve_homotopy_component_weak _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantCounit_weak C))
+    (relativeNerve_homotopy_component_weak _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.cofibrantModelSmallCounit_weak C))
     (modelCofibrantHammock_isLocalization r)
   rw [← relativeKanHammockNerve_source] at ht
-  exact (Hammock.isLocalization_comp_equivalence_iff _ _
-    (hammockLocalizationNerveMap_inverts (modelRelativeCategory C))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_comp_equivalence_iff _ _
+    (hammockLocalizationNerveMap_inverts (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
     (modelToCofibrant_nerve_isQCatEquivalence C).choose).mp ht
 
 end SerrePositivity.EInfinity.SimplicialLocalization

@@ -28,7 +28,7 @@ private lemma differential_difference_postrestrict {V : Type*} [Category V] [Pre
     ← Category.assoc f₀ dY, hf, Category.assoc dX f₁, h₁, ← Category.assoc dX U₁]
 
 /-- 元の任意座標の零面への微分可換性の差は、同じ削除列の差の始点移送。 -/
-lemma simplexHADegreeDefect_zero_face_all {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeDefect_zero_face_all {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (q : Fin (m + 1)) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A false m q).hom.f k ≫ simplexHADegreeDefect A s (m + 1) v b hb k =
@@ -54,7 +54,7 @@ lemma simplexHADegreeDefect_zero_face_all {n : ℕ} (s : DGNerve.SimplexData A D
     (simplexHADegreeLift_zero_face_all_restriction A s m q v b hb (k + 1))
 
 /-- 元の任意位置に零端点を挿入した生成元の差は、同じ前段生成元の差の始点移送。 -/
-lemma simplexHADegreeDefect_insert_zero {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeDefect_insert_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (q : Fin (m + 1)) (i : SerreCubeGeneratorIndex m)
     (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ) (hi : serreCubeGeneratorDegree m i = k) :

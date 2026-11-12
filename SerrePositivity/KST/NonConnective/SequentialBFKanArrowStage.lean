@@ -86,7 +86,7 @@ def sequentialBFKanArrowNext : SequentialBFKanArrowStage f (n + 1) where
 規約：標的 Kan 列の Ω 条件を要求しない。
 使われ方：K-B-S2 の逐次 BF 相対分解。 -/
 def sequentialBFKanArrowNextSigma :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension s.level.space ⟶ (sequentialBFKanArrowNext f n s).level.space :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension s.level.space ⟶ (sequentialBFKanArrowNext f n s).level.space :=
   pushout.inl _ _ ≫ PointedFactorization.left (sequentialBFKanArrowNextMap f n s)
 
 /-- 概要：次の構造射は、元の BF 源の単射構造射を押し出した単射である。

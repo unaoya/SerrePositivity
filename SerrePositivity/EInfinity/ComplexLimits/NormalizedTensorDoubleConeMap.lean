@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -30,8 +30,8 @@ lemma normalizedTensorDoubleConeData_pullback_map {n m : ℕ}
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).obj := by
     funext i
     exact normalizedTensorDoubleConeSimplex_obj_reindex A X Y c θ i
-  apply SimplexData.ext ho
-  apply HomFamily.heq_of_pointwise ho
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext ho
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomFamily.heq_of_pointwise ho
   intro I a b k hI ha hb hk
   by_cases hbl : b = Fin.last (m + 2)
   · by_cases hi : Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))
@@ -39,17 +39,17 @@ lemma normalizedTensorDoubleConeData_pullback_map {n m : ℕ}
         A X Y c θ I a b k hI ha hb hk hbl hi
     · exact normalizedTensorDoubleConeSimplex_pullback_hom_terminal_not_inj
         A X Y c θ I a b k hI ha hb hk hbl hi
-  · have hfront := congrArg Simplex.toSimplexData
+  · have hfront := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toSimplexData
       (normalizedTensorDoubleConeSimplex_pullback_front A X Y c θ)
-    simp only [Simplex.pullback_data] at hfront
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data] at hfront
     exact complexSimplexData_hom_heq_of_front_eq A _ _ hfront I a b k hI ha hb hk hbl
 
 lemma normalizedTensorDoubleConeSimplex_pullback_map {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
     (normalizedTensorDoubleConeSimplex A X Y c).pullback (doubleConeOrderHom θ) =
       normalizedTensorDoubleConeSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) := by
-  apply Simplex.ext
-  rw [Simplex.pullback_data]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]
   exact normalizedTensorDoubleConeData_pullback_map A X Y c θ
 
 end SerrePositivity.EInfinity.ComplexLimits

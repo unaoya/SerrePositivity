@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalHomUnitVertices
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalHomUnitComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の区間 Hom 比較の指定成分の値を、元の単位による前合成後の同じ値へ戻す。

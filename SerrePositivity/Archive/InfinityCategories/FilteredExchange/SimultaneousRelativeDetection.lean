@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.AnchoredFiniteFactorization
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.AnchoredFiniteFactorization
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.GluedPullbackTransport
 
 /-!

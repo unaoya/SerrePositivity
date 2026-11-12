@@ -48,7 +48,7 @@ theorem Hom.fiber_sigma_zero {X Y : KanSequence.{u}} (p : Hom X Y) (n : ℕ) :
 規約：この射の単射性は要求しない。
 使われ方：BF 1978 §2、HA §1.4.2。置換前の fiber 列。 -/
 def Hom.fiberSigma {X Y : KanSequence.{u}} (p : Hom X Y) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (pointedFiber (p.app n)) ⟶ pointedFiber (p.app (n + 1)) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (pointedFiber (p.app n)) ⟶ pointedFiber (p.app (n + 1)) :=
   pointedFiberLiftOfZero (p.app (n + 1))
     (PointedSimplicialSet.circle.{u} ◁ pointedFiberι (p.app n) ≫ X.sigma n) (p.fiber_sigma_zero n)
 

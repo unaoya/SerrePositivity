@@ -27,20 +27,20 @@ local instance kPrismSpecifiedSpanFamilies_native_kan {I : Type u} [SmallCategor
     KanComplex (SimplicialCategory.sHom
       (PointedSimplicialSet.circle.{u} ⊗ ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj y)).level (r + 1)).space) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の指定外側三角形と、二円柱の指定成分・指定適合辺の三面の厳密な回収。 -/
 def kKanOriginalPrismSpecifiedOuterTriangleData {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     {t : (kKanOriginalSuspensionMappingTarget r F x y) _⦋2⦌ //
       (kKanOriginalSuspensionMappingTarget r F x y).map (SimplexCategory.δ (2 : Fin 3)).op t =
-        (simplicialHomotopyVertexEdge (kKanOriginalPrismUpperCompositeContraction r F f)
-          (nerveVertex (coherentArrowStringDirect f))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanOriginalPrismUpperCompositeContraction r F f)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))).edge ∧
       (kKanOriginalSuspensionMappingTarget r F x y).map (SimplexCategory.δ (0 : Fin 3)).op t =
         (kKanSuspensionCompatibilityEdge r F f).edge ∧
       (kKanOriginalSuspensionMappingTarget r F x y).map (SimplexCategory.δ (1 : Fin 3)).op t =
-        (simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
-          (nerveVertex (coherentArrowStringDirect f))).edge} := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (kKanOriginalPrismLowerCompositeContraction r F f)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))).edge} := by
   let T := kanMappingSpanOuterTriangle (kKanSuspensionCompatibilityComposition r F f)
   exact ⟨T.simplex,
     T.d₂.trans (kKanOriginalPrismUpperCompositeContraction_boundary_leg r F f).symm,
@@ -56,12 +56,12 @@ lemma kKanOriginalPrismSpecifiedOuterTriangleData_simplex {I : Type u} [SmallCat
 def kKanOriginalPrismSpecifiedCompatibilityFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     SSet.Homotopy
-      (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (PointedMapping.familyVertex
+      (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (PointedMapping.familyVertex
         ((kKanSequence (F.obj x)).sigma r ≫ kKanSequenceLevelMap (F.map f) (r + 1))))
       (SSet.const (PointedMapping.familyVertex
         (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r ≫
           (kKanSequence (F.obj y)).sigma r))) :=
-  specifiedPointSpanComposite (nerveVertex (coherentArrowStringDirect f))
+  specifiedPointSpanComposite (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))
     (kKanOriginalPrismUpperCompositeContraction r F f)
     (kKanOriginalPrismLowerCompositeContraction r F f) (kKanSuspensionCompatibilityEdge r F f)
     (kKanOriginalPrismSpecifiedOuterTriangleData r F f).val
@@ -72,7 +72,7 @@ def kKanOriginalPrismSpecifiedCompatibilityFamily {I : Type u} [SmallCategory I]
 /-- 指定頂点の比較円柱は、元の指定した適合辺の同じ実区間を厳密に回収する。 -/
 lemma kKanOriginalPrismSpecifiedCompatibilityFamily_boundary {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
       (kKanOriginalPrismSpecifiedCompatibilityFamily r F f).h =
         snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
           SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge :=
@@ -81,9 +81,9 @@ lemma kKanOriginalPrismSpecifiedCompatibilityFamily_boundary {I : Type u} [Small
 /-- 同じ選択で元の上下の二円柱を全パラメータで保持する実二単体族。 -/
 def kKanOriginalPrismSpecifiedTriangleFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ (Δ[2] : SSet.{u}) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ (Δ[2] : SSet.{u}) ⟶
       kKanOriginalSuspensionMappingTarget r F x y :=
-  specifiedPointSpanTriangleFamily (nerveVertex (coherentArrowStringDirect f))
+  specifiedPointSpanTriangleFamily (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentArrowStringDirect f))
     (kKanOriginalPrismUpperCompositeContraction r F f)
     (kKanOriginalPrismLowerCompositeContraction r F f) (kKanSuspensionCompatibilityEdge r F f)
     (kKanOriginalPrismSpecifiedOuterTriangleData r F f).val
@@ -94,7 +94,7 @@ def kKanOriginalPrismSpecifiedTriangleFamily {I : Type u} [SmallCategory I]
 /-- 指定頂点では元の適合辺だけでなく、同じ元の外側三角形全体を回収する。 -/
 lemma kKanOriginalPrismSpecifiedTriangleFamily_boundary {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nervePoint (coherentArrowStringDirect f) ▷ (Δ[2] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[2] : SSet.{u})) ≫
       kKanOriginalPrismSpecifiedTriangleFamily r F f =
         snd (Δ[0] : SSet.{u}) (Δ[2] : SSet.{u}) ≫ SSet.yonedaEquiv.symm
           (kanMappingSpanOuterTriangle (kKanSuspensionCompatibilityComposition r F f)).simplex :=
@@ -103,7 +103,7 @@ lemma kKanOriginalPrismSpecifiedTriangleFamily_boundary {I : Type u} [SmallCateg
 /-- 第一面は元の上側の実円柱そのもの。 -/
 lemma kKanOriginalPrismSpecifiedTriangleFamily_upper {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ◁ stdSimplex.δ 2) ≫
+    (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ◁ stdSimplex.δ 2) ≫
       kKanOriginalPrismSpecifiedTriangleFamily r F f =
         (kKanOriginalPrismUpperCompositeContraction r F f).h :=
   specifiedPointSpanTriangleFamily_source _ _ _ _ _ _ _ _
@@ -111,7 +111,7 @@ lemma kKanOriginalPrismSpecifiedTriangleFamily_upper {I : Type u} [SmallCategory
 /-- 第二面は元の下側の実円柱そのもの。 -/
 lemma kKanOriginalPrismSpecifiedTriangleFamily_lower {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ◁ stdSimplex.δ 1) ≫
+    (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ◁ stdSimplex.δ 1) ≫
       kKanOriginalPrismSpecifiedTriangleFamily r F f =
         (kKanOriginalPrismLowerCompositeContraction r F f).h :=
   specifiedPointSpanTriangleFamily_target _ _ _ _ _ _ _ _
@@ -119,7 +119,7 @@ lemma kKanOriginalPrismSpecifiedTriangleFamily_lower {I : Type u} [SmallCategory
 /-- 残りの面は同じ選択の全適合円柱そのもの。 -/
 lemma kKanOriginalPrismSpecifiedTriangleFamily_compatibility {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ◁ stdSimplex.δ 0) ≫
+    (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ◁ stdSimplex.δ 0) ≫
       kKanOriginalPrismSpecifiedTriangleFamily r F f =
         (kKanOriginalPrismSpecifiedCompatibilityFamily r F f).h :=
   specifiedPointSpanTriangleFamily_composite _ _ _ _ _ _ _ _

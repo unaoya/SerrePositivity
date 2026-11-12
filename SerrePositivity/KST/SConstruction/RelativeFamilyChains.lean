@@ -49,8 +49,8 @@ def relativeFamilyChainMap {T U E B : SSet.{u}} {j : T ⟶ U} {f g : U ⟶ E}
   induction c with
   | nil => exact .nil _
   | cons H hr tail ih =>
-    refine .cons (functorHomotopyPostcomp H q) ?_ ih
-    simpa only [functorHomotopyPostcomp, Category.assoc] using congrArg (· ≫ q) hr
+    refine .cons (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H q) ?_ ih
+    simpa only [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp, Category.assoc] using congrArg (· ≫ q) hr
 
 /-- 境界固定の有限列の両端は、元の指定境界へ厳密に一致する。 -/
 lemma relativeFamilyChain_boundary {T U E : SSet.{u}} {j : T ⟶ U} {f g : U ⟶ E}

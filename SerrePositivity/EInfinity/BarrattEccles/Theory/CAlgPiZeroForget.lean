@@ -43,7 +43,7 @@ variable (A : Type u) [CommRing A]
 
 /-- The underlying module of the strict H⁰ algebra is the ordinary H⁰ module. -/
 def strictPiZero_forgetIso :
-    strictPiZero A ⋙ discreteAlgebraModule A ≅
+    strictPiZero A ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A ≅
       Operad.Algebra.forget (operad A) ⋙
         HomologicalComplex.homologyFunctor (ModuleCat A) (.up ℤ) 0 := by
   let e := commAlgCatEquivUnder (CommRingCat.of A)
@@ -62,7 +62,7 @@ def strictPiZero_forgetIso :
 
 /-- π₀ の加群は忘却した導来複体の H⁰ と自然同型。 -/
 def barrattEcclesPi0_forget :
-    barrattEcclesPi0 A ⋙ discreteAlgebraModule A ≅
+    barrattEcclesPi0 A ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A ≅
       hoMap (cAlgForgetDerived A) ⋙ cohomologyOnHo A 0 := by
   let L := ordinaryAlgebraHoSource A
   let W := ordinaryAlgebraWeak A

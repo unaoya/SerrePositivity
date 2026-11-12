@@ -27,7 +27,7 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：k はスペクトルの段、n は実際の次数。
 使われ方：BF 1978 §2、HA §1.4.2。整数次数の段による表示。 -/
 abbrev levelHomotopy (X : OmegaSpectrum.{u}) (k n : ℕ) : Type u :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (X.level k).space.right n (X.level k).space.basepoint
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (X.level k).space.right n (X.level k).space.basepoint
 
 /-- 概要：整数次数 j の標準の計算段。
 方針：|j|+1 を選ぶことで計算する次数を正にする。

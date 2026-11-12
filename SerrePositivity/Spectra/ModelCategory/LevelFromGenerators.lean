@@ -22,7 +22,7 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [MonoidalClosed C] [HasColimitsOfSize.{0, 0} C] [HasLimitsOfSize.{0, 0} C]
   [HasColimitsOfSize.{w, w} C] [ModelCategory C] (K : C)
   [LocallySmall.{w} (GeneralSymmetricSpectrum C K)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
   (hI : ∀ {A B : C} (i : A ⟶ B), I i → IsCardinalPresentable A κ)
   (hJ : ∀ {A B : C} (i : A ⟶ B), J i → IsCardinalPresentable A κ)
@@ -49,7 +49,7 @@ lemma levelModelCategoryOfGenerators_fibrations :
       levelProperty K (fibrations C) := rfl
 lemma levelModelCategoryOfGenerators_generated :
     let := levelModelCategoryOfGenerators K I J κ hI hJ heval
-    CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) := by
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) := by
   have : I.IsSmall.{w} := isSmall_of_smallObjectArgument I
   have : J.IsSmall.{w} := isSmall_of_smallObjectArgument J
   have := levelGenerators_smallObjectArgument K I κ hI

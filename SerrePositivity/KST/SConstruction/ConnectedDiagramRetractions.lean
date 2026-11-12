@@ -43,15 +43,15 @@ lemma naturality_homotopyPullback_retraction_of_section
     [SSet.IsConnected (G.obj e)] (b : (G.obj d) _⦋0⦌)
     (hsec : IsHomotopyPullback (CommSq.mk (α.naturality s))) :
     IsHomotopyPullback (CommSq.mk (α.naturality r)) := by
-  let R := Functor.whiskerRight α exInfinity
-  let : SSet.IsConnected ((G ⋙ exInfinity).obj e) :=
-    isConnected_of_anodyne (A := G.obj e) (B := exInfinity.obj (G.obj e))
-      (exInfinityUnit.app (G.obj e)) (exInfinityUnit_anodyne _)
-  let : KanComplex ((G ⋙ exInfinity).obj e) := exInfinity_kanComplex (G.obj e)
+  let R := Functor.whiskerRight α _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+  let : SSet.IsConnected ((G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity).obj e) :=
+    isConnected_of_anodyne (A := G.obj e) (B := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (G.obj e))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (G.obj e)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _)
+  let : KanComplex ((G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity).obj e) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex (G.obj e)
   have hs : IsHomotopyPullback (CommSq.mk (R.naturality s)) :=
     (isHomotopyPullback_exInfinity_iff (CommSq.mk (α.naturality s))).mpr hsec
   apply (isHomotopyPullback_exInfinity_iff (CommSq.mk (α.naturality r))).mp
   exact naturality_homotopyPullback_retraction_of_section_of_kan R s r hsr
-    ((exInfinityUnit.app (G.obj d)).app _ b) hs
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (G.obj d)).app _ b) hs
 
 end SerrePositivity.KST.SConstruction

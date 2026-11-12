@@ -30,7 +30,7 @@ local notation "M" => dgHomGluingBimodule R C C C (I) (I)
 方針：同じ厳密 gluing の一般結果へ特殊化する。
 規約：元関手を変更しない。使われ方：元比較族上の零第三成分の証拠。 -/
 lemma dgIdentityHomGluingFunctor_comparison_zero (x y : P) :
-    dgGluingHomComparison R C C (M) ((H).obj x) ((H).obj y)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComparison R C C (M) ((H).obj x) ((H).obj y)
       (homObject R P x y) ((H).map x y) = 0 := by
   unfold dgIdentityHomGluingFunctor dgHomGluingFunctor
   exact dgStrictGluingFunctor_comparison_zero R C C (M) F G _ _ x y
@@ -43,10 +43,10 @@ lemma dgIdentityHomGluingFunctor_conePrimitive_zero (x y : P) :
       (dgHomGluingConePrimitive R C C C (I) (I) ((H).obj x) ((H).obj y))
       (zero_add (-1)) = 0 := by
   change (Cochain.ofHom ((H).map x y)).comp
-    ((dgGluingHomPrimitive R C C (M) ((H).obj x) ((H).obj y)).comp
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C C (M) ((H).obj x) ((H).obj y)).comp
       (Cochain.ofHom ((dgYoneda R C).map _ _)) (add_zero (-1))) (zero_add (-1)) = 0
   rw [← Cochain.comp_assoc_of_first_is_zero_cochain]
-  change (dgGluingHomComparison R C C (M) ((H).obj x) ((H).obj y)
+  change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComparison R C C (M) ((H).obj x) ((H).obj y)
     (homObject R P x y) ((H).map x y)).comp _ _ = 0
   rw [dgIdentityHomGluingFunctor_comparison_zero, Cochain.zero_comp]
 /-- 概要：元厳密比較の像の各斉次射においても第三 cone 成分は零。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionWeak
-public import SerrePositivity.InfinityCategories.Derived.DGClosedRoofRefinements
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedRoofRefinements
 
 /-!
 # 元の通常複体圏から既存 D(R) への実写像
@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded DGNerve SSet
-open DGNerve.HomotopyComparison
+open CategoryTheory DifferentialGraded SSet
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -32,27 +32,27 @@ lemma complexToClosed_map {X Y : Complex A} (f : X ⟶ Y) :
   change (complexClosedHomEquiv A X Y) ((complexClosedHomEquiv A X Y).symm f) = f
   exact Equiv.apply_symm_apply _ _
 
-def complexOrdinaryDerivedSource : nerve (Complex A) ⟶ derivedInfinityCategory A :=
-  nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A) ≫
+def complexOrdinaryDerivedSource : nerve (Complex A) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+  nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) ≫
     complexSemifreeResolutionInfinity A
 
 lemma complexOrdinaryDerivedSource_map_weak {X Y : Complex A} (f : X ⟶ Y)
     (hf : QuasiIso f) :
-    IsInvertibleEdge ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated := by
   let g := (complexToClosed A).map f
-  have hg : QuasiIso ((closedToComplex A).map (edgeClosed (dgClosedEdge A (Complex A) g))) := by
-    rw [dgClosedEdge_closed, complexToClosed_map]
+  have hg : QuasiIso ((closedToComplex A).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) g))) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_closed, complexToClosed_map]
     exact hf
   have h := complexSemifreeResolutionInfinity_invertsQuasiIso A
-    (dgClosedEdge A (Complex A) g) hg
-  apply (isInvertibleEdge_congr (e := (dgClosedEdge A (Complex A) g).map
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) g) hg
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) g).map
     ((truncation 2).map (complexSemifreeResolutionInfinity A)))
     (f := ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated) ?_).mp h
   change (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋1⦌)
-      (dgClosedEdge A (Complex A) g).edge =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) g).edge =
     (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)
   simp only [complexOrdinaryDerivedSource, NatTrans.comp_app_apply, nerveMap_app_mk₁,
-    closedNerveInclusion_mk₁]
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_mk₁]
   rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

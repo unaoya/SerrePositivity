@@ -22,36 +22,36 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 同じ二方向図式の厳密な最終角と、元の恒等 Kan 作用との全関手比較。 -/
 def d3DoubleEndpointTargetIso :
-    FunctorIso (d3DoubleEndpointSquare.{u} ≫
-      evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3DoubleEndpointSquare.{u} ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1),
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1)))
       (𝟙 PointedKanInfinity) := by
   rw [d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_corner]
-  change FunctorIso (coherentNerveMap
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
     (d3PointedKanIhom ((𝟙_ PointedSimplicialSet.{u}) ⊗ 𝟙_ PointedSimplicialSet.{u}))) _
   exact d3PointedKanPreFunctorIso (λ_ (𝟙_ PointedSimplicialSet.{u})).inv ≪≫
     d3PointedKanUnitFunctorIso
 
 /-- 第一方向の始点と第二方向の終点で、同じ元の通常 loop 作用を回収する。 -/
 def d3DoubleEndpointLeftLoopIso :
-    FunctorIso (d3DoubleEndpointSquare.{u} ≫
-      evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3DoubleEndpointSquare.{u} ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0),
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1)))
       pointedKanLoopInfinity := by
   rw [d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_corner]
-  change FunctorIso (coherentNerveMap
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
     (d3PointedKanIhom (endpointCircle.{u} ⊗ 𝟙_ PointedSimplicialSet.{u}))) _
   exact d3PointedKanPreFunctorIso (ρ_ endpointCircle.{u}).inv ≪≫
     d3PointedKanEndpointLoopIso.symm
 
 /-- 第二方向の始点と第一方向の終点も、同じ元の通常 loop 作用へ全 Hom 上で比較する。 -/
 def d3DoubleEndpointRightLoopIso :
-    FunctorIso (d3DoubleEndpointSquare.{u} ≫
-      evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3DoubleEndpointSquare.{u} ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1),
         (stdSimplex.obj₀Equiv.symm (0 : Fin 2), stdSimplex.obj₀Equiv.symm 0)))
       pointedKanLoopInfinity := by
   rw [d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_corner]
-  change FunctorIso (coherentNerveMap
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap
     (d3PointedKanIhom ((𝟙_ PointedSimplicialSet.{u}) ⊗ endpointCircle.{u}))) _
   exact d3PointedKanPreFunctorIso (λ_ endpointCircle.{u}).inv ≪≫
     d3PointedKanEndpointLoopIso.symm

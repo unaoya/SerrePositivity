@@ -21,9 +21,9 @@ namespace LoopExchangePaths
 variable {P Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Y' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Y Y')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Y Y')
   (w : P ⟶ PointedObject.basedHom Z Z')
   (hc : a ≫ PointedMapping.parametricPost PointedSimplicialSet.circle.{u} w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')
@@ -42,7 +42,7 @@ def cancellationFirstParametricNaturalitySquare :
     rw [← Category.assoc, (ordinaryParametricExchangeNaturalitySquare a ha a' ha' v w hc).h₁]
     exact (((exchange a' ha').basedIhomMap P).pre_basedPost_path
       (doubleParametricPost v) (PointedObject.basedHomMap P (reversal Y'))).symm.trans
-      (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doubleParametricPost v) _).right)
+      (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doubleParametricPost v) _).right)
         ((exchange a' ha').basedIhomMap_post_path P (reversal Y')).symm)
   rel := by ext m ⟨⟨s, hs⟩, t⟩; exact hs.elim
 

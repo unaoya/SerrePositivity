@@ -22,10 +22,10 @@ inductive CubeFaceDeletionExpression : ℕ → ℕ → Type
 
 /-- 元の面・削除の式の全頂点での評価。 -/
 def cubeFaceDeletionExpressionVertex {n : ℕ} : {m : ℕ} → CubeFaceDeletionExpression n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
-  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
+  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
+  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の面・削除の式を削除・面の二段標準表示へ移す。 -/
@@ -45,12 +45,12 @@ lemma cubeFaceDeletionExpressionNormal_vertex {n m : ℕ} (p : CubeFaceDeletionE
   | point p b i ih =>
     change cubeDeletionFaceNormalVertex
       (cubeDeletionFaceNormalPoint (cubeFaceDeletionExpressionNormal p) b i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
     rw [cubeDeletionFaceNormalPoint_vertex, ih]
   | erase p i ih =>
     change cubeDeletionFaceNormalVertex
       (cubeDeletionFaceNormalDelete (cubeFaceDeletionExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
     rw [cubeDeletionFaceNormalDelete_vertex, ih]
 
 open SerrePositivity.DifferentialGraded

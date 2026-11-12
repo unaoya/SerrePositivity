@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofTarget
-public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
-public import SerrePositivity.InfinityCategories.F1B.Roof.RoofTargetFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.VertexFiberNervePullback
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Roof.RoofTargetFunctor
 
 /-!
 # 元の実屋根の指定次数 fiber と同じ pinched Hom
@@ -25,22 +25,22 @@ variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E)
 
 lemma roofTargetFrameVertex (n : I) :
-    (nerveMap A ≫ q).app (op ⦋0⦌) (nerveVertex n) = q.app (op ⦋0⦌) (nerveVertex (A.obj n)) := by
+    (nerveMap A ≫ q).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) = q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj n)) := by
   rw [NatTrans.comp_app_apply]
   exact congrArg (q.app (op ⦋0⦌)) (nerveMap_app_mk₀ A n)
 
 def roofTargetFiberPinchedIso (n : I) :
-    vertexFiber (roofTargetProjection A Y q) (nerveVertex n) ≅
-      pinchedHom (q.app (op ⦋0⦌) (nerveVertex (A.obj n)))
-        (q.app (op ⦋0⦌) (nerveVertex Y)) :=
-  SerrePositivity.InfinityCategories.vertexFiberPullbackIso
-    (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
-    (nerveMap A ≫ q) (nerveVertex n) ≪≫
-  eqToIso (congrArg (vertexFiber (sliceOverProjection
-    (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))) (roofTargetFrameVertex A q n)) ≪≫
-  eqToIso (congrArg (fun p => vertexFiber (sliceOverProjection p)
-    (q.app (op ⦋0⦌) (nerveVertex (A.obj n)))) (roofTargetPoint q (nerveVertex Y))) ≪≫
-  (pinchedHomSliceFiberIso (q.app (op ⦋0⦌) (nerveVertex (A.obj n)))
-    (q.app (op ⦋0⦌) (nerveVertex Y))).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (roofTargetProjection A Y q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj n)))
+        (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.vertexFiberPullbackIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))
+    (nerveMap A ≫ q) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex n) ≪≫
+  eqToIso (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))) (roofTargetFrameVertex A q n)) ≪≫
+  eqToIso (congrArg (fun p => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection p)
+    (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj n)))) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Roof.roofTargetPoint q (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) ≪≫
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomSliceFiberIso (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj n)))
+    (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))).symm
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

@@ -26,7 +26,7 @@ variable {E : SSet.{u}} {x y z : E _⦋0⦌}
 
 /-- 指定した元の全四面体比較の零面を、そのまま元の両残面の比較として回収する。 -/
 def triangleLeftCancellationOutputTriangleComparison :=
-  familyHomotopyEndpointTransport (functorHomotopyPrecomp H (stdSimplex.δ 0))
+  familyHomotopyEndpointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (stdSimplex.δ 0))
     (triangleLeftCancellationTriangle_face T U v)
     (triangleLeftCancellationTriangle_face T U w).symm
 
@@ -81,7 +81,7 @@ lemma triangleLeftCancellationOutputComparison_relative :
 
 /-- 指定した元の全四面体比較の零面を、同じ全出力円柱比較の上面に保持する。 -/
 lemma triangleLeftCancellationOutputComparison_upper :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationOutputComparison T U v w H hr).h =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫ H.h :=
   (triangleLeftCancellationCylinderComparisonFromTriangle_upper _ _ _ _ _ _).trans

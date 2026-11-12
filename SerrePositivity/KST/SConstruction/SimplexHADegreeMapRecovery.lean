@@ -23,7 +23,7 @@ lemma simplexHADegreeLift_map_recovery {n : ℕ}
     simplexHADegreeLift A (cubicalLambdaNativeSimplexData A F) m v b hb k =
       (simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-          F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).f k := by
+          F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).f k := by
   apply serreCube_degree_hom_ext A m k
   intro i hi
   let c := simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
@@ -31,7 +31,7 @@ lemma simplexHADegreeLift_map_recovery {n : ℕ}
   exact (simplexHADegreeLift_generator A (cubicalLambdaNativeSimplexData A F)
     m v b hb k i hi).trans
       ((congrArg (fun w => eqToHom (congrArg (fun d => (homObject A D
-        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X d) hi) w)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X d) hi) w)
           (simplexHAGeneratorValue_map_recovery A F m i v b hb)).trans
             (complexMap_degree_cast A c hi (serreCubeGenerator A m i)).symm)
 

@@ -19,28 +19,28 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorRoofEvaluation_family (X Y : Complex A) (n : SimplexCategory)
     (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (K : SSet.{u + 1})
     (t : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj (SSet.stdSimplex.obj n)) :
-    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-        (V := (truncation 2).obj (dgNerve A (Complex A)))
-        (dgClosedEdge A (Complex A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
           ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n)))) ≫
-      dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorHomPinchedSimplex A X Y n g) =
-    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-        (V := (truncation 2).obj (dgNerve A (Complex A)))
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map g))) := by
-  let a := constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-    (V := (truncation 2).obj (dgNerve A (Complex A))) (dgClosedEdge A (Complex A)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorHomPinchedSimplex A X Y n g) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (V := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map g))) := by
+  let a := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+    (V := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
       ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n))))
-  let b := dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorUniversalSimplex A X n)
-  let c := constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-    (V := (truncation 2).obj (dgNerve A (Complex A)))
-    (dgClosedEdge A (Complex A) ((complexToClosed A).map g)))
-  have he : dgPinchedFamilyHom A (Complex A)
+  let b := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (t ≫ normalizedTensorUniversalSimplex A X n)
+  let c := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+    (V := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map g)))
+  have he : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
       (t ≫ normalizedTensorHomPinchedSimplex A X Y n g) = b ≫ c := by
     rw [← normalizedTensorUniversalSimplex_evaluation, ← Category.assoc]
     exact complexPinchedPostcomposition_family A X g K _

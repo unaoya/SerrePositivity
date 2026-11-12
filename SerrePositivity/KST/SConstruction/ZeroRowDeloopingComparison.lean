@@ -22,7 +22,7 @@ lemma exists_previousStage_pathFiber_comparison (r : ℕ) (X : StableModel.{u}) 
     ∃ P : PointedKanComplex.{u},
       ∃ (a : P.space ⟶ (boundaryKanRealizationFunctor r).obj X)
         (b : P.space ⟶ iteratedPathHomotopyFiber (r + 1) X),
-        _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism b.right := by
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right ∧ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism b.right := by
   let b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌ :=
     Classical.arbitrary _
   let P := PointedKanReplacement.obj (zeroRowPointedModel (r + 1) X b)

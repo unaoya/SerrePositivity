@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.SuspensionLoop
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.SuspensionLoop
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping
 public import SerrePositivity.Spectra.PointedSimplicialSet.Monoidal
 
 /-!
@@ -29,14 +29,14 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：円自身の Kan 性は不要。
 使われ方：HA §1.4.2、BF 1978 §2。Ω 条件のホモトピー群。 -/
 instance loopSpace_kanComplex (X : PointedSimplicialSet.{u}) [KanComplex X.right] :
-    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 概要：suspension が点つき写像空間に誘導する単体的な射。
 方針：smash の結合子と内部 Hom の評価を curry する。
 規約：零次単体だけの関数ではなく、全単体次数で自然な射。
 使われ方：BF 1978 §2、HTT A.3.3。切断スペクトルの境界比較。 -/
 def suspensionHom (X Y : PointedSimplicialSet.{u}) :
-    PointedObject.basedHom X Y ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) :=
+    PointedObject.basedHom X Y ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) :=
   MonoidalClosed.curry
     ((α_ PointedSimplicialSet.circle.{u} X ((ihom X).obj Y)).hom ≫
       PointedSimplicialSet.circle.{u} ◁ ((ihom.ev X).app Y))
@@ -47,10 +47,10 @@ def suspensionHom (X Y : PointedSimplicialSet.{u}) :
 使われ方：HTT A.3.3、BF 1978 §2。合成と構造写像との整合性。 -/
 @[reassoc]
 theorem suspensionHom_evaluation (X Y : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ◁ suspensionHom X Y ≫ (ihom.ev (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y) =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ◁ suspensionHom X Y ≫ (ihom.ev (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y) =
       (α_ PointedSimplicialSet.circle.{u} X ((ihom X).obj Y)).hom ≫
         PointedSimplicialSet.circle.{u} ◁ ((ihom.ev X).app Y) := by
-  exact MonoidalClosed.uncurry_curry (A := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)
+  exact MonoidalClosed.uncurry_curry (A := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)
     ((α_ PointedSimplicialSet.circle.{u} X ((ihom X).obj Y)).hom ≫
       PointedSimplicialSet.circle.{u} ◁ ((ihom.ev X).app Y))
 
@@ -64,10 +64,10 @@ theorem suspensionHom_curry' {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
   apply MonoidalClosed.uncurry_injective
   rw [MonoidalClosed.uncurry_natural_left, suspensionHom, MonoidalClosed.uncurry_curry]
   conv_rhs => rw [MonoidalClosed.curry', MonoidalClosed.uncurry_curry]
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ◁ MonoidalClosed.curry' f ≫
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ◁ MonoidalClosed.curry' f ≫
       ((α_ PointedSimplicialSet.circle.{u} X ((ihom X).obj Y)).hom ≫
         PointedSimplicialSet.circle.{u} ◁ ((ihom.ev X).app Y)) =
-    (ρ_ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).hom ≫ PointedSimplicialSet.circle.{u} ◁ f
+    (ρ_ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).hom ≫ PointedSimplicialSet.circle.{u} ◁ f
   rw [associator_naturality_right_assoc]
   rw [← whiskerLeft_comp, MonoidalClosed.whiskerLeft_curry'_ihom_ev_app]
   rw [whiskerLeft_comp, ← Category.assoc, ← rightUnitor_tensor_hom]

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesArrows
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Zero
 
 /-! # 指定閉零二成分による実 gluing 零対象
@@ -30,7 +30,7 @@ lemma dgGluingClosedZero_isZero :
 lemma dgGluingClosedZero_representable_isZero [Small.{u} D] :
     IsZero (ForgetEnrichment.of (Complex R)
       (representable R (dgGluingRightAxisObject R C D M zc zd))) :=
-  (dgYoneda R (DGGluingObject R C D M)).onClosed.map_isZero
+  (dgYoneda R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).onClosed.map_isZero
     (dgGluingClosedZero_isZero R C D M zc hc zd hd)
 
 end SerrePositivity.KST.SConstruction

@@ -44,8 +44,8 @@ lemma fiberArrowHom_pi (j : ℤ) : SpectrumHo.bfPiMap (fiberArrowHom p q a b γ)
   rfl
 
 lemma squareHom_apex_pi (j : ℤ) : Arrow.mk ((SpectrumHo.piFunctor j).map
-    (functorHomEvaluate (squareHom p q a b γ)
-      (squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0))) =
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (squareHom p q a b γ)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) 0 0))) =
     Arrow.mk ((SpectrumHo.piComparison (homotopyFiber p) j).hom ≫
       CommGrpCat.ofHom (HomotopySquareGroups.groupMap p q a b γ j) ≫
         (SpectrumHo.piComparison (homotopyFiber q) j).inv) := by

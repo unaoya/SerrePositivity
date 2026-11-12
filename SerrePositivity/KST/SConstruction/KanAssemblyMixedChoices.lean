@@ -25,7 +25,7 @@ def kanAssemblyMixedChoices (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) : SS
 
 /-- 混合延長の選択空間も追加仮定なしに可縮 Kan。 -/
 lemma kanAssemblyMixedChoices_isContractibleKan (r : ℕ)
-    {X Y : StableModel.{u}} (f : X ⟶ Y) : IsContractibleKan (kanAssemblyMixedChoices r f) :=
+    {X Y : StableModel.{u}} (f : X ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanAssemblyMixedChoices r f) :=
   pointedExtensionSpace_isContractibleKan _ (Spectra.PointedKanReplacement.unit_anodyne _) _
 
 /-- 混合延長空間の任意のパラメーター族を既存部分を保って延ばせる。 -/

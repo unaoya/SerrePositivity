@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -28,18 +28,18 @@ def normalizedTensorTriangleObj {n : ℕ}
 
 def normalizedTensorTriangleFront {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
-    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n :=
   (normalizedTensorConeSimplex A X Y c).pullback (coneTriangleFrontIndex τ)
 
 def normalizedTensorTriangleBack {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
-    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
-  (closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
     complexToClosed A)).pullback (coneTriangleBackIndex τ)
 
 def normalizedTensorTrianglePinched {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
-    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n :=
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n :=
   ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).val.pullback
     (coneTriangleBackIndex τ)
 
@@ -76,7 +76,7 @@ lemma normalizedTensorTrianglePinched_obj_zero {n : ℕ}
   have ht : τ i ≠ 2 := by rw [hi]; decide
   change ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).val.obj
     (coneTriangleBackIndex τ i) = _
-  rw [coneTriangleBackIndex_ne_two τ i ht, DGNerve.PinchedHom.source_obj]
+  rw [coneTriangleBackIndex_ne_two τ i ht, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.source_obj]
   simp only [normalizedTensorTriangleObj, hi, ↓reduceIte]
 
 lemma normalizedTensorTrianglePinched_obj_two {n : ℕ}
@@ -86,7 +86,7 @@ lemma normalizedTensorTrianglePinched_obj_two {n : ℕ}
       normalizedTensorTriangleObj A X Y c τ i := by
   change ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).val.obj
     (coneTriangleBackIndex τ i) = _
-  rw [coneTriangleBackIndex_two τ i hi, DGNerve.PinchedHom.target_obj]
+  rw [coneTriangleBackIndex_two τ i hi, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.target_obj]
   simp [normalizedTensorTriangleObj, hi]
 
 end SerrePositivity.EInfinity.ComplexLimits

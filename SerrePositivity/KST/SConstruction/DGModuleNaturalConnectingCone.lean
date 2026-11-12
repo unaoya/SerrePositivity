@@ -12,10 +12,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeDesc
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)
@@ -25,7 +25,7 @@ local notation "k" => dgModuleNaturalConeInr R D (CF) (U) (j)
 local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "δ" => dgModuleNaturalConeConnecting R D F G η
 local notation "γ" => dgModuleNaturalConeRotationHom R D F G η
-local notation "ξ" => dgStrictNatTransComp (γ) (k)
+local notation "ξ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (γ) (k)
 
 /-- 概要：同じ全自然な元回転入力の微分は指定 connecting 合成の閉元。
 方針：元実 square 入力の微分式と全厳密合成の回収を使う。
@@ -53,7 +53,7 @@ lemma dgModuleNaturalConnectingCone_boundary (x : P) :
 方針：元実 descent を全自然な指定零化と終辺で束ねる。
 規約：元二成分・全次数を保持。使われ方：実逆回転 cone の全比較。 -/
 def dgModuleNaturalConnectingCone :
-    StrictNatTrans (dgModuleNaturalConeFunctor R D (CF) (FS) (δ)) (V) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgModuleNaturalConeFunctor R D (CF) (FS) (δ)) (V) :=
   dgModuleNaturalConeDesc R D (CF) (FS) (V) (δ) (ξ)
     (dgModuleNaturalConeRotationInput R D F G η)
     (dgModuleNaturalConnectingCone_boundary R D F G η)

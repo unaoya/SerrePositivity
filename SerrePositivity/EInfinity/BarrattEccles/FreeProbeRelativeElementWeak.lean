@@ -21,17 +21,17 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Hammock SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
 /-- 概要：元の全相対屋根自身は弱同値。
 方針：同じ全包含像と正規化自由屋根の弱同値性から包含を消去する。
 規約：元の実写像を保持。使われ方：CAlg_R の全族の弱同値性。 -/
 lemma freeProbeRelativeElementRoofMap_weak :
-    IsWeakHomotopyEquivalence (freeProbeRelativeElementRoofMap A X B) := by
-  have hi : IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeProbeRelativeElementRoofMap A X B) := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (cofibrantAlgebraHammockColimitInclusionMap A (freeProbeElementCofibrantSource A X) B) :=
-    (isPrecompositionEquivalence_of_iso (reducedColimitIso _ _ _)).isWeakHomotopyEquivalence.comp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (reducedColimitIso _ _ _)).isWeakHomotopyEquivalence.comp
       (cofibrantAlgebraHammockInclusionMap_weak A _ _)
   apply hi.cancel_right
   rw [freeProbeRelativeElementRoofMap_image]
@@ -43,12 +43,12 @@ lemma freeProbeRelativeElementRoofMap_weak :
 方針：元の屋根・Ex∞ 単位・同じ二つの Hom 比較を合成する。
 規約：元の全族と両頂点を保持。使われ方：標準単位比較の全族判定。 -/
 lemma freeProbeRelativeElementPinchedMap_weak :
-    IsWeakHomotopyEquivalence (freeProbeRelativeElementPinchedMap A X B) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
-      (colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeProbeRelativeElementPinchedMap A X B) := by
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
         (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B))) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (freeProbeRelativeElementRoofMap_weak A X B).comp
     (hu.comp ((kanHammockHomPinchedMap_weak _ _ _).comp
       (((kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).isFullyFaithful

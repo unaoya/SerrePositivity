@@ -64,9 +64,9 @@ lemma constantPathParametricNaturalitySquare_sides :
 
 variable [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (w : P ⟶ PointedObject.basedHom W W')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (w : P ⟶ PointedObject.basedHom W W')
   (hc : a ≫ PointedMapping.parametricPost PointedSimplicialSet.circle.{u} w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockReducedColimit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LengthNaturality
 
 /-!
 # 任意の可換環上の元の hammock の長さ濾過
@@ -23,40 +23,40 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
 def algebraHammockLengthStage (n : ℕ) : SSet.{u + 1} :=
-  Hammock.lengthStage (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStage (algebraHammockGraphDiagram A X Y) n
 
-def algebraHammockLengthStageInclusion (n : ℕ) (a : Hammock.Word) (ha : a.length ≤ n) :
+def algebraHammockLengthStageInclusion (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (ha : a.length ≤ n) :
     algebraHammockGraph A a X Y ⟶ algebraHammockLengthStage A X Y n :=
-  Hammock.lengthStageInclusion (algebraHammockGraphDiagram A X Y) n a ha
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion (algebraHammockGraphDiagram A X Y) n a ha
 
 def algebraHammockLengthTransition {n m : ℕ} (h : n ≤ m) :
     algebraHammockLengthStage A X Y n ⟶ algebraHammockLengthStage A X Y m :=
-  Hammock.lengthStageTransition (algebraHammockGraphDiagram A X Y) h
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageTransition (algebraHammockGraphDiagram A X Y) h
 
 def algebraHammockLengthDiagram : ℕ ⥤ SSet.{u + 1} :=
-  Hammock.lengthDiagram (algebraHammockGraphDiagram A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthDiagram (algebraHammockGraphDiagram A X Y)
 
 def algebraHammockLengthStageToColimit (n : ℕ) :
     algebraHammockLengthStage A X Y n ⟶ algebraHammockColimitGraph A X Y :=
-  Hammock.lengthStageToColimit (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageToColimit (algebraHammockGraphDiagram A X Y) n
 
-lemma algebraHammockLengthStageInclusion_toColimit (n : ℕ) (a : Hammock.Word)
+lemma algebraHammockLengthStageInclusion_toColimit (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (ha : a.length ≤ n) :
     algebraHammockLengthStageInclusion A X Y n a ha ≫
         algebraHammockLengthStageToColimit A X Y n = algebraHammockGraphInclusion A a X Y :=
-  Hammock.lengthStageInclusion_toColimit (algebraHammockGraphDiagram A X Y) n a ha
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion_toColimit (algebraHammockGraphDiagram A X Y) n a ha
 
 /-- 元の長さ制限段階の反復余極限と、同じ全語の余極限の同型。 -/
 def algebraHammockLengthColimitIso :
     colimit (algebraHammockLengthDiagram A X Y) ≅ algebraHammockColimitGraph A X Y :=
-  Hammock.lengthColimitIso (algebraHammockGraphDiagram A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthColimitIso (algebraHammockGraphDiagram A X Y)
 
 lemma algebraHammockLengthColimitIso_fac (n : ℕ) :
     colimit.ι (algebraHammockLengthDiagram A X Y) n ≫
         (algebraHammockLengthColimitIso A X Y).hom = algebraHammockLengthStageToColimit A X Y n :=
-  Hammock.lengthColimitIso_fac (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthColimitIso_fac (algebraHammockGraphDiagram A X Y) n
 
-lemma algebraHammockLengthColimitIso_word_fac (n : ℕ) (a : Hammock.Word) (ha : a.length ≤ n) :
+lemma algebraHammockLengthColimitIso_word_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (ha : a.length ≤ n) :
     algebraHammockLengthStageInclusion A X Y n a ha ≫
         colimit.ι (algebraHammockLengthDiagram A X Y) n ≫
           (algebraHammockLengthColimitIso A X Y).hom = algebraHammockGraphInclusion A a X Y := by
@@ -67,7 +67,7 @@ def algebraHammockLengthReducedIso :
     colimit (algebraHammockLengthDiagram A X Y) ≅ algebraHammockReducedSimplicialSet A X Y :=
   (algebraHammockLengthColimitIso A X Y).trans (algebraHammockReducedColimitIso A X Y)
 
-lemma algebraHammockLengthReducedIso_word_fac (n : ℕ) (a : Hammock.Word) (ha : a.length ≤ n) :
+lemma algebraHammockLengthReducedIso_word_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (ha : a.length ≤ n) :
     algebraHammockLengthStageInclusion A X Y n a ha ≫
         colimit.ι (algebraHammockLengthDiagram A X Y) n ≫
           (algebraHammockLengthReducedIso A X Y).hom =

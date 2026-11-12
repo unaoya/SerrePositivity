@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -40,7 +40,7 @@ lemma ulift_map_const {K L : SSet.{u}} (z : L _⦋0⦌) :
     SSet.uliftFunctor.{u + 1, u}.map (SSet.const (X := K) z) = SSet.const (ULift.up z) := rfl
 
 def normalizedTensorAugmentationVertex (X : Complex A) :
-    (DGNerve.pinchedHom A (Complex A) X X) _⦋0⦌ :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X X) _⦋0⦌ :=
   (normalizedTensorPinchedIso A X X).hom.app (Opposite.op ⦋0⦌)
     (ULift.up ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌))
 
@@ -53,7 +53,7 @@ lemma normalizedTensorHomPinchedSimplex_augmentation (X : Complex A) (n : Simple
   rfl
 
 lemma normalizedTensorUniversalSimplex_augmentation (X : Complex A) (n : SimplexCategory) :
-    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap
+    normalizedTensorUniversalSimplex A X n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap
       (homPostcompose X ((normalizedSimplexTensorAugmentation A X).app n)) =
     SSet.const (normalizedTensorAugmentationVertex A X) := by
   rw [normalizedTensorUniversalSimplex_evaluation, normalizedTensorHomPinchedSimplex_augmentation]

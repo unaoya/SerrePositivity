@@ -25,8 +25,8 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
 
 lemma fixedColimitMap_arrowPoint (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
     (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
-    (fixedColimitMap F hX hY).app n (arrowPoint W p n) =
-      arrowPoint V (eqToHom hX.symm ≫ F.functor.map p ≫ eqToHom hY) n := by
+    (fixedColimitMap F hX hY).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W p n) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (eqToHom hX.symm ≫ F.functor.map p ≫ eqToHom hY) n := by
   cases hX
   cases hY
   simpa only [fixedColimitMap, fixedGraphDiagramMap, eqToHom_refl,

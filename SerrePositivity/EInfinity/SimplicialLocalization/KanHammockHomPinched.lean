@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
-public import SerrePositivity.InfinityCategories.Core.Roof.PinchedEndpointTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomEquivalence
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.PinchedEndpointTransport
 
 /-!
 # 元の Kan hammock Hom から同じ局所化頂点の pinched Hom への弱比較
@@ -20,11 +20,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite Hammock SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
-open scoped Simplicial
-variable (C : RelativeCategory.{u}) (X Y : C.category)
 
-def kanHammockHomLiftIso : exInfinity.obj (colimitGraph C.weakEquivalences X Y) ≅
+open scoped Simplicial
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
+
+def kanHammockHomLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) ≅
     SSet.uliftFunctor.{u, u}.obj (SimplicialCategory.sHom
       ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)) where
   hom := { app _ := ↾ULift.up, naturality _ _ _ := rfl }
@@ -32,24 +32,24 @@ def kanHammockHomLiftIso : exInfinity.obj (colimitGraph C.weakEquivalences X Y) 
   hom_inv_id := rfl
   inv_hom_id := rfl
 
-def kanHammockHomPinchedMap : exInfinity.obj (colimitGraph C.weakEquivalences X Y) ⟶
-    pinchedHom ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (nerveVertex X))
-      ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (nerveVertex Y)) :=
+def kanHammockHomPinchedMap : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+      ((hammockLocalizationNerveMap C).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) :=
   (kanHammockHomLiftIso C X Y).hom ≫
-    coherentHomComparison ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y) ≫
-      (pinchedEndpointIso (X := kanHammockNerve C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso (X := kanHammockNerve C)
         (hammockLocalizationNerveMap_vertex C X).symm
         (hammockLocalizationNerveMap_vertex C Y).symm).hom
 
 lemma kanHammockHomPinchedMap_weak :
-    IsWeakHomotopyEquivalence (kanHammockHomPinchedMap C X Y) := by
-  have h₀ := (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (kanHammockHomPinchedMap C X Y) := by
+  have h₀ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (kanHammockHomLiftIso C X Y)).isWeakHomotopyEquivalence
-  have h₁ := (coherentHomComparison_isQCatEquivalence
+  have h₁ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_isQCatEquivalence
     ((kanHammockSourceFunctor C).obj X)
     ((kanHammockSourceFunctor C).obj Y)).isWeakHomotopyEquivalence
-  have h₂ := (isPrecompositionEquivalence_of_iso
-    (pinchedEndpointIso (X := kanHammockNerve C)
+  have h₂ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso (X := kanHammockNerve C)
       (hammockLocalizationNerveMap_vertex C X).symm
       (hammockLocalizationNerveMap_vertex C Y).symm)).isWeakHomotopyEquivalence
   exact h₀.comp (h₁.comp h₂)

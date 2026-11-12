@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedGeneratorFunctor
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedGeneratorColumns
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns
 public import SerrePositivity.EInfinity.Hammock.HammockValue
 
 /-!
@@ -19,63 +19,63 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {w : Word} {X Y : Paths C}
+  {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C}
 
-def value (S : Zigzag W.paths w X Y) : List (Quiver.Total C) :=
-  Zigzag.Value.value (GeneratorWord.functor W) (GeneratorWord.inverts W) S
+def value (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y) : List (Quiver.Total C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S
 
-lemma value_hom {S T : Zigzag W.paths w X Y} (f : S ⟶ T) : value W S = value W T :=
-  Zigzag.Value.value_eq (GeneratorWord.functor W) (GeneratorWord.inverts W) f
+lemma value_hom {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y} (f : S ⟶ T) : value W S = value W T :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_eq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) f
 
-lemma value_wordAction {a b : Word} (f : a ⟶ b) (S : Zigzag W.paths a X Y) :
-    value W (WordAction.obj f S) = value W S :=
-  Zigzag.Value.wordAction_value (GeneratorWord.functor W) (GeneratorWord.inverts W) f S
+lemma value_wordAction {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) :
+    value W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.obj f S) = value W S :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordAction_value (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) f S
 
-def graphValue : graph W.paths w X Y ⟶
+def graphValue : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total C)) :=
-  Zigzag.Value.graphMap (GeneratorWord.functor W) (GeneratorWord.inverts W)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueGraph.graphMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W)
 
-def colimitValue (X Y : Paths C) : colimitGraph W.paths X Y ⟶
+def colimitValue (X Y : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total C)) :=
-  Zigzag.Value.colimitValue (GeneratorWord.functor W) (GeneratorWord.inverts W) X Y
+  Zigzag.Value.colimitValue (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) X Y
 
-lemma graphInclusion_colimitValue (X Y : Paths C) (w : Word) :
-    graphInclusion W.paths X Y w ≫ colimitValue W X Y = graphValue W :=
-  Zigzag.Value.graphInclusion_colimitValue (GeneratorWord.functor W) (GeneratorWord.inverts W) X Y w
+lemma graphInclusion_colimitValue (X Y : Paths C) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w ≫ colimitValue W X Y = graphValue W :=
+  Zigzag.Value.graphInclusion_colimitValue (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) X Y w
 
 def reducedValue (X Y : Paths C) : reducedSimplicialSet W.paths X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total C)) :=
-  Zigzag.Value.reducedValue (GeneratorWord.functor W) (GeneratorWord.inverts W) X Y
+  Zigzag.Value.reducedValue (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) X Y
 
-lemma graphNormalization_reducedValue (X Y : Paths C) (w : Word) :
+lemma graphNormalization_reducedValue (X Y : Paths C) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     graphNormalization W.paths X Y w ≫ reducedValue W X Y = graphValue W :=
-  Zigzag.Value.graphNormalization_reducedValue (GeneratorWord.functor W)
-    (GeneratorWord.inverts W) X Y w
+  Zigzag.Value.graphNormalization_reducedValue (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) X Y w
 
 lemma colimitNormalization_reducedValue (X Y : Paths C) :
     colimitNormalization W.paths X Y ≫ reducedValue W X Y = colimitValue W X Y :=
-  Zigzag.Value.colimitNormalization_reducedValue (GeneratorWord.functor W)
-    (GeneratorWord.inverts W) X Y
+  Zigzag.Value.colimitNormalization_reducedValue (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) X Y
 
-lemma edge_forward (S : Zigzag W.paths w X Y) (i : Fin w.length)
+lemma edge_forward (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y) (i : Fin w.length)
     (hi : w.direction i = .forward) :
-    Zigzag.Value.edge (GeneratorWord.functor W) (GeneratorWord.inverts W) S i =
-      GeneratorWord.erase W (Direction.arrow .forward S i hi) :=
-  Zigzag.Value.edge_forward (GeneratorWord.functor W) (GeneratorWord.inverts W) S i hi
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow .forward S i hi) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge_forward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i hi
 
-lemma edge_backward (S : Zigzag W.paths w X Y) (i : Fin w.length)
+lemma edge_backward (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths w X Y) (i : Fin w.length)
     (hi : w.direction i = .backward) :
-    Zigzag.Value.edge (GeneratorWord.functor W) (GeneratorWord.inverts W) S i = [] := by
-  rw [Zigzag.Value.edge_backward (GeneratorWord.functor W) (GeneratorWord.inverts W) S i hi]
-  have hm : (Zigzag.Value.backwardIso (GeneratorWord.functor W)
-      (GeneratorWord.inverts W) S i hi).hom = [] :=
-    GeneratorWord.erase_marked W (Direction.arrow .backward S i hi).unop
-      (Direction.arrow_allowed .backward S i hi)
-  have he := (Zigzag.Value.backwardIso (GeneratorWord.functor W)
-    (GeneratorWord.inverts W) S i hi).hom_inv_id
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i = [] := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.edge_backward (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i hi]
+  have hm : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.backwardIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i hi).hom = [] :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase_marked W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow .backward S i hi).unop
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DirectionCategory.arrow_allowed .backward S i hi)
+  have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.backwardIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.functor W)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorFunctor.inverts W) S i hi).hom_inv_id
   change _ ++ _ = ([] : List (Quiver.Total C)) at he
   rw [hm, List.nil_append] at he
   exact he

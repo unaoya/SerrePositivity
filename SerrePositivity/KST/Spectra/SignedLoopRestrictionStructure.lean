@@ -22,15 +22,15 @@ namespace KanSequence
 lemma signedLoopTail_restriction (X : KanSequence.{u})
     {A : PointedSimplicialSet.{u}} (i : A ⟶ CirclePower.space.{u}) (n : ℕ) :
     (signedLoopTail X).sigma n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level (n + 2)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level (n + 2)).space =
     PointedSimplicialSet.circle.{u} ◁
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (i ≫ CirclePower.integerPowerMap.{u} (-1))
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (i ≫ CirclePower.integerPowerMap.{u} (-1))
         (X.level (n + 1)).space ≫
       (mapping A X).sigma (n + 1) := by
   change ((mapping CirclePower.space.{u} X).sigma (n + 1) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1))
       (X.level (n + 2)).space) ≫ _ = _
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp]
   exact ((mappingPre (i ≫ CirclePower.integerPowerMap.{u} (-1)) X).comm (n + 1)).symm
 
 end KanSequence
@@ -39,10 +39,10 @@ namespace OmegaSpectrum
 /-- 前段の比較を一回反転した通常円で評価すると、次段の補正パラメータが現れる。 -/
 lemma signedLoopRawComparison_restriction_next (X : OmegaSpectrum.{u}) (n : ℕ) :
     (signedLoopRawComparison X).app n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.unit.{u} ≫ CirclePower.integerPowerMap.{u} (-1))
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.unit.{u} ≫ CirclePower.integerPowerMap.{u} (-1))
         (X.level (n + 1)).space =
     (cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter (n + 1))
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter (n + 1))
         (X.level (n + 1)).space := by
   rw [signedLoopRawComparison_app, Category.assoc,
     CirclePower.signedEvaluationParameter_pre_succ]
@@ -51,10 +51,10 @@ lemma signedLoopRawComparison_restriction_next (X : OmegaSpectrum.{u}) (n : ℕ)
 lemma signedLoopRawComparison_circle_step (X : OmegaSpectrum.{u}) (n : ℕ) :
     PointedSimplicialSet.circle.{u} ◁ (signedLoopRawComparison X).app n ≫
       (KanSequence.signedLoopTail X.toKanSequence).sigma n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 2)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 2)).space =
     PointedSimplicialSet.circle.{u} ◁
       ((cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter (n + 1))
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter (n + 1))
           (X.level (n + 1)).space) ≫
       (KanSequence.mapping PointedSimplicialSet.circle.{u} X.toKanSequence).sigma (n + 1) := by
   have hs := KanSequence.signedLoopTail_restriction X.toKanSequence CirclePower.unit.{u} n
@@ -66,14 +66,14 @@ lemma signedLoopRawComparison_circle_step (X : OmegaSpectrum.{u}) (n : ℕ) :
 lemma signedLoopRawComparison_circle_square (X : OmegaSpectrum.{u}) (n : ℕ) :
     PointedSimplicialSet.circle.{u} ◁
       ((cotensorProjection CirclePower.space.{u} X).app (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter (n + 1))
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter (n + 1))
           (X.level (n + 1)).space) ≫
       (KanSequence.mapping PointedSimplicialSet.circle.{u} X.toKanSequence).sigma (n + 1) =
     (cotensor CirclePower.space.{u} X).sigma (n + 1) ≫
       (cotensorProjection CirclePower.space.{u} X).app (n + 2) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.signedEvaluationParameter (n + 1))
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.signedEvaluationParameter (n + 1))
         (X.level (n + 2)).space := by
-  have hc := congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u}
+  have hc := congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u}
     (X.level (n + 2)).space) ((signedLoopRawComparison X).comm n)
   simp only [Category.assoc] at hc
   rw [signedLoopRawComparison_circle_step, signedLoopRawComparison_restriction] at hc

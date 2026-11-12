@@ -88,7 +88,7 @@ lemma reindex_eq_transport {H' : E ⥤ D} (h : H' = H) (a : NerveBiparameter.Sys
   exact congrArg (fun k => a.app ((NerveCoherentReindex.index H).obj s) ≫ k) hi
 
 lemma reindex_expand (T : SSet.{w}) (a : NerveBiparameter.System K F) :
-    reindex (NerveCylinderBoundary.product K T) F H (NerveProductParameter.expand K F T a) =
+    reindex (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F H (NerveProductParameter.expand K F T a) =
       NerveProductParameter.expand (H ⋙ K) (H ⋙ F) T (reindex K F H a) := by
   apply NatTrans.ext
   funext s
@@ -96,7 +96,7 @@ lemma reindex_expand (T : SSet.{w}) (a : NerveBiparameter.System K F) :
 
 lemma expand_mapTarget (T : SSet.{w}) (a : NerveBiparameter.System K F) :
     NerveProductParameter.expand K G T (mapTarget K F G p a) =
-      mapTarget (NerveCylinderBoundary.product K T) F G p
+      mapTarget (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F G p
         (NerveProductParameter.expand K F T a) := by
   change (a ≫ targetMap K F G p) ≫ restriction _ _ _ _ =
     (a ≫ restriction _ _ _ _) ≫ targetMap _ _ _ _

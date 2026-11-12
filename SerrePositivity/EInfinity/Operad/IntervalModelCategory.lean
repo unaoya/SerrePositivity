@@ -63,7 +63,7 @@ lemma intervalModelCategory_fibrations (hP : Hopf P)
 lemma intervalModelCategory_cofibrantlyGenerated (hP : Hopf P)
     (I : CoalgebraInterval hP.counit) :
     let := intervalModelCategory hP I
-    ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       ((projectiveGeneratingCofibrations A).strictMap P.freeAlgebraFunctor)
       ((projectiveGeneratingTrivialCofibrations A).strictMap P.freeAlgebraFunctor) := by
   let := projectiveModelCategory A

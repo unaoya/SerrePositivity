@@ -24,11 +24,11 @@ inductive CubeMixedExpression : ℕ → ℕ → Type
 
 /-- 元の混合式の全頂点での評価。 -/
 def cubeMixedExpressionVertex {n : ℕ} : {m : ℕ} → CubeMixedExpression n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
-  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
-  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
+  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
+  | _, .erase p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
+  | _, .connect p i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の混合式を削除・max・面の三段標準表示へ移す。 -/
@@ -49,17 +49,17 @@ lemma cubeMixedExpressionNormal_vertex {n m : ℕ} (p : CubeMixedExpression n m)
   | point p b i ih =>
     change cubeThreeNormalVertex
       (cubeThreeNormalPoint (cubeMixedExpressionNormal p) b i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
     rw [cubeThreeNormalPoint_vertex, ih]
   | erase p i ih =>
     change cubeThreeNormalVertex
       (cubeThreeNormalDelete (cubeMixedExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
     rw [cubeThreeNormalDelete_vertex, ih]
   | connect p i ih =>
     change cubeThreeNormalVertex
       (cubeThreeNormalConnect (cubeMixedExpressionNormal p) i) =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
     rw [cubeThreeNormalConnect_vertex, ih]
 
 open SerrePositivity.DifferentialGraded

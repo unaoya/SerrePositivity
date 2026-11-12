@@ -25,7 +25,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の第二円柱の源の制限は、元の定数段族での同じ合成円柱。 -/
 lemma monicKPrismCompositionNativeSecondCylinder_trace :
     (kKanCompositionSecondNativeCylinder r F f g).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
           ((kKanSequence (F.obj z)).level (r + 1)).space =
       (compositionStringPair f g ▷ (Δ[1] : SSet.{u})) ≫
@@ -42,12 +42,12 @@ lemma monicKPrismCompositionNativeSecondCylinder_trace :
   simp only [monicKPrismCompositeCompatibility_h, Category.assoc,
     ← comp_whiskerRight_assoc, compositionStringPair_second] at ht
   have hh' : (kKanCompositionSecondNativeCylinder r F f g).h ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
         (PointedSimplicialSet.circle.{u} ◁ (monicKKanSequenceProjection (F.obj x)).app r)
         ((kKanSequence (F.obj z)).level (r + 1)).space =
       (nerveMap (compositionStringSecond f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanOriginalPrismSpecifiedCompatibilityFamily r F g).h ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
             (PointedSimplicialSet.circle.{u} ◁ monicKToRawLevelMap (F.map f) r)
             ((kKanSequence (F.obj z)).level (r + 1)).space := by
     simpa only [kKanCompositionSecondNativeCylinder, constantFamilyHomotopyWhisker,

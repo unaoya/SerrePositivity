@@ -5,7 +5,7 @@ public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.NerveP
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterMapping
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.LargeParameterRelativeChoice
 
-public import SerrePositivity.InfinityCategories.Simplicial.DiagramUniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift
 
 /-!
 # 中断した任意モデル源への一般化：NerveLargeParameter
@@ -47,19 +47,19 @@ open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
 
 namespace SerrePositivity.SimplicialModel.NerveLargeParameter
 variable {D : Type uD} [Category.{vD} D] (F : D ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
+  (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d))
 
-abbrev mapping (K : SSet.{max w v}) := NerveParameterExtension.cotensor (lifted.{w} F) K
-abbrev System (K : SSet.{max w v}) := NerveParameterExtension.System (lifted.{w} F) K
+abbrev mapping (K : SSet.{max w v}) := NerveParameterExtension.cotensor (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted.{w} F) K
+abbrev System (K : SSet.{max w v}) := NerveParameterExtension.System (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted.{w} F) K
 
 /-- Restrict a whole coherent family along any actual parameter map. -/
 def restrict {A K : SSet.{max w v}} (a : System F K) (i : A ⟶ K) : System F A :=
   a ≫ NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-    (NerveParameterExtension.restriction (lifted F) i)
+    (NerveParameterExtension.restriction (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) i)
 
 lemma restrict_evaluate {A K : SSet.{max w v}} (a : System F K) (i : A ⟶ K) (d : D) :
-    NerveParameterExtension.evaluate (lifted F) (restrict F a i) d =
-      i ≫ NerveParameterExtension.evaluate (lifted F) a d := by
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) (restrict F a i) d =
+      i ≫ NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) a d := by
   apply NerveParameterExtension.name_injective
   rw [← RelativeChoiceSpace.name_precomp, NerveParameterExtension.name_evaluate,
     NerveParameterExtension.name_evaluate]
@@ -74,16 +74,16 @@ lemma restrict_comp {A B K : SSet.{max w v}} (a : System F K) (i : A ⟶ B) (j :
 variable (K : SSet.{max w v})
 
 include hp in
-lemma mappingFillers : ∀ d, UniverseLift.BoundaryFillers ((mapping F K).obj d) :=
+lemma mappingFillers : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((mapping F K).obj d) :=
   fun d => LargeParameterMapping.fillers (hp d) K
 
 /-- Retain each original whole K-family while making all external chains coherent. -/
-def extendFamilies (families : ∀ d, K ⟶ UniverseLift.obj.{w} (F.obj d)) : System F K :=
+def extendFamilies (families : ∀ d, K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d)) : System F K :=
   NerveFillerExtension.extendVertices (mapping F K) (mappingFillers F hp K)
     (fun d => RelativeChoiceSpace.name (families d))
 
-lemma extendFamilies_evaluate (families : ∀ d, K ⟶ UniverseLift.obj.{w} (F.obj d)) (d : D) :
-    NerveParameterExtension.evaluate (lifted F) (extendFamilies F hp K families) d =
+lemma extendFamilies_evaluate (families : ∀ d, K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d)) (d : D) :
+    NerveParameterExtension.evaluate (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) (extendFamilies F hp K families) d =
       families d := by
   change uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫
     (extendFamilies F hp K families).app (ofChain (ComposableArrows.mk₀ d))) = families d
@@ -96,7 +96,7 @@ variable {A : SSet.{max w v}} (i : A ⟶ K) [Mono i]
 
 include hp in
 lemma restriction_rightLifting : ∀ d, (MorphismProperty.monomorphisms SSet.{max w v}).rlp
-    ((NerveParameterExtension.restriction (lifted F) i).app d) := by
+    ((NerveParameterExtension.restriction (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) i).app d) := by
   intro d U V l hl
   have : Mono l := hl
   exact LargeParameterRelativeChoice.restriction_lifting (hp d) i l
@@ -105,18 +105,18 @@ variable (boundary : System F A) (n : ℕ)
   (old : NerveLowerExtension.LowerSystem (mapping F K) n)
   (hboundary : old ≫ Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)
     (NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-      (NerveParameterExtension.restriction (lifted F) i)) =
+      (NerveParameterExtension.restriction (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) i)) =
         Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n) boundary)
 
 /-- Relative extension retaining the whole coherent large boundary in every external degree. -/
 def relative : System F K :=
   NerveMonomorphismLifting.extend (mapping F K) (mapping F A)
-    (NerveParameterExtension.restriction (lifted F) i) boundary n old hboundary
+    (NerveParameterExtension.restriction (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) i) boundary n old hboundary
     (restriction_rightLifting F hp K i)
 
 lemma relative_boundary : relative F hp K i boundary n old hboundary ≫
     NerveMonomorphismLifting.valueMap (mapping F K) (mapping F A)
-      (NerveParameterExtension.restriction (lifted F) i) = boundary :=
+      (NerveParameterExtension.restriction (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveLargeParameter.lifted F) i) = boundary :=
   NerveMonomorphismLifting.extend_boundary _ _ _ _ _ _ _ _
 
 lemma relative_restrict : Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) n)

@@ -23,7 +23,7 @@ variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{w} C]
 abbrev homFamily : (K ⥤ SimplexCategory ⥤ C)ᵒᵖ ⥤ C ⥤ Kᵒᵖ ⥤ SSet.{w} :=
   Functor.opHom K (SimplexCategory ⥤ C) ⋙
     (Functor.whiskeringRight Kᵒᵖ (SimplexCategory ⥤ C)ᵒᵖ (C ⥤ SSet.{w})).obj
-      cosimplicialHomBifunctor ⋙ flipFunctor Kᵒᵖ C SSet.{w}
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ flipFunctor Kᵒᵖ C SSet.{w}
 
 def map {A B : K ⥤ SimplexCategory ⥤ C} (a : A ⟶ B) : functor K A ⟶ functor K B :=
   (conjugateEquiv (adjunction K B) (adjunction K A)).symm ((homFamily K).map a.op)

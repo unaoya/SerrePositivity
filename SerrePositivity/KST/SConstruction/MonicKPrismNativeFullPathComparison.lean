@@ -100,7 +100,7 @@ lemma monicKPrismNativeFullPathComparison_target (n : ℕ) :
         (Δ[1] : SSet.{u}) ≫ compositionStringPair f g ≫
         monicKPrismTracedRawComposition F f g ≫
         RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z))
-          (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+          (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
             ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyTriangleStripComparison_target _ _ _ _ _
 

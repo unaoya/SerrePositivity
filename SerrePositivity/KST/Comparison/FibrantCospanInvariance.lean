@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.FibrantPullbackMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 基底も動かす Kan fibration の引き戻し比較
@@ -27,6 +28,7 @@ open SerrePositivity.SimplicialModel
 規約：基底の Kan 性は不要。比較射は二つの射影の等式で指定する。
 使われ方：ホモトピー引き戻し模型の三入力の不変性。
 -/
+@[kerodon 0109]
 theorem fibrantCospanMap_localized_isIso {X E B X' E' B' : SSet.{u}}
     (f : X ⟶ B) (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p)
     (f' : X' ⟶ B') (p' : E' ⟶ B') (hp' : SSet.modelCategoryQuillen.J.rlp p')

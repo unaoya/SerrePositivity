@@ -22,25 +22,25 @@ set_option backward.isDefEq.respectTransparency.types false
 variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
   [∀ n, KanComplex (X n).right] [∀ n, Fibration (p n).right] (r : ℕ)
   (s : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint)
-  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+  (hs : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
     (s (n + 1)) = s n)
   (R : ∀ n, PtSimplex.RelStruct .const (s n) (Fin.last (r + 1)))
 
 include R in
 /-- 各段の零ホモトピーがあれば、組み立てた極限の球面は比較の核に属する。 -/
 lemma limitSimplex_mem_kernel :
-    limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (limitSimplex X p r s hs)) = 1 := by
+    limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (limitSimplex X p r s hs)) = 1 := by
   apply (limitGroupComparison_eq_one_iff X p r _).2
   intro n
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map _ rfl (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (limitSimplex X p r s hs)) = 1
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, limitSimplex_projection]
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (R n)).symm
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map _ rfl (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (limitSimplex X p r s hs)) = 1
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk, limitSimplex_projection]
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound (R n)).symm
 
 omit [∀ n, Fibration (p n).right] in
 /-- 整合する球面の族の等式による同定は、零ホモトピーの障害を保つ。 -/
 lemma nullHomotopyObstruction_eq_cast
     (t : ∀ n, (X n).right.PtSimplex (r + 1) (X n).basepoint)
-    (ht : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p n))
+    (ht : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (p n).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p n))
       (t (n + 1)) = t n) (he : s = t) :
     nullHomotopyObstruction X p r t ht (he ▸ R) =
       nullHomotopyObstruction X p r s hs R := by
@@ -50,7 +50,7 @@ lemma nullHomotopyObstruction_eq_cast
 /-- 極限へ組み立てた核の元の障害は、元の零ホモトピーの隣接差で計算できる。 -/
 lemma kernelObstruction_limitSimplex :
     kernelObstruction X p r
-      ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (limitSimplex X p r s hs), limitSimplex_mem_kernel X p r s hs R⟩ =
+      ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (limitSimplex X p r s hs), limitSimplex_mem_kernel X p r s hs R⟩ =
     nullHomotopyObstruction X p r s hs R := by
   rw [kernelObstruction_mk]
   have he : s = projectedSimplex X p r (limitSimplex X p r s hs) := by

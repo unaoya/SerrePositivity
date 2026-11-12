@@ -29,7 +29,7 @@ lemma pointedPre_post {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   conv_rhs =>
     rw [Category.assoc, pointedPost_evaluation, ← Category.assoc,
       pointedPre_evaluation, Category.assoc]
-  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact congrArg (pointedEvaluation Y Z n ≫ ·)
     ((MonoidalClosed.pre (f.app n)).naturality (p.app n))
 

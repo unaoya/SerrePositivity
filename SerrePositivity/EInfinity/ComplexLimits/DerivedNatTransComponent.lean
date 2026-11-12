@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.DiagramDerivedVertex
 public import SerrePositivity.EInfinity.ComplexLimits.DerivedNatTransIso
-public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyEvaluationEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyEvaluationEndpointTransport
 
 /-!
 # 元の通常複体自然変換の全二胞体と同じ成分辺
@@ -25,19 +25,19 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
   {F G : I ⥤ Complex A} (η : F ⟶ G)
 
-def complexOrdinaryDerivedNatTransHom : FunctorHom
+def complexOrdinaryDerivedNatTransHom : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (nerveMap F ≫ complexOrdinaryDerivedSource A) (nerveMap G ≫ complexOrdinaryDerivedSource A) :=
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (complexOrdinaryDerivedNatTransHomotopy A η))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (complexOrdinaryDerivedNatTransHomotopy A η))
 
 lemma complexOrdinaryDerivedNatTransHom_component (i : I) :
     (complexDiagramDerivedVertexIso A F i).inv ≫
-      functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (nerveVertex i) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) ≫
       (complexDiagramDerivedVertexIso A G i).hom =
     Truncated.HomotopyCategory.homMk
       ((nerve.edgeMk (η.app i)).map (complexOrdinaryDerivedSource A)).toTruncated := by
-  exact FrameHom.functorHomEvaluate_homotopy_transport
-    (complexOrdinaryDerivedNatTransHomotopy A η) (nerveVertex i)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorHomEvaluate_homotopy_transport
+    (complexOrdinaryDerivedNatTransHomotopy A η) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)
     (complexDiagramDerived_vertex A F i) (complexDiagramDerived_vertex A G i)
     ((nerve.edgeMk (η.app i)).map (complexOrdinaryDerivedSource A)).toTruncated
     (complexOrdinaryDerivedNatTransHomotopy_component A η i)

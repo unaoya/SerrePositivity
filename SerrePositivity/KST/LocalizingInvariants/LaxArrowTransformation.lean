@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxStableCategory
-public import SerrePositivity.InfinityCategories.Stable.Exact.ExactTransformationStableLocus
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackVertexData
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.LaxPullbackEquivalenceSubcomplex
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.ExactTransformationStableLocus
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackVertexData
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.LaxPullbackEquivalenceSubcomplex
 
 /-!
 概要：lax pullback の指定矢印の全族を両完全射影の間の実自然変換と同定する。
@@ -21,61 +21,61 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 def laxArrowHomotopy : SSet.Homotopy ((laxFst p q).hom ≫ p.hom)
     ((laxSnd p q).hom ≫ q.hom) where
   h := (β_ (laxCategory p q).obj (Δ[1] : SSet.{u})).hom ≫
-    uncurry (F2.laxPullbackArrow p.hom q.hom)
+    uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)
   h₀ := by
     rw [← Category.assoc]
-    change prismEndpoint 0 (laxCategory p q).obj ≫ uncurry _ = _
-    rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
-    exact F2.laxPullbackArrow_source p.hom q.hom
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (laxCategory p q).obj ≫ uncurry _ = _
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, curry_uncurry]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_source p.hom q.hom
   h₁ := by
     rw [← Category.assoc]
-    change prismEndpoint 1 (laxCategory p q).obj ≫ uncurry _ = _
-    rw [← curry_evaluateFunctorAt_interval, curry_uncurry]
-    exact F2.laxPullbackArrow_target p.hom q.hom
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (laxCategory p q).obj ≫ uncurry _ = _
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, curry_uncurry]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_target p.hom q.hom
   rel := by ext n ⟨x, y⟩; exact x.property.elim
 
 lemma laxArrowHomotopy_component (x : (laxCategory p q).obj _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (laxArrowHomotopy p q) x).edge =
-      (F2.laxPullbackVertexData p.hom q.hom x).arrow := by
-  have h := intervalFunctorVertexEdge_curry
-    (uncurry (F2.laxPullbackArrow p.hom q.hom)) x
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (laxArrowHomotopy p q) x).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackVertexData p.hom q.hom x).arrow := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_curry
+    (uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)) x
   rw [curry_uncurry] at h
-  change _ = intervalFunctorVertexEdge ((F2.laxPullbackArrow p.hom q.hom).app _ x)
+  change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom).app _ x)
   rw [h]
-  change (uncurry (F2.laxPullbackArrow p.hom q.hom)).app (Opposite.op ⦋1⦌)
-    (homotopyIntervalEdge.edge,
+  change (uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)).app (Opposite.op ⦋1⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge,
       (Truncated.Edge.id (X := (truncation 2).obj (laxCategory p q).obj) x).edge) = _
-  rw [pinchedConstant_one]
-  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = homotopyIntervalEdge.edge := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one]
+  have hi : SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge := by
     apply SSet.stdSimplex.ext
     intro i
     fin_cases i <;> rfl
   rw [hi]
 
 lemma laxArrowTransformation_component (x : (laxCategory p q).obj _⦋0⦌) :
-    Arrow.mk ((exactFunctorNatTrans (laxArrowHomotopy p q)).app (HomotopyCategory.mk x)) =
+    Arrow.mk ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exactFunctorNatTrans (laxArrowHomotopy p q)).app (HomotopyCategory.mk x)) =
       Arrow.mk (Truncated.HomotopyCategory.homMk
-        (edgeOfSimplex (F2.laxPullbackVertexData p.hom q.hom x).arrow)) := by
-  change Arrow.mk ((homotopyNatTransOfEndpoints _ _ _).app _) = _
-  rw [homotopyNatTransOfEndpoints_app_arrow, homotopyNatTrans_app]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.laxPullbackVertexData p.hom q.hom x).arrow)) := by
+  change Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyNatTransOfEndpoints _ _ _).app _) = _
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.homotopyNatTransOfEndpoints_app_arrow, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyNatTrans_app]
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   exact laxArrowHomotopy_component p q x
 
 lemma laxEquivalenceVertex_iff_transformationIso (x : (laxCategory p q).obj _⦋0⦌) :
-    F2.IsLaxEquivalenceVertex p.hom q.hom x ↔
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.TransformationIsoVertex (laxArrowHomotopy p q) x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom x ↔
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.TransformationIsoVertex (laxArrowHomotopy p q) x := by
   exact (congrArg (fun a : Arrow (hoFunctor.obj E.obj) ↦ IsIso a.hom)
     (laxArrowTransformation_component p q x)).symm.to_iff
 
 /-- 同値矢印の頂点条件は元の lax pullback の零・fiber・cofiber に閉じる。 -/
 lemma laxEquivalenceVertex_stable :
-    _root_.SerrePositivity.InfinityCategories.Stable.Exact.StableVertexCondition (F2.IsLaxEquivalenceVertex p.hom q.hom) := by
-  let h := _root_.SerrePositivity.InfinityCategories.Stable.Exact.transformationIsoVertex_stable (laxArrowHomotopy p q)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.StableVertexCondition (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsLaxEquivalenceVertex p.hom q.hom) := by
+  let h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.transformationIsoVertex_stable (laxArrowHomotopy p q)
   let e := laxEquivalenceVertex_iff_transformationIso p q
   exact {
     zero := fun x hx ↦ (e x).2 (h.zero x hx)

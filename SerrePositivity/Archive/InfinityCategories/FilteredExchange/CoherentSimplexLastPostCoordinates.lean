@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentSimplexLastPostData
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionCoordinates
 
 /-!
 概要：最後の指定後合成の Hom データを、元の対象の表示へ正規化する。

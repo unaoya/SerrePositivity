@@ -35,7 +35,7 @@ lemma cubicalDaySerreComonoids_cotensorator (X Y : CubicalDaySet.{u}) :
 /-- 元の余モノイド値単位射の鎖射は同じ単位生成 cell。 -/
 lemma cubicalDaySerreComonoids_unit :
     (Functor.LaxMonoidal.ε (cubicalDaySerreComonoids A)).hom =
-      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
+      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
 
 /-- 元の余モノイド値逆単位射の鎖射は同じ Serre 増大。 -/
 lemma cubicalDaySerreComonoids_counit :

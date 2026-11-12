@@ -21,7 +21,7 @@ open scoped Simplicial
 lemma fullSubcomplex_hasLiftingProperty_of_vertexSurjective {A B X : SSet.{u}}
     (P : X _⦋0⦌ → Prop) (i : A ⟶ B)
     (hi : Function.Surjective (i.app (Opposite.op ⦋0⦌))) :
-    HasLiftingProperty i (fullSubcomplexOnVertices X P).ι := by
+    HasLiftingProperty i (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι := by
   constructor
   intro a b sq
   have hv (v : B _⦋0⦌) : P (b.app (Opposite.op ⦋0⦌) v) := by
@@ -30,24 +30,24 @@ lemma fullSubcomplex_hasLiftingProperty_of_vertexSurjective {A B X : SSet.{u}}
     change (a.app (Opposite.op ⦋0⦌) u).val = b.app (Opposite.op ⦋0⦌)
       (i.app (Opposite.op ⦋0⦌) u) at he
     rw [← he]
-    exact fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) u)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (a.app (Opposite.op ⦋0⦌) u)
   refine CommSq.HasLift.mk' {
-    l := fullSubcomplexLift P b hv
+    l := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift P b hv
     fac_left := ?_
-    fac_right := fullSubcomplexLift_ι P b hv }
-  apply (cancel_mono (fullSubcomplexOnVertices X P).ι).1
-  rw [Category.assoc, fullSubcomplexLift_ι]
+    fac_right := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι P b hv }
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι).1
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
   exact sq.w.symm
 
 /-- 概要：周囲で始対象である全部分複体の頂点は全部分複体でも始対象。
 方針：周囲で境界を充填し、全頂点を含む境界での持ち上げを使う。
 規約：P は任意。使われ方：S_n の零図式の始対象性。 -/
 lemma isInitialVertex_fullSubcomplex_of_ambient {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
-    (v : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) (hv : IsInitialVertex v.val) :
-    IsInitialVertex v := by
+    (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex v.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex v := by
   intro n b hb
-  let j := (fullSubcomplexOnVertices X P).ι
-  have he : boundaryVertex n 0 ≫ (b ≫ j) = SSet.yonedaEquiv.symm v.val := by
+  let j := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n 0 ≫ (b ≫ j) = SSet.yonedaEquiv.symm v.val := by
     rw [← Category.assoc, hb, SSet.yonedaEquiv_symm_comp]
     rfl
   obtain ⟨F, hF⟩ := hv n (b ≫ j) he
@@ -60,11 +60,11 @@ lemma isInitialVertex_fullSubcomplex_of_ambient {X : SSet.{u}} (P : X _⦋0⦌ �
 方針：周囲で境界を充填し、全部分複体の包含で持ち上げる。
 規約：P は任意。使われ方：S_n の零図式の終対象性。 -/
 lemma isTerminalVertex_fullSubcomplex_of_ambient {X : SSet.{u}} (P : X _⦋0⦌ → Prop)
-    (v : (fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) (hv : IsTerminalVertex v.val) :
-    IsTerminalVertex v := by
+    (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P : SSet.{u}) _⦋0⦌) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex v.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex v := by
   intro n b hb
-  let j := (fullSubcomplexOnVertices X P).ι
-  have he : boundaryVertex n (Fin.last (n + 1)) ≫ (b ≫ j) = SSet.yonedaEquiv.symm v.val := by
+  let j := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.boundaryVertex n (Fin.last (n + 1)) ≫ (b ≫ j) = SSet.yonedaEquiv.symm v.val := by
     rw [← Category.assoc, hb, SSet.yonedaEquiv_symm_comp]
     rfl
   obtain ⟨F, hF⟩ := hv n (b ≫ j) he

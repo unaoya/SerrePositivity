@@ -12,10 +12,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNullHomotopy
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P] [Small.{u} P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 local notation "h" => dgModuleNaturalConeNullHomotopyElement R D F G η
 

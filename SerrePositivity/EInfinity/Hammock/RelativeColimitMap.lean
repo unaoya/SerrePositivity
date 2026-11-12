@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeGraphDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeGraphDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!
@@ -25,11 +25,11 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
   (F : LocalizerMorphism W V) (X Y : C)
 
-def colimitMap : colimitGraph W X Y ⟶ colimitGraph V (F.functor.obj X) (F.functor.obj Y) :=
-  colim.map (graphDiagramMap F X Y)
+def colimitMap : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph V (F.functor.obj X) (F.functor.obj Y) :=
+  colim.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap F X Y)
 
-lemma graphInclusion_colimitMap (w : Word) : graphInclusion W X Y w ≫ colimitMap F X Y =
-    (graphDiagramMap F X Y).app w ≫ graphInclusion V (F.functor.obj X) (F.functor.obj Y) w :=
+lemma graphInclusion_colimitMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ colimitMap F X Y =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap F X Y).app w ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (F.functor.obj Y) w :=
   colimit.ι_map _ _
 
 def reducedMap : reducedSimplicialSet W X Y ⟶
@@ -43,9 +43,9 @@ lemma reducedMap_augmentation : reducedMap F X Y ≫
   simp only [reducedMap, ← reducedColimitIso_inv, Category.assoc, Iso.hom_inv_id,
     Category.comp_id]
 
-lemma graphNormalization_reducedMap (w : Word) :
+lemma graphNormalization_reducedMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     graphNormalization W X Y w ≫ reducedMap F X Y =
-      (graphDiagramMap F X Y).app w ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap F X Y).app w ≫
         graphNormalization V (F.functor.obj X) (F.functor.obj Y) w := by
   rw [← reducedColimitIso_hom_fac W X Y w]
   dsimp only [reducedMap]

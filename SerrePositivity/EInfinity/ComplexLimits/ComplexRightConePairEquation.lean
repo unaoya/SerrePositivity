@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexRightConeClosed
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexRightConeFrontEquation
-public import SerrePositivity.InfinityCategories.DGNerve.PullbackEquation
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.PullbackEquation
 
 /-!
 概要：実右 cone の全二点集合は HA 方程式を満たす。
@@ -14,11 +14,11 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexRightConeData_equation_pair {n : ℕ}
-    {s : Simplex A (Complex A) n} {X : Complex A}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X) (I : Finset (Fin (n + 2))) (hc : I.card = 2) :
     (complexRightConeData A η).Equation I := by
   by_cases hl : Fin.last (n + 1) ∈ I
@@ -26,7 +26,7 @@ lemma complexRightConeData_equation_pair {n : ℕ}
     have hbl : b = Fin.last (n + 1) := hb.trans
       ((I.isGreatest_max' _).unique ⟨hl, fun _ _ => Fin.le_last _⟩)
     rw [complexRightConeData_differential_last A η I a b k hI ha hb hk hbl,
-      SimplexData.rhs_of_card_two _ I a b k hI ha hb hk hc]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.rhs_of_card_two _ I a b k hI ha hb hk hc]
   · exact complexRightConeData_equation_without_last A η I hl
 
 end SerrePositivity.EInfinity.ComplexLimits

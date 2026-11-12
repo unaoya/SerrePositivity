@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
@@ -23,10 +23,10 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorConeData_pullback_map {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (θ : ⦋m⦌ ⟶ ⦋n⦌) :
-    (normalizedTensorConeData A X Y c).pullback (prependOrderHom θ.toOrderHom) =
+    (normalizedTensorConeData A X Y c).pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom) =
       normalizedTensorConeData A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) := by
-  apply SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · funext i
     exact normalizedTensorConeData_obj_prepend_map A X Y c θ i
   · apply Function.hfunext rfl

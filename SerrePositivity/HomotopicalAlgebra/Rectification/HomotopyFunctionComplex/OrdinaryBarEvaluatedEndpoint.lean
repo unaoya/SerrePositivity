@@ -65,7 +65,7 @@ def rowNerveMap : SmallNerve R ⟶ OrdinaryBarEvaluation.bar R where
       ((OrdinaryBarNerveBridge.rawBridge R).naturality θ)
 
 /-- Both source and target wrappers are explicit, including the original output wrapper. -/
-def smallAugmentation : SmallNerve R ⟶ UniverseLift.obj.{u} (BarOutput.output R) where
+def smallAugmentation : SmallNerve R ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (BarOutput.output R) where
   app n := ↾fun c => ULift.up ((SimplexNerveAugmentation.augmentation
     (BarOutput.output R)).app n c.down)
   naturality {n m} θ := by

@@ -22,18 +22,18 @@ lemma basedPreAction_pre_path {W D C A T B : PointedSimplicialSet.{u}}
     {f g : W ⟶ D} (H : VerticalPath (PointedObject.toPoint D) f g)
     (r : A ⟶ PointedObject.basedHom D C) (a : T ⟶ A) (b : B ⟶ T) :
     ((H.basedPreAction r a).pre b).path = (H.basedPreAction r (b ≫ a)).path := by
-  change (((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom W C)).right) ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a (PointedObject.basedHom W C)).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b (PointedObject.basedHom W C)).right = _
-  change (((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom W C)).right) ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a (PointedObject.basedHom W C)).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b (PointedObject.basedHom W C)).right =
-    ((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom W C)).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (b ≫ a) (PointedObject.basedHom W C)).right
-  have h := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp b a (PointedObject.basedHom W C))
+  change (((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed r (PointedObject.basedHom W C)).right) ≫
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a (PointedObject.basedHom W C)).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b (PointedObject.basedHom W C)).right = _
+  change (((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed r (PointedObject.basedHom W C)).right) ≫
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a (PointedObject.basedHom W C)).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b (PointedObject.basedHom W C)).right =
+    ((H.basedPre C).path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed r (PointedObject.basedHom W C)).right) ≫
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (b ≫ a) (PointedObject.basedHom W C)).right
+  have h := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp b a (PointedObject.basedHom W C))
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun k => ((H.basedPre C).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom W C)).right) ≫ k) h
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed r (PointedObject.basedHom W C)).right) ≫ k) h
 
 end PointedMapping.VerticalPath
 namespace RawSpectrumMapping
@@ -51,10 +51,10 @@ lemma signedLoopParameterHom_transpose (n : ℕ) :
   have h := PointedMapping.transpose_ihomParameterAction
     (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1))
     (𝟙 (PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space))
-  have hid : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+  have hid : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
       (𝟙 (PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space))
       (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space) = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact congrArg (fun t => t.app _)
       (MonoidalClosed.pre_id
         (PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space))
@@ -81,7 +81,7 @@ lemma tracedSourceUnitStageInterval_path (n : ℕ) :
   let a := pointedEvaluation X Y.toKanSequence (n + 1)
   change ((H.basedPost _).basedTranspose).path =
     (OmegaSpectrum.CotensorCompatible.kanAdjointTracedSourceEvaluationInterval X Y n).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed φ _).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed φ _).right
   rw [kanAdjointTracedSourceEvaluationInterval_path]
   change ((H.basedPost _).basedTranspose).path = ((H.basedPreAction r a).pre φ).path
   rw [PointedMapping.VerticalPath.basedPreAction_pre_path,
@@ -95,7 +95,7 @@ lemma tracedSourceUnitParameterTriangle_one_evaluation (n : ℕ) :
     SSet.stdSimplex.δ (1 : Fin 3) ≫ tracedSourceUnitParameterTriangle X Y φ n =
       (((OmegaSpectrum.CotensorCompatible.kanAdjointTracedSourceEvaluationInterval
         X Y (n + 1)).pre φ).basedPost
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
             ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [tracedSourceUnitParameterTriangle_one_stage]
   change (tracedSourceUnitStageInterval X Y φ (n + 1)).path ≫ _ = _

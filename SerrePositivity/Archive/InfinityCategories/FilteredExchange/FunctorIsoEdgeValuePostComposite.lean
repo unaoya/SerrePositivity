@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.Functo
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedTargetFiberTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoWhiskerVertexMap
 public import
-SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 /-!
 概要：元の中間比較と辺値を後合成しても、同じ指定合成値と内部 Hom の像を保持する。
 方針：元の三端点と指定値を保持し、後合成の結合と表示変更を合成する。

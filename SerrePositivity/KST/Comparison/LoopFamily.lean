@@ -144,7 +144,7 @@ def parameterMappingTranspose {X : SSet.{u}} {Y K : PointedSimplicialSet.{u}}
 -/
 def loopFamilyMap {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
     (H : SSet.Homotopy (SSet.const (X := X) (PointedSimplicialSet.basepoint Y))
-      (SSet.const (PointedSimplicialSet.basepoint Y))) : X ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right :=
+      (SSet.const (PointedSimplicialSet.basepoint Y))) : X ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right :=
   parameterMappingTranspose (loopFamilyCircle Y H)
 
 /--

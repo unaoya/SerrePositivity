@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanEnrichedMap
 public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!
 # 相対関手が誘導する局所化の coherent nerve の射
@@ -31,20 +31,20 @@ open SerrePositivity.InfinityCategories
 方針：元の Kan 豊穣係数関手へ同じ coherent nerve の後合成を適用する。
 規約：始域・終域は構成済みの局所化 quasicategory。
 使われ方：具体的な相対関手の ∞ 関手化の界面。 -/
-def localizationNerveMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def localizationNerveMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     localizationNerve C ⟶ localizationNerve D :=
-  coherentNerveMap (kanLocalizationEnrichedMap F)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (kanLocalizationEnrichedMap F)
 
 /-- 概要：局所化の nerve の係数射は元の対象の頂点を保つ（HTT §1.1.5）。
 方針：同じ coherent nerve の頂点自然性を使う。
 規約：同じ対象表示と係数の対象写像を保持する。
 使われ方：忘却関手などの頂点での計算。 -/
-lemma localizationNerveMap_vertex {C D : RelativeCategory.{u}} (F : C ⟶ D)
+lemma localizationNerveMap_vertex {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
     (X : KanLocalizationCategory C) :
     (localizationNerveMap F).app (Opposite.op (SimplexCategory.mk 0))
         (localizationNerveVertexEquiv C X) =
       localizationNerveVertexEquiv D (F.functor.obj X) := by
-  exact (coherentNerveVertex_object
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object
     ((localizationNerveMap F).app (Opposite.op (SimplexCategory.mk 0))
       (localizationNerveVertexEquiv C X))).symm
 

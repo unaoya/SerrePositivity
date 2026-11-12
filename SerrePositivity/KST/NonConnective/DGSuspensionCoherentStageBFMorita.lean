@@ -23,7 +23,7 @@ local instance coherentStageBFMoritaSpectrumCategory : SimplicialCategory OmegaS
   OmegaSpectrum.simplicialCategory
 variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
   (hκ : Cardinal.aleph0 < κ)
-  (a : DGSuspensionCoherentActionInput R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ))
+  (a : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput R (dgKappaUnconditionalStageProvider.{u, v} R κ hκ))
   {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B)
 
 /-- 元の同じ BF 逐次列の対象間に、全単体段族の元の辺を保持する復号射。 -/
@@ -34,9 +34,9 @@ def dgSuspensionCoherentStageBFMap (n : ℕ) :
 
 /-- 復号した同じ BF 射の辺成分は、元の全単体段族の像そのもの。 -/
 theorem dgSuspensionCoherentStageBFMap_edge (n : ℕ) :
-    (coherentNerveEdge (dgSuspensionCoherentStageBFMap R κ hκ a f n)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionCoherentStageBFMap R κ hκ a f n)).edge =
       (dgSuspensionCoherentStageFamily R (dgKappaUnconditionalStageProvider R κ hκ) a n).app
-        (Opposite.op ⦋1⦌) (coherentNerveEdge f).edge :=
+        (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge :=
   SpectrumHo.edgeMap_edge _
 
 variable (hd : ∀ {C D : PerfDGInput.{u, max (u + 1) v} R} (g : C ⟶ D),

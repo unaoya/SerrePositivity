@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyTensorRight
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：全係数を加えた元の円柱の頂点制限は同じ実頂点辺と係数の作用。

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 /-!
 概要：同じ実際の可逆辺が与える同型を端点の表示によらず同定する。

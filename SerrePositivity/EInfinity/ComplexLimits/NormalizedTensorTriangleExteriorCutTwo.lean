@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -22,7 +22,7 @@ lemma normalizedTensorTriangleData_cutCompose_two {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 1)) (hj : j ∈ I)
     (haj : a < j) (hjb : j < b) (hbt : τ b = 2) (haz : τ a = 0) (hjt : τ j = 2) :
     HEq ((normalizedTensorTriangleData A X Y c τ).cutCompose I a b k j)
@@ -33,28 +33,28 @@ lemma normalizedTensorTriangleData_cutCompose_two {n : ℕ}
   let R := I.filter (j ≤ ·)
   have ham : IsLeast (I : Set (Fin (n + 1))) a := by rw [ha]; exact I.isLeast_min' _
   have hbm : IsGreatest (I : Set (Fin (n + 1))) b := by rw [hb]; exact I.isGreatest_max' _
-  have hL : 2 ≤ L.card := Index.left_two ham.1 hj haj
-  have hR : 2 ≤ R.card := Index.right_two hj hbm.1 hjb
+  have hL : 2 ≤ L.card := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_two ham.1 hj haj
+  have hR : 2 ≤ R.card := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_two hj hbm.1 hjb
   have hsum : (2 - (L.card : ℤ)) + (2 - (R.card : ℤ)) = k + 1 := by
-    have hsplit : L.card + R.card = I.card + 1 := Index.split_card hj
+    have hsplit : L.card + R.card = I.card + 1 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj
     omega
   have hx := (normalizedTensorTrianglePinched_obj_zero A X Y c τ a haz).symm
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
   have hjx := (normalizedTensorTrianglePinched_obj_two A X Y c τ j hjt).symm
   have hjz : τ j ≠ 0 := by rw [hjt]; decide
   change HEq (s.cutCompose I a b k j) (t.cutCompose I a b k j)
-  unfold SimplexData.cutCompose
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cutCompose
   dsimp only [L, R] at hsum
   simp only [dite_eq_left hsum]
-  rw [SimplexData.homOrZero_eq s R j b _ hR (Index.right_min hj _)
-      (Index.right_max hbm hjb.le _) rfl,
-    SimplexData.homOrZero_eq s L a j _ hL (Index.left_min ham haj.le _)
-      (Index.left_max hj _) rfl,
-    SimplexData.homOrZero_eq t R j b _ hR (Index.right_min hj _)
-      (Index.right_max hbm hjb.le _) rfl,
-    SimplexData.homOrZero_eq t L a j _ hL (Index.left_min ham haj.le _)
-      (Index.left_max hj _) rfl]
-  refine gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq s R j b _ hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) rfl,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq s L a j _ hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) rfl,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq t R j b _ hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) rfl,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq t L a j _ hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) rfl]
+  refine _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
   · refine (normalizedTensorTriangleData_hom_back A X Y c τ _ _ _ _ _ _ _ _ hbt hjz).trans ?_
     apply normalizedTensorTriangleBack_Pinched_two_hom A X Y c τ
     intro i hi

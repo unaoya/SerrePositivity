@@ -21,20 +21,20 @@ lemma firstColumn_val : (firstColumn n m).val = 0 := rfl
 lemma leftColumn_val (i : Fin n) : (leftColumn n m i).val = 1 + i.val := rfl
 
 lemma middleColumn_val : (middleColumn n m).val = n + 1 := by
-  dsimp [middleColumn, leftBoundaryWord, Word.single]
+  dsimp [middleColumn, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryWord, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single]
   omega
 
 lemma rightColumn_val (i : Fin m) : (rightColumn n m i).val = n + 2 + i.val := by
-  dsimp [rightColumn, leftWithMiddle, leftBoundaryWord, Word.single]
+  dsimp [rightColumn, leftWithMiddle, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryWord, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single]
   omega
 
 lemma lastColumn_val : (lastColumn n m).val = n + m + 2 := by
-  dsimp [lastColumn, leftWithMiddle, leftBoundaryWord, Word.single]
+  dsimp [lastColumn, leftWithMiddle, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.leftBoundaryWord, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single]
   omega
 
-lemma vertex_cases {P : Fin ((word n m).length + 1) → Prop} (h0 : P 0)
+lemma vertex_cases {P : Fin ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length + 1) → Prop} (h0 : P 0)
     (hl : ∀ i, P (leftVertex n m i)) (hr : ∀ i, P (rightVertex n m i))
-    (hN : P (Fin.last (word n m).length)) (j : Fin ((word n m).length + 1)) : P j := by
+    (hN : P (Fin.last (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length)) (j : Fin ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length + 1)) : P j := by
   have hlen := length_eq n m
   have hj := j.isLt
   by_cases hz : j.val = 0
@@ -56,16 +56,16 @@ lemma vertex_cases {P : Fin ((word n m).length + 1) → Prop} (h0 : P 0)
       dsimp [i]
       omega
     exact he ▸ hr i
-  · have he : Fin.last (word n m).length = j := by
+  · have he : Fin.last (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length = j := by
       apply Fin.ext
-      change (word n m).length = j.val
+      change (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length = j.val
       omega
     exact he ▸ hN
 
-lemma column_cases {P : Fin (word n m).length → Prop} (h0 : P (firstColumn n m))
+lemma column_cases {P : Fin (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length → Prop} (h0 : P (firstColumn n m))
     (hl : ∀ i, P (leftColumn n m i)) (hc : P (middleColumn n m))
     (hr : ∀ i, P (rightColumn n m i)) (hN : P (lastColumn n m))
-    (j : Fin (word n m).length) : P j := by
+    (j : Fin (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MiddleBackwardPullback.word n m).length) : P j := by
   have hlen := length_eq n m
   have hj := j.isLt
   by_cases hz : j.val = 0

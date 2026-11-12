@@ -49,14 +49,14 @@ theorem diagramCylinder_eq_diagonalFamily (X Y : SimplicialSSetDiagram.{u}) (P :
   exact diagramFamilyCylinder_diagonal X Y P H
 
 /-- 元の安定圏の任意の入力族を、同じ全反復 core S• の全円柱へ送る。 -/
-def stableMultiCoreFamilyCylinder (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
+def stableMultiCoreFamilyCylinder (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C)) :
     ((stableMultiSCoreObjectEnrichedFunctor r).obj A).diagram ⋙ tensorRight P ⟶
       ((stableMultiSCoreObjectEnrichedFunctor r).obj C).diagram :=
   diagramFamilyCylinder _ _ P (H ≫ (stableMultiSCoreObjectEnrichedFunctor r).map A C)
 
 /-- 元の全反復 core 族の各段は、同じ入力族の同じ多次数の作用である。 -/
-theorem stableMultiCoreFamilyCylinder_app (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {P : SSet.{u}}
+theorem stableMultiCoreFamilyCylinder_app (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} {P : SSet.{u}}
     (H : P ⟶ (A ⟶[SSet.{u}] C)) (n : SimplexCategoryᵒᵖ) :
     (stableMultiCoreFamilyCylinder r H).app n =
       uncurry (H ≫ ((stableMultiSCoreEnrichedDiagram r).obj (fun _ => n)).map A C) := by
@@ -65,7 +65,7 @@ theorem stableMultiCoreFamilyCylinder_app (r : ℕ) {A C : _root_.SerrePositivit
   rw [Category.assoc, stableMultiSCoreObjectEnrichedFunctor_projection]
 
 /-- 同じ全反復 core 円柱の対角は、元の全豊穣反復実現族の評価そのもの。 -/
-theorem stableMultiCoreFamilyCylinder_diagonal (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
+theorem stableMultiCoreFamilyCylinder_diagonal (r : ℕ) {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}}
     {P : SSet.{u}} (H : P ⟶ (A ⟶[SSet.{u}] C)) :
     simplicialCylinderDiagonal _ _ P (stableMultiCoreFamilyCylinder r H) =
       uncurry (H ≫ (stableMultiRealizationEnrichedFunctor r).map A C) := by

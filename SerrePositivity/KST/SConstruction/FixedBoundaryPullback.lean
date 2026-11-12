@@ -22,7 +22,7 @@ lemma fixedBoundaryHomotopy_pullback {A T A' T' E : SSet.{u}}
     (j : A ⟶ T) (j' : A' ⟶ T') (p : T' ⟶ T) (k : A' ⟶ A)
     (hp : j' ≫ p = k ≫ j) {f g : T ⟶ E} (H : SSet.Homotopy f g) (b : A ⟶ E)
     (hr : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ b) :
-    (j' ▷ (Δ[1] : SSet.{u})) ≫ (functorHomotopyPrecomp H p).h =
+    (j' ▷ (Δ[1] : SSet.{u})) ≫ (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H p).h =
       fst A' Δ[1] ≫ k ≫ b := by
   change _ ≫ (p ▷ (Δ[1] : SSet.{u})) ≫ H.h = _
   rw [← comp_whiskerRight_assoc, hp, comp_whiskerRight, Category.assoc, hr,
@@ -62,7 +62,7 @@ lemma fixedBoundaryHomotopy_intervalPoint {P E : SSet.{u}} (v : P _⦋0⦌)
     (hr : ((P ◁ (SSet.boundary 1).ι) ▷ (Δ[1] : SSet.{u})) ≫ H.h =
       fst (P ⊗ (∂Δ[1] : SSet.{u})) Δ[1] ≫ (P ◁ (SSet.boundary 1).ι) ≫ f) :
     ((SSet.boundary 1).ι ▷ (Δ[1] : SSet.{u})) ≫
-        (functorHomotopyPrecomp H (intervalParameterPoint v)).h =
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (intervalParameterPoint v)).h =
       fst (∂Δ[1] : SSet.{u}) Δ[1] ≫ (SSet.boundary 1).ι ≫ intervalParameterPoint v ≫ f := by
   have h := fixedBoundaryHomotopy_pullback (P ◁ (SSet.boundary 1).ι) (SSet.boundary 1).ι
     (intervalParameterPoint v) (intervalParameterBoundaryPoint v)

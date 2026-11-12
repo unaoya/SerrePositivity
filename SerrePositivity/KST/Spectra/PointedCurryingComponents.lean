@@ -27,9 +27,9 @@ set_option backward.isDefEq.respectTransparency.types false
 規約：標的の Kan 性を要求しない。
 使われ方：Goerss–Jardine I §7。随伴を使ったスペクトルの構造可換式の検査。 -/
 theorem componentOf_uncurry {X Y : PointedSimplicialSet.{u}}
-    {f g : X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y} (h : componentOf f = componentOf g) :
-    componentOf ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y).symm f) =
-      componentOf ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y).symm g) := by
+    {f g : X ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y} (h : componentOf f = componentOf g) :
+    componentOf ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y).symm f) =
+      componentOf ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y).symm g) := by
   change componentOf (MonoidalClosed.uncurry f) = componentOf (MonoidalClosed.uncurry g)
   rw [MonoidalClosed.uncurry_eq, MonoidalClosed.uncurry_eq]
   exact componentOf_comp_right (componentOf_suspension h)
@@ -40,9 +40,9 @@ theorem componentOf_uncurry {X Y : PointedSimplicialSet.{u}}
 規約：構造射自体の厳密な等式を要求しない。
 使われ方：BF 1978 §2、HA §1.4.2。ホモトピー可換な列の比較の厳密化の入力。 -/
 theorem componentOf_of_curry {X Y : PointedSimplicialSet.{u}}
-    {f g : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ⟶ Y}
-    (h : componentOf (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y f) =
-      componentOf (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y g)) : componentOf f = componentOf g := by
+    {f g : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ⟶ Y}
+    (h : componentOf (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y f) =
+      componentOf (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y g)) : componentOf f = componentOf g := by
   simpa only [Equiv.symm_apply_apply] using componentOf_uncurry h
 
 end

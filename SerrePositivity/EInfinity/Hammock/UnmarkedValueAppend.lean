@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueFlatten
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagAppendObjects
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzag
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag
 
 /-!
 # 元の hammock の貼り戻しによる文字列の連結
@@ -19,28 +19,28 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y Z : Paths C}
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y Z : Paths C}
 
-lemma column_append_left (S : Zigzag W.paths a X Y) (T : Zigzag W.paths b Y Z)
-    (i : Fin a.length) : column W (ZigzagAppend.obj S T) (i.castAdd b.length) = column W S i := by
-  dsimp only [column, ZigzagAppend.obj]
+lemma column_append_left (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths b Y Z)
+    (i : Fin a.length) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj S T) (i.castAdd b.length) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W S i := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
   rw [Fin.addCases_left]
-  exact GeneratorWord.erase_transport W _ _ (S.arrow i)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase_transport W _ _ (S.arrow i)
 
-lemma column_append_right (S : Zigzag W.paths a X Y) (T : Zigzag W.paths b Y Z)
-    (i : Fin b.length) : column W (ZigzagAppend.obj S T) (i.natAdd a.length) = column W T i := by
-  dsimp only [column, ZigzagAppend.obj]
+lemma column_append_right (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths b Y Z)
+    (i : Fin b.length) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj S T) (i.natAdd a.length) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W T i := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj]
   rw [Fin.addCases_right]
-  exact GeneratorWord.erase_transport W _ _ (T.arrow i)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase_transport W _ _ (T.arrow i)
 
-lemma value_append (S : Zigzag W.paths a X Y) (T : Zigzag W.paths b Y Z) :
-    value W (ZigzagAppend.obj S T) = value W S ++ value W T := by
+lemma value_append (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths b Y Z) :
+    value W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj S T) = value W S ++ value W T := by
   rw [value_flatten, value_flatten, value_flatten]
   change (List.ofFn (fun i : Fin (a.length + b.length) =>
-    column W (ZigzagAppend.obj S T) i)).flatten = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj S T) i)).flatten = _
   rw [List.ofFn_add, List.flatten_append]
   apply congrArg₂ List.append
   · exact congrArg (fun f : Fin a.length → List (Quiver.Total C) => (List.ofFn f).flatten)
@@ -49,9 +49,9 @@ lemma value_append (S : Zigzag W.paths a X Y) (T : Zigzag W.paths b Y Z) :
       (funext fun i => column_append_right W S T i)
 
 lemma value_forward {A B : Paths C} (p : A ⟶ B) :
-    value W (ForwardZigzag.obj (W := W.paths) p) = GeneratorWord.erase W p := by
+    value W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W.paths) p) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W p := by
   rw [value_flatten]
-  change (List.ofFn (fun _ : Fin 1 => GeneratorWord.erase W p)).flatten = _
+  change (List.ofFn (fun _ : Fin 1 => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W p)).flatten = _
   simp only [List.ofFn_succ, List.ofFn_zero, List.flatten_cons, List.flatten_nil, List.append_nil]
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators

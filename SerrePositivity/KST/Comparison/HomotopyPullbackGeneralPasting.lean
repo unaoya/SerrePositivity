@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.KanSquareReplacement
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # ホモトピー引き戻しの一般の横の貼り合わせ
@@ -26,6 +27,7 @@ open SerrePositivity.SimplicialModel
 規約：いずれの対象にも射にも Kan 性を要求しない。
 使われ方：有限骨格の帰納で、古い行の比較を次の骨格へ進める。
 -/
+@[kerodon 0110]
 theorem isHomotopyPullback_paste_horiz
     {P X Z Y B C : SSet.{u}} {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ B}
     {g : Y ⟶ B} {c : X ⟶ Z} {p : Z ⟶ C} {d : B ⟶ C}

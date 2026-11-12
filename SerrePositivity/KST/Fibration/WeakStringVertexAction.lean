@@ -16,7 +16,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 任意の元の実合成辺の終点評価は、始点と同じ共通 cofiber による核の作用である。 -/
-theorem weakStringVertexMultiAction {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+theorem weakStringVertexMultiAction {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (α : ⦋1⦌ ⟶ n) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map
       (weakStringVertexTopExact q n (α.toOrderHom 1))) =
@@ -29,8 +29,8 @@ theorem weakStringVertexMultiAction {B C : _root_.SerrePositivity.InfinityCatego
   exact h
 
 /-- 第零面の元の初期成分は、同じ初期成分と第一 cofiber 成分の核の作用である。 -/
-theorem weakStringFiniteComparison_face_zero_action {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringFiniteComparison_face_zero_action {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map
         (weakStringExactMap q (SimplexCategory.δ (0 : Fin (n + 2)))) ≫

@@ -53,14 +53,14 @@ abbrev middle := mapThenTarget i hL q ≫
   (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map r
 
 def first : SSet.Homotopy (sourceThenMap i hK (q ≫ r)) (middle i hL q r) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (HomotopyClasses.postHomotopy
       ((ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map r)
       (comparison i hK hL q))
     (by dsimp only [sourceThenMap]; rw [CategoryTheory.Functor.map_comp, Category.assoc]) rfl
 
 def second : SSet.Homotopy (middle i hL q r) (mapThenTarget i hM (q ≫ r)) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (HomotopyClasses.preHomotopy ((ihom (SSet.horn (n + 1) i).toSSet).map q)
       (comparison i hL hM r))
     (Category.assoc _ _ _).symm
@@ -68,12 +68,12 @@ def second : SSet.Homotopy (middle i hL q r) (mapThenTarget i hM (q ≫ r)) :=
 
 lemma first_h : (first i hK hL q r).h = (comparison i hK hL q).h ≫
     (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map r :=
-  LargeParameterSquare.changeEndpoints_h _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h _ _ _
 
 lemma second_h : (second i hL hM q r).h =
     ((ihom (SSet.horn (n + 1) i).toSSet).map q) ▷
       SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ (comparison i hL hM r).h :=
-  LargeParameterSquare.changeEndpoints_h _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h _ _ _
 
 abbrev base := (ihom (SSet.horn (n + 1) i).toSSet).map (q ≫ r)
 abbrev prescribed := (inputs (K := K) i).ι ≫ sourceThenMap i hK (q ≫ r)
@@ -202,7 +202,7 @@ lemma family_degenerate (d : Fin (n + 1))
       fst T (SSet.stdSimplex.obj (SimplexCategory.mk 2)) ≫ e ≫
         DegenerateHornInput.degeneracy d K ≫
           (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map (q ≫ r) := by
-  let u := CompatibleInputUnion.toInputs
+  let u := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun d => DegenerateHornInput.boundary i d K) d
   have hu : u ≫ (inputs (K := K) i).ι = DegenerateHornInput.boundary i d K := rfl

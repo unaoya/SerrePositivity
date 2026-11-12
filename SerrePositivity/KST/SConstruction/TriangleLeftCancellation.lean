@@ -52,7 +52,7 @@ lemma triangleLeftCancellationTriangle_face :
   rw [← stdSimplex.yonedaEquiv_δ_comp, Equiv.symm_apply_apply]
 
 /-- 元の比較面と同じ対角の退化面を持つ、両端固定の正方形データ。 -/
-def triangleLeftCancellationTransport : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport b (SSet.Edge.id y) d :=
+def triangleLeftCancellationTransport : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport b (SSet.Edge.id y) d :=
   ⟨b, SSet.Edge.id z, triangleLeftCancellationTriangle T U v,
     SSet.Edge.CompStruct.compId b⟩
 
@@ -100,9 +100,9 @@ def triangleLeftCancellationCylinder : EndpointFixedEdgeCylinder b d where
 
 /-- 同じ比較円柱の上面は、元の全四面体の同じ比較面を厳密に回収する。 -/
 lemma triangleLeftCancellationCylinder_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ (triangleLeftCancellationCylinder T U v).homotopy.h =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ (triangleLeftCancellationCylinder T U v).homotopy.h =
       stdSimplex.δ 0 ≫ triangleLeftCancellationAt T U v := by
-  change _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ ThreeEdgeTransport.square _ = _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ ThreeEdgeTransport.square _ = _
   rw [ThreeEdgeTransport.square_upper]
   exact triangleLeftCancellationTriangle_face T U v
 

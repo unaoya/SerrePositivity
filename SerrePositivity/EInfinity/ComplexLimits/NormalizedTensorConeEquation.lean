@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -34,10 +34,10 @@ lemma normalizedTensorConeData_equation {n : ℕ}
     have ht := normalizedTensorConeData_equation_of_last_mem A X Y c'
       Finset.univ (Finset.mem_univ _)
     have heq := complexSimplexData_equation_image_of_pullback A
-      (normalizedTensorConeData A X Y c) (prependOrderHom e.toOrderHom)
+      (normalizedTensorConeData A X Y c) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)
       (normalizedTensorConeData A X Y c') hp Finset.univ (prepend_injective e).injOn ht
     have h0U : (0 : Fin (n + 2)) ∈
-        (Finset.univ : Finset (Fin (r + 2))).image (prependOrderHom e.toOrderHom) :=
+        (Finset.univ : Finset (Fin (r + 2))).image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) :=
       Finset.mem_image.mpr ⟨0, Finset.mem_univ _, rfl⟩
     have hu : withoutFirst (Finset.univ : Finset (Fin (r + 2))) = Finset.univ := by
       ext i
@@ -45,7 +45,7 @@ lemma normalizedTensorConeData_equation {n : ℕ}
     have heU : (Finset.univ : Finset (Fin (r + 1))).image e = J :=
       J.image_orderEmbOfFin_univ hc
     have hImage : (Finset.univ : Finset (Fin (r + 2))).image
-        (prependOrderHom e.toOrderHom) = I := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) = I := by
       rw [← withFirst_withoutFirst _ h0U, withoutFirst_image_prepend, hu, heU]
       exact withFirst_withoutFirst I h0
     rw [hImage] at heq

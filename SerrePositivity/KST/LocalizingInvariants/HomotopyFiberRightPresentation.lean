@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 
@@ -26,11 +26,11 @@ local instance rightPresentationCategory : SimplicialCategory OmegaSpectrum.{u} 
 variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
   (a : X ⟶ X') (b : Y ⟶ Y') (h : p ≫ b = a ≫ q)
 
-def rightUnitIso : FunctorIso (SSet.yonedaEquiv.symm (coherentNerveEdge p).edge)
-    (SSet.yonedaEquiv.symm (coherentNerveEdge (fibrationReplacementProjection p)).edge) :=
-  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) (rightDiagram_eq p).symm) ≪≫
+def rightUnitIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fibrationReplacementProjection p)).edge) :=
+  eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) (rightDiagram_eq p).symm) ≪≫
     (FiberModel.replacementUnitDiagramIso p).precomp rightShape ≪≫
-      eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k))
+      eqToIso (congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k))
         (rightDiagram_eq (fibrationReplacementProjection p)))
 
 lemma rightUnitIso_arrow : Arrow.mk (homPre rightShape
@@ -38,8 +38,8 @@ lemma rightUnitIso_arrow : Arrow.mk (homPre rightShape
   unfold rightUnitIso
   simp only [Iso.trans_hom, eqToIso.hom]
   let f := homPre rightShape (FiberModel.replacementUnitDiagramIso p).hom
-  let h₀ := congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k)) (rightDiagram_eq p).symm
-  let h₁ := congrArg (fun k ↦ HomotopyCategory.mk (functorVertex k))
+  let h₀ := congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k)) (rightDiagram_eq p).symm
+  let h₁ := congrArg (fun k ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex k))
     (rightDiagram_eq (fibrationReplacementProjection p))
   change Arrow.mk f = Arrow.mk (eqToHom h₀ ≫ f ≫ eqToHom h₁)
   exact ((arrow_mk_eqToHom_comp h₀ (f ≫ eqToHom h₁)).trans
@@ -53,11 +53,11 @@ def unitRightPre := StrictArrow.pre (CospanReplacement.unit p (fromPoint Y))
 
 lemma rightUnitIso_presentation : Arrow.mk (rightUnitIso p).hom =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (unitRightPost p)) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy (unitRightPre p))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (unitRightPost p)) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (unitRightPre p))) := by
   rw [← rightUnitIso_arrow]
   change Arrow.mk (homPre rightShape (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (FiberModel.replacementUnitDiagramHomotopy p)))) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (FiberModel.replacementUnitDiagramHomotopy p)))) = _
   rw [rightShape_eq]
   exact StrictArrow.presentation _ _
 
@@ -67,10 +67,10 @@ def replacedTransformation := RawFiberComparison.diagramMap
   (FibrationReplacementComparison.map_projection p q a b h).symm
 
 def replacedRightPresentation := Truncated.HomotopyCategory.homMk
-  (functorEdgeOfSimplicialHomotopy
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (StrictArrow.post (replacedTransformation p q a b h) (AsSmall.up.map WalkingCospan.Hom.inl))) ≫
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (StrictArrow.pre (replacedTransformation p q a b h) (AsSmall.up.map WalkingCospan.Hom.inl)))
 
 lemma replacedRightPresentation_arrow :
@@ -83,10 +83,10 @@ def rightPresentation := (rightUnitIso p).hom ≫
   replacedRightPresentation p q a b h ≫ (rightUnitIso q).inv
 
 lemma squareHom_right_presentation :
-    Arrow.mk (homPre squareRightEdge (squareHom p q a b h)) =
+    Arrow.mk (homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (squareHom p q a b h)) =
       Arrow.mk (rightPresentation p q a b h) := by
   let e := (FiberModel.replacementUnitDiagramIso q).precomp rightShape
-  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (rightUnitIso q).hom)
+  have hi := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (rightUnitIso q).hom)
     (rightUnitIso_arrow q)
   simp only [IsIso.Iso.inv_hom] at hi
   refine (squareHom_right_base p q a b h).trans ?_

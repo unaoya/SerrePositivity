@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.LiftedIntervalCospanEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.UniverseKanPullback
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.StrictKanPullbackMapEquivalence
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalPullbackCoordinates
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseKanPullback
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.StrictKanPullbackMapEquivalence
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackCoordinates
 
 /-!
 概要：小さい interval 引き戻しの持ち上げから、大きい厳密な引き戻しへの実比較。

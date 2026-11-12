@@ -3,9 +3,9 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
-public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
@@ -125,7 +125,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves SerrePositivity.EInfinity
+open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
 open SerrePositivity.DerivedCompletion SerrePositivity.DifferentialGraded
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 

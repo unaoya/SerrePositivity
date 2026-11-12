@@ -13,7 +13,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.Cohere
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 noncomputable section

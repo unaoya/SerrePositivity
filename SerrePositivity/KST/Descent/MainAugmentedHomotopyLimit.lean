@@ -23,7 +23,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Descent.Main
 
@@ -61,18 +61,18 @@ def underlyingAugmentationCone (A : AugmentedLimitDiagram I) :
 規約：同型を別途選択して比較射と呼ばない。使われ方：添字変更・細分の指定射。 -/
 def homotopyLimitComparison (A : AugmentedLimitDiagram I) :
     A.left ⟶ PointedHomotopyLimit.obj A.right :=
-  Under.homMk (bousfieldKanConeComparison (underlyingAugmentationCone A)) (by
-    change A.left.hom ≫ weightedConeComparison (bousfieldKanWeight I)
+  Under.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison (underlyingAugmentationCone A)) (by
+    change A.left.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
       (underlyingAugmentationCone A) =
-        weightedConeComparison (bousfieldKanWeight I)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
           (PointedHomotopyLimit.basepointCone A.right)
-    have h := weightedConeComparison_naturality (bousfieldKanWeight I)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
       (PointedHomotopyLimit.basepointCone A.right) (underlyingAugmentationCone A)
       A.left.hom (𝟙 _) (fun i ↦ by
         change A.left.hom ≫ (A.hom.app i).right = (A.right.obj i).hom ≫ 𝟙 _
         rw [Under.w, Category.comp_id]
         rfl)
-    simpa only [weightedSectionsMap_id, Category.comp_id] using h)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap_id, Category.comp_id] using h)
 
 /-- 概要：実 BK 比較は増強元と係数の同時変更に自然（補題 3.2）。
 方針：N の重み付き比較の自然性に comma 射の可換性を渡す。
@@ -81,12 +81,12 @@ theorem homotopyLimitComparison_naturality {A B : AugmentedLimitDiagram I} (f : 
     f.left ≫ homotopyLimitComparison B =
       homotopyLimitComparison A ≫ PointedHomotopyLimit.map f.right := by
   apply Under.UnderMorphism.ext
-  change f.left.right ≫ weightedConeComparison (bousfieldKanWeight I)
+  change f.left.right ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
     (underlyingAugmentationCone B) =
-      weightedConeComparison (bousfieldKanWeight I) (underlyingAugmentationCone A) ≫
-        weightedSectionsMap (bousfieldKanWeight I)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (underlyingAugmentationCone A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
           (Functor.whiskerRight f.right PointedSimplicialSet.forget)
-  exact weightedConeComparison_naturality (bousfieldKanWeight I)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
     (underlyingAugmentationCone A) (underlyingAugmentationCone B) f.left.right
     (Functor.whiskerRight f.right PointedSimplicialSet.forget) (fun i ↦ by
       have h := congrArg (fun g ↦ (g.app i).right) f.w
@@ -98,7 +98,7 @@ theorem homotopyLimitComparison_naturality {A B : AugmentedLimitDiagram I} (f : 
 使われ方：主経路の一般形状の細分・添字変更。 -/
 def HasHomotopyLimitDescent (A : AugmentedLimitDiagram I) [KanComplex A.left.right]
     [∀ i, KanComplex (A.right.obj i).right] : Prop :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (homotopyLimitComparison A).right
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (homotopyLimitComparison A).right
 
 /-- 概要：元と各段の π_* 同型は指定 BK 降下を保存し反映する（補題 3.2）。
 方針：実 end の同型保存と指定比較の自然な正方形で合成を消去する。
@@ -106,8 +106,8 @@ def HasHomotopyLimitDescent (A : AugmentedLimitDiagram I) [KanComplex A.left.rig
 theorem hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism
     {A B : AugmentedLimitDiagram I} [KanComplex A.left.right] [KanComplex B.left.right]
     [∀ i, KanComplex (A.right.obj i).right] [∀ i, KanComplex (B.right.obj i).right]
-    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.left.right)
-    (hstage : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.right.app i).right) :
+    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.left.right)
+    (hstage : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.right.app i).right) :
     HasHomotopyLimitDescent A ↔ HasHomotopyLimitDescent B := by
   have hmap := PointedHomotopyLimit.map_piIsomorphism f.right hstage
   have hsquare := congrArg (fun g ↦ g.right) (homotopyLimitComparison_naturality f)
@@ -115,13 +115,13 @@ theorem hasHomotopyLimitDescent_iff_of_stagewise_piIsomorphism
     (homotopyLimitComparison A).right ≫ (PointedHomotopyLimit.map f.right).right at hsquare
   constructor
   · intro hA
-    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hA hmap
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.comp hA hmap
     rw [← hsquare] at hcomp
     exact KanPiIsomorphism.cancel_left_atVertex hf hcomp
       (PointedSimplicialSet.basepoint A.left)
   · intro hB
-    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hf hB
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.comp hf hB
     rw [hsquare] at hcomp
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hmap
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hcomp hmap
 
 end SerrePositivity.KST.Descent.Main

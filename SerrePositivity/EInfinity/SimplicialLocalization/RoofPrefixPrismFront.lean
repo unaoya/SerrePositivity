@@ -19,7 +19,7 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory SSet MonoidalCategory
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X : C.category} (p : U ⟶ (Functor.const I).obj X)
 
 def frontRaw {n : ℕ} (Γ : Fin (n + 1) ⥤ I) (t : Fin (n + 1) →o Fin 2) :

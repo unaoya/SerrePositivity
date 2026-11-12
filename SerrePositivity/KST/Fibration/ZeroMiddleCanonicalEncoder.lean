@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleLongFamilyComparison
 public import SerrePositivity.KST.Fibration.CoherentTriangleIntervalEndpoints
-public import SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleCoherentEncoderNative
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleCoherentEncoderNative
 
 /-!
 概要：Ind-S (9) の実 canonical encoder を元の全 S• 二短辺へ直接代入する。
@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：元の全 S• 二短辺を保つ実 canonical encoder。
@@ -29,7 +29,7 @@ variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 def zeroMiddleCanonicalEncode :
     zeroMiddleFullSReconstructionLongSpace s hZ K ⟶
       zeroMiddleFullSReconstructionTriangleSpace s hZ K :=
-  controlledTriangleCoherentEncoder
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleCoherentEncoder
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
     (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K
@@ -44,8 +44,8 @@ variable (ℓ : (zeroMiddleFullSReconstructionLongSpace s hZ K) _⦋0⦌)
 方針：実 canonical encoder の像の同じ関手頂点を実写像へ戻す。
 規約：入力の全パラメータを保持する。
 使われ方：指定共有対角と native Hom を持つ実上側族。 -/
-def zeroMiddleCanonicalFamily : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u} :=
-  controlledTriangleFamilyValue
+def zeroMiddleCanonicalFamily : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamilyValue
     ((zeroMiddleCanonicalEncode s hZ K).app (Opposite.op ⦋0⦌) ℓ)
 
 /-- 概要：同じ実 canonical 族は元の二短辺の全ホーンを厳密に保持する。
@@ -55,7 +55,7 @@ def zeroMiddleCanonicalFamily : (Δ[2] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{
 theorem zeroMiddleCanonicalFamily_horn :
     ((horn 2 (1 : Fin 3)).ι ▷ K) ≫ zeroMiddleCanonicalFamily s hZ K ℓ =
       zeroMiddleFullSReconstructionHorn s hZ K :=
-  controlledTriangleFamilyValue_horn _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleFamilyValue_horn _
 
 /-- 概要：同じ canonical 像の対角は元入力の直接 path 全族を厳密回収する。
 方針：F1 の実 encoder の全対角式と所有 path の端点等号を使う。
@@ -63,12 +63,12 @@ theorem zeroMiddleCanonicalFamily_horn :
 使われ方：K-6 c4 の上下の動く共有対角を同じ入力から貼る。 -/
 theorem zeroMiddleCanonicalFamily_diagonal :
     (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ zeroMiddleCanonicalFamily s hZ K ℓ =
-      (Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K ℓ ≫ evaluateFunctorAt
+      (Δ[1] ◁ (zeroMiddleLongPointFamily s hZ K ℓ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})))) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩))) := by
-  have h := controlledTriangleCoherentEncoder_diagonal
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleCoherentEncoder_diagonal
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
     (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K
@@ -76,7 +76,7 @@ theorem zeroMiddleCanonicalFamily_diagonal :
     (zeroMiddleFullSReconstructionHorn s hZ K)
     (zeroMiddleFullSReconstructionHorn_first s hZ K)
     (zeroMiddleFullSReconstructionHorn_last s hZ K) ℓ
-  have hp := (uliftTriangleNativePathIntervalIso_inv_first.{u, u + 1}).symm.trans
+  have hp := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso_inv_first.{u, u + 1}).symm.trans
     (coherentTriangleInterval_up_first.{u})
   rw [hp] at h
   exact h
@@ -87,10 +87,10 @@ theorem zeroMiddleCanonicalFamily_diagonal :
 使われ方：元の指定有限端点二胞体との照合。 -/
 theorem zeroMiddleCanonicalFamily_native (k : K _⦋0⦌) :
     HEq ((zeroMiddleLongPointFamily s hZ K ℓ).app (Opposite.op ⦋0⦌) k)
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
-        ((SSet.yonedaEquiv (familyAtVertex (zeroMiddleCanonicalFamily s hZ K ℓ) k)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (zeroMiddleCanonicalFamily s hZ K ℓ) k)).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩))) :=
-  controlledTriangleCoherentEncoder_native
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleCoherentEncoder_native
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
     (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)) K

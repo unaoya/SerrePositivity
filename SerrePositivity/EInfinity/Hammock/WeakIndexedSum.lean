@@ -20,11 +20,11 @@ namespace SerrePositivity.EInfinity.Hammock.IndexedSum
 open CategoryTheory SerrePositivity.InfinityCategories
 
 lemma map_weak {I : Type u} {A B : I → SSet.{u}} (f : ∀ i, A i ⟶ B i)
-    (hf : ∀ i, IsWeakHomotopyEquivalence (f i)) : IsWeakHomotopyEquivalence (map f) := by
+    (hf : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f i)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (map f) := by
   apply ValueSupport.weak_of_singleton_restrictions (label A) (label B) (map f) (map_label f)
   intro i
-  have hA := (isPrecompositionEquivalence_of_iso (singletonIso A i)).isWeakHomotopyEquivalence
-  have hB := (isPrecompositionEquivalence_of_iso (singletonIso B i)).isWeakHomotopyEquivalence
+  have hA := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (singletonIso A i)).isWeakHomotopyEquivalence
+  have hB := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (singletonIso B i)).isWeakHomotopyEquivalence
   apply hB.cancel_right
   rw [singletonIso_naturality]
   exact hA.comp (hf i)

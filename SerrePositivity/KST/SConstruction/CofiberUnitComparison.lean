@@ -26,7 +26,7 @@ lemma arCofiberUnitPrism_lower {n : ℕ} (a : Ar.{u} n) (x : Fin 2) :
         arCofiberUnitPrism a =
       lift (SSet.const (ComposableArrows.mk₀
         (⟨arObj 0 (intervalStep a.down.val.1 a.down.val.2 a.down.property x) (Fin.zero_le _),
-          Or.inl rfl⟩ : FrameAr n))) squareRightEdge ≫
+          Or.inl rfl⟩ : FrameAr n))) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫
         (frameInclusion n ▷ (Δ[1] ⊗ Δ[1] : SSet.{u})) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
@@ -68,7 +68,7 @@ lemma arCofiberUnitPrism_upper {n : ℕ} (a : Ar.{u} n) (x : Fin 2) :
 規約：全ての第一行の区間を含む。使われ方：prism の下側の角の恒等性。 -/
 lemma frameCofiberSquareMap_row_right {n : ℕ} (k : Fin (n + 1)) :
     lift (SSet.const (ComposableArrows.mk₀
-      (⟨arObj 0 k (Fin.zero_le _), Or.inl rfl⟩ : FrameAr.{u} n))) squareRightEdge ≫
+      (⟨arObj 0 k (Fin.zero_le _), Or.inl rfl⟩ : FrameAr.{u} n))) _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫
         frameCofiberSquareMap n =
       SSet.const (ComposableArrows.mk₀ (⟨arObj 0 k (Fin.zero_le _), Or.inl rfl⟩ : FrameAr n)) := by
   apply SSet.yonedaEquiv.injective
@@ -110,28 +110,28 @@ def arCofiberUnitComparisonIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (E : arNerve n ⊗ (Δ[1] ⊗ Δ[1]) ⟶ C) (F : frameNerve n ⟶ C)
     (h : (frameInclusion n ▷ (Δ[1] ⊗ Δ[1] : SSet.{u})) ≫ E = frameCofiberSquareMap n ≫ F)
     (a : Ar.{u} n) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (arCofiberUnitSquare a ≫ E)
       (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property ≫
         lift (𝟙 (arNerve n)) (SSet.const
           (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫ E) := by
-  have hv (v : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) : IsInvertibleEdge (edgeOfSimplex
+  have hv (v : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
       ((arCofiberUnitPrism a ≫ E).app (Opposite.op ⦋1⦌)
-        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1))) := by
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant v 1))) := by
     obtain ⟨z, hz⟩ := arCofiberUnitPrism_vertex_constant E F h a v
     have he := congrArg SSet.yonedaEquiv hz
     change (arCofiberUnitPrism a ≫ E).app (Opposite.op ⦋1⦌)
-      (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant v 1) =
-        PinchedHom.constant z 1 at he
+      (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant v 1) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 1 at he
     rw [he]
-    have hi := isEquivalencePathVertex_const z
-    unfold IsEquivalencePathVertex at hi
-    rw [intervalFunctorVertexEdge_functorVertex] at hi
+    have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isEquivalencePathVertex_const z
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex at hi
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_functorVertex] at hi
     exact hi
-  have e := functorIsoOfEquivalenceHomotopy (arCofiberUnitPrism a ≫ E) hv
-  change FunctorIso
-    (prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a ≫ E)
-    ((prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a) ≫ E) at e
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfEquivalenceHomotopy (arCofiberUnitPrism a ≫ E) hv
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a ≫ E)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (Δ[1] ⊗ Δ[1] : SSet.{u}) ≫ arCofiberUnitPrism a) ≫ E) at e
   simp only [← Category.assoc, arCofiberUnitPrism_zero, arCofiberUnitPrism_one] at e
   exact e
 
@@ -150,7 +150,7 @@ lemma arSquareFamilyDiagram_evaluate {n : ℕ} {C : SSet.{u}}
     (H : arNerve n ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)
     (v : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) :
     lift (𝟙 (arNerve n)) (SSet.const v) ≫ arSquareFamilyDiagram H =
-      H ≫ evaluateFunctorAt v := by
+      H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -177,9 +177,9 @@ def arSquareFamilyUnitComparisonIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (H : arNerve n ⟶ (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)
     (F : frameNerve n ⟶ C) (h : frameInclusion n ≫ H = frameCofiberFamily F)
     (a : Ar.{u} n) :
-    FunctorIso (arCofiberUnitSquare a ≫ arSquareFamilyDiagram H)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (arCofiberUnitSquare a ≫ arSquareFamilyDiagram H)
       (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property ≫
-        H ≫ evaluateFunctorAt (X := (Δ[1] ⊗ Δ[1] : SSet.{u})) (Y := C)
+        H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := (Δ[1] ⊗ Δ[1] : SSet.{u})) (Y := C)
           (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
   have e := arCofiberUnitComparisonIso (arSquareFamilyDiagram H) F
     (arSquareFamilyDiagram_frame H F h) a
@@ -187,7 +187,7 @@ def arSquareFamilyUnitComparisonIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property ≫ q)
       (arSquareFamilyDiagram_evaluate H
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-  exact Eq.mp (congrArg (fun q => FunctorIso
+  exact Eq.mp (congrArg (fun q => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (arCofiberUnitSquare a ≫ arSquareFamilyDiagram H) q) he) e
 
 /-- 概要：枠を保つ実際の cofiber 補完では、単位の中間正方形と右上角の標準抽出が同型。
@@ -196,18 +196,18 @@ def arSquareFamilyUnitComparisonIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 使われ方：第一行復元で残る中間正方形の普遍性の切り分け。 -/
 def cofiberFamilyUnitComparisonIso {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (H : arNerve n ⟶ cofiberDiagrams C) (F : frameNerve n ⟶ C)
-    (hF : IsZeroFrameVertex (functorVertex F))
+    (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F))
     (h : frameInclusion n ≫ H = zeroFrameCofiberFamily F hF) (a : Ar.{u} n) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (arCofiberUnitSquare a ≫ arSquareFamilyDiagram
-        (H ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι))
+        (H ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι))
       (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property ≫
         H ≫ cofiberApex C) := by
   have hraw : frameInclusion n ≫
-      (H ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) = frameCofiberFamily F := by
+      (H ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) = frameCofiberFamily F := by
     rw [← Category.assoc, h, zeroFrameCofiberFamily_ι]
   have e := arSquareFamilyUnitComparisonIso
-    (H ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) F hraw a
+    (H ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) F hraw a
   exact e
 
 end SerrePositivity.KST.SConstruction

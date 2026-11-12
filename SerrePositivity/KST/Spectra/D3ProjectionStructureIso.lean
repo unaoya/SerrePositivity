@@ -22,13 +22,13 @@ local instance d3ProjectionIsoSpectrumCategory : SimplicialCategory OmegaSpectru
   OmegaSpectrum.simplicialCategory
 
 private lemma d3ProjectionGraded_inv (n : ℕ) (X : CommonObject.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
       (commonStageGradedProjection n) X)).toTruncated := by
   rw [commonStageGradedProjection_component]
   exact pointedKanObject_edge_isInvertible_of_piIsomorphism _ (commonProjection_levelwise X.val n)
 
 private lemma d3StructureGraded_inv (n : ℕ) (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
       (d3StageStructureGraded n) X)).toTruncated := by
   rw [d3StageStructureGraded_component]
   exact pointedKanObject_edge_isInvertible_of_piIsomorphism _
@@ -57,7 +57,7 @@ lemma commonStageLoopFunctorIso_postcomp_hom_heq (n : ℕ) :
 
 /-- 既存の構造同型を同じ refined 関手へ前合成した順射の指定値を回収する。 -/
 lemma commonRefinedStageStructureIso_hom_heq (n : ℕ) :
-    HEq ((d3StageStructureFunctorIso.{u} n).precomp (coherentNerveMap commonRefinedEnriched)).hom
+    HEq ((d3StageStructureFunctorIso.{u} n).precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched)).hom
       (d3GradedHom (commonRefinedStageStructureGraded n)) := by
   unfold d3StageStructureFunctorIso
   apply HEq.trans (d3FunctorIsoOfEq_precomp_hom_heq _ _ _ _)
@@ -85,45 +85,45 @@ lemma commonOriginalLoopStructureIso_hom_heq (n : ℕ) :
 
 /-- 元の段右射影同型を、同じ厳密豊穣関手の端点表示に正規化する。 -/
 def commonProjectionStructureQIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
-      (coherentNerveMap ((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 1))).comp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap ((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 1))).comp
         SSet pointedKanLoopEnrichedFunctor)) :=
-  F2.functorIsoOfEq (commonStageLoopFunctorIso n)
-    (by rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
-    (by rw [coherentNerveMap_comp, coherentNerveMap_comp]; rfl)
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (commonStageLoopFunctorIso n)
+    (by rw [commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp])
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]; rfl)
 
 /-- 元の refined 構造同型を、同じ厳密豊穣関手の端点表示に正規化する。 -/
 def commonProjectionStructureRefinedIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
-      (coherentNerveMap ((commonRefinedStageKanEnriched (n + 1)).comp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap ((commonRefinedStageKanEnriched (n + 1)).comp
         SSet pointedKanLoopEnrichedFunctor)) :=
-  F2.functorIsoOfEq
-    ((d3StageStructureFunctorIso n).precomp (coherentNerveMap commonRefinedEnriched))
-    (by rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
-    (by rw [coherentNerveMap_comp, commonRefinedStageKanEnriched, coherentNerveMap_comp,
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
+    ((d3StageStructureFunctorIso n).precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched))
+    (by rw [commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp])
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp,
       Category.assoc]; rfl)
 
 /-- 元の次段右射影の通常 loop 像を、同じ厳密豊穣関手の端点表示に正規化する。 -/
 def commonProjectionStructureLoopQIso (n : ℕ) :
-    FunctorIso (coherentNerveMap ((commonRefinedStageKanEnriched.{u} (n + 1)).comp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap ((commonRefinedStageKanEnriched.{u} (n + 1)).comp
       SSet pointedKanLoopEnrichedFunctor))
-      (coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
         SSet pointedKanLoopEnrichedFunctor).comp SSet pointedKanLoopEnrichedFunctor)) :=
-  F2.functorIsoOfEq ((commonStageLoopFunctorIso (n + 1)).postcomp pointedKanLoopInfinity)
-    (by rw [coherentNerveMap_comp, commonRefinedStageKanEnriched, coherentNerveMap_comp]; rfl)
-    (by rw [coherentNerveMap_comp, coherentNerveMap_comp, coherentNerveMap_comp]; rfl)
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((commonStageLoopFunctorIso (n + 1)).postcomp pointedKanLoopInfinity)
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]; rfl)
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]; rfl)
 
 /-- 元の次段構造同型の通常 loop 像を、同じ厳密豊穣関手の端点表示に正規化する。 -/
 def commonProjectionStructureOriginalIso (n : ℕ) :
-    FunctorIso (coherentNerveMap ((commonOriginalEnriched.comp SSet
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap ((commonOriginalEnriched.comp SSet
       (d3StageKanEnriched.{u} (n + 1))).comp SSet pointedKanLoopEnrichedFunctor))
-      (coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (((commonOriginalEnriched.comp SSet (d3StageKanEnriched (n + 2))).comp
         SSet pointedKanLoopEnrichedFunctor).comp SSet pointedKanLoopEnrichedFunctor)) :=
-  F2.functorIsoOfEq
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     (((d3StageStructureFunctorIso (n + 1)).precomp commonOriginalInfinityMap).postcomp
       pointedKanLoopInfinity)
-    (by rw [coherentNerveMap_comp, coherentNerveMap_comp]; rfl)
-    (by rw [coherentNerveMap_comp, coherentNerveMap_comp, coherentNerveMap_comp,
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]; rfl)
+    (by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp,
       Category.assoc]; rfl)
 
 lemma commonProjectionStructureQIso_hom (n : ℕ) :

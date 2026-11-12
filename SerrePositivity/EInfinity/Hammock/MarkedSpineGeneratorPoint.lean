@@ -22,28 +22,28 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
 
-def generatorPoint (W : MorphismProperty C) (g : FactorTarget.Index W) (n : SimplexCategoryᵒᵖ) :
+def generatorPoint (W : MorphismProperty C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (n : SimplexCategoryᵒᵖ) :
     MarkedSpine W g.val.right n g.val.left :=
   cons g.val.left g (AllMarked.nativeUnitPoint W g.val.left n) (unitPoint W g.val.right n)
 
-lemma glue_generatorPoint (g : FactorTarget.Index W) :
-    glue (generatorPoint W g n) = arrowPoint W.paths g.val.hom.toPath n := by
+lemma glue_generatorPoint (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    glue (generatorPoint W g n) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n := by
   change FactorTarget.pastePoint W g.val.left g.val.right g
     (AllMarked.nativeUnitPoint W g.val.left n) (glue (unitPoint W g.val.right n)) = _
   dsimp only [FactorTarget.pastePoint]
-  rw [AllMarked.inclusion_unitPoint, glue_unit, ← arrowPoint_identity,
-    ← arrowPoint_identity, composePoint_identity_left, composePoint_identity_right]
+  rw [AllMarked.inclusion_unitPoint, glue_unit, ← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity,
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_left, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_right]
 
-lemma generatorPoint_simplex {m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (g : FactorTarget.Index W) :
+lemma generatorPoint_simplex {m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     map θ (generatorPoint W g n) = generatorPoint W g m := by
   apply glue_injective
-  rw [glue_simplex, glue_generatorPoint, arrowPoint_simplex, glue_generatorPoint]
+  rw [glue_simplex, glue_generatorPoint, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_simplex, glue_generatorPoint]
 
-lemma cons_decomposition (g : FactorTarget.Index W) (p : (FactorTarget.left W X g.val).obj n)
+lemma cons_decomposition (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
     (t : MarkedSpine W Y n g.val.right) :
     cons X g p t = append (nil X p) (append (generatorPoint W g n) t) := by
   apply glue_injective
   rw [glue_append, glue_append, glue_generatorPoint]
-  exact composePoint_assoc W.paths _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_assoc W.paths _ _ _
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

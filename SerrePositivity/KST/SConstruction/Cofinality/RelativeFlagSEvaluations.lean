@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：元の Ar 評価の回収。 -/
 lemma completionRelativeSTransposeDiagram_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     completionRelativeSTransposeDiagram r ι f hf m n ≫
       (ihom (stdSimplex.obj n)).map (gappedSubcomplex m
         (((multiSEndofunctor r).obj ι).obj Y).carrier).ι =
@@ -43,7 +43,7 @@ lemma completionRelativeSTransposeDiagram_inclusion (r : ℕ)
 使われ方：元の転置旗の wide 条件の全成分判定。 -/
 lemma completionRelativeSTransposeDiagram_evaluation (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (a : (arNerve m) _⦋0⦌) :
     completionRelativeSTransposeDiagram r ι f hf m n ≫
       (ihom (stdSimplex.obj n)).map
@@ -52,7 +52,7 @@ lemma completionRelativeSTransposeDiagram_evaluation (r : ℕ)
         (completionRelativeFlagAmbientMap r ι f hf n).val := by
   let T := completionRelativeSTransposeDiagram r ι f hf m n
   let J := (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι
-  let E := evaluateFunctorAt (Y := (((multiSEndofunctor r).obj ι).obj Y).carrier) a
+  let E := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := (((multiSEndofunctor r).obj ι).obj Y).carrier) a
   have he : (ihom (stdSimplex.obj n)).map
       (sStableEvaluation m (((multiSEndofunctor r).obj ι).obj Y) a).val =
         (ihom (stdSimplex.obj n)).map J ≫ (ihom (stdSimplex.obj n)).map E :=
@@ -70,17 +70,17 @@ lemma completionRelativeSTransposeDiagram_evaluation (r : ℕ)
       let G := (gappedSubcomplex m (completionRelativeFlagStableModel r ι f hf n).carrier).ι
       let I := (completionRelativeFlagAmbientMap r ι f hf n).val
       let H := (ihom (arNerve m)).map I
-      let S := (internalHomSwapIso (arNerve m) (stdSimplex.obj n)
+      let S := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n)
         (((multiSEndofunctor r).obj ι).obj Y).carrier).hom
       change (G ≫ H ≫ S) ≫ (ihom (stdSimplex.obj n)).map E =
-        (G ≫ evaluateFunctorAt a) ≫ I
-      let V := evaluateFunctorAt
+        (G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a) ≫ I
+      let V := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (Y := (ihom (stdSimplex.obj n)).obj
           (((multiSEndofunctor r).obj ι).obj Y).carrier) a
-      let L := evaluateFunctorAt
+      let L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (Y := (completionRelativeFlagStableModel r ι f hf n).carrier) a
       have hs : S ≫ (ihom (stdSimplex.obj n)).map E = V :=
-        internalHomSwapIso_evaluate (arNerve m) (stdSimplex.obj n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_evaluate (arNerve m) (stdSimplex.obj n)
           (((multiSEndofunctor r).obj ι).obj Y).carrier a
       have hi : H ≫ V = L ≫ I := ihom_postcomp_evaluate I a
       exact (Category.assoc G (H ≫ S)

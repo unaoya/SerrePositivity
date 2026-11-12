@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
 
 /-!
 概要：零の比較 cochain を持つ cocone の斉次持ち上げと、その射への自然性。
@@ -33,13 +33,13 @@ lemma cochainMappingCoconeMap_inl {K₁ L₁ K₂ L₂ : Complex R}
     (d₁ : K₁ ⟶ L₁) (d₂ : K₂ ⟶ L₂) (a : K₁ ⟶ K₂) (b : L₁ ⟶ L₂)
     (comm : d₁ ≫ b = a ≫ d₂) (n : ℤ) :
     (mappingCocone.inl d₁).v n n (add_zero n) ≫
-      (complexMappingCoconeMap d₁ d₂ a b comm).f n =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d₁ d₂ a b comm).f n =
         a.f n ≫ (mappingCocone.inl d₂).v n n (add_zero n) := by
-  apply complexMappingCocone_X_ext d₂ n
-  · rw [Category.assoc, complexMappingCoconeMap_f_fst_f, ← Category.assoc,
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_X_ext d₂ n
+  · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_f_fst_f, ← Category.assoc,
       mappingCocone.inl_v_fst_f, Category.id_comp, Category.assoc,
       mappingCocone.inl_v_fst_f, Category.comp_id]
-  · rw [Category.assoc, complexMappingCoconeMap_f_snd_v, ← Category.assoc,
+  · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_f_snd_v, ← Category.assoc,
       mappingCocone.inl_v_snd_v, zero_comp, Category.assoc,
       mappingCocone.inl_v_snd_v, comp_zero]
 

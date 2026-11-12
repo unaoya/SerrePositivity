@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeTargetEvaluationComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeFiberSectionsIso

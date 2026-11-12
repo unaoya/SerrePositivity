@@ -14,12 +14,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorDoubleConeSimplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    Simplex A (Complex A) (n + 2) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (n + 2) :=
   complexRightConeSimplex A (normalizedTensorConeSimplexAugmentation A X Y c)
 
 lemma normalizedTensorDoubleConeSimplex_front {n : ℕ}

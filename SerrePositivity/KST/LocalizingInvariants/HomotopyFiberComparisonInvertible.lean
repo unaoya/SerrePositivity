@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 
@@ -36,14 +36,14 @@ variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
 include ha hb
 
 lemma replacedTransformation_invertible (i : AsSmall.{u} WalkingCospan) :
-    IsInvertibleEdge (coherentNerveEdge ((replacedTransformation p q a b h).app i)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((replacedTransformation p q a b h).app i)) := by
   rcases i with ⟨_ | (_ | _)⟩
-  · change IsInvertibleEdge (coherentNerveEdge b).toTruncated
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).toTruncated
     exact isInvertible_of_piIsomorphism b hb
-  · change IsInvertibleEdge
-      (coherentNerveEdge (FibrationReplacementComparison.map p q a b h)).toTruncated
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (FibrationReplacementComparison.map p q a b h)).toTruncated
     exact FibrationReplacementComparison.map_isInvertible p q a b h ha
-  · change IsInvertibleEdge (coherentNerveEdge (𝟙 spectrumPoint.{u})).toTruncated
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.{u})).toTruncated
     apply isInvertible_of_piIsomorphism
     intro j
     rw [homotopyMap_id]
@@ -54,7 +54,7 @@ lemma replacedDiagramHom_isIso : IsIso (replacedDiagramHom p q a b h) := by
     (replacedTransformation_invertible p q a b h ha hb)).hom
   infer_instance
 
-lemma cubeHom_base_isIso : IsIso (homPre (joinInr Δ[0] _) (cubeHom p q a b h)) := by
+lemma cubeHom_base_isIso : IsIso (homPre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] _) (cubeHom p q a b h)) := by
   haveI := replacedDiagramHom_isIso p q a b h ha hb
   haveI : IsIso (diagramHom p q a b h) := by
     unfold diagramHom
@@ -73,7 +73,7 @@ lemma squareHom_isIso : IsIso (squareHom p q a b h) := by
   unfold squareHom homPre
   infer_instance
 
-def squareIso : FunctorIso (Y := Sp.{u}) (FiberModel.homotopyFiberSquare p).square
+def squareIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Y := Sp.{u}) (FiberModel.homotopyFiberSquare p).square
     (FiberModel.homotopyFiberSquare q).square := by
   haveI := squareHom_isIso p q a b h ha hb
   exact asIso (squareHom p q a b h)

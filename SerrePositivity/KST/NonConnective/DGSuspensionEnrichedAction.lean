@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeActionInput
-public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.NerveHomEdgeNaturality
 
 /-!
 概要：採用した懸垂作用の供給路を、元の全 Hom 族から固定 S 作用へ接続する。
@@ -46,9 +46,9 @@ def DGSuspensionNativeActionInput.ofEnrichedHom
       eHomEquiv SSet f ≫ H A B =
         eHomEquiv SSet (dgKappaSuspensionInputMap R A B (s A).cone (s B).cone (d f))) :
     DGSuspensionNativeActionInput R s where
-  map := coherentNerveMap (dgSuspensionEnrichedSelfFunctor R s H hid hcomp)
-  vertex A := coherentNerveMap_vertex _ A
+  map := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgSuspensionEnrichedSelfFunctor R s H hid hcomp)
+  vertex A := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex _ A
   data := d
-  edge f := coherentNerveMap_edge_of_homEquiv _ f _ (hedge f)
+  edge f := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveMap_edge_of_homEquiv _ f _ (hedge f)
 
 end SerrePositivity.KST.NonConnective

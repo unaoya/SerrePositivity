@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.EmptyShapeConeCriterion
-public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredTerminal
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredLimitExchange
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.EmptyShapeConeCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredTerminal
 
 /-!
 概要：一般 coherent filtered 図式の極限交換の空形状の場合を証明する。

@@ -25,9 +25,9 @@ def arCutFamily {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1)) (F : arNerve n ⟶ C)
 lemma arCutFamily_vertex {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1))
     (F : arNerve n ⟶ C) (a : Ar.{u} n) :
     (arCutFamily k F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a) =
-      functorVertex (arCutSquareAt k a ≫ F) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arCutSquareAt k a ≫ F) := by
   rw [arCutFamily, curry_vertex_value]
-  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C => functorVertex f)
+  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
   have h : CartesianMonoidalCategory.lift (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u}))
       (SSet.const (ComposableArrows.mk₀ a)) ≫
         (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n)).hom =
@@ -40,22 +40,22 @@ lemma arCutFamily_vertex {n : ℕ} {C : SSet.{u}} (k : Fin (n + 1))
 def gappedCutCofiberFamily {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (k : Fin (n + 1)) {F : arNerve n ⟶ C} (hF : IsGapped F) :
     arNerve n ⟶ cofiberDiagrams C :=
-  fullSubcomplexLift IsCofiberDiagramVertex (arCutFamily k F) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift IsCofiberDiagramVertex (arCutFamily k F) (by
     intro v
     obtain ⟨a, rfl⟩ := nerveEquiv.symm.surjective v
     change IsCofiberDiagramVertex
       ((arCutFamily k F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
     rw [arCutFamily_vertex]
-    change IsZeroVertex (squareVertex (squareDiagram (functorVertex (arCutSquareAt k a ≫ F))) 0 1) ∧
-      IsPushoutSquare (squareDiagram (functorVertex (arCutSquareAt k a ≫ F)))
-    rw [squareDiagram_functorVertex]
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arCutSquareAt k a ≫ F))) 0 1) ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arCutSquareAt k a ≫ F)))
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_functorVertex]
     exact arCutSquareAt_isCofiber k a hF)
 
 /-- 切断 cofiber 族の包含は元の四角形の coherent な族を保持する。 -/
 lemma gappedCutCofiberFamily_ι {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (k : Fin (n + 1)) {F : arNerve n ⟶ C} (hF : IsGapped F) :
-    gappedCutCofiberFamily k hF ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+    gappedCutCofiberFamily k hF ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
       arCutFamily k F :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 end SerrePositivity.KST.SConstruction

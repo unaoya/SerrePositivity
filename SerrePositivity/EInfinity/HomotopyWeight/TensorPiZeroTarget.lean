@@ -49,7 +49,7 @@ lemma frameConePiZeroLocalizationEquiv_target {Y Z : C} [IsFibrant Y] [IsFibrant
     frameConePiZeroLocalizationEquiv K W B hW hB hconst Q Y
       (SSet.mapπ₀ ((tensorFrameHomIso K W B).app Y).hom (SSet.π₀.mk g)) ≫ Q.map f
   have hn : ((tensorFrameHomIso K W B).app Y).hom ≫ (frameCone K W B).map f =
-      (cosimplicialHom (tensorFrame K W B)).map f ≫ ((tensorFrameHomIso K W B).app Z).hom :=
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (tensorFrame K W B)).map f ≫ ((tensorFrameHomIso K W B).app Z).hom :=
     ((tensorFrameHomIso K W B).hom.naturality f).symm
   rw [← SSet.mapπ₀_comp_apply, hn, SSet.mapπ₀_comp_apply, SSet.mapπ₀_mk,
     frameConePiZeroLocalizationEquiv_mk, frameConePiZeroLocalizationEquiv_mk]

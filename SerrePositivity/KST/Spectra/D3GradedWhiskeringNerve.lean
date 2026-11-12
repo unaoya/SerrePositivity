@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3GradedCompositionNerve
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
 
 /-!
 概要：厳密豊穣変換の前後合成を、同じ coherent な区間族の前後合成と照合する。
@@ -24,8 +24,8 @@ variable {C D E : Type v} [Category.{u} C] [Category.{u} D] [Category.{u} E]
 
 /-- 順序の証明を固定し、元の豊穣 Hom へ同じ基底関手を作用させる。 -/
 def d3OrderedCylinderMap (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
-    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin (m + 1)) C)
-      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin (m + 1)) D) where
+    EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin (m + 1)) C)
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin (m + 1)) D) where
   obj X := ⟨X.position, K.obj X.val⟩
   map X Y := {
     app d := ↾fun ⟨p, f⟩ ↦ (p, (K.map X.val Y.val).app d f)
@@ -50,13 +50,13 @@ def d3OrderedCylinderMap (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
     funext d
     apply ConcreteCategory.hom_ext
     rintro ⟨⟨p, f⟩, ⟨q, g⟩⟩
-    exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app K X.val Y.val Z.val d f g)
+    exact Prod.ext rfl (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functor_comp_app K X.val Y.val Z.val d f g)
 
 /-- 元の nerve と順序単体の pairing は、同じ基底豊穣関手へ厳密に自然。 -/
 lemma d3OrderedCylinderMap_family (K : EnrichedFunctor SSet.{u} C D) (m : ℕ) :
-    (coherentNerveMap K ⊗ₘ 𝟙 (Δ[m] : SSet.{max u v})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K ⊗ₘ 𝟙 (Δ[m] : SSet.{max u v})) ≫
       EnrichedOrderedCylinder.nerveSimplexFamily m =
-    EnrichedOrderedCylinder.nerveSimplexFamily m ≫ coherentNerveMap (d3OrderedCylinderMap K m) := by
+    EnrichedOrderedCylinder.nerveSimplexFamily m ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3OrderedCylinderMap K m) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -107,7 +107,7 @@ lemma d3GradedPostcomp_cylinder {F G : EnrichedFunctor SSet.{u} C D}
     | rfl
     | have hp := p.down.down
       norm_num [Fin.le_def] at hp
-    | exact (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.functor_comp_app K _ _ _ d
+    | exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.functor_comp_app K _ _ _ d
         ((η.app x).app d PUnit.unit) ((G.map x y).app d f)).symm
 
 /-- 前合成は、指定厳密変換の全区間族を保つ。 -/
@@ -115,10 +115,10 @@ lemma d3GradedPrecomp_family (K : EnrichedFunctor SSet.{u} C D)
     {F G : EnrichedFunctor SSet.{u} D E}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G) :
     StrictEnrichedTransformation.family _ _ (d3GradedPrecomp K η) =
-      (coherentNerveMap K ⊗ₘ 𝟙 (Δ[1] : SSet.{max u v})) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K ⊗ₘ 𝟙 (Δ[1] : SSet.{max u v})) ≫
         StrictEnrichedTransformation.family F G η := by
   rw [StrictEnrichedTransformation.family, d3GradedPrecomp_cylinder,
-    coherentNerveMap_comp, ← Category.assoc, ← d3OrderedCylinderMap_family]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, ← Category.assoc, ← d3OrderedCylinderMap_family]
   rfl
 
 /-- 後合成は、指定厳密変換の全区間族を保つ。 -/
@@ -126,9 +126,9 @@ lemma d3GradedPostcomp_family {F G : EnrichedFunctor SSet.{u} C D}
     (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
     (K : EnrichedFunctor SSet.{u} D E) :
     StrictEnrichedTransformation.family _ _ (d3GradedPostcomp η K) =
-      StrictEnrichedTransformation.family F G η ≫ coherentNerveMap K := by
+      StrictEnrichedTransformation.family F G η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap K := by
   rw [StrictEnrichedTransformation.family, d3GradedPostcomp_cylinder,
-    coherentNerveMap_comp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
   rfl
 
 end SerrePositivity.KST.Spectra

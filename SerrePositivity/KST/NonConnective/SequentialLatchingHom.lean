@@ -25,28 +25,28 @@ variable {X Z : OmegaSpectrum.{u}} (f : X ⟶ Z) (n : ℕ) (Y : PointedSimplicia
 /-- 相対 latching の Hom は、元の二つの部分への制限の引き戻し。 -/
 lemma sequentialLatchingHom_isPullback :
     IsPullback
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pushout.inl (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pushout.inr (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f.app n) Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) Y) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pushout.inl (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pushout.inr (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f.app n) Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) Y) := by
   have h := ((IsPushout.of_hasPushout (PointedSimplicialSet.circle.{u} ◁ f.app n)
-    (X.sigma n)).op.flip).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Y)
-  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
+    (X.sigma n)).op.flip).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor Y)
+  simpa only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor_map] using h
 
 /-- 制限を latching の左部分へ戻すと、元の標的の構造射による制限。 -/
 lemma sequentialLatchingHom_pre_inl :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (sequentialRelativeLatchingMap f n) Y ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pushout.inl (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y =
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (Z.sigma n) Y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (sequentialRelativeLatchingMap f n) Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pushout.inl (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (Z.sigma n) Y := by
   rw [← sequentialPointedPre_comp]
-  exact congrArg (fun q ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre q Y) (pushout.inl_desc _ _ _)
+  exact congrArg (fun q ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre q Y) (pushout.inl_desc _ _ _)
 
 /-- 制限を latching の右部分へ戻すと、元の BF 射の次段による制限。 -/
 lemma sequentialLatchingHom_pre_inr :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (sequentialRelativeLatchingMap f n) Y ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pushout.inr (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y =
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f.app (n + 1)) Y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (sequentialRelativeLatchingMap f n) Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pushout.inr (PointedSimplicialSet.circle.{u} ◁ f.app n) (X.sigma n)) Y =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f.app (n + 1)) Y := by
   rw [← sequentialPointedPre_comp]
-  exact congrArg (fun q ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre q Y) (pushout.inr_desc _ _ _)
+  exact congrArg (fun q ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre q Y) (pushout.inr_desc _ _ _)
 
 end SerrePositivity.KST.NonConnective

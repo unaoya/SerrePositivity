@@ -58,7 +58,7 @@ lemma modelCategory_fibrations :
 使われ方：cofibrant 置換と homotopy function complex の具体的構成。 -/
 lemma modelCategory_cofibrantlyGenerated :
     let := modelCategory A
-    ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
       ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor) :=
   Operad.intervalModelCategory_cofibrantlyGenerated (hopf A) (IntervalCuts.coalgebraInterval A)

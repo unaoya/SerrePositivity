@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock.FixedObjectDiagram SerrePositivity.InfinityCategories
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 def freeResolutionCanonicalMarkedHom : SSet.{u} :=
   backwardHomDiagram (freeResolution C) (freeResolutionObject C)
     (fun θ X => freeResolutionObject_naturality C θ X) Y X
@@ -30,14 +30,14 @@ lemma freeResolutionCanonicalMarkedObject_eq (n : SimplexCategoryᵒᵖ) (X : C.
     (freeResolutionObject_eq_homObject C n X)
 def freeResolutionCanonicalMarkedHomIso :
     freeResolutionCanonicalMarkedHom C X Y ≅ freeResolutionNativeMarkedHom C X Y where
-  hom := FixedObjectHom.coefficientNatTrans (freeResolutionMarkedDiagram C)
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (freeResolutionMarkedDiagram C)
     (freeResolutionMarkedDiagram C) (markedObject (freeResolution C) (freeResolutionObject C))
     (freeResolutionMarkedObject C)
     (markedObject_naturality (freeResolution C) (freeResolutionObject C)
       (fun θ X => freeResolutionObject_naturality C θ X))
     (fun θ X => freeResolutionMarkedObject_naturality C θ X) (𝟙 _) id
     (freeResolutionCanonicalMarkedObject_eq C) X Y
-  inv := FixedObjectHom.coefficientNatTrans (freeResolutionMarkedDiagram C)
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (freeResolutionMarkedDiagram C)
     (freeResolutionMarkedDiagram C) (freeResolutionMarkedObject C)
     (markedObject (freeResolution C) (freeResolutionObject C))
     (fun θ X => freeResolutionMarkedObject_naturality C θ X)
@@ -46,17 +46,17 @@ def freeResolutionCanonicalMarkedHomIso :
     (fun n X => (freeResolutionCanonicalMarkedObject_eq C n X).symm) X Y
   hom_inv_id := by
     ext n f
-    simp [FixedObjectHom.coefficientNatTrans, FixedObjectHom.coefficientMap]
+    simp [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap]
   inv_hom_id := by
     ext n f
-    simp [FixedObjectHom.coefficientNatTrans, FixedObjectHom.coefficientMap]
+    simp [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap]
 def freeResolutionCanonicalMarkedHomAugmentation : freeResolutionCanonicalMarkedHom C X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj
       ((⟨X⟩ : WideSubcategory C.weakEquivalences) ⟶ ⟨Y⟩) :=
   (freeResolutionCanonicalMarkedHomIso C X Y).hom ≫ freeResolutionNativeMarkedHomAugmentation C X Y
 lemma freeResolutionCanonicalMarkedHomAugmentation_weak :
-    IsWeakHomotopyEquivalence (freeResolutionCanonicalMarkedHomAugmentation C X Y) :=
-  (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionCanonicalMarkedHomAugmentation C X Y) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeResolutionCanonicalMarkedHomIso C X Y)).isWeakHomotopyEquivalence.comp
       (freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y)
 end SerrePositivity.EInfinity.SimplicialLocalization

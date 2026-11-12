@@ -18,7 +18,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 open scoped Simplicial
 
 local instance (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
+    KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
 
 /-- 概要：零次数の添字上では零方向の自己射は恒等。
 方針：[0] の自己射の一意性を各座標で使う。
@@ -77,7 +77,7 @@ def boundaryReductionPointedMap (r : ℕ) (X : StableModel.{u})
 規約：零次数を含む全次数。使われ方：基点を選んだ模型との比較。 -/
 lemma boundaryReductionPointedMap_kan_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (Spectra.PointedKanReplacement.map (boundaryReductionPointedMap r X x)).right := by
   apply pointedKanReplacement_map_piIsomorphism_of_localized_isIso
   exact boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
@@ -88,9 +88,9 @@ lemma boundaryReductionPointedMap_kan_piIsomorphism (r : ℕ) (X : StableModel.{
 規約：Ω の座標は L9 の規約。使われ方：反復の loop 模型の比較。 -/
 def boundaryReductionLoopMap (r : ℕ) (X : StableModel.{u})
     (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Spectra.PointedKanReplacement.obj
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Spectra.PointedKanReplacement.obj
       (PointedSimplicialSet.ofVertex (multiDiagonalCoreSConstruction (r + 1) X) x)) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
   (PointedObject.basedHomFunctor (C := SSet.{u}) PointedSimplicialSet.circle.{u}).map
     (Spectra.PointedKanReplacement.map (boundaryReductionPointedMap r X x))
 
@@ -99,7 +99,7 @@ def boundaryReductionLoopMap (r : ℕ) (X : StableModel.{u})
 規約：全次数・全基点を含む。使われ方：K 空間の全境界商模型との比較。 -/
 lemma boundaryReductionLoopMap_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (x : (multiDiagonalCoreSConstruction (r + 1) X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryReductionLoopMap r X x).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryReductionLoopMap r X x).right :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     (Spectra.PointedKanReplacement.map (boundaryReductionPointedMap r X x))
     (boundaryReductionPointedMap_kan_piIsomorphism r X x)

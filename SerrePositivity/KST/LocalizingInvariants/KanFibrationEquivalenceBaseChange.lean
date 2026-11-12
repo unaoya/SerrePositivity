@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.EquivalencePullbackPathLifting
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativePathBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePullbackPathLifting
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativePathBoundary
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneIntervalEndpoints
 
 /-!
@@ -26,7 +26,7 @@ lemma kanFibration_inner {E B : SSet.{u}} (p : E ⟶ B) [Fibration p] : InnerFib
   exact ⟨fun _ _ i hi => hp i (innerHornInclusions_le_J i hi)⟩
 
 lemma kanFibration_targetLifting {E B : SSet.{u}} [KanComplex E]
-    (p : E ⟶ B) [Fibration p] : SerrePositivity.InfinityCategories.F1B.InvertibleTargetLifting p := by
+    (p : E ⟶ B) [Fibration p] : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InvertibleTargetLifting p := by
   intro x e _ ht
   have hp := (SSet.modelCategoryQuillen.fibration_iff p).1 inferInstance
   have : HasLiftingProperty (stdSimplex.δ (0 : Fin 2)) p :=
@@ -34,24 +34,24 @@ lemma kanFibration_targetLifting {E B : SSet.{u}} [KanComplex E]
   have sq : CommSq (SSet.yonedaEquiv.symm x) (stdSimplex.δ (0 : Fin 2)) p e := ⟨by
     rw [ht, SSet.yonedaEquiv_symm_comp]⟩
   refine ⟨sq.lift, sq.fac_left, sq.fac_right, ?_⟩
-  exact isInvertibleEdge_of_hasFinalHornFillers _ (hasFinalHornFillers_of_kanComplex _)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.isInvertibleEdge_of_hasFinalHornFillers _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.hasFinalHornFillers_of_kanComplex _)
 
 /-- 原型の四射のうち、fibration と交差する同値の引き戻し射そのものが同値。 -/
 lemma kanPullback_first_equivalence {P E K B : SSet.{u}}
     [KanComplex P] [KanComplex E] [KanComplex K] [KanComplex B]
     {f : P ⟶ E} {g : P ⟶ K} {p : E ⟶ B} {e : K ⟶ B}
-    (sq : IsPullback f g p e) [Fibration p] (he : IsSimplicialHomotopyEquivalence e) :
-    IsSimplicialHomotopyEquivalence f := by
+    (sq : IsPullback f g p e) [Fibration p] (he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence e) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence f := by
   have : InnerFibration p := kanFibration_inner p
-  have : TrivialKanFibration (relativeEquivalencePathMapAt p 1) :=
-    F1B.kanRelativeEquivalencePathMapAt_one_trivialKanFibration p
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.relativeEquivalencePathMapAt p 1) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanRelativeEquivalencePathMapAt_one_trivialKanFibration p
       (kanFibration_targetLifting p)
   have : InnerFibration (pullback.fst e p) :=
     ⟨innerFibrations.pullback_fst e p (InnerFibration.mem (q := p))⟩
   have : Quasicategory (pullback e p) := quasicategory_of_innerFibration (pullback.fst e p)
   have h := he.isQCatEquivalence.pullback_snd_of_relativePath p
-  have hi := (qCatEquivalenceOfIso sq.flip.isoPullback).isQCatEquivalence.comp h
-  change IsQCatEquivalence (sq.flip.isoPullback.hom ≫ pullback.snd e p) at hi
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso sq.flip.isoPullback).isQCatEquivalence.comp h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (sq.flip.isoPullback.hom ≫ pullback.snd e p) at hi
   rw [sq.flip.isoPullback_hom_snd] at hi
   exact hi.isSimplicialHomotopyEquivalence
 

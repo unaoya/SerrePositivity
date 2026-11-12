@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.AlgebraCoefficientRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTrans
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 # Barratt–Eccles の導来係数制限
@@ -31,7 +31,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory SSet SimplicialLocalization
-open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
+open SerrePositivity.InfinityCategories _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
 open scoped Simplicial
 
 variable (A : Type u) [CommRing A]
@@ -39,13 +39,13 @@ variable (A : Type u) [CommRing A]
 /-- 厳密代数への成分が擬同型である自然変換を、全関手の同型に送る。 -/
 def algebraCAlgSourceNatTransIso {I : Type (u + 1)} [Category.{u} I]
     {F G : I ⥤ (operad A).Algebra} (η : F ⟶ G) (hη : ∀ i, QuasiIso (η.app i).hom) :
-    FunctorIso (nerveMap F ≫ algebraCAlgSource A) (nerveMap G ≫ algebraCAlgSource A) := by
-  let H := HomotopyClasses.postHomotopy (algebraCAlgSource A) (FrameHom.MixedNerve.homotopy η)
-  apply functorIsoOfPointwiseInvertibleHomotopy H
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap F ≫ algebraCAlgSource A) (nerveMap G ≫ algebraCAlgSource A) := by
+  let H := _root_.SerrePositivity.SimplicialModel.HomotopyClasses.postHomotopy (algebraCAlgSource A) (FrameHom.MixedNerve.homotopy η)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy H
   intro z
   obtain ⟨i, rfl⟩ := ComposableArrows.mk₀_surjective z
-  exact (isInvertibleEdge_congr
-    (e := (simplicialHomotopyVertexEdge H (nerveVertex i)).toTruncated)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).toTruncated)
     (f := ((nerve.edgeMk (η.app i)).map (algebraCAlgSource A)).toTruncated)
     (congrArg ((algebraCAlgSource A).app (Opposite.op ⦋1⦌))
       (FrameHom.MixedNerve.homotopy_component η i))).mpr
@@ -87,15 +87,15 @@ def cAlgCoefficientRestrictionSource :
 
 /-- 係数制限の後に局所化すると、元の擬同型を反転する。 -/
 lemma cAlgCoefficientRestrictionSource_inverts :
-    InvertsEdges (cAlgCoefficientRestrictionSource f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cAlgCoefficientRestrictionSource f)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory T)) := by
   intro σ hσ
   obtain ⟨X, Y, g, hg, rfl⟩ := hσ
   let F := cofibrantAlgebraDKInclusion T ⋙ coefficientRestriction f
   have hq : QuasiIso (F.map g).hom := coefficientRestriction_map_quasiIso f _
     ((cofibrantAlgebraRelativeCategory_weakEquivalences_iff T g).mp hg)
-  apply (isInvertibleEdge_congr
-    (e := (edgeOfSimplex (ComposableArrows.mk₁ g)).map
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ g)).map
       ((truncation 2).map (cAlgCoefficientRestrictionSource f)))
     (f := ((nerve.edgeMk (F.map g)).map (algebraCAlgSource S)).toTruncated) ?_).mpr
     (algebraCAlgSource_map_weak S (F.map g) hq)
@@ -109,9 +109,9 @@ lemma cAlgCoefficientRestrictionSource_inverts :
 /-- 任意の環準同型に沿う Barratt–Eccles の導来係数制限は、元の局所化から延長できる。 -/
 lemma cAlgCoefficientRestriction_exists :
     ∃ R : CAlg_R T ⟶ CAlg_R S,
-      Nonempty (FunctorIso (cAlgLocalizationSource T ≫ R)
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource T ≫ R)
         (cAlgCoefficientRestrictionSource f)) :=
-  FrameHom.localization_extension_exists (cAlgLocalizationSource T)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource T)
     (weakNerveEdges (cofibrantAlgebraRelativeCategory T)) (cAlgLocalizationSource_inverts T)
     (cAlgLocalizationPrecomposition_isQCatEquivalence T (CAlg_R S))
     (cAlgCoefficientRestrictionSource f) (cAlgCoefficientRestrictionSource_inverts f)
@@ -122,13 +122,13 @@ def barrattEcclesRestrict (f : S →+* T) : CAlg_R T ⟶ CAlg_R S :=
 
 /-- 係数制限の延長に付随する、cofibrant 入力上の全関手の比較。 -/
 def barrattEcclesRestrict_cofibrantIso :
-    FunctorIso (cAlgLocalizationSource T ≫ barrattEcclesRestrict f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource T ≫ barrattEcclesRestrict f)
       (cAlgCoefficientRestrictionSource f) :=
   (Classical.choose_spec (cAlgCoefficientRestriction_exists f)).some
 
 /-- 導来係数制限と厳密な係数制限の全代数上の自然比較。 -/
 def barrattEcclesRestrict_sourceIso :
-    FunctorIso (algebraCAlgSource T ≫ barrattEcclesRestrict f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (algebraCAlgSource T ≫ barrattEcclesRestrict f)
       (nerveMap (coefficientRestriction f) ≫ algebraCAlgSource S) := by
   let η := Functor.whiskerRight (framedLimitProbeComparisonNatTrans T) (coefficientRestriction f)
   have hη (X : (operad T).Algebra) : QuasiIso (η.app X).hom :=
@@ -139,7 +139,7 @@ def barrattEcclesRestrict_sourceIso :
     rw [cAlgCoefficientRestrictionSource, ← Category.assoc, ← Category.assoc,
       algebraCAlgReplacementNerve_inclusion]
     rfl
-  exact F2.functorIsoOfEq (e ≪≫ F2.functorIsoOfEq
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e ≪≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     (algebraCAlgSourceNatTransIso S η hη) he.symm (by rw [Functor.id_comp]))
     (by simp only [algebraCAlgSource, Category.assoc]) rfl
 

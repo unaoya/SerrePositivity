@@ -47,7 +47,7 @@ def circleEvaluationCompanionHomPath (z : Sp.{u} _⦋0⦌) :
       mappingSpace (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val)
           (nativeCotensorInput PointedSimplicialSet.circle z).val :=
-  triangleTrace (SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ evaluateFunctorAt z)) ≫
+  triangleTrace (SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z)) ≫
     eqToHom ((congrArg
       (fun s : Sp.{u} _⦋2⦌ ↦
         SimplicialCategory.sHom (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 2⟩))

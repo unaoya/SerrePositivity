@@ -25,8 +25,8 @@ lemma ordinaryLoop_exchange_sign (Z : PointedSimplicialSet.{u}) [KanComplex Z.ri
       (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)).right := by
   let loopKan : KanComplex
       (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact omega_exchange_sign (𝟙 (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z))
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _)
 
 end SerrePositivity.KST.Spectra

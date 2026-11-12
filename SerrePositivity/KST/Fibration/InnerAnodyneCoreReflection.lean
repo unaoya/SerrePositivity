@@ -17,32 +17,32 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 内 anodyne 制限後に core を通る元の単体図式は、制限前から core を通る。 -/
-lemma coreFactor_of_innerAnodyne {K : SSet.{u}} {C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
+lemma coreFactor_of_innerAnodyne {K : SSet.{u}} {C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
     (n : SimplexCategory) (i : K ⟶ stdSimplex.obj n) (hi : innerAnodyneExtensions i)
     (f : stdSimplex.obj n ⟶ C.obj)
-    (hf : ∃ g : K ⟶ (quasicategoryCore C.obj : SSet.{u}),
-      g ≫ (quasicategoryCore C.obj).ι = i ≫ f) :
-    ∃ g : stdSimplex.obj n ⟶ (quasicategoryCore C.obj : SSet.{u}),
-      g ≫ (quasicategoryCore C.obj).ι = f := by
+    (hf : ∃ g : K ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj : SSet.{u}),
+      g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι = i ≫ f) :
+    ∃ g : stdSimplex.obj n ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj : SSet.{u}),
+      g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι = f := by
   obtain ⟨g, hg⟩ := hf
   obtain ⟨G, hG⟩ := exists_extension_of_innerAnodyne i hi g
-  have : TrivialKanFibration ((pre i).app C.obj) :=
-    trivialKanFibration_pre_of_innerAnodyne i hi C.obj
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pre i).app C.obj) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.trivialKanFibration_pre_of_innerAnodyne i hi C.obj
   have he : ((pre i).app C.obj).app (Opposite.op ⦋0⦌)
-      (functorVertex (G ≫ (quasicategoryCore C.obj).ι)) =
-        ((pre i).app C.obj).app (Opposite.op ⦋0⦌) (functorVertex f) := by
-    change functorVertex (i ≫ (G ≫ (quasicategoryCore C.obj).ι)) = functorVertex (i ≫ f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (G ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι)) =
+        ((pre i).app C.obj).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ (G ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι)) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ f)
     rw [← Category.assoc, hG, hg]
   let e := vertexIsoOfTrivialKanFibrationEq ((pre i).app C.obj) _ _ he
   have hclosed : (weakStringClosedPredicate (𝟙 C) n).predicate
-      (functorVertex (G ≫ (quasicategoryCore C.obj).ι)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (G ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι)) :=
     (weakStringPredicate_functorVertex_iff_factorCore (𝟙 C) n _).2
       ⟨G, by
         change G ≫ _ = (G ≫ _) ≫ 𝟙 C.obj
         rw [Category.comp_id]⟩
   have hfinal := (weakStringClosedPredicate (𝟙 C) n).of_iso hclosed e
   obtain ⟨H, hH⟩ := (weakStringPredicate_functorVertex_iff_factorCore (𝟙 C) n f).1 hfinal
-  change H ≫ (quasicategoryCore C.obj).ι = f ≫ 𝟙 C.obj at hH
+  change H ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι = f ≫ 𝟙 C.obj at hH
   exact ⟨H, by simpa only [Category.comp_id] using hH⟩
 
 end SerrePositivity.KST.Fibration

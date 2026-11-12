@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：採用済み一般射影と相対全旗自然性の入力から同じ実 K 射の共終性条件を得る。
@@ -24,7 +24,7 @@ open scoped Simplicial
 使われ方：二供給の到着後の無条件な主結論の公開。 -/
 theorem kSpectrumMap_cofinality_of_inputs (supply : KanPullbackCofinalityInput.{u})
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate 0 Fin.elim0 f hf)) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧

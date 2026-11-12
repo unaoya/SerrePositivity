@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorBaseChangeNaturality
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.RelativeFunctorBaseChangeNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
 
 /-!
 概要：相対写像空間の底変換の逆射は指定された始域制限と厳密に可換する。

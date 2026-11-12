@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeLegFiberIso
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningFunctorIso
 
 /-!
 概要：native 全錐の二脚と元の実際の fiber 射の指定同型を、元の小さい宇宙へ降ろす。

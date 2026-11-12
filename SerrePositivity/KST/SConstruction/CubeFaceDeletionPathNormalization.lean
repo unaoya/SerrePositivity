@@ -17,28 +17,28 @@ open SerrePositivity.DifferentialGraded
 
 /-- 面・削除の混合式を元の生成語の path として厳密に実現する。 -/
 def cubeFaceDeletionExpressionPath {n : ℕ} : {m : ℕ} → CubeFaceDeletionExpression n m →
-    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m)
+    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m)
   | _, .id _ => .nil
-  | _, .point p b i => (cubeFaceDeletionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b _ i)
-  | _, .erase p i => (cubeFaceDeletionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy _ i)
+  | _, .point p b i => (cubeFaceDeletionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.face b _ i)
+  | _, .erase p i => (cubeFaceDeletionExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.degeneracy _ i)
 termination_by structural _m p => p
 
 /-- 混合式の path の具体的評価は、同じ式の元の頂点関数。 -/
 lemma cubeFaceDeletionExpressionPath_concrete {n m : ℕ} (p : CubeFaceDeletionExpression n m) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
       cubeFaceDeletionExpressionVertex p := by
   induction p with
   | id => rfl
   | point p b i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceDeletionExpressionVertex p
     rw [ih]
     rfl
   | erase p i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeFaceDeletionExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeFaceDeletionExpressionVertex p
     rw [ih]
     rfl
 
@@ -61,19 +61,19 @@ lemma cubeFaceDeletionExpressionPath_serre (A : Type u) [CommRing A] {n m : ℕ}
     rfl
 
 /-- 元の語が面と削除だけからなる条件。 -/
-inductive CubeFaceDeletionPath : {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} → Quiver.Path X Y → Prop
-  | nil (X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject) : CubeFaceDeletionPath (.nil : Quiver.Path X X)
-  | point {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m))
+inductive CubeFaceDeletionPath : {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} → Quiver.Path X Y → Prop
+  | nil (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject) : CubeFaceDeletionPath (.nil : Quiver.Path X X)
+  | point {X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m))
       (hp : CubeFaceDeletionPath p) (b : Bool) (i : Fin (m + 1)) : CubeFaceDeletionPath
-        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) from
-          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b m i))
-  | erase {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1)))
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1) from
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.face b m i))
+  | erase {X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {m : ℕ} (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1)))
       (hp : CubeFaceDeletionPath p) (i : Fin (m + 1)) : CubeFaceDeletionPath
-        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m from
-          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy m i))
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m from
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.degeneracy m i))
 
 /-- 元の面・削除の混合語は、その同じ構文の式から厳密に回収される。 -/
-lemma cubeFaceDeletionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {p : Quiver.Path X Y}
+lemma cubeFaceDeletionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {p : Quiver.Path X Y}
     (h : CubeFaceDeletionPath p) : ∃ e : CubeFaceDeletionExpression X.dimension Y.dimension,
       cubeFaceDeletionExpressionPath e = p := by
   induction h with
@@ -91,9 +91,9 @@ lemma cubeFaceDeletionPath_exists_expression {X Y : _root_.SerrePositivity.Infin
 
 /-- 元の面・削除の任意の混合語を、両方の実際の評価を保った二段表示へ移す。 -/
 lemma cubeFaceDeletionPath_normalization (A : Type u) [CommRing A]
-    {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p : X ⟶ Y) (hp : CubeFaceDeletionPath p) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords} (p : X ⟶ Y) (hp : CubeFaceDeletionPath p) :
     ∃ r : CubeDeletionFaceNormal X.dimension Y.dimension,
-      cubeDeletionFaceNormalVertex r = (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p).val ∧
+      cubeDeletionFaceNormalVertex r = (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p).val ∧
         serreCubeDeletionFaceNormal A r = (serreCubeWordFunctor A).map p := by
   obtain ⟨e, he⟩ := cubeFaceDeletionPath_exists_expression hp
   have hvertex := cubeFaceDeletionExpressionPath_concrete e

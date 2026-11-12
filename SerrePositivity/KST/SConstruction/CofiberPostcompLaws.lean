@@ -51,12 +51,12 @@ lemma sPostcompCofiber_sMap {m n : ℕ} {C D : SSet.{u}} [Quasicategory D]
 方針：包含後に定値図式の後合成を計算する。
 規約：任意の零対象で成り立つ。使われ方：多単体構造の基点。 -/
 lemma sPostcompCofiber_zeroVertex (n : ℕ) {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
-    (f : C ⟶ D) (hf : PreservesCofiberData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (f : C ⟶ D) (hf : PreservesCofiberData f) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     (sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) =
       sConstructionZeroVertex n (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz) := by
   apply Subtype.ext
-  change functorVertex ((SSet.const z : arNerve n ⟶ C) ≫ f) =
-    functorVertex (SSet.const (f.app (Opposite.op ⦋0⦌) z) : arNerve n ⟶ D)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.const z : arNerve n ⟶ C) ≫ f) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (f.app (Opposite.op ⦋0⦌) z) : arNerve n ⟶ D)
   rw [SSet.const_comp]
 
 end SerrePositivity.KST.SConstruction

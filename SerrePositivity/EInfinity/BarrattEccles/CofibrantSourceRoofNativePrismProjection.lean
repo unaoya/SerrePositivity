@@ -27,7 +27,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantSourceRoofProductCommaNativePrism_projection :
     cofibrantSourceRoofProductCommaNativePrism A X Y b ≫
-      sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
     (β_ (Δ[1] : SSet.{u + 1}) (nerve (cofibrantSourceRoofProductComma A X Y b))).hom ≫
       (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h := by
   rw [cofibrantSourceRoofProductCommaEvaluationHomotopy_h A X Y b]
@@ -35,10 +35,10 @@ lemma cofibrantSourceRoofProductCommaNativePrism_projection :
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   rintro ⟨t, Γ⟩
-  change SSet.yonedaEquiv (joinInl Δ[n] Δ[0] ≫ (joinStdSimplexIso n 0).hom ≫
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[n] Δ[0] ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫
     SSet.yonedaEquiv.symm (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ
       (stdSimplex.objEquiv t).toOrderHom)) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_inl,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inl,
     SSet.yonedaEquiv_symm_naturality_left, Equiv.apply_symm_apply]
   have hf := RoofPrefix.simplex_front (cofibrantAlgebraRelativeCategory A)
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
@@ -48,16 +48,16 @@ lemma cofibrantSourceRoofProductCommaNativePrism_projection :
     (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) Γ
     (stdSimplex.objEquiv t).toOrderHom
   refine hf.trans ?_
-  change (nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
     (Opposite.op ⦋n⦌) (RoofPrefix.frontDiagram (cofibrantAlgebraRelativeCategory A)
       (cofibrantSourceRoofProductCommaDiagram A X Y b)
       (cofibrantSourceRoofProductCommaEvaluation A X Y b) Γ
       (stdSimplex.objEquiv t).toOrderHom) =
-    (nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
-      (Opposite.op ⦋n⦌) (((SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (cofibrantAlgebraRelativeCategory A))).app
+      (Opposite.op ⦋n⦌) (((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
         (cofibrantSourceRoofProductCommaEvaluation A X Y b)).h.app (Opposite.op ⦋n⦌)
           (Γ, t)) ⋙ kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A))
-  rw [FrameHom.nerveNatTransHomotopy_app]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_app]
   rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

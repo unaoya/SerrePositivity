@@ -30,11 +30,11 @@ def normalizedSimplexLatchingArrowIso (n : ℕ) :
   refine latchingComparison_preservedIso simplex (BarrattEccles.normalizedFunctor A)
     SSet.stdSimplex (SimplexCategory.mk n) ≪≫ ?_
   refine Arrow.isoMk ((BarrattEccles.normalizedFunctor A).mapIso
-    (BisimplicialModel.standardBoundaryIso.{0} n)) (Iso.refl _) ?_
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso.{0} n)) (Iso.refl _) ?_
   change (BarrattEccles.normalizedFunctor A).map _ ≫
     (BarrattEccles.normalizedFunctor A).map _ =
       (BarrattEccles.normalizedFunctor A).map _ ≫ 𝟙 _
-  rw [Category.comp_id, ← Functor.map_comp, BisimplicialModel.standardBoundaryIso_fac]
+  rw [Category.comp_id, ← Functor.map_comp, _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.standardBoundaryIso_fac]
 
 def normalizedSimplexTensorLatchingArrowIso (X : Complex A) (n : ℕ) :
     Arrow.mk ((latchingComparison simplex (SimplexCategory.mk n)).app

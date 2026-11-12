@@ -102,7 +102,7 @@ theorem sequentialCandidateMap_isInvertible_of_eventually
     {D E : SpectrumSequence.{u}} (η : D ⟶ E)
     (hη : ∀ j : ℤ, ∃ N : ℕ, ∀ n : ℕ, N ≤ n →
       Function.Bijective (OmegaSpectrum.homotopyMap (η.app ⟨n⟩) j)) :
-    IsInvertibleEdge (coherentNerveEdge (sequentialCandidateMap η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialCandidateMap η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (sequentialCandidateMap_piIsomorphism_of_eventually η hη)
 

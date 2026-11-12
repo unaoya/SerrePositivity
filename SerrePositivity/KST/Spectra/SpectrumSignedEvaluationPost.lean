@@ -23,7 +23,7 @@ open RawSpectrumMapping
 local instance signedEvaluationOriginalKan (X Y : OmegaSpectrum.{u}) :
     KanComplex ((ihom CirclePower.space.{u}).obj (RawSpectrumMapping.pointedSpace
       (cotensor CirclePower.space.{u} X) Y.toKanSequence)).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の Kan 円の評価写像自身を、同じ符号付き一段移動へ送った全 Hom の射。 -/
 def signedEvaluationPost (X Y : OmegaSpectrum.{u}) :
@@ -38,8 +38,8 @@ def signedEvaluationPost (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の評価写像の π 同型性は、同じ符号付き全 Hom 比較の π 同型性と同値。 -/
 lemma signedEvaluationPost_piIsomorphism_iff (X Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (signedEvaluationPost X Y).right ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost CirclePower.space.{u} X Y).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (signedEvaluationPost X Y).right ↔
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost CirclePower.space.{u} X Y).right := by
   have ht := pointedTail_piIsomorphism (cotensor CirclePower.space.{u} X)
     (KanSequence.mapping CirclePower.space.{u} Y.toKanSequence)
     (KanSequence.mapping_omegaCondition CirclePower.space.{u} Y.toKanSequence
@@ -51,7 +51,7 @@ lemma signedEvaluationPost_piIsomorphism_iff (X Y : OmegaSpectrum.{u}) :
   constructor
   · intro h
     exact (rawEvaluationPost_piIsomorphism_iff CirclePower.space.{u} X Y).mp
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp h htp)
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp h htp)
   · intro h
     exact ((rawEvaluationPost_piIsomorphism_iff CirclePower.space.{u} X Y).mpr h).comp htp
 

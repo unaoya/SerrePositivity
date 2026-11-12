@@ -16,18 +16,18 @@ open CategoryTheory MonoidalCategory SSet
 /-- 元の円・元の単位・同じ Ex∞ の実比較による、厳密単体的 suspension 自然変換。 -/
 def exInfinitySuspensionTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
-      (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
-      (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit) :=
-  coaugmentedPointedSuspensionTransformation Comparison.exInfinity Comparison.exInfinityUnit
+      (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
+      (suspensionThenCoaugmentedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit) :=
+  coaugmentedPointedSuspensionTransformation _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
 
 /-- 全 Hom 上の自然変換の成分は、同じ元の Ex∞ suspension 比較そのもの。 -/
 lemma exInfinitySuspensionTransformation_app (X : PointedSSetObject.{u}) :
     exInfinitySuspensionTransformation.app X =
       eHomEquiv SSet
         (show (coaugmentedThenSuspensionFunctor
-            Comparison.exInfinity Comparison.exInfinityUnit).obj X ⟶
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj X ⟶
           (suspensionThenCoaugmentedFunctor
-            Comparison.exInfinity Comparison.exInfinityUnit).obj X from
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj X from
               exInfinitySuspensionComparison X) := rfl
 
 end SerrePositivity.KST.SConstruction

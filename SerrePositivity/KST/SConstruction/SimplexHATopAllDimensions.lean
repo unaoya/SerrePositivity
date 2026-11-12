@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の次数線形復元は、同じ元の次数等号による移送を保つ。 -/
-lemma simplexHADegreeLift_degree_transport {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_degree_transport {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) {p q : ℤ} (h : p = q) (x : (serreCubeComplex A m).X p) :
     eqToHom (congrArg (homObject A D (s.obj (v 0)) (s.obj b)).X h)
@@ -27,7 +27,7 @@ lemma simplexHADegreeLift_degree_transport {n : ℕ} (s : DGNerve.SimplexData A 
   rfl
 
 /-- 零次元を含む元の全最高生成元上で、元の線形復元は標準出力次数の微分と可換。 -/
-lemma simplexHADegreeLift_top_comm_all {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_top_comm_all {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) :
     (homObject A D (s.obj (v 0)) (s.obj b)).d (-(m : ℤ)) (-(m : ℤ) + 1)

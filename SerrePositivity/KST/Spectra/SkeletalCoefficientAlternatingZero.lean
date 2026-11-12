@@ -26,8 +26,8 @@ theorem coefficientDifferential_zero_alternating (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
     (a : coefficientGroup K Y (n + 1) 1) (s : K.nonDegenerate (n + 3)) :
     Additive.ofMul (coefficientDifferential K Y (n + 1) 0 a s) =
-      (-1 : ℤ) ^ (n + 4) • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
+      (-1 : ℤ) ^ (n + 4) • _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
         (n + 2) (fun t ↦ Additive.ofMul (a t)) s := by
   let e := doubleLoopCoefficientEquiv Y n
   let c := fun t ↦ e.symm ((a t)⁻¹)
@@ -42,20 +42,20 @@ theorem coefficientDifferential_zero_alternating (K : SSet.{u})
     rfl
   have h := doubleLoop_normalizedDifferential K Y n c s
   have hm := NormalizedValueCochains.differential_map K
-    (M := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right
-      (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).basepoint)))
-    (N := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
+    (M := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right
+      (n + 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).basepoint)))
+    (N := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
     e.toAdditive.toAddMonoidHom
     (n + 2) (fun t ↦ Additive.ofMul (c t)) s
-  have hl : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
+  have hl : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
       (n + 2) (fun t ↦ e.toAdditive (Additive.ofMul (c t))) s =
-      -_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
+      -_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 3) Y.basepoint)))
         (n + 2) (fun t ↦ Additive.ofMul (a t)) s := by
     rw [ha]
-    change (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 3) Y.basepoint))) (n + 2)
+    change (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 3) Y.basepoint))) (n + 2)
       (-(fun t ↦ Additive.ofMul (a t)))) s = _
     rw [map_neg]
     rfl

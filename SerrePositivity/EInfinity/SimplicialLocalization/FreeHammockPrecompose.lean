@@ -16,7 +16,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock
-variable (C : RelativeCategory.{u}) {X Y : C.category} (Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (Z : C.category)
 
 def freeHammockPrecompose (f : X ⟶ Y) :
     freeHammockDiagonal C Y Z ⟶ freeHammockDiagonal C X Z :=
@@ -46,7 +46,7 @@ lemma freeHammockPrecompose_comparison (f : X ⟶ Y) :
 lemma freeHammockPrecompose_augmentation (f : X ⟶ Y) :
     freeHammockPrecompose C Z f ≫ freeHammockDiagonalAugmentation C X Z =
       freeHammockDiagonalAugmentation C Y Z ≫
-        precomposePointMap (arrowMap C.weakEquivalences f) Z := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) Z := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -54,11 +54,11 @@ lemma freeHammockPrecompose_augmentation (f : X ⟶ Y) :
   change (freeHammockDiagonalAugmentation C X Z).app n
       ((freeHammockDiagonalComposition C X Y Z).app n
         ((freeHammockArrowPoint C f).app n PUnit.unit, z)) =
-    composePoint C.weakEquivalences X Y Z
-      ((arrowMap C.weakEquivalences f).app n PUnit.unit)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint C.weakEquivalences X Y Z
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f).app n PUnit.unit)
       ((freeHammockDiagonalAugmentation C Y Z).app n z)
   rw [freeHammockDiagonalAugmentation_composePoint]
-  exact congrArg (fun h => composePoint C.weakEquivalences X Y Z h
+  exact congrArg (fun h => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint C.weakEquivalences X Y Z h
     ((freeHammockDiagonalAugmentation C Y Z).app n z))
       (congrArg (fun k => k.app n PUnit.unit) (freeHammockArrowPoint_augmentation C f))
 

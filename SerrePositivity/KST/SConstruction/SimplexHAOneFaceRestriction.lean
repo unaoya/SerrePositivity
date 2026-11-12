@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の右端一面への前合成は、全整数次数で前段の復元と元の閉零辺との実右合成。 -/
-lemma simplexHADegreeLift_one_face_restriction {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_one_face_restriction {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (k : ℤ) :
     (serreCubeFace A true m 0).hom.f k ≫

@@ -95,7 +95,7 @@ lemma fixedAction_face (n : ℕ) (i : Fin (n + 2)) : fixedAction (C := C) hcof h
 
 lemma fixedAction_degeneracy (n : ℕ) (i : Fin (n + 1)) : degeneracyFunctor (D C) n i ⋙
     fixedAction hcof hfib P (n + 1) = fixedAction hcof hfib P n ⋙
-      ParameterCategory.reindex (P ◁ sigma n i) := by
+      ParameterCategory.reindex (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) := by
   rw [fixedAction_eq, fixedAction_eq, evaluated, evaluated, ← CategoryTheory.Functor.assoc,
     OrdinaryBarFreeResolutionChoices.diagram_degeneracy, CategoryTheory.Functor.assoc,
     OrdinaryBarChoiceCategory.reindex_evaluation, ← CategoryTheory.Functor.assoc]
@@ -123,7 +123,7 @@ lemma family_face (n : ℕ) (i : Fin (n + 2)) {X Y : degree (D C) (n + 2)} (f : 
 
 lemma family_degeneracy (n : ℕ) (i : Fin (n + 1)) {X Y : degree (D C) (n + 1)} (f : X ⟶ Y) :
     family hcof hfib P (n + 1) ((degeneracyFunctor (D C) n i).map f) =
-      ParameterComposition.substitute (P ◁ sigma n i) (family hcof hfib P n f) :=
+      ParameterComposition.substitute (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i) (family hcof hfib P n f) :=
   congr($(fixedAction_degeneracy (C := C) hcof hfib P n i).map f)
 
 end SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeAmbientFamilies

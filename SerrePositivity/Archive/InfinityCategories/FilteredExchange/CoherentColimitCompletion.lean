@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentFamilyColimitCocone
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.LimitConeFamilyFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamilyFunctor
 
 /-!
 概要：元の点ごとの指定余錐による完成を、余極限関手による元の全錐の像へ比較する。

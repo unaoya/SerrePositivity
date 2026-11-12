@@ -29,20 +29,20 @@ variable {X Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z) {f g : X ⟶ Y}
 
 lemma prism_parameter : SpectrumMappingPath.postTrianglePrism p e =
     (Δ[2] ◁ SSet.yonedaEquiv.symm (SpectrumMappingPath.liftedEdge e).edge) ≫
-      coherentCompositionFixedTriangle X Y Z p := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionFixedTriangle X Y Z p := by
   have he : SSet.yonedaEquiv.symm (SpectrumMappingPath.postTriangleEdge p e).edge =
       SSet.yonedaEquiv.symm (SpectrumMappingPath.liftedEdge e).edge ≫
-        coherentCompositionCorrespondence X Y Z p :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentCompositionCorrespondence X Y Z p :=
     (SSet.yonedaEquiv_symm_comp _ _).symm
   rw [SpectrumMappingPath.postTrianglePrism, he, whiskerLeft_comp, Category.assoc,
-    coherentCompositionCorrespondence_evaluation]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentCompositionCorrespondence_evaluation]
 
 lemma sourceTriangle_eq : sourceTriangle p e =
-    SSet.yonedaEquiv.symm (coherentNerveCompStruct f p).simplex := by
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f p).simplex := by
   have he : sourceTriangle p e =
       lift (𝟙 (Δ[2] : SSet.{u + 1}))
         (SSet.const (ULift.up (SimplicialCategory.homEquiv' X Y f))) ≫
-          coherentCompositionFixedTriangle X Y Z p := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionFixedTriangle X Y Z p := by
     rw [sourceTriangle, prism_parameter, ← Category.assoc, prismEdge_source]
     rw [SpectrumMappingAcyclic.homEquiv'_eq_vertex]
   apply SSet.yonedaEquiv.injective
@@ -51,11 +51,11 @@ lemma sourceTriangle_eq : sourceTriangle p e =
       (SSet.yonedaEquiv.apply_symm_apply _).symm
 
 lemma targetTriangle_eq : targetTriangle p e =
-    SSet.yonedaEquiv.symm (coherentNerveCompStruct g p).simplex := by
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct g p).simplex := by
   have he : targetTriangle p e =
       lift (𝟙 (Δ[2] : SSet.{u + 1}))
         (SSet.const (ULift.up (SimplicialCategory.homEquiv' X Y g))) ≫
-          coherentCompositionFixedTriangle X Y Z p := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionFixedTriangle X Y Z p := by
     rw [targetTriangle, prism_parameter, ← Category.assoc, prismEdge_target]
     rw [SpectrumMappingAcyclic.homEquiv'_eq_vertex]
   apply SSet.yonedaEquiv.injective

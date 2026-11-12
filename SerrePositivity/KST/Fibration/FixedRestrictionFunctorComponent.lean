@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ContractibleRestrictionComparison
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.PreFiberKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PreFiberKan
 
 /-!
 概要：所有する固定部分比較の、指定部分上の成分を実恒等辺として回収する。
@@ -25,24 +25,24 @@ namespace SerrePositivity.KST.Fibration
 theorem FixedRestrictionFunctorEdge.component_at
     {A B Z : SSet.{u}} [Quasicategory Z] {i : A ⟶ B} {f g : B ⟶ Z}
     (E : FixedRestrictionFunctorEdge i f g) (a : A _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (simplicialHomotopyOfFunctorEdge E.edge)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge E.edge)
       (i.app (Opposite.op ⦋0⦌) a)).edge =
       (Truncated.Edge.id (X := (truncation 2).obj Z)
         (f.app (Opposite.op ⦋0⦌) (i.app (Opposite.op ⦋0⦌) a))).edge := by
-  rw [evaluateFunctorAt_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_edge]
   have hn := congrArg (fun h => h.app (Opposite.op ⦋1⦌) E.edge.edge)
-    (evaluateFunctorAt_pre (X := Z) i a)
-  have hr := congrArg ((evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋1⦌)) E.restriction
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre (X := Z) i a)
+  have hr := congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋1⦌)) E.restriction
   have hi := congrArg Truncated.Edge.edge
-    (Truncated.Edge.map_id (functorVertex (i ≫ f))
-      ((truncation 2).map (evaluateFunctorAt (Y := Z) a)))
-  change (evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋1⦌)
+    (Truncated.Edge.map_id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ f))
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Z) a)))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋1⦌)
     (Truncated.Edge.id (X := (truncation 2).obj ((ihom A).obj Z))
-      (functorVertex (i ≫ f))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ f))).edge =
     (Truncated.Edge.id (X := (truncation 2).obj Z)
-      ((evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋0⦌)
-        (functorVertex (i ≫ f)))).edge at hi
-  rw [evaluateFunctorAt_functorVertex] at hi
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Z) a).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ f)))).edge at hi
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at hi
   exact hn.symm.trans (hr.trans hi)
 
 end SerrePositivity.KST.Fibration

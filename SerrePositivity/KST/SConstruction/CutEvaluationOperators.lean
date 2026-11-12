@@ -20,7 +20,7 @@ open scoped Simplicial
 lemma cutDiagramFamilyOperator_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
     (x y : Fin 2) :
     cutDiagramFamilyOperator n k C ≫ (ihom (arNerve n)).map
-        (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y)) =
       (pre (arNerveMap (cutCornerOrder k x y))).app C := by
   apply SSet.hom_ext
   intro d
@@ -31,7 +31,7 @@ lemma cutDiagramFamilyOperator_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.
   apply ConcreteCategory.hom_ext
   intro a
   change F.app e (α ≫ 𝟙 e) ((arCutSquareMap n k).app e
-    ((arNerve n).map (𝟙 e) a, PinchedHom.constant
+    ((arNerve n).map (𝟙 e) a, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
       (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) e.unop.len)) =
     F.app e (𝟙 d ≫ α) ((arNerveMap (cutCornerOrder k x y)).app e a)
   rw [Category.comp_id, Category.id_comp, CategoryTheory.Functor.map_id_apply]
@@ -42,7 +42,7 @@ lemma cutDiagramFamilyOperator_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.
 lemma cutRawFamilyOperator_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
     (x y : Fin 2) :
     cutRawFamilyOperator n k C ≫ (ihom (arNerve n)).map
-        (evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y)) =
       (gappedSubcomplex n C).ι ≫ (pre (arNerveMap (cutCornerOrder k x y))).app C := by
   exact (Category.assoc _ _ _).trans
     (congrArg (fun f => (gappedSubcomplex n C).ι ≫ f)
@@ -50,10 +50,10 @@ lemma cutRawFamilyOperator_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
 
 /-- S_n 内の切断作用素の各角は端点制限の元の単体的射そのもの。 -/
 lemma cutSConstructionMap_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (x y : Fin 2) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (x y : Fin 2) :
     cutSConstructionMap n k C ≫
       sPostcompCofiber n
-        ((fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
           (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y))
         (cofiberEvaluation_preservesSConstructionData C _).toCofiberData =
       sMap C (cutCornerOrder k x y) := by
@@ -64,13 +64,13 @@ lemma cutSConstructionMap_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
 
 /-- 転置した切断 cofiber 比較も元の各角の S_n の制限を厳密に保持する。 -/
 lemma cutCofiberComparison_evaluation (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (x y : Fin 2) :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (x y : Fin 2) :
     cutCofiberComparison n k C ≫
-      (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y) =
       sMap C (cutCornerOrder k x y) := by
   change cutSConstructionMap n k C ≫ (sCofiberComparison n C ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt _) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _) = _
   rw [sCofiberComparison_evaluation, cutSConstructionMap_evaluation]
 
 end SerrePositivity.KST.SConstruction

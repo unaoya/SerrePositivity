@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointPrecomp
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointValue
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：指定 fiber 終点比較の係数前合成が、同じ全延長の指定比較と値まで一致する。

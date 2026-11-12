@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 
@@ -28,12 +28,12 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) [hp : ∀ n, Fibration (p.app n
 
 /-- 実 fiber の錐の元の脚を BF 射として回収する。 -/
 def rawLeg (i : AsSmall.{u} WalkingCospan) : obj p hp ⟶
-    (spectrumPullbackDiagram p (fromPoint Y)).obj i :=
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y)).obj i :=
   SpectrumConeLeg.map (infinityCone p) (infinityCone_vertex p) i
 
 /-- 置換済み fiber の錐の脚を BF 射として回収する。 -/
 def replacedLeg (i : AsSmall.{u} WalkingCospan) : fiber p hp ⟶
-    (spectrumPullbackDiagram p (fromPoint Y)).obj i :=
+    (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y)).obj i :=
   SpectrumConeLeg.map (replacedCone p) (replacedCone_vertex p) i
 
 lemma rawLeg_left : rawLeg p (AsSmall.up.obj WalkingCospan.left) = inclusion p hp :=
@@ -46,13 +46,13 @@ lemma comparison_legs (i : AsSmall.{u} WalkingCospan) :
   let a := replacedConeComparison p
   let k := ULift.up (ComposableArrows.mk₀ i)
   exact ConeEdgeLeg.homMk_comp_transport
-    (a.map ((truncation 2).map (sliceOverProjection _)))
-    (F2.nativeConeLeg (infinityCone p) k) (F2.nativeConeLeg (replacedCone p) k)
-    (coherentNerveEdge (comparison p hp)).toTruncated
-    (coherentNerveEdge (rawLeg p i)).toTruncated (coherentNerveEdge (replacedLeg p i)).toTruncated
+    (a.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (infinityCone p) k) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (replacedCone p) k)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (comparison p hp)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (rawLeg p i)).toTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (replacedLeg p i)).toTruncated
     (ConeEdgeLeg.homMk_naturality a k)
     (replacedCone_vertex p) (infinityCone_vertex p)
-    (strictCoherentDiagram_vertex (spectrumPullbackDiagram p (fromPoint Y)) i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_vertex (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y)) i)
     (replacedConeComparison_projection p)
     (SpectrumConeLeg.map_edge _ _ i).symm (SpectrumConeLeg.map_edge _ _ i).symm
 

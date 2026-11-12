@@ -15,11 +15,11 @@ public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type (max (u + 1) v))
   [DGCategory R E] [Small.{u} E]
 local notation "I" => DGFunctor.id E
-local notation "L" => DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
 local notation "U" => DGHomGluingLoopConeBase R E E E (I) (I)
 local notation "IU" => DGFunctor.id (U)
 local notation "family" => dgHomGluingLoopConeFamily R E E E (I) (I)
@@ -36,7 +36,7 @@ local notation "G0" => DGFunctor.comp (G) (K)
 /-- 概要：元実逆回転小模型の元比較を同じ実加群像の全比較へ送る。
 方針：元二軸と元全比較を同じ評価 square の構成子へ渡す。
 規約：元逆回転閉射を保持。使われ方：実像 cone の入力全比較。 -/
-def dgIdentityInverseRotationImageComparison : StrictNatTrans (F0) (G0) :=
+def dgIdentityInverseRotationImageComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (F0) (G0) :=
   dgIdentityHomGluingRealizedModuleComparison R E (U) (J) (F) (G) (a) (h)
 local notation "η" => dgIdentityInverseRotationImageComparison R E
 
@@ -72,8 +72,8 @@ def dgIdentityInverseRotationImageConeFamily : DGFunctor R (L) (RightModule R E)
 規約：元実 cone と元実逆回転射を保持。
 使われ方：元始域の全実逆回転比較と固定 ν の指定上下二単体への接続。 -/
 def dgIdentityInverseRotationRealizedConeNerveComparison :
-    FunctorIso (dgNerve.map (dgIdentityInverseRotationRealizedConeFamily R E))
-      (dgNerve.map (dgIdentityInverseRotationImageConeFamily R E)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityInverseRotationRealizedConeFamily R E))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityInverseRotationImageConeFamily R E)) :=
   dgIdentityHomGluingRealizedConeNerveComparison R E (U) (J) (F) (G) (a) (h)
 
 /-- 概要：元実像 cone の左軸は元 loop cone の全加群像。

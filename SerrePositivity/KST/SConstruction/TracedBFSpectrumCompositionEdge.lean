@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.MonicKPrismNativeBFBoundaryFaces
 public import SerrePositivity.KST.SConstruction.PointFamilyHomotopyEdge
-public import SerrePositivity.InfinityCategories.F1.Coherent.OrderDiagrams
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.OrderDiagrams
 public import SerrePositivity.KST.Spectra.CoherentNerve
 
 /-! # 既存 BF 境界を表す実スペクトル射と元の合成比較辺
@@ -41,7 +41,7 @@ lemma monicKTracedSpectrumMap_comp_vertex (f : x ⟶ y) (g : y ⟶ z) :
         (lift (monicKPrismTracedBFBoundary F f) (monicKPrismTracedBFBoundary F g) ≫
           OmegaSpectrum.mappingComposition (kOmegaSpectrum (F.obj x))
             (kOmegaSpectrum (F.obj y)) (kOmegaSpectrum (F.obj z))) := by
-  rw [simplicialHom_vertex_comp, monicKTracedSpectrumMap_vertex, monicKTracedSpectrumMap_vertex]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp, monicKTracedSpectrumMap_vertex, monicKTracedSpectrumMap_vertex]
   rfl
 
 /-- 元の BF 境界円柱全体を保つ、合成射の頂点から二射の実合成頂点への豊穣辺。 -/

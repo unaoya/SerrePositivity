@@ -143,6 +143,7 @@ def main():
     args = parser.parse_args()
     try:
         config = json.loads(args.config.read_text())
+        config = config.get('klw1', config)
         report = check(source_graph(args.root, config.get("exclude_prefixes", [])), config)
     except (KeyError, ValueError, OSError) as error:
         parser.exit(2, f"{error}\n")

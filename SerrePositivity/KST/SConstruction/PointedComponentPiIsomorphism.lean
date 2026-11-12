@@ -18,8 +18,8 @@ open Spectra.PointedMapping SerrePositivity.SimplicialModel
 /-- 同じ点つき成分に属する Kan 対象間の射へ、全基点 π 同型性を移す。 -/
 lemma kanPiIsomorphism_of_pointed_component
     {X Y : PointedSimplicialSet.{u}} [KanComplex X.right] [KanComplex Y.right]
-    (f g : X ⟶ Y) (h : componentOf f = componentOf g) (hg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right := by
+    (f g : X ⟶ Y) (h : componentOf f = componentOf g) (hg : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g.right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right := by
   have he := pointedMappingImage_eq_of_component AnodyneHomotopy.anodyneQ
     (Localization.inverts _ anodyneExtensions) h
   have hi := pointed_localized_isIso_of_piIsomorphism g hg

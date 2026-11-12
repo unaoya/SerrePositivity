@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramComparisonIsos
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanDiagramTriangleConstant
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleConstantFaces
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoAlgebra
 
 /-!
 概要：図式上で定値な Kan 錐円柱の二次の比較を等式からの同型へ簡約する。

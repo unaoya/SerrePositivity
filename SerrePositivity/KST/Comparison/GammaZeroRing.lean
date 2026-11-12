@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.GammaH0
-public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ClosedComposition
 public import SerrePositivity.DifferentialGraded.Category.Basic
 public import Mathlib.CategoryTheory.Preadditive.Basic
 
@@ -23,7 +23,7 @@ universe u v
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded
-open InfinityCategories.DoldKanComparison
+
 
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
@@ -34,20 +34,20 @@ variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 使われ方：Γ の零次環から閉自己射の環への乗法性。
 -/
 theorem standardZeroEval_mul (x : D) (g f : GammaEnd (R := R) x 0) :
-    (standardZeroEval x x (g * f)).val =
-      compose R (standardZeroEval x x g).val (standardZeroEval x x f).val (by decide) := by
-  change (awData g.val f.val).component Finset.univ 0 Finset.univ_nonempty (by simp) = _
-  rw [awData_component, Finset.sum_eq_single
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEval x x (g * f)).val =
+      compose R (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEval x x g).val (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEval x x f).val (by decide) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData g.val f.val).component Finset.univ 0 Finset.univ_nonempty (by simp) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awData_component, Finset.sum_eq_single
     (⟨0, Finset.mem_univ _⟩ : ↥(Finset.univ : Finset (Fin 1)))]
-  · unfold awTerm
+  · unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awTerm
     have hl : (Finset.univ : Finset (Fin 1)).filter (· ≤ 0) = Finset.univ := by
       ext i; fin_cases i; simp
     have hr : (Finset.univ : Finset (Fin 1)).filter (0 ≤ ·) = Finset.univ := by
       ext i; fin_cases i; simp
-    apply compose_eq_of_heq
-    · exact component_heq_of_eq g.val _ Finset.univ hl _ 0
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.AWAssocTerms.compose_eq_of_heq
+    · exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.component_heq_of_eq g.val _ Finset.univ hl _ 0
         (by simp) Finset.univ_nonempty rfl (by simp)
-    · exact component_heq_of_eq f.val _ Finset.univ hr _ 0
+    · exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.component_heq_of_eq f.val _ Finset.univ hr _ 0
         (by simp) Finset.univ_nonempty rfl (by simp)
     · simp
     · simp
@@ -63,7 +63,7 @@ theorem standardZeroEval_mul (x : D) (g f : GammaEnd (R := R) x 0) :
 -/
 def gammaZeroClosedRingEquiv (x : D) : GammaEnd (R := R) x 0 ≃+*
     End (ForgetEnrichment.of (Complex R) x) where
-  toEquiv := ((standardZeroEquiv (R := R) x x).toEquiv.trans
+  toEquiv := ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv (R := R) x x).toEquiv.trans
     (closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x)).symm).trans
       End.homEquiv.symm
@@ -74,15 +74,15 @@ def gammaZeroClosedRingEquiv (x : D) : GammaEnd (R := R) x 0 ≃+*
     change (closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
       (ForgetEnrichment.of (Complex R) x))
         ((closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
-          (ForgetEnrichment.of (Complex R) x)).symm (standardZeroEquiv x x (a + b))) =
+          (ForgetEnrichment.of (Complex R) x)).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x (a + b))) =
       (closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
         (ForgetEnrichment.of (Complex R) x))
           ((closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
-            (ForgetEnrichment.of (Complex R) x)).symm (standardZeroEquiv x x a) +
+            (ForgetEnrichment.of (Complex R) x)).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x a) +
            (closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
-            (ForgetEnrichment.of (Complex R) x)).symm (standardZeroEquiv x x b))
+            (ForgetEnrichment.of (Complex R) x)).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x b))
     rw [closedHomEquiv_add, Equiv.apply_symm_apply, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
-    exact map_add (standardZeroEquiv (R := R) x x) a b
+    exact map_add (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv (R := R) x x) a b
   map_mul' g f := by
     apply End.homEquiv.injective
     apply (closedHomEquiv R D
@@ -91,15 +91,15 @@ def gammaZeroClosedRingEquiv (x : D) : GammaEnd (R := R) x 0 ≃+*
     change (closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x) ((closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x)).symm
-      (standardZeroEquiv x x (g * f)))).val =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x (g * f)))).val =
       (closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x) ((closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x)).symm
-          (standardZeroEquiv x x f) ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x f) ≫
         (closedHomEquiv R D
       (ForgetEnrichment.of (Complex R) x) (ForgetEnrichment.of (Complex R) x)).symm
-          (standardZeroEquiv x x g))).val
-    rw [Equiv.apply_symm_apply, InfinityCategories.DGNerve.HomotopyComparison.closedHom_comp,
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEquiv x x g))).val
+    rw [Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedHom_comp,
       Equiv.apply_symm_apply, Equiv.apply_symm_apply]
     exact standardZeroEval_mul x g f
 

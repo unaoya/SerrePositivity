@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 /-- 左に固定した因子を持つ tensor からの射を、元の各 cell で判定する。 -/
 lemma cubicalSerreWhiskerLeft_hom_ext {K : CubicalSet.{u}} {Q T : Complex A}
     {f g : Q ⊗ (cubicalSerreChains A).obj K ⟶ T}
-    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)),
+    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)),
       (Q ◁ cubicalSerreCell A c x) ≫ f = (Q ◁ cubicalSerreCell A c x) ≫ g) : f = g := by
   apply (isColimitOfPreserves (tensorLeft Q) (cubicalSerreGeneratingIsColimit A K)).hom_ext
   intro j
@@ -29,7 +29,7 @@ lemma cubicalSerreWhiskerLeft_hom_ext {K : CubicalSet.{u}} {Q T : Complex A}
 /-- 右に固定した因子を持つ tensor からの射を、元の各 cell で判定する。 -/
 lemma cubicalSerreWhiskerRight_hom_ext {K : CubicalSet.{u}} {Q T : Complex A}
     {f g : (cubicalSerreChains A).obj K ⊗ Q ⟶ T}
-    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)),
+    (h : ∀ (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)),
       (cubicalSerreCell A c x ▷ Q) ≫ f = (cubicalSerreCell A c x ▷ Q) ≫ g) : f = g := by
   apply (isColimitOfPreserves (tensorRight Q) (cubicalSerreGeneratingIsColimit A K)).hom_ext
   intro j

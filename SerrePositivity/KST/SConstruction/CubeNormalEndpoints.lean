@@ -29,26 +29,26 @@ lemma cubeConnectionNormalVertex_bot {n m : ℕ} (d : CubeConnectionNormal n m) 
     cubeConnectionNormalVertex d ⊥ = ⊥ := by
   funext j
   apply Bool.eq_iff_iff.mpr
-  simp [cubeConnectionNormalVertex, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff]
+  simp [cubeConnectionNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_true_iff]
 
 /-- 空でない元の各ブロックの max は一頂点を保つ。 -/
 lemma cubeConnectionNormalVertex_top {n m : ℕ} (d : CubeConnectionNormal n m) :
     cubeConnectionNormalVertex d ⊤ = ⊤ := by
   funext j
   obtain ⟨i, hi⟩ := cubeConnectionNormalBlock_surjective d j
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff _ _ _).mpr ⟨i, hi, rfl⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_true_iff _ _ _).mpr ⟨i, hi, rfl⟩
 
 /-- 元の削除評価は零頂点を保つ。 -/
-lemma cubeDeletionNormalVertex_bot {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d ⊥ = ⊥ := rfl
+lemma cubeDeletionNormalVertex_bot {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n m) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d ⊥ = ⊥ := rfl
 
 /-- 元の削除評価は一頂点を保つ。 -/
-lemma cubeDeletionNormalVertex_top {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d ⊤ = ⊤ := rfl
+lemma cubeDeletionNormalVertex_top {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n m) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d ⊤ = ⊤ := rfl
 
 /-- 元の削除評価は全ての残余頂点を回収する。 -/
-lemma cubeDeletionNormalVertex_surjective {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m) :
-    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d) := by
+lemma cubeDeletionNormalVertex_surjective {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n m) :
+    Function.Surjective (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d) := by
   induction d with
   | nil => intro y; exact ⟨y, Subsingleton.elim _ _⟩
   | drop d ih =>

@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SquareTrianglePushout
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SquareTrianglePushout
 public import SerrePositivity.KST.Spectra.TriangleDiskFaces
 public import SerrePositivity.KST.Spectra.FibrationEdgeComposition
-public import SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport
 
 /-!
 概要：三辺輸送の二つの実三角形を同じ対角辺で貼り、四辺を保持する実正方形を作る。
@@ -21,11 +21,11 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.ThreeEdgeTransport
 variable {E : SSet.{u}} {x a y b : E _⦋0⦌}
   {left : E.Edge x a} {middle : E.Edge x y} {right : E.Edge y b}
-  (D : _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport left middle right)
+  (D : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ThreeEdgeTransport left middle right)
 
 /-- 保存した二つの実三角形を、同じ対角辺で貼った実正方形。 -/
 def square : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.desc (SSet.yonedaEquiv.symm D.first.simplex)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.desc (SSet.yonedaEquiv.symm D.first.simplex)
     (SSet.yonedaEquiv.symm D.second.simplex) (by
       rw [SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm,
         SSet.Edge.CompStruct.δ_one_yonedaEquiv_symm])
@@ -33,15 +33,15 @@ def square : (Δ[1] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶ E :=
 /-- 上側の二単体は、元の第一の輸送三角形単体そのもの。 -/
 @[reassoc (attr := simp)]
 lemma square_upper :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ square D = SSet.yonedaEquiv.symm D.first.simplex :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inl_desc _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ square D = SSet.yonedaEquiv.symm D.first.simplex :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.inl_desc _ _ _
 
 /-- 下側の二単体は、元の第二の輸送三角形単体そのもの。 -/
 @[reassoc (attr := simp)]
 lemma square_lower :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ square D =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ square D =
       SSet.yonedaEquiv.symm D.second.simplex :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.isPushout.inr_desc _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.isPushout.inr_desc _ _ _
 
 /-- 正方形の始辺は、元の左辺そのもの。 -/
 lemma square_zero :

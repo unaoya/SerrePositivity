@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectMapEquivalence
-public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyNaturality
 public import SerrePositivity.KST.SConstruction.PerfectDGMoritaHomotopy
 
 /-!
@@ -20,21 +20,21 @@ namespace SerrePositivity.KST.NonConnective
 
 private theorem homotopyEquivalenceOfNative (R : Type u) [CommRing R]
     (C D : Type v) [DGCategory R C] [DGCategory R D] (f : DGFunctor R C D)
-    (hf : IsQCatEquivalence (dgNerve.map f)) : f.onHomotopy.IsEquivalence := by
-  let : (hoFunctor.map (dgNerve.map f)).toFunctor.IsEquivalence :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map f)) : f.onHomotopy.IsEquivalence := by
+  let : (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map f)).toFunctor.IsEquivalence :=
     hf.choose.toHoEquivalence.isEquivalence_functor
-  have : ((dgStableHomotopyEquivalence R C).functor ⋙ f.onHomotopy).IsEquivalence :=
-    Functor.isEquivalence_of_iso (dgStableHomotopyEquivalence_naturalityIso R C D f)
-  exact Functor.isEquivalence_of_comp_left (dgStableHomotopyEquivalence R C).functor
+  have : ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence R C).functor ⋙ f.onHomotopy).IsEquivalence :=
+    Functor.isEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence_naturalityIso R C D f)
+  exact Functor.isEquivalence_of_comp_left (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence R C).functor
     f.onHomotopy
 
 variable (R : Type u) [CommRing R] (C D : Type (max (u + 1) v))
   [DGCategory R C] [Small.{u} C] [DGCategory R D] [Small.{u} D]
-  [IsDGPretriangulated R C] [IsDGPretriangulated R D]
+  [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R C] [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R D]
 
 /-- 同じ元の射の native 同値性は、元の主 Perf 延長の同値性を与える。 -/
 theorem dgKappaPerfectExtension_isEquivalence_of_native (f : DGFunctor R C D)
-    (hf : IsQCatEquivalence (dgNerve.map f)) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map f)) :
     (quasiEquivalencePerfectExtension R C D f).IsEquivalence := by
   let : (perfectDGExtension R C D f).onHomotopy.IsEquivalence :=
     homotopyEquivalenceOfNative R _ _ (perfectDGExtension R C D f)

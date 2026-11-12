@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanCommonRightIso
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanRightInverseImage
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeKanValueImage

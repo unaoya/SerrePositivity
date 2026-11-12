@@ -15,15 +15,15 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の HA 連結語値の向きを戻し、元の生の tensor 生成元に割り当てる値。 -/
-def simplexHABeadWordRawValue {n : ℕ} (s : DGNerve.SimplexData A D n)
-    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
+def simplexHABeadWordRawValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     GradedHom A (s.obj a) (s.obj b) (-(d : ℤ)) :=
   serreCubeOrientationSign d • simplexHABeadWordValue A s word
 
 /-- 元の生の連結語値も、元の厳密 dg 関手による後合成と厳密に可換。 -/
-lemma simplexHABeadWordRawValue_post {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordRawValue_post {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     {E : Type w} [DGCategory A E] (F : DGFunctor A D E)
-    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     simplexHABeadWordRawValue A (s.map F) word =
       (F.map (s.obj a) (s.obj b)).f (-(d : ℤ)) (simplexHABeadWordRawValue A s word) := by
   unfold simplexHABeadWordRawValue
@@ -37,7 +37,7 @@ lemma simplexHABeadWordRawValue_post {n : ℕ} (s : DGNerve.SimplexData A D n)
 /-- 元の生の連結語値は、元の実鎖射の向き補正前の最高生成元像を回収する。 -/
 lemma simplexHABeadWordRawValue_recovery {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
-    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     simplexHABeadWordRawValue A (cubicalLambdaNativeSimplexData A F) word =
       (simplexHABeadWordCell A word ≫ F.map _ _).f (-(d : ℤ))
         (serreCubeTopCell A d) := by

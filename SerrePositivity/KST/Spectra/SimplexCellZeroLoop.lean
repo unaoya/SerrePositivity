@@ -24,12 +24,12 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 円の Kan 置換の正次数比較は、単位への制限と通常の loop 群同型の合成。 -/
 lemma CirclePower.positiveHomotopyEquiv_apply (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom space Y))) :
     positiveHomotopyEquiv Y n a = loopPositiveHomotopyEquiv Y n
-      (pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y) a) := by
+      (pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed unit Y) a) := by
   dsimp only [positiveHomotopyEquiv, MulEquiv.trans_apply]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   rfl
 
 namespace SimplexCell
@@ -41,19 +41,19 @@ lemma componentEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     componentEquiv Z n (mapπ₀ (PointedObject.basedHomMap _ p).right a) =
       pointedGroupMap n p (componentEquiv Y n a) := by
   have hs := PointedMapping.prePointed_post (sphereIso.{u} (n + 1)).inv p
-  have hπ := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square _ _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Z).right
+  have hπ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mapPiZero_square _ _
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Y).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Z).right
     (congrArg Under.Hom.right hs.symm) a
   change SphereSimplex.componentClass Z n
     (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Z).right
       (mapπ₀ _ a)) = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, hπ, SphereSimplex.componentClass_natural]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, hπ, SphereSimplex.componentClass_natural]
   change pointedGroupMap n p (SphereSimplex.componentClass Y n
-      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y).right a)) =
+      (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Y).right a)) =
     pointedGroupMap n p (SphereSimplex.componentClass Y n
       (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y).right a))
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
 
 /-- 概要：通常の loop の成分をセル球面の基本群表示へ移すと、loop 係数の逆元になる。
 方針：置換単位の後合成で成分を持ち上げ、二つの基本段の向きと成分係数の自然性を使う。
@@ -61,10 +61,10 @@ lemma componentEquiv_natural {Y Z : PointedSimplicialSet.{u}}
 使われ方：Goerss–Jardine VIII §1。骨格の係数微分の基本段の逆符号。 -/
 theorem positiveHomotopyEquiv_loopZero (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ)
-    (a : π₀ (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right) :
+    (a : π₀ (PointedObject.basedHom (sphere.{u} (n + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right) :
     positiveHomotopyEquiv Y n 0
         (PointedMapping.loopZeroComponentEquiv (sphere.{u} (n + 1)) Y a) =
-      (loopPositiveHomotopyEquiv Y n (componentEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n a))⁻¹ := by
+      (loopPositiveHomotopyEquiv Y n (componentEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n a))⁻¹ := by
   obtain ⟨c, rfl⟩ := (PointedMapping.loopUnit_post_piZero_bijective (sphere.{u} (n + 1)) Y).2 a
   rw [PointedMapping.loopZeroComponentEquiv_unit, map_inv]
   have hz := positiveHomotopyEquiv_zero_loopClasses Y n c

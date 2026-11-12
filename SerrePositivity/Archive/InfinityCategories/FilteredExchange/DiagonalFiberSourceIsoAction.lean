@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanHomotopyMappedComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPairPresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalFiberSourceVertex
-public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransportSourceIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.DiagonalFiberTransportSourceIso
 
 /-!
 概要：元の始点同型の対角輸送は、同じ関手空間の作用による指定同型の像。

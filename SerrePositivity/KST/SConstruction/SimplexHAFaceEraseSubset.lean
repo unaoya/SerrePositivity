@@ -17,7 +17,7 @@ include hT hb
 /-- 元の面頂点の削除は、元の同じ両端を含む二点以上の集合を残す。 -/
 lemma simplexHAFaceErase_two :
     2 ≤ ((simplexHADecodeSubset (m + 1) v T).erase (v (simplexHAFaceVertex m i))).card := by
-  apply DGNerve.Index.erase_two
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_two
     ((simplexHADecodeSubset_mem (m + 1) v T _).mpr (Or.inl ⟨0, rfl⟩))
     ((simplexHADecodeSubset_mem (m + 1) v T _).mpr (Or.inr (Finset.max'_mem T hT)))
     (simplexHAFaceVertex_first_lt m v i)
@@ -27,7 +27,7 @@ lemma simplexHAFaceErase_two :
 lemma simplexHAFaceErase_min :
     v 0 = ((simplexHADecodeSubset (m + 1) v T).erase (v (simplexHAFaceVertex m i))).min'
       (Finset.card_pos.mp (by have h := simplexHAFaceErase_two m v T hT hb i; omega)) := by
-  apply DGNerve.Index.erase_min
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_min
     (show IsLeast (simplexHADecodeSubset (m + 1) v T : Set (Fin (n + 1))) (v 0) from by
       rw [← simplexHADecodeSubset_min (m + 1) v T hb]
       exact Finset.isLeast_min' _ _) (simplexHAFaceVertex_first_lt m v i)
@@ -37,7 +37,7 @@ lemma simplexHAFaceErase_max :
     T.max' hT =
       ((simplexHADecodeSubset (m + 1) v T).erase (v (simplexHAFaceVertex m i))).max'
         (Finset.card_pos.mp (by have h := simplexHAFaceErase_two m v T hT hb i; omega)) := by
-  apply DGNerve.Index.erase_max
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_max
     (show IsGreatest (simplexHADecodeSubset (m + 1) v T : Set (Fin (n + 1))) (T.max' hT) from by
       rw [← simplexHADecodeSubset_max (m + 1) v T hT hb]
       exact Finset.isGreatest_max' _ _)

@@ -22,7 +22,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {A B : SSet.{u}} (i : A ⟶ B) (Y : PointedSimplicialSet.{u})
   {s : (obj A Y).right.PtSimplex 1 ((pre i Y).right.app _ (obj B Y).basepoint)}
-  (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pre i Y).right (obj B Y).basepoint s)
+  (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pre i Y).right (obj B Y).basepoint s)
 
 /-- 概要：零次の相対商の代表を実際の点つき射へ戻す。
 方針：代表単体を頂点に送り、pointed Hom の頂点と射の標準同値を使う。
@@ -64,7 +64,7 @@ def boundaryLiftNullhomotopy :
     have hι : SSet.ι₁ (X := B) = PointedMapping.zeroSection B ≫
       B ◁ stdSimplex.δ (0 : Fin 2) := rfl
     rw [hι, Category.assoc, boundaryLiftFamily_face i Y L 0 (by decide), comp_toUnit_assoc]
-    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const Y B
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const Y B
   rel := by
     ext m ⟨⟨z, hz⟩, t⟩
     exact hz.elim

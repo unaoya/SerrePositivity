@@ -17,7 +17,7 @@ lemma suspensionFamily_evaluation {P : SSet.{u}} (X Y : PointedSimplicialSet.{u}
     (a : P ⟶ (PointedObject.basedHom X Y).right) :
     (PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} X ▷ P) ≫
       uncurry (a ≫ (Spectra.suspensionHom X Y).right ≫
-        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)) =
+        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y)) =
     (α_ PointedSimplicialSet.circle.{u}.right X.right P).hom ≫
       (PointedSimplicialSet.circle.{u}.right ◁ uncurry (a ≫ PointedObject.basedHomι X Y)) ≫
       PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} Y := by
@@ -26,14 +26,14 @@ lemma suspensionFamily_evaluation {P : SSet.{u}} (X Y : PointedSimplicialSet.{u}
 
 /-- 全 suspension 族の作用後の点つき射も、元の商射と実作用の指定式で回収される。 -/
 lemma suspensionFamily_evaluation_post {P : SSet.{u}} (X Y Z : PointedSimplicialSet.{u})
-    (a : P ⟶ (PointedObject.basedHom X Y).right) (g : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y ⟶ Z)
+    (a : P ⟶ (PointedObject.basedHom X Y).right) (g : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y ⟶ Z)
     (b : X.right ⊗ P ⟶ Y.right)
     (c : PointedSimplicialSet.circle.{u}.right ⊗ Y.right ⟶ Z.right)
     (hb : uncurry (a ≫ PointedObject.basedHomι X Y) = b)
     (hc : PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} Y ≫ g.right = c) :
     (PointedSimplicialSet.productToSmash PointedSimplicialSet.circle.{u} X ▷ P) ≫
       (uncurry (a ≫ (Spectra.suspensionHom X Y).right ≫
-        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)) ≫ g.right) =
+        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y)) ≫ g.right) =
     (α_ PointedSimplicialSet.circle.{u}.right X.right P).hom ≫
       (PointedSimplicialSet.circle.{u}.right ◁ b) ≫ c := by
   erw [← Category.assoc, suspensionFamily_evaluation]

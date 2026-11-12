@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleHomotopy
 
 /-!
 概要：𝒮 の元の二単体を Kan 射間の指定関手同型として読む。

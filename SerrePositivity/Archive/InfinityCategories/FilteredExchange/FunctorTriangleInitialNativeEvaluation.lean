@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleInitialEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorPostLaws
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopySourceComparison
 
 /-!

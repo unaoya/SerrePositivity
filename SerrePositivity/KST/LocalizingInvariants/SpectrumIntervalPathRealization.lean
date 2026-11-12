@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumMappingIntervalPath
-public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.UniverseVertexIso
 public import SerrePositivity.KST.LocalizingInvariants.FullyFaithfulEdgeRealization
 
 /-!
@@ -28,23 +28,23 @@ local instance pathRealizationKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := mappingSpace_kanComplex X Y
 
 variable {X Y : OmegaSpectrum.{u}} (f g : X ⟶ Y)
-local notation "C" => coherentHomIntervalComparison X Y
+local notation "C" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y
 
 structure NormalizedIntervalRealization
-    (α : HomotopyCategory.mk (intervalMappingVertexOfEdge (coherentNerveEdge f)) ⟶
-      HomotopyCategory.mk (intervalMappingVertexOfEdge (coherentNerveEdge g))) where
+    (α : HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)) ⟶
+      HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g))) where
   path : (mappingSpace X Y).Edge (vertexOfHom f) (vertexOfHom g)
   image : Truncated.HomotopyCategory.homMk (intervalEdge path).toTruncated = α
 
 def normalizedIntervalRealization
-    (α : HomotopyCategory.mk (intervalMappingVertexOfEdge (coherentNerveEdge f)) ⟶
-      HomotopyCategory.mk (intervalMappingVertexOfEdge (coherentNerveEdge g))) :
+    (α : HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)) ⟶
+      HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g))) :
     NormalizedIntervalRealization f g α := by
   let R := transportedEdgeRealization (C)
-    (coherentHomIntervalComparison_isQCatEquivalence X Y).isFullyFaithful
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_isQCatEquivalence X Y).isFullyFaithful
     (ULift.up (vertexOfHom f)) (ULift.up (vertexOfHom g)) (interval_vertex f) (interval_vertex g) α
   let P : (mappingSpace X Y).Edge (vertexOfHom f) (vertexOfHom g) :=
-    SSet.Edge.ofTruncated (downTruncatedEdge R.path.toTruncated)
+    SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.downTruncatedEdge R.path.toTruncated)
   have he : (intervalEdge P).toTruncated =
       ((R.path.map C).ofEq (interval_vertex f) (interval_vertex g)).toTruncated := by
     apply Truncated.Edge.ext

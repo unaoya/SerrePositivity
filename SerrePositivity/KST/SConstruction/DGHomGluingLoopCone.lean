@@ -3,8 +3,8 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeFunctorLift
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectEnvelopeYoneda
 public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
 
 /-!
 概要：元 Hom gluing の実 cone の逆 shift と、その全像を保つ小さい dg 模型を構成する。
@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D]
   (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-local notation "L" => DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)
 
 /-- 概要：元の実 cone の逆 shift を全 Hom で保持する厳密 dg 関手。
 方針：既存 cone 関手と既存 perfect dg shift を合成。
@@ -32,8 +32,8 @@ def dgHomGluingLoopConeFunctor : DGFunctor R (L) (PerfectDGModule R E) :=
 方針：元左 Yoneda 関手に shift 1 と逆 shift を順に合成する。
 規約：同型な対象へ選び直さない。使われ方：指定比較を保つ実逆回転の右成分。 -/
 def dgHomGluingDoubleShiftLeftFunctor : DGFunctor R (L) (PerfectDGModule R E) :=
-  ((((dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
-    (dgPerfectYoneda R E)).comp (perfectDGModuleShiftDG R E Set.univ 1)).comp
+  ((((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R E)).comp (perfectDGModuleShiftDG R E Set.univ 1)).comp
       (perfectDGModuleShiftDG R E Set.univ (-1))
 
 /-- 概要：逆 shift cone と元左対象の二重 shift の二つの実像を保持する。
@@ -63,7 +63,7 @@ def dgHomGluingLoopConeSmall :
 規約：同じ左対象を保持。使われ方：元左対象との指定回収。 -/
 def dgHomGluingLoopConeTarget :
     DGFunctor R (L) (DGHomGluingLoopConeBase R C D E p q) :=
-  ((dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
+  ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)).comp p).comp
     (dgSmallPerfectEnvelopeYoneda R E ((L) ⊕ (L))
       (dgHomGluingLoopConeFamily R C D E p q))
 

@@ -58,20 +58,20 @@ theorem closedFlagCofiberPostcomparison_bottom :
 方針：同じ底辺の厳密一致を元の充満忠実な射影に沿って戻す。
 規約：全入力族を保持。使われ方：P 値 cofiber 座標の自然性。 -/
 def closedFlagCofiberPostcomparison :
-    FunctorIso (closedKernelFlagPost P n ≫ closedFlagCofiberCompletion P α).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (closedKernelFlagPost P n ≫ closedFlagCofiberCompletion P α).val
       (weakStringCofiberExact (closedKernelZeroMap P) α ≫ closedFlagKernelCofiberPost P).val := by
   apply (closedCofiberRawProjection_fullyFaithful P).preimageFunctorIso
-  exact eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+  exact eqToIso (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (closedFlagCofiberPostcomparison_bottom P α))
 
 /-- 概要：元の包含前後の cofiber 係数は同じ P 自身に値を持つ全関手同型。
 方針：同じ二補完の比較を quotient 頂点へ送り、元の係数同型を回収する。
 規約：retract 閉包なし。使われ方：全有限積の局所化座標の比較。 -/
 def closedFlagCofiber_postcomp :
-    FunctorIso (closedKernelFlagPost P n ≫ closedFlagCofiber P α).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (closedKernelFlagPost P n ≫ closedFlagCofiber P α).val
       (weakStringKernelCofiber (closedKernelZeroMap P) α ≫
         (closedFlagKernelCoefficientIso P).hom).val := by
-  have e : FunctorIso
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((closedKernelFlagPost P n ≫ closedFlagCofiberCompletion P α) ≫
         relativeCofiberQuotient (ClosedStablePredicate.top B) P).val
       ((weakStringCofiberExact (closedKernelZeroMap P) α ≫ closedFlagKernelCofiberPost P) ≫

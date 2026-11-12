@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorTarget
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget
 public import SerrePositivity.EInfinity.Hammock.UnmarkedGeneratorValue
 
 /-!
@@ -22,7 +22,7 @@ open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y : Paths C)
 
-def wordValue : space W X Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total C)) where
+def wordValue : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (List (Quiver.Total C)) where
   app n := ↾fun s => s.1.val :: (colimitValue W s.1.val.right Y).app n s.2.2
   naturality n m θ := by
     apply ConcreteCategory.hom_ext

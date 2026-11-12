@@ -69,7 +69,7 @@ def loopExchangeNaturalitySquare :
 lemma loopExchangeNaturalitySquare_start :
     SquareAdjustment.leftSide ≫ (loopExchangeNaturalitySquare v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z')) ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z')) ≫
           (PointedMapping.coordinateMap (mappingIso Z).inv (mappingIso Z').hom).right := by
   change SquareAdjustment.leftSide ≫ ((exchangeNaturalitySquare v).h ≫ _) = _
   rw [← Category.assoc, exchangeNaturalitySquare_start]
@@ -78,7 +78,7 @@ lemma loopExchangeNaturalitySquare_start :
 lemma loopExchangeNaturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (loopExchangeNaturalitySquare v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z')) ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z')) ≫
           (PointedMapping.coordinateMap (mappingIso Z).inv (mappingIso Z').hom).right := by
   change SquareAdjustment.rightSide ≫ ((exchangeNaturalitySquare v).h ≫ _) = _
   rw [← Category.assoc, exchangeNaturalitySquare_finish]

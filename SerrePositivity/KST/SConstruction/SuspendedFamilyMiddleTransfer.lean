@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 local instance suspendedMiddleTransferPointedCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
 
@@ -24,12 +24,12 @@ lemma pointed_middle_comp_lift {D : SSet.{u}} {X B R Z : PointedSimplicialSet.{u
     (p : B ⟶ R) (a : D ⟶ (PointedObject.basedHom X B).right)
     (h : D ⟶ (PointedObject.basedHom R Z).right) :
     lift (a ≫ (PointedObject.basedHomMap X p).right) h ≫ eComp SSet X R Z =
-      lift a (h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre p Z) ≫ eComp SSet X B Z := by
+      lift a (h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre p Z) ≫ eComp SSet X B Z := by
   let a₀ : D ⟶ (X ⟶[SSet] B) := a
   let h₀ : D ⟶ (R ⟶[SSet] Z) := h
   have he : ((a₀ ≫ eHomWhiskerLeft SSet X p) ⊗ₘ h₀) ≫ eComp SSet X R Z =
       (a₀ ⊗ₘ (h₀ ≫ eHomWhiskerRight SSet p Z)) ≫ eComp SSet X B Z := by
-    rw [← tensorHom_comp_whiskerRight, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle,
+    rw [← tensorHom_comp_whiskerRight, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_comp_middle,
       ← Category.assoc, tensorHom_comp_whiskerLeft]
   have hd := congrArg (fun q => lift (𝟙 D) (𝟙 D) ≫ q) he
   simpa only [PointedEnrichment.whiskerLeft_eq, PointedEnrichment.whiskerRight_eq,
@@ -38,16 +38,16 @@ lemma pointed_middle_comp_lift {D : SSet.{u}} {X B R Z : PointedSimplicialSet.{u
 /-- 後続円柱の suspension 源の射影を、前の同じ族の標的の射影へ移す。 -/
 lemma pointed_suspension_middle_lift {D : SSet.{u}} {X B R Z : PointedSimplicialSet.{u}}
     (p : B ⟶ R) (a : D ⟶ (PointedObject.basedHom X B).right)
-    (h : D ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension R) Z).right) :
+    (h : D ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension R) Z).right) :
     lift (a ≫ (suspensionHom X B).right)
-        (h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ p) Z) ≫
-      eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension B) Z =
+        (h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ p) Z) ≫
+      eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension B) Z =
       lift (a ≫ (PointedObject.basedHomMap X p).right ≫ (suspensionHom X R).right) h ≫
-        eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension R) Z := by
-  have hn := suspensionHom_post X p
+        eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension R) Z := by
+  have hn := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post X p
   change (PointedObject.basedHomMap X p).right ≫ (suspensionHom X R).right =
     (suspensionHom X B).right ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (PointedSimplicialSet.circle.{u} ◁ p)).right at hn
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (PointedSimplicialSet.circle.{u} ◁ p)).right at hn
   rw [← pointed_middle_comp_lift]
   rw [Category.assoc, ← hn]
 

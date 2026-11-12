@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeComparison
-public import SerrePositivity.InfinityCategories.F2.Ind.IndRestrictionEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IndRestrictionEquivalence
 
 /-!
 概要：固定 ν の全 native Hom 作用を、同じ Indω 間の filtered 余極限保存関手へ延長する。
@@ -17,21 +17,21 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 local instance indNativeRegular : Fact (Cardinal.aleph0.{w}).IsRegular :=
   Cardinal.fact_isRegular_aleph0
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ元の Yoneda 制限を順射とする実 ∞ 圏同値。標的 Ind の余極限は正本が供給する。 -/
 def dgKInputIndRestrictionEquivalence :=
-  indKappaContinuousRestrictionEquivalence Cardinal.aleph0 (dgKInputStableValue R A).obj
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence Cardinal.aleph0 (dgKInputStableValue R A).obj
     (dgKInputIndCompletion R B)
-    (ind_hasSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputStableValue R B).obj)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ind_hasSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputStableValue R B).obj)
 
 /-- 元の全 native ν 作用を、同じ標的の全 Yoneda に続けた全族。 -/
 def dgKInputIndNativeGeneratorFamily :=
   dgKInputCompactNativeLiftedFamilyMap R A B ≫
-    (ihom _).map (indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj)
+    (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj)
 
 /-- 元の全 native 入力族を、filtered 余極限保存関手の全部分 ∞ 圏へ延長する。 -/
 def dgKInputIndNativeContinuousFamilyMap :=
@@ -40,7 +40,7 @@ def dgKInputIndNativeContinuousFamilyMap :=
 /-- 同じ延長の全関手空間への実包含。対象別の延長の独立選択は行わない。 -/
 def dgKInputIndNativeFamilyMap :=
   dgKInputIndNativeContinuousFamilyMap R A B ≫
-    kappaContinuousFunctorInclusion Cardinal.aleph0
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.kappaContinuousFunctorInclusion Cardinal.aleph0
       (dgKInputIndCompletion R A) (dgKInputIndCompletion R B)
 
 /-- 概要：延長した全族の Yoneda 制限は、元の全 native ν・Yoneda 族と同型。
@@ -48,14 +48,14 @@ def dgKInputIndNativeFamilyMap :=
 規約：全 Hom 族上の関手同型であり、点ごとの比較に弱めない。
 使われ方：d4 の Ind 作用と元の固定 ν 作用の照合。 -/
 def dgKInputIndNativeFamilyMap_restrictionIso :
-    FunctorIso (dgKInputIndNativeFamilyMap R A B ≫
-      (pre (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)).app _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputIndNativeFamilyMap R A B ≫
+      (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)).app _)
       (dgKInputIndNativeGeneratorFamily R A B) := by
   have e := (dgKInputIndRestrictionEquivalence R A B).invHomIso.precomp
     (dgKInputIndNativeGeneratorFamily R A B)
   simpa only [dgKInputIndNativeFamilyMap, dgKInputIndNativeContinuousFamilyMap,
-    dgKInputIndRestrictionEquivalence, indKappaContinuousRestrictionEquivalence_hom,
-    indKappaContinuousRestriction, Category.assoc, Category.comp_id] using! e
+    dgKInputIndRestrictionEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestrictionEquivalence_hom,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction, Category.assoc, Category.comp_id] using! e
 
 /-- 任意の同じ native 入力族への制限でも、元の全 Yoneda 比較を保持する。 -/
 def dgKInputIndNativeFamilyMap_restrictionParameterIso
@@ -71,18 +71,18 @@ theorem dgKInputIndNativeFamilyMap_restrictionParameterIso_precomp
       (presentedPerfectDGNativeParameter R A B)) (r : S ⟶ T) :
     (dgKInputIndNativeFamilyMap_restrictionParameterIso R A B a).precomp r =
       dgKInputIndNativeFamilyMap_restrictionParameterIso R A B (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 /-- 元の厳密 dg 射の同じ native 頂点における、実 Ind 関手。 -/
 def dgKInputIndNativeMap (f : A ⟶ B) : dgKInputIndCompletion R A ⟶ dgKInputIndCompletion R B :=
-  (functorVertexEquiv _ _).symm ((dgKInputIndNativeFamilyMap R A B).app (Opposite.op ⦋0⦌)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ((dgKInputIndNativeFamilyMap R A B).app (Opposite.op ⦋0⦌)
     (ULift.up (perfDGInputVertexEquiv R A B f)))
 
 /-- 同じ実 dg 射の Ind 延長は、小さい filtered native 余極限を保存する。 -/
 theorem dgKInputIndNativeMap_preservesFilteredColimits (f : A ⟶ B) :
-    PreservesSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputIndNativeMap R A B f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputIndNativeMap R A B f) := by
   let x := (dgKInputIndNativeContinuousFamilyMap R A B).app (Opposite.op ⦋0⦌)
     (ULift.up (perfDGInputVertexEquiv R A B f))
-  exact fullSubcomplexOnVertices_vertex x
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex x
 
 end SerrePositivity.KST.NonConnective

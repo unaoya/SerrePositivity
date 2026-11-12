@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedAugmentationHomotopy
-public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedAugmentationHomotopy
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SpanHomotopyGluing
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.HomotopyClasses
 
 /-!
@@ -21,15 +21,15 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded DGNerve SSet
+open CategoryTheory DifferentialGraded SSet
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A]
 
 lemma semifreeRingEvaluationDG_ambient :
     (semifreeRingEvaluationDG A).comp
-      (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) =
+      (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)) =
     (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
-      (dgModuleSemifreeProperty A PUnit.{1})).comp
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty A PUnit.{1})).comp
         (moduleEvaluationDG A PUnit.{1} PUnit.unit) := by
   apply EnrichedFunctor.ext (Complex A) (fun _ => rfl)
   intro M N
@@ -40,22 +40,22 @@ lemma semifreeRingEvaluationDG_ambient :
 def complexSemifreeResolutionAugmentationHomotopy :
     SSet.Homotopy
       (complexSemifreeResolutionInfinity A ≫
-        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)))
-      (𝟙 (dgNerve A (Complex A))) := by
-  refine stableHomotopyRetarget
-    (HomotopyClasses.postHomotopy (dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit))
-      (dgModuleResolvedAugmentationHomotopy A (Complex A) PUnit.{1} (ringConstantDG A))) ?_ ?_
-  · change (dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
-        dgNerve.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
-          (dgModuleSemifreeProperty A PUnit.{1}))) ≫
-        dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) =
-      (dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
-        dgNerve.map (semifreeRingEvaluationDG A)) ≫
-        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)))
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) := by
+  refine _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget
+    (HomotopyClasses.postHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedAugmentationHomotopy A (Complex A) PUnit.{1} (ringConstantDG A))) ?_ ?_
+  · change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty A PUnit.{1}))) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity A (Complex A) PUnit.{1} (ringConstantDG A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (semifreeRingEvaluationDG A)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A))
     simp only [Category.assoc]
-    rw [← dgNerve.map_comp, ← dgNerve.map_comp, semifreeRingEvaluationDG_ambient]
-  · change dgNerve.map (ringConstantDG A) ≫
-      dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) = _
-    rw [← dgNerve.map_comp, ringConstantDG_comp_evaluation, dgNerve.map_id]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, semifreeRingEvaluationDG_ambient]
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (ringConstantDG A) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) = _
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ringConstantDG_comp_evaluation, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -25,9 +25,9 @@ variable {T U E : SSet.{u}} (j : T ⟶ U) {F G H : U ⟶ E}
 
 /-- 元の部分二単体族は、内部 Hom の元の三つの制限辺の実合成構造を与える。 -/
 def specifiedTriangleFamilyBoundaryData : SSet.Edge.CompStruct
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy c)).map ((pre j).app E)) := by
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy c)).map ((pre j).app E)) := by
   refine SSet.Edge.CompStruct.mk (SSet.yonedaEquiv (curry t)) ?_ ?_ ?_
   · change ((ihom T).obj E).δ 2 (SSet.yonedaEquiv (curry t)) =
       ((pre j).app E).app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry a.h))

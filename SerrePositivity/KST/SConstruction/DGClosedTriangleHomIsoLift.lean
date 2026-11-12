@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGClosedEdges
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorClosedCycles
-public import SerrePositivity.InfinityCategories.DGNerve.TripleHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorClosedCycles
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.TripleHom
 
 /-! # 指定 Hom 鎖同型による実閉三角形の持ち上げ
 概要：元の三閉射を固定し、標的の比較原始元を実 Hom 同型で戻して二単体を作る。
@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.TripleHom
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve DGNerve.HomotopyComparison
+open CategoryTheory DifferentialGraded InfinityCategories
 variable {R : Type u} [CommRing R] {C : Type v} [DGCategory R C]
   {E : Type w} [DGCategory R E] (F : DGFunctor R C E)
   {X Y Z : ClosedCategory R C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
@@ -29,7 +29,7 @@ lemma dgClosedTriangleHomIsoLift_boundary :
     differential R (e.inv.f (-1) t) =
       compose R (closedHomEquiv R C Y Z g).val (closedHomEquiv R C X Y f).val
         (zero_add 0) - (closedHomEquiv R C X Z h).val := by
-  rw [← closedHom_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedHom_comp]
   apply (ModuleCat.mono_iff_injective (e.hom.f 0)).mp inferInstance
   have hc := ConcreteCategory.congr_hom (e.hom.comm (-1) 0) (e.inv.f (-1) t)
   have hi := ConcreteCategory.congr_hom
@@ -39,13 +39,13 @@ lemma dgClosedTriangleHomIsoLift_boundary :
     exact hc.symm.trans (congrArg (differential R) hi)
   rw [hh, map_sub, he]
   exact ht.trans (congrArg₂ (fun a b => a - b)
-    (dgFunctor_mapClosedCycle F (f ≫ g)).symm (dgFunctor_mapClosedCycle F h).symm)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctor_mapClosedCycle F (f ≫ g)).symm (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctor_mapClosedCycle F h).symm)
 
 /-- 元の三閉射と戻した同じ原始元を持つ、実 dg nerve 二単体の合成構造。 -/
 def dgClosedTriangleHomIsoLift :
-    SSet.Truncated.Edge.CompStruct (dgClosedEdge R C f) (dgClosedEdge R C g)
-      (dgClosedEdge R C h) := by
-  apply compStructOfHomotopy _ _ _ (e.inv.f (-1) t)
+    SSet.Truncated.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R C f) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R C g)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R C h) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compStructOfHomotopy _ _ _ (e.inv.f (-1) t)
   exact dgClosedTriangleHomIsoLift_boundary F f g h e he t ht
 
 /-- 持ち上げた二単体の元の原始元は、指定鎖同型の逆像そのもの。 -/

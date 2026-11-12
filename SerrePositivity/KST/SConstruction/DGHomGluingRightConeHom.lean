@@ -45,8 +45,8 @@ lemma dgHomGluingRightConeHom_conjugate :
 lemma dgHomGluingRightConeHom_yoneda :
     dgHomGluingConeRightMap R C D E p q (X) (X) ≫
       (dgYonedaIso R (q.obj b) (representable R (q.obj b))).hom =
-        dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b := by
-  change ((dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b := by
+  change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b) ≫
     (dgYonedaIso R (q.obj b) (representable R (q.obj b))).inv) ≫ _ = _
   rw [Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
@@ -54,7 +54,7 @@ lemma dgHomGluingRightConeHom_yoneda :
 lemma dgHomGluingRightConeHom_object :
     dgHomGluingConeHomMap R C D E p q (X) (X) ≫
       dgPerfectEndIsoObjectHom R E (dgHomGluingTargetCone R C D E p q (X)) (q.obj b) (e) =
-        dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D (M) (X) (X) ≫ q.map b b := by
   change dgHomGluingConeHomMap R C D E p q (X) (X) ≫
     (dgEndIsoHom R (D := RightModule R E) (e) ≫
       (dgYonedaIso R (q.obj b) (representable R (q.obj b))).hom) = _

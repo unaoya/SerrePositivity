@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGFunctorHomElementFamily
-public import SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
 
 /-!
 概要：元厳密 dg 自然変換を、全次数 Hom end の同じ閉零元へ送る。
@@ -11,9 +11,9 @@ public import SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
-  (E : Type w) [DGCategory R E] {F G : DGFunctor R D E} (η : StrictNatTrans F G)
+  (E : Type w) [DGCategory R E] {F G : DGFunctor R D E} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 
 /-- 概要：元厳密変換の全自然性は end の豊穣順自然性そのもの。
 方針：次数零の Koszul 符号を消す。規約：全 Hom 次数を保持。

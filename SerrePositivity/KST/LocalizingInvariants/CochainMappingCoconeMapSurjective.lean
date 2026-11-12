@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
 public import SerrePositivity.DifferentialGraded.Complexes.HomComplex
 
 /-!
@@ -39,7 +39,7 @@ lemma cochainMappingCoconeMap_surjective {K₁ L₁ K₂ L₂ : Complex R}
     (d₁ : K₁ ⟶ L₁) (d₂ : K₂ ⟶ L₂) (a : K₁ ⟶ K₂) (b : L₁ ⟶ L₂)
     (comm : d₁ ≫ b = a ≫ d₂) (n : ℤ)
     (ha : Function.Surjective (a.f n)) (hb : Function.Surjective (b.f (n - 1))) :
-    Function.Surjective ((complexMappingCoconeMap d₁ d₂ a b comm).f n) := by
+    Function.Surjective ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d₁ d₂ a b comm).f n) := by
   intro y
   obtain ⟨x₁, hx₁⟩ := ha ((mappingCocone.fst d₂).f n y)
   obtain ⟨x₂, hx₂⟩ := hb ((mappingCocone.snd d₂).v n (n - 1) (by omega) y)
@@ -69,15 +69,15 @@ lemma cochainMappingCoconeMap_surjective {K₁ L₁ K₂ L₂ : Complex R}
     rw [map_add, hi, hj, zero_add]
   refine ⟨x, cochainMappingCocone_element_ext d₂ n ?_ ?_⟩
   · have he := ConcreteCategory.congr_hom
-      (complexMappingCoconeMap_f_fst_f d₁ d₂ a b comm n) x
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_f_fst_f d₁ d₂ a b comm n) x
     change (mappingCocone.fst d₂).f n
-      ((complexMappingCoconeMap d₁ d₂ a b comm).f n x) =
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d₁ d₂ a b comm).f n x) =
         a.f n ((mappingCocone.fst d₁).f n x) at he
     exact he.trans ((congrArg (a.f n) hf).trans hx₁)
   · have he := ConcreteCategory.congr_hom
-      (complexMappingCoconeMap_f_snd_v d₁ d₂ a b comm n (n - 1) (by omega)) x
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_f_snd_v d₁ d₂ a b comm n (n - 1) (by omega)) x
     change (mappingCocone.snd d₂).v n (n - 1) (by omega)
-      ((complexMappingCoconeMap d₁ d₂ a b comm).f n x) =
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d₁ d₂ a b comm).f n x) =
         b.f (n - 1) ((mappingCocone.snd d₁).v n (n - 1) (by omega) x) at he
     exact he.trans ((congrArg (b.f (n - 1)) hs).trans hx₂)
 

@@ -32,7 +32,7 @@ lemma dgSmallPerfectArrowTargetZero_isZero :
 
 /-- 同じ実延長像を保持する終域の native nerve は安定。 -/
 lemma dgSmallPerfectArrowTargetNerve_isStable :
-    IsStable (dgNerve R (DGSmallPerfectArrowTarget R P C L)) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGSmallPerfectArrowTarget R P C L)) :=
   dgSmallPerfectEnvelopeNerve_isStable R C (DGSmallPerfectBase R P) (Y)
 
 /-- 元の実延長の自由代表比較を、同じ小模型の指定代表で回収する。 -/

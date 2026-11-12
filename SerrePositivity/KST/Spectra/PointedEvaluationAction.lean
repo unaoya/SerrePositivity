@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedIhomActionComposition
 public import SerrePositivity.KST.Spectra.PointedIhomParameterRestriction
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSymmetry
 public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
 
 /-!
@@ -23,15 +23,15 @@ private lemma closedEvaluationPost_exchange {C : Type*} [Category C]
     [MonoidalCategory C] [SymmetricCategory C] [MonoidalClosed C]
     {K U E V : C} (q : U ⟶ (ihom K).obj E) :
     curry (curry ((β_ U K).hom ≫ uncurry q) ▷ (ihom E).obj V ≫ comp U E V) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U K V).inv =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso U K V).inv =
     curry (q ▷ (ihom E).obj V ≫ comp K E V) := by
-  rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv]
   apply uncurry_injective
   apply uncurry_injective
   rw [uncurry_natural_left, uncurry_natural_left,
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.uncurry_uncurry_hom]
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.uncurry_uncurry_hom]
   simp only [uncurry_curry]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_right_assoc]
   rw [← whiskerLeft_comp_assoc,
     ← uncurry_eq (curry (curry ((β_ U K).hom ≫ uncurry q) ▷ (ihom E).obj V ≫ comp U E V)),
     uncurry_curry]
@@ -39,7 +39,7 @@ private lemma closedEvaluationPost_exchange {C : Type*} [Category C]
   simp only [comp_eq, whiskerLeft_comp, Category.assoc,
     whiskerLeft_curry_ihom_ev_app, uncurry_curry, compTranspose_eq]
   rw [associator_inv_naturality_middle_assoc, associator_inv_naturality_middle_assoc]
-  simp only [_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange, Iso.trans_hom, Iso.symm_hom, Functor.mapIso_hom,
     tensorRight, Functor.flip, curriedTensor, Category.assoc, Iso.hom_inv_id_assoc]
   simp only [← comp_whiskerRight_assoc, ← uncurry_eq, uncurry_curry]
   rw [SymmetricCategory.symmetry_assoc]
@@ -49,8 +49,8 @@ private lemma closedEvaluationPost_exchange {C : Type*} [Category C]
 lemma evaluationPost_exchange {K U E V : PointedSimplicialSet.{u}}
     (q : U ⟶ (ihom K).obj E) :
     curry (transpose q ▷ PointedObject.basedHom E V ≫ MonoidalClosed.comp U E V) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U K V).inv =
-    ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q (PointedObject.basedHom K V) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso U K V).inv =
+    ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q (PointedObject.basedHom K V) := by
   rw [ihomParameterAction_eq_curry]
   exact closedEvaluationPost_exchange q
 
@@ -58,25 +58,25 @@ lemma evaluationPost_exchange {K U E V : PointedSimplicialSet.{u}}
 @[reassoc]
 lemma ihomParameterAction_restrict_input {K' K U E V : PointedSimplicialSet.{u}}
     (i : K' ⟶ K) (q : U ⟶ PointedObject.basedHom K E) :
-    (ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q (PointedObject.basedHom K V)) ≫
-      (ihom U).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i V) =
-    ihomAction K' E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (q ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E) (PointedObject.basedHom K' V) := by
-  have hn := (MonoidalClosed.pre q).naturality (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i V)
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+    (ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q (PointedObject.basedHom K V)) ≫
+      (ihom U).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i V) =
+    ihomAction K' E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (q ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E) (PointedObject.basedHom K' V) := by
+  have hn := (MonoidalClosed.pre q).naturality (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i V)
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   rw [Category.assoc, ← hn, ← Category.assoc, ihomAction_restrict,
-    Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp]
 
 
 /-- 同じ作用の評価は、元の比較の uncurry への前合成と反復 curry の同型である。 -/
 lemma ihomParameterAction_eq_adjoint_pre {K U E V : PointedSimplicialSet.{u}}
     (q : U ⟶ PointedObject.basedHom K E) :
-    ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q (PointedObject.basedHom K V) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (uncurry q) V ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K U V).hom := by
-  have hn := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right K q V
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+    ihomAction K E V ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q (PointedObject.basedHom K V) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (uncurry q) V ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K U V).hom := by
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_right K q V
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   rw [ihomAction, Category.assoc]
   erw [← hn]
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp]
   rfl
 
 end SerrePositivity.KST.Spectra.PointedMapping

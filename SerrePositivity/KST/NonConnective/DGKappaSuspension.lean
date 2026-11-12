@@ -26,7 +26,7 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 abbrev DGKappaCone := DGFullSubcategory (ModuleCategory R D) I.objects
 
 instance dgKappaConeSmall : Small.{u} (DGKappaCone R D I) := I.small
-instance dgKappaConePretriangulated : IsDGPretriangulated R (DGKappaCone R D I) :=
+instance dgKappaConePretriangulated : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGKappaCone R D I) :=
   I.pretriangulated
 
 /-- 元の dg cone 内の実可算直和関手。全次数の Hom 作用は既に構成したものを制限する。 -/
@@ -41,30 +41,30 @@ def dgKappaConePerfectObjects : Set (DGKappaCone R D I) :=
 /-- 元の Hom の平坦性を仮定せず、同じ dg cone を cell 分解して取る実 Drinfeld 商。 -/
 abbrev DGKappaSuspension :=
   DGQuotient.QuotientObject (DGCategoryCellResolution.Source R (DGKappaCone R D I))
-    (resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
 
 /-- 構成した同じ平坦 Drinfeld 商の実 dg nerve。 -/
 abbrev dgKappaSuspensionInfinity :=
-  resolvedDGQuotientNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
 
 /-- 元の dg cone から同じ実懸垂への商関手。 -/
 def dgKappaSuspensionProjection :
-    dgNerve R (DGKappaCone R D I) ⟶ dgKappaSuspensionInfinity R D I :=
-  resolvedDGQuotientFunctor R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I) ⟶ dgKappaSuspensionInfinity R D I :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
 
 /-- 同じ実懸垂の nerve は安定。入力の前三角性と β3 を使う。 -/
-theorem dgKappaSuspensionInfinity_isStable : IsStable (dgKappaSuspensionInfinity R D I) :=
-  resolvedDGQuotientNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+theorem dgKappaSuspensionInfinity_isStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R D I) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
 
 /-- perfect 対象の実安定閉包から cone と懸垂への列は、同じ実 Verdier 列。 -/
 theorem dgKappaSuspension_isStableVerdierSequence :
-    let := dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
-    let := dgStableClosureNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
     let := dgKappaSuspensionInfinity_isStable R D I
-    IsStableVerdierSequence
-      (dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsStableVerdierSequence
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
       (dgKappaSuspensionProjection R D I) :=
-  resolvedDGQuotient_isStableVerdierSequence R (DGKappaCone R D I)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotient_isStableVerdierSequence R (DGKappaCone R D I)
     (dgKappaConePerfectObjects R D I)
 
 /-- 構成した同じ小さい dg 懸垂を、固定された厳密 dg K の入力に束ねる。 -/

@@ -17,8 +17,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の二つの W 辺と共有端点の object S 図式は厳密引き戻し。 -/
-theorem composableWeakArrow_objectS_isPullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+theorem composableWeakArrow_objectS_isPullback {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     IsPullback (objectSConstructionFunctor.map (composableWeakFirstExact q))
       (objectSConstructionFunctor.map (composableWeakNextExact q))
       (objectSConstructionFunctor.map (weakArrowTargetDiagram q))

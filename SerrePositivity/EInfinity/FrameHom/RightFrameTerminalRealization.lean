@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
 public import SerrePositivity.EInfinity.FrameHom.AsSmallHammockHomFamily
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomCoherent
-public import SerrePositivity.InfinityCategories.ModelBridge.ModelRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative
 
 /-!
 概要：元の right frame 全比較の終端を同じ hammock 豊穣 Hom の実現へ同定する。
@@ -29,10 +29,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
 規約：全標的を保持、未証明の Yoneda 比較は追加入力にしない。
 使われ方：正本の共変 Hom と比較する前の同じ終端の回収。 -/
 def rightFrameHammockTerminalRealizationIso :
-    FunctorIso (rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 6)
       (SSet.uliftFunctor.{max u v + 1, max u v}.map
-        (hammockLocalizationNerveMap (modelRelativeCategory C)) ≫
-          kanHammockHomCoherent (modelRelativeCategory C) (modelRelativeObject C X)) := by
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
+          kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) := by
   rw [kanHammockHomCoherent_source]
   exact asSmallHammockHomCoherentIso (weakEquivalences C) X
 
@@ -42,10 +42,10 @@ def rightFrameHammockTerminalRealizationIso :
 def rightFrameHammockTerminalRealizationIso_precomp {J : SSet.{max u v + 1}}
     (f : J ⟶ SSet.uliftFunctor.{max u v + 1, max u v}.obj
       (nerve (AsSmall.{max u v} C))) :
-    FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 6)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 6)
       (f ≫ SSet.uliftFunctor.{max u v + 1, max u v}.map
-        (hammockLocalizationNerveMap (modelRelativeCategory C)) ≫
-          kanHammockHomCoherent (modelRelativeCategory C) (modelRelativeObject C X)) :=
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) ≫
+          kanHammockHomCoherent (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) :=
   (rightFrameHammockTerminalRealizationIso q r).precomp f
 
 end SerrePositivity.EInfinity.FrameHom

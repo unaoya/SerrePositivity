@@ -56,7 +56,7 @@ lemma d3StageStructure_raw (X Y : OmegaSpectrum.{u}) (n : ℕ) :
         (X.level (n + 1)).space (Y.level (n + 1)).space) ≫
       eHomWhiskerRight SSet ((KanSequence.adjointLoopTailUnit X.toKanSequence).app n)
         ((target Y).level n).space := by
-  obtain ⟨s, hs⟩ := trivialKanFibration_exists_section (commonOriginalMap X Y)
+  obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (commonOriginalMap X Y)
   have : IsSplitEpi (commonOriginalMap X Y) := IsSplitEpi.mk' ⟨s, hs⟩
   apply (cancel_epi (commonOriginalMap X Y)).mp
   have h := commonStructure_stage_whiskered X Y n

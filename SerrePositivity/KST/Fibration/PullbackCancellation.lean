@@ -1,6 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.FibrantPullbackCancellation
 public import SerrePositivity.KST.Comparison.KanSquareReplacement
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-! # 実際の可換四角形のホモトピー引き戻しの右消去 -/
 
@@ -13,6 +14,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 右四角形と外周が homotopy pullback なら左四角形もそうなる。Kan 条件は不要。 -/
+@[kerodon 0110]
 theorem isHomotopyPullback_left_of_horiz
     {P X Z Y B C : SSet.{u}} {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ B}
     {g : Y ⟶ B} {c : X ⟶ Z} {p : Z ⟶ C} {d : B ⟶ C}

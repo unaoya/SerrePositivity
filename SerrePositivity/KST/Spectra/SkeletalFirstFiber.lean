@@ -37,7 +37,7 @@ theorem first_coefficient_cocycle_eq_one
       (Additive.ofMul (coefficientDifferential K Y 0 r z s)) = 0
     rw [hz]
     exact map_zero _
-  have hδ : _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M 1 za = 0 := by
+  have hδ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M 1 za = 0 := by
     have hm : za ∈ (positiveAdditiveCoefficientDifferential K Y 0 r).ker := hzpos
     rw [positiveAdditiveCoefficientDifferential_ker] at hm
     exact hm
@@ -51,7 +51,7 @@ theorem first_stage_cocycle_eq_one
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ)
     (hH : IsZero ((NormalizedValueCochains.complex K
       (AddCommGrpCat.of (positiveAdditiveCoefficient Y 0 r))).homology 1))
-    (z : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y 0).right (r + 1)
+    (z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y 0).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y 0).basepoint)
     (hz : UnbasedPointedMapping.stageDifferential K Y 0 r z = 1) : z = 1 := by
   apply (stageFiberCoefficientEquiv K Y 0 (r + 1)).injective

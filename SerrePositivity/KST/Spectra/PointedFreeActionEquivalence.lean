@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndMap
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.FreeActionFamily
 
@@ -44,8 +44,8 @@ def pointedCoefficientsMap {G : Type u} [Group G]
 使われ方：Goerss–Jardine VIII §2、HA §1.4.2。cochain の各次数の同型保存。 -/
 lemma pointedEndMap_piIsomorphism {G : Type u} [Group G] (S : Type u)
     {B C : Action PointedSimplicialSet.{u} G} [KanComplex B.V.right] [KanComplex C.V.right]
-    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism τ.hom.right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    (τ : B ⟶ C) (hτ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism τ.hom.right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (X := (PointedWeightedEnd.obj (weight S) (pointedCoefficients B)).right)
       (Y := (PointedWeightedEnd.obj (weight S) (pointedCoefficients C)).right)
       (PointedWeightedEnd.map (weight S) (pointedCoefficientsMap τ)).right := by
@@ -53,19 +53,19 @@ lemma pointedEndMap_piIsomorphism {G : Type u} [Group G] (S : Type u)
   let C₀ := (PointedSimplicialSet.forget.mapAction G).obj C
   let : KanComplex B₀.V := inferInstanceAs (KanComplex B.V.right)
   let : KanComplex C₀.V := inferInstanceAs (KanComplex C.V.right)
-  let : KanComplex (weightedSections (weight S)
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S)
       (pointedCoefficients B ⋙ PointedSimplicialSet.forget)) := end_kanComplex S B₀
-  let : KanComplex (weightedSections (weight S)
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (weight S)
       (pointedCoefficients C ⋙ PointedSimplicialSet.forget)) := end_kanComplex S C₀
   have hn := endMap_piIsomorphism S ((PointedSimplicialSet.forget.mapAction G).map τ) hτ
     (PointedSimplicialSet.basepoint B.V)
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       ((PointedWeightedEnd.map (weight S) (pointedCoefficientsMap τ)).right ≫
         (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients C)).hom) := by
     rw [PointedWeightedEnd.underlyingIso_natural]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
       (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients B))).comp hn
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hc (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hc (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
     (PointedWeightedEnd.underlyingIso (weight S) (pointedCoefficients C)))
 
 end

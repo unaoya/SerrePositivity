@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
-public import SerrePositivity.InfinityCategories.Core.ContractibleKanProducts
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.ContractibleKanProducts
 public import SerrePositivity.KST.SConstruction.OneDirectionInverseChoices
 public import SerrePositivity.KST.SConstruction.KanAssemblyEquivalence
 
@@ -27,7 +27,7 @@ def kanAssemblyAdjointFamily (r : ℕ) (X : StableModel.{u}) :
       (PointedObject.basedHom ((oneDirectionKanRealizationFunctor r).obj X)
         ((loopBoundaryKanFunctor (r + 1)).obj X)).right :=
   pullback.fst
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedKanReplacement.unit.app (oneDirectionReducedRealization r X))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedKanReplacement.unit.app (oneDirectionReducedRealization r X))
       ((loopBoundaryKanFunctor (r + 1)).obj X)).right
     (SSet.yonedaEquiv.symm (familyVertex ((kanTargetAssemblyAdjointNat r).app X)))
 
@@ -44,15 +44,15 @@ def boundaryKanAssemblyChoices (r : ℕ) (X : StableModel.{u}) : SSet.{u} :=
 
 /-- 随伴構造射の同時選択空間は可縮 Kan。 -/
 lemma boundaryKanAssemblyChoices_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
-    IsContractibleKan (boundaryKanAssemblyChoices r X) :=
-  _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (boundaryKanAssemblyChoices r X) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyAdjointChoices_isContractibleKan r X)
 
 /-- 同時選択のパラメーター族を既存部分を保って任意の単射に沿い補完できる。 -/
 lemma boundaryKanAssemblyChoices_relative_lifting (r : ℕ) (X : StableModel.{u})
     {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ boundaryKanAssemblyChoices r X) :
     ∃ b : T ⟶ boundaryKanAssemblyChoices r X, j ≫ b = a :=
-  _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor_relative_lifting (oneDirectionKanInverseChoices_isContractibleKan r X)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.contractibleKan_tensor_relative_lifting (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyAdjointChoices_isContractibleKan r X) j a
 
 /-- 同時選択頂点が与える実際の随伴構造射。 -/
@@ -95,7 +95,7 @@ lemma boundaryKanAssemblyAdjointAt_component (r : ℕ) (X : StableModel.{u})
 /-- 任意の同時選択の随伴構造射も全基点 π 同型。 -/
 lemma boundaryKanAssemblyAdjointAt_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (v : (boundaryKanAssemblyChoices r X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryKanAssemblyAdjointAt r X v).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryKanAssemblyAdjointAt r X v).right := by
   obtain ⟨H, _⟩ := (piZero_eq_iff_pointedHomotopy _ _).mp
     (boundaryKanAssemblyAdjointAt_component r X v)
   exact (kanPiIsomorphism_iff_of_homotopy H).mp (boundaryKanAssemblyAdjoint_piIsomorphism r X)

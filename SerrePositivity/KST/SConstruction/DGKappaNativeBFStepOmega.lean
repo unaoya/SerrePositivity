@@ -27,7 +27,7 @@ local instance nativeFiniteStepKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I)
 
 local instance nativeFiniteBoundaryKan (n : ℕ) (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex (((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I n).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 local instance nativeFiniteStepLoopKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex ((ihom PointedSimplicialSet.circle.{max (u + 1) v}).obj
@@ -35,10 +35,10 @@ local instance nativeFiniteStepLoopKan (C : DGKappaNativeBFFiniteInput.{u, v} R 
   loopSpace_kanComplex _
 
 local instance nativeFiniteAssemblySourceKan (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    KanComplex (((coaugmentedPointedEnrichedFunctor Comparison.exInfinity
-      Comparison.exInfinityUnit).obj ((stableOneDirectionPointedEnrichedFunctor r).obj
+    KanComplex (((coaugmentedPointedEnrichedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj ((stableOneDirectionPointedEnrichedFunctor r).obj
         ((dgKappaNativeBFFiniteInclusion.{u, v} R D I).obj C))).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 local instance nativeFiniteBoundaryLoopKan (n : ℕ)
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
@@ -51,7 +51,7 @@ local instance nativeFiniteBoundaryLoopKan (n : ℕ)
 規約：同じ実比較を保持。使われ方：元の S₁ 比較との合成。 -/
 lemma dgKappaNativeBFFiniteStageComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I r).obj C).obj ⟶
         (S.functor.obj C).obj from S.comparison C).right :=
   kanPiIsomorphism_of_localized_isIso _ (S.weak C)
@@ -78,28 +78,28 @@ lemma dgKappaNativeBFFiniteStepLeftMap_suspension
 規約：同じ実構造射を保持。使われ方：有限 native BF 全列の Ω 条件。 -/
 lemma dgKappaNativeBFFiniteStepStructureAdjoint_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry
-      (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry
+      (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
         ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj from
           dgKappaNativeBFFiniteStepStructureMap.{u, v} R D I r S C)).right := by
   let l : ((stableOneDirectionKanEnrichedFunctor r).obj C.obj).obj ⟶
       (S.functor.obj C).obj :=
     (stableOneDirectionKanComparisonMap r C.obj).hom ≫ S.comparison C
-  let a : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((stableOneDirectionKanEnrichedFunctor r).obj C.obj).obj) ⟶
+  let a : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((stableOneDirectionKanEnrichedFunctor r).obj C.obj).obj) ⟶
       ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I (r + 1)).obj C).obj :=
     dgKappaNativeBFFiniteAssemblyRightMap.{u, v} R D I r C
   let c : ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I (r + 1)).obj C).obj ⟶
       ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj :=
     dgKappaNativeBFFiniteStepComparison.{u, v} R D I r S C
-  have hl : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism l.right :=
+  have hl : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism l.right :=
     (stableOneDirectionKanComparisonMap_piIsomorphism r C.obj).comp
       (dgKappaNativeBFFiniteStageComparison_piIsomorphism.{u, v} R D I r S C)
-  have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry a).right :=
+  have ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry a).right :=
     stableKanAssemblyRightAdjoint_piIsomorphism r C.obj
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right := kanPiIsomorphism_of_localized_isIso _
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism c.right := kanPiIsomorphism_of_localized_isIso _
     (dgKappaNativeBFFiniteStepComparison_localized_isIso.{u, v} R D I r S C)
   apply cylinderAssemblyAdjoint_piIsomorphism l hl a ha c hc
-  let σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (S.functor.obj C).obj ⟶
+  let σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (S.functor.obj C).obj ⟶
       ((dgKappaNativeBFFiniteStepFunctor.{u, v} R D I r S).obj C).obj :=
     dgKappaNativeBFFiniteStepStructureMap.{u, v} R D I r S C
   have h := pointedEnrichedCylinderCompletion_component_square

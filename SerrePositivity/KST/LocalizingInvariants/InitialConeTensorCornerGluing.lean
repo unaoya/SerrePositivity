@@ -22,20 +22,20 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 def initialConeTensorOldInclusion (A L : SSet.{u}) :
-    (A.op ⊗ join L.op (Δ[0] : SSet.{u})).op ⟶ initialConeTensorCorner A L :=
-  SSet.opFunctor.map (pushout.inl (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
-    (joinInl A.op Δ[0] ▷ L.op))
+    (A.op ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op (Δ[0] : SSet.{u})).op ⟶ initialConeTensorCorner A L :=
+  SSet.opFunctor.map (pushout.inl (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op))
 
 def initialConeTensorTailInclusion (A L : SSet.{u}) :
-    (join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ⟶ initialConeTensorCorner A L :=
-  SSet.opFunctor.map (pushout.inr (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
-    (joinInl A.op Δ[0] ▷ L.op))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ⟶ initialConeTensorCorner A L :=
+  SSet.opFunctor.map (pushout.inr (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op))
 
 instance initialConeTensorOldInclusion_mono (A L : SSet.{u}) :
     Mono (initialConeTensorOldInclusion A L) := by
-  have : Mono (joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) := (tensorRight _).map_mono _
-  have hm : Mono (pushout.inl (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
-      (joinInl A.op Δ[0] ▷ L.op)) :=
+  have : Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) := (tensorRight _).map_mono _
+  have hm : Mono (pushout.inl (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u}))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op)) :=
     Adhesive.mono_of_isPushout_of_mono_right (IsPushout.of_hasPushout _ _)
   unfold initialConeTensorOldInclusion
   rw [NatTrans.mono_iff_mono_app] at hm ⊢
@@ -44,9 +44,9 @@ instance initialConeTensorOldInclusion_mono (A L : SSet.{u}) :
 
 instance initialConeTensorTailInclusion_mono (A L : SSet.{u}) :
     Mono (initialConeTensorTailInclusion A L) := by
-  have : Mono (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})) := (tensorLeft _).map_mono _
-  have hm : Mono (pushout.inr (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
-      (joinInl A.op Δ[0] ▷ L.op)) :=
+  have : Mono (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u})) := (tensorLeft _).map_mono _
+  have hm : Mono (pushout.inr (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u}))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op)) :=
     Adhesive.mono_of_isPushout_of_mono_left (IsPushout.of_hasPushout _ _)
   unfold initialConeTensorTailInclusion
   rw [NatTrans.mono_iff_mono_app] at hm ⊢
@@ -55,18 +55,18 @@ instance initialConeTensorTailInclusion_mono (A L : SSet.{u}) :
 
 /-- 元の二つの実境界は、同じ共有部分に沿う pushout で全境界を与える。 -/
 lemma initialConeTensorCorner_isPushout (A L : SSet.{u}) :
-    IsPushout (SSet.opFunctor.map (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})))
-      (SSet.opFunctor.map (joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op))
+    IsPushout (SSet.opFunctor.map (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u})))
+      (SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op))
       (initialConeTensorOldInclusion A L) (initialConeTensorTailInclusion A L) := by
   have : SSet.opFunctor.{u}.IsEquivalence := SSet.opEquivalence.isEquivalence_functor
-  exact (IsPushout.of_hasPushout (A.op ◁ joinInl L.op (Δ[0] : SSet.{u}))
-    (joinInl A.op Δ[0] ▷ L.op)).map SSet.opFunctor
+  exact (IsPushout.of_hasPushout (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u}))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op)).map SSet.opFunctor
 
 variable {A L X : SSet.{u}}
-  (F : (A.op ⊗ join L.op (Δ[0] : SSet.{u})).op ⟶ X)
-  (G : (join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ⟶ X)
-  (w : SSet.opFunctor.map (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})) ≫ F =
-    SSet.opFunctor.map (joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) ≫ G)
+  (F : (A.op ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op (Δ[0] : SSet.{u})).op ⟶ X)
+  (G : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ⟶ X)
+  (w : SSet.opFunctor.map (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u})) ≫ F =
+    SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) ≫ G)
 
 /-- 回収済みの元の図式と尾部から、同じ全実境界を構成する。 -/
 def initialConeTensorCornerGlue : initialConeTensorCorner A L ⟶ X :=

@@ -29,17 +29,17 @@ instance diagramSpace_quasicategory (n : ℕ) (C : SSet.{u}) [Quasicategory C] :
 規約：パラメーターは任意。使われ方：core に持ち上げる前の段階。 -/
 def gappedFamilyLift {n : ℕ} {K C : SSet.{u}} (F : K ⟶ diagramSpace n C)
     (hF : ∀ k : K _⦋0⦌,
-      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
-    K ⟶ sConstruction n C := fullSubcomplexLift _ F hF
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
+    K ⟶ sConstruction n C := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ F hF
 
 /-- 概要：gapped 族の持ち上げは元の族を保持する。
 方針：全部分複体への持ち上げの包含の式。
 規約：全単体で厳密な等号。使われ方：交換の逆律。 -/
 lemma gappedFamilyLift_ι {n : ℕ} {K C : SSet.{u}} (F : K ⟶ diagramSpace n C)
     (hF : ∀ k : K _⦋0⦌,
-      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k))) :
     gappedFamilyLift F hF ≫ (gappedSubcomplex n C).ι = F :=
-  fullSubcomplexLift_ι _ F hF
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ F hF
 
 /-- 概要：全辺が可逆な gapped 族は S_n の core への射に持ち上がる。
 方針：gapped 包含の充満忠実性で辺の可逆性を反映する。
@@ -47,15 +47,15 @@ lemma gappedFamilyLift_ι {n : ℕ} {K C : SSet.{u}} (F : K ⟶ diagramSpace n C
 def coreGappedFamilyLift {n : ℕ} {K C : SSet.{u}} [Quasicategory C]
     (F : K ⟶ diagramSpace n C)
     (hF : ∀ k : K _⦋0⦌,
-      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
     (he : ∀ s : K _⦋1⦌,
-      IsInvertibleEdge (edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
-    K ⟶ (quasicategoryCore (sConstruction n C) : SSet.{u}) :=
-  quasicategoryCoreLift (gappedFamilyLift F hF) (by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
+    K ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n C) : SSet.{u}) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift (gappedFamilyLift F hF) (by
     intro s
     have : Quasicategory (gappedSubcomplex n C : SSet.{u}) :=
       sConstruction_quasicategory n C
-    apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isInvertibleEdge
+    apply (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _).reflects_isInvertibleEdge
     exact he s)
 
 /-- 概要：core に持ち上げて二つの包含を通すと元の族。
@@ -64,22 +64,22 @@ def coreGappedFamilyLift {n : ℕ} {K C : SSet.{u}} [Quasicategory C]
 lemma coreGappedFamilyLift_ι {n : ℕ} {K C : SSet.{u}} [Quasicategory C]
     (F : K ⟶ diagramSpace n C)
     (hF : ∀ k : K _⦋0⦌,
-      IsGapped ((functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm (F.app (Opposite.op ⦋0⦌) k)))
     (he : ∀ s : K _⦋1⦌,
-      IsInvertibleEdge (edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
-    coreGappedFamilyLift F hF he ≫ (quasicategoryCore (sConstruction n C)).ι ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (F.app (Opposite.op ⦋1⦌) s))) :
+    coreGappedFamilyLift F hF he ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n C)).ι ≫
       (gappedSubcomplex n C).ι = F := by
-  rw [← Category.assoc, coreGappedFamilyLift, quasicategoryCoreLift_ι, gappedFamilyLift_ι]
+  rw [← Category.assoc, coreGappedFamilyLift, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreLift_ι, gappedFamilyLift_ι]
 
 /-- 概要：内部 Hom の交換後の各頂点が表す図式は、交換前の各点での評価。
 方針：交換をもう一度行った後の評価公式と逆律を使う。
 規約：添字と標的は任意。使われ方：gapped 条件の交換。 -/
 lemma flipFamily_vertex {A B C : SSet.{u}} (F : A ⟶ (ihom B).obj C) (b : B _⦋0⦌) :
-    (functorVertexEquiv A C).symm
-      ((internalHomFlipHomEquiv A B C F).app (Opposite.op ⦋0⦌) b) =
-      F ≫ evaluateFunctorAt b := by
-  rw [← flipFamily_evaluate (internalHomFlipHomEquiv A B C F) b]
-  exact congrArg (fun q => q ≫ evaluateFunctorAt b)
-    ((internalHomFlipHomEquiv A B C).left_inv F)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv A C).symm
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A B C F).app (Opposite.op ⦋0⦌) b) =
+      F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b := by
+  rw [← flipFamily_evaluate (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A B C F) b]
+  exact congrArg (fun q => q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A B C).left_inv F)
 
 end SerrePositivity.KST.SConstruction

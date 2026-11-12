@@ -23,11 +23,11 @@ lemma coherentEnrichedPathComposite_app {C : Type v} [Category.{u} C] [Simplicia
     (s : EnrichedFunctor SSet.{u} (SimplicialThickening J) C) (a b c : J) (n : ℕ)
     (p : (nerve (Path a b)) _⦋n⦌) (q : (nerve (Path b c)) _⦋n⦌) :
     (s.map (.mk a) (.mk c)).app (Opposite.op ⦋n⦌)
-        ((Coherent.pathCompMap a b c).app (Opposite.op ⦋n⦌) (p, q)) =
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap a b c).app (Opposite.op ⦋n⦌) (p, q)) =
       (eComp SSet (s.obj (.mk a)) (s.obj (.mk b)) (s.obj (.mk c))).app (Opposite.op ⦋n⦌)
         ((s.map (.mk a) (.mk b)).app (Opposite.op ⦋n⦌) p,
           (s.map (.mk b) (.mk c)).app (Opposite.op ⦋n⦌) q) := by
-  have hm : Coherent.pathCompMap a b c ≫ s.map (.mk a) (.mk c) =
+  have hm : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathCompMap a b c ≫ s.map (.mk a) (.mk c) =
       (s.map (.mk a) (.mk b) ⊗ₘ s.map (.mk b) (.mk c)) ≫
         eComp SSet (s.obj (.mk a)) (s.obj (.mk b)) (s.obj (.mk c)) :=
     s.map_comp (.mk a) (.mk b) (.mk c)

@@ -21,11 +21,11 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 local instance kanAdjointParametricInputInnerKan (Y : OmegaSpectrum.{u}) (n : ℕ) :
     KanComplex (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance kanAdjointParametricInputParameterKan (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     KanComplex (PointedObject.basedHom (pointedSpace X Y.toKanSequence)
       (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space)).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の自然性区間・逆向き区間・定数辺を全て保持する、実際の逆三角形。 -/
 def kanAdjointParametricInputInverse (X Y : OmegaSpectrum.{u}) (n : ℕ) :

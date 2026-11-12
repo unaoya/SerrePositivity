@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConeCoherentPrism
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.PrismHomotopy
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PrismHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdges
 
 /-!
 概要：大きい添字圏上の coherent prism の各垂直辺を、元の自然変換の成分と同定する。
@@ -17,8 +17,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F2
-open SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
+
 namespace SerrePositivity.KST.LocalizingInvariants.StrictConeMap
 
 variable {J : Type (max u v)} [SmallCategory J]
@@ -28,7 +28,7 @@ omit [SimplicialCategory C] in
 lemma largeNervePrism_component {F G : J ⥤ C} (η : F ⟶ G) (j : J) :
     (largeNervePrism η).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})),
-        PinchedHom.constant (ComposableArrows.mk₀ j) 1) = ComposableArrows.mk₁ (η.app j) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (ComposableArrows.mk₀ j) 1) = ComposableArrows.mk₁ (η.app j) := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_
   · rfl
   · rfl
@@ -39,20 +39,20 @@ lemma largeNervePrism_component {F G : J ⥤ C} (η : F ⟶ G) (j : J) :
 lemma largeCoherentPrism_component {F G : J ⥤ C} (η : F ⟶ G) (j : J) :
     (largeCoherentPrism η).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{max u v})),
-        PinchedHom.constant (ComposableArrows.mk₀ j) 1) = (coherentNerveEdge (η.app j)).edge := by
-  change (nerveToCoherent C).app _ ((largeNervePrism η).app _ _) = _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (ComposableArrows.mk₀ j) 1) = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app j)).edge := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app _ ((largeNervePrism η).app _ _) = _
   rw [largeNervePrism_component]
   rfl
 
 def largeHomotopy {F G : J ⥤ C} (η : F ⟶ G) :
-    SSet.Homotopy (resizedNerveMap F ≫ nerveToCoherent C)
-      (resizedNerveMap G ≫ nerveToCoherent C) :=
-  prismHomotopy (largeCoherentPrism η) (largeCoherentPrism_zero η) (largeCoherentPrism_one η)
+    SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy (largeCoherentPrism η) (largeCoherentPrism_zero η) (largeCoherentPrism_one η)
 
 lemma largeHomotopy_component {F G : J ⥤ C} (η : F ⟶ G) (j : J) :
-    (simplicialHomotopyVertexEdge (largeHomotopy η) (ComposableArrows.mk₀ j)).edge =
-      (coherentNerveEdge (η.app j)).edge := by
-  rw [largeHomotopy, prismHomotopy_vertical]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (largeHomotopy η) (ComposableArrows.mk₀ j)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (η.app j)).edge := by
+  rw [largeHomotopy, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.prismHomotopy_vertical]
   exact largeCoherentPrism_component η j
 
 end SerrePositivity.KST.LocalizingInvariants.StrictConeMap

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPointedFunctor
 public import SerrePositivity.KST.SConstruction.ExInfinitySuspensionTransformation
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationPrecompose
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationPrecompose
 
 /-! # 元の一次方向商上の全 dg 入力に自然な Ex∞ suspension 比較
 概要：同じ前向き比較を、厳密 dg 入力の元の全 Hom 上へ制限する。
@@ -20,10 +20,10 @@ variable (A : Type u) [CommRing A]
 def presentedPerfectDGOneDirectionSuspensionComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).comp SSet
-        (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit))
+        (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit))
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).comp SSet
-        (suspensionThenCoaugmentedFunctor Comparison.exInfinity Comparison.exInfinityUnit)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPrecompose
+        (suspensionThenCoaugmentedFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPrecompose
     (presentedPerfectDGOneDirectionPointedEnrichedFunctor A r) _ _
     exInfinitySuspensionTransformation
 

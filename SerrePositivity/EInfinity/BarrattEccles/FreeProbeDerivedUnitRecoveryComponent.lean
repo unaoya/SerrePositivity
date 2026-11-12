@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitAmbientComponent
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
 
 /-!
 # 同じ導来単位二胞体の成分の回収
@@ -20,20 +20,20 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def freeProbeDerivedUnitRecoveredHom (X : Complex A) :
     (HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
-        hoFunctor.obj (derivedInfinityCategory A)) ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
       HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
   (ComplexLimits.complexDiagramDerivedVertexIso A
     (ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
-    functorHomEvaluate ((ComplexLimits.complexProbeDerivedSourceIso A).hom ≫
-      freeProbeDerivedUnit A ≫ (freeProbeUnderlyingDerivedSourceIso A).hom) (nerveVertex X) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate ((ComplexLimits.complexProbeDerivedSourceIso A).hom ≫
+      freeProbeDerivedUnit A ≫ (freeProbeUnderlyingDerivedSourceIso A).hom) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       (ComplexLimits.complexDiagramDerivedVertexIso A
         (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom
 

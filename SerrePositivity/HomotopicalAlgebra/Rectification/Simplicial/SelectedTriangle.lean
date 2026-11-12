@@ -60,7 +60,7 @@ abbrev Boundary.faces {P : SSet.{v}} (d : Boundary P) :
   ![d.edge12, d.edge02, d.edge01]
 
 lemma Boundary.compatible {P : SSet.{v}} (d : Boundary P) :
-    BoundaryGluing.StandardCompatible d.faces := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible d.faces := by
   intro j k hjk
   fin_cases j <;> fin_cases k <;> norm_num at hjk
   · exact d.edge12_one.trans d.edge02_one.symm

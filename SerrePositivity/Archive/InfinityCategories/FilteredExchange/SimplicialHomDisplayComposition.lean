@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionCoordinates
 
 /-!
 概要：同じ実 Hom の端点表示変更の二段合成を、同じ一段の表示変更へ揃える。

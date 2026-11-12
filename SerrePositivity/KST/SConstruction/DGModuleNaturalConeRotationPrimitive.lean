@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 private lemma compositeNaturality {R : Type u} [CommRing R]
     {D : Type v} [DGCategory R D] {U V W U' V' W' : D}
     (a : GradedHom R U V 0) (b : GradedHom R V W (-1))
@@ -25,18 +25,18 @@ private lemma compositeNaturality {R : Type u} [CommRing R]
     compose R k (compose R b a (zero_add (-1))) (by omega : -1 + n = n - 1) =
       n.negOnePow • compose R (compose R b' a' (zero_add (-1))) f
         (by omega : n + -1 = n - 1) := by
-  have h₁ := compose_assoc_of_sum a b k (zero_add (-1))
+  have h₁ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum a b k (zero_add (-1))
     (by omega : -1 + n = n - 1) (by omega : -1 + n = n - 1)
-  have h₂ := compose_assoc_of_sum a g b' (zero_add n)
+  have h₂ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum a g b' (zero_add n)
     (by omega : n + -1 = n - 1) (by omega : n + -1 = n - 1)
-  have h₃ := compose_assoc_of_sum f a' b' (add_zero n)
+  have h₃ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum f a' b' (add_zero n)
     (zero_add (-1)) (by omega : n + -1 = n - 1)
   calc
     _ = compose R (compose R k b (by omega)) a (zero_add (n - 1)) := h₁
     _ = compose R (n.negOnePow • compose R b' g (by omega)) a (zero_add (n - 1)) :=
       congrArg (fun t => compose R t a (zero_add (n - 1))) hb
     _ = n.negOnePow • compose R (compose R b' g (by omega)) a (zero_add (n - 1)) :=
-      compose_units_smul_left _ _ _ _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_units_smul_left _ _ _ _
     _ = n.negOnePow • compose R b' (compose R g a (zero_add n)) (by omega) :=
       congrArg (fun t => n.negOnePow • t) h₂.symm
     _ = n.negOnePow • compose R b' (compose R a' f (add_zero n)) (by omega) :=
@@ -62,7 +62,7 @@ lemma dgNegativeNaturalPrecomposition {R : Type u} [CommRing R]
 
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (T) (ν)

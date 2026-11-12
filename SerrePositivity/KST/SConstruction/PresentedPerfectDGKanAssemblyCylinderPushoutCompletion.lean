@@ -35,7 +35,7 @@ lemma presentedPerfectDGKanAssemblyCylinderCompletionFunctor_obj (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGKanAssemblyCylinderCompletionFunctor A r).obj C).obj =
       Under.mk ((((presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r).obj C).obj).hom ≫
-        Comparison.exInfinityUnit.app
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
           (((presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r).obj C).obj).right) := rfl
 
 /-- 元の実押し出しから同じ Ex∞ 値への、元の単位成分。 -/

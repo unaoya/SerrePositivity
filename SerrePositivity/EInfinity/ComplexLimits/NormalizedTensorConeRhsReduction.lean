@@ -15,19 +15,19 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_rhs_reduced {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) :
     (normalizedTensorConeData A X Y c).rhs I a b k hI ha hb hk =
     (normalizedTensorConeData A X Y c).linearBoundary I a b k +
       (normalizedTensorConeData A X Y c).cutCompose I a b k (penultimate I hI) := by
-  rw [SimplexData.rhs_eq_linear_sub_quadratic,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.rhs_eq_linear_sub_quadratic,
     normalizedTensorConeData_quadratic_single A X Y c I a b k hI ha hb hk hc,
     sign_penultimate]
   simp only [Units.smul_def, Units.val_neg, Units.val_one, neg_one_smul, sub_neg_eq_add]

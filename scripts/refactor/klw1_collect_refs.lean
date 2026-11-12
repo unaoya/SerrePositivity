@@ -42,9 +42,9 @@ private def openRow (mode : String) (stx : Syntax) (id : Syntax) (state : Comman
     ("kind", toJson "open"), ("mode", toJson mode), ("names", toJson names),
     ("command", Json.mkObj (span stx))]
 
-/-- Capture actual parsed namespace operands. Nested opens use the outer command's
-    scope, so their spelling is emitted separately for conservative review. -/
-private partial def opens (stx : Syntax) (state : Command.State) (top : Bool := true) (nested : Bool := false) : Array Json := Id.run do
+/-- Capture parsed namespace operands and structure field labels. Nested opens
+    use the outer command's scope and are marked for conservative review. -/
+private partial def syntaxRows (stx : Syntax) (state : Command.State) (top : Bool := true) (nested : Bool := false) : Array Json := Id.run do
   let kind := stx.getKind
   let mode :=
     if kind == ``Parser.Command.openSimple then "simple"
@@ -60,26 +60,31 @@ private partial def opens (stx : Syntax) (state : Command.State) (top : Bool := 
   if kind == ``Parser.Command.export then
     return #[openRow "export" stx stx[1] state]
   if kind == ``Parser.Command.«open» && top then
-    return opens stx[1] state false nested
+    return syntaxRows stx[1] state false nested
   -- For an open in a local term or macro, treat the entire construct as a guard.
   if stx.getArgs.any (fun arg =>
       [``Parser.Command.openSimple, ``Parser.Command.openScoped, ``Parser.Command.openOnly,
        ``Parser.Command.openHiding, ``Parser.Command.openRenaming].contains arg.getKind) then
     return stx.getArgs.flatMap fun arg =>
-      opens arg state false true
-  return stx.getArgs.flatMap fun arg => opens arg state false nested
+      syntaxRows arg state false true
+  let children := stx.getArgs.flatMap fun arg => syntaxRows arg state false nested
+  if kind == ``Parser.Term.structInstField then
+    return #[Json.mkObj (span stx[0] ++ [("kind", toJson "record-label")])] ++ children
+  return children
 
 private partial def commandRows (state : Command.State) (cmd : CommandParsedSnapshot)
     (acc : Array Json := #[]) : Array Json := Id.run do
   let stx := cmd.stx
   let after := cmd.elabSnap.resultSnap.get.cmdState
-  let mut acc := acc ++ opens stx state
+  let mut acc := acc ++ syntaxRows stx state
   if stx.getKind == ``Parser.Command.namespace then
     acc := acc.push (scopeRow "namespace" stx[1] state after)
   else if stx.getKind == ``Parser.Command.«end» then
     acc := acc.push (scopeRow "end" stx[1] state after)
   else if stx.getKind == ``Parser.Command.withWeakNamespace then
     acc := acc.push (scopeRow "weak-namespace" stx state after)
+  else if stx.getKind == ``Parser.Command.declaration then
+    acc := acc.push <| Json.mkObj <| span stx ++ [("kind", toJson "declaration-command")]
   if let some next := cmd.nextCmdSnap? then
     commandRows after next.get acc
   else acc

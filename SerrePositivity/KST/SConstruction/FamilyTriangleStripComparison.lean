@@ -20,9 +20,9 @@ variable {U E : SSet.{u}} {f g : U ⊗ (Δ[1] : SSet.{u}) ⟶ E} {a b : U ⟶ E}
   (first : SSet.Homotopy a (SSet.ι₀ ≫ f))
   (direct : SSet.Homotopy a (SSet.ι₁ ≫ f))
   (triangle : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy first))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (familyCylinder f)))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy direct)))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy direct)))
   (c : FamilyHomotopyChain f g) (tail : FamilyHomotopyChain (SSet.ι₁ ≫ g) b)
 
 /-- 元の合成面・一側の全交換境界・共通末尾の全辺路。 -/
@@ -61,25 +61,25 @@ lemma familyTriangleStrip_class :
     _ ≫ familyChainCompositeClass (familyHomotopyChainAppend _ _)
   rw [familyChainCompositeClass_append, familyChainCompositeClass_append]
   have ht : SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy first) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first) ≫
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (familyCylinder f)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)) =
       SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy direct) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy direct) :=
     SSet.HomotopyCategory.homMk_comp_homMk triangle
   rw [← ht]
   rw [Category.assoc, ← Category.assoc
     (SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (familyCylinder f)))]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyCylinder f)))]
   exact congrArg (fun k => SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy first) ≫ k ≫ familyChainCompositeClass tail)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first) ≫ k ≫ familyChainCompositeClass tail)
       (familyChainRectangleLeft_class_eq c)
 
 /-- 全区間と全合成三角形を保持した両辺路の実合成円柱の合成式。 -/
 lemma familyTriangleStrip_composite_class_eq [KanComplex E] :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (familyChainCompositeData (familyTriangleStripDirect direct c tail)).homotopy) =
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (familyChainCompositeData (familyTriangleStripProjected first c tail)).homotopy) :=
   (familyChainCompositionWitness_class
     (familyChainCompositeData (familyTriangleStripDirect direct c tail)).witness).trans

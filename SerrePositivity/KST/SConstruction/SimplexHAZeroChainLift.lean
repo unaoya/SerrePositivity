@@ -16,13 +16,13 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の HA 辺の閉性により、零次元の同じ線形復元を持つ実 Hom 鎖射を得る。 -/
-def simplexHAZeroChainLift {n : ℕ} (s : DGNerve.Simplex A D n)
+def simplexHAZeroChainLift {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b) :
     serreCubeComplex A 0 ⟶ homObject A D (s.obj (v 0)) (s.obj b) :=
   unitFromCycle _ (s.edgeCycle (v 0) b hb)
 
 /-- 元の零次元の実鎖射は、同じ最高生成元上で元の HA 辺を回収する。 -/
-lemma simplexHAZeroChainLift_top {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHAZeroChainLift_top {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b) :
     (simplexHAZeroChainLift A s v b hb).f 0 (serreCubeTopCell A 0) =
       s.edgeHom (v 0) b hb := by
@@ -30,7 +30,7 @@ lemma simplexHAZeroChainLift_top {n : ℕ} (s : DGNerve.Simplex A D n)
   exact congrArg Subtype.val (cycleFromUnit_unitFromCycle _ _)
 
 /-- 元の全次数の線形復元は、零次元では同じ実鎖射の各次数成分と一致する。 -/
-lemma simplexHADegreeLift_zero_eq_chain {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_zero_eq_chain {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b) (k : ℤ) :
     simplexHADegreeLift A s.toSimplexData 0 v b hb k =
       (simplexHAZeroChainLift A s v b hb).f k := by

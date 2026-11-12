@@ -21,22 +21,22 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (X Y : C) {w : Word} (j : Fin w.length) {n m : SimplexCategoryᵒᵖ}
-  (τ : (graph W w X Y).obj n) (hτ : ∀ k, IdentityColumn (τ.obj k) j)
+  (X Y : C) {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (j : Fin w.length) {n m : SimplexCategoryᵒᵖ}
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y).obj n) (hτ : ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj k) j)
 include hτ
 
 lemma identityColumn_map (α : n ⟶ m) :
-    ∀ k, IdentityColumn (((graph W w X Y).map α τ).obj k) j := by
+    ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y).map α τ).obj k) j := by
   intro k
   exact hτ (α.unop.toOrderHom k)
 
 /-- 元の削除の全作用素に対する厳密な自然性。 -/
 lemma eraseSimplex_map (α : n ⟶ m) :
-    eraseSimplex W X Y j ((graph W w X Y).map α τ) (identityColumn_map W X Y j τ hτ α) =
-      (graph W (Word.erase w j) X Y).map α (eraseSimplex W X Y j τ hτ) := by
-  apply graphDiagram_map_app_injective W _ (Word.eraseInclusion_injective w j) X Y m
+    eraseSimplex W X Y j ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y).map α τ) (identityColumn_map W X Y j τ hτ α) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase w j) X Y).map α (eraseSimplex W X Y j τ hτ) := by
+  apply graphDiagram_map_app_injective W _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion_injective w j) X Y m
   rw [eraseSimplex_fac]
-  have he := NatTrans.naturality_apply ((graphDiagram W X Y).map (Word.eraseInclusion w j)) α
+  have he := NatTrans.naturality_apply ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w j)) α
     (eraseSimplex W X Y j τ hτ)
   rw [eraseSimplex_fac] at he
   exact he.symm

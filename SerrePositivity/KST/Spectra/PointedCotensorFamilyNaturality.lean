@@ -28,7 +28,7 @@ namespace PointedCotensorCoordinates
 /-- 自由パラメータ族の移送は、点つき源の制限と厳密に可換。 -/
 lemma family_source {K : SSet.{u}} {T U E : PointedSimplicialSet.{u}}
     (i : T ⟶ U) (a : K ⟶ (PointedObject.basedHom U E).right) :
-    i ≫ family a = family (a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E).right) := by
+    i ≫ family a = family (a ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E).right) := by
   apply ext
   rw [← PointedMapping.familyVertex_pre, family_vertex]
   have h := congrArg (fun q => q.app (Opposite.op ⦋0⦌)
@@ -53,7 +53,7 @@ lemma family_target {K : SSet.{u}} {T E V : PointedSimplicialSet.{u}}
 /-- 自由パラメータの制限は、元の族への同じ前合成そのもの。 -/
 lemma family_parameter {K L : SSet.{u}} {T E : PointedSimplicialSet.{u}}
     (j : L ⟶ K) (a : K ⟶ (PointedObject.basedHom T E).right) :
-    family a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E =
+    family a ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map j) E =
       family (j ≫ a) := by
   apply ext
   rw [← PointedMapping.familyVertex_post, family_vertex]

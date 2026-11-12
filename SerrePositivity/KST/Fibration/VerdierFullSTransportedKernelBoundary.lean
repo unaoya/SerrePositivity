@@ -19,13 +19,13 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 同じ全四角柱の始端下辺は、元の商核の包含の全一単体そのもの。 -/
 theorem verdierFullSTransportedSquare_bottom_kernel :
-    squareBottomEdge ≫ verdierFullSTransportedSquare d =
-      squareBottomEdge ≫ quotientSKernelInfinitySquare d.inclusion d.projection := by
-  have hb : stdSimplex.δ (2 : Fin 3) ≫ squareTriangle.{u + 1} 1 = squareBottomEdge := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ verdierFullSTransportedSquare d =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ quotientSKernelInfinitySquare d.inclusion d.projection := by
+  have hb : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{u + 1} 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge := by
     apply SSet.yonedaEquiv.injective
     apply Prod.ext <;> decide
   have h := congrArg (fun f => stdSimplex.δ (2 : Fin 3) ≫ f)
@@ -35,19 +35,19 @@ theorem verdierFullSTransportedSquare_bottom_kernel :
 
 /-- 同じ全四角柱の始端右辺は、元の商核の商の全一単体そのもの。 -/
 theorem verdierFullSTransportedSquare_right_kernel :
-    squareRightEdge ≫ verdierFullSTransportedSquare d =
-      squareRightEdge ≫ quotientSKernelInfinitySquare d.inclusion d.projection := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ verdierFullSTransportedSquare d =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ quotientSKernelInfinitySquare d.inclusion d.projection := by
   have h := congrArg (fun f => stdSimplex.δ (0 : Fin 3) ≫ f)
     (verdierFullSTransportedSquare_lower d)
-  simp only [← Category.assoc, squareTriangle_rightEdge] at h
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTriangle_rightEdge] at h
   exact h.trans (quotientSKernelInfinitySquare_right_eq_verdierSingle d).symm
 
 /-- 元の包含辺を厳密に保持するので、全四角柱の始端左下は同じ商核頂点。 -/
 theorem verdierFullSTransportedSquare_apex_kernel :
-    squareVertex (verdierFullSTransportedSquare d) 0 0 =
-      squareVertex (quotientSKernelInfinitySquare d.inclusion d.projection) 0 0 := by
-  have h := congrArg (fun f : Δ[1] ⟶ SpaceInfinity.{u} =>
-    SpaceInfinity.{u}.δ 1 (SSet.yonedaEquiv f)) (verdierFullSTransportedSquare_bottom_kernel d)
-  exact (squareBottomEdge_source _).symm.trans (h.trans (squareBottomEdge_source _))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (verdierFullSTransportedSquare d) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (quotientSKernelInfinitySquare d.inclusion d.projection) 0 0 := by
+  have h := congrArg (fun f : Δ[1] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} =>
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}.δ 1 (SSet.yonedaEquiv f)) (verdierFullSTransportedSquare_bottom_kernel d)
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source _).symm.trans (h.trans (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_source _))
 
 end SerrePositivity.KST.Fibration

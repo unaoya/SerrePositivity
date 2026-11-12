@@ -26,9 +26,9 @@ include hrel
 /-- 元の正方形が指定パラメータ上で一定なら、移した実区間も制限射影後に一定。 -/
 lemma intervalOfHomotopy_over :
     (intervalOfHomotopy H).path ≫ (PointedObject.basedHomMap T
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E)).right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map j) E)).right =
     SSet.const (PointedMapping.familyVertex
-      (family a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E)) := by
+      (family a ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map j) E)) := by
   apply (cancel_mono (iso L T E).hom).1
   rw [Category.assoc]
   erw [natural_parameter j T E]
@@ -38,7 +38,7 @@ lemma intervalOfHomotopy_over :
 
 /-- 同じ実正方形を、指定した自由パラメータの制限に垂直な実区間へ移す。 -/
 def relativeIntervalOfHomotopy : PointedMapping.VerticalPath
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map j) E)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map j) E)
     (family a) (family b) where
   path := (intervalOfHomotopy H).path
   zero := (intervalOfHomotopy H).zero

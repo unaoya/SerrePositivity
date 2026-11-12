@@ -36,7 +36,7 @@ private lemma pointedCofiberFamily_comparison_ext {K L P : SSet.{u}}
         uncurry (a ≫ PointedObject.basedHomι _ Y) ≫ f.right =
       (PointedObject.cofiberQuotient j ▷ P) ≫ (g.right ▷ P) ≫
         uncurry (b ≫ PointedObject.basedHomι W Z)) :
-    a ≫ pointedFamilyPost _ Y Z f = b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre g Z := by
+    a ≫ pointedFamilyPost _ Y Z f = b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre g Z := by
   apply pointedCofiberFamily_evaluation_ext j Z
   rw [Category.assoc, Category.assoc, pointedFamilyPost_evaluation,
     pointedFamily_pre_evaluation]
@@ -45,7 +45,7 @@ private lemma pointedCofiberFamily_comparison_ext {K L P : SSet.{u}}
 /-- 概要：元の商射の像で、S₁ 比較と全商作用は可換する。
 方針：両経路を降下前の実現作用へ戻し、全族比較の自然性を使う。
 規約：入力の全単体を固定する。使われ方：基点固定族の一意性への入力。 -/
-lemma stableOneDirectionReducedComparison_quotient_app (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u})
+lemma stableOneDirectionReducedComparison_quotient_app (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u})
     (n : SimplexCategoryᵒᵖ)
     (x : ((oneDirectionRealizationFunctor (r + 1)).obj (stableCategoryModel C)).obj n)
     (p : (C ⟶[SSet.{u}] D).obj n) :
@@ -77,13 +77,13 @@ lemma stableOneDirectionReducedComparison_quotient_app (r : ℕ) (C D : _root_.S
 /-- 概要：元の S₁ 商比較は全基点固定 Hom 族に自然である。
 方針：同じ商射への制限で全族を比較し、その一意性で元の等式を回収する。
 規約：元の実比較を使う。使われ方：点つき厳密豊穣自然変換への包装。 -/
-lemma stableOneDirectionReducedComparison_family (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedComparison_family (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableOneDirectionReducedFamilyMap r C D ≫ pointedFamilyPost
         (oneDirectionReducedRealization r (stableCategoryModel C))
         (oneDirectionReducedRealization r (stableCategoryModel D))
         (boundaryReducedRealization r (stableCategoryModel D))
         (oneDirectionReducedComparison r (stableCategoryModel D)) =
-      stableBoundaryReducedFamilyMap r C D ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+      stableBoundaryReducedFamilyMap r C D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
         (oneDirectionReducedComparison r (stableCategoryModel C))
         (boundaryReducedRealization r (stableCategoryModel D)) := by
   apply pointedCofiberFamily_comparison_ext

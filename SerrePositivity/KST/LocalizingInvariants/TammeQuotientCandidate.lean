@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceExact
-public import SerrePositivity.InfinityCategories.Stable.Verdier.AdjointVerdier
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.AdjointVerdier
 
 /-!
 概要：一般の lax pullback の商の実 quasicategory と、元の差の coherent な因子化を構成。
@@ -20,26 +20,26 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 def tammeLocalizingEdges : Set ((laxCategory p q).obj _⦋1⦌) :=
-  cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q))
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q))
 
-lemma tammeLocalizingEdges_eq : tammeLocalizingEdges p q = invertedEdges (laxDifference p q) :=
-  (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q) (exactLaxDifference p q)
+lemma tammeLocalizingEdges_eq : tammeLocalizingEdges p q = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges (laxDifference p q) :=
+  (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.invertedEdges_eq_cofiber_kernel (pullbackInclusion p q) (exactLaxDifference p q)
     (exactLaxDifference_kernel p q)).symm
 
-def tammeQuotient : SSet.{u} := edgeLocalization (laxCategory p q).obj (tammeLocalizingEdges p q)
+def tammeQuotient : SSet.{u} := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization (laxCategory p q).obj (tammeLocalizingEdges p q)
 
 instance tammeQuotient_quasicategory : Quasicategory (tammeQuotient p q) :=
-  edgeLocalization_quasicategory _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_quasicategory _ _
 
-def tammeQuotientMap : (laxCategory p q).obj ⟶ tammeQuotient p q := edgeLocalizationMap _ _
+def tammeQuotientMap : (laxCategory p q).obj ⟶ tammeQuotient p q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalizationMap _ _
 
-lemma tammeQuotient_isLocalization : IsLocalization (tammeQuotientMap p q)
-    (tammeLocalizingEdges p q) := edgeLocalization_isLocalization _ _
+lemma tammeQuotient_isLocalization : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (tammeQuotientMap p q)
+    (tammeLocalizingEdges p q) := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.edgeLocalization_isLocalization _ _
 
-lemma tammeDifference_inverts : InvertsEdges (laxDifference p q) (tammeLocalizingEdges p q) := by
+lemma tammeDifference_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (laxDifference p q) (tammeLocalizingEdges p q) := by
   rw [tammeLocalizingEdges_eq]
   exact Set.Subset.refl _
 
@@ -49,7 +49,7 @@ def tammeQuotientComparison : tammeQuotient p q ⟶ E.obj :=
 
 /-- 元の全単体上の差の関手との coherent な因子化同型。 -/
 def tammeQuotientComparisonIso :
-    FunctorIso (tammeQuotientMap p q ≫ tammeQuotientComparison p q) (laxDifference p q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (tammeQuotientMap p q ≫ tammeQuotientComparison p q) (laxDifference p q) :=
   localizationDescendIso (tammeQuotientMap p q) (tammeLocalizingEdges p q)
     (tammeQuotient_isLocalization p q) (laxDifference p q) (tammeDifference_inverts p q)
 

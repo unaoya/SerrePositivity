@@ -35,7 +35,7 @@ variable [ModelCategory SSet.{u}]
 /-- A locally selected level model on the original `SymmetricSpectrum` type. -/
 @[instance_reducible]
 def simplicialLevelModelCategory : ModelCategory SymmetricSpectrum.{u} := by
-  let : CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
+  let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
     pointedSimplicial_cofibrantlyGenerated hCof hFib
   let : MonoidalModelCategory PointedSimplicialSet.{u} :=
     pointedSimplicial_monoidalModel hCof hFib
@@ -57,8 +57,8 @@ lemma simplicialLevelModelCategory_fibrations :
 
 lemma simplicialLevelModelCategory_generated :
     let := simplicialLevelModelCategory hCof hFib
-    CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} := by
-  let : CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} simplicialLevelI.{u} simplicialLevelJ.{u} := by
+  let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
     pointedSimplicial_cofibrantlyGenerated hCof hFib
   let : MonoidalModelCategory PointedSimplicialSet.{u} :=
     pointedSimplicial_monoidalModel hCof hFib
@@ -89,9 +89,9 @@ lemma simplicialLevel_functorialFactorizations :
         (fibrations SymmetricSpectrum.{u}) := by
   let := simplicialLevelModelCategory hCof hFib
   let := simplicialLevelModelCategory_generated hCof hFib
-  exact ⟨hasFunctorialFactorization_cofibration_trivialFibration
+  exact ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
       simplicialLevelI simplicialLevelJ,
-    hasFunctorialFactorization_trivialCofibration_fibration
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
       simplicialLevelI simplicialLevelJ⟩
 
 end SerrePositivity.SimplicialModelInputs

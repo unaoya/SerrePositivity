@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.EdgewiseRefinementVertex
-public import SerrePositivity.InfinityCategories.PinchedHom.Basic
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic
 
 /-!
 概要：退化した元の辺の共通解像の頂点は、元の頂点への定値射である。

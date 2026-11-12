@@ -26,7 +26,7 @@ def signedLoopTailTwistComparison (Y : KanSequence.{u}) :
 
 /-- 同じ twist 比較は、各段で全基点 π 同型。 -/
 lemma signedLoopTailTwistComparison_levelwise (Y : KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopTailTwistComparison Y).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopTailTwistComparison Y).app n).right :=
   twistMap_piIsomorphism (tailHom (mappingPre (CirclePower.integerPowerMap.{u} (-1)) Y))
     (fun k => LoopMappingClasses.pre_neg_one_piIsomorphism (Y.level (k + 1)).space) n
 

@@ -39,7 +39,7 @@ def loopCollageEvaluationObj
     (X : EnrichedFunctorCollageCategory pointedKanLoopEnrichedFunctor.{u}) :
     PointedSimplicialSet.{u} :=
   match X with
-  | .inl X => _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj
+  | .inl X => _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj
   | .inr Y => Y.obj
 
 /-- 交差写像空間には元の suspension–loop 随伴の逆を適用する。 -/
@@ -51,7 +51,7 @@ def loopCollageEvaluationMap
   | .inl X, .inl Y => (suspensionHom X.obj Y.obj).right
   | .inl X, .inr Y => (suspensionLoopMappingIso X.obj Y.obj).inv
   | .inr X, .inl Y =>
-      enrichedCollageEmptyMap (PointedObject.basedHom X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y.obj)).right
+      enrichedCollageEmptyMap (PointedObject.basedHom X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y.obj)).right
   | .inr X, .inr Y => 𝟙 (SimplicialCategory.sHom X Y)
 
 /-- 全写像パラメータの合成を保つ、loop collage から元の点つき模型への豊穣評価。 -/
@@ -126,56 +126,56 @@ lemma loopCollageEvaluation_top :
 def loopCollageEvaluationNerve :
     EnrichedFunctorCollageInfinity pointedKanLoopEnrichedFunctor.{u} ⟶
       SimplicialNerve PointedSimplicialSet.{u} :=
-  coherentNerveMap loopCollageEvaluation
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap loopCollageEvaluation
 
 /-- 下段の coherent nerve の評価は全単体で suspension の像。 -/
 lemma loopCollageEvaluationNerve_bottom :
     enrichedFunctorCollageBottomInfinity pointedKanLoopEnrichedFunctor.{u} ≫
         loopCollageEvaluationNerve =
-      coherentNerveMap pointedKanInclusionEnriched ≫
-        coherentNerveMap suspensionEnrichedFunctor := by
-  change coherentNerveMap (enrichedFunctorCollageBottom pointedKanLoopEnrichedFunctor.{u}) ≫
-    coherentNerveMap loopCollageEvaluation = _
-  rw [← coherentNerveMap_comp, loopCollageEvaluation_bottom, coherentNerveMap_comp]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageBottom pointedKanLoopEnrichedFunctor.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap loopCollageEvaluation = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, loopCollageEvaluation_bottom, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
 
 /-- 上段の coherent nerve の評価は全単体で元の対象・射の包含。 -/
 lemma loopCollageEvaluationNerve_top :
     enrichedFunctorCollageTopInfinity pointedKanLoopEnrichedFunctor.{u} ≫
-        loopCollageEvaluationNerve = coherentNerveMap pointedKanInclusionEnriched := by
-  change coherentNerveMap (enrichedFunctorCollageTop pointedKanLoopEnrichedFunctor.{u}) ≫
-    coherentNerveMap loopCollageEvaluation = _
-  rw [← coherentNerveMap_comp, loopCollageEvaluation_top]
+        loopCollageEvaluationNerve = _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (enrichedFunctorCollageTop pointedKanLoopEnrichedFunctor.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap loopCollageEvaluation = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, loopCollageEvaluation_top]
 
 /-- 元の loop 値の点つき射を、collage の実際の下段から上段への射として表す。 -/
-def loopCollageCrossMap (X Y : PointedKanObject.{u}) (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
+def loopCollageCrossMap (X Y : PointedKanObject.{u}) (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
     (enrichedFunctorCollageBottom pointedKanLoopEnrichedFunctor).obj X ⟶
       (enrichedFunctorCollageTop pointedKanLoopEnrichedFunctor).obj Y :=
   ForgetEnrichment.homOf SSet
     (C := EnrichedFunctorCollage pointedKanLoopEnrichedFunctor)
     (X := (Sum.inl X : EnrichedFunctorCollage pointedKanLoopEnrichedFunctor))
     (Y := Sum.inr Y)
-    ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f))
+    ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f))
 
 /-- Collage の交差射は元の点つき射の写像空間の頂点を厳密に回収する。 -/
 lemma loopCollageCrossMap_vertex (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
     SimplicialCategory.homEquiv' _ _ (loopCollageCrossMap X Y f) =
-      pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f := by
+      pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f := by
   change (SSet.unitHomEquiv _)
-      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) f)) = _
+      ((SSet.unitHomEquiv _).symm (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) f)) = _
   exact Equiv.apply_symm_apply _ _
 
 /-- 元の値域への射影は、交差射から元の loop 値の点つき射そのものを回収する。 -/
 lemma loopCollageCrossMap_projection (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
-    ((coherentEnrichedUnderlyingFunctor
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
       (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor)).map
         (loopCollageCrossMap X Y f)).hom = f := by
-  apply (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)).injective
-  have h := coherentEnrichedUnderlyingFunctor_vertex
+  apply (pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj)).injective
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex
     (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor) (loopCollageCrossMap X Y f)
-  change pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj)
-      (((coherentEnrichedUnderlyingFunctor
+  change pointedHomVertexEquiv X.obj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj)
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
         (enrichedFunctorCollageProjection pointedKanLoopEnrichedFunctor)).map
           (loopCollageCrossMap X Y f)).hom) =
     SimplicialCategory.homEquiv' _ _ (loopCollageCrossMap X Y f) at h
@@ -183,14 +183,14 @@ lemma loopCollageCrossMap_projection (X Y : PointedKanObject.{u})
 
 /-- Suspension 側の評価は、元の射の元の逆随伴そのものを厳密に回収する。 -/
 lemma loopCollageCrossMap_evaluation (X Y : PointedKanObject.{u})
-    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y.obj) :
-    (coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map (loopCollageCrossMap X Y f) =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X.obj Y.obj).symm f := by
-  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj).injective
-  have h := coherentEnrichedUnderlyingFunctor_vertex loopCollageEvaluation
+    (f : X.obj ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y.obj) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map (loopCollageCrossMap X Y f) =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X.obj Y.obj).symm f := by
+  apply (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) Y.obj).injective
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex loopCollageEvaluation
     (loopCollageCrossMap X Y f)
-  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X.obj) Y.obj
-      ((coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map
+  change pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X.obj) Y.obj
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor loopCollageEvaluation).map
         (loopCollageCrossMap X Y f)) =
     (suspensionLoopMappingIso X.obj Y.obj).inv.app (Opposite.op ⦋0⦌)
       (SimplicialCategory.homEquiv' _ _ (loopCollageCrossMap X Y f)) at h

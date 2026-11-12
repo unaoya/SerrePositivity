@@ -32,7 +32,7 @@ lemma rawSequenceStep_familyVertex (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
 /-- 元の単射源の各段の写像を、全精密化の共通パラメータ上の族として表示する。 -/
 def monicKPrismRawLevelFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⟶
       (PointedObject.basedHom ((kOmegaSpectrum (F.obj x)).level r).space
         ((kKanSequence (F.obj y)).level r).space).right :=
   SSet.const (familyVertex (monicKToRawLevelMap (F.map f) r))
@@ -42,18 +42,18 @@ def monicKPrismRawSequenceCompatibility {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     SSet.Homotopy
       (monicKPrismRawLevelFamily (r + 1) F f ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
           ((kKanSequence (F.obj y)).level (r + 1)).space)
       (monicKPrismRawLevelFamily r F f ≫
         RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y)) r) := by
   let H := monicKPrismSpecifiedCompatibilityFamily r F f
   have hs : monicKPrismRawLevelFamily (r + 1) F f ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma r)
           ((kKanSequence (F.obj y)).level (r + 1)).space =
       SSet.const (familyVertex ((monicKKanSequence (F.obj x)).sigma r ≫
         monicKToRawLevelMap (F.map f) (r + 1))) := by
     rw [monicKPrismRawLevelFamily, SSet.const_comp]
-    exact congrArg (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)))
+    exact congrArg (SSet.const (X := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)))
       (familyVertex_pre ((monicKKanSequence (F.obj x)).sigma r)
         (monicKToRawLevelMap (F.map f) (r + 1)))
   have ht : monicKPrismRawLevelFamily r F f ≫
@@ -76,7 +76,7 @@ lemma monicKPrismRawSequenceCompatibility_h {I : Type u} [SmallCategory I]
 /-- 厳密化の具体的入力の指定頂点で、元の単射源の適合区間を厳密に回収する。 -/
 lemma monicKPrismRawSequenceCompatibility_boundary {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
-    (nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
       (monicKPrismRawSequenceCompatibility r F f).h =
         snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
           SSet.yonedaEquiv.symm (monicKPrismCompatibilityEdge r F f).edge :=

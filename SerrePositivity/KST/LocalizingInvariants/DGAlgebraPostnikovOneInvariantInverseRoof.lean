@@ -28,7 +28,7 @@ lemma postnikovOneMap_exists_invariantInverseRoof
     (h₁ : IsProIso ((f.map (nonpositiveInclusion R)).map (groups R 1))) (i : ℕ) :
     ∃ m, ∃ hi : i ≤ m,
     ∃ r : SurjectiveRoof R (postnikov R (B.obj m).obj 1) (postnikov R (A.obj i).obj 1),
-      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
+      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
         (postnikovOneValueMap R Φ f).app m ≫
             h.roofValue R Φ (postnikov_isConnective R (B.obj m).obj 1) r =
           (invariantTower R Φ (A.map (postnikovFunctor R 1))).transition hi ∧
@@ -46,7 +46,7 @@ lemma nonpositiveMap_exists_invariantInverseRoof_of_oneBounded
     (h₀ : IsProIso ((f.map (nonpositiveInclusion R)).map (groups R 0)))
     (h₁ : IsProIso ((f.map (nonpositiveInclusion R)).map (groups R 1))) (i : ℕ) :
     ∃ m, ∃ hi : i ≤ m, ∃ r : SurjectiveRoof R (B.obj m).obj (A.obj i).obj,
-      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
+      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
         (invariantLevelMap R Φ (f.map (nonpositiveInclusion R))).app m ≫
             h.roofValue R Φ (nonpositive_isConnective R (B.obj m).obj) r =
           (invariantTower R Φ (A.map (nonpositiveInclusion R))).transition hi ∧

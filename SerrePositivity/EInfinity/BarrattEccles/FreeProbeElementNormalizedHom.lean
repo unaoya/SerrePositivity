@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite
-open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.DifferentialGraded
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel ComplexLimits
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 
@@ -31,13 +31,13 @@ def freeProbeElementNormalizedHomMap :
 方針：元の標的弱比較と実随伴 Hom 同型を使う。
 規約：別の Hom 同値に置換しない。使われ方：全要素圏写像の反転性。 -/
 lemma freeProbeElementNormalizedHomMap_homotopyEquivalence :
-    IsSimplicialHomotopyEquivalence (freeProbeElementNormalizedHomMap A X B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (freeProbeElementNormalizedHomMap A X B) := by
   have := normalizedProbeTensorHom_kanComplex A (op X)
     (complexSemifreeResolutionValue A B.carrier).val
   have := normalizedProbeTensorHom_kanComplex A (op X) B.carrier
   have := freeNormalizedProbeHom_kanComplex A (op X) B
   exact (normalizedProbeTargetReplacementMap_homotopyEquivalence A X B.carrier).comp
-    (DoldKanComparison.simplicialHomotopyEquivalence_iso_hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialHomotopyEquivalence_iso_hom
       (((freeNormalizedProbeHomAdjunctionIso A).app (op X)).app B).symm)
 
 /-- 概要：同じ Hom 写像の各単体は元の評価と同じ随伴像。
@@ -105,7 +105,7 @@ lemma freeProbeElementNormalizedIndexMap_localized_isIso :
   have := normalizedProbeTensorHom_kanComplex A (op X)
     (complexSemifreeResolutionValue A B.carrier).val
   have := freeNormalizedProbeHom_kanComplex A (op X) B
-  have hw := DoldKanComparison.ulift_homotopyEquivalence
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (freeProbeElementNormalizedHomMap_homotopyEquivalence A X B)
   have := Hammock.anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence
   have := normalizedTensorElementParameterMap_localized_isIso A

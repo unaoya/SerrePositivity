@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -41,19 +41,19 @@ lemma normalizedTensorConeDerivedFamilyHom_inverse_arrow :
     Arrow.mk (normalizedTensorConeDerivedFamilyHom A X Y) =
     Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).inv := by
   let F := complexSemifreeResolutionInfinity A
-  have hy := congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+  have hy := congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (normalizedTensorElementNerveDiagram_derived A X Y).symm
   have h₁ := arrow_mk_of_heq rfl hy (normalizedTensorConeDerivedFamilyHom A X Y)
     (normalizedTensorConeMappedFamilyHom A X Y F)
     (normalizedTensorConeDerivedFamilyHom_heq_mapped A X Y)
-  have h₂ := SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq (normalizedTensorConeMappedHomotopy A X Y F)
-    (functorHomotopyPostcomp (normalizedTensorConeHomotopy A X Y) F) rfl
+  have h₂ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq (normalizedTensorConeMappedHomotopy A X Y F)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (normalizedTensorConeHomotopy A X Y) F) rfl
   exact h₁.trans (h₂.trans (normalizedTensorConePostDerived_inverse_arrow A X Y))
 
 lemma normalizedTensorConeDerivedFamilyHom_isIso :
     IsIso (normalizedTensorConeDerivedFamilyHom A X Y) := by
   let K := nerve (normalizedTensorElementIndex A X Y)
-  have ht : ∀ (a b : Arrow (hoFunctor.obj ((ihom K).obj (derivedInfinityCategory A)))),
+  have ht : ∀ (a b : Arrow (hoFunctor.obj ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))),
       a = b → IsIso b.hom → IsIso a.hom := by
     intro a b h hb
     subst b

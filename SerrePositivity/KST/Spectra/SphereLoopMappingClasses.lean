@@ -27,22 +27,22 @@ namespace SphereSimplex
 
 def mapClass (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (equiv Y (n + 1) f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right n Y.basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (equiv Y (n + 1) f)
 
 lemma mapClass_post {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (n : ℕ)
     (f : PointedSimplicialSet.sphere.{u} (n + 1) ⟶ Y) (p : Y ⟶ Z) :
     pointedGroupMap n p (mapClass Y n f) = mapClass Z n (f ≫ p) := by
   dsimp only [mapClass, pointedGroupMap]
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_mk, equiv_comp]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_mk, equiv_comp]
 
 end SphereSimplex
 
 namespace LoopMappingClasses
 
 lemma groupMap_multiplication (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (PointedObject.prod (PointedObject.basedHom CirclePower.space.{u} Y)
         (PointedObject.basedHom CirclePower.space Y)).right n
       (PointedSimplicialSet.basepoint (PointedObject.prod
@@ -85,7 +85,7 @@ lemma sphereComponent_mul (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n
 使われ方：Goerss–Jardine I §7。球面の Hom の群の比較。 -/
 def sphereComponentHom (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     LoopMappingClasses (PointedSimplicialSet.sphere.{u} (n + 1)) Y →*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
         (PointedSimplicialSet.basepoint (PointedObject.basedHom CirclePower.space Y)) :=
   MonoidHom.mk' (SphereSimplex.componentClass (PointedObject.basedHom CirclePower.space Y) n)
     (sphereComponent_mul Y n)
@@ -96,7 +96,7 @@ def sphereComponentHom (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : 
 使われ方：Goerss–Jardine I §7、VIII §1。sphere の次数移動の基本段。 -/
 def sphereComponentEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     LoopMappingClasses (PointedSimplicialSet.sphere.{u} (n + 1)) Y ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom CirclePower.space.{u} Y).right n
         (PointedSimplicialSet.basepoint (PointedObject.basedHom CirclePower.space Y)) :=
   MulEquiv.ofBijective (sphereComponentHom Y n)
     (SphereSimplex.componentClass_bijective (PointedObject.basedHom CirclePower.space Y) n)

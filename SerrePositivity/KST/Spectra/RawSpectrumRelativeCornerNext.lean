@@ -31,35 +31,35 @@ lemma relativeCornerNext {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
     (a : T ⟶ (PointedObject.basedHom (R.level (n + 1)).space E).right)
     (b : U ⟶ (PointedObject.basedHom (R.level (n + 1)).space Z).right)
     (v : U ⟶ (PointedObject.basedHom (X.level (n + 1)).space E).right)
-    (u : U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (R.level n).space) E).right)
-    (huv : u ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app n) E =
-      v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) E)
-    (hu : j ≫ u = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) E)
-    (hv : j ≫ v = a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app (n + 1)) E)
+    (u : U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (R.level n).space) E).right)
+    (huv : u ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app n) E =
+      v ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) E)
+    (hu : j ≫ u = a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) E)
+    (hv : j ≫ v = a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app (n + 1)) E)
     (ha : a ≫ (PointedObject.basedHomMap (R.level (n + 1)).space p).right = j ≫ b)
-    (hub : u ≫ (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (R.level n).space) p).right =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) Z)
+    (hub : u ≫ (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (R.level n).space) p).right =
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) Z)
     (hvb : v ≫ (PointedObject.basedHomMap (X.level (n + 1)).space p).right =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app (n + 1)) Z) :
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app (n + 1)) Z) :
     ∃ l : U ⟶ (PointedObject.basedHom (R.level (n + 1)).space E).right,
       j ≫ l = a ∧
       l ≫ (PointedObject.basedHomMap (R.level (n + 1)).space p).right = b ∧
-      l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (R.sigma n) E = u ∧
-      l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app (n + 1)) E = v := by
+      l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (R.sigma n) E = u ∧
+      l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app (n + 1)) E = v := by
   let hE := sequentialLatchingHom_isPullback i n E
   let hZ := sequentialLatchingHom_isPullback i n Z
   let c := hE.lift u v huv
-  have hleft : c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+  have hleft : c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (pushout.inl (PointedSimplicialSet.circle.{u} ◁ i.app n) (X.sigma n)) E = u :=
     hE.lift_fst _ _ _
-  have hright : c ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+  have hright : c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (pushout.inr (PointedSimplicialSet.circle.{u} ◁ i.app n) (X.sigma n)) E = v :=
     hE.lift_snd _ _ _
-  have hc : a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (sequentialRelativeLatchingMap i n) E = j ≫ c := by
+  have hc : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (sequentialRelativeLatchingMap i n) E = j ≫ c := by
     apply hE.hom_ext
     · simpa only [Category.assoc, sequentialLatchingHom_pre_inl, hleft] using hu.symm
     · simpa only [Category.assoc, sequentialLatchingHom_pre_inr, hright] using hv.symm
-  have hcb : b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (sequentialRelativeLatchingMap i n) Z =
+  have hcb : b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (sequentialRelativeLatchingMap i n) Z =
       c ≫ (PointedObject.basedHomMap _ p).right := by
     apply hZ.hom_ext
     · rw [Category.assoc, sequentialLatchingHom_pre_inl,

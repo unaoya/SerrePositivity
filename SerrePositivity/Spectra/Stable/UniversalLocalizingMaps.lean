@@ -63,7 +63,7 @@ lemma StableModelPresentation.localizingMap_isWeakEquivalence (n : ℕ) (A : C) 
     Quillen.isFibrant_obj (ihom K) _
   have : WeakEquivalence (adjointStructureMap RY n) := ⟨hΩ.2 n⟩
   exact (weakEquivalence_iff _).mp
-    (Quillen.map_weakEquivalence_of_fibrant (cosimplicialHom (q.obj.obj A))
+    (Quillen.map_weakEquivalence_of_fibrant (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (q.obj.obj A))
       (adjointStructureMap RY n))
 
 end SerrePositivity.SpectrumStabilization

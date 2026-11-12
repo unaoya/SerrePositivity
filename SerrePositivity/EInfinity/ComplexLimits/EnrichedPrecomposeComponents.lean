@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionComponents
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionComponents
 
 /-!
 # 元の豊穣前合成の全成分を小ささ仮定なしに計算する

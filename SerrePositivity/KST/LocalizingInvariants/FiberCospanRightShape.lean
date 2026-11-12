@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 
@@ -32,9 +32,9 @@ lemma rightShape_eq : rightShape.{u} =
   exact Subsingleton.elim _ _
 
 lemma rightDiagram_eq {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) :
-    rightShape ≫ strictCoherentDiagram
-      (spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y)) =
-        SSet.yonedaEquiv.symm (coherentNerveEdge p).edge := by
+    rightShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram
+      (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (OmegaSpectrum.fromPoint Y)) =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge := by
   rw [rightShape, Category.assoc]
   exact CospanShape.strictDiagram_left _ _
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.CokernelNerveCoordinates
 public import SerrePositivity.KST.SConstruction.Cofinality.GroupNerveHigherInput
-public import SerrePositivity.InfinityCategories.Kan.HomotopyIso
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyIso
 
 /-!
 概要：元の指定射の S 余核図式は同じ余核群の bar と単体的に同型となる。
@@ -36,14 +36,14 @@ def cutCokernelBarIso {X Y : StableModel.{u}} (f : X ⟶ Y) :
 使われ方：相対 fiber の障害項から正次数 K 群の同型性を導く入口。 -/
 lemma cutCokernel_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     {X Y : StableModel.{u}} (f : X ⟶ Y) (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) := by
-  let e := F2.continuousKanReplacement.mapIso (cutCokernelBarIso f)
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.mapIso (cutCokernelBarIso f)
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
         (nerve (AsSmall.{u} (SingleObj (Multiplicative (cutKZeroCokernel 1 f)))))) n
           (e.hom.app (Opposite.op ⦋0⦌) x)) := cutCokernelBar_higher_of_input h 1 f n hn _
-  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e x n).1)
+  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e x n).1)
 
 end SerrePositivity.KST.SConstruction.Cofinality

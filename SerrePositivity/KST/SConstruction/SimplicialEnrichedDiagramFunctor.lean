@@ -21,11 +21,11 @@ local instance simplicialDiagramFunctorBase_enrichedOrdinaryCategory :
   MonoidalClosed.enrichedOrdinaryCategorySelf SSet.{u}
 
 variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
-  (D : SimplicialObject (QuasicategoryEnrichedFunctorCategory C))
+  (D : SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C))
 
 /-- 同じ一対象での図式の評価を、元の単体的単体集合として読む。 -/
 def simplicialEnrichedDiagramValue (X : C) : SimplicialObject SSet.{u} :=
-  D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ quasicategoryObjectForget
+  D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget
 
 /-- 同じ全パラメータの段ごとの作用を、図式全体の標準豊穣 Hom に持ち上げる。 -/
 def simplicialEnrichedDiagramHom (X Y : C) :

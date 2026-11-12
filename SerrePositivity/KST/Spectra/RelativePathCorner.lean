@@ -36,12 +36,12 @@ lemma unitHom_map :
 方針：単位 Hom の同型を pullback の第二射影に適用する。
 規約：第一射影は底の path のまま。
 使われ方：Goerss–Jardine I §8。path の具体的な相対持ち上げ先。 -/
-def targetIso : PointedMapping.cornerTarget _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u} p ≅
+def targetIso : PointedMapping.cornerTarget _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u} p ≅
     pullback (pathEndpoint B).right p.right where
   hom := pullback.lift (pullback.fst _ _)
     (pullback.snd _ _ ≫ (MonoidalClosed.unitIsoSelf (X := E)).hom.right) (by
       change pullback.fst _ _ ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint B ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint B ≫
           (MonoidalClosed.unitIsoSelf (X := B)).hom.right) = _
       simp only [Category.assoc]
       rw [← unitHom_map, ← pullback.condition_assoc])
@@ -79,7 +79,7 @@ def targetIso : PointedMapping.cornerTarget _root_.SerrePositivity.InfinityCateg
 規約：通常の単体集合の射。
 使われ方：Goerss–Jardine I §8。path と fiber の同時充填。 -/
 def corner : (basedPathSpace E).right ⟶ pullback (pathEndpoint B).right p.right :=
-  PointedMapping.corner _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u} p ≫ (targetIso p).hom
+  PointedMapping.corner _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u} p ≫ (targetIso p).hom
 
 @[reassoc (attr := simp)]
 lemma corner_fst : corner p ≫ pullback.fst _ _ = (basedPathMap p).right := by

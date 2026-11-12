@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitCompositionPoints
 public import SerrePositivity.EInfinity.Hammock.UnmarkedValueAppend
 public import SerrePositivity.EInfinity.Hammock.UnmarkedNonemptyImage
 
@@ -24,24 +24,24 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y Z : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma colimitValue_composePoint (p : (colimitGraph W.paths X Y).obj n)
-    (q : (colimitGraph W.paths Y Z).obj n) :
-    (colimitValue W X Z).app n (composePoint W.paths X Y Z p q) =
+lemma colimitValue_composePoint (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
+    (q : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths Y Z).obj n) :
+    (colimitValue W X Z).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X Y Z p q) =
       List.append ((colimitValue W X Y).app n p) ((colimitValue W Y Z).app n q) := by
-  obtain ⟨a, σ, rfl⟩ := colimit_point_surjective (graphDiagram W.paths X Y) n p
-  obtain ⟨b, τ, rfl⟩ := colimit_point_surjective (graphDiagram W.paths Y Z) n q
-  have hc := composePoint_inclusions W.paths X Y Z a b σ τ
-  have hv := FirstFactor.colimitValue_inclusion W X Z (Word.append a b)
-    (σ.prod' τ ⋙ ZigzagAppend.functor)
+  obtain ⟨a, σ, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimit_point_surjective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W.paths X Y) n p
+  obtain ⟨b, τ, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimit_point_surjective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W.paths Y Z) n q
+  have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X Y Z a b σ τ
+  have hv := FirstFactor.colimitValue_inclusion W X Z (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a b)
+    (σ.prod' τ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor)
   have hp := FirstFactor.colimitValue_inclusion W X Y a σ
   have hq := FirstFactor.colimitValue_inclusion W Y Z b τ
   exact (congrArg ((colimitValue W X Z).app n) hc).trans
     (hv.trans ((value_append W (σ.obj 0) (τ.obj 0)).trans (congrArg₂ List.append hp.symm hq.symm)))
 
 lemma colimitValue_arrowPoint {A B : Paths C} (p : A ⟶ B) :
-    (colimitValue W A B).app n (arrowPoint W.paths p n) =
-      SimplicialLocalization.GeneratorWord.erase W p :=
-  (FirstFactor.colimitValue_inclusion W A B (Word.single .forward)
-    (arrowSimplex W.paths p n)).trans (value_forward W p)
+    (colimitValue W A B).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths p n) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W p :=
+  (FirstFactor.colimitValue_inclusion W A B (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths p n)).trans (value_forward W p)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators

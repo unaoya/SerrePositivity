@@ -33,7 +33,7 @@ def unitPath : FiberMapping.RelativePath (fibrationReplacementComparison q)
 
 lemma unitPath_over_projection :
     (SpectrumMappingAcyclic.post X (fibrationReplacementProjection q)).app (Opposite.op ⦋1⦌)
-        (unitPath p q a b h).path.edge = PinchedHom.constant (vertexOfHom (p ≫ b)) 1 := by
+        (unitPath p q a b h).path.edge = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (vertexOfHom (p ≫ b)) 1 := by
   let c := fibrationReplacementComparison q
   let t := KanSequence.mappingPathTarget (sequenceHom q)
   have hc : RawSpectrumMapping.post X (sequenceHom (fibrationReplacementProjection q)) =
@@ -63,11 +63,11 @@ lemma unitPath_over_projection :
       ((SpectrumMappingAcyclic.post_vertex _ _).trans (congrArg vertexOfHom hf)))
   have hp := congrArg (fun z ↦ (RawSpectrumMapping.post X t).app (Opposite.op ⦋1⦌) z)
     (unitPath p q a b h).over
-  have hk := pinchedConstant_map (RawSpectrumMapping.post X t)
+  have hk := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map (RawSpectrumMapping.post X t)
     ((RawSpectrumMapping.post X c).app (Opposite.op ⦋0⦌)
       (vertexOfHom (fibrationReplacementUnit p ≫ map p q a b h))) 1
   exact (congrArg (fun k ↦ k.app (Opposite.op ⦋1⦌)
     (unitPath p q a b h).path.edge) hs).symm.trans
-      (he.trans (hp.trans (hk.trans (congrArg (fun z ↦ PinchedHom.constant z 1) hv))))
+      (he.trans (hp.trans (hk.trans (congrArg (fun z ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant z 1) hv))))
 
 end SerrePositivity.KST.LocalizingInvariants.FibrationReplacementComparison

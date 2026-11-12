@@ -10,14 +10,14 @@ set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorTriangleSimplex_eq_front {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3) (h2 : ∀ i, τ i ≠ 2) :
     normalizedTensorTriangleSimplex A X Y c τ = normalizedTensorTriangleFront A X Y c τ := by
-  apply Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   apply simplexData_ext_of_components
   · intro i
     exact (normalizedTensorTriangleFront_obj A X Y c τ i (h2 i)).symm
@@ -27,7 +27,7 @@ lemma normalizedTensorTriangleSimplex_eq_back {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3) (h0 : ∀ i, τ i ≠ 0) :
     normalizedTensorTriangleSimplex A X Y c τ = normalizedTensorTriangleBack A X Y c τ := by
-  apply Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   apply simplexData_ext_of_components
   · intro i
     exact (normalizedTensorTriangleBack_obj A X Y c τ i (h0 i)).symm

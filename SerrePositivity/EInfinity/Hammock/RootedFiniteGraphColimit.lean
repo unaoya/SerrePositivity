@@ -23,24 +23,24 @@ open CategoryTheory Limits
 attribute [local instance] Classical.propDecidable
 
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
-  [Quiver.Arborescence T] (X Y : Q) (a : Word)
+  [Quiver.Arborescence T] (X Y : Q) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
 
 def degreeCocone (n : SimplexCategoryᵒᵖ) :
-    Cocone (graphDiagram T X Y a ⋙ (evaluation _ (Type (max u v))).obj n) :=
-  ((evaluation _ (Type (max u v))).obj n).mapCocone (graphCocone T X Y a)
+    Cocone (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a ⋙ (evaluation _ (Type (max u v))).obj n) :=
+  ((evaluation _ (Type (max u v))).obj n).mapCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphCocone T X Y a)
 
 lemma degree_surjective (n : SimplexCategoryᵒᵖ) (σ : (degreeCocone T X Y a n).pt) :
     ∃ S τ, σ = (degreeCocone T X Y a n).ι.app S τ :=
-  ⟨gridPathSupport σ, liftSimplex T X Y a n σ, (liftSimplex_projection T X Y a n σ).symm⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport σ, liftSimplex T X Y a n σ, (liftSimplex_projection T X Y a n σ).symm⟩
 
 lemma degree_equal (n : SimplexCategoryᵒᵖ) (S R : Finset Q)
-    (σ : ((graphDiagram T X Y a).obj S).obj n)
-    (τ : ((graphDiagram T X Y a).obj R).obj n)
+    (σ : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).obj S).obj n)
+    (τ : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).obj R).obj n)
     (h : (degreeCocone T X Y a n).ι.app S σ = (degreeCocone T X Y a n).ι.app R τ) :
     ∃ (U : Finset Q) (f : S ⟶ U) (g : R ⟶ U),
-      ((graphDiagram T X Y a).map f).app n σ = ((graphDiagram T X Y a).map g).app n τ := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).map f).app n σ = ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a).map g).app n τ := by
   refine ⟨S ∪ R, homOfLE Finset.subset_union_left, homOfLE Finset.subset_union_right, ?_⟩
-  apply projection_nerve_injective T X Y a (S ∪ R) n
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projection_nerve_injective T X Y a (S ∪ R) n
   have h₁ := congrArg (fun k => k.app n σ)
     (graphMap_projection T X Y a (show S ⊆ S ∪ R from Finset.subset_union_left))
   have h₂ := congrArg (fun k => k.app n τ)
@@ -51,16 +51,16 @@ def degree_isColimit (n : SimplexCategoryᵒᵖ) : IsColimit (degreeCocone T X Y
   Types.FilteredColimit.isColimitOf _ _ (degree_surjective T X Y a n)
     (degree_equal T X Y a n)
 
-def graphCocone_isColimit : IsColimit (graphCocone T X Y a) :=
+def graphCocone_isColimit : IsColimit (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphCocone T X Y a) :=
   evaluationJointlyReflectsColimits _ (degree_isColimit T X Y a)
 
-def graphColimitIso : colimit (graphDiagram T X Y a) ≅
-    graph (⊤ : MorphismProperty (Paths Q)) a ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
+def graphColimitIso : colimit (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a) ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (⊤ : MorphismProperty (Paths Q)) a ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
   (colimit.isColimit _).coconePointUniqueUpToIso (graphCocone_isColimit T X Y a)
 
 lemma graphColimitIso_fac (S : Finset Q) :
-    colimit.ι (graphDiagram T X Y a) S ≫ (graphColimitIso T X Y a).hom =
-      nerveMap (projectionFunctor T X Y a S) :=
+    colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a) S ≫ (graphColimitIso T X Y a).hom =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a S) :=
   (colimit.isColimit _).comp_coconePointUniqueUpToIso_hom (graphCocone_isColimit T X Y a) S
 
 end SerrePositivity.EInfinity.Hammock.RootedFinite

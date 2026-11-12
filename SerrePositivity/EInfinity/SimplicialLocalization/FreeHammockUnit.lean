@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock
-variable (C : RelativeCategory.{u}) (X : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category)
 
 lemma freeHammockResolution_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
     (freeHammockResolution C X X).map θ =
@@ -30,25 +30,25 @@ lemma freeHammockResolution_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
     (fun θ X => freeResolutionObject_naturality C θ X) θ X X
 
 def freeHammockDiagonalUnit : 𝟙_ SSet.{u} ⟶ freeHammockDiagonal C X X where
-  app n := (colimitUnit ((freeResolution C).obj n).weakEquivalences
+  app n := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
     (freeResolutionObject C n X)).app n
   naturality n m θ := by
     apply ConcreteCategory.hom_ext
     intro p
     cases p
     have hs := ConcreteCategory.congr_hom
-      ((colimitUnit ((freeResolution C).obj m).weakEquivalences
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj m).weakEquivalences
         (freeResolutionObject C m X)).naturality θ) PUnit.unit
-    change (colimitUnit ((freeResolution C).obj m).weakEquivalences
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj m).weakEquivalences
         (freeResolutionObject C m X)).app m PUnit.unit =
       ((freeHammockResolution C X X).obj m).map θ
-        ((colimitUnit ((freeResolution C).obj m).weakEquivalences
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj m).weakEquivalences
           (freeResolutionObject C m X)).app n PUnit.unit) at hs
-    change (colimitUnit ((freeResolution C).obj m).weakEquivalences
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj m).weakEquivalences
         (freeResolutionObject C m X)).app m PUnit.unit =
       ((freeHammockResolution C X X).obj m).map θ
         (((freeHammockResolution C X X).map θ).app n
-          ((colimitUnit ((freeResolution C).obj n).weakEquivalences
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
             (freeResolutionObject C n X)).app n PUnit.unit))
     rw [freeHammockResolution_map]
     have hr := Relative.fixedColimitMap_unit_point ((freeResolution C).map θ)
@@ -57,14 +57,14 @@ def freeHammockDiagonalUnit : 𝟙_ SSet.{u} ⟶ freeHammockDiagonal C X X where
 
 lemma freeHammockDiagonalUnit_augmentation :
     freeHammockDiagonalUnit C X ≫ freeHammockDiagonalAugmentation C X X =
-      colimitUnit C.weakEquivalences X := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit C.weakEquivalences X := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro p
   cases p
   change ((freeHammockAugmentation C X X).app n).app n
-      ((colimitUnit ((freeResolution C).obj n).weakEquivalences
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
         (freeResolutionObject C n X)).app n PUnit.unit) = _
   rw [freeHammockAugmentation_fixedColimitMap]
   exact Relative.fixedColimitMap_unit_point _ _ _
@@ -81,9 +81,9 @@ lemma freeHammockDiagonalUnit_comparison :
       ((Zigzag.Value.colimitValue ((freeResolution C).obj n).weakEquivalences.Q
         ((freeResolution C).obj n).weakEquivalences.Q_inverts
         (freeResolutionObject C n X) (freeResolutionObject C n X)).app n
-          ((colimitUnit ((freeResolution C).obj n).weakEquivalences
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
             (freeResolutionObject C n X)).app n PUnit.unit)) = 𝟙 _
-  rw [← arrowPoint_identity, Zigzag.Value.colimitValue_arrowPoint]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity, Zigzag.Value.colimitValue_arrowPoint]
   change eqToHom (freeResolutionObject_localized C n X).symm ≫
       ((freeResolution C).obj n).weakEquivalences.Q.map (𝟙 (freeResolutionObject C n X)) ≫
       eqToHom (freeResolutionObject_localized C n X) = 𝟙 _

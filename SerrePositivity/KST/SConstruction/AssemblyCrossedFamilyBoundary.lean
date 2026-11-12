@@ -37,7 +37,7 @@ lemma assemblyCrossedFamily_inverse_target (r : ℕ) {X Y Z : StableModel.{u}}
     (oneDirectionInverseMixedFromTarget r f ⊗ₘ 𝟙 (kanAssemblyMixedChoices r g)) ≫
         assemblyCrossedFamily r f g =
       boundaryAssemblyExtensionFamily r g ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Z)).right := by
   dsimp only [assemblyCrossedFamily, boundaryAssemblyExtensionFamily]
   rw [← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp,

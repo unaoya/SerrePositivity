@@ -20,10 +20,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 attribute [local instance] EInfinity.DGAlgebra.modelCategory
-  EInfinity.FrameHom.rightFrameHom_kanComplex
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 
 /-- 六辺の始点を、元の全標的提示へ同じ関手で制限する。 -/
-def nativeCellFrameInitialKanFunctor : InfinityPresentation R ⥤ KanObject.{u + 1} :=
+def nativeCellFrameInitialKanFunctor : InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} :=
   (ULiftHom.down ⋙ AsSmall.up) ⋙
     EInfinity.FrameHom.rightFrameHammockKanDiagram
       ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
@@ -31,16 +31,16 @@ def nativeCellFrameInitialKanFunctor : InfinityPresentation R ⥤ KanObject.{u +
 
 /-- 元の選択 right Hom から六辺の始点への同じ全自然な Ex∞ 単位。 -/
 def nativeCellFrameInitialUnit :
-    nativeCellChosenRightInfinityKanFunctor R A ⋙ kanObjectForget ⟶
-      nativeCellFrameInitialKanFunctor R A ⋙ kanObjectForget where
-  app B := SerrePositivity.KST.Comparison.exInfinityUnit.app
+    nativeCellChosenRightInfinityKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶
+      nativeCellFrameInitialKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget where
+  app B := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
     (((nativeCellChosenRightInfinityKanFunctor R A).obj B).obj)
-  naturality _ _ f := SerrePositivity.KST.Comparison.exInfinityUnit.naturality
+  naturality _ _ f := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality
     ((nativeCellChosenRightInfinityKanFunctor R A).map f)
 
 /-- 同じ全自然な単位の各成分は実 right Hom の Kan 性による同値。 -/
 lemma nativeCellFrameInitialUnit_isQCatEquivalence (B : InfinityPresentation R) :
-    IsQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
       (X := ((nativeCellChosenRightInfinityKanFunctor R A).obj B).obj)
       (Y := ((nativeCellFrameInitialKanFunctor R A).obj B).obj)
       ((nativeCellFrameInitialUnit R A).app B) := by
@@ -50,19 +50,19 @@ lemma nativeCellFrameInitialUnit_isQCatEquivalence (B : InfinityPresentation R) 
 
 /-- 六辺への接続は元の全提示上で一つの関手同型。 -/
 def nativeCellChosenRightFrameSourceIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (nativeModelInfinityPresentationIso R).inv ≫
         EInfinity.FrameHom.rightFrameHammockCoherentDiagram
           ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
           (EInfinity.DGAlgebra.rightFrameFamily R) 0) := by
-  exact kanDiagramFunctorIsoOfPointwise
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramFunctorIsoOfPointwise
     (F := ⟨nativeCellChosenRightInfinityKanFunctor R A, trivial⟩)
     (G := ⟨nativeCellFrameInitialKanFunctor R A, trivial⟩)
     (nativeCellFrameInitialUnit R A) (nativeCellFrameInitialUnit_isQCatEquivalence R A)
 
 /-- E2 の六辺の終端まで、元の全標的提示上で比較する。 -/
 def nativeCellChosenRightHammockIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (nativeModelInfinityPresentationIso R).inv ≫
         EInfinity.FrameHom.rightFrameHammockCoherentDiagram
           ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
@@ -73,7 +73,7 @@ def nativeCellChosenRightHammockIso :
 
 /-- 元の AW 全図式も、同じ元の提示上で六辺の終端まで比較する。 -/
 def multiplicativeCellMappingHammockCoherentIso :
-    FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (nativeModelInfinityPresentationIso R).inv ≫
         EInfinity.FrameHom.rightFrameHammockCoherentDiagram
           ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))

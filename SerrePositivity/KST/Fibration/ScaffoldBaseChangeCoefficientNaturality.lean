@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
-import SerrePositivity.InfinityCategories.Stable.Transport.ScaffoldBaseChangeCoefficientNaturality
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldBaseChangeCoefficientNaturality
+import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.ScaffoldBaseChangeCoefficientNaturality
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeLeftPoint
 public import SerrePositivity.KST.Fibration.ScaffoldBaseChangeRightPoint
 
@@ -17,61 +17,61 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 同じ単体切断の初頂点 fiber 点の、実 scaffold 復元射による像。 -/
 def scaffoldReconstructionSectionPoint {E B : SSet.{u}} [Quasicategory B]
-    (p : E ⟶ B) [LeftFibration p] (c : TransportSimplexCategory B)
-    (v : (relativeFunctorSpace p
-      ((transportSimplexDomainFunctor B).obj (Opposite.op c)).hom) _⦋0⦌) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Straightening.smallUnstraighteningPointedImage (leftStraighteningInfinityDiagram p)
-    ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))
-    ((vertexFiberMap p (smallLeftUnstraighteningProjection (leftStraighteningInfinityDiagram p))
+    (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p] (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory B)
+    (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace p
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor B).obj (Opposite.op c)).hom) _⦋0⦌) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallUnstraighteningPointedImage (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram p)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertexFiberMap p (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.smallLeftUnstraighteningProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram p))
       (scaffoldPointedReconstruction p) (scaffoldPointedReconstruction_projection p)
-      ((transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (nerveVertex c))).app
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap B).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))).app
         (Opposite.op ⦋0⦌) (firstVertexSectionFiberPoint p c v))
 
-variable {E B D : SSet.{u}} (p : E ⟶ B) [LeftFibration p]
+variable {E B D : SSet.{u}} (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration p]
   [Quasicategory B] (k : D ⟶ B) [Quasicategory D]
 
 /-- 元の大域底変換の指定成分を、両側の同じ実図式値で表示する。 -/
-def scaffoldBaseChangeCoefficientIso (c : TransportSimplexCategory D) :=
+def scaffoldBaseChangeCoefficientIso (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory D) :=
   eqToIso (congrArg HomotopyCategory.mk
-    (firstVertexDiagram_source_vertex p ((transportSimplexFunctor k).obj c))) ≪≫
+    (firstVertexDiagram_source_vertex p ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFunctor k).obj c))) ≪≫
   (eqToIso (congrArg HomotopyCategory.mk
-    (straighteningBaseChangeLeft_source_vertex k (leftFibrationObjectOf p) c))).symm ≪≫
-  straighteningGlobalBaseChangeValueIso k (leftFibrationObjectOf p) c ≪≫
+    (straighteningBaseChangeLeft_source_vertex k (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c))).symm ≪≫
+  straighteningGlobalBaseChangeValueIso k (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c ≪≫
   eqToIso (congrArg HomotopyCategory.mk
-    (straighteningBaseChangeRight_source_vertex k (leftFibrationObjectOf p) c)) ≪≫
+    (straighteningBaseChangeRight_source_vertex k (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c)) ≪≫
   (eqToIso (congrArg HomotopyCategory.mk
     (firstVertexDiagram_source_vertex (pullback.snd p k) c))).symm
 
 omit [Quasicategory B] [Quasicategory D] in
 /-- 表示変更に用いたのは端点の等式だけで、元の実図式の指定成分を保持する。 -/
 theorem scaffoldBaseChangeCoefficientIso_heq_diagramValue
-    (c : TransportSimplexCategory D) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory D) :
     HEq (scaffoldBaseChangeCoefficientIso p k c)
-      (VertexIso.map (leftStraighteningInfinityDiagram_baseChangeIso p k)
-        (evaluateFunctorAt (ULift.up ((transportSimplexFirstVertexMap D).app
-          (Opposite.op ⦋0⦌) (nerveVertex c))))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftStraighteningInfinityDiagram_baseChangeIso p k)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFirstVertexMap D).app
+          (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c))))) := by
   have h : HEq (scaffoldBaseChangeCoefficientIso p k c)
-      (straighteningGlobalBaseChangeValueIso k (leftFibrationObjectOf p) c) :=
-    _root_.SerrePositivity.InfinityCategories.Stable.Transport.endpointSpan_heq _ _ _ _ _
+      (straighteningGlobalBaseChangeValueIso k (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.leftFibrationObjectOf p) c) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.endpointSpan_heq _ _ _ _ _
   exact h.trans (leftStraighteningDiagramBaseChange_heq_globalValue k p c).symm
 
 /-- 同じ pullback 切断の第一射影から得る元の底の復元点は、
 元の大域底変換の同じ指定成分によって pullback 側の復元点へ送られる。 -/
-theorem scaffoldBaseChangeCoefficientIso_pointHom (c : TransportSimplexCategory D)
-    (v : (relativeFunctorSpace (pullback.snd p k)
-      ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint p
-      ((transportSimplexFunctor k).obj c)
-      (_root_.SerrePositivity.InfinityCategories.Stable.Transport.straighteningBaseChangeImageSectionPoint p k c
-        ((relativeFunctorBaseChangeForward p k
-          ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
+theorem scaffoldBaseChangeCoefficientIso_pointHom (c : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TransportSimplexCategory D)
+    (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorSpace (pullback.snd p k)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor D).obj (Opposite.op c)).hom) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint p
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexFunctor k).obj c)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.straighteningBaseChangeImageSectionPoint p k c
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeForward p k
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app
             (Opposite.op ⦋0⦌) v))) ≫
       (scaffoldBaseChangeCoefficientIso p k c).hom =
-    _root_.SerrePositivity.InfinityCategories.F1.Transport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint (pullback.snd p k) c v) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.cosliceFiberPointHom (scaffoldReconstructionSectionPoint (pullback.snd p k) c v) := by
   have hl := scaffoldBaseChangeLeftChart_pointHom p k c
-    ((relativeFunctorBaseChangeForward p k
-      ((transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app (Opposite.op ⦋0⦌) v)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.relativeFunctorBaseChangeForward p k
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.transportSimplexDomainFunctor D).obj (Opposite.op c)).hom).app (Opposite.op ⦋0⦌) v)
   have hr := scaffoldGlobalBaseChange_pullback_pointHom p k c v
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Transport.pointTriangle _ _ _ _ _ _ _ _ _ hl hr
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Transport.pointTriangle _ _ _ _ _ _ _ _ _ hl hr
 
 end SerrePositivity.KST.Fibration

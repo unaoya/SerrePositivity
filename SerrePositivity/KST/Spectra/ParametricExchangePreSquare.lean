@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.ParametricLoopExchangeFamily
 open LoopExchangePaths
 variable {S : PointedSimplicialSet.{u}} (I : ParametricLoopExchangeFamily S)
 variable {P A Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
-  (a : Y ⟶ PointedObject.basedHom S Z) (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (a : Y ⟶ PointedObject.basedHom S Z) (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (b : A ⟶ PointedObject.basedHom P (doubleLoop Y))
 
 /-- 元の同じ射影比較へ内部 Hom を施した実正方形。 -/
@@ -38,15 +38,15 @@ def exchangePreProjectionSquare :
       ((((I.underlying.interval Z).basedIhomMap P).pre
         (b ≫ PointedObject.basedHomMap P (doublePost a))).path) where
   h := (exchangeIhomProjectionSquare I a ha (P := P)).h ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b
       (PointedObject.basedHom P (doubleLoop (PointedObject.basedHom S Z)))).right
   h₀ := by
     rw [← Category.assoc, (exchangeIhomProjectionSquare I a ha (P := P)).h₀]
-    exact congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b _).right)
+    exact congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b _).right)
       ((LoopExchangeFamily.exchange I.underlying a ha).basedIhomMap_post_path P (doublePost a))
   h₁ := by
     rw [← Category.assoc, (exchangeIhomProjectionSquare I a ha (P := P)).h₁]
-    exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b _).right)
+    exact (congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b _).right)
       ((I.underlying.interval Z).basedIhomMap_pre_path_natural P (doublePost a))).trans
       (((I.underlying.interval Z).basedIhomMap P).pre_pre_path
         (PointedObject.basedHomMap P (doublePost a)) b)
@@ -75,7 +75,7 @@ lemma exchangePreProjectionSquare_start :
     (((LoopExchangeFamily.projectionSquare I.underlying a ha).h ≫
       (PointedMapping.ihomAction P (doubleLoop Y)
         (doubleLoop (PointedObject.basedHom S Z))).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b _).right) = _
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b _).right) = _
   rw [← Category.assoc, ← Category.assoc,
     LoopExchangeFamily.projectionSquare_start I.underlying,
     SSet.const_comp, PointedMapping.familyVertex_ihomAction,
@@ -90,7 +90,7 @@ lemma exchangePreProjectionSquare_finish :
     (((LoopExchangeFamily.projectionSquare I.underlying a ha).h ≫
       (PointedMapping.ihomAction P (doubleLoop Y)
         (doubleLoop (PointedObject.basedHom S Z))).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed b _).right) = _
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed b _).right) = _
   rw [← Category.assoc, ← Category.assoc,
     LoopExchangeFamily.projectionSquare_finish I.underlying,
     SSet.const_comp, PointedMapping.familyVertex_ihomAction,

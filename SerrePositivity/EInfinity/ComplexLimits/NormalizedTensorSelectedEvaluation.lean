@@ -15,8 +15,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -46,23 +46,23 @@ lemma normalizedTensorElementSelectedCochainAtMax_evaluation {n : ℕ}
 
 lemma normalizedTensorElementUniversalLinear_evaluation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
       (homPostcompose X
         ((normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n))))
       (normalizedTensorElementUniversalLinear A X Y c) =
-    toLinearSimplex ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c) := by
   rw [normalizedTensorElementPinchedMap_app]
-  exact (pinchedHomChainMapSimplex_linear _ _).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMapSimplex_linear _ _).symm
 
 lemma normalizedTensorElementSelectedCochainAtMax_evaluation_pinched {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
     (homPostcompose X ((normalizedTensorElementEvaluation A X Y).app (c.obj (J.max' hJ)))).f k
       (normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk) =
-    (toLinearSimplex
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex
       ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c)).val.component
         J k hJ hk := by
-  have h := congrArg (fun s : LinearSimplex A X Y n => s.val.component J k hJ hk)
+  have h := congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex A X Y n => s.val.component J k hJ hk)
     (normalizedTensorElementUniversalLinear_evaluation A X Y c)
   exact (normalizedTensorElementSelectedCochainAtMax_evaluation A X Y c J k hJ hk).trans h
 
@@ -73,7 +73,7 @@ lemma normalizedTensorElementSelectedCochainAtMax_evaluation_compose {n : ℕ}
     compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
       ((normalizedTensorElementEvaluation A X Y).app (c.obj (J.max' hJ))))).val
       (r • normalizedTensorElementSelectedCochainAtMax A X Y c J k hJ hk) (add_zero k) =
-    r • (toLinearSimplex
+    r • (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex
       ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c)).val.component
         J k hJ hk := by
   rw [complexPostcompose_graded]

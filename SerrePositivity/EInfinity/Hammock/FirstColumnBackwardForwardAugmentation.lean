@@ -17,12 +17,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory Opposite SimplicialLocalization
-variable {I : Type v} [Category I] (D : I ⥤ RelativeCategory.{u}) (C : RelativeCategory.{u})
+open CategoryTheory Opposite
+variable {I : Type v} [Category I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
   (p : (i : I) → C.category → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : C.category), (D.map θ).functor.obj (p i X) = p j X)
   (A : D ⟶ (Functor.const I).obj C) (ha : ∀ i X, (A.app i).functor.obj (p i X) = X)
-  (w : Word) (X Y : C.category)
+  (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 
 def backwardForwardAugmentation : backwardForwardDiagram D p hp w X Y ⟶
     (Functor.const I).obj (backwardForwardData C w X Y) where

@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
   Spectra
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "κ" => dgOdotMilnorCompletion R d
 local notation "hκ" => dgOdotMilnorCompletion_isIdempotentCompletion R d
 local instance : SimplicialCategory OmegaSpectrum.{u + 1} := OmegaSpectrum.simplicialCategory
@@ -51,7 +51,7 @@ variable {F : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}} (hF : IsPerfectLocal
 方針：具体的提示に局所化不変量を適用する。規約：K の局所化性は仮定しない。
 使われ方：実 Cat^perf 版の結論。 -/
 theorem dgOdotMilnorCompletedPerfect_isFiber :
-    IsFiberSequence (hF.fiberTriangle (dgOdotMilnorCompletedPerfectDiagram R d h)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hF.fiberTriangle (dgOdotMilnorCompletedPerfectDiagram R d h)) :=
   hF.fiberTriangle_isFiber _
 
 /-- 概要：同じ resolved 商の実完備化を終点とする実 LT 四角形。
@@ -65,7 +65,7 @@ def dgOdotMilnorCompletedLandTammeSquare :
 方針：具体的完備化で既存の定理を充足する。
 規約：元代数二脚との全比較は別に行う。使われ方：e② の実商入力の充足。 -/
 theorem dgOdotMilnorCompletedLandTamme_isPullback :
-    IsPullbackSquare (dgOdotMilnorCompletedLandTammeSquare R d h hF) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (dgOdotMilnorCompletedLandTammeSquare R d h hF) :=
   dgOdotMilnorLandTamme_isPullback R d h (κ) (hκ) hF
 
 /-- 概要：同じ二脚を持つ実 LT cospan。
@@ -78,14 +78,14 @@ def dgOdotMilnorCompletedLandTammeCospan : (horn 2 2 : SSet.{u + 2}) ⟶ Sp.{u +
 方針：具体的な c・hc を既存の実錐へ代入する。規約：頂点を置換しない。
 使われ方：LT の実極限表示。 -/
 def dgOdotMilnorCompletedLandTammeCone :
-    JoinCone (dgOdotMilnorCompletedLandTammeCospan R d h hF) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (dgOdotMilnorCompletedLandTammeCospan R d h hF) :=
   dgOdotMilnorLandTammeCone R d h (κ) (hκ) hF
 
 /-- 概要：同じ元頂点・二脚を持つ錐は ∞ 極限。
 方針：具体化した LT 引き戻しの実錐を使用する。規約：群ごとの主張に弱めない。
 使われ方：実 Cat^perf LT 結論。 -/
 theorem dgOdotMilnorCompletedLandTammeCone_isLimit :
-    IsLimitCone (dgOdotMilnorCompletedLandTammeCone R d h hF) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (dgOdotMilnorCompletedLandTammeCone R d h hF) :=
   dgOdotMilnorLandTammeCone_isLimit R d h (κ) (hκ) hF
 
 /-- 概要：極限錐の頂点は元の同じ小 Perf 始域値。
@@ -93,8 +93,8 @@ theorem dgOdotMilnorCompletedLandTammeCone_isLimit :
 使われ方：元代数の固定 ν 値との比較。 -/
 lemma dgOdotMilnorCompletedLandTammeCone_source :
     (dgOdotMilnorCompletedLandTammeCone R d h hF).vertex =
-      F.app (Opposite.op ⦋0⦌) (perfectStableVertex (dgGluingMilnorNativeDiagonalSource R d)
-        (dgGluingMilnorDiagonalSource_isIdempotentComplete R d)) :=
+      F.app (Opposite.op ⦋0⦌) (perfectStableVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorNativeDiagonalSource R d)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnorDiagonalSource_isIdempotentComplete R d)) :=
   dgOdotMilnorLandTammeCone_source R d h (κ) (hκ) hF
 
 end SerrePositivity.KST.SConstruction

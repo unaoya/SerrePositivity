@@ -18,7 +18,7 @@ universe u
 open CategoryTheory MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.FiberModel
 
@@ -32,34 +32,34 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
   [hp : ∀ n, Fibration (p.app n).right]
 
 def replacedConeEdge := SSet.Edge.ofTruncated
-  (X := sliceOver (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y))))
+  (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y))))
   (replacedConeComparison p)
 
-lemma replacedConeEdge_isInvertible : IsInvertibleEdge
-    (X := sliceOver (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y))))
+lemma replacedConeEdge_isInvertible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+    (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y))))
     (replacedConeEdge p).toTruncated := by
-  apply derived_rightFibration_reflects_invertibleEdge (sliceOverProjection _)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.derived_rightFibration_reflects_invertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _)
     (replacedConeComparison p)
-  exact (isInvertibleEdge_congr (replacedConeComparison_projection p)).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (replacedConeComparison_projection p)).mpr
     (comparison_isInvertible p hp)
 
 def replacedConeDiagramIso :
-    FunctorIso (Y := Sp.{u}) (replacedCone p).val (infinityCone p).val :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Y := Sp.{u}) (replacedCone p).val (infinityCone p).val :=
   SliceConeComparison.iso (X := Sp.{u}) (replacedConeEdge p) (replacedConeEdge_isInvertible p)
 
 lemma replacedConeDiagramIso_base :
-    Arrow.mk (homPre (joinInr Δ[0] _) (replacedConeDiagramIso p).hom) =
-      Arrow.mk (𝟙 (HomotopyCategory.mk (functorVertex
-        (strictCoherentDiagram (spectrumPullbackDiagram p (fromPoint Y)))))) :=
+    Arrow.mk (homPre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] _) (replacedConeDiagramIso p).hom) =
+      Arrow.mk (𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y)))))) :=
   SliceConeComparison.base_arrow (replacedConeEdge p)
 
 lemma replacedConeDiagramIso_apex :
-    Arrow.mk (functorHomEvaluate (X := Sp.{u})
-      (replacedConeDiagramIso p).hom (joinApexVertex _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u})
+      (replacedConeDiagramIso p).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _)) =
       Arrow.mk (SpectrumHo.hom (comparison p hp)) := by
-  change Arrow.mk (functorHomEvaluate (X := Sp.{u})
+  change Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u})
     (SliceConeComparison.hom (X := Sp.{u}) (replacedConeEdge p))
-    (joinApexVertex _)) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _)) = _
   rw [SliceConeComparison.apex_arrow (X := Sp.{u})]
   apply Truncated.HomotopyCategory.congr_arrowMk_homMk
   exact replacedConeComparison_projection p

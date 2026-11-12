@@ -23,11 +23,11 @@ local instance d3ReflectedCriterionSpectrumCategory : SimplicialCategory OmegaSp
 
 /-- 転置した実全図式比較の始点を、元の厳密な始点表示へ正規化する。 -/
 def commonChosenStageLoopReflectedSourceIso (n : ℕ) :
-    FunctorIso (commonChosenStageLoopedCanonicalFamily.{u} n ≫
-      loopDiagramEvaluation PointedKanInfinity 0 0)
-      (commonChosenStageCanonicalImageFamily n ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq ((commonChosenStageLoopReflectedComparison n).postcomp
-    (loopDiagramEvaluation PointedKanInfinity 0 0))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageLoopedCanonicalFamily.{u} n ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
+      (commonChosenStageCanonicalImageFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((commonChosenStageLoopReflectedComparison n).postcomp
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (by rw [Category.assoc, d3LoopDiagramTranspose_corner]) rfl
 
 lemma commonChosenStageLoopReflectedSourceIso_eq (n : ℕ) :
@@ -35,7 +35,7 @@ lemma commonChosenStageLoopReflectedSourceIso_eq (n : ℕ) :
     ((d3LoopDiagramReflection d3PointedKanLoopSection
       d3PointedKanLoopSection_target).precomp (commonChosenStageLoopedCanonicalFamily n)).symm ≪≫
       (commonChosenStageLoopImageComparison n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) :=
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
   commonChosenStageLoopReflectedComparison_source n
 
 /-- 転置済み模型の単位三角形は、同じ比較に実次段像の反転を保持する構造条件と同値。
@@ -43,7 +43,7 @@ lemma commonChosenStageLoopReflectedSourceIso_eq (n : ℕ) :
 lemma commonChosenStageRefinedSource_reflected_structure_iff (n : ℕ) :
     (commonChosenStageRefinedSourceNormalizedIso.{u} n ≪≫
       (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     commonProjectionStructureRefinedIso n ≪≫
       (commonChosenStageLoopedRefinedSourceIso n ≪≫ commonChosenStageImageReflection n)) ↔
     commonChosenStageLoopedCanonicalUnitIso.{u} n ≪≫
@@ -51,15 +51,15 @@ lemma commonChosenStageRefinedSource_reflected_structure_iff (n : ℕ) :
   let ρ := (d3LoopDiagramReflection d3PointedKanLoopSection
     d3PointedKanLoopSection_target).precomp (commonChosenStageLoopedCanonicalFamily.{u} n)
   have hρ : ρ ≪≫ ρ = Iso.refl _ := by
-    have h := congrArg (fun e ↦ FunctorIso.precomp e
+    have h := congrArg (fun e ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp e
       (commonChosenStageLoopedCanonicalFamily.{u} n))
       (d3LoopDiagramReflection_involution d3PointedKanLoopSection
         d3PointedKanLoopSection_target)
-    rw [F2.functorIso_precomp_trans] at h
-    have hr : (show FunctorIso (loopDiagramEvaluation PointedKanInfinity.{u} 0 0)
-        (loopDiagramEvaluation PointedKanInfinity 0 0) from Iso.refl _).precomp
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_trans] at h
+    have hr : (show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity.{u} 0 0)
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) from Iso.refl _).precomp
           (commonChosenStageLoopedCanonicalFamily n) = Iso.refl _ := by
-      rw [F2.functorIso_precomp_eq_mapIso]
+      rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_eq_mapIso]
       exact Functor.mapIso_refl _ _
     rw [hr] at h
     exact h
@@ -69,13 +69,13 @@ lemma commonChosenStageRefinedSource_reflected_structure_iff (n : ℕ) :
   have hd := d3LoopDiagramReflection_naturality d3PointedKanLoopSection
     d3PointedKanLoopSection_target (commonChosenStageLoopedCanonicalDiagramIso.{u} n)
   change (commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫ ρ =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫ ρ =
     commonChosenStageImageReflection n ≪≫
       (commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) at hd
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) at hd
   have ht : (commonChosenStageLoopedRefinedSourceIso.{u} n ≪≫ commonChosenStageImageReflection n) ≪≫
       (commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
       commonProjectionStructureLoopQIso n ≪≫
         (commonChosenStageLoopedCanonicalUnitIso n ≪≫ ρ) := by
     rw [Iso.trans_assoc, ← hd, ← Iso.trans_assoc,
@@ -83,14 +83,14 @@ lemma commonChosenStageRefinedSource_reflected_structure_iff (n : ℕ) :
   have h := d3Iso_pasting_coherence_iff
     (commonChosenStageRefinedSourceNormalizedIso.{u} n)
     ((commonChosenStageStructureDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonProjectionStructureRefinedIso n)
     (commonChosenStageLoopedRefinedSourceIso n ≪≫ commonChosenStageImageReflection n)
     (commonProjectionStructureLoopQIso n) (commonChosenStageLoopedCanonicalUnitIso n ≪≫ ρ)
     ((commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     ((commonChosenStageLoopImageComparison n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonChosenStageCanonicalImageUnitIso n)
     (commonChosenStageRefinedSourceNormalized_pasting n) ht
   rw [commonChosenStageLoopReflectedSourceIso_eq]

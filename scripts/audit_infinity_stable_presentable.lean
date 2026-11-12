@@ -1,8 +1,8 @@
-import SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
-import SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap
-import SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality
-import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact
-import SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
+import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.CofiberExactPostcomposition
+import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.ExactArrowMap
+import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.SuspensionExactNaturality
+import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.ArrowStableExact
+import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
@@ -11,13 +11,13 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition,
-    `SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap,
-    `SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality,
-    `SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact,
-    `SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed
+    `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.CofiberExactPostcomposition,
+    `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.ExactArrowMap,
+    `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.SuspensionExactNaturality,
+    `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.ArrowStableExact,
+    `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed
   ]
-  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition, `SerrePositivity.InfinityCategories.StablePresentable.Exact.ExactArrowMap, `SerrePositivity.InfinityCategories.StablePresentable.Exact.SuspensionExactNaturality, `SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.ArrowStableExact, `SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.SquareCosliceSeed]
+  let forbidModel : Array Name := #[`SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.CofiberExactPostcomposition, `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.ExactArrowMap, `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.SuspensionExactNaturality, `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.ArrowStableExact, `SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.SquareCosliceSeed]
   for mod in expected do
     unless env.header.modules.any (fun entry => entry.module == mod) do
       throwError "W2c: audit module not imported: {mod}"

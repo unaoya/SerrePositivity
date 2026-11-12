@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.GroupCompletion
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # モノイドの bar の Segal 座標
@@ -37,6 +38,7 @@ open scoped Simplicial
 規約：Segal 1974 Proposition 1.5 の Segal 写像の逆。
 使われ方：bar の各行の積座標。
 -/
+@[kerodon 04G0]
 def monoidWordSimplex (T : MonCat.{u}) : (n : ℕ) → (Fin n → T) → (nerve (SingleObj T)) _⦋n⦌
   | 0, _ => ComposableArrows.mk₀ (SingleObj.star T)
   | n + 1, f => (monoidWordSimplex T n (fun i => f i.succ)).precomp

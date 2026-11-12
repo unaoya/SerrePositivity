@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：三つの実辺の値比較と元の指定三角形同型を、一つの境界比較へ束ねる。

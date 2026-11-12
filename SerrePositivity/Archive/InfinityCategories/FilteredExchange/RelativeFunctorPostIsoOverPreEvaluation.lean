@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorPostIsoOverPre
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPre
 
 /-!
 概要：元の相対頂点比較から得た後合成の関手同型は、元の底上の前合成に対して自然。

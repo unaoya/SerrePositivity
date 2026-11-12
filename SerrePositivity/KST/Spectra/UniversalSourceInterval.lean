@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedBasedPathCalculus
 public import SerrePositivity.KST.Spectra.PointedRlpSection
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreePathSpace
 
 /-!
 概要：指定した源の一つの普遍区間を、全標的の全写像族へ同じ anodyne 制限から移す。
@@ -35,31 +35,31 @@ variable (I : UniversalSourceInterval.{u})
 /-- 同じ普遍的単位への制限は、全ての単射に対する RLP を持つ。 -/
 lemma universalRestriction_rlp (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
     (MorphismProperty.monomorphisms SSet.{u}).rlp
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp I.unit I.unit_anodyne Z
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z).right :=
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp I.unit I.unit_anodyne Z
 
 /-- 同じ普遍的入力の全族を Kan 置換へ延長する、実際の基点固定切断。 -/
 def extensionSection (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
     PointedObject.basedHom I.source Z ⟶ PointedObject.basedHom I.target Z :=
-  PointedMapping.sectionOfRlp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z)
+  PointedMapping.sectionOfRlp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z)
     (universalRestriction_rlp I Z)
 
 /-- 延長した全族は、元の普遍的単位への制限で厳密に戻る。 -/
 lemma extensionSection_condition (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    extensionSection I Z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z = 𝟙 _ :=
+    extensionSection I Z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z = 𝟙 _ :=
   PointedMapping.sectionOfRlp_condition _ _
 
 /-- 一つの普遍的区間から得た、全写像空間の二つの源作用を結ぶ実区間。 -/
 def interval (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
     PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom I.source Z))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z) := by
-  have hs : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z = extensionSection I Z ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (I.first ≫ I.unit) Z := by
-    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, ← Category.assoc,
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z) := by
+  have hs : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z = extensionSection I Z ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (I.first ≫ I.unit) Z := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, ← Category.assoc,
       extensionSection_condition, Category.id_comp]
-  have hr : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z = extensionSection I Z ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (I.second ≫ I.unit) Z := by
-    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, ← Category.assoc,
+  have hr : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z = extensionSection I Z ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (I.second ≫ I.unit) Z := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, ← Category.assoc,
       extensionSection_condition, Category.id_comp]
   exact ((I.path.basedPre Z).pre (extensionSection I Z)).changeEndpoints hs hr
 
@@ -71,19 +71,19 @@ lemma interval_path (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
 /-- 普遍的単位への制限は、標的への後合成に対して厳密に自然。 -/
 lemma universalRestriction_post {Z Z' : PointedSimplicialSet.{u}} (v : Z ⟶ Z') :
     PointedObject.basedHomMap I.target v ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z' =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z ≫ PointedObject.basedHomMap I.source v := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z' =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z ≫ PointedObject.basedHomMap I.source v := by
   have h := (MonoidalClosed.pre I.unit).naturality v
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap I.target v ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z' =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z ≫ PointedObject.basedHomMap I.source v at h
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z' =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z ≫ PointedObject.basedHomMap I.source v at h
   exact h
 
 /-- 二つの標的の延長切断の比較は、同じ制限を全区間で固定できる。 -/
 def extensionSectionNaturalityInterval {Z Z' : PointedSimplicialSet.{u}}
     [KanComplex Z.right] [KanComplex Z'.right] (v : Z ⟶ Z') :
-    PointedMapping.VerticalPath (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z')
+    PointedMapping.VerticalPath (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z')
       (extensionSection I Z ≫ PointedObject.basedHomMap I.target v)
       (PointedObject.basedHomMap I.source v ≫ extensionSection I Z') :=
   PointedMapping.sectionNaturalityInterval _ (universalRestriction_rlp I Z)

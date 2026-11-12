@@ -21,13 +21,13 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 二端点を潰した円の BF cotensor から BF path 模型への実際の制限。 -/
 def endpointLoopToPath (Y : OmegaSpectrum.{u}) : cotensor endpointCircle Y ⟶ basedPath Y :=
-  cotensorPre (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) Y
+  cotensorPre (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) Y
 
 /-- 元の path の列へ射影したときの厳密な比較式。 -/
 lemma endpointLoopToPath_comparison (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    (endpointLoopToPath Y).app n ≫ (cotensorProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y).app n =
+    (endpointLoopToPath Y).app n ≫ (cotensorProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y).app n =
       (cotensorProjection endpointCircle Y).app n ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u})
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u})
           (Y.level n).space := cotensorPre_comparison _ _ _
 
 /-- BF path 終点への合成は厳密に零となる。 -/

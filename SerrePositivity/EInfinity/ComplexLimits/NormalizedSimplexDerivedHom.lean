@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom
-public import SerrePositivity.InfinityCategories.DoldKanComparison.DoldKanIso
-public import SerrePositivity.InfinityCategories.Derived.InfinityCategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DoldKanIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.InfinityCategory
 
 /-!
 # 実正規化単体テンソル Hom と既存 D(R) の写像空間
@@ -22,18 +22,18 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
 open SerrePositivity.HomotopyFunctionComplex SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DoldKanComparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
-def normalizedSimplexDerivedHomIso (X Y : Semifree A) :
+def normalizedSimplexDerivedHomIso (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) :
     SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val) ≅
-        InfinityCategories.pinchedHom (X := derivedInfinityCategory A)
-          (DGNerve.Simplex.vertex X) (DGNerve.Simplex.vertex Y) := by
-  have e : (cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val ≅
-      doldKanHomSpace (R := A) (D := Semifree A) X Y :=
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val) ≅
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) := by
+  have e : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := A) (D := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) X Y :=
     normalizedSimplexTensorHomIso A X.val Y.val
-  exact SSet.uliftFunctor.{u + 1, u}.mapIso e ≪≫ doldKanHomPinchedIso X Y
+  exact SSet.uliftFunctor.{u + 1, u}.mapIso e ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso X Y
 
 end SerrePositivity.EInfinity.ComplexLimits

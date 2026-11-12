@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.FreeActionEndNaturality
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -59,7 +59,7 @@ lemma fromCochains_postCoefficient (s : SimplexTensorBoundary.diagram A ⟶
   intro i
   apply Family.ext
   intro n
-  change (weightedSectionsUncurry (s.app n ≫ weightedSectionsMap _ τ)).app i = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.app n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap _ τ)).app i = _
   rw [FreeActionFamily.sectionsUncurry_post]
   rfl
 
@@ -68,12 +68,12 @@ lemma totalizationEndHomEquiv_post (W : I ⥤ SSet.{u}) {H E : I ⥤ SSet.{u}} (
       (UnderlyingWeightedCochains.obj (discreteLevels W) H)) :
     totalizationEndHomEquiv W E A
         (s ≫ CosimplicialTotalization.map (UnderlyingWeightedCochains.map (discreteLevels W) τ)) =
-      totalizationEndHomEquiv W H A s ≫ weightedSectionsMap W τ := by
-  change weightedSectionsLift (diagramDiagonal (fromCochains
+      totalizationEndHomEquiv W H A s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap W τ := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (diagramDiagonal (fromCochains
       (CosimplicialTotalization.uncurry (s ≫ CosimplicialTotalization.map _)))) =
-    weightedSectionsLift (diagramDiagonal (fromCochains (CosimplicialTotalization.uncurry s))) ≫ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (diagramDiagonal (fromCochains (CosimplicialTotalization.uncurry s))) ≫ _
   rw [CosimplicialTotalization.uncurry_map, fromCochains_postCoefficient,
-    diagramDiagonal_postCoefficient, weightedSectionsLift_postcomp]
+    diagramDiagonal_postCoefficient, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_postcomp]
 
 /-- 概要：通常の Tot と完全な重みの end の密度の同型は係数の射に自然。
 方針：Hom の同値の係数への自然性を恒等射に適用する。
@@ -82,7 +82,7 @@ lemma totalizationEndHomEquiv_post (W : I ⥤ SSet.{u}) {H E : I ⥤ SSet.{u}} (
 lemma totalizationEndIso_natural (W : I ⥤ SSet.{u}) {H E : I ⥤ SSet.{u}} (τ : H ⟶ E) :
     CosimplicialTotalization.map (UnderlyingWeightedCochains.map (discreteLevels W) τ) ≫
         (totalizationEndIso W E).hom =
-      (totalizationEndIso W H).hom ≫ weightedSectionsMap W τ := by
+      (totalizationEndIso W H).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap W τ := by
   rw [← totalizationEndHomEquiv_apply, totalizationEndIso_hom]
   simpa only [Category.id_comp] using totalizationEndHomEquiv_post W τ (𝟙 _)
 

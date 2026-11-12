@@ -36,21 +36,21 @@ lemma d3ParameterPre_stage (η : D ⟶ E) (i : J) :
 
 /-- 段制限の始終点は、同じ内部 Hom 作用に厳密一致する。 -/
 lemma d3ParameterDiagram_stage_map (D : Jᵒᵖ ⥤ PointedSimplicialSet.{u}) (i : J) :
-    coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) i) ≫
-      coherentNerveMap (d3PointedKanParameterDiagram D) =
-    coherentNerveMap (d3PointedKanIhom (D.obj (Opposite.op i))) := by
-  rw [← coherentNerveMap_comp, d3PointedKanParameterDiagram_stage]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) i) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom (D.obj (Opposite.op i))) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, d3PointedKanParameterDiagram_stage]
 
 /-- 元の共同比較を段で評価した関手同型は、同じ単一パラメータ比較そのもの。 -/
 lemma d3ParameterPreFunctorIso_stage (η : D ≅ E) (i : J) :
-    F2.functorIsoOfEq ((d3ParameterPreFunctorIso η).precomp
-      (coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) i)))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((d3ParameterPreFunctorIso η).precomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) i)))
       (d3ParameterDiagram_stage_map E i) (d3ParameterDiagram_stage_map D i) =
     d3PointedKanPreFunctorIso (η.hom.app (Opposite.op i)) := by
   apply Iso.ext
   apply eq_of_heq
   apply HEq.trans (d3FunctorIsoOfEq_hom_heq _ _ _)
-  have hη : ∀ X, IsInvertibleEdge (coherentNerveEdge
+  have hη : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (StrictEnrichedTransformation.componentHom _ _ (d3ParameterPre η.hom) X)).toTruncated := by
     intro X
     rw [d3ParameterPre_component]

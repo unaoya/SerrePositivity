@@ -54,7 +54,7 @@ lemma kanAdjointRelativeTracedStageCorrectionInterval_path (n : ℕ) :
 /-- 段評価の同じ二単体を、内部 Hom の交換射だけで段射の三角形へ戻す。 -/
 def kanAdjointRelativeTracedStageTriangle (n : ℕ) :=
   kanAdjointRelativeTracedEvaluationTriangle X Y φ j n ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (X.level n).space
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (X.level n).space
       ((KanSequence.signedLoopTail Y.toKanSequence).level n).space).hom.right
 
 /-- 第一辺は、同じ元の段調整区間。 -/
@@ -84,7 +84,7 @@ lemma kanAdjointRelativeTracedStageTriangle_one (n : ℕ) :
 /-- 次段の同じ三角形を構造射へ制限した、正方形の下辺に指定する二単体。 -/
 def kanAdjointRelativeTracedSourceTriangle (n : ℕ) :=
   kanAdjointRelativeTracedStageTriangle X Y φ j (n + 1) ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level
         (n + 1)).space).right
 
@@ -93,7 +93,7 @@ def kanAdjointRelativeTracedTargetTriangle (n : ℕ) :=
   kanAdjointRelativeTracedStageTriangle X Y φ j n ≫
     (suspensionHom (X.level n).space
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level n).space).right ≫
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).right
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

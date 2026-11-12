@@ -25,10 +25,10 @@ theorem stageDifferential_exists_preimage_of_isZero
     (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
     (hH : IsZero ((NormalizedValueCochains.complex K
       (AddCommGrpCat.of (positiveAdditiveCoefficient Y n (r + 1)))).homology (n + 2)))
-    (z : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y (n + 1)).right (r + 1)
+    (z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y (n + 1)).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y (n + 1)).basepoint)
     (hz : UnbasedPointedMapping.stageDifferential K Y (n + 1) r z = 1) :
-    ∃ c : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 2)
+    ∃ c : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 2)
         (UnbasedPointedMapping.stageFiber K Y n).basepoint,
       UnbasedPointedMapping.stageDifferential K Y n (r + 1) c = z := by
   have hcoef : coefficientDifferential K Y (n + 1) r

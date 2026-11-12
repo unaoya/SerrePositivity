@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpecifiedEdgeTriangleBoundary
-public import SerrePositivity.InfinityCategories.Core.RelativeTerminalExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.RelativeTerminalExtension
 
 /-!
 概要：相対終対象へ向かう指定三辺を、元の底を固定する比較三角形に充填する。

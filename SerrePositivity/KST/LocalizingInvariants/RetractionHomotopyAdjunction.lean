@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.AdjunctionHomTriangles
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.PrecompositionHomotopy
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.AdjunctionHomTriangles
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.PrecompositionHomotopy
 
 /-!
 概要：厳密な引き戻し恒等と両三角の定値ホモトピーから実随伴を構成する。
@@ -25,21 +25,21 @@ variable {X Y : SSet.{u}} [Quasicategory X] [Quasicategory Y]
   (hF : H.h ≫ F = fst X (Δ[1] : SSet.{u}) ≫ F)
   (hG : (G ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst Y (Δ[1] : SSet.{u}) ≫ G)
 
-def retractionCounit : FunctorHom (G ≫ F) (𝟙 Y) :=
-  eqToHom (congrArg (fun f ↦ HomotopyCategory.mk (functorVertex f)) h)
+def retractionCounit : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (G ≫ F) (𝟙 Y) :=
+  eqToHom (congrArg (fun f ↦ HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) h)
 
-def retractionHomotopyUnit : FunctorHom (𝟙 X) (F ≫ G) :=
-  Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)
+def retractionHomotopyUnit : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (𝟙 X) (F ≫ G) :=
+  Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)
 
 include hF in
 lemma retractionHomotopy_leftTriangle :
-    unitLeftZigzag (retractionHomotopyUnit H) (retractionCounit h) =
-      𝟙 (HomotopyCategory.mk (functorVertex F)) := by
-  unfold unitLeftZigzag retractionHomotopyUnit
-  rw [← functorHomotopyPostcomp_hom]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitLeftZigzag (retractionHomotopyUnit H) (retractionCounit h) =
+      𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) := by
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitLeftZigzag retractionHomotopyUnit
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
   have he : (𝟙 X) ≫ F = (F ≫ G) ≫ F := by
     rw [Category.id_comp, Category.assoc, h, Category.comp_id]
-  rw [SerrePositivity.InfinityCategories.F1B.homotopyHom_eqToHom (functorHomotopyPostcomp H F) he (by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.homotopyHom_eqToHom (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H F) he (by
     change H.h ≫ F = fst X (Δ[1] : SSet.{u}) ≫ ((𝟙 X) ≫ F)
     simpa only [Category.id_comp] using hF)]
   simp only [retractionCounit, eqToHom_map, eqToHom_trans, eqToHom_refl]
@@ -49,21 +49,21 @@ include hG in
 lemma retractionHomotopy_rightTriangle :
     (hoFunctor.map ((pre G).app X)).toFunctor.map (retractionHomotopyUnit H) ≫
       (hoFunctor.map ((ihom Y).map G)).toFunctor.map (retractionCounit h) =
-        𝟙 (HomotopyCategory.mk (functorVertex G)) := by
+        𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G)) := by
   unfold retractionHomotopyUnit
-  rw [← functorHomotopyPrecomp_hom]
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp_hom]
   have he : G ≫ (𝟙 X) = G ≫ (F ≫ G) := by
     rw [Category.comp_id, ← Category.assoc, h, Category.id_comp]
-  rw [SerrePositivity.InfinityCategories.F1B.homotopyHom_eqToHom (functorHomotopyPrecomp H G) he (by
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.homotopyHom_eqToHom (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H G) he (by
     change (G ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst Y (Δ[1] : SSet.{u}) ≫ (G ≫ 𝟙 X)
     simpa only [Category.comp_id] using hG)]
   simp only [retractionCounit, eqToHom_map, eqToHom_trans, eqToHom_refl]
-  change 𝟙 (HomotopyCategory.mk (functorVertex (G ≫ 𝟙 X))) = _
+  change 𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (G ≫ 𝟙 X))) = _
   rfl
 
 /-- 指定された厳密な恒等とホモトピーを単位・余単位に持つ実随伴。 -/
-def adjunctionOfRetractionHomotopy : QCatAdjunction F G :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (retractionHomotopyUnit H) (retractionCounit h)
+def adjunctionOfRetractionHomotopy : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction F G :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.adjunctionOfFunctorHomTriangles (retractionHomotopyUnit H) (retractionCounit h)
     (retractionHomotopy_leftTriangle h H hF) (retractionHomotopy_rightTriangle h H hG)
 
 end SerrePositivity.KST.LocalizingInvariants

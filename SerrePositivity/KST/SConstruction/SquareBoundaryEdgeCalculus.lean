@@ -20,7 +20,7 @@ open scoped Simplicial
 /-- square の水平の raw な辺は、同じ境界射の Yoneda 表示。 -/
 lemma squareHorizontalEdge_yoneda {Z : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Z) (t : Fin 2) :
-    ((homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.tensor (SSet.Truncated.Edge.id
       (X := (truncation 2).obj (Δ[1] : SSet.{u}))
       (SSet.stdSimplex.obj₀Equiv.symm t))).map ((truncation 2).map Q)).edge =
       SSet.yonedaEquiv (lift (𝟙 (Δ[1] : SSet.{u}))
@@ -32,7 +32,7 @@ lemma squareHorizontalEdge_yoneda {Z : SSet.{u}}
 lemma squareVerticalEdge_yoneda {Z : SSet.{u}}
     (Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ Z) (t : Fin 2) :
     (((SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[1] : SSet.{u}))
-      (SSet.stdSimplex.obj₀Equiv.symm t)).tensor homotopyIntervalEdge).map
+      (SSet.stdSimplex.obj₀Equiv.symm t)).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).map
         ((truncation 2).map Q)).edge =
       SSet.yonedaEquiv (lift (SSet.const (SSet.stdSimplex.obj₀Equiv.symm t))
         (𝟙 (Δ[1] : SSet.{u})) ≫ Q) := by
@@ -44,12 +44,12 @@ def coherentSquareMappingTrianglesOfBoundary
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X₀ X₁ Y₀ Y₁ : C} (f : X₀ ⟶ X₁) (g : Y₀ ⟶ Y₁) (l : X₀ ⟶ Y₀) (r : X₁ ⟶ Y₁)
     (Q : (Δ[1] : SSet.{max u v}) ⊗ Δ[1] ⟶ SimplicialNerve C)
-    (hb : SSet.ι₀ ≫ Q = SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)
-    (ht : SSet.ι₁ ≫ Q = SSet.yonedaEquiv.symm (coherentNerveEdge g).edge)
+    (hb : SSet.ι₀ ≫ Q = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
+    (ht : SSet.ι₁ ≫ Q = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge)
     (hl : lift (SSet.const (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-      (𝟙 (Δ[1] : SSet.{max u v})) ≫ Q = SSet.yonedaEquiv.symm (coherentNerveEdge l).edge)
+      (𝟙 (Δ[1] : SSet.{max u v})) ≫ Q = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge l).edge)
     (hr : lift (SSet.const (SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-      (𝟙 (Δ[1] : SSet.{max u v})) ≫ Q = SSet.yonedaEquiv.symm (coherentNerveEdge r).edge) :
+      (𝟙 (Δ[1] : SSet.{max u v})) ≫ Q = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge r).edge) :
     CoherentSquareMappingTriangles f g l r := by
   refine coherentSquareMappingTrianglesOfEdges f g l r Q ?_ ?_ ?_ ?_
   · rw [squareHorizontalEdge_yoneda]

@@ -30,7 +30,7 @@ def cofibrantAlgebraDKHigherPiZeroEquiv :
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
   (cofibrantAlgebraDKMappingSpaceComponentsIso A
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)).toEquiv.trans
-      (UniverseLiftPiZero.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
 
 lemma cofibrantAlgebraDKHigherPiZeroEquiv_eq :
     cofibrantAlgebraDKHigherPiZeroEquiv A X Y = cofibrantAlgebraDKPiZeroEquiv A X Y := by

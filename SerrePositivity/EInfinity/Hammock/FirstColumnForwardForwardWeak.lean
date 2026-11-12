@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnForwardForwardEquivalence
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
 /-!
@@ -18,10 +18,10 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (w : Word) (X Y : C)
+  (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C)
 lemma forwardForwardEquivalence_functor :
-    (forwardForwardEquivalence W w X Y).functor = forwardForwardFunctor W w X Y := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardEquivalence W w X Y).functor = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor W w X Y := rfl
 lemma forwardForwardFunctor_weak :
-    IsWeakHomotopyEquivalence (nerveMap (forwardForwardFunctor W w X Y)) :=
-  nerveMap_equivalence_isWeakHomotopyEquivalence (forwardForwardEquivalence W w X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor W w X Y)) :=
+  nerveMap_equivalence_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardEquivalence W w X Y)
 end SerrePositivity.EInfinity.Hammock.FirstColumn

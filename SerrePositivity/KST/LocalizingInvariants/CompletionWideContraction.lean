@@ -18,8 +18,8 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
-  (f : C ⟶ D) [IsExactFunctor f] (h : F2.Idempotent.IsIdempotentCompletion f)
+variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
+  (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
 
 /-- 概要：選んだ全収縮の prism の全辺は、元の本質像の分母である。
 方針：周囲の全収縮の水平・垂直・斜辺を検査し、全単体を部分複体へ持ち上げる。
@@ -28,7 +28,7 @@ variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsSt
 lemma completionAmbientContraction_edges
     (s : ((completionCofiberWide f : SSet.{u}) ⊗ (Δ[1] : SSet.{u})) _⦋1⦌) :
     (completionAmbientContraction f h).h.app _ s ∈
-      cofiberLocalizingEdges (completionEssentialImage f) :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f) :=
   completionPrism_edges f h (completionAmbientContraction f h).h
     (completionAmbientContraction_horizontal f h)
     (completionAmbientContraction_vertical f h) s
@@ -44,7 +44,7 @@ lemma completionAmbientContraction_range :
   intro θ
   have hh := (completionAmbientContraction f h).h.naturality_apply θ.op t
   exact Eq.mp (congrArg (fun d => d ∈
-    cofiberLocalizingEdges (completionEssentialImage f)) hh)
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f)) hh)
     (completionAmbientContraction_edges f h _)
 
 /-- 概要：元の wide 部分複体内の全成分収縮を表す、一つの実 prism。

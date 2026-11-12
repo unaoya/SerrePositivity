@@ -27,7 +27,7 @@ lemma presentedPerfectDGOneDirectionKanEnrichedFunctor_family_inclusion (r : ℕ
       PointedObject.basedHomι
         ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C).obj
         ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj D).obj) ≫
-      coaugmentedClosedFamilyMap Comparison.exInfinity Comparison.exInfinityUnit
+      coaugmentedClosedFamilyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C).obj.right
         ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj D).obj.right :=
   exInfinityPointedFamily_inclusion

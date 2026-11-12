@@ -27,14 +27,14 @@ set_option backward.isDefEq.respectTransparency.types false
 def stageFiberLoopClassEquiv (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ) :
     LoopMappingClasses (cellCofiber K (n + 1)) Y ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
         (UnbasedPointedMapping.stageFiber K Y n).basepoint := by
   let e : (PointedObject.basedHom (cellCofiber K (n + 1)) Y).right ≅
       (UnbasedPointedMapping.stageFiber K Y n).right :=
     PointedSimplicialSet.forget.mapIso (stageFiberCellIso K Y n)
   exact (LoopMappingClasses.groupEquiv (cellCofiber K (n + 1)) Y).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 e
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (stageFiberCellIso K Y n).hom))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 e
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (stageFiberCellIso K Y n).hom))
 
 /-- 概要：fiber の基本群の既存係数は loop 値の成分係数から同じ符号で得られる。
 方針：両方を同一のセルへの制限へ戻し、源の自然性と球面の基本段の公式を使う。
@@ -46,8 +46,8 @@ theorem stageFiberCoefficientEquiv_loopClass (K : SSet.{u}) (Y : PointedSimplici
     stageFiberCoefficientEquiv K Y n 0 (stageFiberLoopClassEquiv K Y n a) s =
       CirclePower.positiveHomotopyEquiv Y n
         (SimplexCell.componentEquiv (PointedObject.basedHom CirclePower.space.{u} Y) n
-          (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-            (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s))
+          (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+            (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s))
             (PointedObject.basedHom CirclePower.space Y)).right a)) := by
   change stageFiberCoefficientEquiv K Y n 0
     (pointedGroupMap 0 (stageFiberCellIso K Y n).hom
@@ -56,12 +56,12 @@ theorem stageFiberCoefficientEquiv_loopClass (K : SSet.{u}) (Y : PointedSimplici
     ← pointedGroupMap_comp 0 (stageFiberCellIso K Y n).hom (stageFiberCellIso K Y n).inv,
     Iso.hom_inv_id, pointedGroupMap_id]
   have h := LoopMappingClasses.classEquiv_pre
-    (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) Y a
+    (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) Y a
   change SimplexCell.positiveHomotopyEquiv Y n 0
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) Y).right
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+        (cellSphereInclusion K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) Y).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
       (LoopMappingClasses.classEquiv (cellCofiber K (n + 1)) Y a)) = _
   rw [← h]
   exact SimplexCell.positiveHomotopyEquiv_zero_loopClasses Y n _
@@ -74,7 +74,7 @@ def stageFiberLoopComponentEquiv (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ) :
     π₀ (UnbasedPointedMapping.stageFiber K
       (PointedObject.basedHom CirclePower.space.{u} Y) n).right ≃
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
           (UnbasedPointedMapping.stageFiber K Y n).basepoint :=
   (π₀Functor.mapIso (PointedSimplicialSet.forget.mapIso
     (stageFiberCellIso K (PointedObject.basedHom CirclePower.space.{u} Y) n).symm)).toEquiv.trans

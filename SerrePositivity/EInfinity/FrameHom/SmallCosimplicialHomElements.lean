@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Opposite
 
 namespace SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements
-open SerrePositivity.HomotopyFunctionComplex
+
 
 variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (V : C)
 
@@ -30,7 +30,7 @@ abbrev smallDiagram : AsSmall.{max w u v} SimplexCategory ⥤ AsSmall.{max w u v
 
 /-- 元の単体の同じ次数と射を持ち上げて、小さい comma 対象に送る。 -/
 def smallToComma :
-    AsSmall.{max w u v} ((((cosimplicialHom A).obj V).Elements)ᵒᵖ) ⥤
+    AsSmall.{max w u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ) ⥤
       CostructuredArrow (smallDiagram.{u, v, w} A) (AsSmall.up.obj V) where
   obj s := CostructuredArrow.mk
     (Y := AsSmall.up.obj (AsSmall.down.obj s).unop.obj.unop)
@@ -45,8 +45,8 @@ def smallToComma :
 /-- 同じ小さい comma 対象と作用素を down して元の全単体へ戻す。 -/
 def smallFromComma :
     CostructuredArrow (smallDiagram.{u, v, w} A) (AsSmall.up.obj V) ⥤
-      AsSmall.{max w u v} ((((cosimplicialHom A).obj V).Elements)ᵒᵖ) where
-  obj s := AsSmall.up.obj (op (((cosimplicialHom A).obj V).elementsMk
+      AsSmall.{max w u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ) where
+  obj s := AsSmall.up.obj (op (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).elementsMk
     (op (AsSmall.down.obj s.left)) s.hom.down))
   map f := AsSmall.up.map ((Functor.Elements.homMk f.left.down.op (by
     exact congrArg ULift.down (CostructuredArrow.w f))).op)
@@ -63,7 +63,7 @@ lemma smallFromComma_smallToComma :
 
 /-- 同じ元の単体と射を保存する小圏の明示的な同値。 -/
 def smallEquivalence :
-    AsSmall.{max w u v} ((((cosimplicialHom A).obj V).Elements)ᵒᵖ) ≌
+    AsSmall.{max w u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ) ≌
       CostructuredArrow (smallDiagram.{u, v, w} A) (AsSmall.up.obj V) :=
   CategoryTheory.Equivalence.mk (smallToComma A V) (smallFromComma A V)
     (eqToIso (smallToComma_smallFromComma A V).symm)
@@ -71,9 +71,9 @@ def smallEquivalence :
 
 /-- 元の右対象の射で移送する、反対要素圏の同じ小さい関手。 -/
 def smallElementsMap {V W : C} (f : V ⟶ W) :
-    AsSmall.{max w u v} ((((cosimplicialHom A).obj V).Elements)ᵒᵖ) ⥤
-      AsSmall.{max w u v} ((((cosimplicialHom A).obj W).Elements)ᵒᵖ) :=
-  AsSmall.down ⋙ ((cosimplicialHom A).map f).mapElements.op ⋙ AsSmall.up
+    AsSmall.{max w u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ) ⥤
+      AsSmall.{max w u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj W).Elements)ᵒᵖ) :=
+  AsSmall.down ⋙ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f).mapElements.op ⋙ AsSmall.up
 
 /-- 同じ小さい比較も、元の右対象の射への後合成に厳密に自然。 -/
 lemma smallToComma_naturality {V W : C} (f : V ⟶ W) :

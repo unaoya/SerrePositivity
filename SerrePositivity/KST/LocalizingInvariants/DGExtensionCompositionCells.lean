@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D E T : Type v)
   [DGCategory R D] [Small.{u} D] [DGCategory R E] [Small.{u} E]
@@ -41,7 +41,7 @@ lemma dgExtensionCompositionCounit_app (M : RightModule R T) :
   change compose R (closedHomEquiv R (RightModule R T) _ _ b).val
     (((dgModuleExtension R E T G).map _ _).f 0
       (closedHomEquiv R (RightModule R E) _ _ a).val) (zero_add 0) = _
-  have he := dgFunctor_mapClosedCycle (dgModuleExtension R E T G) a
+  have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctor_mapClosedCycle (dgModuleExtension R E T G) a
   exact (congrArg (fun t => compose R (closedHomEquiv R (RightModule R T) _ _ b).val
     t (zero_add 0)) he).trans (dgClosedCycle_comp R (RightModule R T) _ _)
 

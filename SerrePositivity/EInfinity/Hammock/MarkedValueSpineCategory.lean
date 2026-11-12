@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
@@ -32,7 +32,7 @@ def ValueObjects (C : Type u) : Type u := Paths C
   assoc := ValueSpine.compose_assoc
 
 def valueMarkedFunctor : letI := valueCategory W
-    Quiver.FreeGroupoid (MarkedGenerators.quiver W) ⥤ ValueObjects C := by
+    Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) ⥤ ValueObjects C := by
   letI := valueCategory W
   exact
     { obj X := X.as
@@ -40,7 +40,7 @@ def valueMarkedFunctor : letI := valueCategory W
       map_id _ := rfl
       map_comp _ _ := rfl }
 
-lemma valueMarkedFunctor_map_isIso {X Y : Quiver.FreeGroupoid (MarkedGenerators.quiver W)}
+lemma valueMarkedFunctor_map_isIso {X Y : Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)}
     (p : X ⟶ Y) : letI := valueCategory W
       IsIso ((valueMarkedFunctor W).map p) := by
   let := valueCategory W

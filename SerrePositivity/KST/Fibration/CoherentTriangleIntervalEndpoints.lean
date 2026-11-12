@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleControlledTriangleInput
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval
 
 /-!
 概要：元の K-B 二胞体の直接 path・合成 path を、F1 の同じ区間座標へ厳密に戻す。
@@ -23,14 +23,14 @@ namespace SerrePositivity.KST.Fibration
 規約：元の直接 path 自身への等号を保持する。
 使われ方：指定境界の零側を元の固定直接端へ照合する。 -/
 theorem coherentTriangleInterval_first :
-    triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         ComposableArrows.mk₀ coherentTriangleDirectPath.{u} := by
   apply CategoryTheory.Functor.ext (fun i => ?_)
-  change trianglePathFromInterval (ULift.up (0 : Fin 2)) = coherentTriangleDirectPath
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval (ULift.up (0 : Fin 2)) = coherentTriangleDirectPath
   apply SimplicialThickening.Path.ext
   ext ⟨a⟩
-  fin_cases a <;> simp [trianglePathFromInterval, coherentTriangleDirectPath, coherentOnePath] <;>
+  fin_cases a <;> simp [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval, coherentTriangleDirectPath, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath] <;>
     decide
 
 /-- 概要：区間終点は元の所有する二短辺の合成 path を厳密回収する。
@@ -38,10 +38,10 @@ theorem coherentTriangleInterval_first :
 規約：元の二短辺の合成自身を保持する。
 使われ方：指定境界の一側を元の実合成端へ照合する。 -/
 theorem coherentTriangleInterval_last :
-    triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
         ComposableArrows.mk₀ coherentTriangleFullPath.{u} := by
-  rw [triangleNativePathIntervalIso_inv_last, coherentTriangleFullPath_eq_univ]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso_inv_last, coherentTriangleFullPath_eq_univ]
   rfl
 
 /-- 概要：宇宙を上げても区間始点は同じ元の直接 path。
@@ -49,10 +49,10 @@ theorem coherentTriangleInterval_last :
 規約：全 path の座標を保持する。
 使われ方：実読出しと同じ宇宙の二端点境界への代入。 -/
 theorem coherentTriangleInterval_up_first :
-    uliftTriangleNativePathIntervalIso.{u, u + 1}.inv.app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}) := by
-  change ULift.up (triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+  change ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = _
   rw [coherentTriangleInterval_first]
 

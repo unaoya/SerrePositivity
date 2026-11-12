@@ -12,20 +12,20 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]
   (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
   (Q : DGFunctor R (RightModule R D) (RightModule R E))
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FQ" => DGFunctor.comp F Q
 local notation "GQ" => DGFunctor.comp G Q
 local notation "CQ" => DGFunctor.comp (CF) Q
-local notation "ηQ" => dgStrictNatTransPostcomp η Q
+local notation "ηQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η Q
 local notation "ν" => dgModuleNaturalConeInr R D F G η
-local notation "νQ" => dgStrictNatTransPostcomp (ν) Q
+local notation "νQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) Q
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "s" => dgModuleNaturalConeImageInput R E D F G η Q
 
@@ -38,11 +38,11 @@ local notation "ιQ" => dgModuleNaturalConeInr R E (FQ) (GQ) (ηQ)
 方針：元 descent の包含式を閉成分の外延性へ渡す。
 規約：全 Hom を保持する等号。使われ方：指定包含二単体の realization 比較。 -/
 lemma dgModuleNaturalConeImage_inr :
-    dgStrictNatTransComp (ιQ) (θ) = (νQ) := by
-  apply dgStrictNatTrans_ext
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιQ) (θ) = (νQ) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTrans_ext
   intro x
   apply (closedHomEquiv R (RightModule R E) ((GQ).obj x) ((CQ).obj x)).symm.injective
-  change dgModuleNaturalConeArrow R E (GQ) (CQ) (dgStrictNatTransComp (ιQ) (θ)) x =
+  change dgModuleNaturalConeArrow R E (GQ) (CQ) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιQ) (θ)) x =
     dgModuleNaturalConeArrow R E (GQ) (CQ) (νQ) x
   rw [dgModuleNaturalConeArrow_comp, dgModuleNaturalConeInr_arrow]
   exact dgModuleNaturalConeDesc_inr R E (FQ) (GQ) (CQ) (ηQ) (νQ) (s)

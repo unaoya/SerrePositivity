@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Core.EquivalencePath
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.ArrowPostcompositionSquare
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.ArrowPostcompositionSquare
 
 /-!
 概要：区間図式を指定した終点の辺に沿って、始点を固定した区間図式の辺へ拡張する。
@@ -43,37 +43,37 @@ lemma exists_intervalPostcompositionFamily {X : SSet.{u}} [Quasicategory X]
     (f b : (Δ[1] : SSet.{u}) ⟶ X)
     (h : stdSimplex.δ (1 : Fin 2) ≫ b = stdSimplex.δ (0 : Fin 2) ≫ f) :
     ∃ R : (Δ[1] : SSet.{u}) ⟶ (ihom (Δ[1] : SSet.{u})).obj X,
-      stdSimplex.δ (1 : Fin 2) ≫ R = SSet.const (functorVertex f) ∧
-      R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      stdSimplex.δ (1 : Fin 2) ≫ R = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) ∧
+      R ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         SSet.const (f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) ∧
-      R ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = b := by
+      R ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = b := by
   have hb : X.δ 1 (SSet.yonedaEquiv b) = X.δ 0 (SSet.yonedaEquiv f) := by
     rw [intervalMap_source, intervalMap_target]
     have hh := congrArg (fun k : (Δ[0] : SSet.{u}) ⟶ X =>
       k.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) h
     exact hh
-  let e := edgeOfSimplex (SSet.yonedaEquiv f)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (SSet.yonedaEquiv f)
   let g : Truncated.Edge (X := (truncation 2).obj X) (X.δ 0 e.edge)
       (X.δ 0 (SSet.yonedaEquiv b)) :=
     { edge := SSet.yonedaEquiv b
       src_eq := hb
       tgt_eq := rfl }
-  obtain ⟨H, hH₀, hHs, hHt⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.exists_arrowPostcompositionSquare e g
+  obtain ⟨H, hH₀, hHs, hHt⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.exists_arrowPostcompositionSquare e g
   have hH₀' : SSet.ι₀ ≫ H = f := by
     exact hH₀.trans (SSet.yonedaEquiv.symm_apply_apply f)
-  have hHt' : prismEndpoint 1 Δ[1] ≫ H = b := by
+  have hHt' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 Δ[1] ≫ H = b := by
     exact hHt.trans (SSet.yonedaEquiv.symm_apply_apply b)
   refine ⟨curry H, ?_, ?_, ?_⟩
   · apply SSet.yonedaEquiv.injective
     change ((ihom (Δ[1] : SSet.{u})).obj X).δ 1 (SSet.yonedaEquiv (curry H)) =
-      PinchedHom.constant (functorVertex f) 0
-    rw [pinchedConstant_zero, ← functorVertex_uncurry_zero, Equiv.symm_apply_apply,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) 0
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_uncurry_zero, Equiv.symm_apply_apply,
       uncurry_curry, hH₀']
-  · rw [curry_evaluateFunctorAt_interval, hHs]
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, hHs]
     apply congrArg SSet.const
     change X.δ 1 (SSet.yonedaEquiv f) =
       f.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
     exact intervalMap_source f
-  · rw [curry_evaluateFunctorAt_interval, hHt']
+  · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, hHt']
 
 end SerrePositivity.KST.LocalizingInvariants

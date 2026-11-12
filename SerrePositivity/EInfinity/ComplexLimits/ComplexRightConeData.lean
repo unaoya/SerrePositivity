@@ -13,37 +13,37 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
-def complexRightConeObj {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A)
+def complexRightConeObj {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (X : Complex A)
     (i : Fin (n + 2)) : Complex A :=
   if i = Fin.last (n + 1) then X else s.obj ((Fin.last n).predAboveOrderHom i)
 
-lemma complexRightConeObj_last {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A) :
+lemma complexRightConeObj_last {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (X : Complex A) :
     complexRightConeObj A s X (Fin.last (n + 1)) = X := by
   simp only [complexRightConeObj, ite_true]
 
-lemma complexRightConeObj_ne_last {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A)
+lemma complexRightConeObj_ne_last {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (X : Complex A)
     (i : Fin (n + 2)) (hi : i ≠ Fin.last (n + 1)) :
     complexRightConeObj A s X i = s.obj ((Fin.last n).predAboveOrderHom i) := by
   simp only [complexRightConeObj, ite_eq_right hi]
 
-lemma complexRightConeObj_castSucc {n : ℕ} (s : Simplex A (Complex A) n) (X : Complex A)
+lemma complexRightConeObj_castSucc {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (X : Complex A)
     (i : Fin (n + 1)) : complexRightConeObj A s X i.castSucc = s.obj i := by
   rw [complexRightConeObj_ne_last A s X _ (ne_of_lt (Fin.castSucc_lt_last i))]
   congr 1
   simp
 
-def complexRightConeData {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
-    (η : ComplexSimplexAugmentation A s X) : SimplexData A (Complex A) (n + 1) where
+def complexRightConeData {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (Complex A) (n + 1) where
   obj := complexRightConeObj A s X
   hom I a b k hI ha hb hk := by
-    have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact PinchedHom.min_ne_last I hI
+    have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.min_ne_last I hI
     by_cases hbl : b = Fin.last (n + 1)
     · exact cast (by rw [complexRightConeObj_ne_last A s X a han, hbl,
           complexRightConeObj_last]; rfl)
-        (closedNerveHom ((complexToClosed A).map (η.app ((Fin.last n).predAboveOrderHom a))) k)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map (η.app ((Fin.last n).predAboveOrderHom a))) k)
     · exact cast (by rw [complexRightConeObj_ne_last A s X a han,
           complexRightConeObj_ne_last A s X b hbl]; rfl)
         ((s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).hom I a b k hI ha hb hk)

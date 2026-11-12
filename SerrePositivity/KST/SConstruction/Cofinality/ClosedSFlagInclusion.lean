@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：S 後合成後の元の二重包含の回収。 -/
 lemma completionClosedFlagStableIso_hom_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     (completionClosedFlagStableIso r ι f hf n).hom ≫
       completionRelativeFlagAmbientMap r ι f hf n =
         closedStableInclusion (Fibration.Relative.closedFlagStablePredicate
@@ -38,7 +38,7 @@ lemma completionClosedFlagStableIso_hom_inclusion (r : ℕ)
 使われ方：供給側の面・退化に対する自然性。 -/
 lemma completionClosedSFlagIso_doubleInclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (completionClosedSFlagIso r ι f hf m n).hom ≫
         (completionRelativeFlagAmbientMap (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) f hf n).val ≫
           (ihom (stdSimplex.obj n)).map
@@ -48,7 +48,7 @@ lemma completionClosedSFlagIso_doubleInclusion (r : ℕ)
           (ihom (arNerve m)).map (closedStableInclusion
             (Fibration.Relative.closedFlagStablePredicate
               (completionImageClosedPredicate r ι f hf) n)).val ≫
-                (internalHomSwapIso (arNerve m) (stdSimplex.obj n)
+                (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n)
                   (((multiSEndofunctor r).obj ι).obj Y).carrier).hom := by
   let e := completionClosedFlagStableIso r ι f hf n
   let H := ((sEndofunctor m).map e.hom).val
@@ -60,7 +60,7 @@ lemma completionClosedSFlagIso_doubleInclusion (r : ℕ)
   let A := (gappedSubcomplex m (Fibration.Relative.closedFlagModel
     (completionImageClosedPredicate r ι f hf) n).carrier).ι
   let B := (gappedSubcomplex m (completionRelativeFlagStableModel r ι f hf n).carrier).ι
-  let S := (internalHomSwapIso (arNerve m) (stdSimplex.obj n)
+  let S := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n)
     (((multiSEndofunctor r).obj ι).obj Y).carrier).hom
   have he : e.hom.val ≫ I = (closedStableInclusion
       (Fibration.Relative.closedFlagStablePredicate

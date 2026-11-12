@@ -24,14 +24,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n r : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
+    (n r : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
       (PointedSimplicialSet.basepoint (PointedObject.basedHom (sphere.{u} (n + 1)) Y))) :
     positiveHomotopyEquiv Y n r a = SphereSimplex.positiveHomotopyEquiv Y n r
       (pointedGroupMap
         (X := PointedObject.basedHom (sphere.{u} (n + 1)) Y)
         (Y := PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y) r
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y) a) := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Y) a) := by
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   rfl
 
 /-- 概要：セルの球面の次数移動は点つき係数射と可換。
@@ -40,7 +40,7 @@ lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y
 使われ方：Goerss–Jardine I §7、VIII §1。セルの群の係数自然性。 -/
 theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right r
       (PointedSimplicialSet.basepoint (PointedObject.basedHom (sphere.{u} (n + 1)) Y))) :
     positiveHomotopyEquiv Z n r (pointedGroupMap
       (X := PointedObject.basedHom (sphere.{u} (n + 1)) Y)
@@ -48,10 +48,10 @@ theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
         (PointedObject.basedHomMap (sphere.{u} (n + 1)) (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1 + r) p (positiveHomotopyEquiv Y n r a) := by
   have h := (MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).naturality p
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap (sphere.{u} (n + 1)) (Y := Y) (Z := Z) p ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Z =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (sphereIso.{u} (n + 1)).inv Y ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Z =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (sphereIso.{u} (n + 1)).inv Y ≫
       PointedObject.basedHomMap (PointedSimplicialSet.sphere.{u} (n + 1))
         (Y := Y) (Z := Z) p at h
   have hg := congrArg (fun f ↦ pointedGroupMap r f a) h

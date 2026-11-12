@@ -26,7 +26,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 
 open CategoryTheory Limits HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel.WeightedCones
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
@@ -54,26 +54,26 @@ lemma sourceRightConeComparisonIso_source {Y Z : (Complex A)} (f : Y ⟶ Z)
   let R := F ⋙ rightSimplicialFrameFamily A
   let b := Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
   have hc (X : (Complex A)) : IsCofibrant (P.obj X) := framedLimitProbe_cofibrant A X
-  let l (X : (Complex A)) := leftDiagramComparison K (B X) F R b
-  let r (X : (Complex A)) := rightDiagramComparison K (B X) (a X) R
-  have hleft X := leftDiagram_kanComplex K (B X) (q.cofibrant _)
+  let l (X : (Complex A)) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison K (B X) F R b
+  let r (X : (Complex A)) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K (B X) (a X) R
+  have hleft X := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K (B X) (q.cofibrant _)
     (q.atObject _).homotopicallyConstant F (fun k =>
       BarrattEccles.CarrierDiagram.complex_isFibrant A (F.obj k))
-  have hright X := rightDiagram_kanComplex K (P.obj X) R
+  have hright X := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagram_kanComplex K (P.obj X) R
     (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
     (fun k _ _ g => rightSimplicialFrame_homotopicallyConstant A (F.obj k) g)
-  have hl X := leftDiagramComparison_isIso K (B X) (q.cofibrant _) F R b
+  have hl X := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison_isIso K (B X) (q.cofibrant _) F R b
     (fun k => BarrattEccles.CarrierDiagram.complex_isFibrant A (F.obj k)) (fun k n =>
       rightSimplicialFrame_fibrant A (F.obj k) n)
     (fun k n => rightSimplicialFrameAugmentation_quasiIso A (F.obj k) n)
-  have hr X := rightDiagramComparison_isIso K (B X) (q.cofibrant _) (a X)
+  have hr X := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso K (B X) (q.cofibrant _) (a X)
     (q.atObject _).augmentation_weakEquivalence R
     (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
   let T := coneSpace K (HomotopyWeight.weight K)
   let e X := HomotopyWeight.kanConeComparisonIso K (HomotopyWeight.weight K)
     (HomotopyWeight.weight_cofibrant K) L hL (l X) (r X) (hleft X) (hright X) (hl X) (hr X)
   let g := q.obj.map (P.map f)
-  let s := Functor.whiskerLeft F (cosimplicialHomMap g)
+  let s := Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap g)
   let t := rightSimplicialHomSourceMap A K f F
   let c := Functor.whiskerLeft R (mixedSourceMap g)
   have hn : L.map (T.map s) ≫ (e Y).hom = (e Z).hom ≫ L.map (T.map t) :=

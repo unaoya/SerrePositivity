@@ -55,9 +55,9 @@ lemma kanAdjointBoundaryTraceContraction_nonempty_iff (n : ℕ) :
       (kanAdjointBoundaryTracedStructurePath X Y φ j c H s n)) ↔
       KanAdjointBoundaryTraceIdentity X Y φ j c H s n := by
   let boundaryHomKan : KanComplex
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mapping B (KanSequence.signedLoopTail Y.toKanSequence)).level
-          (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+          (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   constructor
   · rintro ⟨K⟩
     exact homMk_eq_id_of_loop_contraction (kanAdjointBoundaryProjectionLoop X Y φ j c H s n)

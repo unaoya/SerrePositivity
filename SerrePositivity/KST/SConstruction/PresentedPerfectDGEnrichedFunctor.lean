@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfDGInputSimplicial
 public import SerrePositivity.KST.SConstruction.KanSourceCoreMap
-public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatSimplicial
 
 /-! # 元の全 native 関手族を保つ実 Perf の厳密単体的豊穣関手
 概要：出力宇宙の厳密 dg 入力から、ラベル付き Perf の native nerve を QCat 値に構成する。
@@ -18,34 +18,34 @@ variable (A : Type u) [CommRing A]
 
 /-- 元のラベル付き Perf の native nerve を、同じ宇宙の QCat 対象として保持する。 -/
 def presentedPerfectDGQCat (C : PerfDGInput.{u, v} A) :
-    SerrePositivity.InfinityCategories.QCat.{max (u + 1) v} :=
-  show QuasicategoryObject from
-    ⟨dgNerve A (PresentedPerfectDGObject A C), inferInstance⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat.{max (u + 1) v} :=
+  show _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject from
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C), inferInstance⟩
 
 /-- 元の実 QCat 値の底の native Perf 単体集合は quasicategory。 -/
 instance presentedPerfectDGQCat_obj_quasicategory (C : PerfDGInput.{u, v} A) :
     Quasicategory (presentedPerfectDGQCat A C).obj := by
-  change Quasicategory (dgNerve A (PresentedPerfectDGObject A C))
+  change Quasicategory (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C))
   infer_instance
 
 /-- 元の全 native Kan 入力から、実 Perf 関手空間の core への射。 -/
 def presentedPerfectDGNativeCoreFamilyMap (C D : PerfDGInput.{u, v} A) :
     presentedPerfectDGNativeParameter A C D ⟶
-      (quasicategoryCore ((ihom (dgNerve A (PresentedPerfectDGObject A C))).obj
-        (dgNerve A (PresentedPerfectDGObject A D))) : SSet) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C))).obj
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))) : SSet) :=
   kanSourceCoreMap (presentedPerfectDGNativeFamilyMap A C D)
 
 /-- 実 core 関手族は、包含後に元の全単体的関手族を厳密に回収する。 -/
 lemma presentedPerfectDGNativeCoreFamilyMap_inclusion (C D : PerfDGInput.{u, v} A) :
     presentedPerfectDGNativeCoreFamilyMap A C D ≫
-        (quasicategoryCore ((ihom (dgNerve A (PresentedPerfectDGObject A C))).obj
-          (dgNerve A (PresentedPerfectDGObject A D)))).ι =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C))).obj
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)))).ι =
       presentedPerfectDGNativeFamilyMap A C D := rfl
 
 /-- 元の厳密 dg 圏と全 native 関手族から QCat への、実 Perf の厳密単体的豊穣関手。 -/
 def presentedPerfectDGEnrichedFunctor :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
-      SerrePositivity.InfinityCategories.QCat.{max (u + 1) v} where
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCat.{max (u + 1) v} where
   obj := presentedPerfectDGQCat A
   map C D := presentedPerfectDGNativeCoreFamilyMap A C D
   map_id C := by

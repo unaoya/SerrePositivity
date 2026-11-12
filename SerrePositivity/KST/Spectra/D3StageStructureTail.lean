@@ -50,13 +50,13 @@ lemma d3StageStructureTailGraded_eq (n : ℕ) :
 
 /-- 既存の同じ構造同型の tail 前合成の、元の次段端点での表示。 -/
 def d3StageStructureTailFunctorIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (d3StageKanEnriched.{u} (n + 1)))
-      (coherentNerveMap (d3StageKanEnriched (n + 2)) ≫ pointedKanLoopInfinity) :=
-  F2.functorIsoOfEq ((d3StageStructureFunctorIso n).precomp nativeTail)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched.{u} (n + 1)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched (n + 2)) ≫ pointedKanLoopInfinity) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((d3StageStructureFunctorIso n).precomp nativeTail)
     (d3StageTail n) (by rw [← Category.assoc, d3StageTail])
 
 private lemma d3StructureTailGraded_inv (n : ℕ) (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (StrictEnrichedTransformation.componentHom _ _
       (d3StageStructureGraded n) X)).toTruncated := by
   rw [d3StageStructureGraded_component]
   exact pointedKanObject_edge_isInvertible_of_piIsomorphism _

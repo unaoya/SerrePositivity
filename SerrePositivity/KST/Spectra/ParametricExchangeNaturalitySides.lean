@@ -21,7 +21,7 @@ variable {S : PointedSimplicialSet.{u}} (I : ParametricLoopExchangeFamily S)
 variable {P Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y'.right]
   [KanComplex Z'.right]
   (a : Y ⟶ PointedObject.basedHom S Z) (a' : Y' ⟶ PointedObject.basedHom S Z')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right)
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right)
   (v : P ⟶ PointedObject.basedHom Y Y') (w : P ⟶ PointedObject.basedHom Z Z')
   (hc : a ≫ PointedMapping.parametricPost S w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')

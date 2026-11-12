@@ -31,12 +31,12 @@ def reducedSRealizationComparison (X : StableModel.{u}) :
     pointedSRealization X.carrier ⟶ (reducedMultiRealizationFunctor 0).obj X :=
   Under.homMk ((multiRealizationReductionNat 0).app X) (by
     have h := Under.w (diagonalReductionPointedMap (simplicialCoreSConstruction X.carrier)
-      (coreSConstructionZeroVertex 0 (chosenZeroVertex X.carrier).vertex (chosenZeroVertex X.carrier).isZero))
+      (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).vertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).isZero))
     change (PointedSimplicialSet.ofVertex
       (simplicialDiagonalFunctor.obj (simplicialCoreSConstruction X.carrier))
       ((diagonalZeroColumn (simplicialCoreSConstruction X.carrier)).app (Opposite.op ⦋0⦌)
-        (coreSConstructionZeroVertex 0 (chosenZeroVertex X.carrier).vertex
-          (chosenZeroVertex X.carrier).isZero))).hom ≫
+        (coreSConstructionZeroVertex 0 (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).vertex
+          (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier).isZero))).hom ≫
         diagonalReductionQuotient (simplicialCoreSConstruction X.carrier) =
           (reducedDiagonal (simplicialCoreSConstruction X.carrier)).hom at h
     rw [diagonalZeroColumn_zero] at h
@@ -46,7 +46,7 @@ def reducedSRealizationComparison (X : StableModel.{u}) :
 方針：商写像の局所化可逆性と L9 への接続を使う。
 規約：旧実現の Kan 性は仮定しない。使われ方：K 空間の比較。 -/
 lemma reducedSRealizationComparison_kan_piIsomorphism (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (Spectra.PointedKanReplacement.map (reducedSRealizationComparison X)).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (Spectra.PointedKanReplacement.map (reducedSRealizationComparison X)).right := by
   apply pointedKanReplacement_map_piIsomorphism_of_localized_isIso
   exact multiRealizationReduction_image_isIso AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) 0 X
@@ -63,7 +63,7 @@ def kSpaceReductionComparison (X : StableModel.{u}) :
 方針：Kan な実現の比較の π_* 同型を L9 の点つき写像空間へ移す。
 規約：全自然数次数と全基点を含む。使われ方：K の零対象の選択によらない自然性。 -/
 lemma kSpaceReductionComparison_piIsomorphism (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kSpaceReductionComparison X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kSpaceReductionComparison X).right :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     (Spectra.PointedKanReplacement.map (reducedSRealizationComparison X))
     (reducedSRealizationComparison_kan_piIsomorphism X)

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FractionTriangleEvaluation
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingSpace
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingSpace
 
 /-!
 概要：分母付き span の二つの終点を区間の境界図式にまとめ、分数評価が境界を保つと示す。
@@ -21,27 +21,27 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def markedSpanSource (X : SSet.{u}) (W : Set (X _⦋1⦌)) : markedSpans X W ⟶ X :=
   markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
 
 def markedSpanTarget (X : SSet.{u}) (W : Set (X _⦋1⦌)) : markedSpans X W ⟶ X :=
   markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₂).app X ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
 
 def markedSpanBoundary (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
     markedSpans X W ⟶ (ihom (boundary 1 : SSet.{u})).obj X :=
-  curry (intervalBoundaryDiagram (markedSpanSource X W) (markedSpanTarget X W))
+  curry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram (markedSpanSource X W) (markedSpanTarget X W))
 
 lemma intervalFunctor_restrict_boundary {A Y : SSet.{u}}
     (f : A ⟶ (ihom (Δ[1] : SSet.{u})).obj Y) :
-    f ≫ (pre (boundary 1).ι).app Y = curry (intervalBoundaryDiagram
-      (f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-      (f ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) := by
+    f ≫ (pre (boundary 1).ι).app Y = curry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
+      (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+      (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) := by
   apply uncurry_injective
-  rw [uncurry_pre_app, uncurry_curry, intervalBoundaryDiagram_restrict]
-  simp only [← curry_evaluateFunctorAt_interval, curry_uncurry]
+  rw [uncurry_pre_app, uncurry_curry, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_restrict]
+  simp only [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.curry_evaluateFunctorAt_interval, curry_uncurry]
 
 lemma intervalBoundaryDiagram_postcomp {A X Y : SSet.{u}} (f g : A ⟶ X) (F : X ⟶ Y) :
-    intervalBoundaryDiagram f g ≫ F = intervalBoundaryDiagram (f ≫ F) (g ≫ F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram f g ≫ F = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram (f ≫ F) (g ≫ F) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -52,7 +52,7 @@ lemma intervalBoundaryDiagram_postcomp {A X Y : SSet.{u}} (f g : A ⟶ X) (F : X
   split_ifs <;> rfl
 
 lemma fractionSpanEvaluation_boundary {X Q : SSet.{u}} [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : InvertsEdges F W) :
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F W) :
     fractionSpanEvaluation F W hF ≫ (pre (boundary 1).ι).app Q =
       markedSpanBoundary X W ≫ (ihom (boundary 1 : SSet.{u})).map F := by
   rw [intervalFunctor_restrict_boundary, markedSpanBoundary, ← curry_natural_right,

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.CoreSingleKanCoordinates
-public import SerrePositivity.InfinityCategories.F1.Coherent.NerveHomEdgeNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.NerveHomEdgeNaturality
 
 /-! # 元の core S 実現の射を、同じ全 Hom・同じ coherent 辺から回収する -/
 
@@ -13,9 +13,9 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
-variable {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (f : C ⟶ D)
+variable {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (f : C ⟶ D)
 
 /-- 元の完全射の core S 実現の同じ Ex∞ 射を、正規化した Kan 値間の射として読む。 -/
 def stableCoreSingleKanMap :
@@ -27,7 +27,7 @@ theorem stableMultiSingleKan_hom :
     eHomEquiv SSet f ≫ (stableMultiKanEnrichedFunctor 0).map C D =
       eHomEquiv SSet (show (stableMultiKanEnrichedFunctor 0).obj C ⟶
         (stableMultiKanEnrichedFunctor 0).obj D from
-          exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) := by
   change eHomEquiv SSet f ≫ ((stableMultiRealizationEnrichedFunctor 1).map C D ≫
     exInfinityClosedKanEnrichedFunctor.map _ _) = _
   rw [← Category.assoc, stableMultiRealizationEnrichedFunctor_hom]
@@ -46,7 +46,7 @@ theorem stableCoreSingleKan_hom :
   have he : eqToHom (stableCoreSingleKan_object_eq C).symm ≫
       (show (stableMultiKanEnrichedFunctor 0).obj C ⟶
         (stableMultiKanEnrichedFunctor 0).obj D from
-          exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map ((multiRealizationFunctor 1).map (stableExactInputMap f))) ≫
       eqToHom (stableCoreSingleKan_object_eq D) = stableCoreSingleKanMap f := by
     rw [← coreSingleKanIso_hom_eq, ← coreSingleKanIso_inv_eq]
     have hn := coreSingleKanIso_naturality (C := C) (D := D) f
@@ -58,14 +58,14 @@ theorem stableCoreSingleKan_hom :
 
 /-- 元の core S の同じ射を、同じ coherent な一単体として回収する。 -/
 theorem stableCoreSingleKan_edge :
-    (coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋1⦌)
-      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge :=
-  coherentNerveMap_edge_of_homEquiv _ _ _ (stableCoreSingleKan_hom f)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow f).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (stableCoreSingleKanMap f)).edge :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveMap_edge_of_homEquiv _ _ _ (stableCoreSingleKan_hom f)
 
 /-- 一回の反復実現の全 ∞ 関手でも、元の core S の Ex∞ 射の同じ辺を回収する。 -/
 theorem stableMultiSingleKan_edge :
-    (coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋1⦌)
-      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow f).edge = (coherentNerveEdge (stableCoreSingleKanMap f)).edge := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋1⦌)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow f).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (stableCoreSingleKanMap f)).edge := by
   rw [← stableCoreSingleKanInfinity_eq]
   exact stableCoreSingleKan_edge f
 

@@ -28,7 +28,7 @@ open scoped _root_.Simplicial
 使われ方：ホーン充填の部分複体への持ち上げ。
 -/
 def componentSimplexLift (X : SSet.{u}) (P : π₀ X → Prop) {n : ℕ}
-    (f : (Δ[n] : SSet.{u}) ⟶ X) (h : P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv f))) :
+    (f : (Δ[n] : SSet.{u}) ⟶ X) (h : P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv f))) :
     (Δ[n] : SSet.{u}) ⟶ (componentSubcomplex X P : SSet) :=
   yonedaEquiv.symm ⟨yonedaEquiv f, h⟩
 
@@ -39,7 +39,7 @@ def componentSimplexLift (X : SSet.{u}) (P : π₀ X → Prop) {n : ℕ}
 使われ方：充填の各面の一致の確認。
 -/
 theorem componentSimplexLift_ι (X : SSet.{u}) (P : π₀ X → Prop) {n : ℕ}
-    (f : (Δ[n] : SSet.{u}) ⟶ X) (h : P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv f))) :
+    (f : (Δ[n] : SSet.{u}) ⟶ X) (h : P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv f))) :
     componentSimplexLift X P f h ≫ (componentSubcomplex X P).ι = f := by
   apply yonedaEquiv.injective
   rw [yonedaEquiv_comp]
@@ -57,13 +57,13 @@ theorem simplex_in_component_of_face (X : SSet.{u}) (P : π₀ X → Prop) {n : 
     (f : (Δ[n + 1] : SSet.{u}) ⟶ X) (i : Fin (n + 2))
     (g : (Δ[n] : SSet.{u}) ⟶ (componentSubcomplex X P : SSet))
     (h : stdSimplex.δ i ≫ f = g ≫ (componentSubcomplex X P).ι) :
-    P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv f)) := by
+    P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv f)) := by
   have he := congrArg yonedaEquiv h
   rw [stdSimplex.yonedaEquiv_δ_comp, yonedaEquiv_comp] at he
   change X.map (SimplexCategory.δ i).op (yonedaEquiv f) = (yonedaEquiv g).val at he
   have hg := (yonedaEquiv g).property
-  change P (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv g).val) at hg
-  rw [← he, _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map] at hg
+  change P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv g).val) at hg
+  rw [← he, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map] at hg
   exact hg
 
 /--

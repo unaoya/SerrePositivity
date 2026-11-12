@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionRestriction
-public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.UniversalScaffoldEvaluation
 
 /-!
 概要：元の相対延長空間の制限の全評価は、元の全評価の実際の前合成になる。

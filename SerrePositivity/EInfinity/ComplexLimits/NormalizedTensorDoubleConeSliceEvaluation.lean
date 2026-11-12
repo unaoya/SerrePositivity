@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDoubleConeSlicePrismProjection
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeFamily
-public import SerrePositivity.InfinityCategories.Stable.Roof.SliceEvaluationPinched
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.SliceEvaluationPinched
 
 /-!
 概要：構成した実 slice 図式の普遍評価を、元の frame 図式から同じ X への全族にする。
@@ -15,20 +15,20 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorDoubleConeSliceEvaluationHomotopy :
     SSet.Homotopy (normalizedTensorElementNerveDiagram A X Y)
-      (SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X)) where
-  h := (functorHomotopyPrecomp
-    (roofSliceEvaluationHomotopy ((dgNerve.vertexEquiv A (Complex A)).symm X))
+      (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X)) where
+  h := (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X))
     (normalizedTensorDoubleConeOverDiagram A X Y)).h
   h₀ := by
     rw [SSet.Homotopy.h₀]
     change normalizedTensorDoubleConeOverDiagram A X Y ≫
-      sliceOverProjection (normalizedTensorConePoint A X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (normalizedTensorConePoint A X) =
         normalizedTensorElementNerveDiagram A X Y
     exact normalizedTensorDoubleConeOverDiagram_projection A X Y
   h₁ := by
@@ -44,13 +44,13 @@ def normalizedTensorDoubleConeSliceEvaluationHomotopy :
 lemma normalizedTensorDoubleConeSliceEvaluationHomotopy_h :
     (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h =
       (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom ≫
-        rightMappingSpacePrism _ ≫ sliceOverUncurry (normalizedTensorDoubleConeOverDiagram A X Y) :=
-  roofSliceEvaluationHomotopy_precomp_h _ _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (normalizedTensorDoubleConeOverDiagram A X Y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy_precomp_h _ _
 
 def normalizedTensorDoubleConeSliceEvaluationHom :
-    FunctorHom (normalizedTensorElementNerveDiagram A X Y)
-      (SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (normalizedTensorElementNerveDiagram A X Y)
+      (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X)) :=
   SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y))
 
 end SerrePositivity.EInfinity.ComplexLimits

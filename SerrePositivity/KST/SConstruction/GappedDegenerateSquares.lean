@@ -22,7 +22,7 @@ open scoped Simplicial
 規約：全次数で厳密な形状の等号。使われ方：恒等垂直辺の押し出し。 -/
 lemma arSquare_repeat_left {n : ℕ} (i k l : Fin (n + 1)) (hik : i ≤ k) (hkl : k ≤ l) :
     arSquare i i k l le_rfl hik hkl = CartesianMonoidalCategory.fst _ _ ≫
-      squareBottomEdge ≫ arSquare i i k l le_rfl hik hkl := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ arSquare i i k l le_rfl hik hkl := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -41,7 +41,7 @@ lemma arSquare_repeat_left {n : ℕ} (i k l : Fin (n + 1)) (hik : i ≤ k) (hkl 
 規約：全次数で厳密な形状の等号。使われ方：恒等水平辺の押し出し。 -/
 lemma arSquare_repeat_right {n : ℕ} (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
     arSquare i j k k hij hjk le_rfl = CartesianMonoidalCategory.snd _ _ ≫
-      squareLeftEdge ≫ arSquare i j k k hij hjk le_rfl := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ arSquare i j k k hij hjk le_rfl := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -61,7 +61,7 @@ lemma arSquare_repeat_right {n : ℕ} (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk
 lemma arSquare_isPushout_of_repeated_endpoints {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : arNerve n ⟶ C) (i j k l : Fin (n + 1))
     (hij : i ≤ j) (hjk : j ≤ k) (hkl : k ≤ l) (h : i = j ∨ k = l) :
-    IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (arSquare i j k l hij hjk hkl ≫ F) := by
   rcases h with h | h
   · subst j
     have he := congrArg (fun f => f ≫ F) (arSquare_repeat_left i k l hjk hkl)
@@ -79,7 +79,7 @@ lemma arSquare_isPushout_of_repeated_endpoints {n : ℕ} {C : SSet.{u}} [Quasica
 規約：C は quasicategory。使われ方：S_1 の第一行制限の零次元の存在。 -/
 lemma isGapped_one_of_zero_diagonal {C : SSet.{u}} [Quasicategory C]
     (F : arNerve 1 ⟶ C)
-    (hz : ∀ j : Fin 2, IsZeroVertex (F.app (Opposite.op ⦋0⦌)
+    (hz : ∀ j : Fin 2, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (F.app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (arObj j j le_rfl)))) : IsGapped F := by
   refine ⟨hz, ?_⟩
   intro i j k l hij hjk hkl

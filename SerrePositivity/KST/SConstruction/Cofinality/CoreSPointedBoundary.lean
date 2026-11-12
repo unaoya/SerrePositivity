@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open SerrePositivity.SimplicialModel
 open scoped Simplicial
 
@@ -64,12 +64,12 @@ lemma coreSVertexBoundary_naturality {X Y : StableModel.{u}} (f : X ⟶ Y)
 使われ方：元の包含の次数条件を境界 Kan 模型で反映する。 -/
 lemma coreSExInfinityBoundary_piIsomorphism (X : StableModel.{u})
     (x : (coreSRealizationFunctor.obj X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (exInfinityPointedKanMap
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (exInfinityPointedKanMap
       (X := coreSVertexObject X x)
       (Y := ⟨(boundaryReducedRealizationFunctor 0).obj X⟩)
       (coreSVertexBoundary X x)).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  exact (exInfinity_map_localized_isIso_iff (boundaryReductionQuotient 0 X)).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff (boundaryReductionQuotient 0 X)).mpr
     (boundaryReductionQuotient_image_isIso AnodyneHomotopy.anodyneQ
       (Localization.inverts _ anodyneExtensions) 0 X)
 

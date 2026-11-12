@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositio
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma zeroInput
     (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
     {M N M' N' : ModuleCategory R D}
@@ -27,9 +27,9 @@ private lemma zeroInput
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G F' G' : DGFunctor R P (RightModule R D))
-  (α : StrictNatTrans F G) (β : StrictNatTrans F' G')
-  (l : StrictNatTrans F F') (r : StrictNatTrans G G')
-  (hsq : dgStrictNatTransComp α r = dgStrictNatTransComp l β)
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (β : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F' G')
+  (l : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F F') (r : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G G')
+  (hsq : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp α r = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp l β)
 include hsq
 local notation "f" => dgModuleNaturalConeArrow R D F G α
 local notation "g" => dgModuleNaturalConeArrow R D F' G' β

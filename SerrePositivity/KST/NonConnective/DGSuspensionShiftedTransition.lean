@@ -26,10 +26,10 @@ local instance shiftedTransitionSpectrumHomKan (X Y : OmegaSpectrum.{w}) :
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (β : ∀ n : ℕ,
-    SSet.Edge (SerrePositivity.InfinityCategories.coherentNerveVertex
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
       (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (SerrePositivity.InfinityCategories.coherentNerveVertex
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex
           (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
 
 /-- 明示構造辺に条件付きで、同じ実隣接遷移を元の懸垂 K の移動した整数次数に表示する。 -/

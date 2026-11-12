@@ -26,10 +26,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 include hcof hfib hA hconst
 
-lemma cosimplicialHom_isRightQuillen : Quillen.IsRightQuillen (cosimplicialHom A) where
+lemma cosimplicialHom_isRightQuillen : Quillen.IsRightQuillen (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A) where
   map_fibrations _ _ p hp := by
     have : Fibration p := ⟨hp⟩
-    change fibrations SSet.{v} ((cosimplicialHom A).map p)
+    change fibrations SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p)
     rw [hfib]
     exact (SSet.modelCategoryQuillen.fibration_iff _).mp
       (cosimplicialHom_fibration A hA hconst p)
@@ -40,7 +40,7 @@ lemma cosimplicialHom_isRightQuillen : Quillen.IsRightQuillen (cosimplicialHom A
 
 lemma cosimplicialHom_hasPointwiseRightDerived {H : Type uH} [Category.{vH} H]
     (L : SSet.{v} ⥤ H) [L.IsLocalization (weakEquivalences SSet.{v})] :
-    (cosimplicialHom A ⋙ L).HasPointwiseRightDerivedFunctor (weakEquivalences C) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A ⋙ L).HasPointwiseRightDerivedFunctor (weakEquivalences C) := by
   have := cosimplicialHom_isRightQuillen hcof hfib A hA hconst
   infer_instance
 

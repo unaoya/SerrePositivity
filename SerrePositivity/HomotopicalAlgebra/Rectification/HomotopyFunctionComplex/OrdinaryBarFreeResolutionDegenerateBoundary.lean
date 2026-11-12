@@ -45,7 +45,7 @@ namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegen
 open FreeGeneratorCategories FreeGeneratorMixedOperators OrdinaryBarFreeDiagramExtension
 open OrdinaryBarChoiceBoundaryGluing OrdinaryBarFreeResolutionDegeneracyValues
 open OrdinaryBarFreeResolutionMixedFaces
-open SerrePositivity.SimplicialModel.ReversedSimplexParameters
+
 variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory SSet.{v}]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -57,7 +57,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
     OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ SSet.stdSimplex.δ i) =
       FreeGeneratorFaces.fixedFace D (n + 1) i ⋙ G)
   (degeneracyLaw : ∀ i : Fin (n + 1), degeneracyFunctor D n i ⋙ F =
-    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i))
+    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i))
 
 include degeneracyLaw in
 lemma boundary_degeneracy_facet (j : Fin (n + 2)) (k : Fin (n + 3)) :
@@ -70,7 +70,7 @@ lemma boundary_degeneracy_facet (j : Fin (n + 2)) (k : Fin (n + 3)) :
   rw [CategoryTheory.Functor.assoc, OrdinaryBarFreeResolutionBoundary.boundary_face,
     CategoryTheory.Functor.assoc, ← OrdinaryBarChoiceCategory.reindex_comp,
     ← whiskerLeft_comp, SSet.boundary.ι_ι]
-  simpa only [OrdinaryBarFreeResolutionBoundary.face, rawFace, delta_eq, Fin.rev_rev] using
+  simpa only [OrdinaryBarFreeResolutionBoundary.face, rawFace, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_eq, Fin.rev_rev] using
     facet_equation hcof hfib D n P F G faceLaw degeneracyLaw j k.rev
 
 include degeneracyLaw in

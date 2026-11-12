@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：相対 S 実現を交換する元の同型。 -/
 def completionRelativeSInterchangeIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier ≅
       (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
         f hf n).carrier := by
@@ -35,13 +35,13 @@ def completionRelativeSInterchangeIso (r : ℕ) (ι : Fin r → SimplexCategory�
   let b := J ≫ (ihom (stdSimplex.obj n)).map (gappedSubcomplex m C).ι
   let F := completionRelativeSTranspose r ι f hf m n
   let G := completionRelativeSInverse r ι f hf m n
-  let s := (internalHomSwapIso (arNerve m) (stdSimplex.obj n) C).hom
-  let t := (internalHomSwapIso (stdSimplex.obj n) (arNerve m) C).hom
-  have hi : Mono I := inferInstanceAs (Mono (fullSubcomplexOnVertices _
+  let s := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n) C).hom
+  let t := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (stdSimplex.obj n) (arNerve m) C).hom
+  have hi : Mono I := inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _
     (multiRelativeFlagPredicate r ι Y
       (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex
         (stdSimplex.obj n))).ι)
-  have hj : Mono J := inferInstanceAs (Mono (fullSubcomplexOnVertices _
+  have hj : Mono J := inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _
     (multiRelativeFlagPredicate (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) Y
       (multiWideStageData stableWideCofinalitySupply (r + 1)
         (Fin.cons (Opposite.op ⦋m⦌) ι) f hf).subcomplex (stdSimplex.obj n))).ι)
@@ -68,7 +68,7 @@ def completionRelativeSInterchangeIso (r : ℕ) (ι : Fin r → SimplexCategory�
             ((completionRelativeSInverseDiagram_inclusion r ι f hf m n).trans
               (Category.assoc _ _ _).symm))
   exact ⟨F, G,
-    inverse_comp_of_commuting_mono a b F G s t hF hG (_root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _),
-    inverse_comp_of_commuting_mono b a G F t s hG hF (_root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_twice _ _ _)⟩
+    inverse_comp_of_commuting_mono a b F G s t hF hG (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_twice _ _ _),
+    inverse_comp_of_commuting_mono b a G F t s hG hF (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_twice _ _ _)⟩
 
 end SerrePositivity.KST.SConstruction.Cofinality

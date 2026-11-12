@@ -58,7 +58,7 @@ lemma of_vertical (V : SSet.Homotopy (𝟙 E) (p ≫ s))
   have hc : i ≫ c = a ≫ (p ≫ s) := by
     dsimp only [c]
     rw [← Category.assoc, ← sq.w, Category.assoc]
-  let H := LargeParameterSquare.changeEndpoints (HomotopyClasses.preHomotopy a V)
+  let H := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (HomotopyClasses.preHomotopy a V)
     (Category.comp_id a) hc.symm
   let q := fst T (SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1)) ≫ b
   have hb : c ≫ p = SSet.ι₁ ≫ q := by
@@ -66,7 +66,7 @@ lemma of_vertical (V : SSet.Homotopy (𝟙 E) (p ≫ s))
     rw [Category.assoc, hs, Category.comp_id, ← Category.assoc, SSet.ι₁_fst, Category.id_comp]
   have hH : H.h ≫ p = i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ q := by
     dsimp only [H]
-    rw [LargeParameterSquare.changeEndpoints_h]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     change (a ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ V.h) ≫ p = _
     rw [Category.assoc, hV, whiskerRight_fst_assoc, sq.w]
     exact (whiskerRight_fst_assoc i _ b).symm

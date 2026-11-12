@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanSpecifiedIntervalLift
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RelativeEquivalencePathExtension
-public import SerrePositivity.InfinityCategories.Core.EquivalenceCalculus
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RelativeEquivalencePathExtension
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceCalculus
 
 /-!
 概要：指定区間 path の持ち上げは、入力端点から出力端点への指定関手同型を与える。

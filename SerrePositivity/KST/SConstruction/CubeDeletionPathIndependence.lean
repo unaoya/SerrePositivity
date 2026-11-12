@@ -14,16 +14,16 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 
 /-- 元の生成語が削除だけからなる条件。 -/
-inductive CubeDeletionPath : {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} → Quiver.Path X Y → Prop
-  | nil (X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject) : CubeDeletionPath (.nil : Quiver.Path X X)
-  | step {X : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {m : ℕ}
-      (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1))) (hp : CubeDeletionPath p)
+inductive CubeDeletionPath : {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} → Quiver.Path X Y → Prop
+  | nil (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject) : CubeDeletionPath (.nil : Quiver.Path X X)
+  | step {X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {m : ℕ}
+      (p : Quiver.Path X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1))) (hp : CubeDeletionPath p)
       (i : Fin (m + 1)) : CubeDeletionPath
-        (p.cons (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (m + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m from
-          _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy m i))
+        (p.cons (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (m + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m from
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.degeneracy m i))
 
 /-- 元の削除 path は、その同じ構文の削除式から厳密に回収される。 -/
-lemma cubeDeletionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} {p : Quiver.Path X Y}
+lemma cubeDeletionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} {p : Quiver.Path X Y}
     (h : CubeDeletionPath p) : ∃ e : CubeDeletionExpression X.dimension Y.dimension,
       cubeDeletionExpressionPath e = p := by
   induction h with
@@ -36,8 +36,8 @@ lemma cubeDeletionPath_exists_expression {X Y : _root_.SerrePositivity.InfinityC
 
 /-- 同じ具体射を表す元の削除語は、元の Serre 余モノイド射として一致する。 -/
 lemma serreCubeWordFunctor_deletion_independent (A : Type u) [CommRing A]
-    {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p q : X ⟶ Y) (hp : CubeDeletionPath p) (hq : CubeDeletionPath q)
-    (h : _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map q) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords} (p q : X ⟶ Y) (hp : CubeDeletionPath p) (hq : CubeDeletionPath q)
+    (h : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map q) :
     (serreCubeWordFunctor A).map p = (serreCubeWordFunctor A).map q := by
   obtain ⟨e, he⟩ := cubeDeletionPath_exists_expression hp
   obtain ⟨f, hf⟩ := cubeDeletionPath_exists_expression hq

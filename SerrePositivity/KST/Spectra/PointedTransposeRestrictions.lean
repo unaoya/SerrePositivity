@@ -19,10 +19,10 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 内部 Hom のパラメータへの制限を転置すると、元の同じパラメータの前合成。 -/
 lemma transpose_pre_inner {T A B V : PointedSimplicialSet.{u}}
     (f : T ⟶ (ihom A).obj V) (j : B ⟶ A) :
-    transpose (f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j V) = j ≫ transpose f := by
+    transpose (f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j V) = j ≫ transpose f := by
   apply uncurry_injective
   unfold transpose
-  conv_lhs => rw [uncurry_curry, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, uncurry_pre_app]
+  conv_lhs => rw [uncurry_curry, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, uncurry_pre_app]
   conv_rhs => rw [uncurry_natural_left, uncurry_curry]
   rw [← Category.assoc, ← BraidedCategory.braiding_naturality_right]
   simp only [Category.assoc]

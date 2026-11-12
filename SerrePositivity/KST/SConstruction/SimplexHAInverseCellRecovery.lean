@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の任意の部分集合 cell の逆 dg 関手による像は、同じ元の HA 鎖射を回収する。 -/
-lemma simplexHAInverseCellRecovery {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAInverseCellRecovery {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) :
     SimplexHAInverseCellRecovery A s m v b hb := by
   have all (k : ℕ) : ∀ (m : ℕ) (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))

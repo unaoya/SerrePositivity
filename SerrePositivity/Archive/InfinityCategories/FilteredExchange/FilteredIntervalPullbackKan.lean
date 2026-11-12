@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalDiagramEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredIntervalPullback
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackNative
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanIntervalPullbackNative
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredPullbackKan
 
 /-!

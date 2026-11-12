@@ -15,7 +15,7 @@ universe u v w
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 open SerrePositivity.KST.LocalizingInvariants SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.NonConnective
@@ -30,13 +30,13 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：同じ元の実核と比較辺を保持する。
 使われ方：元の構造辺の始点の厳密照合。 -/
 theorem dgKappaNativeBFFiberComparison_source :
-    (pullbackCone (dgKappaNativeBFSquare R D I hBF)).vertex =
-      coherentNerveVertex (kOmegaSpectrum
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (dgKappaNativeBFSquare R D I hBF)).vertex =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
         (stableCategoryModel (dgKappaNativeKernelCategory R D I))) := by
-  rw [JoinCone.vertex_eq]
-  change SSet.yonedaEquiv (joinInl Δ[0] (horn 2 2) ≫
-    (cospanConeSquareIso.hom ≫ dgKappaNativeBFSquare R D I hBF)) = _
-  rw [← Category.assoc, cospanConeSquareIso_initialPoint,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone.vertex_eq]
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] (horn 2 2) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫ dgKappaNativeBFSquare R D I hBF)) = _
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cospanConeSquareIso_initialPoint,
     SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   exact dgKappaNativeBFSquare_source R D I hBF
 
@@ -48,12 +48,12 @@ theorem dgKappaNativeBFFiberComparison_target :
     (dgKappaNativeBFKLimitCone R D I hBF).vertex =
       (dgKappaNativeBFCanonicalFiberSquare R D I hBF).fiber := by
   have h := congrArg (fun f => f.app (Opposite.op ⦋0⦌) (dgKappaNativeBFKLimitCone R D I hBF))
-    (sliceSquareDiagramMap_sourceEvaluation (pullbackCospan (dgKappaNativeBFSquare R D I hBF)))
-  change (evaluateFunctorAt (Y := Sp.{max (u + 1) v})
-    (squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
-    (Opposite.op ⦋0⦌) ((sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_sourceEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan (dgKappaNativeBFSquare R D I hBF)))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{max (u + 1) v})
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{max (u + 1) v + 1}) ⊗ Δ[1])) 0 0)).app
+    (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap _).app (Opposite.op ⦋0⦌)
       (dgKappaNativeBFKLimitCone R D I hBF)) = _ at h
-  rw [sliceSquareDiagramMap_vertex] at h
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at h
   exact h.symm
 
 /-- 概要：同じ未完備実核 K から元の実 fiber への全比較辺。
@@ -61,7 +61,7 @@ theorem dgKappaNativeBFFiberComparison_target :
 規約：比較辺の全一単体と同じ元の実 fiber を保持する。
 使われ方：一回の S• fibration の非負次数比較。 -/
 def dgKappaNativeBFFiberVertexComparison : Sp.{max (u + 1) v}.Edge
-    (coherentNerveVertex (kOmegaSpectrum
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
       (stableCategoryModel (dgKappaNativeKernelCategory R D I))))
     (dgKappaNativeBFCanonicalFiberSquare R D I hBF).fiber :=
   (SSet.Edge.ofTruncated (dgKappaNativeBFFiberComparison R D I hBF)).ofEq
@@ -73,8 +73,8 @@ def dgKappaNativeBFFiberVertexComparison : Sp.{max (u + 1) v}.Edge
 規約：全正段の引き戻し性や完備化後の Sp 引き戻し性は仮定しない。
 使われ方：K-7 c5・d3 の採用済み連結経路。 -/
 theorem dgKappaNativeBFFiberVertexComparison_nonnegative
-    (hS : IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
+    (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)))
     (j : ℤ) (hj : 0 ≤ j) :
     Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
       (dgKappaNativeBFFiberVertexComparison R D I hBF).toTruncated) j) := by
@@ -82,21 +82,21 @@ theorem dgKappaNativeBFFiberVertexComparison_nonnegative
   let f := SpectrumHo.edgeMap e
   have hs := dgKappaNativeBFFiberComparison_spaceEvaluation_isInvertible R D I hBF 1
     (dgKappaNativeBF_spaceEvaluation_isPullback R D I hBF 0 hS)
-  have hes : IsInvertibleEdge (X := SpaceInfinity.{max (u + 1) v})
+  have hes : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max (u + 1) v})
       (e.toTruncated.map ((truncation 2).map
-        (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) :=
-    (isInvertibleEdge_congr (X := SpaceInfinity.{max (u + 1) v}) (e := e.toTruncated.map ((truncation 2).map
-      (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max (u + 1) v}) (e := e.toTruncated.map ((truncation 2).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1))))
       (f := (dgKappaNativeBFFiberComparison R D I hBF).map ((truncation 2).map
-        (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) rfl).mpr hs
-  have hf : IsInvertibleEdge (X := SpaceInfinity.{max (u + 1) v})
-      ((coherentNerveEdge f).toTruncated.map ((truncation 2).map
-        (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) := by
-    apply (isInvertibleEdge_congr (X := SpaceInfinity.{max (u + 1) v}) (e := (coherentNerveEdge f).toTruncated.map
-      ((truncation 2).map (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) rfl).mpr hs
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max (u + 1) v})
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated.map ((truncation 2).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) := by
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max (u + 1) v}) (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated.map
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1))))
       (f := e.toTruncated.map ((truncation 2).map
-        (coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) (congrArg
-      ((coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)).app (Opposite.op ⦋1⦌))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)))) (congrArg
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} 1)).app (Opposite.op ⦋1⦌))
       (SpectrumHo.edgeMap_edge e))).mpr
     exact hes
   rw [SpectrumHo.piMap_edge]

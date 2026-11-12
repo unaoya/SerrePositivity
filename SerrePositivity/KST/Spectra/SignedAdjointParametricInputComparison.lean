@@ -44,7 +44,7 @@ def parametricInputComparisonFirst :
       ((f ≫ PointedMapping.parametricPost CirclePower.space.{u} u) ≫
         PointedObject.basedHomMap P (PointedObject.basedHomMap CirclePower.space.{u} g')) :=
   (((G.basedIhomMap CirclePower.space.{u}).pre f).basedPost
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} P
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} P
       (PointedObject.basedHom CirclePower.space.{u} Z')).hom).changeEndpoints
         (inputParametricFirst_start f g v).symm (inputParametricFirst_finish f g' u).symm
 
@@ -67,12 +67,12 @@ def parametricInputComparisonSecond :
 variable [KanComplex Z'.right]
 local instance parametricInputComparisonInnerKan :
     KanComplex (PointedObject.basedHom CirclePower.space.{u} Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance parametricInputComparisonDoubleKan : KanComplex (doubleLoop Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance parametricInputComparisonParameterKan :
     KanComplex (PointedObject.basedHom P (doubleLoop Z')).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の二実比較区間と同じ合成三角形を保持する、全族入力の比較。 -/
 def parametricInputComparisonComposite :

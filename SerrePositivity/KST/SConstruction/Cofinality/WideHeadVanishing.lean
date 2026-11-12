@@ -22,18 +22,18 @@ open scoped Simplicial
 使われ方：相対 fiber 列の右項の高次消滅。 -/
 lemma completionWideHead_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) n x) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) _⦋0⦌) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) n x) := by
   let p := completionWideHeadDiscretization r ι f hf
-  have hw := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence p
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence p
     (completionWideHeadDiscretization_isWeak r ι f hf)
   have hπ := Spectra.kanPiIsomorphism_of_qCatEquivalence _
     hw.isSimplicialHomotopyEquivalence.isQCatEquivalence
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf)) n
-        ((F2.continuousKanReplacement.map p).app (Opposite.op ⦋0⦌) x)) :=
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map p).app (Opposite.op ⦋0⦌) x)) :=
     completionWideComponentHead_higher_of_input h r ι f hf n hn _
   exact Function.Injective.subsingleton ((hπ x n).1)
 

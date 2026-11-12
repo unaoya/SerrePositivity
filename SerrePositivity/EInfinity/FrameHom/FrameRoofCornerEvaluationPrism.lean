@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofCornerEvaluation
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofFiberPinchedProjection
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.Stable.SpanHomotopyGluing
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SpanHomotopyGluing
 
 /-!
 # 元の corner 評価の同じ qY slice 内の実ホモトピー
@@ -25,23 +25,23 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
-  [LeftFibration (roofTargetProjection A Y q)]
+  [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (roofTargetProjection A Y q)]
 
 lemma roofTargetSlicePointIso_projection : (roofTargetSlicePointIso Y q).hom ≫
-    sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) =
-      sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q) :=
-  SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (roofTargetPoint q (nerveVertex Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverProjection_eqTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Roof.roofTargetPoint q (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))
 
 def roofCornerSourceSliceMap :
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
-      sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (nerveVertex Y))) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) :=
   pullback.snd _ _ ≫ pullback.fst _ _ ≫ (roofTargetSlicePointIso Y q).hom
 
 lemma roofCornerEvaluation_slice : roofCornerEvaluation A Y q b ≫
-    pinchedFamilySlice E (q.app (op ⦋0⦌) (nerveVertex (A.obj (roofTargetDegree A Y q b))))
-      (q.app (op ⦋0⦌) (nerveVertex Y)) =
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice E (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj (roofTargetDegree A Y q b))))
+      (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y)) =
     roofCornerNormalizationMap A Y q b ≫ (roofCornerTerminalEvaluation A Y q b).evaluation ≫
-      vertexFiberι (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (roofCornerNormalizedProjection A Y q b) (roofCornerTerminal A Y q b) ≫
         pullback.fst _ _ ≫ pullback.fst _ _ ≫ (roofTargetSlicePointIso Y q).hom := by
   have h := roofCornerTerminalFiberIso_source A Y q b
   simp only [roofCornerEvaluation, Category.assoc]
@@ -49,16 +49,16 @@ lemma roofCornerEvaluation_slice : roofCornerEvaluation A Y q b ≫
 
 def roofCornerEvaluationSliceHomotopy : SSet.Homotopy (roofCornerSourceSliceMap A Y q b)
     (roofCornerEvaluation A Y q b ≫
-      pinchedFamilySlice E (q.app (op ⦋0⦌) (nerveVertex (A.obj (roofTargetDegree A Y q b))))
-        (q.app (op ⦋0⦌) (nerveVertex Y))) := by
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilySlice E (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (A.obj (roofTargetDegree A Y q b))))
+        (q.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))) := by
   let v := pullback.fst (roofTargetProjection A Y q)
     (nerveMap (Over.forget (roofTargetDegree A Y q b))) ≫
-      pullback.fst (sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex Y) ≫ q))
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y) ≫ q))
         (nerveMap A ≫ q) ≫ (roofTargetSlicePointIso Y q).hom
-  let H := functorHomotopyPostcomp
-    (functorHomotopyPrecomp (roofCornerTerminalEvaluation A Y q b).homotopy
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (roofCornerTerminalEvaluation A Y q b).homotopy
       (roofCornerNormalizationMap A Y q b)) v
-  apply stableHomotopyRetarget H
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget H
   · dsimp only [v, roofCornerSourceSliceMap]
     simp only [Category.comp_id, ← Category.assoc]
     rw [roofCornerNormalizationMap_source]

@@ -1,2 +1,0 @@
-module
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TriangleNativeExt

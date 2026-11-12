@@ -14,11 +14,11 @@ open CategoryTheory
 
 /-- 元の bead の長さの等号移送は、元の全頂点の同じ番号を保つ。 -/
 lemma necklaceBead_eqToHom_vertex {p q : ℕ} (h : p = q)
-    (v : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single p).Vertex) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (eqToHom (congrArg necklaceBead.{u} h)) v =
+    (v : (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single p).Vertex) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap (eqToHom (congrArg necklaceBead.{u} h)) v =
       Fin.cast (congrArg Nat.succ h) v := by
   cases h
-  exact congrFun (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_id _) v
+  exact congrFun (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_id _) v
 
 /-- 元の分割 refinement は、元の二 bead refinement と同じ長さ移送の合成。 -/
 lemma simplexSubsetSplitRefinement_eq {n : ℕ} (I : Finset (Fin (n + 1)))
@@ -28,16 +28,16 @@ lemma simplexSubsetSplitRefinement_eq {n : ℕ} (I : Finset (Fin (n + 1)))
       necklaceWedgeBeadRefinement ((I.filter (· ≤ j)).card - 1)
         ((I.filter (j ≤ ·)).card - 1) ≫
       eqToHom (congrArg necklaceBead (simplexSubsetSplit_length I j hj hL hR)) := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_injective
+  apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_injective
   funext v
-  rw [simplexSubsetSplitRefinement_vertex, _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap_comp]
+  rw [simplexSubsetSplitRefinement_vertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap_comp]
   exact (necklaceBead_eqToHom_vertex (simplexSubsetSplit_length I j hj hL hR) v).symm
 
 /-- 元の bead の長さ移送の cube は、同じ元の次元移送そのもの。 -/
 lemma necklaceBead_eqToHom_cube {p q : ℕ} (h : p = q) :
     necklaceConcreteCubeMap (eqToHom (congrArg necklaceBead.{u} h)) =
       (concreteCubeDimensionIso
-        (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single k).dimension) h)).hom := by
+        (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single k).dimension) h)).hom := by
   cases h
   exact necklaceConcreteCube.map_id _
 
@@ -48,7 +48,7 @@ lemma simplexSubsetSplitRefinement_cube_eq {n : ℕ} (I : Finset (Fin (n + 1)))
     necklaceConcreteCubeMap (simplexSubsetSplitRefinement.{u} I j hj hL hR) =
       necklaceConcreteCubeMap (necklaceWedgeBeadRefinement.{u}
         ((I.filter (· ≤ j)).card - 1) ((I.filter (j ≤ ·)).card - 1)) ≫
-      (concreteCubeDimensionIso (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single k).dimension)
+      (concreteCubeDimensionIso (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single k).dimension)
         (simplexSubsetSplit_length I j hj hL hR))).hom := by
   rw [simplexSubsetSplitRefinement_eq]
   exact (necklaceConcreteCube.map_comp _ _).trans

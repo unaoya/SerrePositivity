@@ -21,10 +21,10 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 /-- 概要：同じ未完備 native 実四角形の底・右・左・上の四完全射。
 方針：同じ列の二射と同じ標準零射を保持する。
 規約：新しい四辺を選ばない。使われ方：有限四辺の比較を同時に型付けする。 -/
-def dgKappaNativeBFNativeArrow : Fin 4 → Arrow _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} :=
+def dgKappaNativeBFNativeArrow : Fin 4 → Arrow _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v} :=
   ![Arrow.mk (dgKappaNativeVerdierDiagram.{u, v} R D I).inclusion,
     Arrow.mk (dgKappaNativeVerdierDiagram.{u, v} R D I).projection,
-    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left),
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left),
     Arrow.mk (fromZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).right)]
 
 /-- 概要：元の四辺の BF 正段と Ex∞ 境界商は同じ指定前向き比較で可換する。

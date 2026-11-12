@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ReflectiveTargetMapping
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConstantFunctor
 
 /-!
 概要：終点の同型は、元の関手が Hom に誘導する写像の全単射性を保つ。
@@ -36,10 +36,10 @@ lemma functorMap_bijective_of_targetIso {C : Type*} {D : Type*} [Category C] [Ca
 
 /-- 頂点の実同型を、任意のパラメータ上の定値関手の実同型へ移す。 -/
 def constantVertexIso (A : SSet.{u}) {X : SSet.{u}} {x y : X _⦋0⦌}
-    (e : VertexIso x y) : FunctorIso (SSet.const x : A ⟶ X) (SSet.const y) where
-  hom := constantFunctorHomMap A e.hom
-  inv := constantFunctorHomMap A e.inv
-  hom_inv_id := by rw [← constantFunctorHomMap_comp, e.hom_inv_id, constantFunctorHomMap_id]
-  inv_hom_id := by rw [← constantFunctorHomMap_comp, e.inv_hom_id, constantFunctorHomMap_id]
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.const x : A ⟶ X) (SSet.const y) where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap A e.hom
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap A e.inv
+  hom_inv_id := by rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_comp, e.hom_inv_id, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_id]
+  inv_hom_id := by rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_comp, e.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_id]
 
 end SerrePositivity.KST.LocalizingInvariants

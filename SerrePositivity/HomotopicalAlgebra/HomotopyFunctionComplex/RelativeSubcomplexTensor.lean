@@ -81,7 +81,7 @@ lemma cosimplicialHomMap_hornRLP
     (hconstA : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (A.map f))
     (hconstB : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (B.map f))
     (targetObject : C) [IsFibrant targetObject] :
-    SSet.modelCategoryQuillen.J.{v}.rlp ((cosimplicialHomMap α).app targetObject) := by
+    SSet.modelCategoryQuillen.J.{v}.rlp ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app targetObject) := by
   intro K L f hf
   simp only [SSet.modelCategoryQuillen.J, MorphismProperty.iSup_iff] at hf
   obtain ⟨n, ⟨i⟩⟩ := hf

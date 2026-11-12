@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanModelFiberEquivalence
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalPullbackLifting
-public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftFibrationFiberComparison
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseIntervalPullbackLifting
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftFibrationFiberComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
 
 /-!
 概要：各点の native 錐の極限性から元の全空間模型比較の同値性を証明する。

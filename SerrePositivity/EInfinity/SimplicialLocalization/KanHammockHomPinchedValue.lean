@@ -18,19 +18,19 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SSet Hammock
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 lemma kanHammockHomPinchedMap_app_val {n : ℕ}
-    (s : (exInfinity.obj (colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
+    (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)) _⦋n⦌) :
     ((kanHammockHomPinchedMap C X Y).app (Opposite.op ⦋n⦌) s).val =
-      coherentHomComparisonSimplex (show (SimplicialCategory.sHom
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex (show (SimplicialCategory.sHom
         ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y)) _⦋n⦌ from s) := by
-  change ((pinchedEndpointIso (hammockLocalizationNerveMap_vertex C X).symm
+  change ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso (hammockLocalizationNerveMap_vertex C X).symm
     (hammockLocalizationNerveMap_vertex C Y).symm).hom.app (Opposite.op ⦋n⦌)
-      (coherentHomComparisonPinchedSimplex s)).val = _
-  rw [pinchedEndpointIso_hom_val]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparisonPinchedSimplex s)).val = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso_hom_val]
   rfl
 
 end SerrePositivity.EInfinity.SimplicialLocalization

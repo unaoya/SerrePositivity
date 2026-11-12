@@ -13,23 +13,23 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Opposite
 
 /-- 元の max connection を持つ具体的な立方体圏上の前層。 -/
-abbrev CubicalSet := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⥤ Type u
+abbrev CubicalSet := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ ⥤ Type u
 
 /-- 元の立方体を、その射全体からなる表現可能な cubical set へ送る。 -/
-def cubicalYoneda : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube ⥤ CubicalSet.{u} := uliftYoneda.{u}
+def cubicalYoneda : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube ⥤ CubicalSet.{u} := uliftYoneda.{u}
 
 /-- 元の立方体の単体に対応する表現可能前層からの射。 -/
-def cubicalCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+def cubicalCell {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     (cubicalYoneda.obj c) ⟶ K := uliftYonedaEquiv.symm x
 
 /-- 元の表現可能立方体からの射の全データは、その恒等射での値から回収される。 -/
-lemma cubicalCell_equiv {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+lemma cubicalCell_equiv {K : CubicalSet.{u}} (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (f : cubicalYoneda.obj c ⟶ K) : cubicalCell c (uliftYonedaEquiv f) = f :=
   uliftYonedaEquiv.symm_apply_apply f
 
 /-- cubical set の射は、元の各立方体の Yoneda 射との合成を保つ。 -/
 lemma cubicalCell_naturality {K L : CubicalSet.{u}} (f : K ⟶ L)
-    (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+    (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     cubicalCell c x ≫ f = cubicalCell c (f.app (op c) x) := by
   apply uliftYonedaEquiv.injective
   change f.app (op c) (uliftYonedaEquiv (uliftYonedaEquiv.symm x)) =

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedIdentityDiagrams
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzagConstantDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagFixedAppendFunctor
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagColumnSplitFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzagConstantDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagFixedAppendFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagColumnSplitFunctor
 
 /-!
 # 元の切断因子の関手と恒等列付き元の関手の比較
@@ -20,50 +20,50 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
-open CategoryTheory Zigzag.MovingDiagram
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
-  (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [])
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
+  (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [])
 
 lemma selected_prefix_word :
-    Word.CutFactor.prefixWord (Word.append (Word.append a (Word.single .forward)) b)
-      (AttachedPrefix.index W (simplex W g σ τ) h) = Word.append a (Word.single .forward) :=
-  (congrArg (Word.CutFactor.prefixWord (Word.append (Word.append a (Word.single .forward)) b))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) :=
+  (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b))
     (simplex_firstColumn W g σ τ h)).trans (prefix_word a b)
 
 lemma selected_residual_word :
-    Word.CutFactor.residualWord (Word.append (Word.append a (Word.single .forward)) b)
-      (AttachedPrefix.index W (simplex W g σ τ) h) = Word.append (Word.single .forward) b :=
-  (congrArg (Word.CutFactor.residualWord (Word.append (Word.append a (Word.single .forward)) b))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) b :=
+  (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b))
     (simplex_firstColumn W g σ τ h)).trans (residual_word a b)
 
 lemma prefix_identity_functor :
-    HEq (Attachments.prefixFunctor W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h) (AttachedPrefix.nonempty W _ h))
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.prefixFunctor W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))
       ((((AllMarked.graphMap W X g.val.left a).app n σ).prod'
-        (arrowSimplex W.paths (𝟙 (show Paths C from g.val.left)) n)) ⋙ ZigzagAppend.functor) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths (𝟙 (show Paths C from g.val.left)) n)) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) := by
   have hg := congrArg (fun t : Quiver.Total C => (show Paths C from t.left))
     (simplex_generator W g σ τ h)
-  have he := fixedFunctor_heq (selected_prefix_word W g σ τ h) rfl hg _ _
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fixedFunctor_heq (selected_prefix_word W g σ τ h) rfl hg _ _
     (prefix_identity_diagram W g σ τ h)
-  rw [append_fixedFunctor, ofFunctor_fixedFunctor,
-    ForwardZigzag.identity_diagram_fixedFunctor] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.append_fixedFunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor_fixedFunctor,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.identity_diagram_fixedFunctor] at he
   exact he
 
 lemma residual_identity_functor :
-    HEq (Attachments.residualFunctor W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h) (AttachedPrefix.nonempty W _ h))
-      ((arrowSimplex W.paths (𝟙 (show Paths C from g.val.right)) n).prod' τ ⋙
-        ZigzagAppend.functor) := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.residualFunctor W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths (𝟙 (show Paths C from g.val.right)) n).prod' τ ⋙
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) := by
   have hg := congrArg (fun t : Quiver.Total C => (show Paths C from t.right))
     (simplex_generator W g σ τ h)
-  have he := fixedFunctor_heq (selected_residual_word W g σ τ h) hg rfl _ _
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fixedFunctor_heq (selected_residual_word W g σ τ h) hg rfl _ _
     (residual_identity_diagram W g σ τ h)
-  rw [append_fixedFunctor, ofFunctor_fixedFunctor,
-    ForwardZigzag.identity_diagram_fixedFunctor] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.append_fixedFunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ofFunctor_fixedFunctor,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.identity_diagram_fixedFunctor] at he
   exact he
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

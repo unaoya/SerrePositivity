@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 
 /-!
 概要：相対写像空間の指定同型を、底を全時刻で固定する実際の円柱に表示する。

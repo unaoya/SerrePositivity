@@ -4,12 +4,12 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.CommutativeAlgebra.Koszul.Basic
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.Derived.StableLimits
-public import SerrePositivity.InfinityCategories.F1B.Localization.Reflective
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationCocone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StableLimits
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Reflective
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.TrivialFibrationCocone
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PDCompletion
 
 /-!

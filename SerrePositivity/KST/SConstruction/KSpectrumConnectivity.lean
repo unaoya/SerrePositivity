@@ -29,7 +29,7 @@ lemma kOmegaSpectrum_negative_subsingleton (X : StableModel.{u}) (j : ℤ) (hj :
       omega
     let z : OmegaSpectrum.levelHomotopy (kOmegaSpectrum X) (n + 1) 0 ≃
         SSet.π₀ (((kOmegaSpectrum X).level (n + 1)).space).right :=
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
     have : Subsingleton (OmegaSpectrum.levelHomotopy (kOmegaSpectrum X) (n + 1) 0) :=
       z.injective.subsingleton
     have e : OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) (Int.negSucc n) ≃
@@ -55,6 +55,6 @@ def kOmegaSpectrum_zeroGroupEquiv (X : StableModel.{u}) :
 def kOmegaSpectrum_zeroEquivPiZero (X : StableModel.{u}) :
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) 0 ≃
       SSet.π₀ (boundaryKSpaceFunctor.obj X).right :=
-  (kOmegaSpectrum_zeroGroupEquiv X).toEquiv.trans _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  (kOmegaSpectrum_zeroGroupEquiv X).toEquiv.trans _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
 
 end SerrePositivity.KST.SConstruction

@@ -20,19 +20,19 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 
 /-- 元の図式を任意の単体的添字で対角に制限した全入力族の作用。 -/
 def coordinateEnrichedDiagonalAction
-    (D : J ⥤ QuasicategoryEnrichedFunctorCategory C) (I : SimplexCategoryᵒᵖ ⥤ J)
+    (D : J ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C) (I : SimplexCategoryᵒᵖ ⥤ J)
     (X Y : C) :
     simplicialDiagonalFunctor.obj
-      (I ⋙ D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ quasicategoryObjectForget) ⊗
+      (I ⋙ D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget) ⊗
         (X ⟶[SSet.{u}] Y) ⟶
     simplicialDiagonalFunctor.obj
-      (I ⋙ D ⋙ quasicategoryEnrichedEvaluationFunctor Y ⋙ quasicategoryObjectForget) :=
+      (I ⋙ D ⋙ quasicategoryEnrichedEvaluationFunctor Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget) :=
   uncurry ((simplicialEnrichedDiagramFunctor (I ⋙ D)).map X Y ≫
     simplicialSSetDiagramDiagonalEnrichedFunctor.map _ _)
 
 /-- 全対角作用は、各次数で元の同じ段の全入力族の作用を回収する。 -/
 lemma coordinateEnrichedDiagonalAction_app
-    (D : J ⥤ QuasicategoryEnrichedFunctorCategory C) (I : SimplexCategoryᵒᵖ ⥤ J)
+    (D : J ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C) (I : SimplexCategoryᵒᵖ ⥤ J)
     (X Y : C) (n : SimplexCategoryᵒᵖ)
     (x : (((D.obj (I.obj n)).obj X).obj).obj n) (p : (X ⟶[SSet.{u}] Y).obj n) :
     (coordinateEnrichedDiagonalAction D I X Y).app n (x, p) =
@@ -45,20 +45,20 @@ lemma coordinateEnrichedDiagonalAction_app
 
 /-- 元の区間組み立ては、全高次入力族による対角作用と厳密に可換する。 -/
 lemma coordinateDiagonalAssembly_enriched_naturality (r : ℕ)
-    (D : (Fin (r + 1) → SimplexCategoryᵒᵖ) ⥤ QuasicategoryEnrichedFunctorCategory C)
+    (D : (Fin (r + 1) → SimplexCategoryᵒᵖ) ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C)
     (X Y : C) :
     (coordinateDiagonalAssembly r
-      (D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ quasicategoryObjectForget) ▷
+      (D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget) ▷
         (X ⟶[SSet.{u}] Y)) ≫
       coordinateEnrichedDiagonalAction D (multiIndexDiagonal (r + 1)) X Y =
     (α_ (Δ[1] : SSet.{u})
       (simplicialDiagonalFunctor.obj (multiIndexDiagonal r ⋙ oneDirectionIndex r ⋙
-        D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ quasicategoryObjectForget))
+        D ⋙ quasicategoryEnrichedEvaluationFunctor X ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget))
       (X ⟶[SSet.{u}] Y)).hom ≫
       ((Δ[1] : SSet.{u}) ◁ coordinateEnrichedDiagonalAction D
         (multiIndexDiagonal r ⋙ oneDirectionIndex r) X Y) ≫
       coordinateDiagonalAssembly r
-        (D ⋙ quasicategoryEnrichedEvaluationFunctor Y ⋙ quasicategoryObjectForget) := by
+        (D ⋙ quasicategoryEnrichedEvaluationFunctor Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.quasicategoryObjectForget) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext

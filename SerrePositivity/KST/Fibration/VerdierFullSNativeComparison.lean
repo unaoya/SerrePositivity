@@ -21,7 +21,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ実比較辺の native 座標像は、元の共有対角上で厳密に恒等。 -/
-def verdierNullHomFullSNativeComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
+def verdierNullHomFullSNativeComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :
     FixedRestrictionFunctorEdge coherentTriangleDirectVertexMap
       (verdierNullHomFullSNativeFamily d j) (verdierNullHomFullSNativeFamily d k) := by
   have h := (verdierNullHomFullSComparison d j k).postcomp
@@ -31,11 +31,11 @@ def verdierNullHomFullSNativeComparison (d : _root_.SerrePositivity.InfinityCate
     Category.assoc] using h
 
 /-- 元の全上下円柱の同じ比較辺は、native 座標でも共有対角の全評価を固定する。 -/
-def verdierNullHomFullSNativeCylinderComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :=
+def verdierNullHomFullSNativeCylinderComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2) :=
   (verdierNullHomFullSNativeComparison d j k).uncurryCoreKan
 
 /-- 元の核収縮族を、同じ全 S• 始域と native Kan 標的の全族へ送る。 -/
-def verdierNullContractionFullSNativeFamily (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+def verdierNullContractionFullSNativeFamily (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     (Δ[1] : SSet.{u}) ⟶
       (ihom (fullSRealizationKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj).obj
         ((stableMultiKanEnrichedFunctor 0).obj ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)).obj :=
@@ -45,7 +45,7 @@ def verdierNullContractionFullSNativeFamily (d : _root_.SerrePositivity.Infinity
         ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)
 
 /-- 元の指定下側二胞体の path 族を、同じ全 S• の native 族に延長する。 -/
-def verdierNullPathFullSNativeFamily (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
+def verdierNullPathFullSNativeFamily (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
     (Δ[1] : SSet.{u}) ⟶
       (ihom (fullSRealizationKanObject ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj).obj
         ((stableMultiKanEnrichedFunctor 0).obj ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)).obj :=
@@ -54,7 +54,7 @@ def verdierNullPathFullSNativeFamily (d : _root_.SerrePositivity.InfinityCategor
       ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)
 
 /-- 元の核収縮と指定下側二胞体の同じ比較辺を、実合成端固定のまま native 座標へ送る。 -/
-def verdierNullContractionFullSNativeComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+def verdierNullContractionFullSNativeComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     FixedRestrictionFunctorEdge (stdSimplex.δ (0 : Fin 2))
       (verdierNullContractionFullSNativeFamily d) (verdierNullPathFullSNativeFamily d 1) := by
   have h := (verdierNullContractionFullSComparison d).postcomp
@@ -64,11 +64,11 @@ def verdierNullContractionFullSNativeComparison (d : _root_.SerrePositivity.Infi
     zeroFunctorFullSNativeKanFamily, Category.assoc] using h
 
 /-- 同じ全 native 円柱比較の内部評価も、元の実合成端を厳密に固定する。 -/
-def verdierNullContractionFullSNativeCylinderComparison (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
+def verdierNullContractionFullSNativeCylinderComparison (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :=
   (verdierNullContractionFullSNativeComparison d).uncurryCoreKan
 
 /-- 元の同じ実可逆辺から得る、全 native 円柱の全関手同型。 -/
-def verdierNullContractionFullSNativeCylinderIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
+def verdierNullContractionFullSNativeCylinderIso (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :=
   (verdierNullContractionFullSNativeCylinderComparison d).iso
 
 end SerrePositivity.KST.Fibration

@@ -55,7 +55,7 @@ def signedLoopUnit (X : OmegaSpectrum.{u}) : X ⟶ signedLoopModel X :=
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7。有理化の前に必要な模型の比較の検査。 -/
 theorem signedLoopUnit_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopUnit X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopUnit X).app n).right :=
   rectifyInto_levelwise X (KanSequence.signedLoopTail X.toKanSequence)
     (KanSequence.signedLoopTail_omegaCondition X.toKanSequence_omega)
     (KanSequence.kanAdjoint X.toKanSequence)

@@ -27,9 +27,9 @@ def kKanSequenceLevel (X : StableModel.{u}) : ℕ → Spectra.PointedKanComplex.
 方針：零段は loop の恒等射を uncurry し、後続では反復 S の構造射を使う。
 規約：零段での随伴射は恒等射。使われ方：K 空間と実現の接続。 -/
 def kKanSequenceSigma (X : StableModel.{u}) :
-    ∀ r, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (kKanSequenceLevel X r).space ⟶
+    ∀ r, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (kKanSequenceLevel X r).space ⟶
       (kKanSequenceLevel X (r + 1)).space
-  | 0 => (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).symm (𝟙 (boundaryKSpaceFunctor.obj X))
+  | 0 => (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _).symm (𝟙 (boundaryKSpaceFunctor.obj X))
   | r + 1 => (boundaryKanSequence X).sigma r
 
 /-- 概要：零段が定義済みの K 空間である実際の Kan 列。
@@ -43,17 +43,17 @@ def kKanSequence (X : StableModel.{u}) : Spectra.KanSequence.{u} where
 方針：随伴同値の逆方向の消去。
 規約：厳密等号。使われ方：零段の Ω 条件の確認。 -/
 lemma kKanSequence_zero_adjoint (X : StableModel.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0) =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0) =
       𝟙 (boundaryKSpaceFunctor.obj X) := Equiv.apply_symm_apply _ _
 
 /-- 概要：K の候補列の零段の随伴構造射は全基点 π 同型。
 方針：零段の随伴構造射を恒等射へ書き直す。
 規約：正の段については主張しない。使われ方：Ω 条件の零段。 -/
 lemma kKanSequence_zero_piIsomorphism (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0)).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _) ((kKanSequence X).sigma 0)).right := by
   rw [kKanSequence_zero_adjoint]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _
 
 /-- 概要：K の候補列の単射構造射を持つ Kan 置換列。
 方針：L9 の Kan 列の逐次置換を適用する。
@@ -79,7 +79,7 @@ def monicKKanSequenceProjection (X : StableModel.{u}) :
 方針：L9 の Kan 列の射影の比較定理を使う。
 規約：零次数も含む。使われ方：BF の単射模型と元の反復 S の比較。 -/
 lemma monicKKanSequenceProjection_piIsomorphism (X : StableModel.{u}) (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((monicKKanSequenceProjection X).app r).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((monicKKanSequenceProjection X).app r).right :=
   Spectra.KanSequence.replacementProjection_piIsomorphism _ r
 
 /-- 概要：単射構造射の候補列の零段は定義済みの K 空間と一致する。

@@ -20,31 +20,31 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock SerrePositivity.InfinityCategories
-lemma freeWordDiagonalAugmentation_weak (C : RelativeCategory.{u}) (w : Word)
+lemma freeWordDiagonalAugmentation_weak (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (X Y : C.category) :
-    IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) := by
-  have h : ∀ a : Word, ∀ X Y : C.category,
-      IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app a) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app w) := by
+  have h : ∀ a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word, ∀ X Y : C.category,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((freeWordDiagonalAugmentation C X Y).app a) := by
     intro a
-    induction a using Word.induction_on with
+    induction a using _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.induction_on with
     | h0 => exact freeWordDiagonalAugmentation_empty_weak C
     | hs d v ih =>
       intro X Y
       cases hv : v.length with
       | zero =>
-        have he := Word.eq_empty_of_length_zero v hv
+        have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.eq_empty_of_length_zero v hv
         subst v
         cases d with
         | forward =>
-          exact Eq.mpr (congrArg (fun a : Word => IsWeakHomotopyEquivalence
-            ((freeWordDiagonalAugmentation C X Y).app a)) (Word.cons_empty .forward))
+          exact Eq.mpr (congrArg (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+            ((freeWordDiagonalAugmentation C X Y).app a)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons_empty .forward))
               (freeWordDiagonalAugmentation_forward_weak C X Y)
         | backward =>
-          exact Eq.mpr (congrArg (fun a : Word => IsWeakHomotopyEquivalence
-            ((freeWordDiagonalAugmentation C X Y).app a)) (Word.cons_empty .backward))
+          exact Eq.mpr (congrArg (fun a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+            ((freeWordDiagonalAugmentation C X Y).app a)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons_empty .backward))
               (freeWordDiagonalAugmentation_backward_weak C X Y)
       | succ n =>
-        obtain ⟨e, t, ht⟩ := Word.exists_cons_of_length_succ v n hv
+        obtain ⟨e, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.exists_cons_of_length_succ v n hv
         subst v
         cases d with
         | forward =>

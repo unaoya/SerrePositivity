@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.AsSmallComma
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 
@@ -38,8 +38,8 @@ lemma terminal_localized_isIso
     (h : IsIso (AnodyneHomotopy.anodyneQ.map (SSet.stdSimplex.isTerminalObj₀.from
       (nerve (CostructuredArrow F d))))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (SSet.stdSimplex.isTerminalObj₀.from
-      (nerve (CostructuredArrow (smallFunctor.{u, v, u', v', w} F) (AsSmall.up.obj d))))) := by
-  let e := equivalence.{u, v, u', v', w} F d
+      (nerve (CostructuredArrow (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor.{u, v, u', v', w} F) (AsSmall.up.obj d))))) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.equivalence.{u, v, u', v', w} F d
   have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap e.functor)) :=
     inferInstanceAs (IsIso (NerveEquivalenceImage.imageIso e AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).hom)
@@ -49,7 +49,7 @@ lemma terminal_localized_isIso
   have he : nerveMap e.functor ≫ SSet.stdSimplex.isTerminalObj₀.from
       (nerve (AsSmall.{max w u v u' v'} (CostructuredArrow F d))) =
       SSet.stdSimplex.isTerminalObj₀.from
-        (nerve (CostructuredArrow (smallFunctor.{u, v, u', v', w} F) (AsSmall.up.obj d))) :=
+        (nerve (CostructuredArrow (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.AsSmallComma.smallFunctor.{u, v, u', v', w} F) (AsSmall.up.obj d))) :=
     SSet.stdSimplex.isTerminalObj₀.hom_ext _ _
   rw [← he, CategoryTheory.Functor.map_comp]
   infer_instance

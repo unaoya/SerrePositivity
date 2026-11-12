@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Simplicial SSet
 
 /-- 元の次元同型で cube 射を共役しても、元の同じ cell の可換三角形を保つ。 -/
-lemma cubicalYoneda_conjugate_cell {P Q R S : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} {M : CubicalSet.{u}}
+lemma cubicalYoneda_conjugate_cell {P Q R S : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} {M : CubicalSet.{u}}
     (e : P ≅ Q) (e' : R ≅ S) (f : Q ⟶ S)
     (c : cubicalYoneda.obj Q ⟶ M) (d : cubicalYoneda.obj S ⟶ M)
     (h : cubicalYoneda.map f ≫ d = c) :
@@ -27,28 +27,28 @@ lemma cubicalYoneda_conjugate_cell {P Q R S : _root_.SerrePositivity.InfinityCat
 
 /-- 元の指定した両端の Hom に値を持つ、同じ元の部分集合 cubical 生成射。 -/
 def simplexSubsetCubicalCellAt {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
-    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
-    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ⟶
+    (hI : 2 ≤ I.card) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
+    cubicalYoneda.obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ⟶
       necklaceCubicalMapping (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
   cubicalYoneda.map (simplexSubsetCubeDimensionIso.{u} I hI).hom ≫
     necklaceCubicalCell (necklaceInSimplexSubsetAt I a b hI ha hb)
 
 /-- 元の最小・最大端点に戻すと、元の同じ部分集合の生成射そのもの。 -/
 lemma simplexSubsetCubicalCellAt_canonical {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) :
-    simplexSubsetCubicalCellAt.{u} I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-      (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl = simplexSubsetCubicalCell I hI := rfl
+    simplexSubsetCubicalCellAt.{u} I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+      (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl = simplexSubsetCubicalCell I hI := rfl
 
 /-- 元の同端点の部分集合包含を、元の濃度−2 次元を持つ実 cube 射で読む。 -/
 def simplexSubsetCubeInclusion {n : ℕ} (I J : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card) (hIJ : I ⊆ J)
-    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
-    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (J.card - 2) :=
+    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
+    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ)) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (J.card - 2) :=
   (simplexSubsetCubeDimensionIso.{u} I hI).hom ≫
     necklaceConcreteCube.map
       (necklaceInSimplexSubsetAtInclusion.{u} I J a b hI hJ hIJ haI hbI haJ hbJ).necklaceHom ≫
@@ -57,10 +57,10 @@ def simplexSubsetCubeInclusion {n : ℕ} (I J : Finset (Fin (n + 1)))
 /-- 元の次元を揃えた部分集合包含は、元の同じ HA 用 cubical 生成射と厳密に可換。 -/
 lemma simplexSubsetCubeInclusion_cell {n : ℕ} (I J : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (hI : 2 ≤ I.card) (hJ : 2 ≤ J.card) (hIJ : I ⊆ J)
-    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ))
-    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty J hJ)) :
+    (haI : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hbI : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (haJ : a = J.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ))
+    (hbJ : b = J.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty J hJ)) :
     cubicalYoneda.map (simplexSubsetCubeInclusion.{u} I J a b hI hJ hIJ haI hbI haJ hbJ) ≫
         simplexSubsetCubicalCellAt J a b hJ haJ hbJ =
       simplexSubsetCubicalCellAt I a b hI haI hbI :=

@@ -7,7 +7,7 @@ SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexL
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismBoundaryValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedFiberValueToDisplay
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalNativeValueBoundary
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoSquareIdentity
 
 /-!
 概要：零面の実最後辺の指定対角比較の値を、元の Apex の同じ最後辺へ戻す。

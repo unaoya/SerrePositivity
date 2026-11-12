@@ -15,7 +15,7 @@ public import SerrePositivity.DifferentialGraded.Functor.DGFunctorClosedNaturali
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   (J : DGFunctor R C (PerfectDGModule R E))
@@ -34,15 +34,15 @@ local notation "G0" => DGFunctor.comp (G.comp (Y)) (V)
 local notation "F1" => DGFunctor.comp F (K)
 local notation "G1" => DGFunctor.comp G (K)
 local notation "ηY" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
-local notation "η0" => dgStrictNatTransPostcomp (ηY) (V)
+local notation "η0" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ηY) (V)
 local notation "εF" => dgPerfectRealizationYonedaRestrictedStrictComparison R E C J F
 local notation "εG" => dgPerfectRealizationYonedaRestrictedStrictComparison R E C J G
 
 /-- 概要：元比較の同じ実 perfect 像を全厳密比較に束ねる。
 方針：元閉比較の後合成全自然性を既存厳密構成子へ渡す。
 規約：元実像射を保持。使われ方：全評価 square の終辺。 -/
-def dgIdentityHomGluingRealizedModuleComparison : StrictNatTrans (F1) (G1) :=
-  dgModuleStrictNatTransOfHomNaturality R E (F := (F1)) (G := (G1))
+def dgIdentityHomGluingRealizedModuleComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (F1) (G1) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R E (F := (F1)) (G := (G1))
     (fun x => (K).onClosed.map (a x))
     (dgClosedComparison_postcomp_naturality R F G (K) a h)
 local notation "η1" => dgIdentityHomGluingRealizedModuleComparison R E C J F G a h
@@ -60,12 +60,12 @@ lemma dgIdentityHomGluingRealizedModuleComparison_arrow (x : P) :
 方針：元全評価自然性を元閉射へ制限し全閉成分の外延性を使う。
 規約：元全比較の等号。使われ方：元 gluing cone の全 square 比較。 -/
 lemma dgIdentityHomGluingRealizedModuleSquare :
-    dgStrictNatTransComp (η0) (εG) = dgStrictNatTransComp (εF) (η1) := by
-  apply dgStrictNatTrans_ext
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (η0) (εG) = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (εF) (η1) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTrans_ext
   intro x
   apply (closedHomEquiv R (RightModule R E) ((F0).obj x) ((G1).obj x)).symm.injective
-  change dgModuleNaturalConeArrow R E (F0) (G1) (dgStrictNatTransComp (η0) (εG)) x =
-    dgModuleNaturalConeArrow R E (F0) (G1) (dgStrictNatTransComp (εF) (η1)) x
+  change dgModuleNaturalConeArrow R E (F0) (G1) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (η0) (εG)) x =
+    dgModuleNaturalConeArrow R E (F0) (G1) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (εF) (η1)) x
   rw [dgModuleNaturalConeArrow_comp, dgModuleNaturalConeArrow_comp,
     dgPerfectRealizationYonedaRestrictedStrictComparison_arrow,
     dgPerfectRealizationYonedaRestrictedStrictComparison_arrow,

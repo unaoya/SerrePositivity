@@ -45,13 +45,13 @@ lemma dgIdentityInverseRotationModuleSource_acyclic (x : P)
     moduleAcyclic R C (ForgetEnrichment.of (Complex R) ((S).obj x)) := by
   obtain ⟨t, dt⟩ := hG
   let Y := dgYoneda R C
-  have hz := dgNerve_contractingElement_isZeroVertex _ ((Y.map _ _).f (-1) t)
+  have hz := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_contractingElement_isZeroVertex _ ((Y.map _ _).f (-1) t)
     (Y.map_contractingElement R _ t dt)
-  have e := FunctorIso.app
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app
     (dgIdentityHomGluingInverseRotationStrictNerveComparison R C F G a h)
-    (DGNerve.Simplex.vertex x)
-  simp only [dgFunctorNerve_vertex] at e
-  obtain ⟨s, ds⟩ := dgNerve_exists_contractingElement_of_isTerminalVertex _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at e
+  obtain ⟨s, ds⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_exists_contractingElement_of_isTerminalVertex _
     (hz.2.of_vertexIso e.symm)
   have hs := DGQuotient.homotopy_isZero_of_unit_boundary R (RightModule R C) _ s ds
   apply (moduleHomotopyAcyclic_obj_iff R C _).1

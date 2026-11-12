@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowEssentialSurjectivity
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ArrowEssentialSurjectivity
 public import SerrePositivity.KST.LocalizingInvariants.TammeQuotientFractions
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationEssentialSurjectivity
 
@@ -20,24 +20,24 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
     (f : Truncated.Edge (X := (truncation 2).obj (tammeQuotient p q))
       ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) x)
       ((tammeQuotientMap p q).app (Opposite.op ⦋0⦌) y)) :
     ∃ g : (Δ[1] : SSet.{u}) ⟶ (laxCategory p q).obj,
-      Nonempty (FunctorIso (g ≫ tammeQuotientMap p q) (SSet.yonedaEquiv.symm f.edge)) := by
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (g ≫ tammeQuotientMap p q) (SSet.yonedaEquiv.symm f.edge)) := by
   obtain ⟨a, s, g, hs, ⟨c⟩⟩ := tammeQuotient_edge_fraction p q f
   let F := tammeQuotientMap p q
   let sm := s.map ((truncation 2).map F)
   let gm := g.map ((truncation 2).map F)
   let i := Truncated.Edge.id (X := (truncation 2).obj (tammeQuotient p q))
     (F.app (Opposite.op ⦋0⦌) y)
-  have hsm : IsInvertibleEdge sm :=
-    (isInvertibleEdge_congr (e := (edgeOfSimplex s.edge).map ((truncation 2).map F))
+  have hsm : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge sm :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s.edge).map ((truncation 2).map F))
       (f := sm) rfl).mp ((tammeQuotient_isLocalization p q).choose hs)
-  have hi : IsInvertibleEdge i := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge i := by
     change IsIso (SSet.Truncated.HomotopyCategory.homMk (Truncated.Edge.id _))
     rw [SSet.Truncated.HomotopyCategory.homMk_id]
     infer_instance
@@ -50,7 +50,7 @@ lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
     exact (Category.comp_id (obj := hoFunctor.obj (tammeQuotient p q))
       (SSet.Truncated.HomotopyCategory.homMk gm)).trans
         (SSet.Truncated.HomotopyCategory.homMk_comp_homMk c).symm
-  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrowFunctorIso_of_homMk_comm gm f sm i hsm hi h
+  obtain ⟨e⟩ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrowFunctorIso_of_homMk_comm gm f sm i hsm hi h
   refine ⟨SSet.yonedaEquiv.symm g.edge, ⟨?_⟩⟩
   have hg : SSet.yonedaEquiv.symm gm.edge = SSet.yonedaEquiv.symm g.edge ≫ F := by
     apply SSet.yonedaEquiv.injective
@@ -60,8 +60,8 @@ lemma tammeQuotient_arrow_lift {x y : (laxCategory p q).obj _⦋0⦌}
   exact e
 
 lemma tammeQuotientArrow_isEssentiallySurjective :
-    IsEssentiallySurjective ((ihom (Δ[1] : SSet.{u})).map (tammeQuotientMap p q)) :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.arrowMap_isEssentiallySurjective _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective ((ihom (Δ[1] : SSet.{u})).map (tammeQuotientMap p q)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.arrowMap_isEssentiallySurjective _
     (localization_isEssentiallySurjective _ _ (tammeQuotient_isLocalization p q))
     (fun f => tammeQuotient_arrow_lift p q f)
 

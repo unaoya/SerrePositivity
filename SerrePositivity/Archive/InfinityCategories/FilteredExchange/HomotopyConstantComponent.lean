@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DegenerateEdgeIso
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.PinchedHom.Paths
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Paths
 
 /-!
 概要：指定ホモトピーの同じ点での実辺が退化なら、その指定成分の同型は恒等。

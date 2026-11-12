@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanMonoRelativeHomotopy
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：Kan 値の二つの全円柱の比較を、指定した始面と部分円柱から厳密に延長する。

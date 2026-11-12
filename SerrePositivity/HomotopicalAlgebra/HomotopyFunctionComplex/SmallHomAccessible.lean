@@ -28,10 +28,10 @@ lemma hom_isCardinalAccessible (Q : C ⥤ SimplexCategory ⥤ C) (R : C ⥤ C) (
     { preservesColimitOfShape := by intros; infer_instance }
   have := cosimplicialHom_isCardinalAccessible (SmallHomRealization.frame (Q.obj X.unop)) κ
   exact inferInstanceAs (((R ⋙ changeHom (C := C)) ⋙
-    cosimplicialHom (SmallHomRealization.frame (Q.obj X.unop))).IsCardinalAccessible κ)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (SmallHomRealization.frame (Q.obj X.unop))).IsCardinalAccessible κ)
 
 lemma exists_accessible_mapping_tests
-    (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     {ι : Type t} [Small.{w} ι] (s : ι → Arrow C) :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       ∃ d : Smith.AccessibleModelFactorizations C κ,

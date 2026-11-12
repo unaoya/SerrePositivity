@@ -37,7 +37,7 @@ lemma cellHomFunctionIso_familyVertex (K : SSet.{u}) (Y : PointedSimplicialSet.{
     (congrArg (fun q : PointedObject.basedHom (cellCofiber K d) Y ⟶
         PointedObject.basedHom (∐ fun _ : relativeCellComplexOfMono.Cell (K.skeleton d).ι d ↦
           SimplexCell.sphere.{u} d) Y ↦ q.right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre (cellCoproductIso K d).inv Y))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre (cellCoproductIso K d).inv Y))
   change ((pointedCoproductHomUnderlyingIso _ _ Y).hom.app _
     (((MonoidalClosed.pre (cellCoproductIso K d).inv).app Y).right.app _
       (PointedMapping.familyVertex g))) c = _
@@ -54,7 +54,7 @@ lemma stageFiberVertex_cellMap (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n 
     (g : cellCofiber K (n + 1) ⟶ Y) :
     stageFiberVertex K Y n (fun s ↦
       Limits.Sigma.ι (fun _ : relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1) ↦
-        SimplexCell.sphere.{u} (n + 1)) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s) ≫
+        SimplexCell.sphere.{u} (n + 1)) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s) ≫
           (cellCoproductIso K (n + 1)).inv ≫ g) =
       (stageFiberCellIso K Y n).hom.right.app _ (PointedMapping.familyVertex g) := by
   let e := (SSet.evaluation.obj (Opposite.op ⦋0⦌)).mapIso

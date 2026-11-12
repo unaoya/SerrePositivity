@@ -21,15 +21,15 @@ variable (X Y : OmegaSpectrum.{u})
 
 /-- 構造 Hom の区間を、元のパラメータと二重懸垂源の counit 座標へ移す同じ射。 -/
 def kanAdjointStructureCounitMap (A : PointedSimplicialSet.{u}) (n : ℕ) :
-    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level
         (n + 1)).space ⟶
       PointedObject.basedHom A (PointedObject.basedHom
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)) (Y.level (n + 2)).space) :=
-  (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)) (Y.level (n + 2)).space) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
     (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 2)).space)).hom ≫
       PointedObject.basedHomMap A
-        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)
+        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)
 
 variable {A B : PointedSimplicialSet.{u}}
   (φ : A ⟶ pointedSpace X Y.toKanSequence) (j : B ⟶ A) [Mono j.right]
@@ -56,15 +56,15 @@ lemma kanAdjointRelativeTracedPastedCounitSquare_start (n : ℕ) :
   rw [← Category.assoc, kanAdjointRelativeTracedPastedSquare_start]
   have he := kanAdjointTracedStructureCounitInterval_path X Y φ n
   change ((kanAdjointTracedStructureInterval X Y φ n).path ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
         (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 2)).space)).hom.right) ≫
       (PointedObject.basedHomMap A
-        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)).right = _ at he
+        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)).right = _ at he
   change (kanAdjointTracedStructureInterval X Y φ n).path ≫
-      ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+      ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
         (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 2)).space)).hom.right ≫
       (PointedObject.basedHomMap A
-        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)).right) = _
+        (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)).right) = _
   simpa only [Category.assoc] using he
 
 /-- 同じ正方形の終点境界は、元の厳密化した構造頂点の counit 像で全体が一定。 -/

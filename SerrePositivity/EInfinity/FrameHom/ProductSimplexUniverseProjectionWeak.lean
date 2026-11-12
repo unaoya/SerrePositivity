@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexProjection
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ProductSimplexUniverseOver
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 
@@ -26,15 +26,15 @@ variable (M : SSet.{u}) (n : AsSmall.{max u w} SimplexCategory)
 /-- 概要：同じ積単体の全要素と次数表示を任意上限の宇宙で回収する。
 方針：元の各成分と up・down の全作用素の往復を評価する。
 規約：同じ元の単体。使われ方：実 roof の同じ次数比較への接続。 -/
-def firstNerveMap : nerve (productElements.{u, w} M n) ⟶ nerve (elements.{u, w} M) :=
-  nerveMap (firstComponent.{u, w} M n)
+def firstNerveMap : nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.productElements.{u, w} M n) ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.elements.{u, w} M) :=
+  nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.firstComponent.{u, w} M n)
 
 /-- 概要：同じ積単体の全要素と次数表示を任意上限の宇宙で回収する。
 方針：元の各成分と up・down の全作用素の往復を評価する。
 規約：同じ元の単体。使われ方：実 roof の同じ次数比較への接続。 -/
-lemma firstComponent_eq_mapElements : firstComponent.{u, w} M n =
+lemma firstComponent_eq_mapElements : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexUniverseOver.firstComponent.{u, w} M n =
     ULiftHom.down.{0, u, max u w} ⋙
-      (ProductSimplexProjection.projection M (ULift.down n).len).mapElements.op ⋙
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len).mapElements.op ⋙
         ULiftHom.up := rfl
 
 /-- 概要：同じ積単体の全要素と次数表示を任意上限の宇宙で回収する。
@@ -45,10 +45,10 @@ lemma firstNerveMap_augmentation : firstNerveMap.{u, w} M n ≫
       SimplexTerminalNerve.liftedAugmentation.{u, max u w}
         (M ⊗ SSet.stdSimplex.obj (ULift.down n)) ≫
           SSet.uliftFunctor.{max u w, u}.map
-            (ProductSimplexProjection.projection M (ULift.down n).len) :=
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len) :=
   by
     have h := SimplexTerminalNerve.liftedAugmentation_naturality.{u, max u w}
-      (ProductSimplexProjection.projection M (ULift.down n).len)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection M (ULift.down n).len)
     rw [← firstComponent_eq_mapElements.{u, w}] at h
     exact h
 
@@ -59,7 +59,7 @@ lemma firstNerveMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (firstNerveMap.{u, w} M n)) := by
   let Q := AnodyneHomotopy.anodyneQ
   have hP := Hammock.anodyneQ_map_isIso_of_weak _
-    (ProductSimplexProjection.projection_weak M (ULift.down n).len)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ProductSimplexProjection.projection_weak M (ULift.down n).len)
   have := UniverseLift.anodyneQ_map_isIso_of_small _ hP
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, max u w} M
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, max u w}
@@ -73,7 +73,7 @@ lemma firstNerveMap_localized_isIso :
 /-- 概要：同じ積単体の全要素と次数表示を任意上限の宇宙で回収する。
 方針：元の各成分と up・down の全作用素の往復を評価する。
 規約：同じ元の単体。使われ方：実 roof の同じ次数比較への接続。 -/
-lemma firstNerveMap_weak : IsWeakHomotopyEquivalence (firstNerveMap.{u, w} M n) :=
+lemma firstNerveMap_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (firstNerveMap.{u, w} M n) :=
   AnodyneWeakDetection.isWeakHomotopyEquivalence _ (firstNerveMap_localized_isIso.{u, w} M n)
 
 end SerrePositivity.EInfinity.FrameHom.ProductSimplexUniverseOver

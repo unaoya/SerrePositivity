@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -31,14 +31,14 @@ lemma normalizedTensorTriangleData_homOrZero_front_noninj {n : ℕ}
   have hne : coneTriangleFrontIndex τ a ≠ coneTriangleFrontIndex τ b := by
     rw [coneTriangleFrontIndex_zero τ a haz, coneTriangleFrontIndex_ne_zero τ b hb0]
     exact (Fin.succ_ne_zero _).symm
-  unfold SimplexData.homOrZero
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero
   split_ifs with hI ha hb hk
   · have hh := normalizedTensorTriangleData_hom_front A X Y c τ I a b k hI ha hb hk hb2
     have hz := simplexData_pullback_hom_zero_of_not_inj_of_ne
       (normalizedTensorConeSimplex A X Y c).toSimplexData (coneTriangleFrontIndex τ)
       I a b k hI ha hb hk hi hne
     exact eq_of_heq (hh.trans ((heq_of_eq hz).trans
-      (gradedHom_zero_heq (normalizedTensorTriangleFront_obj A X Y c τ a ha2)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (normalizedTensorTriangleFront_obj A X Y c τ a ha2)
         (normalizedTensorTriangleFront_obj A X Y c τ b hb2) rfl)))
   all_goals rfl
 
@@ -52,7 +52,7 @@ lemma normalizedTensorTrianglePinched_homOrZero_back_noninj {n : ℕ}
   have hne : coneTriangleBackIndex τ a ≠ coneTriangleBackIndex τ b := by
     rw [coneTriangleBackIndex_ne_two τ a ha2, coneTriangleBackIndex_two τ b hbt]
     exact Fin.castSucc_ne_last _
-  unfold SimplexData.homOrZero
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero
   split_ifs with hI ha hb hk
   · exact simplexData_pullback_hom_zero_of_not_inj_of_ne
       ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).val.toSimplexData

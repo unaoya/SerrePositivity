@@ -31,9 +31,9 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 /-- 元の厳密な段条件を、単位区間へ入力する二つの評価の厳密四角形として読む。 -/
 lemma kanAdjointTracedUnitEvaluation_square (n : ℕ) :
     (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1)) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space =
     kanAdjointStructureInput X Y φ n ≫
-      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.sigma n) := by
+      PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.sigma n) := by
   rw [Category.assoc]
   erw [pointedEvaluation_condition X Y.toKanSequence n]
   simp only [kanAdjointStructureInput, pointedStep, Category.assoc]
@@ -43,7 +43,7 @@ lemma kanAdjointTracedUnitEvaluation_square (n : ℕ) :
 lemma kanAdjointTracedUnitParameterTriangle_one_evaluation (n : ℕ) :
     stdSimplex.δ (1 : Fin 3) ≫ kanAdjointTracedUnitParameterTriangle X Y φ n =
       ((kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [kanAdjointTracedUnitParameterTriangle_one,
     OmegaSpectrum.tracedSignedLoopUnitRestrictionInterval_path]
@@ -53,16 +53,16 @@ lemma kanAdjointTracedUnitParameterTriangle_one_evaluation (n : ℕ) :
     (X.sigma n) (Y.sigma n) (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1)) e
     (kanAdjointTracedUnitEvaluation_square X Y φ n) H
   have hr := PointedMapping.VerticalPath.basedIhomMap_pre_path
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (H.pre (Y.sigma n)) e
-  change (((H.pre (Y.sigma n)).basedIhomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).pre e).path =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (H.pre (Y.sigma n)) e
+  change (((H.pre (Y.sigma n)).basedIhomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).pre e).path =
     (H.pre (Y.sigma n)).path ≫ (kanAdjointTracedUnitStructureAction X Y φ n).right at hr
   have hh :
       ((kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path =
       (((H.basedIhomMap (X.level (n + 1)).space).pre
         (φ ≫ pointedEvaluation X Y.toKanSequence (n + 1))).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
     change (kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).path ≫ _ = _
     rw [kanAdjointTracedUnitEvaluationInterval_path]

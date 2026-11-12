@@ -34,15 +34,15 @@ lemma modelBifibrantSourceRoofProductGeometricRightHomotopy_h :
       (modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b).h := by
   have := modelBifibrantSourceRoofProjection_leftFibration X Y q
   have h := nerveOverRightSliceMap_evaluation_h
-    (modelBifibrantObject C Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
     (modelBifibrantSourceRoofProductCommaRightOver X Y q b)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
-  change (functorHomotopyPrecomp (roofSliceEvaluationHomotopy (modelBifibrantHammockVertex Y))
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy (modelBifibrantHammockVertex Y))
     (modelBifibrantSourceRoofProductCommaCornerMap X Y q b ≫
-      roofCornerSourceSliceMap (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+      roofCornerSourceSliceMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b)).h = _
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b)).h = _
   rw [modelBifibrantSourceRoofProductCommaRightSlice]
   exact h
 

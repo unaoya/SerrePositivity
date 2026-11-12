@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 源区間の標的への後合成は、前合成作用の入力への同じ制限となる。 -/
 lemma preAction_post_input {W D D' E : PointedSimplicialSet.{u}} (p : D ⟶ D') :
     PointedObject.basedHomMap W p ≫ preAction W D' E =
-      preAction W D E ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p E) (PointedObject.basedHom W E) := by
+      preAction W D E ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p E) (PointedObject.basedHom W E) := by
   rw [preAction_restrict]
   have ht := congrArg transpose (transpose_evaluation_pre p E)
   rw [transpose_transpose] at ht
@@ -33,7 +33,7 @@ lemma preAction_post_input {W D D' E : PointedSimplicialSet.{u}} (p : D ⟶ D') 
 /-- 同じ源区間への後合成と前合成移送は、実辺全体で厳密に可換。 -/
 lemma VerticalPath.basedPre_post_input_path {W D D' E : PointedSimplicialSet.{u}}
     {a b : W ⟶ D} (H : VerticalPath (PointedObject.toPoint D) a b) (p : D ⟶ D') :
-    ((H.basedPost p).basedPre E).path = ((H.basedPre E).pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p E)).path := by
+    ((H.basedPost p).basedPre E).path = ((H.basedPre E).pre (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p E)).path := by
   rw [VerticalPath.basedPre_action_path]
   change (H.path ≫ (PointedObject.basedHomMap W p).right) ≫ _ = (H.basedPre E).path ≫ _
   rw [VerticalPath.basedPre_action_path]

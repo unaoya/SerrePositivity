@@ -40,25 +40,25 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory
 
 namespace SerrePositivity.SimplicialModel.DiscreteKanExtension
-open PiZeroConstant
+
 variable {A B : SSet.{w}} (i : A ⟶ B) (hi : SSet.anodyneExtensions i) {T : Type w}
 
 include hi in
-lemma pre_injective : Function.Injective (fun g : B ⟶ discrete T => i ≫ g) := by
+lemma pre_injective : Function.Injective (fun g : B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T => i ≫ g) := by
   intro f g h
-  apply homEquiv.injective
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv.injective
   have hc : HomotopyClasses.mk f = HomotopyClasses.mk g :=
-    (KanHomotopyClasses.pre_bijective i hi (discrete_terminal_rlp T)).injective
+    (KanHomotopyClasses.pre_bijective i hi (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete_terminal_rlp T)).injective
       (congrArg HomotopyClasses.mk h)
   exact congrArg PiZeroLocalization.classEquiv hc
 
-def extension (f : A ⟶ discrete T) : B ⟶ discrete T :=
-  (KanHomotopyExtension.exists_extension i hi (discrete_terminal_rlp T) f).choose
+def extension (f : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T) : B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T :=
+  (KanHomotopyExtension.exists_extension i hi (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete_terminal_rlp T) f).choose
 
-lemma extension_fac (f : A ⟶ discrete T) : i ≫ extension i hi f = f :=
-  (KanHomotopyExtension.exists_extension i hi (discrete_terminal_rlp T) f).choose_spec
+lemma extension_fac (f : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T) : i ≫ extension i hi f = f :=
+  (KanHomotopyExtension.exists_extension i hi (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete_terminal_rlp T) f).choose_spec
 
-lemma extension_unique (f : A ⟶ discrete T) (g : B ⟶ discrete T) (hg : i ≫ g = f) :
+lemma extension_unique (f : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T) (g : B ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T) (hg : i ≫ g = f) :
     g = extension i hi f := pre_injective i hi (hg.trans (extension_fac i hi f).symm)
 
 variable {D : Type uD} [Category.{vD} D] {F : D ⥤ SSet.{w}} {T : D ⥤ Type w}

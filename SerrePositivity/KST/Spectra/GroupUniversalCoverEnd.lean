@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedConePreMap
 universe u
 
 open CategoryTheory CategoryTheory.Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.GroupActionCochains
 
@@ -32,7 +32,7 @@ variable (G : Type u) [Group G]
 規約：係数に Kan 性を要求しない。
 使われ方：Goerss–Jardine VIII §2。hG の重みの実際の変更。 -/
 def universalCoverEndIso (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}) :
-    PointedWeightedEnd.obj (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D ≅
+    PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D ≅
       PointedWeightedEnd.obj (universalCoverDiagram G) D :=
   (PointedWeightedEnd.weightFunctor D).mapIso (bousfieldKanUniversalCoverIso G).symm.op
 
@@ -42,7 +42,7 @@ def universalCoverEndIso (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet
 使われ方：Goerss–Jardine VIII §2。hG の射の比較。 -/
 lemma universalCoverEndIso_natural
     {D E : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}} (τ : D ⟶ E) :
-    PointedWeightedEnd.map (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) τ ≫
+    PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) τ ≫
         (universalCoverEndIso G E).hom =
       (universalCoverEndIso G D).hom ≫
         PointedWeightedEnd.map (universalCoverDiagram G) τ :=
@@ -54,7 +54,7 @@ lemma universalCoverEndIso_natural
 使われ方：Goerss–Jardine VIII §2。自明作用の標準射の比較。 -/
 lemma coneComparison_universalCoverEndIso
     {D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}} (c : Cone D) :
-    PointedWeightedEnd.coneComparison (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) c ≫
+    PointedWeightedEnd.coneComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) c ≫
         (universalCoverEndIso G D).hom =
       PointedWeightedEnd.coneComparison (universalCoverDiagram G) c :=
   PointedWeightedEnd.coneComparison_preMap (bousfieldKanUniversalCoverIso G).inv c

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFactorizationComparison
-public import SerrePositivity.InfinityCategories.F1.Diagrams.ControlledFactorizationTetrahedronFamily
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledFactorizationTetrahedronFamily
 
 /-!
 概要：Ind-S (9b) の実供給を、同じ元の零中間二胞体の因子分解と全族比較へ代入する。
@@ -25,9 +25,9 @@ namespace SerrePositivity.KST.Fibration
 使われ方：既存の条件付き因子分解利用側から (9b) の仮定を外す。 -/
 theorem zeroMiddleFactorizationTetraSupply_of_indS9b : zeroMiddleFactorizationTetraSupply.{u} :=
   fun X₀ X₁ X₂ X₃ f g h K T hfirst hlast =>
-    controlledFactorizationTetraFamily X₀ X₁ X₂ X₃ f g h K T hfirst hlast
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledFactorizationTetraFamily X₀ X₁ X₂ X₃ f g h K T hfirst hlast
 
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：元の native 二胞体を厳密保持する、実供給済みの因子分解三単体族。
@@ -51,10 +51,10 @@ theorem zeroMiddleNativeFactorizationTetra_horn :
 規約：合成端・一つの辺だけの一致へ弱めない。
 使われ方：元の全 S• Hom の core 制限との照合。 -/
 theorem zeroMiddleNativeFactorizationTetra_longHom (k : K _⦋0⦌) :
-    HEq ((SpaceInfinity.δ (2 : Fin 4)
+    HEq ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 4)
       (SSet.yonedaEquiv (lift (𝟙 (Δ[3] : SSet.{u + 1})) (SSet.const k) ≫
         zeroMiddleNativeFactorizationTetra s hZ K))).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
-      (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) :=
   zeroMiddleFactorizationTetra_longHom s hZ K zeroMiddleFactorizationTetraSupply_of_indS9b k
 

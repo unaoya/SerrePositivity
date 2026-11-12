@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!
@@ -13,7 +13,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.CospanShape
 noncomputable section
 

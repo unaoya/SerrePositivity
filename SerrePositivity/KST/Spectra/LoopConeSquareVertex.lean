@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.SliceSquareDiagramEvaluation
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SliceSquareDiagramEvaluation
 
 /-!
 概要：cospan の錐を正方形へ移したときの、引き戻し頂点の厳密な計算。
@@ -17,14 +17,14 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra
 
-lemma coneSquare_vertex {X : SSet.{u}} {p : (horn 2 2 : SSet.{u}) ⟶ X} (c : JoinCone p) :
-    squareVertex (coneSquare c) 0 0 = c.vertex := by
+lemma coneSquare_vertex {X : SSet.{u}} {p : (horn 2 2 : SSet.{u}) ⟶ X} (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare c) 0 0 = c.vertex := by
   have h : SSet.yonedaEquiv.symm
-      (squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0) ≫ coneSquare c =
-        joinInl (Δ[0] : SSet.{u}) (horn 2 2) ≫ c.val := by
-    rw [← cospanConeSquareIso_initialPoint]
-    change (joinInl (Δ[0] : SSet.{u}) (horn 2 2) ≫ cospanConeSquareIso.hom) ≫
-      (cospanConeSquareIso.inv ≫ c.val) = _
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 ((Δ[1] : SSet.{u}) ⊗ Δ[1])) 0 0) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare c =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u}) (horn 2 2) ≫ c.val := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cospanConeSquareIso_initialPoint]
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u}) (horn 2 2) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv ≫ c.val) = _
     rw [Category.assoc, Iso.hom_inv_id_assoc]
   have hh := congrArg SSet.yonedaEquiv h
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at hh

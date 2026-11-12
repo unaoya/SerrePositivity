@@ -9,12 +9,12 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConeTriangleImage
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma withoutFirst_image_penultimate_middle {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hp1 : τ (ConeHeadIndex.penultimate I hI) = 1)
-    (hbt : τ (I.max' (Index.nonempty hI)) = 2) :
+    (hbt : τ (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) = 2) :
     ConeHeadIndex.withoutFirst
       ((I.filter (· ≤ ConeHeadIndex.penultimate I hI)).image (coneTriangleFrontIndex τ)) =
       I.filter (fun i => τ i = 1) := by
@@ -27,19 +27,19 @@ lemma withoutFirst_image_penultimate_middle {n : ℕ} (τ : Fin (n + 1) →o Fin
     rw [hp1] at ht
     exact ⟨hi, by omega⟩
   · rintro ⟨hi, hi1⟩
-    have hne : i ≠ I.max' (Index.nonempty hI) := by
+    have hne : i ≠ I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
       intro he
       have ht := congrArg τ he
       rw [hi1, hbt] at ht
       exact (by decide : (1 : Fin 3) ≠ 2) ht
-    exact ⟨⟨hi, (I.erase (I.max' (Index.nonempty hI))).le_max' i
+    exact ⟨⟨hi, (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).le_max' i
       (Finset.mem_erase.mpr ⟨hne, hi⟩)⟩, by rw [hi1]; decide⟩
 
 lemma withoutLast_image_second_middle {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hs1 : τ (ConeHeadIndex.second I hI) = 1)
-    (haz : τ (I.min' (Index.nonempty hI)) = 0) :
-    InfinityCategories.DGNerve.PinchedHom.withoutLast
+    (haz : τ (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) = 0) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.withoutLast
       ((I.filter (ConeHeadIndex.second I hI ≤ ·)).image (coneTriangleBackIndex τ)) =
       I.filter (fun i => τ i = 1) := by
   rw [withoutLast_image_coneTriangleBackIndex]
@@ -51,11 +51,11 @@ lemma withoutLast_image_second_middle {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     rw [hs1] at hτ
     exact ⟨hi, by omega⟩
   · rintro ⟨hi, hi1⟩
-    have hne : i ≠ I.min' (Index.nonempty hI) := by
+    have hne : i ≠ I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
       intro he
       have ht := congrArg τ he
       rw [hi1, haz] at ht
       exact (by decide : (1 : Fin 3) ≠ 0) ht
-    exact ⟨⟨hi, (I.erase (I.min' (Index.nonempty hI))).min'_le i
+    exact ⟨⟨hi, (I.erase (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).min'_le i
       (Finset.mem_erase.mpr ⟨hne, hi⟩)⟩, by rw [hi1]; decide⟩
 end SerrePositivity.EInfinity.ComplexLimits

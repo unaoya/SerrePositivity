@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordSubsetImages
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordSubsetImages
 public import SerrePositivity.EInfinity.Hammock.WeakRange
 
 /-!
@@ -22,48 +22,48 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 open SerrePositivity.InfinityCategories
 
-variable (F : Word ⥤ SSet.{w}) (c : Word)
+variable (F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
 
 def subsetImage (s : Finset (Fin c.length)) : (F.obj c).Subcomplex :=
-  Subfunctor.range (F.map (Word.subwordInclusion c s))
+  Subfunctor.range (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s))
 
 lemma subsetImage_inf (hF : ProperDiagram F) (s t : Finset (Fin c.length)) :
     subsetImage F c (s ⊓ t) = subsetImage F c s ⊓ subsetImage F c t := by
-  have he := hF.intersection_range (Word.subwordInclusion c s) (Word.subwordInclusion c t)
-    (Word.subwordInclusion_injective c s) (Word.subwordInclusion_injective c t)
+  have he := hF.intersection_range (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c t)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion_injective c s) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion_injective c t)
   calc
     subsetImage F c (s ⊓ t) = subsetImage F c
-        (Word.columnImage (Word.subwordInclusion c s) ∩
-          Word.columnImage (Word.subwordInclusion c t)) := by
-      rw [Word.columnImage_subwordInclusion, Word.columnImage_subwordInclusion]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s) ∩
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c t)) := by
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage_subwordInclusion, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage_subwordInclusion]
       rfl
     _ = subsetImage F c s ⊓ subsetImage F c t := he
 
-lemma range_eq_subsetImage {a : Word} (f : a ⟶ c) (hf : Function.Injective f.orderHom) :
-    Subfunctor.range (F.map f) = subsetImage F c (Word.columnImage f) := by
-  obtain ⟨h, he⟩ := Word.embedding_image_eq f hf
+lemma range_eq_subsetImage {a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ c) (hf : Function.Injective f.orderHom) :
+    Subfunctor.range (F.map f) = subsetImage F c (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage f) := by
+  obtain ⟨h, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.embedding_image_eq f hf
   calc
-    Subfunctor.range (F.map f) = Subfunctor.range (F.map (eqToHom h ≫ Word.imageInclusion f)) :=
+    Subfunctor.range (F.map f) = Subfunctor.range (F.map (eqToHom h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.imageInclusion f)) :=
       congrArg (fun g : a ⟶ c => Subfunctor.range (F.map g)) he.symm
-    _ = Subfunctor.range (F.map (Word.imageInclusion f)) := by
+    _ = Subfunctor.range (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.imageInclusion f)) := by
       rw [CategoryTheory.Functor.map_comp, Subfunctor.range_comp,
         Subfunctor.range_eq_top, Subfunctor.image_top]
-    _ = subsetImage F c (Word.columnImage f) := rfl
+    _ = subsetImage F c (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.columnImage f) := rfl
 
-variable {F} {G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+variable {F} {G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
 
 lemma subsetImageMapsTo (s : Finset (Fin c.length)) :
     ∀ k, Set.MapsTo ((η.app c).app k) ((subsetImage F c s).obj k) ((subsetImage G c s).obj k) :=
-  mapsToRange (F.map (Word.subwordInclusion c s)) (G.map (Word.subwordInclusion c s))
-    (η.app (Word.subword c s)) (η.app c) (η.naturality (Word.subwordInclusion c s))
+  mapsToRange (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s)) (G.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s))
+    (η.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subword c s)) (η.app c) (η.naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s))
 
 lemma weakSubsetImageMap (hF : ProperDiagram F) (hG : ProperDiagram G)
-    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (s : Finset (Fin c.length)) :
-    IsWeakHomotopyEquivalence (mapSubcomplex (η.app c) (subsetImageMapsTo c η s)) := by
-  have := hF.map_mono (Word.subwordInclusion c s) (Word.subwordInclusion_injective c s)
-  have := hG.map_mono (Word.subwordInclusion c s) (Word.subwordInclusion_injective c s)
-  exact weakRangeMap (F.map (Word.subwordInclusion c s)) (G.map (Word.subwordInclusion c s))
-    (η.app (Word.subword c s)) (η.app c) (η.naturality (Word.subwordInclusion c s))
-    (hη (Word.subword c s))
+    (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app a)) (s : Finset (Fin c.length)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mapSubcomplex (η.app c) (subsetImageMapsTo c η s)) := by
+  have := hF.map_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion_injective c s)
+  have := hG.map_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion_injective c s)
+  exact weakRangeMap (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s)) (G.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s))
+    (η.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subword c s)) (η.app c) (η.naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subwordInclusion c s))
+    (hη (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subword c s))
 
 end SerrePositivity.EInfinity.Hammock

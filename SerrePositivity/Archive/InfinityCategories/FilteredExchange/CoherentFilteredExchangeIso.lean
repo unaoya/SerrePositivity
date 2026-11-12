@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Filtered.CoherentFilteredLimitExchange
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorVertexConeReindex
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.CoherentFilteredLimitExchange
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorVertexConeReindex
 
 /-!
 概要：一般 coherent filtered 極限交換は元の形状の厳密な同型で不変。

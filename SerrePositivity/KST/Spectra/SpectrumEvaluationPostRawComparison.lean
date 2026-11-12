@@ -22,7 +22,7 @@ open RawSpectrumMapping
 local instance rawEvaluationPostKan (K : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
     KanComplex ((ihom K).obj (RawSpectrumMapping.pointedSpace
-      (cotensor K X) Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+      (cotensor K X) Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の普遍評価写像を、同じ置換前 cotensor 値の全 Hom へ厳密同型で戻す。 -/
 def rawEvaluationPost (K : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :
@@ -33,17 +33,17 @@ def rawEvaluationPost (K : PointedSimplicialSet.{u}) (X Y : OmegaSpectrum.{u}) :
 /-- 元の評価写像の π 同型性は、同じ写像を厳密同型で戻したものと同値。 -/
 lemma rawEvaluationPost_piIsomorphism_iff (K : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (rawEvaluationPost K X Y).right ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost K X Y).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (rawEvaluationPost K X Y).right ↔
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost K X Y).right := by
   let e : ((ihom K).obj
       (RawSpectrumMapping.pointedSpace (cotensor K X) Y.toKanSequence)).right ≅
       (RawSpectrumMapping.pointedSpace (cotensor K X)
         (KanSequence.mapping K Y.toKanSequence)).right :=
     PointedSimplicialSet.forget.mapIso (cotensorIso (cotensor K X) Y.toKanSequence K).symm
-  have hi := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e
   constructor
   · intro h
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp h hi
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp h hi
   · intro h
     exact h.comp hi
 
@@ -63,7 +63,7 @@ lemma rawEvaluationPost_evaluation (K : PointedSimplicialSet.{u})
     rawEvaluationPost K X Y ≫
       pointedEvaluation (cotensor K X) (KanSequence.mapping K Y.toKanSequence) n =
     pointedEvaluation X Y.toKanSequence n ≫ evaluationPostAt K X Y n ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor K X).level n).space K (Y.level n).space).inv := by
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso ((cotensor K X).level n).space K (Y.level n).space).inv := by
   rw [rawEvaluationPost, Category.assoc, cotensorInverse_evaluation]
   dsimp only [inverseExchangeFamily]
   rw [← Category.assoc, evaluationPost_evaluation, Category.assoc]

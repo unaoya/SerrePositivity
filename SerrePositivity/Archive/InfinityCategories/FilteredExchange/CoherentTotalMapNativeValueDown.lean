@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeValue
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningFunctorIso
 
 /-!
 概要：元の native 余極限写像の値を元の小さい宇宙の実際の射として表示する。

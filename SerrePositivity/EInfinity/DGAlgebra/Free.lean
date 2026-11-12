@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraDerivedInfinity
 
 /-!
 # 一対象の自由 dg 圏からの自由 dg 代数
@@ -49,7 +49,7 @@ def generator (K : Complex R) : K ⟶ (freeObject K).X :=
 規約：元の標的モノイドの積を使う。
 使われ方：自由代数の普遍性の逆写像。 -/
 def lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) : freeObject K ⟶ B :=
-  let F := FreeDGCategory.lift R PUnit.{1} (DGAlgebraPoint R B) (fun _ _ => K)
+  let F := FreeDGCategory.lift R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (fun _ _ => K)
     (fun _ => .star) (fun _ _ => f)
   Mon.Hom.mk' (F.map .unit .unit) (F.map_id .unit) (F.map_comp .unit .unit .unit)
 
@@ -60,7 +60,7 @@ def lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) : freeObject K �
 @[reassoc (attr := simp)]
 lemma generator_lift (K : Complex R) (B : Mon (Complex R)) (f : K ⟶ B.X) :
     generator K ≫ (lift K B f).hom = f :=
-  FreeDGCategory.lift_edge R PUnit.{1} (DGAlgebraPoint R B) (fun _ _ => K)
+  FreeDGCategory.lift_edge R PUnit.{1} (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) (fun _ _ => K)
     (fun _ => .star) (fun _ _ => f) .unit .unit
 
 /-- 概要：自由代数射は元の生成辺で決まる。

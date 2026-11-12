@@ -44,7 +44,7 @@ local instance : HasColimitsOfSize.{0, u} (Complex A) :=
 使われ方：同じ零単体の代表で π₀ の前合成を計算する。 -/
 lemma constantDiagramFrameHomIso_source {Y Z : (Complex A)} (f : Y ⟶ Z)
     (F : K ⥤ (Complex A)) :
-    (cosimplicialHomMap ((constantDiagramFrameFamily A K).map f)).app F ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((constantDiagramFrameFamily A K).map f)).app F ≫
         ((constantDiagramFrameHomIso A K Y).app F).hom =
       ((constantDiagramFrameHomIso A K Z).app F).hom ≫ (constantDiagramSourceMap A K f).app F := by
   let := SerrePositivity.EInfinity.projectiveModelCategory A

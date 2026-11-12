@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の安定入力の任意の実現関手に対する、全列次数の同じ定数包含。 -/
 def weakStringRealizationConstant (F : StableModel.{u} ⥤ SSet.{u})
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     (Functor.const SimplexCategoryᵒᵖ).obj (F.obj (sInputModel B)) ⟶
       weakStringStableSimplicial q ⋙ F where
   app n := F.map (weakStringConstantExact q n.unop)
@@ -30,7 +30,7 @@ def constantSSetDiagonalIso (X : SSet.{u}) :
 
 /-- 元の入力の実現から、全定数 W 列の同じ実現の対角への実際の包含射。 -/
 def weakStringRealizationConstantDiagonal (F : StableModel.{u} ⥤ SSet.{u})
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     F.obj (sInputModel B) ⟶ simplicialDiagonalFunctor.obj (weakStringStableSimplicial q ⋙ F) :=
   (constantSSetDiagonalIso (F.obj (sInputModel B))).inv ≫
     simplicialDiagonalFunctor.map (weakStringRealizationConstant F q)

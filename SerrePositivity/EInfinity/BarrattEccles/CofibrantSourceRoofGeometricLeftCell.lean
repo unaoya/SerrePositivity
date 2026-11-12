@@ -30,12 +30,12 @@ lemma cofibrantSourceRoofProductGeometricLeftCell_eq :
   let w := nerveMap (Over.forget (cofibrantSourceRoofDegree A X Y b)) ≫
     nerveMap (cofibrantDKSourceFrame A X) ≫
       SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)
-  let H := functorHomotopyPostcomp (cofibrantSourceRoofProductBaseHomotopy A X Y b) w
-  let T := functorHomotopyPostcomp (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (cofibrantSourceRoofProductBaseHomotopy A X Y b) w
+  let T := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (overTerminalHomotopy (cofibrantSourceRoofDegree A X Y b)
     (cofibrantSourceRoofProductCommaOver A X Y b)) w
-  have h : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy T) := by
-    rw [functorHomotopyPostcomp_hom, functorHomotopyPostcomp_hom]
+  have h : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
     exact congrArg (fun f => (hoFunctor.map
       ((ihom (nerve (cofibrantSourceRoofProductComma A X Y b))).map w)).toFunctor.map f)
       (cofibrantSourceRoofProductBaseHomotopy_hom_eq A X Y b)
@@ -43,14 +43,14 @@ lemma cofibrantSourceRoofProductGeometricLeftCell_eq :
   calc
     Arrow.mk (cofibrantSourceRoofProductGeometricLeftCell A X Y b) =
         Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy H)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) := by
       apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
       apply congrArg (fun g => SSet.yonedaEquiv (curry g))
       exact cofibrantSourceRoofProductGeometricLeftHomotopy_h_base A X Y b
     _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy T)) := congrArg Arrow.mk h
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T)) := congrArg Arrow.mk h
     _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
           (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b))) := by
       apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
       apply congrArg (fun g => SSet.yonedaEquiv (curry g))
@@ -74,7 +74,7 @@ lemma cofibrantSourceRoofProductHomMap_weak_of_reference_triangle
     (hR : (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
       cofibrantSourceRoofProductReferenceIntervalCell A X Y b =
         cofibrantSourceRoofProductCommaRightCell A X Y b) :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
   cofibrantSourceRoofProductHomMap_weak_of_interval_triangles A X Y b
     (cofibrantSourceRoofProductActual_triangle A X Y b) hR
 
@@ -83,7 +83,7 @@ lemma cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle
       (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
         cofibrantSourceRoofProductReferenceIntervalCell A X Y b =
           cofibrantSourceRoofProductCommaRightCell A X Y b) :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_interval_triangles A X Y
     (fun b => cofibrantSourceRoofProductActual_triangle A X Y b) hR
 

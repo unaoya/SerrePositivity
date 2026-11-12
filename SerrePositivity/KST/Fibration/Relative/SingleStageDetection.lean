@@ -45,8 +45,8 @@ theorem dgKappaRelativeFiberComparison_nonnegative_of_positiveStages
     {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeSQuotientMap (dgKappaNativeVerdierDiagram R D I).projection (n + 1))))
-    (e : FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((dgKappaNativeVerdierDiagram R D I).square ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
       (quotientSKernelInfinitySquare (dgKappaNativeVerdierDiagram R D I).inclusion
         (dgKappaNativeVerdierDiagram R D I).projection))
     (j : ℤ) (hj : 0 ≤ j) :

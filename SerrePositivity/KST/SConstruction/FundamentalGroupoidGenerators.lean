@@ -17,13 +17,13 @@ open scoped Simplicial
 
 /-- 元の辺と二単体の基本亜群では、元の辺・逆・合成についての帰納法が使える。 -/
 lemma simplicialFundamentalGroupoid_hom_rec (A : SSet.{u})
-    {P : ∀ {x y : _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A}, (x ⟶ y) → Prop}
+    {P : ∀ {x y : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid A}, (x ⟶ y) → Prop}
     (hedge : ∀ {x y : A _⦋0⦌} (e : A.Edge x y),
       P (FreeGroupoid.homMk (SSet.HomotopyCategory.homMk e)))
-    (hinv : ∀ {x y : _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A} (f : x ⟶ y), P f → P (inv f))
-    (hcomp : ∀ {x y z : _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A} (f : x ⟶ y) (g : y ⟶ z),
+    (hinv : ∀ {x y : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid A} (f : x ⟶ y), P f → P (inv f))
+    (hcomp : ∀ {x y z : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid A} (f : x ⟶ y) (g : y ⟶ z),
       P f → P g → P (f ≫ g))
-    {x y : _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A} (f : x ⟶ y) : P f := by
+    {x y : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid A} (f : x ⟶ y) : P f := by
   induction f using FreeGroupoid.hom_rec with
   | homMk f =>
     induction f using SSet.HomotopyCategory.hom_rec with
@@ -44,14 +44,14 @@ lemma kanAnodyne_hom_rec {A B : SSet.{u}} [KanComplex B] (i : A ⟶ B)
     (hinv : ∀ {x y : hoFunctor.obj B} (f : x ⟶ y), P f → P (inv f))
     (hcomp : ∀ {x y z : hoFunctor.obj B} (f : x ⟶ y) (g : y ⟶ z),
       P f → P g → P (f ≫ g))
-    (x y : _root_.SerrePositivity.InfinityCategories.Kan.simplicialFundamentalGroupoid A)
-    (f : (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i).obj x ⟶
-      (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i).obj y) : P f := by
+    (x y : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplicialFundamentalGroupoid A)
+    (f : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison i).obj x ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison i).obj y) : P f := by
   obtain ⟨a, rfl⟩ := fundamentalGroupoidComparison_map_surjective i hi x y f
   apply simplicialFundamentalGroupoid_hom_rec A (P := fun a =>
-    P ((_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison i).map a)) (f := a)
+    P ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison i).map a)) (f := a)
   · intro x y e
-    have he := CategoryTheory.Functor.congr_hom (_root_.SerrePositivity.InfinityCategories.Kan.fundamentalGroupoidComparison_fac i)
+    have he := CategoryTheory.Functor.congr_hom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fundamentalGroupoidComparison_fac i)
       (SSet.HomotopyCategory.homMk e)
     exact he.symm ▸ hedge e
   · intro x y a ha

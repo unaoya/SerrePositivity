@@ -25,7 +25,7 @@ abbrev representationMap : obj S A ⟶ A.obj k :=
 
 lemma representationMap_comp {Y : C} (f : A.obj k ⟶ Y) :
     representationMap A S e ≫ f = homEquiv S A Y
-      (e.inv ≫ (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm f) :=
+      (e.inv ≫ (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm f) :=
   FiniteTensor.representationMap_comp A S.toSSet e f
 
 instance representationMap_isIso : IsIso (representationMap A S e) :=

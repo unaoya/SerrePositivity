@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumTailMappingEquivalence
 public import SerrePositivity.KST.Spectra.SpectrumLoopTailComparison
-public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveFullyFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
 
 /-!
 概要：一段の添字移動は元の Sp の実際の ∞ 圏同値。
@@ -23,12 +23,12 @@ local instance tailEquivHomKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := OmegaSpectrum.mappingSpace_kanComplex X Y
 
 /-- 一段移動の元の関手は全写像空間の意味で完全忠実。 -/
-lemma nativeTail_isFullyFaithful : IsFullyFaithful nativeTail.{u} :=
-  (coherentNerveMap_isFullyFaithful_iff tailEnriched).2 tailMapping_isQCatEquivalence
+lemma nativeTail_isFullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful nativeTail.{u} :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff tailEnriched).2 tailMapping_isQCatEquivalence
 
 /-- 元の Sp の一段移動は逆と可逆二胞体を持つ実際の同値。 -/
-def nativeTailEquivalence : QCatEquivalence Sp.{u} Sp.{u} :=
-  qCatEquivalenceOfFullyFaithfulEssentiallySurjective nativeTail
+def nativeTailEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence Sp.{u} Sp.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective nativeTail
     nativeTail_isFullyFaithful nativeTail_essentiallySurjective
 
 /-- 構成した同値の順方向は元の一段移動関手。 -/

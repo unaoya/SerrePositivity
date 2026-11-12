@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprod
-public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorResolutionHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBiprod
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorResolutionHomExt
 
 /-!
 概要：二成分の cocone の元の包含は、元の三成分の可換正方形に自然である。
@@ -33,22 +33,22 @@ lemma cochainCoconeBiprodMap_comm : biprod.desc a b ≫ z =
     rw [Category.assoc, biprod.inr_desc]
     exact hb
 
-lemma cochainCoconeBiprodInclusion_naturality : complexMappingCoconeBiprodInclusion a b ≫
-    complexMappingCoconeMap (biprod.desc a b) (biprod.desc a' b') (biprod.map x y) z
+lemma cochainCoconeBiprodInclusion_naturality : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a b ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (biprod.desc a b) (biprod.desc a' b') (biprod.map x y) z
       (cochainCoconeBiprodMap_comm a b a' b' x y z ha hb) =
-        complexMappingCoconeMap b b' y z hb ≫ complexMappingCoconeBiprodInclusion a' b' := by
-  apply dgMappingCocone_hom_ext (biprod.desc a' b')
-  · rw [Category.assoc, complexMappingCoconeMap_fst,
-      ← Category.assoc, complexMappingCoconeBiprodInclusion, complexMappingCoconeMap_fst,
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap b b' y z hb ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a' b' := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (biprod.desc a' b')
+  · rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst,
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst,
       Category.assoc, biprod.inr_map]
-    rw [← Category.assoc, Category.assoc _ (complexMappingCoconeBiprodInclusion a' b'),
-      complexMappingCoconeBiprodInclusion, complexMappingCoconeMap_fst,
-      ← Category.assoc, complexMappingCoconeMap_fst, Category.assoc]
+    rw [← Category.assoc, Category.assoc _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a' b'),
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst,
+      ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst, Category.assoc]
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
-      complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain]
-    rw [complexMappingCoconeBiprodInclusion, complexMappingCoconeMap_snd]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd]
     rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
-      complexMappingCoconeBiprodInclusion, complexMappingCoconeMap_snd]
-    simpa using (complexMappingCoconeMap_snd b b' y z hb).symm
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd]
+    simpa using (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd b b' y z hb).symm
 
 end SerrePositivity.KST.LocalizingInvariants

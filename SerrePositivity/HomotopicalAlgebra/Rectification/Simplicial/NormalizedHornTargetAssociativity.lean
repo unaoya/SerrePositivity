@@ -218,7 +218,7 @@ lemma family_degenerate (d : Fin (n + 1))
       fst T (SSet.stdSimplex.obj (SimplexCategory.mk 3)) ≫ e ≫
         DegenerateHornInput.degeneracy d K ≫
           (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map (q ≫ r ≫ s) := by
-  let u := CompatibleInputUnion.toInputs
+  let u := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun d => DegenerateHornInput.boundary i d K) d
   have hu : u ≫ (inputs (K := K) i).ι = DegenerateHornInput.boundary i d K := rfl

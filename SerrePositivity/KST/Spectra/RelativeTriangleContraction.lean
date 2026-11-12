@@ -33,7 +33,7 @@ theorem exists_basedContraction_of_terminal_rlp (E : PointedSimplicialSet.{u})
     ∃ H : SSet.Homotopy (𝟙 E.right) (0 : E ⟶ E).right,
       E.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ E.hom := by
-  let : Mono E.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono E
+  let : Mono E.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono E
   let f : E ⟶ E := 𝟙 E
   let g : E ⟶ E := 0
   have hbase : E.hom ≫ f.right = E.hom ≫ g.right := by rw [Under.w f, Under.w g]

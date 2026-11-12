@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagramComparison
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagramComparison
 
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierPresentation
 public import SerrePositivity.KST.LocalizingInvariants.RelativeVerdierPullback
 
 /-!
@@ -20,15 +20,15 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}}
 
 /-- 厳密な代表が別途供給された場合、同じ E の値の pullback を全源図式同型で輸送する。 -/
-lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν)
+lemma comparison_isPullback_of_sourceIso (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierRectangle ν)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso d.diagram F)
-    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso d.diagram F b)
+    (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso d.diagram F)
+    (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso d.diagram F b)
     {E : S ⟶ Spectra.Sp.{u}} (hE : IsRelativeLocalizingInvariant ν E) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
   exact ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE).of_functorIso

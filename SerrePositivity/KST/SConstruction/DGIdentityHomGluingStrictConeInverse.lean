@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma factoryArrow {R : Type u} [CommRing R] {C : Type v}
     [DGCategory R C] [Small.{u} C] {P : Type w} [DGCategory R P]
     (F G : DGFunctor R P (RightModule R C))
@@ -23,7 +23,7 @@ private lemma factoryArrow {R : Type u} [CommRing R] {C : Type v}
       G.map x y ≫ eHomWhiskerRight (Complex R) (q x)
         (ForgetEnrichment.of (Complex R) (G.obj y))) (x : P) :
     dgModuleNaturalConeArrow R C F G
-      (dgModuleStrictNatTransOfHomNaturality R C (F := F) (G := G) q h) x = q x := by
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R C (F := F) (G := G) q h) x = q x := by
   change (closedHomEquiv R (RightModule R C) _ _).symm
     ((closedHomEquiv R (RightModule R C) _ _) (q x)) = _
   exact (closedHomEquiv R (RightModule R C) _ _).symm_apply_apply _
@@ -62,8 +62,8 @@ lemma dgIdentityHomGluingStrictConeInputInvMap_naturality (x y : P) :
 /-- 概要：元指定 cone 入力同型の同じ全厳密逆比較。
 方針：元実逆射と全 Hom 自然性を既存構成子へ渡す。
 規約：元逆射の全作用を保持。使われ方：元 gluing connecting の輸送。 -/
-def dgIdentityHomGluingStrictConeInputInvComparison : StrictNatTrans (B) (A) :=
-  dgModuleStrictNatTransOfHomNaturality R C (F := (B)) (G := (A))
+def dgIdentityHomGluingStrictConeInputInvComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (B) (A) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R C (F := (B)) (G := (A))
     (dgIdentityHomGluingStrictConeInputInvMap R C F G a h)
     (dgIdentityHomGluingStrictConeInputInvMap_naturality R C F G a h)
 

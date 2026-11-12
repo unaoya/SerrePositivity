@@ -38,7 +38,7 @@ def rightFrameFactorization :
       (cofibrations (Complex A)ᵒᵖ) (trivialFibrations (Complex A)ᵒᵖ) := by
   let := projectiveModelCategory A
   have := projectiveModelCategory_cofibrantlyGenerated A
-  have := ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
     (projectiveGeneratingCofibrations A)
     (projectiveGeneratingTrivialCofibrations A)
   change MorphismProperty.FunctorialFactorizationData

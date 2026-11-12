@@ -5,6 +5,7 @@ module
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Prism.PerfectPrismHomLift
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 -- 本ファイルは drafts/A5/{PerfectSite,SemiperfectoidCase,WeaklyInitialAndDescent,StrongDescent}.lean（Prop 8.5 の証明 A5-2〜A5-4）、drafts/Sheaves/{GlobalSections,CechConerveLimit}.lean を import する。
 -- W9-III-09：site・Lemma 4.8・比較写像（SemiperfectoidCase が使う）は drafts/A5/PerfectSite.lean に切り出し、本ファイルは Prop 8.5 とその系だけ（A5 の最後）。Lemma 8.6 の主張は StrongDescent の `prismaticPerfection_rootMap_descendable'` に一本化。
 -- animated 版の定義域 `CompleteAnimatedAlgebra` は drafts/A7/AnimatedDomain.lean（W9-II-24：A5 より先に置く独立ファイル）を import する。
@@ -62,7 +63,7 @@ theorem perfectionComparison_isIso (hS : IsModuleComplete S (p : S) (ModuleCat.o
   sorry -- A5-4 の有限型への帰着と Lemma 8.6 による降下、各項は A5-2。flat 層 O の Γ はこの極限
 
 /-- S2 の層化・大域切断に渡す係数圏の presentability（G12）。 -/
-theorem perfectCoefficientPresentable : F2.Presentable.IsPresentable (E.CAlg (perfectPrismRing p R)) := E.presentable (perfectPrismRing p R)
+theorem perfectCoefficientPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg (perfectPrismRing p R)) := E.presentable (perfectPrismRing p R)
 
 /-- 概要：Prop 8.5（原典の形）：⊥ ≤ J ≤ flat の任意の位相 J で Δ_{S/A,perf} ≃ RΓ_J((S/A)^perf, O_Δ)。
 方針：O は flat 層（`perfectStructurePresheaf_isSheaf`）なので J 層（S1 `IsSheaf.of_le`）、S2 で RΓ_J = lim、`perfectionComparison_isIso`。

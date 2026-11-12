@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKappaNativeBFStages
-public import SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrameEdges
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.SquareFrameEdges
 
 /-!
 概要：同じ未完備 D-9 実列に対する、元 BF 四辺の指定境界。
@@ -23,15 +23,15 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 /-- 概要：元の未完備実列の四つの kSpectrumMap を持つ同じ BF 境界。
 方針：包含・商・元左零射・元右零射を同じ coherent 辺にする。
 規約：四頂点の整合性も含む境界。使われ方：有限 BF 四角形で固定する全四辺。 -/
-def dgKappaNativeBFBoundary : _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareFrame Sp.{max (u + 1) v} :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.squareFrameOfEdges
-    (coherentNerveEdge (kSpectrumMap
+def dgKappaNativeBFBoundary : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SquareFrame Sp.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.squareFrameOfEdges
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
       (sInputExactMap (dgKappaNativeKernelInclusion.{u, v} R D I))))
-    (coherentNerveEdge (kSpectrumMap
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
       (sInputExactMap (fromZeroCategory (dgKappaNativeSuspensionCategory.{u, v} R D I)))))
-    (coherentNerveEdge (kSpectrumMap
-      (sInputExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeKernelCategory.{u, v} R D I)))))
-    (coherentNerveEdge (kSpectrumMap
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
+      (sInputExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (dgKappaNativeKernelCategory.{u, v} R D I)))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
       (sInputExactMap (dgKappaNativeQuotient.{u, v} R D I))))
 
 /-- 概要：指定境界の底辺は同じ元の未完備包含の BF 辺。
@@ -39,7 +39,7 @@ def dgKappaNativeBFBoundary : _root_.SerrePositivity.InfinityCategories.Core.Qua
 規約：全一単体を保持する。使われ方：要求された底辺等号の接続。 -/
 lemma dgKappaNativeBFBoundary_bottom :
     (dgKappaNativeBFBoundary.{u, v} R D I).bottom = SSet.yonedaEquiv.symm
-      (coherentNerveEdge (kSpectrumMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
         (sInputExactMap (dgKappaNativeVerdierDiagram.{u, v} R D I).inclusion))).edge := rfl
 
 /-- 概要：指定境界の右辺は同じ元の未完備実商の BF 辺。
@@ -47,7 +47,7 @@ lemma dgKappaNativeBFBoundary_bottom :
 規約：全一単体を保持する。使われ方：要求された商辺等号の接続。 -/
 lemma dgKappaNativeBFBoundary_right :
     (dgKappaNativeBFBoundary.{u, v} R D I).right = SSet.yonedaEquiv.symm
-      (coherentNerveEdge (kSpectrumMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap
         (sInputExactMap (dgKappaNativeVerdierDiagram.{u, v} R D I).projection))).edge := rfl
 
 /-- 概要：指定境界の左辺は同じ元の未完備始域の零射の BF 辺。
@@ -55,15 +55,15 @@ lemma dgKappaNativeBFBoundary_right :
 規約：全一単体を保持する。使われ方：要求された左零射の等号の接続。 -/
 lemma dgKappaNativeBFBoundary_left :
     (dgKappaNativeBFBoundary.{u, v} R D I).left = SSet.yonedaEquiv.symm
-      (coherentNerveEdge (kSpectrumMap (sInputExactMap
-        (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)))).edge := rfl
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap (sInputExactMap
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).left)))).edge := rfl
 
 /-- 概要：指定境界の上辺は同じ元の未完備終域の零射の BF 辺。
 方針：境界の定義から回収する。
 規約：全一単体を保持する。使われ方：要求された右零射の等号の接続。 -/
 lemma dgKappaNativeBFBoundary_top :
     (dgKappaNativeBFBoundary.{u, v} R D I).top = SSet.yonedaEquiv.symm
-      (coherentNerveEdge (kSpectrumMap (sInputExactMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap (sInputExactMap
         (fromZeroCategory (dgKappaNativeVerdierDiagram.{u, v} R D I).right)))).edge := rfl
 
 end SerrePositivity.KST.SConstruction

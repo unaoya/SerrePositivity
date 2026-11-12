@@ -67,9 +67,9 @@ lemma largeFamily_substitute {T U : SSet.{max u v}} {X Y : D C} (j : T ⟶ P)
   rfl
 
 lemma lower_largeFamily {T : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
-    UniverseLift.lowerTensor (largeFamily hcof hfib P j f) =
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (largeFamily hcof hfib P j f) =
       OrdinaryBarDiagonalEvaluation.family hcof hfib P j f := by
   ext n x
   rfl

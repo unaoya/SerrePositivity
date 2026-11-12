@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 任意の元の HA データについて、零次数生成元に対応する境界評価は零。 -/
-lemma simplexHAGeneratorBoundaryValue_zero {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAGeneratorBoundaryValue_zero {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hi : serreCubeGeneratorDegree m i = 0)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     simplexHAGeneratorBoundaryValue A s m i v b hb = 0 := by
@@ -30,7 +30,7 @@ lemma simplexHAGeneratorBoundaryValue_zero {n : ℕ} (s : DGNerve.SimplexData A 
   exact h.trans (map_zero _)
 
 /-- 任意次元の元の全零次数 tensor 生成元上で、元の HA 線形復元は実微分と可換。 -/
-lemma simplexHADegreeLift_zero_generator_comm {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_zero_generator_comm {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hi : serreCubeGeneratorDegree m i = 0)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     (homObject A D (s.obj (v 0)) (s.obj b)).d 0 1
@@ -49,7 +49,7 @@ lemma simplexHADegreeLift_zero_generator_comm {n : ℕ} (s : DGNerve.Simplex A D
   exact (h.trans (hz.trans (map_zero _))).trans (hs.trans (map_zero _)).symm
 
 /-- 任意次元の元の cube の全零次数加群で、元の HA 線形復元は実微分と可換。 -/
-lemma simplexHADegreeLift_zero_comm {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_zero_comm {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last m) < b) :
     simplexHADegreeLift A s.toSimplexData m v b hb 0 ≫

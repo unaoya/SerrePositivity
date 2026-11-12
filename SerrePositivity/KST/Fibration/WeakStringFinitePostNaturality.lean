@@ -17,8 +17,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の同じ初期頂点と全連続 cofiber の有限比較は、全長・全正反復で後合成と整合する。 -/
-theorem weakStringFiniteComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringFiniteComparison_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (weakStringPostExact f q ⦋n⦌) ≫
         weakStringFiniteComparison q n (r + 1)) =
@@ -27,7 +27,7 @@ theorem weakStringFiniteComparison_postcomp {A B C : _root_.SerrePositivity.Infi
           weakStringFinitePostMap f q n (r + 1)) := by
   unfold weakStringFiniteComparison weakStringFinitePostMap
   rw [comp_lift, lift_map]
-  apply _root_.SerrePositivity.InfinityCategories.F1.Transport.pair_eq_of_anodyneQ_eq
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_eq_of_anodyneQ_eq
   · apply congrArg AnodyneHomotopy.anodyneQ.map
     rw [← Functor.map_comp, ← Functor.map_comp, weakStringVertexTopExact_postcomp]
   · apply finProduct_eq_of_anodyneQ_eq

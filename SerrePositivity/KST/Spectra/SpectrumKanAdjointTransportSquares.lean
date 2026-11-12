@@ -26,13 +26,13 @@ def kanAdjointCanonicalTransportSquare (n : ℕ) :=
 
 /-- 保存した第一の二単体は、正方形の上側の同じ二単体。 -/
 lemma kanAdjointCanonicalTransportSquare_upper (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
       SSet.yonedaEquiv.symm (kanAdjointCanonicalStageTransport X Y φ j n).first.simplex :=
   ThreeEdgeTransport.square_upper _
 
 /-- 保存した第二の二単体も、正方形の下側の同じ二単体。 -/
 lemma kanAdjointCanonicalTransportSquare_lower (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ kanAdjointCanonicalTransportSquare X Y φ j n =
       SSet.yonedaEquiv.symm (kanAdjointCanonicalStageTransport X Y φ j n).second.simplex :=
   ThreeEdgeTransport.square_lower _
 
@@ -56,7 +56,7 @@ lemma kanAdjointCanonicalTransportSquare_finish (n : ℕ) :
 /-- 正方形全体の非零境界への射影は、同じ二つの境界輸送三角形から作った正方形。 -/
 lemma kanAdjointCanonicalTransportSquare_projection (n : ℕ) :
     kanAdjointCanonicalTransportSquare X Y φ j n ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       (_root_.SerrePositivity.KST.Spectra.ThreeEdgeTransport.square (kanAdjointCanonicalBoundaryTransport X Y φ j n)) := by

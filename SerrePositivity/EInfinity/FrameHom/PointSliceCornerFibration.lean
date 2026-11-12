@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.SliceRoofCorner
-public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SliceRoofCorner
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
 
 /-!
 # 左ファイブレーションの指定点 slice の相対始点評価
@@ -23,41 +23,41 @@ open SSet.modelCategoryQuillen
 open scoped Simplicial
 
 lemma joinHorn_point_leftAnodyne (n : ℕ) (i : Fin (n + 2)) :
-    leftAnodyneExtensions
-      (joinUnion (horn (n + 1) i) (⊥ : (Δ[0] : SSet.{u}).Subcomplex)).ι := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion (horn (n + 1) i) (⊥ : (Δ[0] : SSet.{u}).Subcomplex)).ι := by
   let H := horn.{u} ((n + 1) + 0 + 1)
     (Fin.cast (by omega) (i.castAdd (0 + 1)))
-  have hh : leftAnodyneExtensions H.ι := by
-    apply leftAnodyneExtensions_horn
+  have hh : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions H.ι := by
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions_horn
     change i.val < (n + 1) + 0 + 1
     have := i.isLt
     omega
-  rw [← boundary_zero, ← Join.horn_boundary_preimage]
-  exact (leftAnodyneExtensions.arrow_mk_iso_iff
-    (Arrow.isoMk (subcomplexPreimageIso H (joinStdSimplexIso (n + 1) 0))
-      (joinStdSimplexIso (n + 1) 0) (by rfl))).2 hh
+  rw [← boundary_zero, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.Join.horn_boundary_preimage]
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions.arrow_mk_iso_iff
+    (Arrow.isoMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.subcomplexPreimageIso H (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0) (by rfl))).2 hh
 
-variable {E B : SSet.{u}} (p : (Δ[0] : SSet.{u}) ⟶ E) (r : E ⟶ B) [LeftFibration r]
+variable {E B : SSet.{u}} (p : (Δ[0] : SSet.{u}) ⟶ E) (r : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration r]
 
 lemma relativePointSlice_fibration :
-    Fibration (relativeSliceOverMap p (⊥ : (Δ[0] : SSet.{u}).Subcomplex).ι r) := by
-  apply fibration_of_hasLiftingProperty_horn
+    Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeSliceOverMap p (⊥ : (Δ[0] : SSet.{u}).Subcomplex).ι r) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.fibration_of_hasLiftingProperty_horn
   intro n i
-  exact relativeSliceOverMap_hasLiftingProperty _ (horn (n + 1) i) r
-    (joinHorn_point_leftAnodyne n i r (LeftFibration.mem (p := r))) p
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeSliceOverMap_hasLiftingProperty _ (horn (n + 1) i) r
+    (joinHorn_point_leftAnodyne n i r (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration.mem (p := r))) p
 
-lemma pointSliceCornerMap_fibration : Fibration (sliceOverCornerMap p r) := by
+lemma pointSliceCornerMap_fibration : Fibration (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCornerMap p r) := by
   have := relativePointSlice_fibration p r
-  have h : Fibration (relativeSliceOverMap p (⊥ : (Δ[0] : SSet.{u}).Subcomplex).ι r ≫
-      relativeSliceEmptyCornerMap p r) := inferInstance
-  rw [relativeSliceOverMap_empty_corner] at h
+  have h : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.relativeSliceOverMap p (⊥ : (Δ[0] : SSet.{u}).Subcomplex).ι r ≫
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.relativeSliceEmptyCornerMap p r) := inferInstance
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.relativeSliceOverMap_empty_corner] at h
   exact h
 
 lemma pointSliceRoofTriangleMap_fibration {I : SSet.{u}} (a : I ⟶ E) :
-    Fibration (sliceRoofTriangleMap r a p) := by
+    Fibration (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofTriangleMap r a p) := by
   have := pointSliceCornerMap_fibration p r
   apply (SSet.modelCategoryQuillen.fibration_iff _).2
-  exact SSet.modelCategoryQuillen.J.rlp.of_isPullback (sliceRoofCorner_isPullback r a p)
+  exact SSet.modelCategoryQuillen.J.rlp.of_isPullback (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCorner_isPullback r a p)
     ((SSet.modelCategoryQuillen.fibration_iff _).1 (pointSliceCornerMap_fibration p r))
 
 end SerrePositivity.EInfinity.FrameHom

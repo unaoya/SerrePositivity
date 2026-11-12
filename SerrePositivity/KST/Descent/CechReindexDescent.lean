@@ -33,7 +33,7 @@ namespace SerrePositivity.KST.Descent.CechReindex
 
 variable (K L : Type u) [SmallCategory K] [SmallCategory L]
   [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
   {a : K ⥤ L} {b : L ⥤ K} (adj : a ⊣ b)
 

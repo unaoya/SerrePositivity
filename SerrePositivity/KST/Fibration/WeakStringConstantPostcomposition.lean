@@ -16,17 +16,17 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の K-5 完全関手を、同じ射のまま K-1/K-2 の安定な入力の射として保持する。 -/
-def sInputExactMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
+def sInputExactMap {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) :
     sInputModel A ⟶ sInputModel B :=
   ⟨f.hom, (exactMap_preservesSData f).toCofiberData⟩
 
 /-- 元の定数 W 列は、元の包含側の完全関手による後合成を厳密に保つ。 -/
-lemma weakStringConstantExact_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : SimplexCategory) :
+lemma weakStringConstantExact_postcomp {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : SimplexCategory) :
     weakStringConstantExact (f ≫ q : A ⟶ C) n ≫ weakStringPostExact f q n =
       sInputExactMap f ≫ weakStringConstantExact q n := by
   apply Subtype.ext
-  apply (cancel_mono (fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι).1
   change ((weakStringConstantExact (f ≫ q : A ⟶ C) n).val ≫ weakStringPostMap f q n) ≫ _ =
     (f.hom ≫ (weakStringConstantExact q n).val) ≫ _
   simp only [Category.assoc, weakStringPostMap_ι, weakStringConstantExact_ι]
@@ -38,8 +38,8 @@ lemma weakStringConstantExact_postcomp {A B C : _root_.SerrePositivity.InfinityC
 
 /-- 元の定数包含の実対角の写像は、任意の実現関手の下で同じ完全関手の四角形を保つ。 -/
 theorem weakStringRealizationConstantDiagonal_postcomp
-    (F : StableModel.{u} ⥤ SSet.{u}) {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    (F : StableModel.{u} ⥤ SSet.{u}) {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     F.map (sInputExactMap f) ≫ weakStringRealizationConstantDiagonal F q =
       weakStringRealizationConstantDiagonal F (f ≫ q : A ⟶ C) ≫
         simplicialDiagonalFunctor.map

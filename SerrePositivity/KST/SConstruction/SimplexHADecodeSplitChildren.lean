@@ -30,9 +30,9 @@ lemma simplexHADecodeSplitLeft_cell_heq {n : ℕ} (m : ℕ)
   have hj : r ∈ I := simplexHADecodeSubset_cut_mem m v T
   have hL := simplexHADecodeSubset_left_two m v T hb
   have hc := necklaceLambdaCell_subsetAt_canonical_heq A (I.filter (· ≤ r))
-    (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) r hL
-    (DGNerve.Index.left_min (I.isLeast_min' _) (I.min'_le r hj) _)
-    (DGNerve.Index.left_max hj _)
+    (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) r hL
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min (I.isLeast_min' _) (I.min'_le r hj) _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _)
   exact hc.trans ((simplexSubsetLambdaCell_heq_of_eq A _ _
     (simplexHADecodeSubset_filter_left_decode m v T hb) _ _).trans
       (simplexHADecodeSubsetCell_canonical_heq A m (Fin.castSuccOrderEmb.trans v)
@@ -46,22 +46,22 @@ lemma simplexHADecodeSplitRight_cell_heq {n : ℕ} (m : ℕ)
       (simplexHADecodeSubset (m + 1) v T) (simplexHADecodeSubset_two (m + 1) v T hT hb)
       (v (Fin.last (m + 1))) (simplexHADecodeSubset_cut_mem m v T)
       (simplexHADecodeSubset_right_two m v T hT hb)))
-      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) := by
+      (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT (v (Fin.last (m + 1))) hb)) := by
   let I := simplexHADecodeSubset (m + 1) v T
   let r := v (Fin.last (m + 1))
   have hI : 2 ≤ I.card := simplexHADecodeSubset_two (m + 1) v T hT hb
   have hj : r ∈ I := simplexHADecodeSubset_cut_mem m v T
   have hR := simplexHADecodeSubset_right_two m v T hT hb
   have hc := necklaceLambdaCell_subsetAt_canonical_heq A (I.filter (r ≤ ·)) r
-    (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hR (DGNerve.Index.right_min hj _)
-    (DGNerve.Index.right_max (I.isGreatest_max' _) (I.le_max' r hj) _)
+    (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max (I.isGreatest_max' _) (I.le_max' r hj) _)
   have he : I.filter (r ≤ ·) = insert r T := simplexHADecodeSubset_filter_right m v T hb
   change 2 ≤ (I.filter (r ≤ ·)).card at hR
   have hJ : 2 ≤ (insert r T).card := by simpa only [he] using hR
-  have hmin : r = (insert r T).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hJ) := by
-    simpa only [he] using DGNerve.Index.right_min hj (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hR)
-  have hmax : T.max' hT = (insert r T).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hJ) :=
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT r hb).symm
+  have hmin : r = (insert r T).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hJ) := by
+    simpa only [he] using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hR)
+  have hmax : T.max' hT = (insert r T).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hJ) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_max T hT r hb).symm
   exact hc.trans ((simplexSubsetLambdaCell_heq_of_eq A _ _ he _ hJ).trans
     (simplexHABeadTail_cell_canonical_heq A T hT r hb hJ hmin hmax).symm)
 

@@ -1,12 +1,12 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.SingleZigzagGraphValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SingleZigzagRelativeValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.BackwardZigzagNativeRelative
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectZigzagDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeMarkedCategory
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeUnderlyingCategory
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHom
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SingleZigzagRelativeValue
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagNativeRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeMarkedCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeUnderlyingCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom
 
 /-!
 # 元の単一列の graph から固定 Hom 図式への評価
@@ -23,36 +23,36 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory SimplicialLocalization
-variable {I : Type v} [Category I] (D : I ⥤ RelativeCategory.{u}) {O : Type w}
+open CategoryTheory
+variable {I : Type v} [Category I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type w}
   (p : (i : I) → O → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : O), (D.map θ).functor.obj (p i X) = p j X)
 
 def markedObject (i : I) (X : O) : WideSubcategory (D.obj i).weakEquivalences := ⟨p i X⟩
 include hp in
 lemma markedObject_naturality {i j : I} (θ : i ⟶ j) (X : O) :
-    ((D ⋙ markedCategoryFunctor).map θ).toFunctor.obj (markedObject D p i X) =
+    ((D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryFunctor).map θ).toFunctor.obj (markedObject D p i X) =
       markedObject D p j X := congrArg (fun Z => (⟨Z⟩ : WideSubcategory
         (D.obj j).weakEquivalences)) (hp θ X)
 
 def forwardHomDiagram (X Y : O) : I ⥤ Type u :=
-  FixedObjectHom.functor (D ⋙ underlyingCategoryFunctor) p hp X Y
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor (D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.underlyingCategoryFunctor) p hp X Y
 
 def backwardHomDiagram (X Y : O) : I ⥤ Type u :=
-  FixedObjectHom.functor (D ⋙ markedCategoryFunctor) (markedObject D p)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor (D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryFunctor) (markedObject D p)
     (markedObject_naturality D p hp) Y X
 
-def singleForwardEvaluation (X Y : O) : graphDiagram D p hp (Word.single .forward) X Y ⟶
+def singleForwardEvaluation (X Y : O) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) X Y ⟶
     forwardHomDiagram D p hp X Y ⋙ Functor.const SimplexCategoryᵒᵖ where
   app i := ForwardZigzag.graphValue
   naturality i j θ := by
     ext n σ
-    exact ForwardZigzag.value_relative (D.map θ) (hp θ X) (hp θ Y) (σ.obj 0)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.value_relative (D.map θ) (hp θ X) (hp θ Y) (σ.obj 0)
 
-def singleBackwardEvaluation (X Y : O) : graphDiagram D p hp (Word.single .backward) X Y ⟶
+def singleBackwardEvaluation (X Y : O) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) X Y ⟶
     backwardHomDiagram D p hp X Y ⋙ Functor.const SimplexCategoryᵒᵖ where
   app i := BackwardZigzag.graphValue
   naturality i j θ := by
     ext n σ
-    exact BackwardZigzag.nativeValue_relative (D.map θ) (hp θ X) (hp θ Y) (σ.obj 0)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.nativeValue_relative (D.map θ) (hp θ X) (hp θ Y) (σ.obj 0)
 end SerrePositivity.EInfinity.Hammock.FixedObjectDiagram

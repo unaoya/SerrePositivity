@@ -20,21 +20,21 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorPinchedIso_precomp_family {X X' : Complex A} (Y : Complex A)
     (f : X' ⟶ X) (K : SSet.{u + 1})
     (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)) :
-    dgPinchedFamilyHom A (Complex A)
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
       (g ≫ SSet.uliftFunctor.{u + 1, u}.map
-        ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
           (normalizedTensorPinchedIso A X' Y).hom) =
-    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫
-        dgPinchedFamilyHom A (Complex A) (g ≫ (normalizedTensorPinchedIso A X Y).hom) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (g ≫ (normalizedTensorPinchedIso A X Y).hom) := by
   rw [normalizedTensorPinchedIso_precomp]
   simpa only [Category.assoc] using complexPinchedPrecomposition_family A f Y K
     (g ≫ (normalizedTensorPinchedIso A X Y).hom)

@@ -72,7 +72,7 @@ def component (X : RightResolutionMapping.Index C) :
       DualResolutionTargets.presentation, DualResolutionTargets.diagram,
       FramedResolution.innerDiagrams, FramedResolution.forget, ResolutionObject.diagrams,
       SerrePositivity.ModelReplacement.FibrantReplacementObject.targets,
-      cosimplicialHomBifunctor, cosimplicialHomMap, cosimplicialHom, functor,
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom, functor,
       MixedDiagonalHom.obj, Equiv.toIso]
     simp only [Category.assoc]
     change X.1.unop.inner.resolution.obj.map θ.unop ≫ 𝟙 _ ≫ h ≫
@@ -91,7 +91,7 @@ def rawIso : BiresolutionRawMapping.functor (C := C) ≅ functor :=
       DualResolutionTargets.framedForget, DualResolutionTargets.presentation,
       FramedResolution.innerDiagrams, FramedResolution.forget, ResolutionObject.diagrams,
       SerrePositivity.ModelReplacement.FibrantReplacementObject.targets,
-      cosimplicialHomBifunctor, cosimplicialHomMap, cosimplicialHom, functor,
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom, functor,
       MixedDiagonalHom.map, MixedDiagonalHom.action, CosimplicialMapFamily.ofMap, Equiv.toIso]
     simp only [Category.assoc])
 

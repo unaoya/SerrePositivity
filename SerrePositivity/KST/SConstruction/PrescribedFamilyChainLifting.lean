@@ -86,17 +86,17 @@ lemma exists_prescribed_pointedFamilyChain_lift_with_traces
     {A B Y : PointedSimplicialSet.{u}} [KanComplex Y.right]
     (i : A ⟶ B) [Mono i.right] {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
     {a b : U ⟶ (PointedObject.basedHom A Y).right} (c : FamilyHomotopyChain b a)
-    (f : U ⟶ (PointedObject.basedHom B Y).right) (hf : f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = b)
+    (f : U ⟶ (PointedObject.basedHom B Y).right) (hf : f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = b)
     {t : T ⟶ (PointedObject.basedHom B Y).right} (d : FamilyHomotopyChain (j ≫ f) t)
-    (htrace : (familyHomotopyChainTrace d).map (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) =
+    (htrace : (familyHomotopyChainTrace d).map (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) =
       (familyHomotopyChainTrace c).map ((j ▷ (Δ[1] : SSet.{u})) ≫ ·)) :
     ∃ g : U ⟶ (PointedObject.basedHom B Y).right,
-      g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y = a ∧ j ≫ g = t ∧ ∃ v : FamilyHomotopyChain f g,
-        (familyHomotopyChainTrace v).map (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) =
+      g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y = a ∧ j ≫ g = t ∧ ∃ v : FamilyHomotopyChain f g,
+        (familyHomotopyChainTrace v).map (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) =
           familyHomotopyChainTrace c ∧
         (familyHomotopyChainTrace v).map ((j ▷ (Δ[1] : SSet.{u})) ≫ ·) =
           familyHomotopyChainTrace d := by
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Y) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration i Y
   exact exists_prescribedFamilyChain_lift_with_traces _ j c f hf d htrace
 
 end SerrePositivity.KST.SConstruction

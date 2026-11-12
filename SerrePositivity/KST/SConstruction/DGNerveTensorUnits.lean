@@ -16,32 +16,32 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 
 /-- 元の一対象 A を左に挿入する、native dg nerve の実単体的写像。 -/
-def dgNerveUnitLeft : dgNerve A D ⟶ dgNerve A (DGTensorCategory A PUnit.{1} D) :=
+def dgNerveUnitLeft : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGTensorCategory A PUnit.{1} D) :=
   (cubicalLambdaNerveNativeIso A D).inv ≫ cubicalLambdaNerveUnitLeft A D ≫
     (cubicalLambdaNerveNativeIso A (DGTensorCategory A PUnit.{1} D)).hom
 
 /-- 元の一対象 A を右に挿入する、native dg nerve の実単体的写像。 -/
-def dgNerveUnitRight : dgNerve A D ⟶ dgNerve A (DGTensorCategory A D PUnit.{1}) :=
+def dgNerveUnitRight : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (DGTensorCategory A D PUnit.{1}) :=
   (cubicalLambdaNerveNativeIso A D).inv ≫ cubicalLambdaNerveUnitRight A D ≫
     (cubicalLambdaNerveNativeIso A (DGTensorCategory A D PUnit.{1})).hom
 
 /-- native 左単位挿入の各単体は、元の増大と元の実逆 dg 関手の組。 -/
-lemma dgNerveUnitLeft_app {N : ℕ} (s : DGNerve.Simplex A D N) :
+lemma dgNerveUnitLeft_app {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) :
     (dgNerveUnitLeft A D).app (op ⦋N⦌) s = cubicalLambdaNativeSimplex A
       (cubicalLambdaFunctorPair A (cubicalLambdaCounit A (Δ[N] : SSet.{u}))
         (simplexHAInverseFunctor A s)) := rfl
 
 /-- native 右単位挿入の各単体は、元の実逆 dg 関手と元の増大の組。 -/
-lemma dgNerveUnitRight_app {N : ℕ} (s : DGNerve.Simplex A D N) :
+lemma dgNerveUnitRight_app {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) :
     (dgNerveUnitRight A D).app (op ⦋N⦌) s = cubicalLambdaNativeSimplex A
       (cubicalLambdaFunctorPair A (simplexHAInverseFunctor A s)
         (cubicalLambdaCounit A (Δ[N] : SSet.{u}))) := rfl
 
 /-- native 左単位挿入は、元の実左単位 dg 関手で全単体的恒等を回収する。 -/
 lemma dgNerveUnitLeft_unitor :
-    dgNerveUnitLeft A D ≫ dgNerve.map (dgTensorLeftUnitor A D) = 𝟙 (dgNerve A D) := by
+    dgNerveUnitLeft A D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorLeftUnitor A D) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) := by
   ext n s
-  change DGNerve.Simplex A D n.unop.len at s
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n.unop.len at s
   change (cubicalLambdaNativeSimplex A
     (cubicalLambdaFunctorPair A (cubicalLambdaCounit A (SSet.stdSimplex.obj n.unop))
       (simplexHAInverseFunctor A s))).map (dgTensorLeftUnitor A D) = s
@@ -50,9 +50,9 @@ lemma dgNerveUnitLeft_unitor :
 
 /-- native 右単位挿入は、元の実右単位 dg 関手で全単体的恒等を回収する。 -/
 lemma dgNerveUnitRight_unitor :
-    dgNerveUnitRight A D ≫ dgNerve.map (dgTensorRightUnitor A D) = 𝟙 (dgNerve A D) := by
+    dgNerveUnitRight A D ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorRightUnitor A D) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) := by
   ext n s
-  change DGNerve.Simplex A D n.unop.len at s
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n.unop.len at s
   change (cubicalLambdaNativeSimplex A
     (cubicalLambdaFunctorPair A (simplexHAInverseFunctor A s)
       (cubicalLambdaCounit A (SSet.stdSimplex.obj n.unop)))).map (dgTensorRightUnitor A D) = s

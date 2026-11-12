@@ -25,8 +25,8 @@ lemma familyVertex_ihomAction (K : PointedSimplicialSet.{u})
       familyVertex (PointedObject.basedHomMap K f) := by
   have he : curry ((ihom.ev K).app A ≫ f) = (ihom K).map f := by
     rw [curry_natural_right, ← uncurry_id_eq_ev, curry_uncurry, Category.id_comp]
-  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K (PointedObject.basedHom K A) E).hom.right.app _
-    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((ihom.ev K).app A) E).right.app _ (familyVertex f)) = _
+  change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K (PointedObject.basedHom K A) E).hom.right.app _
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((ihom.ev K).app A) E).right.app _ (familyVertex f)) = _
   rw [familyVertex_pre, ← familyVertex_curry, he]
   rfl
 

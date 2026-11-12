@@ -2,6 +2,7 @@
 -- 設計書：formalization-plans/bhatt-scholze/a1-design.md G-A1-11、a2-design.md §2.2・G-A2-4。基準コミット 972bb7f53。ビルドしない。
 module
 public import SerrePositivity.EInfinity.Interface.Theory
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 -- 本ファイルは drafts/Sheaves/{SheafCondition,GlobalSections,SheafGenerators,CechConerveLimit}.lean を E := CAlg_R A で使う。
 
@@ -37,7 +38,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.InfinityCategories.Sheaves
 
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] (J : GrothendieckTopology 𝒞) (A : Type u) [CommRing A]
 

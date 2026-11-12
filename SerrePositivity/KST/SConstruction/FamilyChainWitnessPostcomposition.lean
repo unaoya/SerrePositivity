@@ -20,9 +20,9 @@ open scoped Simplicial
 /-- 元の全円柱の後合成像は、同じ元の円柱を後合成した実辺そのもの。 -/
 lemma familyHomotopyEdge_postcomp {U E B : SSet.{u}} (p : E ⟶ B)
     {f g : U ⟶ E} (H : SSet.Homotopy f g) :
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H)).map ((ihom U).map p)).edge =
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
-        (functorHomotopyPostcomp H p))).edge := by
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)).map ((ihom U).map p)).edge =
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p))).edge := by
   apply SSet.yonedaEquiv.symm.injective
   rw [SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp]
   change curry H.h ≫ (ihom U).map p = curry (H.h ≫ p)
@@ -32,15 +32,15 @@ lemma familyHomotopyEdge_postcomp {U E B : SSet.{u}} (p : E ⟶ B)
 def familyChainWitnessPostcomp {U E B : SSet.{u}} (p : E ⟶ B)
     {f g : U ⟶ E} {c : FamilyHomotopyChain f g} {H : SSet.Homotopy f g}
     (w : FamilyChainCompositionWitness c H) :
-    FamilyChainCompositionWitness (familyHomotopyChainMap c p) (functorHomotopyPostcomp H p) := by
+    FamilyChainCompositionWitness (familyHomotopyChainMap c p) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p) := by
   induction w with
   | nil f =>
-      have h : functorHomotopyRefl (f ≫ p) = functorHomotopyPostcomp (functorHomotopyRefl f) p := by
+      have h : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (f ≫ p) = _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl f) p := by
         apply SSet.RelativeMorphism.Homotopy.ext
         exact (Category.assoc _ _ _).symm
       exact familyChainWitnessHomTransport (.nil (f ≫ p)) h
   | cons a tail tailWitness triangle ih =>
-      exact .cons (functorHomotopyPostcomp a p) (familyHomotopyChainMap tail p) ih
+      exact .cons (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp a p) (familyHomotopyChainMap tail p) ih
         ((triangle.map ((ihom U).map p)).ofEq (familyHomotopyEdge_postcomp p a)
           (familyHomotopyEdge_postcomp p _) (familyHomotopyEdge_postcomp p _))
 

@@ -37,7 +37,7 @@ lemma freeHomIso_pre {K L : SSet.{u}} (f : K ⟶ L) (X : PointedSimplicialSet.{u
     (MonoidalClosed.pre (PointedObject.adjoinFunctor.map f)).app X ≫ (freeHomIso K X).hom =
       (freeHomIso L X).hom ≫ pre f X := by
   apply Under.UnderMorphism.ext
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact FreePointedHomRestriction.natural_pre f X
 
 end

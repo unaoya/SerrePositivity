@@ -12,10 +12,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationSquar
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)
@@ -51,8 +51,8 @@ lemma dgModuleNaturalConeRotationInput_naturality (x y : P) (n : ℤ)
     (dgModuleNaturalConeRotationHomotopyElement_naturality R D F G η x y n z)
     ((k).naturality z)
   dsimp only [dgModuleNaturalConeRotationInput]
-  exact (compose_add_right _ _ _ _).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_add_right _ _ _ _).trans
     ((congrArg₂ (fun a b => a + b) h₁ h₂).trans
       ((smul_add _ _ _).symm.trans
-        (congrArg (fun t => n.negOnePow • t) (compose_add_left _ _ _ _).symm)))
+        (congrArg (fun t => n.negOnePow • t) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_add_left _ _ _ _).symm)))
 end SerrePositivity.KST.SConstruction

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSKanComposite
-public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorEvaluation
 
 /-!
 概要：同じ零中間二胞体の全長 Hom を、指定合成端を固定する再構成入力へ厳密に置く。
@@ -18,9 +18,9 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 
 /-- 概要：元の全 S• core 包含を制御された上側の第一短辺として固定する。
 方針：同じ元の包含を Ex∞ に送る。
@@ -29,22 +29,22 @@ variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 def zeroMiddleControlledFirstMap :
     (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
       (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩)).obj :=
-  exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
 
 /-- 概要：同じ固定二短辺の合成端を保持する元の長 Hom の実入力空間。
 方針：同じ全 path の合成頂点での評価の実 fiber を取る。
 規約：全 S• Hom の始域を元の core に制限してから入力する。
 使われ方：K-6 c4 の指定全長 Hom の再構成境界への実代入。 -/
 abbrev zeroMiddleControlledLongHomSpace :=
-  vertexFiber
-    (evaluateFunctorAt
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (X := nerve (SimplicialThickening.Path
         (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)))
       (Y := (ihom
       (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj).obj
       (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)).obj)
       (ComposableArrows.mk₀ coherentTriangleFullPath))
-    (functorVertex (show (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
       (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)).obj from
         zeroMiddleControlledFirstMap s ≫ zeroMiddleFullSKanComposite s hZ))
 
@@ -53,16 +53,16 @@ abbrev zeroMiddleControlledLongHomSpace :=
 規約：再構成された二胞体やその存在を入力しない。
 使われ方：Ind-S (9) の指定全長 Hom 空間の元の点。 -/
 def zeroMiddleControlledLongHomInput : (zeroMiddleControlledLongHomSpace s hZ) _⦋0⦌ := by
-  refine ⟨functorVertex (zeroMiddleFullSKanLongHom s hZ ≫
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (zeroMiddleFullSKanLongHom s hZ ≫
     (pre (zeroMiddleControlledFirstMap s)).app _), ?_⟩
-  rw [pinchedConstant_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
   change ((pre (zeroMiddleControlledFirstMap s)).app _).app (Opposite.op ⦋0⦌)
     ((zeroMiddleFullSKanLongHom s hZ).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ coherentTriangleFullPath)) = _
   rw [zeroMiddleFullSKanLongHom_composite]
   have hc := congrArg (fun F : fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩) =>
-    functorVertex (show (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (show (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩)).obj ⟶
       (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)).obj from
         zeroMiddleControlledFirstMap s ≫ F)) (zeroMiddleFullSKanComparison_last s hZ)
   simpa only [Category.assoc] using! hc
@@ -73,11 +73,11 @@ def zeroMiddleControlledLongHomInput : (zeroMiddleControlledLongHomSpace s hZ) _
 使われ方：再構成された上側を元の指定二胞体へ照合する実データ。 -/
 theorem zeroMiddleControlledLongHomInput_recovery :
     (zeroMiddleControlledLongHomInput s hZ).val =
-      functorVertex (coherentTriangleLongHom
-        ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s)) := by
-  change functorVertex (zeroMiddleFullSKanLongHom s hZ ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (coherentTriangleLongHom
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s)) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (zeroMiddleFullSKanLongHom s hZ ≫
     (pre (zeroMiddleControlledFirstMap s)).app _) = _
-  exact congrArg functorVertex (zeroMiddleFullSKanLongHom_core s hZ)
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (zeroMiddleFullSKanLongHom_core s hZ)
 
 /-- 概要：元の二短辺の合成 path は、Ind-S (9) の指定全体 path と厳密に一致する。
 方針：元の二短区間の和が三頂点全体であることを照合する。

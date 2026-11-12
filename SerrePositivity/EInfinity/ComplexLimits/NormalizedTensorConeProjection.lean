@@ -13,33 +13,33 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorElementNerveDiagram :
-    nerve (normalizedTensorElementIndex A X Y) ⟶ dgNerve A (Complex A) :=
+    nerve (normalizedTensorElementIndex A X Y) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) :=
   nerveMap (normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) ≫
-    closedNerveInclusion A (Complex A)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)
 
 lemma normalizedTensorElementNerveDiagram_app {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     (normalizedTensorElementNerveDiagram A X Y).app (Opposite.op ⦋n⦌) c =
-      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := rfl
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := rfl
 
 lemma normalizedTensorConeUnderMap_projection :
-    normalizedTensorConeUnderMap A X Y ≫ sliceUnderProjection (normalizedTensorConePoint A X) =
+    normalizedTensorConeUnderMap A X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (normalizedTensorConePoint A X) =
       normalizedTensorElementNerveDiagram A X Y := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro c
-  change SSet.yonedaEquiv (joinInr (Δ[0] : SSet.{u + 1}) Δ[n] ≫
-    ((pointJoinStdSimplexIso n).hom ≫
-      (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u + 1}) Δ[n] ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
         (normalizedTensorConeSimplex A X Y c))) =
-    closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)
-  rw [← Category.assoc, pointJoinStdSimplexIso_inr,
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso_inr,
     SSet.stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply]
   change (normalizedTensorConeSimplex A X Y c).pullback
     (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom = _

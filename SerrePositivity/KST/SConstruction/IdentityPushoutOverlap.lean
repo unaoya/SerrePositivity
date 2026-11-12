@@ -40,23 +40,23 @@ private lemma cross_shapes :
         (identitySpanShape true ≫ identitySpanSection true) =
       (identityPushoutShape true ≫ identitySpanSection true) ≫
         (identitySpanShape false ≫ identitySpanSection false) := by
-  have h₀ : squareLeftEdge ≫ fst (Δ[1] : SSet.{u}) Δ[1] =
+  have h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ fst (Δ[1] : SSet.{u}) Δ[1] =
       SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     apply SSet.yonedaEquiv.injective
     decide
-  have h₁ : squareBottomEdge ≫ snd (Δ[1] : SSet.{u}) Δ[1] =
+  have h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ snd (Δ[1] : SSet.{u}) Δ[1] =
       SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
     apply SSet.yonedaEquiv.injective
     decide
   have hc₀ : identitySpanSection false ≫ identitySpanShape true =
       SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-    change horn₂₀.ι₀₂ ≫ (spanSquareBoundary ≫ fst (Δ[1] : SSet.{u}) Δ[1]) = _
-    rw [← Category.assoc, spanSquareBoundary_leftEdge]
+    change horn₂₀.ι₀₂ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ≫ fst (Δ[1] : SSet.{u}) Δ[1]) = _
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge]
     exact h₀
   have hc₁ : identitySpanSection true ≫ identitySpanShape false =
       SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) := by
-    change horn₂₀.ι₀₁ ≫ (spanSquareBoundary ≫ snd (Δ[1] : SSet.{u}) Δ[1]) = _
-    rw [← Category.assoc, spanSquareBoundary_bottomEdge]
+    change horn₂₀.ι₀₁ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ≫ snd (Δ[1] : SSet.{u}) Δ[1]) = _
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge]
     exact h₁
   rw [Category.assoc, ← Category.assoc (identitySpanSection false), hc₀,
     Category.assoc, ← Category.assoc (identitySpanSection true), hc₁]

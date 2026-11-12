@@ -34,7 +34,7 @@ def mappingCofibrantFactorization :
       (cofibrations (operad A).Algebra) (trivialFibrations (operad A).Algebra) := by
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
     ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
   exact MorphismProperty.functorialFactorizationData _ _
@@ -49,7 +49,7 @@ def mappingFibrantFactorization :
       (trivialCofibrations (operad A).Algebra) (fibrations (operad A).Algebra) := by
   let := modelCategory A
   have := modelCategory_cofibrantlyGenerated A
-  have := ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
     ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
   exact MorphismProperty.functorialFactorizationData _ _

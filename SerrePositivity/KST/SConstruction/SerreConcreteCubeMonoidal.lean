@@ -18,7 +18,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の具体的結合同型の像と、元の連結鎖比較の可換性。 -/
-lemma serreConcreteCube_tensor_associativity (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma serreConcreteCube_tensor_associativity (X Y Z : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     (serreCubeTensorIso A (X.dimension + Y.dimension) Z.dimension).hom ≫
         serreCubeLeftSplit A X.dimension Y.dimension Z.dimension ≫
           serreCubeAssociatorHom A X.dimension Y.dimension Z.dimension =

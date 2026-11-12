@@ -27,14 +27,14 @@ variable (A : Type u) [CommRing A]
 /-- 全右脚上の元の分解の小さい Cat 値図式。 -/
 abbrev mappingSmallResolutionRightDiagram (X Y : (operad A).Algebra) :=
   let := modelCategory A
-  mappingSmallRightSpanForget A Y ⋙ FrameHom.costructuredArrowDiagram
+  mappingSmallRightSpanForget A Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram
     (mappingSmallResolutionOverFunctor A X ⋙
       FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
 
 /-- 全右脚上の全左脚の小さい Cat 値図式。 -/
 abbrev mappingSmallSpanRightDiagram (X Y : (operad A).Algebra) :=
   let := modelCategory A
-  mappingSmallRightSpanForget A Y ⋙ FrameHom.costructuredArrowDiagram
+  mappingSmallRightSpanForget A Y ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.costructuredArrowDiagram
     (FrameHom.smallResolutionLeftForget.{u + 1, u, u + 1} X)
 
 /-- 元の全右脚の比較と同じ自然変換の nerve の bar の射。 -/

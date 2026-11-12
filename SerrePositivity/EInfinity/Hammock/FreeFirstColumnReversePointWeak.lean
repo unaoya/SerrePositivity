@@ -20,7 +20,7 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeReverseFirstRightSpaceMap :=
   rightSpaceMap (freeFirstMarkedObjectEquiv C) (freeReverseFirstTargetObjectEquiv C w X Y)
     (freeReverseFirstMarkedObjectEquiv_naturality C w X Y)
@@ -30,7 +30,7 @@ lemma freeReverseFirstRightSpaceMap_eq_id : freeReverseFirstRightSpaceMap C w X 
   ext n σ
   rfl
 lemma freeReverseFirstRightSpaceMap_weak :
-    IsWeakHomotopyEquivalence (freeReverseFirstRightSpaceMap C w X Y Z) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeReverseFirstRightSpaceMap C w X Y Z) := by
   rw [freeReverseFirstRightSpaceMap_eq_id]
-  exact isWeakHomotopyEquivalence_id _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
 end SerrePositivity.EInfinity.Hammock.FirstColumn

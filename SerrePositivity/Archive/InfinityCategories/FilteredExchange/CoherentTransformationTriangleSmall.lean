@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTriangleRelative
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningFunctorIso
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationVertexTriangle
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTotalMap
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationTriangleRelative
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningFunctorIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationVertexTriangle
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationTotalMap
 
 /-!
 概要：元の coherent 三角形の指定比較を元の小さい全空間上に移す。

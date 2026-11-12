@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackMapPrimitive
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeMap
 
 /-!
 概要：実 cospan の模型射を、元の差の mapping cocone 射へ同定する。
@@ -23,11 +23,11 @@ variable (R : Type u) [CommRing R] {A₀ B₀ C₀ A₁ B₁ C₁ : Mon (Complex
   (hf : a ≫ f₁ = f₀ ≫ b) (hg : c ≫ g₁ = g₀ ≫ b)
 
 lemma map_toMappingCocone : (map R f₀ g₀ f₁ g₁ a b c hf hg).hom ≫ toMappingCocone R f₁ g₁ =
-    toMappingCocone R f₀ g₀ ≫ complexMappingCoconeMap (difference R f₀ g₀)
+    toMappingCocone R f₀ g₀ ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R f₀ g₀)
       (difference R f₁ g₁) (sumMap R a c) b.hom (difference_comm R _ _ _ _ _ _ _ hf hg) := by
-  apply dgMappingCocone_hom_ext (difference R f₁ g₁)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (difference R f₁ g₁)
   · rw [Category.assoc, toMappingCocone_fst, Category.assoc,
-      complexMappingCoconeMap_fst, ← Category.assoc, toMappingCocone_fst]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst, ← Category.assoc, toMappingCocone_fst]
     apply biprod.hom_ext
     · rw [Category.assoc, pairHom_fst, Category.assoc, sumMap, biprod.map_fst,
         ← Category.assoc, pairHom_fst]
@@ -38,7 +38,7 @@ lemma map_toMappingCocone : (map R f₀ g₀ f₁ g₁ a b c hf hg).hom ≫ toMa
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
       toMappingCocone_snd, map_primitive]
     rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
-      complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain,
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain,
       toMappingCocone_snd]
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra.HomotopyPullbackModel

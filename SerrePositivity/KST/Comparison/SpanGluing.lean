@@ -32,11 +32,11 @@ theorem spanCylinder_vertex_homotopyPullback_of_fibrations {F G : WalkingSpan �
     (hL : IsHomotopyPullback (naturalitySquare (diagramArrow WalkingSpan.Hom.fst) α))
     (hR : IsHomotopyPullback (naturalitySquare (diagramArrow WalkingSpan.Hom.snd) α))
     (d : WalkingSpan) : IsHomotopyPullback (naturalitySquare (spanCylinderVertex d) α) := by
-  let : SSet.KanComplex ((G ⋙ exInfinity).obj .zero) :=
-    exInfinity_kanComplex (G.obj .zero)
-  let αR := whiskerRight α exInfinity
+  let : SSet.KanComplex ((G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity).obj .zero) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex (G.obj .zero)
+  let αR := whiskerRight α _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
   have hαR (e : WalkingSpan) : SSet.modelCategoryQuillen.J.rlp (αR.app e) :=
-    exInfinity_map_rlp (α.app e) (hα e)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp (α.app e) (hα e)
   have hLR := (diagramExInfinity_arrowSquare_iff α WalkingSpan.Hom.fst).mpr hL
   have hRR := (diagramExInfinity_arrowSquare_iff α WalkingSpan.Hom.snd).mpr hR
   have hR := spanCylinder_vertex_homotopyPullback_of_kan_base αR hαR hLR hRR d

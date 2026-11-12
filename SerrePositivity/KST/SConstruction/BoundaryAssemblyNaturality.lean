@@ -80,9 +80,9 @@ lemma boundaryKanAssemblyAdjoint_naturality_component (r : ℕ)
 方針：uncurry を suspension と余単位への後合成として計算する。
 規約：対象の Kan 性は不要。使われ方：随伴射のホモトピー自然性を構造射へ戻す。 -/
 lemma pointedComponentUncurry {A B : PointedSimplicialSet.{u}}
-    {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B} (h : componentOf f = componentOf g) :
-    componentOf ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv A B).symm f) =
-      componentOf ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv A B).symm g) := by
+    {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B} (h : componentOf f = componentOf g) :
+    componentOf ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv A B).symm f) =
+      componentOf ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv A B).symm g) := by
   let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
   change componentOf ((adj.homEquiv A B).symm f) = componentOf ((adj.homEquiv A B).symm g)
   rw [adj.homEquiv_counit, adj.homEquiv_counit]
@@ -114,8 +114,8 @@ lemma boundaryKanAssemblySigma_naturality_component (r : ℕ)
 lemma pointedLoopCounit_naturality {A B : PointedSimplicialSet.{u}} (f : A ⟶ B) :
     PointedSimplicialSet.circle.{u} ◁
       (PointedObject.basedHomFunctor (C := SSet.{u}) PointedSimplicialSet.circle.{u}).map f ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B) B).symm (𝟙 _) =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace A) A).symm (𝟙 _) ≫ f := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B) B).symm (𝟙 _) =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace A) A).symm (𝟙 _) ≫ f := by
   let adj := PointedSimplicialSet.smashHomAdjunction PointedSimplicialSet.circle.{u}
   change (PointedObject.smashFunctor.obj PointedSimplicialSet.circle.{u}).map
       ((PointedObject.basedHomFunctor (C := SSet.{u}) PointedSimplicialSet.circle.{u}).map f) ≫

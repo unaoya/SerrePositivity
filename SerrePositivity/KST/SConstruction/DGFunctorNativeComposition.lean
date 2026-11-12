@@ -21,14 +21,14 @@ variable (A : Type u) [CommRing A] (D E B : Type v)
 /-- 元の厳密 dg 関手を native Kan 写像空間の頂点として保持する。 -/
 def dgFunctorNativeMappingVertex (F : DGFunctor A D E) :
     (dgFunctorNativeMappingSpace A D E).obj (op ⦋0⦌) :=
-  ⟨DGNerve.Simplex.vertex F, quasicategoryCore_vertex _⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex _⟩
 
 /-- DK/native core 比較は、元の同じ厳密 dg 関手の頂点を回収する。 -/
 lemma dgFunctorMappingNativeComparison_vertex (F : DGFunctor A D E) :
     (dgFunctorMappingNativeComparison A D E).app (op ⦋0⦌) (dgFunctorMappingVertex A D E F) =
       dgFunctorNativeMappingVertex A D E F := by
   apply Subtype.ext
-  apply DGNerve.Simplex.vertexEquiv.injective
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.injective
   rfl
 
 variable [Small.{u} E]
@@ -51,7 +51,7 @@ lemma dgFunctorNativeComposition_vertex (F : DGFunctor A D E) (G : DGFunctor A E
         (dgFunctorNativeMappingVertex A D E F, dgFunctorNativeMappingVertex A E B G) =
       dgFunctorNativeMappingVertex A D B (DGFunctor.comp F G) := by
   apply Subtype.ext
-  apply DGNerve.Simplex.vertexEquiv.injective
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.injective
   rfl
 
 /-- 既存 DK 写像空間の直積から実 tensor source の native core への比較。 -/

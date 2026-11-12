@@ -17,9 +17,9 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の入力写像の実 Λ Hom 作用は、元の同じ全 necklace cell の後合成を回収する。 -/
 lemma necklaceLambdaCell_post {K L : SSet.{u}} (a : K ⟶ L) {x y : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) :
     necklaceLambdaCell A T ≫ (cubicalLambdaMap A a).map x y =
-      necklaceLambdaCell A ((_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose a x y).obj T) := by
+      necklaceLambdaCell A ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose a x y).obj T) := by
   have h := congrArg ((cubicalSerreChains A).map) (necklaceCubicalCell_map a T)
   exact (Category.assoc _ _ _).trans
     ((congrArg (fun f => (cubicalSerreChainsCubeIso A).hom.app _ ≫ f)

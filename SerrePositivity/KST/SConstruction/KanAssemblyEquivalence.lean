@@ -47,7 +47,7 @@ lemma kanTargetAssemblyAdjoint_localized_isIso (r : ℕ) (X : StableModel.{u}) :
 /-- 元の随伴射の源の Kan 置換への任意の厳密な延長は全基点 π 同型。 -/
 lemma kanAssemblyAdjointAt_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (v : (kanAssemblyAdjointChoices r X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kanAssemblyAdjointAt r X v).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kanAssemblyAdjointAt r X v).right := by
   let Q := AnodyneHomotopy.anodyneQ
   let i := PointedKanReplacement.unit.app (oneDirectionReducedRealization r X)
   have hi : IsIso (Q.map i.right) :=
@@ -64,7 +64,7 @@ lemma kanAssemblyAdjointAt_piIsomorphism (r : ℕ) (X : StableModel.{u})
 
 /-- 元の既存の境界商 Kan 列の構造射の随伴は全基点 π 同型。 -/
 lemma boundaryKanAssemblyAdjoint_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryKanAssemblyAdjoint r X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryKanAssemblyAdjoint r X).right :=
   (oneDirectionKanComparisonInverse_piIsomorphism r X).comp
     (kanAssemblyAdjointAt_piIsomorphism r X _)
 

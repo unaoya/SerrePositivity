@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.CoefficientProductRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoefficientProductRelative
 public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardForwardCatIso
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardData
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardBackwardData
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnForwardForwardData
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnBackwardBackwardData
 
 /-!
 # 元の混合二方向の底と両係数の相対比較
@@ -20,18 +20,18 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory Opposite SimplicialLocalization Zigzag.FirstBoundary
-def backwardForwardData (C : RelativeCategory.{u}) (w : Word) (X Y : C.category) :
-    TwoSidedDiagram.Data.{u} where
+open CategoryTheory Opposite
+def backwardForwardData (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} where
   base := Cat.of (WideSubcategory C.weakEquivalences)
-  left := backwardForwardLeftCoefficient C.weakEquivalences w X Y
-  right := CoefficientProduct.point
-variable {C D : RelativeCategory.{u}} (w : Word) {X Y : C.category} {X' Y' : D.category}
+  left := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardForwardLeftCoefficient C.weakEquivalences w X Y
+  right := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.CoefficientProduct.point
+variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) {X Y : C.category} {X' Y' : D.category}
     (F : C ⟶ D) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
 def backwardForwardDataMap : backwardForwardData C w X Y ⟶ backwardForwardData D w X' Y' where
-  base := markedCategoryMap F
-  left := CoefficientProduct.change (markedCategoryMap F).op
-    (backwardBackwardLeftMap (Y := Y) (Y' := Y') w F hX)
-    (forwardForwardLeftMap (X := X) (X' := X') w F hY)
-  right := CoefficientProduct.pointMap (markedCategoryMap F)
+  base := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap F
+  left := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap F).op
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardLeftMap (Y := Y) (Y' := Y') w F hX)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardLeftMap (X := X) (X' := X') w F hY)
+  right := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap F)
 end SerrePositivity.EInfinity.Hammock.FirstColumn

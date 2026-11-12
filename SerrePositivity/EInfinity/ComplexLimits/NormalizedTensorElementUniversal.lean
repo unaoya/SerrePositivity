@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorUniversalSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplexTerminalParameter
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter
 
 /-!
 概要：全単体列の終端における、元の普遍正規化 Hom 族を構成する。
@@ -16,19 +16,19 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 abbrev normalizedTensorElementTerminalParameter {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     ⦋n⦌ ⟶ (normalizedTensorElementDegree A X Y).obj (c.obj (Fin.last n)) :=
-  FrameHom.SimplexTerminalParameter.parameter (c ⋙ normalizedTensorElementDegree A X Y)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalParameter.parameter (c ⋙ normalizedTensorElementDegree A X Y)
 
 def normalizedTensorElementUniversalFamily {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     SSet.uliftFunctor.{u + 1, u}.obj (Δ[n] : SSet.{u}) ⟶
-      DGNerve.pinchedHom A (Complex A) X
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X
         ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n))) :=
   SSet.uliftFunctor.{u + 1, u}.map
     (SSet.stdSimplex.map (normalizedTensorElementTerminalParameter A X Y c)) ≫
@@ -37,7 +37,7 @@ def normalizedTensorElementUniversalFamily {n : ℕ}
 
 def normalizedTensorElementUniversalSimplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    (DGNerve.pinchedHom A (Complex A) X
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X
       ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n)))) _⦋n⦌ :=
   (normalizedTensorElementUniversalFamily A X Y c).app (Opposite.op ⦋n⦌)
     (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋n⦌)))

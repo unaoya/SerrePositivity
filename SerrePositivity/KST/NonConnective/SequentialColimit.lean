@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance sequentialColimitSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -29,19 +29,19 @@ local instance sequentialColimitOppositeHomKan (X Y : OmegaSpectrum.{u}ᵒᵖ) :
 
 /-- BF 射の可逆性は、同じ通常射の反対の coherent 辺にも保たれる。 -/
 lemma sequentialOppositeEdge_isInvertible {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : IsInvertibleEdge (coherentNerveEdge f)) :
-    IsInvertibleEdge (coherentNerveEdge f.op) := by
-  have h := hf.op.map (coherentNerveOppositeMap OmegaSpectrum)
-  exact (isInvertibleEdge_congr (coherentNerveOppositeMap_edge f)).mp h
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f.op) := by
+  have h := hf.op.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveOppositeMap OmegaSpectrum)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentNerveOppositeMap_edge f)).mp h
 
 /-- 元の任意の逐次 BF 列の、元の段ごとの厳密な余錐は Sp の ∞ 余極限。 -/
 theorem sequentialLevelColimitCocone_isColimit (D : SpectrumSequence.{u}) :
-    IsColimitCone (strictNativeCocone (sequentialLevelColimitCocone D)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (sequentialLevelColimitCocone D)) := by
   let R := sequentialDiagramReplacement D
   let η := sequentialDiagramReplacementComparison D
   let m := sequentialLevelColimitMap η
-  have hR : IsLimitCone (strictCoherentCone (sequentialLevelColimitCocone R).op) :=
-    (strictNativeCocone_isColimit_iff _).mp (sequentialReplacementLevelCocone_isColimit D)
+  have hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (sequentialLevelColimitCocone R).op) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone_isColimit_iff _).mp (sequentialReplacementLevelCocone_isColimit D)
   have e := sequentialConeFunctorIso (sequentialLevelColimitCocone D).op
     (sequentialLevelColimitCocone R).op (NatTrans.op η) m.op (by
       intro a
@@ -55,21 +55,21 @@ theorem sequentialLevelColimitCocone_isColimit (D : SpectrumSequence.{u}) :
       (OmegaSpectrum.isInvertible_of_piIsomorphism m
         (sequentialLevelColimitMap_piIsomorphism η
           (sequentialDiagramReplacementComparison_piIsomorphism D))))
-  rw [strictNativeCocone_isColimit_iff]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone_isColimit_iff]
   exact hR.of_functorIso e.symm
 
 /-- 元の任意の逐次 BF 列上の、元の段ごとの注入を持つ実 Sp 余錐。 -/
 def sequentialSpColimitCocone (D : SpectrumSequence.{u}) :
-    JoinCocone (strictCoherentDiagram D) :=
-  strictNativeCocone (sequentialLevelColimitCocone D)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram D) :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (sequentialLevelColimitCocone D)
 
 /-- 同じ実 Sp 余錐の、追加仮定なしの ∞ 余極限性。 -/
 theorem sequentialSpColimitCocone_isColimit (D : SpectrumSequence.{u}) :
-    IsColimitCone (sequentialSpColimitCocone D) := sequentialLevelColimitCocone_isColimit D
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (sequentialSpColimitCocone D) := sequentialLevelColimitCocone_isColimit D
 
 /-- 同じ実余極限余錐の頂点は、元の段ごとの BF 余極限そのもの。 -/
 lemma sequentialSpColimitCocone_vertex (D : SpectrumSequence.{u}) :
-    (sequentialSpColimitCocone D).vertex = coherentNerveVertex (sequentialLevelColimitSpectrum D) :=
-  strictNativeCocone_vertex _
+    (sequentialSpColimitCocone D).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (sequentialLevelColimitSpectrum D) :=
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone_vertex _
 
 end SerrePositivity.KST.NonConnective

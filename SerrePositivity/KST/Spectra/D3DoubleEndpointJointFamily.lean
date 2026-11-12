@@ -54,7 +54,7 @@ lemma d3DoubleEndpointJointLeftSquare_face (k l : Fin 2) :
 /-- 同じ共同族の各頂点は、元の実面の認証済み loop 図式。 -/
 lemma d3DoubleEndpointJointLeftSquare_isLoop
     (v : (PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) _⦋0⦌) :
-    IsLoopDiagramVertex (d3DoubleEndpointJointLeftSquare.app _ v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (d3DoubleEndpointJointLeftSquare.app _ v) := by
   obtain ⟨y, a, b⟩ := v
   let k : Fin 2 := stdSimplex.obj₀Equiv a
   let l : Fin 2 := stdSimplex.obj₀Equiv b
@@ -71,37 +71,37 @@ lemma d3DoubleEndpointJointLeftSquare_isLoop
 /-- 一つの全パラメータ作用として保持した、第一方向の実 loop 全図式族。 -/
 def d3DoubleEndpointJointLeftLoopFamily :
     PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⟶
-      loopDiagrams PointedKanInfinity :=
-  fullSubcomplexLift IsLoopDiagramVertex d3DoubleEndpointJointLeftSquare
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex d3DoubleEndpointJointLeftSquare
     d3DoubleEndpointJointLeftSquare_isLoop
 
 lemma d3DoubleEndpointJointLeftLoopFamily_ι :
     d3DoubleEndpointJointLeftLoopFamily.{u} ≫
-      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι =
-    d3DoubleEndpointJointLeftSquare := fullSubcomplexLift_ι _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι =
+    d3DoubleEndpointJointLeftSquare := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 共同 loop 族の角制限は、以前の同じ実面 loop 族に全単体で一致する。 -/
 lemma d3DoubleEndpointJointLeftLoopFamily_face (k l : Fin 2) :
     lift (𝟙 PointedKanInfinity.{u})
       (SSet.const (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm l)) ≫
       d3DoubleEndpointJointLeftLoopFamily = d3DoubleEndpointLeftLoopFamily k l := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι).1
   rw [Category.assoc, d3DoubleEndpointJointLeftLoopFamily_ι,
     d3DoubleEndpointLeftLoopFamily_ι, d3DoubleEndpointJointLeftSquare_face]
 
 /-- 第二パラメータの全単体を同時に保つ、厳密な実終点上の標準模型比較。 -/
 def d3DoubleEndpointJointLeftModelIso :
-    FunctorIso ((d3DoubleEndpointJointLeftLoopFamily.{u} ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3PointedKanLoopSection)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((d3DoubleEndpointJointLeftLoopFamily.{u} ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3PointedKanLoopSection)
       d3DoubleEndpointJointLeftLoopFamily :=
   d3KanLoopDiagramIsoOverTarget _ _ (Iso.refl _)
 
 /-- 一つの共同模型比較の終点成分は、共同実終点上の恒等同型そのもの。 -/
 lemma d3DoubleEndpointJointLeftModelIso_target :
-    F2.functorIsoOfEq (d3DoubleEndpointJointLeftModelIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointJointLeftModelIso.{u}.postcomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3KanCanonicalLoopFamily_target (d3DoubleEndpointJointLeftLoopFamily ≫
-        loopDiagramEvaluation PointedKanInfinity 1 1)) rfl = Iso.refl _ :=
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)) rfl = Iso.refl _ :=
   d3KanLoopDiagramIsoOverTarget_target _ _ _
 
 section
@@ -139,7 +139,7 @@ lemma d3DoubleEndpointJointRightSquare_face (k l : Fin 2) :
 /-- 同じ共同族の各頂点は、元の実面の認証済み loop 図式。 -/
 lemma d3DoubleEndpointJointRightSquare_isLoop
     (v : (PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])) _⦋0⦌) :
-    IsLoopDiagramVertex (d3DoubleEndpointJointRightSquare.app _ v) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (d3DoubleEndpointJointRightSquare.app _ v) := by
   obtain ⟨y, a, b⟩ := v
   let k : Fin 2 := stdSimplex.obj₀Equiv a
   let l : Fin 2 := stdSimplex.obj₀Equiv b
@@ -156,37 +156,37 @@ lemma d3DoubleEndpointJointRightSquare_isLoop
 /-- 一つの全パラメータ作用として保持した、第二方向の実 loop 全図式族。 -/
 def d3DoubleEndpointJointRightLoopFamily :
     PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⟶
-      loopDiagrams PointedKanInfinity :=
-  fullSubcomplexLift IsLoopDiagramVertex d3DoubleEndpointJointRightSquare
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex d3DoubleEndpointJointRightSquare
     d3DoubleEndpointJointRightSquare_isLoop
 
 lemma d3DoubleEndpointJointRightLoopFamily_ι :
     d3DoubleEndpointJointRightLoopFamily.{u} ≫
-      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι =
-    d3DoubleEndpointJointRightSquare := fullSubcomplexLift_ι _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι =
+    d3DoubleEndpointJointRightSquare := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 共同 loop 族の角制限は、以前の同じ実面 loop 族に全単体で一致する。 -/
 lemma d3DoubleEndpointJointRightLoopFamily_face (k l : Fin 2) :
     lift (𝟙 PointedKanInfinity.{u})
       (SSet.const (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm l)) ≫
       d3DoubleEndpointJointRightLoopFamily = d3DoubleEndpointRightLoopFamily k l := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι).1
   rw [Category.assoc, d3DoubleEndpointJointRightLoopFamily_ι,
     d3DoubleEndpointRightLoopFamily_ι, d3DoubleEndpointJointRightSquare_face]
 
 /-- 第一パラメータの全単体を同時に保つ、厳密な実終点上の標準模型比較。 -/
 def d3DoubleEndpointJointRightModelIso :
-    FunctorIso ((d3DoubleEndpointJointRightLoopFamily.{u} ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3PointedKanLoopSection)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((d3DoubleEndpointJointRightLoopFamily.{u} ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3PointedKanLoopSection)
       d3DoubleEndpointJointRightLoopFamily :=
   d3KanLoopDiagramIsoOverTarget _ _ (Iso.refl _)
 
 /-- 一つの共同模型比較の終点成分は、共同実終点上の恒等同型そのもの。 -/
 lemma d3DoubleEndpointJointRightModelIso_target :
-    F2.functorIsoOfEq (d3DoubleEndpointJointRightModelIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointJointRightModelIso.{u}.postcomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3KanCanonicalLoopFamily_target (d3DoubleEndpointJointRightLoopFamily ≫
-        loopDiagramEvaluation PointedKanInfinity 1 1)) rfl = Iso.refl _ :=
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)) rfl = Iso.refl _ :=
   d3KanLoopDiagramIsoOverTarget_target _ _ _
 
 section
@@ -194,17 +194,17 @@ variable {A P Q X : SSet.{u}} (H : A ⟶ (ihom (P ⊗ Q)).obj X)
 
 /-- 第一方向の角評価は、元の他方向の面の全共同評価と一致する。 -/
 lemma d3BiDiagramJointLeft_corner (p : P _⦋0⦌) :
-    d3BiDiagramJointLeft H ≫ evaluateFunctorAt p =
+    d3BiDiagramJointLeft H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt p =
       (β_ A Q).hom ≫ uncurry (H ≫ (pre (lift (SSet.const p) (𝟙 Q))).app X) := by
-  rw [d3BiDiagramJointLeft, curry_evaluateFunctorAt_vertex, uncurry_pre_app]
+  rw [d3BiDiagramJointLeft, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex, uncurry_pre_app]
   simp only [← Category.assoc]
   congr 1
 
 /-- 第二方向の角評価も、元の第一方向の面の全共同評価そのもの。 -/
 lemma d3BiDiagramJointRight_corner (q : Q _⦋0⦌) :
-    d3BiDiagramJointRight H ≫ evaluateFunctorAt q =
+    d3BiDiagramJointRight H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt q =
       (β_ A P).hom ≫ uncurry (H ≫ (pre (lift (𝟙 P) (SSet.const q))).app X) := by
-  rw [d3BiDiagramJointRight, curry_evaluateFunctorAt_vertex, uncurry_pre_app]
+  rw [d3BiDiagramJointRight, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex, uncurry_pre_app]
   simp only [← Category.assoc]
   congr 1
 end
@@ -212,11 +212,11 @@ end
 /-- 第一方向共同族の各角は、同じ実第二方向族の全共同評価である。 -/
 lemma d3DoubleEndpointJointLeftLoopFamily_corner (i j : Fin 2) :
     d3DoubleEndpointJointLeftLoopFamily.{u} ≫
-      loopDiagramEvaluation PointedKanInfinity i j =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j =
     (β_ PointedKanInfinity ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).hom ≫
       uncurry (d3DoubleEndpointRightLoopFamily i j ≫
-        (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι) := by
-  dsimp only [loopDiagramEvaluation]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
   rw [← Category.assoc, d3DoubleEndpointJointLeftLoopFamily_ι,
     d3DoubleEndpointRightLoopFamily_ι]
   exact d3BiDiagramJointLeft_corner _ _
@@ -224,11 +224,11 @@ lemma d3DoubleEndpointJointLeftLoopFamily_corner (i j : Fin 2) :
 /-- 第二方向共同族の各角も、同じ実第一方向族の全共同評価を回収する。 -/
 lemma d3DoubleEndpointJointRightLoopFamily_corner (i j : Fin 2) :
     d3DoubleEndpointJointRightLoopFamily.{u} ≫
-      loopDiagramEvaluation PointedKanInfinity i j =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j =
     (β_ PointedKanInfinity ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).hom ≫
       uncurry (d3DoubleEndpointLeftLoopFamily i j ≫
-        (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι) := by
-  dsimp only [loopDiagramEvaluation]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
   rw [← Category.assoc, d3DoubleEndpointJointRightLoopFamily_ι,
     d3DoubleEndpointLeftLoopFamily_ι]
   exact d3BiDiagramJointRight_corner _ _

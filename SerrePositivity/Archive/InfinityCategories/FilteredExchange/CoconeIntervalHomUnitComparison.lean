@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalHomPointComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoconeIntervalTransportUnit
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeIntervalTransportUnit
 
 /-!
 概要：元の余錐の区間 Hom 比較の成分を、元の単位作用による前合成へ戻す。

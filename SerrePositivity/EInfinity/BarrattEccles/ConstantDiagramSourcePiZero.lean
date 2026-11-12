@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
 
@@ -41,7 +41,7 @@ local instance : HasColimitsOfSize.{0, u} (operad A).Algebra :=
 使われ方：同じ零単体の代表で π₀ の前合成を計算する。 -/
 lemma constantDiagramFrameHomIso_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     (F : K ⥤ (operad A).Algebra) :
-    (cosimplicialHomMap ((constantDiagramFrameFamily A K).map f)).app F ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((constantDiagramFrameFamily A K).map f)).app F ≫
         ((constantDiagramFrameHomIso A K Y).app F).hom =
       ((constantDiagramFrameHomIso A K Z).app F).hom ≫ (constantDiagramSourceMap A K f).app F := by
   let := modelCategory A

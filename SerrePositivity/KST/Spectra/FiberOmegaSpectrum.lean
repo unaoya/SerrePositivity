@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.FiberKanSequence
 public import SerrePositivity.KST.Spectra.CofibrantOmegaSequence
-public import SerrePositivity.InfinityCategories.Kan.FibrationComparison
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationComparison
 public import SerrePositivity.KST.Spectra.PostMappingFibration
 public import SerrePositivity.KST.Spectra.LoopFiber
 
@@ -39,10 +39,10 @@ theorem Hom.fiber_omegaCondition {X Y : KanSequence.{u}} (p : Hom X Y)
   let : Fibration (p.app (n + 1)).right := hp (n + 1)
   let pp := PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p.app (n + 1))
   let : Fibration pp.right := PointedMapping.post_fibration _ _
-  let aX := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
-  let aY := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n)
-  let a : pointedFiber (p.app n) ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber (p.app (n + 1))) :=
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _) (p.fiberSigma n)
+  let aX := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space) (X.sigma n)
+  let aY := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space) (Y.sigma n)
+  let a : pointedFiber (p.app n) ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedFiber (p.app (n + 1))) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _) (p.fiberSigma n)
   let i := loopPointedFiberIso (p.app (n + 1))
   let φ := a ≫ i.hom
   have hφ : φ ≫ pointedFiberι pp = pointedFiberι (p.app n) ≫ aX := by
@@ -52,20 +52,20 @@ theorem Hom.fiber_omegaCondition {X Y : KanSequence.{u}} (p : Hom X Y)
   have hc : (p.app n).right ≫ aY.right = aX.right ≫ pp.right :=
     congrArg Under.Hom.right (p.adjoint_comm n)
   have hb : pp.right.app _ (aX.right.app _ (X.level n).space.basepoint) =
-      pp.right.app _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space).basepoint :=
-    congrArg (pp.right.app _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint aX)
-  have hφπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism φ.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapOver_piIsomorphism (p.app n).right pp.right
+      pp.right.app _ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space).basepoint :=
+    congrArg (pp.right.app _) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint aX)
+  have hφπ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism φ.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberMapOver_piIsomorphism (p.app n).right pp.right
       aX.right aY.right hc (hX n) (hY n) (X.level n).space.basepoint
       ((p.app n).right.app _ (X.level n).space.basepoint) rfl
-      (pp.right.app _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space).basepoint) hb φ.right
+      (pp.right.app _ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space).basepoint) hb φ.right
       (congrArg Under.Hom.right hφ)
-  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism i.hom.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (X := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber (p.app (n + 1)))).right)
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism i.hom.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (X := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedFiber (p.app (n + 1)))).right)
       (Y := (pointedFiber pp).right) (PointedSimplicialSet.forget.mapIso i)
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right
-  exact (show _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (a.right ≫ i.hom.right) from hφπ).of_comp hi
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right
+  exact (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (a.right ≫ i.hom.right) from hφπ).of_comp hi
 
 /-- 概要：段ごとの Kan fibration の fiber 列を BF の Ω スペクトルへ置換する。
 方針：fiber の Ω 条件を検証してから、単射な構造射を持つ列へ置換する。
@@ -117,7 +117,7 @@ def fiberLevelProjection {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
 使われ方：Goerss–Jardine I §7、BF 1978 §2。fiber の整数次数の完全性。 -/
 theorem fiberLevelProjection_piIsomorphism {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y)
     (hp : ∀ n, Fibration (p.app n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (fiberLevelProjection p hp n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (fiberLevelProjection p hp n).right := by
   let : Fibration (p.app n).right := hp n
   exact KanSequence.replacementProjection_piIsomorphism ((sequenceHom p).fiber hp) n
 

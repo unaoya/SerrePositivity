@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronHom
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareOfEdgeEquality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTetrahedronHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.EdgeSquareOfEdgeEquality
 
 /-!
 概要：𝒮 の三単体の四面の精密化を元の Kan 射間のホモトピーとして比較する。

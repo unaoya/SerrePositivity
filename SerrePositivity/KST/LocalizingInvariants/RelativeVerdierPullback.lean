@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPullback
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierPullback
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeInvariant
-public import SerrePositivity.InfinityCategories.Stable.PullbackPasting
-public import SerrePositivity.InfinityCategories.F1.SquareTranspose
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PullbackPasting
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareTranspose
 
 /-!
 概要：提示源内の Verdier 比較長方形から、同じ値関手の実 pullback を導く。
@@ -20,31 +20,31 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 namespace RelativeVerdierRectangle
-variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}}
-  (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierRectangle ν)
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}}
+  (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierRectangle ν)
 
 /-- fiber 列二つから得る d8 の比較 pullback。E の絶対版への延長は不要。 -/
 lemma comparisonSquare_isPullback {E : S ⟶ Spectra.Sp.{u}}
     (hE : IsRelativeLocalizingInvariant ν E) :
-    IsPullbackSquare (d.comparisonSquare ≫ E) := by
-  have hR : IsPullbackSquare (pastingSquare (d.diagram ≫ E) 0) := by
-    change IsPullbackSquare (pastingSquare d.diagram 0 ≫ E)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (d.comparisonSquare ≫ E) := by
+  have hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (d.diagram ≫ E) 0) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 0 ≫ E)
     rw [d.right_eq]
-    exact (isPullbackSquare_iff_transpose (d.right.square ≫ E)).mp
+    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose (d.right.square ≫ E)).mp
       (hE.preservesVerdier d.right)
-  have hO : IsPullbackSquare (pastingSquare (d.diagram ≫ E) 1) := by
-    change IsPullbackSquare (pastingSquare d.diagram 1 ≫ E)
+  have hO : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (d.diagram ≫ E) 1) := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 1 ≫ E)
     rw [d.outer_eq]
-    exact (isPullbackSquare_iff_transpose (d.outer.square ≫ E)).mp
+    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose (d.outer.square ≫ E)).mp
       (hE.preservesVerdier d.outer)
-  exact (isPullbackSquare_iff_transpose (pastingSquare d.diagram 2 ≫ E)).mp
-    (isPullbackSquare_pasting_cancel_right (d.diagram ≫ E) hR hO)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare d.diagram 2 ≫ E)).mp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_cancel_right (d.diagram ≫ E) hR hO)
 
 /-- 元の E 値の同じ cospan 上の実極限錐。 -/
-def comparisonCone (E : S ⟶ Spectra.Sp.{u}) := pullbackCone (d.comparisonSquare ≫ E)
+def comparisonCone (E : S ⟶ Spectra.Sp.{u}) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone (d.comparisonSquare ≫ E)
 
 lemma comparisonCone_isLimit {E : S ⟶ Spectra.Sp.{u}}
-    (hE : IsRelativeLocalizingInvariant ν E) : IsLimitCone ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone d) E) :=
+    (hE : IsRelativeLocalizingInvariant ν E) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonCone d) E) :=
   (_root_.SerrePositivity.KST.LocalizingInvariants.RelativeVerdierRectangle.comparisonSquare_isPullback d) hE
 
 end RelativeVerdierRectangle

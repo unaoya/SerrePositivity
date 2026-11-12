@@ -28,7 +28,7 @@ def dgOdotMilnorCellInput : PerfDGInput.{u, u + 1} R :=
 def dgOdotMilnorResolvedInput : PerfDGInput.{u, u + 1} R :=
   dgKUniverseInput.{u, u + 1, u + 1} R
     (DGQuotient.QuotientObject (DGCategoryCellResolution.Source R (DGOdotGluing R d))
-      (resolvedDGNullObjects R (DGOdotGluing R d)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
         (dgQuotientImage R (dgOdotQuotientInput R d).diagonal)))
 
 /-- 概要：同じ cell 増大を S の全 Hom を持つ実辺へ移す。
@@ -36,7 +36,7 @@ def dgOdotMilnorResolvedInput : PerfDGInput.{u, u + 1} R :=
 使われ方：resolved 屋根の左辺。 -/
 def dgOdotMilnorAugmentationInputMap :
     dgOdotMilnorCellInput R d ⟶ dgOdotGluingInput R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (DGCategoryCellResolution.augmentation R (DGOdotGluing R d)))
 
 /-- 概要：同じ実商包含を固定 S の辺へ移す。
@@ -44,21 +44,21 @@ def dgOdotMilnorAugmentationInputMap :
 使われ方：resolved 屋根の右辺。 -/
 def dgOdotMilnorCellProjectionInputMap :
     dgOdotMilnorCellInput R d ⟶ dgOdotMilnorResolvedInput R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (DGQuotient.inclusion R (DGCategoryCellResolution.Source R (DGOdotGluing R d))
-      (resolvedDGNullObjects R (DGOdotGluing R d)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
         (dgQuotientImage R (dgOdotQuotientInput R d).diagonal))))
 
 /-- 概要：同じ増大の完全な ν 像。方針：固定界面を使用する。
 規約：安定値の型を明示する。使われ方：同じ屋根の左辺。 -/
-abbrev dgOdotMilnorAugmentationExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+abbrev dgOdotMilnorAugmentationExactMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotGluingInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorAugmentationInputMap R d)
 
 /-- 概要：同じ商包含の完全な ν 像。方針：固定界面を使用する。
 規約：安定値の型を明示する。使われ方：同じ屋根の右辺。 -/
-abbrev dgOdotMilnorCellProjectionExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+abbrev dgOdotMilnorCellProjectionExactMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorCellProjectionInputMap R d)
@@ -67,7 +67,7 @@ abbrev dgOdotMilnorCellProjectionExactMap : _root_.SerrePositivity.InfinityCateg
 方針：実準同値を Perf へ延長し、宇宙持ち上げの Morita 保存を使う。
 規約：Milnor 仮定は不要。使われ方：ν 上での同じ屋根の構成。 -/
 lemma dgOdotMilnorAugmentationNu_isQCatEquivalence :
-    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
       (dgKInputStableValue R (dgOdotMilnorCellInput R d))
       (dgKInputStableValue R (dgOdotGluingInput R d)) from
       dgKInputNuMap R (dgOdotMilnorAugmentationInputMap R d)).hom := by
@@ -90,7 +90,7 @@ lemma dgOdotMilnorAugmentationNu_isQCatEquivalence :
 /-- 概要：ν に送った同じ増大の順方向を固定した同値。
 方針：構成済みの同値証拠を束ねる。規約：元の増大辺を保持する。
 使われ方：resolved 屋根の ν 像。 -/
-def dgOdotMilnorAugmentationNuEquivalence : QCatEquivalence
+def dgOdotMilnorAugmentationNuEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorCellInput R d)).obj
     (dgKInputStableValue R (dgOdotGluingInput R d)).obj :=
   (dgOdotMilnorAugmentationNu_isQCatEquivalence R d).choose
@@ -98,26 +98,26 @@ def dgOdotMilnorAugmentationNuEquivalence : QCatEquivalence
 /-- 概要：元 ν(gluing) から resolved 商の ν 値への同じ二辺の屋根。
 方針：ν 増大の逆と ν 商包含を合成する。規約：native 商性はまだ転送しない。
 使われ方：固定 ν の新しい商経路の具体的な完全射。 -/
-def dgOdotMilnorResolvedProjectionNu : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+def dgOdotMilnorResolvedProjectionNu : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotGluingInput R d))
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)) where
   hom := (dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
     (dgOdotMilnorCellProjectionExactMap R d).hom
   isExact := by
-    letI : IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
-      isExactFunctor_of_isQCatEquivalence
+    letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgOdotMilnorAugmentationNuEquivalence R d).inv :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorAugmentationNuEquivalence R d).symm.isQCatEquivalence
     letI := (dgOdotMilnorCellProjectionExactMap R d).isExact
-    exact isExactFunctor_comp _ _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _
 
 /-- 概要：ν 屋根は cell 増大上で同じ実商包含を回収する。
 方針：同じ同値の指定単位二胞体を後合成する。
 規約：厳密等号を要求しない。使われ方：resolved 射影との比較境界。 -/
-def dgOdotMilnorResolvedProjectionNu_roof : FunctorIso
+def dgOdotMilnorResolvedProjectionNu_roof : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorAugmentationExactMap R d).hom ≫
       (dgOdotMilnorResolvedProjectionNu R d).hom)
     (dgOdotMilnorCellProjectionExactMap R d).hom := by
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorAugmentationNuEquivalence R d).hom ≫
       ((dgOdotMilnorAugmentationNuEquivalence R d).inv ≫
         (dgOdotMilnorCellProjectionExactMap R d).hom)) _

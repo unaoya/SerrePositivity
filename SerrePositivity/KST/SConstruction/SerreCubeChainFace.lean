@@ -18,10 +18,10 @@ variable (A : Type u) [CommRing A]
 /-- 元の逆次元構造射の鎖は、同じ等号に沿う元の鎖複体の移送。 -/
 lemma serreCubeComplexMap_dimension_inv {p q : ℕ} (h : p = q) :
     (serreConcreteCubeComplexFunctor A).map
-        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk p) (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk q) h).inv =
+        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk p) (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk q) h).inv =
       eqToHom (congrArg (serreCubeComplex A) h.symm) := by
   cases h
-  change (serreConcreteCubeComplexFunctor A).map (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk p)) = 𝟙 _
+  change (serreConcreteCubeComplexFunctor A).map (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk p)) = 𝟙 _
   exact (serreConcreteCubeComplexFunctor A).map_id _
 
 /-- 元の鎖面を、余次元一の同じ指定始域・終域の間で読む。 -/

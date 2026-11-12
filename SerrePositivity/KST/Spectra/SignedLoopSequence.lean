@@ -51,7 +51,7 @@ theorem signedLoopTail_omegaCondition {X : KanSequence.{u}} (hX : X.OmegaConditi
 使われ方：Goerss–Jardine I §7、BF 1978 §2。符号を変えた loop 列への比較の成分。 -/
 def kanAdjoint (X : KanSequence.{u}) (n : ℕ) :
     (X.level n).space ⟶ PointedObject.basedHom CirclePower.space.{u} (X.level (n + 1)).space :=
-  kanLoopLift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n))
+  kanLoopLift (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n))
 
 /-- 概要：持ち上げた随伴構造射は通常の円への制限で元の随伴構造射へ戻る。
 方針：Kan loop への持ち上げの比較式を使う。
@@ -59,8 +59,8 @@ def kanAdjoint (X : KanSequence.{u}) (n : ℕ) :
 使われ方：BF 1978 §2。二回の随伴構造射の合成の書き換え。 -/
 @[reassoc]
 theorem kanAdjoint_comparison (X : KanSequence.{u}) (n : ℕ) :
-    kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n) :=
+    kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (X.level (n + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n) :=
   kanLoopLift_comparison _
 
 /-- 概要：Ω 条件の列の持ち上げた随伴構造射は全基点 π_* 同型。
@@ -68,7 +68,7 @@ theorem kanAdjoint_comparison (X : KanSequence.{u}) (n : ℕ) :
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7。厳密化する比較の各段の同型性。 -/
 theorem kanAdjoint_piIsomorphism {X : KanSequence.{u}} (hX : X.OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (kanAdjoint X n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (kanAdjoint X n).right :=
   kanLoopLift_piIsomorphism _ (hX n)
 
 /-- 概要：符号を変えた loop 列の随伴構造射の明示式。
@@ -76,16 +76,16 @@ theorem kanAdjoint_piIsomorphism {X : KanSequence.{u}} (hX : X.OmegaCondition) (
 規約：元の列の一段先の構造射を用いる。
 使われ方：BF 1978 §2。持ち上げた随伴構造射の構造可換式の検査。 -/
 theorem signedLoopTail_adjoint (X : KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n) =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n) =
       (ihom CirclePower.space.{u}).map
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 1))) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u}
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 1))) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u}
         (X.level (n + 2)).space).hom ≫
       (ihom PointedSimplicialSet.circle.{u}).map
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1))
           (X.level (n + 2)).space) := by
   change MonoidalClosed.curry ((mapping CirclePower.space.{u} X).sigma (n + 1) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1))
       (X.level (n + 2)).space) = _
   rw [MonoidalClosed.curry_natural_right]
   have h := mapping_adjoint CirclePower.space.{u} X (n + 1)
@@ -106,12 +106,12 @@ theorem kanAdjoint_signedLoopTail_comm {X : KanSequence.{u}} (hX : X.OmegaCondit
     PointedMapping.componentOf (MonoidalClosed.curry (X.sigma n ≫ kanAdjoint X (n + 1)))
   rw [MonoidalClosed.curry_natural_left, MonoidalClosed.curry_natural_right]
   change PointedMapping.componentOf (kanAdjoint X n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n)) =
-    PointedMapping.componentOf (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n) ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n)) =
+    PointedMapping.componentOf (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n) ≫
       (ihom PointedSimplicialSet.circle.{u}).map (kanAdjoint X (n + 1)))
   erw [signedLoopTail_adjoint X n, ← kanAdjoint_comparison X n,
     ← kanAdjoint_comparison X (n + 1)]
-  exact signed_adjoint_composition (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2)))
+  exact signed_adjoint_composition (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2)))
     (hX (n + 2)) (kanAdjoint X n) (kanAdjoint X (n + 1))
 
 end

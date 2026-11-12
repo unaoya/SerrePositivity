@@ -23,12 +23,12 @@ local notation "m" => dgOdotTargetSmallYonedaInputMap R d
 lemma dgOdotTargetSmallYonedaInputMap_isMorita :
     (quasiEquivalencePerfectExtension R (P) (Q) (m).down).IsEquivalence := by
   letI := dgOdotTargetSmallYoneda_isMorita R d
-  exact dgKUniverseLiftFunctor_isMorita R (dgAlgebraCategory R d.corner)
+  exact dgKUniverseLiftFunctor_isMorita R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.corner)
     (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d)
 
 /-- 同じ ν 辺の元の完全射は、実安定 ∞ 圏の同値。 -/
 lemma dgOdotTargetSmallInputNuMap_isQCatEquivalence :
-    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
       (dgKInputStableValue R (P)) (dgKInputStableValue R (Q)) from
         dgKInputNuMap R (m)).hom := by
   letI := dgOdotTargetSmallYonedaInputMap_isMorita R d
@@ -43,12 +43,12 @@ lemma dgOdotTargetSmallInputKMap_piIsomorphism :
 
 /-- 同じ元の K 辺そのものが、Sp で可逆となる。 -/
 lemma dgOdotTargetSmallInputKEdge_isInvertible :
-    IsInvertibleEdge ((coherentNerveEdge (m)).map (dgKInputK R)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).map (dgKInputK R)) := by
   letI := dgOdotTargetSmallYonedaInputMap_isMorita R d
   have h := presentedPerfectDGBFInfinityFunctor_morita_isInvertible R (m)
-  exact (isInvertibleEdge_congr
-    (e := edgeOfSimplex ((presentedPerfectDGBFInfinityFunctor R).app
-      (Opposite.op ⦋1⦌) (coherentNerveEdge (m)).edge))
-    (f := (coherentNerveEdge (m)).map (dgKInputK R)) rfl).mp h
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((presentedPerfectDGBFInfinityFunctor R).app
+      (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).edge))
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).map (dgKInputK R)) rfl).mp h
 
 end SerrePositivity.KST.SConstruction

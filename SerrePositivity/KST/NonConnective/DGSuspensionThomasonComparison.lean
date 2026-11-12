@@ -56,7 +56,7 @@ def dgSuspensionThomasonCandidateMap :
 
 variable (f : ∀ n, dgSuspensionThomasonSOAModel R κ hκ A n ⟶
     dgSuspensionThomasonSOAModel R κ hκ B n)
-  (hf : ∀ n, F2.Idempotent.IsIdempotentCompletion (f n).val)
+  (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (f n).val)
   (h : ∀ (n : ℕ) (j : ℤ)
     (x : OmegaSpectrum.homotopyGroup ((dgSuspensionThomasonSequence R κ hκ A).obj ⟨n⟩) j),
     dgSuspensionThomasonStageSOACoordinates R κ hκ B n j
@@ -78,7 +78,7 @@ theorem dgSuspensionThomasonCandidateMap_piIsomorphism_of_completion :
 
 /-- 同じ候補比較の元の実 Sp 辺は可逆。全入力自然性の完成とは数えない。 -/
 theorem dgSuspensionThomasonCandidateMap_isInvertible_of_completion :
-    IsInvertibleEdge (coherentNerveEdge (dgSuspensionThomasonCandidateMap R κ hκ A B η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionThomasonCandidateMap R κ hκ A B η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgSuspensionThomasonCandidateMap_piIsomorphism_of_completion R κ hκ A B η f hf h)
 

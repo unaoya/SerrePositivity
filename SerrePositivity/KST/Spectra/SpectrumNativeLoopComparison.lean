@@ -24,7 +24,7 @@ def circleComparison (Y : OmegaSpectrum.{u}) :
 
 /-- 通常の円の比較は各段で全基点 π 同型。 -/
 lemma circleComparison_levelwise (Y : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((circleComparison Y).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((circleComparison Y).app n).right :=
   (cotensorPre_levelwise_of_isIso endpointCircleIso.hom Y n).comp (comparison_levelwise Y n)
 
 local instance nativeLoopSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -34,15 +34,15 @@ local instance nativeLoopHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 指定した通常の円の比較辺は元の Sp の同値。 -/
 lemma circleComparison_isInvertible (Y : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (circleComparison Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleComparison Y)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (circleComparison_levelwise Y)
 
 /-- 通常の円の BF cotensor と実際の loop 四角形の頂点の具体的な同型。 -/
 def circleVertexIso (Y : OmegaSpectrum.{u}) :
-    VertexIso (coherentNerveVertex (cotensor PointedSimplicialSet.circle.{u} Y))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (cotensor PointedSimplicialSet.circle.{u} Y))
       (square Y).vertex := by
   rw [square_vertex]
   haveI := circleComparison_isInvertible Y
-  exact asIso (SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (circleComparison Y)))
+  exact asIso (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleComparison Y)))
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.BasedLoop

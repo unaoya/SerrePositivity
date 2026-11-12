@@ -22,10 +22,10 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 元の Hom の一単体が作る比較面の一般復号辺は、元の全一単体そのもの。 -/
 lemma coherentHomComparisonSimplex_edge_heq {X Y : C}
     (e : (SimplicialCategory.sHom X Y) _⦋1⦌) :
-    HEq (coherentSimplexCompositionEdge (coherentHomComparisonSimplex e)
+    HEq (coherentSimplexCompositionEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex e)
       0 1 2 (by decide) (by decide)).edge e := by
   change HEq ((SSet.yonedaEquiv.symm e).app (Opposite.op ⦋1⦌)
-    ((pathLastMaximumMap.{u} (0 : Fin 2)).app (Opposite.op ⦋1⦌)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap.{u} (0 : Fin 2)).app (Opposite.op ⦋1⦌)
       (nerve.edgeMk (coherentEndpointPathToComposite (J := ULift.{u} (Fin 3))
         (show (ULift.up (0 : Fin 3) : ULift.{u} _) ≤ ULift.up 1 from by decide)
         (show (ULift.up (1 : Fin 3) : ULift.{u} _) ≤ ULift.up 2 from by decide))).edge)) e
@@ -36,7 +36,7 @@ lemma coherentHomComparisonSimplex_edge_heq {X Y : C}
 lemma enrichedComparisonPinchedTriangle_original {X Y : C} {f g : X ⟶ Y}
     (e : (SimplicialCategory.sHom X Y).Edge
       (SimplicialCategory.homEquiv' _ _ f) (SimplicialCategory.homEquiv' _ _ g)) :
-    (enrichedComparisonPinchedTriangle e).simplex = coherentHomComparisonSimplex e.edge := rfl
+    (enrichedComparisonPinchedTriangle e).simplex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex e.edge := rfl
 
 /-- 保存した指定比較面の復号辺全体は、元の同じ豊穣辺の全一単体を回収する。 -/
 lemma enrichedComparisonPinchedTriangle_decoded_heq {X Y : C} {f g : X ⟶ Y}

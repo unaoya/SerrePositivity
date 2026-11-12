@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaQuasiIso
 public import SerrePositivity.DifferentialGraded.Derived.Basic
-public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleThirdTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TriangleThirdTransport
 
 /-! # 元の二軸代表の指定導来圏内の三角形
 概要：元の二軸代表と元の二射を、同じ加群導来圏の distinguished 三角形にする。
@@ -17,8 +17,8 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  (X : DGGluingObject R C D M)
-local notation "G" => DGGluingObject R C D M
+  (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "Q" => moduleToDerived R G
 
 /-- 元の同じ Yoneda 円錐比較は、D の既存導来関手で可逆となる。 -/
@@ -33,7 +33,7 @@ def dgGluingAxesDerivedConeIso :
 
 /-- 同じ三代表を頂点とする、指定導来圏の実三角形。 -/
 def dgGluingAxesDerivedTriangle : Triangle (DerivedModuleCategory R G) :=
-  dgGluingTriangleThirdTransport
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTriangleThirdTransport
     (moduleDerivedConeTriangle R G (dgGluingAxesYonedaRightMap R C D M zc hc X))
     (dgGluingAxesDerivedConeIso R C D M zc hc zd hd X)
 
@@ -41,7 +41,7 @@ def dgGluingAxesDerivedTriangle : Triangle (DerivedModuleCategory R G) :=
 lemma dgGluingAxesDerivedTriangle_distinguished :
     dgGluingAxesDerivedTriangle R C D M zc hc zd hd X ∈
       distTriang (DerivedModuleCategory R G) :=
-  dgGluingTriangleThirdTransport_distinguished _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTriangleThirdTransport_distinguished _
     (moduleDerivedConeTriangle_distinguished R G
       (dgGluingAxesYonedaRightMap R C D M zc hc X)) _
 

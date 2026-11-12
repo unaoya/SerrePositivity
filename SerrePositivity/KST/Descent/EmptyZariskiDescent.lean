@@ -61,7 +61,7 @@ def familyCechValue_isTerminal_of_isEmpty
   exact isEmptyElim (a 0)
 
 variable {S : Scheme.{u}} [IsNoetherian S] [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：空対象上の元の前層の値から終対象への射は弱同値（公理 (1)）。

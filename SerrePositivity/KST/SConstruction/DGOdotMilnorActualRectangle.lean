@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
   Spectra
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "L" => dgOdotMilnorCompletedLaxQuotient R d h
 /-- 概要：同じ完備化先の恒等 lax 差の絶対右面。
 方針：構成済みの実提示を使用する。規約：同じ完備化先を保持する。
@@ -37,19 +37,19 @@ local notation "o" => dgOdotMilnorActualOuterDiagram R d h
 規約：二面の S 内の別代表は仮定しない。使われ方：d④ の実構成の供給境界。 -/
 structure DGOdotMilnorActualRectangleInput where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R
-  rightBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (r).square
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R)
-  rightComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (r).square
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary
-  outerBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (o).square
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R)
-  outerComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (o).square
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary
-  boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R) (L).rectangleDiagram
-  comparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
+  rightBoundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (r).square
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R)
+  rightComparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (r).square
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary
+  outerBoundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (o).square
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R)
+  outerComparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (o).square
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary
+  boundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R) (L).rectangleDiagram
+  comparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
     (L).rectangleDiagram boundary
-  kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare diagram 2) 0 0 =
-    coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)
+  kernel_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)
 
 namespace DGOdotMilnorActualRectangleInput
 variable {R d h} (v : DGOdotMilnorActualRectangleInput R d h)
@@ -59,7 +59,7 @@ variable {R d h} (v : DGOdotMilnorActualRectangleInput R d h)
 規約：全比較は明示入力。使われ方：三比較の実構成後の主接続。 -/
 theorem comparison_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare v.diagram 2) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.diagram 2) ≫
       dgKInputPerfectNu R ≫ E) :=
   RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces
     v.diagram (r) (o) hE v.rightBoundary v.rightComparison v.outerBoundary v.outerComparison
@@ -70,7 +70,7 @@ include v in
 規約：商辺の関手同型だけで代用しない。使われ方：元 LT 図式との全接続。 -/
 theorem completedComparison_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare (L).rectangleDiagram 2) ≫ E) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (L).rectangleDiagram 2) ≫ E) :=
   RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces_imageIso
     v.diagram (r) (o) hE v.rightBoundary v.rightComparison v.outerBoundary v.outerComparison
       v.boundary v.comparison
@@ -78,9 +78,9 @@ theorem completedComparison_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp
 /-- 概要：元対角始域への増大屋根は同じ実長方形の始域に接続する。
 方針：構成済みの実屋根を同じ厚核頂点へ照合する。
 規約：元始域の S 頂点等号は要求しない。使われ方：同じ全比較の始域成分。 -/
-def sourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
-    (coherentNerveVertex (dgOdotDiagonalSourceInput R d))
-    (squareVertex ((β_ _ _).hom ≫ pastingSquare v.diagram 2) 0 0) := by
+def sourceRoof : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof (dgKInputPerfectNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d))
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare v.diagram 2) 0 0) := by
   rw [v.kernel_vertex]
   exact dgOdotMilnorRelativeSourceRoof R d h
 
@@ -88,10 +88,10 @@ def sourceRoof : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory
 方針：Sp の直接屋根接続を使用する。規約：始域同型を別に選び直さない。
 使われ方：native Verdier 列と LT 錐の元始域を保った値の回収。 -/
 def sourceValueIso (E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}) :
-    VertexIso ((dgKInputPerfectNu R ≫ E).app _
-      (coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
-      (squareVertex (((β_ _ _).hom ≫ pastingSquare (L).rectangleDiagram 2) ≫ E) 0 0) :=
-  _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((dgKInputPerfectNu R ≫ E).app _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (L).rectangleDiagram 2) ≫ E) 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierSourceRoof.rectangleValueIso_of_imageIso
     v.boundary v.comparison v.sourceRoof E
 
 end DGOdotMilnorActualRectangleInput

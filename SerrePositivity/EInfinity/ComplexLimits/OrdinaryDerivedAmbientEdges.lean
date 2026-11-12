@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedAmbientVertices
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom
 
 /-!
 # 元の通常複体射と同じ閉 dg 辺の導来像
@@ -20,18 +20,18 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexOrdinaryAmbient_edge {X Y : Complex A} (f : X ⟶ Y) :
     ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).edge =
       (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋1⦌)
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f)).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f)).edge := by
   change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
     (ComposableArrows.mk₁ f) = _
   simp only [complexOrdinaryDerivedSource, NatTrans.comp_app_apply, nerveMap_app_mk₁,
-    closedNerveInclusion_mk₁]
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_mk₁]
 
 lemma complexOrdinaryAmbient_hom {X Y : Complex A} (f : X ⟶ Y) :
     (complexOrdinaryAmbientVertexIso A X).inv ≫
@@ -40,11 +40,11 @@ lemma complexOrdinaryAmbient_hom {X Y : Complex A} (f : X ⟶ Y) :
       (complexOrdinaryAmbientVertexIso A Y).hom =
     (hoFunctor.map (complexSemifreeResolutionInfinity A)).toFunctor.map
       (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) := by
-  exact homMk_transport (complexOrdinaryAmbient_vertex A X)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) := by
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (complexOrdinaryAmbient_vertex A X)
     (complexOrdinaryAmbient_vertex A Y)
     ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated
-    ((dgClosedEdge A (Complex A) ((complexToClosed A).map f)).map
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f)).map
       ((truncation 2).map (complexSemifreeResolutionInfinity A)))
     (complexOrdinaryAmbient_edge A f)
 

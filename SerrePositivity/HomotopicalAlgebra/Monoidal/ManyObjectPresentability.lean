@@ -23,7 +23,7 @@ variable {C : Type u} [Category.{v} C] {D : Type u'} [Category.{v'} D]
   (L : ι → C ⥤ D) (R : ι → D ⥤ C) (adj : ∀ i, L i ⊣ R i)
   [∀ i, PreservesColimitsOfSize.{w, w} (R i)]
   [∀ i, PreservesColimitsOfShape WalkingSpan (R i)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (κ : Cardinal.{w}) [Fact κ.IsRegular] [OrderBot κ.ord.ToType]
   (hI : ∀ {A B : C} (f : A ⟶ B), I f → IsCardinalPresentable A κ)
   (hJ : ∀ {A B : C} (f : A ⟶ B), J f → IsCardinalPresentable A κ)
@@ -51,7 +51,7 @@ lemma modelCategoryOfPresentableGenerators_fibrations :
 
 lemma modelCategoryOfPresentableGenerators_generated :
     let := modelCategoryOfPresentableGenerators L R adj I J κ hI hJ H e
-    CofibrantlyGenerated.{w}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w}
       (EvaluationFamily.generators L I) (EvaluationFamily.generators L J) := by
   have : I.IsSmall.{w} := EvaluationFamily.isSmall_of_smallObjectArgument I
   have : J.IsSmall.{w} := EvaluationFamily.isSmall_of_smallObjectArgument J

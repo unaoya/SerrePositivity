@@ -48,7 +48,7 @@ lemma realizationHomEquiv_app {X : SSet.{u}} {Y : C}
 lemma realizationHomEquiv_source (a : A ⟶ B) (X : SSet.{u}) (Y : C)
     (f : (Realization.functor B).obj X ⟶ Y) :
     (Realization.adjunction A).homEquiv X Y ((Realization.family.map a).app X ≫ f) =
-      (Realization.adjunction B).homEquiv X Y f ≫ (cosimplicialHomMap a).app Y := by
+      (Realization.adjunction B).homEquiv X Y f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).app Y := by
   ext n x
   change (((Realization.adjunction A).homEquiv X Y (_ ≫ f)).app n) x =
     a.app n.unop ≫ (((Realization.adjunction B).homEquiv X Y f).app n) x

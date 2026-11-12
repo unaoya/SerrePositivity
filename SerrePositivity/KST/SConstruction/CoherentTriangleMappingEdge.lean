@@ -30,7 +30,7 @@ lemma coherentSimplexArrow_of_edge_face {C : Type v} [Category.{u} C] [Simplicia
     {n : ℕ} (s : (SimplicialNerve C) _⦋n⦌) (θ : ⦋1⦌ ⟶ ⦋n⦌)
     (f : s.obj (.mk (ULift.up (θ.toOrderHom 0))) ⟶
       s.obj (.mk (ULift.up (θ.toOrderHom 1))))
-    (hf : (SimplicialNerve C).map θ.op s = (coherentNerveEdge f).edge) :
+    (hf : (SimplicialNerve C).map θ.op s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) :
     coherentSimplexArrow s (θ.toOrderHom 0) (θ.toOrderHom 1)
       (θ.toOrderHom.monotone (by decide)) = f := by
   have hn := coherentSimplexArrow_naturality s θ 0 1 (by decide)
@@ -40,16 +40,16 @@ lemma coherentSimplexArrow_of_edge_face {C : Type v} [Category.{u} C] [Simplicia
 /-- 元の三辺を保持する実三角形が指定する、長辺から合成辺への元の写像空間の辺。 -/
 def coherentTriangleMappingEdge {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h)) :
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h)) :
     (SimplicialCategory.sHom X Z).Edge (SimplicialCategory.homEquiv' X Z h)
       (SimplicialCategory.homEquiv' X Z (f ≫ g)) := by
   rcases T with ⟨s, h₂, h₀, h₁⟩
   have hx : s.obj (.mk (ULift.up 0)) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) h₂
   have hy : s.obj (.mk (ULift.up 1)) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₂
   have hz : s.obj (.mk (ULift.up 2)) = Z :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₀
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₀
   subst X
   subst Y
   subst Z

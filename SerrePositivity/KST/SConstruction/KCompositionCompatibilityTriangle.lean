@@ -27,9 +27,9 @@ def kKanOriginalCompositionCompatibilityTriangle :
       (kKanOriginalCompositionCompatibilityData r F f g).second
       (kKanOriginalCompositionCompatibilityData r F f g).composite := by
   letI : KanComplex
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (kKanOriginalCompositionCompatibilityData r F f g).comparison
 
 /-- 六セルデータの composite 辺は、同じ元の適合区間の実前後合成。 -/
@@ -37,7 +37,7 @@ lemma kKanOriginalCompositionCompatibilityData_composite :
     SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).composite.edge =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F (f ≫ g)).edge := by
   change SSet.yonedaEquiv.symm
-    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right.δ 0
         (SSet.yonedaEquiv (kKanOriginalCompositionPastingTriangle r F f g 0))) = _
   rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
@@ -49,10 +49,10 @@ lemma kKanOriginalCompositionCompatibilityData_composite :
 lemma kKanOriginalCompositionCompatibilityData_first :
     SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).first.edge =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   change SSet.yonedaEquiv.symm
-    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right.δ 0
         (SSet.yonedaEquiv (kKanOriginalCompositionPastingTriangle r F f g 1))) = _
   rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
@@ -64,11 +64,11 @@ lemma kKanOriginalCompositionCompatibilityData_first :
 lemma kKanOriginalCompositionCompatibilityData_second :
     SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).second.edge =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F g).edge ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   change SSet.yonedaEquiv.symm
-    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    ((PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right.δ 0
         (SSet.yonedaEquiv (kKanOriginalCompositionPastingTriangle r F f g 2))) = _
   rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
@@ -105,12 +105,12 @@ lemma kKanOriginalCompositionCompatibilityTriangle_original_faces :
     stdSimplex.δ 2 ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityTriangle r F f g).simplex =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F f).edge ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right ∧
     stdSimplex.δ 0 ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityTriangle r F f g).simplex =
       SSet.yonedaEquiv.symm (kKanSuspensionCompatibilityEdge r F g).edge ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space ∧
     stdSimplex.δ 1 ≫

@@ -22,43 +22,43 @@ variable (d : DGStrictCommaFamily R C E F P)
 /-- 同じ全 Hom tensor は、実合成の第一比較項を消す。 -/
 lemma homMap_firstPrimitive (x y z : P) :
     (Cochain.ofHom (d.homMap x y ⊗ₘ d.homMap y z)).comp
-      (dgFunctorCommaFirstCompositePrimitive R C E F (d.obj x) (d.obj y) (d.obj z))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositePrimitive R C E F (d.obj x) (d.obj y) (d.obj z))
       (zero_add (-1)) = 0 :=
   dgStrictCommaTensorRight_zero (-1) (d.homMap x y) (d.homMap y z)
-    (dgFunctorCommaPrimitive R C E F (d.obj x) (d.obj y))
-    (dgFunctorCommaFirstCompositionMap R C E F (d.obj x) (d.obj y) (d.obj z))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R C E F (d.obj x) (d.obj y))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaFirstCompositionMap R C E F (d.obj x) (d.obj y) (d.obj z))
     (d.homMap_comparison x y)
 
 /-- 同じ全 Hom tensor は、実合成の第二比較項も消す。 -/
 lemma homMap_secondPrimitive (x y z : P) :
     (Cochain.ofHom (d.homMap x y ⊗ₘ d.homMap y z)).comp
-      (dgFunctorCommaSecondCompositePrimitive R C E F (d.obj x) (d.obj y) (d.obj z))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositePrimitive R C E F (d.obj x) (d.obj y) (d.obj z))
       (zero_add (-1)) = 0 :=
   dgStrictCommaTensorLeft_zero (-1) (d.homMap x y) (d.homMap y z)
-    (dgFunctorCommaPrimitive R C E F (d.obj y) (d.obj z))
-    (dgFunctorCommaSecondCompositionMap R C E F (d.obj x) (d.obj y) (d.obj z))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R C E F (d.obj y) (d.obj z))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSecondCompositionMap R C E F (d.obj x) (d.obj y) (d.obj z))
     (d.homMap_comparison y z)
 
 /-- 元の二関手の全次数合成を、同じ実 comma 合成へ厳密に送る。 -/
 lemma homMap_comp (x y z : P) :
     eComp (Complex R) x y z ≫ d.homMap x z =
       (d.homMap x y ⊗ₘ d.homMap y z) ≫
-        dgFunctorCommaComposition R C E F (d.obj x) (d.obj y) (d.obj z) := by
-  apply dgFunctorCommaHom_ext R C E F (d.obj x) (d.obj z)
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition R C E F (d.obj x) (d.obj y) (d.obj z) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R C E F (d.obj x) (d.obj z)
   · rw [Category.assoc, d.homMap_source, Category.assoc,
-      dgFunctorCommaComposition_source]
-    dsimp only [dgFunctorCommaSourceComposite]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_source]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaSourceComposite]
     rw [← Category.assoc, tensorHom_comp_tensorHom, d.homMap_source, d.homMap_source]
     exact d.source.map_comp x y z
   · rw [Category.assoc, d.homMap_replacement, Category.assoc,
-      dgFunctorCommaComposition_replacement]
-    dsimp only [dgFunctorCommaReplacementComposite]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_replacement]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaReplacementComposite]
     rw [← Category.assoc, tensorHom_comp_tensorHom,
       d.homMap_replacement, d.homMap_replacement]
     exact d.replacement.map_comp x y z
   · rw [dgStrictCommaComparison_precompose, d.homMap_comparison, Cochain.comp_zero,
-      dgStrictCommaComparison_precompose, dgFunctorCommaComposition_comparison]
-    dsimp only [dgFunctorCommaCompositePrimitive]
+      dgStrictCommaComparison_precompose, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_comparison]
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaCompositePrimitive]
     rw [Cochain.comp_add, d.homMap_firstPrimitive, d.homMap_secondPrimitive, add_zero]
 
 end DGStrictCommaFamily

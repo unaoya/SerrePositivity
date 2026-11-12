@@ -20,19 +20,19 @@ namespace SerrePositivity.EInfinity.Hammock.HomLift
 open CategoryTheory CategoryTheory.Limits
 variable {C : Type (u + 1)} [Category.{u} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C)
-def colimitIso : colimitGraph (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u +
+def colimitIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u +
   1, u + 1} Y) ≅
-    colimitGraph W X Y := HasColimit.isoOfNatIso (graphDiagramIso W X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y := HasColimit.isoOfNatIso (graphDiagramIso W X Y)
 def reducedIso : reducedSimplicialSet (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X)
   (ULiftHom.objUp.{u + 1, u + 1} Y) ≅
     reducedSimplicialSet W X Y :=
   (reducedColimitIso (liftedWeak W) _ _).symm ≪≫ colimitIso W X Y ≪≫ reducedColimitIso W X Y
-lemma colimitIso_graphInclusion (w : Word) :
-    graphInclusion (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1}
+lemma colimitIso_graphInclusion (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u + 1}
       Y) w ≫
-      (colimitIso W X Y).hom = (graphIso W w X Y).hom ≫ graphInclusion W X Y w :=
+      (colimitIso W X Y).hom = (graphIso W w X Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w :=
   HasColimit.ι_isoOfNatIso_hom (graphDiagramIso W X Y) w
-lemma reducedIso_graphNormalization (w : Word) :
+lemma reducedIso_graphNormalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     graphNormalization (liftedWeak W) (ULiftHom.objUp.{u + 1, u + 1} X) (ULiftHom.objUp.{u + 1, u +
       1} Y) w ≫
       (reducedIso W X Y).hom = (graphIso W w X Y).hom ≫ graphNormalization W X Y w := by

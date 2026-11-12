@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.PointedMappingCompositionFamilies
 public import SerrePositivity.KST.SConstruction.KanAssemblyMixedFamily
 public import SerrePositivity.KST.SConstruction.InverseMixedFamilyTransport
-public import SerrePositivity.InfinityCategories.Kan.CartesianEdgeInterchange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianEdgeInterchange
 
 /-! # 二本の入力にまたがる逆射・延長の中間交換
 概要：最初の入力の逆射の混合族と次の入力の延長の混合族を合成する。
@@ -35,11 +35,11 @@ lemma assemblyCrossedFamily_edge_interchange (r : ℕ)
     {e₀ e₁ : (kanAssemblyMixedChoices r g) _⦋0⦌}
     (a : (oneDirectionInverseMixedChoices r f).Edge i₀ i₁)
     (b : (kanAssemblyMixedChoices r g).Edge e₀ e₁) :
-    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair a (.id e₀)).map (assemblyCrossedFamily r f g)) ≫
-      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id i₁) b).map (assemblyCrossedFamily r f g)) =
-    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair (.id i₀) b).map (assemblyCrossedFamily r f g)) ≫
-      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgePair a (.id e₁)).map (assemblyCrossedFamily r f g)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.cartesianEdgeInterchange (assemblyCrossedFamily r f g) a b
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair a (.id e₀)).map (assemblyCrossedFamily r f g)) ≫
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (.id i₁) b).map (assemblyCrossedFamily r f g)) =
+    SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair (.id i₀) b).map (assemblyCrossedFamily r f g)) ≫
+      SSet.HomotopyCategory.homMk ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgePair a (.id e₁)).map (assemblyCrossedFamily r f g)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.cartesianEdgeInterchange (assemblyCrossedFamily r f g) a b
 
 /-- 逆射側の指定した混合選択と延長側の指定した混合選択の合成の頂点。 -/
 lemma assemblyCrossedFamily_vertex (r : ℕ) {X Y Z : StableModel.{u}}

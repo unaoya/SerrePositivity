@@ -74,7 +74,7 @@ lemma dgKInputSBoundaryComparison_naturality (r : ℕ)
 /-- 固定 K の零段は ν(P) の同じ元の境界商の Ex∞ loop。 -/
 lemma dgKInputSpectrum_zero (P : PerfDGInput.{u, v} A) :
     ((dgKInputSpectrum A P).level 0).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj P).obj :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj P).obj :=
   presentedPerfectDGBFOmegaSpectrum_zero A P
 
 /-- 固定 K の零段の辺も、ν の元の S• 境界商射の loop を厳密に回収する。 -/
@@ -91,7 +91,7 @@ def dgKInputSOAComparison (P : PerfDGInput.{u, v} A) :
 
 /-- 同じ旧 SOA との実 BF 比較は Sp の可逆辺を与える。 -/
 lemma dgKInputSOAComparison_isInvertible (P : PerfDGInput.{u, v} A) :
-    IsInvertibleEdge (coherentNerveEdge (dgKInputSOAComparison A P)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSOAComparison A P)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (presentedPerfectDGBFSOASpectrumComparison_piIsomorphism A P)
 

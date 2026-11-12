@@ -23,7 +23,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
-  (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+  (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
   (H : (K.skeleton 3 : SSet.{u}) ⟶ (basedPathSpace Y).right)
   (hH : UnbasedPointedMapping.skeletalInclusion K 1 ≫ H =
     f ≫ (PointedMapping.loopToPath Y).right)
@@ -54,13 +54,13 @@ lemma familyEdge_projection :
 theorem connecting_inverse_family [KanComplex Y.right] :
     pointedConnectingZero (UnbasedPointedMapping.pre
         (UnbasedPointedMapping.skeletalInclusion K 1) Y)
-        ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0
         ((PtSimplex.equiv₀ (pointedFiber (UnbasedPointedMapping.pre
           (UnbasedPointedMapping.skeletalInclusion K 1) Y)).basepoint).symm
           (endpointFiberVertex K Y f H hH)) := by
   let p := UnbasedPointedMapping.pre (UnbasedPointedMapping.skeletalInclusion K 1) Y
-  let s := SimplexBasepoint.rebase (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p).symm
+  let s := SimplexBasepoint.rebase (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p).symm
     (UnbasedPointedMapping.loopFamilySimplex Y f)
   let a := (PtSimplex.equiv₀ (pointedFiber p).basepoint).symm
     (endpointFiberVertex K Y f H hH)
@@ -80,23 +80,23 @@ theorem connecting_inverse_family [KanComplex Y.right] :
   have he := pointedConnectingZero_inverse_edge p s a
     (UnbasedPointedMapping.pathFamilyEdge Y H) hT h₀
     (UnbasedPointedMapping.pathFamilyEdge_face_one Y H)
-  have hs : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl _)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f) := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl _)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f) := by
     rw [SimplexBasepoint.group_mk]
     congr 1
   exact (congrArg (fun z ↦ pointedConnectingZero p (z⁻¹)) hs).symm.trans he
 
 /-- 上の接続写像の値を、基点に依存しない終点の fiber 成分へ移す。 -/
 lemma componentConnecting_inverse_family [KanComplex Y.right] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
         (pointedConnectingZero (UnbasedPointedMapping.pre
           (UnbasedPointedMapping.skeletalInclusion K 1) Y)
-          ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹)) =
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹)) =
       π₀.mk (endpointFiberVertex K Y f H hH) := by
   rw [connecting_inverse_family K Y f H hH]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk _) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.mk _) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
 
 
 end

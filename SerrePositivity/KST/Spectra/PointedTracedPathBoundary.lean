@@ -21,16 +21,16 @@ variable {T E B : PointedSimplicialSet.{u}} {q : E ⟶ B} {f g : T ⟶ E}
   {P : VerticalPath (PointedObject.toPoint B) (f ≫ q) (g ≫ q)} (L : TracedPathLift q P)
 
 /-- 写像 path の同じ第一射影を、元の Hom に値を取る自由 path 族として読む。 -/
-def tracePath : (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathSpace (PointedObject.basedHom T B)).right :=
-  L.trace ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (PointedObject.basedHom T B) 1)
+def tracePath : (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathSpace (PointedObject.basedHom T B)).right :=
+  L.trace ≫ (pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (PointedObject.basedHom T B) 1)
     (PointedObject.basedHomMap T q)).right
 
 /-- トレースの始辺全体は、移送した区間の元の π 同型による像。 -/
 lemma tracePath_start :
-    L.tracePath ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (PointedObject.basedHom T B) 1).right =
+    L.tracePath ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (PointedObject.basedHom T B) 1).right =
       L.path.path ≫ (PointedObject.basedHomMap T q).right := by
   have hp := congrArg Under.Hom.right (pullback.condition
-    (f := _root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (PointedObject.basedHom T B) 1)
+    (f := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (PointedObject.basedHom T B) 1)
     (g := PointedObject.basedHomMap T q))
   simp only [Under.comp_right] at hp
   change (L.trace ≫ _) ≫ _ = _
@@ -39,13 +39,13 @@ lemma tracePath_start :
 
 /-- トレースの終辺全体は、最初に指定した同じ downstairs 区間。 -/
 lemma tracePath_finish :
-    L.tracePath ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (PointedObject.basedHom T B) 0).right = P.path :=
+    L.tracePath ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (PointedObject.basedHom T B) 0).right = P.path :=
   L.projection
 
 private lemma unit_fst (m : PointedObject.basedHom T E ⟶ PointedObject.basedHom T B) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit m).right ≫
-        (pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freePathEndpoint (PointedObject.basedHom T B) 1) m).right =
-      m.right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (PointedObject.basedHom T B)).right :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit m).right ≫
+        (pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freePathEndpoint (PointedObject.basedHom T B) 1) m).right =
+      m.right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeConstantPath (PointedObject.basedHom T B)).right :=
   congrArg Under.Hom.right (pullback.lift_fst ..)
 
 private lemma pointFamily_post (a : T ⟶ E) :
@@ -57,7 +57,7 @@ private lemma pointFamily_post (a : T ⟶ E) :
 /-- トレースの左辺全体は、元の始点の同じ定数 path。 -/
 lemma tracePath_zero :
     stdSimplex.δ (1 : Fin 2) ≫ L.tracePath =
-      pointFamily (f ≫ q) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (PointedObject.basedHom T B)).right := by
+      pointFamily (f ≫ q) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeConstantPath (PointedObject.basedHom T B)).right := by
   change stdSimplex.δ (1 : Fin 2) ≫ (L.trace ≫ _) = _
   rw [← Category.assoc, L.zero, Category.assoc, unit_fst,
     ← Category.assoc, pointFamily_post]
@@ -65,7 +65,7 @@ lemma tracePath_zero :
 /-- トレースの右辺全体も、元の終点の同じ定数 path。 -/
 lemma tracePath_one :
     stdSimplex.δ (0 : Fin 2) ≫ L.tracePath =
-      pointFamily (g ≫ q) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeConstantPath (PointedObject.basedHom T B)).right := by
+      pointFamily (g ≫ q) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeConstantPath (PointedObject.basedHom T B)).right := by
   change stdSimplex.δ (0 : Fin 2) ≫ (L.trace ≫ _) = _
   rw [← Category.assoc, L.one, Category.assoc, unit_fst,
     ← Category.assoc, pointFamily_post]

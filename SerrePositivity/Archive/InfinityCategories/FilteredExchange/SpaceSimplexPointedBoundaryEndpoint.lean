@@ -2,7 +2,7 @@ module
 
 public import
   SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexPointedFamilyEndpoint
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RelativeExtensionFiberBoundary
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoConstantValue
 /-!
 概要：固定初点内の評価による同じ全 pointed 比較の像は元の恒等比較となる。

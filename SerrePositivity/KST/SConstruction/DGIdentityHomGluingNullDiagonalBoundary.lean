@@ -39,7 +39,7 @@ lemma dgIdentityHomGluingDiagonalNullFactorInputMap_inclusion : (a) ≫ (g) = (f
 lemma dgIdentityHomGluingDiagonalNullFactorNu_inclusion :
     (ν (a)).hom ≫ (ν (g)).hom = (ν (f)).hom := by
   rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-  exact (congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.hom
     ((presentedPerfectDGStableCategoryFunctor R).map_comp (a) (g))).symm.trans
       (congrArg (fun e => (presentedPerfectDGExactMap R e).hom)
         (dgIdentityHomGluingDiagonalNullFactorInputMap_inclusion R C))
@@ -50,19 +50,19 @@ lemma dgIdentityHomGluingDiagonalNullFactorNu_inclusion :
 def dgIdentityHomGluingNullDiagonalArrowWitness : PerfectStableArrowSquareWitness
     (ν (f)) (ν (g)) (ν (a)) (𝟙 (dgKInputStableValue R (B))) (hA) (hB) (hV) (hB) := by
   apply perfectStableArrowSquareWitness
-  let e : FunctorIso (ν (f)).hom (ν (f)).hom :=
-    Iso.refl (SSet.HomotopyCategory.mk (functorVertex ((ν (f)).hom)))
-  exact F2.functorIsoOfEq e (Category.comp_id (ν (f)).hom).symm
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (ν (f)).hom (ν (f)).hom :=
+    Iso.refl (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((ν (f)).hom)))
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e (Category.comp_id (ν (f)).hom).symm
     (dgIdentityHomGluingDiagonalNullFactorNu_inclusion R C).symm
 
 /-- 概要：元対角の包含側区間全体と実 V 包含側区間全体は指定同型を持つ。
 方針：元始域因子化の ν 同値性と恒等終域成分を同じ区間証人へ代入する。
 規約：元全ホモトピーと指定両成分を保持。使われ方：実右面の指定包含全比較。 -/
-def dgIdentityHomGluingNullDiagonalArrowComparison [IsDGPretriangulated R C] :
-    FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow (ν (f)) (hA) (hB)).edge)
+def dgIdentityHomGluingNullDiagonalArrowComparison [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R C] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow (ν (f)) (hA) (hB)).edge)
       (SSet.yonedaEquiv.symm (perfectStableArrow (ν (g)) (hV) (hB)).edge) :=
   (dgIdentityHomGluingNullDiagonalArrowWitness R C).comparisonOfEquivalences
     (dgIdentityHomGluingDiagonalNullFactorInputMap_nu_equivalence R C)
-    (QCatEquivalence.refl (dgKInputStableValue R (B)).obj).isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.refl (dgKInputStableValue R (B)).obj).isQCatEquivalence
 
 end SerrePositivity.KST.SConstruction

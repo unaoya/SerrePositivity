@@ -14,11 +14,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexRightConeData_equation_last {n : ℕ}
-    {s : Simplex A (Complex A) n} {X : Complex A}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X) (I : Finset (Fin (n + 2)))
     (hl : Fin.last (n + 1) ∈ I) : (complexRightConeData A η).Equation I := by
   intro a b k hI ha hb hk
@@ -34,23 +34,23 @@ lemma complexRightConeData_equation_last {n : ℕ}
       hint.1 hint.2
   · simp only [dite_eq_right hint]
 
-def complexRightConeSimplex {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
-    (η : ComplexSimplexAugmentation A s X) : Simplex A (Complex A) (n + 1) where
+def complexRightConeSimplex {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
+    (η : ComplexSimplexAugmentation A s X) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (n + 1) where
   toSimplexData := complexRightConeData A η
   equation I := by
     by_cases hl : Fin.last (n + 1) ∈ I
     · exact complexRightConeData_equation_last A η I hl
     · exact complexRightConeData_equation_without_last A η I hl
 
-lemma complexRightConeSimplex_data {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+lemma complexRightConeSimplex_data {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X) :
     (complexRightConeSimplex A η).toSimplexData = complexRightConeData A η := rfl
 
-lemma complexRightConeSimplex_front {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+lemma complexRightConeSimplex_front {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X) :
     (complexRightConeSimplex A η).pullback Fin.castSuccOrderEmb.toOrderHom = s := by
-  apply Simplex.ext
-  rw [Simplex.pullback_data]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]
   exact complexRightConeData_front A η
 
 end SerrePositivity.EInfinity.ComplexLimits

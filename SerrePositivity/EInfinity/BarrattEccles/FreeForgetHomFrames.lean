@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeFunctor
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceTargetComparison
-public import SerrePositivity.InfinityCategories.ModelBridge.QuillenLeftFrameAugmentation
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.QuillenLeftFrameAugmentation
 
 /-!
 # 実自由忘却随伴の Hom 比較の同じ frame
@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 def freeHomSourceFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A) := by
@@ -30,7 +30,7 @@ def freeHomSourceFrame : Complex A ⥤ (SimplexCategory ⥤ Complex A) := by
   exact (cosimplicialResolutionFamily (carrierProbeFactorization A)).obj
 
 def complexSourceFrameHom : (Complex A)ᵒᵖ ⥤ Complex A ⥤ SSet.{u} :=
-  (freeHomSourceFrame A).op ⋙ cosimplicialHomBifunctor
+  (freeHomSourceFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def freeHomImageFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) :=
   (ComplexLimits.framedLimitProbeFunctor A ⋙ freeHomSourceFrame A) ⋙
@@ -40,7 +40,7 @@ def freeHomImageFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) :
 def freeHomImageAugmentation :
     freeHomImageFrame A ⟶ freeProbeFunctor A ⋙ Functor.const SimplexCategory := by
   let := projectiveModelCategory A
-  exact quillenLeftFrameAugmentation (operad A).freeAlgebraFunctor
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.quillenLeftFrameAugmentation (operad A).freeAlgebraFunctor
     (CosimplicialFrameFamily.ofResolution
       (cosimplicialResolutionFamily (carrierProbeFactorization A)))
     (ComplexLimits.framedLimitProbeFunctor A)
@@ -52,6 +52,6 @@ def freeHomCommonFrame : Complex A ⥤ (SimplexCategory ⥤ (operad A).Algebra) 
     (freeProbeFunctor A) (freeHomImageFrame A) (freeHomImageAugmentation A)
 
 def freeHomMiddle : (Complex A)ᵒᵖ ⥤ (operad A).Algebra ⥤ SSet.{u} :=
-  (freeHomCommonFrame A).op ⋙ cosimplicialHomBifunctor
+  (freeHomCommonFrame A).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 end SerrePositivity.EInfinity.BarrattEccles

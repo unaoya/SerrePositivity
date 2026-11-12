@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCochainZeroTarget
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorCommaHomExt
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaHomExt
 
 /-! # 三つの実零 Hom から得る comma Hom の零性
 概要：両成分 Hom と比較標的が実零なら、元の comma Hom 複体自体が実零となる。
@@ -15,16 +15,16 @@ open CategoryTheory Limits CochainComplex HomComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C]
   (E : Type w) [DGCategory R E] (F : DGFunctor R C E)
-  (X Y : DGFunctorCommaObject R C E F)
+  (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorCommaObject R C E F)
 
 /-- 元の三つの Hom が実零なら、同じ comma Hom 複体も実零対象。 -/
 lemma dgCommaHom_isZero
     (hA : IsZero (homObject R C X.source Y.source))
     (hB : IsZero (homObject R E X.replacement Y.replacement))
     (hT : IsZero (homObject R E X.replacement (F.obj Y.source))) :
-    IsZero (dgFunctorCommaHomComplex R C E F X Y) := by
+    IsZero (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComplex R C E F X Y) := by
   apply (IsZero.iff_id_eq_zero _).mpr
-  apply dgFunctorCommaHom_ext R C E F X Y
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R C E F X Y
   · exact hA.eq_of_tgt _ _
   · exact hB.eq_of_tgt _ _
   · exact (dgCochain_eq_zero_of_isZero_target hT (-1) _).trans

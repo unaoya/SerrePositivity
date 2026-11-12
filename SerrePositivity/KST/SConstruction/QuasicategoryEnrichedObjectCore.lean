@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.QuasicategoryEnrichedCoreComparison
-public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedFunctorCategory
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory
 
 /-! # 全高次比較を保つ実対象 core の関手
 概要：局所 Kan な入力上の実 Quasi 値図式を、同じ対象 core の図式へ移す。
@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories
 
 /-- 実 Kan 対象を、同じ全内部 Hom を持つ Quasi 対象として含める。 -/
 def kanObjectEnrichedInclusion :
-    EnrichedFunctor SSet.{u} KanObject.{u} QuasicategoryObject.{u} where
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u} where
   obj X := ⟨X.obj, inferInstance⟩
   map X Y := 𝟙 ((ihom X.obj).obj Y.obj)
   map_id X := Category.comp_id _
@@ -29,8 +29,8 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 
 /-- 全高次 Kan 比較を、同じ成分の全高次 Quasi 比較として含める。 -/
 def kanEnrichedComparisonQuasicategory
-    {F G : EnrichedFunctor SSet.{u} C KanObject.{u}} (η : KanEnrichedComparison F G) :
-    QuasicategoryEnrichedComparison (F.comp SSet.{u} kanObjectEnrichedInclusion)
+    {F G : EnrichedFunctor SSet.{u} C _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanEnrichedComparison F G) :
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison (F.comp SSet.{u} kanObjectEnrichedInclusion)
       (G.comp SSet.{u} kanObjectEnrichedInclusion) := by
   refine ⟨fun X => (show (F.obj X).obj ⟶ (G.obj X).obj from η.val X), ?_⟩
   intro X Y
@@ -44,22 +44,22 @@ variable [∀ X Y : C, KanComplex (X ⟶[SSet.{u}] Y)]
 
 /-- 同じ実対象 core と全入力 Hom を保持する、全高次比較の圏上の関手。 -/
 def quasicategoryEnrichedObjectCoreFunctor :
-    QuasicategoryEnrichedFunctorCategory C ⥤ QuasicategoryEnrichedFunctorCategory C where
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C where
   obj F := (quasicategoryEnrichedCoreFunctor F).comp SSet.{u} kanObjectEnrichedInclusion
   map η := kanEnrichedComparisonQuasicategory (quasicategoryEnrichedCoreComparison η)
   map_id F := by
     apply Subtype.ext
     funext X
-    exact quasicategoryCoreFunctor.map_id (F.obj X).obj
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map_id (F.obj X).obj
   map_comp η θ := by
     apply Subtype.ext
     funext X
-    exact quasicategoryCoreFunctor.map_comp (η.val X) (θ.val X)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map_comp (η.val X) (θ.val X)
 
 /-- 実対象 core 関手の比較成分は元の同じ成分の core 射。 -/
 lemma quasicategoryEnrichedObjectCoreFunctor_map
-    {F G : QuasicategoryEnrichedFunctorCategory C} (η : F ⟶ G) (X : C) :
+    {F G : _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C} (η : F ⟶ G) (X : C) :
     ((quasicategoryEnrichedObjectCoreFunctor.map η).val X) =
-      quasicategoryCoreMap (η.val X) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (η.val X) := rfl
 
 end SerrePositivity.KST.SConstruction

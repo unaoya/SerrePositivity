@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningConstantVertices
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMappingLaws
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UnstraighteningConstantVertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMappingLaws
 
 /-!
 概要：定値に一致する元の全族への指定同型の像は、同じ指定頂点の恒等同型となる。

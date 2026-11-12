@@ -15,12 +15,12 @@ public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardBackwardDataCo
 noncomputable section
 universe u v wO
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory SimplicialLocalization
-variable {I : Type v} [Category I] (D : I ⥤ RelativeCategory.{u}) {O : Type wO}
+open CategoryTheory
+variable {I : Type v} [Category I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type wO}
   (p : (i : I) → O → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : O), (D.map θ).functor.obj (p i X) = p j X)
-  (w : Word) (X Y : O)
-def forwardBackwardDiagram : I ⥤ TwoSidedDiagram.Data.{u} where
+  (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : O)
+def forwardBackwardDiagram : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} where
   obj i := forwardBackwardData (D.obj i) w (p i X) (p i Y)
   map θ := forwardBackwardDataMap w (D.map θ) (hp θ X) (hp θ Y)
   map_id i := forwardBackwardDataMap_id w (D.map (𝟙 i)) (D.map_id i)

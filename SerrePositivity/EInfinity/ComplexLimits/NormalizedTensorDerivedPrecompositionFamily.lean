@@ -20,46 +20,46 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorHom_precomp_family_map {C : SSet.{u + 1}}
-    (F : dgNerve A (Complex A) ⟶ C) {X X' : Complex A} (Y : Complex A) (f : X' ⟶ X)
+    (F : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ C) {X X' : Complex A} (Y : Complex A) (f : X' ⟶ X)
     (K : SSet.{u + 1}) (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)) :
-    intervalFamilyHom (g ≫ SSet.uliftFunctor.{u + 1, u}.map
-      ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ SSet.uliftFunctor.{u + 1, u}.map
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
       (normalizedTensorPinchedIso A X' Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-        (Simplex.vertex X') (Simplex.vertex Y) ≫
-      intervalFunctorMap F (Simplex.vertex X') (Simplex.vertex Y)) =
-    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X') (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X') (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map
       (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f)))) ≫
-      intervalFamilyHom (g ≫ (normalizedTensorPinchedIso A X Y).hom ≫
-        pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-          (Simplex.vertex X) (Simplex.vertex Y) ≫
-        intervalFunctorMap F (Simplex.vertex X) (Simplex.vertex Y)) := by
-  let l : K ⟶ intervalMappingSpace (X := dgNerve A (Complex A))
-      (Simplex.vertex X') (Simplex.vertex Y) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f)))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ (normalizedTensorPinchedIso A X Y).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) := by
+  let l : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X') (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) :=
     g ≫ SSet.uliftFunctor.{u + 1, u}.map
-      ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
       (normalizedTensorPinchedIso A X' Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-        (Simplex.vertex X') (Simplex.vertex Y)
-  let r : K ⟶ intervalMappingSpace (X := dgNerve A (Complex A))
-      (Simplex.vertex X) (Simplex.vertex Y) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X') (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)
+  let r : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) :=
     g ≫ (normalizedTensorPinchedIso A X Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-        (Simplex.vertex X) (Simplex.vertex Y)
-  have h : intervalFamilyHom l = constantFunctorHomMap K
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom l = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K
       (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫ intervalFamilyHom r := by
-    simpa only [l, r, dgPinchedFamilyHom, Category.assoc] using
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom r := by
+    simpa only [l, r, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom, Category.assoc] using
       normalizedTensorPinchedIso_precomp_family A Y f K g
   exact intervalFamilyFunctorMap_precompose F
     (Truncated.HomotopyCategory.homMk
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) l r h
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) l r h
 
 end SerrePositivity.EInfinity.ComplexLimits

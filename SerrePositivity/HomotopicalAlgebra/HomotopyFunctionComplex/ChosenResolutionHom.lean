@@ -57,6 +57,6 @@ abbrev chosenResolutionHom
     (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
     (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C)) :
     Cᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  resolutionHom (Reedy.cosimplicialResolutionFamily cof).obj (fibrantTarget fib)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (Reedy.cosimplicialResolutionFamily cof).obj (fibrantTarget fib)
 
 end SerrePositivity.HomotopyFunctionComplex

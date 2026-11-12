@@ -19,11 +19,11 @@ variable (A : Type u) [CommRing A]
 def dgFunctorNativeMappingVertexEquiv (D E : Type v) [DGCategory A D] [DGCategory A E]
     [Small.{u} D] : DGFunctor A D E ≃ (dgFunctorNativeMappingSpace A D E).obj (op ⦋0⦌) where
   toFun := dgFunctorNativeMappingVertex A D E
-  invFun x := DGNerve.Simplex.vertexEquiv x.val
+  invFun x := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv x.val
   left_inv _ := rfl
   right_inv x := by
     apply Subtype.ext
-    exact DGNerve.Simplex.vertexEquiv.left_inv x.val
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.left_inv x.val
 
 /-- 元の小さい dg 入力の native core による実単体的豊穣構造。 -/
 @[instance_reducible]

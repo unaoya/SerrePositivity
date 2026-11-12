@@ -55,7 +55,7 @@ def comparisonIso : diagonal C X Y ≅ OrdinaryBarAmbientWordComparison.hom C X 
     rfl)
 
 def toSource : OrdinaryBarAmbientWordComparison.hom C X Y ⟶
-    UniverseLift.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (OrdinaryBarSourceHom.hom C X Y) :=
   (comparisonIso C X Y).inv ≫ OrdinaryBarWordRows.toSource C X Y
 
 lemma toSource_app (n : SimplexCategoryᵒᵖ)

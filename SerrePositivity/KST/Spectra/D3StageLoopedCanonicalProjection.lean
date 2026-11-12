@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoAlgebra
 
 public import SerrePositivity.KST.Spectra.D3StageLoopedCanonical
 
@@ -22,18 +22,18 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 元の厳密等式の同型は、同じ指定値を持つ等式由来の同型である。 -/
 lemma d3IsFunctorEqIso_of_eqToIso {A X : SSet.{u}} {f g : A ⟶ X}
-    (e : FunctorIso f g) (h : f = g)
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (h : f = g)
     (he : e = eqToIso (congrArg
-      (fun a : A ⟶ X ↦ SSet.HomotopyCategory.mk (functorVertex a)) h)) : F2.IsFunctorEqIso e := by
+      (fun a : A ⟶ X ↦ SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a)) h)) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsFunctorEqIso e := by
   subst g
   subst e
   exact ⟨rfl, rfl⟩
 
 /-- 等式由来の同じ指定値は、任意の同じ端点等式の同型として回収できる。 -/
 lemma d3IsFunctorEqIso_eqToIso {A X : SSet.{u}} {f g : A ⟶ X}
-    {e : FunctorIso f g} (he : F2.IsFunctorEqIso e) (h : f = g) :
+    {e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g} (he : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsFunctorEqIso e) (h : f = g) :
     e = eqToIso (congrArg
-      (fun a : A ⟶ X ↦ SSet.HomotopyCategory.mk (functorVertex a)) h) := by
+      (fun a : A ⟶ X ↦ SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a)) h) := by
   rcases he with ⟨h', he⟩
   subst g
   subst e
@@ -44,36 +44,36 @@ namespace OmegaSpectrum.AdjointLoopRelativeBF
 /-- 同じ次段比較の loop 像の四角形を評価すると、元の比較の同じ角の loop を回収する。 -/
 lemma commonChosenStageLoopedCanonicalSquareIso_corner (n : ℕ) (i j : Fin 2) :
     HEq ((commonChosenStageLoopedCanonicalSquareIso.{u} n).postcomp
-      (evaluateFunctorAt (Y := PointedKanInfinity)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := PointedKanInfinity)
         (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)))
       ((commonChosenStageCanonicalDiagramIso (n + 1)).postcomp
-        (loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity)) := by
-  let p := (fullSubcomplexOnVertices
-    ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity) IsLoopDiagramVertex).ι ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity)) := by
+  let p := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
+    ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι ≫
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map pointedKanLoopInfinity
-  let ev := evaluateFunctorAt (X := ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
+  let ev := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
     (Y := PointedKanInfinity) (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
-  have hm : p ≫ ev = loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity := by
-    dsimp only [p, ev, loopDiagramEvaluation]
+  have hm : p ≫ ev = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity := by
+    dsimp only [p, ev, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
     rw [Category.assoc, d3SquareEvaluation_postcomp, ← Category.assoc]
-  have h := functorIsoOfEq_postcomp_heq
+  have h := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIsoOfEq_postcomp_heq
     ((commonChosenStageCanonicalDiagramIso (n + 1)).postcomp p)
     (show _ = commonChosenStageLoopImageSquareFamily n from by
       simp only [p, commonChosenStageLoopImageSquareFamily,
         ← commonChosenStageLoopDiagramFamily_ι, Category.assoc])
     (show _ = commonChosenStageLoopedCanonicalSquareFamily n from by
       simp only [p, commonChosenStageLoopedCanonicalSquareFamily, Category.assoc]) ev
-  exact h.trans ((heq_of_eq (F2.functorIso_postcomp_postcomp _ p ev)).trans
-    (F2.functorIso_postcomp_heq_of_map_eq _ hm))
+  exact h.trans ((heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp _ p ev)).trans
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_heq_of_map_eq _ hm))
 
 /-- 回収した実 loop 全図式の loop 像同型は、元の指定全四角形同型へ戻る。 -/
 lemma commonChosenStageLoopedCanonicalDiagramIso_projection (n : ℕ) :
     HEq ((commonChosenStageLoopedCanonicalDiagramIso.{u} n).postcomp
-      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι)
         (commonChosenStageLoopedCanonicalSquareIso n) :=
-  (isFullyFaithful_fullSubcomplexOnVertices_ι
+  (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι
     ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity)
-      IsLoopDiagramVertex).preimageNormalizedFunctorIso_postcomp_heq
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).preimageNormalizedFunctorIso_postcomp_heq
         (commonChosenStageLoopImageFamily n) (commonChosenStageLoopedCanonicalFamily n)
         (commonChosenStageLoopedCanonicalSquareIso n)
         (commonChosenStageLoopImageFamily_ι n).symm
@@ -82,47 +82,47 @@ lemma commonChosenStageLoopedCanonicalDiagramIso_projection (n : ℕ) :
 /-- 同じ loop 像の実全図式同型も、各角で元の次段比較の同じ後合成を回収する。 -/
 lemma commonChosenStageLoopedCanonicalDiagramIso_corner (n : ℕ) (i j : Fin 2) :
     HEq ((commonChosenStageLoopedCanonicalDiagramIso.{u} n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity i j))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j))
       ((commonChosenStageCanonicalDiagramIso (n + 1)).postcomp
-        (loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity)) := by
-  let ι := (fullSubcomplexOnVertices
-    ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity) IsLoopDiagramVertex).ι
-  let ev := evaluateFunctorAt (X := ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j ≫ pointedKanLoopInfinity)) := by
+  let ι := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
+    ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι
+  let ev := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]))
     (Y := PointedKanInfinity) (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
-  have h := F2.functorIso_postcomp_heq_of_heq (commonChosenStageLoopedCanonicalSquareIso n)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_heq_of_heq (commonChosenStageLoopedCanonicalSquareIso n)
     ((commonChosenStageLoopedCanonicalDiagramIso n).postcomp ι)
     (commonChosenStageLoopImageFamily_ι n).symm
     (commonChosenStageLoopedCanonicalFamily_ι n).symm
     (commonChosenStageLoopedCanonicalDiagramIso_projection n) ev
-  have hc := F2.functorIso_postcomp_postcomp (commonChosenStageLoopedCanonicalDiagramIso n) ι ev
+  have hc := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp (commonChosenStageLoopedCanonicalDiagramIso n) ι ev
   exact (heq_of_eq hc.symm).trans
     (h.trans (commonChosenStageLoopedCanonicalSquareIso_corner n i j))
 
 /-- 同じ loop 像の実図式比較は、終点射影で元の厳密等式の指定値を保つ。 -/
 lemma commonChosenStageLoopedCanonicalDiagramIso_target_isEq (n : ℕ) :
-    F2.IsFunctorEqIso ((commonChosenStageLoopedCanonicalDiagramIso.{u} n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.IsFunctorEqIso ((commonChosenStageLoopedCanonicalDiagramIso.{u} n).postcomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)) := by
   have h0 := d3IsFunctorEqIso_of_eqToIso _
     (commonChosenStageCanonicalFamily_target (n + 1)).symm
     (commonChosenStageCanonicalDiagramIso_target (n + 1))
   have h1 := h0.postcomp pointedKanLoopInfinity
-  rw [F2.functorIso_postcomp_postcomp] at h1
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp] at h1
   apply h1.of_heq
     (show commonChosenStageLoopDiagramFamily (n + 1) ≫
-        (loopDiagramEvaluation PointedKanInfinity 1 1 ≫ pointedKanLoopInfinity) = _ from by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 ≫ pointedKanLoopInfinity) = _ from by
       rw [← Category.assoc, commonChosenStageLoopImageFamily_corner])
     (show commonChosenStageCanonicalFamily (n + 1) ≫
-        (loopDiagramEvaluation PointedKanInfinity 1 1 ≫ pointedKanLoopInfinity) = _ from by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 ≫ pointedKanLoopInfinity) = _ from by
       rw [← Category.assoc, commonChosenStageLoopedCanonicalFamily_corner])
   exact commonChosenStageLoopedCanonicalDiagramIso_corner n 1 1
 
 /-- 終点射影は、同じ loop 像二族の指定厳密等式の同型そのもの。 -/
 lemma commonChosenStageLoopedCanonicalDiagramIso_target (n : ℕ) :
     (commonChosenStageLoopedCanonicalDiagramIso.{u} n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1) =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) =
         eqToIso (congrArg
           (fun a : SimplicialNerve CommonObject.{u} ⟶ PointedKanInfinity ↦
-            SSet.HomotopyCategory.mk (functorVertex a))
+            SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a))
           (commonChosenStageLoopedCanonicalFamily_target n).symm) :=
   d3IsFunctorEqIso_eqToIso (commonChosenStageLoopedCanonicalDiagramIso_target_isEq n)
     (commonChosenStageLoopedCanonicalFamily_target n).symm

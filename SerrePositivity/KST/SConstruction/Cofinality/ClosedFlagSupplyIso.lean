@@ -22,10 +22,10 @@ open scoped Simplicial
 使われ方：fiber 右項の同じ実現への比較の順射。 -/
 def completionClosedFlagToRelative (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     (Fibration.Relative.closedFlagModel (completionImageClosedPredicate r ι f hf) n).carrier ⟶
       suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n) :=
-  fullSubcomplexLift
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift
     (multiRelativeFlagPredicate r ι Y
       (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n))
     (closedStableInclusion (Fibration.Relative.closedFlagStablePredicate
@@ -40,16 +40,16 @@ def completionClosedFlagToRelative (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：fiber 右項の比較の逆射。 -/
 def completionRelativeFlagToClosed (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n) ⟶
       (Fibration.Relative.closedFlagModel (completionImageClosedPredicate r ι f hf) n).carrier :=
-  fullSubcomplexLift (Fibration.Relative.closedFlagStablePredicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (Fibration.Relative.closedFlagStablePredicate
     (completionImageClosedPredicate r ι f hf) n).predicate
     (multiRelativeFlagsInclusion r ι Y
       (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n)) (by
         intro v
         exact (completionClosedFlagPredicate_iff r ι f hf n v.val).mpr
-          (fullSubcomplexOnVertices_vertex v))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v))
 
 /-- 概要：同じ本質像の供給側 R_P と元の相対旗の厳密な同型。
 方針：包含を保つ二つの持ち上げの往復を部分型の等号で確認する。
@@ -57,7 +57,7 @@ def completionRelativeFlagToClosed (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：相対 fiber の R_P の未置換比較。 -/
 def completionClosedFlagIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     (Fibration.Relative.closedFlagModel (completionImageClosedPredicate r ι f hf) n).carrier ≅
       suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n) where
   hom := completionClosedFlagToRelative r ι f hf n

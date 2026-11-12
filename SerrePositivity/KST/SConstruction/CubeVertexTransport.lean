@@ -10,14 +10,14 @@ public import SerrePositivity.KST.SConstruction.CubeVertexBlocks
 namespace SerrePositivity.KST.SConstruction
 
 /-- 次元の等号に沿って、元の座標をそのまま保持する。 -/
-def cubeVertexCast {n m : ℕ} (h : n = m) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m :=
+def cubeVertexCast {n m : ℕ} (h : n = m) (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m :=
   fun i => x (Fin.cast h.symm i)
 
 /-- 恒等な次元移送は元の頂点。 -/
-lemma cubeVertexCast_refl {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) : cubeVertexCast rfl x = x := rfl
+lemma cubeVertexCast_refl {n : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) : cubeVertexCast rfl x = x := rfl
 
 /-- 次元移送は元の先頭座標と tail を保つ。 -/
-lemma cubeVertexCast_cons {n m : ℕ} (h : n = m) (b : Bool) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) :
+lemma cubeVertexCast_cons {n m : ℕ} (h : n = m) (b : Bool) (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) :
     cubeVertexCast (congrArg Nat.succ h) (Fin.cons b x) =
       Fin.cons b (cubeVertexCast h x) := by
   cases h
@@ -25,7 +25,7 @@ lemma cubeVertexCast_cons {n m : ℕ} (h : n = m) (b : Bool) (x : _root_.SerrePo
 
 /-- 次元移送は、左右の因子を交換せず連結と可換。 -/
 lemma cubeVertexCast_join {n n' m m' : ℕ} (h : n = n') (k : m = m')
-    (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
+    (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) :
     cubeVertexCast (congrArg₂ Nat.add h k) (cubeVertexJoin x y) =
       cubeVertexJoin (cubeVertexCast h x) (cubeVertexCast k y) := by
   cases h
@@ -33,8 +33,8 @@ lemma cubeVertexCast_join {n n' m m' : ℕ} (h : n = n') (k : m = m')
   rfl
 
 /-- 元の三頂点の連結は、次元の結合則に沿って同じ頂点を与える。 -/
-lemma cubeVertexJoin_assoc {n m k : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
-    (z : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k) :
+lemma cubeVertexJoin_assoc {n m k : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
+    (z : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex k) :
     cubeVertexCast (Nat.add_assoc n m k) (cubeVertexJoin (cubeVertexJoin x y) z) =
       cubeVertexJoin x (cubeVertexJoin y z) := by
   induction k with
@@ -46,7 +46,7 @@ lemma cubeVertexJoin_assoc {n m k : ℕ} (x : _root_.SerrePositivity.InfinityCat
     rw [cubeVertexCast_cons (Nat.add_assoc n m k), ih]
 
 /-- 左側の零次元ブロックを除いた連結は元の右頂点。 -/
-lemma cubeVertexJoin_zero_left {m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex 0) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
+lemma cubeVertexJoin_zero_left {m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex 0) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) :
     cubeVertexCast (Nat.zero_add m) (cubeVertexJoin x y) = y := by
   induction m with
   | zero => exact Subsingleton.elim _ _
@@ -58,7 +58,7 @@ lemma cubeVertexJoin_zero_left {m : ℕ} (x : _root_.SerrePositivity.InfinityCat
 
 /-- 左結合した三ブロック上での一致は元の全頂点上での一致を与える。 -/
 lemma cubeVertex_eq_of_tripleJoin {n m k l : ℕ}
-    (f g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex ((n + m) + k) → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex l)
+    (f g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex ((n + m) + k) → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex l)
     (h : ∀ x y z, f (cubeVertexJoin (cubeVertexJoin x y) z) =
       g (cubeVertexJoin (cubeVertexJoin x y) z)) : f = g := by
   funext v

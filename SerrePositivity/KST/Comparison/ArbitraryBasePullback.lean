@@ -1,8 +1,9 @@
 module
 
-public import SerrePositivity.KST.Comparison.ExInfinityFibrations
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityFibrations
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 public import SerrePositivity.KST.Comparison.KanBasePullback
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 任意の基底での Kan fibration に沿う局所化同型の引き戻し
@@ -29,15 +30,16 @@ open SerrePositivity.SimplicialModel
 規約：モデル構造や基底の Kan 性を追加で仮定しない。
 使われ方：ホモトピー引き戻しの任意の基底での不変性。
 -/
+@[kerodon 0104]
 theorem pullback_localized_isIso {A B E P : SSet.{u}}
     (i : A ⟶ B) (hi : IsIso (AnodyneHomotopy.anodyneQ.map i))
     (p : E ⟶ B) (hp : SSet.modelCategoryQuillen.J.rlp p)
     (j : P ⟶ E) (k : P ⟶ A) (sq : IsPullback j k p i) :
     IsIso (AnodyneHomotopy.anodyneQ.map j) := by
-  apply (exInfinity_map_localized_isIso_iff j).mp
-  exact pullback_localized_isIso_of_kan_base (exInfinity.map i)
-    ((exInfinity_map_localized_isIso_iff i).mpr hi) (exInfinity.map p)
-    (exInfinity_map_rlp p hp) (exInfinity.map j) (exInfinity.map k) (sq.map exInfinity)
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff j).mp
+  exact pullback_localized_isIso_of_kan_base (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map i)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff i).mpr hi) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map p)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp p hp) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map j) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map k) (sq.map _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity)
 
 /--
 概要：任意の基底のスライスで、Kan fibration との積は局所化同型を保つ。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Filtered.SimultaneousFiberDetection
-public import SerrePositivity.InfinityCategories.F1.Filtered.FilteredLeftFibrationDetection
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.SimultaneousFiberDetection
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredLeftFibrationDetection
 
 /-!
 概要：同じ filtered な底の二つの全空間 Kan 模型への有限射を、共通頂点の元の二 fiber で表す。

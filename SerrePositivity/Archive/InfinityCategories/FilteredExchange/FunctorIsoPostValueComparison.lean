@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
 
 /-!
 概要：同じ合成値射への像の指定比較を、二段の後合成による同じ指定値へ移す。

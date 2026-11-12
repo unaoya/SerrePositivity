@@ -18,22 +18,22 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve ComplexLimits
+open ComplexLimits
 variable (A : Type u) [CommRing A]
 
 lemma freeUnitNormalizedHom_family (X Y : Complex A) (K : SSet.{u + 1})
     (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
         (normalizedSimplexTensor A ((operad A).freeAlgebraFunctor.obj X).carrier)).obj Y)) :
-    dgPinchedFamilyHom A (Complex A)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
       (g ≫ SSet.uliftFunctor.{u + 1, u}.map
-        ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map
           ((operad A).freeAlgebraAdjunction.unit.app X))).app Y) ≫
             (normalizedTensorPinchedIso A X Y).hom) =
-    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map
         ((operad A).freeAlgebraAdjunction.unit.app X)))) ≫
-      dgPinchedFamilyHom A (Complex A)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
         (g ≫ (normalizedTensorPinchedIso A
           ((operad A).freeAlgebraFunctor.obj X).carrier Y).hom) :=
   normalizedTensorPinchedIso_precomp_family A Y

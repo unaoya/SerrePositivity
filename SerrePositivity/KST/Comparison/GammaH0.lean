@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Comparison.GammaRing
 public import SerrePositivity.KST.Comparison.PiZeroRing
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedPiZero
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedPiZero
 public import SerrePositivity.DifferentialGraded.Category.Basic
 
 /-!
@@ -23,7 +23,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded SSet
-open InfinityCategories.DoldKanComparison
+
 
 /--
 概要：同一宇宙内の ULift は元の単体集合と同型である。
@@ -46,9 +46,9 @@ variable {R : Type u} [CommRing R] {D : Type u} [DGCategory R D]
 使われ方：連結成分の比較同値。
 -/
 def gammaEndPinchedIso (x : D) : ringSpace (gammaEndRingObject (R := R) x) ≅
-    InfinityCategories.DGNerve.pinchedHom R D x x :=
-  (homSpaceStandardIso (R := R) x x).symm ≪≫
-    (sameUniverseLiftIso (homSpace (R := R) x x)).symm ≪≫ homSpaceLiftIso (R := R) x x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom R D x x :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homSpaceStandardIso (R := R) x x).symm ≪≫
+    (sameUniverseLiftIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homSpace (R := R) x x)).symm ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homSpaceLiftIso (R := R) x x
 
 /--
 概要：Γ の連結成分を dg 圏の H⁰ の自己射に同定する。
@@ -60,7 +60,7 @@ def gammaEndPiZeroH0Equiv (x : D) : π₀ (ringSpace (gammaEndRingObject (R := R
     ((toHomotopy R D).obj (ForgetEnrichment.of (Complex R) x) ⟶
       (toHomotopy R D).obj (ForgetEnrichment.of (Complex R) x)) :=
   (π₀Functor.mapIso (gammaEndPinchedIso (R := R) x)).toEquiv.trans
-    (InfinityCategories.DGNerve.PinchedHom.piZeroEquiv x x)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.piZeroEquiv x x)
 
 /--
 概要：Γ の連結成分を実際の Mathlib の H⁰ の台に同定する。

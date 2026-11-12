@@ -65,7 +65,7 @@ lemma full_comparison : comparison hcof hfib F X f (fun i : ULift.{v} (Fin (n + 
 
 @[reassoc]
 lemma comparison_cut (i : I) :
-    (TriangleBook.triangle I i ≫ KanTriangleFamily.inclusion hcof hfib I) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle I i ≫ KanTriangleFamily.inclusion hcof hfib I) ≫
       comparison hcof hfib F X f cuts = PostCompositionChain.cutTriangle hcof hfib F X f (cuts i) :=
   KanTriangleFamily.extension_triangle _ _ _ _ _ _ _ _ _ i
 

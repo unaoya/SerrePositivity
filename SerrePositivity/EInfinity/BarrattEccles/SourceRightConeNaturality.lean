@@ -23,7 +23,7 @@ universe u v w
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel.WeightedCones
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
@@ -47,7 +47,7 @@ def sourceRightConeComparisonNatIso (Y : (operad A).Algebra)
   let R (F : K ⥤ (operad A).Algebra) := F ⋙ rightSimplicialFrameFamily A
   let b (F : K ⥤ (operad A).Algebra) :=
     Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
-  let e (F : K ⥤ (operad A).Algebra) := mixedConeComparisonIso K (HomotopyWeight.weight K)
+  let e (F : K ⥤ (operad A).Algebra) := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (HomotopyWeight.weight K)
     (HomotopyWeight.weight_cofibrant K) B (q.cofibrant _)
     (q.atObject _).homotopicallyConstant a (q.atObject _).augmentation_weakEquivalence
     F (R F) (b F) (fun k => isFibrant A (F.obj k))
@@ -59,7 +59,7 @@ def sourceRightConeComparisonNatIso (Y : (operad A).Algebra)
       rightSimplicialHomFamily A K Y ⋙ coneSpace K (HomotopyWeight.weight K) ⋙ L :=
     NatIso.ofComponents e (by
       intro F G f
-      let s := Functor.whiskerRight f (cosimplicialHom B)
+      let s := Functor.whiskerRight f (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B)
       let r := Functor.whiskerRight f (rightSimplicialFrameFamily A)
       let t := Functor.whiskerRight r (rightHomFunctor (framedLimitProbe A Y))
       let c := Functor.whiskerRight r (mixedFunctor B)
@@ -68,33 +68,33 @@ def sourceRightConeComparisonNatIso (Y : (operad A).Algebra)
       apply HomotopyWeight.kanConeComparisonIso_naturality K (HomotopyWeight.weight K)
         (HomotopyWeight.weight_cofibrant K) L hL (c := c)
       case hF =>
-        exact leftDiagram_kanComplex K B (q.cofibrant _)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K B (q.cofibrant _)
           (q.atObject _).homotopicallyConstant F (fun k => isFibrant A (F.obj k))
       case hG =>
-        exact rightDiagram_kanComplex K _ (R F)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagram_kanComplex K _ (R F)
           (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
           (fun k _ _ g => rightSimplicialFrame_homotopicallyConstant A (F.obj k) g)
       case hF' =>
-        exact leftDiagram_kanComplex K B (q.cofibrant _)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagram_kanComplex K B (q.cofibrant _)
           (q.atObject _).homotopicallyConstant G (fun k => isFibrant A (G.obj k))
       case hG' =>
-        exact rightDiagram_kanComplex K _ (R G)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagram_kanComplex K _ (R G)
           (fun k => rightSimplicialFrame_cofibrant A (G.obj k))
           (fun k _ _ g => rightSimplicialFrame_homotopicallyConstant A (G.obj k) g)
       case hf =>
-        exact leftDiagramComparison_isIso K B (q.cofibrant _) F (R F) (b F)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison_isIso K B (q.cofibrant _) F (R F) (b F)
           (fun k => isFibrant A (F.obj k)) (fun k n => rightSimplicialFrame_fibrant A (F.obj k) n)
           (fun k n => rightSimplicialFrameAugmentation_quasiIso A (F.obj k) n)
       case hg =>
-        exact rightDiagramComparison_isIso K B (q.cofibrant _) a
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso K B (q.cofibrant _) a
           (q.atObject _).augmentation_weakEquivalence (R F)
           (fun k => rightSimplicialFrame_cofibrant A (F.obj k))
       case hf' =>
-        exact leftDiagramComparison_isIso K B (q.cofibrant _) G (R G) (b G)
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison_isIso K B (q.cofibrant _) G (R G) (b G)
           (fun k => isFibrant A (G.obj k)) (fun k n => rightSimplicialFrame_fibrant A (G.obj k) n)
           (fun k n => rightSimplicialFrameAugmentation_quasiIso A (G.obj k) n)
       case hg' =>
-        exact rightDiagramComparison_isIso K B (q.cofibrant _) a
+        exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison_isIso K B (q.cofibrant _) a
           (q.atObject _).augmentation_weakEquivalence (R G)
           (fun k => rightSimplicialFrame_cofibrant A (G.obj k))
       · ext k n h

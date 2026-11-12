@@ -120,7 +120,7 @@ lemma component_degeneracy {n : ℕ} (i : Fin (n + 1)) : (source (C := C)).σ i 
   simp only [component, Category.assoc, eqToHom_trans_assoc, eqToHom_refl, Category.id_comp]
   rw [OrdinaryBarParameterChoiceCategory.diagram_degeneracy]
   apply Cat.Hom.ext
-  simpa only [OrdinaryBarFreeResolutionDegeneracyValues.sigma, Fin.rev_rev,
+  simpa only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma, Fin.rev_rev,
     Cat.Hom.comp_toFunctor, Functor.toCatHom_toFunctor, CosimplicialObject.σ] using
     OrdinaryBarFreeResolutionChoices.diagram_degeneracy (C := C) hcof hfib P n i.rev
 

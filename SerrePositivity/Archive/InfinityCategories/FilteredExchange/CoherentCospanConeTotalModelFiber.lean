@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanConeTotalModelComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackFiberIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwisePullbackFiberIso
 
 /-!
 概要：底上の全空間比較を元の各 fiber の interval 引き戻しへの比較として表示する。
