@@ -12,7 +12,7 @@
 <body>
 <main>
 <h1>∞ 圏基盤の解説</h1>
-<p class="meta">自分用の読解ノート。第 I 部（旧シリーズ、2026-10-28 まで）と第 II 部（整備後の ∞ 圏基盤、2026-10-28〜、ファイル名が f- で始まるもの）からなる。<code>SerrePositivity/InfinityCategories/</code> の形式化を、数学・Lean の構造・リファクタ候補の三つの面から読む。</p>
+<p class="meta">自分用の読解ノート。第 I 部（旧シリーズ、2026-10-28 まで）と第 II 部（整備後の ∞ 圏基盤、2026-10-28〜、ファイル名が f- で始まるもの）からなる。<code>SerrePositivity/InfinityCategories/</code> の形式化を、数学と Lean の構造の二つの面から読む（リファクタの候補は 2026-11-12 から形式化の側の台帳で管理する）。</p>
 
 <h2>目標：∞ 圏の解説動画</h2>
 <p>このノートは、∞ 圏の解説動画シリーズを作るための土台として使う。</p>
@@ -33,7 +33,7 @@
 <h3>章</h3>
 <div class="table-wrap"><table>
 <tr><th>章</th><th>内容</th><th>対象</th><th>状態</th></tr>
-<tr><td><a href="00-map.html">0</a></td><td>全体地図：符号化、ディレクトリと層、依存関係、リファクタ候補</td><td>全体</td><td>草稿</td></tr>
+<tr><td><a href="00-map.html">0</a></td><td>全体地図：符号化、ディレクトリと層、依存関係</td><td>全体</td><td>草稿</td></tr>
 <tr><td><a href="01-quasicategories.html">1</a></td><td>quasicategory、ホモトピー圏、Joyal の定理、join・slice、終対象、同値</td><td>Core</td><td>草稿</td></tr>
 <tr><td><a href="02-mapping-limits.html">2</a></td><td>写像空間、Kan 複体の言葉、充満忠実と同値、極限（各点計算、補助模型）</td><td>Core、PinchedHom</td><td>草稿</td></tr>
 <tr><td><a href="03-straightening.html">3</a></td><td>cocartesian fibration、transport、coherent nerve、straightening（空間値は完成、Cat<sub>∞</sub> 値は途中）</td><td>F1、Core/Cocartesian*</td><td>草稿</td></tr>
@@ -70,16 +70,14 @@
 </ul>
 
 <h3>リファクタ記録</h3>
-<ul>
-  <li><a href="r8-duplication.html">R8　重複コードの調査</a>：F1/F1B の KanSection 系の複製、その根本原因と解消の計画</li>
-</ul>
+<p>リファクタの候補（R 番号）は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理し、扱いは形式化の調整役が判断する（2026-11-12 に移した）。ノートにあった候補の原文と照合の結果は <a href="../../../research/infinity-refactor-audit/">research/infinity-refactor-audit/</a>（R8 の重複調査 r8-duplication.html の写しもここ）。</p>
 
 <h3>各章の書き方</h3>
 <ul>
   <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
   <li>数学の定義・定理を述べ、対応する Lean の宣言名とファイルを添える。証明は方針と鍵になる補題、そして Lean での組み立て方まで追う。</li>
   <li>Kerodon・HTT・HA との違い（定義の選び方、規約、符号）は独立した囲みにする。</li>
-  <li>リファクタ候補は赤い囲みにし、番号（R1、R2、…）を全章で通す。</li>
+  <li>リファクタの候補はノートに書かない。コードの問題に気づいたら、事実（何が・どこに・根拠）を <code>research/</code> にまとめ、形式化の調整役に渡す（2026-11-12 から）。</li>
   <li>末尾に「この章で押さえること」を置く。</li>
 </ul>
 
@@ -93,19 +91,7 @@
 <h3>この部の書き方</h3>
 <ul>
   <li><b>整備後の構成で書く。</b>章立ては計画 §3 の層の順序（Simplicial &lt; Core &lt; Kan &lt; … &lt; Stable &lt; F2）に従う。</li>
-  <li><b>宣言ごとに、いまの所在と状態を添える。</b>
-    <ul>
-      <li>いまの所在 → 移し先、の形で書く。</li>
-      <li>状態は次の三つで示す。
-        <ul>
-          <li><span class="tag">済</span>：もう目標の場所にある。</li>
-          <li><span class="tag">移動予定</span>：計画の候補番号（R…）を付ける。</li>
-          <li><span class="tag">未着手</span>：まだない数学。段 G の M…。</li>
-        </ul>
-      </li>
-    </ul>
-    作業が進むたびに更新する。
-  </li>
+  <li><b>宣言ごとに、今の所在と状態（済／コードにない）を添える。</b>移し先や移動の予定は書かない（2026-11-12 から。整備の計画と状態は形式化の側の <code>formalization-plans/infinity-foundation-plan.md</code> と台帳 <code>refactor-ledger.md</code>）。</li>
   <li>各章の冒頭に、基準コミットと計画の版を書く。</li>
   <li>第 I 部（旧シリーズ、旧ディレクトリ単位、第 0〜8 章）は残す。
     straightening・Yoneda・presentable などの詳しい説明は旧シリーズを参照する。</li>

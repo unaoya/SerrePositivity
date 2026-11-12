@@ -18,7 +18,7 @@
 <nav class="top"><a href="index.html">目次</a> › 第 1 章</nav>
 <h1>第 1 章　単体的集合と Kan 複体</h1>
 <p class="meta">
-  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）。
+  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）。整備の計画と状態の正本は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）にある。表の「今の所在」は 2026-11-12（KL-W1 の後）に引き直した。
   ファイルの場所は <code>SerrePositivity/</code> からの相対パス。Mathlib のものは「Mathlib」と書く。
 </p>
 
@@ -30,7 +30,7 @@
   <li>基点付きの理論：Σ ⊣ Ω、道空間</li>
 </ul>
 <p>あわせて、Core に残る「quasicategory と Kan 複体をつなぐ結果」も、境目として §2 で説明する。</p>
-<p>いま、これらの多くは KST/Spectra・KST/Comparison・HomotopicalAlgebra に散らばっている（第 0 章 §5）。各節の末尾に、いまの所在と移し先を書く。</p>
+<p>いま、これらの多くは KST/Spectra・KST/Comparison・HomotopicalAlgebra に散らばっている（第 0 章 §5）。各節の末尾に、今の所在を書く。</p>
 
 <!-- ============================================================ -->
 <h2>1. 単体的集合の組合せ論（Simplicial）</h2>
@@ -100,17 +100,17 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
   <li>horn・境界に対する持ち上げ性質を保ち、かつ反映する（UniverseLiftLifting）。anodyne 射を保つ（UniverseLiftAnodyne の <code>anodyne_map</code>）。</li>
   <li>Kan 複体・quasicategory・inner fibration・inner anodyne を保つ（InfinityCategories/F1/Universe）。π₀ を変えない（UniverseLiftPiZero）。</li>
 </ul>
-<p class="meta">注意：UniverseLiftModel・UniverseLiftWeakEquivalence は <code>[ModelCategory SSet]</code> を仮定しており、中核には入れない（計画の R72 で ModelBridge へ）。</p>
+<p class="meta">注意：UniverseLiftModel・UniverseLiftWeakEquivalence は <code>[ModelCategory SSet]</code> を仮定しており、中核には入れない。</p>
 
 <div class="box lean">
-<p class="label">§1 の所在と移し先</p>
+<p class="label">§1 の今の所在</p>
 <div class="table-wrap"><table>
-<tr><th>内容</th><th>いま → 移し先</th><th>状態</th></tr>
-<tr><td>horn・境界・anodyne・inner anodyne・prism の分割</td><td>Mathlib</td><td><span class="tag">済</span></td></tr>
-<tr><td>inner anodyne 分解・quasicategory への置き換え</td><td>F1/Simplicial → Simplicial</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>small object argument による Kan 置換</td><td>HA/Simplicial → Simplicial（末尾の Model の節を切る）</td><td><span class="tag">移動予定</span> R72</td></tr>
-<tr><td>Ex∞</td><td>KST/Comparison → Simplicial（EInfinity/Hammock の重複と統合）</td><td><span class="tag">移動予定</span> R64・R61b</td></tr>
-<tr><td>宇宙の持ち上げ</td><td>HA/Simplicial・F1/Universe → Simplicial（Model の節を除く）</td><td><span class="tag">移動予定</span> R72・R64</td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td>horn・境界・anodyne・inner anodyne</td><td><code>Mathlib/AlgebraicTopology/SimplicialSet</code>。<code>SSet.anodyneExtensions</code>（Mathlib の Basic:75）、<code>innerAnodyneExtensions</code>（Mathlib の Basic:45）</td><td class="ok">済</td></tr>
+<tr><td>inner anodyne 分解・quasicategory への置き換え</td><td><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations</code>、<code>InfinityCategories/Project/FibrationAuxiliaries/Simplicial</code>。<code>exists_quasicategory_resolution_over</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/InnerAnodyneReplacement.lean">InnerAnodyneReplacement:49</a>）</td><td class="ok">済</td></tr>
+<tr><td>small object argument による Kan 置換</td><td><code>HomotopicalAlgebra/Simplicial</code>。<code>AnodyneKanReplacement.functor</code>（<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean">AnodyneKanReplacement:79</a>）</td><td class="ok">済</td></tr>
+<tr><td>Ex∞</td><td><code>InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor</code>。<code>exInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor/ExInfinity.lean">ExInfinity:80</a>）。<code>EInfinity/Hammock</code>・<code>KST/Comparison</code> の Ex∞ のファイルはこれを使う側</td><td class="ok">済</td></tr>
+<tr><td>宇宙の持ち上げ</td><td><code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/SizeConditionsOnInfinityCategories</code>、<code>InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations</code>、<code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>、<code>HomotopicalAlgebra/Simplicial</code>。<code>quasicategory_ulift_obj</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniverseQuasicategory.lean">UniverseQuasicategory:39</a>）、<code>UniverseLiftAnodyne.anodyne_map</code>（<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/UniverseLiftAnodyne.lean">UniverseLiftAnodyne:62</a>）。<code>HomotopicalAlgebra/Simplicial</code> の UniverseLiftWeakEquivalence・UniverseLiftModel は <code>[ModelCategory SSet]</code> を仮定する</td><td class="ok">済</td></tr>
 </table></div>
 </div>
 
@@ -140,10 +140,6 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <tr><td><code>KanHomotopyZero X x</code></td><td>\(\pi_0\) を基点付き集合とみたもの</td><td>KST/Spectra/HomotopyDegreeZero.lean:26</td></tr>
 <tr><td><code>KanHomotopy X n x</code></td><td>本来の添字の \(\pi_n\)：\(0 \mapsto\) <code>KanHomotopyZero</code>、\(n+1 \mapsto\) <code>KanHomotopyGroup X n</code></td><td>KST/Spectra/HomotopyIndexing.lean:25</td></tr>
 </table></div>
-<div class="box refactor">
-<p class="label">注意：添字のずれ</p>
-<p><code>KanHomotopyGroup X n</code> は \(\pi_{n+1}\) である。群の構造を \(n\) について一様に定義するための選択だが、読むときに間違えやすい。本来の添字の版 <code>KanHomotopy</code> があるので、新しく書く主張ではこちらを使うのがよい（整備の後の R54 で名前を見直す候補）。</p>
-</div>
 
 <h3>3.2 写像、不変性、π_* 同型</h3>
 <ul>
@@ -217,17 +213,17 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 </ul>
 
 <!-- ============================================================ -->
-<h2>7. 整備での行き先（まとめ）</h2>
+<h2>7. 今の所在（まとめ）</h2>
 <div class="table-wrap"><table>
-<tr><th>内容</th><th>いまの所在</th><th>移し先</th><th>状態</th></tr>
-<tr><td>Joyal の定理、写像空間が Kan、Kan fibration の道具</td><td>InfinityCategories/Core</td><td>Core（そのまま）</td><td><span class="tag">済</span></td></tr>
-<tr><td>ホモトピー群・長完全列・Whitehead（基点付き）・anodyne は π_* 同型</td><td>KST/Spectra</td><td>Kan</td><td><span class="tag">移動予定</span> R64・R27</td></tr>
-<tr><td>Whitehead（基点なし）</td><td>InfinityCategories/HomotopyLimits</td><td>Kan</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>塔・lim¹・Milnor 列・Mittag–Leffler</td><td>KST/Spectra（Tower*）、HomotopyLimits/KanLimits</td><td>Kan</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>基点付き単体的集合・smash・内部 Hom</td><td>SerrePositivity/Spectra/PointedSimplicialSet・Pointed</td><td>Kan/Pointed</td><td><span class="tag">移動予定</span> R64（計画 §9 で置き場所を確認）</td></tr>
-<tr><td>Σ ⊣ Ω・道空間・Ω の fiber 表示</td><td>KST/Spectra</td><td>Kan/Pointed</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>基本亜群・necklace</td><td>KST/SConstruction</td><td>Kan・Coherent</td><td><span class="tag">移動予定</span> R64</td></tr>
-<tr><td>弱同値の三つの見方の一致</td><td>F1B・HA・KST に分散</td><td>Kan（第 2 章）</td><td><span class="tag">移動予定</span> R72</td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td>Joyal の定理、写像空間が Kan、Kan fibration の道具</td><td><code>InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets</code>、<code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations</code>、<code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces</code>。<code>kanComplex_iff_isGroupoid</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets/KanCharacterization.lean">KanCharacterization:77</a>）、<code>pinchedHom_kanComplex</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceRightKan.lean">MappingSpaceRightKan:192</a>）</td><td class="ok">済</td></tr>
+<tr><td>ホモトピー群・長完全列・Whitehead（基点付き）・anodyne は π_* 同型</td><td><code>InfinityCategories/Kerodon/KanComplexes/HomotopyGroups</code>、<code>KST/Spectra</code>。<code>fiberLongExact</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/FibrationSequence.lean">FibrationSequence:37</a>）、<code>exists_pointedHomotopyInverse</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/PointedKanWhitehead.lean">PointedKanWhitehead:141</a>）、<code>kanPiIsomorphism_of_anodyne</code>（<a href="../../../SerrePositivity/KST/Spectra/AnodyneHomotopyEquivalence.lean">AnodyneHomotopyEquivalence:98</a>）</td><td class="ok">済</td></tr>
+<tr><td>Whitehead（基点なし）</td><td><code>InfinityCategories/Kerodon/KanComplexes/HomotopyGroups</code>、<code>InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes</code>。<code>homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/KanWhiteheadComparison.lean">KanWhiteheadComparison:98</a>）、<code>isWeakHomotopyEquivalence_iff_isQCatEquivalence</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/WeakWhitehead.lean">WeakWhitehead:48</a>）</td><td class="ok">済</td></tr>
+<tr><td>塔・lim¹・Milnor 列・Mittag–Leffler</td><td><code>InfinityCategories/Project/KanComplexAuxiliaries</code>、<code>KST/Spectra</code>、<code>InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits</code>。<code>TowerLimOne.twist</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/TowerLimOne.lean">TowerLimOne:29</a>）、<code>sequentialCone</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/FibrationTowerLimitCone.lean">FibrationTowerLimitCone:27</a>）、<code>kernelLimOneEquiv</code>（<a href="../../../SerrePositivity/KST/Spectra/TowerKernelLimOneEquiv.lean">TowerKernelLimOneEquiv:24</a>）</td><td class="ok">済</td></tr>
+<tr><td>基点付き単体的集合・smash・内部 Hom</td><td><code>Spectra/PointedSimplicialSet</code>、<code>Spectra/Pointed</code>、<code>InfinityCategories/Project/PointedSpaces</code>。<code>PointedSimplicialSet</code>（<a href="../../../SerrePositivity/Spectra/PointedSimplicialSet/Basic.lean">Basic:35</a>）、<code>smash</code>（<a href="../../../SerrePositivity/Spectra/Pointed/Smash.lean">Smash:42</a>）</td><td class="ok">済</td></tr>
+<tr><td>Σ ⊣ Ω・道空間・Ω の fiber 表示</td><td><code>InfinityCategories/HTT/PointedSimplicialSets</code>、<code>KST/Spectra</code>。<code>suspensionLoopEquiv</code>（<a href="../../../SerrePositivity/InfinityCategories/HTT/PointedSimplicialSets/SuspensionLoop.lean">SuspensionLoop:80</a>）、<code>freePathSpace</code>（<a href="../../../SerrePositivity/InfinityCategories/HTT/PointedSimplicialSets/FreePathSpace.lean">FreePathSpace:94</a>）、<code>pointedEndpointLoop_isPullback</code>（<a href="../../../SerrePositivity/KST/Spectra/PointedEndpointLoopPullback.lean">PointedEndpointLoopPullback:41</a>）</td><td class="ok">済</td></tr>
+<tr><td>基本亜群・necklace</td><td><code>InfinityCategories/Kerodon/KanComplexes/HomotopyGroups</code>、<code>InfinityCategories/Project/SimplicialCombinatorics</code>、<code>KST/SConstruction</code>。<code>fundamentalGroupoidComparison</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/FundamentalGroupoidComparison.lean">FundamentalGroupoidComparison:36</a>）、<code>necklaceLambdaCell</code>（<a href="../../../SerrePositivity/KST/SConstruction/NecklaceLambdaCell.lean">NecklaceLambdaCell:18</a>）</td><td class="ok">済</td></tr>
+<tr><td>弱同値の三つの見方の一致</td><td><code>InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes</code>、<code>HomotopicalAlgebra/Simplicial</code>。<code>isWeakHomotopyEquivalence_iff_isQCatEquivalence</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/WeakWhitehead.lean">WeakWhitehead:48</a>）、<code>KanTestDetection.map_isIso_of_tests</code>（<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/KanTestDetection.lean">KanTestDetection:83</a>）、<code>weakEquivalences_iff_anodyneQ_isIso</code>（<a href="../../../SerrePositivity/HomotopicalAlgebra/Simplicial/AnodyneModelDetection.lean">AnodyneModelDetection:108</a>）</td><td class="ok">済</td></tr>
 </table></div>
 
 <h2>この章で押さえること</h2>

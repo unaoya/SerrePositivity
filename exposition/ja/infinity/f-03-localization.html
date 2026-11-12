@@ -18,7 +18,7 @@
 <nav class="top"><a href="index.html">目次</a> › 第 3 章</nav>
 <h1>第 3 章　quasicategory と局所化</h1>
 <p class="meta">
-  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）の R56a・R65・M11。
+  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）。整備の計画と状態の正本は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）にある。表の「今の所在」は 2026-11-12（KL-W1 の後）に引き直した。
   ファイルの場所は <code>SerrePositivity/</code> からの相対パス。LI は KST/LocalizingInvariants の略。
 </p>
 
@@ -121,7 +121,7 @@ P \xrightarrow{\ j\ (\text{inner anodyne})\ } Q \to \ast,\qquad Q \text{ は qua
 <ul>
   <li>使っているのは、Kan 置換、pushout、自明 Kan fibration、inner anodyne 置換だけで、モデル構造も straightening も使わない。</li>
   <li>得られるのは<b>存在と普遍性</b>で、\(Q\) の写像空間は分からない（\(J\) を貼り付けて置き換えた後の形は具体的に計算しにくい）。写像空間の計算には、§5 の hammock 局所化や、第 5 章の分数を使う。</li>
-  <li>この定理は、いま KST の中にある。計画の R56a で F1B/Localization へ移す。閉包に F2（CoreAnodyneLifting 経由）と straightening が入っているので、R26・R72 の後に行う。</li>
+  <li>この定理は InfinityCategories/Kerodon/AdjointFunctors/Localization にある（<code>exists_quasicategory_localization</code>、LocalizationResolution）。</li>
 </ul>
 </div>
 
@@ -145,7 +145,7 @@ P \xrightarrow{\ j\ (\text{inner anodyne})\ } Q \to \ast,\qquad Q \text{ は qua
 <tr><td>延長による判定</td><td>前合成が充満忠実で、\(W\) を可逆に送る関手がすべて延びる</td><td><code>isLocalization_of_fullyFaithful_extensions</code>（PrecompositionCriterion）</td></tr>
 <tr><td>変形による判定</td><td>\(X\) の中に、\(D\) を「変形レトラクト」として実現する部分がある（例：cofibrant 置換のある状況）</td><td><code>isLocalization_of_deformation</code>・<code>isLocalization_of_weakDeformation</code>（DeformationLocalization・WeakDeformationSource）</td></tr>
 <tr><td>右 Kan 拡張による判定</td><td>局所的な極限の条件で右 Kan 拡張が存在する</td><td><code>isLocalization_of_rightKan_local_limits</code>（RightKanCriterion）</td></tr>
-<tr><td>反射による判定</td><td>右随伴が充満忠実（反射的部分圏への反射）</td><td><code>ReflectiveLocalization</code>（F1B）、<code>AdjointLocalization.isLocalization</code>（LI → F1B、R48）</td></tr>
+<tr><td>反射による判定</td><td>右随伴が充満忠実（反射的部分圏への反射）</td><td><code>ReflectiveLocalization</code>（F1B）、<code>AdjointLocalization.isLocalization</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization）</td></tr>
 </table></div>
 <p>最後の「反射による判定」が、Bousfield 局所化を Dwyer–Kan 局所化の特別な場合にしている（§6）。</p>
 
@@ -184,7 +184,7 @@ M11 が証明されれば、モデル圏を使わずに中核で局所化の写�
 <h2>8. 局所化に関わる概念の整理</h2>
 <div class="table-wrap"><table>
 <tr><th>概念</th><th>Dwyer–Kan 局所化との関係</th><th>所在</th></tr>
-<tr><td>Gabriel–Zisman 局所化（1 圏）</td><td>∞ 局所化のホモトピー圏</td><td>Mathlib。比較は <code>fraction_ho_localization</code>（LI、private。R62 で公開）</td></tr>
+<tr><td>Gabriel–Zisman 局所化（1 圏）</td><td>∞ 局所化のホモトピー圏</td><td>Mathlib。比較は <code>fraction_ho_localization</code>（KST/LocalizingInvariants、private）</td></tr>
 <tr><td>分数の計算（Ore 条件）</td><td>局所化の写像空間を屋根で計算する道具</td><td>Mathlib（1 圏）。∞ 版は LI の Verdier 分数（第 5 章）</td></tr>
 <tr><td>反射的局所化・Bousfield 局所化</td><td>特別な場合（右随伴が充満忠実）</td><td>F1B・F2/Presentable</td></tr>
 <tr><td>Verdier 局所化</td><td>特別な場合（安定 ∞ 圏で、cofiber が部分圏に入る射）</td><td>Stable の <code>cofiberLocalizingEdges</code>、<code>IsVerdierSequence</code>（第 4 章）</td></tr>
@@ -196,17 +196,17 @@ M11 が証明されれば、モデル圏を使わずに中核で局所化の写�
 </table></div>
 
 <!-- ============================================================ -->
-<h2>9. 整備での行き先</h2>
+<h2>9. 今の所在</h2>
 <div class="table-wrap"><table>
-<tr><th>内容</th><th>いま → 移し先</th><th>状態</th></tr>
-<tr><td><code>IsLocalization</code> の定義・普遍性・飽和・判定法・宇宙</td><td>F1B/Localization</td><td><span class="tag">済</span></td></tr>
-<tr><td>存在定理と、延長・一意性（約 40 本）</td><td>LI → F1B/Localization</td><td><span class="tag">移動予定</span> R56a</td></tr>
-<tr><td>随伴による局所化 <code>AdjointLocalization</code></td><td>LI → F1B/Localization</td><td><span class="tag">移動予定</span> R48</td></tr>
-<tr><td>判定法の一般部分 <code>RestrictedDeformationLocalization</code></td><td>Derived → F1B/Localization</td><td><span class="tag">移動予定</span> R49b</td></tr>
-<tr><td>相対圏と hammock 局所化（モデル圏を使わない部分）</td><td>EInfinity/SimplicialLocalization → F1B/Localization/DwyerKan</td><td><span class="tag">移動予定</span> R65</td></tr>
-<tr><td>モデル圏の ∞ 局所化 <code>modelHammock_isLocalization</code></td><td>EInfinity → ModelBridge</td><td><span class="tag">移動予定</span> R65</td></tr>
-<tr><td>一般の相対圏での hammock 局所化の定理</td><td>なし</td><td><span class="tag">未着手</span> M11</td></tr>
-<tr><td>重複：<code>localization_extension_exists</code>（EInfinity/FrameHom）と <code>IsLocalization.exists_extension</code></td><td>EInfinity → 削除して F1B の原本へ</td><td><span class="tag">移動予定</span> R61a</td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td><code>IsLocalization</code> の定義・普遍性・飽和・判定法・宇宙</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>IsLocalization</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Localization.lean">Localization:103</a>）、<code>IsLocalization.saturate</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/Saturation.lean">Saturation:69</a>）、<code>IsLocalization.exists_extension_ulift</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniverseExtension.lean">UniverseExtension:27</a>）</td><td class="ok">済</td></tr>
+<tr><td>存在定理と、延長・一意性</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>exists_quasicategory_localization</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/LocalizationResolution.lean">LocalizationResolution:41</a>）、<code>edgeLocalization</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/GeneralLocalization.lean">GeneralLocalization:25</a>）</td><td class="ok">済</td></tr>
+<tr><td>随伴による局所化 AdjointLocalization</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>localizationRestriction</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/AdjointLocalization.lean">AdjointLocalization:79</a>）</td><td class="ok">済</td></tr>
+<tr><td>判定法の一般部分 RestrictedDeformationLocalization</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>preimageEdges</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/RestrictedDeformationLocalization.lean">RestrictedDeformationLocalization:19</a>）</td><td class="ok">済</td></tr>
+<tr><td>相対圏と hammock 局所化（モデル圏を使わない部分）</td><td><code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>、<code>EInfinity/SimplicialLocalization</code>、<code>EInfinity/Hammock</code>。<code>RelativeCategory</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/RelativeCategory.lean">RelativeCategory:29</a>）、<code>RawHammock</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/RawHammock.lean">RawHammock:30</a>）、<code>kanHammockNerve</code>（<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/KanComparisonNerves.lean">KanComparisonNerves:51</a>）</td><td class="ok">済</td></tr>
+<tr><td>モデル圏の ∞ 局所化 <code>modelHammock_isLocalization</code></td><td><code>EInfinity/SimplicialLocalization</code>。<code>modelHammock_isLocalization</code>（<a href="../../../SerrePositivity/EInfinity/SimplicialLocalization/ModelHammockLocalization.lean">ModelHammockLocalization:84</a>）</td><td class="ok">済</td></tr>
+<tr><td>一般の相対圏での hammock 局所化の定理</td><td>—（あるのは辺を可逆にすること <code>hammockLocalizationNerveMap_inverts</code> だけ）</td><td class="todo">コードにない</td></tr>
+<tr><td>局所化の延長：<code>localization_extension_exists</code> と <code>IsLocalization.exists_extension</code></td><td><code>InfinityCategories/Project/HomotopyDiagramComparison</code>、<code>InfinityCategories/Kerodon/AdjointFunctors/Localization</code>。<code>localization_extension_exists</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/LocalizationExtension.lean">LocalizationExtension:25</a>）、<code>IsLocalization.exists_extension</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/Localization/UniversalConsequences.lean">UniversalConsequences:36</a>）。同じ内容の二つの版</td><td class="ok">済</td></tr>
 </table></div>
 
 <h2>この章で押さえること</h2>
