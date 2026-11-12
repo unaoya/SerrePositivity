@@ -1848,3 +1848,23 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.N
 | 合計 | **2,100〜3,500行** | 完成見込み **9,933〜11,333行** |
 
 下限でも余裕は67行しかなく、10,000行内に収まる保証はない。この報告を停止点2や上限変更の承認とはしない。最新の指示3のとおり、この中間報告自体では承認待ちにせず、既存の全自然同型・指定錐を使う短い接続を優先する。四つの外のまとまりを追加せず、型・範囲の弱化も行わない。10,000行の上限を独自に延長せず、超える変更や範囲外のまとまりが必要になったところで、検証済みを保存して停止する。停止点2は未完。
+
+## 58. 3b-2 続行：元の自由積図式への輸送と延長比較の自然性
+
+コード `b5eb19199`、新規2本118行。累計 **126本7,951行**。
+
+- `DiagramComparison.FreeProductDiagramEZ`（65行）：任意の単体的集合の二図式について、積側とテンソル側の自由化の全自然同型を構成した。§57の図式圏の比較を両側から運び、元の A 自由正規化鎖による積図式とテンソル図式の鎖ホモトピー同値を構成した。
+- `DiagramComparison.DiagramExtendNaturality`（53行）：既存 `negativeDiagramExchangeIso` を同じ成分を持つ全自然同型へまとめ、任意の複体値図式射との可換式を証明した。
+
+順方向の各点が元の指定 AW と一致する式は、`rfl` だけでは閉じないことを個別検査で確認した。図式交換・零延長の比較を通るため、後者の自然性を使って照合する。この未証明の等式は本体に残しておらず、試作は `/private/tmp/isw2-free-product-diagram-component-draft.lean` に保存した。今回の同値構成を、この最終成分等式まで済んだものとして数えない。いずれも第一のまとまりの同定・自然性の内部である。
+
+個別検査、鍵付き対象ビルド **2,269 jobs**・**2,264 jobs**、一時監査125本1,415宣言、最終累計126本 **1,426宣言・標準三公理のみ**が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-57.log`・`/private/tmp/isw2-g10-build-58.log`、最終監査 `/private/tmp/AuditISW2G10HundredTwentySix.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredtwentysix-modules.txt`。鍵は `--wait 3600`、同時に一枚の整理券、各回1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramEZ
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramExtendNaturality
+```
+
+約7,900行の中間報告の実測を **7,951行、残枠2,049行**に更新する。残る四まとまりと上限内完了のリスクは§57.1のとおり。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は未完であり、停止点2にはまだ達していない。
