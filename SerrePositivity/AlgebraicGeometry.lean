@@ -845,3 +845,5 @@ public import SerrePositivity.AlgebraicGeometry.CenterComplementLocalization
 public import SerrePositivity.AlgebraicGeometry.CechSupportOutsideCenter
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSupportPower
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraAugmentation
