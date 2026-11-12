@@ -1372,3 +1372,51 @@ Mathlib の `LocalizedModule` は、係数加群 A が P 代数である環の�
 2f の次数零では、B_Y/IB_Y→H⁰(E) の核を 2e の核の評価と Frobenius によって nil にし、像の安定化によって各元の十分高い p 冪を像へ入れる証明案を具体化した。既存の普遍同相の p 冪判定と有限射の導手による四角形へ渡し、Stein 分解を使わない予定である。実際の環の H⁰ と Frobenius の厚化の写像の照合は、これから形式化する。
 
 再開の合図の後は、調整役の指定どおり図式比較の対象ビルドから始める。現在の worktree の未検証 Lean はそのまま保存し、検証前にコミットしない。
+
+
+## 2026-11-12：実際の指定次数の標準開と、テンソル係数図式との同型
+
+数学コミット `1b359a90e`。対象と直接 importer のビルド成功（4,324 jobs）、別実行の監査は **7,086 宣言・標準三公理のみ**。4 モジュールと入口の import 追加、計 531 行。main `27f0ea688` は `0314ebff7` で取り込んだ。検証した 699 入力のハッシュは取り込み前後で全て一致した。
+
+任意の分子族 V に対し、元の斉次局所化と右テンソル積から、分子を V の各成分のテンソル像に置き換えた斉次局所化への写像を作った。分数写像の像の上限を比較して全射性を示し、flat な右テンソル積では元の指定次数部分の包含の単射性から同型を得た。元の局所化環 P を B 代数と仮定せず、共通の変更先 Q で局所化環を変更し、分子族の分母倍の条件から B 線形性を示した。
+
+これを R[X]→B[X] の標準開へ適用した。負次数の零延長と次数成分のテンソル像の交換を示し、各標準開の指定次数部分の B 線形な同型を作った。分数の分母の冪を保つ公式により、標準開を狭める制限との可換性を示した。最後に ModuleCat.extendScalars φ と同じ φ.toAlgebra を入口で選び、実際の B[X] 加群の標準開図式との自然同型を構成した。成分の同型と純テンソル公式を分けることで whnf timeout を解消し、計算量上限は増やしていない。
+
+登録モジュール：
+
+- `ProjectiveGradedTensorLocalization`
+- `ProjectiveGradedTensorCoefficientChange`
+- `ProjectiveTensorChartComparison`
+- `ProjectiveTensorChartDiagram`
+
+宣言と主張（ローカルな型クラス設定を除く 25 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveTensorNumerator` | 分子族の右テンソル像を、元の基底環上の部分加群として扱う。 |
+| `projectiveTensorNumerator_fraction_mem` | 純テンソルの斉次分数は、テンソル像の分子族に属する。 |
+| `projectiveGradedTensorLocalization_symm_tmul_mem` | 周囲の局所化の比較の逆は、元の指定次数部分の純テンソルを保つ。 |
+| `projectiveGradedTensorLocalizationMap` | 右テンソル像の指定次数部分への、元の斉次局所化からの比較写像。 |
+| `projectiveGradedTensorLocalizationMap_val` | 斉次局所化の比較写像の周囲での値は、通常の局所化比較の逆である。 |
+| `projectiveGradedTensorLocalizationMap_injective` | flat な右テンソル積では、斉次局所化の比較写像は単射。 |
+| `projectiveGradedTensorLocalizationMap_fraction` | 純テンソルの比較写像は、元の分数の分母を保つ。 |
+| `projectiveGradedTensorLocalizationMap_surjective` | 指定次数の比較写像は全射。分子族のテンソル像の定義だけで成立する。 |
+| `projectiveGradedTensorLocalizationEquiv` | flat な右テンソル積は、指定分子族の斉次局所化と交換する。 |
+| `projectiveTensorCoefficientNumerator` | 分子族のテンソル像を、変更後の基底環 B 上の部分加群として扱う。 |
+| `projectiveTensorCoefficientNumerator_restrict` | B 上の分子のテンソル像を R に制限すると、元の R 上のテンソル像になる。 |
+| `projectiveGradedTensorCoefficientEquiv` | 局所化する環を変えた、指定分子族のテンソル比較。まず R 線形に構成する。 |
+| `projectiveGradedTensorCoefficientEquiv_fraction` | 係数環の変更を含めた比較も、純テンソル分数の分子と分母の冪を保つ。 |
+| `projectiveGradedTensorCoefficientEquiv_smul` | 分子族が分母倍で次へ移るなら、係数変更を含む比較は B の作用と可換。 |
+| `projectiveGradedTensorCoefficientLinearEquiv` | flat な基底変更と斉次局所化の比較を、B 線形な同型にする。 |
+| `projectiveTensorPiece_int` | 負次数を零に延ばす操作は、次数成分のテンソル像と交換する。 |
+| `projectiveTensorChartNumerator_eq` | 分母の冪ごとのテンソル像は、基底変更後の指定次数の分子と一致する。 |
+| `projectiveTensorChartRightLinearEquiv` | 基底変更後の各標準開の指定次数部分と、元の標準開の右テンソル積との B 線形同型。 |
+| `projectiveTensorChartLinearEquiv` | 基底変更後の各標準開の指定次数部分と、元の標準開の左テンソル積との B 線形同型。 |
+| `projectiveTensorChartRightLinearEquiv_fraction` | 右テンソルによる標準開の比較は、指定次数の純テンソル分数を保つ。 |
+| `projectiveTensorChartLinearEquiv_fraction` | 左テンソルによる標準開の比較も、指定次数の純テンソル分数を保つ。 |
+| `projectiveTensorChartLinearEquiv_restriction` | 各標準開のテンソル比較は、標準開を狭める制限と可換。 |
+| `projectiveTensorChartComponentIso` | 環準同型から係数構造を固定した、各標準開の実際のテンソル比較。 |
+| `projectiveTensorChartComponentIso_hom_tmul` | 各標準開の環準同型による比較は、左純テンソルの既存の比較と一致する。 |
+| `projectiveTensorChartDiagramIso` | 元の標準開図式のテンソル底変換と、基底変更後の実際の標準開図式との自然同型。 |
+
+今回の自然性は標準開の制限についてのもの。任意の次数付き加群の射に関する自然性と、既存の flat な Čech H 比較との合成は次の束で検証する。R/J の非 flat な H とテンソル積の交換は主張していない。共通アフィン細分、実際の Čech Frobenius、filtered colimit の比較も残る。**停止点 2e ではない。**
