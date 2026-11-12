@@ -52,3 +52,21 @@
 
 - ri §0 の R58 の行と「候補の出所」の行が `exposition/ja/infinity/route-yoneda.html` と `r8-duplication.html` を指す。
 - ifp の M8 と `stage-ii/inf-core-w1.md:25` が「解説 第 5 章 §5」（f-05-verdier-quotient.html の §5「商の関手性（M8）」、数学の内容）を指す。これは R の囲みではないので外さない。
+
+## 6. 追記（11-12 夜）：f-00〜f-05 の表の所在を引き直したときに分かったこと（事実だけ）
+
+ノートの表を「今の所在」に作り替えるため、各行の代表的な宣言を main 95c8f5c8c で引き直した（114 宣言の file:line を確認）。そのときに分かった、計画の記述と今のコードの違い：
+
+- **Ω による安定性の判定（HA Cor 1.4.2.27）**：ノートと計画では「未着手（D-7）」だったが、`isStable_of_loopEquivalence`（`InfinityCategories/HA/StableInfinityCategories/LoopEquivalenceStability.lean:20`）がある。このファイルに sorry はない（依存先は未確認）。
+- **局所化の延長の二つの版**（旧 R61a）：`localization_extension_exists`（`InfinityCategories/Project/HomotopyDiagramComparison/LocalizationExtension.lean:25`、EInfinity/FrameHom から移動）と `IsLocalization.exists_extension`（`InfinityCategories/Kerodon/AdjointFunctors/Localization/UniversalConsequences.lean:36`）が両方ある。
+- **KST・EInfinity・HomotopicalAlgebra に残っている ∞ の一般論**：
+  - `KST/Spectra`：Tower* 26 本、`kanPiIsomorphism_of_anodyne`、based path と Ω の fiber 表示（`pointedEndpointLoop_isPullback`）
+  - `KST/SConstruction`：Necklace* 45 本
+  - `KST/LocalizingInvariants`：`laxCategory`、`fraction_ho_localization`（private）
+  - `KST/Fibration`：Verdier 分数の大半
+  - `EInfinity/SimplicialLocalization`：`modelHammock_isLocalization`、`hammockLocalizationNerveMap`
+  - `HomotopicalAlgebra/Simplicial`：Kan 置換・KanTestDetection・Diagonal*。モデル圏を使うのは 16 本（UniverseLiftWeakEquivalence・UniverseLiftModel・Diagonal{Cofibrations,Quillen,LocalizedEquivalence,Anodyne} など）
+- `InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/PointedKanWhitehead.lean` に、空の `namespace SerrePositivity.KST.Spectra` が残っていて、それを open している。
+- 同じ名前の `pinchedHom` が `Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces` の Basic.lean（SSet 版）と PinchedHom.lean（dg 版）にあり、名前空間で分かれている。
+- 改名表 `scripts/refactor/targets/kl-module-map.json` は InfinityCategories と KST の一部（Comparison・ProExcision・LocalizingInvariants・SConstruction）だけを持ち、KST/Spectra・EInfinity・HomotopicalAlgebra は対象外。
+- ノートで「HA/Simplicial」「HA/Generated」と書いていたのは `HomotopicalAlgebra/` のこと。KL-W1 でできた `InfinityCategories/HA/`（Higher Algebra）とは別物。
