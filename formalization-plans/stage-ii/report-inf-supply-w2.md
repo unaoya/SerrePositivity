@@ -1678,3 +1678,19 @@ SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightFree
 ただし、これで第一のまとまりの全単体比較を閉じることはできない。各 n での鎖ホモトピー同値は、各 n の鎖写像の集合の全単射ではない。また、重みの図式方向の end を取る比較には、その方向で両立するホモトピーが要る。頂点を選んだ収縮を n ごとに適用しただけでは、必要な全単体の切断空間の比較や、その指定豊穣合成との一致は得られない。これらの橋を省略して同値性を主張しない。
 
 今回の試作は既存定義の包み直しだけで、上記の不足を解消しないため、本体には残さない。個別検査を通した試作は `/private/tmp/isw2-free-simplex-contraction-tested.lean` に保存した。新規登録対象なし、累計 **113本7,002行**のまま。次は、正規化 shuffle→AW の合成の直接の照合を検討する。既存の `normalizedEZHomotopy` が供給する逆順（AW→shuffle）のホモトピーと取り違えない。停止点2は未完であり、四つのまとまり・10,000行上限・約7,900行での中間報告の条件は維持する。
+
+## 49. 3b-2 続行：shuffle→AW の異なる二重次数の成分の消滅
+
+コード `d9f60a395`、新規1本67行。累計 **114本7,069行**。
+
+`DiagramComparison.ShuffleCutNormalization` で、既存格子路の両因子を AW で切断した写像がともに単射なら、切断点が元の第一次数 p に一致することを次元の不等式から証明した。切断点が異なる場合は少なくとも一因子が非単射になる。Mathlib の `degeneracy_comp_PInfty` と元の Moore 分裂を使って、その作用素と実 Moore 射影との合成が零であること、したがって正規化された実整数テンソル成分が零であることを証明した。第一のまとまりの合成の照合に属する。
+
+個別検査、鍵付き対象ビルド **1,846 jobs**、累計114本 **1,245宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-47.log`、監査 `/private/tmp/AuditISW2G10HundredFourteen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfourteen-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutNormalization
+```
+
+これは異なる切断点の成分の消滅であり、対角成分や正規化 shuffle→AW 全体の恒等式まで完了したものではない。対角では非退化の格子路の一意性・符号の確認、対角側の Moore 射影を挟む合成との照合が残る。全単体 Hom／切断比較、指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も保持する。停止点2は未完、残枠2,931行。約7,900行で実測と残量を報告する。
