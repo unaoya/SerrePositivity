@@ -1772,3 +1772,73 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 **停止点 2e ではない。** 今回の入力は共通の R と多項式環 R[X] 上の filtered な次数付き加群の図式で、出力は余極限の実際の次数成分から作る標準開の図式である。係数環 B_j が動く各段の B_j[X] 上の標準開と、共通係数へ制限したこの図式との照合はまだ別に閉じる必要がある。`projectiveNatCoefficientChartIso` などの既存の係数変更比較、および Frobenius・閉厚化・底変換との可換性を、同じ有限段の写像で接続する。共通アフィン細分の各 H の比較と自然性も未完。今回の標準開の比較だけで、被覆によらないことまで示したとはしない。完備化や無限積と filtered colimit の交換も主張しない。
 
 段 2e の実測は基点 `df035c08e` から新規 **213 本・22,878 行**、入口登録を含め **23,092 行**。他レーンの追加・文書・下書きを含めない。前回の半分の報告点を越えた実測報告は継続して有効で、新しい停止基準 50,000 行には達していない。残りの主な幅は引き続き共通アフィン細分にある。
+
+
+### 共通アフィン細分：mapping cone と B1 による接続案（再開後の紙の作業）
+
+正次数の H の比較の橋として、一般の全複体の edge map の理論を先に作る代わりに、refinement map の cone に B1 の `exact_zero_row_iff_zero_col_of_commute` を適用する案を使う。以下は紙の筋で、Lean で検証済みの結論ではない。
+
+有限アフィン被覆 V が U を細分し、添字写像 ρ により V_j⊂U_{ρ(j)} とする。非増大の Čech 複体の射 r:C(U)→C(V) に対し、負の一項を自然数の第零項へ移した cone を E⁰=C⁰(U)、E^{p+1}=Cᵖ(V)⊕C^{p+1}(U) と置く。微分は第零項で a↦(r(a),−d(a))、以後 (b,a)↦(d(b)+r(a),−d(a))。この cone の完全性と r の各 H の同型性を、サイクル・境界の前像で結ぶ補題を切り出す。導来関手の層コホモロジーとの比較は使わない。
+
+V のタプルとの交叉で上の cone を作れば、縦方向を V の増大 Čech にした二重図式になる。正の縦次数では、交叉全体が V のそのタプルの先頭の開に入り、また U_{ρ(j)} にも入る。両方の横の増大 Čech が固定頂点の先頭挿入で縮約する。共通の増大項の射が恒等なので、そこから非増大の射の cone の完全性を加群の計算で得る。縦の各列は、U のアフィン交叉を V で被覆した増大 Čech、またはその有限直和。従ってその完全性を供給すれば、B1 によって縦次数零の cone の完全性が従う。この段で初めて各 H の同型を結論する。単なる増大完全性の同値を各 H の同型と読み替えない。
+
+アフィンの任意の有限アフィン被覆の完全性は、先に標準被覆の場合を局所化と先頭挿入で証明し、有限標準細分 W を選んで B1 の完全性の比較を使う。V|W の各交叉では、W が入る V の開が一つあるので縮約する。他方向では、アフィン V の交叉へ U の大域関数の標準被覆を制限した形なので、標準被覆の完全性を使う。この順なら、任意のアフィン被覆の完全性を共通細分の H の同型から循環的に導かない。
+
+細分の添字写像によるコチェインの射、合成との整合性、係数の射への自然性、二つの添字写像が与える射のホモトピーも別に供給する。被覆によらない比較を閉じるまで、存在する一つの細分についての同型だけを停止点の条件としない。
+
+
+## 固定頂点の縮約・アフィン標準被覆の単元の場合・refinement cone（eac527fbd）
+
+数学コミット **`eac527fbd`**。新規 **7 モジュール・40 宣言**、本体 **711 行**と入口 7 行、計 **718 行**。対象と直接 importer は **4,367 jobs で成功**。別実行の標準監査は **7,650 宣言・標準三公理のみ**。共有の `with_build_lock.sh --wait 3600` でビルドと監査を一回ずつ別に実行した。未検証の `CechHomologyCycleCriterion.lean` はこのコミットと監査数には含めない。
+
+- `ProjectiveCechSplitVertex`・`ProjectiveCechSplitExact`：固定頂点を挿入する制限がすべて同型である係数図式では、増大項の写像が単射で、各正長のサイクルは境界。符号計算は既存の `cechTupleBoundary_prepend` を、台を一頂点まで広げる転置で移して再利用した。
+- `AffineModuleCechDiagram`・`AffineModuleCechMap`・`AffineModuleCechUnit`：実際の局所化加群の各有限交叉と制限を図式にし、係数の射の恒等・合成を保つ。被覆元の一つが単元なら、上の縮約から増大 Čech の完全性を得る。単位イデアルを生成する一般の場合の完全性とは区別する。
+- `CechRefinementCone`・`CechRefinementConeExactness`：非負次数の射の cone を負一の項から自然数で添字付けし、同じ増大項を保つ二つの完全な列の射では、その cone の第零項の核が零で各正次数のサイクルが境界になる。これは二重図式の正次数の行に用いる加群の計算である。
+
+| モジュール | 宣言 | 主張 |
+|---|---|---|
+| `ProjectiveCechSplitVertex` | `cechInsertVertexFunctor` | 有限集合に固定した頂点を挿入する関手。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertVertexMap` | 係数図式の制限による、頂点挿入の自然変換。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertVertexIso` | 各交叉で頂点挿入の制限が可逆なら、係数図式の自然同型になる。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex` | タプルの先頭への挿入による、挿入後の係数での評価。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex_naturality` | 先頭挿入の評価は、係数図式の射に自然。 |
+| `ProjectiveCechSplitVertex` | `fullCechSplitVertexContraction` | 挿入の制限の逆で係数を戻した、縮約の候補。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose` | 頂点挿入まで台を広げる鎖写像の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_comp_preserving_left` | 挿入まで広げる写像の前に、台を保つ写像を合成する場合の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_comp_preserving_right` | 台を保つ写像の前に、挿入まで広げる写像を合成する場合の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_add` | 挿入を許す転置は鎖写像の和を保つ。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_id` | 恒等写像の挿入を許す転置は、挿入による係数の制限。 |
+| `ProjectiveCechSplitVertex` | `cechTuplePrepend_support_insert` | 先頭追加の像の台は、元の台にその頂点を追加した集合に収まる。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_prepend` | 先頭追加を転置したものは、係数図式への先頭挿入の評価。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex_identity` | 係数図式付きの先頭挿入と余境界の反交換式。同型性の仮定は不要。 |
+| `ProjectiveCechSplitVertex` | `fullCechSplitVertexContraction_identity` | 挿入の制限が同型なら、係数図式の全タプル Čech コチェインは縮約する。 |
+| `ProjectiveCechSplitExact` | `cechTupleBoundary_prepend_zero` | 長さ零のタプルでは、先頭を追加して境界を取ると元に戻る。 |
+| `ProjectiveCechSplitExact` | `fullCechPrependVertex_zero_differential` | 長さ零の先頭挿入と余境界の合成は、頂点挿入による係数の制限。 |
+| `ProjectiveCechSplitExact` | `fullCechAugmentedDifferential_squared` | 全タプルの余境界の二乗は、長さ零の増大項からも零となる。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertexContraction_zero_identity` | 増大項での縮約も、余境界との合成が恒等になる。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertexDifferential_zero_injective` | 固定頂点による縮約があれば、増大項からの余境界は単射。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertex_cycle_boundary` | 固定頂点による縮約があれば、正の長さの各 Čech サイクルは境界。 |
+| `AffineModuleCechDiagram` | `affineModuleAwayRestrictionIso` | 二つの分母が互いに整除するときの局所化加群の同型。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator` | 有限交叉を定める被覆元の積。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator_dvd` | 添字を増やすと、交叉の分母は元の分母の倍数になる。 |
+| `AffineModuleCechDiagram` | `affineModuleCechDiagram` | アフィン標準被覆の各有限交叉での局所化加群の図式。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator_insert_dvd` | 単元の被覆元を追加しても、交叉の分母は元の分母を割る。 |
+| `AffineModuleCechDiagram` | `affineModuleCechDiagram_map_insert_isIso` | 被覆元が単元なら、それを交叉へ追加する制限は同型。 |
+| `CechRefinementCone` | `cechRefinementConeTerm` | 自然数で添字付けした cone の項。 |
+| `CechRefinementCone` | `cechRefinementConeDifferential` | 負一から移した cone の微分。 |
+| `CechRefinementCone` | `cechRefinementConeDifferential_squared` | この添字付けでも cone の微分の二乗は零。 |
+| `CechRefinementCone` | `cechRefinementCone` | 共通アフィン細分の射の完全性を測る、自然数添字の cone。 |
+| `CechRefinementConeExactness` | `cechRefinementCone_zero_kernel` | 増大項で恒等を誘導する射の cone は、第零項で核が零。 |
+| `CechRefinementConeExactness` | `cechRefinementCone_cycle_boundary` | cone の正次数の各サイクルは境界。増大項を保つ二つの完全な列を用いる。 |
+| `AffineModuleCechMap` | `affineModuleCechMap` | 加群写像が誘導する、各有限交叉の局所化加群の図式の射。 |
+| `AffineModuleCechMap` | `affineModuleCechMap_id` | 局所化した係数写像は恒等写像を保つ。 |
+| `AffineModuleCechMap` | `affineModuleCechMap_comp` | 局所化した係数写像は合成を保つ。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnitInsertionIsIso` | 単元の頂点の挿入は、係数図式のすべての成分で同型。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_zero_injective` | 単元の被覆元があれば、増大項からの写像は単射。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_cycle_boundary` | 単元の被覆元があれば、増大 Čech の各サイクルは境界。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_exact` | 単元の被覆元があれば、増大 Čech の連続する二つの余境界は完全。 |
+
+
+既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はない。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は基点 `df035c08e` から **220 本・23,589 行**、入口登録を含め **23,810 行**。50,000 行の停止基準には達していない。
+
+**停止点 2e ではない。** 単位イデアルを生成する一般のアフィン標準被覆は、局所化と有限積の比較を供給してから今回の単元の場合へ渡す必要がある。任意のアフィン被覆の完全性、共通細分の二重図式の実装、cone の完全性から実際の H の同型へ渡す判定と自然性、細分の選択との整合性が残る。動く係数環の標準開と共通係数の図式の照合、および既存の五つの比較同士の可換性も未完。今回の cone の補題の前提を仮定しただけで、一般の共通細分が完成したとはしない。
