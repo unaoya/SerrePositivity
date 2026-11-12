@@ -2300,3 +2300,32 @@ V のタプルとの交叉で上の cone を作れば、縦方向を V の増大
 | `gradedOriginalProjNativeChart_frobenius` | 共通基底での計算を元の Proj の切断へ戻しても、Frobenius は実際の p 乗。 |
 
 段 2e の検証済み実測：**311 本・30,697 行**、入口を含め **31,014 行**。上限 50,000 行内。未検証の下書きを含めない。
+
+
+## 11-12 夜：各有限段も元の Proj とする filtered 比較（08a716c57）
+
+数学コミット `08a716c57`。3 本・9 宣言・185 行、入口登録を含め 188 行。
+対象と直接 importer のビルドは **4,520 jobs 成功**。別実行の監査は **8,409 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行ごとに返却。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+`gradedOriginalProjNativeCechDiagram` は各段の元の Proj の実際の構造層を使う。
+`gradedOriginalProjNativeCechDiagram_map` は、その遷移が元の grading の Proj の実際の引き戻しであることを示す。
+`gradedOriginalProjNativeFilteredHomologyIso` は、極限先と各段の**両方**で元の Proj の実際の Čech H を使う余極限比較。
+模型・環の余極限・次数の照合は 2g が供給する入力であり、比較の同型性そのものを仮定していない。
+各段の元の基底環での H へは、前の `gradedOriginalProjCechScalarRestrictionIso` と係数制限の完全性で接続する。
+
+**停止点 2e ではない。** I 進の実際の閉厚化・互換族への接続と、五つの比較同士の自然性の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `cechDiagramTransport` | 各段の同型に沿って、図式の遷移を移す。 |
+| `cechDiagramTransportIso` | 各段の同型は、移した遷移も含めた図式全体の自然同型。 |
+| `gradedOriginalRingDiagramModule` | 次数付き環の図式を、共通の多項式環上の加群の図式として扱う。 |
+| `gradedOriginalRingDiagramMap` | 元の各段の grading の、環の遷移に沿う次数付き環の射。 |
+| `gradedOriginalRingChartDiagram` | 共通基底上の次数零チャートの、遷移を含めた係数図式。 |
+| `gradedOriginalProjNativeCechDiagram` | 各段で元の Proj の構造層を使う、実際の Čech 複体の図式。 |
+| `gradedOriginalProjNativeCechDiagramIso` | 各段だけでなく、図式全体での次数零チャートと元の Proj の自然同型。 |
+| `gradedOriginalProjNativeCechDiagram_map` | 移した図式の遷移は、元の Proj の実際の構造層の引き戻しそのもの。 |
+| `gradedOriginalProjNativeFilteredHomologyIso` | 各段と極限先の両方で、元の Proj の実際の構造層を使う filtered Čech H の比較。 |
+
+段 2e の検証済み実測：**314 本・30,882 行**、入口を含め **31,202 行**。上限 50,000 行内。
