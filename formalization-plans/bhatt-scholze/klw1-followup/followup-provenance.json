@@ -23,10 +23,10 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3722,
+  "a_lines": 3735,
   "a_complete": false,
-  "a_stop": "forecast upper bound exceeds approved 4000-line cap; strict equality required by user",
-  "a_cap": 4000,
+  "a_stop": null,
+  "a_cap": 4200,
   "a_forecast": [
     3957,
     4072
@@ -40,8 +40,8 @@
     "SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility"
   ],
   "resumed_build_targets": 3,
-  "resumed_audited_declarations": 69,
+  "resumed_audited_declarations": 70,
   "resumed_standard_axioms_only": true,
-  "resumed_build_log": "/tmp/bsw16/product-quotient-05.log",
-  "resumed_audit_log": "/tmp/bsw16/audit-product-quotient.log"
+  "resumed_build_log": "/tmp/bsw16/quotient-transport-01.log",
+  "resumed_audit_log": "/tmp/bsw16/audit-quotient-transport.log"
 }

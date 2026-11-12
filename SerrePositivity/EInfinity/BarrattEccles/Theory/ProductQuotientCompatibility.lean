@@ -35,6 +35,19 @@ lemma actionCoinvariantQuotient_naturality (τ : G →* End L) (f : K ⟶ L)
   apply ModuleCat.hom_ext
   rfl
 
+/-- 同じ作用の等式に沿う表示の運搬は、元の指定商写像を保つ。 -/
+lemma actionCoinvariantQuotient_transport (τ : G →* End K) (h : ρ = τ) :
+    actionCoinvariantQuotient ρ ≫
+      (((Rep.coinvariantsFunctor A G).mapHomologicalComplex (.up ℤ)).mapIso
+        (eqToIso (congrArg representationCochainComplex h))).hom =
+          actionCoinvariantQuotient τ := by
+  subst τ
+  simp only [Functor.mapIso_hom, eqToIso.hom, eqToHom_refl]
+  let F := (Rep.coinvariantsFunctor A G).mapHomologicalComplex (.up ℤ)
+  exact (congrArg (fun q => actionCoinvariantQuotient ρ ≫ q)
+    (F.map_id (representationCochainComplex ρ))).trans
+      (Category.comp_id (actionCoinvariantQuotient ρ))
+
 /-- 直積群の全複体の分離は、左右の指定商写像のテンソルを保つ。 -/
 lemma productCoinvariantTotalIso_quotient :
     coinvariantTotalQuotient (ρ.comp (MonoidHom.fst G H))
