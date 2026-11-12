@@ -275,3 +275,152 @@ main `f5baa8763` の規模基準の改定を取り込んだ。段1の停止上�
 続いて、既存の `cofinalPointSliceOverOpIso`・`pointSliceReverseFiberIso`・`pointCosliceFiberMap` とその座標公式を再利用し、反転した slice fiber の元の比較を、元の coslice の左 pinched 比較へ厳密に照合している。新しい反転・slice 同型そのものは作り直していない。指定極限・宇宙変更・表現可能値を通じた G8 の全族の四角形は未完。
 
 新しい全段の停止上限は、段1 **5,200**、段2 **2,800**、段3 **1,800**、段4 **900行**。途中報告の目安はそれぞれ **1,300・700・450・225行**。
+
+## 11. 後段の途中保存と規模見込みによる停止（停止点1は未達）
+
+**段1の②は未完。上限超過の見込みによる停止であり、停止点1の完成報告ではない。** 元の比較の選択は保持し、必要な同型を仮定に足した最終版は置いていない。
+
+今回閉じたのは、(1) 元の共変表現可能値と標準後合成の全族自然性、(2) 元の宇宙変更と表現の指定成分の逆を含む Hom 値後段の全族自然性、(3) 錐の辺に沿う元の切断写像の全 fiber 上の自然性、(4) 元の選択した極限頂点の比較と値の切断写像との全族比較。正規化した形状制限の固定端点比較と、実切断の制限の評価も新規の葉で切り出した。以下の検証欄に成功したものだけを記す。
+
+### 残る数学と型
+
+`φ : X ⟶ Y`、元の係数図式 `F`、`t := spaceTensorData hE M` とし、`G := F ≫ t.hom`、`gX := SetWeight.diagram X G`、`gY := SetWeight.diagram Y G` と置く。`Γ(g)` は `coherentSpaceSectionsObject g` の台。`i := nerveMap φ.mapElements`、`hφ := SetWeight.elementsMap_diagram φ G` による終域の移送を含め、
+
+```lean
+ρ₀ := smallUnstraighteningSectionsRestriction gY i ≫
+  eqToHom (congrArg Γ hφ)
+ρ := (SSet.uliftFunctor.{u + 1, u}).map ρ₀
+```
+
+とする（この節の略記は紙の型案）。まず必要なのは、任意の `d : JoinCone gY` に対する次の**全写像**の同型。
+
+```lean
+FunctorIso
+  (coneSectionsValueMapAt gY d d.vertex rfl ≫ ρ)
+  (coneSectionsValueMapAt gX
+    (SetWeight.restrictSectionsCone φ G d) d.vertex
+    (SetWeight.restrictSectionsCone_vertex φ G d))
+```
+
+実際の切断制限であり、選んだ極限の普遍性だけから別の制限を定義して代用しない。既存の `leftUnstraighteningMappingRestrictionIso` を、定値始域の全 fiber と切断の指数同型で写す。その前後に必要な native 錐の円柱の形状自然性と、小さい表示／元の大きい表示の制限との整合性はまだ証明していない。
+
+指定極限錐 `cX, cY` に対し、`vX := setWeightSectionsLimitTail X hE M F cX hcX`、`vY := setWeightSectionsLimitTail Y hE M F cY hcY`、`δ := [SetWeight.sectionsMap φ F cX hcX cY hcY]` と置く。上の同型、今回の切断錐から指定極限への比較、同じ `t.hom` で写した錐の辺の終対象性による比較を合わせ、残る目標は
+
+```lean
+FunctorIso (ρ ≫ vX.hom) (vY.hom ≫ postcompose M δ)
+```
+
+である。`spaceTensorHomValueTail_edgeIso` は指定された **E の辺**に沿う後段の全族自然性を閉じたが、この**形状制限**の四角形そのものはまだ閉じていない。`tensorSpaceFunctor_setWeightHomNatural_hom_factor` により元の G8 比較への厳密な因子の接続は済んでいる。
+
+最後に上の二経路へ `SetWeight.limitConeEndpointComparison cX M` を後合成した全族同型を作り、既存の `sectionsConeFamilyRestriction_fromSections` と照合する。その同型を `limitConeMap_homMk_eq_of_coneFamilyIso` に渡す。現時点でその最終入力を構成したとは主張しない。①や Δ の橋・sifted には進んでいない。
+
+### 再見積もり（この表は未実装分）
+
+| 残る接続 | 行数見込み |
+| --- | ---: |
+| 定値始域の変換と native な錐の円柱の形状制限 | 250〜350 |
+| 既存の相対 unstraightening 比較を全 fiber・実切断の比較へ移す | 550〜700 |
+| 小さい／大きい切断表示、図式の等式による正規化との整合性 | 400〜500 |
+| 同じテンソル随伴で写した指定極限錐・普遍辺との照合 | 300〜400 |
+| 後段全体の合成、固定端点模型の照合、既存の Ho 等式への入力 | 500〜650 |
+| 計 | **2,000〜2,600** |
+
+既存の `leftUnstraighteningMappingRestrictionIso`、`normalizedConeRestriction`、`normalizedSliceEndpointComparison_restrict`、`sectionsConeFamilyRestriction_fromSections` を再利用する見込みであり、これらの持ち上げ・比較そのものは作り直さない。当初の段1の1,600〜2,600行、§9の2,900〜3,900行という見込みに対し、同じ選択の反転・表現可能値の自然性と、切断の二つの表示を全族で結ぶ部分を過小に見ていた。
+
+今回の実測は新規26本1,814行、既検証1,461行と合わせて累計3,275行。残り2,000〜2,600行を加えると **5,275〜5,875行**（約5,300〜5,900行）となる見込みのため、上限5,200行の停止条件に従い、検証済み分を保存して止める。上限は変更していない。
+
+### 検証・コミット
+
+17本・1,134行・32宣言は `1534eb2bd` に保存済み。各葉の対象ビルドが成功し、32宣言の `#check`・`#print axioms`・`#print sorries` は全件成功（`/tmp/is-w1/remainder-build-1-audit.log` の監査部分）。標準三公理のみ、sorry 0。
+
+残り9本・680行・16宣言を `8ecef8bf8` に保存した。選択した極限の比較は `remainder-build-1-audit.log`、固定端点の正規化した形状制限と共通の引き戻し切断は `remainder-build-2-audit.log` の各対象で成功。最後の小さい切断制限の対象ビルドは **2,651 jobs 成功**（`/tmp/is-w1/remainder-build-3-audit.log`）。同じログの新規26本・48宣言の `#check`・`#print axioms`・`#print sorries` は全件成功し、**sorry 0・標準三公理のみ**。
+
+今回合計 **26本・1,814行・48宣言**、段1累計 **42本・3,275行・113宣言**。未検証の Lean 下書きは残していない。残る数学は上記の紙の型案に記録した。報告時点の作業木を清潔にして停止する。
+
+F2全体のビルド・監査は実行していない。入口・全体監査への登録は調整役の持ち分。新しい数学は新規ファイルだけで、既存の本文・型・名前は変更していない。鍵は `--wait 3600` で一枚ずつ、ビルド・監査の実行中だけ保持した。待ち時間は停止理由にしていない。
+
+前回の `b126b94b7`（6本）・`27f37cc66`（6本）も未取り込み。今回26本と合わせ、main未登録の新規モジュールは38本。今回の途中保存をG8の②の完成とは扱わない。
+
+### 今回の新規ファイル・公開宣言
+
+ファイルはすべて KL-W1 後の Kerodon／HTT の配置。既存の数学の宣言・入口・全体監査は変更していない。
+
+| 新規ファイル | 行数 | 宣言数 |
+| --- | ---: | ---: |
+| [SetWeightEndpointRestrictionComparison.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightEndpointRestrictionComparison.lean) | 63 | 1 |
+| [SetWeightFixedEndpointEdgeComparison.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightFixedEndpointEdgeComparison.lean) | 39 | 1 |
+| [SetWeightSectionsLimitValueComparison.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsLimitValueComparison.lean) | 111 | 4 |
+| [SetWeightSpaceValueComparison.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSpaceValueComparison.lean) | 58 | 2 |
+| [SetWeightUniverseValueNaturality.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightUniverseValueNaturality.lean) | 73 | 1 |
+| [SpaceTensorHomValueTailNaturality.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SpaceTensorHomValueTailNaturality.lean) | 98 | 2 |
+| [IntervalPostcomposeIdentityFamily.lean](../../SerrePositivity/InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/IntervalPostcomposeIdentityFamily.lean) | 37 | 1 |
+| [SpaceValueHomClass.lean](../../SerrePositivity/InfinityCategories/Kerodon/ExamplesOfInfinityCategories/SimplicialCategories/SpaceValueHomClass.lean) | 72 | 4 |
+| [CovariantCosliceFiberNormalization.lean](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/CovariantCosliceFiberNormalization.lean) | 64 | 3 |
+| [PointCosliceIsoTransportComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointCosliceIsoTransportComparison.lean) | 75 | 2 |
+| [PointSliceReversePinchedComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/CartesianFibrations/PointSliceReversePinchedComparison.lean) | 48 | 1 |
+| [EquivalenceInverseSquare.lean](../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/EquivalenceInverseSquare.lean) | 34 | 1 |
+| [FamilyEquivalenceReflection.lean](../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/FamilyEquivalenceReflection.lean) | 33 | 1 |
+| [CartesianSectionsRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CartesianSectionsRestriction.lean) | 68 | 3 |
+| [ConeSectionsHomActionEdgeComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsHomActionEdgeComparison.lean) | 46 | 1 |
+| [ConeSectionsHomActionVertexComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsHomActionVertexComparison.lean) | 69 | 1 |
+| [ConeSectionsMapTransportNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsMapTransportNaturality.lean) | 96 | 1 |
+| [ConeSectionsValueEdgeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsValueEdgeNaturality.lean) | 69 | 1 |
+| [PointedIntervalTransportVertexComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/PointedIntervalTransportVertexComparison.lean) | 100 | 2 |
+| [RightFibrationMappingNormalizedOverMap.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/RightFibrationMappingNormalizedOverMap.lean) | 48 | 1 |
+| [SmallUnstraighteningSectionsRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallUnstraighteningSectionsRestriction.lean) | 56 | 2 |
+| [SmallUnstraighteningValueTransport.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallUnstraighteningValueTransport.lean) | 110 | 3 |
+| [CovariantRepresentableCosliceComparison.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableCosliceComparison.lean) | 89 | 2 |
+| [CovariantRepresentableValueNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableValueNaturality.lean) | 94 | 1 |
+| [ReversedRepresentableValueFactorization.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/ReversedRepresentableValueFactorization.lean) | 67 | 1 |
+| [ReversedRepresentableValueTransport.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/ReversedRepresentableValueTransport.lean) | 97 | 5 |
+
+| 公開宣言（末尾の名前） | 主張 |
+| --- | --- |
+| `limitConeEndpointComparison_restrictIso` | 元の錐の Hom 比較は、同じ正規化した形状制限と固定端点模型で全族として可換。 |
+| `setWeightLimitConeEndpointComparison_edgeIso` | 元の固定端点比較は、同じ指定錐の辺の標準後合成に全自然。 |
+| `limitVertexValue_edgeIso` | 指定極限頂点の同じ値比較は、同じ錐の辺の値の作用と全写像として同型。 |
+| `limitVertexValue_coneSectionsIso` | 指定極限頂点の同じ値比較は、元の錐の値の切断写像と全族で可換。 |
+| `limitVertexValueAt_coneSectionsIso` | 同じ切断錐の頂点を指定表示しても、値の切断写像との比較は保たれる。 |
+| `sectionsLimitValueEquivalence_coneSectionsIso` | 正本の切断から指定極限への同じ比較は、元の値の切断写像の右逆になる。 |
+| `spaceValueHomClass_spaceValueEquivalence` | 正本の選んだ値比較の順射の類は、元の頂点同型の順射そのもの。 |
+| `setWeightSpaceValueSquareIso` | 空間のホモトピー圏で可換な正方形は、正本の同じ値比較による全写像間の同型を与える。 |
+| `setWeightUniverseValue_edgeIso` | 元の宇宙変更の値比較は、同じ小さい分類図式の値の作用と全族で可換。 |
+| `spaceTensorHomValueTail` | 元のテンソル随伴の値から右写像空間への後段の同じ比較。 |
+| `spaceTensorHomValueTail_edgeIso` | 正本の同じ Hom 値比較は、指定辺の値の作用と標準後合成を全族で結ぶ。 |
+| `intervalPostcompose_identityFamily_homotopy` | 指定辺による標準後合成は、恒等辺の定値全族を同じ辺の定値全族へ送る。 |
+| `spaceValueHomClass` | 元の指定空間の Kan 値の実写像を、同じ端点のホモトピー圏の射で読む。 |
+| `spaceValueHomClass_edgeValue` | 同じ空間辺の Kan 値を読んだ類は、元の辺の類そのもの。 |
+| `spaceValueHomClass_comp` | 元の Kan 値の写像の合成を読む操作は合成を保つ。 |
+| `spaceValueFunctorIso_of_homClass_eq` | 同じ端点の値の全写像の類の等式から、元の全写像間の同型を得る。 |
+| `covariantCosliceFiberNormalization` | 元の左 pinched 模型を、元の単体集合の coslice fiber へ戻す同じ反転経路。 |
+| `covariantCosliceFiberNormalization_hom` | 元の反転経路で戻してから左 pinched 比較を行うと恒等射。 |
+| `covariantCosliceFiberNormalization_eq_inv` | 同じ反転経路は、元の左 pinched 比較の指定逆そのもの。 |
+| `pointCosliceFiberMap_ι_of_iso` | 同じ底の同型による fiber 比較は、同じ coslice 全空間の後合成を誘導する。 |
+| `pointCosliceIso_transportIso` | 同じ底の同型で移した coslice 輸送は、元の fiber 比較と輸送の合成に同型。 |
+| `pointSliceReverseFiberIso_pinchedLeft` | 元の右 pinched fiber の反転を左模型へ送る射は、標準二重反転の射の反転。 |
+| `functorIsoInverseSquare` | 同じ指定同値の順射による可換正方形から、指定逆による全族同型を得る。 |
+| `functorIsoOfPrecompEquivalence` | 指定同値で前合成して全族で同型な二つの写像は、元のまま全族で同型。 |
+| `sectionsRestrictionOfIso` | 指定された実際の引き戻し表示に沿って、元の切断空間の全族を制限する。 |
+| `sectionsRestrictionOfIso_evaluation` | 引き戻し表示を用いた切断制限を評価すると、元の評価の制限を回収する。 |
+| `sectionsRestrictionTargetIso` | 同じ引き戻し表示による切断空間は、元の射の相対関手空間と同型。 |
+| `coneSectionsHomAction_edgeIso` | 元の全切断 Hom 作用は、同じ錐の辺の標準後合成と全族で可換。 |
+| `coneSectionsHomAction_intervalVertexIso` | 同じ区間頂点への同型の下で Hom 作用を元の辺輸送と比較する。 |
+| `coneSectionsMap_transportIso` | 元の錐の切断写像は、同じ錐の辺の頂点輸送と全 fiber 上で可換。 |
+| `coneSectionsValueMap_edgeIso` | 錐の元の値の切断写像は、同じ錐の辺の値の作用と全族で可換。 |
+| `pointedIntervalTransport_vertex_edgeIso` | 同じ区間頂点への同型があれば、元の全 fiber 輸送をその辺輸送へ比較できる。 |
+| `pointedIntervalTransport_at_vertexIso` | 同じパラメータで評価した元の pointed 輸送は、その頂点の表す辺の輸送に同型。 |
+| `rightFibrationHomComparison_overMapIso_of_eq` | 射影が等式で与えられた底上の射でも、同じ表現可能比較は全族で可換。 |
+| `smallUnstraighteningSectionsRestriction` | 同じ小さい分類図式の切断を、指定形状写像に沿って実際に制限する。 |
+| `smallUnstraighteningSectionsRestriction_evaluation` | 元の評価を同じ基底変更の射影へ送ると、実際の切断制限の評価になる。 |
+| `smallLeftUnstraighteningFiberIso_transportIso` | 小さい射影から元の大きい射影への指定 fiber 同型は、同じ辺の輸送に自然。 |
+| `smallUnstraighteningValueTransportIso` | 元の小さい fiber 値比較は、同じ図式の指定辺の値の作用に全自然。 |
+| `smallUnstraighteningFiberMapValue_transportIso` | 同じ底上の射の fiber と元の小さい値比較の合成は、指定辺の作用に全自然。 |
+| `cosliceRightMapping_hom_factor` | 元の coslice の右写像空間比較は、指定左 pinched 比較と左右比較の合成。 |
+| `covariantRepresentableValue_cosliceIso` | 元の共変表現可能値の比較は、同じ反転 coslice の値比較の上で元の右 Hom 比較に同型。 |
+| `covariantRepresentableValue_postcomposeIso` | 元の共変表現可能値の比較は、同じ指定辺の値の作用と標準後合成を全族で結ぶ。 |
+| `representableOppositeHomValue_hom_factor` | 同じ反転 Hom の値比較は、反転した元の右 fiber と coslice 上の値比較の合成。 |
+| `reversedRepresentableComparison` | 反対底の coslice から元の表現可能前層の小さい unstraightening への同じ比較。 |
+| `reversedRepresentableComparison_projection` | 同じ復元比較は反対の底を厳密に保つ。 |
+| `reversedRepresentableComparison_isPrecompositionEquivalence` | 反対底上の同じ比較は全空間の前合成同値。 |
+| `reversedRepresentableValueEquivalence` | 反対底の coslice fiber を、元の表現可能前層の値へ送る同じ比較。 |
+| `reversedRepresentableValueTransportIso` | 反対底の coslice の元の値比較は、同じ辺の値の作用に全自然。 |
