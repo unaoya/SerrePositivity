@@ -14411,11 +14411,11 @@ example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.L
 open CategoryTheory MonoidalCategory SerrePositivity.EInfinity.SimplicialLocalization in
 example (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory) (X Y Z : C.category) :
     localizationComposition C X Y Z ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Z) =
-      (SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
-        SerrePositivity.KST.Comparison.exInfinityUnit.app (localizationHom C Y Z)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Y) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)) ≫
           Functor.LaxMonoidal.μ SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
-            SerrePositivity.KST.Comparison.exInfinity.map (localizationComposition C X Y Z) := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z) := by
   exact (kanLocalizationUnit C).map_comp X Y Z
 
 -- 任意の可換環で CAlg_R の quasicategory 性に追加のモデル入力は不要。
@@ -14442,7 +14442,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] (n : SimplexCategoryᵒ�
     (localizedFreeResolutionMap (cAlgForgetRelative A)).app n ≫
         (localizedFreeResolutionAugmentation (complexRelativeCategory A)).app n =
       (localizedFreeResolutionAugmentation (cofibrantAlgebraRelativeCategory A)).app n ≫
-        strictLocalizationFunctor.map (cAlgForgetRelative A) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationFunctor.map (cAlgForgetRelative A) := by
   exact localizedFreeResolutionMap_augmentation (cAlgForgetRelative A) n
 
 -- 全複体の局所化への忘却射に底の cofibrancy やモデル構造の入力仮定は不要。
@@ -14490,7 +14490,7 @@ open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization
   SerrePositivity.EInfinity.BarrattEccles in
 example (A : Type e2ComplexLimitUniverse) [CommRing A] {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKPiZeroEquiv A X Y
-        (SSet.mapπ₀ (SerrePositivity.KST.Comparison.exInfinityUnit.app
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
           (localizationHom (cofibrantAlgebraRelativeCategory A)
             (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
           (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
@@ -15851,7 +15851,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismPropert
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example (F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{e2ComplexLimitUniverse}) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (paddedForwardDiagramMap F).app a =
-      F.map (Word.paddingFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardCore.forwardInclusion a)) :=
+      F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardCore.forwardInclusion a)) :=
   paddedForwardDiagramMap_app F a
 
 -- 元の一列の値の普遍性。固定語の合成の弱同値性は入力ではない。
@@ -15895,7 +15895,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] (W : MorphismPropert
 
 -- 中間配置の動く縦射は同じ元の右脚と左脚である。
 open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.FrameHom
-    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+    in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
     {X Y : C} (S : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.WeakThreeArrow X Y) :
     (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.toOuter S).app (4 : Fin 6) = S.rightMap ∧ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.toInner S).app (1 : Fin 6) = S.leftMap :=
@@ -15903,20 +15903,20 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
 
 -- 元の外側の語の作用は全対象・全縦射で同じ配置関手に一致する。
 open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
-    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+    in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
     _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrow.functor (X := X) (Y := Y) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.outerWordMap = _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.outerFunctor :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.outer_action_functor
 
 -- 二つの自然変換からのホモトピー。nerve の Kan 性は不要。
-open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+open CategoryTheory HomotopicalAlgebra in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C) :
     SSet.Homotopy (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.middleFunctor (X := X) (Y := Y))) (nerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.innerFunctor) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.toInnerHomotopy
 
 -- 元の graph の二つの語の写像自身を比較する。
 open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
-    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+    in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
     {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
     (hL : SSet.anodyneExtensions.IsInvertedBy L) :
@@ -15926,7 +15926,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X
 
 -- 元の全語の標準射と元の padding 比較の anodyne 反転後の一致。
 open CategoryTheory HomotopicalAlgebra SerrePositivity.EInfinity.Hammock
-    SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding in
+    in
 example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C] (X Y : C)
     {D : Type e2ComplexLimitUniverse} [SmallCategory D] (L : SSet.{e2ComplexLimitUniverse} ⥤ D)
     (hL : SSet.anodyneExtensions.IsInvertedBy L) :
@@ -16422,7 +16422,7 @@ example {C : Type e2ComplexLimitUniverse} [SmallCategory C] [ModelCategory C]
       (cofibrations C) (trivialFibrations C)) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (p : Fin w.length)
     (hp : w.direction p = .backward) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences C) X Y).map
-      (Word.paddingFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w p))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion w p))) :=
   _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.paddedBackwardInsertion_isWeakHomotopyEquivalence X Y cof w p hp
 
 -- 元の自然変換は空の forward 部分語でも、各語の実際の成分で弱同値となる。
@@ -17142,8 +17142,8 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
 
 -- 元の三列 collapse の両端の cut を保持する。
 open SerrePositivity.EInfinity.Hammock in
-example : Word.ForwardTriple.collapse.cut 0 = (0 : Fin 4) ∧
-    Word.ForwardTriple.collapse.cut (Fin.last 1) = (Fin.last 3 : Fin 4) :=
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse.cut 0 = (0 : Fin 4) ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse.cut (Fin.last 1) = (Fin.last 3 : Fin 4) :=
   ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.cut_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.cut_last⟩
 
 -- 元の三射の連結を、元の WordAction で同じ合成射へ戻す。
@@ -17394,7 +17394,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.firstFiber_erasure_prefix W f S hS
 
 -- 指定前置射列と任意の後置射列は元の生成矢を保持する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+open CategoryTheory in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {X Y X' Y' : C} {p : Quiver.Path X Y}
     (P : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstCut W p) (u : Quiver.Path X' X) (v : Quiver.Path Y Y') (hu : W.paths u)
@@ -17437,7 +17437,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
 
 
 -- 元の射列の因子化は、固定切断の接頭射と残りを共に厳密に回収する。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+open CategoryTheory in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a : Quiver.Total C} {X Y X' Y' : C} {p : Quiver.Path X Y}
     (P : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut W a p) (u : Quiver.Path X' X) (v : Quiver.Path Y Y') (hu : W.paths u)
@@ -17470,7 +17470,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 最小非指定列の圧縮後の切断の接頭射を回収する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} (f : a ⟶ b)
     (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W S i ≠ [])
@@ -17482,7 +17482,7 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 後置区間の指定性を仮定せず、同じ切断の残りを回収する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} (f : a ⟶ b)
     (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X Y) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W S i ≠ [])
@@ -17701,9 +17701,9 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
 
 -- 全横列を含む prefix の全図式を元の語の作用へ照合する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
     (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths a X Y).obj n) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) i ≠ [])
@@ -17718,9 +17718,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 元の端点表示を移すと prefix の全関手は厳密に一致する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
     (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths a X Y).obj n) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) i ≠ [])
@@ -17737,9 +17737,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 同じ元の残りの全関手も厳密に一致する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
     (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths a X Y).obj n) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) i ≠ [])
@@ -17757,9 +17757,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 残りの同じ元の hammock 余極限の標準射の像を回収する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
     (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths a X Y).obj n) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) i ≠ [])
@@ -17779,9 +17779,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 実際の指定部分圏の W-hammock 余極限でも prefix の像を回収する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-  SerrePositivity.EInfinity.Hammock.Word.CutFactor
+
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
     (f : a ⟶ b) (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths a X Y).obj n) (h : ∃ i, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) i ≠ [])
@@ -17802,9 +17802,9 @@ example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
 
 -- 任意可換環の実際の全自由次数で、指定 prefix の全関手の回収を検証する。
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.SimplicialLocalization
-  SerrePositivity.EInfinity.Hammock SerrePositivity.EInfinity.Hammock.Word.CutFactor
+  SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.Hammock.UnmarkedGenerators
-  SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction in
+  in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒᵖ)
     {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
     {X Y : ((freeResolution (BarrattEccles.cofibrantAlgebraRelativeCategory R)).obj n).category}
@@ -18200,14 +18200,14 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n m : SimplexCategoryᵒ
 
 
 -- 元の raw な長さ一の列の FixedCut の前後が長さ零である。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+open CategoryTheory in
 example {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     (W : MorphismProperty C) {g : Quiver.Total C} {A B : Paths C} {p : A ⟶ B}
     (P : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut W g p) (hp : p.length = 1) : P.left.length = 0 ∧ P.right.length = 0 :=
   ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut.left_length_of_one W P hp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut.right_length_of_one W P hp⟩
 
 -- 全成分が長さ零なら元の自然変換全体が関手の等式による移送である。
-open CategoryTheory SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord in
+open CategoryTheory in
 example {C D : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
     [Category.{e2ComplexLimitUniverse} D] {A B : D ⥤ Paths C} (α : A ⟶ B)
     (hα : ∀ d, (α.app d).length = 0) : ∃ h : A = B, α = eqToHom h :=
@@ -18567,7 +18567,7 @@ open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
     (x y : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A) (p : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.symmetricPath A x y) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
-    x.path ≫ FreeQuiverCover.symmetricEvaluation.map
+    x.path ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverEvaluation.symmetricEvaluation.map
       ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverEvaluation.symmetricProjection A).mapPath p) = y.path :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projected_endpoint A x y p
 
@@ -18703,7 +18703,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
     (x y : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A) (p : Quiver.Path x.base y.base)
-    (h : x.path ≫ FreeQuiverCover.positiveEvaluation.map p = y.path) :
+    (h : x.path ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.map p = y.path) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     ∃! q : Quiver.Path x y, (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.projection A).mapPath q = p :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.existsUnique_liftPathTo A x y p h
@@ -18723,14 +18723,14 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {Y : Paths Q}
     {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (⊤ : MorphismProperty (Paths Q)) w ((Paths.of Q).obj A) Y}
     (f : S ⟶ T) (j : Fin (w.length + 1)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagPrefix A S j ≫ FreeQuiverCover.positiveEvaluation.map (f.app j) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagPrefix A S j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.map (f.app j) =
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagPrefix A T j := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagPrefix_naturality A f j
 
 -- 元の値の fiber の持ち上げと射影は元の包含に厳密に一致する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (Y : Paths Q)
-    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagLiftFunctor A w Y β ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagProjection A w Y β =
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagValueProperty A w Y β).ι :=
@@ -18770,7 +18770,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
     {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {Y : Paths Q}
-    {β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y} :
+    {β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y} :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     ∀ (Z : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A))) w
       ((Paths.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.root A))
@@ -18783,7 +18783,7 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (Y : Paths Q)
-    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueFiber A w Y β) ≅
       Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A))) w
@@ -18794,7 +18794,7 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 -- 元の全語の作用と持ち上げ関手が厳密に可換する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
-    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     ∀ {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b),
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagFiberWordAction A Y β f ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zigzagLiftFunctor A b Y β =
@@ -18813,7 +18813,7 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 -- 全語の余極限の同型は元の各標準射で回収される。
 open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
-    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fiberGraphDiagram A Y β) w ≫
@@ -18867,7 +18867,7 @@ example {I : Type e2ComplexLimitUniverse} [Category I]
 -- 元の全語の標準射と元の fiber の包含を回収する。
 open CategoryTheory CategoryTheory.Limits SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
-    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y)
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y)
     (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fiberGraphDiagram A Y β) w ≫
       (FreeQuiverCover.valueFiberColimitIso A Y β).hom ≫
@@ -18879,7 +18879,7 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A
 -- 既存の同じ評価の fiber は元の被覆の hammock に同型である。
 open CategoryTheory SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q] (A : Q)
-    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    (Y : Paths Q) (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
     letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
     _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space (Zigzag.Value.colimitValue _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation
       _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top ((Paths.of Q).obj A) Y) β ≅
@@ -19391,7 +19391,7 @@ example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
 example {Q : Type e2ComplexLimitUniverse} [Quiver.{e2ComplexLimitUniverse} Q]
     (A : Q) (Y : Paths Q)
-    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ FreeQuiverCover.positiveEvaluation.obj Y) :
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space
       (Zigzag.Value.colimitValue _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top ((Paths.of Q).obj A) Y) β) :=
@@ -19636,7 +19636,7 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] (n : SimplexCategoryᵒ�
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
 example {B D : SimplicialObject SSet.{e2ComplexLimitUniverse}} (f : B ⟶ D)
     (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f.app n)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (DoubleSimplicial.diagonalFunctor.map f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) :=
   DoubleSimplicial.diagonalFunctor_map_weak f hf
 
 -- 任意可換環の実際の全 cofibrant 代数で元の対角の右比較射自身へ適用。
@@ -19791,7 +19791,7 @@ example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
     _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.map α β) := map_isWeakHomotopyEquivalence α β hα hβ
 
 -- 任意の次数・全射列を元の両端ラベルから厳密に戻す。
-open CategoryTheory SerrePositivity.EInfinity.Hammock.TwoSidedElements in
+open CategoryTheory in
 example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
     (F : Wᵒᵖ ⥤ Type e2ComplexLimitUniverse) (G : W ⥤ Type e2ComplexLimitUniverse)
     (n : ℕ) (e : ComposableArrows (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element F G) n) :
@@ -19802,7 +19802,7 @@ example {W : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} W]
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.EInfinity.Hammock in
 example {B D : SimplicialObject SSet.{e2ComplexLimitUniverse}} (f : B ⟶ D)
     (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (((flipFunctor _ _ _).map f).app n)) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (DoubleSimplicial.diagonalFunctor.map f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) :=
   DoubleSimplicial.diagonalFunctor_map_weak_of_columns f hf
 
 -- 元の圏同値の nerve には groupoid 性を要求しない。
@@ -20263,7 +20263,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 section e2FirstBoundaryFixtures
 open CategoryTheory SerrePositivity.EInfinity.Hammock
-open SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary
+
 
 variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   {W : MorphismProperty C} [W.IsMultiplicative] {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X X' X'' Y : C}
@@ -20305,7 +20305,7 @@ end e2FirstBoundaryFixtures
 -- 全相対作用素と元の指定射を持つ両 transfunctor を構成する。
 open CategoryTheory SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.SimplicialLocalization
-  SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary in
+  in
 example (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{e2ComplexLimitUniverse}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (Y : (n : SimplexCategoryᵒᵖ) → (D.obj n).category)
     (hY : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m), (D.map θ).functor.obj (Y n) = Y m) :
@@ -20316,7 +20316,7 @@ example (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.
 -- 任意可換環の元の自由解像の係数を、既存の同じ固定語の圏へ全次数で回収する。
 open CategoryTheory Opposite SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
   SerrePositivity.EInfinity.SimplicialLocalization
-  SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary in
+  in
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     let D := freeResolution C
@@ -20404,7 +20404,7 @@ set_option backward.isDefEq.respectTransparency.types false
 section e2MovingBoundaryFixtures
 open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
 open SerrePositivity.EInfinity.SimplicialLocalization
-open SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary
+
 variable {C : Type e2ComplexLimitUniverse} [Category.{e2ComplexLimitUniverse} C]
   {W : MorphismProperty C} [W.IsMultiplicative] {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X X' X'' Y : C}
 
@@ -20588,7 +20588,7 @@ example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Loca
   forwardForwardCategoryDiagramIso D p hp w X Y
 
 -- 元の同じ graph の対角への同型も保持。
-example : DoubleSimplicial.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp
+example : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y) ≅
     TwoSidedDiagram.diagonalTotalNerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardDiagram D p hp w X Y) :=
   forwardForwardDiagonalIso D p hp w X Y
@@ -20642,7 +20642,7 @@ open CategoryTheory SerrePositivity.EInfinity SerrePositivity.EInfinity.Hammock
 example (R : Type e2ComplexLimitUniverse) [CommRing R] :
     let C := BarrattEccles.cofibrantAlgebraRelativeCategory R
     ∀ (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category),
-      DoubleSimplicial.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram
         (freeResolution C) (freeResolutionObject C)
         (fun θ X => freeResolutionObject_naturality C θ X)
         (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y) ≅
@@ -20774,7 +20774,7 @@ example : IsIso (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.Adj
 -- 任意の前の語・残りの先頭の方向で元の接合点の縦射を保持する。
 example {a v : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {d : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction}
     {S T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons d v)) X Y} (h : S ⟶ T) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BoundaryHom (ZigzagAppend.Part.jointFunctor.map h)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BoundaryHom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendPartDiagrams.jointFunctor.map h)
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rightObj S) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rightObj T) :=
   _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.rightBoundaryHom h
 end e2BackwardStructureFixtures
@@ -21007,10 +21007,10 @@ example (R : Type e2ComplexLimitUniverse) [CommRing R] :
 example {P Q P' Q' : SimplicialObject Cat.{e2ComplexLimitUniverse, e2ComplexLimitUniverse}}
     (α : P ⟶ P') (β : Q ⟶ Q')
     (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      (DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight α nerveFunctor)))
     (hβ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
-      (DoubleSimplicial.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor))) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (DoubleSimplicial.diagonalFunctor.map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerRight β nerveFunctor))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
       (Functor.whiskerRight (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.change (𝟭 _) α β) nerveFunctor)) :=
   CoefficientProduct.diagonalMap_weak α β hα hβ
 end e2MixedStepFixtures
@@ -21500,7 +21500,7 @@ example
     (X : (cofibrantAlgebraRelativeCategory A).category)
     {Y Z : (cofibrantAlgebraRelativeCategory A).category} (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map
-        (exInfinity.map (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPostcompose (cofibrantAlgebraRelativeCategory A) X g)) ≫
       (cAlgMappingSpaceComparisonIso A X Z).hom =
     (cAlgMappingSpaceComparisonIso A X Y).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
@@ -21512,7 +21512,7 @@ example
     (Z : (cofibrantAlgebraRelativeCategory A).category)
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map
-        (exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z f)) ≫
       (cAlgMappingSpaceComparisonIso A X Z).hom =
     (cAlgMappingSpaceComparisonIso A Y Z).hom ≫
       AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{e2ComplexLimitUniverse + 1, e2ComplexLimitUniverse}.map
@@ -21533,7 +21533,7 @@ example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) :
   AnodyneComponents.map_actual f
 variable (A : Type e2ComplexLimitUniverse) [CommRing A]
 example (X Y : CAlgSimplicialCategory A) :
-    SSet.π₀Functor.map (exInfinityUnit.app
+    SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
         (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom :=
@@ -21605,7 +21605,7 @@ example (f : X ⟶ Y) : cofibrantAlgebraDKHigherPiZeroEquiv A X Y
     mappingSpaceClass A ((cofibrantAlgebraInclusion A).map f) :=
   cofibrantAlgebraDKHigherPiZeroEquiv_class A f
 example (f : X ⟶ Y) : cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-      (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+      (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
         (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
           ((ULiftHom.up.{e2ComplexLimitUniverse, e2ComplexLimitUniverse + 1,
@@ -21627,7 +21627,7 @@ example (X : C.category) : freeHammockDiagonalUnit C X ≫
     freeHammockDiagonalComparison C X X = localizationIdentity C X :=
   freeHammockDiagonalUnit_comparison C X
 example (X Y : KanFreeHammockObjects C) : (kanFreeHammockComparisonEnriched C).map X Y =
-    exInfinity.map (freeHammockDiagonalComparison C X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalComparison C X Y) :=
   kanFreeHammockComparisonEnriched_map C X Y
 example : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (kanFreeHammockAugmentationNerve C) :=
   kanFreeHammockAugmentationNerve_equivalence C
@@ -21637,7 +21637,7 @@ example (A : Type e2ComplexLimitUniverse) [CommRing A] :
       kanFreeHammockComparisonNerve (BarrattEccles.cofibrantAlgebraRelativeCategory A)) :=
   kanFreeHammockComparisonNerve_equivalence (BarrattEccles.cofibrantAlgebraRelativeCategory A)
 example {K L : SSet.{e2ComplexLimitUniverse}} (f : K ⟶ L) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (exInfinity.map f) := Hammock.exInfinity_map_weak f hf
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f) := Hammock.exInfinity_map_weak f hf
 end e2KanHammockNerveFixtures
 
 section e2HammockLocalizationSourceFixtures
@@ -21651,7 +21651,7 @@ example {X Y : C.category} (f : X ⟶ Y) :
     ForgetEnrichment.homTo SSet.{e2ComplexLimitUniverse}
       ((kanHammockSourceFunctor C).map f) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ≫
-          exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) :=
   kanHammockSourceFunctor_homTo C f
 example {X Y : C.category} (f : X ⟶ Y) (hf : C.weakEquivalences f) :
     ComposableArrows.mk₁ f ∈ weakNerveEdges C := ⟨X, Y, f, hf, rfl⟩
@@ -22838,7 +22838,7 @@ end e2FreeForgetHomFixtures
 section e2DerivedFreeUnitFixtures
 universe e2DerivedFreeUnitUniverse
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded DGNerve
+open SerrePositivity.InfinityCategories SerrePositivity.DifferentialGraded
 open SerrePositivity.EInfinity.BarrattEccles
 open scoped Simplicial
 variable (A : Type e2DerivedFreeUnitUniverse) [CommRing A]
@@ -23133,7 +23133,7 @@ universe e2KProjectiveDerivedSpanUniverse
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type e2KProjectiveDerivedSpanUniverse) [CommRing A]
 example (X : Complex A) : (framedLimitKProjectiveProbe A X).val =
@@ -23335,7 +23335,7 @@ noncomputable section
 universe e2DerivedFamilyU
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.Surjection
 open scoped Simplicial
@@ -23405,7 +23405,7 @@ noncomputable section
 universe e2UnitComponentU
 open CategoryTheory SSet
 open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.BarrattEccles
 open SerrePositivity.EInfinity.Surjection
@@ -23477,8 +23477,8 @@ noncomputable section
 universe e2UniversalU e2UniversalV
 open CategoryTheory AlgebraicTopology SSet
 open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
-open SerrePositivity.EInfinity.ComplexLimits DoldKanComparison
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.Surjection
 open scoped Simplicial
 variable (A : Type e2UniversalU) [CommRing A]
@@ -23548,7 +23548,7 @@ noncomputable section
 universe e2RawIdentityU
 open CategoryTheory MonoidalCategory HomologicalComplex AlgebraicTopology SSet
 open SerrePositivity.EInfinity SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.Surjection
 open scoped Simplicial
@@ -23622,7 +23622,7 @@ universe e2RoofU
 section e2RoofFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 variable (A : Type e2RoofU) [CommRing A]
 
 example (X : Complex A) :
@@ -23700,7 +23700,7 @@ universe e2ElementU
 section e2ElementFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.SimplicialModel
 open scoped Simplicial
 variable (A : Type e2ElementU) [CommRing A]
@@ -23795,7 +23795,7 @@ universe e2TerminalU
 section e2TerminalFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve DGNerve.PinchedHom
+open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2TerminalU) [CommRing A]
 
@@ -23937,7 +23937,7 @@ universe e2ConeU
 section e2ConeFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type e2ConeU) [CommRing A]
@@ -24024,7 +24024,7 @@ universe e2RhsU
 section e2RhsFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type e2RhsU) [CommRing A]
@@ -24142,7 +24142,7 @@ universe e2TerminalCutU
 section e2TerminalCutFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 variable (A : Type e2TerminalCutU) [CommRing A] (X Y : Complex A)
 
@@ -24243,7 +24243,7 @@ universe e2LastEquationU
 section e2LastEquationFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 variable (A : Type e2LastEquationU) [CommRing A] (X Y : Complex A)
 
@@ -24329,7 +24329,7 @@ universe e2ConeSimplexU
 section e2ConeSimplexFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type e2ConeSimplexU) [CommRing A] (X Y : Complex A)
@@ -24451,7 +24451,7 @@ universe e2ConeMapU
 section e2ConeMapFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type e2ConeMapU) [CommRing A] (X Y : Complex A)
@@ -24633,7 +24633,7 @@ universe e2GlobalConeU
 section e2GlobalConeFixtures
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2GlobalConeU) [CommRing A] (X Y : Complex A)
 
@@ -24745,7 +24745,7 @@ universe e2ConeAugU
 section e2ConeAugFixtures
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.ComplexLimits DGNerve
+open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open scoped Simplicial
 variable (A : Type e2ConeAugU) [CommRing A] (X Y : Complex A)
@@ -24920,7 +24920,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2RightConeU
 section e2RightConeFixtures
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 variable (A : Type e2RightConeU) [CommRing A] (X Y : Complex A)
 
@@ -25090,7 +25090,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2DoubleMapU
 section e2DoubleMapFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2DoubleMapU) [CommRing A] (X Y : Complex A)
@@ -25233,7 +25233,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2DoubleJoinU
 section e2DoubleJoinFixtures
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2DoubleJoinU) [CommRing A] (X Y : Complex A)
@@ -25397,7 +25397,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2AugStandardU
 section e2AugStandardFixtures
 open CategoryTheory CategoryTheory.Limits SSet MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity.FrameHom.MixedNerve
 open scoped Simplicial
@@ -25576,7 +25576,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2ConeInverseU
 section e2ConeInverseFixtures
 open CategoryTheory SSet MonoidalCategory MonoidalClosed
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2ConeInverseU) [CommRing A] (X Y : Complex A)
@@ -25635,8 +25635,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2SelectedEvalU
 section e2SelectedEvaluationFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open SerrePositivity.EInfinity.ComplexLimits DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2SelectedEvalU) [CommRing A] (X Y : Complex A)
 
@@ -25731,7 +25731,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2EvaluationJoinU
 section e2EvaluationJoinFixtures
 open CategoryTheory Limits MonoidalCategory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.EInfinity
 open scoped Simplicial
@@ -25818,7 +25818,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2TriangleDataU
 section e2TriangleDataFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2TriangleDataU) [CommRing A] (X Y : Complex A)
@@ -25939,7 +25939,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2OrdinaryHAU e2OrdinaryHAV
 section e2TriangleOrdinaryHAFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 variable {A : Type e2OrdinaryHAU} [CommRing A] {D : Type e2OrdinaryHAV} [DGCategory A D]
 variable (X Y : Complex A)
@@ -26036,7 +26036,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2MixedLinearU
 section e2TriangleMixedLinearFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2MixedLinearU) [CommRing A] (X Y : Complex A)
@@ -26092,7 +26092,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2ExteriorTermsU
 section e2TriangleExteriorTermsFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 variable (A : Type e2ExteriorTermsU) [CommRing A] (X Y : Complex A)
 
@@ -26157,7 +26157,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2MiddleSumsU
 section e2TriangleMiddleSumsFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2MiddleSumsU) [CommRing A] (X Y : Complex A)
@@ -26282,7 +26282,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2MiddleDegenerateU e2MiddleDegenerateV
 section e2TriangleMiddleDegenerateFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable {A : Type e2MiddleDegenerateU} [CommRing A]
@@ -26361,7 +26361,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2PrincipalIndicesU
 section e2TrianglePrincipalIndicesFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2PrincipalIndicesU) [CommRing A] (X Y : Complex A)
@@ -26470,7 +26470,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2PrincipalCochainsU
 section e2TrianglePrincipalCochainsFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2PrincipalCochainsU) [CommRing A] (X Y : Complex A)
@@ -26527,7 +26527,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2PrincipalCompositeU
 section e2TrianglePrincipalCompositeFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2PrincipalCompositeU) [CommRing A] (X Y : Complex A)
@@ -26671,7 +26671,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2FullTriangleHAU e2FullTriangleHAV
 section e2FullTriangleHAFixtures
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable {A : Type e2FullTriangleHAU} [CommRing A]
@@ -26752,7 +26752,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F202U e2F202V
 section e2Fixtures202
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2F202U) [CommRing A] (X Y : Complex A)
@@ -26798,7 +26798,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F203U e2F203V
 section e2Fixtures203
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable {A : Type e2F203U} [CommRing A] {D : Type e2F203V} [DGCategory A D]
@@ -26851,7 +26851,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F204U e2F204V
 section e2Fixtures204
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable {A : Type e2F204U} [CommRing A] {D : Type e2F204V} [DGCategory A D]
@@ -26890,7 +26890,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F205U e2F205V
 section e2Fixtures205
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2F205U) [CommRing A] (X Y : Complex A)
@@ -26952,7 +26952,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F206U e2F206V
 section e2Fixtures206
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2F206U) [CommRing A] (X Y : Complex A)
@@ -26986,7 +26986,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe e2F207U e2F207V
 section e2Fixtures207
 open CategoryTheory SSet MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.EInfinity.ComplexLimits
 open scoped Simplicial
 variable (A : Type e2F207U) [CommRing A] (X Y : Complex A)
@@ -28079,7 +28079,7 @@ example {X Y : C} [IsCofibrant X] (q : CofibrantResolution (C := C) simplex X)
       (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
       (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
           kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) :=
   rightFrameHammockPinchedEquivalence_unit_arrow_Q q r f cof
@@ -28188,16 +28188,16 @@ variable {C : Type e2F241U} [Category.{e2F241V} C]
   (W : MorphismProperty C) [W.IsMultiplicative] {X Y : C}
 
 example (f : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) ≫
       (asSmallKanHammockHomFamilyMap W X).app (AsSmall.up.obj Y) =
         _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (Hammock.AsSmallComparison.weak W) (AsSmall.up.map f) ≫
-          exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (Hammock.AsSmallComparison.weak W)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (Hammock.AsSmallComparison.weak W)
             (AsSmall.up.obj X) (AsSmall.up.obj Y)) :=
   asSmallKanHammockHomFamilyMap_arrow W X f
 
 example (Z : AsSmall.{max e2F241U e2F241V} C) :
     (asSmallKanHammockHomFamilyMap W X).app Z =
-      exInfinity.map (Hammock.AsSmallComparison.colimitIso W X (AsSmall.down.obj Z)).hom :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Hammock.AsSmallComparison.colimitIso W X (AsSmall.down.obj Z)).hom :=
   asSmallKanHammockHomFamilyMap_app W X Z
 end e2Fixtures241
 

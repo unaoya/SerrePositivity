@@ -291,7 +291,9 @@ def rewrite(data, migration):
                    for n in names):
                 block(row, "explicit opens policy needed for a renamed namespace")
                 continue
-            if not names and (policy_match or ns_map):
+            relative_policy = any(old.endswith("." + written.removeprefix("_root_."))
+                                  for old in migration.opens)
+            if not names and (policy_match or ns_map or relative_policy):
                 block(row, "namespace operand could not be resolved")
                 continue
             changed_opens.update(n for n, new in zip(names, new_names) if n != new)
@@ -476,7 +478,16 @@ def rewrite(data, migration):
 
     # A qualified name in quoted or custom syntax can lack a semantic reference.
     # Keep such spans for review instead of blindly editing the token.
-    ranges = sorted(set(refs) | set(edits))
+    raw_ranges = sorted(set(refs) | set(edits))
+    ranges = []
+    for lo, hi in raw_ranges:
+        # A global value and its projection can have separate semantic spans.
+        # Bridge only literal dots; an unindexed member still requires review.
+        if ranges and (lo <= ranges[-1][1] or
+                       source[ranges[-1][1]:lo].strip(b".") == b""):
+            ranges[-1] = (ranges[-1][0], max(ranges[-1][1], hi))
+        else:
+            ranges.append((lo, hi))
     ends = []
     for _, stop in ranges:
         ends.append(max(ends[-1] if ends else 0, stop))

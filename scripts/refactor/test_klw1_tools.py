@@ -162,6 +162,42 @@ class NamespaceTests(unittest.TestCase):
         self.assertEqual(issues, [])
         self.assertEqual(rendered, text.encode())
 
+    def test_projection_suffix_has_separate_semantic_span(self):
+        text = "#check Old.functor.map\n"
+        refs = [occurrence(text, "Old.functor", "Old.functor", "Owner"),
+                occurrence(text, "map", "CategoryTheory.Functor.map", "Mathlib", kind="field")]
+        plan = Migration({"rows": [
+            {"module": "Owner", "old": "Old.functor", "new": "New.functor"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": refs, "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"#check _root_.New.functor.map\n")
+        # Without the suffix reference, custom syntax must still be reviewed.
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": refs[:1], "commands": []}, plan)
+        self.assertIsNone(rendered)
+        self.assertIn("no semantic source span", issues[0]["reason"])
+
+    def test_unresolved_relative_open_with_migration_policy_is_reviewed(self):
+        plan = Migration({"rows": [], "opens": {"IC.DGNerve": None}})
+        for text, first, last, blocked in (("open IC DGNerve\n", "IC", "DGNerve", True),
+                                            ("open CategoryTheory Limits\n", "CategoryTheory", "Limits", False)):
+            stop = len(text.rstrip())
+            commands = [{"kind": "open", "start": text.index(name),
+                         "stop": text.index(name) + len(name), "mode": "simple",
+                         "names": [name] if name == first else [],
+                         "command": {"start": 5, "stop": stop}}
+                        for name in (first, last)]
+            rendered, issues = rewrite({"module": "Uses", "source": text,
+                                        "refs": [], "commands": commands}, plan)
+            if blocked:
+                self.assertIsNone(rendered)
+                self.assertIn("could not be resolved", issues[0]["reason"])
+            else:
+                self.assertEqual(issues, [])
+                self.assertEqual(rendered, text.encode())
+
     def test_detached_method_adds_a_name_resolution_export(self):
         text = "def Old.Record.step (n : Nat) := n + 1\n"
         ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")
