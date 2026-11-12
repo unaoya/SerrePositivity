@@ -810,3 +810,34 @@ G9・3b-3の実装にはまだ進んでいない。3b-3については IS-W2 §0
   S1〜S8の型案、本体の再利用、不足、規模、draftsの注意点、配置と順序を整理した。
   特にCAlg忘却の層化単位の比較と、大きいsiteの小ささの境界は判断点として記録。
   draftsの型や範囲は変更していない。
+
+
+## 17. 段3の再開（11-13、継続中）
+
+指示書追記と main `ecc0f2a5f` を取り込み、上限を段3 **3,200行**、段4 **1,600行**へ訂正。
+§16の五行だけを進める。約1,600行の非停止の途中報告と、停止点3から段4へ進む指示を確認。
+§16の上限判断で止めたG14を再開した。A-1のS6は小さい模型へのsite同値に沿う輸送だけとし、
+κ切り落とし・BS固有の閉性表を作らない。S7の単位条件は5∞-1段0で確認する。
+
+### 検証済みの最初の束
+
+`81f4f2019`：新規5本・291行・6宣言。最初の58行と合わせ、G14累計349行・10宣言。
+§16第一行と第二行の一部を実装。対象ビルド成功（3,348 jobs）、6宣言はすべてsorry-free、標準三公理のみ。
+最終ログ `/tmp/is-w1/stage3-build-13.log`、監査 `/tmp/is-w1/stage3-audit-progress.lean`。
+
+- `intervalPostcompose_triangleFamily_exists`：元の後合成と同じ三辺の全三角形族。
+- `unstraighteningPostcompositionIso`：区間後合成を元のunstraighteningの相対合成へ全族で比較。
+- `unstraighteningPinchedEdgeLiftPostcompositionIso`：同じpinched後合成を、元の全変換空間から取り出す実際の終点射の後合成へ比較。
+- `relativeFunctorComposition_const_second`：第二成分を実射に固定した相対合成は通常の相対後合成。
+- `relativeFunctorEvaluate_post`：同じ底上の標的射への相対評価の厳密な自然性。
+- `transformationEdge_pointedFiberValueIso`：元の全変換空間の指定辺のpointed fiber作用と、同じ辺の点でのKan値の全fiber比較。
+
+再利用：`intervalFamilyHom_triangle_exists`、`unstraighteningMappingTriangleIso`、
+`relativeFunctorPostHom_vertex`、`uncurry_const_functorVertex`、
+`leftUnstraighteningMappingFiberHom_parametrizedIso`、`pointedTransformationFiberHom_vertex`、
+`parametrizedFiberTransport_at_edgeIso`、`spaceInfinityEdgeTransportValueIso`。
+特にfiberの全族輸送比較が既存にあったため、その理論を再実装せず制限して使えた。
+
+この後の作業木は、縮小表示への後合成自然性・元の表現可能恒等錐での評価の自然性の下書き。
+既存 `uliftRelativeFunctorMap_post` を再利用し、同名の重複は作らない。
+**停止点3ではない。G14の検出性の結論と段4は未完成で、続行する。**
