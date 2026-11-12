@@ -5086,3 +5086,51 @@ D(A) から Sp への V と (ii) の終了はまだ宣言しない。
 最終版の五本に警告なし。
 監査 `audit-em-pi-roof.log` は **92 本・743 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+## 79. D79(ii)：同じ native な屋根族と指定比較の全パラメータ照合
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| ComplexRelativeElementColumn | 53 |
+| ComplexRelativeElementPinchedFamily | 63 |
+| ComplexRelativeElementSourceRoof | 62 |
+| FullyFaithfulWeakRoofDetection | 32 |
+| ComplexRelativeElementIndexComparison | 75 |
+| ComplexRelativeElementRoofMaps | 107 |
+| ComplexRelativeColumnHom | 62 |
+| ComplexRelativeElementWeak | 58 |
+
+追加 **512 行**、(ii) の検証済み累計 **5941 行**。
+全八本が **［一般∞］移動候補**（うち七本は複体模型の比較）。
+
+### 79.1 今回閉じた接続
+
+全要素圏を同じ全複体の相対圏へ送り、
+`complexRelativeElementHammockPinchedMap` を構成した。
+`complexRelativeElementPinchedFamily_comparison_arrow` は、
+**指定した** `complexHammockDerivedComparison` による同じ全族の像が、
+同じ augmentation の逆と評価であることの全 Arrow の等式。
+`complexRelativeElementSourceRoof_naturality` は、
+**指定した sourceIso** と同じ全屋根との全関手の可換式である。
+
+宇宙の表示変更は `complexRelativeElementIndexIso` の実同型。
+`complexRelativeElementRoof_graph_image`・`complexRelativeElementRoofMap_image`
+は全語の標準射・二脚・全縦射を保つ厳密な等式。
+これらで §78 の同じ屋根の弱同値性を運び、
+`complexRelativeElementHammockPinchedMap_weak` を閉じた。
+`complexRelativeColumnHom_arrow` は元の通常複体円柱への全制限を回収する。
+
+充満忠実性の検出は `fullyFaithful_of_weak_roof` に分離した。
+必要な入力は、同じ族 p と **p ≫ pinchedHomMap F** の両方の弱同値性であり、
+抽象的な写像空間の同値の存在を代用していない。
+次は通常導来屋根への回収を同じ全族へつなぎ、指定比較の誘導射を検出する。
+§76.2 の充満忠実性、既存 D(A) 上の V はまだ未完了。
+
+### 79.2 検証
+
+`em-relative-source-roof-01.log`、`em-relative-roof-maps-03.log` の
+IndexComparison、`em-relative-roof-maps-04.log` の RoofMaps、
+`em-relative-weak-02.log` の ColumnHom、`em-relative-weak-03.log` は成功。
+最終版に警告なし。
+監査 `audit-em-relative-roof.log` は **100 本・784 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
