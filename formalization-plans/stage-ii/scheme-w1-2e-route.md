@@ -2329,3 +2329,35 @@ V のタプルとの交叉で上の cone を作れば、縦方向を V の増大
 | `gradedOriginalProjNativeFilteredHomologyIso` | 各段と極限先の両方で、元の Proj の実際の構造層を使う filtered Čech H の比較。 |
 
 段 2e の検証済み実測：**314 本・30,882 行**、入口を含め **31,202 行**。上限 50,000 行内。
+
+
+## 11-12 夜：閉厚化の実際の切断の商表示（c95341d13）
+
+数学コミット `c95341d13`。5 本・12 宣言・284 行、登録を含め 289 行。
+対象と直接 importer のビルドは **4,525 jobs 成功**。別実行の監査は **8,423 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得して返した。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+実際の Cartesian な閉厚化のアフィン切断は、元の切断環の拡大イデアルによる商と同型であり、
+商への射影は構造層の実際の引き戻しと一致する。全射性と核の拡大イデアルへの一致も示した。
+Rees 側では、IⁿM の各次数の像を Iⁿ 倍と同定し、分子のイデアル倍の局所化と、局所化後の成分のイデアル倍が一致することを示した。
+**非 flat な商に flat 底変換の H の比較を使っていない。**
+
+**停止点 2e ではない。** 両側の核が一致することから Rees の商の係数図式を実際の閉厚化の切断へ移し、
+I 進遷移・互換族・既存の形式関数の同型をつなぐ部分と、五つの比較の自然性の最終照合が残る。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveIdealGradeProjection_mem` | イデアル倍の元を次数 d に射影すると、次数 d の成分のイデアル倍に入る。 |
+| `projectiveHomogeneous_mem_ideal_smul_iff` | 斉次元が全体のイデアル倍に入ることと、同じ次数成分のイデアル倍に入ることは同値。 |
+| `reesAdicProjectiveSubmodule_eq_ideal_smul` | 拡大イデアルで書いた Rees の部分加群は、元の Iⁿ 倍の部分加群そのもの。 |
+| `projectiveGradedFraction_ideal_range` | 指数を固定した分数のイデアル倍の像は、元の像のイデアル倍。 |
+| `projectiveGradedAway_ideal_smul` | 分子の各成分のイデアル倍を局所化すると、局所化の指定成分のイデアル倍になる。 |
+| `reesAdicProjectivePiece_image_eq_ideal_smul` | Rees の IⁿM の自然数次数 d の像は、元の d 成分の Iⁿ 倍。 |
+| `reesAdicProjectiveIntPiece_image_eq_ideal_smul` | 整数への零延長後も、Rees の次数成分の像は同じ Iⁿ 倍。 |
+| `projectiveGradedAwayMap_range_ideal` | 分子ごとの像の等式は、斉次局所化の像を元の指定成分のイデアル倍にする。 |
+| `schemeAffineClosedBaseChangeSectionIso` | 実際の閉厚化のアフィン切断は、元の切断の拡大イデアルによる商。 |
+| `schemeAffineClosedBaseChangeSectionIso_projection` | 元の切断から商へ射影する写像は、実際の閉厚化への引き戻し。 |
+| `schemeAffineClosedBaseChangeSections_surjective` | 実際の閉厚化のアフィン切断への引き戻しは全射。 |
+| `schemeAffineClosedBaseChangeSections_ker` | 実際の閉厚化へのアフィン切断の射の核は、元の切断での拡大イデアル。 |
+
+段 2e の検証済み実測：**319 本・31,166 行**、入口を含め **31,491 行**。上限 50,000 行内。
