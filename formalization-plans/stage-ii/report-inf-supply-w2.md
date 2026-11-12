@@ -1744,3 +1744,21 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 ```
 
 次は切断点の和と標準余積包含を介して全テンソルへの式へまとめる。また、正規化 shuffle と AW の間に挟まる対角側の Moore 射影の照合が残る。この段階の成分の式から、正規化合成全体や全単体切断空間の同値性が済んだとは数えない。native 極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も残る。停止点2は未完、残枠2,694行。約7,900行で実測と残量を報告する。
+
+## 53. 3b-2 続行：指定正規化 EZ の両方向の鎖ホモトピー同値
+
+コード `8a91a1d27`、新規1本105行。累計 **118本7,411行**。
+
+`DiagramComparison.ShuffleAWProjected` で、標準包含と AW の有限和を使い、元の鎖写像について `shuffle ≫ alexanderWhitney ≫ 二因子のMoore射影 = 二因子のMoore射影` を証明した。正規化した逆順合成に挟まる対角側の Moore 射影は、既存 `homotopyPInftyToId` で恒等へ結び、その後はこの等式と元の Moore 分裂を使った。これにより `normalizedShuffleAWHomotopy`、さらに既存の順方向のホモトピーと合わせた `normalizedSpecifiedEZEquiv` を構成した。hom・inv は既存の `normalizedAlexanderWhitney`・`normalizedShuffle` そのものである。
+
+第一のまとまりの整数係数での逆順合成の不足が閉じた。射影を厳密に消すための追加の組合せ論は不要だった。一般 A への移送は既存 `Functor.mapHomotopy`、Moore 比較、係数テンソル比較で進める。ホモトピーの図式方向の両立や、全単体の指定切断比較への接続まで今回済んだとは数えない。
+
+個別検査、鍵付き対象ビルド **1,872 jobs**、累計118本 **1,288宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-51.log`、監査 `/private/tmp/AuditISW2G10HundredEighteen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredeighteen-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWProjected
+```
+
+全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,589行。約7,900行で実測と残量を報告する。型の弱化、模型構造の追加、⑤aの既存ファイルの変更はない。
