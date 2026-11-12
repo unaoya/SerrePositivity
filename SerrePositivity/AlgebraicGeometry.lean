@@ -806,3 +806,4 @@ public import SerrePositivity.AlgebraicGeometry.ConductorSquareLift
 public import SerrePositivity.AlgebraicGeometry.FrobeniusSquareLift
 public import SerrePositivity.AlgebraicGeometry.FrobeniusConductorSquare
 public import SerrePositivity.AlgebraicGeometry.FiniteSupportPower
+public import SerrePositivity.AlgebraicGeometry.FiniteSupportConductor
