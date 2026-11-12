@@ -37,4 +37,28 @@ class ProjectionChecks(unittest.TestCase):
    for name,data in [('a',a),('b',b)]: (root/(name+'.json')).write_text(json.dumps(data))
    r=subprocess.run([sys.executable,str(Path(B.__file__)),str(root/'a.json'),str(root/'b.json'),'--output',str(root/'report.json')],text=True,capture_output=True)
    self.assertEqual(r.returncode,1,r.stderr);self.assertEqual(json.loads((root/'report.json').read_text())['status'],'FAIL');self.assertLess(len(r.stdout),500)
+
+class ParserCompanionChecks(unittest.TestCase):
+ def parser_fixture(self):
+  a=fixture();r=a['declarations'][0];r.update(is_private=True,private_parser_descr=True,parser_self_body_hash='canonical-syntax',source_range={'start_line':2,'end_line':2,'selection_start_line':2,'selection_end_line':2,'start_column':0,'end_column':60})
+  a['sources'][0]['source']='namespace N\nlocal notation "X" => (1 : Nat)\nend N\n'
+  return a
+ def test_raw_self_id_change_keeps_the_native_content_check(self):
+  a=self.parser_fixture();b=copy.deepcopy(a);b['declarations'][0]['body_hash']='different-self-id'
+  self.assertEqual(B.C.compare(a,b)['status'],'PASS')
+  b['declarations'][0]['parser_self_body_hash']='different-syntax'
+  self.assertEqual(B.C.compare(a,b)['status'],'FAIL')
+ def test_authored_descriptor_keeps_raw_body_comparison(self):
+  a=self.parser_fixture();a['sources'][0]['source']='namespace N\nprivate def f : Lean.ParserDescr := default\nend N\n';b=copy.deepcopy(a);b['declarations'][0]['body_hash']='changed-authored-value'
+  self.assertEqual(B.C.compare(a,b)['status'],'FAIL')
+ def test_type_axioms_and_attributes_of_generated_parser_remain_checked(self):
+  for field,value in [('type_hash','changed-type'),('axioms',['New.axiom']),('attributes',{'simp':True})]:
+   a=self.parser_fixture();b=copy.deepcopy(a);b['declarations'][0][field]=value
+   self.assertEqual(B.C.compare(a,b)['status'],'FAIL')
+ def test_split_copies_need_the_same_original_owner(self):
+  a=self.parser_fixture();b=copy.deepcopy(a);b['declarations'][0]['module']='B';b['sources'][0]['module']='B';b['declarations'].append(dict(b['declarations'][0],module='S'));b['sources'].append(dict(b['sources'][0],module='S'))
+  plan={'modules':{'M':'B'},'declarations':{'M':{'N.g':'S'}}}
+  self.assertEqual(B.C.compare(a,b,{},plan)['status'],'PASS')
+  self.assertEqual(B.C.compare(a,b,{}, {'modules':{'M':'B'}})['status'],'FAIL')
+
 if __name__=='__main__':unittest.main()
