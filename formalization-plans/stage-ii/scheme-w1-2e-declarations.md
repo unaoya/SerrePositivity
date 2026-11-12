@@ -1859,7 +1859,7 @@
 
 | 宣言 | 主張 |
 | --- | --- |
-| `projectiveSumLocalized_isLocalized` | 次数ごとの直和の局所化は、元の直和加群の局所化を与える。 |
+| `projectiveSumLocalized_isLocalized` | 各成分を局所化した加群の直和も、恒等写像について局所化された加群である。 |
 | `projectiveLocalizationToDirectSum` | 直和を局所化してから、各成分の局所化の直和へ送る。 |
 | `projectiveDirectSumToLocalization` | 各成分の包含を局所化し、局所化の直和から直和の局所化へ送る。 |
 | `projectiveDirectSumLocalization_left` | 各成分の包含を局所化し、局所化の直和から直和の局所化へ送る。 |

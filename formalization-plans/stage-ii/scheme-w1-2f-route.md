@@ -96,3 +96,43 @@ B_Y=H⁰ の equalizer 部分環は 2e の射影有限性により A 上有限�
 - 原典の H_Nis、H_fppf の代わりに途中で使うものが Čech 版であると名前と docstring で示すこと。導来関手との比較を形式化したとは記さないこと。
 - 2g の二重 Čech の判定には B1 を再利用し、最終出力の `AugmentedRingCechExact` を変えないこと。
 - 各宣言と主張の一覧、対象ビルドと監査、未完の一般化を報告すること。
+
+
+## 11-13 夜：F0〜F2 と F3 の有限段の入口
+
+2e の数学 `bf9767cdc` と停止点報告 `6a9625b10` をコミットし、夜の指示どおり取り込みを待たずに 2f を開始した。今回の数学コミットは `be62984ff`。
+
+F0 は有限段の元の零判定を構成し、その像が零であることと元の冪零性の同値を証明した。実際の環準同型が誘導する順極限の射について、有限段の評価、恒等射・合成の保存、nil な核による単射性、p 冪の像による全射性を示した。F1 は nil イデアルによる商の不変性、F2 は既存の普遍同相の p 冪の判定を使う環の不変性まで通った。零環を除外せず、Mathlib の逆極限 Perfection は使わない。
+
+**F3 は未完。** `conductorSquare_lift` は導手に含まれるイデアルを入力して商の四角形の有限段の持ち上げを供給し、`conductorSquare_kernel` は左の核を同定する。有限射の中心外の同型から I の冪を導手に入れる段、Spec 全射性による根基の逆像の照合、Frobenius 順極限の四角形の完全性への接続は続ける。条件付きの有限段の持ち上げを、有限射の完全な降下の完成とは数えない。数学的な行き詰まり・型や範囲の変更の判断は今のところない。
+
+- 新規 4 モジュール・22 件の名前付き数学宣言・284 行、入口込み 288 行。
+- 対象と直接 importer `SerrePositivity.AlgebraicGeometry`：**4,550 jobs 成功**。
+- 別実行の監査：**8,654 宣言・標準三公理のみ**。
+- 共有鍵 `--wait 3600` は一回のビルド・監査の実行中のみ。重複の整理券なし。既存の宣言の変更、sorry・admit・新規公理・計算量上限の引き上げなし。
+- 累計 284 行は報告点 4,500 行・停止基準 18,000 行より小さい。2e の本体や文書・下書きは 2f に二重計上しない。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `frobeniusDirectSystemMap` | 自然数段の間の、実際の Frobenius の反復。 |
+| `frobeniusDirectSystem` | Frobenius の反復の有向系の法則。 |
+| `frobeniusDirectSystemMap_apply` | Frobenius の反復の値は p の冪乗である。 |
+| `FrobeniusDirectLimit` | Frobenius 順極限の環。零環でも同じ構成を使う。 |
+| `frobeniusDirectLimitOf` | 有限段から Frobenius 順極限への環準同型。 |
+| `frobeniusDirectLimitOf_eq_zero_iff` | 有限段の元が零になるのは、ある先の p 乗反復で零になる場合に限る。 |
+| `frobeniusDirectLimitOf_eq_iff` | 有限段の二つの元の像は、Frobenius を十分反復して一致する場合に限り等しい。 |
+| `frobeniusDirectLimitOf_eq_zero_iff_nilpotent` | 有限段の元は、その元が冪零である場合に限って Frobenius 順極限で零になる。 |
+| `frobeniusDirectSystemMap_naturality` | 環の射は各段の Frobenius の反復と可換。 |
+| `frobeniusDirectLimitMap` | 実際の環の射が誘導する Frobenius 順極限の環準同型。 |
+| `frobeniusDirectLimitMap_of` | 順極限の射を有限段の元で評価する公式。 |
+| `frobeniusDirectLimitMap_injective` | 核が nil である環の射は、Frobenius 順極限上で単射になる。 |
+| `frobeniusDirectLimitMap_surjective` | 各元のある p 冪が像にある環の射は、Frobenius 順極限上で全射になる。 |
+| `frobeniusDirectLimitMap_comp` | Frobenius 順極限の射は環準同型の合成を保つ。 |
+| `frobeniusDirectLimitMap_id` | Frobenius 順極限の射は恒等射を保つ。 |
+| `frobeniusQuotientPrimeCast` | p が零であることは、零環になる商にも保たれる。 |
+| `frobeniusDirectLimitQuotient_bijective` | nil イデアルによる商の実際の射は Frobenius 順極限上で全単射。 |
+| `frobeniusDirectLimitQuotientEquiv` | nil イデアルによる商と元の環の Frobenius 順極限の canonical な環同型。 |
+| `frobeniusDirectLimitUniversalHomeomorphism_bijective` | 普遍同相な環準同型は Frobenius 順極限上で全単射。 |
+| `frobeniusDirectLimitUniversalHomeomorphismEquiv` | 普遍同相が誘導する Frobenius 順極限の canonical な環同型。 |
+| `conductorSquare_lift` | 導手に含まれるイデアルの商で一致する元は、元の環の同じ元から来る。 |
+| `conductorSquare_kernel` | 導手の四角形の左の射の核は、元の環準同型の核と同じ。 |
