@@ -851,3 +851,9 @@ public import SerrePositivity.AlgebraicGeometry.CechAlgebraAugmentation
 public import SerrePositivity.AlgebraicGeometry.AffineSectionAlgebraAugmentation
 
 public import SerrePositivity.AlgebraicGeometry.CechAlgebraAugmentationInjective
+
+public import SerrePositivity.AlgebraicGeometry.AffineSectionAlgebraScalar
+
+public import SerrePositivity.AlgebraicGeometry.AffineIsoSectionAlgebraScalar
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraTensorKernel
