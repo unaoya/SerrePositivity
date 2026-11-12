@@ -92,3 +92,4 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 - BR8：使われないモジュールの調査（削除は保守）。
 - （11-12 夜、追加）BR34（古い docstring 6 件）、BR41（BS の内側の層の逆向き：Delta/DividedPower → Prismatic・Andre）、BR42（`Semiperfectoid/QuotientPerfectoidization` のファイル名）、R84（空の名前空間）も B3 に含める（`refactor-ledger.md` §5・§6）。
 - （11-12 夜、追加）§2 の見直し（`refactor-ledger.md` §7）：R2-1（BR41 の三つの importer の移し先）、R2-7（分冪代数を `CommutativeAlgebra/DividedPowers/` へ、`IsCompletelyRegularRel` を Delta へ）、R2-9 の docstring と、**ノートを引く docstring 22 か所を原典の番号に置き換える**（ユーザー方針）も B3 に含める。
+- （11-12 夜、追加）§3・§4 の見直し（`refactor-ledger.md` §7）：BR47（`IsBoundedPrism` を `Prism/Basic` へ）、R3-2（§3 → §7 の逆向き 5 importer）、R3-3（Prism/ の §3 でないものの置き場所、Thm 3.10 の芯 4 本を `Prism/Perfectoid/` へ）、BR48（`…Andre` の名前空間をそろえる。同じ回の改名表に入れられれば）、R4-4（Lemma 4.8 のファイルを `Prism/Perfectoid/` へ）、R4-6（Construction61Detection・Reflection を §6 へ、Cor 5.5 を §5 へ）、R3-6・R4-7 の docstring も B3 に含める。
