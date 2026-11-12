@@ -91,3 +91,10 @@ h4.item + .box { margin-top: 0.5rem; }
 .box.proof { border-left-color: var(--muted); font-size: 0.95em; }
 .box.lean { font-size: 0.93em; }
 .box.claim + .box, .box.lean + .box, .box.proof + .box { margin-top: 0.5rem; }
+
+/* 項目の確認のラベル（build_items.py が地図から付ける） */
+.vtag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0 0.45em; margin-left: 0.4em; border-radius: 3px; border: 1px solid currentColor; vertical-align: 0.1em; white-space: nowrap; }
+.vtag.v-ok { color: var(--ok); }
+.vtag.v-part { color: var(--accent); }
+.vtag.v-no { color: var(--warn); }
+.vtag.v-supp { color: var(--muted); }
