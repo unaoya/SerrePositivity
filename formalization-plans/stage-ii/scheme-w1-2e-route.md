@@ -1697,3 +1697,78 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 従って合計は現時点で約 **30,000–42,000 行**の見込みであり、新しい停止基準を超える見込みにはまだ至っていない。主な不確かさは、共通アフィン細分の正次数の H の比較（アフィン交叉上の完全性と二重複体の edge map / cone）の接続である。検証済みの前段の API だけでその比較が済んだとは数えない。残りの見込みが変わり、50,000 行を超えそうになった場合は、その時点の検証済みをコミットして報告し、止める。
 
 計測は `git diff --name-only --diff-filter=A df035c08e 0e0f9fc07 -- SerrePositivity/AlgebraicGeometry` の Lean ファイルの各 `git show` の行数を合計した。パス・行数・ハッシュは作業木の `scheme-drafts/size-2e-1112.json` に保存した。最後の検証は対象と直接 importer 4,352 jobs、監査 7,466 宣言・標準三公理のみ。**停止点 2e ではない。**
+
+
+## 追記：一括移動の凍結に向けた途中の取り込み（11-12 午後）
+
+調整役の連絡により、一括レーンの凍結の一晩は停止点 2e を待たずに行う（早くて翌日の夜。具体的な日程はまだ未指定）。指定された日の夕方までに検証済みを枝へコミットして報告し、途中の取り込み点として main に渡す。その夜はコミットを控え、翌朝に改名表で追従する。未検証の Lean は作業木に残し、途中の取り込みの対象に混ぜない。2e の停止点の基準と残りの数学は変更しない。
+
+
+### 共通細分のアフィン側：局所化による完全性の実装候補（紙の調査、未検証）
+
+[Stacks 30.2.1](https://stacks.math.columbia.edu/tag/01X8) の標準被覆の議論を、導来関手の H との比較を経ずに使う。有限標準被覆を与える元の集合 s が単位イデアルを生成するとき、各 f∈s で局所化すれば一つの被覆元が単元になる。そこでその頂点をタプルの先頭へ挿入し、制限写像の逆を使って増大 Čech 複体を縮約する。Mathlib の `exact_of_localized_span`（`RingTheory/LocalProperties/Exactness.lean`）は各局所化での完全性から元の加群の完全性を戻す入口であり、同ファイルの `injective_of_localized_span` が増大項を扱う。有限積と局所化の比較は各次数で有限個のタプルについて行う。無限積と局所化の交換は使わない。
+
+まず任意の係数図式 D で、固定頂点 v の挿入 T→T∪{v} による制限がすべて同型なら、全タプルの先頭挿入が縮約を与えるという加群の補題を切り出す。その後に実際の局所化図式へ特殊化する。単項式の縮約 `projectiveMonomialContraction_identity` の符号計算を参照できるが、一般の係数図式では制限写像とその逆の可換性を追加で示す必要がある。既存の単項式の補題がそのまま任意の係数図式に適用できるとはしない。
+
+これは交叉上の完全性の入口であって、二つの被覆の各正次数の H の比較を閉じるものではない。共通細分の二重図式、全複体への比較の quasi-isomorphism、係数の射への自然性は別に構成する。B1 の増大完全性の同値をこの H の同型と置き換えない。ここに記したものは紙の調査で、検証済みの宣言数には含めない。
+
+
+既存の `CechTupleContraction.lean` の `cechTupleBoundary_prepend` は整数タプル鎖の先頭追加の恒等式を既に供給している。したがって符号相殺をもう一度証明する必要はない。`ProjectiveCechComparison.lean` の `fullCechTranspose_comp` は台を広げない写像用なので、そのまま先頭追加に適用せず、T の代わりに T∪{v} 上で評価する転置を追加する。通常の境界との二つの合成則を示せば、既存の鎖の恒等式を係数付きの先頭挿入の恒等式へ移せる。`scheme-drafts/ProjectiveCechInsertTranspose.lean` と `ProjectiveCechSplitVertex.lean` はこの準備の下書きであり、本体・入口・検証済みの数には未登録。
+
+
+## 斉次局所化から実際の標準開の filtered 比較へ（11-12、650650c96）
+
+数学コミット **`650650c96`**。新規 8 モジュール、数学宣言 **30 件**、本体 **738 行**と入口 8 行、計 **746 行**。対象と直接 importer `SerrePositivity.AlgebraicGeometry` は **4,360 jobs で成功**。別実行の標準監査は **7,579 宣言・標準三公理のみ**。いずれも共有の `with_build_lock.sh --wait 3600` を通し、監査の鍵はビルド終了後に取り直した。未検証の下書きは含めていない。
+
+登録したモジュール：
+
+- `ProjectiveGradedAwayColimit`
+- `ProjectiveGradedAwayColimitValues`
+- `ProjectiveGradedColimitGrading`
+- `ProjectiveGradedColimitNaturality`
+- `ProjectiveNatChartColimit`
+- `ProjectiveNatChartColimitComponent`
+- `ProjectiveNatChartColimitIso`
+- `ProjectiveNatChartColimitNaturality`
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveGradedAwayColimitDiagram` | 各有限段の指定次数の斉次局所化を filtered 図式にする。 |
+| `projectiveGradedAwayColimitCocone` | 有限段から、余極限の分子族の斉次局所化への余錐。 |
+| `projectiveGradedAwayColimitMap` | 斉次局所化の colimit から余極限の斉次局所化への比較射。 |
+| `projectiveGradedAwayColimitMap_ι` | 比較射は各有限段の実際の局所化写像を保つ。 |
+| `projectiveGradedAwayColimitMap_surjective` | 分子の有限段の代表元により比較射は全射。 |
+| `projectiveGradedAwayColimitMap_injective` | 分母倍での零化を有限段へ降ろして比較射の単射性を示す。 |
+| `projectiveGradedAwayColimitEquiv` | 斉次局所化と filtered colimit の比較の線形同型。 |
+| `projectiveGradedAwayColimitEquiv_ι` | 同型は各有限段からの局所化の写像を保つ。 |
+| `projectiveGradedAwayColimitEquiv_ι_value` | 同型を周囲の局所化の写像の値で計算する。 |
+| `projectiveGradedColimitGrade_bot` | 各有限段の零部分から作った余極限の次数成分は零。 |
+| `projectiveGradedColimitGrade_int` | 余極限の次数成分と整数への零延長が交換する。 |
+| `projectiveGradedColimitGradeGradedSMul` | 有限段の次数付き作用を余極限の次数成分へ移す。 |
+| `projectiveGradedColimitMap_preservesPiece` | 次数を保つ図式の射の colimit は、余極限でも同じ次数を保つ。 |
+| `projectiveNatChartColimitDiagram` | 実際の射影標準開の係数図式を各有限段について並べる。 |
+| `projectiveNatChartColimitCocone` | 有限段から余極限の次数付き加群の標準開への余錐。 |
+| `projectiveNatChartColimitMap` | 標準開の制限写像を含む図式全体の canonical な余極限比較。 |
+| `projectiveNatChartColimitNumerator` | 標準開の分子族の余極限と、余極限の次数成分から作る分子族の一致。 |
+| `projectiveNatChartColimitNumerator_map` | 有限段の次数を保つ射は、各標準開の分子族も保つ。 |
+| `projectiveNatChartColimitNumerator_step` | 標準開の分子族は、その分母倍で次の項へ移る。 |
+| `projectiveNatChartColimitComponentDiagramIso` | 各有限交叉の成分図式と固定した分母の斉次局所化の図式を同定する。 |
+| `projectiveNatChartColimitComponentEquiv` | 標準開の各有限交叉で余極限比較を線形同型にする。 |
+| `projectiveNatChartColimitComponentDiagramIso_ι` | 成分図式の同定は各有限段からの射を保つ。 |
+| `projectiveNatChartColimitComponentEquiv_ι_val` | 成分同型と実際の余錐の写像は同じ局所化分数を与える。 |
+| `projectiveNatChartColimitMap_app_isIso` | canonical な標準開比較射は各有限交叉で同型。 |
+| `projectiveNatChartColimitIso` | 標準開間の制限写像を含め、図式全体の比較を同型にする。 |
+| `projectiveNatCechFilteredHomologyIso` | 実際の標準開の Čech H と有限段の Čech H の filtered colimit との同型。 |
+| `projectiveNatChartColimitDiagramMap` | 次数を保つ図式の射を、有限段の標準開の図式の射へ移す。 |
+| `projectiveNatChartColimitTargetMap` | 図式の射の colimit から、余極限の実際の標準開の射を作る。 |
+| `projectiveNatChartColimitMap_naturality` | canonical な標準開の比較射は、次数を保つ図式の射に自然。 |
+| `projectiveNatCechFilteredHomologyIso_naturality` | 実際の標準開の Čech H の余極限比較は、次数を保つ図式の射に自然。 |
+
+
+分母倍での零化を有限段へ降ろすため、分母の非零因子性や基底環の非自明性は仮定しない。負の次数の零延長、空の有限集合の標準開、指定次数の分子族も同じ比較で扱う。成分図式の一致を kernel に大きく展開させる箇所は、明示的な自然同型とその有限段の公式に切り出した。計算量上限は増やしていない。既存の数学宣言の本文・型は変更せず、新しい 8 ファイルと入口登録だけを追加した。`sorry`・`admit`・新しい公理はない。
+
+Čech H の二つの新しい入口は、原典 Stacks 30.6.1 の Hⁱ に対応する **Čech 版**と docstring に明記し、分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しないと記した。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。
+
+**停止点 2e ではない。** 今回の入力は共通の R と多項式環 R[X] 上の filtered な次数付き加群の図式で、出力は余極限の実際の次数成分から作る標準開の図式である。係数環 B_j が動く各段の B_j[X] 上の標準開と、共通係数へ制限したこの図式との照合はまだ別に閉じる必要がある。`projectiveNatCoefficientChartIso` などの既存の係数変更比較、および Frobenius・閉厚化・底変換との可換性を、同じ有限段の写像で接続する。共通アフィン細分の各 H の比較と自然性も未完。今回の標準開の比較だけで、被覆によらないことまで示したとはしない。完備化や無限積と filtered colimit の交換も主張しない。
+
+段 2e の実測は基点 `df035c08e` から新規 **213 本・22,878 行**、入口登録を含め **23,092 行**。他レーンの追加・文書・下書きを含めない。前回の半分の報告点を越えた実測報告は継続して有効で、新しい停止基準 50,000 行には達していない。残りの主な幅は引き続き共通アフィン細分にある。
