@@ -314,3 +314,21 @@ F5 は未完。中心外の同型から各素点の底変換のアフィン性�
 正次数側の接続では、局所化後のアフィン性・逆像のアフィン被覆・被覆性をすべて供給した。スカラー拡大の `Module.compHom` と通常の局所化加群のスカラー作用の違いは、明示的な恒等関数の線形同型とテンソル積の同型で照合した。射影の構造射は `schemeScalarMorphism` を用い、大域スカラーの一致を Γ–Spec の三角恒等式で移送した。
 
 F5 の正次数の零化は閉じた。次数零の切断代数 B_Y/im(A) の台・零化はまだ残る。ここでは正次数の主張をそのまま次数零に適用しない。次は実際の増大写像と H⁰ の部分代数比較を照合し、中心外の同型から余核の局所化が零になることを供給する。F6〜F8 の厚化を経由する Frobenius と全複体も未完。停止点 2f ではない。
+
+## F5 次数零途中：実際の増大写像と Čech 微分（070f128d2）
+
+新規 `CechAlgebraAugmentation`、7 宣言・94 行。2f 累計 30 本・1,660 行（入口の import 込み 1,690 行）。対象と直接 importer は 4,576 jobs 成功。別実行の監査は 8,804 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行中だけ使用した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullAlgebraCechAugmentationCochains` | 空交叉の切断から、各長さ1の交叉への実際の制限を代数準同型として構成。 |
+| `fullAlgebraCechAugmentation_mem` | その制限族は二つの面で一致する。 |
+| `fullAlgebraCechAugmentation` | 適合する切断の部分代数への実際の増大写像。 |
+| `fullAlgebraCechAugmentation_algebraMap` | 増大を経由した基底環からの写像は、部分代数のスカラー写像と一致。 |
+| `fullAlgebraCechZeroEquiv_symm_apply` | 空タプルへの戻しは、その台への実際の制限。 |
+| `fullAlgebraCechAugmentation_eq_differential` | 増大写像の各成分は、既存の増大 Čech 微分の次数零と一致。 |
+| `fullAlgebraCechAugmentation_surjective_of_exact` | 次数零の Čech 完全性から、実際の増大写像の全射性を得る。 |
+
+次数零の余核の消滅そのものは未完。次は `schemeModuleAffineOpenCech_acyclic` を全空間のアフィン開に適用し、`openCoverIntersectionPresheafTopIso` とスカラー制限で実際のアフィン被覆の増大完全性を供給する。その後、今回の全射性と底変換の比較を局所化後の余核に接続する。F6〜F8 も未完。停止点 2f ではない。
+
+11-13 昼の凍結予告を受領：18 時の確定連絡までは検証済み成果を枝にコミットする。B3 の凍結が確定した後は翌朝まで枝へのコミットを控え、翌朝の B4 の手順に従って main と改名へ追従する。現時点では凍結の確定連絡はまだない。
