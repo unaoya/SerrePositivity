@@ -60,3 +60,14 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 2. **③-b の新しいファイルの置き場所は B1 の最初に決める**：`Project/DerivedCategories/` の分け方を先に決め、③-b はその新しいパスに置く。決まるまでは `Project/DerivedCategories/` の直下に置き、移動の計画に含める。
 3. **⑤∞ は B3 の後に開く**：⑤∞ は drafts を `BhattScholze/` に移すので、BS の整理の後にする（`stage-ii-second-half.md` の 5∞-1 の依存）。
 4. 今 BS の本体を触るレーンはない（⑤b・⑤c は ③ に移る）ので、BS の整理は早いほど安全。
+
+## 8. 追記（2026-11-12 夜、調整役）：段 0（B1）の承認
+
+一括レーンの段 0 の報告（`report-bulk-w1.md`、kerodon-layout の 400624b0d）の案 1〜4 をユーザーが承認した（11-12 夜）。
+
+1. 属性：プロジェクト側の独立した `@[cite KEY "番号"]`（Mathlib の `CrossRefAttribute` を手本、Mathlib は改変しない）。partial は `(partial := special|direction|stronger-hyp|component) "理由"` で理由は必須。略号と版の正本は `research/bibliography.json`（新設、K の地図の略号も登録）。照会は `#cite_tags KEY`、場所と行は Lean の環境から。未解決 187 件は台帳で管理し、理由を一件ずつ記録。Kerodon の partial は -c の見直しまで属性を付けない。
+2. Project：文献に当たる 51 本のうち HTT・HA の 41 本を文献の節へ、K 系 10 本は Project の話題別へ。`DerivedCategories/` の直下 2,322 本を七つの話題に分け、大きい群はさらに下に分ける。`DiagramComparison/` は維持。Entrypoints・Compatibility・SetWeightedTensors・PointedSpaces は維持。
+3. BhattScholze：大分類は維持し、`Prismatic/` を Site・Envelopes・CechAlexander・Crystalline・HodgeTate/{Affine,Comparison} に分ける。越境群は報告 §3.1 のとおり（Construction 6.1 → HodgeTate/Comparison/CrystallineCover、lci 19 本 → Semiperfectoid/Lci、有限包絡 → Semiperfectoid/FiniteEnvelopes、§10 の 6 本 → IntegralPerfectoidization）。
+4. 片付け：KST/Descent の 54 本と逆向きの閉包 13 本（計 67 本）を `Archive/KST/DescentConditional/` へ（`audit_kst_descent_main` は維持）。`ScalarTensorView` → `CommutativeAlgebra/Module/`（互換名を残す）。Diagnostics 4 本は Archive へ。
+
+進め方（B2 の準備、凍結の一晩の時期）は別に相談して決める。B2 の準備（全表、静的検査、隔離したプレビュー）は始めてよい。

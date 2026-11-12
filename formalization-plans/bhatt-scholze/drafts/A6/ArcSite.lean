@@ -179,7 +179,7 @@ def PreservesFiniteRingProducts {E : SSet.{u + 1}} [Quasicategory E]
     (F : Presheaf (AffCompl p κ)ᵒᵖ E) : Prop :=
   ∀ (ι : Type u) [Finite ι] (B : ι → AffCompl p κ) (c : Limits.Fan B),
     Nonempty (Limits.IsLimit c) → IsLimitCone
-      ((SerrePositivity.InfinityCategories.JoinCone.ulift.{u, u + 1}
+      ((SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u, u + 1}
         (F1B.nerveCone ((opOp (AffCompl p κ)).mapCone c))).postcomp F)
 
 /-- 概要：S1 の一般補題（**基盤待ち**、S1-E）：extensive coverage の層 ⇔ 有限積を保つ（Mathlib `isSheaf_iff_preservesFiniteProducts` の ∞ 版、

@@ -103,7 +103,7 @@ def restriction (F : Presheaf 𝒞 E) {U : 𝒞} (S : Sieve U) :
 実装は Core/UniverseLimits の既存の錐の持ち上げ。 -/
 abbrev JoinCone.ulift {K X : SSet.{u}} {p : K ⟶ X} (c : JoinCone p) :
     JoinCone ((SSet.uliftFunctor.{u + 1, u}).map p) :=
-  SerrePositivity.InfinityCategories.JoinCone.ulift.{u,u+1} c
+  SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u,u+1} c
 
 /-- 概要：F(U) を頂点とする、F の S 上の制限図式の錐。
 方針：1 圏の錐 `sieveCone S` を `F1B.nerveCone` で nerve の join 錐にし、持ち上げてから F で後合成する。
@@ -148,7 +148,7 @@ theorem isSheaf_toGrothendieck_iff (K : Coverage 𝒞) (F : Presheaf 𝒞 E) :
 /-- 有限積の指定された錐を F で送ったものが極限錐。空族を含む。 -/
 def PreservesFiniteProductsOnSite (F : Presheaf 𝒞 E) : Prop :=
   ∀ (ι : Type u) [Finite ι] (B : ι → 𝒞ᵒᵖ) (c : Fan B), Nonempty (IsLimit c) →
-    IsLimitCone (mapJoinCone F (SerrePositivity.InfinityCategories.JoinCone.ulift.{u,u+1} (F1B.nerveCone c)))
+    IsLimitCone (mapJoinCone F (SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u,u+1} (F1B.nerveCone c)))
 
 /-- S1-E。有限余積が普遍かつ非交叉な site での extensive 位相の層判定。 -/
 theorem isSheaf_extensive_iff_preservesFiniteProducts {E : SSet.{u+1}} [Quasicategory E]

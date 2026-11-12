@@ -155,7 +155,7 @@ lemma representableSectionsCone_vertex (U : 𝒞) (F : Presheaf 𝒞 E) :
     (representableSectionsCone U F).vertex =
       F.app _ (ULift.up (nerveVertex (Opposite.op U))) := by
   rw [representableSectionsCone, JoinCone.vertex_postcomp,
-    SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
+    SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
   rfl
 
 /-- 元の圏の始対象 (U,id) を、大きい宇宙の点として指定する。 -/
@@ -196,7 +196,7 @@ lemma representableSectionsCone_point_val (U : 𝒞) (F : Presheaf 𝒞 E) :
     apply F2.Idempotent.pointJoinNerve_hom_ext
     · apply SSet.yonedaEquiv.injective
       change (HomotopyLimits.nerveAsSmallIso 𝒞ᵒᵖ).hom.app _ c.vertex = _
-      rw [SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
+      rw [SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
       rfl
     · apply SSet.yonedaEquiv.injective
       rw [representableSectionsInitialPoint_eq]

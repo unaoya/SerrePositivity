@@ -1081,3 +1081,1725 @@ main `cba436208` を `math/bs-impl` へ fast-forward で取り込み、指示書
 - `BinaryTensorNaturality`（78 行）
 
 対象ビルドは `/tmp/bsw16/graded/binary-tensor-words-08.log` で成功した（対象の新規六本の警告零）。六本の **121 宣言**の再帰監査は `/tmp/bsw16/graded/audit-binary-tensor.log` で成功し、標準三公理のみ。本体の追加には sorry・admit・新規公理・デバッグ宣言を残していない。既存の公開宣言、界面の型、drafts、共通入口、共有監査スクリプトは変更していない。他レーンとのファイルの重複も零。新規の［一般∞］移動候補は零で、既報の五本は動かしていない。ビルド・監査はそれぞれ `--wait 3600` で一枚だけ整理券を出し、実行の終了ごとに鍵を返した。未検査の Lean ファイルは残さず、監査の鍵も返却済み。
+
+## 21. 夜の紙の検討：経路 A／B、sifted 保存、A2・A7 の要求（11-11）
+
+### 21.1 今回の作業と結論
+
+調整役の指示と main の指示書 §9（読んだ時点の main `93759d8a9`）に従い、**Lean の作成・変更・ビルド・監査は行わない**。main は参照だけにし、枝への merge も行っていない。本節だけを変更する。§20 の六本の取り込み後の登録ビルドは調整役の持ち分。
+
+数学的な経路としては、B は §19.3 のセル対の七項目を全て置き換えられる。ただし、代わりに導来自由・忘却随伴の bar 分解の実現と、指定された比較をその実現に沿って延ばす証明が必要になる。通常の代数のモナド性から、この導来の主張を証明済みとはできない。現存 API の段階では **B が A より小さいとはまだ判断できない**。先に sifted の保存の橋の範囲を確かめる必要がある。
+
+以下の行数は全て**未実装・型検査前の見積もり**。docstring・補助・自然性・指定錐の照合も含める。上限を変更する提案や実装再開の承認とは扱わない。A2・A7 自身の残る prismatic な証明と G12・Tot は、E2 の比較見積もりに混ぜない。
+
+### 21.2 共通の基盤と不足
+
+`C := CAlg_R R`、`D := derivedInfinityCategory R`、`U := cAlgForgetDerived R` と書く。導来自由関手 `F := cAlgFreeDerived R` と `cAlgFreeForgetDerivedAdjunction R : F ⊣ U` は **本体で無条件に構成済み**（`BarrattEccles/FreeProbeDerivedFreeForget.lean:36–40`）。B のためにこの随伴を一から作る必要はない。`free_isLeftQuillen`・`freeProbeFunctor_cofibrant`・`freeProbeFunctor_map_quasiIso`（`FreeProbeFunctor.lean`）で厳密な自由代数と接続できる。`cAlgForgetDerived_conservative` も証明済み。
+
+共通して、次はまだ必要である。
+
+| 区分 | 再利用と不足 | 残りの見込み |
+| --- | --- | --- |
+| 自由代数の指定比較 | §20 の六本、`twoColorInducedCoefficientHomotopyEquiv`、Schur の次数表示を再利用。色の軌道・安定化群、誘導表示の複体の同型、実際の Hopf 射との照合は §20.2 の五行のまま残る | 940〜1,290 行 |
+| native な二項余積錐 | `barrattEcclesCoprodWith`・`RightFrameCoproduct` と指定包含を再利用。指定頂点・二脚を持つ `IsColimitCone` はまだない。§13.1 の未完分であり、B でも使う | 370〜555 行 |
+| 全関手の指定自然比較 | 厳密な `barrattEcclesCoproductTensorNat`、`cAlgLocalizationSource_descendIso` などを再利用。実際の `tensorWith` と比較し、各右因子について `FunctorIso` にする仕上げ。下記 B の実現に沿った可逆性の証明は別に数える | 200〜350 行 |
+| **共通の残り C** | 既存 4,306 行は再計上しない | **1,510〜2,195 行** |
+
+自由比較は**任意の cofibrant な入力複体**の自由 E∞ 代数まで届く形が要る。入力微分を零とする場合だけで終えると、B の反復 `FU` の各項へ適用するために別の移送が残る。§20.2 の「複体の同型・指定射」の照合にこの点を含める。
+
+通常の離散多項式環 `R[X]` と、D(R) の生成元に自由な E∞ 代数 `F(R[0])` を同じものとして扱わない。後者には対称群の導来余不変が現れ、一般の基礎環では離散多項式への置換はできない。A2 の `AnimatedAlgebra` は多項式環からの sifted 完成であり、その像だけで C の全対象を生成したとはまだ言えない。B の全界面の供給には、導来自由関手 F の分解を使う。
+
+### 21.3 経路 A：自由比較をセル対へ移す
+
+証明の順序は、共通の自由比較、§19.3 のセル対、任意の cofibrant 対への retract、指定自然比較の局所化への降下となる。セル対で扱う射は新しく選んだ同値ではなく、既存の Hopf テンソルへの指定射である。
+
+再利用は `CellStageGradedBasis`・`CellStageFreeNaturality`・`CellStageGeneratorDifferential`、`OperadWordEvaluation`・`PowerWordEvaluation`、`ModuleSubcomplex.quotient`・`shortExact`、cofibrant な台の K 平坦性、セル表示と retract。§19.2 のとおり、重みの「非増大」だけでは足りず、係数微分を引いた後の真の低下と、係数微分を残す層が必要になる。
+
+§19.3 の七行は全て未着手で、200〜260、210〜300、180〜240、120〜180、300〜380、200〜260、100〜150 行、計 **1,310〜1,770 行**のまま。ここを別の一般補助へ移して計上から除かない。A は `forget_preservesSifted` や bar の実現に依存せず、この欄を先に閉じられる利点がある。一方、最後に E2 全体を完成するには sifted の保存も別に必要であり、その費用を隠さない。
+
+### 21.4 経路 B：自由比較を単体的な分解で延ばす
+
+必要な主張を次の順で分ける。
+
+1. **導来 bar の図式と増大。** 随伴 F ⊣ U から、各代数 X に対し次数 n が `(FU)^(n+1) X` である増大単体的図式 B(X) を作る。図式全体・増大は X とその射について自然にする。`ComonadSimplicialResolution.diagram`・`augmentation` は通常の 1 圏の余モナドについて構成済みで、面・退化の計算を再利用できる。しかし、準圏上の随伴からこの図式への接続と全 coherence は別の仕事。
+2. **同じ増大の実現。** U B(X) の追加退化による分裂を使い、その指定増大の幾何学的実現が UX であることを示す。C 側の実現の存在、U による保存、保存的性質を組み合わせ、B(X) の指定増大自身を X を頂点とする余極限錐にする。C の実現の存在を U の「保存」だけから取り出すことはしない。具体的な模型の hocolim から native な錐を構成するか、別に存在を供給する必要がある。
+3. **比較の両辺が各変数の実現を保つ。** `x ↦ U(x ⨿ y)` は、U の実現保存と native な余積錐を使う。固定右因子との余積が通常の左随伴であるとは主張しない。sifted 形状の弱可縮性により定値 y の余極限が y となることと、二つの余極限の交換で示す。`x ↦ Ux ⊗^L Uy` は D(R) の導来テンソルの実現保存を使う。この保存は `coproduct_tensor` 自身から導かず、D の閉モノイダル構造または K 平坦な模型から独立に示す。
+4. **自由×自由から全体へ。** B(X)・B(Y) の各次数は自由な対象であるため、指定された自由比較を適用する。まず一変数、次に他変数の実現を取る。対角だけで済ませるなら、Δᵒᵖ の対角の共終性と、二重実現の比較も必要になる。別々の二回の実現ならこの追加の対角照合を省ける。指定比較の自然性により各次数の射を同じ比較の実現として結ぶ。
+5. **強い形。** 各点で逆を選ぶ方法は使わず、既存の自然比較の各成分が可逆であると示し、`FunctorIso` にする。X・Y・それらの射に関する増大の自然性も保持する。頂点ごとの同型を作るだけで終えない。
+
+この経路が通れば、**§19.3 の七行全部が不要**になる。具体的には入力重みの真の低下、係数微分を残す商、段ごとの短完全列、網羅的余極限、最後のセル対の retract を証明しない。既存の K 平坦性の証明は自由入力の模型・導来テンソルの比較に再利用するが、A の未着手の重みの層は B の前提に持ち込まない。
+
+| B に特有の仕事（共通 C・下記 S を除く） | 見込み |
+| --- | --- |
+| 導来随伴の反復と bar の全図式・指定増大・自然性 | 200〜350 行 |
+| U の下の分裂、指定増大の実現、C 側の存在と保存的性質の適用 | 350〜550 行 |
+| 各項の導来自由対象を厳密な自由比較へ接続する | 200〜350 行 |
+| 固定余積・導来テンソルの実現保存、二回の実現による指定比較の可逆性 | 350〜550 行 |
+| 全図式の射と増大の整合、関手の可逆性の判定への接続 | 200〜350 行 |
+| **B 固有の残り T** | **1,300〜2,150 行** |
+
+通常の `forget_monadic` は、相対圏の弱同値を考えない Beck のモナド性である。それを「∞ 圏で U がモナド的、bar は U により実現される」と読み替えない。B は、これらを別に閉じれば数学的に循環しない経路である。U の実現保存を余積＝テンソルから証明したり、C の実現の存在を未供給の G12 に黙って委ねたりすれば循環・未供給入力になる。
+
+### 21.5 sifted 保存の段 0：型の射程、再利用、不足
+
+目標の実際の型は `PreservesSmallSiftedColimits (cAlgForgetDerived R)`。`F2/Presentable/SiftedColimitPreservation.lean:24` の定義は、小さい **任意の sifted な単体集合形状 I**、任意の図式 D、任意の指定 native な余錐 c を量化し、c の像の余極限性を要求する。通常の小圏 J の厳密な図式、あるいは対象の同値だけではこの型に届かない。
+
+| 確認した既存の宣言 | 実際に得られるもの／残るもの |
+| --- | --- |
+| `Operad.Algebra.forget_createsSiftedColimitsOfShape`、`forget_createsFilteredColimitsOfShape`（`Operad/AlgebraSiftedColimits.lean`） | 通常の厳密な余極限の創出。図式を cofibrant に置換した後の hocolim の保存や、native な全余錐の保存までは主張しない |
+| `Operad.Algebra.forget_monadic`（`AlgebraMonadic.lean`） | 通常のモナド性。B の導来 bar の実現とは区別する |
+| `BarrattEccles.Diagram.projectiveModelCategory`・`weakEquivalence_iff`（`DiagramModel.lean`） | 厳密な図式の置換と対象ごとの擬同型の判定。U が projective cofibrant 図式を cofibrant 図式へ送るとはまだ言えない |
+| `DiagramModel.HomotopyColimit.functor`・`comparison`、`PointwiseColimitComparison`、`QuillenColimitComparison` | 具体的 hocolim と通常の colim の比較。`QuillenColimitComparison` は左 Quillen 関手用で、右 Quillen U にはそのまま適用できない |
+| `FilteredHomotopyColimit.comparison_weakEquivalence_of_filtered`・`exists_filtered_comparison` | 仮定の κ 以上に十分 filtered な場合。全ての通常の filtered 図式に使えると読み替えない。加群の filtered 余極限の完全性から擬同型の保存を別に接続する |
+| `HomotopyWeight.pointwiseRealization`・`tensorRealization`・`realization_map_frame_weakEquivalence`、`FrameRealizationLifting.map_monomorphism`・`map_anodyne` | 同じ frame の実現と射の比較の部品。代数の実現を忘却したものと、複体の実現との同じ脚を持つ比較は未供給 |
+| `CAlgUnderlyingDerivedComparison.algebraReplacementUnderlyingDerivedIso`、`algebraCAlgSource_underlyingDerivedIso` | 実際の U と厳密な台の図式を結ぶ自然同型。実現を比較するときの入口に使う |
+| `cAlgFreeForgetDerivedAdjunction`、`cAlgForgetDerived_conservative` | 実際の導来随伴と保存的性質。実現保存そのものではない |
+| `SiftedSimplexCategory`、`SiftedContractibility.isWeaklyContractible_of_sifted`、`PreservesSmallSiftedColimits.of_functorIso` | Δᵒᵖ の sifted 性、定値図式、関手の同型による保存の輸送に使う |
+| `sigmaComparison_isIso_of_filtered_geometric`（`SigmaFilteredGeometricDetection.lean`） | 始域が `SigmaPresheafInfinity C` の比較の判定。CAlg の全対象へそのまま適用できない。filtered と幾何学的実現の二つの保存から、今回の全 sifted 保存への一般の接続は別に要る |
+
+幾何学的実現の模型の候補は、実際の単体的代数の Reedy/projective 置換と frame の重み付き実現である。**任意の単体的代数の通常の colim を取るだけでは、導来実現にならない**。U の実現比較では、テンソルの Eilenberg–Zilber 型の比較または明示的な latching の議論で、同じ増大・脚・射を照合する必要がある。この比較は二項の `coproduct_tensor` を前提とせず、オペラッドの各 arity と有限テンソル冪から示すことを独立の目標にする。
+
+`ColimitMapComparison.diagramSourceComparison_weakEquivalence` は `[ModelCategory SSet]` を要求する版なので使わない。既存の frame による単体的ホモトピー同値の比較を使い、その仮定を追加しない。
+
+| sifted 保存 S の不足 | 見込み |
+| --- | --- |
+| 厳密な Δᵒᵖ 図式の hocolim と、指定脚を持つ native な実現錐の橋 | 550〜850 行 |
+| 代数の実現と台の複体の実現の比較、arity と微分・射の整合 | 500〜800 行 |
+| 任意の coherent な単体的図式を上の厳密な計算へ移す比較と、その指定錐の照合 | 450〜750 行 |
+| 全 filtered 図式の擬同型保存と、その native な錐への輸送 | 250〜400 行 |
+| 任意の sifted な単体集合形状へ延ばす生成・比較（存在・宇宙の条件も含む） | 400〜700 行 |
+| 指定した U への輸送と最終の欄の組み立て・自然性の確認 | 150〜250 行 |
+| **S の合計** | **2,300〜3,750 行** |
+
+特に三行目と五行目は型検査前の不確実性が高い。既存の厳密化・局所化の図式比較から一般の全図式版へ届くか、③ の G10 と共有すべき橋が残るかを、現時点では確定していない。**G10 が必ず不要とも、待つほかないとも断定しない**。この部分を零行として旧上限 2,700 行に合わせることはできない。旧見込み 1,600〜2,700 行を、そのまま実装の確約として維持しない。
+
+最初の確認の区切りとしては、一つの厳密な Δᵒᵖ 図式について、具体的実現と指定 native 錐の間を同じ射で結べるかを紙の型から確かめるのがよい。その次に U の実現比較、さらに任意の coherent 図式へ進む。最初から「全 sifted 保存を供給済み」として B を始めない。これは明日の経路判断への提案であり、今夜の実装再開ではない。
+
+### 21.6 A／B の全体規模の比較
+
+途中までの 4,306 行を両方に一度だけ含める。S は W16 の E2 の完了にどちらの経路でも必要な仕事で、B の比較の見積もりから外して安く見せない。native な錐も共通 C に含まれている。
+
+| 範囲 | A：セル対 | B：自由 bar と実現 |
+| --- | --- | --- |
+| 証明済み（両方に再利用） | 4,306 | 4,306 |
+| 共通 C（自由比較、native な錐、自然比較の仕上げ） | 1,510〜2,195 | 1,510〜2,195 |
+| 固有部分 | セル対 1,310〜1,770 | T 1,300〜2,150 |
+| sifted S | 2,300〜3,750 | 2,300〜3,750 |
+| **E2 の両欄と native な錐までの総計** | **9,426〜12,021** | **9,416〜12,401** |
+| sifted に依存せず余積比較を先に閉じられるか | 可 | この計画では不可。少なくとも実現の保存が先 |
+
+A の sifted を除いた総計は §20 の 7,126〜8,271 行に一致する。B はセル対を除く代わりに T を加えるので、現状の見積もりでは削減を約束できない。S の図式の橋や T の bar の coherence に既存 API の直接適用が見つかれば下がり得るが、未確認の短縮を予算には入れていない。E2 の上限を上げる提案ではなく、共通部分を全て見える形にするための比較である。
+
+### 21.7 A2・A7 の実際の使い方
+
+`drafts/A2/` と `drafts/A7/` を検索したところ、**`coprodWith`・`coprodWith_cocone`・`coproduct_tensor` の直接参照は零件**。現状は `E : EInfinityTheory` を受け取り、余錐・押し出しの普遍性を要求する型と、証明を残したコメントによる間接的な依存である。したがって「どの欄が実際に呼ばれているか」と「残る証明に何が要るか」を区別する。
+
+| drafts の宣言と場所 | 実際の要求 | 必要な比較の強さ・入力の範囲 |
+| --- | --- | --- |
+| A2 `polyTensorCocone`（`BaseChangeAndTensor.lean:131`） | 多項式環の二つの変数包含を脚とする native な錐を定義 | Poly 内の指定余積。CAlg の全関手版はこの定義自体には不要 |
+| A2 `prismaticCohomologyPoly_tensor`（同:138） | その錐を Δ で送ったものが完備 CAlg で余極限となること | Poly の n,m ごとの指定脚の Künneth で足りる。ただし Δ の値は一般に離散代数ではないため、標的を離散代数だけの比較へ縮められない。単なる頂点の同型だけでは脚を同定できない |
+| A2 `derivedPrismaticCohomology_tensor`（同:147） | 任意の animated X,Y と任意の余極限錐 c の像が余極限であること | Poly 上の指定比較を両変数で sifted 延長するため、射と二つの包含に自然な比較・余極限交換が必要。全 CAlg 上の強い `FunctorIso` は十分な道具だが、この型の結論そのものではなく、animated の Δ の像に沿う自然な比較でも原理的に足りる |
+| A7 `twoSidedBar`・`relativeTensor_eq_bar`（`AnimatedPerfectoidization.lean:83,89`） | animated な相対テンソルの bar と、その指定実現錐 | 始域の有限余積・実現の普遍性。ここでは CAlg の余積＝台のテンソルの全関手版を直接使わない。B の自由・忘却 bar とは別の二側 bar |
+| A7 `preservesRelativeTensor_of_siftedAndTensor`（同:101） | 一般の準圏の関手が、任意の二項余積錐と sifted 実現を保つとき、任意の span の押し出しを保つ | 全ての図式の射を送る自然性・指定錐が要る。対象ごとの非自然な同型だけでは、bar の面・退化を送れない。仮定自体は余錐の保存であり `FunctorIso` 欄の直接要求ではない |
+| A7 `derivedPrismaticCohomology_relativeTensor`（同:120） | animated Δ の相対版 | A2 の全 animated な指定余積保存と実現保存を使う。Poly でだけ示して終えることはできない |
+| A7 `frobeniusColimit_relativeTensor`（同:200） | 自己関手 τ と自然変換 φ を伴う塔の余極限が span を保つこと | 任意の塔の射・span・指定余錐の自然性。固定対象の同型では足りない。押し出しの余極限の交換として示せれば、台のテンソルとの全比較は別問題にできる |
+| A7 `completion_relativeTensor`・`modD_relativeTensor`（同:224,236） | 完備圏を標的とする反射と底変換の押し出し保存 | 左随伴性と指定錐の輸送が入口。`coproduct_tensor` を使わずに CAlg 内の普遍性で述べられる部分 |
+| A7 `perfectoidization_relativeTensorMap`・`perfectoidization_relativeTensor`（同:259,273） | 任意の完備 animated span について、指定比較辺が可逆 | 完全な Prop 8.13 の型では入力は任意。離散・多項式入力だけには弱められない。指定された比較辺なので、頂点が同型であるという別の主張では足りない |
+| A7 `selfTensor_perfectoidization_eq`（`UniversalProperty.lean:179`） | 特定の self span における `VertexIso` と両脚上の恒等式 | この利用だけなら対象ごとの同型＋明示的な脚の式で足り、全 CAlg 上の `FunctorIso` は型には現れない。続く `selfTensor_unit_eq_mul` ではその脚と単位の自然性が必要。E3 の一意性のための狭い利用と、Prop 8.13 の全主張は分ける |
+
+A7 の残る `AnimatedDomain.lean` は完備化と離散入力の橋、`DiscreteCore.lean` は離散性の議論が中心で、三欄の直接参照はない。`UniversalProperty.lean` の `animatedUnderlyingCAlg` や A2 `discreteRealizationIso`、A7 `perfectoidizationAnimated_discrete` は **別の関手比較の全自然同型**を要求する。それらを `coproduct_tensor` の直接の呼び出しと数えない。A2 `derivedPrismaticCohomology_baseChange` も別の底変換の `FunctorIso` である。
+
+#### 三つの欄ごとの切り分け
+
+- **`coprodWith`**：既存の指定された右因子の関手。A2・A7 はその具体的な頂点表示を固定してはいないが、これを使えば一変数の余積図式を関手として扱える。bar・sifted 延長では射までの関手性が必要。
+- **`coprodWith_cocone`**：A2・A7 の余錐としての主張への直接の入口はこの普遍性である。存在する余錐だけではなく、同じ二つの脚と頂点を保つ比較が要る。一般の錐から指定錐へ、余錐の圏での一意性により輸送する部分も残る。
+- **`coproduct_tensor`**：界面の欄は固定 y ごとの**全関手の** `FunctorIso`。この実例を完成する仕事では強い形が必須であり、BS の狭い利用だけを理由に対象ごとの版へ変更しない。一方、A2・A7 の現状の宣言型はこの欄の全射程より狭く、各所で必要なのは指定錐・その脚・比較の自然性である。
+
+さらに、**界面の `coproduct_tensor` の型自体には、選んだ `coprodWith_cocone` の二脚をテンソルの標準射へ送るという条件が書かれていない**。強い `FunctorIso` があるだけで、その同型が指定脚を保存すると自動的に結論しない。実例では元の Hopf 射を保つ追加の照合補題を示すか、A2 の証明ではその比較を別に構成する必要がある。この費用を共通 C の「指定射との照合」に含めた。今夜は界面を変更しない。
+
+従って、BS の狭い用途に限定した迂回を検討する余地はあるが、(i) A2 の Poly 上の**標的**は一般の prismatic E∞ 代数、(ii) A7 の Prop 8.13 は任意の animated span、(iii) 界面の完成は全 CAlg の強い形、という三点は残る。「離散入力だけの余積比較で W16 全体が閉じる」という結論にはならない。
+
+### 21.8 明日の判断に渡す区切り
+
+A はセル対の不足が具体的で、B はその全てを除けるが実現の橋へ仕事が移る。どちらでも自由比較の残りと native な錐は必要で、B は未供給の sifted 保存を前提に先へ進めない。明日はまず、実現の厳密図式から全 coherent 図式への橋を⑤aだけで閉じる範囲と③との共有範囲を決め、その実情を踏まえて A／B を選ぶのがよい。今夜は判断を先取りせず、Lean の実装を止めたままにする。本節は紙の報告だけで、登録すべき新規モジュールは零、ビルドの鍵の取得も零。
+
+## 22. 共通部分 a の入力複体の比較と、1,550 行の上限による停止（11-11 夜）
+
+### 22.1 再開と作業範囲
+
+調整役の夜の追加指示を受けて共通部分 a を再開した。main `f654cdc11` を `math/bs-impl` に merge したコミットは `9fc7cdbcb`。main の作業木では編集・ビルドしていない。今回の上限は **a の追加実装全体で約 1,550 行**と読み、以下の一般補助、任意の入力複体への拡張、docstring・空行も全て数える。
+
+セル対、bar の実現、sifted の保存には手を付けていない。a の完了後に b へ進む順序に従い、b（native な余積錐）、c（その脚の照合）、段 4 の組み立て関数はまだ実装していない。以下の再見積もりが a の上限に当たるため、検証した範囲を保存して停止する。
+
+### 22.2 今回閉じた入力複体の補題
+
+追加は次の五本、**902 行**。小補助として書いた八本は、未取り込みのうちに最初の二本へ統合して、重複する module docstring と import を除いた。公開されている既存モジュールの場所・宣言は変更していない。下の実測は統合後で、旧ファイルを重複して数えない。
+
+| 新規モジュール（全て `SerrePositivity.EInfinity.BarrattEccles.Theory` の下） | 実測 | 得られたもの |
+| --- | --- | --- |
+| `BinaryTensorInputDecomposition` | 355 行 | 語のテンソルを既存の `tensorFamily` へ同定し、指定生成射と包含を照合。隣接交換から任意の置換へ拡張し、その順射を元のテンソル冪の包含・射影による行列成分として同定。語を固定する群の作用と、包含・射影の同変性を複体の射として構成 |
+| `BinaryTensorColorClassification` | 200 行 | 色の二つのファイバーの濃度が等しい語を置換で結ぶ。標準パターンの左右のファイバーを Fin m、Fin n へ同定。その安定化群を既存の `twoColorPermutationHom` の像そのものと同定 |
+| `FiniteInductionMatrix` | 183 行 | 指定包含・射影から誘導／余誘導の射を作る。部分群外の成分の消滅と包含・射影の恒等式から、標準の `Rep.indCoindIso` との行列比較を証明。異なる成分間の消滅と有限直和の一般補題、微分を保つ誘導／余誘導の複体射も構成 |
+| `TwoColorComplexInputs` | 73 行 | 既証明の指定係数同値を、**任意の表現の入力複体**とテンソルして余不変を取る直和全複体へ拡張。順射は元の係数射を同じ双関手へ送った射であることも証明 |
+| `TwoColorInputComponents` | 91 行 | 実際の標準パターンと実際の二色部分群へ上の構成を適用。和のテンソル冪の全対称群の入力表現、標準成分の二色部分群の入力表現、それらの指定包含・射影、包含の後の射影の恒等式、誘導入力からの複体射・余誘導入力への複体射を構成 |
+| **今回の計** | **902 行** | |
+
+入力 X・Y は任意の複体で、零微分・有界性・平坦性を要求していない。従って、ここまでの入力の補題は任意の cofibrant な入力にも使える。`twoColorComplexInputHomotopyEquiv` は係数のホモトピーを全複体へ移すため、入力微分を捨ててから擬同型を結論する方法には依存しない。
+
+ただし **自由代数の指定比較の擬同型性は未完**。特に `finiteInductionBiconeIsBilimit` は、実際の入力における全成分の網羅性 `hcover`、異なる成分間の消滅 `hcross` などを入力する一般補題である。今回、それらを全 arity の実際の入力に適用し終えたとは扱わない。`twoColorInducedInputInclusion` は実際の入力複体から作った指定射だが、これらを全色数にわたって足した射が同型であるという宣言ではない。
+
+### 22.3 元の五行に対する実測と残り
+
+§20.2 の五行ごとに、今回の実測を一度だけ割り付ける。三行目には、任意の入力複体の直和全複体への係数比較の拡張も含める。第四・第五行は未着手。
+
+| 元の五行 | §20.2 の見込み | 今回の実測 | まだ必要なもの | 残りの見込み |
+| --- | --- | --- | --- | --- |
+| 語の指定包含と置換、標準ブロックの作用 | 160〜220 | 355 | 標準パターンの複体を `power X m ⊗ power Y n` へ移す同型と、その同型が二つの既存の置換作用を保つ照合 | 80〜120 |
+| 固定色数の軌道と標準語の安定化群 | 120〜180 | 200 | 任意の語の二つのファイバー濃度の和と arity の一致、arity を固定して色数を走らせたときの代表の網羅性、添字の等式による移送 | 60〜90 |
+| 誘導表示の射・逆・複体上の同型 | 260〜340 | 347 | 実際の全入力での `hself`・`hcross`・`hcover`、全成分の誘導表示の直和が入力複体となる同型、微分に関する自然性をまとめる。一般補題の仮定のまま残さない | 200〜300 |
+| 実際の Schur 複体の両側の分解・再添字付け | 220〜300 | 0 | 入力の直和を実際の Schur 余極限へ通し、係数と入力の直和全複体、arity と色数、テンソル側の二つの Schur 図式の順序を照合 | 250〜350 |
+| 指定 Hopf 比較と係数比較、自由比較の擬同型 | 180〜250 | 0 | 自由代数の和の表示と指定二包含、Hopf 対角・単位挿入・零入力削除との一致を生成射上で照合。両側の同型を通った指定射を特定して擬同型へ結ぶ | 250〜350 |
+| **合計** | **940〜1,290** | **902** | | **840〜1,210** |
+
+全て docstring・空行を含む追加 Lean の見込みで、a の外に一般補助の費用を出していない。特に今回の任意の置換への拡張と、微分を保つ安定化群の包含・射影の構成が、第一行の旧見込みを上回った。第三行では、一般の誘導／余誘導の行列比較を作っても、それを全色数にわたる実際の入力の同型へ適用する部分が残ることを分けた。
+
+従って a の見込みは **902 + 840〜1,210 = 1,742〜2,112 行（約 1,750〜2,100 行）**。これは a に与えられた約 1,550 行を超えそうなので、追加指示の「上限を超えそうなときは、その時点で報告して止める」に従って停止する。a の完了報告ではなく、b へ進む条件も満たしていない。b の 670 行の枠や c・段 4 へ a の残りを移して計上することはしない。
+
+参考として、以前までの coproduct_tensor と native な錐の全実測 4,306 行に今回を加えると **六十一本・5,208 行**。今回の停止判断に使う枠は、再開時に指定された a 自体の 1,550 行である。セル対・bar・sifted の経路の判断は先取りしていない。
+
+### 22.4 検証と登録候補
+
+登録候補は §22.2 の五本だけ。統合前の八つのファイル名は登録しない。既存の公開宣言、界面の型、drafts、共通入口、共有監査スクリプトは変更していない。他レーンのファイルとの重複も零。新規の［一般∞］の移動候補は零。
+
+対象ビルドは `/tmp/bsw16/graded/two-color-input-components-03.log` で成功。新規五本の警告は零、依存先の既報 `ZeroArity` の警告二件は残る。登録と取り込みのビルドは調整役が行う。
+
+五本の **129 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-common-inputs.log`）。本体の追加には sorry・admit・新規公理・デバッグ宣言を残していない。ビルド・監査はそれぞれ `--wait 3600` で一枚だけ整理券を出し、実行の終了ごとに鍵を返却した。未検査の Lean ソースは残していない。ここで実装を止め、調整役の判断を待つ。
+
+
+## 23. 11-12 朝：b の native な余錐の構成、普遍性の前で規模による中間停止
+
+### 23.1 指示の取り込みと停止の範囲
+
+朝の指示に従って main を `math/bs-impl` へ取り込み、§11 が入った `2fc3dc7ce` までそろえた。a の五本・902 行には変更を加えていない。今回の順序は b → c → 組み立て関数。b の余錐とその脚・頂点は作れたが、**`coprodWith_cocone` の欄に要る余極限性はまだ供給していない**。以下の再見積もりが b の約 670 行を超えそうなので、追加実装を止めた。b の完了報告ではない。c と段 4 の組み立ては未着手。
+
+### 23.2 型検査したもの
+
+新規二本、**297 行**（docstring・空行込み）。既存の公開宣言・界面・drafts・入口・共有監査は変更していない。
+
+| モジュール（`SerrePositivity.EInfinity.BarrattEccles.Theory` の下） | 行数 | 得られたもの |
+| --- | --- | --- |
+| `NativeCoproductCocone` | 113 | cofibrant な代表の厳密余積の二包含を、同じ DK 頂点の間の辺へ送る。`cAlgCoprodCocone` は二点図式の実際の `JoinCocone`。その頂点が既存の `barrattEcclesCoprodWith` の指定した値に一致し、二つの脚が指定包含の同じ一次単体であることを証明 |
+| `BinaryCoconeSpace` | 184 | 任意のパラメータからの join の族を貼り、余積図式の終点固定の余錐空間を、二枝の余錐空間の積へ同型にする。制限射そのものの `IsIso`、積の Kan 性、および指定の全 Hom の族の積比較が同値なら余極限であるという検査補題を証明 |
+| **計** | **297** | |
+
+`cAlgCofibrantArrow` は、元の `localizationArrowPoint` と同じ `exInfinityUnit` から辺を作る。局所化の source map で選ばれた頂点が標準の頂点と等しいと仮定していない（一般には頂点の同型で比較する必要がある）。`cAlgCoprodCocone_vertex`・`cAlgCoprodCocone_leg_left`・`cAlgCoprodCocone_leg_right` は指定した余錐についての等式。
+
+`binaryCocone_isColimit_of_pointHomRestriction` の仮定は、各終点 z について
+
+```lean
+IsQCatEquivalence
+  (HomotopyLimits.coconePointHomFamily d z ≫ binaryCoconeSpaceRestriction p z)
+```
+
+である。ここは実際の比較射の同値性の**還元先**であり、この仮定を `cAlgCoprodCocone` に対して閉じたという扱いにはしない。`BinaryCoconeSpace` は **［一般∞］の移動候補**。KL-W1 の取り込み前なので `InfinityCategories/` には追加していない。
+
+### 23.3 余極限性の残りと既存 API の調査
+
+既存の `rightFrameCoprodHomIso` は、同じ右 frame への厳密余積の Hom を積へ分け、二射影が指定包含による前合成であることまで与える。一方、`modelRightFramePinchedEquivalence` と `rightFrameTerminalHomIso` は固定した始域について終域全体を比較する入口である。これらを対象ごとに適用しただけでは、**二つの始域の包含が native な錐の脚による前合成に対応すること**は出ない。
+
+別の経路として、既存の `cAlgMappingSpaceComparisonIso_precompose` は実際の DK Hom と `mappingSpace` の比較に始域の前合成の自然性を与える。`sourceFrameHomComparison` とその `sourceFrameHomComparison_isIso` も再利用できる。こちらでは次が残る。
+
+1. X・Y の余単体的 cofibrant 分解の余積と、X ⨿ Y の選んだ分解の間の指定比較を作る。余積 frame の Reedy cofibrancy、augmentation と比較の弱同値性を示す。
+2. その Hom の積比較を `mappingSpace`、ULift、DK の実際の Kan Hom へ運ぶ。**同じ二つの指定射**を保ち、積に関する反転性を使って比較全体を同値にする。
+3. coslice fiber と左 pinched Hom、および coherent nerve の Hom の比較を通し、native な二脚の前合成と照合する。実際の余錐の `coconePointHomFamily` の二制限は、対応する前合成とのホモトピーまで扱う必要がある。
+4. 今回の検査補題を指定の `cAlgCoprodCocone` に適用して、界面の部分型を供給する。
+
+始域の frame の不変性は `SerrePositivity.EInfinity.FrameHom.source_weakEquivalence_isIso`（`InfinityCategories/ModelBridge/SourceInvariance.lean`）を使える。これは anodyne を反転する関手に対する結論で、`[ModelCategory SSet]` を要求しない。対して `HomotopyFunctionComplex/SourceInvariance.lean` の `cosimplicialHomMap_weakEquivalence` はその仮定を要求するため、今回の実装に使う入口にはしない。必要な模型の存在が未供給だから止めるのではなく、指定した射までの比較の実装費用による停止である。
+
+### 23.4 再見積もりと停止判断
+
+全て b の追加 Lean に計上し、補助を c や組み立て関数の枠へ移していない。残りは未実装の見込みで、既存宣言だけで閉じたとは主張しない。
+
+| b の部分 | 今回の実測 | 残りの見込み |
+| --- | --- | --- |
+| native な余錐・指定頂点・二脚 | 113 | 0 |
+| 二枝の余錐空間の積分解・普遍性の検査への還元 | 184 | 0 |
+| 余積 frame・指定比較・Reedy cofibrancy と弱同値性 | 0 | 120〜170 |
+| `mappingSpace` から実際の DK Hom の積比較までの移送 | 0 | 80〜120 |
+| 左 Hom・二つの native な脚・全 Hom の族との照合 | 0 | 150〜220 |
+| 指定余錐への適用と界面の部分型の供給 | 0 | 40〜60 |
+| **合計** | **297** | **390〜570** |
+
+従って b の見込みは **687〜867 行（約 690〜870 行）**。旧見込みの約 670 行には、厳密な Hom の積分解と既存の対象ごとの frame 比較を合成するだけで、native な二脚まで比較できると見込んでいた不足がある。今回はその照合を明示的な残作業に分けた。上限を超えそうなときに止めるという指示に従い、この時点で追加の Lean を止める。a・セル対・bar の実現・sifted の保存は進めていない。
+
+c の厳密な式自体は `barrattEcclesCoproductTensorNat` と `coprod.inl_desc`・`coprod.inr_desc` から出るが、指定 native な錐の脚の照合を b の未証明の余極限性と取り違えない。今回 c を完了と報告することはせず、組み立て関数の既証明欄として `coprodWith_cocone` を入れてもいない。
+
+### 23.5 検証・登録候補・取り込み待ち
+
+対象二本のビルドは `/tmp/bsw16/graded/native-coproduct-space-05.log` で成功。追加二本に Lean の警告は零。ビルドの wrapper が別レーンの既存 `lake build` を警告表示したが、自レーンは鍵付きで指定二本のみをビルドした。
+
+二本の **50 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-native-coproduct.log`）。本体の追加に sorry・admit・新規公理・デバッグ宣言・満たせない `[ModelCategory SSet]` の仮定はない。未検査の Lean ソースは残していない。
+
+今回の登録候補は §23.2 の二本だけ。前回の §22 の五本とは別で、合わせて未取り込みは七本。調整役の指示どおり、KL-W1 の取り込みと改名表への追従の後に取り込む。旧名を先取りして改名していない。他レーンのファイルとの重複は零。鍵は一回のビルド・監査ごとに `--wait 3600` で取得し、終了時に返却した。
+
+
+## 24. 11-12：b 完了 — 指定余積関手の native な余極限錐
+
+### 24.1 結論と規模
+
+§23 の後の指示（b を約 900 行、超過 3 割以内は報告して続行）に従って再開した。**`barrattEcclesCoprodWith_cocone` を、本体で無条件に構成した。** 型は界面の欄と同じく、各 x・y について `JoinCocone (binaryPointDiagram x y)`、その頂点が既存の `barrattEcclesCoprodWith A y` の x での値に等しいこと、そして `IsColimitCone` の組である。余極限性を引数に取る組み立てではない。
+
+b の最終差分は **九本・1,022 行**。§23 の実測のうち `NativeCoproductCocone` の 113 行も含む。900 行からの超過は 122 行（約 13.6%）で、今回承認された 3 割の範囲内で完了した。a・セル対・bar の実現・sifted 保存・Tot は進めていない。昼の §12 の判断（経路 B、a の残りと厳密 bar は共通部分の後、二脚の条件を界面に追加）も確認した。
+
+### 24.2 実装の内訳と前の見積もりとの差
+
+| モジュール（全て `SerrePositivity.EInfinity.BarrattEccles.Theory` の下） | 実測 | 内容 |
+| --- | --- | --- |
+| `NativeCoproductCocone` | 113 | §23 で作った指定包含・辺・頂点。DK 比較には同じ `cofibrantAlgebraDKCoprodInl/Inr` を使う |
+| `CoproductFrames` | 121 | 二つの余単体的分解の余積は Reedy cofibrant。余積の指定分解への比較が各次数で弱同値。二包含を厳密に保つ |
+| `CoproductFrameHom` | 94 | 余積 frame の全単体の Hom を、二包含の前合成による二項積へ厳密に分解 |
+| `AnodyneBinaryProducts` | 106 | 選ばれた圏論の積と単体集合のテンソル積を比較。anodyne 局所化の二項積保存、指定した組への射の自然性 |
+| `CoproductMappingSpace` | 141 | 始域 frame の比較と自然な終域置換を消去し、元の Map^h の二包含の積比較を局所化同型にする |
+| `CoproductDKHom` | 101 | ULift の積保存と `cAlgMappingSpaceComparisonIso_precompose` を使い、実際の Ex∞ Kan DK Hom の指定積比較を局所化同型にする |
+| `EnrichedPointPrecomposition` | 78 | 豊穣関手と点の前合成の自然性。実際の Kan Hom の前合成と、元の前合成の Ex∞ 像の局所化等式。反対圏の後合成との照合 |
+| `CoproductNativeUniversal` | 168 | 厳密二包含の普通の余錐に、離散図式の全 Hom の判定を適用して native な余極限性を証明 |
+| `NativeCoproduct` | 100 | 二点の形状同型で指定 `binaryPointDiagram` へ戻し、頂点を既存の関手の値に正規化。界面と同じ部分型を供給 |
+| **合計** | **1,022** | |
+
+§23 の残作業の表では、frame 120〜170 行、DK まで 80〜120 行、native な脚と全 Hom の照合 150〜220 行、界面の供給 40〜60 行と見込んでいた。実際には frame の Hom の積の構成と、単体集合のテンソル積・選ばれた圏論の積の区別、局所化自体の積保存、ULift と実際の点の前合成までの照合に追加が要った。これらを b の外に出して計上していない。
+
+一方、最後の native な余極限性は、既存の `strictCoherentCone_isLimit_of_discrete_representableComparison`、`strictNativeCocone_isColimit_iff`、`JoinCocone.reindexIso` を再利用できた。左 pinched Hom と二枝の coslice fiber の積分解から進む前の還元は不要となったため、**未取り込みで本体・他レーンから参照がない `BinaryCoconeSpace`（184 行）を最終差分から外した**。これは §23 の登録候補の取り消しでもある。ファイルが一度作られたことと、経路を変えて不要になったことをここに記録し、取り込み済みの実装を数から落とす操作はしていない。§23 のコミットには前の版が保存されている。
+
+### 24.3 指定射と全 Hom の照合
+
+`cAlgCoprodHomRestriction_isIso` は実際の Kan DK Hom から二つの Hom の積への**同じ二包含による射**についての結論である。対象ごとの任意の同値を取って自然性を推定していない。`kanStrictPrecompose_localized` は元の同じ `exInfinityUnit` と豊穣関手の合成則から、native な脚の実際の前合成とこの比較射を照合する。
+
+`cAlgBinaryCocone_isColimit` は二点の普通の余錐について、反対圏の離散図式の全 Hom の比較へ適用したもの。π₀ だけで普遍性を結論していない。`cAlgNativeCoprodCocone` はこの余極限錐を形状同型で戻した、実際に採用する余錐である。§23 の `cAlgCoprodCocone` 自体の余極限性を別途証明したという主張にはしていない。
+
+### 24.4 検証と登録候補
+
+最終対象ビルドは `/tmp/bsw16/graded/native-coproduct-06.log` で成功し、追加モジュールの Lean の警告は零。登録候補は §24.2 の九本。**`BinaryCoconeSpace` は登録しない。** §22 の五本は別に未取り込みのままなので、今回までで取り込み待ちの新規モジュールは合計十四本となる。
+
+九本の **116 宣言**の再帰監査は成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-native-coproduct-complete.log`）。追加本体に sorry・admit・新規公理・デバッグ宣言・満たせない `[ModelCategory SSet]` の仮定はない。未検査の Lean ソースは残していない。
+
+［一般∞］の移動候補は `CoproductFrames`・`CoproductFrameHom`・`AnodyneBinaryProducts`・`EnrichedPointPrecomposition`。KL-W1 の前なので全て `EInfinity/` の下に置いた。ほかの五本は BE 固有の比較・錐の供給である。既存の公開宣言・drafts・共通入口・共有監査は変更していない。界面の新しい二脚の欄はこの b ではまだ足していない（次の c で型を整える）。他レーンのファイルとの重複は零。
+
+ビルドと監査は一回の実行ごとに `--wait 3600` で鍵を取り、終わったら返す形。KL-W1 の取り込みと改名表への追従までは main への取り込みを依頼しない。b の後は指示の順に c、新しい二脚の欄を含む組み立て関数へ進む。
+
+
+## 25. c：指定二脚の厳密比較と、新欄 `coproduct_tensor_legs`
+
+### 25.1 閉じた照合
+
+`NativeCoproductLegs` で、**界面へ実際に供給した `barrattEcclesCoprodWith_cocone`** の第一・第二脚を、元の cofibrant な厳密余積の二包含の Kan 局所化の辺へ同定した。等式は `coherentCoconeLegMap` による **Δ[1] からの写像全体**の等式であり、零次の類だけの同定ではない。
+
+さらに、既存の全関手版の厳密自然変換 `barrattEcclesCoproductTensorNat` について、二包含との合成が `hopfTensorInl`・`hopfTensorInr` であることを証明した。台の複体に忘却した式も証明し、それぞれ
+
+```lean
+(ρ_ B.carrier).inv ≫ (𝟙 B.carrier ⊗ₘ unitD)
+(λ_ D.carrier).inv ≫ (unitB ⊗ₘ 𝟙 D.carrier)
+```
+
+という単位からの標準射そのものである。単位を与える零 arity の同型性も BE について無条件に証明して使う。c のこの厳密な照合に a・bar の実現・sifted 保存は使っていない。
+
+### 25.2 新しい欄の型と意味
+
+昼の指示 §12 の 4 に従い、新欄の名前を **`coproduct_tensor_legs`** とした。`EInfinityTheory` の既存の欄の型は変更していない。欄の型は次の補助を使う。
+
+```lean
+TensorCoproductLegCompatibility S toEInfinityCore x y (coprodWith S y)
+  (coprodWith_cocone S x y).val (coprodWith_cocone S x y).property.1
+  (coproduct_tensor S y)
+```
+
+この条件は、**既存の同じ全関手版の `FunctorIso`** の x での成分を、指定余錐の頂点からの同型に正規化し、忘却した二脚との合成が `derivedTensorInlHom`・`derivedTensorInrHom` に等しいことを要求する。二脚の可換式は D(S) の通常のホモトピー圏の式である。全関手版の同型を対象ごとの任意の同型へ弱めていない。
+
+標準射を界面内で定義する際に、BE の unit や Hopf 代数を参照しないようにした。離散基底代数から x・y への各射について、その忘却の像の単位の H⁰ の類を、`discrete_forget`、離散入力の既存の自由解像度の増大、代表の H⁰ との比較から読む。条件は、その**同じ単位の類を表す**複体のテンソル単位からの鎖写像の代表の存在と、その代表による二標準射との可換式を要求する。単位の正規化を落として任意の射を「標準射」として選ぶ条件にはしていない。EInfinityTheory の `discrete_initial` によって単位射は存在するので、単位射への量化が空で成り立つ条件でもない。
+
+`TensorLegs` で使うのは、固定された D(S) の既存の semifree 代表・閉 dg 射・複体の単位子である。**CAlg の模型の API は使っていない。** 三本の Interface モジュールに BE・hammock・ModelCategory の直接 import はなく、宣言・欄に `[ModelCategory SSet]` の仮定もない。
+
+`coproduct_tensor` 自体の全関手版の同型は経路 B の後段で供給するため、**新欄の BE における全実例の証明も、その同型と組で後段に残る**。今回の厳密な二包含の公式は、その実例を構成するための照合である。未構成の全関手版の同型や新欄の実例を無条件に証明済みとは扱わず、次の組み立て関数では、指示どおりこの新欄も引数に取る。
+
+### 25.3 規模・配置・検証
+
+| ファイル | 実測 | 役割 |
+| --- | --- | --- |
+| `EInfinity/NativeBinaryCoconeHom` | 44 行 | 指定二脚の始点を正規化したホモトピー圏の射。**［一般∞］の移動候補** |
+| `EInfinity/Interface/TensorLegs` | 91 行 | D(S) の二標準射と、同じ semifree 代表のテンソル頂点との等式 |
+| `EInfinity/Interface/TensorUnitClasses` | 77 行 | 離散基底代数・単位の H⁰ の類・単位の鎖写像の代表の正規化 |
+| `EInfinity/Interface/CoproductTensorLegs` | 55 行 | 全関手版の同じ成分と指定二脚の適合条件 |
+| `EInfinity/BarrattEccles/Theory/NativeCoproductLegs` | 115 行 | 実際の native な脚の同定、厳密自然変換の二包含と台の公式 |
+| `EInfinity/Interface/Theory.lean` の追加 | 6 行 | import と新欄 |
+| `drafts/Shared/BarrattEcclesTheory.lean` の追加 | 1 行 | 作業用の全実例に新しい未供給欄を反映（drafts 内の sorry） |
+| **合計** | **389 行** | |
+
+c の上限約 400 行以内。一般の二脚の補助は Interface の中へ混在させず、EInfinity の下の専用ファイルへ分けた。A1 の二本・A0・A3・items.csv は編集していない。共有の `Shared/BarrattEcclesTheory` は W14 のこの実例の持ち分で、今回の新欄一行だけを追加した。
+
+対象ビルドは `/tmp/bsw16/graded/tensor-legs-complete-02.log`（厳密照合）と `/tmp/bsw16/graded/tensor-legs-interface-final.log`（一般∞の補助の分離後の界面）で成功。追加ファイルの Lean 警告は零、依存先 `ZeroArity` の既報二件は残る。
+
+本体の六モジュール（新規五本と既存の `Interface.Theory`）の **163 宣言**の再帰監査も成功し、標準三公理のみ（`/tmp/bsw16/graded/audit-coproduct-tensor-legs.log`）。追加本体に sorry・admit・新規公理・デバッグ宣言はない。
+
+作業用全実例 `drafts/Shared/BarrattEcclesTheory.lean` も、新欄を加えた状態で型検査が成功（`/tmp/bsw16/graded/draft-theory-tensor-legs.log`）。このファイルの既存・追加の sorry の警告は drafts の未供給欄であり、本体の監査には含めていない。鍵は各ビルド・監査・drafts の型検査の終了時に返却した。
+
+登録候補は上表の新規五モジュール。既存の `Interface.Theory` は新欄が加わったため、その監査も今回行う。b の九本と §22 の五本を含め、取り込み待ちの新規モジュールは合計十九本。KL-W1 の後の改名表に追従してから取り込む。c の後は、`coproduct_tensor_legs` を含む未供給の欄だけを引数に取る組み立て関数へ進む。
+
+
+## 26. 段 4：既証明欄を固定した全界面の組み立て
+
+### 26.1 結論
+
+本体の `EInfinity/BarrattEccles/Theory/Assembly.lean` に **`barrattEcclesTheoryOfRemaining`** を置いた。既存の作業用の名前 `barrattEcclesTheory` と衝突させず、既証明欄を固定して全 `EInfinityTheory` を返す関数である。未供給の欄の型を推論して結論だけを仮定するのではなく、構造体の各既証明欄へ実際の本体の証明を代入して型検査している。
+
+引数は次の **十八欄だけ**。同じテンソルの全関手版の同型を、新しい二脚の適合条件の型にも使っている。
+
+| 群 | 引数 |
+| --- | --- |
+| 保存・存在 | `forget_preservesSifted`、`presentable` |
+| テンソル | `coproduct_tensor`、`coproduct_tensor_legs` |
+| 通常の cosimplicial Tot | `ofCosimplicial`、`ofCosimplicial_forget`、`ofCosimplicial_cone`、`ofCosimplicial_restrict` |
+| cdga の Tot | `ofCosimplicialCdga`、`ofCosimplicialCdga_cone`、`ofCosimplicialCdga_discrete`、`ofCosimplicialCdga_evalZero`、`ofCosimplicialCdga_evalZero_leg` |
+| 冪作用 | `powerOp0`、`powerOp0_zero`、`powerOp0_pos`、`powerOp0_discrete`、`powerOp0_tot` |
+
+中核、忘却の保存性の既証明部分・保存的性質、指定余積関手と native な余極限錐、離散基底環の始対象性、M13 の係数変更・比較・ホモロジー比較、π₀ の四欄、厳密な複体のホモロジー比較、`ofCdga` の三欄は本体の既存証明で供給する。特に `baseChange_forget` は `barrattEcclesBaseChange_forget` を使い、K 平坦性を外部の追加仮定に戻していない。
+
+この関数は未供給の十八欄を仮定にする、承認された条件付きの組み立てである。G12・M14・G10 や経路 B の全関手版の比較まで無条件に証明したという主張ではない。
+
+### 26.2 作業用実例と規模
+
+`drafts/Shared/BarrattEcclesTheory.lean` の既存の名前 `barrattEcclesTheory` を保ち、新しい組み立て関数への適用に書き換えた。**証明済みの欄の sorry はこのファイルから外し、残る十八欄だけを名前付き引数の sorry として残した。** 他の BS の drafts には変更を加えていない。
+
+本体の組み立ては **89 行**、作業用全実例は整理後 **49 行**。両方の現行のファイル全体を足しても 138 行で、組み立ての上限約 300 行以内である。共通入口・共有監査スクリプトには登録していない。
+
+### 26.3 検証と次の順序
+
+対象ビルドは `/tmp/bsw16/graded/barratt-eccles-theory-assembly-01.log` で成功。新しい組み立てモジュールの **16 宣言**の再帰監査も標準三公理のみ（`/tmp/bsw16/graded/audit-theory-assembly.log`）。同じ検査で関数の型の最上位の引数を列挙し、上表の十八欄だけであることを確かめた。本体に sorry・admit・新規公理・追加の `[ModelCategory SSet]` 仮定はない。
+
+作業用実例を接続した後の型検査も成功（`/tmp/bsw16/graded/draft-theory-assembly.log`）。その sorry の警告は未供給欄の drafts に限る。ビルド・監査・drafts の検査はそれぞれ別に `--wait 3600` で鍵を取り、終了時に返却した。
+
+登録候補は **`SerrePositivity.EInfinity.BarrattEccles.Theory.Assembly`**。§22 の五本・b の九本・c の五本と合わせ、取り込み待ちの新規モジュールは二十本。`BinaryCoconeSpace` の取り消しは変わらない。KL-W1 の後の改名への追従は取り込み前に行う。
+
+これで b → c → 組み立ての共通部分を区切った。承認待ちにはせず、指示書 §12 の順に **a の自由代数の比較の残り（上限約 2,100 行、3 割以内の超過は報告して続行）**へ戻る。その後は厳密な bar 図式・増大・U の下の分裂（上限約 800 行）。セル対は行わず、bar の ∞ 図式への移送・実現の同定・全関手版・sifted の残り・Tot は③-b の橋の後に残す。
+
+
+## 27. a の再開途中：KL-W1 verify の間はビルド・監査を待つ
+
+### 27.1 資源待機と作業木
+
+11-12 09:40 の調整役の連絡に従い、KL-W1 verify の終了の連絡まで、ビルドと監査を控える。
+自分の実行中の対象ビルドは終了し、待ちの要求を取り消した。`with_build_lock.sh --status` で
+`holder: (free)`、`queue (day order): 0` を確認した。他レーンのプロセスには触れていない。
+
+直前の exec セッションの終了を誤認して次の要求を出したため、一時的に同じ worktree の要求が二つになった。
+待ちの方を取り消し、両方の exec セッションの終了を回収済み。以後は `write_stdin` の戻りに
+`session_id` がなく終了コードがあることを確かめてから次の要求を出す。鍵の中で常駐するセッションは使っていない。
+
+b・c・組み立ての完了は §§24〜26 のとおり（`2bcb51fac`・`7c71d375c`・`9728984d0`）。
+a の今回の六本は、未検証の修正を含むため**コードをコミットせず作業木に置く**。
+この節は資源待機の途中記録であり、a の完了報告でも、上限による停止の申請でもない。
+
+### 27.2 現在の下書きと確認済みの範囲
+
+| モジュール（すべて `EInfinity/BarrattEccles/Theory/`） | 行数 | 状態 |
+| --- | ---: | --- |
+| `TwoColorStandardPowers` | 52 | 実際の標準パターンの入力から `power X m ⊗ power Y n` への複体の同型。対象ビルド成功 |
+| `BinaryTensorWordCounts` | 111 | 二色の入力数の和、置換不変性、標準語の軌道による被覆、固定 arity の代表。対象ビルド成功 |
+| `TwoColorStandardInclusion` | 75 | 指定包含を左右の冪の包含と `appendIso` で計算。停止直前の対象ビルド成功、追加警告零 |
+| `BinaryTensorOrbitInputs` | 100 | 実際の標準代表の安定化群上の入力複体、指定包含・射影、自己行列・異なる入力数の行列の消滅。対象ビルド成功、追加警告零 |
+| `TwoColorInputMatrix` | 55 | 各次数の誘導包含・余誘導射影の合成。元の複体射の別名の同定で型検査が重くなったため、実際の次数射で述べ直した修正は未検証 |
+| `BinaryTensorOrbitDecomposition` | 102 | 誘導包含による射の検出と有限双錐の普遍性の下書き。停止前の構文エラーを修正済み、修正後の型検査は未実施 |
+| **計** | **495** | 六本の一括の成功・監査は未実施 |
+
+これらは任意の入力複体を扱う。零微分、有界性、平坦性、群の位数の可逆性は仮定していない。
+既存の公開宣言とその定義は変更していない。新しい sorry・admit・axiom は書いていないが、
+**未検証の二本を証明済みとして数えない**。監査の宣言数もまだ確定していない。
+
+§22 の既存五本 902 行と今回の下書き 495 行を合わせ、a は現時点で **1,397 行**。
+残りは、(1) 標準入力同型のブロック置換との可換性、(2) 実際の誘導直和の型検査と微分の照合、
+(3) Schur 表示の複体としての直和・余不変・全複体の比較、(4) 指定 Hopf 比較の同定と弱同値。
+特に次数ごとの Schur 分解だけから複体の同型を主張せず、係数の微分と入力の微分の双方を照合する。
+入力の次数と係数の次数の順序にも注意する。経路 A のセル対は作っていない。
+
+### 27.3 再開の連絡の後の順序
+
+1. 現在の六本を対象に、一回の小さなビルドで未検証の二本から修正する。
+   鍵は `--wait 3600` で一枚だけ出し、対象ビルドの終了時に返却する。
+2. 六本の型検査が成功したところで、それぞれを含む再帰監査を一回だけ別の鍵で行う。
+   標準三公理のみを確認してから、コードと検証結果をコミットする。
+3. a の残りを上の順に閉じる。上限約 2,100 行に対し、3 割を超える見込みとなったときは止める。
+4. a の完了を報告した後に、厳密な随伴の bar・増大・U の下の分裂へ進む（上限約 800 行）。
+   いまはその実装には着手していない。bar の ∞ 図式への移送・実現の同定・全関手版、
+   sifted の残り、Tot は引き続き③-b の橋の後に残す。
+
+未検証の六本はまだ登録候補の確定一覧に加えない。現在の確定済みの取り込み待ち一覧は §26 の二十本。
+KL-W1 の取り込み後の改名表は、調整役から受け取ってから追従する。
+
+## 28. 検収用の型案：`coproduct_tensor_legs`
+
+### 28.1 名前と正確な型
+
+提案名は **`EInfinityTheory.coproduct_tensor_legs`**。§25 の `7c71d375c` に置いた型を検収用の案として提示する。
+欄を足すことの承認と、今回の具体的な型の検収は分ける。この案は枝にあり、main への取り込み・型の確定は調整役の検収を待つ。
+今回は界面のコードに追加変更をしていない。
+
+```lean
+coproduct_tensor_legs (S : Type u) [CommRing S]
+    (x y : (CAlg S) _⦋0⦌) :
+  TensorCoproductLegCompatibility S toEInfinityCore x y (coprodWith S y)
+    (coprodWith_cocone S x y).val
+    (coprodWith_cocone S x y).property.1 (coproduct_tensor S y)
+```
+
+`TensorCoproductLegCompatibility` の入力は次の型である。
+
+```lean
+(S : Type u) [CommRing S] (E : EInfinityCore.{u})
+(x y : (E.CAlg S) _⦋0⦌) (P : E.CAlg S ⟶ E.CAlg S)
+(c : JoinCocone (binaryPointDiagram x y))
+(hv : c.vertex = atVertex P x)
+(θ : FunctorIso (P ≫ E.forget S)
+  (E.forget S ≫ tensorWith (atVertex (E.forget S) y)))
+```
+
+条件の展開は以下。`θ` は、既存の `coproduct_tensor S y` の**同じ全関手版の同型**である。
+対象ごとに別の同型を選んで条件を満たす型にはしていない。
+
+```lean
+def TensorCoproductLegCompatibility : Prop :=
+  ∀ (ηx : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
+        SSet.HomotopyCategory.mk x)
+    (ηy : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
+        SSet.HomotopyCategory.mk y),
+  ∃ (unitX : 𝟙_ (Complex S) ⟶
+        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
+    (unitY : 𝟙_ (Complex S) ⟶
+        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
+    NormalizedTensorUnit S E x ηx unitX ∧ NormalizedTensorUnit S E y ηy unitY ∧
+    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeLeftHom c) ≫
+        (tensorComparisonAtCocone S E x y P c hv θ).hom =
+      derivedTensorInlHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitY ∧
+    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeRightHom c) ≫
+        (tensorComparisonAtCocone S E x y P c hv θ).hom =
+      derivedTensorInrHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitX
+
+```
+
+`binaryCoconeLeftHom c`・`RightHom c` は、指定された native 余錐の**実際の二脚**のホモトピー圏での射。
+`tensorComparisonAtCocone` は頂点の等式 `hv` で始域を正規化した `θ.app x` である。
+右辺の標準射は、同じ semifree 代表の鎖写像
+`(ρ_ _).inv ≫ (𝟙 _ ⊗ₘ unitY)` と `(λ_ _).inv ≫ (unitX ⊗ₘ 𝟙 _)` の D(S) での類を使う。
+
+`NormalizedTensorUnit S E x ηx unitX` は
+
+```lean
+(complexUnitHZeroIso S).inv ≫ HomologicalComplex.homologyMap unitX 0 =
+  coreUnitClass S E x ηx
+```
+
+という条件。`coreUnitClass` は離散基底代数からの射を `E.forget` と H⁰ に送り、
+`E.discrete_forget` と同じ H⁰ の代表比較で読む。任意の閉元を単位として選んで済ませない。
+`discrete_initial` があるので単位代数からの射への量化も空ではない。
+単位複体から semifree 代表への射は H⁰ の類でホモトピー類が決まるため、代表の選択はこの正規化で管理する。
+
+D71 に従い、これらの `Interface/` の型は BE・hammock のモジュールを直接 import せず、その API を使わず、
+欄の型に `[ModelCategory _]` を置かない。D(S) の固定された semifree の API は使う。
+
+### 28.2 A2 の `derivedPrismaticCohomology_tensor` での使い方
+
+A2 の現行の結論は、入力の**任意の指定二項余極限錐** `c` を Δ で写したものが余極限錐となること。
+単に二対象の値が同型であるという結論ではない。
+
+1. 出力側で `E.coprodWith_cocone A (Δ X) (Δ Y)` を取り、その普遍性から
+   `Δ c.vertex` への比較辺 `q` を作る。二脚は Δ を適用した入力の二脚で指定する。
+2. `E.coproduct_tensor A (Δ Y)` で忘却後の比較の始域を `U(Δ X) ⊗ᴸ U(Δ Y)` に移す。
+   **この移送と実際の二脚の整合を保証するのが新欄**である。
+3. 多項式の場合、同じ二つの変数包含が誘導する Künneth 射と `U(q)` を同定する。
+   Hodge–Tate の gr と微分形式の Künneth、完備性による検出で、この指定射が同値と示す。
+4. sifted 表示で一般の入力へ延ばす際は、`coproduct_tensor` の第一変数での全関手版の自然性を使う。
+   対象ごとの任意の同型では、図式の射と比較辺 `q` の同定を運べない。
+5. `forget_conservative` で `q` が可逆と戻し、指定余積錐から比較辺に沿って余極限性を移送する。
+   これで Δ による**同じ錐**の保存となる。
+
+注意：忘却後の「テンソルと二脚」の錐が D(A) の余積錐だとは主張しない。
+D(A) の加法的な余積と、CAlg の余積を忘却したテンソルとは別である。
+
+新欄はホモトピー圏での二脚の可換式を記録する。native な錐の移送に必要な二つの三角形は、
+この等式から固定端点の辺のホモトピーを取り出して作る補助補題が要る。
+二点離散の図式なので、二脚間の追加の相互 coherence はないが、
+**この錐の比較補題そのものは未証明**。それを仮定せずに `IsColimitCone` が直ちに従うとは数えない。
+比較補題が不足するなら、条件を coherent な三角形の選択まで含めるかを実装前に調整役へ戻す。
+
+## 29. 経路 B の厳密な前段の設計（ビルドなし）
+
+### 29.1 実際の随伴と既存の単体的分解
+
+係数環を `A`、`P := BarrattEccles.operad A` とする。既存の厳密な随伴は
+
+```lean
+F := P.freeAlgebraFunctor
+U := Operad.Algebra.forget P
+h := P.freeAlgebraAdjunction  -- F ⊣ U
+G := h.toComonad             -- 代数圏上。台の関手は U ⋙ F
+```
+
+である（合成の記法上 `U ⋙ F` が数学の F U）。余単位は `h.counit`、余乗法は F η U。
+`freeAlgebraAdjunction_unit_app` は単位を `P.schurUnit` に、
+`freeAlgebraAdjunction_counit_app` は余単位を `X.evaluationHom` に同定している。
+
+`HomotopicalAlgebra/HomotopyFunctionComplex/ComonadSimplicialResolution.lean` の
+`SerrePositivity.HomotopyFunctionComplex.ComonadSimplicialResolution` を `R` と略記すると、使う型は
+
+```lean
+strictBar (X : P.Algebra) : SimplicialObject P.Algebra := R.diagram G X
+strictBarAugmentation (X : P.Algebra) :
+  strictBar X ⟶ (SimplicialObject.const P.Algebra).obj X := R.augmentation G X
+strictBarAugmented (X : P.Algebra) : SimplicialObject.Augmented P.Algebra
+```
+
+最後は `left := strictBar X`、`right := X`、`hom := strictBarAugmentation X` の構造体。
+ここにモデル構造・cofibrancy の仮定は不要である。
+
+| 使う既存宣言 | 供給されるもの |
+| --- | --- |
+| `R.diagram`、`diagram_obj` | 通常の `SimplexCategoryᵒᵖ` 上の全図式、Bₙ(X) = Gⁿ⁺¹ X |
+| `R.diagram_face` | `ComonadResolutionOperators.face G X (n+1) i` による面 |
+| `R.diagram_degeneracy` | `ComonadResolutionOperators.degeneracy G X n i` による退化 |
+| `R.augmentation`、`augmentation_app` | 全図式の増大と、反復余単位による各成分 |
+| `ComonadResolutionOperators.face_face`、`degeneracy_face_*`、`degeneracy_degeneracy` | 既存の単体的関係式。書き直さない |
+| `ComonadResolutionOperators.face_augmentation`、`degeneracy_augmentation` | 増大と面・退化の可換性 |
+
+自由・忘却随伴を新たな抽象仮定にせず、これらへ実際の `P.freeAlgebraAdjunction` を代入する。
+ただし、Bₙ が自由代数であることから台の入力まで cofibrant と結論してはならない。
+後段で cofibrant な複体上の自由比較を使うには、入力の cofibrant 置換とその比較が別途必要。
+これは厳密な bar の定義・分裂とは分け、③-b の橋の後の比較の課題に残す。
+
+### 29.2 忘却後の追加退化の型と五つの式
+
+忘却後の増大図式の型は
+
+```lean
+strictBarUnderlyingAugmented (X : P.Algebra) :
+  SimplicialObject.Augmented (Complex A)
+strictBarUnderlyingExtraDegeneracy (X : P.Algebra) :
+  SimplicialObject.Augmented.ExtraDegeneracy (strictBarUnderlyingAugmented X)
+```
+
+`left := strictBar X ⋙ U`、`right := U.obj X`。
+増大の成分を `U.map ((R.augmentation G X).app j)` と定め、自然性は既存の増大の自然性へ
+`U.map` を適用して示す。定値関手との合成が定義上同一であると無理に仮定しない。
+
+Mathlib `AlgebraicTopology/ExtraDegeneracy` の既存の構造体へ、以下を入れる。
+
+- `s' := h.unit.app (U.obj X)`。
+- `s n := h.unit.app (U.obj (ComonadResolutionOperators.power G X (n+1)))`。
+  目標の終域は U Gⁿ⁺² X = U F U Gⁿ⁺¹ X。
+- `s'_comp_ε`：X における随伴の右三角恒等式。
+- `s_comp_δ₀ n`：Gⁿ⁺¹ X における同じ右三角恒等式。
+- `s₀_comp_δ₁`：`U.map (h.counit.app X)` に対する η の自然性。
+- `s_comp_δ n i`：面の後続添字の再帰式 `face_succ` と、U を適用した面に対する η の自然性。
+- `s_comp_σ n i`：退化の後続添字の再帰式 `degeneracy_succ` と、U を適用した退化に対する η の自然性。
+
+追加退化は**忘却後の複体の射**であり、通常は代数射ではない。
+したがって代数圏の bar 自身が分裂しているという誤った強化は行わない。
+`ExtraDegeneracy.section_`・`section_comp_hom`・`homotopy` は構造体を供給した後に再利用できる。
+`OrdinaryBarSourceExtraDegeneracy` は通常の Hom 集合と逆転した単体添字の別の bar なので、
+その実例を BE の bar の分裂として使わない。構造体への包装の参考に限る。
+
+### 29.3 X に関する自然性、規模、境界
+
+`powerMap G f 0 := f`、`powerMap G f (n+1) := G.map (powerMap G f n)` とし、
+面との可換性は余単位の自然性、退化との可換性は余乗法の自然性で帰納する。
+面・退化による通常の単体圏の生成を使って
+
+```lean
+strictBarFunctor : P.Algebra ⥤ SimplicialObject P.Algebra
+strictBarAugmentedFunctor : P.Algebra ⥤ SimplicialObject.Augmented P.Algebra
+```
+
+まで保つ。追加退化の X についての自然性も `h.unit.naturality` から得る。
+対象ごとの分裂しか作らず、後で全関手版に自然性を足す設計にはしない。
+
+| 部分 | 新規 Lean の見込み |
+| --- | ---: |
+| 実随伴の適用、bar・増大・成分の式 | 70〜110 |
+| `powerMap`、X の全関手と増大の自然性 | 130〜200 |
+| U の下の増大、追加退化と関係式、自然性 | 130〜210 |
+| BE の指定単位・評価射の式と公開の包装 | 60〜100 |
+| **計** | **390〜620** |
+
+任意の随伴で成り立つ部分は `EInfinity/` の専用補助ファイルへ置き、一般圏の補助として報告する。
+新しい `InfinityCategories/` のファイルは作らない。既存の Comonad 分解を変更しない。
+上限約 800 行、3 割の緩めも含む既定の停止規則を保つ。
+この見込みには bar の ∞ 図式への移送・実現の同定・cofibrant な自由入力への比較・全関手版のテンソル比較を含めない。
+それらは③-b の取り込み後の作業で、厳密な分裂だけから完了したとは数えない。
+
+## 30. c と段 4 の組み立ての下書きの所在
+
+今回の依頼の c と組み立てについては、先行して書いた本体のコードがあるため、同じ実装を重複して作らない。
+**今回の verify 待機中はビルドも監査もしていない。** 以下は待機前に確認した結果の再掲である。
+
+- c：`Theory/NativeCoproductLegs.lean`（115 行、`7c71d375c`）。
+  `barrattEcclesCoprodWith_cocone_leg_left/right` は採用した native 錐の脚を厳密な二包含の区間全体へ同定する。
+  `barrattEcclesCoproductTensorNat_inl/inr` と `_carrier` は**既存の厳密な自然変換**が
+  その二包含を上の標準テンソル射へ送ることを示す。
+  全関手版の `coproduct_tensor` が未供給なので、§28 の欄の無条件の実例まで証明したとは数えない。
+- 組み立て：`Theory/Assembly.lean`（89 行、`9728984d0`）。
+  `barrattEcclesTheoryOfRemaining` は既証明欄を固定し、残る十八欄だけを引数に取る。
+  引数 `coproduct_tensor_legs` の型は、先行する**同じ引数** `coproduct_tensor` を参照する。
+  忘却の sifted 保存、presentable、テンソル比較・二脚、通常 Tot の四欄、cdga Tot の五欄、P⁰ の五欄が未供給。
+  `baseChange_forget` は追加の K 平坦性仮定なしの本体の証明を代入している。
+- `drafts/Shared/BarrattEcclesTheory.lean` は、この組み立てへ十八欄だけを渡す 49 行の作業用実例。
+  既証明欄の sorry は除去済み。⑤b の A1 二本、⑤c の A0・A3 は触っていない。
+
+§28 の型案の検収で変更が必要になれば、界面、組み立ての対応する引数、作業用実例を同時に追従する。
+その再検証は verify 終了の連絡後に行う。検収前に共通入口や共有監査へ登録しない。
+
+## 31. ④の段 0 の下調べ：G12・M14・M15（紙のみ）
+
+この節は将来の④の設計のための下調べで、W16 の実装範囲を広げるものではない。
+地図は現在の枝の `research/htt-coverage/{items.csv,review/}` と
+`research/ha-coverage/{items.csv,review/}` を読んだ結果であり、CSV は編集しない。
+以下の `none`・`partial` は地図の調査上の分類であり、新しく型検査した証明の判定ではない。
+KL-W1 の改名を先取りせず、現在の main 系統の宣言名・モジュール名を記す。
+
+### 31.1 G12：BE の CAlg の presentable 性
+
+最終の型は既存の界面どおりである。
+
+```lean
+(S : Type u) [CommRing S] ⊢
+  @F2.Presentable.IsPresentable (barrattEcclesCore.CAlg S)
+    (barrattEcclesCore.quasicategory S)
+```
+
+準圏のインスタンスは既存の `barrattEcclesCore.quasicategory S` を明示している。
+`IsPresentable` の中身は同じ宇宙での accessibility と**全ての小さい native 余極限**の存在。
+単に通常の厳密代数圏に余極限があることではない。
+
+再利用できる本体：
+
+- `derivedInfinityCategory_isPresentable`（`Derived/Presentable/DerivedCategory`）：非有界 D(S) の実際の presentable 性。
+- `Operad.freeAlgebraAdjunction`、`Algebra.forget_isCardinalAccessible`、`freeAlgebra_finitelyPresentable`：
+  厳密な自由・忘却、通常圏での filtered 保存と自由像の小ささ。
+- `Operad/AlgebraSiftedColimits.forget_createsSiftedColimitsOfShape`：通常の dg 代数の sifted 余極限。
+- `BarrattEccles.modelCategory`、`modelCategory_cofibrantlyGenerated`：実際に構成された模型と生成族。
+- W16 の `cAlgForgetDerived_conservative` と無条件の係数変更の比較。
+  ただし `forget_preservesSifted` は引き続き未供給である。
+- `F2.Presentable.IsPresentable.of_equivalence`：同じ native 準圏の全同値を**構成できた後**の移送。
+
+地図との対応：
+
+| 地図の項目 | 現在の分類と使い分け |
+| --- | --- |
+| HA 3.2.3.5 | `none`。G12 の直接の数学的対応。全 ∞ オペラッドの一般定理を実装することは D75 の BS 経路の要件ではない |
+| HA 3.2.3.1 | `none`。厳密な sifted 保存から native な保存への橋は未供給。③-b と W16 の BE 固有部分を使う |
+| HA 4.7.3.5 | `partial`。Mathlib の通常圏の Barr–Beck はあるが、U-split 単体図式による ∞ モナド性まではない |
+| HTT 5.5.1.1 | `partial`。presentable から前層反射表示を得る結果はある。CAlg の presentability を前提なしに作る逆方向ではない |
+| HTT A.3.7.6 | `none`。組合せ的な単体模型から native な presentability へ移す汎用比較は地図上未供給 |
+| HA 1.3.5.21 | `partial`。加群の D(S) の presentability は本体にある。CAlg へは別の橋が要る |
+| HTT 5.5.8.15 | `own`。PΣ の filtered・幾何学的実現による全関手の普遍性は再利用候補。ただし CAlg 全体を PΣ と同一視する証明はない |
+
+提案経路は、D(S) の presentability、誘導された自由・忘却随伴、③-b の実現の橋と W16 の sifted 保存を使い、
+**BE に実際に作用する accessible なモナドの代数との全準圏比較**を作るもの。
+その代数圏の accessibility と全小余極限から G12 を得る。
+汎用の HTT A.3.7.6 を作る案は代替であり、現在の BE 模型が simplicial combinatorial であるという追加証明も必要。
+cofibrantly generated だけからその仮定を満たしたことにしない。
+
+不足は、(a) 誘導されたモナドと全 Eilenberg–Moore 準圏、(b) 同じ U の実際のモナド性の比較、
+(c) accessible なモナドから native presentability を得る一般の定理。
+U が保存的・sifted 保存である二条件だけを別の構造体に詰めて、その結論を仮定に入れる実例にはしない。
+
+規模の初期見込み：一般のモナド性・代数圏の橋が供給済みなら BE への適用は **600〜1,000 行**。
+その橋も④で作る場合は一般部分 **2,400〜4,000 行**、適用を合わせ **3,000〜5,000 行**。
+これは未実装の一般部分を含む幅のある見積もりであり、現在の模型の欄だけの小さな証明という見込みではない。
+③-b の完成物を読んだ後、重複する一般部分を差し引いて段 0 で確定する必要がある。
+
+### 31.2 M14：Frobenius 半線形な P⁰
+
+供給する入口は、既存の次の全自然変換である。
+
+```lean
+powerOp0 (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] :
+  FunctorHom (forget k) (forget k ≫ restrictD (frobenius k p))
+```
+
+加えて、同じ変換について π₀ で Frobenius、πₙ（n > 0、つまり H⁻ⁿ）で零、
+離散入力と cosimplicial 可換環の Tot で指定 Frobenius 射に一致する四条件が必要。
+`powerOp0_pos` は H の**負次数**の条件であり、正のコホモロジー次数の消滅と取り違えない。
+単に各ホモロジー群に関数を定義するだけでは界面の型を満たさない。
+
+再利用：BE の `operad` の作用と自由代数、`arityRepresentationChain` と実際の対称群の射影解像度、
+`twoColorCoefficientComparison` など指定係数射を同じ解像度で管理した経験と API、
+W16 の係数制限 `barrattEcclesRestrictD`・`restrictD_homologyIso`・π₀ 比較・離散入力比較。
+ただし二色の係数比較は P⁰ の構成そのものではなく、p 個の入力の巡回対称性を持つ冪作用を供給しない。
+`drafts/Shared/EInfinityPowerOperation.lean` は界面からホモトピー上の作用を読む利用側の型を与えるが、
+`E.powerOp0` を引数として使っているため模型での構成の証拠にはしない。
+
+地図：主な出典は **DAG XIII Construction 2.2.6・Remark 2.2.7** で、HTT・HA の項目表に
+その番号の独立項目はない。対応しない HA の定理番号を P⁰ に割り当てない。
+HA 3.1.3（自由代数）・3.2.3.1（実現等）・4.7.3.5（モナド的な分解）は構成を延ばすための周辺項目であり、
+それらの完成で P⁰ が既に得られるとはしない。HTT の presentable・余極限の項目も操作の係数計算を供給しない。
+
+不足の分解：
+
+1. BE の p 入力の作用から、k 線形ではなく φₖ 半線形な鎖レベルの指定操作を作る。
+   符号、巡回群の作用、微分と作用の整合を含む。既存の通常の Frobenius 環準同型だけでは不足。
+2. その操作を弱同値で局所化して、U 全体の coherent 自然変換として降ろす。
+   ホモロジー上の自然性だけで置き換えない。
+3. 零次と正のホモロジー次数での値を、同じ操作について計算する。
+4. 離散入力と Tot の Frobenius との**同じ変換の成分の一致**を証明する。
+   Tot の比較は G10 と係数制限の比較を待つ。
+
+初期見込み：係数・鎖レベルの操作と値の計算 **1,600〜2,800 行**、
+自然変換と局所化 **600〜1,000 行**、離散・Tot の照合 **600〜1,200 行**、
+**計 2,800〜5,000 行**。p 群の解像度の追加 API が必要なら再見積もりする。
+この段階では実装・新しい界面欄の追加を行わない。
+
+### 31.3 M15：一般の E∞ 底 R 上の descendability
+
+利用側の入口は `drafts/Shared/Descendable.lean` の
+
+```lean
+IsDescendableOver (R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) : Prop
+HasDescentIndexLEOver (R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) (n : ℕ) : Prop
+```
+
+である。一般の R に対し **Mod_R(D(A))** の thick ⊗-ideal として定義する。
+`R = Δ_T` は離散環であるとは限らない。固定した離散 A の D(A) の定義だけでは Lemma 8.6 に足りない。
+M15 を `EInfinityTheory` に新たな欄として入れる設計にはしない（既存の界面設計の決定）。
+
+再利用できるもの：
+
+- D(A) の `tensorWith`、安定性、fiber/cofiber と極限・Tot の部品。
+- `StableVertexClosure` と、`dgThickClosureProperty_iff_nativeStableRetract` など
+  native な安定閉包と retract の既存比較。これらは指定 dg 部分圏の厚い閉包であり、相対テンソルへの閉性は別途必要。
+- 通常の内部加群の `MonoidalModuleColimits.colimitCoconeLiftsToColimit`、
+  `MonoidalModulePresentability.isLocallyPresentable`、`MonoidalBalancedTensor.symmetricCategory`。
+  通常の対称モノイダル圏内の結果であり、一般の E∞-R 加群の ∞ 圏への比較を供給しない。
+- W16 の指定余積と二脚の比較は将来の Amitsur 図式の構造射の照合に使える。
+  任意の相対テンソル B ⊗ᴸ_R C は、絶対テンソルの欄一つから直ちに得られるものではない。
+
+地図との対応：
+
+| 地図の項目 | 対応と現状 |
+| --- | --- |
+| HA 4.2.1.15 | `partial`。通常圏の内部モノイド・内部加群の型がある。全 E∞ 底の加群準圏ではない |
+| HA 4.2.3.5・4.2.3.7 | `partial`。通常の加群の余極限・局所可呈示性。native の一般の R-加群にする橋が不足 |
+| HA 4.5.1.1 | `partial`。通常の固定可換環の加群圏。一般の可換代数対象への適用は未供給 |
+| HA 4.5.2.1 | `partial`。通常の内部加群の対称モノイダル相対テンソルはある。導来相対テンソルとの全比較が必要 |
+| HA 4.5.3.1 | `none`。基底 R を動かす加群の高次圏と底変換の全体が不足 |
+| HA 1.1.3.3 | `partial`。安定部分圏の一部の判定。thick ⊗-ideal と有限指数判定全体ではない |
+
+descendability 自体の直接の出典は **Mathew Definition 3.18・Proposition 3.22**、
+指数と Frobenius 余極限は **BS17 §11.2・Lemma 11.22**。
+これらを HTT/HA の一般の「降下」項目の完成に数えない。特に HTT §6 のトポスの降下は別の主張である。
+
+不足と順序：
+
+1. 一般の BE 代数 R 上の加群の局所化、安定性、相対テンソルと内部 Hom、底変換の coherent な構成。
+   この模型の構成と、抽象的な数学の一般定理は分ける。
+2. 安定対称モノイダルな加群圏で thick ⊗-ideal・指数を定義し、
+   `descendable ↔ ∃ n, index ≤ n`、底変換・合成・テンソルでの安定性を示す。
+3. 指数から Amitsur の塔の nilpotence／収束を導き、任意の R-加群の Tot 降下へ進む。
+   有限段で塔が一律に分裂する、と未証明に仮定しない。
+4. RHom による指数 ≤ 2、Frobenius 余極限の指数評価、完備版を同じ相対底 R で示す。
+
+`drafts/Shared/Descendable.lean` の一般底の定義はまだ sorry、RHom と完備版の一部は
+`True := by trivial` の印である。これらは必要な主張の証明として数えず、実装前に正しい型を確定する。
+
+初期見込み：一般の R-加群・相対テンソルの模型と比較 **2,500〜4,500 行**、
+thick ⊗-ideal・指数と安定性 **900〜1,500 行**、Amitsur の塔・降下・指数評価と完備版 **1,400〜2,500 行**、
+**計 4,800〜8,500 行**。加群圏の一般部分が供給済みなら残る部分は **2,300〜4,000 行**。
+この幅は一般の E∞ 底を落とさない場合の初期見込みで、離散底だけで完了扱いにはしない。
+
+### 31.4 現在の待機と再開順
+
+今回は紙の検討と既存コード・地図の読取りだけを行った。ビルド・監査は走らせず、鍵も要求していない。
+新たな Lean 実装や既存の界面の変更は加えていない。
+調整役の型の検収を待つ間も独立の紙の作業は可能だが、verify 終了の連絡までは検証しない。
+終了の連絡後は、§27 の作業木に残っている自由比較の六本の型検査と監査から再開する。
+bar の実装は a の区切りの後、③-b を要する実現・Tot はその取り込みの後という順序を保つ。
+
+## 32. verify 待機中の Lean 下書き（11-12 10 時の依頼）
+
+D78 により §28 の `coproduct_tensor_legs` の型が承認された。
+二点離散の図式なので二脚のホモトピー圏での可換式を維持し、欄を coherent な三角形の選択へ強めない。
+指示書 §13 の錐の移送は一般補題として、指定の将来のパスに下書きを置いた。
+**この節の新しい三本は未検証・未コミットであり、証明の完成・監査成功とは数えない。**
+
+### 32.1 二点余錐の一般の移送
+
+下書きの場所：
+`SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean`（72 行）。
+KL-W1 枝にも同名のファイルがないことを読取りで確認し、既存ファイルは変更していない。
+名前空間も `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits` とした。
+
+`p : Δ[0] ⨿ Δ[0] ⟶ X`、`c d : JoinCocone p` を固定する。
+`binaryCoconeVertexIso_of_apexIso` は、`e : VertexIso c.vertex d.vertex` と
+`[c.left] ≫ e.hom = [d.left]`・`[c.right] ≫ e.hom = [d.right]` から、
+**同じ p 上の coslice の頂点同型**を作る。
+`isColimitCone_iff_binaryCocone_apexIso` と
+`IsColimitCone.of_binaryCocone_apexIso` はその同型で指定余錐の余極限性を移す。
+安定性、模型、テンソル構造、辺の三角形の追加仮定は置かない。
+
+既存の `exists_binaryCoconeEdgeLift_of_comm` を再利用し、頂点の同型を代表する辺を持ち上げ、
+`leftFibration_reflects_invertibleEdge` と `isColimitCone_iff_of_vertexIso` を使う証明を書いた。
+現在の枝の import と旧公開名を使っており、KL-W1 の改名表への追従後に検証する。
+配置表では `BinaryCoconeEdgeLift` が一般的な型のまま HA/StableInfinityCategories 側へ移る予定なので、
+取込み後の一般補題の依存先の配置も確認対象とする。関連する共有ファイルには手を入れていない。
+
+### 32.2 厳密な bar と BE への適用
+
+- `SerrePositivity/EInfinity/StrictAdjunctionBar.lean`：236 行。
+  `powerMap` と面・退化・増大の自然性を用い、既存の Comonad 分解を
+  `diagramFunctor`・`augmentedFunctor` に束ねる。
+  任意の厳密な随伴 `h : F ⊣ U` の `h.toComonad` へ適用し、
+  `underlyingAugmented`・`underlyingExtraDegeneracy`、切断、増大との合成、追加退化の自然性まで書いた。
+  追加退化の五つの条件には、既存の面・退化の式、右三角恒等式、単位の自然性を使用する。
+- `SerrePositivity/EInfinity/BarrattEccles/Theory/StrictBar.lean`：58 行。
+  実際の `(operad A).freeAlgebraAdjunction` を代入する。
+  bar・増大の全関手、忘却後の分裂、零次の増大と評価射の一致、零次の切断と Schur 単位の一致を公開する下書き。
+
+**合計 294 行**で、上限約 800 行以内。一般部分はモデル構造を仮定せず、
+代数圏内の追加退化、実現の保存、局所化との同定、bar の入力の cofibrant 性は主張していない。
+一般圏の補助は専用の `EInfinity/StrictAdjunctionBar.lean` に置き、移動候補と印を付けた。
+
+### 32.3 A2 のコメントと再開順
+
+`drafts/A2/BaseChangeAndTensor.lean` の `derivedPrismaticCohomology_tensor` の証明手順のコメントを、
+§28.2 の指定比較辺 → `coproduct_tensor` → `coproduct_tensor_legs` →
+多項式 Künneth と sifted 表示 → 保存的な忘却 → 一般の二点余錐の移送、という順に直した。
+宣言の型と既存の sorry は保った。コメントと空白を除いた Lean の文字列が変更前と同じことだけを
+軽いテキスト比較で確認した。これは Lean の型検査ではない。
+
+今回、ビルド・監査・鍵の要求は一切行っていない。
+三本には sorry・admit・axiom を書いていないが、型検査していないため監査の宣言数は未記入。
+A2 のコメントとこの報告だけをコミットし、新規三本は自由比較の六本と同じく作業木に残す。
+verify 終了の連絡後は、**自由比較六本 → 一般の二点余錐の移送 → 厳密な bar の二本**の順で検証し、
+成功した区切りで監査とコードのコミットを行う。KL-W1 の取り込み・改名表への追従が必要なものは先に行う。
+
+## 33. verify 後の再開：自由比較の作業木の六本を検証
+
+§27 の六本は対象ビルドと再帰監査が成功した。
+標準パターンを左右のテンソル冪へ移す複体の同型と指定包含の式、語の濃度による軌道の被覆、
+実際の標準代表の安定化群の入力と指定包含・射影、直交性、誘導した入力表現の有限直和の普遍性を供給する。
+誘導包含による射の検出は `Rep.indResAdjunction` の自然性から標準代表の包含へ戻して証明した。
+未供給の被覆条件を新たな仮定として残していない。任意の入力複体を許す。
+
+| 登録候補（接頭辞 `SerrePositivity.EInfinity.BarrattEccles.Theory.`） | 行数 |
+| --- | ---: |
+| `TwoColorStandardPowers` | 52 |
+| `BinaryTensorWordCounts` | 111 |
+| `TwoColorInputMatrix` | 65 |
+| `TwoColorStandardInclusion` | 75 |
+| `BinaryTensorOrbitInputs` | 100 |
+| `BinaryTensorOrbitDecomposition` | 104 |
+| **計** | **507** |
+
+`TwoColorInputMatrix` の比較同型は、その構成に部分群の所属判定が入る。
+当初、具体的な二色部分群の計算可能な判定と、一般定理の classical な判定の間の照合で型検査が遅くなった。
+同じ指定比較同型のために、補題の型の `letI : DecidablePred (· ∈ H)` で一般定理と同じ判定を明示した。
+新しい数学的仮定や別の比較同型へ置き換えたのではない。最終の一本は 2.7 秒でビルド成功、追加警告零。
+
+対象ビルドの成功は `/tmp/bsw16/graded/resume-free-inputs-03.log`（軌道直和）と
+`resume-free-inputs-10.log`（最後の行列比較）、先行の成功分は §27 の記録に対応する。
+六本の一括の再帰監査は `/tmp/bsw16/graded/audit-free-inputs-six.log` で成功：**71 宣言、標準三公理のみ**。
+追加本体に sorry・admit・新規公理はない。各ビルド・監査の終了を回収してから次の鍵を取った。
+
+a は §22 の 902 行と合わせて **1,409 行**。自由代数の Hopf 比較の弱同値までは未完了。
+標準入力同型のブロック置換との照合、誘導表示と係数の全複体としての Schur 分解、
+実際の Hopf 自由比較の同定が残る。段階の完了と今回の作業木の検証を混同しない。
+取り込み待ちの新規モジュールは、§26 の二十本と今回六本で二十六本。
+共通入口と共有監査スクリプトは編集していない。
+
+次は依頼された検証順に一般の二点余錐の移送、厳密な bar の下書きを検証し、その後 a の残りへ戻る。
+
+## 34. D78 の二点余錐の一般の移送補題の検証
+
+§32.1 の `BinaryCoconeApexTransport.lean`（72 行）は対象ビルドと監査が成功した。
+`binaryCoconeVertexIso_of_apexIso`、`isColimitCone_iff_binaryCocone_apexIso`、
+`IsColimitCone.of_binaryCocone_apexIso` の三つの公開補題を供給する。
+一般の準圏と固定された二点離散図式に対する主張で、安定性・模型・テンソル構造は要求しない。
+辺の三角形の選択を仮定に強めず、ホモトピー圏での二脚の可換式から構成した。
+
+ビルド `/tmp/bsw16/graded/binary-cocone-apex-02.log` は成功。
+監査 `/tmp/bsw16/graded/audit-binary-cocone-apex.log` は **4 宣言、標準三公理のみ**。
+sorry・admit・新規公理はない。KL-W1 の規則の名前空間
+`Kerodon.LimitsAndColimits.LimitsAndColimits` による重複名前空間の警告三件は残した。
+
+登録候補は
+`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.BinaryCoconeApexTransport`。
+これは取り込み前の枝で旧 import・既存の旧宣言名を用いて検証したものであり、
+KL-W1 取り込み後の改名表への追従と、その後の対象検査は別途必要。
+§32.1 の一般の補助の依存先の配置の確認も引き続き取り込み時の確認事項。
+入口と共有監査スクリプトは編集していない。取り込み待ちの新規モジュールは二十七本。
+
+自由比較の六本、D78 の移送補題の検証を区切り、次は厳密な bar の二本を検証する。
+
+## 35. 経路 B の厳密な bar の前段：対象ビルドと監査が成功
+
+§32.2 の二本を検証した。
+`SerrePositivity.EInfinity.StrictAdjunctionBar` は任意の厳密な随伴の実際の余モナドを用い、
+通常の `SimplexCategoryᵒᵖ` 上の bar の全関手、増大の全関手、右随伴を適用した増大と追加退化、
+追加退化からの自然な切断と増大との合成、対象に関する追加退化の自然性を供給する。
+既存の `ComonadSimplicialResolution` を再利用し、対象に関する自然性を面・退化と単体圏の生成で証明した。
+一般圏の補助として、移動候補の印を module docstring に付けている。
+
+`SerrePositivity.EInfinity.BarrattEccles.Theory.StrictBar` は、
+構成済みの `(operad A).freeAlgebraAdjunction` を実際に代入し、BE の bar・増大・忘却後の追加退化を供給する。
+零次の増大は既存の `evaluationHom`、忘却後の零次の切断は同じ `schurUnit` へ同定した。
+
+追加のモデル構造、cofibrancy、実現の保存、局所化の同定を仮定していない。
+追加退化を**代数圏内の分裂**としては主張していない。
+bar の各項の自由代数への入力を cofibrant と示すこと、bar を ∞ の図式へ移し実現を同定すること、
+全関手版の `coproduct_tensor` と `forget_preservesSifted`、Tot の群は引き続き未供給。
+
+| 新規登録候補 | 行数 |
+| --- | ---: |
+| `SerrePositivity.EInfinity.StrictAdjunctionBar` | 266 |
+| `SerrePositivity.EInfinity.BarrattEccles.Theory.StrictBar` | 60 |
+| **計** | **326** |
+
+上限約 800 行以内。対象ビルド `/tmp/bsw16/graded/strict-bar-06.log` は成功、追加警告零。
+再帰監査 `/tmp/bsw16/graded/audit-strict-bar.log` は **49 宣言、標準三公理のみ**。
+sorry・admit・新規公理はない。各ビルドと監査は別々の鍵で行い、終了後に返却した。
+
+これで依頼された「自由比較六本 → 二点余錐の一般の移送 → 厳密な bar」の検証順を完了した。
+共通入口と共有監査の登録は行っていない。§34 と合わせ取り込み待ちの新規モジュールは二十九本。
+KL-W1 の取り込みと改名表への追従は調整役からの案内の後に行う。
+次は a の残りへ戻る。厳密な bar の前段を検証したことを、a や経路 B の全体の完了とは数えない。
+
+## 36. a：標準入力の作用の照合と、規模による中間停止
+
+### 36.1 今回閉じた部分
+
+`SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorStandardAction`（104 行）を追加した。
+指定標準入力から左右のテンソル冪への同型について、実際の signed permutation action と可換であることを示す。
+左右の冪を和の冪へ含める射の式を使い、標準パターンを固定する証明を保ったまま、
+二色部分群の指定射影のブロック置換と照合した。
+`twoColorStandardPowersIso_action` は抽象的に作用が存在するという主張ではなく、同じ指定同型の可換式である。
+入力の有界性・零微分・平坦性は要求しない。
+
+対象ビルド `/tmp/bsw16/graded/standard-action-04.log` は成功。
+新規ファイルの追加警告は零。依存先の既報の `ZeroArity` の二警告はそのまま。
+再帰監査 `/tmp/bsw16/graded/audit-standard-action.log` は **17 宣言、標準三公理のみ**。
+sorry・admit・新規公理はない。
+
+登録候補は上の一本。取り込み待ちの新規モジュールは §35 の二十九本と合わせ三十本。
+入口・共有監査には登録していない。
+
+### 36.2 残りの比較を再分解した結果
+
+a の既存 §22 の五本は 902 行、§33 の六本は 507 行、今回 104 行で、**現時点の実測は 1,513 行**。
+標準入力の作用の照合まで進め、残りの実際の始域・終域を照合したところ、
+§22.3 の第四行「Schur 分解・全複体の比較」には、異なる三つの比較が必要であることを確認した。
+これらは単に同型を合成するだけの既存の公開宣言では供給されていない。
+
+1. `TwoColorInducedCoefficients.twoColorInducedSourceIso` の入力 V は **一つの Rep**。
+   任意の V の複体に対しては、誘導入力と制限係数の余不変の比較を両変数で自然にし、
+   入力と係数の双方の微分を保つ全複体の比較へ持ち上げる必要がある（120〜180 行の見込み）。
+   `TwoColorComplexInputs.twoColorComplexInputHomotopyEquiv` は任意の V の複体で使えるが、
+   その始域は既に二色群へ制限した係数の全複体であり、この誘導側からの比較を供給するものではない。
+2. `SchurDegreeDecomposition.schurDegreeBidegreeIso` は **各次数の加群の同型**。
+   `schurFunctor` の全複体を arity と余不変の全複体の直和へ同定し、指定生成射と微分を照合する必要がある
+   （210〜300 行の見込み）。既存の次数ごとの同型だけを複体の同型として扱わない。
+3. 終域の二つの自由代数のテンソルを、二色の入力とテンソル係数の同じ直和全複体へ移す必要がある。
+   arity の二重直和と全複体の交換、入力と係数の順序と符号、指定生成射の照合を含む
+   （170〜260 行の見込み）。Mathlib の `mapBifunctorFlipIso`・全複体の対称性は部品に使えるが、
+   この BE の実際の Schur 表示と指定比較との同定を既に持っているわけではない。
+
+この第四行だけで **500〜740 行**の新しい見込みとなる。旧 250〜350 行との差は、
+同じ型の同型の連結と思っていた部分に、Rep とその複体、次数ごとの Schur 表示と複体の Schur 表示、
+係数・入力の全複体と実際の二自由代数のテンソル、という別の型の橋があったため。
+鎖ホモトピーを作り直す必要を見込んでいるのではなく、既存の指定した係数の同値を**同じ射**へ接続するための比較である。
+
+### 36.3 五行の見込みと実測の差
+
+§22.3 と同じ五行を保ち、その外へ作業を追加していない。
+以下の実測は新規 611 行を各行へ割り当てたもので、基礎の 902 行とは重ねて数えない。
+
+| §22.3 の行 | 旧残りの見込み | 今回までの追加実測 | なお残る見込み | 更新後のこの行の合計 |
+| --- | ---: | ---: | ---: | ---: |
+| 1. 標準入力と左右の冪・ブロック置換 | 80〜120 | 231（52 + 75 + 104） | 70〜110：分離された冪の表現の複体との同型への包装 | 301〜341 |
+| 2. 色の個数・arity の添字 | 60〜90 | 111 | 80〜120：固定 arity の群と m+n の群の移送、係数・誘導表示の再添字 | 191〜231 |
+| 3. 実際の誘導入力の直和 | 200〜300 | 269（65 + 100 + 104） | 80〜120：次数ごとの指定有限直和を微分つきの直和へ束ねる | 349〜389 |
+| 4. Schur 表示と全複体 | 250〜350 | 0 | 500〜740：§36.2 の三比較 | 500〜740 |
+| 5. 実際の Hopf 自由比較との一致・弱同値 | 250〜350 | 0 | 250〜350 | 250〜350 |
+| **追加分の計** | **840〜1,210** | **611** | **980〜1,440** | **1,591〜2,051** |
+
+基礎の 902 行を含め、a 全体の更新後の見込みは **2,493〜2,953 行**。
+現在の承認は約 2,100 行、3 割の緩めを含む継続の上限は **2,730 行**。
+今回の見込み上限 2,953 行は約 41% の超過となり、3 割を超える。
+指示書 §12 の 5 の停止規則に従い、**ここで a の Lean 実装を止めて報告する**。
+今回通った指定作用の補題の監査・コミットだけを済ませ、それ以降の橋の実装は始めない。
+上限を自分の判断で広げない。経路 A のセル対には戻っていない。
+
+bar の厳密な前段は §35 のとおり検証済みだが、この不足を代わりに消すものではない。
+経路 B もまず自由比較を必要とするため、現時点で `coproduct_tensor`・その二脚の全実例が無条件に完成したとはしない。
+今回の依頼の下書きの検証順とコミットは全て完了。共有の鍵・整理券を自分は保持しておらず、
+今後は調整役の判断を待つ。KL-W1 の改名表への追従は案内を受けてから行う。
+
+## 37. KL-W1 の追従：取り込み前の collect で drafts の未解決宣言により停止
+
+### 37.1 対象と取り込み前の状態
+
+main への KL-W1 取り込み（`19f081dcb`、案内時の main は `8f68a475d`）を受け、
+`kerodon-layout-w1-report.md` の「レーン別の追従表」を読んだ。
+コードの直前の HEAD は `2ae14588e`、検証済みのコードはすべてコミット済み、未検証の下書きはなかった。
+
+配布の `kerodon-layout-stop-3/bs-impl-files.json` の 32 本へ、10:21 後に追加した
+`SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorStandardAction.lean` を加え、**33 本**の一覧を作った。
+この一覧は main との merge base からの枝固有の全 Lean 差分と集合として一致し、漏れ・余分とも零。
+リポジトリ内の控えは `formalization-plans/bhatt-scholze/klw1-followup/bs-impl-files.json`。
+実際に渡した一覧と成果物は `/tmp/bsw16/klw1-followup/` に保存した。
+
+### 37.2 実行と停止の根拠
+
+取り込み前の同じソースと成果物から、配布した KL-W1 作業木の道具を使って collect を実行した。
+Lean を使う収集の間だけ `--wait 3600` の鍵を一枚取得した。
+
+```text
+python3 /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py collect
+  --root /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl
+  --files /tmp/bsw16/klw1-followup/bs-impl-files.json
+  --output /tmp/bsw16/klw1-followup/before-index
+```
+
+**本体 31 本の採取まで成功**したが、32 本目の
+`formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean` で Lean の解決エラーとなり、
+collect が終了コード 2 で止まった。ログは `/tmp/bsw16/klw1-followup/collect.log`。
+
+最初のエラーは同ファイル **43 行目**の
+`unknown namespace SerrePositivity.BhattScholze.Perfectoidization.Derived`。
+続けて `AnimatedAlgebra`、`derivedPrismaticCohomology`、`animatedCompletionUnit` などを解決できず、
+それらの `(E := E)` の引数にも連鎖したエラーが出る。
+このファイルの先頭には、他の drafts を将来 import する旨のコメントがあり、実際の import には入っていない。
+例えば `AnimatedAlgebra` は `drafts/A2/AnimatedAlgebra.lean`、
+`derivedPrismaticCohomology` は `drafts/A2/DerivedPrismaticCohomology.lean`、
+`animatedCompletionUnit` は `drafts/A7/AnimatedDomain.lean` の宣言である。
+今回の A2 の編集は証明方針のコメントだけで、型を変えてはいない。
+
+これは未実装の sorry の警告ではなく、単独での elaboration が成立しない drafts に対する参照採取のエラー。
+実装レーンで仮の宣言を足す、他レーンの drafts を実装する、対象を黙って除く、
+採取していない参照を文字列で推測して書き換える、という対応はしていない。
+「迷う箇所は書き換えず報告、KL-W1 側で道具を直す」という依頼に従い、ここを報告する。
+
+### 37.3 保存物、未実施の段、再開の入口
+
+- `before-index/`：成功した本体 31 本の参照 JSON。collect が中断したため、全 33 本の完了マニフェスト
+  `before-index/files.json` は生成されていない。完全な before_index とは数えない。
+- `before-sources/`・`before-state.json`：全 33 本の改名前のソース、各ソースと二つの改名表の SHA-256、コードの HEAD。
+  停止後も全 33 本のソースのバイト列が採取入力と一致することを確認した。
+- `drafts/Shared/BarrattEcclesTheory.lean`：一覧の最後の一本で、A2 で停止したため**未採取**。
+- `direct-importers-before.json`：検証範囲の準備として、本体の直接 importer 六本、drafts 十四本を列挙した。
+  まだこれらの移行後のビルドを行ったという結果ではない。
+
+**rewrite・プレビューの反映・main の取り込み・移行後の対象ビルドは、すべて未実施。**
+`review.json` もまだ作っていないので、保留零とは報告しない。
+自分の収集プロセスは終了を回収済み、鍵と整理券は返却済み。
+今回コミットするのは対象一覧とこの停止報告だけで、Lean のソースは書き換えていない。
+
+KL-W1 側から、このように単独では解決しない drafts の採取方法の案内・修正を受けた後に、
+同じ入力で必要な採取を完了し、プレビューと review を確認してから main の取り込みへ進む。
+改名を済ませて報告した後に a を再開する、という順序を守る。
+そのときの a の上限は今回の新しい承認どおり **約 3,000 行、3 割の緩めはなし**とする。
+
+## 38. KL-W1 の追従：drafts を除いたプレビューで八本が保留
+
+§37 への調整役の指示に従い、drafts 二本を対象から外した。
+対象一覧 `klw1-followup/bs-impl-files.json` は本体 **31 本**だけに更新した。
+この 31 本の採取済み JSON がすべてあり、各ソースのバイト列も現在と完全一致することを確認し、
+採取済みの `before-index/files.json` を同じ 31 本の範囲に揃えて再利用した。
+再度の Lean の採取は行っていない。drafts の追従は調整役の担当とし、A2 のコメントも保った。
+本体だけで数えると、移動対象の旧 import があるのは **10 ファイル・29 行**。
+配布時の 11 ファイル・31 行との差は、今回除外した A2 drafts の二つの旧 import である。
+
+### 38.1 rewrite の実行結果
+
+同じ取り込み前のソースと採取済み索引から、配布の道具で次を実行した。
+
+```text
+python3 /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py rewrite
+  --root /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl
+  --files /tmp/bsw16/klw1-followup/bs-impl-body-files.json
+  --index /tmp/bsw16/klw1-followup/before-index
+  --plan /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/targets/kl-namespace-map.json
+  --output /tmp/bsw16/klw1-followup/preview-body
+```
+
+終了コード **1**、**23 本**のプレビューを出力し、**8 本・16 箇所**を `review.json` に保留した。
+出力されたうち 14 本はソースと同一、9 本には **138 行追加・138 行削除**のプレビュー差分がある。
+差分を読み、import・`open`・解決された宣言名の置換として確認したが、まだ作業木へ反映していない。
+一覧は `klw1-followup/preview-stats.json`、全差分は `/tmp/bsw16/klw1-followup/preview-body.diff`。
+
+### 38.2 保留の全件（道具側への引き継ぎ）
+
+そのままの診断 JSON を `klw1-followup/review.json` に保存した。
+位置は取り込み前の同じソースの UTF-8 バイト位置であり、以下の行番号は読みやすい控え。
+
+| ファイル（`SerrePositivity/EInfinity/` 以下） | 行 | 保留された構文 |
+| --- | --- | --- |
+| `BarrattEccles/Theory/CoproductDKHom.lean` | 22 | `open` の `SimplicialLocalization` |
+| `BarrattEccles/Theory/CoproductNativeUniversal.lean` | 26・27 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`SimplicialLocalization` |
+| `BarrattEccles/Theory/EnrichedPointPrecomposition.lean` | 21 | `SimplicialLocalization` |
+| 同上 | 50・57 | `RelativeCategory.{u}` の二箇所 |
+| `BarrattEccles/Theory/NativeCoproduct.lean` | 22・23 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`open scoped Simplicial` |
+| `BarrattEccles/Theory/NativeCoproductCocone.lean` | 31・32 | `SimplicialLocalization`・`open scoped Simplicial` |
+| `BarrattEccles/Theory/NativeCoproductLegs.lean` | 22〜24 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`SimplicialLocalization`・`open scoped Simplicial` |
+| `Interface/Theory.lean` | 41・42 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`open scoped Simplicial` |
+| `StrictAdjunctionBar.lean` | 26 | `ComonadResolutionOperators` |
+
+14 箇所の理由は **`explicit opens policy needed for a renamed namespace`**。
+残る二箇所は **`non-identifier syntax for SerrePositivity.EInfinity.SimplicialLocalization.RelativeCategory`**
+で、編集位置のソースはどちらも `RelativeCategory.{u}`。
+
+依頼どおり、保留箇所の `open` 方針や宇宙適用の編集を手で推測していない。
+改名表と採取器のソースにも変更していない。KL-W1 側でこの診断を扱う道具・方針の案内を待つ。
+
+### 38.3 現在の状態
+
+Lean のソースは 31 本すべて採取時と同じまま。main の取り込み、プレビューの反映、
+移行後の変更ファイル・直接 importer の対象ビルドは**まだ行っていない**。
+今回の rewrite は Python によるプレビュー作成だけで、鍵も要求していない。
+
+今回コミットするのは、本体のみの一覧、診断・プレビュー統計、この報告だけ。
+drafts の改名は調整役に委ねる。KL-W1 の追従を完了して報告してから、
+a を **上限約 3,000 行、緩めなし**で続ける順序は変えない。
+
+## 39. 道具の修正待ちの間の a：入力と arity の複体全体での比較
+
+§38 の 16 箇所は KL-W1 の道具・open 方針の修正を待つ、という調整役の指示を受け、
+その間に a を今の main 取り込み前の枝で再開した。採取済みの本体 31 本を変えず、
+新規の補助ファイルだけに進めた。全 31 本の SHA-256 が採取時と同じことも再確認した。
+改名表・道具・drafts には変更していない。
+
+### 39.1 検証済みの四本
+
+以下は `SerrePositivity/EInfinity/BarrattEccles/Theory/` 以下。いずれも任意の入力の複体を扱い、
+入力を零微分・有界・平坦なものに限定していない。
+
+| 新規モジュール | 行数 | 今回閉じた比較 |
+| --- | ---: | --- |
+| `TwoColorSeparatedInput` | 87 | 指定標準入力と左右のテンソル冪の同型を、実際の二色部分群上の表現の複体の同型へ持ち上げる。順射も元の指定射 |
+| `BinaryTensorOrbitComplex` | 69 | 標準代表から誘導した入力の直和を、元の入力の複体へ同定。指定包含、微分、余極限性を保持 |
+| `TwoColorInducedComplexInputs` | 103 | 誘導表現と余不変の同型の入力方向の自然性を証明し、任意の入力複体の二重複体・直和全複体へ持ち上げる。指定 Hopf 係数射の鎖ホモトピー同値と合成 |
+| `SchurComplexArity` | 114 | 有限全単射の余極限を arity ごとの余不変の複体の直和へ同定。余極限の生成元を指定商写像の後の直和包含へ送る |
+
+四本計 **373 行**。§36 までの a の実測 **1,513 行**と合わせて **1,886 行**。
+これは a の完成ではない。左右の入力数による arity の運び、テンソル余不変の全複体との比較、
+二つの自由 Schur 代数のテンソル側の表示、実際の指定比較との照合と自然性が残る。
+既存の公開宣言の定義や界面の型を変えていない。
+セル対・bar の実現・sifted の保存には進んでいない。
+
+### 39.2 ビルド・監査・改名との関係
+
+変更した四本だけの対象ビルドを通した。最後の成功ログは
+`/tmp/bsw16/graded/free-complex-two-02.log`（軌道直和）、
+`free-complex-three-01.log`（標準入力）、`free-arity-07.log`（arity 分解）、
+`induced-complex-10.log`（誘導入力）。新規四本には警告なし。
+依存の `ZeroArity` の既存警告は再生される。
+
+別の一回の鍵で四本に属する全宣言を監査し、**81 宣言・標準三公理のみ**。
+ログは `/tmp/bsw16/graded/audit-free-complex-four.log`。本体に sorry・追加公理はない。
+各ビルド・監査の終了を回収して鍵を返してから、次の一枚を要求する形を守った。
+
+この四本は 10:21 より後の新規ファイルで、凍結した 31 本の採取範囲には含まれない。
+道具の修正連絡を受けたら、同じ 31 本の rewrite をやり直すとともに、main を取り込む前に
+この追加分も採取・確認し、取り込み後の対象ビルドに含める。31 本の既存索引へ未採取の内容を混ぜない。
+入口・共通監査への登録は調整役の取り込み時とする。登録待ちの追加一覧は上表の四本。
+
+a の上限は **約 3,000 行、緩めなし**。今後の補助も全て a の行数に含める。
+この報告後、道具の修正連絡までは、今の枝で残りの自由比較を続ける。
+
+## 40. a の全複体の比較と、残りの接続を含めた規模の再確認
+
+§39 の後も、採取済み 31 本には触れず、新規ファイルだけで進めた。
+今回の区切りは、以下の六本の下書きの検証・監査までとする。
+その先の比較の新設は、下記の規模の理由で止める。
+
+### 40.1 今回の範囲と残る区別
+
+`CoinvariantTensorComplex` は、実際の複体のテンソルの対角作用を持つ余不変と、
+表現の複体のテンソル余不変の直和全複体を同定する。双次数の指定包含、
+左右の微分、Koszul の符号を照合する。
+`SchurArityTotalComparison` はこれを実際の Schur 図式へ適用する。
+
+`ProductCoinvariants` は、独立な二つの群作用について、直積群の余不変を左右の余不変の
+テンソルへ分ける。両方向の射を商の普遍性から作り、元の生成元と両入力での自然性を固定する。
+`ProductCoinvariantComplex` はこの自然性を二重複体へ持ち上げ、全複体との同型を使って
+非有界な複体について同じ分離を行う。
+
+`TwoColorOrbitArity` は、個数による標準代表と元の標準パターンの等式、その安定化群と
+指定二色部分群の等式・同型、固定 arity と左入力数の組から左右の入力数への再添字を扱う。
+`TwoColorOrbitTransport` は、その群同型で制限した実際の入力表現の複体を指定標準入力へ同定する。
+
+**これらは、自由比較を完成したという主張ではない。**
+群の同型があることと、その同型に沿って余不変・誘導表示・指定された比較射を移すことを区別する。
+後者はまだ全部は作っていない。別の同型を選んで指定 Hopf 比較の照合を省いてはいない。
+
+### 40.2 残りを接続ごとに数えた見込み
+
+従来の §36.2 の三比較のうち、全複体の比較と直積群の分離の一般部分を今回作った。
+ただし、それを実際の Schur 表示へ接続するには、次が残る。
+
+| 未完了の接続 | 使えるもの | まだ要る照合 | 残りの見込み |
+| --- | --- | --- | ---: |
+| 固定 arity の軌道直和を二色の係数比較へ接続 | `binaryTensorOrbitComplexIso`、`binaryTensorCountIndexEquiv`、`twoColorOrbitStandardInputIso`、`twoColorInducedComplexSourceIso` | arity の再添字の後の誘導・制限・余不変の比較。群の等式・同型に沿った運びが、指定誘導包含と整合すること | 100〜140 |
+| Schur の係数と入力の順序・係数作用の照合 | `schurArityTotalIsoSum`、`coinvariantTensorTotalIso`、既存の `mapBifunctorFlipIso` と braiding | `sequence A` の作用と `arityRepresentationCochain` の比較、および係数・入力の交換を、指定商写像を保つ複体の射として接続 | 80〜100 |
+| 実際のテンソル側の二色表示 | `productCoinvariantsIso`・その自然性、`productCoinvariantComplexIso`、`twoColorGroupEquiv`、複体の associator・braiding | 二色部分群から左右の置換群の直積への群変更に沿う余不変の同型、四因子の交換、二つの Schur 直和のテンソルと二色直和の比較、各生成元の像 | 230〜330 |
+| 指定 Hopf 自由比較との一致、自然性、弱同値 | 既存の `twoColorCoefficientCochainMap`、`twoColorComplexInputHomotopyEquiv`、`barrattEcclesCoproductTensorNat` | 生成元ごとの図式が交換し、分解した射が同じ指定係数射になること。直和を経た比較の弱同値と入力射への自然性 | 250〜350 |
+| **計** | | | **660〜920** |
+
+`Rep.coinvariantsTensorIndNatIso` は入力一つが表現である比較を供給するが、
+上表の群変更・arity の再添字と指定包含の整合までは主張していない。
+`ProductCoinvariants` は任意の直積群の独立な作用の比較であり、
+実際の `TwoColorGroup` と二つの `ULift` された置換群の直積の比較は別に要る。
+Mathlib の `RepresentationTheory/Coinvariants`・`Rep/Res` と本体の公開 API を調べた範囲では、
+この最後の群変更を指定商写像ごと運ぶ同型は見つからなかった。
+既存の associator と `mapBifunctorFlipIso` は再利用し、符号つき全複体の一般論は作り直さない。
+
+今回の下書き六本は計 **462 行**、§39 の実測 **1,886 行**と合わせて **2,348 行**。
+下書き時点での残りを含む a 全体は **3,008〜3,268 行**の見込みとなる。
+現在の承認は **約 3,000 行、緩めなし**なので、新しい比較の実装はここで止める。
+行数を別の一般補助や他の作業へ移して計上から外すことはしない。
+今回の下書き六本の修正・検証・監査・コミットだけを区切りまで行い、その実測を次項に記録する。
+セル対、bar の実現、sifted 保存へは進まない。KL-W1 の道具の修正を手で先取りもしない。
+
+### 40.3 検証の区切り、最終実測、登録待ち一覧
+
+下書き済みの六本だけを修正して、全て対象ビルドを通した。
+表のパスは `SerrePositivity/EInfinity/BarrattEccles/Theory/` 以下。
+
+| 登録待ちモジュール | 最終実測 | 最後の成功ログ（`/tmp/bsw16/graded/` 以下） |
+| --- | ---: | --- |
+| `CoinvariantTensorComplex` | 98 | `coinvariant-product-06.log` |
+| `TwoColorOrbitArity` | 59 | `coinvariant-arity-04.log` |
+| `ProductCoinvariants` | 120 | `product-coinvariants-07.log` |
+| `SchurArityTotalComparison` | 60 | `free-total-three-09.log` |
+| `ProductCoinvariantComplex` | 73 | `product-complex-11.log` |
+| `TwoColorOrbitTransport` | 63 | `free-total-three-09.log` |
+| **計** | **473** | |
+
+直積群の複体版の微分との照合は、商とテンソルの指定生成元で両辺を直接計算して閉じた。
+全六本に属する宣言を別の一回の鍵で監査し、**107 宣言・標準三公理のみ**。
+監査ログは `audit-free-total-six.log`。新規六本に警告なし、sorry・追加公理なし。
+§39 の四本と合わせ、今回追加の **十本・188 宣言**を監査済み。
+既存の公開宣言・界面の型・共通入口・共通監査には変更していない。
+
+下書きからの修正を含む最終実測は、今回 **473 行**、a 全体 **2,359 行**。
+§40.2 の残り **660〜920 行**と合わせた最終見込みは **3,019〜3,279 行**。
+§40.2 の下書き時点の数字から 11 行増えた分も含めている。
+承認上限 **約 3,000 行、緩めなし**を超えそうなので、ここで a の実装を中間停止する。
+自由比較や `coproduct_tensor` の証明を完了したとは報告しない。
+
+停止後は上限内の新設を続けず、今回の通った六本と報告だけをコミットする。
+今回の全ビルドと監査は、それぞれ終了を回収して鍵・整理券を返却済み。
+常駐ビルドセッションや複数の整理券は使っていない。
+
+### 40.4 KL-W1 の修正連絡後の再開
+
+元の **31 本**は、全てのソースの SHA-256 が採取時と一致したまま。
+§38 の保留 16 箇所は道具の修正連絡待ちで、rewrite の再実行・main の取り込み・
+プレビューの反映・改名後の対象ビルドはまだ行っていない。
+drafts の改名は調整役の担当とし、今回触れていない。
+
+新規十本の追加一覧を `klw1-followup/bs-impl-extra-files.json` に用意した。
+この一覧は採取完了の印ではない。追加十本の before_index は**未採取**。
+連絡後は同じ 31 本で rewrite を再実行し、追加十本も取り込み前の枝で別途採取・確認してから、
+main の取り込み、プレビューの反映、変更ファイルと直接 importer の対象ビルドへ進む。
+元の索引へ未採取の新しいソースを混ぜない。入口と監査への登録は調整役が取り込み時に行う。
+登録待ちの今回の追加分は、§39 の四本と §40.3 の六本である。
+
+## 41. §14 からの再開：Schur 複体の同値を組み立て、指定射の照合で規模を再確認
+
+調整役の §14（main の指示書を読み、ユーザーの指示でも確認）に従い、
+a の上限を **約 3,300 行、緩めなし**として再開した。
+KL-W1 の修正連絡待ちのまま今の枝でビルドしてよい、という指示に従い、
+main は取り込まず、採取済み 31 本を保って、新規補助だけで進めた。
+
+### 41.1 今回検証した範囲
+
+以下は全て `SerrePositivity/EInfinity/BarrattEccles/Theory/` 以下。
+入口・共通監査への登録待ちの追加一覧でもある。
+
+| 新規モジュール | 実測 | 今回閉じたもの |
+| --- | ---: | --- |
+| `CoinvariantGroupChange` | 73 | 群同型に沿う余不変の同型。指定商の生成元、表現の射、複体の微分を保持 |
+| `SchurCoefficientOrder` | 124 | 実際の `sequence` の作用と指定 arity の作用の同定、braiding による係数と入力の交換、全複体への指定商写像、双次数生成元と braiding での商の計算 |
+| `InducedCoinvariantTotal` | 77 | 任意の安定化群での誘導入力と制限した係数の全複体の同型。入力方向の加法性と有限直和の保存 |
+| `TwoColorTargetSchur` | 124 | 二色部分群と左右の置換群の直積の同定、四因子の符号つき交換、二色係数比較の標的と二つの実際の Schur arity 成分のテンソルの同型 |
+| `TwoColorSourceSchur` | 81 | 実際の Schur arity から指定軌道直和への同型。各標準代表を指定二色係数比較へ接続した鎖ホモトピー同値 |
+| `ComplexCoproductHomotopy` | 61 | 各成分の指定鎖ホモトピーを直和へ束ねること、指定直和写像の鎖ホモトピー同値。添字の宇宙は係数環から独立 |
+| `FreeSchurComparison` | 69 | arity と色の個数の再添字、二つの Schur 直和のテンソルの二添字表示、指定係数射を全 arity へ束ねた鎖ホモトピー同値 |
+| `FreeHopfComparison` | 89 | 左右の指定 Hopf 包含から自由代数の普遍性で定める厳密な比較、その左右の生成元と arity での式、零入力の照合に使う単位入力族の縮約 |
+| **計** | **698** | |
+
+`freeSchurCoefficientHomotopyEquiv X Y` は、
+`Schur(X ⊞ Y)` と `Schur(X) ⊗ Schur(Y)` の鎖ホモトピー同値。
+任意の複体 `X`・`Y` で述べており、cofibrant・有界・平坦という追加仮定を置いていない。
+順射は、既存の指定二色係数射を、今回の指定同型と直和写像で束ねた射である。
+任意に選んだ係数比較へ差し替えていない。
+
+ただし、**この順射が `freeHopfComparison` の底の射、従って既存の厳密な余積比較から
+得る射と一致するという定理は、まだ証明していない。a は未完了。**
+この同値の存在だけから、`barrattEcclesCoproductTensorNat` の成分が弱同値だとは結論しない。
+
+### 41.2 残る指定射の照合の正確な形
+
+`r = m + n`、`C_s = (operad A).arity s`、`V = power X m ⊗ power Y n` と書く。
+共通の始域 `C_r ⊗ V` から、次の二つの射を固定して比較する。
+
+- `J`：`𝟙 C_r` と `binaryTensorStandardPowersIso X Y m n` の逆射、
+  標準パターンの指定包含、元の `schurι` の合成。
+- `M`：`twoColorCoefficientComparison A m n ▷ V`、
+  `tensorμ C_m C_n (power X m) (power Y n)`、
+  `schurι A (sequence A) X m ⊗ₘ schurι A (sequence A) Y n` の合成。
+
+必要なのは、同じ `J` と `M` について、
+`J ≫ (freeSchurCoefficientHomotopyEquiv X Y).hom = M` と
+`J ≫ (freeHopfComparison (hopf A) h0 X Y).hom = M` を証明すること。
+その後、標準代表の軌道が全ての語を覆うことと Schur の生成射の普遍性で全射の等式へ延ばす。
+自由代数関手の余積比較を介して、元の厳密な指定比較の弱同値と関手的な形へ戻す。
+
+前者には、今回の商の双次数での計算に加え、誘導表示の単位生成元と指定包含を前合成した図式の照合が残る。
+後者には、零入力への代入の係数射 `nullaryPrefixDelete` と、代数の実際の零入力作用との照合が残る。
+`Operad.Algebra.iteratedOperationTensor_action` は再利用できるが、それ自体がこの最後の図式ではない。
+`FreeHopfComparison` の arity の式も、この零入力の計算を済ませたという主張ではない。
+
+### 41.3 見積りとの差と、上限による中間停止
+
+§40.2 の各行へ今回のファイルを一度ずつ割り当てると、以下となる。
+これは **a 完了時の実測ではなく、未完了の中間比較**である。
+`FreeSchurComparison` の全体の直和への組み立ては第四行に数えた。
+指定包含・商を前合成する図式の残りは、最後の指定射の照合にまとめて数え、重複させない。
+
+| §40.2 の行 | 旧残りの見込み | 今回の実測 | 旧見込みとの差 |
+| --- | ---: | ---: | ---: |
+| 固定 arity の軌道直和と二色係数の接続 | 100〜140 | 231（73 + 77 + 81） | +91〜+131 |
+| 係数と入力の順序・係数作用 | 80〜100 | 124 | +24〜+44 |
+| テンソル側の二色表示 | 230〜330 | 124 | −206〜−106 |
+| 指定射の照合と全体の比較 | 250〜350 | 219（61 + 69 + 89）、なお未完 | −131〜−31、ただし残りあり |
+| **計** | **660〜920** | **698** | **−222〜+38、ただし残りあり** |
+
+最後の指定射の照合の残りを、次の三つに分けて見直した。
+
+| 残り | 再利用と未証明の接続 | 見込み |
+| --- | --- | ---: |
+| 構成した同値の順射について `J ≫ hom = M` | 商の双次数計算・braiding の整合は今回証明済み。誘導の単位生成元、群変更、直和包含を前合成した同じ図式を照合する | 90〜130 |
+| 厳密な Hopf 比較について `J ≫ hom = M` | 今回の arity の式と単位入力族の縮約、既存の `iteratedOperationTensor_action` を使う。零入力の単位射との比較、`nullaryPrefixDelete` の作用、左右のブロックへの適用が残る | 120〜170 |
+| 全射・元の余積比較の弱同値・自然性 | 二つの生成元での式から全射の等式を得て、自由代数の余積比較と既存の指定自然変換へ戻す | 40〜60 |
+| **計** | | **250〜360** |
+
+§40.2 の見積りでは、同型を構成することと、指定射へ戻すためにその同型へ生成元を前合成する
+図式の照合を、十分に分けて数えられていなかった。新しい数学的な経路を足したのではないが、
+同じ指定射との一致を未証明のまま完了と数えることはできない。
+
+今回までの実測は **2,359 + 698 = 3,057 行**。
+残りを含む完成見込みは **3,307〜3,417 行**で、承認上限 **約 3,300 行、緩めなし**を超えそうである。
+従って §14 の指示に従い、**ここで新しい Lean の追加を止めて中間停止する**。
+上限を自分で広げず、残りを別のファイル・作業へ移して計上から外さない。
+この停止は鍵の待ち時間や、模型の追加仮定が必要になったことによるものではない。
+a が閉じていないので、その後の厳密な bar 前段の残り・c・組み立て関数には進んでいない。
+
+### 41.4 検証・監査・改名の状態
+
+新規八本の対象ビルドと直接の importer のビルドは成功。
+主なログは `/tmp/bsw16/graded/` 以下の
+`group-change-01.log`、`induced-total-02.log`、`quotient-swap-07.log`、
+`free-quotient-06.log`、`free-unit-11.log`。
+新規八本に警告なし。依存の `ZeroArity` の既存警告は再生される。
+
+別の一回の鍵で八本に属する全宣言を監査し、**199 宣言・標準三公理のみ**。
+ログは `audit-free-resume-eight.log`。sorry・追加公理はない。
+`[ModelCategory SSet]` のような追加仮定も使っていない。
+ビルド・監査の各終了を回収して鍵・整理券を返した。常駐セッションは使っていない。
+
+採取済み 31 本は、今回も SHA-256 が採取時と完全一致することを確認した。
+修正連絡待ちの 16 箇所は変更せず、main の取り込み・rewrite の再実行・反映はまだ行っていない。
+drafts、共通入口、共通監査、既存の公開宣言には変更していない。
+追加採取用の `klw1-followup/bs-impl-extra-files.json` は、§39〜40 の十本に今回の八本を加えた **18 本**に更新する。
+これは採取完了の印ではなく、追加十八本の before_index は未採取のままである。
+修正連絡後の改名追従は §40.4 の手順で行う。
+
+
+## 42. KL-W1 の改名追従（修正版 8267bf808、11-12）
+
+### 42.1 採取と差分
+
+修正版の共有道具 `SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py`
+（`8267bf808`）を使用した。古い部分採取は使わず、
+`/tmp/bsw16/klw1-followup-49-8267/before-index/` へ collect から実行し直した。
+対象は従来の本体 31 本と、10:21 以後に検証・コミットした §39〜41 の 18 本を合わせた **49 本**。
+drafts と未検証の下書きは含めない。採取終了時に元ソースの SHA-256 が変わっていないことも確認した。
+
+新しい index に対する rewrite は成功し、`review.json` は `{}`（**保留 0**）。
+プレビュー全体の差分を確認した。書き換えは次の **17 本、339 行置換（+339 / -339）**。
+このうち import の変更は 10 本・29 行で、それ以外は名前空間・宣言参照・scope の明示である。
+ファイル自体の移動、宣言の意味の変更はない。
+
+| ファイル | 置換行数 |
+| --- | ---: |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/AnodyneBinaryProducts.lean` | 4 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean` | 8 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean` | 12 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean` | 5 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean` | 20 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean` | 20 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean` | 13 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean` | 31 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean` | 15 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean` | 27 |
+| `SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean` | 6 |
+| `SerrePositivity/EInfinity/Interface/TensorLegs.lean` | 41 |
+| `SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean` | 9 |
+| `SerrePositivity/EInfinity/Interface/Theory.lean` | 56 |
+| `SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean` | 10 |
+| `SerrePositivity/EInfinity/StrictAdjunctionBar.lean` | 31 |
+| `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean` | 31 |
+
+`klw1-followup/bs-impl-files.json` を 49 本の正本に更新し、`review.json`・
+`preview-stats.json` を今回の結果で置き換えた。出所は `followup-provenance.json` に記録した。
+追加分の `bs-impl-extra-files.json` は、この 49 本に含まれる 18 本の内訳として残す。
+
+### 42.2 main の取り込み
+
+`main` の `ef145b288`（指定の `23f47736c` 以降）を `math/bs-impl` に取り込み、
+確認済みプレビューを反映した（ビルド失敗のため merge commit は未作成）。競合は `Interface/Theory.lean` の一か所だけ。
+main とプレビューを照合し、main の改名を保ちつつ D78 の承認済み import と
+`coproduct_tensor_legs` の欄を残す形で解決した。`open scoped _root_.Simplicial` は
+道具の生成した scope の明示である。drafts の改名は手動で行わず、調整役の main から取り込んだ。
+
+### 42.3 検証
+
+対象 49 本と、書き換えたモジュールの本体内の直接の importer（重複を除く追加 6 本）を合わせた
+**55 対象**をビルドした。共通入口・監査の登録は編集しない。
+対象・importer の全一覧とログは今回の `/tmp/bsw16/klw1-followup-49-8267/` に保存する。
+
+
+**結果：失敗（終了コード 1）。追従完了とはしない。**
+`review.json` の保留が 0 でも、生成された `open` が実際の main の import 環境で
+解決されない例が残っている。失敗として列挙された対象は次の三本。
+
+| ファイル・行 | 最初のエラー |
+| --- | --- |
+| `BarrattEccles/Theory/AnodyneBinaryProducts.lean:22` | `open _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison` の unknown namespace |
+| `StrictAdjunctionBar.lean:25` | `open _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom` の unknown namespace（続いて `ComonadResolutionOperators`・`power` などが未解決） |
+| `BarrattEccles/Theory/EnrichedPointPrecomposition.lean:21` | 同じ `HA.ModelCategoryComparison` の unknown namespace（続いて `localizationHom`・`kanLocalizationUnit` などが未解決） |
+
+詳細は `klw1-followup/build-failure.json`、全ログは
+`/tmp/bsw16/klw1-followup-49-8267/build.log`。
+道具が生成した open の対応を推測で変更せず、KL-W1 の確認を待つ。
+ビルドの終了を回収し、鍵と整理券を返した。ビルド失敗のため公理監査は行わない。
+49 本のソース中に `sorry`・`axiom` がないことは別途確認した。
+
+検証が通るまで Lean はコミットしない規則に従い、今回の追従コミットは **なし**。
+main の取り込みは競合解決済み・merge commit 前の状態で、生成ソースとこの報告を作業木に保持する。
+採取前の元ソース、採取 index、プレビュー、差分は今回の新しい `/tmp/` ディレクトリに保存済み。
+§41 の自由比較の残りや、新しい証明には手を付けていない。
+
+
+## 43. §42 の後の検証と a の作業木の分離（11-12 夜）
+
+調整役の連絡の前に、失敗した三本の使用宣言の定義元を確認した。
+`AnodyneBinaryProducts` と `EnrichedPointPrecomposition` の open は、実際に import される
+移動対象外の宣言に必要な `SerrePositivity.SimplicialModel` へ戻した。
+`StrictAdjunctionBar` は同じ理由で `SerrePositivity.HomotopyFunctionComplex` へ戻した。
+また `EnrichedPointPrecomposition` では、参照が既に完全修飾された後の不要な
+`SerrePositivity.KST.Comparison` の open を除いた。
+この状態の 55 対象のビルドは **成功（13,550 jobs、終了コード 0）**。
+ログは `/tmp/bsw16/klw1-followup-49-8267/build-open-fix-2.log`。
+採取前との実際の差分は 17 本・337 行置換。公理監査・コミットはまだ行っていない。
+
+その後の調整役の指示に従い、この手修正も含めて **未コミットの merge をそのまま保持**する。
+採取器の修正連絡を待ち、そのとき rewrite からやり直す。今回の成功で改名追従の完了とはしない。
+共通入口・監査の登録も変更しない。鍵・整理券は返却済み。
+
+**a には別の作業木を選んだ。** merge 前の `5fe517e63` から
+`../SerrePositivity-bs-impl-a`、枝 `math/bs-impl-a` を作る。
+元の `math/bs-impl` の merge は stash・abort・commit せず保持する。
+a の実装と対象ビルドは新しい作業木で行い、上限は §15 の **3,500 行、最後の上げ**を守る。
+完了時には §20.2・§40.2 の各行の見込みと実測を報告する。
+
+
+## 44. 別作業木で a の厳密な余積比較への復帰を証明（11-12）
+
+§43 の別作業木 `SerrePositivity-bs-impl-a`（枝 `math/bs-impl-a`、基点 `5fe517e63`）で作業した。
+`math/bs-impl` の未コミットの merge は保持し、こちらでは main を取り込んでいない。
+
+### 44.1 証明した範囲
+
+新規 `SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfCoproduct.lean`（**92 行**）。
+登録すべき新規モジュールは `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfCoproduct`。
+
+- `freeSumCoproductIso`：自由・忘却随伴と標準の余積比較により、
+  `Free X ⨿ Free Y ≅ Free (X ⊞ Y)` を構成する。
+- `freeSumCoproductIso_inl`・`inr`：この同型は二つの指定包含を自由関手で送った包含へ送る。
+- `freeSumCoproductIso_hopfComparison`：この同型の後の `freeHopfComparison` は、
+  元の厳密な `hopfCoproductComparison` と同じ代数射である。生成元での左右の式から証明した。
+- `hopfCoproductComparison_quasiIso_of_free`：自由生成元での指定 Hopf 射が擬同型なら、
+  厳密な余積の同じ比較も擬同型になる。
+
+一般の Hopf オペラッドについて述べ、必要な仮定は零 arity の余単位の同型性と、
+代数の二項余積の存在だけ。入力複体に cofibrancy・K 平坦性・有界性を仮定しない。
+最後の補題の擬同型性の仮定は明示的な仮定であり、BE の係数比較との一致を証明したという意味ではない。
+
+### 44.2 実測と残り
+
+今回の 92 行は §40.2・§41.3 の「指定射の照合と全体の比較」の行に計上する。
+a の実測は **3,057 + 92 = 3,149 行**。最後の上限 **3,500 行**まで 351 行。
+今回は元の余積比較へ戻す接続を閉じたが、
+§41.2 の `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` と
+`J ≫ freeHopfComparison.hom = M`、そこから全射の一致を得る部分は残る。
+**a は未完了**であり、§20.2・§40.2 の完了時比較としては報告しない。
+
+### 44.3 検証
+
+新規一対象のビルドは成功（`free-hopf-coproduct-a-08.log`、10,502 jobs）。
+ジョブ数には依存の共有キャッシュ復元を含み、root ビルドは行っていない。
+新規モジュールに警告なし。未登録なので本体内の直接の importer はまだない。
+ログと一モジュールの全宣言の監査は `/tmp/bsw16/` 以下。
+
+ビルド終了の回収後、別の一回の鍵で新規一モジュールの全宣言を監査した。
+**15 宣言・標準三公理のみ**（`audit-free-hopf-coproduct-a.log`）。
+sorry・追加公理はない。ビルドと監査の各終了を回収し、鍵・整理券を返した。
+未コミットの merge のある元の作業木へは、この新しい Lean をまだ移していない。
+次回の改名追従の対象には、検証済みの追加分として今回の一モジュールも含める。
+
+
+## 45. KL-W1 d07e86e14 による追従の完了と一時枝の合流（11-12）
+
+### 45.1 修正版の rewrite
+
+保持していた merge を捨てず、調整役の許可どおり採取済みの 49 本の `before_index` を再利用した。
+書き換えの入力は採取時に保存した同じ元ソースとし、現在の書き換え済みソースの文字位置は使わない。
+共有道具 `SerrePositivity-kerodon-layout` の **`d07e86e14`** とその改名表で rewrite からやり直した。
+出力は `/tmp/bsw16/klw1-followup-d07-preview/`。
+
+`review.json` は **保留 0**。元の混在した名前空間の open を保ち、移動した宣言だけを完全修飾する。
+旧プレビューとの差分を確認し、§43 の三本の手修正も含めて新しい道具の結果へ置き換えた。
+採取時のソースと最終出力の差分は **15 本・284 行置換（+284 / -284）**。
+次が各ファイルの実測であり、詳細の正本は `klw1-followup/preview-stats.json`。
+
+| ファイル | 置換行数 |
+| --- | ---: |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean` | 4 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean` | 4 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean` | 17 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean` | 31 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean` | 15 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean` | 27 |
+| `SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean` | 6 |
+| `SerrePositivity/EInfinity/Interface/TensorLegs.lean` | 41 |
+| `SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean` | 9 |
+| `SerrePositivity/EInfinity/Interface/Theory.lean` | 56 |
+| `SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean` | 10 |
+| `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean` | 31 |
+
+§42〜43 のビルド失敗・手修正・未コミットという記録は、その時点の履歴である。
+今回の結果は `followup-provenance.json` と本節に記録する。
+`StrictAdjunctionBar` と `AnodyneBinaryProducts` は元ソースと同じになり、最終的な変更 15 本に含めない。
+drafts は新たに書き換えていない。main にある調整役の追従だけを取り込んだ。
+
+### 45.2 取り込みと検証
+
+保持中の `ef145b288` の merge と修正版の追従を **`aed89b498`** に確定した。
+その後、指定された **main `e61b3f534`** を取り込み、**`e8e607ce6`** に確定した。
+修正版の本体 49 本と、変更したモジュールの本体内の直接の importer を合わせた **55 対象**のビルドは、
+修正版反映後・最新 main 取り込み後の両方で成功（各 13,550 jobs）。
+49 モジュールに属する全宣言の監査も **948 宣言・標準三公理のみ**。
+ログは今回の出力先の `build.log`・`build-main.log`・`audit.log`。
+
+続いて `math/bs-impl-a` の **`3f26491d1`** を合流させた。
+本体の競合はなく、報告ファイル末尾の競合は §44 の追記を保持して解決した。
+`FreeHopfCoproduct` は改名対象の import・宣言参照を持たず、ソースを変更せずに取り込んだ。
+合流後の **56 対象**のビルドも成功（13,551 jobs、`build56.log`）。
+ルートの `SerrePositivity` はビルドしていない。
+改名に伴う長い行と既存の重複名前空間の linter 警告は残る。
+
+### 45.3 登録待ちと a の残り
+
+`bs-impl-files.json` は、今回追従した 49 本に `FreeHopfCoproduct` を加えた **50 本**へ更新した。
+main `e61b3f534` に既にあるのは `Interface/Theory` の一本だけで、**新規登録待ちは 49 モジュール**。
+その全一覧を `klw1-followup/registration-modules.json` に保存した。
+共通入口・共通監査の登録は調整役に委ね、こちらでは変更していない。
+
+a の実測は §44 の **3,149 行**のまま。今回の改名や枝の合流で証明が増えたとは数えない。
+残りは §41.2 の指定係数射との一致であり、a はまだ未完了。
+合流後は本来の `math/bs-impl` と `SerrePositivity-bs-impl` で再開する。
+
+合流後の 50 モジュールの全宣言の監査も **963 宣言・標準三公理のみ**で成功（`audit50.log`）。
+sorry・追加公理はなく、監査終了を回収して鍵と整理券を返した。
+一時作業木は合流コミット後に `git worktree remove` で削除した。
+
+
+## 46. 合流後の a：単位射の零入力照合と、最後の上限での中間停止
+
+§45 の合流後、`math/bs-impl` で作業を再開した。
+一時作業木 `SerrePositivity-bs-impl-a` は合流後に削除済み。
+新しい本体は `SerrePositivity/EInfinity/BarrattEccles/Theory/HopfNullaryUnitMap.lean`（**81 行**）。
+
+### 46.1 今回閉じたもの
+
+- `hopfTensorUnitArrow_nullary`：単位代数からの任意の代数射は、実際の零入力作用と可換。
+- `hopfTensorUnitMap_hom_nullary`：始対象性から選ばれた指定単位射の底の射は、
+  零入力の余単位の逆、右単位子の逆、代数の零入力作用の合成と等しい。
+- `hopf_counit_zero_eq_nullaryCoefficientIso`：BE の Hopf 余単位は、
+  `nullaryPrefixDelete` に使う指定零入力係数同型の同じ順射。
+- `barrattEcclesTensorUnitMap_nullary`：従って BE の指定単位射を、
+  `nullaryCoefficientIso` の逆と同じ代数の零入力作用で計算できる。
+
+一般の Hopf オペラッドの部分は代数射の arity 0 の保存則から証明した。
+BE の部分も既存の増大を使い、始対象性による選択を別の射へ差し替えていない。
+cofibrancy・平坦性・有界性などの入力の追加仮定はない。
+ただし、この一射の式から、任意個の入力を消去する `nullaryPrefixDelete` の作用の式や
+二色の指定 Hopf 比較との一致が自動的に閉じるとは扱わない。
+
+### 46.2 実測と残り
+
+今回の 81 行も、§40.2 の「指定射の照合と全体の比較」に計上する。
+§41.3 の中間比較を更新すると次のとおり（**未完了の比較**）。
+
+| §40.2 の行 | §40.2 での残りの見込み | §41・44・46 の実測 | 差 |
+| --- | ---: | ---: | ---: |
+| 固定 arity の軌道直和と二色係数の接続 | 100〜140 | 231 | +91〜+131 |
+| 係数と入力の順序・係数作用 | 80〜100 | 124 | +24〜+44 |
+| テンソル側の二色表示 | 230〜330 | 124 | −206〜−106 |
+| 指定射の照合と全体の比較 | 250〜350 | 392（219 + 92 + 81）、なお未完 | +42〜+142、なお残りあり |
+| **計** | **660〜920** | **871** | **−49〜+211、なお残りあり** |
+
+今回までの a の実測は **2,359 + 871 = 3,230 行**。
+上限 3,500 行まで **270 行**である。
+残りの同じ指定射への照合を、今回閉じた補題で実際に置き換えた後の単位で見直すと、以下となる。
+
+| 残り | まだ証明していない接続 | 見込み |
+| --- | --- | ---: |
+| `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` | 誘導表示の単位生成元・群変更・全複体の商・直和包含を前合成した図式 | 90〜130 |
+| `J ≫ freeHopfComparison.hom = M` | 今回の一つの単位射の式を有限入力族へ移し、`nullaryPrefixDelete` の作用と Hopf 対角の左右への代入を同じ標準語で照合 | 110〜160 |
+| 全射の一致と指定自然変換への復帰 | 標準語を前合成する族が Schur の全射を検出することを示して二つの式を束ねる。厳密な余積への復帰と擬同型性の移送自体は §44 で済み | 50〜70 |
+| **計** | | **250〜360** |
+
+完成見込みは **3,480〜3,590 行**となり、最後の承認上限 **3,500 行**を超えそうである。
+従って指示書 §15 の停止条件に従い、**ここで a の新しい実装を止める**。
+今回も `freeSchurCoefficientHomotopyEquiv` の存在から指定 Hopf 射の擬同型性を結論しない。
+**a は未完了。** 完了時に求められた §20.2・§40.2 の最終実測としては報告しない。
+
+§41 の見込みでは、生成元での射を厳密な余積へ戻す接続と、実際の標準語を前合成した族で
+全射の一致を検出する接続が十分に分かれていなかった。前者は §44 の 92 行で閉じたが、後者は残る。
+零入力についても、始対象性で選ばれた一射の式と、有限族の反復代入の式を区別する必要があった。
+閉じていない図式を補題の引数や弱い主張へ移して a の完了とはしていない。
+
+### 46.3 検証と登録待ち
+
+新規一対象のビルドは成功（`/tmp/bsw16/hopf-nullary-unit-05.log`）。
+別の一回の鍵で全 **4 宣言・標準三公理のみ**を監査した
+（`/tmp/bsw16/audit-hopf-nullary-unit.log`）。sorry・追加公理はない。
+監査後は長い一行の改行だけを行い、最終ソースを `hopf-nullary-unit-06.log` の対象ビルドで確認した（成功、新規警告なし）。
+本体内の直接の importer はまだない。
+
+登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap` を追加する。
+登録一覧はこれで新規 **50 モジュール**、追従対象と合流分を含む本体の一覧は **51 本**。
+共通入口と共通監査は変更していない。
+
+ビルド・監査は各一回ごとに鍵を取り、終了を回収して返した。未コミットの Lean は残さない。
