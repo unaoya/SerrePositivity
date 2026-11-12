@@ -1632,3 +1632,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.N
 ```
 
 次は自由積鎖への最後の輸送に自然性を通し、元の重み付き切断比較と照合する。逆順の合成や全単体空間の同値性を今回の自然性だけで結論していない。指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・錐の族も保持する。既存宣言・⑤aのファイル・入口・公式監査は変更していない。停止点2は未完、残枠3,260行。約7,900行での非停止の中間報告の条件を保持する。
+
+## 46. 3b-2 続行：元の自由積鎖上の指定 AW・shuffle の自然性
+
+コード `12db1050c`、新規1本125行。累計 **111本6,865行**。
+
+`DiagramComparison.FreeProductComparisonNaturality` で、指定自由化同型・積の係数同型・その二因子テンソルの自然性を証明した。その同じ同型で輸送した `freeProductAlexanderWhitney` と `freeProductShuffle` が、任意の二つの単体的集合の射に自然であることを証明した。元の自由正規化鎖の射を明記し、別の比較写像への取り替えはしていない。第一のまとまりの「自然性・照合」の内部である。
+
+個別検査、鍵付き対象ビルド **2,246 jobs**、累計111本 **1,219宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-44.log`、監査 `/private/tmp/AuditISW2G10HundredEleven.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredeleven-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductComparisonNaturality
+```
+
+逆順の EZ 合成、BK 線形化で使う単位加群の余積との同定、全単体パラメータの Hom／重み付き切断比較との照合は残る。指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も完了済みとは数えない。既存宣言・⑤aのファイル・入口・公式監査は変更していない。停止点2は未完、残枠3,135行。約7,900行で実測と残りの見込みを報告する。
