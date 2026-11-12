@@ -608,3 +608,261 @@ SerrePositivity.HomologicalAlgebra.DerivedCompletion.TensorCompletionUnit
 ```
 
 段階IIの監査には上記26本を追加する。一時監査には非公開の補助宣言も含めた。P3 の紙の整理と朝に回す順序は、この報告の先の段0相当の節を引き継ぐ。
+
+
+## P3 続行（2026-11-11 夜、停止点2の取り込み後）
+
+- 調整役の指示に従い main `cba436208` へ fast-forward した。夜間二鍵のスクリプトを反映済み。Nakayama の `CompleteCochainReduction`・`CochainCompleteDetection` は変更していない。
+- 対象ビルド済みの新規10本は下記（BS 9本・共通1本）。`/private/tmp/d69-p3-build-4.log` と `/private/tmp/d69-p3-build-5.log` が成功。鍵は `--wait 3600`、一回30分未満で、ビルドの間だけ保持した。
+- 基本部品は big affine 結晶厚化の対象・射・圏、基底の下の台環関手、剰余環への誘導射、剰余代数に沿う引き戻しと厳密な関手則、分冪基底の制限を含む。有限主開局所化による Zariski 被覆族と生成位相を定義し、二つの制限関手が被覆族を保つことを示した。
+- `CrystallineTransport` は代数同型に沿う分冪厚化の移送と厚化の同型。`CrystallineSiteSmall` は κ の代表型の部分集合に構造を移して、濃度 ≤ κ の厚化の圏の本質的小ささを証明した。この本質的小ささだけなら cutoff の下限は不要。`CrystallineSmallSiteTopology` で、小さい模型のサイト・生成位相・構造環の前層・引き戻しの圏の関手を定めた。構造環の層性はまだ主張していない。
+- `CrystallinePDQuotient` は p^{e+2} による商を実際の結晶厚化にする。指数を2から取る理由を docstring に記録した。共通の `ProCechNerveData` は通常の圏での塔・pro 弱終性・各段の有限冪・二重添字関手と、圏同値による pro 弱終性の移送を与える。∞ の極限には触れない。
+- 一時監査は10モジュール・217宣言、標準三公理のみ（`/private/tmp/AuditD69P3Ten.lean`、`/private/tmp/d69-p3-audit-ten.log`）。新規ファイルのみ、sorry・独自公理0、既存宣言と公式の入口・監査への変更は0。
+- P3 の残り：分冪包の有限冪商の塔・余積・pro 弱終性、主開局所化の分冪構造と構造環の層性、サイトの引き戻しと位相・構造環との照合、多項式 Poincaré の複体比較を実際の塔に接続する。以下は途中記録で、停止点3ではない。
+
+登録候補（10本、未登録）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotient
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallSiteTopology
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteSmall
+SerrePositivity.BhattScholze.Prismatic.CrystallineTransport
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteBasic
+SerrePositivity.BhattScholze.Prismatic.CrystallineSitePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteZariski
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction
+SerrePositivity.CategoryTheory.ProCechNerveData
+```
+
+
+### P3 続行 — 商の塔と多項式 span
+
+- `f76aaed51` の10本に続き、新規8本が対象ビルドを通過（`/private/tmp/d69-p3-build-6.log`〜`/private/tmp/d69-p3-build-8.log`）。追加後の一時監査は18モジュール・317宣言、標準三公理のみ（`/private/tmp/AuditD69P3Eighteen.lean`、`/private/tmp/d69-p3-audit-eighteen.log`）。
+- `CrystallinePDQuotientLift` は指定した p 冪を消す分冪射を有限冪商からの実際の厚化の射に降ろす。`CrystallinePDQuotientTower` はすべての遷移射の代表元の式と関手則、環・サイトの二つの向きの塔を与える。元の分冪環から任意の厚化への持ち上げがあれば、その塔が pro 弱終であることも示した。これを枠の分冪包へ適用する具体的な最後の宣言は引き続き検査中。
+- `CrystallineNilpotentComplete` は既存の `Adic.Complete.isAdicComplete_of_pow_le` を再利用し、任意の結晶厚化の p 完備性を示す。`CrystallineFrameLift` は任意の厚化へ枠の変数を選んで持ち上げ、完備分冪包の普遍性で分冪射を作る。持ち上げ・既存の増強・剰余構造射の正方形も環射の等式で証明した。
+- `CrystallineResidueAlgebra` は k/J 代数を基底環上で読む標準構造と核条件。`PDCechResidueEquivalence` は全射な枠の分冪包の剰余同型と、既存の増強との一致。`PDCechCrystallineQuotient` はこの同型の逆を構造射にして、各項の有限冪商を実際の結晶厚化にする。各項の濃度の上限は明示的に仮定する。
+- `CrystallinePolynomialSpan` は P1 の枠との同型を P2 の第0行への射影に合成して、実際の分冪 Čech 複体への射影と擬同型を得る。もう一方の脚は既存の `pdDeRhamTotalToCompletedForms` とその擬同型定理。草稿と同じく基底の p 完備性・p 正則性と分冪の p 上の条件を明示する。RΓ の形には組み立てていない。
+- 作成中に剰余同型の仮のファイル名が既存の D68 の `CrystallineCechResidue.lean` と一致したため、既存ファイルは HEAD の内容へ完全に戻し、新規分を `PDCechResidueEquivalence.lean` へ移した。最終差分では既存ファイルの変更は0。
+- 追加8本も新規ファイルのみで、sorry・独自公理0。Nakayama の二ファイル、公式の入口・監査は変更していない。P3 の停止点3にはまだ達していない。
+
+登録候補への追加（BS 8本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineNilpotentComplete
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientLift
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientTower
+SerrePositivity.BhattScholze.Prismatic.CrystallinePolynomialSpan
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidueAlgebra
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineQuotient
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueEquivalence
+```
+
+
+### P3 続行 — 具体的な零次の塔の pro 弱終性
+
+- `CrystallineCechProWeakTerminal` の対象ビルドが成功（`/private/tmp/d69-p3-build-9.log`）。`pdCechTowerZero_proWeaklyTerminal` は、全射な枠の分冪包の有限冪商の塔について、任意の厚化の p 冪零指数で射を降ろして具体的に証明した。`pdCechSmallTowerZero_proWeaklyTerminal` が小さい模型での同じ宣言。基底の係数構造の両立と、零次の包の濃度が κ に入る仮定を型に持つ。
+- `CrystallinePDQuotientMap` と `PDCechResidueNaturality` の対象ビルドも成功（`/private/tmp/d69-p3-build-10.log`）。前者は任意の分冪射を同じ指数の有限冪商の厚化の射へ降ろす。後者は任意の頂点写像が剰余同型とその逆の構造射を保つことを、増強の自然性で示す。
+- 一時監査は21モジュール・376宣言、標準三公理のみ（`/private/tmp/AuditD69P3TwentyOne.lean`、`/private/tmp/d69-p3-audit-twentyone.log`）。今回の3本にも sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- 残りは全 Čech 項の余単体的対象と有限段の余積への接続、分冪包の濃度評価、局所化・構造環の層性など。全 Čech 項の組み立てと指定変数像の延長の存在一意性は作業木で検査中。この記録は停止点3ではない。
+
+登録候補への追加（BS 3本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechProWeakTerminal
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientMap
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueNaturality
+```
+
+
+### P3 続行 — 全 Čech の塔・各段の有限冪・cutoff
+
+- `5dad04fc8` の21本に続き、新規12本（BS 10本・共通2本）が対象ビルドを通過した（`/private/tmp/d69-p3-build-11.log`〜`/private/tmp/d69-p3-build-17.log`）。一回30分未満、`--wait 3600`、鍵はビルドの間のみ。夜の二鍵は main から取り込んだスクリプトに任せた。
+- `CrystallineFrameVariablesLift`・`CrystallineFrameLiftResidue`・`PDCechCrystallineVertices`・`PDCechQuotientVariablesLift` は、指定した全頂点の変数像を厚化の射へ一意に延ばす。分冪包の普遍性、剰余の正方形、指定 p 冪の消滅、変数上での射の判定を明示した。
+- `PDCechCrystallineCosimplicial` は各有限 p 冪商を実際の余単体的な厚化の対象にする。`PDCechCrystallineCoproduct.pdCechQuotient_isCoproduct` が、標準頂点の脚による n 次項の余積の普遍性。標的の p 冪の消滅は零次項からの射一本から得た。`pdCechQuotientCechData` は反対圏で指定した有限冪を持つ Čech データ。
+- `PDCechCrystallineTower` は遷移の余単体的自然性、二重添字の `pdCechTower`、射影と遷移の両立を含む `pdCechTowerProCechData` を構成した。通常の圏論だけであり、pro 対象の ∞ の極限は作っていない。
+- `PDEnvelopeCardinality` は有限分岐の構文木から相対分冪包の形式項への全射を作り、未完備包の濃度を入力環と可算濃度で抑える。共通の `Adic.Cardinality` は古典的な完備化から元の加群の可算列への単射を作る。`CompletedPDEnvelopeCardinality` が両者を接続し、Čech 全項を標準の `cutoff k R` で抑える。
+- 濃度条件の精密化：枠の変数は `#S ≤ #k + #R + ℵ₀` としてから包を完備化し、最後に `cutoff k R ≤ κ` を適用する。一般の `#S ≤ κ` だけから κ^ℵ₀=κ を推論してはいない。標準の枠 S=R と有限多項式枠はこの精密化した条件を満たす。既存の `IsCrystallineCutoff` の型は変更しない。
+- 共通の `ProCechNerveTransport` は各段の有限冪を保つ関手による pro Čech データの移送。`CrystallineCechCutoff` の `pdCechTowerOfCutoff`・`pdCechProCechDataOfCutoff`・`pdCechSmallTowerOfCutoff_proWeaklyTerminal` は包の濃度を別に仮定せず、cutoff から小さい結晶サイトの塔と各段の Čech データを供給する。
+- 一時監査は33モジュール・462宣言、標準三公理のみ（`/private/tmp/AuditD69P3ThirtyThree.lean`、`/private/tmp/d69-p3-audit-thirtythree.log`）。追加12本も新規ファイルだけで、sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式の入口・監査は変更していない。
+- 残り：主開局所化の分冪構造、Zariski 位相と引き戻しの照合、構造環の層性と係数制限の自然性、当初の P3 の模型・η の照合の残件を確認する。主開局所化の分数公式と構造前層の引き戻しは作業木で検査中。この記録は停止点3ではない。
+
+登録候補への追加（12本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechCutoff
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLiftResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCoproduct
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCosimplicial
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineTower
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineVertices
+SerrePositivity.BhattScholze.Prismatic.PDCechQuotientVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCardinality
+SerrePositivity.CategoryTheory.ProCechNerveTransport
+SerrePositivity.CommutativeAlgebra.Adic.Cardinality
+```
+
+
+### P3 続行 — 主開局所化・分冪・Zariski coverage
+
+- 新規9本（すべて BS）が鍵付きの対象ビルドを通過した（`/private/tmp/d69-p3-build-19.log`〜`/private/tmp/d69-p3-build-21.log`）。`--wait 3600`、一回30分未満、鍵はビルドの間のみ。
+- `PDLocalizationDpow`・`PDLocalizationLaws`・`PDLocalizationAddition`・`PDLocalizationStructure` は、分数の分子の分冪を分母の n 乗で割る公式から、任意の局所化に分冪構造を作る。代表によらないこと、和・積・反復分冪を証明し、存在一意性と、元の環からの合成で分冪射であることを判定する補題まで閉じた。
+- `CrystallineSiteLocalization` は、分冪構造・p 冪零・剰余構造射・濃度を保つ標準主開厚化と標準射。`CrystallineLocalizationLift` は任意の主開局所化模型からの延長と合成の等式、射の一意性。
+- `CrystallineZariskiRefinement` は任意の厚化の射に沿った被覆を標準主開被覆で細分する。`CrystallineZariskiCoverage` はこの細分で coverage の公理を証明し、以前の sInf による結晶 Zariski 位相と一致することを示す。一般の厚化の引き戻し対象の存在を仮定しない。
+- `CrystallineStructurePullback` は小さい模型の構造前層をサイトの引き戻しで制限したものと、元の構造前層との自然同型。同値の単位同型から構成した通常の環値の自然同型であり、∞ の辺にはしていない。
+- 一時監査は42モジュール・531宣言、標準三公理のみ（`/private/tmp/AuditD69P3FortyTwo.lean`、`/private/tmp/d69-p3-audit-fortytwo.log`）。今回の9本にも sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- 残り：主開被覆での環の貼り合わせを結晶構造前層の層条件に接続し、小さいサイト・引き戻し・係数制限を照合する。共通の局所化の貼り合わせ補題は個別検査済みだが、対象ビルド前なので本コミットに含めない。この記録は停止点3ではない。
+
+登録候補への追加（BS 9本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineLocalizationLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteLocalization
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructurePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiCoverage
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiRefinement
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationAddition
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationDpow
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationLaws
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationStructure
+```
+
+
+### P3 続行 — 構造環の層性と小さいサイトの二つの関手
+
+- 新規7本（BS 5本・共通2本）が鍵付きの対象ビルドを通過した（`/private/tmp/d69-p3-build-22.log`・`/private/tmp/d69-p3-build-23.log`）。`--wait 3600`、一回30分未満、鍵はビルドの間のみ。
+- 共通の `AwayGluing` は任意の主開局所化模型に対する一意な貼り合わせ。添字の重複も許し、標準の主開局所化への比較を通して Mathlib の環の貼り合わせ定理へ帰着した。`AwayEquivalence` は可換な同型の正方形による局所化条件の移送。
+- `CrystallineStructureGluing` は、共通主開の実際の結晶厚化への射で両立性を検査して、大きいサイトの型値の構造前層が層であることを示す。`CrystallineSmallStructureSheaf.crystallineStructure_isSheaf` は小さいサイトでの基底環の下の環値の層条件。生成位相を同値による誘導位相で抑え、型値の層性を移し、忘却関手の極限反映で環構造を戻す。
+- `CrystallineBaseStructureRestriction` は分冪基底射に沿う小さいサイトの関手と構造環の係数制限との自然同型。剰余代数上の二つの係数構造の両立条件を型に残す。`CrystallineZariskiIso` と `CrystallineSmallCoverMaps` は単位自然同型で主開被覆を移し、剰余代数の引き戻し・分冪基底の制限による小さいサイトの関手が指定被覆族を保つことを明示した。
+- 一時監査は49モジュール・559宣言、標準三公理のみ（`/private/tmp/AuditD69P3FortyNine.lean`、`/private/tmp/d69-p3-audit-fortynine.log`）。追加7本も新規ファイルのみ、sorry・独自公理0。既存宣言・Nakayama の二ファイル・公式登録は変更していない。
+- ここでの層性は段0で述べた通常の環値の層性。∞ の篩に対する降下や RΓ の定義への組み立ては草稿に残す。残件の照合と塔の構造環への標準射を続ける。この記録は停止点3ではない。
+
+登録候補への追加（7本）：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseStructureRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallCoverMaps
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallStructureSheaf
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructureGluing
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiIso
+SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
+SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
+```
+
+
+## 停止点3：P3 完了・BS-D69 の区切り（2026-11-12、実装 347ec8a29）
+
+### 完了と取り込みの順序
+
+- 11月12日朝の調整役の決定により、停止点3の範囲は指示書 §0 の P3（サイト・構造層・Čech の塔・引き戻し・Poincaré の複体比較）。下表と登録一覧の52本でこの範囲を完了した。P1・P2 は既に検収・main 取り込み済みなので、これを BS-D69 の区切りとして報告する。
+- **実装の取り込み点は `347ec8a29`**。既存の検証記録は `494450453`、今回の報告更新は文書のみ。登録候補は BS 47本・共通5本の計52本で、末尾に統合一覧を置く。
+- 対象ビルドは全52本について成功、一時監査は588宣言・標準三公理のみ。sorry・独自公理0、既存宣言の変更0。今回の完了報告に際して Lean ソースは変更せず、ビルド・監査は直前の同じ実装に対する下記結果を用いる。
+- **取り込みは KL-W1 の停止点3の main 取り込みの後**。改名表の指示を受けて枝を追従させ、その時点で必要な対象ビルド・監査を `--wait 3600`、鍵をビルドの間だけ持つ形で行う。先に本レーンの新規コードを main へ取り込まない。入口・公式監査への登録は調整役が行う。
+
+### 検証した範囲
+
+- main `d9e596898` を `6cdce754c` で取り込んだ。衝突なし。main の作業木で編集・ビルドはしていない。
+- `PDCechTowerStructure` は分冪 Čech 脈体から有限段の厚化の構造環への標準自然変換、塔の遷移との両立、小さいサイトの構造前層を有限 Čech 段に制限したものと台環模型との自然同型。
+- `PDCechFrameSiteMap` は、二つの全射な枠の厳密な比較を有限 p 冪商の実際の厚化の射へ降ろす。分冪・剰余構造射を保つこと、代表元の式、余単体的自然性、標準自然変換との可換正方形を証明した。
+- `PDExtraCoordinatesRetraction` は既存の `withExtraCoords p k r` に対する零評価の厳密な余単体的射。`insertPdFactor_retraction` は環の段階での左逆、`pdExtraCoordinatesCochainEquiv` は係数加群の交代余面複体のホモトピー同値、`pdExtraCoordinatesRetraction_quasiIso` はその逆向きの擬同型。係数環は任意で、p 完備性や p 正則性を追加仮定していない。ただし、これは自由な高次座標の因子の収縮であり、草稿の一般 I の `pdDeltaCechNerve` 自体をその因子模型と同定した宣言ではない。
+- main 取り込み後、P3 の50本をまとめた対象ビルドが成功（`/private/tmp/d69-p3-build-24.log`、3751 jobs）。その後の残り2本も対象ビルドが成功（`/private/tmp/d69-p3-build-26.log`、3913 jobs）。どちらも `--wait 3600`、一回30分未満、鍵はビルドの間のみ。これは各モジュールとその依存だけの対象ビルドで、root ビルドではない。
+- 一時監査は **52モジュール・588宣言、標準三公理のみ**（`/private/tmp/AuditD69P3FiftyTwo.lean`、`/private/tmp/d69-p3-audit-fiftytwo.log`）。sorry・独自公理0。main との差分で、本体は52本すべて新規ファイル。既存宣言、Nakayama の二ファイル、公式の入口・監査は変更していない。
+
+指示書 §0 の P3 の対応：
+
+| 指示書の部品 | 本体の入口・到達点 |
+| --- | --- |
+| big affine site と小さい模型 | `CrystallineSiteBasic`、`CrystallineSiteSmall`、`CrystallineSmallSiteTopology` |
+| 分冪の局所化・Zariski 位相 | `PDLocalizationStructure`、`CrystallineSiteLocalization`、`CrystallineZariskiCoverage` |
+| O_crys が通常の環値の層 | `CrystallineSmallStructureSheaf.crystallineStructure_isSheaf` |
+| 全 Čech の塔と有限段の余積 | `PDCechCrystallineTower.pdCechTower`、`pdCechTowerProCechData` |
+| 濃度と pro 弱終性 | `CrystallineCechCutoff.pdCechSmallTowerOfCutoff_proWeaklyTerminal`。変数数の条件は `#S ≤ #k + #R + ℵ₀`。標準の枠 S=R はこの条件を満たす。 |
+| 剰余代数の引き戻し・基底の制限 | `CrystallineStructurePullback`、`CrystallineBaseStructureRestriction`、`CrystallineSmallCoverMaps` |
+| 多項式 Poincaré の複体の段 | `CrystallinePolynomialSpan.crystallinePolynomialTotalToCech_quasiIso` と既存の `pdDeRhamTotalToCompletedForms_quasiIso` による二脚。型には基底の p 完備性・p 正則性・分冪の p 上の条件がある。 |
+| 塔の構造環・枠の射との照合 | `PDCechTowerStructure`、`PDCechFrameSiteMap` |
+
+### 後回しの項目（11月12日朝の調整役の決定）
+
+段0報告の「多項式の Poincaré、Thm 5.2 の模型」の行に含めた、次の一般 I での追加一般化は、**停止点3に含めず後回し**とする。
+
+1. 一般 I の δ 座標つき相対分冪包と `withExtraCoords` の同定。
+2. その包への η の厳密な射。
+3. D68 の η との特殊化の等式。
+
+これらは未証明のまま草稿側に残し、今回の52本や完了宣言には数えない。調整役の説明では、E3 の経路で結晶の比較を使うのは結晶的な基底の場合で、D68 の ℤ_p の η で足りる。一般 I の版を使う場所が出たときに、改めて作業範囲へ入れる。
+
+`PDExtraCoordinatesRetraction` の一般係数での自由座標因子の収縮は検証済みだが、上の1〜3を証明したことにはしていない。RΓ の定義、Tot の E∞ 構造、関手 ∞ 圏への組み立ても、指示書どおり草稿に残す。Nakayama の二ファイルの整理は、既に決められた KL-W1 取り込み後の別作業として残し、両ファイルを変更していない。
+
+### 登録候補（P3 全52本、BS 47本・共通5本）
+
+入口・公式監査には未登録。調整役の取り込みのための統合一覧：
+
+```text
+SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineBaseStructureRestriction
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechCutoff
+SerrePositivity.BhattScholze.Prismatic.CrystallineCechProWeakTerminal
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameLiftResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineFrameVariablesLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineLocalizationLift
+SerrePositivity.BhattScholze.Prismatic.CrystallineNilpotentComplete
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotient
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientLift
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientMap
+SerrePositivity.BhattScholze.Prismatic.CrystallinePDQuotientTower
+SerrePositivity.BhattScholze.Prismatic.CrystallinePolynomialSpan
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidue
+SerrePositivity.BhattScholze.Prismatic.CrystallineResidueAlgebra
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteBasic
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteLocalization
+SerrePositivity.BhattScholze.Prismatic.CrystallineSitePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteSmall
+SerrePositivity.BhattScholze.Prismatic.CrystallineSiteZariski
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallCoverMaps
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallSiteTopology
+SerrePositivity.BhattScholze.Prismatic.CrystallineSmallStructureSheaf
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructureGluing
+SerrePositivity.BhattScholze.Prismatic.CrystallineStructurePullback
+SerrePositivity.BhattScholze.Prismatic.CrystallineTransport
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiCoverage
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiIso
+SerrePositivity.BhattScholze.Prismatic.CrystallineZariskiRefinement
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCoproduct
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineCosimplicial
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineQuotient
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineTower
+SerrePositivity.BhattScholze.Prismatic.PDCechCrystallineVertices
+SerrePositivity.BhattScholze.Prismatic.PDCechFrameSiteMap
+SerrePositivity.BhattScholze.Prismatic.PDCechQuotientVariablesLift
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueEquivalence
+SerrePositivity.BhattScholze.Prismatic.PDCechResidueNaturality
+SerrePositivity.BhattScholze.Prismatic.PDCechTowerStructure
+SerrePositivity.BhattScholze.Prismatic.PDEnvelopeCardinality
+SerrePositivity.BhattScholze.Prismatic.PDExtraCoordinatesRetraction
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationAddition
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationDpow
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationLaws
+SerrePositivity.BhattScholze.Prismatic.PDLocalizationStructure
+SerrePositivity.CategoryTheory.ProCechNerveData
+SerrePositivity.CategoryTheory.ProCechNerveTransport
+SerrePositivity.CommutativeAlgebra.Adic.Cardinality
+SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
+SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
+```
+
+
+## KL-W1 停止点3の改名への追従完了（2026-11-12 昼）
+
+- 作業開始時の枝は `7280b7ce5`、作業木は clean。検証済みの52本はすべてコミット済みで、未検証の下書きなし。配布された `kerodon-layout-stop-3/bs-d68-files.json` を `/private/tmp/bs-d69-klw1-20261112/files.json` に写し、枝固有の Lean ファイルと未追跡分を照合した。配布一覧との差分は0で、対象は同じ52本。
+- **main 取り込み前**の同じソースと既存成果物から、配布された `klw1_namespace.py collect` で52本すべての参照を収集した。終了コード0。`before_index` は `/private/tmp/bs-d69-klw1-20261112/before_index`。各ソースは収集情報・開始時のハッシュとバイト単位で一致することを確認した。
+- 同じ一覧・ソース・参照情報と最終版 `kl-namespace-map.json` で rewrite のプレビューを作成。終了コード0。**書き換え0本・0行、`review.json` は `{}`、残る保留0**。全52本のプレビューが元ソースとバイト単位で一致したため、ソースの編集は不要だった。追加の互換 alias も作っていない。
+- 使用した改名表は KL-W1 の作業木と取り込む main で同一。SHA-256 は `kl-module-map.json`: `69207c416cb097073875fd482ae08e9d04f55338f0415f9138502ccafb412b1a`、`kl-namespace-map.json`: `cf1fb1a6d1acea4717a60ee8f5497c1e582db7d331526f73f8fc0f7ffa957944`。
+- **追従の merge コミットは `a916536a3`**。main `8f68a475d`（KL-W1 取り込み `19f081dcb` 以降）を専用枝 `math/bs-d68` に取り込んだ。衝突なし。取り込み後も52本はプレビューと同一で、改名表のハッシュも一致した。main の作業木で編集・ビルドはしていない。
+- 書き換えファイルが0本なので、その直接 importer に対する追加ビルド対象も0。移動後の推移的な依存の検証として、**P3 の52本すべてを対象ビルドし成功（4196 jobs、終了コード0）**。ログは `/private/tmp/bs-d69-klw1-20261112/build.log`。`with_build_lock.sh --wait 3600` と1700秒の上限を用い、鍵は対象ビルドの間だけ持った。root ビルドは行っていない。
+- 対象ビルド終了後に鍵を取り直して、一時監査も実行。**52モジュール・588宣言、標準三公理のみ、終了コード0**。ログは `/private/tmp/bs-d69-klw1-20261112/audit.log`。sorry・独自公理0、既存宣言の変更0を維持している。Nakayama の二ファイル、公式の入口・監査は編集していない。
+- 追従結果の一覧・参照収集ログ・プレビュー・空の review・ハッシュの記録は `/private/tmp/bs-d69-klw1-20261112/`。登録候補は上の「P3 全52本、BS 47本・共通5本」の統合一覧どおり。**KL-W1 後の追従と再検証が完了し、停止点3の52本を調整役が取り込める状態**として報告する。一般 I の η の追加一般化は、前節の決定どおり後回しのまま。
