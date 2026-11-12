@@ -5315,3 +5315,44 @@ sorry・追加公理なし。共有入口と共有監査は未変更。
 `audit-cyclic-tate.log`：**127 本・910 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 次は自明表現での指定ホモロジー同型と、その全射に関する自然性を検証する。
+
+
+## 84. D79(iii)：同じ p 巡回作用・全入力関手・係数類
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| CyclicTateTrivialHomology | 71 |
+| TensorPowerRepresentation | 58 |
+| CyclicTensorInput | 59 |
+| TateCoefficientClass | 49 |
+
+追加 **237 行**、(iii) の検証済み **360 行**、(ii)+(iii) 累計 **7,554 行**。
+
+### 84.1 指定と全自然性
+
+`tensorPowerRepresentationFunctor` は、元のテンソル冪の Koszul 置換作用を
+任意の指定置換群を通して制限し、全複体・全鎖写像について表現の複体へ持ち上げる。
+`representationCochainComplex`・`representationCochainMap` と
+`tensorPower_permutation_naturality` を再利用した。
+作用を忘れる指定同型も元のテンソル複体を保つ。
+
+`PowerOperationCyclicGroup p` は宇宙をそろえた Z/p の加法群。
+`powerOperationCyclicPermutation` は Fin p 上の同じ左平行移動、
+`powerOperationCyclicGenerator` は同じ 1。
+群の位数が p であることと、同じ 1 が全元を生成することを証明した。
+`powerOperationTensorInput` が要求された p 入力の全関手となる。
+
+`cyclicTateTrivialHomologyNatIso` は自明作用を付けた **全加群関手**についての
+整数全次数のホモロジー同型。
+`powerOperationTateCoefficientClass` は、同じ指定周期係数複体の H^{-1} における
+1 の逆像。値が 1 であることと、非自明係数環なら非零であることを証明した。
+この時点では native spectral Tate の類と同定したとは述べない。
+
+### 84.2 検証と次
+
+`cyclic-tate-trivial-02.log`・`tensor-power-representation-01.log`・
+`tate-coefficient-class-01.log`：対象ビルド成功。新規四本の最終版に警告なし。
+`audit-tate-input.log`：**131 本・970 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+次は同じ完全周期解像度からの Hom 複体と、完全入力での比較を進める。
+非有界入力の全次数の積による Hom を、native Tate 関手と無条件に同定しない。
