@@ -7,6 +7,7 @@ from collections import defaultdict
 from datetime import date
 from graphlib import CycleError, TopologicalSorter
 import json
+from hashlib import sha256
 from pathlib import Path
 import re
 import subprocess
@@ -64,14 +65,38 @@ def collect(root, sources, output, lean=None):
     root = root.resolve()
     output.mkdir()
     command = [str(lean.resolve())] if lean else ["lake", "env", "lean"]
-    for path in sources:
-        module = module_name(path)
-        with TemporaryDirectory() as tmp:
-            capture = Path(tmp) / "refs.json"
-            subprocess.run([*command, "--run", str(HERE / "klw1_collect_refs.lean"), module, path, str(capture)],
-                           cwd=root, check=True)
-            checked_capture(root, path, capture)
-            (output / (module + ".json")).write_bytes(capture.read_bytes())
+    lake_project = any((root / name).is_file() for name in ("lakefile.toml", "lakefile.lean"))
+    # A concurrent tool release must not change the helper halfway through a run.
+    helper_source = (HERE / "klw1_collect_refs.lean").read_bytes()
+    with TemporaryDirectory(prefix="klw1-collect-") as directory:
+        tmp = Path(directory)
+        helper = tmp / "klw1_collect_refs.lean"
+        helper.write_bytes(helper_source)
+        for path in sources:
+            module = module_name(path)
+            capture = tmp / "refs.json"
+            args = [*command, "--run", str(helper), module, path, str(capture)]
+            setup_hash = None
+            if lake_project:
+                # Lake supplies current package/library options, visibility and plugins.
+                # Missing dependencies fail explicitly, without an implicit build.
+                result = subprocess.run(["lake", "--no-build", "setup-file", path],
+                                        cwd=root, capture_output=True, text=True)
+                if result.stderr:
+                    sys.stderr.write(result.stderr)
+                if result.returncode:
+                    if result.stdout:
+                        sys.stderr.write(result.stdout)
+                    raise ValueError(f"{path}: Lake setup failed; build dependencies before collect")
+                setup = tmp / "setup.json"
+                setup.write_text(result.stdout)
+                setup_hash = sha256(setup.read_bytes()).hexdigest()
+                args.append(str(setup))
+            subprocess.run(args, cwd=root, check=True)
+            data = checked_capture(root, path, capture)
+            data.setdefault("elaboration", {}).update(
+                collector_sha256=sha256(helper_source).hexdigest(), lake_setup_sha256=setup_hash)
+            (output / (module + ".json")).write_text(json.dumps(data, ensure_ascii=False))
     write_json(output / "files.json", sources)
 
 
@@ -115,6 +140,7 @@ class Migration:
         self.modules = plan.get("modules", {})
         self.namespaces = plan.get("namespaces", {})
         self.opens = plan.get("opens", {})
+        self.module_opens = plan.get("module_opens", {})
         self.existing_aliases = plan.get("existing_aliases", {})
         self.symbols = {}
         self.field_exports = defaultdict(list)
@@ -165,6 +191,12 @@ class Migration:
             for old, new in mapping.items():
                 validate_name(old)
                 validate_name(new)
+        for module, policies in self.module_opens.items():
+            validate_name(module)
+            for old, new in policies.items():
+                validate_name(old)
+                if new is not None:
+                    validate_name(new)
         for old, new in self.opens.items():
             validate_name(old)
             if new is not None:
@@ -182,6 +214,7 @@ def rewrite(data, migration):
     source = data["source"].encode()
     module = data["module"]
     ns_map = migration.namespaces.get(module, {})
+    opens = migration.opens | migration.module_opens.get(module, {})
     edits, diagnostics = {}, []
     guarded = []
     refs = defaultdict(list)
@@ -226,7 +259,7 @@ def rewrite(data, migration):
     removed_opens = set()
     for (lo, hi), operands in simple_opens.items():
         removed = [r for r in operands if len(r["names"]) == 1
-                   and migration.opens.get(r["names"][0], r["names"][0]) is None]
+                   and opens.get(r["names"][0], r["names"][0]) is None]
         if not removed:
             continue
         spans = [check_span(r) for r in operands]
@@ -282,17 +315,17 @@ def rewrite(data, migration):
                 continue
             names = row["names"]
             written = spelling(row)
-            new_names = [migration.opens.get(n, n) for n in names]
+            new_names = [opens.get(n, n) for n in names]
             if None in new_names:
                 block(row, "obsolete namespace requires a plain top-level open")
                 continue
-            policy_match = written.removeprefix("_root_.") in migration.opens
-            if any(n not in migration.opens and any(under(n, old) for old in migration.namespace_origins)
+            policy_match = written.removeprefix("_root_.") in opens
+            if any(n not in opens and any(under(n, old) for old in migration.namespace_origins)
                    for n in names):
                 block(row, "explicit opens policy needed for a renamed namespace")
                 continue
             relative_policy = any(old.endswith("." + written.removeprefix("_root_."))
-                                  for old in migration.opens)
+                                  for old in opens)
             if not names and (policy_match or ns_map or relative_policy):
                 block(row, "namespace operand could not be resolved")
                 continue
