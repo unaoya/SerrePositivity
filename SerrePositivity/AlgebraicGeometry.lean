@@ -807,3 +807,7 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusSquareLift
 public import SerrePositivity.AlgebraicGeometry.FrobeniusConductorSquare
 public import SerrePositivity.AlgebraicGeometry.FiniteSupportPower
 public import SerrePositivity.AlgebraicGeometry.FiniteSupportConductor
+public import SerrePositivity.AlgebraicGeometry.SurjectiveSpectrumRadical
+public import SerrePositivity.AlgebraicGeometry.FrobeniusQuotientFactor
+
+public import SerrePositivity.AlgebraicGeometry.LocalizedCokernelSupport
