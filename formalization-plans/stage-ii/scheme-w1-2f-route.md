@@ -348,3 +348,21 @@ F5 の正次数の零化は閉じた。次数零の切断代数 B_Y/im(A) の台
 次は、基底環から大域切断への全射性を部分代数のスカラー写像へ渡し、局所化後の増大写像と底変換比較を照合する。これを次数零の余核の台・冪の零化へ戻す必要がある。F6〜F8 も未完で、停止点 2f ではない。
 
 凍結前の検証済みの取り込み候補は `e1aef1934`。登録モジュールは `CechAlgebraAugmentationInjective` と `AffineSectionAlgebraAugmentation`（いずれも `SerrePositivity.AlgebraicGeometry` 下）。凍結の確定連絡後は枝へのコミットを控える。
+
+
+## F5 次数零途中：同型な構造射のスカラーと flat な核（db1145a6e）
+
+新規 3 本・6 個の明示的宣言・117 行。2f 累計 35 本・1,870 行（入口の import 込み 1,905 行）。対象と直接 importer は 4,581 jobs 成功。別実行の監査は 8,822 宣言・標準三公理のみ。共有鍵 `--wait 3600` はビルド・監査それぞれの実行中だけ使用し、待機は一つずつとした。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `schemeSectionAlgebraCech_empty_scalar_surjective` | 大域スカラーが全射なら、空交叉の実際の切断代数へのスカラーも全射。 |
+| `affineSchemeSectionAlgebra_scalar_surjective` | アフィン被覆の適合する切断部分代数へのスカラーは、大域スカラーが全射なら全射。 |
+| `schemeScalarHom_bijective_of_isIso` | アフィン基底への構造射が同型なら、それから定まる大域スカラーは全単射。 |
+| `schemeSectionAlgebra_scalar_surjective_of_isIso` | 同型な構造射とアフィン被覆に対し、基底環から実際の切断部分代数へのスカラーは全射。 |
+| `fullAlgebraCechTensorKernelEquiv` | 切断部分代数の flat なテンソル積は、テンソル化した最初の余境界の核と線形同型。 |
+| `fullAlgebraCechTensorKernelEquiv_tmul` | その同型は純テンソルの実際の切断成分を保つ。 |
+
+次の接続では、`schemeStructureCechNativeTensorComplexIso` の次数零・一次の同型を核へ制限し、今回の `fullAlgebraCechTensorKernelEquiv` と合成する。`schemeStructureCechNativeTensorComplexIso_unit_apply` により、純テンソルの像は実際の切断の引き戻しである。基底環の元にこの式を適用し、スカラー写像との可換性まで示す。`ModuleCat.extendScalars` の `Module.compHom` と通常の代数のスカラー作用には明示的な同型を入れ、黙って同一視しない。
+
+これができれば、中心外の局所化後の同型に今回の全射性を適用し、元の余核の局所化の消滅へ戻せる。現時点ではその最後の比較と F5 の次数零の冪の零化は未完。F6 の厚化を経由する Frobenius、F7 の次数零の完全性、F8 の全複体への接続も残る。停止点 2f ではない。
