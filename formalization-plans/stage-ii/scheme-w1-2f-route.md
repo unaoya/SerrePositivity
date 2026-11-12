@@ -366,3 +366,39 @@ F5 の正次数の零化は閉じた。次数零の切断代数 B_Y/im(A) の台
 次の接続では、`schemeStructureCechNativeTensorComplexIso` の次数零・一次の同型を核へ制限し、今回の `fullAlgebraCechTensorKernelEquiv` と合成する。`schemeStructureCechNativeTensorComplexIso_unit_apply` により、純テンソルの像は実際の切断の引き戻しである。基底環の元にこの式を適用し、スカラー写像との可換性まで示す。`ModuleCat.extendScalars` の `Module.compHom` と通常の代数のスカラー作用には明示的な同型を入れ、黙って同一視しない。
 
 これができれば、中心外の局所化後の同型に今回の全射性を適用し、元の余核の局所化の消滅へ戻せる。現時点ではその最後の比較と F5 の次数零の冪の零化は未完。F6 の厚化を経由する Frobenius、F7 の次数零の完全性、F8 の全複体への接続も残る。停止点 2f ではない。
+
+
+## F5 次数零：実際の底変換、余核の台、冪による零化（c0f4298e4）
+
+新規 10 本・20 公開宣言（ほか private 補題と local instance 各 1）・515 行。2f 累計 45 本・2,385 行（入口の import 込み 2,430 行）。対象と直接 importer は 4,591 jobs 成功。別実行の監査は 8,879 宣言・標準三公理のみ。共有鍵 `--wait 3600` はビルド・監査の各実行中だけ使用した。待機は一つずつ。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `linearKernelEquivOfCommute` | 可換な線形同型の正方形を、実際の核の同型へ制限する。 |
+| `linearKernelEquivOfCommute_apply` | 核の順写像は元の線形同型そのもの。 |
+| `linearKernelEquivOfCommute_symm_apply` | 核の逆写像は元の線形同型の逆そのもの。 |
+| `fullAlgebraCechTensorComparison` | 余境界と可換な各項の同型から、切断部分代数の平坦テンソル比較を作る。 |
+| `fullAlgebraCechTensorComparison_tmul` | 部分代数の比較の純テンソル上の値は、各項の比較の値。 |
+| `tensorExtendScalarsEquiv` | 通常の代数のテンソル積と ModuleCat.extendScalars の作用の表示を比較する。 |
+| `tensorExtendScalarsEquiv_tmul` | その比較は純テンソルの因子を保つ。 |
+| `schemeAlgebraCechTensorTermEquiv` | 実際のスキームの底変換から、代数係数の各 Čech 項のテンソル比較を供給する。 |
+| `schemeAlgebraCechTensorTermEquiv_differential` | 実際の各項の比較は最初の余境界と可換。 |
+| `schemeAlgebraCechTensorEquiv` | 実際の平坦底変換に沿った切断部分代数の線形同型。 |
+| `schemeStructureCechBaseChangeDiagramRestriction_one` | 実際の切断の引き戻しは単位元を保つ。 |
+| `schemeAlgebraCechTensorEquiv_one` | 部分代数の底変換同型は 1 ⊗ 1 を 1 に送る。 |
+| `schemeAlgebraCechTensorEquiv_scalar` | 部分代数の底変換同型は a ⊗ 1 を実際の algebraMap(a) に送る。 |
+| `schemeCechScalarTensor_surjective` | 構造射が同型になる平坦底変換では、元のスカラー写像のテンソル化は全射。 |
+| `tensorCokernel_subsingleton_of_surjective` | 写像のテンソル化が全射なら、実際の余核のテンソル積は零。 |
+| `cokernel_support_subset_of_localizedTensor_surjective` | 中心外の各局所化テンソル積で全射なら、余核の台は中心内。 |
+| `schemeCechScalarCokernel_support_subset_of_isoOffCenter` | 中心外で同型な射のアフィン被覆の切断部分代数のスカラー余核の台は中心内。 |
+| `projectiveCechScalarCokernel_support` | 射影標準開の切断部分代数のスカラー余核の台は中心内。 |
+| `projectiveCechScalarCokernel_power_annihilates` | その余核は中心のある冪で零化される。 |
+| `projectiveCechSectionAlgebra_exists_pow_map_lift` | 中心の十分高い冪の拡大イデアルの元は基底環へ持ち上がる。 |
+
+内部の `fullCechComplex_d_zero` は通常の Čech 複体の次数零の微分を明示する private 補題、`tensorExtendScalarTower` は制限加群と代数作用の整合性を与える local instance。heartbeat 等の上限は変更していない。
+
+実際の底変換の同型を各項で取り、最初の余境界の核へ制限した。`ModuleCat.extendScalars` の作用の表示と通常の代数のテンソル積の違いは明示的な同型で照合した。純テンソルと単位元の計算でスカラー写像との可換性を示したため、中心外の局所化後の全射性を元のスカラー写像のテンソル化へ戻せる。テンソル積の右完全性で余核の消滅へ戻し、台の包含と射影有限性を合成した。底変換比較や余核の消滅を追加の仮定として隠していない。
+
+F5 は正次数と次数零の両方が閉じた。F6〜F8 は未完で、停止点 2f ではない。主な残りは、F6 の正次数の Frobenius 順極限上の比較、F7 の次数零の完全性、F8 の全複体への接続の三つ。
+
+次の F6 の入口：既存の `reesAdicProjectiveClosedCechFrobenius` は同じ厚さ n 上の Frobenius を定義し、射影・遷移との可換性を供給する。一方、F6 に要る n→p*n（反復で n→p^e*n）の厚化を経由する写像は別途構成する。`reesAdicProjectiveClosedCechProjection_shifted_kernel_bound` と `reesAdicProjectiveClosedCechTransition_range_stabilizes` は 2e の既存の評価として再利用する。H 自身の I 進商と、閉厚化の H を同一視せず、実際の商環と標準開の比較を経由する。
