@@ -1888,3 +1888,17 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 残枠 **1,936行**。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残り、停止点2は未完。次のパラメータ方向の自然性は個別検査中であり、このコミットには含めない。B3凍結の予告に従い検証済みだけを保存した。凍結確定後は枝へのコミットを控える。
+
+## 60. 3b-2 続行：重み・単体パラメータ方向の自然性
+
+コード `ef2e57fce`、新規 `DiagramComparison.FreeProductDiagramNaturality` 1本53行。累計 **129本8,117行**。元の自由負次数鎖を図式の自然変換へ作用させ、指定 AW・shuffle が二つの図式の任意の自然変換と可換であることを証明した。第一のまとまりの自然性の内部であり、標準単体の作用素を代入できる形である。
+
+個別検査、鍵付き対象ビルド **2,273 jobs**、累計129本 **1,464宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-60.log`、監査 `/private/tmp/AuditISW2G10HundredTwentyNine.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredtwentynine-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramNaturality
+```
+
+残枠 **1,883行**。積重みとテンソル側の余単体的な族、および指定二射を `FreeProductFrames.lean` に下書き中（未コミット）。鎖ホモトピー同値から全単体 Hom 空間への接続、指定豊穣合成・native 極限性、脚・D(A)・錐の族は引き続き未完。停止点2ではない。
