@@ -1796,3 +1796,23 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 ```
 
 次はこの自然性を一般係数・負次数延長へ運び、図式の重みの比較へつなぐ。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,444行。約7,900行で実測と残量を報告する。
+
+## 56. 3b-2 続行：図式圏の指定整数 EZ 鎖ホモトピー同値
+
+コード `9b1857680`、新規2本135行。累計 **122本7,691行**。
+
+- `HomologicalAlgebra.PointwiseChainHomotopy`（56行）：各点の指定鎖ホモトピーと次数を一つ上げる成分の自然性から、図式圏の鎖ホモトピーを構成した。各点の成分は元のものと定義的に一致する。
+- `DiagramComparison.DiagramIntegerEZ`（79行）：任意の添字圏について、積を正規化した側・二因子の正規化テンソル側の複体値図式と、指定 AW・shuffle の全図式射を構成した。既存の順方向および§55の逆方向の自然性を使い、元の成分交換関手を通して、図式圏における両方向の鎖ホモトピー同値 `integerEZDiagramEquiv` を構成した。
+
+第一のまとまりの図式方向の両立を実装した。点ごとの同値の存在だけで図式の end での同値を結論したものではない。一般係数の元の正規化模型・積重みへの同定と、全単体 Hom／切断比較への接続は残る。
+
+個別検査、鍵付き対象ビルド **1,888 jobs**、累計122本 **1,346宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-55.log`、監査 `/private/tmp/AuditISW2G10HundredTwentyTwo.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredtwentytwo-modules.txt`。鍵は `--wait 3600`、一枚の整理券で順番待ちし、取得後は1,700秒上限でビルド・監査の間だけ使用、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.HomologicalAlgebra.PointwiseChainHomotopy
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramIntegerEZ
+```
+
+native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,309行。約7,900行で実測と残量を報告する。
