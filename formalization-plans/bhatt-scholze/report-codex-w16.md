@@ -4469,3 +4469,33 @@ AW を大きい宇宙の Γ の台へ直接適用せず、小さい標準単体�
 新規警告・sorry・追加公理なし。監査の終了と鍵の返却も回収済み。
 登録候補は表の七本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
 共通入口と共通監査は触らない。夜の規則に従い、報告後も自然性・Ω 条件の照合を続ける。
+
+### 65.5 実 Kan 列の全関手と、零次数・全基点の比較
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneComponents | 53 |
+| EilenbergMacLaneSuspensionNaturality | 53 |
+| EilenbergMacLaneSequence | 64 |
+| EilenbergMacLaneGammaWeakEquivalence | 62 |
+
+追加 **232 行**、(ii) の検証済み実測は **1146 行**。
+`levelPiZeroHomologyEquiv`・`levelPiZeroCohomologyEquiv` は各段の π₀ と H^r の比較。
+`gammaSuspension_naturality`・`levelSigma_naturality` は任意の複体射について厳密な可換式。
+これにより `eilenbergMacLaneSequenceFunctor` を実際の Kan 列の全関手として得た。
+ここでは Ω 条件を入力した Ω スペクトルを実例と呼んでいない。
+
+`gammaMap_kanPiIsomorphism_iff` は、同じ Γ の台の全基点・零次数を含む π 同型と、
+指定 smart 切断射の準同型性の同値。既存の Moore 判定と実余単位の
+`Arrow.isoMk` を使い、未供給の仮定や `[ModelCategory SSet]` を加えていない。
+
+ビルド `/tmp/bsw16/em-sequence-03.log` で列の全関手が成功。
+弱同値判定の修正後の最終ビルドは `/tmp/bsw16/em-gamma-weak-01.log` で成功。
+監査 `/tmp/bsw16/audit-em-sequence.log` は **21 本・228 宣言・標準三公理のみ**。
+最終の四本に警告・sorry・追加公理なし。終了を回収し、鍵を返却済み。
+登録候補は表の四本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+
+残りは、指定 suspension 射の Ω 条件（π/H のシフトとの照合）、
+逐次単射置換の全自然性、native Sp への全関手とその π/H の全自然比較。
+対象ごとの群同型や列の通常の全関手だけから native V の完成とは扱わない。
+この区切りの後も、夜の規則に従い (ii) の実装を続ける。
