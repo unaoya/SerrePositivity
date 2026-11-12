@@ -5134,3 +5134,50 @@ IndexComparison、`em-relative-roof-maps-04.log` の RoofMaps、
 最終版に警告なし。
 監査 `audit-em-relative-roof.log` は **100 本・784 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+## 80. D79(ii)：指定 hammock 比較の全写像空間の橋を完了
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| ComplexRelativeElementDerivedRoofComparison | 59 |
+| NerveColumnConstantRestriction | 47 |
+| NerveColumnRoofConjugation | 67 |
+| ComplexRelativeElementTransport | 66 |
+| ComplexRelativeElementReference | 78 |
+| ComplexHammockPinchedComparison | 62 |
+| ComplexHammockProbeFunctor | 60 |
+| FullyFaithfulEquivalencePrecomposition | 30 |
+| ComplexHammockProbeVertices | 51 |
+| ComplexHammockFullyFaithful | 48 |
+
+追加 **568 行**、(ii) の検証済み累計 **6509 行**。
+全十本が **［一般∞］移動候補**（うち七本は複体模型に関する比較）。
+
+### 80.1 §76.2 の不足を閉じた
+
+`complexHammockDerivedComparison_fullyFaithful` を **全頂点・全写像空間**で証明した。
+同じ指定 sourceIso の全屋根の自然性を、同じ頂点成分による両端の輸送へつなぎ、
+`complexRelativeElementDerivedPinchedMap_reference_family` で元の通常導来屋根と
+全パラメータの関手の射として照合した。その元の弱な基準族で反映し、
+`complexHammockDerivedComparison_probe_pinched_weak` により
+**指定比較そのものの実 pinched 誘導射**を検出した。
+
+元の `framedLimitProbeFunctor` と同じ augmentation が hammock 上で自己同値を
+誘導することも証明した。その自己同値の全頂点での値を厳密に照合し、
+probe の像での検出を全頂点へ延ばした。
+比較を別の関手へ取り替えたり、ホモトピー圏上の充満忠実性で代用したりしていない。
+
+したがって、以前の本質的全射性と合わせて、同じ全複体 hammock 比較を
+既存 D(A) との実同値にできる。次はその逆を通して native な V を作り、
+既存 D(A) 上の π/H 自然同型へ降ろす。
+(ii) の終了はその比較まで検証してから報告する。
+
+### 80.2 検証
+
+`em-relative-derived-roof-02.log`、`em-constant-restriction-01.log`、
+`em-relative-transport-reference-02.log` の RoofConjugation、
+`em-relative-transport-reference-03.log` の Transport、`em-relative-reference-04.log`、
+`em-pinched-probe-01.log` の PinchedComparison、`em-hammock-probe-02.log`、
+`em-hammock-fully-faithful-02.log` は成功。最終版の十本に警告なし。
+監査 `audit-em-fully-faithful.log` は **110 本・821 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
