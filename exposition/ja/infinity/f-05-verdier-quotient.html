@@ -18,7 +18,7 @@
 <nav class="top"><a href="index.html">目次</a> › 第 5 章</nav>
 <h1>第 5 章　Verdier 商への道筋</h1>
 <p class="meta">
-  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）の段 G（M1〜M11）と R52・R55。
+  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）。整備の計画と状態の正本は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）にある。表の「今の所在」は 2026-11-12（KL-W1 の後）に引き直した。
   ファイルの場所は <code>SerrePositivity/</code> からの相対パス。LI は KST/LocalizingInvariants の略。
 </p>
 
@@ -53,7 +53,7 @@
   <li>pushout・pullback での安定性（<code>_pushout_iff</code>・<code>_pullback_iff</code>）。</li>
   <li>共通の分母（<code>_commonDenominator</code>）、有限個の射を等しくする分母（<code>_equalizeFinite</code>）。</li>
 </ul>
-<p>また、Verdier 列が与えられれば、商のホモトピー圏は \(\mathrm{h}B\) の <code>trW</code> での局所化（Gabriel–Zisman）になる（<code>fraction_ho_localization</code>、LI/VerdierFractionComparison.lean:44。いまは private で、R62 で公開する）。</p>
+<p>また、Verdier 列が与えられれば、商のホモトピー圏は \(\mathrm{h}B\) の <code>trW</code> での局所化（Gabriel–Zisman）になる（<code>fraction_ho_localization</code>、KST/LocalizingInvariants/VerdierFractionComparison.lean:44、private）。</p>
 
 <h3>2.2 ∞ 圏の水準：写像空間を span で表す</h3>
 <div class="box lean">
@@ -69,24 +69,24 @@
 \(\operatorname{colim}_{(x' \to x) \in W} \mathrm{Map}_B(x', y)\) とも書ける。これは Nikolaus–Scholze I.3 や 9 人論文の付録 A の公式の ∞ 版である。</p>
 
 
-<p>この機構は LI の Verdier*（約 131 本）と KST/Fibration の W 分数（約 90 本）、Tamme*（約 23 本）に分かれている。計画の R52 で Stable/Verdier/Fractions に移す。
-Fibration の Weak* と LI の Tamme* には、辺の集合だけが違う複製が 4 対ある。それを一つの一般版にまとめるのは型が変わる作業なので、段 G の R57 で扱う。一般版の仮定は、pullback での安定性だけでは足りず、合成で閉じていることも要る。</p>
+<p>この機構は LI の Verdier*（約 131 本）と KST/Fibration の W 分数（約 90 本）、Tamme*（約 23 本）に分かれていた（10-28。今の所在は §7）。
+Fibration の Weak* と LI の Tamme* には、辺の集合だけが違う複製が 4 対ある。一般版にまとめるときの仮定は、pullback での安定性だけでは足りず、合成で閉じていることも要る。</p>
 
 <!-- ============================================================ -->
 <h2>3. 足りない定理（M1〜M11）</h2>
 <div class="table-wrap"><table>
-<tr><th>番号</th><th>主張</th><th>前提になるもの</th><th>置き場所</th></tr>
-<tr><td>M9</td><td>一般の厚い閉包 <code>thickClosure</code> と dg 版 <code>dgThickClosureProperty</code> の一致</td><td>R53</td><td>Stable/Verdier</td></tr>
-<tr><td>M2</td><td>安定な充満部分圏 \(A\) の cofiber 辺での局所化 \(B \to B[W_A^{-1}]\) は、行き先が安定で、関手が完全</td><td>局所化の存在（R56a）、安定性を仮定しない分数（§2.2 の注）</td><td>Stable/Verdier</td></tr>
-<tr><td>M7</td><td>(a) 一般の \(A\) で商が存在し、核は \(A\) の厚い閉包。(b) \(A\) の像が厚ければ <code>IsVerdierSequence</code></td><td>M2、M9</td><td>Stable/Verdier</td></tr>
-<tr><td>M1</td><td><code>IsVerdierSequence</code> ⇒ <code>IsStableVerdierSequence</code></td><td>分数（延長した関手の完全性の確認）</td><td>Stable/Verdier/Comparison</td></tr>
-<tr><td>M8</td><td>商の関手性：(a) 組 \((B, A)\) と \(A\) を保つ完全関手のなす ∞ 圏の上で \((B, A) \mapsto B/A\) が関手。(b) Calkin 懸垂への応用</td><td>M7</td><td>Stable/Verdier（(b) は KST）</td></tr>
-<tr><td>M3</td><td>有限余極限を持つ \(B\) について、\(\mathrm{Ind}_\omega(B)\) は小さい余極限を持ち、presentable</td><td>F2 の Ind</td><td>F2/Ind</td></tr>
-<tr><td>M4</td><td>安定 presentable 圏を、シフトで閉じた射の集合で Bousfield 局所化すると安定で、反射は完全</td><td>F2 の Bousfield 局所化</td><td>StablePresentable</td></tr>
-<tr><td>M5</td><td>Thomason–Neeman：compact 生成された核による商の compact 対象は、元の compact 対象の像の retract 閉包</td><td>M3、M4</td><td>StablePresentable</td></tr>
-<tr><td>M6</td><td>Karoubi 列の定義と、Karoubi 商 \((\mathrm{Ind}\,B / \mathrm{Ind}\,A)^\omega\) の存在</td><td>M3〜M5</td><td>StablePresentable</td></tr>
-<tr><td>M10</td><td>R61b で「比較の定理が要る」とした組の比較（例：∞ 関手としての Σ とホモトピー圏の関手 Σ）</td><td>—</td><td>Stable</td></tr>
-<tr><td>M11</td><td>一般の相対圏で、hammock 局所化が ∞ 局所化であること</td><td>—</td><td>F1B/Localization/DwyerKan</td></tr>
+<tr><th>番号</th><th>主張</th><th>前提になるもの</th></tr>
+<tr><td>M9</td><td>一般の厚い閉包 <code>thickClosure</code> と dg 版 <code>dgThickClosureProperty</code> の一致</td><td>一般の厚い閉包の定義</td></tr>
+<tr><td>M2</td><td>安定な充満部分圏 \(A\) の cofiber 辺での局所化 \(B \to B[W_A^{-1}]\) は、行き先が安定で、関手が完全</td><td>局所化の存在、安定性を仮定しない分数（§2.2 の注）</td></tr>
+<tr><td>M7</td><td>(a) 一般の \(A\) で商が存在し、核は \(A\) の厚い閉包。(b) \(A\) の像が厚ければ <code>IsVerdierSequence</code></td><td>M2、M9</td></tr>
+<tr><td>M1</td><td><code>IsVerdierSequence</code> ⇒ <code>IsStableVerdierSequence</code></td><td>分数（延長した関手の完全性の確認）</td></tr>
+<tr><td>M8</td><td>商の関手性：(a) 組 \((B, A)\) と \(A\) を保つ完全関手のなす ∞ 圏の上で \((B, A) \mapsto B/A\) が関手。(b) Calkin 懸垂への応用</td><td>M7</td></tr>
+<tr><td>M3</td><td>有限余極限を持つ \(B\) について、\(\mathrm{Ind}_\omega(B)\) は小さい余極限を持ち、presentable</td><td>F2 の Ind</td></tr>
+<tr><td>M4</td><td>安定 presentable 圏を、シフトで閉じた射の集合で Bousfield 局所化すると安定で、反射は完全</td><td>F2 の Bousfield 局所化</td></tr>
+<tr><td>M5</td><td>Thomason–Neeman：compact 生成された核による商の compact 対象は、元の compact 対象の像の retract 閉包</td><td>M3、M4</td></tr>
+<tr><td>M6</td><td>Karoubi 列の定義と、Karoubi 商 \((\mathrm{Ind}\,B / \mathrm{Ind}\,A)^\omega\) の存在</td><td>M3〜M5</td></tr>
+<tr><td>M10</td><td>二つの版の間に比較の定理が要る組の比較（例：∞ 関手としての Σ とホモトピー圏の関手 Σ）</td><td>—</td></tr>
+<tr><td>M11</td><td>一般の相対圏で、hammock 局所化が ∞ 局所化であること</td><td>—</td></tr>
 </table></div>
 
 <!-- ============================================================ -->
@@ -98,7 +98,7 @@ B \xrightarrow{\ \text{局所化（存在定理）}\ } Q = B[W_A^{-1}],\qquad
 \text{分数で写像空間を計算} \Rightarrow Q \text{ は安定で } B \to Q \text{ は完全（M2）}
 \]
 <ul>
-  <li>材料はほぼそろっている：局所化の存在（R56a）、ホモトピー圏の分数計算（§2.1）、∞ 版の span による写像空間（§2.2、ただし安定性の仮定を外す必要がある）。</li>
+  <li>材料はほぼそろっている：局所化の存在、ホモトピー圏の分数計算（§2.1）、∞ 版の span による写像空間（§2.2、ただし安定性の仮定を外す必要がある）。</li>
   <li>得られるのは Verdier 商そのもの（冪等完備化をしない商）。</li>
   <li>難しいところ：分数の機構から「商が安定であること」を引き出す部分。有限極限・余極限を分数で計算し、fiber 列 = cofiber 列を確かめる必要がある。</li>
 </ul>
@@ -156,26 +156,17 @@ A &amp; \to &amp; B &amp; \to &amp; B/A \\
 </div>
 
 <!-- ============================================================ -->
-<h2>6. 進める順序（案）</h2>
-<ol>
-  <li>整備：R48・R49・R50・R53・R56a・R52（材料を Stable/Verdier と F1B/Localization に集める）。</li>
-  <li>M9（厚い閉包の比較）と、分数の機構から安定性の仮定を外す切り出し。</li>
-  <li>M2（局所化の安定性）→ M7（商の存在。一般の場合と厚い場合）→ M1（二つの定義の比較）。</li>
-  <li>M8（関手性）。§5 の見通しを最初に検討する。</li>
-  <li>必要に応じて道 (B)：M3 → M4 → M5 → M6。M2 が分数で示しにくければ、こちらを主路にする。</li>
-  <li>M11（一般の hammock 局所化）は独立していて、写像空間の計算の別の道具として、いつでも進められる。</li>
-</ol>
+<h2>6. 進める順序</h2>
+<p>進める順序は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/notes-plan-sections.md">research/infinity-refactor-audit/notes-plan-sections.md</a>。</p>
 
-<!-- ============================================================ -->
-<h2>7. 整備での行き先</h2>
+<h2>7. 今の所在</h2>
 <div class="table-wrap"><table>
-<tr><th>内容</th><th>いま → 移し先</th><th>状態</th></tr>
-<tr><td>ホモトピー圏の分数計算</td><td>Stable</td><td><span class="tag">済</span></td></tr>
-<tr><td><code>fraction_ho_localization</code></td><td>LI（private）→ 公開（R62）→ Stable/Verdier（R52）</td><td><span class="tag">移動予定</span></td></tr>
-<tr><td>span による写像空間（Verdier* 131・W 分数 90・Tamme* 23 本）</td><td>LI・KST/Fibration → Stable/Verdier/Fractions</td><td><span class="tag">移動予定</span> R52</td></tr>
-<tr><td>Weak* と Tamme* の統合</td><td>—</td><td><span class="tag">未着手</span> R57（段 G）</td></tr>
-<tr><td>Ind・compact・冪等完備化・Bousfield 局所化</td><td>F2</td><td><span class="tag">済</span></td></tr>
-<tr><td>M1〜M11</td><td>Stable/Verdier・StablePresentable・F1B/Localization/DwyerKan</td><td><span class="tag">未着手</span></td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td>ホモトピー圏の分数計算</td><td><code>InfinityCategories/HA/StableInfinityCategories</code>。<code>stableHoClosure</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/StableHoClosure.lean">StableHoClosure:22</a>）、<code>cofiberStableEdges_iff_trW</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberHoDenominators.lean">CofiberHoDenominators:34</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>fraction_ho_localization</code>（ホモトピー圏の分数と局所化の比較）</td><td><code>KST/LocalizingInvariants</code>。<code>fraction_ho_localization</code>（<a href="../../../SerrePositivity/KST/LocalizingInvariants/VerdierFractionComparison.lean">VerdierFractionComparison:44</a>）。private</td><td class="ok">済</td></tr>
+<tr><td>span による写像空間（Verdier*・W 分数・Tamme*）</td><td><code>InfinityCategories/Project/DerivedCategories/Verdier/Fractions</code>、<code>KST/Fibration</code>、<code>KST/LocalizingInvariants</code>、<code>InfinityCategories/HA/StableInfinityCategories/Verdier/Fractions</code>。<code>verdierFractionMappingComparison_isFullyFaithful</code>（<a href="../../../SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierSpanCoherentContraction.lean">VerdierSpanCoherentContraction:2333</a>）。Weak* と Tamme* は、分母の集合だけが違う別々の版のまま</td><td class="ok">済</td></tr>
+<tr><td>Ind・compact・冪等完備化・Bousfield 局所化</td><td><code>InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories</code>、<code>InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects</code>、<code>InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories</code>、<code>InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents</code>。<code>IndInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/PresheafSubcategory.lean">PresheafSubcategory:26</a>）、<code>IsCompact</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/FinitaryFunctorsAndCompactObjects/Definition.lean">Definition:41</a>）、<code>IsIdempotentComplete</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/Coherent.lean">Coherent:46</a>）、<code>bousfieldLocalizationFunctor</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/BousfieldReflection.lean">BousfieldReflection:55</a>）</td><td class="ok">済</td></tr>
+<tr><td>M1〜M11</td><td>—（一般の局所化 <code>edgeLocalization</code> はあるが、安定な商と厚い閉包の部分はない）</td><td class="todo">コードにない</td></tr>
 </table></div>
 
 <h2>この章で押さえること</h2>

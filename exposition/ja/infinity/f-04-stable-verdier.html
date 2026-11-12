@@ -18,12 +18,12 @@
 <nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
 <h1>第 4 章　安定 ∞ 圏と Verdier 列</h1>
 <p class="meta">
-  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）の段 B（R48〜R50・R53）と段 E（R68）。
+  基準コミット <code>91d8dc9cd</code>（2026-10-28）。計画は <a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>（10-28 版）。整備の計画と状態の正本は形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>、台帳 <a href="../../../formalization-plans/refactor-ledger.md">refactor-ledger.md</a>）にある。表の「今の所在」は 2026-11-12（KL-W1 の後）に引き直した。
   ファイルの場所は <code>SerrePositivity/</code> からの相対パス。LI は KST/LocalizingInvariants の略。
 </p>
 
 <p>この章では、安定 ∞ 圏の基本と、その中での<b>Verdier 列</b>を扱う。Verdier 列は「部分圏 \(A\) で割った商 \(B/A\)」を特徴づけるもので、第 5 章の商の構成の目標になる。
-このリポジトリには Verdier 列の定義が二つある。その関係と、整備でどう整理するか（R50）もここで説明する。</p>
+このリポジトリには Verdier 列の定義が二つある。その関係もここで説明する。</p>
 
 <!-- ============================================================ -->
 <h2>1. 安定 ∞ 圏の基本</h2>
@@ -59,7 +59,7 @@
 </table></div>
 
 <h3>1.3 完全関手の ∞ 圏</h3>
-<p>Verdier 列の普遍性を述べるために、関手 ∞ 圏の中の部分を用意しておく（いま InfinityCategories/Derived/ExactFunctorCategory.lean。R49a で Stable/Exact へ）。</p>
+<p>Verdier 列の普遍性を述べるために、関手 ∞ 圏の中の部分を用意しておく（InfinityCategories/HA/StableInfinityCategories/Exact/ExactFunctorCategory.lean）。</p>
 <ul>
   <li><code>exactFunctors X Y</code>：完全関手のなす \(\mathrm{Fun}(X, Y)\) の充満部分 ∞ 圏 \(\mathrm{Fun}^{\mathrm{ex}}(X, Y)\)。</li>
   <li><code>zeroingExactFunctors X Y P</code>：頂点の集合 \(P\) を零に送る完全関手のなす部分。</li>
@@ -119,7 +119,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
   kills (z : B _⦋0⦌) : IsZeroVertex ((i ≫ q).app _ z)
   universal (Y) [Quasicategory Y] [IsStable Y] :
     IsQCatEquivalence (zeroingExactPrecomposition q (像) … Y)</code></pre>
-<p class="meta">InfinityCategories/Derived/StableVerdierSequence.lean:15（R49a で Stable/Verdier へ）。</p>
+<p class="meta">InfinityCategories/HA/StableInfinityCategories/Verdier/StableVerdierSequence.lean:15。</p>
 
 <div class="table-wrap"><table>
 <tr><th></th><th><code>IsVerdierSequence</code></th><th><code>IsStableVerdierSequence</code></th></tr>
@@ -136,16 +136,10 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
   <li>逆向きには、像が厚いこと（核 = 像）と、完全関手に限らない普遍性（局所化が安定で、Dwyer–Kan 局所化でもあること。M2）が必要である。</li>
 </ul>
 
-<h3>3.3 二つの形をどう整理するか（R50、10-28 決定）</h3>
+<h3>3.3 二つの形の関係</h3>
 <p>束ねた定義の三つの条件は、どれも \(i\) と \(q\) の下の単体的集合の射（<code>i.hom</code>・<code>q.hom</code>）しか使わない。<code>essentialImage i</code> も「<code>i.hom</code> の像と同型な頂点」である。
-つまり、束ねた形と束ねない形は、包み方が違うだけで中身は同じである。そこで次のように整理する。</p>
-<ul>
-  <li>束ねた <code>IsVerdierSequence</code> は<b>そのまま残し</b>、約 277 本の利用元は変えない。</li>
-  <li>Stable/Verdier/Basic に、束ねない形 <code>IsVerdierPair (i : X ⟶ Y) (q : Y ⟶ Z) [IsExactFunctor i] [IsExactFunctor q]</code>（仮の名前）を置く。インスタンスから <code>StableCategory</code>・<code>ExactMap</code> を組み立てて、既存の定義に渡すだけの定義にする。同値補題 <code>isVerdierSequence_iff</code> も置く。</li>
-  <li>新しく書くコード（M1〜M8）は束ねない形を使う。</li>
-</ul>
+つまり、束ねた形と束ねない形は、包み方が違うだけで中身は同じである。束ねない形の定義と、束ねた定義との同値補題は、まだコードにない（扱いは形式化の側）。</p>
 
-<!-- ============================================================ -->
 <h2>4. 厚い部分圏</h2>
 <p>安定 ∞ 圏 \(B\) の充満部分圏 \(A\) が<b>厚い</b>とは、零対象・fiber・cofiber で閉じていて（安定部分圏）、さらに retract で閉じていることをいう。</p>
 <ul>
@@ -153,8 +147,8 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
   <li>任意の部分圏 \(A\) で割ると、核は \(A\) の<b>厚い閉包</b>（\(A\) を含む最小の厚い部分圏）になる。これが第 5 章の M7 の「一般の場合」である。</li>
 </ul>
 <p>いまの状態：一般の述語はなく、dg 版 <code>dgThickClosureProperty</code>（Derived/DGQuotientThickKernelCriterion.lean、triaRepresentable の retract 閉包）だけがある。
-材料として、安定な閉包 <code>StableVertexClosure</code>（Stable/StableVertexClosure、零・同型・fiber・cofiber で閉じた最小の集合）と retract 閉包 <code>retractClosure</code>（F2/Idempotent/Retracts.lean:73）がある。</p>
-<p>計画の R53：<code>retractClosure</code> を Core へ下ろした後、Stable/Verdier に <code>IsThick</code> と <code>thickClosure</code> を定義だけ置く。dg 版との一致は比較の証明が要るので、段 G（M9）に分ける。</p>
+材料として、安定な閉包 <code>StableVertexClosure</code>（InfinityCategories/HA/StableInfinityCategories/StableVertexClosure、零・同型・fiber・cofiber で閉じた最小の集合）と retract 閉包 <code>retractClosure</code>（InfinityCategories/HTT/RetractsAndIdempotentCompletion/RetractClosure.lean:24）がある。</p>
+<p>一般の安定 ∞ 圏での厚い部分圏・厚い閉包の定義は、まだコードにない。dg 版との一致は M9（第 5 章）。</p>
 
 <!-- ============================================================ -->
 <h2>5. 随伴による判定と半直交分解</h2>
@@ -166,7 +160,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 </div>
 
 <p>この状況は<b>半直交分解</b> \(B = \langle A, C \rangle\) に対応する。\(C\) は \(B\) の中に \(j(C) = A^{\perp}\) として実現され、商は Bousfield 型（第 3 章 §6）になる。
-このリポジトリでは、次の形で使われている（いずれも LI。R68 で Stable/Lax・Stable/Semiorthogonal へ移す）。</p>
+このリポジトリでは、次の形で使われている（InfinityCategories/HA/StableInfinityCategories/Semiorthogonal・Lax と KST/LocalizingInvariants）。</p>
 <ul>
   <li><code>SemiorthogonalDecomposition.isVerdier</code>：半直交分解から Verdier 列を作る。</li>
   <li>lax pullback（Tamme）：二つの完全関手 \(f : X \to Z \leftarrow Y : g\) の lax pullback は、\(X\) と \(Y\) の半直交分解を持つ。そこから Verdier 列が得られる（<code>laxDifference_isVerdier</code>・<code>tammeVerdierSequence</code>）。これは Land–Tamme の定理の基礎で、K 理論の excision に使われる。</li>
@@ -176,8 +170,8 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 <!-- ============================================================ -->
 <h2>6. 安定 ∞ 圏の ∞ 圏と局所化不変量</h2>
 <ul>
-  <li><b>\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)</b>：安定 ∞ 圏を対象とし、完全関手の ∞ 圏の core を Hom とする単体的圏の coherent nerve（<code>StableInfinity := SimplicialNerve StableQCat</code>、LI/StableInfinity.lean。R48 で Stable/Infinity へ）。</li>
-  <li><b>Verdier 図式</b>：Verdier 列 \(A \to B \to C\) を、\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) の中の四角形 \(A \to B,\ 0 \to C\) として表したもの（<code>VerdierDiagram</code>、LI/VerdierDiagrams.lean。R48 で Stable/Infinity へ）。</li>
+  <li><b>\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)</b>：安定 ∞ 圏を対象とし、完全関手の ∞ 圏の core を Hom とする単体的圏の coherent nerve（<code>StableInfinity := SimplicialNerve StableQCat</code>、InfinityCategories/HA/StableInfinityCategories/Infinity/StableInfinity.lean）。</li>
+  <li><b>Verdier 図式</b>：Verdier 列 \(A \to B \to C\) を、\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) の中の四角形 \(A \to B,\ 0 \to C\) として表したもの（<code>VerdierDiagram</code>、InfinityCategories/HA/StableInfinityCategories/Infinity/VerdierDiagrams.lean）。</li>
   <li><b>局所化不変量</b>（Blumberg–Gepner–Tabuada）：\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) からスペクトラムの ∞ 圏への関手 \(E\) で、零を零に送り、Verdier 図式を pullback に送るもの（<code>IsLocalizingInvariant</code>、LI/Invariant.lean）。非連結 K 理論がその代表例。
     これはスペクトラムの ∞ 圏 <code>Sp</code> を使うので、KST に残す。</li>
 </ul>
@@ -193,23 +187,23 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 <tr><td>dg の Calkin 懸垂（非連結 K 用）</td><td><code>dgKappaSuspension_isStableVerdierSequence</code></td><td>KST/NonConnective</td></tr>
 <tr><td>Land–Tamme の ⊙ 構成の Milnor 列</td><td><code>dgOdotMilnorLax_isVerdier</code> など</td><td>KST/SConstruction</td></tr>
 </table></div>
-<p>dg の例は <code>IsStableVerdierSequence</code> の形、∞ の例は <code>IsVerdierSequence</code> の形で書かれている。M1 と R50 の同値補題で両者がつながる。</p>
+<p>dg の例は <code>IsStableVerdierSequence</code> の形、∞ の例は <code>IsVerdierSequence</code> の形で書かれている。両者をつなぐのが M1（まだない）。</p>
 
 <!-- ============================================================ -->
-<h2>8. 整備での行き先</h2>
+<h2>8. 今の所在</h2>
 <div class="table-wrap"><table>
-<tr><th>内容</th><th>いま → 移し先</th><th>状態</th></tr>
-<tr><td>安定 ∞ 圏の定義・完全関手・三角構造</td><td>Stable</td><td><span class="tag">済</span></td></tr>
-<tr><td>cofiber 辺 <code>cofiberLocalizingEdges</code></td><td>Stable</td><td><span class="tag">済</span></td></tr>
-<tr><td>完全関手の ∞ 圏、<code>IsStableVerdierSequence</code></td><td>Derived → Stable/Exact・Stable/Verdier</td><td><span class="tag">移動予定</span> R49a</td></tr>
-<tr><td><code>StableCategory</code>・<code>ExactMap</code>・<code>IsVerdierSequence</code>・<code>AdjointVerdier</code></td><td>LI → Stable/Verdier</td><td><span class="tag">移動予定</span> R48</td></tr>
-<tr><td><code>StableInfinity</code>（\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)）・<code>VerdierDiagram</code></td><td>LI → Stable/Infinity</td><td><span class="tag">移動予定</span> R48</td></tr>
-<tr><td>束ねない形 <code>IsVerdierPair</code> と同値補題</td><td>新設（Stable/Verdier/Basic）</td><td><span class="tag">移動予定</span> R50</td></tr>
-<tr><td>厚い部分圏 <code>IsThick</code>・<code>thickClosure</code></td><td>新設（Stable/Verdier/Thick）</td><td><span class="tag">移動予定</span> R53</td></tr>
-<tr><td>半直交分解・lax pullback</td><td>LI → Stable/Lax・Stable/Semiorthogonal</td><td><span class="tag">移動予定</span> R68</td></tr>
-<tr><td>局所化不変量 <code>IsLocalizingInvariant</code></td><td>LI（<code>Sp</code> を使うので KST に残す）</td><td>移さない</td></tr>
-<tr><td>M1（二つの定義の比較）、M9（厚い閉包の dg 版との比較）</td><td>なし</td><td><span class="tag">未着手</span></td></tr>
-<tr><td>Ω による安定性の判定（HA 1.4.2.27）</td><td>なし</td><td><span class="tag">未着手</span>（D-7）</td></tr>
+<tr><th>内容</th><th>今の所在（SerrePositivity/ から）・代表的な宣言</th><th>状態</th></tr>
+<tr><td>安定 ∞ 圏の定義・完全関手・三角構造</td><td><code>InfinityCategories/HA/StableInfinityCategories</code>、<code>InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits</code>。<code>IsStable</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Definition.lean">Definition:26</a>）、<code>IsExactFunctor</code>（<a href="../../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/ExactFunctor.lean">ExactFunctor:42</a>）、<code>isTriangulated_ho</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/TriangulatedInstance.lean">TriangulatedInstance:21</a>）</td><td class="ok">済</td></tr>
+<tr><td>cofiber 辺 <code>cofiberLocalizingEdges</code></td><td><code>InfinityCategories/HA/StableInfinityCategories</code>。<code>cofiberLocalizingEdges</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/CofiberLocalizingEdges.lean">CofiberLocalizingEdges:21</a>）</td><td class="ok">済</td></tr>
+<tr><td>完全関手の ∞ 圏、<code>IsStableVerdierSequence</code></td><td><code>InfinityCategories/HA/StableInfinityCategories/Exact</code>、<code>InfinityCategories/HA/StableInfinityCategories/Verdier</code>。<code>exactFunctors</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Exact/ExactFunctorCategory.lean">ExactFunctorCategory:22</a>）、<code>IsStableVerdierSequence</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/StableVerdierSequence.lean">StableVerdierSequence:15</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>StableCategory</code>・<code>ExactMap</code>・<code>IsVerdierSequence</code>・AdjointVerdier</td><td><code>InfinityCategories/HA/StableInfinityCategories/Verdier</code>。<code>StableCategory</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/StableCategories.lean">StableCategories:27</a>）、<code>IsVerdierSequence</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/VerdierSequence.lean">VerdierSequence:37</a>）、<code>isVerdierSequence_of_adjoint</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Verdier/AdjointVerdier.lean">AdjointVerdier:41</a>）</td><td class="ok">済</td></tr>
+<tr><td><code>StableInfinity</code>（\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)）・<code>VerdierDiagram</code></td><td><code>InfinityCategories/HA/StableInfinityCategories/Infinity</code>。<code>StableInfinity</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Infinity/StableInfinity.lean">StableInfinity:84</a>）、<code>VerdierDiagram</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Infinity/VerdierDiagrams.lean">VerdierDiagrams:47</a>）</td><td class="ok">済</td></tr>
+<tr><td>束ねない形の Verdier 対と、束ねた定義との同値</td><td>—</td><td class="todo">コードにない</td></tr>
+<tr><td>厚い部分圏と厚い閉包（一般の安定 ∞ 圏）</td><td>—（前提の <code>retractClosure</code> は <code>InfinityCategories/HTT/RetractsAndIdempotentCompletion</code>、dg 版は <code>InfinityCategories/Project/DerivedCategories</code>）</td><td class="todo">コードにない</td></tr>
+<tr><td>半直交分解・lax pullback</td><td><code>InfinityCategories/HA/StableInfinityCategories/Semiorthogonal</code>、<code>InfinityCategories/HA/StableInfinityCategories/Lax</code>、<code>InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces</code>、<code>KST/LocalizingInvariants</code>。<code>SemiorthogonalDecomposition</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/Semiorthogonal/SemiorthogonalDecomposition.lean">SemiorthogonalDecomposition:31</a>）、<code>laxCategory</code>（<a href="../../../SerrePositivity/KST/LocalizingInvariants/LaxStableCategory.lean">LaxStableCategory:24</a>）</td><td class="ok">済</td></tr>
+<tr><td>局所化不変量 <code>IsLocalizingInvariant</code></td><td><code>KST/LocalizingInvariants</code>。<code>IsLocalizingInvariant</code>（<a href="../../../SerrePositivity/KST/LocalizingInvariants/Invariant.lean">Invariant:27</a>）</td><td class="ok">済</td></tr>
+<tr><td>M1（二つの定義の比較）、M9（厚い閉包の dg 版との比較）</td><td>—（dg の個別の場合の <code>…_isStableVerdierSequence</code> はある）</td><td class="todo">コードにない</td></tr>
+<tr><td>Ω による安定性の判定（HA 1.4.2.27）</td><td><code>InfinityCategories/HA/StableInfinityCategories</code>。<code>isStable_of_loopEquivalence</code>（<a href="../../../SerrePositivity/InfinityCategories/HA/StableInfinityCategories/LoopEquivalenceStability.lean">LoopEquivalenceStability:20</a>）</td><td class="ok">済</td></tr>
 </table></div>
 
 <h2>この章で押さえること</h2>
