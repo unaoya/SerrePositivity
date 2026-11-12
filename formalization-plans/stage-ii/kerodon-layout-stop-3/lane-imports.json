@@ -1,32 +1,210 @@
 {
-  "scanned_at_jst": "2026-11-11T20:40:29+09:00",
+  "scanned_at_jst": "2026-11-12T10:21:32+09:00",
   "lanes": [
     {
       "label": "⑤a",
       "branch": "math/bs-impl",
-      "head": "bf017ab0a036505986e0cffe3139c6f96cc1a53d",
-      "merge_base": "375deaa6e8ebad0b92bba8f14607696e5b80dd17",
+      "head": "42a233246a39aef07aea480cc15b92ecfc953dda",
+      "merge_base": "e3dc5ba4b07e9863de100dd3d7aa26205bef8b3c",
       "short": "bs-impl",
-      "file_count": 32242,
-      "files_with_old_import": 17507,
-      "local_files": 17,
-      "new_local_files": 17,
-      "local_files_with_old_import": 0,
-      "new_files_with_old_import": 0,
-      "old_import_lines_in_local_files": 0,
-      "local_imports": {},
+      "file_count": 32476,
+      "files_with_old_import": 17516,
+      "local_files": 32,
+      "new_local_files": 29,
+      "local_files_with_old_import": 11,
+      "new_files_with_old_import": 9,
+      "old_import_lines_in_local_files": 31,
+      "local_imports": {
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.ModelBridge.SourceInvariance",
+            "new": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom",
+            "new": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean": [
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones",
+            "new": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones"
+          },
+          {
+            "line": 7,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeReindex"
+          },
+          {
+            "line": 8,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitCriterion",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.RepresentableLimitCriterion"
+          },
+          {
+            "line": 9,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.ConeComparisonReflection",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ConeComparisonReflection"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.BinaryDiscreteShape",
+            "new": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.BinaryDiscreteShape"
+          },
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Core.ReindexSliceUnder",
+            "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ReindexSliceUnder"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean": [
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone"
+          },
+          {
+            "line": 7,
+            "old": "SerrePositivity.InfinityCategories.F1.Coherent.Edges",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges"
+          }
+        ],
+        "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean": [
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegs",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictCoconeLegs"
+          }
+        ],
+        "SerrePositivity/EInfinity/Interface/TensorLegs.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Derived.Tensor.Fixed",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed"
+          },
+          {
+            "line": 5,
+            "old": "SerrePositivity.InfinityCategories.Derived.HZero",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.HZero"
+          },
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Derived.DGClosedEdges",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedEdges"
+          },
+          {
+            "line": 7,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone"
+          }
+        ],
+        "SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean": [
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Core.FullyFaithful",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful"
+          }
+        ],
+        "SerrePositivity/EInfinity/Interface/Theory.lean": [
+          {
+            "line": 9,
+            "old": "SerrePositivity.InfinityCategories.Derived.BaseChange",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange"
+          },
+          {
+            "line": 10,
+            "old": "SerrePositivity.InfinityCategories.Derived.Tensor.Fixed",
+            "new": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed"
+          },
+          {
+            "line": 11,
+            "old": "SerrePositivity.InfinityCategories.F1B.Adjunction.Adjunction",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.Adjunction"
+          },
+          {
+            "line": 12,
+            "old": "SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluation",
+            "new": "SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluation"
+          },
+          {
+            "line": 13,
+            "old": "SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg"
+          },
+          {
+            "line": 14,
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Definition",
+            "new": "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition"
+          },
+          {
+            "line": 15,
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.SiftedColimitPreservation",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SiftedColimitPreservation"
+          },
+          {
+            "line": 16,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone"
+          }
+        ],
+        "SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean": [
+          {
+            "line": 3,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges"
+          },
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone"
+          }
+        ],
+        "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean": [
+          {
+            "line": 3,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdgeLift",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdgeLift"
+          },
+          {
+            "line": 4,
+            "old": "SerrePositivity.InfinityCategories.Core.InitialTransport",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialTransport"
+          }
+        ],
+        "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean": [
+          {
+            "line": 6,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone"
+          },
+          {
+            "line": 7,
+            "old": "SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges",
+            "new": "SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges"
+          }
+        ]
+      },
       "vanished_during_scan": []
     },
     {
       "label": "⑤b",
       "branch": "math/bs-d68",
-      "head": "6689a493e9dc099b5a07e05390071f1b39c201dc",
-      "merge_base": "53ff00aa1fc678111029ea72728a6c31c99e6d94",
+      "head": "7280b7ce565e4475150ec740baa680c4f58f5f62",
+      "merge_base": "d9e596898e60cf4571c54c88ca340032481c22d7",
       "short": "bs-d68",
-      "file_count": 32206,
-      "files_with_old_import": 17506,
-      "local_files": 26,
-      "new_local_files": 26,
+      "file_count": 32499,
+      "files_with_old_import": 17507,
+      "local_files": 52,
+      "new_local_files": 52,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,
@@ -36,13 +214,13 @@
     {
       "label": "⑤c",
       "branch": "math/bs-classical",
-      "head": "bf03c92b15000f96a1b1f0b60967a68fbac71f30",
-      "merge_base": "0ec3d99b0b12d930876a510ee4ac210c398dde93",
+      "head": "ce4bba8f6d2c33a9eec5f8e040264e6feb1e59d8",
+      "merge_base": "06672de8f18cda803b89f973d8fe7dabf44ce31e",
       "short": "bs-classical",
-      "file_count": 32233,
-      "files_with_old_import": 17506,
-      "local_files": 30,
-      "new_local_files": 29,
+      "file_count": 32341,
+      "files_with_old_import": 17507,
+      "local_files": 18,
+      "new_local_files": 18,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,
@@ -52,13 +230,13 @@
     {
       "label": "⑥",
       "branch": "math/scheme",
-      "head": "da9d142f7f5fe2ea8603755850fd29d9b9efbc8e",
-      "merge_base": "375deaa6e8ebad0b92bba8f14607696e5b80dd17",
+      "head": "348d4652740f285676ddf54c36ef943dea3b2b72",
+      "merge_base": "27f0ea6885812bf569c2aaea46d4e86a334ef553",
       "short": "scheme",
-      "file_count": 32363,
+      "file_count": 32558,
       "files_with_old_import": 17507,
-      "local_files": 141,
-      "new_local_files": 140,
+      "local_files": 112,
+      "new_local_files": 111,
       "local_files_with_old_import": 0,
       "new_files_with_old_import": 0,
       "old_import_lines_in_local_files": 0,

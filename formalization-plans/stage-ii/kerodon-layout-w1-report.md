@@ -1,4 +1,10 @@
-# KL-W1 段 0・段 1 報告
+# KL-W1 段 0〜段 3・取り込み前検証報告
+
+2026-11-12 更新。**停止点 3**。main `f654cdc11` を取り込み、`1304c688ff9e4b2486f547310d07bfc25a2780d7` で root・全 103 監査・verify が成功した。保存比較 v3b 14,606 本の未説明差分 0、Kerodon 属性 672 組一致、5 段の層の違反 0。最新の結果と §9 の配置判断は末尾の「停止点 3」に記載した。
+
+以下の初期調査と経過記録は、その時点の件数・停止点を表す。§15 により共有鍵を使わず、取り込み前の重い検査まで作業枝で完了した。個別の逆向き import の例外案は、停止点 3 での調整役の確認対象。
+
+## 初期記録（停止点 1、2026-11-07）
 
 2026-11-07。調査対象は開始時の main `c56adeef7`。配置・依存・規模の集計はこのスナップショットで固定し、途中で追加された §6 と既存の型確認結果は main `33ce6cfca` から反映した。ここが停止点 1。段 2 の前に Kerodon 対応表の確認が全章 main に入った時点で、暫定の割り当てを一度見直す。
 
@@ -464,18 +470,18 @@ Lean の宣言参照索引に載らない監査・ドラフトをソースから
 
 ### レーン別の追従表
 
-2026-11-11 20:40:29 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と main の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
+2026-11-12 10:21:32 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と main の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
 
-HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import はいずれも 0 本だったが、推移的な参照を確認するため、計 214 本を収集対象とする。
+HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import は 計 11 本だった。推移的な参照を確認するため、計 214 本を収集対象とする。
 
 `$handoff` は配布した `kerodon-layout-stop-3`、`$klw1` は KL-W1 の作業木。`$maps` は最終配置のコミットと同じ版の `kl-module-map.json`・`kl-namespace-map.json` を置いたディレクトリ（`$klw1/scripts/refactor/targets` でもよい）。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。その同じソースを入力にして、以下の一行で新しい出力先 `$preview` にプレビューを作る。`review.json` とソース差分を確認し、main の取り込みと書き換えを一緒に反映する。
 
 | レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
 | --- | ---: | ---: | ---: | --- |
-| ⑤a `math/bs-impl` | 17,507 | 0（0 行） | [17](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑤b `math/bs-d68` | 17,506 | 0（0 行） | [26](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑤c `math/bs-classical` | 17,506 | 0（0 行） | [30](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
-| ⑥ `math/scheme` | 17,507 | 0（0 行） | [141](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤a `math/bs-impl` | 17,516 | 11（31 行） | [32](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤b `math/bs-d68` | 17,507 | 0（0 行） | [52](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,507 | 0（0 行） | [18](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑥ `math/scheme` | 17,507 | 0（0 行） | [112](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | HA `research/ha-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | HTT `research/htt-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
 | K の地図 `research/k-maps` | — | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
@@ -608,3 +614,52 @@ HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の 
 完了時の [照合記録](kerodon-layout-stop-3/daytime-preflights-receipt.json) に件数と入出力のハッシュを保存した。互換名の型は 5,690 名で検証済み alias の置換後に構造一致し、残る 282 名も Lean の還元可能な型の等しさの検査に通った。全 5,972 名の本文は対応する定数そのものだった。共有鍵の履歴による返却から次の整理券発行までの最短は 60.068 秒。
 
 夜は 23 時にその時点の main（281f5420f 以降）を取り込んで差分の参照を書き換え、残る確認と段 4 に続ける。二つの鍵のどちらを取得しても自分の保持を確認できるようにし、verify の設定は `VERIFY_JOBS=4 VERIFY_MEMORY_GB=32` に変更した。
+
+## 停止点 3 — 取り込み前の最終検証（2026-11-12）
+
+main `f654cdc11`（⑤c の停止点 4、⑤a の途中、⑥ の AlgebraicGeometry 120 モジュールを含む）を `6a22ffb0a` で取り込んだ。夕方以降の EInfinity・BS 等の参照採取は 147 / 147 本、書き換えは累計 71 ファイル・898 import 行。AlgebraicGeometry には InfinityCategories への依存がなく、配置の書き換えは不要だった。一括移動は `4e656a4c6` で作業枝に反映し、その後の利用側の名前解決の修正を含む **`1304c688ff9e4b2486f547310d07bfc25a2780d7`** を検証した。§15 に従い、ここに記載した root・監査・verify では共有鍵を取得していない。
+
+| 確認項目 | 最終結果 |
+| --- | --- |
+| 対象ビルド | 移動先 14,606 / 14,606 本、前提・互換 2,980 / 2,980 本。移動先の検証用ソースで完了。後続の root・verify は実際の配置で実行 |
+| 保存比較 v3b | 14,606 / 14,606 本。未説明 0 行。第一陣 196 モジュール・760 宣言は既報の比較と合わせて確認 |
+| Kerodon 属性 | 367 モジュール・672 組が一致。欠落・余分 0。own・both の対象だけを付与し、§6 の除外を維持 |
+| 一括移動の互換名 | 所有元付き 5,995 件 / 5,995 件の型・本文・属性等が一致。元の外部利用 5,956 件と main 差分の追加 39 件を含む |
+| 第一陣の互換名 | 120 件。上の 5,995 件と合わせ、今回のレーンで新設した alias 宣言は 6,115 件。以前からある非推奨名とは別集計 |
+| 5 段の層 | 現役 30,226 モジュールで違反 0。旧 import・未解決 import・循環 0 |
+| root ビルド | `lake build SerrePositivity`：成功（30,355 ジョブ、終了コード 0） |
+| 全監査 | 103 / 103 本成功（失敗 0、既知扱い 0）。BS 段階 II・AlgebraicGeometry を含む |
+| verify | PASS（終了コード 0、`gate: true`、監査の省略 0）。`VERIFY_JOBS=6 VERIFY_MEMORY_GB=44`（11-12 09:40 のユーザー判断）。指定された大きい 3 本を排他にし、修正後の実測が未採取の 2 本も同じ排他グループに入れて並列実行。キャッシュによる監査省略や対象限定のフックは使用しない |
+
+[最終の検証記録](kerodon-layout-stop-3/stop-3-final-receipt.json) に、検証した HEAD、main、ビルド・監査の結果、保存比較と alias の件数、入力・出力のハッシュを残した。同じ綴りの旧名が異なる元モジュールにある場合は所有元を区別し、互換名の照合は衝突しない二つの環境に分けた。型と本文の数学的な変更は行っていない。最後に実際の worktree のコンパイル済み成果物からも、367 モジュール・672 組の属性を再照合し、欠落・余分 0 を確認した。互換モジュール 51 本は、5,995 件のカーネル検査に使ったソースとのコード一致を確認し、最終ソースと検査用ソース・成果物のハッシュを記録した。
+
+### §9 の最終配置
+
+以下は `SerrePositivity/InfinityCategories/` 以下のパス。先の経過欄でプレビュー・継続中とした AFT と EdgeHomotopy の分割も、両方の出力を対象ビルドと保存比較に含めて完了した。
+
+| 旧ファイル | 配置 | 判断 |
+| --- | --- | --- |
+| `F2/Presentable/Definition` | `HTT/PresentableInfinityCategories/Definition.lean` | HTT の主題を一体で保持し、対応する宣言に Kerodon 属性を付けた。 |
+| `F2/Presentable/AccessibleFunctor` | `Kerodon/LargeInfinityCategories/CompactGenerationAndAccessibility/AccessibleFunctor.lean` | 中心の定義が Kerodon §9.4 に当たるため一体で配置した。 |
+| `F2/Presentable/EquivalenceColimits` | `HTT/AccessibleInfinityCategories/EquivalenceColimits.lean / Kerodon/LimitsAndColimits/LimitsAndColimits/EquivalenceColimitCones.lean` | 同値による余極限錐の輸送を Kerodon §7.1、κ-filtered 余極限の輸送を HTT に分けた。 |
+| `F2/Presentable/Duality/RightUnitContractible` | `HTT/PresentableInfinityCategories/RightUnitContractible.lean / Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/InitialVerticesContractible.lean` | 頂点の可縮性を Kerodon §4.7、実単位と随伴の残りを HTT に分けた。 |
+| `Core/Retracts` | `HTT/RetractsAndIdempotentCompletion/RetractClosure.lean / Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/VertexRetractions.lean` | 頂点 retract を Kerodon §8.5、retract 閉包を HTT に分けた。 |
+| `Core/InitialBoundaryTransport` | `HTT/InitialAndFinalObjects/InitialBoundaryTransport.lean / Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/FirstVertexLeftAnodyne.lean` | 標準単体の最初の頂点の補題を Kerodon §4.2、相対始対象の輸送を HTT に分けた。 |
+| `DGNerve/EdgeHomotopy` | `HA/DerivedCategoryModels/EdgeHomotopy.lean / Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/EdgeClosedEquivalence.lean` | 辺と閉零射の同値および必要な頂点を Kerodon §2.5、HA の比較の残りを HA に分けた。 |
+| `F2/Presentable/AdjointFunctorTheorem` | `Kerodon/LargeInfinityCategories/PresentableInfinityCategories/AdjointFunctorTheorem.lean / HTT/PresentableInfinityCategories/AdjointRepresentability.lean` | 右随伴と余極限保存の判定を Kerodon §9.5、前層の局所性・表現可能性を HTT に分けた。 |
+
+### 利用側・文章・例外案
+
+今回移動しない KST 側の `pointedMappingFunctor`・`spectrumPullbackDiagram` 等は元の定義名を保持し、利用側の参照をその完全修飾名で明示した。利用側では、無効になった `open`、コンストラクタの枝名、移動した型に対して外に残るメソッドの呼び出しを整理した。`cases`・`induction` の枝は `intro` や `@intro` の元の短い名前に保ち、外部の拡張メソッドは元の公開名への明示的な適用にした。移動しない宣言を相対名で使う 14 本では、必要な `open` を保持した。配布用ツールは、短い枝名を維持し、移動した型の未移動メソッドと、改名表にない生成メンバー（コンストラクタ・`reassoc` 等）を `review.json` に出して保留する。さらに、値と射影が別々の参照範囲になる場合も追跡し、解決できない相対 `open` は保留する。固定版 Lean の三つの実例を含む全 23 件の回帰検査が通った。
+
+docstring の項目 Tag 追記は 6,246 箇所、見出しの Tag は 3,638 箇所、節の案内の新設は 7,672 箇所。種別 148 箇所・番号 198 箇所を補正し、未解決の引用・Tag 不一致は 0 件。対象は 7,764 ファイル（現役 7,763、Archive 1）。InfinityCategories の README を配置・節 Tag・5 層の規則に合わせた。旧レーンの README 2 ファイルのリンク 5 箇所も新しい Lean パスに直した。
+
+逆向きの例外は **1,352 辺（直接参照 1,136、public import の見せ直し 216）** の案を維持する。public の元の 289 辺から、他の経路で見せ直せる 73 辺を整理した。層検査の違反 0 は、理由付きの個別例外案を設定した結果であり、例外一覧は停止点 3 での調整役の確認対象とする。
+
+監査スクリプトに残った短い旧名と生成名は、main `f654cdc11` の元ソース 16 本から Lean の参照情報を採取し、定義元を区別して書き換えた。移動しない `DGSuspensionCoherentActionInput.ofSquareFamily` の名前は元に戻した。既存の非推奨メッセージ 5 件は本文と日付を維持し、現在の宣言名とメッセージ中の旧名を区別して、同じ内容を厳密に照合する。値に続く射影 40 箇所は、修正後の Lean の参照情報でも元の所有元と一致した。`open` の削除は個別の import 環境で存在しないと確認した単純な名前だけとし、複数の名前を持つコマンドの有効な部分を保持した。局所化監査は旧 185 モジュールの像を明記し、LocalObjects の 8 本の除外と三公理の条件を維持した。計数は 1,007 から 1,014 宣言になったが、差の 7 件は旧環境で自動名が他のモジュールと衝突していた既存の `Fact Cardinal.aleph0.IsRegular` 局所 instance が、移動後は別の完全修飾名で数えられるためである。[監査の書き換え記録](kerodon-layout-stop-3/audit-rewrite-receipt.json) に、元ソース・参照情報・出力のハッシュと回帰検査の結果を残した。
+
+11-12 09:40 の指示で 3 回目の直列 full verify を停止し、実測を再利用して 6 ジョブ・44 GB で実行し直した。`VERIFY_EXCLUSIVE_AUDITS` に空白区切りで列挙した監査は、同時に一つだけを実行する。対象の一覧・検査内容・合否条件は維持した。今回は `scripts/audit_infinity_f1.lean`・`scripts/audit_infinity_f1b.lean`・`scripts/audit_infinity_core.lean` と、修正後の実測がなかった `scripts/audit_einfinity.lean`・`scripts/audit_infinity_presentable_localization.lean` を指定した。小さい監査はメモリ予算内で並列化し、公理監査と sorry 閉包は従来どおり最後に直列で実行する。スケジューラ 12 件・再試行 12 件の回帰検査が成功した。最終記録には、設定・実測の出所・排他の対象と最大同時数を残した。今回の verify は 37 分 7 秒、最大同時実行 6 本、排他グループの同時実行は最大 1 本だった。監査プロセス木の同時 RSS 合計の観測最大は 39.0 GB（十進）である。
+
+公開する改名表は 14,802 モジュール・58,365 宣言の対応で、二つの表のモジュール対応は全件一致する。並行枝の対象と一行コマンドは上の「レーン別の追従表」を更新した。新しいファイルを作り足した場合はその JSON 一覧に足し、取り込み前の同じソースから参照を採取して、最終版の `$maps/kl-namespace-map.json` でプレビューを作る。未移動メソッド等が保留された場合は、明示呼び出しまたは export を確認し、各レーンで対象ビルドを行う。
+
+ここで停止点 3 を提出し、調整役の確認を待つ。
