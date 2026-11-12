@@ -825,3 +825,6 @@ public import SerrePositivity.AlgebraicGeometry.FrobeniusFiniteModificationExact
 public import SerrePositivity.AlgebraicGeometry.FullCechH0Kernel
 
 public import SerrePositivity.AlgebraicGeometry.CechRingEqualizer
+
+public import SerrePositivity.AlgebraicGeometry.FullCechH0Compatible
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraH0
