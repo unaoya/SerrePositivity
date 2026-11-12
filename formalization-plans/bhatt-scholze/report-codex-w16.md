@@ -2618,3 +2618,117 @@ main の取り込みは競合解決済み・merge commit 前の状態で、生�
 元の `math/bs-impl` の merge は stash・abort・commit せず保持する。
 a の実装と対象ビルドは新しい作業木で行い、上限は §15 の **3,500 行、最後の上げ**を守る。
 完了時には §20.2・§40.2 の各行の見込みと実測を報告する。
+
+
+## 44. 別作業木で a の厳密な余積比較への復帰を証明（11-12）
+
+§43 の別作業木 `SerrePositivity-bs-impl-a`（枝 `math/bs-impl-a`、基点 `5fe517e63`）で作業した。
+`math/bs-impl` の未コミットの merge は保持し、こちらでは main を取り込んでいない。
+
+### 44.1 証明した範囲
+
+新規 `SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfCoproduct.lean`（**92 行**）。
+登録すべき新規モジュールは `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfCoproduct`。
+
+- `freeSumCoproductIso`：自由・忘却随伴と標準の余積比較により、
+  `Free X ⨿ Free Y ≅ Free (X ⊞ Y)` を構成する。
+- `freeSumCoproductIso_inl`・`inr`：この同型は二つの指定包含を自由関手で送った包含へ送る。
+- `freeSumCoproductIso_hopfComparison`：この同型の後の `freeHopfComparison` は、
+  元の厳密な `hopfCoproductComparison` と同じ代数射である。生成元での左右の式から証明した。
+- `hopfCoproductComparison_quasiIso_of_free`：自由生成元での指定 Hopf 射が擬同型なら、
+  厳密な余積の同じ比較も擬同型になる。
+
+一般の Hopf オペラッドについて述べ、必要な仮定は零 arity の余単位の同型性と、
+代数の二項余積の存在だけ。入力複体に cofibrancy・K 平坦性・有界性を仮定しない。
+最後の補題の擬同型性の仮定は明示的な仮定であり、BE の係数比較との一致を証明したという意味ではない。
+
+### 44.2 実測と残り
+
+今回の 92 行は §40.2・§41.3 の「指定射の照合と全体の比較」の行に計上する。
+a の実測は **3,057 + 92 = 3,149 行**。最後の上限 **3,500 行**まで 351 行。
+今回は元の余積比較へ戻す接続を閉じたが、
+§41.2 の `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` と
+`J ≫ freeHopfComparison.hom = M`、そこから全射の一致を得る部分は残る。
+**a は未完了**であり、§20.2・§40.2 の完了時比較としては報告しない。
+
+### 44.3 検証
+
+新規一対象のビルドは成功（`free-hopf-coproduct-a-08.log`、10,502 jobs）。
+ジョブ数には依存の共有キャッシュ復元を含み、root ビルドは行っていない。
+新規モジュールに警告なし。未登録なので本体内の直接の importer はまだない。
+ログと一モジュールの全宣言の監査は `/tmp/bsw16/` 以下。
+
+ビルド終了の回収後、別の一回の鍵で新規一モジュールの全宣言を監査した。
+**15 宣言・標準三公理のみ**（`audit-free-hopf-coproduct-a.log`）。
+sorry・追加公理はない。ビルドと監査の各終了を回収し、鍵・整理券を返した。
+未コミットの merge のある元の作業木へは、この新しい Lean をまだ移していない。
+次回の改名追従の対象には、検証済みの追加分として今回の一モジュールも含める。
+
+
+## 45. KL-W1 d07e86e14 による追従の完了と一時枝の合流（11-12）
+
+### 45.1 修正版の rewrite
+
+保持していた merge を捨てず、調整役の許可どおり採取済みの 49 本の `before_index` を再利用した。
+書き換えの入力は採取時に保存した同じ元ソースとし、現在の書き換え済みソースの文字位置は使わない。
+共有道具 `SerrePositivity-kerodon-layout` の **`d07e86e14`** とその改名表で rewrite からやり直した。
+出力は `/tmp/bsw16/klw1-followup-d07-preview/`。
+
+`review.json` は **保留 0**。元の混在した名前空間の open を保ち、移動した宣言だけを完全修飾する。
+旧プレビューとの差分を確認し、§43 の三本の手修正も含めて新しい道具の結果へ置き換えた。
+採取時のソースと最終出力の差分は **15 本・284 行置換（+284 / -284）**。
+次が各ファイルの実測であり、詳細の正本は `klw1-followup/preview-stats.json`。
+
+| ファイル | 置換行数 |
+| --- | ---: |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean` | 4 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean` | 4 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean` | 17 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean` | 11 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean` | 31 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean` | 15 |
+| `SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean` | 27 |
+| `SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean` | 6 |
+| `SerrePositivity/EInfinity/Interface/TensorLegs.lean` | 41 |
+| `SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean` | 9 |
+| `SerrePositivity/EInfinity/Interface/Theory.lean` | 56 |
+| `SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean` | 10 |
+| `SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean` | 31 |
+
+§42〜43 のビルド失敗・手修正・未コミットという記録は、その時点の履歴である。
+今回の結果は `followup-provenance.json` と本節に記録する。
+`StrictAdjunctionBar` と `AnodyneBinaryProducts` は元ソースと同じになり、最終的な変更 15 本に含めない。
+drafts は新たに書き換えていない。main にある調整役の追従だけを取り込んだ。
+
+### 45.2 取り込みと検証
+
+保持中の `ef145b288` の merge と修正版の追従を **`aed89b498`** に確定した。
+その後、指定された **main `e61b3f534`** を取り込み、**`e8e607ce6`** に確定した。
+修正版の本体 49 本と、変更したモジュールの本体内の直接の importer を合わせた **55 対象**のビルドは、
+修正版反映後・最新 main 取り込み後の両方で成功（各 13,550 jobs）。
+49 モジュールに属する全宣言の監査も **948 宣言・標準三公理のみ**。
+ログは今回の出力先の `build.log`・`build-main.log`・`audit.log`。
+
+続いて `math/bs-impl-a` の **`3f26491d1`** を合流させた。
+本体の競合はなく、報告ファイル末尾の競合は §44 の追記を保持して解決した。
+`FreeHopfCoproduct` は改名対象の import・宣言参照を持たず、ソースを変更せずに取り込んだ。
+合流後の **56 対象**のビルドも成功（13,551 jobs、`build56.log`）。
+ルートの `SerrePositivity` はビルドしていない。
+改名に伴う長い行と既存の重複名前空間の linter 警告は残る。
+
+### 45.3 登録待ちと a の残り
+
+`bs-impl-files.json` は、今回追従した 49 本に `FreeHopfCoproduct` を加えた **50 本**へ更新した。
+main `e61b3f534` に既にあるのは `Interface/Theory` の一本だけで、**新規登録待ちは 49 モジュール**。
+その全一覧を `klw1-followup/registration-modules.json` に保存した。
+共通入口・共通監査の登録は調整役に委ね、こちらでは変更していない。
+
+a の実測は §44 の **3,149 行**のまま。今回の改名や枝の合流で証明が増えたとは数えない。
+残りは §41.2 の指定係数射との一致であり、a はまだ未完了。
+合流後は本来の `math/bs-impl` と `SerrePositivity-bs-impl` で再開する。
+
+合流後の 50 モジュールの全宣言の監査も **963 宣言・標準三公理のみ**で成功（`audit50.log`）。
+sorry・追加公理はなく、監査終了を回収して鍵と整理券を返した。
+一時作業木は合流コミット後に `git worktree remove` で削除する。
