@@ -293,3 +293,30 @@ I 進遷移・互換族・既存の形式関数の同型をつなぐ部分と、
 | `schemeAffineClosedBaseChangeSections_ker` | 実際の閉厚化へのアフィン切断の射の核は、元の切断での拡大イデアル。 |
 
 段 2e の検証済み実測：**319 本・31,166 行**、入口を含め **31,491 行**。上限 50,000 行内。
+
+
+## 11-12 夜：Rees の標準開の核と商（c0fb175e4）
+
+数学コミット `c0fb175e4`。3 本・8 宣言・223 行、登録を含め 226 行。
+対象と直接 importer のビルドは **4,528 jobs 成功**。別実行の監査は **8,453 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+各標準開の指定次数の部分で、Rees の閉厚化の射影の全射性と完全性を取り出した。
+IⁿM の包含の像は元の成分の Iⁿ 倍であり、閉厚化への射影の核も同じ Iⁿ 倍。
+`reesAdicProjectiveClosedChartQuotientIso` は元の係数の Iⁿ 倍による商から Rees の商の標準開への同型で、元の射影と可換。
+非 flat なコホモロジーの底変換は使わず、係数ごとの商の比較を供給する。
+
+**停止点 2e ではない。** 実際の閉厚化の切断との係数の自然同型、I 進遷移と互換族、形式関数への接続と五つの比較の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveNatChartMap_surjective` | 次数ごとに全射な加群の射は、各標準開の指定次数部分へも全射。 |
+| `projectiveNatChartMap_exact` | 次数を保つ完全列は、各標準開の指定次数部分でも完全。 |
+| `reesAdicProjectiveChartInclusion_range_ideal` | IⁿM から元の標準開の次数 d 成分への写像の像は、同じ成分の Iⁿ 倍。 |
+| `reesAdicProjectiveClosedChart_exact` | Rees の閉厚化の列は、各標準開の指定次数部分でも完全。 |
+| `reesAdicProjectiveClosedChartProjection_surjective` | 閉厚化への射影は、各標準開の指定次数部分へ全射。 |
+| `reesAdicProjectiveClosedChartProjection_ker` | 閉厚化への指定次数の標準開の射の核は、元の成分の Iⁿ 倍。 |
+| `reesAdicProjectiveClosedChartQuotientIso` | Rees の閉厚化の標準開は、元の標準開の指定次数成分の Iⁿ 倍による商。 |
+| `reesAdicProjectiveClosedChartQuotientIso_mk` | 商の同型は、元の標準開の成分を元の Rees の射影で送る。 |
+
+段 2e の検証済み実測：**322 本・31,389 行**、入口を含め **31,717 行**。上限 50,000 行内。
