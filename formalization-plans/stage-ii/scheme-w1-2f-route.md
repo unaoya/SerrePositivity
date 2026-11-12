@@ -264,3 +264,21 @@ F4 は未完。部分環の加法群と上の核を同定し、実際の Proj �
 | `fullAlgebraCechEqualizer_finite` | Čech H⁰ の有限性を実際の切断の部分代数へ移す。 |
 
 環構造は成分ごとの切断の乗法を制限したものであり、H⁰ に任意の環構造を選んで載せていない。次はスキームの有限交叉の切断をこの CommAlgCat 図式に置き、既存の `schemeStructureCechPresheaf` とそのスカラー制限から来る加群図式を比較して、Proj の有限性を適用する。F4 のその接続、F5〜F8 は未完。停止点 2f ではない。
+
+## F4：実際の構造層と Proj の切断代数の有限性（77b63fd80）
+
+新規 2 本・7 個の明示的宣言・127 行。2f 累計 22 本・1,237 行（入口の import 込み 1,259 行）。対象と直接 importer は 4,568 jobs 成功。別実行の監査は 8,781 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行中のみ取得。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `schemeSectionAlgebra` | 基底環から大域切断への写像を開集合へ制限した、実際の切断環の代数構造。 |
+| `schemeSectionAlgebraPresheaf` | 構造層の実際の切断と制限を、基底環上の代数の前層にする。 |
+| `schemeSectionAlgebraCechDiagram` | 有限交叉上の実際の切断代数の Čech 係数図式。 |
+| `schemeSectionAlgebraCechModuleIso` | 代数図式から忘却した加群図式と、既存の構造層 Čech 加群図式の自然な比較。 |
+| `schemeSectionAlgebraCechH0Equiv` | 実際の切断の部分代数と、既存の構造層の Čech H⁰ の線形同型。 |
+| `projectiveCechSectionAlgebra` | Proj の実際の標準開の適合する切断の部分代数。 |
+| `projectiveCechSectionAlgebra_finite` | Noether 基底上で次数付き環が多項式環上有限なら、その切断部分代数は基底環上有限。 |
+
+これで F4 の等化部分環・Čech H⁰ の比較・2e からの有限性の移送を実際の Proj へ接続した。比較の自然性のカーネル検証は、関手全体を一度に展開せず切断の元ごとの等式で閉じた（heartbeat 等の上限は変更していない）。
+
+次は F5：中心外の同型を平坦な局所化後の実際の Čech 複体へ渡し、正次数の消滅と次数零の余核の消滅を台の包含へ戻す。既存の `schemeStructureCechNativeFlatBaseChangeIso` は実際の底変換の構造層との比較を供給する。台からの冪の零化と有限余核からの導手は既に検証済みだが、この幾何学的な消滅の供給を仮定で隠さず接続する。F5〜F8 は未完、停止点 2f ではない。
