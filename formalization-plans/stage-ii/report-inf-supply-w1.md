@@ -597,3 +597,162 @@ main `30ea26711` を取り込み、①に着手。②の宣言は変更してい
   `simplicialSectionsRelativeIso_naturality` を再利用し、同じ可換性を新たに証明しない。
 
 **停止点2ではない。通常の辺と区間模型の全単体照合、および最終四角形の検証を続ける。**
+
+
+## 15. 停止点2：G8 の篩包含の四角形①＋②（11-12夜）
+
+**段2を完了。停止点2で止まり、調整役の検収を待つ。段3には進んでいない。**
+
+- 数学の最終コミット：`9acf76bfb`（残り16本・1,032行）。段2の先行コミットは
+  `395bda0b4` と `c998275ae`。段2全体は **新規24本・1,563行・65宣言**。
+  既存の数学・入口・全体監査登録は変更していない。
+- 見込みとの差：§12の1,300〜2,500行に対し1,563行（下端＋263、上端−937）。
+  上限2,800行まで1,237行を残した。§13・§14で途中報告済み。
+  区間上の要素の圏と元の辺の全単体照合を独立させ、②の値比較・固定端点比較を再利用したため、
+  その部分を再実装せずに閉じられた。
+
+### 最終主張の型
+
+`η_X := (tensorSpaceFunctor_setWeightHomNatural X hE M F cX hcX).hom` と書く。
+任意の小さい圏 C、篩 S ⊆ h_U、presentable な E、M ∈ E、任意の前層 F と
+指定極限錐 cS・cU（それぞれの極限性）について、次を示した。F の層条件は仮定しない。
+
+1. `setWeightElementsUnstraightening_naturality`：元の `elementsComparisonNatural` の
+   大きい unstraightening 表示は、元の重みの辺の普遍持ち上げと、底を固定した相対写像空間内で同型。
+   比較同型を入力にせず、区間族から実際に構成する。
+2. `setWeightSectionsEquivalenceNatural_shapeIso`：元の重みの辺の前合成と
+   `sectionsEquivalenceNatural` の順射の合成は、元の実切断制限との合成に全族で同型。
+3. `sieveTensorSections_shapeIso`：
+   `FunctorIso (precompose (functorVertex F) [sieveTensorEdge S hE M] ≫ η_S)
+   (η_hU ≫ postcompose M [sieveSectionsMap S F cS hcS cU hcU])`。
+   上辺・下辺・縦辺は元のG8のものを保つ。
+4. `sieveTensorSections_homMk_eq`：3の二つの全写像空間の射を Kan 対象の coherent nerve の辺として読み、
+   空間のホモトピー圏でその射が等しい。頂点ごとの主張には縮めていない。
+
+これで①と既存の②を合わせた篩包含の四角形がそろった。BS の S4 の生成辺に渡す数学的な不足は残っていない。
+一般の単体的な重みの射やG10は今回の範囲外。
+
+### 証明と再利用
+
+通常の自然変換を Fin 2 上の図式にし、その要素の圏から元の pointed 比較の区間族を作る。
+元の `spaceDiagramEdge` の全単体とその区間模型を照合し、
+`relativeFunctorExtensionEndpoint_witnessIso` で元の普遍持ち上げとの差を相対頂点同型にする。
+`SetWeight.relativePreIso` に渡して全パラメータの前合成比較へ移し、
+同じ縮小同型・ULift 同型・相対切断同型を使って元の `sectionsEquivalenceNatural` へ戻す。
+
+再利用：`StrictKanPointedComparison`、`SetWeight.unstraighteningPinchedPrecompositionIso`、
+`RelativeBaseChangeComposition.relativeFunctorPost_overPre`、
+`simplicialSectionsRelativeIso_naturality`、`smallLeftUnstraighteningMap_comp`、
+`tensorSpaceFunctor_diagramHom_weight_naturality`、段1の
+`setWeightSectionsLimitTail_shapeIso` と `tensorSpaceFunctor_setWeightHomNatural_hom_factor`。
+後段の指定極限・宇宙変更・表現可能値の比較、および固定端点の比較は段1のものをそのまま使う。
+
+### 検証
+
+- `lake build SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SieveTensorSectionsHomotopy`
+  成功（6,246 jobs）。新規24本はこの依存閉包に含まれる。既存の直接 importer はまだない。
+- 同じ鍵の中で `lake env lean /tmp/is-w1/stage2/audit-final.lean` 成功。
+  新規24本を明示 import し、65宣言を `#check`・`#print axioms`・`#print sorries` で検査。
+  **65宣言すべて sorry-free、公理は `propext`・`Classical.choice`・`Quot.sound` のみ**。
+- 最終ログ：`/tmp/is-w1/stage2/build-30.log`。対象一覧：`audit-final-files.txt`、
+  宣言一覧：`audit-final-decls.txt`（いずれも同じディレクトリ）。終了コード0。
+- 鍵は `source ~/.zshenv` 後、`with_build_lock.sh --wait 3600 -- gtimeout --foreground 1700s …`。
+  待ちは一枚。各ビルド失敗後は鍵を放して編集し、最後はビルドと監査の終了で解放。
+- `git diff --cached --check` 成功。これは追加対象の監査であり、登録後のrootビルド・全体F2監査は調整役に委ねる。
+
+### 登録対象の新規24本
+
+| 新規モジュール（現行パスへのリンク） | 行数 |
+| --- | ---: |
+| [SetWeightBigRelativePrefix](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightBigRelativePrefix.lean) | 90 |
+| [SetWeightElementsInterval](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsInterval.lean) | 71 |
+| [SetWeightElementsRelativeNaturality](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightElementsRelativeNaturality.lean) | 75 |
+| [SetWeightIntervalCoordinates](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightIntervalCoordinates.lean) | 47 |
+| [SetWeightOppositeCoefficientsNaturality](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightOppositeCoefficientsNaturality.lean) | 63 |
+| [SetWeightPointedCoordinates](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedCoordinates.lean) | 64 |
+| [SetWeightPointedInterval](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedInterval.lean) | 76 |
+| [SetWeightPointedIntervalBase](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightPointedIntervalBase.lean) | 65 |
+| [SetWeightRelativeUniverse](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightRelativeUniverse.lean) | 62 |
+| [SetWeightSectionsBigRelativeComparison](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsBigRelativeComparison.lean) | 52 |
+| [SetWeightSectionsEdgeNaturality](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsEdgeNaturality.lean) | 74 |
+| [SetWeightSectionsPrefixFactorization](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsPrefixFactorization.lean) | 55 |
+| [SetWeightSectionsRelativeEvaluation](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsRelativeEvaluation.lean) | 82 |
+| [SetWeightSectionsRelativeNaturality](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsRelativeNaturality.lean) | 70 |
+| [SetWeightUnstraighteningEdgePrecomposition](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightUnstraighteningEdgePrecomposition.lean) | 53 |
+| [SieveTensorSectionsHomotopy](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SieveTensorSectionsHomotopy.lean) | 52 |
+| [SieveTensorSectionsNaturality](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SieveTensorSectionsNaturality.lean) | 56 |
+| [KanDiagramOrdinaryEdgePrism](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/KanDiagramOrdinaryEdgePrism.lean) | 42 |
+| [KanDiagramOrdinaryEdgeSimplex](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/KanDiagramOrdinaryEdgeSimplex.lean) | 121 |
+| [LeftUnstraighteningEdgeLiftFamily](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningEdgeLiftFamily.lean) | 85 |
+| [LeftUnstraighteningRestrictedWitness](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftUnstraighteningRestrictedWitness.lean) | 73 |
+| [RelativeFunctorCompositionConstant](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorCompositionConstant.lean) | 37 |
+| [RelativeFunctorOverUniverseNaturality](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorOverUniverseNaturality.lean) | 54 |
+| [WeightedCosliceBaseNaturality](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/WeightedCosliceBaseNaturality.lean) | 44 |
+
+### 追加宣言の一覧
+
+- `setWeightElementsComparisonOver`：元の要素の圏の比較を、大きい底上の射として束縛する。
+- `setWeightElementsBaseMap`：元の mapElements を、同じ大きい底上の射として束縛する。
+- `setWeightBigRelativePrefix`：元の pinched 比較と、元の要素の圏の比較による前合成の全写像。
+- `setWeightBigRelativePrefix_naturality`：元の pinched 比較と要素の圏による前合成は、元の重みの辺に全族で自然である。
+- `setWeightIntervalDiagram`：重みの射を、区間と元の添字圏の直積上の集合値図式にする。
+- `setWeightElementsIntervalZero`：元の始域の要素を、区間上の要素の圏の始点へ入れる。
+- `setWeightElementsIntervalOne`：元の終域の要素を、同じ区間上の要素の圏の終点へ入れる。
+- `setWeightElementsIntervalTransformation`：元の要素からその指定像へ向かう、区間上の要素の圏の自然変換。
+- `setWeightElementsIntervalPrism`：要素とその指定像を全単体で結ぶ、元の自然変換の prism。
+- `setWeightElementsIntervalPrism_zero`：区間族の始点は、元の要素の圏の始点への包含である。
+- `setWeightElementsIntervalPrism_one`：区間族の終点は、元の mapElements と終点への包含の合成である。
+- `setWeightElementsUnstraightening`：元の小さい要素の圏の比較を、同じ全空間の縮小同型で大きい表示へ移す。
+- `setWeightElementsUnstraightening_projection`：大きい表示へ移しても、元の要素の圏の射影を保つ。
+- `setWeightElementsUnstraightening_map_projection`：終域の元の比較を mapElements で制限しても、始域の元の射影を保つ。
+- `setWeightElementsUnstraightening_naturality`：元の比較と元の重みの辺の作用の二経路は、底を固定した相対写像空間内で同型である。
+- `setWeightElementsInterval_coefficients`：元の要素の区間族の係数は、同じ重みの通常の自然変換の係数図式である。
+- `setWeightOppositeCoefficientsMap`：重みの射を、元の反転係数の射に写す。
+- `setWeightCoefficientsOppositeIso_naturality`：元の定値係数の反転同型は、重みの実際の射と厳密に自然。
+- `setWeightCoefficientsOppositeWeightedIso_naturality`：同じ反転係数同型の weighted nerve への像も、元の射と厳密に自然。
+- `setWeightElementsOppositeWeighted_naturality`：元の要素の圏から反転 weighted nerve への比較は、底を変えず重みの射に自然。
+- `setWeightElementsPointed`：元の要素の圏の比較の、宇宙を戻した全空間からの pointed 成分。
+- `setWeightElementsPointed_formula`：元の比較の pointed 成分は、同じ係数同型と左 coslice の実際の比較で計算できる。
+- `setWeightElementsPointed_base`：元の pointed 比較は、添字を通常の関手で制限しても全写像として可換である。
+- `setWeightPointedInterval`：元の重みの射に沿って、元の pointed 比較を全単体で結ぶ区間族。
+- `setWeightElementsPointed_intervalZero`：始点包含で制限した区間上の比較は、元の始域の比較そのものである。
+- `setWeightElementsPointed_intervalOne`：終点包含で制限した区間上の比較は、元の終域の比較そのものである。
+- `setWeightPointedInterval_zero`：pointed 区間族の始点は元の要素の圏の比較である。
+- `setWeightPointedInterval_one`：pointed 区間族の終点は元の mapElements で制限した終域の比較である。
+- `setWeightElementsPointed_projection`：元の pointed 比較は、要素の圏からの元の空間値図式を被覆する。
+- `setWeightPointedInterval_projection`：元の pointed 区間族は、同じ spaceDiagramEdge の全 prism の底変換である。
+- `setWeightRelativeUniverseIso`：元の要素の圏を始域に固定した、相対関手空間の大小の比較同型。
+- `setWeightRelativeUniverse_pre`：元の小さい要素の圏の比較による前合成は、同じ大小の表示変更と厳密に可換。
+- `setWeightSectionsBigRelativeIso`：正本の小さい切断表示から、元の大きい相対写像空間への指定同型。
+- `setWeightSectionsEquivalenceNatural_bigRelative`：元の切断同値の順射を指定相対表示へ送ると、元の大きい相対比較そのものになる。
+- `setWeightRelativeUniverseIso_restriction`：元の大小の相対表示の比較は、同じ要素の圏の前合成と厳密に可換。
+- `setWeightSectionsBigRelativeIso_restriction`：元の小さい切断制限と大きい相対表示への比較は、同じ前合成で厳密に可換。
+- `setWeightSectionsEquivalenceNatural_shapeIso`：元の切断同値の順射と元の重みの辺の前合成は、実切断制限と全族で自然である。
+- `setWeightRelativeSectionsIso`：元の切断同値で使われる、相対関手空間から小さい切断への同じ同型。
+- `setWeightSectionsEquivalenceNatural_hom_factor`：元の切断同値の順射は、同じ実写像と底変換同型の合成そのものである。
+- `setWeightRelativeSectionsIso_inv`：元の相対切断同型の逆は、同じ指定引き戻しの切断比較である。
+- `setWeightRelativeSectionsIso_inv_evaluation`：元の切断表示から相対表示への全評価は、元の小さい底変換射との合成。
+- `normalizedSmallSectionsRestriction_map_evaluation`：指定表示へ正規化した実切断制限も、元の底変換射による全評価を保つ。
+- `setWeightRelativeSectionsIso_restriction`：元の小さい切断制限は、元の相対表示への同型の逆と厳密に可換。
+- `unstraighteningPinchedEdgeLiftPrecompositionIso`：元の pinched 前合成の比較は、元の全写像空間から取り出した実際の終点の前合成と同型。
+- `sieveTensorSections_homMk_eq`：正本の G8 比較の篩包含の四角形は、全写像空間のホモトピー圏で可換。
+- `sieveTensorSections_shapeIso`：篩包含の元のテンソルの前合成は、正本の G8 比較の下で元の切断辺の後合成に全自然。
+- `kanDiagramNaturalTransformationEdge_prism`：元の実現した自然変換の辺の全 prism は、同じ通常の自然変換の coherent prism である。
+- `kanDiagramUnderlyingTransformation`：忘却後の通常の自然変換を、元の Kan 複体の図式の自然変換として読む。
+- `kanDiagramEdgeOrderDiagram`：区間の射と底の射列を同時に評価する元の通常の図式。
+- `kanDiagramEdge_mixed_constant`：区間の二頂点間の混合評価は、同じ通常の自然変換と底の射の合成である。
+- `kanDiagramDiagonalSimplex_edge`：元の実現した辺の任意の対角単体は、同じ通常の区間図式の coherent 表示である。
+- `leftUnstraighteningEdgeLiftFamily`：元の全写像空間の持ち上げを、同じ辺の頂点で制限する。
+- `leftUnstraighteningEdgeLiftMap`：元の全写像空間の終点の族を、同じ辺の頂点で制限する。
+- `leftUnstraighteningEdgeLiftMap_projection`：制限した終点は元の底への射影を保つ。
+- `leftUnstraighteningEdgeLiftFamily_zero`：制限した区間族の始点は、元の unstraightening の pointed 成分である。
+- `leftUnstraighteningEdgeLiftFamily_projection`：制限した区間族は、元の辺の全 prism を被覆する。
+- `leftUnstraighteningEdgeLiftFamily_one`：制限した区間族の終点は、同じ全写像空間の終点写像の pointed 成分である。
+- `leftUnstraighteningEdgeLiftMap_vertex`：元の写像空間の比較の辺での値は、取り出した終点写像の相対頂点である。
+- `leftUnstraighteningRestrictedWitnessIso`：同じ始点と底を持つ実区間族の終点は、元の辺の作用を制限した射と相対写像空間内で同型。
+- `relativeFunctorComposition_const_first`：相対合成の第一成分を固定した全族は、同じ実射による前合成である。
+- `uliftRelativeFunctorMap_overPre`：底上の前合成は、同じ底を保つ相対関手空間の宇宙持ち上げと可換。
+- `relativeFunctorOverIso_pre_hom`：始域を同型で写してから前合成する四角形は、同じ標的の同型による移送と可換。
+- `weightedConeSimplex_base`：添字の関手で射列を写した cone simplex は、制限した図式の元の simplex と一致する。
+- `weightedCosliceSimplex_base`：元の左 coslice の単体は、添字を制限しても同じ単体である。
+- `weightedCosliceComparison_base`：元の左 coslice 比較の全写像は、weighted nerve の添字制限と厳密に可換である。
