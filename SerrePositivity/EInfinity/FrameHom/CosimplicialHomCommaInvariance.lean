@@ -28,13 +28,13 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C)
 
 /-- 元の右対象の射の Hom での不変性を、同じ小さい comma の射へ移す。 -/
 lemma smallCommaMap_localized_isIso {V W : C} (f : V ⟶ W)
-    (hf : IsIso (AnodyneHomotopy.anodyneQ.map ((cosimplicialHom A).map f))) :
+    (hf : IsIso (AnodyneHomotopy.anodyneQ.map ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
       (CostructuredArrow.map (S := smallDiagram.{u, v, w} A) (AsSmall.up.map f)))) := by
   let Q := AnodyneHomotopy.anodyneQ.{max w u v}
   have hs : IsIso (Q.map (nerveMap (smallElementsMap.{u, v, w} A f))) :=
     SmallNerve.map_localized_isIso.{v, 0, max w u v}
-      ((cosimplicialHom A).map f).mapElements.op
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f).mapElements.op
       (SimplexTerminalNerve.map_localized_isIso _ hf)
   have hV : IsIso (Q.map (nerveMap (smallToComma.{u, v, w} A V))) :=
     (NerveEquivalenceImage.imageIso (smallEquivalence.{u, v, w} A V) Q

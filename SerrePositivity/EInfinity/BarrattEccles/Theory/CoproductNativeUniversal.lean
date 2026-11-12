@@ -3,10 +3,10 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductDKHom
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNativeCocones
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentableLimitCriterion
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeComparisonReflection
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.StrictNativeCocones
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeReindex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.RepresentableLimitCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ConeComparisonReflection
 
 /-!
 # 指定二包含の native な余極限性
@@ -23,7 +23,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite MonoidalCategory
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SimplicialLocalization SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 
@@ -98,19 +98,19 @@ private def discreteOppositeNerveIso (J : Type (u + 1)) :
     rfl
 
 /-- 同じ普通の余錐は coherent nerve の実際の余極限である。 -/
-lemma cAlgBinaryCocone_isColimit : IsColimitCone (strictNativeCocone (cAlgBinaryCocone A X Y)) := by
+lemma cAlgBinaryCocone_isColimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (cAlgBinaryCocone A X Y)) := by
   let c := cAlgBinaryCocone A X Y
   let E := (Discrete.opposite (ULift.{u + 1} Bool)).inverse
   have : IsIso (nerveMap E) := (discreteOppositeNerveIso (ULift.{u + 1} Bool)).isIso_hom
-  apply (strictNativeCocone_isColimit_iff c).mpr
-  apply (strictCoherentCone_isLimit_iff_whisker c.op E).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone_isColimit_iff c).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone_isLimit_iff_whisker c.op E).mpr
   let d := c.op.whisker E
   have : ∀ a b : (CAlgSimplicialCategory A)ᵒᵖ,
       SSet.KanComplex (SimplicialCategory.sHom a b) := fun a b =>
         inferInstanceAs (SSet.KanComplex (SimplicialCategory.sHom b.unop a.unop))
-  apply strictCoherentCone_isLimit_of_discrete_representableComparison d
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone_isLimit_of_discrete_representableComparison d
   intro z
-  let H := simplicialHomDiagram (E ⋙ (cAlgBinaryDiagram A X Y).op) z
+  let H := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (E ⋙ (cAlgBinaryDiagram A X Y).op) z
   let P : Cone H :=
     { pt := SimplicialCategory.sHom X z.unop ⨯ SimplicialCategory.sHom Y z.unop
       π := Discrete.natTrans fun j => by
@@ -134,21 +134,21 @@ lemma cAlgBinaryCocone_isColimit : IsColimitCone (strictNativeCocone (cAlgBinary
     (cofibrantAlgebraDKCoprodInl A X Y) z.unop
   let b := kanStrictPrecompose (cofibrantAlgebraRelativeCategory A)
     (cofibrantAlgebraDKCoprodInr A X Y) z.unop
-  have he : limit.lift H (simplicialHomCone d z) = prod.lift a b ≫ e.hom := by
+  have he : limit.lift H (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z) = prod.lift a b ≫ e.hom := by
     apply limit.hom_ext
     rintro ⟨⟨k⟩⟩
     rw [limit.lift_π]
     calc
       _ = prod.lift a b ≫ P.π.app ⟨⟨k⟩⟩ := by
         cases k
-        · have hf : (simplicialHomCone d z).π.app ⟨⟨false⟩⟩ = b := by
+        · have hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z).π.app ⟨⟨false⟩⟩ = b := by
             change eHomWhiskerLeft SSet z
               (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
                 (cofibrantAlgebraDKCoprodInr A X Y)).op = _
             rw [simplicialHomWhiskerLeft_op]
             rfl
           exact hf.trans (prod.lift_snd a b).symm
-        · have hf : (simplicialHomCone d z).π.app ⟨⟨true⟩⟩ = a := by
+        · have hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z).π.app ⟨⟨true⟩⟩ = a := by
             change eHomWhiskerLeft SSet z
               (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
                 (cofibrantAlgebraDKCoprodInl A X Y)).op = _
@@ -158,11 +158,11 @@ lemma cAlgBinaryCocone_isColimit : IsColimitCone (strictNativeCocone (cAlgBinary
       _ = _ := congrArg (fun t => prod.lift a b ≫ t)
         (hP.conePointUniqueUpToIso_hom_comp (limit.isLimit H) ⟨⟨k⟩⟩).symm
   have hpair := cAlgActualCoprodHom_isIso A X Y z.unop
-  have hq : IsIso (AnodyneHomotopy.anodyneQ.map (representableHomotopyLimitComparison d z)) := by
-    change IsIso (AnodyneHomotopy.anodyneQ.map (bousfieldKanConeComparison (simplicialHomCone d z)))
-    rw [bousfieldKanConeComparison_limitLift, he, Functor.map_comp, Functor.map_comp]
+  have hq : IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.representableHomotopyLimitComparison d z)) := by
+    change IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone d z)))
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanConeComparison_limitLift, he, Functor.map_comp, Functor.map_comp]
     infer_instance
-  exact IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
     (FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ hq)
 
 end SerrePositivity.EInfinity.BarrattEccles

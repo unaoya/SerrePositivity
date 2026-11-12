@@ -29,7 +29,7 @@ def cofibrantAlgebraDiagonalHammockMap :
   freeHammockDiagonalReduction (cofibrantAlgebraRelativeCategory A) X Y ≫
     cofibrantAlgebraHammockInclusionMap A X Y
 lemma cofibrantAlgebraDiagonalHammockMap_weak :
-    IsWeakHomotopyEquivalence (cofibrantAlgebraDiagonalHammockMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantAlgebraDiagonalHammockMap A X Y) :=
   (freeHammockDiagonalReduction_isWeakHomotopyEquivalence
     (cofibrantAlgebraRelativeCategory A) X Y).comp (cofibrantAlgebraHammockInclusionMap_weak A X Y)
 def cofibrantAlgebraDKHammockComparisonIso :

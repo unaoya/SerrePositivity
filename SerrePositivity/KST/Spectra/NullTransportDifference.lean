@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.NullHomotopyTransport
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyTransport
 public import SerrePositivity.KST.Spectra.NullHomotopyDifferenceComposition
 
 /-!
@@ -41,7 +41,7 @@ variable (φ ψ : (Δ[n + 3] : SSet.{u}) ⟶ X)
 
 /-- 移送の二つの充填と移送先の差の充填を貼る。 -/
 def comparisonFace (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
-  if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible U V).liftOfKanComplex else
+  if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible U V).liftOfKanComplex else
     if j.val = n + 3 then φ else if j.val = n + 4 then ψ else SSet.const x
 
 include hφ hψ in
@@ -58,7 +58,7 @@ lemma comparisonCompatible :
   have hlt : j.val < k.val := hjk
   simp only [comparisonFace]
   split_ifs <;> try simp only [hφ, hψ, triangleFace, NullHomotopyDifference.filler_face,
-    _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -69,7 +69,7 @@ lemma comparisonCompatible :
 lemma comparison_output_face (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc.castSucc ≫
       (comparisonCompatible R S A U V φ ψ hφ hψ).liftOfKanComplex =
-      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex U V).map else
+      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex U V).map else
         if j.val = n + 2 then R.map else if j.val = n + 3 then S.map else SSet.const x := by
   let q : Fin (n + 4) := (Fin.last n).castSucc.castSucc.castSucc
   have hq : (Fin.last (n + 1)).castSucc.castSucc.castSucc = q.succ := by
@@ -114,12 +114,12 @@ theorem difference_eq_of_transport_fillers :
   let θ := stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc.castSucc ≫
     (comparisonCompatible R S A U V φ ψ hφ hψ).liftOfKanComplex
   have hθ (j : Fin (n + 4)) (hj : j ≠ (Fin.last (n + 1)).castSucc.castSucc) :
-      stdSimplex.δ j ≫ θ = _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j := by
+      stdSimplex.δ j ≫ θ = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face R S j := by
     rw [show θ = _ from rfl, comparison_output_face R S A U V φ ψ hφ hψ j]
     have hj' : j.val ≠ n + 1 := fun he ↦ hj (Fin.ext he)
-    simp only [ite_eq_right hj', _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face]
+    simp only [ite_eq_right hj', _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face]
   rw [NullHomotopyDifference.difference_eq_ofFiller R S θ hθ]
-  apply congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
   apply RelativeMorphism.ext
   exact (comparison_output_face R S A U V φ ψ hφ hψ
     (Fin.last (n + 1)).castSucc.castSucc).trans (by simp)

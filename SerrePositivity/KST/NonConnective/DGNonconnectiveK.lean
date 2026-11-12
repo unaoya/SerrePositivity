@@ -16,7 +16,7 @@ universe u v w
 open CategoryTheory Limits SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance ncKSpectrumCategory : SimplicialCategory OmegaSpectrum.{w} :=
@@ -42,9 +42,9 @@ theorem dgNonconnectiveKSuspensionK_succ (n : ℕ) :
 
 /-- 元の実構造辺 K(Σ^n A)→ΩK(Σ^{n+1} A)。全入力自然性は別工程。 -/
 def dgNonconnectiveKStructureEdge (n : ℕ) :
-    Sp.{max (u + 1) v}.Edge (coherentNerveVertex (dgNonconnectiveKSuspensionK R κ hκ A n))
+    Sp.{max (u + 1) v}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgNonconnectiveKSuspensionK R κ hκ A n))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgNonconnectiveKSuspensionK R κ hκ A (n + 1)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgNonconnectiveKSuspensionK R κ hκ A (n + 1)))) :=
   dgSuspensionThomasonStructureEdge R κ hκ A n
 
 /-- 同じ実構造辺を n 回 native loop した厳密逐次 BF 図式。 -/
@@ -73,16 +73,16 @@ theorem dgNonconnectiveK_eq_thomasonCandidate :
 
 /-- 同じ非連結 K を頂点とする実 Sp 余錐。 -/
 def dgNonconnectiveKCocone :
-    JoinCocone (strictCoherentDiagram (dgNonconnectiveKDiagram R κ hκ A)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (dgNonconnectiveKDiagram R κ hκ A)) :=
   sequentialCandidateColimitCocone (dgNonconnectiveKDiagram R κ hκ A)
 
 /-- 余錐の頂点は同じ非連結 K の標準頂点。 -/
 theorem dgNonconnectiveKCocone_vertex :
-    (dgNonconnectiveKCocone R κ hκ A).vertex = coherentNerveVertex (dgNonconnectiveK R κ hκ A) :=
+    (dgNonconnectiveKCocone R κ hκ A).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgNonconnectiveK R κ hκ A) :=
   sequentialCandidateColimitCocone_vertex _
 
 /-- 同じ実余錐は全写像空間で余極限。連結版 fibration 入力は不要。 -/
-theorem dgNonconnectiveKCocone_isColimit : IsColimitCone (dgNonconnectiveKCocone R κ hκ A) :=
+theorem dgNonconnectiveKCocone_isColimit : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgNonconnectiveKCocone R κ hκ A) :=
   sequentialCandidateColimitCocone_isColimit _
 
 /-- 同じ余錐の n 段の実脚を表す BF 射。 -/

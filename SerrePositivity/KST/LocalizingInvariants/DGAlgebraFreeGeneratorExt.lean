@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Resolution.Free.Evaluation
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraDerivedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraDerivedInfinity
 
 /-!
 概要：一対象 dg 代数への自由 dg 圏の生成辺データを、chain map の一致で判定する。
@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (D : Type v) (B : Mon (Complex R))
   (K : FreeDGCategory.ComplexQuiver R D)
 
 lemma dgAlgebraGeneratorMap_ext
-    {g h : FreeDGCategory.GeneratorMap R D (DGAlgebraPoint R B) K}
+    {g h : FreeDGCategory.GeneratorMap R D (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) K}
     (hm : ∀ x y, g.map x y = h.map x y) : g = h := by
   cases g with
   | mk o f =>

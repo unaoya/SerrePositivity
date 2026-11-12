@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertices
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingVertices
 
 /-!
 概要：同じ実辺の区間写像族を、終点の等式による表示変更に沿って保持する。

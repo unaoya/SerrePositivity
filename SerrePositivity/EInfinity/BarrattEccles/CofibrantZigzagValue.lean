@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ULiftRelativeLocalizationValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueNaturality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalizationValue
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueNaturality
 public import SerrePositivity.EInfinity.BarrattEccles.DKMappingComponents
 
 /-!
@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SimplicialLocalization Hammock
+open CategoryTheory HomotopicalAlgebra
 variable (A : Type u) [CommRing A]
 
 def cofibrantAlgebraDKHoHomMap (X Y : CofibrantAlgebra A)
@@ -32,39 +32,39 @@ def cofibrantAlgebraDKHoHomMap (X Y : CofibrantAlgebra A)
   let := modelCategory A
   let i := cofibrantAlgebraInclusionLocalizedIso A
   exact (i.app X).hom ≫ (cofibrantAlgebraHoEquivalence A).functor.map
-    (FrameHom.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A) _ _ f) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv (cofibrantAlgebraWeakEquivalences A) _ _ f) ≫
       (i.app Y).inv
 
-lemma cofibrantAlgebraZigzagValue_inclusion (w : Word) (X Y : CofibrantAlgebra A)
-    (S : Zigzag (cofibrantAlgebraRelativeCategory A).weakEquivalences w
+lemma cofibrantAlgebraZigzagValue_inclusion (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : CofibrantAlgebra A)
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (cofibrantAlgebraRelativeCategory A).weakEquivalences w
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) :
     let := modelCategory A
-    Zigzag.Value.value (weakEquivalences (operad A).Algebra).Q
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value (weakEquivalences (operad A).Algebra).Q
         (weakEquivalences (operad A).Algebra).Q_inverts
-        (Zigzag.Relative.obj (cofibrantAlgebraDKInclusionRelative A) S) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj (cofibrantAlgebraDKInclusionRelative A) S) =
       cofibrantAlgebraDKHoHomMap A X Y
-        (Zigzag.Value.value (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
           (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q_inverts S) := by
   let := modelCategory A
   let Q := (weakEquivalences (operad A).Algebra).Q
   let R := (cofibrantAlgebraWeakEquivalences A).Q
   let E := cofibrantAlgebraHoEquivalence A
   let i := cofibrantAlgebraInclusionLocalizedIso A
-  let D := FrameHom.ULiftRelativeLocalization.down (cofibrantAlgebraWeakEquivalences A)
-  let T := Zigzag.Relative.obj D S
+  let D := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.down (cofibrantAlgebraWeakEquivalences A)
+  let T := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj D S
   let F := cofibrantAlgebraInclusionRelative A
-  have hT : Zigzag.Value.value Q (weakEquivalences (operad A).Algebra).Q_inverts
-      (Zigzag.Relative.obj (cofibrantAlgebraDKInclusionRelative A) S) =
-    Zigzag.Value.value (F.functor ⋙ Q)
-      (Zigzag.Value.relativeInverts F Q (weakEquivalences (operad A).Algebra).Q_inverts) T :=
-    Zigzag.Value.value_relative F Q (weakEquivalences (operad A).Algebra).Q_inverts T
-  have hn := Zigzag.Value.value_naturality
-    (Zigzag.Value.relativeInverts F Q (weakEquivalences (operad A).Algebra).Q_inverts)
-    (Zigzag.Value.postInverts R (cofibrantAlgebraWeakEquivalences A).Q_inverts E.functor) i.hom T
-  have hd := FrameHom.ULiftRelativeLocalization.homEquiv_value
+  have hT : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value Q (weakEquivalences (operad A).Algebra).Q_inverts
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj (cofibrantAlgebraDKInclusionRelative A) S) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value (F.functor ⋙ Q)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.relativeInverts F Q (weakEquivalences (operad A).Algebra).Q_inverts) T :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_relative F Q (weakEquivalences (operad A).Algebra).Q_inverts T
+  have hn := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_naturality
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.relativeInverts F Q (weakEquivalences (operad A).Algebra).Q_inverts)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postInverts R (cofibrantAlgebraWeakEquivalences A).Q_inverts E.functor) i.hom T
+  have hd := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.homEquiv_value
     (cofibrantAlgebraWeakEquivalences A) w
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y) S
-  have hv := Zigzag.Value.value_postcompose R
+  have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_postcompose R
     (cofibrantAlgebraWeakEquivalences A).Q_inverts E.functor T
   change _ = (i.app X).hom ≫ E.functor.map _ ≫ (i.app Y).inv
   apply (cancel_mono (i.app Y).hom).1

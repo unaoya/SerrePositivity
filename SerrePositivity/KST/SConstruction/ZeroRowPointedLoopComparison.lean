@@ -21,7 +21,7 @@ open scoped Simplicial
 /-- 元の零段の任意の頂点の退化を基点にした零行からの具体的な点つき loop 射。 -/
 def zeroRowPointedLoopComparison (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    zeroRowPointedModel r X b ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
+    zeroRowPointedModel r X b ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
   Under.homMk (zeroRowLoopComparison r X) (by
     change SSet.const _ ≫ zeroRowLoopComparison r X = _
     rw [← SSet.const_comp b ((iteratedSRealizationDiagram r X).map
@@ -33,7 +33,7 @@ def zeroRowPointedLoopComparison (r : ℕ) (X : StableModel.{u})
 def zeroRowKanLoopComparison (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram r X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
     PointedKanReplacement.obj (zeroRowPointedModel r X b) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((boundaryKanRealizationFunctor r).obj X) :=
   pointedKanStrictExtension (zeroRowPointedLoopComparison r X b)
 
 /-- 延長した点つき loop 射は元の Kan 単位上で元の零行の射を厳密に回収する。 -/

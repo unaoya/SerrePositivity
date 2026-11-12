@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3EndpointParameterSquare
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeFunctorImage
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.StrictConeFunctorImage
 
 /-!
 概要：全パラメータ四角形族の各実頂点を、同じ通常の制限射の strict な図式へ照合する。
@@ -26,7 +26,7 @@ variable {C : Type v} {E : Type w} [EnrichedCategory SSet.{u} C]
 
 /-- 混合 Hom の実恒等入力は、同じ自然変換成分そのもの。 -/
 lemma d3Mixed_identity (η : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G)
-    (X : C) : eId SSet X ≫ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom η X X = η.app X := by
+    (X : C) : eId SSet X ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedUnitTransformationHom.hom η X X = η.app X := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -53,19 +53,19 @@ variable {J : Type v} [Preorder J] (D : Jᵒᵖ ⥤ PointedSimplicialSet.{u})
 /-- 同じ実パラメータ射を一つの Kan 入力で評価した通常の図式。 -/
 def d3ParameterEvaluation (X : PointedKanObject.{u}) : J ⥤ PointedKanObject.{u} where
   obj i := (d3PointedKanIhom (D.obj (Opposite.op i))).obj X
-  map {i j} f := ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map f.op) X.obj)
+  map {i j} f := ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (D.map f.op) X.obj)
   map_id i := by
     apply ObjectProperty.hom_ext
-    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map (𝟙 (Opposite.op i))) X.obj = 𝟙 _
-    rw [D.map_id, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (D.map (𝟙 (Opposite.op i))) X.obj = 𝟙 _
+    rw [D.map_id, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact (internalHom.flip.obj X.obj).map_id (Opposite.op (D.obj (Opposite.op i)))
   map_comp {i j k} f g := by
     apply ObjectProperty.hom_ext
-    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map (g.op ≫ f.op)) X.obj =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map f.op) X.obj ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (D.map g.op) X.obj
+    change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (D.map (g.op ≫ f.op)) X.obj =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (D.map f.op) X.obj ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (D.map g.op) X.obj
     rw [D.map_comp]
-    exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (D.map g.op) (D.map f.op) X.obj).symm
+    exact (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp (D.map g.op) (D.map f.op) X.obj).symm
 
 /-- 同じ実パラメータ射の混合 Hom は、恒等入力で元の制限射を回収する。 -/
 lemma d3ParameterMixed_identity (i j : J) (h : i ≤ j) (X : PointedKanObject.{u}) :
@@ -87,8 +87,8 @@ def d3ParameterOrdinarySquare
 /-- 全族の実頂点の四角形は、同じ通常図式の coherent 表示そのもの。 -/
 lemma d3PointedKanParameterSquare_vertex
     (D : (Fin 2 × Fin 2)ᵒᵖ ⥤ PointedSimplicialSet.{u}) (X : PointedKanObject.{u}) :
-    squareDiagram ((d3PointedKanParameterSquare D).app _ (coherentNerveVertex X)) =
-      d3ParameterOrdinarySquare D X ≫ nerveToCoherent PointedKanObject.{u} := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram ((d3PointedKanParameterSquare D).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) =
+      d3ParameterOrdinarySquare D X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent PointedKanObject.{u} := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -104,7 +104,7 @@ lemma d3PointedKanParameterSquare_vertex
     intro P
     change (D3EnrichedOrderedDiagram.map (d3ParameterStage D) (d3ParameterMixed D)
       (⟨d3ParameterSquareOrder t k.as.down, X⟩ :
-        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u})
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u})
       ⟨d3ParameterSquareOrder t l.as.down, X⟩).app _
       ((EnrichedOrderedCylinder.pathOrderMap (d3ParameterSquareOrder t) k l).app _ P,
         (eId SSet X).app _ PUnit.unit) = _
@@ -115,6 +115,6 @@ lemma d3PointedKanParameterSquare_vertex
       (Opposite.op ⦋m⦌)) PUnit.unit
     simp only [NatTrans.comp_app, ConcreteCategory.comp_apply] at hm
     rw [hm]
-    exact unitHom_app_constant _ m
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.unitHom_app_constant _ m
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

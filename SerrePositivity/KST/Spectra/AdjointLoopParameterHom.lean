@@ -25,37 +25,37 @@ namespace SerrePositivity.KST.Spectra.KanSequence
 def adjointLoopMappingExchange (A : PointedSimplicialSet.{u}) (X : KanSequence.{u}) :
     Hom (adjointLoop (mapping A X)) (mapping A (adjointLoop X)) :=
   Hom.ofAdjoint
-    (fun n ↦ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+    (fun n ↦ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
       (X.level n).space).hom) (fun n ↦ by
       have hm (Y : KanSequence.{u}) : ordinaryStructureAdjoint (mapping A Y) n =
         (ihom A).map (ordinaryStructureAdjoint Y n) ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
             (Y.level (n + 1)).space).hom := mapping_adjoint A Y n
-      change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+      change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
           (X.level n).space).hom ≫ ordinaryStructureAdjoint (mapping A (adjointLoop X)) n =
         ordinaryStructureAdjoint (adjointLoop (mapping A X)) n ≫
           (ihom PointedSimplicialSet.circle.{u}).map
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
               (X.level (n + 1)).space).hom
       rw [hm, adjointLoop_ordinaryStructureAdjoint,
         adjointLoop_ordinaryStructureAdjoint, hm]
-      change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+      change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
           (X.level n).space).hom ≫
         ((ihom A).map ((ihom PointedSimplicialSet.circle.{u}).map
             (ordinaryStructureAdjoint X n)) ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
-            (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space)).hom) =
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
+            (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space)).hom) =
         (ihom PointedSimplicialSet.circle.{u}).map
           ((ihom A).map (ordinaryStructureAdjoint X n) ≫
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A PointedSimplicialSet.circle.{u}
               (X.level (n + 1)).space).hom) ≫
           (ihom PointedSimplicialSet.circle.{u}).map
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
               (X.level (n + 1)).space).hom
       simp only [CategoryTheory.Functor.map_comp, Category.assoc]
-      rw [← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post_assoc PointedSimplicialSet.circle.{u} A
+      rw [← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post_assoc PointedSimplicialSet.circle.{u} A
         (ordinaryStructureAdjoint X n)]
-      simp only [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}]
+      simp only [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv A PointedSimplicialSet.circle.{u}]
       simp only [Iso.hom_inv_id, Category.comp_id]
       rw [← CategoryTheory.Functor.map_comp, Iso.inv_hom_id,
         CategoryTheory.Functor.map_id, Category.comp_id])
@@ -76,7 +76,7 @@ lemma adjointLoopParameterHom_app {A : PointedSimplicialSet.{u}} {X Y : KanSeque
     (f : Hom X (mapping A Y)) (n : ℕ) :
     (adjointLoopParameterHom f).app n =
       (ihom PointedSimplicialSet.circle.{u}).map (f.app n) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A (Y.level n).space).hom := rfl
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A (Y.level n).space).hom := rfl
 
 /-- 概要：補助 loop の全パラメータ作用は元の部分パラメータへの制限と可換。
 方針：内部 Hom の標準交換の源自然性を各段へ適用する。
@@ -89,15 +89,15 @@ lemma adjointLoopParameterHom_pre {A B : PointedSimplicialSet.{u}} (i : B ⟶ A)
   apply Hom.ext_app
   intro n
   change (ihom PointedSimplicialSet.circle.{u}).map
-      (f.app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (Y.level n).space) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} B (Y.level n).space).hom =
+      (f.app n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (Y.level n).space) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} B (Y.level n).space).hom =
     ((ihom PointedSimplicialSet.circle.{u}).map (f.app n) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A (Y.level n).space).hom) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i ((adjointLoop Y).level n).space
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A (Y.level n).space).hom) ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i ((adjointLoop Y).level n).space
   rw [CategoryTheory.Functor.map_comp, Category.assoc]
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right PointedSimplicialSet.circle.{u} i
+  have h := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right PointedSimplicialSet.circle.{u} i
     (Y.level n).space
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
   erw [h]
   rw [Category.assoc]
   rfl
@@ -117,16 +117,16 @@ lemma adjointLoopTailUnit_parameter_natural
   change f.app n ≫ (ihom A).map (ordinaryStructureAdjoint Y n) =
     ordinaryStructureAdjoint X n ≫
       ((ihom PointedSimplicialSet.circle.{u}).map (f.app (n + 1)) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
           (Y.level (n + 1)).space).hom)
   have h := ordinaryStructureAdjoint_natural f n
   have hm := mapping_adjoint A Y n
   change ordinaryStructureAdjoint (mapping A Y) n = _ at hm
   rw [hm] at h
   have hh := congrArg (· ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} A
       (Y.level (n + 1)).space).hom) h
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv A PointedSimplicialSet.circle.{u}] at hh
+  rw [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv A PointedSimplicialSet.circle.{u}] at hh
   simpa only [ordinaryStructureAdjoint, Category.assoc, Iso.inv_hom_id,
     Iso.inv_hom_id_assoc, Category.comp_id] using hh
 

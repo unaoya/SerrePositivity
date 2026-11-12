@@ -41,7 +41,7 @@ def loopSourceComparisonSection (X : OmegaSpectrum.{u}) :
   let := comparisonCorner_trivialKanFibration X (loopSourceInclusion X)
     (loopSourceInclusion_relative X)
   exact Classical.choose
-    (trivialKanFibration_exists_section (comparisonCorner X (loopSourceInclusion X)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (comparisonCorner X (loopSourceInclusion X)))
 
 /-- 同じ切断は元の左右二境界を全単体で厳密に回収する。 -/
 lemma loopSourceComparisonSection_fac (X : OmegaSpectrum.{u}) :
@@ -49,7 +49,7 @@ lemma loopSourceComparisonSection_fac (X : OmegaSpectrum.{u}) :
   let := comparisonCorner_trivialKanFibration X (loopSourceInclusion X)
     (loopSourceInclusion_relative X)
   exact Classical.choose_spec
-    (trivialKanFibration_exists_section (comparisonCorner X (loopSourceInclusion X)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (comparisonCorner X (loopSourceInclusion X)))
 
 /-- 指定包含と元の単位延長の両境界を満たす、同じ全 Hom 内の実比較点。 -/
 def loopSourceComparisonFamily (X : OmegaSpectrum.{u}) :
@@ -114,14 +114,14 @@ lemma loopSourceComparison_right (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 元の二境界を保つ比較選択 fiber 自体が可縮。自由な可逆辺の追加ではない。 -/
 lemma loopSourceComparisonFiber_isContractibleKan (X : OmegaSpectrum.{u}) :
-    IsContractibleKan (comparisonFiber X (loopSourceInclusion X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (comparisonFiber X (loopSourceInclusion X)
       ((RawSpectrumMapping.relativeCornerTarget (loopSourceInclusion X) (projection X)).unitHomEquiv
         (loopSourceComparisonBoundary X))) :=
   comparisonFiber_isContractibleKan X (loopSourceInclusion X) (loopSourceInclusion_relative X) _
 
 /-- 実比較 c_X は各段で元の全基点 π 同型。 -/
 lemma loopSourceComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((loopSourceComparison X).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((loopSourceComparison X).app n).right := by
   apply (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex (loopSourceInclusion_levelwise X n))
     (x := PointedSimplicialSet.basepoint (X.level n).space)
   rw [← Under.comp_right, loopSourceComparison_left]
@@ -129,7 +129,7 @@ lemma loopSourceComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 選択した二境界付き比較射そのものが元の Sp の可逆辺。 -/
 lemma loopSourceComparison_isInvertible (X : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (loopSourceComparison X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (loopSourceComparison X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (loopSourceComparison_levelwise X)
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

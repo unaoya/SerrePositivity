@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleInputIso
 public import SerrePositivity.KST.NonConnective.DGFixedKAction
-public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InvertibleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：元の実 dg swindle の、K-S• の同じ固定 BF K への作用。
@@ -19,10 +19,10 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 
 /-- 同じ cone の id ⊕ T を、元の固定 dg 入力の通常射として保持する。 -/
@@ -43,19 +43,19 @@ def dgKappaSwindleFixedInputHomEdge :
     (dgFunctorNativeMappingSpace R (DGKappaCone R D I) (DGKappaCone R D I))).Edge
       (ULift.up (dgFunctorNativeMappingVertex R _ _ (dgKappaSwindleSource R D I)))
       (ULift.up (dgFunctorNativeMappingVertex R _ _ (dgKappaConeCountableSum R D I)))
-  exact SSet.Edge.ofTruncated (uliftTruncatedEdge (dgKappaSwindleNativeInputEdge R D I).toTruncated)
+  exact SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uliftTruncatedEdge (dgKappaSwindleNativeInputEdge R D I).toTruncated)
 
 /-- 元の入力の同じ二つの辺は、固定入力 ∞ 圏の h で等しい。 -/
 lemma dgKappaSwindleInput_hom_eq :
     Truncated.HomotopyCategory.homMk
-        (coherentNerveEdge (dgKappaSwindleInputMap R D I)).toTruncated =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSwindleInputMap R D I)).toTruncated =
       Truncated.HomotopyCategory.homMk
-        (coherentNerveEdge (dgKappaCountableInputMap R D I)).toTruncated := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaCountableInputMap R D I)).toTruncated := by
   let e := dgKappaSwindleFixedInputHomEdge R D I
   let : IsIso (Truncated.HomotopyCategory.homMk e.toTruncated) :=
     IsGroupoid.all_isIso (C := hoFunctor.obj
       (SimplicialCategory.sHom (dgKappaConeKInput R D I) (dgKappaConeKInput R D I))) _
-  exact coherentNerveEdge_homMk_eq_of_enrichedVertexIso
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveEdge_homMk_eq_of_enrichedVertexIso
     (asIso (Truncated.HomotopyCategory.homMk e.toTruncated))
 
 local instance dgSwindleFixedKSimplicialCategory : SimplicialCategory OmegaSpectrum.{w} :=

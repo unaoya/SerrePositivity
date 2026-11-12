@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEnd
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.PointedWeightedEnd
@@ -92,7 +92,7 @@ theorem map_π (W : I ⥤ SSet.{u}) {D E : I ⥤ PointedSimplicialSet.{u}}
 使われ方：HA §1.4.2。Kan end の比較の自然性。 -/
 @[reassoc]
 theorem underlyingIso_π (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u}) (i : I) :
-    (underlyingIso W D).hom ≫ weightedSectionsπ W (D ⋙ PointedSimplicialSet.forget) i =
+    (underlyingIso W D).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W (D ⋙ PointedSimplicialSet.forget) i =
       (end_.π (diagram W D) i).right ≫ FreePointedHomRestriction.restrict (W.obj i) (D.obj i) := by
   change (EndRightAdjoint.toEnd (R := PointedSimplicialSet.forget) (diagram W D) ≫
       end_.map (underlyingDiagramIso W D).hom) ≫ end_.π _ i = _
@@ -108,8 +108,8 @@ theorem underlyingIso_natural (W : I ⥤ SSet.{u}) {D E : I ⥤ PointedSimplicia
     (τ : D ⟶ E) :
     (map W τ).right ≫ (underlyingIso W E).hom =
       (underlyingIso W D).hom ≫
-        weightedSectionsMap W (Functor.whiskerRight τ PointedSimplicialSet.forget) := by
-  apply weightedSections_hom_ext
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap W (Functor.whiskerRight τ PointedSimplicialSet.forget) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
   rw [Category.assoc, underlyingIso_π, ← Category.assoc]
   have hp := congrArg Under.Hom.right (map_π W τ i)
@@ -117,7 +117,7 @@ theorem underlyingIso_natural (W : I ⥤ SSet.{u}) {D E : I ⥤ PointedSimplicia
     (end_.π (diagram W D) i).right ≫
       (PointedObject.basedHomMap (PointedObject.adjoin (W.obj i)) (τ.app i)).right at hp
   rw [hp, Category.assoc, FreePointedHomRestriction.natural_post]
-  conv_rhs => rw [Category.assoc, weightedSectionsMap_π, ← Category.assoc, underlyingIso_π]
+  conv_rhs => rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap_π, ← Category.assoc, underlyingIso_π]
   rfl
 
 /-- 概要：点つき Bousfield–Kan enriched end は全基点 π_* 同型を保つ。
@@ -126,21 +126,21 @@ theorem underlyingIso_natural (W : I ⥤ SSet.{u}) {D E : I ⥤ PointedSimplicia
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の Ω 条件の保存。 -/
 theorem map_piIsomorphism {D E : I ⥤ PointedSimplicialSet.{u}}
     [∀ i, KanComplex (D.obj i).right] [∀ i, KanComplex (E.obj i).right]
-    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (τ.app i).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map (bousfieldKanWeight I) τ).right := by
+    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (τ.app i).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) τ).right := by
   let : ∀ i, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (D.obj i).right)
   let : ∀ i, KanComplex ((E ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (E.obj i).right)
-  let eD := underlyingIso (bousfieldKanWeight I) D
-  let eE := underlyingIso (bousfieldKanWeight I) E
-  have heD : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism eD.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eD
-  have heE : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism eE.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso eE
+  let eD := underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D
+  let eE := underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) E
+  have heD : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism eD.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso eD
+  have heE : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism eE.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso eE
   have hN := PointedHomotopyLimit.map_piIsomorphism τ hτ
   have hc := heD.comp hN
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := eE.hom) _ heE
-  have h := underlyingIso_natural (bousfieldKanWeight I) τ
-  change (map (bousfieldKanWeight I) τ).right ≫ eE.hom =
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := eE.hom) _ heE
+  have h := underlyingIso_natural (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) τ
+  change (map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) τ).right ≫ eE.hom =
     eD.hom ≫ (PointedHomotopyLimit.map τ).right at h
   rw [h]
   exact hc

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.CosimplicialTotalization
 universe u
 
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -32,8 +32,8 @@ lemma fromCochains_toCochains (s : DiagramFamily W H A) :
   intro i
   apply Family.ext
   intro n
-  change (weightedSectionsUncurry (weightedSectionsLift (cochainFamily s n))).app i = _
-  rw [weightedSectionsUncurry_lift]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (cochainFamily s n))).app i = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
   rfl
 
 lemma toCochains_fromCochains (s : SimplexTensorBoundary.diagram A ⟶
@@ -41,11 +41,11 @@ lemma toCochains_fromCochains (s : SimplexTensorBoundary.diagram A ⟶
     toCochains (fromCochains s) = s := by
   apply NatTrans.ext
   funext n
-  change weightedSectionsLift (cochainFamily (fromCochains s) n) = s.app n
-  have h : cochainFamily (fromCochains s) n = weightedSectionsUncurry (s.app n) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (cochainFamily (fromCochains s) n) = s.app n
+  have h : cochainFamily (fromCochains s) n = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.app n) := by
     apply NatTrans.ext
     rfl
-  rw [h, weightedSectionsLift_uncurry]
+  rw [h, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_uncurry]
 
 /-- 概要：cochain への標準単体上の射と図式上の密度の族との同値。
 方針：各次数の end の両逆と二つの添字の交換を束ねる。
@@ -81,9 +81,9 @@ def totalizationHomEquiv (X : CosimplicialObject SSet.{u}) (A : SSet.{u}) :
 def totalizationEndHomEquiv (W H : I ⥤ SSet.{u}) (A : SSet.{u}) :
     (A ⟶ CosimplicialTotalization.obj
       (UnderlyingWeightedCochains.obj (discreteLevels W) H)) ≃
-      (A ⟶ weightedSections W H) :=
+      (A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W H) :=
   (totalizationHomEquiv _ A).trans
-    (cochainFamilyEquiv.trans (diagramFamilyEquiv.symm.trans (weightedSectionsHomEquiv W H A).symm))
+    (cochainFamilyEquiv.trans (diagramFamilyEquiv.symm.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv W H A).symm))
 
 end
 

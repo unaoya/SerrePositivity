@@ -26,7 +26,7 @@ local instance commonLoopDiagramHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 共通 BF 基底から元の full 基底への同じ全単体射影。 -/
 def commonBaseInfinityMap : SimplicialNerve CommonObject ⟶ SimplicialNerve FullObject :=
-  coherentNerveMap commonBaseEnriched
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonBaseEnriched
 
 /-- 共通 BF 基底でも終点は元の対象の nativeTail。 -/
 def commonNativeLoopEndpoint : SimplicialNerve CommonObject ⟶ Sp.{u} :=
@@ -35,50 +35,50 @@ def commonNativeLoopEndpoint : SimplicialNerve CommonObject ⟶ Sp.{u} :=
 lemma commonBaseInfinityMap_endpoint :
     commonBaseInfinityMap.{u} ≫ fullNativeLoopEndpoint = commonNativeLoopEndpoint := by
   rw [fullNativeLoopEndpoint, ← Category.assoc]
-  change (coherentNerveMap commonBaseEnriched ≫ coherentNerveMap fullOriginalEnriched) ≫
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonBaseEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap fullOriginalEnriched) ≫
     nativeTail = _
-  rw [← coherentNerveMap_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
   rfl
 
 lemma commonNativeLoopEndpoint_vertex (X : CommonObject.{u}) :
-    commonNativeLoopEndpoint.app _ (coherentNerveVertex X) =
-      coherentNerveVertex (tail X.val) := by
-  change nativeTail.app _ ((coherentNerveMap commonOriginalEnriched).app _
-    (coherentNerveVertex X)) = _
-  rw [coherentNerveMap_vertex]
+    commonNativeLoopEndpoint.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X.val) := by
+  change nativeTail.app _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonOriginalEnriched).app _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
   exact nativeTail_vertex X.val
 
 /-- 同じ全単体で実 loop 図式と共通 BF 比較を記憶する基底。
 図式始点と refined 関手を結ぶ全 Hom 条件は未追加。 -/
 def commonLoopDiagramResolution : SSet.{u + 1} :=
-  pullback (loopDiagramEvaluation Sp.{u} 1 1) commonNativeLoopEndpoint
+  pullback (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1) commonNativeLoopEndpoint
 
 def commonLoopDiagramProjection :
     commonLoopDiagramResolution.{u} ⟶ SimplicialNerve CommonObject :=
   pullback.snd _ _
 
-def commonLoopDiagramFamily : commonLoopDiagramResolution.{u} ⟶ loopDiagrams Sp.{u} :=
+def commonLoopDiagramFamily : commonLoopDiagramResolution.{u} ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Sp.{u} :=
   pullback.fst _ _
 
 lemma commonLoopDiagramFamily_target :
-    commonLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 1 1 =
+    commonLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1 =
       commonLoopDiagramProjection ≫ commonNativeLoopEndpoint :=
   pullback.condition
 
 /-- 図式を忘れて同じ共通 BF 基底へ戻る射影の実全単射 RLP。
 始点 BF 関手との整合を追加した射影に対する主張ではない。 -/
 instance commonLoopDiagramProjection_trivialKanFibration :
-    TrivialKanFibration commonLoopDiagramProjection.{u} :=
-  ⟨trivialKanFibrations.pullback_snd _ _ (TrivialKanFibration.mem
-    (p := loopDiagramEvaluation Sp.{u} 1 1))⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration commonLoopDiagramProjection.{u} :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
+    (p := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1))⟩
 
 instance commonLoopDiagramResolution_quasicategory :
     Quasicategory commonLoopDiagramResolution.{u} :=
   quasicategory_of_innerFibration commonLoopDiagramProjection
 
 def commonLoopDiagramEquivalence :
-    QCatEquivalence commonLoopDiagramResolution.{u} (SimplicialNerve CommonObject) :=
-  qCatEquivalenceOfTrivialKanFibration commonLoopDiagramProjection
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence commonLoopDiagramResolution.{u} (SimplicialNerve CommonObject) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration commonLoopDiagramProjection
 
 /-- 元の BF 比較族と既存の部分 loop 図式を同時に保つ全単射相対充填。
 新しい部分の図式始点と refined 関手の一致は、この充填の条件に含めない。 -/
@@ -88,9 +88,9 @@ lemma exists_relative_commonLoopDiagram {V U : SSet.{u + 1}} (j : V ⟶ U) [Mono
     (h : a ≫ commonLoopDiagramProjection = j ≫ b) :
     ∃ d : U ⟶ commonLoopDiagramResolution,
       j ≫ d = a ∧ d ≫ commonLoopDiagramProjection = b ∧
-        (d ≫ commonLoopDiagramFamily) ≫ loopDiagramEvaluation Sp.{u} 1 1 =
+        (d ≫ commonLoopDiagramFamily) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1 =
           b ≫ commonNativeLoopEndpoint := by
-  have := TrivialKanFibration.mem (p := commonLoopDiagramProjection) j inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := commonLoopDiagramProjection) j inferInstance
   let sq : CommSq a j commonLoopDiagramProjection b := ⟨h⟩
   refine ⟨sq.lift, sq.fac_left, sq.fac_right, ?_⟩
   rw [Category.assoc, commonLoopDiagramFamily_target, ← Category.assoc, sq.fac_right]
@@ -98,8 +98,8 @@ lemma exists_relative_commonLoopDiagram {V U : SSet.{u + 1}} (j : V ⟶ U) [Mono
 /-- 同じ共通 BF 全単体を固定した図式選択の fiber は可縮。 -/
 lemma commonLoopDiagramFiber_isContractibleKan
     (v : (SimplicialNerve CommonObject.{u}) _⦋0⦌) :
-    IsContractibleKan (vertexFiber commonLoopDiagramProjection v) :=
-  vertexFiber_isContractibleKan commonLoopDiagramProjection v
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber commonLoopDiagramProjection v) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan commonLoopDiagramProjection v
 
 /-- 元の full 図式基底にも、同じ図式・元の BF 比較を保って戻る。 -/
 def commonLoopDiagramToFull :
@@ -122,28 +122,28 @@ lemma commonLoopDiagramToFull_family :
 
 /-- 同じ共通 BF 比較を保ち、元の Sp まで戻る実同値。 -/
 def commonLoopDiagramOriginalEquivalence :
-    QCatEquivalence commonLoopDiagramResolution.{u} Sp.{u} :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence commonLoopDiagramResolution.{u} Sp.{u} :=
   commonLoopDiagramEquivalence.trans commonOriginalInfinityEquivalence
 
 /-- 共通 BF 図式上の refined 関手。図式始点への同一視は別途必要。 -/
 def commonLoopDiagramRefinedMap : commonLoopDiagramResolution.{u} ⟶ Sp.{u} :=
-  commonLoopDiagramProjection ≫ coherentNerveMap commonRefinedEnriched
+  commonLoopDiagramProjection ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched
 
 /-- 元の二段包含は同じ図式基底上でも全関手同型を与える。 -/
 def commonLoopDiagramInclusionIso :
-    FunctorIso (commonLoopDiagramProjection.{u} ≫ commonOriginalInfinityMap)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonLoopDiagramProjection.{u} ≫ commonOriginalInfinityMap)
       commonLoopDiagramRefinedMap :=
-  FunctorIso.precomp commonInclusionFunctorIso commonLoopDiagramProjection
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp commonInclusionFunctorIso commonLoopDiagramProjection
 
 /-- 同じ基底で、元の比較右脚を成分とする全 BF 図式比較も保持する。 -/
 def commonLoopDiagramComparisonIso :
-    FunctorIso commonLoopDiagramRefinedMap.{u}
-      (commonLoopDiagramProjection ≫ coherentNerveMap commonMiddleEnriched) :=
-  FunctorIso.precomp commonComparisonFunctorIso commonLoopDiagramProjection
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso commonLoopDiagramRefinedMap.{u}
+      (commonLoopDiagramProjection ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonMiddleEnriched) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp commonComparisonFunctorIso commonLoopDiagramProjection
 
 /-- 同じ図式基底で、記憶した全図式を元の指定 native 図式族と比較する。 -/
 def commonLoopDiagramNativeIso :
-    FunctorIso commonLoopDiagramFamily.{u}
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso commonLoopDiagramFamily.{u}
       ((commonLoopDiagramProjection ≫ commonNativeLoopEndpoint) ≫
         nativeLoopTargetEquivalence.inv) :=
   nativeLoopDiagramFamilyIso _ _ (by
@@ -153,10 +153,10 @@ def commonLoopDiagramNativeIso :
 /-- 記憶した実図式の始点と元の nativeLoop の全関手比較。
 refined 関手との比較には、さらに同じ全 Hom 上の整合が必要。 -/
 def commonLoopDiagramSourceNativeIso :
-    FunctorIso (commonLoopDiagramFamily.{u} ≫ loopDiagramEvaluation Sp.{u} 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonLoopDiagramFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
       ((commonLoopDiagramProjection ≫ commonNativeLoopEndpoint) ≫ nativeLoop) := by
-  have e := FunctorIso.postcomp commonLoopDiagramNativeIso (loopDiagramEvaluation Sp.{u} 0 0)
-  change FunctorIso _ _ at e
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp commonLoopDiagramNativeIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso _ _ at e
   simpa only [Category.assoc, nativeLoop] using e
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

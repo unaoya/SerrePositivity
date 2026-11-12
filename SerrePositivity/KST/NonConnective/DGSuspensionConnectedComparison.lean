@@ -49,9 +49,9 @@ theorem sequentialCandidateInitialLeg_bijective_of_adjacent
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (β : ∀ n : ℕ,
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
 
 /-- 明示構造辺に条件付きで、同じ native loop 列の零段は元の連結固定 K そのもの。 -/
 theorem dgSuspensionNativeSequenceStage_zero :
@@ -64,9 +64,9 @@ def dgSuspensionConnectedComparison :
 
 /-- 明示構造辺に条件付きで、元の実比較射の全一単体は同じ実 Sp 余錐の零段の脚そのもの。 -/
 theorem dgSuspensionConnectedComparison_edge :
-    (coherentNerveEdge (dgSuspensionConnectedComparison R s A β)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionConnectedComparison R s A β)).edge =
       (sequentialCandidateColimitLeg (dgSuspensionNativeSequence R s A β) ⟨0⟩).edge := by
-  have he := coherentNerveEdge_hom
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom
     (sequentialCandidateColimitLeg (dgSuspensionNativeSequence R s A β) ⟨0⟩)
   exact congrArg (fun e => e.edge) he
 

@@ -19,16 +19,16 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def freeProbeDerivedUnitAmbientHom (X : Complex A) :
     (HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-      (Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
-        hoFunctor.obj (derivedInfinityCategory A)) ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
       HomotopyCategory.mk ((ComplexLimits.complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-        (Simplex.vertex ((freeProbeFunctor A).obj X).carrier)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier)) :=
   (ComplexLimits.complexOrdinaryAmbientVertexIso A
     ((ComplexLimits.framedLimitProbeFunctor A).obj X)).inv ≫
     freeProbeDerivedUnitRecoveredHom A X ≫
@@ -38,7 +38,7 @@ def freeProbeDerivedUnitAmbientHom (X : Complex A) :
 lemma freeProbeDerivedUnitAmbientHom_eq (X : Complex A) :
     freeProbeDerivedUnitAmbientHom A X =
     (hoFunctor.map (ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
-      (Truncated.HomotopyCategory.homMk (dgClosedEdge A (Complex A)
+      (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
         ((ComplexLimits.complexToClosed A).map
           ((operad A).freeAlgebraAdjunction.unit.app
             ((ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by

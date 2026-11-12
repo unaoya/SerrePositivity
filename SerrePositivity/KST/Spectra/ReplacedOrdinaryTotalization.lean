@@ -47,7 +47,7 @@ def homotopyUnit : originalHomotopyTotalization D hD ⟶
 
 /-- BK の置換単位は各段で全基点 π 同型。 -/
 lemma homotopyUnit_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyUnit D hD).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyUnit D hD).app n).right :=
   KanSequence.homotopyLimitSpectrumMap_levelwise _ _
     (Functor.whiskerLeft AsSmall.down (unitApp D))
     (fun j n ↦ unit_piIsomorphism D (AsSmall.down.obj j) n) n
@@ -60,7 +60,7 @@ def comparison : totalization D hD ⟶ originalHomotopyTotalization D hD :=
 
 /-- 任意の Ω 図式の比較は各段で全基点 π 同型。 -/
 lemma comparison_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((comparison D hD).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((comparison D hD).app n).right :=
   (KanSequence.totalizationSpectrumMap_levelwise (diagram D) (diagram_reedy D)
     (sequence_omegaCondition D hD) n).comp
     (OmegaSpectrum.levelwiseInverse_levelwise (homotopyUnit D hD)

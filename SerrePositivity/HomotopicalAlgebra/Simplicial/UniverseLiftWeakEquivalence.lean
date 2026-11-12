@@ -35,7 +35,7 @@ lemma hornGenerators_map : SSet.modelCategoryQuillen.J.{v} ≤
     exact SSet.modelCategoryQuillen.J.le_llp_rlp _
       (SSet.modelCategoryQuillen.horn_ι_mem_J (n + 1) i)
   exact ((trivialCofibrations SSet.{max v w}).arrow_mk_iso_iff
-    (hornArrowIso (n + 1) i)).mpr h
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornArrowIso (n + 1) i)).mpr h
 
 include hfib hfib' in
 lemma trivialCofibrations_map : trivialCofibrations SSet.{v} ≤

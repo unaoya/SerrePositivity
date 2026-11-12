@@ -38,7 +38,7 @@ abbrev evaluation (X Y : OmegaSpectrum.{u}) (n : ℕ) : mappingSpace X Y ⟶
 使われ方：BF 1978 §2。射の構造可換条件。 -/
 @[reassoc]
 theorem evaluation_condition (X Y : OmegaSpectrum.{u}) (n : ℕ) :
-    evaluation X Y (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+    evaluation X Y (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       evaluation X Y n ≫ mappingStep X Y n :=
   TruncatedMapping.totalEvaluation_condition _ _ _ _ _ n
 
@@ -66,7 +66,7 @@ def homOfVertex {X Y : OmegaSpectrum.{u}} (v : (mappingSpace X Y) _⦋0⦌) : X 
     rw [← mappingStep_vertex, ← pointedHomVertexEquiv_pre]
     simp only [Equiv.apply_symm_apply]
     exact (congrArg (fun k : mappingSpace X Y ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).right ↦
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).right ↦
         k.app _ v) (evaluation_condition X Y n)).symm
 
 /-- 概要：終対象からの射を頂点として評価する同値は後合成と両立する。
@@ -89,7 +89,7 @@ def homFamily {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
 規約：厳密な等式。
 使われ方：BF 1978 §2。極限への普遍的な持ち上げ。 -/
 theorem homFamily_condition {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
-    homFamily f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+    homFamily f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       homFamily f n ≫ mappingStep X Y n := by
   apply (SSet.unitHomEquiv _).injective
   rw [unitHomEquiv_comp, unitHomEquiv_comp]
@@ -103,7 +103,7 @@ theorem homFamily_condition {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
 def vertexOfHomMap {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
     𝟙_ SSet.{u} ⟶ mappingSpace X Y :=
   TruncatedMapping.familyLift (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y)
     (homFamily f) (homFamily_condition f)
 
 /-- 概要：厳密なスペクトルの射を写像空間の頂点へ移す。
@@ -122,7 +122,7 @@ theorem vertexOfHom_evaluation {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ)
     (evaluation X Y n).app _ (vertexOfHom f) = pointedHomVertexEquiv _ _ (f.app n) := by
   have h := TruncatedMapping.familyLift_evaluation
     (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y)
     (homFamily f) (homFamily_condition f) n
   have hh := congrArg (SSet.unitHomEquiv _) h
   rw [unitHomEquiv_comp] at hh
@@ -148,7 +148,7 @@ theorem vertex_ext {X Y : OmegaSpectrum.{u}} {v w : (mappingSpace X Y) _⦋0⦌}
     (h : ∀ n, (evaluation X Y n).app _ v = (evaluation X Y n).app _ w) : v = w := by
   apply (SSet.unitHomEquiv (mappingSpace X Y)).symm.injective
   apply TruncatedMapping.total_hom_ext (fun n ↦ (X.level n).space)
-    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (fun n ↦ (Y.level n).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     X.sigma (mappingStep X Y)
   intro n
   apply (SSet.unitHomEquiv _).injective

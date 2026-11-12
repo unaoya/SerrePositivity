@@ -16,35 +16,35 @@ open SerrePositivity.DifferentialGraded
 
 /-- 全生成射のの混合式を元の生成語の path として厳密に実現する。 -/
 def cubeMixedExpressionPath {n : ℕ} : {m : ℕ} → CubeMixedExpression n m →
-    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m)
+    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m)
   | _, .id _ => .nil
-  | _, .point p b i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b _ i)
-  | _, .erase p i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.degeneracy _ i)
-  | _, .connect p i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.connection _ i)
+  | _, .point p b i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.face b _ i)
+  | _, .erase p i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.degeneracy _ i)
+  | _, .connect p i => (cubeMixedExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.connection _ i)
 termination_by structural _m p => p
 
 /-- 混合式の path の具体的評価は、同じ式の元の頂点関数。 -/
 lemma cubeMixedExpressionPath_concrete {n m : ℕ} (p : CubeMixedExpression n m) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
       cubeMixedExpressionVertex p := by
   induction p with
   | id => rfl
   | point p b i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeMixedExpressionVertex p
     rw [ih]
     rfl
   | erase p i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy _ i ∘ cubeMixedExpressionVertex p
     rw [ih]
     rfl
   | connect p i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeMixedExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection _ i ∘ cubeMixedExpressionVertex p
     rw [ih]
     rfl
 
@@ -73,20 +73,20 @@ lemma cubeMixedExpressionPath_serre (A : Type u) [CommRing A] {n m : ℕ}
 
 /-- 混合式の末尾へ元の一生成射を追加する。 -/
 def cubeMixedExpressionAppend {n : ℕ} : {a b : ℕ} → CubeMixedExpression n a →
-    _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator a b → CubeMixedExpression n b
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator a b → CubeMixedExpression n b
   | _, _, p, .face c _ i => .point p c i
   | _, _, p, .degeneracy _ i => .erase p i
   | _, _, p, .connection _ i => .connect p i
 
 /-- 一生成射の追加は、元の path の末尾への同じ追加を回収する。 -/
 lemma cubeMixedExpressionAppend_path {n a b : ℕ} (p : CubeMixedExpression n a)
-    (g : _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator a b) :
+    (g : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator a b) :
     cubeMixedExpressionPath (cubeMixedExpressionAppend p g) =
       (cubeMixedExpressionPath p).cons g := by
   cases g <;> rfl
 
 /-- 元の任意の生成語は、その同じ構文の混合式から厳密に回収される。 -/
-lemma cubeWordPath_exists_mixedExpression {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} (p : Quiver.Path X Y) :
+lemma cubeWordPath_exists_mixedExpression {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} (p : Quiver.Path X Y) :
     ∃ e : CubeMixedExpression X.dimension Y.dimension, cubeMixedExpressionPath e = p := by
   induction p with
   | nil => exact ⟨.id X.dimension, rfl⟩
@@ -97,9 +97,9 @@ lemma cubeWordPath_exists_mixedExpression {X Y : _root_.SerrePositivity.Infinity
 
 /-- 元の任意の混合語を、両方の実際の評価を保った三段表示へ移す。 -/
 lemma cubeWordPath_normalization (A : Type u) [CommRing A]
-    {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p : X ⟶ Y) :
+    {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords} (p : X ⟶ Y) :
     ∃ r : CubeThreeNormal X.dimension Y.dimension,
-      cubeThreeNormalVertex r = (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p).val ∧
+      cubeThreeNormalVertex r = (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p).val ∧
         serreCubeThreeNormal A r = (serreCubeWordFunctor A).map p := by
   obtain ⟨e, he⟩ := cubeWordPath_exists_mixedExpression p
   have hvertex := cubeMixedExpressionPath_concrete e

@@ -35,7 +35,7 @@ lemma full_identity_left (X : OmegaSpectrum.{u}) :
       (⟨(inclusion X).app, (inclusion X).comm⟩ :
         KanSequence.Hom X.toKanSequence (middle X).toKanSequence)
   rw [RawSpectrumMapping.pre_spectrum, RawSpectrumMapping.post_spectrum]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id SSet (inclusion X)
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_id SSet (inclusion X)
 
 /-- 概要：同じ二恒等射は指定相対右射影も厳密に保つ。
 方針：全段座標と実 loop 豊穣関手の単位保存を通常の恒等正方形へ戻す。
@@ -56,19 +56,19 @@ lemma full_identity_right (X : OmegaSpectrum.{u}) :
   have hb := congrArg Under.Hom.right (projectionParameterFamily_universal_evaluation X X n)
   simp only [Under.comp_right] at hb
   rw [hb]
-  have hid := (_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_id SSet ((projection X).app n)).symm
+  have hid := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_id SSet ((projection X).app n)).symm
   rw [PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq] at hid
   change mappingIdentity (middle X) ≫ evaluation (middle X) (middle X) n ≫
       (PointedObject.basedHomMap ((middle X).level n).space ((projection X).app n)).right =
     mappingIdentity X ≫ evaluation X X (n + 1) ≫
       (PointedMapping.ihomSimplicialFunctor PointedSimplicialSet.circle.{u}).map
         (X.level (n + 1)).space (X.level (n + 1)).space ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((projection X).app n) ((target X).level n).space
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((projection X).app n) ((target X).level n).space
   rw [mappingIdentity_evaluation_assoc, mappingIdentity_evaluation_assoc]
   have hm := (PointedMapping.ihomSimplicialFunctor
     PointedSimplicialSet.circle.{u}).map_id (X.level (n + 1)).space
   have hm' := congrArg (fun k ↦ k ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((projection X).app n) ((target X).level n).space) hm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((projection X).app n) ((target X).level n).space) hm
   have hh : eId SSet ((target X).level n).space =
       eId SSet ((PointedMapping.ihomSimplicialFunctor
         PointedSimplicialSet.circle.{u}).obj (X.level (n + 1)).space) := by

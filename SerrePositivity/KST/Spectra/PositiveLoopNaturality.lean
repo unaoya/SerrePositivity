@@ -29,13 +29,13 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、VIII §1。次数移動と係数の射の可換式。 -/
 theorem loopPositiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right n (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint) :
     loopPositiveHomotopyEquiv Z n
-        (pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) n
+        (pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) n
           (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1) p (loopPositiveHomotopyEquiv Y n a) := by
   have h := loopHomotopyEquiv_natural p (n + 1) a
-  simpa only [loopHomotopyEquiv, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map,
+  simpa only [loopHomotopyEquiv, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map,
     pointedGroupMap, MulEquiv.toEquiv_eq_coe, MulEquiv.coe_toEquiv] using h
 
 end

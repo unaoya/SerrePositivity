@@ -31,7 +31,7 @@ variable (A : Type u) [CommRing A]
 方針：元の full subcategory の Hom を ULift し、同じ弱同値類を引き戻す。
 規約：対象の宇宙 u+1 に Hom を揃え、基礎環や元の代数を変更しない。
 使われ方：自由相対圏 comonad の具体的な入力。 -/
-def cofibrantAlgebraRelativeCategory : RelativeCategory.{u + 1} where
+def cofibrantAlgebraRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} where
   category := Cat.of (ULiftHom.{u + 1} (CofibrantAlgebra A))
   weakEquivalences := (cofibrantAlgebraWeakEquivalences A).inverseImage (ULiftHom.down.{u, u + 1,
     u + 1} (C := CofibrantAlgebra A))
@@ -114,8 +114,8 @@ def cofibrantAlgebraDKForgetRelative :
 方針：元の cofibrant 代数の相対圏へ反復自由関手を適用する。
 規約：全次数で元の弱同値だけからなる列の条件を保持する。
 使われ方：単体的局所化の次数ごとの圏の具体的な入力。 -/
-abbrev cofibrantAlgebraFreeLevel (n : ℕ) : RelativeCategory.{u + 1} :=
-  (freeResolutionLevel n).obj (cofibrantAlgebraRelativeCategory A)
+abbrev cofibrantAlgebraFreeLevel (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeResolutionLevel n).obj (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：各自由次数から元の DK 入力への同じ augmentation（Dwyer–Kan）。
 方針：元の反復自由解像の自然変換を具体的な相対圏で評価する。
@@ -123,14 +123,14 @@ abbrev cofibrantAlgebraFreeLevel (n : ℕ) : RelativeCategory.{u + 1} :=
 使われ方：単体的局所化と元の代数射の比較。 -/
 abbrev cofibrantAlgebraFreeAugmentation (n : ℕ) :
     cofibrantAlgebraFreeLevel A n ⟶ cofibrantAlgebraRelativeCategory A :=
-  (freeResolutionAugmentation n).app (cofibrantAlgebraRelativeCategory A)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeResolutionAugmentation n).app (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：元の cofibrant E 代数相対圏の全自由単体的解像（Dwyer–Kan）。
 方針：同じ相対圏を汎用自由解像へ代入する。
 規約：通常の単体圏上の全作用素を保持する。
 使われ方：CAlg_R の次数ごとの単体的局所化の入力。 -/
 def cofibrantAlgebraFreeResolution :
-    SimplicialObject RelativeCategory.{u + 1} :=
+    SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} :=
   freeResolution (cofibrantAlgebraRelativeCategory A)
 
 /-- 概要：全自由解像から元の E 代数相対圏への augmentation（Dwyer–Kan）。

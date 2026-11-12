@@ -23,10 +23,10 @@ variable (H : Homotopy ((normalizedMooreComplex _).map f) ((normalizedMooreCompl
 方針：制限項、テンソルした Moore 射影と区間比較、ホモトピー評価を合成する。
 規約：KST A.3・A.5。使われ方：端点での全和を切断ごとに評価する。 -/
 def cylinderAWTerm (n : ℕ) (i : Fin (n + 1)) :
-    (simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u}))).obj (op ⦋n⦌) ⟶
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))).obj (op ⦋n⦌) ⟶
       ((normalizedMooreComplex _).obj D).X n :=
-  alexanderWhitneySummand C (linearizedSpace (Δ[1] : SSet.{u})) n i ≫
-    (chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison).f n ≫
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneySummand C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})) n i ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison).f n ≫
       (chainHomotopyInterval H).f n
 
 /-- 概要：復元の区間の鎖写像の成分は AW の各切断項の有限和。
@@ -34,8 +34,8 @@ def cylinderAWTerm (n : ℕ) (i : Fin (n + 1)) :
 規約：KST A.3・A.5。使われ方：定数単体上で最後の項だけを残す。 -/
 lemma chainHomotopyCylinderCore_eq_sum (n : ℕ) :
     (chainHomotopyCylinderCore H).f n = ∑ i : Fin (n + 1), cylinderAWTerm H n i := by
-  change alexanderWhitneyApp C (linearizedSpace (Δ[1] : SSet.{u})) n ≫ _ = _
-  rw [alexanderWhitneyApp, Preadditive.sum_comp]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})) n ≫ _ = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp, Preadditive.sum_comp]
   rfl
 
 /-- 概要：AW の切断項は二つの制限・二つの比較・二重次数の評価の合成。
@@ -43,15 +43,15 @@ lemma chainHomotopyCylinderCore_eq_sum (n : ℕ) :
 規約：KST A.3・A.5。使われ方：各項の純テンソル上の計算。 -/
 lemma cylinderAWTerm_eq (n : ℕ) (i : Fin (n + 1)) :
     cylinderAWTerm H n i =
-      integerTensorMap (C.map (awFront n i).op)
-          ((linearizedSpace (Δ[1] : SSet.{u})).map (awBack n i).op) ≫
-        integerTensorMap ((PInftyToNormalizedMooreComplex C).f i)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (C.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront n i).op)
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack n i).op) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((PInftyToNormalizedMooreComplex C).f i)
           (integerIntervalComparison.f (n - i)) ≫
-            chainHomotopyIntervalBidegree H i (n - i) n (awDegrees n i) := by
-  rw [cylinderAWTerm, alexanderWhitneySummand, Category.assoc]
+            chainHomotopyIntervalBidegree H i (n - i) n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees n i) := by
+  rw [cylinderAWTerm, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneySummand, Category.assoc]
   have ht := congrArg (fun k ↦ k ≫ (chainHomotopyInterval H).f n)
-    (ι_chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison
-      i (n - i) n (awDegrees n i))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison
+      i (n - i) n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees n i))
   simp only [Category.assoc] at ht
   erw [ht]
   erw [ι_chainHomotopyIntervalApp]
@@ -62,15 +62,15 @@ lemma cylinderAWTerm_eq (n : ℕ) (i : Fin (n + 1)) :
 lemma cylinderAWTerm_constant_of_lt (n : ℕ) (i : Fin (n + 1)) (hi : (i : ℕ) < n)
     (v : C.obj (op ⦋n⦌)) (j : Fin 2) :
     cylinderAWTerm H n i (TensorProduct.tmul ℤ v
-      (integerGenerator (SSet.stdSimplex.const 1 j (op ⦋n⦌)))) = 0 := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 j (op ⦋n⦌)))) = 0 := by
   rw [cylinderAWTerm_eq]
-  change chainHomotopyIntervalBidegree H i (n - i) n (awDegrees n i)
+  change chainHomotopyIntervalBidegree H i (n - i) n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees n i)
     (TensorProduct.tmul ℤ
-      ((PInftyToNormalizedMooreComplex C).f i (C.map (awFront n i).op v))
+      ((PInftyToNormalizedMooreComplex C).f i (C.map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront n i).op v))
       (integerIntervalComparison.f (n - i)
-        (integerLinearization.map ((Δ[1] : SSet.{u}).map (awBack n i).op)
-          (integerGenerator (SSet.stdSimplex.const 1 j (op ⦋n⦌)))))) = 0
-  rw [integerLinearization_map_generator, intervalConstant_map,
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack n i).op)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 j (op ⦋n⦌)))))) = 0
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, intervalConstant_map,
     integerIntervalComparison_constant_of_pos (n - i) (by omega), TensorProduct.tmul_zero, map_zero]
 
 end SerrePositivity.KST.ProExcision

@@ -64,7 +64,7 @@ lemma gappedCofiberFamiliesMap_frame (n : ℕ) (C : SSet.{u}) [Quasicategory C] 
     gappedCofiberFamiliesMap n C ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
       gappedFrameRestriction n C ≫ zeroFrameCofiberFamiliesMap n C := by
   apply (cancel_mono ((ihom (frameNerve n)).map
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)).1
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)).1
   rw [Category.assoc, ← (pre (frameInclusion n)).naturality,
     ← Category.assoc, gappedCofiberFamiliesMap_ι, Category.assoc,
     arCofiberFamilyOperator_frame, ← Category.assoc, ← gappedFrameRestriction_ι,
@@ -75,7 +75,7 @@ lemma gappedCofiberFamiliesMap_frame (n : ℕ) (C : SSet.{u}) [Quasicategory C] 
 方針：縦座標を零にした鎖の各頂点を計算する。
 規約：全次数での厳密等号。使われ方：cofiber 族の入力と枠の指定の両立。 -/
 lemma frameCofiberSquareMap_bottom (n : ℕ) :
-    (frameNerve n ◁ squareBottomEdge) ≫ frameCofiberSquareMap.{u} n =
+    (frameNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ≫ frameCofiberSquareMap.{u} n =
       (frameInclusion n ▷ (Δ[1] : SSet.{u})) ≫ arCofiberInputMap n := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -88,17 +88,17 @@ lemma frameCofiberSquareMap_bottom (n : ℕ) :
 方針：内部 currying の両変数の自然性と下辺の形状の等号を使う。
 規約：零対角条件は不要。使われ方：相対 cofiber 補完の基底との可換性。 -/
 lemma frameCofiberFamilyOperator_input (n : ℕ) (C : SSet.{u}) :
-    frameCofiberFamilyOperator n C ≫ (ihom (frameNerve n)).map ((pre squareBottomEdge).app C) =
+    frameCofiberFamilyOperator n C ≫ (ihom (frameNerve n)).map ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app C) =
       frameCofiberInputOperator n C ≫
         (pre (frameInclusion n)).app ((ihom (Δ[1] : SSet.{u})).obj C) := by
-  have he : (squareBottomEdge ▷ frameNerve n) ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ▷ frameNerve n) ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (frameNerve n)).hom ≫ frameCofiberSquareMap n =
       ((Δ[1] : SSet.{u}) ◁ frameInclusion n) ≫
         (β_ (Δ[1] : SSet.{u}) (arNerve n)).hom ≫ arCofiberInputMap n := by
     rw [BraidedCategory.braiding_naturality_left_assoc, frameCofiberSquareMap_bottom,
       BraidedCategory.braiding_naturality_right_assoc]
   dsimp only [frameCofiberFamilyOperator, frameCofiberInputOperator]
-  rw [Category.assoc, ← ihomCurry_pre_whiskerRight,
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ihomCurry_pre_whiskerRight,
     Category.assoc, ← ihomCurry_pre_whiskerLeft]
   simp only [← Category.assoc, ← NatTrans.comp_app, ← pre_map]
   simp only [Category.assoc] at ⊢

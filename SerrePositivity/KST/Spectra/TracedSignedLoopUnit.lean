@@ -86,7 +86,7 @@ lemma tracedSignedLoopUnitComparison_restriction (n : ℕ) :
 
 /-- トレースを保持した単位も全段・全基点で π 同型。 -/
 lemma tracedSignedLoopUnit_levelwise (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((tracedSignedLoopUnit X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((tracedSignedLoopUnit X).app n).right :=
   tracedRectifyInto_levelwise X (KanSequence.signedLoopTail X.toKanSequence)
     (KanSequence.signedLoopTail_omegaCondition X.toKanSequence_omega)
     (KanSequence.kanAdjoint X.toKanSequence) (signedLoopUnitStructurePath X)

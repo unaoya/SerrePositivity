@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorOverPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverPrecomposition
 
 /-!
 概要：切断を持つ全係数の追加は、元の指定相対頂点同型の等式を反映する。

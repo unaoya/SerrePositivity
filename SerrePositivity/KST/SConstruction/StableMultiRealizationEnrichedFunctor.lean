@@ -16,21 +16,21 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 元の全反復実現への、全自然同値入力を保持する厳密豊穣関手。 -/
 def stableMultiRealizationEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}
       SSetInternalObject.{u} :=
   (stableMultiSCoreObjectEnrichedFunctor r).comp SSet
     simplicialSSetDiagramDiagonalEnrichedFunctor
 
 /-- 実値は同じ元の全反復 core S• の対角実現。 -/
 lemma stableMultiRealizationEnrichedFunctor_obj (r : ℕ)
-    (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((stableMultiRealizationEnrichedFunctor r).obj C).obj =
       multiDiagonalCoreSConstruction r
         (stableCategoryModel (C)) := rfl
 
 /-- 元の通常の完全射では、同じ元の反復実現の射を全単体で厳密に回収する。 -/
 lemma stableMultiRealizationEnrichedFunctor_hom (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     eHomEquiv SSet.{u} F ≫
       (stableMultiRealizationEnrichedFunctor r).map C D =
         curry' (C := SSet.{u}) ((multiRealizationFunctor r).map

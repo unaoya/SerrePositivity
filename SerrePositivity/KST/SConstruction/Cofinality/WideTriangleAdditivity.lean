@@ -39,7 +39,7 @@ private def completionTriangleProductObjectIso (r : ℕ)
 使われ方：完全三角形の加法関係の証明。 -/
 lemma completionWideTriangle_stabilized (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (T : Triangle (hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier))
     (hT : T ∈ distTriang _) :
     completionWideObjectClass r ι f hf (T.obj₂ ⊞
@@ -58,11 +58,11 @@ lemma completionWideTriangle_stabilized (r : ℕ) (ι : Fin r → SimplexCategor
   let e₂ := completionTriangleProductObjectIso r ι Y T U Triangle.obj₂
   let e₃ := completionTriangleProductObjectIso r ι Y T U Triangle.obj₃ ≪≫
     (isoBiprodZero (C := C) (X := T.obj₃) (isZero_zero C)).symm
-  let P := stableHoClosure (LocalizingInvariants.completionEssentialImage
+  let P := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
     (((multiSEndofunctor r).obj ι).map f).val)
   obtain ⟨a, ⟨ea⟩⟩ := multiSBiprodShift_mem_image_of_completion r ι f hf T.obj₁
   obtain ⟨a, rfl⟩ := Truncated.HomotopyCategory.mk_surjective a
-  have hA : P (T.obj₁ ⊞ A) := StableVertexClosure.of_mem ⟨a, ⟨ea.symm⟩⟩
+  have hA : P (T.obj₁ ⊞ A) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_mem ⟨a, ⟨ea.symm⟩⟩
   have h₁ : P V.obj₁ := P.prop_of_iso e₁.symm hA
   have hW : P.trW V.mor₂ := ObjectProperty.trW.mk' P hV h₁
   exact (completionWideObjectClass_iso r ι f hf e₂).symm.trans
@@ -75,7 +75,7 @@ lemma completionWideTriangle_stabilized (r : ℕ) (ι : Fin r → SimplexCategor
 使われ方：元の三角圏 K₀ から成分群への降下。 -/
 lemma completionWideTriangle_additivity (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (T : Triangle (hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier))
     (hT : T ∈ distTriang _) :
     completionWideObjectClass r ι f hf T.obj₂ = completionWideAdd r ι f hf

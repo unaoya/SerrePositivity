@@ -25,7 +25,7 @@ abbrev coproductCofan : Cofan (fun i ↦ obj A (X i)) :=
 
 namespace Coproduct
 
-def simplexDesc (s : Cofan (fun i ↦ obj A (X i))) : (∐ X) ⟶ (cosimplicialHom A).obj s.pt :=
+def simplexDesc (s : Cofan (fun i ↦ obj A (X i))) : (∐ X) ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj s.pt :=
   Sigma.desc (fun i ↦ (homEquiv A (X i) s.pt).symm (s.inj i))
 
 def desc (s : Cofan (fun i ↦ obj A (X i))) : obj A (∐ X) ⟶ s.pt :=

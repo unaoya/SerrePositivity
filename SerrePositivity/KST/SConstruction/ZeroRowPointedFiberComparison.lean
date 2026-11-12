@@ -34,7 +34,7 @@ lemma zeroRowPathFiberComparison_degeneracy (r : ℕ) (X : StableModel.{u}) :
   have hpr : zeroRowPathFiberComparison r X ≫
       (pullback.snd (pathEndpoint ((boundaryKanRealizationFunctor r).obj X)) f).right =
     zeroRowPathToKan r X := zeroRowPathFiberComparison_projection r X
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback
     (pathEndpoint ((boundaryKanRealizationFunctor r).obj X)) f).hom_ext
   · rw [Category.assoc]
     change _ ≫ (strictZeroPathFiberMap f (zeroRowPathToKan r X) _ ≫ _) = _

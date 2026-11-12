@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MonoidTranslations
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexContraction
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexContraction
 public import SerrePositivity.KST.Comparison.GrouplikeTranslations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneLocalizedTensor
 
@@ -154,7 +154,7 @@ theorem monoidActionFamily_simplex_localized_isIso (M : SimplicialObject MonCat.
     (a.app (op ⦋0⦌) (SSet.stdSimplex.obj₀Equiv.symm 0))
   have he := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ SSet.anodyneExtensions)
-    (monoidActionFamilyHomotopy M (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction a))
+    (monoidActionFamilyHomotopy M (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction a))
   rw [← he]
   exact hc
 

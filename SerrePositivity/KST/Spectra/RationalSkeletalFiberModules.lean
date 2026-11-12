@@ -33,18 +33,18 @@ instance rationalCoefficientModule (K : SSet.{u}) (X : OmegaSpectrum.{u}) (k n r
     Module ℚ (Additive (coefficientGroup K ((OmegaSpectrum.rationalization X).level k).space
       n r)) := by
   let Y := ((OmegaSpectrum.rationalization X).level k).space
-  let : Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint)) := by
+  let : Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint)) := by
     rw [show n + 1 + r = (n + r) + 1 by omega]
     exact OmegaSpectrum.rationalizationLevelModule X k (n + r)
   exact (additiveFunctionEquiv (K.nonDegenerate (n + 1))
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint)).module ℚ
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1 + r) Y.basepoint)).module ℚ
 
 /-- 概要：有理化の段への骨格写像空間の fiber の群は有理加群。
 方針：係数の関数群の有理作用を実際の fiber の群同型で移す。
 規約：fiber の一次群も含む全正次数。
 使われ方：BF 1978 §2、Goerss–Jardine VIII §1。有理な塔の群の供給。 -/
 instance rationalStageFiberModule (K : SSet.{u}) (X : OmegaSpectrum.{u}) (k n r : ℕ) :
-    Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (UnbasedPointedMapping.stageFiber K
         ((OmegaSpectrum.rationalization X).level k).space n).right r
       (UnbasedPointedMapping.stageFiber K

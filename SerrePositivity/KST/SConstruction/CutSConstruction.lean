@@ -21,46 +21,46 @@ open scoped Simplicial
 /-- 切断作用素の頂点が表す実図式は、包含後に元の切断四角形の族と一致する。 -/
 lemma cutCofiberFamilyOperator_vertex_ι (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
     [Quasicategory C] (v : (sConstruction n C) _⦋0⦌) :
-    (functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
         ((cutCofiberFamilyOperator n k C).app (Opposite.op ⦋0⦌) v) ≫
-      (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
         arCutFamily k (gappedDiagram v) := by
   have h := ConcreteCategory.congr_hom
     (NatTrans.congr_app (cutCofiberFamilyOperator_ι n k C) (Opposite.op ⦋0⦌)) v
-  exact (diagramVertex_postcomp (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
+  exact (diagramVertex_postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
     ((cutCofiberFamilyOperator n k C).app (Opposite.op ⦋0⦌) v)).symm.trans
-      ((congrArg (functorVertexEquiv (arNerve n) ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)).symm
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C)).symm
         (h.trans (cutRawFamilyOperator_vertex n k C v))).trans
-          ((functorVertexEquiv _ _).symm_apply_apply _))
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _))
 
 /-- 切断作用素は S_n C の各頂点を cofiber 図式値の gapped 図式に送る。 -/
 lemma cutCofiberFamilyOperator_isGapped (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (v : (sConstruction n C) _⦋0⦌) :
-    IsGapped ((functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (v : (sConstruction n C) _⦋0⦌) :
+    IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm
       ((cutCofiberFamilyOperator n k C).app (Opposite.op ⦋0⦌) v)) := by
   apply IsGapped.of_fullSubcomplex IsCofiberDiagramVertex
   have h : IsGapped (arCutFamily k (gappedDiagram v)) := by
     have hg := (gappedCutCofiberFamily_isGapped k (gappedDiagram_isGapped v)).postcomp
-      (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι
       (cofiberInclusion_preservesSConstructionData C)
     exact hg
   exact (cutCofiberFamilyOperator_vertex_ι n k C v).symm ▸ h
 
 /-- 同じ図式内の切断 cofiber 族を S_n(cofiber C) に送る実際の単体的射。 -/
 def cutSConstructionMap (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : sConstruction n C ⟶ sConstruction n (cofiberDiagrams C) :=
-  fullSubcomplexLift _ (cutCofiberFamilyOperator n k C) (cutCofiberFamilyOperator_isGapped n k C)
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : sConstruction n C ⟶ sConstruction n (cofiberDiagrams C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (cutCofiberFamilyOperator n k C) (cutCofiberFamilyOperator_isGapped n k C)
 
 /-- 切断の S_n への持ち上げは cofiber 族そのものを包含後に回収する。 -/
 lemma cutSConstructionMap_ι (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     cutSConstructionMap n k C ≫ (gappedSubcomplex n (cofiberDiagrams C)).ι =
       cutCofiberFamilyOperator n k C :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 切断の cofiber 族を転置し、S_n C の内部の cofiber 四角形にする。 -/
 def cutCofiberComparison (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : sConstruction n C ⟶ cofiberDiagrams (sConstruction n C) :=
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : sConstruction n C ⟶ cofiberDiagrams (sConstruction n C) :=
   cutSConstructionMap n k C ≫ (sCofiberIso n C).hom
 
 end SerrePositivity.KST.SConstruction

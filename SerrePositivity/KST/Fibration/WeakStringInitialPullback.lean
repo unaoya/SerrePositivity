@@ -15,8 +15,8 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 後合成と初期評価の元の実現射そのものの厳密な可換四角形。 -/
-theorem weakStringInitialPostSquare {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringInitialPostSquare {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     CommSq
       ((multiRealizationFunctor r).map
         (weakStringVertexTopExact (f ≫ q : A ⟶ C) ⦋n⦌ 0))
@@ -28,8 +28,8 @@ theorem weakStringInitialPostSquare {A B C : _root_.SerrePositivity.InfinityCate
 
 /-- Verdier 列の元の W 列の初期評価四角形は、全長・全正有限反復で homotopy pullback。 -/
 theorem weakStringInitialPostSquare_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n r : ℕ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n r : ℕ) :
     IsHomotopyPullback (weakStringInitialPostSquare i q n (r + 1)) := by
   apply isHomotopyPullback_of_productCoordinates
     (weakStringInitialPostSquare i q n (r + 1))

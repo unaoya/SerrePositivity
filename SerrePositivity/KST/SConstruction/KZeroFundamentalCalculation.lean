@@ -21,7 +21,7 @@ open scoped Simplicial
 
 /-- 単射置換の零段の随伴を一段の射影の loop へ写すと元の恒等随伴を回収する。 -/
 lemma monicKZeroAdjoint_projection (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((monicKKanSequence X).sigma 0) ≫
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((monicKKanSequence X).sigma 0) ≫
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         ((monicKKanSequenceProjection X).app 1) = 𝟙 (boundaryKSpaceFunctor.obj X) := by
   have hc := (monicKKanSequenceProjection X).adjoint_comm 0
@@ -40,7 +40,7 @@ lemma kZeroLevelFundamentalGroupEquiv_apply (X : StableModel.{u})
   let A := ((monicKKanSequence X).level 1).space
   let B := (boundaryKanRealizationFunctor 0).obj X
   let p := (monicKKanSequenceProjection X).app 1
-  let k := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((monicKKanSequence X).sigma 0)
+  let k := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((monicKKanSequence X).sigma 0)
   let l := PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p
   have hc : k ≫ l = 𝟙 (boundaryKSpaceFunctor.obj X) := monicKZeroAdjoint_projection X
   have hh : pointedHomotopyMap 0 l (pointedHomotopyMap 0 k a) = a := by
@@ -48,14 +48,14 @@ lemma kZeroLevelFundamentalGroupEquiv_apply (X : StableModel.{u})
     exact pointedHomotopyMap_id _ 0 a
   have hn := loopHomotopyEquiv_natural p 0 (pointedHomotopyMap 0 k a)
   change loopZeroHomotopyEquiv B (pointedHomotopyMap 0 l (pointedHomotopyMap 0 k a)) =
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p)
       (loopZeroHomotopyEquiv A (pointedHomotopyMap 0 k a)) at hn
   rw [hh] at hn
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism 0 p.right
-    (monicKKanSequenceProjection_piIsomorphism X 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p)
-      (loopZeroHomotopyEquiv A (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism 0 k.right
-        (monicKKanSequence_omegaCondition X 0) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint k) a)) = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism 0 p.right
+    (monicKKanSequenceProjection_piIsomorphism X 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p)
+      (loopZeroHomotopyEquiv A (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism 0 k.right
+        (monicKKanSequence_omegaCondition X 0) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint k) a)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism_apply]
   exact hn.symm
 
 /-- 実際の整数零次 K 群の基本群表示は元の零段表示と零 loop 同値の合成。 -/
@@ -70,8 +70,8 @@ lemma kZeroFundamentalGroupEquiv_apply (X : StableModel.{u})
 lemma kHomotopyZeroPiZeroEquiv_formula (X : StableModel.{u})
     (a : OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) 0) :
     kHomotopyZeroPiZeroEquiv X a =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (kOmegaSpectrum_zeroGroupEquiv X a) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (kOmegaSpectrum_zeroGroupEquiv X a) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
     (pointedHomotopyMap 0 (𝟙 (boundaryKSpaceFunctor.obj X))
       (kOmegaSpectrum_zeroGroupEquiv X a)) = _
   rw [pointedHomotopyMap_id]

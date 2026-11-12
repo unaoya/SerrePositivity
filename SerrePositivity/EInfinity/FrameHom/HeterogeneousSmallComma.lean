@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 
@@ -92,17 +92,17 @@ def equivalence : SmallComma.{uK, vK, uJ, vJ, uC, vC, w} Q R ≌
 /-- 概要：同じ小さい全図式から元の comma の小圏へ回収する明示的な同値。
 方針：元の Grothendieck 表示と同じ up/down の順逆を合成する。
 規約：元の全射を保つ。使われ方：一般モデルの全図式の回収。 -/
-def grothendieckEquivalence : Grothendieck (CommaGrothendieck.diagram
+def grothendieckEquivalence : Grothendieck (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.diagram
     (liftFunctor.{uK, vK, uC, vC, max w uK vK uJ vJ uC vC} Q)
     (liftFunctor.{uJ, vJ, uC, vC, max w uK vK uJ vJ uC vC} R)) ≌
       AsSmall.{max w uK vK uJ vJ uC vC} (Comma Q R) :=
-  (CommaGrothendieck.equivalence _ _).trans
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.equivalence _ _).trans
     (equivalence.{uK, vK, uJ, vJ, uC, vC, w} Q R)
 
 /-- 概要：元の小さい全図式から同じ元の comma の nerve への実回収。
 方針：同じ元の全射を down し、同じ nerve の宇宙表示へ移す。
 規約：全単体と全作用素を保持。使われ方：元の三本矢の実射との照合。 -/
-def recoveryNerveMap : nerve (Grothendieck (CommaGrothendieck.diagram
+def recoveryNerveMap : nerve (Grothendieck (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.diagram
     (liftFunctor.{uK, vK, uC, vC, max w uK vK uJ vJ uC vC} Q)
     (liftFunctor.{uJ, vJ, uC, vC, max w uK vK uJ vJ uC vC} R))) ⟶
       SSet.uliftFunctor.{max w uK vK uJ vJ uC vC, max uK uJ vC vK vJ}.obj

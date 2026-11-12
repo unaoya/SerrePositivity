@@ -22,7 +22,7 @@ namespace KanSequence
 /-- 符号補正の段成分は、元の Kan 円の同じ反転反復への前合成。 -/
 lemma signedLoopTailTwistComparison_app (Y : KanSequence.{u}) (n : ℕ) :
     (signedLoopTailTwistComparison Y).app n =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space := by
   change (iterateHom (tailHom (mappingPre (CirclePower.integerPowerMap.{u} (-1)) Y)) n).app n = _
   exact iterateHom_tail_mappingPre_app Y n n
 
@@ -37,10 +37,10 @@ lemma signedEvaluationPost_evaluation (X Y : OmegaSpectrum.{u}) (n : ℕ) :
         (KanSequence.signedLoopTail Y.toKanSequence) n =
     pointedEvaluation X Y.toKanSequence (n + 1) ≫
       evaluationPostAt CirclePower.space.{u} X Y (n + 1) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor CirclePower.space.{u} X).level (n + 1)).space
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso ((cotensor CirclePower.space.{u} X).level (n + 1)).space
         CirclePower.space.{u} (Y.level (n + 1)).space).inv ≫
       (ihom ((cotensor CirclePower.space.{u} X).level (n + 1)).space).map
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space) := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space) := by
   rw [signedEvaluationPost, Category.assoc, Category.assoc, pointedPost_evaluation,
     pointedTail_evaluation_assoc, ← Category.assoc, rawEvaluationPost_evaluation]
   rw [KanSequence.signedLoopTailTwistComparison_app]
@@ -54,11 +54,11 @@ lemma signedEvaluationAt_evaluation (X Y : OmegaSpectrum.{u})
       pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n =
     pointedEvaluation X Y.toKanSequence (n + 1) ≫
       evaluationPostAt CirclePower.space.{u} X Y (n + 1) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor CirclePower.space.{u} X).level (n + 1)).space
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso ((cotensor CirclePower.space.{u} X).level (n + 1)).space
         CirclePower.space.{u} (Y.level (n + 1)).space).inv ≫
       (ihom ((cotensor CirclePower.space.{u} X).level (n + 1)).space).map
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (e.app n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.reversalIterate n) (Y.level (n + 1)).space) ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (e.app n)
         (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space) := by
   rw [signedEvaluationAt, Category.assoc, pointedPre_evaluation, ← Category.assoc,
     signedEvaluationPost_evaluation]

@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：元の本質像の相対実現の Ex∞ の二次以上のホモトピーは一意。
@@ -25,36 +25,36 @@ open scoped Simplicial
 使われ方：元の相対 fiber 比較を Kan 完全列へ渡す右項。 -/
 theorem completionClosedRelativeExInfinity_higher_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
-    (x : (exInfinity.obj (Fibration.Relative.closedRelativeRealization
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedRelativeRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (exInfinity.obj (Fibration.Relative.closedRelativeRealization
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedRelativeRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
   let R := Fibration.Relative.closedRelativeRealization (completionImageClosedPredicate r ι f hf)
-  let : KanComplex ((𝟭 SSet.{u}).obj (exInfinity.obj R)) := exInfinity_kanComplex R
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app R) :=
+  let : KanComplex ((𝟭 SSet.{u}).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R)) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex R
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app R) :=
     SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne R))
-  have hw := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence _ hu
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne R))
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence _ hu
   obtain ⟨g, hg, hk⟩ := hw.isSimplicialHomotopyEquivalence
-  have hgi : IsSimplicialHomotopyEquivalence g := ⟨_, hk, hg⟩
-  have hπg : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (g : F2.continuousKanReplacement.obj (exInfinity.obj R) ⟶
-        F2.continuousKanReplacement.obj R) :=
+  have hgi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence g := ⟨_, hk, hg⟩
+  have hπg : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (g : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R) ⟶
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj R) :=
     Spectra.kanPiIsomorphism_of_qCatEquivalence g hgi.isQCatEquivalence
-  let z := (F2.continuousKanReplacementUnit.app (exInfinity.obj R)).app (Opposite.op ⦋0⦌) x
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj ((𝟭 SSet.{u}).obj R)) n
+  let z := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R)).app (Opposite.op ⦋0⦌) x
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj ((𝟭 SSet.{u}).obj R)) n
       (g.app (Opposite.op ⦋0⦌) z)) :=
     completionClosedRelative_higher_subsingleton r ι f hf n hn _
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (exInfinity.obj R)) n z) :=
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R)) n z) :=
     Function.Injective.subsingleton ((hπg z n).1)
-  have hv := F2.continuousKanReplacementUnit_isWeakHomotopyEquivalence (exInfinity.obj R)
-  have hπu : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (F2.continuousKanReplacementUnit.app (exInfinity.obj R) :
-        exInfinity.obj R ⟶ F2.continuousKanReplacement.obj (exInfinity.obj R)) :=
+  have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacementUnit_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R)
+  have hπu : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R) :
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj R)) :=
     Spectra.kanPiIsomorphism_of_qCatEquivalence _
       hv.isSimplicialHomotopyEquivalence.isQCatEquivalence
   exact Function.Injective.subsingleton ((hπu x n).1)

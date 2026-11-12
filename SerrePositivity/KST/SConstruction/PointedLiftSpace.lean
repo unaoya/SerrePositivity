@@ -26,16 +26,16 @@ def pointedLiftSpace {A E B : PointedSimplicialSet.{u}} (p : E ⟶ B) (b : A ⟶
 /-- 持ち上げ空間の一点への射影は trivial Kan fibration。 -/
 lemma pointedLiftSpace_projection_trivialKanFibration {A E B : PointedSimplicialSet.{u}}
     (p : E ⟶ B) (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right) (b : A ⟶ B) :
-    TrivialKanFibration (pullback.snd (PointedObject.basedHomMap A p).right
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (pullback.snd (PointedObject.basedHomMap A p).right
       (SSet.yonedaEquiv.symm (familyVertex b))) := by
-  have hpost : TrivialKanFibration (PointedObject.basedHomMap A p).right :=
+  have hpost : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (PointedObject.basedHomMap A p).right :=
     ⟨post_rlp_monomorphisms A p hp⟩
-  exact ⟨trivialKanFibrations.pullback_snd _ _ hpost.mem⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ hpost.mem⟩
 
 /-- 持ち上げ空間は可縮 Kan であり、持ち上げの存在も含む。 -/
 lemma pointedLiftSpace_isContractibleKan {A E B : PointedSimplicialSet.{u}}
     (p : E ⟶ B) (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right) (b : A ⟶ B) :
-    IsContractibleKan (pointedLiftSpace p b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (pointedLiftSpace p b) := by
   have hp' := pointedLiftSpace_projection_trivialKanFibration p hp b
   intro n a
   have := hp'.mem (boundary n).ι inferInstance
@@ -51,7 +51,7 @@ lemma pointedLiftSpace_relative_lifting {A E B : PointedSimplicialSet.{u}}
     (p : E ⟶ B) (hp : (MorphismProperty.monomorphisms SSet.{u}).rlp p.right) (b : A ⟶ B)
     {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ pointedLiftSpace p b) :
     ∃ c : T ⟶ pointedLiftSpace p b, j ≫ c = a := by
-  have hc := (isContractibleKan_iff_trivialKanFibration _).1
+  have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration _).1
     (pointedLiftSpace_isContractibleKan p hp b)
   have := hc.mem j inferInstance
   let sq : CommSq a j (terminal.from (pointedLiftSpace p b)) (terminal.from T) :=

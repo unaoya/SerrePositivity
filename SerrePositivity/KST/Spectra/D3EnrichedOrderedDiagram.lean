@@ -23,16 +23,16 @@ variable {J : Type w} [Preorder J] {C : Type v} {D : Type z}
   (H : ∀ i j : J, i ≤ j → ∀ X Y : C,
     (X ⟶[SSet] Y) ⟶ ((F i).obj X ⟶[SSet] (F j).obj Y))
 
-def obj (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) : D := (F X.position).obj X.val
+def obj (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) : D := (F X.position).obj X.val
 
-def map (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.hom X Y ⟶ (obj F X ⟶[SSet] obj F Y) := by
+def map (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.hom X Y ⟶ (obj F X ⟶[SSet] obj F Y) := by
   classical
   exact if h : X.position ≤ Y.position then snd _ _ ≫ H _ _ h X.val Y.val
-    else _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.eliminateHom X Y h _
+    else _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.eliminateHom X Y h _
 
 @[simp]
-lemma map_app (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) (d : SimplexCategoryᵒᵖ)
-    (p : (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness J X.position Y.position : SSet.{u}).obj d)
+lemma map_app (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) (d : SimplexCategoryᵒᵖ)
+    (p : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.orderWitness J X.position Y.position : SSet.{u}).obj d)
     (f : (X.val ⟶[SSet] Y.val).obj d) :
     (map F H X Y).app d (p, f) = (H _ _ p.down.down X.val Y.val).app d f := by
   classical
@@ -45,7 +45,7 @@ variable (hi : ∀ (i : J) (X Y : C), H i i le_rfl X Y = (F i).map X Y)
       (H i j h X Y ⊗ₘ H j k h' Y Z) ≫ eComp SSet ((F i).obj X) ((F j).obj Y) ((F k).obj Z))
 
 include hi in
-lemma map_id (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.identity X ≫ map F H X X = eId SSet (obj F X) := by
+lemma map_id (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.identity X ≫ map F H X X = eId SSet (obj F X) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -55,8 +55,8 @@ lemma map_id (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedC
   exact ConcreteCategory.congr_hom (NatTrans.congr_app ((F X.position).map_id X.val) d) PUnit.unit
 
 include hc in
-lemma map_comp (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) :
-    _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.composition X Y Z ≫ map F H X Z =
+lemma map_comp (X Y Z : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.composition X Y Z ≫ map F H X Z =
       (map F H X Y ⊗ₘ map F H Y Z) ≫ eComp SSet (obj F X) (obj F Y) (obj F Z) := by
   apply SSet.hom_ext
   intro d
@@ -75,7 +75,7 @@ lemma map_comp (X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOr
     (hc _ _ _ p.down.down q.down.down X.val Y.val Z.val) d) fg
 
 include hi hc in
-def functor : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) D where
+def functor : EnrichedFunctor SSet.{u} (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) D where
   obj := obj F
   map := map F H
   map_id := map_id F H hi
@@ -91,7 +91,7 @@ lemma stage (i : J) :
   intro d
   apply ConcreteCategory.hom_ext
   intro f
-  change (map F H (⟨i, X⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) (⟨i, Y⟩ : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C)).app d (⟨⟨le_rfl⟩⟩, f) = _
+  change (map F H (⟨i, X⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) (⟨i, Y⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C)).app d (⟨⟨le_rfl⟩⟩, f) = _
   rw [map_app, hi]
   rfl
 

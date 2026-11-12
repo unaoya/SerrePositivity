@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FinalHornMissingVertices
-public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PrismLastContraction
 
 /-!
 概要：最終外ホーンを最後の頂点へ収縮し、末尾二点上の垂直辺を保持する。
@@ -20,16 +20,16 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 def finalHornLastVertex (n : ℕ) : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) _⦋0⦌ :=
-  ⟨stdSimplex.obj₀Equiv.symm (Fin.last (n + 2)), vertex_mem_horn n _ _⟩
+  ⟨stdSimplex.obj₀Equiv.symm (Fin.last (n + 2)), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertex_mem_horn n _ _⟩
 
 def finalHornPenultimateVertex (n : ℕ) : (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) _⦋0⦌ :=
-  ⟨stdSimplex.obj₀Equiv.symm ((Fin.last (n + 1)).castSucc), vertex_mem_horn n _ _⟩
+  ⟨stdSimplex.obj₀Equiv.symm ((Fin.last (n + 1)).castSucc), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertex_mem_horn n _ _⟩
 
 def finalHornLastContraction (n : ℕ) :
     (Δ[1] : SSet.{u}) ⊗ (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ⟶
       (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) :=
   Subcomplex.lift ((Δ[1] ◁ (horn (n + 2) (Fin.last (n + 2))).ι) ≫
-    prismLastContraction (n + 2)) (by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction (n + 2)) (by
       rintro ⟨⟨d⟩⟩ _ ⟨⟨t, s⟩, rfl⟩
       rw [mem_horn_iff_notMem_range]
       obtain ⟨j, hj, hjr⟩ := (mem_horn_iff_notMem_range s.val (Fin.last (n + 2))).mp s.property
@@ -42,10 +42,10 @@ def finalHornLastContraction (n : ℕ) :
 
 lemma finalHornLastContraction_inclusion (n : ℕ) :
     finalHornLastContraction.{u} n ≫ (horn (n + 2) (Fin.last (n + 2))).ι =
-      (Δ[1] ◁ (horn (n + 2) (Fin.last (n + 2))).ι) ≫ prismLastContraction (n + 2) := rfl
+      (Δ[1] ◁ (horn (n + 2) (Fin.last (n + 2))).ι) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction (n + 2) := rfl
 
 lemma finalHornLastContraction_zero (n : ℕ) :
-    prismEndpoint 0 (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ≫
       finalHornLastContraction n = 𝟙 _ := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -57,7 +57,7 @@ lemma finalHornLastContraction_zero (n : ℕ) :
   rfl
 
 lemma finalHornLastContraction_one (n : ℕ) :
-    prismEndpoint 1 (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (horn (n + 2) (Fin.last (n + 2)) : SSet.{u}) ≫
       finalHornLastContraction n = SSet.const (finalHornLastVertex n) := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -71,7 +71,7 @@ lemma finalHornLastContraction_one (n : ℕ) :
 lemma finalHornLastContraction_penultimate_edge (n : ℕ) :
     (finalHornLastContraction n).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})),
-        PinchedHom.constant (finalHornPenultimateVertex n) 1) = finalHornEdge n := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (finalHornPenultimateVertex n) 1) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge n := by
   apply Subtype.ext
   apply stdSimplex.ext
   intro i
@@ -80,8 +80,8 @@ lemma finalHornLastContraction_penultimate_edge (n : ℕ) :
 lemma finalHornLastContraction_last_edge (n : ℕ) :
     (finalHornLastContraction n).app (Opposite.op ⦋1⦌)
       (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})),
-        PinchedHom.constant (finalHornLastVertex n) 1) =
-          PinchedHom.constant (finalHornLastVertex n) 1 := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (finalHornLastVertex n) 1) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (finalHornLastVertex n) 1 := by
   apply Subtype.ext
   apply stdSimplex.ext
   intro i

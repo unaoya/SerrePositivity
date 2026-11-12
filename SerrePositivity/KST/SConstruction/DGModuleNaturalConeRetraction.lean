@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 private lemma coneCochainZeroSnd {R : Type u} [CommRing R] {A B C E : Complex R}
     (f : A ⟶ B) (g : C ⟶ E) {n : ℤ}
     (a : Homogeneous A C n) (b : Homogeneous B E n) :
@@ -46,7 +46,7 @@ lemma dgGluingModuleConeElement_zero_snd {M N P Q : ModuleCategory R D}
   exact coneCochainZeroSnd _ _ _ _
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 

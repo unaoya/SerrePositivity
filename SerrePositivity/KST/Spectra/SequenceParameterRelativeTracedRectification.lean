@@ -74,7 +74,7 @@ def relativeTracedParameterEvaluationInterval (n : ℕ) :
         (PointedObject.toPoint (PointedObject.basedHom (X.level n).space (Y.level n).space))
         (PointedMapping.transpose (f n))
         (rectifyParameterRelativeTraced X Y j c f hb h ≫ pointedEvaluation X Y n) //
-      P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j
+      P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j
         (PointedObject.basedHom (X.level n).space (Y.level n).space)).right =
           SSet.const (PointedMapping.familyVertex (c ≫ pointedEvaluation X Y n)) } := by
   let P := relativeTracedParameterComparison X Y j c f hb h n

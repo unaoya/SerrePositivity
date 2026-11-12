@@ -3,10 +3,10 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
-public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
-public import SerrePositivity.InfinityCategories.Derived.Stability
-public import SerrePositivity.InfinityCategories.Stable.Loop
-public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Loop
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
 
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology}.lean、drafts/DerivedGeneral/Truncation.lean、
 -- drafts/A1/HodgeTateComparison.lean（Thm 6.3）、drafts/Shared/DeRhamPolynomial.lean、drafts/A7/AnimatedDomain.lean を import する。
@@ -42,7 +42,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity
 open SerrePositivity.BhattScholze.Perfectoidization.Derived
 attribute [local instance] HasDerivedCategory.standard

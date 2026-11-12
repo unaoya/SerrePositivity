@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-!
 概要：元の coherent nerve と標準単体の積を、順序付き円柱の nerve へ組み合わせる。
@@ -25,7 +25,7 @@ variable {C : Type v} [EnrichedCategory SSet.{u} C]
 /-- thickening の path は、単体の順序写像で選んだ段の順序の証明を与える。 -/
 def pathOrderMap {n : ℕ} (t : Fin (n + 1) →o J)
     (X Y : SimplicialThickening (ULift.{u} (Fin (n + 1)))) :
-    (X ⟶[SSet] Y) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.orderWitness J (t X.as.down) (t Y.as.down) where
+    (X ⟶[SSet] Y) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.orderWitness J (t X.as.down) (t Y.as.down) where
   app _ := ↾fun P ↦ by
     have h : X.as ≤ Y.as := Path.le (P.obj 0)
     exact ⟨⟨t.monotone h⟩⟩
@@ -37,7 +37,7 @@ def pathOrderMap {n : ℕ} (t : Fin (n + 1) →o J)
 /-- 単体の順序写像と元の豊穣図式を組み合わせる。 -/
 def simplexPair {n : ℕ} (t : Fin (n + 1) →o J)
     (F : EnrichedFunctor SSet.{u} (SimplicialThickening (ULift.{u} (Fin (n + 1)))) C) :
-    EnrichedFunctor SSet.{u} (SimplicialThickening (ULift.{u} (Fin (n + 1)))) (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) where
+    EnrichedFunctor SSet.{u} (SimplicialThickening (ULift.{u} (Fin (n + 1)))) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) where
   obj X := ⟨t X.as.down, F.obj X⟩
   map X Y := lift (pathOrderMap t X Y) (F.map X Y)
   map_id X := by
@@ -60,7 +60,7 @@ def simplexPair {n : ℕ} (t : Fin (n + 1) →o J)
       exact h
 
 /-- 元の豊穣圏から指定した段への包含。 -/
-def stageInclusion (i : J) : EnrichedFunctor SSet.{u} C (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J C) where
+def stageInclusion (i : J) : EnrichedFunctor SSet.{u} C (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J C) where
   obj X := ⟨i, X⟩
   map X Y := {
     app _ := ↾fun f ↦ (⟨⟨le_rfl⟩⟩, f)
@@ -84,7 +84,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 元の nerve と標準単体から、順序付き円柱の nerve への実際の pairing。 -/
 def nerveSimplexFamily (m : ℕ) :
     SimplicialNerve C ⊗ (Δ[m] : SSet.{max u v}) ⟶
-      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin (m + 1)) C) where
+      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin (m + 1)) C) where
   app _ := ↾fun ⟨F, t⟩ ↦ simplexPair (stdSimplex.asOrderHom t) F
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext
@@ -102,7 +102,7 @@ def nerveSimplexFamily (m : ℕ) :
 /-- 標準単体の指定頂点での制限は、元の豊穣圏のその段への包含。 -/
 lemma nerveSimplexFamily_vertex (m : ℕ) (i : Fin (m + 1)) :
     lift (𝟙 (SimplicialNerve C)) (SSet.const (stdSimplex.obj₀Equiv.symm i)) ≫
-        nerveSimplexFamily m = coherentNerveMap (stageInclusion (C := C) i) := by
+        nerveSimplexFamily m = _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stageInclusion (C := C) i) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

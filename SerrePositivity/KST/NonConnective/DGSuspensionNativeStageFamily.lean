@@ -40,11 +40,11 @@ def dgSuspensionNativeStageFamily (n : ℕ) :
 theorem dgSuspensionNativeStageFamily_vertex
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
     (dgSuspensionNativeStageFamily R s a n).app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex A) = dgSuspensionNativeSequenceVertex R s A n := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) = dgSuspensionNativeSequenceVertex R s A n := by
   change ((End.of OmegaSpectrum.nativeLoop ^ n).asHom).app (Opposite.op ⦋0⦌)
     ((dgKInputK R).app (Opposite.op ⦋0⦌)
       ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex A))) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A))) = _
   rw [DGSuspensionNativeActionInput.iteration_vertex, dgKInputK_vertex]
   rfl
 
@@ -55,14 +55,14 @@ theorem dgSuspensionNativeStageFamily_vertex
 theorem dgSuspensionNativeStageFamily_edge
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) (n : ℕ) :
     (dgSuspensionNativeStageFamily R s a n).app (Opposite.op ⦋1⦌)
-      (coherentNerveEdge f).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge =
     ((End.of OmegaSpectrum.nativeLoop ^ n).asHom).app (Opposite.op ⦋1⦌)
-      (coherentNerveEdge (dgKInputSpectrumMap R
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSpectrumMap R
         (dgSuspensionIterationMap R s a.data f n))).edge := by
   change ((End.of OmegaSpectrum.nativeLoop ^ n).asHom).app (Opposite.op ⦋1⦌)
     ((dgKInputK R).app (Opposite.op ⦋1⦌)
       ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge)) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)) = _
   rw [DGSuspensionNativeActionInput.iteration_edge, dgKInputK_edge]
 
 /-- 概要：明示全高次作用に条件付きで、反復懸垂の次段は同じ元の作用の前合成でも得られる。

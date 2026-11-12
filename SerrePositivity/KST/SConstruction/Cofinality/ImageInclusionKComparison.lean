@@ -25,7 +25,7 @@ set_option maxHeartbeats 800000 in
 使われ方：fiber 比較から得た正次数の結論の輸送。 -/
 theorem completionK_bijective_iff_imageInclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (j : ℤ) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (j : ℤ) :
     Function.Bijective (OmegaSpectrum.homotopyMap
       (kSpectrumMap (((multiSEndofunctor r).obj ι).map f)) j) ↔
       Function.Bijective (OmegaSpectrum.homotopyMap
@@ -49,7 +49,7 @@ set_option maxHeartbeats 800000 in
 使われ方：fiber 比較から得た零次単射性の輸送。 -/
 theorem completionK_injective_iff_imageInclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (j : ℤ) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (j : ℤ) :
     Function.Injective (OmegaSpectrum.homotopyMap
       (kSpectrumMap (((multiSEndofunctor r).obj ι).map f)) j) ↔
       Function.Injective (OmegaSpectrum.homotopyMap

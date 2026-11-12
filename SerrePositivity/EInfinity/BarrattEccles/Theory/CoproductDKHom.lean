@@ -39,9 +39,9 @@ def cAlgCoprodHomRestriction :
       (show CAlgSimplicialCategory A from (cofibrantAlgebraDKCoprodWith A Y).obj X) Z ⟶
       SimplicialCategory.sHom X Z ⨯ SimplicialCategory.sHom Y Z :=
   prod.lift
-    (exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
       (cofibrantAlgebraDKCoprodInl A X Y)))
-    (exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
       (cofibrantAlgebraDKCoprodInr A X Y)))
 
 /-- 実際の Kan Hom の積比較は anodyne 局所化で同型。 -/
@@ -65,9 +65,9 @@ lemma cAlgCoprodHomRestriction_isIso :
     rw [Functor.map_comp]
     infer_instance
   let e := fun W => cAlgMappingSpaceComparisonIso A W Z
-  let f := exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
     (cofibrantAlgebraDKCoprodInl A X Y))
-  let g := exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose (cofibrantAlgebraRelativeCategory A) Z
     (cofibrantAlgebraDKCoprodInr A X Y))
   let f' := U.map (((mappingSpace A).map
     (coprod.inl : j.obj X ⟶ j.obj X ⨿ j.obj Y).op).app (j.obj Z))

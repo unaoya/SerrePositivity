@@ -23,44 +23,44 @@ local instance circleTetrahedronSpectrumSimplicialCategory :
 
 /-- 元の関手三単体を、元の Sp 頂点で評価した同じ三単体。 -/
 def circleEvaluationTetrahedronAt (z : Sp.{u} _⦋0⦌) : Sp.{u} _⦋3⦌ :=
-  SSet.yonedaEquiv (circleEvaluationTetrahedron ≫ evaluateFunctorAt z)
+  SSet.yonedaEquiv (circleEvaluationTetrahedron ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z)
 
 /-- 零番目の面は、元の参照零三角形の同じ頂点での評価。 -/
 lemma circleEvaluationTetrahedronAt_zero (z : Sp.{u} _⦋0⦌) :
     Sp.{u}.δ 0 (circleEvaluationTetrahedronAt z) =
-      SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ evaluateFunctorAt z) := by
+      SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) := by
   rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
     ← Category.assoc, circleEvaluationTetrahedron_zero]
 
 /-- 頂点で評価した退化零三角形も、元の初辺の始点退化そのもの。 -/
 lemma circleZeroDegenerateTriangleAt (z : Sp.{u} _⦋0⦌) :
-    SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ evaluateFunctorAt z) =
+    SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) =
       Sp.{u}.σ 0 (SSet.yonedaEquiv
-        ((stdSimplex.δ (2 : Fin 3) ≫ circleZeroFunctorTriangle) ≫ evaluateFunctorAt z)) := by
+        ((stdSimplex.δ (2 : Fin 3) ≫ circleZeroFunctorTriangle) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z)) := by
   rw [circleZeroDegenerateTriangle, Category.assoc, Category.assoc,
     stdSimplex.yonedaEquiv_σ_comp]
 
 /-- 三番目の面は、元の退化零三角形の同じ頂点での評価。 -/
 lemma circleEvaluationTetrahedronAt_three (z : Sp.{u} _⦋0⦌) :
     Sp.{u}.δ 3 (circleEvaluationTetrahedronAt z) =
-      SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ evaluateFunctorAt z) := by
+      SSet.yonedaEquiv (circleZeroDegenerateTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) := by
   rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
     ← Category.assoc, circleEvaluationTetrahedron_three]
 
 /-- 一番目の面は、元の companion 三角形の同じ頂点での評価。 -/
 lemma circleEvaluationTetrahedronAt_one (z : Sp.{u} _⦋0⦌) :
     Sp.{u}.δ 1 (circleEvaluationTetrahedronAt z) =
-      SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ evaluateFunctorAt z) := by
+      SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) := by
   rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp, ← Category.assoc]
   rfl
 
 /-- 二番目の面は、元の普遍評価の生成 loop の coherent Hom 比較二単体そのもの。 -/
 lemma circleEvaluationTetrahedronAt_two (z : Sp.{u} _⦋0⦌) :
-    Sp.{u}.δ 2 (circleEvaluationTetrahedronAt z) = coherentHomComparisonSimplex
+    Sp.{u}.δ 2 (circleEvaluationTetrahedronAt z) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex
       ((circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val).edge) := by
   rw [circleEvaluationTetrahedronAt, ← stdSimplex.yonedaEquiv_δ_comp,
     ← Category.assoc, circleEvaluationTetrahedron_two,
-    circleEvaluationFunctorTriangle, curry_evaluateFunctorAt_vertex,
+    circleEvaluationFunctorTriangle, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex,
     nativeCircleEvaluationTriangleFamily_fiber]
   exact Equiv.apply_symm_apply _ _
 

@@ -29,12 +29,12 @@ lemma kanAdjointParameterBFComparison_unit_component (X Y : OmegaSpectrum.{u}) (
   let sourceHomKan : KanComplex
       (PointedObject.basedHom (X.level n).space
         ((OmegaSpectrum.signedLoopModel Y).level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let targetHomKan : KanComplex
       (PointedObject.basedHom (X.level n).space
         ((KanSequence.signedLoopTail Y.toKanSequence).level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  have hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism q.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  have hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism q.right :=
     KanSequence.replacementProjection_piIsomorphism (KanSequence.signedLoopTail Y.toKanSequence) n
   apply PointedMapping.componentOf_cancel_post_piIsomorphism
     (PointedObject.basedHomMap (X.level n).space q)
@@ -66,7 +66,7 @@ lemma kanAdjointParameterBFComparison_unit_homotopy (X Y : OmegaSpectrum.{u}) (n
   let coordinateKan : KanComplex
       (PointedObject.basedHom (X.level n).space
         ((OmegaSpectrum.signedLoopModel Y).level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).1
     (kanAdjointParameterBFComparison_unit_component X Y n)
 

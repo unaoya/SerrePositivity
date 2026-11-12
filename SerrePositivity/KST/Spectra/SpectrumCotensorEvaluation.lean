@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumCotensorPointedComparison
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedUnits
-public import SerrePositivity.InfinityCategories.Kan.HomTensorStrengthPoint
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeVertices
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrengthPoint
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices
 
 /-!
 概要：実際の BF cotensor の普遍評価と、それによる全 Hom 前合成を構成する。
@@ -50,7 +50,7 @@ lemma cotensorEvaluation_evaluation (A : PointedSimplicialSet.{u})
   dsimp only [RawSpectrumMapping.exchangeFamily]
   have hp := congrArg (fun f ↦
     (RawSpectrumMapping.pointedIdentity (cotensor A Y) ≫ f) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor A Y).level n).space A
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso ((cotensor A Y).level n).space A
         (Y.level n).space).hom)
     (RawSpectrumMapping.pointedPost_evaluation (cotensor A Y) (cotensorProjection A Y) n)
   apply hp.trans
@@ -58,9 +58,9 @@ lemma cotensorEvaluation_evaluation (A : PointedSimplicialSet.{u})
   let U := ((cotensor A Y).level n).space
   let V := (Y.level n).space
   let p : U ⟶ (ihom A).obj V := (cotensorProjection A Y).app n
-  change (curry' (𝟙 U) ≫ (ihom U).map p) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U A V).hom =
+  change (curry' (𝟙 U) ≫ (ihom U).map p) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso U A V).hom =
     curry' (curry ((β_ U A).hom ≫ uncurry p))
-  rw [curry'_ihom_map, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom]
+  rw [curry'_ihom_map, Category.id_comp, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom]
 
 /-- 普遍評価に全 Hom パラメータで前合成する射。 -/
 def cotensorEvaluationPrecomposition (X Y : OmegaSpectrum.{u})
@@ -86,7 +86,7 @@ lemma cotensorEvaluationPrecomposition_eq (X Y : OmegaSpectrum.{u})
     (RawSpectrumMapping.pointedComposition_identity X C)
   simp only [Category.assoc, Category.id_comp] at hu
   dsimp only [cotensorEvaluationPrecomposition]
-  rw [← Category.assoc, curry_natural_right, ← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.point,
+  rw [← Category.assoc, curry_natural_right, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrengthPoint.point,
     curry'_cotensorEvaluation]
   simp only [whiskerLeft_comp, Category.assoc]
   exact h.symm.trans hu
@@ -94,7 +94,7 @@ lemma cotensorEvaluationPrecomposition_eq (X Y : OmegaSpectrum.{u})
 /-- 普遍評価による前合成は実際の自明 Kan fibration。 -/
 lemma cotensorEvaluationPrecomposition_trivialKanFibration (X Y : OmegaSpectrum.{u})
     (A : PointedSimplicialSet.{u}) :
-    TrivialKanFibration (cotensorEvaluationPrecomposition X Y A).right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (cotensorEvaluationPrecomposition X Y A).right := by
   rw [cotensorEvaluationPrecomposition_eq]
   exact cotensorPointedMappingComparison_trivialKanFibration X Y A
 

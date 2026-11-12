@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputIndEquivalence
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFMorita
-public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.QCatEquivalence
 
 /-!
 概要：元の厳密 dg Morita 射の全族から回収した Indω 作用は実同値。
@@ -19,7 +19,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ全 native 族の dg 頂点は、元の固定 ν 射の指定 Ind 延長そのもの。 -/
@@ -27,10 +27,10 @@ theorem dgKInputIndNativeMap_eq_extension (f : A ⟶ B) :
     dgKInputIndNativeMap R A B f = dgKInputIndExtension R A B
       ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map
         (dgKInputNuMap R f).hom ≫
-          indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := by
-  change (functorVertexEquiv _ _).symm
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm
     ((dgKInputIndRestrictionEquivalence R A B).inv.app (Opposite.op ⦋0⦌)
-      (((ihom _).map (indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj)).app
+      (((ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj)).app
         (Opposite.op ⦋0⦌) ((dgKInputCompactNativeLiftedFamilyMap R A B).app
           (Opposite.op ⦋0⦌) (ULift.up (perfDGInputVertexEquiv R A B f))))).val = _
   rw [dgKInputCompactNativeLiftedFamilyMap_vertex]
@@ -39,15 +39,15 @@ theorem dgKInputIndNativeMap_eq_extension (f : A ⟶ B) :
 /-- 同じ元の厳密 dg Morita 射の固定 ν 作用は実同値。 -/
 theorem dgKInputNuMap_morita_isQCatEquivalence (f : A ⟶ B)
     [(quasiEquivalencePerfectExtension R A B f.down).IsEquivalence] :
-    IsQCatEquivalence (dgKInputNuMap R f).hom := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (dgKInputNuMap R f).hom := by
   rw [dgKInputNuMap_eq]
   exact (presentedPerfectDGBFMoritaStableEquivalence R f).toQCatEquivalence.isQCatEquivalence
 
 /-- 元の全 native 族の同じ Morita 頂点の実 Indω 作用は同値。 -/
 theorem dgKInputIndNativeMap_morita_isQCatEquivalence (f : A ⟶ B)
     [(quasiEquivalencePerfectExtension R A B f.down).IsEquivalence] :
-    IsQCatEquivalence (dgKInputIndNativeMap R A B f) := by
-  let h := IsQCatEquivalence.ulift.{max (u + 1) v, max (u + 1) v + 1}
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (dgKInputIndNativeMap R A B f) := by
+  let h := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{max (u + 1) v, max (u + 1) v + 1}
     (dgKInputNuMap_morita_isQCatEquivalence R A B f)
   rw [dgKInputIndNativeMap_eq_extension]
   exact (dgKInputIndEquivalence R A B h.choose).isQCatEquivalence

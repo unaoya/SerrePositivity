@@ -23,15 +23,15 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) (X : Paths C)
 
 def nativeUnitPoint (n : SimplexCategoryᵒᵖ) : (nativeSpace W X X).obj n :=
-  (colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩).app n PUnit.unit
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩).app n PUnit.unit
 
 lemma nativeUnitPoint_simplex {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
     (nativeSpace W X X).map θ (nativeUnitPoint W X n) = nativeUnitPoint W X m :=
   (congrArg (fun k => k PUnit.unit)
-    ((colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩).naturality θ)).symm
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩).naturality θ)).symm
 
 lemma inclusion_unitPoint (n : SimplexCategoryᵒᵖ) :
-    (inclusion W X X).app n (nativeUnitPoint W X n) = (colimitUnit W.paths X).app n PUnit.unit :=
-  Relative.colimitUnit_point (MarkedZigzag.inclusion W.paths) ⟨X⟩ n
+    (inclusion W X X).app n (nativeUnitPoint W X n) = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X).app n PUnit.unit :=
+  Relative.colimitUnit_point (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedZigzagLift.inclusion W.paths) ⟨X⟩ n
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked

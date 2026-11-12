@@ -20,7 +20,7 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
   {T U V : SSet.{u}} (j : T ⟶ U) [Mono j] (k : U ⟶ V)
   (f : ∀ n, V ⟶ (PointedObject.basedHom (X.level n).space (Y.level n).space).right)
   (H : ∀ n, SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step X Y n))
   (B : TracedSequenceBoundaryData X Y j (fun n => k ≫ f n)
     (tracedSequenceBoundaryCompatibility X Y k f H))

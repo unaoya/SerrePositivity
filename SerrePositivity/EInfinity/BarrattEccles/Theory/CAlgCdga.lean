@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoefficientMonoidAction
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDiscreteDerivedComparison
 public import SerrePositivity.EInfinity.Interface.StrictInputs
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 import all SerrePositivity.EInfinity.Interface.StrictInputs
 
 /-!
@@ -44,7 +44,7 @@ def barrattEcclesOfCdga : nerve (CommMon (Complex A)) ⟶ CAlg_R A :=
 
 /-- 厳密な可換 dg 代数の底は元の複体の導来像。 -/
 def barrattEcclesOfCdga_forget :
-    FunctorIso (barrattEcclesOfCdga A ≫ cAlgForgetDerived A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (barrattEcclesOfCdga A ≫ cAlgForgetDerived A)
       (nerveMap (CommMon.forget (Complex A)) ≫ ComplexLimits.complexOrdinaryDerivedSource A) := by
   let F := cdgaAlgebraFunctor A
   let U := Operad.Algebra.forget (operad A)
@@ -58,7 +58,7 @@ def barrattEcclesOfCdga_forget :
     intro i j g
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
     rfl
-  apply F2.functorIsoOfEq ((algebraCAlgSource_underlyingDerivedIso A).precomp (nerveMap F))
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((algebraCAlgSource_underlyingDerivedIso A).precomp (nerveMap F))
   · simp only [barrattEcclesOfCdga, Category.assoc, F]
   · rw [algebraUnderlyingDerivedSource, ← Category.assoc, h]
 
@@ -82,12 +82,12 @@ theorem cdgaDiscreteNerve_eq :
 
 /-- 次数零の cdga の像は元の離散代数の埋め込みに一致する。 -/
 def barrattEcclesOfCdga_discrete :
-    FunctorIso (nerveMap (discreteCDGA A) ≫ barrattEcclesOfCdga A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (discreteCDGA A) ≫ barrattEcclesOfCdga A)
       (discreteCAlgUnderEmbedding A) := by
   have h : nerveMap (discreteCDGA A) ≫ barrattEcclesOfCdga A =
       discreteCAlgUnderEmbedding A := by
     simp only [barrattEcclesOfCdga, discreteCAlgUnderEmbedding, discreteCAlgEmbedding,
       ← Category.assoc, cdgaDiscreteNerve_eq]
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h)
+  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) h)
 
 end SerrePositivity.EInfinity.BarrattEccles

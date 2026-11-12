@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RetractChainFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarRetractTransfer
-public import SerrePositivity.InfinityCategories.Simplicial.ParameterCube
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarChainFamily
@@ -67,50 +67,50 @@ lemma family_substitute {T U : SSet.{max u v}} {b c : Cᵒᵖ × C}
 
 lemma family_zero_face {T : SSet.{max u v}} {a b c d e : Cᵒᵖ × C}
     (q : chain hcof hfib T a b) (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
-    (g : ambient hcof hfib c ⟶ ambient hcof hfib d) (t : T ⟶ RetractChainFamily.interval)
+    (g : ambient hcof hfib c ⟶ ambient hcof hfib d) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)
     (r : chain hcof hfib T d e) :
-    family hcof hfib (((q.snoc f (RetractChainFamily.zero T)).snoc g t).append r) =
+    family hcof hfib (((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)).snoc g t).append r) =
       family hcof hfib ((q.snoc (f ≫ g) t).append r) :=
   RetractChainFamily.zero_face _ _ _ _ _ q f g t r
 
 lemma family_one_face {T : SSet.{max u v}} {a b c d : Cᵒᵖ × C}
     (q : chain hcof hfib T a b) (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
     (r : chain hcof hfib T c d) :
-    family hcof hfib ((q.snoc f (RetractChainFamily.one T)).append r) =
+    family hcof hfib ((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T)).append r) =
       ParameterComposition.comp
-        (family hcof hfib (q.snoc f (RetractChainFamily.zero T))) (family hcof hfib r) :=
+        (family hcof hfib (q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T))) (family hcof hfib r) :=
   RetractChainFamily.one_face _ _ _ _ _ (contraction_over hcof hfib) q f r
 
 def smallFamily {T : SSet.{v}} {b c : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) b c) :
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) b c) :
     small hcof hfib b ⊗ T ⟶ small hcof hfib c :=
-  UniverseLift.lowerTensor (family hcof hfib q)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (family hcof hfib q)
 
 lemma smallFamily_substitute {T U : SSet.{v}} {b c : Cᵒᵖ × C}
-    (j : U ⟶ T) (q : chain hcof hfib (UniverseLift.obj.{max u v} T) b c) :
-    smallFamily hcof hfib (q.substitute (UniverseLift.map j)) =
+    (j : U ⟶ T) (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) b c) :
+    smallFamily hcof hfib (q.substitute (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map j)) =
       ParameterComposition.substitute j (smallFamily hcof hfib q) := by
   rw [smallFamily, family_substitute]
   ext n x
   rfl
 
 lemma smallFamily_zero_face {T : SSet.{v}} {a b c d e : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a b)
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b)
     (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
     (g : ambient hcof hfib c ⟶ ambient hcof hfib d)
-    (t : UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) d e) :
-    smallFamily hcof hfib (((q.snoc f (RetractChainFamily.zero _)).snoc g t).append r) =
+    (t : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) d e) :
+    smallFamily hcof hfib (((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero _)).snoc g t).append r) =
       smallFamily hcof hfib ((q.snoc (f ≫ g) t).append r) :=
-  congrArg UniverseLift.lowerTensor (family_zero_face hcof hfib q f g t r)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (family_zero_face hcof hfib q f g t r)
 
 lemma smallFamily_one_face {T : SSet.{v}} {a b c d : Cᵒᵖ × C}
-    (q : chain hcof hfib (UniverseLift.obj.{max u v} T) a b)
+    (q : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a b)
     (f : ambient hcof hfib b ⟶ ambient hcof hfib c)
-    (r : chain hcof hfib (UniverseLift.obj.{max u v} T) c d) :
-    smallFamily hcof hfib ((q.snoc f (RetractChainFamily.one _)).append r) =
+    (r : chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) c d) :
+    smallFamily hcof hfib ((q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one _)).append r) =
       ParameterComposition.comp
-        (smallFamily hcof hfib (q.snoc f (RetractChainFamily.zero _)))
+        (smallFamily hcof hfib (q.snoc f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero _)))
         (smallFamily hcof hfib r) := by
   rw [smallFamily, family_one_face]
   ext n x
@@ -119,52 +119,52 @@ lemma smallFamily_one_face {T : SSet.{v}} {a b c d : Cᵒᵖ × C}
 section Parameters
 omit [HomotopicalAlgebra.ModelCategory SSet.{v}]
 
-def liftParameter {T : SSet.{v}} (t : T ⟶ RetractChainFamily.interval) :
-    UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval :=
-  UniverseLift.map t ≫ (UniverseLift.stdIso 1).hom
+def liftParameter {T : SSet.{v}} (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map t ≫ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.stdIso 1).hom
 
 lemma liftParameter_zero (T : SSet.{v}) :
-    liftParameter.{v, u} (RetractChainFamily.zero T) =
-      RetractChainFamily.zero (UniverseLift.obj.{max u v} T) := by
+    liftParameter.{v, u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) := by
   ext n x
   rfl
 
 lemma liftParameter_one (T : SSet.{v}) :
-    liftParameter.{v, u} (RetractChainFamily.one T) =
-      RetractChainFamily.one (UniverseLift.obj.{max u v} T) := by
+    liftParameter.{v, u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) := by
   ext n x
   rfl
 
 lemma liftParameter_comp {T U : SSet.{v}} (j : U ⟶ T)
-    (t : T ⟶ RetractChainFamily.interval) :
-    UniverseLift.map.{max u v} j ≫ liftParameter.{v, u} t = liftParameter.{v, u} (j ≫ t) := by
+    (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} j ≫ liftParameter.{v, u} t = liftParameter.{v, u} (j ≫ t) := by
   ext n x
   rfl
 
-def cubeParameter (n k : ℕ) : UniverseLift.obj.{max u v} (ParameterCube.obj.{v} n) ⟶
-    RetractChainFamily.interval :=
-  liftParameter (ParameterCube.coordinateOrZero n k)
+def cubeParameter (n k : ℕ) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj.{v} n) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval :=
+  liftParameter (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.coordinateOrZero n k)
 
 lemma lifted_face_coordinate_same {n : ℕ} (j : Fin (n + 1)) (ε : Bool) :
-    UniverseLift.map.{max u v} (ParameterCube.face j ε) ≫
-        liftParameter.{v, u} (ParameterCube.coordinate j) =
-      if ε then RetractChainFamily.one (UniverseLift.obj.{max u v} (ParameterCube.obj n))
-        else RetractChainFamily.zero (UniverseLift.obj.{max u v} (ParameterCube.obj n)) := by
-  rw [liftParameter_comp, ParameterCube.face_coordinate_same]
-  cases ε <;> simp only [ParameterCube.endpoint, Bool.false_eq_true, ↓reduceIte,
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face j ε) ≫
+        liftParameter.{v, u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.coordinate j) =
+      if ε then _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj n))
+        else _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj n)) := by
+  rw [liftParameter_comp, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face_coordinate_same]
+  cases ε <;> simp only [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.endpoint, Bool.false_eq_true, ↓reduceIte,
     liftParameter_zero, liftParameter_one]
 
 lemma lifted_face_coordinate_other {n : ℕ} (j : Fin (n + 1)) (ε : Bool) (i : Fin n) :
-    UniverseLift.map.{max u v} (ParameterCube.face j ε) ≫
-        liftParameter.{v, u} (ParameterCube.coordinate (j.succAbove i)) =
-      liftParameter.{v, u} (ParameterCube.coordinate i) := by
-  rw [liftParameter_comp, ParameterCube.face_coordinate_other]
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face j ε) ≫
+        liftParameter.{v, u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.coordinate (j.succAbove i)) =
+      liftParameter.{v, u} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.coordinate i) := by
+  rw [liftParameter_comp, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face_coordinate_other]
 
 end Parameters
 
 def cubeChain (b : ℕ → Cᵒᵖ × C)
     (f : ∀ k, ambient hcof hfib (b k) ⟶ ambient hcof hfib (b (k + 1))) (n : ℕ) :
-    chain hcof hfib (UniverseLift.obj.{max u v} (ParameterCube.obj.{v} n)) (b 0) (b (n + 1)) :=
+    chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj.{v} n)) (b 0) (b (n + 1)) :=
   RetractChainFamily.Chain.sequence b f (cubeParameter n) (n + 1)
 
 lemma cubeChain_length (b : ℕ → Cᵒᵖ × C)
@@ -174,13 +174,13 @@ lemma cubeChain_length (b : ℕ → Cᵒᵖ × C)
 
 def cubeFamily (b : ℕ → Cᵒᵖ × C)
     (f : ∀ k, ambient hcof hfib (b k) ⟶ ambient hcof hfib (b (k + 1))) (n : ℕ) :
-    small hcof hfib (b 0) ⊗ ParameterCube.obj.{v} n ⟶ small hcof hfib (b (n + 1)) :=
+    small hcof hfib (b 0) ⊗ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj.{v} n ⟶ small hcof hfib (b (n + 1)) :=
   smallFamily hcof hfib (cubeChain hcof hfib b f n)
 
 lemma cubeFamily_zero (b : ℕ → Cᵒᵖ × C)
     (f : ∀ k, ambient hcof hfib (b k) ⟶ ambient hcof hfib (b (k + 1))) :
     cubeFamily hcof hfib b f 0 =
-      fst (small hcof hfib (b 0)) (ParameterCube.obj 0) ≫
+      fst (small hcof hfib (b 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.obj 0) ≫
         smallTransferArrow hcof hfib (f 0) := by
   unfold cubeFamily smallFamily family cubeChain
   simp only [RetractChainFamily.Chain.sequence]
@@ -193,7 +193,7 @@ lemma cubeFamily_zero (b : ℕ → Cᵒᵖ × C)
 lemma cubeFamily_one (b : ℕ → Cᵒᵖ × C)
     (f : ∀ k, ambient hcof hfib (b k) ⟶ ambient hcof hfib (b (k + 1))) :
     cubeFamily hcof hfib b f 1 =
-      small hcof hfib (b 0) ◁ ParameterCube.coordinate (0 : Fin 1) ≫
+      small hcof hfib (b 0) ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.coordinate (0 : Fin 1) ≫
         (smallTransferCompositionHomotopy hcof hfib (f 0) (f 1)).h := by
   unfold cubeFamily smallFamily family cubeChain
   simp only [RetractChainFamily.Chain.sequence]
@@ -206,9 +206,9 @@ lemma cubeFamily_one (b : ℕ → Cᵒᵖ × C)
 lemma cubeFamily_face (b : ℕ → Cᵒᵖ × C)
     (f : ∀ k, ambient hcof hfib (b k) ⟶ ambient hcof hfib (b (k + 1)))
     {n : ℕ} (j : Fin (n + 1)) (ε : Bool) :
-    small hcof hfib (b 0) ◁ ParameterCube.face j ε ≫ cubeFamily hcof hfib b f (n + 1) =
+    small hcof hfib (b 0) ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face j ε ≫ cubeFamily hcof hfib b f (n + 1) =
       smallFamily hcof hfib (RetractChainFamily.Chain.sequence b f
-        (fun k => UniverseLift.map (ParameterCube.face j ε) ≫ cubeParameter (n + 1) k)
+        (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ParameterCube.face j ε) ≫ cubeParameter (n + 1) k)
         (n + 2)) := by
   change ParameterComposition.substitute _ (smallFamily hcof hfib _) = _
   rw [← smallFamily_substitute]

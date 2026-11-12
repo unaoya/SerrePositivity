@@ -29,7 +29,7 @@ def mappingFibrantRightLeg (Y : (operad A).Algebra) : algebraRightSpanBase A Y :
   let := modelCategory A
   exact MorphismProperty.Under.mk ⊤ ((fibrantTargetComparison
     (mappingFibrantFactorization A)).app Y)
-    (FrameHom.fibrantTargetComparison_trivialCofibration (mappingFibrantFactorization A) Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantTargetComparison_trivialCofibration (mappingFibrantFactorization A) Y)
 
 /-- 同じ Map^h から、元の右脚の全 Hom 図式の bar への値の包含。 -/
 def mappingSpaceBarInclusion (X Y : (operad A).Algebra) :

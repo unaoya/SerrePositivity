@@ -23,26 +23,26 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
 /-- 元の隣接二列の合成による未縮約対象。 -/
-def algebraHammockMergeRaw {k : ℕ} (d : Fin (k + 2) → Hammock.Direction)
+def algebraHammockMergeRaw {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : Hammock.Word) X Y).obj n) :
+    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n) :
     algebraHammockRaw A X Y n :=
-  ⟨Hammock.Word.mergeTarget d p,
-    (algebraHammockGraphMap A (Hammock.Word.mergeMap d p hp) X Y).app n τ⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p,
+    (algebraHammockGraphMap A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp) X Y).app n τ⟩
 
-lemma algebraHammockMergeRaw_reduction {k : ℕ} (d : Fin (k + 2) → Hammock.Direction)
+lemma algebraHammockMergeRaw_reduction {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : Hammock.Word) X Y).obj n) :
+    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n) :
     algebraHammockRawReduction A X Y ⟨⟨k + 2, d⟩, τ⟩
       (algebraHammockMergeRaw A X Y d p hp τ) := by
   let := modelCategory A
   exact Hammock.Reduction.merge d p hp τ
 
 /-- 同じ位置・接した位置・離れた位置の合成を全次数で同時に扱う。 -/
-lemma algebraHammockMergeMerge_join {k : ℕ} (d : Fin (k + 2) → Hammock.Direction)
+lemma algebraHammockMergeMerge_join {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p q : Fin (k + 1)) (hp : d p.castSucc = d p.succ) (hq : d q.castSucc = d q.succ)
     {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : Hammock.Word) X Y).obj n) :
+    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n) :
     ∃ r : algebraHammockRaw A X Y n,
       Relation.ReflGen (algebraHammockRawReduction A X Y)
         (algebraHammockMergeRaw A X Y d p hp τ) r ∧

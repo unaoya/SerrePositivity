@@ -19,7 +19,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.Projective
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w,w} C := Smith.locallyPresentable_hasColimits (C := C)
 
@@ -37,7 +37,7 @@ lemma freeGenerators_cofibrations (l : K) :
   cases hf with
   | @map X Y f hf =>
     have h : cofibrations C f :=
-      (I.le_llp_rlp.trans (ModelGeneration.cofibrations_eq_generated I J).symm.le) _ hf
+      (I.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J).symm.le) _ hf
     have : Cofibration f := ⟨h⟩
     exact free_map_cofibration K k l f
 
@@ -55,7 +55,7 @@ lemma cofibrations_le_objectwise :
   let := modelCategory K I J
   have := modelCategory_generated K I J
   change cofibrations (K ⥤ C) ≤ objectwise K (cofibrations C)
-  rw [ModelGeneration.cofibrations_eq_generated (generators K I) (generators K J),
+  rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated (generators K I) (generators K J),
     MorphismProperty.llp_rlp_of_hasSmallObjectArgument]
   refine (MorphismProperty.retracts_le_iff
     (P := Quillen.relativeCells.{w} (generators K I))

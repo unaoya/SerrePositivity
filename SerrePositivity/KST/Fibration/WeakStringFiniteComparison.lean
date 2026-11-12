@@ -39,21 +39,21 @@ lemma consecutiveWeakStringEdge_one (i : Fin 1) :
   omega
 
 /-- 全連続辺の元の cofiber 実現射を有限積に束ねる。 -/
-def weakStringConsecutiveCofibers {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+def weakStringConsecutiveCofibers {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     (multiRealizationFunctor r).obj (weakStringModel q ⦋n⦌) ⟶
       ∏ᶜ (fun _ : Fin n =>
         (multiRealizationFunctor r).obj (closedStableModel (kernelClosedPredicate q))) :=
   Pi.lift (fun i => weakStringCofiberMultiMap q (consecutiveWeakStringEdge n i) r)
 
 /-- 各積射影は元の指定連続辺の cofiber 射を厳密に回収する。 -/
-lemma weakStringConsecutiveCofibers_projection {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) (i : Fin n) :
+lemma weakStringConsecutiveCofibers_projection {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) (i : Fin n) :
     weakStringConsecutiveCofibers q n r ≫ Pi.π _ i =
       weakStringCofiberMultiMap q (consecutiveWeakStringEdge n i) r :=
   Pi.lift_comp_π _ _
 
 /-- 初期頂点と全ての連続 cofiber による、元の有限列全体の比較。 -/
-def weakStringFiniteComparison {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+def weakStringFiniteComparison {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     (multiRealizationFunctor r).obj (weakStringModel q ⦋n⦌) ⟶
       (multiRealizationFunctor r).obj
         (closedStableModel (ClosedStablePredicate.top (sInputModel B))) ⊗
@@ -63,12 +63,12 @@ def weakStringFiniteComparison {B C : _root_.SerrePositivity.InfinityCategories.
     (weakStringConsecutiveCofibers q n r)
 
 /-- 比較の第一成分は、元の初期頂点の完全な評価の実現射。 -/
-lemma weakStringFiniteComparison_initial {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringFiniteComparison_initial {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n r : ℕ) : weakStringFiniteComparison q n r ≫ fst _ _ =
       (multiRealizationFunctor r).map (weakStringVertexTopExact q ⦋n⦌ 0) := lift_fst _ _
 
 /-- 比較の各 cofiber 成分は、元の同じ連続辺の共通補完の実現射。 -/
-lemma weakStringFiniteComparison_cofiber {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringFiniteComparison_cofiber {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n r : ℕ) (i : Fin n) : weakStringFiniteComparison q n r ≫ snd _ _ ≫ Pi.π _ i =
       weakStringCofiberMultiMap q (consecutiveWeakStringEdge n i) r := by
   unfold weakStringFiniteComparison
@@ -76,16 +76,16 @@ lemma weakStringFiniteComparison_cofiber {B C : _root_.SerrePositivity.InfinityC
   exact weakStringConsecutiveCofibers_projection q n r i
 
 /-- 列の任意の制限後の初期成分は、元の列の対応する頂点評価である。 -/
-lemma weakStringFiniteComparison_reindex_initial {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (r : ℕ) :
+lemma weakStringFiniteComparison_reindex_initial {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (r : ℕ) :
     (multiRealizationFunctor r).map (weakStringExactMap q θ) ≫
       weakStringFiniteComparison q m r ≫ fst _ _ =
         (multiRealizationFunctor r).map (weakStringVertexTopExact q ⦋n⦌ (θ.toOrderHom 0)) := by
   rw [weakStringFiniteComparison_initial, ← Functor.map_comp, weakStringVertexTopExact_reindex]
 
 /-- 制限後の各 cofiber 成分は、元の列の実合成辺への共通 cofiber 射である。 -/
-lemma weakStringFiniteComparison_reindex_cofiber {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (r : ℕ) (i : Fin m) :
+lemma weakStringFiniteComparison_reindex_cofiber {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (r : ℕ) (i : Fin m) :
     (multiRealizationFunctor r).map (weakStringExactMap q θ) ≫
       weakStringFiniteComparison q m r ≫ snd _ _ ≫ Pi.π _ i =
         weakStringCofiberMultiMap q (consecutiveWeakStringEdge m i ≫ θ) r := by

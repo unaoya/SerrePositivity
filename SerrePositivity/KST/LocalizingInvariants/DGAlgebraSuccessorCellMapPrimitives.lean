@@ -23,17 +23,17 @@ variable (R : Type u) [CommRing R] {A B C : Mon (Complex R)}
 
 def cellMapGenerator (n : ℕ) (c : ComplexBoundaryCell R (cellStageAugmentation R A n).hom) :
     (cellStage R A (n + 1)).X.X c.degree :=
-  (stage R (DGAlgebraPoint R A) n).cellGenerator ⟨.star, .star, c⟩
+  (stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n).cellGenerator ⟨.star, .star, c⟩
 
 lemma cellMapGenerator_boundary (n : ℕ)
     (c : ComplexBoundaryCell R (cellStageAugmentation R A n).hom) :
     (cellStage R A (n + 1)).X.d c.degree (c.degree + 1) (cellMapGenerator R n c) =
       (cellStageTransition R A n).hom.f (c.degree + 1) c.cycle.val := by
-  let S := stage R (DGAlgebraPoint R A) n
+  let S := stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n
   let SC := S.cells
   let SI := S.CellIndex
-  letI : DGCategory R (DGAlgebraPoint R A) := S.category
-  exact SC.differential_generatorElement R (DGAlgebraPoint R A) SI
+  letI : DGCategory R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) := S.category
+  exact SC.differential_generatorElement R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) SI
     ⟨.star, .star, c⟩
 
 def cellMapBoundaryCell (n : ℕ) (b : cellStage R A (n + 1) ⟶ B)
@@ -56,13 +56,13 @@ variable (p : C ⟶ B) (hs : ∀ k : ℤ, Function.Surjective (p.hom.f k))
   (b : cellStage R A (n + 1) ⟶ B) (ha : a ≫ p = cellStageTransition R A n ≫ b)
 
 include hs hq ha in
-lemma successorCellMapPrimitive_exists (i : (stage R (DGAlgebraPoint R A) n).CellIndex) :
+lemma successorCellMapPrimitive_exists (i : (stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n).CellIndex) :
     ∃ t : C.X.X i.2.2.degree,
       C.X.d i.2.2.degree (i.2.2.degree + 1) t =
         (cellStageLiftHom R n a i.1 i.2.1).f (i.2.2.degree + 1) i.2.2.cycle.val ∧
       p.hom.f i.2.2.degree t =
         (cellStageLiftHom R (n + 1) b i.1 i.2.1).f i.2.2.degree
-          ((stage R (DGAlgebraPoint R A) n).cellGenerator i) := by
+          ((stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n).cellGenerator i) := by
   rcases i with ⟨x, y, c⟩
   cases x; cases y
   exact cochain_relative_primitive_lift p.hom hs hq a.hom
@@ -70,23 +70,23 @@ lemma successorCellMapPrimitive_exists (i : (stage R (DGAlgebraPoint R A) n).Cel
     (cellMapBoundaryCell R n b c)
 
 def successorCellMapPrimitives :
-    let S := stage R (DGAlgebraPoint R A) n
+    let S := stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n
     let SI := S.CellIndex
     let SC := S.cells
-    letI : DGCategory R (DGAlgebraPoint R A) := S.category
-    DGCellAttachment.Family.PrimitiveData R (DGAlgebraPoint R A) SI SC
-      (DGAlgebraPoint R C) (cellStageLiftFunctor R n a) := by
+    letI : DGCategory R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) := S.category
+    DGCellAttachment.Family.PrimitiveData R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) SI SC
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R C) (cellStageLiftFunctor R n a) := by
   let h := successorCellMapPrimitive_exists R p hs hq n a b ha
-  let S := stage R (DGAlgebraPoint R A) n
-  letI : DGCategory R (DGAlgebraPoint R A) := S.category
+  let S := stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n
+  letI : DGCategory R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) := S.category
   exact { primitive := fun i => Classical.choose (h i)
           boundary := fun i => (Classical.choose_spec (h i)).1 }
 
-lemma successorCellMapPrimitives_projection (i : (stage R (DGAlgebraPoint R A) n).CellIndex) :
-    let S := stage R (DGAlgebraPoint R A) n
+lemma successorCellMapPrimitives_projection (i : (stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n).CellIndex) :
+    let S := stage R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) n
     let v := (cellStageLiftHom R (n + 1) b i.1 i.2.1).f i.2.2.degree (S.cellGenerator i)
     let P := successorCellMapPrimitives R p hs hq n a b ha
-    letI : DGCategory R (DGAlgebraPoint R A) := S.category
+    letI : DGCategory R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R A) := S.category
     p.hom.f i.2.2.degree (P.primitive i) = v :=
   (Classical.choose_spec (successorCellMapPrimitive_exists R p hs hq n a b ha i)).2
 

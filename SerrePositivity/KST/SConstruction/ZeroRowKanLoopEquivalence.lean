@@ -21,7 +21,7 @@ open scoped Simplicial
 /-- 元の零行 loop の Kan 延長と fiber 包含の合成は全基点 π 同型。 -/
 lemma zeroRowKanLoopComparison_terminalComposite_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((zeroRowKanLoopComparison (r + 1) X b).right ≫
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((zeroRowKanLoopComparison (r + 1) X b).right ≫
       (loopToTerminalPathHomotopyFiber
         (pointedFullIteratedPathKanBoundary (r + 1) X)).right) := by
   let Q := AnodyneHomotopy.anodyneQ
@@ -45,8 +45,8 @@ lemma zeroRowKanLoopComparison_terminalComposite_piIsomorphism (r : ℕ) (X : St
 /-- 元の具体的 loop 比較の既存の Kan 延長は、正の全反復で全基点 π 同型。 -/
 lemma zeroRowKanLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (zeroRowKanLoopComparison (r + 1) X b).right :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (zeroRowKanLoopComparison (r + 1) X b).right :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
     (zeroRowKanLoopComparison_terminalComposite_piIsomorphism r X b)
     (loopToTerminalPathHomotopyFiber_piIsomorphism
       (pointedFullIteratedPathKanBoundary (r + 1) X)

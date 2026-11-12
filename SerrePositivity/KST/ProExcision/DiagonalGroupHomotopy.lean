@@ -22,11 +22,11 @@ variable {M N : SimplicialObject GrpCat.{u}} {f g : M ⟶ N} {m : ℕ}
 規約：KST 4.16、区間射は全次数で定義する。
 使われ方：対角の実 m 次ホモトピーの区間射。 -/
 def diagonalGroupCylinderMap
-    (h : ∀ k, LinearizedMHomotopy (groupLinearizedMap (f.app k).hom) (groupLinearizedMap (g.app k).hom) m)
+    (h : ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (f.app k).hom) (groupLinearizedMap (g.app k).hom) m)
     (hnat : ∀ {k l} (φ : k ⟶ l),
       linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ (M.map φ).hom)) ≫ (h l).h =
         (h k).h ≫ groupLinearizedMap (N.map φ).hom) :
-    linearizedCylinder (simplicialGroupBar M) ⟶ linearizedSpace (simplicialGroupBar N) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder (simplicialGroupBar M) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (simplicialGroupBar N) where
   app k := (h k).h.app k
   naturality {k l} φ := by
     rw [linearizedGroupBar_cylinder_decomposition, Category.assoc, (h l).h.naturality φ]
@@ -40,12 +40,12 @@ def diagonalGroupCylinderMap
 規約：KST Lemma 4.16、零次を含む非被約 C(H)。
 使われ方：単体環上の右乗法の実比較を構成する。 -/
 def diagonalGroupMHomotopy
-    (h : ∀ k, LinearizedMHomotopy (groupLinearizedMap (f.app k).hom) (groupLinearizedMap (g.app k).hom) m)
+    (h : ∀ k, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (f.app k).hom) (groupLinearizedMap (g.app k).hom) m)
     (hnat : ∀ {k l} (φ : k ⟶ l),
       linearizedCylinderMap (nerveMap (SingleObj.mapHom _ _ (M.map φ).hom)) ≫ (h l).h =
         (h k).h ≫ groupLinearizedMap (N.map φ).hom) :
-    LinearizedMHomotopy (linearizedSpaceMap (simplicialGroupBarMap f))
-      (linearizedSpaceMap (simplicialGroupBarMap g)) m where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap f))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (simplicialGroupBarMap g)) m where
   h := diagonalGroupCylinderMap h hnat
   h₀ n hn := (h (op ⦋n⦌)).h₀ n hn
   h₁ n hn := (h (op ⦋n⦌)).h₁ n hn

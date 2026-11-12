@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.PointedCotensorCoordinates
 /-- cotensor 値の構造射への作用は、座標上で元の構造像への後合成となる。 -/
 lemma natural_step (K : SSet.{u}) (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (n : ℕ) :
     (RawSpectrumMapping.pointedStep X (KanSequence.mapping (PointedObject.adjoin K) Y) n).right ≫
-      (iso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).hom =
+      (iso K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).hom =
     (iso K (X.level n).space (Y.level n).space).hom ≫
       (ihom K).map (RawSpectrumMapping.pointedStep X Y n).right := by
   have hh := congrArg Under.Hom.right

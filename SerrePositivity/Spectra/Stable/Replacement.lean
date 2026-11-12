@@ -28,11 +28,11 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
     (trivialCofibrations (GeneralSymmetricSpectrum C K))
     (fibrations (GeneralSymmetricSpectrum C K)))
   (IP JP : MorphismProperty (GeneralSymmetricSpectrum C K))
-  [ModelGeneration.CofibrantlyGenerated.{w} IP JP]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IP JP]
   [(weakEquivalences (GeneralSymmetricSpectrum C K)).IsStableUnderCobaseChangeAgainst
     (cofibrations (GeneralSymmetricSpectrum C K))]
   [ModelCategory SSet.{w}] [ModelCategory SSet.{v}] [ModelCategory SSet.{max v w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (hcofW : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfibW : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hcofV : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

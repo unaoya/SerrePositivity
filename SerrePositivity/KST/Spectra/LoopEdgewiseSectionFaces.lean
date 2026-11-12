@@ -19,7 +19,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.LoopEdgewiseSection
 
 /-- 元の cospan の k 番目の射の列。 -/
@@ -28,17 +28,17 @@ abbrev arrow (k : WalkingPair) : ComposableArrows (AsSmall.{u} WalkingCospan) 1 
 
 /-- 元の BK 切断の k 番目の初区間を評価した、中央係数の同じ解像一単体の区間。 -/
 def parameter (Y : PointedSimplicialSet.{u})
-    (η : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      loopCoefficient Y ⋙ edgewiseSubdivisionFunctor) (k : WalkingPair) :
-    (Δ[1] : SSet.{u}) ⟶ edgewiseSubdivision Y.right :=
-  (prefixOverWeight (arrow k)).app (1 : Fin 2) ≫ η.app (AsSmall.up.obj .one)
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      loopCoefficient Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) (k : WalkingPair) :
+    (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision Y.right :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight (arrow k)).app (1 : Fin 2) ≫ η.app (AsSmall.up.obj .one)
 
 /-- 元の解像一単体の始点は、基点での定値辺そのもの。 -/
 lemma initialFace (Y : PointedSimplicialSet.{u})
-    (η : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      loopCoefficient Y ⋙ edgewiseSubdivisionFunctor) (k : WalkingPair) :
-    (edgewiseSubdivision Y.right).δ 1 (SSet.yonedaEquiv (parameter Y η k)) =
-      SSet.const (X := edgewiseWeight.obj ⦋0⦌) Y.basepoint := by
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      loopCoefficient Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) (k : WalkingPair) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision Y.right).δ 1 (SSet.yonedaEquiv (parameter Y η k)) =
+      SSet.const (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeight.obj ⦋0⦌) Y.basepoint := by
   cases k
   all_goals
     rw [← stdSimplex.yonedaEquiv_δ_comp, parameter]
@@ -48,12 +48,12 @@ lemma initialFace (Y : PointedSimplicialSet.{u})
 
 /-- 二つの元の解像一単体の終点は、元の中央 over 頂点での同じ切断値。 -/
 lemma finalFaces_common (Y : PointedSimplicialSet.{u})
-    (η : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      loopCoefficient Y ⋙ edgewiseSubdivisionFunctor) :
-    (edgewiseSubdivision Y.right).δ 0 (SSet.yonedaEquiv (parameter Y η .left)) =
-      (edgewiseSubdivision Y.right).δ 0 (SSet.yonedaEquiv (parameter Y η .right)) := by
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      loopCoefficient Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision Y.right).δ 0 (SSet.yonedaEquiv (parameter Y η .left)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision Y.right).δ 0 (SSet.yonedaEquiv (parameter Y η .right)) := by
   have h := congrArg (fun f : (Δ[0] : SSet.{u}) ⟶
-      (bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one) ↦
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one) ↦
         f ≫ η.app (AsSmall.up.obj .one)) CospanShape.prefix_target_common
   simp only [Category.assoc] at h
   rw [← stdSimplex.yonedaEquiv_δ_comp, ← stdSimplex.yonedaEquiv_δ_comp]
@@ -61,19 +61,19 @@ lemma finalFaces_common (Y : PointedSimplicialSet.{u})
 
 /-- 元の二つの三単体の各内辺 (1,2) は、元の標的の基点で定値。 -/
 lemma innerCurve_constant (Y : PointedSimplicialSet.{u})
-    (η : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      loopCoefficient Y ⋙ edgewiseSubdivisionFunctor) (k : WalkingPair) :
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      loopCoefficient Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) (k : WalkingPair) :
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 1 2 (by decide)) ≫
       EdgewiseCoordinates.tetrahedronMap (SSet.yonedaEquiv (parameter Y η k)) =
         SSet.const Y.basepoint := by
   rw [← EdgewiseCoordinates.oneFace]
-  change (edgewiseWeightIso 0).inv ≫ _ = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseWeightIso 0).inv ≫ _ = _
   rw [initialFace, SSet.comp_const]
 
 /-- 元の二つの三単体の各外辺 (0,3) は、同じ元の apex の経路に厳密一致する。 -/
 lemma outerCurves_common (Y : PointedSimplicialSet.{u})
-    (η : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      loopCoefficient Y ⋙ edgewiseSubdivisionFunctor) :
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      loopCoefficient Y ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) :
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 0 3 (by decide)) ≫
         EdgewiseCoordinates.tetrahedronMap (SSet.yonedaEquiv (parameter Y η .left)) =
       SSet.yonedaEquiv.symm (stdSimplex.edge 3 0 3 (by decide)) ≫

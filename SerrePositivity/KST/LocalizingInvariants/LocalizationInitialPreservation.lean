@@ -20,15 +20,15 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma localization_preservesInitial {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
-    (x : X _⦋0⦌) (hx : IsInitialVertex x) :
-    IsInitialVertex (F.app (Opposite.op ⦋0⦌) x) := by
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
+    (x : X _⦋0⦌) (hx : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex x) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (F.app (Opposite.op ⦋0⦌) x) := by
   let H : Q ⟶ (Δ[0] : SSet.{u}) := SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   let a := initialPointAdjunction (F ≫ H) x hx
   let d := localizationAdjunctionDescent (SSet.const x) F H W hF a
   have h := pointAdjunction_isInitial d (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
-  change IsInitialVertex (F.app (Opposite.op ⦋0⦌) (PinchedHom.constant x 0)) at h
-  rw [pinchedConstant_zero] at h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 0)) at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] at h
   exact h
 
 end SerrePositivity.KST.LocalizingInvariants

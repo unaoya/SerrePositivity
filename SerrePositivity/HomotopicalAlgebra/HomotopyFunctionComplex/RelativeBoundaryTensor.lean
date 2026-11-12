@@ -72,7 +72,7 @@ def relativeBoundaryTensorArrowIso : Arrow.mk (relativeBoundaryTensorMap α n) �
 
 lemma boundary_source_lifting [HasTerminal C] {Y : C}
     [HasLiftingProperty (relativeLatchingMap simplex (SimplexCategory.mk n) α) (terminal.from Y)] :
-    HasLiftingProperty (SSet.boundary.{v} n).ι ((cosimplicialHomMap α).app Y) := by
+    HasLiftingProperty (SSet.boundary.{v} n).ι ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) := by
   have : HasLiftingProperty (relativeBoundaryTensorMap α n) (terminal.from Y) :=
     (HasLiftingProperty.iff_of_arrow_iso_left (relativeBoundaryTensorArrowIso α n)
       (terminal.from Y)).mpr inferInstance

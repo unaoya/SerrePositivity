@@ -21,8 +21,8 @@ open CategoryTheory Limits SerrePositivity.InfinityCategories
 
 lemma weak_middle_of_composites {A B C D : SSet.{u}}
     (f : A ⟶ B) (g : B ⟶ C) (h : C ⟶ D)
-    (hfg : IsWeakHomotopyEquivalence (f ≫ g))
-    (hgh : IsWeakHomotopyEquivalence (g ≫ h)) : IsWeakHomotopyEquivalence g := by
+    (hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ≫ g))
+    (hgh : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (g ≫ h)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g := by
   intro Z hZ
   let K := FrameHom.AnodyneWeakDetection.homComponents Z
   have h₁ : Function.Bijective (fun x => (K.map f.op) ((K.map g.op) x)) := by
@@ -43,16 +43,16 @@ lemma weak_middle_of_composites {A B C D : SSet.{u}}
     exact ⟨(K.map h.op) y, hy⟩
 
 lemma contractible_of_weak_factor {A B C : SSet.{u}} (f : A ⟶ B) (g : B ⟶ C)
-    (hfg : IsWeakHomotopyEquivalence (f ≫ g)) (hB : IsWeaklyContractible B) :
-    IsWeaklyContractible A := by
-  have hgh : IsWeakHomotopyEquivalence (g ≫ terminal.from C) := by
+    (hfg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ≫ g)) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible B) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible A := by
+  have hgh : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (g ≫ terminal.from C) := by
     have he : g ≫ terminal.from C = terminal.from B := terminal.hom_ext _ _
     rw [he]
     exact hB
   have hg := weak_middle_of_composites f g (terminal.from C) hfg hgh
   have hf := hg.cancel_right hfg
   have he : terminal.from A = f ≫ terminal.from B := terminal.hom_ext _ _
-  change IsWeakHomotopyEquivalence (terminal.from A)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (terminal.from A)
   rw [he]
   exact hf.comp hB
 

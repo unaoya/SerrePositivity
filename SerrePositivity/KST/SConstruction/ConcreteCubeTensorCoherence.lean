@@ -11,7 +11,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の結合同型は連結積の五角を満たす。 -/
-lemma concreteCubeAssociator_pentagon (W X Y Z : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma concreteCubeAssociator_pentagon (W X Y Z : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     concreteCubeTensorMap (concreteCubeAssociator W X Y).hom (𝟙 Z) ≫
         (concreteCubeAssociator W (concreteCubeTensorObj X Y) Z).hom ≫
           concreteCubeTensorMap (𝟙 W) (concreteCubeAssociator X Y Z).hom =
@@ -21,8 +21,8 @@ lemma concreteCubeAssociator_pentagon (W X Y Z : _root_.SerrePositivity.Infinity
     ← eqToHom_refl, concreteCubeTensorMap_eqToHom, eqToHom_trans]
 
 /-- 元の結合同型と左右単位は連結積の三角を満たす。 -/
-lemma concreteCubeAssociator_triangle (X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
-    (concreteCubeAssociator X (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) Y).hom ≫
+lemma concreteCubeAssociator_triangle (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
+    (concreteCubeAssociator X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) Y).hom ≫
         concreteCubeTensorMap (𝟙 X) (concreteCubeLeftUnitor Y).hom =
       concreteCubeTensorMap (concreteCubeRightUnitor X).hom (𝟙 Y) := by
   simp only [concreteCubeAssociator, concreteCubeLeftUnitor, concreteCubeRightUnitor,

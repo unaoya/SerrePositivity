@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlyingComposi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   {P : Type (max (u + 1) v)} [DGCategory R P] [Small.{u} P]
   (F G : DGFunctor R P (PerfectDGModule R E))
@@ -41,15 +41,15 @@ def dgPerfectComparisonInverseRotationRealizedFamily : DGFunctor R P (RightModul
 規約：対象別の同値や別の厳密代表へ置換しない。
 使われ方：LT 実右面の全合成比較と固定 ν の指定二単体への接続。 -/
 def dgPerfectComparisonInverseRotationRealizedNerveComparison :
-    FunctorIso (dgNerve.map (dgPerfectComparisonInverseRotationRealizedFamily R E F G τ))
-      (dgNerve.map (dgPerfectModuleUnderlying R E G)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationRealizedFamily R E F G τ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectModuleUnderlying R E G)) := by
   let e := dgIdentityHomGluingInverseRotationRealizedNerveComparison R (T) (F0) (G0) (a) (h)
-  let eV := F2.functorIsoOfEq (e.postcomp (dgNerve.map (V)))
-    (dgNerve.map_comp ((H).comp (Q)) (V)).symm
-    (dgNerve.map_comp ((G0).comp (dgYoneda R (T))) (V)).symm
+  let eV := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e.postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (V)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp ((H).comp (Q)) (V)).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp ((G0).comp (dgYoneda R (T))) (V)).symm
   let eY := dgPerfectRealizationYonedaRestrictedNerveComparison R E (T) (J) (G0)
   have hg : (G0).comp (dgPerfectModuleUnderlying R E (J)) = dgPerfectModuleUnderlying R E G :=
     dgPerfectModuleUnderlying_comp_of_eq R E (G0) (J) G
       (dgSmallPerfectEnvelopeFunctorLift_inclusion R E (P ⊕ P) (family) G Sum.inr (fun _ => rfl))
-  exact F2.functorIsoOfEq (eV.trans eY) rfl (congrArg dgNerve.map hg)
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (eV.trans eY) rfl (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map hg)
 end SerrePositivity.KST.SConstruction

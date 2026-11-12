@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の Yoneda 生成射は、同じ元の cell の Serre 射そのもの。 -/
-lemma cubicalSerreGenerator_eq_cell {K : CubicalSet.{u}} {c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreGenerator_eq_cell {K : CubicalSet.{u}} {c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (φ : cubicalYoneda.obj c ⟶ K) :
     cubicalSerreGenerator A φ = cubicalSerreCell A c (uliftYonedaEquiv φ) := by
   change _ = (cubicalSerreChainsCubeUnit A).app c ≫
@@ -26,7 +26,7 @@ lemma cubicalSerreGenerator_eq_cell {K : CubicalSet.{u}} {c : _root_.SerrePositi
   rfl
 
 /-- 元の両表現可能生成射を連結すると、同じ元の二つの cell の Day 生成射になる。 -/
-lemma cubicalDayCubeInclusion_tensor {K L : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalDayCubeInclusion_tensor {K L : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (φ : cubicalYoneda.obj c ⟶ K) (ψ : cubicalYoneda.obj d ⟶ L) :
     cubicalDayCubeInclusion c d ≫ cubicalDayTensorMap φ ψ =
       cubicalCell (concreteCubeTensorObj c d)
@@ -40,7 +40,7 @@ lemma cubicalDayCubeInclusion_tensor {K L : CubicalSet.{u}} {c d : _root_.SerreP
   exact (Equiv.apply_symm_apply _ _).symm
 
 /-- 元の Serre 分割と二つの生成射の tensor は、元の連結 Day 生成射を回収する。 -/
-lemma cubicalSerreGenerator_tensor {K L : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreGenerator_tensor {K L : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (φ : cubicalYoneda.obj c ⟶ K) (ψ : cubicalYoneda.obj d ⟶ L) :
     Functor.OplaxMonoidal.δ (serreConcreteCubeComplexFunctor A) c d ≫
       (cubicalSerreGenerator A φ ⊗ₘ cubicalSerreGenerator A ψ) ≫

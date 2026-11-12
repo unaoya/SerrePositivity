@@ -18,18 +18,18 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の標準単体の両端間の Λ の Hom は、元の (n−1) 次元の Serre 鎖立方体と同型。 -/
 def simplexBeadLambdaHomIso (n : ℕ) :
-    (serreConcreteCubeComplexFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1)) ≅
+    (serreConcreteCubeComplexFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1)) ≅
       homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
         (simplexBeadFirstVertex n) (simplexBeadLastVertex n) :=
-  (cubicalSerreChainsCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1)) ≪≫
+  (cubicalSerreChainsCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1)) ≪≫
     (cubicalSerreChains A).mapIso (simplexBeadCubicalMappingIso n)
 
 /-- 同じ Hom の比較を、元の対角・増大を保つ Serre 余モノイドの実同型として読む。 -/
 def simplexBeadLambdaHomComonoidIso (n : ℕ) :
-    (serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1)) ≅
+    (serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1)) ≅
       cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
         (simplexBeadFirstVertex n) (simplexBeadLastVertex n) :=
-  (cubicalSerreComonoidCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1)) ≪≫
+  (cubicalSerreComonoidCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1)) ≪≫
     (cubicalSerreComonoidFunctor A).mapIso (simplexBeadCubicalMappingIso n)
 
 /-- 元の余モノイド比較の underlying 同型は、同じ Hom 複体の比較そのもの。 -/
@@ -48,7 +48,7 @@ lemma simplexBeadLambdaHomIso_diagonal (n : ℕ) :
     (simplexBeadLambdaHomIso A n).hom ≫
         Δ[(cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
           (simplexBeadFirstVertex n) (simplexBeadLastVertex n)).X] =
-      Δ[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1))).X] ≫
+      Δ[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1))).X] ≫
         ((simplexBeadLambdaHomIso A n).hom ⊗ₘ
           (simplexBeadLambdaHomIso A n).hom) :=
   (simplexBeadLambdaHomComonoidIso A n).hom.isComonHom_hom.hom_comul
@@ -58,7 +58,7 @@ lemma simplexBeadLambdaHomIso_augmentation (n : ℕ) :
     (simplexBeadLambdaHomIso A n).hom ≫
         ε[(cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
           (simplexBeadFirstVertex n) (simplexBeadLastVertex n)).X] =
-      ε[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n - 1))).X] :=
+      ε[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n - 1))).X] :=
   (simplexBeadLambdaHomComonoidIso A n).hom.isComonHom_hom.hom_counit
 
 end SerrePositivity.KST.SConstruction

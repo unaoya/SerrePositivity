@@ -17,10 +17,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の右側一点の bead の生の HA 値は、同じ元の HA 辺。 -/
-lemma simplexHABeadTail_singleton_rawValue {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHABeadTail_singleton_rawValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (a b : Fin (n + 1)) (hab : a < b) :
     simplexHABeadWordRawValue A s.toSimplexData
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail {b} (Finset.singleton_nonempty b) a
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail {b} (Finset.singleton_nonempty b) a
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hab)) = s.edgeHom a b hab := by
   have hI : 2 ≤ ({a, b} : Finset (Fin (n + 1))).card := by simp [ne_of_lt hab]
   have ha : a = ({a, b} : Finset (Fin (n + 1))).min'
@@ -32,7 +32,7 @@ lemma simplexHABeadTail_singleton_rawValue {n : ℕ} (s : DGNerve.Simplex A D n)
     symm
     exact (Finset.max'_eq_iff _ _ _).mpr (by simp [hab.le])
   change serreCubeOrientationSign 0 • simplexHABeadWordValue A s.toSimplexData
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail {b} (Finset.singleton_nonempty b) a
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail {b} (Finset.singleton_nonempty b) a
       (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hab)) = _
   rw [serreCubeOrientationSign_zero, one_smul]
   exact (simplexHABeadTail_value A s.toSimplexData {b} (Finset.singleton_nonempty b) a
@@ -40,7 +40,7 @@ lemma simplexHABeadTail_singleton_rawValue {n : ℕ} (s : DGNerve.Simplex A D n)
       (by simpa only [Finset.max'_singleton] using hb)).trans (by rfl)
 
 /-- 元の一端点追加生成元の値は、前段の値と同じ閉零辺による実右合成の値。 -/
-lemma simplexHAGeneratorValue_point_one_heq {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHAGeneratorValue_point_one_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 2) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last (m + 1)) < b) :
     HEq (simplexHAGeneratorValue A s.toSimplexData (m + 1) (i, 1) v b hb)
@@ -54,7 +54,7 @@ lemma simplexHAGeneratorValue_point_one_heq {n : ℕ} (s : DGNerve.Simplex A D n
     simplexHABeadWordRawValue A s.toSimplexData (simplexHAGeneratorWord m i
       (Fin.castSuccOrderEmb.trans v) r (simplexHADecodePrefix_last m v))
   let right : GradedHom A (s.obj r) (s.obj b) 0 :=
-    simplexHABeadWordRawValue A s.toSimplexData (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail {b}
+    simplexHABeadWordRawValue A s.toSimplexData (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail {b}
       (Finset.singleton_nonempty b) r (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb))
   let R := dgRightCycleComposition A (x := s.obj (v 0)) (s.edgeCycle r b hb)
   have hr : forward A left right (add_zero p) = R.f p left :=

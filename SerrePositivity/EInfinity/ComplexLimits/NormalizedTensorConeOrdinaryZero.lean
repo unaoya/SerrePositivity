@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeComponents
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 
 /-!
 概要：実 cone の通常側の正次成分は零である。
@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_hom_ordinary_zero {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hc : I.card ≠ 2) :
     (normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk = 0 := by
   have hb0 : b ≠ 0 := by
@@ -36,8 +36,8 @@ lemma normalizedTensorConeData_hom_ordinary_zero {n : ℕ}
     rw [normalizedTensorConeOrdinarySimplex_obj]
     exact normalizedTensorConeObj_ne_zero A X Y c b hb0
   have hz : (normalizedTensorConeOrdinarySimplex A X Y c).hom I a b k hI ha hb hk = 0 :=
-    closedNerveHom_of_ne _ k (by omega)
-  have he0 := gradedHom_zero_heq (A := A) (k := k) (l := k) hx hy rfl
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ k (by omega)
+  have he0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (k := k) (l := k) hx hy rfl
   exact eq_of_heq ((normalizedTensorConeData_hom_ordinary A X Y c I a b k hI ha hb hk ha0).trans
      ((heq_of_eq hz).trans he0.symm))
 

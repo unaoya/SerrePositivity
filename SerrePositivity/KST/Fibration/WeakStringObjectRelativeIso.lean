@@ -15,7 +15,7 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 列次数を固定すると、元の object S と相対 S の実単体の行が厳密に同型。 -/
-def weakStringObjectRelativeRowIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (m : ℕ) :
+def weakStringObjectRelativeRowIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (m : ℕ) :
     objectSConstruction (weakStringCategory q ⦋m⦌) ≅
       relativeSimplicialSConstruction q.hom ⋙
         (evaluation SimplexCategoryᵒᵖ (Type u)).obj (Opposite.op ⦋m⦌) :=
@@ -29,7 +29,7 @@ def weakStringObjectRelativeRowIso {B C : _root_.SerrePositivity.InfinityCategor
     rfl)
 
 /-- 全列次数・全 S 次数の作用を保つ、元の二重単体集合の厳密な交換同型。 -/
-def weakStringObjectRelativeIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def weakStringObjectRelativeIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     weakStringStableSimplicial q ⋙ objectSConstructionFunctor ≅
       (relativeSimplicialSConstruction q.hom).flip :=
   NatIso.ofComponents (fun m => weakStringObjectRelativeRowIso q m.unop.len) (by

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TopStageColimit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordImageFactorization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TopStageColimit
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordImageFactorization
 
 /-!
 # 任意の可換環上の交互方向の最大語による段階の表示
@@ -23,21 +23,21 @@ open CategoryTheory CategoryTheory.Limits
 namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
-def algebraHammockTopStageDiagram (n : ℕ) : Hammock.Word.TopStage n ⥤ SSet.{u + 1} :=
-  Hammock.topStageDiagram (algebraHammockGraphDiagram A X Y) n
+def algebraHammockTopStageDiagram (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TopStage n ⥤ SSet.{u + 1} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.topStageDiagram (algebraHammockGraphDiagram A X Y) n
 
 /-- 元の包含による、交互方向の最大語だけの図式の余極限と元の段階の同型。 -/
 def algebraHammockTopStageColimitIso (n : ℕ) :
     colimit (algebraHammockTopStageDiagram A X Y n) ≅ algebraHammockLengthStage A X Y n :=
-  Hammock.topStageColimitIso (algebraHammockGraphDiagram A X Y) n
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.topStageColimitIso (algebraHammockGraphDiagram A X Y) n
 
-lemma algebraHammockTopStageColimitIso_fac (n : ℕ) (a : Hammock.Word.TopStage n) :
+lemma algebraHammockTopStageColimitIso_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TopStage n) :
     colimit.ι (algebraHammockTopStageDiagram A X Y n) a ≫
         (algebraHammockTopStageColimitIso A X Y n).hom =
       algebraHammockLengthStageInclusion A X Y n a.obj.obj a.obj.property :=
-  Hammock.topStageColimitIso_fac (algebraHammockGraphDiagram A X Y) n a
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.topStageColimitIso_fac (algebraHammockGraphDiagram A X Y) n a
 
-lemma algebraHammockTopStageColimitIso_toColimit_fac (n : ℕ) (a : Hammock.Word.TopStage n) :
+lemma algebraHammockTopStageColimitIso_toColimit_fac (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TopStage n) :
     (colimit.ι (algebraHammockTopStageDiagram A X Y n) a ≫
         (algebraHammockTopStageColimitIso A X Y n).hom) ≫
           algebraHammockLengthStageToColimit A X Y n =

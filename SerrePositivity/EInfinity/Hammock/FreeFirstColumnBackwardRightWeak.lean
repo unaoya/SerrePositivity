@@ -19,22 +19,22 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.InfinityCategories
-open Zigzag.FirstBoundary TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+open TwoSidedDiagram.FixedVertices
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeBackwardFirstRightSpaceIso :
     rightSpace (freeBackwardBackwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeBackwardFirstMarkedObjectEquiv_naturality C w X Y) Z ≅
-    DoubleSimplicial.diagonalFunctor.obj (FixedObjectDiagram.graphDiagram (freeResolution C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram (freeResolution C)
       (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X)
-      (Word.cons .backward w) Z Y) :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeBackwardFirstRightGraphDiagramIso C w X Y Z)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeBackwardFirstRightGraphDiagramIso C w X Y Z)
 def freeBackwardFirstTargetRightSpaceIso :
-    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
       (freeBackwardFirstTargetObjectEquiv C w X Y) (freeBackwardFirstTargetObjectEquiv_naturality C
         w X Y) Z ≅
-        graph C.weakEquivalences (Word.cons .backward w) Z Y :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeBackwardFirstTargetRightGraphDiagramIso C w X Y Z) ≪≫
-    DoubleSimplicial.diagonalConstantIso _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph C.weakEquivalences (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeBackwardFirstTargetRightGraphDiagramIso C w X Y Z) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso _
 def freeBackwardFirstRightSpaceMap :=
   rightSpaceMap (freeFirstMarkedObjectEquiv C) (freeBackwardFirstTargetObjectEquiv C w X Y)
     (freeBackwardFirstMarkedObjectEquiv_naturality C w X Y)
@@ -44,29 +44,29 @@ def freeBackwardFirstRightSpaceMap :=
 
 lemma freeBackwardFirstRightSpaceIso_augmentation :
     (freeBackwardFirstRightSpaceIso C w X Y Z).hom ≫
-      (freeWordDiagonalAugmentation C Z Y).app (Word.cons .backward w) =
+      (freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) =
     freeBackwardFirstRightSpaceMap C w X Y Z ≫ (freeBackwardFirstTargetRightSpaceIso C w X Y Z).hom
       := by
   ext n σ
   have hZ : (eqToHom (freeBackwardFirstMarkedObjectEquiv_augmentation C w X Y n Z)).hom =
         eqToHom (freeResolutionObject_augmentation C n Z)  :=
     marked_eqToHom_hom (C := C) _
-  change σ ⋙ Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
+  change σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
       (freeResolutionObject_augmentation C n Z) (freeResolutionObject_augmentation C n Y) =
-    σ ⋙ (Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n) rfl
-      (freeResolutionObject_augmentation C n Y) ⋙ backwardFunctor
+    σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n) rfl
+      (freeResolutionObject_augmentation C n Y) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagFirstBoundaryBackwardMaps.backwardFunctor
         (eqToHom (freeBackwardFirstMarkedObjectEquiv_augmentation C w X Y n Z)).hom
         (eqToHom (freeBackwardFirstMarkedObjectEquiv_augmentation C w X Y n Z)).property)
   simp only [hZ]
-  rw [backwardFunctor_eqToHom (freeResolutionObject_augmentation C n Z)]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardFunctor_eqToHom (freeResolutionObject_augmentation C n Z)]
   rfl
 lemma freeBackwardFirstRightSpaceMap_weak
-    (h : IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C Z Y).app (Word.cons .backward w))) :
-    IsWeakHomotopyEquivalence (freeBackwardFirstRightSpaceMap C w X Y Z) := by
-  have hc := (isPrecompositionEquivalence_of_iso
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeBackwardFirstRightSpaceMap C w X Y Z) := by
+  have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeBackwardFirstRightSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.comp h
   rw [freeBackwardFirstRightSpaceIso_augmentation] at hc
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeBackwardFirstTargetRightSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.cancel_right hc
 end SerrePositivity.EInfinity.Hammock.FirstColumn

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockLengthFiltration
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphProper
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordAlternating
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAlternating
 public import SerrePositivity.EInfinity.Hammock.LengthBoundary
 
 /-!
@@ -24,17 +24,17 @@ open CategoryTheory
 namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
-def algebraHammockLengthBoundary (n : ℕ) (c : Hammock.Word) :
+def algebraHammockLengthBoundary (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (algebraHammockGraph A c X Y).Subcomplex :=
   Hammock.lengthBoundary (algebraHammockGraphDiagram A X Y) n c
 
-def algebraHammockLengthBoundaryToStage (n : ℕ) (c : Hammock.Word) :
+def algebraHammockLengthBoundaryToStage (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (algebraHammockLengthBoundary A X Y n c).toFunctor ⟶ algebraHammockLengthStage A X Y n :=
   Hammock.lengthBoundaryToStage (algebraHammockGraphDiagram_proper A X Y) n c
 
-lemma algebraHammockLengthBoundaryToStage_app (n : ℕ) (c : Hammock.Word)
+lemma algebraHammockLengthBoundaryToStage_app (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word)
     (k : SimplexCategoryᵒᵖ) (x : ((algebraHammockLengthBoundary A X Y n c).toFunctor).obj k)
-    {a : Hammock.Word} (ha : a.length ≤ n) (f : a ⟶ c) (hf : Function.Injective f.orderHom)
+    {a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (ha : a.length ≤ n) (f : a ⟶ c) (hf : Function.Injective f.orderHom)
     (σ : (algebraHammockGraph A a X Y).obj k)
     (hσ : (algebraHammockGraphMap A f X Y).app k σ = x.val) :
     (algebraHammockLengthBoundaryToStage A X Y n c).app k x =
@@ -43,14 +43,14 @@ lemma algebraHammockLengthBoundaryToStage_app (n : ℕ) (c : Hammock.Word)
     n c k x ha f hf σ hσ
 
 lemma algebraHammockLengthBoundary_square {n m : ℕ} (h : n ≤ m)
-    (c : Hammock.Word) (hc : c.length ≤ m) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (hc : c.length ≤ m) :
     algebraHammockLengthBoundaryToStage A X Y n c ≫ algebraHammockLengthTransition A X Y h =
       (algebraHammockLengthBoundary A X Y n c).ι ≫
         algebraHammockLengthStageInclusion A X Y m c hc :=
   Hammock.lengthBoundary_square (algebraHammockGraphDiagram_proper A X Y) h c hc
 
-lemma algebraHammockAlternatingGraphMap_mono {a b : Hammock.Word}
-    (ha : Hammock.Word.IsAlternating a) (f : a ⟶ b) : Mono (algebraHammockGraphMap A f X Y) :=
+lemma algebraHammockAlternatingGraphMap_mono {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.IsAlternating a) (f : a ⟶ b) : Mono (algebraHammockGraphMap A f X Y) :=
   algebraHammockGraphMap_mono A f (ha.map_injective f) X Y
 
 end SerrePositivity.EInfinity.BarrattEccles

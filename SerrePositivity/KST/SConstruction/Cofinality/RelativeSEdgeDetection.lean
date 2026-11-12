@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagSTranspose
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionImageSComparison
-public import SerrePositivity.InfinityCategories.Stable.CofiberFunctorMapping
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberFunctorMapping
 
 /-!
 概要：同じ指定射の S 構成の分母辺を全 Ar 評価で検出する。
@@ -24,21 +24,21 @@ open scoped Simplicial
 使われ方：相対旗の S 交換の全辺条件の照合。 -/
 lemma completionSWideEdge_iff_pointwise (m r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {x y : (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier _⦋0⦌}
     (s : Truncated.Edge
       (X := (truncation 2).obj
         (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier) x y) :
-    s.edge ∈ cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+    s.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
         ((sEndofunctor m).map (((multiSEndofunctor r).obj ι).map f)).val) ↔
       ∀ a : (arNerve m) _⦋0⦌,
         (s.map ((truncation 2).map (sStableEvaluation m
           (((multiSEndofunctor r).obj ι).obj Y) a).val)).edge ∈
-          cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+          _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
             (((multiSEndofunctor r).obj ι).map f).val) := by
   let P := completionImageClosedPredicate r ι f hf
   let Pm := completionImageClosedPredicate (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) f hf
-  let q := chosenCofiberSquare s
+  let q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare s
   have hP : Pm.predicate q.cofiber ↔ (sClosedPredicate m P).predicate q.cofiber :=
     (completionImage_sClosedPredicate_iff m r ι f hf q.cofiber).symm
   change s.edge ∈ Fibration.Relative.closedStableEdges Pm ↔
@@ -51,7 +51,7 @@ lemma completionSWideEdge_iff_pointwise (m r : ℕ) (ι : Fin r → SimplexCateg
   apply forall_congr'
   intro a
   let E := sStableEvaluation m (((multiSEndofunctor r).obj ι).obj Y) a
-  let : IsExactFunctor E.val := stableModelHom_exact E
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor E.val := stableModelHom_exact E
   exact (Fibration.Relative.closedStableEdges_iff_cofiber P (q.map E.val)).symm
 
 end SerrePositivity.KST.SConstruction.Cofinality

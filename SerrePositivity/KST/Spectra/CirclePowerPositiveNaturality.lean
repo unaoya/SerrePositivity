@@ -24,14 +24,14 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
+    (n : ℕ) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom space Y))) :
     positiveHomotopyEquiv Y n a =
       loopPositiveHomotopyEquiv Y n (pointedGroupMap
-        (X := PointedObject.basedHom space Y) (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y) a) := by
+        (X := PointedObject.basedHom space Y) (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed unit Y) a) := by
   simp only [positiveHomotopyEquiv, MulEquiv.trans_apply,
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   rfl
 
 /-- 概要：円の Kan 置換の Hom の群の次数移動は係数射と可換。
@@ -40,17 +40,17 @@ lemma positiveHomotopyEquiv_formula (Y : PointedSimplicialSet.{u}) [KanComplex Y
 使われ方：Goerss–Jardine I §7、VIII §1。球面の Hom の群の自然な比較。 -/
 theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom space.{u} Y).right n
       (PointedSimplicialSet.basepoint (PointedObject.basedHom space Y))) :
     positiveHomotopyEquiv Z n (pointedGroupMap
         (X := PointedObject.basedHom space Y) (Y := PointedObject.basedHom space Z) n
           (PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) p) a) =
       pointedGroupMap (n + 1) p (positiveHomotopyEquiv Y n a) := by
   have h := (MonoidalClosed.pre unit.{u}).naturality p
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at h
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at h
   change PointedObject.basedHomMap space.{u} (Y := Y) (Z := Z) p ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Z =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed unit Y ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed unit Z =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed unit Y ≫
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := Y) (Z := Z) p at h
   have hg := congrArg (fun f ↦ pointedGroupMap n f a) h
   simp only [pointedGroupMap_comp] at hg

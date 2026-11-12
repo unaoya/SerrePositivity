@@ -29,7 +29,7 @@ def presentedPerfectDGOneDirectionKanComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGOneDirectionKanEnrichedFunctor A r)
       (presentedPerfectDGBoundaryKanEnrichedFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
     (presentedPerfectDGOneDirectionPointedComparison A r)
 
 /-- Kan 後の厳密自然変換の成分は、同じ元の比較の Ex∞ 像を回収する。 -/

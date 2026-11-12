@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -22,7 +22,7 @@ lemma normalizedTensorTriangleData_equation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) :
     differential A ((normalizedTensorTriangleData A X Y c τ).hom I a b k hI ha hb hk) =
       (normalizedTensorTriangleData A X Y c τ).rhs I a b k hI ha hb hk := by
@@ -33,7 +33,7 @@ lemma normalizedTensorTriangleData_equation {n : ℕ}
       · have hc2 : I.card = 2 := by omega
         have ham : IsLeast (I : Set (Fin (n + 1))) a := by rw [ha]; exact I.isLeast_min' _
         have hbm : IsGreatest (I : Set (Fin (n + 1))) b := by rw [hb]; exact I.isGreatest_max' _
-        have he := Index.eq_pair hc2 ham hbm
+        have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.eq_pair hc2 ham hbm
         have h1 : ∀ i ∈ I, τ i ≠ 1 := by
           intro i hi
           rw [he] at hi
@@ -57,7 +57,7 @@ lemma normalizedTensorTriangleData_equation {n : ℕ}
 
 def normalizedTensorTriangleSimplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
-    (τ : Fin (n + 1) →o Fin 3) : Simplex A (Complex A) n where
+    (τ : Fin (n + 1) →o Fin 3) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n where
   toSimplexData := normalizedTensorTriangleData A X Y c τ
   equation := normalizedTensorTriangleData_equation A X Y c τ
 

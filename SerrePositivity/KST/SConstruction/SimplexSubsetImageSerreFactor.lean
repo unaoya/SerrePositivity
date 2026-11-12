@@ -35,13 +35,13 @@ def simplexSubsetImageSerreFactor {M N : ℕ} (α : Fin (M + 1) →o Fin (N + 1)
 lemma simplexSubsetLambdaCellAt_post_factor {M N : ℕ}
     (α : Fin (M + 1) →o Fin (N + 1)) (I : Finset (Fin (M + 1)))
     (a b : Fin (M + 1)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hJ : 2 ≤ (I.image α).card)
-    (haJ : α a = (I.image α).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ))
-    (hbJ : α b = (I.image α).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hJ : 2 ≤ (I.image α).card)
+    (haJ : α a = (I.image α).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (I.image α) hJ))
+    (hbJ : α b = (I.image α).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (I.image α) hJ)) :
     simplexSubsetLambdaCellAt A I a b hI ha hb ≫
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) =
       simplexSubsetImageSerreFactor A α I hI hJ ≫
         simplexSubsetLambdaCellAt A (I.image α) (α a) (α b) hJ haJ hbJ := by
   let φ := SSet.stdSimplex.map (SimplexCategory.Hom.mk α)
@@ -51,7 +51,7 @@ lemma simplexSubsetLambdaCellAt_post_factor {M N : ℕ}
     (necklaceInSimplexSubsetImageFactor.{u} α I a b hI ha hb hJ haJ hbJ)
   have hp := necklaceLambdaCell_post A φ T
   have hL := congrArg (fun f => f ≫ (cubicalLambdaMap A φ).map
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
       (simplexSubsetLambdaCellAt_necklace A I a b hI ha hb)
   have hR : simplexSubsetImageSerreFactor A α I hI hJ ≫
       simplexSubsetLambdaCellAt A (I.image α) (α a) (α b) hJ haJ hbJ =

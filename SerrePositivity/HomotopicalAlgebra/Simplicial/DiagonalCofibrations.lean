@@ -3,8 +3,8 @@ public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.C
 public import SerrePositivity.HomotopicalAlgebra.Quillen.Brown
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BisimplicialCofibrancy
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalAdjunction
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.BisimplicialCofibrancy
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.BisimplicialCofibrancy
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BisimplicialCofibrancy
 
 
 /-!
@@ -86,8 +86,8 @@ lemma diagonal_map_weakEquivalence_of_isLeftQuillen
     {B B' : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : B ⟶ B')
     (hf : ∀ n, weakEquivalences SSet.{v} (f.app n)) :
     weakEquivalences SSet.{v} (diagonal.map f) := by
-  have hB := isCofibrant hcof B
-  have hB' := isCofibrant hcof B'
+  have hB := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.BisimplicialCofibrancy.isCofibrant hcof B
+  have hB' := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.BisimplicialCofibrancy.isCofibrant hcof B'
   let := simplexOpModelCategory SSet.{v}
   have : Quillen.IsLeftQuillen diagonal.{v} := hQ
   have : IsCofibrant B := hB

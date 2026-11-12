@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Categories.OppositeKanUnstraightening
-public import SerrePositivity.InfinityCategories.F1.Weighted.NerveConstantNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.OppositeKanUnstraightening
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.NerveConstantNaturality
 
 /-! # 元の係数の定値包含と、反転 Kan 図式の同じ unstraightening 比較の作用 -/
 
@@ -15,28 +15,28 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の定値包含は、同じ係数自然同型の逆成分を通して豊穣係数の包含になる。 -/
 theorem oppositePointHomWeightedIso_constant {I : Type u} [Category.{u} I]
-    (F : I ⥤ KanObject.{u}) (i : I) :
-    weightedNerveConstantLift (F ⋙ kanObjectForget) i ≫
-      (oppositePointHomWeightedIso F).inv =
-    (oppositePointHomDiagramIso F).inv.app i ≫
-      weightedNerveConstantLift
-        (HomotopyLimits.simplicialHomDiagram (F ⋙ kanObjectOpFunctor) pointKanObject ⋙
+    (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}) (i : I) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget) i ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositePointHomWeightedIso F).inv =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositePointHomDiagramIso F).inv.app i ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject ⋙
           SSet.opFunctor) i :=
-  weightedNerveConstantLift_map (oppositePointHomDiagramIso F).inv i
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift_map (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositePointHomDiagramIso F).inv i
 
 /-- 元の係数の同じ点は、同じ逆成分と strict Kan 比較の合成で送られる。 -/
 theorem oppositeKanUnstraighteningComparison_constant {I : Type u} [Category.{u} I]
-    (F : I ⥤ KanObject.{u}) (i : I) :
+    (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u}) (i : I) :
     (SSet.uliftFunctor.{u + 1, u}).map
-      (weightedNerveConstantLift (F ⋙ kanObjectForget) i) ≫
-        oppositeKanUnstraighteningComparison F =
-    (SSet.uliftFunctor.{u + 1, u}).map ((oppositePointHomDiagramIso F).inv.app i) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget) i) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositeKanUnstraighteningComparison F =
+    (SSet.uliftFunctor.{u + 1, u}).map ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositePointHomDiagramIso F).inv.app i) ≫
       (SSet.uliftFunctor.{u + 1, u}).map
-        (weightedNerveConstantLift
-          (HomotopyLimits.simplicialHomDiagram (F ⋙ kanObjectOpFunctor) pointKanObject ⋙
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantLift
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject ⋙
             SSet.opFunctor) i) ≫
-        strictKanUnstraighteningComparison (F ⋙ kanObjectOpFunctor) := by
-  rw [oppositeKanUnstraighteningComparison, ← Category.assoc, ← Functor.map_comp,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.strictKanUnstraighteningComparison (F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanObjectOpFunctor) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.oppositeKanUnstraighteningComparison, ← Category.assoc, ← Functor.map_comp,
     oppositePointHomWeightedIso_constant, Functor.map_comp, Category.assoc]
 
 end SerrePositivity.KST.Fibration

@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.GroupActionCochainFunctor
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.GroupActionCochains
 
@@ -38,7 +38,7 @@ instance level_kanComplex {G : Type u} [Group G] (A : GroupAction.{u} G) (k : �
   let : KanComplex (PointedSimplicialSet.forget.obj (PointedWeightedEnd.obj
       ((actionWeightFunctor G).obj (Action.leftRegular G ⊗ Action.trivial G (Fin n → G)))
       (AsSmall.down ⋙ (GroupAction.diagramFunctor G).obj A ⋙ OmegaSpectrum.levelEvaluation k))) := h
-  exact kanComplex_of_iso (PointedSimplicialSet.forget.mapIso (cochainFreeIso A k n).symm)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (PointedSimplicialSet.forget.mapIso (cochainFreeIso A k n).symm)
 
 end
 

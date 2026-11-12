@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSelectedBlocks
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ForwardZigzagDiagramTransport
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzagDiagramTransport
 
 /-!
 # 元の貼り戻しの内部接続列と恒等列の全図式の比較
@@ -18,45 +18,45 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
-  (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [])
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
+  (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [])
 
 lemma leftBlock_identity :
-    HEq (Attachments.leftBlock W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h) (AttachedPrefix.nonempty W _ h))
-      (ForwardZigzag.diagram W.paths
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.leftBlock W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzagDiagram.diagram W.paths
         (𝟙 ((Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from g.val.left)))
         (fun _ => W.paths.id_mem _) (fun _ => W.paths.id_mem _)) := by
   have hB := congrArg (fun t : Quiver.Total C =>
     (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from t.left))
       (simplex_generator W g σ τ h)
-  exact ForwardZigzag.diagram_heq W.paths (selected_sourceJoint_eq W g σ τ h) hB
-    _ _ (fun f => (Attachments.beforeDiagram W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h)).endpoint_right_mem f)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagram_heq W.paths (selected_sourceJoint_eq W g σ τ h) hB
+    _ _ (fun f => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.beforeDiagram W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h)).endpoint_right_mem f)
     (fun _ => W.paths.id_mem _) (fun _ => W.paths.id_mem _) (fun _ => W.paths.id_mem _)
-    (GeneratorWord.zeroNatTrans_heq_id _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zeroNatTrans_heq_id _
       (leftAttachment_length_zero W g σ τ h) hB)
 
 lemma rightBlock_identity :
-    HEq (Attachments.rightBlock W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h) (AttachedPrefix.nonempty W _ h))
-      (ForwardZigzag.diagram W.paths
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.rightBlock W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzagDiagram.diagram W.paths
         (𝟙 ((Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from g.val.right)))
         (fun _ => W.paths.id_mem _) (fun _ => W.paths.id_mem _)) := by
   have hA := congrArg (fun t : Quiver.Total C =>
     (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from t.right))
       (simplex_generator W g σ τ h)
-  exact ForwardZigzag.diagram_heq W.paths hA (selected_targetJoint_eq W g σ τ h)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagram_heq W.paths hA (selected_targetJoint_eq W g σ τ h)
     _ _ (fun _ => W.paths.id_mem _)
-    (fun f => (Attachments.afterDiagram W (simplex W g σ τ)
-      (AttachedPrefix.index W (simplex W g σ τ) h)).endpoint_left_mem f)
+    (fun f => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.afterDiagram W (simplex W g σ τ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h)).endpoint_left_mem f)
     (fun _ => W.paths.id_mem _) (fun _ => W.paths.id_mem _)
-    (GeneratorWord.zeroNatTrans_heq_id _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.zeroNatTrans_heq_id _
       (rightAttachment_length_zero W g σ τ h) (selected_targetJoint_eq W g σ τ h))
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

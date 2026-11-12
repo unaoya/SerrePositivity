@@ -19,18 +19,18 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 def normalizedTensorHomRepresentable (X Y : Complex A) (n : SimplexCategory)
     (g : (normalizedSimplexTensor A X).obj n ⟶ Y) :
-    SSet.stdSimplex.obj n ⟶ (cosimplicialHom (normalizedSimplexTensor A X)).obj Y :=
+    SSet.stdSimplex.obj n ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y :=
   SSet.yonedaEquiv.symm g
 
 lemma normalizedTensorHomRepresentable_postcomp (X : Complex A) {Y Z : Complex A}
     (n : SimplexCategory) (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (h : Y ⟶ Z) :
     normalizedTensorHomRepresentable A X Y n g ≫
-      (cosimplicialHom (normalizedSimplexTensor A X)).map h =
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).map h =
     normalizedTensorHomRepresentable A X Z n (g ≫ h) := by
   apply SSet.yonedaEquiv.injective
   simp only [normalizedTensorHomRepresentable, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
@@ -41,12 +41,12 @@ lemma normalizedTensorHomRepresentable_reindex (X Y : Complex A) {n m : SimplexC
     SSet.stdSimplex.map f ≫ normalizedTensorHomRepresentable A X Y m g =
     normalizedTensorHomRepresentable A X Y n ((normalizedSimplexTensor A X).map f ≫ g) :=
   SSet.yonedaEquiv_symm_naturality_left
-    (X := (cosimplicialHom (normalizedSimplexTensor A X)).obj Y) f g
+    (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y) f g
 
 def normalizedTensorHomPinchedSimplex (X Y : Complex A) (n : SimplexCategory)
     (g : (normalizedSimplexTensor A X).obj n ⟶ Y) :
     SSet.uliftFunctor.{u + 1, u}.obj (SSet.stdSimplex.obj n) ⟶
-      DGNerve.pinchedHom A (Complex A) X Y :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X Y :=
   SSet.uliftFunctor.{u + 1, u}.map (normalizedTensorHomRepresentable A X Y n g) ≫
     (normalizedTensorPinchedIso A X Y).hom
 

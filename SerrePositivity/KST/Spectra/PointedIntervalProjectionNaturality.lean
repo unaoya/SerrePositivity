@@ -32,14 +32,14 @@ include h in
 /-- 元の射影一致は、同じ源の前合成後も全区間で一致する。 -/
 lemma pre_projection_path {U : PointedSimplicialSet.{u}} (i : U ⟶ T) :
     (P.pre i).path ≫ (PointedObject.basedHomMap U p).right = (Q.pre i).path := by
-  have hs : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E ≫ PointedObject.basedHomMap U p =
-      PointedObject.basedHomMap T p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i F := by
-    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  have hs : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E ≫ PointedObject.basedHomMap U p =
+      PointedObject.basedHomMap T p ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i F := by
+    simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact ((MonoidalClosed.pre i).naturality p).symm
   have he := congrArg Under.Hom.right hs
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E).right ≫ (PointedObject.basedHomMap U p).right =
-    (PointedObject.basedHomMap T p).right ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i F).right at he
-  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E).right) ≫ _ = Q.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i F).right
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E).right ≫ (PointedObject.basedHomMap U p).right =
+    (PointedObject.basedHomMap T p).right ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i F).right at he
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E).right) ≫ _ = Q.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i F).right
   rw [Category.assoc, he, ← Category.assoc, h]
 
 include h in

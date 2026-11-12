@@ -31,8 +31,8 @@ variable {V : Type uV} [Category.{vV} V] [base : ModelCategory V]
   {F : V ⥤ C ⥤ C} {G : Vᵒᵖ ⥤ C ⥤ C} {H : Cᵒᵖ ⥤ C ⥤ V}
   (adj : F ⊣₂ G) (adjFlip : F.flip ⊣₂ H)
   (hF : @Quillen.IsQuillenBifunctor V _ base C _ original C _ original F)
-  (IV JV : MorphismProperty V) [ModelGeneration.CofibrantlyGenerated.{wV} IV JV]
-  (IC JC : MorphismProperty C) [@ModelGeneration.CofibrantlyGenerated.{wC} C _ m IC JC]
+  (IV JV : MorphismProperty V) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wV} IV JV]
+  (IC JC : MorphismProperty C) [@_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wC} C _ m IC JC]
 
 include h hcof hfib adj adjFlip hF IV JV IC JC in
 lemma bifunctor_of_tensor_compatible
@@ -52,7 +52,7 @@ lemma bifunctor_of_tensor_compatible
   intro A B i hi
   have : IsCofibrant A := hdom i hi
   have : Cofibration i :=
-    ⟨(IV.le_llp_rlp.trans (ModelGeneration.cofibrations_eq_generated IV JV).symm.le) i hi⟩
+    ⟨(IV.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated IV JV).symm.le) i hi⟩
   have : IsCofibrant B := isCofibrant_of_cofibration i
   have hA := Quillen.isLeftQuillen_obj_of_cofibrant F A
   have hB := Quillen.isLeftQuillen_obj_of_cofibrant F B

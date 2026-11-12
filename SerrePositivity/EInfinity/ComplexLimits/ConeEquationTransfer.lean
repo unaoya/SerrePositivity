@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.EquationTransfer
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.EquationTransfer
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeData
 
 /-!
@@ -13,30 +13,30 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexSimplexData_equation_image_of_pullback {m n : ℕ}
-    (s : SimplexData A (Complex A) n) (α : Fin (m + 1) →o Fin (n + 1))
-    (t : SimplexData A (Complex A) m) (h : s.pullback α = t)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (Complex A) n) (α : Fin (m + 1) →o Fin (n + 1))
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A (Complex A) m) (h : s.pullback α = t)
     (J : Finset (Fin (m + 1))) (hi : Set.InjOn α (J : Set (Fin (m + 1))))
     (ht : t.Equation J) : s.Equation (J.image α) := by
   intro a b k hI ha hb hk
   have hcard : (J.image α).card = J.card := Finset.card_image_of_injOn hi
   have hJ : 2 ≤ J.card := by omega
   have hkJ : k = 2 - (J.card : ℤ) := by rwa [hcard] at hk
-  let a' := J.min' (Index.nonempty hJ)
-  let b' := J.max' (Index.nonempty hJ)
+  let a' := J.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ)
+  let b' := J.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ)
   have ha' : α a' = a := by
     rw [ha]
-    exact Index.image_min α.monotone (J.isLeast_min' _) _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min α.monotone (J.isLeast_min' _) _
   have hb' : α b' = b := by
     rw [hb]
-    exact Index.image_max α.monotone (J.isGreatest_max' _) _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max α.monotone (J.isGreatest_max' _) _
   have hh := ht a' b' k hJ rfl rfl hkJ
   rw [← h] at hh
-  rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi,
-    SimplexData.pullback_rhs_of_inj _ _ _ _ _ _ _ _ _ _ hi] at hh
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pullback_rhs_of_inj _ _ _ _ _ _ _ _ _ _ hi] at hh
   cases ha'
   cases hb'
   exact hh

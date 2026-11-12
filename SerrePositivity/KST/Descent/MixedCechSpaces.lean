@@ -81,7 +81,7 @@ def mixedCechSpaceRowIso (n : SimplexCategory) :
         (pullback.snd f ((Arrow.mk g).augmentedCechNerve.hom.app (op n))) F := Iso.refl _
 
 variable [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：細分する被覆の全 Čech 段で元の被覆の各行は実際に降下（補題 3.2・3.3）。

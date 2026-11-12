@@ -24,38 +24,38 @@ open CategoryTheory Limits SerrePositivity.InfinityCategories
 variable {Q : Type u} [Quiver.{v} Q] (A : Q)
 
 lemma colimit_isWeaklyContractible :
-    letI := quiver A
-    ∀ X Y : Paths (Vertex A), IsWeaklyContractible (colimitGraph
-      (⊤ : MorphismProperty (Paths (Vertex A))) X Y) := by
-  let := quiver A
-  let := spanningTreeArborescence A
-  let := groupoid_isThin A
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
+    ∀ X Y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A), _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+      (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.Vertex A))) X Y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.spanningTreeArborescence A
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.groupoid_isThin A
   intro X Y
-  exact RootedFinite.colimit_isWeaklyContractible (spanningTree A) X Y
+  exact RootedFinite.colimit_isWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.spanningTree A) X Y
 
 lemma hammockValueFiber_isWeaklyContractible (Y : Paths Q)
-    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ positiveEvaluation.obj Y) :
-    IsWeaklyContractible (hammockValueFiber A Y β) := by
-  let := quiver A
+    (β : (Quiver.FreeGroupoid.of Q).obj A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (hammockValueFiber A Y β) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A
   let e := hammockValueFiberCoverIso A Y β
   have ht : terminal.from _ = e.hom ≫ terminal.from _ := terminal.hom_ext _ _
-  change IsWeakHomotopyEquivalence (terminal.from (hammockValueFiber A Y β))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (terminal.from (hammockValueFiber A Y β))
   rw [ht]
-  exact (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp
     (colimit_isWeaklyContractible A _ _)
 
 lemma existingHammockValueFiber_isWeaklyContractible {Q' : Type u} [Quiver.{u} Q']
     (A' : Q') (Y' : Paths Q')
-    (β' : (Quiver.FreeGroupoid.of Q').obj A' ⟶ positiveEvaluation.obj Y') :
-    IsWeaklyContractible (SimplicialValueFiber.space
-      (Zigzag.Value.colimitValue positiveEvaluation positiveEvaluation_inverts_top
+    (β' : (Quiver.FreeGroupoid.of Q').obj A' ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj Y') :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space
+      (Zigzag.Value.colimitValue _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top
         ((Paths.of Q').obj A') Y') β') := by
-  let := quiver A'
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCover.quiver A'
   let e := existingHammockValueFiberCoverIso A' Y' β'
   have ht : terminal.from _ = e.hom ≫ terminal.from _ := terminal.hom_ext _ _
-  change IsWeakHomotopyEquivalence (terminal.from _)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (terminal.from _)
   rw [ht]
-  exact (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence.comp
     (colimit_isWeaklyContractible A' _ _)
 
 end SerrePositivity.EInfinity.Hammock.FreeQuiverCover

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTetrahedronWhiskerEdges
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIso
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：三単体の四面から共通の六関手の関手同型を読む。

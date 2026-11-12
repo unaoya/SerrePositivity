@@ -32,7 +32,7 @@ namespace SerrePositivity.KST.Descent.DoubleAugmentedCechDiagram
 
 variable (K L : Type u) [SmallCategory K] [SmallCategory L]
   (A : DoubleAugmentedCechDiagram K L) [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：元の各行の実際の指定比較の列（論文 補題 3.2）。
 方針：行の関手へ指定比較を前合成する。

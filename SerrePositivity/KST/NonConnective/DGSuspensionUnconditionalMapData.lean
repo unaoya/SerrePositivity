@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaUnconditionalStageSupply
 public import SerrePositivity.KST.NonConnective.DGSuspensionCoherentActionInput
-public import SerrePositivity.InfinityCategories.Derived.SuspensionAction.SphereConeData
+public import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.SphereConeData
 
 /-!
 概要：新しい段提供者の全厳密 dg 射へ、D-S の同じ sphere cone の実射データを代入する。
@@ -26,13 +26,13 @@ local notation "s" => dgKappaUnconditionalStageProvider R κ hκ
 def dgKappaUnconditionalSuspensionMapData
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) :
     DGKappaSuspensionMapData R A B (s A).cone (s B).cone :=
-  dgKappaSphereClosureSuspensionMapData R A B (perfDGInputHomEquiv R A B f) κ hκ
+  _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionMapData R A B (perfDGInputHomEquiv R A B f) κ hκ
 
 /-- data の実 cone 関手は、D-3 の元の全 Hom 共役関手そのもの。 -/
 theorem dgKappaUnconditionalSuspensionMapData_cone
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) :
     (dgKappaUnconditionalSuspensionMapData R κ hκ f).cone =
-      dgKappaSphereClosureExtensionFunctor R A B (perfDGInputHomEquiv R A B f)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.dgKappaSphereClosureExtensionFunctor R A B (perfDGInputHomEquiv R A B f)
         hκ Fact.out := rfl
 
 /-- 新提供者の元の perfect 集合を、同じ実射データが保存する。 -/
@@ -49,20 +49,20 @@ theorem dgKappaUnconditionalSuspensionInputMap_eq
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) :
     dgKappaSuspensionInputMap R A B (s A).cone (s B).cone
         (dgKappaUnconditionalSuspensionMapData R κ hκ f) =
-      dgKappaSphereClosureSuspensionInputMap R A B (perfDGInputHomEquiv R A B f) κ hκ := rfl
+      _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B (perfDGInputHomEquiv R A B f) κ hκ := rfl
 
 /-- map・厳密 vertex・端点固定 edgeIso のみが届けば、data は実供給で埋まる。 -/
 def dgSuspensionUnconditionalCoherentActionOfMap
     (m : dgKInputInfinity.{u, max (u + 1) v} R ⟶ dgKInputInfinity.{u, max (u + 1) v} R)
     (hv : ∀ A : PerfDGInput.{u, max (u + 1) v} R,
-      m.app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-        coherentNerveVertex (dgKappaSuspensionKInput R A (s A).cone))
+      m.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R A (s A).cone))
     (he : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B),
-      VertexIso (intervalMappingVertexOfEdge (dgSuspensionMappedEdge R s m hv f))
-        (intervalMappingVertexOfEdge (coherentNerveEdge
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSuspensionMappedEdge R s m hv f))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (dgKappaSuspensionInputMap R A B (s A).cone (s B).cone
             (dgKappaUnconditionalSuspensionMapData R κ hκ f))))) :
-    DGSuspensionCoherentActionInput R s where
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionCoherentActionInput R s where
   map := m
   vertex := hv
   data := dgKappaUnconditionalSuspensionMapData R κ hκ

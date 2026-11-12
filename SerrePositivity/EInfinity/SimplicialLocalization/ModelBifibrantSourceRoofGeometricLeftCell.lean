@@ -32,14 +32,14 @@ lemma modelBifibrantSourceRoofProductGeometricLeftCell_eq :
     modelBifibrantSourceRoofProductGeometricLeftCell X Y q b =
       (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom := by
   let w := nerveMap (Over.forget (modelBifibrantSourceRoofDegree X Y q b)) ≫
-    nerveMap (modelBifibrantDKFrame X q) ≫
-      SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)
-  let H := functorHomotopyPostcomp (modelBifibrantSourceRoofProductBaseHomotopy X Y q b) w
-  let T := functorHomotopyPostcomp (overTerminalHomotopy (modelBifibrantSourceRoofDegree X Y q b)
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
+      SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (modelBifibrantSourceRoofProductBaseHomotopy X Y q b) w
+  let T := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (overTerminalHomotopy (modelBifibrantSourceRoofDegree X Y q b)
     (modelBifibrantSourceRoofProductCommaOver X Y q b)) w
-  have h : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy T) := by
-    rw [functorHomotopyPostcomp_hom, functorHomotopyPostcomp_hom]
+  have h : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
     exact congrArg (fun f => (hoFunctor.map
       ((ihom (nerve (modelBifibrantSourceRoofProductComma X Y q b))).map w)).toFunctor.map f)
       (modelBifibrantSourceRoofProductBaseHomotopy_hom_eq X Y q b)
@@ -47,14 +47,14 @@ lemma modelBifibrantSourceRoofProductGeometricLeftCell_eq :
   calc
     Arrow.mk (modelBifibrantSourceRoofProductGeometricLeftCell X Y q b) =
         Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy H)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) := by
       apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
       apply congrArg (fun g => SSet.yonedaEquiv (curry g))
       exact modelBifibrantSourceRoofProductGeometricLeftHomotopy_h_base X Y q b
     _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy T)) := congrArg Arrow.mk h
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T)) := congrArg Arrow.mk h
     _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
           (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b))) := by
       apply SSet.Truncated.HomotopyCategory.congr_arrowMk_homMk
       apply congrArg (fun g => SSet.yonedaEquiv (curry g))
@@ -91,7 +91,7 @@ lemma modelBifibrantSourceRoofProductHomMap_weak_of_reference_triangle
     (hR : (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom ≫
       modelBifibrantSourceRoofProductReferenceIntervalCell X Y q b =
         modelBifibrantSourceRoofProductCommaRightCell X Y q b) :
-    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductHomMap X Y q b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductHomMap X Y q b) :=
   modelBifibrantSourceRoofProductHomMap_weak_of_interval_triangles X Y q b r
     (modelBifibrantSourceRoofProductActual_triangle X Y q b) hR
 
@@ -104,7 +104,7 @@ lemma modelBifibrantSourceRoofMap_isLeftCofinal_of_reference_triangle
       (modelBifibrantSourceRoofProductCommaEvaluationIso X Y q b).hom ≫
         modelBifibrantSourceRoofProductReferenceIntervalCell X Y q b =
           modelBifibrantSourceRoofProductCommaRightCell X Y q b) :
-    IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
   modelBifibrantSourceRoofMap_isLeftCofinal_of_interval_triangles X Y q r
     (fun b => modelBifibrantSourceRoofProductActual_triangle X Y q b) hR
 

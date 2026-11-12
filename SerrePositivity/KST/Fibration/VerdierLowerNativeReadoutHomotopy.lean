@@ -22,23 +22,23 @@ namespace SerrePositivity.KST.Fibration
 方針：実供給の既存回収式を同じ型で保持する。
 規約：新たな存在仮定は加えない。
 使われ方：実読出し・正規化読出しの両方を同じ全ホモトピーへ渡す。 -/
-abbrev VerdierLowerNativeReadoutRecovery (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+abbrev VerdierLowerNativeReadoutRecovery (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d)) : Prop :=
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d)) : Prop :=
   ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
     HEq (L.app (Opposite.op ⦋0⦌) k)
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
-        ((SSet.yonedaEquiv (familyAtVertex (verdierFullSLowerDeformation d).h k)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k)).map
           ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
 
 /-- 概要：実供給の下側読出しは同じ各点 native Hom 回収条件を満たす。
 方針：実読出しの存在定理を同じ型で消費する。
 規約：(9) 全体の存在は使わない。
 使われ方：指定両端を持つ実下側ホモトピーの無条件入力。 -/
-theorem verdierLowerNativeReadoutRecovery_exists (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :
+theorem verdierLowerNativeReadoutRecovery_exists (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :
     ∃ L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d),
-      L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d),
+      L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
         verdierLowerReconstructionCompositeFamily d Δ[1] ∧
       VerdierLowerNativeReadoutRecovery d L :=
   verdierLowerNativeReadout_exists d
@@ -47,30 +47,30 @@ theorem verdierLowerNativeReadoutRecovery_exists (d : _root_.SerrePositivity.Inf
 方針：curry の頂点と元の族の同じパラメータ制限を照合する。
 規約：同じ L を保持し、別の読出し族を選ばない。
 使われ方：(9) の normalize(t) と元の実下側との比較を接続する。 -/
-theorem verdierLowerNormalizedReadout_recovery (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+theorem verdierLowerNormalizedReadout_recovery (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
     (hL : ∀ k : (Δ[1] : SSet.{u + 1}) _⦋0⦌,
-      let s := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+      let s := SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[2] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
         ((curry (verdierFullSLowerDeformation d).h).app (Opposite.op ⦋0⦌) k))
       HEq (L.app (Opposite.op ⦋0⦌) k)
-        (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
           (s.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))) :
     VerdierLowerNativeReadoutRecovery d L := by
   intro k
-  have hk : (functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+  have hk : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[2] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
       ((curry (verdierFullSLowerDeformation d).h).app (Opposite.op ⦋0⦌) k) =
-        familyAtVertex (verdierFullSLowerDeformation d).h k := by
-    rw [curry_app_vertex]
-    exact (functorVertexEquiv _ _).symm_apply_apply _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.curry_app_vertex]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _
   have h := hL k
   dsimp only at h
   rw [hk] at h
   exact h
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
 
 /-- 概要：同じ実下側読出しから元の下側全 path と定値実合成端を結ぶ全ホモトピー。
@@ -79,14 +79,14 @@ variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierD
 使われ方：K-6 c4 の境界付き全長 Hom 比較の合成。 -/
 def verdierLowerNativeReadoutHomotopy : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 1))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)) := by
   let q := verdierLowerNativeLongHomTransport d Δ[1] L
-  let e := homotopyIntervalEdge.map ((truncation 2).map q)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.map ((truncation 2).map q)
   let e' := (SSet.Edge.ofTruncated e).ofEq
     (verdierLowerNativeReadoutCoordinates_first d L (hL _))
     (verdierLowerNativeReadoutCoordinates_last d L (hL _))
-  exact simplicialHomotopyOfFunctorEdge e'.toTruncated
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge e'.toTruncated
 
 /-- 概要：同じ全ホモトピーの実写像は元の指定両端へ輸送した読出しの uncurry。
 方針：同じ区間辺の恒等一単体表示と Yoneda の往復を回収する。
@@ -97,8 +97,8 @@ theorem verdierLowerNativeReadoutHomotopy_h :
       uncurry (verdierLowerNativeLongHomTransport d Δ[1] L) := by
   change uncurry (SSet.yonedaEquiv.symm
     ((verdierLowerNativeLongHomTransport d Δ[1] L).app (Opposite.op ⦋1⦌)
-      homotopyIntervalEdge.edge)) = _
-  have hi : homotopyIntervalEdge.edge = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u + 1})) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)) = _
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge = SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u + 1})) := by
     apply SSet.stdSimplex.ext
     intro a
     fin_cases a <;> rfl
@@ -109,18 +109,18 @@ theorem verdierLowerNativeReadoutHomotopy_h :
 規約：同じ L の全時刻条件を保持する。終端一点だけの条件へ弱めない。
 使われ方：指定境界合成二単体の終点側の単位条件。 -/
 theorem verdierLowerNativeReadoutHomotopy_full
-    (hfull : L ≫ evaluateFunctorAt
-      (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+    (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+      (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
         verdierLowerReconstructionCompositeFamily d Δ[1]) :
-    lift (SSet.const (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})))
+    lift (SSet.const (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫ (verdierLowerNativeReadoutHomotopy d L hL).h =
       SSet.const (verdierNativeCompositePoint d 1) := by
   rw [verdierLowerNativeReadoutHomotopy_h]
-  have hshape : lift (SSet.const (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})))
+  have hshape : lift (SSet.const (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})))
       (𝟙 (Δ[1] : SSet.{u + 1})) ≫
         uncurry (verdierLowerNativeLongHomTransport d Δ[1] L) =
-      verdierLowerNativeLongHomTransport d Δ[1] L ≫ evaluateFunctorAt
-        (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) := by
+      verdierLowerNativeLongHomTransport d Δ[1] L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+        (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) := by
     apply SSet.hom_ext
     intro n
     apply ConcreteCategory.hom_ext

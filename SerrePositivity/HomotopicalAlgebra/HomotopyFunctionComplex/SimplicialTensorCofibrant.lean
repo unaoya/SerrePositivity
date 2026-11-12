@@ -2,8 +2,8 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Enriched.TensorCotensor
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.SimplicialTensorHom
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.StandardCosimplicial
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.StandardCosimplicial
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.FiniteTensorAdjunction
 
 
 /-! # Reedy cofibrancy of the actual simplicial tensor family
@@ -31,6 +31,6 @@ lemma tensorCosimplicial_reedyCofibrant (X : C) [IsCofibrant X] :
   have : (S.tensor.flip.obj X).IsLeftAdjoint := (S.tensorHom.adj X).isLeftAdjoint
   have : IsLeftQuillen (S.tensor.flip.obj X) :=
     SerrePositivity.Enriched.tensor_parameter_isLeftQuillen S X
-  exact StandardCosimplicial.reedy_cofibrant (S.tensor.flip.obj X) hcof
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.reedy_cofibrant (S.tensor.flip.obj X) hcof
 
 end SerrePositivity.HomotopyFunctionComplex

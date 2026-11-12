@@ -25,20 +25,20 @@ open scoped Simplicial
 使われ方：G 同変版の基礎となる実ホモトピー。 -/
 def constructionA5 {T P Q H : Type u} [Group T] [Group P] [Group Q] [Group H]
     (d : GroupProductData T P Q H) (m m' : ℕ)
-    (hα : LinearizedMHomotopy (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* P)) m)
-    (hβ : LinearizedMHomotopy (groupLinearizedMap d.β) (groupLinearizedMap (1 : T →* Q)) m') :
-    LinearizedMHomotopy (groupLinearizedMap d.product)
+    (hα : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* P)) m)
+    (hβ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d.β) (groupLinearizedMap (1 : T →* Q)) m') :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap d.product)
       (groupLinearizedMap d.left + groupLinearizedMap d.right - groupLinearizedMap (1 : T →* H))
       (m + m' + 1) := by
   let a := linearizedDiagonal (nerve (SingleObj T))
   let b := linearizedGroupProduct d.μ
   have h := linearizedTensorAugmentationMHomotopy hα hβ a b
-  have hl : a ≫ simplicialIntegerTensorMap (groupLinearizedMap d.α) (groupLinearizedMap d.β) ≫ b =
+  have hl : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (groupLinearizedMap d.α) (groupLinearizedMap d.β) ≫ b =
       groupLinearizedMap d.product := linearizedGroupProduct_comp d.μ d.α d.β
   have hr : a ≫
-      (simplicialIntegerTensorMap (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* Q)) +
-        simplicialIntegerTensorMap (groupLinearizedMap (1 : T →* P)) (groupLinearizedMap d.β) -
-        simplicialIntegerTensorMap (groupLinearizedMap (1 : T →* P))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (groupLinearizedMap d.α) (groupLinearizedMap (1 : T →* Q)) +
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (groupLinearizedMap (1 : T →* P)) (groupLinearizedMap d.β) -
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (groupLinearizedMap (1 : T →* P))
           (groupLinearizedMap (1 : T →* Q))) ≫ b =
       groupLinearizedMap d.left + groupLinearizedMap d.right - groupLinearizedMap (1 : T →* H) := by
     dsimp only [a, b]

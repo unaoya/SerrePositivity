@@ -18,7 +18,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (c : C) (hc : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) c))
   (h : DGGluingCellRightAxisProjectiveInput R C D M c hc)
-local notation "B" => DGGluingObject R C D M
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "P" => DGCategoryCellResolution.Source R (B)
 variable (Q : Type z) [DGCategory R Q] [Small.{u} Q]
 
@@ -59,7 +59,7 @@ abbrev DGGluingCellRightAxisQuotientLiftBase (q : DGFunctor R (P) Q) :=
 規約：元対象を保持。使われ方：固定 S の中央射の実 dg 終域。 -/
 abbrev DGGluingCellRightAxisQuotientLiftTarget (q : DGFunctor R (P) Q) :=
   let U := DGGluingCellRightAxisQuotientLiftBase R C D M c hc h Q q
-  DGGluingObject R U U
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R U U
     (dgHomGluingBimodule R U U U (DGFunctor.id U) (DGFunctor.id U))
 
 /-- 概要：同じ固定 cell source から指定商上の恒等 Hom gluing への実中央 dg 射。

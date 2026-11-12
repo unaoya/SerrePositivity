@@ -131,12 +131,12 @@ theorem natural_post (A : SSet.{u}) {Y Z : PointedSimplicialSet.{u}} (f : Y ⟶ 
 使われ方：HA §1.4.2、BF 1978 §2。pointed end の重み変数の比較。 -/
 @[reassoc]
 theorem natural_pre {A B : SSet.{u}} (f : A ⟶ B) (Y : PointedSimplicialSet.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.adjoinFunctor.map f) Y).right ≫ restrict A Y =
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.adjoinFunctor.map f) Y).right ≫ restrict A Y =
       restrict B Y ≫ (pre f).app Y.right := by
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.adjoinFunctor.map f) Y ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedObject.adjoinFunctor.map f) Y ≫
     (PointedObject.basedHomι (PointedObject.adjoin A) Y ≫ (pre coprod.inl).app Y.right) = _
   rw [← Category.assoc]
-  erw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι]
+  erw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι]
   rw [Category.assoc]
   change PointedObject.basedHomι (PointedObject.adjoin B) Y ≫
       ((pre (PointedObject.adjoinFunctor.map f).right).app Y.right ≫

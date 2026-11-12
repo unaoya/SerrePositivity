@@ -21,7 +21,7 @@ lemma PointedMapping.coordinateMap_vertex {A A' B B' : PointedSimplicialSet.{u}}
     (i : A' ⟶ A) (j : B ⟶ B') (f : A ⟶ B) :
     (PointedMapping.coordinateMap i j).right.app _ (PointedMapping.familyVertex f) =
       PointedMapping.familyVertex (i ≫ (f ≫ j)) := by
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i B').right.app _
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i B').right.app _
     ((PointedObject.basedHomMap A j).right.app _ (PointedMapping.familyVertex f)) = _
   rw [PointedMapping.familyVertex_post]
   exact PointedMapping.familyVertex_pre i (f ≫ j)
@@ -32,9 +32,9 @@ private lemma conjugate_pre {Z Z' : PointedSimplicialSet.{u}} (v : Z ⟶ Z')
     (a : source.{u} ⟶ source.{u})
     (t : LoopExchangePaths.doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z') ⟶
       LoopExchangePaths.doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z'))
-    (ht : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
+    (ht : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
     (mappingIso Z).inv ≫
-        ((PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z') ≫
+        ((PointedObject.basedHomMap source.{u} v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z') ≫
           (mappingIso Z').hom) = loopPost v ≫ t := by
   simp only [Category.assoc]
   rw [ht, ← Category.assoc (PointedObject.basedHomMap source.{u} v), mappingIso_post]

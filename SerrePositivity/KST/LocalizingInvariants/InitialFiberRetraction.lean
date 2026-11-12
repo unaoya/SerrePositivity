@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CartesianHomotopyExtension
-public import SerrePositivity.InfinityCategories.F1.Fibrations.InvertibleCartesian
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingCylinderOverMono
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CartesianHomotopyExtension
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.InvertibleCartesian
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.MappingCylinderOverMono
 
 /-!
 概要：標準単体上の cartesian fibration を最初の fiber へ厳密に退縮する。
@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma prismFirstContraction_const_first (n : ℕ) (A : SSet.{u}) :
     (Δ[1] ◁ (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) : A ⟶ Δ[n])) ≫
-      prismFirstContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismFirstContraction n = SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -33,55 +33,55 @@ lemma prismFirstContraction_const_first (n : ℕ) (A : SSet.{u}) :
   split_ifs <;> rfl
 
 lemma exists_initialFiberRetraction (n : ℕ) {E : SSet.{u}}
-    (p : E ⟶ (Δ[n] : SSet.{u})) [CartesianFibration p] :
-    ∃ (R : E ⟶ vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
+    (p : E ⟶ (Δ[n] : SSet.{u})) [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CartesianFibration p] :
+    ∃ (R : E ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))))
       (H : (Δ[1] : SSet.{u}) ⊗ E ⟶ E),
-      vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) ≫ R = 𝟙 _ ∧
-      prismEndpoint 0 E ≫ H =
-        R ≫ vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) ∧
-      prismEndpoint 1 E ≫ H = 𝟙 E ∧
-      H ≫ p = (Δ[1] ◁ p) ≫ prismFirstContraction n := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) ≫ R = 𝟙 _ ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 E ≫ H =
+        R ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p (stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))) ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 E ≫ H = 𝟙 E ∧
+      H ≫ p = (Δ[1] ◁ p) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismFirstContraction n := by
   have : Quasicategory E := quasicategory_of_innerFibration p
   let c := stdSimplex.obj₀Equiv.symm (0 : Fin (n + 1))
-  let A := vertexFiber p c
-  let i : A ⟶ E := vertexFiberι p c
+  let A := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p c
+  let i : A ⟶ E := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι p c
   have : Mono i := by dsimp only [i]; infer_instance
   let H₀ : (Δ[1] : SSet.{u}) ⊗ A ⟶ E := snd Δ[1] A ≫ i
-  let β : (Δ[1] : SSet.{u}) ⊗ E ⟶ Δ[n] := (Δ[1] ◁ p) ≫ prismFirstContraction n
-  have h₁ : prismEndpoint 1 A ≫ H₀ = i ≫ 𝟙 E := by
+  let β : (Δ[1] : SSet.{u}) ⊗ E ⟶ Δ[n] := (Δ[1] ◁ p) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismFirstContraction n
+  have h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 A ≫ H₀ = i ≫ 𝟙 E := by
     dsimp only [H₀]
-    rw [← Category.assoc, prismEndpoint_snd, Category.id_comp, Category.comp_id]
-  have hf : (𝟙 E) ≫ p = prismEndpoint 1 E ≫ β := by
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.prismEndpoint_snd, Category.id_comp, Category.comp_id]
+  have hf : (𝟙 E) ≫ p = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 E ≫ β := by
     dsimp only [β]
-    rw [Category.id_comp, ← Category.assoc, prismEndpoint_naturality,
-      Category.assoc, prismFirstContraction_one, Category.comp_id]
+    rw [Category.id_comp, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint_naturality,
+      Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismFirstContraction_one, Category.comp_id]
   have hHp : H₀ ≫ p = (Δ[1] ◁ i) ≫ β := by
     dsimp only [H₀, β, i]
-    rw [Category.assoc, vertexFiberι_comp, SSet.comp_const, ← Category.assoc,
-      ← whiskerLeft_comp, vertexFiberι_comp, prismFirstContraction_const_first]
-  have hH : ∀ x : A _⦋0⦌, IsCartesianEdge p
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp, SSet.comp_const, ← Category.assoc,
+      ← whiskerLeft_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp, prismFirstContraction_const_first]
+  have hH : ∀ x : A _⦋0⦌, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge p
       (H₀.app (Opposite.op ⦋1⦌)
-        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), PinchedHom.constant x 1)) := by
+        (SSet.yonedaEquiv (𝟙 (Δ[1] : SSet.{u})), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1)) := by
     intro x
-    have hi := isEquivalencePathVertex_const x.val
-    unfold IsEquivalencePathVertex at hi
-    rw [intervalFunctorVertexEdge_functorVertex] at hi
-    exact isCartesianEdge_of_isInvertibleEdge p (edgeOfSimplex _) hi
+    have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isEquivalencePathVertex_const x.val
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IsEquivalencePathVertex at hi
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalFunctorVertexEdge_functorVertex] at hi
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.isCartesianEdge_of_isInvertibleEdge p (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex _) hi
   obtain ⟨H, hHi, hH₁, hHp, _⟩ :=
-    HomotopyLimits.cartesianHomotopy_extend p i H₀ (𝟙 E) β h₁ hf hHp hH
-  have h₀p : (prismEndpoint 0 E ≫ H) ≫ p = SSet.const c := by
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.cartesianHomotopy_extend p i H₀ (𝟙 E) β h₁ hf hHp hH
+  have h₀p : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 E ≫ H) ≫ p = SSet.const c := by
     rw [Category.assoc, hHp]
     dsimp only [β]
-    rw [← Category.assoc, prismEndpoint_naturality, Category.assoc,
-      prismFirstContraction_zero, SSet.comp_const]
-  let R := vertexFiberLift p c (prismEndpoint 0 E ≫ H) h₀p
-  have hR : R ≫ i = prismEndpoint 0 E ≫ H := vertexFiberLift_ι _ _ _ _
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint_naturality, Category.assoc,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismFirstContraction_zero, SSet.comp_const]
+  let R := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift p c (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 E ≫ H) h₀p
+  have hR : R ≫ i = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 E ≫ H := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift_ι _ _ _ _
   refine ⟨R, H, ?_, hR.symm, hH₁, hHp⟩
-  apply vertexFiber_hom_ext p c
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_hom_ext p c
   change (i ≫ R) ≫ i = (𝟙 A) ≫ i
-  rw [Category.assoc, hR, ← Category.assoc, ← prismEndpoint_naturality,
+  rw [Category.assoc, hR, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint_naturality,
     Category.assoc, hHi]
   dsimp only [H₀]
-  rw [← Category.assoc, prismEndpoint_snd, Category.id_comp]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.prismEndpoint_snd, Category.id_comp]
 
 end SerrePositivity.KST.LocalizingInvariants

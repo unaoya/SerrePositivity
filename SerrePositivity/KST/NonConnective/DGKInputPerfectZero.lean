@@ -1,10 +1,10 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputDerivedCompactGeneration
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
-public import SerrePositivity.InfinityCategories.Derived.DGStableHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.Core.ZeroHomotopy
-public import SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagrams
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectModulesInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStableHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroHomotopy
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagrams
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectModulesInfinity
 
 /-!
 概要：固定 ν の零性を同じ実 Perf と主 Perf の零性へ渡す。
@@ -22,26 +22,26 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hA : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A))
+  (hA : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R A))
 include hA
 
 /-- 同じ固定 ν が零なら、元の実 Perf の全頂点も零。 -/
-theorem dgKInputPerfect_vertex_isZero (z : (dgNerve R (PerfectDGModule R A)) _⦋0⦌) :
-    IsZeroVertex z := by
+theorem dgKInputPerfect_vertex_isZero (z : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R A)) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z := by
   let e := presentedPerfectDGQCatEvaluationEquivalence R A
-  let := dgModulePerfectInfinityCategory_isStable R A
-  let := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  have hz := IsExactFunctor.preservesZero (F := e.hom) _ (hA (e.inv.app _ z))
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory_isStable R A
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  have hz := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := e.hom) _ (hA (e.inv.app _ z))
   exact hz.of_vertexIso (e.invHomIso.app z)
 
 /-- 同じ実 Perf 対象の H⁰ 像は零。 -/
 theorem dgKInputPerfect_h0_isZero (M : PerfectDGModule R A) :
     IsZero ((toHomotopy R (PerfectDGModule R A)).obj
       (ForgetEnrichment.of (Complex R) M)) := by
-  let := dgModulePerfectInfinityCategory_isStable R A
-  have h := (dgStableHomotopyEquivalence R (PerfectDGModule R A)).functor.map_isZero
-    (dgKInputPerfect_vertex_isZero R A hA (DGNerve.Simplex.vertex M)).isZeroHo
-  simpa only [dgStableHomotopyEquivalence_obj_vertex] using h
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory_isStable R A
+  have h := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence R (PerfectDGModule R A)).functor.map_isZero
+    (dgKInputPerfect_vertex_isZero R A hA (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex M)).isZeroHo
+  simpa only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableHomotopyEquivalence_obj_vertex] using h
 
 /-- 固定 ν が零なら元の主 Perf の全対象が零。 -/
 theorem dgKInputClassicalPerfect_isZero (X : PerfectModuleCategory R A) : IsZero X := by

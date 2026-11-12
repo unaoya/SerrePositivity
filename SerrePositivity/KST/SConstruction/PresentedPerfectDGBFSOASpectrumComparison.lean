@@ -42,7 +42,7 @@ lemma presentedPerfectDGBFSOASpectrumComparison_component
 /-- 同じ実スペクトル比較は、零段を含む全段で全基点 π 同型。 -/
 lemma presentedPerfectDGBFSOASpectrumComparison_levelwise
     (C : PerfDGInput.{u, v} A) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFSOASpectrumComparison A C).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((presentedPerfectDGBFSOASpectrumComparison A C).app n).right :=
   KanSequence.rectify_levelwise _ _ _ (presentedPerfectDGBFSOAComparison_piIsomorphism A C) n
 
 /-- 同じ実 BF 比較射は全整数次数で π 同型。 -/

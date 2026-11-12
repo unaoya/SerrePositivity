@@ -30,7 +30,7 @@ abbrev frame (A : SimplexCategory ⥤ C) : SimplexCategory ⥤ ShrinkHoms C :=
   A ⋙ (SmallHomModel.equivalence.{w} C).inverse
 
 abbrev hom (A : SimplexCategory ⥤ C) : C ⥤ SSet.{w} :=
-  (SmallHomModel.equivalence.{w} C).inverse ⋙ cosimplicialHom (frame A)
+  (SmallHomModel.equivalence.{w} C).inverse ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (frame A)
 
 abbrev functor (A : SimplexCategory ⥤ C) : SSet.{w} ⥤ C :=
   Realization.functor (frame A) ⋙ (SmallHomModel.equivalence.{w} C).functor
@@ -49,9 +49,9 @@ def frameIso (A : SimplexCategory ⥤ C) :
 
 /-- This is an actual natural simplicial isomorphism in the common universe. -/
 def homLiftIso (A : SimplexCategory ⥤ C) :
-    hom A ⋙ SSet.uliftFunctor.{v,w} ≅ cosimplicialHom A ⋙ SSet.uliftFunctor.{w,v} :=
-  (adjunctionHomIso (SmallHomModel.equivalence.{w} C).toAdjunction (frame A)).symm ≪≫
-    Functor.isoWhiskerRight (cosimplicialHomBifunctor.mapIso (frameIso A).symm.op)
+    hom A ⋙ SSet.uliftFunctor.{v,w} ≅ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A ⋙ SSet.uliftFunctor.{w,v} :=
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso (SmallHomModel.equivalence.{w} C).toAdjunction (frame A)).symm ≪≫
+    Functor.isoWhiskerRight (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor.mapIso (frameIso A).symm.op)
       SSet.uliftFunctor.{w,v}
 
 lemma frame_reedyCofibrant (A : SimplexCategory ⥤ C)

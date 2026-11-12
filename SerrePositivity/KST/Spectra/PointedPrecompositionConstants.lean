@@ -21,8 +21,8 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 同じ前合成作用の頂点は、元の同じ射による前合成を表す。 -/
 lemma preAction_vertex {W D : PointedSimplicialSet.{u}} (f : W ⟶ D)
     (E : PointedSimplicialSet.{u}) :
-    (preAction W D E).right.app _ (familyVertex f) = familyVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f E) := by
-  change (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W (PointedObject.basedHom D E) E).hom.right.app _
+    (preAction W D E).right.app _ (familyVertex f) = familyVertex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f E) := by
+  change (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W (PointedObject.basedHom D E) E).hom.right.app _
     ((PointedObject.basedHomMap W (transpose (𝟙 (PointedObject.basedHom D E)))).right.app _
       (familyVertex f)) = _
   rw [familyVertex_post, ← familyVertex_transpose, transpose_evaluation_pre]
@@ -31,7 +31,7 @@ lemma preAction_vertex {W D : PointedSimplicialSet.{u}} (f : W ⟶ D)
 lemma VerticalPath.basedPre_path_const {W D : PointedSimplicialSet.{u}} {a b : W ⟶ D}
     (H : VerticalPath (PointedObject.toPoint D) a b)
     (h : H.path = SSet.const (familyVertex a)) (E : PointedSimplicialSet.{u}) :
-    (H.basedPre E).path = SSet.const (familyVertex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a E)) := by
+    (H.basedPre E).path = SSet.const (familyVertex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a E)) := by
   rw [VerticalPath.basedPre_action_path, h, SSet.const_comp, preAction_vertex]
 
 /-- 一定の実辺を評価したホモトピーは、元の始点の射で全区間が一定。 -/
@@ -45,9 +45,9 @@ lemma VerticalPath.homotopy_h_of_path_const {A E C : PointedSimplicialSet.{u}}
 lemma VerticalPath.basedPre_projection_constant {A B C : PointedSimplicialSet.{u}}
     {p : B ⟶ C} {a b : A ⟶ B} (H : VerticalPath p a b)
     (E : PointedSimplicialSet.{u}) :
-    ((H.forgetProjection.basedPre E).pre (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p E)).homotopy.h =
+    ((H.forgetProjection.basedPre E).pre (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p E)).homotopy.h =
       fst (PointedObject.basedHom C E).right (Δ[1] : SSet.{u}) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (a ≫ p) E).right := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (a ≫ p) E).right := by
   have hc : (H.forgetProjection.basedPost p).path =
       SSet.const (familyVertex (a ≫ p)) := H.over
   have hk := (H.forgetProjection.basedPost p).basedPre_path_const hc E

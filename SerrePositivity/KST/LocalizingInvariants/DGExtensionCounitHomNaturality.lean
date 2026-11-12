@@ -78,10 +78,10 @@ lemma dgExtensionCounitHomNaturality (M N : RightModule R E) :
       rw [functorExtensionCounit_eval]
 
 /-- 元の余単位射を全成分に持つ厳密 dg 自然変換。 -/
-def dgExtensionCounitStrict : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
+def dgExtensionCounitStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     ((dgModuleRestriction R D E F.op).comp (dgModuleExtension R D E F))
     (DGFunctor.id (RightModule R E)) :=
-  SerrePositivity.InfinityCategories.dgModuleStrictNatTransOfHomNaturality R E
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R E
     (fun M => functorExtensionCounit R D E F M) (fun M N => by
       change _ = 𝟙 _ ≫ _
       rw [Category.id_comp]

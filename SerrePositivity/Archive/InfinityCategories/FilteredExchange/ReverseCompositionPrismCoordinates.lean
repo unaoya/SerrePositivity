@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionReverse
-public import SerrePositivity.InfinityCategories.F1.Transport.PointSliceReverseCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionReverse
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointSliceReverseCoordinates
 
 /-!
 概要：元の反転合成 prism の錐の射を、元の反転した合成単体で全次数に計算する。

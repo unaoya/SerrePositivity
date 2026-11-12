@@ -20,15 +20,15 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 /-- 概要：実 S 零化面の下辺は同じ完備化付き列の固定 ν 包含辺そのもの。
 方針：四辺回収と同じ Cat^perf の全一単体回収を使用する。
 規約：辺の代表や包含射を選び直さない。使われ方：Sp の包含境界。 -/
-lemma dgOdotMilnorPerfectNullSquare_nu_inclusion (h : DGGluingMilnorSquare R d) :
-    squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+lemma dgOdotMilnorPerfectNullSquare_nu_inclusion (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgOdotMilnorNuPerfectSequence R d h).verdier.inclusion
         (dgOdotMilnorNuPerfectSequence R d h).left_complete
         (dgOdotMilnorNuPerfectSequence R d h).middle_complete).edge := by
   rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).1]
   change SSet.yonedaEquiv.symm ((dgKInputPerfectNu R).app _
-    (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge) = _
   exact congrArg (fun x : perfectStableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputPerfectNu_edge R (dgOdotMilnorFlatKernelInputMap R d))
 
@@ -37,14 +37,14 @@ lemma dgOdotMilnorPerfectNullSquare_nu_inclusion (h : DGGluingMilnorSquare R d) 
 規約：実列の右射への比較は既構成の全関手同型を使用する。
 使われ方：Sp の指定商境界と実完備化後射影の照合。 -/
 lemma dgOdotMilnorPerfectNullSquare_nu_projection :
-    squareRightEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgOdotMilnorCellProjectionExactMap R d)
         (dgKInputStableValue_isIdempotentComplete R (dgOdotMilnorCellInput R d))
         (dgKInputStableValue_isIdempotentComplete R (dgOdotMilnorResolvedInput R d))).edge := by
   rw [← Category.assoc, (dgOdotMilnorPerfectNullSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputPerfectNu R).app _
-    (coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorCellProjectionInputMap R d)).edge) = _
   exact congrArg (fun x : perfectStableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputPerfectNu_edge R (dgOdotMilnorCellProjectionInputMap R d))
 

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxCategory
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSequence
-public import SerrePositivity.InfinityCategories.Derived.Lax.LaxQuotientLegComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxQuotientLegComparison
 
 /-! # 元の lax pullback の商と冪等完備化の入力
 概要：実 Verdier 商とその完備化を保持し、Cat^perf の列と LT の二脚を定義する。
@@ -14,34 +14,34 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 
 /-- 元の lax pullback の実商と、その実冪等完備化を保持する入力。 -/
-structure PerfectLaxQuotient {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B) where
-  left : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
-  rawQuotient : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
-  right : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}
-  inclusion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap left (laxCategory p q)
-  rawProjection : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) rawQuotient
-  isVerdier : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence inclusion rawProjection
-  left_complete : IsIdempotentComplete left.obj
-  c_complete : IsIdempotentComplete C.obj
-  d_complete : IsIdempotentComplete D.obj
-  completion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap rawQuotient right
-  isCompletion : IsIdempotentCompletion completion.hom
+structure PerfectLaxQuotient {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B) where
+  left : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}
+  rawQuotient : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}
+  right : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}
+  inclusion : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap left (laxCategory p q)
+  rawProjection : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) rawQuotient
+  isVerdier : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence inclusion rawProjection
+  left_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete left.obj
+  c_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj
+  d_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj
+  completion : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap rawQuotient right
+  isCompletion : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion completion.hom
 
 namespace PerfectLaxQuotient
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
 
 include d in
 /-- 元の二入力から証明した、同じ lax pullback の完備性。 -/
-lemma middle_complete : IsIdempotentComplete (laxCategory p q).obj :=
+lemma middle_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (laxCategory p q).obj :=
   perfectLaxCategory_isIdempotentComplete p q d.c_complete d.d_complete
 
 /-- 同じ元の完備化先の完備性。 -/
-lemma right_complete : IsIdempotentComplete d.right.obj := d.isCompletion.1
+lemma right_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete d.right.obj := d.isCompletion.1
 
 /-- 元の実商・完備化をそのまま持つ Cat^perf の提示列。 -/
 def sequence : PerfectVerdierSequence.{u} where
@@ -54,20 +54,20 @@ def sequence : PerfectVerdierSequence.{u} where
   isCompletion := d.isCompletion
 
 /-- C 側の元の射影を含む、左端からの完全関手。 -/
-def cSource : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap d.left C :=
-  ⟨d.inclusion.hom ≫ (laxFst p q).hom, isExactFunctor_comp _ _⟩
+def cSource : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap d.left C :=
+  ⟨d.inclusion.hom ≫ (laxFst p q).hom, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _⟩
 
 /-- D 側の元の射影を含む、左端からの完全関手。 -/
-def dSource : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap d.left D :=
-  ⟨d.inclusion.hom ≫ (laxSnd p q).hom, isExactFunctor_comp _ _⟩
+def dSource : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap d.left D :=
+  ⟨d.inclusion.hom ≫ (laxSnd p q).hom, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _⟩
 
 /-- 未完備な商の元の C 側の脚を、同じ完備化へ送る。 -/
-def cLeg : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C d.right :=
-  ⟨(_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q d.rawProjection).hom ≫ d.completion.hom, isExactFunctor_comp _ _⟩
+def cLeg : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C d.right :=
+  ⟨(_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientCLeg p q d.rawProjection).hom ≫ d.completion.hom, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _⟩
 
 /-- 未完備な商の元の D 側の脚を、同じ完備化へ送る。 -/
-def dLeg : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D d.right :=
-  ⟨(_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q d.rawProjection).hom ≫ d.completion.hom, isExactFunctor_comp _ _⟩
+def dLeg : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D d.right :=
+  ⟨(_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientDLeg p q d.rawProjection).hom ≫ d.completion.hom, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _⟩
 
 /-- 提示列の包含は元の包含そのもの。 -/
 lemma sequence_inclusion : d.sequence.verdier.inclusion = d.inclusion := rfl

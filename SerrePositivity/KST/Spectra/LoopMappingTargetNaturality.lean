@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopMappingClasses
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
 public import SerrePositivity.KST.Spectra.PostLoopIntegerPower
 
 /-!
@@ -34,9 +34,9 @@ theorem classEquiv_post (A : PointedSimplicialSet.{u})
     classEquiv A Z (mapπ₀ (PointedObject.basedHomMap A
       (PointedObject.basedHomMap CirclePower.space.{u} f)).right a) =
       pointedGroupMap 0 (PointedObject.basedHomMap A f) (classEquiv A Y a) := by
-  let eY := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space.{u} Y
-  let eZ := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space.{u} Z
-  have hs := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post
+  let eY := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space.{u} Y
+  let eZ := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space.{u} Z
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post
     (C := PointedSimplicialSet.{u}) A CirclePower.space.{u} f
   change PointedObject.basedHomMap A
       (Y := PointedObject.basedHom CirclePower.space.{u} Y)
@@ -45,7 +45,7 @@ theorem classEquiv_post (A : PointedSimplicialSet.{u})
       eZ.hom = eY.hom ≫ PointedObject.basedHomMap CirclePower.space.{u}
         (Y := PointedObject.basedHom A Y) (Z := PointedObject.basedHom A Z)
         (PointedObject.basedHomMap A (Y := Y) (Z := Z) f) at hs
-  have hπ := _root_.SerrePositivity.InfinityCategories.Kan.mapPiZero_square _ _ eY.hom.right eZ.hom.right
+  have hπ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.mapPiZero_square _ _ eY.hom.right eZ.hom.right
     (congrArg Under.Hom.right hs) a
   change CirclePower.componentEquiv (PointedObject.basedHom A Z)
     (mapπ₀ eZ.hom.right (mapπ₀ _ a)) = _
@@ -59,7 +59,7 @@ theorem classEquiv_post (A : PointedSimplicialSet.{u})
 theorem post_target_integer (A Z : PointedSimplicialSet.{u}) [KanComplex Z.right]
     (z : ℤ) (a : LoopMappingClasses A (PointedObject.basedHom CirclePower.space.{u} Z)) :
     mapπ₀ (PointedObject.basedHomMap A (PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right a = a ^ z := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right a = a ^ z := by
   apply (groupEquiv A (PointedObject.basedHom CirclePower.space Z)).injective
   rw [map_zpow, groupEquiv_apply, groupEquiv_apply, classEquiv_post]
   exact groupMap_post_integer A Z z 0
@@ -72,9 +72,9 @@ theorem post_target_integer (A Z : PointedSimplicialSet.{u}) [KanComplex Z.right
 theorem target_integer_eq_inner_integer (A Z : PointedSimplicialSet.{u}) [KanComplex Z.right]
     (z : ℤ) :
     mapπ₀ (PointedObject.basedHomMap A (PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} z) Z))).right =
       mapπ₀ (PointedObject.basedHomMap A
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} z)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} z)
           (PointedObject.basedHom CirclePower.space.{u} Z))).right := by
   funext a
   exact (post_target_integer A Z z a).trans

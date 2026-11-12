@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitConstantTransportPointEndpoints
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramTransportMap
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramTransportComparisonValue
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoTransport
 
 /-!
 概要：元の定値余極限区間の輸送比較を、元の実長辺作用上の同じ一点比較へ戻す。

@@ -47,7 +47,7 @@ theorem dgKappaSuspensionKernelKComparison_piIsomorphism :
 
 /-- 明示屋根と指定 Perf 同値に条件付きで、同じ実比較辺は Sp で可逆。 -/
 theorem dgKappaSuspensionKernelKComparison_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionKernelKComparison R D I ρ e)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgKappaSuspensionKernelKComparison_piIsomorphism R D I ρ e)
 
@@ -60,7 +60,7 @@ def dgKappaSuspensionOriginalStructureMap :
 
 /-- 明示屋根と指定 Perf 同値に条件付きで、元の核比較と構造射を保持する同じ実合成二胞体。 -/
 def dgKappaSuspensionOriginalStructureTriangle :=
-  coherentNerveCompStruct (dgKappaSuspensionKernelKComparison R D I ρ e)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (dgKappaSuspensionKernelKComparison R D I ρ e)
     (ρ.nativeStructureBFMap R D I Z)
 
 end SerrePositivity.KST.NonConnective

@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransportAlgebra
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedRightFamilyActionNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPairTensor
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportAlgebra
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportAlgebra
 
 /-!
 概要：全右 Hom 比較の輸送作用を、元の始点同型と元の普遍輸送の終点の作用へ同定する。

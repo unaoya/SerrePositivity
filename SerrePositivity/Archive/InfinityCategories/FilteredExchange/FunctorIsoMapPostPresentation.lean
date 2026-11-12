@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorComposition
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoPairPresentation
 
 /-!

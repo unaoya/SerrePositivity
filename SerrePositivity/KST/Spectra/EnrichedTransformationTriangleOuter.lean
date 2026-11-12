@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderBridge
-public import SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle
 
 /-!
 概要：豊穣自然変換の因子分解の三角形の外辺を、元の自然変換の円柱と照合する。
@@ -28,9 +28,9 @@ variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCatego
 /-- 因子分解の三角形の外辺は、元の自然変換の二対象の円柱。 -/
 lemma functor_outer :
     (EnrichedOrderedCylinder.reindex (C := C) (SimplexCategory.δ (1 : Fin 3)).toOrderHom).comp
-        SSet (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ ζ hc) =
+        SSet (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle.functor F G H η θ ζ hc) =
       (EnrichedOrderedCylinder.bridge (C := C) (𝟙 (𝟙_ SSet.{u}))).comp SSet
-        (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.evaluationFunctor (𝟙_ SSet.{u}) F H ζ) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.evaluationFunctor (𝟙_ SSet.{u}) F H ζ) := by
   apply EnrichedFunctor.ext SSet
     (fun X ↦ by rcases X with ⟨j, x⟩; fin_cases j <;> rfl)
   rintro ⟨j, x⟩ ⟨k, y⟩

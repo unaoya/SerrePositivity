@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFStepWeakEquivalence
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFFirstProperties
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
 
 /-! # 元の前向き弱比較を保持する実 BF 帰納データ
 概要：Bᵣ→K_(r+1) と Kan 性・全 Hom 自然性・弱比較を同じ帰納データに保持する。
@@ -33,7 +33,7 @@ structure PresentedPerfectDGBFStage (r : ℕ) where
 def presentedPerfectDGBFInitialStage : PresentedPerfectDGBFStage.{u, v} A 0 where
   functor := presentedPerfectDGBFFirstFunctor A
   comparison := presentedPerfectDGBFFirstComparison A
-  naturality := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  naturality := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (presentedPerfectDGBFFirstComparisonTransformation A)
     (presentedPerfectDGBFFirstComparison A)
     (presentedPerfectDGBFFirstComparisonTransformation_app A)

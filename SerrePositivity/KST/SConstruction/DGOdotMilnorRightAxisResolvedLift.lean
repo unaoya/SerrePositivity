@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingCellRightAxisQuotientLift
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorResolvedInput
-public import SerrePositivity.InfinityCategories.Derived.DGGluingCellProjectiveInput
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGGluingCellProjectiveInput
 
 /-!
 概要：元 Milnor gluing の中央 dg 射を同じ resolved 商包含へ特殊化する。
@@ -15,24 +15,24 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories LocalizingInvariants
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => dgAlgebraCategory R d.source
-local notation "C" => DGSmallPerfectArrowTarget R (A) (dgAlgebraCategory R d.left)
-  (dgAlgebraMap R d.top)
-local notation "D" => DGSmallPerfectArrowTarget R (A) (dgAlgebraCategory R d.right)
-  (dgAlgebraMap R d.side)
+local notation "A" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.source
+local notation "C" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top)
+local notation "D" => DGSmallPerfectArrowTarget R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side)
 local notation "V" => DGOdotCorner R d
-local notation "p" => dgSmallPerfectSquareLeftMap R (A) (dgAlgebraCategory R d.left)
-  (dgAlgebraCategory R d.right) (dgAlgebraCategory R d.corner)
-  (dgAlgebraMap R d.top) (dgAlgebraMap R d.side) (dgAlgebraMap R d.lower) (dgAlgebraMap R d.upper)
-local notation "q" => dgSmallPerfectSquareRightMap R (A) (dgAlgebraCategory R d.left)
-  (dgAlgebraCategory R d.right) (dgAlgebraCategory R d.corner)
-  (dgAlgebraMap R d.top) (dgAlgebraMap R d.side) (dgAlgebraMap R d.lower) (dgAlgebraMap R d.upper)
+local notation "p" => dgSmallPerfectSquareLeftMap R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.corner)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.lower) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.upper)
+local notation "q" => dgSmallPerfectSquareRightMap R (A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.corner)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.lower) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.upper)
 local notation "M" => dgHomGluingBimodule R (C) (D) (V) (p) (q)
-local notation "z" => dgSmallPerfectEnvelopeZero R (dgAlgebraCategory R d.left) _ _
-local notation "hz" => dgSmallPerfectEnvelopeZero_isZero R (dgAlgebraCategory R d.left) _ _
+local notation "z" => dgSmallPerfectEnvelopeZero R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left) _ _
+local notation "hz" => dgSmallPerfectEnvelopeZero_isZero R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.left) _ _
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
-local notation "N" => resolvedDGNullObjects R (B)
+local notation "N" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
   (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)))
 local notation "Q" => DGQuotient.QuotientObject (P) (N)
 
@@ -65,14 +65,14 @@ def dgOdotMilnorResolvedInclusion : DGFunctor R (P) (Q) :=
 使われ方：二つの経路の商の照合。 -/
 lemma dgOdotMilnorResolvedInclusion_input :
     (dgOdotMilnorCellProjectionInputMap R d).down =
-      dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
         (dgOdotMilnorResolvedInclusion R d) := rfl
 
 /-- 概要：同じ右軸・恒等 graph の二つの射影性証拠。
 方針：D の無条件な同じ固定解像度の定理を特殊化する。
 規約：解像度を変更しない。使われ方：中央 dg 射の追加射影性入力を除去。 -/
 def dgOdotMilnorRightAxisProjective : DGOdotMilnorRightAxisProjectiveInput R d :=
-  dgGluingCellRightAxisProjectiveInput R (C) (D) (M) (z) (hz)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgGluingCellRightAxisProjectiveInput R (C) (D) (M) (z) (hz)
 
 local notation "h" => dgOdotMilnorRightAxisProjective R d
 
@@ -129,13 +129,13 @@ def dgOdotMilnorRightAxisInput : PerfDGInput.{u, u + 1} R :=
 使われ方：三認証へ接続する中央辺。 -/
 def dgOdotMilnorRightAxisInputMap :
     dgOdotMilnorCellInput R d ⟶ dgOdotMilnorRightAxisInput R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgOdotMilnorRightAxisLift R d))
 
 /-- 概要：固定 S の同じ中央辺の完全な ν 像。
 方針：固定界面に実辺を渡す。規約：native 全比較は別に構成する。
 使われ方：中央辺の ν 比較の始点。 -/
-abbrev dgOdotMilnorRightAxisExactMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+abbrev dgOdotMilnorRightAxisExactMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotMilnorCellInput R d))
     (dgKInputStableValue R (dgOdotMilnorRightAxisInput R d)) :=
   dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d)

@@ -1,0 +1,16 @@
+{
+  "module": "SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory",
+  "old_private_constant": "_private.SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.B",
+  "new_private_constant": "_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory.0.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.B",
+  "level_params": [
+    "u_1"
+  ],
+  "types_identical_after_exact_private_constant_rename": true,
+  "before_type_sha256": "d163a414315904e2915efb5fcda2209ea39c1e9768466b4bde67e700f70fab94",
+  "after_type_sha256": "8fb7ed6c819241cd914ac077c026e2b27fb217bc759877c4ab90b499a2c04ab9",
+  "before_olean_sha256": "2bc81d04542cdbc1278e073066267837ceb896f1c4e7c07b8f79560f43ae5091",
+  "after_olean_sha256": "2bf1268e2756646eeec1d8b8670323e848f60a41327b64f3533b7e02fbf65eb6",
+  "source_sha256": "44c0d217b3414edede183cf1c31227e0523d0bd6d3c425c8b63893579f0c8caf",
+  "before_type": "Lean.Expr.app\n  (Lean.Expr.const `Small [Lean.Level.param `u_1, Lean.Level.zero])\n  (Lean.Expr.const\n    (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `_private.SerrePositivity.InfinityCategories.Derived.Presentable.DerivedCategory 0) \"SerrePositivity\") \"InfinityCategories\") \"B\")\n    [])",
+  "after_type": "Lean.Expr.app\n  (Lean.Expr.const `Small [Lean.Level.param `u_1, Lean.Level.zero])\n  (Lean.Expr.const\n    (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkStr (Lean.Name.mkNum `_private.SerrePositivity.InfinityCategories.Project.DerivedCategories.Presentable.DerivedCategory 0) \"SerrePositivity\") \"InfinityCategories\") \"Project\") \"DerivedCategories\") \"Presentable\") \"B\")\n    [])"
+}

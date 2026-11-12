@@ -48,11 +48,11 @@ abbrev sourceResolution : Index C ⥤ (FramedResolution C)ᵒᵖ :=
 
 /-- Contravariant input transport is the actual resolution Hom functor. -/
 abbrev input (Z : C) : (Index C)ᵒᵖ ⥤ SSet.{v} :=
-  (targetResolution C).op ⋙ ResolutionObject.diagrams.op ⋙ cosimplicialHomBifunctor ⋙
+  (targetResolution C).op ⋙ ResolutionObject.diagrams.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
     (evaluation C SSet.{v}).obj Z
 
 lemma input_map {q r : Index C} (f : q ⟶ r) (Z : C) :
-    (input C Z).map f.op = (cosimplicialHomMap f.hom.2.diagram).app Z := rfl
+    (input C Z).map f.op = (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.hom.2.diagram).app Z := rfl
 
 variable [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

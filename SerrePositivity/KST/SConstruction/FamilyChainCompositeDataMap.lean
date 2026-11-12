@@ -20,7 +20,7 @@ open scoped Simplicial
 def FamilyChainCompositeData.map {U E B : SSet.{u}} {f g : U ⟶ E}
     {c : FamilyHomotopyChain f g} (D : FamilyChainCompositeData c) (p : E ⟶ B) :
     FamilyChainCompositeData (familyHomotopyChainMap c p) :=
-  ⟨functorHomotopyPostcomp D.homotopy p, familyChainWitnessPostcomp p D.witness⟩
+  ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp D.homotopy p, familyChainWitnessPostcomp p D.witness⟩
 
 /-- 後合成した全円柱は、元の同じ全円柱の後合成そのもの。 -/
 lemma FamilyChainCompositeData.map_h {U E B : SSet.{u}} {f g : U ⟶ E}

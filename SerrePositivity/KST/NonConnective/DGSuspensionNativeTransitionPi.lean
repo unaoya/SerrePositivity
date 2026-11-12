@@ -67,9 +67,9 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ)
   (A : PerfDGInput.{u, max (u + 1) v} R)
   (β : ∀ n : ℕ,
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
 
 /-- 概要：同じ元の構造辺の始点で評価した反復 loop の次数移動。
 方針：Sp 正本の自然同型を同じ反復段で評価する。
@@ -78,9 +78,9 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 @[no_expose] def dgSuspensionStructureLoopSourcePiIso (n : ℕ) (j : ℤ) :
     ((hoFunctor.map (End.of OmegaSpectrum.nativeLoop ^ n).asHom).toFunctor ⋙
       SpectrumHo.piFunctor j).obj (HomotopyCategory.mk
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))) ≅
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))) ≅
     (SpectrumHo.piFunctor (j + n)).obj (HomotopyCategory.mk
-      (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))) :=
   (transitionLoopPiIso n j).app _
 
 /-- 概要：同じ元の構造辺の終点で評価した反復 loop の次数移動。
@@ -91,10 +91,10 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
     ((hoFunctor.map (End.of OmegaSpectrum.nativeLoop ^ n).asHom).toFunctor ⋙
       SpectrumHo.piFunctor j).obj (HomotopyCategory.mk
         (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-          (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1)))))) ≅
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1)))))) ≅
     (SpectrumHo.piFunctor (j + n)).obj (HomotopyCategory.mk
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1)))))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1)))))) :=
   (transitionLoopPiIso n j).app _
 
 /-- 概要：明示構造辺に条件付きで、元の全一単体の π 作用は次数移動と可換。

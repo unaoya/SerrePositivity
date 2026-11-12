@@ -32,8 +32,8 @@ instance relativeCofiberDiagrams_quasicategory {X : StableModel.{u}}
 
 /-- 相対 cofiber 図式は零対象・普遍四角形の閉性から実際に安定。 -/
 instance relativeCofiberDiagrams_isStable {X : StableModel.{u}}
-    (A B : ClosedStablePredicate X) : IsStable (relativeCofiberDiagrams A B) :=
-  inferInstanceAs (IsStable (closedSubcategory (relativeCofiberPredicate A B)))
+    (A B : ClosedStablePredicate X) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (relativeCofiberDiagrams A B) :=
+  inferInstanceAs (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (closedSubcategory (relativeCofiberPredicate A B)))
 
 /-- 相対 E(A,C,B) を安定な入力の模型として束ねる。 -/
 def relativeCofiberStableModel {X : StableModel.{u}} (A B : ClosedStablePredicate X) :
@@ -54,14 +54,14 @@ lemma relativeCofiber_vertex {X : StableModel.{u}} (A B : ClosedStablePredicate 
 /-- 相対 cofiber 図式から A への元の subobject の射。 -/
 def relativeCofiberSubobjectMap {X : StableModel.{u}} (A B : ClosedStablePredicate X) :
     relativeCofiberDiagrams A B ⟶ closedSubcategory A :=
-  fullSubcomplexLift A.predicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift A.predicate
     ((relativeCofiberInclusion A B).val ≫ (cofiberStableSubobject X).val)
     (fun v => (relativeCofiber_vertex A B v).1)
 
 /-- 相対 cofiber 図式から B への元の quotient の射。 -/
 def relativeCofiberQuotientMap {X : StableModel.{u}} (A B : ClosedStablePredicate X) :
     relativeCofiberDiagrams A B ⟶ closedSubcategory B :=
-  fullSubcomplexLift B.predicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift B.predicate
     ((relativeCofiberInclusion A B).val ≫ (cofiberStableQuotient X).val)
     (fun v => (relativeCofiber_vertex A B v).2)
 
@@ -69,13 +69,13 @@ def relativeCofiberQuotientMap {X : StableModel.{u}} (A B : ClosedStablePredicat
 lemma relativeCofiberSubobjectMap_ι {X : StableModel.{u}} (A B : ClosedStablePredicate X) :
     relativeCofiberSubobjectMap A B ≫ (closedStableInclusion A).val =
       (relativeCofiberInclusion A B).val ≫ (cofiberStableSubobject X).val :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 相対 quotient の射は B の包含を通すと元の評価を回収する。 -/
 lemma relativeCofiberQuotientMap_ι {X : StableModel.{u}} (A B : ClosedStablePredicate X) :
     relativeCofiberQuotientMap A B ≫ (closedStableInclusion B).val =
       (relativeCofiberInclusion A B).val ≫ (cofiberStableQuotient X).val :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 相対 subobject の射は完全。 -/
 def relativeCofiberSubobject {X : StableModel.{u}} (A B : ClosedStablePredicate X) :

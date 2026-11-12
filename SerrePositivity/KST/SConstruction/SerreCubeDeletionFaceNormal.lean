@@ -35,14 +35,14 @@ lemma serreCubeDeletionFaceNormal_point {n m : ℕ} (r : CubeDeletionFaceNormal 
   exact (Category.assoc _ _ _).symm
 
 /-- 入力削除の吸収は、元の同じ Serre 計算結果との合成を回収する。 -/
-lemma serreCubeDeletionFaceNormal_afterResult {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
+lemma serreCubeDeletionFaceNormal_afterResult {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
     (r : CubeFaceDeletionResult a m) :
     serreCubeDeletionFaceNormal A (cubeDeletionFaceNormalAfterResult d r) =
       serreCubeDeletionNormal A d ≫ serreCubeFaceDeletionResult A r := by
   cases r with
   | pure f => rfl
   | input i f =>
-    change serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) ≫
+    change serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalErase d i) ≫
       serreCubeFaceNormal A f = _
     rw [serreCubeDeletionNormal_erase]
     exact Category.assoc _ _ _

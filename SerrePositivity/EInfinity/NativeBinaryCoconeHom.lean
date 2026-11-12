@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
 
 /-!
 # Native な二項余錐の指定脚の類
@@ -23,22 +23,22 @@ open scoped Simplicial
 
 /-- 指定二点図式の第一脚を、元の第一頂点からの射として読む。 -/
 def binaryCoconeLeftHom {C : SSet.{u}} {x y : C _⦋0⦌}
-    (c : JoinCocone (binaryPointDiagram x y)) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y)) :
     (SSet.HomotopyCategory.mk x : C.HomotopyCategory) ⟶ SSet.HomotopyCategory.mk c.vertex := by
-  have h : SSet.yonedaEquiv (binaryPointLeft ≫ binaryPointDiagram x y) = x := by
-    rw [binaryPointLeft, binaryPointDiagram, coprod.inl_desc]
+  have h : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y) = x := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, coprod.inl_desc]
     exact SSet.yonedaEquiv.apply_symm_apply x
   exact eqToHom (congrArg SSet.HomotopyCategory.mk h.symm) ≫
-    SSet.Truncated.HomotopyCategory.homMk (c.leg binaryPointLeft)
+    SSet.Truncated.HomotopyCategory.homMk (c.leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft)
 
 /-- 指定二点図式の第二脚を、元の第二頂点からの射として読む。 -/
 def binaryCoconeRightHom {C : SSet.{u}} {x y : C _⦋0⦌}
-    (c : JoinCocone (binaryPointDiagram x y)) :
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y)) :
     (SSet.HomotopyCategory.mk y : C.HomotopyCategory) ⟶ SSet.HomotopyCategory.mk c.vertex := by
-  have h : SSet.yonedaEquiv (binaryPointRight ≫ binaryPointDiagram x y) = y := by
-    rw [binaryPointRight, binaryPointDiagram, coprod.inr_desc]
+  have h : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y) = y := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, coprod.inr_desc]
     exact SSet.yonedaEquiv.apply_symm_apply y
   exact eqToHom (congrArg SSet.HomotopyCategory.mk h.symm) ≫
-    SSet.Truncated.HomotopyCategory.homMk (c.leg binaryPointRight)
+    SSet.Truncated.HomotopyCategory.homMk (c.leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight)
 
 end SerrePositivity.EInfinity

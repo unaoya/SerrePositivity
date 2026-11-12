@@ -31,8 +31,8 @@ def shearIso : SpectrumHo.obj (Binary.obj (homotopyFiber f) Y) ≅
   exact asIso (SpectrumHo.hom (shear f s))
 
 /-- 実 BF 二項積と元の全空間の、元の Sp 内の同値。 -/
-def equivalence : VertexIso (coherentNerveVertex (Binary.obj (homotopyFiber f) Y))
-    (coherentNerveVertex X) := (shearIso f s hs).symm ≪≫ productVertexIso f s hs
+def equivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (Binary.obj (homotopyFiber f) Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) := (shearIso f s hs).symm ≪≫ productVertexIso f s hs
 
 lemma inverse_shear_left : SpectrumHo.hom (Binary.inl (homotopyFiber f) Y) ≫
     (shearIso f s hs).inv = SpectrumHo.hom (Binary.inl (homotopyFiber f) Y) := by

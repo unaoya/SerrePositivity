@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleOrdinaryFaces
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConePrism
-public import SerrePositivity.InfinityCategories.F1.Fibrations.LeftPrismEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LeftPrismEvaluation
 /-! 概要：大域三角形の各面を元の円柱と区間族へ同定する。
 方針：既存の左右 prism 評価式で全単体を同じ切断へ戻す。
 規約：全 K を保持。使われ方：元の評価三角形の全関手圏での合成。 -/
@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorConePrism_app_triangle {n : ℕ}
@@ -20,14 +20,14 @@ lemma normalizedTensorConePrism_app_triangle {n : ℕ}
     (ht : ∀ i, τ i = 0 ↔ t i = 0) :
     (normalizedTensorConePrism A X Y).app (Opposite.op ⦋n⦌) (t, c) =
       normalizedTensorTriangleFront A X Y c τ := by
-  have hc : SSet.yonedaEquiv ((leftPointStdSimplexIso n).inv ≫
-      joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c) ≫
+  have hc : SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.leftPointStdSimplexIso n).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c) ≫
       normalizedTensorConeJoin A X Y) = normalizedTensorConeSimplex A X Y c := by
     rw [normalizedTensorConeJoin_restrict_simplex]
-    change SSet.yonedaEquiv ((pointJoinStdSimplexIso n).inv ≫
-      (pointJoinStdSimplexIso n).hom ≫ _) = _
+    change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom ≫ _) = _
     rw [Iso.inv_hom_id_assoc, Equiv.apply_symm_apply]
-  have ht' : coherentLeftPrismCut (SSet.stdSimplex.objEquiv t).toOrderHom =
+  have ht' : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.coherentLeftPrismCut (SSet.stdSimplex.objEquiv t).toOrderHom =
       coneTriangleFrontIndex τ := by
     apply DFunLike.ext
     intro i
@@ -36,8 +36,8 @@ lemma normalizedTensorConePrism_app_triangle {n : ℕ}
     · simp [hi, (ht i).mp hi]
     · simp [hi, mt (ht i).mpr hi]
   change (normalizedTensorConeJoin A X Y).app (Opposite.op ⦋n⦌)
-    ((leftMappingSpacePrism _).app (Opposite.op ⦋n⦌) (t, c)) = _
-  rw [leftMappingSpacePrism_evaluate, hc, ht']
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.leftMappingSpacePrism _).app (Opposite.op ⦋n⦌) (t, c)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.leftMappingSpacePrism_evaluate, hc, ht']
   rfl
 
 lemma normalizedTensorTriangleMap_face01 :

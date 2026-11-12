@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Spectra.PointedEnrichment
 public import SerrePositivity.KST.Spectra.PointedHomotopyClasses
-public import SerrePositivity.InfinityCategories.Kan.EnrichedMappingLaws
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedMappingLaws
 
 /-! # 点つき写像のパラメーター族の合成
 概要：点つき内部 Hom の合成を、既存の頂点表示と前後合成へ接続する。
@@ -36,8 +36,8 @@ lemma pointedMappingComposition_vertex {X Y Z : PointedSimplicialSet.{u}}
 
 /-- 合成する族の源の制限を合成の前へ移せる。 -/
 lemma pointedMappingComposition_pre {X X' Y Z : PointedSimplicialSet.{u}} (a : X' ⟶ X) :
-    pointedMappingComposition X Y Z ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z).right =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y).right ▷ (PointedObject.basedHom Y Z).right ≫
+    pointedMappingComposition X Y Z ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z).right =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y).right ▷ (PointedObject.basedHom Y Z).right ≫
         pointedMappingComposition X' Y Z := by
   have h := eComp_eHomWhiskerRight SSet a Y Z
   rw [PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerRight_eq] at h
@@ -56,9 +56,9 @@ lemma pointedMappingComposition_post {X Y Z Z' : PointedSimplicialSet.{u}} (b : 
 lemma pointedMappingComposition_middle {X Y Y' Z : PointedSimplicialSet.{u}} (a : Y ⟶ Y') :
     (PointedObject.basedHomMap X a).right ▷ (PointedObject.basedHom Y' Z).right ≫
       pointedMappingComposition X Y' Z =
-    (PointedObject.basedHom X Y).right ◁ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z).right ≫
+    (PointedObject.basedHom X Y).right ◁ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z).right ≫
       pointedMappingComposition X Y Z := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.enriched_comp_middle SSet X a Z
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_comp_middle SSet X a Z
   rw [PointedEnrichment.whiskerLeft_eq, PointedEnrichment.whiskerRight_eq] at h
   exact h
 
@@ -69,7 +69,7 @@ lemma pointedMappingComposition_families_middle {P Q : SSet.{u}}
     (g : Q ⟶ (PointedObject.basedHom Y' Z).right) (a : Y ⟶ Y') :
     ((f ≫ (PointedObject.basedHomMap X a).right) ⊗ₘ g) ≫
         pointedMappingComposition X Y' Z =
-      (f ⊗ₘ (g ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z).right)) ≫ pointedMappingComposition X Y Z := by
+      (f ⊗ₘ (g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z).right)) ≫ pointedMappingComposition X Y Z := by
   rw [← tensorHom_comp_whiskerRight, Category.assoc, pointedMappingComposition_middle,
     ← Category.assoc, tensorHom_comp_whiskerLeft]
 
@@ -90,8 +90,8 @@ lemma pointedMappingComposition_families_pre {P Q : SSet.{u}}
     {X X' Y Z : PointedSimplicialSet.{u}}
     (f : P ⟶ (PointedObject.basedHom X Y).right)
     (g : Q ⟶ (PointedObject.basedHom Y Z).right) (a : X' ⟶ X) :
-    ((f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Y).right) ⊗ₘ g) ≫ pointedMappingComposition X' Y Z =
-      ((f ⊗ₘ g) ≫ pointedMappingComposition X Y Z) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z).right := by
+    ((f ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Y).right) ⊗ₘ g) ≫ pointedMappingComposition X' Y Z =
+      ((f ⊗ₘ g) ≫ pointedMappingComposition X Y Z) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z).right := by
   rw [← tensorHom_comp_whiskerRight, Category.assoc, ← pointedMappingComposition_pre,
     ← Category.assoc]
 

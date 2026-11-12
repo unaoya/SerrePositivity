@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.KZeroToTriangulatedMap
-public import SerrePositivity.InfinityCategories.Kan.FundamentalNerveHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FundamentalNerveHomotopy
 
 /-! # 可換群の一対象圏における loop の自然性
 概要：自然変換の両端補正は閉じた辺の評価では相殺する。

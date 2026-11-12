@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCommaContraction
-public import SerrePositivity.InfinityCategories.ModelBridge.ResolutionSpecialSpans
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ResolutionSpecialSpans
 public import Mathlib.CategoryTheory.MorphismProperty.Comma
 
 /-!
@@ -42,7 +42,7 @@ abbrev TrivialFibrationOver (X : C) := (trivialFibrations C).Over ⊤ X
 def resolutionOverFunctor (q : CofibrantResolution (C := C) simplex X) :
     SimplexCategory ⥤ TrivialFibrationOver X where
   obj n := MorphismProperty.Over.mk ⊤ (q.augmentation.app n ≫ 𝟙 X)
-    ((trivialFibrations C).comp_mem _ _ (resolutionAugmentation_trivialFibration q n)
+    ((trivialFibrations C).comp_mem _ _ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.resolutionAugmentation_trivialFibration q n)
       ((trivialFibrations C).id_mem X))
   map θ := MorphismProperty.Over.homMk (q.obj.map θ)
     (Over.w ((FrameLift.overFunctor q.obj q.augmentation (𝟙 X)).map θ))

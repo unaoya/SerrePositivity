@@ -18,50 +18,50 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.InfinityCategories
-open Zigzag.FirstBoundary TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+open TwoSidedDiagram.FixedVertices
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeBackwardFirstTargetRightCategoryDiagramIso :
-    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
       (freeBackwardFirstTargetObjectEquiv C w X Y) (freeBackwardFirstTargetObjectEquiv_naturality C
         w X Y) Z ≅
     (Functor.const SimplexCategoryᵒᵖ).obj
-      (Cat.of (Zigzag C.weakEquivalences (Word.cons .backward w) Z Y)) :=
+      (Cat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag C.weakEquivalences (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y)) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     apply Cat.Hom.ext
-    change ((𝟭 _) ⋙ backwardFunctor (W := C.weakEquivalences) (w := w) (Y := Y) (𝟙 Z)
+    change ((𝟭 _) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagFirstBoundaryBackwardMaps.backwardFunctor (W := C.weakEquivalences) (w := w) (Y := Y) (𝟙 Z)
       (C.weakEquivalences.id_mem Z)) ⋙
       (𝟭 _) = (𝟭 _) ⋙ (𝟭 _)
-    simp only [backwardFunctor_id, CategoryTheory.Functor.id_comp])
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardFunctor_id, CategoryTheory.Functor.id_comp])
 
 def freeBackwardFirstRightGraphDiagramIso :
     rightDiagram (D := freeBackwardBackwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeBackwardFirstMarkedObjectEquiv_naturality C w X Y) Z ⋙ nerveFunctor ≅
-    FixedObjectDiagram.graphDiagram (freeResolution C) (freeResolutionObject C)
-      (fun θ X => freeResolutionObject_naturality C θ X) (Word.cons .backward w) Z Y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram (freeResolution C) (freeResolutionObject C)
+      (fun θ X => freeResolutionObject_naturality C θ X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     change nerveFunctor.map ((rightDiagram (D := freeBackwardBackwardDiagram C w X Y)
       (freeFirstMarkedObjectEquiv C) (freeBackwardFirstMarkedObjectEquiv_naturality C w X Y) Z).map
         θ) ≫
-        𝟙 _ = (𝟙 _) ≫ nerveFunctor.map ((FixedObjectDiagram.zigzagDiagram (freeResolution C)
+        𝟙 _ = (𝟙 _) ≫ nerveFunctor.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram (freeResolution C)
           (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X)
-          (Word.cons .backward w) Z Y).map θ)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y).map θ)
     have he := (freeBackwardFirstRightCategoryDiagramIso C w X Y Z).hom.naturality θ
     change _ ≫ 𝟙 _ = (𝟙 _) ≫ _ at he
     have hh := congrArg nerveFunctor.map he
     simpa only [Category.comp_id, Category.id_comp] using hh)
 
 def freeBackwardFirstTargetRightGraphDiagramIso :
-    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+    rightDiagram (D := (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
       (freeBackwardFirstTargetObjectEquiv C w X Y) (freeBackwardFirstTargetObjectEquiv_naturality C
         w X Y) Z ⋙
         nerveFunctor ≅
-    (Functor.const SimplexCategoryᵒᵖ).obj (graph C.weakEquivalences (Word.cons .backward w) Z Y) :=
+    (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph C.weakEquivalences (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w) Z Y) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     change nerveFunctor.map ((rightDiagram
-      (D := (Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+      (D := (Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
       (freeBackwardFirstTargetObjectEquiv C w X Y)
       (freeBackwardFirstTargetObjectEquiv_naturality C w X Y) Z).map θ) ≫
         𝟙 _ = (𝟙 _) ≫ 𝟙 _

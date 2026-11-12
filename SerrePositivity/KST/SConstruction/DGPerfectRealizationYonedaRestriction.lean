@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   (J : DGFunctor R C (PerfectDGModule R E))
@@ -25,7 +25,7 @@ local notation "ε" => dgPerfectRealizationYonedaStrictComparison R E C J
 /-- 概要：同じ元代表評価全比較の元入力関手への制限。
 方針：元評価成分を同じ実対象で評価する。
 規約：元全 Hom を保持。使われ方：実 gluing の二軸の全評価比較。 -/
-def dgPerfectRealizationYonedaRestrictedStrictComparison : StrictNatTrans (A) (B) where
+def dgPerfectRealizationYonedaRestrictedStrictComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (A) (B) where
   app x := (ε).app (F.obj x)
   naturality z := (ε).naturality ((F.map _ _).f _ z)
 
@@ -57,8 +57,8 @@ lemma dgPerfectRealizationYonedaRestrictedStrictComparison_arrow (x : P) :
 規約：元評価全ホモトピーを保持。
 使われ方：元 gluing の左右の全評価同型を保つ実 cone 比較。 -/
 def dgPerfectRealizationYonedaRestrictedNerveComparison :
-    FunctorIso (dgNerve.map (A)) (dgNerve.map (B)) :=
-  dgModuleFunctorIsoOfStrictNatTrans R E (F := (A)) (G := (B))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (A)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorIsoOfStrictNatTrans R E (F := (A)) (G := (B))
     (dgPerfectRealizationYonedaRestrictedStrictComparison R E C J F)
     (fun x => dgPerfectRealizationYonedaMap R E C J (F.obj x))
     (dgPerfectRealizationYonedaRestrictedStrictComparison_cycle R E C J F)

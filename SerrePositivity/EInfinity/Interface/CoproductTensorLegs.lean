@@ -23,13 +23,13 @@ open scoped Simplicial
 
 variable (S : Type u) [CommRing S] (E : EInfinityCore.{u})
   (x y : (E.CAlg S) _⦋0⦌) (P : E.CAlg S ⟶ E.CAlg S)
-  (c : JoinCocone (binaryPointDiagram x y)) (hv : c.vertex = atVertex P x)
-  (θ : FunctorIso (P ≫ E.forget S) (E.forget S ≫ tensorWith (atVertex (E.forget S) y)))
+  (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y)) (hv : c.vertex = atVertex P x)
+  (θ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (P ≫ E.forget S) (E.forget S ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith (atVertex (E.forget S) y)))
 
 /-- 全関手版の成分を、指定余錐の同じ頂点からの同型に正規化する。 -/
 def tensorComparisonAtCocone :
-    VertexIso (atVertex (E.forget S) c.vertex)
-      (atVertex (tensorWith (atVertex (E.forget S) y)) (atVertex (E.forget S) x)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (atVertex (E.forget S) c.vertex)
+      (atVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.tensorWith (atVertex (E.forget S) y)) (atVertex (E.forget S) x)) :=
   eqToIso (congrArg (fun z => SSet.HomotopyCategory.mk (atVertex (E.forget S) z)) hv) ≪≫ θ.app x
 
 /-- HA 3.2.4.7 の指定二包含との適合条件。
@@ -41,9 +41,9 @@ def TensorCoproductLegCompatibility : Prop :=
     (ηy : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
         SSet.HomotopyCategory.mk y),
   ∃ (unitX : 𝟙_ (Complex S) ⟶
-        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
     (unitY : 𝟙_ (Complex S) ⟶
-        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
     NormalizedTensorUnit S E x ηx unitX ∧ NormalizedTensorUnit S E y ηy unitY ∧
     (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeLeftHom c) ≫
         (tensorComparisonAtCocone S E x y P c hv θ).hom =

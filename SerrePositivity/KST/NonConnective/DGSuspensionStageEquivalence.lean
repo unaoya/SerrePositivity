@@ -25,32 +25,32 @@ local instance stageEquivalenceHomKan (X Y : OmegaSpectrum.{w}) :
 variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
   (s : DGSuspensionStageProvider.{u, v} R κ) (A : PerfDGInput.{u, max (u + 1) v} R)
   (β : ∀ n : ℕ,
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))))
 
 /-- 明示構造辺と同じ隣接辺の可逆性に条件付きで、同じ実遷移射は全整数 π 同型。 -/
 theorem dgSuspensionNativeSequenceMap_piIsomorphism_of_isInvertible (n : ℕ)
-    (hf : IsInvertibleEdge (coherentNerveEdge (dgSuspensionNativeSequenceMap R s A β n))) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionNativeSequenceMap R s A β n))) :
     OmegaSpectrum.PiIsomorphism (dgSuspensionNativeSequenceMap R s A β n) := by
   let f := dgSuspensionNativeSequenceMap R s A β n
-  let q := Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated
+  let q := Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated
   letI : IsIso q := hf
-  obtain ⟨e, he⟩ := homotopyCategory_homMk_surjective _ _ (inv q)
-  let g := coherentNerveEdgeToHom (SSet.Edge.ofTruncated e)
-  have hg : Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated = inv q := by
-    rw [coherentNerveEdge_hom]
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _ (inv q)
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (SSet.Edge.ofTruncated e)
+  have hg : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated = inv q := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom]
     exact he
-  have hfg : Truncated.HomotopyCategory.homMk (coherentNerveEdge (f ≫ g)).toTruncated =
-      Truncated.HomotopyCategory.homMk (coherentNerveEdge (𝟙 _)).toTruncated := by
-    rw [← Truncated.HomotopyCategory.homMk_comp_homMk (coherentNerveCompStruct f g).toTruncated,
-      hg, IsIso.hom_inv_id, coherentNerveEdge_id]
+  have hfg : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (f ≫ g)).toTruncated =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 _)).toTruncated := by
+    rw [← Truncated.HomotopyCategory.homMk_comp_homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).toTruncated,
+      hg, IsIso.hom_inv_id, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id]
     change 𝟙 _ = Truncated.HomotopyCategory.homMk (Truncated.Edge.id _)
     rw [Truncated.HomotopyCategory.homMk_id]
-  have hgf : Truncated.HomotopyCategory.homMk (coherentNerveEdge (g ≫ f)).toTruncated =
-      Truncated.HomotopyCategory.homMk (coherentNerveEdge (𝟙 _)).toTruncated := by
-    rw [← Truncated.HomotopyCategory.homMk_comp_homMk (coherentNerveCompStruct g f).toTruncated,
-      hg, IsIso.inv_hom_id, coherentNerveEdge_id]
+  have hgf : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (g ≫ f)).toTruncated =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 _)).toTruncated := by
+    rw [← Truncated.HomotopyCategory.homMk_comp_homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct g f).toTruncated,
+      hg, IsIso.inv_hom_id, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id]
     change 𝟙 _ = Truncated.HomotopyCategory.homMk (Truncated.Edge.id _)
     rw [Truncated.HomotopyCategory.homMk_id]
   intro j

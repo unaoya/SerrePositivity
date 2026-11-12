@@ -91,8 +91,8 @@ def fullOriginalMap (X Y : OmegaSpectrum.{u}) :
 規約：指定境界の充填を仮定しない。
 使われ方：元の全族を厳密に回収する比較。 -/
 lemma fullOriginalMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (fullOriginalMap X Y) :=
-  ⟨trivialKanFibrations.of_isPullback
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (fullOriginalMap X Y) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.of_isPullback
     (IsPullback.of_hasPullback
       (RawSpectrumMapping.relativeCorner (inclusion X) (projection Y)) (fullBoundaryMap X Y))
     (RawSpectrumMapping.relativeCorner_trivialKanFibration
@@ -104,7 +104,7 @@ lemma fullOriginalMap_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
 使われ方：全図式比較の局所 Kan 条件。 -/
 instance fullCompatibleSpace_kanComplex (X Y : OmegaSpectrum.{u}) :
     KanComplex (fullCompatibleSpace X Y) := by
-  let : TrivialKanFibration (fullOriginalMap X Y) := fullOriginalMap_trivialKanFibration X Y
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (fullOriginalMap X Y) := fullOriginalMap_trivialKanFibration X Y
   let : HomotopicalAlgebra.Fibration (fullOriginalMap X Y) :=
     (SSet.modelCategoryQuillen.fibration_iff _).2
       (fun _ _ j hj ↦ (fullOriginalMap_trivialKanFibration X Y).mem j
@@ -119,9 +119,9 @@ instance fullCompatibleSpace_kanComplex (X Y : OmegaSpectrum.{u}) :
 規約：この段階で組の豊穣合成の法則までは主張しない。
 使われ方：全 Hom 自然性の指定左右境界を保つ比較。 -/
 def fullOriginalEquivalence (X Y : OmegaSpectrum.{u}) :
-    QCatEquivalence (fullCompatibleSpace X Y) (mappingSpace X Y) := by
-  let : TrivialKanFibration (fullOriginalMap X Y) := fullOriginalMap_trivialKanFibration X Y
-  exact qCatEquivalenceOfTrivialKanFibration (fullOriginalMap X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (fullCompatibleSpace X Y) (mappingSpace X Y) := by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (fullOriginalMap X Y) := fullOriginalMap_trivialKanFibration X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (fullOriginalMap X Y)
 
 /-- 概要：組から回収した置換射は指定左因子を全 Hom 上で厳密に保つ。
 方針：実引き戻しの可換式を corner の第一射影へ制限する。

@@ -19,44 +19,44 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma localizationPre_fullyFaithful {X Q Y : SSet.{u}} [Quasicategory Q] [Quasicategory Y]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W) :
-    IsFullyFaithful ((pre F).app Y) := by
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful ((pre F).app Y) := by
   obtain ⟨hF, hU⟩ := hF
-  rw [← localizationPrecomposition_ι F W hF Y]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition_ι F W hF Y]
   exact (hU Y).isFullyFaithful.comp
-    (isFullyFaithful_fullSubcomplexOnVertices_ι _ (IsInvertingFunctorVertex X Y W))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsInvertingFunctorVertex X Y W))
 
 def localizationFactorizationIso {X Q Y : SSet.{u}} [Quasicategory Q] [Quasicategory Y]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W) {K L : Q ⟶ Y}
-    (e : FunctorIso (F ≫ K) (F ≫ L)) : FunctorIso K L :=
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W) {K L : Q ⟶ Y}
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ K) (F ≫ L)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso K L :=
   (localizationPre_fullyFaithful F W hF).preimageVertexIso e
 
 variable {X Q R : SSet.{u}} [Quasicategory Q] [Quasicategory R]
   (F : X ⟶ Q) (G : X ⟶ R) (W : Set (X _⦋1⦌))
-  (hF : IsLocalization F W) (hG : IsLocalization G W)
-  (K : Q ⟶ R) (e : FunctorIso (F ≫ K) G)
+  (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G W)
+  (K : Q ⟶ R) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ K) G)
 
 def localizationComparisonInverse : R ⟶ Q := localizationDescend G W hG F hF.choose
 
 def localizationComparisonInverseIso :
-    FunctorIso (G ≫ localizationComparisonInverse F G W hF hG) F :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ localizationComparisonInverse F G W hF hG) F :=
   localizationDescendIso G W hG F hF.choose
 
 def localizationComparisonHomInvIso :
-    FunctorIso (K ≫ localizationComparisonInverse F G W hF hG) (𝟙 Q) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (K ≫ localizationComparisonInverse F G W hF hG) (𝟙 Q) := by
   apply localizationFactorizationIso F W hF
-  have h := FunctorIso.postcomp e (localizationComparisonInverse F G W hF hG) ≪≫
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp e (localizationComparisonInverse F G W hF hG) ≪≫
     localizationComparisonInverseIso F G W hF hG
   simpa only [Category.assoc, Category.comp_id] using h
 
 def localizationComparisonInvHomIso :
-    FunctorIso (localizationComparisonInverse F G W hF hG ≫ K) (𝟙 R) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (localizationComparisonInverse F G W hF hG ≫ K) (𝟙 R) := by
   apply localizationFactorizationIso G W hG
-  have h := FunctorIso.postcomp (localizationComparisonInverseIso F G W hF hG) K ≪≫ e
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (localizationComparisonInverseIso F G W hF hG) K ≪≫ e
   simpa only [Category.assoc, Category.comp_id] using h
 
 /-- 同じ辺集合の局所化を比較する元の関手は、実際の逆と両合成の同型を持つ。 -/
-def localizationComparisonEquivalence : QCatEquivalence Q R where
+def localizationComparisonEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence Q R where
   hom := K
   inv := localizationComparisonInverse F G W hF hG
   homInvIso := localizationComparisonHomInvIso F G W hF hG K e

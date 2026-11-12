@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の任意右側集合を保つ零端点・辺生成元の実 source 微分像は、同じ語の境界値。 -/
-lemma simplexHARightTailPrefix_zeroEdge_source_boundary {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHARightTailPrefix_zeroEdge_source_boundary {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (hi : SerreCubeZeroEdgeIndex m i)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (hb : ∀ r ∈ T, v (Fin.last m) < r) :

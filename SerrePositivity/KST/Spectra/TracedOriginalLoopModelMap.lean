@@ -26,7 +26,7 @@ def tracedOriginalLoopModelMap (X : OmegaSpectrum.{u}) : X ⟶ rationalizationMo
 
 /-- 同じ源比較は全段・全基点で π 同型。 -/
 lemma tracedOriginalLoopModelMap_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((tracedOriginalLoopModelMap X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((tracedOriginalLoopModelMap X).app n).right :=
   (tracedSignedLoopUnit_levelwise X n).comp
     (levelwiseInverse_levelwise (signedLoopComparison X) (signedLoopComparison_levelwise X) n)
 

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.AdjointLoopRelativeBF
 public import SerrePositivity.KST.Spectra.RawSpectrumRelativeCorner
-public import SerrePositivity.InfinityCategories.Core.VertexFiber
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.VertexFiber
 
 /-!
 概要：相対 BF 右射影への比較を、指定した左右境界を保つ全パラメータ族として構成する。
@@ -27,7 +27,7 @@ abbrev comparisonCorner (X : OmegaSpectrum.{u}) {A L : OmegaSpectrum.{u}} (a : A
 /-- 実 BF 右射影の RLP と相対左因子から、比較 corner 自身の RLP を得る。 -/
 lemma comparisonCorner_trivialKanFibration (X : OmegaSpectrum.{u})
     {A L : OmegaSpectrum.{u}} (a : A ⟶ L) (ha : IsSequentialRelativeCofibration a) :
-    TrivialKanFibration (comparisonCorner X a) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (comparisonCorner X a) :=
   RawSpectrumMapping.relativeCorner_trivialKanFibration a ha (projection X) (projection_rlp X)
 
 /-- 比較射の二つの指定境界を全パラメータ上で同時に記憶する空間。 -/
@@ -54,9 +54,9 @@ def comparisonResolutionFamily (X : OmegaSpectrum.{u}) {A L : OmegaSpectrum.{u}}
 lemma comparisonResolutionProjection_trivialKanFibration (X : OmegaSpectrum.{u})
     {A L : OmegaSpectrum.{u}} (a : A ⟶ L) (ha : IsSequentialRelativeCofibration a)
     {U : SSet.{u}} (b : U ⟶ RawSpectrumMapping.relativeCornerTarget a (projection X)) :
-    TrivialKanFibration (comparisonResolutionProjection X a b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (comparisonResolutionProjection X a b) := by
   let := comparisonCorner_trivialKanFibration X a ha
-  exact ⟨trivialKanFibrations.pullback_snd _ _ (TrivialKanFibration.mem
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
     (p := comparisonCorner X a))⟩
 
 /-- 同じ比較族は元の左因子上の指定族を全単体で厳密回収する。 -/
@@ -86,15 +86,15 @@ lemma comparisonResolutionFamily_right (X : OmegaSpectrum.{u}) {A L : OmegaSpect
 /-- 固定した指定境界の比較選択空間。自由な可逆辺の空間で代用しない。 -/
 def comparisonFiber (X : OmegaSpectrum.{u}) {A L : OmegaSpectrum.{u}} (a : A ⟶ L)
     (b : (RawSpectrumMapping.relativeCornerTarget a (projection X)) _⦋0⦌) : SSet.{u} :=
-  vertexFiber (comparisonCorner X a) b
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (comparisonCorner X a) b
 
 /-- 比較射の選択 fiber は、零次も含む全境界充填を持つ。 -/
 lemma comparisonFiber_isContractibleKan (X : OmegaSpectrum.{u}) {A L : OmegaSpectrum.{u}}
     (a : A ⟶ L) (ha : IsSequentialRelativeCofibration a)
     (b : (RawSpectrumMapping.relativeCornerTarget a (projection X)) _⦋0⦌) :
-    IsContractibleKan (comparisonFiber X a b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (comparisonFiber X a b) := by
   let := comparisonCorner_trivialKanFibration X a ha
-  exact vertexFiber_isContractibleKan (comparisonCorner X a) b
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_isContractibleKan (comparisonCorner X a) b
 
 /-- 任意の部分パラメータに既存の比較を固定したまま、同じ二境界上で延長できる。 -/
 lemma exists_relative_comparisonFamily (X : OmegaSpectrum.{u}) {A L : OmegaSpectrum.{u}}
@@ -107,7 +107,7 @@ lemma exists_relative_comparisonFamily (X : OmegaSpectrum.{u}) {A L : OmegaSpect
       d ≫ RawSpectrumMapping.pre a (middle X).toKanSequence = b ≫ pullback.fst _ _ ∧
       d ≫ RawSpectrumMapping.post L (projection X) = b ≫ pullback.snd _ _ := by
   let := comparisonCorner_trivialKanFibration X a ha
-  have := TrivialKanFibration.mem (p := comparisonCorner X a) j inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := comparisonCorner X a) j inferInstance
   let sq : CommSq c j (comparisonCorner X a) b := ⟨h⟩
   refine ⟨sq.lift, sq.fac_left, ?_, ?_⟩
   · have hf := congrArg (· ≫ pullback.fst _ _) sq.fac_right

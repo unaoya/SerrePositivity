@@ -30,14 +30,14 @@ lemma cubeFaceNormalVertex_injective (n m : ℕ) :
         rfl
       | keep e =>
         have hzero := congrFun (congrFun h ⊥) 0
-        have hatom := congrFun (congrFun h (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom _ 0)) 0
-        cases b <;> simp [cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] at hzero hatom
+        have hatom := congrFun (congrFun h (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom _ 0)) 0
+        cases b <;> simp [cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom] at hzero hatom
     | keep d =>
       cases e with
       | point c e =>
         have hzero := congrFun (congrFun h ⊥) 0
-        have hatom := congrFun (congrFun h (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom _ 0)) 0
-        cases c <;> simp [cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] at hzero hatom
+        have hatom := congrFun (congrFun h (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom _ 0)) 0
+        cases c <;> simp [cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom] at hzero hatom
       | keep e =>
         have hd : d = e := by
           apply ih

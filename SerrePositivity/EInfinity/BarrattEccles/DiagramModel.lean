@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.EvaluationFamily
 
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramAcyclicity
 public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
@@ -34,7 +34,7 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def projectiveModelCategory : ModelCategory (K ⥤ (operad A).Algebra) := by
   let := BarrattEccles.modelCategory A
   have := modelCategory_cofibrantlyGenerated A
-  exact ModelGeneration.EvaluationFamily.modelCategory
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory
     (free (operad A) K) (evaluation (operad A) K) (adjunction (operad A) K)
     ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)
@@ -70,11 +70,11 @@ lemma fibration_iff {F G : K ⥤ (operad A).Algebra} (f : F ⟶ G) :
 使われ方：図式の関手的置換と frame の構成。 -/
 lemma cofibrantlyGenerated :
     let := projectiveModelCategory A K
-    ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (generatingCofibrations A K) (generatingTrivialCofibrations A K) := by
   let := BarrattEccles.modelCategory A
   have := modelCategory_cofibrantlyGenerated A
-  exact ModelGeneration.EvaluationFamily.modelCategory_generated
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory_generated
     (free (operad A) K) (evaluation (operad A) K) (adjunction (operad A) K)
     ((projectiveGeneratingCofibrations A).strictMap (operad A).freeAlgebraFunctor)
     ((projectiveGeneratingTrivialCofibrations A).strictMap (operad A).freeAlgebraFunctor)

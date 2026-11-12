@@ -57,7 +57,7 @@ def tracedActualSourceStageInterval (n : ℕ) :=
 /-- 同じ実評価側の段区間は、二つの構造経路が辺全体で厳密に一致する。 -/
 lemma tracedActualSourceStageInterval_condition (n : ℕ) :
     ((tracedActualSourceStageInterval X Y φ (n + 1)).basedPost
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path =
     ((tracedActualSourceStageInterval X Y φ n).basedPost
       (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)).path :=

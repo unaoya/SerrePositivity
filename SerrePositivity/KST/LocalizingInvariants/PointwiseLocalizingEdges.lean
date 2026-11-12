@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Localization
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 
 /-!
 概要：関手圏への後合成が反転する辺は、各頂点で反転される辺と厳密に一致する。
@@ -21,27 +21,27 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 def pointwiseLocalizingEdges (K X : SSet.{u}) (W : Set (X _⦋1⦌)) :
     Set (((ihom K).obj X) _⦋1⦌) :=
-  {s | ∀ k : K _⦋0⦌, (evaluateFunctorAt (Y := X) k).app (Opposite.op ⦋1⦌) s ∈ W}
+  {s | ∀ k : K _⦋0⦌, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) k).app (Opposite.op ⦋1⦌) s ∈ W}
 
 lemma isInvertibleFunctorEdge_iff_evaluations {K X : SSet.{u}} [Quasicategory X]
     {x y : ((ihom K).obj X) _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj ((ihom K).obj X)) x y) :
-    IsInvertibleEdge e ↔ ∀ k : K _⦋0⦌,
-      IsInvertibleEdge (e.map ((truncation 2).map (evaluateFunctorAt (Y := X) k))) := by
-  obtain ⟨f, rfl⟩ := (functorVertexEquiv K X).surjective x
-  obtain ⟨g, rfl⟩ := (functorVertexEquiv K X).surjective y
-  exact isInvertibleEdge_iff_evaluateFunctorAt e
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e ↔ ∀ k : K _⦋0⦌,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (e.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) k))) := by
+  obtain ⟨f, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K X).surjective x
+  obtain ⟨g, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K X).surjective y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isInvertibleEdge_iff_evaluateFunctorAt e
 
 lemma invertedEdges_ihom_map {X Q : SSet.{u}} [Quasicategory Q]
     (K : SSet.{u}) (F : X ⟶ Q) :
-    invertedEdges ((ihom K).map F) = pointwiseLocalizingEdges K X (invertedEdges F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges ((ihom K).map F) = pointwiseLocalizingEdges K X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges F) := by
   ext s
-  change IsInvertibleEdge (X := (ihom K).obj Q)
-    ((edgeOfSimplex s).map ((truncation 2).map ((ihom K).map F))) ↔ _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom K).obj Q)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s).map ((truncation 2).map ((ihom K).map F))) ↔ _
   rw [isInvertibleFunctorEdge_iff_evaluations (K := K) (X := Q)]
   apply forall_congr'
   intro k
-  exact isInvertibleEdge_congr rfl
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr rfl
 
 lemma pointwiseLocalizingEdges_mono {K X : SSet.{u}} {W V : Set (X _⦋1⦌)}
     (h : W ⊆ V) : pointwiseLocalizingEdges K X W ⊆ pointwiseLocalizingEdges K X V :=

@@ -98,17 +98,17 @@ theorem sequentialFilteredExchangeMap_projection :
 
 /-- 同じ実 BF 交換射は、零段を含む全段・全基点の π 同型。 -/
 theorem sequentialFilteredExchangeMap_levelwise (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((sequentialFilteredExchangeMap D c hc).app k).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((sequentialFilteredExchangeMap D c hc).app k).right := by
   let i :
       ((FilteredExchange.levelColimitSpectrum
         (sequentialFilteredLevelDiagram D)).level k).space.right ≅
         ((sequentialLevelColimitSpectrum c.pt).level k).space.right :=
     (OmegaSpectrum.levelEvaluation k ⋙ PointedSimplicialSet.forget).mapIso
       (sequentialFilteredLevelExchangeIso D c hc)
-  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((sequentialFilteredExchangeRawMap D c hc).app k).right :=
+  have hr : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((sequentialFilteredExchangeRawMap D c hc).app k).right :=
     (OmegaSpectrum.filteredLevelComparison_piIsomorphism
-      (sequentialFilteredLevelDiagram D) k).comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso i)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
+      (sequentialFilteredLevelDiagram D) k).comp (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso i)
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
     (g := ((sequentialReplacementProjection c.pt).app k).right) _
     (OmegaSpectrum.filteredLevelComparison_piIsomorphism c.pt k)
   have h : ((sequentialFilteredExchangeMap D c hc).app k).right ≫
@@ -125,7 +125,7 @@ theorem sequentialFilteredExchangeMap_piIsomorphism :
 
 /-- 同じ実 BF 交換射の Sp 辺は可逆。一般 filtered Sp 余極限性とは区別する。 -/
 theorem sequentialFilteredExchangeMap_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge (sequentialFilteredExchangeMap D c hc)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialFilteredExchangeMap D c hc)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _ (sequentialFilteredExchangeMap_piIsomorphism D c hc)
 
 /-- 外側余極限の存在も構成済みなので、指定余錐を追加入力としない実交換射を得る。 -/
@@ -136,7 +136,7 @@ def sequentialFilteredCanonicalExchangeMap :
 
 /-- 同じ標準実交換射は、filtered/逐次 BF 図式だけから可逆な Sp 辺となる。 -/
 theorem sequentialFilteredCanonicalExchangeMap_isInvertible :
-    IsInvertibleEdge (coherentNerveEdge (sequentialFilteredCanonicalExchangeMap D)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (sequentialFilteredCanonicalExchangeMap D)) :=
   sequentialFilteredExchangeMap_isInvertible D (colimit.cocone D) (colimit.isColimit D)
 
 end SerrePositivity.KST.NonConnective

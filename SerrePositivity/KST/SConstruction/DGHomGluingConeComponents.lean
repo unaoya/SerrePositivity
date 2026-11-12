@@ -17,28 +17,28 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-  (X Y : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+  (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 /-- 左射影と元の左関手・Yoneda を合成した実 Hom 鎖写像。 -/
 def dgHomGluingConeLeftMap :
-    dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
       moduleHom R E (representable R (p.obj X.left)) (representable R (p.obj Y.left)) :=
-  dgGluingLeftHomMap R C D _ X Y ≫ p.map X.left Y.left ≫
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeftHomMap R C D _ X Y ≫ p.map X.left Y.left ≫
     (dgYoneda R E).map (p.obj X.left) (p.obj Y.left)
 
 /-- 右射影と元の右関手・Yoneda を合成した実 Hom 鎖写像。 -/
 def dgHomGluingConeRightMap :
-    dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
       moduleHom R E (representable R (q.obj X.right)) (representable R (q.obj Y.right)) :=
-  dgGluingRightHomMap R C D _ X Y ≫ q.map X.right Y.right ≫
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D _ X Y ≫ q.map X.right Y.right ≫
     (dgYoneda R E).map (q.obj X.right) (q.obj Y.right)
 
 /-- 第三比較を同じ Yoneda Hom へ移した実次数 −1 cochain。 -/
 def dgHomGluingConePrimitive :
-    Cochain (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y)
+    Cochain (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y)
       (moduleHom R E (representable R (p.obj X.left))
         (representable R (q.obj Y.right))) (-1) :=
-  (dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y).comp
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y).comp
     (Cochain.ofHom ((dgYoneda R E).map (p.obj X.left) (q.obj Y.right))) (add_zero (-1))
 
 /-- 同じ実 cone 比較射の閉元は、元の gluing 閉元の Yoneda 像。 -/

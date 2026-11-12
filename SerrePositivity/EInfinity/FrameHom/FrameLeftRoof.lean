@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LeftRoofRightIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofRightIdentity
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.CategoryTheory.Category.ULift
@@ -20,15 +20,15 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.FrameHom
-open CategoryTheory Opposite Hammock SerrePositivity.HomotopyFunctionComplex
+open CategoryTheory Opposite
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   {X Y : C} (A : SimplexCategory ⥤ C) (p : A ⟶ (Functor.const SimplexCategory).obj X)
   (hp : ∀ n, W (p.app n)) (hA : ∀ {i j} (a : i ⟶ j), W (A.map a))
 
-def frameLeftRoofFunctor : (((cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
-    Zigzag W LeftRoof.word X Y where
-  obj s := LeftRoof.obj W (p.app s.unop.obj.unop) (hp _) s.unop.val
-  map {s t} a := LeftRoof.map W
+def frameLeftRoofFunctor : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y where
+  obj s := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj W (p.app s.unop.obj.unop) (hp _) s.unop.val
+  map {s t} a := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.map W
     (p := p.app s.unop.obj.unop) (q := p.app t.unop.obj.unop)
     (hp := hp s.unop.obj.unop) (hq := hp t.unop.obj.unop)
     (f := s.unop.val) (g := t.unop.val) (A.map a.unop.hom.unop) (hA _)
@@ -38,13 +38,13 @@ def frameLeftRoofFunctor : (((cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
         p.app s.unop.obj.unop ≫ 𝟙 X at h
       exact h.trans (Category.comp_id _))
     a.unop.map_val.symm
-  map_id s := Zigzag.hom_ext _ _ (by
+  map_id s := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag.hom_ext _ _ (by
     intro i
     fin_cases i
     · rfl
     · exact A.map_id _
     · rfl)
-  map_comp a b := Zigzag.hom_ext _ _ (by
+  map_comp a b := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag.hom_ext _ _ (by
     intro i
     fin_cases i
     · exact (Category.id_comp _).symm
@@ -52,8 +52,8 @@ def frameLeftRoofFunctor : (((cosimplicialHom A).obj Y).Elements)ᵒᵖ ⥤
     · exact (Category.id_comp _).symm)
 
 def frameLeftRoofNerveMap :
-    nerve (ULiftHom.{max u v} (((cosimplicialHom A).obj Y).Elements)ᵒᵖ) ⟶
-      graph W LeftRoof.word X Y where
+    nerve (ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Elements)ᵒᵖ) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y where
   app _ := ↾fun σ => σ ⋙ ULiftHom.down.{0, v, max u v} ⋙ frameLeftRoofFunctor W A p hp hA
   naturality _ _ _ := rfl
 

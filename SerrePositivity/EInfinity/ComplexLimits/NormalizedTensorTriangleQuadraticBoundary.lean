@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -24,14 +24,14 @@ lemma normalizedTensorTriangleData_quadraticBoundary_pinched {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3) (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (hc : 3 ≤ I.card) (a b : Fin (n + 1)) (k : ℤ)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (haz : τ a = 0) (hbt : τ b = 2) :
     HEq ((normalizedTensorTriangleData A X Y c τ).quadraticBoundary I a b k)
       ((normalizedTensorTrianglePinched A X Y c τ).toSimplexData.quadraticBoundary I a b k) := by
   have hx := (normalizedTensorTrianglePinched_obj_zero A X Y c τ a haz).symm
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
-  unfold SimplexData.quadraticBoundary
-  apply gradedHom_sum_heq_of_filter hx hy (Index.interior I a b) (fun j => τ j = 1)
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.quadraticBoundary
+  apply gradedHom_sum_heq_of_filter hx hy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I a b) (fun j => τ j = 1)
   · exact normalizedTensorTriangle_middle_sum_heq A X Y c τ I hI hc a b k ha hb hk haz hbt
   · intro j hj hn
     have hjI := (Finset.mem_filter.mp hj).1
@@ -45,8 +45,8 @@ lemma normalizedTensorTriangleData_quadraticBoundary_pinched {n : ℕ}
       · have hj2 : τ j = 2 := by omega
         exact normalizedTensorTriangleData_cutCompose_two A X Y c τ I a b k hI ha hb hk
           j hjI haj hjb hbt haz hj2
-    have he := smul_sub_heq_of_obj_eq hx hy (Index.sign I j) _ 0 _ 0 hcut
-      (gradedHom_zero_heq hx hy rfl)
+    have he := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.smul_sub_heq_of_obj_eq hx hy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I j) _ 0 _ 0 hcut
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq hx hy rfl)
     simpa only [sub_zero] using he
 
 end SerrePositivity.EInfinity.ComplexLimits

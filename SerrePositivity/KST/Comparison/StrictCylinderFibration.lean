@@ -36,13 +36,13 @@ theorem doubleMappingCylinderMap_rlp {C A B C' A' B' : SSet.{u}}
     (ha : SSet.modelCategoryQuillen.J.rlp a)
     (hb : SSet.modelCategoryQuillen.J.rlp b) :
     SSet.modelCategoryQuillen.J.rlp
-      (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm) := by
   have h := doubleMappingCylinderMap_isPullback hf hg
   exact kanFibration_of_pushoutCover
-    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C') (coprod.map f' g'))
-    (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
-    (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle f g) h.1
-    (coprod.map a b) (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints C) (coprod.map f g)) h.2
+    (IsPushout.of_hasPushout (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C') (coprod.map f' g'))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap f g f' g' c a b hf.w.symm hg.w.symm)
+    (c ▷ Δ[1]) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle f g) h.1
+    (coprod.map a b) (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints C) (coprod.map f g)) h.2
     (tensorRight_rlp c hc Δ[1]) (coproductMap_rlp a b ha hb)
 
 end SerrePositivity.KST.Comparison

@@ -25,7 +25,7 @@ def enrichedLeftWhiskerHomotopy {W X Y Z : C} (f : W ⟶ X)
     {e d : (SimplicialCategory.sHom X Z).Edge (SimplicialCategory.homEquiv' _ _ gh)
       (SimplicialCategory.homEquiv' _ _ (g ≫ h))}
     (H : SSet.Homotopy (SSet.yonedaEquiv.symm e.edge) (SSet.yonedaEquiv.symm d.edge)) :=
-  familyHomotopyEndpointTransport (functorHomotopyPostcomp H (enrichedFixedLeftComposition f))
+  familyHomotopyEndpointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (enrichedFixedLeftComposition f))
     (enrichedComparisonLeftWhisker_map f g h gh e)
     (enrichedComparisonLeftWhisker_map f g h gh d).symm
 
@@ -60,7 +60,7 @@ def enrichedRightWhiskerHomotopy {W X Y Z : C} (f : W ⟶ X)
     {e d : (SimplicialCategory.sHom W Y).Edge (SimplicialCategory.homEquiv' _ _ fg)
       (SimplicialCategory.homEquiv' _ _ (f ≫ g))}
     (H : SSet.Homotopy (SSet.yonedaEquiv.symm e.edge) (SSet.yonedaEquiv.symm d.edge)) :=
-  familyHomotopyEndpointTransport (functorHomotopyPostcomp H (enrichedFixedRightComposition h))
+  familyHomotopyEndpointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (enrichedFixedRightComposition h))
     (enrichedComparisonRightWhisker_map f g h fg e)
     (enrichedComparisonRightWhisker_map f g h fg d).symm
 

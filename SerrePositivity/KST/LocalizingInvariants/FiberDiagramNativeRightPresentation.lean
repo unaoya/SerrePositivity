@@ -33,17 +33,17 @@ variable {D E : FiberDiagram.{u}} (f : D ⟶ E)
 
 def nativeRightPresentation :=
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) ≫
   (SpectrumMappingPath.arrowIso (nativeRightMappingPath f)).inv ≫
   Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPre f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPre f))
 
 lemma nativeRightLowerPost_upper :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
       SpectrumMappingPath.arrowHom (nativeRightUpperRealization f).path =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) ≫
       (SpectrumMappingPath.arrowIso (nativeRightMappingPath f)).inv := by
   exact comp_of_invertible_triangle _ _ (SpectrumMappingPath.arrowIso (nativeRightMappingPath f))
     _ _ (nativeRightArrowHom_comp f) (nativeRightLowerPost_comp f)
@@ -53,9 +53,9 @@ lemma rightRestriction_nativePresentation :
   rw [rightRestriction_decomposition]
   have hc := arrow_mk_comp_congr (rightAfterBottom_native f) (rightBeforeTop_native f)
   have hn : Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f)) =
       nativeRightPresentation f := by
     rw [nativeRightUpperPre_eq, ← Category.assoc, nativeRightLowerPost_upper]
     exact Category.assoc _ _ _

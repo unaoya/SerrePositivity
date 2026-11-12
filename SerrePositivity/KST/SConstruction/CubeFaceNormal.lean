@@ -16,7 +16,7 @@ inductive CubeFaceNormal : ℕ → ℕ → Type
   | keep {n m : ℕ} (d : CubeFaceNormal n m) : CubeFaceNormal (n + 1) (m + 1)
 
 /-- 定数・保持標準表示の元の全頂点での評価。 -/
-def cubeFaceNormalVertex : {n m : ℕ} → CubeFaceNormal n m → (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+def cubeFaceNormalVertex : {n m : ℕ} → CubeFaceNormal n m → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, _, .nil => _root_.id
   | _, _, .point b d => fun x => Fin.cons b (cubeFaceNormalVertex d x)
   | _, _, .keep d => fun x => Fin.cons (x 0) (cubeFaceNormalVertex d (fun j => x j.succ))
@@ -50,30 +50,30 @@ def cubeFaceNormalInsert : {n m : ℕ} → CubeFaceNormal n m → Bool →
 lemma cubeFaceNormalInsert_vertex {n m : ℕ} (d : CubeFaceNormal n m)
     (b : Bool) (i : Fin (m + 1)) :
     cubeFaceNormalVertex (cubeFaceNormalInsert d b i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b m i ∘ cubeFaceNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b m i ∘ cubeFaceNormalVertex d := by
   induction d generalizing b with
   | nil =>
     have hi : i = 0 := Fin.ext (by omega)
     subst i
     funext x
-    simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
+    simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_zero']
   | point c d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · funext x
-      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
+      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_zero']
     · funext x
-      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
+      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace,
         Fin.insertNth_succ_cons] using
-          congrArg (fun (v : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex _) => Fin.cons (α := fun _ => Bool) c v)
+          congrArg (fun (v : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex _) => Fin.cons (α := fun _ => Bool) c v)
             (congrFun (ih b i) x)
   | keep d ih =>
     refine Fin.cases ?_ (fun i => ?_) i
     · funext x
-      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace, Fin.insertNth_zero']
+      simp [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace, Fin.insertNth_zero']
     · funext x
-      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace,
+      simpa [cubeFaceNormalInsert, cubeFaceNormalVertex, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace,
         Fin.insertNth_succ_cons] using
-          congrArg (fun (v : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex _) => Fin.cons (α := fun _ => Bool) (x 0) v)
+          congrArg (fun (v : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex _) => Fin.cons (α := fun _ => Bool) (x 0) v)
             (congrFun (ih b i) (fun j => x j.succ))
 
 end SerrePositivity.KST.SConstruction

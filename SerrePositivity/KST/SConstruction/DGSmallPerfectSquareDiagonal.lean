@@ -28,7 +28,7 @@ local notation "qS" => dgSmallPerfectSquareRightMap R P C D E L G p q
 
 /-- 同じ実左右小模型と共通終域から作る、全 Hom を持つ元の dg gluing。 -/
 abbrev DGSmallPerfectSquareGluing :=
-  DGGluingObject R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))
 
 /-- 元の実四辺と同じ Perf 合成比較を保持する、実 dg gluing 対角。 -/
 def dgSmallPerfectSquareDiagonal :
@@ -40,7 +40,7 @@ def dgSmallPerfectSquareDiagonal :
 /-- 元の対角の左射影は、同じ元の実延長を持つ左の小模型の射そのもの。 -/
 lemma dgSmallPerfectSquareDiagonal_left :
     (dgSmallPerfectSquareDiagonal R P C D E L G p q h).comp
-      (dgGluingLeft R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))) = (LS) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))) = (LS) :=
   dgHomGluingFunctor_left R (CL) (DR) (V) (pS) (qS) (LS) (GS)
     (fun x => (dgSmallPerfectSquareComparisonAt R P C D E L G p q h x).hom)
     (dgSmallPerfectSquareComparisonAt_naturality R P C D E L G p q h)
@@ -48,7 +48,7 @@ lemma dgSmallPerfectSquareDiagonal_left :
 /-- 元の対角の右射影も、同じ元の実延長を持つ右の小模型の射そのもの。 -/
 lemma dgSmallPerfectSquareDiagonal_right :
     (dgSmallPerfectSquareDiagonal R P C D E L G p q h).comp
-      (dgGluingRight R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))) = (GS) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (CL) (DR) (dgHomGluingBimodule R (CL) (DR) (V) (pS) (qS))) = (GS) :=
   dgHomGluingFunctor_right R (CL) (DR) (V) (pS) (qS) (LS) (GS)
     (fun x => (dgSmallPerfectSquareComparisonAt R P C D E L G p q h x).hom)
     (dgSmallPerfectSquareComparisonAt_naturality R P C D E L G p q h)

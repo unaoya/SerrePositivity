@@ -19,20 +19,20 @@ open scoped Simplicial
 方針：内部 Hom の制限と転置の自然性を用いる。
 規約：標的の安定性は不要。使われ方：cofiber の境界を指定する。 -/
 lemma cofiberFamilySquare_bottomEdge {A C : SSet.{u}} (H : A ⟶ cofiberDiagrams C) :
-    squareBottomEdge ≫ cofiberFamilySquare H =
-      internalHomFlipHomEquiv A (Δ[1] : SSet.{u}) C (H ≫ cofiberProjection C) := by
-  rw [cofiberFamilySquare, ← internalHomFlipHomEquiv_pre_app]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ cofiberFamilySquare H =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A (Δ[1] : SSet.{u}) C (H ≫ cofiberProjection C) := by
+  rw [cofiberFamilySquare, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app]
   rfl
 
 /-- 概要：関手圏の指定された辺は cofiber 正方形を持つ。
 方針：転置した辺を cofiber 射影の切断で持ち上げ、再び転置する。
 規約：入力の辺は厳密な等号で保持する。使われ方：関手圏の安定性。 -/
-lemma functor_cofiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [IsStable C]
+lemma functor_cofiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     {x y : ((ihom A).obj C) _⦋0⦌}
     (f : SSet.Truncated.Edge (X := (truncation 2).obj ((ihom A).obj C)) x y) :
-    Nonempty (CofiberSquare f) := by
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) := by
   let d : (Δ[1] : SSet.{u}) ⟶ (ihom A).obj C := SSet.yonedaEquiv.symm f.edge
-  let h := internalHomFlipHomEquiv (Δ[1] : SSet.{u}) A C d
+  let h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (Δ[1] : SSet.{u}) A C d
   let H := h ≫ cofiberSection C
   refine ⟨{
     square := cofiberFamilySquare H
@@ -44,6 +44,6 @@ lemma functor_cofiberSquare_nonempty {A C : SSet.{u}} [Quasicategory C] [IsStabl
     dsimp only [H]
     rw [Category.assoc, cofiberSection_projection, Category.comp_id]
   rw [he]
-  exact (internalHomFlipHomEquiv (Δ[1] : SSet.{u}) A C).symm_apply_apply d
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (Δ[1] : SSet.{u}) A C).symm_apply_apply d
 
 end SerrePositivity.KST.SConstruction

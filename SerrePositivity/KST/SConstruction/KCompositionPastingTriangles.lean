@@ -59,14 +59,14 @@ variable {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 元の三つの指定三角形を、同じ suspension Hom に集める。 -/
 def kKanOriginalCompositionPastingTriangle (e : Fin 3) : (Δ[2] : SSet.{u}) ⟶
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
       ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
   ![kKanOriginalOuterTriangle r F (f ≫ g),
     kKanOriginalOuterTriangle r F f ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
         (kKanSequenceLevelMap (F.map g) (r + 1))).right,
     kKanOriginalOuterTriangle r F g ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
         ((kKanSequence (F.obj z)).level (r + 1)).space] e
 
 /-- 三つの指定三角形の 01 辺は、貼り合わせた正方形の同じ外側脚。 -/
@@ -81,7 +81,7 @@ lemma kKanOriginalCompositionPastingTriangle_upper (e : Fin 3) :
     rw [kKanOriginalOuterTriangle_upper]
     exact (kKanOriginalCompositionMappingSquare_composite_upper r F f g).symm
   · change stdSimplex.δ 2 ≫ (kKanOriginalOuterTriangle r F f ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right) =
         (pastingSquareHorizontal 1 ≫ threeSquareInclusion 0) ≫
           kKanOriginalCompositionPastingSquares r F f g
@@ -89,7 +89,7 @@ lemma kKanOriginalCompositionPastingTriangle_upper (e : Fin 3) :
     rw [← Category.assoc, kKanOriginalOuterTriangle_upper]
     exact (kKanOriginalCompositionMappingSquare_first_upper_post r F f g).symm
   · change stdSimplex.δ 2 ≫ (kKanOriginalOuterTriangle r F g ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space) =
         (pastingSquareVertical 1 ≫ threeSquareInclusion 1) ≫
@@ -110,7 +110,7 @@ lemma kKanOriginalCompositionPastingTriangle_lower (e : Fin 3) :
     rw [kKanOriginalOuterTriangle_lower]
     exact (kKanOriginalCompositionMappingSquare_composite_lower r F f g).symm
   · change stdSimplex.δ 1 ≫ (kKanOriginalOuterTriangle r F f ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right) =
         (pastingSquareHorizontal 1 ≫ threeSquareInclusion 1) ≫
           kKanOriginalCompositionPastingSquares r F f g
@@ -118,7 +118,7 @@ lemma kKanOriginalCompositionPastingTriangle_lower (e : Fin 3) :
     rw [← Category.assoc, kKanOriginalOuterTriangle_lower]
     exact (kKanOriginalCompositionMappingSquare_first_lower_post r F f g).symm
   · change stdSimplex.δ 1 ≫ (kKanOriginalOuterTriangle r F g ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space) =
         (pastingSquareVertical 1 ≫ threeSquareInclusion 2) ≫

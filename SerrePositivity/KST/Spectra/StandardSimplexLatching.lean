@@ -2,7 +2,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.BoundaryTensor
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.FiniteTensorAdjunction
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.FiniteTensorAdjunction
 public import SerrePositivity.KST.Spectra.CosimplicialHornFactorization
 
 /-!
@@ -34,9 +34,9 @@ set_option backward.isDefEq.respectTransparency.types false
 def tensorBoundaryArrowIso (n : ℕ) :
     Arrow.mk (SubcomplexTensor.inclusion (SSet.boundary.{u} n) SSet.stdSimplex) ≅
       Arrow.mk (SSet.boundary.{u} n).ι :=
-  Arrow.isoMk (StandardCosimplicial.tensorIso (𝟭 SSet.{u})
+  Arrow.isoMk (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.tensorIso (𝟭 SSet.{u})
     (SSet.boundary.{u} n).toSSet) (Iso.refl _) (by
-      exact (StandardCosimplicial.tensorIso_inclusion (𝟭 SSet.{u})
+      exact (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.tensorIso_inclusion (𝟭 SSet.{u})
         (SSet.boundary.{u} n)).trans (Category.comp_id _).symm)
 
 /-- 概要：境界包含は標準単体の実際の latching 射と同型。

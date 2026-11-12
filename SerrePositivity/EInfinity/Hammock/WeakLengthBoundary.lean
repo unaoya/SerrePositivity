@@ -22,9 +22,9 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 open SerrePositivity.InfinityCategories
 
-variable {F G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+variable {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
 
-lemma lengthBoundaryMapsTo (n : ℕ) (c : Word) :
+lemma lengthBoundaryMapsTo (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     ∀ k, Set.MapsTo ((η.app c).app k)
       ((lengthBoundary F n c).obj k) ((lengthBoundary G n c).obj k) := by
   intro k x hx
@@ -32,8 +32,8 @@ lemma lengthBoundaryMapsTo (n : ℕ) (c : Word) :
   exact (lengthBoundary_mem_iff G n c k _).2 ⟨BoundaryPresentation.map η p⟩
 
 lemma weakLengthBoundaryMap (hF : ProperDiagram F) (hG : ProperDiagram G)
-    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) (c : Word) :
-    IsWeakHomotopyEquivalence (lengthBoundaryMap η n c) := by
+    (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app a)) (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (lengthBoundaryMap η n c) := by
   have hw := weakFiniteUnion (η.app c) (boundarySubsets n c)
     (subsetImage F c) (subsetImage G c) (subsetImage_inf F c hF)
     (subsetImage_inf G c hG) (subsetImageMapsTo c η) (weakSubsetImageMap c η hF hG hη)

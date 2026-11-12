@@ -36,13 +36,13 @@ theorem monoidGroupCompletionMap_path (M : SimplicialObject MonCat.{u}) :
   let q := AnodyneKanReplacement.unit.app (monoidBar M)
   let h := (β_ (Δ[1] : SSet.{u}) (monoidSpace M)).hom ≫ monoidBarEdgeMap M ≫ q
   have hL : monoidGroupCompletionMap M ≫ loopPathRestriction Y ≫
-      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y = curry h := by
+      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y = curry h := by
     rw [loopPathRestriction_ι]
     apply uncurry_injective
     rw [← Category.assoc, uncurry_pre_app, uncurry_curry]
     exact monoidGroupCompletionMap_evaluation M
   have hR : regularBarFiberMap M ≫ regularBarPathMap M ≫
-      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y = curry h := by
+      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y = curry h := by
     rw [regularBarPathMap, basedPathFamilyMap_ι, ← curry_natural_left]
     congr 1
     have hb : (Δ[1] : SSet.{u}) ◁ regularBarFiberMap M ≫
@@ -57,7 +57,7 @@ theorem monoidGroupCompletionMap_path (M : SimplicialObject MonCat.{u}) :
       (regularBarFiberMap M ▷ (Δ[1] : SSet.{u}) ≫
         regularBarContractionMap M ≫ regularBarProjection M) ≫ q = h
     rw [regularBarContraction_projection]
-  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)).mp
+  apply (cancel_mono (PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)).mp
   simpa only [Category.assoc] using hL.trans hR.symm
 
 end SerrePositivity.KST.Comparison

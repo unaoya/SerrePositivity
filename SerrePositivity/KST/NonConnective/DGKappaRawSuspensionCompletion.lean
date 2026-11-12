@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.NonConnective.DGKappaNativeVerdier
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFSOASpectrumComparison
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBFEvaluationComparison
-public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionExact
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionExact
 
 /-!
 概要：完備化前の同じ実商から、元の固定 K 値への実完備化比較を作る。
@@ -32,18 +32,18 @@ local notation "Q" => dgKappaSuspensionKInput R D I
 規約：元の実商の始域を保持し、完備化を同値とは扱わない。
 使われ方：共終性引数を同じ実商に直接適用する。 -/
 theorem dgKappaRawSuspensionYoneda_isIdempotentCompletion :
-    F2.Idempotent.IsIdempotentCompletion (dgNerve.map (dgPerfectYoneda R (Q))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q))) := by
   let := dgKappaSuspension_isDGPretriangulated R D I
-  refine ⟨dgPerfectModuleNerve_isIdempotentComplete R (Q), ?_, ?_⟩
-  · apply dgNerve_map_isFullyFaithful_of_homIso
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectModuleNerve_isIdempotentComplete R (Q), ?_, ?_⟩
+  · apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isFullyFaithful_of_homIso
     intro x y
     change IsIso (dgYonedaIso R x (representable R y)).inv
     infer_instance
   · intro z
-    obtain ⟨M, rfl⟩ := DGNerve.Simplex.vertexEquiv.symm.surjective z
-    obtain ⟨x, hx⟩ := dgPerfectVertex_retract_yoneda R (Q) M
-    refine ⟨DGNerve.Simplex.vertex x, ?_⟩
-    rw [dgFunctorNerve_vertex]
+    obtain ⟨M, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective z
+    obtain ⟨x, hx⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectVertex_retract_yoneda R (Q) M
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x, ?_⟩
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex]
     exact hx
 
 /-- 概要：元の実商の dg Yoneda を同じ native 安定模型射として保持する。
@@ -54,8 +54,8 @@ def dgKappaRawSuspensionYonedaStableMap :
     stableCategoryModel (dgKappaNativeSuspensionCategory R D I) ⟶
       perfectDGStableModel R (Q) Set.univ := by
   let := (dgKappaRawSuspensionYoneda_isIdempotentCompletion R D I).isExactFunctor
-    (dgNerve.map (dgPerfectYoneda R (Q)))
-  exact ⟨dgNerve.map (dgPerfectYoneda R (Q)), preservesCofiberData_of_isExactFunctor _⟩
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q)))
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q)), preservesCofiberData_of_isExactFunctor _⟩
 
 /-- 概要：同じ実 Perf の native K から元の固定 K への実 BF 比較。
 方針：元の実 Perf 評価同値の逆 K 射と元の SOA 比較を合成する。
@@ -87,7 +87,7 @@ def dgKappaRawSuspensionToFixedK :
     dgKappaSuspensionNativePerfectToFixed R D I
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 
@@ -137,11 +137,11 @@ theorem dgKappaRawSuspensionToFixedK_zero_injective :
 def dgKappaRawSuspensionToFixedLoopEdge :
     Sp.{max (u + 1) v}.Edge
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (kOmegaSpectrum
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (kOmegaSpectrum
           (stableCategoryModel (dgKappaNativeSuspensionCategory R D I)))))
       ((OmegaSpectrum.nativeLoop.{max (u + 1) v}).app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (Q)))) :=
-  (coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (Q)))) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).map
     OmegaSpectrum.nativeLoop.{max (u + 1) v}
 
 set_option maxHeartbeats 800000 in
@@ -156,15 +156,15 @@ theorem dgKappaRawSuspensionToFixedLoopEdge_nonnegative (j : ℤ) (hj : 0 ≤ j)
       (dgKappaRawSuspensionToFixedLoopEdge R D I).toTruncated) j) := by
   have h := NatIso.isIso_map_iff (SpectrumHo.nativeLoopPiIso.{max (u + 1) v} j)
     (Truncated.HomotopyCategory.homMk
-      (coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).toTruncated)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).toTruncated)
   rw [ConcreteCategory.isIso_iff_bijective, ConcreteCategory.isIso_iff_bijective] at h
   apply h.mpr
   change Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
-    (coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).toTruncated) (j + 1))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I)).toTruncated) (j + 1))
   rw [SpectrumHo.piMap_edge]
   change Function.Bijective (OmegaSpectrum.homotopyMap
-    (coherentNerveEdgeToHom (coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I))) (j + 1))
-  rw [coherentNerveEdgeToHom_edge]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaRawSuspensionToFixedK R D I))) (j + 1))
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
   exact dgKappaRawSuspensionToFixedK_positive R D I hcofinal (j + 1) (by omega)
 
 end SerrePositivity.KST.NonConnective

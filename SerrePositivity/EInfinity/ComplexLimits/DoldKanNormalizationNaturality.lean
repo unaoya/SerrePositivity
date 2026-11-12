@@ -20,15 +20,15 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory AlgebraicTopology HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve.PinchedHom DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {x' y' : E}
 
 lemma standardNormalizationIso_chainMap
     (f : homObject R D x y ⟶ homObject R E x' y') :
     (normalizedMooreComplex (ModuleCat R)).map (standardModuleChainMap f) ≫
-      (standardNormalizationIso (R := R) x' y').hom =
-    (standardNormalizationIso (R := R) x y).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x' y').hom =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom ≫
       truncLE'Map f (ComplexShape.embeddingUpIntLE 0) := by
   apply HomologicalComplex.Hom.ext
   funext n
@@ -38,41 +38,41 @@ lemma standardNormalizationIso_chainMap
   cases n with
   | zero =>
     apply (ModuleCat.mono_iff_injective
-      ((connectiveHomComplex_zeroIso (R := R) x' y').hom ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').hom ≫
         (homObject R E x' y').iCycles 0)).mp inferInstance
-    change (homObject R E x' y').iCycles 0 ((connectiveHomComplex_zeroIso (R := R) x' y').hom
-        ((standardNormalizationIso (R := R) x' y').hom.f 0
+    change (homObject R E x' y').iCycles 0 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').hom
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x' y').hom.f 0
           (((normalizedMooreComplex (ModuleCat R)).map (standardModuleChainMap f)).f 0 s))) =
-      (homObject R E x' y').iCycles 0 ((connectiveHomComplex_zeroIso (R := R) x' y').hom
+      (homObject R E x' y').iCycles 0 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').hom
         ((truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f 0
-          ((standardNormalizationIso (R := R) x y).hom.f 0 s)))
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0 s)))
     rw [standardNormalizationIso_zero_eval]
     have h := ConcreteCategory.congr_hom (connectiveHomComplex_zero_chainMap f)
-      ((standardNormalizationIso (R := R) x y).hom.f 0 s)
-    change (homObject R E x' y').iCycles 0 ((connectiveHomComplex_zeroIso (R := R) x' y').hom
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0 s)
+    change (homObject R E x' y').iCycles 0 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').hom
         ((truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f 0
-          ((standardNormalizationIso (R := R) x y).hom.f 0 s))) =
-      f.f 0 ((homObject R D x y).iCycles 0 ((connectiveHomComplex_zeroIso (R := R) x y).hom
-        ((standardNormalizationIso (R := R) x y).hom.f 0 s))) at h
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0 s))) =
+      f.f 0 ((homObject R D x y).iCycles 0 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x y).hom
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0 s))) at h
     rw [h, standardNormalizationIso_zero_eval]
     exact standardMooreTermIso_map_component f 0 s Finset.univ 0 Finset.univ_nonempty (by simp)
   | succ n =>
     apply (ModuleCat.mono_iff_injective
-      (connectiveHomComplex_positiveIso (R := R) x' y' n).hom).mp inferInstance
-    change (connectiveHomComplex_positiveIso (R := R) x' y' n).hom
-        ((standardNormalizationIso (R := R) x' y').hom.f (n + 1)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).hom).mp inferInstance
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).hom
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x' y').hom.f (n + 1)
           (((normalizedMooreComplex (ModuleCat R)).map (standardModuleChainMap f)).f (n + 1) s)) =
-      (connectiveHomComplex_positiveIso (R := R) x' y' n).hom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).hom
         ((truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f (n + 1)
-          ((standardNormalizationIso (R := R) x y).hom.f (n + 1) s))
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f (n + 1) s))
     rw [standardNormalizationIso_positive_eval]
     have h := ConcreteCategory.congr_hom (connectiveHomComplex_positive_chainMap f n)
-      ((standardNormalizationIso (R := R) x y).hom.f (n + 1) s)
-    change (connectiveHomComplex_positiveIso (R := R) x' y' n).hom
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f (n + 1) s)
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).hom
         ((truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f (n + 1)
-          ((standardNormalizationIso (R := R) x y).hom.f (n + 1) s)) =
-      f.f (-(n + 1 : ℤ)) ((connectiveHomComplex_positiveIso (R := R) x y n).hom
-        ((standardNormalizationIso (R := R) x y).hom.f (n + 1) s)) at h
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f (n + 1) s)) =
+      f.f (-(n + 1 : ℤ)) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).hom
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f (n + 1) s)) at h
     rw [h, standardNormalizationIso_positive_eval]
     exact standardMooreTermIso_map_component f (n + 1) s Finset.univ (-(n + 1 : ℤ))
       Finset.univ_nonempty (by simp)

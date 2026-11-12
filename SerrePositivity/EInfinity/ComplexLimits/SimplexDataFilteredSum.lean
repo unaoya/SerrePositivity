@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 public import Mathlib.Algebra.BigOperators.Group.Finset.Basic
 
 /-!
@@ -12,7 +12,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
 
 lemma gradedHom_sum_heq_of_filter {ι : Type*}

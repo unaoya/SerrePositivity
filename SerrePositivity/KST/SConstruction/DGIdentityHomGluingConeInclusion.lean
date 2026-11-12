@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoBoundary
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingNativeTriangle
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHom
 
 /-!
 概要：元実 gluing cone の右包含を元入力全同型・元上二単体と同時に保持する。
@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHo
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -41,8 +41,8 @@ local notation "H" => dgIdentityHomGluingFunctor R C F G a h
 /-- 概要：元実 gluing cone の同じ右包含を全厳密比較として保持する。
 方針：元自然 cone 包含に元指定入力同型を後合成する。
 規約：元入力同型・全 Hom を保持。使われ方：元実 cone の上二単体境界。 -/
-def dgIdentityHomGluingModuleConeInr : StrictNatTrans (GY) (B) :=
-  dgStrictNatTransComp (ι) (θ)
+def dgIdentityHomGluingModuleConeInr : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (GY) (B) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ι) (θ)
 
 /-- 概要：元実 cone 右包含の閉成分は元の実 moduleConeInr そのもの。
 方針：元全合成の閉射と同じ cone 入力同型の包含回収を合成する。
@@ -51,7 +51,7 @@ lemma dgIdentityHomGluingModuleConeInr_arrow (x : P) :
     dgModuleNaturalConeArrow R C (GY) (B)
       (dgIdentityHomGluingModuleConeInr R C F G a h) x =
       moduleConeInr R C (dgHomGluingTargetModuleMap R C C C (I) (I) ((H).obj x)) := by
-  change dgModuleNaturalConeArrow R C (GY) (B) (dgStrictNatTransComp (ι) (θ)) x = _
+  change dgModuleNaturalConeArrow R C (GY) (B) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ι) (θ)) x = _
   exact (dgModuleNaturalConeArrow_comp R C (GY) (A) (B) (ι) (θ) x).trans
     ((congrArg₂ (fun p q => p ≫ q)
       (dgModuleNaturalConeInr_arrow R C (FY) (GY) (η) x)
@@ -64,24 +64,24 @@ lemma dgIdentityHomGluingModuleConeInr_arrow (x : P) :
 方針：同じ元全厳密合成を native 合成則へ写す。
 規約：同じ指定全比較の順射。使われ方：元上二単体の native 境界。 -/
 lemma dgIdentityHomGluingStrictConeInputNerveComparison_inr :
-    dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫
       (dgIdentityHomGluingStrictConeInputNerveComparison R C F G a h).hom =
-        dgStrictNatTransNerveHom R P (RightModule R C)
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C)
           (dgIdentityHomGluingModuleConeInr R C F G a h) := by
-  exact (congrArg (fun m => dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫ m)
-    (dgStrictNatTransNerveHom_spec R P (RightModule R C) (θ)).symm).trans
-      (dgStrictNatTransNerveHom_comp R P (RightModule R C) (ι) (θ)).symm
+  exact (congrArg (fun m => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫ m)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom_spec R P (RightModule R C) (θ)).symm).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom_comp R P (RightModule R C) (ι) (θ)).symm
 
 /-- 概要：同じ入力全同型の逆は元実包含を元自然 cone 包含へ戻す。
 方針：元順方向包含等号に同じ逆射を後合成する。
 規約：元指定逆を保持。使われ方：元実 realization の入力境界。 -/
 lemma dgIdentityHomGluingStrictConeInputNerveComparison_inr_inv :
-    dgStrictNatTransNerveHom R P (RightModule R C)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C)
         (dgIdentityHomGluingModuleConeInr R C F G a h) ≫
       (dgIdentityHomGluingStrictConeInputNerveComparison R C F G a h).inv =
-        dgStrictNatTransNerveHom R P (RightModule R C) (ι) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι) := by
   let nativeIso := dgIdentityHomGluingStrictConeInputNerveComparison R C F G a h
-  let n := dgStrictNatTransNerveHom R P (RightModule R C) (ι)
+  let n := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι)
   exact (congrArg (fun t => t ≫ nativeIso.inv)
     (dgIdentityHomGluingStrictConeInputNerveComparison_inr R C F G a h)).symm.trans
       ((Category.assoc n nativeIso.hom nativeIso.inv).trans
@@ -91,7 +91,7 @@ lemma dgIdentityHomGluingStrictConeInputNerveComparison_inr_inv :
 方針：同じ全厳密合成等号を元三辺の全二単体へ束ねる。
 規約：辺を類で置き換えない。使われ方：元上二単体の実入力移送。 -/
 def dgIdentityHomGluingModuleConeInrTriangle :
-    FunctorCompositionTriangle (ι).homotopy (θ).homotopy
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (ι).homotopy (θ).homotopy
       (dgIdentityHomGluingModuleConeInr R C F G a h).homotopy :=
   Classical.choice (dgModuleStrictCompositionTriangle_nonempty
     (R := R) (C := C) (GY) (A) (B) (ι) (θ)

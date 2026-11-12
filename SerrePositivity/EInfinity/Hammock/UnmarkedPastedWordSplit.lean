@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedColumn
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordColumnSplit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordCutFactorColumns
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordCutFactorColumns
 
 /-!
 # 元の三因子の語の生成位置での前後の語の回収
@@ -19,37 +19,37 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
-lemma before_word (a b : Word) : Word.ColumnSplit.before
-    (Word.append (Word.append a (Word.single .forward)) b) (columnIndex a b) = a := by
-  apply Word.object_ext
-    (Word.ColumnSplit.before (Word.append (Word.append a (Word.single .forward)) b)
+lemma before_word (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit.before
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b) (columnIndex a b) = a := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordUnit.object_ext
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit.before (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b)
       (columnIndex a b))
     a rfl
   intro j
   change Fin a.length at j
-  change (Word.append (Word.append a (Word.single .forward)) b).direction
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b).direction
     ((j.castAdd 1).castAdd b.length) = a.direction j
-  exact (Word.append_direction_left (Word.append a (Word.single .forward)) b (j.castAdd 1)).trans
-    (Word.append_direction_left a (Word.single .forward) j)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_left (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b (j.castAdd 1)).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_left a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) j)
 
-lemma after_word (a b : Word) : Word.ColumnSplit.after
-    (Word.append (Word.append a (Word.single .forward)) b) (columnIndex a b) = b := by
-  have hl : (Word.ColumnSplit.after (Word.append (Word.append a (Word.single .forward)) b)
+lemma after_word (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit.after
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b) (columnIndex a b) = b := by
+  have hl : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordColumnSplit.after (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b)
       (columnIndex a b)).length = b.length := by
     change a.length + 1 + b.length - a.length - 1 = b.length
     omega
-  apply Word.object_ext _ _ hl
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordUnit.object_ext _ _ hl
   intro j
-  exact Word.append_direction_right (Word.append a (Word.single .forward)) b (Fin.cast hl j)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append_direction_right (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b (Fin.cast hl j)
 
-lemma prefix_word (a b : Word) : Word.CutFactor.prefixWord
-    (Word.append (Word.append a (Word.single .forward)) b) (columnIndex a b) =
-      Word.append a (Word.single .forward) :=
-  congrArg (fun w => Word.append w (Word.single .forward)) (before_word a b)
+lemma prefix_word (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b) (columnIndex a b) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) :=
+  congrArg (fun w => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append w (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) (before_word a b)
 
-lemma residual_word (a b : Word) : Word.CutFactor.residualWord
-    (Word.append (Word.append a (Word.single .forward)) b) (columnIndex a b) =
-      Word.append (Word.single .forward) b :=
-  congrArg (Word.append (Word.single .forward)) (after_word a b)
+lemma residual_word (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) b) (columnIndex a b) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) b :=
+  congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) (after_word a b)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

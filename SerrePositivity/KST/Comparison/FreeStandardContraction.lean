@@ -68,7 +68,7 @@ def freeStandardExtraDegeneracy (k : ℕ) :
       (freeDegeneracies.obj (Δ[k] : SSet.{u})).map (SimplexCategory.δ i).op ≫
         freeStandardPrepend k n
     have h := freeStandardPrepend_naturality.{u} (n := k) (SimplexCategory.δ i)
-    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ] at h
     exact h
   s_comp_σ n i := by
     change freeStandardPrepend k n ≫
@@ -76,7 +76,7 @@ def freeStandardExtraDegeneracy (k : ℕ) :
       (freeDegeneracies.obj (Δ[k] : SSet.{u})).map (SimplexCategory.σ i).op ≫
         freeStandardPrepend k (n + 1)
     have h := freeStandardPrepend_naturality.{u} (n := k) (SimplexCategory.σ i)
-    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_σ] at h
     exact h
 
 /--

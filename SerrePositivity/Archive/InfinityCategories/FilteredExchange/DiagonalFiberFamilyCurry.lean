@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.DiagonalFiberTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
 
 /-!
 概要：全始点族の対角輸送を、同じ全始点評価と固定した全区間族の作用へ curry する。

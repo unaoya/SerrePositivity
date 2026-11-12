@@ -43,7 +43,7 @@ open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
 
 namespace SerrePositivity.SimplicialModel.NerveFirstChoice
 variable {D : Type uD} [Category.{vD} D] (F : Dᵒᵖ ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
+  (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d))
 
 abbrev values : Index D ⥤ SSet.{v} := NerveSimplexStart.functor D ⋙ F
 abbrev System := NerveDiagramExtension.System (values F)

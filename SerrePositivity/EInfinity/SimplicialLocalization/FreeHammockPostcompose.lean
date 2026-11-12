@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.PointActions
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.PointActions
 
 /-!
 # 元の射による自由 hammock の後合成と両比較の自然性
@@ -17,7 +17,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock
-variable (C : RelativeCategory.{u}) (X : C.category) {Y Z : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category) {Y Z : C.category}
 
 def freeHammockPostcompose (g : Y ⟶ Z) :
     freeHammockDiagonal C X Y ⟶ freeHammockDiagonal C X Z :=
@@ -47,7 +47,7 @@ lemma freeHammockPostcompose_comparison (g : Y ⟶ Z) :
 lemma freeHammockPostcompose_augmentation (g : Y ⟶ Z) :
     freeHammockPostcompose C X g ≫ freeHammockDiagonalAugmentation C X Z =
       freeHammockDiagonalAugmentation C X Y ≫
-        postcomposePointMap X (arrowMap C.weakEquivalences g) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences g) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -55,11 +55,11 @@ lemma freeHammockPostcompose_augmentation (g : Y ⟶ Z) :
   change (freeHammockDiagonalAugmentation C X Z).app n
       ((freeHammockDiagonalComposition C X Y Z).app n
         (z, (freeHammockArrowPoint C g).app n PUnit.unit)) =
-    composePoint C.weakEquivalences X Y Z
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint C.weakEquivalences X Y Z
       ((freeHammockDiagonalAugmentation C X Y).app n z)
-      ((arrowMap C.weakEquivalences g).app n PUnit.unit)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences g).app n PUnit.unit)
   rw [freeHammockDiagonalAugmentation_composePoint]
-  exact congrArg (composePoint C.weakEquivalences X Y Z
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint C.weakEquivalences X Y Z
     ((freeHammockDiagonalAugmentation C X Y).app n z))
       (congrArg (fun k => k.app n PUnit.unit) (freeHammockArrowPoint_augmentation C g))
 

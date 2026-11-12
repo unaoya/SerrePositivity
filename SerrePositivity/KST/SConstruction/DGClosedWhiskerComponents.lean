@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.ClosedComposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ClosedComposition
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
 public import Mathlib.CategoryTheory.Enriched.Ordinary.Basic
 

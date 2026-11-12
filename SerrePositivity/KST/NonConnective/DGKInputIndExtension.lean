@@ -16,7 +16,7 @@ open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 local instance indExtensionRegular : Fact (Cardinal.aleph0.{w}).IsRegular :=
   Cardinal.fact_isRegular_aleph0
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
@@ -25,36 +25,36 @@ variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 def dgKInputIndExtensionContinuousVertex
     (f : (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (dgKInputStableValue R A).obj ⟶ dgKInputIndCompletion R B) :=
-  (dgKInputIndRestrictionEquivalence R A B).inv.app (Opposite.op ⦋0⦌) (functorVertex f)
+  (dgKInputIndRestrictionEquivalence R A B).inv.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
 
 /-- 固定 ν の指定関手を、元の同じ Indω 上の実関手へ延長する。 -/
 def dgKInputIndExtension
     (f : (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (dgKInputStableValue R A).obj ⟶ dgKInputIndCompletion R B) :
     dgKInputIndCompletion R A ⟶ dgKInputIndCompletion R B :=
-  (functorVertexEquiv _ _).symm (dgKInputIndExtensionContinuousVertex R A B f).val
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (dgKInputIndExtensionContinuousVertex R A B f).val
 
 /-- 元の実延長は同じ小さい filtered native 余極限を保存する。 -/
 theorem dgKInputIndExtension_preservesFilteredColimits
     (f : (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (dgKInputStableValue R A).obj ⟶ dgKInputIndCompletion R B) :
-    PreservesSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputIndExtension R A B f) :=
-  fullSubcomplexOnVertices_vertex (dgKInputIndExtensionContinuousVertex R A B f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits Cardinal.aleph0 (dgKInputIndExtension R A B f) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (dgKInputIndExtensionContinuousVertex R A B f)
 
 /-- 同じ指定延長の元の Yoneda 制限は、元の指定関手を全関手同型で回収する。 -/
 def dgKInputIndExtension_restrictionIso
     (f : (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (dgKInputStableValue R A).obj ⟶ dgKInputIndCompletion R B) :
-    FunctorIso (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫
       dgKInputIndExtension R A B f) f := by
-  have e := (dgKInputIndRestrictionEquivalence R A B).invHomIso.app (functorVertex f)
-  change VertexIso
-    (((pre (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)).app _).app
+  have e := (dgKInputIndRestrictionEquivalence R A B).invHomIso.app (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+    (((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)).app _).app
       (Opposite.op ⦋0⦌) (dgKInputIndExtensionContinuousVertex R A B f).val)
-    (functorVertex f) at e
-  have hv : functorVertex (dgKInputIndExtension R A B f) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) at e
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (dgKInputIndExtension R A B f) =
       (dgKInputIndExtensionContinuousVertex R A B f).val :=
-    (functorVertexEquiv _ _).apply_symm_apply _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply _
   rw [← hv] at e
   exact e
 
@@ -65,21 +65,21 @@ def dgKInputIndExtension_restrictionIso
 -/
 def dgKInputIndFunctorIso_of_restriction
     (F G : dgKInputIndCompletion R A ⟶ dgKInputIndCompletion R B)
-    (hF : PreservesSmallKappaFilteredColimits Cardinal.aleph0 F)
-    (hG : PreservesSmallKappaFilteredColimits Cardinal.aleph0 G)
-    (e : FunctorIso (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ F)
-      (indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ G)) : FunctorIso F G := by
-  let x := kappaContinuousFunctorVertex Cardinal.aleph0 F hF
-  let y := kappaContinuousFunctorVertex Cardinal.aleph0 G hG
-  have e' : VertexIso
-      ((indKappaContinuousRestriction Cardinal.aleph0 (dgKInputStableValue R A).obj
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits Cardinal.aleph0 F)
+    (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.PreservesSmallKappaFilteredColimits Cardinal.aleph0 G)
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ F)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj ≫ G)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G := by
+  let x := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.kappaContinuousFunctorVertex Cardinal.aleph0 F hF
+  let y := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.kappaContinuousFunctorVertex Cardinal.aleph0 G hG
+  have e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction Cardinal.aleph0 (dgKInputStableValue R A).obj
         (dgKInputIndCompletion R B)).app (Opposite.op ⦋0⦌) x)
-      ((indKappaContinuousRestriction Cardinal.aleph0 (dgKInputStableValue R A).obj
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction Cardinal.aleph0 (dgKInputStableValue R A).obj
         (dgKInputIndCompletion R B)).app (Opposite.op ⦋0⦌) y) := e
-  exact VertexIso.map
-    ((indKappaContinuousRestriction_isFullyFaithful Cardinal.aleph0
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indKappaContinuousRestriction_isFullyFaithful Cardinal.aleph0
       (dgKInputStableValue R A).obj (dgKInputIndCompletion R B)).preimageVertexIso e')
-    (kappaContinuousFunctorInclusion Cardinal.aleph0
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.kappaContinuousFunctorInclusion Cardinal.aleph0
       (dgKInputIndCompletion R A) (dgKInputIndCompletion R B))
 
 end SerrePositivity.KST.NonConnective

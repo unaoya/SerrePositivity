@@ -36,7 +36,7 @@ def mappingCofibrantFactorization :
       (cofibrations (K ⥤ (operad A).Algebra)) (trivialFibrations (K ⥤ (operad A).Algebra)) := by
   let := projectiveModelCategory A K
   have := cofibrantlyGenerated A K
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
     (generatingCofibrations A K) (generatingTrivialCofibrations A K)
   exact MorphismProperty.functorialFactorizationData _ _
 
@@ -47,7 +47,7 @@ def mappingCofibrantFactorization :
 def mappingSpace : (K ⥤ (operad A).Algebra)ᵒᵖ ⥤ (K ⥤ (operad A).Algebra) ⥤ SSet.{u} := by
   let := projectiveModelCategory A K
   exact (cosimplicialResolutionFamily (mappingCofibrantFactorization A K)).obj.op ⋙
-    cosimplicialHomBifunctor
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 /-- 概要：図式の導来写像空間は全次元で Kan（Hovey §5）。
 方針：図式の Reedy cofibrant 始域 frame と全終域の fibrancy を使う。

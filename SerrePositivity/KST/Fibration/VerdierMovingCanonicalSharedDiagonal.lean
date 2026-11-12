@@ -18,20 +18,20 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -50,12 +50,12 @@ theorem verdierMovingCanonicalSharedDiagonal :
   have hN := verdierLowerCanonicalFamily_diagonal d
     (verdierLowerCanonicalReadout d L hfull)
   rw [verdierLowerCanonicalReadout_value] at hN
-  have hp := (uliftTriangleNativePathIntervalIso_inv_first.{u, u + 1}).symm.trans
+  have hp := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso_inv_first.{u, u + 1}).symm.trans
     (coherentTriangleInterval_up_first.{u})
   rw [hp] at hN
   have hlow : verdierLowerNativeLongHomTransport d Δ[1] L ≫
-      evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) =
-      (L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})) =
+      (L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))) ≫
         eqToHom (verdierLowerNativeLongHomTarget_eq d) := by
     apply SSet.hom_ext
     intro n
@@ -66,7 +66,7 @@ theorem verdierMovingCanonicalSharedDiagonal :
   have hF := verdierMovingUpperFamily_diagonal d
     (verdierReadoutMovingLongInput d L hL hfull H T hT)
   exact (hN.trans (verdierLowerNativeDiagonal_transport d Δ[1]
-    (L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))))).trans
+    (L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))))).trans
       ((congrArg (verdierNativeDiagonalFamily d Δ[1]) (hd.trans hlow).symm).trans hF.symm)
 
 end SerrePositivity.KST.Fibration

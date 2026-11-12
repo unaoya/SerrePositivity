@@ -43,7 +43,7 @@ theorem vertexOfHomMap_evaluation {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : �
     vertexOfHomMap f ≫ evaluation X Y n = eHomEquiv SSet (f.app n) := by
   have h := TruncatedMapping.familyLift_evaluation
     (fun n ↦ (X.level n).space) (fun n ↦ (Y.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (mappingStep X Y)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (mappingStep X Y)
     (homFamily f) (homFamily_condition f) n
   exact h.trans (homFamily_eq_eHom f n)
 

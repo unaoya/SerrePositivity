@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CoherentCospanLimits
 public import SerrePositivity.KST.Spectra.SpectrumZeroObject
-public import SerrePositivity.InfinityCategories.F1.Joins.FiniteLimitGeneration
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.FiniteLimitGeneration
 
 /-!
 概要：元の BF スペクトルの coherent nerve に全有限極限を与える。
@@ -20,8 +20,8 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 方針：終対象と標準 cospan 極限による有限極限生成を適用する。
 規約：追加のモデル構造や有限余極限の入力は不要。
 使われ方：D の loop 同値による一般安定性判定。 -/
-instance sp_hasFiniteLimits : HasFiniteLimits Sp.{u} :=
-  hasFiniteLimits_of_terminal_pullbacks pointZeroVertex.vertex pointZeroVertex.isTerminal
+instance sp_hasFiniteLimits : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits Sp.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.hasFiniteLimits_of_terminal_pullbacks pointZeroVertex.vertex pointZeroVertex.isTerminal
     CoherentPullback.hasLimit
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

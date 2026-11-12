@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 全 native dg 入力族に自然な、元の反復 core S₁ 比較そのもの。 -/
 def presentedPerfectDGMultiSOneCoreComparison (r : ℕ) (d : Fin r → SimplexCategoryᵒᵖ) :
-    QuasicategoryEnrichedComparison
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedComparison
       ((presentedPerfectDGMultiSCoreEnrichedDiagram A (r + 1)).obj
         ((oneDirectionIndex r).obj d))
       ((presentedPerfectDGMultiSCoreEnrichedDiagram A r).obj d) :=

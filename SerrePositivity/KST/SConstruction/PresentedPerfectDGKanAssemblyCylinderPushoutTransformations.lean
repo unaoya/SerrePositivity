@@ -1,7 +1,7 @@
 module
 public import
   SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderPushoutNaturality
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 同じ実円柱押し出しの両標的比較の厳密豊穣自然変換
 概要：同じ左右比較を、全厳密 dg 入力に関する豊穣自然変換へ束ねる。
@@ -21,7 +21,7 @@ def presentedPerfectDGKanAssemblyCylinderPushoutLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderPushoutLeftMap A r)
     (presentedPerfectDGKanAssemblyCylinderPushoutLeft_whisker A r)
 
@@ -36,7 +36,7 @@ def presentedPerfectDGKanAssemblyCylinderPushoutRightTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblyTargetFunctor A r)
       (presentedPerfectDGKanAssemblyCylinderPushoutFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGKanAssemblyCylinderPushoutRightMap A r)
     (presentedPerfectDGKanAssemblyCylinderPushoutRight_whisker A r)
 

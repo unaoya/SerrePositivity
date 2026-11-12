@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全区間 HA 鎖射は、共有頂点の実一面で元の左右区間の実 tensor 合成を回収。 -/
-lemma simplexHAIntervalChainLift_one_tensor {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAIntervalChainLift_one_tensor {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (a b c : Fin (N + 1)) (hab : a < b) (hbc : b < c) :
     (serreCubeRightFace A true (b.val - a.val - 1) (c.val - b.val - 1)).hom ≫
       eqToHom (congrArg (serreCubeComplex A)

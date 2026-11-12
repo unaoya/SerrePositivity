@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationTriangleSmall
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIso
 
 /-!
 概要：元の coherent な cospan 錐の左右二三角形を共通の長辺とともに保持する。

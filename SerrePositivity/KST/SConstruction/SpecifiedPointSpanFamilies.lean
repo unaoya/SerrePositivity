@@ -20,10 +20,10 @@ variable {U E : SSet.{u}} [KanComplex E] (u : U _⦋0⦌) {D : U ⟶ E}
   {x y : E _⦋0⦌} (a : SSet.Homotopy D (SSet.const x))
   (b : SSet.Homotopy D (SSet.const y)) (e : E.Edge x y) (t : E _⦋2⦌)
   (h₂ : E.map (SimplexCategory.δ (2 : Fin 3)).op t =
-    (simplicialHomotopyVertexEdge a u).edge)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge a u).edge)
   (h₀ : E.map (SimplexCategory.δ (0 : Fin 3)).op t = e.edge)
   (h₁ : E.map (SimplexCategory.δ (1 : Fin 3)).op t =
-    (simplicialHomotopyVertexEdge b u).edge)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge b u).edge)
 
 /-- 指定頂点で元の比較辺を保持する、全パラメータの実比較円柱。 -/
 def specifiedPointSpanComposite : SSet.Homotopy (SSet.const (X := U) x) (SSet.const y) :=

@@ -18,7 +18,7 @@ open CategoryTheory
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.NativeFiber
 
-lemma boundary_bijective_of_totalGroups (t : ZeroTriangle Sp.{u}) (ht : IsFiberSequence t)
+lemma boundary_bijective_of_totalGroups (t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle Sp.{u}) (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence t)
     (j : ℤ) (h₀ : Subsingleton (group t 1 0 j))
     (h₁ : Subsingleton (group t 1 0 (j + 1))) : Function.Bijective (boundary t ht j) := by
   constructor

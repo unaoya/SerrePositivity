@@ -24,9 +24,9 @@ local instance squareRightPresentationCategory : SimplicialCategory OmegaSpectru
 
 variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
 
-def unitRightIso : FunctorIso (SSet.yonedaEquiv.symm (coherentNerveEdge q).edge)
-    (SSet.yonedaEquiv.symm (coherentNerveEdge (fibrationReplacementProjection q)).edge) := by
-  let e := (unitSquareIso q).precomp squareRightEdge
+def unitRightIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fibrationReplacementProjection q)).edge) := by
+  let e := (unitSquareIso q).precomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge
   haveI : IsIso (HomotopyFiberConeComparison.rightPresentation q
       (fibrationReplacementProjection q) (fibrationReplacementUnit q) (𝟙 Y')
       (HomotopySquareGroups.unitSquare q)) :=
@@ -38,14 +38,14 @@ def unitRightIso : FunctorIso (SSet.yonedaEquiv.symm (coherentNerveEdge q).edge)
     (fibrationReplacementProjection q) (fibrationReplacementUnit q) (𝟙 Y')
     (HomotopySquareGroups.unitSquare q))
 
-lemma unitRightIso_arrow : Arrow.mk (homPre squareRightEdge (unitSquareIso q).hom) =
+lemma unitRightIso_arrow : Arrow.mk (homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (unitSquareIso q).hom) =
     Arrow.mk (unitRightIso q).hom :=
   HomotopyFiberConeComparison.squareHom_right_presentation _ _ _ _ _
 
-lemma unitRightIso_inv_arrow : Arrow.mk (homPre squareRightEdge (unitSquareIso q).inv) =
+lemma unitRightIso_inv_arrow : Arrow.mk (homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (unitSquareIso q).inv) =
     Arrow.mk (unitRightIso q).inv := by
-  let e := (unitSquareIso q).precomp squareRightEdge
-  have hi := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (unitRightIso q).hom) (unitRightIso_arrow q)
+  let e := (unitSquareIso q).precomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge
+  have hi := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_inv_congr (f := e.hom) (g := (unitRightIso q).hom) (unitRightIso_arrow q)
   simp only [IsIso.Iso.inv_hom] at hi
   exact hi
 
@@ -57,7 +57,7 @@ def rightPresentation := HomotopyFiberConeComparison.rightPresentation p
     (unitRightIso q).inv
 
 lemma squareHom_right_presentation :
-    Arrow.mk (homPre squareRightEdge (squareHom p q a b γ)) =
+    Arrow.mk (homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (squareHom p q a b γ)) =
       Arrow.mk (rightPresentation p q a b γ) := by
   unfold squareHom
   rw [homPre_homComp]

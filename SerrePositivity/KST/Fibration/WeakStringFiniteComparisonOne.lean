@@ -22,8 +22,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 一辺の場合の有限積を元の因子へ戻すと、元の初期頂点と cofiber の射対を得る。 -/
-lemma weakStringFiniteComparison_one_normalize {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakStringFiniteComparison_one_normalize {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     weakStringFiniteComparison q 1 r ≫ (𝟙 _ ⊗ₘ
       (productUniqueIso (fun _ : Fin 1 =>
         (multiRealizationFunctor r).obj (closedStableModel (kernelClosedPredicate q)))).hom) =
@@ -34,7 +34,7 @@ lemma weakStringFiniteComparison_one_normalize {B C : _root_.SerrePositivity.Inf
     weakStringConsecutiveCofibers_projection, consecutiveWeakStringEdge_one]
 
 /-- 元の一辺の二評価の射対は、既存の W 辺の加法性写像そのものである。 -/
-lemma weakStringOnePair_eq_additivity {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakStringOnePair_eq_additivity {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     lift ((multiRealizationFunctor (r + 1)).map (weakStringVertexTopExact q ⦋1⦌ 0))
       (weakStringCofiberMultiMap q (𝟙 ⦋1⦌) (r + 1)) =
         (multiRealizationFunctor (r + 1)).map (weakStringEdgeExact q (𝟙 ⦋1⦌)) ≫
@@ -51,8 +51,8 @@ lemma weakStringOnePair_eq_additivity {B C : _root_.SerrePositivity.InfinityCate
     rfl
 
 /-- 元の有限列比較の一辺の場合は、全正有限反復で局所化同型。 -/
-theorem weakStringFiniteComparison_one_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+theorem weakStringFiniteComparison_one_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (weakStringFiniteComparison q 1 (r + 1))) := by
   let Q := AnodyneHomotopy.anodyneQ
   let p := 𝟙 ((multiRealizationFunctor (r + 1)).obj

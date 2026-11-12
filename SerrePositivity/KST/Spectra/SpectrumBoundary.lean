@@ -74,22 +74,22 @@ variable {X Y : OmegaSpectrum.{u}} (p : X ⟶ Y) [hp : ∀ k, Fibration (p.app k
 規約：実際の底の次数は boundaryIndex j + 2。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。整数次数の連結射の始域。 -/
 def boundaryBaseEquiv (j : ℤ) : homotopyGroup Y (j + 1) ≃*
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (Y.level (boundaryStage j)).space.right (boundaryIndex j + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (Y.level (boundaryStage j)).space.right (boundaryIndex j + 1)
       ((p.app (boundaryStage j)).right.app _ (X.level (boundaryStage j)).space.basepoint) :=
   (positiveStageEquiv Y (j + 1) (boundaryStage j) (boundaryIndex j + 1)
     (boundaryStage_succ_admissible j) (boundaryStage_succ_degree j)).trans
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (boundaryIndex j + 1)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (boundaryIndex j + 1)
         (Iso.refl (Y.level (boundaryStage j)).space.right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (p.app (boundaryStage j)))).symm
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (p.app (boundaryStage j)))).symm
 
 /-- 概要：連結射の fiber の整数次数群を計算段の実際の fiber で表示する。
 方針：段の自然な表示と置換の比較射の群同型を使う。
 規約：実際の fiber の次数は boundaryIndex j + 1。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。整数次数の連結射の標的。 -/
 def boundaryFiberEquiv (j : ℤ) : homotopyGroup (fiber p hp) j ≃*
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.KanFiber (p.app (boundaryStage j)).right
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber (p.app (boundaryStage j)).right
       ((p.app (boundaryStage j)).right.app _ (X.level (boundaryStage j)).space.basepoint))
-      (boundaryIndex j) (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint (p.app (boundaryStage j)).right
+      (boundaryIndex j) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint (p.app (boundaryStage j)).right
         (X.level (boundaryStage j)).space.basepoint) :=
   fiberPositiveStageEquiv p j (boundaryStage j) (boundaryIndex j)
     (boundaryStage_admissible j) (boundaryStage_degree j)
@@ -100,7 +100,7 @@ def boundaryFiberEquiv (j : ℤ) : homotopyGroup (fiber p hp) j ≃*
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。スペクトルの長完全列。 -/
 def stableConnectingHom (j : ℤ) : homotopyGroup Y (j + 1) →* homotopyGroup (fiber p hp) j :=
   (boundaryFiberEquiv p j).symm.toMonoidHom.comp
-    ((_root_.SerrePositivity.InfinityCategories.Kan.connectingHom (p.app (boundaryStage j)).right
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (p.app (boundaryStage j)).right
       (X.level (boundaryStage j)).space.basepoint (boundaryIndex j)).comp
         (boundaryBaseEquiv p j).toMonoidHom)
 
@@ -110,7 +110,7 @@ def stableConnectingHom (j : ℤ) : homotopyGroup Y (j + 1) →* homotopyGroup (
 使われ方：Goerss–Jardine I §7、BF 1978 §2。完全性の段からの移送。 -/
 theorem stableConnectingHom_compute (j : ℤ) (a : homotopyGroup Y (j + 1)) :
     boundaryFiberEquiv p j (stableConnectingHom p j a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.connectingHom (p.app (boundaryStage j)).right
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connectingHom (p.app (boundaryStage j)).right
         (X.level (boundaryStage j)).space.basepoint (boundaryIndex j) (boundaryBaseEquiv p j a) :=
   (boundaryFiberEquiv p j).apply_symm_apply _
 
@@ -121,7 +121,7 @@ omit hp in
 使われ方：Goerss–Jardine I §7、BF 1978 §2。底の位置の完全性。 -/
 theorem boundaryBaseEquiv_projection (j : ℤ) (a : homotopyGroup X (j + 1)) :
     boundaryBaseEquiv p j (homotopyMap p (j + 1) a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (p.app (boundaryStage j)).right rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (p.app (boundaryStage j)).right rfl
         (positiveStageEquiv X (j + 1) (boundaryStage j) (boundaryIndex j + 1)
           (boundaryStage_succ_admissible j) (boundaryStage_succ_degree j) a) :=
   positiveStageEquiv_projection p _ _ _ _ _ a
@@ -134,9 +134,9 @@ theorem boundaryFiberEquiv_inclusion (j : ℤ) (a : homotopyGroup (fiber p hp) j
     positiveStageEquiv X j (boundaryStage j) (boundaryIndex j)
       (boundaryStage_admissible j) (boundaryStage_degree j)
         (homotopyMap (fiberInclusion p hp) j a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kan.fiberι (p.app (boundaryStage j)).right
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (p.app (boundaryStage j)).right
         ((p.app (boundaryStage j)).right.app _ (X.level (boundaryStage j)).space.basepoint))
-        (_root_.SerrePositivity.InfinityCategories.Kan.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point (p.app (boundaryStage j)).right (X.level (boundaryStage j)).space.basepoint)
           (boundaryFiberEquiv p j a) :=
   fiberPositiveStageEquiv_inclusion p _ _ _ _ _ a
 

@@ -1,9 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TensorHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.ContinuousKanProductUnit
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TensorHomotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanProductUnit
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 元の二つの弱ホモトピー同値の直積
@@ -23,33 +24,34 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory MonoidalCategory SerrePositivity.InfinityCategories
 
 lemma tensor_isSimplicialHomotopyEquivalence {A B C D : SSet.{u}}
-    {f : A ⟶ B} {g : C ⟶ D} (hf : IsSimplicialHomotopyEquivalence f)
-    (hg : IsSimplicialHomotopyEquivalence g) : IsSimplicialHomotopyEquivalence (f ⊗ₘ g) := by
+    {f : A ⟶ B} {g : C ⟶ D} (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence f)
+    (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence g) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (f ⊗ₘ g) := by
   obtain ⟨i, ⟨H₀⟩, ⟨H₁⟩⟩ := hf
   obtain ⟨j, ⟨K₀⟩, ⟨K₁⟩⟩ := hg
   refine ⟨i ⊗ₘ j, ?_, ?_⟩
   · rw [tensorHom_comp_tensorHom, ← id_tensorHom_id]
-    exact ⟨tensorHomotopy H₀ K₀⟩
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorHomotopy H₀ K₀⟩
   · rw [tensorHom_comp_tensorHom, ← id_tensorHom_id]
-    exact ⟨tensorHomotopy H₁ K₁⟩
+    exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.tensorHomotopy H₁ K₁⟩
 
+@[kerodon 02L2]
 lemma weakTensor {A B C D : SSet.{u}} {f : A ⟶ B} {g : C ⟶ D}
-    (hf : IsWeakHomotopyEquivalence f) (hg : IsWeakHomotopyEquivalence g) :
-    IsWeakHomotopyEquivalence (f ⊗ₘ g) := by
-  have hfQ := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence f hf
-  have hgQ := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence g hg
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) (hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f ⊗ₘ g) := by
+  have hfQ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence f hf
+  have hgQ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence g hg
   have hQ := (tensor_isSimplicialHomotopyEquivalence hfQ.isSimplicialHomotopyEquivalence
     hgQ.isSimplicialHomotopyEquivalence).isWeakHomotopyEquivalence
-  have hs := F2.continuousKanProductUnit_isWeakHomotopyEquivalence A C
-  have ht := F2.continuousKanProductUnit_isWeakHomotopyEquivalence B D
-  have hn : (f ⊗ₘ g) ≫ (F2.continuousKanReplacementUnit.app B ⊗ₘ
-      F2.continuousKanReplacementUnit.app D) =
-      (F2.continuousKanReplacementUnit.app A ⊗ₘ F2.continuousKanReplacementUnit.app C) ≫
-        (F2.continuousKanReplacement.map f ⊗ₘ F2.continuousKanReplacement.map g) := by
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.continuousKanProductUnit_isWeakHomotopyEquivalence A C
+  have ht := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.continuousKanProductUnit_isWeakHomotopyEquivalence B D
+  have hn : (f ⊗ₘ g) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app B ⊗ₘ
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app D) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app A ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.app C) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map f ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map g) := by
     rw [tensorHom_comp_tensorHom, tensorHom_comp_tensorHom]
     exact congrArg₂ (fun a b => a ⊗ₘ b)
-      (F2.continuousKanReplacementUnit.naturality f)
-      (F2.continuousKanReplacementUnit.naturality g)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.naturality f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit.naturality g)
   exact ht.cancel_right (hn.symm ▸ hs.comp hQ)
 
 end SerrePositivity.EInfinity.Hammock

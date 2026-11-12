@@ -57,9 +57,9 @@ lemma familyChainRectangleLeft_class_eq :
 
 /-- 元の各辺路の全合成証人から、両円柱の合成式を照合する。 -/
 lemma familyChainRectangle_composite_class_eq [KanComplex E] :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (familyChainCompositeData (familyChainRectangleLeft c)).homotopy) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (familyChainCompositeData (familyChainRectangleRight c)).homotopy) :=
   (familyChainCompositionWitness_class
     (familyChainCompositeData (familyChainRectangleLeft c)).witness).trans

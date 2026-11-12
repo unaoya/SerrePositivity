@@ -24,10 +24,10 @@ variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [EnrichedCategory SSet.{u} D] (F : EnrichedFoldData W D)
 
 lemma hammockFoldMap_unique
-    (H : ∀ X Y, colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y)
+    (H : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y)
     (hm : ∀ X Y, AllMarked.inclusion W X Y ≫ H X Y = F.marked X Y)
-    (hg : ∀ g, arrowMap W.paths g.val.hom.toPath ≫ H g.val.left g.val.right = F.generator g)
-    (hc : ∀ X Y Z, colimitComposition W.paths X Y Z ≫ H X Z =
+    (hg : ∀ g, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath ≫ H g.val.left g.val.right = F.generator g)
+    (hc : ∀ X Y Z, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z ≫ H X Z =
       (H X Y ⊗ₘ H Y Z) ≫ eComp SSet.{u} (F.obj X) (F.obj Y) (F.obj Z))
     (X Y : Paths C) : H X Y = F.hammockFoldMap X Y := by
   have he := F.foldMap_unique (fun X Y => gluing W Y X ≫ H X Y)
@@ -42,11 +42,11 @@ lemma hammockFoldMap_unique
     _ = F.hammockFoldMap X Y := congrArg (fun k => extraction W Y X ≫ k) he
 
 lemma existsUnique_hammockFoldMap :
-    ∃! H : ∀ X Y, colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y,
+    ∃! H : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y,
       (∀ X Y, AllMarked.inclusion W X Y ≫ H X Y = F.marked X Y) ∧
-      (∀ g, arrowMap W.paths g.val.hom.toPath ≫ H g.val.left g.val.right = F.generator g) ∧
-      (∀ X, colimitUnit W.paths X ≫ H X X = eId SSet.{u} (F.obj X)) ∧
-      (∀ X Y Z, colimitComposition W.paths X Y Z ≫ H X Z =
+      (∀ g, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath ≫ H g.val.left g.val.right = F.generator g) ∧
+      (∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X ≫ H X X = eId SSet.{u} (F.obj X)) ∧
+      (∀ X Y Z, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z ≫ H X Z =
         (H X Y ⊗ₘ H Y Z) ≫ eComp SSet.{u} (F.obj X) (F.obj Y) (F.obj Z)) := by
   refine ⟨F.hammockFoldMap,
     ⟨F.hammockFoldMap_marked, F.hammockFoldMap_generator, F.hammockFoldMap_unit,

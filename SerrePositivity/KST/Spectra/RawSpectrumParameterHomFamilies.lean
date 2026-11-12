@@ -34,7 +34,7 @@ lemma parameterFamily_evaluation (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     cotensorComparison_evaluation]
   dsimp only [exchangeFamily]
   rw [← Category.assoc, homPoint_evaluation]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.curry'_hom _
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeVertices.curry'_hom _
 
 /-- 元の全 Hom に値を取るパラメータ族を、同じ cotensor 値の厳密な列射へ移す。 -/
 def homOfParameterFamily (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})

@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUpperUnitFactorValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeUnitTriangleExchange
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoSquareValueTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPrecompCompositionValue
 
 /-!
 概要：a6 の既存の上側単位因子を、元の全三角形の指定比較と交換する。

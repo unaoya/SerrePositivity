@@ -57,7 +57,7 @@ def loopFiberKernelIsLimit {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
 規約：Kan 性を要求せず実際の点つき同型を構成する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。fiber の随伴構造射の比較。 -/
 def loopPointedFiberIso {E B : PointedSimplicialSet.{u}} (p : E ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedFiber p) ≅
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedFiber p) ≅
       pointedFiber (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p) :=
   (loopFiberKernelIsLimit p).conePointUniqueUpToIso
     (pointedFiberKernelIsLimit (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p))

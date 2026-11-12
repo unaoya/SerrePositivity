@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.LoopPathFiber
-public import SerrePositivity.InfinityCategories.Kan.FibrationNaturalityAt
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationNaturalityAt
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 
 /-!
@@ -31,9 +31,9 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。path の評価の自然性。 -/
 theorem PointedMapping.prePointed_post {A B E Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (p : E ⟶ Z) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i E ≫ PointedObject.basedHomMap A p =
-      PointedObject.basedHomMap B p ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i E ≫ PointedObject.basedHomMap A p =
+      PointedObject.basedHomMap B p ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z := by
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact MonoidalClosed.pre_comm_ihom_map i p
 
 /-- 概要：点つき射が path に誘導する射。
@@ -41,20 +41,20 @@ theorem PointedMapping.prePointed_post {A B E Z : PointedSimplicialSet.{u}}
 規約：定数 path を保存する。
 使われ方：Goerss–Jardine I §7。path fibration の可換正方形。 -/
 def basedPathMap {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    basedPathSpace Y ⟶ basedPathSpace Z := PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u} p
+    basedPathSpace Y ⟶ basedPathSpace Z := PointedObject.basedHomMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u} p
 
 /-- 概要：path の終点評価は標的の点つき射に関して自然。
 方針：端点の前合成の自然性と単位からの内部 Hom の自然な同型を使う。
 規約：点つき射の厳密な可換式。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.5。長完全列の自然性。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.5（Tag 00WD）。長完全列の自然性。 -/
 @[reassoc]
 theorem pathEndpoint_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     basedPathMap p ≫ pathEndpoint Z = pathEndpoint Y ≫ p := by
   unfold basedPathMap pathEndpoint
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
-  change (ihom _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.{u}).map p ≫ (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}).app Z ≫
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
+  change (ihom _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.{u}).map p ≫ (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}).app Z ≫
       (MonoidalClosed.unitNatIso (C := PointedSimplicialSet.{u})).inv.app Z =
-    ((MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}).app Y ≫
+    ((MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}).app Y ≫
       (MonoidalClosed.unitNatIso (C := PointedSimplicialSet.{u})).inv.app Y) ≫ p
   rw [← Category.assoc, ← MonoidalClosed.pre_comm_ihom_map, Category.assoc]
   rw [(MonoidalClosed.unitNatIso (C := PointedSimplicialSet.{u})).inv.naturality p]
@@ -79,9 +79,9 @@ theorem loopToEndpointHomIso_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶
 theorem loopToPath_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p ≫
         ((loopToEndpointHomIso Z).hom ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) Z) =
+          _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) Z) =
       ((loopToEndpointHomIso Y).hom ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}) Y) ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}) Y) ≫
           basedPathMap p := by
   rw [← Category.assoc, loopToEndpointHomIso_natural, Category.assoc,
     ← PointedMapping.prePointed_post, ← Category.assoc]
@@ -92,12 +92,12 @@ theorem loopToPath_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 規約：両側とも定数 path の fiberPoint と一致する基点を使う。
 使われ方：Goerss–Jardine I §7。連結写像と loop の同型の自然性。 -/
 def pathFiberMap {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanFiber (pathEndpoint Y).right ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) ⟶
-      _root_.SerrePositivity.InfinityCategories.Kan.KanFiber (pathEndpoint Z).right ((pathEndpoint Z).right.app _ (basedPathSpace Z).basepoint) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt (pathEndpoint Y).right (pathEndpoint Z).right
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber (pathEndpoint Y).right ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber (pathEndpoint Z).right ((pathEndpoint Z).right.app _ (basedPathSpace Z).basepoint) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt (pathEndpoint Y).right (pathEndpoint Z).right
     (basedPathMap p).right p.right (congrArg Under.Hom.right (pathEndpoint_natural p)).symm
     (basedPathSpace Y).basepoint (basedPathSpace Z).basepoint
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (basedPathMap p))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (basedPathMap p))
 
 /-- 概要：path の fiber 間の射は全 path への包含と可換。
 方針：指定基点の fiberMapAt の包含の式を使う。
@@ -105,11 +105,11 @@ def pathFiberMap {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 使われ方：Goerss–Jardine I §7。loop の同型の自然性。 -/
 @[reassoc (attr := simp)]
 theorem pathFiberMap_ι {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    pathFiberMap p ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Z).right
+    pathFiberMap p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (pathEndpoint Z).right
       ((pathEndpoint Z).right.app _ (basedPathSpace Z).basepoint) =
-        _root_.SerrePositivity.InfinityCategories.Kan.fiberι (pathEndpoint Y).right
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι (pathEndpoint Y).right
           ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) ≫ (basedPathMap p).right :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt_ι _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt_ι _ _ _ _ _ _ _ _
 
 /-- 概要：path の fiber 間の射は定数 path の fiberPoint を保つ。
 方針：指定基点の fiberMapAt の基点の式を使う。
@@ -117,9 +117,9 @@ theorem pathFiberMap_ι {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 使われ方：Goerss–Jardine I §7。loop のホモトピー群の自然性。 -/
 @[simp]
 theorem pathFiberMap_point {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
-    (pathFiberMap p).app _ (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint (pathEndpoint Y).right (basedPathSpace Y).basepoint) =
-      _root_.SerrePositivity.InfinityCategories.Kan.fiberPoint (pathEndpoint Z).right (basedPathSpace Z).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.fiberMapAt_point _ _ _ _ _ _ _ _
+    (pathFiberMap p).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint (pathEndpoint Y).right (basedPathSpace Y).basepoint) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint (pathEndpoint Z).right (basedPathSpace Z).basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.fiberMapAt_point _ _ _ _ _ _ _ _
 
 /-- 概要：path の底の指定基点の像を表す等式。
 方針：終点評価の自然性を頂点で評価して指定基点へ移す。
@@ -128,10 +128,10 @@ theorem pathFiberMap_point {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 theorem pathFiberMap_base {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
     p.right.app _ ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint) =
       (pathEndpoint Z).right.app _ (basedPathSpace Z).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.base_eqAt (pathEndpoint Y).right (pathEndpoint Z).right
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.base_eqAt (pathEndpoint Y).right (pathEndpoint Z).right
     (basedPathMap p).right p.right (congrArg Under.Hom.right (pathEndpoint_natural p)).symm
     (basedPathSpace Y).basepoint (basedPathSpace Z).basepoint
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (basedPathMap p))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (basedPathMap p))
 
 /-- 概要：path の連結写像は標的の点つき射に関して全次数で自然。
 方針：終点評価の可換正方形に指定基点の自然性を適用する。
@@ -139,16 +139,16 @@ theorem pathFiberMap_base {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) :
 使われ方：Goerss–Jardine I §7。loop の次数移動の自然性。 -/
 theorem pathConnecting_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right n
       ((pathEndpoint Y).right.app _ (basedPathSpace Y).basepoint)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (pathFiberMap p) (pathFiberMap_point p)
-        (_root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint n a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.connecting (pathEndpoint Z).right (basedPathSpace Z).basepoint n
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map p.right (pathFiberMap_base p) a) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.FibrationSquare.connecting_natural_at (pathEndpoint Y).right (pathEndpoint Z).right
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (pathFiberMap p) (pathFiberMap_point p)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting (pathEndpoint Y).right (basedPathSpace Y).basepoint n a) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.connecting (pathEndpoint Z).right (basedPathSpace Z).basepoint n
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map p.right (pathFiberMap_base p) a) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.connecting_natural_at (pathEndpoint Y).right (pathEndpoint Z).right
     (basedPathMap p).right p.right (congrArg Under.Hom.right (pathEndpoint_natural p)).symm
     (basedPathSpace Y).basepoint (basedPathSpace Z).basepoint
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (basedPathMap p)) n a
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (basedPathMap p)) n a
 
 /-- 概要：loop と定数 path 上の fiber の同型は標的に関して自然。
 方針：fiber の全空間への包含で比較し、点つき loop の包含の自然性を使う。
@@ -158,7 +158,7 @@ theorem loopBasedPathFiberIso_natural {Y Z : PointedSimplicialSet.{u}} (p : Y �
     (loopBasedPathFiberIso Y).hom ≫ pathFiberMap p =
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} p).right ≫
         (loopBasedPathFiberIso Z).hom := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext (pathEndpoint Z).right _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext (pathEndpoint Z).right _
   rw [Category.assoc, pathFiberMap_ι, ← Category.assoc, loopBasedPathFiberIso_hom_ι,
     Category.assoc, loopBasedPathFiberIso_hom_ι]
   exact (congrArg Under.Hom.right (loopToPath_natural p)).symm

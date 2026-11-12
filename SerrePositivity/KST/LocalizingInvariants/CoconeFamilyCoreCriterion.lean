@@ -1,9 +1,9 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.CoconeFamilyCoreCriterion
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.CoconeFamilyCoreCriterion
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedSpanApexDenominators
-public import SerrePositivity.InfinityCategories.Derived.Localization.SimplexAttachmentEquivalences
-public import SerrePositivity.InfinityCategories.F1B.Joins.JoinPrismFixed
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Localization.SimplexAttachmentEquivalences
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinPrismFixed
 
 /-!
 概要：余錐全族の前段と頂点の辺反転から、その同じ全族の辺反転を証明する。
@@ -24,17 +24,17 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 前段の全辺と固定頂点が与える、同じ全余錐族の全パラメータ辺の反転。 -/
 lemma coconeFamily_invertsAllEdges_of_prefix_apex {P L X : SSet.{u}} [Quasicategory X]
-    (F : P ⟶ (ihom (join L (Δ[0] : SSet.{u}))).obj X) (z : X _⦋0⦌)
-    (hp : InvertsEdges (F ≫ (pre (joinInl L Δ[0])).app X) Set.univ)
-    (hz : F ≫ evaluateFunctorAt ((joinInr L (Δ[0] : SSet.{u})).app (Opposite.op ⦋0⦌)
+    (F : P ⟶ (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L (Δ[0] : SSet.{u}))).obj X) (z : X _⦋0⦌)
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (F ≫ (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L Δ[0])).app X) Set.univ)
+    (hz : F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr L (Δ[0] : SSet.{u})).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) = SSet.const z) :
-    InvertsEdges F Set.univ := by
-  apply _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.functorFamily_invertsEdges_of_evaluations
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F Set.univ := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.functorFamily_invertsEdges_of_evaluations
   intro v
-  rcases F1B.join_vertex_cases L Δ[0] v with ⟨l, rfl⟩ | ⟨b, rfl⟩
-  · rw [← stable_pre_evaluateFunctorAt (X := X) (joinInl L Δ[0]) l, ← Category.assoc]
+  rcases _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join_vertex_cases L Δ[0] v with ⟨l, rfl⟩ | ⟨b, rfl⟩
+  · rw [← _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt (X := X) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L Δ[0]) l, ← Category.assoc]
     intro s hs
-    exact (hp hs).map (evaluateFunctorAt l)
+    exact (hp hs).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt l)
   · have hb : b = stdSimplex.obj₀Equiv.symm (0 : Fin 1) := by
       apply stdSimplex.obj₀Equiv.injective
       rw [Equiv.apply_symm_apply]

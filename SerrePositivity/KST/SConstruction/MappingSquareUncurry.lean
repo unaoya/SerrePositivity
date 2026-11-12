@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.ThreeSquarePasting
 public import SerrePositivity.KST.SConstruction.FamilySquareClockSwap
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 内部 Hom の全正方形を元の二次元円柱へ戻す
 概要：パラメータ付き写像空間の正方形を、元の三変数の実写像に戻す。

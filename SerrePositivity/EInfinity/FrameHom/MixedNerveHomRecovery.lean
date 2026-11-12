@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveNatTransFunctor
 public import SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 /-! 概要：Hom 宇宙を上げた全通常円柱から元の混合宇宙円柱を回収する。
 方針：元の up・down の厳密な逆性を全パラメータで使う。
 規約：元の全図式と同じ自然変換を保持する。
@@ -35,11 +35,11 @@ lemma down_up : down C ≫ up C = 𝟙 _ := by
 方針：元の円柱定義の up と down の往復を消去する。
 規約：元の全自然変換を保持。使われ方：元の全導来屋根の比較。 -/
 lemma homotopy_down_h {D : Type (u + 1)} [Category.{u} D] {F G : C ⥤ D} (a : F ⟶ G) :
-    (F1B.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ down D =
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ down D =
       (down C ▷ (Δ[1] : SSet.{u + 1})) ≫ (homotopy a).h := by
   change _ = (down C ▷ (Δ[1] : SSet.{u + 1})) ≫
     ((up C ▷ (Δ[1] : SSet.{u + 1})) ≫
-      (F1B.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ down D)
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ down D)
   rw [← Category.assoc, ← comp_whiskerRight, down_up, id_whiskerRight, Category.id_comp]
 
 /-- 概要：持ち上げた全通常射の像は元の混合円柱の全制限。
@@ -50,17 +50,17 @@ lemma liftedHom_postcomp_arrow {D : Type (u + 1)} [Category.{u} D]
     (q : nerve D ⟶ E) :
     Arrow.mk (NerveColumn.hom (down D ≫ q) (liftedNatTrans a)) =
     Arrow.mk ((hoFunctor.map ((pre (down C)).app E)).toFunctor.map
-      (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (functorHomotopyPostcomp (homotopy a) q)))) := by
+      (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (homotopy a) q)))) := by
   change Arrow.mk ((hoFunctor.map ((ihom (nerve (ULiftHom.{u + 1} C))).map
-    (down D ≫ q))).toFunctor.map (F1B.nerveNatTransHom (liftedNatTrans a))) = _
-  have hb : F1B.nerveNatTransHom (liftedNatTrans a) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (F1B.nerveNatTransHomotopy (liftedNatTrans a))) :=
-    (F1B.nerveNatTransHomotopy_hom (liftedNatTrans a)).symm
-  rw [hb, ← functorHomotopyPostcomp_hom, ← functorHomotopyPrecomp_hom]
-  apply functorHomotopy_hom_arrow_of_h_eq
-  change (F1B.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ (down D ≫ q) =
+    (down D ≫ q))).toFunctor.map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHom (liftedNatTrans a))) = _
+  have hb : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHom (liftedNatTrans a) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans a))) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_hom (liftedNatTrans a)).symm
+  rw [hb, ← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, ← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp_hom]
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (liftedNatTrans a)).h ≫ (down D ≫ q) =
     (down C ▷ (Δ[1] : SSet.{u + 1})) ≫ ((homotopy a).h ≫ q)
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ q) (homotopy_down_h C a)).trans (Category.assoc _ _ _))

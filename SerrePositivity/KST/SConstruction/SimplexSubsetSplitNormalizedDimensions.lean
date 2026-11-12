@@ -15,19 +15,19 @@ namespace SerrePositivity.KST.SConstruction
 lemma simplexSubsetSplit_whole_dimension {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single
       (((I.filter (· ≤ j)).card - 1) + ((I.filter (j ≤ ·)).card - 1))).dimension = I.card - 2 :=
-  (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single k).dimension)
+  (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single k).dimension)
     (simplexSubsetSplit_length I j hj hL hR)).trans
       (necklaceInSimplexSubset_dimension.{0} I hI)
 
 /-- 元の正長二 bead の連結 cube は、元の内部点を削除した部分集合の濃度次元を持つ。 -/
 lemma simplexSubsetSplit_wedge_erase_dimension {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
-    ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).dimension = (I.erase j).card - 2 := by
+    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
+    ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).dimension = (I.erase j).card - 2 := by
   have hL := simplexSubsetSplitLeft_two I hI j hj hjm
   have hR := simplexSubsetSplitRight_two I hI j hj hjM
   have hc := necklaceWedgeBead_codimension

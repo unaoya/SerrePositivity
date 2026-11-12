@@ -32,11 +32,11 @@ theorem spanCylinderToColimit_naturality {F G : WalkingSpan ⥤ SSet.{u}} (α : 
     (p : c.pt ⟶ c'.pt) (hp : ∀ d, c.ι.app d ≫ p = α.app d ≫ c'.ι.app d) :
     spanCylinderFunctor.map α ≫ spanCylinderToColimit G c' hc' =
       spanCylinderToColimit F c hc ≫ p := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
-  · let mF := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
-    let mG := _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle (G.map WalkingSpan.Hom.fst) (G.map WalkingSpan.Hom.snd)
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
+  · let mF := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd)
+    let mG := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle (G.map WalkingSpan.Hom.fst) (G.map WalkingSpan.Hom.snd)
     have hm : mF ≫ spanCylinderFunctor.map α = (α.app .zero ▷ Δ[1]) ≫ mG :=
-      _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map _ _ _ _ _ _ _
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map _ _ _ _ _ _ _
         (α.naturality WalkingSpan.Hom.fst).symm (α.naturality WalkingSpan.Hom.snd).symm
     have hw : (α.app .zero ▷ (Δ[1] : SSet.{u})) ≫ fst (G.obj .zero) (Δ[1] : SSet.{u}) =
         fst (F.obj .zero) (Δ[1] : SSet.{u}) ≫ α.app .zero := whiskerRight_fst _ _

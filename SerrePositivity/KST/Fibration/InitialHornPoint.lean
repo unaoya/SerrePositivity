@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.JoinFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinFunctor
 
 /-! # 初期一ホーンと元の零単体の厳密な同型 -/
 

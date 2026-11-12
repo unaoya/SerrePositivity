@@ -55,7 +55,7 @@ lemma familyChainCompositionComparison_source :
         (familyChainCompositionComparison w v).h = fst U (Δ[1] : SSet.{u}) ≫ f := by
   change _ ≫ mappingSquareUncurry (familyChainCompositionComparisonSquare w v) = _
   rw [mappingSquareUncurry_source, familyChainCompositionComparisonSquare,
-    endpointFixedEdgeSquare_vertical_zero, uncurry_const_functorVertex]
+    endpointFixedEdgeSquare_vertical_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 /-- 終点族も元の全パラメータで比較の全時刻を通して厳密に固定する。 -/
 lemma familyChainCompositionComparison_target :
@@ -63,6 +63,6 @@ lemma familyChainCompositionComparison_target :
         (familyChainCompositionComparison w v).h = fst U (Δ[1] : SSet.{u}) ≫ g := by
   change _ ≫ mappingSquareUncurry (familyChainCompositionComparisonSquare w v) = _
   rw [mappingSquareUncurry_target, familyChainCompositionComparisonSquare,
-    endpointFixedEdgeSquare_vertical_one, uncurry_const_functorVertex]
+    endpointFixedEdgeSquare_vertical_one, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 end SerrePositivity.KST.SConstruction

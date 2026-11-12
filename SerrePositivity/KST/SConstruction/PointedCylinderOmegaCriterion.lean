@@ -24,9 +24,9 @@ local instance pointedCylinderOmegaLoop_kanComplex (Y : PointedSimplicialSet.{u}
 /-- 元の評価の点つき成分を回収する最初の構造射は Ω 条件を満たす。 -/
 lemma evaluationCylinderAdjoint_piIsomorphism
     {Z T : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex T.right]
-    (c : Z ⟶ T) (hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right) (σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) ⟶ T)
+    (c : Z ⟶ T) (hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism c.right) (σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) ⟶ T)
     (hσ : componentOf σ = componentOf ((ihom.ev PointedSimplicialSet.circle.{u}).app Z ≫ c)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry σ).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry σ).right := by
   have h := componentOf_curry hσ
   have he : curry ((ihom.ev PointedSimplicialSet.circle.{u}).app Z ≫ c) =
       (ihom PointedSimplicialSet.circle.{u}).map c := by
@@ -39,11 +39,11 @@ lemma evaluationCylinderAdjoint_piIsomorphism
 lemma cylinderAssemblyAdjoint_piIsomorphism
     {U K B T : PointedSimplicialSet.{u}} [KanComplex U.right] [KanComplex K.right]
     [KanComplex B.right] [KanComplex T.right]
-    (l : U ⟶ K) (hl : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism l.right)
-    (a : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U ⟶ B) (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry a).right)
-    (c : B ⟶ T) (hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism c.right) (σ : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension K ⟶ T)
+    (l : U ⟶ K) (hl : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism l.right)
+    (a : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U ⟶ B) (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry a).right)
+    (c : B ⟶ T) (hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism c.right) (σ : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension K ⟶ T)
     (hσ : componentOf (PointedSimplicialSet.circle.{u} ◁ l ≫ σ) = componentOf (a ≫ c)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (curry σ).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (curry σ).right := by
   have h := componentOf_curry hσ
   rw [curry_natural_left, curry_natural_right] at h
   have hp := kanPiIsomorphism_of_pointed_component _ _ h

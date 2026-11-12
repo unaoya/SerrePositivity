@@ -29,14 +29,14 @@ variable {D : Type u} [Category.{u} D] (G : D ⥤ Cat.{u, u})
 lemma map_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (map G)) := by
   let Q := AnodyneHomotopy.anodyneQ.{u}
-  let β := transportComparison G
+  let β := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.transportComparison G
   have : IsIso (Q.map ((BarConstruction.functor D).map (nerveComparison β))) :=
     BarRows.map_localized_isIso _ (transport_localized_isIso G)
   have hf := commaMap_forget_localized_isIso G
   have hh := AnodyneHomotopy.map_homotopy_eq Q
     (Localization.inverts _ SSet.anodyneExtensions)
     (NerveHomotopy.homotopy (commaTotalTransport G))
-  have hc : IsIso (Q.map (map (commaDiagram G) ≫ nerveMap (Grothendieck.map β))) := by
+  have hc : IsIso (Q.map (map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.commaDiagram G) ≫ nerveMap (Grothendieck.map β))) := by
     rw [Q.map_comp, ← hh, ← Q.map_comp]
     exact hf
   have hn : IsIso (Q.map ((BarConstruction.functor D).map (nerveComparison β) ≫ map G)) := by
@@ -47,7 +47,7 @@ lemma map_localized_isIso :
 
 /-- 同じ元の比較射は、F1b の弱ホモトピー同値のクラスにも属する。 -/
 lemma map_isWeakHomotopyEquivalence :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence (map G) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (map G) :=
   AnodyneWeakDetection.isWeakHomotopyEquivalence _ (map_localized_isIso G)
 
 end SerrePositivity.EInfinity.FrameHom.Thomason

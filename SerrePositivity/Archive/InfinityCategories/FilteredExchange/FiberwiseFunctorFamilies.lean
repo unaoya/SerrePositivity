@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseFunctorSpace
 
 /-!
 概要：fiber ごとの関手の全空間への任意の族の普遍性。

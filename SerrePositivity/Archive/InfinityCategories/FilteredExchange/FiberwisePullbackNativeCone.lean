@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackComparisonApex
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexConeRestrictions
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpecifiedApexConeRestrictions
 
 /-!
 概要：一般 filtered 底上の元の引き戻し全空間の Kan 模型を native な極限錐の頂点にする。

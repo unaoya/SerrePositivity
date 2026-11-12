@@ -53,8 +53,8 @@ def kernelLimOneEquiv :
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
     (comparison D hD hΩ j k r hk).ker ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-        (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+        (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
           (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
         (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n)) := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
@@ -75,7 +75,7 @@ lemma kernelLimOneEquiv_one :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    kernelLimOneEquiv D hD hΩ j k r hk 1 = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    kernelLimOneEquiv D hD hΩ j k r hk 1 = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
     ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
   let : ∀ n, KanComplex (stage (D ⋙ KanSequence.levelEvaluation k) n).right :=
@@ -95,7 +95,7 @@ lemma kernelLimOneEquiv_symm_point :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    (kernelLimOneEquiv D hD hΩ j k r hk).symm (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    (kernelLimOneEquiv D hD hΩ j k r hk).symm (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
     ((CosimplicialHornFibration.terminal_iff _).mp (hD k))
   let : ∀ n, KanComplex (stage (D ⋙ KanSequence.levelEvaluation k) n).right :=

@@ -299,3 +299,124 @@ K5 の `exists_lciRelation_regular_completedTensor` と包絡の分類・存在�
 本体合計6,000行の上限まで **2,140行**。停止点5では、有限部分族の遷移を単位を保つ一意な δ 射で作ること、一様なねじれ指数を取り出すこと、生の余極限と実完備化の比較が不足する。S′ の完備余極限と完全化をこの残量で閉じられるかを開始時に再見積もりし、合計6,000行または S′ 部分2,500行を超えそうなら指示どおり止める。
 
 入口と全体監査への43本の登録、および取り込みの検収は調整役に委ねる。**停止点4で停止。**
+
+## 15. 停止点4後：S′ 開始時の再見積もりと規模による停止
+
+main `ac33a3640`（指示書 §7）を fast-forward で取り込んだ。開始時の再調査では、残りは **約2,300〜3,200行**、既存3,860行と合わせて **約6,160〜7,060行**を見込む。数学的な最小行数ではなく、現在の API から単位・比較まで公開する実装量の見積もりである。残量2,140行を超えそうなので、**指示書 §6・§7 に従い、新規実装に入る前に停止する。停止点5には未到達。**
+
+| 残る束 | 新規行数の見込み |
+| --- | ---: |
+| 任意添字の根付き基底と有限関係部分族の比較、実 H⁰ と S′ の比較 | 450〜650 |
+| 有限包絡の遷移、基底・生成元・単位の整合性 | 300〜400 |
+| 一様ねじれ評価、生の余極限の還元と実完備化、有界 prism と完全忠実平坦性 | 750〜1,000 |
+| 完備余極限上の S′ 単位、全有界標的への一意延長 | 400〜550 |
+| 完全化の標準射・商、Cor 7.3 の単位を保つ唯一の同型と零環の枝 | 400〜600 |
+| 合計 | **2,300〜3,200** |
+
+S′ だけでも **1,900〜2,600行**であり、部分上限2,500行を超える可能性もある。当初 §11 の S′ 1,000〜1,800行から増えた理由は、次の比較を独立に作る必要があるため。
+
+- `exists_rootRelationAinfEnvelope` は変数全体が有限の定理。任意 J の固定した根付き基底上で有限個の関係を殺す定理とは型が異なる。`RootFamilyFractionBasis` の指数分解は `[Finite J]` と `Finsupp.equivFunOnFinite` を使う。`rootFamilyBaseReindex` は添字の全単射であり、有限部分集合の包含・補変数への分離・反復完備化との比較は供給しない。既存の宣言を変更せず、この比較を新規に置く必要がある。
+- 有限 T ごとの `IsBoundedPrism` や `rootRelationRawCompleted_bounded` の「ある指数が存在する」だけでは、図式全体に一様な指数は得られない。生の関係商は `rootRelationRaw_torsion_bound` と perfectoid のねじれ評価から指数1を持つ。`DerivedPurity` の `moduleTowerLimit_power_torsion_bound_of_relations` を再利用して、指定した指数を実完備化へ渡し、それを余極限に渡す補題が要る。存在指数から一様性を仮定することはしない。
+- `deltaAdjoinDivisionFiniteColimitEquiv` は、固定した δ 基底上の **生の**除算環の有限部分族余極限を全族へ比較する。δ 保存・各段の公式・`deltaAdjoinDivisionFiniteColimit_p_mul_injective` は再利用するが、有限 T の選んだ完備包絡の図式、剰余の完全忠実平坦性、S′ の実 H⁰ 完備化との比較までは含まない。生の余極限を完備余極限と同一視して行数を削れない。
+- `RootEnvelope/Source` の bounded-support の Tor 交換と実還元も確認した。これは Thm 7.4 の根添加・除算源の図式であり、今回の Xi(0) のみを殺す商との比較が別途必要。既存の Tor 交換自体は作り直さず利用するが、全ての根を殺す商への置換はしない。
+
+再開時は、上表の順に `RootFamilyFiniteSubfamily`・`RootRelationUniformBound`・`RootRelationColimit`・`RootRelationCompletedColimit`・`RootRelationInitial`・`RootRelationPerfection` の新規ファイル族に分ける案。一般の指数保存・完備余極限の補題は `HomologicalAlgebra/DerivedCompletion/` に置く。完全化側では非完全な源からの `existsUnique_deltaPerfectionPDCompletionHom`、`exists_perfectoidization_of_perfectPrism_quotient`、既存の完全 prism の比較を再利用し、S′ 上の単位を保つ同型まで示す。全有界試験 prism の範囲・零環の枝・drafts の定義は維持する。
+
+今回は調査と本報告のみ。新しい数学・drafts の変更・ビルド・鍵の取得は行っていない。有限 T の43モジュール・3,860行の検証結果は §14 のまま。**規模上限による停止であり、S′ と完全化は未実装。**
+
+## 16. H5 停止点5a：S′ の完備包絡と始性／残る平坦性の規模で停止
+
+main `06672de8f`（停止点4の登録 `e4c3276a8` と指示書 §8）を取り込んだ。**§8 の「S′ の完備余極限と全有界標的への一意な延長」には到達した。停止点5・W17全体の完了ではない。**
+
+### 本体に入れたもの
+
+- `RootRelationCompletedInitial.exists_rootRelationCompletedInitial`：任意添字 J、perfectoid R から、固定 A_inf 上の全初期関係の**有界な実包絡**、S′ の実 H⁰ 完備化からの剰余単位、その θ・係数射との対応式、**任意の有界試験 prism Y と任意の S′→Y/I に対する唯一の prism 射**を返す。標的の p 正則性は課さない。
+- `RootRelationFiniteEnvelopeDiagram`：全変数の持ち上げを一度選び、同じ基底上で全有限段を構成。各段の単位の p 完全忠実平坦性から、剰余のねじれを**全段で共通の指数1**で評価する。
+- `FiniteEnvelopeDiagram`・`FiniteEnvelopeRawColimit`・`FiniteEnvelopeCompletion`：包含の一意な遷移、合成則、生の δ 環余極限、その分母の正則性と剰余の共通指数、実 (p,d) 完備化、全関係の包絡の普遍性。生の余極限を完備環とは同一視しない。
+- `RootRelationCompletedSurjective`：通常の全初期関係商も指数1を持つ。前完備性により、根付き基底から **S′ の実 H⁰ への標準射は全射**。`exists_rootRelationCompletedAdicEquiv` は実 H⁰ と古典的 p 完備化を単位を保って比較する。通常商を分離的とは仮定しない。
+- 任意添字の有限台小数指数基底、通常の変数部分族商、有限初期関係の Koszul 正則性と実完備化、指定指数を保存する G9 の補題を追加した。根の第零段 Xi(0) だけを消し、全ての根を消す商とは区別した。零環の枝も維持した。
+
+K5 の存在・剰余単位の忠実平坦性、Lemma 4.8、既存の δ 余極限・実完備化の普遍性を再利用した。一般の指数補題は `HomologicalAlgebra/DerivedCompletion/`、一般の通常商・余極限は `CommutativeAlgebra/` に置いた。既存の BS にある一般補題 `completedUnitReductionIso`・`discrete_completelyFlat`・`natCast_complete_restrict` は import all で再利用し、同じ補題を作り直していない。
+
+### §15 の見込みと実測
+
+未登録の補題をテーマごとの14ファイルへまとめ、固定基底の最終構成で使わない添字射・二段完備化の一般化は外した。以下は共有ファイルの各節を対応する束に配分し、共通見出しを先頭の束に計上した行数。
+
+| §15 の束 | 見込み | 実測 | 差・残り |
+| --- | ---: | ---: | --- |
+| 任意添字・有限部分族・S′ の実 H⁰ の比較 | 450〜650 | 715 | 上端より65行増 |
+| 遷移と固定基底・生成元・単位の整合性 | 300〜400 | 403 | 上端より3行増 |
+| 共通指数・生の剰余・有界な実完備化・忠実平坦性 | 750〜1,000 | 913 | **有限段の忠実平坦性まで。S′ 単位の忠実平坦性は下記の残り** |
+| S′ 単位・全有界標的への一意延長 | 400〜550 | 333 | 下端より67行減 |
+| 完全化・Cor 7.3 | 400〜600 | 0 | 未着手。全射性の入力は上に実装済み |
+
+追加 **14モジュール・2,364行・106個の名前付き公開宣言**。H5 合計は **57新規モジュール・6,224行**。ビルド **4,738 jobs 成功**、106件の `#check`・`#print axioms`・`#print sorries` も全件成功し、**sorry なし・標準三公理のみ**。ログ：`/tmp/serre-w17/h5/sprime/verify-consolidated.log`。登録用14本の一覧：同ディレクトリの `modules.txt`。直接の KST import、既存の本体宣言・drafts・入口・全体監査の変更はない。
+
+### 残る S′ 単位の完全忠実平坦性と停止理由
+
+**§11・§15 で予定した、S′ 単位そのものの p 完全忠実平坦性は未実装。** 今回の公開した始性の結論には追加していない。この不足は G10 側の Δ との同定とは別の、古典的な証明の残り。
+
+各有限段で底環 T_F が変わる。既存の `directLimit_flat`・`faithfullyFlat_algebraDirectLimit`・`isCompletelyFaithfullyFlat_algebraRingDirectLimit` は固定した底環上の API なので、T_F 上の完全忠実平坦性をそのまま S′ 上の主張へ移せない。追加で要るのは、(1) 共通の剰余底環へ導来基底変更した図式と、その余極限の比較、(2) 実完備包絡の生成元剰余との単位を保つ比較、(3) 実際の Tor 消滅と忠実性の移送。mod p の通常の平坦性だけで Tor 消滅を済ませない。
+
+この残りを **約700〜1,000行**と再見積もりする。S′ 部分の残量は636行なので、予定どおり含めると **S′ 合計3,064〜3,364行**となる。さらに完全化・Cor 7.3 の400〜600行を含む H5 合計は **7,324〜7,824行**の見込み。
+
+指示書 §8 の停止条件「合計が7,500行、または S′ の部分が3,000行を超えそうなとき」に該当するため、**ここで規模による停止。完全化にはまだ入っていない。** 一般 qrsp の Δ・HT 比較も従来どおり drafts に残る。入口と監査への14本の登録は調整役に委ねる。
+
+## 17. H5 停止点5：完全化と Corollary 7.3（W17 の区切り）
+
+11-12 朝の範囲変更に従い、**S′ 単位の p 完全忠実平坦性は後回し**とした。§16 の不足 (1) 共通剰余底環への導来底変換と余極限の比較、(2) 実完備包絡の生成元剰余・単位との比較、(3) Tor 消滅と忠実性の移送は未実装のまま記録する。E3 の S′ の経路ではこれを使わず、既存の始性と今回の完全化比較を使う。
+
+### 追加した出力
+
+- `Prism/Perfection/ClassicalPrismPerfection`：任意の prism Q の δ 完全化を実 (p,d) 完備化して、標準の完全 prism、有界性、標準 δ-prism 射、生成元の像、完全標的への一意延長を構成した。**源 Q の完全性は仮定しない**。既存の `existsUnique_deltaPerfectionPDCompletionHom` と生成元の像に沿う完備性を再利用した。
+- `Semiperfectoid/InitialPrismPerfection`：全有界標的への初期剰余単位 v から、完全化後の完全標的への始性と、標準剰余単位の `IsPerfectoidization` を得る。perfectoid 標的の完全 prism 表示と Lemma 4.8 を使い、標的を p 正則な場合に狭めていない。
+- `Semiperfectoid/Cor73PrismComparison`：同じ perfectoid 化を与える完全 prism の間に、単位を保つ唯一の δ-prism 射と両逆を構成した。これを、固定完全 prism の全射商から作る Cor 7.3 の**実 δ 除算・完全化・実完備化の標準候補**へ適用する。零環の商の枝も独立の補題で同じ唯一の同型まで示した。
+- `Semiperfectoid/RootRelationPerfection.exists_rootRelationPrismaticPerfection`：任意添字 J と perfectoid R に対する固定 A_inf 上の S′ の有界初期包絡を返し、その完全化の商が S′ の perfectoid 化であること、Cor 7.3 の候補との **S′ 単位を保つ唯一の δ-prism 同型**を示した。根付き基底が零環の枝では S′・完全化係数環・その剰余も零環であり、この枝でも同型を出す。根付き基底が非零でも S′ が零環になる場合を排除していない。
+
+S′ は停止点5aの実 H⁰ 完備化のまま。未完備な通常商との全射と、古典的 p 完備化との単位を保つ比較は `RootRelationCompletedSurjective` を再利用した。drafts の定義や型は変更せず、Δ との同定・一般 qrsp の filtration・G10 への移送は drafts に残す。
+
+### 検証・規模・取り込み
+
+追加は **4モジュール・443行・20個の名前付き公開宣言**。§15 の完全化の見込み400〜600行に対し実測443行。H5 合計は **61新規モジュール・6,667行**（S′ 部分は2,364行のまま）で、上限7,500行・3,000行の内側に収まった。
+
+- 最終の葉 `RootRelationPerfection` から4本を含むビルドは **4,744 jobs 成功**。20件の `#check`・`#print axioms`・`#print sorries` が全件成功し、**sorry なし・標準三公理のみ**。
+- ログ：`/tmp/serre-w17/h5/perfection/build-stop5.log`・`audit-stop5.log`。登録用4本の一覧は同ディレクトリの `modules.txt`、公開宣言の一覧は `declarations.txt`。
+- 数学は新規4ファイルだけ。既存の本体宣言・drafts・入口・全体監査の登録は変更していない。直接の KST import なし。共有鍵は `--wait 3600`、待ちは一枚、ビルドと Lean 監査の間だけ使用した。
+- 基点は停止点5a `218f8939f` のまま。KL-W1 の改名表は未受領なので、独自の改名や KL 枝の直接取り込みは行っていない。停止点5aの14本と今回の4本の main 取り込み・登録は、KL-W1 の取り込み後に調整役の改名表へ追従してから行う。
+
+**今回の絞った範囲で停止点5に到達し、W17 の区切りとして停止する。** S′ 単位の完全忠実平坦性の三つの不足は後回しであり、一般 qrsp の離散性・Δ との同定まで完了したとは扱わない。
+
+## 18. KL-W1 改名追従：参照採取器の失敗により保留（11-12）
+
+開始 HEAD は `ce4bba8f6`、作業木はクリーンで、進行中の検証・未検証の下書きはなかった。配布された `bs-classical-files.json` の18本は枝固有の Lean 全18本と一致し、10:21以後に追加すべきファイルはない。写した一覧は `klw1-follow-bs-classical-files.json`。直接の importer は12本で、すべて対象18本に含まれる。
+
+**main の取り込み前の collect が8本成功後、9本目で失敗したため、指示どおりソースを書き換えずに報告する。** 失敗するのは `Semiperfectoid/RootFamilySparseBasis.lean` の `rootFamilySparseFractionCoordinates_smul`。142行の `rw [add_smul, map_add, ...]`、147行の `simp`、160行の `rw [smul_add, map_add, ...]` が採取器による再解釈で失敗する。最初のエラーは `map_add` の書き換え対象が見つからないもの。停止点5のビルド済みソースをそのまま入力しており、採取前後で変更していない。
+
+再現したコマンド（専用 worktree で `source ~/.zshenv` 後）：
+
+```sh
+klw1=/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout
+zsh scripts/refactor/with_build_lock.sh --wait 3600 -- gtimeout --foreground 1700s \
+  python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" \
+  --files /tmp/serre-w17/klw1-follow/bs-classical-files.json \
+  --output /tmp/serre-w17/klw1-follow/before_index
+```
+
+- `collect` 終了コード2。ログ：`/tmp/serre-w17/klw1-follow/collect.log`。部分採取8本は同ディレクトリの `before_index/`。このディレクトリは未完で `files.json` がなく、rewrite の入力に使っていない。再採取時には新しい出力先を指定する。
+- **書き換え0ファイル・0行。プレビューと `review.json` は未作成**であり、保留0件と扱わない。main `19f081dcb` 以降の取り込みと移行後の対象ビルドも未実施。改名表・採取器・既存の証明はいずれも変更していない。
+- 採取器が独自のオプションで同期再解釈すること、通常の `lakefile.toml` に `maxSynthPendingDepth = 3` があることは確認したが、失敗との因果は未確認。通常 Lean 実行との比較診断は鍵の待ちに並べた後、ツール修正待ちで止めるため取り下げた。**新しい待ち・ビルド・監査は残っていない。**
+
+KL-W1 側で採取器の扱いを確認・修正してもらってから、同じ18本を main 取り込み前に採取し直し、rewrite・差分確認・main 取り込み・対象と直接の importer のビルドを再開する。W17 の数学の検証結果は §17 のまま。
+
+## 19. KL-W1 改名追従の完了（11-12、§18 の保留を解消）
+
+修正版 `8267bf808` の共有パスを使い、取り込み前の HEAD `0850731ff` の同じ18本を、**新しい出力先** `/tmp/serre-w17/klw1-follow-fixed/before_index` へ collect し直した。10:21以降に追加した Lean ファイルはなく、対象一覧は `klw1-follow-bs-classical-files.json` のまま。前回の部分採取は使っていない。18本すべて成功し、Lake の設定の継承も採取結果で確認した。
+
+- **rewrite 成功、`review.json` は `{}`（保留0件）。書き換え0ファイル・追加0行・削除0行。** 全18本のプレビューは元のソースとバイト単位で一致した。
+- main **`0f30e1f6c`**（指定の `23f47736c` を含む）を **`6c5f59489`** で衝突なく取り込んだ。取り込み後も対象18本がプレビューと同じハッシュであることを確認した。プレビューに差分がないため、対象ソースへの上書きは不要だった。
+- **対象ビルド成功：4,744 jobs。** 本体・監査スクリプトの import を走査し、対象18本を直接 import する12本はすべてその18本に含まれることを確認。集合を合わせた18モジュールを明示して `lake build` した。既存のスタイル警告のみでエラーなし。root ビルド・全監査は実施していない。
+- 鍵は collect の Lean 再解釈と対象ビルドの間だけ、`--wait 3600`・待ちは一枚で使用。今回、対象18本の数学の本文・型、drafts、入口、全体監査の登録は変更していない。
+
+証拠は `/tmp/serre-w17/klw1-follow-fixed/` の `collect.log`、`preview/review.json`、空の `source.diff`、`preview-receipt.json`（18本の前後ハッシュ）、`direct-importers.json`、`build-targets.json`、`build.log` に保存した。修正版道具と入力のハッシュは `before-receipt.json`。古い §18 の採取器の失敗はこの再採取で解消した。
+
+**⑤c の18本の追従は完了。** 停止点5aの14本・停止点5の4本の main 取り込みと入口・監査への登録は調整役に委ねる。

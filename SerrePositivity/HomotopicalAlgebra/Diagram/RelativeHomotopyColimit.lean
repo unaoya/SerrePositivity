@@ -20,7 +20,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.HomotopyColimit
 variable {K : Type w} [PartialOrder K] [OrderBot K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
@@ -96,7 +96,7 @@ end SerrePositivity.DiagramModel.HomotopyColimit
 namespace SerrePositivity.DiagramModel.HomotopyColimit
 variable {K : Type w} [LinearOrder K] [OrderBot K] [SuccOrder K] [WellFoundedLT K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [(weakEquivalences C).IsStableUnderCobaseChangeAgainst (cofibrations C)]
 
 /-- Every continuous cofibration sequence computes its actual hocolim,

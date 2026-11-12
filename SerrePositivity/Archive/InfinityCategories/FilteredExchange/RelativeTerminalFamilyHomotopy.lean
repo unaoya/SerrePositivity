@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorRelativeTerminal
-public import SerrePositivity.InfinityCategories.Core.ConeTerminalBoundary
-public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.FunctorRelativeTerminal
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeTerminalBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalUniqueness
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
 
 /-!
 概要：相対終対象の族への比較円柱を元の底の上で厳密に構成する。

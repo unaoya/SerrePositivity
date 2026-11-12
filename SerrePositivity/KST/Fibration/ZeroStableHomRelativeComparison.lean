@@ -16,7 +16,7 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ指定部分を持つ元の零値関手族を、部分上で厳密に恒等の全可逆辺で結ぶ。 -/
-def zeroStableHomFamilyRelativeComparison {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} {T U : SSet.{u}}
+def zeroStableHomFamilyRelativeComparison {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} {T U : SSet.{u}}
     (i : T ⟶ U) [Mono i] (H G : U ⟶ (C ⟶[SSet.{u}] D))
     (hH : ∀ v, StableHomZeroVertex C D (H.app (Opposite.op ⦋0⦌) v))
     (hG : ∀ v, StableHomZeroVertex C D (G.app (Opposite.op ⦋0⦌) v))
@@ -24,11 +24,11 @@ def zeroStableHomFamilyRelativeComparison {C D : _root_.SerrePositivity.Infinity
   let Z := zeroStableHomSpace C D
   have hc := zeroStableHomSpace_isContractibleKan C D
   letI zeroRelativeTargetKan : KanComplex Z := hc.kanComplex
-  let F := fullSubcomplexLift (StableHomZeroVertex C D) H hH
-  let L := fullSubcomplexLift (StableHomZeroVertex C D) G hG
-  let j := (fullSubcomplexOnVertices (C ⟶[SSet.{u}] D) (StableHomZeroVertex C D)).ι
-  have hF : F ≫ j = H := fullSubcomplexLift_ι _ _ _
-  have hL : L ≫ j = G := fullSubcomplexLift_ι _ _ _
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (StableHomZeroVertex C D) H hH
+  let L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (StableHomZeroVertex C D) G hG
+  let j := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (C ⟶[SSet.{u}] D) (StableHomZeroVertex C D)).ι
+  have hF : F ≫ j = H := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
+  have hL : L ≫ j = G := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   have hFL : i ≫ F = i ≫ L := by
     apply (cancel_mono j).1
     rw [Category.assoc, hF, Category.assoc, hL]

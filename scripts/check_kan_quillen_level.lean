@@ -1,4 +1,4 @@
-import SerrePositivity.InfinityCategories.ModelBridge.Inputs.SimplicialLevel
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.Inputs.SimplicialLevel
 import SerrePositivity.Spectra.StageTwo
 import Lean.Util.CollectAxioms
 import Lean.Util.Sorry

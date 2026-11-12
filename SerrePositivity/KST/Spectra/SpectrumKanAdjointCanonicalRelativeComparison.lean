@@ -22,7 +22,7 @@ variable (X Y : OmegaSpectrum.{u}) {A B : PointedSimplicialSet.{u}}
 lemma kanAdjointCanonicalBoundaryTransport_edge (n : ℕ) :
     (kanAdjointCanonicalBoundaryTransport X Y φ j n).transported.edge =
       ((kanAdjointCanonicalStageTransport X Y φ j n).transported.map
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
             (n + 1))).right).edge := rfl
 
@@ -44,7 +44,7 @@ lemma kanAdjointCanonicalProjectionLoop_identity (n : ℕ) :
             (n + 1)))) := by
   have he : (FundamentalLoop.edge (kanAdjointCanonicalProjectionLoop X Y φ j n)).edge =
       (kanAdjointCanonicalBoundaryTransport X Y φ j n).transported.edge := by
-    let q := (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    let q := (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
         (n + 1))).right
     rw [kanAdjointCanonicalBoundaryTransport_edge]
@@ -55,7 +55,7 @@ lemma kanAdjointCanonicalProjectionLoop_identity (n : ℕ) :
     change q.app _ (SSet.yonedaEquiv (SSet.yonedaEquiv.symm
       (kanAdjointCanonicalStageTransport X Y φ j n).transported.edge)) = _
     rw [Equiv.apply_symm_apply]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.ThreeEdgeTransport.loop_identity_congr he
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.loop_identity_congr he
     (kanAdjointCanonicalBoundaryTransport_identity X Y φ j n)
 
 /-- 元の帰納境界の実三角形から、構造射影の実際の両端点固定収縮を構成する。 -/
@@ -63,9 +63,9 @@ def kanAdjointCanonicalStructureContraction (n : ℕ) :
     KanAdjointBoundaryStructureContraction X Y φ j (kanAdjointTracedBoundary X Y φ j)
       (kanAdjointTracedBoundaryHomotopy X Y φ j) (kanAdjointTracedBoundaryCoordinate X Y φ j) n
       (kanAdjointCanonicalStageStructurePath X Y φ j n) := by
-  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  let homKan : KanComplex (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     ((KanSequence.mapping B (KanSequence.signedLoopTail Y.toKanSequence)).level
-      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+      (n + 1)).space).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let hex := exists_loop_contraction_of_homMk_eq_id (kanAdjointCanonicalProjectionLoop X Y φ j n)
     (kanAdjointCanonicalProjectionLoop_identity X Y φ j n)
   exact ⟨hex.choose, hex.choose_spec⟩

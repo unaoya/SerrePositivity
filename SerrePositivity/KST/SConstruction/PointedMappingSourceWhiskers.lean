@@ -19,20 +19,20 @@ open Spectra
 /-- 二つの元の源の制限は、元の実合成による一回の制限を回収する。 -/
 lemma pointedMapping_pre_comp {A B C Z : PointedSimplicialSet.{u}}
     (f : A ⟶ B) (g : B ⟶ C) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre g Z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre f Z = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f ≫ g) Z := by
-  have h : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed g Z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f Z =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f ≫ g) Z := by
-    simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre g Z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre f Z = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f ≫ g) Z := by
+  have h : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed g Z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f Z =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (f ≫ g) Z := by
+    simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map]
   exact congrArg Under.Hom.right h
 
 /-- suspension した二つの元の制限も、元の実合成の suspension による一制限。 -/
 lemma pointedMapping_pre_suspension_comp {A B C Z : PointedSimplicialSet.{u}}
     (f : A ⟶ B) (g : B ⟶ C) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ g) Z ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f) Z =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ (f ≫ g)) Z :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ g) Z ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ f) Z =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ (f ≫ g)) Z :=
   (pointedMapping_pre_comp _ _).trans
-    (congrArg (fun h => _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre h Z) (whiskerLeft_comp _ f g).symm)
+    (congrArg (fun h => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre h Z) (whiskerLeft_comp _ f g).symm)
 
 end SerrePositivity.KST.SConstruction

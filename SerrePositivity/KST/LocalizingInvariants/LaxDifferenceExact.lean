@@ -19,28 +19,28 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
-lemma laxArrow_isExact : IsExactFunctor (F2.laxPullbackArrow p.hom q.hom) := by
-  have : IsExactFunctor (F2.laxPullbackArrow p.hom q.hom ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
-    rw [F2.laxPullbackArrow_source]
+lemma laxArrow_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom) := by
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_source]
     infer_instance
-  have : IsExactFunctor (F2.laxPullbackArrow p.hom q.hom ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
-    rw [F2.laxPullbackArrow_target]
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_target]
     infer_instance
   exact arrow_exact_of_endpoints E.obj _
 
-instance laxDifference_isExact : IsExactFunctor (laxDifference p q) := by
+instance laxDifference_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (laxDifference p q) := by
   have := laxArrow_isExact p q
-  exact CofiberFamily.cofiber_isExact E.obj (F2.laxPullbackArrow p.hom q.hom)
+  exact CofiberFamily.cofiber_isExact E.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom)
 
 /-- 元の差の関手を完全関手に束ねる。 -/
-def exactLaxDifference : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) E := ⟨laxDifference p q, inferInstance⟩
+def exactLaxDifference : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) E := ⟨laxDifference p q, inferInstance⟩
 
 lemma exactLaxDifference_kernel (x : (laxCategory p q).obj _⦋0⦌) :
-    IsZeroVertex ((exactLaxDifference p q).hom.app (Opposite.op ⦋0⦌) x) ↔
-      x ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.essentialImage (pullbackInclusion p q) := laxDifference_kernel p q x
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((exactLaxDifference p q).hom.app (Opposite.op ⦋0⦌) x) ↔
+      x ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.essentialImage (pullbackInclusion p q) := laxDifference_kernel p q x
 
 end SerrePositivity.KST.LocalizingInvariants

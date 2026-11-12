@@ -1,14 +1,14 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.Basic
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.EquivalenceDiagrams
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.SimplexContraction
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.Rows
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.TransposeSimplex
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.Basic
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalenceDiagrams
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.SimplexContraction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.Rows
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.TransposeSimplex
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.RowComparison
 public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.WeakEquivalence
 
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.StrictSegalHomotopy
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.StrictSegalHomotopy
 public import SerrePositivity.KST.LocalizingInvariants.CoreFlag.GroupNerveHomotopy
 
 /-!

@@ -29,7 +29,7 @@ def sequence (D : CosimplicialObject KanSequence.{u}) (j : SimplexCategory) :
 /-- 構成した列の随伴構造は選択した Reedy 延長そのもの。 -/
 lemma sequence_adjoint (D : CosimplicialObject KanSequence.{u})
     (j : SimplexCategory) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((sequence D j).level n).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((sequence D j).level n).space
       ((sequence D j).level (n + 1)).space ((sequence D j).sigma n) =
         (adjoint D n).app j := curry_uncurry _
 
@@ -72,7 +72,7 @@ def unitApp (D : CosimplicialObject KanSequence.{u}) : D ⟶ diagram D where
 /-- 単位の各段は全基点の π_* 同型。 -/
 lemma unit_piIsomorphism (D : CosimplicialObject KanSequence.{u})
     (j : SimplexCategory) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (((unitApp D).app j).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (((unitApp D).app j).app n).right :=
   PointedCosimplicialKanReplacement.unit_piIsomorphism (originalLevel D n) j
 
 /-- 元の図式の Ω 条件は置換した実際の列にも成り立つ。 -/
@@ -86,7 +86,7 @@ lemma sequence_omegaCondition (D : CosimplicialObject KanSequence.{u})
       ((levelUnit D (n + 1)).app j) (unit_piIsomorphism D j (n + 1)))
   have he := congrArg Under.Hom.right (NatTrans.congr_app (levelUnit_adjoint D n) j)
   change ((levelUnit D n).app j).right ≫ ((adjoint D n).app j).right =
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((D.obj j).level n).space
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((D.obj j).level n).space
       ((D.obj j).level (n + 1)).space ((D.obj j).sigma n)).right ≫
       (PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         ((levelUnit D (n + 1)).app j)).right at he

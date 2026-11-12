@@ -25,7 +25,7 @@ structure FoldData (W : MorphismProperty C) (n : SimplexCategoryᵒᵖ)
     (D : Type uD) [Category.{vD} D] where
   obj : Paths C → D
   marked : ∀ {X Y}, (AllMarked.nativeSpace W X Y).obj n → (obj X ⟶ obj Y)
-  generator : ∀ g : FactorTarget.Index W, obj g.val.left ⟶ obj g.val.right
+  generator : ∀ g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W, obj g.val.left ⟶ obj g.val.right
   marked_unit : ∀ X, marked (AllMarked.nativeUnitPoint W X n) = 𝟙 (obj X)
   marked_comp : ∀ {X Y Z} (p : (AllMarked.nativeSpace W X Y).obj n)
     (q : (AllMarked.nativeSpace W Y Z).obj n),
@@ -42,8 +42,8 @@ def fold {X Y : Paths C} : MarkedSpine W Y n X → (F.obj X ⟶ F.obj Y)
 lemma fold_nil {X Y : Paths C} (p : (AllMarked.nativeSpace W X Y).obj n) :
     F.fold (nil X p) = F.marked p := rfl
 
-lemma fold_cons {X Y : Paths C} (g : FactorTarget.Index W)
-    (p : (FactorTarget.left W X g.val).obj n) (t : MarkedSpine W Y n g.val.right) :
+lemma fold_cons {X Y : Paths C} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
+    (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n) (t : MarkedSpine W Y n g.val.right) :
     F.fold (cons X g p t) = F.marked p ≫ F.generator g ≫ F.fold t := rfl
 
 lemma fold_unit (X : Paths C) : F.fold (unitPoint W X n) = 𝟙 (F.obj X) := F.marked_unit X

@@ -79,7 +79,7 @@ lemma comparison_initial : inclusion hcof hfib F ≫ comparison hcof hfib F X f 
 
 abbrev cut (i : Fin (n + 1)) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2) ⟶ parameter hcof hfib F :=
-  TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫ inclusion hcof hfib F
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫ inclusion hcof hfib F
 
 @[reassoc]
 lemma comparison_cut (i : Fin (n + 1)) :
@@ -89,7 +89,7 @@ lemma comparison_cut (i : Fin (n + 1)) :
 
 @[reassoc]
 lemma comparison_direct :
-    (TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ inclusion hcof hfib F) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ inclusion hcof hfib F) ≫
       comparison hcof hfib F X f = postEdge hcof hfib X (PostCompositionChain.first F)
         (PostCompositionChain.last F) f (PostCompositionChain.total F) := by
   rw [Category.assoc, comparison_initial, PostCompositionChain.comparison_direct]
@@ -107,7 +107,7 @@ lemma fixed_boundary :
 
 lemma action_cut (i : Fin (n + 1)) (Z : C)
     (t : CoherentLiftTuples.obj X (PostCompositionChain.first F) f ⊗ parameter hcof hfib F ⟶
-      (cosimplicialHom (PostCompositionChain.last F).resolution.obj).obj Z) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (PostCompositionChain.last F).resolution.obj).obj Z) :
     CoherentLiftTuples.obj X (PostCompositionChain.first F) f ◁ cut hcof hfib F i ≫
       KanLiftAction.parameterized hcof hfib X (PostCompositionChain.last F)
         (f ≫ (PostCompositionChain.total F).base) Z

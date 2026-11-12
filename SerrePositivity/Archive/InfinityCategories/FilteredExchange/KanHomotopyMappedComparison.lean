@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：元の指定同型の代表辺の像を持つ実ホモトピーは、同じ指定同型の像を表す。

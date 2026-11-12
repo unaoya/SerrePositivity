@@ -1,6 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.ReplacementComparison
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 別の Kan 分解でホモトピー引き戻しを計算する
@@ -60,6 +61,7 @@ def alternativePullbackComparison {P X Y Z T : SSet.{u}}
 規約：Segal 1974 Proposition 1.6・Lemma 1.7。分解の同値性を追加仮定にしない。
 使われ方：積射影のホモトピー引き戻し性。
 -/
+@[kerodon 010L, kerodon 010N]
 theorem isHomotopyPullback_iff_alternative {P X Y Z T : SSet.{u}}
     {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z} (sq : CommSq a b f g)
     (i : Y ⟶ T) (hi : SSet.anodyneExtensions i) (p : T ⟶ Z)

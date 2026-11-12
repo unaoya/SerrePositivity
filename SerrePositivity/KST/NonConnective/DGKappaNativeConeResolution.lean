@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeCofinality
-public import SerrePositivity.InfinityCategories.Derived.CellDGResolutionNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CellDGResolutionNerve
 
 /-!
 概要：同じ cone の完備化前の K 零性を、D-9 の同じ実平坦源へ戻す。
@@ -24,14 +24,14 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 方針：D 正本の元の二つの dg 関手と厳密合成式を nerve に写す。
 規約：同じ cone に限る。一般の宇宙移送 API は新設しない。
 使われ方：同じ cell 増大の像を元の Yoneda 始域へ照合する。 -/
-def dgKappaConeNativeLiftIso : dgNerve R (DGKappaCone R D I) ≅
+def dgKappaConeNativeLiftIso : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I) ≅
     (dgKappaConeYonedaSource R D I).carrier where
-  hom := dgNerve.map (dgUniverseLiftUp R (DGKappaCone R D I))
-  inv := dgNerve.map (dgUniverseLiftDown R (DGKappaCone R D I))
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp R (DGKappaCone R D I))
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown R (DGKappaCone R D I))
   hom_inv_id := by
-    rw [← dgNerve.map_comp, dgUniverseLiftUp_comp_down, dgNerve.map_id]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp_comp_down, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
   inv_hom_id := by
-    rw [← dgNerve.map_comp, dgUniverseLiftDown_comp_up, dgNerve.map_id]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown_comp_up, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
     rfl
 
 /-- 概要：D-9 の同じ実平坦源を、完備化前の native 安定模型として保持する。
@@ -39,10 +39,10 @@ def dgKappaConeNativeLiftIso : dgNerve R (DGKappaCone R D I) ≅
 規約：Perf 完備化をこの中央模型へ混ぜない。
 使われ方：元の実核・実商との完備化前の連結 fibration。 -/
 def dgKappaNativeResolvedCone : StableModel.{max (u + 1) v} where
-  carrier := dgNerve R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
+  carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
   stable := by
-    let := dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-    exact dgNerve_isStable_of_pretriangulated R
+    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
+    exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
       (DGCategoryCellResolution.Source R (DGKappaCone R D I))
 
 /-- 概要：同じ実平坦源と元の cone の Yoneda 始域は、元の増大を順方向に含む同値。
@@ -51,15 +51,15 @@ def dgKappaNativeResolvedCone : StableModel.{max (u + 1) v} where
 使われ方：構成済みの同じ cone の K 零性を実平坦源へ反映する。 -/
 def dgKappaNativeResolvedConeEquivalence :
     StableModelEquivalence (dgKappaNativeResolvedCone R D I) (dgKappaConeYonedaSource R D I) := by
-  let e := (dgCellResolutionNerveEquivalence R (DGKappaCone R D I)).trans
-    (qCatEquivalenceOfIso (dgKappaConeNativeLiftIso R D I))
-  let : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-  let : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  let e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionNerveEquivalence R (DGKappaCone R D I)).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (dgKappaConeNativeLiftIso R D I))
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨⟨e.hom, preservesCofiberData_of_isExactFunctor _⟩,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor _⟩, e.homInvIso, e.invHomIso⟩
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 

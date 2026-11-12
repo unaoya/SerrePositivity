@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeResolutionMarkedHomAugmented : SimplicialObject.Augmented (Type u) :=
   { left := freeResolutionMarkedHom C X Y
@@ -57,7 +57,7 @@ def freeResolutionMarkedHomExtraDegeneracy :
     exact generatorHomExtra_degeneracy_succ C n i f.val
 
 lemma freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
       (freeResolutionMarkedHomAugmentation C X Y) :=
   FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (SerrePositivity.SimplicialModel.ExtraDegeneracyContraction.localized_augmentation_isIso

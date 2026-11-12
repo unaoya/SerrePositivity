@@ -1,39 +1,39 @@
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence
-import SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeRepresentativeComparison
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionModuleCompositionIso
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionUnitConeComparison
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionCompositionConeComparison
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom
-import SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.ConeDerivedEquivalence
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureCompactComparison
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionFixedCoherenceTypes
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionFixedStrictLaws
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionConeComparisonCore
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionConeRepresentativeComparison
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionModuleCompositionIso
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionUnitConeComparison
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionCompositionConeComparison
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureEdgeIsoAdapter
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureKernelHom
+import SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureNativeComparison
 import Lean
 /-! 実構成した実 Morita／P/Yoneda 全入力族の全宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.DGKappaNativeMoritaFamily,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaNativePFamily,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureNativeComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelMap,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeFullRestriction,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.ConeDerivedEquivalence,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.SphereClosureCompactComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedCoherenceTypes,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionFixedStrictLaws,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeComparisonCore,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionConeRepresentativeComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionModuleCompositionIso,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionUnitConeComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SuspensionCompositionConeComparison,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.NativeMappingVertexEdge,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureQuotientEdge,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
-    `SerrePositivity.InfinityCategories.Derived.CoherentBar.Compact.SphereClosureKernelHom]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativeMoritaFamily,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePFamily,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureNativeComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureKernelMap,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NativeFullRestriction,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.ConeDerivedEquivalence,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.SphereClosureCompactComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionFixedCoherenceTypes,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionFixedStrictLaws,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionConeComparisonCore,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionConeRepresentativeComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionModuleCompositionIso,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionUnitConeComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SuspensionCompositionConeComparison,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.NativeMappingVertexEdge,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureQuotientEdge,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureEdgeIsoAdapter,
+    `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.SphereClosureKernelHom]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -51,43 +51,43 @@ run_cmd do
   let total := counts.foldl (· + ·) (0 : Nat)
   logInfo m!"D native family audit passed: {total} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.dgKappaNativeMoritaFamily
-#check SerrePositivity.InfinityCategories.dgKappaNativeMoritaFamily_source
-#check SerrePositivity.InfinityCategories.dgKappaNativeMoritaFamily_at
-#check SerrePositivity.InfinityCategories.dgKappaNativeMoritaFamily_iso
-#check SerrePositivity.InfinityCategories.dgKappaNativePComparisonFamily
-#check SerrePositivity.InfinityCategories.dgKappaNativePArrowFamily_boundary
-#check SerrePositivity.InfinityCategories.dgKappaNativePComparisonFamily_at
-#check SerrePositivity.InfinityCategories.dgKappaNativePComparisonFamily_iso
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily_source
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily_at
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaFamily_iso
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePArrowFamily_boundary
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily_at
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePComparisonFamily_iso
 
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureKernelInputMap
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureKernelInputMap_inclusion
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureSuspensionInputMap_projection
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureNullInputMap_left
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSphereClosureKernelInputMap
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSphereClosureKernelInputMap_inclusion
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSphereClosureSuspensionInputMap_projection
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSphereClosureNullInputMap_left
 
-#check SerrePositivity.InfinityCategories.dgFullRestrictionFunctor
-#check SerrePositivity.InfinityCategories.dgFullRestrictionNativeMap
-#check SerrePositivity.InfinityCategories.dgKappaSuspensionKernelParameter
-#check SerrePositivity.InfinityCategories.dgKappaSuspensionKernelHom
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgFullRestrictionFunctor
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgFullRestrictionNativeMap
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSuspensionKernelParameter
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaSuspensionKernelHom
 
-#check SerrePositivity.InfinityCategories.dgNativeMappingVertexEdge
-#check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeEdge_eq
-#check SerrePositivity.InfinityCategories.dgSuspensionQuotientNativeEdgeIso
-#check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientComparison
-#check SerrePositivity.InfinityCategories.dgSuspensionEdgeIsoOfQuotientEdgeEq
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgNativeMappingVertexEdge
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionQuotientNativeEdge_eq
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionQuotientNativeEdgeIso
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionEdgeIsoOfQuotientComparison
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionEdgeIsoOfQuotientEdgeEq
 
-#check SerrePositivity.InfinityCategories.DGSuspensionFixedUnitComparison
-#check SerrePositivity.InfinityCategories.DGSuspensionFixedCompositionComparison
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.DGSuspensionFixedUnitComparison
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.DGSuspensionFixedCompositionComparison
 
-#check SerrePositivity.InfinityCategories.dgSuspensionFixedUnitInputEqOfConeEq
-#check SerrePositivity.InfinityCategories.dgSuspensionFixedCompositionInputEqOfConeEq
-#check SerrePositivity.InfinityCategories.dgSuspensionConeRepresentativeIso
-#check SerrePositivity.InfinityCategories.dgSuspensionUnitConeEvaluationIso
-#check SerrePositivity.InfinityCategories.dgSuspensionCompositionConeEvaluationIso
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionFixedUnitInputEqOfConeEq
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionFixedCompositionInputEqOfConeEq
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionConeRepresentativeIso
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionUnitConeEvaluationIso
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgSuspensionCompositionConeEvaluationIso
 
-#check SerrePositivity.InfinityCategories.dgKappaConeCompactComparison_inclusion
-#check SerrePositivity.InfinityCategories.dgKappaConeCompactEquivalence_inverse_inclusion
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCompactEquivalence
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCompactEquivalence_hom
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureCountableSum_isExactFunctor
-#check SerrePositivity.InfinityCategories.dgKappaSphereClosureSwindleInfinityIso
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeCompactComparison_inclusion
+#check SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeCompactEquivalence_inverse_inclusion
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaSphereClosureCompactEquivalence
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaSphereClosureCompactEquivalence_hom
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaSphereClosureCountableSum_isExactFunctor
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaSphereClosureSwindleInfinityIso

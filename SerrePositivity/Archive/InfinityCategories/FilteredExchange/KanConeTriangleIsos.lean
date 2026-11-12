@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeFirstTetrahedronEdges
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIsoFacesEquality
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TetrahedronEdgeFaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TetrahedronEdgeFaces
 
 /-!
 概要：Kan 錐の元の三角形、上側比較、第一共有面の指定ホモトピー類の同型。

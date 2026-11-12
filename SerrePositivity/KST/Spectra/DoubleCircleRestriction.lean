@@ -32,28 +32,28 @@ def doubleCircleRestriction (Y : PointedSimplicialSet.{u}) :
       (PointedObject.basedHom CirclePower.space.{u} Y) ⟶
     PointedObject.basedHom PointedSimplicialSet.circle.{u}
       (PointedObject.basedHom PointedSimplicialSet.circle.{u} Y) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X := PointedSimplicialSet.circle.{u}) (Y := CirclePower.space.{u})
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X := PointedSimplicialSet.circle.{u}) (Y := CirclePower.space.{u})
     CirclePower.unit.{u} (PointedObject.basedHom CirclePower.space.{u} Y) ≫
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (Y := PointedObject.basedHom CirclePower.space.{u} Y)
       (Z := PointedObject.basedHom PointedSimplicialSet.circle.{u} Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Y)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Y)
 
 /-- 概要：二つの円の制限は全基点の全次数でホモトピー類の同型を誘導する。
 方針：anodyne な源の制限の全単射 RLP と、標的の π_* 同型の内部 Hom での保存を使う。
 規約：標的 Y の Kan 性だけを仮定する。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。Kan 円の変数交換を通常の円で判定する。 -/
 theorem doubleCircleRestriction_piIsomorphism (Y : PointedSimplicialSet.{u})
-    [KanComplex Y.right] : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (doubleCircleRestriction Y).right := by
-  have hinner : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit Y).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    [KanComplex Y.right] : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (doubleCircleRestriction Y).right := by
+  have hinner : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
         (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) Y)
-  have houter : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit
+  have houter : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit
         (PointedObject.basedHom CirclePower.space Y)).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
         (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle.{u}) _)
   exact houter.comp (PointedMapping.post_piIsomorphism PointedSimplicialSet.circle _ hinner)
 

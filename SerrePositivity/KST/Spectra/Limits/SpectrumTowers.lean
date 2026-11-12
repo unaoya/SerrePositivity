@@ -45,10 +45,10 @@ def spectrumTower (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
 使われ方：Sp の極限錐の脚。 -/
 def spectrumTowerProjection (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
     [∀ n k, Fibration ((d n).app k).right] (n : ℕ) : spectrumTower X d ⟶ X n where
-  app k := pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n
+  app k := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k) n
   comm k := by
-    change _ = towerSequenceSigma _ _ k ≫ pointedTowerProjection _ _ n
-    rw [towerSequenceSigma, pointedTowerLift_projection]
+    change _ = towerSequenceSigma _ _ k ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n
+    rw [towerSequenceSigma, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection]
     rfl
 
 /-- 概要：極限スペクトルの射影は塔の遷移と可換。
@@ -60,7 +60,7 @@ lemma spectrumTowerProjection_comp (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X
     spectrumTowerProjection X d (n + 1) ≫ d n = spectrumTowerProjection X d n := by
   apply OmegaSpectrum.Hom.ext
   intro k
-  exact pointedTowerProjection_comp (fun n ↦ ((X n).level k).space)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection_comp (fun n ↦ ((X n).level k).space)
     (fun n ↦ (d n).app k) n
 
 /-- 概要：実際の極限スペクトルを頂点とする通常の塔の錐。
@@ -82,16 +82,16 @@ def spectrumTowerOrdinaryCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n +
 使われ方：豊穣 Hom の極限性へ渡す段ごとの条件。 -/
 def spectrumTowerOrdinaryCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
-    IsLimit ((spectrumLevelFunctor k).mapCone (spectrumTowerOrdinaryCone X d)) where
-  lift c := pointedTowerLift _ _ (fun n ↦ c.π.app (Opposite.op n)) (fun n ↦ by
+    IsLimit ((_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelFunctor k).mapCone (spectrumTowerOrdinaryCone X d)) where
+  lift c := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift _ _ (fun n ↦ c.π.app (Opposite.op n)) (fun n ↦ by
     have h := c.w (homOfLE (Nat.le_succ n)).op
     rw [Functor.comp_map, Functor.ofOpSequence_map_homOfLE_succ] at h
     change c.π.app (Opposite.op (n + 1)) ≫ (d n).app k = c.π.app (Opposite.op n) at h
     exact h)
-  fac c j := pointedTowerLift_projection _ _ _ _ j.unop
-  uniq c m hm := pointedTowerLimit_hom_ext _ _ (fun n ↦ by
+  fac c j := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection _ _ _ _ j.unop
+  uniq c m hm := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit_hom_ext _ _ (fun n ↦ by
     exact (hm (Opposite.op n)).trans
-      (pointedTowerLift_projection (fun n ↦ ((X n).level k).space)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection (fun n ↦ ((X n).level k).space)
         (fun n ↦ (d n).app k) (fun n ↦ c.π.app (Opposite.op n)) _ n).symm)
 
 /-- 概要：Sp の塔の小さい通常図式。
@@ -115,7 +115,7 @@ def spectrumTowerCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ 
 使われ方：実際の豊穣 Hom の極限性。 -/
 def spectrumTowerCone_level_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (k : ℕ) :
-    IsLimit (spectrumLevelCone (spectrumTowerCone X d) k) :=
+    IsLimit (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone (spectrumTowerCone X d) k) :=
   (spectrumTowerOrdinaryCone_level_isLimit X d k).whiskerEquivalence
     (AsSmall.equiv : ℕᵒᵖ ≌ AsSmall.{u} ℕᵒᵖ).symm
 
@@ -131,8 +131,8 @@ local instance spectrumTowers_locallyKan (X Y : OmegaSpectrum.{u}) :
 使われ方：HTT 4.2.4.1 の塔の移送定理の入力。 -/
 def spectrumTowerCone_hom_isLimit (X : ℕ → OmegaSpectrum.{u})
     (d : ∀ n, X (n + 1) ⟶ X n) [∀ n k, Fibration ((d n).app k).right] (Z : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone (spectrumTowerCone X d) Z) :=
-  spectrumHomCone_isLimit_of_levelwise _ (spectrumTowerCone_level_isLimit X d) Z
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (spectrumTowerCone X d) Z) :=
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise _ (spectrumTowerCone_level_isLimit X d) Z
 
 /-- 概要：L9 の Ω スペクトルの塔の実際の coherent nerve の錐。
 方針：段ごとに作った極限スペクトルの通常の錐を coherent nerve へ移す。
@@ -140,23 +140,23 @@ def spectrumTowerCone_hom_isLimit (X : ℕ → OmegaSpectrum.{u})
 使われ方：Sp の塔の ∞ 極限錐。 -/
 def spectrumTowerInfinityCone (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
     [∀ n k, Fibration ((d n).app k).right] :
-    JoinCone (strictCoherentDiagram (spectrumTowerDiagram X d)) :=
-  strictCoherentCone (spectrumTowerCone X d)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (spectrumTowerDiagram X d)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (spectrumTowerCone X d)
 
 /-- 概要：段ごとに fibration のスペクトルの塔の実際の極限は Sp の ∞ 極限錐。
 方針：全 Hom の通常の極限性と隣接遷移の fibration 性を塔の移送定理へ渡す。
 規約：Hom の極限条件や Ω 条件を追加の前提に置かない。
 使われ方：HTT 4.2.4.1 の双対、BF 1978 §2、HA §1.4.2、γ3c と L9。 -/
 lemma spectrumTowerInfinityCone_isLimit (X : ℕ → OmegaSpectrum.{u}) (d : ∀ n, X (n + 1) ⟶ X n)
-    [∀ n k, Fibration ((d n).app k).right] : IsLimitCone (spectrumTowerInfinityCone X d) := by
+    [∀ n k, Fibration ((d n).app k).right] : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (spectrumTowerInfinityCone X d) := by
   have : ∀ (Z : OmegaSpectrum.{u}) (n : ℕ), Fibration
-      ((simplicialHomDiagram (spectrumTowerDiagram X d) Z).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (spectrumTowerDiagram X d) Z).map
         (AsSmall.up.map (homOfLE (Nat.le_succ n)).op)) := fun Z n ↦ by
     change Fibration (((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj
       (Opposite.op Z)).map ((Functor.ofOpSequence d).map (homOfLE (Nat.le_succ n)).op))
     rw [Functor.ofOpSequence_map_homOfLE_succ]
-    exact spectrumHomMap_fibration Z (d n)
-  exact strictCoherentCone_isLimit_of_tower_homLimit (spectrumTowerCone X d)
+    exact _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_fibration Z (d n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_tower_homLimit (spectrumTowerCone X d)
     (spectrumTowerCone_hom_isLimit X d)
 
 end

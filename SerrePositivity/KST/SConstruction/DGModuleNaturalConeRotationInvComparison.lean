@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma zeroDescCongr {M N T : ModuleCategory R D}
     (f g : M ⟶ N) (b c : N ⟶ T) (ef : f = g) (eb : b = c)
@@ -37,7 +37,7 @@ private lemma isIsoMapOfEqComposite {A B C : ModuleCategory R D}
   infer_instance
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
@@ -62,7 +62,7 @@ lemma dgModuleNaturalConeRotationInv_arrow_eq (x : P) :
         moduleConeRotationInv R D (a x) := by
   have ha := dgModuleNaturalConeDesc_arrow R D G (T) (F.comp (moduleShiftDG R D 1))
     (ν) (δ) (fun _ => 0) (dgModuleNaturalConeRotationInv_boundary R D F G η)
-    (by intro x y n z; simp only [compose_zero, zero_compose, smul_zero]) x
+    (by intro x y n z; simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.zero_compose, smul_zero]) x
   apply ha.trans
   exact zeroDescCongr R D _ _ _ _
     (dgModuleNaturalConeInr_arrow R D F G η x)

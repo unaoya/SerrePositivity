@@ -14,10 +14,10 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "B" => dgAlgebraCategory R (dgOdotAlgebra R d)
-local notation "E" => dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
 local notation "H" => dgOdotAlgebraToEnd R d
-local notation "c" => (Opposite.op DGAlgebraPoint.star : dgAlgebraCategory R (DGOdotInput.corner d))
+local notation "c" => (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d))
 
 /-- 元の ⊙ から指定商 End を経由する、同じ小模型内の実 cone 作用。 -/
 def dgOdotConeAlgebraSmallFunctor : DGFunctor R (B) (DGOdotTargetSmallPerfect R d) :=
@@ -25,7 +25,7 @@ def dgOdotConeAlgebraSmallFunctor : DGFunctor R (B) (DGOdotTargetSmallPerfect R 
 
 /-- 元の比較代数射を、そのまま同じ小模型の元の Yoneda へ送る実関手。 -/
 def dgOdotTargetAlgebraSmallFunctor : DGFunctor R (B) (DGOdotTargetSmallPerfect R d) :=
-  (dgAlgebraMap R (dgOdotTargetMap R d)).comp (dgOdotTargetSmallYoneda R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)).comp (dgOdotTargetSmallYoneda R d)
 
 /-- 元の比較代数射の実小模型での作用は、同じ元の商 End 比較を厳密に回収する。 -/
 lemma dgOdotTargetAlgebraSmallFunctor_factor :
@@ -95,44 +95,44 @@ def dgOdotTargetAlgebraSmallPerfectAt (M : PerfectDGModule R (B)) :
       ((perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d)
         (dgOdotConeAlgebraSmallFunctor R d)).obj M) ≅
     ForgetEnrichment.of (Complex R)
-      (((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+      (((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
         (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d)
           (dgOdotTargetSmallYoneda R d))).obj M) :=
   dgOdotAlgebraSmallPerfectAt R d M ≪≫
     (perfectDGExtensionCompositionAt R (B) (E) (DGOdotTargetSmallPerfect R d)
-      (dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) M).symm
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) M).symm
 
 /-- 同じ元の合成比較を通す延長同型も、全 Hom に関して自然。 -/
 lemma dgOdotTargetAlgebraSmallPerfectAt_naturality (X Y : PerfectDGModule R (B)) :
     (perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d)
       (dgOdotConeAlgebraSmallFunctor R d)).map X Y ≫ eHomWhiskerLeft (Complex R) _
         (dgOdotTargetAlgebraSmallPerfectAt R d Y).hom =
-    ((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+    ((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
       (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d)
         (dgOdotTargetSmallYoneda R d))).map X Y ≫ eHomWhiskerRight (Complex R)
           (dgOdotTargetAlgebraSmallPerfectAt R d X).hom _ := by
   have hi := dgFunctorClosedComparison_inv_naturality R
-    ((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+    ((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
       (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d)))
     (perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d)
       (dgOdotTargetAlgebraSmallFunctor R d))
     (fun M => perfectDGExtensionCompositionAt R (B) (E) (DGOdotTargetSmallPerfect R d)
-      (dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) M)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) M)
     (perfectDGExtensionCompositionAt_naturality R (B) (E) (DGOdotTargetSmallPerfect R d)
-      (dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d)) X Y
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d)) X Y
   exact dgClosedComparison_comp (Complex R)
     (dgOdotAlgebraSmallPerfectAt R d X).hom (dgOdotAlgebraSmallPerfectAt R d Y).hom
     (perfectDGExtensionCompositionAt R (B) (E) (DGOdotTargetSmallPerfect R d)
-      (dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) X).inv
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) X).inv
     (perfectDGExtensionCompositionAt R (B) (E) (DGOdotTargetSmallPerfect R d)
-      (dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) Y).inv _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d)) (dgOdotTargetSmallYoneda R d) Y).inv _ _ _
     (dgOdotAlgebraSmallPerfectAt_naturality R d X Y) hi
 
 /-- 元の cone と元の比較代数射の実延長を結ぶ、全次数自然な指定比較。 -/
 def dgOdotTargetAlgebraSmallPerfectComparison :=
   dgFunctorClosedComparison R
     (perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d) (dgOdotConeAlgebraSmallFunctor R d))
-    ((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+    ((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
       (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d)))
     (fun M => (dgOdotTargetAlgebraSmallPerfectAt R d M).hom)
     (dgOdotTargetAlgebraSmallPerfectAt_naturality R d)
@@ -141,7 +141,7 @@ def dgOdotTargetAlgebraSmallPerfectComparison :=
 def dgOdotTargetAlgebraSmallPerfectInverseComparison :=
   dgFunctorClosedInverseComparison R
     (perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d) (dgOdotConeAlgebraSmallFunctor R d))
-    ((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+    ((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
       (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d)))
     (dgOdotTargetAlgebraSmallPerfectAt R d) (dgOdotTargetAlgebraSmallPerfectAt_naturality R d)
 
@@ -149,7 +149,7 @@ def dgOdotTargetAlgebraSmallPerfectInverseComparison :=
 def dgOdotTargetAlgebraSmallPerfectClosedIso :
     (perfectDGExtension R (B) (DGOdotTargetSmallPerfect R d)
       (dgOdotConeAlgebraSmallFunctor R d)).onClosed ≅
-    ((perfectDGExtension R (B) (E) (dgAlgebraMap R (dgOdotTargetMap R d))).comp
+    ((perfectDGExtension R (B) (E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (dgOdotTargetMap R d))).comp
       (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d)
         (dgOdotTargetSmallYoneda R d))).onClosed :=
   dgFunctorClosedComparisonIso R _ _ (dgOdotTargetAlgebraSmallPerfectAt R d)

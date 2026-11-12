@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareUniversalSource
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalTwoStepUniversalAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoMapPostComponent
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
 
 /-!
 概要：元の全四角形比較を、始点の関手空間上の一つの指定同型として保持する。

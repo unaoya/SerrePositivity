@@ -28,10 +28,10 @@ variable {X Y Z : OmegaSpectrum.{u}} {p : Y ⟶ Z} {a : X ⟶ Y} {b : X ⟶ Z}
   (L : PathLift p a b γ)
 
 def targetPost := HomotopyArrow.rebase (SpectrumPostcomposition.targetPost p L.path) rfl
-  (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge) L.fac)
+  (congrArg (fun k ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge) L.fac)
 
 def targetPre := HomotopyArrow.rebase (SpectrumPostcomposition.targetPre p L.path)
-  (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge) L.fac) rfl
+  (congrArg (fun k ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge) L.fac) rfl
 
 lemma projectedPath_arrow :
     Arrow.mk (SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p L.path)) =
@@ -43,28 +43,28 @@ lemma projectedPath_arrow :
 
 lemma post_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.sourcePost p L.path)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.sourcePost p L.path)) ≫
       SpectrumMappingPath.arrowHom γ =
     SpectrumMappingPath.arrowHom L.path ≫ Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy L.targetPost) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy L.targetPost) := by
   have hn := SpectrumPostcomposition.post_naturality p L.path
   have hs := arrow_mk_comp_congr (congrArg Arrow.mk
-    (rfl : Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (rfl : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SpectrumPostcomposition.sourcePost p L.path)) = _)) L.projectedPath_arrow
   have ht := HomotopyArrow.rebase_arrow (SpectrumPostcomposition.targetPost p L.path) rfl
-    (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge) L.fac)
+    (congrArg (fun k ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge) L.fac)
   apply Arrow.mk_injective
   exact hs.symm.trans ((congrArg Arrow.mk hn).trans
     (arrow_mk_comp_congr (congrArg Arrow.mk (rfl : SpectrumMappingPath.arrowHom L.path = _)) ht))
 
 lemma pre_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.sourcePre p L.path)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumPostcomposition.sourcePre p L.path)) =
     SpectrumMappingPath.arrowHom γ ≫ Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy L.targetPre) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy L.targetPre) := by
   have hn := SpectrumPostcomposition.pre_naturality p L.path
   have ht := HomotopyArrow.rebase_arrow (SpectrumPostcomposition.targetPre p L.path)
-    (congrArg (fun k ↦ SSet.yonedaEquiv.symm (coherentNerveEdge k).edge) L.fac) rfl
+    (congrArg (fun k ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge) L.fac) rfl
   apply Arrow.mk_injective
   exact (congrArg Arrow.mk hn).trans (arrow_mk_comp_congr L.projectedPath_arrow ht)
 

@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKPointSection
 public import SerrePositivity.KST.Spectra.SpectrumCircleBKNativeComparison
 public import
-  SerrePositivity.InfinityCategories.HomotopyLimits.CoherentConeSourceWeightedRestriction
+  SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentConeSourceWeightedRestriction
 
 /-!
 概要：円 cotensor を頂点とする錐全体の Hom の族の制限は、元の反転 BK 比較族に一致する。
@@ -18,21 +18,21 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleSourceRestrictionSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
 /-- 元の錐全体の全 Hom 族の制限は、元の反転 BK 点の比較族そのもの。 -/
 lemma circleBKCoherentConeSourceFamily_restrict (X Y : OmegaSpectrum.{u}) :
-    coherentConeSourceFamily (circleBKCoherentCone Y)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentConeSourceFamily (circleBKCoherentCone Y)
         (cotensor PointedSimplicialSet.circle Y) (circleBKCoherentCone_vertex Y) X ≫
-      coneSectionRestriction (circleBKCoherentCone Y) (coherentNerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coneSectionRestriction (circleBKCoherentCone Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) =
         circleBKNativeConeComparison X Y := by
-  apply relativeFunctorUncurry_injective
-    (sliceUnderProjection (SSet.yonedaEquiv.symm (coherentNerveVertex X)))
-    (strictCoherentDiagram (pointLoopDiagram Y))
-  rw [coherentConeSourceFamily_restriction_weighted (pointLoopDiagram Y) _ _ _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry_injective
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (pointLoopDiagram Y))
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coherentConeSourceFamily_restriction_weighted (pointLoopDiagram Y) _ _ _
     (circleBKConeWeightedPointSection Y) (circleBKCoherentCone_cosliceSection_weighted Y)]
   rw [circleBKNativeConeComparison_uncurry]
   simp only [← Category.assoc]
@@ -42,13 +42,13 @@ lemma circleBKCoherentConeSourceFamily_restrict (X Y : OmegaSpectrum.{u}) :
   apply ConcreteCategory.hom_ext
   rintro ⟨σ, s⟩
   change (ULift.up
-      ((bousfieldKanWeightedNerveEvaluation (simplicialHomDiagram (pointLoopDiagram Y)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeightedNerveEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y)
         (cotensor PointedSimplicialSet.circle Y) ⋙ SSet.opFunctor)).app (Opposite.op ⦋n⦌)
           (((inv (fst _ (Δ[0] : SSet.{u + 1}))).app (Opposite.op ⦋n⦌) σ).1.down,
             ((circleBKLiftedEndPoint Y).app (Opposite.op ⦋n⦌)
               ((inv (fst _ (Δ[0] : SSet.{u + 1}))).app (Opposite.op ⦋n⦌) σ).2).down)), s) =
     (ULift.up
-      ((bousfieldKanWeightedNerveEvaluation (simplicialHomDiagram (pointLoopDiagram Y)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeightedNerveEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y)
         (cotensor PointedSimplicialSet.circle Y) ⋙ SSet.opFunctor)).app (Opposite.op ⦋n⦌)
           (σ.down, (circleBKReflectedEndPointMap Y).app (Opposite.op ⦋n⦌) PUnit.unit)), s)
   have hf := ConcreteCategory.congr_hom

@@ -2,9 +2,9 @@ module
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeHomMap
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeIdentity
 public import SerrePositivity.KST.SConstruction.DGHomGluingModuleConeCompositionDegree
-public import SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
-public import SerrePositivity.InfinityCategories.DGNerve.FunctorMapping
-public import SerrePositivity.InfinityCategories.DGNerve.Algebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FunctorMapping
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Algebra
 
 /-!
 概要：全次数で自然な加群比較の点ごとの元 cone を、一つの実 dg 関手へ束ねる。
@@ -16,9 +16,9 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
-  {P : Type w} [DGCategory R P] (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  {P : Type w} [DGCategory R P] (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 
 /-- 概要：同じ厳密比較の元閉零成分。
 方針：元閉元・閉射対応の逆を使う。規約：成分を選び直さない。
@@ -99,7 +99,7 @@ lemma dgModuleNaturalConeHomMap_comp (x y z : P) {r s : ℤ}
     dgModuleNaturalConeHomMap_apply]
   rw [dgGluingModuleConeElement_comp_at R D (a x) (a y) (a z)
     (o := r + s - 1) _ _ _ (by omega) _ _ _ (by omega) (by omega)]
-  simp only [DGNerve.map_compose, DGNerve.zero_compose, DGNerve.compose_zero,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.map_compose, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.zero_compose, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_zero,
     smul_zero, add_zero]
 
 /-- 概要：同じ cone Hom 作用は豊穣順合成も保つ。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.BarEdge
-public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyGroups
 
 /-!
 # 一対象圏の辺と基本群の積の向き
@@ -95,8 +95,8 @@ def monoidNerveLoopMulStruct (T : MonCat.{u}) (a b : T) :
 -/
 def monoidNerveFundamentalClass {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) (a : T) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex f rfl (monoidNerveLoop T a))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex f rfl (monoidNerveLoop T a))
 
 /--
 概要：nerve の辺の基本群の類は反乗法的である。
@@ -108,8 +108,8 @@ theorem monoidNerveFundamentalClass_mul {X : SSet.{u}} [KanComplex X] (T : MonCa
     (f : nerve (SingleObj T) ⟶ X) (a b : T) :
     monoidNerveFundamentalClass T f (b * a) =
       monoidNerveFundamentalClass T f a * monoidNerveFundamentalClass T f b :=
-  (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq
-    (_root_.SerrePositivity.InfinityCategories.Kan.mapMulStruct f rfl (monoidNerveLoopMulStruct T a b))).symm
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_eq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapMulStruct f rfl (monoidNerveLoopMulStruct T a b))).symm
 
 /--
 概要：単位の nerve の辺は境界定数単体としても定数である。
@@ -134,7 +134,7 @@ theorem monoidNerveLoop_one (T : MonCat.{u}) : monoidNerveLoop T 1 = .const := b
 theorem monoidNerveFundamentalClass_one {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) : monoidNerveFundamentalClass T f 1 = 1 := by
   unfold monoidNerveFundamentalClass
-  rw [monoidNerveLoop_one, _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_const]
+  rw [monoidNerveLoop_one, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex_const]
   rfl
 
 /--
@@ -145,7 +145,7 @@ theorem monoidNerveFundamentalClass_one {X : SSet.{u}} [KanComplex X] (T : MonCa
 -/
 def monoidNerveFundamentalOppositeHom {X : SSet.{u}} [KanComplex X] (T : MonCat.{u})
     (f : nerve (SingleObj T) ⟶ X) :
-    T →* (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)))ᵐᵒᵖ where
+    T →* (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint T)))ᵐᵒᵖ where
   toFun a := MulOpposite.op (monoidNerveFundamentalClass T f a)
   map_one' := congrArg MulOpposite.op (monoidNerveFundamentalClass_one T f)
   map_mul' a b := congrArg MulOpposite.op (monoidNerveFundamentalClass_mul T f b a)
@@ -158,7 +158,7 @@ def monoidNerveFundamentalOppositeHom {X : SSet.{u}} [KanComplex X] (T : MonCat.
 -/
 def groupNerveFundamentalHom {X : SSet.{u}} [KanComplex X]
     (G : Type u) [Group G] (f : nerve (SingleObj G) ⟶ X) :
-    G →* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint (MonCat.of G))) where
+    G →* _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X 0 (f.app _ (monoidNervePoint (MonCat.of G))) where
   toFun a := monoidNerveFundamentalClass (MonCat.of G) f a⁻¹
   map_one' := by rw [inv_one]; exact monoidNerveFundamentalClass_one (MonCat.of G) f
   map_mul' a b := by

@@ -15,10 +15,10 @@ universe u
 /-- 元の二区間内部次元の和は、同じ連結 necklace の元の次元。 -/
 lemma simplexIntervalCompose_source_dimension {N : ℕ} (a b c : Fin (N + 1)) :
     (b.val - a.val - 1) + (c.val - b.val - 1) =
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{u} (b.val - a.val))
         (necklaceBead (c.val - b.val))).down.dimension := by
-  have h := (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (b.val - a.val)).wedge_dimension
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (c.val - b.val))
+  have h := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (b.val - a.val)).wedge_dimension
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (c.val - b.val))
   have hp := necklaceBead_dimension.{u} (b.val - a.val)
   have hq := necklaceBead_dimension.{u} (c.val - b.val)
   exact ((congrArg₂ Nat.add hp hq).symm.trans h.symm)
@@ -26,17 +26,17 @@ lemma simplexIntervalCompose_source_dimension {N : ℕ} (a b c : Fin (N + 1)) :
 /-- 元の実二区間合成 cube を、同じ左右・全区間の内部次元で読む。 -/
 def simplexIntervalComposeStandardCube {N : ℕ} (a b c : Fin (N + 1))
     (hab : a < b) (hbc : b < c) :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((b.val - a.val - 1) + (c.val - b.val - 1)) ⟶
-      _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (c.val - a.val - 1) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((b.val - a.val - 1) + (c.val - b.val - 1)) ⟶
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (c.val - a.val - 1) :=
   (concreteCubeDimensionIso
-    (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((b.val - a.val - 1) + (c.val - b.val - 1)))
-    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
+    (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((b.val - a.val - 1) + (c.val - b.val - 1)))
+    (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{u} (b.val - a.val))
       (necklaceBead (c.val - b.val))).down.dimension)
     (simplexIntervalCompose_source_dimension.{u} a b c)).hom ≫
       necklaceConcreteCubeMap (simplexIntervalComposeBeadHom.{u} a b c hab.le hbc.le) ≫
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (c.val - a.val - 1))
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (c.val - a.val - 1))
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
           (necklaceBead_dimension.{u} (c.val - a.val)).symm).inv
 
 /-- 元の標準区間次元の実合成は、同じ共有頂点の右端座標の標準一面を回収。 -/
@@ -44,15 +44,15 @@ lemma simplexIntervalComposeStandardCube_one_face {N : ℕ} (a b c : Fin (N + 1)
     (hab : a < b) (hbc : b < c) :
     simplexIntervalComposeStandardCube.{u} a b c hab hbc ≫
       (concreteCubeDimensionIso
-        (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (c.val - a.val - 1))
-        (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (((b.val - a.val - 1) + (c.val - b.val - 1)) + 1))
+        (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (c.val - a.val - 1))
+        (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (((b.val - a.val - 1) + (c.val - b.val - 1)) + 1))
         (by
           change c.val - a.val - 1 = ((b.val - a.val - 1) + (c.val - b.val - 1)) + 1
           have h := simplexHAStrictInterval_split_dimension a b c hab hbc
           omega)).hom =
-      _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true ((b.val - a.val - 1) + (c.val - b.val - 1))
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true ((b.val - a.val - 1) + (c.val - b.val - 1))
         ⟨c.val - b.val - 1, by omega⟩ := by
-  let T := _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val))
+  let T := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{u} (b.val - a.val))
     (necklaceBead (c.val - b.val))
   have hm := simplexIntervalCompose_source_dimension.{u} a b c
   have hn := (necklaceBead_dimension.{u} (c.val - a.val)).symm
@@ -65,19 +65,19 @@ lemma simplexIntervalComposeStandardCube_one_face {N : ℕ} (a b c : Fin (N + 1)
   have hf : necklaceConcreteCubeMap
       (simplexIntervalComposeBeadHom.{u} a b c hab.le hbc.le) ≫
       (concreteCubeDimensionIso
-        (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
-        (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1)) hc).hom =
-        _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true T.down.dimension (Fin.cast hc i) := by
+        (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (necklaceBead.{u} (c.val - a.val)).down.dimension)
+        (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + 1)) hc).hom =
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true T.down.dimension (Fin.cast hc i) := by
     have hi : Fin.cast hc i = simplexIntervalComposeCoordinate.{u} a b c hab hbc :=
       Fin.ext rfl
     exact (simplexIntervalCompose_cube_one_face.{u, u} a b c hab hbc).trans
-      (congrArg (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true T.down.dimension) hi.symm)
+      (congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true T.down.dimension) hi.symm)
   have h := concreteCube_face_conjugate true hm hn hc hc'
     (necklaceConcreteCubeMap (simplexIntervalComposeBeadHom.{u} a b c hab.le hbc.le)) i hf
   have hi : Fin.cast hc' (Fin.cast hn.symm i) =
       (⟨c.val - b.val - 1, by omega⟩ :
         Fin (((b.val - a.val - 1) + (c.val - b.val - 1)) + 1)) := Fin.ext rfl
-  exact h.trans (congrArg (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true
+  exact h.trans (congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true
     ((b.val - a.val - 1) + (c.val - b.val - 1))) hi)
 
 end SerrePositivity.KST.SConstruction

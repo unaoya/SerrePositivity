@@ -30,17 +30,17 @@ abbrev NullSphereStage (X : PointedSimplicialSet.{u}) (r : ℕ) :=
 /-- 指定した差を持つ次段は、球面を厳密に射影しながら構成できる。 -/
 lemma exists_difference_step {E B : PointedSimplicialSet.{u}} (p : E ⟶ B)
     [KanComplex B.right] [Fibration p.right] {r : ℕ}
-    (U : NullSphereStage B r) (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup B.right (r + 1) B.basepoint) :
+    (U : NullSphereStage B r) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup B.right (r + 1) B.basepoint) :
     ∃ V : NullSphereStage E r,
-      ∃ hs : _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) V.1 = U.1,
-        difference U.2 (mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) hs V.2) = a := by
+      ∃ hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) V.1 = U.1,
+        difference U.2 (mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) hs V.2) = a := by
   obtain ⟨T, hT⟩ := exists_difference U.2 a
   obtain ⟨t, S, hs, hS⟩ := NullHomotopyEndpointLifting.exists_lift p.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) T
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) T
   refine ⟨⟨t, S⟩, hs, ?_⟩
-  have he : mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) hs S = T := by
-    have hm := (mapNullTo_map p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) hs S).trans hS
-    generalize mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint p) hs S = A at hm ⊢
+  have he : mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) hs S = T := by
+    have hm := (mapNullTo_map p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) hs S).trans hS
+    generalize mapNullTo p.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint p) hs S = A at hm ⊢
     cases A
     cases T
     cases hm

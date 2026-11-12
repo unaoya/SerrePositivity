@@ -17,29 +17,29 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
   {D : Type uD} [Category.{vD} D] (F : Paths C ⥤ D) (hF : W.paths.IsInvertedBy F)
 
 lemma markedValueDescent_positive_fac :
-    FreeQuiverCover.positiveEvaluation (Q := MarkedGenerators.quiver W) ⋙
-      markedValueDescent W F hF = MarkedGenerators.inclusion W ⋙ F := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) ⋙
+      markedValueDescent W F hF = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W ⋙ F := by
   let := valueCategory W
   rw [← valueDescent_marked W F hF, ← Functor.assoc, ← valueLift_marked_fac,
     Functor.assoc, valueDescent_fac]
 
-lemma fromWide_inclusion : MarkedGenerators.fromWide W ⋙ MarkedGenerators.inclusion W =
+lemma fromWide_inclusion : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.fromWide W ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W =
     wideSubcategoryInclusion W.paths := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
-  exact MarkedGenerators.inclusion_lift W f.hom f.property
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion_lift W f.hom f.property
 
 lemma nativeFreeEvaluation_descent :
     AllMarked.nativeFreeEvaluation W ⋙ markedValueDescent W F hF =
       wideSubcategoryInclusion W.paths ⋙ F := by
-  change (MarkedGenerators.fromWide W ⋙ FreeQuiverCover.positiveEvaluation) ⋙ _ = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.fromWide W ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation) ⋙ _ = _
   rw [Functor.assoc, markedValueDescent_positive_fac, ← Functor.assoc, fromWide_inclusion]
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

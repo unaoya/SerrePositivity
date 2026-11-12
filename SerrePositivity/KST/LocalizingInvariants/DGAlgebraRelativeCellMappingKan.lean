@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingFibration
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraRelativeMultiplicativeSimplices
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
-public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanLimits
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaces
 
 /-!
 概要：全射標的射の上で、cell 源と指定底を保つ実乗法的写像単体は Kan。
@@ -20,7 +20,7 @@ universe u
 open SSet.modelCategoryQuillen
 open CategoryTheory Limits MonoidalCategory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R)) {X B : Mon (Complex R)}
   (q : X ⟶ B) (hq : EInfinity.projectiveFibrations R q.hom)
@@ -32,8 +32,8 @@ lemma relativeMultiplicativeCellMapping_kanComplex :
     SSet.KanComplex (relativeMultiplicativeMappingSimplices R q s) := by
   have := multiplicativeCellMapping_fibration R A q hq
   have : SSet.KanComplex (SSet.stdSimplex.obj (SimplexCategory.mk 0) : SSet.{u}) :=
-    pointKanObject.isKanComplex
-  exact pullback_kanComplex_of_fibration
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointKanObject.isKanComplex
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.pullback_kanComplex_of_fibration
     (multiplicativeMappingPostcompose R (cellResolution R A) q) (multiplicativeMappingBase R s)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

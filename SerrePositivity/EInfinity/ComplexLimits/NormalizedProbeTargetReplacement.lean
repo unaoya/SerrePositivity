@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomKan
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
-public import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenTargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedQuillenTargetInvariance
 
 /-!
 # 同じ正規化 probe Hom の実半自由標的置換
@@ -21,26 +21,26 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
+
 variable (A : Type u) [CommRing A]
 
 def normalizedProbeTargetReplacementMap (X Y : Complex A) :
     ((normalizedProbeTensorHom A).obj (Opposite.op X)).obj
       (complexSemifreeResolutionValue A Y).val ⟶
     ((normalizedProbeTensorHom A).obj (Opposite.op X)).obj Y :=
-  (cosimplicialHom ((normalizedProbeTensorFrame A).obj X)).map
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((normalizedProbeTensorFrame A).obj X)).map
     (complexSemifreeResolutionValueAugmentation A Y)
 
 lemma normalizedProbeTargetReplacementMap_homotopyEquivalence (X Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (normalizedProbeTargetReplacementMap A X Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (normalizedProbeTargetReplacementMap A X Y) := by
   let := projectiveModelCategory A
   have := BarrattEccles.CarrierDiagram.complex_isFibrant A Y
   have := BarrattEccles.CarrierDiagram.complex_isFibrant A
     (complexSemifreeResolutionValue A Y).val
   have : WeakEquivalence (complexSemifreeResolutionValueAugmentation A Y) :=
     ⟨complexSemifreeResolutionValueAugmentation_quasiIso A Y⟩
-  exact frameHom_target_homotopyEquivalence _ (normalizedProbeTensorFrame_cofibrant A X)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameHom_target_homotopyEquivalence _ (normalizedProbeTensorFrame_cofibrant A X)
     (normalizedSimplexTensor_homotopicallyConstant A ((framedLimitProbeFunctor A).obj X))
     (complexSemifreeResolutionValueAugmentation A Y)
 

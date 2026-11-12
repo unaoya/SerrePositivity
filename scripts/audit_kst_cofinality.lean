@@ -145,8 +145,8 @@ run_cmd do
     `SerrePositivity.KST.Fibration.KernelPostcomposition,
     `SerrePositivity.KST.Fibration.KilledKernelIso,
     `SerrePositivity.KST.Fibration.LocalizedFiniteProductEquality,
-    `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairBothEquality,
-    `SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality,
+    `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LocalizedPairBothEquality,
+    `SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LocalizedPairEquality,
     `SerrePositivity.KST.Fibration.ProductCoefficientHomotopyPullback,
     `SerrePositivity.KST.Fibration.ProductCoordinatePullbackTransfer,
     `SerrePositivity.KST.Fibration.PullbackCancellation,
@@ -247,7 +247,7 @@ run_cmd do
     `SerrePositivity.KST.Fibration.WeakCofiberCompletion,
     `SerrePositivity.KST.Fibration.WeakCofiberCompletionSection,
     `SerrePositivity.KST.Fibration.WeakCofiberVertices,
-    `SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.WeakEquivalences,
+    `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.WeakEquivalences,
     `SerrePositivity.KST.Fibration.WeakStringCofiberFamilies,
     `SerrePositivity.KST.Fibration.WeakStringCofiberRealization,
     `SerrePositivity.KST.Fibration.WeakStringCofiberSource,
@@ -425,7 +425,7 @@ run_cmd do
 -- K-B3 が消費する公開型全体を固定する。追加の供給・instance 引数を許さない。
 universe u
 example : ∀ (X Y : SerrePositivity.KST.SConstruction.StableModel.{u}) (f : X ⟶ Y),
-    SerrePositivity.InfinityCategories.F2.Idempotent.IsIdempotentCompletion f.val →
+    SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective
         (SerrePositivity.KST.Spectra.OmegaSpectrum.homotopyMap
           (SerrePositivity.KST.SConstruction.kSpectrumMap f) j)) ∧
@@ -443,7 +443,7 @@ run_cmd do
     pending := pending.tail!
     if seen.contains name then continue
     seen := seen.insert name
-    if name == `SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence ||
+    if name == `SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence ||
         name == `HomotopicalAlgebra.ModelCategory then
       throwError "K-cof: forbidden proof dependency: {name}"
     if let some idx := env.getModuleIdxFor? name then

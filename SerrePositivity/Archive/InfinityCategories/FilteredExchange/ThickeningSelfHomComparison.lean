@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparison
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomComparison
 
 /-!
 概要：同じ thickening 対象で、実対象の指定同定から二つの自己 Hom を同定する。

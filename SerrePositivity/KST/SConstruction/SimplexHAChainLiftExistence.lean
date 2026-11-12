@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 任意の元の native HA 単体から、全次元で同じ線形復元を回収する実 Hom 鎖射を得る。 -/
-lemma simplexHAChainLift_exists {N : ℕ} (s : DGNerve.Simplex A D N) (M : ℕ) :
+lemma simplexHAChainLift_exists {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (M : ℕ) :
     SimplexHAChainLiftExists A s.toSimplexData M := by
   induction M using Nat.strong_induction_on with
   | h M ih =>

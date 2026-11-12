@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedParts
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedHomTransport
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedHomTransport
 
 /-!
 # 元の二つの自由部分からの関手から生成矢の像の指定への回収
@@ -18,12 +18,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C]
 
-def unmarkedGeneratorPath (W : MorphismProperty C) (g : FactorTarget.Index W) :
-    Quiver.Path (V := MarkedGenerators.quiver (GeneratorPartition.unmarked W))
+def unmarkedGeneratorPath (W : MorphismProperty C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    Quiver.Path (V := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W))
       g.val.left g.val.right :=
   Quiver.Hom.toPath ⟨g.val.hom, g.property⟩
 
@@ -32,15 +32,15 @@ variable {W : MorphismProperty C} {D : Type uD} [EnrichedCategory SSet.{u} D]
   (G : EnrichedParts W D)
 
 def foldData : EnrichedFoldData W D := by
-  letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  letI := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
   exact
     { obj := fun X => G.marked.obj ⟨X⟩
       marked := fun X Y => G.marked.map ⟨X⟩ ⟨Y⟩
-      generator := fun g => DiscreteEnrichment.point (unmarkedGeneratorPath W g) ≫
+      generator := fun g => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.point (unmarkedGeneratorPath W g) ≫
         G.unmarked.map g.val.left g.val.right ≫
-          EnrichedHomTransport.homMap (G.objects g.val.left).symm (G.objects g.val.right).symm
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.homMap (G.objects g.val.left).symm (G.objects g.val.right).symm
       marked_unit := fun X => G.marked.map_id ⟨X⟩
       marked_comp := fun X Y Z => G.marked.map_comp ⟨X⟩ ⟨Y⟩ ⟨Z⟩ }
 

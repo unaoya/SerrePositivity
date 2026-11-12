@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.CompletionMonoidal
-public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
-public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
 
 /-! # 完備導来テンソルの模型比較
 
@@ -33,27 +33,27 @@ set_option backward.isDefEq.respectTransparency false
 variable (R : Type u) [CommRing R]
 
 /-- 導来圏の半自由代表を指定する頂点。 -/
-abbrev DVertex := (derivedInfinityCategory R) _⦋0⦌
+abbrev DVertex := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌
 
 /-- 頂点の半自由複体のテンソルを導来 p 完備化して頂点に戻す。 -/
 def completedModuleTensor (p : ℕ) (A : Type u) [CommRing A] (X Y : DVertex A) : DVertex A :=
   let C := DerivedCategory.Q.obj (cochainTensor (X.obj 0).val (Y.obj 0).val)
-  ((derivedInfinityHomotopyEquivalence A).inverse.obj
+  ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence A).inverse.obj
     ((derivedComplexCompletionFunctor A (p : A)).obj C)).pt
 
 /-- 離散頂点と同じ関手的自由解像度を有界上側の導来模型に指定する。 -/
 def moduleHeartProjectiveModel (M : ModuleCat.{u} R) :
     BoundedAboveDerivedModel ((boundedAboveDerivedSingleFunctor.obj M).obj) where
-  complex := (moduleFreeCochainResolution R).obj M
+  complex := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj M
   bound := 0
   bounded := (CochainComplex.isStrictlyLE_iff _ _).mpr (fun k hk =>
-    moduleFreeCochainResolution_isZero R M k hk)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_isZero R M k hk)
   projective i := by
-    let := moduleFreeCochainResolution_free R M i
+    let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution_free R M i
     infer_instance
   iso := by
-    letI := moduleFreeCochainAugmentation_quasiIso R M
-    exact asIso (DerivedCategory.Q.map (moduleFreeCochainAugmentation R M))
+    letI := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation_quasiIso R M
+    exact asIso (DerivedCategory.Q.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation R M))
 
 /-- 有界上側の完備テンソルを二つの自由解像度のテンソルで計算する。 -/
 def completedTensorResolutionIso (a : R) (M N : ModuleCat.{u} R) :
@@ -61,8 +61,8 @@ def completedTensorResolutionIso (a : R) (M N : ModuleCat.{u} R) :
       (boundedAboveDerivedTensor.obj (boundedAboveDerivedSingleFunctor.obj M,
         boundedAboveDerivedSingleFunctor.obj N))).obj ≅
       (derivedComplexCompletionFunctor R a).obj
-        (DerivedCategory.Q.obj (cochainTensor ((moduleFreeCochainResolution R).obj M)
-          ((moduleFreeCochainResolution R).obj N))) :=
+        (DerivedCategory.Q.obj (cochainTensor ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj M)
+          ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj N))) :=
   (derivedComplexCompletionFunctor R a).mapIso
     (boundedAboveDerivedTensorModelIso _ _
       (moduleHeartProjectiveModel R M) (moduleHeartProjectiveModel R N))
@@ -71,10 +71,10 @@ def completedTensorResolutionIso (a : R) (M N : ModuleCat.{u} R) :
 def completedTensorAlgebraVertexIso (p : ℕ) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T] :
     (boundedAboveCompletedTensorAlgebra R (p : R) S T).X.obj ≅
-      (derivedInfinityHomotopyEquivalence R).functor.obj
-        ⟨completedModuleTensor p R (moduleHeartVertex R (ModuleCat.of R S))
-          (moduleHeartVertex R (ModuleCat.of R T))⟩ := by
-  let e := derivedInfinityHomotopyEquivalence R
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
+        ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R S))
+          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R T))⟩ := by
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R
   exact completedTensorResolutionIso R (p : R) (ModuleCat.of R S) (ModuleCat.of R T) ≪≫
     (e.counitIso.app _).symm
 
@@ -87,16 +87,16 @@ theorem completedTensorResolutionIso_naturality (a : R) {M M' N N' : ModuleCat.{
       (completedTensorResolutionIso R a M' N').hom =
     (completedTensorResolutionIso R a M N).hom ≫
       (derivedComplexCompletionFunctor R a).map (DerivedCategory.Q.map
-        (cochainTensorMap ((moduleFreeCochainResolution R).map f)
-          ((moduleFreeCochainResolution R).map g))) := by
+        (cochainTensorMap ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).map f)
+          ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).map g))) := by
   have represent {A B : ModuleCat.{u} R} (h : A ⟶ B) :
-      DerivedCategory.Q.map ((moduleFreeCochainResolution R).map h) ≫
+      DerivedCategory.Q.map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).map h) ≫
         (moduleHeartProjectiveModel R B).iso.hom =
       (moduleHeartProjectiveModel R A).iso.hom ≫ (boundedAboveDerivedSingleFunctor.map h).hom := by
     change DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _ =
       DerivedCategory.Q.map _ ≫ DerivedCategory.Q.map _
     rw [← CategoryTheory.Functor.map_comp, ← CategoryTheory.Functor.map_comp,
-      (moduleFreeCochainAugmentationNat R).naturality]
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentationNat R).naturality]
   change (derivedComplexCompletionFunctor R a).map _ ≫
       (derivedComplexCompletionFunctor R a).map _ =
     (derivedComplexCompletionFunctor R a).map _ ≫ (derivedComplexCompletionFunctor R a).map _
@@ -106,7 +106,7 @@ theorem completedTensorResolutionIso_naturality (a : R) {M M' N N' : ModuleCat.{
       (moduleHeartProjectiveModel R M) (moduleHeartProjectiveModel R M')
       (moduleHeartProjectiveModel R N) (moduleHeartProjectiveModel R N')
       (boundedAboveDerivedSingleFunctor.map f) (boundedAboveDerivedSingleFunctor.map g)
-      ((moduleFreeCochainResolution R).map f) ((moduleFreeCochainResolution R).map g)
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).map f) ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).map g)
       (represent f) (represent g))
 
 open MonoidalCategory
@@ -114,16 +114,16 @@ open MonoidalCategory
 /-- 完備代数テンソルへの左因子写像は、右因子の単位をテンソルして得られる。 -/
 lemma completedTensorAlgebraLeft_resolution (a : R) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-    (uT : cochainTensorUnit (R := R) ⟶ (moduleFreeCochainResolution R).obj (ModuleCat.of R T))
+    (uT : cochainTensorUnit (R := R) ⟶ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R T))
     (huT : DerivedCategory.Q.map uT ≫ (moduleHeartProjectiveModel R (ModuleCat.of R T)).iso.hom =
       (boundedAboveDerivedAlgebraUnit (R := R) T).hom) :
     (boundedAboveCompletedTensorAlgebraLeft R a S T).hom.hom.hom ≫
       (completedTensorResolutionIso R a (ModuleCat.of R S) (ModuleCat.of R T)).hom =
     (moduleHeartProjectiveModel R (ModuleCat.of R S)).iso.inv ≫
       DerivedCategory.Q.map (cochainTensorRightUnitor
-        ((moduleFreeCochainResolution R).obj (ModuleCat.of R S))).inv ≫
+        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R S))).inv ≫
       DerivedCategory.Q.map (cochainTensorMap
-        (𝟙 ((moduleFreeCochainResolution R).obj (ModuleCat.of R S))) uT) ≫
+        (𝟙 ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R S))) uT) ≫
       (derivedComplexCompletionUnit R a).app _ := by
   let X := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S)
   let Y := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R T)
@@ -182,7 +182,7 @@ lemma completedTensorAlgebraLeft_resolution (a : R) (S T : Type u)
 
 /-- 代数の単位は次数零の単位複体から自由解像度への鎖写像で表せる。 -/
 theorem exists_moduleHeartUnitLift (T : Type u) [CommRing T] [Algebra R T] :
-    ∃ uT : cochainTensorUnit (R := R) ⟶ (moduleFreeCochainResolution R).obj (ModuleCat.of R T),
+    ∃ uT : cochainTensorUnit (R := R) ⟶ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R T),
       DerivedCategory.Q.map uT ≫ (moduleHeartProjectiveModel R (ModuleCat.of R T)).iso.hom =
         (boundedAboveDerivedAlgebraUnit (R := R) T).hom := by
   let U := boundedAboveDerivedTensorUnitModel (R := R)
@@ -193,16 +193,16 @@ theorem exists_moduleHeartUnitLift (T : Type u) [CommRing T] [Algebra R T] :
 /-- 完備代数テンソルへの右因子写像は、左因子の単位をテンソルして得られる。 -/
 lemma completedTensorAlgebraRight_resolution (a : R) (S T : Type u)
     [CommRing S] [CommRing T] [Algebra R S] [Algebra R T]
-    (uT : cochainTensorUnit (R := R) ⟶ (moduleFreeCochainResolution R).obj (ModuleCat.of R T))
+    (uT : cochainTensorUnit (R := R) ⟶ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R T))
     (huT : DerivedCategory.Q.map uT ≫ (moduleHeartProjectiveModel R (ModuleCat.of R T)).iso.hom =
       (boundedAboveDerivedAlgebraUnit (R := R) T).hom) :
     (boundedAboveCompletedTensorAlgebraRight R a T S).hom.hom.hom ≫
       (completedTensorResolutionIso R a (ModuleCat.of R T) (ModuleCat.of R S)).hom =
     (moduleHeartProjectiveModel R (ModuleCat.of R S)).iso.inv ≫
       DerivedCategory.Q.map (cochainTensorLeftUnitor
-        ((moduleFreeCochainResolution R).obj (ModuleCat.of R S))).inv ≫
+        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R S))).inv ≫
       DerivedCategory.Q.map (cochainTensorMap
-        uT (𝟙 ((moduleFreeCochainResolution R).obj (ModuleCat.of R S)))) ≫
+        uT (𝟙 ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainResolution R).obj (ModuleCat.of R S)))) ≫
       (derivedComplexCompletionUnit R a).app _ := by
   let X := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R S)
   let Y := boundedAboveDerivedSingleFunctor.obj (ModuleCat.of R T)
@@ -267,9 +267,9 @@ variable {R}
 /-- 有界上側の射影模型を、頂点が指定する半自由代表へ擬同型で送る。 -/
 private theorem exists_projectiveModelToVertex
     (X : DVertex R)
-    (P : BoundedAboveDerivedModel ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨X⟩)) :
+    (P : BoundedAboveDerivedModel ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨X⟩)) :
     ∃ f : P.complex ⟶ (X.obj 0).val, QuasiIso f := by
-  let e := P.iso ≪≫ derivedVertexLocalizationIso X
+  let e := P.iso ≪≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedVertexLocalizationIso X
   obtain ⟨f, hf⟩ := exists_cochainMap_of_isKProjective e.hom
   refine ⟨f, (DerivedCategory.isIso_Q_map_iff_quasiIso (ModuleCat R) f).mp ?_⟩
   rw [hf]
@@ -277,19 +277,19 @@ private theorem exists_projectiveModelToVertex
 
 /-- 完備導来テンソルのコホモロジーの上界は、両入力の上界の和で抑えられる。 -/
 theorem completedModuleTensor_isLE (p : ℕ) (X Y : DVertex R) (i j : ℤ)
-    (hX : ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨X⟩).IsLE i)
-    (hY : ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨Y⟩).IsLE j) :
-    ((derivedInfinityHomotopyEquivalence R).functor.obj
+    (hX : ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨X⟩).IsLE i)
+    (hY : ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨Y⟩).IsLE j) :
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨completedModuleTensor p R X Y⟩).IsLE (i + j) := by
-  let e := derivedInfinityHomotopyEquivalence R
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R
   have := hX
   have := hY
   let P := BoundedAboveDerivedModel.ofIsLE (e.functor.obj ⟨X⟩) i
   let Q := BoundedAboveDerivedModel.ofIsLE (e.functor.obj ⟨Y⟩) j
   obtain ⟨f, hf⟩ := exists_projectiveModelToVertex X P
   obtain ⟨g, hg⟩ := exists_projectiveModelToVertex Y Q
-  have := complexSemifree_isKProjective R (X.obj 0).property
-  have := complexSemifree_isKProjective R (Y.obj 0).property
+  have := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective R (X.obj 0).property
+  have := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective R (Y.obj 0).property
   have := cochainTensorMap_quasiIso_of_KProjective f g
   let h := asIso (DerivedCategory.Q.map (cochainTensorMap f g))
   let X' : DerivedCategory.Minus (ModuleCat R) := ⟨_, ⟨i, hX⟩⟩

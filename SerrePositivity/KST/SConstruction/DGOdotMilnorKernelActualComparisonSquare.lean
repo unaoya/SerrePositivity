@@ -52,7 +52,7 @@ def dgOdotMilnorKernelActualComparisonSquare :
 方針：同じ貼合せの第一制限を回収する。
 規約：元全二単体の等号。使われ方：上指定二単体の保持。 -/
 lemma dgOdotMilnorKernelActualComparisonSquare_upper :
-    squareTriangle 0 ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ dgOdotMilnorKernelActualComparisonSquare R d =
       dgOdotMilnorKernelNullUpperDiagram R d :=
   dgOdotTailKernelComparisonSquare_upper R d _ _
 
@@ -60,7 +60,7 @@ lemma dgOdotMilnorKernelActualComparisonSquare_upper :
 方針：同じ貼合せの第二制限を回収する。
 規約：対角移送で変更しない。使われ方：下指定二単体の保持。 -/
 lemma dgOdotMilnorKernelActualComparisonSquare_lower :
-    squareTriangle 1 ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ dgOdotMilnorKernelActualComparisonSquare R d =
       dgOdotTailKernelLiftTriangle R d :=
   dgOdotTailKernelComparisonSquare_lower R d _ _
 
@@ -68,14 +68,14 @@ lemma dgOdotMilnorKernelActualComparisonSquare_lower :
 方針：元上下全二単体の境界を回収する。
 規約：四辺の全一単体を保持。使われ方：実右零化面との共有辺。 -/
 lemma dgOdotMilnorKernelActualComparisonSquare_edges :
-    squareBottomEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge ∧
-      squareRightEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge ∧
-      squareLeftEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotMilnorKernelNullFactorInputMap R d)).edge ∧
-      squareTopEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgIdentityHomGluingNullInputMap R (U))).edge := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorKernelNullFactorInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgOdotMilnorKernelActualComparisonSquare R d =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R (U))).edge := by
   have hL := dgOdotTailKernelComparisonSquare_lower_edges R d
     (dgOdotMilnorKernelNullUpperDiagram R d) (dgOdotMilnorKernelNullUpperDiagram_diagonal R d)
   have hU := dgOdotTailKernelComparisonSquare_upper_edges R d
@@ -90,8 +90,8 @@ lemma dgOdotMilnorKernelActualComparisonSquare_edges :
 方針：K-S2 の元頂点回収を使用する。
 規約：ν 同値だけでなく頂点等号。使われ方：ActualRectangleInput.kernel_vertex。 -/
 lemma dgOdotMilnorKernelActualComparisonSquare_kernel_vertex :
-    squareVertex (dgOdotMilnorKernelActualComparisonSquare R d) 0 0 =
-      coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgOdotMilnorKernelActualComparisonSquare R d) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d) :=
   dgOdotTailKernelComparisonSquare_kernel_vertex R d _ _
 
 end SerrePositivity.KST.SConstruction

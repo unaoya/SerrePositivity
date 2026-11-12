@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CospanLoopWeights
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSections
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedSections
 public import SerrePositivity.KST.Spectra.PathContractibility
 
 /-!
@@ -17,7 +17,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra
 
 /-- 点を両端とし、両構造射を基点へ送る係数 cospan。 -/
@@ -27,16 +27,16 @@ def loopCoefficient (Y : PointedSimplicialSet.{u}) : AsSmall.{u} WalkingCospan �
 
 /-- 区間の end の実際の中央射影を uncurry した普遍評価族。 -/
 def loopIntervalEndFamily (Y : PointedSimplicialSet.{u}) :
-    (Δ[1] : SSet.{u}) ⊗ weightedSections loopIntervalWeight (loopCoefficient Y) ⟶ Y.right :=
-  (weightedSectionsUncurry (𝟙 (weightedSections loopIntervalWeight (loopCoefficient Y)))).app
+    (Δ[1] : SSet.{u}) ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y) ⟶ Y.right :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y)))).app
     (AsSmall.up.obj .one)
 
 /-- 左端での普遍評価族は、標的の基点で定数。 -/
 lemma loopIntervalEndFamily_left (Y : PointedSimplicialSet.{u}) :
     (stdSimplex.δ (1 : Fin 2) ▷ _) ≫ loopIntervalEndFamily Y =
       SSet.const Y.basepoint := by
-  have h := (weightedSectionsUncurry
-    (𝟙 (weightedSections loopIntervalWeight (loopCoefficient Y)))).naturality
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y)))).naturality
       (AsSmall.up.map WalkingCospan.Hom.inl)
   change (stdSimplex.δ (1 : Fin 2) ▷ _) ≫ loopIntervalEndFamily Y =
     _ ≫ SSet.const Y.basepoint at h
@@ -46,8 +46,8 @@ lemma loopIntervalEndFamily_left (Y : PointedSimplicialSet.{u}) :
 lemma loopIntervalEndFamily_right (Y : PointedSimplicialSet.{u}) :
     (stdSimplex.δ (0 : Fin 2) ▷ _) ≫ loopIntervalEndFamily Y =
       SSet.const Y.basepoint := by
-  have h := (weightedSectionsUncurry
-    (𝟙 (weightedSections loopIntervalWeight (loopCoefficient Y)))).naturality
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y)))).naturality
       (AsSmall.up.map WalkingCospan.Hom.inr)
   change (stdSimplex.δ (0 : Fin 2) ▷ _) ≫ loopIntervalEndFamily Y =
     _ ≫ SSet.const Y.basepoint at h
@@ -58,8 +58,8 @@ def loopIntervalEndLift (Y : PointedSimplicialSet.{u}) {P : SSet.{u}}
     (a : (Δ[1] : SSet.{u}) ⊗ P ⟶ Y.right)
     (h₀ : (stdSimplex.δ (1 : Fin 2) ▷ P) ≫ a = SSet.const Y.basepoint)
     (h₁ : (stdSimplex.δ (0 : Fin 2) ▷ P) ≫ a = SSet.const Y.basepoint) :
-    P ⟶ weightedSections loopIntervalWeight (loopCoefficient Y) :=
-  weightedSectionsLift {
+    P ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift {
     app i := match i with
       | ⟨none⟩ => a
       | ⟨some .left⟩ => stdSimplex.isTerminalObj₀.from _
@@ -83,17 +83,17 @@ def loopIntervalEndLift (Y : PointedSimplicialSet.{u}) {P : SSet.{u}}
 lemma loopIntervalEndLift_central (Y : PointedSimplicialSet.{u}) {P : SSet.{u}}
     (a : (Δ[1] : SSet.{u}) ⊗ P ⟶ Y.right) (h₀ h₁) :
     loopIntervalEndLift Y a h₀ h₁ ≫
-        weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) =
       curry a :=
-  weightedSectionsLift_π _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_π _ _
 
 /-- 両端の係数が一点なので、区間 end への射は中央射影で決まる。 -/
 lemma loopIntervalEnd_hom_ext (Y : PointedSimplicialSet.{u}) {P : SSet.{u}}
-    {a b : P ⟶ weightedSections loopIntervalWeight (loopCoefficient Y)}
-    (h : a ≫ weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) =
-      b ≫ weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one)) :
+    {a b : P ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections loopIntervalWeight (loopCoefficient Y)}
+    (h : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one) =
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ loopIntervalWeight (loopCoefficient Y) (AsSmall.up.obj .one)) :
     a = b := by
-  apply weightedSections_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   rintro ⟨i⟩
   cases i with
   | none => exact h

@@ -1,9 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSourceReplacement
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanSourceReplacement
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Types.Limits
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 元の anodyne 局所化の同型から Kan 標的による弱同値への判定
@@ -28,7 +29,7 @@ namespace SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 open CategoryTheory Limits MonoidalClosed Opposite SSet
 open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 
-/-- 概要：固定した標的への元の写像空間の π₀ は反変関手（Kerodon §3.1.7）。
+/-- 概要：固定した標的への元の写像空間の π₀ は反変関手（Kerodon §3.1.7（Tag 00U1））。
 方針：元の内部 Hom の前合成と π₀ の恒等・合成則を使う。
 規約：全対象と元の前合成を保持する。
 使われ方：局所化における反転性の Kan 標的による検査。 -/
@@ -47,7 +48,7 @@ def homComponents (Z : SSet.{v}) : SSet.{v}ᵒᵖ ⥤ Type v where
       SSet.mapπ₀ ((pre g.unop).app Z) (SSet.mapπ₀ ((pre f.unop).app Z) x)
     rw [pre_map, NatTrans.comp_app, SSet.mapπ₀_comp_apply]
 
-/-- 概要：Kan 標的の同じ反変 π₀ は anodyne 射を反転（Kerodon §3.1.7）。
+/-- 概要：Kan 標的の同じ反変 π₀ は anodyne 射を反転（Kerodon §3.1.7（Tag 00U1））。
 方針：Kan 標的への前合成の実際のホモトピー同値から全単射を得る。
 規約：モデル構造や始域の充填性は要求しない。
 使われ方：元の anodyne 局所化からの持ち上げ。 -/
@@ -56,16 +57,17 @@ lemma homComponents_inverts (Z : SSet.{v}) [KanComplex Z] :
   intro A B f hf
   have : IsIso ((homComponents Z).map f.op) :=
     (isIso_iff_bijective _).mpr
-      (HomotopyLimits.homotopyEquivalence_pre_of_anodyne f hf Z).mapPiZero_bijective
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.homotopyEquivalence_pre_of_anodyne f hf Z).mapPiZero_bijective
   change IsIso (((homComponents Z).map f.op).op)
   infer_instance
 
-/-- 概要：anodyne 局所化の同じ射の同型性は弱ホモトピー同値を与える（Kerodon §3.1.7）。
+/-- 概要：anodyne 局所化の同じ射の同型性は弱ホモトピー同値を与える（Kerodon §3.1.7（Tag 00U1））。
 方針：元の局所化の普遍性を全 Kan 標的の反変 π₀ へ適用する。
 規約：元の射の両端に Kan 性を要求しない。
 使われ方：Quillen A の弱可縮な slice 条件への接続。 -/
+@[kerodon 00UP, kerodon 00ZH, kerodon 00ZJ, kerodon 0104]
 lemma isWeakHomotopyEquivalence {A B : SSet.{v}} (f : A ⟶ B)
-    (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : IsWeakHomotopyEquivalence f := by
+    (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f := by
   intro Z hZ
   have : IsIso (((homComponents Z).map f.op).op) :=
     AnodyneHomotopy.map_isIso_of_anodyneQ_isIso (homComponents Z).rightOp
@@ -79,7 +81,7 @@ lemma isWeakHomotopyEquivalence {A B : SSet.{v}} (f : A ⟶ B)
 使われ方：全 comma 圏の可縮性を slice の条件へ移す。 -/
 lemma isWeaklyContractible (K : SSet.{v})
     (hK : IsIso (AnodyneHomotopy.anodyneQ.map (SSet.stdSimplex.isTerminalObj₀.from K))) :
-    IsWeaklyContractible K := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible K := by
   have he : SSet.stdSimplex.isTerminalObj₀.from K ≫
       (SSet.stdSimplex.isTerminalObj₀.uniqueUpToIso terminalIsTerminal).hom = terminal.from K :=
     terminal.hom_ext _ _

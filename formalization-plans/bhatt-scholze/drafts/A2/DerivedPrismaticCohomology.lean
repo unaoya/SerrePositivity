@@ -6,10 +6,11 @@ public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
 
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Core.UniverseSquareHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseSquareHom
 
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Basic
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 
 -- 本ファイルは drafts/A2/AnimatedAlgebra.lean、drafts/A0/{PrismaticSite,CechAlexander}.lean、drafts/Sheaves/CAlgValued.lean、
 -- drafts/Shared/CosimplicialEInfinity.lean、drafts/DerivedGeneral/{CompletionFunctor,ScalarRestriction}.lean を import する。
@@ -46,7 +47,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity
-open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.DerivedCompletion
 open SerrePositivity.EInfinity.Perfectoidization
 open SerrePositivity.BhattScholze.PerfectoidizationInterface
 attribute [local instance] HasDerivedCategory.standard
@@ -108,7 +109,7 @@ abbrev polyStructure (n : ℕ) := Sheaves.ringPresheafToCAlg (E := E) A (polyStr
 
 abbrev polyTopology (n : ℕ) := flatTopology P (polyCompletion P n) (polyCutoff P n)
 
-theorem coefficientPresentable : F2.Presentable.IsPresentable (E.CAlg A) := E.presentable A
+theorem coefficientPresentable : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A) := E.presentable A
 
 abbrev polySections (n : ℕ) :=
   Sheaves.derivedGlobalSectionsCAlg (E := E) (polyTopology P n) A

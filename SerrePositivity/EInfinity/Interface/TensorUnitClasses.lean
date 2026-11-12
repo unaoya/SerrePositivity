@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.TensorLegs
-public import SerrePositivity.InfinityCategories.Core.FullyFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 
 /-!
 # 離散基底代数からの単位の類
@@ -28,7 +28,7 @@ def baseRingAlgebra : RingAlgebra S := Under.mk (𝟙 (CommRingCat.of S))
 
 /-- 基底代数の台の加群は、基底環の正則加群。 -/
 def baseRingAlgebraModuleIso :
-    (discreteAlgebraModule S).obj (baseRingAlgebra S) ≅ ModuleCat.of S S :=
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule S).obj (baseRingAlgebra S) ≅ ModuleCat.of S S :=
   LinearEquiv.toModuleIso
     { toFun := fun x => x
       invFun := fun x => x
@@ -39,11 +39,11 @@ def baseRingAlgebraModuleIso :
 
 /-- 抽象 CAlg の離散基底環の指定頂点。 -/
 def coreUnitVertex (E : EInfinityCore.{u}) : (E.CAlg S) _⦋0⦌ :=
-  atVertex (E.discrete S) (nerveVertex (baseRingAlgebra S))
+  atVertex (E.discrete S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (baseRingAlgebra S))
 
 /-- 通常のホモトピー圏上の零次ホモロジー。 -/
 abbrev vertexHZeroFunctor :=
-  (homotopyCategoryBridge (derivedInfinityCategory S)).inverse ⋙ derivedInfinityHomologyFunctor S 0
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyCategoryBridge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S)).inverse ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor S 0
 
 /-- 離散基底環からの指定比較は、その台の H⁰ を基底環と同定する。 -/
 def coreUnitHZeroIso (E : EInfinityCore.{u}) :
@@ -51,17 +51,17 @@ def coreUnitHZeroIso (E : EInfinityCore.{u}) :
       (SSet.HomotopyCategory.mk (atVertex (E.forget S) (coreUnitVertex S E))) ≅
         ModuleCat.of S S :=
   (vertexHZeroFunctor S).mapIso
-    ((E.discrete_forget S).app (nerveVertex (baseRingAlgebra S))) ≪≫
+    ((E.discrete_forget S).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (baseRingAlgebra S))) ≪≫
   vertexHZeroRepresentativeIso S
-    (atVertex (discreteEmbedding S) (nerveVertex (baseRingAlgebra S))) ≪≫
-  discreteEmbeddingHomologyZeroIso S (baseRingAlgebra S) ≪≫ baseRingAlgebraModuleIso S
+    (atVertex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding S) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (baseRingAlgebra S))) ≪≫
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbeddingHomologyZeroIso S (baseRingAlgebra S) ≪≫ baseRingAlgebraModuleIso S
 
 /-- 単位代数からの射が定める、同じ具体的な代表の H⁰ の単位の類。 -/
 def coreUnitClass (E : EInfinityCore.{u}) (x : (E.CAlg S) _⦋0⦌)
     (h : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
       SSet.HomotopyCategory.mk x) :
     ModuleCat.of S S ⟶
-      (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val.homology 0 :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val.homology 0 :=
   (coreUnitHZeroIso S E).inv ≫
     (vertexHZeroFunctor S).map ((hoFunctor.map (E.forget S)).toFunctor.map h) ≫
       (vertexHZeroRepresentativeIso S (atVertex (E.forget S) x)).hom
@@ -71,7 +71,7 @@ def NormalizedTensorUnit (E : EInfinityCore.{u}) (x : (E.CAlg S) _⦋0⦌)
     (h : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
       SSet.HomotopyCategory.mk x)
     (unitX : 𝟙_ (Complex S) ⟶
-      (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val) : Prop :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val) : Prop :=
   (complexUnitHZeroIso S).inv ≫ HomologicalComplex.homologyMap unitX 0 = coreUnitClass S E x h
 
 end SerrePositivity.EInfinity

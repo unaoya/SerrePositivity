@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -22,22 +22,22 @@ lemma normalizedTensorConeData_pullback_hom_ordinary_zero {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (e : Fin (m + 1) ↪o Fin (n + 1))
     (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
     HEq (((normalizedTensorConeData A X Y c).pullback
-      (prependOrderHom e.toOrderHom)).hom I a b 0 hI ha hb hk)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)).hom I a b 0 hI ha hb hk)
       ((normalizedTensorConeData A X Y
         ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c)).hom
           I a b 0 hI ha hb hk) := by
-  let α := prependOrderHom e.toOrderHom
+  let α := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom
   have hi : Set.InjOn α (I : Set (Fin (m + 2))) := (prepend_injective e).injOn
-  have hII := Index.image_two hi hI
-  have haI := Index.image_min α.monotone
+  have hII := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two hi hI
+  have haI := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min α.monotone
     (show IsLeast (I : Set (Fin (m + 2))) a by rw [ha]; exact I.isLeast_min' _)
-    (Index.nonempty hII)
-  have hbI := Index.image_max α.monotone
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hII)
+  have hbI := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max α.monotone
     (show IsGreatest (I : Set (Fin (m + 2))) b by rw [hb]; exact I.isGreatest_max' _)
-    (Index.nonempty hII)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hII)
   have hkI : (0 : ℤ) = 2 - ((I.image α).card : ℤ) := by
     rw [Finset.card_image_of_injOn hi]
     exact hk
@@ -46,7 +46,7 @@ lemma normalizedTensorConeData_pullback_hom_ordinary_zero {n m : ℕ}
     intro h
     exact ha0 (Fin.le_zero_iff.mp (h ▸ hab))
   have haI0 : α a ≠ 0 := fun h => ha0 ((prepend_eq_zero_iff e a).mp h)
-  rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi]
   have hl := normalizedTensorConeData_hom_ordinary_closed A X Y c (I.image α)
     (α a) (α b) hII haI hbI hkI haI0 (α.monotone hab)
   have hr := normalizedTensorConeData_hom_ordinary_closed A X Y

@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ因子分解条件の実族は元の三面のホーン全体を厳密回収する。
@@ -25,7 +25,7 @@ variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 規約：元の零中間二胞体に限る利用側の照合であり、一般充填 API ではない。
 使われ方：構成済み F を元の固定三面 fiber へ置く。 -/
 theorem zeroMiddleFactorizationTetraCondition_horn
-    (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u})
+    (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
     (hF : zeroMiddleFactorizationTetraCondition s hZ K F) :
     ((horn 3 (2 : Fin 4)).ι ▷ K) ≫ F =
       fst (horn 3 (2 : Fin 4) : SSet.{u + 1}) K ≫ zeroMiddleFullSKanHorn s hZ := by
@@ -66,7 +66,7 @@ theorem zeroMiddleFactorizationTetra_horn :
 規約：供給命題に条件付きで、既存充填は保持する。
 使われ方：制御上側を使う前に必要な全族の比較。 -/
 def zeroMiddleFactorizationFixedHornComparison :
-    VertexIso (zeroMiddleFixedHornOriginalFamilyVertex s hZ K)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (zeroMiddleFixedHornOriginalFamilyVertex s hZ K)
       (zeroMiddleFixedHornFamilyVertex s hZ K
         (zeroMiddleFactorizationTetra s hZ K h9b)
         (zeroMiddleFactorizationTetra_horn s hZ K h9b)) :=
@@ -76,7 +76,7 @@ def zeroMiddleFactorizationFixedHornComparison :
 方針：固定三面 fiber 内の比較から上側へ制限する既存の実ホモトピーを使う。
 規約：全境界固定の同じ比較を保持し、長 Hom の照合は因子分解条件に残す。
 使われ方：K-6 c4 の既存上側を保つ条件付きの全族同型。 -/
-def zeroMiddleFactorizationUpperIso : FunctorIso
+def zeroMiddleFactorizationUpperIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫
       fst (Δ[3] : SSet.{u + 1}) K ≫ zeroMiddleFullSKanTetrahedron s hZ)
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫ zeroMiddleFactorizationTetra s hZ K h9b) :=
@@ -87,10 +87,10 @@ def zeroMiddleFactorizationUpperIso : FunctorIso
 方針：同じ実三単体族とその元のホーン回収を実三角柱比較へ渡す。
 規約：共有対角と元の可逆縦辺を保持する同じ実ホモトピーから得る。
 使われ方：K-6 c4 から元の Verdier 上側への受け渡し。 -/
-def zeroMiddleFactorizationPrismIso : FunctorIso
+def zeroMiddleFactorizationPrismIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((stdSimplex.δ (2 : Fin 4) ▷ K) ≫ zeroMiddleFactorizationTetra s hZ K h9b)
     (fst (Δ[2] : SSet.{u + 1}) K ≫
-      SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s)) :=
   zeroMiddleControlledPrismFamilyIso s hZ K _
     (zeroMiddleFactorizationTetra_horn s hZ K h9b)

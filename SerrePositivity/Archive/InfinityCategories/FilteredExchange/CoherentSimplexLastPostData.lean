@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparison
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomComparison
 
 /-!
 概要：coherent 単体の最後の対象だけを指定射で後合成する Hom データ。

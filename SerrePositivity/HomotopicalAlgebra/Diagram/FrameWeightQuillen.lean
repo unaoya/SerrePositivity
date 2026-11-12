@@ -24,7 +24,7 @@ namespace SerrePositivity.DiagramModel.FrameWeightRealization
 variable (K : Type w) [SmallCategory K]
   {C : Type u} [Category.{w} C] [HasColimitsOfSize.{w, w} C] [ModelCategory C]
   [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (A : K ⥤ SimplexCategory ⥤ C)
@@ -45,12 +45,12 @@ lemma hom_isRightQuillen :
   constructor
   · intro X Y p hp k
     have := cosimplicialHom_isRightQuillen hcof hfib (A.obj k.unop) (hA k.unop) (hconst k.unop)
-    exact IsRightQuillen.map_fibrations (R := cosimplicialHom (A.obj k.unop)) p hp
+    exact IsRightQuillen.map_fibrations (R := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (A.obj k.unop)) p hp
   · intro X Y p hp
     have hk (k : Kᵒᵖ) : trivialFibrations SSet.{w}
-        ((cosimplicialHom (A.obj k.unop)).map p) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (A.obj k.unop)).map p) := by
       have := cosimplicialHom_isRightQuillen hcof hfib (A.obj k.unop) (hA k.unop) (hconst k.unop)
-      exact IsRightQuillen.map_trivialFibrations (R := cosimplicialHom (A.obj k.unop)) p hp
+      exact IsRightQuillen.map_trivialFibrations (R := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (A.obj k.unop)) p hp
     exact ⟨fun k => (hk k).1, fun k => (hk k).2⟩
 
 lemma isLeftQuillen :

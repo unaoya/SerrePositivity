@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.ExInfinityMonoidal
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityMonoidal
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!
@@ -18,16 +18,16 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory SerrePositivity.KST.Comparison SerrePositivity.InfinityCategories
+open CategoryTheory SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 
-lemma exInfinity_map_weak {X Y : SSet.{u}} (f : X ⟶ Y) (hf : IsWeakHomotopyEquivalence f) :
-    IsWeakHomotopyEquivalence (exInfinity.map f) := by
-  have hu (K : SSet.{u}) : IsWeakHomotopyEquivalence (exInfinityUnit.app K) :=
+lemma exInfinity_map_weak {X Y : SSet.{u}} (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f) := by
+  have hu (K : SSet.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app K) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne K))
-  have hn : f ≫ exInfinityUnit.app Y = exInfinityUnit.app X ≫ exInfinity.map f :=
-    exInfinityUnit.naturality f
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne K))
+  have hn : f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality f
   apply (hu X).cancel_left
   rw [← hn]
   exact hf.comp (hu Y)

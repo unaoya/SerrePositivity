@@ -13,9 +13,9 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
-  {P : Type w} [DGCategory R P] (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  {P : Type w} [DGCategory R P] (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 
@@ -40,8 +40,8 @@ lemma dgModuleNaturalConeConnecting_naturality (x y : P) :
 /-- 概要：元 connecting 射を束ねた全次数厳密自然変換。
 方針：元の全 Hom 自然性を同じ閉零射族へ適用する。
 規約：成分を選び直さない。使われ方：同じ connecting cone の全 dg 関手。 -/
-def dgModuleNaturalConeConnecting : StrictNatTrans (T) (F.comp (moduleShiftDG R D 1)) :=
-  dgModuleStrictNatTransOfHomNaturality R D (fun x => moduleConeConnecting R D (a x))
+def dgModuleNaturalConeConnecting : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (T) (F.comp (moduleShiftDG R D 1)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D (fun x => moduleConeConnecting R D (a x))
     (dgModuleNaturalConeConnecting_naturality R D F G η)
 
 /-- 概要：実 cone 構成へ渡す閉射は元 connecting 射そのもの。

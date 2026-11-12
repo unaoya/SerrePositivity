@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 namespace SerrePositivity.EInfinity
 open CategoryTheory MonoidalCategory EnrichedCategory
-open SimplicialLocalization SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SimplicialLocalization SerrePositivity.SimplicialModel
 
 /-- 単位からの点を左に合成する実際の豊穣 Hom の射。 -/
 def enrichedPointPrecompose {C : Type v} [EnrichedCategory SSet.{u} C]
@@ -47,32 +47,32 @@ lemma simplicialHomWhiskerLeft_op {C : Type v} [Category.{u} C]
   rfl
 
 /-- 指定された厳密射の実際の Kan Hom への前合成。 -/
-def kanStrictPrecompose (C : RelativeCategory.{u}) {X Y : C.category}
+def kanStrictPrecompose (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
     (f : X ⟶ Y) (Z : C.category) :
-    exInfinity.obj (localizationHom C Y Z) ⟶ exInfinity.obj (localizationHom C X Z) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (localizationHom C Y Z) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (localizationHom C X Z) :=
   enrichedPointPrecompose (C := KanLocalizationObjects C)
-    (localizationArrowPoint C f ≫ exInfinityUnit.app _) Z
+    (localizationArrowPoint C f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) Z
 
 /-- 実際の前合成と、元の前合成の Ex∞ 像は同じ局所化された射。 -/
-lemma kanStrictPrecompose_localized (C : RelativeCategory.{u}) {X Y : C.category}
+lemma kanStrictPrecompose_localized (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
     (f : X ⟶ Y) (Z : C.category) :
     AnodyneHomotopy.anodyneQ.map (kanStrictPrecompose C f Z) =
-      AnodyneHomotopy.anodyneQ.map (exInfinity.map (localizationPrecompose C Z f)) := by
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationPrecompose C Z f)) := by
   let Q := AnodyneHomotopy.anodyneQ
   have := SSet.anodyneExtensions.Q_inverts
-    (exInfinityUnit.app (localizationHom C Y Z)) (localizationHomKanUnit_anodyne C Y Z)
-  apply (cancel_epi (Q.map (exInfinityUnit.app (localizationHom C Y Z)))).mp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)) (localizationHomKanUnit_anodyne C Y Z)
+  apply (cancel_epi (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z)))).mp
   rw [← Q.map_comp, ← Q.map_comp]
   apply congrArg Q.map
   have hn := enrichedPointPrecompose_naturality (kanLocalizationUnit C)
     (X := (show LocalizationObjects C from X)) (Y := (show LocalizationObjects C from Y))
     (localizationArrowPoint C f) (show LocalizationObjects C from Z)
-  change exInfinityUnit.app (localizationHom C Y Z) ≫ kanStrictPrecompose C f Z =
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C Y Z) ≫ kanStrictPrecompose C f Z =
     ((λ_ (localizationHom C Y Z)).inv ≫ localizationArrowPoint C f ▷ _ ≫
-      localizationComposition C X Y Z) ≫ exInfinityUnit.app (localizationHom C X Z) at hn
+      localizationComposition C X Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom C X Z) at hn
   exact hn.trans (by
     simpa only [localizationPrecompose, tensorHom_def, MonoidalCategory.whiskerLeft_id,
       Category.comp_id, Functor.id_map] using
-        (exInfinityUnit.naturality (localizationPrecompose C Z f)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (localizationPrecompose C Z f)))
 
 end SerrePositivity.EInfinity

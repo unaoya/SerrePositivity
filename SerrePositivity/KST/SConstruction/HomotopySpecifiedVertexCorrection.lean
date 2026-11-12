@@ -34,29 +34,29 @@ lemma exists_homotopy_specified_vertex_edges {A X : SSet.{u}} [Quasicategory X]
     (e : ∀ a : A _⦋0⦌, X.Edge (F.app (Opposite.op ⦋0⦌) a)
       (G.app (Opposite.op ⦋0⦌) a))
     (h : ∀ a, SSet.Truncated.HomotopyCategory.homMk
-      (simplicialHomotopyVertexEdge H a).toTruncated =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H a).toTruncated =
         SSet.Truncated.HomotopyCategory.homMk (e a).toTruncated) :
     ∃ H' : SSet.Homotopy F G,
-      (∀ a, (simplicialHomotopyVertexEdge H' a).edge = (e a).edge) ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H') =
-        SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) := by
-  let hx (a : A _⦋0⦌) : (vertexDiscreteι A ≫ F).app (Opposite.op ⦋0⦌) a =
-      F.app (Opposite.op ⦋0⦌) a := congrArg (F.app _) (pinchedConstant_zero a)
-  let hy (a : A _⦋0⦌) : (vertexDiscreteι A ≫ G).app (Opposite.op ⦋0⦌) a =
-      G.app (Opposite.op ⦋0⦌) a := congrArg (G.app _) (pinchedConstant_zero a)
+      (∀ a, (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H' a).edge = (e a).edge) ∧
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H') =
+        SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) := by
+  let hx (a : A _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.vertexDiscreteι A ≫ F).app (Opposite.op ⦋0⦌) a =
+      F.app (Opposite.op ⦋0⦌) a := congrArg (F.app _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero a)
+  let hy (a : A _⦋0⦌) : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.vertexDiscreteι A ≫ G).app (Opposite.op ⦋0⦌) a =
+      G.app (Opposite.op ⦋0⦌) a := congrArg (G.app _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero a)
   let e' (a : A _⦋0⦌) := (e a).ofEq (hx a).symm (hy a).symm
   apply exists_vertexDiscrete_homotopy_correction H e'
   intro a
   let l := SSet.Edge.ofTruncated (X := X)
-    ((functorEdgeOfSimplicialHomotopy (functorHomotopyPrecomp H (vertexDiscreteι A))).map
-      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := A) (X := X) a)))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.vertexDiscreteι A))).map
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate (A := A) (X := X) a)))
   let k := SSet.Edge.ofTruncated (X := X)
     ((vertexDiscreteSpecifiedEdge _ _ e').map
-      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kan.vertexDiscreteEvaluate (A := A) (X := X) a)))
+      ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertexDiscreteEvaluate (A := A) (X := X) a)))
   change SSet.Truncated.HomotopyCategory.homMk l.toTruncated =
     SSet.Truncated.HomotopyCategory.homMk k.toTruncated
   apply (diagramEdge_homMk_ofEq_iff l k (hx a) (hy a)).mp
-  have hl : l.ofEq (hx a) (hy a) = simplicialHomotopyVertexEdge H a := by
+  have hl : l.ofEq (hx a) (hy a) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H a := by
     apply SSet.Edge.ext
     exact vertexDiscrete_restriction_edge_evaluate H a
   have hk : k.ofEq (hx a) (hy a) = e a := by

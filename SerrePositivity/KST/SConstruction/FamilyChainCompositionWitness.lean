@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FamilyHomotopyChains
-public import SerrePositivity.InfinityCategories.Kan.KanMappingComposition
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 元の全区間を記録する有限列の実合成証人
 概要：有限補正列を一本の実円柱へまとめるとき、元の各区間と各合成三角形を保存する。
@@ -22,15 +22,15 @@ open scoped Simplicial
 /-- 元の各区間と各実合成三角形を全て保持する、有限列の合成木。 -/
 inductive FamilyChainCompositionWitness {U E : SSet.{u}} :
     {f g : U ⟶ E} → FamilyHomotopyChain f g → SSet.Homotopy f g → Type u
-  | nil (f : U ⟶ E) : FamilyChainCompositionWitness (.nil f) (functorHomotopyRefl f)
+  | nil (f : U ⟶ E) : FamilyChainCompositionWitness (.nil f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl f)
   | cons {f g h : U ⟶ E} (a : SSet.Homotopy f g) (tail : FamilyHomotopyChain g h)
       {tailComposite : SSet.Homotopy g h}
       (tailWitness : FamilyChainCompositionWitness tail tailComposite)
       {composite : SSet.Homotopy f h}
       (triangle : SSet.Edge.CompStruct
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy tailComposite))
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy composite))) :
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a))
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy tailComposite))
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy composite))) :
       FamilyChainCompositionWitness (.cons a tail) composite
 
 /-- 合成木に記録した元の全実区間を順に取り出す。 -/

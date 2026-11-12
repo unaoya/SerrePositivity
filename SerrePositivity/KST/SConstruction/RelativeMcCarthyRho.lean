@@ -73,7 +73,7 @@ lemma relativeMcCarthyRhoFiberMap_quotient {X : StableModel.{u}} (A B : ClosedSt
       fst (relativeCofiberSubobjectLeftFiber A B a) (Δ[1] : SSet.{u}) ≫
         relativeCofiberLeftFiberQuotient A B a := by
   have : Mono (closedStableInclusion B).val :=
-    inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier B.predicate).ι)
+    inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier B.predicate).ι)
   apply (cancel_mono (objectSConstructionFunctor.map (closedStableInclusion B))).1
   rw [Category.assoc, ← relativeCofiberLeftFiberForget_quotient, ← Category.assoc,
     relativeMcCarthyRhoFiberMap_forget, Category.assoc, mcCarthyRhoFiberMap_quotient,

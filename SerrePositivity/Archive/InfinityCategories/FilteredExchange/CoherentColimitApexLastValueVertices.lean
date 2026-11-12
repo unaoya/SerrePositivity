@@ -5,8 +5,8 @@ SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexM
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexZeroValueAt
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedMorphismRatioTargetVertex
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalDiagramRestriction
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorIsoSquareIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalDiagramRestriction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorIsoSquareIdentity
 /-!
 概要：元の零面・最後指定対角値と比の三実頂点を、同じ最後射の値で照合する。
 方針：同じ中間係数の値と、一般の実辺での native 終点式を使う。

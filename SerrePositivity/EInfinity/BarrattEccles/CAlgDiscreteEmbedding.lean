@@ -26,15 +26,15 @@ def discreteCAlgEmbedding : nerve (CommAlgCat.{u} A) ⟶ CAlg_R A :=
   nerveMap (discreteAlgebraFunctor A) ≫ algebraCAlgSource A
 
 def discreteCAlgEmbedding_vertexIso (B : CommAlgCat.{u} A) :
-    VertexIso ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B))
       (discreteCAlgVertex A B) := by
-  change VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
     ((nerveMap (discreteAlgebraFunctor A)).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ B))) _
   rw [nerveMap_app_mk₀]
   exact algebraCAlgSource_vertexIso A ((discreteAlgebraFunctor A).obj B)
 
 def discreteCAlgEmbedding_forgetIso :
-    FunctorIso (discreteCAlgEmbedding A ≫ cAlgForgetDerived A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discreteCAlgEmbedding A ≫ cAlgForgetDerived A)
       (nerveMap (discreteAlgebraFunctor A) ≫ algebraCAlgReplacementNerve A ≫
         cofibrantAlgebraUnderlyingDerivedSource A) := by
   simpa only [discreteCAlgEmbedding, Category.assoc] using

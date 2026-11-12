@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorAugmentation
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Derived.StandardCofiberPullback
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StandardCofiberPullback
 
 /-!
 # 元の複体射の閉辺の回収と同じホモトピー同値の反転
@@ -21,40 +21,40 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomologicalComplex SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve DGNerve.HomotopyComparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexToClosed_edgeChainMap {P Q : Complex A} (f : P ⟶ Q) :
-    edgeChainMap (dgClosedEdge A (Complex A) ((complexToClosed A).map f)) = f := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeChainMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f)) = f := by
   change complexClosedHomEquiv A P Q
-    (edgeClosed (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) = f
-  rw [dgClosedEdge_closed]
+    (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) = f
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_closed]
   exact complexToClosed_map A f
 
 lemma complexToClosed_edge_invertible {P Q : Complex A} (f : P ⟶ Q)
     (hf : homotopyEquivalences (ModuleCat A) (.up ℤ) f) :
-    IsInvertibleEdge (X := dgNerve A (Complex A))
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map f)) := by
-  apply complex_edge_invertible_of_homotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f)) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complex_edge_invertible_of_homotopyEquivalence
   rw [complexToClosed_edgeChainMap]
   exact hf
 
 lemma complexToClosed_edge_id (X : Complex A) :
-    dgClosedEdge A (Complex A) ((complexToClosed A).map (𝟙 X)) =
-      Truncated.Edge.id (X := (truncation 2).obj (dgNerve A (Complex A))) (Simplex.vertex X) := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map (𝟙 X)) =
+      Truncated.Edge.id (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) := by
   rw [CategoryTheory.Functor.map_id]
-  have h := dgClosedEdge_edgeClosed A (Complex A)
-    (Truncated.Edge.id (X := (truncation 2).obj (dgNerve A (Complex A)))
-      (Simplex.vertex X))
-  have hi := edgeClosed_id (A := A) (D := Complex A) (Simplex.vertex X)
-  have hi' : edgeClosed (Truncated.Edge.id
-      (X := (truncation 2).obj (dgNerve A (Complex A))) (Simplex.vertex X)) =
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_edgeClosed A (Complex A)
+    (Truncated.Edge.id (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeClosed_id (A := A) (D := Complex A) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X)
+  have hi' : _root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed (Truncated.Edge.id
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X)) =
       𝟙 ((complexToClosed A).obj X) := hi
-  exact (congrArg (dgClosedEdge A (Complex A)) hi').symm.trans h
+  exact (congrArg (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)) hi').symm.trans h
 
 lemma normalizedTensorAugmentation_edge_invertible (X : Complex A) (n : SimplexCategory) :
-    IsInvertibleEdge (X := dgNerve A (Complex A)) (dgClosedEdge A (Complex A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
       ((complexToClosed A).map ((normalizedSimplexTensorAugmentation A X).app n))) :=
   complexToClosed_edge_invertible A _
     (normalizedSimplexTensorContraction A X n).homotopyEquivalences_hom

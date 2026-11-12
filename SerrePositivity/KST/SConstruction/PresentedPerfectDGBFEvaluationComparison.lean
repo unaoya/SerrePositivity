@@ -23,15 +23,15 @@ def presentedPerfectDGBFEvaluationEquivalence (C : PerfDGInput.{u, v} A) :
       (stableCategoryModel (presentedPerfectDGStableCategory A C))
       (perfectDGStableModel A C Set.univ) := by
   let e := presentedPerfectDGNerveEquivalence A C
-  let : IsExactFunctor e.inv :=
-    isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨presentedPerfectDGEvaluationStableMap A C,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor e.inv⟩, e.homInvIso, e.invHomIso⟩
 
 /-- 同じ完全同値の順方向は元の実 dg 評価の native nerve。 -/
 lemma presentedPerfectDGBFEvaluationEquivalence_hom (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGBFEvaluationEquivalence A C).hom.val =
-      dgNerve.map (presentedPerfectDGEvaluation A C) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A C) := rfl
 
 /-- 同じラベル付き Perf の旧実 BF K から、元の dgK への実評価射。 -/
 def presentedPerfectDGBFEvaluationKMap (C : PerfDGInput.{u, v} A) :

@@ -43,18 +43,18 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C}
 def rightFrameHammockUnitPoint (i : Fin 7) :
     ((𝟙_ SSet.{max u v}) ⟶ (rightFrameHammockFamilyDiagram q r i).obj Y) :=
   match i with
-  | 0 => SSet.const (ULift.up (f ≫ (rightFrameReplacementUnit r).app Y))
-  | 1 => SSet.const (ULift.up (f ≫ (rightFrameReplacementUnit r).app Y ≫
-      (rightFrameReplacementUnit r).app ((rightFrameReplacement r).obj Y)))
+  | 0 => SSet.const (ULift.up (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y))
+  | 1 => SSet.const (ULift.up (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).obj Y)))
   | 2 => SSet.const (ULift.up (q.augmentation.app ⦋0⦌ ≫
-      (f ≫ (rightFrameReplacementUnit r).app Y ≫
-        (rightFrameReplacementUnit r).app ((rightFrameReplacement r).obj Y))))
+      (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).obj Y))))
   | 3 => SSet.const (ULift.up (q.augmentation.app ⦋0⦌ ≫
-      (f ≫ (rightFrameReplacementUnit r).app Y)))
-  | 4 => SSet.const (nerveVertex (sourceFrameUnitElement q ⦋0⦌
-      (f ≫ (rightFrameReplacementUnit r).app Y)))
-  | 5 => arrowMap (weakEquivalences C) (f ≫ (rightFrameReplacementUnit r).app Y)
-  | 6 => arrowMap (weakEquivalences C) f
+      (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)))
+  | 4 => SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (sourceFrameUnitElement q ⦋0⦌
+      (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)))
+  | 5 => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
+  | 6 => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f
 
 /-- 概要：同じ置換単位による第一辺は元の射の同じ零単体を送る。
 方針：元の単位の自然性をその同じ成分自身へ適用する。
@@ -66,9 +66,9 @@ lemma rightFrameHammockUnitPoint_edge0 :
   rw [SSet.const_comp]
   apply congrArg SSet.const
   apply ULift.ext
-  change (f ≫ (rightFrameReplacementUnit r).app Y) ≫
-    (rightFrameReplacement r).map ((rightFrameReplacementUnit r).app Y) = _
-  have h := (rightFrameReplacementUnit r).naturality ((rightFrameReplacementUnit r).app Y)
+  change (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).map ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y) = _
+  have h := (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).naturality ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
   exact (Category.assoc _ _ _).trans (congrArg (f ≫ ·) h.symm)
 
 /-- 概要：右混合比較は同じ source augmentation の前合成へ送る。
@@ -91,8 +91,8 @@ lemma rightFrameHammockUnitPoint_edge2 :
   rw [SSet.const_comp]
   apply congrArg SSet.const
   apply ULift.ext
-  change (q.augmentation.app ⦋0⦌ ≫ (f ≫ (rightFrameReplacementUnit r).app Y)) ≫
-    (rightFrameReplacementUnit r).app ((rightFrameReplacement r).obj Y) = _
+  change (q.augmentation.app ⦋0⦌ ≫ (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacement r).obj Y) = _
   simp only [Category.assoc]
 
 /-- 概要：元の全要素 augmentation は同じ source 零単体を回収する。
@@ -115,18 +115,18 @@ lemma rightFrameHammockUnitPoint_edge4_Q :
         AnodyneHomotopy.anodyneQ.map (rightFrameHammockUnitPoint q r f 5) := by
   have h : rightFrameHammockUnitPoint q r f 4 ≫
       (rightFrameHammockFamilyEdge q r 4).app Y =
-        colimitRowMap (LeftRoof.obj (weakEquivalences C) (q.augmentation.app ⦋0⦌)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitRowMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj (weakEquivalences C) (q.augmentation.app ⦋0⦌)
           (q.augmentation_weakEquivalence ⦋0⦌)
-          (q.augmentation.app ⦋0⦌ ≫ (f ≫ (rightFrameReplacementUnit r).app Y))) := by
+          (q.augmentation.app ⦋0⦌ ≫ (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y))) := by
     simp only [rightFrameHammockUnitPoint]
     rw [SSet.const_comp]
-    rw [unitHom_eq_const (colimitRowMap (LeftRoof.obj (weakEquivalences C)
+    rw [unitHom_eq_const (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitRowMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.obj (weakEquivalences C)
       (q.augmentation.app ⦋0⦌) (q.augmentation_weakEquivalence ⦋0⦌)
-      (q.augmentation.app ⦋0⦌ ≫ (f ≫ (rightFrameReplacementUnit r).app Y))))]
+      (q.augmentation.app ⦋0⦌ ≫ (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y))))]
     apply congrArg SSet.const
-    exact sourceFrameUnitElement_roof_zero q ⦋0⦌ (f ≫ (rightFrameReplacementUnit r).app Y)
+    exact sourceFrameUnitElement_roof_zero q ⦋0⦌ (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
   rw [h]
-  exact sourceFrameUnitRoof_Q q ⦋0⦌ (f ≫ (rightFrameReplacementUnit r).app Y)
+  exact sourceFrameUnitRoof_Q q ⦋0⦌ (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y)
 
 /-- 概要：最後の置換単位による後合成は元の合成射そのもの。
 方針：元の二本の forward 射の hammock 合成を回収する。
@@ -139,8 +139,8 @@ lemma rightFrameHammockUnitPoint_edge5 :
   apply ConcreteCategory.hom_ext
   intro x
   cases x
-  exact ForwardPair.composePoint_arrowPoint (weakEquivalences C) f
-    ((rightFrameReplacementUnit r).app Y) n
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardPairComposition.composePoint_arrowPoint (weakEquivalences C) f
+    ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameReplacementUnit r).app Y) n
 
 /-- 概要：同じ六つの辺は元の射の零単体を各段階で反転後に厳密に追跡する。
 方針：五つの実等式と同じ実 roof 収縮をまとめる。

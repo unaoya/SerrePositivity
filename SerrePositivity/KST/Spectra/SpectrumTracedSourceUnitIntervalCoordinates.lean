@@ -25,14 +25,14 @@ lemma basedTranspose_pre_outer_path {U W A C : PointedSimplicialSet.{u}}
     {f g : U ⟶ PointedObject.basedHom A C}
     (H : VerticalPath (PointedObject.toPoint _) f g) (i : W ⟶ U) :
     ((H.pre i).basedTranspose).path =
-      (H.basedTranspose.basedPost (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i C)).path := by
-  have hn := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_left i A C
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (PointedObject.basedHom A C) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso W A C).hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U A C).hom ≫ PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i C) at hn
-  change (H.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (PointedObject.basedHom A C)).right) ≫ _ =
-    (H.path ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso U A C).hom.right) ≫ _
+      (H.basedTranspose.basedPost (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i C)).path := by
+  have hn := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeNaturality.natural_pre_left i A C
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, PointedObject.ihom_obj_eq_basedHom] at hn
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (PointedObject.basedHom A C) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso W A C).hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso U A C).hom ≫ PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i C) at hn
+  change (H.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (PointedObject.basedHom A C)).right) ≫ _ =
+    (H.path ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso U A C).hom.right) ≫ _
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun k => H.path ≫ k.right) hn
 
@@ -51,7 +51,7 @@ def tracedSourceUnitStageInterval (n : ℕ) :=
 lemma tracedSourceUnitParameterTriangle_one_stage (n : ℕ) :
     stdSimplex.δ (1 : Fin 3) ≫ tracedSourceUnitParameterTriangle X Y φ n =
       ((tracedSourceUnitStageInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [tracedSourceUnitParameterTriangle_one,
     PointedMapping.VerticalPath.basedPreAction_action_path]
@@ -63,7 +63,7 @@ lemma tracedSourceUnitParameterTriangle_one_stage (n : ℕ) :
   let p := (KanSequence.signedLoopParameterHom
     (homOfParameterFamily X Y.toKanSequence A φ)).app (n + 1)
   have hp := PointedMapping.VerticalPath.pre_basedPost_path H (X.sigma n) p
-  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right) hp.symm
   change (((H.pre (X.sigma n)).basedPost p).basedTranspose).path =
     (((H.basedPost p).pre (X.sigma n)).basedTranspose).path at ht

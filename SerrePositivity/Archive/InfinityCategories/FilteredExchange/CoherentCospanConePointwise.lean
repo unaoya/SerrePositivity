@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationPointTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationCospanCone
-public import SerrePositivity.InfinityCategories.Core.Square
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Square
 
 /-!
 概要：元の coherent cospan 錐の二全三角形から各点の native な錐を構成する。

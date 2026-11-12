@@ -67,13 +67,13 @@ lemma restrictedFrame_map_weak {s t : Under i} (f : s ⟶ t) :
 lemma fixedSource_map_weak {s t : Under i} (f : s ⟶ t) :
     W ((fixedSource U i).map f) := W.id_mem (U.obj i)
 
-def upperDiagram : Under i ⥤ Zigzag W Precompose.word (U.obj i) Y :=
-  Precompose.upperDiagram W (fixedSource U i) (restrictedFrame U i) (𝟙 _)
+def upperDiagram : Under i ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word (U.obj i) Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.upperDiagram W (fixedSource U i) (restrictedFrame U i) (𝟙 _)
     (fun _ => W.id_mem (U.obj i)) (inclusion U i) (restrictedRightLeg U σ i)
     (fun f => fixedSource_map_weak W U i f) (fun f => restrictedFrame_map_weak W U hU i f)
 
-def lowerDiagram : Under i ⥤ Zigzag W Precompose.word (U.obj i) Y :=
-  Precompose.lowerDiagram W (restrictedFrame U i) (restrictedAugmentation U p i)
+def lowerDiagram : Under i ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word (U.obj i) Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lowerDiagram W (restrictedFrame U i) (restrictedAugmentation U p i)
     (restrictedAugmentation_weak W U p hp i) (p.app i) (restrictedRightLeg U σ i)
     (fun f => restrictedFrame_map_weak W U hU i f)
 
@@ -91,7 +91,7 @@ def graphHomotopy : SSet.Homotopy
 def colimitHomotopy : SSet.Homotopy
     (Precompose.SameUniverse.diagramColimitMap W (upperDiagram W U σ hU i))
     (Precompose.SameUniverse.diagramColimitMap W (lowerDiagram W U p hp σ hU i)) :=
-  HomotopyClasses.postHomotopy (graphInclusion W (U.obj i) Y Precompose.word)
+  HomotopyClasses.postHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W (U.obj i) Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word)
     (graphHomotopy W U p hp σ hU i)
 
 lemma inclusion_underMap {j : I} (a : i ⟶ j) :

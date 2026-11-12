@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementSelectedCochain
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Derived.NerveInclusionSimplex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusionSimplex
 
 /-!
 概要：実 cone の対象族と、元の frame 図式の同じ通常単体を構成する。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 
 def coneTailOrderHom (n : ℕ) : Fin (n + 2) →o Fin (n + 1) where
   toFun i := ⟨i.val - 1, by omega⟩
@@ -50,8 +50,8 @@ lemma normalizedTensorConeObj_ne_zero {n : ℕ}
 
 def normalizedTensorConeOrdinarySimplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    Simplex A (Complex A) (n + 1) :=
-  closedNerveSimplex ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (n + 1) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
     normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)
 
 lemma normalizedTensorConeOrdinarySimplex_obj {n : ℕ}

@@ -29,47 +29,47 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 /-- 元の実右軸からの同じ射は、元の全 Hom 作用について自然。 -/
 lemma dgGluingAxisRightInclusion_hom_naturality (z : C)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z))
-    (X Y : DGGluingObject R C D M) :
-    ((dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)).map X Y ≫
+    (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)).map X Y ≫
       eHomWhiskerLeft (Complex R)
         (ForgetEnrichment.of (Complex R) (dgGluingRightAxisObject R C D M z X.right))
         (dgGluingAxisRightInclusion R C D M z hz Y) =
-    (DGFunctor.id (A := R) (DGGluingObject R C D M)).map X Y ≫
+    (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).map X Y ≫
       eHomWhiskerRight (Complex R) (dgGluingAxisRightInclusion R C D M z hz X)
         (ForgetEnrichment.of (Complex R) Y) := by
-  apply dgClosedComparison_reflect (dgGluingRight R C D M)
+  apply dgClosedComparison_reflect (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M)
     (ForgetEnrichment.of (Complex R) (dgGluingRightAxisObject R C D M z X.right))
     (ForgetEnrichment.of (Complex R) (dgGluingRightAxisObject R C D M z Y.right))
     (ForgetEnrichment.of (Complex R) X) (ForgetEnrichment.of (Complex R) Y)
     _ _ _ _ (dgGluingFromRightAxisHomIso R C D M z hz X.right Y)
     ((dgGluingFromRightAxisHomIso_hom R C D M z hz X.right Y).trans
-      (dgGluingRight_map R C D M _ _).symm)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map R C D M _ _).symm)
   have hs : (dgGluingRightAxis R C D M z hz).map X.right Y.right ≫
-      (dgGluingRight R C D M).map
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).map
         (dgGluingRightAxisObject R C D M z X.right)
         (dgGluingRightAxisObject R C D M z Y.right) = 𝟙 _ :=
     (congrArg (fun k => (dgGluingRightAxis R C D M z hz).map X.right Y.right ≫ k)
-      (dgGluingRight_map R C D M _ _)).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map R C D M _ _)).trans
         (dgGluingRightAxis_map_right R C D M z hz X.right Y.right)
   exact identityComparison
     (ForgetEnrichment.of (Complex R) X.right) (ForgetEnrichment.of (Complex R) Y.right)
     _ _ _ _ (dgGluingAxisRightInclusion_right R C D M z hz X)
     (dgGluingAxisRightInclusion_right R C D M z hz Y)
     ((((Category.assoc _ _ _).trans
-      (congrArg (fun k => (dgGluingRight R C D M).map X Y ≫ k) hs)).trans
+      (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).map X Y ≫ k) hs)).trans
         (Category.comp_id _)).trans (Category.id_comp _).symm)
 
 /-- 元の実左軸への同じ射も、元の全 Hom 作用について自然。 -/
 lemma dgGluingAxisLeftProjection_hom_naturality (z : D)
     (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z))
-    (X Y : DGGluingObject R C D M) :
-    (DGFunctor.id (A := R) (DGGluingObject R C D M)).map X Y ≫
+    (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :
+    (DGFunctor.id (A := R) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)).map X Y ≫
       eHomWhiskerLeft (Complex R) (ForgetEnrichment.of (Complex R) X)
         (dgGluingAxisLeftProjection R C D M z hz Y) =
-    ((dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)).map X Y ≫
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).comp (dgGluingLeftAxis R C D M z hz)).map X Y ≫
       eHomWhiskerRight (Complex R) (dgGluingAxisLeftProjection R C D M z hz X)
         (ForgetEnrichment.of (Complex R) (dgGluingLeftAxisObject R C D M z Y.left)) := by
-  apply dgClosedComparison_reflect (dgGluingLeft R C D M)
+  apply dgClosedComparison_reflect (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M)
     (ForgetEnrichment.of (Complex R) X) (ForgetEnrichment.of (Complex R) Y)
     (ForgetEnrichment.of (Complex R) (dgGluingLeftAxisObject R C D M z X.left))
     (ForgetEnrichment.of (Complex R) (dgGluingLeftAxisObject R C D M z Y.left))
@@ -81,7 +81,7 @@ lemma dgGluingAxisLeftProjection_hom_naturality (z : D)
     (dgGluingAxisLeftProjection_left R C D M z hz Y)
     ((Category.id_comp _).trans
       (((Category.assoc _ _ _).trans
-        (congrArg (fun k => (dgGluingLeft R C D M).map X Y ≫ k)
+        (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M).map X Y ≫ k)
           (dgGluingLeftAxis_map_left R C D M z hz X.left Y.left))).trans
             (Category.comp_id _)).symm)
 

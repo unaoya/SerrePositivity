@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitNativeIntervalPath
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.SquareClass
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.SquareClass
 
 /-!
 概要：元の余極限指定辺と a6 の native 区間表示が同じ射を表すことを証明する。

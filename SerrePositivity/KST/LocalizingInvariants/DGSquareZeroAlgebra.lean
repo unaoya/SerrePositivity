@@ -21,23 +21,23 @@ open SerrePositivity.DifferentialGraded
 namespace SerrePositivity.KST.LocalizingInvariants.SquareZero
 variable {R : Type u} [CommRing R] (A : Mon (Complex R)) (M : Bimod A A)
 
-lemma mul_assoc : (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ▷ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M =
-    (α_ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M) (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M)).hom ≫ (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M := by
+lemma mul_assoc : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ▷ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M =
+    (α_ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M)).hom ≫ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M ◁ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M := by
   apply cochainBiprodTensorPairLeft_hom_ext <;> apply biprodTensorRight_hom_ext
   all_goals
     simp only [← tensorHom_def'_assoc, tensorTriple_mul_left, tensorTriple_mul_right,
-      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr, ← whiskerRight_comp_tensorHom_assoc,
-      ← whiskerLeft_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc,
-      _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rr_assoc, zero_tensor, tensor_zero, zero_comp, comp_zero,
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr, ← whiskerRight_comp_tensorHom_assoc,
+      ← whiskerLeft_comp_tensorHom_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_ll_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl_assoc,
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rr_assoc, zero_tensor, tensor_zero, zero_comp, comp_zero,
       MonObj.mul_assoc_assoc, M.left_assoc_assoc, M.middle_assoc_assoc,
       M.right_assoc_assoc, Category.assoc, Iso.hom_inv_id_assoc]
 
 /-- 分裂平方零拡大の実非可換 dg 代数。 -/
 def algebra : Mon (Complex R) where
-  X := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.obj A M
+  X := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.obj A M
   mon := {
-    one := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.one A M
-    mul := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M
+    one := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.one A M
+    mul := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M
     one_mul := one_mul A M
     mul_one := mul_one A M
     mul_assoc := mul_assoc A M }

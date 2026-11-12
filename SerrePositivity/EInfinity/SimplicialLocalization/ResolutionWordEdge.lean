@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：元の自由な列とその合成の一文字の列を結ぶ実際の辺（Dwyer–Kan）。
 方針：列の外側の一文字の一次単体の二面を計算する。

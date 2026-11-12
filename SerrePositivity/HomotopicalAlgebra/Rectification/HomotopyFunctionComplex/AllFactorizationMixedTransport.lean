@@ -60,7 +60,7 @@ omit [ModelCategory SSet.{v}] in
 lemma tail_inclusion : tail a f g b ≫
     ResolutionLiftSpace.inclusion X' W (a.base ≫ f ≫ (g ≫ b).base) =
     ResolutionLiftSpace.inclusion X' V (a.base ≫ f ≫ g.base) ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram := by
   change (_ ≫ ResolutionLiftSpace.baseChange _) ≫ _ = _
   rw [Category.assoc, ResolutionLiftSpace.baseChange_inclusion,
     ResolutionLiftSpace.post_inclusion]
@@ -80,7 +80,7 @@ lemma postTail_inclusion (S : ResolutionObject C) (h : S.base ⟶ Y.base) :
     CoherentLiftPostComposition.tailMap S Y V W h g b ≫
       ResolutionLiftSpace.inclusion S W (h ≫ (g ≫ b).base) =
     ResolutionLiftSpace.inclusion S V (h ≫ g.base) ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame S).obj).map b.diagram := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame S).obj).map b.diagram := by
   change (ResolutionLiftPostcomposition.map S V W (h ≫ g.base) b ≫
     ResolutionLiftSpace.baseChange (Category.assoc h g.base b.base)) ≫
       ResolutionLiftSpace.inclusion S W (h ≫ g.base ≫ b.base) = _
@@ -110,10 +110,10 @@ lemma pre_tail : CoherentLiftMixedComparison.preTail X' X Y V a f g φ ≫ tail 
   apply ResolutionLiftSpace.hom_ext
   · rw [Category.assoc, tail_inclusion, ← Category.assoc, ResolutionLiftSpace.pre_inclusion,
       Category.assoc, Category.assoc, ResolutionLiftSpace.pre_inclusion]
-    have hp := congrArg (fun q => q ≫ (cosimplicialHomMap φ.val).app W.resolution.obj)
+    have hp := congrArg (fun q => q ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ.val).app W.resolution.obj)
       (postTail_inclusion g b X f)
     have hn := congrArg (fun k => ResolutionLiftSpace.inclusion X V (f ≫ g.base) ≫ k)
-      ((cosimplicialHomMap φ.val).naturality b.diagram).symm
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ.val).naturality b.diagram).symm
     exact hn.trans (by simpa only [Category.assoc] using hp.symm)
   · rw [Category.assoc, tail_projection, ResolutionLiftSpace.pre_projection,
       Category.assoc, ResolutionLiftSpace.pre_projection, postTail_projection]
@@ -129,7 +129,7 @@ lemma cast_tail : CoherentLiftMixedComparison.castMap X' X Y V a f g ≫ tail a 
         (congrArg (fun q => CoherentLiftMixedComparison.castMap X' X Y V a f g ≫ q)
           (tail_inclusion a f g b))
     have hc := congrArg (fun q => q ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram)
       (ResolutionLiftSpace.baseChange_inclusion (Category.assoc a.base f g.base))
     have hr := (Category.assoc
         (CoherentLiftPostComposition.tailMap X' Y V W (a.base ≫ f) g b)
@@ -139,9 +139,9 @@ lemma cast_tail : CoherentLiftMixedComparison.castMap X' X Y V a f g ≫ tail a 
         (ResolutionLiftSpace.baseChange_inclusion (Category.assoc a.base f (g ≫ b).base)))
     have hc' : CoherentLiftMixedComparison.castMap X' X Y V a f g ≫
         (ResolutionLiftSpace.inclusion X' V (a.base ≫ f ≫ g.base) ≫
-          (cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram) =
+          (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram) =
         ResolutionLiftSpace.inclusion X' V ((a.base ≫ f) ≫ g.base) ≫
-          (cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram := by
+          (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X').obj).map b.diagram := by
       simpa only [Category.assoc] using hc
     exact hl.trans (hc'.trans ((postTail_inclusion g b X' (a.base ≫ f)).symm.trans hr.symm))
   · have hl := (Category.assoc

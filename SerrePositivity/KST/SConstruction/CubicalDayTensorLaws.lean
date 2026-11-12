@@ -33,12 +33,12 @@ lemma cubicalDayTensorMap_comp {K K' K'' L L' L'' : CubicalSet.{u}}
 
 /-- 元の二つの前層の射の Day tensor は、元の連結 cell の作用を回収する。 -/
 lemma cubicalDayTensorMap_cell {K K' L L' : CubicalSet.{u}}
-    (f : K ⟶ K') (g : L ⟶ L') (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+    (f : K ⟶ K') (g : L ⟶ L') (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalDayTensorMap f g).app (op (concreteCubeTensorObj c d))
         (cubicalDayTensorCell c d x y) =
       cubicalDayTensorCell c d (f.app (op c) x) (g.app (op d) y) := by
-  have h := convolutionExtensionUnit_comp_ι_map_tensorHom_app _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)
+  have h := convolutionExtensionUnit_comp_ι_map_tensorHom_app _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)
       (show DayFunctor.mk K ⟶ DayFunctor.mk K' from DayFunctor.Hom.mk f)
       (show DayFunctor.mk L ⟶ DayFunctor.mk L' from DayFunctor.Hom.mk g) (op c) (op d)
   exact congrArg (fun t => t (x, y)) h

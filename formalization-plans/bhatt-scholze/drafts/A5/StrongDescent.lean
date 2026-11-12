@@ -6,8 +6,8 @@ public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
 public import Mathlib.Algebra.Homology.Double
 public import SerrePositivity.HomologicalAlgebra.CochainTensor.Basic
-public import SerrePositivity.InfinityCategories.Derived.HeartFullyFaithful
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.HeartFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
 public import SerrePositivity.BhattScholze.Andre.PowerRootEnvelope.Varpi
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Pair.Koszul
 -- 本ファイルは drafts/Shared/Descendable.lean、drafts/Shared/DeRhamPolynomial.lean、drafts/A5/{PerfectSite,RootAdjunction}.lean（W9-III-09：PerfectSiteComparison・WeaklyInitialAndDescent は本ファイルより後）、

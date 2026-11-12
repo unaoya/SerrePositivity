@@ -62,7 +62,7 @@ lemma terminalPoint_component (j : AsSmall.{u} SimplexCategory) :
 
 /-- 終頂点の重みの射への前合成は全ての Kan 標的で全基点 π 同型。 -/
 lemma component_pre_piIsomorphism (j : AsSmall.{u} SimplexCategory)
-    (Y : SSet.{u}) [KanComplex Y] : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pre (component j)).app Y) :=
+    (Y : SSet.{u}) [KanComplex Y] : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((pre (component j)).app Y) :=
   pre_piIsomorphism_of_commonAnodyne (overTerminalPoint j)
     (simplexTerminalPoint (AsSmall.down.obj j).len)
     (overTerminalPoint_anodyne j) (simplexTerminalPoint_anodyne _)

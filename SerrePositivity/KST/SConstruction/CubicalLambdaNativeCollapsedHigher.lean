@@ -20,8 +20,8 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_zero_of_endpoints {M N : ℕ
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (α : Fin (M + 1) →o Fin (N + 1)) (I : Finset (Fin (M + 1)))
     (a b : Fin (M + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
     (hab : α a = α b) (hc : I.card ≠ 2) :
     (cubicalLambdaNativeSimplexData A (DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))) F)).hom
@@ -30,19 +30,19 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_zero_of_endpoints {M N : ℕ
   subst a b k
   let L := cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))
   have hz : IsZero ((homObject A (CubicalLambda A (Δ[N] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).X
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (α (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (α (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))).X
       (2 - (I.card : ℤ))) := by
     rw [hab]
     exact simplexDiagonalLambdaHom_X_isZero A _ _ hk0
   have hs := ModuleCat.subsingleton_of_isZero hz
-  have hx : (L.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))).f (2 - (I.card : ℤ))
+  have hx : (L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))).f (2 - (I.card : ℤ))
       (simplexSubsetLambdaGenerator A I hI) = 0 :=
     hs.elim _ _
   exact (congrArg (fun x => (F.map
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (α (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))))).f (2 - (I.card : ℤ)) x)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (α (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (α (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))))).f (2 - (I.card : ℤ)) x)
       hx).trans (map_zero _)
 
 /-- 元の任意の非単射な高次部分集合で、Λ 前合成は native HA 引き戻しの零成分を回収。 -/
@@ -50,8 +50,8 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_of_not_inj {M N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (α : Fin (M + 1) →o Fin (N + 1)) (I : Finset (Fin (M + 1)))
     (a b : Fin (M + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
     (hi : ¬ Set.InjOn α (I : Set (Fin (M + 1)))) (hc : I.card ≠ 2) :
     (cubicalLambdaNativeSimplexData A (DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))) F)).hom
@@ -68,7 +68,7 @@ lemma cubicalLambdaNativeSimplexData_precompose_hom_of_not_inj {M N : ℕ}
         (Finset.mem_image.mpr ⟨b, hb.symm ▸ Finset.max'_mem _ _, rfl⟩)
       exact cubicalLambdaNativeSimplexData_precompose_hom_zero_of_endpoints A F α I a b k
         hI ha hb hk hab hc
-  exact hz.trans (DGNerve.SimplexData.pullback_hom_of_not_inj
+  exact hz.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj
     (cubicalLambdaNativeSimplexData A F) α I a b k hI ha hb hk hi hc).symm
 
 end SerrePositivity.KST.SConstruction

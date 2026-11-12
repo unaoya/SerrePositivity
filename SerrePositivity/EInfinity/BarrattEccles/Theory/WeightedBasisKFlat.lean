@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBasisEquivalence
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CellularWeights
 
@@ -72,7 +72,7 @@ variable {A : Type u} [CommRing A] {K : Complex A} {I : ℤ → Type u}
     w (i + 1) y ≤ w i x)
 
 /-- Weight minus cochain degree is a natural-number height that decreases under the differential. -/
-def weightedSemifreeBasis : ComplexSemifreeBasis A K where
+def weightedSemifreeBasis : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexSemifreeBasis A K where
   Index := I
   basis := b
   height i x := Int.toNat ((w i x : ℤ) - i)

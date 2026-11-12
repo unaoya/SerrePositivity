@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitNativeDiagonalRepresentation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTransformationUnitCocone
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationUnitCocone
 
 /-!
 概要：元の単位正方形の対角を実現した余錐と a6 の指定 native 写像を比較する。

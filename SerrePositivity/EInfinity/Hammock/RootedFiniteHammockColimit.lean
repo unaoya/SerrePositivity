@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Hammock.RootedFiniteGraphColimitNaturality
 public import Mathlib.CategoryTheory.Limits.Fubini
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 
 /-!
 # 全体の元の hammock と有限包の hammock の余極限の同型
@@ -25,29 +25,29 @@ attribute [local instance] Classical.propDecidable
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] (X Y : Q)
 
-def hammockDiagram : Finset Q ⥤ SSet.{max u v} := (graphWordDiagram T X Y).flip ⋙ colim
+def hammockDiagram : Finset Q ⥤ SSet.{max u v} := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip ⋙ colim
 
 def hammockColimitIso : colimit (hammockDiagram T X Y) ≅
-    colimitGraph (⊤ : MorphismProperty (Paths Q)) ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
-  colimitFlipCompColimIsoColimitCompColim (graphWordDiagram T X Y) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (⊤ : MorphismProperty (Paths Q)) ((Paths.of Q).obj X) ((Paths.of Q).obj Y) :=
+  colimitFlipCompColimIsoColimitCompColim (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y) ≪≫
     colim.mapIso (graphColimitDiagramIso T X Y)
 
-lemma hammockColimitIso_fac (S : Finset Q) (a : Word) :
-    colimit.ι ((graphWordDiagram T X Y).flip.obj S) a ≫
+lemma hammockColimitIso_fac (S : Finset Q) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    colimit.ι ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip.obj S) a ≫
       colimit.ι (hammockDiagram T X Y) S ≫ (hammockColimitIso T X Y).hom =
-        nerveMap (projectionFunctor T X Y a S) ≫
-          graphInclusion (⊤ : MorphismProperty (Paths Q))
+        nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a S) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (⊤ : MorphismProperty (Paths Q))
             ((Paths.of Q).obj X) ((Paths.of Q).obj Y) a := by
-  change colimit.ι ((graphWordDiagram T X Y).flip.obj S) a ≫
-    colimit.ι ((graphWordDiagram T X Y).flip ⋙ colim) S ≫
-      ((colimitFlipCompColimIsoColimitCompColim (graphWordDiagram T X Y)).hom ≫
+  change colimit.ι ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip.obj S) a ≫
+    colimit.ι ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip ⋙ colim) S ≫
+      ((colimitFlipCompColimIsoColimitCompColim (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y)).hom ≫
         colim.map (graphColimitDiagramIso T X Y).hom) =
-    nerveMap (projectionFunctor T X Y a S) ≫ colimit.ι
-      (Hammock.graphDiagram (⊤ : MorphismProperty (Paths Q))
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.projectionFunctor T X Y a S) ≫ colimit.ι
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (⊤ : MorphismProperty (Paths Q))
         ((Paths.of Q).obj X) ((Paths.of Q).obj Y)) a
   rw [colimitFlipCompColimIsoColimitCompColim_ι_ι_hom_assoc]
   rw [colimit.ι_map]
-  change colimit.ι (graphDiagram T X Y a) S ≫ (graphColimitIso T X Y a).hom ≫ _ = _
+  change colimit.ι (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteDiagram.graphDiagram T X Y a) S ≫ (graphColimitIso T X Y a).hom ≫ _ = _
   rw [← Category.assoc, graphColimitIso_fac]
 
 end SerrePositivity.EInfinity.Hammock.RootedFinite

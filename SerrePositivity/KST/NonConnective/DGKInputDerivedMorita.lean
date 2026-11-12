@@ -40,8 +40,8 @@ theorem dgKInputDerivedExtension_isEquivalence_of_perfect
 
 /-- 前三角な実 dg 射の native 同値性は同じ主導来 Morita 同値を与える。 -/
 theorem dgKInputDerivedExtension_isEquivalence_of_native
-    [IsDGPretriangulated R C] [IsDGPretriangulated R D]
-    (hf : IsQCatEquivalence (dgNerve.map f)) :
+    [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R C] [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R D]
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map f)) :
     (dgDerivedExtension R C D f).IsEquivalence := by
   let := dgKappaPerfectExtension_isEquivalence_of_native R C D f hf
   exact dgKInputDerivedExtension_isEquivalence_of_perfect R C D f

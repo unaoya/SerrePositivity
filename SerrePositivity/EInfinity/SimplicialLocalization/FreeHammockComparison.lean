@@ -18,26 +18,26 @@ public import SerrePositivity.EInfinity.Hammock.FixedObjectLocalizationEvaluatio
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock.DoubleSimplicial
+open CategoryTheory
 
-def freeHammockHomComparison (C : RelativeCategory.{u}) (X Y : C.category) :
+def freeHammockHomComparison (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     freeHammockResolution C X Y ⟶ localizationHom C X Y ⋙ Functor.const SimplexCategoryᵒᵖ :=
   (freeHammockLocalizationObjects C).hammockEvaluation X Y
 
-lemma freeHammockHomComparison_fac (C : RelativeCategory.{u}) (X Y : C.category)
-    (n : SimplexCategoryᵒᵖ) (w : Hammock.Word) :
-    Hammock.graphInclusion ((freeResolution C).obj n).weakEquivalences
+lemma freeHammockHomComparison_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
+    (n : SimplexCategoryᵒᵖ) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion ((freeResolution C).obj n).weakEquivalences
       (freeResolutionObject C n X) (freeResolutionObject C n Y) w ≫
         (freeHammockHomComparison C X Y).app n =
           (freeHammockLocalizationObjects C).graphValue n w X Y :=
   (freeHammockLocalizationObjects C).colimitValue_fac n X Y w
 
-def freeHammockDiagonalComparison (C : RelativeCategory.{u}) (X Y : C.category) :
+def freeHammockDiagonalComparison (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     freeHammockDiagonal C X Y ⟶ localizationHom C X Y :=
-  diagonalFunctor.map (freeHammockHomComparison C X Y) ≫
-    (diagonalDiscreteIso (localizationHom C X Y)).hom
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (freeHammockHomComparison C X Y) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalDiscreteIso (localizationHom C X Y)).hom
 
-lemma freeHammockDiagonalComparison_app (C : RelativeCategory.{u}) (X Y : C.category)
+lemma freeHammockDiagonalComparison_app (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
     (freeHammockDiagonalComparison C X Y).app n =
       ((freeHammockHomComparison C X Y).app n).app n := rfl

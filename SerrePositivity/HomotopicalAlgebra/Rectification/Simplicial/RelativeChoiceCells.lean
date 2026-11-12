@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.FixedBoundaryExtensions
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SkeletalCellGluing
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
@@ -53,7 +53,7 @@ variable [ModelCategory SSet.{v}]
 
 def rule : SkeletalCellGluing.Rule (Q := RelativeChoiceSpace.obj i b) j := by
   intro n a c
-  let ex := RelativeChoiceSpace.extension hcof hfib i b p hp
+  let ex := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib i b p hp
     (SSet.boundary.{v} n).ι (SkeletalCellGluing.boundary j c ≫ a)
   exact ⟨ex.choose, ex.choose_spec⟩
 

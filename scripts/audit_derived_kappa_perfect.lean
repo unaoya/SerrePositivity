@@ -1,46 +1,46 @@
-import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
-import SerrePositivity.InfinityCategories.Derived.KappaCovers.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll
+import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaCoversAll
 import Lean
 
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Closure,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Equivalence,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Inclusion,
-    `SerrePositivity.InfinityCategories.Derived.KappaPerfect.Input,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.CompactStage,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.TelescopeSplitting,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.RepresentativeImage,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.HomotopyRetract,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.NativeRetract,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.DependencyPieces,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetCoproduct,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.StrictComparison,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PresentationReduction,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SemifreeLabels,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.GradedSphereSupport,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.GradedExtension,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SmallSemifree,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SubsetModule,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ConeEmbedding,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionLabels,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionSupport,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionDependencies,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.CellAttachment,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStage,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.FilteredUnion,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.FilteredEmbedding,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.SequencePrepend,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialTower,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialSemifree,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialStageMaps,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialEmbedding,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.PartialMaps,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionCovering,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.ResolutionDiagram,
-    `SerrePositivity.InfinityCategories.Derived.KappaCovers.Covers]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.Closure,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.Equivalence,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.Inclusion,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.Input,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.CompactStage,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.TelescopeSplitting,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.RepresentativeImage,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.HomotopyRetract,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.NativeRetract,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.DependencyPieces,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.SubsetCoproduct,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.StrictComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PresentationReduction,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.SemifreeLabels,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.GradedSphereSupport,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.GradedExtension,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.SmallSemifree,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.SubsetModule,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ConeEmbedding,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ResolutionLabels,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ResolutionSupport,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ResolutionDependencies,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.CellAttachment,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialStage,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.FilteredUnion,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.FilteredEmbedding,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.SequencePrepend,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialTower,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialSemifree,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialStageMaps,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialEmbedding,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.PartialMaps,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ResolutionCovering,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.ResolutionDiagram,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.Covers]
   let mut count := 0
   let mut seen : Array Name := #[]
   for (name, info) in env.constants.toList do
@@ -61,19 +61,19 @@ run_cmd do
     unless seen.contains mod do throwError "Module not audited: {mod}"
   logInfo m!"D-e axiom/signature audit passed: {count} declarations in {seen.size} modules."
 
-#check SerrePositivity.InfinityCategories.dgKappaPerfectComparison
-#check SerrePositivity.InfinityCategories.dgKappaPerfectComparison_isQCatEquivalence
-#check SerrePositivity.InfinityCategories.dgKappaPerfectComparison_inclusionIso
-#check SerrePositivity.InfinityCategories.dgKappaPerfectInput
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectComparison
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectComparison_isQCatEquivalence
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectComparison_inclusionIso
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput
 
-#check SerrePositivity.InfinityCategories.dgKappaCompact_retract_of_nativeCellPresentation
-#check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_nativeRetractCovers
-#check SerrePositivity.InfinityCategories.dgKappaDependencyPieces_nerve_isKappaFiltered
-#check SerrePositivity.InfinityCategories.dgKappaSubsetCoproductIsColimit
-#check SerrePositivity.InfinityCategories.DGKappaStrictFilteredColimitComparison
-#check SerrePositivity.InfinityCategories.dgKappaCovers_of_strictRepresentativePresentation
-#check SerrePositivity.InfinityCategories.dgKappaClosedProjectiveObjects_smallSemifreeCovers
-#check SerrePositivity.InfinityCategories.dgKappaSubsetModule_finiteElement
-#check SerrePositivity.InfinityCategories.dgKappaModuleConeMap_degreewiseMono
-#check SerrePositivity.InfinityCategories.dgKappaResolutionStrictRepresentativePresentation
-#check SerrePositivity.InfinityCategories.dgKappaCone_covers_of_strictFilteredColimitComparison
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaCompact_retract_of_nativeCellPresentation
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaClosedProjectiveObjects_nativeRetractCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaDependencyPieces_nerve_isKappaFiltered
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaSubsetCoproductIsColimit
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.DGKappaStrictFilteredColimitComparison
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaCovers_of_strictRepresentativePresentation
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaClosedProjectiveObjects_smallSemifreeCovers
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaSubsetModule_finiteElement
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaModuleConeMap_degreewiseMono
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaResolutionStrictRepresentativePresentation
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.dgKappaCone_covers_of_strictFilteredColimitComparison

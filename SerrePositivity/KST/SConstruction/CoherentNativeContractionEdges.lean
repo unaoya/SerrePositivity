@@ -20,13 +20,13 @@ open scoped Simplicial
 variable {I : Type u} [SmallCategory I] {x y : I} {f : x ⟶ y}
 
 /-- 元の精密化の像の Path から、同じ最終列の全頂点 Path への指定包含。 -/
-def coherentStringRefinementPathToFull {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
-    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringRefinementPath a ⟶ coherentStringFullPath t :=
+def coherentStringRefinementPathToFull {s t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f} (a : s ⟶ t) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentStringRefinementPath a ⟶ coherentStringFullPath t :=
   ⟨⟨⟨fun _ _ => Set.mem_univ _⟩⟩⟩
 
 /-- 元の精密化の辺の Path flag は、元の像の Path から全頂点 Path への包含辺。 -/
-lemma coherentStringPathFlag_arrow {s t : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f} (a : s ⟶ t) :
-    _root_.SerrePositivity.InfinityCategories.Kan.coherentStringPathFlag (nerve.edgeMk a).edge =
+lemma coherentStringPathFlag_arrow {s t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f} (a : s ⟶ t) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentStringPathFlag (nerve.edgeMk a).edge =
       (nerve.edgeMk (coherentStringRefinementPathToFull a)).edge := by
   refine ComposableArrows.ext₁ ?_ ?_ ?_
   · rfl
@@ -38,13 +38,13 @@ lemma coherentStringPathFlag_arrow {s t : _root_.SerrePositivity.InfinityCategor
 lemma coherentArrowNativeContraction_vertex_edge
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) :
-    (simplicialHomotopyVertexEdge (coherentArrowNativeContraction Q f) (nerveVertex s)).edge =
+    (f : x ⟶ y) (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentArrowNativeContraction Q f) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex s)).edge =
       (coherentStringNativeMap Q s).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge := by
-  have h := ordinaryComparisonHomotopy_vertex (coherentArrowStringContractionTransformation f) s
+  have h := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.ordinaryComparisonHomotopy_vertex (coherentArrowStringContractionTransformation f) s
   have hm := congrArg ((coherentArrowNativeFamily Q f).app (Opposite.op ⦋1⦌)) h
-  change (simplicialHomotopyVertexEdge (coherentArrowNativeContraction Q f) (nerveVertex s)).edge =
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentArrowNativeContraction Q f) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex s)).edge =
     (coherentStringNativeMap Q s).app _ _ at hm
   exact hm.trans (congrArg ((coherentStringNativeMap Q s).app (Opposite.op ⦋1⦌))
     (coherentStringPathFlag_arrow (coherentArrowStringDirectTo s)))
@@ -52,29 +52,29 @@ lemma coherentArrowNativeContraction_vertex_edge
 /-- 前合成した元の円柱の成分は、元の円柱の同じ像の頂点の成分辺である。 -/
 lemma coherentHomotopyVertexEdge_precomp {A B X : SSet.{u}} {f g : B ⟶ X}
     (H : SSet.Homotopy f g) (i : A ⟶ B) (a : A _⦋0⦌) :
-    (simplicialHomotopyVertexEdge (functorHomotopyPrecomp H i) a).edge =
-      (simplicialHomotopyVertexEdge H (i.app (Opposite.op ⦋0⦌) a)).edge := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H i) a).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (i.app (Opposite.op ⦋0⦌) a)).edge := by
   change H.h.app (Opposite.op ⦋1⦌)
-    (i.app (Opposite.op ⦋1⦌) (A.σ 0 a), homotopyIntervalEdge.edge) =
+    (i.app (Opposite.op ⦋1⦌) (A.σ 0 a), _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
     H.h.app (Opposite.op ⦋1⦌)
-      (B.σ 0 (i.app (Opposite.op ⦋0⦌) a), homotopyIntervalEdge.edge)
-  exact congrArg (fun z => H.h.app (Opposite.op ⦋1⦌) (z, homotopyIntervalEdge.edge))
+      (B.σ 0 (i.app (Opposite.op ⦋0⦌) a), _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)
+  exact congrArg (fun z => H.h.app (Opposite.op ⦋1⦌) (z, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge))
     (NatTrans.naturality_apply i (SimplexCategory.σ (0 : Fin 1)).op a)
 
 /-- パラメータの制限と標的の表示変更を行っても、元の成分の Path 包含辺を保持する。 -/
 lemma coherentArrowNativeContraction_prepost_vertex_edge
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    (f : x ⟶ y) {U E : SSet.{u}} (i : U ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f))
+    (f : x ⟶ y) {U E : SSet.{u}} (i : U ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f))
     (q : SimplicialCategory.sHom (coherentStringVertexObject Q x)
       (coherentStringVertexObject Q y) ⟶ E)
-    (a : U _⦋0⦌) (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) (hv : i.app (Opposite.op ⦋0⦌) a = nerveVertex s) :
-    (simplicialHomotopyVertexEdge (functorHomotopyPostcomp
-      (functorHomotopyPrecomp (coherentArrowNativeContraction Q f) i) q) a).edge =
+    (a : U _⦋0⦌) (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) (hv : i.app (Opposite.op ⦋0⦌) a = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex s) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (coherentArrowNativeContraction Q f) i) q) a).edge =
       q.app (Opposite.op ⦋1⦌) ((coherentStringNativeMap Q s).app (Opposite.op ⦋1⦌)
         (nerve.edgeMk (coherentStringRefinementPathToFull (coherentArrowStringDirectTo s))).edge) := by
   have hp := coherentHomotopyVertexEdge_precomp (coherentArrowNativeContraction Q f) i a
-  have hq := congrArg (fun a => (simplicialHomotopyVertexEdge
+  have hq := congrArg (fun a => (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
     (coherentArrowNativeContraction Q f) a).edge) hv
   have h := coherentArrowNativeContraction_vertex_edge Q f s
   exact congrArg (q.app (Opposite.op ⦋1⦌)) (hp.trans (hq.trans h))

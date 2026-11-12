@@ -24,24 +24,24 @@ open CategoryTheory MonoidalCategory
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [EnrichedCategory SSet.{u} D] (F : EnrichedFoldData W D)
 
-def hammockFoldMap (X Y : Paths C) : colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y :=
+def hammockFoldMap (X Y : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶ F.obj X ⟶[SSet.{u}] F.obj Y :=
   extraction W Y X ≫ F.foldMap X Y
 
 lemma hammockFoldMap_marked (X Y : Paths C) :
     AllMarked.inclusion W X Y ≫ F.hammockFoldMap X Y = F.marked X Y := by
   rw [hammockFoldMap, ← Category.assoc, nativeInclusion_extraction, foldMap_marked]
 
-lemma hammockFoldMap_generator (g : FactorTarget.Index W) :
-    arrowMap W.paths g.val.hom.toPath ≫ F.hammockFoldMap g.val.left g.val.right =
+lemma hammockFoldMap_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath ≫ F.hammockFoldMap g.val.left g.val.right =
       F.generator g := by
   rw [hammockFoldMap, ← Category.assoc, extraction_arrowMap, foldMap_generator]
 
 lemma hammockFoldMap_unit (X : Paths C) :
-    colimitUnit W.paths X ≫ F.hammockFoldMap X X = eId SSet.{u} (F.obj X) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X ≫ F.hammockFoldMap X X = eId SSet.{u} (F.obj X) := by
   rw [hammockFoldMap, ← Category.assoc, extraction_unitMap, foldMap_unit]
 
 lemma hammockFoldMap_comp (X Y Z : Paths C) :
-    colimitComposition W.paths X Y Z ≫ F.hammockFoldMap X Z =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition W.paths X Y Z ≫ F.hammockFoldMap X Z =
       (F.hammockFoldMap X Y ⊗ₘ F.hammockFoldMap Y Z) ≫
         eComp SSet.{u} (F.obj X) (F.obj Y) (F.obj Z) := by
   dsimp only [hammockFoldMap]

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ArCutEvaluation
-public import SerrePositivity.InfinityCategories.Core.InternalHomSwap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.InternalHomSwap
 
 /-! # 切断 cofiber 族の単体的作用素
 概要：切断を個々の図式だけでなく、S_n C の全単体の coherent な族に適用する。
@@ -34,9 +34,9 @@ def cutRawFamilyOperator (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u}) :
 lemma cutRawFamilyOperator_vertex (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
     (v : (sConstruction n C) _⦋0⦌) :
     (cutRawFamilyOperator n k C).app (Opposite.op ⦋0⦌) v =
-      functorVertex (arCutFamily k (gappedDiagram v)) := by
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arCutFamily k (gappedDiagram v)) := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).apply_symm_apply v.val
   change ((pre ((β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n)).hom ≫
       arCutSquareMap n k)).app C ≫ ihomCurry (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n) C).app
         (Opposite.op ⦋0⦌) v.val = _
@@ -49,24 +49,24 @@ lemma cutRawFamilyOperator_isCofiber (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
     IsCofiberDiagramVertex
       ((uncurry (cutRawFamilyOperator n k C)).app (Opposite.op ⦋0⦌) s) := by
   rcases s with ⟨a, v⟩
-  change IsCofiberDiagramVertex ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌)
+  change IsCofiberDiagramVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app (Opposite.op ⦋0⦌)
     ((cutRawFamilyOperator n k C).app (Opposite.op ⦋0⦌) v))
-  rw [cutRawFamilyOperator_vertex, evaluateFunctorAt_functorVertex]
-  exact fullSubcomplexOnVertices_vertex
+  rw [cutRawFamilyOperator_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex
     ((gappedCutCofiberFamily k (gappedDiagram_isGapped v)).app (Opposite.op ⦋0⦌) a)
 
 /-- 全ての入力の高次単体に作用する、全 cofiber 図式値の切断族。 -/
 def cutCofiberFamilyOperator (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u}) [Quasicategory C] :
     sConstruction n C ⟶ (ihom (arNerve n)).obj (cofiberDiagrams C) :=
-  curry (fullSubcomplexLift IsCofiberDiagramVertex (uncurry (cutRawFamilyOperator n k C))
+  curry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift IsCofiberDiagramVertex (uncurry (cutRawFamilyOperator n k C))
     (cutRawFamilyOperator_isCofiber n k C))
 
 /-- 切断の cofiber 族の作用素は包含後に元の全単体の族を保持する。 -/
 lemma cutCofiberFamilyOperator_ι (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u}) [Quasicategory C] :
     cutCofiberFamilyOperator n k C ≫
-      (ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+      (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
         cutRawFamilyOperator n k C := by
   apply uncurry_injective
-  rw [uncurry_natural_right, cutCofiberFamilyOperator, uncurry_curry, fullSubcomplexLift_ι]
+  rw [uncurry_natural_right, cutCofiberFamilyOperator, uncurry_curry, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
 
 end SerrePositivity.KST.SConstruction

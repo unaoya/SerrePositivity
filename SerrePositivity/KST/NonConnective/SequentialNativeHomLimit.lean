@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialRawHomLimit
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictHomotopyLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.StrictHomotopyLimits
 
 /-!
 概要：逐次 BF 余錐の全 Raw Hom 極限を、元の反対の単体的圏の Hom 錐へ厳密に移す。
@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 local instance sequentialNativeHomSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -37,8 +37,8 @@ lemma sequentialOppositeHomFunctor_eq (Y : OmegaSpectrum.{u}) :
 
 /-- 同じ逐次 BF 余錐の、反対の全ての元の豊穣 Hom による錐は通常の極限。 -/
 def sequentialNativeHomIsLimit (D : SpectrumSequence.{u}) (Y : OmegaSpectrum.{u}ᵒᵖ) :
-    IsLimit (simplicialHomCone (sequentialLevelColimitCocone D).op Y) := by
-  unfold simplicialHomCone simplicialHomDiagram
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (sequentialLevelColimitCocone D).op Y) := by
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
   rw [sequentialOppositeHomFunctor_eq]
   exact sequentialRawHomIsLimit D Y.unop.toKanSequence
 

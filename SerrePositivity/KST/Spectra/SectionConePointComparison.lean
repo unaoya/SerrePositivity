@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionConeEquivalence
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFamilyVertices
-public import SerrePositivity.InfinityCategories.Core.JoinTensorInterval
-public import SerrePositivity.InfinityCategories.Core.LimitConeFamily
-public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.SectionConeEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FunctorFamilyVertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.JoinTensorInterval
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeFamily
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
 
 /-!
 概要：固定頂点の切断空間から錐の関手空間への比較を、元の点と全 coherent 錐で計算する。
@@ -19,7 +19,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.SectionConePoint
 
 /-- 点での直積パラメータの評価は、その元の Yoneda 射での右テンソルの作用。 -/
@@ -38,65 +38,65 @@ lemma vertexParameter {A L : SSet.{u}} (b : L _⦋0⦌) :
 
 /-- 普遍錐を元の切断点で評価すると、固定頂点の全単射で復元した元の錐全体になる。 -/
 lemma universal_at_point {K X : SSet.{u}} (p : K ⟶ X) (x : X _⦋0⦌)
-    (b : (coherentConeSectionSpace p x) _⦋0⦌) :
-    lift (𝟙 (join (Δ[0] : SSet.{u}) K)) (SSet.const b) ≫
-      sectionConeFamilyUncurry p x = ((fixedVertexConeSpaceEquiv p x).symm b).val.val := by
-  change _ = sliceUnderUncurry (inv (fst K (Δ[0] : SSet.{u})) ≫
-    relativeFunctorUncurry (SSet.yonedaEquiv.symm b))
-  apply (cancel_epi (fst (join (Δ[0] : SSet.{u}) K) (Δ[0] : SSet.{u}))).mp
-  rw [← Category.assoc, vertexParameter, sectionConeFamilyUncurry, ← Category.assoc,
-    joinTensorRight_parameter, Category.assoc, ← sliceUnderUncurry_precomp]
+    (b : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x) _⦋0⦌) :
+    lift (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) K)) (SSet.const b) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyUncurry p x = ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm b).val.val := by
+  change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry (inv (fst K (Δ[0] : SSet.{u})) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry (SSet.yonedaEquiv.symm b))
+  apply (cancel_epi (fst (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) K) (Δ[0] : SSet.{u}))).mp
+  rw [← Category.assoc, vertexParameter, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyUncurry, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.joinTensorRight_parameter, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry_precomp]
   have he : (K ◁ SSet.yonedaEquiv.symm b) ≫
-      relativeFunctorUncurry (𝟙 (coherentConeSectionSpace p x)) =
-      relativeFunctorUncurry (SSet.yonedaEquiv.symm b) := by
-    rw [← HomotopyLimits.relativeFunctorUncurry_parameter, Category.comp_id]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.relativeFunctorUncurry (SSet.yonedaEquiv.symm b) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.relativeFunctorUncurry_parameter, Category.comp_id]
     rfl
   rw [he]
-  conv_rhs => rw [← joinTensorRight_unit, Category.assoc, ← sliceUnderUncurry_precomp]
+  conv_rhs => rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinTensorRight_unit, Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry_precomp]
   rw [← Category.assoc, IsIso.hom_inv_id, Category.id_comp]
 
 /-- 比較の元の零単体は、同じ点から復元した元の錐の関手頂点に厳密一致する。 -/
 lemma comparison_at_point {K X : SSet.{u}} (p : K ⟶ X) (x : X _⦋0⦌)
-    (b : (coherentConeSectionSpace p x) _⦋0⦌) :
-    (sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) b =
-      coneFamilyVertexEquiv p ((fixedVertexConeSpaceEquiv p x).symm b).val := by
+    (b : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) b =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamilyVertexEquiv p ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm b).val := by
   apply Subtype.ext
-  change (curry (sectionConeFamilyUncurry p x)).app (Opposite.op ⦋0⦌) b =
-    functorVertex ((fixedVertexConeSpaceEquiv p x).symm b).val.val
-  have h := congrArg (functorVertexEquiv (join (Δ[0] : SSet.{u}) K) X)
-    (uncurry_at_vertex (curry (sectionConeFamilyUncurry p x)) b)
+  change (curry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyUncurry p x)).app (Opposite.op ⦋0⦌) b =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm b).val.val
+  have h := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) K) X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uncurry_at_vertex (curry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyUncurry p x)) b)
   rw [uncurry_curry, universal_at_point] at h
   exact (h.trans (Equiv.apply_symm_apply _ _)).symm
 
 /-- 元の切断点の辺は、復元した元の二つの錐全体の関手頂点の同型を与える。 -/
 def comparisonIso {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (x : X _⦋0⦌)
-    {a b : (coherentConeSectionSpace p x) _⦋0⦌}
-    (e : (coherentConeSectionSpace p x).Edge a b) :
-    VertexIso (X := coneFamily p)
-      (coneFamilyVertexEquiv p ((fixedVertexConeSpaceEquiv p x).symm a).val)
-      (coneFamilyVertexEquiv p ((fixedVertexConeSpaceEquiv p x).symm b).val) := by
+    {a b : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x) _⦋0⦌}
+    (e : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x).Edge a b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily p)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamilyVertexEquiv p ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm a).val)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamilyVertexEquiv p ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm b).val) := by
   have he : IsIso (SSet.HomotopyCategory.homMk e) :=
-    IsGroupoid.all_isIso (C := hoFunctor.obj (coherentConeSectionSpace p x)) _
-  let sourceIso : VertexIso (X := coherentConeSectionSpace p x) a b :=
+    IsGroupoid.all_isIso (C := hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x)) _
+  let sourceIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x) a b :=
     asIso (SSet.HomotopyCategory.homMk e)
-  let imageIso : VertexIso (X := coneFamily p)
-      ((sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) a)
-      ((sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) b) :=
-    sourceIso.map (sectionConeFamilyMap p x)
-  have ha := congrArg (SSet.HomotopyCategory.mk (X := coneFamily p))
+  let imageIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily p)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) a)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyMap p x).app (Opposite.op ⦋0⦌) b) :=
+    sourceIso.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.sectionConeFamilyMap p x)
+  have ha := congrArg (SSet.HomotopyCategory.mk (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily p))
     (comparison_at_point p x a)
-  have hb := congrArg (SSet.HomotopyCategory.mk (X := coneFamily p))
+  have hb := congrArg (SSet.HomotopyCategory.mk (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneFamily p))
     (comparison_at_point p x b)
   exact (eqToIso ha).symm ≪≫ imageIso ≪≫ eqToIso hb
 
 /-- 同じ固定頂点の切断空間の辺で結ばれる、元の coherent 錐の極限性は同値。 -/
 lemma isLimit_iff_of_edge {K X : SSet.{u}} [Quasicategory X] (p : K ⟶ X) (x : X _⦋0⦌)
-    {a b : (coherentConeSectionSpace p x) _⦋0⦌}
-    (e : (coherentConeSectionSpace p x).Edge a b) :
-    IsLimitCone ((fixedVertexConeSpaceEquiv p x).symm a).val ↔
-      IsLimitCone ((fixedVertexConeSpaceEquiv p x).symm b).val :=
-  (isLimitCone_iff_isTerminalVertex_coneFamily _).trans
-    ((isTerminalVertex_iff_of_vertexIso (comparisonIso p x e)).trans
-      (isLimitCone_iff_isTerminalVertex_coneFamily _).symm)
+    {a b : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x) _⦋0⦌}
+    (e : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.coherentConeSectionSpace p x).Edge a b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm a).val ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.fixedVertexConeSpaceEquiv p x).symm b).val :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_isTerminalVertex_coneFamily _).trans
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isTerminalVertex_iff_of_vertexIso (comparisonIso p x e)).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_isTerminalVertex_coneFamily _).symm)
 
 end SerrePositivity.KST.Spectra.SectionConePoint

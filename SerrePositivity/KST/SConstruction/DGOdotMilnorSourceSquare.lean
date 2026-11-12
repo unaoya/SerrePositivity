@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorSourceNuRoof
-public import SerrePositivity.InfinityCategories.Derived.DGUniverseLiftFunctor
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierPresentation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLiftFunctor
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierPresentation
 
 /-!
 概要：元対角・核比較・二つの増大を同じ固定 S の全四角形に保持する。
@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "A" => DGSmallPerfectBase R (dgAlgebraCategory R (DGOdotInput.source d))
+local notation "A" => DGSmallPerfectBase R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.source d))
 local notation "B" => DGOdotGluing R d
 local notation "δ" => DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)
 local notation "P" => dgQuotientImage R (δ)
@@ -29,18 +29,18 @@ lemma dgOdotMilnorSourceSquare_comm :
       dgOdotMilnorAugmentationInputMap R d =
         dgOdotMilnorSourceAugmentationInputMap R d ≫ dgOdotDiagonalInputMap R d := by
   apply ULift.ext
-  change ((dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  change ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgOdotMilnorSourceKernelDGMap R d)).comp
-      (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
-        (resolvedDGQuotientThickFlatKernelInclusion R (B) (P)))).comp
-    (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernelInclusion R (B) (P)))).comp
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
       (DGCategoryCellResolution.augmentation R (B))) =
-    (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
       (DGCategoryCellResolution.augmentation R (A))).comp
-        (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} (δ))
-  rw [← dgUniverseLiftFunctor_comp, ← dgUniverseLiftFunctor_comp,
-    ← dgUniverseLiftFunctor_comp]
-  apply congrArg (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1})
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} (δ))
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp, ← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp,
+    ← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp]
+  apply congrArg (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1})
   rw [strictDGFunctor_comp_assoc]
   exact dgOdotMilnorSourceKernelDGMap_augmentation R d
 
@@ -49,16 +49,16 @@ lemma dgOdotMilnorSourceSquare_comm :
 規約：元対角と両増大の全一単体を保持する。使われ方：完備化付き相対面の始域比較。 -/
 theorem exists_dgOdotMilnorSourceSquare :
     ∃ F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R,
-      squareBottomEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorSourceKernelInputMap R d ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorSourceKernelInputMap R d ≫
           dgOdotMilnorFlatKernelInputMap R d)).edge ∧
-      squareTopEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotDiagonalInputMap R d)).edge ∧
-      squareLeftEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorSourceAugmentationInputMap R d)).edge ∧
-      squareRightEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgOdotMilnorAugmentationInputMap R d)).edge := by
-  obtain ⟨F, hb, hr, hl, ht⟩ := _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram.exists_coherentSquare_of_comm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotDiagonalInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorSourceAugmentationInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorAugmentationInputMap R d)).edge := by
+  obtain ⟨F, hb, hr, hl, ht⟩ := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.exists_coherentSquare_of_comm
     (dgOdotMilnorSourceKernelInputMap R d ≫ dgOdotMilnorFlatKernelInputMap R d)
     (dgOdotMilnorAugmentationInputMap R d)
     (dgOdotMilnorSourceAugmentationInputMap R d) (dgOdotDiagonalInputMap R d)

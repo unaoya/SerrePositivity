@@ -98,9 +98,9 @@ instance kanComplex (X : CosimplicialObject SSet.{u}) (j : SimplexCategory) :
 使われ方：Goerss–Jardine VII §4。Tot の置換不変性の係数比較。 -/
 lemma unit_piIsomorphism (X : CosimplicialObject SSet.{u})
     [∀ j, KanComplex (X.obj j)] (j : SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := X.obj j) (Y := (functor.obj X).obj j)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := X.obj j) (Y := (functor.obj X).obj j)
       ((unit.app X).app j) := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (show X.obj j ⟶ (functor.obj X).obj j from (unit.app X).app j)
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (show X.obj j ⟶ (functor.obj X).obj j from (unit.app X).app j)
   exact kanPiIsomorphism_of_anodyne (A := X.obj j) (B := (functor.obj X).obj j)
     ((unit.app X).app j) (unit_anodyne X j)
 

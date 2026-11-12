@@ -10,7 +10,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory MonoidalClosed
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 private lemma arrow_comp_of_eq {C : Type*} [Category* C]
     {x y z x' y' z' : C} (f : x ⟶ y) (g : y ⟶ z) (f' : x' ⟶ y') (g' : y' ⟶ z')
@@ -30,25 +30,25 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorPinchedFamilyPostDerived_arrow :
     Arrow.mk ((hoFunctor.map ((ihom (nerve (normalizedTensorElementIndex A X Y))).map
       (complexSemifreeResolutionInfinity A))).toFunctor.map
-        (intervalFamilyHom (normalizedTensorElementPinchedMap A X Y ≫
-          pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-            (Simplex.vertex X) (Simplex.vertex Y)))) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (normalizedTensorElementPinchedMap A X Y ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)))) =
       Arrow.mk (normalizedTensorElementDerivedRoof A X Y) := by
   let K := nerve (normalizedTensorElementIndex A X Y)
   let F := complexSemifreeResolutionInfinity A
   let T := (hoFunctor.map ((ihom K).map F)).toFunctor
   let e := SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (normalizedTensorEvaluationHomotopy A X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedTensorEvaluationHomotopy A X Y))
   have hc : Arrow.mk (T.map (normalizedTensorConeFamilyHom A X Y)) =
       Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).inv := by
-    exact (congrArg Arrow.mk (functorHomotopyPostcomp_hom
+    exact (congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom
       (normalizedTensorConeHomotopy A X Y) F)).symm.trans
         (normalizedTensorConePostDerived_inverse_arrow A X Y)
   have he : Arrow.mk (T.map e) = Arrow.mk (normalizedTensorElementDerivedEvaluation A X Y) := by
-    apply Eq.trans (congrArg Arrow.mk (functorHomotopyPostcomp_hom
+    apply Eq.trans (congrArg Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom
       (normalizedTensorEvaluationHomotopy A X Y) F)).symm
-    apply SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
-      (functorHomotopyPostcomp (normalizedTensorEvaluationHomotopy A X Y) F)
+    apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (normalizedTensorEvaluationHomotopy A X Y) F)
       (complexOrdinaryDerivedNatTransHomotopy A (normalizedTensorElementEvaluation A X Y))
     exact Category.assoc _ _ _
   have ht := congrArg T.map (normalizedTensorTriangleFamily_comp A X Y)

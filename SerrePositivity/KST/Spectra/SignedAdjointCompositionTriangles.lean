@@ -20,12 +20,12 @@ open scoped Simplicial
 namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {A Y Z W : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex W.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
   (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
 
 local instance signedTriangleTargetKan : KanComplex (target Z).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の交換符号辺と二重反転辺をそのまま保持する、実際の合成三角形。 -/
 def forwardComposite : PointedMapping.BasedPathComposite (firstPath a ha f g) (secondPath f g) :=

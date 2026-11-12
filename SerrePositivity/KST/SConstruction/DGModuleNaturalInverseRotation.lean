@@ -14,10 +14,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecifi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "GS" => G.comp (moduleShiftDG R D 1)
@@ -30,23 +30,23 @@ local notation "S" => moduleShiftDG R D (-1)
 規約：元零化・元実 cone を保持。使われ方：実逆回転全比較の始域。 -/
 def dgModuleNaturalInverseRotationSource : DGFunctor R P (RightModule R D) :=
   dgModuleNaturalConeFunctor R D ((CF).comp (S)) ((FS).comp (S))
-    (dgStrictNatTransPostcomp (δ) (S))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S))
 
 /-- 概要：同じ元 cone shift の全逆比較。方針：元全比較を適用。
 規約：元実成分不変。使われ方：全逆回転の第一因子。 -/
-def dgModuleNaturalInverseRotationConeShift : StrictNatTrans
+def dgModuleNaturalInverseRotationConeShift : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     (dgModuleNaturalInverseRotationSource R D F G η) ((CD).comp (S)) :=
   dgModuleNaturalConeShiftComparison R D (CF) (FS) (δ) (-1)
 
 /-- 概要：同じ元全 connecting 比較の逆 shift。方針：元 dg shift 後合成。
 規約：元全比較不変。使われ方：全逆回転の第二因子。 -/
 def dgModuleNaturalInverseRotationShiftedComparison :
-    StrictNatTrans ((CD).comp (S)) ((GS).comp (S)) :=
-  dgStrictNatTransPostcomp (dgModuleNaturalConnectingConeComposite R D F G η) (S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans ((CD).comp (S)) ((GS).comp (S)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (dgModuleNaturalConnectingConeComposite R D F G η) (S)
 
 /-- 概要：同じ元指定相殺の入力制限。方針：元全 Hom 比較を入力関手の同じ斉次作用へ制限。
 規約：元相殺成分を保持。使われ方：全逆回転の第三因子。 -/
-def dgModuleNaturalInverseRotationCancellation : StrictNatTrans ((GS).comp (S)) G where
+def dgModuleNaturalInverseRotationCancellation : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans ((GS).comp (S)) G where
   app x := (dgModuleSpecifiedCancellationStrictComparison R D).app (G.obj x)
   naturality z := (dgModuleSpecifiedCancellationStrictComparison R D).naturality
     ((G.map _ _).f _ z)
@@ -55,10 +55,10 @@ def dgModuleNaturalInverseRotationCancellation : StrictNatTrans ((GS).comp (S)) 
 方針：同じ元 cone shift 比較、同じ全 connecting 比較の逆 shift、指定相殺を合成。
 規約：点ごとの同値選択を使わず元全比較を保持する。
 使われ方：実商合成全比較の逆回転因子。 -/
-def dgModuleNaturalInverseRotation : StrictNatTrans
+def dgModuleNaturalInverseRotation : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     (dgModuleNaturalInverseRotationSource R D F G η) G :=
-  dgStrictNatTransComp
-    (dgStrictNatTransComp
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp
       (dgModuleNaturalInverseRotationConeShift R D F G η)
       (dgModuleNaturalInverseRotationShiftedComparison R D F G η))
     (dgModuleNaturalInverseRotationCancellation R D G)

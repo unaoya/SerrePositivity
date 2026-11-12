@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositionNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingTriangle
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：元 gluing 入力同型を保つ connecting cone の native 全比較。
@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -30,7 +30,7 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "γ" => dgStrictNatTransComp (α) (β)
+local notation "γ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (α) (β)
 
 /-- 概要：元指定 cone 入力比較の閉成分は K(C) 同値。
 方針：同じ元指定入力同型の閉射を回収する。
@@ -57,12 +57,12 @@ lemma dgIdentityHomGluingConnectingCone_source :
 規約：元全ホモトピーを輸送し成分選択をしない。
 使われ方：元実逆回転後の全比較の入力同型因子。 -/
 def dgIdentityHomGluingConnectingConeNerveComparison :
-    FunctorIso (dgNerve.map (dgModuleNaturalConeFunctor R C (A) (FS) (δ)))
-      (dgNerve.map (dgModuleNaturalConeFunctor R C (B) (FS) (β))) :=
-  F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleNaturalConeFunctor R C (A) (FS) (δ)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleNaturalConeFunctor R C (B) (FS) (β))) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     (dgModuleNaturalConePrecompositionNerveComparison R C (A) (B) (FS) (α) (β)
       (dgIdentityHomGluingConnectingConeInput_isIso R C F G a h))
-    (congrArg dgNerve.map (dgIdentityHomGluingConnectingCone_source R C F G a h)) rfl
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingConnectingCone_source R C F G a h)) rfl
 
 /-- 概要：回収した全比較は元指定前合成 cone 全比較そのもの。
 方針：端点輸送の型付き回収を適用。
@@ -71,5 +71,5 @@ lemma dgIdentityHomGluingConnectingConeNerveComparison_heq :
     HEq (dgIdentityHomGluingConnectingConeNerveComparison R C F G a h)
       (dgModuleNaturalConePrecompositionNerveComparison R C (A) (B) (FS) (α) (β)
         (dgIdentityHomGluingConnectingConeInput_isIso R C F G a h)) :=
-  F2.functorIsoOfEq_heq _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _
 end SerrePositivity.KST.SConstruction

@@ -31,12 +31,12 @@ structure ArCofiberCompletion {A B C : SSet.{u}} (n : ℕ) (i : A ⟶ B)
 方針：入力の可換式と内部 Hom の後合成の trivial Kan fibration を使う。
 規約：i は任意の単射、C は安定な quasicategory。
 使われ方：境界を固定した Ar[n] 全体への cofiber 補完。 -/
-def arCofiberCompletion {A B C : SSet.{u}} [Quasicategory C] [IsStable C]
+def arCofiberCompletion {A B C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (n : ℕ) (i : A ⟶ B) [Mono i] (a : A ⟶ sConstruction n C)
     (b : B ⟶ zeroFrameDiagrams n C) (h : a ≫ gappedFrameRestriction n C = i ≫ b) :
     ArCofiberCompletion n i a b := by
-  have : TrivialKanFibration ((ihom (arNerve n)).map (cofiberProjection C)) := inferInstance
-  have := TrivialKanFibration.mem (p := (ihom (arNerve n)).map (cofiberProjection C)) i inferInstance
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((ihom (arNerve n)).map (cofiberProjection C)) := inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := (ihom (arNerve n)).map (cofiberProjection C)) i inferInstance
   have sq : CommSq (a ≫ gappedCofiberFamiliesMap n C) i
       ((ihom (arNerve n)).map (cofiberProjection C)) (b ≫ frameCofiberInputs n C) := by
     constructor
@@ -66,7 +66,7 @@ lemma ArCofiberCompletion.diagram_boundary {A B C : SSet.{u}} {n : ℕ} {i : A �
 def ArCofiberCompletion.pointFamily {A B C : SSet.{u}} {n : ℕ} {i : A ⟶ B}
     {a : A ⟶ sConstruction n C} {b : B ⟶ zeroFrameDiagrams n C}
     (c : ArCofiberCompletion n i a b) (v : B _⦋0⦌) : arNerve n ⟶ cofiberDiagrams C :=
-  (functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm (c.family.app (Opposite.op ⦋0⦌) v)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).symm (c.family.app (Opposite.op ⦋0⦌) v)
 
 /-- 概要：補完した各 Ar[n] 上の cofiber 族は関手 ∞ 圏の cofiber 列を与える。
 方針：族の点ごとの余極限の関手圏への移送を使う。
@@ -74,6 +74,6 @@ def ArCofiberCompletion.pointFamily {A B C : SSet.{u}} {n : ℕ} {i : A ⟶ B}
 lemma ArCofiberCompletion.pointFamily_isCofiber {A B C : SSet.{u}} [Quasicategory C]
     {n : ℕ} {i : A ⟶ B} {a : A ⟶ sConstruction n C} {b : B ⟶ zeroFrameDiagrams n C}
     (c : ArCofiberCompletion n i a b) (v : B _⦋0⦌) :
-    IsCofiberSequence (cofiberFamilyTriangle (c.pointFamily v)) := cofiberFamilyTriangle_isCofiber _
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence (cofiberFamilyTriangle (c.pointFamily v)) := cofiberFamilyTriangle_isCofiber _
 
 end SerrePositivity.KST.SConstruction

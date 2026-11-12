@@ -21,7 +21,7 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.EvaluatedFrame
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 abbrev family : (K ⥤ C) ⥤ K ⥤ (SimplexCategory ⥤ C) :=
   ColimitFrame.diagramResolution K I J ⋙ flipFunctor SimplexCategory K C
@@ -79,7 +79,7 @@ lemma homotopicallyConstant (x : (K ⥤ C) × K) {n m : SimplexCategory} (f : n 
     ((HomotopyColimit.replacement K I J).obj x.1)).homotopicallyConstant f x.2
 
 lemma hom_kanComplex (x : (K ⥤ C) × K) (Y : C) [IsFibrant Y] :
-    SSet.KanComplex ((cosimplicialHom ((frame K I J).obj x)).obj Y) :=
+    SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((frame K I J).obj x)).obj Y) :=
   cosimplicialHom_kanComplex _ (reedyCofibrant K I J x) (homotopicallyConstant K I J x) Y
 
 end SerrePositivity.DiagramModel.EvaluatedFrame

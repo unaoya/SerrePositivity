@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedCotensorCoordinateFamilies
 public import SerrePositivity.KST.Spectra.PointedHomTransposeComponents
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSymmetry
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSymmetry
 
 /-!
 概要：座標同型で移した通常の族を、自由基点の随伴と点つき転置で明示する。
@@ -29,7 +29,7 @@ lemma FreePointedHomRestriction.restrict_familyVertex {K : SSet.{u}}
   rw [← SSet.yonedaEquiv_comp]
   apply congrArg SSet.yonedaEquiv
   rw [FreePointedHomRestriction.restrict, ← Category.assoc,
-    PointedMapping.pointFamily, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, curry_pre_app,
+    PointedMapping.pointFamily, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, curry_pre_app,
     whiskerRight_fst_assoc]
   rfl
 
@@ -43,13 +43,13 @@ lemma family_eq_transpose {K : SSet.{u}} {T E : PointedSimplicialSet.{u}}
   apply ext
   rw [family_vertex, PointedMapping.familyVertex_transpose]
   symm
-  have hh : (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv, Iso.inv_hom_id]
+  have hh : (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom = 𝟙 _ := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv, Iso.inv_hom_id]
   have h := congrArg Under.Hom.right hh
   simp only [Under.comp_right, Under.id_right] at h
-  change ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
+  change ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (PointedObject.adjoin K) T E).hom.right ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso T (PointedObject.adjoin K) E).hom.right ≫
     FreePointedHomRestriction.restrict K (PointedObject.basedHom T E)).app _
       (PointedMapping.familyVertex _) = _
   rw [← Category.assoc, h, Category.id_comp]

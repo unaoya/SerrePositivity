@@ -38,7 +38,7 @@ def monicKPrismNativeComparisonCompatibility (n : ℕ) : SSet.Homotopy
 lemma monicKPrismNativeComparisonCompatibility_zero (n : ℕ) :
     SSet.ι₀ ≫ (monicKPrismNativeComparisonCompatibility F f g n).h =
       (monicKPrismNativeLevelComparison F f g (n + 1)).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space :=
   (monicKPrismNativeComparisonCompatibility F f g n).h₀
 
@@ -57,7 +57,7 @@ lemma monicKPrismNativeComparisonCompatibility_source (n : ℕ) :
       fst (nerve (CompositionStringParameters f g)) (Δ[1] : SSet.{u}) ≫
         (nerveMap (compositionStringComposite f g) ≫ monicKPrismTracedRawFamily F (f ≫ g) ≫
           RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z))
-            (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+            (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
               ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyCylinderTriangleComparison_source _
 
@@ -68,7 +68,7 @@ lemma monicKPrismNativeComparisonCompatibility_target (n : ℕ) :
       fst (nerve (CompositionStringParameters f g)) (Δ[1] : SSet.{u}) ≫
         (compositionStringPair f g ≫ monicKPrismTracedRawComposition F f g ≫
           RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z))
-            (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+            (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
               ((kKanSequence (F.obj z)).level (n + 1)).space :=
   familyCylinderTriangleComparison_target _
 

@@ -18,20 +18,20 @@ open scoped Simplicial
 
 /-- 閉じた全部分圏の包含は全ての零対象を保存する。 -/
 lemma closedSubcategoryInclusion_preservesZero {X : StableModel.{u}}
-    (P : ClosedStablePredicate X) (v : (closedSubcategory P) _⦋0⦌) (hv : IsZeroVertex v) :
-    IsZeroVertex v.val := by
-  let z := chosenZeroVertex X.carrier
+    (P : ClosedStablePredicate X) (v : (closedSubcategory P) _⦋0⦌) (hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v) :
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex v.val := by
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
   let w := fullSubcategoryVertex P.predicate z.vertex (P.zero_mem z.isZero)
-  have hw : IsZeroVertex w :=
+  have hw : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex w :=
     ⟨isInitialVertex_fullSubcomplex_of_ambient P.predicate w z.isInitial,
       isTerminalVertex_fullSubcomplex_of_ambient P.predicate w z.isTerminal⟩
-  exact map_isZeroVertex_of_zero_image (fullSubcomplexOnVertices _ P.predicate).ι
+  exact map_isZeroVertex_of_zero_image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ P.predicate).ι
     w hw z.isZero hv
 
 /-- 閉じた全部分圏の包含は零対象と全押し出しを保存する。 -/
 lemma closedSubcategoryInclusion_preservesSConstructionData {X : StableModel.{u}}
     (P : ClosedStablePredicate X) :
-    PreservesSConstructionData (fullSubcomplexOnVertices X.carrier P.predicate).ι :=
+    PreservesSConstructionData (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier P.predicate).ι :=
   ⟨closedSubcategoryInclusion_preservesZero P, closedSubcategoryInclusion_preservesPushout P⟩
 
 end SerrePositivity.KST.SConstruction

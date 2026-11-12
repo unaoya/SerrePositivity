@@ -22,14 +22,14 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 
 /-- 単位の構造 Hom の区間・二単体を、同じ全パラメータの構造 Hom へ移す射。 -/
 def kanAdjointTracedUnitStructureAction (n : ℕ) :
-    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (Y.level n).space)
+    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (Y.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space ⟶
-    PointedObject.basedHom A (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    PointedObject.basedHom A (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space) :=
-  PointedMapping.ihomAction (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (Y.level n).space)
+  PointedMapping.ihomAction (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (Y.level n).space)
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space ≫
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (kanAdjointStructureInput X Y φ n)
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (kanAdjointStructureInput X Y φ n)
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)
 
 /-- 同じ単位の実三角形を、元の全 Hom の同じ懸垂評価へ移した二単体。 -/
@@ -47,7 +47,7 @@ lemma kanAdjointTracedUnitParameterTriangle_two (n : ℕ) :
       (SSet.yonedaEquiv (OmegaSpectrum.signedLoopUnitStructurePath Y n).path) ≫ _ = _
   rw [Equiv.symm_apply_apply]
   exact (PointedMapping.VerticalPath.basedIhomMap_pre_path
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (OmegaSpectrum.signedLoopUnitStructurePath Y n)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (OmegaSpectrum.signedLoopUnitStructurePath Y n)
       (kanAdjointStructureInput X Y φ n)).symm.trans
         (kanAdjointParameterStructureInterval_unit_path X Y φ n).symm
 

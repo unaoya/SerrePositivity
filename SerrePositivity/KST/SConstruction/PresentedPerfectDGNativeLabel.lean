@@ -52,19 +52,19 @@ lemma presentedPerfectDGRightTensorAction_label (X : PresentedPerfectDGObject R 
 
 /-- ラベルを同じ対象に固定した全 native 単体の作用は、元のラベル dg 作用の像。 -/
 lemma presentedPerfectDGNativeActionSimplex_label {N : ℕ}
-    (X : PresentedPerfectDGObject R D) (s : DGNerve.Simplex R (DGFunctor R D E) N) :
+    (X : PresentedPerfectDGObject R D) (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R (DGFunctor R D E) N) :
     presentedPerfectDGNativeActionSimplex R D E
         (dgNativePointSimplex R (PresentedPerfectDGObject R D) X N) s =
       s.map (presentedPerfectDGLabelAction R D E X) := by
   unfold presentedPerfectDGNativeActionSimplex
   rw [dgNerveTensorSimplex_point_left]
-  apply DGNerve.Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   change (s.toSimplexData.map _).map _ = s.toSimplexData.map _
-  rw [← DGNerve.SimplexData.map_comp, presentedPerfectDGRightTensorAction_label]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.SimplexData.map_comp, presentedPerfectDGRightTensorAction_label]
 
 /-- 元の全 native 関手族の各次数のラベル評価は、同じ dg 入力作用そのもの。 -/
 lemma presentedPerfectDGNativeAction_label_app {N : ℕ}
-    (X : PresentedPerfectDGObject R D) (s : DGNerve.Simplex R (DGFunctor R D E) N) :
+    (X : PresentedPerfectDGObject R D) (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R (DGFunctor R D E) N) :
     (presentedPerfectDGNativeAction R D E).app (op ⦋N⦌)
         (dgNativePointSimplex R (PresentedPerfectDGObject R D) X N, ULift.up s) =
       s.map (presentedPerfectDGLabelAction R D E X) :=
@@ -85,10 +85,10 @@ lemma presentedPerfectDGNativeCoreAction_label_closed
     (presentedPerfectDGNativeCoreAction R D E).app (op ⦋1⦌)
         (dgNativePointSimplex R (PresentedPerfectDGObject R D) X 1,
           ULift.up (dgFunctorClosedIsoNativeEdge R D E F G e).edge) =
-      (dgClosedEdge R (PresentedPerfectDGObject R E)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R (PresentedPerfectDGObject R E)
         ((presentedPerfectDGLabelAction R D E X).onClosed.map e.hom)).edge := by
   rw [presentedPerfectDGNativeCoreAction_label_app]
-  exact dgClosedEdge_map R (DGFunctor R D E) (presentedPerfectDGLabelAction R D E X) e.hom
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge_map R (DGFunctor R D E) (presentedPerfectDGLabelAction R D E X) e.hom
 
 /-- 同じラベル閉射の全 Hom は、元の一回 Perf 延長像と元の標準合成比較で回収できる。 -/
 lemma presentedPerfectDGLabelAction_closed_perfect

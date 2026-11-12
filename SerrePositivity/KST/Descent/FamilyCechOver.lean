@@ -58,7 +58,7 @@ def familyOverPresheafSpaceIso (F : Cᵒᵖ ⥤ SSet.{0}) :
     (familyOverCover q X cover) F
 
 variable [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
 
 /-- 概要：元の被覆族の実降下は同じ構造射で持ち上げた Over の実降下を与える（公理 (1)）。
 方針：指定増強を保持する実際の図式同型で降下を移す。

@@ -32,13 +32,13 @@ def unitArrowIso := SpectrumMappingPath.arrowIso (unitPath p q a b h).path
 
 lemma unitHomotopy_source :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 1})) ≫ (unitHomotopy p q a b h).h =
-      fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (coherentNerveVertex X) :=
+      fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) :=
   SpectrumMappingPath.homotopy_source _
 
 lemma unitHomotopy_target :
     (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 1})) ≫ (unitHomotopy p q a b h).h =
       fst (Δ[0] : SSet.{u + 1}) Δ[1] ≫
-        SSet.yonedaEquiv.symm (coherentNerveVertex (fibrationReplacement q)) :=
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (fibrationReplacement q)) :=
   SpectrumMappingPath.homotopy_target _
 
 lemma unitFirst_projection : (fibrationReplacementUnit p ≫ map p q a b h) ≫
@@ -62,11 +62,11 @@ def unitProjectedEdge : (mappingSpace X Y').Edge (vertexOfHom (p ≫ b))
 lemma unitProjectedEdge_id : unitProjectedEdge p q a b h =
     SSet.Edge.id (vertexOfHom (p ≫ b)) := by
   apply SSet.Edge.ext
-  exact (unitPath_over_projection p q a b h).trans (pinchedConstant_one _)
+  exact (unitPath_over_projection p q a b h).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _)
 
 lemma unitProjectedArrowEdge_id : SpectrumMappingPath.arrowEdge
     (unitProjectedEdge p q a b h) =
-      SSet.Edge.id (functorVertex (SSet.yonedaEquiv.symm (coherentNerveEdge (p ≫ b)).edge)) := by
+      SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (p ≫ b)).edge)) := by
   rw [unitProjectedEdge_id, SpectrumMappingPath.arrowEdge_id]
 
 end SerrePositivity.KST.LocalizingInvariants.FibrationReplacementComparison

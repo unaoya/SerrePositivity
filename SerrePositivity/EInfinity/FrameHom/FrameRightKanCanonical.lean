@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameRightKan
-public import SerrePositivity.InfinityCategories.Derived.CosliceRealizationLimitCone
-public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.CosliceRealizationLimitCone
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
 
 /-!
 # 同じ frame 次数比較による標準右 Kan 錐
@@ -25,27 +25,27 @@ open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C]
   (A : I ⥤ C) {X : C} (p : A ⟶ (Functor.const I).obj X)
   {E : SSet.{u}} [Quasicategory E] (q : nerve C ⟶ E)
-  (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map q).toTruncated)
+  (hp : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (p.app i)).map q).toTruncated)
 
 lemma frameRightKanCanonicalCone_isLimit
-    (hc : IsLeftCofinal (frameRightKanMap A p q hp))
-    (hI : IsWeaklyContractible (nerve I)) {Z : SSet.{u}} [Quasicategory Z] (G : E ⟶ Z) :
-    IsLimitCone (rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (nerveVertex X))) := by
-  apply (isLimitCone_iff_restrict_of_leftCofinal (frameRightKanMap A p q hp) hc _ _).mpr
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (frameRightKanMap A p q hp))
+    (hI : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve I)) {Z : SSet.{u}} [Quasicategory Z] (G : E ⟶ Z) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal (frameRightKanMap A p q hp) hc _ _).mpr
   let R := frameRightKanCosliceRealization A p q hp
-  have hd : IsLimitCone (R.postcompCone G) := by
-    apply CosliceHomotopyRealization.postcompCone_isLimit R _ hI G
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (R.postcompCone G) := by
+    apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.CosliceHomotopyRealization.postcompCone_isLimit R _ hI G
     intro a
-    exact simplicialHomotopyOfFunctorEdge_vertex_isInvertible
-      (FunctorIso.edge (augmentationFunctorIso A p q hp).symm)
-      (FunctorIso.edge_isInvertible (augmentationFunctorIso A p q hp).symm) a
-  have he : (restrictJoinCone
-      (rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (nerveVertex X)))
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.simplicialHomotopyOfFunctorEdge_vertex_isInvertible
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge (augmentationFunctorIso A p q hp).symm)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge_isInvertible (augmentationFunctorIso A p q hp).symm) a
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanCanonicalCone q G (q.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
       (frameRightKanMap A p q hp)).val = (R.postcompCone G).val := by
-    change joinMap (𝟙 (Δ[0] : SSet.{u})) (frameRightKanMap A p q hp) ≫
-      (sliceUnderUncurry (pullback.fst _ _) ≫ G) = sliceUnderUncurry R.diagram ≫ G
-    rw [← Category.assoc, ← sliceUnderUncurry_precomp, frameRightKanMap_coslice]
-  exact IsLimitCone.of_functorIso hd
-    (eqToIso (congrArg (fun t => SSet.HomotopyCategory.mk (functorVertex t)) he.symm))
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u})) (frameRightKanMap A p q hp) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry (pullback.fst _ _) ≫ G) = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry R.diagram ≫ G
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderUncurry_precomp, frameRightKanMap_coslice]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone.of_functorIso hd
+    (eqToIso (congrArg (fun t => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex t)) he.symm))
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

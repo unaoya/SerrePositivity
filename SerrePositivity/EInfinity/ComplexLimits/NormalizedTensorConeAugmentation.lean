@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
@@ -37,7 +37,7 @@ lemma normalizedTensorConeAugmentationAt_succ {n : ℕ}
 lemma normalizedTensorConeAugmentationAt_postcompose_mixed {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
     HEq ((homPostcompose ((normalizedTensorConeData A X Y c).obj a)
       (normalizedTensorConeAugmentationAt A X Y c b)).f k
@@ -73,7 +73,7 @@ lemma normalizedTensorConeAugmentationAt_quasiIso {n : ℕ}
 lemma normalizedTensorConeAugmentationAt_reindex {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (θ : ⦋m⦌ ⟶ ⦋n⦌) (i : Fin (m + 2)) :
-    HEq (normalizedTensorConeAugmentationAt A X Y c (prependOrderHom θ.toOrderHom i))
+    HEq (normalizedTensorConeAugmentationAt A X Y c (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom i))
       (normalizedTensorConeAugmentationAt A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) i) := by
   induction i using Fin.cases with

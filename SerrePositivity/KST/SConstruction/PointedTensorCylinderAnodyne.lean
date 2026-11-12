@@ -15,22 +15,22 @@ open CategoryTheory MonoidalCategory SSet Spectra
 
 /-- 同じ時刻零の端点は、既存の自由区間の面添字一の端点。 -/
 lemma pointedTensorIntervalEnd_zero_eq :
-    pointedTensorIntervalEnd.{u} 0 = _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 1 := by
-  exact pointedTensorBoundaryStart_inclusion.symm.trans _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart_inclusion
+    pointedTensorIntervalEnd.{u} 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint 1 := by
+  exact pointedTensorBoundaryStart_inclusion.symm.trans _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryStart_inclusion
 
 /-- 同じ時刻一の端点は、既存の自由区間の面添字零の端点。 -/
 lemma pointedTensorIntervalEnd_one_eq :
-    pointedTensorIntervalEnd.{u} 1 = _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint 0 := by
-  exact pointedTensorBoundaryEnd_inclusion.symm.trans _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd_inclusion
+    pointedTensorIntervalEnd.{u} 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint 0 := by
+  exact pointedTensorBoundaryEnd_inclusion.symm.trans _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEnd_inclusion
 
 /-- 同じ自由点つき区間の両端点は、基礎単体集合上で anodyne。 -/
 lemma pointedTensorIntervalEnd_anodyne (i : Fin 2) :
     anodyneExtensions (pointedTensorIntervalEnd.{u} i).right := by
   fin_cases i
   · erw [pointedTensorIntervalEnd_zero_eq]
-    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne 1
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint_anodyne 1
   · erw [pointedTensorIntervalEnd_one_eq]
-    exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne 0
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint_anodyne 0
 
 /-- 同じ元の円柱の両端包含は、任意の入力で基礎 anodyne 射。 -/
 lemma pointedTensorCylinderEndMap_anodyne (i : Fin 2) (X : PointedSimplicialSet.{u}) :

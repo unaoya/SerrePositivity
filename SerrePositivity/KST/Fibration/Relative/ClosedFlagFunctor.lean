@@ -88,7 +88,7 @@ def closedRelativeRealization {B : StableModel.{u}} (P : ClosedStablePredicate B
 def closedFlagVertex {B : StableModel.{u}} (P : ClosedStablePredicate B)
     (n : SimplexCategory) (j : Fin (n.len + 1)) : closedFlagModel P n ⟶ B :=
   closedStableInclusion (closedFlagStablePredicate P n) ≫
-    ⟨evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j),
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j),
       (evaluateFunctorAt_preservesSConstructionData _).toCofiberData⟩
 
 /-- 概要：元の頂点評価と全再添字の厳密可換性。
@@ -102,8 +102,8 @@ lemma closedFlagVertex_reindex {B : StableModel.{u}} (P : ClosedStablePredicate 
   apply Subtype.ext
   change ((closedStableInclusion (closedFlagStablePredicate P n)).val ≫
     (pre (stdSimplex.map θ)).app B.carrier) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j) = _
-  rw [Category.assoc, stable_pre_evaluateFunctorAt]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j) = _
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 end SerrePositivity.KST.Fibration.Relative

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDoubleConeOverProjection
-public import SerrePositivity.InfinityCategories.Core.RightFibration
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration
 
 /-!
 概要：元の先端 X・全 frame 図式・終端 X を持つ実大域二重 join を構成する。
@@ -14,45 +14,45 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorDoubleConeJoin :
-    join (join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ⟶
-      dgNerve A (Complex A) := sliceOverUncurry (normalizedTensorDoubleConeOverJoin A X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (normalizedTensorDoubleConeOverJoin A X Y)
 
 lemma normalizedTensorDoubleConeJoin_inl :
-    joinInl (join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ≫
       normalizedTensorDoubleConeJoin A X Y = normalizedTensorConeJoin A X Y := by
-  rw [normalizedTensorDoubleConeJoin, sliceOverUncurry_projection,
+  rw [normalizedTensorDoubleConeJoin, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceOverUncurry_projection,
     normalizedTensorDoubleConeOverJoin_projection]
 
 lemma normalizedTensorDoubleConeJoin_inr :
-    joinInr (join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y))) Δ[0] ≫
       normalizedTensorDoubleConeJoin A X Y = normalizedTensorConePoint A X :=
-  sliceOverUncurry_fixed (normalizedTensorDoubleConeOverJoin A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_fixed (normalizedTensorDoubleConeOverJoin A X Y)
 
 lemma normalizedTensorDoubleConeJoin_endpoints :
-    joinMap (joinInl (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y)))
       (𝟙 Δ[0]) ≫ normalizedTensorDoubleConeJoin A X Y =
-      SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X) := by
-  rw [normalizedTensorDoubleConeJoin, ← sliceOverUncurry_precomp,
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X) := by
+  rw [normalizedTensorDoubleConeJoin, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp,
     normalizedTensorDoubleConeOverJoin_inl, normalizedTensorIdentityOverPoint,
-    InfinityCategories.sliceOverUncurry_yoneda]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceOverUncurry_yoneda]
   rfl
 
 lemma normalizedTensorDoubleConeJoin_restrict_simplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    joinMap (joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c)) (𝟙 Δ[0]) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (SSet.yonedaEquiv.symm c)) (𝟙 Δ[0]) ≫
       normalizedTensorDoubleConeJoin A X Y =
-      joinMap (pointJoinStdSimplexIso n).hom (𝟙 Δ[0]) ≫
-        (joinStdSimplexIso (n + 1) 0).hom ≫
-          (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom (𝟙 Δ[0]) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫
+          (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
             (normalizedTensorDoubleConeSimplex A X Y c) := by
-  rw [normalizedTensorDoubleConeJoin, ← sliceOverUncurry_precomp,
-    normalizedTensorDoubleConeOverJoin_restrict_simplex, sliceOverUncurry_precomp,
-    InfinityCategories.sliceOverUncurry_yoneda]
+  rw [normalizedTensorDoubleConeJoin, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp,
+    normalizedTensorDoubleConeOverJoin_restrict_simplex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry_precomp,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceOverUncurry_yoneda]
   rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

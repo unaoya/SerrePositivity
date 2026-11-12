@@ -46,7 +46,7 @@ lemma gappedDiagram_objectS_const {C : SSet.{u}} {m n : ℕ}
 方針：元の gapped 条件の対角の零対象性を取り出す。
 規約：別の零対象への置換をしない。使われ方：左 fiber の切断に使う零射の自然変換。 -/
 def objectSLastDiagonalZeroVertex {C : SSet.{u}} {m : ℕ}
-    (a : (objectSConstruction C) _⦋m⦌) : ZeroVertex C :=
+    (a : (objectSConstruction C) _⦋m⦌) : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C :=
   ⟨(gappedDiagram a).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (arObj (Fin.last m) (Fin.last m) le_rfl)),
     ((gappedDiagram_isGapped a).1 (Fin.last m)).1,
@@ -55,7 +55,7 @@ def objectSLastDiagonalZeroVertex {C : SSet.{u}} {m : ℕ}
 /-- 概要：指定零対象への定値完全関手を安定な入力間の射にする。
 方針：零対象と全押し出しの保存を添える。
 規約：底の射は厳密に定値射。使われ方：fiber の切断の基底の等式。 -/
-def stableConstantZero (X : StableModel.{u}) (z : ZeroVertex X.carrier) : X ⟶ X :=
+def stableConstantZero (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) : X ⟶ X :=
   ⟨SSet.const z.vertex, (constantZero_preservesSConstructionData z).toCofiberData⟩
 
 /-- 概要：object S の単体を最後の頂点に制限する射は最後の対角零対象への定値関手の像。
@@ -81,7 +81,7 @@ lemma objectS_lastVertex_constantZero (X : StableModel.{u}) {m : ℕ}
   refine Eq.trans ?_ hr.symm
   change gappedDiagram
     ((SSet.yonedaEquiv.symm a).app (Opposite.op ⦋n⦌)
-      (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last m)) n)) =
         SSet.const (objectSLastDiagonalZeroVertex a).vertex
   change gappedDiagram ((objectSConstruction X.carrier).map
     (SimplexCategory.const ⦋n⦌ ⦋m⦌ (Fin.last m)).op a) = _

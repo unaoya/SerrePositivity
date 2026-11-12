@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareDataEquality
-public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquareConstant
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IntervalSquareConstant
 
 /-!
 概要：同じ実全四角形を持つ輸送図式は、四辺も元の指定比較も同じである。

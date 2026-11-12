@@ -30,11 +30,11 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 lemma modelBifibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (kanHammockNerve (modelBifibrantRelativeCategory C)).map (PinchedHom.extend α).op
+    (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
       (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t) =
     modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) :=
-  RoofPrefix.simplex_naturality (modelBifibrantRelativeCategory C)
+  RoofPrefix.simplex_naturality (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -47,18 +47,18 @@ lemma modelBifibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
 lemma modelBifibrantSourceRoofProductCommaNativeSliceSimplex_naturality {m n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y))).map α.op
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y))).map α.op
       (modelBifibrantSourceRoofProductCommaNativeSliceSimplex X Y q b Γ t) =
     modelBifibrantSourceRoofProductCommaNativeSliceSimplex X Y q b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) := by
   apply Subtype.ext
-  change joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
-    ((joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
       (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t)) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_naturality, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_naturality, Category.assoc,
     SSet.yonedaEquiv_symm_naturality_left]
-  exact congrArg (fun z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋m + 1⦌ =>
-    (joinStdSimplexIso m 0).hom ≫ SSet.yonedaEquiv.symm z)
+  exact congrArg (fun z : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋m + 1⦌ =>
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso m 0).hom ≫ SSet.yonedaEquiv.symm z)
     (modelBifibrantSourceRoofProductCommaNativeSimplex_naturality X Y q b Γ t α)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
@@ -66,7 +66,7 @@ lemma modelBifibrantSourceRoofProductCommaNativeSliceSimplex_naturality {m n : �
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaNativePrism :
     (Δ[1] : SSet.{max u v}) ⊗ nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-      sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) where
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) where
   app _ := ↾fun a => modelBifibrantSourceRoofProductCommaNativeSliceSimplex X Y q b a.2
     (stdSimplex.objEquiv a.1).toOrderHom
   naturality := by

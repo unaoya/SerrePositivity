@@ -51,7 +51,7 @@ lemma map_layerInclusion : layerInclusion N a ≫ (map N N' a a' w q b t hb h).h
         q.hom ≫ (SquareZero.zeroSection A' N').hom :=
       congrArg Mon.Hom.hom (map_zeroSection N N' q b t hb)
     simpa only [Preadditive.neg_comp, Preadditive.comp_neg] using congrArg Neg.neg hz
-  let c := complexMappingCoconeMap (DGAlgebra.HomotopyPullbackModel.difference R a
+  let c := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (DGAlgebra.HomotopyPullbackModel.difference R a
     (SquareZero.zeroSection A N)) (DGAlgebra.HomotopyPullbackModel.difference R a'
     (SquareZero.zeroSection A' N')) (Limits.biprod.map w.hom q.hom)
     b.hom (cochainCoconeBiprodMap_comm _ _ _ _ _ _ _ hf hg)
@@ -60,19 +60,19 @@ lemma map_layerInclusion : layerInclusion N a ≫ (map N N' a a' w q b t hb h).h
   apply (cancel_mono e'.hom).1
   rw [Category.assoc, hm, ← Category.assoc]
   have he : layerInclusion N a ≫ e.hom =
-      complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) :=
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) :=
     layerInclusion_toCocone N a
   have he' : layerInclusion N' a' ≫ e'.hom =
-      complexMappingCoconeBiprodInclusion a'.hom (-(SquareZero.zeroSection A' N').hom) :=
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a'.hom (-(SquareZero.zeroSection A' N').hom) :=
     layerInclusion_toCocone N' a'
   rw [he, Category.assoc, he']
   have hn := cochainCoconeBiprodInclusion_naturality _ _ _ _ _ _ _ hf hg
-  have hk : complexMappingCoconeMap (-(SquareZero.zeroSection A N).hom)
+  have hk : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (-(SquareZero.zeroSection A N).hom)
       (-(SquareZero.zeroSection A' N').hom) q.hom b.hom hg = kernelMap N N' q t := by
     unfold kernelMap cochainNegInlCoconeMap
     congr 1
   exact hn.trans (congrArg
-    (fun k => k ≫ complexMappingCoconeBiprodInclusion a'.hom
+    (fun k => k ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a'.hom
       (-(SquareZero.zeroSection A' N').hom)) hk)
 
 end SerrePositivity.KST.LocalizingInvariants.SquareZeroExtension

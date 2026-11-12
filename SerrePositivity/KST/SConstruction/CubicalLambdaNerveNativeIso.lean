@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 
 /-- 元の全 Λ 実 dg 関手と元の native HA dg nerve の、全退化を保つ実単体同型。 -/
-def cubicalLambdaNerveNativeIso : cubicalLambdaNerve A D ≅ dgNerve A D :=
+def cubicalLambdaNerveNativeIso : cubicalLambdaNerve A D ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D :=
   NatIso.ofComponents (fun n => (cubicalLambdaNativeSimplexEquiv A (D := D) n.unop.len).toIso)
     (by
       intro X Y f
@@ -28,7 +28,7 @@ lemma cubicalLambdaNerveNativeIso_hom_app {N : ℕ}
     (cubicalLambdaNerveNativeIso A D).hom.app (op ⦋N⦌) F = cubicalLambdaNativeSimplex A F := rfl
 
 /-- 元の実単体同型の逆射は、元の全 Hom を持つ実逆 dg 関手そのもの。 -/
-lemma cubicalLambdaNerveNativeIso_inv_app {N : ℕ} (s : DGNerve.Simplex A D N) :
+lemma cubicalLambdaNerveNativeIso_inv_app {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) :
     (cubicalLambdaNerveNativeIso A D).inv.app (op ⦋N⦌) s = simplexHAInverseFunctor A s := rfl
 
 end SerrePositivity.KST.SConstruction

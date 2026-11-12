@@ -28,7 +28,7 @@ abbrev sourceFamily := ResolutionComparison.common cof
   (cosimplicialResolutionFamily cof₁) (cosimplicialResolutionFamily cof₂)
 
 abbrev middle : Cᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  resolutionHom (sourceFamily cof cof₁ cof₂).obj (TargetComparison.common fib fib₁ fib₂)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (sourceFamily cof cof₁ cof₂).obj (TargetComparison.common fib fib₁ fib₂)
 
 abbrev left : chosenResolutionHom cof₁ fib₁ ⟶ middle cof cof₁ cof₂ fib fib₁ fib₂ :=
   ResolutionComparison.homLeft cof (cosimplicialResolutionFamily cof₁)

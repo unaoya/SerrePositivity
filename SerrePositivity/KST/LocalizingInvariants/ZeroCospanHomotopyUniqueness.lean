@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.ZeroCospanRestriction
-public import SerrePositivity.InfinityCategories.Core.FullSubcomplexEdgeLift
-public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FullSubcomplexEdgeLift
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
 
 /-!
 概要：零第二枝を持つ cospan 比較の類は、第一枝への全関手としての制限で決まる。
@@ -22,47 +22,47 @@ namespace SerrePositivity.KST.LocalizingInvariants.ZeroCospan
 
 variable {X : SSet.{u}}
 
-def vertex (F : (horn 2 2 : SSet.{u}) ⟶ X) (hF : zeroSecond X (functorVertex F)) :
+def vertex (F : (horn 2 2 : SSet.{u}) ⟶ X) (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
     (diagrams X) _⦋0⦌ :=
-  ⟨functorVertex F, by
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
     exact hF⟩
 
 def homotopyEdge (F G : (horn 2 2 : SSet.{u}) ⟶ X)
-    (hF : zeroSecond X (functorVertex F)) (hG : zeroSecond X (functorVertex G))
+    (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (H : SSet.Homotopy F G) :
     Truncated.Edge (X := (truncation 2).obj (diagrams X)) (vertex F hF) (vertex G hG) :=
-  Classical.choose (exists_fullSubcomplexEdgeLift (zeroSecond X)
-    (vertex F hF) (vertex G hG) (functorEdgeOfSimplicialHomotopy H))
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_fullSubcomplexEdgeLift (zeroSecond X)
+    (vertex F hF) (vertex G hG) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
 
 lemma homotopyEdge_map (F G : (horn 2 2 : SSet.{u}) ⟶ X)
-    (hF : zeroSecond X (functorVertex F)) (hG : zeroSecond X (functorVertex G))
+    (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (H : SSet.Homotopy F G) :
     (homotopyEdge F G hF hG H).map ((truncation 2).map (inclusion X)) =
-      functorEdgeOfSimplicialHomotopy H :=
-  Classical.choose_spec (exists_fullSubcomplexEdgeLift (zeroSecond X)
-    (vertex F hF) (vertex G hG) (functorEdgeOfSimplicialHomotopy H))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H :=
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_fullSubcomplexEdgeLift (zeroSecond X)
+    (vertex F hF) (vertex G hG) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
 
-lemma homotopy_homMk_eq [Quasicategory X] [HasZeroVertex X]
+lemma homotopy_homMk_eq [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex X]
     (F G : (horn 2 2 : SSet.{u}) ⟶ X)
-    (hF : zeroSecond X (functorVertex F)) (hG : zeroSecond X (functorVertex G))
+    (hF : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (hG : zeroSecond X (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G))
     (H J : SSet.Homotopy F G)
-    (h : Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (stableHomotopyPrecomp horn₂₂.ι₀₂ H)) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (stableHomotopyPrecomp horn₂₂.ι₀₂ J))) :
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J) := by
+    (h : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp horn₂₂.ι₀₂ H)) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp horn₂₂.ι₀₂ J))) :
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J) := by
   let i := inclusion X
   let a := Truncated.HomotopyCategory.homMk (homotopyEdge F G hF hG H)
   let b := Truncated.HomotopyCategory.homMk (homotopyEdge F G hF hG J)
   have ha : (hoFunctor.map i).toFunctor.map a =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) :=
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) :=
     congrArg Truncated.HomotopyCategory.homMk (homotopyEdge_map F G hF hG H)
   have hb : (hoFunctor.map i).toFunctor.map b =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J) :=
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J) :=
     congrArg Truncated.HomotopyCategory.homMk (homotopyEdge_map F G hF hG J)
   have hab : a = b := by
     apply (first_isFullyFaithful X).toHoFullyFaithful.map_injective
@@ -70,7 +70,7 @@ lemma homotopy_homMk_eq [Quasicategory X] [HasZeroVertex X]
       ((hoFunctor.map i).toFunctor.map a) =
         (hoFunctor.map ((pre horn₂₂.ι₀₂).app X)).toFunctor.map
           ((hoFunctor.map i).toFunctor.map b)
-    rw [ha, hb, homMk_functorEdge_precomp, homMk_functorEdge_precomp]
+    rw [ha, hb, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp]
     exact h
   exact ha.symm.trans ((congrArg (fun f ↦ (hoFunctor.map i).toFunctor.map f) hab).trans hb)
 

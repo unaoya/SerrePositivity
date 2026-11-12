@@ -22,11 +22,11 @@ private lemma zeroTopTransportHomotopy_h {A X : SSet.{u}}
 
 private lemma zeroTopTransportComparison {A X : SSet.{u}} [Quasicategory X]
     {f g f' g' : A ⟶ X} (hf : f = f') (hg : g = g') (H : SSet.Homotopy f g)
-    (e : FunctorIso f g)
-    (he : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) = e.hom) :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g)
+    (he : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) = e.hom) :
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (Eq.mp (congrArg₂ (fun a b => SSet.Homotopy a b) hf hg) H)) =
-      (Eq.mp (congrArg₂ (fun a b => FunctorIso a b) hf hg) e).hom := by
+      (Eq.mp (congrArg₂ (fun a b => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso a b) hf hg) e).hom := by
   subst f' g'
   exact he
 
@@ -36,15 +36,15 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 local notation "Z" => dgKInputStableValue R
   (dgFixedNullInput R (dgOdotMilnorFlatKernelInput R d))
 
-variable (h : DGGluingMilnorSquare R d)
+variable (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：同じ元零角Top辺辺全体を結ぶ指定端点経路付きの実ホモトピー。
 方針：元全辺の等号で同じ元ホモトピーを輸送する。
 規約：新しい辺や充填を選ばない。使われ方：元下比較 prism の実零角Top辺面。 -/
 def dgOdotMilnorNuZeroTopDiagramHomotopy : SSet.Homotopy
-    (squareTopEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareTopEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} =>
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
+  Eq.mp (congrArg₂ (fun f g : (Δ[1] : SSet.{u + 2}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} =>
     SSet.Homotopy f g) (dgOdotMilnorNuZeroTopMap_diagram R d)
       (dgOdotMilnorNuZeroAbsoluteTopMap_diagram R d h))
         (dgOdotMilnorNuZeroTopArrowHomotopy R d)
@@ -64,24 +64,24 @@ lemma dgOdotMilnorNuZeroTopDiagramHomotopy_h :
 規約：元比較の射の等号。使われ方：元上下共有境界の保持。 -/
 lemma dgOdotMilnorNuZeroTopDiagramHomotopy_comparison :
     SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)) =
       (dgOdotMilnorNuZeroTopDiagramComparison R d h).hom :=
   zeroTopTransportComparison (dgOdotMilnorNuZeroTopMap_diagram R d)
     (dgOdotMilnorNuZeroAbsoluteTopMap_diagram R d h)
     (dgOdotMilnorNuZeroTopArrowHomotopy R d)
     (dgOdotMilnorNuZeroTopArrowComparison R d)
     (show SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopArrowHomotopy R d)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopArrowHomotopy R d)) =
         (dgOdotMilnorNuZeroTopArrowComparison R d).hom from rfl)
 
 /-- 概要：元零角Top辺面の実ホモトピーは同じ可逆な全零角Top辺比較を与える。
 方針：同じ指定比較の射への等号で可逆性を戻す。
 規約：元指定比較を保持。使われ方：元全比較 prism の実零角Top辺面。 -/
 lemma dgOdotMilnorNuZeroTopDiagramHomotopy_isInvertible :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)) := by
   change IsIso (SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (dgOdotMilnorNuZeroTopDiagramHomotopy R d h)))
   exact Eq.mp (congrArg (fun f => IsIso f)
     (dgOdotMilnorNuZeroTopDiagramHomotopy_comparison R d h)).symm
       (inferInstance : IsIso (dgOdotMilnorNuZeroTopDiagramComparison R d h).hom)
@@ -93,11 +93,11 @@ lemma dgOdotMilnorNuZeroTopDiagramHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuZeroTopDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (Z))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuZeroTopDiagramHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge :=
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge :=
   ⟨(congrArg (fun f => (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫ f)
       (dgOdotMilnorNuZeroTopDiagramHomotopy_h R d h)).trans
         (dgOdotMilnorNuZeroTopArrowHomotopy_paths R d).1,

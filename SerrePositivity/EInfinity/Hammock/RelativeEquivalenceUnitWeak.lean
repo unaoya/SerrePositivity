@@ -25,28 +25,28 @@ include G η hη ε hε
 /-- 概要：二つの元の単位を持つ相対逆の Hom 射は弱同値。
 方針：恒等と二つの元の合成の弱同値性を同じ自然変換で比較する。
 規約：元の相対関手の Hom 射自身。使われ方：fibrant 置換側の実 hammock 比較。 -/
-lemma colimitMap_weak_of_units : IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) := by
-  have hc : IsWeakHomotopyEquivalence (Relative.colimitMap (F.comp G) X Y) := by
+lemma colimitMap_weak_of_units : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (F.comp G) X Y) := by
     apply (RelativeNatural.weak_iff (F := LocalizerMorphism.id W) (G := F.comp G)
       η hη X Y).mp
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
-  have hd : IsWeakHomotopyEquivalence (Relative.colimitMap (G.comp F)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (G.comp F)
       (F.functor.obj X) (F.functor.obj Y)) := by
     apply (RelativeNatural.weak_iff (F := LocalizerMorphism.id V) (G := G.comp F) ε hε
       (F.functor.obj X) (F.functor.obj Y)).mp
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
   rw [Relative.colimitMap_comp] at hc hd
   exact (weak_middle_of_composites _ _ _ hc hd).cancel_right hc
 
 /-- 概要：同じ単位による相対逆の reduced Hom 射も弱同値。
 方針：元の colimit 比較を同じ reduced Hom の同型で輸送する。
 規約：元の実相対射を保つ。使われ方：局所化の写像空間の比較。 -/
-lemma reducedMap_weak_of_units : IsWeakHomotopyEquivalence (Relative.reducedMap F X Y) := by
-  have hs := (isPrecompositionEquivalence_of_iso
+lemma reducedMap_weak_of_units : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.reducedMap F X Y) := by
+  have hs := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (reducedColimitIso W X Y).symm).isWeakHomotopyEquivalence
-  have ht := (isPrecompositionEquivalence_of_iso
+  have ht := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (reducedColimitIso V (F.functor.obj X) (F.functor.obj Y))).isWeakHomotopyEquivalence
   exact hs.comp ((colimitMap_weak_of_units F G η hη ε hε X Y).comp ht)
 

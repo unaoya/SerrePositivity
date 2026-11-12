@@ -23,8 +23,8 @@ open SerrePositivity.EInfinity.Hammock.DoubleSimplicial
 使われ方：相対 fiber 供給の右項と照合する未置換実現。 -/
 def completionRelativeHeadRealization (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) : SSet.{u} :=
-  diagonalFunctor.obj (completionCokernelHeadIndex r ι ⋙
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) : SSet.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (completionCokernelHeadIndex r ι ⋙
     completionRelativeFlagRealizationDiagram (r + 1) f hf)
 
 /-- 概要：元の相対旗の先頭実現から元の wide 先頭実現への評価。
@@ -33,9 +33,9 @@ def completionRelativeHeadRealization (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：元の相対障害の消滅への比較射。 -/
 def completionRelativeHeadWideEvaluation (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionRelativeHeadRealization r ι f hf ⟶ completionWideHeadRealization r ι f hf :=
-  diagonalFunctor.map (Functor.whiskerLeft (completionCokernelHeadIndex r ι)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (Functor.whiskerLeft (completionCokernelHeadIndex r ι)
     (completionRelativeWideEvaluationNat (r + 1) f hf))
 
 /-- 概要：Sp-8 (1) 入力下で元の相対先頭評価は弱ホモトピー同値。
@@ -44,13 +44,13 @@ def completionRelativeHeadWideEvaluation (r : ℕ) (ι : Fin r → SimplexCatego
 使われ方：元の相対障害への bar の高次消滅の移送。 -/
 lemma completionRelativeHeadWideEvaluation_isWeak_of_input (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (input : ∀ n : SimplexCategoryᵒᵖ,
       CompletionCoreFlagEvaluationInput (r + 1) ((completionCokernelHeadIndex r ι).obj n) f) :
-    IsWeakHomotopyEquivalence (completionRelativeHeadWideEvaluation r ι f hf) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionRelativeHeadWideEvaluation r ι f hf) := by
   let τ := Functor.whiskerLeft (completionCokernelHeadIndex r ι)
     (completionRelativeWideEvaluationNat (r + 1) f hf)
-  have hτ (n : SimplexCategoryᵒᵖ) : IsWeakHomotopyEquivalence (τ.app n) :=
+  have hτ (n : SimplexCategoryᵒᵖ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (τ.app n) :=
     completionRelativeFlagWideEvaluation_isWeak_of_input (r + 1)
       ((completionCokernelHeadIndex r ι).obj n) f hf (input n)
   exact diagonalFunctor_map_weak τ hτ
@@ -61,21 +61,21 @@ lemma completionRelativeHeadWideEvaluation_isWeak_of_input (r : ℕ)
 使われ方：元の相対 fiber 比較へ渡す右項の高次消滅。 -/
 lemma completionRelativeHead_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (input : ∀ m : SimplexCategoryᵒᵖ,
       CompletionCoreFlagEvaluationInput (r + 1) ((completionCokernelHeadIndex r ι).obj m) f)
     (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) := by
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) := by
   let p := completionRelativeHeadWideEvaluation r ι f hf
-  have hw := F2.continuousKanReplacement_map_isWeakHomotopyEquivalence p
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_map_isWeakHomotopyEquivalence p
     (completionRelativeHeadWideEvaluation_isWeak_of_input r ι f hf input)
   have hπ := Spectra.kanPiIsomorphism_of_qCatEquivalence _
     hw.isSimplicialHomotopyEquivalence.isQCatEquivalence
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) n
-        ((F2.continuousKanReplacement.map p).app (Opposite.op ⦋0⦌) x)) :=
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionWideHeadRealization r ι f hf)) n
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map p).app (Opposite.op ⦋0⦌) x)) :=
     completionWideHead_higher_of_input h r ι f hf n hn _
   exact Function.Injective.subsingleton ((hπ x n).1)
 

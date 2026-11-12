@@ -10,7 +10,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory MonoidalClosed
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 private lemma arrow_transport_of_eq {C : Type*} [Category* C] {x y x' y' : C}
@@ -23,18 +23,18 @@ private lemma arrow_transport_of_eq {C : Type*} [Category* C] {x y x' y' : C}
 
 lemma normalizedTensorDerivedPinchedFamily_eq_roof :
     let K := nerve (normalizedTensorElementIndex A X Y)
-    let V := fun z : (derivedInfinityCategory A) _⦋0⦌ =>
-      HomotopyCategory.mk (functorVertex (SSet.const (X := K) z))
+    let V := fun z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ =>
+      HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (X := K) z))
     eqToHom (congrArg V (complexOrdinaryAmbient_vertex A X)) ≫
-      intervalFamilyHom (normalizedTensorElementDerivedPinchedMap A X Y ≫
-        pinchedHomToIntervalMappingSpace (X := derivedInfinityCategory A)
-          ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
-          ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex Y))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (normalizedTensorElementDerivedPinchedMap A X Y ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+          ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
+          ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y))) ≫
       eqToHom (congrArg V (complexOrdinaryAmbient_vertex A Y).symm) =
         normalizedTensorElementDerivedRoofFamily A X Y := by
   let K := nerve (normalizedTensorElementIndex A X Y)
-  let V := fun z : (derivedInfinityCategory A) _⦋0⦌ =>
-    HomotopyCategory.mk (functorVertex (SSet.const (X := K) z))
+  let V := fun z : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌ =>
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (X := K) z))
   exact arrow_transport_of_eq
     (congrArg V (complexOrdinaryAmbient_vertex A X).symm)
     (congrArg V (complexOrdinaryAmbient_vertex A Y).symm) _ _

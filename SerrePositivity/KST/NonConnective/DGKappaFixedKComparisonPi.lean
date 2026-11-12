@@ -16,7 +16,7 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 
 private theorem comparisonInversePi_left {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) (j : ℤ) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) (j : ℤ) :
     (OmegaSpectrum.homotopyMap (OmegaSpectrum.levelwiseInverse f hf) j).comp
       (OmegaSpectrum.homotopyMap f j) = MonoidHom.id _ := by
   have h := spectrumHomotopyMap_eq_of_levelwise_component
@@ -25,7 +25,7 @@ private theorem comparisonInversePi_left {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
   simpa only [OmegaSpectrum.homotopyMap_comp, OmegaSpectrum.homotopyMap_id] using h
 
 private theorem comparisonInversePi_right {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) (j : ℤ) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) (j : ℤ) :
     (OmegaSpectrum.homotopyMap f j).comp
       (OmegaSpectrum.homotopyMap (OmegaSpectrum.levelwiseInverse f hf) j) = MonoidHom.id _ := by
   have h := spectrumHomotopyMap_eq_of_levelwise_component

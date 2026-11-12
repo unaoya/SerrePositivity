@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の左結合した二回の組み立ての、三 cell 上の評価。 -/
 lemma cubicalSerreDayInverse_leftTriple {K L M : CubicalSet.{u}}
-    (a b c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b)) (z : M.obj (op c)) :
+    (a b c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b)) (z : M.obj (op c)) :
     cubicalSerreCellTriple A a b c x y z ≫
         cubicalSerreDayInverse A K L ▷ (cubicalSerreChains A).obj M ≫
           cubicalSerreDayInverse A (cubicalDayTensor K L) M =
@@ -39,7 +39,7 @@ lemma cubicalSerreDayInverse_leftTriple {K L M : CubicalSet.{u}}
 
 /-- 元の右結合した二回の組み立ての、三 cell 上の評価。 -/
 lemma cubicalSerreDayInverse_rightTriple {K L M : CubicalSet.{u}}
-    (a b c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b)) (z : M.obj (op c)) :
+    (a b c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op a)) (y : L.obj (op b)) (z : M.obj (op c)) :
     cubicalSerreCellTriple A a b c x y z ≫
         (α_ ((cubicalSerreChains A).obj K) ((cubicalSerreChains A).obj L)
           ((cubicalSerreChains A).obj M)).hom ≫

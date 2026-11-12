@@ -14,7 +14,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ第一 W 辺と同じ第二 cofiber の全有限反復の元の射対。 -/
-def composableWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def composableWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     (multiRealizationFunctor r).obj (composableWeakArrowModel q) ⟶
       (multiRealizationFunctor r).obj (weakArrowModel q) ⊗
         (multiRealizationFunctor r).obj (closedStableModel (kernelClosedPredicate q)) :=
@@ -22,8 +22,8 @@ def composableWeakMultiStep {B C : _root_.SerrePositivity.InfinityCategories.Sta
     ((multiRealizationFunctor r).map (composableWeakCofiberExact q 1))
 
 /-- 元の二辺の単回実現の射対は局所化同型。 -/
-theorem composableWeakMultiStep_one_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+theorem composableWeakMultiStep_one_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     IsIso (AnodyneHomotopy.anodyneQ.map (composableWeakMultiStep q 1)) :=
   singlePair_localized_isIso_of_objectPair (composableWeakFirstExact q)
     (composableWeakCofiberExact q 1) (composableWeakObjectStep_localized_isIso q)

@@ -19,7 +19,7 @@ def cubeDeletionConnectionNormalId (n : ℕ) : CubeDeletionConnectionNormal n n 
   cubeDeletionConnectionNormalFrom (cubeConnectionNormalId n)
 
 /-- 追加の入力削除を、元の削除因子へ吸収する。 -/
-def cubeDeletionConnectionNormalPrepend {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
+def cubeDeletionConnectionNormalPrepend {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
     (r : CubeDeletionConnectionNormal a m) : CubeDeletionConnectionNormal n m :=
   ⟨r.middle, cubeDeletionNormalComp d r.deletion, r.connection⟩
 
@@ -41,10 +41,10 @@ lemma cubeDeletionConnectionNormalId_vertex (n : ℕ) :
     (congrFun (cubeConnectionNormalId_vertex n) x)
 
 /-- 追加の入力削除の吸収は、元の頂点関数の前合成を回収する。 -/
-lemma cubeDeletionConnectionNormalPrepend_vertex {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
+lemma cubeDeletionConnectionNormalPrepend_vertex {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
     (r : CubeDeletionConnectionNormal a m) :
     cubeDeletionConnectionNormalVertex (cubeDeletionConnectionNormalPrepend d r) =
-      cubeDeletionConnectionNormalVertex r ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d := by
+      cubeDeletionConnectionNormalVertex r ∘ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d := by
   dsimp only [cubeDeletionConnectionNormalVertex, cubeDeletionConnectionNormalPrepend]
   rw [cubeDeletionNormalComp_vertex]
   rfl
@@ -53,7 +53,7 @@ lemma cubeDeletionConnectionNormalPrepend_vertex {n a m : ℕ} (d : _root_.Serre
 lemma cubeDeletionConnectionNormalConnect_vertex {n m : ℕ}
     (r : CubeDeletionConnectionNormal n (m + 2)) (i : Fin (m + 1)) :
     cubeDeletionConnectionNormalVertex (cubeDeletionConnectionNormalConnect r i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i ∘ cubeDeletionConnectionNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i ∘ cubeDeletionConnectionNormalVertex r := by
   dsimp only [cubeDeletionConnectionNormalVertex, cubeDeletionConnectionNormalConnect]
   rw [cubeConnectionNormalVertex_connect]
   rfl
@@ -62,7 +62,7 @@ lemma cubeDeletionConnectionNormalConnect_vertex {n m : ℕ}
 lemma cubeDeletionConnectionNormalDelete_vertex {n m : ℕ}
     (r : CubeDeletionConnectionNormal n (m + 1)) (i : Fin (m + 1)) :
     cubeDeletionConnectionNormalVertex (cubeDeletionConnectionNormalDelete r i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i ∘ cubeDeletionConnectionNormalVertex r := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy m i ∘ cubeDeletionConnectionNormalVertex r := by
   dsimp only [cubeDeletionConnectionNormalDelete]
   rw [cubeDeletionConnectionNormalPrepend_vertex, cubeConnectionNormalDelete_vertex]
   rfl
@@ -75,7 +75,7 @@ lemma serreCubeDeletionConnectionNormal_id (n : ℕ) :
   (serreCubeDeletionConnectionNormal_from A _).trans (serreCubeConnectionNormal_id A n)
 
 /-- 入力削除の吸収は、元の Serre 射の同じ前合成。 -/
-lemma serreCubeDeletionConnectionNormal_prepend {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
+lemma serreCubeDeletionConnectionNormal_prepend {n a m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
     (r : CubeDeletionConnectionNormal a m) :
     serreCubeDeletionConnectionNormal A (cubeDeletionConnectionNormalPrepend d r) =
       serreCubeDeletionNormal A d ≫ serreCubeDeletionConnectionNormal A r := by

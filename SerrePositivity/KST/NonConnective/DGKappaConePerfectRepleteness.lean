@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
-public import SerrePositivity.InfinityCategories.Derived.DGModuleKappaCompactClassicalTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactClassicalTransport
 
 /-!
 概要：元の cone 内の頂点同型は、同じ主導来 perfect 集合の所属を保存する。
@@ -20,18 +20,18 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 同じ実 cone 内の指定頂点同型は、元の主導来加群の同型を誘導する。 -/
 def dgKappaConeVertexIso_classicalIso {M N : DGKappaCone R D I}
-    (e : VertexIso (X := dgNerve R (DGKappaCone R D I))
-      (DGNerve.Simplex.vertex M) (DGNerve.Simplex.vertex N)) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex M) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)) :
     (moduleToDerived R D).obj M.val ≅ (moduleToDerived R D).obj N.val :=
-  (dgConeModuleDerivedVertex_classicalIso R D M.val).symm ≪≫
-    (dgModuleDerivedHoComparison R D).mapIso
-      (VertexIso.map e (dgKappaConeDerivedComparison R D I)) ≪≫
-        dgConeModuleDerivedVertex_classicalIso R D N.val
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgConeModuleDerivedVertex_classicalIso R D M.val).symm ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedHoComparison R D).mapIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (dgKappaConeDerivedComparison R D I)) ≪≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgConeModuleDerivedVertex_classicalIso R D N.val
 
 /-- 実 cone の同型頂点で、商の元の perfect 零化集合の所属は同値。 -/
 theorem dgKappaConePerfectObjects_iff_of_vertexIso {M N : DGKappaCone R D I}
-    (e : VertexIso (X := dgNerve R (DGKappaCone R D I))
-      (DGNerve.Simplex.vertex M) (DGNerve.Simplex.vertex N)) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D I))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex M) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)) :
     M ∈ dgKappaConePerfectObjects R D I ↔ N ∈ dgKappaConePerfectObjects R D I := by
   have h := dgKappaConeVertexIso_classicalIso R D I e
   exact ⟨(modulePerfect R D).prop_of_iso h, (modulePerfect R D).prop_of_iso h.symm⟩

@@ -71,7 +71,7 @@ def monicKPrismCompositeBinaryPointTriangle (n : ℕ) :=
 lemma monicKPrismCompositeBinaryPointTriangle_realization (n : ℕ) :
     SSet.yonedaEquiv.symm (monicKPrismCompositeBinaryPointTriangle F f g n).simplex =
       SSet.yonedaEquiv.symm (monicKPrismCompositeBinaryTriangle F f g n).simplex ≫
-        evaluateFunctorAt (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) :=
   familyChainBinaryCompositionPointTriangle_realization _ _ _ _ _
 
 end SerrePositivity.KST.SConstruction

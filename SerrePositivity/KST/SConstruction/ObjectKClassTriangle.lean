@@ -21,9 +21,9 @@ lemma objectBoundaryEdge_objectKClass (X : StableModel.{u})
     (e : (objectSConstruction X.carrier) _⦋1⦌) :
     kZeroFundamentalGroupEquiv X
       (Additive.toMul (objectKClass X ((sOneComparison X.carrier).app _ e))) =
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X e))⁻¹ := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X e))⁻¹ := by
   let d : (coreSConstruction 1 X.carrier) _⦋0⦌ :=
-    ⟨e, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+    ⟨e, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
       (X := sConstruction 1 X.carrier) e⟩
   let B := (boundaryKanRealizationFunctor 0).obj X
   let t := (SphereSimplex.equiv B 1).symm (objectBoundaryEdge X e)
@@ -31,10 +31,10 @@ lemma objectBoundaryEdge_objectKClass (X : StableModel.{u})
     objectBoundaryEdge_loop X e
   have hc : SphereSimplex.componentEquiv B 0
       (objectKPiZeroClass X ((sOneComparison X.carrier).app _ e)) =
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X e) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X e) := by
     have hp := (objectKPiZeroClass_sOne X d).trans (congrArg SSet.π₀.mk hv)
     have hs := SphereSimplex.componentClass_familyVertex B 0 t
-    have ht := congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ((SphereSimplex.equiv B 1).apply_symm_apply
+    have ht := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk ((SphereSimplex.equiv B 1).apply_symm_apply
       (objectBoundaryEdge X e))
     exact (congrArg (SphereSimplex.componentEquiv B 0) hp).trans (hs.trans ht)
   exact (kZeroFundamentalGroupEquiv_objectKClass X _).trans (congrArg Inv.inv hc)

@@ -117,27 +117,43 @@ class Migration:
         self.opens = plan.get("opens", {})
         self.existing_aliases = plan.get("existing_aliases", {})
         self.symbols = {}
+        self.field_exports = defaultdict(list)
+        export_names = set()
         self.namespace_origins = {old for table in self.namespaces.values()
                                   for old, new in table.items() if old != new}
-        public = set()
+        public = defaultdict(list)
         for row in plan["rows"]:
             old, new = row["old"], validate_name(row["new"])
             owner = validate_name(row["module"])
             private = old.startswith("_private.")
             validate_name(private_user_name(owner, old))
             key = owner, old
-            if key in self.symbols or (not private and old in public):
+            if key in self.symbols:
                 raise ValueError(f"duplicate symbol: {key}")
             if new == old:
                 raise ValueError(f"identity rename: {key}")
             if not private:
-                public.add(old)
+                public[old].append(row)
             self.symbols[key] = row
-        self.old_public = public
+            if receiver := row.get("field_namespace"):
+                receiver = validate_name(receiver)
+                new_parent, _, leaf = new.rpartition(".")
+                exported = f"{receiver}.{leaf}"
+                if (private or not new_parent or leaf != old.rsplit(".", 1)[-1]
+                        or exported == new or exported in export_names):
+                    raise ValueError(f"invalid or ambiguous field export: {key} -> {exported}")
+                self.field_exports[owner].append((old, new_parent, receiver, leaf))
+                export_names.add(exported)
+        # A name alone can be ambiguous across isolated module environments.
+        # Keep the fallback only when there is one possible definition.
+        self.public_symbols = {old: rows[0] for old, rows in public.items() if len(rows) == 1}
+        self.old_public = set(public)
         destinations = [row["new"] for row in self.symbols.values() if not row["old"].startswith("_private.")]
         if len(destinations) != len(set(destinations)):
             raise ValueError("duplicate public destination")
-        if public.intersection(destinations):
+        if export_names.intersection(destinations):
+            raise ValueError("field export shadows a canonical name")
+        if self.old_public.intersection(destinations):
             raise ValueError("old public names overlap new public destinations")
         for old, new in self.modules.items():
             validate_name(old)
@@ -151,7 +167,8 @@ class Migration:
                 validate_name(new)
         for old, new in self.opens.items():
             validate_name(old)
-            validate_name(new)
+            if new is not None:
+                validate_name(new)
         for old, new in self.existing_aliases.items():
             validate_name(old)
             validate_name(new)
@@ -201,7 +218,36 @@ def rewrite(data, migration):
     for ref in data["refs"]:
         refs[check_span(ref)].append(ref)
 
-    for row in sorted((r for r in data["commands"] if "start" in r), key=lambda r: r["start"]):
+    commands = sorted((r for r in data["commands"] if "start" in r), key=lambda r: r["start"])
+    simple_opens = defaultdict(list)
+    for row in commands:
+        if row["kind"] == "open" and row["mode"] == "simple" and "start" in row["command"]:
+            simple_opens[check_span(row["command"])].append(row)
+    removed_opens = set()
+    for (lo, hi), operands in simple_opens.items():
+        removed = [r for r in operands if len(r["names"]) == 1
+                   and migration.opens.get(r["names"][0], r["names"][0]) is None]
+        if not removed:
+            continue
+        spans = [check_span(r) for r in operands]
+        line = source.rfind(b"\n", 0, lo) + 1
+        if (spans[0][0] != lo or spans[-1][1] != hi
+                or not re.fullmatch(rb"[ \t]*open[ \t]+", source[line:lo])
+                or any(not re.fullmatch(rb"[ \t]+", source[a:b])
+                       for (_, a), (b, _) in zip(spans, spans[1:]))):
+            continue
+        if len(removed) == len(operands):
+            edit({"start": line, "stop": hi}, "")
+        else:
+            for row in removed:
+                start, stop = check_span(row)
+                while start > line and source[start - 1:start] in (b" ", b"\t"):
+                    start -= 1
+                edit({"start": start, "stop": stop}, "")
+        removed_opens.update(check_span(r) for r in removed)
+        changed_opens.update(r["names"][0] for r in removed)
+
+    for row in commands:
         kind = row["kind"]
         if kind == "namespace":
             new = rename_prefix(row["name"], ns_map)
@@ -232,15 +278,22 @@ def rewrite(data, migration):
             if ns_map:
                 block(row, "with_weak_namespace requires an explicit scope review")
         elif kind == "open":
+            if check_span(row) in removed_opens:
+                continue
             names = row["names"]
             written = spelling(row)
             new_names = [migration.opens.get(n, n) for n in names]
+            if None in new_names:
+                block(row, "obsolete namespace requires a plain top-level open")
+                continue
             policy_match = written.removeprefix("_root_.") in migration.opens
             if any(n not in migration.opens and any(under(n, old) for old in migration.namespace_origins)
                    for n in names):
                 block(row, "explicit opens policy needed for a renamed namespace")
                 continue
-            if not names and (policy_match or ns_map):
+            relative_policy = any(old.endswith("." + written.removeprefix("_root_."))
+                                  for old in migration.opens)
+            if not names and (policy_match or ns_map or relative_policy):
                 block(row, "namespace operand could not be resolved")
                 continue
             changed_opens.update(n for n, new in zip(names, new_names) if n != new)
@@ -281,14 +334,44 @@ def rewrite(data, migration):
             if ref["kind"] == "binder" and (target := migration.target(ref)):
                 binder_parents[ref["module"]].append(target)
 
+    record_labels = [check_span(r) for r in data["commands"]
+                     if r["kind"] == "record-label" and "start" in r]
     for (a, b), candidates in refs.items():
         old_text = source[a:b].decode()
+        # A cases/induction alternative names a constructor by its leaf. Lean
+        # rejects a fully qualified name there, even when it names that same
+        # constructor. Preserve an unchanged short label; term occurrences below
+        # still receive their canonical name.
+        line_start = source.rfind(b"\n", 0, a) + 1
+        short_alternative = ("." not in old_text and
+                             re.fullmatch(rb"[ \t]*\|[ \t]+@?", source[line_start:a]) is not None)
+        if short_alternative and all(
+                (target := migration.target(ref)) is None or
+                target["new"].rsplit(".", 1)[-1] == old_text
+                for ref in candidates):
+            continue
+        record_label = any(lo <= a and b <= hi for lo, hi in record_labels)
         replacements = set()
         other_resolution = False
+        field_binder = any(ref["kind"] == "binder" and
+                           (migration.target(ref) or {}).get("field_namespace")
+                           for ref in candidates)
         for ref in candidates:
+            # The command elaborator may also record a local at the position
+            # of a qualified declaration binder.
+            if field_binder and ref["kind"] == "local":
+                continue
             row = migration.target(ref)
             old = private_user_name(ref["module"], ref["name"])
             name = row["new"] if row else old
+            if record_label:
+                if row and (ref["kind"] != "field" or name.rsplit(".", 1)[-1] != old.rsplit(".", 1)[-1]):
+                    block(ref, f"structure field label requires review for {old}")
+                continue
+            if ref["kind"] == "syntax" and old_text.startswith("@") and any(
+                    inner["kind"] == "term" and (inner["module"], inner["name"]) == (ref["module"], ref["name"])
+                    for inner in refs.get((a + 1, b), ())):
+                continue
             curr = ref["namespace"]
             new_curr = rename_prefix(curr, ns_map)
             parents = []
@@ -296,6 +379,21 @@ def rewrite(data, migration):
                 parts = PARTS.findall(curr)
                 parents = [".".join(parts[:i]) for i in range(1, len(parts) + 1)]
             loses_relative_scope = any(old == prefix + "." + old_text for prefix in (*parents, *changed_opens))
+            if row is None and ref["kind"] == "field":
+                parent_name = old.rpartition(".")[0]
+                receiver = (migration.symbols.get((ref["module"], parent_name))
+                            or migration.public_symbols.get(parent_name))
+                if receiver and receiver["new"] != parent_name:
+                    block(ref, f"unmoved extension on renamed receiver requires an explicit call or export for {old}")
+                    continue
+            if row is None and ref["kind"] in ("term", "syntax"):
+                parents = [old.rpartition(".")[0]]
+                if old.endswith("_assoc"):
+                    parents.append(old[:-6])
+                if any((parent := migration.symbols.get((ref["module"], name)))
+                       and parent["new"] != name for name in parents):
+                    block(ref, f"unmapped member of renamed declaration requires review for {old}")
+                    continue
             if row is None and not loses_relative_scope:
                 if ref["kind"] in ("local", "term", "field"):
                     other_resolution = True
@@ -306,8 +404,11 @@ def rewrite(data, migration):
             if ref["kind"] == "field" or (dotted and ref["kind"] != "binder"):
                 old_parent, _, old_field = old.rpartition(".")
                 new_parent, _, new_field = name.rpartition(".")
-                parent = migration.symbols.get((ref["module"], old_parent))
-                if old_text == old_field and parent and parent["new"] == new_parent:
+                parent = (migration.symbols.get((ref["module"], old_parent))
+                          or migration.public_symbols.get(old_parent))
+                exports_receiver = row is not None and bool(row.get("field_namespace"))
+                stays_with_type = parent is not None and parent["new"] == new_parent
+                if old_text == old_field and (stays_with_type or exports_receiver):
                     replacements.add(new_field)
                     continue
                 block(ref, f"field notation requires checking receiver for {old}")
@@ -319,7 +420,7 @@ def rewrite(data, migration):
                 if not row:
                     continue
                 normal = old_text.removeprefix("_root_.")
-                if normal == old:
+                if normal == old or (row.get("field_namespace") and old.endswith("." + normal)):
                     replacements.add("_root_." + name)
                 elif (normal == old.rsplit(".", 1)[-1] and
                       any(old.startswith(parent["old"] + ".") and name.rpartition(".")[0] ==
@@ -346,6 +447,27 @@ def rewrite(data, migration):
             else:
                 edit(candidates[0], next(iter(replacements)))
 
+    # Register a new field spelling where the receiver's namespace differs from
+    # the method's storage namespace. Lean export adds a name-resolution entry,
+    # without adding a second kernel declaration.
+    if migration.field_exports.get(module):
+        declarations = [r for r in data["commands"]
+                        if r["kind"] == "declaration-command" and "start" in r]
+        insertions = defaultdict(list)
+        for old, target, receiver, leaf in migration.field_exports[module]:
+            binders = [r for candidates in refs.values() for r in candidates
+                       if r["kind"] == "binder" and r["module"] == module and r["name"] == old]
+            ranges = {check_span(r) for r in binders}
+            containing = [cmd for cmd in declarations
+                          if any(cmd["start"] <= a and b <= cmd["stop"] for a, b in ranges)]
+            if len(ranges) != 1 or len(containing) != 1:
+                diagnostics.append({"name": old, "reason": "field export requires one positioned declaration"})
+                continue
+            _, stop = check_span(containing[0])
+            insertions[stop].append(f"with_weak_namespace _root_.{receiver} export _root_.{target} ({leaf})")
+        for stop, commands in insertions.items():
+            edits[stop, stop] = "\n\n" + "\n".join(sorted(commands)) + "\n"
+
     text = source.decode()
     code = code_only(text)
     for match in IMPORT.finditer(code):
@@ -356,12 +478,24 @@ def rewrite(data, migration):
 
     # A qualified name in quoted or custom syntax can lack a semantic reference.
     # Keep such spans for review instead of blindly editing the token.
-    ranges = sorted(set(refs) | set(edits))
+    raw_ranges = sorted(set(refs) | set(edits))
+    ranges = []
+    for lo, hi in raw_ranges:
+        # A global value and its projection can have separate semantic spans.
+        # Bridge only literal dots; an unindexed member still requires review.
+        if ranges and (lo <= ranges[-1][1] or
+                       source[ranges[-1][1]:lo].strip(b".") == b""):
+            ranges[-1] = (ranges[-1][0], max(ranges[-1][1], hi))
+        else:
+            ranges.append((lo, hi))
     ends = []
     for _, stop in ranges:
         ends.append(max(ends[-1] if ends else 0, stop))
     for token in IDENT.finditer(code):
-        if token[0].removeprefix("_root_.") not in migration.old_public:
+        literal = token[0].removeprefix("_root_.")
+        if (literal not in migration.old_public and
+                literal.rpartition(".")[0] not in migration.old_public and
+                not (literal.endswith("_assoc") and literal[:-6] in migration.old_public)):
             continue
         a, b = (len(text[:p].encode()) for p in token.span())
         index = bisect_right(ranges, (a, len(source))) - 1
@@ -400,7 +534,11 @@ def select_aliases(inputs, migration):
     selected = {}
     for key, uses in sorted(used.items()):
         row = migration.symbols[key]
-        selected[row["old"]] = {**row, "uses": sorted(uses)}
+        old = row["old"]
+        if old in selected:
+            other = selected[old]["module"]
+            raise ValueError(f"alias {old} resolves to both {other} and {row['module']}; separate the scopes")
+        selected[old] = {**row, "uses": sorted(uses)}
     return selected, {name: sorted(uses) for name, uses in sorted(existing.items())}
 
 

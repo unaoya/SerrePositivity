@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -38,15 +38,15 @@ lemma complexToClosed_precomposition {P Q : Complex A} (f : P ⟶ Q) (T : Comple
   exact (homPrecompose_closedMap A f T).symm
 
 lemma complexPinchedPrecomposition_family {P Q : Complex A} (f : P ⟶ Q) (T : Complex A)
-    (K : SSet.{u + 1}) (g : K ⟶ DGNerve.pinchedHom A (Complex A) Q T) :
-    dgPinchedFamilyHom A (Complex A) (g ≫ pinchedHomChainMap (homPrecompose f T)) =
-      constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫
-          dgPinchedFamilyHom A (Complex A) g := by
+    (K : SSet.{u + 1}) (g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) Q T) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (g ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPrecompose f T)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) ≫
+          _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) g := by
   have h := pinchedEnrichedPrecomposition_family A (Complex A)
     ((complexToClosed A).map f) g
-  change dgPinchedFamilyHom A (Complex A)
-    (g ≫ pinchedHomChainMap (D := Complex A) (E := Complex A)
+  change _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
+    (g ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A)
       (eHomWhiskerRight (Complex A) ((complexToClosed A).map f)
         (ForgetEnrichment.of (Complex A) T))) = _ at h
   rw [complexToClosed_precomposition] at h

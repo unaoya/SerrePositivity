@@ -24,48 +24,48 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory MonoidalCategory
-open SerrePositivity.KST.Comparison
+
 
 /-- 概要：相対関手は Kan 化した局所化の豊穣関手を与える（Dwyer–Kan）。
 方針：同じ Ex∞ の関手則と tensorator の自然性を使う。
 規約：各 Hom の作用は元の係数射の Ex∞ 像そのもの。
 使われ方：Kan な局所化の coherent nerve への後合成。 -/
-def kanLocalizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def kanLocalizationEnrichedMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     EnrichedFunctor SSet.{u} (KanLocalizationObjects C) (KanLocalizationObjects D) where
   obj := F.functor.obj
-  map X Y := exInfinity.map (localizationHomMap F X Y)
+  map X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y)
   map_id X := by
-    change (Functor.LaxMonoidal.ε exInfinity ≫ exInfinity.map (localizationIdentity C X)) ≫
-      exInfinity.map (localizationHomMap F X X) =
-        Functor.LaxMonoidal.ε exInfinity ≫
-          exInfinity.map (localizationIdentity D (F.functor.obj X))
+    change (Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity C X)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X X) =
+        Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationIdentity D (F.functor.obj X))
     have hi : localizationIdentity C X ≫ localizationHomMap F X X =
         localizationIdentity D (F.functor.obj X) :=
       (localizationEnrichedMap F).map_id (show LocalizationObjects C from X)
-    rw [Category.assoc, ← exInfinity.map_comp, hi]
+    rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, hi]
   map_comp X Y Z := by
-    change (Functor.LaxMonoidal.μ exInfinity _ _ ≫
-        exInfinity.map (localizationComposition C X Y Z)) ≫
-          exInfinity.map (localizationHomMap F X Z) =
-      (exInfinity.map (localizationHomMap F X Y) ⊗ₘ
-        exInfinity.map (localizationHomMap F Y Z)) ≫
-          Functor.LaxMonoidal.μ exInfinity _ _ ≫
-            exInfinity.map (localizationComposition D (F.functor.obj X)
+    change (Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition C X Y Z)) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F X Y) ⊗ₘ
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationHomMap F Y Z)) ≫
+          Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (localizationComposition D (F.functor.obj X)
               (F.functor.obj Y) (F.functor.obj Z))
     have hc : localizationComposition C X Y Z ≫ localizationHomMap F X Z =
         (localizationHomMap F X Y ⊗ₘ localizationHomMap F Y Z) ≫
           localizationComposition D (F.functor.obj X) (F.functor.obj Y) (F.functor.obj Z) :=
       (localizationEnrichedMap F).map_comp (show LocalizationObjects C from X)
         (show LocalizationObjects C from Y) (show LocalizationObjects C from Z)
-    rw [Category.assoc, ← exInfinity.map_comp, hc,
-      exInfinity.map_comp, ← Category.assoc, ← Functor.LaxMonoidal.μ_natural,
+    rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, hc,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_comp, ← Category.assoc, ← Functor.LaxMonoidal.μ_natural,
       Category.assoc]
 
 /-- 概要：Kan 化した同じ豊穣係数射の基礎関手（Dwyer–Kan）。
 方針：同じ ForgetEnrichment の標準関手を使う。
 規約：同じ Kan Hom への作用を保持する。
 使われ方：局所 Kan な単体的圏の係数比較。 -/
-def kanLocalizationFunctor {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def kanLocalizationFunctor {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     KanLocalizationCategory C ⥤ KanLocalizationCategory D :=
   (kanLocalizationEnrichedMap F).forget
 

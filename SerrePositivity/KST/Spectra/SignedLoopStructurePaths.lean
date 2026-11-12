@@ -24,17 +24,17 @@ lemma kanAdjoint_signedLoopTail_basedChain {X : KanSequence.{u}}
       (PointedSimplicialSet.circle.{u} ◁ kanAdjoint X n ≫ (signedLoopTail X).sigma n)
       (X.sigma n ≫ kanAdjoint X (n + 1)) := by
   have hc : PointedMapping.VerticalChain
-      (PointedObject.toPoint (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((signedLoopTail X).level (n + 1)).space))
+      (PointedObject.toPoint (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((signedLoopTail X).level (n + 1)).space))
       (curry (PointedSimplicialSet.circle.{u} ◁ kanAdjoint X n ≫ (signedLoopTail X).sigma n))
       (curry (X.sigma n ≫ kanAdjoint X (n + 1))) := by
     rw [curry_natural_left, curry_natural_right]
     change PointedMapping.VerticalChain _
-      (kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n) ≫
+      (kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n) ≫
         (ihom PointedSimplicialSet.circle.{u}).map (kanAdjoint X (n + 1)))
     erw [signedLoopTail_adjoint X n, ← kanAdjoint_comparison X n,
       ← kanAdjoint_comparison X (n + 1)]
-    exact SignedAdjointPaths.chain (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma (n + 2)))
+    exact SignedAdjointPaths.chain (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma (n + 2)))
       (hX (n + 2)) (kanAdjoint X n) (kanAdjoint X (n + 1))
   have hu := hc.basedUncurry
   simp only [uncurry_curry] at hu

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawTransportModelUnit
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalNativeFiberComparisonImage
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerHEq
 
 /-!
 概要：元の native 輸送模型比較と余錐単位比較を合成して、元の上側 native 因子の逆へ戻す。

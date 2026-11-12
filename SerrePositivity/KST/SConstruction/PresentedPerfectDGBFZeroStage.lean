@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedStandardLoopEvaluation
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryKanFunctor
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 厳密 dg 入力における元の ΩB₀ と評価
 概要：元の零次境界商の Ex∞ を B₀ とし、零段 ΩB₀ と評価 ΣΩB₀→B₀ を構成する。
@@ -26,7 +26,7 @@ def presentedPerfectDGBFBaseFunctor :
 /-- 同じ元の B₀ の基礎単体集合は Ex∞ Kan 複体。 -/
 instance presentedPerfectDGBFBase_kanComplex (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFBaseFunctor A).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- BF の零段は、同じ元の B₀ の loop 対象 ΩB₀。 -/
 def presentedPerfectDGBFZeroFunctor :
@@ -69,14 +69,14 @@ lemma presentedPerfectDGBFZeroEvaluation_whisker (C D : PerfDGInput.{u, v} A) :
 def presentedPerfectDGBFZeroEvaluationTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGBFZeroSuspensionFunctor A) (presentedPerfectDGBFBaseFunctor A) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (presentedPerfectDGBFZeroEvaluation A)
     (presentedPerfectDGBFZeroEvaluation_whisker A)
 
 /-- 零段の同じ元の値は Kan 複体。 -/
 lemma presentedPerfectDGBFZero_kanComplex (C : PerfDGInput.{u, v} A) :
     KanComplex (((presentedPerfectDGBFZeroFunctor A).obj C).obj).right := by
   let _ : KanComplex (((presentedPerfectDGBFBaseFunctor A).obj C).obj).right :=
-    Comparison.exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact loopSpace_kanComplex _
 
 end SerrePositivity.KST.SConstruction

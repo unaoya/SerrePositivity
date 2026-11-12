@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality
 public import SerrePositivity.EInfinity.SimplicialLocalization.LocalizedResolutionFunctoriality
 
 /-!
@@ -27,9 +27,9 @@ open CategoryTheory
 方針：同じ全解像の係数自然変換を固定 Hom の一般界面へ送る。
 規約：各次数の係数関手の元の Hom 作用を保持する。
 使われ方：局所化の豊穣関手の Hom 成分。 -/
-def localizationHomMap {C D : RelativeCategory.{u}} (F : C ⟶ D) (X Y : C.category) :
+def localizationHomMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) (X Y : C.category) :
     localizationHom C X Y ⟶ localizationHom D (F.functor.obj X) (F.functor.obj Y) :=
-  FixedObjectHom.coefficientNatTrans (localizedFreeResolution C) (localizedFreeResolution D)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (localizedFreeResolution C) (localizedFreeResolution D)
     (localizedFreeResolutionObject C) (localizedFreeResolutionObject D)
     (fun θ X => localizedFreeResolutionObject_naturality C θ X)
     (fun θ X => localizedFreeResolutionObject_naturality D θ X)
@@ -40,7 +40,7 @@ def localizationHomMap {C D : RelativeCategory.{u}} (F : C ⟶ D) (X Y : C.categ
 方針：固定 Hom の係数射の単位・合成保存を各次数で照合する。
 規約：元の相対関手の対象写像と実際の局所化 Hom を保持する。
 使われ方：忘却関手や離散対象関手の ∞ 関手化。 -/
-def localizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def localizationEnrichedMap {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     EnrichedFunctor SSet.{u} (LocalizationObjects C) (LocalizationObjects D) where
   obj := F.functor.obj
   map := localizationHomMap F
@@ -49,7 +49,7 @@ def localizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
     funext n
     apply ConcreteCategory.hom_ext
     intro x
-    exact FixedObjectHom.coefficientMap_identity
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap_identity
       (localizedFreeResolution C) (localizedFreeResolution D)
       (localizedFreeResolutionObject C) (localizedFreeResolutionObject D)
       (localizedFreeResolutionMap F) F.functor.obj
@@ -59,7 +59,7 @@ def localizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
     funext n
     apply ConcreteCategory.hom_ext
     intro q
-    exact FixedObjectHom.coefficientMap_composition
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap_composition
       (localizedFreeResolution C) (localizedFreeResolution D)
       (localizedFreeResolutionObject C) (localizedFreeResolutionObject D)
       (localizedFreeResolutionMap F) F.functor.obj
@@ -69,7 +69,7 @@ def localizationEnrichedMap {C D : RelativeCategory.{u}} (F : C ⟶ D) :
 方針：元の豊穣関手の ForgetEnrichment を使う。
 規約：同じ対象写像と Hom 作用。
 使われ方：Kan 化前の係数関手。 -/
-def localizationFunctor {C D : RelativeCategory.{u}} (F : C ⟶ D) :
+def localizationFunctor {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) :
     LocalizationCategory C ⥤ LocalizationCategory D :=
   (localizationEnrichedMap F).forget
 

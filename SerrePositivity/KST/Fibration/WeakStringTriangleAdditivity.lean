@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.WeakStringOctahedronMiddle
 public import SerrePositivity.KST.Fibration.WeakStringCofiberRealization
-public import SerrePositivity.InfinityCategories.F1.Transport.LocalizedPairEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.LocalizedPairEquality
 public import SerrePositivity.KST.SConstruction.MultiRealizationFunctorIso
 
 /-! # 元の三辺の共通 cofiber 関手の全正有限反復加法性
@@ -22,7 +22,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の実二単体の長辺の cofiber 射は、二つの短辺の cofiber 射の加法射である。 -/
-theorem weakStringTriangleMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+theorem weakStringTriangleMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {n : SimplexCategory} (β : ⦋2⦌ ⟶ n) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map
       (weakStringCofiberMultiMap q (SimplexCategory.δ (1 : Fin 3) ≫ β) (r + 1)) =
@@ -37,12 +37,12 @@ theorem weakStringTriangleMultiAddition {B C : _root_.SerrePositivity.InfinityCa
     (weakStringKernelCofiber q (SimplexCategory.δ (1 : Fin 3) ≫ β))) = _
   rw [← hm, weakStringOctahedronMultiAddition]
   exact congrArg (· ≫ kernelMultiAddition q r)
-    (_root_.SerrePositivity.InfinityCategories.F1.Transport.pair_right_eq_of_anodyneQ_eq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pair_right_eq_of_anodyneQ_eq
       ((multiRealizationFunctor (r + 1)).map
         (weakStringKernelCofiber q (SimplexCategory.δ (2 : Fin 3) ≫ β))) ht)
 
 /-- 元の三辺の加法性の右辺は、全ての列の面・退化の制限と整合する。 -/
-lemma weakStringTriangleMultiAddition_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringTriangleMultiAddition_reindex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (β : ⦋2⦌ ⟶ m) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map
       (weakStringExactMap q θ)) ≫

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerUnit
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIsoAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerUnit
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIsoAlgebra
 
 /-!
 概要：恒等な図式成分と等式からの図式同型を指定比較の自然性の式から消去する。

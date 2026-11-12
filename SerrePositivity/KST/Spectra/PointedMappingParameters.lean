@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMappingParameters
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMappingParameters
 
 public import SerrePositivity.KST.Spectra.PointedMappingNaturality
 
@@ -33,9 +33,9 @@ theorem paramCurry_natural {B : SSet.{u}} (g : B ⟶ A)
     (f : X.right ⊗ A ⟶ Y.right)
     (hf : X.hom ▷ A ≫ f = toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom)
     (hg : X.hom ▷ B ≫ (X.right ◁ g ≫ f) = toUnit (𝟙_ SSet.{u} ⊗ B) ≫ Y.hom) :
-    g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y f hf = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y (X.right ◁ g ≫ f) hg := by
+    g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y f hf = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y (X.right ◁ g ≫ f) hg := by
   apply (cancel_mono (PointedObject.basedHomι X Y)).mp
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.curry_natural_left]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, MonoidalClosed.curry_natural_left]
 
 /-- 概要：点つき内部 Hom の評価はパラメータが定数写像なら基点で定数。
 方針：内部 Hom の基点を包含して通常の curry を uncurry する。
@@ -55,10 +55,10 @@ theorem uncurry_parameter_basepoint :
 theorem paramCurry_constant
     (hf : X.hom ▷ A ≫ (toUnit (X.right ⊗ A) ≫ Y.hom) =
       toUnit (𝟙_ SSet.{u} ⊗ A) ≫ Y.hom) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry X Y (toUnit (X.right ⊗ A) ≫ Y.hom) hf =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry X Y (toUnit (X.right ⊗ A) ≫ Y.hom) hf =
       toUnit A ≫ (PointedObject.basedHom X Y).hom := by
   apply (cancel_mono (PointedObject.basedHomι X Y)).mp
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, Category.assoc, PointedObject.basedHom_basepoint_ι,
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, Category.assoc, PointedObject.basedHom_basepoint_ι,
     PointedObject.curry_constant]
   rfl
 

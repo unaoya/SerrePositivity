@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentKanLeftHomInterval
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleHomotopy
-public import SerrePositivity.InfinityCategories.F1.Coherent.CosliceComparisonVertices
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.MappingSpaceIntervalVertices
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CosliceComparisonVertices
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceIntervalVertices
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedRightMorphismTransport
 
 /-!
 概要：元の固定 Kan 射の左区間頂点は、同じ元の coherent 辺の区間頂点である。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgDerivedForgetSource
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgLocalizationUniversal
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalizationExtension
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LocalizationExtension
 
 /-!
 # 既存 CAlg_R から既存 D(R) への忘却 ∞ 関手
@@ -25,26 +25,26 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma cAlgForgetDerived_exists :
-    ∃ U : CAlg_R A ⟶ derivedInfinityCategory A,
-      Nonempty (FunctorIso (cAlgLocalizationSource A ≫ U)
+    ∃ U : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A,
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource A ≫ U)
         (cofibrantAlgebraUnderlyingDerivedSource A)) :=
-  FrameHom.localization_extension_exists (cAlgLocalizationSource A)
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.localization_extension_exists (cAlgLocalizationSource A)
     (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) (cAlgLocalizationSource_inverts A)
-    (cAlgLocalizationPrecomposition_isQCatEquivalence A (derivedInfinityCategory A))
+    (cAlgLocalizationPrecomposition_isQCatEquivalence A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))
     (cofibrantAlgebraUnderlyingDerivedSource A) (cofibrantAlgebraUnderlyingDerivedSource_inverts A)
 
-def cAlgForgetDerived : CAlg_R A ⟶ derivedInfinityCategory A :=
+def cAlgForgetDerived : CAlg_R A ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
   Classical.choose (cAlgForgetDerived_exists A)
 
 def cAlgForgetDerived_sourceIso :
-    FunctorIso (cAlgLocalizationSource A ≫ cAlgForgetDerived A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cAlgLocalizationSource A ≫ cAlgForgetDerived A)
       (cofibrantAlgebraUnderlyingDerivedSource A) :=
   (Classical.choose_spec (cAlgForgetDerived_exists A)).some
 
 def cAlgForgetDerived_sourceVertexIso (X : (cofibrantAlgebraRelativeCategory A).category) :
-    VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
-      ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)))
-      ((cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X)) :=
-  FunctorIso.app (cAlgForgetDerived_sourceIso A) (nerveVertex X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌)
+      ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)))
+      ((cofibrantAlgebraUnderlyingDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app (cAlgForgetDerived_sourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
 
 end SerrePositivity.EInfinity.BarrattEccles

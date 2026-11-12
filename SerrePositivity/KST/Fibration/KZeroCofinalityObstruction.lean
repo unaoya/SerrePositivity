@@ -12,12 +12,12 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ完全関手の三角圏 K₀ 作用の余核。完備化後の別の商射には置き換えない。 -/
-abbrev stableKZeroCofinalityObstruction {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :=
+abbrev stableKZeroCofinalityObstruction {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :=
   TriangulatedK0 (hoFunctor.obj C.obj) ⧸ (stableKZeroMap q).range
 
 /-- 元の Verdier 商射の代数的 K₀ の零次余核は零群。 -/
-theorem verdierKZeroCofinalityObstruction_subsingleton {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem verdierKZeroCofinalityObstruction_subsingleton {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     Subsingleton (stableKZeroCofinalityObstruction q) := by
   have hr := AddMonoidHom.range_eq_top.mpr (verdierKZeroMap_surjective h)
   unfold stableKZeroCofinalityObstruction

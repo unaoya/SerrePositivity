@@ -30,7 +30,7 @@ def simplexTensorHomEquiv (X Y : C) (n : SimplexCategory) :
   (S.tensorHomEquiv (SSet.stdSimplex.obj n) X Y).trans SSet.yonedaEquiv
 
 def tensorCosimplicialHomIso (X Y : C) :
-    (cosimplicialHom ((tensorCosimplicialFamily S).obj X)).obj Y ≅ (X ⟶[SSet.{v}] Y) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((tensorCosimplicialFamily S).obj X)).obj Y ≅ (X ⟶[SSet.{v}] Y) :=
   NatIso.ofComponents (fun n ↦ Equiv.toIso (simplexTensorHomEquiv S X Y n.unop)) (by
     intro n m f
     ext h
@@ -42,7 +42,7 @@ def tensorCosimplicialHomIso (X Y : C) :
         (SSet.yonedaEquiv_naturality f.unop (S.tensorHomEquiv _ X Y h)).symm)
 
 lemma tensorCosimplicialHomIso_source {X X' : C} (f : X ⟶ X') (Y : C) :
-    (cosimplicialHomMap ((tensorCosimplicialFamily S).map f)).app Y ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((tensorCosimplicialFamily S).map f)).app Y ≫
         (tensorCosimplicialHomIso S X Y).hom =
       (tensorCosimplicialHomIso S X' Y).hom ≫ eHomWhiskerRight SSet.{v} f Y := by
   ext n h
@@ -54,7 +54,7 @@ lemma tensorCosimplicialHomIso_source {X X' : C} (f : X ⟶ X') (Y : C) :
       (SSet.yonedaEquiv_comp _ _)
 
 lemma tensorCosimplicialHomIso_target (X : C) {Y Y' : C} (f : Y ⟶ Y') :
-    (cosimplicialHom ((tensorCosimplicialFamily S).obj X)).map f ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((tensorCosimplicialFamily S).obj X)).map f ≫
         (tensorCosimplicialHomIso S X Y').hom =
       (tensorCosimplicialHomIso S X Y).hom ≫ eHomWhiskerLeft SSet.{v} X f := by
   ext n h
@@ -64,7 +64,7 @@ lemma tensorCosimplicialHomIso_target (X : C) {Y Y' : C} (f : Y ⟶ Y') :
     (S.tensorHom_naturality_target (SSet.stdSimplex.obj n.unop) X f h)).trans
       (SSet.yonedaEquiv_comp _ _)
 
-def tensorHomBifunctorIso : resolutionHom (tensorCosimplicialFamily S) (𝟭 C) ≅
+def tensorHomBifunctorIso : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (tensorCosimplicialFamily S) (𝟭 C) ≅
     eHomFunctor SSet.{v} C :=
   NatIso.ofComponents
     (fun X ↦ NatIso.ofComponents (tensorCosimplicialHomIso S X.unop)
@@ -79,7 +79,7 @@ abbrev enrichedReplacementHom (Q R : C ⥤ C) : Cᵒᵖ ⥤ C ⥤ SSet.{v} :=
   Q.op ⋙ eHomFunctor SSet.{v} C ⋙ (Functor.whiskeringLeft C C SSet.{v}).obj R
 
 def replacedTensorHomIso (Q R : C ⥤ C) :
-    resolutionHom (Q ⋙ tensorCosimplicialFamily S) R ≅ enrichedReplacementHom Q R :=
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.resolutionHom (Q ⋙ tensorCosimplicialFamily S) R ≅ enrichedReplacementHom Q R :=
   NatIso.ofComponents
     (fun X ↦ NatIso.ofComponents (fun Y ↦ tensorCosimplicialHomIso S (Q.obj X.unop) (R.obj Y))
       (fun {_ _} f ↦ tensorCosimplicialHomIso_target S (Q.obj X.unop) (R.map f)))

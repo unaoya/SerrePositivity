@@ -30,16 +30,16 @@ def frameCofiberSpanOperator (n : ℕ) (C : SSet.{u}) :
 方針：第一変数での curry の自然性と span の形状の等号を使う。
 規約：gapped 条件は不要。使われ方：指定境界の入力の一致。 -/
 lemma arCofiberFamilyOperator_span (n : ℕ) (C : SSet.{u}) :
-    arCofiberFamilyOperator n C ≫ (ihom (arNerve n)).map ((pre spanSquareBoundary).app C) =
+    arCofiberFamilyOperator n C ≫ (ihom (arNerve n)).map ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C) =
       (pre (frameInclusion n)).app C ≫ frameCofiberSpanOperator n C := by
-  have he : (spanSquareBoundary ▷ arNerve n ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ▷ arNerve n ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n)).hom) ≫ arCofiberSquareMap n =
       ((β_ (horn 2 0 : SSet.{u}) (arNerve n)).hom ≫ arCofiberSpanMap n) ≫
         frameInclusion n := by
     rw [BraidedCategory.braiding_naturality_left, Category.assoc,
       arCofiberSquareMap_span, ← Category.assoc]
   dsimp only [arCofiberFamilyOperator, frameCofiberSpanOperator]
-  rw [Category.assoc, ← ihomCurry_pre_whiskerRight]
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ihomCurry_pre_whiskerRight]
   simp only [← Category.assoc, ← NatTrans.comp_app, ← pre_map]
   rw [he]
 
@@ -47,7 +47,7 @@ lemma arCofiberFamilyOperator_span (n : ℕ) (C : SSet.{u}) :
 方針：枠の包含後で二因子の交換則と Ar[n] の span の式を使う。
 規約：形状の厳密な等号。使われ方：枠上の入力の照合。 -/
 lemma frameCofiberSquareMap_span (n : ℕ) :
-    (frameNerve n ◁ spanSquareBoundary) ≫ frameCofiberSquareMap.{u} n =
+    (frameNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary) ≫ frameCofiberSquareMap.{u} n =
       (frameInclusion n ▷ (horn 2 0 : SSet.{u})) ≫ arCofiberSpanMap n := by
   apply (cancel_mono (frameInclusion n)).1
   rw [Category.assoc, frameCofiberSquareMap_inclusion, ← Category.assoc,
@@ -58,17 +58,17 @@ lemma frameCofiberSquareMap_span (n : ℕ) :
 規約：零対角条件は不要。使われ方：枠を同時に固定する相対内部 Hom。 -/
 lemma frameCofiberFamilyOperator_span (n : ℕ) (C : SSet.{u}) :
     frameCofiberFamilyOperator n C ≫
-      (ihom (frameNerve n)).map ((pre spanSquareBoundary).app C) =
+      (ihom (frameNerve n)).map ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C) =
       frameCofiberSpanOperator n C ≫
         (pre (frameInclusion n)).app ((ihom (horn 2 0 : SSet.{u})).obj C) := by
-  have he : (spanSquareBoundary ▷ frameNerve n) ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ▷ frameNerve n) ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (frameNerve n)).hom ≫ frameCofiberSquareMap n =
       ((horn 2 0 : SSet.{u}) ◁ frameInclusion n) ≫
         (β_ (horn 2 0 : SSet.{u}) (arNerve n)).hom ≫ arCofiberSpanMap n := by
     rw [BraidedCategory.braiding_naturality_left_assoc, frameCofiberSquareMap_span,
       BraidedCategory.braiding_naturality_right_assoc]
   dsimp only [frameCofiberFamilyOperator, frameCofiberSpanOperator]
-  rw [Category.assoc, ← ihomCurry_pre_whiskerRight,
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ihomCurry_pre_whiskerRight,
     Category.assoc, ← ihomCurry_pre_whiskerLeft]
   simp only [← Category.assoc, ← NatTrans.comp_app, ← pre_map]
   simp only [Category.assoc] at ⊢
@@ -85,20 +85,20 @@ def frameCofiberSpanFamily {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) :
 方針：内部 currying の零次元での計算。
 規約：厳密等号。使われ方：全部分複体への持ち上げ。 -/
 lemma frameCofiberSpanOperator_vertex {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) :
-    (frameCofiberSpanOperator n C).app (Opposite.op ⦋0⦌) (functorVertex F) =
-      functorVertex (frameCofiberSpanFamily F) := rfl
+    (frameCofiberSpanOperator n C).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (frameCofiberSpanFamily F) := rfl
 
 /-- 概要：枠の零対角条件により、各 span の第二辺の終点は零対象。
 方針：curry を頂点で評価し、span の第二辺の貼り合わせ式を使う。
 規約：quasicategory 性は不要。使われ方：零脚つき span の内部 Hom への持ち上げ。 -/
 lemma frameCofiberSpanFamily_zero {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C)
-    (hF : IsZeroFrameVertex (functorVertex F)) (a : Ar.{u} n) :
+    (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) (a : Ar.{u} n) :
     IsZeroSpanVertex ((frameCofiberSpanFamily F).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ a)) := by
   rw [frameCofiberSpanFamily, curry_vertex_value]
   let p : (horn 2 0 : SSet.{u}) ⟶ frameNerve n :=
     CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫ arCofiberSpanMap n
-  change IsZeroTargetArrow (functorVertex (horn₂₀.ι₀₂ ≫ p ≫ F))
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroTargetArrow (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (horn₂₀.ι₀₂ ≫ p ≫ F))
   have he : horn₂₀.ι₀₂ ≫ p =
       CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫ arCofiberZeroInputMap n := by
     change horn₂₀.ι₀₂ ≫ (CartesianMonoidalCategory.lift _ _ ≫ arCofiberSpanMap n) = _
@@ -107,7 +107,7 @@ lemma frameCofiberSpanFamily_zero {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶
           (arNerve n ◁ horn₂₀.ι₀₂) := by rfl
     rw [← Category.assoc, h, Category.assoc, arCofiberSpanMap_right]
   rw [← Category.assoc, he]
-  change IsZeroVertex (((CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((CartesianMonoidalCategory.lift (SSet.const (ComposableArrows.mk₀ a)) (𝟙 _) ≫
     arCofiberZeroInputMap n) ≫ F).app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
   exact hF (ComposableArrows.mk₀
@@ -118,25 +118,25 @@ lemma frameCofiberSpanFamily_zero {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶
 規約：入力の零射を固定する。使われ方：cofiberSpanProjection の相対内部 Hom。 -/
 def frameCofiberSpans (n : ℕ) (C : SSet.{u}) :
     zeroFrameDiagrams n C ⟶ (ihom (arNerve n)).obj (zeroSpanDiagrams C) :=
-  fullSubcomplexLift (FunctorVertexSatisfies (arNerve n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorVertexSatisfies (arNerve n)
       ((ihom (horn 2 0 : SSet.{u})).obj C) IsZeroSpanVertex)
-    ((fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberSpanOperator n C) (by
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberSpanOperator n C) (by
       intro v
-      let F := (functorVertexEquiv (frameNerve n) C).symm v.val
-      have hv : functorVertex F = v.val := (functorVertexEquiv _ C).apply_symm_apply _
-      have hF : IsZeroFrameVertex (functorVertex F) := by
+      let F := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (frameNerve n) C).symm v.val
+      have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F = v.val := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
+      have hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) := by
         rw [hv]
-        exact fullSubcomplexOnVertices_vertex v
-      change FunctorVertexSatisfies _ _ _
+        exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorVertexSatisfies _ _ _
         ((frameCofiberSpanOperator n C).app (Opposite.op ⦋0⦌) v.val)
       rw [← hv, frameCofiberSpanOperator_vertex]
       intro a
-      rw [evaluateFunctorAt_functorVertex]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex]
       have ha : a = ComposableArrows.mk₀ (nerveEquiv a) :=
         (nerveEquiv.symm_apply_apply a).symm
       rw [ha]
       exact frameCofiberSpanFamily_zero F hF (nerveEquiv a)) ≫
-    (fullSubcomplexInternalHomIso (arNerve n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexInternalHomIso (arNerve n)
       ((ihom (horn 2 0 : SSet.{u})).obj C) IsZeroSpanVertex).inv
 
 /-- 概要：零脚の条件を忘れると元の span 入力作用素。
@@ -144,10 +144,10 @@ def frameCofiberSpans (n : ℕ) (C : SSet.{u}) :
 規約：全次数で厳密等号。使われ方：境界と枠の入力の照合。 -/
 lemma frameCofiberSpans_ι (n : ℕ) (C : SSet.{u}) :
     frameCofiberSpans n C ≫
-      (ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsZeroSpanVertex).ι =
-      (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberSpanOperator n C := by
-  rw [frameCofiberSpans, Category.assoc, fullSubcomplexInternalHomIso_inv_ι,
-    fullSubcomplexLift_ι]
+      (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroSpanVertex).ι =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberSpanOperator n C := by
+  rw [frameCofiberSpans, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexInternalHomIso_inv_ι,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
 
 /-- 概要：gapped 図式の cofiber 族の span は枠の零脚つき入力に一致。
 方針：零脚条件を忘れる単射の後で抽出作用素の span の式を使う。
@@ -156,7 +156,7 @@ lemma gappedCofiberFamiliesMap_span (n : ℕ) (C : SSet.{u}) :
     gappedCofiberFamiliesMap n C ≫ (ihom (arNerve n)).map (cofiberSpanProjection C) =
       gappedFrameRestriction n C ≫ frameCofiberSpans n C := by
   apply (cancel_mono ((ihom (arNerve n)).map
-    (fullSubcomplexOnVertices _ IsZeroSpanVertex).ι)).1
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroSpanVertex).ι)).1
   rw [Category.assoc, ← Functor.map_comp, cofiberSpanProjection_ι,
     cofiberSpan, Functor.map_comp, ← Category.assoc, gappedCofiberFamiliesMap_ι,
     Category.assoc, arCofiberFamilyOperator_span, ← Category.assoc,
@@ -171,7 +171,7 @@ lemma zeroFrameCofiberFamiliesMap_span (n : ℕ) (C : SSet.{u}) [Quasicategory C
       (ihom (frameNerve n)).map (cofiberSpanProjection C) =
       frameCofiberSpans n C ≫ (pre (frameInclusion n)).app (zeroSpanDiagrams C) := by
   apply (cancel_mono ((ihom (frameNerve n)).map
-    (fullSubcomplexOnVertices _ IsZeroSpanVertex).ι)).1
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroSpanVertex).ι)).1
   rw [Category.assoc, ← Functor.map_comp, cofiberSpanProjection_ι,
     cofiberSpan, Functor.map_comp, ← Category.assoc, zeroFrameCofiberFamiliesMap_ι,
     Category.assoc, frameCofiberFamilyOperator_span]

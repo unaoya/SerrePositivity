@@ -13,13 +13,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeCom
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G F' G' : DGFunctor R P (RightModule R D))
-  (α : StrictNatTrans F G) (β : StrictNatTrans F' G')
-  (l : StrictNatTrans F F') (r : StrictNatTrans G G')
-  (hsq : dgStrictNatTransComp α r = dgStrictNatTransComp l β)
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (β : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F' G')
+  (l : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F F') (r : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G G')
+  (hsq : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp α r = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp l β)
 include hsq
 local notation "f" => dgModuleNaturalConeArrow R D F G α
 local notation "g" => dgModuleNaturalConeArrow R D F' G' β
@@ -30,7 +30,7 @@ local notation "b" => dgModuleNaturalConeArrow R D G G' r
 local notation "CA" => dgModuleNaturalConeFunctor R D F G α
 local notation "CB" => dgModuleNaturalConeFunctor R D F' G' β
 local notation "ι" => dgModuleNaturalConeInr R D F' G' β
-local notation "ξ" => dgStrictNatTransComp r (ι)
+local notation "ξ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp r (ι)
 local notation "s" => dgModuleNaturalConePrecompositionInput R D F F' G' l β
 
 /-- 概要：同じ全厳密 square の cone 入力微分は指定右包含後の終辺。
@@ -51,7 +51,7 @@ lemma dgModuleNaturalConeSquare_boundary (x : P) :
 方針：同じ全自然な入力を元実 descent へ渡す。
 規約：元比較を成分だけの存在で代用しない。
 使われ方：元小模型の指定評価同型を保つ cone 全比較。 -/
-def dgModuleNaturalConeSquare : StrictNatTrans (CA) (CB) :=
+def dgModuleNaturalConeSquare : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (CA) (CB) :=
   dgModuleNaturalConeDesc R D F G (CB) α (ξ) (s)
     (dgModuleNaturalConeSquare_boundary R D F G F' G' α β l r hsq)
     (dgModuleNaturalConePrecompositionInput_naturality R D F F' G' l β)

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CoproductModel
-public import SerrePositivity.InfinityCategories.ModelBridge.SourceInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.SourceInvariance
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.Reedy.SimplexResolution
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 public import Mathlib.CategoryTheory.Limits.Preserves.FunctorCategory
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.BinaryProducts
 
@@ -113,8 +113,8 @@ lemma coproductFrameComparison_weakEquivalence (X Y : C)
 lemma coproductFrameComparison_hom_isIso {D : Type w} [Category.{t} D]
     (L : SSet.{v} ⥤ D) (hL : SSet.anodyneExtensions.IsInvertedBy L)
     (X Y Z : C) [IsCofibrant X] [IsCofibrant Y] [IsFibrant Z] :
-    IsIso (L.map ((cosimplicialHomMap (coproductFrameComparison q X Y)).app Z)) :=
-  FrameHom.source_weakEquivalence_isIso L hL (coproductFrameComparison q X Y)
+    IsIso (L.map ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.source_weakEquivalence_isIso L hL (coproductFrameComparison q X Y)
     (coproductFrame_cofibrant q X Y) (q.cofibrant (X ⨿ Y))
     (coproductFrameComparison_weakEquivalence q X Y) Z
 

@@ -17,7 +17,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -44,8 +44,8 @@ local notation "eT" => dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence R
 /-- 概要：元実合成の native 全辺は同じ D-21 完備化を伴う元 resolved 射影へ全比較される。
 方針：元指定終域評価を二段全族へ運び、保存済み元商 Yoneda 全比較と貼る。
 規約：元実射・元評価・同じ完備化を保持。使われ方：固定 ν の外周商辺比較の中間面。 -/
-def dgOdotMilnorRightAxisCompositeNativeNuComparison : FunctorIso
-    (dgNerve.map (H) ≫ dgNerve.map (δ) ≫ (eD).hom ≫ (eT).hom)
+def dgOdotMilnorRightAxisCompositeNativeNuComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ) ≫ (eD).hom ≫ (eT).hom)
     ((dgOdotMilnorCellNativeProjection R d).hom ≫ (dgOdotMilnorCompletion R d).hom) := by
   have assocTail {X₀ X₁ X₂ X₃ X₄ X₅ X₆ : SSet.{u + 1}}
       (a₀ : X₀ ⟶ X₁) (a₁ : X₁ ⟶ X₂) (a₂ : X₂ ⟶ X₃)
@@ -54,18 +54,18 @@ def dgOdotMilnorRightAxisCompositeNativeNuComparison : FunctorIso
         ((((a₀ ≫ a₁) ≫ a₂) ≫ a₃) ≫ a₄) ≫ a₅ := by
     simp only [Category.assoc]
   let vQ := (dgKNativePerfectValueEquivalence R (Q)).hom
-  have hPF : dgNerve.map (PF) =
-      (((dgNerve.map (H) ≫ dgNerve.map (δ)) ≫ dgNerve.map (iD)) ≫
-        dgNerve.map (VP1)) ≫ dgNerve.map (VP2) :=
+  have hPF : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (PF) =
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (iD)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP1)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP2) :=
     dgPerfectComparisonInverseRotationPerfectRealizedFamily_native_factorization
       R (Q) (P) (F) (G) (τ)
-  have htarget : (dgNerve.map (H) ≫ dgNerve.map (δ)) ≫
-      (dgNerve.map (iD) ≫ dgNerve.map (VP1) ≫ dgNerve.map (VP2) ≫ vQ) =
-        dgNerve.map (PF) ≫ vQ :=
+  have htarget : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (iD) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (VP2) ≫ vQ) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (PF) ≫ vQ :=
     (assocTail _ _ _ _ _ _).trans (congrArg (fun fm => fm ≫ vQ) hPF).symm
-  have e := F2.functorIsoOfEq
-    (FunctorIso.precomp (dgOdotMilnorRightAxisDifferenceRealizationNuComparison R d)
-      (dgNerve.map (H) ≫ dgNerve.map (δ)))
+  have e := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgOdotMilnorRightAxisDifferenceRealizationNuComparison R d)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ)))
     (Category.assoc _ _ _) htarget
   exact e.trans (dgOdotMilnorRightAxisInverseRotationRealizedNuComparison R d)
 
@@ -73,7 +73,7 @@ def dgOdotMilnorRightAxisCompositeNativeNuComparison : FunctorIso
 方針：元二辺の ν 自然性と元実全評価を貼り、同じ cell 始域同値で反映する。
 規約：Milnor 条件の追加入力なし。元 S 辺と元指定終域同値を保持する。
 使われ方：共通実外周の指定商辺、元上下二単体付き全比較の接続。 -/
-def dgOdotMilnorRightAxisCompositeNuComparison : FunctorIso
+def dgOdotMilnorRightAxisCompositeNuComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d)).hom ≫
       (dgKInputNuMap R (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d)).hom ≫ (eT).hom)
     (dgOdotMilnorCellProjectionExactMap R d).hom := by
@@ -81,17 +81,17 @@ def dgOdotMilnorRightAxisCompositeNuComparison : FunctorIso
   let b := (dgKInputNuMap R (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d)).hom
   let eP := dgOdotMilnorCellMiddleNativeValueEquivalence R d
   let eL := dgOdotMilnorRightAxisTargetNativeValueEquivalence R d
-  have h1 : FunctorIso (eP.hom ≫ a ≫ b ≫ (eT).hom)
-      (dgNerve.map (H) ≫ eL.hom ≫ b ≫ (eT).hom) :=
-    F2.functorIsoOfEq ((dgOdotMilnorRightAxisNuComparison R d).postcomp (b ≫ (eT).hom))
+  have h1 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (eP.hom ≫ a ≫ b ≫ (eT).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ eL.hom ≫ b ≫ (eT).hom) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((dgOdotMilnorRightAxisNuComparison R d).postcomp (b ≫ (eT).hom))
       (Category.assoc _ _ _) (Category.assoc _ _ _)
-  have h2 : FunctorIso (dgNerve.map (H) ≫ eL.hom ≫ b ≫ (eT).hom)
-      (dgNerve.map (H) ≫ dgNerve.map (δ) ≫ (eD).hom ≫ (eT).hom) :=
-    F2.functorIsoOfEq
-      (FunctorIso.precomp ((dgOdotMilnorRightAxisIdentityDifferenceNuComparison R d).postcomp
-        (eT).hom) (dgNerve.map (H)))
-      (congrArg (fun fm => dgNerve.map (H) ≫ fm) (Category.assoc _ _ _))
-      (congrArg (fun fm => dgNerve.map (H) ≫ fm) (Category.assoc _ _ _))
+  have h2 : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ eL.hom ≫ b ≫ (eT).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (δ) ≫ (eD).hom ≫ (eT).hom) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp ((dgOdotMilnorRightAxisIdentityDifferenceNuComparison R d).postcomp
+        (eT).hom) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H)))
+      (congrArg (fun fm => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ fm) (Category.assoc _ _ _))
+      (congrArg (fun fm => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (H) ≫ fm) (Category.assoc _ _ _))
   exact functorIsoReflectPreEquivalence eP
     (h1.trans (h2.trans ((dgOdotMilnorRightAxisCompositeNativeNuComparison R d).trans
       (dgOdotMilnorCellProjectionNuComparison R d).symm)))

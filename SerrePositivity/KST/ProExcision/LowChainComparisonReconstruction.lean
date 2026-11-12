@@ -17,8 +17,8 @@ namespace SerrePositivity.KST.ProExcision
 open CategoryTheory Opposite HomologicalComplex AlgebraicTopology
 open scoped Simplicial
 variable {X : SSet.{u}} {D : SimplicialObject (ModuleCat.{u} ℤ)}
-variable {f g : linearizedSpace X ⟶ D}
-variable {R S : (normalizedMooreComplex _).obj (linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D}
+variable {f g : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D}
+variable {R S : (normalizedMooreComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D}
 
 /-- 概要：二つの比較ホモトピーの差から第一の始点と補正した終点の全鎖ホモトピーを作る。
 方針：第一比較に第二比較の負を足し、第二の始点の恒等比較を足す。
@@ -40,8 +40,8 @@ def chainComparisonDifferenceHomotopy
 方針：正規化後の R−S が低次で零となることを低次数の反映で戻す。
 規約：KST A.5、非被約零次を含む。
 使われ方：復元した全区間ホモトピーを m 次で第二の射に合わせる。 -/
-lemma normalizedComparisonCorrectedMap_eq_low (g : linearizedSpace X ⟶ D)
-    (R S : (normalizedMooreComplex _).obj (linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D)
+lemma normalizedComparisonCorrectedMap_eq_low (g : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D)
+    (R S : (normalizedMooreComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X) ⟶ (normalizedMooreComplex _).obj D)
     (m : ℕ) (hRS : ∀ n, n ≤ m → R.f n = S.f n) (n : ℕ) (hn : n ≤ m) :
     (normalizedMapReconstruct (R - S + (normalizedMooreComplex _).map g)).app (op ⦋n⦌) =
       g.app (op ⦋n⦌) := by
@@ -57,7 +57,7 @@ lemma normalizedComparisonCorrectedMap_eq_low (g : linearizedSpace X ⟶ D)
 def linearizedMHomotopyOfChainComparisons
     (H₁ : Homotopy ((normalizedMooreComplex _).map f) R)
     (H₂ : Homotopy ((normalizedMooreComplex _).map g) S)
-    (m : ℕ) (hRS : ∀ n, n ≤ m → R.f n = S.f n) : LinearizedMHomotopy f g m := by
+    (m : ℕ) (hRS : ∀ n, n ≤ m → R.f n = S.f n) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m := by
   let e := normalizedMapReconstruct (R - S + (normalizedMooreComplex _).map g)
   let hh := (chainComparisonDifferenceHomotopy H₁ H₂).trans
     (Homotopy.ofEq (normalizedMapReconstruct_map (R - S + (normalizedMooreComplex _).map g)).symm)

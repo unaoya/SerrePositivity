@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ClosedRightActionComposition
-public import SerrePositivity.InfinityCategories.F1.Categories.QCatSimplicial
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QCatSimplicial
 
 /-! # 元の Quasi 値豊穣関手の実右作用の法則
 概要：元の豊穣単位・合成等式は、uncurry した実全パラメータ作用の法則になる。
@@ -22,7 +22,7 @@ lemma uncurry_tensor_internalComp {X Y Z P Q : SSet.{u}}
   simpa only [curry_uncurry] using uncurry_curry_tensor_comp (uncurry f) (uncurry g)
 
 variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
-  (F : EnrichedFunctor SSet.{u} C QuasicategoryObject.{u})
+  (F : EnrichedFunctor SSet.{u} C _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u})
 
 /-- 元の豊穣恒等入力に対する実作用は、同じ元の値の恒等作用。 -/
 lemma quasicategoryEnrichedAction_unit (X : C) :

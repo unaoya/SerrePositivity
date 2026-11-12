@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisResolvedLift
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphNativeSquare
-public import SerrePositivity.InfinityCategories.Derived.DGModuleDerivedFunctor
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleDerivedFunctor
 
 /-!
 概要：元右軸 graph の増大比較を同じ resolved 商の native 導来加群値へ移す。
@@ -18,9 +18,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
-local notation "E" => dgModuleExtensionInfinity R (P) (Q) (dgOdotMilnorResolvedInclusion R d)
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionInfinity R (P) (Q) (dgOdotMilnorResolvedInclusion R d)
 local notation "F" => dgOdotMilnorRightAxisEndofunctor R d
 local notation "τ" => dgOdotMilnorRightAxisComparison R d
 
@@ -28,9 +28,9 @@ local notation "τ" => dgOdotMilnorRightAxisComparison R d
 方針：元商包含の実導来延長を全関手圏で後合成する。
 規約：元の指定包含を保持。使われ方：中央比較 square の実 native 値域。 -/
 def dgOdotMilnorRightAxisNativeFunctor : BimoduleCategory R (P) (P) ⥤
-    hoFunctor.obj ((ihom (dgNerve R (P))).obj (dgModuleDerivedInfinityCategory R (Q))) :=
+    hoFunctor.obj ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory R (Q))) :=
   dgCellGraphNativeFunctor.{u, u} R (B) ⋙
-    SSet.mapHomotopyCategory ((ihom (dgNerve R (P))).map (E))
+    SSet.mapHomotopyCategory ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).map (E))
 
 /-- 概要：元右軸 graph 増大の同じ resolved 商値の全関手同型。
 方針：元の指定増大を同じ実導来延長で後合成する。
@@ -55,7 +55,7 @@ lemma dgOdotMilnorRightAxisNativeSquare :
     (dgOdotMilnorRightAxisNativeFunctor R d).map (dgCellResolvedGraphResolution R (B) (F)).π ≫
       (dgOdotMilnorRightAxisNativeFunctor R d).map
         (dgCellRestrictedGraphMap R (B) (F) (DGFunctor.id (B)) τ) := by
-  let H := SSet.mapHomotopyCategory ((ihom (dgNerve R (P))).map (E))
+  let H := SSet.mapHomotopyCategory ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).map (E))
   exact (H.map_comp _ _).symm.trans
     ((congrArg H.map (dgCellResolvedGraphNativeSquare.{u, u} R (B) (F) (DGFunctor.id (B)) τ)).trans
       (H.map_comp _ _))

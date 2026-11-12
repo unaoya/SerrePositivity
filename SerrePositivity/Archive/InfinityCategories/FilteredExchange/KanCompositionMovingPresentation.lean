@@ -2,7 +2,7 @@ module
 
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareConstantTopNaturality
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionMoving
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanRightCompositionMoving
 
 /-!
 概要：元の動く Kan 合成比較を、同じ実四角形の指定 constantTopIso へ値まで戻す。

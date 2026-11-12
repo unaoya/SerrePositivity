@@ -26,27 +26,27 @@ lemma groupLinearizedMap_comp {T P H : Type u} [Group T] [Group P] [Group H]
     groupLinearizedMap f ≫ groupLinearizedMap g = groupLinearizedMap (g.comp f) := by
   apply NatTrans.ext
   funext n
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
-  change integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ g)).app n)
-    (integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ f)).app n) (integerGenerator x)) = _
-  rw [integerLinearization_map_generator, integerLinearization_map_generator]
-  change _ = integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ (g.comp f))).app n) (integerGenerator x)
-  rw [integerLinearization_map_generator]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ g)).app n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ f)).app n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
+  change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ (g.comp f))).app n) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   rfl
 
 /-- 概要：恒等群準同型の自由化は恒等写像。
 方針：自由加群の基底上の恒等性を使う。
 規約：KST App. A の非被約 C。使われ方：共役比較の始点の同定。 -/
 lemma groupLinearizedMap_id {H : Type u} [Group H] :
-    groupLinearizedMap (MonoidHom.id H) = 𝟙 (linearizedSpace (nerve (SingleObj H))) := by
+    groupLinearizedMap (MonoidHom.id H) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (nerve (SingleObj H))) := by
   apply NatTrans.ext
   funext n
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
-  change integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ (MonoidHom.id H))).app n)
-    (integerGenerator x) = integerGenerator x
-  rw [integerLinearization_map_generator]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ (MonoidHom.id H))).app n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   rfl
 
 /-- 概要：群準同型とその共役の自由化の間の実 m 次ホモトピー。
@@ -55,15 +55,15 @@ lemma groupLinearizedMap_id {H : Type u} [Group H] :
 使われ方：ψ と ψφ の実比較。 -/
 def groupConjugationMHomotopy {T H : Type u} [Group T] [Group H]
     (f : T →* H) (u : H) (m : ℕ) :
-    LinearizedMHomotopy (groupLinearizedMap f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap f)
       (groupLinearizedMap ((inverseConjugation u).comp f)) m := by
   let h := ((conjugationLinearizedHomotopy u).truncate m).precomp (nerveMap (SingleObj.mapHom _ _ f))
-  have hf : linearizedSpaceMap (nerveMap (SingleObj.mapHom _ _ f)) ≫
-      linearizedSpaceMap (nerveMap (𝟭 (SingleObj H))) = groupLinearizedMap f := by
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (SingleObj.mapHom _ _ f)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (𝟭 (SingleObj H))) = groupLinearizedMap f := by
     change groupLinearizedMap f ≫ groupLinearizedMap (MonoidHom.id H) = _
     rw [groupLinearizedMap_id, Category.comp_id]
-  have hg : linearizedSpaceMap (nerveMap (SingleObj.mapHom _ _ f)) ≫
-      linearizedSpaceMap (nerveMap (conjugationFunctor u)) =
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (SingleObj.mapHom _ _ f)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (nerveMap (conjugationFunctor u)) =
       groupLinearizedMap ((inverseConjugation u).comp f) := groupLinearizedMap_comp f (inverseConjugation u)
   refine { h := h.h, h₀ := ?_, h₁ := ?_ }
   · intro n hn

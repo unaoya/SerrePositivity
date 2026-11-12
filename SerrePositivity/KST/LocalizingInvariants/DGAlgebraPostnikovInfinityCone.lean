@@ -2,10 +2,10 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovAlgebraPullback
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeLeg
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Limit
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.F1BNerveComparisonLimit
 public import Mathlib.CategoryTheory.Adjunction.Limits
-public import SerrePositivity.InfinityCategories.Core.EquivalenceLimits
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.EquivalenceLimits
 
 /-!
 概要：元の隣接 Postnikov 拡大の指定錐を、dg 代数の準同型 ∞ 局所化へ送る。
@@ -53,17 +53,17 @@ def postnikovInfinityPresentedCone_isLimit :
     ((postnikovAlgebraPullback_isLimit R B n hn).whiskerEquivalence e₀)
 
 lemma postnikovInfinityNerveCone_isLimit :
-    IsLimitCone (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn)) :=
-  (F1B.nerveCone_isLimit_iff _).2 ⟨postnikovInfinityPresentedCone_isLimit R B n hn⟩
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_isLimit_iff _).2 ⟨postnikovInfinityPresentedCone_isLimit R B n hn⟩
 
-def postnikovInfinityCone : JoinCone
+def postnikovInfinityCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone
     (nerveMap (postnikovInfinityCospan R B n hn) ≫ quasiIsoInfinityMap R) :=
-  mapJoinCone (quasiIsoInfinityMap R) (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (quasiIsoInfinityMap R) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn))
 
 lemma postnikovInfinityCone_vertex : (postnikovInfinityCone R B n hn).vertex =
     (quasiIsoInfinityMap R).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((infinityPresentationFunctor R).obj (postnikov R B (n + 1)))) := by
-  rw [postnikovInfinityCone, mapJoinCone_vertex, F1B.nerveCone_vertex]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((infinityPresentationFunctor R).obj (postnikov R B (n + 1)))) := by
+  rw [postnikovInfinityCone, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_vertex]
   rfl
 
 lemma postnikovInfinityPresentedCone_left :
@@ -76,12 +76,12 @@ lemma postnikovInfinityPresentedCone_right :
         (postnikovTransition R B (n + 1) n (by omega)) := rfl
 
 lemma postnikovInfinityCone_leg (i : PostnikovInfinityShape.{u}) :
-    (postnikovInfinityCone R B n hn).val.app (Opposite.op ⦋1⦌) (F1B.coneLegSimplex i) =
+    (postnikovInfinityCone R B n hn).val.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneLegSimplex i) =
       (quasiIsoInfinityMap R).app (Opposite.op ⦋1⦌)
         (ComposableArrows.mk₁ ((postnikovInfinityPresentedCone R B n hn).π.app i)) := by
   change (quasiIsoInfinityMap R).app (Opposite.op ⦋1⦌)
-    ((F1B.nerveCone (postnikovInfinityPresentedCone R B n hn)).val.app _
-      (F1B.coneLegSimplex i)) = _
-  rw [F1B.nerveCone_leg]
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn)).val.app _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneLegSimplex i)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone_leg]
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

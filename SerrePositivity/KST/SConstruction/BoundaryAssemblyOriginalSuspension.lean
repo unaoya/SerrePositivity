@@ -25,11 +25,11 @@ def boundaryAssemblyOriginalSuspensionHomotopy {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) : SSet.Homotopy
       (pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor r)
         (fun i => boundaryKanRealization_kanComplex r (F.obj i)) ≫
-          coherentNerveMap pointedKanInclusionEnriched ≫ coherentNerveMap suspensionEnrichedFunctor)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor)
       (pointedKanCoherentDiagram (F ⋙ boundaryKanRealizationFunctor (r + 1))
         (fun i => boundaryKanRealization_kanComplex (r + 1) (F.obj i)) ≫
-          coherentNerveMap pointedKanInclusionEnriched) := by
-  let H := functorHomotopyPostcomp (boundaryAssemblySpecifiedCollageHomotopy r F)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched) := by
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (boundaryAssemblySpecifiedCollageHomotopy r F)
     loopCollageEvaluationNerve
   refine { h := H.h, h₀ := H.h₀.trans ?_, h₁ := H.h₁.trans ?_, rel := ?_ }
   · rw [Category.assoc, loopCollageEvaluationNerve_bottom]
@@ -51,14 +51,14 @@ lemma boundaryAssemblyOriginalSuspensionHomotopy_h {I : Type u} [SmallCategory I
 /-- 全入力円柱の各成分は、元の固定 suspension 構造射の一単体を厳密に回収する。 -/
 lemma boundaryAssemblyOriginalSuspensionHomotopy_vertex_edge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
-    (simplicialHomotopyVertexEdge (boundaryAssemblyOriginalSuspensionHomotopy r F)
-      (ULift.up (nerveVertex i))).edge =
-      (coherentNerveEdge (boundaryKanAssemblySigma r (F.obj i))).edge := by
-  have hv : (simplicialHomotopyVertexEdge (boundaryAssemblyOriginalSuspensionHomotopy r F)
-      (ULift.up (nerveVertex i))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (boundaryAssemblyOriginalSuspensionHomotopy r F)
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (boundaryKanAssemblySigma r (F.obj i))).edge := by
+  have hv : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (boundaryAssemblyOriginalSuspensionHomotopy r F)
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
       loopCollageEvaluationNerve.app (Opposite.op ⦋1⦌)
-        (simplicialHomotopyVertexEdge (boundaryAssemblySpecifiedCollageHomotopy r F)
-          (ULift.up (nerveVertex i))).edge := rfl
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (boundaryAssemblySpecifiedCollageHomotopy r F)
+          (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge := rfl
   rw [boundaryAssemblySpecifiedCollageHomotopy_vertex_edge] at hv
   have he := enrichedNerveMap_edge loopCollageEvaluation
     (loopCollageCrossMap ((boundaryPointedKanDiagram r F).obj i)

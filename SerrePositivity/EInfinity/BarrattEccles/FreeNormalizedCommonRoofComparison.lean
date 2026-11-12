@@ -12,7 +12,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite HomotopicalAlgebra Hammock
-open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy SerrePositivity.SimplicialModel SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 
@@ -25,7 +25,7 @@ lemma freeNormalizedCommonLeftIndex_localized_isIso :
   have : SSet.KanComplex ((((freeProbeFunctor A).op ⋙ sourceFrameHom A).obj (op X)).obj B) :=
     sourceFrameHom_kanComplex A (op ((freeProbeFunctor A).obj X)) B
   have := freeNormalizedHomMiddle_kanComplex A (op X) B
-  have hw := DoldKanComparison.ulift_homotopyEquivalence
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (freeNormalizedHomFromStandard_homotopyEquivalence A (op X) B)
   exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
@@ -37,7 +37,7 @@ lemma freeNormalizedCommonRightIndex_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (freeNormalizedCommonRightIndex A X B))) := by
   have := freeNormalizedProbeHom_kanComplex A (op X) B
   have := freeNormalizedHomMiddle_kanComplex A (op X) B
-  have hw := DoldKanComparison.ulift_homotopyEquivalence
+  have hw := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ulift_homotopyEquivalence
     (freeNormalizedHomFromTensor_homotopyEquivalence A (op X) B)
   exact FrameHom.frameSpanSourceIndexMap_localized_isIso _ _ _
     (anodyneQ_map_isIso_of_weak _ hw.isQCatEquivalence.isWeakHomotopyEquivalence)
@@ -100,7 +100,7 @@ lemma freeNormalizedCommonReducedRoof_right_comparison :
 方針：元の標準 roof と左の実 Hom span の反転性から反映する。
 規約：元の全屋根自身を検証。使われ方：正規化自由屋根の弱同値性。 -/
 lemma freeNormalizedCommonReducedRoof_weak :
-    IsWeakHomotopyEquivalence (freeNormalizedCommonReducedRoof A X B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeNormalizedCommonReducedRoof A X B) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := freeNormalizedCommonLeftIndex_localized_isIso A X B
   have hc : IsIso (AnodyneHomotopy.anodyneQ.map
@@ -115,7 +115,7 @@ lemma freeNormalizedCommonReducedRoof_weak :
 方針：同じ共通 roof と右の実 Hom span の全比較を使う。
 規約：元の全屋根自身を検証。使われ方：標準単位誘導射の弱同値判定。 -/
 lemma freeNormalizedTensorReducedRoof_weak :
-    IsWeakHomotopyEquivalence (freeNormalizedTensorReducedRoof A X B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeNormalizedTensorReducedRoof A X B) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := freeNormalizedCommonRightIndex_localized_isIso A X B
   have := anodyneQ_map_isIso_of_weak _ (freeNormalizedCommonReducedRoof_weak A X B)

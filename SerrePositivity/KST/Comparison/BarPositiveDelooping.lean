@@ -40,13 +40,13 @@ def monoidGroupCompletionPointedMap (M : SimplicialObject MonCat.{u}) :
 def pointedKanPositiveHomotopyMulEquiv {X Y : PointedSimplicialSet.{u}}
     [KanComplex X.right] [KanComplex Y.right] (f : X ⟶ Y)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map f.right)) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right n X.basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint := by
-  let hb := _root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right n X.basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right n Y.basepoint := by
+  let hb := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f
   have hπ := kanPiIsomorphism_of_localized_isIso f.right hf
-  have hh := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr (n + 1) f.right rfl hb rfl hb
+  have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr (n + 1) f.right rfl hb rfl hb
     (hπ X.basepoint (n + 1))
-  exact MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f.right hb) hh
+  exact MulEquiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map f.right hb) hh
 
 /--
 概要：Kan な群状モノイドの正次数の群と分類空間の一つ上の群の同型。
@@ -56,8 +56,8 @@ def pointedKanPositiveHomotopyMulEquiv {X Y : PointedSimplicialSet.{u}}
 -/
 def monoidBarPositiveHomotopyMulEquiv (M : SimplicialObject MonCat.{u})
     [KanComplex (monoidSpace M)] (hM : SimplicialMonoid.IsGrouplike M) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidSpace M) n (monoidPointed M).basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed M).right (n + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidSpace M) n (monoidPointed M).basepoint ≃*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed M).right (n + 1)
         (monoidBarKanPointed M).basepoint := by
   letI : KanComplex (monoidPointed M).right :=
     inferInstanceAs (KanComplex (monoidSpace M))
@@ -72,9 +72,9 @@ def monoidBarPositiveHomotopyMulEquiv (M : SimplicialObject MonCat.{u})
 使われ方：安定係数行列群の具体的な同定との合成。
 -/
 def stableHatGLBarPositiveHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
         (monoidPointed (stableHatGL A)).basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right (n + 1)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidBarKanPointed (stableHatGL A)).right (n + 1)
         (monoidBarKanPointed (stableHatGL A)).basepoint :=
   monoidBarPositiveHomotopyMulEquiv (stableHatGL A) (stableHatGL_isGrouplike A) n
 

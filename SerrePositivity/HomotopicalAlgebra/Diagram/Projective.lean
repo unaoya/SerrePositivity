@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.EvaluationFamily
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.EvaluationFamily
 
 public import SerrePositivity.HomotopicalAlgebra.Transfer.EvaluationSmallness
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleLimits
@@ -49,7 +49,7 @@ lemma trivialCofibration_cells :
     ((MorphismProperty.pushouts_monotone (fibrations C).llp.coproducts_le).trans
       (fibrations C).llp.pushouts_le)).trans (fibrations C).llp.transfiniteCompositions_le
 
-variable (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+variable (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I in
 lemma freeGenerators_trivialCofibrations (l : K) :
@@ -61,7 +61,7 @@ lemma freeGenerators_trivialCofibrations (l : K) :
   cases hf with
   | @map X Y f hf =>
     have ht : trivialCofibrations C f :=
-      (J.le_llp_rlp.trans (ModelGeneration.trivialCofibrations_eq_generated I J).symm.le) _ hf
+      (J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le) _ hf
     have : Cofibration f := ⟨ht.1⟩
     have : WeakEquivalence f := ⟨ht.2⟩
     exact free_map_trivialCofibration K k l f
@@ -89,7 +89,7 @@ lemma generators_smallObjectArgument (P : MorphismProperty C) [P.HasSmallObjectA
 def modelCategory : ModelCategory (K ⥤ C) := by
   have := generators_smallObjectArgument K I
   have := generators_smallObjectArgument K J
-  exact ModelGeneration.EvaluationFamily.modelCategory (free K) (evaluation K) (adjunction K) I J
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory (free K) (evaluation K) (adjunction K) I J
     (freeCells_acyclic K I J)
 
 lemma modelCategory_weakEquivalences :
@@ -102,10 +102,10 @@ lemma modelCategory_fibrations :
 
 lemma modelCategory_generated :
     let := modelCategory K I J
-    ModelGeneration.CofibrantlyGenerated.{w} (generators K I) (generators K J) := by
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (generators K I) (generators K J) := by
   have := generators_smallObjectArgument K I
   have := generators_smallObjectArgument K J
-  exact ModelGeneration.EvaluationFamily.modelCategory_generated
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.modelCategory_generated
     (free K) (evaluation K) (adjunction K) I J (freeCells_acyclic K I J)
 
 end SerrePositivity.DiagramModel.Projective

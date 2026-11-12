@@ -43,7 +43,7 @@ lemma cofiberFamily_comparison_of_app {B X P : SSet.{u}} (j : B ⟶ X)
       (uncurry (b ≫ PointedObject.basedHomι Z W)).app n
         (σ.right.app n ((PointedObject.cofiberQuotient j).app n x), p)) :
     a ≫ (PointedObject.basedHomMap (PointedObject.cofiber j) τ).right =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre σ W := by
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre σ W := by
   apply cofiberFamily_raw_hom_ext j W
   erw [Category.assoc, pointedFamily_post_evaluation (PointedObject.cofiber j) a τ,
     pointedFamily_pre_evaluation σ W b]
@@ -64,7 +64,7 @@ lemma cofiberFamily_comparison {B X B' Y P : SSet.{u}}
     (hτ : PointedObject.cofiberQuotient k ≫ τ.right = g)
     (hn : (f ▷ P) ≫ uncurry (b ≫ PointedObject.basedHomι Z W) = s ≫ g) :
     a ≫ (PointedObject.basedHomMap (PointedObject.cofiber j) τ).right =
-      b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre σ W := by
+      b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre σ W := by
   apply cofiberFamily_raw_hom_ext j W
   erw [Category.assoc, pointedFamily_post_evaluation (PointedObject.cofiber j) a τ,
     pointedFamily_pre_evaluation σ W b]

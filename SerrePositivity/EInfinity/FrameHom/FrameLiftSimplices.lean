@@ -36,9 +36,9 @@ variable {C : Type u} [Category.{v} C]
 使われ方：持ち上げ単体の存在と一意性。 -/
 lemma evaluationPullback (n : SimplexCategoryᵒᵖ) :
     IsPullback ((LiftSpace.inclusion A a p f).app n) ((LiftSpace.projection A a p f).app n)
-      (((cosimplicialHom A).map p).app n) ((LiftSpace.point A a f).app n) :=
+      (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p).app n) ((LiftSpace.point A a f).app n) :=
   ((evaluation SimplexCategoryᵒᵖ (Type v)).obj n).map_isPullback
-    (IsPullback.of_hasPullback ((cosimplicialHom A).map p) (LiftSpace.point A a f))
+    (IsPullback.of_hasPullback ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) (LiftSpace.point A a f))
 
 /-- 概要：同じ零次元標準単体の各次数の単体は一意（Low 命題 3.6）。
 方針：終対象への単体作用素を頂点ごとに比較する。
@@ -70,7 +70,7 @@ def simplexEquiv (n : SimplexCategoryᵒᵖ) :
     (LiftSpace.obj A a p f).obj n ≃
       {g : A.obj n.unop ⟶ E // g ≫ p = a.app n.unop ≫ f} :=
   Equiv.ofBijective (fun s => ⟨(LiftSpace.inclusion A a p f).app n s, by
-    exact congrArg (fun k : LiftSpace.obj A a p f ⟶ (cosimplicialHom A).obj B =>
+    exact congrArg (fun k : LiftSpace.obj A a p f ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj B =>
       k.app n s) (LiftSpace.over A a p f)⟩) (by
     constructor
     · intro s t h

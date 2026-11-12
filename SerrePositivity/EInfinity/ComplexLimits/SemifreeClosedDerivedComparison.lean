@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionRetract
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.Derived.ClosedNerveFunctorNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosedNerveFunctorNaturality
 
 /-!
 # 元の半自由閉零圏上の通常導来源の全比較
@@ -21,54 +21,54 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded DGNerve SSet
+open CategoryTheory DifferentialGraded SSet
 variable (A : Type u) [CommRing A]
 
 lemma semifreeClosedToComplex_comp_toClosed :
-    semifreeClosedToComplex A ⋙ complexToClosed A =
-      (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)).onClosed := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A ⋙ complexToClosed A =
+      (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)).onClosed := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   change (complexClosedHomEquiv A X.val Y.val).symm
     ((complexClosedHomEquiv A X.val Y.val)
-      ((dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)).onClosed.map f)) = _
+      ((dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)).onClosed.map f)) = _
   exact Equiv.symm_apply_apply _ _
 
 lemma semifreeClosedDerivedSource_eq :
-    nerveMap (semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A =
-      closedNerveInclusion A (Semifree A) ≫
-        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) ≫
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)) ≫
           complexSemifreeResolutionInfinity A := by
-  have h : nerveMap (semifreeClosedToComplex A) ≫ nerveMap (complexToClosed A) =
-      nerveMap (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)).onClosed := by
+  have h : nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ≫ nerveMap (complexToClosed A) =
+      nerveMap (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)).onClosed := by
     apply SSet.hom_ext
     intro n
     apply ConcreteCategory.hom_ext
     intro Γ
-    change (Γ ⋙ semifreeClosedToComplex A) ⋙ complexToClosed A = _
+    change (Γ ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ⋙ complexToClosed A = _
     rw [Functor.assoc, semifreeClosedToComplex_comp_toClosed]
     rfl
   calc
-    _ = (nerveMap (semifreeClosedToComplex A) ≫ nerveMap (complexToClosed A)) ≫
-        closedNerveInclusion A (Complex A) ≫ complexSemifreeResolutionInfinity A := by
+    _ = (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ≫ nerveMap (complexToClosed A)) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A) ≫ complexSemifreeResolutionInfinity A := by
       simp only [complexOrdinaryDerivedSource, Category.assoc]
     _ = _ := by
-      rw [h, ← Category.assoc, ← closedNerveInclusion_dgFunctor]
+      rw [h, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_dgFunctor]
       rw [Category.assoc]
 
 def semifreeClosedDerivedSourceIso :
-    FunctorIso (nerveMap (semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A)
-      (closedNerveInclusion A (Semifree A)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A) ≫ complexOrdinaryDerivedSource A)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) := by
   have e := (complexSemifreeResolutionRetractIso A).precomp
-    (closedNerveInclusion A (Semifree A))
-  have e' : FunctorIso
-      (closedNerveInclusion A (Semifree A) ≫
-        dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A))
+  have e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)) ≫
           complexSemifreeResolutionInfinity A)
-      (closedNerveInclusion A (Semifree A)) := by
-    simpa only [derivedInfinityCategory, Category.comp_id] using e
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) := by
+    simpa only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory, Category.comp_id] using e
+  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (semifreeClosedDerivedSource_eq A)) ≪≫ e'
 
 end SerrePositivity.EInfinity.ComplexLimits

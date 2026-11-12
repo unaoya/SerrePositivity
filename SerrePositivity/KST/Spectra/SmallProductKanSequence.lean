@@ -22,7 +22,7 @@ variable {S : Type u}
 
 /-- loop で写した小積の fan の実際の極限性。 -/
 def loopFanIsLimit (X : S → PointedSimplicialSet.{u}) :
-    IsLimit (Fan.mk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSmallProduct.obj X))
+    IsLimit (Fan.mk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSmallProduct.obj X))
       (fun s ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         (PointedSmallProduct.projection X s))) :=
   isLimitFanMkObjOfIsLimit (ihom PointedSimplicialSet.circle.{u}) X
@@ -30,8 +30,8 @@ def loopFanIsLimit (X : S → PointedSimplicialSet.{u}) :
 
 /-- loop と任意の具体的小積の交換同型。 -/
 def loopIso (X : S → PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSmallProduct.obj X) ≅
-      PointedSmallProduct.obj (fun s ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X s)) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSmallProduct.obj X) ≅
+      PointedSmallProduct.obj (fun s ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X s)) :=
   (loopFanIsLimit X).conePointUniqueUpToIso (PointedSmallProduct.isLimit _)
 
 @[reassoc (attr := simp)]
@@ -45,8 +45,8 @@ lemma loopIso_projection (X : S → PointedSimplicialSet.{u}) (s : S) :
 /-- 族の随伴構造を、小積の loop への射へまとめる。 -/
 def adjoint (X : S → KanSequence.{u}) (n : ℕ) :
     PointedSmallProduct.obj (fun s ↦ ((X s).level n).space) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSmallProduct.obj (fun s ↦ ((X s).level (n + 1)).space)) :=
-  PointedSmallProduct.map (fun s ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((X s).level n).space
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSmallProduct.obj (fun s ↦ ((X s).level (n + 1)).space)) :=
+  PointedSmallProduct.map (fun s ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((X s).level n).space
     ((X s).level (n + 1)).space ((X s).sigma n)) ≫ (loopIso _).inv
 
 /-- 任意の小さい Kan 列の族の具体的な積の列。 -/
@@ -56,7 +56,7 @@ def obj (X : S → KanSequence.{u}) : KanSequence.{u} where
 
 /-- 構成した列の随伴構造は小積の随伴射そのもの。 -/
 lemma obj_adjoint (X : S → KanSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((obj X).level n).space ((obj X).level (n + 1)).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((obj X).level n).space ((obj X).level (n + 1)).space
       ((obj X).sigma n) = adjoint X n := curry_uncurry _
 
 /-- 元の各列の Ω 条件は任意の小積で保たれる。 -/
@@ -65,10 +65,10 @@ lemma omegaCondition (X : S → KanSequence.{u}) (hX : ∀ s, (X s).OmegaConditi
   intro n
   rw [obj_adjoint]
   let e := loopIso (fun s ↦ ((X s).level (n + 1)).space)
-  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.inv.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (X := (PointedSmallProduct.obj (fun s ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((X s).level (n + 1)).space)).right)
-      (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSmallProduct.obj
+  have he : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism e.inv.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (X := (PointedSmallProduct.obj (fun s ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((X s).level (n + 1)).space)).right)
+      (Y := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSmallProduct.obj
         (fun s ↦ ((X s).level (n + 1)).space))).right)
       (PointedSimplicialSet.forget.mapIso e.symm)
   exact (PointedSmallProduct.map_piIsomorphism _ (fun s ↦ hX s n)).comp

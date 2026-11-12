@@ -51,7 +51,7 @@ instance cAlg_R_quasicategory : SSet.Quasicategory (CAlg_R A) :=
 規約：Hom を離散化しない。
 使われ方：既存の Kan Map^h との高次の比較の対象。 -/
 lemma cAlg_sHom (X Y : CAlgSimplicialCategory A) :
-    SimplicialCategory.sHom X Y = SerrePositivity.KST.Comparison.exInfinity.obj
+    SimplicialCategory.sHom X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj
       (localizationHom (cofibrantAlgebraRelativeCategory A) X Y) := rfl
 
 /-- 概要：CAlg_R の構成に使うすべての Hom は Kan 複体（Dwyer–Kan）。

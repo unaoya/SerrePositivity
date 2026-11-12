@@ -21,13 +21,13 @@ namespace SerrePositivity.KST.Spectra.PointedMapping.VerticalPath
 lemma projectedCoordinate {A D D' E E' : PointedSimplicialSet.{u}}
     (i : A ⟶ D) (v : D ⟶ D') (q : D ⟶ E) (q' : D' ⟶ E') (w : E ⟶ E')
     (hq : q ≫ w = v ≫ q') :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D ≫ PointedObject.basedHomMap A q) ≫ PointedObject.basedHomMap A w =
-      (PointedObject.basedHomMap D v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D') ≫ PointedObject.basedHomMap A q' := by
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D ≫ PointedObject.basedHomMap A q) ≫ PointedObject.basedHomMap A w =
+      (PointedObject.basedHomMap D v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D') ≫ PointedObject.basedHomMap A q' := by
   have hn := (MonoidalClosed.pre i).naturality v
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
-  change (ihom D).map v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D' = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D ≫ (ihom A).map v at hn
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D ≫ (ihom A).map q) ≫ (ihom A).map w =
-    ((ihom D).map v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D') ≫ (ihom A).map q'
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
+  change (ihom D).map v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D' = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D ≫ (ihom A).map v at hn
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D ≫ (ihom A).map q) ≫ (ihom A).map w =
+    ((ihom D).map v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D') ≫ (ihom A).map q'
   rw [Category.assoc, ← Functor.map_comp, hq, Functor.map_comp, ← Category.assoc, ← hn]
 
 /-- 実辺の自然性と射影可換式から、入力制限・射影付き実辺の等式を得る。 -/
@@ -36,16 +36,16 @@ lemma projectedNaturality_map {T : SSet.{u}} {A D D' E E' : PointedSimplicialSet
     (R' : T ⟶ (PointedObject.basedHom D' D').right)
     (i : A ⟶ D) (v : D ⟶ D') (q : D ⟶ E) (q' : D' ⟶ E') (w : E ⟶ E')
     (hq : q ≫ w = v ≫ q')
-    (hp : R ≫ (PointedObject.basedHomMap D v).right = R' ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed v D').right) :
-    ((R ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D).right) ≫ (PointedObject.basedHomMap A q).right) ≫
+    (hp : R ≫ (PointedObject.basedHomMap D v).right = R' ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed v D').right) :
+    ((R ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D).right) ≫ (PointedObject.basedHomMap A q).right) ≫
         (PointedObject.basedHomMap A w).right =
-      (R' ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (i ≫ v) D').right) ≫ (PointedObject.basedHomMap A q').right := by
+      (R' ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (i ≫ v) D').right) ≫ (PointedObject.basedHomMap A q').right := by
   have hc := congrArg (fun m => R ≫ m.right) (projectedCoordinate i v q q' w hq)
   simp only [Under.comp_right, Category.assoc] at hc
   simp only [Category.assoc]
   rw [hc, ← Category.assoc R, hp]
   have ht := congrArg (fun m => R' ≫ m.right ≫ (PointedObject.basedHomMap A q').right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp i v D')
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp i v D')
   simpa only [Under.comp_right, Category.assoc] using ht
 
 /-- 入力制限と射影を付けた元の区間全体を、同じ自然性の辺へ照合する。 -/
@@ -60,7 +60,7 @@ lemma projectedNaturality_path {A D D' E E' : PointedSimplicialSet.{u}}
       ((Q.pre (i ≫ v)).basedPost q').path := by
   rw [basedPost_basedPost_path, hq, ← basedPost_basedPost_path]
   have he := congrArg (fun t =>
-    (t ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D').right) ≫ (PointedObject.basedHomMap A q').right) hp
+    (t ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D').right) ≫ (PointedObject.basedHomMap A q').right) hp
   change (((P.basedPost v).pre i).basedPost q').path =
     (((Q.pre v).pre i).basedPost q').path at he
   have hleft := congrArg (· ≫ (PointedObject.basedHomMap A q').right)

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStandardHomComposition
-public import SerrePositivity.InfinityCategories.DoldKanComparison.SimplicialCategory
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplicialCategory
 
 /-! # 厳密 dg 関手の標準 DK 単体的豊穣関手
 概要：元の dg 関手を、標準 DK Hom を持つ単体的圏間の厳密な豊穣関手へ移す。
@@ -15,7 +15,7 @@ universe u v w t
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
   {E : Type w} [DGCategory A E] {B : Type t} [DGCategory A B]
 
@@ -38,7 +38,7 @@ def dgStandardEnrichedFunctor (F : DGFunctor A D E) :
     exact dgStandardSimplexMap_aw F s.2 s.1
 
 /-- dg 恒等関手は標準 DK の全単体をそのまま回収する。 -/
-lemma dgStandardSimplexMap_id {x y : D} {n : ℕ} (f : StandardSimplex A x y n) :
+lemma dgStandardSimplexMap_id {x y : D} {n : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex A x y n) :
     dgStandardSimplexMap (DGFunctor.id D) f = f := by
   apply Subtype.ext
   funext i
@@ -46,7 +46,7 @@ lemma dgStandardSimplexMap_id {x y : D} {n : ℕ} (f : StandardSimplex A x y n) 
 
 /-- 元の dg 関手の合成は、標準 DK の全単体上で厳密な合成を回収する。 -/
 lemma dgStandardSimplexMap_comp (F : DGFunctor A D E) (G : DGFunctor A E B)
-    {x y : D} {n : ℕ} (f : StandardSimplex A x y n) :
+    {x y : D} {n : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex A x y n) :
     dgStandardSimplexMap (F.comp G) f = dgStandardSimplexMap G (dgStandardSimplexMap F f) := by
   apply Subtype.ext
   funext i

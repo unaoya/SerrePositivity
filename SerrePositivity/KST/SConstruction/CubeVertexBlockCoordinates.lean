@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.CubeVertexBlocks
 namespace SerrePositivity.KST.SConstruction
 
 /-- 元の連結の左座標は、右の長さだけ後ろに置かれる。 -/
-lemma cubeVertexJoin_left_coordinate {n m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+lemma cubeVertexJoin_left_coordinate {n m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
     (i : Fin n) : cubeVertexJoin x y ⟨m + i.val, by have := i.isLt; omega⟩ = x i := by
   induction m with
   | zero =>
@@ -28,7 +28,7 @@ lemma cubeVertexJoin_left_coordinate {n m : ℕ} (x : _root_.SerrePositivity.Inf
     exact ih (fun j => y j.succ)
 
 /-- 元の連結の右座標は、零から同じ番号で始まる。 -/
-lemma cubeVertexJoin_right_coordinate {n m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+lemma cubeVertexJoin_right_coordinate {n m : ℕ} (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
     (i : Fin m) : cubeVertexJoin x y ⟨i.val, by have := i.isLt; omega⟩ = y i := by
   induction m with
   | zero => exact Fin.elim0 i

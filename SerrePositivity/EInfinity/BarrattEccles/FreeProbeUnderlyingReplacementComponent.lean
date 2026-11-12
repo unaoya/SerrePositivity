@@ -39,51 +39,51 @@ private lemma chosenTransportArrow {C D : Type*} [Category* C] [Category* D]
 
 private lemma chosenVertexTransportArrow {C D : SSet.{u}} (U : C ⟶ D)
     {a b c : C.obj (Opposite.op ⦋0⦌)}
-    {d d' z : D.obj (Opposite.op ⦋0⦌)} (p : VertexIso a b) (q : VertexIso a c)
-    (r : VertexIso (U.app (Opposite.op ⦋0⦌) c) d)
-    (s : VertexIso (U.app (Opposite.op ⦋0⦌) a) z) (t : VertexIso z d')
+    {d d' z : D.obj (Opposite.op ⦋0⦌)} (p : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b) (q : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a c)
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (U.app (Opposite.op ⦋0⦌) c) d)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (U.app (Opposite.op ⦋0⦌) a) z) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso z d')
     (h : Arrow.mk ((hoFunctor.map U).toFunctor.map q.hom ≫ r.hom) =
       Arrow.mk (s.hom ≫ t.hom)) :
     Arrow.mk ((hoFunctor.map U).toFunctor.map (p.symm ≪≫ q).hom ≫ r.hom) =
-      Arrow.mk ((VertexIso.map p U).symm ≪≫ s ≪≫ t).hom := by
+      Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map p U).symm ≪≫ s ≪≫ t).hom := by
   exact chosenTransportArrow (hoFunctor.map U).toFunctor p q r s t h
 
 private lemma chosenFullFunctorTransportArrow {L C D : SSet.{u}}
     (F : L ⟶ C) (U : C ⟶ D) {V : L ⟶ D} (x : L.obj (Opposite.op ⦋0⦌))
     {b c : C.obj (Opposite.op ⦋0⦌)} {d d' : D.obj (Opposite.op ⦋0⦌)}
-    (p : VertexIso (F.app (Opposite.op ⦋0⦌) x) b)
-    (q : VertexIso (F.app (Opposite.op ⦋0⦌) x) c)
-    (r : VertexIso (U.app (Opposite.op ⦋0⦌) c) d)
-    (s : FunctorIso (F ≫ U) V) (t : VertexIso (V.app (Opposite.op ⦋0⦌) x) d')
+    (p : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (F.app (Opposite.op ⦋0⦌) x) b)
+    (q : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (F.app (Opposite.op ⦋0⦌) x) c)
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (U.app (Opposite.op ⦋0⦌) c) d)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ U) V) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (V.app (Opposite.op ⦋0⦌) x) d')
     (h : Arrow.mk ((hoFunctor.map U).toFunctor.map q.hom ≫ r.hom) =
-      Arrow.mk (functorHomEvaluate s.hom x ≫ t.hom)) :
+      Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate s.hom x ≫ t.hom)) :
     Arrow.mk ((hoFunctor.map U).toFunctor.map (p.symm ≪≫ q).hom ≫ r.hom) =
-      Arrow.mk ((VertexIso.map p U).symm ≪≫ functorIsoEvaluate s x ≪≫ t).hom := by
-  refine chosenVertexTransportArrow U p q r (functorIsoEvaluate s x) t ?_
-  dsimp only [functorIsoEvaluate]
+      Arrow.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map p U).symm ≪≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate s x ≪≫ t).hom := by
+  refine chosenVertexTransportArrow U p q r (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate s x) t ?_
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate]
   exact h
 
 private lemma vertexIso_hom_arrow {D : SSet.{u}}
-    {a b : D.obj (Opposite.op ⦋0⦌)} {e e' : VertexIso a b} (h : e = e') :
+    {a b : D.obj (Opposite.op ⦋0⦌)} {e e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b} (h : e = e') :
     Arrow.mk e.hom = Arrow.mk e'.hom :=
-  congrArg (fun i : VertexIso a b => Arrow.mk i.hom) h
+  congrArg (fun i : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b => Arrow.mk i.hom) h
 
 private lemma vertexIso_map_hom_comp_arrow {C D : SSet.{u}} (U : C ⟶ D)
     {a b : C.obj (Opposite.op ⦋0⦌)} {d : D.obj (Opposite.op ⦋0⦌)}
-    {e e' : VertexIso a b} (h : e = e')
+    {e e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b} (h : e = e')
     (k : (HomotopyCategory.mk (U.app (Opposite.op ⦋0⦌) b) : hoFunctor.obj D) ⟶
       HomotopyCategory.mk d) :
     Arrow.mk ((hoFunctor.map U).toFunctor.map e.hom ≫ k) =
       Arrow.mk ((hoFunctor.map U).toFunctor.map e'.hom ≫ k) :=
-  congrArg (fun i : VertexIso a b =>
+  congrArg (fun i : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b =>
     Arrow.mk ((hoFunctor.map U).toFunctor.map i.hom ≫ k)) h
 
 private lemma relativeChosenIso_def : freeProbeRelativeChosenSourceIso A X =
     (freeProbeCAlgSource_vertexIso A X).symm ≪≫ freeProbeRelativeFullSourceIso A X := rfl
 
 private lemma derivedUnderlyingIso_def : freeProbeDerivedUnitUnderlyingVertexIso A X =
-    (VertexIso.map (freeProbeCAlgSource_vertexIso A X) (cAlgForgetDerived A)).symm ≪≫
-      functorIsoEvaluate (freeProbeUnderlyingDerivedSourceIso A) (nerveVertex X) ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (freeProbeCAlgSource_vertexIso A X) (cAlgForgetDerived A)).symm ≪≫
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate (freeProbeUnderlyingDerivedSourceIso A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≪≫
         complexDiagramDerivedVertexIso A
           (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X := rfl
 
@@ -114,7 +114,7 @@ private lemma unitTransportCancel {C : Type*} [Category* C] {a b c : C}
 方針：同じ自由関手による前合成の評価と全代数源比較を使う。
 規約：元の全比較を保持。使われ方：標準単位の自由側の端点回収。 -/
 lemma freeProbeUnderlyingDerivedSourceIso_component_arrow :
-    Arrow.mk (functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (nerveVertex X)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) =
     Arrow.mk ((cofibrantForgetOrdinaryVertexIso A
         ((cofibrantAlgebraReplacement A).obj (freeProbeElementCofibrantSource A X).obj)).hom ≫
       Truncated.HomotopyCategory.homMk
@@ -127,17 +127,17 @@ lemma freeProbeUnderlyingDerivedSourceIso_component_arrow :
         complexOrdinaryDerivedSource A := by
     rw [algebraUnderlyingDerivedSource, ← Category.assoc, freeProbeUnderlyingNerve_eq]
   have hd : freeProbeUnderlyingDerivedSourceIso A = e ≪≫
-      eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) he) := rfl
-  rw [hd, Iso.trans_hom, functorHomEvaluate_comp,
-    functorIsoEvaluate_eqToIso_hom he (nerveVertex X)]
+      eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) he) := rfl
+  rw [hd, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp,
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_eqToIso_hom he (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)]
   refine (Arrow.arrow_mk_comp_eqToHom _ _).trans ?_
-  have hs := functorIsoEvaluate_precomp_arrow (algebraCAlgSource_underlyingDerivedIso A)
-    (nerveMap (freeProbeFunctor A)) (nerveVertex X)
-  have hv : (nerveMap (freeProbeFunctor A)).app (Opposite.op ⦋0⦌) (nerveVertex X) =
-      nerveVertex (freeProbeElementCofibrantSource A X).obj := ComposableArrows.ext₀ rfl
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.functorIsoEvaluate_precomp_arrow (algebraCAlgSource_underlyingDerivedIso A)
+    (nerveMap (freeProbeFunctor A)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
+  have hv : (nerveMap (freeProbeFunctor A)).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeElementCofibrantSource A X).obj := ComposableArrows.ext₀ rfl
   have hv' := congrArg (fun v => (Arrow.mk
-    (functorHomEvaluate (algebraCAlgSource_underlyingDerivedIso A).hom v) :
-      Arrow (hoFunctor.obj (derivedInfinityCategory A)))) hv
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (algebraCAlgSource_underlyingDerivedIso A).hom v) :
+      Arrow (hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))) hv
   exact (hs.trans hv').trans
     (algebraCAlgSource_underlyingDerivedIso_component_arrow A
       (freeProbeElementCofibrantSource A X).obj)
@@ -167,14 +167,14 @@ lemma freeProbeRelativeFullSourceIso_forget_underlying_arrow :
     Arrow.mk ((hoFunctor.map (cAlgForgetDerived A)).toFunctor.map
         (freeProbeRelativeFullSourceIso A X).hom ≫
       (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X)).hom) =
-    Arrow.mk (functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (nerveVertex X) ≫
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       (complexDiagramDerivedVertexIso A
         (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom) := by
-  have hd : Arrow.mk (functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
-        (nerveVertex X) ≫ (complexDiagramDerivedVertexIso A
+  have hd : Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫ (complexDiagramDerivedVertexIso A
           (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom) =
-      Arrow.mk (functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
-        (nerveVertex X)) := by
+      Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnderlyingDerivedSourceIso A).hom
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) := by
     exact complexDiagramDerivedVertexIso_comp_arrow A
       (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X _
   exact (freeProbeRelativeFullSourceIso_forget_ordinary_arrow A X).trans
@@ -194,7 +194,7 @@ lemma freeProbeRelativeChosenSourceIso_forget_underlying_arrow :
     (V := nerveMap (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) ≫
       complexOrdinaryDerivedSource A)
     (freeProbeCAlgSource A) (cAlgForgetDerived A)
-    (nerveVertex X) (freeProbeCAlgSource_vertexIso A X) (freeProbeRelativeFullSourceIso A X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) (freeProbeCAlgSource_vertexIso A X) (freeProbeRelativeFullSourceIso A X)
     (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X))
     (freeProbeUnderlyingDerivedSourceIso A)
     (complexDiagramDerivedVertexIso A

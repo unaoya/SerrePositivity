@@ -27,7 +27,7 @@ namespace SerrePositivity.SpectrumStabilization
 theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelCategory SSet.{u}]
     [original : ModelCategory (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (circle.{u}))]
     [∀ n : ℕ, IsLeftQuillen (freeAt (K := (circle.{u})) n)]
-    [CofibrantlyGenerated.{u} (levelGenerators (circle.{u}) pointedI.{u})
+    [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} (levelGenerators (circle.{u}) pointedI.{u})
       (levelGenerators (circle.{u}) pointedJ.{u})]
     [MorphismProperty.IsStableUnderCobaseChangeAgainst
       (weakEquivalences (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (circle.{u})))
@@ -61,9 +61,9 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
           (levelGenerators (circle.{u}) pointedI) G W.Q ∧
           e.inverse = ROmega := by
   have := pointedSimplicial_isLocallyPresentable.{u}
-  have : CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} :=
     pointedSimplicial_cofibrantlyGenerated hcof hfib
-  have : CofibrantlyGenerated.{u} SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J :=
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J :=
     simplicial_cofibrantlyGenerated hcof hfib
   have : MonoidalModelCategory PointedSimplicialSet.{u} :=
     pointedSimplicial_monoidalModel hcof hfib
@@ -77,7 +77,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
     (levelGenerators (circle.{u}) pointedI) (levelGenerators (circle.{u}) pointedJ)
     SSet.modelCategoryQuillen.I SSet.modelCategoryQuillen.J hcof hfib hcof hfib hcof hfib hw
   have : IsCofibrant (𝟙_ PointedSimplicialSet.{u}) := pointedSimplicial_isCofibrant hcof _
-  have := hasFunctorialFactorization_cofibration_trivialFibration pointedI.{u} pointedJ.{u}
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration pointedI.{u} pointedJ.{u}
   let cofC := MorphismProperty.functorialFactorizationData
     (cofibrations PointedSimplicialSet.{u}) (trivialFibrations PointedSimplicialSet.{u})
   have := general_levelTensor_isQuillen (circle.{u}) pointedI pointedJ
@@ -91,7 +91,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
   let := stableModel
   let nativeModel : ModelCategory SymmetricSpectrum.{u} := stableModel
   let := nativeModel
-  have : CofibrantlyGenerated.{u} (levelGenerators (circle.{u}) pointedI) G := hg
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} (levelGenerators (circle.{u}) pointedI) G := hg
   have : IsLocallyPresentable.{u}
       (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (circle.{u})) := lp
   have : MorphismProperty.IsStableUnderCobaseChangeAgainst
@@ -100,7 +100,7 @@ theorem StableModelPresentation.exists_ordinarySuspensionLoopEquivalence [ModelC
   have : IsQuillenBifunctor (pointwiseTensorBifunctor (K := (circle.{u}))) := haction
   let W := weakEquivalences (GeneralSymmetricSpectrum PointedSimplicialSet.{u} (circle.{u}))
   have : IsLocallyPresentable.{u} SymmetricSpectrum.{u} := lp
-  have : CofibrantlyGenerated.{u} (C := SymmetricSpectrum.{u})
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} (C := SymmetricSpectrum.{u})
       (levelGenerators (circle.{u}) pointedI) G := hg
   have : MorphismProperty.IsStableUnderCobaseChangeAgainst
       (weakEquivalences SymmetricSpectrum.{u}) (cofibrations SymmetricSpectrum.{u}) := hproper

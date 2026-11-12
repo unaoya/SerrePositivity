@@ -22,8 +22,8 @@ open CategoryTheory SerrePositivity.InfinityCategories
 
 lemma grothendieck_map_isWeakHomotopyEquivalence {D : Type u} [Category.{u} D]
     {F G : D ⥤ Cat.{u, u}} (α : F ⟶ G)
-    (hα : ∀ d, IsWeakHomotopyEquivalence (nerveMap (α.app d).toFunctor)) :
-    IsWeakHomotopyEquivalence (nerveMap (Grothendieck.map α)) := by
+    (hα : ∀ d, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (α.app d).toFunctor)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (Grothendieck.map α)) := by
   have hb := FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
     (FrameHom.BarRows.map_localized_isIso (FrameHom.Thomason.nerveComparison α)
       (fun d => anodyneQ_map_isIso_of_weak _ (hα d)))

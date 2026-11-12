@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingShiftedLeftAx
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationRestrictedAxes
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationModuleInput
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecomp
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransTransport
 
 /-!
 概要：元実逆回転全比較と実 cone 全入力を元始域へ回収する。
@@ -16,7 +16,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransTranspo
 noncomputable section
 universe u v w z
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -29,7 +29,7 @@ local notation "I" => DGFunctor.id C
 local notation "M" => dgHomGluingBimodule R C C C (I) (I)
 local notation "H" => dgIdentityHomGluingFunctor R C F G a h
 
-local notation "L" => DGGluingObject R C C (M)
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C C (M)
 local notation "family" => dgHomGluingLoopConeFamily R C C C (I) (I)
 local notation "J" => dgSmallPerfectEnvelopeInclusion R C ((L) ⊕ (L)) (family)
 local notation "K" => dgPerfectModuleUnderlying R C (J)
@@ -41,13 +41,13 @@ local notation "S" => moduleShiftDG R C (-1)
 
 local notation "η" => dgIdentityInverseRotationImageComparison R C
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
 
 /-- 概要：元始域へ制限した実像逆回転全比較は元 connecting の逆 shift。
 方針：両全軸と元実閉射を型付きで回収する。
 規約：元全厳密比較を保持。使われ方：同じ実 cone 入力全族への接続。 -/
 lemma dgIdentityHomGluingInverseRotationImageComparison_restriction :
-    HEq (dgStrictNatTransPrecomp (H) (η)) (βs) := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPrecomp (H) (η)) (βs) := by
   apply dgModuleStrictNatTrans_heq_of_arrow_heq R C _ _ _ _ _ (βs)
     (dgIdentityHomGluingInverseRotationImageSource_restriction R C F G a h)
     (dgIdentityHomGluingInverseRotationImageTarget_restriction R C F G a h)

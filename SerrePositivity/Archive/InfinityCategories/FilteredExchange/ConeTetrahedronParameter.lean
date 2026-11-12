@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SimplexConeParameter
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.AppendEdgeConeInverse
-public import SerrePositivity.InfinityCategories.F1.Joins.SlicePrismSquare
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorNaturalityTriangles
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SlicePrismSquare
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FunctorNaturalityTriangles
 
 /-!
 概要：元の実三角形へ終点を追加し、同じ 012 面を持つ全係数四面体を作る。

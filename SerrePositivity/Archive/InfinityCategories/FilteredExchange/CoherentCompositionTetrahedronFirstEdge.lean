@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionTetrahedronDegenerateFace
-public import SerrePositivity.InfinityCategories.F1.Coherent.ConstantOrderDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.ConstantOrderDiagram
 
 /-!
 概要：合成比較三単体の初二頂点間の実辺は元の初点の恒等辺。

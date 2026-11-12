@@ -88,7 +88,7 @@ import verify_runner as vr
 
 
 class MemoryRunnerTests(unittest.TestCase):
-    def schedule(self, paths, stats, jobs=6, budget=40*vr.GB):
+    def schedule(self, paths, stats, jobs=6, budget=40*vr.GB, exclusive=()):
         active = 0
         maximum = 0
         lock = threading.Lock()
@@ -99,7 +99,7 @@ class MemoryRunnerTests(unittest.TestCase):
             time.sleep(0.025)
             with lock: active -= 1
             return {'name': name}
-        results, report = vr.schedule_checks(paths, action, stats, jobs, budget)
+        results, report = vr.schedule_checks(paths, action, stats, jobs, budget, exclusive_paths=exclusive)
         self.assertEqual({r['name'] for r in results}, set(paths))
         self.assertEqual(maximum, report['max_concurrent'])
         return report
@@ -125,6 +125,24 @@ class MemoryRunnerTests(unittest.TestCase):
         starts = [e for e in report['events'] if e['event']=='start']
         self.assertEqual([e['estimated_rss_bytes'] for e in starts if e['name'].startswith('u')], [20*vr.GB]*3)
         self.assertLessEqual(report['max_reserved_rss_bytes'],40*vr.GB)
+
+    def test_exclusive_audits_backfill_small_jobs_under_44_gb(self):
+        stats = {n: {'seconds': t, 'max_rss_bytes': rss*vr.GB}
+                 for n,t,rss in [('large1',9,14),('large2',8,13),('small',1,1)]}
+        report = self.schedule(['small','large2','large1'], stats, jobs=6,
+                               budget=44*vr.GB, exclusive=['large1','large2'])
+        self.assertEqual(report['start_order'], ['large1','small','large2'])
+        self.assertEqual(report['max_exclusive_concurrent'], 1)
+        self.assertEqual(report['max_concurrent'], 2)
+        self.assertLessEqual(report['max_reserved_rss_bytes'], 44*vr.GB)
+
+    def test_exclusive_audits_apply_without_memory_budget_and_reject_typos(self):
+        report = self.schedule(['a','b','small'], {}, jobs=6, budget=0,
+                               exclusive=['a','b'])
+        self.assertEqual(report['max_exclusive_concurrent'], 1)
+        self.assertEqual(report['max_concurrent'], 2)
+        with self.assertRaises(ValueError):
+            self.schedule(['a'], {}, exclusive=['missing'])
 
     def test_jobs_one_is_serial(self):
         report = self.schedule(['a','b','c'],{},jobs=1)

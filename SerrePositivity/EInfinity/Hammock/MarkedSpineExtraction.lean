@@ -22,31 +22,31 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   {n m : SimplexCategoryᵒᵖ}
 
-lemma markedSpine_simplex (θ : n ⟶ m) (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+lemma markedSpine_simplex (θ : n ⟶ m) (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     MarkedSpine.map θ (markedSpine W Y n X x) =
-      markedSpine W Y m X ((colimitGraph W.paths X Y).map θ x) := by
+      markedSpine W Y m X ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ x) := by
   classical
   by_cases hx : (colimitValue W X Y).app n x = []
   · have hθ := (EmptyValue.value_simplex W X Y θ x).trans hx
     rw [markedSpine_empty W Y n X x hx, markedSpine_empty W Y m X _ hθ]
     apply congrArg (MarkedSpine.nil X)
     exact (congrArg (fun k => k ⟨x, hx⟩) ((AllMarked.emptyLift W X Y).naturality θ)).symm
-  · have hθ : (colimitValue W X Y).app m ((colimitGraph W.paths X Y).map θ x) ≠ [] :=
+  · have hθ : (colimitValue W X Y).app m ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ x) ≠ [] :=
       fun he => hx ((EmptyValue.value_simplex W X Y θ x).symm.trans he)
     rw [markedSpine_nonempty W Y n X ⟨x, hx⟩, markedSpine_nonempty W Y m X ⟨_, hθ⟩]
-    have hc : (nonemptyCut W X Y).app m ⟨(colimitGraph W.paths X Y).map θ x, hθ⟩ =
-        (FactorTarget.space W X Y).map θ ((nonemptyCut W X Y).app n ⟨x, hx⟩) :=
+    have hc : (nonemptyCut W X Y).app m ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ x, hθ⟩ =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).map θ ((nonemptyCut W X Y).app n ⟨x, hx⟩) :=
       congrArg (fun k => k ⟨x, hx⟩) ((nonemptyCut W X Y).naturality θ)
     rw [hc]
     exact congrArg (fun t => MarkedSpine.cons X ((nonemptyCut W X Y).app n ⟨x, hx⟩).1
-      ((FactorTarget.left W X ((nonemptyCut W X Y).app n ⟨x, hx⟩).1.val).map θ
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X ((nonemptyCut W X Y).app n ⟨x, hx⟩).1.val).map θ
         ((nonemptyCut W X Y).app n ⟨x, hx⟩).2.1) t)
       (markedSpine_simplex θ ((nonemptyCut W X Y).app n ⟨x, hx⟩).1.val.right
         ((nonemptyCut W X Y).app n ⟨x, hx⟩).2.2)
 termination_by ((colimitValue W X Y).app n x).length
 decreasing_by exact nonemptyCut_residual_length_lt W ⟨x, hx⟩
 
-def extraction (X : Paths C) : colimitGraph W.paths X Y ⟶ MarkedSpine.space W Y X where
+def extraction (X : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶ MarkedSpine.space W Y X where
   app n := ↾fun x => markedSpine W Y n X x
   naturality _ _ θ := by
     apply ConcreteCategory.hom_ext

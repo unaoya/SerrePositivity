@@ -16,14 +16,14 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma dkHammockColimitComparisonIso_postcompose (X : C.category) {Y Z : C.category}
     (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫
         (dkHammockColimitComparisonIso C X Z).hom =
       (dkHammockColimitComparisonIso C X Y).hom ≫
-        AnodyneHomotopy.anodyneQ.map (postcomposePointMap X (arrowMap C.weakEquivalences g)) := by
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences g)) := by
   let Q := AnodyneHomotopy.anodyneQ
   have := anodyneQ_map_isIso_of_weak (freeHammockDiagonalComparison C X Y)
     (freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y)
@@ -39,7 +39,7 @@ lemma dkHammockColimitComparisonIso_precompose {X Y : C.category} (Z : C.categor
     AnodyneHomotopy.anodyneQ.map (localizationPrecompose C Z f) ≫
         (dkHammockColimitComparisonIso C X Z).hom =
       (dkHammockColimitComparisonIso C Y Z).hom ≫
-        AnodyneHomotopy.anodyneQ.map (precomposePointMap (arrowMap C.weakEquivalences f) Z) := by
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) Z) := by
   let Q := AnodyneHomotopy.anodyneQ
   have := anodyneQ_map_isIso_of_weak (freeHammockDiagonalComparison C Y Z)
     (freeHammockDiagonalComparison_isWeakHomotopyEquivalence C Y Z)

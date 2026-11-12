@@ -29,18 +29,18 @@ lemma weakPushout_gluing
     (a : A ⟶ A') (b : B ⟶ B') (c : C ⟶ C') (d : D ⟶ D')
     (hi : i ≫ b = a ≫ i') (hg : g ≫ c = a ≫ g')
     (hr : r ≫ d = b ≫ r') (hs : s ≫ d = c ≫ s')
-    (ha : IsWeakHomotopyEquivalence a) (hb : IsWeakHomotopyEquivalence b)
-    (hc : IsWeakHomotopyEquivalence c) : IsWeakHomotopyEquivalence d := by
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence a) (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence b)
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence c) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence d := by
   let M := pushout i a
   let u : B ⟶ M := pushout.inl i a
   let j : A' ⟶ M := pushout.inr i a
   have hM : IsPushout i a u j := IsPushout.of_hasPushout _ _
   have : Mono j := Adhesive.mono_of_isPushout_of_mono_left hM
-  have hu : IsWeakHomotopyEquivalence u := weakPushout_other_mono ha hM.flip
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence u := weakPushout_other_mono ha hM.flip
   let β : M ⟶ B' := pushout.desc b i' hi
   have hβu : u ≫ β = b := pushout.inl_desc _ _ _
   have hβj : j ≫ β = i' := pushout.inr_desc _ _ _
-  have hβ : IsWeakHomotopyEquivalence β := by
+  have hβ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence β := by
     apply hu.cancel_left
     rw [hβu]
     exact hb
@@ -52,7 +52,7 @@ lemma weakPushout_gluing
     rw [← Category.assoc, hβj, hP'.w])
   have hδv : v ≫ δ = β ≫ r' := pushout.inl_desc _ _ _
   have hδw : w ≫ δ = s' := pushout.inr_desc _ _ _
-  have hδ : IsWeakHomotopyEquivalence δ :=
+  have hδ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence δ :=
     weakPushout_fixed_base hN hP' β δ hβj hδv hδw hβ
   have hglue : i ≫ (u ≫ v) = g ≫ (c ≫ w) := by
     rw [← Category.assoc, hM.w, Category.assoc, hN.w, ← Category.assoc, ← hg, Category.assoc]
@@ -67,7 +67,7 @@ lemma weakPushout_gluing
     exact hOuter
   have hγP : IsPushout s c γ w := hOuter'.of_top hγs hP
   have : Mono s := Adhesive.mono_of_isPushout_of_mono_left hP
-  have hγ : IsWeakHomotopyEquivalence γ := weakPushout_other_mono hc hγP.flip
+  have hγ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence γ := weakPushout_other_mono hc hγP.flip
   have hcomp : γ ≫ δ = d := by
     apply hP.hom_ext
     · rw [← Category.assoc, hγr, Category.assoc, hδv, ← Category.assoc, hβu, hr]

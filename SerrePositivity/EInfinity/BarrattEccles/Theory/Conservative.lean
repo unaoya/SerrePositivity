@@ -5,7 +5,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.Fibrancy
 public import SerrePositivity.EInfinity.ComplexLimits.StrictHomology
 public import SerrePositivity.EInfinity.SimplicialLocalization.SourceHom
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraLocalization
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ULiftRelativeLocalization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization
 public import Mathlib.AlgebraicTopology.ModelCategory.FundamentalLemma
 
 /-!
@@ -57,7 +57,7 @@ lemma cofibrantAlgebraDK_Q_map_surjective
   let UL := ULiftHom.down (C := CofibrantAlgebra A)
   let X' := UL.obj X
   let Y' := UL.obj Y
-  let e := (FrameHom.ULiftRelativeLocalization.homEquiv W X Y).trans
+  let e := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv W X Y).trans
     (E.fullyFaithfulFunctor.homEquiv.trans ((Iso.homCongr (i.app X') (i.app Y')).symm))
   have hX : IsCofibrant (D.obj X') := X'.property
   have hY : IsFibrant (D.obj Y') := BarrattEccles.isFibrant A (D.obj Y')
@@ -66,12 +66,12 @@ lemma cofibrantAlgebraDK_Q_map_surjective
   let k : X ⟶ Y := ULift.up (ObjectProperty.homMk f)
   refine ⟨k, e.injective ?_⟩
   change (i.app X').hom ≫ E.functor.map
-    (FrameHom.ULiftRelativeLocalization.homEquiv W X Y
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv W X Y
       ((cofibrantAlgebraRelativeCategory A).weakEquivalences.Q.map k)) ≫
       (i.app Y').inv = e g
-  have hmap : FrameHom.ULiftRelativeLocalization.homEquiv W X Y
+  have hmap : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv W X Y
       ((cofibrantAlgebraRelativeCategory A).weakEquivalences.Q.map k) =
-      W.Q.map (UL.map k) := FrameHom.ULiftRelativeLocalization.homEquiv_map W k
+      W.Q.map (UL.map k) := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ULiftRelativeLocalization.homEquiv_map W k
   have h := NatIso.naturality_2 i (UL.map k)
   change (i.app X').hom ≫ E.functor.map (W.Q.map (UL.map k)) ≫ (i.app Y').inv = Q.map f at h
   exact (congrArg (fun z => (i.app X').hom ≫ E.functor.map z ≫ (i.app Y').inv) hmap).trans
@@ -79,7 +79,7 @@ lemma cofibrantAlgebraDK_Q_map_surjective
 
 /-- 厳密複体の導来像が可逆なら、元の写像は擬同型。 -/
 lemma complexOrdinaryDerivedSource_reflects_quasiIso {X Y : Complex A} (f : X ⟶ Y)
-    (h : IsInvertibleEdge ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated) :
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (complexOrdinaryDerivedSource A)).toTruncated) :
     QuasiIso f := by
   let B := ordinaryToHoNerve (Complex A)
   let L := hoMap (complexOrdinaryDerivedSource A)
@@ -116,9 +116,9 @@ lemma cAlgLocalizationSource_map_reflects_weak
   have hn := NatIso.naturality_2 η.symm a
   have hc : IsIso ((η.app _).inv ≫ (hoMap (L ≫ U)).map a ≫ (η.app _).hom) := inferInstance
   have hg : IsIso ((hoMap G).map a) := hn ▸ hc
-  have hg' : IsInvertibleEdge (X := derivedInfinityCategory A)
+  have hg' : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
       ((nerve.edgeMk φ).map (complexOrdinaryDerivedSource A)).toTruncated := by
-    apply (isInvertibleEdge_congr (X := derivedInfinityCategory A)
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
       (e := ((nerve.edgeMk f).map G).toTruncated) ?_).mp hg
     change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
       ((cofibrantAlgebraForgetNerve A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)) =
@@ -131,9 +131,9 @@ set_option maxHeartbeats 800000 in
 -- CAlg_R の頂点を DK の対象で表示し直す二つの端点の型検査に既定値を超える。
 /-- HA §3.2.2 の忘却関手は、可逆な辺を反映する。 -/
 lemma cAlgForgetDerived_conservative {x y : (CAlg_R A) _⦋0⦌}
-    (e : SSet.Edge x y) (h : IsInvertibleEdge (X := derivedInfinityCategory A)
+    (e : SSet.Edge x y) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
       (e.map (cAlgForgetDerived A)).toTruncated) :
-    IsInvertibleEdge (X := CAlg_R A) e.toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) e.toTruncated := by
   obtain ⟨X, rfl⟩ := (cAlgVertexEquiv A).surjective x
   obtain ⟨Y, rfl⟩ := (cAlgVertexEquiv A).surjective y
   obtain ⟨f, hf⟩ := localizationStrictHom_represent (cofibrantAlgebraRelativeCategory A)
@@ -156,11 +156,11 @@ lemma cAlgForgetDerived_conservative {x y : (CAlg_R A) _⦋0⦌}
   have hw := cAlgLocalizationSource_map_reflects_weak A f hh
   have hweak := cAlgLocalizationSource_inverts A
     (show ComposableArrows.mk₁ f ∈ weakNerveEdges _ from ⟨_, _, f, hw, rfl⟩)
-  change IsInvertibleEdge (X := CAlg_R A) ((edgeOfSimplex (ComposableArrows.mk₁ f)).map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ f)).map
     ((truncation 2).map (cAlgLocalizationSource A))) at hweak
-  have hu : IsInvertibleEdge (X := CAlg_R A)
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A)
       ((nerve.edgeMk f).map (cAlgLocalizationSource A)).toTruncated :=
-    (isInvertibleEdge_congr (X := CAlg_R A) (e := (edgeOfSimplex (ComposableArrows.mk₁ f)).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (X := CAlg_R A) (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ f)).map
       ((truncation 2).map (cAlgLocalizationSource A)))
       (f := ((nerve.edgeMk f).map (cAlgLocalizationSource A)).toTruncated) rfl).mp hweak
   have hu' : IsIso (L.map a) := hu

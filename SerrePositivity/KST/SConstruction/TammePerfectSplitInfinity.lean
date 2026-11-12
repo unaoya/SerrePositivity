@@ -12,27 +12,27 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 
 /-- 同じ BF スペクトルの単体的圏を使用する。 -/
 local instance tammeSplit_simplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
-  (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B)
+  (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj) (hD : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 同じ元の lax pullback の値を終点とする、実 Sp の分裂辺。 -/
 def IsPerfectLocalizingInvariant.tammeSplitEdge : Sp.{u}.Edge
-    (coherentNerveVertex (NativeSplit.product
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (NativeSplit.product
       (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD))))
     (F.app (Opposite.op ⦋0⦌) (perfectLaxVertex p q hC hD)) :=
   hF.perfectSemiorthogonalSplitEdge (perfectLaxSemiorthogonal p q hC hD)
 
 /-- Tamme の同じ分裂辺は、元の実 Sp の可逆辺。 -/
 lemma IsPerfectLocalizingInvariant.tammeSplitEdge_isInvertible :
-    IsInvertibleEdge (hF.tammeSplitEdge p q hC hD).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (hF.tammeSplitEdge p q hC hD).toTruncated :=
   hF.perfectSemiorthogonalSplitEdge_isInvertible (perfectLaxSemiorthogonal p q hC hD)
 
 /-- 同じ可逆辺は、元の包含・切断・第一射影を回収する分裂の類を持つ。 -/
@@ -53,13 +53,13 @@ def IsPerfectLocalizingInvariant.tammeProductCone :=
 
 /-- 同じ元の積錐は、実 Sp の ∞ 極限である。 -/
 lemma IsPerfectLocalizingInvariant.tammeProductCone_isLimit :
-    IsLimitCone (hF.tammeProductCone p q hC hD) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (hF.tammeProductCone p q hC hD) :=
   hF.perfectSemiorthogonalProductCone_isLimit (perfectLaxSemiorthogonal p q hC hD)
 
 /-- 同じ実積錐の頂点は、元の分裂可逆辺の始点の BF 積。 -/
 lemma IsPerfectLocalizingInvariant.tammeProductCone_vertex :
     (hF.tammeProductCone p q hC hD).vertex =
-      coherentNerveVertex (NativeSplit.product
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (NativeSplit.product
         (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD))) :=
   hF.perfectSemiorthogonalProductCone_vertex (perfectLaxSemiorthogonal p q hC hD)
 

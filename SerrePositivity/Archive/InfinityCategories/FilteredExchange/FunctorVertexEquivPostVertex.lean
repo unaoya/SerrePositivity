@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorEvaluation
-public import SerrePositivity.InfinityCategories.Core.EquivalencePath
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 
 /-!
 概要：関手空間の元の頂点を実射へ戻した後の後合成を、元の頂点の像として計算する。

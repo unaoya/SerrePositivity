@@ -25,8 +25,8 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceFrameRoofMap : nerve (sourceFrameElementCategory A X Y) ⟶
-    pullback (sliceOverProjection (SSet.yonedaEquiv.symm
-      (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)) ≫
+    pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)) ≫
         hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)))
       (nerveMap (cofibrantDKSourceFrame A X) ≫
         hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) :=
@@ -42,15 +42,15 @@ lemma cofibrantSourceFrameRoofMap_degree :
   rfl
 
 lemma cofibrantSourceFrameRoofMap_isLeftCofinal_iff_raw :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
-      IsLeftCofinal (rawRoofFunctorMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.rawRoofFunctorMap
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
         (nerveMap (cofibrantDKSourceFrame A X))
         (SSet.yonedaEquiv.symm
-          (nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))) := by
-  have hi := isLeftCofinal_of_isIso (sourceFrameElementsDKNerveIso A X Y).hom
-  have h : IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
-      IsLeftCofinal (frameRoofMap (cofibrantDKSourceFrame A X)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (show (cofibrantAlgebraRelativeCategory A).category from Y)))) := by
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_of_isIso (sourceFrameElementsDKNerveIso A X Y).hom
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (frameRoofMap (cofibrantDKSourceFrame A X)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))) :=
     ⟨hi.cancel_left, hi.comp⟩

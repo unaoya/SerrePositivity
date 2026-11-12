@@ -26,51 +26,51 @@ local instance identityCategory : SimplicialCategory OmegaSpectrum.{u} :=
 variable {A B : OmegaSpectrum.{u}} (a : A ⟶ B)
 
 lemma canonical_right_identity : canonical a (𝟙 B) =
-    (SimplicialNerve OmegaSpectrum).σ 1 (coherentNerveEdge a).edge := by
-  change (nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌) (ComposableArrows.mk₂ a (𝟙 B)) = _
-  rw [coherentNerveEdge_edge, ← σ_naturality_apply]
-  apply congrArg ((nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌))
+    (SimplicialNerve OmegaSpectrum).σ 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌) (ComposableArrows.mk₂ a (𝟙 B)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, ← σ_naturality_apply]
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌))
   exact ComposableArrows.ext₂ rfl rfl rfl (by simp; rfl) (by simp; rfl)
 
 lemma canonical_left_identity : canonical (𝟙 A) a =
-    (SimplicialNerve OmegaSpectrum).σ 0 (coherentNerveEdge a).edge := by
-  change (nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌) (ComposableArrows.mk₂ (𝟙 A) a) = _
-  rw [coherentNerveEdge_edge, ← σ_naturality_apply]
-  apply congrArg ((nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌))
+    (SimplicialNerve OmegaSpectrum).σ 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌) (ComposableArrows.mk₂ (𝟙 A) a) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge, ← σ_naturality_apply]
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum).app (Opposite.op ⦋2⦌))
   exact ComposableArrows.ext₂ rfl rfl rfl (by simp; rfl) (by simp; rfl)
 
 lemma canonicalPost_identity_map : (canonicalPost a (𝟙 B)).h =
     fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
-      SSet.yonedaEquiv.symm (coherentNerveEdge a).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
   change SquareDiagonal.postShape ≫ SSet.yonedaEquiv.symm (canonical a (𝟙 B)) = _
   rw [canonical_right_identity]
-  have he : SSet.yonedaEquiv.symm ((SimplicialNerve OmegaSpectrum).σ 1 (coherentNerveEdge a).edge) =
-      stdSimplex.σ (1 : Fin 2) ≫ SSet.yonedaEquiv.symm (coherentNerveEdge a).edge := by
+  have he : SSet.yonedaEquiv.symm ((SimplicialNerve OmegaSpectrum).σ 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge) =
+      stdSimplex.σ (1 : Fin 2) ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_σ_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
   rw [he, ← Category.assoc, CompositionIdentity.post_degenerate]
 
 lemma canonicalPre_identity_map : (canonicalPre (𝟙 A) a).h =
     fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
-      SSet.yonedaEquiv.symm (coherentNerveEdge a).edge := by
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
   change SquareDiagonal.preShape ≫ SSet.yonedaEquiv.symm (canonical (𝟙 A) a) = _
   rw [canonical_left_identity]
-  have he : SSet.yonedaEquiv.symm ((SimplicialNerve OmegaSpectrum).σ 0 (coherentNerveEdge a).edge) =
-      stdSimplex.σ (0 : Fin 2) ≫ SSet.yonedaEquiv.symm (coherentNerveEdge a).edge := by
+  have he : SSet.yonedaEquiv.symm ((SimplicialNerve OmegaSpectrum).σ 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge) =
+      stdSimplex.σ (0 : Fin 2) ≫ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge := by
     apply SSet.yonedaEquiv.injective
     rw [stdSimplex.yonedaEquiv_σ_comp, Equiv.apply_symm_apply, Equiv.apply_symm_apply]
   rw [he, ← Category.assoc, CompositionIdentity.pre_degenerate]
 
 lemma canonicalPost_identity_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (canonicalPost a (𝟙 B)))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPost a (𝟙 B)))) =
       Arrow.mk (𝟙 (HomotopyCategory.mk
-        (functorVertex (SSet.yonedaEquiv.symm (coherentNerveEdge a).edge)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)))) :=
   HomotopyArrow.identity _ _ (canonicalPost_identity_map a)
 
 lemma canonicalPre_identity_arrow : Arrow.mk (Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (canonicalPre (𝟙 A) a))) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre (𝟙 A) a))) =
       Arrow.mk (𝟙 (HomotopyCategory.mk
-        (functorVertex (SSet.yonedaEquiv.symm (coherentNerveEdge a).edge)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge)))) :=
   HomotopyArrow.identity _ _ (canonicalPre_identity_map a)
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumTriangleNormalization

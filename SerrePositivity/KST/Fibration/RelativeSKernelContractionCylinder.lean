@@ -16,8 +16,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 元の全相対 S 核における、全ての面・退化と全時刻で整合する実円柱。 -/
 def relativeSKernelContractionCylinder
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     relativeSimplicialSConstruction (i.hom ≫ q.hom) ⋙ tensorRight (Δ[1] : SSet.{u}) ⟶
       relativeSimplicialSConstruction (i.hom ≫ q.hom) :=
   CategoryTheory.Functor.whiskerRight (relativeSKernelSimplicialIso h).hom
@@ -26,8 +26,8 @@ def relativeSKernelContractionCylinder
 
 /-- 元の各段の円柱は、同じ包含と同じ逆同型を介した元の S_n 円柱の評価。 -/
 theorem relativeSKernelContractionCylinder_app
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : SimplexCategoryᵒᵖ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : SimplexCategoryᵒᵖ) :
     (relativeSKernelContractionCylinder h).app n =
       ((relativeSKernelTopIso h n.unop.len).hom ▷ (Δ[1] : SSet.{u})) ≫
         stableZeroSContractionAction A n.unop.len ≫ (relativeSKernelTopIso h n.unop.len).inv :=

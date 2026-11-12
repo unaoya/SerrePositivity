@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.FirstColumnBackwardBackwardDiagramIso
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardBackwardAugmentation
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordDiagonalAugmentation
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnBackwardBackwardAugmentation
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordDiagonalAugmentation
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalMap
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
@@ -21,16 +21,16 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
-variable (C : RelativeCategory.{u}) (w : Word) (X Y : C.category)
+open CategoryTheory SerrePositivity.InfinityCategories
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 def backwardBackwardDiagonalTotalTargetIso :
     TwoSidedDiagram.diagonalTotalNerve ((Functor.const SimplexCategoryᵒᵖ).obj
-      (backwardBackwardData C w X Y)) ≅ nerve (backwardBackwardTarget C.weakEquivalences w X Y) :=
-  DoubleSimplicial.diagonalFunctor.mapIso (Functor.constComp SimplexCategoryᵒᵖ
-    (backwardBackwardData C w X Y) (TwoSidedDiagram.totalFunctor ⋙ nerveFunctor)) ≪≫
-      DoubleSimplicial.diagonalConstantIso _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y)) ≅ nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardTarget C.weakEquivalences w X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (Functor.constComp SimplexCategoryᵒᵖ
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y) (TwoSidedDiagram.totalFunctor ⋙ nerveFunctor)) ≪≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso _
 
-variable (D : SimplicialObject RelativeCategory.{u})
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
   (p : (i : SimplexCategoryᵒᵖ) → C.category → (D.obj i).category)
   (hp : ∀ {i j : SimplexCategoryᵒᵖ} (θ : i ⟶ j) (X : C.category),
     (D.map θ).functor.obj (p i X) = p j X)
@@ -38,35 +38,35 @@ variable (D : SimplicialObject RelativeCategory.{u})
   (ha : ∀ i X, (A.app i).functor.obj (p i X) = X)
 
 def backwardBackwardDiagonalAugmentation :
-    TwoSidedDiagram.diagonalTotalNerve (backwardBackwardDiagram D p hp w X Y) ⟶
-      nerve (backwardBackwardTarget C.weakEquivalences w X Y) :=
-  TwoSidedDiagram.diagonalTotalMap (backwardBackwardAugmentation D C p hp A ha w X Y) ≫
+    TwoSidedDiagram.diagonalTotalNerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardDiagram D p hp w X Y) ⟶
+      nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardTarget C.weakEquivalences w X Y) :=
+  TwoSidedDiagram.diagonalTotalMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardAugmentation D C p hp A ha w X Y) ≫
     (backwardBackwardDiagonalTotalTargetIso C w X Y).hom
 
 lemma backwardBackwardDiagonalAugmentation_square :
     (backwardBackwardDiagonalIso D p hp w X Y).hom ≫
       backwardBackwardDiagonalAugmentation C w X Y D p hp A ha =
-    (FixedObjectDiagram.wordDiagonalAugmentation D C p hp A ha X Y).app
-      (Word.append (Word.single .backward) (Word.cons .backward w)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalAugmentation D C p hp A ha X Y).app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w)) ≫
         (backwardBackwardGraphIso C.weakEquivalences w X Y).hom := by
   ext n σ
-  change σ ⋙ (backwardBackwardFunctor (D.obj n).weakEquivalences w (p n X) (p n Y) ⋙
+  change σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor (D.obj n).weakEquivalences w (p n X) (p n Y) ⋙
     backwardBackwardRelativeFunctor w (A.app n) (ha n X) (ha n Y)) =
-      σ ⋙ (Zigzag.Relative.fixedFunctor (A.app n) (ha n X) (ha n Y) ⋙
-        backwardBackwardFunctor C.weakEquivalences w X Y)
+      σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor (A.app n) (ha n X) (ha n Y) ⋙
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardFunctor C.weakEquivalences w X Y)
   exact congrArg (fun H => σ ⋙ H)
     (backwardBackward_relative_functor w (A.app n) (ha n X) (ha n Y)).symm
 
 lemma backwardBackwardDiagonalAugmentation_weak_iff :
-    IsWeakHomotopyEquivalence ((FixedObjectDiagram.wordDiagonalAugmentation D C p hp A ha X Y).app
-      (Word.append (Word.single .backward) (Word.cons .backward w))) ↔
-    IsWeakHomotopyEquivalence (TwoSidedDiagram.diagonalTotalMap
-      (backwardBackwardAugmentation D C p hp A ha w X Y)) := by
-  have hS := (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalAugmentation D C p hp A ha X Y).app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .backward w))) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (TwoSidedDiagram.diagonalTotalMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardAugmentation D C p hp A ha w X Y)) := by
+  have hS := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (backwardBackwardDiagonalIso D p hp w X Y)).isWeakHomotopyEquivalence
-  have hT := (isPrecompositionEquivalence_of_iso
+  have hT := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (backwardBackwardGraphIso C.weakEquivalences w X Y)).isWeakHomotopyEquivalence
-  have hK := (isPrecompositionEquivalence_of_iso
+  have hK := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (backwardBackwardDiagonalTotalTargetIso C w X Y)).isWeakHomotopyEquivalence
   constructor
   · intro h
@@ -75,7 +75,7 @@ lemma backwardBackwardDiagonalAugmentation_weak_iff :
     exact hK.cancel_right (hS.cancel_left hc)
   · intro h
     have hc := hS.comp (h.comp hK)
-    change IsWeakHomotopyEquivalence ((backwardBackwardDiagonalIso D p hp w X Y).hom ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((backwardBackwardDiagonalIso D p hp w X Y).hom ≫
       backwardBackwardDiagonalAugmentation C w X Y D p hp A ha) at hc
     rw [backwardBackwardDiagonalAugmentation_square] at hc
     exact hT.cancel_right hc

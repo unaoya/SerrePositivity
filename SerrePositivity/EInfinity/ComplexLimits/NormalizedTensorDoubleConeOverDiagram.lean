@@ -13,14 +13,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorIdentityOverPoint_vertex :
     (normalizedTensorIdentityOverPoint A X).app (Opposite.op ⦋0⦌)
       (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1)) =
-      sliceIdentityCone ((dgNerve.vertexEquiv A (Complex A)).symm X) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.sliceIdentityCone ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X) := by
   have hp : SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 1) =
       SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u + 1})) := by
     apply SSet.stdSimplex.ext
@@ -31,18 +31,18 @@ lemma normalizedTensorIdentityOverPoint_vertex :
   exact SSet.yonedaEquiv_symm_app_id _
 
 def normalizedTensorDoubleConeOverDiagram : nerve (normalizedTensorElementIndex A X Y) ⟶
-    sliceOver (normalizedTensorConePoint A X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (normalizedTensorConePoint A X) :=
   normalizedTensorDoubleConeUnderOverMap A X Y ≫
-    sliceUnderProjection (normalizedTensorIdentityOverPoint A X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceUnderProjection (normalizedTensorIdentityOverPoint A X)
 
 lemma normalizedTensorDoubleConeOverJoin_inr :
-    joinInr (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y)) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u + 1}) (nerve (normalizedTensorElementIndex A X Y)) ≫
       normalizedTensorDoubleConeOverJoin A X Y = normalizedTensorDoubleConeOverDiagram A X Y :=
-  sliceUnderUncurry_projection (normalizedTensorDoubleConeUnderOverMap A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.sliceUnderUncurry_projection (normalizedTensorDoubleConeUnderOverMap A X Y)
 
 lemma normalizedTensorDoubleConeOverDiagram_projection :
     normalizedTensorDoubleConeOverDiagram A X Y ≫
-      sliceOverProjection (normalizedTensorConePoint A X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (normalizedTensorConePoint A X) =
         normalizedTensorElementNerveDiagram A X Y := by
   rw [← normalizedTensorDoubleConeOverJoin_inr, Category.assoc,
     normalizedTensorDoubleConeOverJoin_projection, normalizedTensorConeJoin_inr]

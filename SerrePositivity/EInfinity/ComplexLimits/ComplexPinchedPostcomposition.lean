@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexPinchedPrecomposition
-public import SerrePositivity.InfinityCategories.Derived.DGClosedPostcompositionInterval
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedPostcompositionInterval
 
 /-!
 # 元の複体射の Hom 後合成と dg nerve の同じ全区間族
@@ -20,11 +20,11 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma complexToClosed_postcomposition (X : Complex A) {P Q : Complex A} (f : P ⟶ Q) :
-    dgClosedPostcomposition A (Complex A) (x := X) ((complexToClosed A).map f) =
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedPostcomposition A (Complex A) (x := X) ((complexToClosed A).map f) =
       homPostcompose X f := by
   change (ρ_ (homComplex A X P)).inv ≫
     homComplex A X P ◁ ForgetEnrichment.homTo (Complex A) ((complexToClosed A).map f) ≫
@@ -33,23 +33,23 @@ lemma complexToClosed_postcomposition (X : Complex A) {P Q : Complex A} (f : P �
   exact (homPostcompose_closedMap A X f).symm
 
 lemma complexPinchedPostcomposition_family (X : Complex A) {P Q : Complex A} (f : P ⟶ Q)
-    (K : SSet.{u + 1}) (g : K ⟶ DGNerve.pinchedHom A (Complex A) X P) :
-    dgPinchedFamilyHom A (Complex A) (g ≫ pinchedHomChainMap (homPostcompose X f)) =
-    dgPinchedFamilyHom A (Complex A) g ≫ constantFunctorHomMap K
+    (K : SSet.{u + 1}) (g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X P) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (g ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPostcompose X f)) =
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K
       (Truncated.HomotopyCategory.homMk
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) := by
-  have h := dgPinchedFamilyHom_comp A (Complex A) g
-    (SSet.const (pinchedClosedVertex A (Complex A) ((complexToClosed A).map f)))
-  rw [pinchedHomCompositionFamily_closed_post] at h
-  have hc : dgPinchedFamilyHom A (Complex A)
-      (SSet.const (X := K) (pinchedClosedVertex A (Complex A) ((complexToClosed A).map f))) =
-    constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
-      (dgClosedEdge A (Complex A) ((complexToClosed A).map f))) :=
-    pinchedFamilyHom_const_vertex (X := dgNerve A (Complex A)) _
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom_comp A (Complex A) g
+    (SSet.const (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map f)))
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomCompositionFamily_closed_post] at h
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A)
+      (SSet.const (X := K) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map f))) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (Truncated.HomotopyCategory.homMk
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map f))) :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.pinchedFamilyHom_const_vertex (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)) _
   rw [hc] at h
-  change _ = dgPinchedFamilyHom A (Complex A) (g ≫
-    pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (y := P) (x' := X) (y' := Q)
-      (dgClosedPostcomposition A (Complex A) (x := X) ((complexToClosed A).map f))) at h
+  change _ = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPinchedFamilyHom A (Complex A) (g ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (y := P) (x' := X) (y' := Q)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedPostcomposition A (Complex A) (x := X) ((complexToClosed A).map f))) at h
   rw [complexToClosed_postcomposition] at h
   exact h.symm
 

@@ -33,10 +33,10 @@ lemma simplexHADecodeSubsetCell_delete_zero_face_heq {N : ℕ} (m : ℕ) (q : Fi
     fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb
   have hI : 2 ≤ I.card := simplexHADecodeSubset_two (m + 1) v {b} hT hbound
   have hr : r ∈ I := simplexHAFaceVertex_mem m v {b} q
-  have hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < r := by
+  have hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < r := by
     rw [simplexHADecodeSubset_min (m + 1) v {b} hbound]
     exact simplexHAFaceVertex_first_lt m v q
-  have hmax : r < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) := by
+  have hmax : r < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) := by
     rw [simplexHADecodeSubset_max (m + 1) v {b} hT hbound]
     exact simplexHAFaceVertex_tail_lt m v {b} q hbound b (Finset.mem_singleton_self b)
   have he := simplexHADeleteVertexOrder_subset m q v {b} hbound

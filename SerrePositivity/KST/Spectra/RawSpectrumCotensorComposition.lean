@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumPointedComposition
 public import SerrePositivity.KST.Spectra.RawSpectrumCotensorIso
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeComposition
-public import SerrePositivity.InfinityCategories.Kan.HomTensorStrengthNaturality
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrengthNaturality
 
 /-!
 概要：元の cotensor 交換の、源の全 Hom パラメータに関する豊穣自然性。
@@ -28,7 +28,7 @@ lemma cotensorComparison_composition (X Y : OmegaSpectrum.{u})
     (Z : KanSequence.{u}) (A : PointedSimplicialSet.{u}) :
     pointedComposition X Y (KanSequence.mapping A Z) ≫ cotensorComparison X Z A =
       (𝟙 (pointedSpace X Y.toKanSequence) ⊗ₘ cotensorComparison Y Z A) ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map (pointedSpace X Y.toKanSequence) A (pointedSpace Y Z) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map (pointedSpace X Y.toKanSequence) A (pointedSpace Y Z) ≫
           (ihom A).map (pointedComposition X Y Z) := by
   apply ihom_pointed_hom_ext X Z A
   intro n
@@ -43,14 +43,14 @@ lemma cotensorComparison_composition (X Y : OmegaSpectrum.{u})
   change ((pointedEvaluation X Y.toKanSequence n ⊗ₘ
       pointedEvaluation Y (KanSequence.mapping A Z) n) ≫
       comp (X.level n).space (Y.level n).space ((ihom A).obj (Z.level n).space)) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom = _
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (X.level n).space A (Z.level n).space).hom = _
   conv_rhs =>
-    rw [Functor.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.natural_assoc,
+    rw [Functor.map_comp, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.natural_assoc,
       ← Category.assoc, tensorHom_comp_tensorHom, Category.id_comp,
       cotensorComparison_evaluation]
     dsimp only [exchangeFamily]
     rw [← tensorHom_comp_whiskerLeft, Category.assoc]
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.composition]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.composition]
   simp only [id_tensorHom]
   rfl
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletalAttachmentPushout
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalAttachmentPushout
 public import SerrePositivity.KST.Spectra.PointedCofiberPushout
 public import SerrePositivity.KST.Spectra.SkeletalMappingFiber
 
@@ -43,7 +43,7 @@ def cellCofiber (K : SSet.{u}) (d : ℕ) : PointedSimplicialSet.{u} :=
 def relativeCofiberIso (K : SSet.{u}) (d : ℕ) :
     pointedCofiber (PointedObject.adjoinFunctor.map
       (Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)))) ≅ cellCofiber K d :=
-  pointedCofiberPushoutIso ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).map PointedObject.adjoinFunctor)
+  pointedCofiberPushoutIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.isPushout K d).map PointedObject.adjoinFunctor)
 
 /-- 概要：骨格の写像空間の各 fiber をセルの境界の余積の cofiber で表示する。
 方針：源の cofiber の同型を内部 Hom へ反変に送り、既存の fiber 同型に合成する。

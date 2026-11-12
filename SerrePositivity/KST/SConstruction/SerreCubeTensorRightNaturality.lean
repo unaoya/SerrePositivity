@@ -16,8 +16,8 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全生成射の鎖比較の右因子自然性。 -/
 lemma serreCubeRightBlockNatural_generated (n : ℕ) {m k : ℕ}
-    {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex k} (hf : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) :
-    SerreCubeRightBlockNatural A n (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) := by
+    {f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex k} (hf : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated f) :
+    SerreCubeRightBlockNatural A n (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k) := by
   induction hf with
   | id m => exact serreCubeRightBlockNatural_id A n m
   | face b m i => exact serreCubeRightBlockNatural_face A n m b i
@@ -25,18 +25,18 @@ lemma serreCubeRightBlockNatural_generated (n : ℕ) {m k : ℕ}
   | connection m i => exact serreCubeRightBlockNatural_connection A n m i
   | @comp m k l f g hf hg ihf ihg =>
     exact serreCubeRightBlockNatural_comp A n
-      (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k)
-      (⟨g, hg⟩ : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk l) ihf ihg
+      (⟨f, hf⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k)
+      (⟨g, hg⟩ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk l) ihf ihg
 
 /-- 元の右ブロックの具体的射は、表示に依存せず同じ鎖比較と可換。 -/
 lemma serreCubeRightBlockNatural_all (n : ℕ) {m k : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk k) : SerreCubeRightBlockNatural A n f :=
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk k) : SerreCubeRightBlockNatural A n f :=
   serreCubeRightBlockNatural_generated A n f.property
 
 /-- 元の全具体的射について、同じ連結比較は右因子に関して自然。 -/
-lemma serreCubeTensorIso_tensorMap_naturality_right (n : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma serreCubeTensorIso_tensorMap_naturality_right (n : ℕ) {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : X ⟶ Y) :
-    (serreConcreteCubeFunctor A).map (concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n)) f) ≫
+    (serreConcreteCubeFunctor A).map (concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n)) f) ≫
         (serreCubeTensorIso A n Y.dimension).hom =
       (serreCubeTensorIso A n X.dimension).hom ≫
         serreCubeTensorHom A (n := n) (p := n) (m := X.dimension) (q := Y.dimension)

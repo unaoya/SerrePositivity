@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCoproductFunctor
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowPoint
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
-public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
 
 /-!
 # 指定された二項余積の native な余錐
@@ -29,15 +29,15 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits MonoidalCategory SSet
 open SerrePositivity.InfinityCategories SimplicialLocalization
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A]
 
 /-- 元の cofibrant 代数の射を、同じ DK 頂点の間の辺へ送る。 -/
 def cAlgCofibrantArrow {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y) :
     (CAlg_R A).Edge (cAlgVertexEquiv A X) (cAlgVertexEquiv A Y) :=
-  coherentNerveEdge ((eHomEquiv SSet.{u + 1}).symm
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((eHomEquiv SSet.{u + 1}).symm
     (localizationArrowPoint (cofibrantAlgebraRelativeCategory A) f ≫
-      SerrePositivity.KST.Comparison.exInfinityUnit.app _))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _))
 
 /-- 同じ cofibrant な厳密余積の、第一の指定包含。 -/
 def cofibrantAlgebraDKCoprodInl (X Y : CofibrantAlgebra A) :
@@ -81,14 +81,14 @@ def cAlgCoprodInr (x y : (CAlg_R A) _⦋0⦌) :
 
 /-- 二つの厳密な包含を脚とする、指定二点図式の native な余錐。 -/
 def cAlgCoprodCocone (x y : (CAlg_R A) _⦋0⦌) :
-    JoinCocone (binaryPointDiagram x y) :=
-  binaryCoconeOfEdges (binaryPointDiagram x y) (z := cAlgCoprodVertex A x y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram x y) (z := cAlgCoprodVertex A x y)
     ((cAlgCoprodInl A x y).ofEq (by
-      rw [binaryPointLeft, binaryPointDiagram, coprod.inl_desc]
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, coprod.inl_desc]
       exact ((SSet.yonedaEquiv (X := CAlg_R A) (n := ⦋0⦌)).apply_symm_apply x).symm)
       rfl).toTruncated
     ((cAlgCoprodInr A x y).ofEq (by
-      rw [binaryPointRight, binaryPointDiagram, coprod.inr_desc]
+      rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointDiagram, coprod.inr_desc]
       exact ((SSet.yonedaEquiv (X := CAlg_R A) (n := ⦋0⦌)).apply_symm_apply y).symm)
       rfl).toTruncated
 
@@ -97,17 +97,17 @@ lemma cAlgCoprodCocone_vertex (x y : (CAlg_R A) _⦋0⦌) :
     (cAlgCoprodCocone A x y).vertex = atVertex (barrattEcclesCoprodWith A y) x :=
   by
     unfold cAlgCoprodCocone
-    rw [binaryCoconeOfEdges_vertex]
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges_vertex]
     exact cAlgCoprodVertex_eq A x y
 
 /-- 作った余錐の第一脚は、指定した第一包含の同じ一次単体。 -/
 lemma cAlgCoprodCocone_leg_left (x y : (CAlg_R A) _⦋0⦌) :
-    ((cAlgCoprodCocone A x y).leg binaryPointLeft).edge = (cAlgCoprodInl A x y).edge :=
-  binaryCoconeOfEdges_leg_left _ _ _
+    ((cAlgCoprodCocone A x y).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft).edge = (cAlgCoprodInl A x y).edge :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges_leg_left _ _ _
 
 /-- 作った余錐の第二脚は、指定した第二包含の同じ一次単体。 -/
 lemma cAlgCoprodCocone_leg_right (x y : (CAlg_R A) _⦋0⦌) :
-    ((cAlgCoprodCocone A x y).leg binaryPointRight).edge = (cAlgCoprodInr A x y).edge :=
-  binaryCoconeOfEdges_leg_right _ _ _
+    ((cAlgCoprodCocone A x y).leg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight).edge = (cAlgCoprodInr A x y).edge :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryCoconeOfEdges_leg_right _ _ _
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceSimplexIntervalTerminal
-public import SerrePositivity.InfinityCategories.Simplicial.NecklacePostcomposition
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklacePostcomposition
 
 /-! # 元の全単体作用素が区間 bead に誘導する射
 概要：面・退化を含む元の単体圏の全射を、同じ像区間の実 necklace 射へ送る。
@@ -14,15 +14,15 @@ open CategoryTheory Simplicial SSet
 
 /-- 元の全単体作用素は、番号で指定した元の零単体を同じ像の零単体へ送る。 -/
 lemma standardSimplexVertex_map {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌) (a : Fin (m + 1)) :
-    (stdSimplex.{u}.map θ).app _ (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom a) :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex_ext rfl
+    (stdSimplex.{u}.map θ).app _ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (θ.toOrderHom a) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex_ext rfl
 
 /-- 元の区間 bead の augmentation を全単体作用素で後合成した、像端点間の necklace。 -/
 def simplexIntervalImageNecklace {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) (hab : a ≤ b) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u})
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom a)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (θ.toOrderHom b)) where
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn (Δ[n] : SSet.{u})
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (θ.toOrderHom a)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (θ.toOrderHom b)) where
   necklace := necklaceBead.{u} (b.val - a.val)
   map := (necklaceInSimplexInterval a b hab).map ≫ stdSimplex.map θ
   map_first := (congrArg ((stdSimplex.{u}.map θ).app _)
@@ -54,13 +54,13 @@ lemma simplexIntervalBeadMap_triangle {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
 lemma simplexIntervalBeadMap_vertex {m n : ℕ} (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (a b : Fin (m + 1)) (hab : a ≤ b)
     (v : (necklaceBead.{u} (b.val - a.val)).down.Vertex) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceVertexMap (simplexIntervalBeadMap.{u} θ a b hab) v).val =
-      (θ.toOrderHom (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexIntervalOrder a b hab v)).val - (θ.toOrderHom a).val := rfl
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceVertexMap (simplexIntervalBeadMap.{u} θ a b hab) v).val =
+      (θ.toOrderHom (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexIntervalOrder a b hab v)).val - (θ.toOrderHom a).val := rfl
 
 /-- 元の恒等単体作用素は、元の区間 bead の恒等射を誘導する。 -/
 lemma simplexIntervalBeadMap_id {m : ℕ} (a b : Fin (m + 1)) (hab : a ≤ b) :
     simplexIntervalBeadMap.{u} (𝟙 ⦋m⦌) a b hab = 𝟙 (necklaceBead (b.val - a.val)) := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.ext
   apply (cancel_mono (necklaceInSimplexInterval a b hab).map).1
   exact (simplexIntervalBeadMap_triangle (𝟙 ⦋m⦌) a b hab).trans
     ((congrArg (fun f => (necklaceInSimplexInterval a b hab).map ≫ f)
@@ -74,7 +74,7 @@ lemma simplexIntervalBeadMap_comp {l m n : ℕ} (θ : ⦋l⦌ ⟶ ⦋m⦌) (φ :
       simplexIntervalBeadMap.{u} θ a b hab ≫
         simplexIntervalBeadMap.{u} φ (θ.toOrderHom a) (θ.toOrderHom b)
           (θ.toOrderHom.monotone hab) := by
-  apply _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceHom.ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceHom.ext
   apply (cancel_mono (necklaceInSimplexInterval ((θ ≫ φ).toOrderHom a)
     ((θ ≫ φ).toOrderHom b) ((θ ≫ φ).toOrderHom.monotone hab)).map).1
   change (simplexIntervalBeadMap.{u} (θ ≫ φ) a b hab).map ≫ _ =

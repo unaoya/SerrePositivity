@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LocalizationValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueComparison
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.StrictLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueComparison
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.StrictLocalization
 
 /-!
 # 元の通常の局所化評価の相対自然性
@@ -19,32 +19,32 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C D : Type u} [Category.{u} C] [Category.{u} D]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
-  (F : LocalizerMorphism W V) {w : Word} {X Y : C} {X' Y' : D}
+  (F : LocalizerMorphism W V) {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : C} {X' Y' : D}
 
 omit [W.IsMultiplicative] [V.IsMultiplicative] in
-lemma localization_value_relative (S : Zigzag W w X Y) :
-    HEq (Zigzag.Value.value V.Q V.Q_inverts (Zigzag.Relative.obj F S))
-      ((strictLocalizationMap F).map (Zigzag.Value.value W.Q W.Q_inverts S)) :=
-  Zigzag.Value.value_comparison F W.Q W.Q_inverts V.Q V.Q_inverts
-    (strictLocalizationMap F) (strictLocalizationMap_fac F) S
+lemma localization_value_relative (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y) :
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value V.Q V.Q_inverts (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj F S))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value W.Q W.Q_inverts S)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_comparison F W.Q W.Q_inverts V.Q V.Q_inverts
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac F) S
 
 omit [W.IsMultiplicative] [V.IsMultiplicative] in
 lemma fixedLocalizationObject_eq (hX : F.functor.obj X = X') :
-    (strictLocalizationMap F).obj (W.Q.obj X) = V.Q.obj X' :=
-  (CategoryTheory.Functor.congr_obj (strictLocalizationMap_fac F) X).trans (congrArg V.Q.obj hX)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F).obj (W.Q.obj X) = V.Q.obj X' :=
+  (CategoryTheory.Functor.congr_obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac F) X).trans (congrArg V.Q.obj hX)
 
 lemma localization_value_fixed (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
-    (S : Zigzag W w X Y) :
-    Zigzag.Value.value V.Q V.Q_inverts ((Zigzag.Relative.fixedFunctor F hX hY).obj S) =
+    (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W w X Y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value V.Q V.Q_inverts ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor F hX hY).obj S) =
       eqToHom (fixedLocalizationObject_eq F hX).symm ≫
-        (strictLocalizationMap F).map (Zigzag.Value.value W.Q W.Q_inverts S) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValuePath.value W.Q W.Q_inverts S) ≫
           eqToHom (fixedLocalizationObject_eq F hY) := by
-  have h := Zigzag.Value.value_fixed_comparison F W.Q W.Q_inverts V.Q V.Q_inverts
-    (strictLocalizationMap F) (strictLocalizationMap_fac F) hX hY S
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_fixed_comparison F W.Q W.Q_inverts V.Q V.Q_inverts
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap F) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac F) hX hY S
   exact (conj_eqToHom_iff_heq _ _ (fixedLocalizationObject_eq F hX).symm
     (fixedLocalizationObject_eq F hY).symm).2 h
 

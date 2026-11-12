@@ -20,17 +20,17 @@ open scoped Simplicial
 variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {T U : SSet.{u}}
   (j : T ⟶ U) [Mono j]
   (f : ∀ n, U ⟶ (PointedObject.basedHom (X.level n).space (Y.level n).space).right)
-  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     (Y.level (n + 1)).space).right)
   (a : ∀ n, SSet.Homotopy (d n)
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))
   (b : ∀ n, SSet.Homotopy (d n) (f n ≫ RawSpectrumMapping.step X Y n))
   (h : ∀ n, (j ▷ (Δ[1] : SSet.{u})) ≫ (a n).h =
     (j ▷ (Δ[1] : SSet.{u})) ≫ (b n).h)
 
 /-- 全段の境界三角形を構成し、元の二円柱の族から実適合円柱を作る。 -/
 def relativeSequenceCoincidentSpanHomotopy (n : ℕ) : SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step X Y n) :=
   relativeKanCoincidentSpanComposite j (a n) (b n) (h n)
 
@@ -38,7 +38,7 @@ def relativeSequenceCoincidentSpanHomotopy (n : ℕ) : SSet.Homotopy
 lemma relativeSequenceCoincidentSpanHomotopy_boundary (n : ℕ) :
     (j ▷ (Δ[1] : SSet.{u})) ≫ (relativeSequenceCoincidentSpanHomotopy X Y j f d a b h n).h =
       fst T Δ[1] ≫ j ≫ f (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space :=
   relativeKanCoincidentSpanComposite_boundary j (a n) (b n) (h n)
 
 /-- 元の境界で一致する二円柱から、同じ指定族を相対厳密化した実際の列の族。 -/

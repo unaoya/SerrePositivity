@@ -14,28 +14,28 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory Opposite
 
 /-- 元の左単位の逆比較の後に Day 左単位を合成すると恒等を回収する。 -/
-lemma cubicalDayYoneda_leftUnit_retraction (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma cubicalDayYoneda_leftUnit_retraction (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     cubicalYoneda.{u}.map (concreteCubeLeftUnitor c).inv ≫
-        cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c ≫
+        cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) c ≫
           cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c)) ≫
             (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans =
       𝟙 (cubicalYoneda.{u}.obj c) := by
   apply uliftYonedaEquiv.injective
   change (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans.app (op c)
       ((cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c))).app (op c)
-        ((cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c).app (op c)
+        ((cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) c).app (op c)
           (ULift.up (concreteCubeLeftUnitor c).inv))) = ULift.up (𝟙 c)
   change (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans.app (op c)
       ((cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c))).app (op c)
-        ((cubicalDayTensor (cubicalYoneda.{u}.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0))
+        ((cubicalDayTensor (cubicalYoneda.{u}.obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0))
           (cubicalYoneda.{u}.obj c)).map
           (concreteCubeLeftUnitor c).inv.op
-          (cubicalDayTensorCell (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c (ULift.up (𝟙 _)) (ULift.up (𝟙 c))))) = _
+          (cubicalDayTensorCell (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) c (ULift.up (𝟙 _)) (ULift.up (𝟙 c))))) = _
   erw [cubicalNatTrans_restrict
     (cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c)))
     (concreteCubeLeftUnitor c).inv]
   erw [cubicalDayTensorMap_cell cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj c))
-    (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) c]
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) c]
   erw [cubicalDayUnitInclusion_identity]
   erw [cubicalNatTrans_restrict
     (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans
@@ -45,28 +45,28 @@ lemma cubicalDayYoneda_leftUnit_retraction (c : _root_.SerrePositivity.InfinityC
   rw [Iso.inv_hom_id]
 
 /-- 元の右単位の逆比較の後に Day 右単位を合成すると恒等を回収する。 -/
-lemma cubicalDayYoneda_rightUnit_retraction (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma cubicalDayYoneda_rightUnit_retraction (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     cubicalYoneda.{u}.map (concreteCubeRightUnitor c).inv ≫
-        cubicalDayCubeInclusion c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) ≫
+        cubicalDayCubeInclusion c (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) ≫
           cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion ≫
             (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans =
       𝟙 (cubicalYoneda.{u}.obj c) := by
   apply uliftYonedaEquiv.injective
   change (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans.app (op c)
       ((cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion).app (op c)
-        ((cubicalDayCubeInclusion c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)).app (op c)
+        ((cubicalDayCubeInclusion c (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0)).app (op c)
           (ULift.up (concreteCubeRightUnitor c).inv))) = ULift.up (𝟙 c)
   change (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans.app (op c)
       ((cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion).app (op c)
         ((cubicalDayTensor (cubicalYoneda.{u}.obj c)
-          (cubicalYoneda.{u}.obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0))).map
+          (cubicalYoneda.{u}.obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0))).map
           (concreteCubeRightUnitor c).inv.op
-          (cubicalDayTensorCell c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) (ULift.up (𝟙 c)) (ULift.up (𝟙 _))))) = _
+          (cubicalDayTensorCell c (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) (ULift.up (𝟙 c)) (ULift.up (𝟙 _))))) = _
   erw [cubicalNatTrans_restrict
     (cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion)
     (concreteCubeRightUnitor c).inv]
   erw [cubicalDayTensorMap_cell (𝟙 (cubicalYoneda.{u}.obj c)) cubicalDayUnitInclusion
-    c (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0)]
+    c (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0)]
   erw [cubicalDayUnitInclusion_identity]
   erw [cubicalNatTrans_restrict
     (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj c))).hom.natTrans

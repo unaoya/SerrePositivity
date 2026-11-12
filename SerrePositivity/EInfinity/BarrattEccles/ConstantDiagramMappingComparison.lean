@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.DiagramMappingSpace
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramFrameComparison
-public import SerrePositivity.InfinityCategories.ModelBridge.OverFunctorComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.OverFunctorComparison
 
 /-!
 # 定値図式の導来写像空間と構成した frame の自然比較
@@ -22,7 +22,7 @@ universe u v w
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
   {D : Type w} [Category.{v} D] (L : SSet.{u} ⥤ D)
@@ -35,12 +35,12 @@ variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 def constantDiagramFrameMappingComparisonIso :
     (Functor.const K : (operad A).Algebra ⥤ _).op ⋙ Diagram.mappingSpace A K ⋙
         (Functor.whiskeringRight (K ⥤ (operad A).Algebra) SSet.{u} D).obj L ≅
-      (constantDiagramFrameFamily A K).op ⋙ cosimplicialHomBifunctor ⋙
+      (constantDiagramFrameFamily A K).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
         (Functor.whiskeringRight (K ⥤ (operad A).Algebra) SSet.{u} D).obj L := by
   let := Diagram.projectiveModelCategory A K
   let cof := Diagram.mappingCofibrantFactorization A K
   let q := cosimplicialResolutionFamily cof
-  exact FrameHom.overFunctorChoiceIso cof q (Functor.const K) (constantDiagramFrameFamily A K)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.overFunctorChoiceIso cof q (Functor.const K) (constantDiagramFrameFamily A K)
     (constantDiagramFrameAugmentation A K) L hL
     (constantDiagramFrameComparison_weakEquivalence A K)
     (constantDiagramFrame_reedyCofibrant A K) (Diagram.isFibrant A K)

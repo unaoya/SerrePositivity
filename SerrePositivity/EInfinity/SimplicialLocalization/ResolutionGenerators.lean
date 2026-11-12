@@ -25,7 +25,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：零次の固定対象表示は自由圏の元の生成対象（Dwyer–Kan）。
 方針：同じ augmentation の対象単射性と厳密な局所化の因子化を使う。
@@ -37,10 +37,10 @@ lemma localizedFreeResolutionObject_zero (X : C.category) :
   apply (localizedFreeResolutionObjectEquiv C (op ⦋0⦌)).injective
   change ((localizedFreeResolutionAugmentation C).app (op ⦋0⦌)).toFunctor.obj
       (localizedFreeResolutionObject C (op ⦋0⦌) X) =
-    (strictLocalizationMap (freeCounit C.weakEquivalences)).obj
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).obj
       (C.weakEquivalences.paths.Q.obj ((Paths.of C.category).obj X))
   rw [localizedFreeResolutionAugmentation_object]
-  exact (Functor.congr_obj (strictLocalizationMap_fac (freeCounit C.weakEquivalences))
+  exact (Functor.congr_obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences))
     ((Paths.of C.category).obj X)).symm
 
 /-- 概要：元の射の一文字の列を同じ DK Hom の零単体へ送る（Dwyer–Kan）。
@@ -68,17 +68,17 @@ def localizationArrowClass {X Y : C.category} (f : X ⟶ Y) :
 lemma localizationHomAugmentation_arrow {X Y : C.category} (f : X ⟶ Y) :
     (localizationHomAugmentation C X Y).app (op ⦋0⦌) (localizationArrowZero C f) =
       C.weakEquivalences.Q.map f := by
-  have h := Functor.congr_hom (strictLocalizationMap_fac (freeCounit C.weakEquivalences))
+  have h := Functor.congr_hom (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences))
     ((Paths.of C.category).map f)
   simp only [Functor.comp_map] at h
   change eqToHom (localizedFreeResolutionAugmentation_object C (op ⦋0⦌) X).symm ≫
-      (strictLocalizationMap (freeCounit C.weakEquivalences)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).map
         (localizationArrowZero C f) ≫
       eqToHom (localizedFreeResolutionAugmentation_object C (op ⦋0⦌) Y) = _
   unfold localizationArrowZero
   simp only [Functor.map_comp, eqToHom_map, Category.assoc]
   rw [h]
-  simp only [freeCounit, pathComposition_map, Paths.of_map, composePath_toPath,
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit, pathComposition_map, Paths.of_map, composePath_toPath,
     eqToHom_trans_assoc, eqToHom_trans, eqToHom_refl, Category.comp_id,
     Category.id_comp]
 

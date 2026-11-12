@@ -19,7 +19,7 @@ open InfinityCategories LocalizingInvariants Spectra
 /-- 概要：元の境界全体は同じ商の基点へ送られる。
 方針：境界への制限作用と商射の崩壊式を使う。
 規約：全パラメータの等式。使われ方：商作用の降下条件。 -/
-lemma stableOneDirectionReducedAction_collapse (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedAction_collapse (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((oneDirectionFatBoundary (r + 1) (stableCategoryModel C)).ι ▷
         (C ⟶[SSet.{u}] D)) ≫ stableOneDirectionAction (r + 1) C D ≫
       oneDirectionReductionQuotient r (stableCategoryModel D) =
@@ -30,7 +30,7 @@ lemma stableOneDirectionReducedAction_collapse (r : ℕ) (C D : _root_.SerrePosi
 /-- 概要：元の一次方向商への全高次入力族の作用。
 方針：同じ境界商の普遍的降下を使う。
 規約：基点を選び直さない。使われ方：隣接段比較の点つき作用。 -/
-def stableOneDirectionReducedAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableOneDirectionReducedAction (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (oneDirectionReducedRealization r (stableCategoryModel C)).right ⊗
       (C ⟶[SSet.{u}] D) ⟶
         (oneDirectionReducedRealization r (stableCategoryModel D)).right :=
@@ -43,7 +43,7 @@ def stableOneDirectionReducedAction (r : ℕ) (C D : _root_.SerrePositivity.Infi
 /-- 概要：商射に沿って元の全作用を回収する。
 方針：普遍的降下の商射への制限式を使う。
 規約：全単体の厳密等号。使われ方：元の S₁ 比較との照合。 -/
-lemma stableOneDirectionReducedAction_quotient (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedAction_quotient (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (oneDirectionReductionQuotient r (stableCategoryModel C) ▷
         (C ⟶[SSet.{u}] D)) ≫ stableOneDirectionReducedAction r C D =
       stableOneDirectionAction (r + 1) C D ≫
@@ -53,7 +53,7 @@ lemma stableOneDirectionReducedAction_quotient (r : ℕ) (C D : _root_.SerrePosi
 /-- 概要：全入力族は元の商の基点を固定する。
 方針：同じ降下の基点脚への制限を使う。
 規約：全時刻での等式。使われ方：標準点つき豊穣への包装。 -/
-lemma stableOneDirectionReducedAction_basepoint (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedAction_basepoint (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((oneDirectionReducedRealization r (stableCategoryModel C)).hom ▷
         (C ⟶[SSet.{u}] D)) ≫ stableOneDirectionReducedAction r C D =
       toUnit _ ≫ (oneDirectionReducedRealization r (stableCategoryModel D)).hom :=
@@ -62,7 +62,7 @@ lemma stableOneDirectionReducedAction_basepoint (r : ℕ) (C D : _root_.SerrePos
 /-- 概要：同じ全作用を基点固定 Hom への族として保持する。
 方針：同じ商の basedHom への普遍的降下を使う。
 規約：同じ全パラメータを保持する。使われ方：点つき厳密豊穣作用。 -/
-def stableOneDirectionReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableOneDirectionReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (C ⟶[SSet.{u}] D) ⟶
       (PointedObject.basedHom
         (oneDirectionReducedRealization r (stableCategoryModel C))
@@ -76,7 +76,7 @@ def stableOneDirectionReducedFamilyMap (r : ℕ) (C D : _root_.SerrePositivity.I
 /-- 概要：Hom 包含後には元の全作用の curry を回収する。
 方針：basedHom の等化子への包含式を使う。
 規約：同じ作用を固定する。使われ方：比較自然性の反映。 -/
-lemma stableOneDirectionReducedFamilyMap_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionReducedFamilyMap_inclusion (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     stableOneDirectionReducedFamilyMap r C D ≫
       PointedObject.basedHomι
         (oneDirectionReducedRealization r (stableCategoryModel C))

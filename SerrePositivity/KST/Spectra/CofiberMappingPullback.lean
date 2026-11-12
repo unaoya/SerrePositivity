@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.CofiberMappingPullback
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.CofiberMappingPullback
 
 public import SerrePositivity.KST.Spectra.PointedCofiber
 public import Mathlib.CategoryTheory.Monoidal.Closed.Braided
@@ -31,11 +31,11 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7、HTT A.3.3。path fiber の表示。 -/
 theorem cofiberMapping_isPullback {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
     (Z : PointedSimplicialSet.{u}) :
-    IsPullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (pointedCofiberProjection i) Z)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.fromPoint (pointedCofiber i)) Z)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedObject.toPoint X) Z) := by
-  have h := ((pointedCofiber_isPushout i).op.flip).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z)
-  simpa only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor_map] using h
+    IsPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (pointedCofiberProjection i) Z)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedObject.fromPoint (pointedCofiber i)) Z)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedObject.toPoint X) Z) := by
+  have h := ((pointedCofiber_isPushout i).op.flip).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor Z)
+  simpa only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor_map] using h
 
 /-- 概要：点からの点つき Hom の基礎単体集合は終対象。
 方針：点が初対象であることを極限保存の反変 Hom 関手で移す。
@@ -43,7 +43,7 @@ theorem cofiberMapping_isPullback {X Y : PointedSimplicialSet.{u}} (i : X ⟶ Y)
 使われ方：Goerss–Jardine I §7。cofiber の Hom の pullback を基点 fiber に移す。 -/
 def homPointIsTerminal (Z : PointedSimplicialSet.{u}) :
     IsTerminal (PointedObject.basedHom PointedObject.point Z).right :=
-  IsTerminal.isTerminalObj (_root_.SerrePositivity.InfinityCategories.F1.Pointed.cofiberMappingFunctor Z) _ PointedObject.point_isZero.isInitial.op
+  IsTerminal.isTerminalObj (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.cofiberMappingFunctor Z) _ PointedObject.point_isZero.isInitial.op
 
 end
 

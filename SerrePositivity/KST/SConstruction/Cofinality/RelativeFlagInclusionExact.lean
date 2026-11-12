@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：相対旗の S 構成の評価。 -/
 def completionRelativeFlagAmbientMap (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     completionRelativeFlagStableModel r ι f hf n ⟶
       Fibration.ambientDiagramModel (stdSimplex.obj n)
         (Fibration.Relative.flagAmbient (((multiSEndofunctor r).obj ι).obj Y)) :=
@@ -36,7 +36,7 @@ def completionRelativeFlagAmbientMap (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：元の相対 S 図式の包含の回収。 -/
 lemma completionRelativeFlagAmbientMap_val (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     (completionRelativeFlagAmbientMap r ι f hf n).val =
       multiRelativeFlagsInclusion r ι Y
         (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex

@@ -69,7 +69,7 @@ theorem triangleCellQuotient_horn : (horn.{u} 2 (1 : Fin 3)).ι ≫ triangleCell
     toUnit (horn.{u} 2 (1 : Fin 3) : SSet.{u}) ≫ triangleCell.{u}.hom := by
   change (horn.{u} 2 (1 : Fin 3)).ι ≫ pushout.inl (boundary.{u} 2).ι triangleAttachment = _
   rw [show (horn.{u} 2 (1 : Fin 3)).ι =
-      Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Simplicial.horn_le_simplexBoundary 1 (1 : Fin 3)) ≫ (boundary.{u} 2).ι from rfl]
+      Subcomplex.homOfLE (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.horn_le_simplexBoundary 1 (1 : Fin 3)) ≫ (boundary.{u} 2).ι from rfl]
   rw [Category.assoc, pushout.condition, ← Category.assoc, boundaryFaceCollapse_horn]
   rfl
 

@@ -42,9 +42,9 @@ lemma enrichedComparisonLeftWhisker_map {W X Y Z : C} (f : W ⟶ X)
   change (SimplicialCategory.sHomComp W X Z).app (Opposite.op ⦋1⦌)
     ((SSet.Edge.id (SimplicialCategory.homEquiv' W X f)).edge, e.edge) =
       (SimplicialCategory.sHomComp W X Z).app (Opposite.op ⦋1⦌)
-        (PinchedHom.constant (SimplicialCategory.homEquiv' W X f) 1, e.edge)
-  rw [show PinchedHom.constant (SimplicialCategory.homEquiv' W X f) 1 =
-    (SSet.Edge.id (SimplicialCategory.homEquiv' W X f)).edge from pinchedConstant_one _]
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' W X f) 1, e.edge)
+  rw [show _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' W X f) 1 =
+    (SSet.Edge.id (SimplicialCategory.homEquiv' W X f)).edge from _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _]
 
 /-- 元の右合成比較辺の全区間も、同じ全比較辺を固定因子の合成写像で写した射そのもの。 -/
 lemma enrichedComparisonRightWhisker_map {W X Y Z : C} (f : W ⟶ X)
@@ -58,8 +58,8 @@ lemma enrichedComparisonRightWhisker_map {W X Y Z : C} (f : W ⟶ X)
   change (SimplicialCategory.sHomComp W Y Z).app (Opposite.op ⦋1⦌)
     (e.edge, (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z h)).edge) =
       (SimplicialCategory.sHomComp W Y Z).app (Opposite.op ⦋1⦌)
-        (e.edge, PinchedHom.constant (SimplicialCategory.homEquiv' Y Z h) 1)
-  rw [show PinchedHom.constant (SimplicialCategory.homEquiv' Y Z h) 1 =
-    (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z h)).edge from pinchedConstant_one _]
+        (e.edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z h) 1)
+  rw [show _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z h) 1 =
+    (SSet.Edge.id (SimplicialCategory.homEquiv' Y Z h)).edge from _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _]
 
 end SerrePositivity.KST.SConstruction

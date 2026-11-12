@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeErasedLast
 public import SerrePositivity.EInfinity.ComplexLimits.ConeBoundarySum
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedRhs
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedRhs
 
 /-!
 概要：始点と終端を含む実 cone の線形境界を、同じ普遍 cochain の内部削除和へ移す。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -25,27 +25,27 @@ lemma normalizedTensorConeData_linearBoundary_reindex {n : ℕ}
     (ha0 : a = 0) (hbl : b = Fin.last (n + 1)) :
     (normalizedTensorConeData A X Y c).linearBoundary I a b k =
       ∑ j : withoutFirst I, if j.val < Fin.last n then
-        Index.sign (withoutFirst I) j.val •
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val •
           (normalizedTensorConeData A X Y c).homOrZero (I.erase j.val.succ) a b (k + 1)
         else 0 := by
-  unfold SimplexData.linearBoundary
-  have hi : Index.interior I a b = Index.interior I 0 (Fin.last (n + 1)) := by rw [ha0, hbl]
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.linearBoundary
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I a b = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I 0 (Fin.last (n + 1)) := by rw [ha0, hbl]
   rw [hi, sum_interior_zero_last]
   simp only [sign_succ]
 
 lemma normalizedTensorConeData_linearBoundary_mixed_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (hbl : b = Fin.last (n + 1))
     (h0 : 0 ∈ I) (hJ : 2 ≤ (withoutFirst I).card)
     (hkJ : k = 1 - ((withoutFirst I).card : ℤ)) :
     HEq ((normalizedTensorConeData A X Y c).linearBoundary I a b k)
       (∑ j : withoutFirst I, if j.val < Fin.last n then
-        Index.sign (withoutFirst I) j.val • ((k + 1).negOnePow •
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • ((k + 1).negOnePow •
           (normalizedTensorElementUniversalLinear A X Y c).val.component
             ((withoutFirst I).erase j.val) (k + 1)
-            (PinchedHom.LinearData.erase_nonempty hJ _ j.property)
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ j.property)
             (by have := Finset.card_erase_add_one j.property; omega)) else 0) := by
   have hx : (normalizedTensorConeData A X Y c).obj a = X := by
     change normalizedTensorConeObj A X Y c a = X
@@ -56,19 +56,19 @@ lemma normalizedTensorConeData_linearBoundary_mixed_last {n : ℕ}
     rw [hbl]
     exact normalizedTensorConeObj_succ A X Y c (Fin.last n)
   rw [normalizedTensorConeData_linearBoundary_reindex A X Y c I a b k ha0 hbl]
-  apply sum_heq_of_obj_eq hx hy
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sum_heq_of_obj_eq hx hy
   intro j
   by_cases hj : j.val < Fin.last n
   · simp only [ite_eq_left hj]
     have he := normalizedTensorConeData_erased_succ_mixed_last A X Y c I a b k hI ha hb hk
       ha0 hbl h0 j.val (by simpa only [withoutFirst, Finset.mem_filter, Finset.mem_univ,
         true_and] using j.property) (by rw [hbl]; exact Fin.succ_lt_succ_iff.mpr hj)
-      (PinchedHom.LinearData.erase_nonempty hJ _ j.property)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ j.property)
       (by have := Finset.card_erase_add_one j.property; omega)
     have ht : ∀ (x y x' y' : Complex A) (hx : x = x') (hy : y = y')
         (v : GradedHom A x y (k + 1)) (w : GradedHom A x' y' (k + 1)),
-        HEq v w → HEq (Index.sign (withoutFirst I) j.val • v)
-          (Index.sign (withoutFirst I) j.val • w) := by
+        HEq v w → HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • v)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j.val • w) := by
       intro x y x' y' hx hy v w hv
       subst x'
       subst y'
@@ -76,6 +76,6 @@ lemma normalizedTensorConeData_linearBoundary_mixed_last {n : ℕ}
       rfl
     exact ht _ _ _ _ hx hy _ _ he
   · simp only [ite_eq_right hj]
-    exact gradedHom_zero_heq hx hy rfl
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq hx hy rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

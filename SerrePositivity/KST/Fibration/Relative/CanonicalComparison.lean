@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Fibration.Relative
 方針：無条件の canonical 全四角形同型を既存の二比較の構成へ代入する。
 規約：c5 の供給自体の存在は主張せず、c4 の存在仮定は取らない。
 使われ方：Sp の実供給を元の fiber 比較の非負次数 π 同型へ渡す。 -/
-def SingleRelativeComparison.ofCanonicalFirstRowSimplices (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+def SingleRelativeComparison.ofCanonicalFirstRowSimplices (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeFirstRowSimplexQuotient d.projection n))) :
     SingleRelativeComparison d :=

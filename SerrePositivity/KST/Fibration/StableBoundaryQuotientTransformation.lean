@@ -30,17 +30,17 @@ theorem internalObject_whiskerRight {X Y : SSetInternalObject.{u}} (f : X ⟶ Y)
 
 /-- 同じ境界商の基点を忘れ、元の全閉 Hom 作用を保持する。 -/
 def stableBoundaryClosedEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} SSetInternalObject.{u} :=
   (stableBoundaryPointedEnrichedFunctor r).comp SSet pointedSSetObjectClosedForget
 
 /-- 閉 Hom の包含後の同じ境界商族は、元の実作用の curry そのもの。 -/
-theorem stableBoundaryClosedEnrichedFunctor_map (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem stableBoundaryClosedEnrichedFunctor_map (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableBoundaryClosedEnrichedFunctor r).map C D =
       curry (stableBoundaryReducedAction r C D) :=
   stableBoundaryReducedFamilyMap_inclusion r C D
 
 /-- 元の商射は全 Hom の前後合成と可換である。 -/
-theorem stableBoundaryQuotient_whisker (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem stableBoundaryQuotient_whisker (r : ℕ) (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableMultiRealizationEnrichedFunctor (r + 1)).map C D ≫
       eHomWhiskerLeft SSet ((stableMultiRealizationEnrichedFunctor (r + 1)).obj C)
         (show (stableMultiRealizationEnrichedFunctor (r + 1)).obj D ⟶
@@ -62,7 +62,7 @@ theorem stableBoundaryQuotient_whisker (r : ℕ) (C D : _root_.SerrePositivity.I
 def stableBoundaryQuotientTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableMultiRealizationEnrichedFunctor (r + 1)) (stableBoundaryClosedEnrichedFunctor r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (fun C => boundaryReductionQuotient r (stableCategoryModel C))
     (stableBoundaryQuotient_whisker r)
 

@@ -56,19 +56,19 @@ lemma sourceFrameCoprodRestriction_isIso (X Y Z : (operad A).Algebra)
   have := isFibrant A Z
   have := coproductFrameComparison_hom_isIso q AnodyneHomotopy.anodyneQ
     SSet.anodyneExtensions.Q_inverts X Y Z
-  have he : (cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
       coproductFrameHomRestriction (q.obj.obj X) (q.obj.obj Y) Z =
     sourceFrameCoprodRestriction A X Y Z := by
     apply prod.hom_ext
     · calc
-        _ = (cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
-            (cosimplicialHomMap (coprod.inl : q.obj.obj X ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z :=
+        _ = (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coprod.inl : q.obj.obj X ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z :=
           (Category.assoc _ _ _).trans (congrArg (fun k =>
-            (cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫ k)
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫ k)
               (prod.lift_fst
-                ((cosimplicialHomMap
+                ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
                   (coprod.inl : q.obj.obj X ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z)
-                ((cosimplicialHomMap
+                ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
                   (coprod.inr : q.obj.obj Y ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z)))
         _ = ((sourceFrameHom A).map (coprod.inl : X ⟶ X ⨿ Y).op).app Z := by
           ext n f
@@ -80,14 +80,14 @@ lemma sourceFrameCoprodRestriction_isIso (X Y Z : (operad A).Algebra)
           (((sourceFrameHom A).map (coprod.inl : X ⟶ X ⨿ Y).op).app Z)
           (((sourceFrameHom A).map (coprod.inr : Y ⟶ X ⨿ Y).op).app Z)).symm
     · calc
-        _ = (cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
-            (cosimplicialHomMap (coprod.inr : q.obj.obj Y ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z :=
+        _ = (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coprod.inr : q.obj.obj Y ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z :=
           (Category.assoc _ _ _).trans (congrArg (fun k =>
-            (cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫ k)
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coproductFrameComparison q X Y)).app Z ≫ k)
               (prod.lift_snd
-                ((cosimplicialHomMap
+                ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
                   (coprod.inl : q.obj.obj X ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z)
-                ((cosimplicialHomMap
+                ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
                   (coprod.inr : q.obj.obj Y ⟶ q.obj.obj X ⨿ q.obj.obj Y)).app Z)))
         _ = ((sourceFrameHom A).map (coprod.inr : Y ⟶ X ⨿ Y).op).app Z := by
           ext n f

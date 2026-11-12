@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeWeightAnodyne
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightMapMono
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.ConeWeightAnodyne
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightMapMono
 public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 
 /-!
@@ -14,7 +14,7 @@ public import Mathlib.AlgebraicTopology.SimplicialSet.StdSimplex
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
@@ -43,12 +43,12 @@ lemma anodyne {C : Type u} [SmallCategory C] {c : C} (hc : IsTerminal c) :
   let F := pointFunctor c
   let : F.Faithful :=
     { map_injective := fun {a b} f g _ ↦ Subsingleton.elim f g }
-  let : Mono (nerveMap F) := nerveMap_mono_of_faithful F
+  let : Mono (nerveMap F) := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveMap_mono_of_faithful F
     (fun _ _ _ ↦ Subsingleton.elim _ _)
-  have hF : rightAnodyneExtensions (nerveMap F) :=
-    nerveMap_preservingTerminal_rightAnodyne F unitTerminal hc
+  have hF : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.rightAnodyneExtensions (nerveMap F) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.nerveMap_preservingTerminal_rightAnodyne F unitTerminal hc
   exact anodyneExtensions.comp_mem _ _ (anodyneExtensions.of_isIso _)
-    (anodyne_of_rightAnodyne _ hF)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.anodyne_of_rightAnodyne _ hF)
 
 end
 end SerrePositivity.KST.Spectra.NerveTerminalPoint

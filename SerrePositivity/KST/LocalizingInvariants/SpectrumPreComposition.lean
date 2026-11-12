@@ -27,16 +27,16 @@ local instance preCompositionCategory : SimplicialCategory OmegaSpectrum.{u} :=
 variable {A B C D : OmegaSpectrum.{u}} (a : A ⟶ B) (b : B ⟶ C) (c : C ⟶ D)
 
 def associatedLongPre := HomotopyArrow.rebase (canonicalPre (a ≫ b) c)
-  (congrArg (fun f ↦ SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)
+  (congrArg (fun f ↦ SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
     (Category.assoc a b c)) rfl
 
 lemma canonicalPre_comp :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPre a (b ≫ c))) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre a (b ≫ c))) ≫
         Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (canonicalPre b c)) =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre b c)) =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (associatedLongPre a b c)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (associatedLongPre a b c)) := by
   apply HomotopyTriangle.homMk_comp _ _ _
     (CompositionPre.shape ≫ SSet.yonedaEquiv.symm (CoherentComposition.tetrahedron a b c))
   · rw [← Category.assoc, CompositionPre.first, Category.assoc,
@@ -53,11 +53,11 @@ lemma canonicalPre_comp :
 
 lemma canonicalPre_comp_arrow : Arrow.mk
     (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPre a (b ≫ c))) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre a (b ≫ c))) ≫
         Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (canonicalPre b c))) =
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre b c))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (canonicalPre (a ≫ b) c))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (canonicalPre (a ≫ b) c))) :=
   (congrArg Arrow.mk (canonicalPre_comp a b c)).trans
     (HomotopyArrow.rebase_arrow _ _ _).symm
 

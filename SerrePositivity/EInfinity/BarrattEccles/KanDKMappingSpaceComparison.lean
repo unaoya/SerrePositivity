@@ -17,7 +17,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 def cAlgMappingSpaceComparisonIso :
     AnodyneHomotopy.anodyneQ.obj (SimplicialCategory.sHom X Y) ≅
@@ -25,18 +25,18 @@ def cAlgMappingSpaceComparisonIso :
         (((mappingSpace A).obj (op ((cofibrantAlgebraDKInclusion A).obj X))).obj
           ((cofibrantAlgebraDKInclusion A).obj Y))) := by
   have := SSet.anodyneExtensions.Q_inverts
-    (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y))
     (localizationHomKanUnit_anodyne (cofibrantAlgebraRelativeCategory A) X Y)
   exact (asIso (AnodyneHomotopy.anodyneQ.map
-    (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)))).symm ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)))).symm ≪≫
       cofibrantAlgebraDKMappingSpaceComparisonIso A X Y
 lemma cAlgMappingSpaceComparisonIso_unit :
     AnodyneHomotopy.anodyneQ.map
-        (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComparisonIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComparisonIso A X Y).hom := by
   have := SSet.anodyneExtensions.Q_inverts
-    (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A) X Y))
     (localizationHomKanUnit_anodyne (cofibrantAlgebraRelativeCategory A) X Y)
   change AnodyneHomotopy.anodyneQ.map _ ≫ (inv (AnodyneHomotopy.anodyneQ.map _) ≫ _) = _
   exact IsIso.hom_inv_id_assoc _ _

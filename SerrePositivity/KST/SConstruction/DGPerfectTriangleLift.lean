@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectDGStableModel
-public import SerrePositivity.InfinityCategories.DGNerve.FullInclusionLift
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.FullInclusionLift
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元三辺が実 Perf 内にある全合成二単体を、元全図式ごと実 Perf 内へ持ち上げる。
@@ -14,23 +14,23 @@ public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded InfinityCategories DGNerve SSet
+open CategoryTheory MonoidalCategory MonoidalClosed DifferentialGraded InfinityCategories SSet
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
-local notation "I" => dgNerve.map (perfectDGModuleInclusion R E Set.univ)
+local notation "I" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R E Set.univ)
 
 /-- 概要：元 Perf 三辺を持つ全二単体を元全包含の厳密な逆像にする。
 方針：元二単体の全頂点を元二側面から回収し、充満包含で全境界を反映する。
 規約：同じ全二単体と元三円柱を保持。使われ方：元上二単体の同じ Perf 持ち上げ。 -/
 lemma exists_perfectFunctorCompositionTriangle
-    {A : SSet.{max (u + 1) v}} {f g h : A ⟶ dgNerve R (PerfectDGModule R E)}
+    {A : SSet.{max (u + 1) v}} {f g h : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R E)}
     (l : SSet.Homotopy f g) (r : SSet.Homotopy g h) (d : SSet.Homotopy f h)
-    (T : FunctorCompositionTriangle (functorHomotopyPostcomp l (I))
-      (functorHomotopyPostcomp r (I)) (functorHomotopyPostcomp d (I))) :
-    ∃ U : FunctorCompositionTriangle l r d,
+    (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp l (I))
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp r (I)) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp d (I))) :
+    ∃ U : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle l r d,
       U.diagram ≫ (ihom A).map (I) = T.diagram := by
   letI : Mono (I) := by
-    change Mono (dgNerve.map (dgFullSubcategoryInclusion R (RightModule R E)
+    change Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion R (RightModule R E)
       (modulePerfectProjectiveOver R E Set.univ)))
     infer_instance
   have h2 : (A ◁ stdSimplex.δ (2 : Fin 3)) ≫ uncurry T.diagram = l.h ≫ (I) :=
@@ -59,18 +59,18 @@ lemma exists_perfectFunctorCompositionTriangle
       change ((uncurry T.diagram).app _ (a, stdSimplex.obj₀Equiv.symm (2 : Fin 3))).obj 0 =
         ((r.h.app _ (a, stdSimplex.obj₀Equiv.symm (1 : Fin 2))).obj 0).val at he
       exact he.symm ▸ ((r.h.app _ (a, stdSimplex.obj₀Equiv.symm (1 : Fin 2))).obj 0).property
-  let F := fullInclusionLift R (RightModule R E) (modulePerfectProjectiveOver R E Set.univ)
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.fullInclusionLift R (RightModule R E) (modulePerfectProjectiveOver R E Set.univ)
     (uncurry T.diagram) hv
   have hF : F ≫ (I) = uncurry T.diagram :=
-    fullInclusionLift_comp R (RightModule R E) (modulePerfectProjectiveOver R E Set.univ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.fullInclusionLift_comp R (RightModule R E) (modulePerfectProjectiveOver R E Set.univ)
       (uncurry T.diagram) hv
   let diag := curry F
   have hd : diag ≫ (ihom A).map (I) = T.diagram := by
     apply uncurry_injective
     rw [uncurry_natural_right, uncurry_curry, hF]
-  have fac (i : Fin 3) {f' g' : A ⟶ dgNerve R (PerfectDGModule R E)}
+  have fac (i : Fin 3) {f' g' : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R E)}
       (q : SSet.Homotopy f' g')
-      (hq : stdSimplex.δ i ≫ T.diagram = curry (functorHomotopyPostcomp q (I)).h) :
+      (hq : stdSimplex.δ i ≫ T.diagram = curry (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp q (I)).h) :
       stdSimplex.δ i ≫ diag = curry q.h := by
     apply uncurry_injective
     apply (cancel_mono (I)).1
@@ -82,7 +82,7 @@ lemma exists_perfectFunctorCompositionTriangle
         congrArg uncurry (Category.assoc _ _ _)
       _ = uncurry (stdSimplex.δ i ≫ T.diagram) :=
         congrArg (fun m => uncurry (stdSimplex.δ i ≫ m)) hd
-      _ = uncurry (curry (functorHomotopyPostcomp q (I)).h) := congrArg uncurry hq
+      _ = uncurry (curry (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp q (I)).h) := congrArg uncurry hq
       _ = uncurry (curry q.h) ≫ (I) := by rw [uncurry_curry, uncurry_curry]; rfl
   refine ⟨{ diagram := diag, face_zero := ?_, face_one := ?_, face_two := ?_ }, hd⟩
   · exact fac 0 r T.face_zero
@@ -92,9 +92,9 @@ lemma exists_perfectFunctorCompositionTriangle
 方針：元二側面と元円柱の端点等式で対象を回収する。
 規約：全二単体を変更しない。使われ方：元上二単体の実 Perf 頂点判定。 -/
 lemma perfectFunctorCompositionTriangle_vertices
-    {A : SSet.{max (u + 1) v}} {f g h : A ⟶ dgNerve R (RightModule R E)}
+    {A : SSet.{max (u + 1) v}} {f g h : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R E)}
     {l : SSet.Homotopy f g} {r : SSet.Homotopy g h} {d : SSet.Homotopy f h}
-    (T : FunctorCompositionTriangle l r d)
+    (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle l r d)
     (hf : ∀ a : A _⦋0⦌, modulePerfectProjectiveOver R E Set.univ ((f.app _ a).obj 0))
     (hg : ∀ a : A _⦋0⦌, modulePerfectProjectiveOver R E Set.univ ((g.app _ a).obj 0))
     (hh : ∀ a : A _⦋0⦌, modulePerfectProjectiveOver R E Set.univ ((h.app _ a).obj 0)) :

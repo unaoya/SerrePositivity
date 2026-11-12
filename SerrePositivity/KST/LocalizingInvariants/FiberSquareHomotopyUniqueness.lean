@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopyUniqueness
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.FiberSquareHomotopyUniqueness
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberConeHomotopyUniqueness
-public import SerrePositivity.InfinityCategories.Core.HomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyPrecomposition
 
 /-!
 概要：pullback 四角形間の比較の類を、元の cospan の比較から一意に決定する。
@@ -22,24 +22,24 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberSquareHomotopy
 
 lemma homMk_eq_of_cospan {X : SSet.{u}} [Quasicategory X]
     (F G : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X)
-    (hF : IsPullbackSquare F) (hG : IsPullbackSquare G)
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F) (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare G)
     (H J : SSet.Homotopy F G)
-    (h : Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (stableHomotopyPrecomp cospanSquareBoundary H)) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-        (stableHomotopyPrecomp cospanSquareBoundary J))) :
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J) := by
-  have hc := FiberCone.homotopy_homMk_eq (pullbackCone F) (pullbackCone G) hF hG
-    (stableHomotopyPrecomp cospanConeSquareIso.hom H)
-    (stableHomotopyPrecomp cospanConeSquareIso.hom J)
-    ((_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopy.restriction H).trans (h.trans (_root_.SerrePositivity.InfinityCategories.Stable.Exact.FiberSquareHomotopy.restriction J).symm))
+    (h : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary H)) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary J))) :
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J) := by
+  have hc := FiberCone.homotopy_homMk_eq (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone F) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone G) hF hG
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom H)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom J)
+    ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.restriction H).trans (h.trans (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.restriction J).symm))
   have he := congrArg (fun f ↦
-    (hoFunctor.map ((pre cospanConeSquareIso.inv).app X)).toFunctor.map f) hc
-  rw [homMk_functorEdge_precomp, homMk_functorEdge_precomp] at he
+    (hoFunctor.map ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv).app X)).toFunctor.map f) hc
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp] at he
   apply Arrow.mk_injective
-  exact (homMk_functorEdge_precomp_inv_hom_arrow cospanConeSquareIso H).symm.trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp_inv_hom_arrow _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso H).symm.trans
     ((congrArg Arrow.mk he).trans
-      (homMk_functorEdge_precomp_inv_hom_arrow cospanConeSquareIso J))
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp_inv_hom_arrow _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso J))
 
 end SerrePositivity.KST.LocalizingInvariants.FiberSquareHomotopy

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitEdgeNativeComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceEdgeValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceEdgeValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanFixedSquareIso
 
 /-!

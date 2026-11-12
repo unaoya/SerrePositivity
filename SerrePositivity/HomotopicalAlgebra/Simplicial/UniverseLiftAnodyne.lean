@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClassFunctor
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
 
 /-!
 # 宇宙liftはモデル構造を仮定せずanodyne射を保つ
@@ -47,7 +47,7 @@ lemma hornGenerator_anodyne_map : SSet.modelCategoryQuillen.J.{v} ≤
   intro X Y f hf
   simp only [SSet.modelCategoryQuillen.J, MorphismProperty.iSup_iff] at hf
   obtain ⟨n, ⟨i⟩⟩ := hf
-  exact (SSet.anodyneExtensions.arrow_iso_iff (hornArrowIso.{w, v} (n + 1) i)).mpr
+  exact (SSet.anodyneExtensions.arrow_iso_iff (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.hornArrowIso.{w, v} (n + 1) i)).mpr
     (SSet.anodyneExtensions.horn_ι i)
 
 /- 旧宣言の技術注記：

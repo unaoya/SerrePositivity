@@ -33,15 +33,15 @@ lemma dgFixedInputVertex (R : Type u) [CommRing R] {P Q : PerfDGInput.{u, v} R}
 /-- 同じ入力の h の等号を固定 BF K の同じ実自己射の整数 π 作用へ移す。 -/
 lemma dgFixedKAction_eq (R : Type u) [CommRing R] (P : PerfDGInput.{u, v} R)
     (f g : P ⟶ P)
-    (h : Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated =
-      Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated) (j : ℤ) :
+    (h : Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated =
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated) (j : ℤ) :
     OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R f) j =
       OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R g) j := by
   have h := congrArg ((hoFunctor.map (dgKInputK R)).toFunctor.map) h
   change Truncated.HomotopyCategory.homMk
-      ((coherentNerveEdge f).map (dgKInputK R)).toTruncated =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK R)).toTruncated =
     Truncated.HomotopyCategory.homMk
-      ((coherentNerveEdge g).map (dgKInputK R)).toTruncated at h
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).map (dgKInputK R)).toTruncated at h
   have hf := dgKPiComparison_naturality R f j
   have hg := dgKPiComparison_naturality R g j
   have hh : CommGrpCat.ofHom (OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R f) j) =

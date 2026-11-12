@@ -23,14 +23,14 @@ open scoped Simplicial
 /-- 元の同時選択を suspension 側へ戻した実際の構造射。 -/
 def boundaryKanAssemblySigmaAt (r : ℕ) (X : StableModel.{u})
     (v : (boundaryKanAssemblyChoices r X) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X) ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X) ⟶
       (boundaryKanRealizationFunctor (r + 1)).obj X :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _).symm (boundaryKanAssemblyAdjointAt r X v)
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _).symm (boundaryKanAssemblyAdjointAt r X v)
 
 /-- 全同時選択の suspension 構造射を、全単体次数で同時に与える族。 -/
 def boundaryKanAssemblySigmaFamily (r : ℕ) (X : StableModel.{u}) :
     boundaryKanAssemblyChoices r X ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X))
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X))
         ((boundaryKanRealizationFunctor (r + 1)).obj X)).right :=
   boundaryKanAssemblyAdjointFamily r X ≫ (suspensionLoopMappingIso _ _).inv
 
@@ -56,7 +56,7 @@ lemma boundaryKanAssemblySigmaAt_component (r : ℕ) (X : StableModel.{u})
 def boundaryAssemblySuspensionCylinderFamily (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityCylinder r f ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X))
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X))
         ((boundaryKanRealizationFunctor (r + 1)).obj Y)).right :=
   boundaryAssemblyNaturalityCylinderFamily r f ≫ (suspensionLoopMappingIso _ _).inv
 
@@ -65,7 +65,7 @@ lemma boundaryAssemblySuspensionCylinderFamily_source (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityCylinderSource r f ≫ boundaryAssemblySuspensionCylinderFamily r f =
       boundaryKanAssemblySigmaFamily r X ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X))
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X))
           ((boundaryKanRealizationFunctor (r + 1)).map f)).right := by
   unfold boundaryAssemblySuspensionCylinderFamily boundaryKanAssemblySigmaFamily
   rw [← Category.assoc, boundaryAssemblyNaturalityCylinderFamily_source, Category.assoc]
@@ -79,7 +79,7 @@ lemma boundaryAssemblySuspensionCylinderFamily_source (r : ℕ)
           ((boundaryKanRealizationFunctor (r + 1)).map f))).right ≫
         (suspensionLoopMappingIso _ _).inv =
     (boundaryKanAssemblyAdjointFamily r X ≫ (suspensionLoopMappingIso _ _).inv) ≫
-      ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X))).map
+      ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X))).map
         ((boundaryKanRealizationFunctor (r + 1)).map f)).right
   exact h.trans (Category.assoc _ _ _).symm
 
@@ -88,9 +88,9 @@ theorem boundaryAssemblySuspensionCylinderFamily_target (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityCylinderTarget r f ≫ boundaryAssemblySuspensionCylinderFamily r f =
       boundaryKanAssemblySigmaFamily r Y ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
-          (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj X))
-          (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((boundaryKanRealizationFunctor r).obj Y))
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
+          (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj X))
+          (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((boundaryKanRealizationFunctor r).obj Y))
           (PointedSimplicialSet.circle.{u} ◁ (boundaryKanRealizationFunctor r).map f)
           ((boundaryKanRealizationFunctor (r + 1)).obj Y)).right :=
   suspensionLoopMappingFamily_prePointed

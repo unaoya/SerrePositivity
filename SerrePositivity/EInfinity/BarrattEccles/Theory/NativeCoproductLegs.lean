@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.NativeCoproduct
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.HopfTensorInclusions
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictCoconeLegs
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictCoconeLegs
 
 /-!
 # 指定 native 余積錐の二脚と厳密なテンソル比較
@@ -19,61 +19,61 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits MonoidalCategory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SimplicialLocalization
-open scoped Simplicial
+open scoped _root_.Simplicial
 variable (A : Type u) [CommRing A] (X Y : CAlgSimplicialCategory A)
 
 /-- 採用した native な余錐の第一脚は、元の cofibrant な余積の第一包含。 -/
 lemma cAlgNativeCoprodCocone_leg_left :
-    coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) binaryPointLeft =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInl A X Y))).edge := by
-  rw [cAlgNativeCoprodCocone, coherentCoconeLegMap_ofDiagramEq]
-  change coherentCoconeLegMap
-    ((strictNativeCocone (cAlgBinaryCocone A X Y)).restrict cAlgBinaryShapeIso.hom)
-      binaryPointLeft = _
-  rw [coherentCoconeLegMap_restrict]
-  change coherentCoconeLegMap (strictNativeCocone (cAlgBinaryCocone A X Y))
+  rw [cAlgNativeCoprodCocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (cAlgBinaryCocone A X Y)).restrict cAlgBinaryShapeIso.hom)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_restrict]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (cAlgBinaryCocone A X Y))
     (coprod.inl ≫ cAlgBinaryShapeIso.hom) = _
   rw [cAlgBinaryShapeIso_left]
-  exact strictNativeCoconeLeg_eq (cAlgBinaryCocone A X Y) ⟨⟨true⟩⟩
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictNativeCoconeLeg_eq (cAlgBinaryCocone A X Y) ⟨⟨true⟩⟩
 
 /-- 採用した native な余錐の第二脚は、元の cofibrant な余積の第二包含。 -/
 lemma cAlgNativeCoprodCocone_leg_right :
-    coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) binaryPointRight =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (cAlgNativeCoprodCocone A X Y) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInr A X Y))).edge := by
-  rw [cAlgNativeCoprodCocone, coherentCoconeLegMap_ofDiagramEq]
-  change coherentCoconeLegMap
-    ((strictNativeCocone (cAlgBinaryCocone A X Y)).restrict cAlgBinaryShapeIso.hom)
-      binaryPointRight = _
-  rw [coherentCoconeLegMap_restrict]
-  change coherentCoconeLegMap (strictNativeCocone (cAlgBinaryCocone A X Y))
+  rw [cAlgNativeCoprodCocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (cAlgBinaryCocone A X Y)).restrict cAlgBinaryShapeIso.hom)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_restrict]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.strictNativeCocone (cAlgBinaryCocone A X Y))
     (coprod.inr ≫ cAlgBinaryShapeIso.hom) = _
   rw [cAlgBinaryShapeIso_right]
-  exact strictNativeCoconeLeg_eq (cAlgBinaryCocone A X Y) ⟨⟨false⟩⟩
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictNativeCoconeLeg_eq (cAlgBinaryCocone A X Y) ⟨⟨false⟩⟩
 
 /-- 界面へ供給した余極限錐の第一脚も、同じ第一包含の区間全体。 -/
 lemma barrattEcclesCoprodWith_cocone_leg_left (x y : (CAlg_R A) _⦋0⦌) :
-    coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val binaryPointLeft =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointLeft =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInl A
             ((cAlgVertexEquiv A).symm x) ((cAlgVertexEquiv A).symm y)))).edge := by
-  simp only [barrattEcclesCoprodWith_cocone, coherentCoconeLegMap_ofDiagramEq]
+  simp only [barrattEcclesCoprodWith_cocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
   exact cAlgNativeCoprodCocone_leg_left A _ _
 
 /-- 界面へ供給した余極限錐の第二脚も、同じ第二包含の区間全体。 -/
 lemma barrattEcclesCoprodWith_cocone_leg_right (x y : (CAlg_R A) _⦋0⦌) :
-    coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val binaryPointRight =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap (barrattEcclesCoprodWith_cocone A x y).val _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.binaryPointRight =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (kanLocalizationStrictHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKCoprodInr A
             ((cAlgVertexEquiv A).symm x) ((cAlgVertexEquiv A).symm y)))).edge := by
-  simp only [barrattEcclesCoprodWith_cocone, coherentCoconeLegMap_ofDiagramEq]
+  simp only [barrattEcclesCoprodWith_cocone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.coherentCoconeLegMap_ofDiagramEq]
   exact cAlgNativeCoprodCocone_leg_right A _ _
 
 /-- BE の零 arity の増大は同型である。 -/

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.FreeUniversalCover
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra
 
@@ -30,7 +30,7 @@ variable {G : Type u} [Group G]
 
 lemma functionPre_id (S : Type u) (B : Action SSet.{u} G) :
     functionPre (𝟙 (Action.leftRegular G ⊗ Action.trivial G S)) B =
-      𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj S B.V) := by
+      𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj S B.V) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -48,12 +48,12 @@ lemma functionPre_comp {S T U : Type u}
   apply (cancel_epi (functionIso S B).hom).mp
   calc
     (functionIso S B).hom ≫ functionPre (η ≫ θ) B =
-        weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map (η ≫ θ))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map (η ≫ θ))
           (coefficients B) ≫ (functionIso U B).hom := (functionIso_pre _ _).symm
-    _ = (weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map θ) (coefficients B) ≫
-        weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map η) (coefficients B)) ≫
+    _ = (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map θ) (coefficients B) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((GroupActionCochains.actionWeightFunctor G).map η) (coefficients B)) ≫
           (functionIso U B).hom := by
-      rw [CategoryTheory.Functor.map_comp, weightedSectionsPre_comp]
+      rw [CategoryTheory.Functor.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp]
     _ = (functionIso S B).hom ≫ (functionPre θ B ≫ functionPre η B) := by
       rw [Category.assoc, functionIso_pre η B, ← Category.assoc,
         functionIso_pre θ B, Category.assoc]
@@ -68,7 +68,7 @@ namespace GroupActionCochains
 使われ方：Goerss–Jardine VIII §2。cochain の顔・退化を座標で記述する図式。 -/
 def functionCochains {G : Type u} [Group G] (B : Action SSet.{u} G) :
     CosimplicialObject SSet.{u} where
-  obj n := _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.obj (Fin n.len → G) B.V
+  obj n := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.obj (Fin n.len → G) B.V
   map f := FreeActionFamily.functionPre ((freeUniversalCover G).map f.op) B
   map_id n := by
     rw [op_id, CategoryTheory.Functor.map_id]

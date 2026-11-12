@@ -25,15 +25,15 @@ private lemma nullTriangleRepresentative {X : SSet.{u}} [Quasicategory X]
     (T : SSet.Homotopy (stdSimplex.δ (1 : Fin 3) ≫ f)
       (stdSimplex.δ (1 : Fin 3) ≫ g))
     (hc₀ : SSet.Truncated.HomotopyCategory.homMk
-        ((functorEdgeOfSimplicialHomotopy H₀).map
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H₀).map
           ((truncation 2).map ((pre (stdSimplex.δ (1 : Fin 3))).app X))) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy T)) :
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy T)) :
     ∃ H : SSet.Homotopy f g,
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ H.h = T.h ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-        SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H₀) := by
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+        SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H₀) := by
   exact exists_specifiedTriangleDiagonalRepresentative H₀ T hc₀
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 /-- 概要：元下比較の類を保つ同じ両二胞体の比較は、元上比較と全対角を共有できる。
 方針：元の対角制限の辺を、同じ類を持つ元上対角辺へ厳密に修正する。
 規約：全射の等号と元全比較の類を同時に保持する。
@@ -44,8 +44,8 @@ lemma dgOdotMilnorNuNullAlignedLowerTriangle_exists :
         (SSet.yonedaEquiv.symm (dgOdotMilnorNuAbsoluteNullTriangle R d h 1)),
       (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 2})) ≫ H.h =
           (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h).h ∧
-        SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-          SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+        SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+          SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
             (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)) := by
   exact nullTriangleRepresentative (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)
     (dgOdotMilnorNuNullLowerAlignedDiagonalHomotopy R d h)
@@ -69,9 +69,9 @@ lemma dgOdotMilnorNuNullAlignedLowerTriangleHomotopy_diagonal :
 方針：元代表修正の第二の回収式。
 規約：全三角形の同型を保持。使われ方：指定短辺比較の厳密回収。 -/
 lemma dgOdotMilnorNuNullAlignedLowerTriangleHomotopy_class :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullAlignedLowerTriangleHomotopy R d h)) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (dgOdotMilnorNuNullLowerTriangleHomotopy R d h)) :=
   (Classical.choose_spec (dgOdotMilnorNuNullAlignedLowerTriangle_exists R d h)).2
 end SerrePositivity.KST.SConstruction

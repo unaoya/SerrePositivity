@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreeInterval
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FreeInterval
 
 public import SerrePositivity.KST.Spectra.PointedIntervalAnodyne
 public import SerrePositivity.Spectra.PointedSimplicialSet.AdjoinBasepointUnit
@@ -45,9 +45,9 @@ theorem anodyne_mono {A B : SSet.{u}} (i : A ⟶ B) (hi : anodyneExtensions i) :
 /-- 概要：自由な区間の端点包含は単射。
 方針：証明済みの anodyne 射の単射性を使う。
 規約：基礎単体集合の射について述べる。
-使われ方：Kerodon §3.1.3、Goerss–Jardine I §7。端点評価の Kan fibration 性。 -/
-instance freeIntervalEndpoint_mono (i : Fin 2) : Mono (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint.{u} i).right :=
-  anodyne_mono _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalEndpoint_anodyne i)
+使われ方：Kerodon §3.1.3（Tag 00TJ）、Goerss–Jardine I §7。端点評価の Kan fibration 性。 -/
+instance freeIntervalEndpoint_mono (i : Fin 2) : Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint.{u} i).right :=
+  anodyne_mono _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.freeIntervalEndpoint_anodyne i)
 
 end
 

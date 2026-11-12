@@ -36,7 +36,7 @@ lemma objectRowInclusion_coreS_localized_isIso (m : ℕ) (X : StableModel.{u}) :
 方針：転置した行の弱同値を対角に移し、転置前後の対角の同型を合成する。
 規約：対角の Kan 性は要求しない。使われ方：元の object/core 比較の証明。 -/
 lemma diagonalObjectInclusion_coreS_localized_isIso (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : IsIso (AnodyneHomotopy.anodyneQ.map
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : IsIso (AnodyneHomotopy.anodyneQ.map
       (diagonalObjectInclusion (simplicialCoreSConstruction C))) := by
   let X : StableModel.{u} := ⟨C⟩
   let Q := AnodyneHomotopy.anodyneQ.{u}
@@ -53,7 +53,7 @@ lemma diagonalObjectInclusion_coreS_localized_isIso (C : SSet.{u})
 方針：core の全頂点性の同型と、行から対角へ移した弱同値を合成する。
 規約：追加の比較仮定は不要。使われ方：McCarthy の object 加法性の core 実現への移送。 -/
 lemma objectToCoreSRealization_localized_isIso (C : SSet.{u})
-    [Quasicategory C] [IsStable C] :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     IsIso (AnodyneHomotopy.anodyneQ.map (objectToCoreSRealization C)) := by
   have := diagonalObjectInclusion_coreS_localized_isIso C
   rw [objectToCoreSRealization, AnodyneHomotopy.anodyneQ.map_comp]

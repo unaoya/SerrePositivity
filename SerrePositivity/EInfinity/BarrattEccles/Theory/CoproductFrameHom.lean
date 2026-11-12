@@ -23,10 +23,10 @@ variable {C : Type u} [Category.{v} C] [HasBinaryCoproducts C]
   (B D : SimplexCategory ⥤ C) (Z : C)
 
 /-- 二つの指定包含による frame Hom の積比較。 -/
-def coproductFrameHomRestriction : (cosimplicialHom (B ⨿ D)).obj Z ⟶
-    (cosimplicialHom B).obj Z ⨯ (cosimplicialHom D).obj Z :=
-  prod.lift ((cosimplicialHomMap coprod.inl).app Z)
-    ((cosimplicialHomMap coprod.inr).app Z)
+def coproductFrameHomRestriction : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (B ⨿ D)).obj Z ⟶
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Z :=
+  prod.lift ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap coprod.inl).app Z)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap coprod.inr).app Z)
 
 /-- Hom の積比較は各次数での厳密な同型。 -/
 instance coproductFrameHomRestriction_isIso : IsIso (coproductFrameHomRestriction B D Z) := by
@@ -34,7 +34,7 @@ instance coproductFrameHomRestriction_isIso : IsIso (coproductFrameHomRestrictio
   intro n
   let E := (evaluation SimplexCategory C).obj n.unop
   let H := (evaluation SimplexCategoryᵒᵖ (Type v)).obj n
-  let P := prodComparison H ((cosimplicialHom B).obj Z) ((cosimplicialHom D).obj Z) ≫
+  let P := prodComparison H ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Z) ≫
     (Types.binaryProductIso (B.obj n.unop ⟶ Z) (D.obj n.unop ⟶ Z)).hom
   have : IsIso P := by dsimp [P]; infer_instance
   suffices IsIso ((coproductFrameHomRestriction B D Z).app n ≫ P) from
@@ -48,23 +48,23 @@ instance coproductFrameHomRestriction_isIso : IsIso (coproductFrameHomRestrictio
     intro f
     apply Prod.ext
     · have h : ((coproductFrameHomRestriction B D Z).app n ≫ P) ≫ ↾Prod.fst =
-          ((cosimplicialHomMap (coprod.inl : B ⟶ B ⨿ D)).app Z).app n := by
+          ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coprod.inl : B ⟶ B ⨿ D)).app Z).app n := by
         simp only [P, Category.assoc, Types.binaryProductIso_hom_comp_fst]
         calc
           _ = (coproductFrameHomRestriction B D Z).app n ≫ H.map prod.fst :=
             congrArg (fun k => (coproductFrameHomRestriction B D Z).app n ≫ k)
-              (prodComparison_fst H ((cosimplicialHom B).obj Z) ((cosimplicialHom D).obj Z))
+              (prodComparison_fst H ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Z))
           _ = _ := by
             change (coproductFrameHomRestriction B D Z ≫ prod.fst).app n = _
             rw [coproductFrameHomRestriction, prod.lift_fst]
       exact congrArg (fun k => k f) h
     · have h : ((coproductFrameHomRestriction B D Z).app n ≫ P) ≫ ↾Prod.snd =
-          ((cosimplicialHomMap (coprod.inr : D ⟶ B ⨿ D)).app Z).app n := by
+          ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (coprod.inr : D ⟶ B ⨿ D)).app Z).app n := by
         simp only [P, Category.assoc, Types.binaryProductIso_hom_comp_snd]
         calc
           _ = (coproductFrameHomRestriction B D Z).app n ≫ H.map prod.snd :=
             congrArg (fun k => (coproductFrameHomRestriction B D Z).app n ≫ k)
-              (prodComparison_snd H ((cosimplicialHom B).obj Z) ((cosimplicialHom D).obj Z))
+              (prodComparison_snd H ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Z))
           _ = _ := by
             change (coproductFrameHomRestriction B D Z ≫ prod.snd).app n = _
             rw [coproductFrameHomRestriction, prod.lift_snd]
@@ -87,8 +87,8 @@ instance coproductFrameHomRestriction_isIso : IsIso (coproductFrameHomRestrictio
       rw [← Category.assoc, map_inr_inv_coprodComparison, coprod.inr_desc]
 
 /-- 指定された積分解の同型。 -/
-def coproductFrameHomIso : (cosimplicialHom (B ⨿ D)).obj Z ≅
-    (cosimplicialHom B).obj Z ⨯ (cosimplicialHom D).obj Z :=
+def coproductFrameHomIso : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (B ⨿ D)).obj Z ≅
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj Z :=
   asIso (coproductFrameHomRestriction B D Z)
 
 end SerrePositivity.EInfinity

@@ -21,10 +21,10 @@ lemma simplexHAIntervalChainLift_native {N : ℕ}
     (a b : Fin (N + 1)) (hab : a < b) :
     simplexHAIntervalChainLift A (cubicalLambdaNativeSimplex A F) a b hab =
       (simplexIntervalLambdaHomIso A a b hab.le).hom ≫
-        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
+        F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
   (simplexHAChainLift_map_recovery A F (b.val - a.val - 1)
     (simplexHAStrictIntervalOrder a b hab) b (simplexHAStrictIntervalOrder_last_lt a b hab)).trans
-      (congrArg (fun f => f ≫ F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+      (congrArg (fun f => f ≫ F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
         (simplexHADecodeSubsetCell_strictInterval A a b hab))
 
 /-- 元の実 dg 関手の厳密区間 Hom の復元は、元の同じ全次数 Hom 作用。 -/
@@ -32,18 +32,18 @@ lemma simplexHAIntervalHomMap_native {N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (a b : Fin (N + 1)) (hab : a < b) :
     simplexHAIntervalHomMap A (cubicalLambdaNativeSimplex A F) a b hab =
-      F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
+      F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) := by
   exact (congrArg (fun f => (simplexIntervalLambdaHomIso A a b hab.le).inv ≫ f)
     (simplexHAIntervalChainLift_native A F a b hab)).trans
       ((Category.assoc _ _ _).symm.trans
-        ((congrArg (fun f => f ≫ F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+        ((congrArg (fun f => f ≫ F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
           (simplexIntervalLambdaHomIso A a b hab.le).inv_hom_id).trans (Category.id_comp _)))
 
 /-- 元の実 dg 関手の全頂点間 Hom の復元は、元の同じ全次数 Hom 作用。 -/
 lemma simplexHAHomMap_native {N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D) (a b : Fin (N + 1)) :
     simplexHAHomMap A (cubicalLambdaNativeSimplex A F) a b =
-      F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
+      F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) := by
   rcases lt_trichotomy a b with hab | rfl | hba
   · exact (simplexHAHomMap_of_lt A (cubicalLambdaNativeSimplex A F) a b hab).trans
       (simplexHAIntervalHomMap_native A F a b hab)

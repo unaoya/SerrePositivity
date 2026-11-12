@@ -22,12 +22,12 @@ namespace SerrePositivity.KST.Spectra.TripleCircle
 /-- 普遍区間の両端を、同じ単位への制限を経由する厳密な族で表示する。 -/
 def factoredUniversalInterval (Z : PointedSimplicialSet.{u}) :
     PointedMapping.VerticalPath (PointedObject.toPoint (PointedObject.basedHom source.{u} Z))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed universalUnit.{u} Z ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed universalUnit.{u} Z ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z) :=
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed universalUnit.{u} Z ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed universalUnit.{u} Z ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z) :=
   (universalExchangePath.{u}.basedPre Z).changeEndpoints
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp swap.{u} universalUnit.{u} Z)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp reversal.{u} universalUnit.{u} Z)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp swap.{u} universalUnit.{u} Z)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp reversal.{u} universalUnit.{u} Z)
 
 /-- 因子表示に直しても、元の同じ普遍区間の辺全体を保持する。 -/
 lemma factoredUniversalInterval_path (Z : PointedSimplicialSet.{u}) :
@@ -55,25 +55,25 @@ lemma exchangeNaturalityInput_zero :
   change (exchangeInterval Z).path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom source.{u} Z) t).right =
     (factoredUniversalInterval Z').path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (s ≫ r) (PointedObject.basedHom source.{u} Z')).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (s ≫ r) (PointedObject.basedHom source.{u} Z')).right
   rw [exchangeInterval_path, factoredUniversalInterval_path]
-  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s
+  change (P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s
       (PointedObject.basedHom source.{u} Z)).right) ≫ _ = _
   have hs := (MonoidalClosed.pre s).naturality t
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hs
   change PointedObject.basedHomMap (PointedObject.basedHom universalTarget.{u} Z) t ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom source.{u} Z') =
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s (PointedObject.basedHom source.{u} Z) ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s (PointedObject.basedHom source.{u} Z') =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s (PointedObject.basedHom source.{u} Z) ≫
       PointedObject.basedHomMap (PointedObject.basedHom source.{u} Z) t at hs
   have h₀ := congrArg (fun q => P.path ≫ q.right) hs.symm
   have hn := universalExchangePath.{u}.basedPre_post_path v
   change P.path ≫
       (PointedObject.basedHomMap (PointedObject.basedHom universalTarget.{u} Z) t).right =
-    P'.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed r (PointedObject.basedHom source.{u} Z')).right at hn
-  have h₁ := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s
+    P'.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed r (PointedObject.basedHom source.{u} Z')).right at hn
+  have h₁ := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s
     (PointedObject.basedHom source.{u} Z')).right) hn
   have h₂ := congrArg (fun q => P'.path ≫ q.right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp s r (PointedObject.basedHom source.{u} Z'))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp s r (PointedObject.basedHom source.{u} Z'))
   simpa only [Under.comp_right, Category.assoc] using h₀.trans (h₁.trans h₂)
 
 omit [KanComplex Z.right] in
@@ -85,11 +85,11 @@ lemma exchangeNaturalityInput_one :
   change (exchangeInterval Z').path ≫ _ = (factoredUniversalInterval Z').path ≫ _
   rw [exchangeInterval_path, factoredUniversalInterval_path]
   change ((universalExchangePath.{u}.basedPre Z').path ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (extensionSection Z')
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (extensionSection Z')
       (PointedObject.basedHom source.{u} Z')).right) ≫ _ = _
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun q => (universalExchangePath.{u}.basedPre Z').path ≫ q.right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (PointedObject.basedHomMap source.{u} v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp (PointedObject.basedHomMap source.{u} v)
         (extensionSection Z') (PointedObject.basedHom source.{u} Z'))
 
 /-- 全写像族の交換区間の、同じ二次元自然性正方形。 -/
@@ -106,7 +106,7 @@ omit [KanComplex Z'.right] in
 /-- 元の切断比較の始点射影は、同じ標的後合成に厳密一致する。 -/
 lemma extensionSectionNaturality_source_projection :
     (extensionSection Z ≫ PointedObject.basedHomMap universalTarget.{u} v) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed universalUnit.{u} Z' = PointedObject.basedHomMap source.{u} v := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed universalUnit.{u} Z' = PointedObject.basedHomMap source.{u} v := by
   rw [Category.assoc, universalRestriction_post, ← Category.assoc,
     extensionSection_condition, Category.id_comp]
 
@@ -114,7 +114,7 @@ lemma extensionSectionNaturality_source_projection :
 lemma exchangeNaturalitySquare_start :
     SquareAdjustment.leftSide ≫ (exchangeNaturalitySquare v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z')) := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z')) := by
   change SquareAdjustment.leftSide ≫
     (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval v)
       (factoredUniversalInterval Z')).h = _
@@ -125,7 +125,7 @@ lemma exchangeNaturalitySquare_start :
 lemma exchangeNaturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (exchangeNaturalitySquare v).h =
       SSet.const (PointedMapping.familyVertex (PointedObject.basedHomMap source.{u} v ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z')) := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z')) := by
   change SquareAdjustment.rightSide ≫
     (PointedMapping.VerticalPath.inputSquare (extensionSectionNaturalityInterval v)
       (factoredUniversalInterval Z')).h = _

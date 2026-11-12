@@ -23,17 +23,17 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma pasteNonempty_generator (s : (space W X Y).obj n) :
+lemma pasteNonempty_generator (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n) :
     ((FirstFactor.nonemptyCut W X Y).app n ((pasteNonempty W X Y).app n s)).1.val = s.1.val := by
   have h := (FirstFactor.nonemptyCut_value W ((pasteNonempty W X Y).app n s)).symm.trans
     (pastePoint_value W X Y s.1 s.2.1 s.2.2)
   exact (List.cons.inj h).1
 
-lemma pasteNonempty_generator_index (s : (space W X Y).obj n) :
+lemma pasteNonempty_generator_index (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n) :
     ((FirstFactor.nonemptyCut W X Y).app n ((pasteNonempty W X Y).app n s)).1 = s.1 :=
   Subtype.ext (pasteNonempty_generator W X Y s)
 
-lemma pasteNonempty_residual_value (s : (space W X Y).obj n) :
+lemma pasteNonempty_residual_value (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n) :
     (colimitValue W
       ((FirstFactor.nonemptyCut W X Y).app n ((pasteNonempty W X Y).app n s)).1.val.right Y).app n
         ((FirstFactor.nonemptyCut W X Y).app n ((pasteNonempty W X Y).app n s)).2.2 =

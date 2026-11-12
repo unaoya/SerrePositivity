@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- 元の円の全 loop 図式族は、同じ終点上で native な選択族全体と同型。 -/
 def circleLoopDiagramFamilyIso :
-    FunctorIso circleLoopDiagramFamily.{u}
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso circleLoopDiagramFamily.{u}
       (((CotensorCompatible.sourceInfinityEquivalence PointedSimplicialSet.circle).inv ≫
         CotensorCompatible.sourceInfinityMap PointedSimplicialSet.circle) ≫
           nativeLoopTargetEquivalence.inv) := by
@@ -31,10 +31,10 @@ def circleLoopDiagramFamilyIso :
 
 /-- 元の円 cotensor と元の native loop は、全ての高次単体に自然に同型。 -/
 def nativeLoopCircleFunctorIso :
-    FunctorIso (nativeCotensor PointedSimplicialSet.circle.{u}) nativeLoop.{u} := by
-  have hs := circleLoopDiagramFamilyIso.{u}.postcomp (loopDiagramEvaluation Sp.{u} 0 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nativeCotensor PointedSimplicialSet.circle.{u}) nativeLoop.{u} := by
+  have hs := circleLoopDiagramFamilyIso.{u}.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)
   rw [circleLoopDiagramFamily_source, Category.assoc] at hs
-  change FunctorIso (nativeCotensor PointedSimplicialSet.circle)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nativeCotensor PointedSimplicialSet.circle)
     (((CotensorCompatible.sourceInfinityEquivalence PointedSimplicialSet.circle).inv ≫
       CotensorCompatible.sourceInfinityMap PointedSimplicialSet.circle) ≫ nativeLoop) at hs
   have ht := circleLoopDiagramFamily_targetIso.{u}.postcomp nativeLoop
@@ -44,12 +44,12 @@ def nativeLoopCircleFunctorIso :
 local instance nativeLoopCircleEvaluationKan (X Y : OmegaSpectrum.{u}) :
     KanComplex ((CategoryTheory.ihom PointedSimplicialSet.circle.{u}).obj
       (RawSpectrumMapping.pointedSpace (cotensor PointedSimplicialSet.circle X)
-        Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+        Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の native loop の完全忠実性は、元の円の普遍評価の全 Hom の同値性と同値。 -/
 lemma nativeLoop_isFullyFaithful_iff_evaluationPost :
-    IsFullyFaithful nativeLoop.{u} ↔ ∀ X Y : OmegaSpectrum.{u},
-      IsQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful nativeLoop.{u} ↔ ∀ X Y : OmegaSpectrum.{u},
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
         (CotensorCompatible.evaluationPost PointedSimplicialSet.circle X Y).right :=
   nativeLoopCircleFunctorIso.isFullyFaithful_iff.symm.trans
     (nativeCotensor_isFullyFaithful_iff PointedSimplicialSet.circle)

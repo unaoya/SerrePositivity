@@ -51,8 +51,8 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
   {X Y V : ResolutionObject C} (f : X.base ⟶ Y.base) (g : Y ⟶ V)
 
 include hcof hfib in
-lemma valueFillers : UniverseLift.BoundaryFillers (AllFactorizationComparison.choiceSpace f g) :=
-  LargeParameterExtension.relativeFillers hcof hfib (vertexInclusion X Y f) (postBoundary X Y V f g)
+lemma valueFillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (AllFactorizationComparison.choiceSpace f g) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relativeFillers hcof hfib (vertexInclusion X Y f) (postBoundary X Y V f g)
     (ResolutionLiftSpace.projection X V (f ≫ g.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X V (f ≫ g.base))
 
@@ -69,7 +69,7 @@ abbrev chosenPoint : SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0) ⟶ ob
 
 /-- Evaluation retains the entire nerve parameter as well as the entire choice parameter. -/
 abbrev universalFamily : nerve (ArrowFactorization g) ⊗ obj hcof f g ⟶
-    UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g) :=
   RelativeChoiceSpace.family (NerveVertices.inclusion (ArrowFactorization g))
     (AllFactorizationComparison.vertexData hcof f g) (𝟙 _)
 
@@ -89,20 +89,20 @@ lemma extension {A K : SSet.{max u v}} (j : A ⟶ K) [Mono j] (b : A ⟶ obj hco
     (AllFactorizationComparison.vertexData hcof f g) j b
 
 include hcof hfib in
-lemma fillers : UniverseLift.BoundaryFillers (obj hcof f g) :=
+lemma fillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (obj hcof f g) :=
   fun n b => extension hcof hfib f g (SSet.boundary.{max u v} n).ι b
 
 include hcof hfib in
 /-- Existing systems and moving factorization-point data are both retained as actual maps. -/
 lemma extendMovingVertices {A K : SSet.{max u v}} (j : A ⟶ K) [Mono j]
     (a : nerve (ArrowFactorization g) ⊗ A ⟶
-      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g))
     (c : NerveVertices.vertices (ArrowFactorization g) ⊗ K ⟶
-      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g))
     (hc : NerveVertices.inclusion (ArrowFactorization g) ▷ A ≫ a =
       NerveVertices.vertices (ArrowFactorization g) ◁ j ≫ c) :
     ∃ e : nerve (ArrowFactorization g) ⊗ K ⟶
-        UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g),
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g),
       nerve (ArrowFactorization g) ◁ j ≫ e = a ∧
         NerveVertices.inclusion (ArrowFactorization g) ▷ K ≫ e = c :=
   LargeParameterRelativeChoice.family_lifting (valueFillers hcof hfib f g)
@@ -122,7 +122,7 @@ def contraction : SSet.Homotopy (collapse hcof f g ≫ chosenPoint hcof hfib f g
 /-- The evaluated contraction is a single map on all nerve and choice parameters. -/
 abbrev universalContraction : nerve (ArrowFactorization g) ⊗
     (obj hcof f g ⊗ SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1)) ⟶
-      UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g) :=
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g) :=
   RelativeChoiceSpace.family (NerveVertices.inclusion (ArrowFactorization g))
     (AllFactorizationComparison.vertexData hcof f g) (contraction hcof hfib f g).h
 
@@ -150,7 +150,7 @@ lemma universalContraction_fixed_vertices :
   RelativeChoiceSpace.family_fixed_boundary _ _ _
 
 variable (s : nerve (ArrowFactorization g) ⟶
-    UniverseLift.obj.{u} (AllFactorizationComparison.choiceSpace f g))
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (AllFactorizationComparison.choiceSpace f g))
   (hs : NerveVertices.inclusion (ArrowFactorization g) ≫ s =
     AllFactorizationComparison.vertexData hcof f g)
 
@@ -173,8 +173,8 @@ lemma homotopy_fixed_vertices :
 /-- The same comparison acts on all anchored chains, retaining all simplicial operators. -/
 def chainHomotopy : SSet.Homotopy (AllFactorizationComparison.chainComparison hcof hfib f g)
     ((AnchoredChain.nerveIso g).inv ≫ s) :=
-  LargeParameterSquare.changeEndpoints
-    (LargeParameterSquare.transport (AnchoredChain.nerveIso g).inv (𝟙 _)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.transport (AnchoredChain.nerveIso g).inv (𝟙 _)
       (homotopy hcof hfib f g s hs))
     (by simp only [Category.comp_id]) (by simp only [Category.comp_id])
 

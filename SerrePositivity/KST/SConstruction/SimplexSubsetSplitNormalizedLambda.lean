@@ -15,8 +15,8 @@ open CategoryTheory
 open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 元の濃度次元の分割 cube は、元の同じ端点の実分割 Serre 生成射を回収する。 -/
 lemma simplexSubsetSplitNormalizedCube_lambda :
@@ -49,8 +49,8 @@ lemma simplexSubsetLambdaSplit_normalized_one_face :
         (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)
           (simplexSubsetEraseNormalizedCoordinate I hI j hj hjm hjM))).hom ≫
       (serreConcreteCubeComplexFunctor A).map
-        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
+        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2 + 1))
           (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).inv ≫
         simplexSubsetLambdaCell A I hI =
     (serreConcreteCubeComplexFunctor A).map (concreteCubeDimensionIso
@@ -66,8 +66,8 @@ lemma simplexSubsetLambdaSplit_normalized_one_face :
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ simplexSubsetLambdaCell A I hI)
       ((congrArg (fun f => f ≫ (serreConcreteCubeComplexFunctor A).map
-        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
+        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2 + 1))
           (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).inv) hf.symm).trans
         (((serreConcreteCubeComplexFunctor A).map_comp _ _).symm.trans hc.symm))).trans
           (simplexSubsetSplitNormalizedCube_lambda A I hI j hj hjm hjM))

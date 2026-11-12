@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwiseFunctorFamilies
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalShapeContraction
-public import SerrePositivity.InfinityCategories.Core.EquivalencePath
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.EquivalencePath
 
 /-!
 概要：底を固定した path の全空間の、定値 path への収縮。

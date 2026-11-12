@@ -23,9 +23,9 @@ open RawSpectrumMapping
 lemma evaluationPostAt_exchange_action (K : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     evaluationPostAt K X Y n ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso ((cotensor K X).level n).space K (Y.level n).space).inv =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso ((cotensor K X).level n).space K (Y.level n).space).inv =
     PointedMapping.ihomAction K (X.level n).space (Y.level n).space ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((cotensorProjection K X).app n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((cotensorProjection K X).app n)
         (PointedObject.basedHom K (Y.level n).space) :=
   PointedMapping.evaluationPost_exchange ((cotensorProjection K X).app n)
 
@@ -37,7 +37,7 @@ lemma signedEvaluationAt_action (X Y : OmegaSpectrum.{u})
     pointedEvaluation X Y.toKanSequence (n + 1) ≫
       PointedMapping.ihomAction CirclePower.space.{u}
         (X.level (n + 1)).space (Y.level (n + 1)).space ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (e.app n ≫ (signedLoopRawComparison X).app n)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (e.app n ≫ (signedLoopRawComparison X).app n)
         (PointedObject.basedHom CirclePower.space.{u} (Y.level (n + 1)).space) := by
   rw [signedEvaluationAt_evaluation]
   rw [← Category.assoc (evaluationPostAt CirclePower.space.{u} X Y (n + 1)),
@@ -47,7 +47,7 @@ lemma signedEvaluationAt_action (X Y : OmegaSpectrum.{u})
     (V := (Y.level (n + 1)).space) (CirclePower.reversalIterate n)
     ((cotensorProjection CirclePower.space.{u} X).app (n + 1))]
   rw [signedLoopRawComparison_app]
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp, Category.assoc]
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp, Category.assoc]
   rfl
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible

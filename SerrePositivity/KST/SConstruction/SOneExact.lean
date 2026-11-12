@@ -20,14 +20,14 @@ open scoped Simplicial
 /-- 概要：S₁ の比較は零対象と全押し出しを保存する。
 方針：trivial Kan fibration の普遍性の保存を適用する。
 規約：C は安定な quasicategory。使われ方：安定圏の射への束ね直し。 -/
-lemma sOneComparison_preservesSConstructionData (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sOneComparison_preservesSConstructionData (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     PreservesSConstructionData (sOneComparison C) :=
   preservesSConstructionData_of_trivialKanFibration _
 
 /-- 概要：S₁ の比較は cofiber 保存条件を満たす。
 方針：全押し出しの保存を零角付き正方形に制限する。
 規約：追加の保存仮定は不要。使われ方：反復 S の入力の射。 -/
-lemma sOneComparison_preservesCofiberData (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sOneComparison_preservesCofiberData (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     PreservesCofiberData (sOneComparison C) :=
   (sOneComparison_preservesSConstructionData C).toCofiberData
 

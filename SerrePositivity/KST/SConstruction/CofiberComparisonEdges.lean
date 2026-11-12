@@ -66,9 +66,9 @@ lemma arCofiberHorizontalPrism_right {n : ℕ} (a : Ar.{u} n) (y : Fin 2) :
 規約：y は上下の端点。使われ方：固定零射の適用。 -/
 lemma arCofiberTargetPrism_left {n : ℕ} (a : Ar.{u} n) (y : Fin 2) :
     squareVertexLine 0 y ≫ arCofiberTargetPrism a =
-      lift (squareBottomEdge ≫ arFixedStartSquare a)
+      lift (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ arFixedStartSquare a)
         (SSet.const (stdSimplex.obj₀Equiv.symm y)) ≫
-          (arNerve n ◁ squareLeftEdge) := by
+          (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
   · refine CategoryTheory.Functor.ext (fun r => ?_) (fun _ _ _ => Subsingleton.elim _ _)
@@ -96,7 +96,7 @@ lemma arCofiberSourcePrism_lower {n : ℕ} (a : Ar.{u} n) (x : Fin 2) :
       lift ((lift (SSet.const (stdSimplex.obj₀Equiv.symm x)) (𝟙 (Δ[1] : SSet.{u}))) ≫
         arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2 (Fin.zero_le _) le_rfl a.down.property)
         (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
-          (arNerve n ◁ squareBottomEdge) := by
+          (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) := by
   apply SSet.yonedaEquiv.injective
   apply Prod.ext
   · refine CategoryTheory.Functor.ext (fun r => ?_) (fun _ _ _ => Subsingleton.elim _ _)
@@ -136,7 +136,7 @@ lemma frameCofiberSquareMap_diagonal_horizontal {n : ℕ} (i : Fin (n + 1)) (y :
 方針：固定 span の零射の形状を二頂点で計算する。
 規約：y は上下の端点。使われ方：第二端点の prism の恒等性。 -/
 lemma arCofiberZeroInputMap_fixedStart {n : ℕ} (a : Ar.{u} n) (y : Fin 2) :
-    lift (squareBottomEdge ≫ arFixedStartSquare a)
+    lift (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ arFixedStartSquare a)
       (SSet.const (stdSimplex.obj₀Equiv.symm y)) ≫ arCofiberZeroInputMap n =
       SSet.const (ComposableArrows.mk₀ (arCofiberZeroInputOrder n (a, ULift.up y))) := by
   apply SSet.yonedaEquiv.injective

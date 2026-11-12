@@ -29,9 +29,9 @@ lemma terminalIntervalToCircle_right : terminalIntervalToCircle.{u}.right =
 /-- fiber 表示の path 成分の制限は元の円の商による制限そのもの。 -/
 lemma loopTerminalRestriction_eq (B : PointedSimplicialSet.{u}) :
     (loopToTerminalEndpointHomIso B).hom ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B =
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed terminalIntervalToCircle.{u} B := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B =
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed terminalIntervalToCircle.{u} B := by
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   change (MonoidalClosed.pre terminalEndpointCircleIso.{u}.hom).app B ≫
     (MonoidalClosed.pre (pointedCofiberProjection terminalIntervalStart.{u})).app B = _
   rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map]
@@ -39,17 +39,17 @@ lemma loopTerminalRestriction_eq (B : PointedSimplicialSet.{u}) :
 
 /-- 元の円の区間評価を共有する loop と区間族は同じ終点固定 path 族を与える。 -/
 lemma loopTerminalRestriction_family {A : SSet.{u}} (B : PointedSimplicialSet.{u})
-    (l : A ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right) (h₁)
+    (l : A ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right) (h₁)
     (hl : (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ A) ≫
       uncurry (l ≫ PointedObject.basedHomι PointedSimplicialSet.circle.{u} B) =
         (β_ (Δ[1] : SSet.{u}) A).hom ≫ h) :
     l ≫ ((loopToTerminalEndpointHomIso B).hom ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B).right =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B).right =
         terminalPathFamily B h h₁ := by
   rw [loopTerminalRestriction_eq]
   apply (cancel_mono (PointedObject.basedHomι terminalPointedInterval B)).mp
-  change (l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre terminalIntervalToCircle B) ≫ _ = _
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc,
+  change (l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre terminalIntervalToCircle B) ≫ _ = _
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, ← Category.assoc,
     terminalPathFamily_ι]
   apply uncurry_injective
   rw [uncurry_pre_app, terminalIntervalToCircle_right, uncurry_curry]

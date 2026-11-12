@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.FrameArrowAugmentationLimits
-public import SerrePositivity.InfinityCategories.Derived.EvaluationLimitCone
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoConstantEdges
-public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.EvaluationLimitCone
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoConstantEdges
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
 
 /-!
 # 可逆 augmentation の元の極限錐の全脚
@@ -27,26 +27,26 @@ open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C]
   (A : I ⥤ C) {X : C} (p : A ⟶ (Functor.const I).obj X)
   {E : SSet.{u}} [Quasicategory E] (F : nerve C ⟶ E)
-  (hp : ∀ i, IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
+  (hp : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (p.app i)).map F).toTruncated)
 
-def augmentationLimitConeFunctorIso (hI : IsWeaklyContractible (nerve I))
-    (c : JoinCone (nerveMap A ≫ F)) (hc : IsLimitCone c) :
-    FunctorIso c.val (SSet.const (F.app (Opposite.op ⦋0⦌) (nerveVertex X))) := by
+def augmentationLimitConeFunctorIso (hI : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve I))
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (nerveMap A ≫ F)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso c.val (SSet.const (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))) := by
   let e := augmentationFunctorIso A p F hp
-  let t := evaluationLimitConeTransport hI (F.app (Opposite.op ⦋0⦌) (nerveVertex X))
-    (FunctorIso.simplicialHomotopy e)
-    (fun a => simplicialHomotopyOfFunctorEdge_vertex_isInvertible
-      (FunctorIso.edge e) (FunctorIso.edge_isInvertible e) a)
-  exact coneFunctorIsoOfVertexIso c t.cone (limitConeIso c t.cone hc t.isLimit) ≪≫
-    functorIsoOfPointwiseInvertibleHomotopy t.homotopy t.vertical_isInvertible
+  let t := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.evaluationLimitConeTransport hI (F.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.simplicialHomotopy e)
+    (fun a => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.simplicialHomotopyOfFunctorEdge_vertex_isInvertible
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge e) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge_isInvertible e) a)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coneFunctorIsoOfVertexIso c t.cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeIso c t.cone hc t.isLimit) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy t.homotopy t.vertical_isInvertible
 
 include hp in
-lemma augmentationLimitCone_leg_isInvertible (hI : IsWeaklyContractible (nerve I))
-    (c : JoinCone (nerveMap A ≫ F)) (hc : IsLimitCone c) (i : (nerve I) _⦋0⦌) :
-    IsInvertibleEdge (F2.nativeConeLeg c i) := by
-  have h := functorIso_const_map_isInvertible _
-    (augmentationLimitConeFunctorIso A p F hp hI c hc) (F2.coneDomainLeg i)
-  exact (isInvertibleEdge_congr (e := F2.nativeConeLeg c i)
-    (f := (F2.coneDomainLeg i).map ((truncation 2).map c.val)) rfl).mpr h
+lemma augmentationLimitCone_leg_isInvertible (hI : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve I))
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (nerveMap A ≫ F)) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) (i : (nerve I) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c i) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.functorIso_const_map_isInvertible _
+    (augmentationLimitConeFunctorIso A p F hp hI c hc) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneDomainLeg i)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c i)
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneDomainLeg i).map ((truncation 2).map c.val)) rfl).mpr h
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

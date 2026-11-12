@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingKanFunctor
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinity
-public import SerrePositivity.InfinityCategories.F1.Universe.Kan
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.UniverseKanPullback
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseKanPullback
 
 /-!
 概要：native cell 写像の Kan 模型を、代数の ∞ 局所化の写像空間と同じ宇宙に持ち上げる。
@@ -22,7 +22,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-def multiplicativeCellMappingLargeKanFunctor : Mon (Complex R) ⥤ KanObject.{u + 1} where
+def multiplicativeCellMappingLargeKanFunctor : Mon (Complex R) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} where
   obj B := ⟨SSet.uliftFunctor.{u + 1, u}.obj
     (multiplicativeMappingSimplices R (cellResolution R A) B), inferInstance⟩
   map f := SSet.uliftFunctor.{u + 1, u}.map
@@ -33,22 +33,22 @@ def multiplicativeCellMappingLargeKanFunctor : Mon (Complex R) ⥤ KanObject.{u 
     SSet.uliftFunctor.{u + 1, u}).map_comp f g
 
 lemma multiplicativeCellMappingLargeKanFunctor_forget :
-    multiplicativeCellMappingLargeKanFunctor R A ⋙ kanObjectForget =
+    multiplicativeCellMappingLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget =
       multiplicativeMappingFunctor R (cellResolution R A) ⋙ SSet.uliftFunctor.{u + 1, u} := rfl
 
 set_option maxHeartbeats 800000 in -- 元の写像関手と ULift の二段の錐を同定する。
 def multiplicativeCellMappingLargeKanCone_underlying_isLimit
     (F : WalkingCospan ⥤ Mon (Complex R))
     (c : Cone F) (hc : IsLimit c) :
-    IsLimit (kanObjectForget.mapCone
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget.mapCone
       ((multiplicativeCellMappingLargeKanFunctor R A).mapCone c)) := by
-  change IsLimit ((multiplicativeCellMappingLargeKanFunctor R A ⋙ kanObjectForget).mapCone c)
+  change IsLimit ((multiplicativeCellMappingLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget).mapCone c)
   rw [multiplicativeCellMappingLargeKanFunctor_forget]
-  have := F2.uliftFunctor_preservesCospanLimits.{u, u + 1}
+  have := _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.uliftFunctor_preservesCospanLimits.{u, u + 1}
   exact isLimitOfPreserves
     (multiplicativeMappingFunctor R (cellResolution R A) ⋙ SSet.uliftFunctor.{u + 1, u}) hc
 
-def multiplicativeCellMappingInfinityKanFunctor : InfinityPresentation R ⥤ KanObject.{u + 1} :=
+def multiplicativeCellMappingInfinityKanFunctor : InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} :=
   ULiftHom.down ⋙ multiplicativeCellMappingLargeKanFunctor R A
 
 lemma multiplicativeCellMappingInfinityKanFunctor_original :

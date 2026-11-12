@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanSequenceMappingFunctor
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreeIntervalBoundary
 public import SerrePositivity.KST.Spectra.PointedWeightedEnd
 
 /-!
@@ -27,15 +27,15 @@ def mappingBifunctor : PointedSimplicialSet.{u}ᵒᵖ ⥤ (KanSequence.{u} ⥤ K
     funext X
     apply Hom.ext_app
     intro n
-    change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 A.unop) (X.level n).space = 𝟙 _
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id, NatTrans.id_app]
+    change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 A.unop) (X.level n).space = 𝟙 _
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, MonoidalClosed.pre_id, NatTrans.id_app]
     rfl
   map_comp f g := by
     apply NatTrans.ext
     funext X
     apply Hom.ext_app
     intro n
-    exact (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp g.unop f.unop (X.level n).space).symm
+    exact (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp g.unop f.unop (X.level n).space).symm
 
 /-- Kan 列の重み付き end の二変数図式。 -/
 def weightedDiagram {I : Type u} [SmallCategory I] (W : I ⥤ SSet.{u})

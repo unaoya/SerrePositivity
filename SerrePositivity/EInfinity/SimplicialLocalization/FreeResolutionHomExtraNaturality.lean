@@ -35,14 +35,14 @@ lemma singlePath_map_heq {V W : Type u} [Category.{u} V] [Category.{u} W]
   cases h
   rfl
 
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 lemma generatorHomExtra_face_lift_heq (n : ℕ) (i : Fin (n + 2))
     (f : (freeResolutionGeneratorHom C X Y) _⦋n + 1⦌) :
     HEq (generatorHomExtra C n ((freeResolutionGeneratorHom C X Y).δ i f))
-      (Quiver.Hom.toPath (V := (power freeRelativeComonad C (n + 1)).category)
-        ((face freeRelativeComonad C (n + 1) i).functor.map f)) := by
-  change HEq (Quiver.Hom.toPath (V := (power freeRelativeComonad C (n + 1)).category)
+      (Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).category)
+        ((face _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1) i).functor.map f)) := by
+  change HEq (Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).category)
     (eqToHom _ ≫ ((freeResolution C).δ i).functor.map f ≫ eqToHom _)) _
   have h := singlePath_conjugate_heq
     (freeResolutionHomObject_naturality C (SimplexCategory.δ i).op X).symm
@@ -55,9 +55,9 @@ lemma generatorHomExtra_face_lift_heq (n : ℕ) (i : Fin (n + 2))
 lemma generatorHomExtra_degeneracy_lift_heq (n : ℕ) (i : Fin (n + 1))
     (f : (freeResolutionGeneratorHom C X Y) _⦋n⦌) :
     HEq (generatorHomExtra C (n + 1) ((freeResolutionGeneratorHom C X Y).σ i f))
-      (Quiver.Hom.toPath (V := (power freeRelativeComonad C (n + 2)).category)
-        ((degeneracy freeRelativeComonad C n i).functor.map f)) := by
-  change HEq (Quiver.Hom.toPath (V := (power freeRelativeComonad C (n + 2)).category)
+      (Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 2)).category)
+        ((degeneracy _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n i).functor.map f)) := by
+  change HEq (Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 2)).category)
     (eqToHom _ ≫ ((freeResolution C).σ i).functor.map f ≫ eqToHom _)) _
   have h := singlePath_conjugate_heq
     (freeResolutionHomObject_naturality C (SimplexCategory.σ i).op X).symm
@@ -70,9 +70,9 @@ lemma generatorHomExtra_degeneracy_lift_heq (n : ℕ) (i : Fin (n + 1))
 lemma generatorHomSection_augmentation_lift_heq
     (f : (freeResolutionGeneratorHom C X Y) _⦋0⦌) :
     HEq (generatorHomSection C ((freeResolutionGeneratorHomAugmentation C X Y).app (op ⦋0⦌) f))
-      (Quiver.Hom.toPath (V := C.category) ((freeCounit C.weakEquivalences).functor.map f)) := by
+      (Quiver.Hom.toPath (V := C.category) ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences).functor.map f)) := by
   change HEq (Quiver.Hom.toPath (V := C.category)
-    (eqToHom _ ≫ ((freeCounit C.weakEquivalences).functor.map f) ≫ eqToHom _)) _
+    (eqToHom _ ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences).functor.map f) ≫ eqToHom _)) _
   exact singlePath_conjugate_heq _ _ _
 
 lemma generatorHomExtra_face_succ (n : ℕ) (i : Fin (n + 2))
@@ -100,8 +100,8 @@ lemma generatorHomExtra_face_one (f : (freeResolutionGeneratorHom C X Y) _⦋0�
       generatorHomSection C ((freeResolutionGeneratorHomAugmentation C X Y).app (op ⦋0⦌) f) := by
   apply eq_of_heq
   have h := generatorHom_face_heq C 0 (1 : Fin 2) (generatorHomExtra C 0 f)
-  change HEq _ ((freeRelativeMap (freeCounit C.weakEquivalences)).functor.map
-    (Quiver.Hom.toPath (V := (power freeRelativeComonad C 1).category) f)) at h
+  change HEq _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences)).functor.map
+    (Quiver.Hom.toPath (V := (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C 1).category) f)) at h
   exact h.trans ((heq_of_eq (Prefunctor.mapPath_toPath _ f)).trans
     (generatorHomSection_augmentation_lift_heq C f).symm)
 

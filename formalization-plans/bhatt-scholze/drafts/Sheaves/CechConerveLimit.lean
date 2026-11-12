@@ -2,9 +2,9 @@
 -- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1（弱終対象による計算）、単位 S3。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.Core.Limit
-public import SerrePositivity.InfinityCategories.Core.LimitConeExtension
-public import SerrePositivity.InfinityCategories.Derived.CofinalLimitTransfer
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.LimitConeExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalLimitTransfer
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean（将来 …Sheaves.SheafCondition）を import する。

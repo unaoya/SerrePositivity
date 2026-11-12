@@ -25,37 +25,37 @@ namespace SerrePositivity.KST.LocalizingInvariants
 def terminalRefinementSquare {X : SSet.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) :
     (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj X :=
-  internalHomFlipHomEquiv Δ[n] (Δ[1] ⊗ Δ[1]) X
-    (F ≫ (fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv Δ[n] (Δ[1] ⊗ Δ[1]) X
+    (F ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsPullbackDiagramVertex).ι)
 
 private lemma terminalFlip_evaluate {A K X : SSet.{u}}
     (F : A ⟶ (ihom K).obj X) (a : A _⦋0⦌) :
-    internalHomFlipHomEquiv A K X F ≫ evaluateFunctorAt a =
-      (functorVertexEquiv K X).symm (F.app (Opposite.op ⦋0⦌) a) := by
-  have h := internalHomFlipHomEquiv_app_zero (internalHomFlipHomEquiv A K X F) a
-  have he : internalHomFlipHomEquiv K A X (internalHomFlipHomEquiv A K X F) = F :=
-    (internalHomFlipHomEquiv A K X).symm_apply_apply F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A K X F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K X).symm (F.app (Opposite.op ⦋0⦌) a) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A K X F) a
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv K A X (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A K X F) = F :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A K X).symm_apply_apply F
   rw [he] at h
-  apply functorVertex_injective
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_injective
   rw [← h]
-  exact ((functorVertexEquiv K X).apply_symm_apply _).symm
+  exact ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K X).apply_symm_apply _).symm
 
 /-- 全図式の四角形の各評価は、元の同じ普遍四角形そのもの。 -/
 lemma terminalRefinementSquare_evaluate {X : SSet.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X) (k : (Δ[n] : SSet.{u}) _⦋0⦌) :
-    terminalRefinementSquare F ≫ evaluateFunctorAt k =
-      (functorVertexEquiv _ _).symm (F.app (Opposite.op ⦋0⦌) k).val :=
+    terminalRefinementSquare F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (F.app (Opposite.op ⦋0⦌) k).val :=
   terminalFlip_evaluate _ k
 
 /-- 元の安定圏の有限極限から、転置した全図式の四角形の普遍性を証明する。 -/
-lemma terminalRefinementSquare_isPullback {B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {n : ℕ}
+lemma terminalRefinementSquare_isPullback {B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {n : ℕ}
     (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams B.obj) :
-    IsPullbackSquare (terminalRefinementSquare F) := by
-  have : HasFiniteLimits B.obj := hasFiniteLimits_of_isStable B.obj
-  apply (isPullbackSquare_functor_iff _).mpr
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (terminalRefinementSquare F) := by
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasFiniteLimits B.obj := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.hasFiniteLimits_of_isStable B.obj
+  apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPullbackSquare_functor_iff _).mpr
   intro k
   rw [terminalRefinementSquare_evaluate]
-  exact fullSubcomplexOnVertices_vertex (F.app (Opposite.op ⦋0⦌) k)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (F.app (Opposite.op ⦋0⦌) k)
 
 section
 variable {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
@@ -63,80 +63,80 @@ variable {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
   (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
     D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
   (F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X)
-  (hF : F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs)
+  (hF : F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily D s hs)
 
 include hF
 
 /-- 全図式の右辺は指定辺の定値全族を厳密に回収する。 -/
 lemma terminalRefinementSquare_right :
-    squareRightEdge ≫ terminalRefinementSquare F =
-      internalHomFlipHomEquiv Δ[n] Δ[1] X (SSet.const (functorVertex s)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ terminalRefinementSquare F =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv Δ[n] Δ[1] X (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex s)) := by
   unfold terminalRefinementSquare
-  rw [← internalHomFlipHomEquiv_pre_app]
-  apply congrArg (internalHomFlipHomEquiv Δ[n] Δ[1] X)
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app]
+  apply congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv Δ[n] Δ[1] X)
   have h := congrArg (· ≫ (pre horn₂₂.ι₀₂).app X) hF
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_right] at h
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily_right] at h
   simpa only [pullbackProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
-    cospanSquareBoundary_rightEdge] using h
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_rightEdge] using h
 
 /-- 全図式の上辺は元の図式の指定終端辺族を厳密に回収する。 -/
 lemma terminalRefinementSquare_top :
-    squareTopEdge ≫ terminalRefinementSquare F =
-      internalHomFlipHomEquiv Δ[n] Δ[1] X (_root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily D) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ terminalRefinementSquare F =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv Δ[n] Δ[1] X (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.simplexTerminalArrowFamily D) := by
   unfold terminalRefinementSquare
-  rw [← internalHomFlipHomEquiv_pre_app]
-  apply congrArg (internalHomFlipHomEquiv Δ[n] Δ[1] X)
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app]
+  apply congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv Δ[n] Δ[1] X)
   have h := congrArg (· ≫ (pre horn₂₂.ι₁₂).app X) hF
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_top] at h
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily_top] at h
   simpa only [pullbackProjection, Category.assoc, ← NatTrans.comp_app, ← pre_map,
-    cospanSquareBoundary_topEdge] using h
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary_topEdge] using h
 
 /-- 精密化する前の全図式は四角形の左上角として厳密に回収される。 -/
 lemma terminalRefinementSquare_original :
-    squareVertex (terminalRefinementSquare F) 0 1 = functorVertex D := by
-  change (squareTopEdge ≫ terminalRefinementSquare F).app (Opposite.op ⦋0⦌)
-    (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = functorVertex D
-  rw [terminalRefinementSquare_top D s hs F hF, internalHomFlipHomEquiv_app_zero,
-    _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.simplexTerminalArrowFamily_source]
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (terminalRefinementSquare F) 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex D := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ terminalRefinementSquare F).app (Opposite.op ⦋0⦌)
+    (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex D
+  rw [terminalRefinementSquare_top D s hs F hF, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero,
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.simplexTerminalArrowFamily_source]
 
 /-- 指定された元の辺を各頂点で厳密に回収する。 -/
 lemma terminalRefinementSquare_right_evaluate (k : (Δ[n] : SSet.{u}) _⦋0⦌) :
-    (squareRightEdge ≫ terminalRefinementSquare F) ≫ evaluateFunctorAt k = s := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ terminalRefinementSquare F) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k = s := by
   rw [terminalRefinementSquare_right D s hs F hF, terminalFlip_evaluate]
-  change (functorVertexEquiv Δ[1] X).symm (functorVertex s) = s
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[1] X).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex s) = s
   exact Equiv.symm_apply_apply _ _
 
 end
 
 /-- 元の全図式を同時に精密化し、共有終端の四角形と元の分母条件を保つ。
 終端は指定辺の源に厳密に戻るので、次の辺との貼合せに使える。 -/
-lemma exists_verdierSimplexTerminalRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+lemma exists_verdierSimplexTerminalRefinement {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (s : (Δ[1] : SSet.{u}) ⟶ B.obj)
     (hs : s.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
-    (hW : SSet.yonedaEquiv s ∈ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences i) :
+    (hW : SSet.yonedaEquiv s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences i) :
     ∃ Q : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (ihom (Δ[n] : SSet.{u})).obj B.obj,
-      IsPullbackSquare Q ∧ squareVertex Q 0 1 = functorVertex D ∧
-        Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
-          squareColumnDiagram s ∧
-        (squareLeftArrow Q).edge ∈
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare Q ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex Q 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex D ∧
+        Q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
+          _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram s ∧
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow Q).edge ∈
           (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌) := by
   obtain ⟨F, hF, hlast⟩ := exists_simplexTerminalPullbackFamily D s hs
   let Q := terminalRefinementSquare F
-  have hQ : IsPullbackSquare Q := terminalRefinementSquare_isPullback F
+  have hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare Q := terminalRefinementSquare_isPullback F
   refine ⟨Q, hQ, terminalRefinementSquare_original D s hs F hF, ?_, ?_⟩
   · rw [terminalRefinementSquare_evaluate, hlast]
-    change (functorVertexEquiv _ _).symm (functorVertexEquiv _ _
-      (squareColumnDiagram s)) = _
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram s)) = _
     exact Equiv.symm_apply_apply _ _
   · apply (relativeFirstRowSimplex_pullback_iff h n Q hQ).mpr
     rw [relativeFirstRowSimplex_mem_edge_iff h n]
     intro k
     have hr := terminalRefinementSquare_right_evaluate D s hs F hF k
-    have he : (evaluateFunctorAt (Y := B.obj) k).app (Opposite.op ⦋1⦌)
-        (squareRightArrow Q).edge = SSet.yonedaEquiv s := by
-      rw [squareRightArrow_edge, ← SSet.yonedaEquiv_comp, hr]
+    have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := B.obj) k).app (Opposite.op ⦋1⦌)
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow Q).edge = SSet.yonedaEquiv s := by
+      rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge, ← SSet.yonedaEquiv_comp, hr]
     exact he ▸ hW
 
 end SerrePositivity.KST.LocalizingInvariants

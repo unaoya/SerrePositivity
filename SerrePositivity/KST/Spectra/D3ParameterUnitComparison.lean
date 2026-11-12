@@ -31,15 +31,15 @@ def d3ParameterRightUnitIso : D ⋙ tensorRight (𝟙_ PointedSimplicialSet.{u})
 
 /-- 元の左単位子を、順序パラメータと入力 Hom に同時に自然な coherent 比較へ送る。 -/
 def d3ParameterLeftUnitFunctorIso :
-    FunctorIso (coherentNerveMap (d3PointedKanParameterDiagram D))
-      (coherentNerveMap (d3PointedKanParameterDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram
         (D ⋙ tensorLeft (𝟙_ PointedSimplicialSet.{u})))) :=
   d3ParameterPreFunctorIso (d3ParameterLeftUnitIso D)
 
 /-- 元の右単位子も、同じ全パラメータ上の coherent 比較を与える。 -/
 def d3ParameterRightUnitFunctorIso :
-    FunctorIso (coherentNerveMap (d3PointedKanParameterDiagram D))
-      (coherentNerveMap (d3PointedKanParameterDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram
         (D ⋙ tensorRight (𝟙_ PointedSimplicialSet.{u})))) :=
   d3ParameterPreFunctorIso (d3ParameterRightUnitIso D)
 
@@ -115,14 +115,14 @@ lemma d3ParameterSquare_joint
     (D : (Fin 2 × Fin 2)ᵒᵖ ⥤ PointedSimplicialSet.{u}) :
     (β_ PointedKanInfinity ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).hom ≫
       uncurry (d3PointedKanParameterSquare D) =
-    d3PointedKanSquarePair ≫ coherentNerveMap (d3PointedKanParameterDiagram D) := by
+    d3PointedKanSquarePair ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D) := by
   rw [d3PointedKanParameterSquare, uncurry_curry, ← Category.assoc,
     SymmetricCategory.symmetry, Category.id_comp]
 
 /-- 第一方向共同族の厳密終点は、元の実終点パラメータの全共同評価。 -/
 lemma d3DoubleEndpointJointLeft_target :
-    d3DoubleEndpointJointLeftLoopFamily.{u} ≫ loopDiagramEvaluation PointedKanInfinity 1 1 =
-    d3PointedKanSquarePair ≫ coherentNerveMap (d3PointedKanParameterDiagram
+    d3DoubleEndpointJointLeftLoopFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 =
+    d3PointedKanSquarePair ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram
       ((d3BiParameterRightOrder 1 1).toFunctor.op ⋙ d3DoubleEndpointParameter)) := by
   rw [d3DoubleEndpointJointLeftLoopFamily_corner, d3DoubleEndpointRightLoopFamily_ι,
     d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_right, d3ParameterSquare_joint]
@@ -130,8 +130,8 @@ lemma d3DoubleEndpointJointLeft_target :
 
 /-- 第二方向共同族も、元の指定実終点の全単体作用を厳密回収する。 -/
 lemma d3DoubleEndpointJointRight_target :
-    d3DoubleEndpointJointRightLoopFamily.{u} ≫ loopDiagramEvaluation PointedKanInfinity 1 1 =
-    d3PointedKanSquarePair ≫ coherentNerveMap (d3PointedKanParameterDiagram
+    d3DoubleEndpointJointRightLoopFamily.{u} ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 =
+    d3PointedKanSquarePair ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram
       ((d3BiParameterLeftOrder 1 1).toFunctor.op ⋙ d3DoubleEndpointParameter)) := by
   rw [d3DoubleEndpointJointRightLoopFamily_corner, d3DoubleEndpointLeftLoopFamily_ι,
     d3DoubleEndpointSquare, d3PointedKanBiParameterSquare_left, d3ParameterSquare_joint]
@@ -139,50 +139,50 @@ lemma d3DoubleEndpointJointRight_target :
 
 /-- 第一方向の共同実終点へ、元の左単位を全パラメータで同時に保持して比較。 -/
 def d3DoubleEndpointJointLeftTargetIso :
-    FunctorIso (d3PointedKanSquarePair ≫
-      coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u}))
-      (d3DoubleEndpointJointLeftLoopFamily ≫ loopDiagramEvaluation PointedKanInfinity 1 1) :=
-  F2.functorIsoOfEq ((d3ParameterPreFunctorIso d3DoubleEndpointLeftTargetParameterIso).precomp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3PointedKanSquarePair ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u}))
+      (d3DoubleEndpointJointLeftLoopFamily ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((d3ParameterPreFunctorIso d3DoubleEndpointLeftTargetParameterIso).precomp
     d3PointedKanSquarePair) rfl d3DoubleEndpointJointLeft_target.symm
 
 /-- 第二方向の共同実終点へも、元の右単位の全パラメータ比較を送る。 -/
 def d3DoubleEndpointJointRightTargetIso :
-    FunctorIso (d3PointedKanSquarePair ≫
-      coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u}))
-      (d3DoubleEndpointJointRightLoopFamily ≫ loopDiagramEvaluation PointedKanInfinity 1 1) :=
-  F2.functorIsoOfEq ((d3ParameterPreFunctorIso d3DoubleEndpointRightTargetParameterIso).precomp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3PointedKanSquarePair ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u}))
+      (d3DoubleEndpointJointRightLoopFamily ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((d3ParameterPreFunctorIso d3DoubleEndpointRightTargetParameterIso).precomp
     d3PointedKanSquarePair) rfl d3DoubleEndpointJointRight_target.symm
 end
 
 /-- 元の左単位比較を終点成分に指定した、一つの全パラメータ模型比較。 -/
 def d3DoubleEndpointJointLeftUnitModelIso :
-    FunctorIso ((d3PointedKanSquarePair ≫
-      coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u})) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((d3PointedKanSquarePair ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u})) ≫
       d3PointedKanLoopSection) d3DoubleEndpointJointLeftLoopFamily :=
   d3KanLoopDiagramIsoOverTarget _ _ d3DoubleEndpointJointLeftTargetIso
 
 /-- 右単位についても、同じ共同実図式全体への模型比較を構成。 -/
 def d3DoubleEndpointJointRightUnitModelIso :
-    FunctorIso ((d3PointedKanSquarePair ≫
-      coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u})) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((d3PointedKanSquarePair ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter.{u})) ≫
       d3PointedKanLoopSection) d3DoubleEndpointJointRightLoopFamily :=
   d3KanLoopDiagramIsoOverTarget _ _ d3DoubleEndpointJointRightTargetIso
 
 /-- 左共同模型比較は、指定した全パラメータ単位比較を終点で厳密回収する。 -/
 lemma d3DoubleEndpointJointLeftUnitModelIso_target :
-    F2.functorIsoOfEq (d3DoubleEndpointJointLeftUnitModelIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointJointLeftUnitModelIso.{u}.postcomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3KanCanonicalLoopFamily_target (d3PointedKanSquarePair ≫
-        coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter))) rfl =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter))) rfl =
     d3DoubleEndpointJointLeftTargetIso :=
   d3KanLoopDiagramIsoOverTarget_target _ _ _
 
 /-- 右共同模型比較も、元の指定単位の全パラメータ比較を正確に回収する。 -/
 lemma d3DoubleEndpointJointRightUnitModelIso_target :
-    F2.functorIsoOfEq (d3DoubleEndpointJointRightUnitModelIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointJointRightUnitModelIso.{u}.postcomp
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3KanCanonicalLoopFamily_target (d3PointedKanSquarePair ≫
-        coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter))) rfl =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram d3EndpointParameter))) rfl =
     d3DoubleEndpointJointRightTargetIso :=
   d3KanLoopDiagramIsoOverTarget_target _ _ _
 

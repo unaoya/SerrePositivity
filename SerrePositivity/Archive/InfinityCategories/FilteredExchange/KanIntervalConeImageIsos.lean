@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeNativeCommutativity
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.FunctorIsoTransportSquare
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoTransportSquare
 
 /-!
 概要：引き戻しの二脚の像から置換後の中心への指定比較同型。

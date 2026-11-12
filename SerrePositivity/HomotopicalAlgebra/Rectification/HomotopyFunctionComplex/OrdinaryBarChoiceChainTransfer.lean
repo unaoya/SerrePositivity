@@ -56,26 +56,26 @@ abbrev choiceObject (T : SSet.{max u v}) := OrdinaryBarChoiceCategory.Object (C 
 
 def snoc {T : SSet.{max u v}} {a : Cᵒᵖ × C} {X Y : choiceObject (C := C) hcof hfib T}
     (q : OrdinaryBarChainFamily.chain hcof hfib T a X.base) (f : X ⟶ Y)
-    (t : T ⟶ RetractChainFamily.interval) : OrdinaryBarChainFamily.chain hcof hfib T a Y.base :=
+    (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) : OrdinaryBarChainFamily.chain hcof hfib T a Y.base :=
   q.familySnoc ((OrdinaryBarChoiceCategory.evaluation hcof hfib T).map f) t
 
 lemma snoc_substitute {T U : SSet.{max u v}} (j : U ⟶ T) {a : Cᵒᵖ × C}
     {X Y : choiceObject (C := C) hcof hfib T}
     (q : OrdinaryBarChainFamily.chain hcof hfib T a X.base)
-    (f : X ⟶ Y) (t : T ⟶ RetractChainFamily.interval) :
+    (f : X ⟶ Y) (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval) :
     (snoc hcof hfib q f t).substitute j =
       snoc hcof hfib (q.substitute j) ((OrdinaryBarChoiceCategory.reindex hcof hfib j).map f)
         (j ≫ t) := rfl
 
 def ofPath {T : SSet.{max u v}} {X : choiceObject (C := C) hcof hfib T} :
     {Y : choiceObject (C := C) hcof hfib T} → Quiver.Path X Y →
-      (ℕ → (T ⟶ RetractChainFamily.interval)) →
+      (ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) →
         OrdinaryBarChainFamily.chain hcof hfib T X.base Y.base
   | _, .nil, _ => .nil
   | _, .cons q f, t => snoc hcof hfib (ofPath q t) f (t q.length)
 
 lemma ofPath_length {T : SSet.{max u v}} {X Y : choiceObject (C := C) hcof hfib T}
-    (q : Quiver.Path X Y) (t : ℕ → (T ⟶ RetractChainFamily.interval)) :
+    (q : Quiver.Path X Y) (t : ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     (ofPath hcof hfib q t).length = q.length := by
   induction q with
   | nil => rfl
@@ -90,7 +90,7 @@ lemma reindex_path_length {T U : SSet.{max u v}} (j : U ⟶ T)
 
 lemma ofPath_substitute {T U : SSet.{max u v}} (j : U ⟶ T)
     {X Y : choiceObject (C := C) hcof hfib T} (q : Quiver.Path X Y)
-    (t : ℕ → (T ⟶ RetractChainFamily.interval)) :
+    (t : ℕ → (T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     (ofPath hcof hfib q t).substitute j =
       ofPath hcof hfib ((OrdinaryBarChoiceCategory.reindex hcof hfib j).toPrefunctor.mapPath q)
         (fun k => j ≫ t k) := by
@@ -102,14 +102,14 @@ lemma ofPath_substitute {T U : SSet.{max u v}} (j : U ⟶ T)
     rfl
 
 def smallPathFamily {T : SSet.{v}}
-    {X Y : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T)} (q : Quiver.Path X Y)
-    (t : ℕ → (UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)) :
+    {X Y : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T)} (q : Quiver.Path X Y)
+    (t : ℕ → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     small hcof hfib X.base ⊗ T ⟶ small hcof hfib Y.base :=
   OrdinaryBarChainFamily.smallFamily hcof hfib (ofPath hcof hfib q t)
 
 lemma smallPathFamily_nil {T : SSet.{v}}
-    (X : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T))
-    (t : ℕ → (UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)) :
+    (X : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T))
+    (t : ℕ → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     smallPathFamily hcof hfib (Quiver.Path.nil : Quiver.Path X X) t =
       ParameterComposition.const T (𝟙 (small hcof hfib X.base)) := by
   ext n x
@@ -117,10 +117,10 @@ lemma smallPathFamily_nil {T : SSet.{v}}
     (ULift.up x.1))
 
 lemma smallPathFamily_single {T : SSet.{v}}
-    {X Y : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T)} (f : X ⟶ Y)
-    (t : ℕ → (UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)) :
+    {X Y : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T)} (f : X ⟶ Y)
+    (t : ℕ → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     smallPathFamily hcof hfib f.toPath t =
-      UniverseLift.lowerTensor (transferFamily hcof hfib f.base f.extension) := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (transferFamily hcof hfib f.base f.extension) := by
   unfold smallPathFamily OrdinaryBarChainFamily.smallFamily OrdinaryBarChainFamily.family
   simp only [Quiver.Hom.toPath, ofPath, snoc]
   rw [RetractChainFamily.transfer_last_family_parameter (ambient hcof hfib) (lifted hcof hfib)
@@ -130,11 +130,11 @@ lemma smallPathFamily_single {T : SSet.{v}}
   rfl
 
 lemma smallPathFamily_substitute {T U : SSet.{v}} (j : U ⟶ T)
-    {X Y : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T)} (q : Quiver.Path X Y)
-    (t : ℕ → (UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)) :
+    {X Y : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T)} (q : Quiver.Path X Y)
+    (t : ℕ → (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)) :
     smallPathFamily hcof hfib
-        ((OrdinaryBarChoiceCategory.reindex hcof hfib (UniverseLift.map j)).toPrefunctor.mapPath q)
-        (fun k => UniverseLift.map j ≫ t k) =
+        ((OrdinaryBarChoiceCategory.reindex hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map j)).toPrefunctor.mapPath q)
+        (fun k => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map j ≫ t k) =
       ParameterComposition.substitute j (smallPathFamily hcof hfib q t) := by
   rw [smallPathFamily, ← ofPath_substitute, OrdinaryBarChainFamily.smallFamily_substitute]
   rfl
@@ -142,10 +142,10 @@ lemma smallPathFamily_substitute {T U : SSet.{v}} (j : U ⟶ T)
 lemma zero_face {T : SSet.{max u v}} {a d : Cᵒᵖ × C}
     {X Y Z : choiceObject (C := C) hcof hfib T}
     (q : OrdinaryBarChainFamily.chain hcof hfib T a X.base) (f : X ⟶ Y) (g : Y ⟶ Z)
-    (t : T ⟶ RetractChainFamily.interval)
+    (t : T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)
     (r : OrdinaryBarChainFamily.chain hcof hfib T Z.base d) :
     OrdinaryBarChainFamily.family hcof hfib
-        ((snoc hcof hfib (snoc hcof hfib q f (RetractChainFamily.zero T)) g t).append r) =
+        ((snoc hcof hfib (snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)) g t).append r) =
       OrdinaryBarChainFamily.family hcof hfib ((snoc hcof hfib q (f ≫ g) t).append r) := by
   have h := RetractChainFamily.zero_family_face (ambient hcof hfib) (lifted hcof hfib)
     (section_ hcof hfib) (projection hcof hfib) (contraction hcof hfib) q
@@ -160,33 +160,33 @@ lemma one_face {T : SSet.{max u v}} {a d : Cᵒᵖ × C}
     (q : OrdinaryBarChainFamily.chain hcof hfib T a X.base) (f : X ⟶ Y)
     (r : OrdinaryBarChainFamily.chain hcof hfib T Y.base d) :
     OrdinaryBarChainFamily.family hcof hfib
-        ((snoc hcof hfib q f (RetractChainFamily.one T)).append r) =
+        ((snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one T)).append r) =
       ParameterComposition.comp
-        (OrdinaryBarChainFamily.family hcof hfib (snoc hcof hfib q f (RetractChainFamily.zero T)))
+        (OrdinaryBarChainFamily.family hcof hfib (snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero T)))
         (OrdinaryBarChainFamily.family hcof hfib r) :=
   RetractChainFamily.one_family_face _ _ _ _ _ (contraction_over hcof hfib) q _ r
 
 lemma small_zero_face {T : SSet.{v}} {a d : Cᵒᵖ × C}
-    {X Y Z : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T)}
-    (q : OrdinaryBarChainFamily.chain hcof hfib (UniverseLift.obj.{max u v} T) a X.base)
+    {X Y Z : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T)}
+    (q : OrdinaryBarChainFamily.chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a X.base)
     (f : X ⟶ Y) (g : Y ⟶ Z)
-    (t : UniverseLift.obj.{max u v} T ⟶ RetractChainFamily.interval)
-    (r : OrdinaryBarChainFamily.chain hcof hfib (UniverseLift.obj.{max u v} T) Z.base d) :
+    (t : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.interval)
+    (r : OrdinaryBarChainFamily.chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) Z.base d) :
     OrdinaryBarChainFamily.smallFamily hcof hfib
-        ((snoc hcof hfib (snoc hcof hfib q f (RetractChainFamily.zero _)) g t).append r) =
+        ((snoc hcof hfib (snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero _)) g t).append r) =
       OrdinaryBarChainFamily.smallFamily hcof hfib ((snoc hcof hfib q (f ≫ g) t).append r) :=
-  congrArg UniverseLift.lowerTensor (zero_face hcof hfib q f g t r)
+  congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerTensor (zero_face hcof hfib q f g t r)
 
 lemma small_one_face {T : SSet.{v}} {a d : Cᵒᵖ × C}
-    {X Y : choiceObject (C := C) hcof hfib (UniverseLift.obj.{max u v} T)}
-    (q : OrdinaryBarChainFamily.chain hcof hfib (UniverseLift.obj.{max u v} T) a X.base)
+    {X Y : choiceObject (C := C) hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T)}
+    (q : OrdinaryBarChainFamily.chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) a X.base)
     (f : X ⟶ Y)
-    (r : OrdinaryBarChainFamily.chain hcof hfib (UniverseLift.obj.{max u v} T) Y.base d) :
+    (r : OrdinaryBarChainFamily.chain hcof hfib (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T) Y.base d) :
     OrdinaryBarChainFamily.smallFamily hcof hfib
-        ((snoc hcof hfib q f (RetractChainFamily.one _)).append r) =
+        ((snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.one _)).append r) =
       ParameterComposition.comp
         (OrdinaryBarChainFamily.smallFamily hcof hfib
-          (snoc hcof hfib q f (RetractChainFamily.zero _)))
+          (snoc hcof hfib q f (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.zero _)))
         (OrdinaryBarChainFamily.smallFamily hcof hfib r) := by
   rw [OrdinaryBarChainFamily.smallFamily, one_face]
   ext n x

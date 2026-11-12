@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryKanBarMappingClasses
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiscreteLocalizedExtension
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftPiZero
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryKanBarQuotient
@@ -48,10 +48,10 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 
 /-- The remaining existence problem is to supply this certificate for every source model. -/
 structure QuotientData where
-  relation : DiagramQuotient.Congruence (OrdinaryKanBarMappingClasses.functor (C := C))
+  relation : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (OrdinaryKanBarMappingClasses.functor (C := C))
   small : ∀ b n, Small.{v} (Quotient (relation.rel b n))
   boundary : ∀ b, SSet.modelCategoryQuillen.I.rlp
-    ((DiagramQuotient.projection relation).app b)
+    ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection relation).app b)
 
 variable (d : QuotientData (C := C))
 
@@ -103,18 +103,18 @@ lemma projection_piZero_bijective (b : Cᵒᵖ × C) :
 
 def componentEquiv (b : Cᵒᵖ × C) :
     SSet.π₀ ((functor d).obj b) ≃ SSet.π₀ (OrdinaryKanBarMappingClasses.functor.obj b) :=
-  (UniverseLiftPiZero.equiv.{v, max u v} _).symm.trans
+  (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv.{v, max u v} _).symm.trans
     (Equiv.ofBijective _ (projection_piZero_bijective d b)).symm
 
 lemma componentEquiv_projection (b : Cᵒᵖ × C)
     (z : SSet.π₀ (OrdinaryKanBarMappingClasses.functor.obj b)) :
-    componentEquiv d b (UniverseLiftPiZero.down _
+    componentEquiv d b (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _
       (SSet.mapπ₀ ((projection d).app b) z)) = z := by
   change (Equiv.ofBijective _ (projection_piZero_bijective d b)).symm
-    (UniverseLiftPiZero.up _ (UniverseLiftPiZero.down _ _)) = z
-  rw [show UniverseLiftPiZero.up _ (UniverseLiftPiZero.down _
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.up _ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _ _)) = z
+  rw [show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.up _ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _
       (SSet.mapπ₀ ((projection d).app b) z)) = SSet.mapπ₀ ((projection d).app b) z from
-    (UniverseLiftPiZero.equiv _).symm_apply_apply _]
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv _).symm_apply_apply _]
   exact (Equiv.ofBijective _ (projection_piZero_bijective d b)).symm_apply_apply z
 
 variable {H : Type uH} [Category.{vH} H] (Q : C ⥤ H)
@@ -149,8 +149,8 @@ lemma relation_preserves_labels (b : Cᵒᵖ × C) (n : SimplexCategoryᵒᵖ)
     ((OrdinaryKanBarMappingClasses.augmentation Q).app b).app n x =
       ((OrdinaryKanBarMappingClasses.augmentation Q).app b).app n y := by
   have hp : ((projection d).app b).app n x = ((projection d).app b).app n y :=
-    congrArg (((SmallSimplicialValue.diagramLiftIso
-      (DiagramQuotient.functor d.relation) d.small).inv.app b).app n) (Quotient.sound h)
+    congrArg (((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.diagramLiftIso
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor d.relation) d.small).inv.app b).app n) (Quotient.sound h)
   have hx := types_congr_hom (congr_app (congr_app (augmentation_fac d Q) b) n) x
   have hy := types_congr_hom (congr_app (congr_app (augmentation_fac d Q) b) n) y
   exact hx.symm.trans ((congrArg (((augmentation d Q).app b).app n) hp).trans hy)
@@ -172,7 +172,7 @@ def piZeroEquiv (b : Cᵒᵖ × C) :
 
 lemma piZeroEquiv_projection (b : Cᵒᵖ × C)
     (z : SSet.π₀ (OrdinaryKanBarMappingClasses.functor.obj b)) :
-    piZeroEquiv d Q hcof hfib b (UniverseLiftPiZero.down _
+    piZeroEquiv d Q hcof hfib b (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _
         (SSet.mapπ₀ ((projection d).app b) z)) =
       OrdinaryKanBarMappingClasses.piZeroEquiv Q hcof hfib b z :=
   congrArg (OrdinaryKanBarMappingClasses.piZeroEquiv Q hcof hfib b)
@@ -180,10 +180,10 @@ lemma piZeroEquiv_projection (b : Cᵒᵖ × C)
 
 lemma piZeroEquiv_comparison (b : Cᵒᵖ × C)
     (z : SSet.π₀ (OrdinaryResolutionBar.functor.obj b)) :
-    piZeroEquiv d Q hcof hfib b (UniverseLiftPiZero.down _
+    piZeroEquiv d Q hcof hfib b (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _
         (SSet.mapπ₀ ((comparison d).app b) z)) =
       OrdinaryBarPiZero.piZeroEquiv hcof hfib Q b z := by
-  change piZeroEquiv d Q hcof hfib b (UniverseLiftPiZero.down _
+  change piZeroEquiv d Q hcof hfib b (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _
     (SSet.mapπ₀ (OrdinaryKanBarMappingClasses.unit.app b ≫ (projection d).app b) z)) = _
   rw [SSet.mapπ₀_comp_apply, piZeroEquiv_projection,
     OrdinaryKanBarMappingClasses.piZeroEquiv_unit]
@@ -192,16 +192,16 @@ lemma piZeroEquiv_naturality {b c : Cᵒᵖ × C} (f : b ⟶ c)
     (z : SSet.π₀ ((functor d).obj b)) :
     piZeroEquiv d Q hcof hfib c (SSet.mapπ₀ ((functor d).map f) z) =
       Q.map f.1.unop ≫ piZeroEquiv d Q hcof hfib b z ≫ Q.map f.2 := by
-  obtain ⟨z, rfl⟩ := (UniverseLiftPiZero.equiv _).surjective z
+  obtain ⟨z, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv _).surjective z
   obtain ⟨z, rfl⟩ := (projection_piZero_bijective d b).surjective z
   have hn : (projection d).app b ≫ SSet.uliftFunctor.{max u v, v}.map ((functor d).map f) =
       OrdinaryKanBarMappingClasses.functor.map f ≫ (projection d).app c :=
     ((projection d).naturality f).symm
   change piZeroEquiv d Q hcof hfib c (SSet.mapπ₀ ((functor d).map f)
-      (UniverseLiftPiZero.down _ (SSet.mapπ₀ ((projection d).app b) z))) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _ (SSet.mapπ₀ ((projection d).app b) z))) =
     Q.map f.1.unop ≫ piZeroEquiv d Q hcof hfib b
-      (UniverseLiftPiZero.down _ (SSet.mapπ₀ ((projection d).app b) z)) ≫ Q.map f.2
-  rw [← UniverseLiftPiZero.down_naturality, ← SSet.mapπ₀_comp_apply,
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down _ (SSet.mapπ₀ ((projection d).app b) z)) ≫ Q.map f.2
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down_naturality, ← SSet.mapπ₀_comp_apply,
     hn, SSet.mapπ₀_comp_apply, piZeroEquiv_projection, piZeroEquiv_projection]
   exact OrdinaryKanBarMappingClasses.piZeroEquiv_naturality Q hcof hfib f z
 

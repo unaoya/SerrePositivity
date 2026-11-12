@@ -18,7 +18,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 同じ実 cone 作用を、同じ固定 S の元の厳密 dg 辺として保持する。 -/
 def dgOdotConeAlgebraSmallInputMap : dgOdotAlgebraInput R d ⟶ dgOdotTargetSmallInput R d :=
-  ULift.up (dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, 0, u + 1, u + 1, u + 1}
     (dgOdotConeAlgebraSmallFunctor R d))
 
 /-- 元の cone 比較の同じ順逆成分を、持ち上げた実入力 Hom end の閉同型にする。 -/
@@ -26,7 +26,7 @@ def dgOdotAlgebraSmallInputIso :
     ForgetEnrichment.of (Complex R) (dgOdotConeAlgebraSmallInputMap R d).down ≅
     ForgetEnrichment.of (Complex R) (dgOdotTargetAlgebraSmallInputMap R d).down :=
   dgUniverseLiftFunctorClosedIso R (DGOdotTargetSmallPerfect R d)
-    (dgAlgebraCategory R (dgOdotAlgebra R d))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d))
     (dgOdotConeAlgebraSmallFunctor R d) (dgOdotTargetAlgebraSmallFunctor R d)
     (fun _ => dgOdotTargetSmallPointIso R d) (dgOdotAlgebraSmallPointIso_naturality R d)
 
@@ -48,23 +48,23 @@ def dgOdotAlgebraSmallKSquare := dgOdotAlgebraSmallInputSquare R d ≫ dgKInputK
 
 /-- 同じ固定 S 内で、元の cone 作用と元の比較代数射の合成作用を結ぶ実二単体。 -/
 def dgOdotAlgebraSmallInputComparison :
-    Edge.CompStruct (coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d))
-      (coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d)))
-      (coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)) :=
+    Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)) :=
   dgKInputClosedIsoTriangle R _ _ (dgOdotAlgebraSmallInputIso R d)
 
 /-- 同じ選択した実比較二単体を、固定 ν へ写す。 -/
 def dgOdotAlgebraSmallNuComparison :
-    Edge.CompStruct ((coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d)).map (dgKInputNu R))
-      ((coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d))).map (dgKInputNu R))
-      ((coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)).map (dgKInputNu R)) :=
+    Edge.CompStruct ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d)).map (dgKInputNu R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d))).map (dgKInputNu R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)).map (dgKInputNu R)) :=
   (dgOdotAlgebraSmallInputComparison R d).map (dgKInputNu R)
 
 /-- 同じ選択した実比較二単体を、固定 K へ写す。 -/
 def dgOdotAlgebraSmallKComparison :
-    Edge.CompStruct ((coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d)).map (dgKInputK R))
-      ((coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d))).map (dgKInputK R))
-      ((coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)).map (dgKInputK R)) :=
+    Edge.CompStruct ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotConeAlgebraSmallInputMap R d)).map (dgKInputK R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 (dgOdotTargetSmallInput R d))).map (dgKInputK R))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTargetAlgebraSmallInputMap R d)).map (dgKInputK R)) :=
   (dgOdotAlgebraSmallInputComparison R d).map (dgKInputK R)
 
 end SerrePositivity.KST.SConstruction

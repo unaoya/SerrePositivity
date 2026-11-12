@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIsoFaces
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentEdgeHomEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentEdgeHomEquality
 
 /-!
 概要：三角形の指定同型の端点の輸送による保持。

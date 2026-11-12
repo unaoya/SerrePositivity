@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance homHolimCompositionSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -28,22 +28,22 @@ local instance homHolimCompositionCoefficientKan (X : OmegaSpectrum.{u})
   RawSpectrumMapping.pointedSpace_kanComplex X (D.obj i).toKanSequence
 local instance homHolimCompositionDiagramKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) (i : I) :
-    KanComplex ((simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
+    KanComplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
 local instance homHolimCompositionEndKan (X : OmegaSpectrum.{u}) (D : I ⥤ OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram D X)) :=
-  bousfieldKanHolim_kanComplex (simplicialHomDiagram D X)
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)
 
 /-- 元の BF Hom 同値の順射は、忘却比較と元の係数同型の合成。 -/
 lemma homotopyLimitHomHolimEquivalence_hom_factor (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
     (homotopyLimitHomHolimEquivalence X D).hom =
       homotopyLimitUnderlyingMappingComparison X D ≫
-        weightedSectionsMap (bousfieldKanWeight I) (rawSimplicialHomDiagramIso X D).hom := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (rawSimplicialHomDiagramIso X D).hom := by
   change (RawSpectrumMapping.post X (homotopyLimitProjection D) ≫
       (RawSpectrumMapping.homotopyLimitIso X (D ⋙ forgetToKan)).hom.right) ≫
-      ((PointedWeightedEnd.underlyingIso (bousfieldKanWeight I)
+      ((PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
         ((D ⋙ forgetToKan) ⋙ RawSpectrumMapping.pointedFunctor X)).hom ≫
-        weightedSectionsMap (bousfieldKanWeight I) (rawSimplicialHomDiagramIso X D).hom) = _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (rawSimplicialHomDiagramIso X D).hom) = _
   dsimp only [homotopyLimitUnderlyingMappingComparison, homotopyLimitPointedMappingComparison]
   simp only [Under.comp_right, Category.assoc]
   rfl
@@ -53,9 +53,9 @@ lemma homotopyLimitHomHolimEquivalence_composition (X Y : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
     mappingComposition X Y (homotopyLimit D) ≫ (homotopyLimitHomHolimEquivalence X D).hom =
       (𝟙 (mappingSpace X Y) ⊗ₘ (homotopyLimitHomHolimEquivalence Y D).hom) ≫
-        (β_ (mappingSpace X Y) (bousfieldKanHolim (simplicialHomDiagram D Y))).hom ≫
-          weightedSectionsParameterMap (bousfieldKanWeight I)
-            (simplicialHomPrecompositionDiagram D X Y) := by
+        (β_ (mappingSpace X Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D Y))).hom ≫
+          _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsParameterMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
+            (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.simplicialHomPrecompositionDiagram D X Y) := by
   rw [homotopyLimitHomHolimEquivalence_hom_factor,
     homotopyLimitHomHolimEquivalence_hom_factor,
     ← Category.assoc, homotopyLimitUnderlyingMappingComparison_composition,

@@ -43,12 +43,12 @@ lemma circleCylinderDesc_constant_parameter {A P : SSet.{u}} (B : PointedSimplic
 lemma loopOfCylinder_constant_parameter {A P : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right) (h₀ h₁) (a : P ⟶ A)
     (ha : (a ▷ (Δ[1] : SSet.{u})) ≫ h = toUnit (P ⊗ (Δ[1] : SSet.{u})) ≫ B.hom) :
-    a ≫ loopOfCylinder B h h₀ h₁ = toUnit P ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).hom := by
+    a ≫ loopOfCylinder B h h₀ h₁ = toUnit P ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).hom := by
   apply (cancel_mono (PointedObject.basedHomι PointedSimplicialSet.circle.{u} B)).mp
   rw [Category.assoc]
-  change a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry PointedSimplicialSet.circle.{u} B
+  change a ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry PointedSimplicialSet.circle.{u} B
     (circleCylinderDesc B h h₀ h₁) _ ≫ _) = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, ← MonoidalClosed.curry_natural_left,
     circleCylinderDesc_constant_parameter B h h₀ h₁ a ha, PointedObject.curry_constant,
     Category.assoc, PointedObject.basedHom_basepoint_ι]
   rfl

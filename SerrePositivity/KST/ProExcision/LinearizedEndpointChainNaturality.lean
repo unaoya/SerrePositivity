@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.ProExcision.LinearizedCylinderHomotopyNaturality
-public import SerrePositivity.KST.ProExcision.NormalizedStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedStrictification
 public import SerrePositivity.KST.ProExcision.ChainHomotopySquare
 
 /-!
@@ -18,26 +18,26 @@ namespace SerrePositivity.KST.ProExcision
 open CategoryTheory Opposite HomologicalComplex AlgebraicTopology AlgebraicTopology.DoldKan
 open scoped Simplicial
 variable {X X' Y Y' : SSet.{u}}
-variable (l : linearizedCylinder X ⟶ linearizedSpace Y)
-variable (l' : linearizedCylinder X' ⟶ linearizedSpace Y') (a : X ⟶ X') (b : Y ⟶ Y')
-variable (hl : simplicialIntegerTensorMap (linearizedSpaceMap a)
-  (𝟙 (linearizedSpace (Δ[1] : SSet.{u}))) ≫ l' = l ≫ linearizedSpaceMap b)
+variable (l : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y)
+variable (l' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinder X' ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace Y') (a : X ⟶ X') (b : Y ⟶ Y')
+variable (hl : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a)
+  (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫ l' = l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b)
 include hl
 
 /-- 概要：区間の各組合せ的ホモトピー成分の可換な正方形。
 方針：標準区間の自然性と線形区間写像の正方形を合成する。
 規約：KST A.3・A.5。使われ方：交代面複体のホモトピーの自然性。 -/
 lemma linearizedEndpointSimplicialHomotopy_naturality (n : ℕ) (i : Fin (n + 1)) :
-    (linearizedSpaceMap a).app (op ⦋n⦌) ≫ ((linearizedCylinderHomotopy X').postcomp l').h i =
-      ((linearizedCylinderHomotopy X).postcomp l).h i ≫ (linearizedSpaceMap b).app (op ⦋n + 1⦌) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a).app (op ⦋n⦌) ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X').postcomp l').h i =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).postcomp l).h i ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b).app (op ⦋n + 1⦌) := by
   have hc := congrArg (fun k ↦ k.app (op ⦋n + 1⦌)) hl
-  change (simplicialIntegerTensorMap (linearizedSpaceMap a)
-      (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))).app (op ⦋n + 1⦌) ≫ l'.app (op ⦋n + 1⦌) =
-    l.app (op ⦋n + 1⦌) ≫ (linearizedSpaceMap b).app (op ⦋n + 1⦌) at hc
-  change (linearizedSpaceMap a).app (op ⦋n⦌) ≫
-      ((linearizedCylinderHomotopy X').h i ≫ l'.app (op ⦋n + 1⦌)) =
-    ((linearizedCylinderHomotopy X).h i ≫ l.app (op ⦋n + 1⦌)) ≫
-      (linearizedSpaceMap b).app (op ⦋n + 1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a)
+      (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))).app (op ⦋n + 1⦌) ≫ l'.app (op ⦋n + 1⦌) =
+    l.app (op ⦋n + 1⦌) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b).app (op ⦋n + 1⦌) at hc
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a).app (op ⦋n⦌) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X').h i ≫ l'.app (op ⦋n + 1⦌)) =
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).h i ≫ l.app (op ⦋n + 1⦌)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b).app (op ⦋n + 1⦌)
   rw [← Category.assoc, linearizedCylinderHomotopy_naturality, Category.assoc, hc, ← Category.assoc]
 
 /-- 概要：線形区間の実両端の鎖ホモトピーは入力の正方形に自然。
@@ -45,15 +45,15 @@ lemma linearizedEndpointSimplicialHomotopy_naturality (n : ℕ) (i : Fin (n + 1)
 規約：KST A.3・A.5、非被約交代面複体。
 使われ方：Moore 正規化へ移す前の同変性。 -/
 lemma linearizedEndpointChainHomotopy_square :
-    ChainHomotopySquare ((alternatingFaceMapComplex _).map (linearizedSpaceMap a))
-      ((alternatingFaceMapComplex _).map (linearizedSpaceMap b))
-      (((linearizedCylinderHomotopy X).postcomp l).toChainHomotopy)
-      (((linearizedCylinderHomotopy X').postcomp l').toChainHomotopy) := by
+    ChainHomotopySquare ((alternatingFaceMapComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a))
+      ((alternatingFaceMapComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b))
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).postcomp l).toChainHomotopy)
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X').postcomp l').toChainHomotopy) := by
   intro n
-  change (linearizedSpaceMap a).app (op ⦋n⦌) ≫
-      SimplicialObject.Homotopy.ToChainHomotopy.hom ((linearizedCylinderHomotopy X').postcomp l') n (n + 1) =
-    SimplicialObject.Homotopy.ToChainHomotopy.hom ((linearizedCylinderHomotopy X).postcomp l) n (n + 1) ≫
-      (linearizedSpaceMap b).app (op ⦋n + 1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a).app (op ⦋n⦌) ≫
+      SimplicialObject.Homotopy.ToChainHomotopy.hom ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X').postcomp l') n (n + 1) =
+    SimplicialObject.Homotopy.ToChainHomotopy.hom ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).postcomp l) n (n + 1) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b).app (op ⦋n + 1⦌)
   rw [SimplicialObject.Homotopy.ToChainHomotopy.hom_eq,
     SimplicialObject.Homotopy.ToChainHomotopy.hom_eq]
   simp only [Preadditive.comp_neg, Preadditive.neg_comp, Preadditive.comp_sum,
@@ -69,18 +69,18 @@ lemma linearizedEndpointChainHomotopy_square :
 規約：KST A.3・A.5、実鎖ホモトピーの成分の性質。
 使われ方：同変な厳密化を正規化した全テンソルへ移す。 -/
 lemma normalizedLinearizedEndpointHomotopy_square :
-    ChainHomotopySquare ((normalizedMooreComplex _).map (linearizedSpaceMap a))
-      ((normalizedMooreComplex _).map (linearizedSpaceMap b))
-      (normalizedChainHomotopy ((linearizedCylinderHomotopy X).postcomp l))
-      (normalizedChainHomotopy ((linearizedCylinderHomotopy X').postcomp l')) := by
-  dsimp only [normalizedChainHomotopy]
+    ChainHomotopySquare ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a))
+      ((normalizedMooreComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedChainHomotopy ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).postcomp l))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedChainHomotopy ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X').postcomp l')) := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedChainHomotopy]
   apply ChainHomotopySquare.trans
   · apply ChainHomotopySquare.ofEq
   · apply ChainHomotopySquare.trans
     · apply ChainHomotopySquare.compRight
       · apply ChainHomotopySquare.compLeft (linearizedEndpointChainHomotopy_square l l' a b hl)
-        exact (inclusionOfMooreComplex (ModuleCat.{u} ℤ)).naturality (linearizedSpaceMap a)
-      · exact PInftyToNormalizedMooreComplex_naturality (linearizedSpaceMap b)
+        exact (inclusionOfMooreComplex (ModuleCat.{u} ℤ)).naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a)
+      · exact PInftyToNormalizedMooreComplex_naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap b)
     · apply ChainHomotopySquare.ofEq
 
 end SerrePositivity.KST.ProExcision

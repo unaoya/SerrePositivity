@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory
 
-variable {D E : SimplicialObject Data.{u}} (τ : D ⟶ E) (n : SimplexCategoryᵒᵖ)
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} (τ : D ⟶ E) (n : SimplexCategoryᵒᵖ)
 
 def leftLabelComparison : leftLabels D n ⟶ (τ.app n).base.op ⋙ leftLabels E n where
   app w := ↾fun a => a ⋙ ((τ.app n).left.app w).toFunctor
@@ -38,7 +38,7 @@ def rightLabelComparison : rightLabels D n ⟶ (τ.app n).base ⋙ rightLabels E
 lemma chainRowMap_app (k : SimplexCategoryᵒᵖ)
     (e : ComposableArrows (labelCategory D n) k.unop.len) :
     (chainRowMap τ k).app n e =
-      e ⋙ TwoSidedElements.map (leftLabelComparison τ n) (rightLabelComparison τ n) ⋙
-        TwoSidedElements.pre (τ.app n).base (leftLabels E n) (rightLabels E n) := rfl
+      e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (leftLabelComparison τ n) (rightLabelComparison τ n) ⋙
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pre (τ.app n).base (leftLabels E n) (rightLabels E n) := rfl
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Verdier.StableCategories
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategories
 public import SerrePositivity.KST.SConstruction.FunctorCofiberPreservation
 
 /-!
@@ -20,29 +20,29 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
-def stableFunctorCategory (K : SSet.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
+def stableFunctorCategory (K : SSet.{u}) (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u} :=
   ⟨(ihom K).obj A.obj, inferInstance, inferInstance⟩
 
-def exactFunctorMap (K : SSet.{u}) {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (stableFunctorCategory K A) (stableFunctorCategory K B) where
+def exactFunctorMap (K : SSet.{u}) {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (stableFunctorCategory K A) (stableFunctorCategory K B) where
   hom := (ihom K).map F.hom
   isExact := {
     preservesZero := fun _ hz => SConstruction.functor_postcomp_isZeroVertex F.hom
-      (IsExactFunctor.preservesZero (F := F.hom)) hz
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := F.hom)) hz
     preservesCofiber := fun t ht => SConstruction.functor_postcomp_preserves_cofiber F.hom
-      ⟨IsExactFunctor.preservesZero (F := F.hom),
-        IsExactFunctor.preservesPushoutSquare F.hom⟩ t ht }
+      ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := F.hom),
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare F.hom⟩ t ht }
 
-def exactFunctorRestriction {K L : SSet.{u}} (i : K ⟶ L) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (stableFunctorCategory L A) (stableFunctorCategory K A) where
+def exactFunctorRestriction {K L : SSet.{u}} (i : K ⟶ L) (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (stableFunctorCategory L A) (stableFunctorCategory K A) where
   hom := (pre i).app A.obj
   isExact := {
     preservesZero := fun _ hz => SConstruction.functor_reindex_isZeroVertex i hz
     preservesCofiber := fun t ht => SConstruction.functor_reindex_preserves_cofiber i t ht }
 
-def exactFunctorEvaluation (K : SSet.{u}) (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (k : K _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (stableFunctorCategory K A) A where
-  hom := evaluateFunctorAt k
+def exactFunctorEvaluation (K : SSet.{u}) (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (k : K _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (stableFunctorCategory K A) A where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k
   isExact := {
     preservesZero := fun _ hz => SConstruction.isZeroVertex_evaluateFunctorAt hz k
     preservesCofiber := fun t ht => (SConstruction.functor_zeroTriangle_pushout_iff t).mp ht k }

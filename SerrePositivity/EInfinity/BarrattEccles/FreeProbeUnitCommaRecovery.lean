@@ -21,38 +21,38 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma derivedFreeProbeUnitIntervalMap_isSimplicialHomotopyEquivalence
-    (x : (derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
-    IsSimplicialHomotopyEquivalence (derivedFreeProbeUnitIntervalMap A x y) :=
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (derivedFreeProbeUnitIntervalMap A x y) :=
   (derivedFreeProbeUnitIntervalMap_weak A x y).isSimplicialHomotopyEquivalence
 
 lemma derivedFreeProbeUnitIntervalMap_isQCatEquivalence
-    (x : (derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
-    IsQCatEquivalence (derivedFreeProbeUnitIntervalMap A x y) :=
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (derivedFreeProbeUnitIntervalMap A x y) :=
   (derivedFreeProbeUnitIntervalMap_isSimplicialHomotopyEquivalence A x y).isQCatEquivalence
 
 lemma derivedFreeProbeUnitCommaVertex_homotopy_h
-    (x : (derivedInfinityCategory A) _⦋0⦌) :
-    (unitCommaFiberHomotopy
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberHomotopy
       (SSet.const (derivedFreeProbeUnitCommaVertex A x) :
-        Δ[0] ⟶ unitCommaFiber (cAlgForgetDerived A) x)).h =
+        Δ[0] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x)).h =
       (derivedFreeProbeUnitPointHomotopy A x Δ[0]).h := by
   have hc : (SSet.const (derivedFreeProbeUnitCommaVertex A x) :
-      Δ[0] ⟶ unitCommaFiber (cAlgForgetDerived A) x) =
-      unitCommaFiberCurry (cAlgForgetDerived A) x
+      Δ[0] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberCurry (cAlgForgetDerived A) x
         (SSet.const (derivedFreeProbeVertex A x))
         (derivedFreeProbeUnitPointHomotopy A x Δ[0]) :=
     (SSet.yonedaEquiv_symm_zero _).symm.trans (Equiv.symm_apply_apply _ _)
-  exact (congrArg (fun f : Δ[0] ⟶ unitCommaFiber (cAlgForgetDerived A) x ↦
-    (unitCommaFiberHomotopy f).h) hc).trans (unitCommaFiberCurry_homotopy _ _ _ _)
+  exact (congrArg (fun f : Δ[0] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x ↦
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberHomotopy f).h) hc).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberCurry_homotopy _ _ _ _)
 
 lemma derivedFreeProbeUnitCommaVertex_hom
-    (x : (derivedInfinityCategory A) _⦋0⦌) : HEq
-    (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-      (unitCommaFiberHomotopy
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) : HEq
+    (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberHomotopy
         (SSet.const (derivedFreeProbeUnitCommaVertex A x) :
-          Δ[0] ⟶ unitCommaFiber (cAlgForgetDerived A) x))))
-    (constantFunctorHomMap Δ[0] (derivedFreeProbeUnitHom A x)) := by
-  exact (functorHomotopyHom_heq_of_raw_eq _ _
+          Δ[0] ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiber (cAlgForgetDerived A) x))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap Δ[0] (derivedFreeProbeUnitHom A x)) := by
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomotopyHom_heq_of_raw_eq _ _
     (derivedFreeProbeUnitCommaVertex_homotopy_h A x)).trans
       (derivedFreeProbeUnitPointHomotopy_hom A x Δ[0])
 

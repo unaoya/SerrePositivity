@@ -61,16 +61,16 @@ def PiIsomorphism.groupEquiv {X Y : OmegaSpectrum.{u}} {f : X ⟶ Y}
 規約：零次数も含む全基点の条件を各段に課す。
 使われ方：BF 1978 §2、HA §1.4.2。置換の段ごとの検証からの帰結。 -/
 theorem piIsomorphism_of_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app k).right) : PiIsomorphism f := by
+    (hf : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app k).right) : PiIsomorphism f := by
   intro j
-  have hb := (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism (degree j (canonicalLevel j))
-    (f.app (canonicalLevel j)).right (hf _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)).bijective
+  have hb := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism (degree j (canonicalLevel j))
+    (f.app (canonicalLevel j)).right (hf _) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)).bijective
   have heq : (fun a : homotopyGroup X j ↦ homotopyMap f j a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism (degree j (canonicalLevel j))
-        (f.app (canonicalLevel j)).right (hf _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism (degree j (canonicalLevel j))
+        (f.app (canonicalLevel j)).right (hf _) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) := by
     funext a
     rw [homotopyMap_apply]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism_apply _ _ _ _ a).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism_apply _ _ _ _ a).symm
   change Function.Bijective (fun a : homotopyGroup X j ↦ homotopyMap f j a)
   rw [heq]
   exact hb

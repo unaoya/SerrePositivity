@@ -19,9 +19,9 @@ variable (A : Type u) [CommRing A] (D E T : Type v)
 
 /-- 元の全 native Perf 単体の二回右作用は、同じ入力関手族の横合成の作用に等しい。 -/
 lemma presentedPerfectDGNativeActionSimplex_comp {N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N)
-    (s : DGNerve.Simplex A (DGFunctor A D E) N)
-    (t : DGNerve.Simplex A (DGFunctor A E T) N) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N)
+    (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A E T) N) :
     presentedPerfectDGNativeActionSimplex A E T
         (presentedPerfectDGNativeActionSimplex A D E x s) t =
       presentedPerfectDGNativeActionSimplex A D T x
@@ -48,9 +48,9 @@ def presentedPerfectDGNativeParameterComp :
 lemma presentedPerfectDGNativeCoreAction_comp :
     (presentedPerfectDGNativeCoreAction A D E ⊗ₘ 𝟙 (presentedPerfectDGNativeParameter A E T)) ≫
         presentedPerfectDGNativeCoreAction A E T =
-      (α_ (dgNerve A (PresentedPerfectDGObject A D)) (presentedPerfectDGNativeParameter A D E)
+      (α_ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) (presentedPerfectDGNativeParameter A D E)
         (presentedPerfectDGNativeParameter A E T)).hom ≫
-        (𝟙 (dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
+        (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) ⊗ₘ
           presentedPerfectDGNativeParameterComp A D E T) ≫
         presentedPerfectDGNativeCoreAction A D T := by
   ext n p

@@ -37,7 +37,7 @@ def kKanOriginalPrismLowerNativeContraction {I : Type u} [SmallCategory I]
 lemma kKanOriginalPrismLowerNativeContraction_h {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismLowerNativeContraction r F f).h =
-      (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentLowerPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentLowerPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanOriginalPrismNativeContraction r F (coherentPrismArrow f)).h := rfl
 
 /-- 元の全段の K prism の、上側の全合成列の native Hom 族。 -/
@@ -57,7 +57,7 @@ def kKanOriginalPrismUpperNativeContraction {I : Type u} [SmallCategory I]
 lemma kKanOriginalPrismUpperNativeContraction_h {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {x y : I} (f : x ⟶ y) :
     (kKanOriginalPrismUpperNativeContraction r F f).h =
-      (nerveMap (_root_.SerrePositivity.InfinityCategories.Kan.coherentUpperPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.coherentUpperPrismStringFunctor f) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanOriginalPrismNativeContraction r F (coherentPrismArrow f)).h := rfl
 
 end SerrePositivity.KST.SConstruction

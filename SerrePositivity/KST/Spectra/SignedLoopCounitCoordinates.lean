@@ -21,27 +21,27 @@ variable (Y : KanSequence.{u})
 
 /-- 元の二段構造の随伴。両方の円は通常の円。 -/
 def ordinaryDoubleAdjoint (n : ℕ) :
-    (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Y.level (n + 2)).space) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma n) ≫
+    (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Y.level (n + 2)).space) :=
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma n) ≫
     (ihom PointedSimplicialSet.circle.{u}).map
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma (n + 1)))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma (n + 1)))
 
 /-- 符号付き構造の counit 座標。交換後の内側に次数 -1 と通常の円への制限が残る。 -/
 def signedDoubleAdjoint (n : ℕ) :
-    (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (Y.level (n + 2)).space) :=
+    (Y.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (Y.level (n + 2)).space) :=
   kanAdjoint Y n ≫
-    (ihom CirclePower.space.{u}).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (Y.sigma (n + 1))) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u}
+    (ihom CirclePower.space.{u}).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (Y.sigma (n + 1))) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u}
       (Y.level (n + 2)).space).hom ≫
     (ihom PointedSimplicialSet.circle.{u}).map
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1))
         (Y.level (n + 2)).space ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space)
 
 /-- 元の二段構造側を通常の円へ制限して随伴を取ると、通常の二重随伴そのもの。 -/
 lemma ordinaryDoubleAdjoint_eq (n : ℕ) :
     curry (Y.sigma n ≫ kanAdjoint Y (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space) =
         ordinaryDoubleAdjoint Y n := by
   rw [kanAdjoint_comparison, curry_natural_right]
   rfl
@@ -50,10 +50,10 @@ lemma ordinaryDoubleAdjoint_eq (n : ℕ) :
 lemma signedDoubleAdjoint_eq (n : ℕ) :
     curry ((PointedSimplicialSet.circle.{u} ◁ kanAdjoint Y n ≫
       (signedLoopTail Y).sigma n) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space) =
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space) =
         signedDoubleAdjoint Y n := by
   rw [curry_natural_right, curry_natural_left]
-  change (kanAdjoint Y n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((signedLoopTail Y).sigma n)) ≫ _ = _
+  change (kanAdjoint Y n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((signedLoopTail Y).sigma n)) ≫ _ = _
   erw [signedLoopTail_adjoint]
   simp only [signedDoubleAdjoint, Functor.map_comp, Category.assoc]
 
@@ -62,7 +62,7 @@ lemma uncurry_signedDoubleAdjoint (n : ℕ) :
     uncurry (signedDoubleAdjoint Y n) =
       (PointedSimplicialSet.circle.{u} ◁ kanAdjoint Y n ≫
         (signedLoopTail Y).sigma n) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 2)).space := by
   rw [← signedDoubleAdjoint_eq, uncurry_curry]
 
 end SerrePositivity.KST.Spectra.KanSequence

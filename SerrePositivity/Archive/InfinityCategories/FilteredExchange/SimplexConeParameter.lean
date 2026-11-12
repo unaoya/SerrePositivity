@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.PinchedSlice
-public import SerrePositivity.InfinityCategories.Core.JoinTensor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedSlice
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinTensor
 
 /-!
 概要：全係数を持つ標準単体を、同じ係数付き前面へ終点を追加した join へ移す。

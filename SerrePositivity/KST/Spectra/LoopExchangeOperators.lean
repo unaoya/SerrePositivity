@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CircleClassMap
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange
 public import SerrePositivity.KST.Spectra.PointedMappingNaturality
 
 /-!
@@ -24,13 +24,13 @@ abbrev doubleLoop (Y : PointedSimplicialSet.{u}) : PointedSimplicialSet.{u} :=
 
 /-- 元の二つの Kan 円の交換射。 -/
 def swap (Y : PointedSimplicialSet.{u}) : doubleLoop Y ⟶ doubleLoop Y :=
-  (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom
+  (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u} Y).hom
 
 /-- 元の内側の Kan 円の符号反転。 -/
 def reversal (Y : PointedSimplicialSet.{u}) : doubleLoop Y ⟶ doubleLoop Y :=
   PointedObject.basedHomMap CirclePower.space.{u}
     (Y := PointedObject.basedHom CirclePower.space.{u} Y)
     (Z := PointedObject.basedHom CirclePower.space.{u} Y)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Y)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Y)
 
 end SerrePositivity.KST.Spectra.LoopExchangePaths

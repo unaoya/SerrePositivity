@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanUnit
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgLocalizationSource
-public import SerrePositivity.InfinityCategories.F1B.Localization.RightKanCriterion
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RightKanCriterion
 
 /-!
 # 既存 CAlg_R の元の ∞ 局所化普遍性
@@ -24,9 +24,9 @@ open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma cofibrantHammockLocalization_isLocalization :
-    IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) := by
-  apply isLocalization_of_rightKan_local_limits
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.isLocalization_of_rightKan_local_limits
     (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
     (hammockLocalizationNerveMap_inverts (cofibrantAlgebraRelativeCategory A))
@@ -38,14 +38,14 @@ lemma cofibrantHammockLocalization_isLocalization :
     exact cofibrantSourceRightKanUnit_isInvertible A F hF G α hα x
 
 lemma cAlgLocalizationSource_isLocalization :
-    IsLocalization (cAlgLocalizationSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (cAlgLocalizationSource A)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A)) :=
   (cAlgLocalizationSource_isLocalization_iff A).mpr
     (cofibrantHammockLocalization_isLocalization A)
 
 lemma cAlgLocalizationPrecomposition_isQCatEquivalence
     (E : SSet.{u + 1}) [Quasicategory E] :
-    IsQCatEquivalence (localizationPrecomposition (cAlgLocalizationSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.localizationPrecomposition (cAlgLocalizationSource A)
       (weakNerveEdges (cofibrantAlgebraRelativeCategory A))
       (cAlgLocalizationSource_inverts A) E) := by
   obtain ⟨h, he⟩ := cAlgLocalizationSource_isLocalization A

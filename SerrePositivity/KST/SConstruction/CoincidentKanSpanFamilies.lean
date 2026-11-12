@@ -33,8 +33,8 @@ def coincidentKanSpanBoundaryData {E : SSet.{u}} {z x y : E _⦋0⦌}
 lemma coincidentKanHomotopySpanEdge {T U E : SSet.{u}} (j : T ⟶ U)
     {D F G : U ⟶ E} (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (h : (j ▷ (Δ[1] : SSet.{u})) ≫ a.h = (j ▷ (Δ[1] : SSet.{u})) ≫ b.h) :
-    ((pre j).app E).app (Opposite.op ⦋1⦌) (functorEdgeOfSimplicialHomotopy a).edge =
-      ((pre j).app E).app (Opposite.op ⦋1⦌) (functorEdgeOfSimplicialHomotopy b).edge := by
+    ((pre j).app E).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a).edge =
+      ((pre j).app E).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b).edge := by
   apply SSet.yonedaEquiv.symm.injective
   apply uncurry_injective
   rw [← SSet.yonedaEquiv_symm_comp, ← SSet.yonedaEquiv_symm_comp,
@@ -47,11 +47,11 @@ lemma coincidentKanHomotopySpanEdge {T U E : SSet.{u}} (j : T ⟶ U)
 def coincidentKanHomotopySpanBoundary {T U E : SSet.{u}} (j : T ⟶ U)
     {D F G : U ⟶ E} (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (h : (j ▷ (Δ[1] : SSet.{u})) ≫ a.h = (j ▷ (Δ[1] : SSet.{u})) ≫ b.h) :
-    {e : ((ihom T).obj E).Edge (functorVertex (j ≫ F)) (functorVertex (j ≫ G)) //
-      e.edge = (SSet.Edge.id (functorVertex (j ≫ F))).edge ∧
+    {e : ((ihom T).obj E).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ F)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ G)) //
+      e.edge = (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ F))).edge ∧
       Nonempty (SSet.Edge.CompStruct
-        ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E)) e
-        ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)))} :=
+        ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E)) e
+        ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)))} :=
   coincidentKanSpanBoundaryData _ _ (coincidentKanHomotopySpanEdge j a b h)
 
 /-- 元の二円柱が境界で一致する場合の、全パラメータの境界固定相対合成。 -/

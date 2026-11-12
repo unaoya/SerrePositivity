@@ -14,10 +14,10 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
@@ -58,10 +58,10 @@ lemma dgModuleNaturalConeRotationInv_boundary (x : P) :
 /-- 概要：同じ二重実 cone から元第一関手の shift への全厳密回転逆比較。
 方針：全自然な connecting と指定零ホモトピーの cone descent を用いる。
 規約：閉零次数だけの自然性ではない。使われ方：逆回転後合成全比較の第二因子。 -/
-def dgModuleNaturalConeRotationInv : StrictNatTrans (U) (F.comp (moduleShiftDG R D 1)) :=
+def dgModuleNaturalConeRotationInv : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (U) (F.comp (moduleShiftDG R D 1)) :=
   dgModuleNaturalConeDesc R D G (T) (F.comp (moduleShiftDG R D 1)) (ν) (δ)
     (fun _ => 0) (dgModuleNaturalConeRotationInv_boundary R D F G η)
     (by
       intro x y n z
-      simp only [compose_zero, zero_compose, smul_zero])
+      simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.zero_compose, smul_zero])
 end SerrePositivity.KST.SConstruction

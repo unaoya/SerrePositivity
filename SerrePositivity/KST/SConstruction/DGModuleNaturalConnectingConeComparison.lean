@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma descRecovery {M N M' N' : ModuleCategory R D}
     (f : M ⟶ N) (g : M' ⟶ N') (a : M ⟶ M') (b : N ⟶ N')
@@ -46,7 +46,7 @@ lemma dgModuleConeDesc_recovery {M N M' N' : ModuleCategory R D}
     moduleConeDescOfBoundary R D f s q ds = moduleConeMapOfHomotopy R D f g a b h := by
   exact descRecovery R D f g a b h s q ds es eq
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)
@@ -56,7 +56,7 @@ local notation "k" => dgModuleNaturalConeInr R D (CF) (U) (j)
 local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "δ" => dgModuleNaturalConeConnecting R D F G η
 local notation "γ" => dgModuleNaturalConeRotationHom R D F G η
-local notation "ξ" => dgStrictNatTransComp (γ) (k)
+local notation "ξ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (γ) (k)
 local notation "CD" => dgModuleNaturalConeFunctor R D (CF) (FS) (δ)
 local notation "θ" => dgModuleNaturalConnectingCone R D F G η
 

@@ -24,7 +24,7 @@ variable {R : Type u} [Ring R]
 規約：KST Lemma 4.16、因子内の帰納仮定を使う。
 使われ方：全 m の帰納ホモトピーの行列同変性。 -/
 lemma lemma416HomotopyStep_equivariant (n m : ℕ) (J : TwoSidedIdeal R) (a : J)
-    (h : LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J) →* triangularBlockGroup n (m + 1) J)) m)
     (hh : LinearizedCylinderEquivariant
       (discreteNerveAction (MonCat.of (Matrix (Fin n) (Fin n) R))

@@ -12,12 +12,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyIdentityInpu
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G H : DGFunctor R P (RightModule R D))
-  (α : StrictNatTrans F G) (β : StrictNatTrans G H)
-local notation "γ" => dgStrictNatTransComp α β
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (β : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G H)
+local notation "γ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp α β
 local notation "CB" => dgModuleNaturalConeFunctor R D G H β
 local notation "a" => dgModuleNaturalConeArrow R D F G α
 local notation "b" => dgModuleNaturalConeArrow R D G H β
@@ -65,7 +65,7 @@ lemma dgModuleNaturalConePrecompositionInput_recovery (x : P) :
   change _ = _ + ((eHomWhiskerLeft (Complex R)
     (ForgetEnrichment.of (Complex R) (F.obj x)) (moduleConeInr R D (b x))).f (-1)).hom 0
   rw [map_zero, add_zero]
-  exact (dgModuleHomPrecompose_apply R D (a x)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleHomPrecompose_apply R D (a x)
     (dgModuleNaturalConeNullHomotopyElement R D G H β x)).trans
       (congrArg (fun t => compose R
         (dgModuleNaturalConeNullHomotopyElement R D G H β x) t (zero_add (-1)))

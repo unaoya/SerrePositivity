@@ -30,7 +30,7 @@ lemma postnikovQuotientLevelHom_square (cutoff : ℤ) :
   intro i
   exact (postnikovQuotient_naturality R (f.app i).hom cutoff).symm
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (h : IsKConnective R Φ k)
 include h
 
 lemma IsKConnective.invariantLevelMap_piProEquivalence_of_piProEquivalence

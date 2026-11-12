@@ -4,7 +4,7 @@ public import SerrePositivity.KST.NonConnective.SequentialSpectrum
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingSourceFunctor
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingAcyclic
 public import SerrePositivity.KST.Spectra.RawSpectrumHomPoints
-public import SerrePositivity.InfinityCategories.HomotopyLimits.BousfieldKanCoefficientFibration
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.BousfieldKanCoefficientFibration
 
 /-!
 概要：逐次列から固定 Kan 列への全写像空間の反変図式と BF 置換射影。
@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.NonConnective
 
@@ -42,7 +42,7 @@ lemma sequentialRawHomPost_trivial (D : SpectrumSequence.{u})
     {Y Z : KanSequence.{u}} (p : Y ⟶ Z)
     (hp : ∀ k, (MorphismProperty.monomorphisms SSet.{u}).rlp (p.app k).right)
     (i : SequentialIndex.{u}ᵒᵖ) :
-    TrivialKanFibration ((sequentialRawHomPost D p).app i) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((sequentialRawHomPost D p).app i) :=
   RawSpectrumMapping.post_trivialKanFibration (D.obj i.unop) p hp
 
 /-- 元の厳密な Kan 列射を、同じ全 Hom の零単体として表示する。 -/
@@ -91,9 +91,9 @@ def sequentialRawInjectionCone (D : SpectrumSequence.{u}) :
       have hv : (RawSpectrumMapping.evaluation (D.obj j.unop)
           (OmegaSpectrum.filteredKanSequence D) k).app _ vj =
           (RawSpectrumMapping.evaluation (D.obj i.unop) (OmegaSpectrum.filteredKanSequence D) k ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.map f.unop).app k)
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.map f.unop).app k)
               ((OmegaSpectrum.filteredKanSequence D).level k).space).app _ vi := by
-        change _ = (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.map f.unop).app k) _).app _
+        change _ = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.map f.unop).app k) _).app _
           ((RawSpectrumMapping.evaluation (D.obj i.unop)
             (OmegaSpectrum.filteredKanSequence D) k).app _ vi)
         rw [ei, ej]

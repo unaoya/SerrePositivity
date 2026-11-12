@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.HomotopyWeight.FrameCones
-public import SerrePositivity.InfinityCategories.ModelBridge.StandardFrame
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.StandardFrame
 
 /-!
 # 重み付き frame の標準単体による実現
@@ -95,7 +95,7 @@ abbrev tensorFrame : SimplexCategory ⥤ C := SSet.stdSimplex ⋙ tensorRealizat
 使われ方：実際の frame Hom の局所化比較。 -/
 lemma tensorFrame_reedyCofibrant :
     reedyLeft simplex (cofibrations C) (initial.to (tensorFrame K W B)) :=
-  FrameHom.StandardFrame.reedyCofibrant _ (tensorRealization_map_mono K W B hW hB)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.reedyCofibrant _ (tensorRealization_map_mono K W B hW hB)
 
 /-- 概要：重み付き実現の標準 frame は homotopically constant（Hovey §5.4）。
 方針：anodyne 保存と標準単体の収縮を使う。
@@ -106,7 +106,7 @@ lemma tensorFrame_homotopicallyConstant
       weakEquivalences C ((B.obj k).map f))
     {n m : SimplexCategory} (f : n ⟶ m) :
     weakEquivalences C ((tensorFrame K W B).map f) :=
-  FrameHom.StandardFrame.homotopicallyConstant _
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.homotopicallyConstant _
     (fun i hi => (tensorRealization_map_anodyne K W B hW hB hconst i hi).2) f
 
 omit hW hB
@@ -115,7 +115,7 @@ omit hW hB
 方針：テンソル実現の随伴と標準単体の Yoneda 同型を使う。
 規約：全単体と終域の射で自然な実際の同型。
 使われ方：重み付き錐空間の π₀ を局所化 Hom へ移す。 -/
-def tensorFrameHomIso : cosimplicialHom (tensorFrame K W B) ≅ frameCone K W B :=
-  FrameHom.StandardFrame.homIso _ (tensorRealizationAdjunction K W B)
+def tensorFrameHomIso : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (tensorFrame K W B) ≅ frameCone K W B :=
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.homIso _ (tensorRealizationAdjunction K W B)
 
 end SerrePositivity.EInfinity.HomotopyWeight

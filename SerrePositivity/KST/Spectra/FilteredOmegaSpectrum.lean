@@ -98,7 +98,7 @@ def filteredKanInjection (D : J ⥤ OmegaSpectrum.{u}) (j : J) :
 使われ方：BF 1978 §2、HA §1.4.2。filtered colimit での Ω 条件の証明。 -/
 def adjointTransformation (D : J ⥤ OmegaSpectrum.{u}) (k : ℕ) :
     levelDiagram D k ⟶ levelDiagram D (k + 1) ⋙ ihom PointedSimplicialSet.circle.{u} where
-  app j := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((D.obj j).level k).space
+  app j := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((D.obj j).level k).space
     ((D.obj j).level (k + 1)).space) ((D.obj j).sigma k)
   naturality _ _ f := (sequenceHom (D.map f)).adjoint_comm k
 
@@ -108,10 +108,10 @@ def adjointTransformation (D : J ⥤ OmegaSpectrum.{u}) (k : ℕ) :
 使われ方：BF 1978 §2、HA §1.4.2。全基点 π_* 同型を余極限の Ω 条件へ移す。 -/
 theorem filteredAdjoint_formula (D : J ⥤ OmegaSpectrum.{u}) (k : ℕ) :
     colimMap (adjointTransformation D k) ≫ (loopFilteredColimitIso (levelDiagram D (k + 1))).hom =
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((filteredKanSequence D).level k).space
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((filteredKanSequence D).level k).space
         ((filteredKanSequence D).level (k + 1)).space) ((filteredKanSequence D).sigma k) := by
-  let a : colimit (levelDiagram D k) ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (colimit (levelDiagram D (k + 1))) :=
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((filteredKanSequence D).level k).space
+  let a : colimit (levelDiagram D k) ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (colimit (levelDiagram D (k + 1))) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((filteredKanSequence D).level k).space
       ((filteredKanSequence D).level (k + 1)).space) ((filteredKanSequence D).sigma k)
   change colimMap (adjointTransformation D k) ≫
     (loopFilteredColimitIso (levelDiagram D (k + 1))).hom = a
@@ -134,11 +134,11 @@ theorem filteredKanSequence_omegaCondition (D : J ⥤ OmegaSpectrum.{u}) :
   let E := levelDiagram D (k + 1) ⋙ ihom PointedSimplicialSet.circle.{u}
   let : ∀ j, KanComplex (E.obj j).right := fun j ↦
     loopSpace_kanComplex ((D.obj j).level (k + 1)).space
-  have hcolim : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (colimMap (adjointTransformation D k)).right :=
+  have hcolim : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (colimMap (adjointTransformation D k)).right :=
     pointedColimMap_kanPiIsomorphism _ (fun j ↦ (D.obj j).omega_condition k)
-  let e : (colimit E).right ≅ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (colimit (levelDiagram D (k + 1)))).right :=
+  let e : (colimit E).right ≅ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (colimit (levelDiagram D (k + 1)))).right :=
     PointedSimplicialSet.forget.mapIso (loopFilteredColimitIso (levelDiagram D (k + 1)))
-  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e
+  have he : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism e.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e
   have h := hcolim.comp he
   have hformula := congrArg Under.Hom.right (filteredAdjoint_formula D k)
   change (colimMap (adjointTransformation D k)).right ≫ e.hom = _ at hformula

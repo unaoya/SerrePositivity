@@ -21,7 +21,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -29,21 +29,21 @@ local notation "τ" => dgOdotMilnorRightAxisQuotientComparison R d
 
 local notation "B" => DGOdotGluing R d
 local notation "MF" => dgCellResolvedGraphModuleFunctor R (B) (DGFunctor.id (B))
-local notation "ρ" => dgModuleResolvedInfinity R (RightModule R (P)) (P)
+local notation "ρ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P)
   (DGFunctor.id (RightModule R (P)))
 local notation "q" => dgOdotMilnorResolvedInclusion R d
 local notation "I" => dgFullSubcategoryInclusion R (RightModule R (Q))
-  (dgModuleSemifreeProperty R (Q))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty R (Q))
 
 /-- 概要：元実逆回転全 realization は同じ resolved 射影の元 Yoneda と全比較される。
 方針：同じ元増大、D 正本の対角制限、同じ全代表延長比較を合成する。
 規約：元 cell 始域・元 resolved 射影・全 Hom を保持する。
 使われ方：元実右面の固定 ν 比較と指定上下二単体への接続。 -/
 def dgOdotMilnorRightAxisInverseRotationYonedaComparison :
-    FunctorIso (dgNerve.map (dgOdotMilnorRightAxisInverseRotationRealizedFamily R d))
-      (dgNerve.map ((q).comp (dgYoneda R (Q)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotMilnorRightAxisInverseRotationRealizedFamily R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((q).comp (dgYoneda R (Q)))) :=
   (dgOdotMilnorRightAxisInverseRotationAugmentedNativeComparison R d).trans
     (((((dgCellIdentityGraphYonedaNativeComparison.{u, u} R (B)).postcomp
-      (dgModuleExtensionInfinity R (P) (Q) (q))).postcomp (dgNerve.map (I))).symm).trans
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionInfinity R (P) (Q) (q))).postcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (I))).symm).trans
         (dgCellYonedaProjectionNativeComparison.{u, u} R (B) (Q) (q)))
 end SerrePositivity.KST.SConstruction

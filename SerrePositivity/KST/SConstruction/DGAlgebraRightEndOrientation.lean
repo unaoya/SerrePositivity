@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraExtensionInfinity
 public import SerrePositivity.KST.LocalizingInvariants.DGEndAlgebra
 public import SerrePositivity.DifferentialGraded.Endomorphism.Basic
 
@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories
 open scoped MonObj
-variable (R : Type u) [CommRing R] (B : Mon (Complex R)) (x : dgAlgebraCategory R B)
+variable (R : Type u) [CommRing R] (B : Mon (Complex R)) (x : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B)
 
 /-- 元の代数は、右加群用一対象圏の反転した全 End の代数と同じ単位・積で同型。 -/
 def dgAlgebraRightEndIso :

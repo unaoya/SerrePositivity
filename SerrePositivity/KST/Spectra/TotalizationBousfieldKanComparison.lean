@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CosimplicialLastVertex
 public import SerrePositivity.KST.Spectra.TotalizationFunctor
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedFunctor
 
 /-!
 概要：通常の余単体 Tot から Bousfield–Kan homotopy Tot への標準比較射。
@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedFunctor
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.CosimplicialTotalization
@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 /-- 終頂点を普遍的な Tot の族へ代入した Bousfield–Kan 重みの族。 -/
 def bousfieldKanFamily (X : CosimplicialObject SSet.{u}) :
-    bousfieldKanWeight (AsSmall.{u} SimplexCategory) ⊗
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} SimplexCategory) ⊗
       (Functor.const _).obj (obj X) ⟶ AsSmall.down ⋙ X where
   app j := (CosimplicialLastVertex.component j ▷ obj X) ≫
     MonoidalClosed.uncurry (π X (AsSmall.down.obj j))
@@ -40,17 +40,17 @@ def bousfieldKanFamily (X : CosimplicialObject SSet.{u}) :
 
 /-- 通常の Tot から同じ係数の Bousfield–Kan homotopy Tot への実際の比較射。 -/
 def bousfieldKanComparison (X : CosimplicialObject SSet.{u}) :
-    obj X ⟶ bousfieldKanHolim (AsSmall.down ⋙ X) :=
-  weightedSectionsLift (bousfieldKanFamily X)
+    obj X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (AsSmall.down ⋙ X) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (bousfieldKanFamily X)
 
 @[reassoc]
 lemma bousfieldKanComparison_π (X : CosimplicialObject SSet.{u})
     (j : AsSmall.{u} SimplexCategory) :
-    bousfieldKanComparison X ≫ weightedSectionsπ
-      (bousfieldKanWeight _) (AsSmall.down ⋙ X) j =
+    bousfieldKanComparison X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X) j =
     π X (AsSmall.down.obj j) ≫
       (pre (CosimplicialLastVertex.component j)).app (X.obj (AsSmall.down.obj j)) := by
-  rw [bousfieldKanComparison, weightedSectionsLift_π]
+  rw [bousfieldKanComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift_π]
   change curry ((CosimplicialLastVertex.component j ▷ obj X) ≫
     MonoidalClosed.uncurry (π X (AsSmall.down.obj j))) = _
   rw [← curry_pre_app, curry_uncurry]
@@ -59,10 +59,10 @@ lemma bousfieldKanComparison_π (X : CosimplicialObject SSet.{u})
 lemma bousfieldKanComparison_naturality {X Y : CosimplicialObject SSet.{u}}
     (f : X ⟶ Y) :
     map f ≫ bousfieldKanComparison Y = bousfieldKanComparison X ≫
-      weightedSectionsMap (bousfieldKanWeight _) (Functor.whiskerLeft AsSmall.down f) := by
-  apply weightedSections_hom_ext
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (Functor.whiskerLeft AsSmall.down f) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro j
-  conv_rhs => rw [Category.assoc, weightedSectionsMap_π, ← Category.assoc,
+  conv_rhs => rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap_π, ← Category.assoc,
     bousfieldKanComparison_π]
   rw [Category.assoc, bousfieldKanComparison_π, ← Category.assoc, map_π,
     Category.assoc]

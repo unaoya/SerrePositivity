@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.Index
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index
 
 /-!
 概要：実 cone の始頂点を含む成分を、残りの有限集合へ移す添字を定義する。
@@ -8,7 +8,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.Index
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 def withFirst {n : ℕ} (J : Finset (Fin (n + 1))) : Finset (Fin (n + 2)) :=
   insert 0 (J.image Fin.succ)

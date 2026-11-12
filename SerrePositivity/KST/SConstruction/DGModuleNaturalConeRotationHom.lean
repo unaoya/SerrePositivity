@@ -12,10 +12,10 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
@@ -26,7 +26,7 @@ local notation "FS" => F.comp (moduleShiftDG R D 1)
 方針：元二成分の閉性と全自然性を既存の同じ cone lift へ渡す。
 規約：追加の存在入力を加えない。
 使われ方：同じ実 connecting cone 比較の全自然性を構成する第一因子。 -/
-def dgModuleNaturalConeRotationHom : StrictNatTrans (FS) (U) :=
+def dgModuleNaturalConeRotationHom : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (FS) (U) :=
   dgModuleNaturalConeLift R D G (CF) (FS) (ν)
     (fun x => moduleConeRotationFirst R D (a x))
     (fun x => moduleConeRotationSecond R D (a x))

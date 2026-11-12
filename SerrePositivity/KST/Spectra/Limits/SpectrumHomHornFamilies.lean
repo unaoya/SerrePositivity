@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Spectra.PostMappingFibration
 public import SerrePositivity.KST.Spectra.Limits.SpectrumMappingDiagram
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativePointedHomLifting
 
 /-!
 概要：段ごとの fibration に沿って持ち上がるスペクトル写像の整合族。
@@ -37,7 +37,7 @@ lemma spectrumHom_hornFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       (∀ n, j ≫ l n = a ≫ OmegaSpectrum.evaluation X Y n) ∧
       (∀ n, l n ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
         b ≫ OmegaSpectrum.evaluation X Z n) ∧
-      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         l n ≫ OmegaSpectrum.mappingStep X Y n) := by
   let LiftAt (n : ℕ) := {l : U ⟶
       (PointedObject.basedHom (X.level n).space (Y.level n).space).right //
@@ -55,11 +55,11 @@ lemma spectrumHom_hornFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
         ← Category.assoc, h, Category.assoc]⟩
     exact ⟨⟨sq.lift, sq.fac_left, sq.fac_right⟩⟩
   have hn (n : ℕ) (prev : LiftAt n) : ∃ next : LiftAt (n + 1),
-      next.val ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      next.val ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         prev.val ≫ OmegaSpectrum.mappingStep X Y n := by
     have hc : j ≫ (prev.val ≫ OmegaSpectrum.mappingStep X Y n) =
         (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space := by
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space := by
       rw [← Category.assoc, prev.property.1, Category.assoc,
         ← OmegaSpectrum.evaluation_condition, ← Category.assoc]
     have he : (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) ≫
@@ -68,18 +68,18 @@ lemma spectrumHom_hornFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       rw [Category.assoc, ← spectrumHomMap_evaluation X (Y := Y) (Z := Z) p (n + 1),
         ← Category.assoc, h, Category.assoc]
     have ha : (prev.val ≫ OmegaSpectrum.mappingStep X Y n) ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (p.app (n + 1))).right =
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (p.app (n + 1))).right =
           (b ≫ OmegaSpectrum.evaluation X Z (n + 1)) ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Z.level (n + 1)).space := by
       change (prev.val ≫ OmegaSpectrum.mappingStep X Y n) ≫
-          (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map (p.app (n + 1)) = _
+          (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map (p.app (n + 1)) = _
       rw [Category.assoc, spectrumMappingStep_post X (Y := Y) (Z := Z) p n,
         ← Category.assoc]
       change (prev.val ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right) ≫
         OmegaSpectrum.mappingStep X Z n = _
       rw [prev.property.2, Category.assoc, ← OmegaSpectrum.evaluation_condition,
         ← Category.assoc]
-    obtain ⟨l, hl, hp, hb⟩ := relativePointedHom_hornLift (X.sigma n) (p.app (n + 1)) j hj
+    obtain ⟨l, hl, hp, hb⟩ := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.relativePointedHom_hornLift (X.sigma n) (p.app (n + 1)) j hj
       (a ≫ OmegaSpectrum.evaluation X Y (n + 1)) (prev.val ≫ OmegaSpectrum.mappingStep X Y n)
       (b ≫ OmegaSpectrum.evaluation X Z (n + 1)) hc he ha
     exact ⟨⟨l, hl, hb⟩, hp⟩

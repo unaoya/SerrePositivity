@@ -27,9 +27,9 @@ structure FixedBoundaryCospanData {A T E : SSet.{u}} (j : A ⟶ T) (b : A ⟶ E)
   relative : (j ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h = fst A Δ[1] ≫ b
   /-- 元の二円柱と直接比較円柱を全三面に持つ実二単体。 -/
   triangle : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy homotopy))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy homotopy))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
   /-- 元の二円柱を持つ全三角形も、全パラメータで元の全境界を固定する。 -/
   triangle_relative : (j ▷ (Δ[2] : SSet.{u})) ≫ familyCompStructRealization triangle =
     fst A Δ[2] ≫ b
@@ -47,8 +47,8 @@ def fixedBoundaryCospanData {A T E : SSet.{u}} [KanComplex E]
   let v := (kanCospanPastingChoices_isContractibleKan a c).nonempty.some
   let d := kanCospanPastedEdge a c v
   let e := d.map (fixedBoundaryMappingSpaceι j b)
-  let V := simplicialHomotopyOfFunctorEdge e.toTruncated
-  have he : (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy V)).edge = e.edge := by
+  let V := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge e.toTruncated
+  have he : (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy V)).edge = e.edge := by
     change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm e.edge))) = _
     rw [curry_uncurry, Equiv.apply_symm_apply]
   have hr : (j ▷ (Δ[1] : SSet.{u})) ≫ V.h = fst A Δ[1] ≫ b := by
@@ -58,8 +58,8 @@ def fixedBoundaryCospanData {A T E : SSet.{u}} [KanComplex E]
         SSet.yonedaEquiv.symm d.edge ≫ fixedBoundaryMappingSpaceι j b := by
       rw [SSet.yonedaEquiv_symm_comp]
       rfl
-    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, vertexFiberι_comp,
-      SSet.comp_const, uncurry_const_functorVertex]
+    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp,
+      SSet.comp_const, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
   let t := ((kanCospanPastedTriangle a c v).map
     (fixedBoundaryMappingSpaceι j b)).ofEq he.symm
       (fixedBoundaryMappingEdge_image j b hg hh K hK)
@@ -72,8 +72,8 @@ def fixedBoundaryCospanData {A T E : SSet.{u}} [KanComplex E]
           fixedBoundaryMappingSpaceι j b := by
       rw [SSet.yonedaEquiv_symm_comp]
       rfl
-    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, vertexFiberι_comp,
-      SSet.comp_const, uncurry_const_functorVertex]
+    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp,
+      SSet.comp_const, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
   exact ⟨V, hr, t, ht⟩
 
 end SerrePositivity.KST.SConstruction

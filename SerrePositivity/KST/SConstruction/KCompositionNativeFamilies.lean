@@ -27,7 +27,7 @@ def kKanCompositionFirstNativeFamily : SSet.Homotopy
       (kKanOriginalCompositionCompatibilityData r F f g).upper)
     (SSet.const (kKanOriginalCompositionCompatibilityData r F f g).middle) :=
   specifiedPointConstantHomotopy (kKanCompositionFirstNativeCylinder r F f g)
-    (nervePoint (compositionStringDirect f g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
     (kKanOriginalCompositionCompatibilityData r F f g).first
     (kKanCompositionFirstNativeCylinder_boundary r F f g)
 
@@ -37,7 +37,7 @@ def kKanCompositionSecondNativeFamily : SSet.Homotopy
       (kKanOriginalCompositionCompatibilityData r F f g).middle)
     (SSet.const (kKanOriginalCompositionCompatibilityData r F f g).lower) :=
   specifiedPointConstantHomotopy (kKanCompositionSecondNativeCylinder r F f g)
-    (nervePoint (compositionStringDirect f g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
     (kKanOriginalCompositionCompatibilityData r F f g).second
     (kKanCompositionSecondNativeCylinder_boundary r F f g)
 
@@ -47,13 +47,13 @@ def kKanCompositionCompositeNativeFamily : SSet.Homotopy
       (kKanOriginalCompositionCompatibilityData r F f g).upper)
     (SSet.const (kKanOriginalCompositionCompatibilityData r F f g).lower) :=
   specifiedPointConstantHomotopy (kKanCompositionCompositeNativeCylinder r F f g)
-    (nervePoint (compositionStringDirect f g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
     (kKanOriginalCompositionCompatibilityData r F f g).composite
     (kKanCompositionCompositeNativeCylinder_boundary r F f g)
 
 /-- 端点を合わせても、元の第一適合区間の全体を同じ指定点で回収する。 -/
 lemma kKanCompositionFirstNativeFamily_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionFirstNativeFamily r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).first.edge :=
@@ -61,7 +61,7 @@ lemma kKanCompositionFirstNativeFamily_boundary :
 
 /-- 元の第二適合区間の全体も、同じ指定点で回収する。 -/
 lemma kKanCompositionSecondNativeFamily_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionSecondNativeFamily r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).second.edge :=
@@ -69,7 +69,7 @@ lemma kKanCompositionSecondNativeFamily_boundary :
 
 /-- 元の合成適合区間の全体も、同じ指定点で回収する。 -/
 lemma kKanCompositionCompositeNativeFamily_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (kKanCompositionCompositeNativeFamily r F f g).h =
       snd (Δ[0] : SSet.{u}) (Δ[1] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityData r F f g).composite.edge :=

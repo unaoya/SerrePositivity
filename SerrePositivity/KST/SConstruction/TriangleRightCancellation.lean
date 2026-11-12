@@ -57,7 +57,7 @@ def triangleRightCancellationCylinder : EndpointFixedEdgeCylinder a d :=
 
 /-- 同じ比較円柱の下面は、元の全四面体の同じ比較面を厳密に回収する。 -/
 lemma triangleRightCancellationCylinder_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ (triangleRightCancellationCylinder T U v).homotopy.h =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ (triangleRightCancellationCylinder T U v).homotopy.h =
       stdSimplex.δ 3 ≫ triangleRightCancellationAt T U v :=
   (endpointFixedTriangleHomotopy_triangle _).trans (triangleRightCancellationTriangle_face T U v)
 

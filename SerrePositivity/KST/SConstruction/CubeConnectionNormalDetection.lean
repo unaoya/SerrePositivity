@@ -51,21 +51,21 @@ lemma cubeConnectionNormalBlock_injective (n m : ℕ) :
 
 /-- 元の全頂点の fiber max は、各入力の出力先を一意に決める。 -/
 lemma cubeFiberMax_injective (n m : ℕ) :
-    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (n := n) (m := m)) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax (n := n) (m := m)) := by
   intro q r h
   funext i
-  have htrue : _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax r (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom n i) (q i) = true := by
+  have htrue : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax r (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom n i) (q i) = true := by
     rw [← h]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff q _ _).mpr ⟨i, rfl, by simp [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom]⟩
-  obtain ⟨j, hj, hv⟩ := (_root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_true_iff r _ _).mp htrue
-  have hji : j = i := by simpa [_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexAtom] using hv
+    exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_true_iff q _ _).mpr ⟨i, rfl, by simp [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom]⟩
+  obtain ⟨j, hj, hv⟩ := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_true_iff r _ _).mp htrue
+  have hji : j = i := by simpa [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexAtom] using hv
   subst j
   exact hj.symm
 
 /-- ブロック標準表示の元の全頂点での評価。 -/
 def cubeConnectionNormalVertex {n m : ℕ} (d : CubeConnectionNormal n m) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m :=
-  _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax (cubeConnectionNormalBlock d)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax (cubeConnectionNormalBlock d)
 
 /-- 元の頂点関数は、ブロック標準表示を一意に決める。 -/
 lemma cubeConnectionNormalVertex_injective (n m : ℕ) :
@@ -77,14 +77,14 @@ lemma cubeConnectionNormalVertex_injective (n m : ℕ) :
 lemma cubeConnectionNormalId_vertex (n : ℕ) :
     cubeConnectionNormalVertex (cubeConnectionNormalId n) = _root_.id := by
   dsimp only [cubeConnectionNormalVertex]
-  rw [cubeConnectionNormalId_block, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_id]
+  rw [cubeConnectionNormalId_block, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_id]
 
 /-- 標準表示の隣接結合は、元の同じ connection との関数合成。 -/
 lemma cubeConnectionNormalVertex_connect {n m : ℕ} (d : CubeConnectionNormal n (m + 2))
     (i : Fin (m + 1)) :
     cubeConnectionNormalVertex (cubeConnectionNormalConnect d i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i ∘ cubeConnectionNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i ∘ cubeConnectionNormalVertex d := by
   dsimp only [cubeConnectionNormalVertex]
-  rw [cubeConnectionNormalConnect_block, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_comp, _root_.SerrePositivity.InfinityCategories.Kan.cubeFiberMax_predAbove]
+  rw [cubeConnectionNormalConnect_block, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_comp, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeFiberMax_predAbove]
 
 end SerrePositivity.KST.SConstruction
