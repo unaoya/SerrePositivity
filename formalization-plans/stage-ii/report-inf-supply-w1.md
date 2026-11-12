@@ -1056,3 +1056,27 @@ strictなSSet値rectificationを別課題と明記する。`Rectification/Simpli
 今回の指示どおり、Lean実装・ビルドには入っていない。新しい数学・drafts・③-b/⑤aのファイルは変更なし。
 配置は全て `Project/DerivedCategories/DiagramComparison/` を候補とし、登録は調整役。
 範囲をstrict図式や対象ごとの同値に狭める変更、自然性・strict表示の存在を仮定する変更はしていない。
+
+
+## 21. 3b-3 再開・R1（11-13、継続）
+
+main `c3f6cb0f1` の追記を取り込み、§20のR1〜R7・上限12,000行・約5,200行での途中報告を確認。
+順序はR1→R5→R7→R6→R2→R3→R4。R6までの途中取り込み候補の報告はまだ先。
+今夜のB3凍結は予告の段階で、18時の確定後はコミットを控える指示を確認。
+
+**R1の検証済み部分**：`5ca806662`、新規2本・121行・16命名宣言。
+`StrictComplexDiagram` は元の通常の複体を値とし、添字は `StrictDiagramDirection` によりΔ・Δᵒᵖだけ。
+`strictDiagramQuasiIsos` と `strictDiagramWeakEdges` は元の自然変換の各成分の擬同型条件。
+`StrictDiagramInfinity`・`strictDiagramLocalization` は一般辺局所化 `edgeLocalization` の実構成を使う。
+同じSSet.{u+1}の準圏、元の指定局所化写像、objectwise擬同型辺の反転、全関手圏の普遍性を得た。
+既存 `GeneralLocalization.edgeLocalization_isLocalization`・`edgeLocalization_universal` を再利用。
+
+対象ビルド成功（R1単独2,395 jobs）、16宣言の監査は全てsorry-free、標準三公理のみ。
+監査入力 `/tmp/is-w1/3b3-r1-audit.lean`、監査実行ログ `3b3-build-3.log`（R5の最初の評価定義と同時、4,960 jobs）。
+鍵は `--wait 3600`、待ちは一枚、ビルド・監査中だけ保持し解放済み。
+本体入口・全体監査登録、③-bの3b-2・G10・⑤aの既存ファイルは変更していない。
+
+R5は作業木で進行中。通常複体の元の閉零射から、既存の一点dg加群の指定分解と
+`semifreePointEquivalence` を使う実評価を作り、元の擬同型辺の反転まで対象ビルドが通った。
+このR5分は一括監査前なのでまだコミットしていない。coherent図式圏への比較写像の同値性はR2・R3に残る。
+**3b-3の完了・停止点5は主張せず、続行する。**
