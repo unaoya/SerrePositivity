@@ -29,6 +29,7 @@ lemma unitShiftTensorIso_naturality {M N : Complex A} (f : M ⟶ N) :
   simpa only [id_tensorHom] using leftUnitor_naturality f
 
 set_option maxHeartbeats 800000 in
+-- Γ の smash 商と元の複体の同じ対象の照合に必要な定義展開を検査する。
 lemma gammaSuspension_naturality {M N : Complex A} (f : M ⟶ N) :
     PointedObject.smashMap (𝟙 PointedSimplicialSet.circle.{u})
       ((gammaPointedFunctor A).map f) ≫ gammaSuspension A N =

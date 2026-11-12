@@ -4649,3 +4649,64 @@ Proposition 3.22、指数の利用は BS17 §11.2・Lemma 11.22。
 RHom と完備版の正確な入力は A5 の利用側とすり合わせる。
 新しい interface 欄、drafts の型変更、M15 の Lean 実装には着手していない。
 この紙の作業にビルド・監査・新しい整理券は使っていない。M14 の (ii) は続行中。
+
+## 67. D79(ii) 続行：指定基本円の照合と Γ の fiber 比較の前段
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneAdjointSuspension | 59 |
+| EilenbergMacLaneSmashUnit | 70 |
+| EilenbergMacLaneSuspensionUnit | 64 |
+| EilenbergMacLaneUnitCoefficient | 36 |
+| EilenbergMacLaneVertexUnit | 70 |
+| PointedSmashUnitSeed | 31 |
+| EilenbergMacLaneStandardHom | 46 |
+| EilenbergMacLaneFibration | 59 |
+| EilenbergMacLaneFiniteLimits | 57 |
+
+追加 **492 行**。コメント警告の修正一行を含め、
+(ii) の検証済み実測は **2304 行**。
+
+### 67.1 指定射と零次数の照合
+
+`gammaSmashPair_right_unit` は、基点付きの smash の積でも指定 AW 単位が
+元の右単位子そのものを与える厳密な等式。
+`gammaSuspension_on_unit` は、単位上の構造射の値を固定した `unitCircle` と
+`unitShiftAutomorphism` の合成として元の圏で照合する。
+二つの単位比較の差を、恒等射と仮定せず実際の自己同型として保持した。
+`gammaAdjointSuspension` は随伴構造射の全複体上の自然変換。
+単位の点の像も同じ随伴で厳密に照合した。
+
+`gammaUnitSimplex_zero_coefficient` は実 DK 余単位と実切断包含の下で係数が一である計算。
+`gammaVertexUnitHomEquiv` と `gammaUnit_vertex_generates` は **任意の Γ の頂点**を
+指定単位の頂点からの複体射の像として厳密に回収する。
+ここでも頂点ごとの新しい持ち上げの選択やホモトピー圏への弱化を使っていない。
+
+### 67.2 Ω 条件への fiber 比較で再利用できた一般部分
+
+`gammaStandardHomFunctorIso` は、元の正規化標準単体の Hom の全関手と
+同じ Γ の全自然同型。`gammaMap_fibration` は既存の
+`normalizedSimplex_reedyCofibrant` と `HomotopyFunctionComplex.cosimplicialHom_fibration`
+から実射影 fibration を Γ の Kan fibration へ移す。
+使うモデル構造は構成済みの `projectiveModelCategory A` だけで、
+`[ModelCategory SSet]` の仮定は加えていない。
+
+`extendSmartTruncationAdjunction` は既存の実 Hom 同値を自然性ごと随伴へ束ねたもの。
+`gammaFunctor_preservesFiniteLimits` は smart 切断・実 Γ・加群の台の各因子から有限極限保存を示す。
+これにより cone の strict fiber を同じ Γ の strict fiber へ移す経路を使える。
+実際の指定随伴構造射がその loop 比較で π 同型になる証明は、まだ完了していない。
+
+### 67.3 検証と登録候補
+
+最終対象ビルドは `/tmp/bsw16/em-smash-unit-02.log`、
+`em-suspension-unit-03.log`、`em-unit-coefficient-01.log`、`em-vertex-unit-02.log`、
+`em-fibration-limits-02.log`（fibration と随伴の成功）、`em-finite-limits-05.log`。
+監査 `/tmp/bsw16/audit-em-cone-prelim.log` は **40 本・397 宣言・標準三公理のみ**。
+本体に sorry・追加公理なし。
+`EilenbergMacLaneSuspensionNaturality` の heartbeat の理由をコメントに追加し、
+その linter 警告も解消した。既存の公開宣言の型・証明の変更はない。
+
+登録候補は表の九本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`PointedSmashUnitSeed` は **［一般∞］移動候補**として EInfinity 下に置いた。
+共通入口・共通監査は変更していない。監査終了と鍵返却を回収済み。
+この区切りでも止まらず、Γ の cone の比較から Ω 条件へ進む。
