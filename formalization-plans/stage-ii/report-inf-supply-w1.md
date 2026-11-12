@@ -424,3 +424,135 @@ F2全体のビルド・監査は実行していない。入口・全体監査へ
 | `reversedRepresentableComparison_isPrecompositionEquivalence` | 反対底上の同じ比較は全空間の前合成同値。 |
 | `reversedRepresentableValueEquivalence` | 反対底の coslice fiber を、元の表現可能前層の値へ送る同じ比較。 |
 | `reversedRepresentableValueTransportIso` | 反対底の coslice の元の値比較は、同じ辺の値の作用に全自然。 |
+
+
+
+## 12. 停止点1：G8 の四角形②（11-12夕の承認後）
+
+**②を閉じ、停止点1で停止する。** コードは **`3b1371c0b`**（新規21本・1,332行・44宣言）。段1累計は **63本・4,607行・157宣言**。上限約6,000行以内。①と合わせた G8 の四角形全体、段2・G14・G9は今回の完成には含めない。前回の38本は調整役の途中取り込み対象であり、今回の21本と区別する。
+
+### 主張の型と証明の要点
+
+`φ : X ⟶ Y` は集合値重みの射、E は一般の presentable quasicategory、M はその対象、F は元の図式、cX・cY は指定された極限錐とする。ρφ は要素の圏に沿う**実際の小さい切断制限**、τX・τY は正本の `setWeightSectionsLimitTail` の同じ順射、δ は元の `SetWeight.sectionsMap`、κX・κY は元の `limitConeEndpointComparison` とする。
+
+- **`setWeightSectionsLimitTail_shapeIso`**：`ulift(ρφ) ≫ τX ≅ τY ≫ postcompose M [δ]` を全写像間の `FunctorIso` として構成した。
+- **`setWeightLimitTailConeFamilyIso`**：この二経路を κX で後合成した、固定端点模型内の全族同型。必要な同型を仮定に足していない。
+- **`setWeightLimitTail_homMk_eq`**：上の構成済み同型を既存の `limitConeMap_homMk_eq_of_coneFamilyIso` に渡し、同じ二経路の空間のホモトピー圏での等式を得る。
+- **`setWeightEndpointRestriction_sectionsMapIso`**：`κY ≫ sectionsConeFamilyRestriction φ F M ≅ postcompose M [δ] ≫ κX`。元の制限錐と元の指定普遍辺を使う。
+- **`setWeightLimitTail_endpointRestrictionIso`**：`ulift(ρφ) ≫ τX ≫ κX ≅ τY ≫ κY ≫ sectionsConeFamilyRestriction φ F M`。右端の射は既存の `sectionsConeFamilyRestriction_fromSections` に現れる**同じ射**であり、その既存の厳密な等式と合わせて切断制限・固定端点模型の図式を結ぶ。
+
+証明は§11の五つの接続に沿う。定値始域の区間族と錐の円柱の形状制限を厳密に計算し、既存の `leftUnstraighteningMappingSpaceMap_baseChangeIso` を相対指数同型へ移した。錐の標準変換で評価する際も、対象は**頂点 fiber 全体からの写像**であり、fiber 内の点ごとの一致へ弱めていない。大小の切断同型は元の評価式で実制限と照合し、図式の等式による移送も保持した。
+
+続いて元の錐の値の切断写像、同じ指定極限比較の両逆の全族同型を使い、制限錐からの指定辺の値と接続した。元のテンソル随伴でその辺を写し、前回の `spaceTensorHomValueTail_edgeIso`（同じ宇宙変更と共変表現可能値の比較）を合成した。最後の固定端点模型には、前回の `limitConeEndpointComparison_restrictIso` と `setWeightLimitConeEndpointComparison_edgeIso` を再利用した。元の選択を別の普遍射へ置き換えていない。
+
+### 五つの接続の見込みと実測
+
+| §11の接続 | 見込み | 実測 | 上端との差 |
+| --- | ---: | ---: | ---: |
+| 定値始域・錐の円柱・標準変換の制限 | 250〜350 | 128 | −222 |
+| 相対 unstraightening・全 fiber・実切断の比較 | 550〜700 | 454 | −246 |
+| 大小の切断・指定図式の表示との整合性 | 400〜500 | 253 | −247 |
+| 同じ随伴で写した指定極限・普遍辺との照合 | 300〜400 | 240 | −160 |
+| 後段全体・固定端点模型・Ho等式 | 500〜650 | 257 | −393 |
+| 合計 | **2,000〜2,600** | **1,332** | **−1,268** |
+
+既存の相対底変換の全族同型と評価補題を再利用できたため、§11の再見積もりより小さく収まった。ただし段0の段1上端2,600行に対しては、累計4,607行で **+2,007行、約1.77倍**。相対表示・宇宙移送・選んだ逆の全族での照合を当初過小評価していた点は変わらない。
+
+### 段2〜4の再見積もり
+
+段1の実測比約1.77倍と、今回そろった一般補題を織り込む。下記は実装の見込みであり、承認済みの停止上限は変更しない。
+
+| 段 | 段0の行数見込み | 新しい見込み（行／ファイル） | 現行停止上限 |
+| --- | ---: | --- | ---: |
+| 2：①と篩包含の四角形 | 800〜1,400 | **1,300〜2,500行／18〜34本** | 2,800 |
+| 3：G14の実検出族 | 450〜900 | **800〜1,600行／10〜22本** | 1,800 |
+| 4：G9-1〜3 | 200〜450 | **350〜800行／5〜11本** | 900 |
+
+段2では、底を固定した相対写像空間の `elementsComparisonNatural` の自然性、`relativePreIso` との照合、元の `sectionsEquivalenceNatural` と今回の実切断制限の接続、正本の厳密な因子分解を使った四角形の合成が残る。②の値比較・固定端点比較は今回の宣言を再利用し、作り直さない。
+
+段3では Yoneda 評価と同じ標的射の後合成の自然性、随伴を通じた `M_a := L(y(a))` の検出、充満忠実性による反映が残る。今回の全族同型の反転・表現可能値の自然性を再利用する。段4は既存の right 版からの opposite と ulift の移送が中心だが、射影を保つ同型・宇宙変更の表示合わせの分を増やした。各段の見込みの半分で途中実測を報告し、超過が見込まれたら検証済み分を保存して止める。
+
+### 検証と残り
+
+- 最終対象 `SetWeightEndpointShapeSquare` のビルド：**6,218 jobs 成功**。
+- 新規44宣言すべての `#check`・`#print axioms`・`#print sorries` が成功。**44件すべて sorry-free、標準三公理（propext・Classical.choice・Quot.sound）のみ**。ログ：`/tmp/is-w1/shape-build-19.log`。一覧・監査入力は同ディレクトリの `shape-files.txt`・`shape-decls.txt`・`shape-audit.lean`。
+- 新規21本は最終対象の依存閉包に含まれる。既存ファイルから新規ファイルへの import は追加していない。入口・全体監査の登録、F2全体のビルド・監査は調整役に委ねる。**今回F2全体の監査は実行していない**。
+- 新しい数学は新規ファイルだけ。既存宣言・drafts・入口・監査スクリプトは無変更。旧F2／HomotopyLimits配置への新規追加なし。Δ／siftedの③-bの持ち分には手を付けていない。
+- 鍵は `--wait 3600`、一枚ずつ、ビルド・宣言監査の間だけ保持。待ち時間による停止はしていない。
+
+**②の残る数学はなし。段2の①は未着手。停止点1で止まり、調整役の検収を待つ。**
+
+### 今回の新規ファイルと公開宣言
+
+パスはすべて `SerrePositivity/InfinityCategories/` 以下（KL-W1後の配置）。
+
+| 新規ファイル | 行数 | 宣言数 |
+| --- | ---: | ---: |
+| [SectionsLimitShapeValueComparison.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SectionsLimitShapeValueComparison.lean) | 80 | 3 |
+| [SectionsLimitValueInverse.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SectionsLimitValueInverse.lean) | 40 | 1 |
+| [SetWeightActualSectionsRestriction.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightActualSectionsRestriction.lean) | 53 | 2 |
+| [SetWeightLimitTailConeSquare.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightLimitTailConeSquare.lean) | 69 | 2 |
+| [SetWeightMappedSectionsEdge.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightMappedSectionsEdge.lean) | 67 | 4 |
+| [SetWeightSectionsLimitTailShape.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightSectionsLimitTailShape.lean) | 77 | 1 |
+| [CartesianSectionsRestrictionEvaluation.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CartesianSectionsRestrictionEvaluation.lean) | 48 | 2 |
+| [ConeSectionsMapShapeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsMapShapeNaturality.lean) | 58 | 1 |
+| [ConeSectionsValueShapeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConeSectionsValueShapeNaturality.lean) | 58 | 2 |
+| [ConstantSourceMapShapeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceMapShapeNaturality.lean) | 67 | 2 |
+| [ConstantSourceRelativeShapeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceRelativeShapeNaturality.lean) | 108 | 3 |
+| [ConstantSourceRestrictedRelative.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceRestrictedRelative.lean) | 69 | 3 |
+| [ConstantSourceShapeCoordinates.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/ConstantSourceShapeCoordinates.lean) | 50 | 1 |
+| [NormalizedSectionsValueShape.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/NormalizedSectionsValueShape.lean) | 52 | 2 |
+| [SmallSectionsComparisonEvaluation.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallSectionsComparisonEvaluation.lean) | 65 | 1 |
+| [SmallSectionsShapeNaturality.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/SmallSectionsShapeNaturality.lean) | 78 | 2 |
+| [UnstraighteningSectionsRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/UnstraighteningSectionsRestriction.lean) | 54 | 3 |
+| [ConeCylinderShapeRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/ConeCylinderShapeRestriction.lean) | 41 | 2 |
+| [ConeTransformationShapeRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/ConeTransformationShapeRestriction.lean) | 40 | 1 |
+| [SourceConstantShapeRestriction.lean](../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/TheSliceAndJoinConstructions/SourceConstantShapeRestriction.lean) | 47 | 2 |
+| [SetWeightEndpointShapeSquare.lean](../../SerrePositivity/InfinityCategories/HTT/PresentableInfinityCategories/SetWeightEndpointShapeSquare.lean) | 111 | 4 |
+
+| 公開宣言（末尾の名前） | 主張 |
+| --- | --- |
+| `coneApexEdgeAt` | 錐の辺の頂点を指定表示へ移した値の辺。 |
+| `coneSectionsValueMap_edgeAtIso` | 始点の表示を移しても、元の錐の辺の値と切断写像の全族比較を保つ。 |
+| `sectionsLimitValue_normalizedShapeIso` | 元の切断制限と同じ指定極限比較は、制限錐からの指定辺の値に全自然。 |
+| `coneSectionsValueMap_sectionsLimitValueIso` | 元の値の切断写像から同じ指定極限の値へ戻る全族は恒等射と同型。 |
+| `setWeightActualSectionsRestriction` | 元の要素の圏に沿う、小さい切断空間の実際の制限。 |
+| `setWeightConeValue_restrictionIso` | 指定された要素の圏の制限は、元の錐の値からの切断写像と全族で可換。 |
+| `setWeightLimitTailConeFamilyIso` | 元の後段の二経路は、指定極限錐の固定端点模型で全族として同型。 |
+| `setWeightLimitTail_homMk_eq` | 元の後段の二経路は、空間のホモトピー圏で同じ射を定める。 |
+| `edge_source_transport_simplex` | 始点の表示の等式による移送は、辺の元の一単体を変えない。 |
+| `setWeightSectionsMap_simplex` | 元の切断制限の辺は、同じ指定普遍辺の射影の一単体を保持する。 |
+| `setWeightMappedSectionsConeEdge` | 元の指定普遍辺を同じ関手で写した錐の辺。 |
+| `setWeightMappedSectionsConeEdge_simplex` | 同じ写された錐の辺の射影は、元の切断制限の辺の像と同じ一単体。 |
+| `setWeightSectionsLimitTail_shapeIso` | 元の指定極限への後段は、実切断の制限と同じ普遍辺の標準後合成に全自然。 |
+| `sectionsRestrictionTargetIso_evaluation` | 同じ指定引き戻し表示の相対比較の評価は、元の評価の第一射影。 |
+| `sectionsRestrictionOfIso_relative_evaluation` | 相対表示へ送った実切断制限を評価すると、元の全評価の形状制限。 |
+| `coneSectionsMapAt_shapeIso` | 同じ形状へ制限した錐の切断写像は、元の全切断写像の実際の制限と同型。 |
+| `smallUnstraighteningSectionsIso_inv_shape` | 小さい切断表示の逆も、実際の形状制限と厳密に可換。 |
+| `coneSectionsValueMapAt_shapeIso` | 元の錐の値の全切断写像は、同じ形状の小さい実切断制限と全族で可換。 |
+| `constantSourceMappingSpace_baseChangeIso` | 定値始域を正規化しても、元の相対写像空間の底変換の全族同型を使える。 |
+| `coherentConstantSourceMap_shapeIso` | 元の定値始域比較と実切断の制限は、全変換空間からの写像として同型。 |
+| `constantSourceRelativeShapePre` | 定値始域の実際の底変換射で、元の標的への相対写像を前合成する。 |
+| `constantSourceRelativeShapePre_comparison` | 始域の制限を元の指数同型で読むと、同じ実切断の制限への後合成。 |
+| `constantSourceRelativeShapePost_comparison` | 標的の底変換射による相対後合成を、同じ相対指数同型の下で読む。 |
+| `constantSourceRestrictedOverIso` | 定値始域の元の直積表示を、指定された底の射で後合成する。 |
+| `constantSourceRestrictedRelativeIso` | 制限された定値始域の相対関手空間を、全 fiber からの相対関手空間へ移す。 |
+| `constantSourceRestrictedRelativeIso_evaluation` | 同じ相対指数同型の二重評価は、定値始域の元の逆表示による全評価。 |
+| `constantSourceOverIso_inv_shape` | 元の定値始域の直積座標では、形状制限は底だけの前合成になる。 |
+| `normalizedSmallSectionsRestriction` | 同じ小さい実切断の制限を、指定図式の表示へ移した射。 |
+| `coneSectionsValueMapAt_normalizedShapeIso` | 指定表示へ移した制限も、元の錐の値からの切断写像を全族で保つ。 |
+| `smallUnstraighteningSectionsIso_evaluation` | 元の大小の切断比較は、全評価を元の全空間の縮小同型で結ぶ。 |
+| `smallUnstraighteningSectionsRestriction_map_evaluation` | 小さい実切断制限の評価は、小さい全空間の元の底変換射と可換。 |
+| `smallUnstraighteningSectionsIso_shape` | 元の大小の切断同型は、同じ形状の実切断制限と厳密に可換。 |
+| `unstraighteningSectionsRestriction` | 元の図式の全切断を、指定形状の引き戻しに制限する実際の射。 |
+| `unstraighteningSectionsRestriction_evaluation` | 制限した切断の評価は、元の全評価を形状に沿って引き戻したもの。 |
+| `unstraighteningSectionsRestrictionTargetIso` | 制限後の切断を元の相対関手空間へ送る、同じ引き戻し表示の同型。 |
+| `fatConeCylinderEmbedding_naturality` | 円柱へ左の一点を補う操作は、右の形状写像と可換。 |
+| `coneCylinderMap_naturality` | 元の錐の円柱は、形状の制限後も同じ join への写像になる。 |
+| `coneTransformationPointAt_shapeRestriction` | 同じ形状制限で得た錐の標準変換は、元の標準変換の実際の制限。 |
+| `sourceConstantShapeRestriction` | 定値始域の指定頂点を保持した、変換の全空間の形状制限。 |
+| `sourceConstantShapeRestriction_prism` | 制限した全変換の円柱は、元の円柱の同じ形状への制限そのもの。 |
+| `limitConeEndpointComparison_restrictAtIso` | 元の制限錐を指定表示しても、固定端点模型での全族比較を保つ。 |
+| `postcompose_source_transport` | 辺の始点の表示変更は、標準後合成の始域の表示変更に一致する。 |
+| `setWeightEndpointRestriction_sectionsMapIso` | 同じ指定普遍辺の後合成は、固定端点錐の元の形状制限と全族で可換。 |
+| `setWeightLimitTail_endpointRestrictionIso` | 元の後段を固定端点模型へ送る比較は、元の錐の族の制限に全自然。 |
