@@ -4830,3 +4830,24 @@ sorry・追加公理なし。鍵返却を回収済み。引き続き零次数の
 監査 `/tmp/bsw16/audit-em-gamma-comparison.log` は **62 本・504 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則どおり、実 π₀/Moore 比較の代表元の計算へ続行する。
+
+
+## 72. D79(ii)：零単体の実ホモロジー類の計算
+
+追加三本は `MooreZeroRepresentative`、`ChainZeroClassNaturality`、
+`EilenbergMacLaneGammaZeroRepresentative`（接頭辞
+`SerrePositivity.EInfinity.PowerOperation.`、いずれも登録候補）。
+計 **132 行**、(ii) の検証済み累計 **3639 行**。
+前二本は **［一般∞］移動候補**。
+
+`modulePiZeroMooreEquiv_mk` は、元の π₀/Moore 比較が代表頂点を
+同じ実 opcycles 射で写すことの等式。
+`mooreDegreeZeroIso_eq` は二つの既存の零次数同型が同じ正規化包含からなることの照合。
+`gammaPiZeroTruncationEquiv_mk` はこれを指定 Dold–Kan 余単位で写し、
+元の Γ の頂点の像を指定 smart 切断の零次ホモロジー類として計算する。
+元の複体へ戻す比較と単位の類の計算は続行中。
+
+対象ビルド `/tmp/bsw16/em-gamma-zero-representative-03.log` は成功、警告なし。
+監査 `/tmp/bsw16/audit-em-gamma-representative.log` は **65 本・513 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則どおり次の代表元の比較へ進む。
