@@ -402,3 +402,32 @@ F5 の正次数の零化は閉じた。次数零の切断代数 B_Y/im(A) の台
 F5 は正次数と次数零の両方が閉じた。F6〜F8 は未完で、停止点 2f ではない。主な残りは、F6 の正次数の Frobenius 順極限上の比較、F7 の次数零の完全性、F8 の全複体への接続の三つ。
 
 次の F6 の入口：既存の `reesAdicProjectiveClosedCechFrobenius` は同じ厚さ n 上の Frobenius を定義し、射影・遷移との可換性を供給する。一方、F6 に要る n→p*n（反復で n→p^e*n）の厚化を経由する写像は別途構成する。`reesAdicProjectiveClosedCechProjection_shifted_kernel_bound` と `reesAdicProjectiveClosedCechTransition_range_stabilizes` は 2e の既存の評価として再利用する。H 自身の I 進商と、閉厚化の H を同一視せず、実際の商環と標準開の比較を経由する。
+
+
+## F6 入口：厚化を経由する実際の商環の Frobenius（01cd34c8f）
+
+新規 4 本・15 宣言・214 行。2f 累計 49 本・2,599 行（入口の import 込み 2,648 行）。対象と直接 importer は 4,595 jobs 成功。別実行の監査は 8,910 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行中だけ使用し、待機は一つずつとした。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `frobeniusThickeningMap` | 商 A/Iⁿ から A/I^(p^e*n) への、反復 Frobenius による実際の環準同型。 |
+| `frobeniusThickeningMap_mk` | 代表元を p^e 乗に送る公式。 |
+| `frobeniusThickeningPower_le` | 厚い段から元の段へ戻すためのイデアルの包含。 |
+| `frobeniusThickeningMap_factor` | 元の厚さへ戻す商写像との合成は、その商の反復 Frobenius。 |
+| `frobeniusThickeningMap_projection` | 元の環から商への射影と、厚化を経由する反復 Frobenius の可換性。 |
+| `frobeniusThickeningMap_transition` | 厚さを下げる遷移と、厚化を経由する反復 Frobenius の可換性。 |
+| `reesClosedRingThickeningFrobenius` | 2e の実際の表示 A/(IⁿA) での、厚さ n→p^e*n の環準同型。 |
+| `reesClosedRingThickeningFrobenius_mk` | Rees の商環表示でも、代表元の像は p^e 乗。 |
+| `reesClosedRingThickeningFrobenius_projection` | 元の環から Rees の実際の商への射影と可換。 |
+| `reesClosedRingThickeningFrobenius_preservesPiece` | 商の斉次次数 k を p^e*k に送る。 |
+| `reesClosedRingThickeningFrobenius_scalar` | 係数環の反復 Frobenius と可換。 |
+| `reesClosedRingThickeningFrobeniusSemilinear` | 実際の商環の厚化写像を、係数の反復 Frobenius に関する半線形写像にする。 |
+| `reesClosedRingThickeningFrobeniusSemilinear_apply` | 半線形写像は元の環準同型と同じ値を持つ。 |
+| `reesClosedRingThickeningFrobenius_factor` | Rees の商の厚さを戻すと、その商の反復 Frobenius になる。 |
+| `reesClosedRingThickeningFrobenius_transition` | Rees の実際の商の厚さを下げる遷移と可換。 |
+
+これらは p の像が零であることだけで定義し、商環・標準開の非自明性は仮定しない。反復の指数 e を直接扱う。`Ideal.map_pow` で 2e の A/(IⁿA) の表示にそろえた。商環の斉次部分は実際の商写像による像であり、その代表元を p^e 乗して次数を制御している。
+
+F6 の完成はまだ主張しない。次は局所化へ移す。既存の `projectiveScalarLocalizationLinearEquiv` とその分数公式で、加群の局所化を環の Away 局所化へ移せる。`IsLocalization.Away.lift` を使い、分母の像が p^e 乗になることから可逆性を供給する。分子・分母の式を用いて指定次数部分へ制限し、Čech 図式へ渡した後、`reesClosedRingCechIso` で Rees 表示へ戻す。厚化の遷移と射影との可換性も同じ比較に通す。
+
+F6 の核側は、十分厚い段への制限の単射性と今回の因子分解を組み合わせる。像側は、厚化間の像の安定化と因子分解で十分高い Frobenius の像を元の H の像へ入れる。これを Frobenius 順極限上の全単射性へ移す作業は未実装。F7 の次数零の商との比較、F8 の全複体も残る。停止点 2f ではない。
