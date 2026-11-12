@@ -2152,3 +2152,151 @@ V のタプルとの交叉で上の cone を作れば、縦方向を V の増大
 | `schemeStructureCechRefinedPullbackMap_apply` | 各タプルでの Čech の引き戻しは、実際の構造層の appLE そのもの。 |
 
 段 2e の検証済み実測：**285 本・28,769 行**、入口を含め **29,059 行**。上限 50,000 行内。未検証の下書きは含めない。
+
+
+## 11-12 夜：実際の底変換と動く基底の射の比較（d01affd63）
+
+**停止点 2e ではない。** 数学コミット `d01affd63`。26 モジュール・89 宣言、1,928 行（入口登録を含め 1,955 行）。
+対象と直接 importer `SerrePositivity.AlgebraicGeometry` は **4,517 jobs 成功**。
+別実行の `scripts/audit_kst_scheme_lemmas.lean` は **8,370 宣言、標準三公理のみ**。
+どちらも共有鍵 `with_build_lock.sh --wait 3600` を実行中だけ取得した。
+既存の宣言は変更せず、新規ファイルと入口の import の追加だけ。sorry・admit・新規公理・計算量上限の追加なし。
+
+到達点：
+
+- 実際の Cartesian なアフィン切断の正方形を元の基底環上のテンソル積と同一視し、左右の入射・純テンソル・制限への自然性を示した。平坦性は不要。
+- `schemeStructureCechBaseChangeComplexIso` と `schemeStructureCechNativeTensorComplexIso` は、実際の逆像被覆の通常の Čech 複体を比較する。空交叉の Γ とテンソル積の交換を仮定しない。`schemeStructureCechNativeFlatBaseChangeIso` の H との交換だけに flat を要求する。
+- `projectiveProjNativeNatCechComplexIso_naturality` は旧次数零加群の計算と実際の Proj の引き戻しを同じ射として照合する。
+- `gradedOriginalProjNativeCechComplexIso`・`gradedOriginalProjCechScalarRestrictionIso`・`gradedOriginalProjNativeCechComplexIso_naturality` は、各段で元の Proj を使ったまま、共通基底上の計算と元の基底のスカラー制限をつなぐ。Mathlib の Proj.map の宇宙の指定に合わせ、射を扱う grading の carrier は環と同じ宇宙に置く。実際の部分加群の次数成分はこの形であり、最終出力の宇宙は変更しない。
+- `projectiveHomogeneousChartLinearEquiv_frobenius`・`gradedOriginalProjNativeChart_frobenius` は実際の切断の p 乗と一致する。`schemeStructureCommonAffineCechFrobenius_naturality` は共通アフィン細分の比較と可換で、細分の同型性は準連接性から供給している。
+
+**未完**：各段を実際の元の Proj の Čech H とした filtered 図式全体の比較と、その余極限、I 進の閉厚化・互換族・既存の Rees の形式関数への接続、および比較同士の可換性の最終照合。
+`projectiveProjNativeFilteredHomologyIso` の従来の型（極限先の native H と旧有限段の H の余極限）だけを、実際の各段の比較の完成とは数えない。
+模型と有限段の存在自体は承認どおり 2g の仕事であり、この束では作っていない。
+最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と利用側の型は変更していない。
+今夜は停止点を報告・コミットした後、取り込みを待たず 2f の F0〜F3 へ進む（11-12 夜の指示）。
+
+登録したモジュール：
+
+- `ProjectiveProjRingMapSectionsOfEq`
+- `ProjectiveProjNativeCechEvaluation`
+- `GradedScalarComponents`
+- `GradedOriginalProjSections`
+- `SchemeAffinePullbackSections`
+- `SchemeScalarMorphism`
+- `SchemeAffinePullbackSectionsNaturality`
+- `SchemeAffineBaseChangeTensor`
+- `SchemeAffineBaseChangeTensorLinear`
+- `ModuleCechScalarExtension`
+- `SchemeStructureCechBaseChangeCoefficient`
+- `ProjectiveProjNativeCechNaturality`
+- `SchemeAffineSectionModule`
+- `SchemeAffineBaseChangeNativeSections`
+- `SchemeStructureCechBaseChangeIso`
+- `ProjectiveProjNativeFrobeniusEvaluation`
+- `GradedOriginalProjCech`
+- `GradedOriginalProjCechScalarRestriction`
+- `GradedOriginalProjRingMapSections`
+- `GradedOriginalProjScalarNaturality`
+- `SchemeStructureCechNativeTensor`
+- `GradedOriginalScalarRingMap`
+- `SchemeStructureCechComparisonNaturality`
+- `GradedOriginalProjCechMaps`
+- `GradedOriginalProjCechNaturality`
+- `GradedOriginalProjFrobeniusEvaluation`
+
+宣言と主張（一行ずつ。生成宣言は監査に含む）：
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjRingMapSections_of_eq` | 同じ値の指定された分母を使う、標準開の構造層の引き戻しの自然性。 |
+| `projectiveProjNativeNatCechComplexIso_apply` | 実際の構造層への複体の比較は、各タプルで非空交叉の切断の同型。 |
+| `projectiveProjNativeCech_intersection_le` | 標準開の交叉は、実際の Proj の射での対応する交叉の逆像に含まれる。 |
+| `projectiveProjNativeCechMap_apply` | 実際の Proj の Čech の射は、タプルごとに構造層の appLE に等しい。 |
+| `gradedScalarComponents` | 元の次数の carrier を、指定した基底環上の部分加群として扱う。 |
+| `mem_gradedScalarComponents` | scalar を指定し直しても、各次数の所属の条件は変わらない。 |
+| `gradedScalarComponentsGradedRing` | scalar を指定し直した次数成分は、同じ分解を持つ次数付き環になる。 |
+| `gradedScalarToOriginal` | scalar を指定した次数付き環から、元の次数付き環への恒等写像。 |
+| `gradedOriginalToScalar` | 元の次数付き環から、scalar を指定した次数付き環への恒等写像。 |
+| `gradedScalarAwayIso` | 同じ carrier を持つ二つの grading の斉次局所化は、環として自然に同型。 |
+| `gradedScalarAwayIso_val` | 二つの grading の比較は、周囲の通常の局所化の値を保つ。 |
+| `gradedScalarAwayIso_awayMap` | carrier の比較は、標準開を狭める斉次局所化の制限と可換。 |
+| `gradedOriginalAwayModule` | generic な grading の斉次局所化の R 加群構造。通常の局所化への単射で移す。 |
+| `gradedScalarAwayLinearEquiv` | 同じ grading の carrier の比較は、指定した基底環上でも線形。 |
+| `gradedScalarComponentsGradedSMul` | 係数環を明示した carrier 上にも、同じ次数付き作用がある。 |
+| `gradedSubmoduleScalarRestrictionMemClass` | 大きい基底環の部分加群は、共通の小さい基底環の作用でも閉じる。 |
+| `gradedOriginalScalarToZero` | 基底環のスカラーは零次成分に属する。 |
+| `gradedOriginalScalarToGlobalSections` | 分母 1 のチャートを通る、基底環から Proj の大域切断への写像。 |
+| `gradedOriginalScalarToGlobalSections_restrict` | 大域スカラーの標準開への制限は、同じ定数の斉次分数である。 |
+| `gradedOriginalAway_scalar_mul` | 元の基底環の加群作用は、零次成分を通る定数の乗法に一致する。 |
+| `gradedOriginalProjAwaySectionLinearEquiv` | 正次数の標準開の構造層の環同型は、元の基底環上でも線形。 |
+| `gradedOriginalProjAwaySectionLinearEquiv_pow` | 標準開の切断への実際の比較は冪写像と可換。零環となる開も含む。 |
+| `gradedOriginalScalarToGlobalSections_comp` | 共通の基底環の大域スカラーは、元の基底環を通る合成と一致する。 |
+| `schemeAffinePullbackSectionIso` | アフィン交叉上の実際の切断は、三つの切断環の canonical な pushout と同型。 |
+| `schemeAffinePullbackSectionIso_inl` | pushout の左の写像は、実際の構造層の引き戻し。 |
+| `schemeAffinePullbackSectionIso_inr` | pushout の右の写像も、実際の構造層の引き戻し。 |
+| `schemeAffinePullbackIntersection_isAffineOpen` | 同じ実際の底変換の交叉はアフィン開である。 |
+| `schemeScalarMorphism` | 大域スカラーが定める、Spec R への構造射。 |
+| `schemeScalarHom` | Spec R への構造射から得られる、大域スカラー。 |
+| `schemeScalarMorphism_appTop` | 構造射に移した大域スカラーを、Γ–Spec の三角恒等式で回収する。 |
+| `schemeScalarHom_scalarMorphism` | 構造射を経由しても、大域スカラーの環準同型は変わらない。 |
+| `schemeScalarHom_naturality` | 実際の構造射の可換な正方形から、切断の引き戻しの scalar の整合性を得る。 |
+| `schemeAffinePullbackSectionIso_naturality` | 底変換の canonical なアフィン切断の比較は、開集合を狭める制限に自然。 |
+| `schemeAffineSectionAlgebra` | 構造射を指定したアフィン開の切断を、基底環上の代数として束ねる。 |
+| `schemeAffineBaseChangeSections_isPushout` | 実際のアフィン切断の正方形を、元の R と A を頂点に持つ pushout に移す。 |
+| `schemeAffineBaseChangeTensorIso` | 実際の底変換のアフィン切断と、元の環上のテンソル積の環同型。 |
+| `schemeAffineBaseChangeTensorIso_left` | テンソル積の左の写像は、底変換先の構造射が誘導する scalar の写像。 |
+| `schemeAffineBaseChangeTensorIso_right` | テンソル積の右の写像は、元の構造層の実際の引き戻し。 |
+| `schemeAffineBaseChangeTensorIso_tmul` | 純テンソルの実際の切断への像は、scalar の像と切断の引き戻しの積。 |
+| `schemeAffineBaseChangeSectionsLinearEquiv` | 実際のアフィン底変換の切断の比較は、底変換先の環上で線形。 |
+| `moduleCechScalarExtension` | スカラーを制限した係数への射の、図式に自然なテンソル積からの延長。 |
+| `moduleCechScalarExtension_one_tmul` | 自然なテンソル積からの射は、1 と元の切断の純テンソルを引き戻す。 |
+| `schemeStructureCechBaseChangePullbackCoefficient` | 基底環の変わる構造層の引き戻し。スカラー制限の合成を明示する。 |
+| `schemeStructureCechBaseChangeDiagramRestriction` | 実際の基底変更から得る、逆像被覆の係数図式への射。 |
+| `schemeStructureCechBaseChangeDiagramMap` | 実際の切断の引き戻しをテンソル積から延長した、自然な係数の射。 |
+| `projectiveProjNativeCechSection_map` | 標準開上の分数の比較は、交叉の実際の切断への引き戻しに自然。 |
+| `projectiveProjNativeNatCechComplexIso_naturality` | 次数零加群の Čech の射は、実際の構造層の Čech の引き戻しと一致する。 |
+| `schemeAffineSectionAlgebra_scalar` | 構造射で定める局所のスカラーは、大域スカラーを制限した切断。 |
+| `schemeAffineSectionModuleEquiv` | 実際の構造層の係数加群と、構造射で束ねた切断環は同じ加群。 |
+| `schemeAffineBaseChangeNativeSectionsEquiv` | アフィン底変換の実際の切断の同型を、元の構造層の係数加群の間で述べる。 |
+| `schemeAffineBaseChangeNativeSectionsEquiv_unit` | 実際の切断の同型は、1 と元の切断の純テンソルを構造層の引き戻しへ送る。 |
+| `schemeStructureCechBaseChangeSectionIso` | アフィン交叉の切断の同型を、逆像被覆の対応する交叉まで輸送する。 |
+| `schemeStructureCechBaseChangeDiagramMap_app` | 自然なテンソル積の射のアフィン交叉での成分は、実際の切断の同型。 |
+| `schemeStructureCechBaseChangeDiagramMap_isIso` | 非空アフィン交叉において、実際の係数の底変換の射は同型。 |
+| `schemeStructureCechBaseChangeComplexIso` | 実際の底変換の切断の Čech 複体は、係数をテンソル積にした Čech 複体と同型。 |
+| `projectiveNatGradedChartZeroFrobenius` | 捻り零の Frobenius は、同じ次数零チャートへの半線形写像。 |
+| `projectiveNatGradedChartZeroFrobenius_val` | 捻り零の Frobenius の周囲の局所化への像。 |
+| `projectiveHomogeneousChartLinearEquiv_frobenius` | 加群のチャートの Frobenius は、実際の斉次局所化の p 乗に一致する。 |
+| `projectiveProjNativeChart_frobenius` | 分数の比較を実際の標準開の切断へ移しても Frobenius は p 乗に一致する。 |
+| `gradedOriginalProjCechOpen` | scalar の指定の前の、元の Proj の標準開。 |
+| `gradedOriginalProjCechOpen_intersection` | 元の Proj の標準開の交叉は、変数の像の積での標準開。 |
+| `gradedOriginalProjCechSectionLinearEquiv` | carrier の正規化前の実際の標準開へ、非空交叉の係数を移す線形同型。 |
+| `gradedOriginalProjCechSectionLinearEquiv_naturality` | carrier の正規化前の切断への比較は、標準開を狭める射に自然。 |
+| `gradedOriginalProjNativeCechComplexIso` | 共通の係数環上の標準開計算と、元の Proj の Čech 複体の同型。 |
+| `gradedOriginalProjCoefficientScalarIso` | 段の基底環での構造層の係数を制限すると、共通の基底環での係数と自然に同型。 |
+| `gradedOriginalProjCechScalarRestrictionIso` | 段ごとの基底環の制限と、同じ実際の Proj の Čech 複体の比較。 |
+| `gradedOriginalProjRingMapSections_of_eq` | 同じ値の指定された分母を使う、標準開の構造層の引き戻しの自然性。 |
+| `gradedOriginalProjRingMapSections_apply` | 元の grading を使う実際の切断への、斉次分数ごとの自然性。 |
+| `gradedOriginalProjScalarNaturality_fraction` | 基底環のスカラーの斉次分数は、実際の係数環の写像で保たれる。 |
+| `gradedOriginalScalarToGlobalSections_naturality` | Proj の引き戻しは、元の基底環の大域スカラーを保つ。 |
+| `schemeStructureCechNativeTensorComplexIso` | 実際のアフィン被覆の逆像の Čech 複体と、元の Čech 複体のテンソル積の同型。 |
+| `schemeStructureCechNativeTensorComplexIso_unit_apply` | 複体の比較は、1 と元の cochain の純テンソルを実際の切断の引き戻しへ送る。 |
+| `schemeStructureCechNativeFlatBaseChangeIso` | 実際の底変換の構造層の Čech H と、flat なテンソル積の比較。 |
+| `gradedOriginalScalarRingMap` | 異なる carrier の次数付き環の射を、共通の基底環の部分加群の次数の射に移す。 |
+| `gradedScalarAwayIso_map` | 共通基底への正規化と、実際の斉次局所化の射は可換。 |
+| `gradedOriginalScalarRingMap_denominator` | 元の grading の射は、標準開の分母を同じ変数の像の積へ送る。 |
+| `gradedOriginalScalarRingMap_powers` | 元の grading の射で標準開の分母の冪を移す包含。 |
+| `gradedOriginalChartLinearEquiv_map` | 共通基底の加群でのチャートの射を、元の grading の斉次局所化の射へ戻す。 |
+| `schemeStructureCommonAffineCechCoefficient_naturality` | 二つのスカラー作用の間の実際の係数の射に対する、被覆比較の自然性。 |
+| `schemeStructureCommonAffineCechFrobenius_naturality` | 実際の構造層の Frobenius は、共通アフィン細分による被覆比較と可換。 |
+| `gradedOriginalProjCech_preimageOpen` | 元の grading の Proj の射は、同じ変数の標準開を引き戻す。 |
+| `gradedOriginalProjNativeCechMap` | 元の二つの grading の間の、実際の構造層の Čech の引き戻し。 |
+| `gradedOriginalProjCech_intersection_le` | 元の grading の標準開の交叉を引き戻す包含。 |
+| `gradedOriginalProjNativeCechMap_apply` | 共通基底上での元の Proj の Čech の射は、実際の appLE の引き戻し。 |
+| `gradedOriginalProjNativeCechComplexIso_apply` | 共通基底の加群の複体と元の Proj の切断の比較を、タプルごとに計算する。 |
+| `gradedOriginalProjNativeCechSection_map` | 標準開上の分数の比較は、交叉の実際の切断への引き戻しに自然。 |
+| `gradedOriginalProjNativeCechComplexIso_naturality` | 次数零加群の Čech の射は、実際の構造層の Čech の引き戻しと一致する。 |
+| `gradedOriginalChartLinearEquiv_frobenius` | 共通基底のチャートの Frobenius は、元の grading の斉次局所化の p 乗と一致。 |
+| `gradedOriginalProjNativeChart_frobenius` | 共通基底での計算を元の Proj の切断へ戻しても、Frobenius は実際の p 乗。 |
+
+段 2e の検証済み実測：**311 本・30,697 行**、入口を含め **31,014 行**。上限 50,000 行内。未検証の下書きを含めない。
