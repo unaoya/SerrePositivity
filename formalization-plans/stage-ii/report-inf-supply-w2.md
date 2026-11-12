@@ -1608,3 +1608,27 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 いずれも第一のまとまりの内部。今回の鎖ホモトピーは一方の合成についてのもの。逆順の合成、最終 AW・shuffle の全単体パラメータへの自然性、既存の単位余積による BK 線形化との同定、Γ Hom／重み付き切断比較への照合を完了済みとは数えない。後続の指定 native 制限・極限性、標準脚・D(A) 輸送、全射・錐の族も残る。範囲・型の弱化、⑤aのファイル・既存宣言・入口・公式監査の変更はない。停止点2は未完、残枠3,496行。約7,900行で実測と残りを再見積もりする。
+
+## 45. 3b-2 続行：指定係数 EZ 写像の全単体的射への自然性
+
+コード `5ff48b6fd`、新規4本236行。累計 **110本6,740行**。
+
+- `HomologicalAlgebra.CochainTensorBaseChangeNaturality`（43行）：既存 `cochainTensorBaseChangeIso` の両因子の鎖写像への自然性を標準余積包含で証明した。
+- `HomologicalAlgebra.NegativeTensorBaseChangeNaturality`（54行）：零延長の自然同型、既存負次数テンソル比較、上記底変換の自然性を合成し、同じ `negativeTensorBaseChangeIso` の自然性を証明した。
+- `DiagramComparison.CoefficientTensorNaturality`（73行）：整数係数移送と、最後に元の Moore 正規化へ戻す同型を含む自然性を証明した。
+- `DiagramComparison.NegativeEZCoefficientNaturality`（66行）：同じ負次数 AW・shuffle の両入力について、任意の二つの単体的射への自然性を証明した。別の自然な写像を定義し直して置換していない。
+
+全て第一のまとまりの「自然性・照合」の内部。四まとまりの外に新しいまとまりや補助的な主題を追加していない。合成の elaboration が200,000 heartbeatsに達した箇所は、比較の引数を明示して段階を分けて解消し、制限値は増やしていない。
+
+依存対象の鍵付きビルド **1,964 jobs**、個別検査、新規対象の鍵付きビルド **2,242 jobs**、累計110本 **1,204宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-dependencies-42.log`・`/private/tmp/isw2-g10-build-43.log`、最終監査 `/private/tmp/AuditISW2G10HundredTen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredten-modules.txt`。鍵は `--wait 3600`、整理券は同時に一枚、各回1,700秒上限、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.HomologicalAlgebra.CochainTensorBaseChangeNaturality
+SerrePositivity.HomologicalAlgebra.NegativeTensorBaseChangeNaturality
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientTensorNaturality
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficientNaturality
+```
+
+次は自由積鎖への最後の輸送に自然性を通し、元の重み付き切断比較と照合する。逆順の合成や全単体空間の同値性を今回の自然性だけで結論していない。指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・錐の族も保持する。既存宣言・⑤aのファイル・入口・公式監査は変更していない。停止点2は未完、残枠3,260行。約7,900行での非停止の中間報告の条件を保持する。
