@@ -5018,3 +5018,22 @@ lemma complexHammockDerivedComparison_fullyFaithful
 監査 `/tmp/bsw16/audit-em-native-hammock.log` は **85 本・695 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則どおり、報告後も自然性と指定屋根族の比較へ進む。
+
+## 77. D79(ii)：同じ置換射を通る段ごとの π/H 自然性
+
+登録候補（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）：
+`EilenbergMacLaneStageCohomologyNaturality`（66 行）、
+`EilenbergMacLaneSpectrumLevelNaturality`（78 行）。追加 **144 行**、
+(ii) の検証済み累計 **5084 行**。
+
+シフトのホモロジー比較と添字の移送の自然性を、元の Γ の段の自然性へ合成した。
+次に `eilenbergMacLaneSpectrumMap_projection` で、同じ実単射置換射の
+厳密な可換式を証明し、任意の正次数の計算段の π/H 自然性
+`eilenbergMacLaneSpectrumLevelPiCohomologyEquivAt_naturality` を閉じた。
+ここでも元の鎖写像の厳密な可換式を保持している。
+
+対象ビルド `em-stage-cohomology-naturality-02.log`、
+`em-spectrum-level-naturality-04.log` は成功、最終版に警告なし。
+監査 `audit-em-stage-naturality.log` は **87 本・709 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+整数次数の自然性と、§76.2 の指定比較の充満忠実性は続行する。
