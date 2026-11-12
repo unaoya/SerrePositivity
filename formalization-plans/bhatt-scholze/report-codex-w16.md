@@ -3005,3 +3005,22 @@ main `28a87a2ed` を取り込み、§18 を読んだ。a の上限は 4,000 行�
 従って現時点では、ホモトピー圏での一致が十分であることと、残る照合が既に証明できたことを
 区別する。二つの指定射の照合は引き続き未証明。今回 Lean の変更・ビルド・監査は行っていない。
 §20.2・§40.2 の完了時の実測比較は未提出である。
+
+
+## 50. 元の圏での一致への復帰と、指定商の接続（実装途中）
+
+ユーザーの指示に従い、ホモトピー圏への弱化は採用せず、元の複体の圏での厳密な一致を実装する。
+`FreeCoefficientCompatibility` に `schurArityInputCoinvariantIso_quotient` を追加した。
+元の arity の商を `schurArityInputCoinvariantIso` で移した射が、braiding の後の
+同じ対角作用の指定商写像となることを、複体の射の等式として証明した。
+既存の `schurArityInputCoefficientIso_quotient` と `coinvariantTotalQuotient_comparison` を接続している。
+
+増分は 15 行、a の実測は **3,639 行**。二つの指定射の照合全体はまだ未完了で、
+この補題だけを a の完了とはしない。規模による停止条件に達したという報告でもない。
+次に残るのは、指定商を四因子の交換・群変更・直積群の分離へ通す照合と、
+標準語への厳密な Hopf 作用の照合である。
+
+一対象のビルドは成功（`/tmp/bsw16/strict-coefficient-01.log`）。
+別の鍵での監査も成功し、四モジュール・56 宣言・標準三公理のみ
+（`/tmp/bsw16/audit-strict-coefficient.log`）。sorry・追加公理はない。
+鍵の終了をそれぞれ回収済み。新規モジュールはなく、登録待ち四本の一覧は同じ。

@@ -101,4 +101,19 @@ lemma schurArityInputCoefficientIso_quotient (K : Complex R) (r : ℕ) :
     exact congrArg (fun q => (β_ ((operad R).arity r) (power K r)).hom ≫ q)
       (ht σ (arityComplexAction R r) (sequenceComplexAction_eq R r))
 
+/-- 入力優先の余不変表示は、元の arity 商を同じ対角作用の商へ送る。 -/
+lemma schurArityInputCoinvariantIso_quotient (K : Complex R) (r : ℕ) :
+    arityCoinvariantComplexQuotient (schurDiagram R (sequence R) K) r ≫
+      (schurArityInputCoinvariantIso R K r).hom =
+    (β_ ((operad R).arity r) (power K r)).hom ≫
+      (representationCochainForgetIso (tensorComplexAction
+        (finiteBijectionComplexAction (bijectionFunctor K) r) (arityComplexAction R r))).inv ≫
+      (NatTrans.mapHomologicalComplex
+        (Rep.coinvariantsMk R (ULift.{u} (Equiv.Perm (Fin r)))) (.up ℤ)).app
+        (representationCochainComplex (tensorComplexAction
+          (finiteBijectionComplexAction (bijectionFunctor K) r) (arityComplexAction R r))) := by
+  simp only [schurArityInputCoinvariantIso, Iso.trans_hom]
+  rw [← Category.assoc, schurArityInputCoefficientIso_quotient]
+  rw [Category.assoc, coinvariantTotalQuotient_comparison]
+
 end SerrePositivity.EInfinity.BarrattEccles
