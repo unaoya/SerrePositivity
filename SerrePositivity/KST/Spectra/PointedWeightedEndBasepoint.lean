@@ -15,7 +15,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed
 open CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra
@@ -64,13 +64,13 @@ def basepointCone (D : I ⥤ PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine VIII §1、HA §1.4.2。密度比較の基点保存の入力。 -/
 lemma underlyingIso_basepoint (W : I ⥤ SSet.{u}) (D : I ⥤ PointedSimplicialSet.{u}) :
     (obj W D).hom ≫ (underlyingIso W D).hom =
-      weightedConeComparison W (basepointCone D) := by
-  apply weightedSections_hom_ext
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W (basepointCone D) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
   rw [Category.assoc, underlyingIso_π, ← Category.assoc, Under.w]
   change (PointedObject.basedHom (PointedObject.adjoin (W.obj i)) (D.obj i)).hom ≫
       FreePointedHomRestriction.restrict (W.obj i) (D.obj i) = _
-  rw [FreePointedHomRestriction.basepoint_restrict, weightedConeComparison_π]
+  rw [FreePointedHomRestriction.basepoint_restrict, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_π]
   rfl
 
 end PointedWeightedEnd

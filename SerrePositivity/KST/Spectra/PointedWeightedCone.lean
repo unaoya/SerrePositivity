@@ -7,7 +7,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndCotensor
 概要：点つき図式の厳密な錐から重み付き end への標準比較射。
 方針：自由基点の元の成分を忘れて定数な族を作り、end へ持ち上げる。
 規約：極限錐の仮定を要求しない実際の点つき射。
-使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.1。有理自明作用の標準比較の入力。
+使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.1（Tag 03B6）。有理自明作用の標準比較の入力。
 -/
 
 @[expose] public section
@@ -82,7 +82,7 @@ variable {I : Type u} [SmallCategory I]
 /-- 概要：点つき図式の錐から重み付き end への標準射。
 方針：各錐成分に定数族の射を後合成して end に持ち上げる。
 規約：錐の極限性は仮定しない。
-使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.1。自明作用から hG への比較。 -/
+使われ方：HA §1.4.2、BF 1978 §2、Kerodon 7.5.4.1（Tag 03B6）。自明作用から hG への比較。 -/
 def coneComparison (W : I ⥤ SSet.{u}) {D : I ⥤ PointedSimplicialSet.{u}} (c : Cone D) :
     c.pt ⟶ obj W D :=
   end_.lift (fun i ↦ c.π.app i ≫ constantFamily (W.obj i) (D.obj i)) (fun i j f ↦ by

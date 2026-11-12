@@ -18,16 +18,16 @@ open Spectra PointedSimplicialSet
 lemma suspensionHom_underlying_evaluation (X Y : PointedSimplicialSet.{u}) :
     (productToSmash circle X ▷ (PointedObject.basedHom X Y).right) ≫
       uncurry ((suspensionHom X Y).right ≫
-        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)) =
+        PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y)) =
     (α_ circle.right X.right (PointedObject.basedHom X Y).right).hom ≫
       (circle.right ◁ uncurry (PointedObject.basedHomι X Y)) ≫ productToSmash circle Y := by
-  have hn := productToSmash_naturality (𝟙 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)) (suspensionHom X Y)
+  have hn := productToSmash_naturality (𝟙 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)) (suspensionHom X Y)
   simp only [Under.id_right, id_tensorHom] at hn
   rw [uncurry_natural_left, ← pointedClosedEvaluation]
   erw [reassoc_of% hn]
   have he := congrArg Under.Hom.right (suspensionHom_evaluation X Y)
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ◁ suspensionHom X Y).right ≫
-    ((ihom.ev (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)).right =
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ◁ suspensionHom X Y).right ≫
+    ((ihom.ev (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y)).right =
       (α_ circle X (PointedObject.basedHom X Y)).hom.right ≫
         (circle ◁ ((ihom.ev X).app Y)).right at he
   erw [he]
@@ -42,7 +42,7 @@ lemma suspensionHom_family_app {P : SSet.{u}} (X Y : PointedSimplicialSet.{u})
     (a : P ⟶ (PointedObject.basedHom X Y).right) (n : SimplexCategoryᵒᵖ)
     (c : circle.right.obj n) (x : X.right.obj n) (p : P.obj n) :
     (uncurry (a ≫ (suspensionHom X Y).right ≫
-      PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y))).app n
+      PointedObject.basedHomι (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y))).app n
         ((productToSmash circle X).app n (c, x), p) =
     (productToSmash circle Y).app n
       (c, (uncurry (a ≫ PointedObject.basedHomι X Y)).app n (x, p)) := by

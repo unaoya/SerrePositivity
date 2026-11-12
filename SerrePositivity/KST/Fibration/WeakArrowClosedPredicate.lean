@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.WeakArrowCategory
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationSection
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TrivialFibrationSection
 
 /-! # W 辺条件の安定な閉性
 
@@ -20,24 +20,24 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 安定圏の実関手圏を、同じ全高次単体を持つ K-1 の入力として保持する。 -/
-def ambientDiagramModel (K : SSet.{u}) (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : StableModel.{u} where
+def ambientDiagramModel (K : SSet.{u}) (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : StableModel.{u} where
   carrier := (ihom K).obj B.obj
   quasicategory := inferInstance
   stable := inferInstance
 
 /-- 元の全 cofiber 射影の厳密な切断。 -/
-def arrowCofiberSection (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def arrowCofiberSection (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     (ihom (Δ[1] : SSet.{u})).obj B.obj ⟶ cofiberDiagrams B.obj :=
-  Classical.choose (trivialKanFibration_exists_section (cofiberProjection B.obj))
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (cofiberProjection B.obj))
 
-lemma arrowCofiberSection_projection (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+lemma arrowCofiberSection_projection (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     arrowCofiberSection B ≫ cofiberProjection B.obj = 𝟙 _ :=
-  Classical.choose_spec (trivialKanFibration_exists_section (cofiberProjection B.obj))
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (cofiberProjection B.obj))
 
 /-- 選択した cofiber は完全関手であり、元の底辺は厳密に固定されている。 -/
-def arrowCofiberMap (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def arrowCofiberMap (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     ambientDiagramModel (Δ[1] : SSet.{u}) B ⟶ sInputModel B := by
-  have hs := isExactFunctor_section_of_trivialKanFibration (cofiberProjection B.obj)
+  have hs := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_section_of_trivialKanFibration (cofiberProjection B.obj)
     (arrowCofiberSection B) (arrowCofiberSection_projection B)
   exact ⟨arrowCofiberSection B ≫ (cofiberStableQuotient (sInputModel B)).val,
     (show PreservesCofiberData (arrowCofiberSection B) from
@@ -45,12 +45,12 @@ def arrowCofiberMap (B : _root_.SerrePositivity.InfinityCategories.Stable.Verdie
         (cofiberStableQuotient (sInputModel B)).property⟩
 
 /-- cofiber の核条件は実関手圏上の閉じた安定条件。 -/
-def weakArrowClosedPredicate {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def weakArrowClosedPredicate {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     ClosedStablePredicate (ambientDiagramModel (Δ[1] : SSet.{u}) B) :=
   (kernelClosedPredicate q).comap (arrowCofiberMap B)
 
 /-- 構成した閉じた条件は、元の辺の商での可逆性と一致する。 -/
-lemma weakArrowClosedPredicate_iff {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakArrowClosedPredicate_iff {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (v : ((ihom (Δ[1] : SSet.{u})).obj B.obj) _⦋0⦌) :
     (weakArrowClosedPredicate q).predicate v ↔ weakArrowPredicate q v := by
   let w := (arrowCofiberSection B).app (Opposite.op ⦋0⦌) v

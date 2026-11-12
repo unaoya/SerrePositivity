@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
 
 /-- 概要：正規化下側の各縦辺は元の実下側の同じ全一単体。
 方針：同じ二短辺の全族等式を三頂点に評価する。
@@ -25,25 +25,25 @@ variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierD
 使われ方：元の恒等縦辺の可逆性を正規化側へ渡す。 -/
 theorem verdierLowerCanonicalFamily_vertex_edge (x : (Δ[2] : SSet.{u + 1}) _⦋0⦌) :
     (verdierLowerCanonicalFamily d ℓ).app (Opposite.op ⦋1⦌)
-      (((Δ[2] : SSet.{u + 1}).σ 0 x), homotopyIntervalEdge.edge) =
+      (((Δ[2] : SSet.{u + 1}).σ 0 x), _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
     (verdierFullSLowerDeformation d).h.app (Opposite.op ⦋1⦌)
-      (((Δ[2] : SSet.{u + 1}).σ 0 x), homotopyIntervalEdge.edge) := by
+      (((Δ[2] : SSet.{u + 1}).σ 0 x), _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) := by
   have he (j : Fin 3)
       (h : (stdSimplex.δ j ▷ (Δ[1] : SSet.{u + 1})) ≫ verdierLowerCanonicalFamily d ℓ =
         (stdSimplex.δ j ▷ (Δ[1] : SSet.{u + 1})) ≫ (verdierFullSLowerDeformation d).h)
       (a : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
       (verdierLowerCanonicalFamily d ℓ).app (Opposite.op ⦋1⦌)
         (((Δ[2] : SSet.{u + 1}).σ 0 ((stdSimplex.δ j).app (Opposite.op ⦋0⦌) a)),
-          homotopyIntervalEdge.edge) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
       (verdierFullSLowerDeformation d).h.app (Opposite.op ⦋1⦌)
         (((Δ[2] : SSet.{u + 1}).σ 0 ((stdSimplex.δ j).app (Opposite.op ⦋0⦌) a)),
-          homotopyIntervalEdge.edge) := by
-    have hh := congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} =>
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) := by
+    have hh := congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} =>
       f.app (Opposite.op ⦋1⦌)
-      (((Δ[1] : SSet.{u + 1}).σ 0 a), homotopyIntervalEdge.edge)) h
+      (((Δ[1] : SSet.{u + 1}).σ 0 a), _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)) h
     change (verdierLowerCanonicalFamily d ℓ).app (Opposite.op ⦋1⦌)
       ((stdSimplex.δ j).app (Opposite.op ⦋1⦌) ((Δ[1] : SSet.{u + 1}).σ 0 a),
-        homotopyIntervalEdge.edge) = _ at hh
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) = _ at hh
     rw [σ_naturality_apply] at hh
     exact hh
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective x
@@ -56,8 +56,8 @@ theorem verdierLowerCanonicalFamily_vertex_edge (x : (Δ[2] : SSet.{u + 1}) _⦋
 方針：元の全族の区間両端制限を使う。
 規約：同じ三角柱そのものを保持。使われ方：縦辺の可逆性判定。 -/
 def verdierLowerCanonicalHomotopy : SSet.Homotopy
-    (familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-    (familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) where
   h := verdierLowerCanonicalFamily d ℓ
   h₀ := rfl
   h₁ := rfl
@@ -67,12 +67,12 @@ def verdierLowerCanonicalHomotopy : SSet.Homotopy
 方針：元の実下側の縦辺への厳密回収と元の可逆性を使う。
 規約：新たな可逆性仮定なし。使われ方：貼った実四角柱の下側縦辺。 -/
 theorem verdierLowerCanonicalHomotopy_pointwise :
-    ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge
+    ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
       (verdierLowerCanonicalHomotopy d ℓ) x).toTruncated := by
   intro x
-  apply (isInvertibleEdge_congr
-    (e := (simplicialHomotopyVertexEdge (verdierLowerCanonicalHomotopy d ℓ) x).toTruncated)
-    (f := (simplicialHomotopyVertexEdge (verdierFullSLowerDeformation d) x).toTruncated) ?_).mpr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerCanonicalHomotopy d ℓ) x).toTruncated)
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierFullSLowerDeformation d) x).toTruncated) ?_).mpr
       (verdierFullSLowerDeformation_pointwise d x)
   exact verdierLowerCanonicalFamily_vertex_edge d ℓ x
 
@@ -80,9 +80,9 @@ theorem verdierLowerCanonicalHomotopy_pointwise :
 方針：元の同じ三角柱の縦辺可逆性を適用する。
 規約：元の未正規化端点との照合は別に保持する。
 使われ方：正規化四角柱の全関手比較への下側入力。 -/
-def verdierLowerCanonicalEndpointIso : FunctorIso
-    (familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
-    (familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
-  functorIsoOfPointwiseInvertibleHomotopy _ (verdierLowerCanonicalHomotopy_pointwise d ℓ)
+def verdierLowerCanonicalEndpointIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy _ (verdierLowerCanonicalHomotopy_pointwise d ℓ)
 
 end SerrePositivity.KST.Fibration

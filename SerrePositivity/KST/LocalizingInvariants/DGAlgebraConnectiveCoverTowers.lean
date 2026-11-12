@@ -41,10 +41,10 @@ lemma coverTowerCounit_groups_proIso (X : ProExcision.Tower (Mon (Complex R)))
   · exact (IsIso.inv_hom_id f).trans ((X.map (groups R j)).transition_self m).symm
 
 lemma IsKConnective.cover_value_isInvertible
-    {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}} {k : ℤ} (h : IsKConnective R Φ k)
+    {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}} {k : ℤ} (h : IsKConnective R Φ k)
     (B : Mon (Complex R)) (hB : IsConnective R B) :
-    IsInvertibleEdge
-      ((_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R (connectiveCoverInclusion R B))).map Φ).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+      ((_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (perfectMap R (connectiveCoverInclusion R B))).map Φ).toTruncated :=
   h.quasiIso_value_isInvertible R Φ (connectiveCover_isConnective R B) hB
     (connectiveCoverInclusion R B) (connectiveCoverInclusion_quasiIso R B hB)
 

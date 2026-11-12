@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNaturality
-public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
 
 /-!
 概要：元 gluing cone の指定入力全比較を native 全関手同型へ接続する。
@@ -12,12 +12,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransI
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory SSet DifferentialGraded InfinityCategories
 open scoped Simplicial
 private lemma recoverStrictArrow {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] [Small.{u} C]
     {P : Type (max (u + 1) v)} [DGCategory R P]
-    (F G : DGFunctor R P (RightModule R C)) (η : StrictNatTrans F G)
+    (F G : DGFunctor R P (RightModule R C)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
     (x : P) (q : ForgetEnrichment.of (Complex R) (F.obj x) ⟶
       ForgetEnrichment.of (Complex R) (G.obj x))
     (hc : η.app x = cycleFromUnit (moduleHom R C (F.obj x) (G.obj x))
@@ -52,8 +52,8 @@ lemma dgIdentityHomGluingStrictConeInputComparison_arrow (x : P) :
 規約：点ごとの同値選択で全比較を代用しない。
 使われ方：元厳密 gluing cone と全実逆回転比較の接続。 -/
 def dgIdentityHomGluingStrictConeInputNerveComparison :
-    FunctorIso (dgNerve.map (A)) (dgNerve.map (B)) :=
-  dgModuleFunctorIsoOfStrictNatTrans R C (F := (A)) (G := (B)) (θ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (A)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorIsoOfStrictNatTrans R C (F := (A)) (G := (B)) (θ)
     (dgIdentityHomGluingStrictConeInputMap R C F G a h)
     (dgIdentityHomGluingStrictConeInputComparison_cycle R C F G a h)
     (fun x => (e x).isIso_hom)

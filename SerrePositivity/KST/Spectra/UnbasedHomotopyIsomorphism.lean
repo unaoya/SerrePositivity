@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.UnpointedPathEvaluation
 概要：基点を固定しないホモトピーは全基点 π_* 同型性を保存する。
 方針：ホモトピーを指数 path への射へ転置し、二つの端点の同型性を打ち消す。
 規約：類の写像の等式は主張せず、異なる終点基点での全単射性を比較する。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1、BF 1978 §2。一般の Kan 射の Whitehead。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）、BF 1978 §2。一般の Kan 射の Whitehead。
 -/
 
 @[expose] public section
@@ -34,7 +34,7 @@ theorem curry_evaluation {A X : SSet.{u}} (h : (Δ[1] : SSet.{u}) ⊗ A ⟶ X) (
 /-- 概要：基点を固定しないホモトピーの指数 path 対象への転置。
 方針：区間をテンソルの第一成分へ交換して curry する。
 規約：基点の移動を実際の path の頂点として保持する。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1。π_* 同型性のホモトピー不変性。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）。π_* 同型性のホモトピー不変性。 -/
 def transpose {A X : SSet.{u}} {f g : A ⟶ X} (H : SSet.Homotopy f g) : A ⟶ object X :=
   MonoidalClosed.curry ((β_ (Δ[1] : SSet.{u}) A).hom ≫ H.h)
 
@@ -75,23 +75,23 @@ namespace SerrePositivity.KST.Spectra
 /-- 概要：Kan 複体間の一般の区間ホモトピーは全基点 π_* 同型性を保存する。
 方針：path 対象への転置の後で全単射な二つの端点をそれぞれ打ち消す。
 規約：基点の固定は不要。零次数を含む。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.1、BF 1978 §2。mapping path の比較。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.1（Tag 00V4）、BF 1978 §2。mapping path の比較。 -/
 theorem kanPiIsomorphism_iff_of_homotopy {A X : SSet.{u}} [KanComplex A] [KanComplex X]
-    {f g : A ⟶ X} (H : SSet.Homotopy f g) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f ↔ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g := by
+    {f g : A ⟶ X} (H : SSet.Homotopy f g) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f ↔ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g := by
   constructor
   · intro hf
-    have hzero : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 0) := by
+    have hzero : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 0) := by
       rw [KanPath.transpose_zero]
       exact hf
-    have ht := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hzero (KanPath.evaluation_piIsomorphism X 0)
+    have ht := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hzero (KanPath.evaluation_piIsomorphism X 0)
     have h := ht.comp (KanPath.evaluation_piIsomorphism X 1)
     rw [KanPath.transpose_one] at h
     exact h
   · intro hg
-    have hone : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 1) := by
+    have hone : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (KanPath.transpose H ≫ KanPath.evaluation X 1) := by
       rw [KanPath.transpose_one]
       exact hg
-    have ht := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hone (KanPath.evaluation_piIsomorphism X 1)
+    have ht := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hone (KanPath.evaluation_piIsomorphism X 1)
     have h := ht.comp (KanPath.evaluation_piIsomorphism X 0)
     rw [KanPath.transpose_zero] at h
     exact h

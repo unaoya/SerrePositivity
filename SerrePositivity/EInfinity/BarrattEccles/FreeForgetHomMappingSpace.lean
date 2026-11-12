@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeForgetHomEquivalence
-public import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenTargetInvariance
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedQuillenTargetInvariance
 
 /-!
 # 同じ自由 probe の既存 Map^h への全自然比較
@@ -21,7 +21,7 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 def freeHomToMappingSpace : (freeProbeFunctor A).op ⋙ sourceFrameHom A ⟶
@@ -30,7 +30,7 @@ def freeHomToMappingSpace : (freeProbeFunctor A).op ⋙ sourceFrameHom A ⟶
 
 lemma freeHomToMappingSpace_homotopyEquivalence
     (X : (Complex A)ᵒᵖ) (B : (operad A).Algebra) :
-    IsSimplicialHomotopyEquivalence (((freeHomToMappingSpace A).app X).app B) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((freeHomToMappingSpace A).app X).app B) := by
   let := modelCategory A
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   let r := mappingFibrantFactorization A
@@ -38,7 +38,7 @@ lemma freeHomToMappingSpace_homotopyEquivalence
   have := fibrantTarget_isFibrant r B
   have : WeakEquivalence ((fibrantTargetComparison r).app B) :=
     ⟨fibrantTargetComparison_weakEquivalence r B⟩
-  exact frameHom_target_homotopyEquivalence _
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameHom_target_homotopyEquivalence _
     (q.cofibrant ((freeProbeFunctor A).obj X.unop))
     (q.atObject ((freeProbeFunctor A).obj X.unop)).homotopicallyConstant
     ((fibrantTargetComparison r).app B)

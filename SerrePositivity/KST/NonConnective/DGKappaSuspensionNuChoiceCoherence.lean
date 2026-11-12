@@ -22,18 +22,18 @@ variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
 
 /-- 同じ実評価を使った自己選択比較は、固定 ν 値の恒等関手と同型。 -/
 def dgKappaSuspensionNuChoice_selfIso :
-    FunctorIso (dgKappaSuspensionNuChoiceEquivalence R A I I P P).hom (𝟙 _) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionNuChoiceEquivalence R A I I P P).hom (𝟙 _) := by
   let a := presentedPerfectDGQCatEvaluationEquivalence R (dgKappaSuspensionKInput R A I)
   have e := ((dgKappaSuspensionPerfectChoice_selfIso R A I P).postcomp a.inv).precomp a.hom
-  have h : FunctorIso (dgKappaSuspensionNuChoiceEquivalence R A I I P P).hom
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionNuChoiceEquivalence R A I I P P).hom
       (a.hom ≫ a.inv) := by
-    simpa only [dgKappaSuspensionNuChoiceEquivalence, QCatEquivalence.trans,
-      QCatEquivalence.symm, Category.assoc, Category.id_comp, a] using! e
+    simpa only [dgKappaSuspensionNuChoiceEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm, Category.assoc, Category.id_comp, a] using! e
   exact h ≪≫ a.homInvIso
 
 /-- 中間実評価を縮約した三選択比較は、同じ固定 ν 値の直接比較と同型。 -/
 def dgKappaSuspensionNuChoice_compIso :
-    FunctorIso ((dgKappaSuspensionNuChoiceEquivalence R A I J P Q).hom ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((dgKappaSuspensionNuChoiceEquivalence R A I J P Q).hom ≫
       (dgKappaSuspensionNuChoiceEquivalence R A J K Q T).hom)
       (dgKappaSuspensionNuChoiceEquivalence R A I K P T).hom := by
   let a := presentedPerfectDGQCatEvaluationEquivalence R (dgKappaSuspensionKInput R A I)
@@ -41,15 +41,15 @@ def dgKappaSuspensionNuChoice_compIso :
   let c := presentedPerfectDGQCatEvaluationEquivalence R (dgKappaSuspensionKInput R A K)
   let F := (dgKappaSuspensionPerfectChoiceEquivalence R A I J P Q).hom
   let G := (dgKappaSuspensionPerfectChoiceEquivalence R A J K Q T).hom
-  have e₀ : FunctorIso ((a.hom ≫ (F ≫ b.inv)) ≫ (b.hom ≫ (G ≫ c.inv)))
+  have e₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((a.hom ≫ (F ≫ b.inv)) ≫ (b.hom ≫ (G ≫ c.inv)))
       (a.hom ≫ ((F ≫ G) ≫ c.inv)) := by
     have h := (b.invHomIso.postcomp (G ≫ c.inv)).precomp (a.hom ≫ F)
     simpa only [Category.assoc, Category.id_comp] using! h
-  have e₁ : FunctorIso (a.hom ≫ ((F ≫ G) ≫ c.inv))
+  have e₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (a.hom ≫ ((F ≫ G) ≫ c.inv))
       (a.hom ≫ ((dgKappaSuspensionPerfectChoiceEquivalence R A I K P T).hom ≫ c.inv)) :=
     ((dgKappaSuspensionPerfectChoice_compIso R A I J K P Q T).postcomp c.inv).precomp a.hom
-  simpa only [dgKappaSuspensionNuChoiceEquivalence, QCatEquivalence.trans,
-    QCatEquivalence.symm, Category.assoc, a, b, c, F, G] using! e₀ ≪≫ e₁
+  simpa only [dgKappaSuspensionNuChoiceEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm, Category.assoc, a, b, c, F, G] using! e₀ ≪≫ e₁
 
 /-- 同じ固定 ν の実全関手比較を、任意高次パラメータへ前合成する。 -/
 def dgKappaSuspensionNuChoiceParameterIso {S : SSet.{max (u + 1) v}}
@@ -61,6 +61,6 @@ theorem dgKappaSuspensionNuChoiceParameterIso_precomp {S U : SSet.{max (u + 1) v
     (a : S ⟶ (dgKInputStableValue R (dgKappaSuspensionKInput R A I)).obj) (r : U ⟶ S) :
     (dgKappaSuspensionNuChoiceParameterIso R A I J K P Q T a).precomp r =
       dgKappaSuspensionNuChoiceParameterIso R A I J K P Q T (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 end SerrePositivity.KST.NonConnective

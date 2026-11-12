@@ -37,19 +37,19 @@ lemma simplexHAGeneratorValue_map_recovery {D : Type v} [DGCategory A D] {n : �
     simplexHAGeneratorValue A (cubicalLambdaNativeSimplexData A F) m i v b hb =
       (simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-          F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).f
+          F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).f
         (serreCubeGeneratorDegree m i) (serreCubeGenerator A m i) := by
   let c := simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
     (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫ F.map _ _
   let h := serreCubeGeneratorDegree_freeDimension m i
   have hw := congrArg (fun f =>
     eqToHom (congrArg (fun k => (homObject A D
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X k) h.symm)
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X k) h.symm)
       ((f ≫ F.map _ _).f (-(serreCubeGeneratorFreeDimension m i : ℤ))
         (serreCubeTopCell A (serreCubeGeneratorFreeDimension m i))))
     (simplexHAGeneratorWord_cell_standard A m i v b hb)
   have ht := congrArg (fun w => eqToHom (congrArg (fun k => (homObject A D
-      (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X k) h.symm)
+      (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X k) h.symm)
     (c.f (-(serreCubeGeneratorFreeDimension m i : ℤ)) w))
       (serreCubeGenerator_face_top A m i)
   exact (simplexHAGeneratorValue_recovery A F m i v b hb).trans

@@ -76,14 +76,14 @@ lemma fiberVertex_eq : skeletalFiberVertex K Y n f hf =
   congr 1
   funext s
   rw [hr]
-  have hs : ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s).simplex = s.val :=
-    congrArg Subtype.val ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).apply_symm_apply s)
+  have hs : ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s).simplex = s.val :=
+    congrArg Subtype.val ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).apply_symm_apply s)
   rw [hs]
 
 /-- 元の骨格射の成分係数は、同じ単体のホモトピー類。 -/
 lemma fiberVertex_coefficient [KanComplex Y.right] (s : K.nonDegenerate (n + 1)) :
     stageFiberComponentEquiv K Y n (π₀.mk (skeletalFiberVertex K Y n f hf)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (simplex K Y n f hf s.val) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (simplex K Y n f hf s.val) := by
   rw [fiberVertex_eq, stageFiberComponentEquiv_simplexVertex]
 
 end

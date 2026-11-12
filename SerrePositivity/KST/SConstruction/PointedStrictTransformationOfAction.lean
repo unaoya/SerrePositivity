@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 public import SerrePositivity.KST.SConstruction.PointedSSetWhisker
 
 /-! # 全実作用の可換性からの標準点つき厳密自然変換
@@ -45,7 +45,7 @@ def pointedStrictTransformationOfAction
       uncurry (F.map X Y ≫ PointedObject.basedHomι (F.obj X).obj (F.obj Y).obj) ≫
         (show (F.obj Y).obj ⟶ (G.obj Y).obj from τ Y).right) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F G :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker F G τ
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker F G τ
     (pointedStrictTransformationOfAction_whisker F G τ h)
 
 end SerrePositivity.KST.SConstruction

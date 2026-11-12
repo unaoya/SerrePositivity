@@ -19,13 +19,13 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory HomotopicalAlgebra SSet Opposite
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
 open scoped Simplicial
-attribute [local instance] FrameHom.rightFrameHom_kanComplex
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
-  (G : nerve (modelRelativeCategory C).category ⟶ Q)
-  (hG : IsLocalization G (weakNerveEdges (modelRelativeCategory C)))
+  (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
 
 /-- 概要：指定局所化への比較関手と全二胞体を局所化普遍性から構成する。
 方針：同じ実 hammock の全前合成同値から元の G を延長する。
@@ -33,7 +33,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 使われ方：全 pinched Hom 比較の指定二胞体。 -/
 def modelRightFrameLocalizationComparison :
     FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (modelRelativeCategory C)) G :=
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G :=
   FrameHom.localizationComparisonData _ G _ (modelHammock_isLocalization r) hG
     (SerrePositivity.KST.LocalizingInvariants.localizationDescend _ _
       (modelHammock_isLocalization r) G hG.choose)
@@ -47,41 +47,41 @@ variable (X : C) [IsCofibrant X]
 規約：元の標的 Y は任意、未証明の存在入力なし。
 使われ方：全標的 coherent 比較の実写像空間成分。 -/
 def modelRightFramePinchedEquivalence (Y : C) :
-    QCatEquivalence
-      (SSet.uliftFunctor.{max u v, v}.obj ((FrameHom.rightFrameHom r X).obj Y))
-      (pinchedHom (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C X)))
-        (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C Y)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+        (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) :=
   (FrameHom.rightFrameHammockPinchedEquivalence
     ((modelSourceFrameFamily (C := C)).atObject X) r
     (MorphismProperty.functorialFactorizationData _ _) Y).trans
       ((modelRightFrameLocalizationComparison r G hG).pinchedEquivalence
-        (nerveVertex (modelRelativeObject C X)) (nerveVertex (modelRelativeObject C Y)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))
 
 /-- 概要：全標的の同じ coherent 比較と指定局所化の全二胞体を一緒に公開する。
 方針：同じ元の六辺の全関手同型と同じ局所化比較を組にする。
 規約：点ごとの Hom 同値だけを結論としない。
 使われ方：Sp が全図式の自然性と指定二胞体を同時に合成する入口。 -/
 def modelRightFrameCoherentComparison :
-    (FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (FrameHom.rightFrameHammockCoherentDiagram
         ((modelSourceFrameFamily (C := C)).atObject X) r 0)
       (FrameHom.rightFrameHammockCoherentDiagram
         ((modelSourceFrameFamily (C := C)).atObject X) r 6)) ×
       FrameHom.CoherentLocalizationComparison
-        (hammockLocalizationNerveMap (modelRelativeCategory C)) G :=
+        (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G :=
   ⟨modelRightFrameHammockCoherentComparison r X, modelRightFrameLocalizationComparison r G hG⟩
 
-variable (K : kanHammockNerve (modelRelativeCategory C) ⟶ Q)
-  (e : FunctorIso (hammockLocalizationNerveMap (modelRelativeCategory C) ≫ K) G)
+variable (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
 
 /-- 概要：既に指定された比較 K と二胞体 e でも同じ実 Hom 比較を使える。
 方針：同じ証明済み全圏普遍性を指定データ版へ渡す。
 規約：元の K と e を保持。使われ方：消費者の指定比較との coherent な合成。 -/
 def modelRightFramePinchedEquivalenceWithComparison (Y : C) :
-    QCatEquivalence
-      (SSet.uliftFunctor.{max u v, v}.obj ((FrameHom.rightFrameHom r X).obj Y))
-      (pinchedHom (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C X)))
-        (G.app (op ⦋0⦌) (nerveVertex (modelRelativeObject C Y)))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+        (G.app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) :=
   modelRightFrameSpecifiedPinchedEquivalence r G hG (modelHammock_isLocalization r) K e X Y
 
 omit [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
@@ -91,17 +91,17 @@ omit [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
 規約：元の通常射 f と指定二胞体 e を変更しない。
 使われ方：同じ実 roof の単位正規化後の零単体の照合。 -/
 lemma modelRightFrameOriginalArrow_conjugation {Y : C} (f : X ⟶ Y) :
-    (e.toNatIso.app (HomotopyCategory.mk (nerveVertex (modelRelativeObject C X)))).inv ≫
-      (hoFunctor.map (hammockLocalizationNerveMap (modelRelativeCategory C) ≫ K)).toFunctor.map
+    (e.toNatIso.app (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))).inv ≫
+      (hoFunctor.map (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K)).toFunctor.map
         (HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated) ≫
-      (e.toNatIso.app (HomotopyCategory.mk (nerveVertex (modelRelativeObject C Y)))).hom =
+      (e.toNatIso.app (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))).hom =
         (hoFunctor.map G).toFunctor.map
           (HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated) := by
-  let a : HomotopyCategory.mk (nerveVertex (modelRelativeObject C X)) ⟶
-      HomotopyCategory.mk (nerveVertex (modelRelativeObject C Y)) :=
+  let a : HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) ⟶
+      HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) :=
     HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated
-  let ex := e.toNatIso.app (HomotopyCategory.mk (nerveVertex (modelRelativeObject C X)))
-  let ey := e.toNatIso.app (HomotopyCategory.mk (nerveVertex (modelRelativeObject C Y)))
+  let ex := e.toNatIso.app (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+  let ey := e.toNatIso.app (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))
   let g := (hoFunctor.map G).toFunctor.map a
   have h := congrArg (fun t => ex.inv ≫ t) (e.toNatIso.hom.naturality a)
   exact h.trans ((Category.assoc ex.inv ex.hom g).symm.trans
@@ -117,14 +117,14 @@ lemma modelRightFramePinchedEquivalenceWithComparison_unit_Q {Y : C} (f : X ⟶ 
       (FrameHom.rightFrameHammockUnitPoint ((modelSourceFrameFamily (C := C)).atObject X)
         r f 0 ≫ (modelRightFramePinchedEquivalenceWithComparison r G hG X K e Y).hom) =
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (Hammock.arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
-          kanHammockHomPinchedMap (modelRelativeCategory C)
-            (modelRelativeObject C X) (modelRelativeObject C Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+          kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y) ≫
               ((FrameHom.rightFrameSpecifiedLocalizationData G hG
                 (modelHammock_isLocalization r) K e).pinchedEquivalence
-                  (nerveVertex (modelRelativeObject C X))
-                  (nerveVertex (modelRelativeObject C Y))).hom) :=
+                  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+                  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y))).hom) :=
   FrameHom.rightFrameSpecifiedPinchedEquivalence_unit_Q
     ((modelSourceFrameFamily (C := C)).atObject X) r f
     (MorphismProperty.functorialFactorizationData _ _) G hG (modelHammock_isLocalization r) K e

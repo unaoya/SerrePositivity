@@ -3,9 +3,9 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.BoundaryReedyFactorization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalKanTests
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LocalizedMonoReedy
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BoundaryReedyFactorization
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalKanTests
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LocalizedMonoReedy
 
 /-!
 # 各行で局所化可逆な二重単体写像の対角は局所化可逆となる
@@ -47,7 +47,7 @@ lemma localized_diagonal_map_of_reedyMono {A B : SimplexCategoryᵒᵖ ⥤ SSet.
     (hm : reedyLeft simplexOp (MorphismProperty.monomorphisms _) f)
     (hf : ∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (f.app n))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (diagonal.map f)) :=
-  localized_diagonal_map_of_reedy_localizedMonos f ((LocalizedMonoReedy.reedy_iff f).mpr ⟨hm, hf⟩)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.localized_diagonal_map_of_reedy_localizedMonos f ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.reedy_iff f).mpr ⟨hm, hf⟩)
 
 /-- 各行で局所化可逆な二重単体写像の対角は局所化可逆となる。
 
@@ -58,16 +58,16 @@ lemma localized_diagonal_map_of_reedyMono {A B : SimplexCategoryᵒᵖ ⥤ SSet.
 lemma localized_diagonal_map {A B : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : A ⟶ B)
     (hf : ∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (f.app n))) :
     IsIso (AnodyneHomotopy.anodyneQ.map (diagonal.map f)) := by
-  have : MorphismProperty.IsWeakFactorizationSystem BoundaryFactorization.left.{v}
-      BoundaryFactorization.right.{v} := BoundaryFactorization.reedy_wfs
-  have : BoundaryFactorization.left.{v}.IsMultiplicative := by
-    rw [BoundaryFactorization.left_eq_llp]
+  have : MorphismProperty.IsWeakFactorizationSystem _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.{v}
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.right.{v} := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.reedy_wfs
+  have : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.{v}.IsMultiplicative := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left_eq_llp]
     infer_instance
-  have : BoundaryFactorization.left.{v}.IsStableUnderCobaseChange := by
-    rw [BoundaryFactorization.left_eq_llp]
+  have : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.{v}.IsStableUnderCobaseChange := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left_eq_llp]
     infer_instance
-  let d := MorphismProperty.factorizationData BoundaryFactorization.left
-    BoundaryFactorization.right (coprod.desc f (𝟙 B))
+  let d := MorphismProperty.factorizationData _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.right (coprod.desc f (𝟙 B))
   let l := coprod.inl ≫ d.i
   let r := coprod.inr ≫ d.i
   have hlp : l ≫ d.p = f := by
@@ -76,16 +76,16 @@ lemma localized_diagonal_map {A B : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : A �
   have hrp : r ≫ d.p = 𝟙 B := by
     dsimp only [r]
     rw [Category.assoc, d.fac, coprod.inr_desc]
-  have hlm : BoundaryFactorization.left l := BoundaryFactorization.left.comp_mem _ _
-    (BoundaryFactorization.left.of_isPushout (IsPushout.of_hasBinaryCoproduct' A B)
-      (BoundaryFactorization.initial_left B)) d.hi
-  have hrm : BoundaryFactorization.left r := BoundaryFactorization.left.comp_mem _ _
-    (BoundaryFactorization.left.of_isPushout (IsPushout.of_hasBinaryCoproduct' A B).flip
-      (BoundaryFactorization.initial_left A)) d.hi
+  have hlm : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left l := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.comp_mem _ _
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.of_isPushout (IsPushout.of_hasBinaryCoproduct' A B)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.initial_left B)) d.hi
+  have hrm : _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left r := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.comp_mem _ _
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.left.of_isPushout (IsPushout.of_hasBinaryCoproduct' A B).flip
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.initial_left A)) d.hi
   have hl : ∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (l.app n)) := by
     intro n
     have : IsIso (AnodyneHomotopy.anodyneQ.map (d.p.app n)) :=
-      BoundaryFactorization.right_app_localized d.p d.hp n
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.right_app_localized d.p d.hp n
     have h := congrArg AnodyneHomotopy.anodyneQ.map (congr_app hlp n)
     rw [NatTrans.comp_app, Functor.map_comp] at h
     have hc : IsIso (AnodyneHomotopy.anodyneQ.map (l.app n) ≫
@@ -94,7 +94,7 @@ lemma localized_diagonal_map {A B : SimplexCategoryᵒᵖ ⥤ SSet.{v}} (f : A �
   have hr : ∀ n, IsIso (AnodyneHomotopy.anodyneQ.map (r.app n)) := by
     intro n
     have : IsIso (AnodyneHomotopy.anodyneQ.map (d.p.app n)) :=
-      BoundaryFactorization.right_app_localized d.p d.hp n
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.right_app_localized d.p d.hp n
     have h := congrArg AnodyneHomotopy.anodyneQ.map (congr_app hrp n)
     rw [NatTrans.comp_app, NatTrans.id_app, Functor.map_comp, CategoryTheory.Functor.map_id] at h
     have hc : IsIso (AnodyneHomotopy.anodyneQ.map (r.app n) ≫

@@ -75,7 +75,7 @@ lemma comparisonCone_proZero_iff_piProConnected (n : ℤ) :
         exact hh)
 
 variable {X Y : Tower (NonpositiveAlgebra R)} (g : LevelHom X Y)
-  (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
+  (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
 include hΦ
 
 /-- 実 cone の次数範囲付き pro 消滅から、元の不変量値の連結度を得る。 -/

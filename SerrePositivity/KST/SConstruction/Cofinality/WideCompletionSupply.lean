@@ -30,7 +30,7 @@ theorem stableWideCofinalitySupply : StableWideCofinalitySupply.{u} :=
 規約：供給の存在を追加の仮定に残さない。
 使われ方：相対 S• の実現前の入力。 -/
 def completionRelativeFlagDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u}) :=
   suppliedMultiRelativeFlagDiagram stableWideCofinalitySupply r f hf
 
@@ -40,7 +40,7 @@ def completionRelativeFlagDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y
 使われ方：元の K 射へ戻る実現前の比較。 -/
 def completionRelativeFlagZeroIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     ((completionRelativeFlagDiagram r f hf).obj ι).obj (Opposite.op ⦋0⦌) ≅
       (((multiSEndofunctor r).obj ι).obj Y).carrier :=
   multiRelativeFlagZeroIso stableWideCofinalitySupply r ι f hf
@@ -51,11 +51,11 @@ def completionRelativeFlagZeroIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：相対実現比較の障害側の入力。 -/
 theorem completionMultiWide_positive_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
-    (x : (F2.continuousKanReplacement.obj
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) _⦋0⦌)
     (n : ℕ) (hn : 0 < n) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       ((multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex : SSet.{u})) n x) :=
   multiWideStageData_discrete stableWideCofinalitySupply r ι f hf x n hn
 

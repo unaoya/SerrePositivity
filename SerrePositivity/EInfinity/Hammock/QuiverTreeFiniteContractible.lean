@@ -24,19 +24,19 @@ attribute [local instance] Classical.propDecidable
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] [Quiver.IsThin (Quiver.FreeGroupoid Q)]
 
-lemma finite_colimit_isWeaklyContractible (S : Finset Q) (hS : RootClosed T S) :
-    letI := FiniteQuiver.quiver S
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeaklyContractible (colimitGraph
-        (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S))) x y) := by
+lemma finite_colimit_isWeaklyContractible (S : Finset Q) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootClosed T S) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S))) x y) := by
   revert hS
   induction S using Finset.strongInductionOn
   rename_i S ih
   intro hS
   by_cases hne : ∃ x ∈ S, (show T from x) ≠ Quiver.root T
-  · let D := chooseLeafDeletion T hS hne
+  · let D := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.chooseLeafDeletion T hS hne
     have hrem := ih (S.erase D.leaf) (Finset.erase_ssubset D.leaf_mem) D.remaining_closed
-    exact D.contractible_of_remaining hrem
+    exact (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.contractible_of_remaining D) hrem
   · have hroot : ∀ x ∈ S, (show T from x) = Quiver.root T := by
       intro x hx
       by_contra he

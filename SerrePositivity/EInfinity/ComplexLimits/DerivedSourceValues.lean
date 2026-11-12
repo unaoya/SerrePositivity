@@ -21,27 +21,27 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexOrdinaryDerivedSource_vertex_eq (X : Complex A) :
-    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
-      Simplex.vertex (complexSemifreeResolutionValue A X) := by
-  have hx : (nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A)).app
-      (Opposite.op ⦋0⦌) (nerveVertex X) = Simplex.vertex X := by
-    apply (dgNerve.vertexEquiv A (Complex A)).injective
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A X) := by
+  have hx : (nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X := by
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).injective
     rfl
   change (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-    ((nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A)).app
-      (Opposite.op ⦋0⦌) (nerveVertex X)) = _
+    ((nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)) = _
   rw [hx, complexSemifreeResolutionInfinity_vertex]
 
 lemma kProjectiveDerivedSource_vertex_eq (X : KProjectiveComplex A) :
-    (kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex X) =
-      Simplex.vertex (complexSemifreeResolutionValue A X.val) := by
+    (kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A X.val) := by
   change (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-    (Simplex.vertex X.val) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X.val) = _
   exact complexSemifreeResolutionInfinity_vertex A X.val
 
 end SerrePositivity.EInfinity.ComplexLimits

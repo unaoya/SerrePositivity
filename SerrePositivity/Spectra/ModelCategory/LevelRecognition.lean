@@ -51,7 +51,7 @@ def levelCofibrations (I : MorphismProperty C) :
   cofibrations := (levelGenerators K I).rlp.llp
 
 variable [ModelCategory C] [HasLimitsOfSize.{0, 0} C]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [(levelGenerators K I).HasSmallObjectArgument.{w}]
   [(levelGenerators K J).HasSmallObjectArgument.{w}]
 
@@ -96,7 +96,7 @@ variable (hacyclic : MorphismProperty.transfiniteCompositions.{w}
 
 lemma levelModelCategory_generated :
     let := levelModelCategory K I J hacyclic
-    CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) := by
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (levelGenerators K I) (levelGenerators K J) := by
   let := levelModelCategory K I J hacyclic
   refine ⟨inferInstance, inferInstance, ?_, ?_⟩
   · rw [generatingCofibrations_rlp K I J]
@@ -124,9 +124,9 @@ lemma levelFunctorialFactorizations :
         (fibrations (GeneralSymmetricSpectrum C K)) := by
   let := levelModelCategory K I J hacyclic
   have := levelModelCategory_generated K I J hacyclic
-  exact ⟨hasFunctorialFactorization_cofibration_trivialFibration
+  exact ⟨_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
       (levelGenerators K I) (levelGenerators K J),
-    hasFunctorialFactorization_trivialCofibration_fibration
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
       (levelGenerators K I) (levelGenerators K J)⟩
 end Consequences
 

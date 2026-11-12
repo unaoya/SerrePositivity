@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.DiagonalFiberTransportSquare
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.DiagonalFiberTransportSquare
 
 /-!
 概要：元の輸送族の全対角比較に使う、実 prism と実両端・底を明示する。

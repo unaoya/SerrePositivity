@@ -31,7 +31,7 @@ lemma kZeroGroupoidPresentation_objectKClass (X : StableModel.{u})
     kZeroGroupoidPresentation X
       (Additive.toMul (objectKClass X ((sOneComparison X.carrier).app _ e))) =
         inv (objectBoundaryPath X e) := by
-  let p : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (((boundaryKanRealizationFunctor 0).obj X).right) 0
+  let p : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (((boundaryKanRealizationFunctor 0).obj X).right) 0
       ((boundaryKanRealizationFunctor 0).obj X).basepoint ≃
         (boundaryFundamentalBasepoint X ⟶ boundaryFundamentalBasepoint X) :=
     kanAnodyneLoopPresentation (B := ((boundaryKanRealizationFunctor 0).obj X).right)
@@ -43,10 +43,10 @@ lemma kZeroGroupoidPresentation_objectKClass (X : StableModel.{u})
     (PointedKanReplacement.unit.app (boundaryReducedRealization 0 X)).right
     (PointedKanReplacement.unit_anodyne (boundaryReducedRealization 0 X))
     (boundaryReducedRealization 0 X).basepoint (objectRawBoundaryEdge X e)
-  have hc : p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X e)) = objectBoundaryPath X e :=
-    (congrArg (fun s => p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s)) (objectRawBoundaryEdge_kan X e)).symm.trans hp
-  have hi : p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X e))⁻¹ =
-      inv (p (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X e))) :=
+  have hc : p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X e)) = objectBoundaryPath X e :=
+    (congrArg (fun s => p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s)) (objectRawBoundaryEdge_kan X e)).symm.trans hp
+  have hi : p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X e))⁻¹ =
+      inv (p (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X e))) :=
     kanAnodyneLoopPresentation_inv _ _ _ _
   exact (congrArg p (objectBoundaryEdge_objectKClass X e)).trans
     (hi.trans (congrArg (fun a => inv a) hc))

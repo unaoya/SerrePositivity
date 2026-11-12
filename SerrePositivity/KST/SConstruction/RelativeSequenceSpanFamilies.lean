@@ -21,26 +21,26 @@ open scoped Simplicial
 variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {T U : SSet.{u}}
   (j : T ⟶ U) [Mono j]
   (f : ∀ n, U ⟶ (PointedObject.basedHom (X.level n).space (Y.level n).space).right)
-  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     (Y.level (n + 1)).space).right)
   (a : ∀ n, SSet.Homotopy (d n)
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))
   (b : ∀ n, SSet.Homotopy (d n) (f n ≫ RawSpectrumMapping.step X Y n))
   (t : ∀ n, KanSpanTriangleData
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (a n))).map ((pre j).app _))
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy (b n))).map ((pre j).app _)))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (a n))).map ((pre j).app _))
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (b n))).map ((pre j).app _)))
 
 /-- 境界の指定逆・合成三角形を保つ、列の全段の実適合ホモトピー。 -/
 def relativeSequenceSpanHomotopy (n : ℕ) : SSet.Homotopy
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     (f n ≫ RawSpectrumMapping.step X Y n) :=
   relativeKanHomotopySpanComposite j (a n) (b n) (t n)
 
 variable (ht : ∀ n, (t n).edge.edge = (SSet.Truncated.Edge.id
     (X := (truncation 2).obj ((ihom T).obj
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).right))
-    (functorVertex (j ≫ f (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))).edge)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).right))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ f (n + 1) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space))).edge)
 
 include ht
 
@@ -48,7 +48,7 @@ include ht
 lemma relativeSequenceSpanHomotopy_boundary (n : ℕ) :
     (j ▷ (Δ[1] : SSet.{u})) ≫ (relativeSequenceSpanHomotopy X Y j f d a b t n).h =
       fst T (Δ[1] : SSet.{u}) ≫ j ≫ f (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space :=
   relativeKanHomotopySpanComposite_restrict_constant j (a n) (b n) (t n) (ht n)
 
 /-- 全段の二つの元の円柱の族と境界の指定三角形から作る、境界固定の厳密な列の族。 -/

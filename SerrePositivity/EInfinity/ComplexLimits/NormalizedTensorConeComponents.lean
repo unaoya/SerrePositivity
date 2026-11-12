@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_hom_ordinary {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) :
     HEq ((normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk)
       ((normalizedTensorConeOrdinarySimplex A X Y c).toSimplexData.hom I a b k hI ha hb hk) := by
@@ -32,7 +32,7 @@ lemma normalizedTensorConeData_hom_ordinary {n : ℕ}
 lemma normalizedTensorConeData_hom_mixed {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I) :
     HEq ((normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk)
       (k.negOnePow • normalizedTensorElementSelectedCochainAtMax A X Y c (withoutFirst I) k

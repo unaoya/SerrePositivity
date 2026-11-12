@@ -31,12 +31,12 @@ lemma modelBifibrantSourceRoofProductCommaPrefixHomotopy_underMap
     (nerveMap (Under.map a) ▷ (Δ[1] : SSet.{max u v})) ≫
       (modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b s).h =
     (modelBifibrantSourceRoofProductCommaPrefixHomotopy X Y q b t).h ≫
-      Hammock.precomposePointMap (Hammock.arrowMap
-        (modelBifibrantRelativeCategory C).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
         ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).map a))
-        (modelBifibrantObject C Y) :=
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   Hammock.LeftRoof.Prefix.arrowHomotopy_underMap
-    (modelBifibrantRelativeCategory C).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)

@@ -25,7 +25,7 @@ def middleMap : algebra R (𝟙 C) (𝟙 C) ⟶ algebra R p p :=
 
 def middleCoconeMap : CochainComplex.mappingCocone (difference R (𝟙 C) (𝟙 C)) ⟶
     CochainComplex.mappingCocone (difference R p p) :=
-  complexMappingCoconeMap _ _ (sumMap R (𝟙 C) (𝟙 C)) p.hom
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap _ _ (sumMap R (𝟙 C) (𝟙 C)) p.hom
     (difference_comm R (𝟙 C) (𝟙 C) p p (𝟙 C) p (𝟙 C) (by simp) (by simp))
 
 lemma middleMap_cocone : (middleMap R p).hom ≫ (complexIso R p p).hom =

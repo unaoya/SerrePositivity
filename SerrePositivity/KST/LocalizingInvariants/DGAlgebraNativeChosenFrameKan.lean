@@ -17,11 +17,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.F2
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-def nativeCellChosenRightLargeKanFunctor : Mon (Complex R) ⥤ KanObject.{u + 1} where
+def nativeCellChosenRightLargeKanFunctor : Mon (Complex R) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} where
   obj B := ⟨SSet.uliftFunctor.{u + 1, u}.obj
     ((nativeCellChosenRightMappingFunctor R A).obj B), by
       have := nativeCellChosenRightMapping_kanComplex R A B
@@ -33,31 +33,31 @@ def nativeCellChosenRightLargeKanFunctor : Mon (Complex R) ⥤ KanObject.{u + 1}
   map_comp f g := (nativeCellChosenRightMappingFunctor R A ⋙
     SSet.uliftFunctor.{u + 1, u}).map_comp f g
 
-def nativeCellChosenMixedReplacementLargeKanFunctor : Mon (Complex R) ⥤ KanObject.{u + 1} where
+def nativeCellChosenMixedReplacementLargeKanFunctor : Mon (Complex R) ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} where
   obj B := ⟨SSet.uliftFunctor.{u + 1, u}.obj
-    (continuousKanReplacement.obj ((nativeCellChosenMixedMappingFunctor R A).obj B)),
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj ((nativeCellChosenMixedMappingFunctor R A).obj B)),
       inferInstance⟩
   map f := SSet.uliftFunctor.{u + 1, u}.map
-    (continuousKanReplacement.map ((nativeCellChosenMixedMappingFunctor R A).map f))
-  map_id B := (nativeCellChosenMixedMappingFunctor R A ⋙ continuousKanReplacement ⋙
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.map ((nativeCellChosenMixedMappingFunctor R A).map f))
+  map_id B := (nativeCellChosenMixedMappingFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement ⋙
     SSet.uliftFunctor.{u + 1, u}).map_id B
-  map_comp f g := (nativeCellChosenMixedMappingFunctor R A ⋙ continuousKanReplacement ⋙
+  map_comp f g := (nativeCellChosenMixedMappingFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement ⋙
     SSet.uliftFunctor.{u + 1, u}).map_comp f g
 
 lemma nativeCellChosenRightLargeKanFunctor_forget :
-    nativeCellChosenRightLargeKanFunctor R A ⋙ kanObjectForget =
+    nativeCellChosenRightLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget =
       nativeCellChosenRightMappingFunctor R A ⋙ SSet.uliftFunctor.{u + 1, u} := rfl
 
 lemma nativeCellChosenMixedReplacementLargeKanFunctor_forget :
-    nativeCellChosenMixedReplacementLargeKanFunctor R A ⋙ kanObjectForget =
-      nativeCellChosenMixedMappingFunctor R A ⋙ continuousKanReplacement ⋙
+    nativeCellChosenMixedReplacementLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget =
+      nativeCellChosenMixedMappingFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement ⋙
         SSet.uliftFunctor.{u + 1, u} := rfl
 
-def nativeCellChosenRightInfinityKanFunctor : InfinityPresentation R ⥤ KanObject.{u + 1} :=
+def nativeCellChosenRightInfinityKanFunctor : InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} :=
   ULiftHom.down ⋙ nativeCellChosenRightLargeKanFunctor R A
 
 def nativeCellChosenMixedReplacementInfinityKanFunctor :
-    InfinityPresentation R ⥤ KanObject.{u + 1} :=
+    InfinityPresentation R ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} :=
   ULiftHom.down ⋙ nativeCellChosenMixedReplacementLargeKanFunctor R A
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

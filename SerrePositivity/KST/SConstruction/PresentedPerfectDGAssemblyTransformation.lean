@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionPo
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGBoundaryPointedFunctor
 public import SerrePositivity.KST.SConstruction.PointedSSetSuspensionFunctor
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyFamilies
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 元の suspension 組み立ての厳密単体的自然変換
 概要：元の同じ組み立てを、全厳密 dg 入力上の点つき豊穣自然変換へ束ねる。
@@ -38,7 +38,7 @@ def presentedPerfectDGAssemblyTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGAssemblySourceFunctor.{u, v} A r)
       (presentedPerfectDGBoundaryPointedEnrichedFunctor.{u, v} A (r + 1)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _
     (presentedPerfectDGAssemblyMap.{u, v} A r)
     (presentedPerfectDGAssemblyFamily_whisker.{u, v} A r)
 

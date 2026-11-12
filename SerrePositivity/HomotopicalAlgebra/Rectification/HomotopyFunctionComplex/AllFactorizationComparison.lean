@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.LargeParameterExtension
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.LargeParameterExtension
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveVertices
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.AnchoredPostComparison
@@ -60,15 +60,15 @@ abbrev point (a : ArrowFactorization g) :
     PostCompositionChain.choiceCast f a.fac
 
 abbrev liftedPoint (a : ArrowFactorization g) :
-    SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0) ⟶ UniverseLift.obj.{u} (choiceSpace f g) :=
-  (UniverseLift.stdIso.{u, v} 0).inv ≫ UniverseLift.map (point hcof f g a)
+    SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 0) ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.stdIso.{u, v} 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (point hcof f g a)
 
 abbrev vertexData : NerveVertices.vertices.{v, max u v} (ArrowFactorization g) ⟶
-    UniverseLift.obj.{u} (choiceSpace f g) :=
-  VertexTuples.pointsMap (fun a : ULift.{v} (ArrowFactorization g) => liftedPoint hcof f g a.down)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g) :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (fun a : ULift.{v} (ArrowFactorization g) => liftedPoint hcof f g a.down)
 
-def comparison : nerve (ArrowFactorization g) ⟶ UniverseLift.obj.{u} (choiceSpace f g) :=
-  LargeParameterExtension.relativeExtend hcof hfib (vertexInclusion X Y f) (postBoundary X Y V f g)
+def comparison : nerve (ArrowFactorization g) ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relativeExtend hcof hfib (vertexInclusion X Y f) (postBoundary X Y V f g)
     (ResolutionLiftSpace.projection X V (f ≫ g.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X V (f ≫ g.base))
     (NerveVertices.inclusion (ArrowFactorization g)) (vertexData hcof f g)
@@ -76,16 +76,16 @@ def comparison : nerve (ArrowFactorization g) ⟶ UniverseLift.obj.{u} (choiceSp
 @[reassoc]
 lemma comparison_vertices : NerveVertices.inclusion (ArrowFactorization g) ≫
     comparison hcof hfib f g = vertexData hcof f g :=
-  LargeParameterExtension.relativeExtend_initial _ _ _ _ _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relativeExtend_initial _ _ _ _ _ _ _ _
 
 @[reassoc]
 lemma comparison_point (a : ArrowFactorization g) :
     SSet.yonedaEquiv.symm (ComposableArrows.mk₀ a) ≫ comparison hcof hfib f g =
       liftedPoint hcof f g a := by
   rw [← NerveVertices.vertex_inclusion, Category.assoc, comparison_vertices,
-    VertexTuples.vertex_pointsMap]
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.vertex_pointsMap]
 
-abbrev chainComparison : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace f g) :=
+abbrev chainComparison : AnchoredChain.simplicial g ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace f g) :=
   (AnchoredChain.nerveIso g).inv ≫ comparison hcof hfib f g
 
 /-- Every simplex has a value in the original Hom universe. -/
@@ -116,7 +116,7 @@ lemma simplex_fixed_boundary {n : ℕ} (c : AnchoredChain g n) :
 lemma action_naturality {n m : ℕ} (c : AnchoredChain g n)
     (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) (Z : C)
     (t : CoherentLiftTuples.obj X Y f ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk n) ⟶
-      (cosimplicialHom V.resolution.obj).obj Z) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom V.resolution.obj).obj Z) :
     CoherentLiftTuples.obj X Y f ◁ SSet.stdSimplex.map θ ≫
       KanLiftAction.parameterized hcof hfib X V (f ≫ g.base) Z
         (RelativeChoiceSpace.family (vertexInclusion X Y f) (postBoundary X Y V f g)

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ArCofiberFamiliesMap
-public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 
 /-! # Ar[n] 上の cofiber の入力の族
 概要：零対角の枠から (0,i)→(0,j) の全ての射を自然に取り出す。
@@ -46,7 +46,7 @@ def arCofiberInputMap (n : ℕ) : arNerve.{u} n ⊗ Δ[1] ⟶ frameNerve n where
 方針：鎖の各頂点で正方形の縦座標を零にする。
 規約：厳密な形状の等号。使われ方：補完すべき入力の境界の照合。 -/
 lemma arCofiberSquareMap_bottom (n : ℕ) :
-    (arNerve n ◁ squareBottomEdge) ≫ arCofiberSquareMap.{u} n =
+    (arNerve n ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge) ≫ arCofiberSquareMap.{u} n =
       arCofiberInputMap n ≫ frameInclusion n := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
@@ -70,21 +70,21 @@ def frameCofiberInputOperator (n : ℕ) (C : SSet.{u}) :
 規約：Ar[n] の全パラメーターに自然。使われ方：gapped 図式の復元の入力。 -/
 def frameCofiberInputs (n : ℕ) (C : SSet.{u}) :
     zeroFrameDiagrams n C ⟶ (ihom (arNerve n)).obj ((ihom (Δ[1] : SSet.{u})).obj C) :=
-  (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberInputOperator n C
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι ≫ frameCofiberInputOperator n C
 
 /-- 概要：自然な cofiber 四角形の入力は枠から抽出した第一行の射と一致する。
 方針：内部 currying の前合成に関する自然性と下辺の添字の等号を使う。
 規約：全次数で厳密な等号。使われ方：相対 cofiber 補完の可換正方形。 -/
 lemma arCofiberFamilyOperator_input (n : ℕ) (C : SSet.{u}) :
-    arCofiberFamilyOperator n C ≫ (ihom (arNerve n)).map ((pre squareBottomEdge).app C) =
+    arCofiberFamilyOperator n C ≫ (ihom (arNerve n)).map ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge).app C) =
       (pre (frameInclusion n)).app C ≫ frameCofiberInputOperator n C := by
-  have he : (squareBottomEdge ▷ arNerve n ≫
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ▷ arNerve n ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n)).hom) ≫ arCofiberSquareMap n =
       ((β_ (Δ[1] : SSet.{u}) (arNerve n)).hom ≫ arCofiberInputMap n) ≫ frameInclusion n := by
     rw [BraidedCategory.braiding_naturality_left, Category.assoc,
       arCofiberSquareMap_bottom, ← Category.assoc]
   dsimp only [arCofiberFamilyOperator, frameCofiberInputOperator]
-  rw [Category.assoc, ← ihomCurry_pre_whiskerRight]
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.ihomCurry_pre_whiskerRight]
   simp only [← Category.assoc, ← NatTrans.comp_app, ← pre_map]
   rw [he]
 
@@ -92,7 +92,7 @@ lemma arCofiberFamilyOperator_input (n : ℕ) (C : SSet.{u}) :
 方針：全部分複体の持ち上げを展開する。
 規約：厳密等号。使われ方：抽出した cofiber の入力の境界。 -/
 lemma gappedFrameRestriction_ι (n : ℕ) (C : SSet.{u}) :
-    gappedFrameRestriction n C ≫ (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι =
+    gappedFrameRestriction n C ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι =
       (gappedSubcomplex n C).ι ≫ (pre (frameInclusion n)).app C := rfl
 
 /-- 概要：gapped 図式の cofiber 族の入力は零対角の枠だけで定まる。
@@ -103,7 +103,7 @@ lemma gappedCofiberFamiliesMap_input (n : ℕ) (C : SSet.{u}) :
       gappedFrameRestriction n C ≫ frameCofiberInputs n C := by
   have hframe : gappedFrameRestriction n C ≫ frameCofiberInputs n C =
       (gappedSubcomplex n C).ι ≫ (pre (frameInclusion n)).app C ≫ frameCofiberInputOperator n C := by
-    change (gappedFrameRestriction n C ≫ (fullSubcomplexOnVertices _ IsZeroFrameVertex).ι) ≫
+    change (gappedFrameRestriction n C ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsZeroFrameVertex).ι) ≫
       frameCofiberInputOperator n C = _
     rw [gappedFrameRestriction_ι, Category.assoc]
   rw [hframe, cofiberProjection, Functor.map_comp, ← Category.assoc, gappedCofiberFamiliesMap_ι,

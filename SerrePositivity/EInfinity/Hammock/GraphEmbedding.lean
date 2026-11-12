@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordEmbeddingObjects
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordEmbeddingObjects
 public import SerrePositivity.EInfinity.Hammock.NerveEmbedding
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Diagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram
 
 /-!
 # 単射な語の遷移による元の graph の単射性
@@ -23,18 +23,18 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  {a b : Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom) (X Y : C)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom) (X Y : C)
 include hf
 
 /-- 元の図式の包含遷移は、単体集合として単射。 -/
-lemma graphDiagram_map_mono : Mono ((graphDiagram W X Y).map f) := by
-  rw [graphDiagram_map]
-  have := WordAction.functor_faithful (W := W) (X := X) (Y := Y) f hf
-  exact nerveMap_mono_of_faithful _ (WordAction.obj_injective f hf)
+lemma graphDiagram_map_mono : Mono ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram_map]
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor_faithful (W := W) (X := X) (Y := Y) f hf
+  exact nerveMap_mono_of_faithful _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.obj_injective f hf)
 
 /-- 元の全単体の射列を保つ、各次数の包含遷移の単射性。 -/
 lemma graphDiagram_map_app_injective (n : SimplexCategoryᵒᵖ) :
-    Function.Injective (((graphDiagram W X Y).map f).app n) := by
+    Function.Injective (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n) := by
   have := graphDiagram_map_mono W f hf X Y
   exact CategoryTheory.injective_of_mono _
 

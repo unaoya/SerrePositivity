@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionChoiceEquivalence
 public import SerrePositivity.KST.NonConnective.DGKappaRawSuspensionCompletion
-public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletionUniqueness
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletionUniqueness
 
 /-!
 概要：同じ実懸垂の選択同値を、元の dg Yoneda 完備化と固定 ν 値の比較へ接続する。
@@ -17,34 +17,34 @@ open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I J : DGKappaConeInput R A κ)
   (P : DGKappaPerfectInput R A I) (Q : DGKappaPerfectInput R A J)
 
 /-- 実商選択同値と標的の元の dg Yoneda の合成も、元の実商の冪等完備化。 -/
 theorem dgKappaSuspensionChoiceYoneda_isIdempotentCompletion :
-    IsIdempotentCompletion ((dgKappaSuspensionChoiceEquivalence R A I J P Q).hom ≫
-      dgNerve.map (dgPerfectYoneda R (dgKappaSuspensionKInput R A J))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion ((dgKappaSuspensionChoiceEquivalence R A I J P Q).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (dgKappaSuspensionKInput R A J))) := by
   let e := dgKappaSuspensionChoiceEquivalence R A I J P Q
-  let δ := dgNerve.map (dgPerfectYoneda R (dgKappaSuspensionKInput R A J))
+  let δ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (dgKappaSuspensionKInput R A J))
   have hδ := dgKappaRawSuspensionYoneda_isIdempotentCompletion R A J
   refine ⟨hδ.1, e.isFullyFaithful.comp hδ.2.1, ?_⟩
   intro y
   obtain ⟨x, hx⟩ := hδ.2.2 y
   obtain ⟨a, ⟨ea⟩⟩ := e.isEssentiallySurjective x
-  exact ⟨a, hx.trans (IsVertexRetractOf.of_iso (VertexIso.map ea δ).symm)⟩
+  exact ⟨a, hx.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map ea δ).symm)⟩
 
 /-- 同じ元の二つの dg Yoneda を保つ、実懸垂の Perf 同値の存在。 -/
 theorem dgKappaSuspensionPerfectChoice_exists :
-    ∃ e : QCatEquivalence
-      (dgModulePerfectInfinityCategory R (dgKappaSuspensionKInput R A I))
-      (dgModulePerfectInfinityCategory R (dgKappaSuspensionKInput R A J)),
-      Nonempty (FunctorIso
-        (dgNerve.map (dgPerfectYoneda R (dgKappaSuspensionKInput R A I)) ≫ e.hom)
+    ∃ e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R (dgKappaSuspensionKInput R A I))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfectInfinityCategory R (dgKappaSuspensionKInput R A J)),
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (dgKappaSuspensionKInput R A I)) ≫ e.hom)
         ((dgKappaSuspensionChoiceEquivalence R A I J P Q).hom ≫
-          dgNerve.map (dgPerfectYoneda R (dgKappaSuspensionKInput R A J)))) :=
-  IsIdempotentCompletion.equivalence_unique _
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (dgKappaSuspensionKInput R A J)))) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.equivalence_unique _
     (dgKappaRawSuspensionYoneda_isIdempotentCompletion R A I) _
     (dgKappaSuspensionChoiceYoneda_isIdempotentCompletion R A I J P Q)
 
@@ -57,7 +57,7 @@ def dgKappaSuspensionPerfectChoiceEquivalence_yonedaIso :=
 
 /-- 元のラベル評価同値を通る、同じ固定 ν 値どうしの実同値。 -/
 def dgKappaSuspensionNuChoiceEquivalence :
-    QCatEquivalence (dgKInputStableValue R (dgKappaSuspensionKInput R A I)).obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgKInputStableValue R (dgKappaSuspensionKInput R A I)).obj
       (dgKInputStableValue R (dgKappaSuspensionKInput R A J)).obj :=
   (presentedPerfectDGQCatEvaluationEquivalence R (dgKappaSuspensionKInput R A I)).trans
     ((dgKappaSuspensionPerfectChoiceEquivalence R A I J P Q).trans

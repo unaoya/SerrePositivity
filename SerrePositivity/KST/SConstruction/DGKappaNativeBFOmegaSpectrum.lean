@@ -53,7 +53,7 @@ lemma dgKappaNativeBFFiniteLevel_kanComplex (n : ℕ)
 規約：実際の前段からの構造射。使われ方：実 BF 条件。 -/
 lemma dgKappaNativeBFFiniteStructureMap_mono (n : ℕ)
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    Mono (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension
+    Mono (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension
       (((dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I n).obj C).obj) ⟶
         ((dgKappaNativeBFFiniteLevelFunctor.{u, v} R D I (n + 1)).obj C).obj from
           dgKappaNativeBFFiniteStructureMap.{u, v} R D I n C).right := by

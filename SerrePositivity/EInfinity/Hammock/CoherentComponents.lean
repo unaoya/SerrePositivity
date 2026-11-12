@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomOrdinary
-public import SerrePositivity.InfinityCategories.Core.MappingSpacePiZero
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftPiZero
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomOrdinary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpacePiZero
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftPiZero
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.PiZeroLocalization
 
 /-!
@@ -26,26 +26,26 @@ lemma coherentEdge_homMk_eq_of_components {C : Type v} [Category.{u} C]
     [SimplicialCategory C] {X Y : C} (f g : X ⟶ Y)
     (h : SSet.π₀.mk (SimplicialCategory.homEquiv' X Y f) =
       SSet.π₀.mk (SimplicialCategory.homEquiv' X Y g)) :
-    SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated =
-      SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated := by
-  have hu := congrArg (UniverseLiftPiZero.up.{u, v} (SimplicialCategory.sHom X Y)) h
-  have hm := congrArg (SSet.mapπ₀ (coherentHomComparison X Y)) hu
-  have hp := congrArg (pinchedHomPiZeroToHom (coherentNerveVertex X)
-    (coherentNerveVertex Y)) hm
-  change SSet.Truncated.HomotopyCategory.homMk (pinchedHomVertexEquiv _ _
-    ((coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y f)))) =
-      SSet.Truncated.HomotopyCategory.homMk (pinchedHomVertexEquiv _ _
-        ((coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y g)))) at hp
-  have hf : pinchedHomVertexEquiv _ _
-      ((coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y f))) =
-      (coherentNerveEdge f).toTruncated := by
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated := by
+  have hu := congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.up.{u, v} (SimplicialCategory.sHom X Y)) h
+  have hm := congrArg (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y)) hu
+  have hp := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomPiZeroToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)) hm
+  change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y f)))) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y g)))) at hp
+  have hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y f))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated := by
     apply SSet.Truncated.Edge.ext
-    exact coherentHomComparison_ordinary f
-  have hg : pinchedHomVertexEquiv _ _
-      ((coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y g))) =
-      (coherentNerveEdge g).toTruncated := by
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_ordinary f
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomVertexEquiv _ _
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y).app _ (ULift.up (SimplicialCategory.homEquiv' X Y g))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated := by
     apply SSet.Truncated.Edge.ext
-    exact coherentHomComparison_ordinary g
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_ordinary g
   exact (congrArg₂ Eq (congrArg SSet.Truncated.HomotopyCategory.homMk hf)
     (congrArg SSet.Truncated.HomotopyCategory.homMk hg)).mp hp
 
@@ -53,8 +53,8 @@ lemma coherentEdge_homMk_eq_of_components {C : Type v} [Category.{u} C]
 lemma coherentEdge_homMk_eq_of_homotopy {C : Type v} [Category.{u} C]
     [SimplicialCategory C] {X Y : C} (f g : X ⟶ Y)
     (H : SSet.Homotopy (eHomEquiv SSet f) (eHomEquiv SSet g)) :
-    SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge f).toTruncated =
-      SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge g).toTruncated := by
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated := by
   apply coherentEdge_homMk_eq_of_components f g
   have h := AnodyneHomotopy.map_homotopy_eq SSet.π₀Functor
     PiZeroLocalization.inverts_anodyne H

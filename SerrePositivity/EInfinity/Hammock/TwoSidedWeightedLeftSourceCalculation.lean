@@ -30,28 +30,28 @@ def reverseLabels (n : ℕ) : FrameHom.Thomason.values F n ⟶
 
 def barSimplex {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
     ComposableArrows
-      (FrameHom.Thomason.values (TwoSidedMixedLabel.pulledDiagram F S) n).Elements n :=
-  oppositeNerveSimplex (e ⋙ TwoSidedElements.map (reverseLabels F n) (𝟙 S) ⋙
-    TwoSidedElements.toOpposite (FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n) S)
+      (FrameHom.Thomason.values (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) n).Elements n :=
+  oppositeNerveSimplex (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (reverseLabels F n) (𝟙 S) ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite (FrameHom.Thomason.values (F ⋙ Cat.opFunctor) n) S)
 
 lemma spaceIso_hom_app (n : ℕ) (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
     (spaceIso F S).hom.app (op (SimplexCategory.mk n)) e =
       SSet.opObjEquiv.symm (barSimplex F S e) := rfl
 
 lemma simplex_transport {n : ℕ} (e : ComposableArrows (ContravariantThomason.labels F S n) n) :
-    FrameHom.Thomason.simplex (TwoSidedMixedLabel.pulledDiagram F S) (barSimplex F S e) =
+    FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledDiagram F S) (barSimplex F S e) =
       oppositeNerveSimplex
-        (TwoSidedWeightedLeft.simplex F S e ⋙ TwoSidedMixedLabel.fromMixed F S) := by
+        (TwoSidedWeightedLeft.simplex F S e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixed F S) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   refine Grothendieck.ext _ _ rfl ?_
   dsimp only [FrameHom.Thomason.simplex, barSimplex, reverseLabels,
-    oppositeNerveSimplex, nerveOppositeSimplex, TwoSidedElements.toOpposite,
-    TwoSidedElements.baseElementMap, TwoSidedMixedLabel.fromMixed, TwoSidedMixedLabel.fromMixedMap,
+    oppositeNerveSimplex, nerveOppositeSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.toOpposite,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.baseElementMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixed, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.fromMixedMap,
     TwoSidedWeightedLeft.simplex, ContravariantThomason.simplex,
-    ContravariantThomason.arrow, ContravariantGrothendieck.homMk, ContravariantThomason.leftArrow,
-    Functor.comp_map, Functor.comp_obj, TwoSidedElements.map]
+    ContravariantThomason.arrow, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.homMk, ContravariantThomason.leftArrow,
+    Functor.comp_map, Functor.comp_obj, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map]
   dsimp
   simp only [eqToHom_op, Category.id_comp]
 

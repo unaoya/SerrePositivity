@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.ProExcision.LinearizedBarCylinder
 public import SerrePositivity.KST.ProExcision.LinearizedEndpoints
 public import SerrePositivity.KST.ProExcision.ActionBarFiberMap
-public import SerrePositivity.KST.ProExcision.MHomotopyHomology
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.MHomotopyHomology
 
 /-!
 # m 次同変ホモトピーの作用 bar への移送
@@ -30,19 +30,19 @@ lemma linearizedActionBarCylinder_endpoint_generator
     (H : EquivariantLinearizedCylinderMap A B) (f : SimplicialSetActionHom A B)
     (hf : f.base = 𝟙 G) (n : SimplexCategoryᵒᵖ) (ε : Fin 2)
     (hε : ∀ x : X.obj n, H.h.app n
-      (TensorProduct.tmul ℤ (integerGenerator x)
-        (integerGenerator (SSet.stdSimplex.const 1 ε n))) = integerGenerator (f.hom.app n x))
+      (TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 ε n))) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (f.hom.app n x))
     (p : (setActionBar A).obj n) :
     linearizedActionBarCylinderApp H n
-      (TensorProduct.tmul ℤ (integerGenerator p)
-        (integerGenerator (SSet.stdSimplex.const 1 ε n))) =
-      integerGenerator ((setActionBarMap f).app n p) := by
+      (TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator p)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 ε n))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator ((setActionBarMap f).app n p) := by
   rw [linearizedActionBarCylinderApp_generator, hε]
-  change integerLinearization.map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map
       (↾(setActionBarFiberSection B n ((setActionBarProjection A).app n p)))
-      (integerGenerator (f.hom.app n (p.obj 0).val)) = _
-  rw [integerLinearization_map_generator]
-  apply congrArg integerGenerator
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (f.hom.app n (p.obj 0).val)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator
   have hs := setActionBarFiberSection_map f n ((setActionBarProjection A).app n p) (p.obj 0).val
   rw [hf, monoidBarMap_id] at hs
   change (setActionBarMap f).app n
@@ -58,41 +58,41 @@ lemma linearizedActionBarCylinder_endpoint_generator
 使われ方：作用 bar の複体ホモロジー写像を次数 ≤m で比較する。 -/
 def linearizedActionBarMHomotopy (f g : SimplicialSetActionHom A B)
     (hf : f.base = 𝟙 G) (hg : g.base = 𝟙 G) {m : ℕ}
-    (H : LinearizedMHomotopy (linearizedSpaceMap f.hom) (linearizedSpaceMap g.hom) m)
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f.hom) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap g.hom) m)
     (hH : ∀ n (a : G.obj n),
-      integerTensorMap (linearizedSetAction A n a) (𝟙 _) ≫ H.h.app n =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap (linearizedSetAction A n a) (𝟙 _) ≫ H.h.app n =
         H.h.app n ≫ linearizedSetAction B n a) :
-    LinearizedMHomotopy (linearizedSpaceMap (setActionBarMap f))
-      (linearizedSpaceMap (setActionBarMap g)) m := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (setActionBarMap f))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap (setActionBarMap g)) m := by
   let C : EquivariantLinearizedCylinderMap A B := ⟨H.h, hH⟩
   refine { h := linearizedActionBarCylinderMap C, h₀ := ?_, h₁ := ?_ }
   · intro q hq
-    apply integerLinearization_hom_ext (X := (setActionBar A).obj (op ⦋q⦌))
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext (X := (setActionBar A).obj (op ⦋q⦌))
     intro p
     change linearizedActionBarCylinderApp C (op ⦋q⦌)
-        ((linearizedEndpoint₀ (setActionBar A)).app (op ⦋q⦌) (integerGenerator p)) =
-      integerLinearization.map ((setActionBarMap f).app (op ⦋q⦌)) (integerGenerator p)
-    rw [linearizedEndpoint₀_generator, integerLinearization_map_generator]
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀ (setActionBar A)).app (op ⦋q⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator p)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((setActionBarMap f).app (op ⦋q⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator p)
+    rw [linearizedEndpoint₀_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
     refine linearizedActionBarCylinder_endpoint_generator C f hf (op ⦋q⦌) 0 ?_ p
     intro x
-    have he := congrArg (fun a ↦ a.hom (integerGenerator x)) (H.h₀ q hq)
-    change H.h.app (op ⦋q⦌) ((linearizedEndpoint₀ X).app (op ⦋q⦌) (integerGenerator x)) =
-      integerLinearization.map (f.hom.app (op ⦋q⦌)) (integerGenerator x) at he
-    rw [linearizedEndpoint₀_generator, integerLinearization_map_generator] at he
+    have he := congrArg (fun a ↦ a.hom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) (H.h₀ q hq)
+    change H.h.app (op ⦋q⦌) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀ X).app (op ⦋q⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (f.hom.app (op ⦋q⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) at he
+    rw [linearizedEndpoint₀_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator] at he
     exact he
   · intro q hq
-    apply integerLinearization_hom_ext (X := (setActionBar A).obj (op ⦋q⦌))
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext (X := (setActionBar A).obj (op ⦋q⦌))
     intro p
     change linearizedActionBarCylinderApp C (op ⦋q⦌)
-        ((linearizedEndpoint₁ (setActionBar A)).app (op ⦋q⦌) (integerGenerator p)) =
-      integerLinearization.map ((setActionBarMap g).app (op ⦋q⦌)) (integerGenerator p)
-    rw [linearizedEndpoint₁_generator, integerLinearization_map_generator]
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁ (setActionBar A)).app (op ⦋q⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator p)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((setActionBarMap g).app (op ⦋q⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator p)
+    rw [linearizedEndpoint₁_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
     refine linearizedActionBarCylinder_endpoint_generator C g hg (op ⦋q⦌) 1 ?_ p
     intro x
-    have he := congrArg (fun a ↦ a.hom (integerGenerator x)) (H.h₁ q hq)
-    change H.h.app (op ⦋q⦌) ((linearizedEndpoint₁ X).app (op ⦋q⦌) (integerGenerator x)) =
-      integerLinearization.map (g.hom.app (op ⦋q⦌)) (integerGenerator x) at he
-    rw [linearizedEndpoint₁_generator, integerLinearization_map_generator] at he
+    have he := congrArg (fun a ↦ a.hom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) (H.h₁ q hq)
+    change H.h.app (op ⦋q⦌) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁ X).app (op ⦋q⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (g.hom.app (op ⦋q⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) at he
+    rw [linearizedEndpoint₁_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator] at he
     exact he
 
 end SerrePositivity.KST.ProExcision

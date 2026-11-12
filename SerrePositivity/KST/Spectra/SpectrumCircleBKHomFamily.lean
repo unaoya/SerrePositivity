@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleHomFamilySimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -25,17 +25,17 @@ local instance circleHomFamilySimplicialCategory : SimplicialCategory OmegaSpect
 /-- 元の恒等射の BK 切断点を、全 Hom パラメーターで前合成した族。 -/
 def circleBKHomEndFamily (X Y : OmegaSpectrum.{u}) :
     mappingSpace X (cotensor PointedSimplicialSet.circle Y) ⟶
-      bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.ParameterPoint.family (circleBKEndPointMap Y)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.family (circleBKEndPointMap Y)
     (mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ≫
       homEndPrecomposition (pointLoopDiagram Y) X (cotensor PointedSimplicialSet.circle Y)
 
 /-- 切断点で固定した族の中央は、元の普遍評価への元の豊穣合成。 -/
 lemma circleBKHomEndFamily_central_uncurry (X Y : OmegaSpectrum.{u}) :
     uncurry (circleBKHomEndFamily X Y ≫
-      weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-        (simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one)) =
-      (β_ ((bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one)) =
+      (β_ ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one))
         (mappingSpace X (cotensor PointedSimplicialSet.circle Y))).hom ≫
       mappingSpace X (cotensor PointedSimplicialSet.circle Y) ◁
         (circleBKParameter.{u} ≫ (cotensorEvaluation PointedSimplicialSet.circle Y).right) ≫
@@ -61,7 +61,7 @@ lemma circleBKHomEndFamily_eq (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の BK 切断点から得た全 Hom 前合成族は、実際の単体的ホモトピー同値。 -/
 lemma circleBKHomEndFamily_homotopyEquivalence (X Y : OmegaSpectrum.{u}) :
-    IsSimplicialHomotopyEquivalence (circleBKHomEndFamily X Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (circleBKHomEndFamily X Y) := by
   rw [circleBKHomEndFamily_eq]
   exact circleCotensorHomBKComparison_homotopyEquivalence X Y
 

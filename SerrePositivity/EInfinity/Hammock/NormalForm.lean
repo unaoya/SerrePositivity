@@ -25,41 +25,41 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
   (X Y : C) (n : SimplexCategoryᵒᵖ)
 
 /-- 元の有限縮約で得る縮約済みの代表。一意性により選択には依存しない。 -/
-def normalForm (r : RawHammock W X Y n) : RawHammock W X Y n :=
+def normalForm (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n :=
   Classical.choose (exists_reduced_representative W X Y n r)
 
-lemma normalForm_chain (r : RawHammock W X Y n) :
+lemma normalForm_chain (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
     Relation.ReflTransGen (Reduction W X Y n) r (normalForm W X Y n r) :=
   (Classical.choose_spec (exists_reduced_representative W X Y n r)).1
 
-lemma normalForm_reduced (r : RawHammock W X Y n) :
-    RawHammock.IsReduced W X Y (normalForm W X Y n r) :=
+lemma normalForm_reduced (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.IsReduced W X Y (normalForm W X Y n r) :=
   (Classical.choose_spec (exists_reduced_representative W X Y n r)).2
 
-lemma normalForm_eq_of_chain {r s : RawHammock W X Y n}
+lemma normalForm_eq_of_chain {r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (h : Relation.ReflTransGen (Reduction W X Y n) r s) :
     normalForm W X Y n r = normalForm W X Y n s :=
   reduced_representative_unique W X Y n (normalForm_chain W X Y n r)
     (h.trans (normalForm_chain W X Y n s))
     (normalForm_reduced W X Y n r) (normalForm_reduced W X Y n s)
 
-lemma normalForm_eq_of_reduction {r s : RawHammock W X Y n}
+lemma normalForm_eq_of_reduction {r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (h : Reduction W X Y n r s) : normalForm W X Y n r = normalForm W X Y n s :=
   normalForm_eq_of_chain W X Y n (Relation.ReflTransGen.single h)
 
-lemma normalForm_eq_self {r : RawHammock W X Y n} (hr : RawHammock.IsReduced W X Y r) :
+lemma normalForm_eq_self {r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n} (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.IsReduced W X Y r) :
     normalForm W X Y n r = r :=
   (chain_eq_of_reduced W X Y n hr (normalForm_chain W X Y n r)).symm
 
-lemma normalForm_idempotent (r : RawHammock W X Y n) :
+lemma normalForm_idempotent (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
     normalForm W X Y n (normalForm W X Y n r) = normalForm W X Y n r :=
   normalForm_eq_self W X Y n (normalForm_reduced W X Y n r)
 
-lemma normalForm_value (r : RawHammock W X Y n) :
-    RawHammock.value W X Y (normalForm W X Y n r) = RawHammock.value W X Y r :=
+lemma normalForm_value (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.value W X Y (normalForm W X Y n r) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.value W X Y r :=
   (Reduction.chain_value_eq (normalForm_chain W X Y n r)).symm
 
-lemma normalForm_eq_iff_join (r s : RawHammock W X Y n) :
+lemma normalForm_eq_iff_join (r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
     normalForm W X Y n r = normalForm W X Y n s ↔
       Relation.Join (Relation.ReflTransGen (Reduction W X Y n)) r s := by
   constructor
@@ -71,9 +71,9 @@ lemma normalForm_eq_iff_join (r s : RawHammock W X Y n) :
     exact (normalForm_eq_of_chain W X Y n hrq).trans (normalForm_eq_of_chain W X Y n hsq).symm
 
 lemma normalForm_map_normalForm {m : SimplexCategoryᵒᵖ} (α : n ⟶ m)
-    (r : RawHammock W X Y n) :
-    normalForm W X Y m (RawHammock.map W X Y α (normalForm W X Y n r)) =
-      normalForm W X Y m (RawHammock.map W X Y α r) :=
+    (r : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) :
+    normalForm W X Y m (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α (normalForm W X Y n r)) =
+      normalForm W X Y m (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α r) :=
   (normalForm_eq_of_chain W X Y m
     (Reduction.chain_map (normalForm_chain W X Y n r) α)).symm
 

@@ -44,12 +44,12 @@ lemma corner_family_lift {A X E Z : PointedSimplicialSet.{u}}
     (a : T ⟶ (PointedObject.basedHom X E).right)
     (b : U ⟶ (PointedObject.basedHom X Z).right)
     (c : U ⟶ (PointedObject.basedHom A E).right)
-    (hbc : b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i Z = c ≫ (PointedObject.basedHomMap A p).right)
+    (hbc : b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i Z = c ≫ (PointedObject.basedHomMap A p).right)
     (ha : a ≫ (PointedObject.basedHomMap X p).right = j ≫ b)
-    (hc : a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = j ≫ c) :
+    (hc : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E = j ≫ c) :
     ∃ l : U ⟶ (PointedObject.basedHom X E).right,
       j ≫ l = a ∧ l ≫ (PointedObject.basedHomMap X p).right = b ∧
-        l ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E = c := by
+        l ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E = c := by
   let t : U ⟶ cornerTarget i p := pullback.lift b c hbc
   let : HasLiftingProperty j (corner i p) := corner_rlp_monomorphisms i p hp j inferInstance
   let sq : CommSq a j (corner i p) t := ⟨by

@@ -12,10 +12,10 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G H : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G H : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 variable (h₁ : ∀ x, (moduleHom R D (H.obj x) (F.obj x)).X 1)
@@ -78,7 +78,7 @@ lemma dgModuleNaturalConeLiftMap_naturality (x y : P) (n : ℤ)
 方針：元閉射と証明済み全 Hom 自然性を束ねる。
 規約：点ごとの比較射の存在選択をしない。
 使われ方：実回転比較の全関手族化。 -/
-def dgModuleNaturalConeLift : StrictNatTrans H (CF) where
+def dgModuleNaturalConeLift : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans H (CF) where
   app x := cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
     (dgModuleNaturalConeLiftMap R D F G H η h₁ h₀ c₁ c₀ x))
   naturality z := (dgModuleNaturalConeLiftMap_naturality R D F G H η h₁ h₀ c₁ c₀ n₁ n₀ _ _ _ z).symm

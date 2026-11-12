@@ -24,22 +24,22 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 方針：元の Hom の包みと元の二列比較を同じ up の graph 同型で送る。
 規約：元の全単体と元の左脚。使われ方：同じ comma roof の回収。 -/
 def modelBifibrantSourceFrameGraphMap :
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) ⟶
-      graph (modelBifibrantRelativeCategory C).weakEquivalences LeftRoof.word
-        (modelBifibrantObject C X) (modelBifibrantObject C Y) :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   (modelBifibrantSourceFrameIndexIso X Y q).hom ≫
-    frameLeftRoofNerveMap modelRawBifibrantWeak (modelBifibrantFrame X q)
-      (modelBifibrantFrameAugmentation X q) (fun n => q.augmentation_weakEquivalence n)
+    frameLeftRoofNerveMap _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrameAugmentation X q) (fun n => q.augmentation_weakEquivalence n)
       (fun f => q.homotopicallyConstant f) ≫
-        (AsSmallComparison.graphIso (modelRawBifibrantWeak (C := C)) X Y LeftRoof.word).hom
+        (AsSmallComparison.graphIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (C := C)) X Y _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).hom
 
 /-- 概要：同じ元の二列 graph の標準射は元の弱な全 hammock 比較を回収する。
 方針：同じ AsSmall 全語同型と各語の標準射の自然性を使う。
 規約：実射の厳密な因子分解。使われ方：元の augmentation roof の全族照合。 -/
 lemma modelBifibrantSourceFrameGraphMap_colimit :
     modelBifibrantSourceFrameGraphMap X Y q ≫
-      graphInclusion (modelBifibrantRelativeCategory C).weakEquivalences
-        (modelBifibrantObject C X) (modelBifibrantObject C Y) LeftRoof.word =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
           modelBifibrantSourceFrameColimitMap X Y q := by
   unfold modelBifibrantSourceFrameGraphMap modelBifibrantSourceFrameColimitMap
     modelBifibrantSourceFrameRawColimitMap modelBifibrantFrameLeftRoofColimitMap

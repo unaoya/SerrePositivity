@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeStrictImageMorita
-public import SerrePositivity.InfinityCategories.Derived.DGModuleCompactEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleCompactEquivalence
 public import SerrePositivity.DifferentialGraded.Derived.FunctorExtensionAdjunction
 
 /-!
@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R]
   (C D : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   [DGCategory R D] [Small.{u} D] (f : DGFunctor R C D)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R C κ) (J : DGKappaConeInput R D κ)
-  (e : DGModuleStrictImage R C D (dgModuleExtension R C D f) I.objects J.objects)
+  (e : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.DGModuleStrictImage R C D (dgModuleExtension R C D f) I.objects J.objects)
 
 /-- 元の射影的加群の導来延長は、同じ代表化 cone 像の主導来値と同型。 -/
 def dgKappaConeStrictImageClassicalIso (M : DGKappaCone R C I) :
@@ -39,7 +39,7 @@ theorem dgKappaConeStrictImage_perfect_iff
   let : E.functor.Additive := by
     change (dgDerivedExtension R C D f).Additive
     exact dgDerivedExtension_additive R C D f
-  have h := dgModulePerfect_equivalence_iff R C D E ((moduleToDerived R C).obj M.val)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModulePerfect_equivalence_iff R C D E ((moduleToDerived R C).obj M.val)
   have hM := dgKappaConeStrictImageClassicalIso R C D f I J e M
   constructor
   · intro hx

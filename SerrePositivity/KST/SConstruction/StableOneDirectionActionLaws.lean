@@ -16,7 +16,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories Loca
 /-- 概要：元の全作用は豊穣単位を保存する。
 方針：同じ次数の core 関手の単位則を使う。
 規約：元の作用の等式。使われ方：同じ商作用の単位則。 -/
-lemma stableOneDirectionAction_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionAction_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (𝟙 ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C)) ⊗ₘ
       eId SSet.{u} C) ≫ stableOneDirectionAction r C C =
         (ρ_ ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C))).hom := by
@@ -32,7 +32,7 @@ lemma stableOneDirectionAction_unit (r : ℕ) (C : _root_.SerrePositivity.Infini
 /-- 概要：元の全作用は高次入力の合成を保存する。
 方針：同じ次数の core 関手の三作用を回収して合成則を使う。
 規約：全パラメータの等式。使われ方：同じ商作用の合成則。 -/
-lemma stableOneDirectionAction_comp (r : ℕ) (C D E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionAction_comp (r : ℕ) (C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableOneDirectionAction r C D ⊗ₘ 𝟙 (D ⟶[SSet.{u}] E)) ≫
         stableOneDirectionAction r D E =
       (α_ ((oneDirectionRealizationFunctor r).obj (stableCategoryModel C))

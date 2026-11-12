@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.CommaPreLeftCofinality
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaGrothendieck
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowPreDiagram
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CostructuredArrowPreDiagram
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
 
 /-!
@@ -37,8 +37,8 @@ variable {K L C J : Type u} [Category.{u} K] [Category.{u} L]
 規約：元の比較を別の関手へ置き換えない。
 使われ方：全 comma の収縮の結果を元の Grothendieck 関手へ移す。 -/
 lemma fixedRightGrothendieckComparison_toComma :
-    fixedRightGrothendieckComparison P Q R ⋙ CommaGrothendieck.toComma Q R =
-      CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R := by
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R =
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R := by
   refine CategoryTheory.Functor.ext (fun S => rfl) ?_
   intro S T f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -52,30 +52,30 @@ lemma fixedRightGrothendieckComparison_toComma :
 規約：元の比較射の像そのものの可逆性を主張する。
 使われ方：分解から全左脚への同じ全図式の比較の反転。 -/
 lemma fixedRightGrothendieckComparison_localized_isIso
-    (hP : IsLeftCofinal (nerveMap P)) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (fixedRightGrothendieckComparison P Q R))) := by
+    (hP : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap P)) :
+    IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R))) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map
-      (nerveMap (CommaGrothendieck.toComma (P ⋙ Q) R))) :=
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R))) :=
     inferInstanceAs (IsIso (NerveEquivalenceImage.imageIso
-      (CommaGrothendieck.equivalence (P ⋙ Q) R) AnodyneHomotopy.anodyneQ
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.equivalence (P ⋙ Q) R) AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).hom)
   have : IsIso (AnodyneHomotopy.anodyneQ.map
-      (nerveMap (CommaGrothendieck.toComma Q R))) :=
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R))) :=
     inferInstanceAs (IsIso (NerveEquivalenceImage.imageIso
-      (CommaGrothendieck.equivalence Q R) AnodyneHomotopy.anodyneQ
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.equivalence Q R) AnodyneHomotopy.anodyneQ
       (Localization.inverts _ SSet.anodyneExtensions)).hom)
   have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (Comma.preLeft P Q R))) :=
     CommaPreLeft.comparison_localized_isIso P Q R hP
-  have h : nerveMap (fixedRightGrothendieckComparison P Q R) ≫
-      nerveMap (CommaGrothendieck.toComma Q R) =
-      nerveMap (CommaGrothendieck.toComma (P ⋙ Q) R) ≫ nerveMap (Comma.preLeft P Q R) := by
-    change nerveMap (fixedRightGrothendieckComparison P Q R ⋙ CommaGrothendieck.toComma Q R) =
-      nerveMap (CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R)
+  have h : nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R) ≫
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R) =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R) ≫ nerveMap (Comma.preLeft P Q R) := by
+    change nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R) =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma (P ⋙ Q) R ⋙ Comma.preLeft P Q R)
     rw [fixedRightGrothendieckComparison_toComma]
   have hh := congrArg AnodyneHomotopy.anodyneQ.map h
   rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_comp] at hh
-  have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (fixedRightGrothendieckComparison P Q R)) ≫
-      AnodyneHomotopy.anodyneQ.map (nerveMap (CommaGrothendieck.toComma Q R))) :=
+  have : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.fixedRightGrothendieckComparison P Q R)) ≫
+      AnodyneHomotopy.anodyneQ.map (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaGrothendieck.toComma Q R))) :=
     hh.symm ▸ inferInstance
   exact (isIso_comp_right_iff _ _).mp this
 

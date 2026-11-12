@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingRightAxisHom
-public import SerrePositivity.InfinityCategories.Derived.DGUniverseNerveFullyFaithful
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseNerveFullyFaithful
 
 /-! # 実右軸包含の dg nerve の充満忠実性
 概要：元の右軸包含は、共通宇宙の dg nerve の実写像空間上で充満忠実となる。
@@ -19,8 +19,8 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 
 /-- 元の実右軸包含は、共通宇宙で元の dg nerve の実写像空間上で充満忠実。 -/
 lemma dgGluingRightAxis_nerve_fullyFaithful :
-    IsFullyFaithful (dgNerveUniverseMap (dgGluingRightAxis R C D M z hz)) :=
-  dgNerveUniverseMap_isFullyFaithful_of_homIso _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerveUniverseMap (dgGluingRightAxis R C D M z hz)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerveUniverseMap_isFullyFaithful_of_homIso _
     (dgGluingRightAxis_map_isIso R C D M z hz)
 
 end SerrePositivity.KST.SConstruction

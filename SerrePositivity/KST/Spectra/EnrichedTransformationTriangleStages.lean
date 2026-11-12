@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle
 public import SerrePositivity.KST.Spectra.EnrichedOrderedCylinderNerve
 
 /-!
@@ -27,7 +27,7 @@ variable {C : Type v} {D : Type w} [EnrichedCategory SSet.{u} C] [EnrichedCatego
 /-- 因子分解の最初の段は元の最初の関手。 -/
 lemma functor_stage_zero :
     (EnrichedOrderedCylinder.stageInclusion (C := C) (0 : Fin 3)).comp SSet
-      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = F := by
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = F := by
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
   apply SSet.hom_ext
@@ -39,7 +39,7 @@ lemma functor_stage_zero :
 /-- 因子分解の中間の段は元の中間の関手。 -/
 lemma functor_stage_one :
     (EnrichedOrderedCylinder.stageInclusion (C := C) (1 : Fin 3)).comp SSet
-      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = G := by
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = G := by
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
   apply SSet.hom_ext
@@ -51,7 +51,7 @@ lemma functor_stage_one :
 /-- 因子分解の最後の段は元の最後の関手。 -/
 lemma functor_stage_two :
     (EnrichedOrderedCylinder.stageInclusion (C := C) (2 : Fin 3)).comp SSet
-      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = H := by
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedTransformationTriangle.functor F G H η θ ζ hc) = H := by
   apply EnrichedFunctor.ext SSet (fun _ ↦ rfl)
   intro X Y
   apply SSet.hom_ext

@@ -18,12 +18,12 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の厳密豊穣 Perf 関手の実 QCat 値は、同じ元の評価同値により安定。 -/
 lemma presentedPerfectDGQCat_isStable (C : PerfDGInput.{u, v} A) :
-    IsStable (presentedPerfectDGQCat A C).obj :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (presentedPerfectDGQCat A C).obj :=
   presentedPerfectDGNerve_isStable A C
 
 /-- 元の実 QCat 値から元の実 Perf native nerve への、同じ評価による実同値。 -/
 def presentedPerfectDGQCatEvaluationEquivalence (C : PerfDGInput.{u, v} A) :
-    QCatEquivalence (presentedPerfectDGQCat A C).obj (dgNerve A (PerfectDGModule A C)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (presentedPerfectDGQCat A C).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PerfectDGModule A C)) :=
   presentedPerfectDGNerveEquivalence A C
 
 /-- 元の厳密豊穣 Perf 関手の値を、同じ安定な K 入力として保持する。 -/

@@ -40,14 +40,14 @@ def boundaryAssemblyCoherentDiagramHomotopy {I : Type u} [SmallCategory I]
         (fun i => boundaryKanRealization_kanComplex r (F.obj i)))
       (pointedKanCoherentDiagram (F ⋙ loopBoundaryKanFunctor (r + 1))
         (fun i => loopBoundaryKan_kanComplex (r + 1) (F.obj i))) :=
-  functorHomotopyComposite (oneDirectionCoherentInverseHomotopy r F)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopyComposite (oneDirectionCoherentInverseHomotopy r F)
     (kanAssemblyCoherentDiagramHomotopy r F)
 
 /-- 図式全体の組み立ては、元の二つの coherent な因子と実三角形をなす。 -/
 def boundaryAssemblyCoherentDiagramTriangle {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
-    FunctorCompositionTriangle (oneDirectionCoherentInverseHomotopy r F)
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (oneDirectionCoherentInverseHomotopy r F)
       (kanAssemblyCoherentDiagramHomotopy r F) (boundaryAssemblyCoherentDiagramHomotopy r F) :=
-  functorHomotopyCompositeTriangle _ _
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopyCompositeTriangle _ _
 
 end SerrePositivity.KST.SConstruction

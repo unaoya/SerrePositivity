@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
-variable (F : Word ⥤ SSet.{w}) (n : ℕ) {a c : Word} (ha : a.length ≤ n)
+variable (F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}) (n : ℕ) {a c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (ha : a.length ≤ n)
   (f : a ⟶ c) (hf : Function.Injective f.orderHom)
 
 def lengthBoundaryLift : F.obj a ⟶ (lengthBoundary F n c).toFunctor :=
@@ -31,7 +31,7 @@ lemma lengthBoundaryLift_ι : lengthBoundaryLift F n ha f hf ≫ (lengthBoundary
 
 lemma lengthBoundaryLift_toStage (hF : ProperDiagram F) :
     lengthBoundaryLift F n ha f hf ≫ lengthBoundaryToStage hF n c =
-      lengthStageInclusion F n a ha := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion F n a ha := by
   apply NatTrans.ext
   funext k
   apply ConcreteCategory.hom_ext

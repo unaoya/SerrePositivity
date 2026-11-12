@@ -38,14 +38,14 @@ def trianglePrismEdge (e : Fin 3) : ⦋1⦌ ⟶ ⦋2⦌ :=
 /-- 指定した元の辺の四角形の上側三角形。 -/
 def trianglePrismUpper (e : Fin 3) : ((Δ[2] : SSet.{u}) ⊗ Δ[1]) _⦋2⦌ :=
   (SSet.stdSimplex.map (trianglePrismEdge e) ▷ (Δ[1] : SSet.{u})).app _
-    (((SSet.Truncated.Edge.CompStruct.idComp homotopyIntervalEdge).tensor
-      (SSet.Truncated.Edge.CompStruct.compId homotopyIntervalEdge)).simplex)
+    (((SSet.Truncated.Edge.CompStruct.idComp _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).tensor
+      (SSet.Truncated.Edge.CompStruct.compId _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge)).simplex)
 
 /-- 指定した元の辺の四角形の下側三角形。 -/
 def trianglePrismLower (e : Fin 3) : ((Δ[2] : SSet.{u}) ⊗ Δ[1]) _⦋2⦌ :=
   (SSet.stdSimplex.map (trianglePrismEdge e) ▷ (Δ[1] : SSet.{u})).app _
-    (((SSet.Truncated.Edge.CompStruct.compId homotopyIntervalEdge).tensor
-      (SSet.Truncated.Edge.CompStruct.idComp homotopyIntervalEdge)).simplex)
+    (((SSet.Truncated.Edge.CompStruct.compId _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge).tensor
+      (SSet.Truncated.Edge.CompStruct.idComp _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge)).simplex)
 
 /-- 最初と中央の三単体は、同じ元の内側三角形を共有する。 -/
 lemma trianglePrismTetrahedron_shared_first :

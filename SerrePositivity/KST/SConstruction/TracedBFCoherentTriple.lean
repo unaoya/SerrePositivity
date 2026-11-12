@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TracedBFCoherentComposition
-public import SerrePositivity.InfinityCategories.Kan.CompositionTripleTetrahedron
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionTripleTetrahedron
 public import SerrePositivity.KST.SConstruction.CoherentTriangleMappingEdge
 
 /-! # 三入力の元の三合成面を同時に保持する BF 四面体
@@ -27,20 +27,20 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 前二射・後二射・右結合の元の全合成面を三面に持つ実四面体。 -/
 def monicKTracedCoherentTripleData :=
-  _root_.SerrePositivity.InfinityCategories.Kan.compositionTripleTetrahedron (monicKTracedCoherentComposition F f g)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTripleTetrahedron (monicKTracedCoherentComposition F f g)
     (monicKTracedCoherentComposition F g h) (monicKTracedCoherentComposition F f (g ≫ h))
 
 /-- 元の指定左結合面の全単体を保持して長辺の表示を移した同じデータ。 -/
 def monicKTracedCoherentTriplePrescribedLeftData :=
-  _root_.SerrePositivity.InfinityCategories.Kan.compositionTriangleLongEdgeData (monicKTracedCoherentComposition F (f ≫ g) h)
-    (congrArg (fun k => (coherentNerveEdge (monicKTracedSpectrumMap F k)).edge)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.compositionTriangleLongEdgeData (monicKTracedCoherentComposition F (f ≫ g) h)
+    (congrArg (fun k => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F k)).edge)
       (Category.assoc f g h))
 
 /-- 左結合入力に対して既に指定した元の全合成面を、同じ長辺の表示へ移す。 -/
 def monicKTracedCoherentTriplePrescribedLeft : SSet.Edge.CompStruct
-    (coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g)))
-    (coherentNerveEdge (monicKTracedSpectrumMap F h))
-    (coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g ≫ h))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F h))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g ≫ h))) :=
   (monicKTracedCoherentTriplePrescribedLeftData F f g h).val
 
 /-- 表示の移送は元の指定左結合面の全二単体を変更しない。 -/
@@ -72,9 +72,9 @@ lemma monicKTracedCoherentTriple_right_face :
 
 /-- 三つの元の面を保持する四面体から得た、同じ三辺を持つ左結合の実合成面。 -/
 def monicKTracedCoherentTripleGeneratedLeft : SSet.Edge.CompStruct
-    (coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g)))
-    (coherentNerveEdge (monicKTracedSpectrumMap F h))
-    (coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g ≫ h))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F h))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g ≫ h))) :=
   (monicKTracedCoherentTripleData F f g h).left
 
 /-- 得られた左結合面は同じ四面体の第一面そのもの。 -/

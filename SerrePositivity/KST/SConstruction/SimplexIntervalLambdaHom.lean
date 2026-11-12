@@ -18,18 +18,18 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の任意区間の Λ の Hom 複体と、元の Serre 鎖立方体の実同型。 -/
 def simplexIntervalLambdaHomIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    (serreConcreteCubeComplexFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≅
+    (serreConcreteCubeComplexFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≅
       homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
-  (cubicalSerreChainsCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
+  (cubicalSerreChainsCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≪≫
     (cubicalSerreChains A).mapIso (simplexIntervalCubicalMappingIso a b hab)
 
 /-- 元の任意区間の同じ比較を、Serre 余モノイドの実同型として読む。 -/
 def simplexIntervalLambdaHomComonoidIso {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
-    (serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≅
+    (serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≅
       cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) :=
-  (cubicalSerreComonoidCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1)) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) :=
+  (cubicalSerreComonoidCubeIso A).app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1)) ≪≫
     (cubicalSerreComonoidFunctor A).mapIso (simplexIntervalCubicalMappingIso a b hab)
 
 /-- 元の余モノイド比較の underlying 同型は、元の同じ Hom 比較そのもの。 -/
@@ -50,8 +50,8 @@ lemma simplexIntervalLambdaHomComonoidIso_hom {n : ℕ}
 lemma simplexIntervalLambdaHomIso_diagonal {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     (simplexIntervalLambdaHomIso A a b hab).hom ≫
         Δ[(cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).X] =
-      Δ[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))).X] ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).X] =
+      Δ[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))).X] ≫
         ((simplexIntervalLambdaHomIso A a b hab).hom ⊗ₘ
           (simplexIntervalLambdaHomIso A a b hab).hom) :=
   (simplexIntervalLambdaHomComonoidIso A a b hab).hom.isComonHom_hom.hom_comul
@@ -60,8 +60,8 @@ lemma simplexIntervalLambdaHomIso_diagonal {n : ℕ} (a b : Fin (n + 1)) (hab : 
 lemma simplexIntervalLambdaHomIso_augmentation {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b) :
     (simplexIntervalLambdaHomIso A a b hab).hom ≫
         ε[(cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).X] =
-      ε[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (b.val - a.val - 1))).X] :=
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).X] =
+      ε[((serreConcreteCubeFunctor A).obj (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (b.val - a.val - 1))).X] :=
   (simplexIntervalLambdaHomComonoidIso A a b hab).hom.isComonHom_hom.hom_counit
 
 end SerrePositivity.KST.SConstruction

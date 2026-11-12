@@ -64,9 +64,9 @@ def sequentialRawHomIsLimit (D : SpectrumSequence.{u}) (Y : KanSequence.{u}) :
     apply (sequentialLevelHomIsLimit D Y k).hom_ext
     intro a
     have hπ : (sequentialLevelHomCone D Y k).π.app a =
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)
           (Y.level k).space :=
-      (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre _ _)).symm
+      (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre _ _)).symm
     rw [hπ]
     have h := congrArg (· ≫ RawSpectrumMapping.evaluation (D.obj a.unop) Y k) (hm a)
     change (m ≫ RawSpectrumMapping.pre (sequentialLevelColimitInjection D a.unop) Y) ≫ _ = _ at h

@@ -71,7 +71,7 @@ lemma monicKPrismNativeDiskProjectedPath_trace (n : ℕ) :
 /-- 次段の元の全補正列を構造射へ制限した実全列。 -/
 def monicKPrismNativeProjectedCorrectionChain (n : ℕ) :=
   familyHomotopyChainMap (monicKPrismNativeCompositeCorrectionChain F f g (n + 1))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
 
 /-- 元の全射影 trace は、構成した辺路と同じ元の共通末尾の連結そのもの。 -/

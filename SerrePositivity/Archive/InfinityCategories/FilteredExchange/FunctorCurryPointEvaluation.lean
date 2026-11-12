@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCurryPointVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCurryPointVertex
 
 /-!
 概要：元の全関手族の一点評価を、元の同じ実係数制限の射へ戻す。

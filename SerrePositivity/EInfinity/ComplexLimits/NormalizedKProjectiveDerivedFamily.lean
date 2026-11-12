@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedKProjectiveDerivedHom
-public import SerrePositivity.InfinityCategories.Derived.PinchedFamilyPostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedFamilyPostcomposition
 
 /-!
 # 元の K-projective 導来 Hom 比較の全区間族
@@ -20,33 +20,33 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma normalizedKProjectiveDerivedHomMap_interval (X Y : KProjectiveComplex A) :
     normalizedKProjectiveDerivedHomMap A X Y ≫
-      pinchedHomToIntervalMappingSpace (X := derivedInfinityCategory A)
-      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
-      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex Y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
+      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) =
     (normalizedKProjectiveHomIso A X Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (KProjectiveComplex A))
-        (Simplex.vertex X) (Simplex.vertex Y) ≫
-        intervalFunctorMap (kProjectiveDerivedSource A) (Simplex.vertex X) (Simplex.vertex Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (KProjectiveComplex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (kProjectiveDerivedSource A) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) := by
   rw [normalizedKProjectiveDerivedHomMap, Category.assoc,
-    pinchedHomToIntervalMappingSpace_naturality]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedHomToIntervalMappingSpace_naturality]
 
 lemma normalizedKProjectiveDerivedHomMap_family (X Y : KProjectiveComplex A)
     (K : SSet.{u + 1}) (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val)) :
-    intervalFamilyHom (g ≫ normalizedKProjectiveDerivedHomMap A X Y ≫
-      pinchedHomToIntervalMappingSpace (X := derivedInfinityCategory A)
-      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
-      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex Y))) =
-    intervalFamilyHom (g ≫ (normalizedKProjectiveHomIso A X Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (KProjectiveComplex A))
-        (Simplex.vertex X) (Simplex.vertex Y) ≫
-        intervalFunctorMap (kProjectiveDerivedSource A) (Simplex.vertex X) (Simplex.vertex Y)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X.val)).obj Y.val)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ normalizedKProjectiveDerivedHomMap A X Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
+      ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y))) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ (normalizedKProjectiveHomIso A X Y).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (KProjectiveComplex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (kProjectiveDerivedSource A) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) := by
   rw [normalizedKProjectiveDerivedHomMap_interval]
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.HomologicalAlgebra.Cosimplicial.CupCohomology
-import SerrePositivity.KST.ProExcision.ChainTensorHomotopy
-import SerrePositivity.KST.ProExcision.IntegerLinearizationDesc
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorHomotopy
+import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.IntegerLinearizationDesc
 import Mathlib.AlgebraicTopology.ExtraDegeneracy
 import Mathlib.Algebra.Algebra.Bilinear
 import SerrePositivity.EInfinity.NatTensor.Symmetry
@@ -37,22 +37,22 @@ set_option backward.isDefEq.respectTransparency false
 
 attribute [local instance] SerrePositivity.EInfinity.NatTensor.shapeSymmetry
 
-local notation "F" => SerrePositivity.KST.ProExcision.integerTensorBifunctor
-local notation "Tens" => SerrePositivity.KST.ProExcision.chainIntegerTensor
-local notation "tm" => SerrePositivity.KST.ProExcision.integerTensorMap
-local notation "C" => SerrePositivity.KST.ProExcision.linearizedSpace
-local notation "L" => SerrePositivity.KST.ProExcision.integerLinearization
-local notation "gen" => SerrePositivity.KST.ProExcision.integerGenerator
+local notation "F" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorBifunctor
+local notation "Tens" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensor
+local notation "tm" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap
+local notation "C" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization
+local notation "gen" => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator
 
 private abbrev chains (X : SSet.{u}) : ChainComplex (ModuleCat.{u} ℤ) ℕ :=
   (alternatingFaceMapComplex _).obj (C X)
 
 private abbrev chainsMap {X Y : SSet.{u}} (f : X ⟶ Y) : chains X ⟶ chains Y :=
-  (alternatingFaceMapComplex _).map (SerrePositivity.KST.ProExcision.linearizedSpaceMap f)
+  (alternatingFaceMapComplex _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)
 
 private def swapTensor (M N : ModuleCat.{u} ℤ) :
-    SerrePositivity.KST.ProExcision.integerTensor M N ⟶
-      SerrePositivity.KST.ProExcision.integerTensor N M :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M N ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor N M :=
   by
   letI : Module ℤ M := M.isModule
   letI : Module ℤ N := N.isModule
@@ -106,58 +106,58 @@ private lemma ι_swapChains (K J : ChainComplex (ModuleCat.{u} ℤ) ℕ) (p q n 
 
 private lemma swapChains_natural {K J K' J' : ChainComplex (ModuleCat.{u} ℤ) ℕ}
     (f : K ⟶ K') (g : J ⟶ J') :
-    SerrePositivity.KST.ProExcision.chainIntegerTensorMap f g ≫ swapChains K' J' =
-      swapChains K J ≫ SerrePositivity.KST.ProExcision.chainIntegerTensorMap g f := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap f g ≫ swapChains K' J' =
+      swapChains K J ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap g f := by
   apply HomologicalComplex.Hom.ext
   funext n
   apply mapBifunctor.hom_ext
   intro p q h
   rw [comp_f, comp_f, ← Category.assoc, ← Category.assoc, ι_swapChains,
-    SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap, Category.assoc, ι_swapChains,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap, Category.assoc, ι_swapChains,
     Preadditive.comp_zsmul, Preadditive.zsmul_comp, Category.assoc,
-    SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap]
   simp only [← Category.assoc]
   rw [swapTensor_natural]
 
 private def diagonalAt (Y : Type u) :
-    (L).obj Y ⟶ SerrePositivity.KST.ProExcision.integerTensor ((L).obj Y) ((L).obj Y) :=
-  SerrePositivity.KST.ProExcision.integerLinearizationDesc (fun x => gen x ⊗ₜ[ℤ] gen x)
+    (L).obj Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor ((L).obj Y) ((L).obj Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc (fun x => gen x ⊗ₜ[ℤ] gen x)
 
 private lemma diagonalAt_gen (Y : Type u) (x : Y) :
     diagonalAt Y (gen x) = gen x ⊗ₜ[ℤ] gen x :=
-  SerrePositivity.KST.ProExcision.integerLinearizationDesc_generator _ x
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc_generator _ x
 
 private lemma diagonalAt_natural {Y Z : Type u} (f : Y ⟶ Z) :
     (L).map f ≫ diagonalAt Z = diagonalAt Y ≫ tm ((L).map f) ((L).map f) := by
-  apply SerrePositivity.KST.ProExcision.integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
   change diagonalAt Z ((L).map f (gen x)) = tm ((L).map f) ((L).map f) (diagonalAt Y (gen x))
-  rw [SerrePositivity.KST.ProExcision.integerLinearization_map_generator, diagonalAt_gen, diagonalAt_gen]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, diagonalAt_gen, diagonalAt_gen]
   change _ = TensorProduct.map ((L).map f).hom ((L).map f).hom _
-  simp only [TensorProduct.map_tmul, SerrePositivity.KST.ProExcision.integerLinearization_map_generator]
+  simp only [TensorProduct.map_tmul, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
 
 private def linearDiagonal (X : SSet.{u}) :
-    C X ⟶ SerrePositivity.KST.ProExcision.simplicialIntegerTensor (C X) (C X) where
+    C X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor (C X) (C X) where
   app n := diagonalAt (X.obj n)
   naturality _ _ f := diagonalAt_natural (X.map f)
 
 private lemma linearDiagonal_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
-    SerrePositivity.KST.ProExcision.linearizedSpaceMap f ≫ linearDiagonal Y =
-      linearDiagonal X ≫ SerrePositivity.KST.ProExcision.simplicialIntegerTensorMap
-        (SerrePositivity.KST.ProExcision.linearizedSpaceMap f)
-        (SerrePositivity.KST.ProExcision.linearizedSpaceMap f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f ≫ linearDiagonal Y =
+      linearDiagonal X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap f) := by
   ext i : 1
   exact diagonalAt_natural (f.app i)
 
 private def awDiagonal (X : SSet.{u}) : chains X ⟶ Tens (chains X) (chains X) :=
   (alternatingFaceMapComplex _).map (linearDiagonal X) ≫
-    SerrePositivity.KST.ProExcision.alexanderWhitney (C X) (C X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney (C X) (C X)
 
 private lemma awDiagonal_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
     chainsMap f ≫ awDiagonal Y =
-      awDiagonal X ≫ SerrePositivity.KST.ProExcision.chainIntegerTensorMap (chainsMap f) (chainsMap f) := by
+      awDiagonal X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (chainsMap f) (chainsMap f) := by
   rw [awDiagonal, awDiagonal, ← Category.assoc, ← Functor.map_comp, linearDiagonal_natural,
-    Functor.map_comp, Category.assoc, SerrePositivity.KST.ProExcision.alexanderWhitney_naturality,
+    Functor.map_comp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney_naturality,
     Category.assoc]
 
 private def awDifference (X : SSet.{u}) : chains X ⟶ Tens (chains X) (chains X) :=
@@ -165,7 +165,7 @@ private def awDifference (X : SSet.{u}) : chains X ⟶ Tens (chains X) (chains X
 
 private lemma awDifference_natural {X Y : SSet.{u}} (f : X ⟶ Y) :
     chainsMap f ≫ awDifference Y =
-      awDifference X ≫ SerrePositivity.KST.ProExcision.chainIntegerTensorMap (chainsMap f) (chainsMap f) := by
+      awDifference X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (chainsMap f) (chainsMap f) := by
   rw [awDifference, awDifference, Preadditive.comp_sub, Preadditive.sub_comp,
     awDiagonal_natural, ← Category.assoc, awDiagonal_natural, Category.assoc,
     swapChains_natural, ← Category.assoc]
@@ -175,40 +175,40 @@ private abbrev simplexChains (N : ℕ) : ChainComplex (ModuleCat.{u} ℤ) ℕ :=
 private def tensorPush {N M : ℕ} (f : ⦋N⦌ ⟶ ⦋M⦌) :
     Tens (simplexChains.{u} N) (simplexChains N) ⟶
       Tens (simplexChains M) (simplexChains M) :=
-  SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap
     (chainsMap (SSet.stdSimplex.map f)) (chainsMap (SSet.stdSimplex.map f))
 
 private abbrev simplexContraction (N : ℕ) :=
   ((SSet.Augmented.StandardSimplex.extraDegeneracy (⦋N⦌ : SimplexCategory)).map
-    SerrePositivity.KST.ProExcision.integerLinearization.{u}).homotopyEquiv
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.{u}).homotopyEquiv
 
 private abbrev tensorVertex (N : ℕ) :=
-  SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap
     ((simplexContraction.{u} N).hom ≫ (simplexContraction N).inv)
     ((simplexContraction N).hom ≫ (simplexContraction N).inv)
 
 private def tensorContraction (N : ℕ) :
     Homotopy (𝟙 (Tens (simplexChains.{u} N) (simplexChains N))) (tensorVertex N) :=
-  (Homotopy.ofEq (SerrePositivity.KST.ProExcision.chainIntegerTensorMap_id _ _).symm).trans
-    (SerrePositivity.KST.ProExcision.chainIntegerTensorHomotopy
+  (Homotopy.ofEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_id _ _).symm).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorHomotopy
       (simplexContraction N).homotopyHomInvId.symm
       (simplexContraction N).homotopyHomInvId.symm)
 
 private lemma hzRight {A B D E : ModuleCat.{u} ℤ} (f : A ⟶ B) :
     tm f (0 : D ⟶ E) = (0 : _ ⟶ _) := by
-  have h' := SerrePositivity.KST.ProExcision.integerTensorMap_add_right f (0 : D ⟶ E) 0
+  have h' := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_add_right f (0 : D ⟶ E) 0
   rw [zero_add] at h'
   exact add_left_cancel (h'.symm.trans (add_zero _).symm)
 private lemma hzLeft {A B D E : ModuleCat.{u} ℤ} (f : D ⟶ E) :
     tm (0 : A ⟶ B) f = (0 : _ ⟶ _) := by
-  have h' := SerrePositivity.KST.ProExcision.integerTensorMap_add_left (0 : A ⟶ B) 0 f
+  have h' := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_add_left (0 : A ⟶ B) 0 f
   rw [zero_add] at h'
   exact add_left_cancel (h'.symm.trans (add_zero _).symm)
 
 private lemma tensorVertex_positive (N n : ℕ) : (tensorVertex.{u} N).f (n + 1) = 0 := by
   apply mapBifunctor.hom_ext
   intro p q h
-  rw [SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap, comp_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap, comp_zero]
   change p + q = n + 1 at h
   have hz (i : ℕ) (hi : i ≠ 0) :
       ((simplexContraction.{u} N).hom ≫ (simplexContraction N).inv).f i = 0 := by
@@ -242,11 +242,11 @@ private def tensorModels (k : ℕ) : CosimplicialObject (ModuleCat.{u} ℤ) wher
   map f := (tensorPush f).f k
   map_id N := by
     change (tensorPush (𝟙 ⦋N.len⦌)).f k = _
-    simp [tensorPush, chainsMap, SerrePositivity.KST.ProExcision.chainIntegerTensorMap_id]
+    simp [tensorPush, chainsMap, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_id]
   map_comp f g := by
     change (tensorPush (f ≫ g)).f k = _
-    simp only [tensorPush, chainsMap, SerrePositivity.KST.ProExcision.linearizedSpaceMap, Functor.map_comp,
-      SerrePositivity.KST.ProExcision.chainIntegerTensorMap_comp, comp_f]
+    simp only [tensorPush, chainsMap, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap, Functor.map_comp,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap_comp, comp_f]
 
 private def tensorFaceSum {N k : ℕ}
     (x : (Tens (simplexChains.{u} N) (simplexChains N)).X k) :
@@ -303,7 +303,7 @@ private lemma fundamental_boundary (N : ℕ) :
       (gen (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋N + 1⦌))) =
     (L).map ((SSet.stdSimplex.map (SimplexCategory.δ i)).app _)
       (gen (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋N⦌)))
-  simp only [SerrePositivity.KST.ProExcision.integerLinearization_map_generator]
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   rw [← SSet.stdSimplex.objEquiv_symm_comp, Category.id_comp]
   rfl
 
@@ -335,27 +335,27 @@ private lemma differenceChain_zero : differenceChain.{u} 0 = 0 := by
   apply sub_eq_zero.mpr
   unfold awDiagonal
   simp only [comp_f, ModuleCat.comp_apply]
-  change SerrePositivity.KST.ProExcision.alexanderWhitneyApp (C (Δ[0] : SSet.{u})) (C Δ[0]) 0
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp (C (Δ[0] : SSet.{u})) (C Δ[0]) 0
       (diagonalAt _ (fundamental 0)) = _
   have hh : (awDiagonal (Δ[0] : SSet.{u})).f 0 (fundamental 0) =
       ιMapBifunctor (simplexChains 0) (simplexChains 0) F (.down ℕ) 0 0 0 rfl
         (fundamental 0 ⊗ₜ[ℤ] fundamental 0) := by
-    change SerrePositivity.KST.ProExcision.alexanderWhitneyApp
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp
         (C (Δ[0] : SSet.{u})) (C Δ[0]) 0 (diagonalAt _ (fundamental 0)) = _
-    rw [SerrePositivity.KST.ProExcision.alexanderWhitneyApp, Fin.sum_univ_one]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp, Fin.sum_univ_one]
     have hzero (f : ⦋0⦌ ⟶ ⦋0⦌) : f = 𝟙 _ := Subsingleton.elim _ _
-    change (tm ((C (Δ[0] : SSet.{u})).map (SerrePositivity.KST.ProExcision.awFront 0 0).op)
-      ((C (Δ[0] : SSet.{u})).map (SerrePositivity.KST.ProExcision.awBack 0 0).op) ≫
+    change (tm ((C (Δ[0] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront 0 0).op)
+      ((C (Δ[0] : SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack 0 0).op) ≫
       ιMapBifunctor (simplexChains 0) (simplexChains 0) F (.down ℕ) 0 0 0 rfl)
         (diagonalAt _ (fundamental 0)) = _
-    rw [hzero (SerrePositivity.KST.ProExcision.awFront 0 0),
-      hzero (SerrePositivity.KST.ProExcision.awBack 0 0)]
+    rw [hzero (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront 0 0),
+      hzero (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack 0 0)]
     change (tm ((C (Δ[0] : SSet.{u})).map (𝟙 _))
       ((C (Δ[0] : SSet.{u})).map (𝟙 _)) ≫
       ιMapBifunctor (simplexChains 0) (simplexChains 0) F (.down ℕ) 0 0 0 rfl)
         (diagonalAt _ (fundamental 0)) = _
     have hi := CategoryTheory.Functor.map_id (C (Δ[0] : SSet.{u})) (op ⦋0⦌)
-    erw [hi, SerrePositivity.KST.ProExcision.integerTensorMap_id, Category.id_comp]
+    erw [hi, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_id, Category.id_comp]
     exact congrArg (fun z => (ιMapBifunctor (simplexChains 0) (simplexChains 0) F
       (.down ℕ) 0 0 0 rfl) z) (diagonalAt_gen _ _)
   change (awDiagonal (Δ[0] : SSet.{u})).f 0 (fundamental 0) =
@@ -406,32 +406,32 @@ private def coeffMap {N M : ℕ} (f : ⦋N⦌ ⟶ ⦋M⦌) : coeffs X N ⟶ coef
 
 private def evalCochain {m : ℕ} (a : X.obj ⦋m⦌) (N : ℕ) :
     (simplexChains.{u} N).X m ⟶ coeffs X N :=
-  SerrePositivity.KST.ProExcision.integerLinearizationDesc
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc
     (fun s => X.map (SSet.stdSimplex.objEquiv s) a)
 
 private lemma evalCochain_gen {m N : ℕ} (a : X.obj ⦋m⦌) (f : ⦋m⦌ ⟶ ⦋N⦌) :
     evalCochain X a N (gen (SSet.stdSimplex.objEquiv.symm f)) = X.map f a := by
-  exact (SerrePositivity.KST.ProExcision.integerLinearizationDesc_generator
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc_generator
     (M := coeffs X N) (fun s => X.map (SSet.stdSimplex.objEquiv s) a)
     (SSet.stdSimplex.objEquiv.symm f)).trans (by rw [Equiv.apply_symm_apply])
 
 private lemma evalCochain_natural {m N M : ℕ} (a : X.obj ⦋m⦌) (f : ⦋N⦌ ⟶ ⦋M⦌) :
     (chainsMap (SSet.stdSimplex.map f)).f m ≫ evalCochain X a M =
       evalCochain X a N ≫ coeffMap X f := by
-  apply SerrePositivity.KST.ProExcision.integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro s
   obtain ⟨g, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective s
   change evalCochain X a M ((L).map ((SSet.stdSimplex.map f).app _)
       (gen (SSet.stdSimplex.objEquiv.symm g))) =
     X.map f (evalCochain X a N (gen (SSet.stdSimplex.objEquiv.symm g)))
-  rw [SerrePositivity.KST.ProExcision.integerLinearization_map_generator,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator,
     ← SSet.stdSimplex.objEquiv_symm_comp, evalCochain_gen, evalCochain_gen, X.map_comp]
   rfl
 
 private lemma evalCochain_boundary {m : ℕ} (a : X.obj ⦋m⦌)
     (ha : cochainDifferential X m a = 0) (N : ℕ) :
     (simplexChains.{u} N).d (m + 1) m ≫ evalCochain X a N = 0 := by
-  apply SerrePositivity.KST.ProExcision.integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro s
   obtain ⟨g, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective s
   have h := congrArg (fun z => X.map g z) ha
@@ -448,13 +448,13 @@ private lemma evalCochain_boundary {m : ℕ} (a : X.obj ⦋m⦌)
       (gen (SSet.stdSimplex.objEquiv.symm g))) = _
   rw [map_zsmul, map_zsmul]
   congr 1
-  rw [SerrePositivity.KST.ProExcision.integerLinearization_map_generator]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   change evalCochain X a N (gen (SSet.stdSimplex.objEquiv.symm (SimplexCategory.δ i ≫ g))) = _
   rw [evalCochain_gen, X.map_comp]
   rfl
 
 private def multiplication (N : ℕ) :
-    SerrePositivity.KST.ProExcision.integerTensor (coeffs X N) (coeffs X N) ⟶ coeffs X N :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor (coeffs X N) (coeffs X N) ⟶ coeffs X N :=
   ModuleCat.ofHom (TensorProduct.lift (LinearMap.mul ℤ (X.obj ⦋N⦌))).toAddMonoidHom.toIntLinearMap
 
 private lemma multiplication_tmul (N : ℕ) (x y : coeffs X N) :
@@ -463,7 +463,7 @@ private lemma multiplication_tmul (N : ℕ) (x y : coeffs X N) :
   exact TensorProduct.lift.tmul _ _
 
 private def evalPair {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌) (N : ℕ) :
-    SerrePositivity.KST.ProExcision.integerTensor ((simplexChains.{u} N).X m)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor ((simplexChains.{u} N).X m)
       ((simplexChains N).X n) ⟶ coeffs X N :=
   tm (evalCochain X a N) (evalCochain X b N) ≫ multiplication X N
 
@@ -480,7 +480,7 @@ private lemma evalPair_gen {m n N : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌)
   rw [evalCochain_gen, evalCochain_gen]
 
 private def evalSummand {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌) (N p q : ℕ) :
-    SerrePositivity.KST.ProExcision.integerTensor ((simplexChains.{u} N).X p)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor ((simplexChains.{u} N).X p)
       ((simplexChains N).X q) ⟶ coeffs X N := by
   by_cases hp : p = m
   · subst p
@@ -534,7 +534,7 @@ private lemma evalPair_natural {m n N M : ℕ} (a : X.obj ⦋m⦌) (b : X.obj �
     (f : ⦋N⦌ ⟶ ⦋M⦌) :
     tm ((chainsMap (SSet.stdSimplex.map f)).f m) ((chainsMap (SSet.stdSimplex.map f)).f n) ≫
       evalPair X a b M = evalPair X a b N ≫ coeffMap X f := by
-  apply SerrePositivity.KST.ProExcision.integerTensor_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor_hom_ext
   intro s t
   obtain ⟨g, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective s
   obtain ⟨h, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective t
@@ -547,8 +547,8 @@ private lemma evalPair_natural {m n N M : ℕ} (a : X.obj ⦋m⦌) (b : X.obj �
   change evalPair X a b M (((L).map ((SSet.stdSimplex.map f).app _) v) ⊗ₜ[ℤ]
     ((L).map ((SSet.stdSimplex.map f).app _) w)) = _
   dsimp only [v, w]
-  rw [SerrePositivity.KST.ProExcision.integerLinearization_map_generator,
-    SerrePositivity.KST.ProExcision.integerLinearization_map_generator,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator,
     ← SSet.stdSimplex.objEquiv_symm_comp, ← SSet.stdSimplex.objEquiv_symm_comp,
     evalPair_gen, evalPair_gen, map_mul, X.map_comp, X.map_comp]
   rfl
@@ -559,7 +559,7 @@ private lemma evaluate_natural {m n N M : ℕ} (a : X.obj ⦋m⦌) (b : X.obj �
   apply mapBifunctor.hom_ext
   intro p q h
   change p + q = m + n at h
-  rw [← Category.assoc, tensorPush, SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap,
+  rw [← Category.assoc, tensorPush, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap,
     Category.assoc, ι_evaluate, ← Category.assoc, ι_evaluate]
   by_cases hp : p = m
   · subst p
@@ -591,12 +591,12 @@ private def evalProjection (N m n : ℕ) :
 private lemma evaluate_factor {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌)
     (ha : cochainDifferential X m a = 0) (hb : cochainDifferential X n b = 0) (N : ℕ) :
     evaluate X a b N =
-      (SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap
         (evalChain X a ha N) (evalChain X b hb N)).f (m + n) ≫ evalProjection X N m n := by
   apply mapBifunctor.hom_ext
   intro p q h
   change p + q = m + n at h
-  rw [ι_evaluate, ← Category.assoc, SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap,
+  rw [ι_evaluate, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap,
     Category.assoc, evalProjection, ι_mapBifunctorDesc]
   by_cases hp : p = m
   · subst p
@@ -607,7 +607,7 @@ private lemma evaluate_factor {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌
       tm (singleObjXSelf (.down ℕ) m (coeffs X N)).hom
         (singleObjXSelf (.down ℕ) n (coeffs X N)).hom ≫ multiplication X N
     rw [evalChain, evalChain, mkHomToSingle_f, mkHomToSingle_f, ← Category.assoc,
-      ← SerrePositivity.KST.ProExcision.integerTensorMap_comp]
+      ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_comp]
     simp [evalPair]
   · simp [evalSummand, hp]
 
@@ -615,7 +615,7 @@ private lemma evaluate_boundary {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n�
     (ha : cochainDifferential X m a = 0) (hb : cochainDifferential X n b = 0) (N : ℕ) :
     (Tens (simplexChains N) (simplexChains N)).d (m + n + 1) (m + n) ≫
       evaluate X a b N = 0 := by
-  let f := SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap
     (evalChain X a ha N) (evalChain X b hb N)
   have hzero : f.f (m + n + 1) = 0 := by
     apply mapBifunctor.hom_ext
@@ -623,9 +623,9 @@ private lemma evaluate_boundary {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n�
     change p + q = m + n + 1 at h
     rw [comp_zero]
     change ιMapBifunctor _ _ F (.down ℕ) p q _ h ≫
-      (SerrePositivity.KST.ProExcision.chainIntegerTensorMap
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap
         (evalChain X a ha N) (evalChain X b hb N)).f _ = 0
-    rw [SerrePositivity.KST.ProExcision.ι_chainIntegerTensorMap]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ι_chainIntegerTensorMap]
     by_cases hp : p = m
     · have hq : q ≠ n := by omega
       have hz : (evalChain X b hb N).f q = 0 := by simp [evalChain, mkHomToSingle, hq]
@@ -639,7 +639,7 @@ private lemma evaluate_boundary {m n : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n�
 private lemma evalPair_swap {m n N : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌) :
     swapTensor ((simplexChains.{u} N).X n) ((simplexChains N).X m) ≫ evalPair X a b N =
       evalPair X b a N := by
-  apply SerrePositivity.KST.ProExcision.integerTensor_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor_hom_ext
   intro s t
   obtain ⟨g, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective s
   obtain ⟨f, rfl⟩ := SSet.stdSimplex.objEquiv.symm.surjective t
@@ -671,21 +671,21 @@ private lemma awDiagonal_fundamental (N : ℕ) :
     (awDiagonal (Δ[N] : SSet.{u})).f N (fundamental N) =
       ∑ i : Fin (N + 1),
         ιMapBifunctor (simplexChains N) (simplexChains N) F (.down ℕ) i (N - i) N
-          (SerrePositivity.KST.ProExcision.awDegrees N i)
-          (gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awFront N i)) ⊗ₜ[ℤ]
-            gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awBack N i))) := by
-  change SerrePositivity.KST.ProExcision.alexanderWhitneyApp (C (Δ[N] : SSet.{u})) (C Δ[N]) N
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees N i)
+          (gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i)) ⊗ₜ[ℤ]
+            gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i))) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp (C (Δ[N] : SSet.{u})) (C Δ[N]) N
     (diagonalAt _ (fundamental N)) = _
   have hdiag : diagonalAt _ (fundamental.{u} N) = fundamental N ⊗ₜ[ℤ] fundamental N :=
     diagonalAt_gen _ _
-  rw [hdiag, SerrePositivity.KST.ProExcision.alexanderWhitneyApp]
+  rw [hdiag, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitneyApp]
   simp only [ModuleCat.hom_sum, LinearMap.sum_apply]
   apply Finset.sum_congr rfl
   intro i _
-  let f := SerrePositivity.KST.ProExcision.awFront N i
-  let g := SerrePositivity.KST.ProExcision.awBack N i
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i
   let ι := ιMapBifunctor (simplexChains.{u} N) (simplexChains N) F (.down ℕ) i (N - i) N
-    (SerrePositivity.KST.ProExcision.awDegrees N i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees N i)
   change ι (TensorProduct.map ((C (Δ[N] : SSet.{u})).map f.op).hom
       ((C (Δ[N] : SSet.{u})).map g.op).hom (fundamental N ⊗ₜ[ℤ] fundamental N)) =
     ι (gen (SSet.stdSimplex.objEquiv.symm f) ⊗ₜ[ℤ] gen (SSet.stdSimplex.objEquiv.symm g))
@@ -695,7 +695,7 @@ private lemma awDiagonal_fundamental (N : ℕ) :
         gen (SSet.stdSimplex.objEquiv.symm h) := by
     change (L).map ((SSet.stdSimplex.obj ⦋N⦌).map h.op)
       (gen (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋N⦌))) = _
-    rw [SerrePositivity.KST.ProExcision.integerLinearization_map_generator]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
     congr 1
     change SSet.stdSimplex.objEquiv.symm (h ≫ 𝟙 _) = _
     rw [Category.comp_id]
@@ -711,20 +711,20 @@ private lemma evaluate_aw {m n N : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌) 
   · have hp : (i₀ : ℕ) = m := rfl
     have hq : N - (i₀ : ℕ) = n := by omega
     change (ιMapBifunctor (simplexChains N) (simplexChains N) F (.down ℕ) i₀ (N-i₀) N
-        (SerrePositivity.KST.ProExcision.awDegrees N i₀) ≫ evaluateAt X a b N N)
-        (gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awFront N i₀)) ⊗ₜ[ℤ]
-          gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awBack N i₀))) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees N i₀) ≫ evaluateAt X a b N N)
+        (gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i₀)) ⊗ₜ[ℤ]
+          gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i₀))) = _
     rw [ι_evaluate]
-    erw [evalSummand_gen X a b hp hq (SerrePositivity.KST.ProExcision.awFront N i₀)
-      (SerrePositivity.KST.ProExcision.awBack N i₀)]
+    erw [evalSummand_gen X a b hp hq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i₀)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i₀)]
     have hf : eqToHom (congrArg SimplexCategory.mk hp.symm) ≫
-        SerrePositivity.KST.ProExcision.awFront N i₀ =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i₀ =
           frontFace m n ≫ eqToHom (congrArg SimplexCategory.mk h) := by
       ext j
       simp [frontFace]
       rfl
     have hg : eqToHom (congrArg SimplexCategory.mk hq.symm) ≫
-        SerrePositivity.KST.ProExcision.awBack N i₀ =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i₀ =
           backFace m n ≫ eqToHom (congrArg SimplexCategory.mk h) := by
       ext j
       simp [backFace, hp]
@@ -732,9 +732,9 @@ private lemma evaluate_aw {m n N : ℕ} (a : X.obj ⦋m⦌) (b : X.obj ⦋n⦌) 
   · intro i _ hi
     have hp : (i : ℕ) ≠ m := fun h => hi (Fin.ext h)
     change (ιMapBifunctor (simplexChains N) (simplexChains N) F (.down ℕ) i (N-i) N
-        (SerrePositivity.KST.ProExcision.awDegrees N i) ≫ evaluateAt X a b N N)
-        (gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awFront N i)) ⊗ₜ[ℤ]
-          gen (SSet.stdSimplex.objEquiv.symm (SerrePositivity.KST.ProExcision.awBack N i))) = 0
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awDegrees N i) ≫ evaluateAt X a b N N)
+        (gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awFront N i)) ⊗ₜ[ℤ]
+          gen (SSet.stdSimplex.objEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.awBack N i))) = 0
     rw [ι_evaluate, evalSummand_zero_left X a b hp]
     rfl
   · simp

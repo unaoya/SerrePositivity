@@ -28,8 +28,8 @@ abbrev cofibrantSourceRoofDegreeAlgebra : CofibrantAlgebra A :=
   (cofibrantSourceFrame A X).obj (ULift.down (cofibrantSourceRoofDegree A X Y b))
 
 def cofibrantSourceRoofCornerEvaluation :
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) ⟶
-      pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
         (cofibrantHammockVertex A Y) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
   exact roofCornerEvaluation (cofibrantDKSourceFrame A X)
@@ -37,33 +37,33 @@ def cofibrantSourceRoofCornerEvaluation :
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
 
 lemma cofibrantSourceRoofCornerEvaluation_weak :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofCornerEvaluation A X Y b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofCornerEvaluation A X Y b) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
   exact roofCornerEvaluation_weak (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
 
 def cofibrantSourceRoofProductHomMap : nerve (cofibrantSourceRoofProductElements A X Y b) ⟶
-    pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
       (cofibrantHammockVertex A Y) :=
   cofibrantSourceRoofProductCornerMap A X Y b ≫ cofibrantSourceRoofCornerEvaluation A X Y b
 
 lemma cofibrantSourceRoofProductCorner_weak_iff_hom :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b) ↔
-      IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCornerMap A X Y b) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b) :=
   ⟨fun h => h.comp (cofibrantSourceRoofCornerEvaluation_weak A X Y b),
     fun h => (cofibrantSourceRoofCornerEvaluation_weak A X Y b).cancel_right h⟩
 
 lemma cofibrantSourceRoofSlice_weaklyContractible_of_productHom_weak
-    (h : IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
-    IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) :=
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) :=
   cofibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak A X Y b
     ((cofibrantSourceRoofProductCorner_weak_iff_hom A X Y b).2 h)
 
 lemma cofibrantSourceRoofMap_isLeftCofinal_of_productHom_weak
     (h : ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
-      IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductHomMap A X Y b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak A X Y
     (fun b => (cofibrantSourceRoofProductCorner_weak_iff_hom A X Y b).2 (h b))
 

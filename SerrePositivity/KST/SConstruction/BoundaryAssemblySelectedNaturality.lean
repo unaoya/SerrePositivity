@@ -47,7 +47,7 @@ lemma boundaryAssemblyNaturalityFamilyAt_target_vertex (r : ℕ)
     (NatTrans.congr_app (boundaryAssemblyNaturalityFamilyAt_target r f u) (Opposite.op ⦋0⦌)) v
   simp only [NatTrans.comp_app, ConcreteCategory.comp_apply] at h
   refine h.trans ?_
-  exact (congrArg ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+  exact (congrArg ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
     ((loopBoundaryKanFunctor (r + 1)).obj Y)).right.app (Opposite.op ⦋0⦌))
       (boundaryKanAssemblyAdjointFamily_vertex r Y v)).trans (familyVertex_pre _ _)
 

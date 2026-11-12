@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRightKanCanonical
 public import SerrePositivity.EInfinity.FrameHom.FrameAugmentationLimitLegs
-public import SerrePositivity.InfinityCategories.Derived.ConeLegRestriction
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.RightConstantFamily
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ConeLegRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.RightConstantFamily
 
 /-!
 # 元の実右 Kan 極限錐の frame 上の全脚
@@ -28,18 +28,18 @@ variable (A : Type u) [CommRing A] (X : CofibrantAlgebra A)
 lemma cofibrantSourceFrameAugmentation_image_invertible
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
     (n : AsSmall.{u + 1} SimplexCategory) :
-    IsInvertibleEdge ((nerve.edgeMk
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk
       ((cofibrantDKSourceFrameAugmentation A X).app n)).map F).toTruncated := by
   have hw := hF (show ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n) ∈
       weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
     ⟨_, _, _, cofibrantDKSourceFrameAugmentation_weak A X n, rfl⟩)
-  change IsInvertibleEdge
-    ((edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
       ((truncation 2).map F)) at hw
-  exact (isInvertibleEdge_congr (e :=
-    (edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
       ((truncation 2).map F))
     (f := ((nerve.edgeMk ((cofibrantDKSourceFrameAugmentation A X).app n)).map F).toTruncated)
     rfl).mp hw
@@ -47,27 +47,27 @@ lemma cofibrantSourceFrameAugmentation_image_invertible
 lemma cofibrantSourceRightKanLimitCone_leg_isInvertible
     {E : SSet.{u + 1}} [Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
-    (c : JoinCone (rightKanDiagram
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A)))
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.rightKanDiagram
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) F
-      (cofibrantHammockVertex A X))) (hc : IsLimitCone c)
+      (cofibrantHammockVertex A X))) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c)
     (i : (nerve (AsSmall.{u + 1} SimplexCategory)) _⦋0⦌) :
-    IsInvertibleEdge (F2.nativeConeLeg c
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c
       ((cofibrantSourceFrameRightKanMap A X).app (Opposite.op ⦋0⦌) i)) := by
   let u := cofibrantSourceFrameRightKanMap A X
   have hu := cofibrantSourceFrameRightKanMap_isLeftCofinal A X
   have he := cofibrantSourceFrameRightKanMap_diagram A X F
-  let d : JoinCone (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
-    ⟨(restrictJoinCone c u).val, (restrictJoinCone c u).property.trans he⟩
-  have hd : IsLimitCone d := (F1B.kanIsLimitCone_congr he (restrictJoinCone c u) d rfl).mp
-    ((isLimitCone_iff_restrict_of_leftCofinal u hu _ c).mp hc)
+  let d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (nerveMap (cofibrantDKSourceFrame A X) ≫ F) :=
+    ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c u).val, (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c u).property.trans he⟩
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone d := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanIsLimitCone_congr he (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.restrictJoinCone c u) d rfl).mp
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLimitCone_iff_restrict_of_leftCofinal u hu _ c).mp hc)
   have h := FrameHom.FrameArrows.augmentationLimitCone_leg_isInvertible
     (cofibrantDKSourceFrame A X) (cofibrantDKSourceFrameAugmentation A X) F
     (cofibrantSourceFrameAugmentation_image_invertible A X F hF)
     sourceFrameIndex_weaklyContractible d hd i
-  have he' : (F2.nativeConeLeg d i).edge =
-      (F2.nativeConeLeg c (u.app (Opposite.op ⦋0⦌) i)).edge :=
-    nativeConeLeg_restrict_edge c u i
-  exact (isInvertibleEdge_congr he').mp h
+  have he' : (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg d i).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c (u.app (Opposite.op ⦋0⦌) i)).edge :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.nativeConeLeg_restrict_edge c u i
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he').mp h
 
 end SerrePositivity.EInfinity.BarrattEccles

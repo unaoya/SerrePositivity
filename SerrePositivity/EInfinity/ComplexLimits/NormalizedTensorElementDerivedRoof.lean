@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorElementDerivedAugmentationIso :
-    FunctorIso (nerveMap (normalizedTensorElementDiagram A X Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (normalizedTensorElementDiagram A X Y) ≫
       complexOrdinaryDerivedSource A)
     (nerveMap ((Functor.const (normalizedTensorElementIndex A X Y)).obj X) ≫
       complexOrdinaryDerivedSource A) :=
@@ -27,14 +27,14 @@ def normalizedTensorElementDerivedAugmentationIso :
     (normalizedTensorElementAugmentation_quasiIso A X Y)
 
 def normalizedTensorElementDerivedEvaluation :
-    FunctorHom (nerveMap (normalizedTensorElementDiagram A X Y) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (nerveMap (normalizedTensorElementDiagram A X Y) ≫
       complexOrdinaryDerivedSource A)
     (nerveMap ((Functor.const (normalizedTensorElementIndex A X Y)).obj Y) ≫
       complexOrdinaryDerivedSource A) :=
   complexOrdinaryDerivedNatTransHom A (normalizedTensorElementEvaluation A X Y)
 
 def normalizedTensorElementDerivedRoof :
-    FunctorHom
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (nerveMap ((Functor.const (normalizedTensorElementIndex A X Y)).obj X) ≫
       complexOrdinaryDerivedSource A)
     (nerveMap ((Functor.const (normalizedTensorElementIndex A X Y)).obj Y) ≫

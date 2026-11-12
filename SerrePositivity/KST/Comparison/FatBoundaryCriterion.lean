@@ -32,7 +32,7 @@ theorem simplexImage_len_le_iff_not_epi {X : SimplexCategory} (n : ℕ)
   constructor
   · intro h he
     let : Epi t := he
-    rw [_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi t] at h
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi t] at h
     change n + 1 ≤ n at h
     omega
   · intro h

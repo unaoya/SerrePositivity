@@ -37,23 +37,23 @@ def pathHomotopyFiberProjection {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
 規約：元の源 E の Kan 性は不要。使われ方：fiber の Kan 性。 -/
 instance pathHomotopyFiberProjection_fibration {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) [KanComplex B.right] : Fibration (pathHomotopyFiberProjection f).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_fibration (pathEndpoint B) f
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_fibration (pathEndpoint B) f
 
 /-- 概要：Kan な点つき射の path homotopy fiber は Kan。
 方針：Kan な源への Kan fibration の引き戻しを使う。
 規約：元の射自体の fibration 性は不要。使われ方：実際の π_* の比較。 -/
 instance pathHomotopyFiber_kanComplex {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] :
-    KanComplex (pathHomotopyFiber f).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex (pathEndpoint B) f
+    KanComplex (pathHomotopyFiber f).right := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex (pathEndpoint B) f
 
 /-- 概要：L9 の loop と path 終点評価の fiber の同型を点つき同型に束ねる。
 方針：既存の底の同型の基点保存式を使う。
 規約：標的の Kan 性は不要。使われ方：homotopy fiber の基点 fiber の同定。 -/
 def loopPointedPathFiberIso (B : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B ≅ pointedFiber (pathEndpoint B) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B ≅ pointedFiber (pathEndpoint B) :=
   Under.isoMk (loopBasedPathFiberIso B)
     (by
-      exact Under.w (pointedHomOfBasepoint (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B)
+      exact Under.w (pointedHomOfBasepoint (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B)
         (Y := pointedFiber (pathEndpoint B)) (loopBasedPathFiberIso B).hom (by
           exact (loopBasedPathFiberIso_basepoint B).trans
             (PointedSimplicialSet.basepoint_ofVertex _ _).symm)))
@@ -62,7 +62,7 @@ def loopPointedPathFiberIso (B : PointedSimplicialSet.{u}) :
 方針：loop を引き戻し射影の基点 fiber に同定して全空間へ含める。
 規約：追加の収縮や nullhomotopy の選択を含まない。使われ方：反復経路境界の loop 比較。 -/
 def loopToPathHomotopyFiber {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B ⟶ pathHomotopyFiber f :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B ⟶ pathHomotopyFiber f :=
   (loopPointedPathFiberIso B).hom ≫ (pointedPullbackFiberIso (pathEndpoint B) f).inv ≫
     pointedFiberι (pathHomotopyFiberProjection f)
 
@@ -77,15 +77,15 @@ lemma loopToPathHomotopyFiber_projection {E B : PointedSimplicialSet.{u}} (f : E
 方針：二つの実際の同型と、可縮な底の fiber 包含の π_* 同型を合成する。
 規約：零次数を含み、元の射の fibration 性は不要。使われ方：反復経路境界の loop 比較。 -/
 lemma loopToPathHomotopyFiber_piIsomorphism {E B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] (hE : IsContractibleKan E.right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (loopToPathHomotopyFiber f).right := by
+    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] (hE : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan E.right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (loopToPathHomotopyFiber f).right := by
   let a := (loopPointedPathFiberIso B).hom
   let b := (pointedPullbackFiberIso (pathEndpoint B) f).inv
-  have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right :=
+  have ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right :=
     kanPiIsomorphism_of_localized_isIso a.right (by infer_instance)
-  have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism b.right :=
+  have hb : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism b.right :=
     kanPiIsomorphism_of_localized_isIso b.right (by infer_instance)
-  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedFiberι (pathHomotopyFiberProjection f)).right :=
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedFiberι (pathHomotopyFiberProjection f)).right :=
     fiberInclusion_piIsomorphism_of_contractible_base (pathHomotopyFiberProjection f).right hE
       (pathHomotopyFiber f).basepoint
   exact ha.comp (hb.comp hi)

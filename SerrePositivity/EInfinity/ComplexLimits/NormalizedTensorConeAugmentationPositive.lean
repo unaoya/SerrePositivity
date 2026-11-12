@@ -15,14 +15,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeAugmentationAt_compose_of_card_ge_three {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) :
     compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
       (normalizedTensorConeAugmentationAt A X Y c b))).val
@@ -43,7 +43,7 @@ lemma normalizedTensorConeAugmentationAt_compose_of_card_ge_three {n : ℕ}
       change normalizedTensorConeObj A X Y c a = X
       rw [ha0, normalizedTensorConeObj_zero]
     have hzero : HEq (0 : GradedHom A ((normalizedTensorConeData A X Y c).obj a) X k)
-        (0 : GradedHom A X X k) := gradedHom_zero_heq hx rfl rfl
+        (0 : GradedHom A X X k) := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq hx rfl rfl
     exact eq_of_heq (hp.trans ((heq_of_eq hz).trans hzero.symm))
   · rw [normalizedTensorConeData_hom_ordinary_zero A X Y c I a b k hI ha hb hk ha0 (by omega)]
     exact map_zero _

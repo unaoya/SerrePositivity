@@ -32,7 +32,7 @@ def dgKappaNativeBFOldArrow : Fin 4 → Arrow (StableModel.{max (u + 1) v}) :=
   Fin.cases (Arrow.mk (sInputExactMap (dgKappaNativeVerdierDiagram R D I).inclusion))
     (Fin.cases (Arrow.mk (sInputExactMap (dgKappaNativeVerdierDiagram R D I).projection))
       (Fin.cases (Arrow.mk (sInputExactMap
-        (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (dgKappaNativeVerdierDiagram R D I).left)))
         (Fin.cases (Arrow.mk (sInputExactMap
           (fromZeroCategory (dgKappaNativeVerdierDiagram R D I).right))) Fin.elim0)))
 
@@ -52,12 +52,12 @@ def dgKappaNativeBFArrow (e : Fin 4) :
 方針：同じ四辺の指定比較を一つの添字付き族へ束ねる。
 規約：Sp 全写像空間の関手同型に強めない。
 使われ方：K-S•-S3 の元の各正段比較を保持する。 -/
-def dgKappaNativeBFArrowPositiveComparison (e : Fin 4) (r : ℕ) : FunctorIso
-    (SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaNativeBFArrow R D I hBF e)).edge ≫
-      coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1)))
+def dgKappaNativeBFArrowPositiveComparison (e : Fin 4) (r : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeBFArrow R D I hBF e)).edge ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1)))
     (SSet.yonedaEquiv.symm
-      (coherentNerveEdge (kSpectrumMap (dgKappaNativeBFOldArrow R D I e).hom)).edge ≫
-        coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kSpectrumMap (dgKappaNativeBFOldArrow R D I e).hom)).edge ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) :=
   Classical.choice (by
     fin_cases e
     · exact (dgKappaNativeBFBoundary R D I hBF).bottom_positive r
@@ -84,11 +84,11 @@ theorem dgKappaNativeBFArrow_homotopyMap_eq (e : Fin 4) (j : ℤ) :
 使われ方：K-S•-S3 の新 BF 辺と旧共終性界面の接続。 -/
 theorem dgKappaNativeBFArrow_cofinal
     (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-      F2.Idempotent.IsIdempotentCompletion f.val →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
         (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
           Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
     (e : Fin 4)
-    (hf : F2.Idempotent.IsIdempotentCompletion (dgKappaNativeBFOldArrow R D I e).hom.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (dgKappaNativeBFOldArrow R D I e).hom.val) :
     (∀ j : ℤ, 0 < j → Function.Bijective
       (OmegaSpectrum.homotopyMap (dgKappaNativeBFArrow R D I hBF e) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (dgKappaNativeBFArrow R D I hBF e) 0) := by

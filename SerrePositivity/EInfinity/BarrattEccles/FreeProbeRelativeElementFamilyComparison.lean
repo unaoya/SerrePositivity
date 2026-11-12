@@ -22,11 +22,11 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 方針：同じ roof と Ex∞ 単位に元の Hom 比較を合成する。
 規約：実局所化源の両端点を保持。使われ方：全族の後合成比較。 -/
 def freeProbeRelativeElementHammockPinchedMap : nerve (freeProbeRelativeElementIndex A X B) ⟶
-    pinchedHom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom
       ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-        (nerveVertex (freeProbeRelativeElementSource A X)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X)))
       ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-        (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) :=
   RoofPrefix.familyMap (cofibrantAlgebraRelativeCategory A)
     (freeProbeRelativeElementColumn A X B) (freeProbeRelativeElementAugmentation A X B)
     (freeProbeRelativeElementAugmentation_weak A X B) (freeProbeRelativeElementEvaluation A X B)
@@ -39,11 +39,11 @@ def freeProbeRelativeElementHammockPinchedMap : nerve (freeProbeRelativeElementI
 使われ方：実 U の後合成との接続。 -/
 lemma freeProbeRelativeElementPinchedMap_eq_hammock : freeProbeRelativeElementPinchedMap A X B =
     freeProbeRelativeElementHammockPinchedMap A X B ≫
-      pinchedHomMap (kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom
         ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-          (nerveVertex (freeProbeRelativeElementSource A X)))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X)))
         ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-          (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) := by
   simp only [freeProbeRelativeElementPinchedMap, freeProbeRelativeElementHammockPinchedMap,
     RoofPrefix.familyMap, freeProbeRelativeElementRoofMap, freeProbeRelativeElementRoof,
     Category.assoc]
@@ -60,10 +60,10 @@ lemma freeProbeRelativeElementHammockFamily_postcomp_arrow {D : SSet.{u + 1}}
     let hp := freeProbeRelativeElementAugmentation_weak A X B
     let σ := freeProbeRelativeElementEvaluation A X B
     let T := (hoFunctor.map ((ihom (nerve (freeProbeRelativeElementIndex A X B))).map F)).toFunctor
-    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementHammockPinchedMap A X B ≫
-      pinchedHomMap F _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementHammockPinchedMap A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk (T.map ((RoofPrefix.coherentAugmentationIso C U p hp).inv ≫
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (RoofPrefix.coherentAugmentationHomotopy C U σ)))) := by
   dsimp only
   refine (ComplexLimits.pinchedFamilyPostcomp_arrow F
@@ -88,10 +88,10 @@ lemma freeProbeRelativeElementPinched_forget_arrow :
     let σ := freeProbeRelativeElementEvaluation A X B
     let F := (kanHammockLocalizationEquivalence C).hom ≫ cAlgForgetDerived A
     let T := (hoFunctor.map ((ihom (nerve (freeProbeRelativeElementIndex A X B))).map F)).toFunctor
-    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
-      pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk (T.map ((RoofPrefix.coherentAugmentationIso C U p hp).inv ≫
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (RoofPrefix.coherentAugmentationHomotopy C U σ)))) := by
   dsimp only
   rw [freeProbeRelativeElementPinchedMap_eq_hammock]

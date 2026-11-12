@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockKanSpan
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramNaturalTransformation
 
 /-!
 概要：元の right frame Hom と同じ hammock Hom を全標的の coherent な関手同型で比較する。
@@ -26,17 +26,17 @@ attribute [local instance] rightFrameHammockKanDiagram_kanComplex
 規約：同じ持ち上げた全源 nerve。使われ方：全比較の同じ始終域。 -/
 def rightFrameHammockCoherentDiagram (i : Fin 7) :
     SSet.uliftFunctor.{max u v + 1, max u v}.obj (nerve (AsSmall.{max u v} C)) ⟶
-      SpaceInfinity.{max u v} :=
-  kanDiagramCoherentNerve (rightFrameHammockKanDiagram q r i)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{max u v} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (rightFrameHammockKanDiagram q r i)
 
 include cof in
 /-- 概要：元の各弱自然変換は全標的の関手 ∞ 圏で同じ可逆な比較辺を与える。
 方針：既存の全図式の同値判定へ同じ実 Kan 比較を代入する。
 規約：順射は元の自然変換の実現の辺。使われ方：全族の coherent 反転。 -/
 def rightFrameHammockCoherentEdgeIso (i : Fin 6) :
-    FunctorIso (rightFrameHammockCoherentDiagram q r (rightFrameHammockEdgeSource i))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r (rightFrameHammockEdgeSource i))
       (rightFrameHammockCoherentDiagram q r (rightFrameHammockEdgeTarget i)) :=
-  kanDiagramFunctorIsoOfPointwise
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramFunctorIsoOfPointwise
     (F := ⟨rightFrameHammockKanDiagram q r (rightFrameHammockEdgeSource i), trivial⟩)
     (G := ⟨rightFrameHammockKanDiagram q r (rightFrameHammockEdgeTarget i), trivial⟩)
     (rightFrameHammockKanEdge q r i) (rightFrameHammockKanEdge_isQCatEquivalence q r cof i)
@@ -46,22 +46,22 @@ omit [IsCofibrant X] in
 方針：同じ実自然変換の実現の評価公式をそのまま使う。
 規約：元の辺自身の全成分。使われ方：零単体と全二胞体の追跡。 -/
 lemma rightFrameHammockCoherentEdge_at (i : Fin 6) (Y : AsSmall.{max u v} C) :
-    (functorEdgeAt (kanDiagramNaturalTransformationEdge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.functorEdgeAt (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge
       (F := ⟨rightFrameHammockKanDiagram q r (rightFrameHammockEdgeSource i), trivial⟩)
       (G := ⟨rightFrameHammockKanDiagram q r (rightFrameHammockEdgeTarget i), trivial⟩)
-      (rightFrameHammockKanEdge q r i)) (ULift.up (nerveVertex Y))).edge =
-      (coherentNerveEdge (show
+      (rightFrameHammockKanEdge q r i)) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex Y))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (show
         (rightFrameHammockKanDiagram q r (rightFrameHammockEdgeSource i)).obj Y ⟶
           (rightFrameHammockKanDiagram q r (rightFrameHammockEdgeTarget i)).obj Y from
             (rightFrameHammockKanEdge q r i).app Y)).edge :=
-  kanDiagramNaturalTransformationEdge_at _ Y
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.kanDiagramNaturalTransformationEdge_at _ Y
 
 /-- 概要：元の right frame Hom と同じ hammock Hom は全標的で coherent に自然同型。
 方針：同じ六つの全比較の可逆な辺を元の向きに従い合成する。
 規約：全標的と任意の添字図式の自然性を保持する。
 使われ方：指定 ∞ 局所化の全 pinched Hom 族との合成。 -/
 def rightFrameHammockCoherentComparison :
-    FunctorIso (rightFrameHammockCoherentDiagram q r 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (rightFrameHammockCoherentDiagram q r 0)
       (rightFrameHammockCoherentDiagram q r 6) :=
   (rightFrameHammockCoherentEdgeIso q r cof 0).trans
     ((rightFrameHammockCoherentEdgeIso q r cof 1).trans
@@ -76,7 +76,7 @@ def rightFrameHammockCoherentComparison :
 def rightFrameHammockCoherentComparison_precomp {K : SSet.{max u v + 1}}
     (f : K ⟶ SSet.uliftFunctor.{max u v + 1, max u v}.obj
       (nerve (AsSmall.{max u v} C))) :
-    FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 0)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ rightFrameHammockCoherentDiagram q r 0)
       (f ≫ rightFrameHammockCoherentDiagram q r 6) :=
   (rightFrameHammockCoherentComparison q r cof).precomp f
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorTriangleOrdinaryEquation
-public import SerrePositivity.InfinityCategories.DGNerve.BoundaryDecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.BoundaryDecomposition
 
 /-!
 概要：零から二への混合 cochain と全線形境界を元の pinched 単体へ戻す。
@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -26,10 +26,10 @@ lemma normalizedTensorTriangleData_homOrZero_pinched {n : ℕ}
       ((normalizedTensorTrianglePinched A X Y c τ).toSimplexData.homOrZero I a b k) := by
   have hx := (normalizedTensorTrianglePinched_obj_zero A X Y c τ a haz).symm
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
-  unfold SimplexData.homOrZero
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero
   split_ifs with hI ha hb hk
   · exact normalizedTensorTriangleData_hom_pinched A X Y c τ I a b k hI ha hb hk hbt haz
-  all_goals exact gradedHom_zero_heq hx hy rfl
+  all_goals exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq hx hy rfl
 
 lemma normalizedTensorTriangleData_linearBoundary_pinched {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
@@ -39,15 +39,15 @@ lemma normalizedTensorTriangleData_linearBoundary_pinched {n : ℕ}
       ((normalizedTensorTrianglePinched A X Y c τ).toSimplexData.linearBoundary I a b k) := by
   have hx := (normalizedTensorTrianglePinched_obj_zero A X Y c τ a haz).symm
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
-  unfold SimplexData.linearBoundary
-  rw [← Finset.sum_coe_sort (Index.interior I a b),
-    ← Finset.sum_coe_sort (Index.interior I a b)]
-  apply sum_heq_of_obj_eq hx hy
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.linearBoundary
+  rw [← Finset.sum_coe_sort (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I a b),
+    ← Finset.sum_coe_sort (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I a b)]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.sum_heq_of_obj_eq hx hy
   intro j
   have hh := normalizedTensorTriangleData_homOrZero_pinched A X Y c τ
     (I.erase j.val) a b (k + 1) hbt haz
-  have hs := smul_sub_heq_of_obj_eq hx hy (Index.sign I j.val) _ 0 _ 0 hh
-    (gradedHom_zero_heq hx hy rfl)
+  have hs := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.smul_sub_heq_of_obj_eq hx hy (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I j.val) _ 0 _ 0 hh
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq hx hy rfl)
   simpa only [sub_zero] using hs
 
 end SerrePositivity.EInfinity.ComplexLimits

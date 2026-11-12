@@ -42,7 +42,7 @@ def loopExchangeParametricNaturalitySquare :
   h₁ := by
     change SSet.ι₁ ≫ (loopExchangeParametricNaturalityData v).h =
       ((loopExchangeInterval Z').basedIhomMap P).path ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (parametricLoopPost v) (PointedObject.basedHom P
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (parametricLoopPost v) (PointedObject.basedHom P
           (LoopExchangePaths.doubleLoop
             (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z')))).right
     rw [loopExchangeInterval_parametricPath]
@@ -63,7 +63,7 @@ lemma loopExchangeParametricNaturalitySquare_start :
   have hv := PointedMapping.coordinateMap_vertex (mappingIso Z).inv
     (PointedObject.basedHomMap P (mappingIso Z').hom)
     (PointedMapping.parametricPost source.{u} v ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed swap.{u} Z'))
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed swap.{u} Z'))
   have he := mappingIso_parametric_conjugate_pre v swap.{u} _
     (TwoLoopSource.mappingIso_pre_swap PointedSimplicialSet.circle.{u} Z')
   exact (congrArg (fun x => SSet.const (X := (Δ[1] : SSet.{u})) x) hv).trans
@@ -83,7 +83,7 @@ lemma loopExchangeParametricNaturalitySquare_finish :
   have hv := PointedMapping.coordinateMap_vertex (mappingIso Z).inv
     (PointedObject.basedHomMap P (mappingIso Z').hom)
     (PointedMapping.parametricPost source.{u} v ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed reversal.{u} Z'))
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed reversal.{u} Z'))
   have he := mappingIso_parametric_conjugate_pre v reversal.{u} _
     (TwoLoopSource.mappingIso_pre_reversal PointedSimplicialSet.circle.{u} Z')
   exact (congrArg (fun x => SSet.const (X := (Δ[1] : SSet.{u})) x) hv).trans

@@ -66,8 +66,8 @@ lemma circleCotensorReversal_square_component (Y : OmegaSpectrum.{u}) :
 
 /-- 元の符号反転 BF 自己射そのものが、Sp 内の可逆な辺を与える。 -/
 lemma circleCotensorReversal_isInvertible (Y : OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (circleCotensorReversal Y)) :=
-  coherentNerveEdge_isInvertible_of_enrichedInverse (circleCotensorReversal Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleCotensorReversal Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentNerveEdge_isInvertible_of_enrichedInverse (circleCotensorReversal Y)
     (circleCotensorReversal Y)
     (SpectrumMappingAcyclic.vertexIsoOfComponentEq (circleCotensorReversal_square_component Y))
     (SpectrumMappingAcyclic.vertexIsoOfComponentEq (circleCotensorReversal_square_component Y))

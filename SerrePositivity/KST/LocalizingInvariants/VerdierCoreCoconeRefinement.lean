@@ -21,86 +21,86 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 同じ全余錐と分母 prism を、元の core 逆像内でも保持する精密化。 -/
-structure VerdierCoreCoconeRefinement {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
-    (z : B.obj _⦋0⦌) (d : JoinCocone (D ≫ q.hom)) where
+structure VerdierCoreCoconeRefinement {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj)
+    (z : B.obj _⦋0⦌) (d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (D ≫ q.hom)) where
   source : (Δ[n] : SSet.{u}) ⟶ B.obj
   denominator : Truncated.Edge (X := (truncation 2).obj ((ihom (Δ[n] : SSet.{u})).obj B.obj))
-    (functorVertex source) (functorVertex D)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex source) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex D)
   denominator_mem : denominator.edge ∈
     (relativeFirstRowSimplex q n).obj (Opposite.op ⦋1⦌)
-  cone : JoinCocone source
+  cone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone source
   apex_eq : cone.vertex = z
-  source_inverts : InvertsEdges (source ≫ q.hom) Set.univ
-  original_inverts : InvertsEdges (D ≫ q.hom) Set.univ
-  cone_inverts : InvertsEdges (cone.val ≫ q.hom) Set.univ
-  target_inverts : InvertsEdges d.val Set.univ
-  weakCone : JoinCocone (corePreimageLift q.hom source source_inverts)
-  weakCone_ι : weakCone.val ≫ ((quasicategoryCore C.obj).preimage q.hom).ι = cone.val
+  source_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (source ≫ q.hom) Set.univ
+  original_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (D ≫ q.hom) Set.univ
+  cone_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (cone.val ≫ q.hom) Set.univ
+  target_inverts : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges d.val Set.univ
+  weakCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (corePreimageLift q.hom source source_inverts)
+  weakCone_ι : weakCone.val ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).preimage q.hom).ι = cone.val
   weakComparison : SSet.Homotopy (corePreimageLift q.hom source source_inverts)
     (corePreimageLift q.hom D original_inverts)
-  weakComparison_ι : weakComparison.h ≫ ((quasicategoryCore C.obj).preimage q.hom).ι =
-    (simplicialHomotopyOfFunctorEdge denominator).h
+  weakComparison_ι : weakComparison.h ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).preimage q.hom).ι =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge denominator).h
   comparison : Truncated.Edge
-    (X := (truncation 2).obj ((ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj))
-    (functorVertex (cone.val ≫ q.hom)) (functorVertex d.val)
-  comparison_invertible : IsInvertibleEdge
-    (X := (ihom (join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) comparison
-  comparison_prefix : ((pre (joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj).app
+    (X := (truncation 2).obj ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (cone.val ≫ q.hom)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex d.val)
+  comparison_invertible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+    (X := (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[n] : SSet.{u}) Δ[0])).obj C.obj) comparison
+  comparison_prefix : ((pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0])).app C.obj).app
     (Opposite.op ⦋1⦌) comparison.edge =
       ((ihom (Δ[n] : SSet.{u})).map q.hom).app (Opposite.op ⦋1⦌) denominator.edge
   comparison_apex : SSet.yonedaEquiv.symm comparison.edge ≫
-    (pre (joinInr (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
+    (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[0])).app C.obj =
       curry (snd (Δ[0] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm
         (C.obj.σ 0 (q.hom.app (Opposite.op ⦋0⦌) z)))
   quotientComparison : SSet.Homotopy
-    (weakCone.val ≫ (quasicategoryCore C.obj).fromPreimage q.hom)
+    (weakCone.val ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).fromPreimage q.hom)
     (allEdgesCoreLift d.val target_inverts)
-  quotientComparison_ι : quotientComparison.h ≫ (quasicategoryCore C.obj).ι =
-    (simplicialHomotopyOfFunctorEdge comparison).h
+  quotientComparison_ι : quotientComparison.h ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge comparison).h
 
 /-- 元の Verdier 商の可逆余錐は、全次数で元の core 逆像内に実精密化を持つ。 -/
-lemma exists_verdierCoreCoconeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+lemma exists_verdierCoreCoconeRefinement {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q)
     {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ B.obj) (z : B.obj _⦋0⦌)
-    (d : JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z)
-    (hd : InvertsEdges d.val Set.univ) : Nonempty (VerdierCoreCoconeRefinement q D z d) := by
+    (d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (D ≫ q.hom)) (hz : d.vertex = q.hom.app (Opposite.op ⦋0⦌) z)
+    (hd : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges d.val Set.univ) : Nonempty (VerdierCoreCoconeRefinement q D z d) := by
   obtain ⟨D', t, c, ht, hcz, l, hi, hp, hv⟩ :=
     exists_verdierSimplexCoconeLift_preservingPaths h D z d hz
-  have he : FunctorIso (c.val ≫ q.hom) d.val := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (c.val ≫ q.hom) d.val := by
     have := hi
     exact asIso (Truncated.HomotopyCategory.homMk l)
-  have hc : InvertsEdges (c.val ≫ q.hom) Set.univ :=
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (c.val ≫ q.hom) Set.univ :=
     (invertsEdges_functorIso_iff he Set.univ).mpr hd
-  have hD' : InvertsEdges (D' ≫ q.hom) Set.univ := by
-    have hh := invertsAllEdges_precomp (joinInl (Δ[n] : SSet.{u}) Δ[0]) _ hc
+  have hD' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (D' ≫ q.hom) Set.univ := by
+    have hh := invertsAllEdges_precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0]) _ hc
     rw [← Category.assoc, c.property] at hh
     exact hh
-  have hD : InvertsEdges (D ≫ q.hom) Set.univ := by
-    have hh := invertsAllEdges_precomp (joinInl (Δ[n] : SSet.{u}) Δ[0]) _ hd
+  have hD : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (D ≫ q.hom) Set.univ := by
+    have hh := invertsAllEdges_precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0]) _ hd
     rw [d.property] at hh
     exact hh
-  let W := (quasicategoryCore C.obj).preimage q.hom
+  let W := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).preimage q.hom
   let C' := corePreimageLift q.hom c.val hc
-  have hprefix : joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ C' =
+  have hprefix : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n] : SSet.{u}) Δ[0] ≫ C' =
       corePreimageLift q.hom D' hD' := by
     apply (cancel_mono W.ι).mp
     rw [Category.assoc, corePreimageLift_ι, c.property]
     rfl
-  have hti : IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj C.obj)
+  have hti : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom (Δ[n] : SSet.{u})).obj C.obj)
       (t.map ((truncation 2).map ((ihom (Δ[n] : SSet.{u})).map q.hom))) := by
     change IsIso (simplexDenominatorImageIso q t ht).hom
     infer_instance
-  let cW : JoinCocone (corePreimageLift q.hom D' hD') := ⟨C', hprefix⟩
-  have hq : cW.val ≫ (quasicategoryCore C.obj).fromPreimage q.hom =
+  let cW : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCocone (corePreimageLift q.hom D' hD') := ⟨C', hprefix⟩
+  have hq : cW.val ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).fromPreimage q.hom =
       allEdgesCoreLift (c.val ≫ q.hom) hc := by
-    apply (cancel_mono (quasicategoryCore C.obj).ι).mp
+    apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).ι).mp
     rw [Category.assoc, allEdgesCoreLift_ι]
     change (C' ≫ W.ι) ≫ q.hom = _
     rw [corePreimageLift_ι]
   let Hq := allEdgesCoreComparisonHomotopy l hi hc hd
   let Hq' : SSet.Homotopy
-      (cW.val ≫ (quasicategoryCore C.obj).fromPreimage q.hom)
+      (cW.val ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C.obj).fromPreimage q.hom)
       (allEdgesCoreLift d.val hd) := {
     h := Hq.h
     h₀ := Hq.h₀.trans hq.symm

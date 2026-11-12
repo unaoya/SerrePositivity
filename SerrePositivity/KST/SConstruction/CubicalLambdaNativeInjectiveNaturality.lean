@@ -22,7 +22,7 @@ lemma cubicalLambdaNativeSimplexData_precompose_of_inj {M N : ℕ}
     cubicalLambdaNativeSimplexData A (DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))) F) =
       (cubicalLambdaNativeSimplexData A F).pullback α := by
-  apply DGNerve.SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk
@@ -35,10 +35,10 @@ lemma cubicalLambdaNativeSimplex_precompose_of_inj {M N : ℕ}
     cubicalLambdaNativeSimplex A (DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α))) F) =
       (cubicalLambdaNativeSimplex A F).pullback α :=
-  DGNerve.Simplex.ext (cubicalLambdaNativeSimplexData_precompose_of_inj A F α hi)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext (cubicalLambdaNativeSimplexData_precompose_of_inj A F α hi)
 
 /-- 元の単射な全単体作用素に対し、native HA 単体からの実逆 dg 関手の比較も自然。 -/
-lemma simplexHAInverseFunctor_pullback_of_inj {M N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAInverseFunctor_pullback_of_inj {M N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (α : Fin (M + 1) →o Fin (N + 1)) (hi : Function.Injective α) :
     simplexHAInverseFunctor A (s.pullback α) = DGFunctor.comp
       (cubicalLambdaMap A (SSet.stdSimplex.map (SimplexCategory.Hom.mk α)))

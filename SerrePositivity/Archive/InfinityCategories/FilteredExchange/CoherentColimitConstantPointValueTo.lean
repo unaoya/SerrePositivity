@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawUnitActionComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitConstantTransportPointIso
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorIsoWhiskerExchange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorIsoWhiskerExchange
 
 /-!
 概要：元の定値一点輸送比較を固定値へ写し、最初辺の元の二面比較との交換式を示す。

@@ -24,7 +24,7 @@ open scoped Simplicial
 instance multiDiagonalCoreSConstruction_isConnected (r : ℕ) (X : StableModel.{u}) :
     SSet.IsConnected (multiDiagonalCoreSConstruction (r + 1) X) := by
   let M := (multiDiagonalDiagramFunctor (r + 1)).obj X
-  have hc : IsContractibleKan (M.obj (Opposite.op ⦋0⦌)) :=
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (M.obj (Opposite.op ⦋0⦌)) :=
     multiDiagonalDiagram_zero_isContractibleKan r X
   let : SSet.IsPreconnected (M.obj (Opposite.op ⦋0⦌)) := hc.piZero_subsingleton
   let : SSet.IsConnected (M.obj (Opposite.op ⦋0⦌)) := ⟨hc.nonempty⟩
@@ -67,13 +67,13 @@ instance boundaryKanRealization_isConnected (r : ℕ) (X : StableModel.{u}) :
 規約：非空性は源の基点から得る。使われ方：単射置換した段の連結性。 -/
 lemma pointedIsConnected_of_piIsomorphism {A B : PointedSimplicialSet.{u}}
     [KanComplex A.right] [KanComplex B.right] [SSet.IsConnected B.right]
-    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right) : SSet.IsConnected A.right := by
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.equivOfPiIsomorphism 0 f.right hf
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f)
-  let eA : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy A.right 0 A.basepoint ≃ SSet.π₀ A.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
-  let eB : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B.right 0 B.basepoint ≃ SSet.π₀ B.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right) : SSet.IsConnected A.right := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.equivOfPiIsomorphism 0 f.right hf
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f)
+  let eA : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy A.right 0 A.basepoint ≃ SSet.π₀ A.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
+  let eB : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy B.right 0 B.basepoint ≃ SSet.π₀ B.right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
   let : SSet.IsPreconnected A.right := ⟨by
     intro a b
     apply eA.symm.injective

@@ -23,15 +23,15 @@ open scoped Simplicial
 使われ方：元の相対旗の対角評価の供給仮定の消去。 -/
 def completionCoreFlagEvaluationInput (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     CompletionCoreFlagEvaluationInput r ι f := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let : Quasicategory (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) :=
     LocalizingInvariants.completionCofiberWide_quasicategory F.val
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf)
   exact {
-    evaluation := _root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit _
+    evaluation := _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.counit _
     diagonal_eq := by intro n v; rfl
     isWeak := LocalizingInvariants.CoreFlag.counit_isWeakHomotopyEquivalence _ }
 
@@ -51,8 +51,8 @@ theorem groupNerveHigherVanishingInput : GroupNerveHigherVanishingInput.{u} := b
 使われ方：相対旗と元の wide 亜群化の比較。 -/
 theorem completionRelativeFlagWideEvaluation_isWeak (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    IsWeakHomotopyEquivalence (completionRelativeFlagWideEvaluation r ι f hf) :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (completionRelativeFlagWideEvaluation r ι f hf) :=
   completionRelativeFlagWideEvaluation_isWeak_of_input r ι f hf
     (completionCoreFlagEvaluationInput r ι f hf)
 
@@ -62,9 +62,9 @@ theorem completionRelativeFlagWideEvaluation_isWeak (r : ℕ)
 使われ方：同じ障害群の無条件な高次消滅。 -/
 theorem cutCokernel_higher_subsingleton {X Y : StableModel.{u}} (f : X ⟶ Y)
     (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) :=
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) _⦋0⦌) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (cutCokernelSimplicialSet f)) n x) :=
   cutCokernel_higher_of_input groupNerveHigherVanishingInput f n hn x
 
 /-- 概要：元の相対先頭実現の二次以上のホモトピーは一意。
@@ -73,10 +73,10 @@ theorem cutCokernel_higher_subsingleton {X Y : StableModel.{u}} (f : X ⟶ Y)
 使われ方：K-B2-S1 相対 fiber 比較へ渡す右項の高次消滅。 -/
 theorem completionRelativeHead_higher_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) _⦋0⦌) :
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (completionRelativeHeadRealization r ι f hf)) n x) :=
   completionRelativeHead_higher_of_input groupNerveHigherVanishingInput r ι f hf
     (fun m => completionCoreFlagEvaluationInput (r + 1)
       ((completionCokernelHeadIndex r ι).obj m) f hf) n hn x

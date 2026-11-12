@@ -3,16 +3,17 @@
 -- 設計書：formalization-plans/bhatt-scholze/a6-design.md §2.4、S8。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Presentable
-public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
-public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
-public import SerrePositivity.InfinityCategories.F1.Categories.KanDiagramNaturalTransformation
-public import SerrePositivity.InfinityCategories.F1.Categories.DiscreteSpace
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.Definition
-public import SerrePositivity.InfinityCategories.F1B.Cones.CosliceOpposite
-public import SerrePositivity.InfinityCategories.Core.PushoutShape
-public import SerrePositivity.InfinityCategories.HomotopyLimits.OppositeKanHomotopy
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveOpposite
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SpacePresentable
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanDiagramNaturalTransformation
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.DiscreteSpace
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CosliceOpposite
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PushoutShape
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.OppositeKanHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.NerveOpposite
 public import Mathlib.CategoryTheory.Sites.LeftExact
 public import Mathlib.CategoryTheory.Elements
 -- 11-03：`F2.Presentable.Basic` は存在しない名前だった（DG-W3 の改名ではなく当初の推測）。F2 の束ねモジュール `F2.Presentable` に直した。
@@ -45,7 +46,7 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 
 open CategoryTheory Limits SSet MonoidalCategory MonoidalClosed
 open scoped Simplicial
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 -- SpaceInfinity・spaceInfinity_quasicategory は F1/Categories/CatInfinity、setsToKan・discreteSpaceInclusion・
 -- Is0TruncatedSpace と前層の比較定理は F1/Categories/DiscreteSpace（IF-G1 G13、main 7bda72c3c）の実体。

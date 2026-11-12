@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.ArTimeCoordinates
-public import SerrePositivity.InfinityCategories.Core.PrismLastContraction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.PrismLastContraction
 
 /-! # 点ごとに順序づけられた順序写像の prism
 概要：点ごとに f≤g となる順序写像から nerve 上の実際の自然変換を作る。
@@ -54,7 +54,7 @@ def orderPrism {A B : Type u} [Preorder A] [Preorder B]
 規約：厳密な射の等号。使われ方：λ 側の添字の照合。 -/
 lemma orderPrism_zero {A B : Type u} [Preorder A] [Preorder B]
     (f g : A →o B) (h : ∀ a, f a ≤ g a) :
-    prismEndpoint 0 (nerve A) ≫ orderPrism f g h = nerveMap f.toFunctor := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve A) ≫ orderPrism f g h = nerveMap f.toFunctor := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -68,7 +68,7 @@ lemma orderPrism_zero {A B : Type u} [Preorder A] [Preorder B]
 規約：厳密な射の等号。使われ方：μ 側の添字の照合。 -/
 lemma orderPrism_one {A B : Type u} [Preorder A] [Preorder B]
     (f g : A →o B) (h : ∀ a, f a ≤ g a) :
-    prismEndpoint 1 (nerve A) ≫ orderPrism f g h = nerveMap g.toFunctor := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve A) ≫ orderPrism f g h = nerveMap g.toFunctor := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

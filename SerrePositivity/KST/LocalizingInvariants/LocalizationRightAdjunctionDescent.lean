@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F1B
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory Z]
   (F : X ⟶ Y) (L : Y ⟶ Z) (H : Z ⟶ X) (W : Set (Y _⦋1⦌))
-  (hL : IsLocalization L W) (a : QCatAdjunction (L ≫ H) F)
+  (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization L W) (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (L ≫ H) F)
 
-def localizationRightAdjunctionUnit : FunctorHom (𝟙 Z) (H ≫ (F ≫ L)) :=
+def localizationRightAdjunctionUnit : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (𝟙 Z) (H ≫ (F ≫ L)) :=
   (localizationPre_fullyFaithful L W hL).toHoFullyFaithful.preimage (homPost L a.unitHom)
 
 lemma localizationRightAdjunctionUnit_pre :
@@ -29,26 +29,26 @@ lemma localizationRightAdjunctionUnit_pre :
   (localizationPre_fullyFaithful L W hL).toHoFullyFaithful.map_preimage _
 
 include hL in
-lemma localizationRightAdjunction_leftTriangle (η : FunctorHom (𝟙 Z) (H ≫ (F ≫ L)))
+lemma localizationRightAdjunction_leftTriangle (η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (𝟙 Z) (H ≫ (F ≫ L)))
     (hη : homPre L η = homPost L a.unitHom) :
-    unitLeftZigzag (F := H) (G := F ≫ L) η a.counitHom =
-      𝟙 (HomotopyCategory.mk (functorVertex H)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitLeftZigzag (F := H) (G := F ≫ L) η a.counitHom =
+      𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H)) := by
   apply ((localizationPre_fullyFaithful (Y := X) L W hL).homotopyCategoryMap_bijective
-    (functorVertex H) (functorVertex H)).injective
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex H)).injective
   change homPre L (homPost H η ≫
     homPre (F := F ≫ (L ≫ H)) (G := 𝟙 X) H a.counitHom) = homPre L (𝟙 _)
   rw [homPre_homComp, homPre_id, homPre_post, hη, ← homPost_comp, ← homPre_comp]
-  exact SerrePositivity.InfinityCategories.F1B.adjunction_leftTriangleHom a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.adjunction_leftTriangleHom a
 
-lemma localizationRightAdjunction_rightTriangle (η : FunctorHom (𝟙 Z) (H ≫ (F ≫ L)))
+lemma localizationRightAdjunction_rightTriangle (η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (𝟙 Z) (H ≫ (F ≫ L)))
     (hη : homPre L η = homPost L a.unitHom) :
     homPre (F ≫ L) η ≫ homPost (F := F ≫ (L ≫ H)) (G := 𝟙 X) (F ≫ L) a.counitHom =
-      𝟙 (HomotopyCategory.mk (functorVertex (F ≫ L))) := by
+      𝟙 (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (F ≫ L))) := by
   rw [homPre_comp F L η, hη, homPre_post, homPost_comp, ← homPost_homComp]
-  exact (congrArg (homPost L) (SerrePositivity.InfinityCategories.F1B.adjunction_rightTriangleHom a)).trans (homPost_id L F)
+  exact (congrArg (homPost L) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.adjunction_rightTriangleHom a)).trans (homPost_id L F)
 
-def localizationRightAdjunctionDescent : QCatAdjunction H (F ≫ L) :=
-  _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.adjunctionOfFunctorHomTriangles (F := H) (G := F ≫ L)
+def localizationRightAdjunctionDescent : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction H (F ≫ L) :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.adjunctionOfFunctorHomTriangles (F := H) (G := F ≫ L)
     (localizationRightAdjunctionUnit F L H W hL a) a.counitHom
     (localizationRightAdjunction_leftTriangle F L H W hL a _
       (localizationRightAdjunctionUnit_pre F L H W hL a))

@@ -28,16 +28,16 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 
 /-- 核の球面代表の障害が零なら、極限で実際に零ホモトピック。 -/
 theorem exists_limit_nullHomotopy_of_obstruction_eq_point
-    (s : (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
+    (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
       (r + 1) (limitBasepoint X p))
-    (hs : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1)
-    (hz : kernelRepresentativeObstruction X p r s hs = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) :
+    (hs : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = 1)
+    (hz : kernelRepresentativeObstruction X p r s hs = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) :
     Nonempty (PtSimplex.RelStruct .const s (Fin.last (r + 1))) := by
   obtain ⟨U, hU⟩ := exists_compatible_nullHomotopies X p r (projectedSimplex X p r s)
     (projectedSimplex_comp X p r s) (projectedNullHomotopy X p r s hs) hz
   let U' n : PtSimplex.RelStruct
-      (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n)
-        rfl (.const : (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (fun n ↦ (X n).right) (fun n ↦ (p n).right) n)
+        rfl (.const : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right)
           (fun n ↦ (p n).right)).PtSimplex (r + 1) (limitBasepoint X p)))
       (projectedSimplex X p r s n) (Fin.last (r + 1)) := {
     map := (U n).map
@@ -49,20 +49,20 @@ theorem exists_limit_nullHomotopy_of_obstruction_eq_point
 
 /-- 核の球面代表の零障害判定。 -/
 theorem kernelRepresentativeObstruction_eq_point_iff
-    (s : (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
+    (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right)).PtSimplex
       (r + 1) (limitBasepoint X p))
-    (hs : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = 1) :
-    kernelRepresentativeObstruction X p r s hs = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = 1 := by
+    (hs : limitGroupComparison X p r (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = 1) :
+    kernelRepresentativeObstruction X p r s hs = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = 1 := by
   constructor
   · intro hz
     obtain ⟨R⟩ := exists_limit_nullHomotopy_of_obstruction_eq_point X p r s hs hz
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound R).symm
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound R).symm
   · exact kernelRepresentativeObstruction_eq_point_of_mk_eq_one X p r s hs
 
 /-- 核上の障害写像は、基点の逆像が単位元だけである。 -/
 theorem kernelObstruction_eq_point_iff (b : (limitGroupComparison X p r).ker) :
-    kernelObstruction X p r b = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ ↔ b = 1 := by
+    kernelObstruction X p r b = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ ↔ b = 1 := by
   constructor
   · intro hz
     apply Subtype.ext
@@ -73,8 +73,8 @@ theorem kernelObstruction_eq_point_iff (b : (limitGroupComparison X p r).ker) :
 
 /-- lim¹ が消滅する塔では極限のホモトピー群の比較は単射。 -/
 theorem limitGroupComparison_injective_of_limOne_subsingleton
-    (hlim : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+    (hlim : Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (p n)))) :
     Function.Injective (limitGroupComparison X p r) := by
   intro a b hab
@@ -89,12 +89,12 @@ theorem limitGroupComparison_bijective_of_surjective
     (hq : ∀ n, Function.Surjective (pointedGroupMap (r + 1) (p n))) :
     Function.Bijective (limitGroupComparison X p r) :=
   ⟨limitGroupComparison_injective_of_limOne_subsingleton X p r
-    (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_surjective _ _ hq), limitGroupComparison_surjective X p r⟩
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.subsingleton_of_surjective _ _ hq), limitGroupComparison_surjective X p r⟩
 
 /-- 次の次数で全射な塔に対する、極限のホモトピー群と群の逆極限の同型。 -/
 def limitGroupEquivOfSurjective
     (hq : ∀ n, Function.Surjective (pointedGroupMap (r + 1) (p n))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right))
       r (limitBasepoint X p) ≃* compatibleGroup X p r :=
   MulEquiv.ofBijective (limitGroupComparison X p r)
     (limitGroupComparison_bijective_of_surjective X p r hq)

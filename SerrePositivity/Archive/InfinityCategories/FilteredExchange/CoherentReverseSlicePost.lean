@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentRightSlicePost
-public import SerrePositivity.InfinityCategories.F1.Transport.PointSlicePrismReverse
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.PointSlicePrismReverse
 
 /-!
 概要：元の右 slice 後合成を、同じ正規化済みの反対左 coslice へ移す。

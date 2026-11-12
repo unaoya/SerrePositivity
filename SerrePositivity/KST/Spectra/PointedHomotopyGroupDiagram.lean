@@ -31,8 +31,8 @@ variable {J : Type v} [Category.{w} J]
 使われ方：Goerss–Jardine I §7、VIII §2。余単体群の cochain 図式。 -/
 def diagram (D : J ⥤ PointedSimplicialSet.{u}) [∀ j, KanComplex (D.obj j).right] (k : ℕ) :
     J ⥤ GrpCat.{u} where
-  obj j := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (D.obj j).right k (D.obj j).basepoint)
-  map f := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := k) (D.map f).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+  obj j := GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (D.obj j).right k (D.obj j).basepoint)
+  map f := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := k) (D.map f).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
   map_id j := by
     ext a
     change pointedHomotopyMap (k + 1) (D.map (𝟙 j)) a = a
@@ -52,7 +52,7 @@ def diagram (D : J ⥤ PointedSimplicialSet.{u}) [∀ j, KanComplex (D.obj j).ri
 def diagramMap {D E : J ⥤ PointedSimplicialSet.{u}}
     [∀ j, KanComplex (D.obj j).right] [∀ j, KanComplex (E.obj j).right]
     (τ : D ⟶ E) (k : ℕ) : diagram D k ⟶ diagram E k where
-  app j := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := k) (τ.app j).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+  app j := GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := k) (τ.app j).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
   naturality i j f := by
     ext a
     change pointedHomotopyMap (k + 1) (τ.app j) (pointedHomotopyMap (k + 1) (D.map f) a) =
@@ -70,7 +70,7 @@ def diagramIso {D E : J ⥤ PointedSimplicialSet.{u}}
     (fun j ↦
       let ej : (D.obj j).right ≅ (E.obj j).right := PointedSimplicialSet.forget.mapIso (e.app j)
       MulEquiv.toGrpIso (X := (diagram D k).obj j) (Y := (diagram E k).obj j)
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso k ej (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (e.app j).hom)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso k ej (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (e.app j).hom)))
     (fun f ↦ (diagramMap e.hom k).naturality f)
 
 end

@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedTotalizationBousfieldKan
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedTotalization
 noncomputable section
@@ -33,12 +33,12 @@ lemma bousfieldKan_kanComplex (X : CosimplicialObject PointedSimplicialSet.{u})
 lemma weightedEnd_kanComplex (X : CosimplicialObject PointedSimplicialSet.{u})
     (hX : reedyRight simplex modelCategoryQuillen.J.rlp
       (terminal.from (X ⋙ PointedSimplicialSet.forget))) :
-    KanComplex (PointedWeightedEnd.obj (bousfieldKanWeight _) (AsSmall.down ⋙ X)).right := by
-  let : KanComplex (weightedSections (bousfieldKanWeight _)
+    KanComplex (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).right := by
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _)
       ((AsSmall.down ⋙ X) ⋙ PointedSimplicialSet.forget)) :=
     bousfieldKan_kanComplex X hX
-  exact kanComplex_of_iso
-    (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).symm
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso
+    (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).symm
 
 /-- 基点を保存する通常 Tot の BK 比較は全基点 π 同型。 -/
 lemma bousfieldKanComparison_piIsomorphism
@@ -48,7 +48,7 @@ lemma bousfieldKanComparison_piIsomorphism
     letI := kanComplex X
       ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI := bousfieldKan_kanComplex X hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (bousfieldKanComparison X).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (bousfieldKanComparison X).right := by
   exact CosimplicialTotalization.bousfieldKanComparison_piIsomorphism
     (X ⋙ PointedSimplicialSet.forget) hX
 
@@ -60,18 +60,18 @@ lemma weightedEndComparison_piIsomorphism
     letI := kanComplex X
       ((CosimplicialHornFibration.terminal_iff _).mp hX)
     letI := weightedEnd_kanComplex X hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedEndComparison X).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (weightedEndComparison X).right := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
-  let : KanComplex (weightedSections (bousfieldKanWeight _)
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _)
       ((AsSmall.down ⋙ X) ⋙ PointedSimplicialSet.forget)) :=
     bousfieldKan_kanComplex X hX
   let := weightedEnd_kanComplex X hX
   let := bousfieldKan_kanComplex X hX
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((bousfieldKanComparison X).right ≫
-    (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).inv)
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((bousfieldKanComparison X).right ≫
+    (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).inv)
   exact (bousfieldKanComparison_piIsomorphism X hX).comp
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).symm)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).symm)
 
 end
 end SerrePositivity.KST.Spectra.PointedTotalization

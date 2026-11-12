@@ -26,15 +26,15 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。微分の次数移動で生じる負符号。 -/
 theorem coefficientDifferential_loopPositive (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (a : coefficientGroup K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n (r + 1))
+    (a : coefficientGroup K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n (r + 1))
     (t : K.nonDegenerate (n + 1 + 1)) :
     coefficientDifferential K Y n (r + 1)
         (fun s ↦ loopPositiveHomotopyEquiv Y (n + 1 + (r + 1)) (a s)) t =
     (loopPositiveHomotopyEquiv Y (n + 1 + 1 + r)
-      (coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a t))⁻¹ := by
-  let x := (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n (r + 1)).symm a
-  have hx : stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n (r + 1) x = a :=
-    (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n (r + 1)).apply_symm_apply a
+      (coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a t))⁻¹ := by
+  let x := (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n (r + 1)).symm a
+  have hx : stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n (r + 1) x = a :=
+    (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n (r + 1)).apply_symm_apply a
   have hin : (fun s ↦ loopPositiveHomotopyEquiv Y (n + 1 + (r + 1)) (a s)) =
       stageFiberCoefficientEquiv K Y n (r + 2)
         (stageFiberLoopPositiveEquiv K Y n (r + 1) x) := by
@@ -44,9 +44,9 @@ theorem coefficientDifferential_loopPositive (K : SSet.{u})
   have h := congrArg (fun z ↦ stageFiberCoefficientEquiv K Y (n + 1) (r + 1) z t)
     (stageDifferential_loopPositive K Y n r x)
   rw [stageFiberCoefficientEquiv_loopPositive, map_inv, Pi.inv_apply] at h
-  have hout : coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a =
-      stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (n + 1) r
-        (UnbasedPointedMapping.stageDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r x) := by
+  have hout : coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a =
+      stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (n + 1) r
+        (UnbasedPointedMapping.stageDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r x) := by
     rw [← hx, stageFiberCoefficientEquiv_differential]
   rw [← hout] at h
   simpa only [inv_inv] using (congrArg Inv.inv h).symm

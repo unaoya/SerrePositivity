@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.RelativeFlagVertexRecovery
-public import SerrePositivity.InfinityCategories.F1.Categories.CoreEquivalence
-public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.CoreEquivalence
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EquivalenceStability
 
 /-!
 概要：相対旗の指定頂点が像に入る全部分圏を、元の始域の全旗圏と同定する。
@@ -24,16 +24,16 @@ open scoped Simplicial
 使われ方：元の始域と比較する相対旗の部分。 -/
 def completionRelativeImageFlags (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) {K : SSet.{u}}
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) {K : SSet.{u}}
     (k₀ : K _⦋0⦌) : SSet.{u} :=
-  fullSubcomplexOnVertices
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices
     (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K)
     (fun v => (completionRelativeFlagVertexFunctor r ι f hf v).app (Opposite.op ⦋0⦌) k₀ ∈
       LocalizingInvariants.completionEssentialImage (((multiSEndofunctor r).obj ι).map f).val)
 
 instance completionRelativeImageFlags_quasicategory (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
     Quasicategory (completionRelativeImageFlags r ι f hf k₀) := by
   unfold completionRelativeImageFlags
   infer_instance
@@ -44,10 +44,10 @@ instance completionRelativeImageFlags_quasicategory (r : ℕ)
 使われ方：始域の全旗圏との同値の順方向。 -/
 def completionSourceImageFlagMap (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
     (ihom K).obj (((multiSEndofunctor r).obj ι).obj X).carrier ⟶
       completionRelativeImageFlags r ι f hf k₀ :=
-  fullSubcomplexLift _ (multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K)
     (fun s => completionSourceFlagVertexIso_image r ι f hf s _ (Iso.refl _) k₀)
 
 /-- 概要：始域の旗から指定像部分への元の射は充満忠実。
@@ -56,9 +56,9 @@ def completionSourceImageFlagMap (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ
 使われ方：始域側の旗圏同値の局所条件。 -/
 lemma completionSourceImageFlagMap_isFullyFaithful (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
-    IsFullyFaithful (completionSourceImageFlagMap r ι f hf k₀) := by
-  apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) {K : SSet.{u}} (k₀ : K _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (completionSourceImageFlagMap r ι f hf k₀) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
   exact completionSourceToRelativeFlags_isFullyFaithful r ι f hf K
 
 /-- 概要：連結なパラメータでは指定像部分の全ての旗を元の始域から回収できる。
@@ -67,19 +67,19 @@ lemma completionSourceImageFlagMap_isFullyFaithful (r : ℕ)
 使われ方：始域側の旗圏同値の大域条件。 -/
 lemma completionSourceImageFlagMap_isEssentiallySurjective (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected] (k₀ : K _⦋0⦌) :
-    IsEssentiallySurjective (completionSourceImageFlagMap r ι f hf k₀) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (completionSourceImageFlagMap r ι f hf k₀) := by
   intro v
   obtain ⟨s, ⟨e⟩⟩ := exists_completionSourceFlagVertexIso r ι f hf v.val k₀
-    (fullSubcomplexOnVertices_vertex v)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v)
   let I : completionRelativeImageFlags r ι f hf k₀ ⟶
       suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K :=
-    (fullSubcomplexOnVertices _ (fun v =>
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (fun v =>
       (completionRelativeFlagVertexFunctor r ι f hf v).app (Opposite.op ⦋0⦌) k₀ ∈
         LocalizingInvariants.completionEssentialImage
           (((multiSEndofunctor r).obj ι).map f).val)).ι
-  have hI : IsFullyFaithful I := isFullyFaithful_fullSubcomplexOnVertices_ι _ _
+  have hI : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful I := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _
   exact ⟨s, ⟨hI.preimageVertexIso e⟩⟩
 
 /-- 概要：連結パラメータの相対旗の指定像部分は元の始域の全旗圏と同値。
@@ -88,11 +88,11 @@ lemma completionSourceImageFlagMap_isEssentiallySurjective (r : ℕ)
 使われ方：相対 S• の始域側の同定。 -/
 def completionRelativeImageFlagEquivalence (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected] (k₀ : K _⦋0⦌) :
-    QCatEquivalence ((ihom K).obj (((multiSEndofunctor r).obj ι).obj X).carrier)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence ((ihom K).obj (((multiSEndofunctor r).obj ι).obj X).carrier)
       (completionRelativeImageFlags r ι f hf k₀) :=
-  qCatEquivalenceOfFullyFaithfulEssentiallySurjective
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.qCatEquivalenceOfFullyFaithfulEssentiallySurjective
     (completionSourceImageFlagMap r ι f hf k₀)
     (completionSourceImageFlagMap_isFullyFaithful r ι f hf k₀)
     (completionSourceImageFlagMap_isEssentiallySurjective r ι f hf k₀)
@@ -103,9 +103,9 @@ def completionRelativeImageFlagEquivalence (r : ℕ)
 使われ方：始域側の S 構成を比較に適用する入口。 -/
 instance completionRelativeImageFlags_isStable (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected] (k₀ : K _⦋0⦌) :
-    IsStable (completionRelativeImageFlags r ι f hf k₀) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (completionRelativeImageFlags r ι f hf k₀) :=
   (completionRelativeImageFlagEquivalence r ι f hf k₀).isStable_iff.mp inferInstance
 
 /-- 概要：元の始域から指定像部分への core 射そのものが同値となる。
@@ -114,10 +114,10 @@ instance completionRelativeImageFlags_isStable (r : ℕ)
 使われ方：相対 S• 実現の始域側の行比較。 -/
 lemma completionSourceImageFlagMap_core_isQCatEquivalence (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected] (k₀ : K _⦋0⦌) :
-    IsQCatEquivalence (quasicategoryCoreMap (completionSourceImageFlagMap r ι f hf k₀)) :=
-  (isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (completionSourceImageFlagMap r ι f hf k₀)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective
     (completionSourceImageFlagMap r ι f hf k₀)
     (completionSourceImageFlagMap_isFullyFaithful r ι f hf k₀)
     (completionSourceImageFlagMap_isEssentiallySurjective r ι f hf k₀)).core

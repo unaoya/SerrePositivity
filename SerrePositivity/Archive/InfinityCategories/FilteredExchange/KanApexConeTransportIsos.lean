@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanApexConeTransportLeg
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanApexConeTransportLeg
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeComparisonNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeConstantDiagramComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeConstantDiagramEdges

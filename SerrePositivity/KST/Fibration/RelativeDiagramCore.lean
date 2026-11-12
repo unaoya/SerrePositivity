@@ -20,33 +20,33 @@ namespace SerrePositivity.KST.Fibration
 /-- 図式の core は成分ごとの弱同値の部分複体に含まれる。 -/
 def relativeDiagramCoreInclusion {B C X : SSet.{u}} {J : Type v}
     (q : B ⟶ C) (ev : J → (X ⟶ B)) :
-    (quasicategoryCore X : SSet.{u}) ⟶ (relativeDiagram q ev : SSet.{u}) :=
-  Subcomplex.lift (quasicategoryCore X).ι (by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X : SSet.{u}) ⟶ (relativeDiagram q ev : SSet.{u}) :=
+  Subcomplex.lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X).ι (by
     rintro n _ ⟨s, rfl⟩ j
-    exact ((quasicategoryCoreMap (ev j ≫ q)).app n s).property)
+    exact ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (ev j ≫ q)).app n s).property)
 
 /-- core 包含は周囲への実包含を回収する。 -/
 lemma relativeDiagramCoreInclusion_ι {B C X : SSet.{u}} {J : Type v}
     (q : B ⟶ C) (ev : J → (X ⟶ B)) :
     relativeDiagramCoreInclusion q ev ≫ (relativeDiagram q ev).ι =
-      (quasicategoryCore X).ι := rfl
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X).ι := rfl
 
 /-- core からの包含は、評価と可換な再添字射に関して自然。 -/
 lemma relativeDiagramCoreInclusion_naturality {B C X Y : SSet.{u}}
     {J K : Type v} (q : B ⟶ C) (evX : J → (X ⟶ B)) (evY : K → (Y ⟶ B))
     (f : X ⟶ Y) (r : K → J) (hf : ∀ k, f ≫ evY k = evX (r k)) :
     relativeDiagramCoreInclusion q evX ≫ relativeDiagramMap q evX evY f r hf =
-      quasicategoryCoreMap f ≫ relativeDiagramCoreInclusion q evY := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap f ≫ relativeDiagramCoreInclusion q evY := by
   apply (cancel_mono (relativeDiagram q evY).ι).1
   rw [Category.assoc, relativeDiagramMap_ι, ← Category.assoc,
     relativeDiagramCoreInclusion_ι, Category.assoc, relativeDiagramCoreInclusion_ι,
-    quasicategoryCoreMap_ι]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_ι]
 
 /-- 同じ包含の二つの実 Verdier 商は全高次単体を含めて同じ相対図式を与える。 -/
 lemma relativeDiagram_eq_of_verdier
-    {A B C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B}
-    {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B D}
-    (hq : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (hp : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i p)
+    {A B C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B}
+    {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B D}
+    (hq : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (hp : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i p)
     {X : SSet.{u}} {J : Type v} (ev : J → (X ⟶ B.obj)) :
     relativeDiagram q.hom ev = relativeDiagram p.hom ev := by
   ext n s

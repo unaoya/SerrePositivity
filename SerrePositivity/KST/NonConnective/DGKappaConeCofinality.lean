@@ -27,8 +27,8 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：同じ κ-compact dg 模型を選び直さない。
 使われ方：完備化前の連結 fibration の中央 K 値。 -/
 def dgKappaConeYonedaSource : StableModel.{max (u + 1) v} where
-  carrier := dgNerve R (DGUniverseLift.{max (u + 1) v, max (u + 1) v} (DGKappaCone R D I))
-  stable := dgUniverseLiftNerve_isStable R (DGKappaCone R D I)
+  carrier := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{max (u + 1) v, max (u + 1) v} (DGKappaCone R D I))
+  stable := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftNerve_isStable R (DGKappaCone R D I)
 
 /-- 概要：同じ実 cone の元の dg Yoneda を同じ実 Perf 値への完全射として保持する。
 方針：D 正本の Yoneda 完全性を S• 保存条件へ移す。
@@ -36,8 +36,8 @@ def dgKappaConeYonedaSource : StableModel.{max (u + 1) v} where
 使われ方：同じ cone 上の共終性命題への実代入。 -/
 def dgKappaConeYonedaStableMap : dgKappaConeYonedaSource R D I ⟶
     perfectDGStableModel R (DGKappaCone R D I) Set.univ := by
-  let := dgPerfectYonedaInfinity_isExactFunctor R (DGKappaCone R D I)
-  exact ⟨dgPerfectYonedaInfinity R (DGKappaCone R D I),
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYonedaInfinity_isExactFunctor R (DGKappaCone R D I)
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYonedaInfinity R (DGKappaCone R D I),
     preservesCofiberData_of_isExactFunctor _⟩
 
 /-- 概要：元の実 Perf 評価を介し、同じ cone の native Perf K の全整数群も自明。
@@ -63,7 +63,7 @@ theorem dgKappaConeNativePerfectK_subsingleton (Z : DGKappaZeroInput R D I) (j :
       (Subsingleton.elim x' y')
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-  F2.Idempotent.IsIdempotentCompletion f.val →
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 
@@ -77,7 +77,7 @@ theorem dgKappaConeNativeK_subsingleton (Z : DGKappaZeroInput R D I) (j : ℤ) :
       (kOmegaSpectrum (dgKappaConeYonedaSource R D I)) j) := by
   let := dgKappaConeNativePerfectK_subsingleton R D I Z j
   have hc := hcofinal _ _ (dgKappaConeYonedaStableMap R D I)
-    (dgPerfectYonedaInfinity_isIdempotentCompletion R (DGKappaCone R D I))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYonedaInfinity_isIdempotentCompletion R (DGKappaCone R D I))
   by_cases hz : j = 0
   · subst j
     exact hc.2.subsingleton

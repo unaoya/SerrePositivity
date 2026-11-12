@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationNa
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -32,17 +32,17 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "αs" => dgStrictNatTransPostcomp (α) (S)
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
-local notation "δs" => dgStrictNatTransPostcomp (δ) (S)
+local notation "αs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (α) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
+local notation "δs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)
 
 /-- 概要：元入力比較と実 connecting の全合成等号は逆 shift 後も成立。
 方針：元全厳密合成の後合成保存を使用する。
 規約：同じ指定三辺。使われ方：実逆回転 cone の元長辺回収。 -/
 lemma dgIdentityHomGluingShiftedConnecting_input :
-    dgStrictNatTransComp (αs) (βs) = (δs) := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (αs) (βs) = (δs) := by
   exact (dgStrictCompositionPostcomp (α) (β) (S)).trans
-    (congrArg (fun t => dgStrictNatTransPostcomp t (S))
+    (congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp t (S))
       (dgIdentityHomGluingConeConnectingComparison_input R C F G a h))
 
 /-- 概要：元指定入力比較の逆 shift の閉成分は K(C) 同値。
@@ -68,7 +68,7 @@ def dgIdentityHomGluingInverseRotationModuleSource : DGFunctor R P (RightModule 
 規約：元全関手の等号。使われ方：元実逆回転入力比較の始域回収。 -/
 lemma dgIdentityHomGluingShiftedConnectingCone_source :
     dgModuleNaturalConeFunctor R C ((A).comp (S)) ((FS).comp (S))
-      (dgStrictNatTransComp (αs) (βs)) =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (αs) (βs)) =
         dgModuleNaturalInverseRotationSource R C (F.comp (J)) (G.comp (J)) (η) :=
   congrArg (dgModuleNaturalConeFunctor R C ((A).comp (S)) ((FS).comp (S)))
     (dgIdentityHomGluingShiftedConnecting_input R C F G a h)
@@ -78,22 +78,22 @@ lemma dgIdentityHomGluingShiftedConnectingCone_source :
 規約：同じ全比較を端点等号だけで回収する。
 使われ方：元 gluing の実逆回転射への全関手比較。 -/
 def dgIdentityHomGluingInverseRotationInputNerveComparison :
-    FunctorIso
-      (dgNerve.map (dgModuleNaturalInverseRotationSource R C (F.comp (J)) (G.comp (J)) (η)))
-      (dgNerve.map (dgIdentityHomGluingInverseRotationModuleSource R C F G a h)) :=
-  F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleNaturalInverseRotationSource R C (F.comp (J)) (G.comp (J)) (η)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingInverseRotationModuleSource R C F G a h)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     (dgModuleNaturalConePrecompositionNerveComparison R C ((A).comp (S)) ((B).comp (S))
       ((FS).comp (S)) (αs) (βs)
       (dgIdentityHomGluingShiftedConnectingInput_isIso R C F G a h))
-    (congrArg dgNerve.map (dgIdentityHomGluingShiftedConnectingCone_source R C F G a h)) rfl
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingShiftedConnectingCone_source R C F G a h)) rfl
 
 /-- 概要：元実 connecting の逆 shift cone から元第二 Yoneda 族への全比較。
 方針：同じ入力全比較の逆と元三因子の全実逆回転比較を合成する。
 規約：全比較の元指定成分を保持する。
 使われ方：元実 gluing 逆回転 cone と指定商合成の全比較。 -/
 def dgIdentityHomGluingInverseRotationModuleNerveComparison :
-    FunctorIso (dgNerve.map (dgIdentityHomGluingInverseRotationModuleSource R C F G a h))
-      (dgNerve.map (G.comp (J))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingInverseRotationModuleSource R C F G a h))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (G.comp (J))) :=
   (dgIdentityHomGluingInverseRotationInputNerveComparison R C F G a h).symm.trans
     (dgModuleNaturalInverseRotationNerveComparison R C (F.comp (J)) (G.comp (J)) (η))
 end SerrePositivity.KST.SConstruction

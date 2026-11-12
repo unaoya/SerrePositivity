@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A]
 def dgNuKZeroMap {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
     TriangulatedK0 (hoFunctor.obj (dgKInputStableValue A P).obj) →+
       TriangulatedK0 (hoFunctor.obj (dgKInputStableValue A Q).obj) :=
-  stableKZeroMap (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from
+  stableKZeroMap (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from
     dgKInputNuMap A f)
 
 /-- この準同型は、固定 ν の辺と同定された元の dg 延長完全関手の作用そのもの。 -/
@@ -35,9 +35,9 @@ theorem dgNuKZeroMap_eq {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :
 /-- 同じ厳密 dg 列の ν 像が Verdier 列なら、元の商辺の三角圏 K₀ 作用は全射。 -/
 theorem dgNuKZeroMap_surjective_of_verdier
     {P Q R : PerfDGInput.{u, v} A} (f : P ⟶ Q) (g : Q ⟶ R)
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
-      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
-      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g)) :
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence
+      (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
+      (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g)) :
     Function.Surjective (dgNuKZeroMap A g) :=
   verdierKZeroMap_surjective h
 

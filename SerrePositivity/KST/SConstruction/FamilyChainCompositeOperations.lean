@@ -33,7 +33,7 @@ lemma familyChainCompositeClass_append {U E : SSet.{u}} {f g h : U ⟶ E}
 lemma familyChainCompositeClass_single {U E : SSet.{u}} {f g : U ⟶ E}
     (H : SSet.Homotopy f g) :
     familyChainCompositeClass (familyHomotopyChainSingle H) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) :=
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) :=
   Category.comp_id _
 
 /-- 全区間の射影は、内部 Hom の同じ後合成の関手の作用。 -/
@@ -48,7 +48,7 @@ lemma familyChainCompositeClass_map {U E B : SSet.{u}} {f g : U ⟶ E}
       rfl
   | cons H tail ih =>
       change _ ≫ familyChainCompositeClass (familyHomotopyChainMap tail p) = _
-      rw [ih, functorHomotopyPostcomp_hom, ← CategoryTheory.Functor.map_comp]
+      rw [ih, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, ← CategoryTheory.Functor.map_comp]
       rfl
 
 /-- 全区間のパラメータ制限は、内部 Hom の同じ前合成の関手の作用。 -/
@@ -63,7 +63,7 @@ lemma familyChainCompositeClass_precomp {T U E : SSet.{u}} (j : T ⟶ U) {f g : 
       rfl
   | cons H tail ih =>
       change _ ≫ familyChainCompositeClass (familyHomotopyChainPrecomp j tail) = _
-      rw [ih, functorHomotopyPrecomp_hom, ← CategoryTheory.Functor.map_comp]
+      rw [ih, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp_hom, ← CategoryTheory.Functor.map_comp]
       rfl
 
 end SerrePositivity.KST.SConstruction

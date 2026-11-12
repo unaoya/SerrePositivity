@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashMonomorphisms
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashMonomorphisms
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 public import SerrePositivity.KST.Spectra.PullbackKanSequence
 
@@ -35,7 +35,7 @@ def pointedPullbackToProduct {E X B : PointedSimplicialSet.{u}} (f : E ⟶ B) (g
 instance pointedPullbackToProduct_mono {E X B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (g : X ⟶ B) : Mono (pointedPullbackToProduct f g).right := ⟨by
   intro Z a b h
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback f g).hom_ext
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback f g).hom_ext
   · have h' := congrArg (fun k ↦ k ≫ (PointedObject.prodFst E X).right) h
     have he := congrArg Under.Hom.right
       (PointedObject.prodLift_fst (pullback.fst f g) (pullback.snd f g))

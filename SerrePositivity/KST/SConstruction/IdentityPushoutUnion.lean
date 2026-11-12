@@ -95,7 +95,7 @@ lemma identityUnionSquare_on_family (C : SSet.{u}) (b : Bool) (n : SimplexCatego
 方針：各像の元に分け、前合成の合成則を適用する。
 規約：部分複体の包含そのもの。使われ方：相対切断の可換条件。 -/
 lemma identityUnionSquare_span (C : SSet.{u}) :
-    identityUnionSquare C ≫ (pre spanSquareBoundary).app C = (identitySpanSubcomplex C).ι := by
+    identityUnionSquare C ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C = (identitySpanSubcomplex C).ι := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -105,28 +105,28 @@ lemma identityUnionSquare_span (C : SSet.{u}) :
     · exact ⟨false, g, hg.symm⟩
     · exact ⟨true, g, hg.symm⟩
   obtain ⟨b, g, hg⟩ := hv
-  change ((pre spanSquareBoundary).app C).app n ((identityUnionSquare C).app n v) = v.val
+  change ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C).app n ((identityUnionSquare C).app n v) = v.val
   rw [identityUnionSquare_on_family C b n g v hg, hg]
   exact comp_apply_eq _ _ _ (show
-    (pre (identityPushoutShape b)).app C ≫ (pre spanSquareBoundary).app C =
+    (pre (identityPushoutShape b)).app C ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary).app C =
       identitySpanFamily b C by rw [← NatTrans.comp_app, ← pre_map]; rfl) n g
 
 /-- 概要：どちらかの枝が恒等である span の全ての族の標準押し出し。
 方針：和の上の復元の頂点を各像に分け、標準四角形の押し出し性を使う。
 規約：両向きの条件を同時に満たす。使われ方：関手的な押し出しの同時正規化。 -/
 def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
-    (identitySpanSubcomplex C : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
-  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex (identityUnionSquare C) (by
+    (identitySpanSubcomplex C : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutDiagrams C :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsPushoutDiagramVertex (identityUnionSquare C) (by
     intro v
     have hv : ∃ b g, v.val = (identitySpanFamily b C).app (Opposite.op ⦋0⦌) g := by
       rcases v.property with ⟨g, hg⟩ | ⟨g, hg⟩
       · exact ⟨false, g, hg.symm⟩
       · exact ⟨true, g, hg.symm⟩
     obtain ⟨b, g, hg⟩ := hv
-    obtain ⟨G, rfl⟩ := (functorVertexEquiv (Δ[1] : SSet.{u}) C).surjective g
+    obtain ⟨G, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[1] : SSet.{u}) C).surjective g
     rw [identityUnionSquare_on_family C b (Opposite.op ⦋0⦌) _ v hg]
-    change IsPushoutSquare ((functorVertexEquiv _ C).symm
-      (functorVertexEquiv _ C (identityPushoutShape b ≫ G)))
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (identityPushoutShape b ≫ G)))
     rw [Equiv.symm_apply_apply]
     exact identityPushoutShape_isPushout b G)
 
@@ -134,8 +134,8 @@ def identityUnionPushoutFamily (C : SSet.{u}) [Quasicategory C] :
 方針：全部分複体の包含と和の復元の式。
 規約：全単体での厳密等号。使われ方：全 span への正規化付きの切断の延長。 -/
 lemma identityUnionPushoutFamily_projection (C : SSet.{u}) [Quasicategory C] :
-    identityUnionPushoutFamily C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = (identitySpanSubcomplex C).ι := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc]
+    identityUnionPushoutFamily C ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutProjection C = (identitySpanSubcomplex C).ι := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutProjection, ← Category.assoc]
   exact identityUnionSquare_span C
 
 end SerrePositivity.KST.SConstruction

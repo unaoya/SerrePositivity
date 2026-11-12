@@ -14,8 +14,8 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の HA 右辺と豊穣順 Leibniz 則で独立に定めた、元の bead 語の境界評価。 -/
-def simplexHABeadWordBoundaryValue {n : ℕ} (s : DGNerve.SimplexData A D n) :
-    {a b : Fin (n + 1)} → {d : ℕ} → _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d →
+def simplexHABeadWordBoundaryValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) :
+    {a b : Fin (n + 1)} → {d : ℕ} → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d →
       GradedHom A (s.obj a) (s.obj b) (-(d : ℤ) + 1)
   | _, _, _, .bead I hI => serreCubeOrientationSign (I.card - 2) •
       s.rhs I _ _ (-((I.card - 2 : ℕ) : ℤ)) hI rfl rfl (by omega)
@@ -26,9 +26,9 @@ def simplexHABeadWordBoundaryValue {n : ℕ} (s : DGNerve.SimplexData A D n) :
         (simplexHABeadWordBoundaryValue s right) (by omega)
 
 /-- 元の連結語の生の値の微分は、元の豊穣順と第一因子次数の Leibniz 則を回収する。 -/
-lemma simplexHABeadWordRawValue_join_differential {n : ℕ} (s : DGNerve.SimplexData A D n)
-    {a b c : Fin (n + 1)} {p q : ℕ} (left : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b p)
-    (right : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n b c q) :
+lemma simplexHABeadWordRawValue_join_differential {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
+    {a b c : Fin (n + 1)} {p q : ℕ} (left : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b p)
+    (right : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n b c q) :
     differential A (simplexHABeadWordRawValue A s (left.join right)) =
       forward A (differential A (simplexHABeadWordRawValue A s left))
         (simplexHABeadWordRawValue A s right) (by omega) +
@@ -45,8 +45,8 @@ private lemma differential_units_smul {x y : D} {k : ℤ} (e : ℤˣ)
   simp only [Units.smul_def, map_zsmul]
 
 /-- 任意の元の native HA 単体について、全 bead 語の生の値の微分は元の境界評価。 -/
-lemma simplexHABeadWordRawValue_differential {n : ℕ} (s : DGNerve.Simplex A D n)
-    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
+lemma simplexHABeadWordRawValue_differential {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     differential A (simplexHABeadWordRawValue A s.toSimplexData word) =
       simplexHABeadWordBoundaryValue A s.toSimplexData word := by
   induction word with

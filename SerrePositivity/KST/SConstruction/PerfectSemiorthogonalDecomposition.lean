@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectVerdierSequence
-public import SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition
 
 /-! # Cat^perf の半直交分解と元の Verdier 列
 概要：同じ冪等完備安定対象間の実随伴を持つ半直交分解を、Cat^perf の列へ送る。
@@ -13,13 +13,13 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 
 /-- 同じ Cat^perf の実対象の間の、完全射・実随伴・核条件を持つ半直交分解。 -/
 abbrev PerfectSemiorthogonalDecomposition
     (a b t : perfectStableInfinity.{u} _⦋0⦌) :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Semiorthogonal.SemiorthogonalDecomposition (perfectStableObject a) (perfectStableObject b)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Semiorthogonal.SemiorthogonalDecomposition (perfectStableObject a) (perfectStableObject b)
     (perfectStableObject t)
 
 /-- 元の完全な半直交分解は、同じ商と恒等完備化による Cat^perf の列を与える。 -/
@@ -31,10 +31,10 @@ def perfectSemiorthogonalVerdierSequence
   middle_complete := perfectStableObject_isIdempotentComplete t
   right := perfectStableObject b
   completion := ⟨𝟙 (perfectStableObject b).obj,
-    isExactFunctor_id (perfectStableObject b).obj⟩
-  isCompletion := ⟨perfectStableObject_isIdempotentComplete b, isFullyFaithful_id _, by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_id (perfectStableObject b).obj⟩
+  isCompletion := ⟨perfectStableObject_isIdempotentComplete b, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_id _, by
     intro x
-    exact ⟨x, IsVertexRetractOf.refl x⟩⟩
+    exact ⟨x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl x⟩⟩
 
 /-- 半直交分解の同じ元の右射は、Cat^perf の列の射影として厳密に回収される。 -/
 lemma perfectSemiorthogonalVerdierSequence_projection

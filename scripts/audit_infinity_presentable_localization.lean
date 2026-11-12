@@ -1,4 +1,5 @@
-import SerrePositivity.InfinityCategories.F2.Presentable.Localization.All
+import SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 import Lean.Util.CollectAxioms
 
 /-!
@@ -8,17 +9,218 @@ P-d の LocalObjects/ は所有宣言の計数から除き、利用する主定�
 強飽和生成閉包・局所同値・同じ局所化関手の反転辺の一致も監査する。
 -/
 
+-- Exact images of the pre-layout imported localization owners; LocalObjects stays excluded.
+@[noinline] private def klw1LocalizationOwnedBatch0 : Array Lean.Name :=
+  #[
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCancellationFamily,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCancellationPrism,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowEndpoints,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowPushoutFamily,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowPushoutPrism,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldReflection,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldSaturation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldUniversalProperty,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CoconeFamilyVertices,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPresentationColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonSmallPresentationPieces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrowCoproducts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrowGenerators,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrows,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactCoconeFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactCoconeVertices,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactEndpoints,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactFactorizationTriangle,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactIndCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactInitialFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactOperationsIndImageCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPartialColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactTailFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexDiagrams,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexMonotonicity,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexShapes,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialExistence,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialParity,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialState,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialTriangle,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftCoconeFaces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityDiagrams,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityFaces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityShapes,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParitySubsequences,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonPrefixFactor,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundFaces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundRestriction,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundSimplexShape,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRounds,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSeedBounds,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequence,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceDiagram,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceSimplexShape,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceSliceDiagram,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSliceRestrictions,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSubsequenceEquality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorAugmentation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorDiagram,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorLeftAugmentation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorState,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceColimitIso,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePiecePresentations,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePresentationPieces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DegeneratePushoutSquare,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiscreteArrowFamilies,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DoubleConeSimplexShape,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeCosliceMappingFiber
+  ]
+
+@[noinline] private def klw1LocalizationOwnedBatch1 : Array Lean.Name :=
+  #[
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeCosliceSourceComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeSourceMappingTransport,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeTerminalMappingPoint,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EndpointCompactCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteDiscreteShapes,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowEvaluation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrows,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowsPresentable,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSource,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceAccessibleTerminal,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceArrows,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceContractibleColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceCoproducts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceEdges,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiberEquivalence,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiberPullback,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFilteredColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiniteColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceInitial,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceLocalTerminal,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePointAccessibility,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePresentable,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceProjection,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceRetractionMappingFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceRetractionSpace,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceSmallColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalCoslice,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalExtension,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalLocality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalMapping,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalPushoutFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTransport,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceUnderTarget,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedTargetIdentityTerminal,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratorCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCandidate,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImage,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageAllFiniteColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageAmbientSmallColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCancellation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCommonPresentations,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCompactCoproducts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCompactTriangles,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCoproductColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCoproducts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageEdges,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageFiniteColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageFinitePosetColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageIdentities,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedRelativePiece,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImagePresentations,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImagePushout,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageRelativePiece,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageRetracts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSmallColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSmallCoproducts,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSourceCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSpanColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageStrongSaturation
+  ]
+
+@[noinline] private def klw1LocalizationOwnedBatch2 : Array Lean.Name :=
+  #[
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleRefinement,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleTwoOfThree,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InitialTriangleNormalization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InterleavedRefinementSequence,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InvertibleArrowIso,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.MonotoneNerveCofinality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeShapeTowerGluing,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexPiece,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexPieceCofinality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexSequence,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OneConeSimplexShape,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OperationsCompactCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OperationsIndImageCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ParityDiagramComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialColimitProperty,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableIndImageCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutCosliceRestriction,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanBaseCoordinates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanMappingFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanSourceFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutTopMappingFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RefinementCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeCompactCoconeFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativePrefixPresentationFactorization,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeSmallPresentationPiece,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SeedBoundedTwoPresentationComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialCoconeExtension,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialCoconeNaturality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialPieces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationCompact,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationComparison,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallShapeLeftKanExtension,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallShapeTowerGluing,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceArrowFiber,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceCosliceColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceCosliceProjectionColimits,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceJoinCofinality,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SpanCollapse,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TerminalPrefixFilteredPresentation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleCompactCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleCompactPresentations,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleFacePartialRefinement,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleFaces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleOperationsCompactCardinals,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleOperationsIndImageCandidates,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialConditions,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialPieces,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedRefinementPresentation,
+    `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoPresentationComparison,
+    `SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll
+  ]
+
 open Lean in
 run_cmd do
   let env ← getEnv
+  let expected := klw1LocalizationOwnedBatch0 ++ klw1LocalizationOwnedBatch1 ++ klw1LocalizationOwnedBatch2
+  let owned := expected.foldl (init := ({} : NameSet)) fun acc n => acc.insert n
+  let imported := env.header.modules.foldl (init := ({} : NameSet)) fun acc entry => acc.insert entry.module
+  for mod in expected do
+    unless imported.contains mod do
+      throwError "Presentable localization: original owner not imported after layout: {mod}"
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless `SerrePositivity.InfinityCategories.F2.Presentable.Localization |>.isPrefixOf mod do
-      continue
-    if `SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects |>.isPrefixOf mod then
-      continue
+    unless owned.contains mod do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "Presentable localization: unexpected axioms in {name}: {axioms}"
@@ -29,623 +231,623 @@ run_cmd do
 open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
-open F2.Presentable F2.Presentable.Localization HomotopyLimits
+
 
 universe u v
 
 -- 任意の生成添字・任意の元の対象・任意の単体集合パラメータを保持する独立例。
 example {X : SSet.{v}} [Quasicategory X] {I : Type u}
-    (edges : I → X _⦋1⦌) (z : X _⦋0⦌) (hz : IsLocalObject (Set.range edges) z)
+    (edges : I → X _⦋1⦌) (z : X _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject (Set.range edges) z)
     (i : I) (A : SSet.{v}) :
-    Function.Bijective (fun α : ConstantFunctorHom A X (X.δ 0 (edges i)) z ↦
-      constantFunctorHomMap A
-        (Truncated.HomotopyCategory.homMk (edgeOfSimplex (edges i))) ≫ α) :=
-  (isLocalObject_range_iff_constantHom_bijective edges z).mp hz i A
+    Function.Bijective (fun α : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom A X (X.δ 0 (edges i)) z ↦
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap A
+        (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (edges i))) ≫ α) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.isLocalObject_range_iff_constantHom_bijective edges z).mp hz i A
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (σ : Cardinal.{u}) :
     ∃ μ : Cardinal.{u}, μ.IsRegular ∧ σ < μ ∧
-      ∀ i, F2.Compact.IsKappaCompact.{u, u + 1} μ (C.δ 1 (edges i)) ∧
-        F2.Compact.IsKappaCompact.{u, u + 1} μ (C.δ 0 (edges i)) :=
-  exists_regular_compactEndpoints hC edges σ
+      ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.{u, u + 1} μ (C.δ 1 (edges i)) ∧
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.{u, u + 1} μ (C.δ 0 (edges i)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_regular_compactEndpoints hC edges σ
 
-#check @isLocalObject_range_iff
-#check @isLocalObject_range_iff_constantHom_bijective
-#check @localEquivalenceHom_range_iff_constantHom_bijective
-#check @localObjects_antitone_of_generators_localEquivalences
-#check @localEquivalences_subset_of_generators_localEquivalences
-#check @localEquivalences_eq_iff_generators
-#check @localEquivalences_eq_iff_localObjects
-#check @exists_regular_compactEndpoints
-#check @generatedEdges
-#check @generatedArrowCategory
-#check @generatedArrowInclusion_isFullyFaithful
-#check @generatedEdges_smallGeneration
-#check @generatedArrow_mem_iff_vertexIso
-#check @generatedArrow_colimit_mem
-#check @generatedArrow_hasSmallColimits
-#check @generatedArrowInclusion_preservesSmallColimits
-#check @generatedArrow_isKappaCompact_of_image
-#check @compactGeneratedArrows
-#check @compactGeneratedArrowVertex
-#check @compactGeneratedArrowInclusion_isFullyFaithful
-#check @exists_smallCompactGeneratedArrowModel
-#check @compactGeneratedArrowInclusion_compact
-#check @exists_smallCompactArrowCandidates
-#check @generatorArrowVertex_edge
-#check @arrow_isPresentable
-#check @exists_regular_generatorArrowCardinal
-#check @exists_generatorContainingCompactArrowCandidates
-#check @exists_generatorContainingIndComparison
-#check @generatedSourceCategory
-#check @generatedSourceTarget
-#check @generatedSourceInclusion_isFullyFaithful
-#check @generatedSourceLeg
-#check @generatedSourceLeg_mem
-#check @sequentialPiece_exists_le
-#check @sequentialPiece_isFiltered
-#check @sequentialPieceSequence_final
-#check @sequentialPiece_hasCardinalLT
-#check @compactSource_coslice_factorization
-#check @compactInitial_leftFibration_factorization
-#check @compactDiagram_cocone_factorization
-#check @compactSource_factorization_triangle
-#check @generatedArrowInclusion_equivalenceLifting
-#check @generatedArrowEvaluation_equivalenceLifting
-#check @generatedArrowEvaluation_preservesSmallColimits
-#check @generatedSourceCondition_iff_vertexIso
-#check @generatedSourceInclusion_equivalenceLifting
-#check @generatedSourceTarget_equivalenceLifting
-#check @generatedSourceTarget_innerFibration
-#check @generatedSource_lift_generatedEdge
-#check @generatedSource_terminal_generatedEdge_retraction
-#check @generatedSource_terminal_generatedEdge_isSplitMono
-#check @initialInclusion_nerve_isRightCofinal
-#check @sourceJoinInr_nerve_isRightCofinal
-#check @sourceJoinInr_ulift_nerve_isRightCofinal
-#check @iteratedSliceUnderIso_sourceRightRestriction
-#check @sourceCoslice_isColimitCone_iff_projection
-#check @generatedSource_colimit_mem_of_cofinal
-#check @generatedSource_nerve_colimit_mem
-#check @generatedSource_hasNerveColimit
-#check @generatedSource_hasPreservedFiniteColimit
-#check @generatedSource_hasFiniteColimits
-#check @generatedSourceInclusion_preservesFiniteColimit
-#check @generatedSource_finite_colimit_mem
-#check @discreteNerve_hasDimensionLT_one
-#check @discreteNerve_finite
-#check @uliftDiscreteNerve_finite
-#check @generatedSource_coproduct_colimit_mem
-#check @generatedSource_hasPreservedCoproduct
-#check @generatedSource_hasSmallCoproducts
-#check @generatedSourceInclusion_preservesSmallCoproducts
-#check @generatedSourcePointPullbackEquivalence
-#check @generatedSourcePointPullbackEquivalence_fst
-#check @generatedSource_hasSmallKappaFilteredColimits
-#check @generatedSourceArrows_isKappaAccessibleFunctor
-#check @indArrowImageInclusion_equivalenceLifting
-#check @indArrowImageEvaluation_equivalenceLifting
-#check @indArrowImageEvaluation_isKappaAccessibleFunctor
-#check @exists_indArrowImageSource_compactCandidate
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.isLocalObject_range_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.isLocalObject_range_iff_constantHom_bijective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.localEquivalenceHom_range_iff_constantHom_bijective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.localObjects_antitone_of_generators_localEquivalences
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.localEquivalences_subset_of_generators_localEquivalences
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.localEquivalences_eq_iff_generators
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators.localEquivalences_eq_iff_localObjects
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_regular_compactEndpoints
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowInclusion_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedEdges_smallGeneration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrow_mem_iff_vertexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrow_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrow_hasSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowInclusion_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrow_isKappaCompact_of_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrows
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrowVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrowInclusion_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallCompactGeneratedArrowModel
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrowInclusion_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallCompactArrowCandidates
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatorArrowVertex_edge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrow_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_regular_generatorArrowCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatorContainingCompactArrowCandidates
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatorContainingIndComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceCategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceTarget
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceInclusion_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceLeg
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceLeg_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialPiece_exists_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialPiece_isFiltered
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialPieceSequence_final
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialPiece_hasCardinalLT
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSource_coslice_factorization
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactInitial_leftFibration_factorization
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactDiagram_cocone_factorization
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSource_factorization_triangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowInclusion_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowEvaluation_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowEvaluation_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceCondition_iff_vertexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceInclusion_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceTarget_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceTarget_innerFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_lift_generatedEdge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_generatedEdge_retraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_generatedEdge_isSplitMono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.initialInclusion_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceJoinInr_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceJoinInr_ulift_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.iteratedSliceUnderIso_sourceRightRestriction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_isColimitCone_iff_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_colimit_mem_of_cofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_nerve_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasNerveColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasPreservedFiniteColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasFiniteColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceInclusion_preservesFiniteColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_finite_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteNerve_hasDimensionLT_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteNerve_finite
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftDiscreteNerve_finite
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_coproduct_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasPreservedCoproduct
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasSmallCoproducts
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceInclusion_preservesSmallCoproducts
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourcePointPullbackEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourcePointPullbackEquivalence_fst
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasSmallKappaFilteredColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrows_isKappaAccessibleFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEvaluation_equivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEvaluation_isKappaAccessibleFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_indArrowImageSource_compactCandidate
 
-#check @indArrowImageFactor_isQCatEquivalence
-#check @indArrowImageVertex_mem
-#check @indArrowImage_isKappaAccessible
-#check @indArrowImage_colimit_mem
-#check @indArrowImageInclusion_isFullyFaithful
-#check @indArrowImageInclusion_isKappaAccessible
-#check @exists_generatorContainingAccessibleIndImage
-#check @exists_compactCoveringAccessibleIndImage
-#check @sourceCoslice_hasColimit_iff
-#check @sourceCoslice_hasSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageFactor_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageVertex_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_isKappaAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_isKappaAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatorContainingAccessibleIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactCoveringAccessibleIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_hasColimit_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_hasSmallColimits
 
-#check @smallDiagramCoslice_hasSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallDiagramCoslice_hasSmallColimits
 
-#check @compactGeneratedArrow_smallPosetColimit
-#check @compactGeneratedArrows_hasSmallPosetColimits
-#check @indArrowImage_smallCompactPartialColimit
-#check @indArrowImageVertex_hasPresentation
-#check @indArrowImageVertex_hasCompactPresentation
-#check @exists_ambientCompactIndComparison
-#check @exists_regular_refinementArrowCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrow_smallPosetColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactGeneratedArrows_hasSmallPosetColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_smallCompactPartialColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageVertex_hasPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageVertex_hasCompactPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_ambientCompactIndComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_regular_refinementArrowCardinal
 
-#check @exists_endpointCompactArrowCardinal
-#check @generatedSourceEdge_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_endpointCompactArrowCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceEdge_mem
 
-#check @arrowVertexEdge_source
-#check @arrowVertexEdge_target
-#check @functorVertexCocone_apex
-#check @kanCoconeFamilyAt_diagram
-#check @indArrowImage_finitePoset_colimit_mem
-#check @indArrowImage_finitePoset_colimit_mem_of_image
-#check @indArrowImage_hasFinitePosetColimits
-#check @indArrowImageInclusion_preservesFinitePosetColimits
-#check @indArrowImage_span_colimit_mem
-#check @indArrowImage_hasSpanColimit
-#check @indArrowImageInclusion_preservesSpanColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowVertexEdge_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowVertexEdge_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorVertexCocone_apex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanCoconeFamilyAt_diagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_finitePoset_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_finitePoset_colimit_mem_of_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasFinitePosetColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_preservesFinitePosetColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_span_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasSpanColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_preservesSpanColimit
 
-#check @exists_operationsCompactArrowCardinal
-#check @identityArrow_mem_generatedEdges
-#check @indArrowImage_identityArrow
-#check @spanRightCollapse_isRightCofinal
-#check @spanRightCollapse_left
-#check @spanRightCollapse_right
-#check @spanRightCollapse_edgeTarget_isColimit
-#check @secondProjection_isPushoutSquare
-#check @arrowPushoutPrism_zero
-#check @arrowPushoutPrism_one
-#check @arrowPushoutFamily_isPushout
-#check @arrowPushoutFamily_vertex_top
-#check @indArrowImage_pushout_bottom_top
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_operationsCompactArrowCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.identityArrow_mem_generatedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_identityArrow
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spanRightCollapse_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spanRightCollapse_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spanRightCollapse_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spanRightCollapse_edgeTarget_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.secondProjection_isPushoutSquare
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowPushoutPrism_zero
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowPushoutPrism_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowPushoutFamily_isPushout
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowPushoutFamily_vertex_top
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_pushout_bottom_top
 
-#check @invertibleArrow_sourceIdentityIso
-#check @indArrowImageEdges
-#check @indArrowImageEdges_arrowVertex_iff
-#check @indArrowImageEdges_subset_generatedEdges
-#check @indArrowImageEdges_mem_of_isInvertible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.invertibleArrow_sourceIdentityIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_arrowVertex_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_subset_generatedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_mem_of_isInvertible
 
-#check @generatedSourceIdentity_leg_mem
-#check @generatedSourceIdentity
-#check @generatedSourceIdentity_isInitial
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceIdentity_leg_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceIdentity
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceIdentity_isInitial
 
-#check @sourceCosliceArrowFamily
-#check @sourceCosliceArrowFamily_vertex
-#check @sourceCosliceArrowFamily_target
-#check @generatedSourceArrows
-#check @generatedSourceArrows_inclusion
-#check @generatedSourceArrows_target
-#check @indArrowImageFamily_hasCommonCompactPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFamily_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFamily_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrows
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrows_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrows_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageFamily_hasCommonCompactPresentation
 
-#check @discreteArrowFamilyUncurry
-#check @discreteArrowFamily
-#check @discreteArrowFamily_evaluate
-#check @discreteArrowFamily_precomp
-#check @discreteArrowFamilyCocone
-#check @discreteArrowFamilyCocone_isColimit
-#check @discreteArrowFamilyCocone_apex_evaluate
-#check @indArrowImage_smallCoproduct_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamilyUncurry
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamily_evaluate
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamily_precomp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamilyCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamilyCocone_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteArrowFamilyCocone_apex_evaluate
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_smallCoproduct_colimit_mem
 
-#check @indArrowImage_coproduct_colimit_mem_of_compactRows
-#check @compactArrowCoproduct_finitePartialDiagram
-#check @indArrowImage_compactCoproduct_colimit_mem
-#check @indArrowImage_coproduct_colimit_mem
-#check @indArrowImage_hasSmallCoproducts
-#check @indArrowImageInclusion_preservesSmallCoproducts
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_coproduct_colimit_mem_of_compactRows
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactArrowCoproduct_finitePartialDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_compactCoproduct_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_coproduct_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasSmallCoproducts
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_preservesSmallCoproducts
 
-#check @sourceArrow_leftVertex
-#check @sourceCosliceArrowFamily_source
-#check @generatedSourceArrows_source
-#check @generatedSourceArrowFiber
-#check @generatedSourceToArrowFiber
-#check @generatedSourceToArrowFiber_inclusion
-#check @sourceCoconeArrowFiberIso
-#check @sourceCosliceArrowFiberEquivalence
-#check @sourceCoconeArrowFiberIso_inclusion
-#check @sourceCosliceArrowFiberEquivalence_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceArrow_leftVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFamily_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrows_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrowFiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceToArrowFiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceToArrowFiber_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoconeArrowFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFiberEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoconeArrowFiberIso_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceArrowFiberEquivalence_inclusion
 
-#check @generatedSourceArrowFiberInclusion
-#check @generatedSourceArrowFiberInclusion_ι
-#check @generatedSourceFiber_square
-#check @generatedSourceFiber_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrowFiberInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrowFiberInclusion_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceFiber_square
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceFiber_isPullback
 
-#check @sourceArrowFiberCondition
-#check @generatedSourceArrowFullFiberIso
-#check @generatedSourceArrowFullFiberIso_inclusion
-#check @sourceArrowFiberCondition_iff_vertexIso
-#check @generatedSourceToArrowFiber_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceArrowFiberCondition
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrowFullFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceArrowFullFiberIso_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceArrowFiberCondition_iff_vertexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceToArrowFiber_isQCatEquivalence
 
-#check @indArrowImage_hasPreservedFiniteColimit
-#check @indArrowImage_hasFiniteColimits
-#check @indArrowImageInclusion_preservesFiniteColimit
-#check @indArrowImage_finite_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasPreservedFiniteColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasFiniteColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_preservesFiniteColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_finite_colimit_mem
 
-#check @arrowCancellationPrism
-#check @arrowCancellationPrism_zero
-#check @arrowCancellationPrism_one
-#check @arrowCancellationFamily
-#check @arrowCancellationFamily_isPushout
-#check @arrowCancellationFamily_vertex_first
-#check @arrowCancellationFamily_vertex_identity
-#check @arrowCancellationFamily_vertex_composite
-#check @arrowCancellationFamily_vertex_last
-#check @indArrowImage_cancel_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationPrism
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationPrism_zero
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationPrism_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily_isPushout
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily_vertex_first
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily_vertex_identity
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily_vertex_composite
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.arrowCancellationFamily_vertex_last
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_cancel_left
 
-#check @generatedSource_terminal_pushout_extension
-#check @generatedSource_terminal_edge_extension
-#check @generatedSource_terminal_precomp_surjective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_pushout_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_edge_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_precomp_surjective
 
-#check @generatedSource_terminal_mapping_contractible
-#check @generatedSource_terminal_coslice_mapping_contractible
-#check @generatedSource_isTerminal_iff_coslice_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_coslice_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isTerminal_iff_coslice_mapping_contractible
 
-#check @indArrowImage_hasPreservedSequentialColimit
-#check @generatedSource_hasPreservedSequentialColimit
-#check @generatedSource_sequential_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasPreservedSequentialColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasPreservedSequentialColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_sequential_colimit_mem
 
-#check @generatedSource_terminal_coslice_isTerminal
-#check @generatedSource_terminal_identity_isTerminal
-#check @generatedSource_terminal_identity_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_coslice_isTerminal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_identity_isTerminal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_identity_mapping_contractible
 
-#check @generatedSourceUnderTarget
-#check @generatedSourceUnderTarget_identity
-#check @generatedSourceUnderTarget_isFullyFaithful
-#check @generatedSourceUnderTarget_terminal_mapping_contractible
-#check @generatedSourceUnderTarget_lift_generatedEdge
-#check @generatedSource_terminal_retractionSpace_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceUnderTarget
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceUnderTarget_identity
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceUnderTarget_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceUnderTarget_terminal_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceUnderTarget_lift_generatedEdge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_retractionSpace_contractible
 
-#check @edgeCosliceVertex_generatedSourceLeg
-#check @generatedSourceIdentity_isTerminal_of_source_terminal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceVertex_generatedSourceLeg
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceIdentity_isTerminal_of_source_terminal
 
-#check @indArrowImage_hasPreservedSmallColimit
-#check @indArrowImage_hasSmallColimits
-#check @indArrowImageInclusion_preservesSmallColimits
-#check @indArrowImage_isPresentable
-#check @indArrowImage_small_colimit_mem
-#check @generatedSource_hasPreservedSmallColimit
-#check @generatedSource_hasSmallColimits
-#check @generatedSourceInclusion_preservesSmallColimits
-#check @generatedSource_small_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasPreservedSmallColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_hasSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageInclusion_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_small_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasPreservedSmallColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_hasSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceInclusion_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_small_colimit_mem
 
-#check @edgeCosliceUnderIso
-#check @edgeCosliceSourceRestriction
-#check @edgeCosliceUnderIso_projection
-#check @edgeCosliceSourceFiberIso
-#check @edgeCosliceSourceFiberIso_hom_ι
-#check @edgeCosliceSourceRestriction_projection
-#check @edgeCosliceSourceMapping
-#check @edgeCosliceSourceMappingFiberIso
-#check @edgeCosliceSourceMapping_fibration
-#check @edgeCosliceSourceMapping_trivial_of_contractible
-#check @isLocalForHom_of_coslice_mapping_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceUnderIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceRestriction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceUnderIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceFiberIso_hom_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceRestriction_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceMapping
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceMappingFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceMapping_fibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceMapping_trivial_of_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLocalForHom_of_coslice_mapping_contractible
 
-#check @edgeTerminalCocone_vertex
-#check @edgeTerminalMappingPoint
-#check @edgeTerminalMappingPoint_target_val
-#check @edgeTerminalMappingPoint_source_val
-#check @pushoutCosliceRestriction_eq
-#check @pushoutCosliceRestriction_trivialKanFibration
-#check @pushoutCoconeMappingRestriction_trivialKanFibration
-#check @squareTopEdge_rightAnodyne
-#check @squareTopCosliceRestriction_trivialKanFibration
-#check @squareTopCoconeMappingRestriction_trivialKanFibration
-#check @pushoutSpanRightMappingRestriction
-#check @pushoutSpanRightMappingRestriction_comp
-#check @pushoutSpanRightMappingRestriction_fibration
-#check @pushoutSpanMappingFiberComparison
-#check @pushoutSpanMappingFiberComparison_homotopyEquivalence
-#check @squareTopLeft_corner
-#check @squareTopSource_eq_leftTarget
-#check @squareTopSourceMappingRestriction
-#check @squareTopSourceMappingRestriction_comp
-#check @squareTopSourceMappingRestriction_fibration
-#check @pushoutTopMappingFiberComparison
-#check @pushoutTopMappingFiberComparison_homotopyEquivalence
-#check @pushoutMappingFiber_contractible_iff
-#check @pushoutSpan_rightDiagram
-#check @pushoutSpanRightBase
-#check @pushoutSpanMapping_isPullback
-#check @pushoutSpanSourceFiberIso
-#check @pushoutSourceFiber_contractible_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalCocone_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPoint_target_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPoint_source_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutCosliceRestriction_eq
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutCosliceRestriction_trivialKanFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutCoconeMappingRestriction_trivialKanFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopEdge_rightAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopCosliceRestriction_trivialKanFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopCoconeMappingRestriction_trivialKanFibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightMappingRestriction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightMappingRestriction_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightMappingRestriction_fibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanMappingFiberComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanMappingFiberComparison_homotopyEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopLeft_corner
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopSource_eq_leftTarget
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopSourceMappingRestriction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopSourceMappingRestriction_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareTopSourceMappingRestriction_fibration
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutTopMappingFiberComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutTopMappingFiberComparison_homotopyEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutMappingFiber_contractible_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpan_rightDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightBase
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanMapping_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanSourceFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSourceFiber_contractible_iff
 
-#check @edgeTerminalMappingPointAt
-#check @edgeTerminalMappingPointAt_target_val
-#check @edgeTerminalMappingPointAt_source_val
-#check @identityCoconeMappingPoint
-#check @generatedSource_terminal_identityMappingFiber_contractible
-#check @generatedSource_terminal_normalizedMappingFiber_contractible
-#check @generatedSource_terminal_squareTopFiber_contractible
-#check @generatedSource_terminal_pushout_sourceFiber_contractible
-#check @coconeMappingDiagramChange_val
-#check @normalizedCoconeMappingFiberIso
-#check @edgeCosliceSourceMapping_contractible_of_raw
-#check @exists_compactCoveringPresentableIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPointAt
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPointAt_target_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeTerminalMappingPointAt_source_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.identityCoconeMappingPoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_identityMappingFiber_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_normalizedMappingFiber_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_squareTopFiber_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_pushout_sourceFiber_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeMappingDiagramChange_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.normalizedCoconeMappingFiberIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.edgeCosliceSourceMapping_contractible_of_raw
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactCoveringPresentableIndImage
 
-#check @pushoutSpanRightBase_val
-#check @pushoutSpanRightBase_terminal_val
-#check @squareLeftEdge_target_of_edge
-#check @pushoutSpanRightBase_terminal_of_edgeFiber
-#check @generatedSource_terminal_edgeMappingFiber_contractible
-#check @generatedSource_terminal_edge_isLocalForHom
-#check @generatedSource_terminal_target_isLocalObject_generated
-#check @generatedSource_terminal_target_isLocalObject
-#check @generatedSource_isTerminal_of_target_isLocalObject
-#check @generatedSource_isTerminal_iff_target_isLocalObject
-#check @generatedSource_isPresentable_of_isAccessible
-#check @exists_generatedSource_terminal_of_isAccessible
-#check @exists_generatedSource_localReplacement_of_isAccessible
-#check @exists_operationsPresentableIndImage
-#check @exists_compactCoveringOperationsPresentableIndImage
-#check @indArrowImageVertex_of_retract
-#check @generatedSource_isKappaAccessible_iff_pointPullback
-#check @generatedSource_isAccessible_iff_pointPullback
-#check @exists_generatedSource_localReplacement_of_accessiblePointPullback
-#check @triangle_isPresentable
-#check @triangleFace_preservesSmallColimits
-#check @exists_triangleFacesCompactCardinal
-#check @HasCompactTrianglePosetPresentation
-#check @triangle_hasCompactPosetPresentation
-#check @exists_compactTrianglePosetPresentations
-#check @indArrowImageEdges_mem_of_compact_generated
-#check @indArrowImageEdges_comp_of_compact
-#check @indArrowImageEdges_cancel_left_of_compact
-#check @indArrowImageEdges_cancel_right_of_compact
-#check @indArrowImage_ambientFiltered_colimit_mem
-#check @indArrowImage_triangleFace_colimit_mem
-#check @exists_triangleOperationsCompactCardinal
-#check @exists_triangleOperationsPresentableIndImage
-#check @triangleFace_vertex
-#check @indArrowImage_triangle_missing_of_compact
-#check @indArrowImage_triangle_missing_of_refinedPresentation
-#check @compactCocone_factorization_relative_terminalPrefix
-#check @compactDiagram_factorization_relative_terminalPrefix
-#check @terminalPrefix_cosliceProjection_isRightCofinal
-#check @terminalPrefix_restrictedCocone_isColimit
-#check @compactDiagram_factorization_over_terminalPrefixPresentation
-#check @sequentialCoconeExtension
-#check @sequentialCoconeExtension_target
-#check @sequentialCoconeExtension_restrict_val
-#check @sequentialCoconeExtension_vertex
-#check @sequentialCoconeExtension_comparison_edge
-#check @sequentialCoconeExtension_leg
-#check @sequentialCoconeExtension_val
-#check @sequentialCoconeExtension_restrict_naturality
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightBase_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightBase_terminal_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.squareLeftEdge_target_of_edge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pushoutSpanRightBase_terminal_of_edgeFiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_edgeMappingFiber_contractible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_edge_isLocalForHom
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_target_isLocalObject_generated
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_target_isLocalObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isTerminal_of_target_isLocalObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isTerminal_iff_target_isLocalObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isPresentable_of_isAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatedSource_terminal_of_isAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatedSource_localReplacement_of_isAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_operationsPresentableIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactCoveringOperationsPresentableIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageVertex_of_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isKappaAccessible_iff_pointPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isAccessible_iff_pointPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatedSource_localReplacement_of_accessiblePointPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.triangle_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.triangleFace_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_triangleFacesCompactCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HasCompactTrianglePosetPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.triangle_hasCompactPosetPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactTrianglePosetPresentations
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_mem_of_compact_generated
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_comp_of_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_cancel_left_of_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_cancel_right_of_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_ambientFiltered_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_triangleFace_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_triangleOperationsCompactCardinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_triangleOperationsPresentableIndImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.triangleFace_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_triangle_missing_of_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_triangle_missing_of_refinedPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactCocone_factorization_relative_terminalPrefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactDiagram_factorization_relative_terminalPrefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalPrefix_cosliceProjection_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalPrefix_restrictedCocone_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactDiagram_factorization_over_terminalPrefixPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_restrict_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_comparison_edge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_leg
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialCoconeExtension_restrict_naturality
 
 example {C : SSet.{u + 1}} [Quasicategory C] {I : Type u}
-    (hC : HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
-    (s : (generatedSourceCategory edges x) _⦋0⦌) (hs : IsTerminalVertex s) :
-    IsLocalObject (Set.range edges) ((generatedSourceTarget edges x).app _ s) :=
-  generatedSource_terminal_target_isLocalObject hC edges x s hs
+    (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.HasSmallColimits C) (edges : I → C _⦋1⦌) (x : C _⦋0⦌)
+    (s : (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceCategory edges x) _⦋0⦌) (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex s) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject (Set.range edges) ((_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSourceTarget edges x).app _ s) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_terminal_target_isLocalObject hC edges x s hs
 
-#check @CompactPresentationComparison
-#check @CompactPresentationComparison.swap
-#check @CompactPresentationComparison.swap_swap
-#check @CompactPresentationComparison.vertex_left
-#check @CompactPresentationComparison.vertex_right
-#check @comparisonLeftStages
-#check @comparisonLeftCocone
-#check @ComparisonLeftFactor
-#check @nonempty_comparisonLeftFactor
-#check @comparisonLeftStages_projection
-#check @ComparisonLeftFactor.vertex
-#check @ComparisonLeftFactor.compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison.swap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison.swap_swap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison.vertex_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison.vertex_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftStages
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_comparisonLeftFactor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftStages_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor.vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor.compact
 
-#check @coconeTransportLeg_restrict_edge
-#check @compactSource_factorization_after_point
-#check @exists_sequentialSeed_bound
-#check @compactPresentations_initialTriangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeTransportLeg_restrict_edge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSource_factorization_after_point
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialSeed_bound
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactPresentations_initialTriangle
 
-#check @pointRestriction_coconeTransportLeg_val
-#check @uliftPointRestriction_coconeTransportLeg_val
-#check @normalizedEdgeCocone_restrict_val
-#check @uliftPoint_diagram
-#check @normalizedEdge_compact
-#check @comparisonInitialState
-#check @exists_comparisonInitialState
-#check @coconeVertices_compact
-#check @ComparisonLeftFactor.cocone_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointRestriction_coconeTransportLeg_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftPointRestriction_coconeTransportLeg_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.normalizedEdgeCocone_restrict_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftPoint_diagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.normalizedEdge_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonInitialState
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonInitialState
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeVertices_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor.cocone_compact
 
-#check @nerve_pointCoslice_le
-#check @exists_seedBoundedComparison
-#check @uliftCoconeShapeIso_left_naturality
-#check @comparisonLeftStages_val
-#check @comparisonSuccessorDiagram
-#check @comparisonSuccessorDiagram_compact
-#check @comparisonSuccessorDiagram_left
-#check @comparisonSuccessorDiagram_right
-#check @comparisonSuccessorAugmentation
-#check @comparisonSuccessorAugmentation_vertex
-#check @comparisonSuccessorAugmentation_old_val
-#check @comparisonSuccessorAugmentation_right
-#check @nerve_cocone_le
-#check @ComparisonLeftFactor.index_ge
-#check @ComparisonLeftFactor.terminal_index_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerve_pointCoslice_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_seedBoundedComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftCoconeShapeIso_left_naturality
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftStages_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorDiagram_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorDiagram_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorDiagram_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation_old_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerve_cocone_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor.index_ge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftFactor.terminal_index_le
 
-#check @sliceUnderUncurry_eqToIso
-#check @comparisonLeftCocone_leg_uncurry
-#check @comparisonSuccessorAugmentation_left_raw
-#check @comparisonSuccessorAugmentation_left
-#check @comparisonLeftSuccessor
-#check @comparisonRightSuccessor
-#check @ComparisonRound
-#check @ComparisonRound.next
-#check @nonempty_comparisonRound
-#check @comparisonRoundChoice
-#check @comparisonSuccessorDiagram_old
-#check @ComparisonRound.inclusion
-#check @ComparisonRound.inclusion_mono
-#check @ComparisonRound.diagram_restrict
-#check @ComparisonRound.left_index_restrict
-#check @ComparisonRound.right_index_restrict
-#check @ComparisonRound.augmentation_restrict_val
-#check @comparisonSequence
-#check @comparisonSequenceRound
-#check @comparisonSequence_zero
-#check @comparisonSequence_succ
-#check @comparisonSequenceInclusion
-#check @comparisonSequenceInclusion_mono
-#check @comparisonSequence_diagram_restrict
-#check @comparisonSequence_augmentation_restrict_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sliceUnderUncurry_eqToIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftCocone_leg_uncurry
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation_left_raw
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorAugmentation_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonLeftSuccessor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonRightSuccessor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.next
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_comparisonRound
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonRoundChoice
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSuccessorDiagram_old
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.inclusion_mono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.diagram_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.left_index_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.right_index_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.augmentation_restrict_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceRound
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_zero
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_succ
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceInclusion_mono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_diagram_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_augmentation_restrict_val
 
-#check @doubleConeSimplexIso
-#check @doubleConeSimplexIso_prefix
-#check @ComparisonRound.simplexShapeIso
-#check @ComparisonRound.simplexShapeIso_prefix
-#check @comparisonSequenceDegree
-#check @comparisonSequenceDegree_monotone
-#check @comparisonSequenceDegree_cofinal
-#check @comparisonSequenceShapeIso
-#check @comparisonSequenceShapeIso_prefix
-#check @uliftStdSimplexIso_inv_prefix
-#check @exists_nativeDiagram_of_shapeTower
-#check @exists_comparisonSequenceDiagram
-#check @comparisonSliceDiagram
-#check @comparisonSliceDiagram_uncurry
-#check @comparisonSliceDiagram_projection
-#check @comparisonSequenceSliceDiagram_restrict
-#check @exists_comparisonSequenceSliceDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.doubleConeSimplexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.doubleConeSimplexIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.simplexShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.simplexShapeIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceDegree
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceDegree_monotone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceDegree_cofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceShapeIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftStdSimplexIso_inv_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_nativeDiagram_of_shapeTower
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonSequenceDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSliceDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSliceDiagram_uncurry
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSliceDiagram_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceSliceDiagram_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonSequenceSliceDiagram
 
-#check @oneConeSimplexIso
-#check @joinStdSimplexIso_prefix
-#check @oneConeSimplexIso_prefix
-#check @exists_diagram_of_shapeTower
-#check @comparisonSequenceLeftShapeIso
-#check @comparisonSequenceRightShapeIso
-#check @comparisonSequenceLeftShapeIso_prefix
-#check @comparisonSequenceRightShapeIso_prefix
-#check @exists_comparisonLeftIndexDiagram
-#check @exists_comparisonRightIndexDiagram
-#check @nerveIndexSequence
-#check @nerveIndexSequence_monotone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.oneConeSimplexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.joinStdSimplexIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.oneConeSimplexIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_diagram_of_shapeTower
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceLeftShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceRightShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceLeftShapeIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceRightShapeIso_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonLeftIndexDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonRightIndexDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexSequence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexSequence_monotone
 
-#check @nerveIndexFunctor
-#check @nerveIndexFunctor_nerveMap
-#check @nerveIndexFunctor_obj
-#check @nerveIndexPieceMonotone
-#check @sequentialPieceInclusionFunctor
-#check @nerveIndexPiece_factorization
-#check @nerveIndexPiece_final
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexFunctor_nerveMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexFunctor_obj
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexPieceMonotone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialPieceInclusionFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexPiece_factorization
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexPiece_final
 
-#check @comparisonEvenFace
-#check @comparisonOddFace
-#check @comparisonEvenFace_succ_join
-#check @comparisonOddFace_succ_join
-#check @ComparisonRound.left_face_successor
-#check @ComparisonRound.right_face_successor
-#check @comparisonSequenceParityShapeIso
-#check @comparisonSequenceLeftParityShapeIso
-#check @comparisonSequenceRightParityShapeIso
-#check @comparisonSequence_left_parity_face
-#check @comparisonSequence_right_parity_face
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonEvenFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonOddFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonEvenFace_succ_join
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonOddFace_succ_join
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.left_face_successor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRound.right_face_successor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceParityShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceLeftParityShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequenceRightParityShapeIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_left_parity_face
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSequence_right_parity_face
 
-#check @ComparisonParityData
-#check @comparisonInitialParityData
-#check @exists_comparisonParitySliceDiagram
-#check @exists_comparisonLeftParityIndexDiagram
-#check @exists_comparisonRightParityIndexDiagram
-#check @sequentialNerveInitialSimplex_comparison_even
-#check @sequentialNerveInitialSimplex_comparison_odd
-#check @nativeSequential_hom_ext_ulift
-#check @transportedCoconeSliceDiagram
-#check @transportedCoconeSliceDiagram_uncurry
-#check @transportedCoconeSliceDiagram_projection
-#check @comparisonSliceDiagram_left
-#check @comparisonSliceDiagram_right
-#check @nativeSubsequence_eq_of_finiteComparisons
-#check @comparison_even_subsequence_eq
-#check @comparison_odd_subsequence_eq
-#check @sequentialIndexDiagram_initial_of_point
-#check @exists_twoPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityData
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonInitialParityData
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonParitySliceDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonLeftParityIndexDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_comparisonRightParityIndexDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveInitialSimplex_comparison_even
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveInitialSimplex_comparison_odd
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nativeSequential_hom_ext_ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.transportedCoconeSliceDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.transportedCoconeSliceDiagram_uncurry
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.transportedCoconeSliceDiagram_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSliceDiagram_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparisonSliceDiagram_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nativeSubsequence_eq_of_finiteComparisons
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparison_even_subsequence_eq
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.comparison_odd_subsequence_eq
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialIndexDiagram_initial_of_point
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_twoPresentationComparison
 
-#check @nerveIndexPiece_nerve_isRightCofinal
-#check @cofinalDiagramCocone
-#check @cofinalDiagramCocone_vertex
-#check @cofinalDiagramCocone_isColimit
-#check @nonempty_twoCofinalPresentation_colimitIso
-#check @SeedBoundedTwoPresentationComparison
-#check @nonempty_seedBoundedTwoPresentationComparison
-#check @exists_commonSmallPresentation_colimits
-#check @SmallPresentationComparison
-#check @nonempty_smallPresentationComparison
-#check @smallSlicePresentation_projection_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveIndexPiece_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cofinalDiagramCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cofinalDiagramCocone_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cofinalDiagramCocone_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_twoCofinalPresentation_colimitIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SeedBoundedTwoPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_seedBoundedTwoPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_commonSmallPresentation_colimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_smallPresentationComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSlicePresentation_projection_compact
 
-#check @IsCompatiblePresentationPiece
-#check @CompatiblePresentationPieces
-#check @SmallPresentationComparison.toCompatiblePiece
-#check @exists_compatiblePresentationPiece_containing
-#check @compatiblePresentationPieces_isCardinalFiltered
-#check @compatiblePresentationPieces_nerve_isKappaFiltered
-#check @monotoneUpperCommaEquivalence
-#check @monotone_nerveMap_isRightCofinal
-#check @compatibleLeftPiece
-#check @compatibleRightPiece
-#check @compatibleLeftPiece_dominates
-#check @compatibleRightPiece_dominates
-#check @compatibleLeftPiece_nerve_isRightCofinal
-#check @compatibleRightPiece_nerve_isRightCofinal
-#check @exists_cofinalSmallPartialColimitFamily
-#check @cofinalSmallPartialColimitFamily_values_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCompatiblePresentationPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePresentationPieces
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationComparison.toCompatiblePiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compatiblePresentationPiece_containing
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compatiblePresentationPieces_isCardinalFiltered
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compatiblePresentationPieces_nerve_isKappaFiltered
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.monotoneUpperCommaEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.monotone_nerveMap_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleLeftPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleRightPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleLeftPiece_dominates
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleRightPiece_dominates
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleLeftPiece_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections.compatibleRightPiece_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies.exists_cofinalSmallPartialColimitFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies.cofinalSmallPartialColimitFamily_values_compact
 
-#check @exists_compatiblePiecePresentations
-#check @nonempty_compatiblePiece_colimitVertexIso
-#check @exists_relativeSmallPresentationPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePiecePresentations.exists_compatiblePiecePresentations
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceColimitIso.nonempty_compatiblePiece_colimitVertexIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeSmallPresentationPiece.exists_relativeSmallPresentationPiece
 
-#check @indArrowImage_ambientSmall_colimit_mem
-#check @indArrowImage_exists_smallPartialPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_ambientSmall_colimit_mem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_exists_smallPartialPiece
 
-#check @indArrowImage_exists_mappedSmallPartialPiece
-#check @TriangleFacePartialRefinement
-#check @nonempty_triangleFacePartialRefinement
-#check @smallShape_leftKanDiagram_hasColimit
-#check @exists_smallShape_leftKanExtension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_exists_mappedSmallPartialPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleFacePartialRefinement
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_triangleFacePartialRefinement
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallShape_leftKanDiagram_hasColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallShape_leftKanExtension
 
-#check @exists_interleavedRefinementSequence
-#check @filteredPieceSequenceUnion
-#check @filteredPieceSequenceUnion_isFiltered
-#check @filteredPieceSequenceUnion_hasCardinalLT
-#check @filteredPieceSequenceUnion_eq_of_interleaved
-#check @PieceSequenceTotal
-#check @pieceSequenceTotalValue_nerve_isRightCofinal
-#check @pieceSequenceFiberToComma_initial
-#check @pieceSequenceFiberKanComparison_isRightCofinal
-#check @pieceSequenceFiberKanComparisonUniverse_isRightCofinal
-#check @pieceSequence_leftKan_value_isPartialColimit
-#check @pieceSequenceTotalDiagram_restrict_fiber
-#check @pieceSequenceTotalDiagram_restrict_union
-#check @exists_pieceSequenceColimitPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_interleavedRefinementSequence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion.filteredPieceSequenceUnion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion.filteredPieceSequenceUnion_isFiltered
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion.filteredPieceSequenceUnion_hasCardinalLT
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion.filteredPieceSequenceUnion_eq_of_interleaved
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal.PieceSequenceTotal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal.pieceSequenceTotalValue_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan.pieceSequenceFiberToComma_initial
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan.pieceSequenceFiberKanComparison_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues.pieceSequenceFiberKanComparisonUniverse_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues.pieceSequence_leftKan_value_isPartialColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits.pieceSequenceTotalDiagram_restrict_fiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits.pieceSequenceTotalDiagram_restrict_union
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits.exists_pieceSequenceColimitPresentation
 
-#check @filteredPieceSequenceUnionPiece
-#check @exists_commonRefinementConditions
-#check @HasPropertyPartialColimit
-#check @property_pieceSequenceUnion_colimit
-#check @hasPropertyPartialColimit_sequenceUnion
-#check @mappedIndImagePartialCondition_sequenceUnion
-#check @exists_mappedIndImagePartialCondition_extension
-#check @exists_twoMappedPartialConditions
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions.filteredPieceSequenceUnionPiece
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions.exists_commonRefinementConditions
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HasPropertyPartialColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.property_pieceSequenceUnion_colimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasPropertyPartialColimit_sequenceUnion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions.mappedIndImagePartialCondition_sequenceUnion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions.exists_mappedIndImagePartialCondition_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_twoMappedPartialConditions
 
-#check @TwoMappedPartialPieces
-#check @twoMappedPartialPieces_isCardinalFiltered
-#check @twoMappedPartialPieceProjection_nerve_isRightCofinal
-#check @partialFamily_values_property
-#check @partialFamily_mapped_values_compact
-#check @exists_twoMappedRefinementPresentation
-#check @indArrowImage_triangle_twoOfThree
-#check @indArrowImageEdges_stronglySaturated
-#check @indArrowImageEdges_eq_generatedEdges
-#check @indArrowImageCategory_eq_generatedArrowCategory
-#check @generatedArrowCategory_isPresentable
-#check @generatedSource_isAccessible
-#check @generatedSource_isPresentable
-#check @exists_generatedSource_terminal
-#check @exists_bousfieldLocalReplacement
-#check @bousfield_isReflectiveSubcategory
-#check @bousfieldReflection
-#check @bousfieldLocalizationFunctor
-#check @bousfieldLocalObjects_isPresentable
-#check @bousfieldLocalizationFunctor_preservesSmallColimits
-#check @bousfieldLocalizationFunctor_isAccessible
-#check @bousfieldLocalizationFunctor_isLocalization_invertedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialPieces
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.twoMappedPartialPieces_isCardinalFiltered
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.twoMappedPartialPieceProjection_nerve_isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues.partialFamily_values_property
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues.partialFamily_mapped_values_compact
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_twoMappedRefinementPresentation
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImage_triangle_twoOfThree
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_stronglySaturated
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageEdges_eq_generatedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indArrowImageCategory_eq_generatedArrowCategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedSource_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatedSource_terminal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldReflection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalObjects_isPresentable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_preservesSmallColimits
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isAccessible
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_invertedEdges
 
-#print axioms generatedArrowCategory_isPresentable
-#print axioms exists_bousfieldLocalReplacement
-#print axioms bousfieldReflection
-#print axioms bousfieldLocalObjects_isPresentable
-#print axioms bousfieldLocalizationFunctor_isLocalization_invertedEdges
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedArrowCategory_isPresentable
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldReflection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalObjects_isPresentable
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_invertedEdges
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) :
-    Nonempty (ReflectiveSubcategory C (IsLocalObject (Set.range edges))) :=
-  ⟨bousfieldReflection hC edges⟩
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ReflectiveSubcategory C (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocalObject (Set.range edges))) :=
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldReflection hC edges⟩
 
-#check @reflective_isLocal_iff_localObject
-#check @bousfield_localEquivalences_eq_invertedEdges
-#check @bousfield_generatedEdges_eq_localEquivalences
-#check @bousfield_generatedEdges_eq_invertedEdges
-#check @bousfieldLocalizationFunctor_isLocalization_generatedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflective_isLocal_iff_localObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_localEquivalences_eq_invertedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_localEquivalences
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_invertedEdges
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_generatedEdges
 
-#print axioms bousfield_generatedEdges_eq_invertedEdges
-#print axioms bousfieldLocalizationFunctor_isLocalization_generatedEdges
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_invertedEdges
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_generatedEdges
 
-example {C : SSet.{u + 1}} [Quasicategory C] (hC : F2.Presentable.IsPresentable C)
+example {C : SSet.{u + 1}} [Quasicategory C] (hC : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable C)
     {I : Type u} (edges : I → C _⦋1⦌) (s : C _⦋1⦌) :
-    s ∈ generatedEdges edges ↔ s ∈ invertedEdges (bousfieldLocalizationFunctor hC edges) := by
-  rw [bousfield_generatedEdges_eq_invertedEdges hC edges]
+    s ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatedEdges edges ↔ s ∈ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor hC edges) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_invertedEdges hC edges]

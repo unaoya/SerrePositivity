@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.MappingTargetIso
-public import SerrePositivity.InfinityCategories.Core.FunctorComposition
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyComparisonBijective
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFamilyComparisonBijective
 
 /-!
 概要：関手同型は、指定した二頂点間の元の写像空間比較の同値性を保つ。
@@ -35,28 +35,28 @@ lemma functorMap_bijective_of_natIso {C : Type*} {D : Type*} [Category C] [Categ
 
 lemma constantFunctorPostMap_bijective_iff {X Y : SSet.{u}} (F : X ⟶ Y)
     (A : SSet.{u}) (x z : X _⦋0⦌) :
-    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x z) ↔
-      Function.Bijective (fun α : ConstantFunctorHom A X x z =>
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.constantFunctorPostMap F A x z) ↔
+      Function.Bijective (fun α : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.ConstantFunctorHom A X x z =>
         (hoFunctor.map ((ihom A).map F)).toFunctor.map α) :=
-  ((constantFunctorCompIso A x F).homCongr
-    (constantFunctorCompIso A z F)).bijective.of_comp_iff' _
+  ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso A x F).homCongr
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.constantFunctorCompIso A z F)).bijective.of_comp_iff' _
 
 lemma constantFunctorPostMap_bijective_of_interval {X Y A : SSet.{u}}
     [Quasicategory X] [Quasicategory Y] (F : X ⟶ Y) (x z : X _⦋0⦌)
-    (h : IsSimplicialHomotopyEquivalence (intervalFunctorMap F x z)) :
-    Function.Bijective (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.constantFunctorPostMap F A x z) := by
-  apply intervalFamilyComparison_bijective (intervalFunctorMap F x z) h
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F x z)) :
+    Function.Bijective (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.constantFunctorPostMap F A x z) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFamilyComparison_bijective (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F x z) h
   intro f
-  exact (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.intervalFunctorMap_familyHom_post f F).symm
+  exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.intervalFunctorMap_familyHom_post f F).symm
 
 lemma pinchedHomMap_equivalence_of_functorIso {X Y : SSet.{u}}
-    [Quasicategory X] [Quasicategory Y] {F F' : X ⟶ Y} (e : FunctorIso F F')
-    (x z : X _⦋0⦌) (h : IsSimplicialHomotopyEquivalence (pinchedHomMap F' x z)) :
-    IsSimplicialHomotopyEquivalence (pinchedHomMap F x z) := by
-  have hh := h.isQCatEquivalence.comp (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
+    [Quasicategory X] [Quasicategory Y] {F F' : X ⟶ Y} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F F')
+    (x z : X _⦋0⦌) (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F' x z)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F x z) := by
+  have hh := h.isQCatEquivalence.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F'.app (Opposite.op ⦋0⦌) x) (F'.app (Opposite.op ⦋0⦌) z))
-  rw [pinchedIntervalComparison_naturality] at hh
-  have hi := ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).cancel_left hh
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.pinchedIntervalComparison_naturality] at hh
+  have hi := ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).cancel_left hh
     ).isSimplicialHomotopyEquivalence
   have hf := intervalFunctorMap_equivalence_of_constantHom_bijective F x z (by
     intro A _
@@ -64,9 +64,9 @@ lemma pinchedHomMap_equivalence_of_functorIso {X Y : SSet.{u}}
     apply functorMap_bijective_of_natIso (e.map_post A).toNatIso
     exact (constantFunctorPostMap_bijective_iff F' A x z).mp
       (constantFunctorPostMap_bijective_of_interval F' x z hi))
-  have hg := (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).comp hf.isQCatEquivalence
-  rw [← pinchedIntervalComparison_naturality] at hg
-  exact ((SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace_isQCatEquivalence
+  have hg := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence x z).comp hf.isQCatEquivalence
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.pinchedIntervalComparison_naturality] at hg
+  exact ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence
     (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) z)).cancel_right hg
     ).isSimplicialHomotopyEquivalence
 

@@ -27,7 +27,7 @@ variable (R : Type u) [CommRing R] {A₀ B₀ C₀ A₁ B₁ C₁ : Mon (Complex
 lemma map_quasiIso (ha : QuasiIso a.hom) (hb : QuasiIso b.hom) (hc : QuasiIso c.hom) :
     QuasiIso (map R f₀ g₀ f₁ g₁ a b c hf hg).hom := by
   have hs : QuasiIso (sumMap R a c) := cochainBiprodMap_quasiIso a.hom c.hom ha hc
-  have hm : QuasiIso (complexMappingCoconeMap (difference R f₀ g₀) (difference R f₁ g₁)
+  have hm : QuasiIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R f₀ g₀) (difference R f₁ g₁)
       (sumMap R a c) b.hom (difference_comm R _ _ _ _ _ _ _ hf hg)) :=
     cochainMappingCoconeMap_quasiIso _ _ _ _ _ hs hb
   have ht : QuasiIso ((map R f₀ g₀ f₁ g₁ a b c hf hg).hom ≫ toMappingCocone R f₁ g₁) := by

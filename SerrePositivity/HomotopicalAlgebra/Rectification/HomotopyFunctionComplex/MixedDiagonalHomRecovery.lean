@@ -44,7 +44,7 @@ variable {C : Type u} [Category.{v} C]
 
 def constantTargetIso (A : SimplexCategory ⥤ C) (Z : C) :
     MixedDiagonalHom.obj A ((Functor.const SimplexCategory).obj (op Z)) ≅
-      (cosimplicialHom A).obj Z :=
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro n m θ
     ext h
@@ -53,7 +53,7 @@ def constantTargetIso (A : SimplexCategory ⥤ C) (Z : C) :
 
 def constantSourceEquiv (Z : C) (B : SimplexCategory ⥤ Cᵒᵖ) (n : SimplexCategoryᵒᵖ) :
     (MixedDiagonalHom.obj ((Functor.const SimplexCategory).obj Z) B).obj n ≃
-      ((cosimplicialHom B).obj (op Z)).obj n where
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj (op Z)).obj n where
   toFun f := f.op
   invFun f := f.unop
   left_inv _ := rfl
@@ -61,7 +61,7 @@ def constantSourceEquiv (Z : C) (B : SimplexCategory ⥤ Cᵒᵖ) (n : SimplexCa
 
 def constantSourceIso (Z : C) (B : SimplexCategory ⥤ Cᵒᵖ) :
     MixedDiagonalHom.obj ((Functor.const SimplexCategory).obj Z) B ≅
-      (cosimplicialHom B).obj (op Z) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj (op Z) :=
   NatIso.ofComponents (fun n => (constantSourceEquiv Z B n).toIso) (by
     intro n m θ
     ext h
@@ -70,8 +70,8 @@ def constantSourceIso (Z : C) (B : SimplexCategory ⥤ Cᵒᵖ) :
     exact Category.id_comp _)
 
 lemma source_pairing {T : SSet.{v}} (D : SimplexCategory ⥤ SimplexCategory ⥤ C)
-    (A : SimplexCategory ⥤ C) (Z : C) (s : T ⟶ (cosimplicialHom D).obj A)
-    (t : T ⟶ (cosimplicialHom A).obj Z) :
+    (A : SimplexCategory ⥤ C) (Z : C) (s : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom D).obj A)
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z) :
     MixedDiagonalHom.pre (CosimplicialMapFamily.ofDoubleHom s)
         (t ≫ (constantTargetIso A Z).inv) ≫ (constantTargetIso (DiagonalFrame.obj D) Z).hom =
       DiagonalHom.pairing D A Z s t := by
@@ -84,7 +84,7 @@ lemma source_pairing {T : SSet.{v}} (D : SimplexCategory ⥤ SimplexCategory ⥤
   rw [types_id_apply]
 
 lemma target_pairing {T : SSet.{v}} (E : SimplexCategory ⥤ SimplexCategory ⥤ Cᵒᵖ)
-    (B : SimplexCategory ⥤ Cᵒᵖ) (Z : C) (r : T ⟶ (cosimplicialHom E).obj B)
+    (B : SimplexCategory ⥤ Cᵒᵖ) (Z : C) (r : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom E).obj B)
     (t : T ⟶ MixedDiagonalHom.obj ((Functor.const SimplexCategory).obj Z) B) :
     MixedDiagonalHom.post (CosimplicialMapFamily.ofDoubleHom r) t ≫
         (constantSourceIso Z (DiagonalFrame.obj E)).hom =

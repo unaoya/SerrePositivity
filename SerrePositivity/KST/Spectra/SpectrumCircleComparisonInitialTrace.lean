@@ -25,7 +25,7 @@ local instance circleComparisonInitialTraceSimplicialCategory :
 lemma circleCompanionComparisonTetrahedron_apex_faces (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) :
     Sp.δ 2 (Sp.δ 3 (circleCompanionComparisonTetrahedron z k)) =
-      (coherentNerveEdge (circleCompanionConeComparisonHom z)).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (circleCompanionConeComparisonHom z)).edge := by
   erw [CoherentPathCoordinates.tetrahedronApex_yoneda,
     circleCompanionComparisonTetrahedron_apex, Equiv.apply_symm_apply]
 
@@ -39,9 +39,9 @@ lemma circleCompanionComparisonInitialTrace (z : Sp.{u} _⦋0⦌)
       SSet.const (vertexOfHom (circleCompanionConeComparisonHom z)) := by
   rw [CoherentPathCoordinates.tetrahedronInitialTrace_of_apex
     (circleCompanionComparisonTetrahedron_apex_faces z k)]
-  change SSet.const (PinchedHom.constant
+  change SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant
     (SimplicialCategory.homEquiv' _ _ (circleCompanionConeComparisonHom z)) 0) = _
-  rw [pinchedConstant_zero]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
   congr 1
   change (SSet.unitHomEquiv _) ((SSet.unitHomEquiv _).symm
     (vertexOfHom (circleCompanionConeComparisonHom z))) = _

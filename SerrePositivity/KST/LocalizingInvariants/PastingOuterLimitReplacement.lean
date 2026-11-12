@@ -20,8 +20,8 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma reverseGrid_topTriangle {X : SSet.{u}}
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X) :
-    pastingTopTriangle (reverseGrid F) =
-      (stdSimplex.opIso ⦋2⦌).inv ≫ SSet.opFunctor.map (pastingBottomTriangle F) := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) =
+      (stdSimplex.opIso ⦋2⦌).inv ≫ SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingBottomTriangle F) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -30,59 +30,59 @@ lemma reverseGrid_topTriangle {X : SSet.{u}}
 
 lemma exists_pasting_outer_limit_replacement {X : SSet.{u}} [Quasicategory X]
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hr : IsPullbackSquare (pastingSquare F 0))
-    (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hS : IsPullbackSquare S)
-    (hbase : pushoutSpan (reverseGrid (pastingSquare F 1)) = pushoutSpan (reverseGrid S)) :
+    (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0))
+    (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare S)
+    (hbase : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 1)) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid S)) :
     ∃ F' : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X,
-      pastingSquare F' 0 = pastingSquare F 0 ∧
-        pastingTopTriangle F' = pastingTopTriangle F ∧
-        IsPullbackSquare (pastingSquare F' 2) ∧ pastingSquare F' 1 = S := by
-  have hl : IsPushoutSquare (pastingSquare (reverseGrid F) 2) := by
-    rw [reverseGrid_pastingSquare]
-    exact (isPullbackSquare_iff_reverseGrid _).1 hr
-  obtain ⟨G, hc, hg, ho⟩ := exists_pasting_outer_colimit_replacement (reverseGrid F) hl
-    (reverseGrid S) ((isPullbackSquare_iff_reverseGrid S).1 hS)
-    (by rw [reverseGrid_pastingSquare]; exact hbase)
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F' 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0 ∧
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle F' = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle F ∧
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F' 2) ∧ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F' 1 = S := by
+  have hl : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) 2) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
+    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_reverseGrid _).1 hr
+  obtain ⟨G, hc, hg, ho⟩ := exists_pasting_outer_colimit_replacement (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) hl
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid S) ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_reverseGrid S).1 hS)
+    (by rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]; exact hbase)
   let q := (SSet.opFunctorCompOpFunctorIso.app X).hom
-  let F' := reverseGrid G ≫ q
+  let F' := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G ≫ q
   have hleft := pastingSquare_left_eq_of_corner_eq hc
   have hbottom := pastingBottomTriangle_eq_of_corner_eq hc
   refine ⟨F', ?_, ?_, ?_, ?_⟩
-  · change pastingSquare (reverseGrid G) 0 ≫ q = _
-    rw [reverseGrid_pastingSquare]
-    change reverseGrid (pastingSquare G 2) ≫ q = _
-    rw [hleft, reverseGrid_pastingSquare]
-    exact reverseGrid_double (pastingSquare F 0)
-  · have ht : pastingTopTriangle (reverseGrid G) =
-        pastingTopTriangle (reverseGrid (reverseGrid F)) := by
+  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) 0 ≫ q = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 2) ≫ q = _
+    rw [hleft, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
+    exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_double (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0)
+  · have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) =
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F)) := by
       rw [reverseGrid_topTriangle, reverseGrid_topTriangle, hbottom]
-    change pastingTopTriangle (reverseGrid G) ≫ q = _
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) ≫ q = _
     rw [ht]
-    change pastingTopTriangle (reverseGrid (reverseGrid F) ≫ q) = _
-    rw [reverseGrid_double]
-  · change IsPullbackSquare (pastingSquare (reverseGrid G) 2 ≫ q)
-    rw [reverseGrid_pastingSquare]
-    exact (isPullbackSquare_iff_postcomp_isIso _ q).1
-      ((isPushoutSquare_iff_reverseGrid _).1 hg)
-  · change pastingSquare (reverseGrid G) 1 ≫ q = _
-    rw [reverseGrid_pastingSquare]
-    change reverseGrid (pastingSquare G 1) ≫ q = _
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid F) ≫ q) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_double]
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) 2 ≫ q)
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
+    exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_postcomp_isIso _ q).1
+      ((_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_reverseGrid _).1 hg)
+  · change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid G) 1 ≫ q = _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_pastingSquare]
+    change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare G 1) ≫ q = _
     rw [ho]
-    exact reverseGrid_double S
+    exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid_double S
 
 structure PastingOuterLimitReplacement {X : SSet.{u}}
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X) (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) where
   diagram : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X
-  right_eq : pastingSquare diagram 0 = pastingSquare F 0
-  top_eq : pastingTopTriangle diagram = pastingTopTriangle F
-  left_isPullback : IsPullbackSquare (pastingSquare diagram 2)
-  outer_eq : pastingSquare diagram 1 = S
+  right_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 0 = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0
+  top_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle diagram = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingTopTriangle F
+  left_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2)
+  outer_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 1 = S
 
 def pastingOuterLimitReplacement {X : SSet.{u}} [Quasicategory X]
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u}) ⟶ X)
-    (hr : IsPullbackSquare (pastingSquare F 0))
-    (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hS : IsPullbackSquare S)
-    (hbase : pushoutSpan (reverseGrid (pastingSquare F 1)) = pushoutSpan (reverseGrid S)) :
+    (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 0))
+    (S : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare S)
+    (hbase : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 1)) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutSpan (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.reverseGrid S)) :
     PastingOuterLimitReplacement F S := by
   let h := exists_pasting_outer_limit_replacement F hr S hS hbase
   exact ⟨h.choose, h.choose_spec.1, h.choose_spec.2.1,

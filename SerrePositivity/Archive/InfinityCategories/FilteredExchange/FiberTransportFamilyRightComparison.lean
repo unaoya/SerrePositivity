@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportFamilyRightPrism
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
 
 /-!
 概要：元の二つの全輸送を、右結合の同じ prism 延長空間で比較する。

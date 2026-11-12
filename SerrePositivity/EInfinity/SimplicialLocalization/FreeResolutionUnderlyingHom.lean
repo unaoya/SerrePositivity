@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeUnderlyingCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeUnderlyingCategory
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockObjects
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectHomFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality
 
 /-!
 # 元の自由相対解像の底の固定 Hom と augmentation
@@ -21,23 +21,23 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def freeResolutionUnderlyingDiagram : SimplicialObject Cat.{u, u} :=
-  freeResolution C ⋙ underlyingCategoryFunctor
+  freeResolution C ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.underlyingCategoryFunctor
 
 def freeResolutionUnderlyingAugmentation : freeResolutionUnderlyingDiagram C ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj C.category :=
-  Functor.whiskerRight (freeResolutionAugmentationNatTrans C) underlyingCategoryFunctor ≫
-    (Functor.constComp SimplexCategoryᵒᵖ C underlyingCategoryFunctor).hom
+  Functor.whiskerRight (freeResolutionAugmentationNatTrans C) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.underlyingCategoryFunctor ≫
+    (Functor.constComp SimplexCategoryᵒᵖ C _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.underlyingCategoryFunctor).hom
 
 def freeResolutionHom (X Y : C.category) : SSet.{u} :=
-  FixedObjectHom.functor (freeResolutionUnderlyingDiagram C) (freeResolutionObject C)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor (freeResolutionUnderlyingDiagram C) (freeResolutionObject C)
     (fun θ X => freeResolutionObject_naturality C θ X) X Y
 
 def freeResolutionHomAugmentation (X Y : C.category) : freeResolutionHom C X Y ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (X ⟶ Y) := by
-  let η := FixedObjectHom.coefficientNatTrans (freeResolutionUnderlyingDiagram C)
+  let η := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (freeResolutionUnderlyingDiagram C)
     ((Functor.const SimplexCategoryᵒᵖ).obj C.category) (freeResolutionObject C)
     (fun _ (X : C.category) => X)
     (fun θ X => freeResolutionObject_naturality C θ X) (fun _ _ => rfl)
@@ -47,7 +47,7 @@ def freeResolutionHomAugmentation (X Y : C.category) : freeResolutionHom C X Y �
   intro n m θ
   apply ConcreteCategory.hom_ext
   intro f
-  simpa [freeResolutionHom, FixedObjectHom.functor, FixedObjectHom.map]
+  simpa [freeResolutionHom, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map]
     using ConcreteCategory.congr_hom (η.naturality θ) f
 
 lemma freeResolutionHomAugmentation_app (X Y : C.category) (n : SimplexCategoryᵒᵖ)

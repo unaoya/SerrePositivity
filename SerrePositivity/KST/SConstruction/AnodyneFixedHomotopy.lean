@@ -31,7 +31,7 @@ def anodyneFixedHomotopyData {A B E : SSet.{u}} [KanComplex E]
   have hp : HasLiftingProperty pp.ι (CategoryTheory.Limits.terminal.from E) :=
     (anodyneExtensions_pushoutObjObjι' pp hi) _
       ((HomotopicalAlgebra.fibration_iff _).mp inferInstance)
-  let H := familyHomotopyEndpointTransport (functorHomotopyRefl (i ≫ f)) rfl he
+  let H := familyHomotopyEndpointTransport (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl (i ≫ f)) rfl he
   have hH : H.h = fst A (Δ[1] : SSet.{u}) ≫ i ≫ f :=
     familyHomotopyEndpointTransport_h _ _ _
   let ex := KanRelativeLifting.exists_extension i hp f g H

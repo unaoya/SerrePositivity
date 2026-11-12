@@ -19,30 +19,30 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 private theorem lowerNativeCoordinateReflection
-    (A B : (Δ[2] : SSet.{u + 1}) ⟶ SpaceInfinity.{u})
+    (A B : (Δ[2] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
     (hf : stdSimplex.δ (2 : Fin 3) ≫ A = stdSimplex.δ (2 : Fin 3) ≫ B)
     (hg : stdSimplex.δ (0 : Fin 3) ≫ A = stdSimplex.δ (0 : Fin 3) ≫ B)
-    (hn : HEq (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+    (hn : HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         ((SSet.yonedaEquiv A).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         ((SSet.yonedaEquiv B).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))) :
     HEq ((SSet.yonedaEquiv A).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
       ((SSet.yonedaEquiv B).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
-  have hs := congrArg (fun f : (Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} =>
+  have hs := congrArg (fun f : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} =>
     (SSet.yonedaEquiv f).obj ⟨ULift.up 0⟩) hf
-  have ht := congrArg (fun f : (Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} =>
+  have ht := congrArg (fun f : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} =>
     (SSet.yonedaEquiv f).obj ⟨ULift.up 1⟩) hg
   have hs' : (SSet.yonedaEquiv A).obj ⟨ULift.up 0⟩ =
       (SSet.yonedaEquiv B).obj ⟨ULift.up 0⟩ := by
-    simpa [stdSimplex.yonedaEquiv_δ_comp, SpaceInfinity, SimplicialObject.δ,
-      Coherent.simplex_map_obj, SimplexCategory.δ] using hs
+    simpa [stdSimplex.yonedaEquiv_δ_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity, SimplicialObject.δ,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_obj, SimplexCategory.δ] using hs
   have ht' : (SSet.yonedaEquiv A).obj ⟨ULift.up 2⟩ =
       (SSet.yonedaEquiv B).obj ⟨ULift.up 2⟩ := by
-    simpa [stdSimplex.yonedaEquiv_δ_comp, SpaceInfinity, SimplicialObject.δ,
-      Coherent.simplex_map_obj, SimplexCategory.δ] using ht
+    simpa [stdSimplex.yonedaEquiv_δ_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity, SimplicialObject.δ,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplex_map_obj, SimplexCategory.δ] using ht
   exact verdierNativeReadout_vertex_heq hs' ht' _ _ hn
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierLowerCanonicalLongSpace d) _⦋0⦌)
 
 /-- 概要：正規化下側の第一短辺は元の下側の全第一短辺。
 方針：同じ実ホーンの第一包含へ制限する。
@@ -76,18 +76,18 @@ theorem verdierLowerCanonicalFamily_last :
 方針：全短辺の等式を指定頂点で評価する。
 規約：元の時刻を保持。使われ方：有限二胞体の第一面条件。 -/
 theorem verdierLowerCanonicalFamily_vertex_first (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierLowerCanonicalFamily d ℓ) k =
-      stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierFullSLowerDeformation d).h k := by
-  rw [← familyAtVertex_precomp, ← familyAtVertex_precomp,
+    stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) k =
+      stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp,
     verdierLowerCanonicalFamily_first]
 
 /-- 概要：各時刻の第二短辺は元の下側の同じ時刻の面。
 方針：全短辺の等式を指定頂点で評価する。
 規約：元の時刻を保持。使われ方：有限二胞体の第二面条件。 -/
 theorem verdierLowerCanonicalFamily_vertex_last (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    stdSimplex.δ (0 : Fin 3) ≫ familyAtVertex (verdierLowerCanonicalFamily d ℓ) k =
-      stdSimplex.δ (0 : Fin 3) ≫ familyAtVertex (verdierFullSLowerDeformation d).h k := by
-  rw [← familyAtVertex_precomp, ← familyAtVertex_precomp,
+    stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierLowerCanonicalFamily d ℓ) k =
+      stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp,
     verdierLowerCanonicalFamily_last]
 
 /-- 概要：同じ実読出しの正規化下側と元の下側の全 native 長 Hom は各時刻で一致。
@@ -96,15 +96,15 @@ theorem verdierLowerCanonicalFamily_vertex_last (k : (Δ[1] : SSet.{u + 1}) _⦋
 使われ方：下側有限端点の第三照合条件。 -/
 theorem verdierLowerCanonicalReadout_vertex_native
     (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
-    (hfull : L ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
     (hL : VerdierLowerNativeReadoutRecovery d L)
     (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌) :
-    HEq ((SSet.yonedaEquiv (familyAtVertex
+    HEq ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
       (verdierLowerCanonicalFamily d (verdierLowerCanonicalReadout d L hfull)) k)).map
         ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
-      ((SSet.yonedaEquiv (familyAtVertex (verdierFullSLowerDeformation d).h k)).map
+      ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierFullSLowerDeformation d).h k)).map
         ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
   exact lowerNativeCoordinateReflection _ _
     (verdierLowerCanonicalFamily_vertex_first d (verdierLowerCanonicalReadout d L hfull) k)

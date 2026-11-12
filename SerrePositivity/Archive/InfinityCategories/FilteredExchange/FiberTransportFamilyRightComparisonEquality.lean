@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportFamilyRightComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberWitnessRestriction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberDataEquality
-public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TransformationFamilyDiagram
 
 /-!
 概要：元の二輸送の右結合 prism の指定比較を、既存の同じ endpointIso へ厳密に戻す。

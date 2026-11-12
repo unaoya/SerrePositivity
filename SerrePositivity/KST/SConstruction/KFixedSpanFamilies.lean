@@ -20,10 +20,10 @@ open scoped Simplicial
 variable (X Y : StableModel.{u}) {T U : SSet.{u}} (j : T ⟶ U) [Mono j]
   (f : ∀ n, U ⟶ (PointedObject.basedHom ((kOmegaSpectrum X).level n).space
     ((kKanSequence Y).level n).space).right)
-  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum X).level n).space)
+  (d : ∀ n, U ⟶ (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum X).level n).space)
     ((kKanSequence Y).level (n + 1)).space).right)
   (a : ∀ n, SSet.Homotopy (d n)
-    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
+    (f (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum X).sigma n)
       ((kKanSequence Y).level (n + 1)).space))
   (b : ∀ n, SSet.Homotopy (d n)
     (f n ≫ RawSpectrumMapping.step (kOmegaSpectrum X) (kKanSequence Y) n))

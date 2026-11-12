@@ -26,9 +26,9 @@ structure FamilyCorrectionSpanData {U E : SSet.{u}} {s a b : U ⟶ E}
   homotopy : SSet.Homotopy a b
   /-- 二つの元の円柱を全体として二面に保つ実三角形。 -/
   triangle : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy homotopy))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy homotopy))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K))
 
 /-- 元の全 span 三角形を同じパラメータ付き実二単体へ戻す。 -/
 def FamilyCorrectionSpanData.realization {U E : SSet.{u}} {s a b : U ⟶ E}
@@ -56,11 +56,11 @@ lemma FamilyCorrectionSpanData.realization_composite {U E : SSet.{u}} {s a b : U
 /-- 元の二円柱から、指定した全二辺を保つ実比較円柱と三角形を構成する。 -/
 def familySpanComparisonData {U E : SSet.{u}} [KanComplex E] {s a b : U ⟶ E}
     (H : SSet.Homotopy s a) (K : SSet.Homotopy s b) : FamilyCorrectionSpanData H K := by
-  let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingSpanComposition
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K))
-  let V := simplicialHomotopyOfFunctorEdge d.edge.toTruncated
-  have hV : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy V) =
+  let d := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.kanMappingSpanComposition
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K))
+  let V := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge d.edge.toTruncated
+  have hV : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy V) =
       SSet.HomotopyCategory.homMk d.edge := by
     congr 1
     apply SSet.Truncated.Edge.ext
@@ -68,17 +68,17 @@ def familySpanComparisonData {U E : SSet.{u}} [KanComplex E] {s a b : U ⟶ E}
     rw [curry_uncurry, Equiv.apply_symm_apply]
     rfl
   refine ⟨V, SSet.Edge.CompStruct.ofTruncated
-    (compStruct_nonempty_of_homMk_fac ?_).some⟩
-  change SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) ≫
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy V) =
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy K)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac ?_).some⟩
+  change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) ≫
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy V) =
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K)
   rw [hV]
   have hinv : SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy H) ≫ SSet.HomotopyCategory.homMk d.inverse = 𝟙 _ :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) ≫ SSet.HomotopyCategory.homMk d.inverse = 𝟙 _ :=
     (SSet.HomotopyCategory.homMk_comp_homMk d.inverseLeft).trans
       (SSet.HomotopyCategory.homMk_id _)
   have htri : SSet.HomotopyCategory.homMk d.inverse ≫
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy K) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K) =
       SSet.HomotopyCategory.homMk d.edge :=
     SSet.HomotopyCategory.homMk_comp_homMk d.triangle
   rw [← htri, ← Category.assoc, hinv, Category.id_comp]
@@ -92,15 +92,15 @@ def familyCorrectionSpanData {U E : SSet.{u}} [KanComplex E] {s a b : U ⟶ E}
   | nil s =>
       cases d with
       | nil =>
-          refine ⟨functorHomotopyRefl s, SSet.Edge.CompStruct.ofTruncated
-            (compStruct_nonempty_of_homMk_fac ?_).some⟩
+          refine ⟨_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl s, SSet.Edge.CompStruct.ofTruncated
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac ?_).some⟩
           change SSet.Truncated.HomotopyCategory.homMk
-              (functorEdgeOfSimplicialHomotopy (functorHomotopyRefl s)) ≫
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl s)) ≫
             SSet.Truncated.HomotopyCategory.homMk
-              (functorEdgeOfSimplicialHomotopy (functorHomotopyRefl s)) =
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl s)) =
             SSet.Truncated.HomotopyCategory.homMk
-              (functorEdgeOfSimplicialHomotopy (functorHomotopyRefl s))
-          rw [functorHomotopyRefl_hom]
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl s))
+          rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyRefl_hom]
           exact Category.comp_id _
       | cons K rest => exact familySpanComparisonData _ _
   | cons H tail => exact familySpanComparisonData _ _

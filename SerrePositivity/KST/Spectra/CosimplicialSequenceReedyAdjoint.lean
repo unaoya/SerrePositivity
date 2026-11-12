@@ -54,7 +54,7 @@ lemma level_reedyTerminal (D : CosimplicialObject KanSequence.{u}) (n : ℕ) :
 /-- 元の随伴構造に次段の置換単位を合成した自然変換。 -/
 def originalAdjoint (D : CosimplicialObject KanSequence.{u}) (n : ℕ) :
     originalLevel D n ⟶ level D (n + 1) ⋙ ihom PointedSimplicialSet.circle.{u} where
-  app j := _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((D.obj j).level n).space
+  app j := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((D.obj j).level n).space
       ((D.obj j).level (n + 1)).space ((D.obj j).sigma n) ≫
     (ihom PointedSimplicialSet.circle.{u}).map ((levelUnit D (n + 1)).app j)
   naturality i j f := by

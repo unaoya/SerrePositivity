@@ -55,8 +55,8 @@ variable (hK : SSet.modelCategoryQuillen.J.rlp (terminal.from K))
 def build : Data F G := by
   have hc : SSet.stdSimplex.δ (0 : Fin 2) ≫ curry G.h =
       SSet.stdSimplex.δ (0 : Fin 2) ≫ curry F.h :=
-    (LargeParameterSquare.edge_one G).trans (LargeParameterSquare.edge_one F).symm
-  let ht := KanTwoHornLift.exists_triangle (terminal.from ((ihom T).obj K))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one G).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one F).symm
+  let ht := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exists_triangle (terminal.from ((ihom T).obj K))
     (SimplexParameterHom.native_kan T K hK) (curry G.h) (curry F.h)
     (terminal.from _) hc (terminal.hom_ext _ _) (terminal.hom_ext _ _)
   exact ⟨ht.choose, ht.choose_spec.1, ht.choose_spec.2.1⟩
@@ -90,9 +90,9 @@ private lemma vertex_one :
 def comparison : SSet.Homotopy f g :=
   CurriedHomotopy.ofEdge (SSet.stdSimplex.δ (2 : Fin 3) ≫ d.triangle)
     (by rw [← Category.assoc, vertex_zero, Category.assoc, d.face_one]
-        exact LargeParameterSquare.edge_zero F)
+        exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero F)
     (by rw [← Category.assoc, vertex_one, Category.assoc, d.face_zero]
-        exact LargeParameterSquare.edge_zero G)
+        exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_zero G)
 
 lemma family_two : T ◁ SSet.stdSimplex.δ (2 : Fin 3) ≫ family F G d =
     (comparison F G d).h := by

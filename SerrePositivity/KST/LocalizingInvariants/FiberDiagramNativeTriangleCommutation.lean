@@ -43,45 +43,45 @@ def nativeRightCanonicalPre := SpectrumTriangleNormalization.canonicalPre
 
 lemma nativeRightLowerPost_comp :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f)) ≫
       SpectrumMappingPath.arrowHom (nativeRightLowerRealization f).path =
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPost f)) :=
   SpectrumTriangleNormalization.post_commutation _ _ _ _ _ _ _
 
 lemma nativeRightUpperPre_eq :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f)) =
     SpectrumMappingPath.arrowHom (nativeRightUpperRealization f).path ≫
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPre f)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightCanonicalPre f)) :=
   SpectrumTriangleNormalization.pre_commutation _ _ _ _ _ _ _
 
 lemma rightAfterBottom_native :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (rightAfterBottom f))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (rightAfterBottom f))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightLowerPost f))) := by
   apply HomotopyArrow.congr
-  have he : squareTriangle 1 ≫ (rightComparisonHomotopy f).h =
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (rightComparisonHomotopy f).h =
       SSet.yonedaEquiv.symm (rightLower f) := by
     simpa only [Equiv.symm_apply_apply] using
       congrArg SSet.yonedaEquiv.symm (rightLower_triangle f)
-  change SquareDiagonal.postShape ≫ squareTriangle 1 ≫ (rightComparisonHomotopy f).h = _
+  change SquareDiagonal.postShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ (rightComparisonHomotopy f).h = _
   rw [he]
   rfl
 
 lemma rightBeforeTop_native :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (rightBeforeTop f))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (rightBeforeTop f))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f))) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (nativeRightUpperPre f))) := by
   apply HomotopyArrow.congr
-  have he : squareTriangle 0 ≫ (rightComparisonHomotopy f).h =
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (rightComparisonHomotopy f).h =
       SSet.yonedaEquiv.symm (rightUpper f) := by
     simpa only [Equiv.symm_apply_apply] using
       congrArg SSet.yonedaEquiv.symm (rightUpper_triangle f)
-  change SquareDiagonal.preShape ≫ squareTriangle 0 ≫ (rightComparisonHomotopy f).h = _
+  change SquareDiagonal.preShape ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ (rightComparisonHomotopy f).h = _
   rw [he]
   rfl
 

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -41,12 +41,12 @@ lemma normalizedTensorConeData_equation_pair {n : ℕ}
       rw [hb', normalizedTensorConeObj_succ]
     have he := normalizedTensorConeData_hom_mixed A X Y c I a b 0 hI ha hb hk ha0 h0
     simp only [Int.negOnePow_zero, one_smul] at he
-    have hd := gradedHom_differential_heq (A := A) hx hy rfl _ _ he
+    have hd := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_differential_heq (A := A) hx hy rfl _ _ he
     have hz := normalizedTensorElementSelectedCochainAtMax_closed A X Y c
       (withoutFirst I) hJ hcard
-    have he0 := gradedHom_zero_heq (A := A) (k := 0 + 1) (l := 0 + 1) hx hy rfl
+    have he0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (k := 0 + 1) (l := 0 + 1) hx hy rfl
     have heq := eq_of_heq (hd.trans ((heq_of_eq hz).trans he0.symm))
-    exact heq.trans (SimplexData.rhs_of_card_two _ I a b 0 hI ha hb hk hc).symm
+    exact heq.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.rhs_of_card_two _ I a b 0 hI ha hb hk hc).symm
   · exact normalizedTensorConeData_equation_without_zero A X Y c I h0
 
 end SerrePositivity.EInfinity.ComplexLimits

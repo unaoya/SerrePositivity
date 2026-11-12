@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.DifferentialGraded.Quotient.DerivedComparison.Filtration
-public import SerrePositivity.InfinityCategories.Derived.DGQuotientZeroObjects
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuotientZeroObjects
 
 /-!
 概要：商合成を、始域の全対象を殺す実 dg 商を経由する厳密な四角形にする。
@@ -56,7 +56,7 @@ lemma dgNullCornerComparison_epsilon (x : D) :
 
 /-- 全対象商の元の対象は、同じ dg nerve の実零頂点。Perf 値の零性は別の接続。 -/
 lemma dgNullCorner_vertex_isZero (x : dgNullCorner (D := D)) :
-    IsZeroVertex (X := dgQuotientNerve R D Set.univ) (DGNerve.Simplex.vertex x) :=
-  dgQuotientKilledVertex_isZero R D Set.univ ⟨x.val, Set.mem_univ x.val⟩
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuotientNerve R D Set.univ) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuotientKilledVertex_isZero R D Set.univ ⟨x.val, Set.mem_univ x.val⟩
 
 end SerrePositivity.KST.LocalizingInvariants

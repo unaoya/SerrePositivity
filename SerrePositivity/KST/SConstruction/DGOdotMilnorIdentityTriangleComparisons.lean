@@ -24,23 +24,23 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 方針：同じ元四境界を使った二短辺 prism を取る。
 規約：元両二単体を選び直さない。使われ方：共有対角を合わせる二つの実比較。 -/
 def triangleHomotopy (j : Fin 2) : SSet.Homotopy
-    (squareTriangle j ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
-    (squareTriangle j ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) :=
   squareFrameTriangleHomotopy (squareFrameComparison R d v) j
 
 /-- 概要：同じ元上下二胞体の比較は元実ホモトピーの可逆な辺。
 方針：元四側面の可逆性を使う。
 規約：元二胞体・元実比較を保持。使われ方：全二胞体比較の同型構造。 -/
 lemma triangleHomotopy_isInvertible (j : Fin 2) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy (triangleHomotopy R d v j)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (triangleHomotopy R d v j)) :=
   squareFrameTriangleHomotopy_isInvertible (squareFrameComparison R d v) j
 
 /-- 概要：元実右面と絶対恒等面の上下二単体全体の指定比較。
 方針：同じ元 prism 比較の可逆な辺の類を使う。
 規約：上下の共有対角の一致は未主張。使われ方：全右面比較の二つの成分。 -/
-def triangleComparison (j : Fin 2) : FunctorIso
-    (squareTriangle j ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
-    (squareTriangle j ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) :=
+def triangleComparison (j : Fin 2) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle j ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square) :=
   squareFrameTriangleComparison (squareFrameComparison R d v) j
 
 /-- 概要：元上下比較の二短辺制限は指定元側面を全単体で保持する。

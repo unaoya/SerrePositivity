@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.EndpointFixedEdgeSquares
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-! # 四つの元の実三角形からの端点固定辺比較
 概要：二組の構造三角形と二つの比較三角形から、二つの指定比較辺を実比較する。
@@ -50,7 +50,7 @@ lemma fourTriangleComparison_class :
 def fourTriangleComparisonTriangle : SSet.Edge.CompStruct projected (SSet.Edge.id d) previous := by
   apply SSet.Edge.CompStruct.ofTruncated
   apply Nonempty.some
-  apply compStruct_nonempty_of_homMk_fac
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac
   change SSet.HomotopyCategory.homMk projected ≫
     SSet.HomotopyCategory.homMk (SSet.Edge.id d) = SSet.HomotopyCategory.homMk previous
   rw [SSet.HomotopyCategory.homMk_id, Category.comp_id]

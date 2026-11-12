@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamilyNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FiberTransportFamilyNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberTransportFamilyPrismIdentity
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorAction
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorAction
 public import SerrePositivity.KST.Spectra.SuspensionLoop
 
 /-!
@@ -20,9 +20,9 @@ namespace SerrePositivity.KST.Spectra.InternalHomExchange
 @[reassoc]
 lemma suspension_strength (X A Y : PointedSimplicialSet.{u}) :
     suspensionHom X ((ihom A).obj Y) ≫
-        (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} A Y) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension Y)).hom =
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso X A Y).hom ≫ (ihom A).map (suspensionHom X Y) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensorHom_strength PointedSimplicialSet.circle.{u} X A Y
+        (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map PointedSimplicialSet.circle.{u} A Y) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension Y)).hom =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso X A Y).hom ≫ (ihom A).map (suspensionHom X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.tensorHom_strength PointedSimplicialSet.circle.{u} X A Y
 
 end SerrePositivity.KST.Spectra.InternalHomExchange

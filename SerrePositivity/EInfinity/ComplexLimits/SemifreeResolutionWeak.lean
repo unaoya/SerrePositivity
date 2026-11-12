@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeRingEvaluation
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInvertsQuasiIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInvertsQuasiIso
 public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
@@ -20,25 +20,25 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded DGNerve SSet
-open DGNerve.HomotopyComparison
+open CategoryTheory DifferentialGraded SSet
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexSemifreeResolutionInfinity_invertsQuasiIso
-    {x y : (dgNerve A (Complex A)) _⦋0⦌}
-    (e : Truncated.Edge (X := (truncation 2).obj (dgNerve A (Complex A))) x y)
-    (he : QuasiIso ((closedToComplex A).map (edgeClosed e))) :
-    IsInvertibleEdge (X := derivedInfinityCategory A)
+    {x y : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)) _⦋0⦌}
+    (e : Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))) x y)
+    (he : QuasiIso ((closedToComplex A).map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
       (e.map ((truncation 2).map (complexSemifreeResolutionInfinity A))) := by
-  have hm : moduleQuasiIso A PUnit.{1} ((ringConstantDG A).onClosed.map (edgeClosed e)) := by
+  have hm : moduleQuasiIso A PUnit.{1} ((ringConstantDG A).onClosed.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e)) := by
     apply (ringModuleQuasiIso_iff A _).mpr
     change QuasiIso ((closedToComplex A).map
       (((ringConstantDG A).comp (moduleEvaluationDG A PUnit.{1} PUnit.unit)).onClosed.map
-        (edgeClosed e)))
+        (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.edgeClosed e)))
     rw [ringConstantDG_comp_evaluation]
     exact he
-  have h := dgModuleResolvedInfinity_invertsQuasiIso A (Complex A) PUnit.{1}
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity_invertsQuasiIso A (Complex A) PUnit.{1}
     (ringConstantDG A) e hm
   exact h.map (semifreeRingEvaluationInfinity A)
 

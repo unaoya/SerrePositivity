@@ -12,10 +12,10 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
-  (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B)
+  (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj) (hD : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj)
 
 /-- 元の第一射影を商とする、同じ lax pullback の実 Cat^perf 列。 -/
 def tammePerfectSequence : PerfectVerdierSequence.{u} :=

@@ -37,14 +37,14 @@ lemma boundaryReducedRealizationMap_localized_isIso (r : ℕ)
 lemma boundaryKanRealizationMap_piIsomorphism (r : ℕ)
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map f))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (((boundaryKanRealizationFunctor r).map f).right) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (((boundaryKanRealizationFunctor r).map f).right) :=
   pointedKanReplacement_map_piIsomorphism_of_localized_isIso _
     (boundaryReducedRealizationMap_localized_isIso f r hf)
 
 /-- 零段の loop においても、元の射は全基点 π_* 同型を誘導する。 -/
 lemma boundaryKSpaceMap_piIsomorphism
     (hf : IsIso (AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor 1).map f))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((boundaryKSpaceFunctor.map f).right) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((boundaryKSpaceFunctor.map f).right) :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     ((boundaryKanRealizationFunctor 0).map f) (boundaryKanRealizationMap_piIsomorphism f 0 hf)
 

@@ -26,21 +26,21 @@ variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] [Quiver.IsThin (Quiver.FreeGroupoid Q)] (X Y : Q)
 
 lemma hammockDiagram_obj_isWeaklyContractible (S : Finset Q) :
-    IsWeaklyContractible ((hammockDiagram T X Y).obj S) := by
-  let := FiniteQuiver.quiver (hull T X Y S)
-  change IsWeaklyContractible (colimit ((graphWordDiagram T X Y).flip.obj S))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible ((hammockDiagram T X Y).obj S) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y S)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (colimit ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteBidiagram.graphWordDiagram T X Y).flip.obj S))
   rw [wordDiagram_eq]
-  exact QuiverTree.finite_colimit_isWeaklyContractible T (hull T X Y S)
-    (QuiverTree.endpointHull_closed T X Y S) (left T X Y S) (right T X Y S)
+  exact QuiverTree.finite_colimit_isWeaklyContractible T (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.hull T X Y S)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_closed T X Y S) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.left T X Y S) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RootedFiniteCategory.right T X Y S)
 
 include T in
 lemma colimit_isWeaklyContractible :
-    IsWeaklyContractible (colimitGraph (⊤ : MorphismProperty (Paths Q))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (⊤ : MorphismProperty (Paths Q))
       ((Paths.of Q).obj X) ((Paths.of Q).obj Y)) := by
   have h := finiteSubsetColimit_isWeaklyContractible (hammockDiagram T X Y)
     (hammockDiagram_obj_isWeaklyContractible T X Y)
   let e := hammockColimitIso T X Y
-  have he := (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
+  have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
   have ht : e.hom ≫ terminal.from _ = terminal.from _ := terminal.hom_ext _ _
   apply he.cancel_left
   rw [ht]

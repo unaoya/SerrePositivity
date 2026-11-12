@@ -38,7 +38,7 @@ def pointedNaturalityCompositionSecondEdge {J : Type v} [Category J]
       (familyVertex (sY ≫ L.map g)) (familyVertex (B.map g ≫ sZ))) :
     (PointedObject.basedHom (B.obj X) (L.obj Z)).right.Edge
       (familyVertex (B.map f ≫ sY ≫ L.map g)) (familyVertex (B.map (f ≫ g) ≫ sZ)) :=
-  (e.map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (B.map f) (L.obj Z)).right).ofEq
+  (e.map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (B.map f) (L.obj Z)).right).ofEq
     (familyVertex_pre (B.map f) (sY ≫ L.map g))
     ((familyVertex_pre (B.map f) (B.map g ≫ sZ)).trans
       (congrArg familyVertex (by rw [← Category.assoc, ← B.map_comp])))

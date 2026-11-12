@@ -101,7 +101,7 @@ def sequentialBFArrowNext : SequentialBFArrowStage f (n + 1) :=
 規約：既存の BF 型と段の厳密な射を保持する。
 使われ方：K-B-S2 の一般化から旧 API への特殊化。 -/
 def sequentialBFArrowNextSigma :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension s.level.space ⟶ (sequentialBFArrowNext f n s).level.space :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension s.level.space ⟶ (sequentialBFArrowNext f n s).level.space :=
   sequentialBFKanArrowNextSigma (sequentialBFArrowToKanHom f) n s.toKanStage
 
 /-- 概要：同じ次段構造射の単射性は一般化された実構成から従う。

@@ -21,29 +21,29 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve DoldKanComparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexIdentityDoldKanVertex_pinched (X : Complex A) :
-    (doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
       (ULift.up (complexIdentityDoldKanVertex A X)) =
-    pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)) := by
-  let s : StandardSimplex A X X 0 := standardConstant
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)) := by
+  let s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex A X X 0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant
     (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0
   have h := congrArg (fun f : SSet.uliftFunctor.{u + 1, u}.obj
-      (standardHomSpace (R := A) (D := Complex A) X X) ⟶
-        DGNerve.pinchedHom A (Complex A) X X => f.app (Opposite.op ⦋0⦌) (ULift.up s))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardHomSpace (R := A) (D := Complex A) X X) ⟶
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X X => f.app (Opposite.op ⦋0⦌) (ULift.up s))
     (standardDoldKanPinchedComparison (R := A) (D := Complex A) X X)
-  change (doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
       (ULift.up (complexIdentityDoldKanVertex A X)) =
-    pinchedClosedStandardSimplex A (Complex A) ((complexToClosed A).map (𝟙 X)) 0 at h
-  exact h.trans (pinchedClosedStandardSimplex_zero A (Complex A) _)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedStandardSimplex A (Complex A) ((complexToClosed A).map (𝟙 X)) 0 at h
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedStandardSimplex_zero A (Complex A) _)
 
 lemma normalizedTensorAugmentationVertex_identity (X : Complex A) :
     normalizedTensorAugmentationVertex A X =
-      pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)) := by
-  change (doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso (R := A) (D := Complex A) X X).hom.app (Opposite.op ⦋0⦌)
     (ULift.up (normalizedSimplexTensorHomEquiv A X X ⦋0⦌
       ((normalizedSimplexTensorAugmentation A X).app ⦋0⦌))) = _
   rw [normalizedTensorAugmentation_gamma_zero_eq]
@@ -51,9 +51,9 @@ lemma normalizedTensorAugmentationVertex_identity (X : Complex A) :
 
 lemma normalizedTensorUniversalSimplex_augmentation_identity (X : Complex A)
     (n : SimplexCategory) :
-    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap
+    normalizedTensorUniversalSimplex A X n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap
       (homPostcompose X ((normalizedSimplexTensorAugmentation A X).app n)) =
-    SSet.const (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
+    SSet.const (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
   rw [normalizedTensorUniversalSimplex_augmentation, normalizedTensorAugmentationVertex_identity]
 
 end SerrePositivity.EInfinity.ComplexLimits

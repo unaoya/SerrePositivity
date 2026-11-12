@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (X : (operad A).Algebra) {Y Z : (operad A).Algebra}
 
 def sourceFramePostcomposeIndexMap (g : Y ⟶ Z) :
@@ -43,9 +43,9 @@ lemma sourceFrameReducedHammockNerveMap_postcompose (g : Y ⟶ Z) :
     (weakEquivalences (operad A).Algebra) q.obj q.augmentation q.augmentation_weakEquivalence
       (fun a => q.homotopicallyConstant a) g
   change sourceFramePostcomposeIndexMap A X g ≫
-      (sourceFrameLeftRoofNerveMap A X Z ≫ algebraHammockGraphInclusion A LeftRoof.word X Z) =
-    (sourceFrameLeftRoofNerveMap A X Y ≫ algebraHammockGraphInclusion A LeftRoof.word X Y) ≫
-      postcomposePointMap X (arrowMap (weakEquivalences (operad A).Algebra) g) at h
+      (sourceFrameLeftRoofNerveMap A X Z ≫ algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Z) =
+    (sourceFrameLeftRoofNerveMap A X Y ≫ algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences (operad A).Algebra) g) at h
   have h' := congrArg (fun k => k ≫ (algebraHammockReductionIso A X Z).hom) h
   rw [← sourceFrameLeftRoofNerveMap_normalization, ← sourceFrameLeftRoofNerveMap_normalization]
   dsimp only [algebraReducedHammockPostcompose, reducedPostcomposeMap]

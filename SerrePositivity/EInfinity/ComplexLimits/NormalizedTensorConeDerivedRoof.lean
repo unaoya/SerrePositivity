@@ -46,9 +46,9 @@ lemma normalizedTensorElementDerivedRoofFamily_arrow :
       Arrow.mk (normalizedTensorElementDerivedRoof A X Y) := by
   unfold normalizedTensorElementDerivedRoofFamily complexOrdinaryDerivedConstantIso
   exact arrow_transport_eq
-    (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+    (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
       (complexOrdinaryDerivedConstant_eq A (normalizedTensorElementIndex A X Y) X))
-    (congrArg (fun f => SSet.HomotopyCategory.mk (functorVertex f))
+    (congrArg (fun f => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
       (complexOrdinaryDerivedConstant_eq A (normalizedTensorElementIndex A X Y) Y))
     (normalizedTensorElementDerivedRoof A X Y)
 

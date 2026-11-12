@@ -18,9 +18,9 @@ namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {A A' Y Y' Z Z' W W' B : PointedSimplicialSet.{u}}
   [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : Z ⟶ Z') (w : W ⟶ W')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : Z ⟶ Z') (w : W ⟶ W')
   (hc : a ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} w = v ≫ a')
   (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
   (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
@@ -32,11 +32,11 @@ variable {A A' Y Y' Z Z' W W' B : PointedSimplicialSet.{u}}
 
 local instance reverseNaturalityInnerKan :
     KanComplex (PointedObject.basedHom CirclePower.space.{u} Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance reverseNaturalityTargetKan : KanComplex (target Z').right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 local instance reverseNaturalityHomKan : KanComplex (PointedObject.basedHom A (target Z')).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の三自然性正方形と保存済み四つの実三角形を保持する、二段の相対ホーン比較。 -/
 def reverseNaturalityComparison :=

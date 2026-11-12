@@ -47,29 +47,29 @@ abbrev one : point.{w} ⟶ ends.{w} := BoundaryOneCotensor.one
 variable {D : Type uD} [Category.{vD} D] (K F : D ⥤ SSet.{w})
 
 def coproduct (d : D) : IsColimit (BinaryCofan.mk
-    ((vertical zero K).app d) ((vertical one K).app d)) :=
+    ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical zero K).app d) ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical one K).app d)) :=
   mapIsColimitOfPreservesOfIsColimit (tensorLeft (K.obj d)) _ _
     HomotopyFunctionComplex.BoundaryOne.isColimit
 
 /-- The actual K(start) × ∂Δ1 parameter keeps both independently given whole endpoint systems. -/
-def glue (a b : NerveBiparameter.System K F) : NerveBiparameter.System (product K ends) F :=
-  NerveBinaryBoundary.glue (product K point) (product K point) (product K ends) F
-    (vertical zero K) (vertical one K) (coproduct K)
+def glue (a b : NerveBiparameter.System K F) : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F :=
+  NerveBinaryBoundary.glue (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical zero K) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical one K) (coproduct K)
     (expand K F point a) (expand K F point b)
 
 lemma glue_zero (a b : NerveBiparameter.System K F) : glue K F a b ≫
-    restriction (product K point) (product K ends) F (vertical zero K) = expand K F point a :=
+    restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical zero K) = expand K F point a :=
   NerveBinaryBoundary.glue_left _ _ _ _ _ _ _ _ _
 
 lemma glue_one (a b : NerveBiparameter.System K F) : glue K F a b ≫
-    restriction (product K point) (product K ends) F (vertical one K) = expand K F point b :=
+    restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical one K) = expand K F point b :=
   NerveBinaryBoundary.glue_right _ _ _ _ _ _ _ _ _
 
-lemma hom_ext {f g : NerveBiparameter.System (product K ends) F}
-    (h₀ : f ≫ restriction (product K point) (product K ends) F (vertical zero K) =
-      g ≫ restriction (product K point) (product K ends) F (vertical zero K))
-    (h₁ : f ≫ restriction (product K point) (product K ends) F (vertical one K) =
-      g ≫ restriction (product K point) (product K ends) F (vertical one K)) : f = g :=
+lemma hom_ext {f g : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F}
+    (h₀ : f ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical zero K) =
+      g ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical zero K))
+    (h₁ : f ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical one K) =
+      g ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K point) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical one K)) : f = g :=
   NerveBinaryBoundary.hom_ext _ _ _ _ _ _ (coproduct K) h₀ h₁
 
 lemma glue_diagonal (a : NerveBiparameter.System K F) : glue K F a a = expand K F ends a := by
@@ -78,12 +78,12 @@ lemma glue_diagonal (a : NerveBiparameter.System K F) : glue K F a a = expand K 
   · rw [glue_one, expand_vertical]
 
 lemma glue_horizontal (V : D ⥤ SSet.{w}) (i : V ⟶ K) (a b : NerveBiparameter.System K F) :
-    glue K F a b ≫ restriction (product V ends) (product K ends) F (horizontal V K i ends) =
+    glue K F a b ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V ends) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i ends) =
       glue V F (a ≫ restriction V K F i) (b ≫ restriction V K F i) := by
   apply hom_ext V F
-  · rw [Category.assoc, restriction_comp, ← commute V K i zero,
+  · rw [Category.assoc, restriction_comp, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.commute V K i zero,
       ← restriction_comp, ← Category.assoc, glue_zero, expand_horizontal, glue_zero]
-  · rw [Category.assoc, restriction_comp, ← commute V K i one,
+  · rw [Category.assoc, restriction_comp, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.commute V K i one,
       ← restriction_comp, ← Category.assoc, glue_one, expand_horizontal, glue_one]
 
 variable (V : D ⥤ SSet.{w}) (i : V ⟶ K) (c : V ⟶ F)
@@ -95,9 +95,9 @@ variable (V : D ⥤ SSet.{w}) (i : V ⟶ K) (c : V ⟶ F)
 include ha hb in
 /-- Shared vertex compatibility is derived from the existing endpoint boundary equations. -/
 lemma common_boundary : glue K F a b ≫
-    restriction (product V ends) (product K ends) F (horizontal V K i ends) =
-    NerveNaturalBoundary.ofNatTrans (product V T) F (projection V T ≫ c) ≫
-      restriction (product V ends) (product V T) F (vertical j V) := by
+    restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V ends) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K ends) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i ends) =
+    NerveNaturalBoundary.ofNatTrans (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) F (projection V T ≫ c) ≫
+      restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V ends) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V) := by
   rw [glue_horizontal, ha, hb, glue_diagonal, ← expand_natural, expand_vertical]
 
 end SerrePositivity.SimplicialModel.NerveMovingIntervalBoundary

@@ -19,37 +19,37 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma fromD_laxArrow_source_zero (x : D.obj _⦋0⦌) :
-    IsZeroSourceArrow (((LaxInclusion.fromD p q) ≫ F2.laxPullbackArrow p.hom q.hom).app
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsZeroSourceArrow (((LaxInclusion.fromD p q) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom).app
       (Opposite.op ⦋0⦌) x) := by
-  change IsZeroVertex ((((LaxInclusion.fromD p q) ≫ F2.laxPullbackArrow p.hom q.hom) ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
-  rw [Category.assoc, F2.laxPullbackArrow_source, ← Category.assoc]
-  change IsZeroVertex (((LaxInclusion.fromD p q ≫ (laxFst p q).hom) ≫ p.hom).app _ x)
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((((LaxInclusion.fromD p q) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))).app (Opposite.op ⦋0⦌) x)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_source, ← Category.assoc]
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (((LaxInclusion.fromD p q ≫ (laxFst p q).hom) ≫ p.hom).app _ x)
   rw [LaxInclusion.fromD_fst]
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Lax.LaxInclusion.zeroC_post p x
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.zeroC_post p x
 
 lemma fromD_laxArrow_target :
-    ((LaxInclusion.fromD p q) ≫ F2.laxPullbackArrow p.hom q.hom) ≫
-      _root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.ArrowTarget.target E.obj = q.hom := by
+    ((LaxInclusion.fromD p q) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.target E.obj = q.hom := by
   rw [Category.assoc]
   change LaxInclusion.fromD p q ≫
-    (F2.laxPullbackArrow p.hom q.hom ≫ evaluateFunctorAt _) = q.hom
-  rw [F2.laxPullbackArrow_target, ← Category.assoc]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _) = q.hom
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow_target, ← Category.assoc]
   change (LaxInclusion.fromD p q ≫ (laxSnd p q).hom) ≫ q.hom = q.hom
   rw [LaxInclusion.fromD_snd, Category.id_comp]
 
 /-- D 包含の後の元の差の関手は q と、全パラメータで同じ関手同型を持つ。 -/
-def fromD_differenceIso : FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q) q.hom := by
-  let a := F2.laxPullbackArrow p.hom q.hom
-  have h : FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q)
-      ((LaxInclusion.fromD p q ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber E.obj (𝟙 _)) := by
+def fromD_differenceIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q) q.hom := by
+  let a := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow p.hom q.hom
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (LaxInclusion.fromD p q ≫ laxDifference p q)
+      ((LaxInclusion.fromD p q ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber E.obj (𝟙 _)) := by
     simpa only [laxDifference, Category.assoc] using
-      FunctorIso.precomp (CofiberFamily.compositionIso E.obj a) (LaxInclusion.fromD p q)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (CofiberFamily.compositionIso E.obj a) (LaxInclusion.fromD p q)
   exact h ≪≫ universalCofiberZeroSourceIso E.obj _ (fromD_laxArrow_source_zero p q) ≪≫
-    eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
       (fromD_laxArrow_target p q))
 
 end SerrePositivity.KST.LocalizingInvariants

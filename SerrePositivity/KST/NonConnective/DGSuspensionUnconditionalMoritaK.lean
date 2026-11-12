@@ -26,20 +26,20 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
 /-- 元の同じ懸垂入力射の主 Perf 延長は同値。 -/
 theorem dgKappaUnconditionalSuspensionPerfectExtension_isEquivalence_of_morita :
     (quasiEquivalencePerfectExtension R _ _
-      (dgKappaSphereClosureSuspensionInputMap R A B
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
         (perfDGInputHomEquiv R A B f) κ hκ).down).IsEquivalence := by
-  let : IsDGPretriangulated R (dgKappaSuspensionKInput R A
-      (dgKappaConeInput_unconditional' R A κ hκ)) :=
-    dgKappaSuspension_isDGPretriangulated R A (dgKappaConeInput_unconditional' R A κ hκ)
-  let : IsDGPretriangulated R (dgKappaSuspensionKInput R B
-      (dgKappaConeInput_unconditional' R B κ hκ)) :=
-    dgKappaSuspension_isDGPretriangulated R B (dgKappaConeInput_unconditional' R B κ hκ)
+  let : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (dgKappaSuspensionKInput R A
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R A κ hκ)) :=
+    dgKappaSuspension_isDGPretriangulated R A (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R A κ hκ)
+  let : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (dgKappaSuspensionKInput R B
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R B κ hκ)) :=
+    dgKappaSuspension_isDGPretriangulated R B (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.dgKappaConeInput_unconditional' R B κ hκ)
   exact dgKappaPerfectExtension_isEquivalence_of_native R _ _ _
     (dgKappaUnconditionalSuspensionInputMap_isQCatEquivalence_of_morita R κ hκ f)
 
 /-- 同じ実懸垂入力射は全主導来 Morita 同値も保つ。 -/
 theorem dgKappaUnconditionalSuspensionDerivedExtension_isEquivalence_of_morita :
-    (dgDerivedExtension R _ _ (dgKappaSphereClosureSuspensionInputMap R A B
+    (dgDerivedExtension R _ _ (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
       (perfDGInputHomEquiv R A B f) κ hκ).down).IsEquivalence := by
   let := dgKappaUnconditionalSuspensionPerfectExtension_isEquivalence_of_morita R κ hκ f
   exact dgKInputDerivedExtension_isEquivalence_of_perfect R _ _ _
@@ -47,15 +47,15 @@ theorem dgKappaUnconditionalSuspensionDerivedExtension_isEquivalence_of_morita :
 /-- 同じ元の実懸垂入力射の固定 K 射は全整数 π 同型。 -/
 theorem dgKappaUnconditionalSuspensionKMap_piIsomorphism_of_morita :
     OmegaSpectrum.PiIsomorphism (dgKInputSpectrumMap R
-      (dgKappaSphereClosureSuspensionInputMap R A B
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
         (perfDGInputHomEquiv R A B f) κ hκ)) := by
   let := dgKappaUnconditionalSuspensionPerfectExtension_isEquivalence_of_morita R κ hκ f
   exact presentedPerfectDGBFMap_morita_piIsomorphism R _
 
 /-- 同じ固定 K の元の辺は Sp で可逆。 -/
 theorem dgKappaUnconditionalSuspensionKMap_isInvertible_of_morita :
-    IsInvertibleEdge (coherentNerveEdge (dgKInputSpectrumMap R
-      (dgKappaSphereClosureSuspensionInputMap R A B
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSpectrumMap R
+      (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
         (perfDGInputHomEquiv R A B f) κ hκ))) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgKappaUnconditionalSuspensionKMap_piIsomorphism_of_morita R κ hκ f)

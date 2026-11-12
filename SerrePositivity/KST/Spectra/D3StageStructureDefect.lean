@@ -50,7 +50,7 @@ local instance d3DefectSpectrumCategory : SimplicialCategory OmegaSpectrum.{u} :
 lemma commonChosenStageRefinedSource_structure_defect (n : ℕ) :
     commonChosenStageRefinedSourceNormalizedIso.{u} n ≪≫
       (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     ((commonProjectionStructureRefinedIso n ≪≫ commonProjectionStructureLoopQIso n) ≪≫
       (commonChosenStageLoopModelCorrection n).symm) ≪≫
         ((commonProjectionStructureLoopQIso n).symm ≪≫
@@ -58,13 +58,13 @@ lemma commonChosenStageRefinedSource_structure_defect (n : ℕ) :
   exact d3Iso_pasting_structure_defect
     (commonChosenStageRefinedSourceNormalizedIso n)
     ((commonChosenStageStructureDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonProjectionStructureRefinedIso n) (commonChosenStageLoopedRefinedSourceIso n)
     (commonProjectionStructureLoopQIso n) (commonChosenStageLoopedCanonicalUnitIso n)
     ((commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     ((commonChosenStageLoopImageComparison n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonChosenStageCanonicalImageUnitIso n)
     (commonChosenStageRefinedSourceNormalized_pasting n)
     (commonChosenStageLoopedRefinedSource_triangle n)

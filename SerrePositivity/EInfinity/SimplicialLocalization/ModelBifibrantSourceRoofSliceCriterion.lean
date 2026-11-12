@@ -29,27 +29,27 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCornerMap :
   nerve (modelBifibrantSourceRoofProductElements X Y q b) ⟶
-    sliceOverCorner (SSet.yonedaEquiv.symm b) (modelBifibrantSourceRoofProjection X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (modelBifibrantSourceRoofProjection X Y q) :=
   (modelBifibrantSourceRoofProductIso X Y q b).hom ≫
     (modelBifibrantSourceRoofDegreeTransportIso X Y q b).inv ≫
-      roofQuillenDegreeCornerMap (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
-        (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+      roofQuillenDegreeCornerMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+        (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
         b (modelBifibrantSourceFrameRoofMap X Y q)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
-    (h : IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCornerMap X Y q b)) :
-    IsWeaklyContractible (modelBifibrantSourceRoofSlice X Y q b) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCornerMap X Y q b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (modelBifibrantSourceRoofSlice X Y q b) := by
   have := modelBifibrantSourceRoofProjection_leftFibration X Y q
   let e := modelBifibrantSourceRoofProductIso X Y q b ≪≫
     (modelBifibrantSourceRoofDegreeTransportIso X Y q b).symm
-  have he := (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
-  apply roofQuillenSlice_weaklyContractible_of_corner_weak (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+  have he := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
+  apply roofQuillenSlice_weaklyContractible_of_corner_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     b (modelBifibrantSourceFrameRoofMap X Y q)
   exact he.cancel_left h
 
@@ -58,8 +58,8 @@ lemma modelBifibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofMap_isLeftCofinal_of_productCorner_weak
     (h : ∀ b : (modelBifibrantSourceRoofTarget X Y q) _⦋0⦌,
-      IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCornerMap X Y q b)) :
-    IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCornerMap X Y q b)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
   (modelBifibrantSourceRoofMap_isLeftCofinal_iff_slices X Y q).2
     (fun b => modelBifibrantSourceRoofSlice_weaklyContractible_of_productCorner_weak X Y q b (h b))
 

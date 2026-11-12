@@ -37,18 +37,18 @@ lemma familyChainCompositionWitness_postcomp_class {U E B : SSet.{u}} {f g : U �
     {c : FamilyHomotopyChain f g} {H : SSet.Homotopy f g}
     (w : FamilyChainCompositionWitness c H) (p : E ⟶ B) :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp H p)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H p)) =
         familyChainCompositeClass (familyHomotopyChainMap c p) := by
-  rw [functorHomotopyPostcomp_hom, familyChainCompositionWitness_class w,
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, familyChainCompositionWitness_class w,
     familyChainCompositeClass_map]
 
 /-- 同じ端点表示の移送は、円柱と全列の合成式を保つ。 -/
 lemma familyCompositeClass_endpointTransport {U E : SSet.{u}} {f g f' g' : U ⟶ E}
     (H : SSet.Homotopy f g) (c : FamilyHomotopyChain f g)
-    (h : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
+    (h : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
       familyChainCompositeClass c) (hs : f' = f) (ht : g = g') :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (familyHomotopyEndpointTransport H hs ht)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (familyHomotopyEndpointTransport H hs ht)) =
     familyChainCompositeClass
       (familyHomotopyChainSourceTransport (familyHomotopyChainTargetTransport c ht) hs) := by
   cases hs

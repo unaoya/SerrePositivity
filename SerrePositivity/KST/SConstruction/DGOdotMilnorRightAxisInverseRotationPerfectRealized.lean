@@ -13,11 +13,11 @@ public import SerrePositivity.KST.SConstruction.DGKNativeValueComparison
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -45,25 +45,25 @@ lemma dgOdotMilnorRightAxisInverseRotationPerfectRealizedFamily_underlying :
 方針：同じ二段実像回収と元 Yoneda 包含則で端点だけを移す。
 規約：元全比較の値を保持。使われ方：Perf 全比較の反映。 -/
 def dgOdotMilnorRightAxisInverseRotationPerfectModuleYonedaComparison :
-    FunctorIso (dgNerve.map (PF) ≫ dgNerve.map (i))
-      (dgNerve.map ((q).comp (dgPerfectYoneda R (Q))) ≫ dgNerve.map (i)) := by
-  let ha := (congrArg dgNerve.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (PF) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((q).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q))) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i)) := by
+  let ha := (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
     ((dgOdotMilnorRightAxisInverseRotationPerfectRealizedFamily_underlying R d).symm.trans
       (dgPerfectModuleUnderlying_inclusion R (Q) (PF)))).trans
-        (dgNerve.map_comp (PF) (i))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp (PF) (i))
   have hb : (q).comp (dgYoneda R (Q)) =
-      ((q).comp (dgPerfectYoneda R (Q))).comp (i) :=
-    (congrArg (fun k => (q).comp k) (dgPerfectYoneda_inclusion R (Q))).symm.trans
-      (strictDGFunctor_comp_assoc (q) (dgPerfectYoneda R (Q)) (i)).symm
-  exact F2.functorIsoOfEq (dgOdotMilnorRightAxisInverseRotationYonedaComparison R d) ha
-    ((congrArg dgNerve.map hb).trans (dgNerve.map_comp _ (i)))
+      ((q).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q))).comp (i) :=
+    (congrArg (fun k => (q).comp k) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda_inclusion R (Q))).symm.trans
+      (strictDGFunctor_comp_assoc (q) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q)) (i)).symm
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgOdotMilnorRightAxisInverseRotationYonedaComparison R d) ha
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map hb).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ (i)))
 
 /-- 概要：元二段全 realization と同じ resolved 射影 Yoneda の全 Perf 比較。
 方針：元全加群比較を同じ充満忠実な Perf 包含で反映する。
 規約：元 cell 始域・元商射影を保持。使われ方：固定 ν への同じ実全比較。 -/
 def dgOdotMilnorRightAxisInverseRotationPerfectYonedaComparison :
-    FunctorIso (dgNerve.map (PF)) (dgNerve.map ((q).comp (dgPerfectYoneda R (Q)))) :=
-  (dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R (Q))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (PF)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((q).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q)))) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R (Q))
     (modulePerfectProjectiveOver R (Q) Set.univ)).preimageFunctorIso
       (dgOdotMilnorRightAxisInverseRotationPerfectModuleYonedaComparison R d)
 
@@ -72,15 +72,15 @@ def dgOdotMilnorRightAxisInverseRotationPerfectYonedaComparison :
 規約：同型の等号を保持。使われ方：元上指定二単体を同じ全比較に保つ。 -/
 lemma dgOdotMilnorRightAxisInverseRotationPerfectYonedaComparison_postcomp :
     (dgOdotMilnorRightAxisInverseRotationPerfectYonedaComparison R d).postcomp
-      (dgNerve.map (i)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i)) =
       dgOdotMilnorRightAxisInverseRotationPerfectModuleYonedaComparison R d :=
-  (dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R (Q))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R (Q))
     (modulePerfectProjectiveOver R (Q) Set.univ)).preimageFunctorIso_postcomp _
 
-local instance : IsDGPretriangulated R (DGOdotGluing R d) :=
-  dgGluingMilnor_isDGPretriangulated R d
-local instance : IsDGPretriangulated R (Q) :=
-  resolvedDGQuotient_isDGPretriangulated R (DGOdotGluing R d)
+local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (DGOdotGluing R d) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
+local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (Q) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotient_isDGPretriangulated R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d)))
 
 /-- 概要：元実逆回転二段 realization は同じ resolved 射影の固定 ν 値と全比較される。
@@ -88,15 +88,15 @@ local instance : IsDGPretriangulated R (Q) :=
 規約：同じ元 resolved 射影・元 cell 始域を保持。
 使われ方：実右面全比較と固定 ν の上指定二単体を接続する終端。 -/
 def dgOdotMilnorRightAxisInverseRotationRealizedNuComparison :
-    FunctorIso
-      (dgNerve.map (PF) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom)
-      (dgNerve.map (q) ≫ dgKNativeValueComparison R (Q)) :=
-  F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (PF) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (q) ≫ dgKNativeValueComparison R (Q)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     ((dgOdotMilnorRightAxisInverseRotationPerfectYonedaComparison R d).postcomp
       (dgKNativePerfectValueEquivalence R (Q)).hom) rfl
     ((congrArg (fun m => m ≫ (dgKNativePerfectValueEquivalence R (Q)).hom)
-      (dgNerve.map_comp (q) (dgPerfectYoneda R (Q)))).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp (q) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (Q)))).trans
         ((Category.assoc _ _ _).trans
-          (congrArg (fun m => dgNerve.map (q) ≫ m)
+          (congrArg (fun m => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (q) ≫ m)
             (dgKNativeValueComparison_eq R (Q)).symm)))
 end SerrePositivity.KST.SConstruction

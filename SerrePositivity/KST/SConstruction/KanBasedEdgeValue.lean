@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.Pointed.GroupoidBasedArrow
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.GroupoidBasedArrow
 public import SerrePositivity.KST.SConstruction.EndpointFixedEdgeCylinders
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-! # Kan 空間の全辺と二面を一つの基点の群で計算する
 概要：全区間写像の値を同じ群に取り、元の実三角形の合成関係を回収する。
@@ -24,12 +24,12 @@ variable (c : (hoFunctor.obj E))
 
 /-- 元の全区間写像を基点の同じ群へ移した値。 -/
 def kanBasedEdgeValue (e : (Δ[1] : SSet.{u}) ⟶ E) : End c :=
-  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow c (SSet.HomotopyCategory.homMk (SSet.Edge.mk' (SSet.yonedaEquiv e)))
+  _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.groupoidBasedArrow c (SSet.HomotopyCategory.homMk (SSet.Edge.mk' (SSet.yonedaEquiv e)))
 
 /-- 元の端点つき辺の表示では、元の同じ射の基点表示を回収する。 -/
 lemma kanBasedEdgeValue_edge {x y : E _⦋0⦌} (a : E.Edge x y) :
     kanBasedEdgeValue c (SSet.yonedaEquiv.symm a.edge) =
-      _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow c (SSet.HomotopyCategory.homMk a) := by
+      _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.groupoidBasedArrow c (SSet.HomotopyCategory.homMk a) := by
   obtain ⟨e, hs, ht⟩ := a
   cases hs
   cases ht
@@ -50,7 +50,7 @@ lemma kanBasedEdgeValue_triangle (T : (Δ[2] : SSet.{u}) ⟶ E) :
     SSet.Edge.CompStruct.δ_zero_yonedaEquiv_symm,
     SSet.Edge.CompStruct.δ_two_yonedaEquiv_symm,
     kanBasedEdgeValue_edge, kanBasedEdgeValue_edge, kanBasedEdgeValue_edge,
-    ← _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
+    ← _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.groupoidBasedArrow_comp, SSet.HomotopyCategory.homMk_comp_homMk t]
 
 /-- 基点から始点へ到達できれば、同じ値を持つ平行辺は元の射の同じ類を表す。 -/
 lemma kanBasedEdgeValue_detects {x y : E _⦋0⦌}
@@ -59,6 +59,6 @@ lemma kanBasedEdgeValue_detects {x y : E _⦋0⦌}
       kanBasedEdgeValue c (SSet.yonedaEquiv.symm b.edge)) :
     SSet.HomotopyCategory.homMk a = SSet.HomotopyCategory.homMk b := by
   rw [kanBasedEdgeValue_edge, kanBasedEdgeValue_edge] at h
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.groupoidBasedArrow_injective c hx _ _ h
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.groupoidBasedArrow_injective c hx _ _ h
 
 end SerrePositivity.KST.SConstruction

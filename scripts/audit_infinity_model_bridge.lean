@@ -1,11 +1,11 @@
-import SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy
-import SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization
-import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests
-import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching
-import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
-import SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction
-import SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies
-import SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BisimplicialCofibrancy
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BoundaryReedyFactorization
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalKanTests
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalMatching
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalRelativeMatching
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.FiniteTensorAdjunction
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LatchingDegeneracies
+import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LocalizedMonoReedy
 import Lean.Util.CollectAxioms
 
 -- IF-W2c: 移動・分割先を定義元で監査し、私有宣言も標準三公理に限る。
@@ -14,14 +14,14 @@ set_option maxHeartbeats 0 in
 run_cmd do
   let env ← getEnv
   let expected : Array Name := #[
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.BisimplicialCofibrancy,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.BoundaryReedyFactorization,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalKanTests,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalMatching,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.FiniteTensorAdjunction,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.LatchingDegeneracies,
-    `SerrePositivity.InfinityCategories.ModelBridge.R72.LocalizedMonoReedy
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BisimplicialCofibrancy,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.BoundaryReedyFactorization,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalKanTests,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalMatching,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalRelativeMatching,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.FiniteTensorAdjunction,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LatchingDegeneracies,
+    `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.LocalizedMonoReedy
   ]
   let forbidModel : Array Name := #[]
   for mod in expected do

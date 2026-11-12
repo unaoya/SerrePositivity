@@ -16,7 +16,7 @@ public import
 @[expose] public section
 open CategoryTheory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.InfinityCategories.F2
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false

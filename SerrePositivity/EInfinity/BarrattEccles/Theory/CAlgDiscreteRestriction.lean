@@ -73,13 +73,13 @@ def discreteAlgebraCoefficientRestrictionIso :
 
 /-- 離散の埋め込みと導来係数制限は、全通常代数の図式上で可換。 -/
 def barrattEcclesDiscrete_restrict :
-    FunctorIso (nerveMap (restrictRingAlgebra f) ≫ discreteCAlgUnderEmbedding S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (restrictRingAlgebra f) ≫ discreteCAlgUnderEmbedding S)
       (discreteCAlgUnderEmbedding T ≫ barrattEcclesRestrict f) := by
   let η := discreteAlgebraCoefficientRestrictionIso f
   let e := algebraCAlgSourceNatTransIso S η.hom fun B => by
     change QuasiIso ((Operad.Algebra.forget (operad S)).map (η.hom.app B))
     infer_instance
-  let r := FunctorIso.precomp (barrattEcclesRestrict_sourceIso f).symm (nerveMap (D T))
-  exact F2.functorIsoOfEq (e ≪≫ r) rfl (Category.assoc _ _ _).symm
+  let r := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (barrattEcclesRestrict_sourceIso f).symm (nerveMap (D T))
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e ≪≫ r) rfl (Category.assoc _ _ _).symm
 
 end SerrePositivity.EInfinity.BarrattEccles

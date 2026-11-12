@@ -1,8 +1,9 @@
 module
 
 public import SerrePositivity.KST.Spectra.AnodyneHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanFibrationLocalizedLifting
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # 局所化同型から K-L9 のホモトピー類への比較
@@ -32,7 +33,7 @@ open SerrePositivity.SimplicialModel
 -/
 theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f := by
   let F := AnodyneKanReplacement.factorization
   let i : A ⟶ F.Z.obj (Arrow.mk f) := F.i.app (Arrow.mk f)
   let p : F.Z.obj (Arrow.mk f) ⟶ B := F.p.app (Arrow.mk f)
@@ -56,7 +57,7 @@ theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [Kan
     ((SSet.modelCategoryQuillen.fibration_iff _).1
       (inferInstance : Fibration (terminal.from B))) hQp
   exact fac ▸ (Spectra.kanPiIsomorphism_of_anodyne i hi).comp
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight p hr)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight p hr)
 
 /--
 概要：局所化可逆な Kan 複体間の射のホモトピー類の具体的な全単射。
@@ -64,11 +65,12 @@ theorem kanPiIsomorphism_of_localized_isIso {A B : SSet.{u}} [KanComplex A] [Kan
 規約：像の基点は射による実際の像とする。
 使われ方：ループの次数移動との同値の合成。
 -/
+@[kerodon 00ZL]
 def kanHomotopyEquivOfLocalizedIso {A B : SSet.{u}} [KanComplex A] [KanComplex B]
     (f : A ⟶ B) (hf : IsIso (AnodyneHomotopy.anodyneQ.map f))
     (a : A _⦋0⦌) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy A n a ≃ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B n (f.app _ a) :=
-  Equiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f rfl)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy A n a ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy B n (f.app _ a) :=
+  Equiv.ofBijective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f rfl)
     (kanPiIsomorphism_of_localized_isIso f hf a n)
 
 end SerrePositivity.KST.Comparison

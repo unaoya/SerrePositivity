@@ -11,10 +11,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeCom
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)
@@ -25,7 +25,7 @@ local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "GS" => G.comp (moduleShiftDG R D 1)
 local notation "δ" => dgModuleNaturalConeConnecting R D F G η
 local notation "γ" => dgModuleNaturalConeRotationHom R D F G η
-local notation "ξ" => dgStrictNatTransComp (γ) (k)
+local notation "ξ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (γ) (k)
 local notation "CD" => dgModuleNaturalConeFunctor R D (CF) (FS) (δ)
 local notation "θ" => dgModuleNaturalConnectingCone R D F G η
 local notation "ρ" => dgModuleNaturalConeRotationInv R D G (CF) (ν)
@@ -42,7 +42,7 @@ lemma dgModuleNaturalConnectingConeRotationInv_inr (x : P) :
     (dgModuleNaturalConeInr_arrow R D (CF) (U) (j) x)).trans
       (dgModuleNaturalConeDesc_inr R D (CF) (U) (GS) (j) (δν)
         (fun _ => 0) (dgModuleNaturalConeRotationInv_boundary R D G (CF) (ν))
-        (by intro x y n z; simp only [compose_zero, zero_compose, smul_zero]) x)
+        (by intro x y n z; simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_zero, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.zero_compose, smul_zero]) x)
 
 /-- 概要：同じ全 connecting cone 比較の包含制限は元全回転比較と connecting の合成。
 方針：元 descent の終辺回収と二回目の元包含回収を合成する。

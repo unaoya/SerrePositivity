@@ -19,13 +19,13 @@ variable (A : Type u) [CommRing A]
 lemma simplexHAGeneratorWord_zero_cell {n : ℕ} (i : SerreCubeGeneratorIndex 0)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b)
     (hI : 2 ≤ ({v 0, b} : Finset (Fin (n + 1))).card)
-    (hmin : v 0 = ({v 0, b} : Finset (Fin (n + 1))).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI))
-    (hmax : b = ({v 0, b} : Finset (Fin (n + 1))).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI)) :
+    (hmin : v 0 = ({v 0, b} : Finset (Fin (n + 1))).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI))
+    (hmax : b = ({v 0, b} : Finset (Fin (n + 1))).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI)) :
     simplexHABeadWordCell A (simplexHAGeneratorWord 0 i v b hb) =
       eqToHom (congrArg (serreCubeComplex A)
         (show 0 = ({v 0, b} : Finset (Fin (n + 1))).card - 2 by simp [ne_of_lt hb])) ≫
           simplexSubsetLambdaCellAt A {v 0, b} (v 0) b hI hmin hmax := by
-  change simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail {b} (Finset.singleton_nonempty b)
+  change simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail {b} (Finset.singleton_nonempty b)
     (v 0) (by intro t ht; simpa only [Finset.mem_singleton.mp ht] using hb)) = _
   have h := simplexHABeadTail_cell A {b} (Finset.singleton_nonempty b) (v 0)
     (by intro t ht; simpa only [Finset.mem_singleton.mp ht] using hb) hI hmin
@@ -37,13 +37,13 @@ lemma simplexHAZeroChainLift_subset_recovery {D : Type v} [DGCategory A D] {n : 
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b)
     (hI : 2 ≤ ({v 0, b} : Finset (Fin (n + 1))).card)
-    (hmin : v 0 = ({v 0, b} : Finset (Fin (n + 1))).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI))
-    (hmax : b = ({v 0, b} : Finset (Fin (n + 1))).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI)) :
+    (hmin : v 0 = ({v 0, b} : Finset (Fin (n + 1))).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI))
+    (hmax : b = ({v 0, b} : Finset (Fin (n + 1))).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI)) :
     simplexHAZeroChainLift A (cubicalLambdaNativeSimplex A F) v b hb =
       (eqToHom (congrArg (serreCubeComplex A)
         (show 0 = ({v 0, b} : Finset (Fin (n + 1))).card - 2 by simp [ne_of_lt hb])) ≫
           simplexSubsetLambdaCellAt A {v 0, b} (v 0) b hI hmin hmax) ≫
-        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
+        F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) := by
   exact (simplexHAZeroChainLift_recovery A F v b hb).trans
     (congrArg (fun f => f ≫ F.map _ _)
       (simplexHAGeneratorWord_zero_cell A PUnit.unit v b hb hI hmin hmax))

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGEnrichedRecovery
-public import SerrePositivity.InfinityCategories.F1.Categories.CatInfinity
-public import SerrePositivity.InfinityCategories.F1.Coherent.NervePostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.NervePostcomposition
 
 /-! # 元の全高次厳密 dg 入力からの Cat∞ 値 Perf 関手
 概要：実単体的豊穣 Perf 関手に γ1 の coherent nerve の関手性を適用する。
@@ -23,17 +23,17 @@ def perfDGInputInfinity : SSet.{max (u + 2) (v + 1)} :=
 
 /-- 出力宇宙の元の厳密 dg 入力の nerve は、局所 Kan 性から ∞ 圏。 -/
 instance perfDGInputInfinity_quasicategory : Quasicategory (perfDGInputInfinity.{u, v} A) :=
-  Coherent.simplicialNerve_quasicategory (PerfDGInput.{u, v} A)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory (PerfDGInput.{u, v} A)
 
 /-- 元の全高次入力を保つ厳密豊穣 Perf 関手から、γ1 で得る Cat∞ 値 ∞ 関手。 -/
 def presentedPerfectDGInfinityFunctor :
-    perfDGInputInfinity.{u, v} A ⟶ CatInfinity.{max (u + 1) v} :=
-  coherentNerveMap (presentedPerfectDGEnrichedFunctor A)
+    perfDGInputInfinity.{u, v} A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CatInfinity.{max (u + 1) v} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (presentedPerfectDGEnrichedFunctor A)
 
 /-- γ1 による実 Perf 関手は、元の dg 入力の頂点を同じ native Perf の頂点へ送る。 -/
 lemma presentedPerfectDGInfinityFunctor_vertex (C : PerfDGInput.{u, v} A) :
-    (presentedPerfectDGInfinityFunctor A).app (op ⦋0⦌) (coherentNerveVertex C) =
-      coherentNerveVertex (presentedPerfectDGQCat A C) :=
-  coherentNerveMap_vertex (presentedPerfectDGEnrichedFunctor A) C
+    (presentedPerfectDGInfinityFunctor A).app (op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex C) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (presentedPerfectDGQCat A C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (presentedPerfectDGEnrichedFunctor A) C
 
 end SerrePositivity.KST.SConstruction

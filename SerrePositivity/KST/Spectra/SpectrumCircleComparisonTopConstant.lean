@@ -16,29 +16,29 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleComparisonTopSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
 /-- 元の一点 BF スペクトルを経由する全パラメータの豊穣合成は、元の零 Hom に定値。 -/
-lemma composition_through_point_constant (X P Y : OmegaSpectrum.{u}) (hP : P = spectrumPoint)
+lemma composition_through_point_constant (X P Y : OmegaSpectrum.{u}) (hP : P = _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)
     {A : SSet.{u}} (f : A ⟶ SimplicialCategory.sHom X P)
     (g : A ⟶ SimplicialCategory.sHom P Y) :
     lift f g ≫ eComp SSet X P Y =
       SSet.const (RawSpectrumMapping.pointedSpace X Y.toKanSequence).basepoint := by
   subst P
   have hf := (mappingPoint_isTerminal X).hom_ext f
-    (toUnit A ≫ (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom)
+    (toUnit A ≫ (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom)
   have hg := (pointMapping_isTerminal Y).hom_ext g
-    (toUnit A ≫ (RawSpectrumMapping.pointedSpace spectrumPoint Y.toKanSequence).hom)
+    (toUnit A ≫ (RawSpectrumMapping.pointedSpace _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint Y.toKanSequence).hom)
   rw [hf, hg, ← comp_lift, Category.assoc]
-  have hc := RawSpectrumMapping.basepoint_composition X spectrumPoint Y.toKanSequence
-  change lift (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom
-    (RawSpectrumMapping.pointedSpace spectrumPoint Y.toKanSequence).hom ≫
-      eComp SSet X spectrumPoint Y = (RawSpectrumMapping.pointedSpace X Y.toKanSequence).hom at hc
+  have hc := RawSpectrumMapping.basepoint_composition X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint Y.toKanSequence
+  change lift (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom
+    (RawSpectrumMapping.pointedSpace _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint Y.toKanSequence).hom ≫
+      eComp SSet X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint Y = (RawSpectrumMapping.pointedSpace X Y.toKanSequence).hom at hc
   rw [hc]
-  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const _ _
 
 /-- 元の比較三単体の Hom 正方形の上辺は、元の一点を経由する同じ合成なので定値。 -/
 lemma circleCompanionComparisonTrace_includeSecond_constant (z : Sp.{u} _⦋0⦌)

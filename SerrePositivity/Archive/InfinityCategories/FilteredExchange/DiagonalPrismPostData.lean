@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DiagonalPrismComparisonWitness
-public import SerrePositivity.InfinityCategories.Core.VertexFiberMap
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.VertexFiberMap
 
 /-!
 概要：底を固定した全空間の射で、同じ実 prism の両端と底を保持する。

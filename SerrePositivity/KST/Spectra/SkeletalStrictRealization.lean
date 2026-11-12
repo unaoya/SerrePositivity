@@ -23,19 +23,19 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 任意の正規化 cochain は、厳密な定数制限を持つ骨格射の cochain。 -/
 theorem exists_strict_realization {K : SSet.{u}} (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] {n : ℕ}
-    (a : K.nonDegenerate (n + 2) → Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1) Y.basepoint)) :
+    (a : K.nonDegenerate (n + 2) → Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1) Y.basepoint)) :
     ∃ (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ Y.right)
       (hf : UnbasedPointedMapping.skeletalInclusion K (n + 1) ≫ f = SSet.const Y.basepoint),
-      _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) = a := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) = a := by
   choose r hr using fun s ↦ Quotient.exists_rep (Additive.toMul (a s))
-  obtain ⟨f, hf, hfr⟩ := _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.exists_map r
+  obtain ⟨f, hf, hfr⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.exists_map r
   refine ⟨f, hf, ?_⟩
   funext s
-  have hs : _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s.val = r s := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) s.val = r s := by
     apply RelativeMorphism.ext
     exact hfr s
-  change _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.additiveClass
-    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s.val) = a s
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.additiveClass
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) s.val) = a s
   rw [hs]
   exact congrArg Additive.ofMul (hr s)
 

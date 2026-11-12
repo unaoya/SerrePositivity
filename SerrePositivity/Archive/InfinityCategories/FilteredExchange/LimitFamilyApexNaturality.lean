@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.LimitConeFamilyReindex
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorCoconeReindex
-public import SerrePositivity.InfinityCategories.Core.ConeRestrictionCocartesianEdge
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorCoconeReindex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.ConeRestrictionCocartesianEdge
 
 /-!
 概要：部分形状への錐族の制限は、元の頂点関手と頂点上の比較円柱を変えない。

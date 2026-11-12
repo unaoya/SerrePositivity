@@ -23,7 +23,7 @@ lemma d3PointedKanMixed_eq_whiskerRight {A B : PointedSimplicialSet.{u}} (i : A 
     (X Y : PointedKanObject.{u}) :
     d3PointedKanMixed i X Y = (d3PointedKanIhom A).map X Y ≫
       eHomWhiskerRight SSet
-        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i X.obj) :
+        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i X.obj) :
           (d3PointedKanIhom B).obj X ⟶ (d3PointedKanIhom A).obj X)
         ((d3PointedKanIhom A).obj Y) := by
   apply SSet.hom_ext
@@ -37,7 +37,7 @@ lemma d3PointedKanMixed_eq_whiskerLeft {A B : PointedSimplicialSet.{u}} (i : A �
     (X Y : PointedKanObject.{u}) :
     d3PointedKanMixed i X Y = (d3PointedKanIhom B).map X Y ≫
       eHomWhiskerLeft SSet ((d3PointedKanIhom B).obj X)
-        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y.obj) :
+        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y.obj) :
           (d3PointedKanIhom B).obj Y ⟶ (d3PointedKanIhom A).obj Y) :=
   (d3PointedKanMixed_eq_whiskerRight i X Y).trans
     (d3PointedKanPre_whiskered i X Y).symm
@@ -45,13 +45,13 @@ lemma d3PointedKanMixed_eq_whiskerLeft {A B : PointedSimplicialSet.{u}} (i : A �
 /-- 元の二つのパラメータ制限の合成は、同じ Kan 対象上でも厳密に合成する。 -/
 lemma d3PointedKanRestriction_comp {A B C : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (j : C ⟶ A) (X : PointedKanObject.{u}) :
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i X.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i X.obj) :
       (d3PointedKanIhom B).obj X ⟶ (d3PointedKanIhom A).obj X) ≫
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j X.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j X.obj) :
       (d3PointedKanIhom A).obj X ⟶ (d3PointedKanIhom C).obj X) =
-    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (j ≫ i) X.obj) := by
+    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (j ≫ i) X.obj) := by
   apply ObjectProperty.hom_ext
-  exact _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp j i X.obj
+  exact _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp j i X.obj
 
 /-- 元の可換なパラメータ正方形は、混合 Hom の全単体の可換正方形を与える。 -/
 lemma d3PointedKanMixed_square {A B C D : PointedSimplicialSet.{u}}
@@ -59,11 +59,11 @@ lemma d3PointedKanMixed_square {A B C D : PointedSimplicialSet.{u}}
     (h : p ≫ i = j ≫ q) (X Y : PointedKanObject.{u}) :
     d3PointedKanMixed i X Y ≫
       eHomWhiskerLeft SSet ((d3PointedKanIhom B).obj X)
-        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed p Y.obj) :
+        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed p Y.obj) :
           (d3PointedKanIhom A).obj Y ⟶ (d3PointedKanIhom C).obj Y) =
     d3PointedKanMixed j X Y ≫
       eHomWhiskerRight SSet
-        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q X.obj) :
+        (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q X.obj) :
           (d3PointedKanIhom B).obj X ⟶ (d3PointedKanIhom D).obj X)
         ((d3PointedKanIhom C).obj Y) := by
   rw [d3PointedKanMixed_eq_whiskerLeft i, d3PointedKanMixed_eq_whiskerLeft j]
@@ -81,13 +81,13 @@ variable {J : Type} [Preorder J]
   {D E : Jᵒᵖ ⥤ PointedSimplicialSet.{u}} (η : D ⟶ E)
 
 /-- 元のパラメータ比較は、順序方向と入力の全 Hom に同時に自然。 -/
-lemma d3ParameterPre_whiskered (X Y : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) :
+lemma d3ParameterPre_whiskered (X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) :
     (d3PointedKanParameterDiagram E).map X Y ≫ eHomWhiskerLeft SSet
       ((d3PointedKanParameterDiagram E).obj X)
-      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
         (d3PointedKanParameterDiagram E).obj Y ⟶ (d3PointedKanParameterDiagram D).obj Y) =
     (d3PointedKanParameterDiagram D).map X Y ≫ eHomWhiskerRight SSet
-      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
         (d3PointedKanParameterDiagram E).obj X ⟶ (d3PointedKanParameterDiagram D).obj X)
       ((d3PointedKanParameterDiagram D).obj Y) := by
   dsimp only [d3PointedKanParameterDiagram, D3EnrichedOrderedDiagram.functor]
@@ -107,11 +107,11 @@ lemma d3ParameterPre_whiskered (X Y : _root_.SerrePositivity.InfinityCategories.
       (η.naturality (homOfLE p.down.down).op).symm X.val Y.val) d) f
   exact (congrArg (fun t ↦ (eHomWhiskerLeft SSet
     ((d3PointedKanIhom (E.obj (Opposite.op X.position))).obj X.val)
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
       (d3PointedKanIhom (E.obj (Opposite.op Y.position))).obj Y.val ⟶
         (d3PointedKanIhom (D.obj (Opposite.op Y.position))).obj Y.val)).app d t) hE).trans
     (hS.trans (congrArg (fun t ↦ (eHomWhiskerRight SSet
-      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
         (d3PointedKanIhom (E.obj (Opposite.op X.position))).obj X.val ⟶
           (d3PointedKanIhom (D.obj (Opposite.op X.position))).obj X.val)
       ((d3PointedKanIhom (D.obj (Opposite.op Y.position))).obj Y.val)).app d t) hD).symm)
@@ -120,24 +120,24 @@ lemma d3ParameterPre_whiskered (X Y : _root_.SerrePositivity.InfinityCategories.
 def d3ParameterPre : GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
     (d3PointedKanParameterDiagram E) (d3PointedKanParameterDiagram D) where
   app X := eHomEquiv SSet (ObjectProperty.homMk
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj))
-  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Kan.enriched_whiskered_square_iff SSet
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj))
+  naturality X Y := ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.enriched_whiskered_square_iff SSet
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
       (d3PointedKanParameterDiagram E).obj X ⟶ (d3PointedKanParameterDiagram D).obj X)
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op Y.position)) Y.val.obj) :
       (d3PointedKanParameterDiagram E).obj Y ⟶ (d3PointedKanParameterDiagram D).obj Y)
     ((d3PointedKanParameterDiagram D).map X Y)
     ((d3PointedKanParameterDiagram E).map X Y)).mp
       (d3ParameterPre_whiskered η X Y).symm).symm
 
 /-- 同じ coherent 変換も、元の同じパラメータ制限そのものを成分に持つ。 -/
-lemma d3ParameterPre_component (X : _root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) :
+lemma d3ParameterPre_component (X : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object J PointedKanObject.{u}) :
     StrictEnrichedTransformation.componentHom _ _ (d3ParameterPre η) X =
     ObjectProperty.homMk
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj) := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj) := by
   change (SimplicialCategory.homEquiv' _ _).symm
     ((SSet.unitHomEquiv _) (eHomEquiv SSet (ObjectProperty.homMk
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (Opposite.op X.position)) X.val.obj) :
         (d3PointedKanParameterDiagram E).obj X ⟶
           (d3PointedKanParameterDiagram D).obj X))) = _
   exact Equiv.symm_apply_apply _ _
@@ -146,8 +146,8 @@ end
 /-- パラメータ自然同型を、全順序・全 Hom を保持する coherent 関手同型へ送る。 -/
 def d3ParameterPreFunctorIso {J : Type} [Preorder J]
     {D E : Jᵒᵖ ⥤ PointedSimplicialSet.{u}} (η : D ≅ E) :
-    FunctorIso (coherentNerveMap (d3PointedKanParameterDiagram E))
-      (coherentNerveMap (d3PointedKanParameterDiagram D)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram E))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D)) :=
   StrictEnrichedTransformation.functorIso _ _ (d3ParameterPre η.hom) (fun X ↦ by
     rw [d3ParameterPre_component]
     exact pointedKanObject_edge_isInvertible_of_piIsomorphism _

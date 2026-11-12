@@ -45,7 +45,7 @@ lemma intervalFamily_endpoint_unit_iff {P Y : SSet.{u}}
 /-- 両端の面上の定数性は、二端点の境界全体での定数性と同値。 -/
 lemma intervalFamily_boundary_iff {P Y : SSet.{u}}
     (a : (Δ[1] : SSet.{u}) ⊗ P ⟶ Y) (y : Y _⦋0⦌) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ▷ P) ≫ a = SSet.const y ↔
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right ▷ P) ≫ a = SSet.const y ↔
       (stdSimplex.δ (1 : Fin 2) ▷ P) ≫ a = SSet.const y ∧
         (stdSimplex.δ (0 : Fin 2) ▷ P) ≫ a = SSet.const y := by
   rw [intervalFamily_endpoint_unit_iff a y 1, intervalFamily_endpoint_unit_iff a y 0]
@@ -56,16 +56,16 @@ lemma intervalFamily_boundary_iff {P Y : SSet.{u}}
   · intro h
     constructor
     · have hh := congrArg (fun t ↦ (coprod.inr ▷ P) ≫ t) h
-      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr,
+      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inr,
         SSet.comp_const] using hh
     · have hh := congrArg (fun t ↦ (coprod.inl ▷ P) ≫ t) h
-      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl,
+      simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl,
         SSet.comp_const] using hh
   · rintro ⟨h₀, h₁⟩
     apply PointedObject.tensorRightCoprod_hom_ext
-    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl,
+    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl,
         SSet.comp_const] using h₁
-    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr,
+    · simpa only [← comp_whiskerRight_assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inr,
         SSet.comp_const] using h₀
 
 end SerrePositivity.KST.Spectra

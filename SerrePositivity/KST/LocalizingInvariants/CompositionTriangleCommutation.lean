@@ -40,20 +40,20 @@ lemma homotopy_last :
 
 lemma post_commutation :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (TriangleEdge.post (SSet.yonedaEquiv.symm s))) ≫
-        Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TriangleEdge.post (SSet.yonedaEquiv.symm s))) ≫
+        Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
           (TrianglePrism.diagonalFace (homotopy e f s t hs₂ hs₀ ht₂ ht₀)))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (TriangleEdge.post (SSet.yonedaEquiv.symm t)))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TriangleEdge.post (SSet.yonedaEquiv.symm t)))) :=
   TrianglePrism.post_commutation _ _ (homotopy_first e f s t hs₂ hs₀ ht₂ ht₀)
 
 lemma pre_commutation :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (TriangleEdge.pre (SSet.yonedaEquiv.symm s)))) =
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TriangleEdge.pre (SSet.yonedaEquiv.symm s)))) =
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (TrianglePrism.diagonalFace (homotopy e f s t hs₂ hs₀ ht₂ ht₀))) ≫
         Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (TriangleEdge.pre (SSet.yonedaEquiv.symm t)))) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (TriangleEdge.pre (SSet.yonedaEquiv.symm t)))) :=
   TrianglePrism.pre_commutation _ _ (homotopy_last e f s t hs₂ hs₀ ht₂ ht₀)
 
 end SerrePositivity.KST.LocalizingInvariants.TriangleComparison

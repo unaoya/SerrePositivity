@@ -20,31 +20,31 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I J : DGKappaConeInput R D κ)
   (P : DGKappaPerfectInput R D I) (Q : DGKappaPerfectInput R D J)
 local instance choiceConeStable (L : DGKappaConeInput R D κ) :
-    IsStable (dgNerve R (DGKappaCone R D L)) := dgNerve_isStable_of_pretriangulated R _
-local instance choiceKernelStable (L : DGKappaConeInput R D κ) : IsStable
-    (dgStableClosureNerve R (DGKappaCone R D L) (dgKappaConePerfectObjects R D L)) :=
-  dgStableClosureNerve_isStable R _ _
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D L)) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+local instance choiceKernelStable (L : DGKappaConeInput R D κ) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R D L) (dgKappaConePerfectObjects R D L)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R _ _
 local instance choiceSuspensionStable (L : DGKappaConeInput R D κ) :
-    IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
 
 /-- 同じ選択比較を、標的の元の実平坦商射へ続けた全関手。 -/
 def dgKappaSuspensionChoiceSource :=
   (dgKappaConeChoiceEquivalence R D I J).hom ≫ dgKappaSuspensionProjection R D J
 
 theorem dgKappaSuspensionChoiceSource_isExact :
-    IsExactFunctor (dgKappaSuspensionChoiceSource R D I J) := by
-  let : IsExactFunctor (dgKappaConeChoiceEquivalence R D I J).hom :=
-    isExactFunctor_of_isQCatEquivalence (dgKappaConeChoiceEquivalence R D I J).isQCatEquivalence
-  let : IsExactFunctor (dgKappaSuspensionProjection R D J) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionChoiceSource R D I J) := by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaConeChoiceEquivalence R D I J).hom :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence (dgKappaConeChoiceEquivalence R D I J).isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionProjection R D J) :=
     (dgKappaSuspension_isStableVerdierSequence R D J).quotientExact
-  exact isExactFunctor_comp _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _
 
 include P Q in
 /-- 同じ包含四角形で比較した全関手は、元の指定 perfect 閉包を実際に零化する。 -/
 theorem dgKappaSuspensionChoiceSource_kills :
-    ∀ x ∈ Set.range ((dgStableClosureInclusion R (DGKappaCone R D I)
+    ∀ x ∈ Set.range ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I)
       (dgKappaConePerfectObjects R D I)).app (Opposite.op ⦋0⦌)),
-      IsZeroVertex ((dgKappaSuspensionChoiceSource R D I J).app (Opposite.op ⦋0⦌) x) := by
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionChoiceSource R D I J).app (Opposite.op ⦋0⦌) x) := by
   rintro _ ⟨z, rfl⟩
   have e := ((dgKappaConePerfectChoiceInclusionIso R D I J P Q).postcomp
     (dgKappaSuspensionProjection R D J)).app z
@@ -60,12 +60,12 @@ def dgKappaSuspensionChoiceMap :
     (dgKappaSuspensionChoiceSource_kills R D I J P Q)
 
 theorem dgKappaSuspensionChoiceMap_isExact :
-    IsExactFunctor (dgKappaSuspensionChoiceMap R D I J P Q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionChoiceMap R D I J P Q) :=
   dgKappaSuspensionDesc_isExact R D I _ _ _ _
 
 /-- 元の実商射との比較は、同じ全零化完全関手圏の余単位から回収する。 -/
 def dgKappaSuspensionChoiceMap_facIso :
-    FunctorIso (dgKappaSuspensionProjection R D I ≫ dgKappaSuspensionChoiceMap R D I J P Q)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionProjection R D I ≫ dgKappaSuspensionChoiceMap R D I J P Q)
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫ dgKappaSuspensionProjection R D J) :=
   dgKappaSuspensionDesc_facIso R D I _ _ _ _
 

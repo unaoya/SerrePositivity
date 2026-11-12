@@ -17,12 +17,12 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の実連結 Serre 生成射の向き付き最高生成元像は、元の通常順合成そのもの。 -/
 lemma necklaceLambdaCell_top_composition {K : SSet.{u}} {x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     serreCubeTopCellImage A (homObject A (CubicalLambda A K) x z)
         (T.necklace.down.dimension + U.necklace.down.dimension)
         ((serreConcreteCubeComplexFunctor A).map
           (necklaceCubeTensorIso T.necklace U.necklace).hom ≫
-            necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)) =
+            necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U)) =
       compose A
         (serreCubeTopCellImage A (homObject A (CubicalLambda A K) y z)
           U.necklace.down.dimension (necklaceLambdaCell A U))

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingAdjointCoordinates
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomAdjointPreRestriction
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomAdjointPreRestriction
 public import SerrePositivity.KST.Spectra.KanAdjointNaturality
 public import SerrePositivity.KST.Spectra.PostMappingLifts
 
@@ -37,9 +37,9 @@ def kanAdjointParameterLeft (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 def kanAdjointParameterRight (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     pointedSpace X Y.toKanSequence ⟶ kanAdjointParameterTarget X Y n :=
   pointedEvaluation X Y.toKanSequence (n + 1) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (uncurry (KanSequence.kanAdjoint X.toKanSequence n))
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (uncurry (KanSequence.kanAdjoint X.toKanSequence n))
       (Y.level (n + 1)).space ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space (X.level n).space (Y.level (n + 1)).space).hom
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space (X.level n).space (Y.level (n + 1)).space).hom
 
 /-- 二つの全パラメータの像を通常の円へ制限する、元の二重 Hom の射。 -/
 def kanAdjointParameterRestriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
@@ -47,13 +47,13 @@ def kanAdjointParameterRestriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
       PointedObject.basedHom (X.level n).space
         (PointedObject.basedHom PointedSimplicialSet.circle (Y.level (n + 1)).space) :=
   PointedObject.basedHomMap (X.level n).space
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (Y.level (n + 1)).space)
 
 /-- 標的の随伴への後合成は、通常の円への制限で元の随伴への後合成に戻る。 -/
 lemma kanAdjointParameterLeft_restriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     kanAdjointParameterLeft X Y n ≫ kanAdjointParameterRestriction X Y n =
     pointedEvaluation X Y.toKanSequence n ≫ PointedObject.basedHomMap (X.level n).space
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
   have h := congrArg ((ihom (X.level n).space).map)
     (KanSequence.kanAdjoint_comparison Y.toKanSequence n)
   have h' := congrArg (pointedEvaluation X Y.toKanSequence n ≫ ·) h
@@ -64,18 +64,18 @@ lemma kanAdjointParameterLeft_restriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
 lemma kanAdjointParameterRight_restriction (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     kanAdjointParameterRight X Y n ≫ kanAdjointParameterRestriction X Y n =
     pointedEvaluation X Y.toKanSequence n ≫ PointedObject.basedHomMap (X.level n).space
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space (Y.sigma n)) := by
   have ha : KanSequence.kanAdjoint X.toKanSequence n ≫
       (pre CirclePower.unit.{u}).app (X.level (n + 1)).space = curry (X.sigma n) := by
-    rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact KanSequence.kanAdjoint_comparison X.toKanSequence n
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.adjoint_pre_restriction CirclePower.unit
+  have h := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.adjoint_pre_restriction CirclePower.unit
     (KanSequence.kanAdjoint X.toKanSequence n) (X.sigma n) ha (Y.level (n + 1)).space
   unfold kanAdjointParameterRight kanAdjointParameterRestriction
-  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, Category.assoc]
+  simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, Category.assoc]
   have h' := congrArg (pointedEvaluation X Y.toKanSequence (n + 1) ≫ ·) h
   have hc := pointedEvaluation_adjoint_condition X Y n
-  simp only [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
+  simp only [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hc
   exact h'.trans hc
 
 /-- 通常の円への制限は、二重 Hom の全ての単射への RLP を持つ。 -/
@@ -83,7 +83,7 @@ lemma kanAdjointParameterRestriction_rlp (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp
       (kanAdjointParameterRestriction X Y n).right :=
   PointedMapping.post_rlp_monomorphisms _ _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp CirclePower.unit
       (PointedKanReplacement.unit_anodyne PointedSimplicialSet.circle) _)
 
 /-- 全 Hom の基点を固定し、通常の円への制限も全区間で元の厳密な式に保つ。 -/
@@ -99,7 +99,7 @@ lemma kanAdjointParameter_vertical_naturality (X Y : OmegaSpectrum.{u}) (n : ℕ
   let f := kanAdjointParameterLeft X Y n
   let g := kanAdjointParameterRight X Y n
   let p := kanAdjointParameterRestriction X Y n
-  let baseMono : Mono M.hom := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basepoint_mono M
+  let baseMono : Mono M.hom := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basepoint_mono M
   have he : f ≫ p = g ≫ p :=
     (kanAdjointParameterLeft_restriction X Y n).trans
       (kanAdjointParameterRight_restriction X Y n).symm

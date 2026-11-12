@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory Opposite
 
-def barFunctor : Data.{u} ⥤ SSet.{u} where
-  obj A := TwoSidedBar.space (A.left ⋙ nerveFunctor) (A.right ⋙ nerveFunctor)
+def barFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} ⥤ SSet.{u} where
+  obj A := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (A.left ⋙ nerveFunctor) (A.right ⋙ nerveFunctor)
   map f := TwoSidedThomason.transitionBar f.base f.left f.right
   map_id A := by
     ext n e

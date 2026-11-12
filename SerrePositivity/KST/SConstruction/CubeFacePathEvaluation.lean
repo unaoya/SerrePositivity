@@ -13,21 +13,21 @@ open CategoryTheory
 
 /-- 元の面の式を、元の cubical 生成語の圏の path として実現する。 -/
 def cubeFaceExpressionPath {n : ℕ} : {m : ℕ} → CubeFaceExpression n m →
-    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk m)
+    Quiver.Path (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk n) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk m)
   | _, .id _ => .nil
-  | _, .point p b i => (cubeFaceExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator.face b _ i)
+  | _, .point p b i => (cubeFaceExpressionPath p).cons (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator.face b _ i)
 termination_by structural _m p => p
 
 /-- 面の式の path の具体的評価は、同じ式の元の頂点関数。 -/
 lemma cubeFaceExpressionPath_concrete {n m : ℕ} (p : CubeFaceExpression n m) :
-    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeFaceExpressionPath p)).val =
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeFaceExpressionPath p)).val =
       cubeFaceExpressionVertex p := by
   induction p with
   | id => rfl
   | point p b i ih =>
-    change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘
-      (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeFaceExpressionPath p)).val =
-        _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeFaceExpressionPath p)).val =
+        _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
     rw [ih]
     rfl
 

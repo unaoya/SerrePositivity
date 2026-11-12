@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftTensor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftTensor
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
 
 /-!
@@ -70,25 +70,25 @@ lemma whole_projection (V T : SSet.{v}) :
   ext n x
   rfl
 
-abbrev fixedHomotopyMap : obj.{w} K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 1) ⟶
-    obj.{w} P := simplexTensorMap.{w} H.hom
+abbrev fixedHomotopyMap : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K ⊗ SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 1) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap.{w} H.hom
 
-lemma fixedHomotopyMap_zero : obj.{w} K ◁ SSet.stdSimplex.δ (1 : Fin 2) ≫
-    fixedHomotopyMap H = fst (obj.{w} K) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≫ map e₀ := by
-  apply (simplexTensorMap_operator.{w} (SimplexCategory.δ (1 : Fin 2)) H.hom).trans
-  rw [H.at_zero, ← Category.assoc, point_projection, simplexTensorMap_constant]
+lemma fixedHomotopyMap_zero : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K ◁ SSet.stdSimplex.δ (1 : Fin 2) ≫
+    fixedHomotopyMap H = fst (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map e₀ := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_operator.{w} (SimplexCategory.δ (1 : Fin 2)) H.hom).trans
+  rw [H.at_zero, ← Category.assoc, point_projection, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant]
 
-lemma fixedHomotopyMap_one : obj.{w} K ◁ SSet.stdSimplex.δ (0 : Fin 2) ≫
-    fixedHomotopyMap H = fst (obj.{w} K) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≫ map e₁ := by
-  apply (simplexTensorMap_operator.{w} (SimplexCategory.δ (0 : Fin 2)) H.hom).trans
-  rw [H.at_one, ← Category.assoc, point_projection, simplexTensorMap_constant]
+lemma fixedHomotopyMap_one : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K ◁ SSet.stdSimplex.δ (0 : Fin 2) ≫
+    fixedHomotopyMap H = fst (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} K) (SSet.stdSimplex.obj (SimplexCategory.mk 0)) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map e₁ := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_operator.{w} (SimplexCategory.δ (0 : Fin 2)) H.hom).trans
+  rw [H.at_one, ← Category.assoc, point_projection, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant]
 
-lemma fixedHomotopyMap_relative : map.{w} i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
-    fixedHomotopyMap H = fst (obj.{w} V) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ map b := by
-  rw [fixedHomotopyMap, simplexTensorMap_source, H.relative, ← Category.assoc,
-    whole_projection, simplexTensorMap_constant]
+lemma fixedHomotopyMap_relative : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{w} i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
+    fixedHomotopyMap H = fst (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} V) (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map b := by
+  rw [fixedHomotopyMap, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_source, H.relative, ← Category.assoc,
+    whole_projection, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexTensorMap_constant]
 
-lemma fixedHomotopyMap_recover : lowerSimplexTensor (fixedHomotopyMap.{w} H) = H.hom :=
-  lowerSimplexTensor_simplexTensorMap H.hom
+lemma fixedHomotopyMap_recover : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (fixedHomotopyMap.{w} H) = H.hom :=
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor_simplexTensorMap H.hom
 
 end SerrePositivity.SimplicialModel.UniverseLift

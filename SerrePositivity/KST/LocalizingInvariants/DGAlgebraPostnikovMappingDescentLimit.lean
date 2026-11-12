@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeMappingDescent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovPresentedSpaceLimit
-public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
 
 /-!
 概要：指定局所化上の実 cell 写像関手は、元の Postnikov 錐を極限錐へ送る。
@@ -22,40 +22,40 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
   (n : ℤ) (hn : 0 ≤ n)
 
-def postnikovCellLocalizationCone : JoinCone
+def postnikovCellLocalizationCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone
     ((SSet.uliftFunctor.{u + 2, u + 1}).map
       (nerveMap (postnikovInfinityCospan R B n hn) ≫ quasiIsoInfinityMap R) ≫
         multiplicativeCellMappingLocalizationFunctor R A) :=
-  mapJoinCone (multiplicativeCellMappingLocalizationFunctor R A)
-    (JoinCone.ulift.{u + 1, u + 2} (postnikovInfinityCone R B n hn))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (multiplicativeCellMappingLocalizationFunctor R A)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u + 1, u + 2} (postnikovInfinityCone R B n hn))
 
 def postnikovCellLocalizationConeComparison :
-    FunctorIso (postnikovCellLocalizationCone R A B n hn).val
-      (mapJoinCone (multiplicativeCellMappingInfinityCoherent R A)
-        (JoinCone.ulift.{u + 1, u + 2}
-          (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn)))).val := by
-  have e := FunctorIso.precomp (multiplicativeCellMappingLocalizationTriangleIso R A)
-    (JoinCone.ulift.{u + 1, u + 2}
-      (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn))).val
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (postnikovCellLocalizationCone R A B n hn).val
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (multiplicativeCellMappingInfinityCoherent R A)
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u + 1, u + 2}
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn)))).val := by
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (multiplicativeCellMappingLocalizationTriangleIso R A)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u + 1, u + 2}
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn))).val
   have hv : (postnikovCellLocalizationCone R A B n hn).val =
-      (JoinCone.ulift.{u + 1, u + 2}
-        (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn))).val ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u + 1, u + 2}
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn))).val ≫
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
         multiplicativeCellMappingLocalizationFunctor R A) := by
-    change (((uliftConeShapeIso (nerve PostnikovInfinityShape.{u}) 0).inv ≫
+    change (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftConeShapeIso (nerve PostnikovInfinityShape.{u}) 0).inv ≫
       (SSet.uliftFunctor.{u + 2, u + 1}).map
-        ((F1B.nerveCone (postnikovInfinityPresentedCone R B n hn)).val ≫
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn)).val ≫
           quasiIsoInfinityMap R)) ≫ multiplicativeCellMappingLocalizationFunctor R A) =
-      (((uliftConeShapeIso (nerve PostnikovInfinityShape.{u}) 0).inv ≫
+      (((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftConeShapeIso (nerve PostnikovInfinityShape.{u}) 0).inv ≫
         (SSet.uliftFunctor.{u + 2, u + 1}).map
-          (F1B.nerveCone (postnikovInfinityPresentedCone R B n hn)).val) ≫ _)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCone (postnikovInfinityPresentedCone R B n hn)).val) ≫ _)
     rw [Functor.map_comp]
     simp only [Category.assoc]
   rw [hv]
   exact e
 
 lemma postnikovCellLocalizationCone_isLimit :
-    IsLimitCone (postnikovCellLocalizationCone R A B n hn) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (postnikovCellLocalizationCone R A B n hn) :=
   (postnikovPresentedCellMappingImageCone_isLimit R A B n hn).of_functorIso
     (postnikovCellLocalizationConeComparison R A B n hn).symm
 

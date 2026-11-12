@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.MapHomotopyCategoryComp
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.MapHomotopyCategoryComp
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UniverseHomotopyDownNaturality
 
 /-!

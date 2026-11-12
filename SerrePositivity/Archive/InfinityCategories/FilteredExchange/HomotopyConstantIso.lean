@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：元の指定円柱が時間方向に定値なら、その辺の類の指定同型は等式から来る。

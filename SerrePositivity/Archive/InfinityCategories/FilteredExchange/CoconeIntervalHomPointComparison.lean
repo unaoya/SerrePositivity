@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalHomValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoconeIntervalTransportValue
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の余錐の区間 Hom 比較の各点成分を、同じ定値図式輸送比較の制限へ戻す。

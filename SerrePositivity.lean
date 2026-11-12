@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.Asymptotic.DGVerdier.OrderSquare
-public import SerrePositivity.InfinityCategories.ModelBridge
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.ModelBridge
 public import Mathlib.Algebra.Module.Projective
 public import Mathlib.CategoryTheory.Localization.CalculusOfFractions.Fractions
 public import Mathlib.CategoryTheory.Retract
@@ -545,17 +545,17 @@ public import SerrePositivity.HomologicalAlgebra.TorTwoRingComparison
 public import SerrePositivity.HomologicalAlgebra.UnitHomologyNaturality
 public import SerrePositivity.HomologicalAlgebra.UnitHomologyNormalization
 public import SerrePositivity.HomologicalAlgebra.UnitLinearHomComplex
-public import SerrePositivity.InfinityCategories.Core
-public import SerrePositivity.InfinityCategories.DGNerve
-public import SerrePositivity.InfinityCategories.Derived
-public import SerrePositivity.InfinityCategories.F1
-public import SerrePositivity.InfinityCategories.F1B
-public import SerrePositivity.InfinityCategories.F2.Compact
-public import SerrePositivity.InfinityCategories.F2.Idempotent
-public import SerrePositivity.InfinityCategories.F2.Ind
-public import SerrePositivity.InfinityCategories.F2.Presentable
-public import SerrePositivity.InfinityCategories.HomotopyLimits
-public import SerrePositivity.InfinityCategories.Stable
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Core
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.DGNerve
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Derived
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.F1
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.F1B
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Compact
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Ind
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.HomotopyLimits
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.Stable
 public import SerrePositivity.Inputs.Descent
 public import SerrePositivity.IntersectionMultiplicity.Additivity
 public import SerrePositivity.IntersectionMultiplicity.Basic

@@ -21,7 +21,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
   (φ : A ⟶ RawSpectrumMapping.pointedSpace X Y.toKanSequence)
 
 local instance actualStageTargetKan (n : ℕ) : KanComplex (kanAdjointParameterTarget X Y n).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 同じ全 Hom 区間の段評価を、元の次段座標の二端点で表示する。 -/
 def tracedActualStageEvaluationInterval (n : ℕ) :
@@ -40,12 +40,12 @@ lemma tracedActualStageEvaluationInterval_path (n : ℕ) :
 /-- 新しい始辺は全 Hom 区間の評価なので、構造経路は辺全体で厳密一致する。 -/
 lemma tracedActualStageEvaluationInterval_condition (n : ℕ) :
     ((tracedActualStageEvaluationInterval X Y φ (n + 1)).basedPost
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path =
     ((tracedActualStageEvaluationInterval X Y φ n).basedPost
       (pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)).path := by
   change (tracedActualStageEvaluationInterval X Y φ (n + 1)).path ≫
-      (PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+      (PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).right =
     (tracedActualStageEvaluationInterval X Y φ n).path ≫
       (PointedObject.basedHomMap A

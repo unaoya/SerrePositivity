@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SubsingletonCategoryRows
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SubsingletonCategoryRows
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
 
 /-!
@@ -27,21 +27,21 @@ def toUnit (A : SSet.{w}) : A ⟶ 𝟙_ SSet.{w} where
   app _ := ↾fun _ => PUnit.unit
   naturality _ _ _ := rfl
 
-def colimit_isTerminal (X Y : C) : IsTerminal (colimitGraph W X Y) := by
+def colimit_isTerminal (X Y : C) : IsTerminal (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) := by
   have h : X = Y := Subsingleton.elim _ _
   subst Y
-  refine IsTerminal.ofUniqueHom (fun A => toUnit.{max u v} A ≫ colimitUnit W X) ?_
+  refine IsTerminal.ofUniqueHom (fun A => toUnit.{max u v} A ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W X) ?_
   intro A f
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro p
-  exact colimit_point_eq_unit X n (f.app n p)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SubsingletonCategoryRows.colimit_point_eq_unit X n (f.app n p)
 
-lemma colimit_isWeaklyContractible (X Y : C) : IsWeaklyContractible (colimitGraph W X Y) := by
+lemma colimit_isWeaklyContractible (X Y : C) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) := by
   let e := (colimit_isTerminal W X Y).uniqueUpToIso terminalIsTerminal
-  have he : e.hom = terminal.from (colimitGraph W X Y) := terminal.hom_ext _ _
-  have hi : IsIso (terminal.from (colimitGraph W X Y)) := he ▸ e.isIso_hom
+  have he : e.hom = terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y) := terminal.hom_ext _ _
+  have hi : IsIso (terminal.from (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y)) := he ▸ e.isIso_hom
   exact FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
 
 end SerrePositivity.EInfinity.Hammock.SubsingletonCategory

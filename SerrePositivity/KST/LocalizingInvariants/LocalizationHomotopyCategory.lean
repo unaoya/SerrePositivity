@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma localizationHo_inverts {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     (V : MorphismProperty (hoFunctor.obj X))
     (hV : ∀ {x y} (e : Truncated.Edge (X := (truncation 2).obj X) x y),
       V (SSet.Truncated.HomotopyCategory.homMk e) ↔ e.edge ∈ W) :
@@ -28,17 +28,17 @@ lemma localizationHo_inverts {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q
   intro a b f hf
   obtain ⟨x, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective a
   obtain ⟨y, rfl⟩ := SSet.Truncated.HomotopyCategory.mk_surjective b
-  obtain ⟨e, rfl⟩ := homotopyCategory_homMk_surjective x y f
-  change IsInvertibleEdge (e.map ((truncation 2).map F))
-  exact (isInvertibleEdge_congr
-    (e := (edgeOfSimplex e.edge).map ((truncation 2).map F))
+  obtain ⟨e, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x y f
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (e.map ((truncation 2).map F))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex e.edge).map ((truncation 2).map F))
     (f := e.map ((truncation 2).map F)) rfl).mp (hF.choose ((hV e).mp hf))
 
 lemma localizationHo_isLocalization_of_inverts {X Q : SSet.{u}} [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     (V : MorphismProperty (hoFunctor.obj X))
     (hL : V.IsInvertedBy (hoFunctor.map F).toFunctor)
-    (hV : ∀ s ∈ W, V (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex s))) :
+    (hV : ∀ s ∈ W, V (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s))) :
     (hoFunctor.map F).toFunctor.IsLocalization V := by
   let L := (hoFunctor.map F).toFunctor
   let S := Localization.Construction.lift L hL
@@ -57,12 +57,12 @@ lemma localizationHo_isLocalization_of_inverts {X Q : SSet.{u}} [Quasicategory Q
   exact ⟨hL, Functor.IsEquivalence.mk' T hST.symm hTS⟩
 
 lemma localizationHo_isLocalization {X Q : SSet.{u}} [Quasicategory X] [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     (V : MorphismProperty (hoFunctor.obj X))
     (hV : ∀ {x y} (e : Truncated.Edge (X := (truncation 2).obj X) x y),
       V (SSet.Truncated.HomotopyCategory.homMk e) ↔ e.edge ∈ W) :
     (hoFunctor.map F).toFunctor.IsLocalization V :=
   localizationHo_isLocalization_of_inverts F W hF V (localizationHo_inverts F W hF V hV)
-    (fun s hs => (hV (edgeOfSimplex s)).mpr hs)
+    (fun s hs => (hV (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s)).mpr hs)
 
 end SerrePositivity.KST.LocalizingInvariants

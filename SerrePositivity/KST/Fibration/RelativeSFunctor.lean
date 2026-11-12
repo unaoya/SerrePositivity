@@ -19,8 +19,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 完全関手は、合成した商に対する相対条件を元の商の相対条件へ写す。 -/
-def relativeSFunctorMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {C : SSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
+def relativeSFunctorMap {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {C : SSet.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
     (relativeSConstruction (f.hom ≫ q) n : SSet.{u}) ⟶
       (relativeSConstruction q n : SSet.{u}) :=
   relativeDiagramMap q (fun a => sComponentEvaluation A.obj n a ≫ f.hom)
@@ -28,15 +28,15 @@ def relativeSFunctorMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.
     (fun a => sPostcomp_gapped_evaluate n f.hom (exactMap_preservesSData f) a)
 
 /-- 相対関手の包含後は、元の S_n の完全関手による後合成である。 -/
-lemma relativeSFunctorMap_ι {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {C : SSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
+lemma relativeSFunctorMap_ι {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {C : SSet.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
     relativeSFunctorMap f q n ≫ (relativeSConstruction q n).ι =
       (relativeSConstruction (f.hom ≫ q) n).ι ≫
         sPostcomp n f.hom (exactMap_preservesSData f) := rfl
 
 /-- 包含側の相対関手は全ての面・退化と可換。 -/
-def relativeSimplicialFunctorMap {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {C : SSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : B.obj ⟶ C) :
+def relativeSimplicialFunctorMap {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {C : SSet.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : B.obj ⟶ C) :
     relativeSimplicialSConstruction (f.hom ≫ q) ⟶ relativeSimplicialSConstruction q where
   app n := relativeSFunctorMap f q n.unop.len
   naturality {n m} θ := by
@@ -61,11 +61,11 @@ def relativeSimplicialFunctorMap {A B : _root_.SerrePositivity.InfinityCategorie
     rfl
 
 /-- 各段の core からの包含と相対関手は、元の完全関手の core 化と可換。 -/
-lemma relativeSFunctorMap_core {A B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {C : SSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
+lemma relativeSFunctorMap_core {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {C : SSet.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : B.obj ⟶ C) (n : ℕ) :
     relativeDiagramCoreInclusion (f.hom ≫ q) (sComponentEvaluation A.obj n) ≫
       relativeSFunctorMap f q n =
-        quasicategoryCoreMap (sPostcomp n f.hom (exactMap_preservesSData f)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcomp n f.hom (exactMap_preservesSData f)) ≫
           relativeDiagramCoreInclusion q (sComponentEvaluation B.obj n) :=
   relativeDiagramCoreInclusion_naturality q
     (fun a => sComponentEvaluation A.obj n a ≫ f.hom) (sComponentEvaluation B.obj n)

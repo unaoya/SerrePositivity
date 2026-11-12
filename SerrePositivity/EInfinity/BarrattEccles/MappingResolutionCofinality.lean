@@ -24,7 +24,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.InfinityCategories
 
 variable (A : Type u) [CommRing A]
@@ -44,7 +44,7 @@ def mappingSmallResolutionOverFunctor (X : (operad A).Algebra) :
 規約：任意の可換環・任意の元の代数を扱う。
 使われ方：三本矢への右射の具体的な分解側のホモトピー余終性。 -/
 lemma mappingSmallResolutionOverFunctor_isLeftCofinal (X : (operad A).Algebra) :
-    IsLeftCofinal (nerveMap (mappingSmallResolutionOverFunctor A X)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (mappingSmallResolutionOverFunctor A X)) := by
   let := modelCategory A
   exact FrameHom.smallResolutionOverFunctor_isLeftCofinal
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).atObject X)
@@ -54,7 +54,7 @@ lemma mappingSmallResolutionOverFunctor_isLeftCofinal (X : (operad A).Algebra) :
 規約：同じ比較射を保持し、nerve の Kan 性を要求しない。
 使われ方：元の分解の比較のホモトピー型。 -/
 lemma mappingSmallResolutionOverFunctor_isWeakHomotopyEquivalence (X : (operad A).Algebra) :
-    IsWeakHomotopyEquivalence (nerveMap (mappingSmallResolutionOverFunctor A X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (mappingSmallResolutionOverFunctor A X)) :=
   (mappingSmallResolutionOverFunctor_isLeftCofinal A X).isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -56,13 +56,13 @@ def monicKTracedTripleRightStageEdgeData (n : ℕ) :=
 
 /-- 左外側の元の段面と正規化移送面を持つ同じ実 diamond。 -/
 def monicKTracedTripleLeftOuterDiamond (n : ℕ) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (monicKTracedTripleLeftBinaryEdgeData F f g h n).direct
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond.mk (monicKTracedTripleLeftBinaryEdgeData F f g h n).direct
     (monicKTracedTripleLeftStageEdgeData F f g h n).triangle
     (monicKTracedTripleLeftBinaryTransport F f g h n)
 
 /-- 右外側の元の段面と正規化移送面を持つ同じ実 diamond。 -/
 def monicKTracedTripleRightOuterDiamond (n : ℕ) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (monicKTracedTripleRightBinaryEdgeData F f g h n).direct
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond.mk (monicKTracedTripleRightBinaryEdgeData F f g h n).direct
     (monicKTracedTripleRightStageEdgeData F f g h n).triangle
     (monicKTracedTripleRightBinaryTransport F f g h n)
 

@@ -18,21 +18,21 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u w
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories DifferentialGraded DGNerve
+open SerrePositivity.InfinityCategories DifferentialGraded
 open scoped Simplicial
 variable (A : Type u) [CommRing A] [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 
 def cAlgUnderlyingHomologyIso (B : (operad A).Algebra) (i : ℤ) :
-    derivedInfinityHomology A i
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A i
       ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) (cAlgVertex A B)) ≅ B.carrier.homology i := by
-  let e := (pathToEdgeHomotopyCategory
-    ((truncation 2).obj (derivedInfinityCategory A))).mapIso
+  let e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory
+    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).mapIso
       (cAlgForgetDerived_valueVertexIso A B)
   have h := cAlgForgetDerivedValueAugmentation_quasiIso A B
-  have e' := derivedInfinityHomologyIso A i (Simplex.vertex (cAlgForgetDerivedValue A B))
-  change derivedInfinityHomology A i (Simplex.vertex (cAlgForgetDerivedValue A B)) ≅
+  have e' := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso A i (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (cAlgForgetDerivedValue A B))
+  change _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology A i (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (cAlgForgetDerivedValue A B)) ≅
     (cAlgForgetDerivedValue A B).val.homology i at e'
-  exact (derivedInfinityHomologyFunctor A i).mapIso e ≪≫ e' ≪≫
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A i).mapIso e ≪≫ e' ≪≫
     asIso (HomologicalComplex.homologyMap (cAlgForgetDerivedValueAugmentation A B) i)
 
 lemma cAlgVertex_underlyingDisc_iff (B : (operad A).Algebra) :

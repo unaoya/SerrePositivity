@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SimplicialLocalization
+open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 def algebraHammockHomLiftIso (X Y : (operad A).Algebra) :
@@ -37,25 +37,25 @@ def cofibrantAlgebraHammockInclusionMap :
     (algebraHammockHomLiftIso A ((cofibrantAlgebraDKInclusion A).obj X)
       ((cofibrantAlgebraDKInclusion A).obj Y)).hom
 lemma cofibrantAlgebraHammockInclusionMap_weak :
-    IsWeakHomotopyEquivalence (cofibrantAlgebraHammockInclusionMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantAlgebraHammockInclusionMap A X Y) :=
   (cofibrantToAlgebraDK_reducedMap_weak A X Y).comp
-    (isPrecompositionEquivalence_of_iso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
       (algebraHammockHomLiftIso A ((cofibrantAlgebraDKInclusion A).obj X)
         ((cofibrantAlgebraDKInclusion A).obj Y))).isWeakHomotopyEquivalence
 
-def cofibrantAlgebraHammockGraphInclusionMap (w : Hammock.Word) :
-    Hammock.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y ⟶
+def cofibrantAlgebraHammockGraphInclusionMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y ⟶
       algebraHammockGraph A w ((cofibrantAlgebraDKInclusion A).obj X)
         ((cofibrantAlgebraDKInclusion A).obj Y) := by
   let := modelCategory A
-  exact (Hammock.Relative.graphDiagramMap (cofibrantToAlgebraDKRelative A) X Y).app w ≫
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap (cofibrantToAlgebraDKRelative A) X Y).app w ≫
     (Hammock.HomLift.graphIso (C := (operad A).Algebra) (weakEquivalences (operad A).Algebra)
       w ((cofibrantAlgebraDKInclusion A).obj X) ((cofibrantAlgebraDKInclusion A).obj Y)).hom
-lemma cofibrantAlgebraHammockGraphInclusionMap_app (w : Hammock.Word) (n : SimplexCategoryᵒᵖ)
-    (σ : (Hammock.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y).obj n) :
+lemma cofibrantAlgebraHammockGraphInclusionMap_app (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (n : SimplexCategoryᵒᵖ)
+    (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y).obj n) :
     let := modelCategory A
     (cofibrantAlgebraHammockGraphInclusionMap A X Y w).app n σ =
-      σ ⋙ Hammock.Zigzag.Relative.functor (cofibrantAlgebraDKInclusionRelative A) := by
+      σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (cofibrantAlgebraDKInclusionRelative A) := by
   let := modelCategory A
   rfl
 end SerrePositivity.EInfinity.BarrattEccles

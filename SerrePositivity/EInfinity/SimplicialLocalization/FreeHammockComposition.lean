@@ -19,8 +19,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory CategoryTheory.Limits Hammock Hammock.DoubleSimplicial MonoidalCategory
-variable (C : RelativeCategory.{u}) (X Y Z : C.category)
+open CategoryTheory CategoryTheory.Limits Hammock MonoidalCategory
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y Z : C.category)
 
 def freeHammockResolutionComposition :
     freeHammockResolution C X Y ⊗ freeHammockResolution C Y Z ⟶
@@ -30,18 +30,18 @@ def freeHammockResolutionComposition :
 
 def freeHammockDiagonalTensorIso :
     freeHammockDiagonal C X Y ⊗ freeHammockDiagonal C Y Z ≅
-      diagonalFunctor.obj (freeHammockResolution C X Y ⊗ freeHammockResolution C Y Z) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (freeHammockResolution C X Y ⊗ freeHammockResolution C Y Z) :=
   NatIso.ofComponents (fun _ => Iso.refl _) (by intros; rfl)
 
 def freeHammockDiagonalComposition :
     freeHammockDiagonal C X Y ⊗ freeHammockDiagonal C Y Z ⟶ freeHammockDiagonal C X Z :=
   (freeHammockDiagonalTensorIso C X Y Z).hom ≫
-    diagonalFunctor.map (freeHammockResolutionComposition C X Y Z)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (freeHammockResolutionComposition C X Y Z)
 
 lemma freeHammockDiagonalComposition_app (n : SimplexCategoryᵒᵖ)
     (p : (freeHammockDiagonal C X Y).obj n) (q : (freeHammockDiagonal C Y Z).obj n) :
     (freeHammockDiagonalComposition C X Y Z).app n (p, q) =
-      composePoint ((freeResolution C).obj n).weakEquivalences
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint ((freeResolution C).obj n).weakEquivalences
         (freeResolutionObject C n X) (freeResolutionObject C n Y)
         (freeResolutionObject C n Z) p q := rfl
 
@@ -63,11 +63,11 @@ lemma freeHammockDiagonalAugmentation_composePoint (n : SimplexCategoryᵒᵖ)
     (p : (freeHammockDiagonal C X Y).obj n) (q : (freeHammockDiagonal C Y Z).obj n) :
     (freeHammockDiagonalAugmentation C X Z).app n
         ((freeHammockDiagonalComposition C X Y Z).app n (p, q)) =
-      composePoint C.weakEquivalences X Y Z
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint C.weakEquivalences X Y Z
         ((freeHammockDiagonalAugmentation C X Y).app n p)
         ((freeHammockDiagonalAugmentation C Y Z).app n q) := by
   change ((freeHammockAugmentation C X Z).app n).app n
-      (composePoint _ _ _ _ p q) = composePoint _ _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint _ _ _ _ p q) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint _ _ _ _
         (((freeHammockAugmentation C X Y).app n).app n p)
         (((freeHammockAugmentation C Y Z).app n).app n q)
   rw [freeHammockAugmentation_fixedColimitMap, freeHammockAugmentation_fixedColimitMap,
@@ -85,7 +85,7 @@ lemma freeHammockDiagonalComparison_composePoint (n : SimplexCategoryᵒᵖ)
 lemma freeHammockDiagonalComposition_augmentation :
     freeHammockDiagonalComposition C X Y Z ≫ freeHammockDiagonalAugmentation C X Z =
       (freeHammockDiagonalAugmentation C X Y ⊗ₘ
-        freeHammockDiagonalAugmentation C Y Z) ≫ colimitComposition C.weakEquivalences X Y Z := by
+        freeHammockDiagonalAugmentation C Y Z) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext

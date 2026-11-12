@@ -18,8 +18,8 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 方針：L9 の Hom 同値を構造射へ適用する。
 規約：Kan 性や同値性の追加仮定なし。使われ方：Ω 条件の対象となる具体的な射。 -/
 def oneDirectionAssemblyAdjoint (r : ℕ) (X : StableModel.{u}) :
-    oneDirectionReducedRealization r X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (boundaryReducedRealization (r + 1) X) :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (oneDirectionReducedRealization r X)
+    oneDirectionReducedRealization r X ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (boundaryReducedRealization (r + 1) X) :=
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (oneDirectionReducedRealization r X)
     (boundaryReducedRealization (r + 1) X)) (oneDirectionSuspensionAssembly r X)
 
 /-- 概要：随伴射は安定な入力の射について自然。
@@ -53,10 +53,10 @@ def oneDirectionAssemblyAdjointNat (r : ℕ) :
 方針：Hom 同値の逆合成の式。
 規約：厳密等号。使われ方：Ω 条件と suspension の構造射の照合。 -/
 lemma oneDirectionAssemblyAdjoint_uncurry (r : ℕ) (X : StableModel.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (oneDirectionReducedRealization r X)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (oneDirectionReducedRealization r X)
     (boundaryReducedRealization (r + 1) X)).symm (oneDirectionAssemblyAdjoint r X) =
       oneDirectionSuspensionAssembly r X :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (oneDirectionReducedRealization r X)
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (oneDirectionReducedRealization r X)
     (boundaryReducedRealization (r + 1) X)).symm_apply_apply _
 
 end SerrePositivity.KST.SConstruction

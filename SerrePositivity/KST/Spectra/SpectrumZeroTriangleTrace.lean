@@ -25,13 +25,13 @@ local instance zeroTriangleTraceSpectrumSimplicialCategory :
 /-- 元の整合入力の頂点で評価した、元の参照零三角形の同じ二単体。 -/
 def zeroEvaluationTriangleAt (A : PointedSimplicialSet.{u}) (X : Object A) : Sp.{u} _⦋2⦌ :=
   SSet.yonedaEquiv
-    (lift (SSet.const (coherentNerveVertex X)) (𝟙 _) ≫ zeroEvaluationTriangleFamily A)
+    (lift (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X)) (𝟙 _) ≫ zeroEvaluationTriangleFamily A)
 
 /-- 参照面の Hom 経路は、元の恒等 Hom を単位から作用させる定値な族。 -/
 lemma zeroEvaluationTriangleTrace_factor (A : PointedSimplicialSet.{u}) (X : Object A) :
     triangleTrace (zeroEvaluationTriangleAt A X) =
       toUnit (Δ[1] : SSet.{u}) ≫ eId SSet X ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedUnitTransformation.hom (parameterEvaluation A A.hom) X X := by
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedUnitTransformationHom.hom (parameterEvaluation A A.hom) X X := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext

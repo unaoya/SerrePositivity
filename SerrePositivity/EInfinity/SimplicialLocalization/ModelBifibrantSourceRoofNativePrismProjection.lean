@@ -30,7 +30,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePrism_projection :
     modelBifibrantSourceRoofProductCommaNativePrism X Y q b ≫
-      sliceOverProjection (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) =
     (β_ (Δ[1] : SSet.{max u v}) (nerve (modelBifibrantSourceRoofProductComma X Y q b))).hom ≫
       (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h := by
   rw [modelBifibrantSourceRoofProductCommaEvaluationHomotopy_h X Y q b]
@@ -38,12 +38,12 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_projection :
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   rintro ⟨t, Γ⟩
-  change SSet.yonedaEquiv (joinInl Δ[n] Δ[0] ≫ (joinStdSimplexIso n 0).hom ≫
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[n] Δ[0] ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫
     SSet.yonedaEquiv.symm (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ
       (stdSimplex.objEquiv t).toOrderHom)) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_inl,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inl,
     SSet.yonedaEquiv_symm_naturality_left, Equiv.apply_symm_apply]
-  have hf := RoofPrefix.simplex_front (modelBifibrantRelativeCategory C)
+  have hf := RoofPrefix.simplex_front (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -51,16 +51,16 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_projection :
     (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f) Γ
     (stdSimplex.objEquiv t).toOrderHom
   refine hf.trans ?_
-  change (nerveToCoherent (KanHammockCategory (modelBifibrantRelativeCategory C))).app
-    (Opposite.op ⦋n⦌) (RoofPrefix.frontDiagram (modelBifibrantRelativeCategory C)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))).app
+    (Opposite.op ⦋n⦌) (RoofPrefix.frontDiagram (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
       (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation X Y q b) Γ
       (stdSimplex.objEquiv t).toOrderHom) =
-    (nerveToCoherent (KanHammockCategory (modelBifibrantRelativeCategory C))).app
-      (Opposite.op ⦋n⦌) (((SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent (KanHammockCategory (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))).app
+      (Opposite.op ⦋n⦌) (((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy
         (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)).h.app (Opposite.op ⦋n⦌)
-          (Γ, t)) ⋙ kanHammockSourceFunctor (modelBifibrantRelativeCategory C))
-  rw [FrameHom.nerveNatTransHomotopy_app]
+          (Γ, t)) ⋙ kanHammockSourceFunctor (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveNatTransHomotopy_app]
   rfl
 
 end SerrePositivity.EInfinity.SimplicialLocalization

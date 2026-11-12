@@ -13,7 +13,7 @@ public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotati
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   {P : Type (max (u + 1) v)} [DGCategory R P] [Small.{u} P]
   (F G : DGFunctor R P (PerfectDGModule R E))
@@ -36,7 +36,7 @@ local notation "i" => perfectDGModuleInclusion R E Set.univ
 local notation "TP" => dgIdentityInverseRotationPerfectTargetFamily R (T)
 local notation "TF" => dgIdentityHomGluingInverseRotationTargetFamily R (T) (F0) (G0) (a) (h)
 local notation "RF" => dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ
-local notation "IR" => dgStrictNatTransPostcomp
+local notation "IR" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp
   (dgIdentityHomGluingInverseRotationRealizedInr R (T) (F0) (G0) (a) (h)) (V)
 
 /-- 概要：元実包含の始域を同じ二段実 Perf 全族として保持する。
@@ -60,7 +60,7 @@ lemma dgPerfectComparisonInverseRotationPerfectTargetFamily_underlying :
 方針：同じ元全変換を証明済み二段包含等号に沿って制限する。
 規約：全自然性と元 cycle を保持。使われ方：固定 ν へ送る元包含辺。 -/
 def dgPerfectComparisonInverseRotationPerfectInr :
-    StrictNatTrans (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ) (RF) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ) (RF) :=
   dgPerfectStrictNatTransLift R E
     (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ) (RF)
     (dgPerfectComparisonInverseRotationPerfectTargetFamily_underlying R E F G τ)
@@ -70,7 +70,7 @@ def dgPerfectComparisonInverseRotationPerfectInr :
 方針：同じ元全変換の制限回収を使用する。
 規約：元全厳密変換の型付き一致。使われ方：元全境界を同じ Perf 比較へ反映。 -/
 lemma dgPerfectComparisonInverseRotationPerfectInr_inclusion :
-    HEq (dgStrictNatTransPostcomp
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp
       (dgPerfectComparisonInverseRotationPerfectInr R E F G τ) (i)) (IR) :=
   dgPerfectStrictNatTransLift_inclusion R E
     (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ) (RF)
@@ -80,12 +80,12 @@ lemma dgPerfectComparisonInverseRotationPerfectInr_inclusion :
 方針：全厳密変換の回収と既存の native 後合成則を組み合わせる。
 規約：同じ全関手射の型付き一致。使われ方：同じ固定 ν 全比較への包含境界。 -/
 lemma dgPerfectComparisonInverseRotationPerfectInr_nerve_inclusion :
-    HEq (functorHomPostcomp
-      (dgNerve.map (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ))
-      (dgNerve.map (RF)) (dgNerve.map (i))
-      (dgStrictNatTransNerveHom R P (PerfectDGModule R E)
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (RF)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (PerfectDGModule R E)
         (dgPerfectComparisonInverseRotationPerfectInr R E F G τ)))
-      (dgStrictNatTransNerveHom R P (RightModule R E) (IR)) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R E) (IR)) :=
   dgPerfectStrictNatTransLift_nerve_inclusion R E
     (dgPerfectComparisonInverseRotationPerfectTargetFamily R E F G τ) (RF)
     (dgPerfectComparisonInverseRotationPerfectTargetFamily_underlying R E F G τ)

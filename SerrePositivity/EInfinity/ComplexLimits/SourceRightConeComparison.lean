@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.RightSimplicialCones
 public import SerrePositivity.EInfinity.ComplexLimits.Probe
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierConstantDiagramFrame
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameCones
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameCones
 
 /-!
 # 複体の始域 frame の錐と実際の右 frame の錐の比較
@@ -27,7 +27,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 
 open CategoryTheory Limits HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
 attribute [local implicit_reducible] CofibrantResolutionFamily.atObject
@@ -50,7 +50,7 @@ def sourceRightConeComparisonIso (Y : (Complex A)) (F : K ⥤ (Complex A))
   let R := F ⋙ rightSimplicialFrameFamily A
   let b : F ⋙ Functor.const SimplexCategoryᵒᵖ ⟶ R :=
     Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
-  exact mixedConeComparisonIso K (HomotopyWeight.weight K)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.mixedConeComparisonIso K (HomotopyWeight.weight K)
     (HomotopyWeight.weight_cofibrant K) (q.obj.obj (framedLimitProbe A Y))
     (q.cofibrant _) (q.atObject _).homotopicallyConstant (q.augmentation.app _)
     (q.atObject _).augmentation_weakEquivalence F R b

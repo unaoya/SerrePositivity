@@ -25,8 +25,8 @@ namespace SerrePositivity.KST.Fibration.Relative
 /-- 概要：P の同じ模型から零圏への完全射。
 方針：既存の零圏射。規約：商射ではない。使われ方：全旗の表現。 -/
 def closedKernelZeroMap {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (flagAmbient (closedStableModel P)) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u} :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (flagAmbient (closedStableModel P))
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (flagAmbient (closedStableModel P)) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u} :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (flagAmbient (closedStableModel P))
 
 /-- 概要：零圏への W 条件は全旗で自動的。
 方針：全 cofiber の像は零。規約：P の対象を制限しない。
@@ -37,14 +37,14 @@ lemma closedKernelFlag_all {B : StableModel.{u}} (P : ClosedStablePredicate B)
     weakStringPredicate (closedKernelZeroMap P) n v := by
   unfold weakStringPredicate
   intro α
-  exact isIso_of_isTerminal (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _).2.isTerminalHo
-    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _).2.isTerminalHo _
+  exact isIso_of_isTerminal (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _).2.isTerminalHo
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _).2.isTerminalHo _
 
 /-- 概要：P の包含の同じ完全射。
 方針：保存データを既存の ExactMap に包装。
 規約：底の射は元の包含。使われ方：全図式の後合成。 -/
 def closedKernelInclusion {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (flagAmbient (closedStableModel P)) (flagAmbient B) where
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (flagAmbient (closedStableModel P)) (flagAmbient B) where
   hom := (closedStableInclusion P).val
   isExact := (closedStableInclusion P).property.isExactFunctor
 
@@ -54,7 +54,7 @@ def closedKernelInclusion {B : StableModel.{u}} (P : ClosedStablePredicate B) :
 lemma closedKernel_edge_mem {B : StableModel.{u}} (P : ClosedStablePredicate B)
     (a : (closedStableModel P).carrier _⦋1⦌) :
     (closedStableInclusion P).val.app _ a ∈ closedStableEdges P := by
-  let s := chosenCofiberSquare (edgeOfSimplex a)
+  let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a)
   have h := (closedStableEdges_iff_cofiber P (s.map (closedKernelInclusion P).hom)).2
     (closedSubcategory_vertex P s.cofiber)
   exact h

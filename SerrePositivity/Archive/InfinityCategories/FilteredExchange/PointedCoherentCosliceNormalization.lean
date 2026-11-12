@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Joins.CoslicePostCoordinates
-public import SerrePositivity.InfinityCategories.F1.Coherent.Vertices
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CoslicePostCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Vertices
 
 /-!
 概要：coherent な一点頂点の coslice 全体を、元の pointed-space 表示へ移す。

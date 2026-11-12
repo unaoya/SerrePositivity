@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeDiscreteEnrichment
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeDiscreteEnrichment
 public import SerrePositivity.EInfinity.Hammock.FreeHammockEnrichedUniversal
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorPartition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorPartition
 
 /-!
 # 元の非指定自由部分から任意の豊穣目標への関手
@@ -20,35 +20,35 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
 namespace EnrichedFoldData
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [EnrichedCategory SSet.{u} D] (F : EnrichedFoldData W D)
 
-def unmarkedPrefunctor : MarkedGenerators.quiver (GeneratorPartition.unmarked W) ⥤q
+def unmarkedPrefunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W) ⥤q
     ForgetEnrichment SSet.{u} D where
   obj X := ForgetEnrichment.of SSet.{u} (F.obj X)
   map {X Y} f := ForgetEnrichment.homOf SSet.{u} (F.generator ⟨⟨X, Y, f.val⟩, f.property⟩)
 
 def unmarkedEnrichedFunctor :
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    EnrichedFunctor SSet.{u} (Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W))) D :=
-  DiscreteEnrichment.liftFunctor (Paths.lift F.unmarkedPrefunctor)
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    EnrichedFunctor SSet.{u} (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W))) D :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichmentLift.liftFunctor (Paths.lift F.unmarkedPrefunctor)
 
-lemma unmarkedEnrichedFunctor_generator (g : FactorTarget.Index W) :
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    DiscreteEnrichment.point
+lemma unmarkedEnrichedFunctor_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.point
         (Quiver.Hom.toPath (show @Quiver.Hom
-          (MarkedGenerators.quiver (GeneratorPartition.unmarked W)) _ g.val.left g.val.right from
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)) _ g.val.left g.val.right from
             ⟨g.val.hom, g.property⟩)) ≫
       F.unmarkedEnrichedFunctor.map g.val.left g.val.right = F.generator g := by
-  let := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  change DiscreteEnrichment.point _ ≫ DiscreteEnrichment.liftMap
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.point _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichmentLift.liftMap
     (Paths.lift F.unmarkedPrefunctor) g.val.left g.val.right = F.generator g
-  rw [DiscreteEnrichment.liftMap_point, Paths.lift_toPath]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichmentLift.liftMap_point, Paths.lift_toPath]
   rfl
 
 end EnrichedFoldData

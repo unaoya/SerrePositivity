@@ -21,15 +21,15 @@ namespace SerrePositivity.EInfinity.Hammock.DoubleSimplicial
 open CategoryTheory SerrePositivity.InfinityCategories
 
 lemma diagonalFunctor_map_weak_of_columns {B D : SimplicialObject SSet.{u}} (f : B ⟶ D)
-    (hf : ∀ n, IsWeakHomotopyEquivalence (((flipFunctor _ _ _).map f).app n)) :
-    IsWeakHomotopyEquivalence (diagonalFunctor.map f) := by
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (((flipFunctor _ _ _).map f).app n)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) := by
   have h := diagonalFunctor_map_weak ((flipFunctor _ _ _).map f) hf
-  have hB := (isPrecompositionEquivalence_of_iso
+  have hB := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (FrameHom.BarRows.diagonalFlipIso B)).isWeakHomotopyEquivalence
-  have hD := (isPrecompositionEquivalence_of_iso
+  have hD := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (FrameHom.BarRows.diagonalFlipIso D)).isWeakHomotopyEquivalence
   have hc := h.comp hD
-  change IsWeakHomotopyEquivalence
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (SerrePositivity.BisimplicialModel.diagonal.map ((flipFunctor _ _ _).map f) ≫
       (FrameHom.BarRows.diagonalFlipIso D).hom) at hc
   rw [FrameHom.BarRows.diagonalFlipIso_naturality f] at hc

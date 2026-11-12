@@ -56,7 +56,7 @@ lemma parameter_map {q r : ResolutionArrowDiagram.Index C} (f : q ⟶ r) :
 variable [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (families : ∀ q, (parameters C).obj q ⟶
-    UniverseLift.obj.{u} ((ResolutionArrowDiagram.fibers C).obj q))
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((ResolutionArrowDiagram.fibers C).obj q))
 
 /-- Retain every whole original family on its moving central-arrow parameter. -/
 def system : NerveMovingParameter.System.{u, v} (parameters C)
@@ -73,9 +73,9 @@ lemma system_compatibility {s t : Index (ResolutionArrowDiagram.Index C)} (f : s
     SSet.stdSimplex.map (operator f) ≫ (system C hcof families).app t =
       (system C hcof families).app s ≫
         (CategoryTheory.MonoidalClosed.pre ((parameters C).map (NerveSimplexStart.startMap f))).app
-          (UniverseLift.obj.{u} ((ResolutionArrowDiagram.fibers C).obj (endpoint s))) ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((ResolutionArrowDiagram.fibers C).obj (endpoint s))) ≫
         (CategoryTheory.ihom ((parameters C).obj (NerveSimplexStart.start t))).map
-          (UniverseLift.map.{u} ((ResolutionArrowDiagram.fibers C).map (endpointMap f))) :=
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} ((ResolutionArrowDiagram.fibers C).map (endpointMap f))) :=
   NerveBiparameter.compatibility _ _ _ f
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionArrowParameters

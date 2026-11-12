@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open Spectra
 variable {C D : Type v} [Category.{u} C] [Category.{u} D]
   [SimplicialCategory C] [SimplicialCategory D]
@@ -24,21 +24,21 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
 /-- 下段の R の像から上段へ、元の交差恒等射を持つ全入力円柱。 -/
 def enrichedFunctorCollageComparisonHomotopy (R : EnrichedFunctor SSet.{u} C D)
     (G : I ⥤ C) : SSet.Homotopy
-      (strictCoherentDiagram G ≫ coherentNerveMap R ≫ enrichedFunctorCollageBottomInfinity R)
-      (strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap R ≫ enrichedFunctorCollageBottomInfinity R)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R) := by
   let η := CategoryTheory.Functor.whiskerLeft G (enrichedFunctorCollageComparison R)
   let H := StrictDiagramTransformation.homotopy η
-  have hs : strictCoherentDiagram G ≫ coherentNerveMap R ≫
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap R ≫
       enrichedFunctorCollageBottomInfinity R =
-    strictCoherentDiagram (G ⋙ (coherentEnrichedUnderlyingFunctor R ⋙
-      coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R))) := by
-    rw [← Category.assoc, strictCoherentDiagram_postcomp]
-    exact strictCoherentDiagram_postcomp (G ⋙ coherentEnrichedUnderlyingFunctor R)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (G ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R ⋙
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R))) := by
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp (G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R)
       (enrichedFunctorCollageBottom R)
-  have ht : strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R =
-      strictCoherentDiagram (G ⋙ coherentEnrichedUnderlyingFunctor
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (G ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
         (enrichedFunctorCollageTop R)) :=
-    strictCoherentDiagram_postcomp G (enrichedFunctorCollageTop R)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp G (enrichedFunctorCollageTop R)
   refine { h := H.h, h₀ := H.h₀.trans hs.symm, h₁ := H.h₁.trans ht.symm, rel := ?_ }
   apply SSet.hom_ext
   intro n
@@ -56,9 +56,9 @@ lemma enrichedFunctorCollageComparisonHomotopy_h (R : EnrichedFunctor SSet.{u} C
 /-- 全入力比較の対象での辺は、元の交差恒等射の coherent な辺そのもの。 -/
 lemma enrichedFunctorCollageComparisonHomotopy_vertex_edge
     (R : EnrichedFunctor SSet.{u} C D) (G : I ⥤ C) (i : I) :
-    (simplicialHomotopyVertexEdge (enrichedFunctorCollageComparisonHomotopy R G)
-      (ULift.up (nerveVertex i))).edge =
-      (coherentNerveEdge (enrichedFunctorCollageCross R (𝟙 (R.obj (G.obj i))))).edge :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (enrichedFunctorCollageComparisonHomotopy R G)
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (enrichedFunctorCollageCross R (𝟙 (R.obj (G.obj i))))).edge :=
   StrictDiagramTransformation.component_edge
     (CategoryTheory.Functor.whiskerLeft G (enrichedFunctorCollageComparison R)) i
 

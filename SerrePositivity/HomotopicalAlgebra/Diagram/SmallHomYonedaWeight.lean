@@ -29,9 +29,9 @@ def iso : YonedaWeightRealization.weightFamily K ⋙ SmallHomFrameWeights.functo
       (SmallHomModel.equivalence.{w} C).functor ≪≫
         SmallHomConstantWeight.degreeIso K A (SimplexCategory.mk 0)
 
-variable (IC JC : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} IC JC]
+variable (IC JC : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IC JC]
   [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (hA : ∀ k, reedyLeft simplex (cofibrations C) (initial.to (A.obj k)))

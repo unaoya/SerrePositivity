@@ -31,7 +31,7 @@ def relativeParameterForwardInterval (n : ℕ) :
         (PointedObject.toPoint (PointedObject.basedHom (X.level n).space (Y.level n).space))
         (PointedMapping.transpose (f n))
         (rectifyParameterRelative X Y j c f hb hf ≫ pointedEvaluation X Y n) //
-      P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j
+      P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j
         (PointedObject.basedHom (X.level n).space (Y.level n).space)).right =
           SSet.const (PointedMapping.familyVertex (c ≫ pointedEvaluation X Y n)) } := by
   let P := Classical.choice ((relativeParameterHom_chain X Y j c f hb hf n).nonempty_path

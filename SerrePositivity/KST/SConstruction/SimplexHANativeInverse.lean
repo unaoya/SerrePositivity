@@ -16,10 +16,10 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の任意の native HA 部分集合成分は、実逆 dg 関手から再抽出すると厳密に戻る。 -/
-lemma simplexHAInverseFunctor_native_hom {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAInverseFunctor_native_hom {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (I : Finset (Fin (N + 1))) (a b : Fin (N + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ)) :
     (cubicalLambdaNativeSimplex A (simplexHAInverseFunctor A s)).hom I a b k hI ha hb hk =
       s.hom I a b k hI ha hb hk := by
   let m := I.card - 2
@@ -51,10 +51,10 @@ lemma simplexHAInverseFunctor_native_hom {N : ℕ} (s : DGNerve.Simplex A D N)
     ((heq_of_eq (simplexHAInverseFunctor_native_decoded_hom A s m v b hblast)).trans hS))
 
 /-- 元の native HA 単体を実 dg 関手にして戻すと、元の全単体が厳密に戻る。 -/
-lemma cubicalLambdaNativeSimplex_inverse {N : ℕ} (s : DGNerve.Simplex A D N) :
+lemma cubicalLambdaNativeSimplex_inverse {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) :
     cubicalLambdaNativeSimplex A (simplexHAInverseFunctor A s) = s := by
-  apply DGNerve.Simplex.ext
-  apply DGNerve.SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk
@@ -62,7 +62,7 @@ lemma cubicalLambdaNativeSimplex_inverse {N : ℕ} (s : DGNerve.Simplex A D N) :
 
 /-- 元の Λ 標準単体からの全実 dg 関手と、元の全 native HA 単体の実逆対応。 -/
 def cubicalLambdaNativeSimplexEquiv (N : ℕ) :
-    DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D ≃ DGNerve.Simplex A D N where
+    DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D ≃ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N where
   toFun := cubicalLambdaNativeSimplex A
   invFun := simplexHAInverseFunctor A
   left_inv := simplexHAInverseFunctor_native A

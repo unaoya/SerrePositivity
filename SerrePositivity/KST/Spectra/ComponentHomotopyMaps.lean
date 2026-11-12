@@ -33,7 +33,7 @@ theorem pointedHomotopyMap_eq_of_component {X Y : PointedSimplicialSet.{u}}
     pointedHomotopyMap n f = pointedHomotopyMap n g := by
   obtain ⟨H, hb⟩ := (PointedMapping.piZero_eq_iff_pointedHomotopy f g).mp h
   funext a
-  exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_eq_of_basedHomotopy _ _ _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedRelativeHomotopy f g H hb) a
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_eq_of_basedHomotopy _ _ _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedRelativeHomotopy f g H hb) a
 
 /-- 概要：各段で同じ成分のスペクトルの射は全整数次数の誘導準同型が一致する。
 方針：標準段でのホモトピー不変性を適用する。

@@ -23,7 +23,7 @@ universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 
 open CategoryTheory
-open SerrePositivity.HomotopyFunctionComplex
+
 
 variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
   {X Y Z Z' : C} {A A' : SimplexCategory ⥤ C}
@@ -37,7 +37,7 @@ variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
 規約：元の Hom の前合成による全単体の係数射を保持する。
 使われ方：frame の共通比較を同じ三本矢の図式へ送る。 -/
 def frameSpanSourceComparison (α : A' ⟶ A) (hα : α ≫ p = p') :
-    ((cosimplicialHomMap α).app Z).mapElements.op ⋙ frameElementSpanFunctor L R A' p' hp' j hj ⟶
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Z).mapElements.op ⋙ frameElementSpanFunctor L R A' p' hp' j hj ⟶
       frameElementSpanFunctor L R A p hp j hj where
   app s :=
     { left := α.app s.unop.obj.unop
@@ -46,7 +46,7 @@ def frameSpanSourceComparison (α : A' ⟶ A) (hα : α ≫ p = p') :
       middle_w := Category.comp_id _
       right_w := Category.comp_id _ }
   naturality s t f := by
-    apply ArrowSpan.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext
     · exact α.naturality f.unop.hom.unop
     · exact (Category.id_comp _).trans (Category.comp_id _).symm
 
@@ -56,7 +56,7 @@ def frameSpanSourceComparison (α : A' ⟶ A) (hα : α ≫ p = p') :
 使われ方：同じ fibrant 置換の比較と高次の共通図式の自然性。 -/
 def frameSpanTargetComparison (j' : Y ⟶ Z') (hj' : R j') (β : Z ⟶ Z') (hβ : j ≫ β = j') :
     frameElementSpanFunctor L R A p hp j hj ⟶
-      ((cosimplicialHom A).map β).mapElements.op ⋙ frameElementSpanFunctor L R A p hp j' hj' where
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map β).mapElements.op ⋙ frameElementSpanFunctor L R A p hp j' hj' where
   app s :=
     { left := 𝟙 _
       right := β
@@ -64,7 +64,7 @@ def frameSpanTargetComparison (j' : Y ⟶ Z') (hj' : R j') (β : Z ⟶ Z') (hβ 
       middle_w := (Category.id_comp _).symm
       right_w := hβ }
   naturality s t f := by
-    apply ArrowSpan.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext
     · exact (Category.comp_id _).trans (Category.id_comp _).symm
     · change (𝟙 Z) ≫ β = β ≫ 𝟙 Z'
       exact (Category.id_comp β).trans (Category.comp_id β).symm

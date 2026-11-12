@@ -21,7 +21,7 @@ open scoped Simplicial
 規約：C は安定な quasicategory。追加の余極限の存在仮定を使わない。
 使われ方：零射の coherent な指定を含む Ar[n] 上の相対補完。 -/
 lemma exists_arCofiberSpanCompletion_preserving_frame {A B C : SSet.{u}}
-    [Quasicategory C] [IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (n : ℕ) (i : A ⟶ B) [Mono i]
     (a : A ⟶ sConstruction n C) (b : B ⟶ zeroFrameDiagrams n C)
     (h : a ≫ gappedFrameRestriction n C = i ≫ b) :
     ∃ H : B ⟶ (ihom (arNerve n)).obj (cofiberDiagrams C),
@@ -30,9 +30,9 @@ lemma exists_arCofiberSpanCompletion_preserving_frame {A B C : SSet.{u}}
       H ≫ (pre (frameInclusion n)).app (cofiberDiagrams C) =
         b ≫ zeroFrameCofiberFamiliesMap n C := by
   let sq := Functor.PullbackObjObj.ofHasPullback internalHom (frameInclusion n) (cofiberSpanProjection C)
-  have : TrivialKanFibration sq.π :=
-    trivialKanFibration_pullbackObjObjπ (frameInclusion n) (cofiberSpanProjection C) sq
-  have := TrivialKanFibration.mem (p := sq.π) i inferInstance
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration sq.π :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.trivialKanFibration_pullbackObjObjπ (frameInclusion n) (cofiberSpanProjection C) sq
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := sq.π) i inferInstance
   let d : B ⟶ sq.pt := sq.isPullback.lift (b ≫ zeroFrameCofiberFamiliesMap n C)
     (b ≫ frameCofiberSpans n C) (by
       change (b ≫ zeroFrameCofiberFamiliesMap n C) ≫

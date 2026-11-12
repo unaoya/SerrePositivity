@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.PerfectLaxQuotientCompletionLegs
 public import SerrePositivity.KST.SConstruction.TammePerfectProjectionEquivalence
-public import SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifferenceCLeg
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.LaxUniversalDifferenceCLeg
 
 /-! # 元の完備化後の二脚の実積射と普遍差の両射影
 概要：普遍差の比較関手の値は、元の二脚の実積射と元の両射影の下で可換する。
@@ -22,7 +22,7 @@ private lemma perfectProjectionPasting {K : Type*} [Category K]
     (hw : w ≫ b = a ≫ f) : (j ≫ u) ≫ b = (v ≫ w) ≫ b := by
   rw [Category.assoc, hu, hj, Category.assoc, hw, ← Category.assoc, hv]
 
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q) (F : perfectStableInfinity.{u} ⟶ Sp.{u})
 
 /-- 元の C・D の値から、元の完備化後の二脚を持つ実 BF 積射。 -/
@@ -60,9 +60,9 @@ lemma universalLift_value_fst :
     LaxUniversalDifference.exactLift p q d.sequence.projection ≫
       laxFst (𝟙 d.sequence.right) (𝟙 d.sequence.right)
   let g : laxCategory p q ⟶ d.sequence.right :=
-    laxFst p q ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q d.sequence.projection
-  have e : FunctorIso f.hom g.hom :=
-    _root_.SerrePositivity.InfinityCategories.Derived.Lax.LaxUniversalDifference.firstCLegIso p q d.sequence.projection
+    laxFst p q ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientCLeg p q d.sequence.projection
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f.hom g.hom :=
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.firstCLegIso p q d.sequence.projection
   have hh := congrArg SpectrumHo.normalize
     (perfectInvariantHoArrow_eq_of_functorIso F d.middle_complete d.sequence.right_complete e)
   have hf := perfectInvariantSpectrumHom_comp F
@@ -72,7 +72,7 @@ lemma universalLift_value_fst :
       (𝟙 d.sequence.right) (𝟙 d.sequence.right)
         d.sequence.right_complete d.sequence.right_complete) d.sequence.right_complete
   have hg := perfectInvariantSpectrumHom_comp F (laxFst p q)
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientCLeg p q d.sequence.projection)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientCLeg p q d.sequence.projection)
     d.middle_complete d.c_complete d.sequence.right_complete
   have hm := congrArg (fun a =>
     perfectInvariantSpectrumHom F (laxFst p q) d.middle_complete d.c_complete ≫ a)
@@ -94,15 +94,15 @@ lemma universalLift_value_snd :
     LaxUniversalDifference.exactLift p q d.sequence.projection ≫
       laxSnd (𝟙 d.sequence.right) (𝟙 d.sequence.right)
   let g : laxCategory p q ⟶ d.sequence.right :=
-    laxSnd p q ≫ _root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q d.sequence.projection
+    laxSnd p q ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientDLeg p q d.sequence.projection
   have he : f.hom = g.hom := by
     change LaxUniversalDifference.lift p q d.sequence.projection ≫
       (laxSnd (𝟙 d.sequence.right) (𝟙 d.sequence.right)).hom =
         (laxSnd p q).hom ≫ (LaxInclusion.fromD p q ≫ d.sequence.projection.hom)
     exact (LaxUniversalDifference.lift_snd p q d.sequence.projection).trans
       (Category.assoc _ _ _)
-  have e : FunctorIso f.hom g.hom :=
-    eqToIso (congrArg (fun a => HomotopyCategory.mk (functorVertex a)) he)
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f.hom g.hom :=
+    eqToIso (congrArg (fun a => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex a)) he)
   have hh := congrArg SpectrumHo.normalize
     (perfectInvariantHoArrow_eq_of_functorIso F d.middle_complete d.sequence.right_complete e)
   have hf := perfectInvariantSpectrumHom_comp F
@@ -112,7 +112,7 @@ lemma universalLift_value_snd :
       (𝟙 d.sequence.right) (𝟙 d.sequence.right)
         d.sequence.right_complete d.sequence.right_complete) d.sequence.right_complete
   have hg := perfectInvariantSpectrumHom_comp F (laxSnd p q)
-    (_root_.SerrePositivity.InfinityCategories.Derived.Lax.laxQuotientDLeg p q d.sequence.projection)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientDLeg p q d.sequence.projection)
     d.middle_complete d.d_complete d.sequence.right_complete
   have hm := congrArg (fun a =>
     perfectInvariantSpectrumHom F (laxSnd p q) d.middle_complete d.d_complete ≫ a)

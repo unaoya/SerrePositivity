@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.IsoEndpointNormalization
 
 /-!
 概要：関手で写した左右の指定比較と、外側の実頂点の補正を一つの合成式へ揃える。

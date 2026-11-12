@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.WeightedCochains
 universe u
 
 open CategoryTheory SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.UnderlyingWeightedCochains
 
@@ -31,10 +31,10 @@ variable {I : Type u} [SmallCategory I]
 規約：係数図式は固定する。
 使われ方：Goerss–Jardine VIII §1。通常の cochain の構造射。 -/
 def weightFunctor (H : I ⥤ SSet.{u}) : (I ⥤ SSet.{u})ᵒᵖ ⥤ SSet.{u} where
-  obj W := weightedSections W.unop H
-  map f := weightedSectionsPre f.unop H
-  map_id W := weightedSectionsPre_id W.unop H
-  map_comp f g := weightedSectionsPre_comp g.unop f.unop H
+  obj W := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W.unop H
+  map f := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre f.unop H
+  map_id W := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_id W.unop H
+  map_comp f g := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp g.unop f.unop H
 
 /-- 概要：単体的な重みと通常の係数からの余単体 cochain。
 方針：反対の重み図式と通常の end の反変関手を合成する。

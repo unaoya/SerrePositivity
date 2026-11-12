@@ -19,13 +19,13 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
 
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
 
 /-- 元の核上の全 S• 同型を通した core 包含は、同じ全 S• への元の実包含。 -/
-theorem relativeSKernelSimplicialIso_core (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem relativeSKernelSimplicialIso_core (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom) ≫
         (relativeSKernelSimplicialIso h).hom =
       relativeSimplicialSConstructionCoreInclusion (𝟙 A.obj) ≫
@@ -35,16 +35,16 @@ theorem relativeSKernelSimplicialIso_core (h : _root_.SerrePositivity.InfinityCa
   exact relativeSKernelCoreInclusion_fullS h n.unop.len
 
 /-- 元の核包含同型の実現は、同じ core から全 S• への包含を厳密に回収する。 -/
-theorem relativeSKernelSimplicialIso_realization_core (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem relativeSKernelSimplicialIso_realization_core (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     simplicialDiagonalFunctor.map
         (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom)) ≫
       simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom =
-        coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from A) := by
+        coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from A) := by
   rw [← Functor.map_comp, relativeSKernelSimplicialIso_core]
   rfl
 
 /-- 元の全相対核円柱は、同じ全図式 Hom の実対角作用。 -/
-theorem quotientSKernelContractionImage_fullS_diagonal (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem quotientSKernelContractionImage_fullS_diagonal (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     simplicialCylinderDiagonal _ _ (Δ[1] : SSet.{u}) (quotientSKernelContractionImage h) =
       (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom ▷ (Δ[1] : SSet.{u})) ≫
         uncurry ((quotientSKernelZeroFunctorParameter h ≫ zeroFunctorFullSDiagramFamily A C) ≫
@@ -62,19 +62,19 @@ theorem quotientSKernelContractionImage_fullS_diagonal (h : _root_.SerrePositivi
     (quotientSKernelZeroFunctorParameter h ≫ zeroFunctorFullSDiagramFamily A C))
 
 /-- 元の相対核円柱の Ex∞ 像は、同じ全 S• 上の全零値パラメータ作用そのもの。 -/
-theorem quotientSKernelContractionImage_fullSKan (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
-    coaugmentedTensorRightStrength exInfinity exInfinityUnit
+theorem quotientSKernelContractionImage_fullSKan (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
+    coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         (simplicialDiagonalFunctor.obj (relativeSimplicialSConstruction (i.hom ≫ q.hom)))
           (Δ[1] : SSet.{u}) ≫
-      exInfinity.map (simplicialCylinderDiagonal _ _ (Δ[1] : SSet.{u})
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialCylinderDiagonal _ _ (Δ[1] : SSet.{u})
         (quotientSKernelContractionImage h)) =
-      (exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom) ▷
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (relativeSKernelSimplicialIso h).hom) ▷
         (Δ[1] : SSet.{u})) ≫
         uncurry (quotientSKernelZeroFunctorParameter h ≫ zeroFunctorFullSKanFamily A C) := by
   rw [quotientSKernelContractionImage_fullS_diagonal, Functor.map_comp, ← Category.assoc,
     ← coaugmentedTensorRightStrength_naturality, Category.assoc]
   apply congrArg (_ ≫ ·)
-  exact (coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit
+  exact (coaugmentedClosedFamilyMap_strength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
     ((quotientSKernelZeroFunctorParameter h ≫ zeroFunctorFullSDiagramFamily A C) ≫
       simplicialSSetDiagramDiagonalEnrichedFunctor.map _ _)).symm
 

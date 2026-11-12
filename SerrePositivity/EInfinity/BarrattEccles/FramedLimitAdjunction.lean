@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitLocalization
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitHomIso
-public import SerrePositivity.InfinityCategories.HomotopyLimits.LocalizedAdjunction
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.LocalizedAdjunction
 
 /-!
 # 定値図式と実際の極限計算関手の局所化圏上の随伴
@@ -25,7 +25,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra
-open SerrePositivity.EInfinity.FrameHom.LocalizedAdjunction
+
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
 
@@ -38,8 +38,8 @@ def framedLimitRestrictedHomIso :
     let := Diagram.projectiveModelCategory A K
     let Q := (weakEquivalences (operad A).Algebra).Q
     let QD := (weakEquivalences (K ⥤ (operad A).Algebra)).Q
-    restrict Q QD (leftHom (localizedConstantDiagram A K)) ≅
-      restrict Q QD (rightHom (localizedFramedLimit A K)) := by
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.restrict Q QD (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.leftHom (localizedConstantDiagram A K)) ≅
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.restrict Q QD (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.rightHom (localizedFramedLimit A K)) := by
   let := modelCategory A
   let := Diagram.projectiveModelCategory A K
   let Q := (weakEquivalences (operad A).Algebra).Q
@@ -47,11 +47,11 @@ def framedLimitRestrictedHomIso :
   let P := (Functor.whiskeringLeft (K ⥤ (operad A).Algebra) _ (Type (u + 1))).obj QD
   let c := localizedConstantDiagramComparison A K
   let r := localizedFramedLimitComparison A K
-  let eleft : restrict Q QD (leftHom (localizedConstantDiagram A K)) ≅
+  let eleft : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.restrict Q QD (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.leftHom (localizedConstantDiagram A K)) ≅
       framedLimitRawLeftHom A K :=
     Functor.isoWhiskerRight (Functor.isoWhiskerRight (NatIso.op c.symm) coyoneda) P
   let eright : framedLimitRawRightHom A K ≅
-      restrict Q QD (rightHom (localizedFramedLimit A K)) :=
+      _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.restrict Q QD (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.rightHom (localizedFramedLimit A K)) :=
     Functor.isoWhiskerLeft (Q.op ⋙ coyoneda)
       ((Functor.whiskeringLeft (K ⥤ (operad A).Algebra)
         (weakEquivalences (operad A).Algebra).Localization (Type (u + 1))).mapIso r.symm)
@@ -67,7 +67,7 @@ def framedLimitAdjunction :
     localizedConstantDiagram A K ⊣ localizedFramedLimit A K := by
   let := modelCategory A
   let := Diagram.projectiveModelCategory A K
-  exact descendAdjunction (weakEquivalences (operad A).Algebra).Q
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.descendAdjunction (weakEquivalences (operad A).Algebra).Q
     (weakEquivalences (operad A).Algebra)
     (weakEquivalences (K ⥤ (operad A).Algebra)).Q
     (weakEquivalences (K ⥤ (operad A).Algebra)) (localizedConstantDiagram A K)
@@ -92,7 +92,7 @@ lemma framedLimitAdjunction_homEquiv (Y : (operad A).Algebra)
   let := Diagram.projectiveModelCategory A K
   dsimp only
   intro x
-  exact descendAdjunction_homEquiv_app (weakEquivalences (operad A).Algebra).Q
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.descendAdjunction_homEquiv_app (weakEquivalences (operad A).Algebra).Q
       (weakEquivalences (operad A).Algebra)
       (weakEquivalences (K ⥤ (operad A).Algebra)).Q
       (weakEquivalences (K ⥤ (operad A).Algebra)) (localizedConstantDiagram A K)

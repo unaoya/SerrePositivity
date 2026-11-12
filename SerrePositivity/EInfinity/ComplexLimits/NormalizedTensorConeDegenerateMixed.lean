@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
@@ -22,7 +22,7 @@ variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorConeData_hom_mixed_reindex_noninjective {m n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (I : Finset (Fin (m + 2))) (a b : Fin (m + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (h0 : 0 ∈ I)
     (hn : ¬Set.InjOn θ.toOrderHom ((withoutFirst I) : Set (Fin (m + 1)))) :
     (normalizedTensorConeData A X Y
@@ -45,7 +45,7 @@ lemma normalizedTensorConeData_hom_mixed_reindex_noninjective {m n : ℕ}
       (normalizedTensorElementDiagram A X Y).obj (c'.obj ((withoutFirst I).max' hJ)) := by
     change normalizedTensorConeObj A X Y c' b = _
     rw [hb', normalizedTensorConeObj_succ]
-  have hzero := gradedHom_zero_heq (A := A) (k := k) (l := k) hx hy rfl
+  have hzero := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (k := k) (l := k) hx hy rfl
   exact eq_of_heq (he.trans hzero.symm)
 
 end SerrePositivity.EInfinity.ComplexLimits

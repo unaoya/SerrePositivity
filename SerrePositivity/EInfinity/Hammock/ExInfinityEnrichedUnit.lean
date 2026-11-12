@@ -17,34 +17,34 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.Hammock
-open CategoryTheory MonoidalCategory SerrePositivity.KST.Comparison
+open CategoryTheory MonoidalCategory
 variable (C : Type v) [EnrichedCategory SSet.{u} C]
 
 def exInfinityEnrichedUnit :
-    EnrichedFunctor SSet.{u} C (TransportEnrichment exInfinity.{u} C) where
+    EnrichedFunctor SSet.{u} C (TransportEnrichment _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.{u} C) where
   obj X := X
-  map X Y := exInfinityUnit.app (X ⟶[SSet.{u}] Y)
+  map X Y := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] Y)
   map_id X := by
-    change eId (C := C) SSet.{u} X ≫ exInfinityUnit.app (X ⟶[SSet.{u}] X) =
-      Functor.LaxMonoidal.ε exInfinity ≫ exInfinity.map (eId (C := C) SSet.{u} X)
-    have h := exInfinityUnit.naturality (eId (C := C) SSet.{u} X)
-    have hu : exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε exInfinity := by
-      simpa using (NatTrans.IsMonoidal.unit (τ := exInfinityUnit.{u}))
-    exact h.trans (congrArg (fun z => z ≫ exInfinity.map (eId (C := C) SSet.{u} X)) hu)
+    change eId (C := C) SSet.{u} X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] X) =
+      Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (eId (C := C) SSet.{u} X)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (eId (C := C) SSet.{u} X)
+    have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (𝟙_ SSet.{u}) = Functor.LaxMonoidal.ε _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity := by
+      simpa using (NatTrans.IsMonoidal.unit (τ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.{u}))
+    exact h.trans (congrArg (fun z => z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (eId (C := C) SSet.{u} X)) hu)
   map_comp X Y Z := by
-    change eComp (C := C) SSet.{u} X Y Z ≫ exInfinityUnit.app (X ⟶[SSet.{u}] Z) =
-      (exInfinityUnit.app (X ⟶[SSet.{u}] Y) ⊗ₘ exInfinityUnit.app (Y ⟶[SSet.{u}] Z)) ≫
-        Functor.LaxMonoidal.μ exInfinity _ _ ≫ exInfinity.map (eComp (C := C) SSet.{u} X Y Z)
-    have h := exInfinityUnit.naturality (eComp (C := C) SSet.{u} X Y Z)
-    have hμ : exInfinityUnit.app ((X ⟶[SSet.{u}] Y) ⊗ Y ⟶[SSet.{u}] Z) =
-        (exInfinityUnit.app (X ⟶[SSet.{u}] Y) ⊗ₘ exInfinityUnit.app (Y ⟶[SSet.{u}] Z)) ≫
-          Functor.LaxMonoidal.μ exInfinity _ _ := by
-      simpa using (NatTrans.IsMonoidal.tensor (τ := exInfinityUnit.{u})
+    change eComp (C := C) SSet.{u} X Y Z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] Z) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] Y) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (Y ⟶[SSet.{u}] Z)) ≫
+        Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (eComp (C := C) SSet.{u} X Y Z)
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (eComp (C := C) SSet.{u} X Y Z)
+    have hμ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app ((X ⟶[SSet.{u}] Y) ⊗ Y ⟶[SSet.{u}] Z) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] Y) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (Y ⟶[SSet.{u}] Z)) ≫
+          Functor.LaxMonoidal.μ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _ _ := by
+      simpa using (NatTrans.IsMonoidal.tensor (τ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.{u})
         (X := X ⟶[SSet.{u}] Y) (Y := Y ⟶[SSet.{u}] Z))
-    exact h.trans ((congrArg (fun z => z ≫ exInfinity.map
+    exact h.trans ((congrArg (fun z => z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
       (eComp (C := C) SSet.{u} X Y Z)) hμ).trans (Category.assoc _ _ _))
 
 lemma exInfinityEnrichedUnit_map (X Y : C) :
-    (exInfinityEnrichedUnit C).map X Y = exInfinityUnit.app (X ⟶[SSet.{u}] Y) := rfl
+    (exInfinityEnrichedUnit C).map X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (X ⟶[SSet.{u}] Y) := rfl
 
 end SerrePositivity.EInfinity.Hammock

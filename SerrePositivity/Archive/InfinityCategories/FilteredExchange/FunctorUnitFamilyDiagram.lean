@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.TransformationFamilyDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.TransformationFamilyDiagram
 
 /-!
 概要：関手空間の元の単体を、一点パラメータ付きの全族として評価する。

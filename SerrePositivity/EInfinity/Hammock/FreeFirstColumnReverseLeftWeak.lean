@@ -16,16 +16,16 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory MonoidalCategory SimplicialLocalization SerrePositivity.InfinityCategories
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 lemma freeReverseFirstLeftSpaceMap_weak
-    (h : IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C Z Y).app (Word.cons .forward w))) :
-    IsWeakHomotopyEquivalence (freeReverseFirstLeftSpaceMap C w X Y Z) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeReverseFirstLeftSpaceMap C w X Y Z) := by
   have hp := weakTensor (freeBackwardFirstLeftSpaceMap_weak C w X Y Z)
     (freeFirstLeftSpaceMap_weak C w X Y Z h)
-  have hc := (isPrecompositionEquivalence_of_iso
+  have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeReverseFirstLeftSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.comp hp
   rw [← freeReverseFirstLeftSpaceIso_augmentation] at hc
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeReverseFirstTargetLeftSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.cancel_right hc
 end SerrePositivity.EInfinity.Hammock.FirstColumn

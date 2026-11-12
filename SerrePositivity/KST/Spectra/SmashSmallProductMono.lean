@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedSmallProduct
 public import SerrePositivity.KST.Spectra.SmashSmallProductSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashProductMono
 
 /-!
 概要：固定左因子との smash から、任意の小積の各座標との smash への比較の単射性。
@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashProductMono
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.PointedSmallProduct
 noncomputable section
 set_option backward.isDefEq.respectTransparency false
@@ -36,8 +36,8 @@ lemma smashComparison_app_injective (A : PointedSimplicialSet.{u})
     (X : S → PointedSimplicialSet.{u}) (d : SimplexCategoryᵒᵖ) :
     Function.Injective ((smashComparison A X).right.app d) := by
   intro v w h
-  obtain ⟨⟨a, b⟩, rfl⟩ := smashQuotient_app_surjective A (obj X) d v
-  obtain ⟨⟨a', b'⟩, rfl⟩ := smashQuotient_app_surjective A (obj X) d w
+  obtain ⟨⟨a, b⟩, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashQuotient_app_surjective A (obj X) d v
+  obtain ⟨⟨a', b'⟩, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashQuotient_app_surjective A (obj X) d w
   have he := smashSmallProduct_pack_ext (PointedSimplicialSet.basepointAt A d)
     (fun s ↦ PointedSimplicialSet.basepointAt (X s) d) a a' b b' (fun s ↦ by
       have hs := congrArg (fun z ↦ (projection
@@ -47,14 +47,14 @@ lemma smashComparison_app_injective (A : PointedSimplicialSet.{u})
         ((smashComparison A X ≫ projection _ s).right.app d
           ((PointedObject.smashQuotient A (obj X)).right.app d (a', b'))) at hs
       simp only [smashComparison, lift_projection] at hs
-      rw [smashMap_quotient_app, smashMap_quotient_app] at hs
-      have ht := congrArg (fun z ↦ (smashToSimplexModel A (X s)).right.app d z) hs
-      rw [smashToSimplexModel_quotient_app, smashToSimplexModel_quotient_app] at ht
+      rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashMap_quotient_app, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashMap_quotient_app] at hs
+      have ht := congrArg (fun z ↦ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashToSimplexModel A (X s)).right.app d z) hs
+      rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashToSimplexModel_quotient_app, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashToSimplexModel_quotient_app] at ht
       exact ht)
   rw [← basepointAt_obj X d] at he
-  have ht := congrArg (simplexModelToSmashApp A (obj X) d) he
-  exact (simplexModelToSmashApp_pack A (obj X) d a b).symm.trans
-    (ht.trans (simplexModelToSmashApp_pack A (obj X) d a' b'))
+  have ht := congrArg (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.simplexModelToSmashApp A (obj X) d) he
+  exact (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.simplexModelToSmashApp_pack A (obj X) d a b).symm.trans
+    (ht.trans (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.simplexModelToSmashApp_pack A (obj X) d a' b'))
 
 /-- smash から小積への標準比較の基礎単体写像はモノ射。 -/
 instance smashComparison_mono (A : PointedSimplicialSet.{u})

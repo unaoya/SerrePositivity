@@ -18,8 +18,8 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 初期頂点を保つ全単体作用素の元の自然性四角形は、全正反復で homotopy pullback。 -/
 theorem weakStringMultiPostcomp_headPreserving_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (r : ℕ) {m n : ℕ}
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (r : ℕ) {m n : ℕ}
     (θ : ⦋m⦌ ⟶ ⦋n⦌) (hθ : θ.toOrderHom 0 = 0) :
     IsHomotopyPullback (CommSq.mk
       ((weakStringMultiPostcomp i q (r + 1)).naturality θ.op)) := by

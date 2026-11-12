@@ -18,13 +18,13 @@ noncomputable section
 /-- 随伴構造と可換な段の射は実際の Kan 列の射を与える。 -/
 def Hom.ofAdjoint {X Y : KanSequence.{u}}
     (f : ∀ n, (X.level n).space ⟶ (Y.level n).space)
-    (h : ∀ n, f n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space
-      (Y.sigma n) = _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space
+    (h : ∀ n, f n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (Y.level n).space (Y.level (n + 1)).space
+      (Y.sigma n) = _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (X.level (n + 1)).space
         (X.sigma n) ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (f (n + 1))) :
     Hom X Y where
   app := f
   comm n := by
-    apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space (Y.level (n + 1)).space).injective
+    apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space (Y.level (n + 1)).space).injective
     change curry (PointedSimplicialSet.circle.{u} ◁ f n ≫ Y.sigma n) =
       curry (X.sigma n ≫ f (n + 1))
     rw [curry_natural_left, curry_natural_right]

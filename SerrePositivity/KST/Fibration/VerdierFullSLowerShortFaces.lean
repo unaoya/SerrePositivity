@@ -24,7 +24,7 @@ private theorem shortPath_deformation (n r : ℕ)
     (t : ULift.{u} (Fin (n + 1)) →o Fin 2)
     (hlo : ∀ k, r ≤ (A k).down.val) (hhi : ∀ k, (A k).down.val ≤ r + 1)
     {i j : ULift.{u} (Fin (n + 1))} (P : SimplicialThickening.Path i j) :
-    coherentPathDeformation A t P = (SimplicialThickening.functorMap A ⟨i⟩ ⟨j⟩).obj P := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformation A t P = (SimplicialThickening.functorMap A ⟨i⟩ ⟨j⟩).obj P := by
   apply SimplicialThickening.Path.ext
   ext z
   change (z ∈ A '' P.I ∨ ∃ k ∈ P.I, t k = 1 ∧ A k ≤ z ∧ z ≤ A j) ↔ z ∈ A '' P.I
@@ -57,7 +57,7 @@ private theorem shortPath_deformationEnriched (n r : ℕ)
     (A : ULift.{u} (Fin (n + 1)) →o ULift.{u} (Fin 3))
     (t : ULift.{u} (Fin (n + 1)) →o Fin 2)
     (hlo : ∀ k, r ≤ (A k).down.val) (hhi : ∀ k, (A k).down.val ≤ r + 1) :
-    coherentPathDeformationEnriched A t = SimplicialThickening.functor A := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched A t = SimplicialThickening.functor A := by
   refine EnrichedFunctor.ext SSet (fun _ => rfl) ?_
   intro i j
   simp only [eqToHom_refl, Category.comp_id]
@@ -67,7 +67,7 @@ private theorem shortPath_deformationEnriched (n r : ℕ)
   intro P
   apply CategoryTheory.Functor.ext (fun k => shortPath_deformation n r A t hlo hhi (P.obj k))
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 下側の第一短辺は、同じ全一単体として全時刻固定される。 -/
 theorem verdierFullSLowerDeformation_first :
@@ -79,7 +79,7 @@ theorem verdierFullSLowerDeformation_first :
   intro n
   apply ConcreteCategory.hom_ext
   rintro ⟨a, t⟩
-  change (coherentPathDeformationEnriched
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched
     ((stdSimplex.δ (2 : Fin 3)).app _ a).down.toOrderHom.uliftMap
     (t.down.toOrderHom.comp ⟨ULift.down, fun _ _ h => h⟩)).comp SSet
       (verdierFullSLowerSimplex d) =
@@ -104,7 +104,7 @@ theorem verdierFullSLowerDeformation_last :
   intro n
   apply ConcreteCategory.hom_ext
   rintro ⟨a, t⟩
-  change (coherentPathDeformationEnriched
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPathDeformationEnriched
     ((stdSimplex.δ (0 : Fin 3)).app _ a).down.toOrderHom.uliftMap
     (t.down.toOrderHom.comp ⟨ULift.down, fun _ _ h => h⟩)).comp SSet
       (verdierFullSLowerSimplex d) =

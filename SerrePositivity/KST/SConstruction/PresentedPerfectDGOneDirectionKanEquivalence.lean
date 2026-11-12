@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.PresentedPerfectDGOneDirectionKa
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComponent
 public import SerrePositivity.KST.SConstruction.OneDirectionWeakComparison
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 
 /-! # 元の S₁ 比較の全基点同型と関手 ∞ 圏での可逆性
 概要：同じ Ex∞ 比較の全基点 π 同型と、全入力上の実際の関手同型を得る。
@@ -22,13 +22,13 @@ variable (A : Type u) [CommRing A]
 /-- 元の同じ S₁ 商比較の Ex∞ 像は全基点・全次数で π 同型。 -/
 lemma presentedPerfectDGOneDirectionKanComparisonMap_piIsomorphism (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (presentedPerfectDGOneDirectionKanComparisonMap A r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map
+  change IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
     (oneDirectionReducedComparison r
       (stableCategoryModel (presentedPerfectDGStableCategory A C))).right))
-  exact (Comparison.exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (oneDirectionReducedComparison_localized_isIso r
       (stableCategoryModel (presentedPerfectDGStableCategory A C)))
 
@@ -44,14 +44,14 @@ lemma presentedPerfectDGOneDirectionKanComparison_componentHom (r : ℕ)
 /-- 同じ元の Kan 比較の coherent な辺は可逆。 -/
 lemma presentedPerfectDGOneDirectionKanComparison_edge_isInvertible (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
-    IsInvertibleEdge (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
       (presentedPerfectDGOneDirectionKanComparisonMap A r C)) :=
   pointedKanObject_edge_isInvertible_of_piIsomorphism _
     (presentedPerfectDGOneDirectionKanComparisonMap_piIsomorphism A r C)
 
 /-- 元の S₁ 比較による、全 native 入力上の実際の PointedKanInfinity 値関手同型。 -/
 def presentedPerfectDGOneDirectionKanComparisonFunctorIso (r : ℕ) :
-    FunctorIso (presentedPerfectDGOneDirectionKanInfinityFunctor A r)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (presentedPerfectDGOneDirectionKanInfinityFunctor A r)
       (presentedPerfectDGBoundaryKanInfinityFunctor A r) :=
   Spectra.StrictEnrichedTransformation.functorIso _ _
     (presentedPerfectDGOneDirectionKanComparison A r) (by

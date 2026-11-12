@@ -24,16 +24,16 @@ open scoped Simplicial
 使われ方：双積懸垂の像回収を加法逆元の存在へ移す。 -/
 lemma completionWideObjectClass_zero_of_image (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
     (ha : a.as.as ∈ LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val) :
     completionWideObjectClass r ι f hf a = completionWideZero r ι f hf := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let hF := multiSEndofunctor_map_isIdempotentCompletion r ι f hf
-  let z := chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
-  let x := (chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier).vertex
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj Y).carrier
+  let x := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier).vertex
   let va : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋0⦌ :=
     ⟨a.as.as, LocalizingInvariants.completionCofiberWide_vertex F.val hF a.as.as⟩
   let vz : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋0⦌ :=
@@ -49,7 +49,7 @@ lemma completionWideObjectClass_zero_of_image (r : ℕ)
 使われ方：成分の加法逆元の存在。 -/
 lemma completionWideObjectClass_biprod_shift_zero (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) :
     completionWideObjectClass r ι f hf (a ⊞
       (shiftFunctor (hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
@@ -65,7 +65,7 @@ lemma completionWideObjectClass_biprod_shift_zero (r : ℕ)
 使われ方：明示的な可換群データの構成。 -/
 lemma completionWideAdd_exists_inverse (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) :
     ∃ b, completionWideAdd r ι f hf b a = completionWideZero r ι f hf := by
@@ -85,7 +85,7 @@ lemma completionWideAdd_exists_inverse (r : ℕ) (ι : Fin r → SimplexCategory
 使われ方：K₀ の普遍性へ渡す離散的障害の群構造。 -/
 @[instance_reducible] def completionWideAddCommGroup (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     AddCommGroup (SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u})) := by
   let T := SSet.π₀ (LocalizingInvariants.completionCofiberWide

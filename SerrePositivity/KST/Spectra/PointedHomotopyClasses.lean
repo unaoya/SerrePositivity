@@ -57,7 +57,7 @@ theorem componentOf_comp_right {X Y Z : PointedSimplicialSet.{u}}
 theorem componentOf_comp_left {W X Y : PointedSimplicialSet.{u}}
     {f g : X ⟶ Y} (h : componentOf f = componentOf g) (i : W ⟶ X) :
     componentOf (i ≫ f) = componentOf (i ≫ g) := by
-  have hh := congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y).right) h
+  have hh := congrArg (mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y).right) h
   simpa only [componentOf, mapπ₀_mk, familyVertex_pre] using hh
 
 /-- 概要：suspension の写像空間の射は通常の射の suspension の成分を与える。

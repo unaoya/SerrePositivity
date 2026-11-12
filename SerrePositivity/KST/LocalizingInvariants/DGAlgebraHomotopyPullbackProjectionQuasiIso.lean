@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomotopyPullbackCoconeIso
 public import SerrePositivity.KST.LocalizingInvariants.CochainKernelCoconeQuasiIso
-public import SerrePositivity.InfinityCategories.Derived.ComplexMappingCoconeBiprodExact
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexMappingCoconeBiprodExact
 public import Mathlib.Algebra.Homology.HomologySequenceLemmas
 
 /-!
@@ -31,16 +31,16 @@ lemma left_quasiIso (hg : QuasiIso g.hom) : QuasiIso (left R f g).hom := by
     infer_instance
   have hz : (mappingCocone (-g.hom)).Acyclic := SerrePositivity.cochainAcyclic_shift
     ((complex_quasiIso_iff_acyclic_cone R (-g.hom)).mp hneg) (-1)
-  let p := complexMappingCoconeBiprodProjection f.hom (-g.hom)
+  let p := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodProjection f.hom (-g.hom)
   have hp : QuasiIso p := by
     rw [quasiIso_iff]
     intro j
     rw [quasiIsoAt_iff_isIso_homologyMap]
     have : Mono (homologyMap p j) :=
-      ((complexMappingCoconeBiprodShortComplex_shortExact f.hom (-g.hom)).homology_exact₂ j).mono_g
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex_shortExact f.hom (-g.hom)).homology_exact₂ j).mono_g
         ((hz j).isZero_homology.eq_of_src _ _)
     have : Epi (homologyMap p j) :=
-      ((complexMappingCoconeBiprodShortComplex_shortExact f.hom (-g.hom)).homology_exact₃ j (j + 1)
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodShortComplex_shortExact f.hom (-g.hom)).homology_exact₃ j (j + 1)
         (by change j + 1 = j + 1; rfl)).epi_f ((hz (j + 1)).isZero_homology.eq_of_tgt _ _)
     exact isIso_of_mono_of_epi _
   have hc : QuasiIso ((complexIso R f g).hom ≫ p) :=

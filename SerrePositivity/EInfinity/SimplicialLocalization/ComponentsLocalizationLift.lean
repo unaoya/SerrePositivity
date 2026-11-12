@@ -24,7 +24,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 
 open CategoryTheory
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：元の生成関手は指定弱同値を反転する（Dwyer–Kan）。
 方針：一文字の弱同値の零次の局所化の同型を同じ連結成分関手で送る。
@@ -80,10 +80,10 @@ lemma localizationComponentsLift_comp_augmentation :
 規約：元の零次の全射を含む厳密な等式。
 使われ方：π₀ 比較の反対側の逆則。 -/
 lemma strictLocalizationCounit_comp_componentsLift :
-    strictLocalizationMap (freeCounit C.weakEquivalences) ⋙ localizationComponentsLift C =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeCounit C.weakEquivalences) ⋙ localizationComponentsLift C =
       zeroLevelComponentsFunctor C := by
   apply Localization.Construction.uniq
-  rw [← Functor.assoc, strictLocalizationMap_fac, Functor.assoc,
+  rw [← Functor.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac, Functor.assoc,
     localizationComponentsLift_fac, zeroLevelComponentsFunctor_fac]
   rfl
 

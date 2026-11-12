@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
 
-def dkHammockComparisonIso (C : RelativeCategory.{u}) (X Y : C.category) :
+def dkHammockComparisonIso (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     AnodyneHomotopy.anodyneQ.obj (localizationHom C X Y) ≅
       AnodyneHomotopy.anodyneQ.obj (Hammock.reducedSimplicialSet C.weakEquivalences X Y) := by
   have := Hammock.anodyneQ_map_isIso_of_weak (freeHammockDiagonalComparison C X Y)
@@ -33,7 +33,7 @@ def dkHammockComparisonIso (C : RelativeCategory.{u}) (X Y : C.category) :
     (freeHammockDiagonalComparison C X Y))).symm ≪≫
       asIso (AnodyneHomotopy.anodyneQ.map (freeHammockDiagonalReduction C X Y))
 
-lemma dkHammockComparisonIso_fac (C : RelativeCategory.{u}) (X Y : C.category) :
+lemma dkHammockComparisonIso_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     AnodyneHomotopy.anodyneQ.map (freeHammockDiagonalComparison C X Y) ≫
         (dkHammockComparisonIso C X Y).hom =
       AnodyneHomotopy.anodyneQ.map (freeHammockDiagonalReduction C X Y) := by
@@ -42,7 +42,7 @@ lemma dkHammockComparisonIso_fac (C : RelativeCategory.{u}) (X Y : C.category) :
   change AnodyneHomotopy.anodyneQ.map _ ≫ (inv (AnodyneHomotopy.anodyneQ.map _) ≫ _) = _
   exact IsIso.hom_inv_id_assoc _ _
 
-lemma dkHammockComparisonIso_coefficient {C D : RelativeCategory.{u}} (F : C ⟶ D)
+lemma dkHammockComparisonIso_coefficient {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
     (X Y : C.category) :
     AnodyneHomotopy.anodyneQ.map (localizationHomMap F X Y) ≫
         (dkHammockComparisonIso D (F.functor.obj X) (F.functor.obj Y)).hom =

@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 variable {Y Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right) (v : Z ⟶ Z')
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right) (v : Z ⟶ Z')
 
 /-- 同じ射影比較の二次元射を、元の三重 loop の後合成へ写す。 -/
 def exchangePostProjectionSquare :
@@ -63,7 +63,7 @@ def exchangeRestrictedNaturalitySquare :
       (((TripleCircle.loopExchangeInterval Z').pre
         (doublePost h ≫ TripleCircle.loopPost v)).path) where
   h := (TripleCircle.loopExchangeNaturalitySquare v).h ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z'))).right
   h₀ := by
     rw [← Category.assoc, (TripleCircle.loopExchangeNaturalitySquare v).h₀]
@@ -105,7 +105,7 @@ lemma exchangeRestrictedNaturalitySquare_start :
         ((swap Y ≫ doublePost h) ≫ TripleCircle.loopPost v)) := by
   change SquareAdjustment.leftSide ≫ ((TripleCircle.loopExchangeNaturalitySquare v).h ≫ _) = _
   rw [← Category.assoc, TripleCircle.loopExchangeNaturalitySquare_start_vertex, SSet.const_comp]
-  have hv : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+  have hv : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z'))).right.app _
         (PointedMapping.familyVertex (TripleCircle.loopPost v ≫
           swap (PointedObject.basedHom CirclePower.space.{u} Z'))) =
@@ -122,7 +122,7 @@ lemma exchangeRestrictedNaturalitySquare_finish :
         ((reversal Y ≫ doublePost h) ≫ TripleCircle.loopPost v)) := by
   change SquareAdjustment.rightSide ≫ ((TripleCircle.loopExchangeNaturalitySquare v).h ≫ _) = _
   rw [← Category.assoc, TripleCircle.loopExchangeNaturalitySquare_finish_vertex, SSet.const_comp]
-  have hv : (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (doublePost h)
+  have hv : (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (doublePost h)
       (doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z'))).right.app _
         (PointedMapping.familyVertex (TripleCircle.loopPost v ≫
           reversal (PointedObject.basedHom CirclePower.space.{u} Z'))) =

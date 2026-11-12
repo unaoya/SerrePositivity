@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierOriginalCompositeNativeEdge
-public import SerrePositivity.InfinityCategories.F1B.ConstantEdgeFamily
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.ConstantEdgeFamily
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：指定 Verdier 両端の長 Hom 全族を、元の実合成端比較で上側の指定合成端へ移す。
@@ -25,22 +25,22 @@ namespace SerrePositivity.KST.Fibration
 方針：同じ元の二対象を core single Kan 座標と宇宙持ち上げへ送る。
 規約：元の対象を保持する。
 使われ方：合成端を合わせる長 Hom 全族の標的。 -/
-abbrev verdierNativeLongHomTarget (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) :=
+abbrev verdierNativeLongHomTarget (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) :=
   (SSet.uliftFunctor.{u + 1, u}).obj
-    (SimplicialCategory.sHom (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left))
-      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right)))
+    (SimplicialCategory.sHom (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left))
+      (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right)))
 
 /-- 概要：元の指定合成完全射の同じ native core Kan 頂点。
 方針：同じ実完全射の core S• 作用の豊穣頂点を持ち上げる。
 規約：上下の元の合成端を選び直さない。
 使われ方：長 Hom 全族が保持する実合成端。 -/
-def verdierNativeCompositePoint (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
+def verdierNativeCompositePoint (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j : Fin 2) :
     (verdierNativeLongHomTarget d) _⦋0⦌ :=
   ULift.up (SimplicialCategory.homEquiv' _ _
     (stableCoreSingleKanMap (verdierNullCompositeOriginalMap d j)))
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
-  (q : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))).obj
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (K : SSet.{u + 1})
+  (q : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj
     (verdierNativeLongHomTarget d))
 
 /-- 概要：元の長 Hom 全族の、同じ native 区間座標での直接端。
@@ -48,12 +48,12 @@ variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierD
 規約：K の各頂点だけに制限しない。
 使われ方：合成端の移送で厳密保持する共有対角の入力族。 -/
 def verdierNativeLongHomStart :=
-  (q ≫ (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+  (q ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
     (verdierNativeLongHomTarget d)) ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))
 
-variable (hq : q ≫ evaluateFunctorAt
-  (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+variable (hq : q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+  (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
     SSet.const (verdierNativeCompositePoint d 1))
 
 /-- 概要：同じ長 Hom 全族は、直接端から元の下側合成端への実ホモトピー。
@@ -62,7 +62,7 @@ variable (hq : q ≫ evaluateFunctorAt
 使われ方：元の実合成端比較との全関手 Kan 複体内の合成。 -/
 def verdierNativeLongHomInitialHomotopy : SSet.Homotopy
     (verdierNativeLongHomStart d K q) (SSet.const (verdierNativeCompositePoint d 1)) := by
-  let Q := q ≫ (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+  let Q := q ≫ (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
     (verdierNativeLongHomTarget d)
   refine { h := (β_ K (Δ[1] : SSet.{u + 1})).hom ≫ uncurry Q
            h₀ := ?_, h₁ := ?_, rel := ?_ }
@@ -71,13 +71,13 @@ def verdierNativeLongHomInitialHomotopy : SSet.Homotopy
     apply ConcreteCategory.hom_ext
     intro k
     rfl
-  · have he : Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+  · have he : Q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
         SSet.const (verdierNativeCompositePoint d 1) := by
       dsimp only [Q]
-      rw [Category.assoc, evaluateFunctorAt_pre, uliftTriangleNativePathIntervalIso_inv_last]
+      rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso_inv_last]
       exact hq
     calc
-      _ = Q ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
+      _ = Q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) := by
         apply SSet.hom_ext
         intro n
         apply ConcreteCategory.hom_ext
@@ -95,7 +95,7 @@ def verdierNativeLongHomInitialHomotopy : SSet.Homotopy
 規約：元の比較円柱の実辺そのものを保持する。
 使われ方：長 Hom 全族へ続ける実合成端比較。 -/
 def verdierNativeCompositeConstantEdge :=
-  intervalFamilyEdge (SSet.const (X := K) (intervalMappingVertexOfEdge
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyEdge (SSet.const (X := K) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge
     (SSet.Edge.ofTruncated (X := verdierNativeLongHomTarget d)
       (verdierNativeOriginalCompositeEdge d 1 0))))
 
@@ -104,7 +104,7 @@ def verdierNativeCompositeConstantEdge :=
 規約：全パラメータの直接端を保持する。
 使われ方：上側合成端を持つ同じ長 Hom 全族の構成。 -/
 def verdierNativeLongHomShiftEdge :=
-  (functorEdgeOfSimplicialHomotopy (verdierNativeLongHomInitialHomotopy d K q hq)).comp
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (verdierNativeLongHomInitialHomotopy d K q hq)).comp
     (verdierNativeCompositeConstantEdge d K)
 
 /-- 概要：同じ二辺の合成を認証する元の全関手二単体。
@@ -112,7 +112,7 @@ def verdierNativeLongHomShiftEdge :=
 規約：長 Hom 全族と元の実合成端辺を記録し、合成辺だけに弱めない。
 使われ方：共有対角の比較を元の合成端比較とともに戻す。 -/
 def verdierNativeLongHomShiftTriangle :=
-  (functorEdgeOfSimplicialHomotopy (verdierNativeLongHomInitialHomotopy d K q hq)).compStruct
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (verdierNativeLongHomInitialHomotopy d K q hq)).compStruct
     (verdierNativeCompositeConstantEdge d K)
 
 /-- 概要：同じ合成辺から元のパラメータを持つ区間族を取り出す。
@@ -122,7 +122,7 @@ def verdierNativeLongHomShiftTriangle :=
 def verdierNativeLongHomShiftInterval :
     K ⟶ (ihom (Δ[1] : SSet.{u + 1})).obj (verdierNativeLongHomTarget d) :=
   curry ((β_ (Δ[1] : SSet.{u + 1}) K).hom ≫
-    (simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h)
 
 /-- 概要：同じ区間族の実ホモトピーは元の合成辺のホモトピーそのもの。
 方針：curry・uncurry の回収と同じ対称性の往復を使う。
@@ -131,7 +131,7 @@ def verdierNativeLongHomShiftInterval :
 theorem verdierNativeLongHomShiftInterval_homotopy :
     (β_ K (Δ[1] : SSet.{u + 1})).hom ≫
       uncurry (verdierNativeLongHomShiftInterval d K q hq) =
-        (simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h := by
   rw [verdierNativeLongHomShiftInterval, uncurry_curry, ← Category.assoc]
   simp
 
@@ -141,10 +141,10 @@ theorem verdierNativeLongHomShiftInterval_homotopy :
 使われ方：移送後の長 Hom 全族の入力境界を確認する。 -/
 theorem verdierNativeLongHomShiftInterval_endpoints :
     (verdierNativeLongHomShiftInterval d K q hq ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         verdierNativeLongHomStart d K q) ∧
     (verdierNativeLongHomShiftInterval d K q hq ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
         SSet.const (verdierNativeCompositePoint d 0)) := by
   constructor
   · calc
@@ -157,7 +157,7 @@ theorem verdierNativeLongHomShiftInterval_endpoints :
         rfl
       _ = _ := (congrArg (fun h => SSet.ι₀ ≫ h)
         (verdierNativeLongHomShiftInterval_homotopy d K q hq)).trans
-        (simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h₀
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h₀
   · calc
       _ = SSet.ι₁ ≫ ((β_ K (Δ[1] : SSet.{u + 1})).hom ≫
           uncurry (verdierNativeLongHomShiftInterval d K q hq)) := by
@@ -168,7 +168,7 @@ theorem verdierNativeLongHomShiftInterval_endpoints :
         rfl
       _ = _ := (congrArg (fun h => SSet.ι₁ ≫ h)
         (verdierNativeLongHomShiftInterval_homotopy d K q hq)).trans
-        (simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h₁
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (verdierNativeLongHomShiftEdge d K q hq)).h₁
 
 /-- 概要：移送後の同じ区間族を元の native path 座標へ戻す。
 方針：元と同じ path 区間同型で前合成する。
@@ -176,7 +176,7 @@ theorem verdierNativeLongHomShiftInterval_endpoints :
 使われ方：上側の指定合成端を持つ実長 Hom 入力。 -/
 def verdierNativeLongHomShiftFamily :=
   verdierNativeLongHomShiftInterval d K q hq ≫
-    (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.hom).app (verdierNativeLongHomTarget d)
+    (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.hom).app (verdierNativeLongHomTarget d)
 
 /-- 概要：移送後の native path 族を同じ区間座標へ読むと元の移送区間族へ厳密に戻る。
 方針：同じ内部 Hom の同型の順逆の回収を使う。
@@ -184,13 +184,13 @@ def verdierNativeLongHomShiftFamily :=
 使われ方：元の native 合成端と直接端の評価への代入。 -/
 theorem verdierNativeLongHomShiftFamily_rebase :
     verdierNativeLongHomShiftFamily d K q hq ≫
-      (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+      (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
         (verdierNativeLongHomTarget d) = verdierNativeLongHomShiftInterval d K q hq := by
-  have hc : (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.hom).app
+  have hc : (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.hom).app
       (verdierNativeLongHomTarget d) ≫
-        (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+        (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
           (verdierNativeLongHomTarget d) = 𝟙 _ :=
-    ((internalHom.mapIso uliftTriangleNativePathIntervalIso.{u, u + 1}.op).app
+    ((internalHom.mapIso _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.op).app
       (verdierNativeLongHomTarget d)).hom_inv_id
   rw [verdierNativeLongHomShiftFamily, Category.assoc, hc, Category.comp_id]
 
@@ -210,27 +210,27 @@ theorem verdierNativeLongHomShiftFamily_start :
 規約：元の実合成完全射の core S• Kan 作用を保持する。
 使われ方：上側再構成空間へ入れる指定合成端条件。 -/
 theorem verdierNativeLongHomShiftFamily_full :
-    verdierNativeLongHomShiftFamily d K q hq ≫ evaluateFunctorAt
-      (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+    verdierNativeLongHomShiftFamily d K q hq ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+      (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
         SSet.const (verdierNativeCompositePoint d 0) := by
-  have he : (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+  have he : (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
       (verdierNativeLongHomTarget d) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-          evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) := by
-    rw [evaluateFunctorAt_pre, uliftTriangleNativePathIntervalIso_inv_last]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso_inv_last]
   calc
     _ = verdierNativeLongHomShiftFamily d K q hq ≫
-        ((pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+        ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
           (verdierNativeLongHomTarget d) ≫
-            evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
+            _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) :=
       congrArg (fun e => verdierNativeLongHomShiftFamily d K q hq ≫ e) he.symm
     _ = (verdierNativeLongHomShiftFamily d K q hq ≫
-        (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+        (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
           (verdierNativeLongHomTarget d)) ≫
-            evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
+            _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
       (Category.assoc _ _ _).symm
     _ = _ := (congrArg (fun e => e ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
         (verdierNativeLongHomShiftFamily_rebase d K q hq)).trans
         (verdierNativeLongHomShiftInterval_endpoints d K q hq).2
 
@@ -239,44 +239,44 @@ theorem verdierNativeLongHomShiftFamily_full :
 規約：K の非退化単体を含む射の等号を保持する。
 使われ方：正規化後の上下二胞体の共有対角を全族で貼る。 -/
 theorem verdierNativeLongHomShiftFamily_direct :
-    let direct : TriangleNativePath.{u} :=
+    let direct : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u} :=
       { I := {ULift.up 0, ULift.up 2}
         left := by simp
         right := by simp
         left_le := fun k _ => Fin.zero_le k.down
         le_right := fun k _ => Fin.le_last k.down }
-    verdierNativeLongHomShiftFamily d K q hq ≫ evaluateFunctorAt
+    verdierNativeLongHomShiftFamily d K q hq ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (ULift.up (ComposableArrows.mk₀ direct)) =
-        q ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) := by
-  let direct : TriangleNativePath.{u} :=
+        q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) := by
+  let direct : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u} :=
     { I := {ULift.up 0, ULift.up 2}
       left := by simp
       right := by simp
       left_le := fun k _ => Fin.zero_le k.down
       le_right := fun k _ => Fin.le_last k.down }
-  change verdierNativeLongHomShiftFamily d K q hq ≫ evaluateFunctorAt
+  change verdierNativeLongHomShiftFamily d K q hq ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (ULift.up (ComposableArrows.mk₀ direct)) =
-      q ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct))
-  have hp : uliftTriangleNativePathIntervalIso.{u, u + 1}.inv.app (Opposite.op ⦋0⦌)
+      q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct))
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         ULift.up (ComposableArrows.mk₀ direct) := by
-    change ULift.up (triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
+    change ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) = _
     apply ULift.ext
     apply CategoryTheory.Functor.ext (fun i => ?_)
-    change trianglePathFromInterval (ULift.up (0 : Fin 2)) = direct
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval (ULift.up (0 : Fin 2)) = direct
     apply SimplicialThickening.Path.ext
     ext ⟨k⟩
-    simp [trianglePathFromInterval, direct]
-  have he : (pre uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
+    simp [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval, direct]
+  have he : (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.uliftTriangleNativePathIntervalIso.{u, u + 1}.inv).app
       (verdierNativeLongHomTarget d) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-          evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) := by
-    rw [evaluateFunctorAt_pre, hp]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) := by
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.evaluateFunctorAt_pre, hp]
   have hs (q₀ : K ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-      (nerve TriangleNativePath.{u}))).obj (verdierNativeLongHomTarget d)) :
+      (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierNativeLongHomTarget d)) :
       verdierNativeLongHomStart d K q₀ =
-        q₀ ≫ evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) :=
+        q₀ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (ULift.up (ComposableArrows.mk₀ direct)) :=
     (Category.assoc _ _ _).trans (congrArg (fun e => q₀ ≫ e) he)
   exact (hs (verdierNativeLongHomShiftFamily d K q hq)).symm.trans
     ((verdierNativeLongHomShiftFamily_start d K q hq).trans (hs q))

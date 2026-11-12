@@ -98,7 +98,7 @@ def constantDiagramSourceHom (Y : (operad A).Algebra) :
 規約：全単体と終域図式の射に自然。
 使われ方：図式の局所化 Hom の重み付き錐表示。 -/
 def constantDiagramFrameHomIso (Y : (operad A).Algebra) :
-    cosimplicialHom (constantDiagramFrame A K Y) ≅ constantDiagramSourceHom A K Y := by
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (constantDiagramFrame A K Y) ≅ constantDiagramSourceHom A K Y := by
   let := modelCategory A
   exact HomotopyWeight.pointwiseTensorFrameHomIso K (HomotopyWeight.weight K)
     ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.obj Y)

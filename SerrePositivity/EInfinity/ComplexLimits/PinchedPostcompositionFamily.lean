@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.PinchedComposition
-public import SerrePositivity.InfinityCategories.F1.Joins.CosliceIntervalNaturality
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedComposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CosliceIntervalNaturality
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFamilyInvariance
 
 /-!
 # 元の pinched 後合成が表す任意パラメータの全族
@@ -26,26 +26,26 @@ open SerrePositivity.InfinityCategories
 lemma pinchedPostcompose_family {K C : SSet.{u}} [Quasicategory C]
     {x y z : C.obj (Opposite.op (SimplexCategory.mk 0))}
     (δ : (HomotopyCategory.mk y : hoFunctor.obj C) ⟶ HomotopyCategory.mk z)
-    (f : K ⟶ pinchedHom x y) :
-    intervalFamilyHom (f ≫ PinchedInterval.postcompose x δ ≫
-      SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x z) =
-    intervalFamilyHom (f ≫ SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y) ≫ constantFunctorHomMap K δ := by
-  have H := FunctorIso.simplicialHomotopy
-    (PinchedInterval.liftMapComparisonIso (intervalPostcompose x δ))
-  have h := intervalFamilyHom_eq_of_homotopy (functorHomotopyPrecomp H f)
+    (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose x δ ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x z) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K δ := by
+  have H := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.simplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.liftMapComparisonIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPostcompose x δ))
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFamilyHom_eq_of_homotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp H f)
   calc
-    _ = intervalFamilyHom (f ≫ (SerrePositivity.InfinityCategories.pinchedHomToIntervalMappingSpace x y ≫
-        intervalPostcompose x δ)) := by
-      simpa only [PinchedInterval.postcompose, Category.assoc] using h
-    _ = _ := by rw [← Category.assoc, intervalPostcompose_family]
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPostcompose x δ)) := by
+      simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose, Category.assoc] using h
+    _ = _ := by rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPostcompose_family]
 
 lemma pinchedPostcompose_intervalFamily {K C : SSet.{u}} [Quasicategory C]
     {x y z : C.obj (Opposite.op (SimplexCategory.mk 0))}
     (δ : (HomotopyCategory.mk y : hoFunctor.obj C) ⟶ HomotopyCategory.mk z)
-    (f : K ⟶ pinchedHom x y) :
-    intervalFamilyHom (f ≫ PinchedInterval.postcompose x δ ≫
-      pinchedHomToIntervalMappingSpace x z) =
-    intervalFamilyHom (f ≫ pinchedHomToIntervalMappingSpace x y) ≫ constantFunctorHomMap K δ := by
-  simpa only [pinchedInterval_comparison_eq] using pinchedPostcompose_family δ f
+    (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose x δ ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x z) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K δ := by
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedInterval_comparison_eq] using pinchedPostcompose_family δ f
 
 end SerrePositivity.EInfinity.ComplexLimits

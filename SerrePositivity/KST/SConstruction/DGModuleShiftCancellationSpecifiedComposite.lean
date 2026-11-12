@@ -11,16 +11,16 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationSpecifi
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma compositeRecovery {P : Type (max (u + 1) v)} [DGCategory R P]
     (F G H : DGFunctor R P (RightModule R D))
-    (η : StrictNatTrans F G) (θ : StrictNatTrans G H) (x : P)
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (θ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G H) (x : P)
     (a : ForgetEnrichment.of (Complex R) (F.obj x) ⟶ ForgetEnrichment.of (Complex R) (G.obj x))
     (b : ForgetEnrichment.of (Complex R) (G.obj x) ⟶ ForgetEnrichment.of (Complex R) (H.obj x))
     (ha : dgModuleNaturalConeArrow R D F G η x = a)
     (hb : dgModuleNaturalConeArrow R D G H θ x = b) :
-    dgModuleNaturalConeArrow R D F H (dgStrictNatTransComp η θ) x = a ≫ b :=
+    dgModuleNaturalConeArrow R D F H (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp η θ) x = a ≫ b :=
   (dgModuleNaturalConeArrow_comp R D F G H η θ x).trans
     (congrArg₂ (fun f g => f ≫ g) ha hb)
 
@@ -36,9 +36,9 @@ def dgModuleSpecifiedCancellationIso (M : RightModule R D) :
 方針：同じ二因子を全厳密合成する。
 規約：元相殺成分を保持。使われ方：実逆回転全比較の終辺。 -/
 def dgModuleSpecifiedCancellationStrictComparison :
-    StrictNatTrans ((moduleShiftDG R D 1).comp (moduleShiftDG R D (-1)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans ((moduleShiftDG R D 1).comp (moduleShiftDG R D (-1)))
       (DGFunctor.id (RightModule R D)) :=
-  dgStrictNatTransComp (dgModuleShiftAddInvSpecifiedComparison R D)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (dgModuleShiftAddInvSpecifiedComparison R D)
     (dgModuleShiftZeroStrictComparison R D)
 
 /-- 概要：元指定相殺全比較の閉射は同じ元実相殺同型。

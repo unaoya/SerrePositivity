@@ -1,0 +1,2373 @@
+{
+  "original_main": "f654cdc11e4c1d4fb5cc2e65a1a6dbbbbac51c93",
+  "repaired_head": "2eecf470394d35eddd39cac0ff1ab8ace13082c3",
+  "captures": [
+    {
+      "path": "scripts/audit_derived_dg_nerve_reflection.lean",
+      "original_source_sha256": "e3c38a6ec944b1149355a23dd0e9def5e3182ed1e5a51aac08d96a38a5925c9b",
+      "capture_sha256": "7a153c06a90bcc6c29d67255f7fc7dbf8e7a68c2d65cf97071396430284109f1",
+      "capture_log_sha256": "6da061c68bed370503f5e43faf543c617076e9c43c68656e267d77333f4d2726",
+      "references": 181
+    },
+    {
+      "path": "scripts/audit_derived_infinity.lean",
+      "original_source_sha256": "5564770e6374eb498ba8760693a7a057c61ee7707c08b44afce8baae5c289ea5",
+      "capture_sha256": "f5bd4a085e812f79b69dc3031297799055c8b82689b46d5963b9717e5331a5ed",
+      "capture_log_sha256": "4ac770fdd268f377947a34eb414cf7e58fae244ca02898825cde1423c6a42234",
+      "references": 3246
+    },
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "original_source_sha256": "c2176730d73dc64b73ca1f037bc177eb8508672f2d615bcad81e4f38c1b21433",
+      "capture_sha256": "10de15d42ae11718cc91488976dbc091e0f49ad942b330bb4a79aa4622565a92",
+      "capture_log_sha256": "d0f25642233844370d6c848696141635626cce0cc1f0c11baf413e42d5844777",
+      "references": 151717
+    },
+    {
+      "path": "scripts/audit_f2_compact.lean",
+      "original_source_sha256": "6b6eaff2dae2dd4b2a1b901f27ae12ce832afcf5839f81f2a5943b6f7f6a137d",
+      "capture_sha256": "1ff81b16b6c732540c5fabb14cbd4664f1eb4f2fbc1fe6e3d5fad9250109a155",
+      "capture_log_sha256": "dc00c0d364c71188e81de2478b565da1024dba8e3b7c5db8883065eec23bc621",
+      "references": 889
+    },
+    {
+      "path": "scripts/audit_f2_idempotent.lean",
+      "original_source_sha256": "2612607e82cdb865562a688f261c6306ce90e0cd3b9059856ab2f3af5e0cc869",
+      "capture_sha256": "f519e3f99bc27a7ebe2d956e40939e3ddfbd11818c3adb6e31860057c262f5e8",
+      "capture_log_sha256": "0c2c9746f7c5f66d61f807830dc7fa8f81cd78f6280f4f58b80087d6af93a041",
+      "references": 1827
+    },
+    {
+      "path": "scripts/audit_homotopy_limits.lean",
+      "original_source_sha256": "0d2e2a4b612497fd3f49c8e00de4e65b781cad744dca8686c38149fc47a3b323",
+      "capture_sha256": "753bb53221b06439f80ae4404cc5b61862f72bbaff9aab8c95095dac13586fd6",
+      "capture_log_sha256": "08f5126b115cb654ba9e4ef60f1540886c114609f47e5d923f7f4273190e24a8",
+      "references": 16095
+    },
+    {
+      "path": "scripts/audit_infinity_core.lean",
+      "original_source_sha256": "cd91b2514fe9926db1ed51d036dc93a7a8f74bac0d1b9c1c8362528a0a4062c1",
+      "capture_sha256": "81541a4586a051b21d2839af1bfda7a00dfdd984509cc23cddb1f037863e4d66",
+      "capture_log_sha256": "d1d99dc96e2ea1e9955a5b04ae9cb32ee30a9e3abc1771fe0bfd05c1bd1aafe6",
+      "references": 6083
+    },
+    {
+      "path": "scripts/audit_infinity_core_supply_s1_triangle.lean",
+      "original_source_sha256": "3536534d5ac2177cde60ba34ed74bcd2b9f2d11ec7c3f42983b59908de9c9711",
+      "capture_sha256": "b30fbf758b0766de934e31f0cdaf297085f65befe7d0ab946ddd710c019934ef",
+      "capture_log_sha256": "47ea846ec40ef7f7f1593a8b5ffd5e16fc5ef67db09db793668d14a97cacfb6e",
+      "references": 121
+    },
+    {
+      "path": "scripts/audit_infinity_f1b.lean",
+      "original_source_sha256": "ca92262c1746f455840bd4a610f6f29e0b9b20f0f332535290f2cb5087807731",
+      "capture_sha256": "b2c40e940ec2c21cda0171e3db1a8e6768641d48fa381beb2d8349119b6475a1",
+      "capture_log_sha256": "3ed0aeec1f6e4844676e6f6356271bebd32aca7e9161f18489e50a99fea77426",
+      "references": 5001
+    },
+    {
+      "path": "scripts/audit_infinity_f2.lean",
+      "original_source_sha256": "fdc48061189422f8c9cd7d6ed046071fbcfedb891c81cbb302aba1e3c6bdb143",
+      "capture_sha256": "d339862cbfd74ca707c7a2634def57c8bf774478f513a97bba0a1ad2527f18b4",
+      "capture_log_sha256": "973f444b47c54be45749c802d5ae5b6b7b9403c05e9255ee1beaa46cee39bdc8",
+      "references": 1723
+    },
+    {
+      "path": "scripts/audit_infinity_presentable.lean",
+      "original_source_sha256": "cc218d04455ccbe9a5c3f9e73e1beba3fee77103738c19b5d205e22d41376ae4",
+      "capture_sha256": "05996e11c3baeb097d9fb879bf4043dfc2aec8c026b45f7b269fdee6ed38de19",
+      "capture_log_sha256": "f0a2014822a59b90472c7201b22e1bc6b1ba62e643c4401851276fd84faa457f",
+      "references": 1896
+    },
+    {
+      "path": "scripts/audit_infinity_presentable_localization.lean",
+      "original_source_sha256": "2e6ca5f10ef93bd17d9fb4a45893916a509fc015c2a0f690d0664870b8bc3d4f",
+      "capture_sha256": "62959334003614c88a8382760857bf21df7b9a17b54474852c572882f8eae865",
+      "capture_log_sha256": "4bb8d67cfd651ce4dcb9aadad3adf52ad2b9a87258ff5c18ca15b1dd29bd19dd",
+      "references": 1402
+    },
+    {
+      "path": "scripts/audit_infinity_stable.lean",
+      "original_source_sha256": "36805cd5e712902bcddcf178f1c793b6565c6affe604f92ebd7cb02e9662c33d",
+      "capture_sha256": "a59dd810184b10cf65bca3d1bb74dc9e2187049f20aca197577e91d456128e81",
+      "capture_log_sha256": "34c66f113af60ae06fb74a1d9ef5889b46e9ff8fb3af2f005bcd2b1a6d22e27a",
+      "references": 3350
+    },
+    {
+      "path": "scripts/audit_kst_nonconnective.lean",
+      "original_source_sha256": "7bd8d3ef528d464327728717e98aede7a91b6d7607838fe5818df418a9101fa5",
+      "capture_sha256": "822060cdc424ec52ae63f03d7ea486a8ad19ded43cef59ef99a3d0aab9bd835f",
+      "capture_log_sha256": "522266b7a391e4658051b0e7ee4528adebd9b7cee333fe7f0a2e71c7c2d3bc03",
+      "references": 372
+    },
+    {
+      "path": "scripts/audit_kst_s_construction.lean",
+      "original_source_sha256": "197b53654cb7f054b8dfe2728c8e898674c81761b6edf63cc16fdc489dcd6fb4",
+      "capture_sha256": "75d0659cf59c4d3c36d470df1418c09a7d6d244fc6f8900040a4325eaf01a4a3",
+      "capture_log_sha256": "acc7a9aeb8fbeb55c1336b3f3ecf8c072d3ea67a7cfccb2c43d15ee2b01245d2",
+      "references": 42595
+    },
+    {
+      "path": "scripts/audit_kst_spectra_d3tail.lean",
+      "original_source_sha256": "0f2ecd2aaa723e8a2b6fd25cd75529d7c94178fe8bb55b95919b1c7d03a49c28",
+      "capture_sha256": "1ddb7a2312e6c14eb52f5788049082785feb1ea6203f8a256c5747047b251e33",
+      "capture_log_sha256": "ac0a29a2a8ca73862d35bb6d250b874191a8a56f05d00157b2553f14dc522da4",
+      "references": 142
+    }
+  ],
+  "changes": {
+    "scripts/audit_derived_dg_nerve_reflection.lean": {
+      "input_sha256": "45d4e21846f7a31d794528f1153715da619fb750d48e7ad056d062a68112c54f",
+      "output_sha256": "5ab00d1c92141cb8150ec81235fec645a87f28a5360b3ff5f84d12a2e3515fda",
+      "reasons": [
+        {
+          "semantic": 12
+        }
+      ]
+    },
+    "scripts/audit_derived_infinity.lean": {
+      "input_sha256": "e4895f38131acf43f5338ed9e2a8eac51ee55f082d08cf99d81abc99d636da1c",
+      "output_sha256": "394c78df00976002ce35c9afea8614e164d2194d8a4115a1718bab3dee53db5e",
+      "reasons": [
+        {
+          "semantic": 3
+        }
+      ]
+    },
+    "scripts/audit_einfinity.lean": {
+      "input_sha256": "dbacc1c350746d317cb1bdb29fbfe8c4536ebee04ad6a3e2e92e34f78e3f6112",
+      "output_sha256": "06ea21b034e1e2b2d5992ca51767675b5526aaa1ab86d40abb790b22c82dbedc",
+      "reasons": [
+        {
+          "semantic": 4866,
+          "generated_constructor": 1,
+          "generated_reassoc": 1
+        },
+        "five explicit applications of original external methods on moved receivers; original owners verified"
+      ]
+    },
+    "scripts/audit_f2_compact.lean": {
+      "input_sha256": "edec11158e00b8b3cc300eacba97bcbca1581b419c3c9654125bd13b8c4a6abb",
+      "output_sha256": "f502448f3af97583665f5a79b9ee2eea3f0e7013926b60412ae75f4a53a5dea3",
+      "reasons": [
+        {
+          "semantic": 544
+        }
+      ]
+    },
+    "scripts/audit_f2_idempotent.lean": {
+      "input_sha256": "fd6797bcb07f0286b3fa0e6ad05d575794b360b3c5d5c48f741e5a245b986a4f",
+      "output_sha256": "b72ab20ff7c1ac3bea892a78b93c2e69454b9e81047ba8cd048bedf24c9fa810",
+      "reasons": [
+        {
+          "semantic": 1218
+        }
+      ]
+    },
+    "scripts/audit_homotopy_limits.lean": {
+      "input_sha256": "7dec3bb47884294384455b97ffebe3049aed02b8cdb2268219984603b61f6bf0",
+      "output_sha256": "e27b7fc45747e092ee6a758f3370c1192b5b55c8c1c9660401e26e27c6843f27",
+      "reasons": [
+        {
+          "semantic": 8686
+        }
+      ]
+    },
+    "scripts/audit_infinity_core.lean": {
+      "input_sha256": "8196a1567a5b8d31d6a495639da77c7c9973988544e176ca6619d471e0d4453d",
+      "output_sha256": "7908f78cdb228b8b79113e10c497bc4d5719386bf4d54d36c4eb136935c5c360",
+      "reasons": [
+        {
+          "semantic": 21
+        }
+      ]
+    },
+    "scripts/audit_infinity_core_supply_s1_triangle.lean": {
+      "input_sha256": "32890f3633163051c38b4a59765b6d3114ed15787b0639a72bc5c7d4b02082ef",
+      "output_sha256": "c07f455f09d9e976d932fedc35455006150707b30195fcbeab53ccca9d720dba",
+      "reasons": [
+        {
+          "semantic": 2
+        }
+      ]
+    },
+    "scripts/audit_infinity_f1b.lean": {
+      "input_sha256": "41a8a986437094e6c6acfadb208e0dd00c112b8cd600b74d406a03375e8aa5b1",
+      "output_sha256": "cf044cc7debff3b7345c679fe2baa3a0755a6687c8f293b650af788a1aad7ae2",
+      "reasons": [
+        {
+          "semantic": 4
+        }
+      ]
+    },
+    "scripts/audit_infinity_f2.lean": {
+      "input_sha256": "dd60a27d9cef0f33fc27d58986fc3d91662054321b920e36e860cfcd8d9587d5",
+      "output_sha256": "6eb365846f451dfb67e7ff59fc45a44077780fb9cf2bfedceabcead33fe627cb",
+      "reasons": [
+        {
+          "semantic": 2
+        },
+        "check unchanged 2026-11-05 deprecation messages against historical targets, alongside current declarations"
+      ]
+    },
+    "scripts/audit_infinity_presentable.lean": {
+      "input_sha256": "3f2d9253d00f2e19f6bf3dc9ce3cba77397ae652923cca9540511851f60ff8f3",
+      "output_sha256": "792c0148d19eebae5ffd555a9331b35bade63feb200c3b69bffaad9f7a321b5c",
+      "reasons": [
+        {
+          "semantic": 2
+        }
+      ]
+    },
+    "scripts/audit_infinity_presentable_localization.lean": {
+      "input_sha256": "7703dd6995144e10eed2145a310b13eacdf185944017c4c25f3a2bb30f64b39a",
+      "output_sha256": "58d280d6d414cda9586099a327907a6d22063f6b904780c74b56914e9ba7161a",
+      "reasons": [
+        {
+          "semantic": 559
+        }
+      ]
+    },
+    "scripts/audit_infinity_stable.lean": {
+      "input_sha256": "aa0558b3c26f2b308f44c29633cc66b644af76417ca489f782b40265da0af2b7",
+      "output_sha256": "0330589adad7da31cf6bb8d104d766c352b7f2cc6385b5c775997596ef3b1906",
+      "reasons": [
+        {
+          "semantic": 7
+        }
+      ]
+    },
+    "scripts/audit_kst_s_construction.lean": {
+      "input_sha256": "338dd5294d4f6f4ea16034ebbf45979e0d16b45c69520c9c39dbed99d8555956",
+      "output_sha256": "c02f3184de1ec366be93fb29136a8935df09152bffe144ea3be3792f76651629",
+      "reasons": [
+        {
+          "semantic": 34
+        }
+      ]
+    },
+    "scripts/audit_kst_spectra_d3tail.lean": {
+      "input_sha256": "0f2ecd2aaa723e8a2b6fd25cd75529d7c94178fe8bb55b95919b1c7d03a49c28",
+      "output_sha256": "84ec0047edc7ea25fe29e0bed9f8bb29e1da3bd63d9fae3e04b91f714b0dbda4",
+      "reasons": [
+        {
+          "semantic": 2
+        }
+      ]
+    },
+    "scripts/refactor/klw1_namespace.py": {
+      "input_sha256": "82e7e0f85bcc5974f2168c45bf4cd7a45223510c554afb5ed7c38aa596d6222f",
+      "output_sha256": "c5a3795541f5993e286b11574ee7a6e52ec9bc4254b7b0eca9e5f011cd9f2020",
+      "reasons": [
+        "flag unmapped generated members without renaming retained external methods"
+      ]
+    },
+    "scripts/refactor/test_klw1_tools.py": {
+      "input_sha256": "8213370963acdcceb30aeef8a854c90047cb934d34cfc19303c98e19f54856e4",
+      "output_sha256": "1df29fbaf237cd8c650927e2fee71cae2cb21e63793d2018ed58e6ffcccb42d5",
+      "reasons": [
+        "flag unmapped generated members without renaming retained external methods"
+      ]
+    },
+    "SerrePositivity/KST/NonConnective/DGSuspensionCoherentSquareFamily.lean": {
+      "input_sha256": "1964a7336df8b9a9f23ac8950582a31a1873ff6e2e3600438ddf3a03a09ba30e",
+      "output_sha256": "39dbb4250f5edeb417fef44ca04cb9d3a24accde52d7d2eaf8105e930136ed9c",
+      "reasons": [
+        "retain original public name of an unmoved KST definition"
+      ]
+    }
+  },
+  "blocked": [],
+  "regression_tests": {
+    "count": 23,
+    "skipped": 0,
+    "real_lean_fixtures": 3,
+    "rc": 0,
+    "seconds": 7.413,
+    "log_sha256": "baa4c65604164ce27795a13d28272957da7bc49bd2d13bd2cf59d19587177dba"
+  },
+  "native_source_intersection": 0,
+  "historical_deprecation_messages": "same 5 exact texts and 2026-11-05 dates as original source; current declaration names checked independently",
+  "unmoved_definition_name_restored": "SerrePositivity.InfinityCategories.DGSuspensionCoherentActionInput.ofSquareFamily",
+  "semantic_resolution_checks": {
+    "identifier_only_audit_shapes": {
+      "scripts/audit_derived_dg_nerve_reflection.lean": true,
+      "scripts/audit_derived_infinity.lean": true,
+      "scripts/audit_f2_compact.lean": true,
+      "scripts/audit_f2_idempotent.lean": true,
+      "scripts/audit_homotopy_limits.lean": true,
+      "scripts/audit_infinity_core.lean": true,
+      "scripts/audit_infinity_core_supply_s1_triangle.lean": true,
+      "scripts/audit_infinity_f1b.lean": true,
+      "scripts/audit_infinity_presentable.lean": true,
+      "scripts/audit_infinity_presentable_localization.lean": true,
+      "scripts/audit_infinity_stable.lean": true,
+      "scripts/audit_kst_s_construction.lean": true,
+      "scripts/audit_kst_spectra_d3tail.lean": true
+    },
+    "exceptional_audits": {
+      "scripts/audit_einfinity.lean": "same references plus 5 explicit applications of original external methods; no assumptions changed",
+      "scripts/audit_infinity_f2.lean": "reference renames plus exact historical deprecation message targets, preserving all existence/deprecation/date/text checks"
+    },
+    "local_global_mixed_spans": 0,
+    "mapped_unmapped_non_dot_mixed_spans": 0
+  },
+  "final_repair_head": "0b55bdb65e54feba3995a7c50d5ed24f4c1276fe",
+  "followup_changes": {
+    "scripts/audit_einfinity.lean": {
+      "input_sha256": "06ea21b034e1e2b2d5992ca51767675b5526aaa1ab86d40abb790b22c82dbedc",
+      "output_sha256": "caafd827ffaa81c64a2055990fbc234f1d25186d444c09c090a8306bed0f1c5a"
+    },
+    "scripts/audit_infinity_presentable_localization.lean": {
+      "input_sha256": "58d280d6d414cda9586099a327907a6d22063f6b904780c74b56914e9ba7161a",
+      "output_sha256": "0cf3eb13c7c2248dc8dfc5824d5f70e002aac5964640e8afc6635bc67ebebd92"
+    },
+    "scripts/refactor/klw1_namespace.py": {
+      "input_sha256": "c5a3795541f5993e286b11574ee7a6e52ec9bc4254b7b0eca9e5f011cd9f2020",
+      "output_sha256": "794edf0b1e82aba535934daa99992169522f7e257b8e4d7e4ad67689f0afff6d"
+    },
+    "scripts/refactor/test_klw1_tools.py": {
+      "input_sha256": "1df29fbaf237cd8c650927e2fee71cae2cb21e63793d2018ed58e6ffcccb42d5",
+      "output_sha256": "55a1cac85a47140cd31cd815246e0257d95f58b492c6de73f37e80163c5d0044"
+    }
+  },
+  "projection_followup": {
+    "path": "scripts/audit_einfinity.lean",
+    "source_sha256": "caafd827ffaa81c64a2055990fbc234f1d25186d444c09c090a8306bed0f1c5a",
+    "capture_sha256": "49c31b1f047f33d671ba48ec3bb74007ea013431ab6ad05bb2a2f41eda8c6e9d",
+    "checked": 40,
+    "rows": [
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14414,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14415,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14416,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14418,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14445,
+        "old_written": "strictLocalizationFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.StrictLocalization",
+        "resolved_prefix": "SerrePositivity.EInfinity.SimplicialLocalization.strictLocalizationFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.StrictLocalization",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 14493,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 15854,
+        "old_written": "Word.paddingFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordPadding",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.Word.paddingFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordPadding",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 16425,
+        "old_written": "Word.paddingFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordPadding",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.Word.paddingFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordPadding",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.paddingFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 17145,
+        "old_written": "Word.ForwardTriple.collapse.cut",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse.cut",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordForwardTripleCollapse",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.collapse",
+        "projection_suffix": ".cut",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordCut",
+            "name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Hom.cut"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 17146,
+        "old_written": "Word.ForwardTriple.collapse.cut",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse.cut",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordForwardTripleCollapse",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.Word.ForwardTriple.collapse",
+        "projection_suffix": ".cut",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordForwardTripleCollapse.collapse",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordCut",
+            "name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Hom.cut"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18570,
+        "old_written": "FreeQuiverCover.symmetricEvaluation.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverEvaluation.symmetricEvaluation.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverEvaluation",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.symmetricEvaluation",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverEvaluation",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverEvaluation.symmetricEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18706,
+        "old_written": "FreeQuiverCover.positiveEvaluation.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18726,
+        "old_written": "FreeQuiverCover.positiveEvaluation.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18733,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18773,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18786,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18797,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18816,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18870,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 18882,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 19394,
+        "old_written": "FreeQuiverCover.positiveEvaluation.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FreeQuiverCoverPositivePaths",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.FreeQuiverCover.positiveEvaluation",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeQuiverCoverPositivePaths",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 19639,
+        "old_written": "DoubleSimplicial.diagonalFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 19805,
+        "old_written": "DoubleSimplicial.diagonalFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 20591,
+        "old_written": "DoubleSimplicial.diagonalFunctor.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 20645,
+        "old_written": "DoubleSimplicial.diagonalFunctor.obj",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".obj",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.obj"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 20777,
+        "old_written": "ZigzagAppend.Part.jointFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendPartDiagrams.jointFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagAppendPartDiagrams",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.ZigzagAppend.Part.jointFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendPartDiagrams",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendPartDiagrams.jointFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21010,
+        "old_written": "DoubleSimplicial.diagonalFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21012,
+        "old_written": "DoubleSimplicial.diagonalFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21013,
+        "old_written": "DoubleSimplicial.diagonalFunctor.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map",
+        "owner": "SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal",
+        "resolved_prefix": "SerrePositivity.EInfinity.Hammock.DoubleSimplicial.diagonalFunctor",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21503,
+        "old_written": "exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21515,
+        "old_written": "exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21536,
+        "old_written": "exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21608,
+        "old_written": "exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21630,
+        "old_written": "exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21640,
+        "old_written": "exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 21654,
+        "old_written": "exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 28082,
+        "old_written": "SerrePositivity.KST.Comparison.exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 28191,
+        "old_written": "exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 28194,
+        "old_written": "exInfinityUnit.app",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinityUnit",
+        "projection_suffix": ".app",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.NatTrans",
+            "name": "CategoryTheory.NatTrans.app"
+          }
+        ]
+      },
+      {
+        "path": "scripts/audit_einfinity.lean",
+        "line": 28200,
+        "old_written": "exInfinity.map",
+        "new_written": "_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map",
+        "owner": "SerrePositivity.KST.Comparison.ExInfinity",
+        "resolved_prefix": "SerrePositivity.KST.Comparison.exInfinity",
+        "projection_suffix": ".map",
+        "current_prefix_module": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinity",
+        "current_prefix_name": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity",
+        "suffix_refs": [
+          {
+            "kind": "syntax",
+            "module": "Mathlib.CategoryTheory.Functor.Basic",
+            "name": "CategoryTheory.Functor.map"
+          }
+        ]
+      }
+    ]
+  },
+  "localization_owner_scope": {
+    "old_selected": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.Generators",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactEndpoints",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrows",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactArrows",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactArrowGenerators",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratorCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndCandidate",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSource",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialPieces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImage",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceCosliceColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactPartialColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImagePresentations",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactIndCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.RefinementCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.EndpointCompactCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceEdges",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowEndpoints",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CoconeFamilyVertices",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageFinitePosetColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageFiniteColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSpanColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.OperationsCompactCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageIdentities",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowPushoutPrism",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SpanCollapse",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.DegeneratePushoutSquare",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowPushoutFamily",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImagePushout",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.InvertibleArrowIso",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageEdges",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceInitial",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceArrows",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCommonPresentations",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.DiscreteArrowFamilies",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallCoproducts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactArrowCoproducts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCompactCoproducts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCoproducts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCoproductColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceArrowFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberPullback",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiberEquivalence",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageAllFiniteColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowCancellationPrism",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ArrowCancellationFamily",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCancellation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactInitialFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactFactorizationTriangle",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowEvaluation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceProjection",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTransport",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceJoinCofinality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SourceCosliceProjectionColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceContractibleColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFiniteColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.FiniteDiscreteShapes",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceCoproducts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceFilteredColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSourceCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalExtension",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalMapping",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalCoslice",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceUnderTarget",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceRetractionSpace",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedTargetIdentityTerminal",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageSmallColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceSmallColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceSourceComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeCosliceMappingFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeTerminalMappingPoint",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutCosliceRestriction",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanMappingFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutTopMappingFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanSourceFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceRetractionMappingFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalPushoutFiber",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.EdgeSourceMappingTransport",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PresentableIndImageCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PushoutSpanBaseCoordinates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceTerminalLocality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceLocalTerminal",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourceAccessibleTerminal",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageRetracts",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactOperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.OperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourcePointAccessibility",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleFaces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleCompactCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleCompactPresentations",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageCompactTriangles",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleOperationsCompactCardinals",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleOperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleRefinement",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativeCompactCoconeFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TerminalPrefixFilteredPresentation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativePrefixPresentationFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialCoconeExtension",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SequentialCoconeNaturality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactPresentationComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonPrefixFactor",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactTailFactorization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialTriangle",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.InitialTriangleNormalization",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialState",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialExistence",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompactCoconeVertices",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSeedBounds",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorDiagram",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorAugmentation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexMonotonicity",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonLeftCoconeFaces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorLeftAugmentation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSuccessorState",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRounds",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundRestriction",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequence",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.DoubleConeSimplexShape",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundSimplexShape",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceSimplexShape",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.NativeShapeTowerGluing",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceDiagram",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSequenceSliceDiagram",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.OneConeSimplexShape",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallShapeTowerGluing",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexShapes",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonIndexDiagrams",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexSequence",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexPiece",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParityFaces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonRoundFaces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParityShapes",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonInitialParity",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParityDiagrams",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonParitySubsequences",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSliceRestrictions",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ParityDiagramComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.ComparisonSubsequenceEquality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoPresentationComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.NerveIndexPieceCofinality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SeedBoundedTwoPresentationComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CofinalPresentationColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CommonSmallPresentationPieces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallPresentationComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallPresentationCompact",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePresentationPieces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.MonotoneNerveCofinality",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePieceProjections",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CofinalPartialColimitFamilies",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePiecePresentations",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePieceColimitIso",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativeSmallPresentationPiece",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageAmbientSmallColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageRelativePiece",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageMappedRelativePiece",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TriangleFacePartialRefinement",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.SmallShapeLeftKanExtension",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.InterleavedRefinementSequence",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.FilteredPieceSequenceUnion",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceTotal",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceFiberKan",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceKanValues",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CommonRefinementConditions",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PartialColimitProperty",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageMappedPartialConditions",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoMappedPartialConditions",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoMappedPartialPieces",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PartialFamilyValues",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.TwoMappedRefinementPresentation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageTriangleTwoOfThree",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageStrongSaturation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedArrowsPresentable",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.GeneratedSourcePresentable",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldReflection",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldUniversalProperty",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.BousfieldSaturation",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.All"
+    ],
+    "old_excluded": [
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Definition",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.LocalityInversion",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.LocalityNaturalComparison",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.FilteredClosure",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.FilteredColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.ReflectionColimits",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.ReflectiveAccessibility",
+      "SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.Presentable"
+    ],
+    "old_declarations": 1007,
+    "new_selected": [
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCancellationFamily",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCancellationPrism",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowEndpoints",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowPushoutFamily",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ArrowPushoutPrism",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldReflection",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldSaturation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.BousfieldUniversalProperty",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CoconeFamilyVertices",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPresentationColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonSmallPresentationPieces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrowCoproducts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrowGenerators",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactArrows",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactCoconeFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactCoconeVertices",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactEndpoints",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactFactorizationTriangle",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactIndCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactInitialFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactOperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPartialColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactPresentationComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompactTailFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexDiagrams",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexMonotonicity",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonIndexShapes",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialExistence",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialParity",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialState",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonInitialTriangle",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonLeftCoconeFaces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityDiagrams",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityFaces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParityShapes",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonParitySubsequences",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonPrefixFactor",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundFaces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRoundSimplexShape",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonRounds",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSeedBounds",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequence",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceDiagram",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceSimplexShape",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSequenceSliceDiagram",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSliceRestrictions",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSubsequenceEquality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorAugmentation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorDiagram",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorLeftAugmentation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ComparisonSuccessorState",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceColimitIso",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePiecePresentations",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceProjections",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePresentationPieces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DegeneratePushoutSquare",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DiscreteArrowFamilies",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DoubleConeSimplexShape",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeCosliceMappingFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeCosliceSourceComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeSourceMappingTransport",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EdgeTerminalMappingPoint",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EndpointCompactCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteDiscreteShapes",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowEvaluation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrows",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedArrowsPresentable",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSource",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceAccessibleTerminal",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceArrows",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceContractibleColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceCoproducts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceEdges",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiberEquivalence",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiberPullback",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFilteredColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceFiniteColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceInitial",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceLocalTerminal",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePointAccessibility",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourcePresentable",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceProjection",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceRetractionMappingFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceRetractionSpace",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceSmallColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalCoslice",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalExtension",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalLocality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalMapping",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTerminalPushoutFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceTransport",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedSourceUnderTarget",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratedTargetIdentityTerminal",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.GeneratorCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Generators",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndCandidate",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImage",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageAllFiniteColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageAmbientSmallColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCancellation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCommonPresentations",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCompactCoproducts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCompactTriangles",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCoproductColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageCoproducts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageEdges",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageFiniteColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageFinitePosetColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageIdentities",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedRelativePiece",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImagePresentations",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImagePushout",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageRelativePiece",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageRetracts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSmallColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSmallCoproducts",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSourceCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageSpanColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageStrongSaturation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleRefinement",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageTriangleTwoOfThree",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InitialTriangleNormalization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InterleavedRefinementSequence",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.InvertibleArrowIso",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.MonotoneNerveCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NativeShapeTowerGluing",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexPiece",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexPieceCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.NerveIndexSequence",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OneConeSimplexShape",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OperationsCompactCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.OperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ParityDiagramComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialColimitProperty",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableIndImageCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutCosliceRestriction",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanBaseCoordinates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanMappingFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutSpanSourceFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PushoutTopMappingFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RefinementCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeCompactCoconeFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativePrefixPresentationFactorization",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeSmallPresentationPiece",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SeedBoundedTwoPresentationComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialCoconeExtension",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialCoconeNaturality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SequentialPieces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationCompact",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPresentationComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallShapeLeftKanExtension",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallShapeTowerGluing",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceArrowFiber",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceCosliceColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceCosliceProjectionColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SourceJoinCofinality",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SpanCollapse",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TerminalPrefixFilteredPresentation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleCompactCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleCompactPresentations",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleFacePartialRefinement",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleFaces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleOperationsCompactCardinals",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TriangleOperationsIndImageCandidates",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialConditions",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialPieces",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedRefinementPresentation",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoPresentationComparison",
+      "SerrePositivity.InfinityCategories.Project.Entrypoints.F2PresentableLocalizationAll"
+    ],
+    "new_excluded": [
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Definition",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredClosure",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalityInversion",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LocalityNaturalComparison",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.Presentable",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ReflectionColimits",
+      "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ReflectiveAccessibility"
+    ],
+    "overlap": []
+  },
+  "localization_owner_counts": {
+    "old_declarations": 1007,
+    "new_declarations": 1014,
+    "change": 7,
+    "module_differences": [
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CommonRefinementConditions",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions",
+        "old_count": 4,
+        "new_count": 5,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CommonRefinementConditions",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CommonRefinementConditions",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_1"
+          }
+        ],
+        "original_source_sha256": "5ab13e416d2540e794fdcbd175126a345c71ef7d37fe77da0d48c0e45d538fbd",
+        "original_instance_lines": [
+          [
+            16,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CofinalPartialColimitFamilies"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.FilteredPieceSequenceUnion",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion",
+        "old_count": 5,
+        "new_count": 6,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.FilteredPieceSequenceUnion",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredPieceSequenceUnion",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity"
+          }
+        ],
+        "original_source_sha256": "ba170c228c68e1d6b0c8e4b582f273130cf40dacfb651abc8530ad5904b1c6cc",
+        "original_instance_lines": [
+          [
+            17,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePieceProjections"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PartialFamilyValues",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues",
+        "old_count": 2,
+        "new_count": 3,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PartialFamilyValues",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_6"
+          }
+        ],
+        "original_source_sha256": "083d72fbe7665b2d8b274f09a4f394b13230f5445ca219723cdf9fec84a24cde",
+        "original_instance_lines": [
+          [
+            21,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.IndImageMappedPartialConditions"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceColimits",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits",
+        "old_count": 7,
+        "new_count": 8,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceColimits",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceColimits",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_4"
+          }
+        ],
+        "original_source_sha256": "2e19c3b63482d0f7753d8968a838ebccc463416c8382056fe2ee8f03573aa48f",
+        "original_instance_lines": [
+          [
+            22,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.RelativeSmallPresentationPiece"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceFiberKan",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan",
+        "old_count": 9,
+        "new_count": 10,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceFiberKan",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceFiberKan",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_2"
+          }
+        ],
+        "original_source_sha256": "01b0d72dff1d9b6e40665029ac46c4fac64088e4caf9fdfdccb66c9143d340ba",
+        "original_instance_lines": [
+          [
+            19,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePiecePresentations"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceKanValues",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues",
+        "old_count": 4,
+        "new_count": 5,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceKanValues",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceKanValues",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_3"
+          }
+        ],
+        "original_source_sha256": "18d1b2c314a635fcc5c7cd611be20df11d226149f1100a60dcab30755b6461bc",
+        "original_instance_lines": [
+          [
+            22,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CompatiblePieceColimitIso"
+      },
+      {
+        "old_module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceTotal",
+        "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal",
+        "old_count": 20,
+        "new_count": 21,
+        "instance_rows": [
+          {
+            "module": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.PieceSequenceTotal",
+            "new": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal.instFactIsRegularAleph0_serrePositivity",
+            "new_module": "SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PieceSequenceTotal",
+            "old": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.instFactIsRegularAleph0_serrePositivity_1"
+          }
+        ],
+        "original_source_sha256": "05a3ccfd33da26915731f93582d87e94af128ad4bbb7dadb166fe81516046961",
+        "original_instance_lines": [
+          [
+            17,
+            "local instance : Fact Cardinal.aleph0.IsRegular := ⟨Cardinal.isRegular_aleph0⟩"
+          ]
+        ],
+        "original_combined_environment_owner": "SerrePositivity.InfinityCategories.F2.Presentable.Localization.CofinalPartialColimitFamilies"
+      }
+    ],
+    "inventory_receipt": [
+      {
+        "key": "old",
+        "script_sha256": "0e3793dbdd539d2606b84986a2925648ed6bf5a7f3c2e9c5460749134fa608eb",
+        "output_sha256": "cea3e12a1698d7c237d8bea198b45a26bcde8aa8a85327c211045dfcea50ed4e",
+        "count": 1007
+      },
+      {
+        "key": "new",
+        "script_sha256": "05d9f75c4860cb7888c89ffb06dfd08ae64f16a394f9c8adf2da590d10efcfed",
+        "output_sha256": "401008fdc6fd2c5b7047d933b8efd1b8bebc348dfd7aedf1349d39d6095856e3",
+        "count": 1014
+      }
+    ],
+    "reason": "Seven pre-existing local Fact Cardinal.aleph0.IsRegular instances shared auto-generated old names with declarations in other original owners. The combined original environment attributed each such name to another imported module. Distinct canonical names after layout expose all seven separately. The exact original 185-owner image and eight exclusions are unchanged; every newly counted declaration is an existing mapped instance.",
+    "original_owner_count": 185,
+    "excluded_owner_count": 8
+  },
+  "targeted_followups": [
+    {
+      "path": "scripts/audit_infinity_presentable_localization.lean",
+      "source_sha256": "0cf3eb13c7c2248dc8dfc5824d5f70e002aac5964640e8afc6635bc67ebebd92",
+      "rc": 0,
+      "seconds": 32.922,
+      "log_sha256": "85113dcde2f3e50d379e39b489cf779852336d9725e682b364385570e9f62531",
+      "capture_sha256": "8d0e443bcea032ffeb383868b7f2ee7ac34e20e9ec732f4df39bb234ae1ff782"
+    },
+    {
+      "path": "scripts/audit_einfinity.lean",
+      "source_sha256": "caafd827ffaa81c64a2055990fbc234f1d25186d444c09c090a8306bed0f1c5a",
+      "rc": 0,
+      "seconds": 214.649,
+      "log_sha256": "d0f25642233844370d6c848696141635626cce0cc1f0c11baf413e42d5844777",
+      "capture_sha256": "49c31b1f047f33d671ba48ec3bb74007ea013431ab6ad05bb2a2f41eda8c6e9d"
+    }
+  ],
+  "namespace_probes": [
+    {
+      "key": "einfinity-namespaces",
+      "original_libraries": false,
+      "audit": "scripts/audit_einfinity.lean",
+      "script_sha256": "2d601934f363b266a5985a1a62e50e6d5986b2f1b068f65d603143bbcfe7ca5b",
+      "output_sha256": "e26178688b5d57f235d9ebcfd80e50ef304e9d3aa7e04af4047d70d39000cad4",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "key": "localization-namespaces",
+      "original_libraries": false,
+      "audit": "scripts/audit_infinity_presentable_localization.lean",
+      "script_sha256": "f8d732284d8ff48fb884bb13f9bbe5dad0e53765d88cf8d51e46641a677dec27",
+      "output_sha256": "2489e0c0d34533d2a1e6ecf09a85874ed09333d9bfd2da9d72b57533a99433fc",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "key": "localization-original-owners",
+      "original_libraries": true,
+      "audit": "scripts/audit_infinity_presentable_localization.lean",
+      "script_sha256": "c785c1af2fc55ea07f7ae0b032e85c03b02171964dc4aed0ee8a84bafd44ec11",
+      "output_sha256": "526ecc74af37728bc13f11dba61af42facf291d70881d5a954488bb07dd1c55d",
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "removed_absent_open_operands": {
+    "scripts/audit_einfinity.lean": [
+      {
+        "line": 15898,
+        "written": "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 15906,
+        "written": "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 15912,
+        "written": "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 15919,
+        "written": "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 15929,
+        "written": "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.ThreeArrow.Padding"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17397,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17440,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17473,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17485,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17704,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17706,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17721,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17723,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17740,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17742,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17760,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17762,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17782,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17784,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17805,
+        "written": "SerrePositivity.EInfinity.Hammock.Word.CutFactor",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Word.CutFactor"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 17807,
+        "written": "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactorAction"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 18203,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 18210,
+        "written": "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 19794,
+        "written": "SerrePositivity.EInfinity.Hammock.TwoSidedElements",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.TwoSidedElements"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 20266,
+        "written": "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 20308,
+        "written": "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 20319,
+        "written": "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary"
+        ],
+        "mode": "local-simple"
+      },
+      {
+        "line": 20407,
+        "written": "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary",
+        "resolved_names": [
+          "SerrePositivity.EInfinity.Hammock.Zigzag.FirstBoundary"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23136,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23338,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23408,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23480,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23481,
+        "written": "DoldKanComparison",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DoldKanComparison",
+          "SerrePositivity.InfinityCategories.DoldKanComparison"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23551,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23625,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23703,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23798,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23798,
+        "written": "DGNerve.PinchedHom",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve.PinchedHom",
+          "SerrePositivity.InfinityCategories.DGNerve.PinchedHom"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 23940,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24027,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24145,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24246,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24332,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24454,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24636,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24748,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve",
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 24923,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25093,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25236,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25400,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25579,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25638,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25639,
+        "written": "DGNerve.PinchedHom",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve.PinchedHom",
+          "SerrePositivity.InfinityCategories.DGNerve.PinchedHom"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25734,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25821,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 25942,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26039,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26095,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26160,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26285,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26364,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26473,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26530,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26674,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26755,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26801,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26854,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26893,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26955,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 26989,
+        "written": "DGNerve",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.DGNerve"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 22841,
+        "written": "DGNerve",
+        "resolved_names": [],
+        "mode": "simple",
+        "reason": "earlier operand of same open command was not reflected in original collector; actual header namespace probe for SerrePositivity.InfinityCategories.DGNerve and targeted elaboration confirmed absence"
+      }
+    ],
+    "scripts/audit_infinity_presentable_localization.lean": [
+      {
+        "line": 33,
+        "written": "F2.Presentable",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.F2.Presentable"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 33,
+        "written": "F2.Presentable.Localization",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.F2.Presentable.Localization"
+        ],
+        "mode": "simple"
+      },
+      {
+        "line": 33,
+        "written": "HomotopyLimits",
+        "resolved_names": [
+          "SerrePositivity.InfinityCategories.HomotopyLimits"
+        ],
+        "mode": "simple"
+      }
+    ]
+  },
+  "final_source_sha256": {
+    "scripts/audit_derived_dg_nerve_reflection.lean": "5ab00d1c92141cb8150ec81235fec645a87f28a5360b3ff5f84d12a2e3515fda",
+    "scripts/audit_derived_infinity.lean": "394c78df00976002ce35c9afea8614e164d2194d8a4115a1718bab3dee53db5e",
+    "scripts/audit_einfinity.lean": "caafd827ffaa81c64a2055990fbc234f1d25186d444c09c090a8306bed0f1c5a",
+    "scripts/audit_f2_compact.lean": "f502448f3af97583665f5a79b9ee2eea3f0e7013926b60412ae75f4a53a5dea3",
+    "scripts/audit_f2_idempotent.lean": "b72ab20ff7c1ac3bea892a78b93c2e69454b9e81047ba8cd048bedf24c9fa810",
+    "scripts/audit_homotopy_limits.lean": "e27b7fc45747e092ee6a758f3370c1192b5b55c8c1c9660401e26e27c6843f27",
+    "scripts/audit_infinity_core.lean": "7908f78cdb228b8b79113e10c497bc4d5719386bf4d54d36c4eb136935c5c360",
+    "scripts/audit_infinity_core_supply_s1_triangle.lean": "c07f455f09d9e976d932fedc35455006150707b30195fcbeab53ccca9d720dba",
+    "scripts/audit_infinity_f1b.lean": "cf044cc7debff3b7345c679fe2baa3a0755a6687c8f293b650af788a1aad7ae2",
+    "scripts/audit_infinity_f2.lean": "6eb365846f451dfb67e7ff59fc45a44077780fb9cf2bfedceabcead33fe627cb",
+    "scripts/audit_infinity_presentable.lean": "792c0148d19eebae5ffd555a9331b35bade63feb200c3b69bffaad9f7a321b5c",
+    "scripts/audit_infinity_presentable_localization.lean": "0cf3eb13c7c2248dc8dfc5824d5f70e002aac5964640e8afc6635bc67ebebd92",
+    "scripts/audit_infinity_stable.lean": "0330589adad7da31cf6bb8d104d766c352b7f2cc6385b5c775997596ef3b1906",
+    "scripts/audit_kst_s_construction.lean": "c02f3184de1ec366be93fb29136a8935df09152bffe144ea3be3792f76651629",
+    "scripts/audit_kst_spectra_d3tail.lean": "84ec0047edc7ea25fe29e0bed9f8bb29e1da3bd63d9fae3e04b91f714b0dbda4",
+    "scripts/refactor/klw1_namespace.py": "794edf0b1e82aba535934daa99992169522f7e257b8e4d7e4ad67689f0afff6d",
+    "scripts/refactor/test_klw1_tools.py": "55a1cac85a47140cd31cd815246e0257d95f58b492c6de73f37e80163c5d0044",
+    "SerrePositivity/KST/NonConnective/DGSuspensionCoherentSquareFamily.lean": "39dbb4250f5edeb417fef44ca04cb9d3a24accde52d7d2eaf8105e930136ed9c"
+  },
+  "final_structure_checks": {
+    "identifier_only_audit_shapes": {
+      "scripts/audit_derived_dg_nerve_reflection.lean": true,
+      "scripts/audit_derived_infinity.lean": true,
+      "scripts/audit_f2_compact.lean": true,
+      "scripts/audit_f2_idempotent.lean": true,
+      "scripts/audit_homotopy_limits.lean": true,
+      "scripts/audit_infinity_core.lean": true,
+      "scripts/audit_infinity_core_supply_s1_triangle.lean": true,
+      "scripts/audit_infinity_f1b.lean": true,
+      "scripts/audit_infinity_presentable.lean": true,
+      "scripts/audit_infinity_stable.lean": true,
+      "scripts/audit_kst_s_construction.lean": true,
+      "scripts/audit_kst_spectra_d3tail.lean": true
+    },
+    "exceptional_audits": {
+      "scripts/audit_einfinity.lean": "owner-qualified references and value prefixes, five explicit applications of retained external methods, removal of independently confirmed absent simple open operands; assumptions and audit tests unchanged",
+      "scripts/audit_infinity_f2.lean": "reference renames plus exact historical deprecation message targets, preserving all existence/deprecation/date/text checks",
+      "scripts/audit_infinity_presentable_localization.lean": "exact images of 185 original imported owner modules with eight LocalObjects owners still excluded, all expected owners checked imported; original axiom whitelist, declaration-count minimum, and independent examples retained"
+    },
+    "local_global_mixed_spans": 0,
+    "mapped_unmapped_non_dot_mixed_spans": 0
+  },
+  "coverage_note": "The initial identifier-only structure evidence predates followup open removals and exact owner selection. final_structure_checks classifies those independently verified changes explicitly.",
+  "verification_scheduler": {
+    "commit": "1304c688f",
+    "jobs": 6,
+    "memory_gb": 44,
+    "tests": {
+      "scheduler": 12,
+      "retry": 12,
+      "failure": 0
+    },
+    "changes": [
+      "scripts/refactor/verify_runner.py",
+      "scripts/refactor/test_verify.py"
+    ],
+    "purpose": "Mutual exclusion group only: keep selected audit bodies and all gates unchanged while backfilling small jobs.",
+    "source_sha256": {
+      "scripts/refactor/verify_runner.py": "3d209151d86bfb87ff0f33458a0a58e840300e7d2e30ba894f430f2e6fbf0c86",
+      "scripts/refactor/test_verify.py": "1a716a30db59c5c7ed7c9125eac854f11bb7b169519446bc6689320213b83be4"
+    }
+  },
+  "verified_head": "1304c688ff9e4b2486f547310d07bfc25a2780d7",
+  "collector": "scripts/refactor/klw1_collect_refs.lean on exact sources at original_main, with original imported artifacts; sequential execution",
+  "scheduling": {
+    "jobs": 6,
+    "memory_gb": 44,
+    "exclusive_audits": [
+      "scripts/audit_einfinity.lean",
+      "scripts/audit_infinity_core.lean",
+      "scripts/audit_infinity_f1.lean",
+      "scripts/audit_infinity_f1b.lean",
+      "scripts/audit_infinity_presentable_localization.lean"
+    ],
+    "max_exclusive_concurrent": 1,
+    "max_concurrent": 6,
+    "previous_stats_sha256": "61233d034467f3d98bc22d389b0e6a9979104468b784defc1386381603110105",
+    "reason": "Reuse unaltered actual measurements for unchanged audits. The two repaired audits receive the ordinary unknown 20 GB estimate and are conservatively in the same mutual exclusion group. No result caching, selection restriction, axiom/baseline changes, or measurement inflation."
+  }
+}

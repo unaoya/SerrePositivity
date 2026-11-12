@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseFunctorSpace
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseFunctorSpace
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPath
 
 /-!
 概要：底を全時刻で固定する指定円柱を fiberwise interval family の実際の射にする。

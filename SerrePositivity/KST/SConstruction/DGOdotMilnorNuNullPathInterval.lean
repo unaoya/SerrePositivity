@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuProjectionNullBoundary
-public import SerrePositivity.InfinityCategories.F1.Diagrams.TrianglePathInterval
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TrianglePathInterval
 
 /-!
 概要：元両二単体の全 path Hom を既存の区間同型で厳密に表示する。
@@ -19,7 +19,7 @@ open scoped Simplicial
 規約：前向き・逆向きとも全単体を保持。使われ方：元全 Hom の区間表示。 -/
 abbrev dgOdotMilnorNuNullPathIntervalIso :
     nerve DGOdotMilnorNuNullTrianglePath.{u} ≅ (Δ[1] : SSet.{u + 1}) :=
-  triangleNativePathIntervalIso.{u + 1}
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso.{u + 1}
 
 /-- 概要：標準始点は元上下二単体の同じ共有対角 path。
 方針：元最小 path の台と両端点から逆関手の元対象を照合する。
@@ -27,9 +27,9 @@ abbrev dgOdotMilnorNuNullPathIntervalIso :
 lemma dgOdotMilnorNuNullPathIntervalIso_source :
     dgOdotMilnorNuNullPathIntervalIso.{u}.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
-        nerveVertex dgOdotMilnorNuNullDiagonalPath.{u} := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u} := by
   apply CategoryTheory.Functor.ext (fun _ => ?_)
-  change trianglePathFromInterval (ULift.up (0 : Fin 2)) = dgOdotMilnorNuNullDiagonalPath.{u}
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval (ULift.up (0 : Fin 2)) = dgOdotMilnorNuNullDiagonalPath.{u}
   apply SimplicialThickening.Path.ext
   apply Set.Subset.antisymm
   · rintro ⟨x⟩ hx
@@ -39,7 +39,7 @@ lemma dgOdotMilnorNuNullPathIntervalIso_source :
     · exact dgOdotMilnorNuNullDiagonalPath.{u}.left
     · exact dgOdotMilnorNuNullDiagonalPath.{u}.right
   · exact (dgOdotMilnorNuNullDiagonalToPath
-      (trianglePathFromInterval (ULift.up (0 : Fin 2)))).1.1.1
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.trianglePathFromInterval (ULift.up (0 : Fin 2)))).1.1.1
 
 /-- 概要：標準終点は元二短辺の同じ最大合成 path。
 方針：F1 の元全 path と区間全体の台を照合する。
@@ -47,13 +47,13 @@ lemma dgOdotMilnorNuNullPathIntervalIso_source :
 lemma dgOdotMilnorNuNullPathIntervalIso_target :
     dgOdotMilnorNuNullPathIntervalIso.{u}.inv.app (Opposite.op ⦋0⦌)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
-        nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u} := by
-  have hp : triangleFullPath.{u + 1} = dgOdotMilnorNuNullUpperMaximalPath.{u} := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u} := by
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u + 1} = dgOdotMilnorNuNullUpperMaximalPath.{u} := by
     apply SimplicialThickening.Path.ext
     ext ⟨x⟩
     change True ↔ (0 ≤ x ∧ x ≤ 2)
     exact iff_of_true trivial ⟨Fin.zero_le _, Fin.le_last _⟩
-  exact triangleNativePathIntervalIso_inv_last.trans (congrArg ComposableArrows.mk₀ hp)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleNativePathIntervalIso_inv_last.trans (congrArg ComposableArrows.mk₀ hp)
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
@@ -75,14 +75,14 @@ lemma dgOdotMilnorNuNullTriangleInterval_recover (j : Fin 2) :
 /-- 概要：元絶対二単体の全 Hom の同じ零成分内の区間表示。
 方針：同じ区間逆同型を元絶対側の全因子分解に適用する。
 規約：元の絶対二胞体を保持。使われ方：比較正方形の絶対側の辺。 -/
-def dgOdotMilnorNuAbsoluteTriangleInterval (h : DGGluingMilnorSquare R d) (j : Fin 2) :
+def dgOdotMilnorNuAbsoluteTriangleInterval (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) (j : Fin 2) :
     (Δ[1] : SSet.{u + 1}) ⟶ DGOdotMilnorNuNullCoherenceSpace R d :=
   dgOdotMilnorNuNullPathIntervalIso.inv ≫ dgOdotMilnorNuAbsoluteTriangleFactor R d h j
 
 /-- 概要：元絶対二単体の全 Hom 因子分解を同じ区間表示から厳密回収する。
 方針：元同型の順逆合成式を使う。
 規約：全単体の等号。使われ方：指定絶対面の保持。 -/
-lemma dgOdotMilnorNuAbsoluteTriangleInterval_recover (h : DGGluingMilnorSquare R d)
+lemma dgOdotMilnorNuAbsoluteTriangleInterval_recover (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
     (j : Fin 2) :
     dgOdotMilnorNuNullPathIntervalIso.hom ≫ dgOdotMilnorNuAbsoluteTriangleInterval R d h j =
       dgOdotMilnorNuAbsoluteTriangleFactor R d h j :=

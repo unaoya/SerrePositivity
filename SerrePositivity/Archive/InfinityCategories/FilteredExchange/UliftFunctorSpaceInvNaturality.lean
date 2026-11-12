@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FunctorSpace
 
 /-!
 概要：内部 Hom の宇宙同型の逆は、元の射による前後合成と厳密に可換する。

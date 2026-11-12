@@ -28,21 +28,21 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：旧 kOmegaSpectrum 値との等式ではない。
 使われ方：同じ実中央零性を四角形の頂点へ適用する。 -/
 theorem dgKappaSuppliedBFSquare_middle :
-    squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 =
-      coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaNativeBFFiniteOmegaSpectrum R D I
         (dgKappaNativeBFFiniteNativeObject R D I 1)) := by
-  have h := squareBottomEdge_target (dgKappaNativeCoherentBFSquare R D I)
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareBottomEdge_target (dgKappaNativeCoherentBFSquare R D I)
   have hb := dgKappaNativeCoherentBFSquare_boundary R D I 0
-  change squareBottomEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgKappaNativeCoherentBFSquare R D I = _ at hb
   rw [hb] at h
   have hv := congrArg (fun t : Sp.{max (u + 1) v} _⦋1⦌ =>
     Sp.{max (u + 1) v}.δ 0 t)
     (SSet.yonedaEquiv.apply_symm_apply
-      (coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 0).hom).edge)
-  exact h.symm.trans (hv.trans (coherentNerveEdge _).tgt_eq)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeCoherentBFArrow R D I 0).hom).edge)
+  exact h.symm.trans (hv.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge _).tgt_eq)
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
   (Z : DGKappaZeroInput R D I)
@@ -69,7 +69,7 @@ include hcofinal Z in
 規約：共終性・I・Z に条件付きで、旧 BF 頂点の実同型を仮定しない。
 使われ方：実供給の fiber 四角形を loop 四角形にする。 -/
 theorem dgKappaSuppliedBFSquare_middle_isZero :
-    IsZeroVertex (squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0) := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeCoherentBFSquare R D I) 1 0) := by
   rw [dgKappaSuppliedBFSquare_middle]
   exact spectrum_isZeroVertex_of_homotopyGroup_subsingleton _
     (dgKappaSuppliedBFCone_subsingleton R D I hcofinal Z)

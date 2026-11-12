@@ -10,15 +10,15 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConePenultimate
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma eq_min_of_second_one {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hs1 : τ (ConeHeadIndex.second I hI) = 1) (i : Fin (n + 1))
-    (hi : i ∈ I) (hz : τ i = 0) : i = I.min' (Index.nonempty hI) := by
+    (hi : i ∈ I) (hz : τ i = 0) : i = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
   by_contra hne
   have hsi : ConeHeadIndex.second I hI ≤ i :=
-    (I.erase (I.min' (Index.nonempty hI))).min'_le i (Finset.mem_erase.mpr ⟨hne, hi⟩)
+    (I.erase (I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).min'_le i (Finset.mem_erase.mpr ⟨hne, hi⟩)
   have ht := τ.monotone hsi
   rw [hs1, hz] at ht
   exact (by decide : ¬ (1 : Fin 3) ≤ 0) ht
@@ -26,10 +26,10 @@ lemma eq_min_of_second_one {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
 lemma eq_max_of_penultimate_one {n : ℕ} (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (hp1 : τ (ConeHeadIndex.penultimate I hI) = 1) (i : Fin (n + 1))
-    (hi : i ∈ I) (ht : τ i = 2) : i = I.max' (Index.nonempty hI) := by
+    (hi : i ∈ I) (ht : τ i = 2) : i = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) := by
   by_contra hne
   have hip : i ≤ ConeHeadIndex.penultimate I hI :=
-    (I.erase (I.max' (Index.nonempty hI))).le_max' i (Finset.mem_erase.mpr ⟨hne, hi⟩)
+    (I.erase (I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))).le_max' i (Finset.mem_erase.mpr ⟨hne, hi⟩)
   have hτ := τ.monotone hip
   rw [ht, hp1] at hτ
   exact (by decide : ¬ (2 : Fin 3) ≤ 1) hτ

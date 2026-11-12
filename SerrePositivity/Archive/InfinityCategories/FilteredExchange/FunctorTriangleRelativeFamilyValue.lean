@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleRelativeComparison
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
 
 /-!
 概要：元の相対三角形比較は、同じ全族の比較の元の一点成分の表示変更である。

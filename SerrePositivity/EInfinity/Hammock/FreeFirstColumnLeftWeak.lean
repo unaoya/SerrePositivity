@@ -19,21 +19,21 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory Opposite SimplicialLocalization SerrePositivity.InfinityCategories
-open Zigzag.FirstBoundary TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+open TwoSidedDiagram.FixedVertices
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeFirstLeftSpaceIso :
     leftSpace (freeForwardForwardDiagram C w X Y) (freeFirstMarkedObjectEquiv C)
       (freeFirstMarkedObjectEquiv_naturality C w X Y) Z ≅
-    DoubleSimplicial.diagonalFunctor.obj (FixedObjectDiagram.graphDiagram (freeResolution C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram (freeResolution C)
       (freeResolutionObject C) (fun θ X => freeResolutionObject_naturality C θ X)
-      (Word.cons .forward w) Z Y) :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeFirstLeftGraphDiagramIso C w X Y Z)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) Z Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeFirstLeftGraphDiagramIso C w X Y Z)
 def freeFirstTargetLeftSpaceIso :
-    leftSpace ((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y))
+    leftSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y))
       (freeFirstTargetObjectEquiv C w X Y) (freeFirstTargetObjectEquiv_naturality C w X Y) Z ≅
-        graph C.weakEquivalences (Word.cons .forward w) Z Y :=
-  DoubleSimplicial.diagonalFunctor.mapIso (freeFirstTargetLeftGraphDiagramIso C w X Y Z) ≪≫
-    DoubleSimplicial.diagonalConstantIso _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph C.weakEquivalences (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) Z Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (freeFirstTargetLeftGraphDiagramIso C w X Y Z) ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso _
 def freeFirstLeftSpaceMap :=
   leftSpaceMap (freeFirstMarkedObjectEquiv C) (freeFirstTargetObjectEquiv C w X Y)
     (freeFirstMarkedObjectEquiv_naturality C w X Y)
@@ -42,7 +42,7 @@ def freeFirstLeftSpaceMap :=
 
 lemma freeFirstLeftSpaceIso_augmentation :
     (freeFirstLeftSpaceIso C w X Y Z).hom ≫
-      (freeWordDiagonalAugmentation C Z Y).app (Word.cons .forward w) =
+      (freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w) =
     freeFirstLeftSpaceMap C w X Y Z ≫ (freeFirstTargetLeftSpaceIso C w X Y Z).hom := by
   ext n σ
   have hZ : ((eqToHom (congrArg op
@@ -50,21 +50,21 @@ lemma freeFirstLeftSpaceIso_augmentation :
         eqToHom (freeResolutionObject_augmentation C n Z).symm := by
     rw [eqToHom_unop]
     exact marked_eqToHom_hom (C := C) _
-  change σ ⋙ Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
+  change σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
       (freeResolutionObject_augmentation C n Z) (freeResolutionObject_augmentation C n Y) =
-    σ ⋙ (Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n) rfl
-      (freeResolutionObject_augmentation C n Y) ⋙ forwardFunctor
+    σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n) rfl
+      (freeResolutionObject_augmentation C n Y) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagFirstBoundaryMaps.forwardFunctor
         ((eqToHom (congrArg op
           (freeFirstMarkedObjectEquiv_augmentation C w X Y n Z))).unop).hom)
-  rw [hZ, forwardFunctor_eqToHom (freeResolutionObject_augmentation C n Z)]
+  rw [hZ, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardFunctor_eqToHom (freeResolutionObject_augmentation C n Z)]
   rfl
 lemma freeFirstLeftSpaceMap_weak
-    (h : IsWeakHomotopyEquivalence
-      ((freeWordDiagonalAugmentation C Z Y).app (Word.cons .forward w))) :
-    IsWeakHomotopyEquivalence (freeFirstLeftSpaceMap C w X Y Z) := by
-  have hc := (isPrecompositionEquivalence_of_iso
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+      ((freeWordDiagonalAugmentation C Z Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeFirstLeftSpaceMap C w X Y Z) := by
+  have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstLeftSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.comp h
   rw [freeFirstLeftSpaceIso_augmentation] at hc
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstTargetLeftSpaceIso C w X Y Z)).isWeakHomotopyEquivalence.cancel_right hc
 end SerrePositivity.EInfinity.Hammock.FirstColumn

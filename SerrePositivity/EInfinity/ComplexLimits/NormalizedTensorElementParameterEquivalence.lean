@@ -14,20 +14,20 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 attribute [local instance] uliftCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.DifferentialGraded
 open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorElementLiftNerveInverse :
     nerve (ULiftHom.{u + 1}
-      ((((cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) ⟶
+      ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) ⟶
     nerve (normalizedTensorElementIndex A X Y) where
   app _ := ↾fun Γ => Γ ⋙ (ULiftHom.down ⋙ ULift.upFunctor ⋙ ULiftHom.up)
   naturality _ _ _ := rfl
 
 def normalizedTensorElementLiftNerveIso : nerve (normalizedTensorElementIndex A X Y) ≅
     nerve (ULiftHom.{u + 1}
-      ((((cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) where
+      ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) where
   hom := normalizedTensorElementLiftNerveMap A X Y
   inv := normalizedTensorElementLiftNerveInverse A X Y
   hom_inv_id := by
@@ -52,7 +52,7 @@ lemma normalizedTensorElementParameterMap_localized_isIso :
   have : IsIso (normalizedTensorElementLiftNerveMap A X Y) :=
     (normalizedTensorElementLiftNerveIso A X Y).isIso_hom
   have := FrameHom.SimplexTerminalNerve.liftedAugmentation_localized_isIso.{u, u + 1}
-    ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
   dsimp only [normalizedTensorElementParameterMap]
   rw [CategoryTheory.Functor.map_comp]
   infer_instance

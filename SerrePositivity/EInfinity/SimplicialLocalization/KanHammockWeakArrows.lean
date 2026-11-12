@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
 public import SerrePositivity.EInfinity.Hammock.CoherentComponents
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WeakArrowRoundTripComposition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakArrowRoundTripComposition
 
 /-!
 # 元の指定射の Kan hammock nerve 内での反転
@@ -20,15 +20,15 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock SerrePositivity.InfinityCategories
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
-variable (C : RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y)
+open SerrePositivity.SimplicialModel
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category} (f : X ⟶ Y)
   (hf : C.weakEquivalences f)
 
 def kanHammockBackward : (kanHammockSourceFunctor C).obj Y ⟶
     (kanHammockSourceFunctor C).obj X :=
   (exInfinityEnrichedUnit (HammockObjects C)).forget.map
     (ForgetEnrichment.homOf SSet.{u} (C := HammockObjects C) (X := Y) (Y := X)
-      (Hammock.backwardMap f hf))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf))
 
 lemma kanHammock_source_homotopy :
     Nonempty (SSet.Homotopy
@@ -37,17 +37,17 @@ lemma kanHammock_source_homotopy :
   let U := (exInfinityEnrichedUnit (HammockObjects C)).forget
   let a := (hammockSourceFunctor C).map f
   let b := ForgetEnrichment.homOf SSet.{u} (C := HammockObjects C) (X := Y) (Y := X)
-    (Hammock.backwardMap f hf)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf)
   have H : SSet.Homotopy
       (eHomEquiv SSet (U.map (𝟙 ((hammockSourceFunctor C).obj X))))
       (eHomEquiv SSet (U.map (a ≫ b))) := by
-    change SSet.Homotopy (colimitUnit C.weakEquivalences X ≫
-      exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
+    change SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit C.weakEquivalences X ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X X))
       (((λ_ (𝟙_ SSet.{u})).inv ≫
-        (arrowMap C.weakEquivalences f ⊗ₘ Hammock.backwardMap f hf) ≫
-          colimitComposition C.weakEquivalences X Y X) ≫
-            exInfinityUnit.app (colimitGraph C.weakEquivalences X X))
-    exact HomotopyClasses.postHomotopy _ (WeakArrow.sourceCompositeHomotopy f hf)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y X) ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X X))
+    exact HomotopyClasses.postHomotopy _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.sourceCompositeHomotopy f hf)
   have hi : U.map (𝟙 ((hammockSourceFunctor C).obj X)) =
       𝟙 ((kanHammockSourceFunctor C).obj X) := U.map_id _
   have hc : U.map (a ≫ b) =
@@ -62,17 +62,17 @@ lemma kanHammock_target_homotopy :
   let U := (exInfinityEnrichedUnit (HammockObjects C)).forget
   let a := (hammockSourceFunctor C).map f
   let b := ForgetEnrichment.homOf SSet.{u} (C := HammockObjects C) (X := Y) (Y := X)
-    (Hammock.backwardMap f hf)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf)
   have H : SSet.Homotopy (eHomEquiv SSet (U.map (b ≫ a)))
       (eHomEquiv SSet (U.map (𝟙 ((hammockSourceFunctor C).obj Y)))) := by
     change SSet.Homotopy
       (((λ_ (𝟙_ SSet.{u})).inv ≫
-        (Hammock.backwardMap f hf ⊗ₘ arrowMap C.weakEquivalences f) ≫
-          colimitComposition C.weakEquivalences Y X Y) ≫
-            exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
-      (colimitUnit C.weakEquivalences Y ≫
-        exInfinityUnit.app (colimitGraph C.weakEquivalences Y Y))
-    exact HomotopyClasses.postHomotopy _ (WeakArrow.targetCompositeHomotopy f hf)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitRowComposition.backwardMap f hf ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences Y X Y) ≫
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences Y Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit C.weakEquivalences Y ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences Y Y))
+    exact HomotopyClasses.postHomotopy _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.targetCompositeHomotopy f hf)
   have hi : U.map (𝟙 ((hammockSourceFunctor C).obj Y)) =
       𝟙 ((kanHammockSourceFunctor C).obj Y) := U.map_id _
   have hc : U.map (b ≫ a) =
@@ -82,29 +82,29 @@ lemma kanHammock_target_homotopy :
 
 include hf in
 lemma kanHammockSourceFunctor_weak_invertible :
-    IsInvertibleEdge (coherentNerveEdge ((kanHammockSourceFunctor C).map f)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kanHammockSourceFunctor C).map f)) := by
   let a := (kanHammockSourceFunctor C).map f
   let b := kanHammockBackward C f hf
   obtain ⟨hu⟩ := kanHammock_source_homotopy C f hf
   obtain ⟨hc⟩ := kanHammock_target_homotopy C f hf
-  refine ⟨⟨SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge b).toTruncated, ?_, ?_⟩⟩
+  refine ⟨⟨SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).toTruncated, ?_, ?_⟩⟩
   · calc
-      _ = SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (a ≫ b)).toTruncated :=
+      _ = SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (a ≫ b)).toTruncated :=
         SSet.Truncated.HomotopyCategory.homMk_comp_homMk
-          (coherentNerveCompStruct a b).toTruncated
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct a b).toTruncated
       _ = SSet.Truncated.HomotopyCategory.homMk
-          (coherentNerveEdge (𝟙 ((kanHammockSourceFunctor C).obj X))).toTruncated :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 ((kanHammockSourceFunctor C).obj X))).toTruncated :=
         (coherentEdge_homMk_eq_of_homotopy _ _ hu).symm
-      _ = 𝟙 _ := by simp only [coherentNerveEdge_id, SSet.Edge.toTruncated_id,
+      _ = 𝟙 _ := by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, SSet.Edge.toTruncated_id,
         SSet.Truncated.HomotopyCategory.homMk_id]
   · calc
-      _ = SSet.Truncated.HomotopyCategory.homMk (coherentNerveEdge (b ≫ a)).toTruncated :=
+      _ = SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (b ≫ a)).toTruncated :=
         SSet.Truncated.HomotopyCategory.homMk_comp_homMk
-          (coherentNerveCompStruct b a).toTruncated
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct b a).toTruncated
       _ = SSet.Truncated.HomotopyCategory.homMk
-          (coherentNerveEdge (𝟙 ((kanHammockSourceFunctor C).obj Y))).toTruncated :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (𝟙 ((kanHammockSourceFunctor C).obj Y))).toTruncated :=
         coherentEdge_homMk_eq_of_homotopy _ _ hc
-      _ = 𝟙 _ := by simp only [coherentNerveEdge_id, SSet.Edge.toTruncated_id,
+      _ = 𝟙 _ := by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_id, SSet.Edge.toTruncated_id,
         SSet.Truncated.HomotopyCategory.homMk_id]
 
 end SerrePositivity.EInfinity.SimplicialLocalization

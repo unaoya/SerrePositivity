@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitDerived
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomSource
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitDerivedHomNormalization
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RepresentedLocalization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RepresentedLocalization
 
 /-!
 # 元の E 代数極限の底と全複体図式の右導来極限の比較
@@ -74,7 +74,7 @@ def carrierFramedLimitComparisonIso (F : K ⥤ (operad A).Algebra) :
     Q.obj ((ComplexLimits.framedLimitFunctor A K).obj ((Diagram.forget A K).obj F)) ≅
       Q.obj ((framedLimitFunctor A K).obj F).carrier := by
   let := projectiveModelCategory A
-  exact FrameHom.RepresentedLocalization.comparisonIso
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.comparisonIso
     (weakEquivalences (Complex A)).Q (weakEquivalences (Complex A))
     (carrierFramedLimitRestrictedHomIso A K F)
 
@@ -96,7 +96,7 @@ lemma carrierFramedLimitComparisonIso_hom_apply (F : K ⥤ (operad A).Algebra)
   let := CarrierDiagram.projectiveModelCategory A K
   dsimp only
   intro x
-  exact FrameHom.RepresentedLocalization.comparisonIso_hom_app
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.comparisonIso_hom_app
     (weakEquivalences (Complex A)).Q (weakEquivalences (Complex A))
     (carrierFramedLimitRestrictedHomIso A K F) Y x
 

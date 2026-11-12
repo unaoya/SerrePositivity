@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorTriangleData_pullback_map {n m : ℕ}
@@ -23,37 +23,37 @@ lemma normalizedTensorTriangleData_pullback_map {n m : ℕ}
   let d := (SimplexCategory.toCat.map θ).toFunctor ⋙ c
   let σ := τ.comp θ.toOrderHom
   let s := normalizedTensorTriangleData A X Y c τ
-  apply SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk
     apply eq_of_heq; have hab : a ≤ b := by rw [ha, hb]; exact I.min'_le _ (I.max'_mem _)
-    have hp : ∀ (P : Simplex A (Complex A) n) (Q : Simplex A (Complex A) m),
+    have hp : ∀ (P : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (Q : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) m),
         P.pullback θ.toOrderHom = Q →
         HEq ((P.toSimplexData.pullback θ.toOrderHom).hom I a b k hI ha hb hk)
           (Q.hom I a b k hI ha hb hk) := by
       intro P Q h
-      exact SimplexData.hom_heq_of_eq (congrArg Simplex.toSimplexData h) I a b k hI ha hb hk
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.hom_heq_of_eq (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toSimplexData h) I a b k hI ha hb hk
     by_cases hi : Set.InjOn θ.toOrderHom (I : Set (Fin (m + 1)))
-    · have hImg := Index.image_two hi hI
+    · have hImg := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two hi hI
       have ham : IsLeast (I : Set (Fin (m + 1))) a := by rw [ha]; exact I.isLeast_min' _
       have hbm : IsGreatest (I : Set (Fin (m + 1))) b := by rw [hb]; exact I.isGreatest_max' _
-      have haImg : θ.toOrderHom a = (I.image θ.toOrderHom).min' (Index.nonempty hImg) :=
-        Index.image_min θ.toOrderHom.monotone ham _
-      have hbImg : θ.toOrderHom b = (I.image θ.toOrderHom).max' (Index.nonempty hImg) :=
-        Index.image_max θ.toOrderHom.monotone hbm _
+      have haImg : θ.toOrderHom a = (I.image θ.toOrderHom).min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hImg) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min θ.toOrderHom.monotone ham _
+      have hbImg : θ.toOrderHom b = (I.image θ.toOrderHom).max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hImg) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max θ.toOrderHom.monotone hbm _
       have hkImg : k = 2 - ((I.image θ.toOrderHom).card : ℤ) := by
         rw [Finset.card_image_of_injOn hi]
         exact hk
-      have hp' : ∀ (P : Simplex A (Complex A) n) (Q : Simplex A (Complex A) m),
+      have hp' : ∀ (P : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (Q : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) m),
           P.pullback θ.toOrderHom = Q →
           HEq (P.hom (I.image θ.toOrderHom) (θ.toOrderHom a) (θ.toOrderHom b) k
             hImg haImg hbImg hkImg) (Q.hom I a b k hI ha hb hk) := by
         intro P Q h
         have hh := hp P Q h
-        rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi] at hh
+        rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi] at hh
         exact hh
-      rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hi]
       by_cases hb2 : τ (θ.toOrderHom b) = 2
       · by_cases ha0 : τ (θ.toOrderHom a) = 0
         · exact (normalizedTensorTriangleData_hom_pinched A X Y c τ _ _ _ k
@@ -68,7 +68,7 @@ lemma normalizedTensorTriangleData_pullback_map {n m : ℕ}
           hImg haImg hbImg hkImg hb2).trans
           ((hp' _ _ (normalizedTensorTriangleFront_pullback_map A X Y c τ θ)).trans
             (normalizedTensorTriangleData_hom_front A X Y d σ I a b k hI ha hb hk hb2).symm)
-    · have hp' : ∀ (P : Simplex A (Complex A) n) (Q : Simplex A (Complex A) m),
+    · have hp' : ∀ (P : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n) (Q : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) m),
           P.pullback θ.toOrderHom = Q →
           s.obj (θ.toOrderHom a) = P.obj (θ.toOrderHom a) →
           s.obj (θ.toOrderHom b) = P.obj (θ.toOrderHom b) →

@@ -59,6 +59,6 @@ lemma pathFirstRowRestriction_zero (C : SSet.{u}) :
 規約：厳密等号。使われ方：反復の core の一次方向との照合。 -/
 lemma corePathFirstRowRestriction_zero (C : SSet.{u}) :
     (corePathFirstRowRestriction C).app (Opposite.op ⦋0⦌) ≫
-      quasicategoryCoreMap (firstRowOneHomNatIso.hom.app C) = coreSOneComparison C := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (firstRowOneHomNatIso.hom.app C) = coreSOneComparison C := rfl
 
 end SerrePositivity.KST.SConstruction

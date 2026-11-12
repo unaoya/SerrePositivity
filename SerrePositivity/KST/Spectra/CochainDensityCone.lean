@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.CochainDensityIso
 universe u
 
 open CategoryTheory CategoryTheory.Limits MonoidalCategory CartesianMonoidalCategory SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -32,11 +32,11 @@ variable {I : Type u} [SmallCategory I] (W : I ⥤ SSet.{u}) {H : I ⥤ SSet.{u}
 def coneFamily (c : Cone H) : SimplexTensorBoundary.diagram c.pt ⟶
     UnderlyingWeightedCochains.obj (discreteLevels W) H where
   app n := snd (SSet.stdSimplex.obj n) c.pt ≫
-    weightedConeComparison ((discreteLevels W).obj (op n)) c
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison ((discreteLevels W).obj (op n)) c
   naturality n m f := by
     change (SSet.stdSimplex.map f ▷ c.pt) ≫ (snd _ _ ≫ _) =
-      (snd _ _ ≫ _) ≫ weightedSectionsPre ((discreteLevels W).map f.op) H
-    rw [← Category.assoc, whiskerRight_snd, Category.assoc, weightedConeComparison_pre]
+      (snd _ _ ≫ _) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((discreteLevels W).map f.op) H
+    rw [← Category.assoc, whiskerRight_snd, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_pre]
 
 lemma diagramDiagonal_fromCone (c : Cone H) :
     diagramDiagonal (fromCochains (coneFamily W c)) =
@@ -47,12 +47,12 @@ lemma diagramDiagonal_fromCone (c : Cone H) :
   funext k
   apply ConcreteCategory.hom_ext
   intro x
-  change ((weightedSectionsUncurry
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry
       (snd (SSet.stdSimplex.obj k.unop) c.pt ≫
-        weightedConeComparison ((discreteLevels W).obj k) c)).app i).app k
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison ((discreteLevels W).obj k) c)).app i).app k
       (x.1, (SSet.stdSimplex.objEquiv.{u}.symm (𝟙 k.unop), x.2)) =
     (c.π.app i).app k x.2
-  rw [weightedSectionsUncurry_precomp, weightedConeComparison, weightedSectionsUncurry_lift]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
   rfl
 
 /-- 概要：密度による Hom の同値は錐の定数族を完全な重みの標準射へ送る。
@@ -61,8 +61,8 @@ lemma diagramDiagonal_fromCone (c : Cone H) :
 使われ方：Goerss–Jardine VIII §§1–2。自明作用と基点の標準射。 -/
 lemma totalizationEndHomEquiv_cone (c : Cone H) :
     totalizationEndHomEquiv W H c.pt (CosimplicialTotalization.lift (coneFamily W c)) =
-      weightedConeComparison W c := by
-  change weightedSectionsLift (diagramDiagonal (fromCochains
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W c := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (diagramDiagonal (fromCochains
     (CosimplicialTotalization.uncurry (CosimplicialTotalization.lift (coneFamily W c))))) = _
   have h := (totalizationHomEquiv _ c.pt).right_inv (coneFamily W c)
   change CosimplicialTotalization.uncurry (CosimplicialTotalization.lift (coneFamily W c)) =
@@ -72,7 +72,7 @@ lemma totalizationEndHomEquiv_cone (c : Cone H) :
 
 lemma totalizationEndIso_cone (c : Cone H) :
     CosimplicialTotalization.lift (coneFamily W c) ≫ (totalizationEndIso W H).hom =
-      weightedConeComparison W c := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison W c := by
   rw [← totalizationEndHomEquiv_apply, totalizationEndHomEquiv_cone]
 
 end

@@ -20,8 +20,8 @@ variable (A : Type u) [CommRing A]
 /-- 元の同端点生成射の標準一面は、元の左右 necklace の実 tensor 分割合成。 -/
 lemma simplexSubsetLambdaCellAt_one_face_heq {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-    (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+    (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj
       (simplexSubsetSplitLeft_two I hI j hj hmin)
     let U := necklaceInSimplexSubsetSplitRight.{u} I hI j hj
@@ -29,14 +29,14 @@ lemma simplexSubsetLambdaCellAt_one_face_heq {n : ℕ} (I : Finset (Fin (n + 1))
     HEq (serreCubeChainFace A true ((I.erase j).card - 2) (I.card - 2)
         (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm
         (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax) ≫
-      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl)
+      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl)
       ((serreCubeTensorIso A T.necklace.down.dimension U.necklace.down.dimension).hom.hom ≫
         (necklaceLambdaCell A T ⊗ₘ necklaceLambdaCell A U) ≫
           eComp (C := CubicalLambda A (Δ[n] : SSet.{u})) (Complex A)
-            (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-            (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)
-            (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))) := by
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j)
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))) := by
   let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj
     (simplexSubsetSplitLeft_two I hI j hj hmin)
   let U := necklaceInSimplexSubsetSplitRight.{u} I hI j hj
@@ -44,16 +44,16 @@ lemma simplexSubsetLambdaCellAt_one_face_heq {n : ℕ} (I : Finset (Fin (n + 1))
   let prod := (serreCubeTensorIso A T.necklace.down.dimension U.necklace.down.dimension).hom.hom ≫
     (necklaceLambdaCell A T ⊗ₘ necklaceLambdaCell A U) ≫
       eComp (Complex A) (C := CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
   have hc := necklaceLambdaCell_composition A T U
   have h := simplexSubsetLambdaSplit_flat_one_face I hI j hj hmin hmax A
   rw [serreCubeComplexMap_dimension_inv] at h
   have hn : serreCubeChainFace A true ((I.erase j).card - 2) (I.card - 2)
       (simplexSubsetErase_normalized_codimension I hI j hj hmin hmax).symm
       (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax) ≫
-      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-        (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) hI rfl rfl =
+      simplexSubsetLambdaCellAt A I (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+        (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) hI rfl rfl =
       (serreConcreteCubeComplexFunctor A).map (concreteCubeDimensionIso
         (simplexSubsetSplit_flat_erase_dimension I hI j hj hmin hmax).symm).hom ≫ prod := by
     change ((serreCubeFace A true ((I.erase j).card - 2)

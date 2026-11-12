@@ -94,7 +94,7 @@ lemma pointedExtensionArrowSpace_isContractibleKan {J : Type v} [Category.{w} J]
     {R A L : J ⥤ PointedSimplicialSet.{u}} (η : R ⟶ A) (θ : R ⟶ L)
     (hη : ∀ x, SSet.anodyneExtensions (η.app x).right)
     (x : AssemblyInputArrow J) [KanComplex (L.obj (assemblyArrowTarget x)).right] :
-    IsContractibleKan (pointedExtensionArrowSpace η θ x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (pointedExtensionArrowSpace η θ x) :=
   pointedExtensionSpace_isContractibleKan _ (hη _) _
 
 end SerrePositivity.KST.SConstruction

@@ -2,7 +2,7 @@ module
 public import
   SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorDoubleConeAugmentationComparison
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDerivedRoof
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 
 /-!
 概要：構成した slice 評価族の同じ既存 D(R) 像は、元の全 augmentation 同型の射に等しい。
@@ -16,22 +16,22 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeSliceEvaluation_derived_arrow :
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp
         (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y)
         (complexSemifreeResolutionInfinity A)))) =
       Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).hom := by
   change Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp
         (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y)
         (complexSemifreeResolutionInfinity A)))) =
-    Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Arrow.mk (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (complexOrdinaryDerivedNatTransHomotopy A (normalizedTensorElementAugmentation A X Y))))
-  apply SerrePositivity.InfinityCategories.functorHomotopy_hom_arrow_of_h_eq
+  apply _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq
   change (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y).h ≫
       complexSemifreeResolutionInfinity A =
     (FrameHom.MixedNerve.homotopy (normalizedTensorElementAugmentation A X Y)).h ≫

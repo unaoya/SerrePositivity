@@ -38,7 +38,7 @@ theorem objectSingleRealizationComparison_localized_isIso (X : StableModel.{u}) 
 
 /-- 元の object 比較を前合成した場合、相対 S と定数 W 列の比較は厳密に可換。 -/
 theorem relativeSWeakStringMultiComparison_coreInclusion_object
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     objectToCoreSRealization B.obj ≫ simplicialDiagonalFunctor.map
       (relativeSimplicialSConstructionCoreInclusion q.hom) ≫
         relativeSWeakStringMultiComparison q =

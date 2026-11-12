@@ -21,19 +21,19 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def freeProbeUnitOrdinaryHom (X : Complex A) :
     (HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
-        hoFunctor.obj (derivedInfinityCategory A)) ⟶
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((ComplexLimits.framedLimitProbeFunctor A).obj X))) :
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
       HomotopyCategory.mk ((ComplexLimits.complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((freeProbeFunctor A).obj X).carrier)) :=
   (ComplexLimits.complexDiagramDerivedVertexIso A
     (ComplexLimits.framedLimitProbeFunctor A) X).inv ≫
-    functorHomEvaluate (freeProbeUnitHom A) (nerveVertex X) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (freeProbeUnitHom A) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) ≫
       (ComplexLimits.complexDiagramDerivedVertexIso A
         (freeProbeFunctor A ⋙ Operad.Algebra.forget (operad A)) X).hom
 
@@ -51,7 +51,7 @@ lemma freeProbeUnitHom_ambient (X : Complex A) :
       (ComplexLimits.complexOrdinaryAmbientVertexIso A
         ((freeProbeFunctor A).obj X).carrier).hom =
     (hoFunctor.map (ComplexLimits.complexSemifreeResolutionInfinity A)).toFunctor.map
-      (Truncated.HomotopyCategory.homMk (dgClosedEdge A (Complex A)
+      (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A)
         ((ComplexLimits.complexToClosed A).map
           ((operad A).freeAlgebraAdjunction.unit.app
             ((ComplexLimits.framedLimitProbeFunctor A).obj X))))) := by

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
 public import SerrePositivity.KST.SConstruction.DGPerfectModuleUnderlying
-public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTransIso
 
 /-!
 概要：元小模型の Yoneda 評価を同じ指定 realization の全比較に束ねる。
@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTransI
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma factoryCycle {R : Type u} [CommRing R] {E : Type v}
     [DGCategory R E] [Small.{u} E]
     {P : Type (max (u + 1) v)} [DGCategory R P]
@@ -22,7 +22,7 @@ private lemma factoryCycle {R : Type u} [CommRing R] {E : Type v}
       ForgetEnrichment.of (Complex R) (G.obj x))
     (h : ∀ x y, F.map x y ≫ moduleHomPostcompose R E _ _ _ (a y) =
       G.map x y ≫ moduleHomPrecompose R E _ _ _ (a x)) (x : P) :
-    (dgModuleStrictNatTransOfHomNaturality R E (F := F) (G := G) a h).app x =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R E (F := F) (G := G) a h).app x =
       cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) (a x)) := rfl
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
@@ -50,8 +50,8 @@ lemma dgPerfectRealizationYonedaMap_naturality (x y : C) :
 /-- 概要：元 Yoneda 評価同型の同じ全厳密比較。
 方針：元閉射族と全 Hom 自然性を既存の厳密構成子へ渡す。
 規約：指定実成分を保持。使われ方：元 gluing 全比較の実 realization。 -/
-def dgPerfectRealizationYonedaStrictComparison : StrictNatTrans (A) (B) :=
-  dgModuleStrictNatTransOfHomNaturality R E
+def dgPerfectRealizationYonedaStrictComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (A) (B) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R E
     (F := (A)) (G := (B)) (dgPerfectRealizationYonedaMap R E C F)
     (dgPerfectRealizationYonedaMap_naturality R E C F)
 
@@ -68,8 +68,8 @@ lemma dgPerfectRealizationYonedaStrictComparison_cycle (x : C) :
 方針：元全厳密比較・元 cycle 回収・同じ代表評価同型の可逆性を使う。
 規約：点ごとの同値選択を使用しない。
 使われ方：実逆回転比較を元実 perfect 像へ運ぶ評価因子。 -/
-def dgPerfectRealizationYonedaNerveComparison : FunctorIso (dgNerve.map (A)) (dgNerve.map (B)) :=
-  dgModuleFunctorIsoOfStrictNatTrans R E
+def dgPerfectRealizationYonedaNerveComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (A)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (B)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorIsoOfStrictNatTrans R E
     (F := (A)) (G := (B)) (dgPerfectRealizationYonedaStrictComparison R E C F)
     (dgPerfectRealizationYonedaMap R E C F)
     (dgPerfectRealizationYonedaStrictComparison_cycle R E C F)

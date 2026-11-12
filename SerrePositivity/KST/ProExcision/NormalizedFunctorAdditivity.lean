@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.NormalizedStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedStrictification
 
 /-!
 # 正規化 Moore 関手の加法性
@@ -22,8 +22,8 @@ open CategoryTheory AlgebraicTopology
 instance normalizedMooreComplex_additive {A : Type u} [Category.{v} A] [Abelian A] :
     (normalizedMooreComplex A).Additive where
   map_add {X Y f g} := by
-    rw [normalizedMap_eq_retract (f + g), CategoryTheory.Functor.map_add]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedMap_eq_retract (f + g), CategoryTheory.Functor.map_add]
     simp only [Preadditive.comp_add, Preadditive.add_comp]
-    rw [← normalizedMap_eq_retract f, ← normalizedMap_eq_retract g]
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedMap_eq_retract f, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.normalizedMap_eq_retract g]
 
 end SerrePositivity.KST.ProExcision

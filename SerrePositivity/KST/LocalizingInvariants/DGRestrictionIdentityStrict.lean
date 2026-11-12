@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
@@ -59,9 +59,9 @@ lemma dgRestrictionIdentityInvHomNaturality (M N : RightModule R D) :
   rfl
 
 /-- 元の恒等制限の逆同型を成分に持つ、厳密 dg 自然変換。 -/
-def dgRestrictionIdentityInvStrict : StrictNatTrans (DGFunctor.id (RightModule R D))
+def dgRestrictionIdentityInvStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (DGFunctor.id (RightModule R D))
     (dgModuleRestriction R D D (DGFunctor.id D).op) :=
-  dgModuleStrictNatTransOfHomNaturality R D
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D
     (fun M => (moduleRestrictionIdObjIso R D (ForgetEnrichment.of (Complex R) M)).inv)
     (fun M N => by
       change 𝟙 _ ≫ _ = _
@@ -69,7 +69,7 @@ def dgRestrictionIdentityInvStrict : StrictNatTrans (DGFunctor.id (RightModule R
       exact dgRestrictionIdentityInvHomNaturality R D M N)
 
 /-- 左関手が恒等である随伴の単位として、同じ元の逆同型を表示する。 -/
-def dgRestrictionIdentityUnitStrict : StrictNatTrans (DGFunctor.id (RightModule R D))
+def dgRestrictionIdentityUnitStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (DGFunctor.id (RightModule R D))
     ((DGFunctor.id (RightModule R D)).comp (dgModuleRestriction R D D (DGFunctor.id D).op)) where
   app M := (dgRestrictionIdentityInvStrict R D).app M
   naturality f := (dgRestrictionIdentityInvStrict R D).naturality f

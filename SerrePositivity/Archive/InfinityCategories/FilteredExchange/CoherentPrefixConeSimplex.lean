@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentPrefixPathEnriched
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentPrefixConeTime
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceInitialCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceInitialCoordinates
 
 /-!
 概要：固定始点の coslice 比較を、各 tail 単体と時刻から実豊穣単体として構成する。

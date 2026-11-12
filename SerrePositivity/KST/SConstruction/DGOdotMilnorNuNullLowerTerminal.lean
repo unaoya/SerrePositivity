@@ -18,33 +18,33 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 方針：同じ全 Hom 像の終対象性を通常射の頂点へ回収する。
 規約：元 path の像を変更しない。使われ方：共有対角の終対象性。 -/
 lemma dgOdotMilnorNuNullUpperPathFunctor_isTerminal (P : DGOdotMilnorNuNullTrianglePath.{u}) :
-    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv
       (dgOdotMilnorNuNullTriangleStableObject R d 0)
       (dgOdotMilnorNuNullTriangleStableObject R d 2)
-      ((coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuNullTriangle R d 0)).map P)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuNullTriangle R d 0)).map P)) := by
   have h := congrArg (fun x => (dgOdotMilnorNuNullUpperHomInclusion R d).app
     (Opposite.op ⦋0⦌) x)
-      (coherentEnrichedUnderlyingFunctor_vertex (dgOdotMilnorNuNullTriangle R d 0) P)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex (dgOdotMilnorNuNullTriangle R d 0) P)
   exact h.symm ▸ dgOdotMilnorNuNullTriangle_path_isTerminal R d P
 
 /-- 概要：元下三角形の共有対角 path の像は終関手。
 方針：元共有一単体の依存射データの等号で上三角形の終対象性を移す。
 規約：両端点と元通常射を同時に保持。使われ方：下三角形の全 path の零性。 -/
 lemma dgOdotMilnorNuNullLowerDiagonal_isTerminal :
-    IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv
       ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (0 : Fin 3)⟩)
       ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (2 : Fin 3)⟩)
-      ((coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuNullTriangle R d 1)).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuNullTriangle R d 1)).map
         dgOdotMilnorNuNullDiagonalPath.{u})) := by
-  let P : (Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, X ⟶ Y) → Prop :=
-    fun t => IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv t.1 t.2.1 t.2.2)
+  let P : (Σ X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}, X ⟶ Y) → Prop :=
+    fun t => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv t.1 t.2.1 t.2.2)
   have he := (dgOdotMilnorNuNullTriangle_diagonal_data R d 0).symm.trans
-    ((congrArg coherentNerveArrowData (dgOdotMilnorNuNullTriangle_diagonal R d)).trans
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData (dgOdotMilnorNuNullTriangle_diagonal R d)).trans
       (dgOdotMilnorNuNullTriangle_diagonal_data R d 1))
-  have ht : P ⟨_, _, (coherentEnrichedUnderlyingFunctor
+  have ht : P ⟨_, _, (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
       (dgOdotMilnorNuNullTriangle R d 0)).map dgOdotMilnorNuNullDiagonalPath.{u}⟩ :=
     dgOdotMilnorNuNullUpperPathFunctor_isTerminal R d _
-  have hn : P ⟨_, _, (coherentEnrichedUnderlyingFunctor
+  have hn : P ⟨_, _, (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
       (dgOdotMilnorNuNullTriangle R d 1)).map dgOdotMilnorNuNullDiagonalPath.{u}⟩ :=
     Eq.mp (congrArg P he) ht
   exact hn
@@ -53,7 +53,7 @@ lemma dgOdotMilnorNuNullLowerDiagonal_isTerminal :
 方針：元の同じ二単体の端点間 Hom 写像を使う。
 規約：端点輸送前の元写像。使われ方：同じ全零成分への制限。 -/
 def dgOdotMilnorNuNullLowerHom : nerve DGOdotMilnorNuNullTrianglePath.{u} ⟶
-    SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
+    SimplicialCategory.sHom (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
       ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (0 : Fin 3)⟩)
       ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (2 : Fin 3)⟩) :=
   (dgOdotMilnorNuNullTriangle R d 1).map ⟨ULift.up (0 : Fin 3)⟩ ⟨ULift.up (2 : Fin 3)⟩
@@ -62,11 +62,11 @@ def dgOdotMilnorNuNullLowerHom : nerve DGOdotMilnorNuNullTrianglePath.{u} ⟶
 方針：元の両端を同じ完全関手圏へ保持する。
 規約：固定 ν への輸送前。使われ方：元全 Hom の終頂点性。 -/
 abbrev DGOdotMilnorNuNullLowerExactFunctors : SSet.{u + 1} :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (0 : Fin 3)⟩)
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (0 : Fin 3)⟩)
     ((dgOdotMilnorNuNullTriangle R d 1).obj ⟨ULift.up (2 : Fin 3)⟩)
 
 local instance nuNullLowerExact_quasicategory :
-    Quasicategory (DGOdotMilnorNuNullLowerExactFunctors R d) := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors_quasicategory _ _
+    Quasicategory (DGOdotMilnorNuNullLowerExactFunctors R d) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors_quasicategory _ _
 
 /-- 概要：元の共有対角 path は同じ任意 path に包含される。
 方針：元面 δ₁ の両端像だけが共有 path の台をなすことを使う。
@@ -87,21 +87,21 @@ def dgOdotMilnorNuNullDiagonalToPath (P : DGOdotMilnorNuNullTrianglePath.{u}) :
 方針：同じ共有対角からの元包含辺を Kan Hom に写して終対象性を移す。
 規約：元全 Hom 作用を保持。使われ方：同じ実下三角形の零成分因子分解。 -/
 lemma dgOdotMilnorNuNullLowerHom_path_isTerminal (P : DGOdotMilnorNuNullTrianglePath.{u}) :
-    IsTerminalVertex ((dgOdotMilnorNuNullLowerHom R d ≫
-      (quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d)).ι).app
-        (Opposite.op ⦋0⦌) (nerveVertex P)) := by
-  let i := (quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d)).ι
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex ((dgOdotMilnorNuNullLowerHom R d ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d)).ι).app
+        (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex P)) := by
+  let i := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d)).ι
   let e : (nerve DGOdotMilnorNuNullTrianglePath.{u}).Edge
-      (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) (nerveVertex P) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex P) :=
     SSet.Edge.mk (ComposableArrows.mk₁ (dgOdotMilnorNuNullDiagonalToPath P))
       (ComposableArrows.ext₀ rfl) (ComposableArrows.ext₀ rfl)
   let e' := e.map (dgOdotMilnorNuNullLowerHom R d)
-  have hi : IsInvertibleEdge e'.toTruncated := IsGroupoid.all_isIso
-    (C := hoFunctor.obj (quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d) : SSet)) _
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e'.toTruncated := IsGroupoid.all_isIso
+    (C := hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (DGOdotMilnorNuNullLowerExactFunctors R d) : SSet)) _
   have eiso := @asIso _ _ _ _
     (SSet.Truncated.HomotopyCategory.homMk (e'.map i).toTruncated) (hi.map i)
   have hv := congrArg (fun x => i.app (Opposite.op ⦋0⦌) x)
-    (coherentEnrichedUnderlyingFunctor_vertex (dgOdotMilnorNuNullTriangle R d 1)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex (dgOdotMilnorNuNullTriangle R d 1)
       dgOdotMilnorNuNullDiagonalPath.{u})
   have ht := hv ▸ dgOdotMilnorNuNullLowerDiagonal_isTerminal R d
   exact ht.of_vertexIso eiso

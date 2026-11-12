@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardDiagram
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnForwardForwardCatIso
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnForwardForwardDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnForwardForwardCatIso
 public import SerrePositivity.EInfinity.Hammock.FirstColumnForwardForwardRelativeFunctor
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedObjectZigzagDiagram
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonal
 
 /-!
@@ -21,47 +21,47 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v wO
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory Opposite SimplicialLocalization
+open CategoryTheory Opposite
 section Diagram
-variable {I : Type v} [Category I] (D : I ⥤ RelativeCategory.{u}) {O : Type wO}
+variable {I : Type v} [Category I] (D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type wO}
   (p : (i : I) → O → (D.obj i).category)
   (hp : ∀ {i j : I} (θ : i ⟶ j) (X : O), (D.map θ).functor.obj (p i X) = p j X)
-  (w : Word) (X Y : O)
+  (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : O)
 
-def forwardForwardCategoryDiagramIso : FixedObjectDiagram.zigzagDiagram D p hp
-    (Word.append (Word.single .forward) (Word.cons .forward w)) X Y ≅
-      forwardForwardDiagram D p hp w X Y ⋙ TwoSidedDiagram.totalFunctor :=
+def forwardForwardCategoryDiagramIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.zigzagDiagram D p hp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardDiagram D p hp w X Y ⋙ TwoSidedDiagram.totalFunctor :=
   NatIso.ofComponents
-    (fun i => forwardForwardCatIso (D.obj i).weakEquivalences w (p i X) (p i Y)) (by
+    (fun i => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardCatIso (D.obj i).weakEquivalences w (p i X) (p i Y)) (by
       intro i j θ
       apply Cat.Hom.ext
       exact forwardForward_relative_functor w (D.map θ) (hp θ X) (hp θ Y))
 
-def forwardForwardGraphDiagramIso : FixedObjectDiagram.graphDiagram D p hp
-    (Word.append (Word.single .forward) (Word.cons .forward w)) X Y ≅
-      forwardForwardDiagram D p hp w X Y ⋙ TwoSidedDiagram.totalFunctor ⋙ nerveFunctor :=
+def forwardForwardGraphDiagramIso : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardDiagram D p hp w X Y ⋙ TwoSidedDiagram.totalFunctor ⋙ nerveFunctor :=
   ((CategoryTheory.Functor.whiskeringRight (C := I) (D := Cat.{u, u})
     (E := SSet.{u})).obj nerveFunctor).mapIso (forwardForwardCategoryDiagramIso D p hp w X Y)
 
 lemma forwardForwardGraphDiagramIso_hom_app (i : I) :
     (forwardForwardGraphDiagramIso D p hp w X Y).hom.app i =
-      nerveMap (forwardForwardFunctor (D.obj i).weakEquivalences w (p i X) (p i Y)) := rfl
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor (D.obj i).weakEquivalences w (p i X) (p i Y)) := rfl
 end Diagram
 section Diagonal
-variable (D : SimplicialObject RelativeCategory.{u}) {O : Type wO}
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {O : Type wO}
   (p : (i : SimplexCategoryᵒᵖ) → O → (D.obj i).category)
   (hp : ∀ {i j : SimplexCategoryᵒᵖ} (θ : i ⟶ j) (X : O),
-    (D.map θ).functor.obj (p i X) = p j X) (w : Word) (X Y : O)
+    (D.map θ).functor.obj (p i X) = p j X) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : O)
 def forwardForwardDiagonalIso :
-    DoubleSimplicial.diagonalFunctor.obj (FixedObjectDiagram.graphDiagram D p hp
-      (Word.append (Word.single .forward) (Word.cons .forward w)) X Y) ≅
-    TwoSidedDiagram.diagonalTotalNerve (forwardForwardDiagram D p hp w X Y) :=
-  DoubleSimplicial.diagonalFunctor.mapIso (forwardForwardGraphDiagramIso D p hp w X Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y) ≅
+    TwoSidedDiagram.diagonalTotalNerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardDiagram D p hp w X Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.mapIso (forwardForwardGraphDiagramIso D p hp w X Y)
 
 lemma forwardForwardDiagonalIso_hom_app (n : SimplexCategoryᵒᵖ)
-    (σ : (DoubleSimplicial.diagonalFunctor.obj (FixedObjectDiagram.graphDiagram D p hp
-      (Word.append (Word.single .forward) (Word.cons .forward w)) X Y)).obj n) :
+    (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectZigzagDiagram.graphDiagram D p hp
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.cons .forward w)) X Y)).obj n) :
     (forwardForwardDiagonalIso D p hp w X Y).hom.app n σ =
-      σ ⋙ forwardForwardFunctor (D.obj n).weakEquivalences w (p n X) (p n Y) := rfl
+      σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardFunctor (D.obj n).weakEquivalences w (p n X) (p n Y) := rfl
 end Diagonal
 end SerrePositivity.EInfinity.Hammock.FirstColumn

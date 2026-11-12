@@ -21,35 +21,35 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma isCartesianEdge_markedSpanFamilyProjection_of_pullback
     {X : SSet.{u}} [Quasicategory X] (W : Set (X _⦋1⦌)) (x : X _⦋0⦌)
-    (e : (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x) _⦋1⦌)
-    (he : IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
-      vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
+    (e : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily X W x) _⦋1⦌)
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
         (pre horn₂₀.ι₀₂).app X))) :
-    IsCartesianEdge (_root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x) e := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection X W x) e := by
   intro m σ β hσ sq
-  let r : _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
-    vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
+  let r : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily X W x ⟶ (ihom (horn 2 0 : SSet.{u})).obj X :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W
   let σ' : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) ⟶
       (ihom (horn 2 0 : SSet.{u})).obj X := σ ≫ r
   have hs : σ' ≫ (pre horn₂₀.ι₀₁).app X ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const x := by
-    change σ ≫ vertexFiberι (markedSpanSource X W) x ≫ markedSpanSource X W = _
-    rw [vertexFiberι_comp, SSet.comp_const]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = SSet.const x := by
+    change σ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫ markedSpanSource X W = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp, SSet.comp_const]
   have ht : σ' ≫ (pre horn₂₀.ι₀₂).app X ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (horn (m + 2) (Fin.last (m + 2))).ι ≫ β := sq.w
-  have hσr : (σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (finalHornEdge m) =
+  have hσr : (σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge m) =
       (r ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) e := by
     change (r ≫ (pre horn₂₀.ι₀₂).app X).app _ (σ.app _ _) = _
     rw [hσ]
-  have hc : IsCartesianEdge (evaluateFunctorAt (Y := X)
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IsCartesianEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-      ((σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (finalHornEdge m)) := by
+      ((σ' ≫ (pre horn₂₀.ι₀₂).app X).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.finalHornEdge m)) := by
     rw [hσr]
     apply arrowTarget_isCartesianEdge_of_pullback
     rw [← SSet.yonedaEquiv_symm_comp]
-    change IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
-      vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (uncurry (SSet.yonedaEquiv.symm e ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
         (pre horn₂₀.ι₀₂).app X))
     exact he
   obtain ⟨G, hG, hGs, hGt⟩ :=
@@ -58,20 +58,20 @@ lemma isCartesianEdge_markedSpanFamilyProjection_of_pullback
       spanLeftEdge (G.app (Opposite.op ⦋0⦌) v) ∈ W := by
     intro v
     let w : (horn (m + 2) (Fin.last (m + 2)) : SSet.{u}) _⦋0⦌ :=
-      ⟨v, vertex_mem_horn m (Fin.last (m + 2)) v⟩
+      ⟨v, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.vertex_mem_horn m (Fin.last (m + 2)) v⟩
     have h := congrArg (fun k => k.app (Opposite.op ⦋0⦌) w) hG
-    have hp := fullSubcomplexOnVertices_vertex (σ.app (Opposite.op ⦋0⦌) w).val
+    have hp := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (σ.app (Opposite.op ⦋0⦌) w).val
     change G.app (Opposite.op ⦋0⦌) v = (σ.app (Opposite.op ⦋0⦌) w).val.val at h
     exact h.symm ▸ hp
-  let M := fullSubcomplexLift (fun v => spanLeftEdge v ∈ W) G hv
-  have hM : M ≫ markedSpanInclusion X W = G := fullSubcomplexLift_ι _ _ _
+  let M := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (fun v => spanLeftEdge v ∈ W) G hv
+  have hM : M ≫ markedSpanInclusion X W = G := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   have hMs : M ≫ markedSpanSource X W = SSet.const x := by
     change M ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₁).app X ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = _
     rw [← Category.assoc, ← Category.assoc, hM]
     exact hGs
-  let F := vertexFiberLift (markedSpanSource X W) x M hMs
-  have hF : F ≫ vertexFiberι (markedSpanSource X W) x = M := vertexFiberLift_ι _ _ _ _
+  let F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift (markedSpanSource X W) x M hMs
+  have hF : F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x = M := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift_ι _ _ _ _
   have hFr : F ≫ r = G := by
     dsimp only [r]
     rw [← Category.assoc, hF, hM]
@@ -80,10 +80,10 @@ lemma isCartesianEdge_markedSpanFamilyProjection_of_pullback
     apply (cancel_mono r).mp
     rw [Category.assoc, hFr]
     exact hG
-  · change (F ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanTarget X W = β
+  · change (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanTarget X W = β
     rw [hF]
     change M ≫ markedSpanInclusion X W ≫ (pre horn₂₀.ι₀₂).app X ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = β
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = β
     rw [← Category.assoc, ← Category.assoc, hM]
     exact hGt
 

@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.SphereSimplex
 概要：隣接する二つの面の間の標準 prism 写像。
 方針：穴の位置が隣接する二つの単調埋め込みを、区間に沿って切り替える。
 規約：始点は i.succ の面、終点は i.castSucc の面。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。RelStruct から実ホモトピーへの変換。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.2（Tag 00VJ）。RelStruct から実ホモトピーへの変換。
 -/
 
 @[expose] public section
@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 概要：隣接する穴の埋め込みは頂点ごとに順序を持つ。
 方針：succAbove の二つの分岐を比較する。
 規約：穴 i+1 の埋め込みは穴 i の埋め込み以下。
-使われ方：Kerodon §3.2.2。prism の単調性。 -/
+使われ方：Kerodon §3.2.2（Tag 00VJ）。prism の単調性。 -/
 theorem face_le {n : ℕ} (i j : Fin (n + 1)) :
     i.succ.succAbove j ≤ i.castSucc.succAbove j := by
   unfold Fin.succAbove
@@ -63,7 +63,7 @@ def simplex {n d : ℕ} (i : Fin (n + 1)) (s : (Δ[n] : SSet.{u}) _⦋d⦌)
 /-- 概要：隣接二面の prism 写像。
 方針：各次数の切り替えを自然な射へ束ねる。
 規約：Δ[n]×Δ[1] から Δ[n+1] への射。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.2。単一 RelStruct の幾何的表示。 -/
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.2（Tag 00VJ）。単一 RelStruct の幾何的表示。 -/
 def map {n : ℕ} (i : Fin (n + 1)) : (Δ[n] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) ⟶
     (Δ[n + 1] : SSet.{u}) where
   app m := ↾(fun p : ((Δ[n] : SSet.{u}).obj m × (Δ[1] : SSet.{u}).obj m) ↦ simplex i p.1 p.2)
@@ -77,7 +77,7 @@ def map {n : ℕ} (i : Fin (n + 1)) : (Δ[n] : SSet.{u}) ⊗ (Δ[1] : SSet.{u}) 
 /-- 概要：prism の始点は一つ後の面。
 方針：区間の始点の値を零として評価する。
 規約：始点は i.succ。
-使われ方：Kerodon §3.2.2。RelStruct の第二の面のホモトピー端点。 -/
+使われ方：Kerodon §3.2.2（Tag 00VJ）。RelStruct の第二の面のホモトピー端点。 -/
 @[reassoc (attr := simp)]
 theorem zero {n : ℕ} (i : Fin (n + 1)) : SSet.ι₀ ≫ map.{u} i = stdSimplex.δ i.succ := by
   apply NatTrans.ext
@@ -91,7 +91,7 @@ theorem zero {n : ℕ} (i : Fin (n + 1)) : SSet.ι₀ ≫ map.{u} i = stdSimplex
 /-- 概要：prism の終点は一つ前の面。
 方針：区間の終点の値を一として評価する。
 規約：終点は i.castSucc。
-使われ方：Kerodon §3.2.2。RelStruct の第一の面のホモトピー端点。 -/
+使われ方：Kerodon §3.2.2（Tag 00VJ）。RelStruct の第一の面のホモトピー端点。 -/
 @[reassoc (attr := simp)]
 theorem one {n : ℕ} (i : Fin (n + 1)) : SSet.ι₁ ≫ map.{u} i = stdSimplex.δ i.castSucc := by
   apply NatTrans.ext

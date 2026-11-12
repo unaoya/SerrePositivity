@@ -17,18 +17,18 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
   {D : Type uD} [EnrichedCategory SSet.{u} D]
 
 def restrictParts :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D → EnrichedParts W D := by
-  letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  letI := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   intro G
   exact
     { marked := (markedInclusionFunctor W).comp SSet.{u} G
@@ -36,19 +36,19 @@ def restrictParts :
       objects _ := rfl }
 
 lemma restrictParts_eq :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     ∀ G : EnrichedFunctor SSet.{u} (Paths C) D,
       restrictParts W G = (restrictHammockEnrichedFunctor W G).parts := by
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   intro G
   apply EnrichedParts.ext
   · exact (restrict_marked_comp W G).symm
   · exact (restrict_unmarked_comp W G).symm
 
 def freeProductFunctorEquiv :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D ≃ EnrichedParts W D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   let e := freeProductEnrichedFunctorEquiv (D := D) W
   exact
     { toFun := restrictParts W
@@ -57,21 +57,21 @@ def freeProductFunctorEquiv :
       right_inv := fun P => (restrictParts_eq W (e.symm P)).trans (e.apply_symm_apply P) }
 
 def freeProductExtension (P : EnrichedParts W D) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (freeProductFunctorEquiv W).symm P
 
 lemma freeProductExtension_fac (P : EnrichedParts W D) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     restrictParts W (freeProductExtension W P) = P := by
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (freeProductFunctorEquiv W).apply_symm_apply P
 
 lemma existsUnique_freeProductExtension (P : EnrichedParts W D) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     ∃! G : EnrichedFunctor SSet.{u} (Paths C) D, restrictParts W G = P := by
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   refine ⟨freeProductExtension W P, freeProductExtension_fac W P, ?_⟩
   intro G hG
   exact (freeProductFunctorEquiv W).injective (hG.trans (freeProductExtension_fac W P).symm)

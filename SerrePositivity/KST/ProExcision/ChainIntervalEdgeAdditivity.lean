@@ -46,7 +46,7 @@ lemma chainIntervalEdgeEval_add {M N : ModuleCat.{u} ℤ} (h k : M ⟶ N) :
 規約：KST A.3・A.5、整数倍も自動的に保つ。
 使われ方：符号付き鎖ホモトピー等式の移送。 -/
 def chainIntervalEdgeEvalAddHom (M N : ModuleCat.{u} ℤ) :
-    (M ⟶ N) →+ (integerTensor M (integerIntervalX 1) ⟶ N) where
+    (M ⟶ N) →+ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensor M (integerIntervalX 1) ⟶ N) where
   toFun := chainIntervalEdgeEval
   map_zero' := chainIntervalEdgeEval_zero M N
   map_add' := chainIntervalEdgeEval_add
@@ -64,7 +64,7 @@ lemma chainIntervalEdgeEval_zsmul {M N : ModuleCat.{u} ℤ} (a : ℤ) (h : M ⟶
 lemma chainIntervalEdgeEval_comp {M N P : ModuleCat.{u} ℤ} (h : M ⟶ N) (b : N ⟶ P) :
     chainIntervalEdgeEval (h ≫ b) = chainIntervalEdgeEval h ≫ b := by
   have he := chainIntervalEdgeEval_naturality h (h ≫ b) (𝟙 M) b (by rw [Category.id_comp])
-  rw [integerTensorMap_id, Category.id_comp] at he
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap_id, Category.id_comp] at he
   exact he
 
 /-- 概要：辺の評価は第一因子からの前合成と可換。
@@ -72,7 +72,7 @@ lemma chainIntervalEdgeEval_comp {M N P : ModuleCat.{u} ℤ} (h : M ⟶ N) (b : 
 規約：KST A.3・A.5。使われ方：微分の後の低次ホモトピー。 -/
 lemma chainIntervalEdgeEval_precomp {M N P : ModuleCat.{u} ℤ} (a : M ⟶ N) (h : N ⟶ P) :
     chainIntervalEdgeEval (a ≫ h) =
-      integerTensorMap a (𝟙 (integerIntervalX 1)) ≫ chainIntervalEdgeEval h := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap a (𝟙 (integerIntervalX 1)) ≫ chainIntervalEdgeEval h := by
   have he := chainIntervalEdgeEval_naturality (a ≫ h) h a (𝟙 P) (by rw [Category.comp_id])
   rw [Category.comp_id] at he
   exact he.symm

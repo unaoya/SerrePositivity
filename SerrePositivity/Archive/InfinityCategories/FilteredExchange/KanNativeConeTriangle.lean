@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceTriangleFaces
-public import SerrePositivity.InfinityCategories.F1.Weighted.CosliceTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeTriangle
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceTriangleFaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.CosliceTransport
 
 /-!
 概要：通常の Kan 図式上の native 錐の指定三角形を元の射のホモトピーへ戻す。

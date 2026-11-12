@@ -22,9 +22,9 @@ open UnmarkedGenerators.FirstFactor.MarkedSpine
 
 lemma free_localizationValue_isWeakHomotopyEquivalence {C : Type u} [Category.{u} C]
     (W : MorphismProperty C) (X Y : Paths C) :
-    IsWeakHomotopyEquivalence (localizationValue W.paths X Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (localizationValue W.paths X Y) := by
   rw [← hammockEvaluation_localizationValue W Y X]
   exact (hammockEvaluation_isWeakHomotopyEquivalence W Y X).comp
-    (isPrecompositionEquivalence_of_iso (valueLocalizationHomIso W X Y)).isWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (valueLocalizationHomIso W X Y)).isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.Hammock

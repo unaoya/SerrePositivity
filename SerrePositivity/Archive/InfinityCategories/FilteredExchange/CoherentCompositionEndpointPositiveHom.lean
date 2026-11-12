@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointHom
-public import SerrePositivity.InfinityCategories.F1.Coherent.FlagEquiv
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantFiber
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.FlagEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.WeightedConstantFiber
 
 /-!
 概要：実終点三角形と定値 weighted cone の正頂点間の Hom は同じ豊穣恒等。

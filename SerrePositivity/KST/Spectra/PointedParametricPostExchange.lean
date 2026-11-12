@@ -21,16 +21,16 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 lemma parametricPost_exchange (A : PointedSimplicialSet.{u})
     {P Z Z' : PointedSimplicialSet.{u}} (v : P ⟶ PointedObject.basedHom Z Z') :
     parametricPost A v = PointedObject.basedHomMap A (transpose v) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z').hom := by
-  have hid : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 (PointedObject.basedHom A Z))
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A P Z').hom := by
+  have hid : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 (PointedObject.basedHom A Z))
       (PointedObject.basedHom A Z') = 𝟙 _ := by
-    rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+    rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
     exact congrArg (fun m => m.app (PointedObject.basedHom A Z'))
       (MonoidalClosed.pre_id (PointedObject.basedHom A Z))
   have h := transpose_ihomParameterAction v (𝟙 (PointedObject.basedHom A Z))
   change transpose (𝟙 (PointedObject.basedHom A Z) ≫
-    PointedObject.basedHomMap A (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z').hom) =
-      (v ≫ ihomAction A Z Z') ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 (PointedObject.basedHom A Z))
+    PointedObject.basedHomMap A (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A P Z').hom) =
+      (v ≫ ihomAction A Z Z') ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 (PointedObject.basedHom A Z))
         (PointedObject.basedHom A Z') at h
   rw [Category.id_comp, hid, Category.comp_id] at h
   have ht := congrArg transpose h

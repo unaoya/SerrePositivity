@@ -18,7 +18,7 @@ universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.HomotopyFiberConeComparison
 
 local instance homotopyCubeSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
@@ -32,7 +32,7 @@ def replacedHom := ReplacedFiberComparison.cubeHom
   (FibrationReplacementComparison.map p q a b h) b
   (FibrationReplacementComparison.map_projection p q a b h).symm
 
-def cubeHom : FunctorHom (X := Sp.{u}) (FiberModel.homotopyFiberCone p).val
+def cubeHom : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (X := Sp.{u}) (FiberModel.homotopyFiberCone p).val
     (FiberModel.homotopyFiberCone q).val :=
   (FiberModel.homotopyFiberConeTransportIso p).hom ≫ replacedHom p q a b h ≫
     (FiberModel.homotopyFiberConeTransportIso q).inv
@@ -43,16 +43,16 @@ lemma cubeHom_comparison : cubeHom p q a b h ≫
   simp only [cubeHom, Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 lemma cubeHom_apex :
-    Arrow.mk (functorHomEvaluate (X := Sp.{u}) (cubeHom p q a b h) (joinApexVertex _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u}) (cubeHom p q a b h) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _)) =
       Arrow.mk (SpectrumHo.hom (HomotopyFiberComparison.map p q a b h)) := by
-  apply _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_cancel_comp_right (FiberModel.homotopyFiberConeTransportIso_apex q)
-  have he := congrArg (fun α ↦ functorHomEvaluate (X := Sp.{u}) α (joinApexVertex _))
+  apply _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_cancel_comp_right (FiberModel.homotopyFiberConeTransportIso_apex q)
+  have he := congrArg (fun α ↦ _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u}) α (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _))
     (cubeHom_comparison p q a b h)
-  rw [functorHomEvaluate_comp, functorHomEvaluate_comp] at he
-  have hr := _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.arrow_mk_comp_of_any_identity
-    (functorHomEvaluate (X := Sp.{u}) (FiberModel.homotopyFiberConeTransportIso p).hom
-      (joinApexVertex _))
-    (functorHomEvaluate (X := Sp.{u}) (replacedHom p q a b h) (joinApexVertex _))
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp] at he
+  have hr := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.arrow_mk_comp_of_any_identity
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u}) (FiberModel.homotopyFiberConeTransportIso p).hom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _))
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (X := Sp.{u}) (replacedHom p q a b h) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.joinApexVertex _))
     (FiberModel.homotopyFiberConeTransportIso_apex p)
   have hs := ReplacedFiberComparison.cubeHom_apex
     (OmegaSpectrum.fibrationReplacementProjection p)

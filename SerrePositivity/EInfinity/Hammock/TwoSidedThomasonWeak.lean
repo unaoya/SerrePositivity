@@ -25,17 +25,17 @@ variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
 lemma weightedLeft_diagonalMap_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (TwoSidedWeightedLeft.diagonalMap F G) :=
-  (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (TwoSidedWeightedLeft.diagonalMap F G) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (TwoSidedWeightedLeft.diagonalSourceIso F G).symm).isWeakHomotopyEquivalence.comp
       (DoubleSimplicial.diagonalFunctor_map_weak (TwoSidedWeightedLeft.rowMap F G)
         (fun n => TwoSidedWeightedLeft.map_isWeakHomotopyEquivalence F
           ((G ⋙ nerveFunctor).flip.obj n)))
 
-lemma map_isWeakHomotopyEquivalence : IsWeakHomotopyEquivalence (map F G) := by
+lemma map_isWeakHomotopyEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (map F G) := by
   rw [← weightedLeft_map_factorization F G]
   exact (weightedLeft_diagonalMap_isWeakHomotopyEquivalence F G).comp
     (FrameHom.Thomason.map_isWeakHomotopyEquivalence
-      (TwoSidedGrothendieck.contravariantProjection F ⋙ G))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G))
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedThomason

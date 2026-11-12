@@ -20,15 +20,15 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
 
 /-- 概要：元の Stable∞ 下側二胞体の全変形の像は、既存の全 S• Kan 下側変形そのもの。
 方針：各単体で同じ path 変形の豊穣後合成を照合する。
 規約：端点や長辺だけでなく全三角柱の等式。
 使われ方：元の零値完全関手の Hom 制御を同じ下側変形へ移す。 -/
 theorem verdierFullSLowerDeformation_source :
-    coherentSimplexDeformationMap (verdierLowerTriangle d) ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor 0) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexDeformationMap (verdierLowerTriangle d) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0) =
         (verdierFullSLowerDeformation d).h := by
   apply SSet.hom_ext
   intro n
@@ -41,9 +41,9 @@ theorem verdierFullSLowerDeformation_source :
 規約：元の指定包含・商を変えず、標準合成端全体を保持する。
 使われ方：元の実商核の標準合成二胞体との比較。 -/
 theorem verdierFullSLowerMaximalization_source :
-    (coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋2⦌)
-      (coherentSimplexMaximalization (verdierLowerTriangle d)) =
-        coherentSimplexMaximalization (verdierFullSLowerSimplex d) := rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)).app (Opposite.op ⦋2⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierLowerTriangle d)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexMaximalization (verdierFullSLowerSimplex d) := rfl
 
 /-- 概要：同じ全三角柱の動く対角も、元の Stable∞ 対角族の同じ像である。
 方針：全三角柱の等式を元の対角面で前合成する。
@@ -51,8 +51,8 @@ theorem verdierFullSLowerMaximalization_source :
 使われ方：上側の同じ対角族との貼り合わせに使う指定制限。 -/
 theorem verdierFullSLowerDeformation_diagonal_source :
     ((stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫
-      coherentSimplexDeformationMap (verdierLowerTriangle d)) ≫
-      coherentNerveMap (stableMultiKanEnrichedFunctor 0) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentSimplexDeformationMap (verdierLowerTriangle d)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0) =
     (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫
       (verdierFullSLowerDeformation d).h := by
   rw [Category.assoc, verdierFullSLowerDeformation_source]

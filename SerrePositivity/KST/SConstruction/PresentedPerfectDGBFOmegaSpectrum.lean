@@ -36,12 +36,12 @@ def presentedPerfectDGBFOmegaSpectrum (C : PerfDGInput.{u, v} A) :
 /-- 同じ実 BF Ω スペクトルの零段は元の零次境界 Kan 商の loop。 -/
 lemma presentedPerfectDGBFOmegaSpectrum_zero (C : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGBFOmegaSpectrum A C).level 0).space =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj C).obj := rfl
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((presentedPerfectDGBoundaryKanEnrichedFunctor A 0).obj C).obj := rfl
 
 /-- 同じ実 BF Ω スペクトルの構造射は全て元の実再帰構造射。 -/
 lemma presentedPerfectDGBFOmegaSpectrum_sigma (n : ℕ) (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGBFOmegaSpectrum A C).sigma n =
-      (show _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((presentedPerfectDGBFLevelFunctor A n).obj C).obj) ⟶
+      (show _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((presentedPerfectDGBFLevelFunctor A n).obj C).obj) ⟶
         ((presentedPerfectDGBFLevelFunctor A (n + 1)).obj C).obj from
           presentedPerfectDGBFStructureMap A n C) := rfl
 

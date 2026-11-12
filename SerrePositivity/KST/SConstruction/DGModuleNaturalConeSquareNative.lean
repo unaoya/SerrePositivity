@@ -13,13 +13,13 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeHomotopyTriangle
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
   (F G F' G' : DGFunctor R P (RightModule R D))
-  (α : StrictNatTrans F G) (β : StrictNatTrans F' G')
-  (l : StrictNatTrans F F') (r : StrictNatTrans G G')
-  (hsq : dgStrictNatTransComp α r = dgStrictNatTransComp l β)
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (β : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F' G')
+  (l : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F F') (r : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G G')
+  (hsq : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp α r = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp l β)
 include hsq
 local notation "f" => dgModuleNaturalConeArrow R D F G α
 local notation "g" => dgModuleNaturalConeArrow R D F' G' β
@@ -30,7 +30,7 @@ local notation "b" => dgModuleNaturalConeArrow R D G G' r
 local notation "CA" => dgModuleNaturalConeFunctor R D F G α
 local notation "CB" => dgModuleNaturalConeFunctor R D F' G' β
 local notation "ι" => dgModuleNaturalConeInr R D F' G' β
-local notation "ξ" => dgStrictNatTransComp r (ι)
+local notation "ξ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp r (ι)
 local notation "s" => dgModuleNaturalConePrecompositionInput R D F F' G' l β
 
 
@@ -56,7 +56,7 @@ lemma dgModuleNaturalConeSquare_isIso (x : P) :
 規約：同じ全ホモトピーを保持。
 使われ方：元評価同型を保つ実 gluing cone の全比較。 -/
 def dgModuleNaturalConeSquareNerveComparison :
-    FunctorIso (dgNerve.map (CA)) (dgNerve.map (CB)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CA)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CB)) :=
   dgModuleFunctorIsoOfKStrictNatTrans R D (CA) (CB) (θ)
     (dgModuleNaturalConeSquare_isIso R D F G F' G' α β l r hsq ha hb)
 end SerrePositivity.KST.SConstruction

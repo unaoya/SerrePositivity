@@ -19,32 +19,32 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve.PinchedHom DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
 lemma standardNormalizationIso_zero_eval (x y : D)
-    (s : ((normalizedMooreComplex (ModuleCat R)).obj (standardModule (R := R) x y)).X 0) :
-    (homObject R D x y).iCycles 0 ((connectiveHomComplex_zeroIso (R := R) x y).hom
-      (((standardNormalizationIso (R := R) x y).hom.f 0) s)) =
-    (((standardMooreTermIso (R := R) x y 0).hom s).val).val.component
+    (s : ((normalizedMooreComplex (ModuleCat R)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)).X 0) :
+    (homObject R D x y).iCycles 0 ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x y).hom
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0) s)) =
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x y 0).hom s).val).val.component
       Finset.univ 0 Finset.univ_nonempty (by simp) := by
-  change ((standardMooreZeroIso (R := R) x y).hom ≫
-    (connectiveHomComplex_zeroIso (R := R) x y).hom ≫ (homObject R D x y).iCycles 0) s = _
-  rw [← connectiveHomComplex_zeroCyclesIso_hom_subtype]
-  dsimp only [standardMooreZeroIso, Iso.trans_hom, Iso.symm_hom]
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreZeroIso (R := R) x y).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x y).hom ≫ (homObject R D x y).iCycles 0) s = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroCyclesIso_hom_subtype]
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreZeroIso, Iso.trans_hom, Iso.symm_hom]
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
   rfl
 
 lemma standardNormalizationIso_positive_eval (x y : D) (n : ℕ)
     (s : ((normalizedMooreComplex (ModuleCat R)).obj
-      (standardModule (R := R) x y)).X (n + 1)) :
-    (connectiveHomComplex_positiveIso (R := R) x y n).hom
-      (((standardNormalizationIso (R := R) x y).hom.f (n + 1)) s) =
-    (((standardMooreTermIso (R := R) x y (n + 1)).hom s).val).val.component
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)).X (n + 1)) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).hom
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f (n + 1)) s) =
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x y (n + 1)).hom s).val).val.component
       Finset.univ (-(n + 1 : ℤ)) Finset.univ_nonempty (by simp) := by
-  change ((standardMoorePositiveIso (R := R) x y n).hom ≫
-    (connectiveHomComplex_positiveIso (R := R) x y n).inv ≫
-      (connectiveHomComplex_positiveIso (R := R) x y n).hom) s = _
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMoorePositiveIso (R := R) x y n).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).hom) s = _
   rw [Iso.inv_hom_id, Category.comp_id]
   rfl
 

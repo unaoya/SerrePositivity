@@ -17,7 +17,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance pointLoopCoefficientSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -27,31 +27,31 @@ lemma pointLoopHomLeg_eq_const (X Y : OmegaSpectrum.{u}) :
     ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj (Opposite.op X)).map
         (fromPoint Y) =
       SSet.const (RawSpectrumMapping.pointedSpace X Y.toKanSequence).basepoint := by
-  let p : KanSequence.Hom spectrumPoint.toKanSequence Y.toKanSequence :=
+  let p : KanSequence.Hom _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence Y.toKanSequence :=
     ⟨(fromPoint Y).app, (fromPoint Y).comm⟩
-  have baseIso : IsIso (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom :=
+  have baseIso : IsIso (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom :=
     isIso_of_isTerminal isTerminalTensorUnit (mappingPoint_isTerminal X) _
   rw [← RawSpectrumMapping.post_spectrum]
   calc
     RawSpectrumMapping.post X p =
         toUnit _ ≫ (RawSpectrumMapping.pointedSpace X Y.toKanSequence).hom := by
-      apply (cancel_epi (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom).mp
-      have hu : (RawSpectrumMapping.pointedSpace X spectrumPoint.toKanSequence).hom ≫
+      apply (cancel_epi (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom).mp
+      have hu : (RawSpectrumMapping.pointedSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.toKanSequence).hom ≫
           toUnit _ = 𝟙 (𝟙_ SSet.{u}) := isTerminalTensorUnit.hom_ext _ _
       rw [← Category.assoc]
       erw [hu, Category.id_comp]
       exact Under.w (RawSpectrumMapping.pointedPost X p)
-    _ = _ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const _ _
+    _ = _ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const _ _
 
 /-- 一点への Hom は、標準零単体と厳密に同型。 -/
 def pointLoopHomEndpointIso (X : OmegaSpectrum.{u}) :
-    mappingSpace X spectrumPoint ≅ (Δ[0] : SSet.{u}) :=
+    mappingSpace X _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint ≅ (Δ[0] : SSet.{u}) :=
   (mappingPoint_isTerminal X).uniqueUpToIso stdSimplex.isTerminalObj₀
 
 /-- 実際の Hom cospan の各成分を、両端は一点、中央は元の Hom として表示する。 -/
 def pointLoopHomCoefficientComponent (X Y : OmegaSpectrum.{u})
     (i : AsSmall.{u} WalkingCospan) :
-    (simplicialHomDiagram (pointLoopDiagram Y) X).obj i ≅
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X).obj i ≅
       (loopCoefficient (RawSpectrumMapping.pointedSpace X Y.toKanSequence)).obj i :=
   match i with
   | ⟨none⟩ => Iso.refl _
@@ -60,14 +60,14 @@ def pointLoopHomCoefficientComponent (X Y : OmegaSpectrum.{u})
 
 /-- 元の固定図式のスペクトル Hom は、中央を恒等に保って零係数 cospan と自然同型。 -/
 def pointLoopHomCoefficientIso (X Y : OmegaSpectrum.{u}) :
-    simplicialHomDiagram (pointLoopDiagram Y) X ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X ≅
       loopCoefficient (RawSpectrumMapping.pointedSpace X Y.toKanSequence) :=
   NatIso.ofComponents (pointLoopHomCoefficientComponent X Y) (by
     rintro ⟨a⟩ ⟨b⟩ ⟨f⟩
     change WidePullbackShape.Hom a b at f
     cases f with
     | id a =>
-      change (simplicialHomDiagram (pointLoopDiagram Y) X).map (𝟙 (AsSmall.up.obj a)) ≫ _ =
+      change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X).map (𝟙 (AsSmall.up.obj a)) ≫ _ =
         _ ≫ (loopCoefficient (RawSpectrumMapping.pointedSpace X Y.toKanSequence)).map (𝟙 _)
       simp
     | term k =>

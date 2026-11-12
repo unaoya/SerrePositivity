@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierFullSNativeComparison
-public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InvertibleEdge
 
 /-!
 概要：元の上下長 Hom 比較から、実合成端を結ぶ同じ native core Kan 辺を取り出す。
@@ -17,35 +17,35 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (j k : Fin 2)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (j k : Fin 2)
 
 /-- 概要：同じ実合成端間の native core Hom の大きい宇宙での実比較辺。
 方針：元の全長 Hom 比較を全 path で評価し、同じ元の core 包含で制限する。
 規約：下側・上側の実合成端と元の比較円柱を変えない。
 使われ方：指定合成端を保つ上側再構成の長 Hom 入力を組み立てる。 -/
 def verdierNativeCoreCompositeEdge :=
-  let e := simplicialHomotopyVertexEdge
-    (simplicialHomotopyOfFunctorEdge (verdierNullHomFullSNativeComparison d j k).edge)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (verdierNullHomFullSNativeComparison d j k).edge)
     (ComposableArrows.mk₀ coherentTriangleFullPath)
   let q := (pre (C := SSet.{u}) (fullSNativeCoreInclusion
     ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩))).app
       ((stableMultiKanEnrichedFunctor 0).obj ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)).obj
-  uliftTruncatedEdge.{u, u + 1} (e.map q).toTruncated
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.uliftTruncatedEdge.{u, u + 1} (e.map q).toTruncated
 
 /-- 概要：元の合成端の同じ native 比較辺は可逆。
 方針：元の全比較の可逆性を同じ成分評価・core 制限・宇宙持ち上げへ写す。
 規約：整数群の比較や別の存在証人へ置き換えない。
 使われ方：同じ長 Hom 入力の合成端を可逆に合わせる。 -/
 theorem verdierNativeCoreCompositeEdge_isInvertible :
-    IsInvertibleEdge (X := (SSet.uliftFunctor.{u + 1, u}).obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (SSet.uliftFunctor.{u + 1, u}).obj
       ((ihom ((stableMultiKanEnrichedFunctor 0).obj
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj).obj
           ((stableMultiKanEnrichedFunctor 0).obj
             ((verdierNullDiagonal d).obj ⟨ULift.up 1⟩)).obj))
       (verdierNativeCoreCompositeEdge d j k) := by
-  have he := simplicialHomotopyOfFunctorEdge_vertex_isInvertible
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.simplicialHomotopyOfFunctorEdge_vertex_isInvertible
     (verdierNullHomFullSNativeComparison d j k).edge
     (verdierNullHomFullSNativeComparison d j k).invertible
     (ComposableArrows.mk₀ coherentTriangleFullPath)
@@ -72,7 +72,7 @@ def verdierNativeSingleCompositeEdge :=
 規約：元の両端と比較辺を保持する。
 使われ方：再構成入力の指定合成端を可逆に照合する。 -/
 theorem verdierNativeSingleCompositeEdge_isInvertible :
-    IsInvertibleEdge (X := (SSet.uliftFunctor.{u + 1, u}).obj
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (SSet.uliftFunctor.{u + 1, u}).obj
       ((ihom (stableCoreSingleKanObject
         ((verdierNullDiagonal d).obj ⟨ULift.up 0⟩)).obj).obj
           (stableCoreSingleKanObject

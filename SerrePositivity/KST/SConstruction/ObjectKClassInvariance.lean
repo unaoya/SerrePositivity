@@ -33,19 +33,19 @@ lemma objectKClass_eq_of_coreClass_eq (X : StableModel.{u}) (x y : X.carrier _�
 
 /-- 元の可逆な一単体の両端の対象の K 類は一致する。 -/
 lemma objectKClass_invertibleSimplex (X : StableModel.{u}) (s : X.carrier _⦋1⦌)
-    (hs : IsInvertibleEdge (edgeOfSimplex s)) :
+    (hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s)) :
     objectKClass X (X.carrier.δ 1 s) = objectKClass X (X.carrier.δ 0 s) := by
-  let t : (quasicategoryCore X.carrier : SSet.{u}) _⦋1⦌ :=
-    ⟨s, (quasicategoryCore_mem_edge_iff s).mpr hs⟩
+  let t : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore X.carrier : SSet.{u}) _⦋1⦌ :=
+    ⟨s, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_mem_edge_iff s).mpr hs⟩
   apply objectKClass_eq_of_coreClass_eq
-  exact SSet.π₀.sound (SSet.Edge.ofTruncated (edgeOfSimplex t))
+  exact SSet.π₀.sound (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex t))
 
 /-- 元の端点を明示した可逆辺に沿って対象の BF K 類は不変。 -/
 lemma objectKClass_invertibleEdge (X : StableModel.{u}) {x y : X.carrier _⦋0⦌}
     (e : SSet.Truncated.Edge (X := (truncation 2).obj X.carrier) x y)
-    (he : IsInvertibleEdge e) : objectKClass X x = objectKClass X y := by
-  have hs : IsInvertibleEdge (edgeOfSimplex e.edge) :=
-    (isInvertibleEdge_congr (e := e) (f := edgeOfSimplex e.edge) rfl).mp he
+    (he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e) : objectKClass X x = objectKClass X y := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex e.edge) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := e) (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex e.edge) rfl).mp he
   have h := objectKClass_invertibleSimplex X e.edge hs
   have hx : X.carrier.δ 1 e.edge = x := e.src_eq
   have hy : X.carrier.δ 0 e.edge = y := e.tgt_eq
@@ -56,8 +56,8 @@ lemma objectKClass_invertibleEdge (X : StableModel.{u}) {x y : X.carrier _⦋0�
 lemma objectKClass_iso (X : StableModel.{u}) {x y : X.carrier _⦋0⦌}
     (e : SSet.HomotopyCategory.mk (X := X.carrier) x ≅ SSet.HomotopyCategory.mk y) :
     objectKClass X x = objectKClass X y := by
-  obtain ⟨a, ha⟩ := homotopyCategory_homMk_surjective x y e.hom
-  have hi : IsInvertibleEdge a := by
+  obtain ⟨a, ha⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x y e.hom
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a := by
     change IsIso (SSet.Truncated.HomotopyCategory.homMk a)
     rw [ha]
     infer_instance

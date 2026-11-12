@@ -82,7 +82,7 @@ def stableHatGLHomotopyGroupIsColimit (A : SimplicialObject RingCat.{u}) (n : �
 -/
 def stableHatGLHomotopyGroupColimitIso (A : SimplicialObject RingCat.{u}) (n : ℕ) :
     colimit (stableHatGLHomotopyGroupDiagram A n) ≅
-      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
+      GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (monoidSpace (stableHatGL A)) n
         (monoidPointed (stableHatGL A)).basepoint) :=
   (colimit.isColimit _).coconePointUniqueUpToIso (stableHatGLHomotopyGroupIsColimit A n)
 

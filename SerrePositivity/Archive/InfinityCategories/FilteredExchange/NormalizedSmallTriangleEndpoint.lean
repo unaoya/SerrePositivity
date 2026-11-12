@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallRestrictedEndpointVertex
-public import SerrePositivity.InfinityCategories.F1B.IsoEndpointNormalization
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.IsoEndpointNormalization
 
 /-!
 概要：局所三角形比較の下降後の両端を元の小さい実頂点へ正規化する。

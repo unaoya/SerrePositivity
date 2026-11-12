@@ -55,13 +55,13 @@ lemma constantEdge_target {E : SSet.{u}} {x y : E _⦋0⦌} (a : E.Edge x y)
 /-- 定数三辺の二三角形を同じ始点へ移し、元の第四辺・両全三角形を厳密に保存する。 -/
 def constantDiamondAtSourceData {E : SSet.{u}} {x m n z : E _⦋0⦌}
     {a : E.Edge x m} {b : E.Edge m z} {c e : E.Edge x n} {d : E.Edge n z}
-    (D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a b c d)
+    (D : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a b c d)
     (ha : ∃ v, SSet.yonedaEquiv.symm a.edge = SSet.const v)
     (hb : ∃ v, SSet.yonedaEquiv.symm b.edge = SSet.const v)
     (hd : ∃ v, SSet.yonedaEquiv.symm d.edge = SSet.const v)
     (he : ∃ v, SSet.yonedaEquiv.symm e.edge = SSet.const v) :
     Σ c' : E.Edge x x,
-      {D' : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond (SSet.Edge.id x) (SSet.Edge.id x) c' (SSet.Edge.id x) //
+      {D' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond (SSet.Edge.id x) (SSet.Edge.id x) c' (SSet.Edge.id x) //
         c'.edge = c.edge ∧ D'.first.simplex = D.first.simplex ∧
           D'.second.simplex = D.second.simplex} := by
   have hm : m = x := (constantEdge_endpoints a ha).symm

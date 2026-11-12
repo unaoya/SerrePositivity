@@ -1,7 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.PiZeroConstant
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.PiZeroConstant
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanTestDetection
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # anodyne局所化で可逆な射は実際の連結成分の全単射を誘導する
@@ -41,18 +42,19 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.SimplicialModel.PiZeroLocalization
-open PiZeroConstant
+
 variable {X Y : SSet.{v}} {T : Type v}
 
-def classEquiv : HomotopyClasses.obj X (discrete T) ≃ (SSet.π₀ X → T) where
-  toFun := Quot.lift toComponents (fun _ _ ⟨H⟩ => congrArg toComponents (homotopy_eq H))
-  invFun t := HomotopyClasses.mk (fromComponents t)
+@[kerodon 00GQ]
+def classEquiv : HomotopyClasses.obj X (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T) ≃ (SSet.π₀ X → T) where
+  toFun := Quot.lift _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents (fun _ _ ⟨H⟩ => congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homotopy_eq H))
+  invFun t := HomotopyClasses.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.fromComponents t)
   left_inv z := by
     refine Quot.inductionOn z (fun f => ?_)
-    exact congrArg HomotopyClasses.mk (homEquiv.left_inv f)
-  right_inv t := homEquiv.right_inv t
+    exact congrArg HomotopyClasses.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv.left_inv f)
+  right_inv t := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.homEquiv.right_inv t
 
-lemma classEquiv_pre (f : X ⟶ Y) (z : HomotopyClasses.obj Y (discrete T)) :
+lemma classEquiv_pre (f : X ⟶ Y) (z : HomotopyClasses.obj Y (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete T)) :
     classEquiv (HomotopyClasses.pre f z) = classEquiv z ∘ SSet.mapπ₀ f := by
   refine Quot.inductionOn z (fun g => ?_)
   funext c
@@ -71,7 +73,7 @@ lemma precomposition_bijective (f : X ⟶ Y)
     exact congrArg (· ∘ SSet.mapπ₀ f) (eY.apply_symm_apply t).symm
   rw [he]
   exact eX.bijective.comp
-    ((KanTestDetection.tests_of_anodyneQ_isIso f hf _ (discrete_terminal_rlp T)).comp
+    ((KanTestDetection.tests_of_anodyneQ_isIso f hf _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete_terminal_rlp T)).comp
       eY.symm.bijective)
 
 lemma bijective_of_precomposition {A B : Type v} (p : A → B)

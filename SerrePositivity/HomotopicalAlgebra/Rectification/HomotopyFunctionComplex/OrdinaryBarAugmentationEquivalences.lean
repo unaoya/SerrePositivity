@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarEvaluatedEndpoint
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyne
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftPadding
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarAugmentationEquivalences
@@ -69,7 +69,7 @@ lemma large_localized_isIso :
 lemma small_eq : OrdinaryBarEvaluatedEndpoint.smallAugmentation R =
     SSet.uliftFunctor.{max u v, v}.map
       (SimplexNerve.augmentation.app (BarOutput.output R)) ≫
-        (UniverseLift.paddingIso.{v, u}.app (BarOutput.output R)).inv := rfl
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app (BarOutput.output R)).inv := rfl
 
 lemma small_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (OrdinaryBarEvaluatedEndpoint.smallAugmentation R)) := by

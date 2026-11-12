@@ -36,12 +36,12 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 
 /-- 明示した各段の屋根と Perf 同値に条件付きの、元の固定 K からの同じ実構造辺。 -/
 def dgSuspensionRelativeRoofStructureEdge (n : ℕ) :
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A n)))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))) :=
-  (coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R (dgSuspensionIteration R s A n)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgSuspensionIteration R s A (n + 1))))) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionOriginalStructureMap R (dgSuspensionIteration R s A n)
     (dgSuspensionIterationStage R s A n).cone (ρ n) (e n) (Z n))).ofEq rfl
-      (coherentNerveVertex_object _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _)
 
 /-- 明示した各段の屋根と Perf 同値に条件付きの、同じ実構造射を持つ厳密 BF 列。 -/
 def dgSuspensionRelativeRoofSequence : SpectrumSequence.{max (u + 1) v} :=
@@ -49,7 +49,7 @@ def dgSuspensionRelativeRoofSequence : SpectrumSequence.{max (u + 1) v} :=
 
 /-- 明示した各段の屋根と Perf 同値に条件付きで、同じ列の隣接辺は元の loop 反復辺。 -/
 theorem dgSuspensionRelativeRoofSequence_map_succ_edge (n : ℕ) :
-    (coherentNerveEdge ((dgSuspensionRelativeRoofSequence R s A ρ Z e).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((dgSuspensionRelativeRoofSequence R s A ρ Z e).map
       (homOfLE (X := SequentialIndex.{max (u + 1) v}) (Nat.le_succ n)))).edge =
         (dgSuspensionNativeSequenceEdge R s A
           (dgSuspensionRelativeRoofStructureEdge R s A ρ Z e) n).edge := by
@@ -66,13 +66,13 @@ def dgSuspensionRelativeRoofCandidateCocone :=
 
 /-- 明示した各段の屋根と Perf 同値に条件付きで、元の実 Sp 余錐は全写像空間で余極限。 -/
 theorem dgSuspensionRelativeRoofCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionRelativeRoofCandidateCocone R s A ρ Z e) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionRelativeRoofCandidateCocone R s A ρ Z e) :=
   sequentialCandidateColimitCocone_isColimit (dgSuspensionRelativeRoofSequence R s A ρ Z e)
 
 /-- 明示した各段の屋根と Perf 同値に条件付きで、同じ余錐の頂点は元の BF 候補。 -/
 theorem dgSuspensionRelativeRoofCandidateCocone_vertex :
     (dgSuspensionRelativeRoofCandidateCocone R s A ρ Z e).vertex =
-      coherentNerveVertex (dgSuspensionRelativeRoofCandidate R s A ρ Z e) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgSuspensionRelativeRoofCandidate R s A ρ Z e) :=
   sequentialCandidateColimitCocone_vertex (dgSuspensionRelativeRoofSequence R s A ρ Z e)
 
 end SerrePositivity.KST.NonConnective

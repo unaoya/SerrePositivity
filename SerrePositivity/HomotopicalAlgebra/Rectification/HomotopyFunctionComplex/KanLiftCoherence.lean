@@ -50,15 +50,15 @@ local instance : ModelCategory (SimplexCategory ⥤ C) := Reedy.simplexModelCate
 
 /-- Precomposition by the independently chosen lift, before the comparison map. -/
 abbrev chosenMap (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C) :
-    (cosimplicialHom Y.resolution.obj).obj Z ⟶
-      (cosimplicialHom X.resolution.obj).obj Z :=
-  (cosimplicialHomMap (ResolutionObject.lift f).diagram).app Z
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z ⟶
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj).obj Z :=
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (ResolutionObject.lift f).diagram).app Z
 
 /-- An actual family of actions, parameterized by a simplicial interval. -/
 abbrev intervalAction (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
     (e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ ResolutionLiftSpace.obj X Y f) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⨯
-        (cosimplicialHom Y.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z ⟶ KanLiftAction.target hcof hfib X Z :=
   KanLiftAction.parameterized hcof hfib X Y f Z (prod.fst ≫ e) prod.snd
 
 lemma intervalAction_face (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
@@ -75,7 +75,7 @@ lemma intervalAction_face (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z 
 lemma intervalAction_target_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
     {Z Z' : C} (h : Z ⟶ Z')
     (e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ ResolutionLiftSpace.obj X Y f) :
-    prod.map (𝟙 _) ((cosimplicialHom Y.resolution.obj).map h) ≫
+    prod.map (𝟙 _) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).map h) ≫
         intervalAction hcof hfib X Y f Z' e =
       intervalAction hcof hfib X Y f Z e ≫ (KanLiftAction.targetFunctor hcof hfib X).map h := by
   rw [intervalAction, KanLiftAction.parameterized_naturality]
@@ -108,7 +108,7 @@ lemma chosen_comparison {X Y : ResolutionObject C} (f : X ⟶ Y) :
           prod.snd ≫ chosenMap X Y f.base Z ≫ KanLiftAction.comparison hcof hfib X Z ∧
         prod.map (SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin 2))) (𝟙 _) ≫
             intervalAction hcof hfib X Y f.base Z e =
-          prod.snd ≫ (cosimplicialHomMap f.diagram).app Z ≫
+          prod.snd ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.diagram).app Z ≫
             KanLiftAction.comparison hcof hfib X Z := by
   obtain ⟨e, hs, ht⟩ := ResolutionLiftSpace.interval hcof X Y f.base
     (ResolutionLiftSpace.ofLift (ResolutionObject.lift f.base)) (ResolutionLiftSpace.ofLift f)
@@ -131,7 +131,7 @@ lemma identity (X : ResolutionObject C) :
           prod.snd ≫ KanLiftAction.comparison hcof hfib X Z := by
   obtain ⟨e, he⟩ := chosen_comparison hcof hfib (𝟙 X)
   refine ⟨e, fun Z => ⟨(he Z).1, (he Z).2.trans ?_⟩⟩
-  have hi : (cosimplicialHomMap (ResolutionObject.Hom.diagram (𝟙 X))).app Z = 𝟙 _ := by
+  have hi : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (ResolutionObject.Hom.diagram (𝟙 X))).app Z = 𝟙 _ := by
     ext n x
     exact Category.id_comp x
   rw [hi, Category.id_comp]
@@ -153,7 +153,7 @@ lemma composition (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base)
   obtain ⟨e, he⟩ := chosen_comparison hcof hfib
     ((ResolutionObject.lift f : X ⟶ Y) ≫ (ResolutionObject.lift g : Y ⟶ W))
   refine ⟨e, fun Z => ⟨(he Z).1, (he Z).2.trans ?_⟩⟩
-  have hc : (cosimplicialHomMap
+  have hc : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
         ((ResolutionObject.lift f : X ⟶ Y) ≫ (ResolutionObject.lift g : Y ⟶ W)).diagram).app Z =
       chosenMap Y W g Z ≫ chosenMap X Y f Z := by
     ext n x

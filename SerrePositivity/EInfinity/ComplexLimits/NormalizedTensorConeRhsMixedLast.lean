@@ -15,14 +15,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_rhs_mixed_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) (ha0 : a = 0)
     (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I) :
     HEq ((normalizedTensorConeData A X Y c).rhs I a b k hI ha hb hk)
@@ -43,7 +43,7 @@ lemma normalizedTensorConeData_rhs_mixed_last {n : ℕ}
   let f (j : J) : GradedHom A X
       ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n))) (k + 1) :=
     (normalizedTensorElementUniversalLinear A X Y c).val.component (J.erase j.val) (k + 1)
-      (PinchedHom.LinearData.erase_nonempty hJ _ j.property)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ j.property)
       (by have := Finset.card_erase_add_one j.property; omega)
   have hx : (normalizedTensorConeData A X Y c).obj a = X := by
     change normalizedTensorConeObj A X Y c a = X
@@ -59,15 +59,15 @@ lemma normalizedTensorConeData_rhs_mixed_last {n : ℕ}
     have he := Finset.card_erase_add_one hm
     omega
   have hcut := normalizedTensorConeData_terminal_cut_component A X Y c I a b k
-    hI ha hb hk hc ha0 hbl h0 (PinchedHom.LinearData.erase_nonempty hJ _ hm) hdeg
+    hI ha hb hk hc ha0 hbl h0 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.erase_nonempty hJ _ hm) hdeg
   have hsum : (∑ j : J, if j.val < Fin.last n then
-      Index.sign J j.val • ((k + 1).negOnePow • f j) else 0) +
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign J j.val • ((k + 1).negOnePow • f j) else 0) +
       (k + 1).negOnePow • f ⟨Fin.last n, hm⟩ =
       k.negOnePow • (normalizedTensorElementUniversalLinear A X Y c).val.rhs J k hkJ := by
-    unfold PinchedHom.LinearData.rhs
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.rhs
     rw [dite_eq_left hJ]
     exact sum_restore_terminal_linear J hm f k
   rw [normalizedTensorConeData_rhs_reduced A X Y c I a b k hI ha hb hk hc]
-  exact (gradedHom_add_heq (A := A) hx hy rfl _ _ _ _ hlin hcut).trans (heq_of_eq hsum)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_add_heq (A := A) hx hy rfl _ _ _ _ hlin hcut).trans (heq_of_eq hsum)
 
 end SerrePositivity.EInfinity.ComplexLimits

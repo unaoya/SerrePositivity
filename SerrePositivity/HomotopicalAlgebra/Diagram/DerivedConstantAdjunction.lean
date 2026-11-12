@@ -22,7 +22,7 @@ open SerrePositivity.Quillen
 
 namespace SerrePositivity.DiagramModel.HomotopyCones
 variable (K : Type w) [SmallCategory K] [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{w})]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
 

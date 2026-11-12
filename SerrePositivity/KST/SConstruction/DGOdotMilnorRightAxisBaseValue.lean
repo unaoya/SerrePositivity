@@ -17,18 +17,18 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
 local notation "X" => dgPerfectComparisonFamily R (Q) (F) (G)
 local notation "T" => DGPerfectComparisonBase R (Q) (F) (G)
 local notation "I" => DGFunctor.id (T)
-local notation "H" => DGGluingObject R (T) (T) (dgHomGluingBimodule R (T) (T) (T) (I) (I))
+local notation "H" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (T) (T) (dgHomGluingBimodule R (T) (T) (T) (I) (I))
 local notation "Y" => dgHomGluingLoopConeFamily R (T) (T) (T) (I) (I)
 local notation "U" => DGOdotMilnorRightAxisBase R d
-local instance : IsDGPretriangulated R (B) := dgGluingMilnor_isDGPretriangulated R d
-local instance : IsDGPretriangulated R (P) := dgCellResolutionSource_isDGPretriangulated R (B)
+local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (B) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingMilnor_isDGPretriangulated R d
+local instance : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (P) := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (B)
 
 /-- 概要：同じ二実像包絡の固定 ν 頂点。
 方針：元の二成分を含む同じ小模型を持ち上げる。
@@ -39,7 +39,7 @@ def dgOdotMilnorRightAxisComparisonBaseInput : PerfDGInput.{u, u + 1} R :=
 /-- 概要：元二実像小基底の ν 値と同じ resolved 商 ν 値の指定同値。
 方針：同じ包絡の実包含・Perf 評価を使用する。
 規約：同じ商を保持。使われ方：元二成分の終域照合。 -/
-def dgOdotMilnorRightAxisComparisonBaseValueEquivalence : QCatEquivalence
+def dgOdotMilnorRightAxisComparisonBaseValueEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorRightAxisComparisonBaseInput R d)).obj
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)).obj :=
   dgSmallPerfectEnvelopeValueEquivalence R (Q) ((P) ⊕ (P)) (X)
@@ -47,7 +47,7 @@ def dgOdotMilnorRightAxisComparisonBaseValueEquivalence : QCatEquivalence
 /-- 概要：同じ逆回転小基底の ν 値を同じ二実像小基底の ν 値へ戻す。
 方針：元 cone・二重 shift の指定族の全包絡評価を使う。
 規約：元実像を保持。使われ方：二段評価の第一段。 -/
-def dgOdotMilnorRightAxisBaseStepValueEquivalence : QCatEquivalence
+def dgOdotMilnorRightAxisBaseStepValueEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorRightAxisIdentityBaseInput R d)).obj
     (dgKInputStableValue R (dgOdotMilnorRightAxisComparisonBaseInput R d)).obj :=
   dgSmallPerfectEnvelopeValueEquivalence R (T) ((H) ⊕ (H)) (Y)
@@ -55,7 +55,7 @@ def dgOdotMilnorRightAxisBaseStepValueEquivalence : QCatEquivalence
 /-- 概要：同じ逆回転基底の ν 値と元 resolved 商 ν 値の指定同値。
 方針：二段の同じ包絡評価を合成する。
 規約：元の商・二実像・実 cone を保持。使われ方：実右面の対角始域。 -/
-def dgOdotMilnorRightAxisBaseValueEquivalence : QCatEquivalence
+def dgOdotMilnorRightAxisBaseValueEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorRightAxisIdentityBaseInput R d)).obj
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)).obj :=
   (dgOdotMilnorRightAxisBaseStepValueEquivalence R d).trans
@@ -64,7 +64,7 @@ def dgOdotMilnorRightAxisBaseValueEquivalence : QCatEquivalence
 /-- 概要：同じ二段値同値は元逆回転基底の実包絡評価を全回収する。
 方針：第一段の元 native 評価同型を第二段で後合成する。
 規約：全関手同型を保持。使われ方：D2 基底変更の指定頂点比較。 -/
-def dgOdotMilnorRightAxisBaseValueEquivalence_native : FunctorIso
+def dgOdotMilnorRightAxisBaseValueEquivalence_native : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (dgKNativeValueComparison R (U) ≫ (dgOdotMilnorRightAxisBaseValueEquivalence R d).hom)
     (((dgSmallPerfectEnvelopeNerveEquivalence R (T) ((H) ⊕ (H)) (Y)).hom ≫
       (dgKNativePerfectValueEquivalence R (T)).hom) ≫
@@ -75,7 +75,7 @@ def dgOdotMilnorRightAxisBaseValueEquivalence_native : FunctorIso
 /-- 概要：同じ実差終域の ν 値を同じ resolved 商値へ戻す指定同値。
 方針：実 cone 全像評価と同じ二段包絡評価を合成する。
 規約：元の実差を変更しない。使われ方：実右面の商終域。 -/
-def dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence : QCatEquivalence
+def dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotMilnorRightAxisIdentityDifferenceInput R d)).obj
     (dgKInputStableValue R (dgOdotMilnorResolvedInput R d)).obj :=
   (dgOdotMilnorRightAxisIdentityDifferenceValueEquivalence R d).trans
@@ -84,22 +84,22 @@ def dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence : QCatEquivalence
 /-- 概要：同じ第一成分の固定 ν 辺は元 graph Perf 延長を全回収する。
 方針：元の指定二像への厳密持ち上げに同じ ν 比較を適用する。
 規約：元関手の全 Hom 作用を保持。使われ方：中央比較の第一境界。 -/
-def dgOdotMilnorRightAxisSourceComponentNuComparison : FunctorIso
+def dgOdotMilnorRightAxisSourceComponentNuComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (dgKNativeValueComparison R (P) ≫
       (dgKNativeInputExactMap R (P) (T) (dgPerfectComparisonFirst R (Q) (F) (G))).hom ≫
       (dgOdotMilnorRightAxisComparisonBaseValueEquivalence R d).hom)
-    (dgNerve.map (F) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (F) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom) :=
   dgSmallPerfectEnvelopeLiftNuComparison R (Q) ((P) ⊕ (P)) (X) (P) (F) Sum.inl
     (fun _ => rfl)
 
 /-- 概要：同じ第二成分の固定 ν 辺は元恒等 graph Perf 延長を全回収する。
 方針：元の指定二像への厳密持ち上げに同じ ν 比較を適用する。
 規約：元関手を共役で置換しない。使われ方：中央比較の第二境界。 -/
-def dgOdotMilnorRightAxisTargetComponentNuComparison : FunctorIso
+def dgOdotMilnorRightAxisTargetComponentNuComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (dgKNativeValueComparison R (P) ≫
       (dgKNativeInputExactMap R (P) (T) (dgPerfectComparisonSecond R (Q) (F) (G))).hom ≫
       (dgOdotMilnorRightAxisComparisonBaseValueEquivalence R d).hom)
-    (dgNerve.map (G) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (G) ≫ (dgKNativePerfectValueEquivalence R (Q)).hom) :=
   dgSmallPerfectEnvelopeLiftNuComparison R (Q) ((P) ⊕ (P)) (X) (P) (G) Sum.inr
     (fun _ => rfl)
 

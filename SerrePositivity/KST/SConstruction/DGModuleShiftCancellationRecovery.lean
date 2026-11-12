@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationStrict
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma familyArrow {P : Type (max (u + 1) v)} [DGCategory R P]
     (F G : DGFunctor R P (RightModule R D))
@@ -21,7 +21,7 @@ private lemma familyArrow {P : Type (max (u + 1) v)} [DGCategory R P]
       eHomWhiskerLeft (Complex R) (ForgetEnrichment.of (Complex R) (F.obj x)) (a y) =
       G.map x y ≫ eHomWhiskerRight (Complex R) (a x)
         (ForgetEnrichment.of (Complex R) (G.obj y))) (x : P) :
-    dgModuleNaturalConeArrow R D F G (dgModuleStrictNatTransOfHomNaturality R D a h) x =
+    dgModuleNaturalConeArrow R D F G (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D a h) x =
       a x := by
   change (closedHomEquiv R (RightModule R D) _ _).symm
     ((closedHomEquiv R (RightModule R D) _ _) (a x)) = _

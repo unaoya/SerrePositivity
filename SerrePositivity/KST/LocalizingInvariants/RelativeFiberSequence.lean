@@ -15,8 +15,8 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsRelativeLocalizingInvariant
-variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}} {E : S ⟶ Sp.{u}}
-  (hE : IsRelativeLocalizingInvariant ν E) (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram ν)
+variable {S : SSet.{u + 1}} {ν : S ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}} {E : S ⟶ Sp.{u}}
+  (hE : IsRelativeLocalizingInvariant ν E) (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram ν)
 
 /-- 同じ E 像の三頂点の整数 π 群。 -/
 abbrev group (i k : Fin 2) (j : ℤ) := NativeFiber.group (hE.fiberTriangle d) i k j

@@ -30,7 +30,7 @@ variable (K : SSet.{u}) (X : PointedSimplicialSet.{u}) [KanComplex X.right]
 規約：係数の実際の次数は n+r+2。
 使われ方：Goerss–Jardine VIII §1。塔の微分を係数へ移す群。 -/
 abbrev coefficientGroup (n r : ℕ) :=
-  K.nonDegenerate (n + 1) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right (n + 1 + r) X.basepoint
+  K.nonDegenerate (n + 1) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right (n + 1 + r) X.basepoint
 
 /-- 概要：実際の骨格の微分をセルごとの係数へ移した群準同型。
 方針：始域の fiber の群同型の逆、幾何的微分、終域の群同型を合成する。
@@ -53,7 +53,7 @@ lemma coefficientDifferential_apply (n r : ℕ) (a : coefficientGroup K X n (r +
 規約：群同型そのものによる可換式。
 使われ方：Goerss–Jardine VIII §1。係数微分を幾何的な微分へ戻す界面。 -/
 lemma stageFiberCoefficientEquiv_differential (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right (r + 1)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right (r + 1)
       (UnbasedPointedMapping.stageFiber K X n).basepoint) :
     coefficientDifferential K X n r (stageFiberCoefficientEquiv K X n (r + 1) a) =
       stageFiberCoefficientEquiv K X (n + 1) r

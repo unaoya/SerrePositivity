@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredFiniteLimits
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FilteredKanFibrations
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanDiagramOfSSet
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredFiniteLimits
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FilteredKanFibrations
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanDiagramOfSSet
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FilteredKanColimitNative
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpacePullbacks
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.SpacePullbacks
 public import Mathlib.CategoryTheory.Limits.FunctorCategory.Shapes.Pullbacks
 
 /-!

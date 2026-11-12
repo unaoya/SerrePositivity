@@ -16,13 +16,13 @@ open CategoryTheory Simplicial SSet
 def necklaceInSimplexSubsetAt {n : ℕ} (I : Finset (Fin (n + 1))) (a b : Fin (n + 1))
     (hI : 2 ≤ I.card) (ha : a = I.min' (Finset.card_pos.mp (by omega)))
     (hb : b = I.max' (Finset.card_pos.mp (by omega))) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) where
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn (Δ[n] : SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) where
   necklace := (necklaceInSimplexSubset I hI).necklace
   map := (necklaceInSimplexSubset I hI).map
   map_first := (necklaceInSimplexSubset I hI).map_first.trans
-    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex ha.symm)
+    (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex ha.symm)
   map_last := (necklaceInSimplexSubset I hI).map_last.trans
-    (congrArg _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex hb.symm)
+    (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex hb.symm)
 
 /-- 元の標準の最小・最大端点で読むと、元の同じ部分集合 bead そのもの。 -/
 lemma necklaceInSimplexSubsetAt_canonical {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :

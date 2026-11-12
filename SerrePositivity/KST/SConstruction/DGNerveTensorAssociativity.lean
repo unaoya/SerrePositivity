@@ -30,17 +30,17 @@ lemma cubicalLambdaNerveTensor_associativity :
 
 /-- native tensor 比較の二回適用は、実 dg tensor の結合関手と全単体で一致。 -/
 lemma dgNerveTensor_associativity :
-    (dgNerveTensor A D E ⊗ₘ 𝟙 (dgNerve A B)) ≫
+    (dgNerveTensor A D E ⊗ₘ 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A B)) ≫
         dgNerveTensor A (DGTensorCategory A D E) B ≫
-        dgNerve.map (dgTensorAssociator A D E B) =
-      (α_ (dgNerve A D) (dgNerve A E) (dgNerve A B)).hom ≫
-        (𝟙 (dgNerve A D) ⊗ₘ dgNerveTensor A E B) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgTensorAssociator A D E B) =
+      (α_ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A E) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A B)).hom ≫
+        (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A D) ⊗ₘ dgNerveTensor A E B) ≫
         dgNerveTensor A D (DGTensorCategory A E B) := by
   ext n p
   rcases p with ⟨⟨s, t⟩, r⟩
-  change DGNerve.Simplex A D n.unop.len at s
-  change DGNerve.Simplex A E n.unop.len at t
-  change DGNerve.Simplex A B n.unop.len at r
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n.unop.len at s
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A E n.unop.len at t
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A B n.unop.len at r
   change (cubicalLambdaNativeSimplex A
       (cubicalLambdaFunctorPair A
         (simplexHAInverseFunctor A (cubicalLambdaNativeSimplex A

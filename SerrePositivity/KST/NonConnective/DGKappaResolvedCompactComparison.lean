@@ -14,7 +14,7 @@ universe u v
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R A κ) (P : DGKappaPerfectInput R A I)
 local notation "B" => dgKappaResolvedKernelKInput R A I
@@ -23,13 +23,13 @@ local notation "B" => dgKappaResolvedKernelKInput R A I
 def dgKappaResolvedCompactMoritaMap :=
   (dgKInputCompactGenerationEquivalence R A).inv ≫
     (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map
-      (dgKappaNativeMoritaExactMap R A I P).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaExactMap R A I P).hom ≫
         (dgKInputCompactGenerationEquivalence R B).hom
 
 /-- 同じ compact 作用は、実小核と元の入力の compact 部分の同値である。 -/
 def dgKappaResolvedCompactEquivalence :=
   ((dgKInputCompactGenerationEquivalence R A).symm.trans
-    (IsQCatEquivalence.ulift.{max (u + 1) v, max (u + 1) v + 1}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{max (u + 1) v, max (u + 1) v + 1}
       (dgKappaResolvedKernelPerfQCatEquivalence R A I P).isQCatEquivalence).choose).trans
         (dgKInputCompactGenerationEquivalence R B)
 
@@ -39,22 +39,22 @@ theorem dgKappaResolvedCompactEquivalence_hom :
 
 /-- 同じ Ind 評価同値と元の compact 包含は、全関手同型で可換する。 -/
 def dgKappaResolvedIndCompactInclusionIso :
-    FunctorIso
-      (Compact.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A) ≫
         dgKappaResolvedIndMoritaMap R A I P)
       (dgKappaResolvedCompactMoritaMap R A I P ≫
-        Compact.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R B)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R B)) := by
   let q := (dgKInputCompactGenerationEquivalence R A).inv
   let F := dgKappaResolvedIndMoritaMap R A I P
-  have ej : FunctorIso
-      (Compact.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A))
-      (q ≫ indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj) := by
+  have ej : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A))
+      (q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj) := by
     simpa only [Category.id_comp, q] using!
       (dgKInputCompactGeneration_familyIso R A (𝟙 _)).symm
   have e₀ := ej.postcomp F
   have e₁ := (dgKappaResolvedIndEquivalence_restrictionIso R A I P).precomp q
   have h : dgKappaResolvedCompactMoritaMap R A I P ≫
-      Compact.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R B) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R B) =
         q ≫ dgKappaResolvedIndMoritaGenerator R A I P := by
     simp only [dgKappaResolvedCompactMoritaMap, Category.assoc,
       dgKInputCompactGenerationEquivalence_inclusion]
@@ -65,18 +65,18 @@ def dgKappaResolvedIndCompactInclusionIso :
 /-- 任意の compact 入力全族でも、同じ実小核への包含比較を使う。 -/
 def dgKappaResolvedIndCompactParameterIso
     {T : SSet.{max (u + 1) v + 1}}
-    (a : T ⟶ Compact.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
+    (a : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
       Cardinal.aleph0 (dgKInputIndCompletion R A)) :=
   (dgKappaResolvedIndCompactInclusionIso R A I P).precomp a
 
 /-- 比較の再制限は全次数で元のパラメータ合成と厳密に一致する。 -/
 theorem dgKappaResolvedIndCompactParameterIso_precomp
     {S T : SSet.{max (u + 1) v + 1}}
-    (a : T ⟶ Compact.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
+    (a : T ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
       Cardinal.aleph0 (dgKInputIndCompletion R A))
     (r : S ⟶ T) :
     (dgKappaResolvedIndCompactParameterIso R A I P a).precomp r =
       dgKappaResolvedIndCompactParameterIso R A I P (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 end SerrePositivity.KST.NonConnective

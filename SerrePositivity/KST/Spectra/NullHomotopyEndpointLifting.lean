@@ -26,7 +26,7 @@ theorem exists_lift {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     (T : PtSimplex.RelStruct .const t (Fin.last (n + 1))) :
     ∃ s : E.PtSimplex (n + 1) e,
       ∃ R : PtSimplex.RelStruct .const s (Fin.last (n + 1)),
-        _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex p hb s = t ∧ R.map ≫ p = T.map := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex p hb s = t ∧ R.map ≫ p = T.map := by
   have hc : horn.IsCompatible (i := Fin.last (n + 2))
       (fun _ _ ↦ (SSet.const e : (Δ[n + 1] : SSet.{u}) ⟶ E)) := by
     rw [horn.isCompatible_iff]
@@ -34,7 +34,7 @@ theorem exists_lift {E B : SSet.{u}} (p : E ⟶ B) [Fibration p]
     simp only [comp_const]
   have hd (j : Fin (n + 3)) (hj : j ≠ Fin.last (n + 2)) :
       (SSet.const e : (Δ[n + 1] : SSet.{u}) ⟶ E) ≫ p = stdSimplex.δ j ≫ T.map := by
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, ite_eq_right hj, const_comp, hb]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.null_face, ite_eq_right hj, const_comp, hb]
   obtain ⟨φ, hφ, hp⟩ := hc.exists_lift p T.map hd
   let s : E.PtSimplex (n + 1) e := {
     map := stdSimplex.δ (Fin.last (n + 2)) ≫ φ

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.ContinuousKanRelativeReflection
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.CylinderBoundaryMono
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanRelativeReflection
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CylinderBoundaryMono
 
 /-!
 概要：Kan 置換内の指定 path を、元の両端を固定した比較とともに元の Kan 対象へ戻す。

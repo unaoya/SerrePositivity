@@ -39,8 +39,8 @@ def closedCofiberProjectionExact {B : StableModel.{u}} (P : ClosedStablePredicat
 方針：元の射影と定義上一致。規約：追加仮定なし。
 使われ方：実引き戻し模型の安定性。 -/
 instance closedCofiberProjectionExact_trivialKan {B : StableModel.{u}}
-    (P : ClosedStablePredicate B) : TrivialKanFibration (closedCofiberProjectionExact P).val :=
-  inferInstanceAs (TrivialKanFibration (closedCofiberProjection P))
+    (P : ClosedStablePredicate B) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (closedCofiberProjectionExact P).val :=
+  inferInstanceAs (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (closedCofiberProjection P))
 
 /-- 概要：元の cofiber 射影の始点は相対 subobject。
 方針：底辺の始点評価を元の四角形の評価へ戻す。
@@ -49,22 +49,22 @@ lemma closedCofiberProjection_source {B : StableModel.{u}} (P : ClosedStablePred
     closedCofiberProjectionExact P ≫ closedArrowSource P =
       relativeCofiberSubobject (ClosedStablePredicate.top B) P := by
   apply Subtype.ext
-  apply (cancel_mono (fullSubcomplexOnVertices B.carrier
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices B.carrier
     (ClosedStablePredicate.top B).predicate).ι).1
   change closedCofiberProjection P ≫
-    (((fullSubcomplexOnVertices _ (closedArrowPredicate P).predicate).ι ≫
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (closedArrowPredicate P).predicate).ι ≫
       (pre (stdSimplex.δ (1 : Fin 2))).app B.carrier) ≫
-        evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 1))) =
     (relativeCofiberInclusion (ClosedStablePredicate.top B) P).val ≫
       (cofiberStableSubobject B).val
   have hi : closedCofiberProjection P ≫
-      (fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj B.carrier)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom (Δ[1] : SSet.{u})).obj B.carrier)
         (closedArrowPredicate P).predicate).ι =
       (relativeCofiberInclusion (ClosedStablePredicate.top B) P).val ≫
         cofiberProjection B.carrier := fullPredicateMap_ι _ _ _ _
-  rw [Category.assoc, stable_pre_evaluateFunctorAt, ← Category.assoc]
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt, ← Category.assoc]
   have he := congrArg (fun f => f ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) hi
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2))) hi
   exact he.trans (Category.assoc _ _ _)
 
 /-- 概要：最後の辺の全相対 cofiber 補完の安定模型。

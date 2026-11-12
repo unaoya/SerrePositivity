@@ -54,7 +54,7 @@ def monicKTracedTripleBFSecondEdgeData (n : ℕ) :=
 
 /-- 元の同じ BF 全二面を持ち、他の五組と端点型の揃った実 diamond。 -/
 def monicKTracedTripleBFDiamond (n : ℕ) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond.mk (monicKTracedTripleBFFirstEdgeData F f g h n).direct
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond.mk (monicKTracedTripleBFFirstEdgeData F f g h n).direct
     (monicKTracedTripleBFFirstEdgeData F f g h n).triangle
     (monicKTracedTripleBFSecondEdgeData F f g h n).triangle
 

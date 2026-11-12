@@ -23,11 +23,11 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 合成補正の前半は、前の射の元の全補正を元の後続射で後合成した区間。 -/
 def monicKPrismCompositeFirstTrace (n : ℕ) :
-    List ((nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ⊗ (Δ[1] : SSet.{u}) ⟶
+    List ((nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ⊗ (Δ[1] : SSet.{u}) ⟶
       (PointedObject.basedHom ((kOmegaSpectrum (F.obj x)).level n).space
         ((kKanSequence (F.obj z)).level n).space).right) :=
-  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
-  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)
   (familyHomotopyChainTrace (monicKPrismTracedStage F f n).chain).map
     (fun h => (fst P Q ▷ (Δ[1] : SSet.{u})) ≫ h ≫
       (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
@@ -35,11 +35,11 @@ def monicKPrismCompositeFirstTrace (n : ℕ) :
 
 /-- 合成補正の後半は、後ろの元の全補正を前の同じ BF 族と合成した区間。 -/
 def monicKPrismCompositeSecondTrace (n : ℕ) :
-    List ((nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ⊗ (Δ[1] : SSet.{u}) ⟶
+    List ((nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⊗ nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ⊗ (Δ[1] : SSet.{u}) ⟶
       (PointedObject.basedHom ((kOmegaSpectrum (F.obj x)).level n).space
         ((kKanSequence (F.obj z)).level n).space).right) :=
-  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
-  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)
   (familyHomotopyChainTrace (monicKPrismTracedStage F g n).chain).map (fun h =>
     lift (fst (P ⊗ Q) (Δ[1] : SSet.{u}) ≫ fst P Q ≫ monicKPrismTracedBFFamily F f ≫
       OmegaSpectrum.evaluation (kOmegaSpectrum (F.obj x)) (kOmegaSpectrum (F.obj y)) n)
@@ -59,7 +59,7 @@ lemma monicKPrismTracedCompositeCorrectionChain_trace (n : ℕ) :
 
 /-- 合成族の指定頂点は、先に選んだ同じ二つの BF 境界の実合成を回収する。 -/
 lemma monicKPrismTracedCompositionFamily_boundary :
-    (nervePoint (coherentArrowStringDirect f) ⊗ₘ nervePoint (coherentArrowStringDirect g)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g)) ≫
       monicKPrismTracedCompositionFamily F f g =
       lift (fst (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ monicKPrismTracedBFBoundary F f)
         (snd (Δ[0] : SSet.{u}) (Δ[0] : SSet.{u}) ≫ monicKPrismTracedBFBoundary F g) ≫

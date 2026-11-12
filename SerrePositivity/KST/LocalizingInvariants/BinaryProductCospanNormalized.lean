@@ -22,12 +22,12 @@ namespace SerrePositivity.KST.LocalizingInvariants.BinaryProductCospanNormalized
 local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
 variable {T X Y Z : OmegaSpectrum.{u}} (a : T ⟶ X) (b : T ⟶ Y) (f : X ⟶ Z) (g : Y ⟶ Z)
   (hc : SpectrumHo.hom a ≫ SpectrumHo.hom f = SpectrumHo.hom b ≫ SpectrumHo.hom g)
-  (S : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u}) (hS : IsPullbackSquare S)
-  (ht : squareTopEdge ≫ S = SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f g)).edge)
-  (hr : squareRightEdge ≫ S =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.diagonal Z)).edge)
-  (hl : squareLeftEdge ≫ S =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge)
+  (S : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u}) (hS : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare S)
+  (ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ S = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f g)).edge)
+  (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ S =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (BinaryGraph.diagonal Z)).edge)
+  (hl : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ S =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift a b)).edge)
 
 lemma left_class : Truncated.HomotopyCategory.homMk
     (NativeSquareRows.left a g (BinaryProductCospan.square a b f g hc S hS ht hr hl)
@@ -47,13 +47,13 @@ lemma left_class : Truncated.HomotopyCategory.homMk
         (BinaryProductDiagonal.square_bottom a b f g hc S hS ht hr hl)
         (BinaryProductDiagonal.square_top a b f g hc S hS ht hr)).toTruncated := by
     apply Truncated.Edge.ext
-    change (squareLeftArrow (BinaryProductCospan.square a b f g hc S hS ht hr hl)).edge =
-      (squareLeftArrow (BinaryProductDiagonal.square a b f g hc S hS ht hr)).edge
-    rw [squareLeftArrow_edge, squareLeftArrow_edge]
+    change (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (BinaryProductCospan.square a b f g hc S hS ht hr hl)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow (BinaryProductDiagonal.square a b f g hc S hS ht hr)).edge
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareLeftArrow_edge]
     apply congrArg SSet.yonedaEquiv
-    change squareLeftEdge ≫ pastingSquare
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare
       (BinaryProductCospan.rectangle a b f g hc S hS ht hr hl).diagram 1 = _
-    rw [pastingSquare_outer_leftEdge,
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare_outer_leftEdge,
       (BinaryProductCospan.rectangle a b f g hc S hS ht hr hl).left_eq]
   exact (congrArg Truncated.HomotopyCategory.homMk he).trans hfront
 
@@ -64,24 +64,24 @@ def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} :=
     (BinaryProductCospan.square_right a b f g hc S hS ht hr hl)
     (left_class a b f g hc S hS ht hr hl)
 
-lemma square_isPullback : IsPullbackSquare (square a b f g hc S hS ht hr hl) :=
+lemma square_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square a b f g hc S hS ht hr hl) :=
   SquareLeftNormalization.square_isPullback _ _ _ _ _ _ _ _ _
     (BinaryProductCospan.square_isPullback a b f g hc S hS ht hr hl)
 
-lemma square_bottom : squareBottomEdge ≫ square a b f g hc S hS ht hr hl =
-    SSet.yonedaEquiv.symm (coherentNerveEdge a).edge :=
+lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square a b f g hc S hS ht hr hl =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge a).edge :=
   SquareLeftNormalization.square_bottom _ _ _ _ _ _ _ _ _
 
-lemma square_top : squareTopEdge ≫ square a b f g hc S hS ht hr hl =
-    SSet.yonedaEquiv.symm (coherentNerveEdge g).edge :=
+lemma square_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ square a b f g hc S hS ht hr hl =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).edge :=
   SquareLeftNormalization.square_top _ _ _ _ _ _ _ _ _
 
-lemma square_left : squareLeftEdge ≫ square a b f g hc S hS ht hr hl =
-    SSet.yonedaEquiv.symm (coherentNerveEdge b).edge :=
+lemma square_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ square a b f g hc S hS ht hr hl =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).edge :=
   SquareLeftNormalization.square_left _ _ _ _ _ _ _ _ _
 
-lemma square_right : squareRightEdge ≫ square a b f g hc S hS ht hr hl =
-    SSet.yonedaEquiv.symm (coherentNerveEdge f).edge :=
+lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ square a b f g hc S hS ht hr hl =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge :=
   SquareLeftNormalization.square_right _ _ _ _ _ _ _ _ _
 
 end SerrePositivity.KST.LocalizingInvariants.BinaryProductCospanNormalized

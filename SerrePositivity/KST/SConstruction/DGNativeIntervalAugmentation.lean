@@ -12,17 +12,17 @@ public import SerrePositivity.KST.SConstruction.CubicalLambdaPointPair
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories
 open scoped Simplicial ComonObj
 
 /-- 概要：元一単体の厳密区間 Hom 作用は同じ増大後の元閉辺。
 方針：元零次元 cube の実復元と余モノイド比較を照合する。
 規約：全複体射の等号。使われ方：元 end 辺の全 Hom 評価。 -/
 lemma simplexHAEdgeHomMap_augmentation (R : Type u) [CommRing R] (E : Type v) [DGCategory R E]
-    (s : Simplex R E 1) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1) :
     simplexHAHomMap R s 0 1 =
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 1)).X] ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 1)).X] ≫
           unitFromCycle _ (s.edgeCycle 0 1 (by decide)) := by
   rw [simplexHAHomMap_of_lt R s 0 1 (by decide)]
   unfold simplexHAIntervalHomMap simplexHAIntervalChainLift
@@ -36,12 +36,12 @@ lemma simplexHAEdgeHomMap_augmentation (R : Type u) [CommRing R] (E : Type v) [D
       unitFromCycle _ (s.edgeCycle 0 1 (by decide)) = _
   have he : (simplexIntervalLambdaHomIso R (0 : Fin 2) 1 (by decide)).hom ≫
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 1)).X] =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 1)).X] =
       𝟙 (𝟙_ (Complex R)) :=
     simplexIntervalLambdaHomIso_augmentation R (0 : Fin 2) 1 (by decide)
   have hi : (simplexIntervalLambdaHomIso R (0 : Fin 2) 1 (by decide)).inv =
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 1)).X] :=
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 1)).X] :=
     (cancel_epi (simplexIntervalLambdaHomIso R (0 : Fin 2) 1 (by decide)).hom).mp
       ((simplexIntervalLambdaHomIso R (0 : Fin 2) 1 (by decide)).hom_inv_id.trans he.symm)
   exact congrArg (fun f => f ≫ unitFromCycle _ (s.edgeCycle 0 1 (by decide))) hi
@@ -50,10 +50,10 @@ lemma simplexHAEdgeHomMap_augmentation (R : Type u) [CommRing R] (E : Type v) [D
 方針：元頂点間の Hom 回収則へ同じ全複体等号を合成する。
 規約：元一単体を変更しない。使われ方：元全 end 辺の評価比較。 -/
 lemma simplexHAEdgeInverseFunctor_augmentation (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1) :
-    (simplexHAInverseFunctor R s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 1) =
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1) :
+    (simplexHAInverseFunctor R s).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 1) =
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex 1)).X] ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex 1)).X] ≫
           unitFromCycle _ (s.edgeCycle 0 1 (by decide)) :=
   (simplexHAInverseFunctor_map_vertices R s 0 1).trans
     (simplexHAEdgeHomMap_augmentation R E s)
@@ -63,7 +63,7 @@ lemma simplexHAEdgeInverseFunctor_augmentation (R : Type u) [CommRing R]
 方針：元二頂点の四場合を使う。規約：元閉辺を変更しない。
 使われ方：退化を含む元区間全 Hom 作用の増大表示。 -/
 def simplexHAEdgeCoefficient (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1) (a b : Fin 2) :
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1) (a b : Fin 2) :
     𝟙_ (Complex R) ⟶ homObject R E (s.obj a) (s.obj b) := by
   refine Fin.cases ?_ (fun a₀ => ?_) a
   · refine Fin.cases ?_ (fun b₀ => ?_) b
@@ -80,10 +80,10 @@ def simplexHAEdgeCoefficient (R : Type u) [CommRing R]
 方針：対角の増大・単位、元閉辺、逆向き零を四場合で照合する。
 規約：全複体射の等号。使われ方：元全 end 辺の native 評価。 -/
 lemma simplexHAEdgeInverseFunctor_allHom_augmentation (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1) (a b : Fin 2) :
-    (simplexHAInverseFunctor R s).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) =
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1) (a b : Fin 2) :
+    (simplexHAInverseFunctor R s).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) =
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).X] ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).X] ≫
           simplexHAEdgeCoefficient R E s a b := by
   apply (simplexHAInverseFunctor_map_vertices R s a b).trans
   fin_cases a <;> fin_cases b
@@ -97,7 +97,7 @@ lemma simplexHAEdgeInverseFunctor_allHom_augmentation (R : Type u) [CommRing R]
 方針：元頂点番号の逆対応を使う。規約：元全対象を保持。
 使われ方：任意パラメータ上への元区間 Hom 作用の引き戻し。 -/
 def simplexHAEdgeObjectCoefficient (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1)
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1)
     (x y : CubicalLambda R (Δ[1] : SSet.{u})) :
     𝟙_ (Complex R) ⟶ homObject R E
       ((simplexHAInverseFunctor R s).obj x) ((simplexHAInverseFunctor R s).obj y) :=
@@ -108,7 +108,7 @@ def simplexHAEdgeObjectCoefficient (R : Type u) [CommRing R]
 方針：元頂点対応の全射性で同じ全 Hom 等号を回収する。
 規約：全複体射を保持。使われ方：全パラメータ変換の増大則。 -/
 lemma simplexHAEdgeInverseFunctor_objects_augmentation (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1)
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1)
     (x y : CubicalLambda R (Δ[1] : SSet.{u})) :
     (simplexHAInverseFunctor R s).map x y =
       ε[(cubicalLambdaHomComonoid R (Δ[1] : SSet.{u}) x y).X] ≫
@@ -121,7 +121,7 @@ lemma simplexHAEdgeInverseFunctor_objects_augmentation (R : Type u) [CommRing R]
 方針：同じ全区間係数と Λ の元余モノイド射の増大保存を使う。
 規約：全 Hom 複体射の等号。使われ方：元 end 辺の全 native 評価。 -/
 lemma simplexHAEdgeBaseChange_augmentation (R : Type u) [CommRing R]
-    (E : Type v) [DGCategory R E] (s : Simplex R E 1)
+    (E : Type v) [DGCategory R E] (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1)
     {A : SSet.{u}} (a : A ⟶ (Δ[1] : SSet.{u})) (x y : CubicalLambda R A) :
     (DGFunctor.comp (cubicalLambdaMap R a) (simplexHAInverseFunctor R s)).map x y =
       ε[(cubicalLambdaHomComonoid R A x y).X] ≫
@@ -142,7 +142,7 @@ lemma simplexHAEdgeBaseChange_augmentation (R : Type u) [CommRing R]
 規約：元全 Hom・全基底変換を保持。使われ方：全 end 辺の native 同時評価。 -/
 lemma cubicalLambdaFunctorPair_edgeBaseChange (R : Type u) [CommRing R]
     (C : Type w) [DGCategory R C] (E : Type v) [DGCategory R E]
-    (s : Simplex R E 1) {A : SSet.{u}}
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R E 1) {A : SSet.{u}}
     (F : DGFunctor R (CubicalLambda R A) C) (a : A ⟶ (Δ[1] : SSet.{u}))
     (x y : CubicalLambda R A) :
     (cubicalLambdaFunctorPair R F

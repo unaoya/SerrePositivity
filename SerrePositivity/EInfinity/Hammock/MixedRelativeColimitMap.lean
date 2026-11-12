@@ -22,30 +22,30 @@ variable {C D : Type (u + 1)} [Category.{u + 1} C] [Category.{u} D]
   {W : MorphismProperty C} [W.IsMultiplicative] {V : MorphismProperty D} [V.IsMultiplicative]
   (F : LocalizerMorphism W V) (X Y : C)
 
-def graphMap (w : Word) : graph W w X Y ⟶
-    graph V w (F.functor.obj X) (F.functor.obj Y) where
-  app _ := ↾fun σ => σ ⋙ Zigzag.Relative.functor F
+def graphMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W w X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph V w (F.functor.obj X) (F.functor.obj Y) where
+  app _ := ↾fun σ => σ ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F
   naturality _ _ _ := rfl
 
-def graphDiagramMap : graphDiagram W X Y ⟶
-    graphDiagram V (F.functor.obj X) (F.functor.obj Y) where
+def graphDiagramMap : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram V (F.functor.obj X) (F.functor.obj Y) where
   app w := graphMap F X Y w
   naturality a b f := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro σ
-    change σ ⋙ (WordAction.functor f ⋙ Zigzag.Relative.functor F) =
-      σ ⋙ (Zigzag.Relative.functor F ⋙ WordAction.functor f)
-    exact congrArg (fun H => σ ⋙ H) (Zigzag.Relative.wordAction_functor_eq F f).symm
+    change σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F) =
+      σ ⋙ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAction.functor f)
+    exact congrArg (fun H => σ ⋙ H) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeWordAction.wordAction_functor_eq F f).symm
 
-def colimitMap : colimitGraph W X Y ⟶
-    colimitGraph V (F.functor.obj X) (F.functor.obj Y) :=
+def colimitMap : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph V (F.functor.obj X) (F.functor.obj Y) :=
   colim.map (graphDiagramMap F X Y)
 
-lemma graphInclusion_colimitMap (w : Word) :
-    graphInclusion W X Y w ≫ colimitMap F X Y =
-      graphMap F X Y w ≫ graphInclusion V (F.functor.obj X) (F.functor.obj Y) w :=
+lemma graphInclusion_colimitMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ colimitMap F X Y =
+      graphMap F X Y w ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (F.functor.obj Y) w :=
   colimit.ι_map _ _
 
 def reducedMap : reducedSimplicialSet W X Y ⟶
@@ -57,7 +57,7 @@ lemma reducedColimitIso_map : (reducedColimitIso W X Y).hom ≫ reducedMap F X Y
     colimitMap F X Y ≫ (reducedColimitIso V (F.functor.obj X) (F.functor.obj Y)).hom := by
   simp only [reducedMap, Iso.hom_inv_id_assoc]
 
-lemma graphNormalization_reducedMap (w : Word) :
+lemma graphNormalization_reducedMap (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     graphNormalization W X Y w ≫ reducedMap F X Y =
       graphMap F X Y w ≫ graphNormalization V (F.functor.obj X) (F.functor.obj Y) w := by
   rw [← reducedColimitIso_hom_fac W X Y w, Category.assoc, reducedColimitIso_map,

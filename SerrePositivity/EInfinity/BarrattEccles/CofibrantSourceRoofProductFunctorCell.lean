@@ -26,7 +26,7 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
-def cofibrantSourceRoofProductCommaEvaluationIso : FunctorIso
+def cofibrantSourceRoofProductCommaEvaluationIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
       SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
@@ -41,20 +41,20 @@ def cofibrantSourceRoofProductCommaRightHomotopy : SSet.Homotopy
       SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) := by
-  simpa only [SerrePositivity.InfinityCategories.F1B.nerveMap_const, SSet.const_comp, cofibrantHammockVertex] using
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveMap_const, SSet.const_comp, cofibrantHammockVertex] using
     HomotopyClasses.postHomotopy
       (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-      (SerrePositivity.InfinityCategories.F1B.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaRightLeg A X Y b))
+      (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy (cofibrantSourceRoofProductCommaRightLeg A X Y b))
 
-def cofibrantSourceRoofProductCommaRightCell : FunctorHom
+def cofibrantSourceRoofProductCommaRightCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
       SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (cofibrantSourceRoofProductCommaRightHomotopy A X Y b))
 
-def cofibrantSourceRoofProductCommaComparisonCell : FunctorHom
+def cofibrantSourceRoofProductCommaComparisonCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b)))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
@@ -69,7 +69,7 @@ lemma cofibrantSourceRoofProductCommaComparisonCell_triangle :
   rw [cofibrantSourceRoofProductCommaComparisonCell, Iso.hom_inv_id_assoc]
 
 lemma cofibrantSourceRoofProductCommaComparisonCell_unique
-    (c : FunctorHom
+    (c : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
       (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
         (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b)))
       (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
@@ -85,11 +85,11 @@ def cofibrantSourceRoofProductCommaComparisonHomotopy : SSet.Homotopy
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b)))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) :=
-  functorHomHomotopy (cofibrantSourceRoofProductCommaComparisonCell A X Y b)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy (cofibrantSourceRoofProductCommaComparisonCell A X Y b)
 
 lemma cofibrantSourceRoofProductCommaComparisonHomotopy_hom :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (cofibrantSourceRoofProductCommaComparisonHomotopy A X Y b)) =
-        cofibrantSourceRoofProductCommaComparisonCell A X Y b := functorHomHomotopy_hom _
+        cofibrantSourceRoofProductCommaComparisonCell A X Y b := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom _
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -24,7 +24,7 @@ open CategoryTheory SerrePositivity.InfinityCategories
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma evaluatePoint_unpack (X : Paths C) (gs : List (FactorTarget.Index W))
+lemma evaluatePoint_unpack (X : Paths C) (gs : List (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W))
     (p : (products W (AllMarked.nativeSpace W) Y X gs).obj n) :
     evaluatePoint (unpack X gs p) = unpackValue X gs
       ((productsMap W (AllMarked.nativeValue W) Y X gs).app n p) := by
@@ -44,21 +44,21 @@ lemma productsIso_evaluation (X : Paths C) :
   exact evaluatePoint_unpack W Y X s.1 s.2
 
 lemma evaluation_isWeakHomotopyEquivalence (X : Paths C) :
-    IsWeakHomotopyEquivalence (evaluation W Y X) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (evaluation W Y X) := by
   have hw := sumProductsMap_weak W (AllMarked.nativeValue W)
     (AllMarked.nativeValue_isWeakHomotopyEquivalence W) Y X
-  apply (isPrecompositionEquivalence_of_iso
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (productsIso W Y X)).isWeakHomotopyEquivalence.cancel_left
   rw [productsIso_evaluation]
-  exact hw.comp (isPrecompositionEquivalence_of_iso
+  exact hw.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (valueProductsIso W Y X)).isWeakHomotopyEquivalence
 
-def hammockEvaluation (X : Paths C) : colimitGraph W.paths X Y ⟶ valueSpace W Y X :=
+def hammockEvaluation (X : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ⟶ valueSpace W Y X :=
   (markedSpineIso W Y X).hom ≫ evaluation W Y X
 
 lemma hammockEvaluation_isWeakHomotopyEquivalence (X : Paths C) :
-    IsWeakHomotopyEquivalence (hammockEvaluation W Y X) :=
-  (isPrecompositionEquivalence_of_iso (markedSpineIso W Y X)).isWeakHomotopyEquivalence.comp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (hammockEvaluation W Y X) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (markedSpineIso W Y X)).isWeakHomotopyEquivalence.comp
     (evaluation_isWeakHomotopyEquivalence W Y X)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathIso
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.IntervalPullbackPathHomotopy
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyIsoTransport
 

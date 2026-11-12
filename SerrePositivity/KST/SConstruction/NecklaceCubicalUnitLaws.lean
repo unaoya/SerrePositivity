@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.NecklaceCubicalDayData
-public import SerrePositivity.InfinityCategories.Simplicial.NecklaceInStructuralIso
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceInStructuralIso
 
 /-! # 元の cubical 合成の左右単位則
 概要：一点 necklace の実単位射が、mapping object 全体の合成の左右単位になる。
@@ -15,55 +15,55 @@ open CategoryTheory MonoidalCategory Limits Simplicial SSet
 
 /-- 元の各生成射の左に一点を合成すると、元の左単位を回収する。 -/
 lemma necklaceCubicalDay_left_unit_cell {K : SSet.{u}} {x y : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) :
     (necklaceCubicalDayIdentity K x ⊗ₘ necklaceCubicalDayCell T) ≫
         necklaceCubicalDayCompose K x x y =
       (λ_ (necklaceCubicalDay.obj T.necklace)).hom ≫ necklaceCubicalDayCell T := by
-  have hc := necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInLeftUnitor T).hom
+  have hc := necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInLeftUnitor T).hom
   have hu := Functor.LaxMonoidal.left_unitality necklaceCubicalDay T.necklace
-  let e : 𝟙_ CubicalDaySet.{u} ⟶ necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint :=
+  let e : 𝟙_ CubicalDaySet.{u} ⟶ necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint :=
     Functor.LaxMonoidal.ε necklaceCubicalDay.{u}
-  let p : necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint ⟶ necklaceCubicalDayMapping K x x :=
-    necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x)
+  let p : necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint ⟶ necklaceCubicalDayMapping K x x :=
+    necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K x)
   have hi : necklaceCubicalDayIdentity K x = e ≫ p := necklaceCubicalDayIdentity_unit K x
   have hm : (p ⊗ₘ necklaceCubicalDayCell T) ≫ necklaceCubicalDayCompose K x x y =
-      Functor.LaxMonoidal.μ necklaceCubicalDay _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint T.necklace ≫
-        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) T) :=
-    necklaceCubicalDayCompose_cell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K x) T
+      Functor.LaxMonoidal.μ necklaceCubicalDay _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint T.necklace ≫
+        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K x) T) :=
+    necklaceCubicalDayCompose_cell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K x) T
   have ht := (congrArg (fun b => b ≫ necklaceCubicalDayCompose K x x y)
     ((congrArg (fun b => b ⊗ₘ necklaceCubicalDayCell T) hi).trans
       (whiskerRight_comp_tensorHom e p (necklaceCubicalDayCell T)).symm)).trans
         (Category.assoc _ _ _)
   exact ht.trans ((congrArg (fun b => e ▷ necklaceCubicalDay.obj T.necklace ≫ b) hm).trans
     ((congrArg (fun b => e ▷ necklaceCubicalDay.obj T.necklace ≫
-      Functor.LaxMonoidal.μ necklaceCubicalDay _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint T.necklace ≫ b) hc.symm).trans
+      Functor.LaxMonoidal.μ necklaceCubicalDay _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint T.necklace ≫ b) hc.symm).trans
       ((Category.assoc _ _ _).symm.trans
         (congrArg (fun b => b ≫ necklaceCubicalDayCell T) hu.symm))))
 
 /-- 元の各生成射の右に一点を合成すると、元の右単位を回収する。 -/
 lemma necklaceCubicalDay_right_unit_cell {K : SSet.{u}} {x y : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) :
     (necklaceCubicalDayCell T ⊗ₘ necklaceCubicalDayIdentity K y) ≫
         necklaceCubicalDayCompose K x y y =
       (ρ_ (necklaceCubicalDay.obj T.necklace)).hom ≫ necklaceCubicalDayCell T := by
-  have hc := necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInRightUnitor T).hom
+  have hc := necklaceCubicalDayCell_relation (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInRightUnitor T).hom
   have hu := Functor.LaxMonoidal.right_unitality necklaceCubicalDay T.necklace
-  let e : 𝟙_ CubicalDaySet.{u} ⟶ necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint :=
+  let e : 𝟙_ CubicalDaySet.{u} ⟶ necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint :=
     Functor.LaxMonoidal.ε necklaceCubicalDay.{u}
-  let p : necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint ⟶ necklaceCubicalDayMapping K y y :=
-    necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y)
+  let p : necklaceCubicalDay.obj _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint ⟶ necklaceCubicalDayMapping K y y :=
+    necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K y)
   have hi : necklaceCubicalDayIdentity K y = e ≫ p := necklaceCubicalDayIdentity_unit K y
   have hm : (necklaceCubicalDayCell T ⊗ₘ p) ≫ necklaceCubicalDayCompose K x y y =
-      Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint ≫
-        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y)) :=
-    necklaceCubicalDayCompose_cell T (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPoint K y)
+      Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint ≫
+        necklaceCubicalDayCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K y)) :=
+    necklaceCubicalDayCompose_cell T (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPoint K y)
   have ht := (congrArg (fun b => b ≫ necklaceCubicalDayCompose K x y y)
     ((congrArg (fun b => necklaceCubicalDayCell T ⊗ₘ b) hi).trans
       (whiskerLeft_comp_tensorHom (necklaceCubicalDayCell T) e p).symm)).trans
         (Category.assoc _ _ _)
   exact ht.trans ((congrArg (fun b => necklaceCubicalDay.obj T.necklace ◁ e ≫ b) hm).trans
     ((congrArg (fun b => necklaceCubicalDay.obj T.necklace ◁ e ≫
-      Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace _root_.SerrePositivity.InfinityCategories.Simplicial.necklacePoint ≫ b) hc.symm).trans
+      Functor.LaxMonoidal.μ necklaceCubicalDay T.necklace _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklacePoint ≫ b) hc.symm).trans
       ((Category.assoc _ _ _).symm.trans
         (congrArg (fun b => b ≫ necklaceCubicalDayCell T) hu.symm))))
 

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedConeUnderlying
 universe u
 
 open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra
 
@@ -39,11 +39,11 @@ def constantPointedDiagramCone (C : Type u) [SmallCategory C]
 使われ方：Goerss–Jardine VIII §2。有理 Shapiro の標準比較の模型の固定。 -/
 lemma constantPointedHomotopyEndIso_cone (C : Type u) [SmallCategory C]
     {A X : PointedSimplicialSet.{u}} (f : A ⟶ X) :
-    (PointedWeightedEnd.coneComparison (bousfieldKanWeight C)
+    (PointedWeightedEnd.coneComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C)
         (constantPointedDiagramCone C f)).right ≫
       (constantPointedHomotopyEndIso C X).hom.right =
         curry (snd (nerve C) A.right ≫ f.right) := by
-  change _ ≫ ((PointedWeightedEnd.underlyingIso (bousfieldKanWeight C)
+  change _ ≫ ((PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C)
     ((Functor.const C).obj X)).hom ≫ (constantHomotopyEndIso C X.right).hom) = _
   rw [← Category.assoc, PointedWeightedEnd.underlyingIso_coneComparison]
   exact constantHomotopyEndIso_cone C f.right
@@ -67,7 +67,7 @@ end UnbasedPointedMapping
 使われ方：Goerss–Jardine VIII §2。hG の標準射の π_* の計算の準備。 -/
 lemma constantPointedHomotopyEndIso_unit (C : Type u) [SmallCategory C]
     (X : PointedSimplicialSet.{u}) :
-    PointedWeightedEnd.coneComparison (bousfieldKanWeight C)
+    PointedWeightedEnd.coneComparison (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight C)
         (constantPointedDiagramCone C (𝟙 X)) ≫
       (constantPointedHomotopyEndIso C X).hom = UnbasedPointedMapping.constant (nerve C) X := by
   apply Under.UnderMorphism.ext

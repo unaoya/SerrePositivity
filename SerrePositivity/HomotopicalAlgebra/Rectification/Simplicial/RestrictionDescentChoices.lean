@@ -117,7 +117,7 @@ lemma family_naturality {T U : SSet.{v}} (h : A ⟶ K) (c : T ⟶ obj a h) (j : 
 def parameterComparison {T : SSet.{v}} (h : A ⟶ K) (c : T ⟶ obj a h) :
     SSet.Homotopy (decoded a ha hK h c ≫ restriction a)
       (c ≫ toPoint a h ≫ RelativeChoiceSpace.name h) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (HomotopyClasses.preHomotopy (c ≫ inclusion a h) (comparison a ha hK))
     (Category.assoc _ _ _) (by rw [Category.assoc, over])
 
@@ -126,7 +126,7 @@ lemma parameterComparison_naturality {T U : SSet.{v}} (h : A ⟶ K)
     (parameterComparison a ha hK h (j ≫ c)).h =
       j ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
         (parameterComparison a ha hK h c).h := by
-  simp only [parameterComparison, LargeParameterSquare.changeEndpoints_h]
+  simp only [parameterComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
   change ((j ≫ c) ≫ inclusion a h) ▷ _ ≫ _ = _
   rw [Category.assoc, comp_whiskerRight, Category.assoc]
   rfl
@@ -134,7 +134,7 @@ lemma parameterComparison_naturality {T U : SSet.{v}} (h : A ⟶ K)
 def familyComparison {T : SSet.{v}} (h : A ⟶ K) (c : T ⟶ obj a h) :
     SSet.Homotopy (a ▷ T ≫ family a ha hK h c)
       (uncurry (c ≫ toPoint a h ≫ RelativeChoiceSpace.name h)) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (HomotopyClassesClosed.uncurryHomotopy (parameterComparison a ha hK h c))
     (by rw [uncurry_pre_app]; rfl) rfl
 

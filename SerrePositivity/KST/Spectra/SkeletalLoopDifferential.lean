@@ -31,27 +31,27 @@ set_option maxHeartbeats 1000000 in
 使われ方：Goerss–Jardine VIII §1。係数微分の次数帰納の正符号と負符号の分離。 -/
 theorem stageDifferential_loopPositive (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right (r + 1)
-      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right (r + 1)
+      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).basepoint) :
     stageFiberLoopPositiveEquiv K Y (n + 1) r
-      (UnbasedPointedMapping.stageDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n r a) =
+      (UnbasedPointedMapping.stageDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n r a) =
     (UnbasedPointedMapping.stageDifferential K Y n (r + 1)
       (stageFiberLoopPositiveEquiv K Y n (r + 1) a))⁻¹ := by
   let X := fun k ↦ (UnbasedPointedMapping.tower K Y).obj (op k)
-  let Z := fun k ↦ (UnbasedPointedMapping.tower K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).obj (op k)
+  let Z := fun k ↦ (UnbasedPointedMapping.tower K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).obj (op k)
   let p := fun k ↦ (UnbasedPointedMapping.tower K Y).map (homOfLE (Nat.le_succ k)).op
-  let q := fun k ↦ (UnbasedPointedMapping.tower K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).map
+  let q := fun k ↦ (UnbasedPointedMapping.tower K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).map
     (homOfLE (Nat.le_succ k)).op
   let pl := fun k ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (p k)
   have : ∀ k, KanComplex (X k).right := fun k ↦
     UnbasedPointedMapping.tower_level_kanComplex K Y (op k)
   have : ∀ k, KanComplex (Z k).right := fun k ↦
-    UnbasedPointedMapping.tower_level_kanComplex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (op k)
-  have : ∀ k, KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X k)).right := fun k ↦ inferInstance
+    UnbasedPointedMapping.tower_level_kanComplex K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (op k)
+  have : ∀ k, KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X k)).right := fun k ↦ inferInstance
   have : ∀ k, Fibration (p k).right := fun k ↦
     UnbasedPointedMapping.tower_map_fibration K Y _
   have : ∀ k, Fibration (q k).right := fun k ↦
-    UnbasedPointedMapping.tower_map_fibration K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) _
+    UnbasedPointedMapping.tower_map_fibration K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) _
   have : ∀ k, Fibration (pl k).right := fun k ↦ inferInstance
   let e := fun k ↦ UnbasedPointedMapping.loopSwap (K.skeleton (k + 1) : SSet.{u}) Y
   have h : ∀ k, pl k ≫ (e k).hom = (e (k + 1)).hom ≫ q k := fun k ↦
@@ -62,9 +62,9 @@ theorem stageDifferential_loopPositive (K : SSet.{u}) (Y : PointedSimplicialSet.
     dsimp only [b]
     rw [← pointedGroupMap_comp, Iso.inv_hom_id, pointedGroupMap_id]
   have hn := PointedFibrationTower.differential_natural
-    (X := fun k ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X k)) (Y := Z) pl q (fun k ↦ (e k).hom) h n r b
+    (X := fun k ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X k)) (Y := Z) pl q (fun k ↦ (e k).hom) h n r b
   change pointedGroupMap r (C (n + 1)).hom
-    (PointedFibrationTower.differential (fun k ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X k)) pl n r b) =
+    (PointedFibrationTower.differential (fun k ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X k)) pl n r b) =
       PointedFibrationTower.differential Z q n r
         (pointedGroupMap (r + 1) (C n).hom b) at hn
   rw [ha] at hn

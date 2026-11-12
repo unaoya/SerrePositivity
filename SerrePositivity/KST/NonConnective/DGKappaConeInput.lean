@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGCountableSum
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolvedInfinity
-public import SerrePositivity.InfinityCategories.Derived.ResolvedDGQuotientVerdierSequence
-public import SerrePositivity.InfinityCategories.F2.Compact.Definition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolvedInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ResolvedDGQuotientVerdierSequence
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.Definition
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
 
 /-!
@@ -20,13 +20,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
 
 /-- 元の閉零射圏の型ラベルだけを外す厳密 dg 関手。 -/
-def dgConeModuleForget : DGFunctor R (ModuleCategory R D) (RightModule R D) where
-  obj := ForgetEnrichment.to (Complex R)
+def dgConeModuleForget : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) (_root_.SerrePositivity.DifferentialGraded.RightModule R D) where
+  obj := ForgetEnrichment.to (_root_.SerrePositivity.DifferentialGraded.Complex R)
   map _ _ := 𝟙 _
   map_id _ := Category.comp_id _
   map_comp _ _ _ := by
@@ -34,13 +34,13 @@ def dgConeModuleForget : DGFunctor R (ModuleCategory R D) (RightModule R D) wher
     rfl
 
 /-- 元の実加群を、β5 の同じ半自由模型による D(D) に送る実関手。 -/
-def dgConeModuleDerived : dgNerve R (ModuleCategory R D) ⟶ dgModuleDerivedInfinityCategory R D :=
-  dgModuleResolvedInfinity R (ModuleCategory R D) D (dgConeModuleForget R D)
+def dgConeModuleDerived : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (ModuleCategory R D) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory R D :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (ModuleCategory R D) D (dgConeModuleForget R D)
 
 /-- κ-compact 性を試験する実導来 ∞ 圏での同じ加群頂点。 -/
-def dgConeModuleDerivedVertex (M : ModuleCategory R D) :
-    (dgModuleDerivedInfinityCategory R D) _⦋0⦌ :=
-  (dgConeModuleDerived R D).app (Opposite.op ⦋0⦌) (Simplex.vertex M)
+def dgConeModuleDerivedVertex (M : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) :
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory R D) _⦋0⦌ :=
+  (dgConeModuleDerived R D).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex M)
 
 /-- D 側で未供給の、非可算 κ に対する具体的 dg 小模型の明示入力。
 存在・κ-compact 閉性・比較をこの構造の存在だけから結論してはならない。 -/
@@ -50,33 +50,33 @@ structure DGKappaConeInput (κ : Cardinal.{u}) where
   /-- 正則性。 -/
   regular : κ.IsRegular
   /-- 実 dg 加群の選んだ代表系。全同型コピーを含むとは仮定しない。 -/
-  objects : Set (ModuleCategory R D)
+  objects : Set (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D)
   /-- 選んだ代表系自体の u-small 性。 -/
-  small : Small.{u} {M : ModuleCategory R D // objects M}
+  small : Small.{u} {M : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D // objects M}
   /-- 選んだ同じ全 Hom dg 模型の前三角性。 -/
-  pretriangulated : IsDGPretriangulated R {M : ModuleCategory R D // objects M}
+  pretriangulated : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R {M : ModuleCategory R D // objects M}
   /-- 同じ代表加群は全 Hom end の意味で射影的。 -/
-  projective : ∀ M, objects M → moduleHomotopicallyProjective R D M
+  projective : ∀ M, objects M → _root_.SerrePositivity.DifferentialGraded.moduleHomotopicallyProjective R D M
   /-- 同じ実半自由模型への比較は、全写像空間で充満忠実。 -/
-  derivedFullyFaithful : IsFullyFaithful
-    (dgNerve.map (dgFullSubcategoryInclusion R (ModuleCategory R D) objects) ≫
+  derivedFullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion R (ModuleCategory R D) objects) ≫
       dgConeModuleDerived R D)
   /-- 各代表の実導来 ∞ 圏での κ-compact 性。 -/
   kappaCompact : ∀ M, objects M →
-    F2.Compact.IsKappaCompact.{u, max (u + 1) v} κ (dgConeModuleDerivedVertex R D M)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.{u, max (u + 1) v} κ (dgConeModuleDerivedVertex R D M)
   /-- 元の全 κ-compact 頂点を、同じ ∞ 圏での同型まで代表する。 -/
-  covers : ∀ y : (dgModuleDerivedInfinityCategory R D) _⦋0⦌,
-    F2.Compact.IsKappaCompact.{u, max (u + 1) v} κ y →
-      ∃ M : ModuleCategory R D, objects M ∧
-        Nonempty (VertexIso (dgConeModuleDerivedVertex R D M) y)
+  covers : ∀ y : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleDerivedInfinityCategory R D) _⦋0⦌,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompact.{u, max (u + 1) v} κ y →
+      ∃ M : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D, objects M ∧
+        Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (dgConeModuleDerivedVertex R D M) y)
   /-- 選んだ代表系内での実可算直和の閉性。swindle の同型自体は要求しない。 -/
-  countableClosed : ∀ M : ℕ → ModuleCategory R D, (∀ n, objects (M n)) → objects (∐ M)
+  countableClosed : ∀ M : ℕ → _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D, (∀ n, objects (M n)) → objects (∐ M)
   /-- 同じ代表系内での実二項直和の閉性。 -/
   binaryClosed : ∀ M N, objects M → objects N → objects (M ⨿ N)
   /-- 元の通常の perfect 導来加群を、同じ代表系内で実現する。 -/
-  perfectCovers : ∀ M : ModuleCategory R D,
-    modulePerfect R D ((moduleToDerived R D).obj M) →
-      ∃ N : ModuleCategory R D, objects N ∧
-        Nonempty ((moduleToDerived R D).obj N ≅ (moduleToDerived R D).obj M)
+  perfectCovers : ∀ M : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D,
+    _root_.SerrePositivity.DifferentialGraded.modulePerfect R D ((_root_.SerrePositivity.DifferentialGraded.moduleToDerived R D).obj M) →
+      ∃ N : _root_.SerrePositivity.DifferentialGraded.ModuleCategory R D, objects N ∧
+        Nonempty ((_root_.SerrePositivity.DifferentialGraded.moduleToDerived R D).obj N ≅ (_root_.SerrePositivity.DifferentialGraded.moduleToDerived R D).obj M)
 
 end SerrePositivity.KST.NonConnective

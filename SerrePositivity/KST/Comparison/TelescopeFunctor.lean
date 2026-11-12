@@ -68,13 +68,13 @@ def telescopeFunctor : (ℕ ⥤ SSet.{u}) ⥤ SSet.{u} :=
 -/
 def telescopeEvenStage (n : ℕ) :
     (evaluation ℕ SSet.{u}).obj (2 * n) ⟶ telescopeFunctor where
-  app F := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun k => F.obj (2 * k)) n ≫
+  app F := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun k => F.obj (2 * k)) n ≫
     spanCylinderLeft.app (telescopeSpan F)
   naturality {F G} α := by
     change α.app (2 * n) ≫ _ = _ ≫ spanCylinderFunctor.map (telescopeSpanMap α)
     rw [Category.assoc, ← spanCylinderLeft.naturality (telescopeSpanMap α), ← Category.assoc]
     exact congrArg (fun t => t ≫ spanCylinderLeft.app (telescopeSpan G))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map (fun k => α.app (2 * k)) n).symm
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map (fun k => α.app (2 * k)) n).symm
 
 /--
 概要：奇数段から telescope への写像の自然変換。
@@ -84,13 +84,13 @@ def telescopeEvenStage (n : ℕ) :
 -/
 def telescopeOddStage (n : ℕ) :
     (evaluation ℕ SSet.{u}).obj (2 * n + 1) ⟶ telescopeFunctor where
-  app F := _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion (fun k => F.obj (2 * k + 1)) n ≫
+  app F := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion (fun k => F.obj (2 * k + 1)) n ≫
     spanCylinderRight.app (telescopeSpan F)
   naturality {F G} α := by
     change α.app (2 * n + 1) ≫ _ = _ ≫ spanCylinderFunctor.map (telescopeSpanMap α)
     rw [Category.assoc, ← spanCylinderRight.naturality (telescopeSpanMap α), ← Category.assoc]
     exact congrArg (fun t => t ≫ spanCylinderRight.app (telescopeSpan G))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map (fun k => α.app (2 * k + 1)) n).symm
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map (fun k => α.app (2 * k + 1)) n).symm
 
 /--
 概要：成分ごとの局所化同型を持つ順序列の射は telescope でも局所化同型となる。

@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.CoherentDiagramOverEdges
 public import SerrePositivity.KST.SConstruction.KanCospanPastingChoices
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.PushoutProduct
-public import SerrePositivity.InfinityCategories.Core.FunctorCompositionEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FunctorCompositionEvaluation
 
 /-! # 全パラメーターの over 族の二脚の貼り合わせ
 概要：重み付き自然族の二脚を、全パラメーターで同時に貼る。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits MonoidalCategory MonoidalClosed BraidedCategory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 重み付きの全パラメーターの自然族を、内部 Hom 値の自然族へ移す。 -/
@@ -35,26 +35,26 @@ def diagramFamilyTranspose {I : Type u} [SmallCategory I]
 
 /-- 全選択空間をパラメーターとした普遍 over 族。 -/
 def diagramUniversalFamily {I : Type u} [SmallCategory I] (D : I ⥤ SSet.{u}) :
-    bousfieldKanWeight I ⟶ D ⋙ ihom (bousfieldKanHolim D) :=
-  diagramFamilyTranspose (weightedSectionsUncurry (𝟙 (bousfieldKanHolim D)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I ⟶ D ⋙ ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) :=
+  diagramFamilyTranspose (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)))
 
 /-- 普遍族を選択空間の頂点で評価すると、同じ頂点の元の over 族を厳密に回収する。 -/
 lemma diagramUniversalFamily_evaluation {I : Type u} [SmallCategory I]
-    (D : I ⥤ SSet.{u}) (v : (bousfieldKanHolim D) _⦋0⦌) (i : I) :
-    (diagramUniversalFamily D).app i ≫ evaluateFunctorAt v = (diagramSelectionAt D v).app i := by
-  let a := (SSet.unitHomEquiv (bousfieldKanHolim D)).symm v
-  have he := curry_evaluateFunctorAt_unitHomEquiv
-    ((β_ (bousfieldKanHolim D) ((bousfieldKanWeight I).obj i)).hom ≫
-      uncurry (weightedSectionsπ (bousfieldKanWeight I) D i)) a
+    (D : I ⥤ SSet.{u}) (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) _⦋0⦌) (i : I) :
+    (diagramUniversalFamily D).app i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v = (diagramSelectionAt D v).app i := by
+  let a := (SSet.unitHomEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)).symm v
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.curry_evaluateFunctorAt_unitHomEquiv
+    ((β_ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)).hom ≫
+      uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D i)) a
   rw [Equiv.apply_symm_apply] at he
-  change curry ((β_ (bousfieldKanHolim D) ((bousfieldKanWeight I).obj i)).hom ≫
-      uncurry ((𝟙 (bousfieldKanHolim D)) ≫ weightedSectionsπ (bousfieldKanWeight I) D i)) ≫
-      evaluateFunctorAt v =
-    (ρ_ ((bousfieldKanWeight I).obj i)).inv ≫
-      uncurry (a ≫ weightedSectionsπ (bousfieldKanWeight I) D i)
+  change curry ((β_ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)).hom ≫
+      uncurry ((𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D i)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v =
+    (ρ_ ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)).inv ≫
+      uncurry (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D i)
   rw [Category.id_comp, he, uncurry_natural_left]
   simp only [← Category.assoc]
-  apply congrArg (· ≫ uncurry (weightedSectionsπ (bousfieldKanWeight I) D i))
+  apply congrArg (· ≫ uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D i))
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -63,24 +63,24 @@ lemma diagramUniversalFamily_evaluation {I : Type u} [SmallCategory I]
 
 /-- 普遍族の比較辺を評価すると、同じ選択の元の比較辺の一単体になる。 -/
 lemma diagramUniversalFamily_edge_evaluation {I : Type u} [SmallCategory I]
-    (D : I ⥤ SSet.{u}) (v : (bousfieldKanHolim D) _⦋0⦌)
+    (D : I ⥤ SSet.{u}) (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) _⦋0⦌)
     {i j : I} (h : i ⟶ j) :
-    ((diagramSelectionEdge (diagramUniversalFamily D) h).map (evaluateFunctorAt v)).edge =
+    ((diagramSelectionEdge (diagramUniversalFamily D) h).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).edge =
       (diagramSelectionEdge (diagramSelectionAt D v) h).edge := by
   have he := ConcreteCategory.congr_hom
     (NatTrans.congr_app (diagramUniversalFamily_evaluation D v j) (Opposite.op ⦋1⦌))
     (CategoryTheory.nerve.edgeMk (diagramSelectionOverArrow h)).edge
-  change (evaluateFunctorAt v).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v).app (Opposite.op ⦋1⦌)
     (diagramSelectionEdge (diagramUniversalFamily D) h).edge = _
   rw [diagramSelectionEdge_edge, diagramSelectionEdge_edge]
   exact he
 
 /-- 普遍族の比較辺の評価は、恒等成分を元の表示へ戻した辺も回収する。 -/
 lemma diagramUniversalFamily_transportEdge_evaluation {I : Type u} [SmallCategory I]
-    (D : I ⥤ SSet.{u}) (v : (bousfieldKanHolim D) _⦋0⦌)
+    (D : I ⥤ SSet.{u}) (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) _⦋0⦌)
     {i j : I} (h : i ⟶ j) {E : SSet.{u}} (e : D.obj i ≅ E)
     (t : E ⟶ D.obj j) (ht : e.hom ≫ t = D.map h) :
-    ((diagramSelectionEdge (diagramUniversalFamily D) h).map (evaluateFunctorAt v)).edge =
+    ((diagramSelectionEdge (diagramUniversalFamily D) h).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).edge =
       (diagramSelectionTransportEdge (diagramSelectionAt D v) h e t ht).edge :=
   (diagramUniversalFamily_edge_evaluation D v h).trans
     (diagramSelectionTransportEdge_edge (diagramSelectionAt D v) h e t ht).symm
@@ -88,7 +88,7 @@ lemma diagramUniversalFamily_transportEdge_evaluation {I : Type u} [SmallCategor
 /-- 同じ全パラメーターの自然族の二脚を保つ、三角形の全選択空間。 -/
 def diagramFamilyCospanPastingChoices {I : Type u} [SmallCategory I]
     {D : I ⥤ SSet.{u}} {P : SSet.{u}}
-    (s : bousfieldKanWeight I ⊗ (Functor.const I).obj P ⟶ D)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I ⊗ (Functor.const I).obj P ⟶ D)
     {i j k : I} (h : i ⟶ k) (g : j ⟶ k) : SSet.{u} :=
   kanCospanPastingChoices
     (diagramSelectionEdge (diagramFamilyTranspose s) h)
@@ -97,9 +97,9 @@ def diagramFamilyCospanPastingChoices {I : Type u} [SmallCategory I]
 /-- 全パラメーターの二脚の貼り合わせも可縮 Kan。 -/
 lemma diagramFamilyCospanPastingChoices_isContractibleKan {I : Type u} [SmallCategory I]
     {D : I ⥤ SSet.{u}} {P : SSet.{u}}
-    (s : bousfieldKanWeight I ⊗ (Functor.const I).obj P ⟶ D)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I ⊗ (Functor.const I).obj P ⟶ D)
     {i j k : I} (h : i ⟶ k) (g : j ⟶ k) [KanComplex (D.obj k)] :
-    IsContractibleKan (diagramFamilyCospanPastingChoices s h g) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (diagramFamilyCospanPastingChoices s h g) := by
   let : KanComplex ((D ⋙ ihom P).obj k) := by
     change KanComplex ((ihom P).obj (D.obj k))
     infer_instance
@@ -114,9 +114,9 @@ def diagramUniversalCospanPastingChoices {I : Type u} [SmallCategory I]
 /-- 普遍族の貼り合わせは全ての高次選択を含む可縮 Kan 空間。 -/
 lemma diagramUniversalCospanPastingChoices_isContractibleKan {I : Type u} [SmallCategory I]
     (D : I ⥤ SSet.{u}) {i j k : I} (h : i ⟶ k) (g : j ⟶ k)
-    [KanComplex (D.obj k)] : IsContractibleKan (diagramUniversalCospanPastingChoices D h g) := by
-  let : KanComplex ((D ⋙ ihom (bousfieldKanHolim D)).obj k) := by
-    change KanComplex ((ihom (bousfieldKanHolim D)).obj (D.obj k))
+    [KanComplex (D.obj k)] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (diagramUniversalCospanPastingChoices D h g) := by
+  let : KanComplex ((D ⋙ ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)).obj k) := by
+    change KanComplex ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)).obj (D.obj k))
     infer_instance
   exact kanCospanPastingChoices_isContractibleKan _ _
 
@@ -124,7 +124,7 @@ lemma diagramUniversalCospanPastingChoices_isContractibleKan {I : Type u} [Small
 def diagramUniversalCospanPastingFamily {I : Type u} [SmallCategory I]
     (D : I ⥤ SSet.{u}) {i j k : I} (h : i ⟶ k) (g : j ⟶ k)
     (v : (diagramUniversalCospanPastingChoices D h g) _⦋0⦌) :
-    bousfieldKanHolim D ⊗ (Δ[2] : SSet.{u}) ⟶ D.obj k :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D ⊗ (Δ[2] : SSet.{u}) ⟶ D.obj k :=
   uncurry (kanCospanPastingAt (diagramSelectionEdge (diagramUniversalFamily D) h)
     (diagramSelectionEdge (diagramUniversalFamily D) g) v)
 
@@ -132,7 +132,7 @@ def diagramUniversalCospanPastingFamily {I : Type u} [SmallCategory I]
 lemma diagramUniversalCospanPastingFamily_source {I : Type u} [SmallCategory I]
     (D : I ⥤ SSet.{u}) {i j k : I} (h : i ⟶ k) (g : j ⟶ k)
     (v : (diagramUniversalCospanPastingChoices D h g) _⦋0⦌) :
-    (bousfieldKanHolim D ◁ stdSimplex.δ 1) ≫ diagramUniversalCospanPastingFamily D h g v =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D ◁ stdSimplex.δ 1) ≫ diagramUniversalCospanPastingFamily D h g v =
       uncurry (SSet.yonedaEquiv.symm (diagramSelectionEdge (diagramUniversalFamily D) h).edge) := by
   dsimp only [diagramUniversalCospanPastingFamily]
   rw [← uncurry_natural_left, kanCospanPastingAt_source]
@@ -141,7 +141,7 @@ lemma diagramUniversalCospanPastingFamily_source {I : Type u} [SmallCategory I]
 lemma diagramUniversalCospanPastingFamily_target {I : Type u} [SmallCategory I]
     (D : I ⥤ SSet.{u}) {i j k : I} (h : i ⟶ k) (g : j ⟶ k)
     (v : (diagramUniversalCospanPastingChoices D h g) _⦋0⦌) :
-    (bousfieldKanHolim D ◁ stdSimplex.δ 0) ≫ diagramUniversalCospanPastingFamily D h g v =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D ◁ stdSimplex.δ 0) ≫ diagramUniversalCospanPastingFamily D h g v =
       uncurry (SSet.yonedaEquiv.symm (diagramSelectionEdge (diagramUniversalFamily D) g).edge) := by
   dsimp only [diagramUniversalCospanPastingFamily]
   rw [← uncurry_natural_left, kanCospanPastingAt_target]
@@ -164,15 +164,15 @@ def diagramUniversalCospanPastedTriangle {I : Type u} [SmallCategory I]
 lemma diagramUniversalCospanPastedTriangle_evaluation {I : Type u} [SmallCategory I]
     (D : I ⥤ SSet.{u}) {i j k : I} (h : i ⟶ k) (g : j ⟶ k)
     (w : (diagramUniversalCospanPastingChoices D h g) _⦋0⦌)
-    (v : (bousfieldKanHolim D) _⦋0⦌) :
+    (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D) _⦋0⦌) :
     ∃ e : (D.obj k).Edge
       ((D.map h).app (Opposite.op ⦋0⦌) (diagramSelectionVertex (diagramSelectionAt D v) i))
       ((D.map g).app (Opposite.op ⦋0⦌) (diagramSelectionVertex (diagramSelectionAt D v) j)),
       Nonempty (SSet.Edge.CompStruct e (diagramSelectionEdge (diagramSelectionAt D v) g)
         (diagramSelectionEdge (diagramSelectionAt D v) h)) ∧
-      e.edge = ((diagramUniversalCospanPastedEdge D h g w).map (evaluateFunctorAt v)).edge :=
+      e.edge = ((diagramUniversalCospanPastedEdge D h g w).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).edge :=
   kanCospanPastedTriangle_map (diagramSelectionEdge (diagramUniversalFamily D) h)
-    (diagramSelectionEdge (diagramUniversalFamily D) g) w (evaluateFunctorAt v)
+    (diagramSelectionEdge (diagramUniversalFamily D) g) w (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)
     (diagramSelectionEdge (diagramSelectionAt D v) h)
     (diagramSelectionEdge (diagramSelectionAt D v) g)
     (diagramUniversalFamily_edge_evaluation D v h) (diagramUniversalFamily_edge_evaluation D v g)
@@ -183,8 +183,8 @@ lemma diagramUniversalCospanPastingChoices_relative_lifting {I : Type u} [SmallC
     [KanComplex (D.obj k)] {S T : SSet.{u}} (m : S ⟶ T) [Mono m]
     (a : S ⟶ diagramUniversalCospanPastingChoices D h g) :
     ∃ b : T ⟶ diagramUniversalCospanPastingChoices D h g, m ≫ b = a := by
-  let : KanComplex ((D ⋙ ihom (bousfieldKanHolim D)).obj k) := by
-    change KanComplex ((ihom (bousfieldKanHolim D)).obj (D.obj k))
+  let : KanComplex ((D ⋙ ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)).obj k) := by
+    change KanComplex ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim D)).obj (D.obj k))
     infer_instance
   exact kanCospanPastingChoices_relative_lifting _ _ m a
 

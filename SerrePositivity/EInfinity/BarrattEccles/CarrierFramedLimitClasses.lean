@@ -56,7 +56,7 @@ lemma carrierFramedLimitHomPiZeroEquiv_mapClass (F : K ⥤ (operad A).Algebra) {
     infer_instance
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let p := (carrierFramedLimitProbeComparison A).app Y
   let h := p ≫ f ≫ (framedLimitCarrierIso A K F).hom
   let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)

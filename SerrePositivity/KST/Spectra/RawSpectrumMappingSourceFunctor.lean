@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPreNaturality
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreeIntervalBoundary
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreeIntervalBoundary
 
 /-!
 概要：一般の Kan 列への元の点つき Hom を、BF 源についての厳密な前層へまとめる。
@@ -24,8 +24,8 @@ lemma pointedPre_id (X : OmegaSpectrum.{u}) (Z : KanSequence.{u}) :
   intro n
   rw [pointedPre_evaluation, Category.id_comp]
   change pointedEvaluation X Z n ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (𝟙 (X.level n).space) (Z.level n).space = _
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, MonoidalClosed.pre_id,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (𝟙 (X.level n).space) (Z.level n).space = _
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, MonoidalClosed.pre_id,
     NatTrans.id_app]
   exact Category.comp_id (pointedEvaluation X Z n)
 
@@ -38,7 +38,7 @@ lemma pointedPre_comp {X Y W : OmegaSpectrum.{u}} (f : X ⟶ Y) (g : Y ⟶ W)
   rw [pointedPre_evaluation]
   conv_rhs =>
     rw [Category.assoc, pointedPre_evaluation, ← Category.assoc,
-      pointedPre_evaluation, Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp]
+      pointedPre_evaluation, Category.assoc, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp]
   rfl
 
 /-- 一般の Kan 列への元の整合写像空間の、BF 源についての厳密な点つき前層。 -/

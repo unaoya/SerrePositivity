@@ -16,13 +16,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits MonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 
 /-- 同じ κ-compact dg cone 上の id ⊕ T。 -/
-def dgKappaSwindleSource : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I) :=
+def dgKappaSwindleSource : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I) :=
   (dgSwindleSourceFunctor R D).restrict I.objects I.objects (by
     intro M hM
     exact I.binaryClosed M (dgCountableSumObj R D M) hM
@@ -30,36 +30,36 @@ def dgKappaSwindleSource : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I) :
 
 /-- 全斉次射の自然性を保った、同じ cone 内の順向き swindle。 -/
 def dgKappaSwindleStrictHom :
-    StrictNatTrans (dgKappaSwindleSource R D I) (dgKappaConeCountableSum R D I) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgKappaSwindleSource R D I) (dgKappaConeCountableSum R D I) where
   app X := (dgSwindleStrictHom R D).app X.val
   naturality f := (dgSwindleStrictHom R D).naturality f
 
 /-- 全斉次射の自然性を保った、同じ cone 内の逆向き swindle。 -/
 def dgKappaSwindleStrictInv :
-    StrictNatTrans (dgKappaConeCountableSum R D I) (dgKappaSwindleSource R D I) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgKappaConeCountableSum R D I) (dgKappaSwindleSource R D I) where
   app X := (dgSwindleStrictInv R D).app X.val
   naturality f := (dgSwindleStrictInv R D).naturality f
 
 /-- 同じ cone 内での各成分の実閉 dg 同型。両側逆は既に証明した指定射。 -/
 def dgKappaSwindleComponentIso (X : DGKappaCone R D I) :
-    ForgetEnrichment.of (Complex R) ((dgKappaSwindleSource R D I).obj X) ≅
-      ForgetEnrichment.of (Complex R) ((dgKappaConeCountableSum R D I).obj X) where
-  hom := (countableSwindleIso (ModuleCategory R D) X.val).hom
-  inv := (countableSwindleIso (ModuleCategory R D) X.val).inv
-  hom_inv_id := (countableSwindleIso (ModuleCategory R D) X.val).hom_inv_id
-  inv_hom_id := (countableSwindleIso (ModuleCategory R D) X.val).inv_hom_id
+    ForgetEnrichment.of (_root_.SerrePositivity.DifferentialGraded.Complex R) ((dgKappaSwindleSource R D I).obj X) ≅
+      ForgetEnrichment.of (_root_.SerrePositivity.DifferentialGraded.Complex R) ((dgKappaConeCountableSum R D I).obj X) where
+  hom := (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) X.val).hom
+  inv := (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) X.val).inv
+  hom_inv_id := (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) X.val).hom_inv_id
+  inv_hom_id := (countableSwindleIso (_root_.SerrePositivity.DifferentialGraded.ModuleCategory R D) X.val).inv_hom_id
 
 /-- 順向きの厳密 dg 自然変換の成分は、同じ実閉同型の cycle。 -/
 lemma dgKappaSwindleStrictHom_app (X : DGKappaCone R D I) :
     (dgKappaSwindleStrictHom R D I).app X =
-      cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
+      _root_.SerrePositivity.DifferentialGraded.cycleFromUnit _ (ForgetEnrichment.homTo (_root_.SerrePositivity.DifferentialGraded.Complex R)
         (dgKappaSwindleComponentIso R D I X).hom) :=
   rfl
 
 /-- 逆向きの厳密 dg 自然変換の成分も、同じ実閉同型の逆の cycle。 -/
 lemma dgKappaSwindleStrictInv_app (X : DGKappaCone R D I) :
     (dgKappaSwindleStrictInv R D I).app X =
-      cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
+      _root_.SerrePositivity.DifferentialGraded.cycleFromUnit _ (ForgetEnrichment.homTo (_root_.SerrePositivity.DifferentialGraded.Complex R)
         (dgKappaSwindleComponentIso R D I X).inv) :=
   rfl
 

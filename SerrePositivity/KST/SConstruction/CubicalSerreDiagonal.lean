@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の Serre 対角の生成鎖射による像は全表示関係を保つ。 -/
-lemma cubicalSerreDiagonal_relation {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreDiagonal_relation {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ d) (φ : cubicalYoneda.obj d ⟶ K) :
     (serreConcreteCubeComplexFunctor A).map f ≫
         (serreConcreteCubeDiagonal A d ≫
@@ -36,7 +36,7 @@ def cubicalSerreDiagonal (K : CubicalSet.{u}) :
     (fun f φ => cubicalSerreDiagonal_relation A f φ)
 
 /-- 全体の Serre 対角は、元の各立方体の対角そのものを回収する。 -/
-lemma cubicalSerreDiagonal_generator (K : CubicalSet.{u}) {c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreDiagonal_generator (K : CubicalSet.{u}) {c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (φ : cubicalYoneda.obj c ⟶ K) :
     cubicalSerreGenerator A φ ≫ cubicalSerreDiagonal A K =
       serreConcreteCubeDiagonal A c ≫
@@ -53,7 +53,7 @@ def cubicalSerreAugmentation (K : CubicalSet.{u}) :
     (fun f _ => serreConcreteCubeComplexFunctor_counit A f)
 
 /-- 全体の増大は、元の各立方体の増大そのものを回収する。 -/
-lemma cubicalSerreAugmentation_generator (K : CubicalSet.{u}) {c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreAugmentation_generator (K : CubicalSet.{u}) {c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (φ : cubicalYoneda.obj c ⟶ K) :
     cubicalSerreGenerator A φ ≫ cubicalSerreAugmentation A K =
       serreConcreteCubeAugmentation A c :=

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockUnit
 public import SerrePositivity.EInfinity.SimplicialLocalization.Enrichment
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedCategory
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPointAssociativity
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitCompositionPointAssociativity
 
 /-!
 # 元の自由 hammock 対角と hammock の実単体的豊穣圏
@@ -22,16 +22,16 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory Hammock
 
-def HammockObjects (C : RelativeCategory.{u}) : Type u := C.category
+def HammockObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : Type u := C.category
 
-instance hammockEnrichedCategory (C : RelativeCategory.{u}) :
+instance hammockEnrichedCategory (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     EnrichedCategory SSet.{u} (HammockObjects C) := by
   change EnrichedCategory SSet.{u} C.category
-  exact enrichedCategory (C := C.category) C.weakEquivalences
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (C := C.category) C.weakEquivalences
 
-def FreeHammockObjects (C : RelativeCategory.{u}) : Type u := C.category
+def FreeHammockObjects (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) : Type u := C.category
 
-instance freeHammockEnrichedCategory (C : RelativeCategory.{u}) :
+instance freeHammockEnrichedCategory (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     EnrichedCategory SSet.{u} (FreeHammockObjects C) where
   Hom X Y := freeHammockDiagonal C X Y
   id X := freeHammockDiagonalUnit C X
@@ -41,30 +41,30 @@ instance freeHammockEnrichedCategory (C : RelativeCategory.{u}) :
     funext n
     apply ConcreteCategory.hom_ext
     intro f
-    change composePoint ((freeResolution C).obj n).weakEquivalences
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint ((freeResolution C).obj n).weakEquivalences
       (freeResolutionObject C n X) (freeResolutionObject C n X)
       (freeResolutionObject C n Y)
-      ((colimitUnit ((freeResolution C).obj n).weakEquivalences
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
         (freeResolutionObject C n X)).app n PUnit.unit) f = f
-    rw [← arrowPoint_identity]
-    exact composePoint_identity_left _ f
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_left _ f
   comp_id X Y := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro f
-    change composePoint ((freeResolution C).obj n).weakEquivalences
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint ((freeResolution C).obj n).weakEquivalences
       (freeResolutionObject C n X) (freeResolutionObject C n Y)
       (freeResolutionObject C n Y) f
-      ((colimitUnit ((freeResolution C).obj n).weakEquivalences
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit ((freeResolution C).obj n).weakEquivalences
         (freeResolutionObject C n Y)).app n PUnit.unit) = f
-    rw [← arrowPoint_identity]
-    exact composePoint_identity_right _ f
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_right _ f
   assoc V X Y Z := by
     apply NatTrans.ext
     funext n
     apply ConcreteCategory.hom_ext
     intro q
-    exact composePoint_assoc ((freeResolution C).obj n).weakEquivalences q.1 q.2.1 q.2.2
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_assoc ((freeResolution C).obj n).weakEquivalences q.1 q.2.1 q.2.2
 
 end SerrePositivity.EInfinity.SimplicialLocalization

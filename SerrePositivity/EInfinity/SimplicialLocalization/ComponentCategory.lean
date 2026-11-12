@@ -26,7 +26,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：同じ DK Hom の二本の辺を元の合成で合成する（Dwyer–Kan）。
 方針：一次単体を合成し、面の合成保存で両端を照合する。
@@ -38,16 +38,16 @@ def localizationHomEdgeComposition {X Y Z : C.category}
     (localizationHom C X Z).Edge (f ≫ g) (f' ≫ g') :=
   .mk (e.edge ≫ e'.edge)
     (by
-      change FixedObjectHom.map (localizedFreeResolution C) (localizedFreeResolutionObject C)
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map (localizedFreeResolution C) (localizedFreeResolutionObject C)
         (fun θ X => localizedFreeResolutionObject_naturality C θ X)
         (SimplexCategory.δ 1).op (e.edge ≫ e'.edge) = _
-      rw [FixedObjectHom.map_composition]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_composition]
       exact congrArg₂ (fun a b => a ≫ b) e.src_eq e'.src_eq)
     (by
-      change FixedObjectHom.map (localizedFreeResolution C) (localizedFreeResolutionObject C)
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map (localizedFreeResolution C) (localizedFreeResolutionObject C)
         (fun θ X => localizedFreeResolutionObject_naturality C θ X)
         (SimplexCategory.δ 0).op (e.edge ≫ e'.edge) = _
-      rw [FixedObjectHom.map_composition]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map_composition]
       exact congrArg₂ (fun a b => a ≫ b) e.tgt_eq e'.tgt_eq)
 
 unseal SSet.π₀ in

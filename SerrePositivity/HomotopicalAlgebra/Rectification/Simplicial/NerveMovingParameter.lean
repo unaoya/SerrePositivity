@@ -45,10 +45,10 @@ open SerrePositivity.NerveSimplexEndpoint SerrePositivity.Reedy
 namespace SerrePositivity.SimplicialModel.NerveMovingParameter
 variable {D : Type uD} [Category.{vD} D]
   (K : D ⥤ SSet.{max w v}) (F : D ⥤ SSet.{v})
-  (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d))
+  (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d))
 
-abbrev values := NerveBiparameter.values K (lifted F)
-abbrev System := NerveBiparameter.System K (lifted F)
+abbrev values := NerveBiparameter.values K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F)
+abbrev System := NerveBiparameter.System K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F)
 abbrev LowerSystem (n : ℕ) := NerveDiagramExtension.LowerSystem (values K F) n
 abbrev point : Index D ⥤ SSet.{w} := (Functor.const (Index D)).obj
   (SSet.stdSimplex.obj (SimplexCategory.mk 0))
@@ -64,7 +64,7 @@ lemma rightLifting : ∀ s, (MorphismProperty.monomorphisms SSet.{max w v}).rlp
     (LargeParameterMapping.fillers (hp (endpoint s)) (K.obj (NerveSimplexStart.start s)))
 
 lemma values_inverts : NerveDiagramExtension.InvertsInverse (values K F) :=
-  NerveBiparameter.values_map_isIso K (lifted F)
+  NerveBiparameter.values_map_isIso K (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F)
 
 lemma point_inverts : NerveDiagramExtension.InvertsInverse (point.{w} (D := D)) := by
   intro s t f _hf
@@ -99,12 +99,12 @@ lemma start_eq_endpoint_zero (s : Index D) (h : dimension s = 0) :
   apply Fin.ext
   exact h.symm
 
-variable (families : ∀ d, K.obj d ⟶ UniverseLift.obj.{w} (F.obj d))
+variable (families : ∀ d, K.obj d ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d))
 
 abbrev vertexPoint (s : Lower (NerveCoherentFamily.reedy D) 1) :
     SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 0) ⟶ (values K F).obj s.obj :=
   RelativeChoiceSpace.name (families (NerveSimplexStart.start s.obj) ≫
-    eqToHom (congrArg (lifted F).obj (start_eq_endpoint_zero s.obj
+    eqToHom (congrArg (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted F).obj (start_eq_endpoint_zero s.obj
       (Nat.eq_zero_of_le_zero (Nat.le_of_lt_succ s.property)))))
 
 abbrev verticesApp (s : Lower (NerveCoherentFamily.reedy D) 1) :=
@@ -132,7 +132,7 @@ lemma vertices_at_object (d : D) :
 
 def extendFamilies : System K F := extend K F hp 1 (vertices K F families)
 
-abbrev evaluate (a : System K F) (d : D) : K.obj d ⟶ UniverseLift.obj.{w} (F.obj d) :=
+abbrev evaluate (a : System K F) (d : D) : K.obj d ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d) :=
   uncurry' (RelativeChoiceSpace.pointUnitIso.inv ≫ a.app (ofChain (ComposableArrows.mk₀ d)))
 
 lemma extendFamilies_evaluate (d : D) : evaluate K F (extendFamilies K F hp families) d =

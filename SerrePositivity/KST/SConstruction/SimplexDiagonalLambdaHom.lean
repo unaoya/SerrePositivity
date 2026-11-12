@@ -26,7 +26,7 @@ lemma serreCubeAugmentation_dimension {n m : ℕ} (h : n = m) :
 /-- 元の対角 Λ Hom は、元の零次元区間同型で同じ鎖単位と同型。 -/
 def simplexDiagonalLambdaHomIso {N : ℕ} (a : Fin (N + 1)) :
     𝟙_ (Complex A) ≅ homObject A (CubicalLambda A (Δ[N] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) :=
   eqToIso (congrArg (serreCubeComplex A) (show 0 = a.val - a.val - 1 by omega)) ≪≫
     simplexIntervalLambdaHomIso A a a le_rfl
 
@@ -34,7 +34,7 @@ def simplexDiagonalLambdaHomIso {N : ℕ} (a : Fin (N + 1)) :
 lemma simplexDiagonalLambdaHomIso_augmentation {N : ℕ} (a : Fin (N + 1)) :
     (simplexDiagonalLambdaHomIso A a).hom ≫
       ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) = 𝟙 (𝟙_ (Complex A)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) = 𝟙 (𝟙_ (Complex A)) := by
   have h := congrArg (fun f => eqToHom (congrArg (serreCubeComplex A)
     (show 0 = a.val - a.val - 1 by omega)) ≫ f)
     (simplexIntervalLambdaHomIso_augmentation A a a le_rfl)
@@ -44,35 +44,35 @@ lemma simplexDiagonalLambdaHomIso_augmentation {N : ℕ} (a : Fin (N + 1)) :
 /-- 元の対角 Hom の増大は、同じ元の対角 Hom 同型の逆射。 -/
 lemma simplexDiagonalLambdaHom_augmentation_eq_inv {N : ℕ} (a : Fin (N + 1)) :
     ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) =
         (simplexDiagonalLambdaHomIso A a).inv := by
   have h := congrArg (fun f => (simplexDiagonalLambdaHomIso A a).inv ≫ f)
     (simplexDiagonalLambdaHomIso_augmentation A a)
   exact ((Category.assoc _ _ _).symm.trans
     ((congrArg (fun f => f ≫ ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)))
         (simplexDiagonalLambdaHomIso A a).inv_hom_id).trans (Category.id_comp _))).symm.trans
           (h.trans (Category.comp_id _))
 
 /-- 元の対角 Λ Hom の増大は実同型。 -/
 instance simplexDiagonalLambdaHom_augmentation_isIso {N : ℕ} (a : Fin (N + 1)) :
     IsIso ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) := by
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) := by
   rw [simplexDiagonalLambdaHom_augmentation_eq_inv A a]
   infer_instance
 
 /-- 元の対角 Hom の単位射は、同じ元の対角 Hom 同型の順射。 -/
 lemma simplexDiagonalLambdaHom_id_eq_hom {N : ℕ} (a : Fin (N + 1)) :
-    eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) =
+    eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) =
       (simplexDiagonalLambdaHomIso A a).hom := by
   apply (cancel_mono ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a))).1
-  exact ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map_id (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)).trans
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a))).1
+  exact ((cubicalLambdaCounit.{u, 0} A (Δ[N] : SSet.{u})).map_id (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)).trans
     (simplexDiagonalLambdaHomIso_augmentation A a).symm
 
 /-- 元の標準単体の対角 Hom の単位射は実同型。 -/
 instance simplexDiagonalLambdaHom_id_isIso {N : ℕ} (a : Fin (N + 1)) :
-    IsIso (eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) := by
+    IsIso (eId (C := CubicalLambda A (Δ[N] : SSet.{u})) (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) := by
   rw [simplexDiagonalLambdaHom_id_eq_hom A a]
   infer_instance
 

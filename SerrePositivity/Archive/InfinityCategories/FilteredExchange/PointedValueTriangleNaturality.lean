@@ -2,9 +2,9 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueHomAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIso
-public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
-public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.LeftStraighteningSectionNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InvertibleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Homotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftStraighteningSectionNaturality
 
 /-!
 概要：元の coherent 三角形の指定精密化辺に対する値比較の自然性。

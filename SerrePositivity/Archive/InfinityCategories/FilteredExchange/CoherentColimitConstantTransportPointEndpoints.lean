@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitConstantTriangleLongEndpoint
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransportComparison
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantDiagramTransportComparison
 
 /-!
 概要：元の定値余極限三角形の二実輸送の一点終点を、元の長辺作用と二辺合成へ戻す。

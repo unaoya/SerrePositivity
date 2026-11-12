@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Fibration SerrePositivity.KST.Comparison
+open SerrePositivity.KST.Fibration
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
@@ -85,7 +85,7 @@ include hstage in
 規約：元の native Verdier 全四角形との比較や Sp 引き戻し性は結論しない。
 使われ方：K-6 c4 の全二胞体比較と c5 の商実現比較の接続先。 -/
 theorem dgKappaNativeQuotientSKernel_isPullback :
-    IsPullbackSquare (quotientSKernelInfinitySquare (dgKappaNativeKernelInclusion R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientSKernelInfinitySquare (dgKappaNativeKernelInclusion R D I)
       (dgKappaNativeQuotient R D I)) :=
   quotientSKernelInfinitySquare_isPullback_of_positive_stages _ _
     (dgKappaNative_isVerdierSequence R D I) hstage

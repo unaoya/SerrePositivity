@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 variable {I : Type u} [SmallCategory I]
 local instance homotopyMappingCoefficientKan (X : OmegaSpectrum.{u})
@@ -27,20 +27,20 @@ local instance homotopyMappingCoefficientKan (X : OmegaSpectrum.{u})
 /-- BF homotopy limit の射影は、元の豊穣 Hom 上でも実際の同値を誘導する。 -/
 def homotopyLimitProjectionMappingEquivalence (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
-    QCatEquivalence (mappingSpace X (homotopyLimit D))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (mappingSpace X (homotopyLimit D))
       (RawSpectrumMapping.space X (KanSequence.homotopyLimit (D ⋙ forgetToKan))) := by
-  have : TrivialKanFibration (RawSpectrumMapping.post X (homotopyLimitProjection D)) :=
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (RawSpectrumMapping.post X (homotopyLimitProjection D)) :=
     RawSpectrumMapping.post_trivialKanFibration X _ (fun n ↦
       (KanSequence.replacementStage (KanSequence.homotopyLimit (D ⋙ forgetToKan)) n).projection_rlp)
-  exact qCatEquivalenceOfTrivialKanFibration (RawSpectrumMapping.post X (homotopyLimitProjection D))
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (RawSpectrumMapping.post X (homotopyLimitProjection D))
 
 /-- 元の BF homotopy limit の実際の Hom と、元の全 Hom を係数とする homotopy end の同値。 -/
 def homotopyLimitMappingEquivalence (X : OmegaSpectrum.{u}) (D : I ⥤ OmegaSpectrum.{u}) :
-    QCatEquivalence (mappingSpace X (homotopyLimit D))
-      (PointedWeightedEnd.obj (bousfieldKanWeight I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (mappingSpace X (homotopyLimit D))
+      (PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
         ((D ⋙ forgetToKan) ⋙ RawSpectrumMapping.pointedFunctor X)).right :=
   (homotopyLimitProjectionMappingEquivalence X D).trans
-    (qCatEquivalenceOfIso (PointedSimplicialSet.forget.mapIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (PointedSimplicialSet.forget.mapIso
       (RawSpectrumMapping.homotopyLimitIso X (D ⋙ forgetToKan))))
 
 /-- 同値の順射は BF 射影の後合成と、元の Hom-end 交換の合成そのもの。 -/

@@ -67,7 +67,7 @@ lemma postnikovStrictZeroBase_lowerBound (i : ℕ) :
     exact postnikovComplex_lowerBound R (B.obj i).obj n
   exact @CochainPullback.isStrictlyGE R _ _ _ _ _ _ (-n) hA' hB
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma postnikovStrictZeroBaseProjection_value_isProIso
     (hf : IsProIso ((f.map (nonpositiveInclusion R)).map (groups R 0))) :

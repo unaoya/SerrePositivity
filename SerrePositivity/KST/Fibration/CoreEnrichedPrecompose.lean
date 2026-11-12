@@ -32,11 +32,11 @@ theorem coreEnrichedPrecompose_map {C : Type v} {D : Type w}
     [∀ X Y : C, KanComplex (X ⟶[SSet.{u}] Y)]
     [∀ X Y : D, KanComplex (X ⟶[SSet.{u}] Y)]
     (R : EnrichedFunctor SSet.{u} C D)
-    (F : EnrichedFunctor SSet.{u} D QuasicategoryObject.{u}) (X Y : C) :
+    (F : EnrichedFunctor SSet.{u} D _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u}) (X Y : C) :
     R.map X Y ≫ (quasicategoryEnrichedCoreFunctor F).map (R.obj X) (R.obj Y) =
       (quasicategoryEnrichedCoreFunctor (R.comp SSet F)).map X Y := by
-  apply (cancel_mono ((ihom (quasicategoryCore (F.obj (R.obj X)).obj : SSet.{u})).map
-    (quasicategoryCore (F.obj (R.obj Y)).obj).ι)).mp
+  apply (cancel_mono ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (F.obj (R.obj X)).obj : SSet.{u})).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (F.obj (R.obj Y)).obj).ι)).mp
   rw [Category.assoc, quasicategoryEnrichedCoreFunctor_inclusion]
   exact (Category.assoc _ _ _).symm.trans
     (quasicategoryEnrichedCoreFunctor_inclusion (R.comp SSet F) X Y).symm
@@ -48,7 +48,7 @@ theorem coreEnrichedPrecompose_assoc_map {C : Type v} {D : Type w} {E : Type z}
     [∀ X Y : C, KanComplex (X ⟶[SSet.{u}] Y)]
     [∀ X Y : D, KanComplex (X ⟶[SSet.{u}] Y)]
     (R : EnrichedFunctor SSet.{u} C D) (I : EnrichedFunctor SSet.{u} D E)
-    (F : EnrichedFunctor SSet.{u} E QuasicategoryObject.{u}) (X Y : C) :
+    (F : EnrichedFunctor SSet.{u} E _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u}) (X Y : C) :
     R.map X Y ≫ (quasicategoryEnrichedCoreFunctor (I.comp SSet F)).map (R.obj X) (R.obj Y) =
       (quasicategoryEnrichedCoreFunctor ((R.comp SSet I).comp SSet F)).map X Y := by
   change R.map X Y ≫ curry (quasicategoryEnrichedCoreAction (I.comp SSet F)

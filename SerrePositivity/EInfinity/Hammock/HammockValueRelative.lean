@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.HammockValue
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ZigzagValueRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagValueRelative
 public import SerrePositivity.EInfinity.Hammock.RelativeColimitMap
 
 /-!
@@ -27,17 +27,17 @@ variable {C D E : Type u} [Category.{u} C] [Category.{u} D] [Category.{u} E]
 
 lemma colimitValue_relative :
     Hammock.Relative.colimitMap F X Y ≫ colimitValue L hL (F.functor.obj X) (F.functor.obj Y) =
-      colimitValue (F.functor ⋙ L) (relativeInverts F L hL) X Y := by
+      colimitValue (F.functor ⋙ L) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.relativeInverts F L hL) X Y := by
   apply colimit.hom_ext
   intro w
-  change graphInclusion W X Y w ≫ Hammock.Relative.colimitMap F X Y ≫ _ =
-    graphInclusion W X Y w ≫ _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ Hammock.Relative.colimitMap F X Y ≫ _ =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W X Y w ≫ _
   rw [← Category.assoc, Hammock.Relative.graphInclusion_colimitMap, Category.assoc,
     graphInclusion_colimitValue, graphInclusion_colimitValue]
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
   intro τ
-  exact value_relative F L hL (τ.obj 0)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.value_relative F L hL (τ.obj 0)
 
 end SerrePositivity.EInfinity.Hammock.Zigzag.Value

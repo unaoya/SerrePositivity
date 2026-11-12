@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSimplex
-public import SerrePositivity.InfinityCategories.F1.Coherent.Edges
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.Edges
 
 /-!
 概要：二つの定値豊穣射の合成二単体を、元の通常の合成三角形と同定する。
@@ -21,10 +21,10 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma coherentComposition_constant_simplex {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    coherentCompositionSimplex (PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1)
-      (PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1)
-      (OrderHom.id : Fin 2 →o Fin 2) = (coherentNerveCompStruct f g).simplex := by
-  change _ = enrichedFunctorOfOrderDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionSimplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1)
+      (OrderHom.id : Fin 2 →o Fin 2) = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).simplex := by
+  change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram
     ((⟨ULift.down, fun _ _ h ↦ h⟩ : ULift.{u} (Fin 3) →o Fin 3).toFunctor ⋙
       ComposableArrows.mk₂ f g)
   apply EnrichedFunctor.ext SSet
@@ -37,26 +37,26 @@ lemma coherentComposition_constant_simplex {C : Type v} [Category.{u} C] [Simpli
     apply ConcreteCategory.hom_ext
     intro P
   all_goals
-    simp -implicitDefEqProofs +instances [coherentCompositionSimplex, coherentCompositionHom,
-      coherentCompositionObj, enrichedFunctorOfOrderDiagram, PinchedHom.constant]
+    simp -implicitDefEqProofs +instances [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionSimplex, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionHom,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionObj, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant]
   all_goals
     dsimp [Fin.lastCases] at *
   all_goals
-    dsimp [Fin.reverseInduction, Fin.reverseInduction.go, orderDiagramEnrichedHom] at *
+    dsimp [Fin.reverseInduction, Fin.reverseInduction.go, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.orderDiagramEnrichedHom] at *
   case «0».«0» =>
     change (eId SSet X).app (Opposite.op ⦋n⦌) PUnit.unit = _
     simpa only [SimplicialCategory.homEquiv', Equiv.trans_apply, eHomEquiv_id]
-      using unitHom_app_constant (eId SSet X) n
+      using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.unitHom_app_constant (eId SSet X) n
   case «0».«1» =>
-    exact PinchedHom.constant_pullback (SimplicialCategory.homEquiv' X Y f) _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback (SimplicialCategory.homEquiv' X Y f) _
   case «0».«2» =>
     change (eComp SSet X Y Z).app (Opposite.op ⦋n⦌)
       (((SimplicialCategory.sHom X Y).map _)
-        (PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1),
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 1),
        ((SimplicialCategory.sHom Y Z).map _)
-        (PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1)) = _
-    rw [PinchedHom.constant_pullback, PinchedHom.constant_pullback]
-    exact simplicialHom_constant_comp f g n
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 1)) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback]
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_constant_comp f g n
   case «1».«0» =>
     have h := SimplicialThickening.Path.le (P.obj 0)
     change (1 : Fin 3) ≤ 0 at h
@@ -64,9 +64,9 @@ lemma coherentComposition_constant_simplex {C : Type v} [Category.{u} C] [Simpli
   case «1».«1» =>
     change (eId SSet Y).app (Opposite.op ⦋n⦌) PUnit.unit = _
     simpa only [SimplicialCategory.homEquiv', Equiv.trans_apply, eHomEquiv_id]
-      using unitHom_app_constant (eId SSet Y) n
+      using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.unitHom_app_constant (eId SSet Y) n
   case «1».«2» =>
-    exact PinchedHom.constant_pullback (SimplicialCategory.homEquiv' Y Z g) _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback (SimplicialCategory.homEquiv' Y Z g) _
   case «2».«0» =>
     have h := SimplicialThickening.Path.le (P.obj 0)
     change (2 : Fin 3) ≤ 0 at h
@@ -77,12 +77,12 @@ lemma coherentComposition_constant_simplex {C : Type v} [Category.{u} C] [Simpli
     omega
   case «2».«2» =>
     change (eId SSet Z).app (Opposite.op ⦋n⦌) PUnit.unit =
-      PinchedHom.constant (SimplicialCategory.homEquiv' Z Z
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Z Z
         ((ComposableArrows.mk₂ f g).map (𝟙 (2 : Fin 3)))) n
     rw [CategoryTheory.Functor.map_id]
     change (eId SSet Z).app (Opposite.op ⦋n⦌) PUnit.unit =
-      PinchedHom.constant (SimplicialCategory.homEquiv' Z Z (𝟙 Z)) n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Z Z (𝟙 Z)) n
     simpa only [SimplicialCategory.homEquiv', Equiv.trans_apply, eHomEquiv_id]
-      using unitHom_app_constant (eId SSet Z) n
+      using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.unitHom_app_constant (eId SSet Z) n
 
 end SerrePositivity.KST.LocalizingInvariants

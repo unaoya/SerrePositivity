@@ -7,6 +7,7 @@ public import Mathlib.Algebra.Homology.QuasiIso
 public import Mathlib.Algebra.Category.ModuleCat.Abelian
 public import Mathlib.CategoryTheory.EssentialImage
 public import SerrePositivity.DifferentialGraded.Complexes.Perturbation
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Functor.QuasiEquivalence
@@ -38,6 +39,7 @@ open CategoryTheory
 variable (A : Type u) [CommRing A]
 
 /-- dg 関手は Mathlib の Ch(A) 豊穣関手をそのまま用いる。 -/
+@[kerodon 00PH]
 abbrev DGFunctor (D : Type v) (E : Type w) [DGCategory A D] [DGCategory A E] :=
   EnrichedFunctor (Complex A) D E
 

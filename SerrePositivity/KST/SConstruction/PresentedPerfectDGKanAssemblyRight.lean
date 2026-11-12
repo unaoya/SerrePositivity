@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGAssemblyExInfinity
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationComposition
 
 /-! # 元の Ex∞ 比較と組み立てを合成した隣接段の右脚
 概要：ΣEx∞U_r から同じ元の Ex∞B_(r+1) への実射を全 dg 入力に自然に束ねる。
@@ -33,7 +33,7 @@ def presentedPerfectDGKanAssemblyRightTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblySourceFunctor A r)
       (presentedPerfectDGKanAssemblyTargetFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp _ _ _
     (presentedPerfectDGOneDirectionSuspensionComparison A r)
     (presentedPerfectDGAssemblyExInfinityTransformation A r)
 
@@ -47,7 +47,7 @@ lemma presentedPerfectDGKanAssemblyRightTransformation_app (r : ℕ)
     (C : PerfDGInput.{u, v} A) :
     (presentedPerfectDGKanAssemblyRightTransformation A r).app C =
       eHomEquiv SSet (presentedPerfectDGKanAssemblyRightMap A r C) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom _ _ _ _ _ C
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp_hom _ _ _ _ _ C
     (presentedPerfectDGKanAssemblySigmaMap A r C) (presentedPerfectDGAssemblyExInfinityMap A r C)
     (presentedPerfectDGKanAssemblySigmaMap_app A r C)
     (presentedPerfectDGAssemblyExInfinityTransformation_app A r C)
@@ -59,7 +59,7 @@ lemma presentedPerfectDGKanAssemblyRightMap_right (r : ℕ) (C : PerfDGInput.{u,
         presentedPerfectDGKanAssemblyRightMap A r C).right =
     (exInfinitySuspensionComparison
       ((presentedPerfectDGOneDirectionPointedEnrichedFunctor A r).obj C)).right ≫
-      Comparison.exInfinity.map
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
         (oneDirectionSuspensionAssembly r
           (stableCategoryModel (presentedPerfectDGStableCategory A C))).right := rfl
 

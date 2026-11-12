@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKPerfectNuEquivalence
-public import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEdges
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ArrowIsoFromCommutingEdges
 
 /-!
 概要：完全射の全自然な可換比較を、Cat^perf 内の区間図式全体の比較へ運ぶ。
@@ -12,13 +12,13 @@ public import SerrePositivity.InfinityCategories.Derived.ArrowIsoFromCommutingEd
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants F2.Idempotent
+open CategoryTheory MonoidalCategory SSet InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable {A B C D : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-  (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C D) (a : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C) (b : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B D)
-  (hA : IsIdempotentComplete A.obj) (hB : IsIdempotentComplete B.obj)
-  (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
-  (e : FunctorIso (f.hom ≫ b.hom) (a.hom ≫ g.hom))
+variable {A B C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+  (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (g : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C D) (a : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C) (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B D)
+  (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete A.obj) (hB : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete B.obj)
+  (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj) (hD : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f.hom ≫ b.hom) (a.hom ≫ g.hom))
 include e
 
 /-- 概要：完全射の全自然比較は同じ Cat^perf 射の四辺可換式を与える。
@@ -27,10 +27,10 @@ include e
 lemma perfectStableHoArrow_square_eq_of_functorIso :
     perfectStableHoArrow f hA hB ≫ perfectStableHoArrow b hB hD =
       perfectStableHoArrow a hA hC ≫ perfectStableHoArrow g hC hD := by
-  let F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A D := ⟨f.hom ≫ b.hom,
-    @isExactFunctor_comp _ _ _ _ _ f.isExact b.isExact⟩
-  let G : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A D := ⟨a.hom ≫ g.hom,
-    @isExactFunctor_comp _ _ _ _ _ a.isExact g.isExact⟩
+  let F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A D := ⟨f.hom ≫ b.hom,
+    @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _ f.isExact b.isExact⟩
+  let G : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A D := ⟨a.hom ≫ g.hom,
+    @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _ a.isExact g.isExact⟩
   have hf : perfectStableHoArrow F hA hD =
       perfectStableHoArrow f hA hB ≫ perfectStableHoArrow b hB hD :=
     perfectStableHoArrow_comp f b hA hB hD
@@ -45,10 +45,10 @@ lemma perfectStableHoArrow_square_eq_of_functorIso :
 方針：同じ四辺可換式を既存の区間全比較の存在定理へ渡す。
 規約：端点だけの同型ではない。使われ方：実右面の包含・商境界の指定比較。 -/
 lemma nonempty_perfectStableArrowFunctorIso_of_equivalences
-    (ha : IsQCatEquivalence a.hom) (hb : IsQCatEquivalence b.hom) :
-    Nonempty (FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence a.hom) (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence b.hom) :
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
       (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge)) := by
-  apply nonempty_arrowFunctorIso_of_comm
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.nonempty_arrowFunctorIso_of_comm
     (perfectStableArrow f hA hB).toTruncated (perfectStableArrow g hC hD).toTruncated
     (perfectStableArrow a hA hC).toTruncated (perfectStableArrow b hB hD).toTruncated
   · exact perfectStableHoArrow_isIso_of_isQCatEquivalence a hA hC ha
@@ -73,7 +73,7 @@ structure PerfectStableArrowSquareWitness where
 規約：端点経路を存在型内に保持。使われ方：同じ頂点成分を持つ指定境界の選択。 -/
 lemma nonempty_perfectStableArrowSquareWitness :
     Nonempty (PerfectStableArrowSquareWitness f g a b hA hB hC hD) := by
-  obtain ⟨H, h₀, h₁⟩ := exists_arrowHomotopy_of_homMk_comm
+  obtain ⟨H, h₀, h₁⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.exists_arrowHomotopy_of_homMk_comm
     (perfectStableArrow f hA hB).toTruncated (perfectStableArrow g hC hD).toTruncated
     (perfectStableArrow a hA hC).toTruncated (perfectStableArrow b hB hD).toTruncated
     (perfectStableHoArrow_square_eq_of_functorIso f g a b hA hB hC hD e)
@@ -94,10 +94,10 @@ variable (w : PerfectStableArrowSquareWitness f g a b hA hB hC hD)
 方針：既存の両端点による区間可逆性を使う。
 規約：同じホモトピーを保持。使われ方：指定辺全比較の可逆性。 -/
 lemma isInvertible
-    (ha : IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
-    (hb : IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy w.homotopy) :=
-  arrowHomotopy_isInvertible_of_endpointPaths w.homotopy
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
+    (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy w.homotopy) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.arrowHomotopy_isInvertible_of_endpointPaths w.homotopy
     (perfectStableArrow a hA hC).toTruncated (perfectStableArrow b hB hD).toTruncated
     ha hb w.source_path w.target_path
 
@@ -105,18 +105,18 @@ lemma isInvertible
 方針：元ホモトピーの辺の類を同型にする。
 規約：同じホモトピーを使用。使われ方：指定端点経路を回収できる辺比較。 -/
 def comparison
-    (ha : IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
-    (hb : IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
-    FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow a hA hC).toTruncated)
+    (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow b hB hD).toTruncated) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
       (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge) :=
   @asIso _ _ _ _ (SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy w.homotopy)) (w.isInvertible ha hb)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy w.homotopy)) (w.isInvertible ha hb)
 
 /-- 概要：同じ指定二端点同値を持つ実四角形の区間全比較。
 方針：二完全同値の Cat^perf 辺の可逆性を代入する。
 規約：元ホモトピーと端点式を保持。使われ方：実右面の包含・商の同じ全比較。 -/
-def comparisonOfEquivalences (ha : IsQCatEquivalence a.hom) (hb : IsQCatEquivalence b.hom) :
-    FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
+def comparisonOfEquivalences (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence a.hom) (hb : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence b.hom) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (SSet.yonedaEquiv.symm (perfectStableArrow f hA hB).edge)
       (SSet.yonedaEquiv.symm (perfectStableArrow g hC hD).edge) :=
   w.comparison (perfectStableHoArrow_isIso_of_isQCatEquivalence a hA hC ha)
     (perfectStableHoArrow_isIso_of_isQCatEquivalence b hB hD hb)

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.F1.SquareFunctorTransport
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.SquareFunctorTransport
 
 /-!
 # BS の perfectoid 化を E∞ 代数の界面で述べる
@@ -37,7 +37,7 @@ variable (E : EInfinityTheory.{u}) (R : Type u) [CommRing R]
 方針：通常の Under 入力の本質像を使う。規約：全頂点同型を要求。
 使われ方：BS の離散時の普遍性と整代数の欄。 -/
 def IsTheoryDiscrete (x : (E.CAlg R) _⦋0⦌) : Prop :=
-  ∃ S : A_R R, Nonempty (VertexIso x ((E.discrete R).app _ (nerveVertex S)))
+  ∃ S : A_R R, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x ((E.discrete R).app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)))
 
 /-- 概要：BS の離散性と CAlg_R の通常代数の本質像の一致。
 方針：同じ U の全次数比較を代入する。規約：零次以外の全整数次数。
@@ -49,31 +49,31 @@ lemma theory_disc_forget_iff (x : (E.CAlg R) _⦋0⦌) :
   constructor
   · intro h i hi
     exact (h i hi).of_iso
-      ((derivedInfinityHomologyIso R i _) ≪≫ (HIso R i _).symm)
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso R i _) ≪≫ (HIso R i _).symm)
   · intro h i hi
     exact (h i hi).of_iso
-      ((HIso R i _) ≪≫ (derivedInfinityHomologyIso R i _).symm)
+      ((HIso R i _) ≪≫ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyIso R i _).symm)
 
 /-- 概要：元の CAlg_R 単位を J 始域の実ホモトピーへ移す。
 方針：全関手比較の逆と U 像を合成して代表を選ぶ。
 規約：単位の二胞体の類を変更しない。
 使われ方：既存 H0RingData と指定された BS 錐。 -/
 def theoryUnderlyingUnit {P : algebraNerve R ⟶ E.CAlg R}
-    (η : FunctorHom (E.discrete R) P) :
+    (η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (E.discrete R) P) :
     NatInfinity R (J R) (P ≫ E.forget R) :=
-  functorHomHomotopy ((E.discrete_forget R).inv ≫
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy ((E.discrete_forget R).inv ≫
     (SSet.mapHomotopyCategory ((ihom (algebraNerve R)).map (E.forget R))).map η)
 
 /-- 概要：底の実単位の二胞体の回収。
 方針：ホモトピー代表の仕様を使う。規約：元の単位の U 像との合成。
 使われ方：代表の選択によって単位を変えていないことの確認。 -/
 lemma theoryUnderlyingUnit_hom {P : algebraNerve R ⟶ E.CAlg R}
-    (η : FunctorHom (E.discrete R) P) :
+    (η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (E.discrete R) P) :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (theoryUnderlyingUnit E R η)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (theoryUnderlyingUnit E R η)) =
       (E.discrete_forget R).inv ≫
         (SSet.mapHomotopyCategory ((ihom (algebraNerve R)).map (E.forget R))).map η :=
-  functorHomHomotopy_hom _
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom _
 
 /-- 概要：同じ perfectoid 標的の CAlg_R 図式。
 方針：同じ通常代数関手を離散埋め込みへ送る。規約：添字の向きを変えない。
@@ -86,17 +86,17 @@ def theoryTargetDiagram (p : ℕ) [Fact p.Prime] (S : A_R R) :
 方針：離散比較を標的関手で前合成する。規約：全単体を保持。
 使われ方：指定錐の比較の境界条件。 -/
 def theoryTargetDiagramForgetIso (p : ℕ) [Fact p.Prime] (S : A_R R) :
-    FunctorIso (theoryTargetDiagram E R p S ≫ E.forget R) (targetDiagram R p S) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (theoryTargetDiagram E R p S ≫ E.forget R) (targetDiagram R p S) :=
   (E.discrete_forget R).precomp (nerveMap (targetAlgebra R p S))
 
 /-- 概要：実 U は元の正方形の引き戻し性を保存する。
 方針：対応する指定 coherent 錐へ任意極限保存を適用する。
 規約：全正方形を同じ U で後合成。使われ方：BS excision の D(R) 版。 -/
-lemma theory_forget_pullback {F : Δ[1] ⊗ Δ[1] ⟶ E.CAlg R} (hF : IsPullbackSquare F) :
-    IsPullbackSquare (F ≫ E.forget R) := by
-  exact (isLimitCone_iff_of_diagram_eq (by simp only [pullbackCospan, Category.assoc])
-    (by simp only [mapJoinCone, pullbackCone, Category.assoc])).mp
-      (E.forget_preservesLimits R (pullbackCone F) hF)
+lemma theory_forget_pullback {F : Δ[1] ⊗ Δ[1] ⟶ E.CAlg R} (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare F) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (F ≫ E.forget R) := by
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_of_diagram_eq (by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCospan, Category.assoc])
+    (by simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone, Category.assoc])).mp
+      (E.forget_preservesLimits R (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone F) hF)
 
 variable (p : ℕ) [Fact p.Prime]
 
@@ -105,30 +105,30 @@ variable (p : ℕ) [Fact p.Prime]
 規約：底の錐の極限性は欄に含めない。全標的・全単体の比較を保持する。
 使われ方：実 U の極限保存を同じ指定錐へ適用する。 -/
 structure TheoryBSLimitConeData (P : algebraNerve R ⟶ E.CAlg R)
-    (η : FunctorHom (E.discrete R) P)
+    (η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (E.discrete R) P)
     (h0 : H0RingData R (P ≫ E.forget R) (theoryUnderlyingUnit E R η)) (S : A_R R) where
   /-- 同じ perfectoid 標的図式上の CAlg_R 錐。 -/
-  cone : JoinCone (theoryTargetDiagram E R p S)
+  cone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (theoryTargetDiagram E R p S)
   /-- 錐頂点は元の P(S)。 -/
-  vertex_eq : cone.vertex = P.app _ (nerveVertex S)
+  vertex_eq : cone.vertex = P.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)
   /-- 元の単位と H⁰ の全射影の乗法整合性。 -/
   underlying : BSLimitConeData R p (P ≫ E.forget R) (theoryUnderlyingUnit E R η) h0 S
   /-- 通常の S 上の錐からの CAlg_R の比較辺。 -/
-  overSource : (sliceOver (theoryTargetDiagram E R p S)).Edge
+  overSource : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (theoryTargetDiagram E R p S)).Edge
     (underlying.sourceCone.postcomp (E.discrete R)) cone
   /-- 同じ CAlg_R 単位の実代表を保つ。 -/
-  overSource_unit : (overSource.map (sliceOverProjection (theoryTargetDiagram E R p S))).edge =
-    (simplicialHomotopyVertexEdge (functorHomHomotopy η) (nerveVertex S)).edge
+  overSource_unit : (overSource.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (theoryTargetDiagram E R p S))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy η) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)).edge
   /-- U 像と既存 G1 の指定錐の全関手比較。 -/
-  comparison : FunctorIso (cone.val ≫ E.forget R) underlying.cone.val
+  comparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (cone.val ≫ E.forget R) underlying.cone.val
   /-- 標的図式上の比較は完成済みの離散比較自身。 -/
   comparison_boundary : HEq
-    (comparison.precomp (joinInr Δ[0] (perfectoidTargetNerve p S.right)))
+    (comparison.precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] (perfectoidTargetNerve p S.right)))
     (theoryTargetDiagramForgetIso E R p S)
   /-- 頂点上では同じ P(S) の恒等比較。 -/
   comparison_vertex : HEq
-    (FunctorIso.app comparison
-      ((joinInl Δ[0] (perfectoidTargetNerve p S.right)).app _ (SSet.yonedaEquiv (𝟙 Δ[0]))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app comparison
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[0] (perfectoidTargetNerve p S.right)).app _ (SSet.yonedaEquiv (𝟙 Δ[0]))))
     (Iso.refl (SSet.HomotopyCategory.mk (vertex R (P ≫ E.forget R) S)))
 
 /-- 概要：G1 の結論を既存の CAlg_R で述べた BS 界面。
@@ -137,15 +137,15 @@ structure TheoryBSLimitConeData (P : algebraNerve R ⟶ E.CAlg R)
 使われ方：toE3 により旧 D(R) 界面とその下流へ供給する。 -/
 structure TheoryPerfectoidizationInterface (hR : IsIntegralPerfectoid R p) where
   perfd : algebraNerve R ⟶ E.CAlg R
-  unit : FunctorHom (E.discrete R) perfd
+  unit : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (E.discrete R) perfd
   h0 : H0RingData R (perfd ≫ E.forget R) (theoryUnderlyingUnit E R unit)
-  universal : ∀ S, IsTheoryDiscrete E R (perfd.app _ (nerveVertex S)) →
+  universal : ∀ S, IsTheoryDiscrete E R (perfd.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)) →
     IsPerfectoidization p (h0.unit.app S).right.hom
   limitCone : ∀ S, TheoryBSLimitConeData E R p perfd unit h0 S
-  limit_isLimit : ∀ S, IsLimitCone (limitCone S).cone
+  limit_isLimit : ∀ S, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (limitCone S).cone
   integral : ∀ (S : A_R R),
     (letI : Algebra R S.right := S.hom.hom.toAlgebra; Algebra.IsIntegral R S.right) →
-    IsTheoryDiscrete E R (perfd.app _ (nerveVertex S)) ∧
+    IsTheoryDiscrete E R (perfd.app _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex S)) ∧
       IsIntegralPerfectoid (h0.ringFunctor.obj S).right p
   excision : ∀ {S T : A_R R} (f : S ⟶ T) (I : Ideal S.right),
     SerrePositivity.DerivedCompletion.IsModuleComplete S.right (p : S.right)
@@ -155,7 +155,7 @@ structure TheoryPerfectoidizationInterface (hR : IsIntegralPerfectoid R p) where
     SerrePositivity.DerivedCompletion.IsModuleComplete S.right (p : S.right)
       (ModuleCat.of S.right I) →
     ArcOutside R p f I →
-    IsPullbackSquare (ordinarySquare R f (quotientProjection R S I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ordinarySquare R f (quotientProjection R S I)
       (quotientProjection R T (I.map f.right.hom)) (quotientComparison R f I)
       (quotientSquare_commutes R f I) ≫ perfd)
 
@@ -165,10 +165,10 @@ variable {hR : IsIntegralPerfectoid R p}
 方針：U の極限保存と全錐比較を合成する。規約：形状の制限なし。
 使われ方：旧 G1 の limit_isLimit の欄。 -/
 lemma TheoryBSLimitConeData.underlying_isLimit
-    {P : algebraNerve R ⟶ E.CAlg R} {η : FunctorHom (E.discrete R) P}
+    {P : algebraNerve R ⟶ E.CAlg R} {η : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (E.discrete R) P}
     {h0 : H0RingData R (P ≫ E.forget R) (theoryUnderlyingUnit E R η)} {S : A_R R}
-    (c : TheoryBSLimitConeData E R p P η h0 S) (hc : IsLimitCone c.cone) :
-    IsLimitCone c.underlying.cone :=
+    (c : TheoryBSLimitConeData E R p P η h0 S) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c.cone) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c.underlying.cone :=
   (E.forget_preservesLimits R c.cone hc).of_functorIso c.comparison
 
 /-- 概要：実 U と指定比較による旧 G1 界面の構成。

@@ -12,18 +12,18 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の具体的立方体の連結積と、その構造同型のデータ。 -/
-instance concreteCubeMonoidalStruct : MonoidalCategoryStruct _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube where
+instance concreteCubeMonoidalStruct : MonoidalCategoryStruct _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube where
   tensorObj := concreteCubeTensorObj
   tensorHom := concreteCubeTensorMap
   whiskerLeft X {_ _} f := concreteCubeTensorMap (𝟙 X) f
   whiskerRight {_ _} f Y := concreteCubeTensorMap f (𝟙 Y)
-  tensorUnit := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0
+  tensorUnit := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0
   associator := concreteCubeAssociator
   leftUnitor := concreteCubeLeftUnitor
   rightUnitor := concreteCubeRightUnitor
 
 /-- 元の連結積を持つ具体的立方体圏のモノイダル構造。 -/
-instance concreteCubeMonoidal : MonoidalCategory _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube :=
+instance concreteCubeMonoidal : MonoidalCategory _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube :=
   MonoidalCategory.ofTensorHom
     (id_tensorHom_id := concreteCubeTensorMap_id)
     (id_tensorHom := by intros; rfl)
@@ -36,6 +36,6 @@ instance concreteCubeMonoidal : MonoidalCategory _root_.SerrePositivity.Infinity
     (triangle := concreteCubeAssociator_triangle)
 
 /-- モノイダル圏の tensor 関手は元の連結積の二変数関手そのもの。 -/
-lemma concreteCubeMonoidal_tensor : MonoidalCategory.tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube = concreteCubeTensor := rfl
+lemma concreteCubeMonoidal_tensor : MonoidalCategory.tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube = concreteCubeTensor := rfl
 
 end SerrePositivity.KST.SConstruction

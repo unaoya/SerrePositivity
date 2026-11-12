@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.StrictConeMap
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.StrictCoherentNatTrans
 
 /-!
 概要：Hom より大きい添字圏の自然変換を、同じサイズの coherent prism にする。
@@ -16,8 +16,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F2
-open SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
+
 namespace SerrePositivity.KST.LocalizingInvariants.StrictConeMap
 
 variable {J : Type (max u v)} [SmallCategory J]
@@ -37,19 +37,19 @@ def largeNervePrism {F G : J ⥤ C} (η : F ⟶ G) :
 使われ方：元の cospan と path 置換後の cospan の比較。 -/
 def largeCoherentPrism {F G : J ⥤ C} (η : F ⟶ G) :
     (Δ[1] : SSet.{max u v}) ⊗ nerve J ⟶ SimplicialNerve C :=
-  largeNervePrism η ≫ nerveToCoherent C
+  largeNervePrism η ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C
 /-- 概要：自然変換の円柱の先頭は元の始域図式。
 方針：順序図式の対象と射を比較し、恒等自然変換の成分を消す。
 規約：指定された F 自体との厳密な等式。
 使われ方：図式の同型への円柱の束ね。 -/
 lemma largeCoherentPrism_zero {F G : J ⥤ C} (η : F ⟶ G) :
-    prismEndpoint 0 (nerve J) ≫ largeCoherentPrism η =
-      resizedNerveMap F ≫ nerveToCoherent C := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve J) ≫ largeCoherentPrism η =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  change enrichedFunctorOfOrderDiagram _ = enrichedFunctorOfOrderDiagram _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _
   congr 1
   apply CategoryTheory.Functor.ext
   case h_obj =>
@@ -66,13 +66,13 @@ lemma largeCoherentPrism_zero {F G : J ⥤ C} (η : F ⟶ G) :
 規約：指定された G 自体との厳密な等式。
 使われ方：図式の同型への円柱の束ね。 -/
 lemma largeCoherentPrism_one {F G : J ⥤ C} (η : F ⟶ G) :
-    prismEndpoint 1 (nerve J) ≫ largeCoherentPrism η =
-      resizedNerveMap G ≫ nerveToCoherent C := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve J) ≫ largeCoherentPrism η =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.resizedNerveMap G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  change enrichedFunctorOfOrderDiagram _ = enrichedFunctorOfOrderDiagram _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _
   congr 1
   apply CategoryTheory.Functor.ext
   case h_obj =>

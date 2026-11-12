@@ -38,11 +38,11 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v))
   (Z : DGKappaZeroInput R D I)
   (F : (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
     dgKInputInfinity.{u, max (u + 1) v} R)
-  (hz : IsZeroVertex (squareVertex (F ≫ dgKInputK R) 0 1))
-  (hMiddle : squareVertex F 1 0 = coherentNerveVertex (dgKappaResolvedConeKInput R D I))
-  (hRight : squareVertex F 1 1 = coherentNerveVertex (dgKappaSuspensionKInput R D I))
+  (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputK R) 0 1))
+  (hMiddle : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I))
+  (hRight : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I))
   (A : PerfDGInput.{u, max (u + 1) v} R)
-  (hLeft : squareVertex F 0 0 = coherentNerveVertex A)
+  (hLeft : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)
 
 /-- 明示四角形・零所属に条件付きで、構造射の全単射性は元の実 fiber 比較そのものと同値。 -/
 theorem dgKappaSuspensionConnectiveStructureMap_bijective_iff_fiber (j : ℤ) :

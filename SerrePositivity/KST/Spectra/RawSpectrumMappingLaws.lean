@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- Kan 列の恒等射による後合成は恒等。 -/
@@ -23,7 +23,7 @@ lemma post_id (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) :
   apply hom_ext X Y
   intro n
   rw [post_evaluation, Category.id_comp]
-  change evaluation X Y n ≫ (pointedMappingFunctor (X.level n).space).map (𝟙 _) = _
+  change evaluation X Y n ≫ (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor (X.level n).space).map (𝟙 _) = _
   rw [CategoryTheory.Functor.map_id]
   change evaluation X Y n ≫ 𝟙 _ = _
   exact Category.comp_id _
@@ -35,7 +35,7 @@ lemma post_comp (X : OmegaSpectrum.{u}) {Y Z W : KanSequence.{u}}
   apply hom_ext X W
   intro n
   rw [Category.assoc, post_evaluation, post_evaluation, ← Category.assoc, post_evaluation]
-  change evaluation X Y n ≫ (pointedMappingFunctor (X.level n).space).map
+  change evaluation X Y n ≫ (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor (X.level n).space).map
     (p.app n ≫ q.app n) = _
   rw [CategoryTheory.Functor.map_comp, Category.assoc]
   rfl
@@ -50,6 +50,6 @@ lemma post_spectrum (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}} (p : Y ⟶
   apply hom_ext X Z.toKanSequence
   intro n
   rw [post_evaluation]
-  exact (spectrumHomMap_evaluation X p n).symm
+  exact (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomMap_evaluation X p n).symm
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

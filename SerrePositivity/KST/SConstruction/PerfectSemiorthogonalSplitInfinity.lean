@@ -24,14 +24,14 @@ variable {E : perfectStableInfinity.{u} ⟶ Sp.{u}} (hE : IsPerfectLocalizingInv
 
 /-- 同じ積分解の射の類を持つ、元の中央値への実 Sp の辺。 -/
 def IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge : Sp.{u}.Edge
-    (coherentNerveVertex (NativeSplit.product
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (NativeSplit.product
       (hE.sequenceFiberTriangle (perfectSemiorthogonalVerdierSequence d))))
     (E.app (Opposite.op ⦋0⦌) (perfectSemiorthogonalVerdierSequence d).middleVertex) :=
   VertexIsoPath.edge (hE.perfectSemiorthogonalSplitEquivalence d)
 
 /-- 同じ分裂の辺は、実 Sp における可逆辺。 -/
 lemma IsPerfectLocalizingInvariant.perfectSemiorthogonalSplitEdge_isInvertible :
-    IsInvertibleEdge (hE.perfectSemiorthogonalSplitEdge d).toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (hE.perfectSemiorthogonalSplitEdge d).toTruncated :=
   VertexIsoPath.edge_invertible (hE.perfectSemiorthogonalSplitEquivalence d)
 
 /-- 実可逆辺の射の類は、元の三射を回収する同じ積分解の射そのもの。 -/
@@ -53,13 +53,13 @@ def IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone :=
 
 /-- 同じ実積錐は、Sp の ∞ 極限である。 -/
 lemma IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_isLimit :
-    IsLimitCone (hE.perfectSemiorthogonalProductCone d) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (hE.perfectSemiorthogonalProductCone d) :=
   NativeSplit.productCone_isLimit _
 
 /-- 同じ実積錐の頂点は、分裂可逆辺の始点に使った元の BF 積。 -/
 lemma IsPerfectLocalizingInvariant.perfectSemiorthogonalProductCone_vertex :
     (hE.perfectSemiorthogonalProductCone d).vertex =
-      coherentNerveVertex (NativeSplit.product
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (NativeSplit.product
         (hE.sequenceFiberTriangle (perfectSemiorthogonalVerdierSequence d))) :=
   NativeSplit.productCone_vertex _
 

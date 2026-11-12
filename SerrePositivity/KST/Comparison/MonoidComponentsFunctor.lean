@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.MonoidComponentMaps
-public import SerrePositivity.InfinityCategories.Simplicial.SimplexComponents
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexComponents
 
 /-!
 # 単体的モノイドの成分の実際の関手
@@ -84,7 +84,7 @@ def simplexToComponents (M : SimplicialObject MonCat.{u}) (n : ℕ) :
 theorem simplexToComponents_natural (M : SimplicialObject MonCat.{u}) {m n : ℕ}
     (f : ⦋m⦌ ⟶ ⦋n⦌) (s : M.obj (op ⦋n⦌)) :
     simplexToComponents M m ((M.map f.op).hom s) = simplexToComponents M n s :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map (monoidSpace M) f s
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map (monoidSpace M) f s
 
 /--
 概要：元の単体的モノイドから成分の定数単体的モノイドへの自然な射。

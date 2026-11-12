@@ -13,7 +13,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 /-- 概要：同じ元実対角を零区間 Hom 成分の実頂点として保持する。
@@ -36,19 +36,19 @@ def dgOdotMilnorNuAbsoluteDiagonalIntervalComponentVertex :
 lemma dgOdotMilnorNuNullDiagonalIntervalComponentVertex_map :
     (dgOdotMilnorNuNullIntervalComponentMap R d).app (Opposite.op ⦋0⦌)
         (dgOdotMilnorNuNullDiagonalIntervalComponentVertex R d h) =
-      intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)) := by
-  change (coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)).app _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (K) (B)).app _
     (ULift.up ((dgOdotMilnorNuNullCoherenceHom R d h).app _
       (dgOdotMilnorNuNullDiagonalVertex R d))) = _
   rw [dgOdotMilnorNuNullDiagonalComparison_source]
-  have he := coherentHomIntervalComparison_vertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
       (K) (B) (dgOdotMilnorNuNullDiagonalMap R d))
   exact he.trans (congrArg
-    (fun f : (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) ⟶ (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) =>
-      intervalMappingVertexOfEdge (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) f))
+    (fun f : (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) ⟶ (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) =>
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) f))
     (Equiv.symm_apply_apply
-      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
         (K) (B)) (dgOdotMilnorNuNullDiagonalMap R d)))
 /-- 概要：元零成分の実終点の像は元絶対対角辺の実区間頂点。
 方針：同じ元絶対 Hom 頂点と標準比較の頂点式を照合する。
@@ -56,38 +56,38 @@ lemma dgOdotMilnorNuNullDiagonalIntervalComponentVertex_map :
 lemma dgOdotMilnorNuAbsoluteDiagonalIntervalComponentVertex_map :
     (dgOdotMilnorNuNullIntervalComponentMap R d).app (Opposite.op ⦋0⦌)
         (dgOdotMilnorNuAbsoluteDiagonalIntervalComponentVertex R d h) =
-      intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)) := by
-  change (coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (B)).app _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (K) (B)).app _
     (ULift.up ((dgOdotMilnorNuNullCoherenceHom R d h).app _
       (dgOdotMilnorNuAbsoluteDiagonalVertex R d h))) = _
   rw [dgOdotMilnorNuNullDiagonalComparison_target]
-  have he := coherentHomIntervalComparison_vertex (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
       (K) (B) (dgOdotMilnorNuAbsoluteDiagonalMap R d h))
   exact he.trans (congrArg
-    (fun f : (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) ⟶ (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) =>
-      intervalMappingVertexOfEdge (coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) f))
+    (fun f : (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) ⟶ (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) =>
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) f))
     (Equiv.symm_apply_apply
-      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1})
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1})
         (K) (B)) (dgOdotMilnorNuAbsoluteDiagonalMap R d h)))
 /-- 概要：元下全比較から得た元両端固定の実区間対角辺。
 方針：同じ元対角パラメーターの二面を実端点として読む。
 規約：元の一単体。使われ方：共有対角の代表修正。 -/
 def dgOdotMilnorNuNullLowerDiagonalIntervalEdge : SSet.Edge
-    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)))
-    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) where
   edge := SSet.yonedaEquiv (dgOdotMilnorNuNullLowerDiagonalIntervalParameter R d h)
   src_eq := by
-    change (intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (B))).δ 1
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (B))).δ 1
       (SSet.yonedaEquiv (dgOdotMilnorNuNullLowerDiagonalIntervalParameter R d h)) =
-        intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d))
     have he := congrArg SSet.yonedaEquiv
       (dgOdotMilnorNuNullLowerDiagonalIntervalParameter_faces R d h).1
     simpa only [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] using he
   tgt_eq := by
-    change (intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (B))).δ 0
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (B))).δ 0
       (SSet.yonedaEquiv (dgOdotMilnorNuNullLowerDiagonalIntervalParameter R d h)) =
-        intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))
     have he := congrArg SSet.yonedaEquiv
       (dgOdotMilnorNuNullLowerDiagonalIntervalParameter_faces R d h).2
     simpa only [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] using he
@@ -95,20 +95,20 @@ def dgOdotMilnorNuNullLowerDiagonalIntervalEdge : SSet.Edge
 方針：同じ元上対角パラメーターの二面を読む。
 規約：元の一単体。使われ方：元下対角を厳密に合わせる指定代表。 -/
 def dgOdotMilnorNuNullUpperDiagonalIntervalEdge : SSet.Edge
-    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)))
-    (intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))) where
   edge := SSet.yonedaEquiv (dgOdotMilnorNuNullUpperDiagonalIntervalParameter R d h)
   src_eq := by
-    change (intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (B))).δ 1
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (B))).δ 1
       (SSet.yonedaEquiv (dgOdotMilnorNuNullUpperDiagonalIntervalParameter R d h)) =
-        intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuNullDiagonalMap R d))
     have he := congrArg SSet.yonedaEquiv
       (dgOdotMilnorNuNullUpperDiagonalIntervalParameter_faces R d h).1
     simpa only [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] using he
   tgt_eq := by
-    change (intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableVertex (B))).δ 0
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (K)) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableVertex (B))).δ 0
       (SSet.yonedaEquiv (dgOdotMilnorNuNullUpperDiagonalIntervalParameter R d h)) =
-        intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgOdotMilnorNuAbsoluteDiagonalMap R d h))
     have he := congrArg SSet.yonedaEquiv
       (dgOdotMilnorNuNullUpperDiagonalIntervalParameter_faces R d h).2
     simpa only [stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply] using he

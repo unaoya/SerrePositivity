@@ -21,11 +21,11 @@ open scoped Simplicial
 規約：選択は加えない。使われ方：object S の候補単体の構成。 -/
 def gappedObjectVertex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) (hF : IsGapped F) :
     (sConstruction n C) _⦋0⦌ :=
-  ⟨functorVertex F, by
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    change IsGapped ((functorVertexEquiv _ C).symm (functorVertexEquiv _ C F))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C F))
     rw [Equiv.symm_apply_apply]
     exact hF⟩
 
@@ -34,7 +34,7 @@ def gappedObjectVertex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) (hF : IsGa
 規約：厳密等号。使われ方：単体ホモトピーの自然性。 -/
 lemma gappedDiagram_gappedObjectVertex {n : ℕ} {C : SSet.{u}}
     (F : arNerve n ⟶ C) (hF : IsGapped F) : gappedDiagram (gappedObjectVertex F hF) = F :=
-  (functorVertexEquiv _ C).symm_apply_apply F
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm_apply_apply F
 
 /-- 概要：実際の図式への対応は単射。
 方針：頂点同値の逆の単射性と部分型の外延性。
@@ -42,7 +42,7 @@ lemma gappedDiagram_gappedObjectVertex {n : ℕ} {C : SSet.{u}}
 lemma gappedDiagram_injective {n : ℕ} {C : SSet.{u}} :
     Function.Injective (@gappedDiagram n C) := by
   intro v w h
-  exact Subtype.ext ((functorVertexEquiv _ C).symm.injective h)
+  exact Subtype.ext ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm.injective h)
 
 /-- 概要：S の添字制限は実際の Ar 図式の前合成。
 方針：内部 Hom の前合成を関手頂点の同値で読む。
@@ -50,12 +50,12 @@ lemma gappedDiagram_injective {n : ℕ} {C : SSet.{u}} :
 lemma gappedDiagram_sMap {m n : ℕ} {C : SSet.{u}} (θ : Fin (m + 1) →o Fin (n + 1))
     (v : (sConstruction n C) _⦋0⦌) :
     gappedDiagram ((sMap C θ).app (Opposite.op ⦋0⦌) v) = arNerveMap θ ≫ gappedDiagram v := by
-  have hv : functorVertex (gappedDiagram v) = v.val := (functorVertexEquiv _ C).apply_symm_apply _
-  change (functorVertexEquiv _ C).symm
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
     (((MonoidalClosed.pre (arNerveMap θ)).app C).app (Opposite.op ⦋0⦌) v.val) = _
   rw [← hv]
-  change (functorVertexEquiv _ C).symm
-    (functorVertexEquiv _ C (arNerveMap θ ≫ gappedDiagram v)) = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (arNerveMap θ ≫ gappedDiagram v)) = _
   exact Equiv.symm_apply_apply _ _
 
 /-- 概要：object S の単体作用は Ar 図式の前合成。
@@ -72,8 +72,8 @@ lemma gappedDiagram_objectS_map {C : SSet.{u}} {n m : SimplexCategoryᵒᵖ} (α
 lemma gappedDiagram_sPostcompCofiber {n : ℕ} {C D : SSet.{u}} [Quasicategory D]
     (f : C ⟶ D) (hf : PreservesCofiberData f) (v : (sConstruction n C) _⦋0⦌) :
     gappedDiagram ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v) = gappedDiagram v ≫ f := by
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv _ C).apply_symm_apply _
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
   have he := ConcreteCategory.congr_hom
     (NatTrans.congr_app (sPostcompCofiber_ι n f hf) (Opposite.op ⦋0⦌)) v
   change ((sPostcompCofiber n f hf).app (Opposite.op ⦋0⦌) v).val =
@@ -81,8 +81,8 @@ lemma gappedDiagram_sPostcompCofiber {n : ℕ} {C D : SSet.{u}} [Quasicategory D
   dsimp only [gappedDiagram]
   rw [he]
   rw [← hv]
-  change (functorVertexEquiv _ D).symm
-    (functorVertexEquiv _ D (gappedDiagram v ≫ f)) = _
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ D).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ D (gappedDiagram v ≫ f)) = _
   exact Equiv.symm_apply_apply _ _
 
 /-- 概要：object S の入力の射への作用は実際の図式の後合成。

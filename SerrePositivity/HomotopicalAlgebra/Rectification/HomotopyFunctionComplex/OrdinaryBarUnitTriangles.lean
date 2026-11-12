@@ -53,13 +53,13 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}} {X Y : D C}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (cX : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X X)
-  (cY : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Y)
-  (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (cX : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X X)
+  (cY : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Y)
+  (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
 
-abbrev identityWord (A : D C) : UniverseLift.obj.{max u v} T ⟶
+abbrev identityWord (A : D C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶
     OrdinaryBarFixedWordResolution.hom C A A :=
   SSet.stdSimplex.isTerminalObj₀.from _ ≫ OrdinaryBarFixedWordResolution.identity C A
 
@@ -75,7 +75,7 @@ def leftIntermediate : SSet.Homotopy
         (f ≫ OrdinaryBarDiagonalHomAugmentation.smallAugmentation C X Y) c) ≫
           MonoidalClosed.comp sX sX sY)
     (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j f) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (compositionComparison hcof hfib P j (identityWord (T := T) X) f cX c) rfl
     (congrArg (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j)
       (OrdinaryBarFixedWordResolution.identity_left C f))
@@ -87,7 +87,7 @@ def rightIntermediate : SSet.Homotopy
         (identityWord (T := T) Y ≫ OrdinaryBarDiagonalHomAugmentation.smallAugmentation C Y Y) cY) ≫
           MonoidalClosed.comp sX sY sY)
     (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j f) :=
-  LargeParameterSquare.changeEndpoints
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints
     (compositionComparison hcof hfib P j f (identityWord (T := T) Y) c cY) rfl
     (congrArg (OrdinaryBarDiagonalClosedAction.nativeFamily hcof hfib P j)
       (OrdinaryBarFixedWordResolution.identity_right C f))
@@ -100,7 +100,7 @@ def leftOutgoing : KanComparisonTriangle.Data (root hcof hfib P j f c)
     (by change (R (lift (identityWord (T := T) X) f ≫
           OrdinaryBarFixedWordResolution.composition C X X Y) c).h = (R f c).h
         rw [identityWord, OrdinaryBarFixedWordResolution.identity_left])
-    (by rw [leftIntermediate, LargeParameterSquare.changeEndpoints_h])
+    (by rw [leftIntermediate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
 
 def rightOutgoing : KanComparisonTriangle.Data (root hcof hfib P j f c)
     (rightIntermediate hcof hfib P j f cY c) :=
@@ -110,7 +110,7 @@ def rightOutgoing : KanComparisonTriangle.Data (root hcof hfib P j f c)
     (by change (R (lift f (identityWord (T := T) Y) ≫
           OrdinaryBarFixedWordResolution.composition C X Y Y) c).h = (R f c).h
         rw [identityWord, OrdinaryBarFixedWordResolution.identity_right])
-    (by rw [rightIntermediate, LargeParameterSquare.changeEndpoints_h])
+    (by rw [rightIntermediate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
 
 def leftReturn : KanComparisonTriangle.Data (leftIntermediate hcof hfib P j f cX c)
     (root hcof hfib P j f c) :=
@@ -121,12 +121,12 @@ def leftReturn : KanComparisonTriangle.Data (leftIntermediate hcof hfib P j f cX
     (by
       change lift (nativeUnitComparison hcof hfib P X j cX).h (R f c).h ≫
         MonoidalClosed.comp sX sX sY = (leftIntermediate hcof hfib P j f cX c).h
-      rw [leftIntermediate, LargeParameterSquare.changeEndpoints_h,
-        compositionComparison, LargeParameterSquare.changeEndpoints_h]
+      rw [leftIntermediate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h,
+        compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
       change lift (nativeUnitComparison hcof hfib P X j cX).h (R f c).h ≫
         MonoidalClosed.comp sX sX sY =
           lift (R (identityWord (T := T) X) cX).h (R f c).h ≫ MonoidalClosed.comp sX sX sY
-      rw [nativeUnitComparison, LargeParameterSquare.changeEndpoints_h])
+      rw [nativeUnitComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
     (ClosedParameterUnits.firstFixed_interval (R f c))
 
 def rightReturn : KanComparisonTriangle.Data (rightIntermediate hcof hfib P j f cY c)
@@ -138,12 +138,12 @@ def rightReturn : KanComparisonTriangle.Data (rightIntermediate hcof hfib P j f 
     (by
       change lift (R f c).h (nativeUnitComparison hcof hfib P Y j cY).h ≫
         MonoidalClosed.comp sX sY sY = (rightIntermediate hcof hfib P j f cY c).h
-      rw [rightIntermediate, LargeParameterSquare.changeEndpoints_h,
-        compositionComparison, LargeParameterSquare.changeEndpoints_h]
+      rw [rightIntermediate, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h,
+        compositionComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
       change lift (R f c).h (nativeUnitComparison hcof hfib P Y j cY).h ≫
         MonoidalClosed.comp sX sY sY =
           lift (R f c).h (R (identityWord (T := T) Y) cY).h ≫ MonoidalClosed.comp sX sY sY
-      rw [nativeUnitComparison, LargeParameterSquare.changeEndpoints_h])
+      rw [nativeUnitComparison, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h])
     (ClosedParameterUnits.secondFixed_interval (R f c))
 
 lemma leftOutgoing_comparison :

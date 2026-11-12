@@ -46,7 +46,7 @@ def cubicalDayYonedaCoreMonoidal : cubicalDayYoneda.{u}.CoreMonoidal :=
       apply DayFunctor.hom_ext
       change 𝟙 (cubicalYoneda.{u}.obj X) =
         (cubicalYoneda.{u}.map (concreteCubeLeftUnitor X).inv ≫
-          cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) X ≫
+          cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) X ≫
             cubicalDayTensorMap cubicalDayUnitInclusion (𝟙 (cubicalYoneda.{u}.obj X))) ≫
           (λ_ (DayFunctor.mk (cubicalYoneda.{u}.obj X))).hom.natTrans
       erw [Category.assoc, Category.assoc]
@@ -58,7 +58,7 @@ def cubicalDayYonedaCoreMonoidal : cubicalDayYoneda.{u}.CoreMonoidal :=
       apply DayFunctor.hom_ext
       change 𝟙 (cubicalYoneda.{u}.obj X) =
         (cubicalYoneda.{u}.map (concreteCubeRightUnitor X).inv ≫
-          cubicalDayCubeInclusion X (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) ≫
+          cubicalDayCubeInclusion X (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) ≫
             cubicalDayTensorMap (𝟙 (cubicalYoneda.{u}.obj X)) cubicalDayUnitInclusion) ≫
           (ρ_ (DayFunctor.mk (cubicalYoneda.{u}.obj X))).hom.natTrans
       erw [Category.assoc, Category.assoc]

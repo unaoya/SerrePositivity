@@ -13,7 +13,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory Limits
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 @[simp]

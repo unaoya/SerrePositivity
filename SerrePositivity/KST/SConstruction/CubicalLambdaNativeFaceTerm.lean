@@ -18,15 +18,15 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma cubicalLambdaNativeSimplexData_term_faces {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+    (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     (cubicalLambdaNativeSimplexData A F).term I
-        (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+        (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
         (2 - (I.card : ℤ)) hI rfl rfl rfl j hj hjm hjM =
-      DGNerve.Index.sign I j •
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I j •
         (simplexSubsetMappedFaceTopImage A false F I hI j hj hjm hjM -
           simplexSubsetMappedFaceTopImage A true F I hI j hj hjm hjM) := by
-  rw [DGNerve.SimplexData.term_eq_linear_sub_cut,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.term_eq_linear_sub_cut,
     cubicalLambdaNativeSimplexData_erase_zero_face A F I hI j hj hjm hjM,
     cubicalLambdaNativeSimplexData_cutCompose_one_face A F I hI j hj hjm hjM]
   rfl

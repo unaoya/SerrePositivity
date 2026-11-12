@@ -7,7 +7,7 @@ public import SerrePositivity.KST.Spectra.PointedKanReplacement
 概要：円の Kan 置換に、指定した基本類の自然数倍を実現する自己射を作る。
 方針：基本群の積の代表を球面の射へ戻し、anodyne な Kan 置換単位に沿って延長する。
 規約：ここで計算するのは指定基本類の像。高次写像空間での作用は後続部分。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3、BF 1978 §2。有理 telescope の乗法射。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）、BF 1978 §2。有理 telescope の乗法射。
 -/
 
 @[expose] public section
@@ -49,26 +49,26 @@ def unit : PointedSimplicialSet.circle.{u} ⟶ space.{u} :=
 /-- 概要：円の Kan 置換単位が定める基本群の指定類。
 方針：球面の射を境界定数一次単体へ戻して商を取る。
 規約：基本群全体が巡回であることはここでは仮定しない。
-使われ方：Kerodon §3.2.3、Goerss–Jardine I §7。自己射に送らせる基準の類。 -/
-def generator : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup space.{u}.right 0 space.{u}.basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv space.{u} 1 unit.{u})
+使われ方：Kerodon §3.2.3（Tag 00W3）、Goerss–Jardine I §7。自己射に送らせる基準の類。 -/
+def generator : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup space.{u}.right 0 space.{u}.basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv space.{u} 1 unit.{u})
 
 /-- 概要：指定類の自然数 m 乗を表す境界定数一次単体を選ぶ。
 方針：商の標準射の全射性を使う。
 規約：群は乗法記法。整数の加法的 m 倍に対応する。
-使われ方：Kerodon §3.2.3。実際の球面の射へ戻す代表。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）。実際の球面の射へ戻す代表。 -/
 def representative (m : ℕ) : space.{u}.right.PtSimplex 1 space.{u}.basepoint :=
   Classical.choose (show ∃ s : space.{u}.right.PtSimplex 1 space.{u}.basepoint,
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = generator.{u} ^ m from Quotient.mk_surjective _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = generator.{u} ^ m from Quotient.mk_surjective _)
 
 /-- 概要：選んだ一次単体の類は指定類の m 乗。
 方針：商の代表の選択の性質を取り出す。
 規約：全自然数 m。
 使われ方：Goerss–Jardine I §7。自己射の指定基本類での計算。 -/
 theorem representative_class (m : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (representative.{u} m) = generator.{u} ^ m :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (representative.{u} m) = generator.{u} ^ m :=
   Classical.choose_spec (show ∃ s : space.{u}.right.PtSimplex 1 space.{u}.basepoint,
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = generator.{u} ^ m from Quotient.mk_surjective _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = generator.{u} ^ m from Quotient.mk_surjective _)
 
 /-- 概要：指定基本類の m 乗の代表を円からの点つき射にする。
 方針：境界を潰す球面の普遍性を使う。
@@ -111,14 +111,14 @@ theorem unit_powerMap (m : ℕ) : unit.{u} ≫ powerMap m = sphereMap m :=
 /-- 概要：円の Kan 置換の自己射は指定基本類を m 乗へ送る。
 方針：元の円への制限と球面・単体の同値の自然性で計算する。
 規約：他の群の元や高次写像空間への作用の主張は後続部分。
-使われ方：Kerodon §3.2.3、BF 1978 §2。有理化用の自己射の指定基本類での検証。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）、BF 1978 §2。有理化用の自己射の指定基本類での検証。 -/
 theorem powerMap_generator (m : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (powerMap.{u} m).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (powerMap.{u} m).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
       generator = generator ^ m := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (powerMap m).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (powerMap m).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
     (SphereSimplex.equiv space.{u} 1 unit)) = _
   rw [← SphereSimplex.equiv_comp, unit_powerMap]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk ((SphereSimplex.equiv space.{u} 1)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk ((SphereSimplex.equiv space.{u} 1)
     ((SphereSimplex.equiv space.{u} 1).symm (representative m))) = _
   rw [Equiv.apply_symm_apply, representative_class]
 
@@ -127,20 +127,20 @@ theorem powerMap_generator (m : ℕ) :
 規約：標的 Y は Kan。評価の単射性・全射性はここでは主張しない。
 使われ方：Goerss–Jardine I §7。円の自己射の後合成における計算。 -/
 def evaluateGenerator {Y : PointedSimplicialSet.{u}} [KanComplex Y.right]
-    (f : space.{u} ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right 0 Y.basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map f.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint f) generator
+    (f : space.{u} ⟶ Y) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right 0 Y.basepoint :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map f.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint f) generator
 
 /-- 概要：円の自己射による前合成は、指定基本類の像を m 乗へ送る。
 方針：誘導準同型の合成法則と群の冪の保存を使う。
 規約：任意の Kan 値の点つき射 f について計算する。
-使われ方：Kerodon §3.2.3、BF 1978 §2。有理 telescope の自己射の検証の基礎。 -/
+使われ方：Kerodon §3.2.3（Tag 00W3）、BF 1978 §2。有理 telescope の自己射の検証の基礎。 -/
 theorem evaluateGenerator_power {Y : PointedSimplicialSet.{u}} [KanComplex Y.right]
     (f : space.{u} ⟶ Y) (m : ℕ) :
     evaluateGenerator (powerMap m ≫ f) = evaluateGenerator f ^ m := by
   unfold evaluateGenerator
-  have h := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_comp (n := 0)
-    (powerMap.{u} m).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) f.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (powerMap m ≫ f)))
+  have h := DFunLike.congr_fun (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_comp (n := 0)
+    (powerMap.{u} m).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) f.right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (powerMap m ≫ f)))
       generator
   exact h.trans (by rw [MonoidHom.comp_apply, powerMap_generator, MonoidHom.map_pow])
 

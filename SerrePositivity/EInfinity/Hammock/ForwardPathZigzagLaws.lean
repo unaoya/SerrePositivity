@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.ForwardPathZigzag
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ForwardPathZigzag
 
 /-!
 # forward 射列からの縦射の恒等と合成
@@ -23,8 +23,8 @@ variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicat
 
 lemma movingHom_id (F : ComposableArrows C n) (hη : ∀ i, W (𝟙 (F.obj i)))
     {X Y : C} (h0 : F.obj 0 = X) (hl : F.obj (Fin.last n) = Y) :
-    movingHom (𝟙 F) hη h0 hl h0 hl = Zigzag.MovingHom.id (zigzag F h0 hl) := by
-  apply Zigzag.MovingHom.ext
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.movingHom (𝟙 F) hη h0 hl h0 hl = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MovingHom.id (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.zigzag F h0 hl) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MovingHom.ext
   intro i
   rfl
 
@@ -33,9 +33,9 @@ lemma movingHom_comp {F G H : ComposableArrows C n} (η : F ⟶ G) (θ : G ⟶ H
     {X Y X' Y' X'' Y'' : C} (h0 : F.obj 0 = X) (hl : F.obj (Fin.last n) = Y)
     (h0' : G.obj 0 = X') (hl' : G.obj (Fin.last n) = Y')
     (h0'' : H.obj 0 = X'') (hl'' : H.obj (Fin.last n) = Y'') :
-    (movingHom η hη h0 hl h0' hl').comp (movingHom θ hθ h0' hl' h0'' hl'') =
-      movingHom (η ≫ θ) (fun i => W.comp_mem _ _ (hη i) (hθ i)) h0 hl h0'' hl'' := by
-  apply Zigzag.MovingHom.ext
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.movingHom η hη h0 hl h0' hl').comp (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.movingHom θ hθ h0' hl' h0'' hl'') =
+      _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.movingHom (η ≫ θ) (fun i => W.comp_mem _ _ (hη i) (hθ i)) h0 hl h0'' hl'' := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MovingHom.ext
   intro i
   rfl
 

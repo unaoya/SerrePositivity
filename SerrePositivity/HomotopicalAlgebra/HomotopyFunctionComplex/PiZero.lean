@@ -22,14 +22,14 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] (A : SimplexCategory �
   (hconst : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (A.map f))
 
 def edgeLeftHomotopy {Y : C} {f g : A.obj (SimplexCategory.mk 0) ⟶ Y}
-    (e : ((cosimplicialHom A).obj Y).Edge f g) :
+    (e : ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y).Edge f g) :
     (cosimplicialCylinder A hconst).LeftHomotopy f g where
   h := e.edge
   h₀ := e.src_eq
   h₁ := e.tgt_eq
 
 def piZeroToLeftHomotopyClass (Y : C) :
-    SSet.π₀ ((cosimplicialHom A).obj Y) → LeftHomotopyClass (A.obj (SimplexCategory.mk 0)) Y :=
+    SSet.π₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) → LeftHomotopyClass (A.obj (SimplexCategory.mk 0)) Y :=
   SSet.π₀.lift LeftHomotopyClass.mk (fun _ _ e ↦
     LeftHomotopyClass.sound (edgeLeftHomotopy A hconst e).leftHomotopyRel)
 
@@ -60,7 +60,7 @@ lemma piZeroToLeftHomotopyClass_bijective
 def piZeroLeftHomotopyEquiv
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     [IsCofibrant (A.obj (SimplexCategory.mk 0))] (Y : C) [IsFibrant Y] :
-    SSet.π₀ ((cosimplicialHom A).obj Y) ≃ LeftHomotopyClass (A.obj (SimplexCategory.mk 0)) Y :=
+    SSet.π₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ LeftHomotopyClass (A.obj (SimplexCategory.mk 0)) Y :=
   Equiv.ofBijective _ (piZeroToLeftHomotopyClass_bijective A hconst hA Y)
 
 variable {H : Type u'} [Category.{v'} H] (L : C ⥤ H)
@@ -69,7 +69,7 @@ variable {H : Type u'} [Category.{v'} H] (L : C ⥤ H)
 def piZeroLocalizationEquiv
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     [IsCofibrant (A.obj (SimplexCategory.mk 0))] (Y : C) [IsFibrant Y] :
-    SSet.π₀ ((cosimplicialHom A).obj Y) ≃ (L.obj (A.obj (SimplexCategory.mk 0)) ⟶ L.obj Y) :=
+    SSet.π₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ (L.obj (A.obj (SimplexCategory.mk 0)) ⟶ L.obj Y) :=
   (piZeroLeftHomotopyEquiv A hconst hA Y).trans
     (Equiv.ofBijective (leftHomotopyClassToHom L) (bijective_leftHomotopyClassToHom L _ _))
 
@@ -98,7 +98,7 @@ def resolutionZeroLocalizationNatIso (q : CofibrantResolutionFamily (C := C) sim
 
 def resolutionPiZeroLocalizationEquiv {X : C} (q : CofibrantResolution simplex X)
     (Y : C) [IsFibrant Y] :
-    SSet.π₀ ((cosimplicialHom q.obj).obj Y) ≃ (L.obj X ⟶ L.obj Y) := by
+    SSet.π₀ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y) ≃ (L.obj X ⟶ L.obj Y) := by
   have := q.isCofibrant_obj (SimplexCategory.mk 0)
   exact (piZeroLocalizationEquiv q.obj q.homotopicallyConstant L q.cofibrant Y).trans
     (Iso.homCongr (resolutionZeroLocalizationIso L q) (Iso.refl _))

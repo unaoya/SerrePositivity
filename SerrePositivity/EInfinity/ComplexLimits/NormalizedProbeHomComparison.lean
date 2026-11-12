@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedProbeHomFrames
-public import SerrePositivity.InfinityCategories.ModelBridge.FixedQuillenFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FixedQuillenFrameComparison
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierDiagramModel
 
 /-!
@@ -22,23 +22,23 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomotopicalAlgebra
 open SerrePositivity.Reedy
 open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma normalizedProbeHomFromStandard_homotopyEquivalence (X : (Complex A)ᵒᵖ) (Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (((normalizedProbeHomFromStandard A).app X).app Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((normalizedProbeHomFromStandard A).app X).app Y) := by
   let := projectiveModelCategory A
   have := BarrattEccles.CarrierDiagram.complex_isFibrant A Y
-  exact fixedFrameOverFunctor_homLeft_homotopyEquivalence (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fixedFrameOverFunctor_homLeft_homotopyEquivalence (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A)) (framedLimitProbeFunctor A)
     (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
     (normalizedProbeTensorAugmentation_weak A) X Y
 
 lemma normalizedProbeHomFromTensor_homotopyEquivalence (X : (Complex A)ᵒᵖ) (Y : Complex A) :
-    IsSimplicialHomotopyEquivalence (((normalizedProbeHomFromTensor A).app X).app Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (((normalizedProbeHomFromTensor A).app X).app Y) := by
   let := projectiveModelCategory A
   have := BarrattEccles.CarrierDiagram.complex_isFibrant A Y
-  exact fixedFrameOverFunctor_homRight_homotopyEquivalence (mappingCofibrantFactorization A)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fixedFrameOverFunctor_homRight_homotopyEquivalence (mappingCofibrantFactorization A)
     (cosimplicialResolutionFamily (mappingCofibrantFactorization A)) (framedLimitProbeFunctor A)
     (normalizedProbeTensorFrame A) (normalizedProbeTensorAugmentation A)
     (normalizedProbeTensorAugmentation_weak A) (normalizedProbeTensorFrame_cofibrant A)
@@ -47,7 +47,7 @@ lemma normalizedProbeHomFromTensor_homotopyEquivalence (X : (Complex A)ᵒᵖ) (
 
 def normalizedProbeHomDoldKanIso (X Y : Complex A) :
     ((normalizedProbeTensorHom A).obj (Opposite.op X)).obj Y ≅
-      DoldKanComparison.doldKanHomSpace (R := A) (D := Complex A)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := A) (D := Complex A)
         ((framedLimitProbeFunctor A).obj X) Y :=
   normalizedSimplexTensorHomIso A _ Y
 

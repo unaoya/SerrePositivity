@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization Hammock
-open SerrePositivity.KST.Comparison
+
 variable (A : Type u) [CommRing A]
 
 def mappingSpaceReducedHammockComponentsIso (X Y : (operad A).Algebra) :
@@ -61,7 +61,7 @@ def cAlgMappingSpaceComponentsIso (X Y : CAlgSimplicialCategory A) :
   AnodyneComponents.iso (cAlgMappingSpaceComparisonIso A X Y)
 
 lemma cAlgMappingSpaceComponentsIso_unit (X Y : CAlgSimplicialCategory A) :
-    SSet.π₀Functor.map (exInfinityUnit.app
+    SSet.π₀Functor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
         (localizationHom (cofibrantAlgebraRelativeCategory A) X Y)) ≫
       (cAlgMappingSpaceComponentsIso A X Y).hom =
     (cofibrantAlgebraDKMappingSpaceComponentsIso A X Y).hom := by

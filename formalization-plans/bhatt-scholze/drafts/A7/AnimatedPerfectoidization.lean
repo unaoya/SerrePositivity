@@ -4,9 +4,9 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.Core.FiniteShapes
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
-public import SerrePositivity.InfinityCategories.F1B.KanExtension.Hom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteShapes
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.Hom
 public import Mathlib.CategoryTheory.Elements
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,BaseChangeAndTensor}.lean、drafts/A4/Perfectoidization.lean、
 -- drafts/DerivedGeneral/CompletionFunctor.lean、drafts/A7/AnimatedDomain.lean（G-A7-1。W9-II-24 で切り出し）を import する。

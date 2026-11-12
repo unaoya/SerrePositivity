@@ -25,7 +25,7 @@ def twistParameterHom {A : PointedSimplicialSet.{u}} {X Y : KanSequence.{u}}
   app := f.app
   comm n := by
     change PointedSimplicialSet.circle.{u} ◁ f.app n ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.map PointedSimplicialSet.circle.{u} A (Y.level n).space ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.map PointedSimplicialSet.circle.{u} A (Y.level n).space ≫
           (ihom A).map (Y.sigma n ≫ s.app (n + 1))) =
       (X.sigma n ≫ r.app (n + 1)) ≫ f.app (n + 1)
     calc

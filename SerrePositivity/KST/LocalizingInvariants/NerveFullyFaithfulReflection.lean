@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.HomotopyNerveExponential
-public import SerrePositivity.InfinityCategories.Core.FullyFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithful
 
 /-!
 概要：通常関手の nerve の写像空間における充満忠実性から、通常の充満忠実性を戻す。
@@ -19,7 +19,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 def fullyFaithful_of_nerveMap {A B : Type u} [Category.{u} A] [Category.{u} B]
-    (F : A ⥤ B) (hF : IsFullyFaithful (nerveMap F)) : F.FullyFaithful := by
+    (F : A ⥤ B) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (nerveMap F)) : F.FullyFaithful := by
   let eA := Cat.equivOfIso (nerveFunctorCompHoFunctorIso.app (Cat.of A))
   let eB := Cat.equivOfIso (nerveFunctorCompHoFunctorIso.app (Cat.of B))
   have h : (hoFunctor.map (nerveMap F)).toFunctor ⋙ eB.functor = eA.functor ⋙ F := by

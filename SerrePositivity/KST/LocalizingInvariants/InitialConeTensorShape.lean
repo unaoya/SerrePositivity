@@ -1,11 +1,11 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.Ind.ConeTensorCoconeIso
-public import SerrePositivity.InfinityCategories.Core.JoinReverseBoundary
-public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
-public import SerrePositivity.InfinityCategories.Core.PrismOpposite
-public import SerrePositivity.InfinityCategories.Core.FiniteOppositeSSet
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FiniteJoin
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.ConeTensorCoconeIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinReverseBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinTensorPoint
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.PrismOpposite
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiniteOppositeSSet
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiniteJoin
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteColimits
 public import Mathlib.AlgebraicTopology.SimplicialSet.FiniteProd
 
@@ -28,59 +28,59 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 反転した右錐を、元の形状の左錐へ戻す標準同型。 -/
 def initialConeOppositeIso (K : SSet.{u}) :
-    (join K.op (Δ[0] : SSet.{u})).op ≅ join (Δ[0] : SSet.{u}) K :=
-  stableJoinReverseIso K.op Δ[0] ≪≫
-    joinIso (stdSimplex.opIso ⦋0⦌) (SSet.opFunctorCompOpFunctorIso.app K)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join K.op (Δ[0] : SSet.{u})).op ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) K :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stableJoinReverseIso K.op Δ[0] ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinIso (stdSimplex.opIso ⦋0⦌) (SSet.opFunctorCompOpFunctorIso.app K)
 
 /-- 反転前の元の図式の包含は、同じ左錐の底包含へ戻る。 -/
 lemma initialConeOppositeIso_old (K : SSet.{u}) :
-    SSet.opFunctor.map (joinInl K.op (Δ[0] : SSet.{u})) ≫
+    SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl K.op (Δ[0] : SSet.{u})) ≫
       (initialConeOppositeIso K).hom =
-      (SSet.opFunctorCompOpFunctorIso.app K).hom ≫ joinInr (Δ[0] : SSet.{u}) K := by
-  rw [initialConeOppositeIso, Iso.trans_hom, ← Category.assoc, stableJoinReverse_inl]
-  exact joinInr_joinMap _ _
+      (SSet.opFunctorCompOpFunctorIso.app K).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) K := by
+  rw [initialConeOppositeIso, Iso.trans_hom, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stableJoinReverse_inl]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap _ _
 
 /-- 元の図式と尾部を貼った、共通始点を追加する前の全台。 -/
 abbrev initialConeTensorCorner (A L : SSet.{u}) : SSet.{u} :=
-  (F2.Ind.coneTensorCorner A.op L.op).op
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCorner A.op L.op).op
 
 /-- 共通始点を追加した全台は、元の二つの左錐の積そのもの。 -/
 def initialConeTensorIso (A L : SSet.{u}) :
-    join (Δ[0] : SSet.{u}) (initialConeTensorCorner A L) ≅
-      join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L :=
-  joinIso (stdSimplex.opIso ⦋0⦌).symm (Iso.refl _) ≪≫
-    (stableJoinReverseIso (F2.Ind.coneTensorCorner A.op L.op) Δ[0]).symm ≪≫
-    SSet.opFunctor.mapIso (F2.Ind.coneTensorCoconeIso A.op L.op) ≪≫
-    (opTensorIso (join A.op Δ[0]) (join L.op Δ[0])).symm ≪≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) (initialConeTensorCorner A L) ≅
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinIso (stdSimplex.opIso ⦋0⦌).symm (Iso.refl _) ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stableJoinReverseIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCorner A.op L.op) Δ[0]).symm ≪≫
+    SSet.opFunctor.mapIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCoconeIso A.op L.op) ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op Δ[0]) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op Δ[0])).symm ≪≫
     tensorIso (initialConeOppositeIso A) (initialConeOppositeIso L)
 
 /-- 元の図式と尾部を貼った全台を、元の二つの左錐の積へ含める。 -/
 def initialConeTensorCornerInclusion (A L : SSet.{u}) : initialConeTensorCorner A L ⟶
-    join (Δ[0] : SSet.{u}) A ⊗ join (Δ[0] : SSet.{u}) L :=
-  SSet.opFunctor.map (F2.Ind.coneTensorCornerInclusion A.op L.op) ≫
-    (opTensorIso (join A.op Δ[0]) (join L.op Δ[0])).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L :=
+  SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCornerInclusion A.op L.op) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op Δ[0]) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op Δ[0])).inv ≫
       ((initialConeOppositeIso A).hom ⊗ₘ (initialConeOppositeIso L).hom)
 
 lemma initialConeTensorIso_inr (A L : SSet.{u}) :
-    joinInr (Δ[0] : SSet.{u}) (initialConeTensorCorner A L) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) (initialConeTensorCorner A L) ≫
       (initialConeTensorIso A L).hom = initialConeTensorCornerInclusion A L := by
-  simp only [initialConeTensorIso, Iso.trans_hom, joinIso, Iso.symm_hom,
+  simp only [initialConeTensorIso, Iso.trans_hom, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinIso, Iso.symm_hom,
     initialConeTensorCornerInclusion, tensorIso_hom]
-  rw [← Category.assoc (joinInr _ _) (joinMap _ _), joinInr_joinMap,
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr _ _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _), _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap,
     Iso.refl_hom, Category.id_comp,
-    ← Category.assoc (joinInr _ _) (stableJoinReverseIso _ _).inv,
-    stableJoinReverse_inr_inv]
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr _ _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stableJoinReverseIso _ _).inv,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stableJoinReverse_inr_inv]
   simp only [Functor.mapIso_hom]
   rw [← Category.assoc (SSet.opFunctor.map _) (SSet.opFunctor.map _),
     ← SSet.opFunctor.map_comp]
-  change SSet.opFunctor.map (joinInl _ _ ≫ F2.Ind.coneTensorCocone A.op L.op) ≫ _ = _
-  rw [F2.Ind.coneTensorCocone_inl]
+  change SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCocone A.op L.op) ≫ _ = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCocone_inl]
 
 instance initialConeTensorCorner_finite (A L : SSet.{u}) [A.Finite] [L.Finite] :
     (initialConeTensorCorner A L).Finite := by
-  have : (F2.Ind.coneTensorCorner A.op L.op).Finite := by
+  have : (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCorner A.op L.op).Finite := by
     apply SSet.finite_of_isColimit (pushoutIsPushout
-      (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})) (joinInl A.op Δ[0] ▷ L.op))
+      (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u})) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op Δ[0] ▷ L.op))
     rintro (_ | (_ | _)) <;> simp only [span_left, span_right, span_zero] <;> infer_instance
   infer_instance
 

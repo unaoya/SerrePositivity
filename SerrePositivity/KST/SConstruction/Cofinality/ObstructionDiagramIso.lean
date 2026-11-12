@@ -22,7 +22,7 @@ open scoped Simplicial
 規約：全多次数の同じ元の指定射の全辺模型を使う。
 使われ方：成分を取る前の障害図式。 -/
 def completionCanonicalWideDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ SSet.{u} where
   obj ι := LocalizingInvariants.completionCofiberWide (((multiSEndofunctor r).obj ι).map f).val
   map α := completionCanonicalWideStructureMap r α f hf
@@ -50,7 +50,7 @@ def completionCanonicalWideDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ 
 規約：各多次数で選び直した離散模型は使わない。
 使われ方：K₀ 余核図式との自然同型の始域。 -/
 def completionWideComponentDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ Type u :=
   completionCanonicalWideDiagram r f hf ⋙ SSet.π₀Functor
 
@@ -59,7 +59,7 @@ def completionWideComponentDiagram (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ 
 規約：底の集合の同型も元の障害写像そのもの。
 使われ方：相対実現の離散的障害と bar 図式の全単体比較。 -/
 def completionWideComponentCokernelNatIso (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionWideComponentDiagram r f hf ≅
       completionKZeroCokernelDiagram r f ⋙ forget AddCommGrpCat.{u} :=
   NatIso.ofComponents

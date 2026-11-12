@@ -2,6 +2,7 @@ module
 
 public import Mathlib.AlgebraicTopology.SimplexCategory.GeneratorsRelations.NormalForms
 public import Mathlib.AlgebraicTopology.SimplexCategory.MorphismProperty
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # Simplex.GenRelEquivalence
@@ -483,6 +484,7 @@ lemma toSimplexCategory_inverse : toSimplexCategory ⋙ inverse = 𝟭 _ := by
 順序写像または面・退化の標準形を明示して単体作用素を計算する。
 生成作用素上の一致を、単体恒等式によって全作用素上の一致へ拡張する。
 -/
+@[kerodon 04FW]
 def equivalence : SimplexCategoryGenRel ≌ SimplexCategory :=
   toSimplexCategory.asEquivalence
 

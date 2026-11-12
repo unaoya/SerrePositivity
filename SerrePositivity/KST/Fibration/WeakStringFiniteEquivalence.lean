@@ -17,8 +17,8 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 先行列の元の有限積比較の同値性は、最後の cofiber の比較を通して次の長さへ移る。 -/
-lemma weakStringFiniteComparison_localized_isIso_succ {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ)
+lemma weakStringFiniteComparison_localized_isIso_succ {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ)
     (h : IsIso (AnodyneHomotopy.anodyneQ.map
       (weakStringFiniteComparison q (n + 1) (r + 1)))) :
     IsIso (AnodyneHomotopy.anodyneQ.map
@@ -31,8 +31,8 @@ lemma weakStringFiniteComparison_localized_isIso_succ {B C : _root_.SerrePositiv
     (weakStringTailMultiStep_localized_isIso q n r)
 
 /-- 元の初期頂点と全連続 cofiber による有限比較は、全正有限長・全正有限反復で同値。 -/
-theorem weakStringFiniteComparison_positive_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringFiniteComparison_positive_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (weakStringFiniteComparison q (n + 1) (r + 1))) := by
   induction n with

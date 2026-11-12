@@ -23,9 +23,9 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock SerrePositivity.SimplicialModel Opposite
 open scoped Simplicial
 
-lemma dkHammockComparisonIso_components_value (C : RelativeCategory.{u}) (X Y : C.category)
+lemma dkHammockComparisonIso_components_value (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (z : SSet.π₀ (localizationHom C X Y)) :
-    PiZeroConstant.toComponents
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
         (Zigzag.Value.reducedValue C.weakEquivalences.Q C.weakEquivalences.Q_inverts X Y)
         ((AnodyneComponents.iso (dkHammockComparisonIso C X Y)).hom z) =
       localizationHomPiZeroEquiv C X Y z := by

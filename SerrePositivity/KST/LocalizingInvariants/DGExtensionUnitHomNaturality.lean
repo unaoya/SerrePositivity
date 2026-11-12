@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
 public import SerrePositivity.DifferentialGraded.Module.Functor
 public import SerrePositivity.DifferentialGraded.Module.ConeConstruction
 public import SerrePositivity.DifferentialGraded.Tensor.BalancedElements
@@ -74,10 +74,10 @@ lemma dgExtensionUnitHomNaturality (M N : RightModule R D) :
       simpa only [Category.assoc] using hh.symm
 
 /-- D の元の単位射を全成分に持つ厳密 dg 自然変換。 -/
-def dgExtensionUnitStrict : SerrePositivity.InfinityCategories.DGNerve.StrictNatTrans
+def dgExtensionUnitStrict : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans
     (DGFunctor.id (RightModule R D))
     ((dgModuleExtension R D E F).comp (dgModuleRestriction R D E F.op)) :=
-  SerrePositivity.InfinityCategories.dgModuleStrictNatTransOfHomNaturality R D
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R D
     (fun M => functorExtensionUnit R D E F M) (fun M N => by
       change 𝟙 _ ≫ _ = _
       rw [Category.id_comp]

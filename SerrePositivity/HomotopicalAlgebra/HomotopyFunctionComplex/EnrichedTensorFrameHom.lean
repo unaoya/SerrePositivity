@@ -26,15 +26,15 @@ abbrev family : C ⥤ (SimplexCategory ⥤ C) :=
   P.tensor.flip ⋙ (Functor.whiskeringLeft SimplexCategory V C).obj A
 
 def homIso (X Y : C) :
-    SSet.uliftFunctor.{vV, vC}.obj ((cosimplicialHom ((family P A).obj X)).obj Y) ≅
-      SSet.uliftFunctor.{vC, vV}.obj ((cosimplicialHom A).obj (X ⟶[V] Y)) :=
-  (adjunctionHomIso (P.tensorHom.adj X) A).app Y
+    SSet.uliftFunctor.{vV, vC}.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((family P A).obj X)).obj Y) ≅
+      SSet.uliftFunctor.{vC, vV}.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj (X ⟶[V] Y)) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso (P.tensorHom.adj X) A).app Y
 
 lemma homIso_source {X Z : C} (f : X ⟶ Z) (Y : C) :
     SSet.uliftFunctor.{vV, vC}.map
-        ((cosimplicialHomMap ((family P A).map f)).app Y) ≫ (homIso P A X Y).hom =
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((family P A).map f)).app Y) ≫ (homIso P A X Y).hom =
       (homIso P A Z Y).hom ≫ SSet.uliftFunctor.{vC, vV}.map
-        ((cosimplicialHom A).map (((eHomFunctor V C).map f.op).app Y)) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map (((eHomFunctor V C).map f.op).app Y)) := by
   ext n g
   apply ULift.ext
   exact P.tensorHom.homEquiv_naturality_one f g.down
@@ -50,9 +50,9 @@ variable [ModelCategory SSet.{vC}] [ModelCategory SSet.{vV}]
 
 include hcofC hfibC hcofV hfibV hcofB hfibB in
 lemma weakEquivalence_iff {X Z : C} (f : X ⟶ Z) (Y : C) :
-    weakEquivalences SSet.{vC} ((cosimplicialHomMap ((family P A).map f)).app Y) ↔
+    weakEquivalences SSet.{vC} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((family P A).map f)).app Y) ↔
       weakEquivalences SSet.{vV}
-        ((cosimplicialHom A).map (((eHomFunctor V C).map f.op).app Y)) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map (((eHomFunctor V C).map f.op).app Y)) := by
   apply SimplicialModel.UniverseLift.weakEquivalences_iff_of_liftedArrowIso
     hcofC hfibC hcofB hfibB hcofV hfibV
   exact Arrow.isoMk (homIso P A Z Y) (homIso P A X Y) (homIso_source P A f Y).symm

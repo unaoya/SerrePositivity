@@ -20,12 +20,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet HomotopicalAlgebra
-open Hammock SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open Hammock SerrePositivity.Reedy
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantAlgebraHammockColimitInclusionMap :
-    colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) ⟶
     algebraReducedHammock A X.obj Y.obj :=
@@ -34,8 +34,8 @@ def cofibrantAlgebraHammockColimitInclusionMap :
     (show (cofibrantAlgebraRelativeCategory A).category from Y)).hom ≫
       cofibrantAlgebraHammockInclusionMap A _ _
 
-lemma cofibrantAlgebraHammockColimitInclusionMap_graph (w : Word) :
-    graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
+lemma cofibrantAlgebraHammockColimitInclusionMap_graph (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from X)
       (show (cofibrantAlgebraRelativeCategory A).category from Y) w ≫
       cofibrantAlgebraHammockColimitInclusionMap A X Y =
@@ -61,7 +61,7 @@ lemma cofibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
     cofibrantSourceRoofProductCommaAugmentationRoofGraphMap A X Y b ≫
       cofibrantAlgebraHammockGraphInclusionMap A
         (show (cofibrantAlgebraRelativeCategory A).category from X)
-        (show (cofibrantAlgebraRelativeCategory A).category from Y) LeftRoof.word =
+        (show (cofibrantAlgebraRelativeCategory A).category from Y) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word =
     cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫
       sourceFrameLeftRoofNerveMap A X.obj Y.obj := by
   let := modelCategory A
@@ -72,11 +72,11 @@ lemma cofibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
   let F := ((cofibrantSourceRoofProductCommaAugmentationRoofGraphMap A X Y b ≫
     cofibrantAlgebraHammockGraphInclusionMap A
       (show (cofibrantAlgebraRelativeCategory A).category from X)
-      (show (cofibrantAlgebraRelativeCategory A).category from Y) LeftRoof.word).app n) σ
+      (show (cofibrantAlgebraRelativeCategory A).category from Y) _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word).app n) σ
   let G := ((cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫
     sourceFrameLeftRoofNerveMap A X.obj Y.obj).app n) σ
   have ho (i : Fin (n.unop.len + 1)) : F.obj i = G.obj i := by
-    apply Zigzag.object_ext
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.object_ext
     · intro j
       change Fin 3 at j
       fin_cases j <;> rfl
@@ -85,7 +85,7 @@ lemma cofibrantSourceRoofProductCommaAugmentationRoofGraphMap_image :
       fin_cases j <;> rfl
   apply CategoryTheory.Functor.hext ho
   intro i j f
-  apply Zigzag.hom_hext (ho i) (ho j)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (ho i) (ho j)
   intro k
   change Fin 3 at k
   fin_cases k <;> rfl
@@ -96,7 +96,7 @@ lemma cofibrantSourceRoofProductCommaAugmentationRoofMap_image :
     cofibrantSourceRoofProductCommaFirstNerve A X Y b ≫
       sourceFrameReducedHammockNerveMap A X.obj Y.obj := by
   change (cofibrantSourceRoofProductCommaAugmentationRoofGraphMap A X Y b ≫
-    graphInclusion _ _ _ LeftRoof.word) ≫ _ = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion _ _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word) ≫ _ = _
   rw [Category.assoc, cofibrantAlgebraHammockColimitInclusionMap_graph,
     ← Category.assoc, ← Category.assoc,
     cofibrantSourceRoofProductCommaAugmentationRoofGraphMap_image]

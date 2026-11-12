@@ -31,7 +31,7 @@ lemma monicKPrismCompositeBinaryPointTriangle_first (n : ℕ) :
     (pointFamilyHomotopyEdge (monicKPrismCompositePointFirstData F f g n).homotopy).edge = _
   rw [pointFamilyHomotopyEdge_map, monicKPrismCompositePointFirstData_h]
   change intervalParameterPoint (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) ≫
-    ((nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ▷ (Δ[1] : SSet.{u})) ≫
       (monicKPrismUnaryCorrectionData F f n).homotopy.h) ≫ _ = _
   simp only [← Category.assoc]
   rw [intervalParameterPoint, intervalParameterPoint_of_map]
@@ -47,7 +47,7 @@ lemma monicKPrismCompositeBinaryPointTriangle_second (n : ℕ) :
     (pointFamilyHomotopyEdge (monicKPrismCompositePointSecondData F f g n).homotopy).edge = _
   rw [pointFamilyHomotopyEdge_map, monicKPrismCompositePointSecondData_h]
   change intervalParameterPoint (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) ≫
-    ((nervePoint (coherentArrowStringDirect g) ▷ (Δ[1] : SSet.{u})) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g) ▷ (Δ[1] : SSet.{u})) ≫
       (monicKPrismUnaryCorrectionData F g n).homotopy.h) ≫ _ = _
   simp only [← Category.assoc]
   rw [intervalParameterPoint, intervalParameterPoint_of_map]
@@ -64,7 +64,7 @@ lemma monicKPrismCompositeBinaryPointTriangle_direct (n : ℕ) :
   rw [pointFamilyHomotopyEdge_map, monicKPrismCompositeConstantPointData_h,
     monicKPrismCompositePointData_h]
   change intervalParameterPoint (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u}))) ≫
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫ _ = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫ _ = _
   rw [← Category.assoc, intervalParameterPoint, intervalParameterPoint_of_map]
   exact (monicKTracedCompositionStageTriangleData_direct F f g n).symm
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedKanDiagramEquivalences
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyComposition
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyComposition
 
 /-! # Kan 延長を図式全体の coherent な変換として構成する
 概要：R→L の元の自然変換を、Kan(R)→L の全射列に自然な変換へ移す。
@@ -37,7 +37,7 @@ def pointedKanDiagramUnitIso {I : Type u} [SmallCategory I]
 /-- 図式全体の置換単位の逆の、全入力単体にわたる実円柱。 -/
 def pointedKanDiagramUnitInverseHomotopy {I : Type u} [SmallCategory I]
     (F : I ⥤ PointedSimplicialSet.{u}) (hF : ∀ i, KanComplex (F.obj i).right) :=
-  FunctorIso.simplicialHomotopy (pointedKanDiagramUnitIso F hF).symm
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.simplicialHomotopy (pointedKanDiagramUnitIso F hF).symm
 
 /-- 元の自然変換を Kan 置換した、図式全体の実円柱。 -/
 def pointedKanReplacedNatTransHomotopy {I : Type u} [SmallCategory I]
@@ -52,15 +52,15 @@ def pointedKanDiagramExtensionHomotopy {I : Type u} [SmallCategory I]
     SSet.Homotopy
       (pointedKanCoherentDiagram (R ⋙ PointedKanReplacement.functor)
         (pointedDiagramReplacement_isKan R)) (pointedKanCoherentDiagram L hL) :=
-  functorHomotopyComposite (pointedKanReplacedNatTransHomotopy θ)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopyComposite (pointedKanReplacedNatTransHomotopy θ)
     (pointedKanDiagramUnitInverseHomotopy L hL)
 
 /-- coherent な延長と元の二つの因子を同時に回収する関手空間の実三角形。 -/
 def pointedKanDiagramExtensionTriangle {I : Type u} [SmallCategory I]
     {R L : I ⥤ PointedSimplicialSet.{u}} (hL : ∀ i, KanComplex (L.obj i).right)
     (θ : R ⟶ L) :
-    FunctorCompositionTriangle (pointedKanReplacedNatTransHomotopy θ)
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (pointedKanReplacedNatTransHomotopy θ)
       (pointedKanDiagramUnitInverseHomotopy L hL) (pointedKanDiagramExtensionHomotopy hL θ) :=
-  functorHomotopyCompositeTriangle _ _
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopyCompositeTriangle _ _
 
 end SerrePositivity.KST.SConstruction

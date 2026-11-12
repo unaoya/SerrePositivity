@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedSpaceMorphismEdgeValueIso
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
 
 /-!
 概要：元の実辺の両端表示を、同じ canonical 区間の指定比較の値へ戻す。

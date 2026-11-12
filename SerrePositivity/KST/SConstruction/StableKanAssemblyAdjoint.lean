@@ -18,24 +18,24 @@ open Spectra
 /-- 概要：同じ元の右標的は Kan 複体。
 方針：同じ境界商の Ex∞ の Kan 性を使う。
 規約：追加 instance 仮定なし。使われ方：元の右随伴の Ω 条件。 -/
-instance stableKanAssemblyTarget_kanComplex (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+instance stableKanAssemblyTarget_kanComplex (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     KanComplex (((stableKanAssemblyTargetFunctor r).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 概要：同じ元の右脚を同じ実 Kan 対象間の随伴にする。
 方針：元の suspension-loop 随伴を適用する。
 規約：元の実右脚を保持。使われ方：有限 BF 構造随伴の比較。 -/
-def stableKanAssemblyRightAdjoint (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableKanAssemblyRightAdjoint (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((stableOneDirectionKanEnrichedFunctor r).obj C).obj ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((stableKanAssemblyTargetFunctor r).obj C).obj :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _)
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((stableKanAssemblyTargetFunctor r).obj C).obj :=
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _)
     (show ((stableKanAssemblySourceFunctor r).obj C).obj ⟶
       ((stableKanAssemblyTargetFunctor r).obj C).obj from stableKanAssemblyRightMap r C)
 
 /-- 概要：同じ右随伴は Ex∞ 単位上で元の組み立て随伴を厳密に回収する。
 方針：元の suspension 単位の回収式を同じ随伴で移す。
 規約：元の二単位を保持。使われ方：既存の Kan 模型移送への入力。 -/
-lemma stableKanAssemblyRightAdjoint_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableKanAssemblyRightAdjoint_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     exInfinityPointedUnit ((stableOneDirectionPointedEnrichedFunctor r).obj C) ≫
         stableKanAssemblyRightAdjoint r C =
       (oneDirectionAssemblyAdjointNat r).app (stableCategoryModel C) ≫
@@ -46,7 +46,7 @@ lemma stableKanAssemblyRightAdjoint_unit (r : ℕ) (C : _root_.SerrePositivity.I
   let j := exInfinityPointedUnit ((stableBoundaryPointedEnrichedFunctor (r + 1)).obj C)
   let f : ((stableKanAssemblySourceFunctor r).obj C).obj ⟶
       ((stableKanAssemblyTargetFunctor r).obj C).obj := stableKanAssemblyRightMap r C
-  let a : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (((stableOneDirectionPointedEnrichedFunctor r).obj C).obj) ⟶
+  let a : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (((stableOneDirectionPointedEnrichedFunctor r).obj C).obj) ⟶
       ((stableBoundaryPointedEnrichedFunctor (r + 1)).obj C).obj :=
     stableSuspensionAssemblyMap r C
   have h := congrArg (adj.homEquiv _ _)
@@ -58,8 +58,8 @@ lemma stableKanAssemblyRightAdjoint_unit (r : ℕ) (C : _root_.SerrePositivity.I
 /-- 概要：同じ元の右随伴は全基点・全次数で π 同型。
 方針：元の組み立て随伴を同じ二つの anodyne 単位で Kan 模型へ移す。
 規約：元の実随伴を保持。使われ方：有限 BF 正段の実 Ω 条件。 -/
-lemma stableKanAssemblyRightAdjoint_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (stableKanAssemblyRightAdjoint r C).right :=
+lemma stableKanAssemblyRightAdjoint_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (stableKanAssemblyRightAdjoint r C).right :=
   assemblyAdjoint_piIsomorphism_of_anodyne_units r (stableCategoryModel C)
     (exInfinityPointedUnit ((stableOneDirectionPointedEnrichedFunctor r).obj C))
     (exInfinityPointedUnit_anodyne _)

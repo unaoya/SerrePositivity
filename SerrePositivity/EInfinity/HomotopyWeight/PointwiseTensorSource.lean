@@ -39,7 +39,7 @@ lemma pointwiseRealization_homEquiv_source (X : K ⥤ SSet.{u}) (F : K ⥤ C)
     (pointwiseRealizationAdjunction K B).homEquiv X F
         (((Functor.whiskeringRight K SSet.{u} C).map (Realization.family.map a)).app X ≫ f) =
       (pointwiseRealizationAdjunction K B').homEquiv X F f ≫
-        ((Functor.whiskeringRight K C SSet.{u}).map (cosimplicialHomMap a)).app F := by
+        ((Functor.whiskeringRight K C SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)).app F := by
   ext k n x
   change (((Realization.adjunction B).homEquiv (X.obj k) (F.obj k)
       ((Realization.family.map a).app (X.obj k) ≫ f.app k)).app n) x =
@@ -61,7 +61,7 @@ lemma pointwiseTensorAdjunction_source (X : SSet.{u}) (F : K ⥤ C)
           ((WeightedCones.tensorDiagram K W).obj X) ≫ f) =
       (pointwiseTensorAdjunction K W B').homEquiv X F f ≫
         (WeightedCones.coneSpace K W).map
-          (((Functor.whiskeringRight K C SSet.{u}).map (cosimplicialHomMap a)).app F) := by
+          (((Functor.whiskeringRight K C SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)).app F) := by
   simp only [pointwiseTensorAdjunction, Adjunction.comp_homEquiv]
   have hn := pointwiseRealization_homEquiv_source K a
     ((WeightedCones.tensorDiagram K W).obj X) F f
@@ -74,16 +74,16 @@ lemma pointwiseTensorAdjunction_source (X : SSet.{u}) (F : K ⥤ C)
 規約：全次元で同じ実現族の射を使う。
 使われ方：定値図式の π₀ の Hom 比較の始域自然性。 -/
 lemma pointwiseTensorFrameHomIso_source (F : K ⥤ C) :
-    (cosimplicialHomMap (Functor.whiskerLeft
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (Functor.whiskerLeft
         (SSet.stdSimplex ⋙ WeightedCones.tensorDiagram K W)
         ((Functor.whiskeringRight K SSet.{u} C).map (Realization.family.map a)))).app F ≫
           (pointwiseTensorFrameHomIso K W B).hom.app F =
       (pointwiseTensorFrameHomIso K W B').hom.app F ≫ (WeightedCones.coneSpace K W).map
-        (((Functor.whiskeringRight K C SSet.{u}).map (cosimplicialHomMap a)).app F) := by
+        (((Functor.whiskeringRight K C SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)).app F) := by
   ext n f
   change SSet.yonedaEquiv ((pointwiseTensorAdjunction K W B).homEquiv _ F (_ ≫ f)) =
     (((WeightedCones.coneSpace K W).map
-      (((Functor.whiskeringRight K C SSet.{u}).map (cosimplicialHomMap a)).app F)).app n)
+      (((Functor.whiskeringRight K C SSet.{u}).map (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)).app F)).app n)
         (SSet.yonedaEquiv ((pointwiseTensorAdjunction K W B').homEquiv _ F f))
   rw [← SSet.yonedaEquiv_comp]
   exact congrArg SSet.yonedaEquiv (pointwiseTensorAdjunction_source K a W _ F f)

@@ -14,7 +14,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 元の完全関手の恒等入力は、同じ境界商上の厳密な恒等作用。 -/
-lemma stableBoundaryReducedAction_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableBoundaryReducedAction_unit (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (𝟙 (boundaryReducedRealization r
       (stableCategoryModel C)).right ⊗ₘ
         eId SSet.{u} C) ≫ stableBoundaryReducedAction r C C =
@@ -24,7 +24,7 @@ lemma stableBoundaryReducedAction_unit (r : ℕ) (C : _root_.SerrePositivity.Inf
     (stableMultiRealizationAction_unit (r + 1) C)
 
 /-- 二回の元の商作用は、同じ 完全関手 合成による作用と全単体で厳密に一致。 -/
-lemma stableBoundaryReducedAction_comp (r : ℕ) (C D E : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableBoundaryReducedAction_comp (r : ℕ) (C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableBoundaryReducedAction r C D ⊗ₘ
       𝟙 (D ⟶[SSet.{u}] E)) ≫ stableBoundaryReducedAction r D E =
       (α_ (boundaryReducedRealization r
@@ -49,7 +49,7 @@ lemma stableBoundaryReducedAction_comp (r : ℕ) (C D E : _root_.SerrePositivity
     (stableMultiRealizationAction_comp (r + 1) C D E)
 
 /-- 元の通常完全射では、同じ点つき境界商の射を全作用から回収する。 -/
-lemma stableBoundaryReducedAction_hom (r : ℕ) {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+lemma stableBoundaryReducedAction_hom (r : ℕ) {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     (𝟙 (boundaryReducedRealization r (stableCategoryModel C)).right ⊗ₘ
         eHomEquiv SSet.{u} F) ≫ stableBoundaryReducedAction r C D =
       (ρ_ (boundaryReducedRealization r (stableCategoryModel C)).right).hom ≫

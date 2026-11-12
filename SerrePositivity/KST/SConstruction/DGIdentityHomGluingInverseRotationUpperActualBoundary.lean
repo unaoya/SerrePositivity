@@ -1,9 +1,9 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeInrTransport
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHomTransport
-public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyInputExchange
-public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHomTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomotopyInputExchange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FunctorHomotopyRawTransport
 
 /-!
 概要：元実 connecting cone の包含を元指定逆回転全比較・元上二単体へ接続する。
@@ -15,15 +15,15 @@ public import SerrePositivity.InfinityCategories.Derived.FunctorHomotopyRawTrans
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma inclusionLawOfMiddleRecovery
     {A X : SSet.{u}} [SSet.Quasicategory X] {f g g' h : A ⟶ X}
-    (a : FunctorHom f g) (a' : FunctorHom f g')
-    (e : FunctorIso g h) (e' : FunctorIso g' h) (b : FunctorHom f h)
+    (a : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f g) (a' : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f g')
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso g h) (e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso g' h) (b : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom f h)
     (hg : g = g') (ha : HEq a a') (he : HEq e e') (hb : a' ≫ e'.hom = b) :
     a ≫ e.hom = b := by
-  have hh := functorIso_hom_heq e e' hg rfl he
-  have hc := functorHom_comp_heq a e.hom a' e'.hom rfl hg rfl ha hh
+  have hh := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorIso_hom_heq e e' hg rfl he
+  have hc := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHom_comp_heq a e.hom a' e'.hom rfl hg rfl ha hh
   exact eq_of_heq (hc.trans (heq_of_eq hb))
 
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
@@ -43,13 +43,13 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "αs" => dgStrictNatTransPostcomp (α) (S)
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
-local notation "δs" => dgStrictNatTransPostcomp (δ) (S)
+local notation "αs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (α) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
+local notation "δs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)
 
 
 local notation "κ" => dgIdentityHomGluingStrictConeInputInvComparison R C F G a h
-local notation "κs" => dgStrictNatTransPostcomp (κ) (S)
+local notation "κs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (κ) (S)
 
 
 local notation "GY" => G.comp (J)
@@ -57,14 +57,14 @@ local notation "FY" => F.comp (J)
 local notation "AS" => DGFunctor.comp (A) (S)
 local notation "BS" => DGFunctor.comp (B) (S)
 local notation "FSS" => DGFunctor.comp (FS) (S)
-local notation "γs" => dgStrictNatTransComp (κs) (δs)
+local notation "γs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (κs) (δs)
 local notation "RS" => dgModuleNaturalConeFunctor R C (BS) (FSS) (γs)
 local notation "NS" => dgModuleNaturalInverseRotationSource R C (FY) (GY) (η)
 local notation "q" => dgModuleNaturalConePrecomposition R C (BS) (AS) (FSS) (κs) (δs)
 local notation "σ" => dgModuleNaturalInverseRotation R C (FY) (GY) (η)
 local notation "ι" => dgModuleNaturalConeInr R C (BS) (FSS) (γs)
 local notation "ιn" => dgModuleNaturalConeInr R C (AS) (FSS) (δs)
-local notation "λ" => dgStrictNatTransComp (ιn) (σ)
+local notation "λ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιn) (σ)
 
 local notation "ρ" => dgIdentityHomGluingInverseRotationUpperRawComparison R C F G a h
 
@@ -82,17 +82,17 @@ lemma dgIdentityHomGluingInverseRotationActualInr_heq : HEq (AI) (ι) :=
 方針：元実包含と元生全比較を同じ端点回収で合成する。
 規約：同じ元負符号付き長辺を保持。使われ方：元全実評価と元上二単体の接続。 -/
 lemma dgIdentityHomGluingInverseRotationStrictNerveComparison_inr :
-    dgStrictNatTransNerveHom R P (RightModule R C) (AI) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (AI) ≫
       (dgIdentityHomGluingInverseRotationStrictNerveComparison R C F G a h).hom =
-        dgStrictNatTransNerveHom R P (RightModule R C) (λ) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (λ) := by
   exact inclusionLawOfMiddleRecovery
-    (dgStrictNatTransNerveHom R P (RightModule R C) (AI))
-    (dgStrictNatTransNerveHom R P (RightModule R C) (ι))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (AI))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι))
     (dgIdentityHomGluingInverseRotationStrictNerveComparison R C F G a h)
     (dgIdentityHomGluingInverseRotationUpperRawNerveComparison R C F G a h)
-    (dgStrictNatTransNerveHom R P (RightModule R C) (λ))
-    (congrArg dgNerve.map (dgIdentityHomGluingInverseRotationStrict_source R C F G a h)).symm
-    (dgStrictNatTransNerveHom_heq R P (RightModule R C) (AI) (ι) rfl
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (λ))
+    (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingInverseRotationStrict_source R C F G a h)).symm
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom_heq R P (RightModule R C) (AI) (ι) rfl
       (dgIdentityHomGluingInverseRotationStrict_source R C F G a h).symm
       (dgIdentityHomGluingInverseRotationActualInr_heq R C F G a h))
     (dgIdentityHomGluingInverseRotationStrictNerveComparison_heq R C F G a h)

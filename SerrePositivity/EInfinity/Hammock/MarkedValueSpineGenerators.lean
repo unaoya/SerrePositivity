@@ -17,11 +17,11 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
-def ValueSpine.generator (g : FactorTarget.Index W) : ValueSpine W g.val.right g.val.left :=
+def ValueSpine.generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : ValueSpine W g.val.right g.val.left :=
   .cons g.val.left g (𝟙 _) (.nil g.val.right (𝟙 _))
 
 def valuePrefunctor : letI := valueCategory W
@@ -32,7 +32,7 @@ def valuePrefunctor : letI := valueCategory W
       map {X Y} f := by
         classical
         exact if hf : W f then ValueSpine.nil X
-          ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map ⟨f, hf⟩)
+          ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map ⟨f, hf⟩)
           else ValueSpine.generator W ⟨⟨X, Y, f⟩, hf⟩ }
 
 def valueLift : letI := valueCategory W
@@ -42,7 +42,7 @@ def valueLift : letI := valueCategory W
 
 lemma valueLift_marked {X Y : C} (f : X ⟶ Y) (hf : W f) : letI := valueCategory W
     (valueLift W).map f.toPath = (valueMarkedFunctor W).map
-      ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map ⟨f, hf⟩) := by
+      ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map ⟨f, hf⟩) := by
   classical
   let := valueCategory W
   simp only [valueLift, Paths.lift_toPath, valuePrefunctor, dite_eq_left hf]
@@ -55,12 +55,12 @@ lemma valueLift_unmarked {X Y : C} (f : X ⟶ Y) (hf : ¬ W f) : letI := valueCa
   simp only [valueLift, Paths.lift_toPath, valuePrefunctor, dite_eq_right hf]
 
 lemma valueLift_marked_fac : letI := valueCategory W
-    MarkedGenerators.inclusion W ⋙ valueLift W =
-      FreeQuiverCover.positiveEvaluation (Q := MarkedGenerators.quiver W) ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W ⋙ valueLift W =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) ⋙
         valueMarkedFunctor W := by
   let := valueCategory W
-  apply Paths.ext_functor (F := MarkedGenerators.inclusion W ⋙ valueLift W)
-    (G := FreeQuiverCover.positiveEvaluation (Q := MarkedGenerators.quiver W) ⋙
+  apply Paths.ext_functor (F := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W ⋙ valueLift W)
+    (G := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) ⋙
       valueMarkedFunctor W) (funext (fun _ => rfl))
   intro X Y f
   simp only [Functor.comp_map, eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -71,9 +71,9 @@ lemma valueLift_inverts : letI := valueCategory W
     W.paths.IsInvertedBy (valueLift W) := by
   let := valueCategory W
   intro X Y p hp
-  obtain ⟨q, rfl⟩ := (MarkedGenerators.inclusion_range W p).mpr hp
-  have he : (valueLift W).map ((MarkedGenerators.inclusion W).map q) =
-      (valueMarkedFunctor W).map (FreeQuiverCover.positiveEvaluation.map q) :=
+  obtain ⟨q, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion_range W p).mpr hp
+  have he : (valueLift W).map ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion W).map q) =
+      (valueMarkedFunctor W).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation.map q) :=
     by simpa only [Functor.comp_map, eqToHom_refl, Category.id_comp, Category.comp_id]
       using CategoryTheory.Functor.congr_hom (valueLift_marked_fac W) q
   rw [he]

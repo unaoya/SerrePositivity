@@ -52,7 +52,7 @@ def sequentialRawHomEvaluation (D : SpectrumSequence.{u}) (Y : KanSequence.{u}) 
     exact (RawSpectrumMapping.pre_evaluation (D.map f.unop) Y k).trans
       (congrArg (RawSpectrumMapping.evaluation (D.obj a.unop) Y k ≫ ·)
         (congrArg Under.Hom.right
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre ((D.map f.unop).app k) (Y.level k).space)))
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre ((D.map f.unop).app k) (Y.level k).space)))
 
 /-- 全 Raw Hom 図式の厳密錐から、余極限源の一段への普遍 Hom 族を取る。 -/
 def sequentialHomLimitFamily (D : SpectrumSequence.{u}) (Y : KanSequence.{u})
@@ -66,7 +66,7 @@ def sequentialHomLimitFamily (D : SpectrumSequence.{u}) (Y : KanSequence.{u})
 lemma sequentialHomLimitFamily_fac (D : SpectrumSequence.{u}) (Y : KanSequence.{u})
     (s : Cone (sequentialRawHomDiagram D Y)) (k : ℕ) (a : SequentialIndex.{u}ᵒᵖ) :
     sequentialHomLimitFamily D Y s k ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)
         (Y.level k).space).right =
           s.π.app a ≫ RawSpectrumMapping.evaluation (D.obj a.unop) Y k := by
   have h := (sequentialLevelHomIsLimit D Y k).fac
@@ -75,7 +75,7 @@ lemma sequentialHomLimitFamily_fac (D : SpectrumSequence.{u}) (Y : KanSequence.{
     ((MonoidalClosed.pre (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)).app
       (Y.level k).space).right = _ at h
   exact (congrArg (fun q ↦ sequentialHomLimitFamily D Y s k ≫ q.right)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre
       (colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop) (Y.level k).space)).trans h
 
 end SerrePositivity.KST.NonConnective

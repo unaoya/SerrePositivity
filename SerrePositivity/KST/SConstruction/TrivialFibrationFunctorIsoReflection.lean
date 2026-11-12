@@ -18,9 +18,9 @@ open SerrePositivity.InfinityCategories
 
 /-- 自明 Kan ファイブレーションへの後合成後の関手同型を元の二つの族へ反映する。 -/
 def functorIsoOfTrivialKanFibrationPostcomp {K C D : SSet.{u}}
-    [Quasicategory C] [Quasicategory D] (p : C ⟶ D) [TrivialKanFibration p]
-    {f g : K ⟶ C} (e : FunctorIso (f ≫ p) (g ≫ p)) : FunctorIso f g := by
-  let h := (isQCatEquivalence_of_trivialKanFibration ((ihom K).map p)).isFullyFaithful
+    [Quasicategory C] [Quasicategory D] (p : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p]
+    {f g : K ⟶ C} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ p) (g ≫ p)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g := by
+  let h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration ((ihom K).map p)).isFullyFaithful
   exact h.toHoFullyFaithful.preimageIso e
 
 end SerrePositivity.KST.SConstruction

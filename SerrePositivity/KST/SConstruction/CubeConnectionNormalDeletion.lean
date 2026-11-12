@@ -25,7 +25,7 @@ def cubeConnectionNormalDelete : {n m : ℕ} → CubeConnectionNormal n (m + 1) 
 lemma cubeConnectionNormalDelete_vertex {n m : ℕ} (d : CubeConnectionNormal n (m + 1))
     (i : Fin (m + 1)) :
     cubeDeletionConnectionNormalVertex (cubeConnectionNormalDelete d i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i ∘ cubeConnectionNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy m i ∘ cubeConnectionNormalVertex d := by
   induction n generalizing m with
   | zero => cases d
   | succ n ih =>
@@ -38,12 +38,12 @@ lemma cubeConnectionNormalDelete_vertex {n m : ℕ} (d : CubeConnectionNormal n 
         · funext x j
           simp [cubeConnectionNormalDelete, cubeDeletionConnectionNormalDrop_vertex,
             cubeDeletionConnectionNormalFrom_vertex, cubeConnectionNormalVertex_keep,
-            _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+            _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
         · funext x
           change cubeDeletionConnectionNormalVertex
             (cubeDeletionConnectionNormalKeep (cubeConnectionNormalDelete d i)) x = _
           rw [cubeDeletionConnectionNormalKeep_vertex, ih d i]
-          change Fin.cons (α := fun _ => Bool) (x 0) (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i
+          change Fin.cons (α := fun _ => Bool) (x 0) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy m i
             (cubeConnectionNormalVertex d (fun j => x j.succ))) = _
           simp only [Function.comp_apply]
           rw [cubeConnectionNormalVertex_keep, cubeVertexDegeneracy_cons]
@@ -56,7 +56,7 @@ lemma cubeConnectionNormalDelete_vertex {n m : ℕ} (d : CubeConnectionNormal n 
           change cubeDeletionConnectionNormalVertex
             (cubeDeletionConnectionNormalDrop (cubeConnectionNormalDelete d 0)) x = _
           rw [cubeDeletionConnectionNormalDrop_vertex, ih d 0]
-          change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (m + 1) 0
+          change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (m + 1) 0
             (cubeConnectionNormalVertex d (fun j => x j.succ)) = _
           simp only [Function.comp_apply]
           rw [cubeConnectionNormalVertex_merge, cubeVertexConnection_delete_zero]
@@ -65,8 +65,8 @@ lemma cubeConnectionNormalDelete_vertex {n m : ℕ} (d : CubeConnectionNormal n 
           change cubeDeletionConnectionNormalVertex
             (cubeDeletionConnectionNormalMerge (cubeConnectionNormalDelete d i.succ)) x = _
           rw [cubeDeletionConnectionNormalMerge_vertex, ih d i.succ]
-          change _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m 0 (Fin.cons (α := fun _ => Bool) (x 0)
-            (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (m + 1) i.succ
+          change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m 0 (Fin.cons (α := fun _ => Bool) (x 0)
+            (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (m + 1) i.succ
               (cubeConnectionNormalVertex d (fun j => x j.succ)))) = _
           simp only [Function.comp_apply]
           rw [cubeConnectionNormalVertex_merge, cubeVertexConnection_delete_succ,

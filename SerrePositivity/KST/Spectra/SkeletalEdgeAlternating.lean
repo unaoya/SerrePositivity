@@ -24,17 +24,17 @@ open UnbasedPointedMapping
 /-- 次数一の loop cochain の微分は、対応する骨格の実際の成分微分の係数。 -/
 theorem edge_normalizedDifferential_stageComponent (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
-    (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+    (f : (K.skeleton 2 : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
+    (hf : skeletalInclusion K 0 ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (s : K.nonDegenerate 2) :
     (loopPositiveHomotopyEquiv Y 0).toAdditive
-      (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
         (AddCommGrpCat.of (Additive
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint))) 1
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint))) 1
         (SkeletalEdgeCochain.cochain K Y f hf) s) =
       Additive.ofMul (stageFiberComponentEquiv K Y 1
         (stageComponentDifferential K Y 0 (stageFiberOrdinaryLoopComponentEquiv K Y 0
-          (π₀.mk (skeletalFiberVertex K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) 0 f hf)))) s) := by
+          (π₀.mk (skeletalFiberVertex K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) 0 f hf)))) s) := by
   obtain ⟨H, hH⟩ := SkeletalEdgePath.exists_extension K Y f
   have hi := stageComponentDifferential_loop_vertex K Y 0 f hf
   have hc := SkeletalEdgePath.componentConnecting_inverse_family K Y f H hH

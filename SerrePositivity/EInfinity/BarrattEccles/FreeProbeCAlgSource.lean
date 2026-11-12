@@ -27,10 +27,10 @@ def freeProbeCAlgSource : nerve (Complex A) ⟶ CAlg_R A :=
   nerveMap (freeProbeFunctor A) ≫ algebraCAlgSource A
 
 lemma freeProbeCAlgSource_map_weak {X Y : Complex A} (f : X ⟶ Y) (hf : QuasiIso f) :
-    IsInvertibleEdge ((nerve.edgeMk f).map (freeProbeCAlgSource A)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (freeProbeCAlgSource A)).toTruncated := by
   have h := algebraCAlgSource_map_weak A ((freeProbeFunctor A).map f)
     (freeProbeFunctor_map_quasiIso A f hf)
-  apply (isInvertibleEdge_congr
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
     (e := ((nerve.edgeMk ((freeProbeFunctor A).map f)).map (algebraCAlgSource A)).toTruncated)
     (f := ((nerve.edgeMk f).map (freeProbeCAlgSource A)).toTruncated) ?_).mp h
   change (algebraCAlgSource A).app (Opposite.op ⦋1⦌)
@@ -39,9 +39,9 @@ lemma freeProbeCAlgSource_map_weak {X Y : Complex A} (f : X ⟶ Y) (hf : QuasiIs
   simp only [freeProbeCAlgSource, NatTrans.comp_app_apply, nerveMap_app_mk₁]
 
 def freeProbeCAlgSource_vertexIso (X : Complex A) :
-    VertexIso ((freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
       (cAlgVertex A ((freeProbeFunctor A).obj X)) := by
-  change VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((algebraCAlgSource A).app (Opposite.op ⦋0⦌)
     ((nerveMap (freeProbeFunctor A)).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))) _
   rw [nerveMap_app_mk₀]
   exact algebraCAlgSource_vertexIso A _

@@ -45,7 +45,7 @@ lemma presentedPerfectDGBFRawSOAComparison_positive_naturality
     (show ((presentedPerfectDGBFBoundaryFunctor A r).obj Y).obj ⟶
       (S.functor.obj Y).obj from S.comparison Y)
     (show (S.functor.obj X).obj ⟶ (S.functor.obj Y).obj from
-      _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialOrdinaryMap S.functor f)
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialOrdinaryMap S.functor f)
     (presentedPerfectDGBFBoundarySOAComparison_naturality_component A f r)
     (presentedPerfectDGBFStageComparison_naturality A r S f)
   erw [presentedPerfectDGBFMap_positive_app A f r]

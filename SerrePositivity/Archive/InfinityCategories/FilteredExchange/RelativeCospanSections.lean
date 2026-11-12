@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionShapePushout
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SectionShapePushout
 public import Mathlib.AlgebraicTopology.SimplicialSet.HornColimits
 
 /-!

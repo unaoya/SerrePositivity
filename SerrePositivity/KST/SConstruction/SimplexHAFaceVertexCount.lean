@@ -45,7 +45,7 @@ lemma simplexHAFaceVertex_right_count {n : ℕ} (m : ℕ)
           (v (simplexHAFaceVertex (m + 1) j.succ) < ·) := by
       rw [simplexHADecodeSubset_insert_tail, simplexHAFaceVertex_succ]
       rfl
-    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T r hb)
+    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T r hb)
     rw [← he, ih (Fin.castSuccOrderEmb.trans v) (insert r T)
       (simplexHADecodePrefix_insert (m + 1) v T hb) j]
     change j.val + (insert r T).card = (j.val + 1) + T.card

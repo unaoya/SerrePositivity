@@ -4,7 +4,7 @@ module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.Interface
-public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationBaseChangeHom
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom
 -- 本ファイルは drafts/A4/Perfectoidization.lean、drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,HodgeTateFiltration,BaseChangeAndTensor}.lean を import する。
 
 /-!

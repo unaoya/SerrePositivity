@@ -2,7 +2,7 @@ module
 
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedHomMorphismValueComparison
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMapCoherence
 /-!
 概要：元の固定射の評価比較の前作用を、同じ値比較と作用比較の二因子で保持する。
 方針：同じ頂点同型の合成と逆の像を一般の係数射で計算する。

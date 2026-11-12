@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitGraph
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitGraph
 
 /-!
 # 元の E 代数の全語の hammock graph の余極限
@@ -25,35 +25,35 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A]
 
 /-- 同じ実際の E 代数の全語の graph の厳密な図式。 -/
-def algebraHammockGraphDiagram (X Y : (operad A).Algebra) : Hammock.Word ⥤ SSet.{u + 1} := by
+def algebraHammockGraphDiagram (X Y : (operad A).Algebra) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{u + 1} := by
   let := modelCategory A
-  exact Hammock.graphDiagram (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram (weakEquivalences (operad A).Algebra) X Y
 
-@[simp] lemma algebraHammockGraphDiagram_obj (X Y : (operad A).Algebra) (w : Hammock.Word) :
+@[simp] lemma algebraHammockGraphDiagram_obj (X Y : (operad A).Algebra) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (algebraHammockGraphDiagram A X Y).obj w = algebraHammockGraph A w X Y := rfl
 
 lemma algebraHammockGraphDiagram_map (X Y : (operad A).Algebra)
-    {a b : Hammock.Word} (f : a ⟶ b) :
+    {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) :
     (algebraHammockGraphDiagram A X Y).map f = algebraHammockGraphMap A f X Y := rfl
 
 /-- 元の全語の graph の単体集合としての余極限。 -/
 def algebraHammockColimitGraph (X Y : (operad A).Algebra) : SSet.{u + 1} := by
   let := modelCategory A
-  exact Hammock.colimitGraph (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (weakEquivalences (operad A).Algebra) X Y
 
 /-- 同じ固定語の元の標準射。 -/
-def algebraHammockGraphInclusion (w : Hammock.Word) (X Y : (operad A).Algebra) :
+def algebraHammockGraphInclusion (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : (operad A).Algebra) :
     algebraHammockGraph A w X Y ⟶ algebraHammockColimitGraph A X Y := by
   let := modelCategory A
-  exact Hammock.graphInclusion (weakEquivalences (operad A).Algebra) X Y w
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (weakEquivalences (operad A).Algebra) X Y w
 
 /-- 元の列の圧縮と空列の挿入は、同じ余極限の標準射と可換。 -/
 lemma algebraHammockGraphInclusion_naturality (X Y : (operad A).Algebra)
-    {a b : Hammock.Word} (f : a ⟶ b) :
+    {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) :
     algebraHammockGraphMap A f X Y ≫ algebraHammockGraphInclusion A b X Y =
       algebraHammockGraphInclusion A a X Y := by
   let := modelCategory A
-  exact Hammock.graphInclusion_naturality (weakEquivalences (operad A).Algebra) X Y f
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion_naturality (weakEquivalences (operad A).Algebra) X Y f
 
 /-- 元の全語の図式と同じ標準射を使う実際の余錐。 -/
 def algebraHammockGraphCocone (X Y : (operad A).Algebra) :
@@ -68,14 +68,14 @@ def algebraHammockGraphCocone (X Y : (operad A).Algebra) :
 def algebraHammockGraphCocone_isColimit (X Y : (operad A).Algebra) :
     Limits.IsColimit (algebraHammockGraphCocone A X Y) := by
   let := modelCategory A
-  exact Hammock.colimitGraph_isColimit (weakEquivalences (operad A).Algebra) X Y
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_isColimit (weakEquivalences (operad A).Algebra) X Y
 
 /-- 同じ元の共通始域から全語の graph の余極限へ入れる射。 -/
 def mappingSpaceHammockColimitNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       algebraHammockColimitGraph A X Y :=
   mappingSpaceHammockGraphNerveMap A X Y ≫
-    algebraHammockGraphInclusion A Hammock.Word.threeArrow X Y
+    algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y
 
 /-- 同じ元の三列の比較を用いた、局所化後の全語の余極限への比較。 -/
 def mappingSpaceHammockColimitComparison (X Y : (operad A).Algebra) :
@@ -84,7 +84,7 @@ def mappingSpaceHammockColimitComparison (X Y : (operad A).Algebra) :
       AnodyneHomotopy.anodyneQ.obj (algebraHammockColimitGraph A X Y) :=
   (mappingSpaceHammockGraphComparisonIso A X Y).hom ≫
     AnodyneHomotopy.anodyneQ.map
-      (algebraHammockGraphInclusion A Hammock.Word.threeArrow X Y)
+      (algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.threeArrow X Y)
 
 /-- 元の左射の後の比較は、同じ元の全語の余極限への右射を厳密に回収。 -/
 lemma mappingSpaceHammockColimitComparison_fac (X Y : (operad A).Algebra) :

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.PushoutCompletion
-public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
-public import SerrePositivity.InfinityCategories.F1.SquareTranspose
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PushoutCompletion
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ColumnPushout
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.SquareTranspose
 
 /-! # 恒等な枝を持つ span の標準押し出し
 概要：一方の枝が恒等となる span の全ての族に、退化した標準の押し出し四角形を与える。
@@ -28,20 +28,20 @@ def identityPushoutShape (b : Bool) : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ Δ[1] :=
 方針：横方向に一定な四角形の押し出し性と転置を使う。
 規約：値域に安定性は不要。使われ方：標準押し出しの族の構成。 -/
 lemma identityPushoutShape_isPushout {C : SSet.{u}} [Quasicategory C] (b : Bool)
-    (g : (Δ[1] : SSet.{u}) ⟶ C) : IsPushoutSquare (identityPushoutShape b ≫ g) := by
+    (g : (Δ[1] : SSet.{u}) ⟶ C) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (identityPushoutShape b ≫ g) := by
   cases b with
-  | false => exact squareColumnDiagram_isPushout g
+  | false => exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram_isPushout g
   | true =>
-    have h := (isPushoutSquare_iff_transpose (squareColumnDiagram g)).1
-      (squareColumnDiagram_isPushout g)
-    simpa only [squareColumnDiagram, identityPushoutShape, Bool.true_eq, ↓reduceIte,
+    have h := (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPushoutSquare_iff_transpose (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram g)).1
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram_isPushout g)
+    simpa only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram, identityPushoutShape, Bool.true_eq, ↓reduceIte,
       ← Category.assoc, braiding_hom_snd] using h
 
 /-- 概要：恒等な枝を持つ標準 span を作る形状射。
 方針：標準の退化四角形を入力の span に制限する。
 規約：false は下辺が恒等、true は左辺が恒等。使われ方：正規化を指定する単射。 -/
 def identitySpanShape (b : Bool) : (horn 2 0 : SSet.{u}) ⟶ Δ[1] :=
-  spanSquareBoundary ≫ identityPushoutShape b
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary ≫ identityPushoutShape b
 
 /-- 概要：恒等でない枝への制限を与える標準の切断。
 方針：向きに応じたホーンの辺を取る。
@@ -56,8 +56,8 @@ lemma identitySpanSection_shape (b : Bool) :
     identitySpanSection b ≫ identitySpanShape b = 𝟙 (Δ[1] : SSet.{u}) := by
   cases b <;>
     simp only [identitySpanSection, identitySpanShape, identityPushoutShape, Bool.false_eq_true,
-      ↓reduceIte, ← Category.assoc, spanSquareBoundary_bottomEdge,
-      spanSquareBoundary_leftEdge]
+      ↓reduceIte, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge]
   all_goals
     apply SSet.yonedaEquiv.injective
     decide
@@ -83,12 +83,12 @@ instance identitySpanFamily_mono (b : Bool) (C : SSet.{u}) : Mono (identitySpanF
 方針：座標射影による辺の族を押し出し図式の全部分複体へ持ち上げる。
 規約：個々の対象での選択を使わない。使われ方：指定した正規化の境界データ。 -/
 def identityPushoutFamily (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    (ihom (Δ[1] : SSet.{u})).obj C ⟶ _root_.SerrePositivity.InfinityCategories.Stable.pushoutDiagrams C :=
-  fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex ((pre (identityPushoutShape b)).app C) (by
+    (ihom (Δ[1] : SSet.{u})).obj C ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutDiagrams C :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsPushoutDiagramVertex ((pre (identityPushoutShape b)).app C) (by
     intro v
-    obtain ⟨g, rfl⟩ := (functorVertexEquiv (Δ[1] : SSet.{u}) C).surjective v
-    change IsPushoutSquare ((functorVertexEquiv _ C).symm
-      (functorVertexEquiv _ C (identityPushoutShape b ≫ g)))
+    obtain ⟨g, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[1] : SSet.{u}) C).surjective v
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (identityPushoutShape b ≫ g)))
     rw [Equiv.symm_apply_apply]
     exact identityPushoutShape_isPushout b g)
 
@@ -96,15 +96,15 @@ def identityPushoutFamily (b : Bool) (C : SSet.{u}) [Quasicategory C] :
 方針：全部分複体への持ち上げの包含の式。
 規約：全単体での厳密等号。使われ方：正規化した四角形の回収。 -/
 lemma identityPushoutFamily_ι (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    identityPushoutFamily b C ≫ (fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.Stable.IsPushoutDiagramVertex).ι =
+    identityPushoutFamily b C ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsPushoutDiagramVertex).ι =
       (pre (identityPushoutShape b)).app C := rfl
 
 /-- 概要：標準押し出しの族は恒等な枝を持つ入力 span を回収する。
 方針：内部 Hom の前合成の合成則。
 規約：全単体での厳密等号。使われ方：相対切断の延長の可換条件。 -/
 lemma identityPushoutFamily_projection (b : Bool) (C : SSet.{u}) [Quasicategory C] :
-    identityPushoutFamily b C ≫ _root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection C = identitySpanFamily b C := by
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
+    identityPushoutFamily b C ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutProjection C = identitySpanFamily b C := by
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.pushoutProjection, ← Category.assoc, identityPushoutFamily_ι,
     ← NatTrans.comp_app, ← pre_map]
   rfl
 

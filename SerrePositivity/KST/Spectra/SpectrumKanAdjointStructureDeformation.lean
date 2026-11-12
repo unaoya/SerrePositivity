@@ -30,7 +30,7 @@ def kanAdjointBoundaryStructureDeformation (n : ℕ)
         (kanAdjointBoundaryVerticalStructurePath X Y φ j c H s n P K).path //
       (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ V.h =
         fst (∂Δ[1] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ (boundary 1).ι ≫ P.path ∧
-      V.h ≫ (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      V.h ≫ (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right = K.homotopy.h } := by
   let hex := PointedMapping.exists_vertical_path_of_projection_contraction _

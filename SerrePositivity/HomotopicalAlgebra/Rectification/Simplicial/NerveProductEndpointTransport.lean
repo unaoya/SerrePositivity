@@ -46,22 +46,22 @@ lemma mapTarget_restrict (a : NerveBiparameter.System K F) :
   change (a ≫ targetMap _ _ _ _) ≫ _ = (a ≫ _) ≫ _
   rw [Category.assoc, target_restriction, ← Category.assoc]
 
-variable {A T : SSet.{w}} (j : A ⟶ T) (a : NerveBiparameter.System (product K T) F)
+variable {A T : SSet.{w}} (j : A ⟶ T) (a : NerveBiparameter.System (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F)
   (b : NerveBiparameter.System K F)
-  (he : a ≫ restriction (product K A) (product K T) F (vertical j K) = expand K F A b)
+  (he : a ≫ restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j K) = expand K F A b)
 
 include he in
-lemma mapTarget_endpoint : mapTarget (product K T) F G p a ≫
-    restriction (product K A) (product K T) G (vertical j K) =
+lemma mapTarget_endpoint : mapTarget (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F G p a ≫
+    restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) G (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j K) =
       expand K G A (mapTarget K F G p b) := by
   rw [mapTarget_restrict, he, ← expand_mapTarget]
 
 include he in
-lemma restrict_endpoint : restrict (product V T) (product K T) F (horizontal V K i T) a ≫
-    restriction (product V A) (product V T) F (vertical j V) =
+lemma restrict_endpoint : restrict (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product K T) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal V K i T) a ≫
+    restriction (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V A) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product V T) F (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical j V) =
       expand V F A (restrict V K F i b) := by
   change (a ≫ restriction _ _ _ _) ≫ _ = _
-  rw [Category.assoc, restriction_comp, ← commute V K i j, ← restriction_comp,
+  rw [Category.assoc, restriction_comp, ← _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.commute V K i j, ← restriction_comp,
     ← Category.assoc, he]
   exact expand_horizontal K F A V i b
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeFiberCospanComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.HomotopyCospanEndComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.HomotopyCospanEndComparison
 
 /-!
 概要：実際の fiber cospan と native 切断 cospan の Bousfield–Kan end を比較する。

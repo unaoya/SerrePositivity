@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointPathFunctor
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTriangleHomotopy
 
 /-!
 概要：実終点円柱の長辺の全次数の Hom 写像を元の精密化の Yoneda 射へ戻す。

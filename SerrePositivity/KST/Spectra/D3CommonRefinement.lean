@@ -84,27 +84,27 @@ lemma commonComparison_rlp (X : OmegaSpectrum.{u}) (n : ℕ) :
 
 /-- 比較右脚自身の各段は全基点 π 同型。 -/
 lemma commonComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((commonComparison X).app n).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (commonComparison_rlp X n)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((commonComparison X).app n).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (commonComparison_rlp X n)
 
 /-- 元の実 loop 始点を保持する左脚も各段の全基点 π 同型。 -/
 lemma commonLoopInclusion_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((commonLoopInclusion X).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((commonComparison X).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((commonLoopInclusion X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((commonComparison X).app n).right) _
     (commonComparison_levelwise X n)
   rw [← Under.comp_right]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((commonLoopInclusion X ≫ commonComparison X).app n).right
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((commonLoopInclusion X ≫ commonComparison X).app n).right
   rw [commonComparison_fac]
   exact loopSourceComparison_levelwise X n
 
 /-- 同じ元の包含を回収する二段左脚は、各段で全基点 π 同型。 -/
 lemma commonInclusion_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((commonInclusion X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((commonInclusion X).app n).right :=
   (loopSourceInclusion_levelwise X n).comp (commonLoopInclusion_levelwise X n)
 
 /-- 異なる X,Y に対する共通対象の比較 Hom corner の実全単射 RLP。 -/
 lemma commonCorner_trivialKanFibration (X Y : OmegaSpectrum.{u}) :
-    TrivialKanFibration (RawSpectrumMapping.relativeCorner (commonInclusion X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (RawSpectrumMapping.relativeCorner (commonInclusion X)
       (⟨(commonComparison Y).app, (commonComparison Y).comm⟩ :
         KanSequence.Hom (commonRefinement Y).toKanSequence (middle Y).toKanSequence)) :=
   RawSpectrumMapping.d3CompositeCorner_trivialKanFibration

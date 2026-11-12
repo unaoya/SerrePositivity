@@ -33,7 +33,7 @@ def monicKTracedRawStageVertex (n : ℕ) :=
 
 /-- 元の補正済み段の直通列制限は、元の同じ BF 境界の段評価・raw 射影。 -/
 lemma monicKPrismTracedStage_point (n : ℕ) :
-    nervePoint (coherentArrowStringDirect f) ≫ (monicKPrismTracedStage F f n).val =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ≫ (monicKPrismTracedStage F f n).val =
       monicKPrismTracedBFBoundary F f ≫
         OmegaSpectrum.evaluation (kOmegaSpectrum (F.obj x)) (kOmegaSpectrum (F.obj y)) n ≫
           (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
@@ -44,7 +44,7 @@ lemma monicKPrismTracedStage_point (n : ℕ) :
 
 /-- 元の補正終点の頂点は、元の BF 射の同じ raw 段頂点。 -/
 lemma monicKPrismTracedStage_point_vertex (n : ℕ) :
-    SSet.yonedaEquiv (nervePoint (coherentArrowStringDirect f) ≫
+    SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) ≫
       (monicKPrismTracedStage F f n).val) = monicKTracedRawStageVertex F f n := by
   rw [monicKPrismTracedStage_point, ← Category.assoc, SSet.yonedaEquiv_comp,
     SSet.yonedaEquiv_comp,

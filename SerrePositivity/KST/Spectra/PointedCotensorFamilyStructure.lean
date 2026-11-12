@@ -28,7 +28,7 @@ lemma family_step (K : SSet.{u}) (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (
   apply ext
   rw [← PointedMapping.familyVertex_post, ← PointedMapping.VerticalPath.familyVertex_suspension,
     family_vertex]
-  change (iso K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space).hom.app _
+  change (iso K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space).hom.app _
     ((RawSpectrumMapping.pointedStep X
       (KanSequence.mapping (PointedObject.adjoin K) Y) n).right.app _
         (PointedMapping.familyVertex (family a))) = _

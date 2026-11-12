@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "U" => DGOdotMilnorRightAxisBase R d
 local notation "KIn" => dgOdotMilnorFlatKernelInput R d
@@ -33,22 +33,22 @@ local notation "hZK" => dgKInputStableValue_isIdempotentComplete R (dgFixedNullI
 /-- 概要：元 V 零角から元厚核零角への共有完全射。
 方針：両元全対象商の指定零比較の合成を使う。
 規約：零角を別頂点に置換しない。使われ方：両零側面の共有経路。 -/
-def dgOdotMilnorActualOuterKernelZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (ZV) (ZK) where
-  hom := (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
-  isExact := @isExactFunctor_comp _ _ _ _ _
-    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)).isExact (fromZeroCategory (ZK)).isExact
+def dgOdotMilnorActualOuterKernelZeroMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (ZV) (ZK) where
+  hom := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (ZV)).hom ≫ (fromZeroCategory (ZK)).hom
+  isExact := @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (ZV)).isExact (fromZeroCategory (ZK)).isExact
 
 /-- 概要：両元零角間の共有辺は Cat^perf 内で可逆。
 方針：同じ元二零同型の逆と順射の合成を元完全合成則で回収する。
 規約：元の完全射を保持。使われ方：零側面の指定端点可逆性。 -/
 lemma dgOdotMilnorActualOuterKernelZeroMap_isInvertible :
-    IsInvertibleEdge (perfectStableArrow (dgOdotMilnorActualOuterKernelZeroMap R d)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow (dgOdotMilnorActualOuterKernelZeroMap R d)
       (hZV) (hZK)).toTruncated := by
   change IsIso (perfectStableHoArrow (dgOdotMilnorActualOuterKernelZeroMap R d) (hZV) (hZK))
   have h : perfectStableHoArrow (dgOdotMilnorActualOuterKernelZeroMap R d) (hZV) (hZK) =
       ((dgKFixedNullPerfectZeroIso R (VIn)).symm ≪≫
         dgKFixedNullPerfectZeroIso R (KIn)).hom :=
-    perfectStableHoArrow_comp (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (ZV)) (fromZeroCategory (ZK))
+    perfectStableHoArrow_comp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (ZV)) (fromZeroCategory (ZK))
       (hZV) perfectZeroCategory_isIdempotentComplete (hZK)
   exact (congrArg (fun fm => IsIso fm) h).mpr
     (((dgKFixedNullPerfectZeroIso R (VIn)).symm ≪≫
@@ -62,9 +62,9 @@ def dgOdotMilnorActualOuterKernelInclusionWitness : PerfectStableArrowSquareWitn
     (𝟙 (dgKInputStableValue R (KIn))) (𝟙 (dgKInputStableValue R (PIn)))
     (hK) (hP) (hK) (hP) := by
   let f := (dgOdotMilnorFlatKernelExactMap R d).hom
-  let e : FunctorIso f f := Iso.refl (SSet.HomotopyCategory.mk (functorVertex f))
+  let e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f f := Iso.refl (SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
   apply perfectStableArrowSquareWitness
-  exact F2.functorIsoOfEq e (Category.comp_id f).symm (Category.id_comp f).symm
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e (Category.comp_id f).symm (Category.id_comp f).symm
 
 /-- 概要：実外周の商辺は恒等始域成分と元指定終域評価で元 cell 商辺へ比較される。
 方針：保存済みの元厳密合成辺の全比較を同じ二成分付き証人へ渡す。
@@ -74,7 +74,7 @@ def dgOdotMilnorActualOuterKernelProjectionWitness : PerfectStableArrowSquareWit
     (𝟙 (dgKInputStableValue R (PIn))) (dgOdotMilnorActualRightTargetMap R d)
     (hP) (hD) (hP) (hQ) := by
   apply perfectStableArrowSquareWitness
-  exact F2.functorIsoOfEq (dgOdotMilnorActualOuterProjectionComparison R d) rfl
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgOdotMilnorActualOuterProjectionComparison R d) rfl
     (Category.id_comp (dgOdotMilnorCellProjectionExactMap R d).hom).symm
 
 /-- 概要：二つの元零左辺は同じ恒等始域成分と共有零角成分で比較される。
@@ -86,7 +86,7 @@ def dgOdotMilnorActualOuterKernelZeroLeftWitness : PerfectStableArrowSquareWitne
     (𝟙 (dgKInputStableValue R (KIn))) (dgOdotMilnorActualOuterKernelZeroMap R d)
     (hK) (hZV) (hK) (hZK) :=
   perfectStableArrowSquareWitness _ _ _ _ _ _ _ _
-    (zeroDiagramFunctorIso (X := (ZK).obj) _ _
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso (X := (ZK).obj) _ _
       (fun _ => dgFixedNullInput_isZeroCategory R (KIn) _)
       (fun _ => dgFixedNullInput_isZeroCategory R (KIn) _))
 
@@ -101,14 +101,14 @@ def dgOdotMilnorActualOuterKernelZeroTopWitness : PerfectStableArrowSquareWitnes
   let f := dgOdotMilnorActualRightNullTopMap R d
   let b := dgOdotMilnorActualRightTargetMap R d
   let g := dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d))
-  letI : IsExactFunctor f.hom := f.isExact
-  letI : IsExactFunctor b.hom := b.isExact
-  letI : IsExactFunctor g.hom := g.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.hom := f.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor b.hom := b.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor g.hom := g.isExact
   apply perfectStableArrowSquareWitness
-  exact zeroDiagramFunctorIso (X := (dgKInputStableValue R (QIn)).obj) _ _
-    (fun z => IsExactFunctor.preservesZero (F := b.hom) _
-      (IsExactFunctor.preservesZero (F := f.hom) z (dgFixedNullInput_isZeroCategory R (VIn) z)))
-    (fun z => IsExactFunctor.preservesZero (F := g.hom) _
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso (X := (dgKInputStableValue R (QIn)).obj) _ _
+    (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := b.hom) _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := f.hom) z (dgFixedNullInput_isZeroCategory R (VIn) z)))
+    (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := g.hom) _
       (dgFixedNullInput_isZeroCategory R (KIn) _))
 
 end SerrePositivity.KST.SConstruction

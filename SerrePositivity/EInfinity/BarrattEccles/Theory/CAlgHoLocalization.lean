@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgAdjunctionComparison
 public import SerrePositivity.KST.LocalizingInvariants.LocalizationHomotopyCategory
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.HomotopyRecovery
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.EdgeHom
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.HomotopyRecovery
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.EdgeHom
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
 public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.CategoryTheory.Localization.Equivalence
@@ -44,7 +44,7 @@ variable (A : Type u) [CommRing A]
 abbrev allAlgebraNerveHoWeak :
     MorphismProperty (nerve (allAlgebraRelativeCategory A).category).HomotopyCategory :=
   (allAlgebraRelativeCategory A).weakEquivalences.inverseImage
-    (F1B.nerveHomotopyEvaluation (allAlgebraRelativeCategory A).category)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation (allAlgebraRelativeCategory A).category)
 
 /-- 全厳密代数の nerve のホモトピー圏からの通常の局所化。 -/
 lemma allAlgebraCAlgSource_hoIsLocalization :
@@ -56,9 +56,9 @@ lemma allAlgebraCAlgSource_hoIsLocalization :
   obtain ⟨Y, rfl⟩ := nerveEquiv.symm.surjective y
   obtain ⟨g, rfl⟩ := nerve.edgeMk_surjective e
   change (allAlgebraRelativeCategory A).weakEquivalences
-    ((F1B.nerveHomotopyEvaluation _).map (HomotopyCategory.homMk (nerve.edgeMk g))) ↔
+    ((_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation _).map (HomotopyCategory.homMk (nerve.edgeMk g))) ↔
     ComposableArrows.mk₁ g ∈ weakNerveEdges (allAlgebraRelativeCategory A)
-  rw [F1B.nerveHomotopyEvaluation_map_homMk]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation_map_homMk]
   constructor
   · exact fun h => ⟨_, _, g, h, rfl⟩
   · rintro ⟨X', Y', g', hg', he⟩
@@ -71,15 +71,15 @@ lemma allAlgebraCAlgSource_hoIsLocalization :
 def allAlgebraHoEvaluation :
     (nerve (allAlgebraRelativeCategory A).category).HomotopyCategory ≌ (operad A).Algebra := by
   let C := (allAlgebraRelativeCategory A).category
-  let J := F1B.nerveHomotopyInclusion C
-  let E := F1B.nerveHomotopyEvaluation C
+  let J := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyInclusion C
+  let E := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation C
   have c : J ⋙ E = 𝟭 C := by
     refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
     intro X Y g
     simp only [Functor.comp_map, Functor.id_map, eqToHom_refl, Category.id_comp, Category.comp_id]
-    exact F1B.nerveHomotopyEvaluation_map_homMk g
+    exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation_map_homMk g
   letI := Functor.IsEquivalence.mk' J
-    (eqToIso (F1B.nerveHomotopyEvaluation_comp_inclusion C)).symm (eqToIso c)
+    (eqToIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation_comp_inclusion C)).symm (eqToIso c)
   exact E.asEquivalence.trans
     (ULiftHom.equiv : (operad A).Algebra ≌ ULiftHom.{u + 1} (operad A).Algebra).symm
 
@@ -90,13 +90,13 @@ abbrev ordinaryAlgebraHoSource :
 
 /-- 射の宇宙を下げる写像は、各通常対象の頂点を同じ対象へ送る。 -/
 lemma mixedNerveDown_obj (X : (allAlgebraRelativeCategory A).category) :
-    (allAlgebraDownNerve A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
-      nerveVertex ((allAlgebraDKDown A).obj X) :=
+    (allAlgebraDownNerve A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex ((allAlgebraDKDown A).obj X) :=
   ComposableArrows.ext₀ rfl
 
 /-- 射の宇宙を下げると、二つの nerve の通常の圏からの包含が可換。 -/
 def allAlgebraHoDownIso :
-    F1B.nerveHomotopyInclusion (allAlgebraRelativeCategory A).category ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyInclusion (allAlgebraRelativeCategory A).category ⋙
       hoMap (allAlgebraDownNerve A) ≅
     allAlgebraDKDown A ⋙ ordinaryToHoNerve (operad A).Algebra := by
   refine NatIso.ofComponents (fun X =>
@@ -110,7 +110,7 @@ def allAlgebraHoDownIso :
     exact ComposableArrows.ext₁ rfl rfl (by
       simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
       rfl)
-  have h₂ := F1B.homMk_congr (mixedNerveDown_obj A X) (mixedNerveDown_obj A Y) e e' h₁
+  have h₂ := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.homMk_congr (mixedNerveDown_obj A X) (mixedNerveDown_obj A Y) e e' h₁
   let hx := congrArg HomotopyCategory.mk (mixedNerveDown_obj A X)
   let hy := congrArg HomotopyCategory.mk (mixedNerveDown_obj A Y)
   change HomotopyCategory.homMk e ≫ eqToHom hy = eqToHom hx ≫ HomotopyCategory.homMk e'
@@ -125,8 +125,8 @@ def allAlgebraHoEvaluation_sourceIso :
     (allAlgebraHoEvaluation A).functor ⋙ ordinaryAlgebraHoSource A ≅
       hoMap (allAlgebraCAlgSource A) := by
   let C := (allAlgebraRelativeCategory A).category
-  let E := F1B.nerveHomotopyEvaluation C
-  let J := F1B.nerveHomotopyInclusion C
+  let E := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation C
+  let J := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyInclusion C
   let D := allAlgebraDKDown A
   let B := hoMap (algebraCAlgSource A)
   let U := hoMap (allAlgebraDownNerve A)
@@ -143,7 +143,7 @@ def allAlgebraHoEvaluation_sourceIso :
       ((Functor.associator D I B).symm ≪≫
         Functor.isoWhiskerRight (allAlgebraHoDownIso A).symm B ≪≫ Functor.associator J U B) ≪≫
     (Functor.associator E J (U ⋙ B)).symm ≪≫
-    Functor.isoWhiskerRight (eqToIso (F1B.nerveHomotopyEvaluation_comp_inclusion C)) (U ⋙ B) ≪≫
+    Functor.isoWhiskerRight (eqToIso (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveHomotopyEvaluation_comp_inclusion C)) (U ⋙ B) ≪≫
     Functor.leftUnitor _ ≪≫ eqToIso h
 
 /-- 元の厳密代数の圏での弱同値。 -/

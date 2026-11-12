@@ -34,7 +34,7 @@ lemma cofibrantSourceRoofProductGeometricRightHomotopy_h :
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
     (cofibrantSourceRoofProductCommaRightOver A X Y b)
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))
-  change (functorHomotopyPrecomp (roofSliceEvaluationHomotopy (cofibrantHammockVertex A Y))
+  change (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Roof.roofSliceEvaluationHomotopy (cofibrantHammockVertex A Y))
     (cofibrantSourceRoofProductCommaCornerMap A X Y b ≫
       roofCornerSourceSliceMap (cofibrantDKSourceFrame A X)
         (show (cofibrantAlgebraRelativeCategory A).category from Y)

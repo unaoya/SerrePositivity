@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.FilteredHomotopyRepresentatives
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FilteredHomotopyRepresentatives
 public import SerrePositivity.KST.Spectra.PointedHomotopy
 public import Mathlib.CategoryTheory.Limits.Constructions.Over.Connected
 public import Mathlib.CategoryTheory.Filtered.Connected
@@ -32,9 +32,9 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。余極限の基点を各段の像と合わせる。 -/
 theorem KanHomotopy.map_eq_iff_basepoint {X Y : SSet.{u}} [KanComplex X] [KanComplex Y]
     {x : X _⦋0⦌} {y z : Y _⦋0⦌} (n : ℕ) (f : X ⟶ Y)
-    (hy : f.app _ x = y) (hz : f.app _ x = z) (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy X n x) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f hy a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f hy b ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f hz a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n f hz b := by
+    (hy : f.app _ x = y) (hz : f.app _ x = z) (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy X n x) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f hy a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f hy b ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f hz a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n f hz b := by
   subst y
   subst z
   rfl
@@ -64,7 +64,7 @@ instance pointedFilteredDiagram_preservesColimit :
 規約：値域は型の圏。零次数の群構造を仮定しない。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_n の filtered colimit の図式。 -/
 def pointedHomotopyDiagram (n : ℕ) : J ⥤ Type u where
-  obj j := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (D.obj j).right n (D.obj j).basepoint
+  obj j := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (D.obj j).right n (D.obj j).basepoint
   map f := ↾(pointedHomotopyMap n (D.map f))
   map_id j := by
     ext a
@@ -85,7 +85,7 @@ def pointedHomotopyDiagram (n : ℕ) : J ⥤ Type u where
 instance pointedFilteredColimit_kanComplex : KanComplex (colimit D).right := by
   let : ∀ j, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (D.obj j).right)
-  exact _root_.SerrePositivity.InfinityCategories.Kan.kanComplex_of_filtered_isColimit
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.kanComplex_of_filtered_isColimit
     (isColimitOfPreserves PointedSimplicialSet.forget (colimit.isColimit D))
 
 variable {D} (c : Cocone D) [KanComplex c.pt.right]
@@ -95,7 +95,7 @@ variable {D} (c : Cocone D) [KanComplex c.pt.right]
 規約：極限や同値を仮定せず、通常の cocone として作る。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_n の余極限の普遍性。 -/
 def pointedHomotopyCocone (n : ℕ) : Cocone (pointedHomotopyDiagram D n) where
-  pt := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy c.pt.right n c.pt.basepoint
+  pt := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy c.pt.right n c.pt.basepoint
   ι := {
     app j := ↾(pointedHomotopyMap (Y := c.pt) n (c.ι.app j))
     naturality j k f := by
@@ -112,21 +112,21 @@ include hc in
 規約：全自然数次数で有効。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_n の余極限比較の全射性。 -/
 theorem pointedHomotopyCocone_surjective (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy c.pt.right n c.pt.basepoint) :
-    ∃ (j : J) (b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (D.obj j).right n (D.obj j).basepoint),
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy c.pt.right n c.pt.basepoint) :
+    ∃ (j : J) (b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (D.obj j).right n (D.obj j).basepoint),
       pointedHomotopyMap (Y := c.pt) n (c.ι.app j) b = a := by
   obtain ⟨j⟩ := IsFiltered.nonempty (C := J)
-  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk_surjective n a
-  let s' := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 c.pt.right) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (c.ι.app j)).symm s
-  obtain ⟨k, v, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Kan.ptSimplex_filtered_factorization hc j (D.obj j).basepoint n s'
-  let t' := _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (𝟙 (D.obj k).right) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (D.map v)) t
-  refine ⟨k, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n t', ?_⟩
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map (Y := c.pt.right) n (c.ι.app k).right _ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk n t') = _
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_mk]
+  obtain ⟨s, rfl⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromTopologicalSpacesToSimplicialSets.KanHomotopy.mk_surjective n a
+  let s' := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (𝟙 c.pt.right) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (c.ι.app j)).symm s
+  obtain ⟨k, v, t, ht⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ptSimplex_filtered_factorization hc j (D.obj j).basepoint n s'
+  let t' := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (𝟙 (D.obj k).right) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (D.map v)) t
+  refine ⟨k, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk n t', ?_⟩
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map (Y := c.pt.right) n (c.ι.app k).right _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk n t') = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_mk]
   congr 1
   apply RelativeMorphism.ext
   change t.map ≫ (c.ι.app k).right = s'.map at ht
-  simpa only [s', t', _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex_map, Category.id_comp, Category.comp_id] using ht
+  simpa only [s', t', _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex_map, Category.id_comp, Category.comp_id] using ht
 
 include hc in
 /-- 概要：同じ段の点つきホモトピー類の像が余極限で一致すれば後続段で一致する。
@@ -134,21 +134,21 @@ include hc in
 規約：全自然数次数で有効。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。π_n の余極限比較の単射性。 -/
 theorem pointedHomotopyCocone_eq_eventually (n : ℕ) (j : J)
-    (a b : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (D.obj j).right n (D.obj j).basepoint)
+    (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (D.obj j).right n (D.obj j).basepoint)
     (h : pointedHomotopyMap (Y := c.pt) n (c.ι.app j) a =
       pointedHomotopyMap (Y := c.pt) n (c.ι.app j) b) :
     ∃ (k : J) (v : j ⟶ k),
       pointedHomotopyMap n (D.map v) a = pointedHomotopyMap n (D.map v) b := by
   have h' := (KanHomotopy.map_eq_iff_basepoint (Y := c.pt.right) n (c.ι.app j).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) rfl a b).1 h
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) rfl a b).1 h
   let : ∀ j, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (D.obj j).right)
   let : KanComplex (PointedSimplicialSet.forget.mapCocone c).pt :=
     inferInstanceAs (KanComplex c.pt.right)
-  obtain ⟨k, v, hv⟩ := _root_.SerrePositivity.InfinityCategories.Kan.homotopy_filtered_eq_eventually hc j n a b h'
+  obtain ⟨k, v, hv⟩ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homotopy_filtered_eq_eventually hc j n a b h'
   refine ⟨k, v, ?_⟩
   exact (KanHomotopy.map_eq_iff_basepoint n (D.map v).right rfl
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _) a b).1 hv
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _) a b).1 hv
 
 include hc in
 /-- 概要：点つき Kan 複体の filtered colimit に π_n を施した cocone は余極限。

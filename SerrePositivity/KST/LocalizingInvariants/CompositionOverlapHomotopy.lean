@@ -45,8 +45,8 @@ def longHomotopy : SSet.Homotopy U W where
     exact False.elim s.1.property
 
 def compositionTriangle : Truncated.Edge.CompStruct
-    (functorEdgeOfSimplicialHomotopy P) (functorEdgeOfSimplicialHomotopy Q)
-    (functorEdgeOfSimplicialHomotopy (longHomotopy S P Q hP hQ)) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy P) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy Q)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (longHomotopy S P Q hP hQ)) where
   simplex := SSet.yonedaEquiv (curry (overlap ≫ S))
   d₂ := by
     change ((ihom (Δ[1] : SSet.{u})).obj X).δ 2
@@ -79,11 +79,11 @@ def compositionTriangle : Truncated.Edge.CompStruct
     rw [← stdSimplex.yonedaEquiv_δ_comp, he]
 
 lemma homMk_overlap :
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy P) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy Q) =
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy P) ≫
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy Q) =
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (SquareDiagonal.afterBottom (longHomotopy S P Q hP hQ))) ≫
-      Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (SquareDiagonal.beforeTop (longHomotopy S P Q hP hQ))) := by
   rw [Truncated.HomotopyCategory.homMk_comp_homMk (compositionTriangle S P Q hP hQ)]
   exact SquareDiagonal.homMk_decomposition _
@@ -91,11 +91,11 @@ lemma homMk_overlap :
 lemma afterBottom_map : (SquareDiagonal.afterBottom (longHomotopy S P Q hP hQ)).h =
     SquareDiagonal.postShape ≫ stdSimplex.δ (1 : Fin 4) ≫ S := by
   change _ ≫ _ ≫ (square ≫ S) = _
-  rw [← Category.assoc (squareTriangle 1), square_lower]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1), square_lower]
 
 lemma beforeTop_map : (SquareDiagonal.beforeTop (longHomotopy S P Q hP hQ)).h =
     SquareDiagonal.preShape ≫ stdSimplex.δ (2 : Fin 4) ≫ S := by
   change _ ≫ _ ≫ (square ≫ S) = _
-  rw [← Category.assoc (squareTriangle 0), square_upper]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0), square_upper]
 
 end SerrePositivity.KST.LocalizingInvariants.CompositionOverlap

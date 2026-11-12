@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SmallUnstraighteningRelativeVertex
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SmallUnstraighteningRelativeVertex
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UniverseHomotopyDownNaturality
 
 /-!

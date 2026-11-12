@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.MHomotopyHomology
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.MHomotopyHomology
 public import SerrePositivity.KST.ProExcision.LinearizedEndpoints
 
 /-!
@@ -22,14 +22,14 @@ open scoped Simplicial
 規約：KST A.3・A.5。使われ方：標準区間の入力の射に関する自然性。 -/
 lemma linearizedCylinderHomotopy_generator (X : SSet.{u}) (n : ℕ) (i : Fin (n + 1))
     (x : X.obj (op ⦋n⦌)) :
-    (linearizedCylinderHomotopy X).h i (integerGenerator x) =
-      TensorProduct.tmul ℤ (integerGenerator (X.σ i x))
-        (integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) := by
-  change (integerTensorIso _ _).inv
-    (integerLinearization.map ((geometricCylinderHomotopy X).toSimplicialObjectHomotopy.h i)
-      (integerGenerator x)) = _
-  rw [integerLinearization_map_generator]
-  have hx : ((geometricCylinderHomotopy X).toSimplicialObjectHomotopy.h i) x =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).h i (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) =
+      TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (X.σ i x))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorIso _ _).inv
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.geometricCylinderHomotopy X).toSimplicialObjectHomotopy.h i)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
+  have hx : ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.geometricCylinderHomotopy X).toSimplicialObjectHomotopy.h i) x =
       (X.σ i x, SSet.stdSimplex.objMk₁ i.succ.castSucc) := by rfl
   rw [hx, integerTensorIso_inv_generator]
 
@@ -39,28 +39,28 @@ lemma linearizedCylinderHomotopy_generator (X : SSet.{u}) (n : ℕ) (i : Fin (n 
 使われ方：区間から誘導される鎖ホモトピーの同変性。 -/
 lemma linearizedCylinderHomotopy_naturality {X Y : SSet.{u}} (a : X ⟶ Y)
     (n : ℕ) (i : Fin (n + 1)) :
-    (linearizedSpaceMap a).app (op ⦋n⦌) ≫ (linearizedCylinderHomotopy Y).h i =
-      (linearizedCylinderHomotopy X).h i ≫
-        (simplicialIntegerTensorMap (linearizedSpaceMap a) (𝟙 (linearizedSpace (Δ[1] : SSet.{u})))).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a).app (op ⦋n⦌) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy Y).h i =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).h i ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensorMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a) (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})))).app
           (op ⦋n + 1⦌) := by
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
-  change (linearizedCylinderHomotopy Y).h i
-      (integerLinearization.map (a.app (op ⦋n⦌)) (integerGenerator x)) = _
-  rw [integerLinearization_map_generator, linearizedCylinderHomotopy_generator]
-  change TensorProduct.tmul ℤ (integerGenerator (Y.σ i (a.app (op ⦋n⦌) x)))
-      (integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) =
-    integerTensorMap ((linearizedSpaceMap a).app (op ⦋n + 1⦌)) (𝟙 _)
-      ((linearizedCylinderHomotopy X).h i (integerGenerator x))
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy Y).h i
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (a.app (op ⦋n⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, linearizedCylinderHomotopy_generator]
+  change TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (Y.σ i (a.app (op ⦋n⦌) x)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerTensorMap ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpaceMap a).app (op ⦋n + 1⦌)) (𝟙 _)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderHomotopy X).h i (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x))
   rw [linearizedCylinderHomotopy_generator]
-  change TensorProduct.tmul ℤ (integerGenerator (Y.σ i (a.app (op ⦋n⦌) x)))
-      (integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) =
+  change TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (Y.σ i (a.app (op ⦋n⦌) x)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc)) =
     TensorProduct.tmul ℤ
-      (integerLinearization.map (a.app (op ⦋n + 1⦌)) (integerGenerator (X.σ i x)))
-      (integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc))
-  rw [integerLinearization_map_generator]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (a.app (op ⦋n + 1⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (X.σ i x)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc))
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
   have hs := congrArg (fun k ↦ k x) (a.naturality (SimplexCategory.σ i).op)
-  exact congrArg (fun z ↦ TensorProduct.tmul ℤ (integerGenerator z)
-    (integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc))) hs.symm
+  exact congrArg (fun z ↦ TensorProduct.tmul ℤ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator z)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.objMk₁ i.succ.castSucc))) hs.symm
 
 end SerrePositivity.KST.ProExcision

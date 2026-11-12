@@ -22,9 +22,9 @@ open scoped Simplicial
 使われ方：像成分の全図式を元の始域へ回収する際の比較の一意性。 -/
 lemma completionSourceToRelativeFlags_isFullyFaithful (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
-    IsFullyFaithful (multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K) := by
-  apply (isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι _ _).cancel_right
   exact (multiSourceToRelativeFlags_inclusion stableWideCofinalitySupply r ι f hf K).symm ▸
     (multiSEndofunctor_map_isFullyFaithful r ι f hf.2.1).postcompose K
 
@@ -34,7 +34,7 @@ lemma completionSourceToRelativeFlags_isFullyFaithful (r : ℕ)
 使われ方：相対 S• の像成分における元の始域の同定。 -/
 theorem exists_multiSourceFamily_of_relative_component (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected]
     (F : K ⟶ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}))
@@ -42,10 +42,10 @@ theorem exists_multiSourceFamily_of_relative_component (r : ℕ)
     (hk₀ : (F.app (Opposite.op ⦋0⦌) k₀).val ∈
       LocalizingInvariants.completionEssentialImage (((multiSEndofunctor r).obj ι).map f).val) :
     ∃ G : K ⟶ (((multiSEndofunctor r).obj ι).obj X).carrier,
-      Nonempty (FunctorIso (G ≫ (((multiSEndofunctor r).obj ι).map f).val)
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (G ≫ (((multiSEndofunctor r).obj ι).map f).val)
         (F ≫ (LocalizingInvariants.completionCofiberWide
           (((multiSEndofunctor r).obj ι).map f).val).ι)) := by
-  apply F2.Idempotent.exists_diagram_in_fullyFaithful_source _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_in_fullyFaithful_source _
     (multiSEndofunctor_map_isFullyFaithful r ι f hf.2.1)
   intro k
   have hh : SSet.π₀.mk (F.app (Opposite.op ⦋0⦌) k₀) =

@@ -100,7 +100,7 @@ theorem boundaryKanAdditivityMap_localized_isIso (r : ℕ) (X : StableModel.{u})
 
 /-- 同じ点つき射対は、全基点・全自然数次数で π_* 同型。 -/
 theorem boundaryKanAdditivityMap_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryKanAdditivityMap r X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryKanAdditivityMap r X).right :=
   kanPiIsomorphism_of_localized_isIso _ (boundaryKanAdditivityMap_localized_isIso r X)
 
 end SerrePositivity.KST.NonConnective

@@ -71,7 +71,7 @@ lemma kanAdjointZeroBoundaryComparison_evaluation_homotopy (n : ℕ) :
       A.hom ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         toUnit (𝟙_ SSet.{u} ⊗ (Δ[1] : SSet.{u})) ≫ (kanAdjointParameterTarget X Y n).hom := by
   let coordinateKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact (PointedMapping.piZero_eq_iff_pointedHomotopy _ _).1
     (kanAdjointZeroBoundaryComparison_evaluation_component X Y φ j hzero n)
 

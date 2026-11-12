@@ -34,7 +34,7 @@ namespace OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 同じ二方向実模型への接続から回収する、全入力上の指定模型比較。 -/
 def d3DoubleEndpointLoopImageComparison :
-    FunctorIso d3LoopedSectionFamily.{u}
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso d3LoopedSectionFamily.{u}
       (pointedKanLoopInfinity ≫ d3PointedKanLoopSection) :=
   d3LoopedSectionLeftDiagramIso ≪≫ d3CanonicalImageLeftDiagramIso.symm
 
@@ -47,10 +47,10 @@ lemma d3DoubleEndpointLoopImageComparison_recover :
 
 /-- 元の looped 単位と canonical image 単位の差を、同じ全入力上に保持する。 -/
 def d3DoubleEndpointLoopModelCorrection :
-    FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanLoopInfinity.{u} ≫ pointedKanLoopInfinity)
       (pointedKanLoopInfinity ≫ pointedKanLoopInfinity) :=
   (d3LoopedSectionUnitIso ≪≫ d3DoubleEndpointLoopImageComparison.postcomp
-    (loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫ d3CanonicalImageUnitIso.symm
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫ d3CanonicalImageUnitIso.symm
 
 /-- 保持した単位補正は、同じ二方向実面始点比較の差を元の端点表示で移した値。 -/
 lemma d3DoubleEndpointLoopModelCorrection_value :
@@ -59,9 +59,9 @@ lemma d3DoubleEndpointLoopModelCorrection_value :
         d3DoubleEndpointSourceDifference) ≪≫
           (d3PointedKanEndpointLoopIso.postcomp pointedKanLoopInfinity).symm := by
   apply d3Iso_difference_via_common_target _ _ _
-    (d3LoopedSectionLeftDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity 0 0))
-    (d3CanonicalImageLeftDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity 0 0))
-  · rw [← F2.functorIso_postcomp_trans, d3DoubleEndpointLoopImageComparison_recover]
+    (d3LoopedSectionLeftDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
+    (d3CanonicalImageLeftDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
+  · rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans, d3DoubleEndpointLoopImageComparison_recover]
   · exact d3LoopedSectionLeftDiagramIso_unit_pasting_endpoint
   · exact d3CanonicalImageLeftDiagramIso_unit_pasting
 

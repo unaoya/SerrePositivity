@@ -95,8 +95,8 @@ def pathFirstRowRestriction (C : SSet.{u}) :
 方針：既証の全 gapped 図式の第一行制限の定理を使う。
 規約：C は安定な quasicategory。使われ方：経路の core の比較。 -/
 instance pathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (d : SimplexCategoryᵒᵖ) :
-    TrivialKanFibration ((pathFirstRowRestriction C).app d) :=
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (d : SimplexCategoryᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((pathFirstRowRestriction C).app d) :=
   firstRowRestriction_trivialKanFibration _ C
 
 /-- 概要：経路の第一行制限の core による自然な比較。
@@ -104,15 +104,15 @@ instance pathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
 規約：源は既存の core S の経路構成。使われ方：対角実現の比較。 -/
 def corePathFirstRowRestriction (C : SSet.{u}) :
     simplicialPath (simplicialCoreSConstruction C) ⟶
-      pathFirstRowDiagram C ⋙ quasicategoryCoreFunctor :=
-  Functor.whiskerRight (pathFirstRowRestriction C) quasicategoryCoreFunctor
+      pathFirstRowDiagram C ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor :=
+  Functor.whiskerRight (pathFirstRowRestriction C) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：core の経路の第一行制限も各段で trivial Kan fibration。
 方針：quasicategory 間の自明ファイブレーションの core への制限を使う。
 規約：追加の存在仮定なし。使われ方：対角の弱同値。 -/
 instance corePathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
-    [Quasicategory C] [IsStable C] (d : SimplexCategoryᵒᵖ) :
-    TrivialKanFibration ((corePathFirstRowRestriction C).app d) := by
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] (d : SimplexCategoryᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((corePathFirstRowRestriction C).app d) := by
   let : Quasicategory ((simplicialPath (simplicialSConstruction C)).obj d) := by
     change Quasicategory (sConstruction (d.unop.len + 1) C)
     infer_instance
@@ -122,14 +122,14 @@ instance corePathFirstRowRestriction_trivialKanFibration (C : SSet.{u})
 方針：自然な core 比較を対角関手で写す。
 規約：対角の Kan 性は仮定しない。使われ方：経路の fiber 比較の実現模型。 -/
 def pathFirstRowDiagonalComparison (C : SSet.{u}) : sPathRealization C ⟶
-    simplicialDiagonalFunctor.obj (pathFirstRowDiagram C ⋙ quasicategoryCoreFunctor) :=
+    simplicialDiagonalFunctor.obj (pathFirstRowDiagram C ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor) :=
   simplicialDiagonalFunctor.map (corePathFirstRowRestriction C)
 
 /-- 概要：経路の第一行比較は対角実現後に anodyne 局所化で可逆。
 方針：各段の core の自明ファイブレーションを対角比較の定理へ渡す。
 規約：元の対角の Kan 性は不要。使われ方：経路の自然な弱同値。 -/
 lemma pathFirstRowDiagonalComparison_localized_isIso (C : SSet.{u})
-    [Quasicategory C] [IsStable C] :
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     IsIso (AnodyneHomotopy.anodyneQ.map (pathFirstRowDiagonalComparison C)) := by
   have hi (d : SimplexCategoryᵒᵖ) :
       IsIso (AnodyneHomotopy.anodyneQ.map ((corePathFirstRowRestriction C).app d)) :=

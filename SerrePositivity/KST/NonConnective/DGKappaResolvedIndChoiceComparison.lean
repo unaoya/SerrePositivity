@@ -27,23 +27,23 @@ def dgKappaResolvedIndChoiceEquivalence :=
 
 /-- 同じ選択を比較すると、指定比較は実核の Indω の恒等と同型。 -/
 def dgKappaResolvedIndChoiceEquivalence_selfIso :
-    FunctorIso (dgKappaResolvedIndChoiceEquivalence R A I I P P).hom (𝟙 _) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaResolvedIndChoiceEquivalence R A I I P P).hom (𝟙 _) :=
   (dgKappaResolvedIndEquivalence R A I P).invHomIso
 
 /-- 元の入力からの実評価 Morita 延長は、選択比較の下で全関手として可換する。 -/
 def dgKappaResolvedIndChoiceEquivalence_sourceIso :
-    FunctorIso (dgKappaResolvedIndMoritaMap R A I P ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaResolvedIndMoritaMap R A I P ≫
       (dgKappaResolvedIndChoiceEquivalence R A I J P Q).hom)
       (dgKappaResolvedIndMoritaMap R A J Q) := by
   have e := (dgKappaResolvedIndEquivalence R A I P).homInvIso.postcomp
     (dgKappaResolvedIndEquivalence R A J Q).hom
-  simpa only [dgKappaResolvedIndChoiceEquivalence, QCatEquivalence.trans,
-    QCatEquivalence.symm, dgKappaResolvedIndEquivalence_hom,
+  simpa only [dgKappaResolvedIndChoiceEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm, dgKappaResolvedIndEquivalence_hom,
     Category.assoc, Category.id_comp] using! e
 
 /-- P の元の指定全合成を延長した作用も、同じ選択比較で可換する。 -/
 def dgKappaResolvedIndChoiceEquivalence_PIso :
-    FunctorIso (dgKappaResolvedIndPMap R A I P ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaResolvedIndPMap R A I P ≫
       (dgKappaResolvedIndChoiceEquivalence R A I J P Q).hom)
       (dgKappaResolvedIndPMap R A J Q) :=
   (dgKappaResolvedIndPComparisonIso R A I P).postcomp _ ≪≫
@@ -52,14 +52,14 @@ def dgKappaResolvedIndChoiceEquivalence_PIso :
 
 /-- 三つの実小核間の選択比較は、元の評価同値の同じ逆二胞体で合成する。 -/
 def dgKappaResolvedIndChoiceEquivalence_compIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKappaResolvedIndChoiceEquivalence R A I J P Q).hom ≫
         (dgKappaResolvedIndChoiceEquivalence R A J K Q H).hom)
       (dgKappaResolvedIndChoiceEquivalence R A I K P H).hom := by
   have e := ((dgKappaResolvedIndEquivalence R A J Q).homInvIso.postcomp
     (dgKappaResolvedIndEquivalence R A K H).hom).precomp
       (dgKappaResolvedIndEquivalence R A I P).inv
-  simpa only [dgKappaResolvedIndChoiceEquivalence, QCatEquivalence.trans,
-    QCatEquivalence.symm, Category.assoc, Category.id_comp] using! e
+  simpa only [dgKappaResolvedIndChoiceEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm, Category.assoc, Category.id_comp] using! e
 
 end SerrePositivity.KST.NonConnective

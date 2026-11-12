@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.NativePointedConeLift
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.NativeConeTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeTriangle
 
 /-!
 概要：始点固定の全 pointed 錐を、その元の native な三角形へ制限する。

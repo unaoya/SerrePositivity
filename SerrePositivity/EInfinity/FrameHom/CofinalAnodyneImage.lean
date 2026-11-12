@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.CofinalAnodyneRecognition
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.CofinalAnodyneRecognition
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 
 /-!
@@ -30,7 +30,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 方針：全ホーンの右持ち上げ性を左ホーンの生成族へ制限する。
 規約：モデル構造や始域の Kan 性は要求しない。
 使われ方：元の cofinal 因子分解の左因子の反転。 -/
-lemma leftAnodyne_anodyne {A B : SSet.{u}} (i : A ⟶ B) (hi : leftAnodyneExtensions i) :
+lemma leftAnodyne_anodyne {A B : SSet.{u}} (i : A ⟶ B) (hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions i) :
     SSet.anodyneExtensions i := by
   rw [SSet.anodyneExtensions_eq_llp_rlp]
   intro E D p hp
@@ -43,7 +43,7 @@ lemma leftAnodyne_anodyne {A B : SSet.{u}} (i : A ⟶ B) (hi : leftAnodyneExtens
 方針：元の因子分解の左因子を反転し、右因子には同じ切断と収縮を使う。
 規約：射の順方向は元の比較射の像で、モデル構造は入力しない。
 使われ方：元の固定右脚の比較の可逆性の判定。 -/
-lemma leftCofinal_image_isIso {A B : SSet.{u}} (f : A ⟶ B) (hf : IsLeftCofinal f)
+lemma leftCofinal_image_isIso {A B : SSet.{u}} (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal f)
     {H : Type uH} [Category.{vH} H] (L : SSet.{u} ⥤ H)
     (hL : SSet.anodyneExtensions.IsInvertedBy L) : IsIso (L.map f) := by
   obtain ⟨Z, j, p, _hm, hj, hp, he⟩ := hf.exists_anodyne_trivialKan_factorization
@@ -56,7 +56,7 @@ lemma leftCofinal_image_isIso {A B : SSet.{u}} (f : A ⟶ B) (hf : IsLeftCofinal
 方針：元の比較射へ任意の anodyne 反転関手の判定を適用する。
 規約：元の射の両端に Kan 性を要求しない。
 使われ方：三本矢の全図式の成分ごとの反転性。 -/
-lemma leftCofinal_localized_isIso {A B : SSet.{u}} (f : A ⟶ B) (hf : IsLeftCofinal f) :
+lemma leftCofinal_localized_isIso {A B : SSet.{u}} (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal f) :
     IsIso (AnodyneHomotopy.anodyneQ.map f) :=
   leftCofinal_image_isIso f hf AnodyneHomotopy.anodyneQ
     (Localization.inverts _ SSet.anodyneExtensions)

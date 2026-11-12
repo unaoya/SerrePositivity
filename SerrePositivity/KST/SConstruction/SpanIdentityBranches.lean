@@ -23,13 +23,13 @@ lemma spanFamily_constant_right {K D : SSet.{u}}
     (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ D) (L : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
     (f : K ⟶ D) (hL : (horn₂₀.ι₀₁ ▷ K) ≫ F = L)
     (hR : (horn₂₀.ι₀₂ ▷ K) ≫ F = snd (Δ[1] : SSet.{u}) K ≫ f)
-    (h₀ : prismEndpoint 0 K ≫ L = f) :
+    (h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 K ≫ L = f) :
     F = (identitySpanShape true ▷ K) ≫ L := by
   have h₁ : horn₂₀.ι₀₁ ≫ identitySpanShape true = 𝟙 (Δ[1] : SSet.{u}) :=
     identitySpanSection_shape true
   have h₂ : horn₂₀.ι₀₂ ≫ identitySpanShape true =
       (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) : (Δ[1] : SSet.{u}) ⟶ Δ[1]) := by
-    rw [identitySpanShape, ← Category.assoc, spanSquareBoundary_leftEdge]
+    rw [identitySpanShape, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_leftEdge]
     apply SSet.yonedaEquiv.injective
     decide
   apply spanPrisms_hom_ext
@@ -37,7 +37,7 @@ lemma spanFamily_constant_right {K D : SSet.{u}}
     simp
   · rw [hR, ← Category.assoc, ← comp_whiskerRight, h₂]
     have he : (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :
-        (Δ[1] : SSet.{u}) ⟶ Δ[1]) ▷ K = snd (Δ[1] : SSet.{u}) K ≫ prismEndpoint 0 K := rfl
+        (Δ[1] : SSet.{u}) ⟶ Δ[1]) ▷ K = snd (Δ[1] : SSet.{u}) K ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 K := rfl
     rw [he, Category.assoc, h₀]
 
 /-- 概要：上枝が始点で一定な span は左枝に恒等な上枝を付けたもの。
@@ -46,19 +46,19 @@ lemma spanFamily_constant_right {K D : SSet.{u}}
 lemma spanFamily_constant_left {K D : SSet.{u}}
     (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ D) (R : (Δ[1] : SSet.{u}) ⊗ K ⟶ D)
     (f : K ⟶ D) (hL : (horn₂₀.ι₀₁ ▷ K) ≫ F = snd (Δ[1] : SSet.{u}) K ≫ f)
-    (hR : (horn₂₀.ι₀₂ ▷ K) ≫ F = R) (h₀ : prismEndpoint 0 K ≫ R = f) :
+    (hR : (horn₂₀.ι₀₂ ▷ K) ≫ F = R) (h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 K ≫ R = f) :
     F = (identitySpanShape false ▷ K) ≫ R := by
   have h₁ : horn₂₀.ι₀₂ ≫ identitySpanShape false = 𝟙 (Δ[1] : SSet.{u}) :=
     identitySpanSection_shape false
   have h₂ : horn₂₀.ι₀₁ ≫ identitySpanShape false =
       (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) : (Δ[1] : SSet.{u}) ⟶ Δ[1]) := by
-    rw [identitySpanShape, ← Category.assoc, spanSquareBoundary_bottomEdge]
+    rw [identitySpanShape, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.spanSquareBoundary_bottomEdge]
     apply SSet.yonedaEquiv.injective
     decide
   apply spanPrisms_hom_ext
   · rw [hL, ← Category.assoc, ← comp_whiskerRight, h₂]
     have he : (SSet.const (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) :
-        (Δ[1] : SSet.{u}) ⟶ Δ[1]) ▷ K = snd (Δ[1] : SSet.{u}) K ≫ prismEndpoint 0 K := rfl
+        (Δ[1] : SSet.{u}) ⟶ Δ[1]) ▷ K = snd (Δ[1] : SSet.{u}) K ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 K := rfl
     rw [he, Category.assoc, h₀]
   · rw [hR, ← Category.assoc, ← comp_whiskerRight, h₁]
     simp

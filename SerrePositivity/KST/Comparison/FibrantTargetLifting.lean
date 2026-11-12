@@ -45,15 +45,15 @@ theorem localizedMono_lifting_fibrantTarget {A X E B : SSet.{u}}
   intro a b sq
   obtain ⟨g, hg⟩ := KanMonoStrictExtension.exists_extension i hE hi a
   let HA : SSet.Homotopy (i ≫ (g ≫ p)) (i ≫ b) :=
-    LargeParameterSquare.changeEndpoints (KanActualHomotopy.refl (a ≫ p))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (KanActualHomotopy.refl (a ≫ p))
       (by rw [← Category.assoc, hg]) sq.w
   obtain ⟨H, hH⟩ := KanMonoRelativeHomotopy.exists_extension i hi hB (g ≫ p) b HA
   let HE : SSet.Homotopy (i ≫ g) a :=
-    LargeParameterSquare.changeEndpoints (KanActualHomotopy.refl a) hg.symm rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (KanActualHomotopy.refl a) hg.symm rfl
   have hHE : HE.h ≫ p = i ▷ (Δ[1] : SSet.{u}) ≫ H.h := by
     rw [hH]
     dsimp only [HE, HA]
-    rw [LargeParameterSquare.changeEndpoints_h, LargeParameterSquare.changeEndpoints_h]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     rfl
   obtain ⟨l, hl, V, _, hV⟩ := KanFibrationEndpointExtension.exists_from_zero p hp i g a HE H.h
     H.h₀.symm hHE

@@ -36,14 +36,14 @@ lemma pointedSOAExInfinityComparison_unit (X : PointedSSetObject.{u}) :
 
 /-- 元の単位の厳密延長で得た同じ比較は全基点 π 同型。 -/
 lemma pointedSOAExInfinityComparison_piIsomorphism (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedSOAExInfinityComparison X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedSOAExInfinityComparison X).right :=
   pointedKanStrictExtension_piIsomorphism _
     ((Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) _
       (exInfinityPointedUnit_anodyne X))
 
 /-- 同じ二つの Kan 模型の loop 比較も全基点 π 同型。 -/
 lemma pointedSOAExInfinityComparison_loop_piIsomorphism (X : PointedSSetObject.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       ((PointedObject.basedHomFunctor PointedSimplicialSet.circle.{u}).map
         (pointedSOAExInfinityComparison X)).right :=
   PointedMapping.post_piIsomorphism PointedSimplicialSet.circle _
@@ -54,7 +54,7 @@ lemma exInfinityPointedUnit_naturality {X Y : PointedSSetObject.{u}} (f : X ⟶ 
     exInfinityPointedUnit X ≫ (exInfinityPointedKanMap f).hom =
       (show X.obj ⟶ Y.obj from f) ≫ exInfinityPointedUnit Y := by
   apply Under.UnderMorphism.ext
-  exact (Comparison.exInfinityUnit.naturality (show X.obj ⟶ Y.obj from f).right).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (show X.obj ⟶ Y.obj from f).right).symm
 
 /-- 同じ前向き Kan 比較は、通常の点つき射に関して基点固定成分で自然。 -/
 lemma pointedSOAExInfinityComparison_naturality_component

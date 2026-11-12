@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullPathInterval
-public import SerrePositivity.InfinityCategories.Core.HomotopyNatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyNatTrans
 
 /-!
 概要：元両三角形の全 Hom の区間表示を同じ零成分の実四辺として保持する。
@@ -16,15 +16,15 @@ open scoped Simplicial
 
 private lemma nullIntervalEdgeParameter {X : SSet.{u}} (m : (Δ[1] : SSet.{u}) ⟶ X) :
     SSet.yonedaEquiv.symm
-      ((SSet.Edge.ofTruncated homotopyIntervalEdge.{u}).map m).edge = m := by
-  have h : SSet.yonedaEquiv.symm homotopyIntervalEdge.{u}.edge = 𝟙 (Δ[1] : SSet.{u}) := by
+      ((SSet.Edge.ofTruncated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u}).map m).edge = m := by
+  have h : SSet.yonedaEquiv.symm _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u}.edge = 𝟙 (Δ[1] : SSet.{u}) := by
     apply SSet.yonedaEquiv.injective
     apply SSet.stdSimplex.ext
     intro i
     fin_cases i <;> rfl
-  change SSet.yonedaEquiv.symm (m.app (Opposite.op ⦋1⦌) homotopyIntervalEdge.{u}.edge) = m
+  change SSet.yonedaEquiv.symm (m.app (Opposite.op ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u}.edge) = m
   exact (SSet.yonedaEquiv_symm_comp (X := (Δ[1] : SSet.{u})) (Y := X)
-    (n := ⦋1⦌) homotopyIntervalEdge.{u}.edge m).symm.trans
+    (n := ⦋1⦌) _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u}.edge m).symm.trans
       ((congrArg (fun k => k ≫ m) h).trans (Category.id_comp m))
 
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
@@ -34,7 +34,7 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 規約：元下三角形とも厳密に同じ。使われ方：二面の共同比較端点。 -/
 def dgOdotMilnorNuNullDiagonalVertex : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ :=
   (dgOdotMilnorNuNullTriangleFactor R d 0).app (Opposite.op ⦋0⦌)
-    (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
 
 /-- 概要：元実両区間の始点は同じ元共有対角。
 方針：同じ逆同型の始点式と元上下対角の一致を使う。
@@ -55,7 +55,7 @@ lemma dgOdotMilnorNuNullTriangleInterval_target (j : Fin 2) :
     (dgOdotMilnorNuNullTriangleInterval R d j).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (dgOdotMilnorNuNullTriangleFactor R d j).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) :=
   congrArg (fun x => (dgOdotMilnorNuNullTriangleFactor R d j).app
     (Opposite.op ⦋0⦌) x) dgOdotMilnorNuNullPathIntervalIso_target.{u}
 
@@ -65,8 +65,8 @@ lemma dgOdotMilnorNuNullTriangleInterval_target (j : Fin 2) :
 def dgOdotMilnorNuNullTriangleIntervalEdge (j : Fin 2) :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge (dgOdotMilnorNuNullDiagonalVertex R d)
       ((dgOdotMilnorNuNullTriangleFactor R d j).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
-  ((SSet.Edge.ofTruncated homotopyIntervalEdge.{u + 1}).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
+  ((SSet.Edge.ofTruncated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u + 1}).map
     (dgOdotMilnorNuNullTriangleInterval R d j)).ofEq
       (dgOdotMilnorNuNullTriangleInterval_source R d j)
       (dgOdotMilnorNuNullTriangleInterval_target R d j)
@@ -78,14 +78,14 @@ lemma dgOdotMilnorNuNullTriangleIntervalEdge_parameter (j : Fin 2) :
     SSet.yonedaEquiv.symm (dgOdotMilnorNuNullTriangleIntervalEdge R d j).edge =
       dgOdotMilnorNuNullTriangleInterval R d j := nullIntervalEdgeParameter _
 
-variable (h : DGGluingMilnorSquare R d)
+variable (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元絶対両二単体の同じ共有対角頂点。
 方針：元絶対上三角形の全因子分解を評価する。
 規約：元絶対下三角形とも同じ。使われ方：共同比較辺の終点。 -/
 def dgOdotMilnorNuAbsoluteDiagonalVertex : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ :=
   (dgOdotMilnorNuAbsoluteTriangleFactor R d h 0).app (Opposite.op ⦋0⦌)
-    (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u})
 
 /-- 概要：元絶対両区間の始点は同じ元共有対角。
 方針：元逆同型の始点と同じ絶対対角の一致を使う。
@@ -106,7 +106,7 @@ lemma dgOdotMilnorNuAbsoluteTriangleInterval_target (j : Fin 2) :
     (dgOdotMilnorNuAbsoluteTriangleInterval R d h j).app (Opposite.op ⦋0⦌)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       (dgOdotMilnorNuAbsoluteTriangleFactor R d h j).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}) :=
   congrArg (fun x => (dgOdotMilnorNuAbsoluteTriangleFactor R d h j).app
     (Opposite.op ⦋0⦌) x) dgOdotMilnorNuNullPathIntervalIso_target.{u}
 
@@ -116,8 +116,8 @@ lemma dgOdotMilnorNuAbsoluteTriangleInterval_target (j : Fin 2) :
 def dgOdotMilnorNuAbsoluteTriangleIntervalEdge (j : Fin 2) :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge (dgOdotMilnorNuAbsoluteDiagonalVertex R d h)
       ((dgOdotMilnorNuAbsoluteTriangleFactor R d h j).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
-  ((SSet.Edge.ofTruncated homotopyIntervalEdge.{u + 1}).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
+  ((SSet.Edge.ofTruncated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u + 1}).map
     (dgOdotMilnorNuAbsoluteTriangleInterval R d h j)).ofEq
       (dgOdotMilnorNuAbsoluteTriangleInterval_source R d h j)
       (dgOdotMilnorNuAbsoluteTriangleInterval_target R d h j)
@@ -135,10 +135,10 @@ lemma dgOdotMilnorNuAbsoluteTriangleIntervalEdge_parameter (j : Fin 2) :
 def dgOdotMilnorNuProjectionNullIntervalEdge :
     (DGOdotMilnorNuNullCoherenceSpace R d).Edge
       ((dgOdotMilnorNuNullTriangleFactor R d 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u}))
       ((dgOdotMilnorNuAbsoluteTriangleFactor R d h 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
-  ((SSet.Edge.ofTruncated homotopyIntervalEdge.{u + 1}).map
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullUpperMaximalPath.{u})) :=
+  ((SSet.Edge.ofTruncated _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.{u + 1}).map
     (dgOdotMilnorNuProjectionNullFactor R d h)).ofEq
       (dgOdotMilnorNuProjectionNullFactor_source R d h)
       (dgOdotMilnorNuProjectionNullFactor_target R d h)

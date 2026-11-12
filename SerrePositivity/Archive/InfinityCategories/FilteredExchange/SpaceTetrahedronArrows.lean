@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTetrahedronFaceEdges
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTetrahedronBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTetrahedronBoundary
 
 /-!
 概要：𝒮 の三単体の六辺の関手としての読み戻し。

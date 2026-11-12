@@ -3,8 +3,8 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgFullLocalizationSource
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgExtensionSourceComparison
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.LocalizedNerveNatTrans
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Adjunction
-public import SerrePositivity.InfinityCategories.F1B.QCatEquivalenceAdjunction
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.Adjunction
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.QCatEquivalenceAdjunction
 
 /-!
 # 底変更随伴を降ろす二つの比較
@@ -71,9 +71,9 @@ def allAlgebraCoefficientAdjunction :
 
 /-- 全代数の nerve の間の元の随伴。 -/
 def allAlgebraCoefficientNerveAdjunction :
-    QCatAdjunction (nerveMap (allAlgebraCoefficientExtension f))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction (nerveMap (allAlgebraCoefficientExtension f))
       (nerveMap (allAlgebraCoefficientRestriction f)) :=
-  F1B.nerveAdjunctionOfAdjunction (allAlgebraCoefficientAdjunction f)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveAdjunctionOfAdjunction (allAlgebraCoefficientAdjunction f)
 
 /-- 全相対圏の源と元の厳密代数の源は Hom の変更に関して可換。 -/
 lemma allAlgebraCAlgSource_down (A : Type u) [CommRing A] :
@@ -81,30 +81,30 @@ lemma allAlgebraCAlgSource_down (A : Type u) [CommRing A] :
 
 /-- 全代数の局所化源の上で、導来制限は厳密制限と自然同型。 -/
 def allAlgebraCoefficientRestriction_sourceIso :
-    FunctorIso (Q[T] ≫ barrattEcclesRestrict f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Q[T] ≫ barrattEcclesRestrict f)
       (nerveMap (allAlgebraCoefficientRestriction f) ≫ Q[S]) :=
-  F2.functorIsoOfEq ((barrattEcclesRestrict_sourceIso f).precomp (allAlgebraDownNerve T)) rfl rfl
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((barrattEcclesRestrict_sourceIso f).precomp (allAlgebraDownNerve T)) rfl rfl
 
 /-- 全代数の局所化源の上で、導来拡大は cofibrant 置換後の厳密拡大と自然同型。 -/
 def allAlgebraCoefficientExtension_sourceIso :
-    FunctorIso (Q[S] ≫ barrattEcclesBaseChange f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (Q[S] ≫ barrattEcclesBaseChange f)
       (nerveMap (P[S] ⋙ I[S] ⋙ allAlgebraCoefficientExtension f) ≫ Q[T]) := by
-  exact F2.functorIsoOfEq
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     ((barrattEcclesBaseChange_sourceIso f).precomp (allAlgebraDownNerve S)) rfl rfl
 
 /-- 左導来関手の、全代数上の元の厳密拡大への比較二胞体。 -/
 def allAlgebraCoefficientExtension_comparison :
-    qcatMap (Q[S]) ≫ qcatMap (barrattEcclesBaseChange f) ⟶
-      qcatMap (nerveMap (allAlgebraCoefficientExtension f)) ≫ qcatMap (Q[T]) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (Q[S]) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (barrattEcclesBaseChange f) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (nerveMap (allAlgebraCoefficientExtension f)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (Q[T]) := by
   let F := allAlgebraCoefficientExtension f
   let e := allAlgebraCoefficientExtension_sourceIso f
   let η : P[S] ⋙ I[S] ⋙ F ⟶ F :=
     Functor.whiskerRight (allAlgebraDKReplacementAugmentation S) F
-  exact (functorIsoToQcatIso e).hom ≫ qcatNerveNatTrans η ▷ qcatMap (Q[T])
+  exact (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.functorIsoToQcatIso e).hom ≫ qcatNerveNatTrans η ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.qcatMap (Q[T])
 
 /-- cofibrant 代数の包含を全代数の源に合成すると元の局所化源と同型。 -/
 def allAlgebraCAlgSource_cofibrantIso (A : Type u) [CommRing A] :
-    FunctorIso (nerveMap (I[A]) ≫ Q[A]) (cAlgLocalizationSource A) :=
-  F2.functorIsoOfEq (cAlgLocalizationSource_algebraIso A) rfl rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (I[A]) ≫ Q[A]) (cAlgLocalizationSource A) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (cAlgLocalizationSource_algebraIso A) rfl rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

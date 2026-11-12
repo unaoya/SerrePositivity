@@ -11,10 +11,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConnectingConeNat
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)
@@ -30,8 +30,8 @@ local notation "ρ" => dgModuleNaturalConeRotationInv R D G (CF) (ν)
 /-- 概要：元 connecting cone から元終域の shift への全厳密合成比較。
 方針：同じ指定 square の全比較と二回目の元回転逆を合成する。
 規約：実回転成分を変更しない。使われ方：実逆回転後の全比較の合成部分。 -/
-def dgModuleNaturalConnectingConeComposite : StrictNatTrans (CD) (GS) :=
-  dgStrictNatTransComp (θ) (ρ)
+def dgModuleNaturalConnectingConeComposite : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (CD) (GS) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (θ) (ρ)
 
 /-- 概要：元合成全比較の閉成分は元二比較の同じ合成。
 方針：既存の全厳密合成回収を適用する。

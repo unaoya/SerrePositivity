@@ -18,9 +18,9 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の bead 連結語から、元の同じ Λ Hom への実 Serre 鎖射。 -/
 def simplexHABeadWordCell {n : ℕ} :
-    {a b : Fin (n + 1)} → {d : ℕ} → _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d →
+    {a b : Fin (n + 1)} → {d : ℕ} → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d →
       (serreCubeComplex A d ⟶ homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
   | _, _, _, .bead I hI => simplexSubsetLambdaCell A I hI
   | _, _, _, .join (p := p) (q := q) left right =>
       (serreCubeTensorIso A p q).hom.hom ≫

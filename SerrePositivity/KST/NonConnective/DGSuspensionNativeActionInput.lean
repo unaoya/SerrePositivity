@@ -27,15 +27,15 @@ structure DGSuspensionNativeActionInput where
   map : dgKInputInfinity.{u, max (u + 1) v} R ⟶ dgKInputInfinity.{u, max (u + 1) v} R
   /-- 同じ選択 cone の元の実平坦商を頂点で保持する。 -/
   vertex : ∀ A : PerfDGInput.{u, max (u + 1) v} R,
-    map.app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-      coherentNerveVertex (dgKappaSuspensionKInput R A (s A).cone)
+    map.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R A (s A).cone)
   /-- 各元の厳密 dg 射に対する、同じ cone・平坦分解の実作用。 -/
   data : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R}, (A ⟶ B) →
     DGKappaSuspensionMapData R A B (s A).cone (s B).cone
   /-- 全高次作用の元の一単体は、同じ実商関手の一単体そのもの。 -/
   edge : ∀ {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B),
-    map.app (Opposite.op ⦋1⦌) (coherentNerveEdge f).edge =
-      (coherentNerveEdge (dgKappaSuspensionInputMap R A B (s A).cone (s B).cone (data f))).edge
+    map.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaSuspensionInputMap R A B (s A).cone (s B).cone (data f))).edge
 
 variable (a : DGSuspensionNativeActionInput R s)
 
@@ -47,13 +47,13 @@ def DGSuspensionNativeActionInput.iteration (n : ℕ) :
 /-- 明示全高次作用に条件付きで、その反復の頂点は既存の同じ段別実平坦商である。 -/
 theorem DGSuspensionNativeActionInput.iteration_vertex
     (A : PerfDGInput.{u, max (u + 1) v} R) (n : ℕ) :
-    (DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌) (coherentNerveVertex A) =
-      coherentNerveVertex (dgSuspensionIteration R s A n) := by
+    (DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgSuspensionIteration R s A n) := by
   induction n with
   | zero => rfl
   | succ n ih =>
     change a.map.app (Opposite.op ⦋0⦌)
-      ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌) (coherentNerveVertex A)) = _
+      ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)) = _
     rw [ih, a.vertex]
     rfl
 
@@ -61,14 +61,14 @@ theorem DGSuspensionNativeActionInput.iteration_vertex
 theorem DGSuspensionNativeActionInput.iteration_edge
     {A B : PerfDGInput.{u, max (u + 1) v} R} (f : A ⟶ B) (n : ℕ) :
     (DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge =
-      (coherentNerveEdge (dgSuspensionIterationMap R s a.data f n)).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgSuspensionIterationMap R s a.data f n)).edge := by
   induction n with
   | zero => rfl
   | succ n ih =>
     change a.map.app (Opposite.op ⦋1⦌)
       ((DGSuspensionNativeActionInput.iteration R s a n).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge) = _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) = _
     rw [ih, a.edge]
     rfl
 

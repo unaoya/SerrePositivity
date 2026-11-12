@@ -16,7 +16,7 @@ namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：本質像の元の全旗核の Ex∞ の一点射は局所化同型。
@@ -25,9 +25,9 @@ open scoped Simplicial
 使われ方：元の核の全基点ホモトピーの自明性。 -/
 lemma completionClosedKernelExInfinity_toPoint_isIso (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (toUnit (exInfinity.obj (Fibration.Relative.closedKernelRealization
+      (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
         (completionImageClosedPredicate r ι f hf))))) := by
   let E := Fibration.Relative.closedKernelRealization (completionImageClosedPredicate r ι f hf)
   let Q := AnodyneHomotopy.anodyneQ
@@ -38,10 +38,10 @@ lemma completionClosedKernelExInfinity_toPoint_isIso (r : ℕ)
   have hc : IsIso (Q.map (toUnit E) ≫ Q.map t.hom) :=
     ((Q.map_comp _ _).symm.trans (congrArg Q.map ht)).symm ▸ hE
   have hE' : IsIso (Q.map (toUnit E)) := (isIso_comp_right_iff _ _).mp hc
-  have hu : IsIso (Q.map (exInfinityUnit.app E)) := inferInstance
-  have he : exInfinityUnit.app E ≫ toUnit (exInfinity.obj E) = toUnit E :=
+  have hu : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app E)) := inferInstance
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app E ≫ toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj E) = toUnit E :=
     isTerminalTensorUnit.hom_ext _ _
-  have hh : IsIso (Q.map (exInfinityUnit.app E) ≫ Q.map (toUnit (exInfinity.obj E))) :=
+  have hh : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app E) ≫ Q.map (toUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj E))) :=
     ((Q.map_comp _ _).symm.trans (congrArg Q.map he)).symm ▸ hE'
   exact (isIso_comp_left_iff _ _).mp hh
 
@@ -51,14 +51,14 @@ lemma completionClosedKernelExInfinity_toPoint_isIso (r : ℕ)
 使われ方：元の相対 fiber 比較の可縮な角。 -/
 lemma completionClosedKernelExInfinity_homotopy_subsingleton (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ)
-    (x : (exInfinity.obj (Fibration.Relative.closedKernelRealization
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
       (completionImageClosedPredicate r ι f hf))) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (exInfinity.obj (Fibration.Relative.closedKernelRealization
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
         (completionImageClosedPredicate r ι f hf))) n x) := by
-  let : KanComplex (exInfinity.obj (Fibration.Relative.closedKernelRealization
-    (completionImageClosedPredicate r ι f hf))) := exInfinity_kanComplex _
+  let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (Fibration.Relative.closedKernelRealization
+    (completionImageClosedPredicate r ι f hf))) := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   exact Fibration.kanHomotopy_subsingleton_of_toPoint_localized_isIso _
     (completionClosedKernelExInfinity_toPoint_isIso r ι f hf) n x
 

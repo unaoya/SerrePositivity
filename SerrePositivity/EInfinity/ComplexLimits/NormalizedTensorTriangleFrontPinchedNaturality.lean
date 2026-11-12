@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -26,7 +26,7 @@ lemma normalizedTensorTriangleFront_pullback_map {n m : ℕ}
       normalizedTensorTriangleFront A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) (τ.comp θ.toOrderHom) := by
   unfold normalizedTensorTriangleFront
-  rw [Simplex.pullback_comp, coneTriangleFrontIndex_reindex, ← Simplex.pullback_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp, coneTriangleFrontIndex_reindex, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp,
     normalizedTensorConeSimplex_pullback_map]
 
 lemma normalizedTensorTrianglePinched_pullback_map {n m : ℕ}
@@ -40,14 +40,14 @@ lemma normalizedTensorTrianglePinched_pullback_map {n m : ℕ}
   change (normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋m⦌)
       ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) =
     (((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).pullback θ) at hn
-  have he := congrArg (fun p : (DGNerve.pinchedHom A (Complex A) X Y) _⦋m⦌ => p.val) hn.symm
+  have he := congrArg (fun p : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X Y) _⦋m⦌ => p.val) hn.symm
   change (((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋n⦌) c).val.pullback
-      (InfinityCategories.PinchedHom.extendOrderHom θ.toOrderHom)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom θ.toOrderHom)) =
     ((normalizedTensorElementPinchedMap A X Y).app (Opposite.op ⦋m⦌)
       ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val at he
   unfold normalizedTensorTrianglePinched
-  rw [Simplex.pullback_comp, coneTriangleBackIndex_reindex, ← Simplex.pullback_comp]
-  exact congrArg (fun s : Simplex A (Complex A) (m + 1) =>
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp, coneTriangleBackIndex_reindex, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp]
+  exact congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (m + 1) =>
     s.pullback (coneTriangleBackIndex (τ.comp θ.toOrderHom))) he
 
 end SerrePositivity.EInfinity.ComplexLimits

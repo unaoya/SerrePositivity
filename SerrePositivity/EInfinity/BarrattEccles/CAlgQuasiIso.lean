@@ -24,7 +24,7 @@ variable (A : Type u) [CommRing A]
 
 lemma algebraCAlgSource_map_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
     (hf : QuasiIso f.hom) :
-    IsInvertibleEdge ((nerve.edgeMk f).map (algebraCAlgSource A)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk f).map (algebraCAlgSource A)).toTruncated := by
   let g := (cofibrantAlgebraDKReplacement A).map f
   have hg : (cofibrantAlgebraRelativeCategory A).weakEquivalences g := by
     let := modelCategory A
@@ -32,10 +32,10 @@ lemma algebraCAlgSource_map_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
   have h := cAlgLocalizationSource_inverts A
     (show ComposableArrows.mk₁ g ∈ weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
       ⟨_, _, g, hg, rfl⟩)
-  change IsInvertibleEdge (X := CAlg_R A) ((edgeOfSimplex (ComposableArrows.mk₁ g)).map
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := CAlg_R A) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ g)).map
     ((truncation 2).map (cAlgLocalizationSource A))) at h
-  apply (isInvertibleEdge_congr
-    (e := (edgeOfSimplex (ComposableArrows.mk₁ g)).map
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ g)).map
       ((truncation 2).map (cAlgLocalizationSource A)))
     (f := ((nerve.edgeMk f).map (algebraCAlgSource A)).toTruncated) ?_).mp h
   change (cAlgLocalizationSource A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ g) =
@@ -45,7 +45,7 @@ lemma algebraCAlgSource_map_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
     rfl rfl (by simp only [eqToHom_refl, Category.id_comp, Category.comp_id]; rfl)
 
 def cAlgVertexIsoOfQuasiIso {X Y : (operad A).Algebra} (f : X ⟶ Y)
-    (hf : QuasiIso f.hom) : VertexIso (cAlgVertex A X) (cAlgVertex A Y) := by
+    (hf : QuasiIso f.hom) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A X) (cAlgVertex A Y) := by
   have := algebraCAlgSource_map_weak A f hf
   exact (algebraCAlgSource_vertexIso A X).symm ≪≫
     asIso (Truncated.HomotopyCategory.homMk

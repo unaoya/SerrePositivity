@@ -19,14 +19,14 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   (P : DGKappaPerfectInput R D I) (Q : DGKappaPerfectInput R D J)
   (T : DGKappaPerfectInput R D K)
 local instance suspensionChoiceCoherenceStable (L : DGKappaConeInput R D κ) :
-    IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R D L) := dgKappaSuspensionInfinity_isStable R D L
 
 /-- 同一選択の実下降比較は、元の実商の恒等関手と同型。 -/
 def dgKappaSuspensionChoiceMap_selfIso :
-    FunctorIso (dgKappaSuspensionChoiceMap R D I I P P)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionChoiceMap R D I I P P)
       (𝟙 (dgKappaSuspensionInfinity R D I)) := by
   apply dgKappaSuspensionFunctorIso_of_precomp R D I _ _ _
-    (dgKappaSuspensionChoiceMap_isExact R D I I P P) (isExactFunctor_id _)
+    (dgKappaSuspensionChoiceMap_isExact R D I I P P) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_id _)
   have e := (dgKappaSuspensionChoiceMap_facIso R D I I P P) ≪≫
     (dgKappaConeChoiceEquivalence_selfIso R D I).postcomp
       (dgKappaSuspensionProjection R D I)
@@ -34,21 +34,21 @@ def dgKappaSuspensionChoiceMap_selfIso :
 
 /-- 三つの選択の実下降射は、同じ cone 比較の合成二胞体と整合する。 -/
 def dgKappaSuspensionChoiceMap_compIso :
-    FunctorIso (dgKappaSuspensionChoiceMap R D I J P Q ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionChoiceMap R D I J P Q ≫
       dgKappaSuspensionChoiceMap R D J K Q T) (dgKappaSuspensionChoiceMap R D I K P T) := by
   let F := dgKappaSuspensionChoiceMap R D I J P Q
   let G := dgKappaSuspensionChoiceMap R D J K Q T
   let H := dgKappaSuspensionChoiceMap R D I K P T
-  let : IsExactFunctor F := dgKappaSuspensionChoiceMap_isExact R D I J P Q
-  let : IsExactFunctor G := dgKappaSuspensionChoiceMap_isExact R D J K Q T
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F := dgKappaSuspensionChoiceMap_isExact R D I J P Q
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor G := dgKappaSuspensionChoiceMap_isExact R D J K Q T
   apply dgKappaSuspensionFunctorIso_of_precomp R D I _ (F ≫ G) H
-    (isExactFunctor_comp F G) (dgKappaSuspensionChoiceMap_isExact R D I K P T)
-  have e₀ : FunctorIso (dgKappaSuspensionProjection R D I ≫ (F ≫ G))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp F G) (dgKappaSuspensionChoiceMap_isExact R D I K P T)
+  have e₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionProjection R D I ≫ (F ≫ G))
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         (dgKappaSuspensionProjection R D J ≫ G)) := by
     simpa only [Category.assoc, F] using!
       (dgKappaSuspensionChoiceMap_facIso R D I J P Q).postcomp G
-  have e₁ : FunctorIso
+  have e₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         (dgKappaSuspensionProjection R D J ≫ G))
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
@@ -57,7 +57,7 @@ def dgKappaSuspensionChoiceMap_compIso :
     simpa only [G] using!
       (dgKappaSuspensionChoiceMap_facIso R D J K Q T).precomp
         (dgKappaConeChoiceEquivalence R D I J).hom
-  have e₂ : FunctorIso
+  have e₂ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKappaConeChoiceEquivalence R D I J).hom ≫
         ((dgKappaConeChoiceEquivalence R D J K).hom ≫
           dgKappaSuspensionProjection R D K))
@@ -78,6 +78,6 @@ theorem dgKappaSuspensionChoiceParameterIso_precomp {S U : SSet.{max (u + 1) v}}
     (a : S ⟶ dgKappaSuspensionInfinity R D I) (r : U ⟶ S) :
     (dgKappaSuspensionChoiceParameterIso R D I J K P Q T a).precomp r =
       dgKappaSuspensionChoiceParameterIso R D I J K P Q T (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 end SerrePositivity.KST.NonConnective

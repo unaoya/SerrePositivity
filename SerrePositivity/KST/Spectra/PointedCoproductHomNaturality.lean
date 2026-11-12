@@ -36,14 +36,14 @@ lemma pointedCoproductHomIso_natural (S : Type u) (P : PointedSimplicialSet.{u})
       (pointedCoproductHomIso S P Y).hom ≫ SimplicialFunctionComplex.pointedPost S
         (PointedObject.basedHomMap P (Y := Y) (Z := Z) p) := by
   apply Under.UnderMorphism.ext
-  apply _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.hom_ext
   intro s
   change ((PointedObject.basedHomMap (∐ fun (_ : S) ↦ P) (Y := Y) (Z := Z) p).right ≫
       (pointedCoproductHomUnderlyingIso S P Z).hom) ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S (PointedObject.basedHom P Z).right s =
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S (PointedObject.basedHom P Z).right s =
     ((pointedCoproductHomUnderlyingIso S P Y).hom ≫ SimplicialFunctionComplex.post S
       (PointedObject.basedHomMap P (Y := Y) (Z := Z) p).right) ≫
-        _root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval S (PointedObject.basedHom P Z).right s
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval S (PointedObject.basedHom P Z).right s
   rw [Category.assoc, pointedCoproductHomUnderlyingIso_eval, Category.assoc,
     SimplicialFunctionComplex.post_eval, ← Category.assoc,
     pointedCoproductHomUnderlyingIso_eval]

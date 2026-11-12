@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.DiagramQuotient
-public import SerrePositivity.InfinityCategories.Kan.SmallSimplicialValue
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SmallSimplicialValue
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.UniverseLiftAnodyneReflection
 
@@ -44,20 +44,20 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 
 namespace SerrePositivity.SimplicialModel.SmallDiagramQuotient
 variable {D : Type uD} [Category.{vD} D] {F : D ⥤ SSet.{max w v}}
-  (R : DiagramQuotient.Congruence F)
+  (R : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence F)
   (hsmall : ∀ d n, Small.{v} (Quotient (R.rel d n)))
 
 lemma total_small (d : D) (n : SimplexCategoryᵒᵖ) :
-    Small.{v} (Quotient ((DiagramQuotient.total F).rel d n)) := by
-  have : Subsingleton (Quotient ((DiagramQuotient.total F).rel d n)) :=
-    DiagramQuotient.total_subsingleton d n
+    Small.{v} (Quotient ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total F).rel d n)) := by
+  have : Subsingleton (Quotient ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total F).rel d n)) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total_subsingleton d n
   infer_instance
 
 /-- Total erasure preserves homotopy only with an additional lifting certificate. -/
 lemma total_boundary_rlp (F : D ⥤ SSet.{w}) (d : D)
     (hF : (MorphismProperty.monomorphisms SSet.{w}).rlp (terminal.from (F.obj d))) :
-    SSet.modelCategoryQuillen.I.rlp ((DiagramQuotient.projection
-      (DiagramQuotient.total F)).app d) := by
+    SSet.modelCategoryQuillen.I.rlp ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total F)).app d) := by
   rw [← SSet.rlp_monomorphisms]
   intro A B j hj
   have : HasLiftingProperty j (terminal.from (F.obj d)) := hF j hj
@@ -69,23 +69,23 @@ lemma total_boundary_rlp (F : D ⥤ SSet.{w}) (d : D)
   funext n
   apply ConcreteCategory.hom_ext
   intro x
-  exact (DiagramQuotient.total_subsingleton (F := F) d n).elim _ _
+  exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.total_subsingleton (F := F) d n).elim _ _
 
 abbrev functor : D ⥤ SSet.{v} :=
-  SmallSimplicialValue.shrinkDiagram (DiagramQuotient.functor R) hsmall
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.shrinkDiagram (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor R) hsmall
 
 def projection : F ⟶ functor R hsmall ⋙ SSet.uliftFunctor.{max w v, v} :=
-  DiagramQuotient.projection R ≫
-    (SmallSimplicialValue.diagramLiftIso (DiagramQuotient.functor R) hsmall).inv
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection R ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.diagramLiftIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.functor R) hsmall).inv
 
 variable (hboundary : ∀ d, SSet.modelCategoryQuillen.I.rlp
-  ((DiagramQuotient.projection R).app d))
+  ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection R).app d))
 
 include hboundary in
 lemma projection_mono_rlp (d : D) :
     (MorphismProperty.monomorphisms SSet.{max w v}).rlp ((projection R hsmall).app d) := by
   have hp : (MorphismProperty.monomorphisms SSet.{max w v}).rlp
-      ((DiagramQuotient.projection R).app d) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection R).app d) := by
     rw [SSet.rlp_monomorphisms]
     exact hboundary d
   exact (MorphismProperty.monomorphisms _).rlp.comp_mem _ _ hp

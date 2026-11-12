@@ -22,14 +22,14 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 /-- 全 Hom 上の元の構造比較を、普遍的な交換符号区間から作った基点固定有限鎖で実現する。 -/
 lemma kanAdjointParameterLeft_basedChain (X Y : OmegaSpectrum.{u}) (n : ℕ) :
     PointedMapping.VerticalChain (PointedObject.toPoint
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space))
       (kanAdjointParameterLeft X Y n ≫
         pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n)
       (kanAdjointParameterLeft X Y (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space) := by
-  have hs := PointedMapping.VerticalChain.basedIhomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  have hs := PointedMapping.VerticalChain.basedIhomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     (KanSequence.kanAdjoint_signedLoopTail_basedChain Y.toKanSequence_omega n)
   have h := hs.pre (pointedEvaluation X Y.toKanSequence n ≫
     suspensionHom (X.level n).space (Y.level n).space)

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.SimplicialValueFiber
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber
 public import SerrePositivity.EInfinity.Hammock.WeakFiniteUnion
 
 /-!
@@ -26,7 +26,7 @@ def subcomplex (s : Set B) : X.Subcomplex where
   obj n := {x | ℓ.app n x ∈ s}
   map θ := fun x hx => by
     change ℓ.app _ (X.map θ x) ∈ s
-    rw [SimplicialValueFiber.value_simplex]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.value_simplex]
     exact hx
 
 lemma subcomplex_empty : subcomplex ℓ ∅ = ⊥ := rfl
@@ -45,7 +45,7 @@ lemma subcomplex_disjoint {s t : Set B} (h : Disjoint s t) :
   rw [← subcomplex_inter, Set.disjoint_iff_inter_eq_empty.mp h, subcomplex_empty]
 
 def singletonFiberIso (β : B) : (subcomplex ℓ {β}).toFunctor ≅
-    SimplicialValueFiber.space ℓ β :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.space ℓ β :=
   NatIso.ofComponents (fun _ => Equiv.toIso
     { toFun x := ⟨x.val, x.property⟩
       invFun x := ⟨x.val, x.property⟩
@@ -60,7 +60,7 @@ lemma mapsTo (s : Set B) :
     ∀ n, Set.MapsTo (f.app n) ((subcomplex ℓ s).obj n) ((subcomplex μ s).obj n) := by
   intro n x hx
   change μ.app n (f.app n x) ∈ s
-  rw [SimplicialValueFiber.value_map ℓ μ f h]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.SimplicialValueFiber.value_map ℓ μ f h]
   exact hx
 
 def restriction (s : Set B) : (subcomplex ℓ s).toFunctor ⟶ (subcomplex μ s).toFunctor :=

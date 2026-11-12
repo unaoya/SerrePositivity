@@ -24,9 +24,9 @@ variable {S : PointedSimplicialSet.{u}} (I : LoopExchangeFamily S)
 variable {Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right)
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right)
   (h' : Y' ⟶ PointedObject.basedHom S Z')
-  (hh' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
+  (hh' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
   (hc : h ≫ PointedObject.basedHomMap S w = v ≫ h')
 
 /-- 元の二交換区間を結び、指定した射影後の正方形への全トレースを保つ相対反映。 -/

@@ -20,8 +20,8 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 主 Perf 作用の同値は、元の実 dg nerve の同値を与える。 -/
 lemma perfectDGMoritaNerve_isQCatEquivalence :
-    IsQCatEquivalence (dgNerve.map (perfectDGExtension A D E F)) :=
-  dgNerve_map_isQCatEquivalence_of_quasiEquivalence (perfectDGExtension A D E F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGExtension A D E F)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence (perfectDGExtension A D E F)
     (perfectDGExtension_quasiEquivalence A D E F)
 
 /-- 元の実 Perf dg 延長を順方向に保持する、完全な安定入力の同値。 -/
@@ -29,7 +29,7 @@ def perfectDGMoritaStableEquivalence :
     StableModelEquivalence (perfectDGStableModel A D Set.univ)
       (perfectDGStableModel A E Set.univ) := by
   let e := (perfectDGMoritaNerve_isQCatEquivalence A D E F).choose
-  let : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
   exact ⟨perfectDGStableMap A D E F,
     ⟨e.inv, preservesCofiberData_of_isExactFunctor e.inv⟩, e.homInvIso, e.invHomIso⟩
 

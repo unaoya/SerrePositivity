@@ -18,10 +18,10 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (z : C) (hz : IsZero (ForgetEnrichment.of (Complex R) z))
 
 /-- 元の閉零対象と同じ右成分・零比較を保持する実 gluing 対象。 -/
-def dgGluingRightAxisObject (d : D) : DGGluingObject R C D M := ⟨z, d, 0⟩
+def dgGluingRightAxisObject (d : D) : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M := ⟨z, d, 0⟩
 
 /-- 元の d を同じ (0,d,0) へ送る、全 Hom を持つ実 dg 包含。 -/
-def dgGluingRightAxis : DGFunctor R D (DGGluingObject R C D M) :=
+def dgGluingRightAxis : DGFunctor R D (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M) :=
   dgStrictGluingFunctor R C D M (dgClosedZeroFunctor R z hz D) (DGFunctor.id D)
     (fun _ => 0) (fun _ y => (dgRepresentableClosedZeroHom R z hz (M.rightAt y)).eq_of_tgt _ _)
 
@@ -31,13 +31,13 @@ lemma dgGluingRightAxis_obj (d : D) :
 
 /-- 同じ右射影との合成は、元の右圏の恒等 dg 関手そのもの。 -/
 lemma dgGluingRightAxis_right :
-    (dgGluingRightAxis R C D M z hz).comp (dgGluingRight R C D M) = DGFunctor.id D :=
+    (dgGluingRightAxis R C D M z hz).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M) = DGFunctor.id D :=
   dgStrictGluingFunctor_right R C D M (dgClosedZeroFunctor R z hz D) (DGFunctor.id D)
     (fun _ => 0) (fun _ y => (dgRepresentableClosedZeroHom R z hz (M.rightAt y)).eq_of_tgt _ _)
 
 /-- 同じ左射影との合成は、元の閉零対象値の実 dg 零関手。 -/
 lemma dgGluingRightAxis_left :
-    (dgGluingRightAxis R C D M z hz).comp (dgGluingLeft R C D M) =
+    (dgGluingRightAxis R C D M z hz).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D M) =
       dgClosedZeroFunctor R z hz D :=
   dgStrictGluingFunctor_left R C D M (dgClosedZeroFunctor R z hz D) (DGFunctor.id D)
     (fun _ => 0) (fun _ y => (dgRepresentableClosedZeroHom R z hz (M.rightAt y)).eq_of_tgt _ _)

@@ -44,7 +44,7 @@ lemma exists_projection_contraction_of_trace_identity [KanComplex B.right]
       (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ K.h =
         fst (∂Δ[1] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ (boundary 1).ι ≫ P.path ≫
           (PointedObject.basedHomMap T p).right := by
-  let homKan : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  let homKan : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact exists_loop_contraction_of_homMk_eq_id (projectionLoop p P he) h
 
 /-- 射影 loop の恒等性は、元の構造区間を同じ端点を固定して垂直化できることと同値。 -/
@@ -55,7 +55,7 @@ lemma trace_identity_iff_vertical_deformation [KanComplex B.right]
     (∃ Q : VerticalPath p f g, ∃ V : SSet.Homotopy P.path Q.path,
       (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ V.h =
         fst (∂Δ[1] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ (boundary 1).ι ≫ P.path) := by
-  let homKan : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  let homKan : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   constructor
   · intro h
     exact (projection_contraction_iff_vertical_deformation p hp P).1

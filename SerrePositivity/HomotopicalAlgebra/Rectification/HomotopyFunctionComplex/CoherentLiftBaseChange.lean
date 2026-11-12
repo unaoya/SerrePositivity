@@ -45,7 +45,7 @@ def strict {X Y : ResolutionObject C} {f g : X.base ⟶ Y.base} (h : f = g)
   ⟨k.val, k.property.trans h⟩
 
 def tuples {X Y : ResolutionObject C} {f g : X.base ⟶ Y.base} (h : f = g) :
-    CoherentLiftTuples.obj X Y f ⟶ CoherentLiftTuples.obj X Y g := VertexTuples.map (strict h)
+    CoherentLiftTuples.obj X Y f ⟶ CoherentLiftTuples.obj X Y g := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (strict h)
 
 variable [ModelCategory SSet.{v}]
   (hcof : cofibrations SSet.{v} = MorphismProperty.monomorphisms _)

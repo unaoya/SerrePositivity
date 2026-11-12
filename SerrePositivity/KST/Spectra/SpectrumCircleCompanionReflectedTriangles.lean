@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance companionReflectedTrianglesSimplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -25,8 +25,8 @@ local instance companionReflectedTrianglesHomKan (X Y : OmegaSpectrum.{u}) :
 
 /-- 元の共通解像の全切断を左射影した、同じ Hom の反転係数上の全切断。 -/
 def circleCompanionBKReflectedSection (z : Sp.{u} _⦋0⦌) :=
-  circleCompanionBKEdgewiseSection z ≫ diagramEdgewiseLeft
-    (simplicialHomDiagram
+  circleCompanionBKEdgewiseSection z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.diagramEdgewiseLeft
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
       (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val))
@@ -34,11 +34,11 @@ def circleCompanionBKReflectedSection (z : Sp.{u} _⦋0⦌) :=
 /-- この全切断は、元の companion 点を同じ end の反転比較へ送った点の uncurry。 -/
 lemma circleCompanionBKReflectedSection_uncurry (z : Sp.{u} _⦋0⦌) :
     circleCompanionBKReflectedSection z =
-      (ρ_ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))).inv ≫
-        weightedSectionsUncurry (circleCompanionBKEndPointMap z ≫
+      (ρ_ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))).inv ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (circleCompanionBKEndPointMap z ≫
           circleCompanionBKReflection (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
   rw [circleCompanionBKReflectedSection, circleCompanionBKEdgewiseSection,
-    Category.assoc, ← weightedSectionsUncurry_postcomp]
+    Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_postcomp]
   rfl
 
 /-- uncurry に使った点は、既存の companion の反転 end の点に厳密一致する。 -/
@@ -51,11 +51,11 @@ lemma circleCompanionBKReflectedSection_point (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の reflected 全切断の各初区間から作る、実際の weighted 錐の三角形。 -/
 def circleCompanionReflectedTriangle (z : Sp.{u} _⦋0⦌) (k : WalkingPair) :=
-  weightedConeSimplex
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeSimplex
     (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
     (cotensor PointedSimplicialSet.circle
       (nativeCotensorInput PointedSimplicialSet.circle z).val)
-    (prefixOverWeight (LoopEdgewiseSection.arrow k) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.prefixOverWeight (LoopEdgewiseSection.arrow k) ≫
       Functor.whiskerLeft (LoopEdgewiseSection.arrow k) (circleCompanionBKReflectedSection z))
 
 /-- 元の weighted 錐の三角形の trace は、元の解像三単体の左辺そのもの。 -/

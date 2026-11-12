@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalRelativeMatching
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.ModelCompatibility
-public import SerrePositivity.InfinityCategories.ModelBridge.R72.DiagonalRelativeMatching
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.DiagonalRelativeMatching
 
 /-!
 # 各行が弱同値である二重単体写像の対角も弱同値となる
@@ -60,7 +60,7 @@ lemma relativeMatching_fibration {Z Y : SSet.{v}} (p : Z ⟶ Y) [Fibration p] (n
     infer_instance
   have h := HasQuillenPullbackHom.fibration (SSet.boundary.{v} n).ι p
     (boundaryPullbackHom p n) hi inferInstance
-  exact ((fibrations SSet.{v}).arrow_iso_iff (relativeMatchingArrowIso p n)).mpr
+  exact ((fibrations SSet.{v}).arrow_iso_iff (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.relativeMatchingArrowIso p n)).mpr
     (mem_fibrations (boundaryPullbackHom p n).π)
 
 include hcof hfib in
@@ -75,7 +75,7 @@ lemma relativeMatching_weakEquivalence {Z Y : SSet.{v}} (p : Z ⟶ Y)
     infer_instance
   have h := HasQuillenPullbackHom.weakEquivalence (SSet.boundary.{v} n).ι p
     (boundaryPullbackHom p n) hi inferInstance (Or.inr inferInstance)
-  exact ((weakEquivalences SSet.{v}).arrow_iso_iff (relativeMatchingArrowIso p n)).mpr
+  exact ((weakEquivalences SSet.{v}).arrow_iso_iff (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72.relativeMatchingArrowIso p n)).mpr
     (mem_weakEquivalences (boundaryPullbackHom p n).π)
 
 include hcof hfib in

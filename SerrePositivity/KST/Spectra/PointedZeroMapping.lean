@@ -28,7 +28,7 @@ lemma source_hom_ext (Z Y : PointedSimplicialSet.{u}) [IsIso Z.hom]
   apply (cancel_mono (PointedObject.basedHomι Z Y)).mp
   apply MonoidalClosed.uncurry_injective
   apply (cancel_epi (Z.hom ▷ A)).mp
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.uncurry_basepoint]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.uncurry_basepoint]
 
 /-- 零対象からの点つき写像単体集合は終対象。 -/
 def source_isTerminal (Z Y : PointedSimplicialSet.{u}) [IsIso Z.hom] :

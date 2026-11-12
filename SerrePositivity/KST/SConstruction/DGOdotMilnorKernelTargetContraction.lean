@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorRightAxisInverseRotationYoneda
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorFlatKernelNullSquare
 public import SerrePositivity.DifferentialGraded.Bimodule.Right
-public import SerrePositivity.InfinityCategories.Core.TerminalTransport
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
 
 /-!
 概要：実第二 graph の厚核制限を同じ加群として保持し、各対象の収縮を証明する。
@@ -17,16 +17,16 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 private lemma contractibleOfComparison {A : Type u} [CommRing A]
     {C E : Type v} [DGCategory A C] [DGCategory A E]
-    (F G : DGFunctor A C E) (e : FunctorIso (dgNerve.map F) (dgNerve.map G))
+    (F G : DGFunctor A C E) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map F) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G))
     (x : C) (hG : ∃ h : GradedHom A (G.obj x) (G.obj x) (-1),
       (homObject A E (G.obj x) (G.obj x)).d (-1) 0 h = (unitElement A (G.obj x)).val) :
     ∃ h : GradedHom A (F.obj x) (F.obj x) (-1),
       (homObject A E (F.obj x) (F.obj x)).d (-1) 0 h = (unitElement A (F.obj x)).val := by
   obtain ⟨h, dh⟩ := hG
-  have hy := dgNerve_contractingElement_isZeroVertex _ h dh
-  have ex := e.app (DGNerve.Simplex.vertex x)
-  simp only [dgFunctorNerve_vertex] at ex
-  exact dgNerve_exists_contractingElement_of_isTerminalVertex _ (hy.2.of_vertexIso ex.symm)
+  have hy := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_contractingElement_isZeroVertex _ h dh
+  have ex := e.app (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at ex
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_exists_contractingElement_of_isTerminalVertex _ (hy.2.of_vertexIso ex.symm)
 
 private lemma mapContractible {A : Type u} [CommRing A]
     {C : Type v} {E : Type w} [DGCategory A C] [DGCategory A E]
@@ -42,9 +42,9 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "P" => DGCategoryCellResolution.Source R (B)
 local notation "I" => dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))
-local notation "K" => resolvedDGQuotientThickFlatKernel R (B) (I)
-local notation "Q" => DGQuotient.QuotientObject (P) (resolvedDGNullObjects R (B) (I))
-local notation "k" => resolvedDGQuotientThickFlatKernelInclusion R (B) (I)
+local notation "K" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernel R (B) (I)
+local notation "Q" => DGQuotient.QuotientObject (P) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B) (I))
+local notation "k" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientThickFlatKernelInclusion R (B) (I)
 local notation "q" => dgOdotMilnorResolvedInclusion R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
 
@@ -83,15 +83,15 @@ lemma dgOdotMilnorKernelTarget_objectwise_projective (x : K) :
 方針：同じ実逆回転の二つの保存済み全比較を合成して制限する。
 規約：厳密 dg 自然同型と同一視しない。使われ方：各対象の零性の移送。 -/
 def dgOdotMilnorKernelTargetYonedaComparison :
-    FunctorIso (dgNerve.map (dgOdotMilnorKernelTargetFamily R d))
-      (dgNerve.map ((k).comp ((q).comp (dgYoneda R (Q))))) := by
-  let e := FunctorIso.precomp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotMilnorKernelTargetFamily R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((k).comp ((q).comp (dgYoneda R (Q))))) := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp
     ((dgOdotMilnorRightAxisInverseRotationRealizedNerveComparison R d).symm.trans
-      (dgOdotMilnorRightAxisInverseRotationYonedaComparison R d)) (dgNerve.map (k))
-  have ha : dgNerve.map (k) ≫ dgNerve.map (dgPerfectModuleUnderlying R (Q) (G)) =
-      dgNerve.map (dgOdotMilnorKernelTargetFamily R d) :=
-    (dgNerve.map_comp _ _).symm
-  exact F2.functorIsoOfEq e ha (dgNerve.map_comp _ _).symm
+      (dgOdotMilnorRightAxisInverseRotationYonedaComparison R d)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (k))
+  have ha : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (k) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectModuleUnderlying R (Q) (G)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotMilnorKernelTargetFamily R d) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ _).symm
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e ha (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ _).symm
 
 /-- 概要：Γ の各対象には実加群 Hom の収縮元がある。
 方針：同じ商 ε の零頂点性を全比較の成分で移す。

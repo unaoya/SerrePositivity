@@ -1,13 +1,13 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Filtered.FilteredDiagonalCofinality
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.FilteredDiagonalCofinality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.WeakContractibilityNonempty
 
 /-!
 概要：filtered 性と κ-filtered 性を coslice の弱可縮性・対角関手の cofinality で特徴付ける。
 方針：十分性には coslice の非空性から元の余錐を回収し、必要性には構成済みの弱可縮性を使う。
 規約：一般の有限・κ-small な単体集合の図式を試験する。
-使われ方：Kerodon 9.1.1.18、filtered 余極限の添字の変更。
+使われ方：Kerodon 9.1.1.18（Tag 02PJ）、filtered 余極限の添字の変更。
 -/
 
 @[expose] public section
@@ -45,7 +45,7 @@ lemma isKappaFiltered_iff_weaklyContractible_coslices {κ : Cardinal.{u}} (hκ :
 
 /-- 概要：filtered ∞ 圏は有限形状への全ての対角関手が right cofinal なものに等しい。
 方針：coslice の弱可縮性の判定を対角関手の標準 comma の判定と合成する。
-規約：有限形状の quasicategory 性は不要。使われ方：Kerodon 9.1.1.18。 -/
+規約：有限形状の quasicategory 性は不要。使われ方：Kerodon 9.1.1.18（Tag 02PJ）。 -/
 lemma isFilteredInfinity_iff_constantDiagram_rightCofinal (C : SSet.{u}) [Quasicategory C] :
     IsFilteredInfinity C ↔ ∀ (K : SSet.{u}) [K.Finite],
       IsRightCofinal (constantDiagram K C) := by

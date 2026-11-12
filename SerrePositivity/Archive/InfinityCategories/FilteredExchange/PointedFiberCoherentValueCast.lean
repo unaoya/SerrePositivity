@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalSourceValueTo
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedCoherentFiberComparison
 
 /-!
 概要：実頂点の値を coherent 頂点へ戻しても、同じ標準 Kan 値への射を保持する。

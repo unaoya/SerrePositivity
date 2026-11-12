@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyDown
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseHomotopyDown
 
 /-!
 概要：ホモトピー圏の宇宙下降は元の単体集合の射の作用と可換。

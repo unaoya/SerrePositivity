@@ -57,11 +57,11 @@ abbrev obj := colimit (diagram S ⋙ A)
 abbrev inclusion : obj S A ⟶ A.obj n :=
   HomPresentation.tensorMap (diagram S) A (simplexCocone S)
 
-abbrev homEquiv (Y : C) : (S.toSSet ⟶ (cosimplicialHom A).obj Y) ≃ (obj S A ⟶ Y) :=
+abbrev homEquiv (Y : C) : (S.toSSet ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ (obj S A ⟶ Y) :=
   NonsingularPresentation.homEquiv S.toSSet A Y
 
 lemma hasLiftingProperty {Y Z : C} (p : Y ⟶ Z) [HasLiftingProperty (inclusion S A) p] :
-    HasLiftingProperty S.ι ((cosimplicialHom A).map p) := by
+    HasLiftingProperty S.ι ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) := by
   have : HasLiftingProperty (HomPresentation.tensorMap (diagram S) A (simplexCocone S)) p :=
     inferInstanceAs (HasLiftingProperty (inclusion S A) p)
   have h := HomPresentation.hasLiftingProperty (diagram S)

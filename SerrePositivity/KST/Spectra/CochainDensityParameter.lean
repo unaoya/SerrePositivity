@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.TotalizationFibration
 universe u
 
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -58,8 +58,8 @@ lemma fromCochains_preParameter
   intro i
   apply Family.ext
   intro n
-  change (weightedSectionsUncurry ((SSet.stdSimplex.obj n ◁ f) ≫ s.app n)).app i = _
-  rw [weightedSectionsUncurry_precomp]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry ((SSet.stdSimplex.obj n ◁ f) ≫ s.app n)).app i = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp]
   rfl
 
 /-- 概要：通常の Tot と重みの end の Hom の同値はパラメーターへの前合成と可換。
@@ -70,16 +70,16 @@ lemma totalizationEndHomEquiv_pre (W H : I ⥤ SSet.{u}) (f : A ⟶ B)
     (s : B ⟶ CosimplicialTotalization.obj
       (UnderlyingWeightedCochains.obj (discreteLevels W) H)) :
     totalizationEndHomEquiv W H A (f ≫ s) = f ≫ totalizationEndHomEquiv W H B s := by
-  change weightedSectionsLift (diagramDiagonal
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (diagramDiagonal
       (fromCochains (CosimplicialTotalization.uncurry (f ≫ s)))) =
-    f ≫ weightedSectionsLift (diagramDiagonal
+    f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (diagramDiagonal
       (fromCochains (CosimplicialTotalization.uncurry s)))
   rw [CosimplicialTotalization.uncurry_pre, fromCochains_preParameter,
     diagramDiagonal_preParameter]
-  apply (weightedSectionsHomEquiv W H A).injective
-  change weightedSectionsUncurry (weightedSectionsLift _) = weightedSectionsUncurry (_ ≫ _)
-  rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_lift,
-    weightedSectionsUncurry_lift]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv W H A).injective
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift _) = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (_ ≫ _)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
 
 end
 

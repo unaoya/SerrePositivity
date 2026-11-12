@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.FixedFractionEvaluation
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalHomotopySection
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalHomotopySection
 
 /-!
 概要：両端固定の分数評価を元の右 pinched 写像空間へ移す。
@@ -20,18 +20,18 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {X Q : SSet.{u}} [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌))
-  (hF : InvertsEdges F W) (x y : X _⦋0⦌)
+  (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F W) (x y : X _⦋0⦌)
 
 def fixedFractionPinchedEvaluation : fixedMarkedSpans X W x y ⟶
-    pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) :=
-  Classical.choose (pinchedHomToIntervalMappingSpace_exists_homotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y) :=
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_exists_homotopy
     (fixedFractionEvaluation F W hF x y))
 
 def fixedFractionPinchedComparisonHomotopy : SSet.Homotopy
     (fixedFractionPinchedEvaluation F W hF x y ≫
-      pinchedHomToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (F.app (Opposite.op ⦋0⦌) x) (F.app (Opposite.op ⦋0⦌) y))
     (fixedFractionEvaluation F W hF x y) :=
-  Classical.choice (Classical.choose_spec (pinchedHomToIntervalMappingSpace_exists_homotopy
+  Classical.choice (Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_exists_homotopy
     (fixedFractionEvaluation F W hF x y)))
 
 end SerrePositivity.KST.LocalizingInvariants

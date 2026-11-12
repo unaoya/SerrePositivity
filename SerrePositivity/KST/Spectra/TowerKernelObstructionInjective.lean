@@ -42,7 +42,7 @@ theorem kernelObstruction_injective
   obtain ⟨A, hA⟩ := exists_compatible_relStruct_of_differenceFamily_eq X p r
     (projectedSimplex X p r s) (projectedSimplex X p r t)
     (projectedSimplex_comp X p r s) (projectedSimplex_comp X p r t) R' S hR'
-  have hm := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound (limitRelStruct X p r s t A hA)
+  have hm := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound (limitRelStruct X p r s t A hA)
   apply Subtype.ext
   exact (kernelSphereRepresentative_mk X p r b).symm.trans
     (hm.trans (kernelSphereRepresentative_mk X p r c))

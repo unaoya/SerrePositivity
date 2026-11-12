@@ -42,16 +42,16 @@ def normalizedPre (d f : X _⦋1⦌) (h₁ : X.δ 1 s = d) (h₀ : X.δ 0 s = f)
 
 lemma normalizedPost_arrow (e d : X _⦋1⦌) (h₂ : X.δ 2 s = e) (h₁ : X.δ 1 s = d) :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (post (SSet.yonedaEquiv.symm s)))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (post (SSet.yonedaEquiv.symm s)))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (normalizedPost s e d h₂ h₁))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedPost s e d h₂ h₁))) :=
   HomotopyArrow.congr _ _ rfl
 
 lemma normalizedPre_arrow (d f : X _⦋1⦌) (h₁ : X.δ 1 s = d) (h₀ : X.δ 0 s = f) :
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (pre (SSet.yonedaEquiv.symm s)))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (pre (SSet.yonedaEquiv.symm s)))) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (normalizedPre s d f h₁ h₀))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedPre s d f h₁ h₀))) :=
   HomotopyArrow.congr _ _ rfl
 
 end SerrePositivity.KST.LocalizingInvariants.TriangleEdge

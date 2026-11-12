@@ -54,7 +54,7 @@ def homotopyFixedPointsProjection {G : Type u} [Group G] (A : GroupAction.{u} G)
 使われ方：Goerss–Jardine I §7、BF 1978 §2。有理 Shapiro の各段での検査。 -/
 theorem homotopyFixedPointsProjection_levelwise {G : Type u} [Group G]
     (A : GroupAction.{u} G) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyFixedPointsProjection A).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyFixedPointsProjection A).app n).right :=
   KanSequence.replacementProjection_piIsomorphism (homotopyFixedPointsKan A) n
 
 /-- 概要：余単体 BF 対象の homotopy totalization の実際の BF 対象。

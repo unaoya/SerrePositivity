@@ -26,25 +26,25 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {A U : SSet.{u}} (j : A �
 /-- 隣接する両全円柱の像は、元の比較時刻の両端で厳密に一致する。 -/
 lemma rawComparisonAdjacent_time (n : ℕ) :
     (U ◁ (SSet.boundary 1).ι) ≫ (H (n + 1)).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       (U ◁ (SSet.boundary 1).ι) ≫ (H n).h ≫ RawSpectrumMapping.step X Y n := by
   have ha : (a ≫ RawSpectrumMapping.evaluation X Y (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       (a ≫ RawSpectrumMapping.evaluation X Y n) ≫ RawSpectrumMapping.step X Y n := by
     rw [Category.assoc, RawSpectrumMapping.evaluation_condition]
     simp only [Category.assoc]
   have hb : (b ≫ RawSpectrumMapping.evaluation X Y (n + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       (b ≫ RawSpectrumMapping.evaluation X Y n) ≫ RawSpectrumMapping.step X Y n := by
     rw [Category.assoc, RawSpectrumMapping.evaluation_condition]
     simp only [Category.assoc]
   let K := familyHomotopyEndpointTransport
-    (functorHomotopyPostcomp (H (n + 1))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)) ha.symm hb
-  let L := functorHomotopyPostcomp (H n) (RawSpectrumMapping.step X Y n)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (H (n + 1))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)) ha.symm hb
+  let L := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (H n) (RawSpectrumMapping.step X Y n)
   have h := (HomotopyEndpointComparison.boundary_eq K).trans
     (HomotopyEndpointComparison.boundary_eq L).symm
-  simpa only [K, L, familyHomotopyEndpointTransport_h, functorHomotopyPostcomp,
+  simpa only [K, L, familyHomotopyEndpointTransport_h, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp,
     Category.assoc] using h
 
 /-- 入力境界を固定した隣接円柱の像は、二つの全境界の和で厳密に一致する。 -/
@@ -52,7 +52,7 @@ lemma rawComparisonAdjacent_boundary
     (hr : ∀ n, (j ▷ (Δ[1] : SSet.{u})) ≫ (H n).h =
       fst A Δ[1] ≫ j ≫ a ≫ RawSpectrumMapping.evaluation X Y n) (n : ℕ) :
     fullCylinderBoundaryInclusion j ≫ (H (n + 1)).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       fullCylinderBoundaryInclusion j ≫ (H n).h ≫ RawSpectrumMapping.step X Y n := by
   apply (fullCylinderBoundary_map_iff j _ _).mpr
   constructor

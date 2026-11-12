@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedValueTriangleSquare
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoEndpointTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorVertexEquivPostVertex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightMorphismTransport
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedRightMorphismTransport
 
 /-!
 概要：元の Kan 射の全 Hom 値比較を、同じ辺の普遍輸送の実射で表示する。

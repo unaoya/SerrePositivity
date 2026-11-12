@@ -25,38 +25,38 @@ lemma exists_dgFixedNullCertifiedSquare
     (C : DGQuotient.ContractedFunctor R A Set.univ Q)
     (hC : C.toDGFunctor = i.down.comp q.down) :
     ∃ F : (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1}) ⟶ dgKInputInfinity.{u, v} R,
-      squareBottomEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge i).edge ∧
-      squareRightEdge ≫ F = SSet.yonedaEquiv.symm (coherentNerveEdge q).edge ∧
-      squareLeftEdge ≫ F =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullLeft R (A := A))).edge ∧
-      squareTopEdge ≫ F =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgFixedNullTop R C)).edge ∧
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ F = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge i).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := A))).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ F =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullTop R C)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputNu R) 0 1)) := by
   obtain ⟨F, hb, hr, hl, ht⟩ := exists_dgFixedNullSquare R i q C hC
   refine ⟨F, hb, hr, hl, ht, ?_⟩
-  have hz : squareVertex F 0 1 = coherentNerveVertex (dgFixedNullInput R A) := by
-    have he := squareLeftEdge_target F
-    let le : (dgKInputInfinity.{u, v} R).Edge (coherentNerveVertex A)
-        (coherentNerveVertex (dgFixedNullInput R A)) :=
-      coherentNerveEdge (dgFixedNullLeft R (A := A))
-    have hle : squareLeftEdge ≫ F = SSet.yonedaEquiv.symm le.edge := hl
+  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R A) := by
+    have he := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftEdge_target F
+    let le : (dgKInputInfinity.{u, v} R).Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex A)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgFixedNullInput R A)) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := A))
+    have hle : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm le.edge := hl
     rw [hle, Equiv.apply_symm_apply, le.tgt_eq] at he
     exact he.symm
-  change _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject ((dgKInputNu R).app _ (squareVertex F 0 1)))
-  rw [hz, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject_vertex]
+  change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject ((dgKInputNu R).app _ (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1)))
+  rw [hz, dgKInputNu_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject_vertex]
   exact dgFixedNullInput_isZeroCategory R A
 
 lemma exists_dgOdotCertifiedNullSquare (d : DGOdotInput R) :
     ∃ F : (Δ[1] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R,
-      squareBottomEdge ≫ F =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotDiagonalInputMap R d)).edge ∧
-      squareRightEdge ≫ F =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotProjectionInputMap R d)).edge ∧
-      squareLeftEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullLeft R (A := dgOdotDiagonalSourceInput R d))).edge ∧
-      squareTopEdge ≫ F = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullTop R (dgOdotCompositeContracted R d))).edge ∧
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableObject (squareVertex (F ≫ dgKInputNu R) 0 1)) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ F =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotDiagonalInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F =
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotProjectionInputMap R d)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := dgOdotDiagonalSourceInput R d))).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ F = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullTop R (dgOdotCompositeContracted R d))).edge ∧
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableObject (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (F ≫ dgKInputNu R) 0 1)) :=
   exists_dgFixedNullCertifiedSquare R (dgOdotDiagonalInputMap R d) (dgOdotProjectionInputMap R d)
     (dgOdotCompositeContracted R d) rfl
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImage
-public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorConeIso
 
 /-!
 概要：元 cone image 全比較の閉成分を同じ実 cone image 比較へ回収する。
@@ -12,7 +12,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorConeIso
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma imageDescRecovery
     (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
     (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
@@ -22,11 +22,11 @@ private lemma imageDescRecovery
     (q : Q.onClosed.obj N ⟶ Q.onClosed.obj (moduleCone R D f))
     (eg : g = Q.onClosed.map f) (eq : q = Q.onClosed.map (moduleConeInr R D f))
     (ds : (moduleHom R E (Q.obj M) (Q.obj (moduleCone R D f))).d (-1) 0
-      (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl R D E Q f) =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeInl R D E Q f) =
         (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) (g ≫ q))).val) :
-    moduleConeDescOfBoundary R E g (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl R D E Q f) q ds =
+    moduleConeDescOfBoundary R E g (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeInl R D E Q f) q ds =
       (eqToIso (congrArg (fun t => moduleCone R E t) eg)).hom ≫
-        SerrePositivity.InfinityCategories.dgModuleFunctorConeComparison R D E Q f := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeComparison R D E Q f := by
   cases eg
   cases eq
   simp only [eqToIso_refl, Iso.refl_hom, Category.id_comp]
@@ -35,15 +35,15 @@ variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]
   (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
   (Q : DGFunctor R (RightModule R D) (RightModule R E))
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FQ" => DGFunctor.comp F Q
 local notation "GQ" => DGFunctor.comp G Q
 local notation "CQ" => DGFunctor.comp (CF) Q
-local notation "ηQ" => dgStrictNatTransPostcomp η Q
+local notation "ηQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η Q
 local notation "ν" => dgModuleNaturalConeInr R D F G η
-local notation "νQ" => dgStrictNatTransPostcomp (ν) Q
+local notation "νQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) Q
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "s" => dgModuleNaturalConeImageInput R E D F G η Q
 
@@ -66,7 +66,7 @@ def dgModuleNaturalConeImageInputIso (x : P) :
 lemma dgModuleNaturalConeImage_arrow (x : P) :
     dgModuleNaturalConeArrow R E (CηQ) (CQ) (θ) x =
       (dgModuleNaturalConeImageInputIso R E D F G η Q x).hom ≫
-        SerrePositivity.InfinityCategories.dgModuleFunctorConeComparison R D E Q (a x) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeComparison R D E Q (a x) := by
   exact (dgModuleNaturalConeDesc_arrow R E (FQ) (GQ) (CQ) (ηQ) (νQ) (s)
     (dgModuleNaturalConeImage_boundary R E D F G η Q)
     (dgModuleNaturalConeImageInput_naturality R E D F G η Q) x).trans
@@ -85,5 +85,5 @@ lemma dgModuleNaturalConeImage_isIso (x : P) :
     IsIso (dgModuleNaturalConeArrow R E (CηQ) (CQ) (θ) x) := by
   rw [dgModuleNaturalConeImage_arrow]
   exact Iso.isIso_hom ((dgModuleNaturalConeImageInputIso R E D F G η Q x) ≪≫
-    SerrePositivity.InfinityCategories.dgModuleFunctorConeIso R D E Q (a x))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeIso R D E Q (a x))
 end SerrePositivity.KST.SConstruction

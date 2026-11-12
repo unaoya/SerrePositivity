@@ -21,7 +21,7 @@ open scoped Simplicial
 方針：零頂点での評価の trivial Kan fibration により反映する。
 規約：零次数も含む。使われ方：object S を適用する入力。 -/
 instance equivalenceDiagrams_isStable (n : ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : IsStable (equivalenceDiagrams (Δ[n] : SSet.{u}) C) :=
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (equivalenceDiagrams (Δ[n] : SSet.{u}) C) :=
   isStable_of_trivialKanFibration
     (equivalenceDiagramEvaluation Δ[n] C (stdSimplex.obj₀Equiv.symm 0))
 
@@ -67,7 +67,7 @@ lemma equivalenceDiagramStableConstant_evaluation (n : ℕ) (X : StableModel.{u}
 lemma equivalenceDiagramStableEvaluation_objectS_localized_isIso (n : ℕ)
     (X : StableModel.{u}) : IsIso (AnodyneHomotopy.anodyneQ.map
       (objectSConstructionFunctor.map (equivalenceDiagramStableEvaluation n X))) := by
-  have : TrivialKanFibration (equivalenceDiagramStableEvaluation n X).val :=
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (equivalenceDiagramStableEvaluation n X).val :=
     equivalenceDiagramEvaluation_trivialKanFibration n X.carrier
   exact objectS_map_localized_isIso_of_trivialKanFibration
     (equivalenceDiagramStableEvaluation n X)

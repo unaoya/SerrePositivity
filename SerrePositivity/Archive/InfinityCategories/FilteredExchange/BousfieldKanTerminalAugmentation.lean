@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.BousfieldKanTerminalContraction
-public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.BousfieldKanTerminalContraction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 
 /-!
 概要：終対象を持つ添字では通常の colimit への標準 Bousfield–Kan augmentation は弱同値。

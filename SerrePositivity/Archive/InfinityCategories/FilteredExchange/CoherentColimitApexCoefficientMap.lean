@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawVertices
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedCoherentFiberComparison
-public import SerrePositivity.InfinityCategories.Core.VertexFiberNervePullback
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedCoherentFiberComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.VertexFiberNervePullback
 
 /-!
 概要：元の余極限三角形の初点 fiber に、元の全反転 Hom 係数を同値に写す。

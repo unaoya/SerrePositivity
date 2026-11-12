@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackNativeConeComparison
-public import SerrePositivity.InfinityCategories.F1B.CatInfinity.ConeHomotopyEdges
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.HomotopyVerticalRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeHomotopyEdges
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.HomotopyVerticalRestriction
 
 /-!
 概要：全空間 Kan 引き戻し錐の比較辺を元の比較射と恒等図式辺へ同定する。

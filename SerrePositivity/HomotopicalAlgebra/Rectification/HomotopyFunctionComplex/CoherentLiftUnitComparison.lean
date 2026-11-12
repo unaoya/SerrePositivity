@@ -130,7 +130,7 @@ lemma triangle_fixed_boundary (post : Bool) :
 
 lemma triangle_action_face (post : Bool) (Z : C)
     (t : CoherentLiftTuples.obj X Y f ⊗ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 2) ⟶
-      (cosimplicialHom Y.resolution.obj).obj Z) (k : Fin 3) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) (k : Fin 3) :
     CoherentLiftTuples.obj X Y f ◁ SSet.stdSimplex.δ k ≫
         KanLiftAction.parameterized hcof hfib X Y f Z
           (RelativeChoiceSpace.family (vertexInclusion X Y f) (vertexData X Y f)

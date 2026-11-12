@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CompletionNullDenominator
-public import SerrePositivity.InfinityCategories.Stable.CofiberCompositionEdges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CofiberCompositionEdges
 public import Mathlib.AlgebraicTopology.SimplicialSet.PiZero
-public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryCore
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.QuasicategoryCore
 
 /-!
 概要：元の wide 部分圏の同じ成分では、一つの零分母の始域を共用できる。
@@ -21,19 +21,19 @@ open CategoryTheory CategoryTheory.Limits SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
-  (f : C ⟶ D) [IsExactFunctor f]
-local instance : Preadditive D.HomotopyCategory := preadditive_ho (X := D)
+variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
+  (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f]
+local instance : Preadditive D.HomotopyCategory := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.preadditive_ho (X := D)
 
 /-- 概要：指定始域からの零射が、元の本質像の cofiber 分母であるという条件。
 方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
 規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
 使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 def completionZeroTarget (z y : D _⦋0⦌) : Prop :=
-  (stableHoClosure (completionEssentialImage f)).trW
+  (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (completionEssentialImage f)).trW
     (0 : (HomotopyCategory.mk z : hoFunctor.obj D) ⟶ HomotopyCategory.mk y)
 
-variable (h : F2.Idempotent.IsIdempotentCompletion f)
+variable (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
 include h
 
 /-- 概要：元の本質像の分母には全ての退化辺が属する。
@@ -41,9 +41,9 @@ include h
 規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
 使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionCofiber_degenerate (z : D _⦋0⦌) :
-    D.σ 0 z ∈ cofiberLocalizingEdges (completionEssentialImage f) := by
+    D.σ 0 z ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f) := by
   rw [← stableClosure_completionEssentialImage f h.2.1]
-  exact cofiberStableEdges_of_isInvertible _ (isInvertibleEdge_degenerate z)
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_of_isInvertible _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_degenerate z)
 
 /-- 概要：元の wide 部分複体は周囲の全頂点を含む。
 方針：実合成二単体の二対三性で零分母条件を両方向へ運び、π₀ の生成関係に沿う。
@@ -61,10 +61,10 @@ lemma completionCofiberWide_vertex (z : D _⦋0⦌) :
 規約：本質像と元の全辺条件を保ち、成分の同定を K₀ の商に置き換えない。
 使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionCofiberWide_edge (e : D _⦋1⦌)
-    (he : e ∈ cofiberLocalizingEdges (completionEssentialImage f)) :
+    (he : e ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f)) :
     e ∈ (completionCofiberWide f).obj (Opposite.op ⦋1⦌) := by
   intro θ
-  rcases intervalEndomorphism_cases θ with ht | ht | ht
+  rcases _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.intervalEndomorphism_cases θ with ht | ht | ht
   · have hc : SimplexCategory.const ⦋1⦌ ⦋1⦌ 0 =
         SimplexCategory.σ (0 : Fin 1) ≫ SimplexCategory.δ (1 : Fin 2) := by decide
     rw [ht, hc, op_comp, D.map_comp]
@@ -81,27 +81,27 @@ lemma completionCofiberWide_edge (e : D _⦋1⦌)
 使われ方：Sp-7 の各成分で、全図式の零ホモトピーを wide 内へ持ち上げる。 -/
 lemma completionZeroTarget_edge_iff (z : D _⦋0⦌) {x y : D _⦋0⦌}
     (e : Truncated.Edge (X := (truncation 2).obj D) x y)
-    (he : e.edge ∈ cofiberLocalizingEdges (completionEssentialImage f)) :
+    (he : e.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (completionEssentialImage f)) :
     completionZeroTarget f z x ↔ completionZeroTarget f z y := by
-  obtain ⟨a, ha⟩ := homotopyCategory_homMk_surjective z x
+  obtain ⟨a, ha⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z x
     (0 : (HomotopyCategory.mk z : hoFunctor.obj D) ⟶ HomotopyCategory.mk x)
-  obtain ⟨b, hb⟩ := homotopyCategory_homMk_surjective z y
+  obtain ⟨b, hb⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z y
     (0 : (HomotopyCategory.mk z : hoFunctor.obj D) ⟶ HomotopyCategory.mk y)
-  obtain ⟨s⟩ := compStruct_nonempty_of_homMk_fac
+  obtain ⟨s⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac
     (show Truncated.HomotopyCategory.homMk a ≫ Truncated.HomotopyCategory.homMk e =
       Truncated.HomotopyCategory.homMk b by rw [ha, hb, zero_comp])
-  have he' : e.edge ∈ cofiberLocalizingEdges
-      {v | StableVertexClosure (completionEssentialImage f) v} := by
+  have he' : e.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {v | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (completionEssentialImage f) v} := by
     rwa [stableClosure_completionEssentialImage f h.2.1]
-  have hax : completionZeroTarget f z x ↔ a.edge ∈ cofiberLocalizingEdges
-      {v | StableVertexClosure (completionEssentialImage f) v} := by
-    rw [cofiberStableEdges_iff_trW, ha]
+  have hax : completionZeroTarget f z x ↔ a.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {v | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (completionEssentialImage f) v} := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW, ha]
     rfl
-  have hby : completionZeroTarget f z y ↔ b.edge ∈ cofiberLocalizingEdges
-      {v | StableVertexClosure (completionEssentialImage f) v} := by
-    rw [cofiberStableEdges_iff_trW, hb]
+  have hby : completionZeroTarget f z y ↔ b.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {v | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (completionEssentialImage f) v} := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW, hb]
     rfl
-  have ht := cofiberStableEdges_compStruct_twoOfThree (completionEssentialImage f) s
+  have ht := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_compStruct_twoOfThree (completionEssentialImage f) s
   exact hax.trans ((Iff.intro (fun hw => ht.1 hw he') (fun hw => ht.2.2 he' hw)).trans hby.symm)
 
 /-- 概要：同じ元の wide 成分の全頂点に対して、一つの零分母条件を輸送する。
@@ -132,11 +132,11 @@ lemma exists_completionComponentZeroSource
     ∃ z : D _⦋0⦌, ∀ y : (completionCofiberWide f : SSet.{u}) _⦋0⦌,
       SSet.π₀.mk x = SSet.π₀.mk y → completionZeroTarget f z y.val := by
   obtain ⟨z, t, ht, hz⟩ := exists_completionNullDenominator f h x.val
-  have hw : t.edge ∈ cofiberLocalizingEdges
-      {v | StableVertexClosure (completionEssentialImage f) v} := by
+  have hw : t.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {v | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (completionEssentialImage f) v} := by
     rwa [stableClosure_completionEssentialImage f h.2.1]
   have hx : completionZeroTarget f z x.val := by
-    have hh := (cofiberStableEdges_iff_trW (completionEssentialImage f) t).1 hw
+    have hh := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW (completionEssentialImage f) t).1 hw
     rwa [hz] at hh
   exact ⟨z, fun y hy => (completionZeroTarget_component f h z x y hy).1 hx⟩
 
@@ -156,11 +156,11 @@ lemma exists_completionComponentZeroVertex
   let e : SSet.Edge zv x := SSet.Edge.mk
     ⟨t.edge, completionCofiberWide_edge f h t.edge ht⟩
       (Subtype.ext t.src_eq) (Subtype.ext t.tgt_eq)
-  have hw : t.edge ∈ cofiberLocalizingEdges
-      {v | StableVertexClosure (completionEssentialImage f) v} := by
+  have hw : t.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {v | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure (completionEssentialImage f) v} := by
     rwa [stableClosure_completionEssentialImage f h.2.1]
   have hx : completionZeroTarget f z x.val := by
-    have hh := (cofiberStableEdges_iff_trW (completionEssentialImage f) t).1 hw
+    have hh := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW (completionEssentialImage f) t).1 hw
     rwa [hz] at hh
   exact ⟨zv, SSet.π₀.sound e,
     fun y hy => (completionZeroTarget_component f h z x y hy).1 hx⟩

@@ -30,7 +30,7 @@ lemma foldMap_unique (H : ∀ X Y, space W Y X ⟶ F.obj X ⟶[SSet.{u}] F.obj Y
       (H X Y ⊗ₘ H Y Z) ≫ eComp SSet.{u} (F.obj X) (F.obj Y) (F.obj Z))
     (X Y : Paths C) : H X Y = F.foldMap X Y := by
   ext n t
-  let := EnrichedDegree.category (D := D) n
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
   exact (F.degreeData n).fold_unique (fun {X Y} s => (H X Y).app n s)
     (fun {X Y} p => congrArg (fun k => k.app n p) (hm X Y))
     (fun g => congrArg (fun k => k.app n PUnit.unit) (hg g))

@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanBoundaryHomotopy
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.NullHomotopyRestriction
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.LeftFibrationHomotopyTransport
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeLeftFibrationTransport
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.NullHomotopyRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibrationHomotopyTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeLeftFibrationTransport
 
 /-!
 概要：単射な境界を持つ有限標的図式を、二入力の指定輸送と同時に一つの値へ移す。

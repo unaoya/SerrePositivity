@@ -21,23 +21,23 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 共通直通列点の二入力への射影は、同じ二つの元の直通列点の射対。 -/
 lemma compositionStringPair_direct :
-    nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g =
-      lift (nervePoint (coherentArrowStringDirect f))
-        (nervePoint (coherentArrowStringDirect g)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ compositionStringPair f g =
+      lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g)) := by
   apply CartesianMonoidalCategory.hom_ext
   · rw [Category.assoc, compositionStringPair_first, lift_fst, compositionStringFirst_direct]
   · rw [Category.assoc, compositionStringPair_second, lift_snd, compositionStringSecond_direct]
 
 /-- 直接厳密化側の直通列境界は、合成射の既存の同じ BF 境界。 -/
 lemma monicKPrismNativeDirectBFFamily_boundary :
-    nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeDirectBFFamily F f g =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeDirectBFFamily F f g =
       monicKPrismTracedBFBoundary F (f ≫ g) := by
   rw [monicKPrismNativeDirectBFFamily, ← Category.assoc,
     compositionStringComposite_direct, monicKPrismTracedBFFamily_boundary]
 
 /-- 合成側の直通列境界は、元の二つの既存 BF 境界を同じ写像空間で実合成した射。 -/
 lemma monicKPrismNativeCompositeBFFamily_boundary :
-    nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeCompositeBFFamily F f g =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeCompositeBFFamily F f g =
       lift (monicKPrismTracedBFBoundary F f) (monicKPrismTracedBFBoundary F g) ≫
         OmegaSpectrum.mappingComposition (kOmegaSpectrum (F.obj x))
           (kOmegaSpectrum (F.obj y)) (kOmegaSpectrum (F.obj z)) := by
@@ -66,7 +66,7 @@ lemma monicKPrismTracedBFCompositionBoundary_h :
 
 /-- 全精密化 BF 比較の直通列境界は、既存の二境界の同じ実合成比較円柱。 -/
 lemma monicKPrismNativeBFComparisonData_composition_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismNativeBFComparisonData F f g).val.h =
       (monicKPrismTracedBFCompositionBoundary F f g).h :=
   (monicKPrismNativeBFComparisonData_boundary F f g).trans

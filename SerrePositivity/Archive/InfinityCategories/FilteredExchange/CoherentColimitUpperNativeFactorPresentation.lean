@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUpperTransportFactor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeActionPresentation
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerHEq
 
 /-!
 概要：既存の上側 native 因子を、元の全 Hom 成分と指定余錐比較の合成の逆へ戻す。

@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoBoundary
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type w} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -40,8 +40,8 @@ def dgIdentityHomGluingConeConnectingMap (x : P) :
 方針：同じ元入力同型の全厳密逆と元全 connecting 比較を合成する。
 規約：元指定実同型と全 Hom 作用を保持する。
 使われ方：同じ指定入力比較を connecting・逆 shift に接続する。 -/
-def dgIdentityHomGluingConeConnectingComparison : StrictNatTrans (B) (FS) :=
-  dgStrictNatTransComp (dgIdentityHomGluingStrictConeInputInvComparison R C F G a h)
+def dgIdentityHomGluingConeConnectingComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (B) (FS) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (dgIdentityHomGluingStrictConeInputInvComparison R C F G a h)
     (dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J))
       (dgIdentityHomGluingYonedaStrictComparison R C F G a h))
 end SerrePositivity.KST.SConstruction

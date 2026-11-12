@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarReference
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryResolutionBarReduction
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSectionUnit
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLiftPadding
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftPadding
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarRightEvaluation
@@ -50,7 +50,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (b : NerveFirstChoice.System (OrdinaryBarCenters.rightChoices R))
 
 lemma padded_reference :
-    (UniverseLift.paddingIso.{v, u}.app
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app
       ((OrdinaryResolutionPairs.raw (C := C)).obj
         (OrdinaryResolutionPairs.forgetFrames.obj R))).hom ≫
       BarConstruction.commaSection (OrdinaryResolutionPairs.projection (C := C))
@@ -89,7 +89,7 @@ lemma right_isIso_iff_evaluation :
       (𝟙 ((RightResolutionMapping.projection (C := C)).obj R)))) ↔
       IsIso (Q.map (OrdinaryBarReference.sectionMap R)) := by
     have := Functor.map_isIso (F := Q)
-      (UniverseLift.paddingIso.{v, u}.app ((OrdinaryResolutionPairs.raw (C := C)).obj
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.paddingIso.{v, u}.app ((OrdinaryResolutionPairs.raw (C := C)).obj
         (OrdinaryResolutionPairs.forgetFrames.obj R))).hom
     rw [← padded_reference, Q.map_comp]
     exact (isIso_comp_left_iff _ _).symm

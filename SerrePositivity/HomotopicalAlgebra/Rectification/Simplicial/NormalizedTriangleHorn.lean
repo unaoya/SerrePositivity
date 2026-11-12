@@ -60,7 +60,7 @@ private lemma mixed_components (m : SimplexCategoryᵒᵖ)
   have hf := congrArg SSet.yonedaEquiv hd
   simpa only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] using hf
 
-lemma compatible : CompatibleInputUnion.Compatible
+lemma compatible : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.Compatible
     (fun _ : Fin 2 => (ihom DegenerateTriangleOverlap.interval).obj K)
     (fun d => DegenerateHornInput.boundary i d K)
     (fun d => DegenerateHornInput.degeneracy d K) := by

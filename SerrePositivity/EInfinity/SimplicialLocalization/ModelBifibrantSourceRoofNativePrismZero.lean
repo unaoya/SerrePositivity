@@ -22,9 +22,9 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 private lemma uncurry_point_ext {S E : SSet.{u}} {p q : (Δ[0] : SSet.{u}) ⟶ E}
-    (h : p = q) (f : S ⟶ sliceOver p) (g : S ⟶ sliceOver q)
+    (h : p = q) (f : S ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p) (g : S ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver q)
     (hv : ∀ (n : ℕ) (a : S _⦋n⦌), (f.app (Opposite.op ⦋n⦌) a).val =
-      (g.app (Opposite.op ⦋n⦌) a).val) : sliceOverUncurry f = sliceOverUncurry g := by
+      (g.app (Opposite.op ⦋n⦌) a).val) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry f = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry g := by
   subst q
   have he : f = g := by
     apply SSet.hom_ext
@@ -43,25 +43,25 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry :
-    sliceOverUncurry (prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
-      (SerrePositivity.InfinityCategories.F1B.nerveCoconeEquiv (Cocone.mk
-        (modelBifibrantObject C Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveCoconeEquiv (Cocone.mk
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (modelBifibrantSourceRoofProductCommaRightLeg X Y q b))).val ≫
-      hammockLocalizationNerveMap (modelBifibrantRelativeCategory C) := by
-  let P := RoofPrefix.prism (modelBifibrantRelativeCategory C)
+      hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) := by
+  let P := RoofPrefix.prism (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
     (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
     (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f)
-  have hq := congrArg (fun z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌ =>
+  have hq := congrArg (fun z : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌ =>
     SSet.yonedaEquiv.symm z)
-    (hammockLocalizationNerveMap_vertex (modelBifibrantRelativeCategory C)
-      (modelBifibrantObject C Y))
+    (hammockLocalizationNerveMap_vertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))
   refine (uncurry_point_ext hq
-    (prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b)
-    (prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
-  exact RoofPrefix.prism_zero_uncurry (modelBifibrantRelativeCategory C)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ P) (fun _ _ => rfl)).trans ?_
+  exact RoofPrefix.prism_zero_uncurry (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -73,15 +73,15 @@ lemma modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePrism_zero_evaluation :
     (β_ (nerve (modelBifibrantSourceRoofProductComma X Y q b)) (Δ[1] : SSet.{max u v})).hom ≫
-      rightMappingSpacePrism _ ≫ sliceOverUncurry
-        (prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverUncurry
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ modelBifibrantSourceRoofProductCommaNativePrism X Y q b) =
     (modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b).h := by
   rw [modelBifibrantSourceRoofProductCommaNativePrism_zero_uncurry X Y q b]
-  have h := FrameHom.nerveCoconePrism_eq_natTrans
+  have h := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveCoconePrism_eq_natTrans
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
-    (Cocone.mk (modelBifibrantObject C Y)
+    (Cocone.mk (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b))
   exact (congrArg (fun f => f ≫
-    hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) h)
+    hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) h)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

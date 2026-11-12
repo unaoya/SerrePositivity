@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.FixedInput
-public import SerrePositivity.InfinityCategories.Stable.Verdier.StableVerdierSequence
-public import SerrePositivity.InfinityCategories.F1.Idempotent.Completion
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableVerdierSequence
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Completion
 
 /-!
 第 I 段延長分の比較目標の型だけを固定する。存在定理・選択による実例は追加しない。
@@ -22,25 +22,25 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u})
 
 /-- 比較目標に現れる (Indω ν A)^κ。通常 compact 部分に置き換えない。 -/
 abbrev dgKInputCalkinConeTarget :=
-  F2.Compact.kappaCompactObjects.{u, max (u + 1) v + 1} κ
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{u, max (u + 1) v + 1} κ
     (dgKInputIndCompletion R A)
 
 /-- 同じ Yoneda を含む、未完備 Calkin 商の指定。これの存在は主張しない。 -/
 structure DGKInputCalkinPresentation where
   quotient : SSet.{max (u + 1) v + 1}
   [quotientQuasicategory : Quasicategory quotient]
-  [quotientStable : IsStable quotient]
-  [coneStable : IsStable (dgKInputCalkinConeTarget R κ A)]
-  [sourceStable : IsStable ((SSet.uliftFunctor.{max (u + 1) v + 1,
+  [quotientStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable quotient]
+  [coneStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKInputCalkinConeTarget R κ A)]
+  [sourceStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable ((SSet.uliftFunctor.{max (u + 1) v + 1,
     max (u + 1) v}).obj (dgKInputStableValue R A).obj)]
   inclusion : (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
     (dgKInputStableValue R A).obj ⟶ dgKInputCalkinConeTarget R κ A
-  inclusionYoneda : FunctorIso
-    (inclusion ≫ F2.Compact.kappaCompactInclusion.{u, max (u + 1) v + 1} κ
+  inclusionYoneda : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (inclusion ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion.{u, max (u + 1) v + 1} κ
       (dgKInputIndCompletion R A))
-    (F2.Ind.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj)
   projection : dgKInputCalkinConeTarget R κ A ⟶ quotient
-  verdier : IsStableVerdierSequence inclusion projection
+  verdier : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsStableVerdierSequence inclusion projection
 
 attribute [instance] DGKInputCalkinPresentation.quotientQuasicategory
   DGKInputCalkinPresentation.quotientStable
@@ -48,19 +48,19 @@ attribute [instance] DGKInputCalkinPresentation.quotientQuasicategory
 /-- ν(Σ_dg A) ≃ Idem((Indω ν A)^κ/ν A) の目標型。宇宙上昇を明示する。 -/
 abbrev DGNonconnectiveSuspensionComparisonTarget [Fact κ.IsRegular]
     (hκ : Cardinal.aleph0 < κ) (P : DGKInputCalkinPresentation R κ A) :=
-  QCatEquivalence
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     ((SSet.uliftFunctor.{max (u + 1) v + 2, max (u + 1) v}).obj
       (dgKInputStableValue R (dgSuspensionUnconditionalIteration R κ hκ A 1)).obj)
-    (F2.Idempotent.Idem P.quotient)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem P.quotient)
 
 /-- D_dg(A) ≃ D_∞(ν A) の目標型。指定 D∞ は延長分から受け取り、存在を主張しない。
 FunctorIso は全単体を持つ図式間の可逆二胞体で、構造辺の整合を含む。 -/
 abbrev DGNonconnectiveSequenceComparisonTarget [Fact κ.IsRegular]
     (hκ : Cardinal.aleph0 < κ)
-    (Dinf : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{max (u + 1) v} →
+    (Dinf : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{max (u + 1) v} →
       ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
         (nerve SequentialIndex.{max (u + 1) v}) ⟶ Sp.{max (u + 1) v})) :=
-  FunctorIso (dgNonconnectiveKFixedInputDiagram R κ hκ A)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgNonconnectiveKFixedInputDiagram R κ hκ A)
     (Dinf (dgKInputStableValue R A))
 
 end SerrePositivity.KST.NonConnective

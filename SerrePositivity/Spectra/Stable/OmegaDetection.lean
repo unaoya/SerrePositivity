@@ -37,7 +37,7 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   {ι : Type t} (G : ι → C) [∀ i, IsCofibrant (G i)]
   (hdetect : ∀ {Y Z : C} [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z),
     weakEquivalences C f ↔ ∀ i, weakEquivalences SSet.{v}
-      ((cosimplicialHom ((cosimplicialResolutionFamily cofC).obj.obj (G i))).map f))
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((cosimplicialResolutionFamily cofC).obj.obj (G i))).map f))
 
 omit [Quillen.IsQuillenBifunctor (curriedTensor C)] [IsCofibrant K]
   [ModelCategory SSet.{v}] in
@@ -61,7 +61,7 @@ lemma localObjects_iff_replacement_omega (E : GeneralSymmetricSpectrum C K) :
     exact Quillen.isFibrant_obj (ihom K) (level R (n + 1))
   have ht (n : ℕ) : weakEquivalences C (adjointStructureMap R n) ↔
       ∀ i, weakEquivalences SSet.{v}
-        ((cosimplicialHom ((cosimplicialResolutionFamily cofC).obj.obj (G i))).map
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((cosimplicialResolutionFamily cofC).obj.obj (G i))).map
           (adjointStructureMap R n)) := hdetect _
   rw [localObjects_localizingMaps_iff K cofC cofSp fibSp hcof G]
   exact ⟨fun h n ↦ (ht n).mpr (h n), fun h n ↦ (ht n).mp (h n)⟩

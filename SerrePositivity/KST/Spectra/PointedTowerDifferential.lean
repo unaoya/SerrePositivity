@@ -31,14 +31,14 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 規約：π_(r+2)(F_n) から π_(r+1)(F_(n+1)) へ向かう。
 使われ方：Goerss–Jardine VIII §1。骨格の cochain 微分との比較の始点。 -/
 def differential (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 1) (pointedFiber (p n)).basepoint →*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p (n + 1))).right r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 1) (pointedFiber (p n)).basepoint →*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p (n + 1))).right r
         (pointedFiber (p (n + 1))).basepoint :=
   (pointedConnectingHom (p (n + 1)) r).comp
     (pointedGroupMap (r + 1) (pointedFiberι (p n)))
 
 lemma differential_apply (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 1)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 1)
       (pointedFiber (p n)).basepoint) :
     differential X p n r a = pointedConnectingHom (p (n + 1)) r
       (pointedGroupMap (r + 1) (pointedFiberι (p n)) a) := rfl
@@ -49,7 +49,7 @@ lemma differential_apply (n r : ℕ)
 使われ方：Goerss–Jardine VIII §1。最初の微分の二乗の零性。 -/
 @[simp]
 lemma differential_inclusion (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 1)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 1)
       (pointedFiber (p n)).basepoint) :
     pointedGroupMap r (pointedFiberι (p (n + 1))) (differential X p n r a) = 1 := by
   rw [differential_apply, pointedConnectingHom_inclusion]
@@ -60,7 +60,7 @@ lemma differential_inclusion (n r : ℕ)
 使われ方：Goerss–Jardine VIII §1。E_1 の複体条件の幾何的な入力。 -/
 @[simp]
 theorem differential_comp (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 2)
       (pointedFiber (p n)).basepoint) :
     differential X p (n + 1) r (differential X p n (r + 1) a) = 1 := by
   rw [differential_apply, differential_inclusion, map_one]

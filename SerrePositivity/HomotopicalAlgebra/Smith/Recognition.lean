@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Smith.GeneratingTrivialCofibrations
 public import SerrePositivity.HomotopicalAlgebra.Transfer.Recognition
@@ -117,7 +117,7 @@ lemma cofibrantlyGeneratedOfSquareFactor
     (hJ : J ≤ I.rlp.llp) (hIW : I.rlp ≤ W)
     (hfactor : ∀ (i f : Arrow C), I i.hom → W f.hom → ∀ sq : i ⟶ f,
       ∃ g : Arrow C, J g.hom ∧ ∃ (p : i ⟶ g) (q : g ⟶ f), p ≫ q = sq) :
-    ModelGeneration.CofibrantlyGenerated.{w} I J where
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J where
   smallObjectI := inferInstance
   smallObjectJ := inferInstance
   rlp_I := by

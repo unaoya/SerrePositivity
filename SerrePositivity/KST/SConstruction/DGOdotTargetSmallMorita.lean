@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotTargetSmallPerfect
 public import SerrePositivity.KST.SConstruction.DGAlgebraEnvelopeYonedaMorita
-public import SerrePositivity.InfinityCategories.Derived.DGQuasiEquivalenceNerve
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGQuasiEquivalenceNerve
 
 /-! # 元の終域から同じ cone 小模型への Yoneda の Morita 比較
 概要：元の終域の同じ厳密 Yoneda は、同じ実一回 Perf 延長で同値を与える。
@@ -14,8 +14,8 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
-local notation "E" => dgAlgebraCategory R (DGOdotInput.corner d)
-local notation "b" => (Opposite.op DGAlgebraPoint.star : dgAlgebraCategory R (DGOdotInput.corner d))
+local notation "E" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d)
+local notation "b" => (Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (DGOdotInput.corner d))
 
 /-- 元の自由代表が、同じ cone 点を含む実小模型の全 Perf を生成する。 -/
 lemma dgOdotTargetSmallPerfect_perfectOver_representable_eq :
@@ -40,9 +40,9 @@ lemma dgOdotTargetSmallYoneda_perfectDG_quasiEquivalence :
 
 /-- 同じ元の一回 dg Perf 延長を順方向に持つ、実 native nerve 同値。 -/
 def dgOdotTargetSmallYonedaPerfectNerveEquivalence :
-    QCatEquivalence (dgNerve R (PerfectDGModule R (E)))
-      (dgNerve R (PerfectDGModule R (DGOdotTargetSmallPerfect R d))) :=
-  dgQuasiEquivalenceNerveEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (E)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PerfectDGModule R (DGOdotTargetSmallPerfect R d))) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence
     (perfectDGExtension R (E) (DGOdotTargetSmallPerfect R d) (dgOdotTargetSmallYoneda R d))
     (dgOdotTargetSmallYoneda_perfectDG_quasiEquivalence R d)
 

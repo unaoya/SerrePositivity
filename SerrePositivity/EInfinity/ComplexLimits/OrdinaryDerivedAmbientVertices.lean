@@ -19,25 +19,25 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexClosedNerve_vertex (X : Complex A) :
-    (nerveMap (complexToClosed A) ≫ closedNerveInclusion A (Complex A)).app
-      (Opposite.op ⦋0⦌) (nerveVertex X) = Simplex.vertex X := by
-  apply (dgNerve.vertexEquiv A (Complex A)).injective
+    (nerveMap (complexToClosed A) ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (Complex A)).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).injective
   rfl
 
 lemma complexOrdinaryAmbient_vertex (X : Complex A) :
-    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
-      (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex X) :=
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
+      (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) :=
   congrArg ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌))
     (complexClosedNerve_vertex A X)
 
 def complexOrdinaryAmbientVertexIso (X : Complex A) :
-    VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
-      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
+      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X)) :=
   eqToIso (congrArg HomotopyCategory.mk (complexOrdinaryAmbient_vertex A X))
 
 end SerrePositivity.EInfinity.ComplexLimits

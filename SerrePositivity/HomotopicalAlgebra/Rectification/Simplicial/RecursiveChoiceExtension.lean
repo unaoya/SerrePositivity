@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.FixedBoundaryExtensions
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.FixedBoundaryExtensions
 
 public import SerrePositivity.CategoryTheory.Limits
 public import SerrePositivity.HomotopicalAlgebra.Rectification.Simplicial.RelativeChoiceSpace
@@ -63,7 +63,7 @@ def next (n : ℕ) (e : (filtration j).obj n ⟶ RelativeChoiceSpace.obj i b) :
     change Mono (SSet.Subcomplex.homOfLE
       ((SSet.skeletonOfMono j).monotone (Nat.le_succ n)))
     infer_instance
-  exact ⟨_, (RelativeChoiceSpace.extension hcof hfib i b p hp
+  exact ⟨_, (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.extension hcof hfib i b p hp
     ((filtration j).map (homOfLE (Nat.le_succ n))) e).choose_spec⟩
 
 abbrev initial : (filtration j).obj 0 ⟶ RelativeChoiceSpace.obj i b :=

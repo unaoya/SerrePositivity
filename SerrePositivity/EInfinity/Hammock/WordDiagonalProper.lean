@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordDiagonalAugmentation
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordDiagonalAugmentation
 public import SerrePositivity.EInfinity.Hammock.ProperDiagram
 
 /-!
@@ -18,12 +18,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory SimplicialLocalization
-variable (D : SimplicialObject RelativeCategory.{u}) (C : RelativeCategory.{u})
+open CategoryTheory
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
   (p : (i : SimplexCategoryᵒᵖ) → C.category → (D.obj i).category)
   (hp : ∀ {i j : SimplexCategoryᵒᵖ} (θ : i ⟶ j) (X : C.category),
     (D.map θ).functor.obj (p i X) = p j X) (X Y : C.category)
-lemma wordDiagonalDiagram_proper : ProperDiagram (wordDiagonalDiagram D C p hp X Y) where
+lemma wordDiagonalDiagram_proper : ProperDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalDiagram D C p hp X Y) where
   map_mono f hf := by
     rw [NatTrans.mono_iff_mono_app]
     intro n
@@ -31,8 +31,8 @@ lemma wordDiagonalDiagram_proper : ProperDiagram (wordDiagonalDiagram D C p hp X
     exact graphDiagram_map_app_injective (D.obj n).weakEquivalences f hf (p n X) (p n Y) n
   intersection_range f g hf hg := by
     ext n σ
-    have he := congrArg (fun S : (graph (D.obj n).weakEquivalences _ (p n X) (p n Y)).Subcomplex =>
-      σ ∈ S.obj n) (graphDiagram_intersection_range (W := (D.obj n).weakEquivalences)
+    have he := congrArg (fun S : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (D.obj n).weakEquivalences _ (p n X) (p n Y)).Subcomplex =>
+      σ ∈ S.obj n) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagram_intersection_range (W := (D.obj n).weakEquivalences)
         (X := p n X) (Y := p n Y) f g hf hg)
     exact iff_of_eq he
 end SerrePositivity.EInfinity.Hammock.FixedObjectDiagram

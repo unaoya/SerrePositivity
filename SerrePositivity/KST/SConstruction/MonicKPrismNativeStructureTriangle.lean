@@ -58,7 +58,7 @@ lemma monicKPrismNativeStructureDirectChain_class (n : ℕ) :
 
 /-- 保存済み前段円柱の構造射像は元の前段全列の構造射像を表す。 -/
 lemma monicKPrismNativePreviousStructureCylinder_class (n : ℕ) :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativePreviousStructureCylinder F f g n)) =
       familyChainCompositeClass (monicKPrismNativePreviousStructureChain F f g n) :=
   familyCompositeClass_endpointTransport _ _
@@ -68,7 +68,7 @@ lemma monicKPrismNativePreviousStructureCylinder_class (n : ℕ) :
 
 /-- 保存済み次段円柱の源制限は元の次段全列の同じ制限を表す。 -/
 lemma monicKPrismNativeProjectedStructureCylinder_class (n : ℕ) :
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativeProjectedStructureCylinder F f g n)) =
       familyChainCompositeClass (monicKPrismNativeProjectedCorrectionChain F f g n) :=
   familyChainCompositionWitness_postcomp_class
@@ -76,20 +76,20 @@ lemma monicKPrismNativeProjectedStructureCylinder_class (n : ℕ) :
 
 /-- 元の適合円柱・保存済み前段円柱の構造射像・次段射影を三面に持つ実三角形。 -/
 def monicKPrismNativeStructureTriangle (n : ℕ) : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativeOriginalCompatibility F f g n)))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativePreviousStructureCylinder F f g n)))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativeProjectedStructureCylinder F f g n))) := by
   apply SSet.Edge.CompStruct.ofTruncated
   apply Nonempty.some
-  apply compStruct_nonempty_of_homMk_fac
-  change SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac
+  change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (monicKPrismNativeOriginalCompatibility F f g n)) ≫
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (monicKPrismNativePreviousStructureCylinder F f g n)) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
         (monicKPrismNativeProjectedStructureCylinder F f g n))
   rw [monicKPrismNativePreviousStructureCylinder_class,
     monicKPrismNativeProjectedStructureCylinder_class]

@@ -14,30 +14,30 @@ namespace SerrePositivity.KST.Fibration
 
 /-- 先行標準単体の共有端点は、元の標準 join の右端の零単体。 -/
 lemma standardTailEndpoint_join (n : ℕ) :
-    standardTailEndpoint.{u} n = joinInr (Δ[n] : SSet.{u}) Δ[0] ≫
-      (joinStdSimplexIso n 0).hom := by
-  change initialHornPointIso.hom ≫ joinInr _ _ ≫
-    (joinMap (𝟙 _) initialHornPointIso.inv ≫ (joinStdSimplexIso n 0).hom) = _
-  rw [joinInr_joinMap_assoc, ← Category.assoc, Iso.hom_inv_id, Category.id_comp]
+    standardTailEndpoint.{u} n = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[0] ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom := by
+  change initialHornPointIso.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr _ _ ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 _) initialHornPointIso.inv ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap_assoc, ← Category.assoc, Iso.hom_inv_id, Category.id_comp]
 
 /-- 最後の辺の包含後は、元の標準 join の右因子の包含を回収する。 -/
 lemma standardTailEdge_inclusion (n : ℕ) :
     tailAttachmentEdge (Δ[n] : SSet.{u}) ≫ standardTailInclusion n =
-      joinInr (Δ[n] : SSet.{u}) Δ[1] ≫ (joinStdSimplexIso n 1).hom := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[1] ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 1).hom := by
   have he : tailAttachmentEdge (Δ[n] : SSet.{u}) ≫
-      (tailAttachment (Δ[n] : SSet.{u})).ι = joinInr (Δ[n] : SSet.{u}) Δ[1] := by
-    change ((emptyJoinIso (Δ[n] : SSet.{u}) Δ[1]).inv ≫
-      joinUnionLeft (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)) ≫
-        (joinUnion (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)).ι = _
-    rw [Category.assoc, joinUnionLeft_ι]
-    change joinInr _ _ ≫ joinMap (⊥ : (Δ[n] : SSet.{u}).Subcomplex).ι (𝟙 _) = _
-    rw [joinInr_joinMap, Category.id_comp]
+      (tailAttachment (Δ[n] : SSet.{u})).ι = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[1] := by
+    change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.emptyJoinIso (Δ[n] : SSet.{u}) Δ[1]).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnionLeft (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnion (⊥ : (Δ[n] : SSet.{u}).Subcomplex) (horn 1 0)).ι = _
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinUnionLeft_ι]
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (⊥ : (Δ[n] : SSet.{u}).Subcomplex).ι (𝟙 _) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap, Category.id_comp]
   exact (Category.assoc _ _ _).symm.trans (congrArg
-    (fun f => f ≫ (joinStdSimplexIso n 1).hom) he)
+    (fun f => f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 1).hom) he)
 
 /-- 元の標準 join の右因子の頂点座標は、左因子の全頂点数だけずれる。 -/
 lemma joinStdSimplexIso_inr_vertex (n m : ℕ) (j : Fin (m + 1)) :
-    ((joinInr (Δ[n] : SSet.{u}) Δ[m] ≫ (joinStdSimplexIso n m).hom).app
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[n] : SSet.{u}) Δ[m] ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n m).hom).app
       (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm j)) =
         stdSimplex.obj₀Equiv.symm ⟨n + 1 + j.val, by omega⟩ := by
   apply stdSimplex.ext

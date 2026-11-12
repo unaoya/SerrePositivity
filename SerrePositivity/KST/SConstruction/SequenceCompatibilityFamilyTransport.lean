@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.SequenceCompatibilityTransport
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 全パラメータの指定適合円柱を列の射で前合成する
 概要：元の構造射と段の射の二合成の間の全円柱を、指定した列の射で移す。
@@ -30,7 +30,7 @@ def sequenceCompatibilityFamily_precompose {A B C : KanSequence.{u}}
         (PointedSimplicialSet.circle.{u} ◁ (p.app n ≫ f n) ≫ C.sigma n))) := by
   let q := PointedSimplicialSet.circle.{u} ◁ p.app n
   let Z := (C.level (n + 1)).space
-  let V := functorHomotopyPostcomp H (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre q Z)
+  let V := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre q Z)
   refine
     { h := V.h
       h₀ := V.h₀.trans ?_
@@ -38,14 +38,14 @@ def sequenceCompatibilityFamily_precompose {A B C : KanSequence.{u}}
       rel := V.rel }
   · rw [SSet.const_comp]
     apply congrArg SSet.const
-    change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q Z).right.app _ (familyVertex (B.sigma n ≫ f (n + 1))) = _
+    change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q Z).right.app _ (familyVertex (B.sigma n ≫ f (n + 1))) = _
     rw [familyVertex_pre]
     apply congrArg familyVertex
     change (PointedSimplicialSet.circle.{u} ◁ p.app n) ≫ (B.sigma n ≫ f (n + 1)) = _
     rw [← Category.assoc, p.comm n, Category.assoc]
   · rw [SSet.const_comp]
     apply congrArg SSet.const
-    change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed q Z).right.app _
+    change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed q Z).right.app _
       (familyVertex (PointedSimplicialSet.circle.{u} ◁ f n ≫ C.sigma n)) = _
     rw [familyVertex_pre]
     apply congrArg familyVertex
@@ -60,7 +60,7 @@ lemma sequenceCompatibilityFamily_precompose_h {A B C : KanSequence.{u}}
       (SSet.const (X := U) (familyVertex (B.sigma n ≫ f (n + 1))))
       (SSet.const (familyVertex (PointedSimplicialSet.circle.{u} ◁ f n ≫ C.sigma n)))) :
     (sequenceCompatibilityFamily_precompose p f n H).h =
-      H.h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ p.app n)
+      H.h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ p.app n)
         (C.level (n + 1)).space := rfl
 
 /-- 元の指定適合辺の境界は、源の前合成後も同じ指定辺として保持される。 -/
@@ -69,7 +69,7 @@ lemma sequenceCompatibilityFamily_precompose_boundary {A B C : KanSequence.{u}}
     {T U : SSet.{u}} (j : T ⟶ U) (H : SSet.Homotopy
       (SSet.const (X := U) (familyVertex (B.sigma n ≫ f (n + 1))))
       (SSet.const (familyVertex (PointedSimplicialSet.circle.{u} ◁ f n ≫ C.sigma n))))
-    (e : (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (B.level n).space) (C.level (n + 1)).space).right.Edge
+    (e : (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (B.level n).space) (C.level (n + 1)).space).right.Edge
       (familyVertex (B.sigma n ≫ f (n + 1)))
       (familyVertex (PointedSimplicialSet.circle.{u} ◁ f n ≫ C.sigma n)))
     (h : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h =
@@ -78,7 +78,7 @@ lemma sequenceCompatibilityFamily_precompose_boundary {A B C : KanSequence.{u}}
       snd T (Δ[1] : SSet.{u}) ≫ SSet.yonedaEquiv.symm
         (sequenceCompatibilityEdge_precompose p f n e).edge := by
   rw [sequenceCompatibilityFamily_precompose_h, ← Category.assoc, h, Category.assoc]
-  change _ ≫ (SSet.yonedaEquiv.symm e.edge ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _ _) = _
+  change _ ≫ (SSet.yonedaEquiv.symm e.edge ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre _ _) = _
   rw [SSet.yonedaEquiv_symm_comp]
   rfl
 

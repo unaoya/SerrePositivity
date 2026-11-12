@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.RightFrameHammockCoherent
-public import SerrePositivity.InfinityCategories.F1.Universe.Kan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Kan
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
-public import SerrePositivity.InfinityCategories.ModelBridge.ModelRelative
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 
 /-!
@@ -20,19 +20,19 @@ universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra SSet Opposite Hammock
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison SimplicialLocalization
+open SimplicialLocalization
 open scoped Simplicial
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C} [IsCofibrant X]
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
-attribute [local instance] rightFrameHammockKanDiagram_kanComplex rightFrameHom_kanComplex
+attribute [local instance] rightFrameHammockKanDiagram_kanComplex _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 
 /-- 概要：同じ全比較の指定六辺の実 Kan 成分を QCat 同値に束ねる。
 方針：同じ元の射の同値性をそのまま束ねる。
 規約：順射を変更しない。使われ方：全比較の同じ成分の合成。 -/
 def rightFrameHammockKanEdgeEquivalence (i : Fin 6) (Y : AsSmall.{max u v} C) :
-    QCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
       ((rightFrameHammockKanDiagram q r (rightFrameHammockEdgeSource i)).obj Y).obj
       ((rightFrameHammockKanDiagram q r (rightFrameHammockEdgeTarget i)).obj Y).obj :=
   (rightFrameHammockKanEdge_isQCatEquivalence q r cof i Y).choose
@@ -48,9 +48,9 @@ lemma rightFrameHammockKanEdgeEquivalence_hom (i : Fin 6) (Y : AsSmall.{max u v}
 方針：元の三つの逆向き辺だけを反転する。
 規約：全図式の同じ六辺を使う。使われ方：実 frame→pinched 成分の入力。 -/
 def rightFrameHammockKanComponentEquivalence (Y : C) :
-    QCatEquivalence
-      (exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y)))
-      (exInfinity.obj (colimitGraph (weakEquivalences C) X Y)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (weakEquivalences C) X Y)) :=
   (rightFrameHammockKanEdgeEquivalence q r cof 0 (AsSmall.up.obj Y)).trans
     ((rightFrameHammockKanEdgeEquivalence q r cof 1 (AsSmall.up.obj Y)).trans
       ((rightFrameHammockKanEdgeEquivalence q r cof 2 (AsSmall.up.obj Y)).symm.trans
@@ -62,16 +62,16 @@ def rightFrameHammockKanComponentEquivalence (Y : C) :
 方針：元の right Hom の Kan 性と同じ anodyne 単位を使う。
 規約：元の標的の fibrancy は不要。使われ方：元の Hom への復帰。 -/
 def rightFrameHomExUnitEquivalence (Y : C) :
-    QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-      (exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) := by
-  have := rightFrameHom_kanComplex r X Y
-  have h : IsWeakHomotopyEquivalence (exInfinityUnit.app
-      (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))) := by
+  have := _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex r X Y
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
+      (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))) :=
     AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
-  have hx := IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
-    (A := SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-    (B := exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))) h
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
+  have hx := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence.isSimplicialHomotopyEquivalence
+    (A := SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+    (B := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))) h
   exact hx.isQCatEquivalence.choose
 
 /-- 概要：元の right Hom と同じ全モデル圏の hammock pinched Hom の実 QCat 同値。
@@ -79,18 +79,18 @@ def rightFrameHomExUnitEquivalence (Y : C) :
 規約：元の source/target 局所化頂点を保持する。
 使われ方：局所化普遍性の供給後の指定二胞体による輸送。 -/
 def rightFrameHammockPinchedEquivalence (Y : C) :
-    QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((rightFrameHom r X).obj Y))
-      (pinchedHom
-        ((hammockLocalizationNerveMap (modelRelativeCategory C)).app (op ⦋0⦌)
-          (nerveVertex (modelRelativeObject C X)))
-        ((hammockLocalizationNerveMap (modelRelativeCategory C)).app (op ⦋0⦌)
-          (nerveVertex (modelRelativeObject C Y)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (SSet.uliftFunctor.{max u v, v}.obj ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom r X).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom
+        ((hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)).app (op ⦋0⦌)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))
+        ((hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)).app (op ⦋0⦌)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))) := by
   let e := (rightFrameHomExUnitEquivalence r Y).trans
     (rightFrameHammockKanComponentEquivalence q r cof Y)
-  let b := qCatEquivalenceOfIso
-    (exInfinity.mapIso (AsSmallComparison.colimitIso (weakEquivalences C) X Y))
-  have hp := kanHammockHomPinchedMap_weak (modelRelativeCategory C)
-    (modelRelativeObject C X) (modelRelativeObject C Y)
+  let b := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.mapIso (AsSmallComparison.colimitIso (weakEquivalences C) X Y))
+  have hp := kanHammockHomPinchedMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)
   exact e.trans (b.trans hp.isSimplicialHomotopyEquivalence.isQCatEquivalence.choose)
 
 /-- 概要：元の right Hom から pinched Hom への実比較を同じ四段の射へ回収する。
@@ -98,10 +98,10 @@ def rightFrameHammockPinchedEquivalence (Y : C) :
 規約：元の射と元の局所化頂点。使われ方：全二胞体と零単体の追跡。 -/
 lemma rightFrameHammockPinchedEquivalence_factor (Y : C) :
     (rightFrameHammockPinchedEquivalence q r cof Y).hom =
-      exInfinityUnit.app _ ≫ (rightFrameHammockKanComponentEquivalence q r cof Y).hom ≫
-        exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
-          kanHammockHomPinchedMap (modelRelativeCategory C)
-            (modelRelativeObject C X) (modelRelativeObject C Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ (rightFrameHammockKanComponentEquivalence q r cof Y).hom ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
+          kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y) := by
   change (_ ≫ _) ≫ (_ ≫ _) = _
   simp only [Category.assoc]
   rfl

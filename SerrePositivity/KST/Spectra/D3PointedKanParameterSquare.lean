@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanParameterDiagram
-public import SerrePositivity.InfinityCategories.F1.Transport.PointFunctorEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.PointFunctorEvaluation
 public import SerrePositivity.KST.Spectra.D3StageLoopDiagramFamily
 
 /-!
@@ -36,7 +36,7 @@ def d3ParameterSquareOrder {n : ℕ} (t : ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) _�
 /-- 全点つき Kan 入力と四角パラメータの、同じ全単体の順序円柱への pairing。 -/
 def d3PointedKanSquarePair :
     PointedKanInfinity.{u} ⊗ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⟶
-      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u}) where
+      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object (Fin 2 × Fin 2) PointedKanObject.{u}) where
   app _ := ↾fun ⟨F, t⟩ ↦ simplexPair (d3ParameterSquareOrder t) F
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext
@@ -56,7 +56,7 @@ lemma d3PointedKanSquarePair_corner (i j : Fin 2) :
     lift (𝟙 PointedKanInfinity.{u})
       (SSet.const (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)) ≫
         d3PointedKanSquarePair =
-      coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) (i, j)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) (i, j)) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -78,14 +78,14 @@ def d3PointedKanParameterSquare :
     PointedKanInfinity.{u} ⟶
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity :=
   curry ((β_ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) PointedKanInfinity).hom ≫
-    d3PointedKanSquarePair ≫ coherentNerveMap (d3PointedKanParameterDiagram D))
+    d3PointedKanSquarePair ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanParameterDiagram D))
 
 /-- 四角の各角は、同じ元のパラメータの内部 Hom ∞ 作用に厳密一致する。 -/
 lemma d3PointedKanParameterSquare_corner (i j : Fin 2) :
     d3PointedKanParameterSquare D ≫
-      evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) =
-        coherentNerveMap (d3PointedKanIhom (D.obj (Opposite.op (i, j)))) := by
-  rw [d3PointedKanParameterSquare, curry_evaluateFunctorAt_vertex]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom (D.obj (Opposite.op (i, j)))) := by
+  rw [d3PointedKanParameterSquare, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex]
   have hb : lift (SSet.const (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))
         (𝟙 PointedKanInfinity.{u}) ≫
       (β_ ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) PointedKanInfinity).hom =
@@ -98,18 +98,18 @@ lemma d3PointedKanParameterSquare_corner (i j : Fin 2) :
     rfl
   rw [← Category.assoc, ← Category.assoc, hb, Category.assoc,
     ← Category.assoc, d3PointedKanSquarePair_corner,
-    ← coherentNerveMap_comp, d3PointedKanParameterDiagram_stage]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp, d3PointedKanParameterDiagram_stage]
 
 /-- 元の共通右射影の段比較を、同じ実段図式終点の endpoint 円模型へ移す。
 新しい成分や円交換因子を選ばず、元のパラメータ表示同型を前合成する。 -/
 def commonChosenStageEndpointCircleIso (n : ℕ) :
-    FunctorIso (coherentNerveMap commonRefinedEnriched ≫
-      coherentNerveMap (d3StageKanEnriched n))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n))
       ((commonChosenStageLoopDiagramFamily.{u} n ≫
-        loopDiagramEvaluation PointedKanInfinity 1 1) ≫
-          coherentNerveMap (d3PointedKanIhom endpointCircle)) :=
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom endpointCircle)) :=
   commonChosenStageEndpointLoopIso n ≪≫
     (d3PointedKanEndpointLoopIso.precomp
-      (commonChosenStageLoopDiagramFamily n ≫ loopDiagramEvaluation PointedKanInfinity 1 1))
+      (commonChosenStageLoopDiagramFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

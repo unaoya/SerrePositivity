@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CoherentTrianglePathMaximum
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparison
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomComparison
 
 /-!
 概要：coherent nerve の二単体から Hom の経路を、三単体から Hom の正方形を取り出す。
@@ -33,8 +33,8 @@ def tetrahedronTrace (σ : (SimplicialNerve C) _⦋3⦌) :
 
 /-- Hom 比較の二単体から経路を取り出すと、元の Hom の辺そのものに戻る。 -/
 lemma triangleTrace_comparison {X Y : C} (a : (SimplicialCategory.sHom X Y) _⦋1⦌) :
-    triangleTrace (coherentHomComparisonSimplex a) = SSet.yonedaEquiv.symm a := by
-  change trianglePathInterval ≫ (pathLastMaximumMap (0 : Fin 2) ≫
+    triangleTrace (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex a) = SSet.yonedaEquiv.symm a := by
+  change trianglePathInterval ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap (0 : Fin 2) ≫
     SSet.yonedaEquiv.symm a) = _
   rw [← Category.assoc, trianglePathInterval_maximum, Category.id_comp]
 

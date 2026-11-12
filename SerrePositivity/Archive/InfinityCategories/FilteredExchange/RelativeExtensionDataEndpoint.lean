@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionDataIso
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：底と初期値の明示移送は、同じ引き戻しを標的とする実際の終点評価と交換する。

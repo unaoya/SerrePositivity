@@ -17,25 +17,25 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 元の指定随伴射の交差辺を全対象で厳密に回収する補正の存在証明。 -/
 theorem boundaryAssemblyCollageCorrection {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
     ∃ H' : SSet.Homotopy
-      (strictCoherentDiagram (boundaryPointedKanDiagram r F) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (boundaryPointedKanDiagram r F) ≫
         enrichedFunctorCollageBottomInfinity pointedKanLoopEnrichedFunctor)
-      (strictCoherentDiagram (boundaryPointedKanDiagram (r + 1) F) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (boundaryPointedKanDiagram (r + 1) F) ≫
         enrichedFunctorCollageTopInfinity pointedKanLoopEnrichedFunctor),
-      (∀ i, (simplicialHomotopyVertexEdge H' (ULift.up (nerveVertex i))).edge =
-        (coherentNerveEdge (enrichedFunctorCollageCross pointedKanLoopEnrichedFunctor
+      (∀ i, (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H' (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (enrichedFunctorCollageCross pointedKanLoopEnrichedFunctor
           (show (boundaryPointedKanDiagram r F).obj i ⟶
             pointedKanLoopObject ((boundaryPointedKanDiagram (r + 1) F).obj i) from
               ObjectProperty.homMk (boundaryKanAssemblyAdjoint r (F.obj i))))).edge) ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H') =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H') =
         SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (boundaryAssemblyCollageHomotopy r F)) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyCollageHomotopy r F)) :=
   exists_enrichedFunctorCollageTransport_specified_components pointedKanLoopEnrichedFunctor
     (F := boundaryPointedKanDiagram r F) (G := boundaryPointedKanDiagram (r + 1) F)
     (boundaryAssemblyNativeOmegaHomotopy r F)
@@ -51,9 +51,9 @@ def boundaryAssemblySpecifiedCollageHomotopy {I : Type u} [SmallCategory I]
 /-- 補正した円柱は元の固定構造射の交差辺を厳密に回収する。 -/
 lemma boundaryAssemblySpecifiedCollageHomotopy_vertex_edge {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (i : I) :
-    (simplicialHomotopyVertexEdge (boundaryAssemblySpecifiedCollageHomotopy r F)
-      (ULift.up (nerveVertex i))).edge =
-      (coherentNerveEdge (loopCollageCrossMap ((boundaryPointedKanDiagram r F).obj i)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (boundaryAssemblySpecifiedCollageHomotopy r F)
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (loopCollageCrossMap ((boundaryPointedKanDiagram r F).obj i)
         ((boundaryPointedKanDiagram (r + 1) F).obj i)
           (boundaryKanAssemblyAdjoint r (F.obj i)))).edge := by
   have h := (boundaryAssemblyCollageCorrection r F).choose_spec.1 i
@@ -66,9 +66,9 @@ lemma boundaryAssemblySpecifiedCollageHomotopy_vertex_edge {I : Type u} [SmallCa
 lemma boundaryAssemblySpecifiedCollageHomotopy_hom {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (boundaryAssemblySpecifiedCollageHomotopy r F)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblySpecifiedCollageHomotopy r F)) =
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (boundaryAssemblyCollageHomotopy r F)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (boundaryAssemblyCollageHomotopy r F)) :=
   (boundaryAssemblyCollageCorrection r F).choose_spec.2
 
 end SerrePositivity.KST.SConstruction

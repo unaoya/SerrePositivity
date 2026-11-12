@@ -24,7 +24,7 @@ open scoped Simplicial
 def mcCarthyThetaDiagram (X : StableModel.{u}) {m n : ℕ}
     (a : (objectSConstruction X.carrier) _⦋m⦌) (e : (cofiberSubobjectLeftFiber X a) _⦋n⦌) :
     arNerve n ⟶ zeroSourceCofibers (objectSLastDiagonalZeroVertex a) :=
-  vertexFiberLift _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift _ _
     (mcCarthyFiberDiagram X a ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e))
       (mcCarthyRhoTerminal_source X a e)
 
@@ -44,7 +44,7 @@ lemma mcCarthyThetaDiagram_map (X : StableModel.{u}) {m n l : ℕ}
     (σ : ⦋l⦌ ⟶ ⦋n⦌) :
     mcCarthyThetaDiagram X a ((cofiberSubobjectLeftFiber X a).map σ.op e) =
       arNerveMap σ.toOrderHom ≫ mcCarthyThetaDiagram X a e := by
-  apply vertexFiber_hom_ext _ _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_hom_ext _ _
   change _ ≫ zeroSourceCofibersι (objectSLastDiagonalZeroVertex a) =
     _ ≫ zeroSourceCofibersι (objectSLastDiagonalZeroVertex a)
   rw [mcCarthyThetaDiagram_ι, Category.assoc, mcCarthyThetaDiagram_ι]

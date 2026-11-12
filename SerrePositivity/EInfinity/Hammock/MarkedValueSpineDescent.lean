@@ -18,7 +18,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
   {D : Type uD} [Category.{vD} D] (F : Paths C ⥤ D) (hF : W.paths.IsInvertedBy F)
@@ -32,7 +32,7 @@ lemma valueDescent_marked : letI := valueCategory W
     valueMarkedFunctor W ⋙ valueDescent W F hF = markedValueDescent W F hF :=
   valueFoldFunctor_marked W _ _
 
-lemma valueDescent_generator (g : FactorTarget.Index W) : letI := valueCategory W
+lemma valueDescent_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : letI := valueCategory W
     (valueDescent W F hF).map (ValueSpine.generator W g) = F.map g.val.hom.toPath :=
   valueFoldFunctor_generator W _ _ g
 

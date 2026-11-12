@@ -18,7 +18,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全生成元の HA 値を回収する実 Hom 鎖射は、元の同じ標準復元鎖射に一致する。 -/
-lemma simplexHAChainLift_eq {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAChainLift_eq {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b)
     (F : serreCubeComplex A m ⟶ homObject A D (s.obj (v 0)) (s.obj b))
     (hF : ∀ i : SerreCubeGeneratorIndex m,
@@ -36,13 +36,13 @@ lemma simplexHAChainLift_map_recovery {N : ℕ}
     simplexHAChainLift A (cubicalLambdaNativeSimplex A F) m v b hb =
       simplexHADecodeSubsetCell A m v {b} (Finset.singleton_nonempty b)
         (fun _ ht => (Finset.mem_singleton.mp ht) ▸ hb) ≫
-          F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) := by
+          F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) := by
   apply HomologicalComplex.Hom.ext
   funext k
   exact simplexHADegreeLift_map_recovery A F m v b hb k
 
 /-- 元の実 Hom 鎖射の復元は、元の厳密 dg 関手による後合成と厳密に可換。 -/
-lemma simplexHAChainLift_post {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAChainLift_post {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     {E : Type w} [DGCategory A E] (F : DGFunctor A D E) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) :
     simplexHAChainLift A (s.map F) m v b hb =
@@ -52,7 +52,7 @@ lemma simplexHAChainLift_post {N : ℕ} (s : DGNerve.Simplex A D N)
   exact simplexHADegreeLift_post A s.toSimplexData F m v b hb k
 
 /-- 元の零次元の標準実復元は、既存の元の HA 辺の閉性による鎖射と一致する。 -/
-lemma simplexHAChainLift_zero {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAChainLift_zero {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (v : Fin 1 ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v 0 < b) :
     simplexHAChainLift A s 0 v b hb = simplexHAZeroChainLift A s v b hb := by
   apply HomologicalComplex.Hom.ext

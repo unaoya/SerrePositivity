@@ -57,7 +57,7 @@ def matrixComponentMap (A : SimplicialObject RingCat.{u}) (r : ℕ) :
 -/
 theorem matrixComponentMap_simplex (A : SimplicialObject RingCat.{u}) (r n : ℕ)
     (a : (matrixSpace A r) _⦋n⦌) :
-    matrixComponentMap A r (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass (matrixSpace A r) a) = matrixToComponents A r n a :=
+    matrixComponentMap A r (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass (matrixSpace A r) a) = matrixToComponents A r n a :=
   matrixToComponents_natural A r (SimplexCategory.const ⦋0⦌ ⦋n⦌ 0) a
 
 /--
@@ -73,7 +73,7 @@ def hatGLComponentIso (A : SimplicialObject RingCat.{u}) (r : ℕ) :
       (componentSubcomplex (matrixSpace A r)
         (fun c => IsUnit (matrixComponentMap A r c)) : SSet).obj n from
     { toFun := fun a => ⟨a.val, by
-        change IsUnit (matrixComponentMap A r (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass (matrixSpace A r) a.val))
+        change IsUnit (matrixComponentMap A r (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass (matrixSpace A r) a.val))
         rw [matrixComponentMap_simplex]
         exact a.property⟩
       invFun := fun a => ⟨a.val, by

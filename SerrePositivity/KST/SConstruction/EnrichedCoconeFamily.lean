@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.EnrichedMappingLaws
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedMappingLaws
 public import Mathlib.AlgebraicTopology.SimplicialCategory.Basic
 
 /-! # 余錐成分への全豊穣族の自然性と単位

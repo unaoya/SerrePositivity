@@ -19,28 +19,28 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 全自然同値を入力とする、元の全多単体 S• 図式。 -/
 def stableMultiSEnrichedDiagram (r : ℕ) :
-    (Fin r → SimplexCategoryᵒᵖ) ⥤ QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} :=
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} :=
   multiSQuasicategoryEnrichedDiagram r ⋙
-    quasicategoryEnrichedPrecompositionFunctor (coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+    quasicategoryEnrichedPrecompositionFunctor (coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
 
 /-- 全自然同値と元の全多次数を保持する、実 core S• 図式。 -/
 def stableMultiSCoreEnrichedDiagram (r : ℕ) :
-    (Fin r → SimplexCategoryᵒᵖ) ⥤ QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} :=
+    (Fin r → SimplexCategoryᵒᵖ) ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} :=
   stableMultiSEnrichedDiagram r ⋙ quasicategoryEnrichedObjectCoreFunctor
 
 /-- 同じ全多次数の実値は、元の反復 core S• の値。 -/
 lemma stableMultiSCoreEnrichedDiagram_obj (r : ℕ)
-    (d : Fin r → SimplexCategoryᵒᵖ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (d : Fin r → SimplexCategoryᵒᵖ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (((stableMultiSCoreEnrichedDiagram r).obj d).obj C).obj =
       (multiCoreSConstruction r (stableCategoryModel C)).obj d := rfl
 
 /-- 元の通常の完全射では、同じ反復 S の射を回収する。 -/
 lemma stableMultiSEnrichedDiagram_hom (r : ℕ)
-    (d : Fin r → SimplexCategoryᵒᵖ) {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    (d : Fin r → SimplexCategoryᵒᵖ) {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     eHomEquiv SSet.{u} F ≫ ((stableMultiSEnrichedDiagram r).obj d).map C D =
       curry' (C := SSet.{u}) (multiSExactMap r d F).hom := by
   change eHomEquiv SSet.{u} F ≫
-    ((coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}).map C D ≫
+    ((coreEnrichedInclusion _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}).map C D ≫
       (multiSQuasicategoryEnrichedFunctor r d).map C D) = _
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun q => q ≫ (multiSQuasicategoryEnrichedFunctor r d).map C D)
@@ -49,9 +49,9 @@ lemma stableMultiSEnrichedDiagram_hom (r : ℕ)
 
 /-- 元の通常の完全射では、同じ反復 core の射を回収する。 -/
 lemma stableMultiSCoreEnrichedDiagram_hom (r : ℕ)
-    (d : Fin r → SimplexCategoryᵒᵖ) {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    (d : Fin r → SimplexCategoryᵒᵖ) {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     eHomEquiv SSet.{u} F ≫ ((stableMultiSCoreEnrichedDiagram r).obj d).map C D =
-      curry' (C := SSet.{u}) (quasicategoryCoreMap (multiSExactMap r d F).hom) := by
+      curry' (C := SSet.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (multiSExactMap r d F).hom) := by
   change eHomEquiv SSet.{u} F ≫
     ((quasicategoryEnrichedCoreFunctor ((stableMultiSEnrichedDiagram r).obj d)).map C D ≫
       𝟙 _) = _

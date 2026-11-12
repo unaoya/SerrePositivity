@@ -13,8 +13,8 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 任意の最内側 S_n 行の後も、元の同じ両射影の object S は厳密引き戻し。 -/
-theorem completedTwo_sObjectS_isPullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
+theorem completedTwo_sObjectS_isPullback {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ) :
     IsPullback (objectSConstructionFunctor.map ((sEndofunctor n).map (completedTwoCofiber q)))
       (objectSConstructionFunctor.map ((sEndofunctor n).map (completedTwoFirst q)))
       (objectSConstructionFunctor.map ((sEndofunctor n).map (relativeCofiberSubobject

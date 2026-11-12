@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.LengthBoundaryLift
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LengthNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LengthNaturality
 
 /-!
 # 元の境界と貼り合わせ射の図式の比較への自然性
@@ -20,9 +20,9 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
-variable {F G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+variable {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
 
-def BoundaryPresentation.map {n : ℕ} {c : Word} {k : SimplexCategoryᵒᵖ}
+def BoundaryPresentation.map {n : ℕ} {c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {k : SimplexCategoryᵒᵖ}
     {x : (F.obj c).obj k} (p : BoundaryPresentation F n c k x) :
     BoundaryPresentation G n c k ((η.app c).app k x) where
   source := p.source
@@ -37,7 +37,7 @@ def BoundaryPresentation.map {n : ℕ} {c : Word} {k : SimplexCategoryᵒᵖ}
     rw [p.image] at he
     exact he.symm
 
-def lengthBoundaryMap (n : ℕ) (c : Word) :
+def lengthBoundaryMap (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     (lengthBoundary F n c).toFunctor ⟶ (lengthBoundary G n c).toFunctor where
   app k := ↾fun x => ⟨(η.app c).app k x.val,
     (lengthBoundary_mem_iff G n c k _).2
@@ -48,11 +48,11 @@ def lengthBoundaryMap (n : ℕ) (c : Word) :
     apply Subtype.ext
     exact NatTrans.naturality_apply (η.app c) α x.val
 
-lemma lengthBoundaryMap_ι (n : ℕ) (c : Word) :
+lemma lengthBoundaryMap_ι (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     lengthBoundaryMap η n c ≫ (lengthBoundary G n c).ι =
       (lengthBoundary F n c).ι ≫ η.app c := rfl
 
-lemma lengthBoundaryMap_lift (n : ℕ) {a c : Word} (ha : a.length ≤ n)
+lemma lengthBoundaryMap_lift (n : ℕ) {a c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (ha : a.length ≤ n)
     (f : a ⟶ c) (hf : Function.Injective f.orderHom) :
     lengthBoundaryLift F n ha f hf ≫ lengthBoundaryMap η n c =
       η.app a ≫ lengthBoundaryLift G n ha f hf := by
@@ -64,9 +64,9 @@ lemma lengthBoundaryMap_lift (n : ℕ) {a c : Word} (ha : a.length ≤ n)
   exact congrArg (fun θ => θ.app k σ) (η.naturality f)
 
 lemma lengthBoundaryMap_attach (hF : ProperDiagram F) (hG : ProperDiagram G)
-    (n : ℕ) (c : Word) :
+    (n : ℕ) (c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     lengthBoundaryMap η n c ≫ lengthBoundaryToStage hG n c =
-      lengthBoundaryToStage hF n c ≫ lengthStageMap η n := by
+      lengthBoundaryToStage hF n c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n := by
   apply NatTrans.ext
   funext k
   apply ConcreteCategory.hom_ext
@@ -78,12 +78,12 @@ lemma lengthBoundaryMap_attach (hF : ProperDiagram F) (hG : ProperDiagram G)
   have hv := lengthBoundaryStageValue_eq hG n c k ((lengthBoundaryMap η n c).app k x)
     p.bound p.arrow p.injective ((η.app p.source).app k p.simplex) hp
   have hi := congrArg (fun θ => θ.app k p.simplex)
-    (lengthStageInclusion_map η n p.source p.bound)
-  change (lengthStageMap η n).app k
-    ((lengthStageInclusion F n p.source p.bound).app k p.simplex) =
-    (lengthStageInclusion G n p.source p.bound).app k ((η.app p.source).app k p.simplex) at hi
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion_map η n p.source p.bound)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n).app k
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion F n p.source p.bound).app k p.simplex) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageInclusion G n p.source p.bound).app k ((η.app p.source).app k p.simplex) at hi
   change lengthBoundaryStageValue G n c k ((lengthBoundaryMap η n c).app k x) =
-    (lengthStageMap η n).app k (lengthBoundaryStageValue F n c k x)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthStageMap η n).app k (lengthBoundaryStageValue F n c k x)
   rw [hv, lengthBoundaryStageValue_eq hF n c k x p.bound p.arrow p.injective p.simplex p.image]
   exact hi.symm
 

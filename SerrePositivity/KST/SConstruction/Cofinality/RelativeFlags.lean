@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.MultiCompletion
-public import SerrePositivity.InfinityCategories.Core.TerminalVertices
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalVertices
 
 /-!
 概要：同じ全多次数の S 図式で wide 部分圏に入る旗の全関手部分圏を構成する。
@@ -26,7 +26,7 @@ variable (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) (Y : StableModel.{u})
 def multiRelativeFlagPredicate
     (M : (((multiSEndofunctor r).obj ι).obj Y).carrier.Subcomplex) (K : SSet.{u})
     (v : ((ihom K).obj (((multiSEndofunctor r).obj ι).obj Y).carrier) _⦋0⦌) : Prop :=
-  ∃ g : K ⟶ (M : SSet.{u}), functorVertex (g ≫ M.ι) = v
+  ∃ g : K ⟶ (M : SSet.{u}), _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (g ≫ M.ι) = v
 
 /-- 概要：同じ S 多次数の相対旗の全高次単体を保持する。
 方針：持ち上がる旗を頂点とする ambient 関手圏の全部分複体。
@@ -35,7 +35,7 @@ def multiRelativeFlagPredicate
 def multiRelativeFlags
     (M : (((multiSEndofunctor r).obj ι).obj Y).carrier.Subcomplex) (K : SSet.{u}) :
     SSet.{u} :=
-  fullSubcomplexOnVertices ((ihom K).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom K).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
     (multiRelativeFlagPredicate r ι Y M K)
 
 instance multiRelativeFlags_quasicategory
@@ -52,7 +52,7 @@ def multiRelativeFlagsInclusion
     (M : (((multiSEndofunctor r).obj ι).obj Y).carrier.Subcomplex) (K : SSet.{u}) :
     multiRelativeFlags r ι Y M K ⟶
       (ihom K).obj (((multiSEndofunctor r).obj ι).obj Y).carrier :=
-  (fullSubcomplexOnVertices _ (multiRelativeFlagPredicate r ι Y M K)).ι
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (multiRelativeFlagPredicate r ι Y M K)).ι
 
 /-- 概要：旗の任意の前合成は相対旗を同じ多次数内に保つ。
 方針：元の旗全体の持ち上げをそのまま前合成する。
@@ -62,13 +62,13 @@ def multiRelativeFlagsPrecomp
     (M : (((multiSEndofunctor r).obj ι).obj Y).carrier.Subcomplex)
     {L K : SSet.{u}} (i : L ⟶ K) :
     multiRelativeFlags r ι Y M K ⟶ multiRelativeFlags r ι Y M L :=
-  fullSubcomplexLift (multiRelativeFlagPredicate r ι Y M L)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (multiRelativeFlagPredicate r ι Y M L)
     (multiRelativeFlagsInclusion r ι Y M K ≫
       (pre i).app (((multiSEndofunctor r).obj ι).obj Y).carrier) (by
         intro v
-        obtain ⟨g, hg⟩ := fullSubcomplexOnVertices_vertex v
+        obtain ⟨g, hg⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
         refine ⟨i ≫ g, ?_⟩
-        change functorVertex ((i ≫ g) ≫ M.ι) =
+        change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((i ≫ g) ≫ M.ι) =
           ((pre i).app _).app (Opposite.op ⦋0⦌) v.val
         exact (congrArg (fun q => ((pre i).app _).app (Opposite.op ⦋0⦌) q) hg))
 

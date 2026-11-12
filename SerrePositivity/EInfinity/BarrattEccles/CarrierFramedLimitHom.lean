@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.BarrattEccles.CarrierRightFrames
 public import SerrePositivity.EInfinity.BarrattEccles.CarrierFramedLimitProbe
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitCones
 public import SerrePositivity.EInfinity.HomotopyWeight.TensorPiZero
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameComparison
 
 /-!
 # 底の Kan 錐と忘却後の計算対象への導来 Hom
@@ -55,7 +55,7 @@ lemma carrierFramedLimitConeSpace_kanComplex (F : K ⥤ (operad A).Algebra) (Y :
   let := projectiveModelCategory A
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
-    SerrePositivity.EInfinity.FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   exact HomotopyWeight.frameCone_kanComplex Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
     (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K) (carrierRightFrameDiagram A K F)
     (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))
@@ -78,7 +78,7 @@ def carrierFramedLimitHomPiZeroEquiv (F : K ⥤ (operad A).Algebra) (Y : Complex
     infer_instance
   have := carrierFramedLimitProbe_cofibrant A Y
   have : IsFibrant (op (carrierFramedLimitProbe A Y)) :=
-    SerrePositivity.EInfinity.FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
     (carrierRightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => carrierRightFrame_cofibrant A (F.obj k.unop))

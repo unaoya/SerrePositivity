@@ -66,7 +66,7 @@ def multiplicativeRightFrameFamily : CosimplicialFrameFamily (C := (Mon (Complex
 def multiplicativeRightFrameMappingFunctor (A : Mon (Complex R)) :
     Mon (Complex R) ⥤ SSet.{u} :=
   (multiplicativeRightFrameFunctor R).rightOp ⋙
-    cosimplicialHomBifunctor ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
       (evaluation (Mon (Complex R))ᵒᵖ SSet.{u}).obj (op A)
 
 set_option maxHeartbeats 800000 in -- 元の畳み込み写像関手と反対 frame の全自然比較を照合する。

@@ -22,9 +22,9 @@ theorem boundaryKanAdditivityGroup_injective (r : ℕ) (X : StableModel.{u}) (n 
       ((pointedGroupMap n ((boundaryKanRealizationFunctor r).map (cofiberStableSubobject X))).prod
         (pointedGroupMap n ((boundaryKanRealizationFunctor r).map (cofiberStableQuotient X)))) := by
   intro a b h
-  apply (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map_bijective_of_piIsomorphism n
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map_bijective_of_piIsomorphism n
     (boundaryKanAdditivityMap r X).right (boundaryKanAdditivityMap_piIsomorphism r X)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)).injective
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)).injective
   apply pointedGroupProd_injective ((boundaryKanRealizationFunctor r).obj X)
     ((boundaryKanRealizationFunctor r).obj X) n
   apply Prod.ext

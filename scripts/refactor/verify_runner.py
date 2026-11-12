@@ -150,19 +150,28 @@ class RSSSampler:
         self.thread.join()
 
 
-def schedule_checks(paths, action, stats, jobs, budget_bytes, on_complete=lambda r: None):
+def schedule_checks(paths, action, stats, jobs, budget_bytes, on_complete=lambda r: None,
+                    exclusive_paths=()):
     """Unknown first, then longest first; dispatch the first task that fits."""
     if jobs < 1 or budget_bytes < 0:
         raise ValueError('invalid scheduler limits')
+    exclusive = set(exclusive_paths)
+    if not exclusive <= set(paths):
+        raise ValueError('exclusive audits must be scheduled audit paths')
     pending = sorted(paths, key=lambda p: (p in stats, -stats.get(p, {}).get('seconds', 0), p))
     estimate = {p: stats.get(p, {}).get('max_rss_bytes', UNKNOWN_RSS_BYTES) for p in pending}
     report = {'planned_order': pending[:], 'start_order': [], 'events': [],
               'memory_budget_bytes': budget_bytes, 'unknown_rss_bytes': UNKNOWN_RSS_BYTES,
               'max_concurrent': 0, 'max_reserved_rss_bytes': 0,
+              'exclusive_audits': sorted(exclusive), 'max_exclusive_concurrent': 0,
               'memory_wait_count': 0, 'memory_wait_seconds': 0.0}
     active, results, threads = {}, [], []
     ready = queue.Queue()
     started = time.monotonic()
+    def fits(path):
+        if path in exclusive and exclusive.intersection(active):
+            return False
+        return not budget_bytes or sum(active.values()) + estimate[path] <= budget_bytes
     def event(kind, **fields):
         report['events'].append({'event': kind, 'at_seconds': round(time.monotonic()-started, 6), **fields})
     def worker(path):
@@ -173,8 +182,7 @@ def schedule_checks(paths, action, stats, jobs, budget_bytes, on_complete=lambda
     try:
         while pending or active:
             while pending and len(active) < jobs:
-                reserved = sum(active.values())
-                fit = next((p for p in pending if not budget_bytes or reserved + estimate[p] <= budget_bytes), None)
+                fit = next((p for p in pending if fits(p)), None)
                 # A single audit larger than the budget must not deadlock the queue.
                 oversize = fit is None and not active
                 if oversize:
@@ -184,12 +192,15 @@ def schedule_checks(paths, action, stats, jobs, budget_bytes, on_complete=lambda
                 pending.remove(fit); active[fit] = estimate[fit]
                 report['start_order'].append(fit)
                 report['max_concurrent'] = max(report['max_concurrent'], len(active))
+                report['max_exclusive_concurrent'] = max(
+                    report['max_exclusive_concurrent'], len(exclusive.intersection(active)))
                 report['max_reserved_rss_bytes'] = max(report['max_reserved_rss_bytes'], sum(active.values()))
                 event('start', name=fit, estimated_rss_bytes=estimate[fit],
-                      reserved_rss_bytes=sum(active.values()), concurrent=len(active), oversize_alone=oversize)
+                      reserved_rss_bytes=sum(active.values()), concurrent=len(active), oversize_alone=oversize,
+                      exclusive=fit in exclusive)
                 thread = threading.Thread(target=worker, args=(fit,)); threads.append(thread); thread.start()
-            blocked = bool(pending and len(active) < jobs and budget_bytes
-                           and not any(sum(active.values()) + estimate[p] <= budget_bytes for p in pending))
+            blocked = bool(pending and len(active) < jobs
+                           and not any(fits(p) for p in pending))
             if blocked:
                 report['memory_wait_count'] += 1
                 event('memory_wait', reserved_rss_bytes=sum(active.values()), pending=pending[:], active=list(active))
@@ -288,7 +299,11 @@ def retry_environment_failure(root, record):
 
 
 def run_checks(root, audits, keys, jobs, use_cache, memory_gb=40, telemetry=None):
-    """Join scheduled audits before serial retries, audit_axioms, and sorry."""
+    """Join scheduled audits before serial retries, audit_axioms, and sorry.
+
+    VERIFY_EXCLUSIVE_AUDITS names a whitespace-separated mutual exclusion group;
+    it constrains concurrency without changing the selected audits or their checks.
+    """
     out = root / '.lake/verify'
     stats = read_stats(root)
     git = subprocess.run(['git','rev-parse','HEAD'], cwd=root, capture_output=True, text=True)
@@ -305,9 +320,13 @@ def run_checks(root, audits, keys, jobs, use_cache, memory_gb=40, telemetry=None
     progress()
     started = time.monotonic()
     normal = [p for p in audits if p != HEAVY_AUDIT]
+    exclusive = set(os.environ.get('VERIFY_EXCLUSIVE_AUDITS', '').split())
+    if not exclusive <= set(audits):
+        raise ValueError('VERIFY_EXCLUSIVE_AUDITS contains an unselected audit')
     initial, scheduling = schedule_checks(normal,
         lambda p: execute(root, 'audit', p, keys[p], use_cache),
-        dict(stats), jobs, memory_budget(memory_gb), completed_audit)
+        dict(stats), jobs, memory_budget(memory_gb), completed_audit,
+        exclusive_paths=exclusive.intersection(normal))
     pool_seconds = round(time.monotonic()-started, 3)
     records = []
     for first in initial:

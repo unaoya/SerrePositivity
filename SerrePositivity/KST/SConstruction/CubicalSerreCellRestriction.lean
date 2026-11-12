@@ -14,7 +14,7 @@ open CategoryTheory Opposite
 variable (A : Type u) [CommRing A]
 
 /-- 元の cell の制限は、元の Yoneda 射の前合成。 -/
-lemma cubicalCell_restrict {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalCell_restrict {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ d) (x : K.obj (op d)) :
     cubicalYoneda.map f ≫ cubicalCell d x = cubicalCell c (K.map f.op x) := by
   change uliftYoneda.{u}.map f ≫ uliftYonedaEquiv.symm x =
@@ -22,7 +22,7 @@ lemma cubicalCell_restrict {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.In
   exact (uliftYonedaEquiv_symm_map.{u} f.op x).symm
 
 /-- 元の恒等 cell の Yoneda 射は恒等自然変換。 -/
-lemma cubicalCell_identity (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma cubicalCell_identity (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     cubicalCell c (K := cubicalYoneda.{u}.obj c) (ULift.up (𝟙 c)) =
       𝟙 (cubicalYoneda.obj c) := by
   apply (uliftYonedaEquiv.{u} (X := c) (F := cubicalYoneda.{u}.obj c)).injective
@@ -32,7 +32,7 @@ lemma cubicalCell_identity (c : _root_.SerrePositivity.InfinityCategories.Kan.Co
   exact Equiv.apply_symm_apply _ _
 
 /-- 元の恒等 cell の鎖射は、同じ左 Kan 延長の単位。 -/
-lemma cubicalSerreCell_identity (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+lemma cubicalSerreCell_identity (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     cubicalSerreCell A c (K := cubicalYoneda.obj c) (ULift.up (𝟙 c)) =
       (cubicalSerreChainsCubeUnit A).app c := by
   change cubicalSerreGenerator A
@@ -40,7 +40,7 @@ lemma cubicalSerreCell_identity (c : _root_.SerrePositivity.InfinityCategories.K
   rw [cubicalCell_identity, cubicalSerreGenerator_id]
 
 /-- 元の cell の制限は、元の Serre 鎖射との合成を回収する。 -/
-lemma cubicalSerreCell_restrict {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreCell_restrict {K : CubicalSet.{u}} {c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ d) (x : K.obj (op d)) :
     (serreConcreteCubeComplexFunctor A).map f ≫ cubicalSerreCell A d x =
       cubicalSerreCell A c (K.map f.op x) := by

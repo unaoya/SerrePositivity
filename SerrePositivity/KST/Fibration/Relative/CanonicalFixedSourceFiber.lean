@@ -32,10 +32,10 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：群の抽象同型から実辺を作らず、商側の fixed K への輸送は主張しない。
 使われ方：d の始点を元の固定 K に保った非負次数判定。 -/
 def dgKappaCanonicalFixedSourceFiberComparison :
-    Sp.{max (u + 1) v}.Edge (coherentNerveVertex (dgKInputSpectrum R D))
+    Sp.{max (u + 1) v}.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R D))
       (dgKappaSuppliedBFKLimitCone R D I).vertex :=
   SSet.Edge.ofTruncated
-    ((((coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated).comp
+    ((((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated).comp
       (dgKappaSuppliedBFSourceEdge R D I)).comp (dgKappaSuppliedBFFiberComparison R D I))
 
 /-- 概要：固定 K(D) 始点の同じ実 fiber 比較は、c5 の下で非負次数 π 同型。
@@ -48,7 +48,7 @@ theorem dgKappaCanonicalFixedSourceFiberComparison_nonnegative
     (j : ℤ) (hj : 0 ≤ j) :
     Function.Bijective (SpectrumHo.piMap (Truncated.HomotopyCategory.homMk
       (dgKappaCanonicalFixedSourceFiberComparison R D I).toTruncated) j) := by
-  let a := (coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated
+  let a := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaNativeKernelKComparison R D I)).toTruncated
   let b := dgKappaSuppliedBFSourceEdge R D I
   let c := dgKappaSuppliedBFFiberComparison R D I
   have ha : IsIso (Truncated.HomotopyCategory.homMk a) :=

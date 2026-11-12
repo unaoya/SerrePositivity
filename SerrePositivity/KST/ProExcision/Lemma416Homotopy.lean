@@ -24,21 +24,23 @@ variable {R : Type u} [Ring R]
 規約：KST A.3・4.16、等式輸送を端点の証明欄に留める。
 使われ方：A.5・A.6 の実群準同型の端点の同定。 -/
 def LinearizedMHomotopy.congr {X : SSet.{u}} {D : SimplicialObject (ModuleCat.{u} ℤ)}
-    {f g f' g' : linearizedSpace X ⟶ D} {m : ℕ}
-    (H : LinearizedMHomotopy f g m) (hf : f = f') (hg : g = g') :
-    LinearizedMHomotopy f' g' m where
+    {f g f' g' : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace X ⟶ D} {m : ℕ}
+    (H : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f g m) (hf : f = f') (hg : g = g') :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy f' g' m where
   h := H.h
   h₀ n hn := (H.h₀ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hf)
   h₁ n hn := (H.h₁ n hn).trans (congrArg (fun t ↦ t.app (op ⦋n⦌)) hg)
+
+with_weak_namespace _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy export _root_.SerrePositivity.KST.ProExcision.LinearizedMHomotopy (congr)
 
 /-- 概要：Lemma 4.16 の非同変な実帰納段階。
 方針：因子内の m 次入力と Q の0次入力へ μ 版 A.5 を適用し、A.6 と連結して相殺する。
 規約：非被約 C(H)、A.5 の右辺の augmentation 補正、非可換な実群。
 使われ方：全 m の実帰納ホモトピー。外部行列作用の同変性を含めない。 -/
 def lemma416HomotopyStep (n m : ℕ) (J : TwoSidedIdeal R) (a : J)
-    (h : LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J) →* triangularBlockGroup n (m + 1) J)) m) :
-    LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n (m + 1) J (a : R)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n (m + 1) J (a : R)))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J) →* triangularBlockGroup n (m + 2) J)) (m + 1) := by
   let d := lemma416GroupData n m J (a : R)
   let hA := constructionA5 d m 0 h (groupZeroMHomotopy (MonoidHom.id (Multiplicative (Fin n → J))))
@@ -60,7 +62,7 @@ def lemma416HomotopyStep (n m : ℕ) (J : TwoSidedIdeal R) (a : J)
 規約：KST Lemma 4.16 の非可換版の非同変部分。外部作用・関手性は別の性質。
 使われ方：行列同変性を付けて A.4 と Proposition 4.14 へ渡す前の実ホモトピー。 -/
 def lemma416Homotopy (n : ℕ) (J : TwoSidedIdeal R) (a : J) (m : ℕ) :
-    LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap (lastRightColumnHom n m J (a : R)))
       (groupLinearizedMap (1 : Multiplicative (Fin n → J) →* triangularBlockGroup n (m + 1) J)) m :=
   Nat.rec (groupZeroMHomotopy (lastRightColumnHom n 0 J (a : R)))
     (fun m h ↦ lemma416HomotopyStep n m J a h) m

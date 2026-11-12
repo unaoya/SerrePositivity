@@ -16,12 +16,12 @@ noncomputable section
 universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra
 
 /-- BK 重みの各対象を、元のホーンと外側の二頂点の重みへ同定する。 -/
 def cospanBKWeightComponent (i : AsSmall.{u} WalkingCospan) :
-    (bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj i ≅ loopHornWeight.obj i :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj i ≅ loopHornWeight.obj i :=
   match i with
   | ⟨none⟩ =>
       (nerveOverTerminalIso _ cospanOne_isTerminal).trans CospanShape.cospanNerveHornIso
@@ -33,14 +33,14 @@ def cospanBKWeightComponent (i : AsSmall.{u} WalkingCospan) :
         (Over.mk (𝟙 _))
 
 /-- cospan の BK 重みは、二辺のホーン重みと自然同型。 -/
-def cospanBKWeightIso : bousfieldKanWeight (AsSmall.{u} WalkingCospan) ≅
+def cospanBKWeightIso : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ≅
     loopHornWeight :=
   NatIso.ofComponents cospanBKWeightComponent (by
     rintro ⟨a⟩ ⟨b⟩ ⟨f⟩
     change WidePullbackShape.Hom a b at f
     cases f with
     | id a =>
-      change (bousfieldKanWeight (AsSmall.{u} WalkingCospan)).map
+      change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).map
         (𝟙 (AsSmall.up.obj a)) ≫ _ = _ ≫ loopHornWeight.map (𝟙 (AsSmall.up.obj a))
       simp
     | term k =>

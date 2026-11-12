@@ -56,7 +56,7 @@ def hom : SSet.{max u v} where
     have h := congrArg Cat.Hom.toFunctor ((literal C).map_comp θ φ)
     exact congr($(h).map f)
 
-def augmentation : UniverseLift.obj.{max u v} (hom C X Y) ⟶
+def augmentation : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (hom C X Y) ⟶
     OrdinaryBarDiagonalHomAugmentation.baseHom C X Y where
   app n := ↾fun f => ULift.up ((OrdinaryBarFixedAugmentation.sourceProjection C n).map f.down)
   naturality {_ _} θ := by

@@ -20,7 +20,7 @@ namespace SerrePositivity.KST.Spectra.LoopExchangePaths
 variable {Y Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right) (v : Z ⟶ Z')
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right) (v : Z ⟶ Z')
 
 /-- 同じ左右の定数二単体を保持した、元の二つの正方形の実際の合成データ。 -/
 def exchangePostPasting :
@@ -30,7 +30,7 @@ def exchangePostPasting :
       (PointedMapping.familyVertex ((reversal Y ≫ doublePost h) ≫ TripleCircle.loopPost v)) := by
   let targetKan : KanComplex (PointedObject.basedHom (doubleLoop Y)
       (doubleLoop (PointedObject.basedHom CirclePower.space.{u} Z'))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact SquareAdjustment.ConstantBoundaryPasting.choose _ _ _ _
     (exchangePostProjectionSquare_start h hh v) (exchangePostProjectionSquare_finish h hh v)
     (exchangeRestrictedNaturalitySquare_start h v) (exchangeRestrictedNaturalitySquare_finish h v)

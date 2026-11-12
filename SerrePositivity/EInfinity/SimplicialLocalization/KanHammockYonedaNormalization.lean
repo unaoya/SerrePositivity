@@ -16,21 +16,21 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SSet Opposite Hammock
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) (X : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X : C.category)
 
 /-- 概要：正本 Yoneda の同じ恒等点は元の通常恒等射の hammock 零単体。
 方針：同じ源関手の恒等射保存と実 Hom 点の公式を評価する。
 規約：対象宇宙の持ち上げは Hom を変更しない。
 使われ方：原本の全 Yoneda 比較の始点の正規化。 -/
 lemma kanHammockYonedaIdentity_zero :
-    representableHomIdentity
-      (D := CoherentObjectLift (KanHammockCategory C))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomIdentity
+      (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C))
       (ULift.up ((kanHammockSourceFunctor C).obj X)) =
     SSet.unitHomEquiv _
-      (arrowMap C.weakEquivalences (𝟙 X) ≫
-        exInfinityUnit.app (colimitGraph C.weakEquivalences X X)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences (𝟙 X) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X X)) := by
   change SSet.unitHomEquiv _ (eId SSet ((kanHammockSourceFunctor C).obj X)) = _
   apply congrArg (SSet.unitHomEquiv _)
   have h := kanHammockSourceFunctor_homTo C (𝟙 X)
@@ -42,14 +42,14 @@ lemma kanHammockYonedaIdentity_zero :
 規約：全 Yoneda 同型の定義と同じ全空間射を使う。
 使われ方：全図式の比較と元の局所化射の零単体回収の接続。 -/
 lemma kanHammockYonedaCosliceIdentity_zero :
-    let x : CoherentObjectLift (KanHammockCategory C) :=
+    let x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C) :=
       ULift.up ((kanHammockSourceFunctor C).obj X)
-    pointedSpaceFiberVertexEquiv ((representableHomFunctor x).obj x)
-      ((KanCosliceComparison.fiberIso (representableHomFunctor x) x).hom.app (op ⦋0⦌)
-        (KanCosliceComparison.start (representableHomFunctor x) x
-          (representableHomIdentityCoefficient x))) = representableHomIdentity x :=
-  representableHomCosliceIdentity_value
-    (D := CoherentObjectLift (KanHammockCategory C))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.pointedSpaceFiberVertexEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor x).obj x)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison.fiberIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor x) x).hom.app (op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison.start (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor x) x
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomIdentityCoefficient x))) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomIdentity x :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomCosliceIdentity_value
+    (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C))
     (ULift.up ((kanHammockSourceFunctor C).obj X))
 
 /-- 概要：同じ大域 Yoneda 射の全 Hom 上の fiber は同じ恒等係数への合成作用。
@@ -57,12 +57,12 @@ lemma kanHammockYonedaCosliceIdentity_zero :
 規約：別の点ごとの比較射を選ばない。
 使われ方：元の射の零単体を同じ全 Yoneda 比較の中で追跡する。 -/
 def kanHammockYonedaFiberActionIso (Y : C.category) :=
-  KanCosliceComparison.fiber_actionIso
-    (representableHomFunctor (D := CoherentObjectLift (KanHammockCategory C))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanCosliceComparison.fiber_actionIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.representableHomFunctor (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C))
       (ULift.up ((kanHammockSourceFunctor C).obj X)))
     (ULift.up ((kanHammockSourceFunctor C).obj X))
-    (representableHomIdentityCoefficient
-      (D := CoherentObjectLift (KanHammockCategory C))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.representableHomIdentityCoefficient
+      (D := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CoherentObjectLift (KanHammockCategory C))
       (ULift.up ((kanHammockSourceFunctor C).obj X)))
     (ULift.up ((kanHammockSourceFunctor C).obj Y))
 

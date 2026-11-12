@@ -54,7 +54,7 @@ lemma kanAdjointRelativeStructure_source_face (n : ℕ) :
     (kanAdjointCanonicalVerticalStructurePath X Y φ j) n
   have ho := (kanAdjointRelativeTracedStructureHomotopy X Y φ j n).h₀.trans
     ((PointedMapping.VerticalPath.edge_yonedaEquiv_symm _).trans ht)
-  have he := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+  have he := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
     ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).level
       (n + 1)).space).right)
     (kanAdjointRelativeTracedStageCorrectionInterval_path X Y φ j (n + 1))
@@ -82,7 +82,7 @@ lemma kanAdjointRelativeStructure_target_face (n : ℕ) :
       (suspensionHom (X.level n).space
         ((KanSequence.mapping A
           (KanSequence.signedLoopTail Y.toKanSequence)).level n).space).right ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).right)
     (kanAdjointRelativeTracedStageCorrectionInterval_path X Y φ j n)
   exact ho.trans he.symm

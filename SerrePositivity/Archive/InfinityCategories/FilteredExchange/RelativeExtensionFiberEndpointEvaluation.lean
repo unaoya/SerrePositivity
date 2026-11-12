@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.RelativeConstFiberEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeExtensionFiberEndpoint
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation
 
 /-!
 概要：元の fiber 終点の全評価を含めると、同じ延長全族の実際の制限を回収する。

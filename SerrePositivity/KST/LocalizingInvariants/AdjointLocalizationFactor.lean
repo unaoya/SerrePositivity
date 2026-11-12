@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.AdjointLocalization
 public import SerrePositivity.KST.LocalizingInvariants.FunctorHomArrowTransport
 
 /-!
@@ -19,23 +19,23 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.AdjointLocalization
 variable {X Y Z : SSet.{u}} [Quasicategory X] [Quasicategory Y] [Quasicategory Z]
-  {F : X ⟶ Y} {G : Y ⟶ X} (a : QCatAdjunction F G) [IsIso a.counit]
-  (T : X ⟶ Z) (hT : InvertsEdges T (invertedEdges F))
+  {F : X ⟶ Y} {G : Y ⟶ X} (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction F G) [IsIso a.counit]
+  (T : X ⟶ Z) (hT : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges T (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.invertedEdges F))
 
-def factorIso : FunctorIso T ((F ≫ G) ≫ T) := by
-  let H := functorHomotopyPostcomp (functorHomHomotopy a.unitHom) T
-  have hi : ∀ x, IsInvertibleEdge (simplicialHomotopyVertexEdge H x).toTruncated := by
+def factorIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso T ((F ≫ G) ≫ T) := by
+  let H := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy a.unitHom) T
+  have hi : ∀ x, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated := by
     intro x
-    exact (isInvertibleEdge_congr (e := (edgeOfSimplex
-      (simplicialHomotopyVertexEdge (functorHomHomotopy a.unitHom) x).edge).map
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy a.unitHom) x).edge).map
         ((truncation 2).map T))
-      (f := (simplicialHomotopyVertexEdge H x).toTruncated) rfl).mp
-        (hT (_root_.SerrePositivity.InfinityCategories.F1B.Localization.AdjointLocalization.unitComponent_mem_invertedEdges a x))
+      (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).toTruncated) rfl).mp
+        (hT (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unitComponent_mem_invertedEdges a x))
   have hm : IsIso ((hoFunctor.map ((ihom X).map T)).toFunctor.map a.unitHom) := by
-    have h := functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise H hi
-    change IsIso (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) at h
-    rwa [functorHomotopyPostcomp_hom, functorHomHomotopy_hom] at h
-  exact (eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f))
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorEdgeOfSimplicialHomotopy_isInvertible_of_pointwise H hi
+    change IsIso (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) at h
+    rwa [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom] at h
+  exact (eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f))
     (Category.id_comp T).symm)) ≪≫
       asIso ((hoFunctor.map ((ihom X).map T)).toFunctor.map a.unitHom)
 

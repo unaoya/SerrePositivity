@@ -240,7 +240,7 @@ lemma point_component (a : (Over Y)ᵒᵖ) : (point W g hcof).app a =
 lemma projection_trivialFibration
     (hfib : fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp) (a : (Over Y)ᵒᵖ) :
     trivialFibrations SSet.{v} ((projection W g hcof).app a) :=
-  RelativeChoiceSpace.projection_trivialFibration hcof hfib (vertexInclusion Y.inner W g)
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.projection_trivialFibration hcof hfib (vertexInclusion Y.inner W g)
     (preBoundary a.unop.left.inner Y.inner W a.unop.hom.map g)
     (ResolutionLiftSpace.projection a.unop.left.inner W (a.unop.hom.map.base ≫ g))
     (ResolutionLiftSpace.projection_trivialFibration hcof a.unop.left.inner W

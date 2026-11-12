@@ -65,7 +65,7 @@ lemma boundaryKanAssemblyCoherentAdjointAt_piIsomorphism {I : Type u} [SmallCate
     (r : ℕ) (F : I ⥤ StableModel.{u})
     (vI : (oneDirectionInverseCoherentChoices r F) _⦋0⦌)
     (vE : (kanAssemblyCoherentChoices r F) _⦋0⦌) (i : I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (boundaryKanAssemblyCoherentAdjointAt r F vI vE i).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (boundaryKanAssemblyCoherentAdjointAt r F vI vE i).right := by
   dsimp only [boundaryKanAssemblyCoherentAdjointAt]
   exact boundaryKanAssemblyAdjointAt_piIsomorphism r (F.obj i)
     (boundaryKanAssemblyCoherentChoiceAt r F vI vE i)

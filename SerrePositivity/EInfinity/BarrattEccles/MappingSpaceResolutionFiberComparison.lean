@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.MappingResolutionRightInvariance
 public import SerrePositivity.EInfinity.BarrattEccles.MappingSpaceBarInclusion
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
 
 /-!
 # 元の共通添字から分解の固定 fiber と全図式への比較
@@ -45,7 +45,7 @@ def mappingSpaceResolutionFiberNerveMap (X Y : (operad A).Algebra) :
     nerve (ULiftHom.{u + 1} (((((mappingSpace A).obj (op X)).obj Y).Elements)ᵒᵖ)) ⟶
       nerve ((mappingSmallResolutionRightDiagram A X Y).obj
         (mappingSpaceResolutionRightLeg A Y)) :=
-  (FrameHom.NerveULiftHom.iso.{u, 0, u + 1} _).hom ≫
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso.{u, 0, u + 1} _).hom ≫
     (FrameHom.NerveAsSmall.iso.{u, 0, u + 1} _).inv ≫
       nerveMap (mappingSpaceResolutionFiberEquivalence A X Y).functor
 

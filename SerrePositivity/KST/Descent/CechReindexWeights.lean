@@ -69,7 +69,7 @@ def augmentation (q : W ⟶ (Functor.const K).obj (𝟙_ SSet.{u})) :
 section Model
 
 variable [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 local instance : IsLocallyPresentable.{u} SSet.{u} :=
   WeightedCones.simplicialSet_isLocallyPresentable

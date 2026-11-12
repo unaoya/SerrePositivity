@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全座標の零面への実復元鎖射の制限は、同じ削除列の実復元と始点移送。 -/
-lemma simplexHAChainLift_zero_face {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAChainLift_zero_face {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (q : Fin (m + 1)) (v : Fin (m + 2) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (m + 1)) < b) :
     (serreCubeFace A false m q).hom ≫ simplexHAChainLift A s (m + 1) v b hb =
@@ -28,7 +28,7 @@ lemma simplexHAChainLift_zero_face {N : ℕ} (s : DGNerve.Simplex A D N) (m : �
   exact simplexHADegreeLift_zero_face_all_restriction A s.toSimplexData m q v b hb k
 
 /-- 元の内部一面への実復元鎖射の制限は、同じ左右の実復元鎖射の実 tensor 合成。 -/
-lemma simplexHAChainLift_one_tensor {N : ℕ} (s : DGNerve.Simplex A D N) (n m : ℕ)
+lemma simplexHAChainLift_one_tensor {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (n m : ℕ)
     (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (n + 1 + m)) < b) :
     (serreCubeRightFace A true n m).hom ≫ simplexHAChainLift A s (n + 1 + m) v b hb =

@@ -41,11 +41,11 @@ lemma terminalStrictZeroFiberMap_localized_isIso_of_homotopyPullback
     (f : E ⟶ B) (a : A ⟶ E.right) (ha : a ≫ f.right = toUnit A ≫ B.hom)
     (h : IsHomotopyPullback (CommSq.mk ha)) :
     IsIso (AnodyneHomotopy.anodyneQ.map (terminalStrictZeroFiberMap f a ha)) := by
-  have hp := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).lift_fst
+  have hp := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).lift_fst
     (toUnit A ≫ (terminalPathSpace B).hom) a (by
       rw [Category.assoc, Under.w]
       exact ha.symm)
-  have he := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).lift_snd
+  have he := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).lift_snd
     (toUnit A ≫ (terminalPathSpace B).hom) a (by
       rw [Category.assoc, Under.w]
       exact ha.symm)
@@ -54,7 +54,7 @@ lemma terminalStrictZeroFiberMap_localized_isIso_of_homotopyPullback
     (terminalPathStart B).right
     ((SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance)
     (Under.w (terminalPathStart B))
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).flip
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).flip
     (terminalStrictZeroFiberMap f a ha) he hp).mp
       ((isHomotopyPullback_flip_iff (CommSq.mk ha)).mpr h)
 

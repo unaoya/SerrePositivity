@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.PathMaximum
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PathMaximum
 
 /-!
 概要：coherent nerve の長い Hom の path を、内点の二値フラグで表示する。

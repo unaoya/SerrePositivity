@@ -26,7 +26,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 元の固定 BF 段頂点の合成写像は、元の同じ点つき段射の前合成。 -/
 lemma monicKTracedTripleLastPairStageMap_pre (target : I) (n : ℕ) :
     monicKTracedTripleLastPairStageMap F f target n =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((monicKTracedSpectrumMap F f).app n)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((monicKTracedSpectrumMap F f).app n)
         ((kKanSequence (F.obj target)).level n).space :=
   spectrumStageFixedLeftComposition_pre (monicKTracedSpectrumMap F f) _ n
 
@@ -55,12 +55,12 @@ lemma monicKTracedTripleLastPairStageMap_comp (n : ℕ) :
             ((kKanSequence (F.obj z)).level n).space := by
   rw [monicKTracedTripleLastPairStageMap_pre, monicKTracedTripleLastPairStageMap_pre]
   calc
-    _ = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+    _ = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
         ((monicKTracedSpectrumMap F f ≫ monicKTracedSpectrumMap F g).app n)
           ((kKanSequence (F.obj z)).level n).space := by
-      change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((monicKTracedSpectrumMap F g).app n) _ ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((monicKTracedSpectrumMap F f).app n) _ =
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((monicKTracedSpectrumMap F g).app n) _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((monicKTracedSpectrumMap F f).app n) _ =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
             ((monicKTracedSpectrumMap F f).app n ≫ (monicKTracedSpectrumMap F g).app n) _
       rw [← PointedEnrichment.whiskerRight_eq, ← PointedEnrichment.whiskerRight_eq,
         ← PointedEnrichment.whiskerRight_eq, eHomWhiskerRight_comp]

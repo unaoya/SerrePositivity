@@ -52,7 +52,7 @@ def map (q : ResolutionArrowDiagram.Index C) {T : SSet.{v}}
 lemma diagram (q : ResolutionArrowDiagram.Index C) {T : SSet.{v}}
     (s : T ⟶ (ResolutionArrowDiagram.fibers C).obj q) (n : SimplexCategoryᵒᵖ) (x : T.obj n) :
     (map C q s n x).diagram =
-      ((s ≫ (FiberFunctor.inclusion (ResolutionArrowDiagram.rawProjection C)
+      ((s ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (ResolutionArrowDiagram.rawProjection C)
         (ResolutionArrowDiagram.basepoint C)).app q).app n x) := by
   change (((s ≫ (ResolutionArrowDiagram.fiberIso C q).hom) ≫
     ResolutionLiftSpace.inclusion _ _ _).app n x) = _

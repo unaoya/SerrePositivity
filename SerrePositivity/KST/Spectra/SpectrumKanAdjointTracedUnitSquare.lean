@@ -41,7 +41,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 def kanAdjointTracedUnitParameterSquare (n : ℕ) :
     SSet.Homotopy
       (((kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path)
       ((OmegaSpectrum.tracedSignedLoopUnitStepInterval Y n).path ≫
         (kanAdjointTracedUnitStructureAction X Y φ n).right) where
@@ -89,7 +89,7 @@ lemma kanAdjointTracedUnitParameterSquare_finish (n : ℕ) :
         ((φ ≫ pointedPost X (OmegaSpectrum.sequenceHom (OmegaSpectrum.tracedSignedLoopUnit Y)) ≫
           pointedPost X (OmegaSpectrum.signedLoopProjection Y) ≫
           pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) (n + 1)) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+          _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
             ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)) := by
   change SquareAdjustment.rightSide ≫
     (compositionTriangleSquare (OmegaSpectrum.tracedSignedLoopUnitTriangle Y n) ≫

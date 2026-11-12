@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 
 /-- 概要：元次数 −1 族の閉零次数後合成は同じ符号付き全自然性を持つ。
 方針：全次数の二自然性と指定次数での結合則を使用する。
@@ -28,11 +28,11 @@ lemma dgNegativeNaturalPostcomposition {R : Type u} [CommRing R]
     compose R k (compose R b a (add_zero (-1))) (neg_add_eq_sub 1 n) =
       n.negOnePow • compose R (compose R b' a' (add_zero (-1))) f
         (sub_eq_add_neg n 1).symm := by
-  have h₁ := compose_assoc_of_sum a b k (add_zero (-1))
+  have h₁ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum a b k (add_zero (-1))
     (zero_add n) (neg_add_eq_sub 1 n)
-  have h₂ := compose_assoc_of_sum a g b' (neg_add_eq_sub 1 n)
+  have h₂ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum a g b' (neg_add_eq_sub 1 n)
     (add_zero n) (add_zero (n - 1))
-  have h₃ := compose_assoc_of_sum f a' b' (sub_eq_add_neg n 1).symm
+  have h₃ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NestedCut.compose_assoc_of_sum f a' b' (sub_eq_add_neg n 1).symm
     (add_zero (-1)) (add_zero (n - 1))
   calc
     _ = compose R (compose R k b (zero_add n)) a (neg_add_eq_sub 1 n) := h₁
@@ -42,6 +42,6 @@ lemma dgNegativeNaturalPostcomposition {R : Type u} [CommRing R]
     _ = compose R b' (n.negOnePow • compose R a' f (sub_eq_add_neg n 1).symm)
         (add_zero (n - 1)) := congrArg (fun t => compose R b' t (add_zero (n - 1))) ha
     _ = n.negOnePow • compose R b' (compose R a' f (sub_eq_add_neg n 1).symm)
-        (add_zero (n - 1)) := compose_units_smul_right _ _ _ _
+        (add_zero (n - 1)) := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_units_smul_right _ _ _ _
     _ = _ := congrArg (fun t => n.negOnePow • t) h₃
 end SerrePositivity.KST.SConstruction

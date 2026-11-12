@@ -20,11 +20,11 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {U : SSet.{u}}
   (H : ∀ n, SSet.Homotopy (a ≫ RawSpectrumMapping.evaluation X Y n)
     (b ≫ RawSpectrumMapping.evaluation X Y n))
   (L : ∀ n, SSet.Homotopy
-    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+    ((H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
     ((H n).h ≫ RawSpectrumMapping.step X Y n))
   (hL : ∀ n, ((U ◁ (SSet.boundary 1).ι) ▷ (Δ[1] : SSet.{u})) ≫ (L n).h =
     fst (U ⊗ (∂Δ[1] : SSet.{u})) Δ[1] ≫ (U ◁ (SSet.boundary 1).ι) ≫
-      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
+      (H (n + 1)).h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space)
 
 /-- 元の各段比較から最終 raw 円柱の同じ段への、保存済みの同じ全補正。 -/
 def rawComparisonRectificationCorrection (n : ℕ) : SSet.Homotopy (H n).h

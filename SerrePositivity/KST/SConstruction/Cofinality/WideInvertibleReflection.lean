@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.WideInternalFlags
-public import SerrePositivity.InfinityCategories.Core.OuterHornConverse
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.OuterHornConverse
 
 /-!
 概要：同じ全多次数の wide 模型内で ambient 可逆辺の可逆性を回収する。
@@ -23,16 +23,16 @@ open scoped Simplicial
 使われ方：ambient 可逆辺を wide 内の可逆辺として読む。 -/
 def completionAmbientCoreToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    (quasicategoryCore (((multiSEndofunctor r).obj ι).obj Y).carrier : SSet.{u}) ⟶
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (((multiSEndofunctor r).obj ι).obj Y).carrier : SSet.{u}) ⟶
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) :=
-  Subcomplex.lift (quasicategoryCore _).ι (by
+  Subcomplex.lift (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore _).ι (by
     intro n s hs
     obtain ⟨t, rfl⟩ := hs
     intro θ
     exact completionMulti_invertibleEdge_mem r ι f hf _
-      (quasicategoryCore_edge ((quasicategoryCore
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_edge ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
         (((multiSEndofunctor r).obj ι).obj Y).carrier : SSet.{u}).map θ.op t)))
 
 /-- 概要：wide の辺が元の標的で可逆なら wide 内でも可逆である。
@@ -41,19 +41,19 @@ def completionAmbientCoreToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：相対 core 旗の可逆変換の内部 wide への反映。 -/
 lemma completionWide_invertibleEdge_of_ambient (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋1⦌)
-    (ha : IsInvertibleEdge (edgeOfSimplex a.val)) :
-    IsInvertibleEdge (edgeOfSimplex a) := by
-  let b : (quasicategoryCore
+    (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.val)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a) := by
+  let b : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
       (((multiSEndofunctor r).obj ι).obj Y).carrier : SSet.{u}) _⦋1⦌ :=
-    ⟨a.val, (quasicategoryCore_mem_edge_iff a.val).mpr ha⟩
-  have hb : IsInvertibleEdge (edgeOfSimplex b) :=
-    isInvertibleEdge_of_hasFinalHornFillers _ (hasFinalHornFillers_of_kanComplex _)
+    ⟨a.val, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_mem_edge_iff a.val).mpr ha⟩
+  have hb : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex b) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.isInvertibleEdge_of_hasFinalHornFillers _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.hasFinalHornFillers_of_kanComplex _)
   have hm := hb.map (completionAmbientCoreToWide r ι f hf)
-  exact (isInvertibleEdge_congr (e := (edgeOfSimplex b).map
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex b).map
     ((truncation 2).map (completionAmbientCoreToWide r ι f hf)))
-      (f := edgeOfSimplex a) rfl).mp hm
+      (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a) rfl).mp hm
 
 end SerrePositivity.KST.SConstruction.Cofinality

@@ -2,10 +2,10 @@
 -- 設計書：formalization-plans/bhatt-scholze/infinity-sheaves-design.md §1・§3、単位 S1。基準コミット 972bb7f53。ビルドしない。
 module
 
-public import SerrePositivity.InfinityCategories.Core.Limit
-public import SerrePositivity.InfinityCategories.Core.TerminalMap
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.Cone
-public import SerrePositivity.InfinityCategories.Core.UniverseLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalMap
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Cone
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
 public import Mathlib.CategoryTheory.Sites.Coherent.ExtensiveSheaves
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.Comma.Over.Basic

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeFrameKan
-public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.WeakHomotopyPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.QCatEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.WeakHomotopyPrecomposition
 
 /-!
 概要：元の二つの実混合比較を、大宇宙の同じ Kan 共通標的への自然変換にする。
@@ -19,63 +19,63 @@ universe u
 open CategoryTheory Limits MonoidalCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.Reedy
 open SerrePositivity.InfinityCategories SerrePositivity.HomotopyFunctionComplex
-open SerrePositivity.InfinityCategories.F2
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
-def nativeCellMixedLeftToKan : cosimplicialHom (nativeCellSourceFrame R A) ⟶
-    nativeCellMixedMappingFunctor R A ⋙ continuousKanReplacement :=
+def nativeCellMixedLeftToKan : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (nativeCellSourceFrame R A) ⟶
+    nativeCellMixedMappingFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement :=
   nativeCellMixedLeft R A ≫
-    Functor.whiskerLeft (nativeCellMixedMappingFunctor R A) continuousKanReplacementUnit
+    Functor.whiskerLeft (nativeCellMixedMappingFunctor R A) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit
 
 def nativeCellMixedRightToKan : multiplicativeMappingFunctor R (cellResolution R A) ⟶
-    nativeCellMixedMappingFunctor R A ⋙ continuousKanReplacement :=
+    nativeCellMixedMappingFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement :=
   nativeCellMixedRight R A ≫
-    Functor.whiskerLeft (nativeCellMixedMappingFunctor R A) continuousKanReplacementUnit
+    Functor.whiskerLeft (nativeCellMixedMappingFunctor R A) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacementUnit
 
 lemma nativeCellMixedLeftToKan_weakEquivalence (B : Mon (Complex R)) :
-    IsWeakHomotopyEquivalence ((nativeCellMixedLeftToKan R A).app B) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedLeftToKan R A).app B) :=
   (nativeCellMixedLeft_weakEquivalence R A B).comp
-    (continuousKanReplacementUnit_isWeakHomotopyEquivalence _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacementUnit_isWeakHomotopyEquivalence _)
 
 lemma nativeCellMixedRightToKan_weakEquivalence (B : Mon (Complex R)) :
-    IsWeakHomotopyEquivalence ((nativeCellMixedRightToKan R A).app B) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((nativeCellMixedRightToKan R A).app B) :=
   (nativeCellMixedRight_weakEquivalence R A B).comp
-    (continuousKanReplacementUnit_isWeakHomotopyEquivalence _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacementUnit_isWeakHomotopyEquivalence _)
 
 def nativeCellMixedLeftLarge :
-    nativeCellSourceFrameLargeKanFunctor R A ⋙ kanObjectForget ⟶
-      nativeCellMixedReplacementLargeKanFunctor R A ⋙ kanObjectForget :=
+    nativeCellSourceFrameLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶
+      nativeCellMixedReplacementLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget :=
   Functor.whiskerRight (nativeCellMixedLeftToKan R A) SSet.uliftFunctor.{u + 1, u}
 
 def nativeCellMixedRightLarge :
-    multiplicativeCellMappingLargeKanFunctor R A ⋙ kanObjectForget ⟶
-      nativeCellMixedReplacementLargeKanFunctor R A ⋙ kanObjectForget :=
+    multiplicativeCellMappingLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget ⟶
+      nativeCellMixedReplacementLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget :=
   Functor.whiskerRight (nativeCellMixedRightToKan R A) SSet.uliftFunctor.{u + 1, u}
 
 lemma nativeCellMixedLeftLarge_isQCatEquivalence (B : Mon (Complex R)) :
-    IsQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
       (show ((nativeCellSourceFrameLargeKanFunctor R A).obj B).obj ⟶
         ((nativeCellMixedReplacementLargeKanFunctor R A).obj B).obj from
           (nativeCellMixedLeftLarge R A).app B) := by
   have := nativeCellSourceFrameHom_kanComplex R A B
   have : SSet.KanComplex ((nativeCellMixedMappingFunctor R A ⋙
-      continuousKanReplacement).obj B) := continuousKanReplacement_kanComplex _
-  exact IsQCatEquivalence.ulift.{u, u + 1}
-    (IsSimplicialHomotopyEquivalence.isQCatEquivalence
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement).obj B) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_kanComplex _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{u, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence.isQCatEquivalence
       (nativeCellMixedLeftToKan_weakEquivalence R A B).isSimplicialHomotopyEquivalence)
 
 lemma nativeCellMixedRightLarge_isQCatEquivalence (B : Mon (Complex R)) :
-    IsQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
       (show ((multiplicativeCellMappingLargeKanFunctor R A).obj B).obj ⟶
         ((nativeCellMixedReplacementLargeKanFunctor R A).obj B).obj from
           (nativeCellMixedRightLarge R A).app B) := by
   have : SSet.KanComplex ((multiplicativeMappingFunctor R (cellResolution R A)).obj B) :=
     multiplicativeCellMapping_kanComplex R A B
   have : SSet.KanComplex ((nativeCellMixedMappingFunctor R A ⋙
-      continuousKanReplacement).obj B) := continuousKanReplacement_kanComplex _
-  exact IsQCatEquivalence.ulift.{u, u + 1}
-    (IsSimplicialHomotopyEquivalence.isQCatEquivalence
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement).obj B) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.continuousKanReplacement_kanComplex _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsQCatEquivalence.ulift.{u, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence.isQCatEquivalence
       (nativeCellMixedRightToKan_weakEquivalence R A B).isSimplicialHomotopyEquivalence)
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

@@ -20,7 +20,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Limits Opposite SSet
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel SimplicialLocalization
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
@@ -28,10 +28,10 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantSourceRoofProductCommaNativePinchedMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-      pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))
         (cofibrantHammockVertex A Y) :=
   cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫
-    exInfinityUnit.app (Hammock.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (cofibrantAlgebraRelativeCategory A).weakEquivalences
       (show (cofibrantAlgebraRelativeCategory A).category from
         cofibrantSourceRoofDegreeAlgebra A X Y b)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)) ≫
@@ -46,10 +46,10 @@ lemma cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q :
   let D := cofibrantSourceRoofDegreeAlgebra A X Y b
   let L := cofibrantAlgebraHammockColimitInclusionMap A D Y
   have hi := AnodyneHomotopy.map_homotopy_eq AnodyneHomotopy.anodyneQ
-    SSet.anodyneExtensions.Q_inverts (functorHomHomotopy
+    SSet.anodyneExtensions.Q_inverts (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy
       (cofibrantHammockPinchedReferenceMap_inclusion A D Y).hom)
-  have hu : exInfinityUnit.app _ ≫ cofibrantKanHammockInclusionMap A D Y =
-      L ≫ exInfinityUnit.app _ := (exInfinityUnit.naturality L).symm
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ cofibrantKanHammockInclusionMap A D Y =
+      L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality L).symm
   have huQ := congrArg AnodyneHomotopy.anodyneQ.map hu
   have he := cofibrantSourceRoofProductCommaEvaluationRoofMap_image_Q A X Y b
   simp only [Functor.map_comp] at hi huQ he
@@ -63,19 +63,19 @@ lemma cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q :
   rfl
 
 lemma cofibrantSourceRoofProductCommaNativePinchedMap_weak :
-    IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [cofibrantSourceRoofProductCommaNativePinchedMap_reference_Q]
   exact Hammock.anodyneQ_map_isIso_of_weak _
     (cofibrantSourceRoofProductCommaReferenceMap_weak A X Y b)
 
-def cofibrantSourceRoofProductCommaNativeIntervalCell : FunctorHom
+def cofibrantSourceRoofProductCommaNativeIntervalCell : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b)))
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) :=
-  intervalFamilyHom (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
-    pinchedHomToIntervalMappingSpace _ _)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)
 
 lemma cofibrantSourceRoofProductCommaNativeIntervalCell_eq_reference :
     cofibrantSourceRoofProductCommaNativeIntervalCell A X Y b =
@@ -98,7 +98,7 @@ lemma cofibrantSourceRoofMap_isLeftCofinal_of_native_triangles
       (cofibrantSourceRoofProductCommaEvaluationIso A X Y b).hom ≫
         cofibrantSourceRoofProductCommaNativeIntervalCell A X Y b =
           cofibrantSourceRoofProductCommaRightCell A X Y b) :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_reference_triangle A X Y
     (fun b => cofibrantSourceRoofProductReference_triangle_of_native_triangle A X Y b (hN b))
 

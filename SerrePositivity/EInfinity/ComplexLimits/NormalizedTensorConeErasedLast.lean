@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_erased_succ_mixed_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (ha0 : a = 0) (hbl : b = Fin.last (n + 1))
     (h0 : 0 ∈ I) (j : Fin (n + 1)) (hj : j.succ ∈ I) (hjb : j.succ < b)
     (hJ : ((withoutFirst I).erase j).Nonempty)
@@ -33,15 +33,15 @@ lemma normalizedTensorConeData_erased_succ_mixed_last {n : ℕ}
   have haj : a < j.succ := by rw [ha0]; exact Fin.succ_pos _
   have ham : IsLeast (I : Set (Fin (n + 2))) a := by rw [ha]; exact I.isLeast_min' _
   have hbm : IsGreatest (I : Set (Fin (n + 2))) b := by rw [hb]; exact I.isGreatest_max' _
-  have hE := Index.erase_two ham.1 hbm.1 haj hjb
-  have haE := Index.erase_min ham haj (Index.nonempty hE)
-  have hbE := Index.erase_max hbm hjb (Index.nonempty hE)
+  have hE := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_two ham.1 hbm.1 haj hjb
+  have haE := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_min ham haj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hE)
+  have hbE := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.erase_max hbm hjb (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hE)
   have hkE : k + 1 = 2 - ((I.erase j.succ).card : ℤ) := by
     have he := Finset.card_erase_add_one hj
     omega
   have h0E : (0 : Fin (n + 2)) ∈ I.erase j.succ :=
     Finset.mem_erase.mpr ⟨(Fin.succ_ne_zero j).symm, h0⟩
-  rw [SimplexData.homOrZero_eq s _ _ _ _ hE haE hbE hkE]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq s _ _ _ _ hE haE hbE hkE]
   have h := normalizedTensorConeData_hom_mixed_last A X Y c (I.erase j.succ)
     a b (k + 1) hE haE hbE hkE ha0 hbl h0E
   have ht : ∀ (K K' : Finset (Fin (n + 1))) (he : K = K')

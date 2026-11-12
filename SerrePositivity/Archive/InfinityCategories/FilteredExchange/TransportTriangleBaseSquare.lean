@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportTriangleParameter
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.TriangleFirstEdgePrismSquares
-public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquare
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IntervalSquare
 
 /-!
 概要：任意の全係数付き実二単体を、元の三辺を保持する輸送四角形へ移す。

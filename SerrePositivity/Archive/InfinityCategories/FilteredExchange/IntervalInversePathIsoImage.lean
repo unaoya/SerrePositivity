@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPathIso
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPathIso
 
 /-!
 概要：左厳密化で使う元の逆 path の指定像を、標的同型の往復の後で回収する。

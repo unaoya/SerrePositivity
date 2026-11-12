@@ -13,11 +13,11 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G H : DGFunctor R P (RightModule R D))
-  (η : StrictNatTrans F G) (ξ : StrictNatTrans G H)
+  (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (ξ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G H)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "b" => dgModuleNaturalConeArrow R D G H ξ
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
@@ -81,7 +81,7 @@ lemma dgModuleNaturalConeDescMap_naturality (x y : P) (n : ℤ)
 方針：元閉射と証明済み全次数自然性を束ねる。
 規約：点ごとの同値選択を使用しない。
 使われ方：回転 cone 比較の全関手族化。 -/
-def dgModuleNaturalConeDesc : StrictNatTrans (T) H where
+def dgModuleNaturalConeDesc : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (T) H where
   app x := cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
     (dgModuleNaturalConeDescMap R D F G H η ξ s ds x))
   naturality z := dgModuleNaturalConeDescMap_naturality R D F G H η ξ s ds hs _ _ _ z

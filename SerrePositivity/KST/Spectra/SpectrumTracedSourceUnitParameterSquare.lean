@@ -24,7 +24,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 def tracedSourceUnitParameterSquare (n : ℕ) :
     SSet.Homotopy
       (((tracedSourceUnitStageInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path)
       (((OmegaSpectrum.tracedSignedLoopUnitStepInterval X n).basedPreAction
         (tracedSourceUnitStructureInput X Y φ n) (𝟙 A)).path) where

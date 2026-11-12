@@ -19,7 +19,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- K-1 の元の二評価と中間評価から構成する、核の正有限反復実現の加法射。 -/
-def kernelMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def kernelMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.obj
       ((multiRealizationFunctor (r + 1)).obj (closedStableModel (kernelClosedPredicate q)) ⊗
         (multiRealizationFunctor (r + 1)).obj (closedStableModel (kernelClosedPredicate q))) ⟶
@@ -34,7 +34,7 @@ def kernelMultiAddition {B C : _root_.SerrePositivity.InfinityCategories.Stable.
       AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map (kernelRelativeMiddle q))
 
 /-- 元の相対図式の中間評価は、K-1 の二評価の射対と加法射の合成である。 -/
-lemma kernelMultiAddition_factor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma kernelMultiAddition_factor {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     AnodyneHomotopy.anodyneQ.map (relativeMultiRealizationAdditivityMap (r + 1)
       (kernelClosedPredicate q) (kernelClosedPredicate q)) ≫ kernelMultiAddition q r =
         AnodyneHomotopy.anodyneQ.map
@@ -43,7 +43,7 @@ lemma kernelMultiAddition_factor {B C : _root_.SerrePositivity.InfinityCategorie
   simp only [IsIso.hom_inv_id_assoc]
 
 /-- 任意の元の相対完全関手の中間評価に対する、全正有限反復の加法性。 -/
-lemma kernelMultiAddition_of_relativeFunctor {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma kernelMultiAddition_of_relativeFunctor {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (r : ℕ) {X : StableModel.{u}}
     (f : X ⟶ relativeCofiberStableModel (kernelClosedPredicate q) (kernelClosedPredicate q)) :
     AnodyneHomotopy.anodyneQ.map ((multiRealizationFunctor (r + 1)).map

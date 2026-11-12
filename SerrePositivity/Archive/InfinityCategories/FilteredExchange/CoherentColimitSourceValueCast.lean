@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalCoconeValuePre
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalCoconeValuePre
 
 /-!
 概要：元の余錐頂点と元の全空間頂点の厳密な表示変更を、Kan 値の射へ移す。

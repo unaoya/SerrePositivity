@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorSource
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource
 public import SerrePositivity.KST.Spectra.LoopExchangeOperators
 
 /-!
@@ -33,8 +33,8 @@ def reversal (S : PointedSimplicialSet.{u}) : source S ⟶ source S :=
 def mappingIso (S Z : PointedSimplicialSet.{u}) :
     PointedObject.basedHom (source S) Z ≅
       LoopExchangePaths.doubleLoop (PointedObject.basedHom S Z) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (CirclePower.space.{u} ⊗ CirclePower.space.{u}) Z ≪≫
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u}
+  _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (CirclePower.space.{u} ⊗ CirclePower.space.{u}) Z ≪≫
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso CirclePower.space.{u} CirclePower.space.{u}
       (PointedObject.basedHom S Z)
 
 /-- 同じ内部 Hom と外側二重 loop の標的後合成。 -/
@@ -47,13 +47,13 @@ def loopPost (S : PointedSimplicialSet.{u}) {Z Z' : PointedSimplicialSet.{u}} (v
 private lemma closed_post {C : Type*} [Category C] [MonoidalCategory C]
     [MonoidalClosed C] (S K : C) {Z Z' : C} (v : Z ⟶ Z') :
     (ihom (S ⊗ (K ⊗ K))).map v ≫
-        ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z')).hom) =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
+        ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z')).hom) =
+      ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
           (ihom K).map ((ihom K).map ((ihom S).map v)) := by
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post,
-    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post, ← Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post, ← Category.assoc]
 
 /-- 元の curry 座標は標的の後合成と厳密に自然。 -/
 lemma mappingIso_post (S : PointedSimplicialSet.{u}) {Z Z' : PointedSimplicialSet.{u}}
@@ -64,46 +64,46 @@ lemma mappingIso_post (S : PointedSimplicialSet.{u}) {Z Z' : PointedSimplicialSe
 private lemma closed_pre_swap {C : Type*} [Category C] [MonoidalCategory C]
     [BraidedCategory C] [MonoidalClosed C] (S K Z : C) :
     (MonoidalClosed.pre (S ◁ (β_ K K).hom)).app Z ≫
-        ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K K ((ihom S).obj Z)).hom := by
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right,
-    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_swap, ← Category.assoc]
+        ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
+      ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K K ((ihom S).obj Z)).hom := by
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_right,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_swap, ← Category.assoc]
 
 private lemma closed_pre_reversal {C : Type*} [Category C] [MonoidalCategory C]
     [MonoidalClosed C] (S K : C) (r : K ⟶ K) (Z : C) :
     (MonoidalClosed.pre (S ◁ (r ▷ K))).app Z ≫
-        ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
-      ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
+        ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
+      ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
           (ihom K).map ((MonoidalClosed.pre r).app ((ihom S).obj Z)) := by
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_right,
-    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_pre_left, ← Category.assoc]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_right,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorSource.natural_pre_left, ← Category.assoc]
 
 /-- 元の源の交換は、同じ二重 loop の交換作用となる。 -/
 lemma mappingIso_pre_swap (S Z : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (swap S) Z ≫ (mappingIso S Z).hom =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (swap S) Z ≫ (mappingIso S Z).hom =
       (mappingIso S Z).hom ≫ LoopExchangePaths.swap (PointedObject.basedHom S Z) := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   exact closed_pre_swap S CirclePower.space.{u} Z
 
 /-- 元の源の反転も、同じ二重 loop の反転作用となる。 -/
 lemma mappingIso_pre_reversal (S Z : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (reversal S) Z ≫ (mappingIso S Z).hom =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (reversal S) Z ≫ (mappingIso S Z).hom =
       (mappingIso S Z).hom ≫ LoopExchangePaths.reversal (PointedObject.basedHom S Z) := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   simp only [LoopExchangePaths.reversal]
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   let K := CirclePower.space.{u}
   let r := CirclePower.integerPowerMap.{u} (-1)
   change (MonoidalClosed.pre (S ◁ (r ▷ K))).app Z ≫
-      ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
-    ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) =
+    ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K ((ihom S).obj Z)).hom) ≫
         (ihom K).map ((MonoidalClosed.pre r).app ((ihom S).obj Z))
   exact closed_pre_reversal S K r Z
 
