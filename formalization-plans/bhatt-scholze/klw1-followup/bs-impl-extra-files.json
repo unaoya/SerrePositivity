@@ -8,5 +8,13 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductCoinvariants.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/SchurArityTotalComparison.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/ProductCoinvariantComplex.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorOrbitTransport.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorOrbitTransport.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantGroupChange.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/SchurCoefficientOrder.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/InducedCoinvariantTotal.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorTargetSchur.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorSourceSchur.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/ComplexCoproductHomotopy.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeSchurComparison.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfComparison.lean"
 ]
