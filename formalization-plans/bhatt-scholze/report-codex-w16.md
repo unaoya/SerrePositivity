@@ -5407,3 +5407,42 @@ Hom の零次数の 1 に対応する類を、§84 の周期係数模型の負�
 `audit-cyclic-hom.log`：**138 本・1,042 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 次は p 入力の混合色の巡回軌道の自由性と、完全入力の Tate 比較を進める。
+
+
+## 86. D79(iii)：混合色の実巡回軌道と誘導周期係数の非輪状性
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| CyclicMixedOrbit | 62 |
+| CyclicTensorMixedWords | 50 |
+| CyclicTateTensorTrivial | 53 |
+| CyclicInducedAcyclic | 51 |
+| CyclicResolutionBoundedAcyclic | 29 |
+
+追加 **245 行**、(iii) **1,009 行**、(ii)+(iii) **8,203 行**。
+
+### 86.1 同じ p 入力との接続
+
+`powerOperationCyclicPermutation_mixed_free` は、素数位数の同じ巡回作用について、
+非定数な任意の色付けを固定する元が単位だけであることを示す。
+`cyclicBinaryTensorWord_fixed` は、これを以前の二色自由比較で使った
+**実際の `BinaryTensorWord` と同じ置換作用**に適用する。
+軌道写像の単射性と、群から同じ軌道への指定同値も証明した。
+これは DAG XIII Proposition 2.2.3 の混合層の自由性の係数側の部分。
+
+`cyclicTateComplex_tensorTrivialIso` は自明係数の右テンソルで
+ノルム・作用差の **同じ指定微分そのもの**を保つ複体同型。
+`cyclicTateComplex_regularTensor_acyclic` は、平坦な自明係数を付けた左正則周期複体が
+全次数で非輪状であることを示す。体上では追加入力の平坦性なしで適用できる。
+`cyclicResolutionHom_acyclic_boundedAbove` は §85 の一般補題を同じ指定解像度へ適用した。
+
+native Tate 関手、双加群、P⁰ の全自然変換の完成はまだ宣言しない。
+次は上有界係数の準同型を同じ解像度の Hom が保つことを、
+同じ cone の全 Hom 比較を通して証明する。
+
+### 86.2 検証
+
+`cyclic-mixed-orbit-02.log`・`cyclic-tensor-mixed-words-02.log`・
+`cyclic-coefficient-acyclic-01.log`：対象成功。最終五本に警告なし。
+`audit-cyclic-mixed.log`：**143 本・1,065 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
