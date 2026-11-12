@@ -2001,3 +2001,77 @@ V のタプルとの交叉で上の cone を作れば、縦方向を V の増大
 既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はなく、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は前回から本体 2,387 行増え、**247 本・25,976 行**、入口の差分を含め **26,225 行**。50,000 行の停止基準には達していない。
 
 **停止点 2e ではない。** 残りは、準連接層のアフィン座標から元の係数への輸送、実際の二重 Čech の各交叉上での完全性の供給、任意のアフィン被覆の完全性と一般の細分の H の同型への適用、動く係数環の標準開との照合、および五つの比較同士の可換性。これらの下書きは監査数とこのコミットには含めない。共通細分の比較の写像は実際の制限であり、非標準の座標や前像の選択はその同型性を証明するためだけに使う。自然性と選択の独立性の証明を、一般の同型性の証明に置き換えない。
+
+
+## 11-12：実際のアフィン被覆の完全性と細分の H の同型（85d6de297）
+
+数学コミット `85d6de297`。新規 **14 本・64 宣言・1,147 行**、入口を含む git 差分 **1,163 行**。対象と直接 importer は **4,466 jobs で成功**。別実行の公理監査は **7,995 宣言・標準三公理のみで成功**。停止点 2e ではない。一般のアフィン被覆上の増大 Čech の完全性と、実際の細分写像が誘導する各次数の H の同型まで到達した。共通細分の独立性の同型への接続、Proj のネイティブな構造層との R 線形比較と五つの比較の接続は、次の未検証の束に残る。
+
+| 宣言 | 主張・用途 |
+|---|---|
+| `openCoverCechCoefficientIso` | 係数前層の自然同型を有限交叉の係数図式へ移す。 |
+| `openCoverCechAcyclic_of_iso` | 自然同型な係数前層へ、増大 Čech の完全性を移す。 |
+| `openCoverCechAcyclic_of_cycles` | 増大項の核の消滅と、正長の各サイクルの前像から完全性を得る。 |
+| `openCoverCechAcyclic_of_double_zero_row` | 二重 Čech の零番の行の完全性から、元の前層の Čech 完全性を得る。 |
+| `openCoverIntersectionPresheafTopIso` | 全空間との交叉を取る前層は、元の前層と自然に同型。 |
+| `openCoverCechDouble_zero_col_exact` | 元の前層の Čech 完全性から、二重図式の零番の列の完全性を得る。 |
+| `openCoverCechAcyclic_of_refinement` | 細分の完全性と各交叉上の完全性から、元の被覆の増大 Čech 完全性を得る。 |
+| `openCoverCechZeroEquiv` | 開被覆の空タプルの項と、大域切断の同型。 |
+| `openCoverCechZeroEquiv_symm_apply` | 大域切断を空タプルの項へ戻すと、その交叉への制限になる。 |
+| `openCoverCechAugmentation` | 大域切断から各被覆開の切断への対角の制限。 |
+| `openCoverCechAugmentation_eq` | 対角の制限は、空タプルの項からの Čech 微分と一致。 |
+| `openCoverCechAugmentation_squared` | 対角の制限のあとに Čech 微分を適用すると零。 |
+| `openCoverCechAugmentation_injective` | 増大 Čech が完全なら、大域切断からの対角の制限は単射。 |
+| `openCoverCechAugmentation_exact` | 増大 Čech の完全性は、大域切断からの対角の制限でも完全。 |
+| `openCoverCechRefinement_augmentation` | 細分の写像は、共通の大域切断からの増大写像を保つ。 |
+| `openCoverCechDoubleTerm` | 二つの被覆の実際の増大 Čech の二重図式の項。 |
+| `openCoverCechDoubleHorizontal` | 二重 Čech の水平方向の余境界。 |
+| `openCoverCechDoubleVertical` | 二重 Čech の垂直方向の余境界。 |
+| `openCoverCechDoubleHorizontal_squared` | 水平方向の微分の二乗は零。 |
+| `openCoverCechDoubleVertical_squared` | 垂直方向の微分の二乗は零。 |
+| `openCoverCechDouble_commute` | 二つの方向の Čech 微分は可換。 |
+| `openCoverCechDouble_rowExact` | 細分の包含から、正次数の行の完全性を得る。 |
+| `openCoverCechDouble_colExact` | 各水平交叉上の増大 Čech が完全なら、その直積である列も完全。 |
+| `openCoverCechDouble_exact_zero_iff` | 二重 Čech に既存 B1 の零番の行・列の比較を適用する。 |
+| `openCoverCechDiagramFunctor` | 前層から有限交叉の係数図式への関手。 |
+| `openCoverCechDiagramFunctorAdditive` | 有限交叉への制限は、係数の射の加法を保つ。 |
+| `fullCechComplexFunctorAdditive` | 全タプル Čech 複体の係数関手は、射の加法を保つ。 |
+| `openCoverCechFunctor` | 前層から被覆の通常の Čech 複体への関手。 |
+| `openCoverCechFunctorAdditive` | 前層から Čech 複体への関手は加法的。 |
+| `openCoverCechRefinementCone_exact` | 共通増大項を保つ、二つの完全な Čech の細分写像の cone の完全性。 |
+| `openCoverCechRefinement_homologyMap_isIso` | 各交叉上の完全性から、細分の実際の Čech H の射は同型。 |
+| `openCoverCechResolutionRowIso` | 二重 Čech の一つの行の係数を、交叉上の係数図式の直積として表示する。 |
+| `cechOpenIntersection_le_tuple_member` | 正長の交叉は、その中に現れる任意の一つの被覆開に含まれる。 |
+| `openCoverCechResolutionRow_zero_injective` | 細分である二重 Čech の正次数の行では、増大項からの微分は単射。 |
+| `openCoverCechResolutionRow_exact` | 細分である二重 Čech の正次数の行は、増大 Čech として完全。 |
+| `openCoverResolutionZeroIntersection` | 長さ零の被覆交叉を付けても、指定開集合は変わらない。 |
+| `openCoverCechResolutionZeroComponentIso` | 増大 Čech 前層の零項と元の前層の、各開集合での同型。 |
+| `openCoverCechResolutionZeroIso` | 増大 Čech 前層の零項は、開集合について自然に元の前層と同型。 |
+| `cechOpenRestrictedIntersection_eq` | 指定開集合との各交叉の等式を、有限交叉の等式へ移す。 |
+| `openCoverCechRestrictedCoverIso` | 指定開集合内で同じ被覆の、有限交叉の係数図式の自然同型。 |
+| `openCoverCechAcyclic_of_intersection_eq` | 指定開集合内で同じ被覆へ、増大 Čech の完全性を移す。 |
+| `openCoverIntersectionPresheafNestedIso` | 二段階の交叉前層は、交叉した開集合の前層に自然に同型。 |
+| `openCoverIntersectionPresheafNestedIsoOfLe` | 小さい開集合での交叉なら、先の大きい開集合の制限は冗長になる。 |
+| `cechOpenIntersection_insert` | 頂点の挿入に対応する開集合の交叉。 |
+| `openCoverCechSplitIntersection_isIso` | 交叉全体を含む頂点の挿入による、切断の制限は同型。 |
+| `openCoverCechSplitIntersection_zero_injective` | 交叉全体を含む頂点がある場合、増大項の微分は単射。 |
+| `openCoverCechSplitIntersection_exact` | 交叉全体を含む頂点がある前層の増大 Čech の完全性。 |
+| `schemeFiniteCommonOpenCover` | Fin で添字付けした、有限の共通開被覆。 |
+| `schemeFiniteCommonCoverLeft` | 有限の共通被覆から第一の被覆への添字。 |
+| `schemeFiniteCommonCoverRight` | 有限の共通被覆から第二の被覆への添字。 |
+| `schemeFiniteCommonOpenCover_iSup` | 有限共通被覆の全空間の被覆性。 |
+| `schemeFiniteCommonOpenCover_le_left` | 有限共通被覆から第一の被覆への包含。 |
+| `schemeFiniteCommonOpenCover_le_right` | 有限共通被覆から第二の被覆への包含。 |
+| `schemeFiniteCommonOpenCover_isAffineOpen` | アフィン対角の下で、有限共通被覆の各開集合はアフィン。 |
+| `schemeModuleCechPresheaf` | 構造層加群の切断を、大域の係数環上の前層として扱う。 |
+| `schemeModuleAffineCechCoefficientEquiv` | アフィン開埋め込みの座標の切断と、元のスキームの切断の加法群の同型。 |
+| `schemeModuleAffineCechCoefficientEquiv_naturality` | アフィン座標との加法的比較は、交叉を狭める制限に自然。 |
+| `schemeModuleStandardOpenCech_exact` | アフィン開集合の標準開被覆上の、準連接層の増大 Čech 完全性。 |
+| `schemeModuleStandardOpenCech_zero_injective` | アフィン開集合の標準開被覆における、準連接層の増大項の単射性。 |
+| `schemeModuleStandardOpenCech_acyclic` | アフィン標準開被覆の完全性を、増大項の単射性とともにまとめる。 |
+| `schemeModuleStandardOpenCech_restrict` | アフィン標準開被覆の完全性は、小さいアフィン開への制限でも成り立つ。 |
+| `schemeModuleAffineCoverCech_acyclic` | アフィン開集合をちょうど被覆するアフィン開被覆の増大 Čech 完全性。 |
+| `schemeModuleAffineOpenCech_acyclic` | アフィン開と各被覆開との交叉がアフィンで、その開を被覆すれば、増大 Čech は完全。 |
+| `schemeModuleCechRefinement_homologyMap_isIso` | 準連接層のアフィン開被覆の細分は、各次数の Čech H の同型を誘導する。 |
+
+段 2e の検証済み実測：**261 本・27,123 行**、入口を含め **27,388 行**。上限 50,000 行内。次の 18 本の未検証の下書きはこの数に含めない。
