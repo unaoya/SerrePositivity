@@ -1728,3 +1728,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 ```
 
 次は、有限和の非対角消滅・対角の一意性・符号・両切断の恒等式を同じ成分の合成へまとめる。正規化 shuffle と AW の間に挟まる対角側の Moore 射影の照合も必要であり、成分の計算だけで最終合成の恒等式が済んだとは数えない。全単体 Hom／切断比較、native 極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,767行。約7,900行で実測と残量を報告する。凍結予告は受領済みだが、今回のコミット時点では確定連絡は未受領。
+
+## 52. 3b-2 続行：実 shuffle 成分と正規化切断の合成
+
+コード `22a357334`、新規1本73行。累計 **117本7,306行**。
+
+`DiagramComparison.ShuffleCutSum` で、対角切断の符号付き和を唯一の初期水平格子路へ簡約し、二因子の元の Moore 射影になる式を証明した。さらに、これを既存の `shuffleBidegree` と実際の切断写像との合成に結び、対角の合成は二因子の射影、非対角の合成は零となる式を証明した。第一のまとまりの成分の合成の照合である。
+
+個別検査、鍵付き対象ビルド **1,849 jobs**、累計117本 **1,277宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-50.log`、監査 `/private/tmp/AuditISW2G10HundredSeventeen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredseventeen-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutSum
+```
+
+次は切断点の和と標準余積包含を介して全テンソルへの式へまとめる。また、正規化 shuffle と AW の間に挟まる対角側の Moore 射影の照合が残る。この段階の成分の式から、正規化合成全体や全単体切断空間の同値性が済んだとは数えない。native 極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も残る。停止点2は未完、残枠2,694行。約7,900行で実測と残量を報告する。
