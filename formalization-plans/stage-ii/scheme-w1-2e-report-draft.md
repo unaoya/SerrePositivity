@@ -6,7 +6,7 @@
 
 BS17 Thm 4.1(i) の経路に必要な、射影の場合の有限性・Rees の核と像の評価・形式関数の **Čech 版**が対象。一般の固有射の有限性、Stein 分解、K 用の段 2c、導来関手の層コホモロジーとの比較は範囲に含めない。
 
-直近の検証済み数学コミットは **`8e896e65c`**（実際の閉厚化の Frobenius と、以前の射影・I 進遷移・互換族・形式関数の同型との可換性）。対象と直接 importer のビルドは **4,342 jobs で成功**。別実行の標準監査は **7,343 宣言・標準三公理のみ**。前の `72c7ff525` は、実際の Čech Frobenius の自然性、H 自身の I 進商・完備化、環の商と Rees 表示の比較。今回の二つの数学コミットは計 10 モジュール・53 件の数学宣言で、各主張は `scheme-w1-2e-route.md` の同日の末尾二節に一行ずつ記録した。旧来の R/J のテンソル表示との照合は `5d5943541`、実際の flat Čech 比較と加群写像への自然性は `ffac3c764`。KL-W1 の追従で main `0f30e1f6c` を `2ed2c017c` に取り込み、68 本の意味参照を採取した結果、保留 0・書き換え 0 本だった。追従報告は `053bbf1b7`。
+直近の検証済み数学コミットは **`df7c1d105`**（固定した有限被覆の Čech 複体・H と filtered colimit の自然な比較、実際の局所化と余極限、指定部分加群と R/P を分けた次数成分の構成）。対象と直接 importer のビルドは **4,352 jobs で成功**。別実行の標準監査は **7,466 宣言・標準三公理のみ**。8 モジュール・43 件の数学宣言を追加した。前の `72c7ff525`・`8e896e65c` は計 10 モジュール・53 件で、実際の Frobenius と閉厚化・I 進系・形式関数の同型との可換性を検証した。各主張は `scheme-w1-2e-route.md` の各束に一行ずつ記録した。旧来の R/J のテンソル表示との照合は `5d5943541`、実際の flat Čech 比較と加群写像への自然性は `ffac3c764`。KL-W1 の追従で main `0f30e1f6c` を `2ed2c017c` に取り込み、68 本の意味参照を採取した結果、保留 0・書き換え 0 本だった。追従報告は `053bbf1b7`。
 
 指定次数のテンソル局所化・係数環変更・各標準開・図式全体の比較は `1b359a90e` にコミット済み。前の whnf timeout は成分の同型と純テンソル公式への分割で解消した。計算量上限は増やしていない。
 
@@ -36,7 +36,7 @@ Rees 次数を移す作用を固定した次数の加群のスカラー作用と
 | 底変換 | `1b359a90e`・`ffac3c764` により、実際の指定次数の標準開図式との自然同型、Čech H の flat 比較、元の次数付き加群の射への自然性まで検証済み。変更先 B の Noether 性なしの有限性も供給。 | 共通細分・Frobenius・実際の近似図式との整合性は、それぞれの未完の群で確認する。 | `projectiveTensorChartDiagramIso`、`projectiveNativeTensorCechIso`、`projectiveNativeTensorCechIso_naturality` が具体的な入口。H とテンソル積の交換には flat を要求する。 |
 | 閉厚化 | `5d5943541` の R/J テンソル表示との比較に加え、`72c7ff525`・`8e896e65c` で実際の環の商の表示を比較した。Rees の商の射影・厚化間の遷移と、標準開図式・Čech H の具体的な比較が可換であることも検証済み。 | 共通細分・filtered colimit との整合性は、それぞれの未完の群で確認する。指数を移す Frobenius の厚化間の因子写像は、同じ n の閉厚化の Frobenius と区別し、2f の冪による因子分解に接続する。 | `reesClosedTensorChartIso_naturality`、`reesClosedTensorCechIso_naturality`、`reesClosedRingCechIso_projection`、`reesClosedRingCechIso_transition`。二つの閉厚化の表示の比較であり、非 flat な H とテンソル積の交換ではない。 |
 | Frobenius | `72c7ff525`・`8e896e65c` で、実際の局所化・標準開・Čech H の Frobenius と代数の射への自然性を検証した。H 自身の I 進商での n→p*n の遷移と完備化、同じ n の実際の閉厚化の H の Frobenius、既存の射影・I 進遷移・互換族・形式関数の同型との可換性も検証済み。 | 共通細分・底変換・filtered colimit の比較同士の整合性は残る。H 自身の I 進商の n→p*n の写像から、厚化の H の間で指数を移す写像まで得たとはしない。 | `projectiveNatGradedCechFrobenius_naturality`、`reesAdicProjectiveClosedCechFrobenius_projection`、`reesAdicProjectiveClosedCechFrobenius_transition`、`reesAdicProjectiveClosedCechCompletionLinearEquiv_frobenius`。空の標準開と零環を含む。 |
-| filtered colimit | B1 の `isCechExact_colimit` が最終の環の増大 Čech 完全性を保存する。 | 射影版の標準開・指定次数・Čech H と実際の近似図式の余極限との比較。 | 有限被覆の添字を一つの有限段で固定し、基底環が動く場合も扱う。有限積・局所化・次数成分の比較を射に自然にそろえる。完備化や無限積との交換は仮定しない。 |
+| filtered colimit | `df7c1d105` で、固定した有限被覆の各項・Čech 複体・各次数の H と filtered colimit の比較、および係数図式の射への自然性を検証した。実際の局所化の分数を保つ比較・自然性、指定部分加群の余極限の同定、R と P を分けた次数成分の代表元と分母倍の条件も供給。最終の増大完全性は B1 の `isCechExact_colimit` を再利用する。 | 余極限の次数成分を分子族とする斉次局所化と、有限段の斉次局所化の colimit の同型。実際の標準開の制限・負の次数の零延長・動く基底の係数変更図式への接続と、既存の比較との整合性。 | `projectiveCechFilteredHomologyIso_naturality`、`projectiveLocalizedColimitIso_fraction`、`projectiveLocalizedColimitIso_naturality`、`projectiveFilteredSubmoduleColimitEquiv`、`mem_projectiveGradedColimitGrade_iff`。固定係数の任意の図式の H の比較だけで動く基底の標準開の比較が完了したとはしない。完備化や無限積との交換は使わない。 |
 
 **この表の未完欄が残る限り、停止点 2e の完成とは報告しない。** 新しい比較の図式が既存の R/J・I 進の自然性と同じ実際の写像を使うことも、検証項目に含める。
 

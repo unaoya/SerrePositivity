@@ -1614,3 +1614,68 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 §9 の残りは、共通アフィン細分、filtered colimit の実際の比較、およびそれらと既存の比較の可換性。閉厚化の n→p*n を移す写像の追加構成は、同じ n の閉厚化の Frobenius と区別して扱う（2f の冪による因子分解に必要）。**停止点 2e ではない。2f は未着手のまま。**
 
 証拠は作業木の `scheme-drafts/rees-closed-frobenius-completion-importer-build.log` と `rees-closed-frobenius-completion-audit.log` に保存した。
+
+
+## 2026-11-12：filtered colimit の Čech H の自然な比較と、実際の局所化・次数成分
+
+数学コミット `df7c1d105`。8 モジュール（754 行）と入口 import 8 行、43 件の数学宣言（公開の instance を含み、local instance は除く）。対象と直接 importer のビルドは **4,352 jobs で成功**、別実行の標準監査は **7,466 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を各実行の間だけ持ち、待ちは一つにまとめた。既存の数学宣言の型・本文・名前と計算量上限は変更していない。
+
+固定した有限被覆の各 Čech 項について、各タプル成分の代表元と等式を一つの有限段へ送ることで、canonical な filtered colimit の比較が全単射であると示した。ここから全タプル Čech 複体が filtered colimit を保つことを導いた。各次数の H との交換は、関手圏の短複体と加群圏の AB5 を使って別に構成した。正次数の H の同型を、B1 の増大完全性の同値だけから導いてはいない。複体と H の比較はともに係数図式の射に自然と示した。最終的な環の増大 Čech 完全性の `isCechExact_colimit` は B1 のものを使い、作り直していない。
+
+実際の加群の局所化を、局所化環とのテンソル積と自然同型で比較し、小さい colimit を保つことを示した。この比較は同じ分子・分母の分数を保ち、図式の射に自然である。局所化が零になる場合も含む。さらに、filtered 図式の遷移で保たれる部分加群の colimit を、各段の像の有向上限と線形同定した。基底環 R と作用の環 P を分けて係数制限し、余極限の分子族の次数成分を構成した。一つの有限段の同じ次数の代表元を持つこと、各段の射が次数を保つこと、分母倍の条件が保たれることを示した。
+
+原典 [Stacks 30.6.1 / 07TB](https://stacks.math.columbia.edu/tag/07TB) は準コンパクト・準分離な射に対する層の filtered colimit と高次順像を扱う。今回の H の比較は、その計算に使う **Čech 版**であり、導来関手との比較は作らない。該当する docstring に原典の番号と Stacks 30.2.6 の比較を形式化しないことを明記した。
+
+登録モジュール：`ProjectiveCechFilteredCochains`、`ProjectiveFilteredHomology`、`ProjectiveCechFilteredComplex`、`ProjectiveFilteredHomologyNaturality`、`ProjectiveCechFilteredNaturality`、`ProjectiveLocalizedColimit`、`ProjectiveFilteredSubmodule`、`ProjectiveGradedColimit`。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveCechCochainsFunctor` | 全タプル Čech の固定した長さの項を、係数図式の関手にする。 |
+| `projectiveCoefficientColimit_exists_rep` | 係数図式の余極限の各交叉の元は、一つの有限段の代表元を持つ。 |
+| `projectiveCoefficientColimit_eq_iff` | 同じ段の係数の余極限での等式は、ある有限段での等式と同値。 |
+| `projectiveCechColimitCochainsMap_ι` | canonical な余極限比較は、各有限段のタプル成分をそのまま送る。 |
+| `projectiveCechColimitCochainsMap_surjective` | 有限被覆の Čech 各項の filtered colimit 比較は全射。 |
+| `projectiveCechColimitCochainsMap_injective` | 有限被覆の Čech 各項の filtered colimit 比較は単射。 |
+| `projectiveCechCochainsFunctorPreservesFilteredColimits` | 有限被覆の全タプル Čech の各項は filtered colimit を保つ。 |
+| `projectiveFilteredShortComplexDiagram` | 短複体の図式を、関手圏の一つの短複体にまとめる。 |
+| `projectiveFilteredShortComplexHomologyDiagramIso` | 関手圏の短複体の H を、各有限段の H の図式と同定する。 |
+| `projectiveFilteredShortComplexHomologyIso` | 短複体の filtered colimit の H は、各段の H の colimit。 |
+| `projectiveFilteredComplexShortComplexIso` | 複体の colimit の短複体を、各項の colimit の短複体と比較する。 |
+| `projectiveFilteredComplexHomologyIso` | 複体の filtered colimit と各次数の H を比較する。 |
+| `projectiveFullCechFunctorPreservesFilteredColimits` | 有限被覆の全タプル Čech 複体は filtered colimit を保つ。 |
+| `projectiveCechFilteredComplexIso` | 有限被覆の Čech 複体と係数図式の filtered colimit の canonical な比較。 |
+| `projectiveCechFilteredHomologyIso` | 有限被覆の Čech H は、係数図式の filtered colimit と交換する。 |
+| `projectiveFilteredShortComplexHomologyDiagramIso_naturality` | 関手圏と各段の短複体の H の比較は、図式の射に自然。 |
+| `projectiveFilteredShortComplexHomologyIso_naturality` | 短複体の filtered colimit の H の比較は、図式の射に自然。 |
+| `projectiveFilteredComplexShortComplexIso_naturality` | 複体の短複体と各項の colimit の比較は、図式の射に自然。 |
+| `projectiveFilteredComplexShortComplexIso_inv_naturality` | 短複体の比較の逆向きも、図式の射に自然。 |
+| `projectiveFilteredComplexHomologyIso_naturality` | 複体の filtered colimit と各次数の H の比較は、図式の射に自然。 |
+| `projectiveCechFilteredComplexIso_naturality` | Čech 複体と filtered colimit の比較は、係数図式の射に自然。 |
+| `projectiveCechFilteredHomologyIso_naturality` | Čech H の filtered colimit 比較は、係数図式の射に自然。 |
+| `projectiveLocalizedModuleFunctor` | 実際の分数の局所化を、元の環上の加群の関手にする。 |
+| `projectiveLocalizedModuleTensorNatIso` | 実際の局所化と、局所化環とのテンソル積を自然に比較する。 |
+| `projectiveLocalizedModuleFunctorPreservesColimits` | 固定した共通の環での実際の局所化は、小さい colimit を保つ。 |
+| `projectiveLocalizedColimitIso` | 実際の局所化と colimit の canonical な比較。 |
+| `projectiveLocalizedColimitIso_fraction` | 局所化の比較は、有限段の分数の同じ分子・分母を保つ。 |
+| `projectiveLocalizedColimitIso_naturality` | 実際の局所化と colimit の比較は、加群図式の射に自然。 |
+| `projectiveFilteredSubmodule` | 余極限内の指定部分を、各段の部分加群の像の上限と定義する。 |
+| `projectiveFilteredSubmodule_directed` | 遷移で保たれる部分加群の像は、有向族をなす。 |
+| `mem_projectiveFilteredSubmodule_iff` | 余極限の指定部分の元は、一つの段の指定部分の代表元を持つ。 |
+| `projectiveFilteredSubmoduleDiagram` | 各段の指定部分加群自身を、加群の filtered 図式とする。 |
+| `projectiveFilteredSubmoduleInclusion` | 各段の指定部分の包含を、図式の包含とする。 |
+| `projectiveFilteredSubmoduleInclusionMono` | 指定部分加群の図式の包含は mono。 |
+| `projectiveFilteredSubmoduleColimit_injective` | 部分加群の filtered colimit からの包含は単射。 |
+| `projectiveFilteredSubmoduleColimit_range` | 部分加群の colimit の像は、有限段の像の有向上限そのもの。 |
+| `projectiveFilteredSubmoduleColimitEquiv` | 部分加群の colimit を、余極限内の具体的な指定部分と線形同定する。 |
+| `projectiveFilteredSubmoduleColimitEquiv_val` | 指定部分の比較は、余極限内の同じ元を送る。 |
+| `projectiveGradedColimitGrade` | P 上の加群図式の余極限に、共通基底 R 上の分子族の像から次数成分を作る。 |
+| `projectiveGradedColimitBaseInclusion` | 各有限段からの P 線形な射を、共通基底 R 上の線形射として扱う。 |
+| `mem_projectiveGradedColimitGrade_iff` | 余極限の次数成分の元は、一段の同じ次数の元で表される。 |
+| `projectiveGradedColimitInclusion_preservesPiece` | 各段からの canonical な射は、同じ Proj 次数の成分を保つ。 |
+| `projectiveGradedColimitGrade_step` | 有限段の分母倍の条件は、余極限の次数成分でも保たれる。 |
+
+**残り。** 固定係数の任意の係数図式の Čech H の比較はできたが、これだけで動く基底の実際の標準開との比較が完了したとはしない。次は、構成した余極限の次数成分を分子族とする `projectiveGradedAway` と、各段の斉次局所化の colimit を比較する。全射性は分子の有限段への持ち上げ、単射性は分母倍での零化と有限段の等式判定による。その同型を実際の標準開の制限と加群の射に自然にし、Čech H の比較と合成する。負の次数の零延長、動く基底の実際の係数変更図式、既存の閉厚化・Frobenius との整合性もそこで確認する。
+
+共通アフィン細分も未完。完備化と filtered colimit の交換、無限積との交換は主張していない。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。**停止点 2e ではない。**
+
+証拠は作業木の `scheme-drafts/cech-filtered-importer-build.log`、`projective-graded-colimit-build-2.log`、`cech-filtered-audit.log` に保存した。次の斉次局所化の接続手順は `scheme-drafts/graded-away-colimit-route.md` にも記録した。
