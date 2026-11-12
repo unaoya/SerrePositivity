@@ -1588,3 +1588,23 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.I
 ```
 
 第一のまとまりの内部の接続であり、新しいまとまりではない。§41の移送した EZ ホモトピーを今回のテンソル同型で挟み、負次数の比較へ移す段と、自由線形化した積重みとの同定・全単体への照合が続く。今回だけで重み付き切断の同値性を証明済みとは数えない。指定の残り三まとまりも保持する。既存宣言・⑤aのファイル・入口・公式監査は変更していない。停止点2は未完、上限10,000行まで残枠3,730行。約7,900行での非停止の中間報告を保持する。
+
+## 44. 3b-2 続行：一般 A の元の自由積鎖へ EZ ホモトピーを接続
+
+コード `9f0e3070c`、新規3本234行。累計 **106本6,504行**。
+
+- `DiagramComparison.NegativeEZCoefficient`（83行）：§43の整数テンソル底変換と指定 Moore 同型を合成。一般係数の負次数正規化テンソルへの指定 AW、その逆向きの shuffle、AW の後の shuffle を恒等へ結ぶ元のホモトピーを構成した。
+- `DiagramComparison.IntegerCoefficientFree`（72行）：任意の宇宙の整数自由化の指定生成元による随伴を構成し、同宇宙の整数係数移送・係数拡大の随伴を合成。元の `ModuleCat.free A` との全自然同型を得た。指定単位の保存と、その生成元の像が元の A 自由加群の標準生成元である評価式を証明した。
+- `DiagramComparison.FreeProductEZ`（79行）：既存 `linearizedTensorIso` と上記自由化比較を Moore 正規化・負次数延長へ送った。元の A 自由化した X×Y の正規化鎖から、X・Y の正規化鎖のテンソルへの AW と、その逆向きの shuffle を構成し、この積の複体上で AW→shuffle と恒等の鎖ホモトピーを証明した。
+
+新規対象の鍵付きビルド **2,239 jobs**・**2,240 jobs**、個別検査が成功。累計一時監査は105本1,172宣言、最終106本 **1,195宣言・標準三公理のみ**、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-40.log`・`/private/tmp/isw2-g10-build-41.log`。最終監査 `/private/tmp/AuditISW2G10HundredSix.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredsix-modules.txt`。鍵は `--wait 3600`、整理券は同時に一枚、各回1,700秒上限、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NegativeEZCoefficient
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerCoefficientFree
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductEZ
+```
+
+いずれも第一のまとまりの内部。今回の鎖ホモトピーは一方の合成についてのもの。逆順の合成、最終 AW・shuffle の全単体パラメータへの自然性、既存の単位余積による BK 線形化との同定、Γ Hom／重み付き切断比較への照合を完了済みとは数えない。後続の指定 native 制限・極限性、標準脚・D(A) 輸送、全射・錐の族も残る。範囲・型の弱化、⑤aのファイル・既存宣言・入口・公式監査の変更はない。停止点2は未完、残枠3,496行。約7,900行で実測と残りを再見積もりする。
