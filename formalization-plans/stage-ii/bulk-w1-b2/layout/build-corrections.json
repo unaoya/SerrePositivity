@@ -12,5 +12,12 @@
     "correction": "Refresh existing export receivers from the moved declaration table, preserving actual method storage names; 51 commands in 22 files.",
     "scope": "All source files scanned; 3 unrelated formatting changes restored; all 22 changed files already belong to the 9514-module comparison scope.",
     "next_validation": "Priority builds of ZeroHomotopy and ZeroTriangleHoMap, followed by full target builds and preservation."
+  },
+  {
+    "path": "SerrePositivity/InfinityCategories/HTT/Section2_1_3/VertexFiberOpposite.lean",
+    "issue": "The planned theorem name exists, confirmed by a Lake-configured diagnostic probe, while its new storage namespace is not visible to an immediate export across asynchronous elaboration branches.",
+    "correction": "Register the five moved-method storage namespaces explicitly in the public base context before declarations. Kernel names and proofs remain the same.",
+    "evidence": "Lean/Namespace.lean namespacesExt asyncMode is local; debug probe prints actual constant and #check succeeds.",
+    "next_validation": "Priority builds of all five export-bearing moved modules and the two earlier regression targets, then full builds and preservation."
   }
 ]

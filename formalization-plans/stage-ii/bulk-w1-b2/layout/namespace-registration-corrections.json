@@ -1,0 +1,37 @@
+[
+  {
+    "module": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence",
+    "declaration": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.IsQCatEquivalence.core",
+    "storage_namespace": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.IsQCatEquivalence",
+    "field_receiver": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence",
+    "change": "empty public namespace command before declarations; no kernel declaration or proof changes"
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.CoreEquivalence",
+    "declaration": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.QCatEquivalence.core",
+    "storage_namespace": "SerrePositivity.InfinityCategories.HTT.Section3_1_3.QCatEquivalence",
+    "field_receiver": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence",
+    "change": "empty public namespace command before declarations; no kernel declaration or proof changes"
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.WeakContractibility",
+    "declaration": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsContractibleKan.isWeaklyContractible",
+    "storage_namespace": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsContractibleKan",
+    "field_receiver": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan",
+    "change": "empty public namespace command before declarations; no kernel declaration or proof changes"
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HTT.Section5_1_4.WeakContractibleOpposite",
+    "declaration": "SerrePositivity.InfinityCategories.HTT.Section5_1_4.IsWeaklyContractible.op",
+    "storage_namespace": "SerrePositivity.InfinityCategories.HTT.Section5_1_4.IsWeaklyContractible",
+    "field_receiver": "SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible",
+    "change": "empty public namespace command before declarations; no kernel declaration or proof changes"
+  },
+  {
+    "module": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.VertexFiberOpposite",
+    "declaration": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsInitialVertex.isTerminalVertex_opFiber",
+    "storage_namespace": "SerrePositivity.InfinityCategories.HTT.Section2_1_3.IsInitialVertex",
+    "field_receiver": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex",
+    "change": "empty public namespace command before declarations; no kernel declaration or proof changes"
+  }
+]
