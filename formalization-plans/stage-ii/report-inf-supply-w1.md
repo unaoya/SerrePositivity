@@ -556,3 +556,28 @@ F2全体のビルド・監査は実行していない。入口・全体監査へ
 | `postcompose_source_transport` | 辺の始点の表示変更は、標準後合成の始域の表示変更に一致する。 |
 | `setWeightEndpointRestriction_sectionsMapIso` | 同じ指定普遍辺の後合成は、固定端点錐の元の形状制限と全族で可換。 |
 | `setWeightLimitTail_endpointRestrictionIso` | 元の後段を固定端点模型へ送る比較は、元の錐の族の制限に全自然。 |
+
+
+## 13. 段2の途中：元の比較を区間族へ（11-12夜、作業継続）
+
+main `30ea26711` を取り込み、①に着手。②の宣言は変更していない。
+下書きを含む追加量が見込み下端1,300行の半分を超えたので、早めの中間報告を記録する。
+
+- **検証済み**：2本・107行・7宣言、`395bda0b4`。`SetWeightOppositeCoefficientsNaturality` と
+  `WeightedCosliceBaseNaturality`。反転係数までの元の比較の自然性、および元の左 coslice 比較と
+  添字の制限との厳密な可換性を証明。対象ビルド6,132 jobs成功、7宣言すべてsorry-free、標準三公理のみ。
+  ログ `/tmp/is-w1/stage2/build-2.log`、`build-4.log`、監査入力 `audit-early.lean`。
+- **未検証**：作業木の9本・607行。合計11本・714行。自然変換の区間図式の要素の圏、
+  元のpointed比較の両端・底の照合、元の普遍持ち上げを任意の始域へ制限する相対比較、
+  そこから構成する `setWeightElementsUnstraightening_naturality` の型まで書いた。
+  これらはまだ成果として扱わず、対象ビルドで型エラーを修正中。
+- **証明の筋**：区間上の要素の圏 → 元の比較のpointed区間族 → 元の `spaceDiagramEdge` の
+  全prismとの底の一致 → 相対延長の可縮性 → 相対写像空間内の頂点同型。
+  `StrictKanPointedComparison`、`relativeFunctorExtensionEndpoint_witnessIso` を再利用する。
+  点ごとの一致に弱めず、比較同型を最終主張の仮定にも追加しない。
+- **残りの見込み**：上記の検証・修正に100〜350行、元の切断同値への接続・宇宙比較に400〜800行、
+  ②と合わせた篩包含の最終四角形に150〜300行。現時点の完成見込みは約1,400〜2,300行で、
+  §12の1,300〜2,500行と上限2,800行を維持。全単体の照合の検証結果で見直す。
+- 入口・全体監査登録は未変更。新規ファイルだけで進め、鍵は`--wait 3600`、待ちは一枚、ビルド中のみ保持。
+
+**停止点2ではない。①の全体は未完成で、作業を続ける。**
