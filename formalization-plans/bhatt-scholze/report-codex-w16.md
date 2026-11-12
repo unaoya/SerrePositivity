@@ -2034,3 +2034,36 @@ KL-W1 取り込み後の改名表への追従と、その後の対象検査は�
 入口と共有監査スクリプトは編集していない。取り込み待ちの新規モジュールは二十七本。
 
 自由比較の六本、D78 の移送補題の検証を区切り、次は厳密な bar の二本を検証する。
+
+## 35. 経路 B の厳密な bar の前段：対象ビルドと監査が成功
+
+§32.2 の二本を検証した。
+`SerrePositivity.EInfinity.StrictAdjunctionBar` は任意の厳密な随伴の実際の余モナドを用い、
+通常の `SimplexCategoryᵒᵖ` 上の bar の全関手、増大の全関手、右随伴を適用した増大と追加退化、
+追加退化からの自然な切断と増大との合成、対象に関する追加退化の自然性を供給する。
+既存の `ComonadSimplicialResolution` を再利用し、対象に関する自然性を面・退化と単体圏の生成で証明した。
+一般圏の補助として、移動候補の印を module docstring に付けている。
+
+`SerrePositivity.EInfinity.BarrattEccles.Theory.StrictBar` は、
+構成済みの `(operad A).freeAlgebraAdjunction` を実際に代入し、BE の bar・増大・忘却後の追加退化を供給する。
+零次の増大は既存の `evaluationHom`、忘却後の零次の切断は同じ `schurUnit` へ同定した。
+
+追加のモデル構造、cofibrancy、実現の保存、局所化の同定を仮定していない。
+追加退化を**代数圏内の分裂**としては主張していない。
+bar の各項の自由代数への入力を cofibrant と示すこと、bar を ∞ の図式へ移し実現を同定すること、
+全関手版の `coproduct_tensor` と `forget_preservesSifted`、Tot の群は引き続き未供給。
+
+| 新規登録候補 | 行数 |
+| --- | ---: |
+| `SerrePositivity.EInfinity.StrictAdjunctionBar` | 266 |
+| `SerrePositivity.EInfinity.BarrattEccles.Theory.StrictBar` | 60 |
+| **計** | **326** |
+
+上限約 800 行以内。対象ビルド `/tmp/bsw16/graded/strict-bar-06.log` は成功、追加警告零。
+再帰監査 `/tmp/bsw16/graded/audit-strict-bar.log` は **49 宣言、標準三公理のみ**。
+sorry・admit・新規公理はない。各ビルドと監査は別々の鍵で行い、終了後に返却した。
+
+これで依頼された「自由比較六本 → 二点余錐の一般の移送 → 厳密な bar」の検証順を完了した。
+共通入口と共有監査の登録は行っていない。§34 と合わせ取り込み待ちの新規モジュールは二十九本。
+KL-W1 の取り込みと改名表への追従は調整役からの案内の後に行う。
+次は a の残りへ戻る。厳密な bar の前段を検証したことを、a や経路 B の全体の完了とは数えない。
