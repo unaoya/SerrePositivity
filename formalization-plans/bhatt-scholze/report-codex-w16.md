@@ -5446,3 +5446,45 @@ native Tate 関手、双加群、P⁰ の全自然変換の完成はまだ宣言
 `cyclic-coefficient-acyclic-01.log`：対象成功。最終五本に警告なし。
 `audit-cyclic-mixed.log`：**143 本・1,065 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 87. D79(iii)：同じ周期 Hom は上有界係数の指定準同型を保つ
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| LinearHomConeDegrees | 46 |
+| ModuleConeCoordinates | 75 |
+| LinearHomConeComparison | 65 |
+| BoundedQuasiIsoCone | 53 |
+| BoundedLinearHomQuasiIso | 47 |
+
+追加 **286 行**、(iii) **1,295 行**、(ii)+(iii) **8,489 行**。
+前四本および最後の一般補題は、一般の線形・アーベル圏の基盤への移動候補。
+
+### 87.1 指定射の準同型保存
+
+`linearHomConeIso R P f` は
+
+```lean
+mappingCone (linearHomComplexPostcompose R P f) ≅
+  linearHomComplex R P (mappingCone f)
+```
+
+の **実複体同型**。Mathlib の同じ `mappingCone.liftCochain`、
+二射影とその直積座標、符号付き微分を照合した。
+`coefficientCone_acyclic_of_quasiIso` と逆向きの反映は、
+一般のアーベル圏の同じ指定 cone の三角形を通して証明した。
+
+`linearHomComplexPostcompose_quasiIso_boundedAbove` は、P の各項の射影性と
+M・N の共通の上界を明示し、**元の指定射 f による後合成そのもの**の準同型性を与える。
+`cyclicResolutionHom_quasiIso_boundedAbove` が、同じ指定完全周期解像度への適用。
+これで完全入力の係数模型を相対関手として native 側へ運ぶための
+準同型保存まで到達した。非有界係数の場合や P⁰ の完成はまだ主張しない。
+
+### 87.2 検証
+
+`linear-hom-cone-degrees-03.log` の Degrees、`linear-hom-cone-comparison-03.log`、
+`bounded-linear-hom-quasi-02.log`：対象成功。五本の最終版に新規警告なし。
+`audit-bounded-quasi.log`：**148 本・1,103 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+上有界な係数の全部分圏と同じ相対 Hom 関手へまとめる作業を続行する。
