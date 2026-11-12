@@ -144,3 +144,40 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 | §2 | Lemma 2.43・Cor 2.44 の離散版 | 中 | Prop 3.13 の一般形を形式化するとき（今は変数の場合で足りる） |
 | §2 | 後回し：Rem 2.40 の後半・Warning 2.41、Ex 2.20 (2)〜(4)、Lemma 2.11 の残り・Cor 2.12、Rem 2.13・2.7、Cor 2.31 の圏同値、Lemma 2.18 のエタール部分、Rem 2.22 | 中〜大 | 使う場所が出たとき |
 | §2 | 入れない：Rem 2.3（λ 環）、単体的な版（A2 の後）、Lemma 2.38 の無限列 | — | — |
+
+### §3 prism（`research/bs-section-review/03-prism.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R3-1 `IsBoundedPrism` を `Prism/Basic` へ下ろし、Prism → Prismatic の逆向きの import を消す | 新 BR47 | B3（移動）。`OrientedPrism.isBoundedPrism_of_perfect`（Lemma 3.8 (2)）の新しい補題と、手書きの 22 か所の置き換えは補完（§8）／保守 |
+| R3-2 §3 の本体が §7（Andre・Semiperfectoid）の一般の補題に依存（5 importer） | BR41 に追加 | B3（提案の表の移し先。完全平坦性の閉包性質は `CommutativeAlgebra/CompletelyFlat/` へ、Pair の正則性は `HomologicalAlgebra/DerivedCompletion/Pair/` へ） |
+| R3-3 置き場所（PDCompletionPrism → §7 と一緒に、`Prism/Residue/PrismaticResidue` → HomologicalAlgebra、`PerfectDeltaResidue` → `Andre/Perfection/`、`Prism/Tensor/` → Perfectoidization、Thm 3.10 の芯 4 本 → `Prism/Perfectoid/`） | BR19 ほか | B3 |
+| R3-4 名前空間をそろえる（`Prism/Bounded/Completeness`・`Tilt`・`PerfectPrismHomLift` が `…Andre`） | 新 BR48 | B3（同じ回の改名表に入れられれば。無理なら保守） |
+| R3-5 二重の構成（Lemma 4.8 の二版、零環の prism 二つ、Lemma 3.5 後半の手組み 5 か所、A_inf の模型二つ） | BR13 ほか | 保守。(e) drafts と本体の重なりは §4 の R4-1 へ |
+| R3-6 docstring（ノートを引く 5 か所、古い記述、工程ラベル 67 行） | BR25・BR34 | B3（docstring の回） |
+| R3-7 使われていない宣言 | BR8 | 閉（原典の項目にあたる宣言は、利用者がなくても残す） |
+
+### §4 site（`research/bs-section-review/04-site.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R4-1 drafts の A0・A1 の古典的な部分は本体に置き換わっている（約半分、表のとおり） | BR40 に追加 | **5∞-0**（⑤∞ の最初の段）：drafts を本体の宣言を指す形に書き換え、重なる宣言を drafts から外す。⑤∞ が古い drafts の上に積まないように |
+| R4-2 本体の `flatTopology` は原典どおり（Cor 3.12 で site を示してから位相）。D22 を直す | — | 閉（調整役が a0-design D22 に注記した） |
+| R4-3 設計書・地図の古い記述（design-status の A0-3b・A0-3d・A0-4、a0-design §1・§2.6、a1-design の Lemma 4.10、`PrismOver.lean:59` の docstring） | — | design-status と a1-design は調整役が直した。`PrismOver.lean:59` は B3 の docstring の回 |
+| R4-4 Lemma 4.8 のファイルの名前空間・見出し・置き場所（`Prism/Perfectoid/` へ） | BR48 | B3。有界性の仮定の書き方は BR47 の後に保守 |
+| R4-5 二重の構成（`hodgeTate_iso_polynomial_Zp` の別名、Čech–Alexander の三つの模型、`isCoproduct` の同名、Tor 振幅の定義三つ） | BR39・BR40 | 保守（三つの模型は原典の三つの構成に当たるので残す）。Tor 振幅は 5∞-0 で本体の `HasCochainCompleteTorAmplitude` に寄せる |
+| R4-6 置き場所（Construction61Detection・Reflection → §6、Cor 5.5 を §5 へ） | — | B3 |
+| R4-7 docstring | BR25 | B3 |
+
+### 補完への追加（§3・§4）
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §3 | Def 3.2 の prism の圏（`Category` の instance）、Def 3.2 (3) の平坦な射（`OrientedPrism.Hom.IsFlat`・`IsFaithfullyFlat`、site の定義をその略記に） | 小 | **5∞-0**（Thm 3.10 の圏同値と Rem 4.6 の前提） |
+| §3 | Lemma 3.8 (1)(2) の名前つきの補題（`isBoundedPrism_of_perfect` など）、Lemma 3.5 後半の向き付きの構成子 `OrientedPrism.ofDeltaHom`、Lemma 3.6 の向き付き版、Ex 3.3 | 小 | 5∞-0（BR47 の後） |
+| §3 | **Thm 3.10 の圏同値（絶対版、向き付き）** | 小〜中 | **計画**：Rem 4.6 の同値（G-A5-4）の前提で、5∞-6（A5）の前に。部品はそろっている |
+| §4 | **prismatic site の本質的小ささ**（結晶 site の `CrystallineSiteSmall` と同じ証明。本体の `[EssentiallySmall …]` の仮定を外す） | 小 | **5∞-0** |
+| §4 | **Rem 4.6 の定義**（完全 prism の充満部分圏と誘導位相） | 小 | **5∞-0**（5∞-6 の A5 の前提） |
+| §3・§4 | 後回し：Lemma 3.1 (3)、Lemma 3.7 (3) を圏の同一視として、Lemma 3.9 の付随の主張（BR28 の残り）、Thm 3.10 の perfectoid の定義の差、Cor 3.12 の絶対版 | 小〜中 | 使う場所が出たとき |
+| §3・§4 | 入れない：Def 3.2 の一般の Cartier 因子、Lemma 3.7 (4)、Rem 3.11、Ex 3.14 の一般形、Prop 3.13 の一般形（D21）、Def 4.1 の形式スキーム版、Rem 4.3・4.7・4.13〜4.15、Construction 4.4、Lemma 4.21、Lemma 4.8 の一般の標的、Thm 4.11 の smooth な一般の R | — | E3 に要らない、大きな基盤がない |
+| §4 | 計画済み（⑤∞）：Notation 4.16、Construction 4.18「Δ を計算」と Ō 版、Rem 4.19 の Tot、Lemma 4.20・4.22（5∞-2）、Thm 4.11 の一般の基底と Cor 4.12（5∞-3） | — | — |
