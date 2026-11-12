@@ -4801,3 +4801,32 @@ sorry・追加公理なし。鍵返却を回収済み。共有入口・共有監
 対象ビルド `/tmp/bsw16/em-omega-zero-reduction-01.log` は成功、警告なし。
 監査 `/tmp/bsw16/audit-em-omega-zero.log` は **58 本・465 宣言・標準三公理のみ**。
 sorry・追加公理なし。鍵返却を回収済み。引き続き零次数の指定 π/H 比較を進める。
+
+
+## 71. D79(ii)：元の Γ の自然な π/H 比較と指定頂点
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneGammaCohomotopy | 82 |
+| EilenbergMacLaneGammaComponents | 79 |
+| EilenbergMacLaneNaturalVertex | 63 |
+| EilenbergMacLaneTruncationNaturality | 54 |
+
+追加 **278 行**、(ii) の検証済み累計 **3507 行**。
+登録候補は表の四本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+
+`smartTruncationHomologyIso_naturality` は指定延長同型と smart 切断包含の自然性。
+`gammaPiZeroCohomologyEquiv` と `gammaPiCohomologyEquiv` はシフト零を挟まず、
+元の Γ の零・正次数を同じ正規化余単位で元の H へ戻し、全複体射で自然になる。
+`gammaAdjointSuspension_vertex_value` は、指定構造射の任意の頂点での値を、
+指定単位の頂点からの複体射の像として **元の圏で厳密に**回収する。
+同じ原理で、単位の頂点の値が等しい二つの自然変換の連結成分の写像が一致する。
+
+これで Ω 条件の零次数の計算に使う自然性が揃った。
+零次数で実際に全単射になるという主張、全基点への移送、native な V の降下、
+安定 π/H の自然同型は未完了。型や範囲の変更の判断は新たに発生していない。
+
+対象ビルド `/tmp/bsw16/em-gamma-cohomotopy-03.log` は成功、警告なし。
+監査 `/tmp/bsw16/audit-em-gamma-comparison.log` は **62 本・504 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則どおり、実 π₀/Moore 比較の代表元の計算へ続行する。
