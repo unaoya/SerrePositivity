@@ -1052,3 +1052,32 @@ SerrePositivity.HomologicalAlgebra.ComplexHomPrecompose
 SerrePositivity.HomologicalAlgebra.ProductTotalHomPrecompose
 SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalParameters
 ```
+
+
+## 26. 3b-2 続行：積全複体への横ホモトピーの移送
+
+### 26.1 検証済みの区切り
+
+新規6本・325行を追加し、累計35本・2,193行。コードコミット `6036adcba`。
+`ProductTotalHorizontalComponents` と `ProductTotalHorizontalHomotopy` で、指定積射影による横ホモトピーの成分とその方程式を証明した。縦微分の二項は隣接横次数の符号で相殺する。`CochainProductTotalizationHomotopy` は横の非負余鎖次数を整数へ零延長し、同じ二射と鎖ホモトピー同値を積全複体へ移す。内部次数の有界性・積の完全性・収束の仮定はない。
+
+`ComplexOppositeHomotopy` は添字を保ち形を反転する反対化へ指定ホモトピーを移す。重みの鎖複体に反変な線形 end を適用する準備であり、次数の符号を反転する余鎖複体の反対化とは区別する。`FreePresheafLinearHom` は自由前層の線形 Yoneda 評価と重みの射への自然性、`FunctorComplexExchange` は複体値図式から図式値複体への逆向きの交換関手と両比較同型。
+
+6本の鍵付き対象ビルド成功（1,545 jobs）。累計35本の一時監査は **427宣言、標準三公理のみ**。`sorry`・独自公理0。`--wait 3600`、整理券一枚、一回1,700秒の上限で実行し、終了コード0と鍵の解放を確認した。ログ `/private/tmp/isw2-g10-build-11.log`、監査 `/private/tmp/AuditISW2G10ThirtyFive.lean`。既存の数学宣言・drafts・入口・正式監査は変更していない。
+
+今回の追加登録対象：
+
+```text
+SerrePositivity.HomologicalAlgebra.FreePresheafLinearHom
+SerrePositivity.HomologicalAlgebra.FunctorComplexExchange
+SerrePositivity.HomologicalAlgebra.ProductTotalHorizontalComponents
+SerrePositivity.HomologicalAlgebra.ProductTotalHorizontalHomotopy
+SerrePositivity.HomologicalAlgebra.CochainProductTotalizationHomotopy
+SerrePositivity.HomologicalAlgebra.ComplexOppositeHomotopy
+```
+
+### 26.2 続行中の部分
+
+線形 end の全関手族、標準単体重みから元の余単体図式への自然同型、その鎖分解を積全複体へ移す部分を作業中。これらの未検証分はコミットに含めていない。通常の複体圏の比較だけでは native な指定錐の極限性をまだ得ていない。§25.2 の残り（正規化・BK との指定成分比較・native 錐・D(A) への輸送・全射と指定錐の族）を続ける。停止点2には未到達。見込み5,000–7,200行・上限8,400行は据え置く。
+
+11-12 夜の指示を確認した。停止点2の報告後は承認待ちを挟まず、3b-4 の BE 模型の実現・Tot・U との比較へ進む。3b-3 は③-aの担当。3b-4 の開始時には coherent な図式の厳密化への依存を紙で記し、依存待ちまたは承認を要する判断では境目の紙の作業に移る。点つき Kan 複体の Tot と⑤aの既存ファイルは対象外。
