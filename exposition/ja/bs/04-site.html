@@ -37,7 +37,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
 <tr><td>Def 4.1</td><td>prismatic site と構造層</td><td class="todo">未</td><td>A0。affine の R について、濃度 \(\le\kappa\) の向き付き有界 prism の圏（D16）、忠実平坦射が生成する位相、\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) をそのまま定義する。site の公理と層性は Cor 3.12（定理）</td></tr>
 <tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">未</td><td>A5（drafts/A5/PerfectSite：A0 の <code>PerfectPrismaticSite</code> に flat 位相、Lemma 4.8 で \(\mathrm{Perfd}_{S/}\) と同値、余積は \((T_1\widehat\otimes_S T_2)_{\mathrm{perfd}}\)。Lemma 8.4 は A4、Prop 8.5 は A5）</td></tr>
-<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="ok">済（有界な標的）</td><td>標的が<b>有界</b>な向き付き prism の場合 <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>、一意性 <a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:199</a>）。Rem 7.15 の照合のために作られたもので、主経路外。標的が完全な場合は Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>、主経路）。原典は標的を任意の prism とするが、prismatic site の対象は有界なので E3 にはこれで足りる。証明は原典の変形理論（\(L_{A/\mathbb Z_p}\) の消滅）ではなく tilt の比較と Witt 持ち上げの一意性。BR33 に沿って BS-W7 で André の下から Prism/ へ移した</td></tr>
+<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="ok">済（有界な標的）</td><td>標的が<b>有界</b>な向き付き prism の場合 <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>、一意性 <a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:199</a>）。Rem 7.15 の照合のために作られたもので、主経路外。標的が完全な場合は Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>、主経路）。原典は標的を任意の prism とするが、prismatic site の対象は有界なので E3 にはこれで足りる。証明は原典の変形理論（\(L_{A/\mathbb Z_p}\) の消滅）ではなく tilt の比較と Witt 持ち上げの一意性。BS-W7 で André の下から Prism/ へ移した</td></tr>
 </table></div>
 
 <h2>2. HT 比較の定式化（§4.2）</h2>
@@ -114,7 +114,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </table></div>
 
 <h2>リファクタの候補</h2>
-<p>§4 に対応するコードは Lemma 4.8 を除いてまだない。Rem 7.15 の照合用に作った有界 prism の完備性・剛性・tilt と、有界な標的への Lemma 4.8 は、BR33 に沿って BS-W7 で <code>Prism/Bounded/</code>・<code>Prism/PerfectPrismHomLift</code> へ移した。A0 で要る Lemma 3.7・Lemma 4.8 の一般形の出発点になる。向きなし入力圏は <code>Andre/PowerRootEnvelope/InputCategory</code>・<code>Initiality</code> にある（André 固有の入力作用つき）。</p>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

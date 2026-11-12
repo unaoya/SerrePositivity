@@ -140,10 +140,6 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <tr><td><code>KanHomotopyZero X x</code></td><td>\(\pi_0\) を基点付き集合とみたもの</td><td>KST/Spectra/HomotopyDegreeZero.lean:26</td></tr>
 <tr><td><code>KanHomotopy X n x</code></td><td>本来の添字の \(\pi_n\)：\(0 \mapsto\) <code>KanHomotopyZero</code>、\(n+1 \mapsto\) <code>KanHomotopyGroup X n</code></td><td>KST/Spectra/HomotopyIndexing.lean:25</td></tr>
 </table></div>
-<div class="box refactor">
-<p class="label">注意：添字のずれ</p>
-<p><code>KanHomotopyGroup X n</code> は \(\pi_{n+1}\) である。群の構造を \(n\) について一様に定義するための選択だが、読むときに間違えやすい。本来の添字の版 <code>KanHomotopy</code> があるので、新しく書く主張ではこちらを使うのがよい（整備の後の R54 で名前を見直す候補）。</p>
-</div>
 
 <h3>3.2 写像、不変性、π_* 同型</h3>
 <ul>

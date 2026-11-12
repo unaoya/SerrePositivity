@@ -296,8 +296,8 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
   <li>以前の判定「Lemma 2.38 未」は誤りで、\(r=1\) の場合は離散性・\(p\) ねじれなし・pd 包との同一視・底変換・\(\bmod p\) の自由性まで揃っている。足りないのは \(r\) 個の列への一般化（多変数の分冪代数、Koszul 複体の帰納法）。</li>
   <li>Cor 2.39 も \(r=1\) では原典の形で済んでいた（2026-10-26、BS-W8 の整理で判明）。生の包 \(A\{\varphi(y)/p\}\) そのものが \(p\) ねじれなしで、分冪表示環と環同型になる。旧 <code>Andre/RootedExtension/Supplement</code>（主定理に使われない旧 B4 経路）の中にあったため、以前の判定では見落としていた。二元の場合の \(p\) 正則性（<code>DeltaPDivisionPairRegular</code>・<code>…TwoStep</code>）も同じ <code>Andre/Envelope/PDivision</code> にあり、課題 T2-1・T2-2 の足がかりになる。</li>
   <li>Lemma 2.36 は原典より一般（任意の \(p\) 局所 δ 環・任意の元族）だが、生の pushout \(C\) ではなく \(A[1/p]\) の中の像で述べている。Cor 2.39 を原典の形（\(C\) 自身が離散で \(D_I(A)\) に等しい）で得るには、\(C\) の \(p\) ねじれなし（原典の (a)）を足す必要がある。</li>
-  <li>(3) の 7 本は §2.5 の主張ではなく、生の包の \(p\) 完備化（Cor 2.44・Prop 3.13 の対象）の部品。置き場所は §2.6・§3 側がふさわしい（BR32）。</li>
-  <li>(5) は BS 固有ではなく分冪代数の一般論。BS の外に出す候補だが、共有基盤の変更になる（BR32）。</li>
+  <li>(3) の 7 本は §2.5 の主張ではなく、生の包の \(p\) 完備化（Cor 2.44・Prop 3.13 の対象）の部品。</li>
+  <li>(5) は BS 固有ではなく分冪代数の一般論。</li>
 </ul>
 </div>
 
@@ -407,26 +407,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </ol>
 
 <h2>リファクタの候補</h2>
-<div class="box refactor">
-<p class="label">BR4　自由 δ 環の二重構成</p>
-<p><code>FreeDeltaRing</code>（\(\mathbb Z\) 上）と <code>RelativeFreeDelta</code>（任意の δ 環上）が、普遍性と表示まで二系統ある。一致は <code>relativeFreeDeltaStructure_int_eq</code>（Delta/Free/RelativeFreeIntegerComparison:19）で証明済みで、\(\mathbb Z\) 版を相対版の特殊化にできる。Lemma 2.11 の Frobenius 平坦性が \(\mathbb Z\) 版の上にあるので、規模を測ってから判断する。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR5　Frobenius が δ 射であることの二つの版</p>
-<p><code>DS.isDeltaHom_frobeniusLift</code>（Delta/Perfect/PerfectDeltaFrobenius:19、p 正則を仮定）は、仮定なしの <code>DS.isDeltaHom_frobeniusLift_general</code>（Delta/Basic/DeltaFrobeniusNaturality:31）に含まれる。前者の証明を後者に置き換える（名前と型は残す）。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR6　pd 包の同型の三角形と分冪構造の三重構成</p>
-<p>raw 包 ≅ 階乗部分環、raw 包 ≅ 主 pd 表示、表示 ≅ 階乗部分環の三本は一本が残りの合成。分冪構造を局所化への引き戻しで作る構成も三回現れる。T2-1・T2-2 で多変数化するときに一本化する。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR7　根の関係とモニック関係の平行するファイル群</p>
-<p><code>DeltaRootFamilyRawCompletelyFlat</code>（\(X^p-b\)）と <code>Andre/Variants/MonicRawCompletelyFlat</code>（モニック）は同じ主元判定による同じ経路。統合の利益と危険を第 7 章で測る。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR32　<code>Delta/DividedPower/</code> を原典の項目ごとに分ける（2026-10-25 精読から）</p>
-<p>74 本を §2.5 の精読で分けた五つのまとまりに沿ってサブディレクトリにする案：(1) Lemma 2.35 の 4 本、(2) Lemma 2.36 の 19 本、(4) Lemma 2.38（r=1）の 19 本、(5) 一変数の分冪多項式代数 25 本。(3) 生の \(A\{a/p\}\) と完備化の 7 本は §2.6・Prop 3.13 の部品なので、生の包を持つ <code>Delta/Division/</code> か <code>Prism/</code> の envelope の近くへ。(5) は分冪代数の一般論なので BS の外（<code>CommutativeAlgebra/</code>）へ出す選択もあるが、共有基盤の変更になる。T2-1（多変数化）を始める前に行うと、一般化した版の置き場所が決まる。BR6（同型の三角形と分冪構造の三重構成）はこの分割と同時に見る。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

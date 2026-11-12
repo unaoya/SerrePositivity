@@ -87,11 +87,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </table></div>
 
 <h2>リファクタの候補</h2>
-<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
-<div class="box refactor">
-<p class="label">BR24　almost の言葉で述べ直す</p>
-<p>Almost/ の supported quotient の系列（<code>PerfectoidizationSupportedQuotientKernel</code>:50,77,98、<code>…Linear</code>:30、<code>PerfectoidizationImageComparison</code>:30–55）は、「\(J_{\mathrm{perfd}}\) の全元が x を消す」を毎回手で書いている。共通側の <code>IsAlmostZero</code>・<code>IsAlmostIso</code>（CommutativeAlgebra/Almost/Zero:25、Morphism:34）で述べ直せる。CLMST 側の利用も変わるので規模は中。<code>lemma103_perfectoidTensor</code> の宣言 docstring は一般の perfectoid テンソルを「Lemma 10.3」と呼んでいるが、原典ではこれは Lemma 10.3 の証明中の主張（module docstring は正しい）。<code>Almost/PerfectoidAlmost</code>（17 行）は集約だけのファイル。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

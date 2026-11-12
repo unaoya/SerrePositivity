@@ -226,3 +226,34 @@ BR24　almost の言葉で述べ直す
 
 Almost/ の supported quotient の系列（`PerfectoidizationSupportedQuotientKernel`:50,77,98、`…Linear`:30、`PerfectoidizationImageComparison`:30–55）は、「\(J_{\mathrm{perfd}}\) の全元が x を消す」を毎回手で書いている。共通側の `IsAlmostZero`・`IsAlmostIso`（CommutativeAlgebra/Almost/Zero:25、Morphism:34）で述べ直せる。CLMST 側の利用も変わるので規模は中。`lemma103_perfectoidTensor` の宣言 docstring は一般の perfectoid テンソルを「Lemma 10.3」と呼んでいるが、原典ではこれは Lemma 10.3 の証明中の主張（module docstring は正しい）。`Almost/PerfectoidAlmost`（17 行）は集約だけのファイル。
 
+
+## 付録：「リファクタの候補」の節の、囲みの外の記述（11-12 夜、ノートから外す前に追加）
+
+### 03-prism.html:178（リファクタの候補）
+
+2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。
+
+### 04-site.html:116（リファクタの候補）
+
+§4 に対応するコードは Lemma 4.8 を除いてまだない。Rem 7.15 の照合用に作った有界 prism の完備性・剛性・tilt と、有界な標的への Lemma 4.8 は、BR33 に沿って BS-W7 で `Prism/Bounded/`・`Prism/PerfectPrismHomLift` へ移した。A0 で要る Lemma 3.7・Lemma 4.8 の一般形の出発点になる。向きなし入力圏は `Andre/PowerRootEnvelope/InputCategory`・`Initiality` にある（André 固有の入力作用つき）。
+
+### 05-hodge-tate.html:84（リファクタの候補）
+
+§5・§6 に対応するコードはまだないので、候補はない。使う既存の部品は、pd 包の計算（Delta/DividedPower、第 2 章 §2.5）と δ 除算（Delta/Division）。Lemma 2.36 の一変数版を Cor 2.39 の多変数版へ一般化する T2-1・T2-2 が A1 の入口になる。
+
+### 07-semiperfectoid.html:102（リファクタの候補）
+
+2026-10-25 の調査（import グラフからの到達性の計算と、宣言の型の突き合わせ）による。終点は Thm 7.14（`Andre/Transfinite/Theorem714`）、B4（`Semiperfectoid/SemiperfectoidSurjectivity`）、Rem 7.15 の最終 3 定理、root の集約。
+
+BR7（根の関係とモニック関係の並行）の詳細：B4 の \(X^p-b\) は André のモニック関係の特殊形で、`deltaRootRelationFamily b s` と `monicRelation (X^p − C b) s` は命題として等しい（rfl ではない）。対応するファイルの組は 15 主題ほどある（perfectoid・prism・PD の完全忠実平坦性、源の離散性、商の導来 H⁰、剰余 Koszul など）。B4 の結論は互換根列 `σ → ℕ → T`、André は根一つ `σ → T` なので、そのままでは特殊化にならない。André 本体が DeltaRoot から使うのは \(b\) に依存しない汎用の 4 宣言だけで、これを Delta/Division 配下へ移せば Thm 7.14 が \(X^p-b\) 専用ファイルを引き込まなくなる（推移的な依存は未検証）。BR9 の判断で扱いが変わる。
+
+BR8（未使用 173 本）の詳細：Semiperfectoid の 88 本は、ほぼ全部が旧「p で割る（φ(r)/p）」経路（`DeltaPDivision*`、DeltaRoot の `Raw*`・`Perfection*` など）。173 本はどれも監査スクリプトだけが import していて、既定のビルドでは一度もコンパイルされない。
+
+### 08-perfection.html:104（リファクタの候補）
+
+2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。
+
+### 10-almost.html:89（リファクタの候補）
+
+2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。
+

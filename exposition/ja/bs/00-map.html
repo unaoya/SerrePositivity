@@ -132,32 +132,7 @@
 <p>監査は <code>scripts/audit_bhatt_scholze*.lean</code>（本体・b4・b5・prop813・arc_excision・andre_conditional・refactoring）と <code>scripts/audit_clmst*.lean</code>。実行は <code>lake env lean scripts/&lt;name&gt;.lean</code>。</p>
 
 <h2>7. リファクタの候補</h2>
-<div class="box refactor">
-<p class="label">BR1　直下 618 ファイルの平置き</p>
-<p>（W1 前の記録）主題（δ 環の一般論、prism、根付き拡大、perfectoid 化の普遍性）で分かれていなかった。W1（主題別）・W2（原典の節ごと）・W3・W4 で上の表の形にした。<code>Delta/</code>、<code>Prism/</code>、<code>RootedExtension/</code>、<code>Perfectoidization/</code> のようなサブディレクトリに分ける案がある。外から import されるモジュール（<code>EInfinity/Perfectoidization/</code>、<code>CommutativeAlgebra/Perfectoidization.lean</code>、<code>CLMST/</code>、<code>Inputs/</code>）は公開名を保つ必要があり、<code>scripts/move_module.py</code> を使う。モジュール移動なので、どの章でどこを動かすかを決めてから着手前に確認する。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR2　普遍性の手書き展開の重複（Q10）</p>
-<p><code>RootedKernelSurjectivity</code>・<code>RootedPresentationSurjectivity</code>・<code>RootedIdealSurjectivity</code> の三箇所が、「perfectoid 化の始域を環同型で取り替えても perfectoid 化」を毎回 20 行ほどで手書きしている。同じ主張は共通側に <code>IsPerfectoidization.precomp_ringEquiv</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/PerfectoidizationFunctor.lean">CommutativeAlgebra/PerfectoidizationFunctor.lean</a>、10-17 から存在）として既にあり、三ファイルから import 閉包で見えることも確かめた。<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-refactoring.md">リファクタ計画</a> §13 では「共通側に新設する候補」とされていたが、新設は不要で、適用だけで済む。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR3　リファクタ監査 838 行の失敗</p>
-<p><code>scripts/audit_bhatt_scholze_refactoring.lean:838</code> の <code>example</code> が、局所記法 <code>ψ</code> の中の <code>Ideal.Quotient.mk I</code> で環 instance の不一致（<code>AddMonoidAlgebra.ring</code> 経由と期待される <code>RelativeFreeDeltaRing</code> 上の semiring）を起こす。同じ記法が定理のソース側では通る。結論の型の前に <code>let := deltaDivisionSourceEvaluationAlgebra E r</code> があると、<code>I</code> の台が <code>abbrev</code> を開いた <code>MvPolynomial (σ × ℕ) P</code> として推論されるためと見られる。一時ファイルでの試験では、<code>Ideal.Quotient.mk (R := L) I</code> と環を明示すると監査全体が通った（<code>let</code>→<code>letI</code> の変更や module 化では直らない）。</p>
-</div>
-
-<div class="box refactor">
-<p class="label">BR8　どこからも使われないモジュール 173 本</p>
-<p>BS の 1008 本のうち 173 本は、BS の外（CLMST・CommutativeAlgebra・KST・EInfinity）からも、入口（<code>Inputs/</code>）からも、root の集約からも import されない（監査だけが読む）。多いのは <code>Semiperfectoid/RootedExtension/Division</code>（38、W4 で <code>Andre/RootedExtension/</code> へ）、<code>…/DeltaRoot</code>（37）、<code>Delta/DividedPower</code>（24）、<code>Delta/Free</code>・<code>Free/Finite</code>（20）、<code>Prism</code>（19）。途中で使わなくなった経路の残りと見られる。BS-W2 では動かさず、削除するかを後で判断する（一覧は W2 の作業ツリーから再計算する）。主定理の経路に乗るのは 455 本、Rem 7.15 の照合が 265 本、root の集約だけが import するものが 115 本（W1 のスタブ 32 本を含む）。</p>
-</div>
-
-<div class="box refactor">
-<p class="label">BR25　docstring の工程ラベルと書式</p>
-<p>docstring に数学の説明がなく、当時の工程ラベルだけが書かれているものが多い。共通基盤への要求番号（G1・G4・G7・G9・G10）を前提にした宣言 docstring が 30 ファイル・48 行（例：「G9-4の比較で…」）、B3・B4-x を先頭に付けたモジュール見出しが 28 ファイル（例：「B4-5：根付き…」）、A1・A1-b（André の旧工程）への言及が 99 行、F4〜F7・N3・B-I もある。番号の意味は archive の記録にしか書かれていない。概要／方針／規約／使われ方の構造を持たない一行だけのモジュール docstring が 168 ファイル、英語と日本語の一行 docstring の混在もある。ラベルと数学の言葉の対応表を一つ作れば、置き換えは機械的にできる（Codex 向き）。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR26　共通基盤が BS を import している（層の逆転）</p>
-<p><code>CommutativeAlgebra/PerfectoidIdeal</code>、<code>PerfectoidIdealCover</code>、<code>PerfectoidIdealCompatibleRoots</code>、<code>AbsolutelyIntegrallyClosedPerfectoidQuotient</code> の 4 本が、BS のモジュールを（W1 の旧名の転送スタブ経由で）import している。少なくとも新しい名前へ付け替える必要があり、本来はこれらの所在（共通基盤か BS か）を見直すべきもの。CommutativeAlgebra は BS・CLMST 以外の利用先を確かめてから動かす。<code>CommutativeAlgebra/PerfectoidIdealCompatibility</code>（44 行）はどこからも到達しない。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

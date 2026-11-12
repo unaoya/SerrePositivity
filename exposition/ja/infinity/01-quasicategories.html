@@ -257,19 +257,7 @@ def IsQCatEquivalence ... (f : X ⟶ Y) : Prop :=
 
 <!-- ============================================================ -->
 <h2>8. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R5　左右の双対を二度証明している</p>
-<p>終対象と始対象の一意性（TerminalUniqueness 249 行、InitialUniqueness 230 行）、slice と coslice への持ち上げ（JoinLifting の前半と後半）、RelativeOuterHorn と RelativeOuterHornOp（各 202 行）などが、反対圏を使わずに左右それぞれ直接証明されている。<code>InitialUniqueness</code> の docstring にも「左右双対を直接構成する」とある。一方で、slice と反対圏の同型 <code>sliceOverOpIso</code> は Stable/SliceOpposite にあり、F1・F1B・Stable から使われている。この同型を Core に移し、片側を他方から導く形にすれば、Core の重複をかなり減らせる見込み。</p>
-</div>
-<div class="box refactor">
-<p class="label">R6　Core の中にある F1 の素材</p>
-<p>Core/Cocartesian*（14 ファイル）を import しているのは F1 のファイルだけである。cocartesian fibration の層（第 3 章）に移すほうが層の境界がはっきりする。第 3 章を読んでから判断する。</p>
-</div>
-<div class="box refactor">
-<p class="label">R7　anodyne・fibration の定義の置き場所</p>
-<p>右・左 anodyne の定義が JoinCells（join のホーン計算のファイル）に、trivial Kan fibration の定義が Terminal にある。§1 の表の概念は一つのファイル（たとえば <code>Core/Fibrations.lean</code>）にまとめ、そのファイルが入口になる形が読みやすい。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

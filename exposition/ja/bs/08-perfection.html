@@ -65,7 +65,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p><b>Lean での組み立て（Prop 8.13 環版）.</b> 図式 \(S_1\leftarrow S_3\to S_2\) の各環に環としての perfectoid 化が指定されているとき、完備テンソルの \(H^0\) が \(S_1\otimes_{S_3}S_2\) の perfectoid 化であることを、環の普遍性・\(H^0\) の主元完備化の比較・perfectoid 環の完備テンソルの離散性（Lemma 10.3 の一般形）を合わせて示す（<code>prop813CompletedTensorMap_isPerfectoidization</code>、Perfectoidization/PerfectoidizationCompletedTensorCompatibility:102）。perfectoid な底変換の版 <code>prop813BaseChange_exists_algEquiv</code>（Prop813PerfectoidBaseChange:112）。</p>
 <div class="box">
 <p class="label">原典との差</p>
-<p>Prop 8.13 の環版は HT 比較を使わずに示せるが、環として perfectoid 化が存在する場合（semiperfectoid の商など）に限る。A7 で導来版（原典どおり Δ の対称モノイダル性から）ができると、環版はその系になる（<a href="#diff-08">D15</a>、BR31）。</p>
+<p>Prop 8.13 の環版は HT 比較を使わずに示せるが、環として perfectoid 化が存在する場合（semiperfectoid の商など）に限る。A7 で導来版（原典どおり Δ の対称モノイダル性から）ができると、環版はその系になる（<a href="#diff-08">D15</a>）。</p>
 </div>
 
 <div class="table-wrap"><table>
@@ -98,38 +98,17 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
 <div class="table-wrap"><table>
 <tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
-<tr><td>D15</td><td>Prop 8.13</td><td>導来版（Δ の対称モノイダル性、HT 比較）ではなく、指定済みの環の perfectoid 化の普遍性から環版を証明</td><td>HT 比較なしで証明できる</td><td>環として perfectoid 化が存在する場合だけ。A7 で導来版ができると環版はその系になり、今の証明は重複する</td><td>原典の方が短い（HT 比較があれば一行）</td><td>A7 までは保つ。A7 の後に導来版の系へ置き換える（BR31）</td></tr>
+<tr><td>D15</td><td>Prop 8.13</td><td>導来版（Δ の対称モノイダル性、HT 比較）ではなく、指定済みの環の perfectoid 化の普遍性から環版を証明</td><td>HT 比較なしで証明できる</td><td>環として perfectoid 化が存在する場合だけ。A7 で導来版ができると環版はその系になり、今の証明は重複する</td><td>原典の方が短い（HT 比較があれば一行）</td><td>A7 までは保つ。A7 の後に導来版の系へ置き換える（a7-design）</td></tr>
 </table></div>
 
 <h2>リファクタの候補</h2>
-<div class="box refactor">
-<p class="label">BR31　Prop 8.13 の環版を導来版の系に置き換える（A7 の後）</p>
-<p>Prop 8.13 の環版（Perfectoidization/ の 4 本、約 600 行）は、HT 比較なしで示すために普遍性を手で組み立てている。原典の導来版は Δ の対称モノイダル性から一行で出て、A7 で形式化する。そのときは、環版を導来版と Cor 8.14 の系として述べ直し、今の証明を外す（主張と型は保つ）。</p>
-</div>
-
-<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
-<div class="box refactor">
-<p class="label">BR20　有限直積の perfectoid 性が E3 に依存している</p>
-<p><code>isIntegralPerfectoid_finPi</code>（Perfectoidization/PerfectoidFiniteProduct:21、「perfectoid 環の有限直積は perfectoid」）は、E3 から得た perfectoid 化の存在 <code>Inputs.exists_perfectoidization_of_integral</code> を使って証明されている（確認済み）。CLMST の 3 ファイル（<code>PerfectoidFiniteProductTor</code>、<code>Prop247ConstantRankExcision</code>、<code>KLAicTorFromExcision</code>）が使う。主定理はもともと E3 に依存するので新しい sorry ではないが、BS-0 の消費経路の一覧（stage2 §1）に載っていない E3 の使用箇所。四条件（Fontaine 核の単項性、p 完備性、Frobenius の全射性）は成分ごとに確かめられるので、E3 なしで直接示せるはず。E3 の使用箇所を本当に必要な二つ（存在と excision）に絞るために優先度が高い。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR21　IsPerfectoidization の API を足して手書きの展開を置き換える</p>
-<p>普遍性 <code>hf.2</code> を直接展開している箇所が、<code>PerfectoidFiniteProduct</code>:35、<code>PerfectoidizationSurjectiveMap</code>:40,42、<code>PerfectoidizationTensorCompatibility</code>:66–81、<code>PerfectoidizationBaseChange</code>:38,47、<code>CompletedTensorPerfectoidUniversal</code>:92、<code>PerfectoidizationCompletedTensorCompatibility</code>:154 などにある。既存の <code>lift</code>・<code>lift_unique</code>・<code>map</code> で書けるほか、共通側に二つ足すと重複が消える：(a) <code>IsPerfectoidization.hom_ext</code>（a∘f = b∘f なら a = b）、(b)「u : A → A′ が perfectoid な標的への写像を一意に延ばすなら、f′ が perfectoid 化 ⇔ f′∘u が perfectoid 化」という移送補題。(b) で <code>precomp_ringEquiv</code>、完備化への移送 2 本、<code>completedTensorPerfectoidLift_isPerfectoidization</code> が数行になり、<code>CompletedTensorPerfectoidization</code>:56 と <code>CompletedTensorPerfectoidUniversal</code>:28 の逐語複製（約 30 行）も消える。共通側（CommutativeAlgebra）の変更なので、他の利用先がないことを確かめてから。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR22　底変換・三角図式・Prop 8.13 底変換の共通化と、二つのテンソルのモデル</p>
-<p><code>PerfectoidizationBaseChange</code>:28 と <code>PerfectoidizationTensorCompatibility</code>:55 は、係数テンソルの持ち上げとテンソル積の帰納法による同じ型の証明（各 70 行ほど）。そのままでは特殊化にならないので、「C⊗_P D からの射は左右の制限で決まる」外延性補題と持ち上げの補題を共通にする。<code>prop813BaseChangeMap</code> も三角図式版の特殊化に見える（推測）。また perfectoid 環のテンソルの perfectoid 化に、Witt 余積のモデル（<code>Perfectoidization/WittPresentation/</code> ほか約 720 行）と完備テンソル H⁰ のモデルが並んでいる。Witt モデルの用途は mod p 全単射性と根付き拡大の 2 つだけで、前者は完備テンソル側の普遍性から直接出る見込み。後者が Witt モデル固有の性質を使っていないかの調査が要る。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR23　公開の形</p>
-<p>Prop 8.13 環版の 4 本（<code>Prop813PerfectoidBaseChange</code>、<code>PerfectoidizationCompletedTensorCompatibility</code>、<code>PerfectoidizationTensorCompatibility</code>、<code>CompletedTensorPerfectoidUniversal</code>）は証明済みだが root から到達せず、既定のビルドに入っていない（監査だけが読む）。到達点として挙げている結果なので、集約から公開する。<code>isIntegralPerfectoid_of_ringEquiv</code>（Prism/Perfectoid/PerfectoidRingEquiv:21）は純粋に可換環論の事実で 21 ファイルが使うので、CommutativeAlgebra/IntegralPerfectoid の近くへ移す。<code>PerfectCoefficientTensor</code>（22 行、alias だけ）は利用 4 箇所を直接の名前に切り替えて消せる。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">
   <li>Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14 は E3 の欄として引用中。ここを証明に置き換えるのが目標の中心（A4〜A7）。</li>
   <li>Prop 8.5 の証明は Thm 7.4・Thm 7.14（証明済み）と Prop 7.10（A3）、Lemma 8.6（A5）を使う。Lemma 8.6 は標数 p の de Rham 比較と Cartier 同型（A1）を使う。</li>
-  <li>環としての帰結（excision の引き戻し、Prop 8.13 環版）は証明済みで、界面が満たされれば下流はそのまま使える。Prop 8.13 環版は A7 の後に導来版の系へ置き換える（BR31）。</li>
+  <li>環としての帰結（excision の引き戻し、Prop 8.13 環版）は証明済みで、界面が満たされれば下流はそのまま使える。Prop 8.13 環版は A7 の後に導来版の系へ置き換える（a7-design）。</li>
 </ol>
 </main>
 </body>

@@ -113,7 +113,7 @@ def IsIdempotentCompletion {C D : SSet.{u}} (f : C ⟶ D) : Prop :=
   -- κ 正則、小さい κ-filtered 余極限を持ち、小さい κ-compact 生成圏を持つ
 def IsAccessible (C : SSet.{u + 1}) [Quasicategory C] : Prop</code></pre>
 <p>完成：\(\mathrm{Ind}_\kappa(A)\) の accessibility、κ-compact 対象が生成対象の retract であること、小さい Ind との同値による特徴づけ（<code>isKappaAccessible_iff_indEquivalence</code>）、濃度の変更、accessible 関手（HTT §5.4.2、F2/Presentable）。</p>
-<p>作業中（P-1 b〜g）：presentable の定義と前層・Ind の presentable 性、極限・余極限の存在、随伴関手定理、Pr<sup>L</sup>/Pr<sup>R</sup>、Bousfield 局所化の存在、P<sub>Σ</sub> の普遍性。局所対象・強飽和性と P<sub>Σ</sub> の準備は HomotopyLimits/ にある（第 5 章 R16）。</p>
+<p>作業中（P-1 b〜g）：presentable の定義と前層・Ind の presentable 性、極限・余極限の存在、随伴関手定理、Pr<sup>L</sup>/Pr<sup>R</sup>、Bousfield 局所化の存在、P<sub>Σ</sub> の普遍性。局所対象・強飽和性と P<sub>Σ</sub> の準備は HomotopyLimits/ にある（第 5 章）。</p>
 
 <!-- ============================================================ -->
 <h2>7. 依存関係のまとめ</h2>
@@ -136,24 +136,8 @@ Cat_∞ の極限 ─ lax pullback ─ 安定性 ──────────�
 </table></div>
 
 <!-- ============================================================ -->
-<h2>9. リファクタの候補と注意点</h2>
-
-<div class="box refactor">
-<p class="label">R19　F2 最上位の分割</p>
-<p>F2 最上位の 2,194 ファイルには、完成した Cat<sub>∞</sub> の極限・lax pullback（数百ファイル）と、作業中の交換定理（Coherent* 約 650 ファイル）が同じディレクトリに並んでいる。<code>F2/CatInfinity/</code>（完成）と <code>F2/FilteredExchange/</code>（作業中）に分けるだけでも、どこまでが確定した API なのかがディレクトリから分かるようになる。</p>
-</div>
-<div class="box refactor">
-<p class="label">R20　仮定として渡している定理の一覧化</p>
-<p>交換定理が未完成なので、<code>CoherentFilteredLimitExchangeShape K</code> や <code>IndFiniteLimitExchangeInput</code> を仮定にとる定理がある。仮定は明示されているので健全だが、a7 が完成したときに外すべき箇所がまとまっていない。R17（<code>HasSpaceLimitsOfShape</code>）も同じ型で、無条件の定理が完成した後も条件付きの版が残っている。「未証明の定理を仮定として受け取る構造体・述語」を一覧にし、完成したら機械的に外せるようにしておきたい。</p>
-</div>
-<div class="box refactor">
-<p class="label">R21　docstring の書式</p>
-<p>README の規約（概要／方針／規約／使われ方）に従っている docstring の割合は、Core と F1B では 100% だが、F2 全体では約 27%、F2/Ind では 0% である。F2/Ind の docstring 1,630 個のうち 1,547 個は「元の」「実際の」「同じ」を含む一行の文で、「代用品ではなく元の対象について示した」ことを強調する作業時の言い回しになっている。HomotopyLimits（約 31%）、F1（約 49%）も同じ傾向がある。読み手にとっては、この強調よりも、命題を言葉で書き、証明の考え方を添えることのほうが役に立つ。</p>
-</div>
-<div class="box">
-<p class="label">注意：作業量の偏り</p>
-<p>交換定理（HTT 5.3.3.3）は、教科書では数ページの議論である。ここでは 2 万行を超える作業が続いていて、まだ完成していない。計画文書にも、長い比較式を一つずつ照合していく作業が記録されている。証明の経路（たとえば Kerodon の扱いや、Ind・compact 生成を経由する別証明）を見直す価値があるかもしれない。これはリファクタではなく、計画上の判断である。</p>
-</div>
+<h2>9. リファクタの候補</h2>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">
