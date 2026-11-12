@@ -217,3 +217,16 @@ F3 はなお未完。次は導手の四角形を指定された中心 I の商�
 すべての辺は実際の環準同型・商の因子写像の誘導射である。A/Iⁿ を共通対象にし、B/IⁿB→B/IB の順極限での単射性で一致を反映する。これにより、持ち上げが直ちに I に入ると仮定する誤りを避け、根基の逆像との比較を明示した。
 
 残り：F3 の加法群の短完全列としての取りまとめ、および利用側の幾何学的な中心外の同型との接続。F4〜F8（H⁰ の環、台、厚化を経由する Frobenius、全複体）は未完。停止点 2f ではない。
+
+## F3：環の局所化の仮定のもとでの短完全列（5857eabc0）
+
+新規 `FrobeniusFiniteModificationExact`、4 個の明示的宣言・79 行。2f 累計 16 本・920 行（入口の import 込み 936 行）。対象と直接 importer は 4,562 jobs 成功。別実行の監査は 8,714 宣言・標準三公理のみ（構造体の生成宣言も監査に含む）。共有鍵 `--wait 3600` を各実行中だけ使用。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `frobeniusCenterPair` | A の順極限から B と A/I の順極限への、二つの実際の制限を組にした加法写像。 |
+| `frobeniusCenterDifference` | B と A/I の順極限から B/IB の順極限への、二つの実際の制限の差を取る加法写像。 |
+| `frobeniusCenterDifference_pair` | この二つの加法写像の合成は零。 |
+| `frobeniusFiniteModification_exact` | 有限環拡大で Spec 全射、I は有限生成、V(I) 外の局所化が全射なら、左が単射・真ん中で Function.Exact・右が全射。 |
+
+F3 の環論の列は上の明示した局所化の仮定で閉じた。幾何学的な中心外の同型からこの仮定を供給する接続は、F4〜F5 の利用側と合わせて残る。F4 の入口として、通常の全タプル複体は次数 q に長さ q+1 のタプルを持つことを確認した。H⁰ の比較には `CochainComplex.isIso_homologyπ₀` と `ShortComplex.moduleCatCyclesIso` を使う下書きを `scheme-drafts/FullCechH0Kernel.lean` に置いた（未検証・未コミット）。空タプルの増大項との比較を H⁰ の比較と取り違えない。F4〜F8 は未完であり、停止点 2f ではない。
