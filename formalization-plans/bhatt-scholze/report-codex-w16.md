@@ -4851,3 +4851,45 @@ sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却
 監査 `/tmp/bsw16/audit-em-gamma-representative.log` は **65 本・513 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則どおり次の代表元の比較へ進む。
+
+
+## 73. D79(ii)：指定単位・loop の頂点と零次の自然写像
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| CochainZeroCycleClass | 43 |
+| EilenbergMacLaneGammaUnitClass | 72 |
+| EilenbergMacLaneLoopComponents | 62 |
+| EilenbergMacLaneSmartZeroCycle | 61 |
+| EilenbergMacLaneUnitLoopVertex | 67 |
+| EilenbergMacLaneVertexClass | 37 |
+| UnitPrecompositionHomology | 77 |
+| EilenbergMacLaneZeroCohomologyMap | 76 |
+
+追加 **495 行**、(ii) の検証済み累計 **4134 行**。
+登録候補は表の八本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`CochainZeroCycleClass` は **［一般∞］移動候補**。
+
+`gammaPiZeroCohomologyEquiv_unit` は同じ π₀/H⁰ 比較が指定 AW 単位を
+元の単位類へ写す等式。`gammaPiZeroCohomologyEquiv_mk` は任意の Γ の頂点の像を、
+実随伴で回収した指定複体射の元の H⁰ の類として計算する。
+`gammaAdjointSuspension_unit_vertex` は単位での構造射の頂点を固定した基本円と
+指定自己同型による loop の頂点と **元の圏で厳密に**照合する。
+既存の零 loop 比較の下では、その円の基本群の類の逆元になることも照合した。
+逆元の向きを消したり、基本円を選び直したりしていない。
+
+`gammaLoopPiZeroCohomologyEquiv` は loop Γ(M[1]) の成分を元の H⁰(M) と比較し、
+全複体射に自然。`gammaSuspensionH0Map` は元の構造射を二つの比較で共役した
+H⁰ 上の自然写像で、その全単射性と元の零次構造射の全単射性を同値にした。
+`homologyZeroNatural_bijective_of_unit_iso` は、この自然写像の単位での値が
+実単位自己同型の類なら全複体で全単射になるという検出補題。
+**実際の単位自己同型の同定は続行中**で、Ω 条件や V の完成はまだ主張しない。
+
+対象ビルド `em-smart-zero-cycle-03.log`、`em-gamma-unit-class-02.log`、
+`em-unit-loop-vertex-01.log`（VertexClass と LoopComponents の成功）、
+`em-unit-homology-detection-01.log`（UnitLoopVertex の最終改行版の成功）、
+`em-zero-homology-map-01.log`（ZeroCohomologyMap の成功）、
+`em-unit-homology-detection-02.log`（UnitPrecompositionHomology の成功）。
+最終版の対象に警告なし。監査 `/tmp/bsw16/audit-em-zero-unit.log` は
+**73 本・593 宣言・標準三公理のみ**。sorry・追加公理なし。
+共有入口・共有監査は未変更、鍵返却を回収済み。夜の規則どおり続行。
