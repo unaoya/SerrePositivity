@@ -332,3 +332,19 @@ F5 の正次数の零化は閉じた。次数零の切断代数 B_Y/im(A) の台
 次数零の余核の消滅そのものは未完。次は `schemeModuleAffineOpenCech_acyclic` を全空間のアフィン開に適用し、`openCoverIntersectionPresheafTopIso` とスカラー制限で実際のアフィン被覆の増大完全性を供給する。その後、今回の全射性と底変換の比較を局所化後の余核に接続する。F6〜F8 も未完。停止点 2f ではない。
 
 11-13 昼の凍結予告を受領：18 時の確定連絡までは検証済み成果を枝にコミットする。B3 の凍結が確定した後は翌朝まで枝へのコミットを控え、翌朝の B4 の手順に従って main と改名へ追従する。現時点では凍結の確定連絡はまだない。
+
+
+## F5 次数零途中：アフィン被覆の代数の増大写像（e1aef1934）
+
+新規 2 本・4 宣言・93 行。2f 累計 32 本・1,753 行（入口の import 込み 1,785 行）。対象と直接 importer は 4,578 jobs 成功。別実行の監査は 8,808 宣言・標準三公理のみ。共有鍵 `--wait 3600` は各実行中だけ使用した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullAlgebraCechAugmentation_injective_of_differential` | 増大 Čech 微分の単射性から、実際の代数の増大写像の単射性を得る。 |
+| `affineSchemeModuleCech_acyclic` | アフィンスキームの準連接係数のアフィン被覆は、任意の大域スカラーへの制限後も増大 Čech 完全。 |
+| `affineSchemeSectionAlgebraAugmentation_surjective` | アフィン被覆の適合する切断への実際の代数の増大写像は全射。 |
+| `affineSchemeSectionAlgebraAugmentation_bijective` | 同じ増大写像は全単射。 |
+
+次は、基底環から大域切断への全射性を部分代数のスカラー写像へ渡し、局所化後の増大写像と底変換比較を照合する。これを次数零の余核の台・冪の零化へ戻す必要がある。F6〜F8 も未完で、停止点 2f ではない。
+
+凍結前の検証済みの取り込み候補は `e1aef1934`。登録モジュールは `CechAlgebraAugmentationInjective` と `AffineSectionAlgebraAugmentation`（いずれも `SerrePositivity.AlgebraicGeometry` 下）。凍結の確定連絡後は枝へのコミットを控える。
