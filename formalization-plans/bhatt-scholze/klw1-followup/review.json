@@ -1,0 +1,98 @@
+{
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean": [
+    {
+      "start": 950,
+      "stop": 972,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean": [
+    {
+      "start": 1277,
+      "stop": 1326,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 1332,
+      "stop": 1354,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean": [
+    {
+      "start": 854,
+      "stop": 876,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 2531,
+      "stop": 2551,
+      "reason": "non-identifier syntax for SerrePositivity.EInfinity.SimplicialLocalization.RelativeCategory"
+    },
+    {
+      "start": 2951,
+      "stop": 2971,
+      "reason": "non-identifier syntax for SerrePositivity.EInfinity.SimplicialLocalization.RelativeCategory"
+    }
+  ],
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean": [
+    {
+      "start": 931,
+      "stop": 980,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 993,
+      "stop": 1003,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean": [
+    {
+      "start": 1189,
+      "stop": 1211,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 1224,
+      "stop": 1234,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean": [
+    {
+      "start": 1030,
+      "stop": 1079,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 1085,
+      "stop": 1107,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 1120,
+      "stop": 1130,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/Interface/Theory.lean": [
+    {
+      "start": 1771,
+      "stop": 1820,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    },
+    {
+      "start": 1833,
+      "stop": 1843,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ],
+  "SerrePositivity/EInfinity/StrictAdjunctionBar.lean": [
+    {
+      "start": 1177,
+      "stop": 1203,
+      "reason": "explicit opens policy needed for a renamed namespace"
+    }
+  ]
+}

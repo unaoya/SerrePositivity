@@ -29,7 +29,5 @@
   "SerrePositivity/EInfinity/Interface/Theory.lean",
   "SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean",
   "SerrePositivity/EInfinity/StrictAdjunctionBar.lean",
-  "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean",
-  "formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean",
-  "formalization-plans/bhatt-scholze/drafts/Shared/BarrattEcclesTheory.lean"
+  "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean"
 ]

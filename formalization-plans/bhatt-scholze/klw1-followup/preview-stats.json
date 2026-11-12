@@ -1,0 +1,47 @@
+[
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/AnodyneBinaryProducts.lean",
+    "added": 4,
+    "removed": 4
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean",
+    "added": 12,
+    "removed": 12
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+    "added": 5,
+    "removed": 5
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+    "added": 20,
+    "removed": 20
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean",
+    "added": 6,
+    "removed": 6
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/TensorLegs.lean",
+    "added": 41,
+    "removed": 41
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean",
+    "added": 9,
+    "removed": 9
+  },
+  {
+    "path": "SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean",
+    "added": 10,
+    "removed": 10
+  },
+  {
+    "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean",
+    "added": 31,
+    "removed": 31
+  }
+]

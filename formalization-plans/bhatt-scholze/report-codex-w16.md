@@ -2202,3 +2202,65 @@ KL-W1 側から、このように単独では解決しない drafts の採取方
 同じ入力で必要な採取を完了し、プレビューと review を確認してから main の取り込みへ進む。
 改名を済ませて報告した後に a を再開する、という順序を守る。
 そのときの a の上限は今回の新しい承認どおり **約 3,000 行、3 割の緩めはなし**とする。
+
+## 38. KL-W1 の追従：drafts を除いたプレビューで八本が保留
+
+§37 への調整役の指示に従い、drafts 二本を対象から外した。
+対象一覧 `klw1-followup/bs-impl-files.json` は本体 **31 本**だけに更新した。
+この 31 本の採取済み JSON がすべてあり、各ソースのバイト列も現在と完全一致することを確認し、
+採取済みの `before-index/files.json` を同じ 31 本の範囲に揃えて再利用した。
+再度の Lean の採取は行っていない。drafts の追従は調整役の担当とし、A2 のコメントも保った。
+本体だけで数えると、移動対象の旧 import があるのは **10 ファイル・29 行**。
+配布時の 11 ファイル・31 行との差は、今回除外した A2 drafts の二つの旧 import である。
+
+### 38.1 rewrite の実行結果
+
+同じ取り込み前のソースと採取済み索引から、配布の道具で次を実行した。
+
+```text
+python3 /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py rewrite
+  --root /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl
+  --files /tmp/bsw16/klw1-followup/bs-impl-body-files.json
+  --index /tmp/bsw16/klw1-followup/before-index
+  --plan /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/targets/kl-namespace-map.json
+  --output /tmp/bsw16/klw1-followup/preview-body
+```
+
+終了コード **1**、**23 本**のプレビューを出力し、**8 本・16 箇所**を `review.json` に保留した。
+出力されたうち 14 本はソースと同一、9 本には **138 行追加・138 行削除**のプレビュー差分がある。
+差分を読み、import・`open`・解決された宣言名の置換として確認したが、まだ作業木へ反映していない。
+一覧は `klw1-followup/preview-stats.json`、全差分は `/tmp/bsw16/klw1-followup/preview-body.diff`。
+
+### 38.2 保留の全件（道具側への引き継ぎ）
+
+そのままの診断 JSON を `klw1-followup/review.json` に保存した。
+位置は取り込み前の同じソースの UTF-8 バイト位置であり、以下の行番号は読みやすい控え。
+
+| ファイル（`SerrePositivity/EInfinity/` 以下） | 行 | 保留された構文 |
+| --- | --- | --- |
+| `BarrattEccles/Theory/CoproductDKHom.lean` | 22 | `open` の `SimplicialLocalization` |
+| `BarrattEccles/Theory/CoproductNativeUniversal.lean` | 26・27 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`SimplicialLocalization` |
+| `BarrattEccles/Theory/EnrichedPointPrecomposition.lean` | 21 | `SimplicialLocalization` |
+| 同上 | 50・57 | `RelativeCategory.{u}` の二箇所 |
+| `BarrattEccles/Theory/NativeCoproduct.lean` | 22・23 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`open scoped Simplicial` |
+| `BarrattEccles/Theory/NativeCoproductCocone.lean` | 31・32 | `SimplicialLocalization`・`open scoped Simplicial` |
+| `BarrattEccles/Theory/NativeCoproductLegs.lean` | 22〜24 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`SimplicialLocalization`・`open scoped Simplicial` |
+| `Interface/Theory.lean` | 41・42 | `SerrePositivity.InfinityCategories.HomotopyLimits`・`open scoped Simplicial` |
+| `StrictAdjunctionBar.lean` | 26 | `ComonadResolutionOperators` |
+
+14 箇所の理由は **`explicit opens policy needed for a renamed namespace`**。
+残る二箇所は **`non-identifier syntax for SerrePositivity.EInfinity.SimplicialLocalization.RelativeCategory`**
+で、編集位置のソースはどちらも `RelativeCategory.{u}`。
+
+依頼どおり、保留箇所の `open` 方針や宇宙適用の編集を手で推測していない。
+改名表と採取器のソースにも変更していない。KL-W1 側でこの診断を扱う道具・方針の案内を待つ。
+
+### 38.3 現在の状態
+
+Lean のソースは 31 本すべて採取時と同じまま。main の取り込み、プレビューの反映、
+移行後の変更ファイル・直接 importer の対象ビルドは**まだ行っていない**。
+今回の rewrite は Python によるプレビュー作成だけで、鍵も要求していない。
+
+今回コミットするのは、本体のみの一覧、診断・プレビュー統計、この報告だけ。
+drafts の改名は調整役に委ねる。KL-W1 の追従を完了して報告してから、
+a を **上限約 3,000 行、緩めなし**で続ける順序は変えない。
