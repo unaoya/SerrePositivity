@@ -4287,3 +4287,73 @@ Sp 値の操作を移す経路を別途供給する。
 界面と Shared の移行範囲。3b-2／3b-4 の担当決定と、極限・実現比較の費用を合わせる必要がある。
 **ここで紙の比較の停止点として止め、D79 の決定を待つ。**
 Lean の変更・ビルド・監査・鍵の取得はなし。M15・G12 へは進まない。
+
+## 64. D79 (i) の実装とスペクトル模型の最初の区切り（検証済み）
+
+main の §24・D79 を取り込み、界面・組み立て関数・Shared・A4 の型を変更した。
+`[CharP k p]` を保つ。全界面の `toSpectra k` とその比較はデータとして受け取り、
+実例の証明は指示どおり F_p から構成する。一般 k の実例を今回供給した意味ではない。
+
+### 64.1 使う実在の Sp と π
+
+追加調査で `KST/Spectra/CoherentNerve.lean` の `KST.Spectra.Sp` と
+`KST/LocalizingInvariants/SpectrumHomotopyFunctor.lean` の
+`SpectrumHo.piFunctor : ℤ → (hoFunctor.obj Sp ⥤ CommGrpCat)` を確認した。
+Sp は既存 Ω スペクトルの単体的圏の coherent nerve で、quasicategory の実例も既存。
+π は任意の辺の類から BF 射の代表を回収し、代表の選択に依存しない実際のホモトピー群関手。
+`CommGrpCat.toAddCommGrp` で加法記法へ送って使う。
+§63 の調査ではこの native Sp と π の入口を特定しきれていなかったため、この点を訂正する。
+V と自然な π/H の比較の入口は引き続き新しく作る必要がある。
+
+当面この Ω 模型を標的に固定する。`Spectra/` の対称スペクトルとの新しい比較同値は要求せず、
+両模型を同一と仮定もしない。追加の `[ModelCategory SSet]` を仮定する経路は使わない。
+界面は既存の Sp のみを参照し、BE 模型の定義を参照しない。
+
+### 64.2 新しい欄と指定射
+
+- `toSpectra S : D(S) ⟶ KST.Spectra.Sp`。
+- `toSpectra_homologyIso S i`：hV の後の実 π_{−i}（加法化）と Hⁱ の台の加法群の自然同型。
+- `toSpectra_restrict f`：係数制限後に忘れた Sp と元の Sp の全関手の同型。
+- `powerOp0`：`forget k ≫ toSpectra k` の coherent な自然自己変換。
+- `powerOp0_zero`・`powerOp0_pos`：同じ Sp の成分への π₀ と πₙ（n > 0）の主張。
+- 離散・Tot：従来の指定 Frobenius の D(k) の射を hV で送り、
+  `toSpectra_restrict` で台のスペクトルへ戻した同じ射との等式。
+
+最初の型検査で、最後の係数忘却比較を省くと右辺が V(φ_*X) に着地し、
+P⁰ の自己射と終域が合わないことを確認した。この比較を明示して再検証し、対象ビルドを通した。
+P⁰ の D(k) への持ち上げは要求しない。
+
+組み立て関数には V と二つの比較を未供給引数として追加。
+`drafts/Shared/BarrattEcclesTheory` も同じ引数を受ける。
+Shared の操作は Sp の π を π/H の同型で共役して読み、D(k) の辺を選ばない。
+A4 の coconnectivity の結論は変更せず、その証明の筋を Sp と π/H の比較に合わせた。
+実現・Tot の比較を証明済みとする変更は加えていない。
+
+### 64.3 検証の状態
+
+対象は `Interface.Theory` と直接の importer `BarrattEccles.Theory.Assembly`。
+ビルドの整理券は一枚、`--wait 3600`。新しい実例の証明はまだない。
+成功・公理監査の結果を回収してから、(i) の変更をコミットして報告する。
+Shared と A4 は drafts の規則どおりビルド対象に入れない。
+次の (ii) は、この同じ Sp を標的とする V_{F_p} と π/H 比較の構成である。
+
+
+### 64.4 先行取り込み用の検証結果
+
+対象 `BarrattEccles.Theory.Assembly` と依存する `Interface.Theory` は
+`/tmp/bsw16/d79-interface-02.log` でビルド成功（12,922 jobs）。
+変更した本体二本を `/tmp/bsw16/audit-d79.lean` で監査し、
+**104 宣言、標準三公理のみ**で成功。ログは `/tmp/bsw16/audit-d79.log`。
+本体に sorry・追加公理はない。Fully qualified な長い行に longLine の style 警告が残る。
+監査とビルドは別の鍵で行い、それぞれ終了を回収して鍵と整理券を返却した。
+
+取り込み対象は本体二本、drafts 三本、報告書。
+新規モジュールはないため、共通入口・共通監査への追加登録は不要。
+Shared の二つの数学的性質（零次 Frobenius、正のホモトピー次数で零）と
+離散・Tot との比較は保ち、それを読む型だけを Sp と π/H へ移した。
+drafts の sorry を新しい証明として数えていない。
+
+(i) の先行取り込みが可能な区切りまで完了。
+(ii) では既存 Ω 模型の Sp を標的に、V_{F_p} とその π/H の自然比較を構成する。
+一般 k の V と係数忘却の実例、P⁰ 自体と Rem 2.2.7、離散・Tot の照合は未供給。
+新しい構造欄を証明済みの実例として埋めた、という報告ではない。
