@@ -1573,3 +1573,44 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 残り：`reesClosedRingChartIso`・`reesClosedRingCechIso` と、以前の閉厚化への射影・厚化間の遷移との可換性を、同じ実際の商写像で明示する。その後、閉厚化の Frobenius を互換族と形式関数の同型へ接続する。H 自身の I 進商の n→p*n の写像ができたことだけでは、閉厚化の H の間の指数を移す写像までできたとはしない。共通アフィン細分、filtered colimit の実際の比較も未完。**停止点 2e ではない。**
 
 証拠：作業木の `scheme-drafts/` に、`frobenius-root-importer-build-3.log`、`rees-closed-ring-build.log`、`frobenius-closed-ring-audit.log`、`verified-frobenius-closed-ring.json` を保存した。
+
+
+## 2026-11-12：実際の閉厚化の Frobenius と形式関数の可換性
+
+数学コミット `8e896e65c`。3 モジュール（399 行）・21 件の数学宣言。対象と直接 importer のビルド成功（**4,342 jobs**）。別実行の標準監査は **7,343 宣言・標準三公理のみ**。新規を含め、既存の数学宣言は変更していない。上限の追加・sorry・admit・新しい公理はない。鍵は `--wait 3600`、一回ごとに返却した。
+
+`72c7ff525` の環の商との比較を、既存の Rees の閉厚化への射影と厚化間の遷移に自然にした。多項式線形写像の代表元の計算、標準開図式、Čech H の順に可換性を示した。実際の環の閉厚化の Frobenius を、この構成済みの同型で既存の Rees の Čech H へ戻し、以前からの射影と I 進遷移に可換であることを証明した。
+
+これを実際の閉厚化の互換族へ送り、既存の `adicProjectionCompletionMap_semilinear_naturality_apply` を使って、完備化から互換族への canonical な比較が Frobenius と可換と示した。射影の場合の形式関数の同型の順写像はその比較そのものなので、同型自体の Frobenius の可換性を得た。Noether 性と多項式環上の有限生成性は、形式関数の同型の箇所にだけ仮定する。導来関手の Hⁱ との比較や、H/IⁿH と閉厚化の H の同一視は行わない。
+
+登録：`ReesClosedRingNaturality`、`ReesClosedCechFrobenius`、`ReesClosedCechFrobeniusCompletion`。
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedRingPolynomialEquiv_projection` | Rees と環の商の比較は、既存の射影を実際の環の射影へ送る。 |
+| `reesClosedRingTransition` | 実際の環の閉厚化の間の、指数を下げる商射。 |
+| `reesClosedRingTransition_mk` | 環の閉厚化の遷移は、同じ代表元を送る。 |
+| `reesClosedRingPolynomialEquiv_transition` | Rees と環の商の比較は、以前の厚化間の遷移と可換。 |
+| `reesClosedRingTransition_preservesPiece` | 環の閉厚化の遷移は、商の Proj 次数を保つ。 |
+| `reesClosedRingProjectionChartMap` | 環の閉厚化への射影が誘導する標準開図式の射。 |
+| `reesClosedRingTransitionChartMap` | 環の閉厚化の遷移が誘導する標準開図式の射。 |
+| `reesClosedRingChartIso_projection` | 標準開の具体的な比較は、既存の閉厚化への射影と可換。 |
+| `reesClosedRingChartIso_transition` | 標準開の比較は、以前の厚化間の遷移と可換。 |
+| `reesClosedRingCechIso_projection` | 環の商の Čech H の比較は、以前からの閉厚化への射影と可換。 |
+| `reesClosedRingCechIso_transition` | 環の商の Čech H の比較は、既存の I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius` | 実際の商環の Frobenius を、構成済みの同型で Rees 表示の閉厚化の Čech H へ戻す。 |
+| `reesAdicProjectiveClosedCechFrobenius_compare` | Rees 表示へ戻した Frobenius は、環の商の表示の Frobenius そのもの。 |
+| `reesAdicProjectiveClosedCechFrobenius_projection` | 実際の閉厚化の Čech Frobenius は、以前からの閉厚化への射影と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius_transition` | 実際の閉厚化の Čech Frobenius は、既存の I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius_linear_transition` | 遷移の可換性を、互換族への写像に使う半線形写像の合成の等式で述べる。 |
+| `reesAdicProjectiveClosedCechFamiliesFrobenius` | 実際の閉厚化の Čech 互換族に誘導した Frobenius 半線形写像。 |
+| `reesAdicProjectiveClosedCechFamiliesFrobenius_apply` | 互換族の Frobenius は、各厚化の実際の Čech Frobenius を適用する。 |
+| `reesAdicProjectiveClosedCechFrobenius_linear_projection` | 射影の可換性を、半線形写像の合成の等式で述べる。 |
+| `reesAdicProjectiveClosedCechCompletionMap_frobenius` | 完備化から実際の閉厚化の互換族への canonical な写像は、Frobenius と可換。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv_frobenius` | 射影版の形式関数の同型は、実際の Čech Frobenius と可換。 |
+
+上の原典の Hⁱ に関する主張は、名前と docstring で Čech 版と明記し、Stacks 30.2.6 の導来関手との比較は形式化しないとした。最終出力と利用側の `AugmentedRingCechExact` は変更していない。
+
+§9 の残りは、共通アフィン細分、filtered colimit の実際の比較、およびそれらと既存の比較の可換性。閉厚化の n→p*n を移す写像の追加構成は、同じ n の閉厚化の Frobenius と区別して扱う（2f の冪による因子分解に必要）。**停止点 2e ではない。2f は未着手のまま。**
+
+証拠は作業木の `scheme-drafts/rees-closed-frobenius-completion-importer-build.log` と `rees-closed-frobenius-completion-audit.log` に保存した。
