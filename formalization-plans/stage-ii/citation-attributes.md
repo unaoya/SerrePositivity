@@ -91,3 +91,4 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 - BR25・R21：docstring の工程ラベルを原典の番号へ、書式の欠け（文献の属性の付与と同じ回）。
 - BR8：使われないモジュールの調査（削除は保守）。
 - （11-12 夜、追加）BR34（古い docstring 6 件）、BR41（BS の内側の層の逆向き：Delta/DividedPower → Prismatic・Andre）、BR42（`Semiperfectoid/QuotientPerfectoidization` のファイル名）、R84（空の名前空間）も B3 に含める（`refactor-ledger.md` §5・§6）。
+- （11-12 夜、追加）§2 の見直し（`refactor-ledger.md` §7）：R2-1（BR41 の三つの importer の移し先）、R2-7（分冪代数を `CommutativeAlgebra/DividedPowers/` へ、`IsCompletelyRegularRel` を Delta へ）、R2-9 の docstring と、**ノートを引く docstring 22 か所を原典の番号に置き換える**（ユーザー方針）も B3 に含める。

@@ -108,3 +108,39 @@
 | — | S′ の有限段の 3 ファイルが Prismatic/ にある | B3 で `Semiperfectoid/FiniteEnvelopes/` へ（段 0 の案のとおり） |
 | — | 地図とノートの食い違い：**Not 7.1** は地図が正しい（qrsp の定義 `IsQuasiregularSemiperfectoid` は drafts にしかない）。**Lemma 4.8** も地図が正しい（`Prism/PerfectPrismHomLift` にあり、W17 の H5 が有界な標的への一意な持ち上げとして使う。主経路の上）。 | 閉（ノートの側の記述が古い） |
 | — | 原典との差で D 番号のないもの（Ex 2.21 の係数環が ℤ の局所化、Rem 2.37 は通常の Tor、Lemma 3.7 (2) は通常の導来圏、Cor 3.12 の層条件は環値前層と Čech の完全性、Lemma 2.36 (a) は p 完全平坦性から） | 記録のみ（いずれも「定理は特別な場合だけ」の範囲。D 番号は付けない） |
+
+## 7. 原典の節ごとの見直し（ノートのチャット、11-12 から）
+
+ノートのチャットが原典の §2 から順に、節ごとに提案を `research/bs-section-review/` に置く。**A（リファクタ）**はこの台帳の番号で扱いを決める。**B（新しく形式化する項目）**は、E3 の経路に要らないものを「補完」として §8 に並べ、空いたレーンの仕事にする（E3 の sorry 0 を先にする）。
+
+**方針（11-12、ユーザー）**：Lean の docstring は原典の番号で引き、ノートへの参照（ノートの番号、T・BR・R のラベル）を置かない（README の Conventions）。今ある 22 か所（`research/bs-section-review/lean-docstrings-citing-notes.md`）は B3 の docstring の回で原典の番号に置き換える。
+
+### §2 δ 環（`research/bs-section-review/02-delta.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R2-1 Delta の層の向き（三つの importer と移し先の案） | BR41 | B3（提案の表の移し先のとおり。`RegularSequencePDUniversalTor` → ScalarTensorView は §4.2 の片付けで同時に） |
+| R2-2 Lemma 2.32 の節を Basic へ、Frobenius が δ 射の三つの版を一本に | BR5 | 保守（優先。R2-3・R2-4 の前提の循環を切る。ファイルの移動だけなら B3 で、証明の置き換えは保守） |
+| R2-3 Lemma 2.38 の r=1 の旧版を一般版に、階乗部分環への同型 6 つ、`RankOneDP` の並行 | BR6・BR38 | 保守（優先。R2-1 の後） |
+| R2-4 自由 δ 環の Frobenius の平坦性 4 か所を一本に | BR37 | 保守 |
+| R2-5 ℤ の δ 構造（`private integerDelta`）を公開し、ℤ 版の自由 δ 環を相対版の abbrev に | BR4 | 保守（B の Ex 2.6 と一緒に） |
+| R2-6 δ 環のテンソル積：一般形 `tensorDeltaStructure` は 11-10 からある。完全 δ 環の版は二重 | T2-0 → 閉、新 BR45 | T2-0 は閉。BR45（`perfectDeltaTensorStructure` を一般形の系に、未参照 6 宣言）は保守 |
+| R2-7 置き場所：分冪代数（FreeDP*・TruncatedPolynomialBasis・RankOneDP）を `CommutativeAlgebra/DividedPowers/` へ、Def 2.42 の `IsCompletelyRegularRel` を Delta へ | BR32 | B3（B3 の配置案に足す。RegularSequencePD* は Delta に残す） |
+| R2-8 使われていない宣言・ファイル（監査だけが参照する葉 219、未参照 9） | BR8 | 保守（E3 の経路で A0〜A2 が Lemma 2.36〜2.39 を使うかを ⑤∞ で見てから） |
+| R2-9 docstring（BR34 の 2 件、台帳にない 10 件ほど、統合前の名残の見出し 228 か所、ノートの番号の引用 7 ファイル） | BR34・BR25 | B3（docstring の回） |
+| R2-10 小さな一般化（`isDistinguished_iff_of_span_eq` など） | 新 BR46 | 保守 |
+
+## 8. 補完（E3 の経路の外で、原典にあって本体にないもの）
+
+E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕事として、小さいものから。順は ノートのチャットの「推奨」と規模で決める。
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §2 | Ex 2.6 の残り（δ が p 進付値を 1 下げる、δⁿ(pⁿ) は単元）と ℤ の始性の公開 | 小 | R2-5 と一緒（保守） |
+| §2 | Rem 2.27 の右随伴 lim_φ | 小（300〜600 行） | 空いたとき |
+| §2 | Lemma 2.33 の一般形（一般の完全 p 完備 A） | 小 | 空いたとき（Ex 2.20 (3) の ξ の前提） |
+| §2 | Rem 2.40 の前半（D_I(A) は φ の引き戻し） | 小 | 空いたとき |
+| §2 | Rem 2.29 の二つの例（原典の文言は「この φ を持つ δ 構造がただ一つ」と読む） | 小 | 空いたとき |
+| §2 | Lemma 2.43・Cor 2.44 の離散版 | 中 | Prop 3.13 の一般形を形式化するとき（今は変数の場合で足りる） |
+| §2 | 後回し：Rem 2.40 の後半・Warning 2.41、Ex 2.20 (2)〜(4)、Lemma 2.11 の残り・Cor 2.12、Rem 2.13・2.7、Cor 2.31 の圏同値、Lemma 2.18 のエタール部分、Rem 2.22 | 中〜大 | 使う場所が出たとき |
+| §2 | 入れない：Rem 2.3（λ 環）、単体的な版（A2 の後）、Lemma 2.38 の無限列 | — | — |
