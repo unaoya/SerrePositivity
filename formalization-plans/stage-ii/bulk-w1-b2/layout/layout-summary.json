@@ -1,0 +1,62 @@
+{
+  "primary_files": 6466,
+  "moved_files": 5301,
+  "namespace_changed_source_modules": 42,
+  "changed_public_names": 515,
+  "private_source_bindings": 15,
+  "primary_source_roots": {
+    "BhattScholze": 604,
+    "InfinityCategories": 5794,
+    "KST": 68
+  },
+  "largest_destination_directories": [
+    [
+      "SerrePositivity/InfinityCategories/Project/FilteredExchange/KanReplacement",
+      194
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/SpecifiedCocones",
+      186
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/LocalizationAndRoofs",
+      172
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier",
+      169
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Gluing/ExactSequences/ComparisonModels",
+      160
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Gluing/Comparison",
+      146
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/MappingAndStability/Homotopies/DGComparisons",
+      136
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Gluing/StableStructure",
+      132
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/Verdier/Fractions",
+      131
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/KanComplexAuxiliaries/Subdivision",
+      131
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/DerivedCategories/MappingAndStability/HomSpaces",
+      123
+    ],
+    [
+      "SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/SliceTransport",
+      123
+    ]
+  ]
+}
