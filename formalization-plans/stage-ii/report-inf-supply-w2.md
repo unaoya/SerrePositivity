@@ -1902,3 +1902,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 残枠 **1,883行**。積重みとテンソル側の余単体的な族、および指定二射を `FreeProductFrames.lean` に下書き中（未コミット）。鎖ホモトピー同値から全単体 Hom 空間への接続、指定豊穣合成・native 極限性、脚・D(A)・錐の族は引き続き未完。停止点2ではない。
+
+## 61. 3b-2 続行：積重み・テンソルの余単体図式と指定二射
+
+コード `d825603b7`、新規 `DiagramComparison.FreeProductFrames` 1本67行。累計 **130本8,184行**。
+
+元の自由負次数鎖の図式関手を使い、任意の余単体的パラメータ P に対して、積を正規化する族と正規化後のテンソルの族を構成した。§60の自然性を使い、指定 AW・shuffle を全余単体作用素と可換な自然変換にした。標準単体を代入する前の全パラメータ形である。第一のまとまりの全単体比較の内部。
+
+個別検査、鍵付き対象ビルド **2,274 jobs**、累計130本 **1,483宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-61.log`、監査 `/private/tmp/AuditISW2G10HundredThirty.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirty-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrames
+```
+
+残枠 **1,816行**。同じ二射からの全単体 Hom 比較 `FreeProductHomComparison.lean`（42行）は個別検査済み、対象ビルド・監査待ちであり、このコミットには含めない。標準単体の代入後、テンソル側を既存の Dold–Kan Hom と、積側を重み付き切断空間と同定し、指定射のホモトピー同値性を証明することが残る。次数ごとの鎖ホモトピー同値だけから空間の同値性を結論しない。native 極限性等も未完であり、停止点2には達していない。
