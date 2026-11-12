@@ -1482,3 +1482,40 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 | `reesClosedTensorCechIso_naturality` | R/J の実際の閉厚化の Čech 比較は、次数を保つ加群写像に自然。 |
 
 実際の Čech Frobenius、共通アフィン細分、filtered colimit の比較が残り、**停止点 2e ではない**。コホモロジーの docstring は原典 Stacks 30.20.4–30.20.5 の Hⁱ の比較に使う Čech 版と明記した。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しない。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。
+
+
+## 2026-11-12：局所化と指定次数の Frobenius、半線形 Čech 写像の入口
+
+数学コミット `69ace8712`。対象と直接 importer のビルド成功（4,332 jobs）、別実行の監査は **7,204 宣言・標準三公理のみ**。3 モジュールを登録し、15 件の数学宣言を追加した。前の検証入力 704 の変更は入口の import 追加だけで、新規を含む 707 入力を記録した。共有鍵 `--wait 3600` を各ビルド・監査ごとに返して実行した。
+
+空の標準開も含め、p の像が零である環の p 乗写像を環準同型として構成した。局所化にもこの条件を移し、実際の局所化環の Frobenius を作った。局所化が非自明であることや、局所化環の ExpChar は仮定しない。分数 m/fⁿ を mᵖ/f^(p*n) へ送る式、標準開の制限との可換性、元の基底環の Frobenius に関する半線形性を示した。
+
+分子族 V の元の p 乗が W の p 倍の指数の部分に入る場合、この実際の Frobenius を指定次数の斉次局所化へ制限した。自然数次数を整数へ零延長しても、p 乗が Proj 次数を p 倍することを示した。一般の係数制限への自然変換から、既存の Čech 係数制限比較を再利用してコホモロジーの半線形写像を作る入口も供給した。
+
+登録モジュール：
+
+- `ProjectiveLocalizedFrobenius`
+- `ProjectiveCechSemilinearMap`
+- `ProjectiveGradedFrobenius`
+
+宣言と主張（ローカルな型クラス設定を除く 15 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `projectivePrimePowerRingHom` | p の像が零であれば、零環も含め p 乗は環準同型である。 |
+| `projectivePrimePowerRingHom_eq_frobenius` | 通常の指数標数の Frobenius と、p が零であることから作った冪写像は一致する。 |
+| `projectiveLocalized_primeCast_eq_zero` | 元の係数環で p が零なら、局所化でも p は零。空の標準開の場合も含む。 |
+| `projectiveLocalizedFrobenius` | 実際の局所化環の Frobenius。局所化が零環でも定義できる。 |
+| `projectiveLocalizedFrobenius_mk` | 局所化の Frobenius は、分子と分母を共に p 乗へ送る。 |
+| `projectiveFrobeniusDenominator_pow` | 分母 fⁿ の p 乗は、同じ f の n*p 冪。 |
+| `projectiveLocalizedFrobenius_fraction` | 標準開の Frobenius は、元の分母の指数を p 倍にする。 |
+| `projectiveModuleAwayRestriction_pow` | 局所化の制限は、係数環の作用による分子の冪の計算と可換。 |
+| `projectiveLocalizedFrobenius_restriction` | 実際の局所化の Frobenius は、標準開を狭める制限と可換。 |
+| `projectiveLocalizedFrobeniusSemilinear` | 実際の局所化の Frobenius は、元の基底環の Frobenius について半線形。 |
+| `projectiveCechSemilinearHomologyMap` | 係数制限として与えた図式の写像は、Čech コホモロジーの半線形写像を誘導する。 |
+| `projectiveGradedAwayFrobenius` | Frobenius は、分子の p 乗が対応する指定部分へ入る場合に斉次局所化へ降りる。 |
+| `projectiveGradedAwayFrobenius_val` | 斉次局所化の Frobenius は、周囲の実際の局所化の Frobenius の制限。 |
+| `projectiveNatGradingInt_pow_mem` | 自然数次数を整数へ零延長した後も、p 乗は Proj 次数を p 倍する。 |
+| `projectiveNatGradingInt_chart_pow_mem` | 指定分母の n 冪の分子の p 乗は、p 倍の捻りと p*n 冪の分母に対応する。 |
+
+標準開図式全体の Frobenius とその Čech 写像を具体化する `ProjectiveCechFrobenius.lean` は、通常の係数作用と Frobenius による制限作用の型合わせが未解決なので、入口から外して未コミットの下書きとして残した。係数の代数の射への自然性も下書きで、まだ完成と数えない。既存の n→p*n の I 進評価と実際の厚化の写像への接続、共通アフィン細分、filtered colimit の比較が残る。**停止点 2e ではない。**
