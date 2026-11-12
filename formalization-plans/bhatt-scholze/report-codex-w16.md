@@ -2012,3 +2012,25 @@ a は §22 の 902 行と合わせて **1,409 行**。自由代数の Hopf 比�
 共通入口と共有監査スクリプトは編集していない。
 
 次は依頼された検証順に一般の二点余錐の移送、厳密な bar の下書きを検証し、その後 a の残りへ戻る。
+
+## 34. D78 の二点余錐の一般の移送補題の検証
+
+§32.1 の `BinaryCoconeApexTransport.lean`（72 行）は対象ビルドと監査が成功した。
+`binaryCoconeVertexIso_of_apexIso`、`isColimitCone_iff_binaryCocone_apexIso`、
+`IsColimitCone.of_binaryCocone_apexIso` の三つの公開補題を供給する。
+一般の準圏と固定された二点離散図式に対する主張で、安定性・模型・テンソル構造は要求しない。
+辺の三角形の選択を仮定に強めず、ホモトピー圏での二脚の可換式から構成した。
+
+ビルド `/tmp/bsw16/graded/binary-cocone-apex-02.log` は成功。
+監査 `/tmp/bsw16/graded/audit-binary-cocone-apex.log` は **4 宣言、標準三公理のみ**。
+sorry・admit・新規公理はない。KL-W1 の規則の名前空間
+`Kerodon.LimitsAndColimits.LimitsAndColimits` による重複名前空間の警告三件は残した。
+
+登録候補は
+`SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.BinaryCoconeApexTransport`。
+これは取り込み前の枝で旧 import・既存の旧宣言名を用いて検証したものであり、
+KL-W1 取り込み後の改名表への追従と、その後の対象検査は別途必要。
+§32.1 の一般の補助の依存先の配置の確認も引き続き取り込み時の確認事項。
+入口と共有監査スクリプトは編集していない。取り込み待ちの新規モジュールは二十七本。
+
+自由比較の六本、D78 の移送補題の検証を区切り、次は厳密な bar の二本を検証する。
