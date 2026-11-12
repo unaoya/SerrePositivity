@@ -43,18 +43,18 @@
   fiber_exists   (f : Edge x y) : Nonempty (FiberSquare f)
   cofiber_exists (f : Edge x y) : Nonempty (CofiberSquare f)
   fiber_iff_cofiber (t : ZeroTriangle X) : IsFiberSequence t ↔ IsCofiberSequence t</code></pre>
-<p class="meta">InfinityCategories/Stable/Definition.lean:24。</p>
+<p class="meta">InfinityCategories/HA/StableInfinityCategories/Definition.lean:26。</p>
 
-<p>関手 \(F : X \to Y\) が<b>完全</b>であるとは、零対象を保ち、cofiber 列を cofiber 列に送ることをいう（<code>IsExactFunctor</code>、Stable/ExactFunctor.lean:37）。
+<p>関手 \(F : X \to Y\) が<b>完全</b>であるとは、零対象を保ち、cofiber 列を cofiber 列に送ることをいう（<code>IsExactFunctor</code>、InfinityCategories/Kerodon/LimitsAndColimits/ExamplesOfLimitsAndColimits/ExactFunctor.lean:42）。
 安定 ∞ 圏の間では、これは「有限極限を保つ」「有限余極限を保つ」とも同値である（HA 1.1.4.1）。</p>
 
 <h3>1.2 基本的な結果</h3>
 <div class="table-wrap"><table>
 <tr><th>結果</th><th>宣言</th><th>状態</th></tr>
-<tr><td>ホモトピー圏は三角圏（Mathlib の <code>Pretriangulated</code>・<code>IsTriangulated</code>）</td><td><code>isTriangulated_ho</code>（Stable/TriangulatedInstance.lean:21）</td><td><span class="tag">済</span></td></tr>
+<tr><td>ホモトピー圏は三角圏（Mathlib の <code>Pretriangulated</code>・<code>IsTriangulated</code>）</td><td><code>isTriangulated_ho</code>（InfinityCategories/HA/StableInfinityCategories/TriangulatedInstance.lean:21）</td><td><span class="tag">済</span></td></tr>
 <tr><td>完全関手はホモトピー圏の三角関手を誘導する</td><td><code>exactFunctor_isTriangulated</code></td><td><span class="tag">済</span></td></tr>
-<tr><td>有限極限・有限余極限を持つ</td><td><code>IsStable.hasLimit_cospan</code> など（Stable/StableFiniteLimitsColimits）</td><td><span class="tag">済</span></td></tr>
-<tr><td>懸垂 \(\Sigma\) とループ \(\Omega\) は互いに逆の同値</td><td>Stable/Suspension・Loop*</td><td><span class="tag">済</span></td></tr>
+<tr><td>有限極限・有限余極限を持つ</td><td><code>IsStable.hasLimit_cospan</code> など（InfinityCategories/HA/StableInfinityCategories/StableFiniteLimitsColimits）</td><td><span class="tag">済</span></td></tr>
+<tr><td>懸垂 \(\Sigma\) とループ \(\Omega\) は互いに逆の同値</td><td>InfinityCategories/HA/StableInfinityCategories/Suspension・Loop*</td><td><span class="tag">済</span></td></tr>
 <tr><td>Ω による判定（HA 1.4.2.27：有限極限を持ち点付きで、Ω が同値なら安定）</td><td>なし</td><td><span class="tag">未着手</span>（D-7）</td></tr>
 </table></div>
 
@@ -73,7 +73,7 @@
 \[
 W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除いて）}\,\}
 \]
-<p>（<code>cofiberLocalizingEdges P</code>、Stable/CofiberLocalizingEdges.lean:21）。安定 ∞ 圏では、次の同値が基本になる。</p>
+<p>（<code>cofiberLocalizingEdges P</code>、InfinityCategories/HA/StableInfinityCategories/CofiberLocalizingEdges.lean:21）。安定 ∞ 圏では、次の同値が基本になる。</p>
 <div class="box lean">
 <p class="label">命題</p>
 <p>関手 \(F : B \to E\)（\(B\) は安定）について、次は同値（<code>inverts_cofiberLocalizingEdges_iff_kills</code>、同 :58）。</p>
@@ -102,7 +102,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
   fullyFaithful : IsFullyFaithful i.hom
   kernel (b : B.obj _⦋0⦌) : IsZeroVertex (q.hom.app _ b) ↔ b ∈ essentialImage i
   quotient : IsLocalization q.hom (cofiberLocalizingEdges (essentialImage i))</code></pre>
-<p class="meta">LI/VerdierSequence.lean:30。<code>StableCategory</code> は「単体的集合・quasicategory であること・安定性」を束ねた構造体、<code>ExactMap</code> は「射・完全性」を束ねた構造体（LI/StableCategories.lean）。</p>
+<p class="meta">InfinityCategories/HA/StableInfinityCategories/Verdier/VerdierSequence.lean:37。<code>StableCategory</code> は「単体的集合・quasicategory であること・安定性」を束ねた構造体、<code>ExactMap</code> は「射・完全性」を束ねた構造体（InfinityCategories/HA/StableInfinityCategories/Verdier/StableCategories.lean）。</p>
 
 <p>定義から出る基本の補題：</p>
 <ul>
@@ -146,7 +146,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
   <li>完全関手の核は、いつも厚い部分圏である。したがって Verdier 列の \(A\)（の像）は厚い。</li>
   <li>任意の部分圏 \(A\) で割ると、核は \(A\) の<b>厚い閉包</b>（\(A\) を含む最小の厚い部分圏）になる。これが第 5 章の M7 の「一般の場合」である。</li>
 </ul>
-<p>いまの状態：一般の述語はなく、dg 版 <code>dgThickClosureProperty</code>（Derived/DGQuotientThickKernelCriterion.lean、triaRepresentable の retract 閉包）だけがある。
+<p>いまの状態：一般の述語はなく、dg 版 <code>dgThickClosureProperty</code>（InfinityCategories/Project/DerivedCategories/DGQuotientThickKernelCriterion.lean、triaRepresentable の retract 閉包）だけがある。
 材料として、安定な閉包 <code>StableVertexClosure</code>（InfinityCategories/HA/StableInfinityCategories/StableVertexClosure、零・同型・fiber・cofiber で閉じた最小の集合）と retract 閉包 <code>retractClosure</code>（InfinityCategories/HTT/RetractsAndIdempotentCompletion/RetractClosure.lean:24）がある。</p>
 <p>一般の安定 ∞ 圏での厚い部分圏・厚い閉包の定義は、まだコードにない。dg 版との一致は M9（第 5 章）。</p>
 
@@ -156,7 +156,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 <div class="box lean">
 <p class="label">定理（随伴による判定）</p>
 <p>\(A \xrightarrow{i} B \xrightarrow{q} C\) について、\(i\) が充満忠実で、\(q\) の核が \(i\) の本質像で、\(q\) が右随伴 \(j\) を持ち、その余単位 \(q j \Rightarrow \mathrm{id}\) が同型（\(j\) が充満忠実）なら、Verdier 列である。</p>
-<p><code>isVerdierSequence_of_adjoint</code>（LI/AdjointVerdier.lean）。条件 3（局所化）は、第 3 章 §5 の「反射による判定」（<code>AdjointLocalization.isLocalization</code>）から出る。</p>
+<p><code>isVerdierSequence_of_adjoint</code>（InfinityCategories/HA/StableInfinityCategories/Verdier/AdjointVerdier.lean）。条件 3（局所化）は、第 3 章 §5 の「反射による判定」（<code>AdjointLocalization.isLocalization</code>）から出る。</p>
 </div>
 
 <p>この状況は<b>半直交分解</b> \(B = \langle A, C \rangle\) に対応する。\(C\) は \(B\) の中に \(j(C) = A^{\perp}\) として実現され、商は Bousfield 型（第 3 章 §6）になる。
@@ -172,7 +172,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 <ul>
   <li><b>\(\mathrm{Cat}^{\mathrm{ex}}_\infty\)</b>：安定 ∞ 圏を対象とし、完全関手の ∞ 圏の core を Hom とする単体的圏の coherent nerve（<code>StableInfinity := SimplicialNerve StableQCat</code>、InfinityCategories/HA/StableInfinityCategories/Infinity/StableInfinity.lean）。</li>
   <li><b>Verdier 図式</b>：Verdier 列 \(A \to B \to C\) を、\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) の中の四角形 \(A \to B,\ 0 \to C\) として表したもの（<code>VerdierDiagram</code>、InfinityCategories/HA/StableInfinityCategories/Infinity/VerdierDiagrams.lean）。</li>
-  <li><b>局所化不変量</b>（Blumberg–Gepner–Tabuada）：\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) からスペクトラムの ∞ 圏への関手 \(E\) で、零を零に送り、Verdier 図式を pullback に送るもの（<code>IsLocalizingInvariant</code>、LI/Invariant.lean）。非連結 K 理論がその代表例。
+  <li><b>局所化不変量</b>（Blumberg–Gepner–Tabuada）：\(\mathrm{Cat}^{\mathrm{ex}}_\infty\) からスペクトラムの ∞ 圏への関手 \(E\) で、零を零に送り、Verdier 図式を pullback に送るもの（<code>IsLocalizingInvariant</code>、KST/LocalizingInvariants/Invariant.lean）。非連結 K 理論がその代表例。
     これはスペクトラムの ∞ 圏 <code>Sp</code> を使うので、KST に残す。</li>
 </ul>
 
@@ -183,7 +183,7 @@ W_P \;=\; \{\, f : x \to y \mid \mathrm{cofib}(f) \in P \text{（同型を除い
 <tr><td>随伴による判定</td><td><code>isVerdierSequence_of_adjoint</code></td><td>LI</td></tr>
 <tr><td>半直交分解・lax pullback（Tamme）</td><td><code>SemiorthogonalDecomposition.isVerdier</code>・<code>laxDifference_isVerdier</code></td><td>LI</td></tr>
 <tr><td>dg 圏の Drinfeld 商</td><td><code>dgQuotient_isStableVerdierSequence</code>・<code>resolvedDGQuotient_isStableVerdierSequence</code></td><td>Derived</td></tr>
-<tr><td>dg gluing</td><td><code>dgGluingPullback_isStableVerdierSequence</code> など</td><td>Derived/Gluing</td></tr>
+<tr><td>dg gluing</td><td><code>dgGluingPullback_isStableVerdierSequence</code> など</td><td>InfinityCategories/Project/DerivedCategories/Gluing</td></tr>
 <tr><td>dg の Calkin 懸垂（非連結 K 用）</td><td><code>dgKappaSuspension_isStableVerdierSequence</code></td><td>KST/NonConnective</td></tr>
 <tr><td>Land–Tamme の ⊙ 構成の Milnor 列</td><td><code>dgOdotMilnorLax_isVerdier</code> など</td><td>KST/SConstruction</td></tr>
 </table></div>

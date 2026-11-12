@@ -22,7 +22,7 @@
   ファイルの場所は <code>SerrePositivity/</code> からの相対パス。Mathlib のものは「Mathlib」と書く。
 </p>
 
-<p>この章は、整備後の最下層 <b>Simplicial</b> と、Core の上の <b>Kan</b>・<b>Kan/Pointed</b> を扱う。
+<p>この章は、単体的集合の組合せ論と、空間の理論（基点付きの空間を含む）を扱う。
 内容は次の三つに分かれる。</p>
 <ul>
   <li>単体的集合の組合せ論：horn、anodyne、置き換え</li>
@@ -60,7 +60,7 @@
 <div class="box">
 <p class="label">Mathlib の Kan 複体は「モデル圏の言葉」で書かれているが、モデル圏は仮定していない</p>
 <p>Mathlib は単体的集合に「fibration の族」「cofibration の族」（<code>CategoryWithFibrations</code> など）を与えている。具体的には、fibration = horn に対する右持ち上げ性質、cofibration = 単射である。
-これは射の族を指定しているだけで、Quillen のモデル構造（<code>ModelCategory SSet</code>）の存在は使っていない。中核は、この語彙を自由に使ってよい。
+これは射の族を指定しているだけで、Quillen のモデル構造（<code>ModelCategory SSet</code>）の存在は使っていない。基盤は、この語彙を自由に使ってよい。
 避けるのは、モデル圏の公理を仮定する <code>[ModelCategory SSet]</code> の方である（第 2 章）。</p>
 </div>
 
@@ -81,7 +81,7 @@
 <p>small object argument から、どんな射も「anodyne の後に fibration」に分解できる。これを使って、任意の単体的集合を Kan 複体や quasicategory に置き換える。</p>
 <div class="table-wrap"><table>
 <tr><th>置き換え</th><th>主張</th><th>宣言（いまの所在）</th></tr>
-<tr><td>inner anodyne と inner fibration への分解</td><td>任意の \(f : X \to Y\) は \(X \xrightarrow{i} Z \xrightarrow{p} Y\)（\(i\) は inner anodyne、\(p\) は inner fibration）と分解する</td><td><code>exists_innerAnodyne_innerFibration_factorization</code>（InfinityCategories/F1/Simplicial/InnerAnodyneReplacement.lean:37）</td></tr>
+<tr><td>inner anodyne と inner fibration への分解</td><td>任意の \(f : X \to Y\) は \(X \xrightarrow{i} Z \xrightarrow{p} Y\)（\(i\) は inner anodyne、\(p\) は inner fibration）と分解する</td><td><code>exists_innerAnodyne_innerFibration_factorization</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/InnerAnodyneReplacement.lean:39）</td></tr>
 <tr><td>quasicategory への置き換え</td><td>上で \(Y\) が quasicategory なら \(Z\) も quasicategory にできる。第 3 章の「局所化の存在」の証明で使う</td><td><code>exists_quasicategory_resolution_over</code>（同 :47）</td></tr>
 <tr><td>Kan 置換（関手的）</td><td>関手 \(R\) と自然変換 \(X \to RX\) で、\(X \to RX\) は anodyne、\(RX\) は Kan 複体</td><td><code>AnodyneKanReplacement.functor</code>・<code>unit_anodyne</code>・<code>terminal_rlp</code>（HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean:53〜68）</td></tr>
 <tr><td>Kan の Ex∞</td><td>\(\mathrm{Ex}^\infty X = \operatorname{colim}_n \mathrm{Ex}^n X\) は Kan 複体で、\(X \to \mathrm{Ex}^\infty X\) は anodyne。Ex∞ は有限極限を保ち、Kan fibration を保つ</td><td><code>exInfinity_kanComplex</code>・<code>exInfinityUnit_anodyne</code>・<code>exInfinity_preservesFiniteLimits</code>・<code>exInfinity_map_rlp</code>（KST/Comparison/ExInfinity*）。Ex（一回分）は Mathlib の <code>SSet.ex</code></td></tr>
@@ -90,17 +90,17 @@
 
 <h3>1.5 prism とホモトピー</h3>
 <p>写像 \(f, g : X \to Y\) の間の<b>ホモトピー</b>は、\(\Delta^1 \times X \to Y\) で、両端が \(f, g\) になるものである（Mathlib の <code>SSet.Homotopy</code>）。
-ホモトピー同値 <code>IsSimplicialHomotopyEquivalence f</code>（InfinityCategories/Core/SimplicialHomotopyEquivalence.lean:50）は、逆向きの写像と両側のホモトピーがあることをいう。
-prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあり、端の包含 <code>prismEndpoint</code> は Core/PrismContraction.lean にある。</p>
+ホモトピー同値 <code>IsSimplicialHomotopyEquivalence f</code>（InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/SimplicialHomotopyEquivalence.lean:52）は、逆向きの写像と両側のホモトピーがあることをいう。
+prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあり、端の包含 <code>prismEndpoint</code> は InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/PrismContraction.lean にある。</p>
 
 <h3>1.6 宇宙の持ち上げ</h3>
 <p>Lean では単体的集合が宇宙 <code>u</code> ごとに別の型になるので、宇宙を上げる関手 <code>SSet.uliftFunctor</code> を使う場面がある（例：大きな ∞ 圏 \(\mathcal S\) と小さい対象の比較）。この関手について、次のことが分かっている。</p>
 <ul>
   <li>充満忠実で、余極限を保つ。単体・境界・horn を単体・境界・horn に送る（HomotopicalAlgebra/Simplicial/UniverseLift.lean）。</li>
   <li>horn・境界に対する持ち上げ性質を保ち、かつ反映する（UniverseLiftLifting）。anodyne 射を保つ（UniverseLiftAnodyne の <code>anodyne_map</code>）。</li>
-  <li>Kan 複体・quasicategory・inner fibration・inner anodyne を保つ（InfinityCategories/F1/Universe）。π₀ を変えない（UniverseLiftPiZero）。</li>
+  <li>Kan 複体・quasicategory・inner fibration・inner anodyne を保つ（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/SizeConditionsOnInfinityCategories）。π₀ を変えない（UniverseLiftPiZero）。</li>
 </ul>
-<p class="meta">注意：UniverseLiftModel・UniverseLiftWeakEquivalence は <code>[ModelCategory SSet]</code> を仮定しており、中核には入れない。</p>
+<p class="meta">注意：UniverseLiftModel・UniverseLiftWeakEquivalence は <code>[ModelCategory SSet]</code> を仮定しており、基盤には入れない。</p>
 
 <div class="box lean">
 <p class="label">§1 の今の所在</p>
@@ -119,13 +119,13 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <p>次の結果は、quasicategory の理論と Kan 複体をつなぐもので、Core に置く（第 0 章 §3.2）。いずれも、すでに InfinityCategories/Core にある <span class="tag">済</span>。</p>
 <div class="table-wrap"><table>
 <tr><th>結果</th><th>宣言</th></tr>
-<tr><td><b>Joyal の定理</b>：quasicategory \(X\) が Kan 複体であることと、ホモトピー圏 \(\mathrm{h}X\) が亜群であることは同値（HTT 1.2.5.1）</td><td><code>kanComplex_iff_isGroupoid</code>（Core/KanCharacterization.lean:73）</td></tr>
-<tr><td>写像空間は Kan 複体：quasicategory の 2 頂点の間の右 pinched Hom は Kan 複体</td><td><code>pinchedHom_kanComplex</code>（Core/MappingSpaceRightKan.lean:188）</td></tr>
-<tr><td>Kan 複体の間では、ホモトピー同値と ∞ 圏としての同値が一致する</td><td><code>isSimplicialHomotopyEquivalence_iff_isQCatEquivalence</code>（Core/KanHomotopyEquivalence.lean:62）</td></tr>
-<tr><td>同値である Kan fibration は自明 fibration（境界に対する持ち上げを持つ）</td><td><code>trivialKanFibration_of_fibration_of_isQCatEquivalence</code>（Core/KanFibrationEquivalence.lean:26）</td></tr>
-<tr><td>可縮な Kan 複体：境界からの写像がすべて延びること。これは「終対象への写像が自明 fibration」と同値</td><td><code>IsContractibleKan</code>・<code>isContractibleKan_iff_trivialKanFibration</code>（Core/ContractibleKan.lean:24・32）</td></tr>
-<tr><td>相対的なホモトピー持ち上げ：Kan fibration に対して、部分複体上のホモトピーと一端を与えると、全体のホモトピーに延びる</td><td><code>fibration_lift_prism</code>（Core/KanPrismLifting.lean:26）</td></tr>
-<tr><td>左 fibration の fiber は Kan 複体</td><td><code>vertexFiber_kanComplex_of_leftFibration</code>（Core/LeftFiberKan.lean:54）</td></tr>
+<tr><td><b>Joyal の定理</b>：quasicategory \(X\) が Kan 複体であることと、ホモトピー圏 \(\mathrm{h}X\) が亜群であることは同値（HTT 1.2.5.1）</td><td><code>kanComplex_iff_isGroupoid</code>（InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets/KanCharacterization.lean:77）</td></tr>
+<tr><td>写像空間は Kan 複体：quasicategory の 2 頂点の間の右 pinched Hom は Kan 複体</td><td><code>pinchedHom_kanComplex</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/MappingSpaceRightKan.lean:192）</td></tr>
+<tr><td>Kan 複体の間では、ホモトピー同値と ∞ 圏としての同値が一致する</td><td><code>isSimplicialHomotopyEquivalence_iff_isQCatEquivalence</code>（InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/KanHomotopyEquivalence.lean:67）</td></tr>
+<tr><td>同値である Kan fibration は自明 fibration（境界に対する持ち上げを持つ）</td><td><code>trivialKanFibration_of_fibration_of_isQCatEquivalence</code>（InfinityCategories/Kerodon/KanComplexes/TheExInfinityFunctor/KanFibrationEquivalence.lean:28）</td></tr>
+<tr><td>可縮な Kan 複体：境界からの写像がすべて延びること。これは「終対象への写像が自明 fibration」と同値</td><td><code>IsContractibleKan</code>・<code>isContractibleKan_iff_trivialKanFibration</code>（InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FunctorsOfInfinityCategories/ContractibleKan.lean）</td></tr>
+<tr><td>相対的なホモトピー持ち上げ：Kan fibration に対して、部分複体上のホモトピーと一端を与えると、全体のホモトピーに延びる</td><td><code>fibration_lift_prism</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/KanPrismLifting.lean:28）</td></tr>
+<tr><td>左 fibration の fiber は Kan 複体</td><td><code>vertexFiber_kanComplex_of_leftFibration</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/IsomorphismsAndIsofibrations/LeftFiberKan.lean:58）</td></tr>
 </table></div>
 <p>これらの証明は、同値の道や外 horn の充填といった quasicategory の道具を使う。そのため Kan 層より下の Core に置き、Kan 層はこれらを使ってよいことにする。</p>
 
@@ -162,7 +162,7 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <p>Kan 複体の間の写像が π_* 同型なら、ホモトピー同値である。</p>
 <ul>
   <li>基点付き版：<code>exists_pointedHomotopyInverse</code>（KST/Spectra/PointedKanWhitehead.lean:80）。π_* 同型な基点付き写像は、基点付きのホモトピー逆を持つ。</li>
-  <li>基点なし版：<code>homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective</code>（InfinityCategories/HomotopyLimits/KanWhiteheadComparison.lean:82）。π_* 同型（すべての基点で）かつ π₀ で全射なら、ホモトピー同値。逆も成り立つ（<code>kanPiIsomorphism_of_homotopyEquivalence</code>）。</li>
+  <li>基点なし版：<code>homotopyEquivalence_of_kanPiIsomorphism_of_piZero_surjective</code>（InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/KanWhiteheadComparison.lean:98）。π_* 同型（すべての基点で）かつ π₀ で全射なら、ホモトピー同値。逆も成り立つ（<code>kanPiIsomorphism_of_homotopyEquivalence</code>）。</li>
 </ul>
 <p>§2 の結果と合わせると、Kan 複体の間の写像について、次の四つが同値になる。「π_* 同型」「ホモトピー同値」「∞ 圏としての同値」「（Kan fibration なら）自明 fibration」。</p>
 
@@ -170,7 +170,7 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <p>単体的集合（Kan とは限らない）の間の写像 \(f : A \to B\) が「弱同値」であることには、このリポジトリでは三つの言い方がある。</p>
 <div class="table-wrap"><table>
 <tr><th>言い方</th><th>定義</th><th>宣言</th></tr>
-<tr><td>Kan 複体への写像で見る</td><td>すべての Kan 複体 \(Z\) について、\(\pi_0\mathrm{Fun}(B, Z) \to \pi_0\mathrm{Fun}(A, Z)\) が全単射</td><td><code>IsWeakHomotopyEquivalence</code>（InfinityCategories/F1B/Homotopy/WeakHomotopy.lean:38）</td></tr>
+<tr><td>Kan 複体への写像で見る</td><td>すべての Kan 複体 \(Z\) について、\(\pi_0\mathrm{Fun}(B, Z) \to \pi_0\mathrm{Fun}(A, Z)\) が全単射</td><td><code>IsWeakHomotopyEquivalence</code>（InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/WeakHomotopy.lean:42）</td></tr>
 <tr><td>anodyne 局所化で見る</td><td>単体的集合の圏を anodyne 射で局所化した 1 圏（空間のホモトピー圏）で、\(f\) が同型になる</td><td><code>anodyneQ</code>（HomotopicalAlgebra/Simplicial/AnodyneHomotopyLocalization.lean:101）</td></tr>
 <tr><td>Kan 置換してから π_* で見る</td><td>Kan 置換したものの間の写像が π_* 同型</td><td>§1.4 の置換と §3.2</td></tr>
 </table></div>
@@ -180,7 +180,7 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 <h2>4. 塔と lim¹（Kan）</h2>
 <p>Kan fibration の塔 \(\cdots \to X_2 \to X_1 \to X_0\) の極限を考える。スペクトラムのホモトピー群の計算や、filtered な状況の比較で使う。</p>
 <ul>
-  <li><b>極限は Kan 複体</b>：各 \(X_{n+1} \to X_n\) が Kan fibration で、\(X_0\) が Kan 複体なら、\(\lim X_n\) は Kan 複体で、射影 \(\lim X_n \to X_0\) は Kan fibration（<code>FibrationTower.limit_kanComplex</code>・<code>projection_zero_fibration</code>、KST/Spectra/FibrationTower.lean。HomotopyLimits/KanLimits.lean にも <code>towerLimit_kanComplex</code> がある）。</li>
+  <li><b>極限は Kan 複体</b>：各 \(X_{n+1} \to X_n\) が Kan fibration で、\(X_0\) が Kan 複体なら、\(\lim X_n\) は Kan 複体で、射影 \(\lim X_n \to X_0\) は Kan fibration（<code>FibrationTower.limit_kanComplex</code>・<code>projection_zero_fibration</code>、KST/Spectra/FibrationTower.lean。InfinityCategories/Kerodon/LimitsAndColimits/HomotopyLimitsAndColimits/KanLimits.lean にも <code>towerLimit_kanComplex</code> がある）。</li>
   <li><b>非可換な lim¹</b>：群の塔 \(G_n\) と準同型 \(q_n : G_{n+1} \to G_n\) について、\(\prod_n G_n\) に「ねじれた共役」で作用させた軌道の集合（<code>TowerLimOne.limOne</code>、KST/Spectra/TowerLimOne.lean:51）。可換群なら、通常の \(\lim^1\) と一致する。</li>
   <li><b>Milnor の完全列</b>（KST/Spectra/TowerMilnorExactness.lean・TowerGroupLimitComparison.lean）：
 \[
@@ -191,7 +191,7 @@ prism \(\Delta^1 \times \Delta^n\) の shuffle による分割は Mathlib にあ
 </ul>
 
 <!-- ============================================================ -->
-<h2>5. 基点付きの空間（Kan/Pointed）</h2>
+<h2>5. 基点付きの空間</h2>
 <p>基点付き単体的集合は <code>PointedSimplicialSet := PointedObject SSet</code>（SerrePositivity/Spectra/PointedSimplicialSet/Basic.lean:35）。<code>PointedObject</code> はリポジトリ独自の定義で、Mathlib には基点付き単体的集合はない。</p>
 <div class="table-wrap"><table>
 <tr><th>構成・結果</th><th>主張</th><th>宣言（いまの所在）</th></tr>
