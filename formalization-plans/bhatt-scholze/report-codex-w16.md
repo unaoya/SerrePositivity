@@ -4437,3 +4437,35 @@ AW を大きい宇宙の Γ の台へ直接適用せず、小さい標準単体�
 登録候補は上記三本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
 スペクトル構造射・Ω 条件・置換の全自然性・native V はまだ未供給。
 次は Γ の零元の照合を閉じて基点付き構造射へ接続する。
+
+### 65.4 零基点・smash・基本円・指定構造射
+
+以下の七本を検証した（全て `EInfinity/PowerOperation/`）。
+
+| モジュール | 行数 |
+| --- | ---: |
+| EilenbergMacLaneGammaZero | 67 |
+| EilenbergMacLaneGammaPairNaturality | 48 |
+| EilenbergMacLaneGammaAxes | 59 |
+| EilenbergMacLaneGammaSmash | 72 |
+| EilenbergMacLaneGammaSmashNaturality | 55 |
+| EilenbergMacLaneCircle | 63 |
+| EilenbergMacLaneSuspension | 46 |
+
+追加計 **410 行**、(ii) の検証済み実測は **914 行**。
+`gammaProbeEquiv_zero` と逆方向の照合、二項評価の両変数での自然性、
+二つの零軸の零化から、既存 `ReducedPair` の普遍性で `gammaSmashPair` を作った。
+基点付きの零射の大きな定義展開を避け、既存の一般補題を使っている。
+
+基本円は固定した単位複体の第 1 段の π₁ で、指定 π/H 比較の逆像として定めた。
+代表を選ぶのはこの固定対象だけで、複体変数ごとの選択はしない。
+`unitCircle_class` と `unitCircle_homology` により、同じ類の計算を検証済み。
+`gammaSuspension`・`levelSigma` は、この円・実 Γ の smash 積・左シフト同型を
+合成した実際の構造射である。Ω 条件を新たな仮定として加えてはいない。
+構造射の自然性の最終照合、Ω 条件、置換の全自然性と native V は未完。
+
+最終ビルド `/tmp/bsw16/em-suspension-03.log` は成功（4,213 jobs）。
+監査 `/tmp/bsw16/audit-em-suspension.log` は **17 本・201 宣言・標準三公理のみ**。
+新規警告・sorry・追加公理なし。監査の終了と鍵の返却も回収済み。
+登録候補は表の七本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+共通入口と共通監査は触らない。夜の規則に従い、報告後も自然性・Ω 条件の照合を続ける。
