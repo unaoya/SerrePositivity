@@ -40,6 +40,8 @@ HA を読んでから、(E) 結晶側の黒箱。A・B は中身を書く段階�
 - **D71〜D73**（`calg-interface-design.md`）：BS は E∞ 代数の ∞ 圏を構造 `EInfinityTheory` を通してだけ使う。今の Barratt–Eccles の模型は実例の一つ。HA の方向で作る場合は別の実例を作り、Hinich Thm 4.1.1 などで比べる。実装は BS-W14（⑤a）。
 - **整理の候補（11-10）**：BS-W15 の `Delta/DividedPower/RegularSequencePDUniversalTor` が `KST/DerivedBlowup/ScalarTensorView`（Mathlib だけを import する係数拡大とテンソルの表示比較の補題）を import している。主定理の閉包に KST のディレクトリが入るのを避けるため、このファイルを `CommutativeAlgebra/` へ移す（alias を残す）。KL-W1 の後の小さな整理で行う。
 - **D74**（BS-W15 §3 の 2）：Ex 2.21・3.4 の普遍的な向き付き prism の Frobenius の平坦性は、原典どおり d 完全平坦の形で本体に置く（drafts の A1 の通常の平坦性の型は、A1 の界面への書き換えのときに見直す）。
+- **D78（11-12）**：界面 `EInfinityTheory` に `coproduct_tensor_legs` を足す。`coproduct_tensor` の同じ全関手の同型が、`coprodWith_cocone` の二脚を、H⁰ で正規化した単位による二つの包含（HA 3.2.4.7）へ、ホモトピー圏で送る条件（W16 §13）。二点の離散な図式なので、余錐の移送はホモトピー圏の等式から一般の補題で得る。
+- **未決の解消（11-12）**：W16 の E2 は経路 B（bar と実現、ユーザー決定）、sifted の一般部分は ③-b（IS-W2）。
 - **後回しの項目（11-12 朝）**：(1) Prop 7.10 の S′ の単位の p 完全忠実平坦性（W17 §9、一般の qrsp の場合に要る。E3 は使わない）。(2) BS-D69 の一般の I の η の一般化（D69 の追記、E3 は D68 の ℤ_p の η で足りる）。どちらも使う場所が出たら範囲に入れる。
 - **未決（11-11 夜、11-12 昼に決める）**：BS-W16 の E2。⑤a の紙の検討（report-codex-w16.md §21）で、E2 の二欄と native な余積錐の総計は経路 A（セル対）9,400〜12,000 行・経路 B（自由 bar と実現）9,400〜12,400 行、どちらも sifted の保存 S（2,300〜3,750 行）を含む。S の「厳密な Δᵒᵖ 図式の hocolim と native な錐の橋」「任意の coherent な図式への移送」は一般の ∞ 圏の道具で、③（G10 など）と共有できるかを確かめる。あわせて、界面の `coproduct_tensor` の型が `coprodWith_cocone` の二脚をテンソルの標準射へ送る条件を持たない点（A2 が要る）を、界面の欄の追加か A2 側の別の比較で扱う。
 - **D77（11-11）**：Construction 6.1 の仮定。原典は「A/p の Frobenius が平坦」と書くが、Ex 3.4 が示すのは d 完全平坦だけで、証明が使うのは式 (6) の中央の射の忠実平坦性だけ。drafts の `Construction61Hypotheses` は原典どおり残し、本体の補題は d 完全平坦性と A/d の p 正則性を引数に取る（一般化）。普遍の場合は K2 の定理を直接入れ、drafts の `universal61` は使わない（BS-W17 §3）。
