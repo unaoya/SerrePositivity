@@ -5575,3 +5575,25 @@ native Tate[-1] との比較、同じ境界射の orbit との比較、T_p の�
 新規三本の最終版に警告なし。
 `audit-cyclic-seed.log`：**158 本・1,209 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 90. D79(iii)：同じ周期解像度の正の部分と実スペクトル化
+
+登録候補（`SerrePositivity.EInfinity.PowerOperation.`）：
+LinearHomComplexPrecomposition（47 行）、CyclicPeriodicRestriction（56 行）、
+RelativeComplexSpectrum（37 行）、CyclicPositiveSpectrum（80 行）。
+追加 **220 行**、(iii) **2,093 行**、(ii)+(iii) **9,287 行**。
+
+完全周期解像度の非負次数部分への包含を前合成する、同じ Hom の全自然変換を作った。
+上有界係数では次数 n の座標が 0 ≤ i ≤ d−n に限られることも証明した。
+正の部分の各項の射影性と、上有界係数の準同型を保つことから、
+その実相対関手・native な Sp への関手・厳密な元の図式との全 sourceIso を得た。
+RelativeComplexSpectrum は［一般∞］の移動候補。
+
+これはまだ native な orbit との同定や native な Tate 境界ではない。
+次は逆生成元の射影解像度によるテンソル余不変の直和全複体と、
+同じ正の Hom の有限座標の比較を進める。
+
+対象ビルド `cyclic-positive-spectrum-02.log` 成功、最終版の警告なし。
+`audit-cyclic-positive.log`：**162 モジュール・1,242 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
