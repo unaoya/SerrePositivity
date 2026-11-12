@@ -11,33 +11,33 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 
 /-- 元の三種の生成射の座標を一つずらす。 -/
-def cubeGeneratorRightKeep : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator n m → _root_.SerrePositivity.InfinityCategories.Kan.CubeGenerator (n + 1) (m + 1)
+def cubeGeneratorRightKeep : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator n m → _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeGenerator (n + 1) (m + 1)
   | _, _, .face b n i => .face b (n + 1) i.succ
   | _, _, .degeneracy n i => .degeneracy (n + 1) i.succ
   | _, _, .connection n i => .connection (n + 1) i.succ
 
 /-- 右端保持した元の生成射の一文字の語。 -/
-def cubeWordRightKeepPrefunctor : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject ⥤q _root_.SerrePositivity.InfinityCategories.Kan.CubeWords where
+def cubeWordRightKeepPrefunctor : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject ⥤q _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords where
   obj X := ⟨X.dimension + 1⟩
-  map {X Y} g := (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (X.dimension + 1) ⟶
-    _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (Y.dimension + 1) from cubeGeneratorRightKeep g).toPath
+  map {X Y} g := (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (X.dimension + 1) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (Y.dimension + 1) from cubeGeneratorRightKeep g).toPath
 
 /-- 元の全生成語に作用する右端保持関手。 -/
-def cubeWordRightKeep : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CubeWords := Paths.lift cubeWordRightKeepPrefunctor
+def cubeWordRightKeep : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords := Paths.lift cubeWordRightKeepPrefunctor
 
 /-- 元の一文字の語の右端保持は同じ座標をずらした一文字の語。 -/
-lemma cubeWordRightKeep_generator {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} (g : X ⟶ Y) :
+lemma cubeWordRightKeep_generator {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} (g : X ⟶ Y) :
     cubeWordRightKeep.map g.toPath =
-      (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (X.dimension + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (Y.dimension + 1) from
+      (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (X.dimension + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (Y.dimension + 1) from
         cubeGeneratorRightKeep g).toPath :=
   Paths.lift_toPath _ g
 
 /-- 元の生成射の語での右端保持は、具体的な頂点関数の右端保持と一致する。 -/
-lemma cubeGeneratorRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject} (g : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor.map
-        (show _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (X.dimension + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.CubeWordObject.mk (Y.dimension + 1) from
+lemma cubeGeneratorRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject} (g : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeGeneratorConcretePrefunctor.map
+        (show _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (X.dimension + 1) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWordObject.mk (Y.dimension + 1) from
           cubeGeneratorRightKeep g) =
-      concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.cubeGeneratorConcretePrefunctor.map g) := by
+      concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeGeneratorConcretePrefunctor.map g) := by
   cases X
   cases Y
   cases g with
@@ -46,12 +46,12 @@ lemma cubeGeneratorRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCate
   | connection n i => exact Subtype.ext (cubeVertexRightKeep_connection _ i).symm
 
 /-- 元の任意の語の右端保持は、同じ具体的な頂点写像を回収する。 -/
-lemma cubeWordRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCategories.Kan.CubeWords} (p : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map (cubeWordRightKeep.map p) =
-      concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor.map p) := by
-  have h := cubePath_naturality (cubeWordRightKeep ⋙ _root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor)
-    (_root_.SerrePositivity.InfinityCategories.Kan.cubeWordConcreteFunctor ⋙ concreteCubeRightKeep)
-    (fun X => 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (X.dimension + 1)))
+lemma cubeWordRightKeep_concrete {X Y : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeWords} (p : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map (cubeWordRightKeep.map p) =
+      concreteCubeRightKeep.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor.map p) := by
+  have h := cubePath_naturality (cubeWordRightKeep ⋙ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeWordConcreteFunctor ⋙ concreteCubeRightKeep)
+    (fun X => 𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (X.dimension + 1)))
     (fun g => by
       exact Subtype.ext (congrArg Subtype.val (cubeGeneratorRightKeep_concrete g))) p
   exact Subtype.ext (congrArg Subtype.val h)

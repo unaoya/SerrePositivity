@@ -22,18 +22,18 @@ local instance kCompositionNativeTrianglesPointedCategory :
 local instance kCompositionNativeTrianglesKan {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (x z : I) :
     KanComplex
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
   {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 元の三円柱と指定した元の比較三角形を保つ、全精密化の実二単体族。 -/
 def kKanCompositionNativeTriangle :
     nerve (CompositionStringParameters f g) ⊗ (Δ[2] : SSet.{u}) ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
         ((kKanSequence (F.obj z)).level (r + 1)).space).right :=
-  relativeSpecifiedTriangleMap (nervePoint (compositionStringDirect f g))
+  relativeSpecifiedTriangleMap (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
     (kKanCompositionFirstNativeFamily r F f g) (kKanCompositionSecondNativeFamily r F f g)
     (kKanCompositionCompositeNativeFamily r F f g)
     (snd (Δ[0] : SSet.{u}) (Δ[2] : SSet.{u}) ≫
@@ -54,7 +54,7 @@ def kKanCompositionNativeTriangle :
 
 /-- 指定直通列点では、元の六セルから作った同じ全比較三角形を回収する。 -/
 lemma kKanCompositionNativeTriangle_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[2] : SSet.{u})) ≫
         kKanCompositionNativeTriangle r F f g =
       snd (Δ[0] : SSet.{u}) (Δ[2] : SSet.{u}) ≫
         SSet.yonedaEquiv.symm (kKanOriginalCompositionCompatibilityTriangle r F f g).simplex := by

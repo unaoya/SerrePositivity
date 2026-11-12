@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.CospanCentralWeightExtension
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedExtensions
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedExtensions
 
 /-!
 概要：両端固定の中央 anodyne な重みの制限は、実際の end の trivial Kan fibration。
@@ -16,13 +16,13 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
 namespace SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 
 /-- 重みの指定成分が同型なら、境界を貼った相対直積の同じ成分も同型。 -/
 lemma weightedCorner_isIso_at {I : Type u} [SmallCategory I]
     {W W' : I ⥤ SSet.{u}} (j : W ⟶ W') {A B : SSet.{u}} (f : A ⟶ B)
-    (k : I) [IsIso (j.app k)] : IsIso ((weightedCorner j f).ι.app k) := by
-  let P := weightedCornerAt j f k
+    (k : I) [IsIso (j.app k)] : IsIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCorner j f).ι.app k) := by
+  let P := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCornerAt j f k
   have topIso : IsIso (((curriedTensor SSet).map (j.app k)).app A) := by
     change IsIso (j.app k ▷ A)
     infer_instance
@@ -40,37 +40,37 @@ lemma weightedSectionsPre_central_trivialKanFibration
     [IsIso (j.app (AsSmall.up.obj .left))] [IsIso (j.app (AsSmall.up.obj .right))]
     (hj : anodyneExtensions (j.app (AsSmall.up.obj .one)))
     [KanComplex (H.obj (AsSmall.up.obj .one))] :
-    TrivialKanFibration (weightedSectionsPre j H) := by
-  apply (trivialKanFibration_iff_boundary _).2
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre j H) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   constructor
   intro t s sq
-  let P := weightedCorner j (boundary n).ι
+  let P := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCorner j (boundary n).ι
   have hw : (j ▷ (Functor.const (AsSmall.{u} WalkingCospan)).obj (boundary n : SSet.{u})) ≫
-        weightedSectionsUncurry t =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry t =
       (W ◁ (Functor.const (AsSmall.{u} WalkingCospan)).map (boundary n).ι) ≫
-        weightedSectionsUncurry s := by
-    have h := congrArg weightedSectionsUncurry sq.w
-    rw [weightedSectionsUncurry_comp_pre, weightedSectionsUncurry_precomp] at h
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry s := by
+    have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry sq.w
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp] at h
     exact h
-  let a := P.isPushout.desc (weightedSectionsUncurry t) (weightedSectionsUncurry s) hw
+  let a := P.isPushout.desc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry t) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry s) hw
   have leftCornerIso : IsIso (P.ι.app (AsSmall.up.obj .left)) :=
     weightedCorner_isIso_at j (boundary n).ι _
   have rightCornerIso : IsIso (P.ι.app (AsSmall.up.obj .right)) :=
     weightedCorner_isIso_at j (boundary n).ι _
   have hcenter : anodyneExtensions (P.ι.app (AsSmall.up.obj .one)) :=
-    anodyneExtensions_pushoutObjObjι' (weightedCornerAt j (boundary n).ι _) hj
+    anodyneExtensions_pushoutObjObjι' (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedCornerAt j (boundary n).ι _) hj
   obtain ⟨b, hb⟩ := exists_cospan_extension_of_central_anodyne P.ι hcenter a
-  refine CommSq.HasLift.mk' { l := weightedSectionsLift b, fac_left := ?_, fac_right := ?_ }
-  · apply (weightedSectionsHomEquiv W' H (boundary n : SSet.{u})).injective
-    change weightedSectionsUncurry ((boundary n).ι ≫ weightedSectionsLift b) = _
-    rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_lift]
+  refine CommSq.HasLift.mk' { l := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift b, fac_left := ?_, fac_right := ?_ }
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv W' H (boundary n : SSet.{u})).injective
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry ((boundary n).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift b) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
     calc
       _ = (P.inl ≫ P.ι) ≫ b := congrArg (fun f ↦ f ≫ b) P.inl_ι.symm
       _ = _ := by rw [Category.assoc, hb]; exact P.isPushout.inl_desc _ _ _
-  · apply (weightedSectionsHomEquiv W H (Δ[n] : SSet.{u})).injective
-    change weightedSectionsUncurry (weightedSectionsLift b ≫ weightedSectionsPre j H) = _
-    rw [weightedSectionsUncurry_comp_pre, weightedSectionsUncurry_lift]
+  · apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv W H (Δ[n] : SSet.{u})).injective
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre j H) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
     calc
       _ = (P.inr ≫ P.ι) ≫ b := congrArg (fun f ↦ f ≫ b) P.inr_ι.symm
       _ = _ := by rw [Category.assoc, hb]; exact P.isPushout.inr_desc _ _ _

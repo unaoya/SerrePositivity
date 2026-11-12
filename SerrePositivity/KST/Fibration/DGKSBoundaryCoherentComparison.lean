@@ -44,41 +44,41 @@ def dgKSBoundaryPositiveTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGBoundaryKanEnrichedFunctor A r)
       (dgKPositiveKanEnrichedFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (dgKSBoundaryPositiveComponent A r)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (dgKSBoundaryPositiveComponent A r)
     (fun P Q => (presentedPerfectDGBFPositiveStage A r).naturality P Q)
 
 /-- 境界商と固定正段を結ぶ、全高次単体を保持した元の比較の区間族。 -/
 def dgKSBoundaryPositiveHomotopy (r : ℕ) :
     SSet.Homotopy (presentedPerfectDGBoundaryKanInfinityFunctor A r)
-      (coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
   StrictEnrichedTransformation.homotopy _ _ (dgKSBoundaryPositiveTransformation A r)
 
 /-- 全 coherent 比較の各頂点の辺は、元の前向き弱比較の辺そのもの。 -/
 theorem dgKSBoundaryPositiveHomotopy_component (r : ℕ) (P : PerfDGInput.{u, v} A) :
-    (simplicialHomotopyVertexEdge (dgKSBoundaryPositiveHomotopy A r)
-      (coherentNerveVertex P)).edge =
-      (coherentNerveEdge (dgKSBoundaryPositiveComponent A r P)).edge := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (dgKSBoundaryPositiveHomotopy A r)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P)).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKSBoundaryPositiveComponent A r P)).edge := by
   rw [dgKSBoundaryPositiveHomotopy, StrictEnrichedTransformation.homotopy_component]
   rw [strictSimplicialTransformation_componentHom _ _ _ P
     (dgKSBoundaryPositiveComponent A r P) rfl]
 
 /-- 元の同じ全入力比較は、関手 ∞ 圏内の自然同型である。 -/
 def dgKSBoundaryPositiveIso (r : ℕ) :
-    FunctorIso (presentedPerfectDGBoundaryKanInfinityFunctor A r)
-      (coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
-  functorIsoOfPointwiseInvertibleHomotopy (dgKSBoundaryPositiveHomotopy A r) (by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (presentedPerfectDGBoundaryKanInfinityFunctor A r)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy (dgKSBoundaryPositiveHomotopy A r) (by
     intro p
-    obtain ⟨P, rfl⟩ := (coherentNerveVertexEquiv (PerfDGInput.{u, v} A)).surjective p
-    apply (isInvertibleEdge_congr (dgKSBoundaryPositiveHomotopy_component A r P)).mpr
+    obtain ⟨P, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertexEquiv (PerfDGInput.{u, v} A)).surjective p
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (dgKSBoundaryPositiveHomotopy_component A r P)).mpr
     exact pointedKanObject_edge_isInvertible_of_piIsomorphism _
       (presentedPerfectDGBFStageComparison_piIsomorphism A r
         (presentedPerfectDGBFPositiveStage A r) P))
 
 /-- 元の相対 Verdier 四角形に制限した、全 coherent 四角形どうしの同じ比較。 -/
 def dgRelativeSBoundaryPositiveSquareIso (r : ℕ)
-    (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
-    FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
-      (d.square ≫ coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
+    (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ presentedPerfectDGBoundaryKanInfinityFunctor A r)
+      (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (dgKPositiveKanEnrichedFunctor A r)) :=
   (dgKSBoundaryPositiveIso A r).precomp d.square
 
 end SerrePositivity.KST.Fibration

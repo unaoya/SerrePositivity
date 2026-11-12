@@ -82,15 +82,15 @@ def dgIdentityHomGluingNullSquare :
 方針：同じ選択された面の境界を回収する。
 規約：全一単体の等号を保持する。使われ方：指定全境界での貼合せ。 -/
 lemma dgIdentityHomGluingNullSquare_edges :
-    squareBottomEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgIdentityHomGluingDiagonalInputMap R C)).edge ∧
-      squareRightEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgIdentityHomGluingDifferenceInputMap R C)).edge ∧
-      squareLeftEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingDiagonalInputMap R C)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingDifferenceInputMap R C)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
           (dgFixedNullLeft R (A := dgIdentityHomGluingBaseInput R C))).edge ∧
-      squareTopEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullTop R (dgIdentityHomGluingContracted R C))).edge :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgIdentityHomGluingNullSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullTop R (dgIdentityHomGluingContracted R C))).edge :=
   (exists_dgFixedNullSquare R (dgIdentityHomGluingDiagonalInputMap R C)
     (dgIdentityHomGluingDifferenceInputMap R C)
     (dgIdentityHomGluingContracted R C) rfl).choose_spec

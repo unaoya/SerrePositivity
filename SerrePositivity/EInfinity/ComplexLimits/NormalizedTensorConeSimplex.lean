@@ -14,12 +14,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorConeSimplex {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    Simplex A (Complex A) (n + 1) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (n + 1) where
   toSimplexData := normalizedTensorConeData A X Y c
   equation := normalizedTensorConeData_equation A X Y c
 
@@ -30,19 +30,19 @@ lemma normalizedTensorConeSimplex_data {n : ℕ}
 lemma normalizedTensorConeSimplex_pullback_injective {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (e : Fin (m + 1) ↪o Fin (n + 1)) :
-    (normalizedTensorConeSimplex A X Y c).pullback (prependOrderHom e.toOrderHom) =
+    (normalizedTensorConeSimplex A X Y c).pullback (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) =
       normalizedTensorConeSimplex A X Y
         ((SimplexCategory.toCat.map (SimplexCategory.mkHom e.toOrderHom)).toFunctor ⋙ c) := by
-  apply Simplex.ext
-  rw [Simplex.pullback_data]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]
   exact normalizedTensorConeData_pullback_injective A X Y c e
 
 lemma normalizedTensorConeSimplex_tail {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     (normalizedTensorConeSimplex A X Y c).pullback (Fin.succOrderEmb (n + 1)).toOrderHom =
-      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := by
-  apply Simplex.ext
-  rw [Simplex.pullback_data]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]
   exact normalizedTensorConeData_tail A X Y c
 
 end SerrePositivity.EInfinity.ComplexLimits

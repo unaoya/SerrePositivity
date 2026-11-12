@@ -3,7 +3,7 @@
 module
 
 -- 取り込み時の依存先：drafts/DerivedGeneral/{CompletionFunctor,Truncation}.lean。
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import SerrePositivity.CommutativeAlgebra.DeRham.UniversalProperty
 public import SerrePositivity.CommutativeAlgebra.DeRham.CompletedLeibniz
 public import SerrePositivity.CommutativeAlgebra.DeRham.PolynomialLeibniz
@@ -60,7 +60,7 @@ def deRhamCohomologyWedge {i j : ℕ} :
 A2 の HT filtration（一般の k、D(k)_{p-comp} 内）では H⁰ を取ると導来完備化の負次数を失う（k の p 冪ねじれが有界でないと LΛ_p(自由加群) は離散でない）ので、
 A2 は通常の `forms` を `discreteModuleEmbedding` で D(k) に入れて DerivedGeneral の `completion`（LΛ_p）を施した対象を使い、有界 p 冪ねじれの下でだけ `completedForms` と同定する
 （`completedForms_eq_derivedCompletion_of_boundedTorsion`）。k⟨X_T⟩ は `PrincipalCompletionH0 (Poly k T) p`（E3 の `completionRing` と同じ道具）。 -/
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Derived
+open SerrePositivity.InfinityCategories
 
 /-- 概要：k の p 冪ねじれが有界（例：有界 prism の A/d）なら、`forms k T i` の導来 p 完備化（DerivedGeneral `completion`、D(k) の対象）は離散で、
 `completedForms k T p i` の `discreteModuleEmbedding` の像と `VertexIso`。A1 はこの同定で設計の Ω̂ を使い、A2 は導来側を使う。

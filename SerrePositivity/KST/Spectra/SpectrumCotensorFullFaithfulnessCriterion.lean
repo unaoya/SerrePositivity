@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SpectrumNativeCotensor
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulIso
 
 /-!
 概要：native cotensor の完全忠実性を、元の普遍評価の全 Hom の後合成の同値性へ還元する。
@@ -25,22 +25,22 @@ local instance cotensorFaithfulnessEvaluationKan (A : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
     KanComplex ((CategoryTheory.ihom A).obj
       (RawSpectrumMapping.pointedSpace (cotensor A X) Y.toKanSequence)).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 namespace CotensorCompatible
 
 /-- 元の cotensor の Hom 射影が同値であることを、同じ全 Hom の評価後合成で検出する。 -/
 lemma cotensorMap_isQCatEquivalence_iff (A : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
-    IsQCatEquivalence (cotensorMap A X Y).right ↔
-      IsQCatEquivalence (evaluationPost A X Y).right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (cotensorMap A X Y).right ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (evaluationPost A X Y).right := by
   let preTrivial :
-      TrivialKanFibration (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
     cotensorEvaluationPrecomposition_trivialKanFibration (cotensor A X) Y A
-  have hp : IsQCatEquivalence
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
       (cotensorEvaluationPrecomposition (cotensor A X) Y A).right :=
-    (qCatEquivalenceOfTrivialKanFibration
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration
       (cotensorEvaluationPrecomposition (cotensor A X) Y A).right).isQCatEquivalence
-  have hs : IsQCatEquivalence (sourceMap A X Y).right :=
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (sourceMap A X Y).right :=
     (sourceEquivalence A X Y).isQCatEquivalence
   have hc := congrArg Under.Hom.right (condition A X Y)
   simp only [Under.comp_right] at hc
@@ -56,14 +56,14 @@ lemma cotensorMap_isQCatEquivalence_iff (A : PointedSimplicialSet.{u})
 
 /-- 元の cotensor 射影の coherent nerve の完全忠実性は、全 Hom の評価後合成で判定。 -/
 lemma cotensorInfinityMap_isFullyFaithful_iff (A : PointedSimplicialSet.{u}) :
-    IsFullyFaithful (cotensorInfinityMap A) ↔
-      ∀ X Y : OmegaSpectrum.{u}, IsQCatEquivalence (evaluationPost A X Y).right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (cotensorInfinityMap A) ↔
+      ∀ X Y : OmegaSpectrum.{u}, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (evaluationPost A X Y).right := by
   constructor
   · intro h X Y
     exact (cotensorMap_isQCatEquivalence_iff A X Y).1
-      ((coherentNerveMap_isFullyFaithful_iff (cotensorEnriched A)).1 h ⟨X⟩ ⟨Y⟩)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff (cotensorEnriched A)).1 h ⟨X⟩ ⟨Y⟩)
   · intro h
-    apply (coherentNerveMap_isFullyFaithful_iff (cotensorEnriched A)).2
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff (cotensorEnriched A)).2
     intro X Y
     exact (cotensorMap_isQCatEquivalence_iff A X.val Y.val).2 (h X.val Y.val)
 
@@ -71,9 +71,9 @@ end CotensorCompatible
 
 /-- 元の native cotensor の完全忠実性を、元の BF 普遍評価の全写像空間の同値性へ戻す。 -/
 lemma nativeCotensor_isFullyFaithful_iff (A : PointedSimplicialSet.{u}) :
-    IsFullyFaithful (nativeCotensor A) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (nativeCotensor A) ↔
       ∀ X Y : OmegaSpectrum.{u},
-        IsQCatEquivalence (CotensorCompatible.evaluationPost A X Y).right := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (CotensorCompatible.evaluationPost A X Y).right := by
   constructor
   · intro h
     apply (CotensorCompatible.cotensorInfinityMap_isFullyFaithful_iff A).1

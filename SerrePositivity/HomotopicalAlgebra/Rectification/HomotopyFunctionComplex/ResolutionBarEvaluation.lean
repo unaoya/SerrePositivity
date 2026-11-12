@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionBarFirstAction
-public import SerrePositivity.InfinityCategories.Simplicial.UniverseLift
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLift
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionBarEvaluation
@@ -100,7 +100,7 @@ lemma simplex_operator {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (c : (bar R)
   congr 1
 
 /-- A genuine map from the whole large bar to the lift of the same small reference output. -/
-def evaluation : bar R ⟶ UniverseLift.obj.{u} (BarOutput.output R) where
+def evaluation : bar R ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (BarOutput.output R) where
   app n := ↾fun c => ULift.up (SSet.yonedaEquiv (simplex R a b n c))
   naturality {n m} θ := by
     apply ConcreteCategory.hom_ext

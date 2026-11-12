@@ -22,7 +22,7 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C] {X Y Z : C}
   (f : X ⟶ Y) (g : Y ⟶ Z) (h : X ⟶ Z)
   (e : (SimplicialCategory.sHom X Z).Edge (SimplicialCategory.homEquiv' _ _ h)
     (SimplicialCategory.homEquiv' _ _ (f ≫ g)))
-  (T : _root_.SerrePositivity.InfinityCategories.Kan.CompositionReplacementTetrahedron (coherentNerveCompStruct f g)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionReplacementTetrahedron (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)
     (enrichedComparisonPinchedTriangle e))
 include f g h e T
 
@@ -59,11 +59,11 @@ lemma enrichedReplacementFirstUpper_heq :
           (by decide) (by decide) (by decide)).simplex)
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := by
   have hu := coherentTetrahedronFirstUpper_heq T.simplex (𝟙 X) f g f (f ≫ g)
-    (coherentNerveUnitCompStruct f) (coherentNerveCompStruct f g)
+    (coherentNerveUnitCompStruct f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)
     (T.unit_face.trans (coherentNerveUnitCompStruct_simplex f).symm) T.original_face
   have hc : (SimplicialCategory.sHomComp X X Z).app (Opposite.op ⦋1⦌)
       ((SSet.Edge.id (SimplicialCategory.homEquiv' X X (𝟙 X))).edge,
-        (coherentTriangleMappingEdge f g (f ≫ g) (coherentNerveCompStruct f g)).edge) =
+        (coherentTriangleMappingEdge f g (f ≫ g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)).edge) =
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := by
     rw [coherentNerveCompStruct_decoded_edge]
     exact (simplicialHom_identityEdges_comp (𝟙 X) (f ≫ g)).trans
@@ -79,7 +79,7 @@ lemma enrichedReplacementSecondUpper_heq :
           (by decide) (by decide) (by decide)).simplex)
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := by
   have hu := coherentTetrahedronSecondUpper_heq T.simplex (𝟙 X) f g f (f ≫ g)
-    (coherentNerveUnitCompStruct f) (coherentNerveCompStruct f g)
+    (coherentNerveUnitCompStruct f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g)
     (T.unit_face.trans (coherentNerveUnitCompStruct_simplex f).symm) T.original_face
   have hc : (SimplicialCategory.sHomComp X Y Z).app (Opposite.op ⦋1⦌)
       ((coherentTriangleMappingEdge (𝟙 X) f f (coherentNerveUnitCompStruct f)).edge,

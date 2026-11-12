@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraExtensionInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraExtensionInfinity
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraInvariantComposition
 
 /-! # 元の非可換 dg 代数四角形の実入力
@@ -29,20 +29,20 @@ variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 元の代数四角形の可換式を、同じ四つの厳密 dg 関手の可換式へ移す。 -/
 lemma dgOdotInput_dg_commutes :
-    (dgAlgebraMap R d.top).comp (dgAlgebraMap R d.lower) =
-      (dgAlgebraMap R d.side).comp (dgAlgebraMap R d.upper) := by
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.lower) =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.side).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.upper) := by
   calc
-    (dgAlgebraMap R d.top).comp (dgAlgebraMap R d.lower) =
-        dgAlgebraMap R (d.top ≫ d.lower) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.top).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R d.lower) =
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (d.top ≫ d.lower) :=
       LocalizingInvariants.DGAlgebra.dgAlgebraMap_comp R d.top d.lower
-    _ = dgAlgebraMap R (d.side ≫ d.upper) :=
-      congrArg (fun f : d.source ⟶ d.corner => dgAlgebraMap R f) d.commutes
+    _ = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (d.side ≫ d.upper) :=
+      congrArg (fun f : d.source ⟶ d.corner => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R f) d.commutes
     _ = _ := (LocalizingInvariants.DGAlgebra.dgAlgebraMap_comp R d.side d.upper).symm
 
 /-- 元の右代数の一対象 dg 圏の、同じ指定対象。 -/
-def dgOdotInputRightPoint : dgAlgebraCategory R d.right := Opposite.op DGAlgebraPoint.star
+def dgOdotInputRightPoint : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.right := Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star
 
 /-- 元の始域代数の一対象 dg 圏の、同じ指定対象。 -/
-def dgOdotInputSourcePoint : dgAlgebraCategory R d.source := Opposite.op DGAlgebraPoint.star
+def dgOdotInputSourcePoint : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R d.source := Opposite.op _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint.star
 
 end SerrePositivity.KST.SConstruction

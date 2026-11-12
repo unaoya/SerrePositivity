@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Simplicial.SimplexPrismFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SimplexPrismFirstVertex
 
 /-!
 概要：標準単体の実面と実頂点の制限は、元の頂点番号を厳密に保持する。

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFamily
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativePointedHomLifting
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativePointedHomLifting
 public import SerrePositivity.KST.Spectra.PushoutProductMonomorphism
 
 /-!
@@ -20,7 +20,7 @@ open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 noncomputable section
 local instance simplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -39,7 +39,7 @@ lemma monoFamily (X : OmegaSpectrum.{u}) {Y Z : OmegaSpectrum.{u}}
       (∀ n, j ≫ l n = a ≫ OmegaSpectrum.evaluation X Y n) ∧
       (∀ n, l n ≫ (PointedObject.basedHomMap (X.level n).space (p.app n)).right =
         b ≫ OmegaSpectrum.evaluation X Z n) ∧
-      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+      (∀ n, l (n + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
         l n ≫ OmegaSpectrum.mappingStep X Y n) := by
   let q : KanSequence.Hom Y.toKanSequence Z.toKanSequence := ⟨p.app, p.comm⟩
   have hq : a ≫ RawSpectrumMapping.post X q = j ≫ b := by

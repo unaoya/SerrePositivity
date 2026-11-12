@@ -22,22 +22,22 @@ local notation "s" => dgKappaUnconditionalStageProvider R κ hκ
 
 /-- 新提供者の同じ実 cone 射は、元の導来延長と全関手で自然。 -/
 def dgKappaUnconditionalConeDerivedSquare :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKappaConeDerivedComparison R A (s A).cone ≫
-        dgModuleExtensionInfinity R A B (perfDGInputHomEquiv R A B f))
-      (dgNerve.map (dgKappaUnconditionalSuspensionMapData R κ hκ f).cone ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionInfinity R A B (perfDGInputHomEquiv R A B f))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaUnconditionalSuspensionMapData R κ hκ f).cone ≫
         dgKappaConeDerivedComparison R B (s B).cone) :=
   dgKappaConeStrictImageDerivedSquare R A B (perfDGInputHomEquiv R A B f)
     (s A).cone (s B).cone
-    (dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out)
 
 /-- 同じ実主導来 Morita 射の cone 作用は、新提供者上で全 ∞ 圏同値となる。 -/
 theorem dgKappaUnconditionalConeMap_isQCatEquivalence_of_morita
     [(dgDerivedExtension R A B (perfDGInputHomEquiv R A B f)).IsEquivalence] :
-    IsQCatEquivalence (dgNerve.map (dgKappaUnconditionalSuspensionMapData R κ hκ f).cone) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaUnconditionalSuspensionMapData R κ hκ f).cone) :=
   dgKappaConeStrictImage_isQCatEquivalence_of_morita R A B (perfDGInputHomEquiv R A B f)
     (s A).cone (s B).cone
-    (dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out)
 
 /-- Morita 射の同じ実 cone 作用は、元の商で零化する perfect 集合を保存・反映する。 -/
 theorem dgKappaUnconditionalConeMap_perfect_iff
@@ -48,6 +48,6 @@ theorem dgKappaUnconditionalConeMap_perfect_iff
       M ∈ dgKappaConePerfectObjects R A (s A).cone :=
   dgKappaConeStrictImage_perfect_iff R A B (perfDGInputHomEquiv R A B f)
     (s A).cone (s B).cone
-    (dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out) M
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.ClosureFunctoriality.dgKappaSphereClosureExtensionStrictImage R A B (perfDGInputHomEquiv R A B f) hκ Fact.out) M
 
 end SerrePositivity.KST.NonConnective

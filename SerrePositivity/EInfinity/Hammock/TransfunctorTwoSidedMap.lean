@@ -19,16 +19,16 @@ universe u v
 namespace SerrePositivity.EInfinity.Hammock.Transfunctor
 open CategoryTheory Opposite
 variable {I : Type v} [Category I] {B : I ⥤ Cat.{u, u}}
-  {L L' : Covariant (B ⋙ Cat.opFunctor)} {R R' : Covariant B}
+  {L L' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant (B ⋙ Cat.opFunctor)} {R R' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B}
 
-def fiberMap {T T' : Covariant B} (τ : T ⟶ T') (i : I) : fiber T i ⟶ fiber T' i :=
+def fiberMap {T T' : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.Covariant B} (τ : T ⟶ T') (i : I) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber T i ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Transfunctor.fiber T' i :=
   Functor.whiskerLeft (Grothendieck.ι B i) τ
 
 def twoSidedDiagramMap (α : L ⟶ L') (β : R ⟶ R') :
     twoSidedDiagram B L R ⟶ twoSidedDiagram B L' R' where
   app i := ⟨𝟭 _, fiberMap α i, fiberMap β i⟩
   naturality i j θ := by
-    refine TwoSidedDiagram.hom_ext _ _ rfl ?_ ?_
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.hom_ext _ _ rfl ?_ ?_
     · apply heq_of_eq
       apply NatTrans.ext
       funext w

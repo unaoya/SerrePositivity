@@ -17,12 +17,12 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedThomason
-open CategoryTheory Opposite TwoSidedGrothendieck
+open CategoryTheory Opposite
 
 variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
-def map : TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶ nerve (total F G) where
+def map : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶ nerve (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G) where
   app _ := ↾fun e => simplex F G e
   naturality {n m} θ := by
     ext e
@@ -30,10 +30,10 @@ def map : TwoSidedBar.space (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ⟶ nerve 
 
 lemma map_vertex (n : ℕ) (e : ComposableArrows (labels F G n) n) (i : Fin (n + 1)) :
     ((map F G).app (op (SimplexCategory.mk n)) e).obj i =
-      mk F G (e.obj i).base ((e.obj i).left.obj i) ((e.obj i).right.obj i) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.mk F G (e.obj i).base ((e.obj i).left.obj i) ((e.obj i).right.obj i) := rfl
 
 lemma map_projection (n : ℕ) (e : ComposableArrows (labels F G n) n) :
-    (map F G).app (op (SimplexCategory.mk n)) e ⋙ projection =
-      e ⋙ TwoSidedElements.projection _ _ := rfl
+    (map F G).app (op (SimplexCategory.mk n)) e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.projection =
+      e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.projection _ _ := rfl
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedThomason

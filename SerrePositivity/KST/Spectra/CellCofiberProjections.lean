@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SimplexCellSphereIso
-public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalSphericalRealization
 
 /-!
 概要：セルの cofiber の比較同型と実際の商射の可換式。
@@ -84,14 +84,14 @@ namespace SkeletalCellAttachment
 
 @[reassoc]
 lemma relativeCofiberIso_projection (K : SSet.{u}) (d : ℕ) :
-    (PointedObject.adjoinFunctor (C := SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.characteristicMap K d) ≫
+    (PointedObject.adjoinFunctor (C := SSet.{u})).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.characteristicMap K d) ≫
         pointedCofiberProjection ((PointedObject.adjoinFunctor (C := SSet.{u})).map
           (Subcomplex.homOfLE (K.skeleton.monotone (Nat.le_succ d)))) ≫
         (relativeCofiberIso K d).hom =
       pointedCofiberProjection ((PointedObject.adjoinFunctor (C := SSet.{u})).map
         (relativeCellComplexOfMono.l (K.skeleton d).ι d)) := by
   exact pointedCofiberPushoutIso_projection
-    ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.isPushout K d).map (PointedObject.adjoinFunctor (C := SSet.{u})))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.isPushout K d).map (PointedObject.adjoinFunctor (C := SSet.{u})))
 
 /-- 概要：セルの特徴射の商はセル球面の余積への標準包含。
 方針：相対 cofiber の pushout 比較と自由基点を加えた余積の商射を合成する。

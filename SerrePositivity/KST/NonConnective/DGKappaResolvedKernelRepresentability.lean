@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectSupplyComparison
 public import SerrePositivity.DifferentialGraded.Morita.CriterionPerfTriangulated
-public import SerrePositivity.InfinityCategories.Derived.DGPretriangulatedTria
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPretriangulatedTria
 
 /-!
 概要：同じ実評価 Morita 核と実供給 P を用いて、実小核の perfect 加群を代表対象へ戻す。
@@ -29,7 +29,7 @@ local notation "C" => dgKappaResolvedKernelKInput R D I
 使われ方：K-7 c5 の同じ native 実核とその Perf の照合。 -/
 theorem dgKappaResolvedKernel_perfect_isRepresentable (M : PerfectModuleCategory R (C)) :
     ∃ x : C, Nonempty (M.obj ≅ (triaRepresentable R (C) x).obj) := by
-  let P := dgKappaPerfectInput R D I
+  let P := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R D I
   let W := dgKappaResolvedEvaluationKernel_perfectEquivalence R D I P
   let Y := W.equivalence.functor.obj M
   obtain ⟨c, ⟨e⟩⟩ := Functor.EssSurj.mem_essImage (perfectDGModuleToPerfect R D Set.univ) Y
@@ -58,8 +58,8 @@ theorem dgKappaResolvedKernel_perfect_isRepresentable (M : PerfectModuleCategory
 方針：実小核の有限 cell 対象を同じ perfect 対象として読み、構成済みの代表対象へ戻す。
 規約：同じ I に条件付き。任意の平坦商核の一般 API としては主張しない。
 使われ方：D 正本の dg Yoneda 完備化を同じ実小核へ適用する。 -/
-theorem dgKappaResolvedKernel_isDGPretriangulated : IsDGPretriangulated R (C) := by
-  apply isDGPretriangulated_of_tria_representable R (C)
+theorem dgKappaResolvedKernel_isDGPretriangulated : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (C) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.isDGPretriangulated_of_tria_representable R (C)
   intro X
   let M : PerfectModuleCategory R (C) :=
     ⟨X.obj, (derivedFiniteCellOver R (C) Set.univ).le_retractClosure _ X.property⟩

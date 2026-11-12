@@ -43,7 +43,7 @@ theorem dgSuspensionUnconditionalCompactEquivalence_hom (n : ℕ) :
     (dgSuspensionUnconditionalCompactEquivalence R κ hκ A n).hom =
       (dgKInputStableCompactGeneration R (Aₙ n)).equivalence.inv ≫
         (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).map
-          (dgKappaNativeMoritaExactMap R (Aₙ n) (Iₙ n) (Pₙ n)).hom ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativeMoritaExactMap R (Aₙ n) (Iₙ n) (Pₙ n)).hom ≫
         (dgKInputStableCompactGeneration R
           (dgKappaResolvedKernelKInput R (Aₙ n) (Iₙ n))).equivalence.hom := by
   simp only [dgSuspensionUnconditionalCompactEquivalence,

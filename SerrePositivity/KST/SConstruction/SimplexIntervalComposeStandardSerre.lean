@@ -29,14 +29,14 @@ lemma simplexIntervalComposeStandardCube_serre {N : ℕ} (a b c : Fin (N + 1))
     have h := simplexHAStrictInterval_split_dimension a b c hab hbc
     omega
   let e := concreteCubeDimensionIso
-    (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (c.val - a.val - 1))
-    (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((n + m) + 1)) hc
+    (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (c.val - a.val - 1))
+    (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((n + m) + 1)) hc
   have hf := (Iso.eq_comp_inv e).mpr
     (simplexIntervalComposeStandardCube_one_face.{u} a b c hab hbc)
   have h := congrArg ((serreConcreteCubeComplexFunctor A).map) hf
   have hd := serreCubeComplexMap_dimension_inv A hc
   have hface : (serreConcreteCubeComplexFunctor A).map
-      (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true (n + m) ⟨m, by omega⟩) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true (n + m) ⟨m, by omega⟩) =
       (serreCubeFace A true (n + m) ⟨m, by omega⟩).hom :=
     congrArg ((Comon.forget (Complex A)).map)
       (serreConcreteCubeFunctor_face A true (n + m) ⟨m, by omega⟩)

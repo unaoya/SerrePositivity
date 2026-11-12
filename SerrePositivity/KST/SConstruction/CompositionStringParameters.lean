@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentArrowStringInitial
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import Mathlib.AlgebraicTopology.SimplicialSet.AnodyneExtensions.Basic
 
 /-! # 合成射と二入力射の全精密化を含む共通パラメータ
@@ -22,7 +22,7 @@ variable {I : Type u} [SmallCategory I] {x y z : I} (f : x ⟶ y) (g : y ⟶ z)
 
 /-- 合成射・前の射・後の射の全合成列を独立に含む積圏。 -/
 abbrev CompositionStringParameters :=
-  _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (f ≫ g) × _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f × _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString (f ≫ g) × _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f × _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g
 
 /-- 三つの元の直通列からなる指定頂点。 -/
 def compositionStringDirect : CompositionStringParameters f g :=
@@ -40,47 +40,47 @@ def compositionStringDirect_isInitial : IsInitial (compositionStringDirect f g) 
       · exact (coherentArrowStringDirect_isInitial g).hom_ext _ _)
 
 /-- 合成射の全精密化への射影。 -/
-def compositionStringComposite : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString (f ≫ g) :=
+def compositionStringComposite : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString (f ≫ g) :=
   CategoryTheory.Prod.fst _ _
 
 /-- 前の射の全精密化への射影。 -/
-def compositionStringFirst : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f :=
+def compositionStringFirst : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f :=
   CategoryTheory.Prod.snd _ _ ⋙ CategoryTheory.Prod.fst _ _
 
 /-- 後の射の全精密化への射影。 -/
-def compositionStringSecond : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g :=
+def compositionStringSecond : CompositionStringParameters f g ⥤ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g :=
   CategoryTheory.Prod.snd _ _ ⋙ CategoryTheory.Prod.snd _ _
 
 /-- Composite 射影は、指定直通列点を同じ元の直通列点へ送る。 -/
 lemma compositionStringComposite_direct :
-    nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringComposite f g) =
-      nervePoint (coherentArrowStringDirect (f ≫ g)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringComposite f g) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect (f ≫ g)) := by
   apply SSet.yonedaEquiv.injective
-  rw [nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   rfl
 
 /-- First 射影は、指定直通列点を同じ元の直通列点へ送る。 -/
 lemma compositionStringFirst_direct :
-    nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringFirst f g) =
-      nervePoint (coherentArrowStringDirect f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringFirst f g) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f) := by
   apply SSet.yonedaEquiv.injective
-  rw [nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   rfl
 
 /-- Second 射影は、指定直通列点を同じ元の直通列点へ送る。 -/
 lemma compositionStringSecond_direct :
-    nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringSecond f g) =
-      nervePoint (coherentArrowStringDirect g) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ nerveMap (compositionStringSecond f g) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect g) := by
   apply SSet.yonedaEquiv.injective
-  rw [nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint, SSet.yonedaEquiv_comp, Equiv.apply_symm_apply]
   rfl
 
 /-- 直通列の組からの頂点包含は anodyne であり、任意の Kan 標的の全境界を持ち上げる。 -/
 lemma compositionStringDirect_anodyne :
-    anodyneExtensions (nervePoint (compositionStringDirect f g)) := by
+    anodyneExtensions (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)) := by
   rw [anodyneExtensions_eq_llp_rlp]
   intro A B p hp
-  apply nervePoint_leftAnodyne (compositionStringDirect_isInitial f g) p
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint_leftAnodyne (compositionStringDirect_isInitial f g) p
   intro C D i hi
   cases hi with
   | intro i hn => exact hp _ (SSet.modelCategoryQuillen.horn_ι_mem_J _ _)

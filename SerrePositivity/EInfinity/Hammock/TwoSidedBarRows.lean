@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBar
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar
 public import SerrePositivity.EInfinity.Hammock.IndexedSum
 public import Mathlib.AlgebraicTopology.SimplicialSet.Monoidal
 
@@ -24,7 +24,7 @@ open CategoryTheory Opposite MonoidalCategory
 variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ SSet.{u}) (G : W ⥤ SSet.{u})
 
-def row (n : SimplexCategoryᵒᵖ) : SSet.{u} := (rows F G).flip.obj n
+def row (n : SimplexCategoryᵒᵖ) : SSet.{u} := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows F G).flip.obj n
 
 def endFactors (n : SimplexCategoryᵒᵖ) (c : ComposableArrows W n.unop.len) : SSet.{u} :=
   F.obj (op (c.obj (Fin.last n.unop.len))) ⊗ G.obj (c.obj 0)
@@ -33,13 +33,13 @@ def rowIso (n : SimplexCategoryᵒᵖ) :
     row F G n ≅ IndexedSum.space (endFactors F G n) :=
   NatIso.ofComponents
     (fun m => Equiv.toIso
-      (TwoSidedElements.chainEquiv (F.flip.obj m) (G.flip.obj m) n.unop.len))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedLabelledChain.chainEquiv (F.flip.obj m) (G.flip.obj m) n.unop.len))
     (by intro m m' θ; apply ConcreteCategory.hom_ext; intro e; rfl)
 
 variable {F G} {F' : Wᵒᵖ ⥤ SSet.{u}} {G' : W ⥤ SSet.{u}}
 
 def flippedRowMap (α : F ⟶ F') (β : G ⟶ G') (n : SimplexCategoryᵒᵖ) :
-    row F G n ⟶ row F' G' n := ((flipFunctor _ _ _).map (rowMap α β)).app n
+    row F G n ⟶ row F' G' n := ((flipFunctor _ _ _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap α β)).app n
 
 lemma rowIso_naturality (α : F ⟶ F') (β : G ⟶ G') (n : SimplexCategoryᵒᵖ) :
     flippedRowMap α β n ≫ (rowIso F' G' n).hom =

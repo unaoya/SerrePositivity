@@ -16,7 +16,7 @@ open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison SerrePositivity.SimplicialModel
+open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：S1 の元の閉部分圏四角形を Ex∞ の native 四角形として保持する。
@@ -24,7 +24,7 @@ namespace SerrePositivity.KST.Fibration.Relative
 規約：元の四辺・二胞体を選び直さない。
 使われ方：相対核実現と同じ値域で無条件 S1 を消費する。 -/
 def closedRelativeInfinitySquare {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ SpaceInfinity.{u} :=
+    (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   exInfinityCommSqInfinitySquare (closedRelativeSquare P)
 
 /-- 概要：閉部分圏の同じ native 四角形は無条件に引き戻し。
@@ -33,11 +33,11 @@ def closedRelativeInfinitySquare {B : StableModel.{u}} (P : ClosedStablePredicat
 使われ方：K-6 b の無条件な相対実現部分。 -/
 theorem closedRelativeInfinitySquare_isPullback
     {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    IsPullbackSquare (closedRelativeInfinitySquare P) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (closedRelativeInfinitySquare P) :=
   exInfinityCommSqInfinitySquare_isPullback _
     (closedRelativeSquare_homotopyPullback_unconditional P)
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
     (relativeFirstRowSimplexQuotient d.projection n)))
 
@@ -69,7 +69,7 @@ include hq in
 規約：全正反復や固定 K の Sp 引き戻し性は要求しない。
 使われ方：d の単回 BF 第一段検出へ渡す入力。 -/
 theorem canonicalSingleS_isPullback :
-    IsPullbackSquare (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0)) :=
   (SingleRelativeComparison.ofCanonicalFirstRowSimplices d hq).isPullback d
 
 end SerrePositivity.KST.Fibration.Relative

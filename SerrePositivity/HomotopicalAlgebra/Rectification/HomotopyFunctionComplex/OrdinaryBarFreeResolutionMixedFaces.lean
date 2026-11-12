@@ -3,7 +3,7 @@ module
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.FreeGeneratorMixedOperators
-public import SerrePositivity.InfinityCategories.Simplicial.ReversedSimplexParameters
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.ReversedSimplexParameters
 
 /-!
 # 中断した任意モデル源への一般化：OrdinaryBarFreeResolutionMixedFaces
@@ -45,7 +45,7 @@ open CategoryTheory CategoryTheory.MonoidalCategory
 namespace SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionMixedFaces
 open FreeGeneratorCategories FreeGeneratorMixedOperators OrdinaryBarFreeDiagramExtension
 open OrdinaryBarChoiceBoundaryGluing OrdinaryBarFreeResolutionDegeneracyValues
-open SerrePositivity.SimplicialModel.ReversedSimplexParameters
+
 variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   [HomotopicalAlgebra.ModelCategory SSet.{v}]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
@@ -57,45 +57,45 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
     OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ SSet.stdSimplex.δ i) =
       FreeGeneratorFaces.fixedFace D (n + 1) i ⋙ G)
   (degeneracyLaw : ∀ i : Fin (n + 1), degeneracyFunctor D n i ⋙ F =
-    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma n i))
+    G ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma n i))
 
 include faceLaw in
 lemma raw_face_law (i : Fin (n + 2)) :
-    F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta n i) =
+    F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta n i) =
       rawFace D (n + 1) i ⋙ G := by
-  rw [delta_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_eq]
   exact faceLaw i.rev
 
 lemma diagram_face (j : Fin (n + 2)) (i : Fin (n + 3)) :
     diagram hcof hfib D n P F j ⋙
-      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) i) =
+      OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) i) =
     F ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib
-      (P ◁ (delta (n + 1) i ≫ sigma (n + 1) j)) := by
+      (P ◁ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) i ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma (n + 1) j)) := by
   rw [diagram, CategoryTheory.Functor.assoc, ← OrdinaryBarChoiceCategory.reindex_comp,
     ← whiskerLeft_comp]
 
 lemma facet_self (j : Fin (n + 2)) :
     degeneracyFunctor D (n + 1) j ⋙ (rawFace D (n + 2) j.castSucc ⋙ F) =
       diagram hcof hfib D n P F j ⋙
-        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) j.castSucc) := by
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) j.castSucc) := by
   rw [← CategoryTheory.Functor.assoc, degeneracy_face_self, CategoryTheory.Functor.id_comp,
-    diagram_face, delta_sigma_self, MonoidalCategory.whiskerLeft_id,
+    diagram_face, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_sigma_self, MonoidalCategory.whiskerLeft_id,
     OrdinaryBarChoiceCategory.reindex_id, CategoryTheory.Functor.comp_id]
 
 lemma facet_succ (j : Fin (n + 2)) :
     degeneracyFunctor D (n + 1) j ⋙ (rawFace D (n + 2) j.succ ⋙ F) =
       diagram hcof hfib D n P F j ⋙
-        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) j.succ) := by
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) j.succ) := by
   rw [← CategoryTheory.Functor.assoc, degeneracy_face_succ, CategoryTheory.Functor.id_comp,
-    diagram_face, delta_sigma_succ, MonoidalCategory.whiskerLeft_id,
+    diagram_face, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_sigma_succ, MonoidalCategory.whiskerLeft_id,
     OrdinaryBarChoiceCategory.reindex_id, CategoryTheory.Functor.comp_id]
 
 include faceLaw degeneracyLaw in
 lemma facet_le (i : Fin (n + 2)) (j : Fin (n + 1)) (h : i ≤ j.castSucc) :
     degeneracyFunctor D (n + 1) j.succ ⋙ (rawFace D (n + 2) i.castSucc ⋙ F) =
       diagram hcof hfib D n P F j.succ ⋙
-        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) i.castSucc) := by
-  rw [diagram_face, delta_sigma_le n i j h, ← CategoryTheory.Functor.assoc,
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) i.castSucc) := by
+  rw [diagram_face, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_sigma_le n i j h, ← CategoryTheory.Functor.assoc,
     degeneracy_face_le D n i j h, CategoryTheory.Functor.assoc, degeneracyLaw j,
     ← CategoryTheory.Functor.assoc, ← raw_face_law hcof hfib D n P F G faceLaw i,
     CategoryTheory.Functor.assoc, ← OrdinaryBarChoiceCategory.reindex_comp,
@@ -105,8 +105,8 @@ include faceLaw degeneracyLaw in
 lemma facet_gt (i : Fin (n + 2)) (j : Fin (n + 1)) (h : j.castSucc < i) :
     degeneracyFunctor D (n + 1) j.castSucc ⋙ (rawFace D (n + 2) i.succ ⋙ F) =
       diagram hcof hfib D n P F j.castSucc ⋙
-        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) i.succ) := by
-  rw [diagram_face, delta_sigma_gt n i j h, ← CategoryTheory.Functor.assoc,
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) i.succ) := by
+  rw [diagram_face, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta_sigma_gt n i j h, ← CategoryTheory.Functor.assoc,
     degeneracy_face_gt D n i j h, CategoryTheory.Functor.assoc, degeneracyLaw j,
     ← CategoryTheory.Functor.assoc, ← raw_face_law hcof hfib D n P F G faceLaw i,
     CategoryTheory.Functor.assoc, ← OrdinaryBarChoiceCategory.reindex_comp,
@@ -116,7 +116,7 @@ include faceLaw degeneracyLaw in
 lemma facet_equation (j : Fin (n + 2)) (i : Fin (n + 3)) :
     degeneracyFunctor D (n + 1) j ⋙ (rawFace D (n + 2) i ⋙ F) =
       diagram hcof hfib D n P F j ⋙
-        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ delta (n + 1) i) := by
+        OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.delta (n + 1) i) := by
   rcases lt_trichotomy i j.castSucc with hlt | rfl | hgt
   · change i.val < j.val at hlt
     let a : Fin (n + 2) := ⟨i.val, by omega⟩

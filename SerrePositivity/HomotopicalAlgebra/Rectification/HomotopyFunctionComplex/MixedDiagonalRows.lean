@@ -44,10 +44,10 @@ namespace SerrePositivity.HomotopyFunctionComplex.MixedDiagonalRows
 variable {C : Type u} [Category.{v} C]
 
 abbrev leftRows (A : SimplexCategory ⥤ C) (B : SimplexCategory ⥤ Cᵒᵖ) :=
-  B.leftOp ⋙ cosimplicialHom A
+  B.leftOp ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A
 
 abbrev rightRows (A : SimplexCategory ⥤ C) (B : SimplexCategory ⥤ Cᵒᵖ) :=
-  A.op ⋙ cosimplicialHom B
+  A.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B
 
 def leftIso (A : SimplexCategory ⥤ C) (B : SimplexCategory ⥤ Cᵒᵖ) :
     BisimplicialModel.diagonal.obj (leftRows A B) ≅ MixedDiagonalHom.obj A B :=
@@ -76,11 +76,11 @@ def rightIso (A : SimplexCategory ⥤ C) (B : SimplexCategory ⥤ Cᵒᵖ) :
 
 def leftComparison {A D : SimplexCategory ⥤ C} (a : D ⟶ A)
     (B : SimplexCategory ⥤ Cᵒᵖ) : leftRows A B ⟶ leftRows D B :=
-  Functor.whiskerLeft B.leftOp (cosimplicialHomMap a)
+  Functor.whiskerLeft B.leftOp (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a)
 
 def rightComparison (A : SimplexCategory ⥤ C) {B E : SimplexCategory ⥤ Cᵒᵖ}
     (b : E ⟶ B) : rightRows A B ⟶ rightRows A E :=
-  Functor.whiskerLeft A.op (cosimplicialHomMap b)
+  Functor.whiskerLeft A.op (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap b)
 
 lemma left_comparison_eq {A D : SimplexCategory ⥤ C} (a : D ⟶ A)
     (B : SimplexCategory ⥤ Cᵒᵖ) :
@@ -106,7 +106,7 @@ include hcof hfib in
 lemma left_weakEquivalence {A D : SimplexCategory ⥤ C} (a : D ⟶ A)
     (B : SimplexCategory ⥤ Cᵒᵖ)
     (ha : ∀ n : SimplexCategoryᵒᵖ, weakEquivalences SSet.{v}
-      ((cosimplicialHomMap a).app (B.obj n.unop).unop)) :
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).app (B.obj n.unop).unop)) :
     weakEquivalences SSet.{v} (MixedDiagonalHom.map a (𝟙 B)) := by
   rw [left_comparison_eq]
   exact (weakEquivalences SSet.{v}).comp_mem _ _
@@ -119,7 +119,7 @@ include hcof hfib in
 lemma right_weakEquivalence (A : SimplexCategory ⥤ C)
     {B E : SimplexCategory ⥤ Cᵒᵖ} (b : E ⟶ B)
     (hb : ∀ n : SimplexCategoryᵒᵖ, weakEquivalences SSet.{v}
-      ((cosimplicialHomMap b).app (op (A.obj n.unop)))) :
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap b).app (op (A.obj n.unop)))) :
     weakEquivalences SSet.{v} (MixedDiagonalHom.map (𝟙 A) b) := by
   rw [right_comparison_eq]
   exact (weakEquivalences SSet.{v}).comp_mem _ _

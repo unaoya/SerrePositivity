@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3PointedKanCofiberCone
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeSimplex
 
 /-!
 概要：通常の引き戻し錐を実四角形へ移し、その二三角形を同じ二つの合成射列で回収する。
@@ -17,38 +17,38 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.D3StrictPullbackSquare
 variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
   {E X B : C} {f : E ⟶ B} {g : X ⟶ B} (c : PullbackCone f g)
 
 /-- 同じ通常の引き戻し錐の、元の二辺を指定したホーン上の coherent 錐。 -/
-def cone : JoinCone
-    (edgeCospan (coherentNerveEdge f).toTruncated (coherentNerveEdge g).toTruncated) :=
+def cone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g).toTruncated) :=
   (DiagramLimitTransport.restrict
-    (strictCoherentCone (c.whisker (AsSmall.down : AsSmall.{u} WalkingCospan ⥤ WalkingCospan)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (c.whisker (AsSmall.down : AsSmall.{u} WalkingCospan ⥤ WalkingCospan)))
     CospanShape.strictCospanHornIso.inv).cast (CospanShape.strictDiagram_eq f g)
 
 /-- 同じ錐を四角形へ移した実図式。 -/
-def square : ((Δ[1] : SSet.{max u v}) ⊗ Δ[1]) ⟶ SimplicialNerve C := coneSquare (cone c)
+def square : ((Δ[1] : SSet.{max u v}) ⊗ Δ[1]) ⟶ SimplicialNerve C := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (cone c)
 
 /-- 下側の実三角形は、同じ fst と元の右辺の strict 合成表示。 -/
-lemma triangle_left : squareTriangle 1 ≫ square c =
-    SSet.yonedaEquiv.symm ((nerveToCoherent C).app (Opposite.op ⦋2⦌)
+lemma triangle_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ square c =
+    SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app (Opposite.op ⦋2⦌)
       (ComposableArrows.mk₂ c.fst f)) := by
-  rw [← cospanConeSquareIso_left]
-  change (cospanConeTriangleLeft ≫ cospanConeSquareIso.hom) ≫
-    (cospanConeSquareIso.inv ≫ (cone c).val) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_left]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleLeft ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv ≫ (cone c).val) = _
   rw [Category.assoc, Iso.hom_inv_id_assoc]
-  change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₀₂) ≫
-    (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (c.whisker AsSmall.down)) = _
-  rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp,
-    strictCoherentConeMap_simplex]
-  change (joinStdSimplexIso 0 1).inv ≫ ((joinStdSimplexIso 0 1).hom ≫ _) = _
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) horn₂₂.ι₀₂) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap (c.whisker AsSmall.down)) = _
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _), ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, Category.id_comp,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap_simplex]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).hom ≫ _) = _
   rw [Iso.inv_hom_id_assoc]
   apply congrArg SSet.yonedaEquiv.symm
-  apply congrArg ((nerveToCoherent C).app _)
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app _)
   have ha : (SSet.yonedaEquiv (horn₂₂.ι₀₂ ≫
       CospanShape.strictCospanHornIso.{u, v}.inv)).down =
         ComposableArrows.mk₁ (AsSmall.up.map WalkingCospan.Hom.inl) := by
@@ -63,22 +63,22 @@ lemma triangle_left : squareTriangle 1 ≫ square c =
     rfl
 
 /-- 上側の実三角形は、同じ snd と元の上辺の strict 合成表示。 -/
-lemma triangle_right : squareTriangle 0 ≫ square c =
-    SSet.yonedaEquiv.symm ((nerveToCoherent C).app (Opposite.op ⦋2⦌)
+lemma triangle_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ square c =
+    SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app (Opposite.op ⦋2⦌)
       (ComposableArrows.mk₂ c.snd g)) := by
-  rw [← cospanConeSquareIso_right]
-  change (cospanConeTriangleRight ≫ cospanConeSquareIso.hom) ≫
-    (cospanConeSquareIso.inv ≫ (cone c).val) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_right]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleRight ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv ≫ (cone c).val) = _
   rw [Category.assoc, Iso.hom_inv_id_assoc]
-  change ((joinStdSimplexIso 0 1).inv ≫ joinMap (𝟙 Δ[0]) horn₂₂.ι₁₂) ≫
-    (joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
-      strictCoherentConeMap (c.whisker AsSmall.down)) = _
-  rw [Category.assoc, ← Category.assoc (joinMap _ _), ← joinMap_comp, Category.id_comp,
-    strictCoherentConeMap_simplex]
-  change (joinStdSimplexIso 0 1).inv ≫ ((joinStdSimplexIso 0 1).hom ≫ _) = _
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) horn₂₂.ι₁₂) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap (c.whisker AsSmall.down)) = _
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _), ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, Category.id_comp,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentConeMap_simplex]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).hom ≫ _) = _
   rw [Iso.inv_hom_id_assoc]
   apply congrArg SSet.yonedaEquiv.symm
-  apply congrArg ((nerveToCoherent C).app _)
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent C).app _)
   have ha : (SSet.yonedaEquiv (horn₂₂.ι₁₂ ≫
       CospanShape.strictCospanHornIso.{u, v}.inv)).down =
         ComposableArrows.mk₁ (AsSmall.up.map WalkingCospan.Hom.inr) := by
@@ -95,19 +95,19 @@ lemma triangle_right : squareTriangle 0 ≫ square c =
 
 /-- 同じ strict 錐の極限性は、同じホーンへの制限を通して実四角形へ移る。 -/
 lemma isPullback [Quasicategory (SimplicialNerve C)]
-    (hc : IsLimitCone (strictCoherentCone
+    (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone
       (c.whisker (AsSmall.down : AsSmall.{u} WalkingCospan ⥤ WalkingCospan)))) :
-    IsPullbackSquare (square c) := by
-  let d := strictCoherentCone
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (square c) := by
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone
     (c.whisker (AsSmall.down : AsSmall.{u} WalkingCospan ⥤ WalkingCospan))
   let a := CospanShape.strictCospanHornIso.{u, v}.inv
   have := DiagramLimitTransport.restriction_trivial
-    (strictCoherentDiagram (AsSmall.down ⋙ cospan f g)) a
-    (isPrecompositionEquivalence_of_iso CospanShape.strictCospanHornIso.symm)
-  let e := qCatEquivalenceOfTrivialKanFibration
-    (sliceOverRestrict (strictCoherentDiagram (AsSmall.down ⋙ cospan f g)) a)
-  have hd : IsLimitCone (DiagramLimitTransport.restrict d a) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ cospan f g)) a
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso CospanShape.strictCospanHornIso.symm)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverRestrict (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (AsSmall.down ⋙ cospan f g)) a)
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (DiagramLimitTransport.restrict d a) :=
     (e.isTerminalVertex_iff d).1 hc
-  exact coneSquare_isPullback (cone c) (hd.cast (CospanShape.strictDiagram_eq f g))
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_isPullback (cone c) (hd.cast (CospanShape.strictDiagram_eq f g))
 
 end SerrePositivity.KST.Spectra.D3StrictPullbackSquare

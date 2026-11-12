@@ -22,12 +22,12 @@ variable (I : UniversalSourceInterval.{u})
 
 /-- 同じ単位への制限を、全パラメータを保持する内部 Hom へ移した実射。 -/
 def parametricRestriction (P Z' : PointedSimplicialSet.{u}) :=
-  PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z')
+  PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z')
 
 /-- 全パラメータを保持した同じ単位制限も、全単射 RLP を持つ。 -/
 lemma parametricRestriction_rlp (P Z' : PointedSimplicialSet.{u}) [KanComplex Z'.right] :
     (MorphismProperty.monomorphisms SSet.{u}).rlp (parametricRestriction I P Z').right :=
-  PointedMapping.post_rlp_monomorphisms P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z')
+  PointedMapping.post_rlp_monomorphisms P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z')
     (universalRestriction_rlp I Z')
 
 variable {P Z Z' : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex Z'.right]
@@ -55,16 +55,16 @@ lemma parametricExtensionRight_projection :
     parametricExtensionRight I v ≫ parametricRestriction I P Z' =
       PointedMapping.parametricPost I.source v := by
   have h : PointedObject.basedHomMap P (extensionSection I Z') ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z') =
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z') =
     𝟙 (PointedObject.basedHom P (PointedObject.basedHom I.source Z')) := by
     change (ihom P).map (extensionSection I Z') ≫
-      (ihom P).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z') = _
+      (ihom P).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z') = _
     rw [← CategoryTheory.Functor.map_comp, extensionSection_condition,
       CategoryTheory.Functor.map_id]
     simp only [PointedObject.ihom_obj_eq_basedHom]
   change (PointedMapping.parametricPost I.source v ≫
     PointedObject.basedHomMap P (extensionSection I Z')) ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z') = _
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z') = _
   rw [Category.assoc, h, Category.comp_id]
 
 /-- 同じ全パラメータ族を射影全体で固定する、二つの元の延長切断の実比較区間。 -/

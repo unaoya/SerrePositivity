@@ -3,7 +3,7 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraCellMappingLargeKan
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovInfinityCone
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraPostnikovCellSpaceLimit
-public import SerrePositivity.InfinityCategories.F1.KanModels.KanFibrationEquivalenceLifting
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanFibrationEquivalenceLifting
 
 /-!
 概要：元の大きい代数表示の Postnikov 図式に沿う、持ち上げた cell 写像の空間値極限。
@@ -20,12 +20,12 @@ universe u
 open SSet.modelCategoryQuillen
 open CategoryTheory Limits MonoidalCategory Opposite HomotopicalAlgebra
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (A B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
   (n : ℤ) (hn : 0 ≤ n)
 
-def postnikovCellLargeKanDiagram : PostnikovInfinityShape.{u} ⥤ KanObject.{u + 1} :=
+def postnikovCellLargeKanDiagram : PostnikovInfinityShape.{u} ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1} :=
   (postnikovInfinityShapeDown ⋙
     cospan (postnikovPerturbedClass R B n hn)
       (SquareZero.zeroSection (postnikov R B n) (postnikovShiftedLayerBimodule R B n hn 1))) ⋙
@@ -38,20 +38,20 @@ def postnikovCellLargeKanCone : Cone (postnikovCellLargeKanDiagram R A B n hn) :
 
 set_option maxHeartbeats 800000 in -- 実 cell・Postnikov 表示と大きい宇宙の錐を照合する。
 def postnikovCellLargeKanCone_underlying_isLimit :
-    IsLimit (kanObjectForget.mapCone (postnikovCellLargeKanCone R A B n hn)) := by
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget.mapCone (postnikovCellLargeKanCone R A B n hn)) := by
   exact (multiplicativeCellMappingLargeKanCone_underlying_isLimit R A _ _
     (postnikovAlgebraPullback_isLimit R B n hn)).whiskerEquivalence
       (AsSmall.equiv : WalkingCospan ≌ PostnikovInfinityShape.{u}).symm
 
 set_option maxHeartbeats 800000 in -- 実 cell・Postnikov 表示と大きい宇宙の錐を照合する。
-def postnikovCellLargeSpaceCone : JoinCone
-    (kanDiagramCoherentNerve (postnikovCellLargeKanDiagram R A B n hn)) :=
-  (strictCoherentCone (postnikovCellLargeKanCone R A B n hn)).cast
-    (strictCoherentDiagram_eq_kanDiagram (postnikovCellLargeKanDiagram R A B n hn))
+def postnikovCellLargeSpaceCone : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (postnikovCellLargeKanDiagram R A B n hn)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (postnikovCellLargeKanCone R A B n hn)).cast
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram_eq_kanDiagram (postnikovCellLargeKanDiagram R A B n hn))
 
 set_option maxHeartbeats 800000 in -- 実 cell・Postnikov 表示と大きい宇宙の錐を照合する。
 lemma postnikovCellLargeSpaceCone_isLimit :
-    IsLimitCone (postnikovCellLargeSpaceCone R A B n hn) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (postnikovCellLargeSpaceCone R A B n hn) := by
   have := postnikovCellMappingClass_fibration R A B n hn
   have : Fibration
       (show ((multiplicativeCellMappingLargeKanFunctor R A).obj
@@ -59,16 +59,16 @@ lemma postnikovCellLargeSpaceCone_isLimit :
         ((multiplicativeCellMappingLargeKanFunctor R A).obj
           (postnikovDerivationTarget R B n hn)).obj from
         (multiplicativeCellMappingLargeKanFunctor R A).map (postnikovPerturbedClass R B n hn)) := by
-    exact fibration_uliftFunctor_map
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.fibration_uliftFunctor_map
       (multiplicativeMappingPostcompose R (cellResolution R A) (postnikovPerturbedClass R B n hn))
-  have : ∀ Z : KanObject.{u + 1}, Fibration
-      ((simplicialHomDiagram (postnikovCellLargeKanDiagram R A B n hn) Z).map
+  have : ∀ Z : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1}, Fibration
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (postnikovCellLargeKanDiagram R A B n hn) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := fun Z => by
-    change Fibration (((SimplicialCategory.sHomFunctor KanObject.{u + 1}).obj (op Z)).map
+    change Fibration (((SimplicialCategory.sHomFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u + 1}).obj (op Z)).map
       ((multiplicativeCellMappingLargeKanFunctor R A).map (postnikovPerturbedClass R B n hn)))
-    exact kanObjectHom_map_fibration Z _
-  apply IsLimitCone.cast
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (postnikovCellLargeKanCone R A B n hn)
-    (kanObjectHomCone_isLimit_of_forget _ (postnikovCellLargeKanCone_underlying_isLimit R A B n hn))
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanObjectHom_map_fibration Z _
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone.cast
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (postnikovCellLargeKanCone R A B n hn)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanObjectHomCone_isLimit_of_forget _ (postnikovCellLargeKanCone_underlying_isLimit R A B n hn))
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

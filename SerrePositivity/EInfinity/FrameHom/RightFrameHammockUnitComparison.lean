@@ -16,14 +16,14 @@ universe u v w
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra SSet Opposite Hammock MonoidalCategory
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：同じ逆比較で単位点の等式を逆向きへ送る。
 方針：元の指定逆の単位を使い、右から同じ逆を合成する。
 規約：反転後の同じ点。使われ方：六辺の三つの逆向き辺。 -/
 lemma point_inverse_Q {A B T : SSet.{w}} [Quasicategory A] [Quasicategory B]
-    (e : QCatEquivalence A B) (a : T ⟶ A) (b : T ⟶ B)
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence A B) (a : T ⟶ A) (b : T ⟶ B)
     (h : AnodyneHomotopy.anodyneQ.map a ≫ AnodyneHomotopy.anodyneQ.map e.hom =
       AnodyneHomotopy.anodyneQ.map b) :
     AnodyneHomotopy.anodyneQ.map b ≫ AnodyneHomotopy.anodyneQ.map e.inv =
@@ -40,25 +40,25 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C}
 lemma rightFrameHammockKanUnitPoint_edge_Q (i : Fin 6) :
     AnodyneHomotopy.anodyneQ.map
       (rightFrameHammockUnitPoint q r f (rightFrameHammockEdgeSource i) ≫
-        exInfinityUnit.app _) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) ≫
       AnodyneHomotopy.anodyneQ.map ((rightFrameHammockKanEdge q r i).app
         (AsSmall.up.obj Y)) =
     AnodyneHomotopy.anodyneQ.map
       (rightFrameHammockUnitPoint q r f (rightFrameHammockEdgeTarget i) ≫
-        exInfinityUnit.app _) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) := by
   let p := rightFrameHammockUnitPoint q r f (rightFrameHammockEdgeSource i)
   let a := (rightFrameHammockFamilyEdge q r i).app Y
-  have h := congrArg (p ≫ ·) (exInfinityUnit.naturality a)
+  have h := congrArg (p ≫ ·) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality a)
   have hQ := congrArg AnodyneHomotopy.anodyneQ.map h
   simp only [Functor.map_comp, Category.assoc] at hQ ⊢
   exact hQ.symm.trans (by
     rw [← Category.assoc, ← Functor.map_comp]
-    exact congrArg (fun t => t ≫ AnodyneHomotopy.anodyneQ.map (exInfinityUnit.app _))
+    exact congrArg (fun t => t ≫ AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _))
       (rightFrameHammockUnitPoint_edge_Q q r f i))
 
 variable [IsCofibrant X]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
-attribute [local instance] rightFrameHammockKanDiagram_kanComplex rightFrameHom_kanComplex
+attribute [local instance] rightFrameHammockKanDiagram_kanComplex _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 
 /-- 概要：選択した同じ全六辺の実合成は元の射の零単体を回収する。
 方針：三つの順向き辺と三つの逆向き辺の単位点を順に合成する。
@@ -66,11 +66,11 @@ attribute [local instance] rightFrameHammockKanDiagram_kanComplex rightFrameHom_
 使われ方：元の frame 比較の零単体と指定局所化射の照合。 -/
 lemma rightFrameHammockKanComponentEquivalence_unit_Q :
     AnodyneHomotopy.anodyneQ.map
-      ((rightFrameHammockUnitPoint q r f 0 ≫ exInfinityUnit.app _) ≫
+      ((rightFrameHammockUnitPoint q r f 0 ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) ≫
         (rightFrameHammockKanComponentEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
-      (arrowMap (weakEquivalences C) f ≫ exInfinityUnit.app _) := by
-  let p (i : Fin 7) := rightFrameHammockUnitPoint q r f i ≫ exInfinityUnit.app _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _) := by
+  let p (i : Fin 7) := rightFrameHammockUnitPoint q r f i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _
   let e (i : Fin 6) := rightFrameHammockKanEdgeEquivalence q r cof i (AsSmall.up.obj Y)
   have h (i : Fin 6) : AnodyneHomotopy.anodyneQ.map (p (rightFrameHammockEdgeSource i)) ≫
       AnodyneHomotopy.anodyneQ.map (e i).hom =
@@ -103,19 +103,19 @@ lemma rightFrameHammockPinchedEquivalence_unit_Q :
       (rightFrameHammockUnitPoint q r f 0 ≫
         (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
-      (arrowMap (weakEquivalences C) f ≫ exInfinityUnit.app _ ≫
-        exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
           SimplicialLocalization.kanHammockHomPinchedMap
-            (SimplicialLocalization.modelRelativeCategory C)
-            (SimplicialLocalization.modelRelativeObject C X)
-            (SimplicialLocalization.modelRelativeObject C Y)) := by
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) := by
   rw [rightFrameHammockPinchedEquivalence_factor]
   have h := congrArg (fun t => t ≫ AnodyneHomotopy.anodyneQ.map
-    (exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom ≫
       SimplicialLocalization.kanHammockHomPinchedMap
-        (SimplicialLocalization.modelRelativeCategory C)
-        (SimplicialLocalization.modelRelativeObject C X)
-        (SimplicialLocalization.modelRelativeObject C Y)))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))
       (rightFrameHammockKanComponentEquivalence_unit_Q q r f cof)
   simpa only [Functor.map_comp, Category.assoc] using h
 

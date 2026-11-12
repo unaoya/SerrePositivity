@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies
-public import SerrePositivity.InfinityCategories.Core.TerminalBoundaryIso
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryIso
 
 /-!
 概要：実 pullback 正方形は cospan 制限の上で全終点境界を充填する。
@@ -20,30 +20,30 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma squareConeDiagramIso_restriction (X : SSet.{u}) :
-    (squareConeDiagramIso X).hom ≫ coneRestriction (horn 2 2 : SSet.{u}) X =
-      (pre cospanSquareBoundary).app X := by
-  change (pre cospanConeSquareIso.hom).app X ≫
-    (pre (joinInr Δ[0] (horn 2 2))).app X = _
+    (squareConeDiagramIso X).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction (horn 2 2 : SSet.{u}) X =
+      (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X := by
+  change (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom).app X ≫
+    (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr Δ[0] (horn 2 2))).app X = _
   rw [← NatTrans.comp_app, ← pre_map]
   rfl
 
 lemma pullbackSquare_terminalBoundaryLifting {X : SSet.{u}} [Quasicategory X]
-    (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : IsPullbackSquare R) :
-    TerminalBoundaryLifting ((pre cospanSquareBoundary).app X) (functorVertex R) := by
+    (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ X) (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare R) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting ((pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex R) := by
   let e := squareConeDiagramIso X
-  let q := (pre cospanSquareBoundary).app X
-  let p := coneRestriction (horn 2 2 : SSet.{u}) X
+  let q := (pre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.cospanSquareBoundary).app X
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coneRestriction (horn 2 2 : SSet.{u}) X
   have hq : e.hom ≫ p = q := squareConeDiagramIso_restriction X
   have hi : e.inv ≫ q = p ≫ (Iso.refl _).hom := by
     rw [Iso.refl_hom, Category.comp_id]
     calc
       e.inv ≫ q = e.inv ≫ (e.hom ≫ p) := congrArg (fun k => e.inv ≫ k) hq.symm
       _ = p := by rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp]
-  have hc := terminalBoundaryLifting_coneRestriction_of_isLimitCone (pullbackCone R) hR
+  have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.terminalBoundaryLifting_coneRestriction_of_isLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone R) hR
   have h := hc.map_iso e.symm (Iso.refl _) hi
-  have hv : e.inv.app (Opposite.op ⦋0⦌) (functorVertex (pullbackCone R).val) =
-      functorVertex R := by
-    change functorVertex (cospanConeSquareIso.inv ≫ cospanConeSquareIso.hom ≫ R) = _
+  have hv : e.inv.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pullbackCone R).val) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex R := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫ R) = _
     rw [← Category.assoc, Iso.inv_hom_id, Category.id_comp]
   exact hv ▸ h
 

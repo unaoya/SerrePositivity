@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.BhattScholze.Almost.AlmostConnectivity
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.InfinityCategories.Derived.SemifreeBasisEquivalence
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBasisEquivalence
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.Restriction.Completion
 
 /-! # 完備導来テンソルの係数三角形
@@ -33,28 +33,28 @@ set_option backward.isDefEq.respectTransparency false
 
 variable {R : Type u} [CommRing R]
 
-private theorem complexSemifree_kFlat {P : Complex R} (hP : complexSemifree R P) :
+private theorem complexSemifree_kFlat {P : Complex R} (hP : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R P) :
     complexKFlat R P :=
   moduleSemifree_objectwiseKFlat R PUnit.{1} (fun _ _ ↦ complexKFlat_unit R) hP PUnit.unit
 
 private def completedModuleTensorUnresolvedIso (p : ℕ) (N : ModuleCat.{u} R) (M : DVertex R) :
-    ((derivedInfinityHomotopyEquivalence R).functor.obj
-      ⟨completedModuleTensor p R (moduleHeartVertex R N) M⟩) ≅
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
+      ⟨completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R N) M⟩) ≅
     (derivedComplexCompletionFunctor R (p : R)).obj
       (DerivedCategory.Q.obj ((moduleTensorCochainFunctor (M.obj 0).val).obj N)) := by
   let P := (M.obj 0).val
-  let e := derivedInfinityHomotopyEquivalence R
-  have := moduleFreeCochainAugmentation_quasiIso R N
+  let e := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R
+  have := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation_quasiIso R N
   have := complexKFlat_quasiIso_left R (complexSemifree_kFlat (M.obj 0).property)
-    (moduleFreeCochainAugmentation R N)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation R N)
   exact e.counitIso.app _ ≪≫ (derivedComplexCompletionFunctor R (p : R)).mapIso
-    (asIso (DerivedCategory.Q.map (cochainTensorMap (moduleFreeCochainAugmentation R N) (𝟙 P))) ≪≫
+    (asIso (DerivedCategory.Q.map (cochainTensorMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleFreeCochainAugmentation R N) (𝟙 P))) ≪≫
       DerivedCategory.Q.mapIso (cochainTensorSingleLeftIso N P))
 
 /-- 完備導来テンソルの左入力に、古典的な商の perfectoid 化の核を置く。 -/
 abbrev kernelTensor (p : ℕ) [Fact p.Prime] (R : Type u) [CommRing R]
     (hR : IsIntegralPerfectoid R p) (J : Ideal R) (M : DVertex R) : DVertex R :=
-  completedModuleTensor p R (moduleHeartVertex R (ModuleCat.of R (perfectoidKernel p R hR J))) M
+  completedModuleTensor p R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R (perfectoidKernel p R hR J))) M
 
 end SerrePositivity.BhattScholze.Almost
 
@@ -65,8 +65,8 @@ attribute [local instance] HasDerivedCategory.standard
 
 /-- BS 著者版 Lemma 10.5 の連結性を、コホモロジー次数の上界で表す。 -/
 def IsConnectiveAt (R : Type u) [CommRing R] (n : ℤ)
-    (X : (derivedInfinityCategory R) _⦋0⦌) : Prop :=
-  ∀ i : ℤ, n < i → Subsingleton (derivedInfinityHomology R i X)
+    (X : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory R) _⦋0⦌) : Prop :=
+  ∀ i : ℤ, n < i → Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomology R i X)
 
 end SerrePositivity.InfinityCategories.Derived
 
@@ -84,19 +84,19 @@ variable (p : ℕ) [Fact p.Prime] (hR : IsIntegralPerfectoid R p) (J : Ideal R)
 /-- 完備導来テンソルの左入力に古典的な perfectoid 商を置く。 -/
 abbrev quotientTensor (M : DVertex R) : DVertex R :=
   completedModuleTensor p R
-    (moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R (ModuleCat.of R (QuotientPerfectoidization R J p hR))) M
 
 /-- 頂点の連結性は通常の導来圏の t 構造で判定できる。 -/
 theorem isConnectiveAt_iff_isLE (n : ℤ) (M : DVertex R) :
     Derived.IsConnectiveAt R n M ↔
-      ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩).IsLE n := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩).IsLE n := by
   rw [DerivedCategory.isLE_iff]
   exact forall_congr' (fun _ ↦ imp_congr_right (fun _ ↦ ModuleCat.isZero_iff_subsingleton.symm))
 
 /-- 離散加群の頂点は零次より上のコホモロジーを持たない。 -/
 theorem isLE_moduleHeartVertex (N : ModuleCat.{u} R) :
-    ((derivedInfinityHomotopyEquivalence R).functor.obj ⟨moduleHeartVertex R N⟩).IsLE 0 := by
-  let e := (moduleHeartDerivedIso R).app N
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartVertex R N⟩).IsLE 0 := by
+  let e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleHeartDerivedIso R).app N
   exact DerivedCategory.TStructure.t.isLE_of_iso e.symm 0
 
 /-- 商との完備テンソルの各コホモロジーは商環上の加群になる。 -/
@@ -125,10 +125,10 @@ theorem quotientTensor_isAlmostZero (M : DVertex R) :
 
 private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteVertex p R M) :
     ∃ T : Triangle (ConcreteDerivedCategory R), T ∈ distTriang _ ∧
-      Nonempty (T.obj₁ ≅ (derivedInfinityHomotopyEquivalence R).functor.obj
+      Nonempty (T.obj₁ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
         ⟨kernelTensor p R hR J M⟩) ∧
-      Nonempty (T.obj₂ ≅ (derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩) ∧
-      Nonempty (T.obj₃ ≅ (derivedInfinityHomotopyEquivalence R).functor.obj
+      Nonempty (T.obj₂ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj ⟨M⟩) ∧
+      Nonempty (T.obj₃ ≅ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
         ⟨quotientTensor p hR J M⟩) := by
   let K := perfectoidKernel p R hR J
   let B := QuotientPerfectoidization R J p hR
@@ -138,7 +138,7 @@ private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteV
     (LinearMap.exact_subtype_mkQ K).linearMap_comp_eq_zero
   have hS : S.ShortExact := ModuleCat.shortComplex_shortExact S
     (LinearMap.exact_subtype_mkQ K) K.injective_subtype K.mkQ_surjective
-  obtain ⟨basis⟩ := complexSemifree_nonempty_basis (M.obj 0).property
+  obtain ⟨basis⟩ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_nonempty_basis (M.obj 0).property
   have hflat (i : ℤ) : Module.Flat R (P.X i) := by
     let := Module.Free.of_basis (basis.basis i)
     infer_instance
@@ -150,7 +150,7 @@ private theorem exists_quotientTensorTriangle (M : DVertex R) (hM : isPCompleteV
   refine ⟨T, F.map_distinguished _ (DerivedCategory.triangleOfSES_distinguished hs),
     ⟨(completedModuleTensorUnresolvedIso p (ModuleCat.of R K) M).symm⟩, ?_, ?_⟩
   · exact ⟨F.mapIso (DerivedCategory.Q.mapIso (moduleTensorCochainUnitIso P)) ≪≫
-      F.mapIso (derivedVertexLocalizationIso M).symm ≪≫
+      F.mapIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedVertexLocalizationIso M).symm ≪≫
         (derivedComplexCompletionUnitIso R (p : R) _ hM).symm⟩
   · exact ⟨F.mapIso (DerivedCategory.Q.mapIso
         ((moduleTensorCochainFunctor P).mapIso e.toLinearEquiv.toModuleIso)) ≪≫
@@ -190,7 +190,7 @@ theorem connective_of_kernelTensor_and_quotientTensor (M : DVertex R)
 /-- BS 著者版 Proposition 10.4 の逆方向。核との完備テンソルの零性から almost 零性を得る。 -/
 theorem isAlmostZero_of_completedTensor_isZero (M : DVertex R)
     (hM : isPCompleteVertex p R M)
-    (hz : IsZero ((derivedInfinityHomotopyEquivalence R).functor.obj
+    (hz : IsZero ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomotopyEquivalence R).functor.obj
       ⟨kernelTensor p R hR J M⟩)) :
     IsJAlmostZero p R hR J M := by
   obtain ⟨T, hT, ⟨e₁⟩, ⟨e₂⟩, ⟨e₃⟩⟩ := exists_quotientTensorTriangle p hR J M hM

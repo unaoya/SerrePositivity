@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite HomotopicalAlgebra
-open SerrePositivity.DifferentialGraded SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.DifferentialGraded
 open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (X : Complex A) (B : (operad A).Algebra)
 

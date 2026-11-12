@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.FrameSpanNerve
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FrameSpanNerve
 public import SerrePositivity.EInfinity.FrameHom.FrameSpanNaturality
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 
@@ -27,14 +27,14 @@ variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
   (β : Z ⟶ Z') (hβ : j ≫ β = j')
 
 def frameSpanTargetIndexMap :
-    ULiftHom.{max u v} (((cosimplicialHom A).obj Z).Elements)ᵒᵖ ⥤
-      ULiftHom.{max u v} (((cosimplicialHom A).obj Z').Elements)ᵒᵖ :=
-  ULiftHom.down.{0, v, max u v} ⋙ ((cosimplicialHom A).map β).mapElements.op ⋙ ULiftHom.up
+    ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ ⥤
+      ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z').Elements)ᵒᵖ :=
+  ULiftHom.down.{0, v, max u v} ⋙ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map β).mapElements.op ⋙ ULiftHom.up
 
 def frameSpanTargetHomotopyMap :
-    nerve (ULiftHom.{max u v} (((cosimplicialHom A).obj Z).Elements)ᵒᵖ) ⊗
+    nerve (ULiftHom.{max u v} (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ) ⊗
       SSet.stdSimplex.{max u v}.obj (SimplexCategory.mk 1) ⟶
-        nerve (ArrowSpan.Object L R X Y) where
+        nerve (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object L R X Y) where
   app _ := ↾fun a =>
     ((SSet.stdSimplex.objEquiv a.2).toOrderHom.monotone.functor.prod'
       (a.1 ⋙ ULiftHom.down.{0, v, max u v})) ⋙
@@ -42,8 +42,8 @@ def frameSpanTargetHomotopyMap :
           (frameSpanTargetComparison L R p hp j hj j' hj' β hβ))
   naturality _ _ _ := rfl
 
-def frameSpanTargetHomotopy : SSet.Homotopy (frameElementSpanNerveMap L R A p hp j hj)
-    (nerveMap (frameSpanTargetIndexMap A β) ≫ frameElementSpanNerveMap L R A p hp j' hj') where
+def frameSpanTargetHomotopy : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameElementSpanNerveMap L R A p hp j hj)
+    (nerveMap (frameSpanTargetIndexMap A β) ≫ _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.frameElementSpanNerveMap L R A p hp j' hj') where
   h := frameSpanTargetHomotopyMap L R A p hp j hj j' hj' β hβ
   h₀ := by
     apply NatTrans.ext
@@ -65,10 +65,10 @@ def frameSpanTargetHomotopy : SSet.Homotopy (frameElementSpanNerveMap L R A p hp
     refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
     intro a b f
     change 𝟙 _ ≫ (frameElementSpanFunctor L R A p hp j' hj').map
-        (((cosimplicialHom A).map β).mapElements.op.map
+        (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map β).mapElements.op.map
           (ULiftHom.down.map (σ.map f))) =
       eqToHom rfl ≫ (frameElementSpanFunctor L R A p hp j' hj').map
-        (((cosimplicialHom A).map β).mapElements.op.map
+        (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map β).mapElements.op.map
           (ULiftHom.down.map (σ.map f))) ≫ eqToHom rfl
     simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   rel := by

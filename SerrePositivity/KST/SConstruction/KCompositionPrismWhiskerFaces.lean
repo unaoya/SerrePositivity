@@ -26,7 +26,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 lemma kKanOriginalCompositionImage_first_middle :
     (SimplicialNerve PointedSimplicialSet.{u}).map tetrahedronFirstEdgeMap.op
       (kKanOriginalCompositionImage r F f g 1) =
-      (coherentNerveEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)).edge :=
   (tetrahedronFirstEdge_of_face (kKanOriginalCompositionImage_first_lower r F f g)).trans
     (kKanSuspensionMappingTriangles r F f).bottomRight.d₂
@@ -35,7 +35,7 @@ lemma kKanOriginalCompositionImage_first_middle :
 lemma kKanOriginalCompositionImage_last_middle :
     (SimplicialNerve PointedSimplicialSet.{u}).map tetrahedronLastEdgeMap.op
       (kKanOriginalCompositionImage r F f g 1) =
-      (coherentNerveEdge (kKanSequenceLevelMap (F.map g) (r + 1))).edge :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kKanSequenceLevelMap (F.map g) (r + 1))).edge :=
   (tetrahedronLastEdge_of_face (kKanOriginalCompositionImage_second_upper r F f g)).trans
     (kKanSuspensionMappingTriangles r F g).leftTop.d₀
 
@@ -43,7 +43,7 @@ lemma kKanOriginalCompositionImage_last_middle :
 lemma kKanOriginalCompositionImage_first_last :
     (SimplicialNerve PointedSimplicialSet.{u}).map tetrahedronFirstEdgeMap.op
       (kKanOriginalCompositionImage r F f g 2) =
-      (coherentNerveEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)).edge := by
   have hs : ((Δ[2] : SSet.{u + 1}) ⊗ Δ[1]).map tetrahedronFirstEdgeMap.op
       (trianglePrismTetrahedron 2) =
@@ -62,7 +62,7 @@ lemma kKanOriginalCompositionImage_first_last :
 lemma kKanOriginalCompositionImage_last_first :
     (SimplicialNerve PointedSimplicialSet.{u}).map tetrahedronLastEdgeMap.op
       (kKanOriginalCompositionImage r F f g 0) =
-      (coherentNerveEdge (kKanSequenceLevelMap (F.map g) (r + 1))).edge := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (kKanSequenceLevelMap (F.map g) (r + 1))).edge := by
   have hs : ((Δ[2] : SSet.{u + 1}) ⊗ Δ[1]).map tetrahedronLastEdgeMap.op
       (trianglePrismTetrahedron 0) =
       ((Δ[2] : SSet.{u + 1}) ⊗ Δ[1]).map tetrahedronLastEdgeMap.op
@@ -82,7 +82,7 @@ lemma kKanOriginalCompositionMappingSquare_first_upper_post :
       kKanOriginalCompositionMappingSquare r F f g 0 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F f)).edge ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   have h := tetrahedronTrace_include_second_specified _ _ _
     (kKanSequenceLevelMap (F.map g) (r + 1)) (kKanSuspensionMappingTriangles r F f).leftTop
@@ -92,7 +92,7 @@ lemma kKanOriginalCompositionMappingSquare_first_upper_post :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 0).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingLeftTop] using h
 
@@ -102,7 +102,7 @@ lemma kKanOriginalCompositionMappingSquare_first_lower_post :
       kKanOriginalCompositionMappingSquare r F f g 1 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F f)).edge ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj x)).level r).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj x)).level r).space)
           (kKanSequenceLevelMap (F.map g) (r + 1))).right := by
   have h := tetrahedronTrace_include_second_specified _ _ _
     (kKanSequenceLevelMap (F.map g) (r + 1)) (kKanSuspensionMappingTriangles r F f).bottomRight
@@ -112,7 +112,7 @@ lemma kKanOriginalCompositionMappingSquare_first_lower_post :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 1).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingBottomRight] using h
 
@@ -122,7 +122,7 @@ lemma kKanOriginalCompositionMappingSquare_second_upper_pre :
       kKanOriginalCompositionMappingSquare r F f g 1 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingLeftTop (kKanSuspensionMappingTriangles r F g)).edge ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   have h := tetrahedronTrace_include_first_specified
     (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r) _ _ _
@@ -132,7 +132,7 @@ lemma kKanOriginalCompositionMappingSquare_second_upper_pre :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 1).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingLeftTop] using h
 
@@ -142,7 +142,7 @@ lemma kKanOriginalCompositionMappingSquare_second_lower_pre :
       kKanOriginalCompositionMappingSquare r F f g 2 =
       SSet.yonedaEquiv.symm
         (coherentSquareMappingBottomRight (kKanSuspensionMappingTriangles r F g)).edge ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r)
           ((kKanSequence (F.obj z)).level (r + 1)).space := by
   have h := tetrahedronTrace_include_first_specified
     (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map f) r) _ _ _
@@ -152,7 +152,7 @@ lemma kKanOriginalCompositionMappingSquare_second_lower_pre :
     ((trianglePrismImage_hom (kKanOriginalCompositionPrism r F f g) 2).trans
       (kKanOriginalCompositionPrism_hom r F f g))
   simpa only [kKanOriginalCompositionMappingSquare, trianglePrismMappingSquare, Category.assoc,
-    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension, PointedEnrichment.hom_eq,
+    eqToHom_trans, kKanOriginalCompositionImage, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension, PointedEnrichment.hom_eq,
     PointedEnrichment.whiskerRight_eq, PointedEnrichment.whiskerLeft_eq,
     coherentSquareMappingBottomRight] using h
 

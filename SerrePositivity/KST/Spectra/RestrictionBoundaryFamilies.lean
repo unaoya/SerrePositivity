@@ -31,28 +31,28 @@ def relativeProjection : B ⟶ (relativeSource i).right :=
 
 @[reassoc]
 lemma relativeProjection_restriction :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
         (pointedCofiberProjection (PointedObject.adjoinFunctor.map i)) Y).right ≫
         (freeHomIso B Y).hom.right =
       PointedObject.basedHomι (relativeSource i) Y ≫
         (MonoidalClosed.pre (relativeProjection i)).app Y.right := by
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _ Y ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre _ Y ≫
     (PointedObject.basedHomι (PointedObject.adjoin B) Y ≫
       (MonoidalClosed.pre coprod.inl).app Y.right) = _
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, Category.assoc,
     ← NatTrans.comp_app, ← MonoidalClosed.pre_map]
   rfl
 
 lemma uncurry_constant_basepoint (B T : SSet.{u}) (Y : PointedSimplicialSet.{u}) :
     uncurry (SSet.const (X := T) (obj B Y).basepoint) =
       toUnit (B ⊗ T) ≫ Y.hom := by
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const (obj B Y) T, uncurry_natural_left]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const (obj B Y) T, uncurry_natural_left]
   change B ◁ toUnit T ≫ uncurry (curry (snd B (𝟙_ SSet.{u}) ≫ Y.hom)) = _
   rw [uncurry_curry, ← Category.assoc, whiskerLeft_snd, comp_toUnit]
 
 variable {n : ℕ}
   {s : (obj A Y).right.PtSimplex (n + 1) ((pre i Y).right.app _ (obj B Y).basepoint)}
-  (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (pre i Y).right (obj B Y).basepoint s)
+  (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (pre i Y).right (obj B Y).basepoint s)
 
 /-- 概要：相対ホーン充填が表す元の源上のパラメータ族。
 方針：通常の内部 Hom の充填射を uncurry する。

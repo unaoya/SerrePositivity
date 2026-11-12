@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 /-- 元の実 dg 関手の HA 連結語値は、同じ実鎖射の向き付き最高生成元像を回収する。 -/
 lemma simplexHABeadWordValue_recovery {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
-    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b d) :
+    {a b : Fin (n + 1)} {d : ℕ} (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b d) :
     simplexHABeadWordValue A (cubicalLambdaNativeSimplexData A F) word =
       serreCubeTopCellImage A _ d (simplexHABeadWordCell A word ≫ F.map _ _) := by
   induction word with

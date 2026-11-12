@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalDiagram
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalDiagram
 
 /-!
 概要：関手圏の path 置換と二段の引き戻しを各成分で標準の模型に同定する。

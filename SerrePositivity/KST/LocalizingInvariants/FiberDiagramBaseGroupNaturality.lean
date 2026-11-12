@@ -30,10 +30,10 @@ lemma normalization_base_arrow (D : FiberDiagram.{u}) :
     Arrow.mk ((vertex 1 1).map (normalization D).hom) =
       Arrow.mk (𝟙 ((vertex 1 1).obj D)) := by
   have he := functorHomEvaluate_arrow_identity
-    (homPre squareRightEdge (normalization D).hom)
-    (squareRightEdge ≫ D.triangle.square) (stdSimplex.obj₀Equiv.symm 1)
+    (homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (normalization D).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ D.triangle.square) (stdSimplex.obj₀Equiv.symm 1)
     (normalization_right_arrow D)
-  rw [homPre, functorHomEvaluate_precomp] at he
+  rw [homPre, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_precomp] at he
   rw [vertex_map_evaluate]
   exact he
 
@@ -51,7 +51,7 @@ lemma baseIso_hom_canonical (D : FiberDiagram.{u}) :
       (congrArg HomotopyCategory.mk (FiberModel.homotopyFiberSquare_target_vertex
         (NativeFiber.rightMap D.triangle)))).trans (normalization_base_arrow D)
   simp only [SpectrumHo.spectrumIso, eqToIso.inv]
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.hom_eq_eqToHom_of_arrow_identity _ _ ha
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.hom_eq_eqToHom_of_arrow_identity _ _ ha
 
 def baseGroupIso (D : FiberDiagram.{u}) (j : ℤ) :
     (SpectrumHo.piFunctor j).obj ((vertex 1 1).obj D) ≅

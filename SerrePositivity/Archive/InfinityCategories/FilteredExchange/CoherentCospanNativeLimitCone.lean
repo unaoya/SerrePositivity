@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeComparisonApex
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpecifiedApexLimitConeTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpecifiedApexLimitConeTransport
 
 /-!
 概要：一般 coherent filtered 図式の各点の極限性から、元の余極限頂点で極限錐を構成。

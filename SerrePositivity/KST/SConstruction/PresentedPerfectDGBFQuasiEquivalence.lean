@@ -20,7 +20,7 @@ include hf
 
 /-- 元の厳密 dg 準同値による同じ新 BF 射は全段で全基点 π 同型。 -/
 lemma presentedPerfectDGBFMap_levelwise_of_quasiEquivalence (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((presentedPerfectDGBFMap A f).app n).right := by
   let : (quasiEquivalencePerfectExtension A X Y f.down).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence A X Y f.down hf).isEquivalence_functor
   exact presentedPerfectDGBFMap_morita_levelwise A f n
@@ -33,9 +33,9 @@ lemma presentedPerfectDGBFMap_piIsomorphism_of_quasiEquivalence :
 
 /-- 元の dg 準同値の同じ Sp 値 ∞ 関手での像は可逆。 -/
 lemma presentedPerfectDGBFInfinityFunctor_quasiEquivalence_isInvertible :
-    IsInvertibleEdge (edgeOfSimplex
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
       ((presentedPerfectDGBFInfinityFunctor A).app (Opposite.op ⦋1⦌)
-        (coherentNerveEdge f).edge)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)) := by
   let : (quasiEquivalencePerfectExtension A X Y f.down).IsEquivalence :=
     (quasiEquivalencePerfectEquivalence A X Y f.down hf).isEquivalence_functor
   exact presentedPerfectDGBFInfinityFunctor_morita_isInvertible A f

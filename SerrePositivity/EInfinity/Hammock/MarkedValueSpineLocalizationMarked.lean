@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
@@ -27,16 +27,16 @@ lemma localizationToValue_Qmap {X Y : Paths C} (p : X ⟶ Y) : letI := valueCate
   simpa only [Functor.comp_map, eqToHom_refl, Category.id_comp, Category.comp_id]
     using CategoryTheory.Functor.congr_hom (localizationToValue_fac W) p
 
-lemma localizationToValue_marked_generator {X Y : MarkedGenerators.quiver W} (f : X ⟶ Y) :
+lemma localizationToValue_marked_generator {X Y : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W} (f : X ⟶ Y) :
     letI := valueCategory W
     (localizationToValue W).map ((markedValueDescent W W.paths.Q W.paths.Q_inverts).map
-      ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map f)) =
-      (valueMarkedFunctor W).map ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map f) := by
+      ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map f)) =
+      (valueMarkedFunctor W).map ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map f) := by
   let := valueCategory W
   rw [markedValueDescent_generator, localizationToValue_Qmap]
   exact valueLift_marked W f.val f.property
 
-lemma localizationToValue_marked {X Y : Quiver.FreeGroupoid (MarkedGenerators.quiver W)}
+lemma localizationToValue_marked {X Y : Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)}
     (p : X ⟶ Y) : letI := valueCategory W
     (localizationToValue W).map ((markedValueDescent W W.paths.Q W.paths.Q_inverts).map p) =
       (valueMarkedFunctor W).map p := by
@@ -52,8 +52,8 @@ lemma localizationToValue_marked {X Y : Quiver.FreeGroupoid (MarkedGenerators.qu
   · intro X Y f
     rw [K.map_inv, T.map_inv, J.map_inv]
     have hi : asIso (T.map (K.map
-        ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map f))) =
-        asIso (J.map ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).map f)) :=
+        ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map f))) =
+        asIso (J.map ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).map f)) :=
       Iso.ext (localizationToValue_marked_generator W f)
     exact congrArg Iso.inv hi
   · intro X
@@ -62,7 +62,7 @@ lemma localizationToValue_marked {X Y : Quiver.FreeGroupoid (MarkedGenerators.qu
   · intro X Y Z f g hf hg
     rw [K.map_comp, T.map_comp, J.map_comp, hf, hg]
 
-lemma localizationToValue_unmarked (g : FactorTarget.Index W) : letI := valueCategory W
+lemma localizationToValue_unmarked (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : letI := valueCategory W
     (localizationToValue W).map (W.paths.Q.map g.val.hom.toPath) = ValueSpine.generator W g := by
   let := valueCategory W
   rw [localizationToValue_Qmap]

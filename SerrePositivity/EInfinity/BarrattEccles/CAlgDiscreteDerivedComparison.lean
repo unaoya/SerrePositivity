@@ -29,7 +29,7 @@ def discreteCAlgUnderEmbedding : nerve (Under (CommRingCat.of A)) ⟶ CAlg_R A :
 lemma discreteCAlgUnderForgetNerve_eq :
     nerveMap (commAlgCatEquivUnder (CommRingCat.of A)).inverse ≫
       nerveMap (discreteAlgebraFunctor A) ≫ nerveMap (Operad.Algebra.forget (operad A)) =
-    nerveMap (discreteAlgebraModule A) ≫
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ≫
       nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0) := by
   apply SSet.hom_ext
   intro n
@@ -37,46 +37,46 @@ lemma discreteCAlgUnderForgetNerve_eq :
   intro Γ
   change (Γ ⋙ (commAlgCatEquivUnder (CommRingCat.of A)).inverse) ⋙
       (discreteAlgebraFunctor A ⋙ Operad.Algebra.forget (operad A)) =
-    (Γ ⋙ discreteAlgebraModule A) ⋙ HomologicalComplex.single (ModuleCat A) (.up ℤ) 0
+    (Γ ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ⋙ HomologicalComplex.single (ModuleCat A) (.up ℤ) 0
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
   rfl
 
 lemma discreteModuleResolutionNerve_eq :
-    nerveMap (discreteAlgebraModule A) ≫ nerveMap (moduleSemifreeResolutionFunctor A) =
-      nerveMap (discreteAlgebraModule A ⋙ moduleSemifreeResolutionFunctor A) := by
+    nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) =
+      nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A) := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro Γ
-  change (Γ ⋙ discreteAlgebraModule A) ⋙ moduleSemifreeResolutionFunctor A =
-    Γ ⋙ (discreteAlgebraModule A ⋙ moduleSemifreeResolutionFunctor A)
+  change (Γ ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A =
+    Γ ⋙ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A ⋙ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.moduleSemifreeResolutionFunctor A)
   exact Functor.assoc _ _ _
 
 def discreteUnderlyingDerivedSourceIso :
-    FunctorIso (nerveMap (commAlgCatEquivUnder (CommRingCat.of A)).inverse ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (commAlgCatEquivUnder (CommRingCat.of A)).inverse ≫
       nerveMap (discreteAlgebraFunctor A) ≫ algebraUnderlyingDerivedSource A)
-      (discreteEmbedding A) := by
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A) := by
   have e := (ComplexLimits.moduleSingleOrdinaryDerivedIso A).precomp
-    (nerveMap (discreteAlgebraModule A))
-  have e' : FunctorIso
-      ((nerveMap (discreteAlgebraModule A) ≫
+    (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A))
+  have e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      ((nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ≫
         nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0)) ≫
-          ComplexLimits.complexOrdinaryDerivedSource A) (discreteEmbedding A) := by
-    simpa only [← Category.assoc, discreteModuleResolutionNerve_eq, discreteEmbedding] using e
+          ComplexLimits.complexOrdinaryDerivedSource A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A) := by
+    simpa only [← Category.assoc, discreteModuleResolutionNerve_eq, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding] using e
   have h : nerveMap (commAlgCatEquivUnder (CommRingCat.of A)).inverse ≫
       nerveMap (discreteAlgebraFunctor A) ≫ algebraUnderlyingDerivedSource A =
-      (nerveMap (discreteAlgebraModule A) ≫
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteAlgebraModule A) ≫
         nerveMap (HomologicalComplex.single (ModuleCat A) (.up ℤ) 0)) ≫
           ComplexLimits.complexOrdinaryDerivedSource A := by
     simpa only [algebraUnderlyingDerivedSource, Category.assoc] using
       congrArg (fun f => f ≫ ComplexLimits.complexOrdinaryDerivedSource A)
         (discreteCAlgUnderForgetNerve_eq A)
-  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (functorVertex f)) h) ≪≫ e'
+  exact eqToIso (congrArg (fun f => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) h) ≪≫ e'
 
 def discreteCAlgUnderEmbedding_forgetIso :
-    FunctorIso (discreteCAlgUnderEmbedding A ≫ cAlgForgetDerived A) (discreteEmbedding A) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (discreteCAlgUnderEmbedding A ≫ cAlgForgetDerived A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.discreteEmbedding A) := by
   have e := (discreteCAlgEmbedding_underlyingDerivedIso A).precomp
     (nerveMap (commAlgCatEquivUnder (CommRingCat.of A)).inverse)
   exact e ≪≫ discreteUnderlyingDerivedSourceIso A

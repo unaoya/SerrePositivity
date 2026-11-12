@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierRectangle
 
 /-!
 概要：完備化付き固定 ν 像の全図式比較から、不変量値の pullback を輸送する。
@@ -24,9 +24,9 @@ variable {S : SSet.{u + 1}} {ν : S ⟶ perfectStableInfinity.{u}}
 lemma RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso
     (d : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso d.square (F ≫ ν))
-    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso d.square (F ≫ ν) b) :
-    IsPullbackSquare (F ≫ ν ≫ E) :=
+    (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso d.square (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso d.square (F ≫ ν) b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (F ≫ ν ≫ E) :=
   (hE.preservesVerdier d).of_functorIso (e.comparison.postcomp E)
 
 /-- 実 S 長方形の二面を、それぞれの絶対提示との指定全比較で認証する。
@@ -34,32 +34,32 @@ lemma RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces
     (F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (r o : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
-    (br : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν))
-    (er : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν) br)
-    (bo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν))
-    (eo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν) bo) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by
-  have hR : IsPullbackSquare (pastingSquare (F ≫ ν ≫ E) 0) :=
-    (isPullbackSquare_iff_transpose _).mpr
+    (br : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν))
+    (er : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ F ≫ ν) br)
+    (bo : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν))
+    (eo : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ F ≫ ν) bo) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ ν ≫ E) := by
+  have hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ ν ≫ E) 0) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mpr
       (RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso r hE br er)
-  have hO : IsPullbackSquare (pastingSquare (F ≫ ν ≫ E) 1) :=
-    (isPullbackSquare_iff_transpose _).mpr
+  have hO : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare (F ≫ ν ≫ E) 1) :=
+    (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mpr
       (RelativePerfectVerdierDiagram.isPullback_of_perfectImageIso o hE bo eo)
-  exact (isPullbackSquare_iff_transpose _).mp
-    (isPullbackSquare_pasting_cancel_right (F ≫ ν ≫ E) hR hO)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.isPullbackSquare_iff_transpose _).mp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isPullbackSquare_pasting_cancel_right (F ≫ ν ≫ E) hR hO)
 
 /-- 実二面による認証と、上下二単体を含む指定全長方形比較を接続する。 -/
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces_imageIso
     (G : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S)
     (r o : PerfectVerdierDiagram.{u}) (hE : IsPerfectLocalizingInvariant E)
-    (br : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν))
-    (er : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν) br)
-    (bo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν))
-    (eo : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν) bo)
+    (br : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso r.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν))
+    (er : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso r.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ G ≫ ν) br)
+    (bo : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso o.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν))
+    (eo : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso o.square (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ G ≫ ν) bo)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ perfectStableInfinity.{u}}
-    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
-    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ E) := by
+    (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (G ≫ ν) F)
+    (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (G ≫ ν) F b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
   exact (comparison_isPullback_of_actualFaces G r o hE br er bo eo).of_functorIso
@@ -67,21 +67,21 @@ lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_actualFaces_image
 
 /-- 元の源四角形は固定し、その実 ν 像の全境界付き比較を値へ運ぶ。 -/
 lemma RelativePerfectVerdierDiagram.isPullback_of_imageIso
-    (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierDiagram ν) (hE : IsPerfectLocalizingInvariant E)
+    (d : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierDiagram ν) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (d.square ≫ ν) (F ≫ ν))
-    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (d.square ≫ ν) (F ≫ ν) b) :
-    IsPullbackSquare (F ≫ ν ≫ E) := by
-  have h : IsPullbackSquare ((d.square ≫ ν) ≫ E) := d.isPullback ν hE
+    (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (d.square ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (d.square ≫ ν) (F ≫ ν) b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (F ≫ ν ≫ E) := by
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((d.square ≫ ν) ≫ E) := d.isPullback ν hE
   exact h.of_functorIso (e.comparison.postcomp E)
 
 /-- 実 ν 長方形の全比較を使い、二面・上下の合成三角形を保って第三面を輸送する。 -/
 lemma RelativePerfectVerdierRectangle.comparison_isPullback_of_imageIso
-    (d : _root_.SerrePositivity.InfinityCategories.Derived.Quasicategory.RelativePerfectVerdierRectangle ν) (hE : IsPerfectLocalizingInvariant E)
+    (d : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Quasicategory.RelativePerfectVerdierRectangle ν) (hE : IsPerfectLocalizingInvariant E)
     {F : (Δ[2] ⊗ Δ[1] : SSet.{u + 1}) ⟶ S}
-    (b : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
-    (e : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare F 2) ≫ ν ≫ E) := by
+    (b : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (d.diagram ≫ ν) (F ≫ ν))
+    (e : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (d.diagram ≫ ν) (F ≫ ν) b) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare F 2) ≫ ν ≫ E) := by
   let c := (β_ (Δ[1] : SSet.{u + 1}) Δ[1]).hom ≫
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1}))
   exact (d.comparisonSquare_isPullback hE).of_functorIso

@@ -20,53 +20,53 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.LaxUniversalDifference
-variable {C D E Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
-  (r : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) Q)
+variable {C D E Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
+  (r : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) Q)
 
 def arrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
   LaxCounit.arrow p q ≫ (ihom (Δ[1] : SSet.{u})).map r.hom
 
-instance arrow_isExact : IsExactFunctor (arrow p q r) := by
+instance arrow_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (arrow p q r) := by
   unfold arrow
   infer_instance
 
 lemma arrow_target : arrow p q r ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.hom := by
-  rw [arrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = r.hom := by
+  rw [arrow, Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation, ← Category.assoc,
     LaxCounit.arrow_target, Category.id_comp]
 
 def connectingArrow : (laxCategory p q).obj ⟶ (ihom (Δ[1] : SSet.{u})).obj Q.obj :=
   arrow p q r ≫ CofiberRotation.inverseRotation Q.obj
 
-instance connectingArrow_isExact : IsExactFunctor (connectingArrow p q r) := by
+instance connectingArrow_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (connectingArrow p q r) := by
   unfold connectingArrow
   infer_instance
 
 def lift : (laxCategory p q).obj ⟶ (laxCategory (𝟙 Q) (𝟙 Q)).obj :=
-  connectingArrow p q r ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj
+  connectingArrow p q r ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj
 
-instance lift_isExact : IsExactFunctor (lift p q r) := by
-  have he : IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse Q.obj) :=
-    inferInstanceAs (IsExactFunctor (_root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxIso Q.obj).inv)
+instance lift_isExact : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (lift p q r) := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse Q.obj) :=
+    inferInstanceAs (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxIso Q.obj).inv)
   unfold lift
   infer_instance
 
-def exactLift : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (laxCategory p q) (laxCategory (𝟙 Q) (𝟙 Q)) :=
+def exactLift : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (laxCategory p q) (laxCategory (𝟙 Q) (𝟙 Q)) :=
   ⟨lift p q r, inferInstance⟩
 
 lemma lift_snd : lift p q r ≫ (laxSnd (𝟙 Q) (𝟙 Q)).hom =
     ((laxSnd p q).hom ≫ LaxInclusion.fromD p q) ≫ r.hom := by
-  change lift p q r ≫ F2.laxPullbackSnd (𝟙 Q.obj) (𝟙 Q.obj) = _
-  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_snd, connectingArrow, Category.assoc,
+  change lift p q r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackSnd (𝟙 Q.obj) (𝟙 Q.obj) = _
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse_snd, connectingArrow, Category.assoc,
     CofiberRotation.inverseRotation_target, arrow, Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
+    _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.arrowMap_evaluation, ← Category.assoc, LaxCounit.arrow_source]
 
-lemma lift_arrow : lift p q r ≫ F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) =
+lemma lift_arrow : lift p q r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj) =
     connectingArrow p q r := by
-  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
+  rw [lift, Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Quasicategory.arrowLaxInverse_arrow, Category.comp_id]
 
-def differenceIso : FunctorIso (lift p q r ≫ laxDifference (𝟙 Q) (𝟙 Q)) r.hom := by
-  have e := CofiberFamily.precompositionIso (F2.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj))
+def differenceIso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (lift p q r ≫ laxDifference (𝟙 Q) (𝟙 Q)) r.hom := by
+  have e := CofiberFamily.precompositionIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.laxPullbackArrow (𝟙 Q.obj) (𝟙 Q.obj))
     (lift p q r)
   rw [lift_arrow] at e
   have h := CofiberRotation.inverseRotationFamilyCofiberIso Q.obj (arrow p q r)

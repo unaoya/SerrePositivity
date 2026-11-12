@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
 /-- ホーン重みへ戻すと、指定した BK パラメーターは元の collapse と円への商の合成。 -/

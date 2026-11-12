@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionEndpointSimplex
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceCompositionZeroCosliceEndpoint
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceCosliceEdgeComponent
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.WeightedConstantSimplex
 
 /-!
 概要：元の実 coslice 終点辺は元の指定精密化の反転を標準 Hom 比較へ送った辺。

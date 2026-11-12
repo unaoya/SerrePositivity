@@ -16,8 +16,8 @@ namespace SerrePositivity.KST.SConstruction
 /-- 元の削除零面の濃度座標に一を加えると、同じ元の厳密右フィルターの頂点数。 -/
 lemma simplexSubsetEraseNormalizedCoordinate_right_count {n : ℕ}
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-    (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-    (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (hmin : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+    (hmax : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     (simplexSubsetEraseNormalizedCoordinate I hI j hj hmin hmax).val + 1 =
       (I.filter (j < ·)).card := by
   have hc := simplexSubsetCoordinate_right_count I hI

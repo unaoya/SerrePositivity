@@ -23,14 +23,14 @@ open scoped Simplicial
 def suppliedMultiRelativeFlagsMap (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
     suppliedMultiRelativeFlags supply r ι f hf K ⟶
       suppliedMultiRelativeFlags supply r κ f hf K :=
-  fullSubcomplexLift _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _
     (multiRelativeFlagsInclusion r ι Y (multiWideStageData supply r ι f hf).subcomplex K ≫
       (ihom K).map (((multiSEndofunctor r).map α).app Y).val) (by
         intro v
-        obtain ⟨g, hg⟩ := fullSubcomplexOnVertices_vertex v
+        obtain ⟨g, hg⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
         refine ⟨g ≫ multiWideStageMap supply r α f hf, ?_⟩
         exact congrArg (fun q =>
           ((ihom K).map (((multiSEndofunctor r).map α).app Y).val).app
@@ -43,7 +43,7 @@ def suppliedMultiRelativeFlagsMap (supply : StableWideCofinalitySupply.{u})
 lemma suppliedMultiRelativeFlagsMap_inclusion (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (K : SSet.{u}) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (K : SSet.{u}) :
     suppliedMultiRelativeFlagsMap supply r α f hf K ≫
       multiRelativeFlagsInclusion r κ Y (multiWideStageData supply r κ f hf).subcomplex K =
     multiRelativeFlagsInclusion r ι Y (multiWideStageData supply r ι f hf).subcomplex K ≫
@@ -55,7 +55,7 @@ lemma suppliedMultiRelativeFlagsMap_inclusion (supply : StableWideCofinalitySupp
 使われ方：全方向の交換則と単体的な相対旗の組立。 -/
 def suppliedMultiRelativeFlagsPrecomp (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {L K : SSet.{u}} (i : L ⟶ K) :
     suppliedMultiRelativeFlags supply r ι f hf K ⟶
       suppliedMultiRelativeFlags supply r ι f hf L :=
@@ -68,7 +68,7 @@ def suppliedMultiRelativeFlagsPrecomp (supply : StableWideCofinalitySupply.{u})
 lemma suppliedMultiRelativeFlagsMap_precomp (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) {L K : SSet.{u}} (i : L ⟶ K) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) {L K : SSet.{u}} (i : L ⟶ K) :
     suppliedMultiRelativeFlagsMap supply r α f hf K ≫
       suppliedMultiRelativeFlagsPrecomp supply r κ f hf i =
     suppliedMultiRelativeFlagsPrecomp supply r ι f hf i ≫
@@ -86,7 +86,7 @@ lemma suppliedMultiRelativeFlagsMap_precomp (supply : StableWideCofinalitySupply
 使われ方：相対実現比較の全多単体的な入力。 -/
 def suppliedMultiRelativeFlagDiagram (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u}) where
   obj ι := multiRelativeFlagDiagram r ι Y (multiWideStageData supply r ι f hf).subcomplex
   map α := {
@@ -134,7 +134,7 @@ def suppliedMultiRelativeFlagDiagram (supply : StableWideCofinalitySupply.{u})
 lemma suppliedMultiRelativeFlagsMap_zero (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) {ι κ : Fin r → SimplexCategoryᵒᵖ} (α : ι ⟶ κ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     suppliedMultiRelativeFlagsMap supply r α f hf Δ[0] ≫
       (multiRelativeFlagZeroIso supply r κ f hf).hom =
     (multiRelativeFlagZeroIso supply r ι f hf).hom ≫

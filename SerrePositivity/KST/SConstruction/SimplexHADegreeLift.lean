@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の native HA 成分の全生成元値を持つ、元の Serre cube からの次数線形射。 -/
-def simplexHADegreeLift {n : ℕ} (s : DGNerve.SimplexData A D n) (m : ℕ)
+def simplexHADegreeLift {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b)
     (k : ℤ) : (serreCubeComplex A m).X k ⟶ (homObject A D (s.obj (v 0)) (s.obj b)).X k :=
   serreCubeDegreeLift A m k _ (fun i hi =>
@@ -24,7 +24,7 @@ def simplexHADegreeLift {n : ℕ} (s : DGNerve.SimplexData A D n) (m : ℕ)
       (simplexHAGeneratorValue A s m i v b hb))
 
 /-- 元の次数線形復元は、元の全 tensor 生成元に指定した同じ native HA 値を回収する。 -/
-lemma simplexHADegreeLift_generator {n : ℕ} (s : DGNerve.SimplexData A D n) (m : ℕ)
+lemma simplexHADegreeLift_generator {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b)
     (k : ℤ) (i : SerreCubeGeneratorIndex m) (hi : serreCubeGeneratorDegree m i = k) :
     simplexHADegreeLift A s m v b hb k

@@ -27,8 +27,8 @@ def pointedExtensionBaseIso {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B)
 lemma pointedExtensionBaseIso_projection {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B)
     {h h' : A ⟶ Z} (e : h = h') :
     (pointedExtensionBaseIso i e).hom ≫
-        pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h')) =
-      pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) := by
+        pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h')) =
+      pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right (SSet.yonedaEquiv.symm (familyVertex h)) := by
   cases e
   simp only [pointedExtensionBaseIso, eqToIso_refl, Iso.refl_hom, Category.id_comp]
 

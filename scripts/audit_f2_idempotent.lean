@@ -1,1632 +1,1632 @@
-import SerrePositivity.InfinityCategories.F2.Idempotent
-
-open SerrePositivity.InfinityCategories.F2.Idempotent
-
-#check @WalkingIdem
-#print axioms WalkingIdem
-#check @walkingIdemCategory
-#print axioms walkingIdemCategory
-#check @walkingObject
-#print axioms walkingObject
-#check @walkingIdempotent
-#print axioms walkingIdempotent
-#check @walkingIdempotent_idem
-#print axioms walkingIdempotent_idem
-#check @walkingIdempotent_ne_id
-#print axioms walkingIdempotent_ne_id
-#check @WalkingSplit
-#print axioms WalkingSplit
-#check @walkingInclusion
-#print axioms walkingInclusion
-#check @walkingSource
-#print axioms walkingSource
-#check @walkingImage
-#print axioms walkingImage
-#check @walkingSection
-#print axioms walkingSection
-#check @walkingRetraction
-#print axioms walkingRetraction
-#check @walkingSection_retraction
-#print axioms walkingSection_retraction
-#check @walkingRetraction_section
-#print axioms walkingRetraction_section
-#check @IdemShape
-#print axioms IdemShape
-#check @SplitShape
-#print axioms SplitShape
-#check @idemShape_quasicategory
-#print axioms idemShape_quasicategory
-#check @splitShape_quasicategory
-#print axioms splitShape_quasicategory
-#check @idemInclusion
-#print axioms idemInclusion
-#check @VertexRetraction
-#print axioms VertexRetraction
-#check @VertexRetraction.idempotent
-#print axioms VertexRetraction.idempotent
-#check @VertexRetraction.isoOfSameIdempotent
-#print axioms VertexRetraction.isoOfSameIdempotent
-#check @VertexRetraction.hom_unique
-#print axioms VertexRetraction.hom_unique
-#check @IsVertexRetractOf
-#print axioms IsVertexRetractOf
-#check @IsVertexRetractOf.refl
-#print axioms IsVertexRetractOf.refl
-#check @IsVertexRetractOf.trans
-#print axioms IsVertexRetractOf.trans
-#check @IsVertexRetractOf.of_iso
-#print axioms IsVertexRetractOf.of_iso
-#check @IsVertexRetractOf.map
-#print axioms IsVertexRetractOf.map
-#check @retractClosure
-#print axioms retractClosure
-#check @mem_retractClosure
-#print axioms mem_retractClosure
-#check @retractClosure_mono
-#print axioms retractClosure_mono
-#check @retractClosure_of_retract
-#print axioms retractClosure_of_retract
-#check @retractClosure_idempotent
-#print axioms retractClosure_idempotent
-#check @retractClosure_iff_of_iso
-#print axioms retractClosure_iff_of_iso
-#check @nerveHomotopyFunctor
-#print axioms nerveHomotopyFunctor
-#check @CoherentIdempotent
-#print axioms CoherentIdempotent
-#check @StrongSplitting
-#print axioms StrongSplitting
-#check @IsIdempotentComplete
-#print axioms IsIdempotentComplete
-#check @StrongSplitting.map
-#print axioms StrongSplitting.map
-#check @CoherentIdempotent.vertex
-#print axioms CoherentIdempotent.vertex
-#check @CoherentIdempotent.endomorphism
-#print axioms CoherentIdempotent.endomorphism
-#check @CoherentIdempotent.endomorphism_idem
-#print axioms CoherentIdempotent.endomorphism_idem
-#check @StrongSplitting.vertex
-#print axioms StrongSplitting.vertex
-#check @StrongSplitting.source_eq
-#print axioms StrongSplitting.source_eq
-#check @StrongSplitting.vertexRetraction
-#print axioms StrongSplitting.vertexRetraction
-#check @IsYonedaVertex
-#print axioms IsYonedaVertex
-#check @IsRetractPresheaf
-#print axioms IsRetractPresheaf
-#check @isRetractPresheaf_of_retract
-#print axioms isRetractPresheaf_of_retract
-#check @isRetractPresheaf_iff_of_iso
-#print axioms isRetractPresheaf_iff_of_iso
-#check @Idem
-#print axioms Idem
-#check @idem_quasicategory
-#print axioms idem_quasicategory
-#check @idemInclusionPresheaf
-#print axioms idemInclusionPresheaf
-#check @idemInclusionPresheaf_isFullyFaithful
-#print axioms idemInclusionPresheaf_isFullyFaithful
-#check @idemYoneda
-#print axioms idemYoneda
-#check @idemYoneda_inclusion
-#print axioms idemYoneda_inclusion
-#check @idemYoneda_isFullyFaithful
-#print axioms idemYoneda_isFullyFaithful
-#check @idemVertex_retract_yoneda
-#print axioms idemVertex_retract_yoneda
-#check @longEdgeCollapse
-#print axioms longEdgeCollapse
-#check @WeakShape
-#print axioms WeakShape
-#check @weakTriangle
-#print axioms weakTriangle
-#check @weakImagePoint
-#print axioms weakImagePoint
-#check @weakTriangle_longEdge
-#print axioms weakTriangle_longEdge
-#check @WeakRetractionDiagram
-#print axioms WeakRetractionDiagram
-#check @weakDesc
-#print axioms weakDesc
-#check @weakDesc_triangle
-#print axioms weakDesc_triangle
-#check @weakDesc_imagePoint
-#print axioms weakDesc_imagePoint
-#check @weakDiagram_ext
-#print axioms weakDiagram_ext
-#check @weakDiagramEquiv
-#print axioms weakDiagramEquiv
-#check @walkingRetractionTriangle
-#print axioms walkingRetractionTriangle
-#check @walkingRetractionTriangle_section
-#print axioms walkingRetractionTriangle_section
-#check @walkingRetractionTriangle_retraction
-#print axioms walkingRetractionTriangle_retraction
-#check @walkingRetractionTriangle_longEdge
-#print axioms walkingRetractionTriangle_longEdge
-#check @weakComparison
-#print axioms weakComparison
-#check @weakComparison_triangle
-#print axioms weakComparison_triangle
-#check @weakComparison_imagePoint
-#print axioms weakComparison_imagePoint
-#check @StrongSplitting.weakDiagram
-#print axioms StrongSplitting.weakDiagram
-#check @StrongSplitting.weakDiagram_triangle
-#print axioms StrongSplitting.weakDiagram_triangle
-#check @RetractionTriangle
-#print axioms RetractionTriangle
-#check @RetractionTriangle.vertexRetraction
-#print axioms RetractionTriangle.vertexRetraction
-#check @VertexRetraction.triangle_exists
-#print axioms VertexRetraction.triangle_exists
-#check @RetractionTriangle.diagram
-#print axioms RetractionTriangle.diagram
-#check @RetractionTriangle.diagram_longEdge
-#print axioms RetractionTriangle.diagram_longEdge
-#check @RetractionTriangle.weakDiagram
-#print axioms RetractionTriangle.weakDiagram
-#check @RetractionTriangle.weakDiagram_triangle
-#print axioms RetractionTriangle.weakDiagram_triangle
-#check @RetractionTriangle.weakDiagram_imagePoint
-#print axioms RetractionTriangle.weakDiagram_imagePoint
-#check @RetractionTriangle.weakDiagram_section
-#print axioms RetractionTriangle.weakDiagram_section
-#check @RetractionTriangle.weakDiagram_retraction
-#print axioms RetractionTriangle.weakDiagram_retraction
-#check @isVertexRetractOf_iff_retractionTriangle
-#print axioms isVertexRetractOf_iff_retractionTriangle
-#check @walkingSource_ne_image
-#print axioms walkingSource_ne_image
-#check @walkingRetractionTriangle_obj
-#print axioms walkingRetractionTriangle_obj
-#check @walkingRetractionTriangle_one_iff
-#print axioms walkingRetractionTriangle_one_iff
-#check @triangleSimplex_eq_of_one_fibers
-#print axioms triangleSimplex_eq_of_one_fibers
-#check @walkingRetractionTriangle_kernel
-#print axioms walkingRetractionTriangle_kernel
-#check @triangleSimplex_longEdge_factor
-#print axioms triangleSimplex_longEdge_factor
-#check @weakTriangle_eq_of_avoids_one
-#print axioms weakTriangle_eq_of_avoids_one
-#check @longEdgeCollapse_section
-#print axioms longEdgeCollapse_section
-#check @longEdgeCollapse_epi
-#print axioms longEdgeCollapse_epi
-#check @weakTriangle_epi
-#print axioms weakTriangle_epi
-#check @weakTriangle_app_surjective
-#print axioms weakTriangle_app_surjective
-#check @weakComparison_mono
-#print axioms weakComparison_mono
-#check @weakRetractionImage
-#print axioms weakRetractionImage
-#check @weakComparison_range
-#print axioms weakComparison_range
-#check @weakShapeImageIso
-#print axioms weakShapeImageIso
-#check @weakShapeImageIso_ι
-#print axioms weakShapeImageIso_ι
-#check @weakTriangle_imageIso
-#print axioms weakTriangle_imageIso
-#check @missingFaceComplex
-#print axioms missingFaceComplex
-#check @mem_missingFaceComplex
-#print axioms mem_missingFaceComplex
-#check @puncturedFace
-#print axioms puncturedFace
-#check @missingFaceStage
-#print axioms missingFaceStage
-#check @missingFaceComplex_le_stage
-#print axioms missingFaceComplex_le_stage
-#check @missingFaceStage_insert
-#print axioms missingFaceStage_insert
-#check @face_erase_le_complement
-#print axioms face_erase_le_complement
-#check @puncturedFace_le_face
-#print axioms puncturedFace_le_face
-#check @missingFaceComplex_complement
-#print axioms missingFaceComplex_complement
-#check @missingFaceStage_inf_face
-#print axioms missingFaceStage_inf_face
-#check @missingFaceStage_pushout
-#print axioms missingFaceStage_pushout
-#check @missingFaceCardFamily
-#print axioms missingFaceCardFamily
-#check @mem_missingFaceCardFamily
-#print axioms mem_missingFaceCardFamily
-#check @missingFaceCardStage_inf_face
-#print axioms missingFaceCardStage_inf_face
-#check @mem_puncturedFace
-#print axioms mem_puncturedFace
-#check @mem_horn_missing_vertex
-#print axioms mem_horn_missing_vertex
-#check @faceCoordinates
-#print axioms faceCoordinates
-#check @faceCoordinates_vertex
-#print axioms faceCoordinates_vertex
-#check @puncturedFace_coordinate_preimage
-#print axioms puncturedFace_coordinate_preimage
-#check @relativeFacePreimage_isIso
-#print axioms relativeFacePreimage_isIso
-#check @relativeFacePreimageArrowIso
-#print axioms relativeFacePreimageArrowIso
-#check @puncturedFace_innerAnodyne
-#print axioms puncturedFace_innerAnodyne
-#check @faceCoordinates_index_inner
-#print axioms faceCoordinates_index_inner
-#check @missingFaceStage_attach_innerAnodyne
-#print axioms missingFaceStage_attach_innerAnodyne
-#check @missingFaceStage_innerAnodyne
-#print axioms missingFaceStage_innerAnodyne
-#check @missingFaceComplex_innerAnodyne
-#print axioms missingFaceComplex_innerAnodyne
-#check @alternatingSourceVertices
-#print axioms alternatingSourceVertices
-#check @alternatingCellBoundary
-#print axioms alternatingCellBoundary
-#check @alternatingCellBoundary_innerAnodyne
-#print axioms alternatingCellBoundary_innerAnodyne
-#check @walkingAbsorber
-#print axioms walkingAbsorber
-#check @walkingAbsorber_mul
-#print axioms walkingAbsorber_mul
-#check @mul_walkingAbsorber
-#print axioms mul_walkingAbsorber
-#check @walkingScalar
-#print axioms walkingScalar
-#check @walkingAbsorbingHom
-#print axioms walkingAbsorbingHom
-#check @walkingAbsorbingHom_comp
-#print axioms walkingAbsorbingHom_comp
-#check @comp_walkingAbsorbingHom
-#print axioms comp_walkingAbsorbingHom
-#check @walkingAbsorbingHom_image
-#print axioms walkingAbsorbingHom_image
-#check @walkingAbsorbingHom_section
-#print axioms walkingAbsorbingHom_section
-#check @walkingAbsorbingHom_retraction
-#print axioms walkingAbsorbingHom_retraction
-#check @walkingAbsorbingHom_idempotent
-#print axioms walkingAbsorbingHom_idempotent
-#check @alternatingObject
-#print axioms alternatingObject
-#check @alternatingChainMap
-#print axioms alternatingChainMap
-#check @alternatingChainMap_self
-#print axioms alternatingChainMap_self
-#check @alternatingChainMap_comp
-#print axioms alternatingChainMap_comp
-#check @alternatingChain
-#print axioms alternatingChain
-#check @alternatingCell
-#print axioms alternatingCell
-#check @alternatingCell_obj
-#print axioms alternatingCell_obj
-#check @alternatingCell_source_iff
-#print axioms alternatingCell_source_iff
-#check @alternatingChainMap_castLE
-#print axioms alternatingChainMap_castLE
-#check @alternatingPrefix
-#print axioms alternatingPrefix
-#check @alternatingCell_prefix
-#print axioms alternatingCell_prefix
-#check @alternatingChain_two
-#print axioms alternatingChain_two
-#check @alternatingCell_one
-#print axioms alternatingCell_one
-#check @retractionStage
-#print axioms retractionStage
-#check @retractionStage_mono
-#print axioms retractionStage_mono
-#check @retractionStage_one
-#print axioms retractionStage_one
-#check @weakShapeStageOneIso
-#print axioms weakShapeStageOneIso
-#check @weakShapeStageOneIso_ι
-#print axioms weakShapeStageOneIso_ι
-#check @retractionStageMap
-#print axioms retractionStageMap
-#check @retractionStageMap_ι
-#print axioms retractionStageMap_ι
-#check @retractionStageCell
-#print axioms retractionStageCell
-#check @retractionStageCell_ι
-#print axioms retractionStageCell_ι
-#check @retractionStageCell_prefix
-#print axioms retractionStageCell_prefix
-#check @oddVertex_bounds
-#print axioms oddVertex_bounds
-#check @oddFaceCollapse
-#print axioms oddFaceCollapse
-#check @oddFaceInsert_val
-#print axioms oddFaceInsert_val
-#check @oddFaceCollapse_parity
-#print axioms oddFaceCollapse_parity
-#check @oddFaceCollapse_fiber
-#print axioms oddFaceCollapse_fiber
-#check @oddFaceCollapse_fiber_image
-#print axioms oddFaceCollapse_fiber_image
-#check @walkingAbsorbingHom_transport
-#print axioms walkingAbsorbingHom_transport
-#check @walkingAbsorbingHom_self_of_image
-#print axioms walkingAbsorbingHom_self_of_image
-#check @alternatingChainMap_absorbing_of_image
-#print axioms alternatingChainMap_absorbing_of_image
-#check @oddFaceCollapseMap
-#print axioms oddFaceCollapseMap
-#check @alternatingObject_oddFace
-#print axioms alternatingObject_oddFace
-#check @oddFaceChain
-#print axioms oddFaceChain
-#check @alternatingCell_oddFace
-#print axioms alternatingCell_oddFace
-#check @alternatingCell_oddFace_image_le
-#print axioms alternatingCell_oddFace_image_le
-#check @alternatingCellBoundary_image_le
-#print axioms alternatingCellBoundary_image_le
-#check @alternatingCellBoundary_le_preimage
-#print axioms alternatingCellBoundary_le_preimage
-#check @alternatingCellBoundaryLift
-#print axioms alternatingCellBoundaryLift
-#check @alternatingCellBoundaryLift_ι
-#print axioms alternatingCellBoundaryLift_ι
-#check @alternatingCellBoundaryLift_square
-#print axioms alternatingCellBoundaryLift_square
-#check @walkingAbsorber_ne_one
-#print axioms walkingAbsorber_ne_one
-#check @chainScalar
-#print axioms chainScalar
-#check @alternatingCell_scalar
-#print axioms alternatingCell_scalar
-#check @alternatingChainMap_scalar_ne
-#print axioms alternatingChainMap_scalar_ne
-#check @alternatingChainMap_scalar_source
-#print axioms alternatingChainMap_scalar_source
-#check @alternatingCell_equal_source_iff
-#print axioms alternatingCell_equal_source_iff
-#check @alternatingCell_equal_ordered_indices
-#print axioms alternatingCell_equal_ordered_indices
-#check @alternatingCell_equal_indices
-#print axioms alternatingCell_equal_indices
-#check @alternatingCell_odd_injection_exists
-#print axioms alternatingCell_odd_injection_exists
-#check @alternatingCell_odd_rank_le
-#print axioms alternatingCell_odd_rank_le
-#check @alternatingCell_preimage_le_boundary
-#print axioms alternatingCell_preimage_le_boundary
-#check @alternatingCell_stage_preimage
-#print axioms alternatingCell_stage_preimage
-
-#check @oddPositionSelection_strictMono
-#print axioms oddPositionSelection_strictMono
-
-#check @alternatingCell_odd_positions_fixed_exists
-#print axioms alternatingCell_odd_positions_fixed_exists
-
-#check @alternatingCell_equal_odd_of_fixed_positions
-#print axioms alternatingCell_equal_odd_of_fixed_positions
-
-#check @simplex_position_le_of_image_lt
-#print axioms simplex_position_le_of_image_lt
-
-#check @alternatingCell_eq_of_odd_hits
-#print axioms alternatingCell_eq_of_odd_hits
-
-#check @alternatingCell_odd_hits_of_not_boundary
-#print axioms alternatingCell_odd_hits_of_not_boundary
-
-#check @alternatingCell_kernel
-#print axioms alternatingCell_kernel
-
-#check @retractionStageMap_mono
-#print axioms retractionStageMap_mono
-
-#check @retractionStageCell_app_surjective
-#print axioms retractionStageCell_app_surjective
-
-#check @retractionStage_isPullback_app
-#print axioms retractionStage_isPullback_app
-
-#check @retractionStage_isPushout_app
-#print axioms retractionStage_isPushout_app
-
-#check @retractionStage_isPushout
-#print axioms retractionStage_isPushout
-
-#check @retractionStageMap_innerAnodyne
-#print axioms retractionStageMap_innerAnodyne
-
-#check @walkingObject_eq
-#print axioms walkingObject_eq
-
-#check @walkingScalar_cases
-#print axioms walkingScalar_cases
-
-#check @walkingSplit_object_cases
-#print axioms walkingSplit_object_cases
-
-#check @walkingSplit_source_iff
-#print axioms walkingSplit_source_iff
-
-#check @walkingHom_one_endpoints
-#print axioms walkingHom_one_endpoints
-
-#check @walkingHom_cases
-#print axioms walkingHom_cases
-
-#check @absorbingChainPosition
-#print axioms absorbingChainPosition
-
-#check @absorbingChainPosition_strictMono
-#print axioms absorbingChainPosition_strictMono
-
-#check @absorbingChainFaceMap
-#print axioms absorbingChainFaceMap
-
-#check @absorbingChainPosition_obj
-#print axioms absorbingChainPosition_obj
-
-#check @absorbingChainFace_eq
-#print axioms absorbingChainFace_eq
-
-#check @absorbingChain_mem_stage
-#print axioms absorbingChain_mem_stage
-
-#check @identityCollapse
-#print axioms identityCollapse
-
-#check @identityCollapse_succ
-#print axioms identityCollapse_succ
-
-#check @identityCollapse_of_ne
-#print axioms identityCollapse_of_ne
-
-#check @identityCollapse_le
-#print axioms identityCollapse_le
-
-#check @identityCollapseComparison
-#print axioms identityCollapseComparison
-
-#check @walkingScalar_eqToHom_source
-#print axioms walkingScalar_eqToHom_source
-
-#check @walkingHom_eqToHom_of_one
-#print axioms walkingHom_eqToHom_of_one
-
-#check @identityCollapse_obj_eq
-#print axioms identityCollapse_obj_eq
-
-#check @identityCollapseComparison_app
-#print axioms identityCollapseComparison_app
-
-#check @identityCollapse_chain_eq
-#print axioms identityCollapse_chain_eq
-
-#check @walkingChain_degenerate_of_one
-#print axioms walkingChain_degenerate_of_one
-
-#check @walkingChain_nondegenerate_absorbing
-#print axioms walkingChain_nondegenerate_absorbing
-
-#check @retractionStage_contains_simplex
-#print axioms retractionStage_contains_simplex
-
-#check @retractionStage_iSup_succ
-#print axioms retractionStage_iSup_succ
-
-#check @retractionStageFunctor
-#print axioms retractionStageFunctor
-
-#check @retractionStageCocone
-#print axioms retractionStageCocone
-
-#check @retractionStageCocone_isColimit
-#print axioms retractionStageCocone_isColimit
-
-#check @retractionStageOne_transfiniteComposition
-#print axioms retractionStageOne_transfiniteComposition
-
-#check @retractionStageOne_innerAnodyne
-#print axioms retractionStageOne_innerAnodyne
-
-#check @weakComparison_innerAnodyne
-#print axioms weakComparison_innerAnodyne
-
-#check @weakComparisonRestriction_trivialKanFibration
-#print axioms weakComparisonRestriction_trivialKanFibration
-
-#check @weakDiagramExtensionSpace
-#print axioms weakDiagramExtensionSpace
-
-#check @weakDiagramExtensionSpace_isContractibleKan
-#print axioms weakDiagramExtensionSpace_isContractibleKan
-
-#check @weakDiagram_extension_exists
-#print axioms weakDiagram_extension_exists
-
-#check @weakDiagram_strongSplitting_exists
-#print axioms weakDiagram_strongSplitting_exists
-
-#check @walkingCocone
-#print axioms walkingCocone
-
-#check @walkingCone
-#print axioms walkingCone
-
-#check @walkingCocone_leg
-#print axioms walkingCocone_leg
-
-#check @walkingCone_leg
-#print axioms walkingCone_leg
-
-#check @walkingCone_cocone
-#print axioms walkingCone_cocone
-
-#check @walkingCocone_cone
-#print axioms walkingCocone_cone
-
-#check @walkingJoinCocone
-#print axioms walkingJoinCocone
-
-#check @walkingJoinCone
-#print axioms walkingJoinCone
-
-#check @walkingJoinCocone_point
-#print axioms walkingJoinCocone_point
-
-#check @walkingJoinCone_vertex
-#print axioms walkingJoinCone_vertex
-
-#check @walkingJoinCocone_leg
-#print axioms walkingJoinCocone_leg
-
-#check @walkingJoinCone_leg
-#print axioms walkingJoinCone_leg
-
-#check @StrongSplitting.cocone
-#print axioms StrongSplitting.cocone
-
-#check @StrongSplitting.cone
-#print axioms StrongSplitting.cone
-
-#check @StrongSplitting.cocone_point
-#print axioms StrongSplitting.cocone_point
-
-#check @StrongSplitting.cocone_vertex
-#print axioms StrongSplitting.cocone_vertex
-
-#check @StrongSplitting.cone_vertex
-#print axioms StrongSplitting.cone_vertex
-
-#check @StrongSplitting.cocone_leg
-#print axioms StrongSplitting.cocone_leg
-
-#check @StrongSplitting.cone_leg
-#print axioms StrongSplitting.cone_leg
-
-#check @StrongSplitting.cocone_map
-#print axioms StrongSplitting.cocone_map
-
-#check @StrongSplitting.cone_map
-#print axioms StrongSplitting.cone_map
-
-#check @walkingIdemCocone
-#print axioms walkingIdemCocone
-
-#check @idemConeRetraction
-#print axioms idemConeRetraction
-
-#check @idemConeRetraction_inl
-#print axioms idemConeRetraction_inl
-
-#check @idemConeRetraction_inr
-#print axioms idemConeRetraction_inr
-
-#check @walkingIdemCocone_leg
-#print axioms walkingIdemCocone_leg
-
-#check @idemShapeContraction
-#print axioms idemShapeContraction
-
-#check @idemShape_isWeaklyContractible
-#print axioms idemShape_isWeaklyContractible
-
-#check @walkingHom_from_image
-#print axioms walkingHom_from_image
-
-#check @walkingHom_to_image
-#print axioms walkingHom_to_image
-
-#check @walkingImage_isInitial
-#print axioms walkingImage_isInitial
-
-#check @walkingImage_isTerminal
-#print axioms walkingImage_isTerminal
-
-#check @walkingImageCommaSection
-#print axioms walkingImageCommaSection
-
-#check @walkingImageCommaSection_obj
-#print axioms walkingImageCommaSection_obj
-
-#check @walkingImageComma_proj_section
-#print axioms walkingImageComma_proj_section
-
-#check @walkingImageCommaIso
-#print axioms walkingImageCommaIso
-
-#check @walkingSourceCommaPoint
-#print axioms walkingSourceCommaPoint
-
-#check @walkingSourceCommaArrow
-#print axioms walkingSourceCommaArrow
-
-#check @walkingSourceComma_isInitial
-#print axioms walkingSourceComma_isInitial
-
-#check @walkingSourceComma_isWeaklyContractible
-#print axioms walkingSourceComma_isWeaklyContractible
-
-#check @walkingImageComma_isWeaklyContractible
-#print axioms walkingImageComma_isWeaklyContractible
-
-#check @walkingComma_isWeaklyContractible
-#print axioms walkingComma_isWeaklyContractible
-
-#check @walkingCommaCosliceIso
-#print axioms walkingCommaCosliceIso
-
-#check @walkingCommaCosliceIso_projection
-#print axioms walkingCommaCosliceIso_projection
-
-#check @idemInclusion_coslice_isWeaklyContractible
-#print axioms idemInclusion_coslice_isWeaklyContractible
-
-#check @idemInclusion_isRightCofinal
-#print axioms idemInclusion_isRightCofinal
-
-#check @idemInclusion_mono
-#print axioms idemInclusion_mono
-
-#check @idemInclusion_rightAnodyne
-#print axioms idemInclusion_rightAnodyne
-
-#check @idemCoconeRestriction_trivialKanFibration
-#print axioms idemCoconeRestriction_trivialKanFibration
-
-#check @idemCocone_isColimit_iff_restrict
-#print axioms idemCocone_isColimit_iff_restrict
-
-#check @walkingFullCocone
-#print axioms walkingFullCocone
-
-#check @walkingFullJoinCocone
-#print axioms walkingFullJoinCocone
-
-#check @walkingFullJoinCocone_point
-#print axioms walkingFullJoinCocone_point
-
-#check @walkingFullJoinCocone_restrict
-#print axioms walkingFullJoinCocone_restrict
-
-#check @walkingFullJoinCocone_image_leg
-#print axioms walkingFullJoinCocone_image_leg
-
-#check @pointJoinNerve_hom_ext
-#print axioms pointJoinNerve_hom_ext
-
-#check @walkingFullJoinCocone_point_restrict
-#print axioms walkingFullJoinCocone_point_restrict
-
-#check @splittingDiagramCocone
-#print axioms splittingDiagramCocone
-
-#check @splittingDiagramCocone_point
-#print axioms splittingDiagramCocone_point
-
-#check @walkingImagePoint_rightAnodyne
-#print axioms walkingImagePoint_rightAnodyne
-
-#check @splittingDiagramCocone_isColimit
-#print axioms splittingDiagramCocone_isColimit
-
-#check @StrongSplitting.cocone_restrict
-#print axioms StrongSplitting.cocone_restrict
-
-#check @StrongSplitting.cocone_isColimit
-#print axioms StrongSplitting.cocone_isColimit
-
-#check @StrongSplitting.hasColimit
-#print axioms StrongSplitting.hasColimit
-
-#check @IsIdempotentComplete.hasColimit
-#print axioms IsIdempotentComplete.hasColimit
-
-#check @StrongSplitting.postcomposeCocone_isColimit
-#print axioms StrongSplitting.postcomposeCocone_isColimit
-
-#check @walkingImageLeftCommaSection
-#print axioms walkingImageLeftCommaSection
-
-#check @walkingImageLeftCommaSection_obj
-#print axioms walkingImageLeftCommaSection_obj
-
-#check @walkingImageLeftComma_proj_section
-#print axioms walkingImageLeftComma_proj_section
-
-#check @walkingImageLeftCommaIso
-#print axioms walkingImageLeftCommaIso
-
-#check @walkingSourceLeftCommaPoint
-#print axioms walkingSourceLeftCommaPoint
-
-#check @walkingSourceLeftCommaArrow
-#print axioms walkingSourceLeftCommaArrow
-
-#check @walkingSourceLeftComma_isTerminal
-#print axioms walkingSourceLeftComma_isTerminal
-
-#check @walkingSourceLeftComma_isWeaklyContractible
-#print axioms walkingSourceLeftComma_isWeaklyContractible
-
-#check @walkingImageLeftComma_isWeaklyContractible
-#print axioms walkingImageLeftComma_isWeaklyContractible
-
-#check @walkingLeftComma_isWeaklyContractible
-#print axioms walkingLeftComma_isWeaklyContractible
-
-#check @walkingLeftCommaSliceIso
-#print axioms walkingLeftCommaSliceIso
-
-#check @walkingLeftCommaSliceIso_projection
-#print axioms walkingLeftCommaSliceIso_projection
-
-#check @idemInclusion_slice_isWeaklyContractible
-#print axioms idemInclusion_slice_isWeaklyContractible
-
-#check @idemInclusion_isLeftCofinal
-#print axioms idemInclusion_isLeftCofinal
-
-#check @idemInclusion_leftAnodyne
-#print axioms idemInclusion_leftAnodyne
-
-#check @idemConeRestriction_trivialKanFibration
-#print axioms idemConeRestriction_trivialKanFibration
-
-#check @idemCone_isLimit_iff_restrict
-#print axioms idemCone_isLimit_iff_restrict
-
-#check @walkingFullCone
-#print axioms walkingFullCone
-
-#check @walkingFullJoinCone
-#print axioms walkingFullJoinCone
-
-#check @walkingFullJoinCone_point
-#print axioms walkingFullJoinCone_point
-
-#check @walkingFullJoinCone_restrict
-#print axioms walkingFullJoinCone_restrict
-
-#check @walkingFullJoinCone_image_leg
-#print axioms walkingFullJoinCone_image_leg
-
-#check @walkingFullJoinCone_point_restrict
-#print axioms walkingFullJoinCone_point_restrict
-
-#check @pointCone_isLimit_of_constant
-#print axioms pointCone_isLimit_of_constant
-
-#check @splittingDiagramCone
-#print axioms splittingDiagramCone
-
-#check @splittingDiagramCone_point
-#print axioms splittingDiagramCone_point
-
-#check @walkingImagePoint_leftAnodyne
-#print axioms walkingImagePoint_leftAnodyne
-
-#check @splittingDiagramCone_isLimit
-#print axioms splittingDiagramCone_isLimit
-
-#check @StrongSplitting.cone_restrict
-#print axioms StrongSplitting.cone_restrict
-
-#check @StrongSplitting.cone_isLimit
-#print axioms StrongSplitting.cone_isLimit
-
-#check @StrongSplitting.hasLimit
-#print axioms StrongSplitting.hasLimit
-
-#check @IsIdempotentComplete.hasLimit
-#print axioms IsIdempotentComplete.hasLimit
-
-#check @StrongSplitting.postcomposeCone_isLimit
-#print axioms StrongSplitting.postcomposeCone_isLimit
-
-#check @sourceChain
-#print axioms sourceChain
-
-#check @sourceChain_inclusion
-#print axioms sourceChain_inclusion
-
-#check @IsSourceVertex
-#print axioms IsSourceVertex
-
-#check @sourceSubcomplex
-#print axioms sourceSubcomplex
-
-#check @idemInclusion_source_vertex
-#print axioms idemInclusion_source_vertex
-
-#check @idemSourceLift
-#print axioms idemSourceLift
-
-#check @idemSourceLift_inclusion
-#print axioms idemSourceLift_inclusion
-
-#check @sourceSubcomplex_chain_vertex
-#print axioms sourceSubcomplex_chain_vertex
-
-#check @idemSourceLift_app_bijective
-#print axioms idemSourceLift_app_bijective
-
-#check @idemSourceLift_isIso
-#print axioms idemSourceLift_isIso
-
-#check @idemSourceIso
-#print axioms idemSourceIso
-
-#check @idemSourceIso_inclusion
-#print axioms idemSourceIso_inclusion
-
-#check @idemInclusion_innerFibration
-#print axioms idemInclusion_innerFibration
-
-#check @idemInclusion_isFullyFaithful
-#print axioms idemInclusion_isFullyFaithful
-
-#check @pointDiagram_hasColimit
-#print axioms pointDiagram_hasColimit
-
-#check @hasColimit_of_terminal_vertex
-#print axioms hasColimit_of_terminal_vertex
-
-#check @idemImageKanShapeIso
-#print axioms idemImageKanShapeIso
-
-#check @idemImageKanShapeIso_projection
-#print axioms idemImageKanShapeIso_projection
-
-#check @idemImageKanProjection_isIso
-#print axioms idemImageKanProjection_isIso
-
-#check @idemImageKanDiagram_hasColimit
-#print axioms idemImageKanDiagram_hasColimit
-
-#check @idemSourceKanDiagram_hasColimit
-#print axioms idemSourceKanDiagram_hasColimit
-
-#check @idemLocalDiagrams_hasColimit
-#print axioms idemLocalDiagrams_hasColimit
-
-#check @strongSplitting_exists_of_hasColimit
-#print axioms strongSplitting_exists_of_hasColimit
-
-#check @nonemptyStrongSplitting_iff_hasColimit
-#print axioms nonemptyStrongSplitting_iff_hasColimit
-
-#check @isIdempotentComplete_iff_hasColimits
-#print axioms isIdempotentComplete_iff_hasColimits
-
-#check @walkingScalar_mul_comm
-#print axioms walkingScalar_mul_comm
-
-#check @walkingScalar_reverse_triple
-#print axioms walkingScalar_reverse_triple
-
-#check @walkingIdemToOpposite
-#print axioms walkingIdemToOpposite
-
-#check @walkingIdemFromOpposite
-#print axioms walkingIdemFromOpposite
-
-#check @walkingIdemOppositeIso
-#print axioms walkingIdemOppositeIso
-
-#check @walkingReverseHom
-#print axioms walkingReverseHom
-
-#check @walkingReverseHom_comp
-#print axioms walkingReverseHom_comp
-
-#check @walkingSplitToOpposite
-#print axioms walkingSplitToOpposite
-
-#check @walkingSplitFromOpposite
-#print axioms walkingSplitFromOpposite
-
-#check @walkingSplitOppositeIso
-#print axioms walkingSplitOppositeIso
-
-#check @walkingInclusion_toOpposite
-#print axioms walkingInclusion_toOpposite
-
-#check @idemOppositeIso
-#print axioms idemOppositeIso
-
-#check @splitOppositeIso
-#print axioms splitOppositeIso
-
-#check @idemOppositeIso_inclusion
-#print axioms idemOppositeIso_inclusion
-
-#check @idemOppositeIso_inv_inclusion
-#print axioms idemOppositeIso_inv_inclusion
-
-#check @OppositeStrongSplitting
-#print axioms OppositeStrongSplitting
-
-#check @StrongSplitting.toOpposite
-#print axioms StrongSplitting.toOpposite
-
-#check @OppositeStrongSplitting.toStrong
-#print axioms OppositeStrongSplitting.toStrong
-
-#check @oppositeIdempotent
-#print axioms oppositeIdempotent
-
-#check @oppositeIdempotent_hasColimit_of_hasLimit
-#print axioms oppositeIdempotent_hasColimit_of_hasLimit
-
-#check @oppositeIdempotentSplittingToOriginal
-#print axioms oppositeIdempotentSplittingToOriginal
-
-#check @strongSplitting_exists_of_hasLimit
-#print axioms strongSplitting_exists_of_hasLimit
-
-#check @nonemptyStrongSplitting_iff_hasLimit
-#print axioms nonemptyStrongSplitting_iff_hasLimit
-
-#check @isIdempotentComplete_iff_hasLimits
-#print axioms isIdempotentComplete_iff_hasLimits
-
-#check @walkingImageCanonicalCocone_eq
-#print axioms walkingImageCanonicalCocone_eq
-
-#check @idemImageCanonicalCocone_eq
-#print axioms idemImageCanonicalCocone_eq
-
-#check @idemImageCanonicalCocone_postcomp
-#print axioms idemImageCanonicalCocone_postcomp
-
-#check @idemImageCanonicalCocone_isColimit
-#print axioms idemImageCanonicalCocone_isColimit
-
-#check @splittingCanonicalCocones_isColimit
-#print axioms splittingCanonicalCocones_isColimit
-
-#check @strongSplittingRestriction
-#print axioms strongSplittingRestriction
-
-#check @strongSplittingRestriction_innerFibration
-#print axioms strongSplittingRestriction_innerFibration
-
-#check @strongSplittingRestriction_isFullyFaithful
-#print axioms strongSplittingRestriction_isFullyFaithful
-
-#check @strongSplittingRestriction_trivialKanFibration_of_complete
-#print axioms strongSplittingRestriction_trivialKanFibration_of_complete
-
-#check @strongSplittingSpace
-#print axioms strongSplittingSpace
-
-#check @strongSplittingSpaceVertex
-#print axioms strongSplittingSpaceVertex
-
-#check @strongSplittingOfSpaceVertex
-#print axioms strongSplittingOfSpaceVertex
-
-#check @strongSplittingSpaceVertexEquiv
-#print axioms strongSplittingSpaceVertexEquiv
-
-#check @strongSplittingSpace_isContractibleKan
-#print axioms strongSplittingSpace_isContractibleKan
-
-#check @strongSplittingSpace_isContractibleKan_of_hasColimit
-#print axioms strongSplittingSpace_isContractibleKan_of_hasColimit
-
-#check @strongSplittingSpace_isContractibleKan_of_hasLimit
-#print axioms strongSplittingSpace_isContractibleKan_of_hasLimit
-
-#check @IsEffectiveIdempotentVertex
-#print axioms IsEffectiveIdempotentVertex
-
-#check @effectiveIdempotents
-#print axioms effectiveIdempotents
-
-#check @effectiveIdempotents_quasicategory
-#print axioms effectiveIdempotents_quasicategory
-
-#check @strongSplittingRestriction_effective_vertex
-#print axioms strongSplittingRestriction_effective_vertex
-
-#check @effectiveSplittingRestriction
-#print axioms effectiveSplittingRestriction
-
-#check @effectiveSplittingRestriction_inclusion
-#print axioms effectiveSplittingRestriction_inclusion
-
-#check @effectiveSplittingRestriction_hasLiftingProperty
-#print axioms effectiveSplittingRestriction_hasLiftingProperty
-
-#check @effectiveSplittingRestriction_innerFibration
-#print axioms effectiveSplittingRestriction_innerFibration
-
-#check @effectiveSplittingRestriction_isFullyFaithful
-#print axioms effectiveSplittingRestriction_isFullyFaithful
-
-#check @effectiveSplittingRestriction_surjective
-#print axioms effectiveSplittingRestriction_surjective
-
-#check @effectiveSplittingRestriction_trivialKanFibration
-#print axioms effectiveSplittingRestriction_trivialKanFibration
-
-#check @walkingScalarUniverse
-#print axioms walkingScalarUniverse
-
-#check @walkingScalarUniverse_inverse
-#print axioms walkingScalarUniverse_inverse
-
-#check @walkingIdemUniverseUp
-#print axioms walkingIdemUniverseUp
-
-#check @walkingIdemUniverseDown
-#print axioms walkingIdemUniverseDown
-
-#check @idemShapeUniverseIso
-#print axioms idemShapeUniverseIso
-
-#check @presheafIdempotent_hasColimit
-#print axioms presheafIdempotent_hasColimit
-
-#check @presheafIdempotent_strongSplitting
-#print axioms presheafIdempotent_strongSplitting
-
-#check @presheafInfinity_isIdempotentComplete
-#print axioms presheafInfinity_isIdempotentComplete
-
-#check @StrongSplitting.vertices_mem
-#print axioms StrongSplitting.vertices_mem
-
-#check @StrongSplitting.liftFullSubcomplex
-#print axioms StrongSplitting.liftFullSubcomplex
-
-#check @StrongSplitting.liftFullSubcomplex_inclusion
-#print axioms StrongSplitting.liftFullSubcomplex_inclusion
-
-#check @fullSubcomplex_isIdempotentComplete
-#print axioms fullSubcomplex_isIdempotentComplete
-
-#check @retractClosure_isIdempotentComplete
-#print axioms retractClosure_isIdempotentComplete
-
-#check @idem_isIdempotentComplete
-#print axioms idem_isIdempotentComplete
-
-#check @idemIdempotent_hasColimit
-#print axioms idemIdempotent_hasColimit
-
-#check @VertexRetraction.ofFullyFaithful
-#print axioms VertexRetraction.ofFullyFaithful
-
-#check @isVertexRetractOf_iff_map_of_fullyFaithful
-#print axioms isVertexRetractOf_iff_map_of_fullyFaithful
-
-#check @IsIdempotentCompletion
-#print axioms IsIdempotentCompletion
-
-#check @idemVertex_retract_idemYoneda
-#print axioms idemVertex_retract_idemYoneda
-
-#check @idemYoneda_isIdempotentCompletion
-#print axioms idemYoneda_isIdempotentCompletion
-
-#check @isIdempotentComplete_of_rightFibration
-#print axioms isIdempotentComplete_of_rightFibration
-
-#check @isIdempotentComplete_of_leftFibration
-#print axioms isIdempotentComplete_of_leftFibration
-
-#check @sliceOver_isIdempotentComplete
-#print axioms sliceOver_isIdempotentComplete
-
-#check @sliceUnder_isIdempotentComplete
-#print axioms sliceUnder_isIdempotentComplete
-
-#check @weakImagePoint_rightAnodyne
-#print axioms weakImagePoint_rightAnodyne
-
-#check @weakDiagram_lift_exists
-#print axioms weakDiagram_lift_exists
-
-#check @weakSourcePoint
-#print axioms weakSourcePoint
-
-#check @weakComparison_sourcePoint
-#print axioms weakComparison_sourcePoint
-
-#check @RetractionTriangle.weakDiagram_sourcePoint
-#print axioms RetractionTriangle.weakDiagram_sourcePoint
-
-#check @rightFibration_retract_lift
-#print axioms rightFibration_retract_lift
-
-#check @IsIdempotentCompletion.pullback_rightFibration
-#print axioms IsIdempotentCompletion.pullback_rightFibration
-
-#check @IsIdempotentCompletion.sliceOver
-#print axioms IsIdempotentCompletion.sliceOver
-
-#check @homotopy_exists_of_fullyFaithful
-#print axioms homotopy_exists_of_fullyFaithful
-
-#check @terminalRetract_contraction_exists
-#print axioms terminalRetract_contraction_exists
-
-#check @isWeaklyContractible_of_terminalRetract
-#print axioms isWeaklyContractible_of_terminalRetract
-
-#check @IsIdempotentCompletion.isWeaklyContractible_of_terminal
-#print axioms IsIdempotentCompletion.isWeaklyContractible_of_terminal
-
-#check @IsIdempotentCompletion.slice_isWeaklyContractible
-#print axioms IsIdempotentCompletion.slice_isWeaklyContractible
-
-#check @IsIdempotentCompletion.isLeftCofinal
-#print axioms IsIdempotentCompletion.isLeftCofinal
-
-#check @IsIdempotentComplete.op
-#print axioms IsIdempotentComplete.op
-
-#check @IsVertexRetractOf.op
-#print axioms IsVertexRetractOf.op
-
-#check @IsIdempotentCompletion.op
-#print axioms IsIdempotentCompletion.op
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Idempotent
+
+
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingIdem
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingIdem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingObject
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent_idem
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent_idem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent_ne_id
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdempotent_ne_id
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingSplit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WalkingSplit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingInclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSource
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSource
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSection_retraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSection_retraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetraction_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetraction_section
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IdemShape
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IdemShape
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplitShape
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.SplitShape
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShape_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShape_quasicategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splitShape_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splitShape_quasicategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.idempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.idempotent
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.isoOfSameIdempotent
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.hom_unique
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.hom_unique
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.refl
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.trans
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.trans
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.map
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.map
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.mem_retractClosure
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_mono
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_of_retract
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_idempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_idempotent
+#check @_root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_iff_of_iso
+#print axioms _root_.SerrePositivity.InfinityCategories.HTT.RetractsAndIdempotentCompletion.retractClosure_iff_of_iso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nerveHomotopyFunctor
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nerveHomotopyFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.map
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.map
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.endomorphism
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.endomorphism
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.endomorphism_idem
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CoherentIdempotent.endomorphism_idem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.source_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.source_eq
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsYonedaVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsYonedaVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsRetractPresheaf
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsRetractPresheaf
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_of_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_of_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_iff_of_iso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_iff_of_iso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.Idem
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_quasicategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusionPresheaf
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusionPresheaf
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusionPresheaf_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusionPresheaf_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemVertex_retract_yoneda
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemVertex_retract_yoneda
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakShape
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakShape
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakImagePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakImagePoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_longEdge
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_longEdge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakRetractionDiagram
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.WeakRetractionDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc_triangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc_triangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc_imagePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDesc_imagePoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_ext
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramEquiv
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramEquiv
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_section
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_retraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_retraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_longEdge
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_longEdge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_triangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_triangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_imagePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_imagePoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.weakDiagram
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.weakDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.weakDiagram_triangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.weakDiagram_triangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.triangle_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.triangle_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.diagram
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.diagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.diagram_longEdge
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.diagram_longEdge
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_triangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_triangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_imagePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_imagePoint
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_section
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_retraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_retraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isVertexRetractOf_iff_retractionTriangle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isVertexRetractOf_iff_retractionTriangle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSource_ne_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSource_ne_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_obj
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_one_iff
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_one_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.triangleSimplex_eq_of_one_fibers
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.triangleSimplex_eq_of_one_fibers
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_kernel
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingRetractionTriangle_kernel
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.triangleSimplex_longEdge_factor
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.triangleSimplex_longEdge_factor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_eq_of_avoids_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_eq_of_avoids_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse_section
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.longEdgeCollapse_epi
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_epi
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_app_surjective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_app_surjective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_mono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakRetractionImage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakRetractionImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_range
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_range
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeImageIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeImageIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeImageIso_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeImageIso_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_imageIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakTriangle_imageIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_missingFaceComplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_missingFaceComplex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_le_stage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_le_stage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_insert
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_insert
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.face_erase_le_complement
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.face_erase_le_complement
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_le_face
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_le_face
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_complement
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_complement
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_inf_face
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_inf_face
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_pushout
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_pushout
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceCardFamily
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceCardFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_missingFaceCardFamily
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_missingFaceCardFamily
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceCardStage_inf_face
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceCardStage_inf_face
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_puncturedFace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_puncturedFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_horn_missing_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mem_horn_missing_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_coordinate_preimage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_coordinate_preimage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeFacePreimage_isIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeFacePreimage_isIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeFacePreimageArrowIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeFacePreimageArrowIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.puncturedFace_innerAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates_index_inner
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.faceCoordinates_index_inner
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_attach_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_attach_innerAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceStage_innerAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.missingFaceComplex_innerAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingSourceVertices
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingSourceVertices
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_innerAnodyne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber_mul
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber_mul
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mul_walkingAbsorber
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mul_walkingAbsorber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.comp_walkingAbsorbingHom
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.comp_walkingAbsorbingHom
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_section
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_retraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_retraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_idempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_idempotent
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingObject
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingObject
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_self
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_self
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChain
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChain
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_obj
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_source_iff
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_source_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_castLE
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_castLE
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingPrefix
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingPrefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_prefix
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChain_two
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChain_two
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_mono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeStageOneIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeStageOneIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeStageOneIso_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakShapeStageOneIso_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_prefix
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_prefix
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddVertex_bounds
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddVertex_bounds
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceInsert_val
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceInsert_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_parity
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_parity
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_fiber
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_fiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_fiber_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapse_fiber_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_transport
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_transport
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_self_of_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorbingHom_self_of_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_absorbing_of_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_absorbing_of_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapseMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceCollapseMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingObject_oddFace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingObject_oddFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceChain
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddFaceChain
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_oddFace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_oddFace
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_oddFace_image_le
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_oddFace_image_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_image_le
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_image_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_le_preimage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundary_le_preimage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift_ι
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift_square
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCellBoundaryLift_square
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber_ne_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingAbsorber_ne_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.chainScalar
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.chainScalar
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_scalar
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_scalar
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_scalar_ne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_scalar_ne
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_scalar_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingChainMap_scalar_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_source_iff
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_source_iff
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_ordered_indices
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_ordered_indices
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_indices
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_indices
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_injection_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_injection_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_rank_le
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_rank_le
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_preimage_le_boundary
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_preimage_le_boundary
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_stage_preimage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_stage_preimage
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddPositionSelection_strictMono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oddPositionSelection_strictMono
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_positions_fixed_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_positions_fixed_exists
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_odd_of_fixed_positions
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_equal_odd_of_fixed_positions
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.simplex_position_le_of_image_lt
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.simplex_position_le_of_image_lt
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_eq_of_odd_hits
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_eq_of_odd_hits
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_hits_of_not_boundary
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_odd_hits_of_not_boundary
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_kernel
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.alternatingCell_kernel
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_mono
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_app_surjective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCell_app_surjective
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPullback_app
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPullback_app
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPushout_app
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPushout_app
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPushout
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_isPushout
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageMap_innerAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingObject_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingObject_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_cases
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_cases
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplit_object_cases
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplit_object_cases
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplit_source_iff
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplit_source_iff
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_one_endpoints
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_one_endpoints
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_cases
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_cases
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition_strictMono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition_strictMono
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainFaceMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainFaceMap
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainPosition_obj
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainFace_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChainFace_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChain_mem_stage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.absorbingChain_mem_stage
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_succ
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_of_ne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_of_ne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_le
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_le
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapseComparison
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapseComparison
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_eqToHom_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_eqToHom_source
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_eqToHom_of_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_eqToHom_of_one
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_obj_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_obj_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapseComparison_app
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapseComparison_app
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_chain_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.identityCollapse_chain_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingChain_degenerate_of_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingChain_degenerate_of_one
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingChain_nondegenerate_absorbing
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingChain_nondegenerate_absorbing
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_contains_simplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_contains_simplex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_iSup_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStage_iSup_succ
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageFunctor
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageFunctor
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageCocone_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageOne_transfiniteComposition
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageOne_transfiniteComposition
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageOne_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractionStageOne_innerAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_innerAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_innerAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparisonRestriction_trivialKanFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparisonRestriction_trivialKanFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramExtensionSpace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramExtensionSpace
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramExtensionSpace_isContractibleKan
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagramExtensionSpace_isContractibleKan
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_extension_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_extension_exists
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_strongSplitting_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_strongSplitting_exists
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone_cocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCone_cocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone_cone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCocone_cone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCocone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingJoinCone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_map
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_map
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction_inl
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction_inl
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction_inr
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRetraction_inr
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCocone_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemCocone_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShapeContraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShapeContraction
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShape_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShape_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_from_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_from_image
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_to_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingHom_to_image
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage_isInitial
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage_isInitial
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage_isTerminal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImage_isTerminal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaSection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaSection
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaSection_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaSection_obj
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageComma_proj_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageComma_proj_section
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCommaIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceCommaPoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceCommaPoint
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceCommaArrow
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceCommaArrow
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceComma_isInitial
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceComma_isInitial
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCommaCosliceIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCommaCosliceIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCommaCosliceIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingCommaCosliceIso_projection
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_coslice_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_coslice_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isRightCofinal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isRightCofinal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_mono
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_rightAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_rightAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCoconeRestriction_trivialKanFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCoconeRestriction_trivialKanFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCocone_isColimit_iff_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCocone_isColimit_iff_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_image_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_image_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointJoinNerve_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointJoinNerve_hom_ext
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_point_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCocone_point_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImagePoint_rightAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImagePoint_rightAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCocone_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cocone_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.postcomposeCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.postcomposeCocone_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaSection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaSection
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaSection_obj
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaSection_obj
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftComma_proj_section
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftComma_proj_section
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftCommaIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftCommaPoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftCommaPoint
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftCommaArrow
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftCommaArrow
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftComma_isTerminal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftComma_isTerminal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSourceLeftComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageLeftComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftComma_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftComma_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftCommaSliceIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftCommaSliceIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftCommaSliceIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingLeftCommaSliceIso_projection
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_slice_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_slice_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isLeftCofinal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isLeftCofinal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_leftAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_leftAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRestriction_trivialKanFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemConeRestriction_trivialKanFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCone_isLimit_iff_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemCone_isLimit_iff_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullCone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_image_leg
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_image_leg
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_point_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingFullJoinCone_point_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCone_isLimit_of_constant
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCone_isLimit_of_constant
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_point
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_point
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImagePoint_leftAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImagePoint_leftAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_isLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingDiagramCone_isLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_restrict
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_isLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.cone_isLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.postcomposeCone_isLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.postcomposeCone_isLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceChain
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceChain
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceChain_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceChain_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsSourceVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsSourceVertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceSubcomplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceSubcomplex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_source_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_source_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceSubcomplex_chain_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sourceSubcomplex_chain_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_app_bijective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_app_bijective
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_isIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceLift_isIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceIso_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceIso_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_innerFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_innerFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemInclusion_isFullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointDiagram_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointDiagram_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasColimit_of_terminal_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasColimit_of_terminal_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanShapeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanShapeIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanShapeIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanShapeIso_projection
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanProjection_isIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanProjection_isIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanDiagram_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageKanDiagram_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceKanDiagram_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSourceKanDiagram_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemLocalDiagrams_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemLocalDiagrams_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplitting_exists_of_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplitting_exists_of_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nonemptyStrongSplitting_iff_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nonemptyStrongSplitting_iff_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_hasColimits
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_hasColimits
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_mul_comm
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_mul_comm
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_reverse_triple
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalar_reverse_triple
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemToOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemToOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemFromOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemFromOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemOppositeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemOppositeIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingReverseHom
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingReverseHom
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingReverseHom_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingReverseHom_comp
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitToOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitToOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitFromOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitFromOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitOppositeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingSplitOppositeIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingInclusion_toOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingInclusion_toOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splitOppositeIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splitOppositeIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso_inv_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemOppositeIso_inv_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.OppositeStrongSplitting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.OppositeStrongSplitting
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.toOpposite
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.toOpposite
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.OppositeStrongSplitting.toStrong
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.OppositeStrongSplitting.toStrong
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotent
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotent
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotent_hasColimit_of_hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotent_hasColimit_of_hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotentSplittingToOriginal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.oppositeIdempotentSplittingToOriginal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplitting_exists_of_hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplitting_exists_of_hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nonemptyStrongSplitting_iff_hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.nonemptyStrongSplitting_iff_hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_hasLimits
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_hasLimits
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCanonicalCocone_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingImageCanonicalCocone_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_eq
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_postcomp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_postcomp
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemImageCanonicalCocone_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingCanonicalCocones_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.splittingCanonicalCocones_isColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_innerFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_innerFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_isFullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_trivialKanFibration_of_complete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_trivialKanFibration_of_complete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpaceVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpaceVertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingOfSpaceVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingOfSpaceVertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpaceVertexEquiv
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpaceVertexEquiv
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan_of_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan_of_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan_of_hasLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingSpace_isContractibleKan_of_hasLimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsEffectiveIdempotentVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsEffectiveIdempotentVertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveIdempotents
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveIdempotents
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveIdempotents_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveIdempotents_quasicategory
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_effective_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.strongSplittingRestriction_effective_vertex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_hasLiftingProperty
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_hasLiftingProperty
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_innerFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_innerFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_isFullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_surjective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_surjective
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_trivialKanFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.effectiveSplittingRestriction_trivialKanFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalarUniverse
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalarUniverse
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalarUniverse_inverse
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingScalarUniverse_inverse
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemUniverseUp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemUniverseUp
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemUniverseDown
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.walkingIdemUniverseDown
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShapeUniverseIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemShapeUniverseIso
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafIdempotent_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafIdempotent_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafIdempotent_strongSplitting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafIdempotent_strongSplitting
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafInfinity_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafInfinity_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertices_mem
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.vertices_mem
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.liftFullSubcomplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.liftFullSubcomplex
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.liftFullSubcomplex_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.StrongSplitting.liftFullSubcomplex_inclusion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSubcomplex_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSubcomplex_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractClosure_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retractClosure_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemIdempotent_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemIdempotent_hasColimit
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.ofFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.ofFullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isVertexRetractOf_iff_map_of_fullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isVertexRetractOf_iff_map_of_fullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemVertex_retract_idemYoneda
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemVertex_retract_idemYoneda
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isIdempotentCompletion
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_rightFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_rightFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_leftFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_leftFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceOver_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceOver_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceUnder_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceUnder_isIdempotentComplete
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakImagePoint_rightAnodyne
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakImagePoint_rightAnodyne
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_lift_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakDiagram_lift_exists
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakSourcePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakSourcePoint
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_sourcePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.weakComparison_sourcePoint
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_sourcePoint
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.RetractionTriangle.weakDiagram_sourcePoint
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.rightFibration_retract_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.rightFibration_retract_lift
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pullback_rightFibration
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.sliceOver
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.sliceOver
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.homotopy_exists_of_fullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.homotopy_exists_of_fullyFaithful
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.terminalRetract_contraction_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.terminalRetract_contraction_exists
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isWeaklyContractible_of_terminalRetract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isWeaklyContractible_of_terminalRetract
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isWeaklyContractible_of_terminal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isWeaklyContractible_of_terminal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.slice_isWeaklyContractible
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.slice_isWeaklyContractible
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isLeftCofinal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isLeftCofinal
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.op
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.op
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.op
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.op
+
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op
 
-#check @IsIdempotentCompletion.isRightCofinal
-#print axioms IsIdempotentCompletion.isRightCofinal
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isRightCofinal
 
-#check @sliceCanonicalCocone
-#print axioms sliceCanonicalCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone
 
-#check @sliceCanonicalCocone_identity_restrict
-#print axioms sliceCanonicalCocone_identity_restrict
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone_identity_restrict
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone_identity_restrict
 
-#check @sliceCanonicalCocone_isColimit
-#print axioms sliceCanonicalCocone_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.sliceCanonicalCocone_isColimit
 
-#check @leftKanCanonicalCocone_slice_restrict_val
-#print axioms leftKanCanonicalCocone_slice_restrict_val
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanCanonicalCocone_slice_restrict_val
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanCanonicalCocone_slice_restrict_val
 
-#check @IsIdempotentCompletion.canonicalCocones_isColimit
-#print axioms IsIdempotentCompletion.canonicalCocones_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.canonicalCocones_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.canonicalCocones_isColimit
 
-#check @IsIdempotentCompletion.pre_isFullyFaithful
-#print axioms IsIdempotentCompletion.pre_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isFullyFaithful
 
-#check @IsIdempotentCompletion.vertexImage
-#print axioms IsIdempotentCompletion.vertexImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.vertexImage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.vertexImage
 
-#check @IsIdempotentCompletion.pre_isFullyFaithful_general
-#print axioms IsIdempotentCompletion.pre_isFullyFaithful_general
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isFullyFaithful_general
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isFullyFaithful_general
 
-#check @idemYoneda_pre_isFullyFaithful
-#print axioms idemYoneda_pre_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_pre_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_pre_isFullyFaithful
 
-#check @IsIdempotentComplete.ulift
-#print axioms IsIdempotentComplete.ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.ulift
 
-#check @isIdempotentComplete_of_ulift
-#print axioms isIdempotentComplete_of_ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_of_ulift
 
-#check @isIdempotentComplete_iff_ulift
-#print axioms isIdempotentComplete_iff_ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_ulift
 
-#check @IsIdempotentComplete.of_equivalence
-#print axioms IsIdempotentComplete.of_equivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.of_equivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.of_equivalence
 
-#check @isIdempotentComplete_iff_of_equivalence
-#print axioms isIdempotentComplete_iff_of_equivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_of_equivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isIdempotentComplete_iff_of_equivalence
 
-#check @retract_iso_in_complete_fullSubcomplex
-#print axioms retract_iso_in_complete_fullSubcomplex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retract_iso_in_complete_fullSubcomplex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.retract_iso_in_complete_fullSubcomplex
 
-#check @IsIdempotentComplete.fullVertexImage
-#print axioms IsIdempotentComplete.fullVertexImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.fullVertexImage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.fullVertexImage
 
-#check @IsIdempotentComplete.retract_iso_in_image
-#print axioms IsIdempotentComplete.retract_iso_in_image
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.retract_iso_in_image
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete.retract_iso_in_image
 
-#check @yonedaRetract_iso_representable
-#print axioms yonedaRetract_iso_representable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.yonedaRetract_iso_representable
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.yonedaRetract_iso_representable
 
-#check @isRetractPresheaf_iff_representable_of_complete
-#print axioms isRetractPresheaf_iff_representable_of_complete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_iff_representable_of_complete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isRetractPresheaf_iff_representable_of_complete
 
-#check @idemYoneda_isEssentiallySurjective_of_complete
-#print axioms idemYoneda_isEssentiallySurjective_of_complete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isEssentiallySurjective_of_complete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isEssentiallySurjective_of_complete
 
-#check @idemYoneda_isQCatEquivalence_of_complete
-#print axioms idemYoneda_isQCatEquivalence_of_complete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isQCatEquivalence_of_complete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isQCatEquivalence_of_complete
 
-#check @idemYonedaEquivalenceOfComplete
-#print axioms idemYonedaEquivalenceOfComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYonedaEquivalenceOfComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYonedaEquivalenceOfComplete
 
-#check @fullEssentialImage
-#print axioms fullEssentialImage
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullEssentialImage
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullEssentialImage
 
-#check @fullEssentialImage_quasicategory
-#print axioms fullEssentialImage_quasicategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullEssentialImage_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullEssentialImage_quasicategory
 
-#check @essentialImageLift
-#print axioms essentialImageLift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift
 
-#check @essentialImageLift_inclusion
-#print axioms essentialImageLift_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_inclusion
 
-#check @essentialImageLift_isFullyFaithful
-#print axioms essentialImageLift_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isFullyFaithful
 
-#check @essentialImageLift_isEssentiallySurjective
-#print axioms essentialImageLift_isEssentiallySurjective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isEssentiallySurjective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isEssentiallySurjective
 
-#check @essentialImageLift_isQCatEquivalence
-#print axioms essentialImageLift_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isQCatEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageLift_isQCatEquivalence
 
-#check @essentialImageEquivalence
-#print axioms essentialImageEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.essentialImageEquivalence
 
-#check @exists_diagram_in_fullyFaithful_source
-#print axioms exists_diagram_in_fullyFaithful_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_in_fullyFaithful_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_in_fullyFaithful_source
 
-#check @exists_diagram_of_retract_presheaves
-#print axioms exists_diagram_of_retract_presheaves
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_of_retract_presheaves
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_diagram_of_retract_presheaves
 
-#check @idemUniverseConeShapeIso_inl
-#print axioms idemUniverseConeShapeIso_inl
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseConeShapeIso_inl
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseConeShapeIso_inl
 
-#check @idemUniverseConeShapeIso_inv_inl
-#print axioms idemUniverseConeShapeIso_inv_inl
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseConeShapeIso_inv_inl
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseConeShapeIso_inv_inl
 
-#check @idemUniverseSliceOverIso_projection
-#print axioms idemUniverseSliceOverIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseSliceOverIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUniverseSliceOverIso_projection
 
-#check @idemSliceOverRestrict_projection
-#print axioms idemSliceOverRestrict_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSliceOverRestrict_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSliceOverRestrict_projection
 
-#check @idemSliceOverEqIso_projection
-#print axioms idemSliceOverEqIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSliceOverEqIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemSliceOverEqIso_projection
 
-#check @pointSliceUniverseIso
-#print axioms pointSliceUniverseIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceUniverseIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceUniverseIso
 
-#check @pointSliceUniverseIso_projection
-#print axioms pointSliceUniverseIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceUniverseIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceUniverseIso_projection
 
-#check @leftKanShapeUniverseIso
-#print axioms leftKanShapeUniverseIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso
 
-#check @leftKanShapeUniverseIso_projection
-#print axioms leftKanShapeUniverseIso_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso_projection
 
-#check @leftKanShapeUniverseIso_slice
-#print axioms leftKanShapeUniverseIso_slice
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso_slice
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftKanShapeUniverseIso_slice
 
-#check @idemUliftMap_mono
-#print axioms idemUliftMap_mono
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUliftMap_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemUliftMap_mono
 
-#check @IsFullyFaithful.ulift
-#print axioms IsFullyFaithful.ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsFullyFaithful.ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsFullyFaithful.ulift
 
-#check @presheafLocalKanDiagram_hasColimit
-#print axioms presheafLocalKanDiagram_hasColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafLocalKanDiagram_hasColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafLocalKanDiagram_hasColimit
 
-#check @exists_presheafKan_strict_extension
-#print axioms exists_presheafKan_strict_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_presheafKan_strict_extension
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_presheafKan_strict_extension
 
-#check @IsVertexRetractOf.ulift
-#print axioms IsVertexRetractOf.ulift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.ulift
 
-#check @presheafCompletionExtension_values
-#print axioms presheafCompletionExtension_values
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafCompletionExtension_values
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.presheafCompletionExtension_values
 
-#check @exists_presheafCompletion_extension
-#print axioms exists_presheafCompletion_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_presheafCompletion_extension
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_presheafCompletion_extension
 
-#check @exists_extension_to_complete_of_full_inclusion
-#print axioms exists_extension_to_complete_of_full_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_extension_to_complete_of_full_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_extension_to_complete_of_full_inclusion
 
-#check @IsIdempotentCompletion.exists_extension
-#print axioms IsIdempotentCompletion.exists_extension
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.exists_extension
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.exists_extension
 
-#check @IsIdempotentCompletion.pre_isEssentiallySurjective
-#print axioms IsIdempotentCompletion.pre_isEssentiallySurjective
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isEssentiallySurjective
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isEssentiallySurjective
 
-#check @IsIdempotentCompletion.pre_isQCatEquivalence
-#print axioms IsIdempotentCompletion.pre_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.pre_isQCatEquivalence
 
-#check @idempotentCompletionUniversalEquivalence
-#print axioms idempotentCompletionUniversalEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idempotentCompletionUniversalEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idempotentCompletionUniversalEquivalence
 
-#check @idemYoneda_pre_isQCatEquivalence
-#print axioms idemYoneda_pre_isQCatEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_pre_isQCatEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_pre_isQCatEquivalence
 
-#check @idemYonedaUniversalEquivalence
-#print axioms idemYonedaUniversalEquivalence
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYonedaUniversalEquivalence
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYonedaUniversalEquivalence
 
-#check @IsIdempotentCompletion.equivalence_unique
-#print axioms IsIdempotentCompletion.equivalence_unique
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.equivalence_unique
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.equivalence_unique
 
-#check @VertexRetraction.pinchedHom_source_isContractibleKan
-#print axioms VertexRetraction.pinchedHom_source_isContractibleKan
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.pinchedHom_source_isContractibleKan
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.pinchedHom_source_isContractibleKan
 
-#check @VertexRetraction.pinchedHom_target_isContractibleKan
-#print axioms VertexRetraction.pinchedHom_target_isContractibleKan
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.pinchedHom_target_isContractibleKan
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.pinchedHom_target_isContractibleKan
 
-#check @IsIdempotentCompletion.map_isTerminalVertex
-#print axioms IsIdempotentCompletion.map_isTerminalVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isTerminalVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isTerminalVertex
 
-#check @isFullyFaithful_op_of_fullyFaithful
-#print axioms isFullyFaithful_op_of_fullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isFullyFaithful_op_of_fullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isFullyFaithful_op_of_fullyFaithful
 
-#check @IsIdempotentCompletion.op_general
-#print axioms IsIdempotentCompletion.op_general
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op_general
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.op_general
 
-#check @IsIdempotentCompletion.map_isInitialVertex
-#print axioms IsIdempotentCompletion.map_isInitialVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isInitialVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isInitialVertex
 
-#check @IsIdempotentCompletion.map_isZeroVertex
-#print axioms IsIdempotentCompletion.map_isZeroVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isZeroVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.map_isZeroVertex
 
-#check @IsIdempotentCompletion.hasZeroVertex
-#print axioms IsIdempotentCompletion.hasZeroVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasZeroVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasZeroVertex
 
-#check @idemYoneda_isZeroVertex
-#print axioms idemYoneda_isZeroVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isZeroVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isZeroVertex
 
-#check @idem_hasZeroVertex
-#print axioms idem_hasZeroVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_hasZeroVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_hasZeroVertex
 
-#check @fullSliceOver_lift
-#print axioms fullSliceOver_lift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSliceOver_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSliceOver_lift
 
-#check @fullSliceOver_isPullback
-#print axioms fullSliceOver_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSliceOver_isPullback
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.fullSliceOver_isPullback
 
-#check @mapJoinCone_isLimit_fullCompletion
-#print axioms mapJoinCone_isLimit_fullCompletion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mapJoinCone_isLimit_fullCompletion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.mapJoinCone_isLimit_fullCompletion
 
-#check @IsIdempotentCompletion.mapJoinCone_isLimit
-#print axioms IsIdempotentCompletion.mapJoinCone_isLimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.mapJoinCone_isLimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.mapJoinCone_isLimit
 
-#check @IsIdempotentCompletion.hasLimit_comp
-#print axioms IsIdempotentCompletion.hasLimit_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasLimit_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasLimit_comp
 
-#check @IsIdempotentCompletion.mapJoinCocone_isColimit
-#print axioms IsIdempotentCompletion.mapJoinCocone_isColimit
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.mapJoinCocone_isColimit
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.mapJoinCocone_isColimit
 
-#check @IsIdempotentCompletion.hasColimit_comp
-#print axioms IsIdempotentCompletion.hasColimit_comp
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasColimit_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.hasColimit_comp
 
-#check @IsIdempotentCompletion.preservesPullbackSquare
-#print axioms IsIdempotentCompletion.preservesPullbackSquare
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesPullbackSquare
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesPullbackSquare
 
-#check @IsIdempotentCompletion.preservesPushoutSquare
-#print axioms IsIdempotentCompletion.preservesPushoutSquare
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesPushoutSquare
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesPushoutSquare
 
-#check @IsIdempotentCompletion.isExactFunctor
-#print axioms IsIdempotentCompletion.isExactFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isExactFunctor
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isExactFunctor
 
-#check @IsIdempotentCompletion.preservesFiber
-#print axioms IsIdempotentCompletion.preservesFiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesFiber
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.preservesFiber
 
-#check @idemYoneda_isExactFunctor
-#print axioms idemYoneda_isExactFunctor
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isExactFunctor
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idemYoneda_isExactFunctor
 
-#check @cartesian_weakDiagram_lift_exists
-#print axioms cartesian_weakDiagram_lift_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cartesian_weakDiagram_lift_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cartesian_weakDiagram_lift_exists
 
-#check @leftFibration_retract_lift
-#print axioms leftFibration_retract_lift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftFibration_retract_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.leftFibration_retract_lift
 
-#check @pointSliceArrowMap
-#print axioms pointSliceArrowMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap
 
-#check @pointSliceArrowMap_vertex
-#print axioms pointSliceArrowMap_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap_vertex
 
-#check @pointCosliceArrowMap
-#print axioms pointCosliceArrowMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap
 
-#check @pointCosliceArrowMap_vertex
-#print axioms pointCosliceArrowMap_vertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap_vertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap_vertex
 
-#check @pointSliceArrow_source
-#print axioms pointSliceArrow_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrow_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrow_source
 
-#check @pointSliceArrow_target
-#print axioms pointSliceArrow_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrow_target
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrow_target
 
-#check @pointCosliceArrow_source
-#print axioms pointCosliceArrow_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrow_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrow_source
 
-#check @pointCosliceArrow_target
-#print axioms pointCosliceArrow_target
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrow_target
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrow_target
 
-#check @arrowPointCone
-#print axioms arrowPointCone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrowPointCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrowPointCone
 
-#check @arrowPointCocone
-#print axioms arrowPointCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrowPointCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrowPointCocone
 
-#check @pointSliceArrowMap_arrowPointCone
-#print axioms pointSliceArrowMap_arrowPointCone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap_arrowPointCone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointSliceArrowMap_arrowPointCone
 
-#check @pointCosliceArrowMap_arrowPointCocone
-#print axioms pointCosliceArrowMap_arrowPointCocone
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap_arrowPointCocone
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pointCosliceArrowMap_arrowPointCocone
 
-#check @arrow_source_retract_lift
-#print axioms arrow_source_retract_lift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_source_retract_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_source_retract_lift
 
-#check @arrow_target_retract_lift
-#print axioms arrow_target_retract_lift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_target_retract_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_target_retract_lift
 
-#check @arrow_retract_lift
-#print axioms arrow_retract_lift
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_retract_lift
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.arrow_retract_lift
 
-#check @IsIdempotentCompletion.arrow_retract
-#print axioms IsIdempotentCompletion.arrow_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow_retract
 
-#check @functor_isIdempotentComplete
-#print axioms functor_isIdempotentComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.functor_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.functor_isIdempotentComplete
 
-#check @IsIdempotentCompletion.arrow
-#print axioms IsIdempotentCompletion.arrow
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow
 
-#check @VertexRetraction.strongSplitting_exists
-#print axioms VertexRetraction.strongSplitting_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.strongSplitting_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.strongSplitting_exists
 
-#check @IsIdempotentCompletion.arrow_strongSplitting
-#print axioms IsIdempotentCompletion.arrow_strongSplitting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow_strongSplitting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.arrow_strongSplitting
 
-#check @isQCatEquivalence_of_retractSquares
-#print axioms isQCatEquivalence_of_retractSquares
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isQCatEquivalence_of_retractSquares
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isQCatEquivalence_of_retractSquares
 
-#check @intervalFunctorMap_precomposeHoIso
-#print axioms intervalFunctorMap_precomposeHoIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.intervalFunctorMap_precomposeHoIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.intervalFunctorMap_precomposeHoIso
 
-#check @pinchedHomMap_equivalence_iff_intervalFunctorMap
-#print axioms pinchedHomMap_equivalence_iff_intervalFunctorMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pinchedHomMap_equivalence_iff_intervalFunctorMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.pinchedHomMap_equivalence_iff_intervalFunctorMap
 
-#check @VertexRetraction.intervalPrecompose_retractIso
-#print axioms VertexRetraction.intervalPrecompose_retractIso
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.intervalPrecompose_retractIso
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.VertexRetraction.intervalPrecompose_retractIso
 
-#check @relativeInitial_of_vertexRetraction
-#print axioms relativeInitial_of_vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeInitial_of_vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeInitial_of_vertexRetraction
 
-#check @initialBoundaryLifting_of_vertexRetraction
-#print axioms initialBoundaryLifting_of_vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.initialBoundaryLifting_of_vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.initialBoundaryLifting_of_vertexRetraction
 
-#check @relativeInitialVertices_isIdempotentComplete
-#print axioms relativeInitialVertices_isIdempotentComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeInitialVertices_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.relativeInitialVertices_isIdempotentComplete
 
-#check @colimitCocones_isIdempotentComplete
-#print axioms colimitCocones_isIdempotentComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.colimitCocones_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.colimitCocones_isIdempotentComplete
 
-#check @hasColimit_of_diagram_retract
-#print axioms hasColimit_of_diagram_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasColimit_of_diagram_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasColimit_of_diagram_retract
 
-#check @isTerminalVertex_of_vertexRetraction
-#print axioms isTerminalVertex_of_vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isTerminalVertex_of_vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isTerminalVertex_of_vertexRetraction
 
-#check @isInitialVertex_of_vertexRetraction
-#print axioms isInitialVertex_of_vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isInitialVertex_of_vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isInitialVertex_of_vertexRetraction
 
-#check @isZeroVertex_of_vertexRetraction
-#print axioms isZeroVertex_of_vertexRetraction
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isZeroVertex_of_vertexRetraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isZeroVertex_of_vertexRetraction
 
-#check @isPushoutSquare_of_diagram_retract
-#print axioms isPushoutSquare_of_diagram_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isPushoutSquare_of_diagram_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isPushoutSquare_of_diagram_retract
 
-#check @diagram_retract_op
-#print axioms diagram_retract_op
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.diagram_retract_op
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.diagram_retract_op
 
-#check @hasLimit_of_diagram_retract
-#print axioms hasLimit_of_diagram_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasLimit_of_diagram_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.hasLimit_of_diagram_retract
 
-#check @isPullbackSquare_of_diagram_retract
-#print axioms isPullbackSquare_of_diagram_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isPullbackSquare_of_diagram_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isPullbackSquare_of_diagram_retract
 
-#check @IsBicartesianZeroVertex
-#print axioms IsBicartesianZeroVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsBicartesianZeroVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsBicartesianZeroVertex
 
-#check @isBicartesianZeroVertex_functorVertex
-#print axioms isBicartesianZeroVertex_functorVertex
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isBicartesianZeroVertex_functorVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isBicartesianZeroVertex_functorVertex
 
-#check @isBicartesianZeroVertex_of_retract
-#print axioms isBicartesianZeroVertex_of_retract
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isBicartesianZeroVertex_of_retract
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.isBicartesianZeroVertex_of_retract
 
-#check @bicartesianZeroSquares
-#print axioms bicartesianZeroSquares
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares
 
-#check @bicartesianZeroSquares_quasicategory
-#print axioms bicartesianZeroSquares_quasicategory
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares_quasicategory
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares_quasicategory
 
-#check @bicartesianZeroSquares_isIdempotentComplete
-#print axioms bicartesianZeroSquares_isIdempotentComplete
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares_isIdempotentComplete
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroSquares_isIdempotentComplete
 
-#check @bicartesianZeroBottomProjection
-#print axioms bicartesianZeroBottomProjection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection
 
-#check @bicartesianZeroLeftArrow
-#print axioms bicartesianZeroLeftArrow
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow
 
-#check @bicartesianZeroLeftArrow_inclusion
-#print axioms bicartesianZeroLeftArrow_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow_inclusion
 
-#check @bicartesianZeroLeftArrow_source
-#print axioms bicartesianZeroLeftArrow_source
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow_source
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroLeftArrow_source
 
-#check @bicartesianZeroCoconeMap
-#print axioms bicartesianZeroCoconeMap
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap
 
-#check @bicartesianZeroCoconeMap_inclusion
-#print axioms bicartesianZeroCoconeMap_inclusion
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap_inclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap_inclusion
 
-#check @bicartesianZeroCoconeMap_projection
-#print axioms bicartesianZeroCoconeMap_projection
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap_projection
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroCoconeMap_projection
 
-#check @bicartesianZeroBottomProjection_hasLiftingProperty_boundary
-#print axioms bicartesianZeroBottomProjection_hasLiftingProperty_boundary
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_hasLiftingProperty_boundary
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_hasLiftingProperty_boundary
 
-#check @bicartesianZeroBottomProjection_isFullyFaithful
-#print axioms bicartesianZeroBottomProjection_isFullyFaithful
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_isFullyFaithful
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_isFullyFaithful
 
-#check @bicartesianZeroBottomProjection_kanEquivalenceLifting
-#print axioms bicartesianZeroBottomProjection_kanEquivalenceLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_kanEquivalenceLifting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.bicartesianZeroBottomProjection_kanEquivalenceLifting
 
-#check @exists_strict_vertex_preimage_of_targetLifting
-#print axioms exists_strict_vertex_preimage_of_targetLifting
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_strict_vertex_preimage_of_targetLifting
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.exists_strict_vertex_preimage_of_targetLifting
 
-#check @IsIdempotentCompletion.bicartesian_cofiber_exists
-#print axioms IsIdempotentCompletion.bicartesian_cofiber_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.bicartesian_cofiber_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.bicartesian_cofiber_exists
 
-#check @cofiberOpToFiber
-#print axioms cofiberOpToFiber
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cofiberOpToFiber
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cofiberOpToFiber
 
-#check @cofiberOpToFiber_isPushout
-#print axioms cofiberOpToFiber_isPushout
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cofiberOpToFiber_isPushout
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.cofiberOpToFiber_isPushout
 
-#check @IsIdempotentCompletion.bicartesian_fiber_exists
-#print axioms IsIdempotentCompletion.bicartesian_fiber_exists
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.bicartesian_fiber_exists
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.bicartesian_fiber_exists
 
-#check @fiberSquareULift
-#print axioms fiberSquareULift
+#check @_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.fiberSquareULift
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.fiberSquareULift
 
-#check @cofiberSquareULift
-#print axioms cofiberSquareULift
+#check @_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.cofiberSquareULift
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.cofiberSquareULift
 
-#check @isStable_ulift
-#print axioms isStable_ulift
+#check @_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.isStable_ulift
+#print axioms _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Idempotent.isStable_ulift
 
-#check @IsIdempotentCompletion.isStable
-#print axioms IsIdempotentCompletion.isStable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isStable
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion.isStable
 
-#check @idem_isStable
-#print axioms idem_isStable
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_isStable
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.idem_isStable

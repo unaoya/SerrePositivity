@@ -30,7 +30,7 @@ instance pointedOfVertex_kanComplex (X : SSet.{u}) [KanComplex X] (x : X _⦋0�
 規約：任意の単体集合。使われ方：辺の端点と点つき評価の照合。 -/
 lemma pathEvaluation_eq_evaluateFunctorAt (X : SSet.{u}) (t : Fin 2) :
     Spectra.KanPath.evaluation X t =
-      evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm t) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (stdSimplex.obj₀Equiv.symm t) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -41,7 +41,7 @@ lemma pathEvaluation_eq_evaluateFunctorAt (X : SSet.{u}) (t : Fin 2) :
 方針：関手頂点で点つき単体集合を作る。
 規約：端点の基点が異なることを許す。使われ方：基点変更の共通比較対象。 -/
 def pointedPathAt {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) : PointedSimplicialSet.{u} :=
-  PointedSimplicialSet.ofVertex (Spectra.KanPath.object X) (functorVertex p)
+  PointedSimplicialSet.ofVertex (Spectra.KanPath.object X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p)
 
 /-- 概要：自由 path の点つき端点評価。
 方針：基点の path を評価すると指定された端点になることを使う。
@@ -52,11 +52,11 @@ def pointedPathEndpoint {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2
   Under.homMk (Spectra.KanPath.evaluation X t) (by
     apply (SSet.unitHomEquiv _).injective
     change (Spectra.KanPath.evaluation X t).app (Opposite.op ⦋0⦌)
-      (SSet.unitHomEquiv _ ((SSet.unitHomEquiv _).symm (functorVertex p))) =
+      (SSet.unitHomEquiv _ ((SSet.unitHomEquiv _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p))) =
         SSet.unitHomEquiv _ ((SSet.unitHomEquiv _).symm
           (p.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm t)))
     rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply,
-      pathEvaluation_eq_evaluateFunctorAt, evaluateFunctorAt_functorVertex])
+      pathEvaluation_eq_evaluateFunctorAt, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex])
 
 /-- 概要：Kan 標的の点つき path 対象は Kan。
 方針：L9 の自由 path の Kan 性を使う。
@@ -76,8 +76,8 @@ lemma pointedPathEndpoint_rlp {X : SSet.{u}} [KanComplex X]
 方針：円を始域とする点つき内部 Hom の後合成を使う。
 規約：同じ共通比較対象から両端へ向かう。使われ方：基点変更の zigzag。 -/
 def loopPathEndpoint {X : SSet.{u}} (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedPathAt p) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSimplicialSet.ofVertex X
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedPathAt p) ⟶
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSimplicialSet.ofVertex X
         (p.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm t))) :=
   PointedObject.basedHomMap (C := SSet.{u}) PointedSimplicialSet.circle.{u}
     (Y := pointedPathAt p)
@@ -97,8 +97,8 @@ lemma loopPathEndpoint_rlp {X : SSet.{u}} [KanComplex X]
 規約：π₀ も含む。使われ方：零対象の選択によらない K 空間の比較。 -/
 lemma loopPathEndpoint_piIsomorphism {X : SSet.{u}} [KanComplex X]
     (p : (Δ[1] : SSet.{u}) ⟶ X) (t : Fin 2) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (loopPathEndpoint p t).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (loopPathEndpoint_rlp p t)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (loopPathEndpoint p t).right :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (loopPathEndpoint_rlp p t)
 
 /-- 概要：一つの辺で結ばれた二基点の loop 空間は共通の Kan 空間から π_* 同型で比較できる。
 方針：辺を path 空間の基点とし、二つの端点評価を loop に移す。
@@ -106,9 +106,9 @@ lemma loopPathEndpoint_piIsomorphism {X : SSet.{u}} [KanComplex X]
 lemma exists_loopBasepointComparison {X : SSet.{u}} [KanComplex X]
     {x y : X _⦋0⦌} (e : SSet.Edge x y) :
     ∃ P : Spectra.PointedKanComplex.{u},
-      ∃ (f : P.space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSimplicialSet.ofVertex X x))
-        (g : P.space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedSimplicialSet.ofVertex X y)),
-        _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right := by
+      ∃ (f : P.space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSimplicialSet.ofVertex X x))
+        (g : P.space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedSimplicialSet.ofVertex X y)),
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g.right := by
   let p : (Δ[1] : SSet.{u}) ⟶ X := SSet.yonedaEquiv.symm e.edge
   have hp0 : p.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) = x := by
     have hv : (stdSimplex.obj₀Equiv.symm (0 : Fin 2) : (Δ[1] : SSet.{u}) _⦋0⦌) =
@@ -123,7 +123,7 @@ lemma exists_loopBasepointComparison {X : SSet.{u}} [KanComplex X]
     rw [hv, SSet.yonedaEquiv_symm_app_objEquiv_symm]
     exact e.tgt_eq
   rw [← hp0, ← hp1]
-  exact ⟨⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedPathAt p), inferInstance⟩,
+  exact ⟨⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (pointedPathAt p), inferInstance⟩,
     loopPathEndpoint p 0, loopPathEndpoint p 1,
     loopPathEndpoint_piIsomorphism p 0, loopPathEndpoint_piIsomorphism p 1⟩
 
@@ -134,9 +134,9 @@ lemma exists_loopBasepointComparison {X : SSet.{u}} [KanComplex X]
 lemma kanComparison_congr_left {A A' B : PointedSimplicialSet.{u}}
     [KanComplex A.right] [KanComplex A'.right] [KanComplex B.right] (h : A = A')
     (hc : ∃ P : Spectra.PointedKanComplex.{u}, ∃ (f : P.space ⟶ A) (g : P.space ⟶ B),
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right) :
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g.right) :
     ∃ P : Spectra.PointedKanComplex.{u}, ∃ (f : P.space ⟶ A') (g : P.space ⟶ B),
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism g.right := by
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.right ∧ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism g.right := by
   subst A'
   exact hc
 

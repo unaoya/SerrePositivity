@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 /-- 元の全 tensor 生成元を、同じ端点・自由次元の部分集合 bead 連結語へ読む。 -/
 def simplexHAGeneratorWord {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
     (v : Fin (m + 1) ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n (v 0) b (serreCubeGeneratorFreeDimension m i) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n (v 0) b (serreCubeGeneratorFreeDimension m i) := by
   have hbs : ∀ t ∈ ({b} : Finset (Fin (n + 1))), v (Fin.last m) < t := by
     intro t ht
     simpa only [Finset.mem_singleton.mp ht] using hb
@@ -27,7 +27,7 @@ def simplexHAGeneratorWord {n : ℕ} (m : ℕ) (i : SerreCubeGeneratorIndex m)
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全 tensor 生成元に割り当てる、元の端点と生成元次数を持つ native HA 値。 -/
-def simplexHAGeneratorValue {n : ℕ} (s : DGNerve.SimplexData A D n)
+def simplexHAGeneratorValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (i : SerreCubeGeneratorIndex m) (v : Fin (m + 1) ↪o Fin (n + 1))
     (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     GradedHom A (s.obj (v 0)) (s.obj b) (serreCubeGeneratorDegree m i) :=
@@ -42,7 +42,7 @@ lemma simplexHAGeneratorValue_recovery {n : ℕ}
     (b : Fin (n + 1)) (hb : v (Fin.last m) < b) :
     simplexHAGeneratorValue A (cubicalLambdaNativeSimplexData A F) m i v b hb =
       eqToHom (congrArg (fun k => (homObject A D
-        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X k)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0))) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X k)
         (serreCubeGeneratorDegree_freeDimension m i).symm)
         ((simplexHABeadWordCell A (simplexHAGeneratorWord m i v b hb) ≫ F.map _ _).f
           (-(serreCubeGeneratorFreeDimension m i : ℤ))

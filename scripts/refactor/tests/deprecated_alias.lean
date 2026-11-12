@@ -1,5 +1,5 @@
 module
-public meta import SerrePositivity.InfinityCategories.Simplicial.DeprecatedAlias
+public meta import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DeprecatedAlias
 public meta import Lean.Compiler.LCNF.PhaseExt
 public import Mathlib.Tactic
 @[expose] public section

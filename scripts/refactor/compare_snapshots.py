@@ -3,20 +3,25 @@
 規約：増減・型・本体・公理・属性をすべて判定する。使われ方：before after --name-map map.json。
 """
 import argparse
+from collections import ChainMap
 import hashlib
 import json
 import re
 from pathlib import Path
 import sys
+from layer_check import code_only
 from lean_source import transient_names, parse_source, declaration_owner, Unsupported
 from snapshot_identity import notation_auxiliary
 
 
 def rename(name, mapping):
-    for old in sorted(mapping, key=len, reverse=True):
-        if name == old or name.startswith(old + '.'):
-            return mapping[old] + name[len(old):]
-    return name
+    prefix = name
+    while True:
+        if prefix in mapping:
+            return mapping[prefix] + name[len(prefix):]
+        prefix, separator, _ = prefix.rpartition('.')
+        if not separator:
+            return name
 
 
 
@@ -60,16 +65,32 @@ def expression_value(row, field, mapping, use_hash):
     return value
 
 
+def declaration_source(source):
+    """Project resolution exports and alias declarations onto the source parser's syntax."""
+    qual = r"\w[\w'.]*"
+    command = re.compile(rf"(?m)^with_weak_namespace _root_\.{qual} export _root_\.{qual} \(\w[\w']*\)[ \t]*$")
+    alias = re.compile(r"(?m)^(?:(?:noncomputable|unsafe|meta|private|public|protected)[ \t]+)*"
+                       r"(deprecated_alias)(?=[ \t]+\S+[ \t]*:=)")
+    mask = code_only(source)
+    edits = [(match.start(), match.end(), "") for match in command.finditer(mask)]
+    edits.extend((*match.span(1), "def") for match in alias.finditer(mask))
+    for start, end, replacement in sorted(edits, reverse=True):
+        source = source[:start] + replacement.ljust(end - start) + source[end:]
+    return source
+
+
 def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_parents=None):
     if snapshot['schema_version'] not in (1, 2):
         raise ValueError('unsupported snapshot version')
     module_map = module_map or {}
+    moved_modules = module_map.get('modules', {})
     records = {}
     reference_kinds = {}
     report_proof_parents = report_proof_parents or set()
     proof_irrelevant = snapshot.get("proof_irrelevant", False)
     skipped = set()
-    sources = {s['module']: s for s in snapshot.get('sources', [])}
+    sources = {s['module']: {**s, 'source': declaration_source(s['source'])}
+               for s in snapshot.get('sources', [])}
     by_module = {}
     for row in snapshot['declarations']:
         by_module.setdefault(row.get('module', ''), []).append(row)
@@ -94,8 +115,8 @@ def normalized(snapshot, mapping, use_hash=False, module_map=None, report_proof_
                 continue
             parent = declaration_owner(row, names, by_name) if names else None
             parent = parent or row['parent']
-            target = split.get(row['name'], split.get(parent, module_map.get('modules', {}).get(module, module)))
-            generated_modules = {**module_map.get('modules', {}), module: target}
+            target = split.get(row['name'], split.get(parent, moved_modules.get(module, module)))
+            generated_modules = ChainMap({module: target}, moved_modules)
             def normalized_name(name):
                 return normalize_generated_name(rename(name, mapping), generated_modules)
             key = (normalized_name(row['name']), target)
@@ -153,7 +174,7 @@ def auxiliary_groups(snapshot, mapping=None, module_map=None):
     as the group key, just as for declaration comparison and transient ownership.
     """
     mapping, module_map = mapping or {}, module_map or {}
-    sources = {s['module']: s['source'] for s in snapshot.get('sources', [])}
+    sources = {s['module']: declaration_source(s['source']) for s in snapshot.get('sources', [])}
     by_module = {}
     for row in snapshot['declarations']:
         by_module.setdefault(row.get('module', ''), []).append(row)

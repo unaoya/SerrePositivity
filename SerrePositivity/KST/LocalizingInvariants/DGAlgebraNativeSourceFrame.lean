@@ -26,11 +26,11 @@ attribute [local instance] EInfinity.DGAlgebra.modelCategory EInfinity.DGAlgebra
 def nativeModelCofibrationFactorization :
     MorphismProperty.FunctorialFactorizationData (cofibrations (Mon (Complex R)))
       (trivialFibrations (Mon (Complex R))) := by
-  have : ModelGeneration.CofibrantlyGenerated.{u}
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (EInfinity.DGAlgebra.generatingCofibrations (R := R))
       (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R)) :=
     EInfinity.DGAlgebra.modelCategory_cofibrantlyGenerated R
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
     (EInfinity.DGAlgebra.generatingCofibrations (R := R))
     (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R))
   exact MorphismProperty.functorialFactorizationData _ _

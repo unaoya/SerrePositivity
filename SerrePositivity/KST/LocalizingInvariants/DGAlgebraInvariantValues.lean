@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraHomology
 public import SerrePositivity.KST.LocalizingInvariants.ValueHomotopy
-public import SerrePositivity.InfinityCategories.Derived.DGAlgebraPerfectMoritaInfinity
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPerfectMoritaInfinity
 
 /-!
 概要：実非可換 dg 代数の Perf と実相対 tensor に、局所化不変量の値を接続する。
@@ -26,16 +26,16 @@ variable (R : Type u) [CommRing R]
 local instance dgValueSimplicialCategory : SimplicialCategory OmegaSpectrum.{u + 1} :=
   OmegaSpectrum.simplicialCategory
 
-def perfect (B : Mon (Complex R)) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u + 1} where
-  obj := dgAlgebraPerfectInfinityCategory R B
+def perfect (B : Mon (Complex R)) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u + 1} where
+  obj := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraPerfectInfinityCategory R B
   isQuasicategory := inferInstance
-  isStable := dgAlgebraPerfectInfinityCategory_isStable R B
+  isStable := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraPerfectInfinityCategory_isStable R B
 
-def perfectMap {B C : Mon (Complex R)} (f : B ⟶ C) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (perfect R B) (perfect R C) where
-  hom := dgAlgebraPerfectExtensionInfinity R f
-  isExact := dgAlgebraPerfectExtensionInfinity_isExactFunctor R f
+def perfectMap {B C : Mon (Complex R)} (f : B ⟶ C) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (perfect R B) (perfect R C) where
+  hom := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraPerfectExtensionInfinity R f
+  isExact := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraPerfectExtensionInfinity_isExactFunctor R f
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 def invariantValue (B : Mon (Complex R)) : OmegaSpectrum.{u + 1} := value Φ (perfect R B)
 
@@ -43,8 +43,8 @@ def invariantMap {B C : Mon (Complex R)} (f : B ⟶ C) :
     invariantValue R Φ B ⟶ invariantValue R Φ C := valueMap Φ (perfectMap R f)
 
 lemma invariantMap_edge {B C : Mon (Complex R)} (f : B ⟶ C) :
-    (coherentNerveEdge (C := OmegaSpectrum.{u + 1}) (invariantMap R Φ f)).edge =
-      Φ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (perfectMap R f)).edge :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (C := OmegaSpectrum.{u + 1}) (invariantMap R Φ f)).edge =
+      Φ.app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (perfectMap R f)).edge :=
   valueMap_edge Φ (perfectMap R f)
 
 def invariantGroupMap {B C : Mon (Complex R)} (f : B ⟶ C) (j : ℤ) :

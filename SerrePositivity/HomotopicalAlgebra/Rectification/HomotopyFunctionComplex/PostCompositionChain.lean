@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftPostComposition
-public import SerrePositivity.InfinityCategories.Kan.TriangleBook
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook
 
 /-!
 # 中断した任意モデル源への一般化：PostCompositionChain
@@ -104,24 +104,24 @@ lemma cutTriangle_direct (i : Fin (n + 1)) :
 
 /-- All cut comparisons are contained in one parameter, including the endpoint cuts. -/
 abbrev parameter (_F : Fin (n + 1) ⥤ ResolutionObject C) : SSet.{v} :=
-  TriangleBook.obj (ULift.{v} (Fin (n + 1)))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.obj (ULift.{v} (Fin (n + 1)))
 
 def comparison : parameter F ⟶ choiceSpace F X f :=
-  TriangleBook.desc (postEdge hcof hfib X (first F) (last F) f (total F))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.desc (postEdge hcof hfib X (first F) (last F) f (total F))
     (fun i : ULift.{v} (Fin (n + 1)) => cutTriangle hcof hfib F X f i.down)
     (fun i => cutTriangle_direct hcof hfib F X f i.down)
 
 @[reassoc]
 lemma comparison_cut (i : Fin (n + 1)) :
-    TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫ comparison hcof hfib F X f =
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫ comparison hcof hfib F X f =
       cutTriangle hcof hfib F X f i :=
-  TriangleBook.triangle_desc _ _ _ (⟨i⟩ : ULift.{v} (Fin (n + 1)))
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle_desc _ _ _ (⟨i⟩ : ULift.{v} (Fin (n + 1)))
 
 @[reassoc]
 lemma comparison_direct :
-    TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ comparison hcof hfib F X f =
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge (ULift.{v} (Fin (n + 1))) ≫ comparison hcof hfib F X f =
       postEdge hcof hfib X (first F) (last F) f (total F) :=
-  TriangleBook.sharedEdge_desc _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.sharedEdge_desc _ _ _
 
 lemma fixed_boundary :
     vertexInclusion X (first F) f ▷ parameter F ≫
@@ -134,9 +134,9 @@ lemma fixed_boundary :
 
 lemma action_cut (i : Fin (n + 1)) (Z : C)
     (t : CoherentLiftTuples.obj X (first F) f ⊗ parameter F ⟶
-      (cosimplicialHom (last F).resolution.obj).obj Z) :
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (last F).resolution.obj).obj Z) :
     CoherentLiftTuples.obj X (first F) f ◁
-        TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩ ≫
       KanLiftAction.parameterized hcof hfib X (last F) (f ≫ (total F).base) Z
         (RelativeChoiceSpace.family (vertexInclusion X (first F) f)
           (postBoundary X (first F) (last F) f (total F)) (comparison hcof hfib F X f)) t =
@@ -144,7 +144,7 @@ lemma action_cut (i : Fin (n + 1)) (Z : C)
         (RelativeChoiceSpace.family (vertexInclusion X (first F) f)
           (postBoundary X (first F) (last F) f (total F)) (cutTriangle hcof hfib F X f i))
         ((CoherentLiftTuples.obj X (first F) f ◁
-          TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩) ≫ t) := by
+          _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleBook.triangle (ULift.{v} (Fin (n + 1))) ⟨i⟩) ≫ t) := by
   rw [KanLiftAction.parameterized_naturality, ← RelativeChoiceSpace.family_naturality,
     comparison_cut]
 

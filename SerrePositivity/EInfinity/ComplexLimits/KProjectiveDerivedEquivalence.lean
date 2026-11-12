@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedComparison
-public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
 
 /-!
 # 同じ K-projective 導来源と既存 D(R) の同値
@@ -20,26 +20,26 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma kProjectiveDerivedSource_isEssentiallySurjective :
-    IsEssentiallySurjective (kProjectiveDerivedSource A) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (kProjectiveDerivedSource A) := by
   intro y
-  let Y := (Simplex.vertexEquiv (A := A) (D := Semifree A)) y
-  let X : KProjectiveComplex A := ⟨Y.val, complexSemifree_isKProjective A Y.property⟩
-  refine ⟨Simplex.vertex X, ?_⟩
-  have e := (complexSemifreeResolutionRetractIso A).app (Simplex.vertex Y)
-  have hy : Simplex.vertex Y = y :=
-    (Simplex.vertexEquiv (A := A) (D := Semifree A)).symm_apply_apply y
-  have e' : VertexIso ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌)
-      (Simplex.vertex X)) (Simplex.vertex Y) := e
+  let Y := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := A) (D := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)) y
+  let X : KProjectiveComplex A := ⟨Y.val, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective A Y.property⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X, ?_⟩
+  have e := (complexSemifreeResolutionRetractIso A).app (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)
+  have hy : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y = y :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := A) (D := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).symm_apply_apply y
+  have e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) := e
   exact ⟨e' ≪≫ eqToIso (congrArg HomotopyCategory.mk hy)⟩
 
 lemma kProjectiveDerivedSource_isQCatEquivalence :
-    IsQCatEquivalence (kProjectiveDerivedSource A) :=
-  isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (kProjectiveDerivedSource A) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (kProjectiveDerivedSource_isFullyFaithful A)
     (kProjectiveDerivedSource_isEssentiallySurjective A)
 

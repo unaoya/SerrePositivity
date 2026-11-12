@@ -1,13 +1,13 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.EdgeHom
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.EdgeHom
 
 /-!
 # 通常の nerve とホモトピー圏の関手性
 
 ## 概要
-Kerodon §1.4.6 のホモトピー圏関手の合成と、通常の圏からの包含を比較する。
+Kerodon §1.4.6（Tag 004Q） のホモトピー圏関手の合成と、通常の圏からの包含を比較する。
 
 ## 方針
 単体集合の関手性と、nerve の辺の端点・一次単体の公式を使う。
@@ -48,7 +48,7 @@ def ordinaryToHoNerve_naturalIso {C D : Type (u + 1)} [Category.{u} C]
   refine NatIso.ofComponents (fun X =>
     eqToIso (congrArg HomotopyCategory.mk (nerveMap_app_mk₀ F X))) ?_
   intro X Y g
-  have h := F1B.homMk_congr (nerveMap_app_mk₀ F X) (nerveMap_app_mk₀ F Y)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.homMk_congr (nerveMap_app_mk₀ F X) (nerveMap_app_mk₀ F Y)
     ((nerve.edgeMk g).map (nerveMap F)) (nerve.edgeMk (F.map g)) (nerveMap_app_mk₁ F g)
   let hx := congrArg HomotopyCategory.mk (nerveMap_app_mk₀ F X)
   let hy := congrArg HomotopyCategory.mk (nerveMap_app_mk₀ F Y)

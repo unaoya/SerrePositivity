@@ -22,39 +22,39 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
-  (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [])
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
+  (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [])
 
 set_option maxHeartbeats 2000000 in
 -- 元の切断の依存端点と包含の比較で大きな定義的等式を照合するため。
 lemma prefix_native_point :
     let η := simplex W g σ τ
     let hg := simplex_generator W g σ τ h
-    (EndpointChange.colimitMap (⊤ : MorphismProperty (WideSubcategory W.paths)) rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap (⊤ : MorphismProperty (WideSubcategory W.paths)) rfl
       (congrArg (fun t : Quiver.Total C => (⟨t.left⟩ : WideSubcategory W.paths)) hg)).app n
-        (FirstFactor.leftPoint W η h) = (AllMarked.nativeInclusion W X g.val.left a).app n σ := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.leftPoint W η h) = (AllMarked.nativeInclusion W X g.val.left a).app n σ := by
   dsimp only
   let η := simplex W g σ τ
-  let A : Paths C := (FirstFactor.generator W η h).val.left
+  let A : Paths C := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W η h).val.left
   let e : A = g.val.left := congrArg (fun t : Quiver.Total C =>
     (show Paths C from t.left)) (simplex_generator W g σ τ h)
-  have he := congrArg (fun k => k.app n (FirstFactor.leftPoint W η h))
+  have he := congrArg (fun k => k.app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.leftPoint W η h))
     (AllMarked.inclusion_endpoint W (rfl : X = X) e)
-  have hp := congrArg (fun k => k.app n (AttachedPrefix.markedSimplex W η h))
+  have hp := congrArg (fun k => k.app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedSimplex W η h))
     (AllMarked.nativeInclusion_inclusion W X A
-      (Word.CutFactor.prefixWord _ (AttachedPrefix.index W η h)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord _ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W η h)))
   have hσ := congrArg (fun k => k.app n σ)
     (AllMarked.nativeInclusion_inclusion W X g.val.left a)
   apply AllMarked.inclusion_injective W X g.val.left n
-  exact he.trans ((congrArg ((EndpointChange.colimitMap W.paths rfl e).app n) hp).trans
+  exact he.trans ((congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap W.paths rfl e).app n) hp).trans
     ((prefix_ambient_point W g σ τ h).trans hσ.symm))
 
-lemma factor_point : FirstFactor.point W (simplex W g σ τ) h =
+lemma factor_point : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W (simplex W g σ τ) h =
     (⟨g, (AllMarked.nativeInclusion W X g.val.left a).app n σ,
-      (graphInclusion W.paths g.val.right Y b).app n τ⟩ : (FactorTarget.space W X Y).obj n) :=
-  FactorTarget.point_ext W (simplex_generator W g σ τ h) _ _ _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths g.val.right Y b).app n τ⟩ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTargetTransport.point_ext W (simplex_generator W g σ τ h) _ _ _ _
     (prefix_native_point W g σ τ h) (residual_ambient_point W g σ τ h)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

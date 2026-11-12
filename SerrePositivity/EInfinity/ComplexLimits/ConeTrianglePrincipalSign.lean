@@ -8,12 +8,12 @@ public import SerrePositivity.EInfinity.ComplexLimits.ConeTriangleMiddleCardinal
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma principal_cut_sign {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (k : ℤ) (hk : k = 3 - (I.card : ℤ)) :
-    Index.sign I (ConeHeadIndex.penultimate I hI) * k.negOnePow =
-      Index.sign I (ConeHeadIndex.second I hI) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I (ConeHeadIndex.penultimate I hI) * k.negOnePow =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I (ConeHeadIndex.second I hI) := by
   rw [ConeHeadIndex.sign_penultimate, sign_second_card, hk,
     Int.negOnePow_sub, Int.negOnePow_sub]
   have h3 : (3 : ℤ).negOnePow = -1 := by decide

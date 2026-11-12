@@ -34,24 +34,24 @@ lemma mappingIso_standardParametricPost :
   have h₁ := PointedMapping.parametricPost_tensor S (K ⊗ K) v
   have h₂ := PointedMapping.parametricPost_tensor K K (v ≫ PointedMapping.ihomAction S Z Z')
   have hm : PointedObject.basedHomMap P (mappingIso S Z').hom =
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
         PointedObject.basedHomMap P
-          (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by
-    change (ihom P).map ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom) = _
+          (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by
+    change (ihom P).map ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z').hom ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom) = _
     exact CategoryTheory.Functor.map_comp (ihom P) _ _
   calc
     _ = (PointedMapping.parametricPost (source S) v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z').hom) ≫
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z').hom) ≫
           PointedObject.basedHomMap P
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by
       rw [hm, Category.assoc]
-    _ = ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+    _ = ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
         PointedMapping.parametricPost (K ⊗ K) (v ≫ PointedMapping.ihomAction S Z Z')) ≫
           PointedObject.basedHomMap P
-            (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by rw [h₁]
-    _ = (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K K (PointedObject.basedHom S Z)).hom ≫
+            (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K (PointedObject.basedHom S Z')).hom := by rw [h₁]
+    _ = (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso S (K ⊗ K) Z).hom ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K K (PointedObject.basedHom S Z)).hom ≫
           PointedMapping.parametricPost K ((v ≫ PointedMapping.ihomAction S Z Z') ≫
             PointedMapping.ihomAction K (PointedObject.basedHom S Z)
               (PointedObject.basedHom S Z')) := by rw [Category.assoc, h₂]

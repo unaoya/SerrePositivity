@@ -23,12 +23,12 @@ open scoped Simplicial
 使われ方：障害成分上の双積演算の対象表示。 -/
 def completionWideObjectClass (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (a : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier) :
     SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   exact SSet.π₀.mk ⟨a.as.as, LocalizingInvariants.completionCofiberWide_vertex F.val
     (multiSEndofunctor_map_isIdempotentCompletion r ι f hf) a.as.as⟩
 
@@ -38,7 +38,7 @@ def completionWideObjectClass (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：双積の結合・交換・単位同型の障害側への移送。 -/
 lemma completionWideObjectClass_iso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {a b : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier} (e : a ≅ b) :
     completionWideObjectClass r ι f hf a = completionWideObjectClass r ι f hf b := by
   obtain ⟨a, rfl⟩ := Truncated.HomotopyCategory.mk_surjective a
@@ -51,21 +51,21 @@ lemma completionWideObjectClass_iso (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 使われ方：分母と双積の関係を成分集合へ降ろす。 -/
 lemma completionWideObjectClass_eq_of_trW (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {a b : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier} (g : a ⟶ b)
-    (hg : (stableHoClosure (LocalizingInvariants.completionEssentialImage
+    (hg : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)).trW g) :
     completionWideObjectClass r ι f hf a = completionWideObjectClass r ι f hf b := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   obtain ⟨a, rfl⟩ := Truncated.HomotopyCategory.mk_surjective a
   obtain ⟨b, rfl⟩ := Truncated.HomotopyCategory.mk_surjective b
-  obtain ⟨e, he⟩ := homotopyCategory_homMk_surjective a b g
-  have hw := (cofiberStableEdges_iff_trW (LocalizingInvariants.completionEssentialImage F.val)
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective a b g
+  have hw := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW (LocalizingInvariants.completionEssentialImage F.val)
     e).mpr (he.symm ▸ hg)
   have hP := LocalizingInvariants.stableClosure_completionEssentialImage F.val
     (multiSEndofunctor_map_isIdempotentCompletion r ι f hf).2.1
-  have hw' : e.edge ∈ cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+  have hw' : e.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
       F.val) := hP ▸ hw
   let t : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋1⦌ :=
     ⟨e.edge, LocalizingInvariants.completionCofiberWide_edge F.val

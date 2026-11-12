@@ -34,9 +34,9 @@ lemma rebase_map (H : SSet.Homotopy F G) (hF : F = F') (hG : G = G') :
   rfl
 
 lemma rebase_arrow (H : SSet.Homotopy F G) (hF : F = F') (hG : G = G') :
-    Arrow.mk (Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
+    Arrow.mk (Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
     Arrow.mk (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (rebase H hF hG))) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (rebase H hF hG))) :=
   congr _ _ (rebase_map H hF hG).symm
 
 end SerrePositivity.KST.LocalizingInvariants.HomotopyArrow

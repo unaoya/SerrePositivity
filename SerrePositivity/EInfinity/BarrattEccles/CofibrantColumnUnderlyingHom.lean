@@ -48,7 +48,7 @@ lemma cofibrantColumnUnderlyingHom_arrow {I : Type (u + 1)} [Category.{u} I]
     Arrow.mk (NerveColumn.hom (cofibrantAlgebraUnderlyingDerivedSource A)
       (MixedNerve.liftedNatTrans (C := I) (D := CofibrantAlgebra A) a)) =
     Arrow.mk ((hoFunctor.map ((pre (MixedNerve.down I)).app
-      (derivedInfinityCategory A))).toFunctor.map
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor.map
       (ComplexLimits.complexOrdinaryDerivedNatTransHom A
         (Functor.whiskerRight a (cofibrantAlgebraOrdinaryForget A)))) := by
   rw [cofibrantAlgebraUnderlyingDerivedSource_eq_lifted]

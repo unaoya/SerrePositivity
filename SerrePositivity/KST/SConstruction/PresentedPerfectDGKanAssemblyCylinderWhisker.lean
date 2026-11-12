@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PresentedPerfectDGKanAssemblyCylinderTransformations
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
 
 /-! # 元の実写像円柱比較と全厳密 dg Hom の可換性
 概要：同じ源比較・標的包含・射影の全 Hom 自然性を、元の通常成分で回収する。
@@ -24,7 +24,7 @@ lemma presentedPerfectDGKanAssemblyCylinderSource_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderSourceMap A r C)
           ((presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).obj D) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblySourceFunctor A r)
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderSourceTransformation A r)
@@ -40,7 +40,7 @@ lemma presentedPerfectDGKanAssemblyCylinderTarget_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderTargetMap A r C)
           ((presentedPerfectDGKanAssemblyLeftCylinderFunctor A r).obj D) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderTargetTransformation A r)
@@ -56,7 +56,7 @@ lemma presentedPerfectDGKanAssemblyCylinderProjection_whisker (r : ℕ)
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r).map C D ≫
         eHomWhiskerRight SSet (presentedPerfectDGKanAssemblyCylinderProjectionMap A r C)
           ((presentedPerfectDGKanAssemblyLeftTargetFunctor A r).obj D) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker
     (presentedPerfectDGKanAssemblyLeftCylinderFunctor A r)
     (presentedPerfectDGKanAssemblyLeftTargetFunctor A r)
     (presentedPerfectDGKanAssemblyCylinderProjectionTransformation A r)

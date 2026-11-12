@@ -16,23 +16,23 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-  (X Y : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+  (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 /-- 同じ第三 cochain の成分は、元の第三成分の Yoneda 像そのもの。 -/
 lemma dgHomGluingConePrimitive_apply (i j : ℤ) (hij : i + (-1) = j)
-    (a : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X i) :
+    (a : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X i) :
     (dgHomGluingConePrimitive R C D E p q X Y).v i j hij a =
       ((dgYoneda R E).map (p.obj X.left) (q.obj Y.right)).f j
-        ((dgGluingHomPrimitive R C D _ X Y).v i j hij a) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C D _ X Y).v i j hij a) := by
   exact cochain_comp_ofHom_apply
-    (dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y)
     ((dgYoneda R E).map (p.obj X.left) (q.obj Y.right)) hij a
 
 /-- 第三成分の捻れた微分は元の左右像と元の比較射の実加群 Hom 合成を回収する。 -/
 lemma dgHomGluingConePrimitive_differential (n : ℤ)
-    (a : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X n) :
+    (a : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X n) :
     (dgHomGluingConePrimitive R C D E p q X Y).v (n + 1) n (by omega)
-        ((dgGluingHomComplex R C D _ X Y).d n (n + 1) a) =
+        ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D _ X Y).d n (n + 1) a) =
       compose R (x := representable R (p.obj X.left))
         (y := representable R (p.obj Y.left)) (z := representable R (q.obj Y.right))
         (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
@@ -52,7 +52,7 @@ lemma dgHomGluingConePrimitive_differential (n : ℤ)
   erw [DGFunctor.map_forward, DGFunctor.map_forward]
   have hd := ConcreteCategory.congr_hom
     (((dgYoneda R E).map (p.obj X.left) (q.obj Y.right)).comm (n - 1) n)
-    ((dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y).v
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomPrimitive R C D (dgHomGluingBimodule R C D E p q) X Y).v
       n (n - 1) (by omega) a)
   erw [← hd]
   simp only [dgHomGluingConeLeftMap, dgHomGluingConeRightMap,

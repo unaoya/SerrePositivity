@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ConeWithoutFirst
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 
 /-!
 概要：元の順序埋め込みに始点を加えた単射と、混合 cochain の添字の像を計算する。
@@ -12,7 +12,7 @@ namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
 open SerrePositivity.InfinityCategories
 
 lemma prepend_injective {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1)) :
-    Function.Injective (prependOrderHom e.toOrderHom) := by
+    Function.Injective (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) := by
   intro i j hij
   induction i using Fin.cases with
   | zero =>
@@ -25,7 +25,7 @@ lemma prepend_injective {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1)) :
     | succ j => exact congrArg Fin.succ (e.injective (Fin.succ_injective _ hij))
 
 lemma prepend_eq_zero_iff {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1))
-    (i : Fin (m + 2)) : prependOrderHom e.toOrderHom i = 0 ↔ i = 0 := by
+    (i : Fin (m + 2)) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom i = 0 ↔ i = 0 := by
   constructor
   · exact fun h => prepend_injective e h
   · intro h
@@ -34,7 +34,7 @@ lemma prepend_eq_zero_iff {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1))
 
 lemma withoutFirst_image_prepend {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1))
     (I : Finset (Fin (m + 2))) :
-    withoutFirst (I.image (prependOrderHom e.toOrderHom)) = (withoutFirst I).image e := by
+    withoutFirst (I.image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom)) = (withoutFirst I).image e := by
   ext i
   simp only [withoutFirst, Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_image]
   constructor
@@ -49,7 +49,7 @@ lemma withoutFirst_image_prepend {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1))
 
 lemma zero_mem_image_prepend {m n : ℕ} (e : Fin (m + 1) ↪o Fin (n + 1))
     (I : Finset (Fin (m + 2))) :
-    0 ∈ I.image (prependOrderHom e.toOrderHom) ↔ 0 ∈ I := by
+    0 ∈ I.image (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom e.toOrderHom) ↔ 0 ∈ I := by
   constructor
   · intro h
     obtain ⟨i, hi, he⟩ := Finset.mem_image.mp h

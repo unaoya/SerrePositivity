@@ -5,7 +5,7 @@ public import SerrePositivity.KST.SConstruction.CoreSimplicial
 public import SerrePositivity.KST.SConstruction.LocalizedPiComparison
 public import SerrePositivity.KST.SConstruction.LocalizedTrivialFibrations
 public import SerrePositivity.KST.SConstruction.CofiberMaps
-public import SerrePositivity.InfinityCategories.Core.JoinTensorPoint
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.JoinTensorPoint
 public import SerrePositivity.KST.SConstruction.StableModels
 
 /-! # S₁ と元の安定圏との自然な比較
@@ -27,7 +27,7 @@ open scoped Simplicial
 方針：Δ[0] との既存の同型を合成する。
 規約：ULift の宇宙を保持する。使われ方：一点からの内部 Hom の同一視。 -/
 def firstRowOneUnitIso : firstRowNerve.{u} 1 ≅ 𝟙_ SSet.{u} :=
-  (firstRowSimplexIso 0).symm ≪≫ stdSimplexZeroUnitIso
+  (firstRowSimplexIso 0).symm ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.stdSimplexZeroUnitIso
 
 /-- 概要：一次の第一行の関手圏は元の圏と自然に同型。
 方針：添字の同型による前合成と単位内部 Hom の同型を使う。
@@ -49,10 +49,10 @@ def sOneComparison (C : SSet.{u}) : sConstruction 1 C ⟶ C :=
 /-- 概要：安定な quasicategory の S₁ 比較は trivial Kan fibration。
 方針：第一行制限に同型を合成する。
 規約：頂点の全射性を追加仮定しない。使われ方：自然な逆射の代わりの比較。 -/
-instance sOneComparison_trivialKanFibration (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    TrivialKanFibration (sOneComparison C) := by
-  have : TrivialKanFibration (firstRowOneHomNatIso.hom.app C) := inferInstance
-  exact ⟨trivialKanFibrations.comp_mem _ _ TrivialKanFibration.mem TrivialKanFibration.mem⟩
+instance sOneComparison_trivialKanFibration (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sOneComparison C) := by
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowOneHomNatIso.hom.app C) := inferInstance
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem⟩
 
 /-- 概要：第一行制限は cofiber を保つ後合成と可換。
 方針：gapped 包含の後合成の式と内部 Hom の自然性を使う。
@@ -81,21 +81,21 @@ lemma sOneComparison_naturality {C D : SSet.{u}} [Quasicategory D]
 方針：S₁ の比較に core 関手を適用する。
 規約：写像の定義には安定性は不要。使われ方：反復実現の構造射の源の比較。 -/
 def coreSOneComparison (C : SSet.{u}) :
-    coreSConstruction 1 C ⟶ (quasicategoryCore C : SSet.{u}) :=
-  quasicategoryCoreMap (sOneComparison C)
+    coreSConstruction 1 C ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C : SSet.{u}) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sOneComparison C)
 
 /-- 概要：安定な入力の一次段の core の比較は trivial Kan fibration。
 方針：S₁ の比較の全境界充填性を core に制限する。
 規約：core を Kan にする外部仮定は追加しない。使われ方：一次段の弱同値比較。 -/
 instance coreSOneComparison_trivialKanFibration (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : TrivialKanFibration (coreSOneComparison C) :=
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (coreSOneComparison C) :=
   coreMap_trivialKanFibration (sOneComparison C)
 
 /-- 概要：一次段の core の比較は全基点・全次数で π_* 同型。
 方針：trivial Kan fibration の局所化可逆性を L9 の実際の π_* に移す。
 規約：零次数も含む。使われ方：S₁ と元の圏の Kan 模型の同値。 -/
-lemma coreSOneComparison_piIsomorphism (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (coreSOneComparison C) := by
+lemma coreSOneComparison_piIsomorphism (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (coreSOneComparison C) := by
   apply kanPiIsomorphism_of_localized_isIso
   exact map_isIso_of_trivialKanFibration AnodyneHomotopy.anodyneQ
     (Localization.inverts AnodyneHomotopy.anodyneQ anodyneExtensions) (coreSOneComparison C)
@@ -105,20 +105,20 @@ lemma coreSOneComparison_piIsomorphism (C : SSet.{u}) [Quasicategory C] [IsStabl
 規約：選択した零対象の保存は要求しない。使われ方：反復の比較の自然性。 -/
 lemma coreSOneComparison_naturality {C D : SSet.{u}} [Quasicategory D]
     (f : C ⟶ D) (hf : PreservesCofiberData f) :
-    quasicategoryCoreMap (sPostcompCofiber 1 f hf) ≫ coreSOneComparison D =
-      coreSOneComparison C ≫ quasicategoryCoreMap f := by
-  change quasicategoryCoreFunctor.map (sPostcompCofiber 1 f hf) ≫
-      quasicategoryCoreFunctor.map (sOneComparison D) =
-    quasicategoryCoreFunctor.map (sOneComparison C) ≫ quasicategoryCoreFunctor.map f
-  rw [← quasicategoryCoreFunctor.map_comp, ← quasicategoryCoreFunctor.map_comp,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcompCofiber 1 f hf) ≫ coreSOneComparison D =
+      coreSOneComparison C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap f := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map (sPostcompCofiber 1 f hf) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map (sOneComparison D) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map (sOneComparison C) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map f
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map_comp,
     sOneComparison_naturality]
 
 /-- 概要：安定な入力における core の一次段の比較の自然変換。
 方針：各成分に自然な S₁ の比較を取る。
 規約：逆射の自然な選択は含めない。使われ方：多単体的実現の比較図式。 -/
 def coreSOneComparisonNat :
-    sEndofunctor 1 ⋙ stableModelForget ⋙ quasicategoryCoreFunctor ⟶
-      stableModelForget ⋙ quasicategoryCoreFunctor where
+    sEndofunctor 1 ⋙ stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⟶
+      stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor where
   app X := coreSOneComparison X.carrier
   naturality {_X _Y} f := coreSOneComparison_naturality f.val f.property
 

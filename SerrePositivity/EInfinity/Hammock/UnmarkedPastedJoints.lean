@@ -20,27 +20,27 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
 
-lemma sourceJoint_eq : Attachments.sourceJoint W (simplex W g σ τ) (columnIndex a b) =
+lemma sourceJoint_eq : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.sourceJoint W (simplex W g σ τ) (columnIndex a b) =
     (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from g.val.left) := by
   let h := simplex_nonempty W g σ τ
   obtain ⟨he, _⟩ := leftAttachment_eqToHom W g σ τ h
   have hi := simplex_firstColumn W g σ τ h
   have hg := simplex_generator W g σ τ h
-  exact (congrArg (Attachments.sourceJoint W (simplex W g σ τ)) hi).symm.trans
+  exact (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.sourceJoint W (simplex W g σ τ)) hi).symm.trans
     (he.trans (congrArg (fun t : Quiver.Total C =>
       (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from t.left)) hg))
 
-lemma targetJoint_eq : Attachments.targetJoint W (simplex W g σ τ) (columnIndex a b) =
+lemma targetJoint_eq : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.targetJoint W (simplex W g σ τ) (columnIndex a b) =
     (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from g.val.right) := by
   let h := simplex_nonempty W g σ τ
   obtain ⟨he, _⟩ := rightAttachment_eqToHom W g σ τ h
   have hi := simplex_firstColumn W g σ τ h
   have hg := simplex_generator W g σ τ h
-  exact (congrArg (Attachments.targetJoint W (simplex W g σ τ)) hi).symm.trans
+  exact (congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachments.targetJoint W (simplex W g σ τ)) hi).symm.trans
     (he.symm.trans (congrArg (fun t : Quiver.Total C =>
       (Functor.const (Fin (n.unop.len + 1))).obj (show Paths C from t.right)) hg))
 

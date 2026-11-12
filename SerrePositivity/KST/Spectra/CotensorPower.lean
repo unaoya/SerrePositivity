@@ -32,15 +32,15 @@ theorem cotensorStageEquiv_pre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     (hk : -j ≤ (k : ℤ)) (hd : degree j k = n + 1)
     (a : homotopyGroup (cotensor B X) j) :
     cotensorStageEquiv A X j k n hk hd (homotopyMap (cotensorPre i X) j a) =
-      pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level k).space)
+      pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level k).space)
         (cotensorStageEquiv B X j k n hk hd a) := by
   simp only [cotensorStageEquiv, MulEquiv.trans_apply]
   rw [positiveStageEquiv_natural]
-  erw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply,
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply]
+  erw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply]
   change pointedGroupMap n ((cotensorProjection A X).app k)
     (pointedGroupMap n ((cotensorPre i X).app k) _) =
-      pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level k).space)
+      pointedGroupMap n (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level k).space)
         (pointedGroupMap n ((cotensorProjection B X).app k) _)
   erw [← pointedGroupMap_comp, ← pointedGroupMap_comp, cotensorPre_comparison]
   rfl

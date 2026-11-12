@@ -30,9 +30,9 @@ lemma loopSwap_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) (n : ℕ) 
         (PointedObject.basedHomMap (PointedSimplicialSet.sphere.{u} (n + 1))
           (Y := Y) (Z := Z) p) ≫ (loopSwap Z n).hom =
       (loopSwap Y n).hom ≫ PointedObject.basedHomMap
-        (PointedSimplicialSet.sphere.{u} (n + 1)) (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (Z := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z)
+        (PointedSimplicialSet.sphere.{u} (n + 1)) (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (Z := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z)
           (PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := Y) (Z := Z) p) := by
-  exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post
+  exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post
     (C := PointedSimplicialSet.{u}) PointedSimplicialSet.circle.{u}
       (PointedSimplicialSet.sphere.{u} (n + 1)) p
 
@@ -42,7 +42,7 @@ lemma loopSwap_natural {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) (n : ℕ) 
 使われ方：Goerss–Jardine I §7、VIII §1。塔の係数射の群での計算。 -/
 theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
       (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y).right r
       (PointedSimplicialSet.basepoint
         (PointedObject.basedHom (PointedSimplicialSet.sphere.{u} (n + 1)) Y))) :
@@ -59,26 +59,26 @@ theorem positiveHomotopyEquiv_natural {Y Z : PointedSimplicialSet.{u}}
     let HY : PointedSimplicialSet.{u} := PointedObject.basedHom A Y
     let HZ : PointedSimplicialSet.{u} := PointedObject.basedHom A Z
     let mp : HY ⟶ HZ := PointedObject.basedHomMap A (Y := Y) (Z := Z) p
-    let lp : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z :=
+    let lp : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z :=
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := Y) (Z := Z) p
-    let lmp : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HY ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HZ :=
+    let lmp : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HY ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HZ :=
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u} (Y := HY) (Z := HZ) mp
-    let mlp : PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) ⟶
-        PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) :=
-      PointedObject.basedHomMap A (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (Z := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) lp
+    let mlp : PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) ⟶
+        PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) :=
+      PointedObject.basedHomMap A (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (Z := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) lp
     let b := (loopPositiveHomotopyEquiv HY r).symm a
     have hb : (loopPositiveHomotopyEquiv HZ r).symm
         (pointedGroupMap (X := HY) (Y := HZ) (r + 1) mp a) =
-        pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HY) (Y := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HZ) r lmp b := by
+        pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HY) (Y := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HZ) r lmp b := by
       apply (loopPositiveHomotopyEquiv HZ r).injective
       rw [MulEquiv.apply_symm_apply, loopPositiveHomotopyEquiv_natural]
       rw [show loopPositiveHomotopyEquiv HY r b = a from
         (loopPositiveHomotopyEquiv HY r).apply_symm_apply a]
     have hs : lmp ≫ (loopSwap Z n).hom = (loopSwap Y n).hom ≫ mlp :=
       loopSwap_natural p n
-    have hg := congrArg (fun f : _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HY ⟶ PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) ↦
-      pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace HY)
-        (Y := PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z)) r f b) hs
+    have hg := congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HY ⟶ PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) ↦
+      pointedGroupMap (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace HY)
+        (Y := PointedObject.basedHom A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z)) r f b) hs
     simp only [pointedGroupMap_comp] at hg
     rw [positiveHomotopyEquiv_succ, positiveHomotopyEquiv_succ, hb, hg, ih lp]
     exact loopPositiveHomotopyEquiv_natural p (n + 1 + r) _

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanRightCompositionMoving
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.KanRightCompositionMoving
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantTransportPrecomp
 
 /-!

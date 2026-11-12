@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.HomotopyEvaluationClass
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HomotopyEvaluationClass
 
 /-!
 概要：区間全比較の同じ端点経路から、評価した射の類の一致を回収する。
@@ -18,17 +18,17 @@ open scoped Simplicial
 規約：元二比較を保持。使われ方：零対角全比較の二端点照合。 -/
 lemma homotopyEvaluation_eq_of_vertexEdge {A X : SSet.{u}} {F G : A ⟶ X}
     (H J : SSet.Homotopy F G) (x : A _⦋0⦌)
-    (h : (simplicialHomotopyVertexEdge H x).edge = (simplicialHomotopyVertexEdge J x).edge) :
-    (hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map
-        (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
-      (hoFunctor.map (evaluateFunctorAt (Y := X) x)).toFunctor.map
-        (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J)) := by
-  let a := (SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).tensor homotopyIntervalEdge
+    (h : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H x).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge J x).edge) :
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) x)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) x)).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J)) := by
+  let a := (SSet.Truncated.Edge.id (X := (truncation 2).obj A) x).tensor _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge
   let e := a.map ((truncation 2).map H.h)
   let e' := a.map ((truncation 2).map J.h)
   have he : e.edge = e'.edge := h
-  have hH := homotopyEvaluation_arrow H x
-  have hJ := homotopyEvaluation_arrow J x
+  have hH := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homotopyEvaluation_arrow H x
+  have hJ := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homotopyEvaluation_arrow J x
   change Arrow.mk _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk e) at hH
   change Arrow.mk _ = Arrow.mk (SSet.Truncated.HomotopyCategory.homMk e') at hJ
   apply Arrow.mk_injective
@@ -41,14 +41,14 @@ lemma homotopyEvaluation_eq_of_endpoint {X : SSet.{u}}
     {F G : (Δ[1] : SSet.{u}) ⟶ X} (H J : SSet.Homotopy F G) (i : Fin 2)
     (h : (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫ H.h =
       (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫ J.h) :
-    (hoFunctor.map (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv (stdSimplex.δ i)))).toFunctor.map
-        (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H)) =
-      (hoFunctor.map (evaluateFunctorAt (Y := X) (SSet.yonedaEquiv (stdSimplex.δ i)))).toFunctor.map
-        (SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy J)) := by
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (SSet.yonedaEquiv (stdSimplex.δ i)))).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) =
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := X) (SSet.yonedaEquiv (stdSimplex.δ i)))).toFunctor.map
+        (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy J)) := by
   apply homotopyEvaluation_eq_of_vertexEdge
   let z : (Δ[0] ⊗ Δ[1] : SSet.{u}) _⦋1⦌ :=
     ((SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[0] : SSet.{u}))
-      (stdSimplex.obj₀Equiv.symm 0)).edge, homotopyIntervalEdge.edge)
+      (stdSimplex.obj₀Equiv.symm 0)).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge)
   have he := congrArg (fun q : (Δ[0] ⊗ Δ[1] : SSet.{u}) ⟶ X => q.app (Opposite.op ⦋1⦌) z) h
   have hv : (stdSimplex.δ i).app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm 0) =
       SSet.yonedaEquiv (stdSimplex.δ i) := by
@@ -59,17 +59,17 @@ lemma homotopyEvaluation_eq_of_endpoint {X : SSet.{u}}
         (stdSimplex.obj₀Equiv.symm 0)).edge =
       (SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[1] : SSet.{u}))
         (SSet.yonedaEquiv (stdSimplex.δ i))).edge := by
-    rw [← pinchedConstant_one, ← pinchedConstant_one]
-    exact (pinchedConstant_map (stdSimplex.δ i) (stdSimplex.obj₀Equiv.symm 0) 1).trans
-      (congrArg (fun x => PinchedHom.constant x 1) hv)
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedConstant_map (stdSimplex.δ i) (stdSimplex.obj₀Equiv.symm 0) 1).trans
+      (congrArg (fun x => _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant x 1) hv)
   change H.h.app (Opposite.op ⦋1⦌)
       ((stdSimplex.δ i).app (Opposite.op ⦋1⦌)
         (SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[0] : SSet.{u}))
-          (stdSimplex.obj₀Equiv.symm 0)).edge, homotopyIntervalEdge.edge) =
+          (stdSimplex.obj₀Equiv.symm 0)).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) =
     J.h.app (Opposite.op ⦋1⦌)
       ((stdSimplex.δ i).app (Opposite.op ⦋1⦌)
         (SSet.Truncated.Edge.id (X := (truncation 2).obj (Δ[0] : SSet.{u}))
-          (stdSimplex.obj₀Equiv.symm 0)).edge, homotopyIntervalEdge.edge) at he
+          (stdSimplex.obj₀Equiv.symm 0)).edge, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.homotopyIntervalEdge.edge) at he
   rw [hid] at he
   exact he
 end SerrePositivity.KST.SConstruction

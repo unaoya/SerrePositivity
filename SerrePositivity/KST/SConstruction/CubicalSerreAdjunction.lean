@@ -37,7 +37,7 @@ instance cubicalSerreChains_preservesColimits :
 
 /-- 元の随伴の順方向は、元の各 cell への制限そのもの。 -/
 lemma cubicalSerreAdjunction_homEquiv_cell {K : CubicalSet.{u}} {T : Complex A}
-    (f : (cubicalSerreChains A).obj K ⟶ T) (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+    (f : (cubicalSerreChains A).obj K ⟶ T) (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     (((cubicalSerreAdjunction A).homEquiv K T) f).app (op c) x =
       ULift.up (cubicalSerreCell A c x ≫ f) := by
   simp [cubicalSerreAdjunction, cubicalSerreRestrictedYoneda, uliftYonedaAdjunction,
@@ -48,7 +48,7 @@ lemma cubicalSerreAdjunction_homEquiv_cell {K : CubicalSet.{u}} {T : Complex A}
 /-- 元の随伴の逆方向は、指定した全 cell の射を厳密に回収する。 -/
 lemma cubicalSerreAdjunction_inverse_cell {K : CubicalSet.{u}} {T : Complex A}
     (a : K ⟶ (cubicalSerreRestrictedYoneda A).obj T)
-    (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) :
+    (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) :
     cubicalSerreCell A c x ≫ ((cubicalSerreAdjunction A).homEquiv K T).symm a =
       (a.app (op c) x).down := by
   have h := cubicalSerreAdjunction_homEquiv_cell A

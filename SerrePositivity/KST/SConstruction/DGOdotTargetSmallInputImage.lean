@@ -35,7 +35,7 @@ lemma dgOdotAlgebraSmallInputLabelIso_native (X : PresentedPerfectDGObject R (PI
         (dgNativePointSimplex R (PresentedPerfectDGObject R (PIn)) X 1,
           ULift.up (dgFunctorClosedIsoNativeEdge R (PIn) (QIn)
             (fCone).down (gTarget).down (eCone)).edge) =
-      (dgClosedEdge R (PresentedPerfectDGObject R (QIn))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R (PresentedPerfectDGObject R (QIn))
         (dgOdotAlgebraSmallInputLabelIso R d X).hom).edge :=
   presentedPerfectDGNativeCoreAction_label_closed R (PIn) (QIn) X _ _ (eCone)
 
@@ -62,8 +62,8 @@ lemma dgOdotAlgebraSmallInputLabelIso_inv (X : PresentedPerfectDGObject R (PIn))
 /-- 元の実 cone 比較四角形全体の ν 像は、同じ実入力区間の元の豊穣作用の標準比較。 -/
 lemma dgOdotAlgebraSmallNuSquare_native :
     dgOdotAlgebraSmallNuSquare R d =
-      intervalMappingUncurry (dgKInputClosedIsoNuParameter R (fCone) (gTarget) (eCone) ≫
-        coherentHomIntervalComparison (presentedPerfectDGStableQCat R (PIn))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (dgKInputClosedIsoNuParameter R (fCone) (gTarget) (eCone) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison (presentedPerfectDGStableQCat R (PIn))
           (presentedPerfectDGStableQCat R (QIn))) :=
   dgKInputClosedIsoSquare_nu R (fCone) (gTarget) (eCone)
 

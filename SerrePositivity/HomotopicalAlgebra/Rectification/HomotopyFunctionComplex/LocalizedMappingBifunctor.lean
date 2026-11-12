@@ -102,7 +102,7 @@ abbrev homotopyMapping : Cᵒᵖ ⥤ C ⥤ H :=
 /-- The final all-target value at a fibrant object is the original resolution Hom. -/
 def homotopyMappingFibrantIso (X : Cᵒᵖ) (Y : FibrantObject C) :
     ((homotopyMapping hcof L Q).obj X).obj Y.obj ≅
-      L.obj ((cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj Y.obj) :=
+      L.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj Y.obj) :=
   (localizedTargetHomComparison hcof L Q X).app Y
 
 /-- Inverting a target weak equivalence uses Q, not a chosen fibrant replacement. -/
@@ -130,7 +130,7 @@ lemma homotopyMapping_map_source_isIso {X X' : Cᵒᵖ}
 def homotopyMappingReplacementIso (X : Cᵒᵖ) {Y R : C} [IsFibrant R]
     (i : Y ⟶ R) (hi : weakEquivalences C i) :
     ((homotopyMapping hcof L Q).obj X).obj Y ≅
-      L.obj ((cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj R) := by
+      L.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (Reedy.cosimplicialResolution X.unop).obj).obj R) := by
   have := homotopyMapping_map_target_isIso hcof L Q X i hi
   exact asIso (((homotopyMapping hcof L Q).obj X).map i) ≪≫
     homotopyMappingFibrantIso hcof L Q X (FibrantObject.mk R)
@@ -148,7 +148,7 @@ theorem homotopyMapping_has_representative (X : Cᵒᵖ) (Y : C) :
     (isFibrant_iff_of_isTerminal d.p CategoryTheory.Limits.terminalIsTerminal).mpr inferInstance
   let q := Reedy.cosimplicialResolution X.unop
   have : IsIso (Q.map d.i) := Localization.inverts Q (weakEquivalences C) _ d.hi.2
-  refine ⟨(cosimplicialHom q.obj).obj d.Z,
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj d.Z,
     cosimplicialHom_kanComplex _ q.cofibrant q.homotopicallyConstant d.Z,
     ⟨homotopyMappingReplacementIso hcof L Q X d.i d.hi.2⟩, ?_⟩
   exact ⟨(resolutionPiZeroLocalizationEquiv Q q d.Z).trans

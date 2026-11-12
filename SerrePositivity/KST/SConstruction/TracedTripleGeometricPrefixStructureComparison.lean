@@ -21,13 +21,13 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 元の単射源構造射による、次段全写像空間の同じ制限。 -/
 def monicKTracedTripleStageRestriction (w z : I) (n : ℕ) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj w)).sigma n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj w)).sigma n)
     ((kKanSequence (F.obj z)).level (n + 1)).space
 
 /-- 元の同じ次段制限は、追加のモデル圏仮定なしで fibration。 -/
 instance monicKTracedTripleStageRestriction_fibration (w z : I) (n : ℕ) :
     Fibration (monicKTracedTripleStageRestriction F w z n) :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration ((kOmegaSpectrum (F.obj w)).sigma n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration ((kOmegaSpectrum (F.obj w)).sigma n)
     ((kKanSequence (F.obj z)).level (n + 1)).space
 
 variable {w x y z : I} (f : w ⟶ x) (g : x ⟶ y) (h : y ⟶ z) (n : ℕ)
@@ -76,7 +76,7 @@ lemma monicKTracedTripleGeometricPrefixStructureComparison_relative :
 
 /-- 全出力比較の上面の構造射制限は、元の指定全基底比較の零面そのもの。 -/
 lemma monicKTracedTripleGeometricPrefixStructureComparison_upper_projection :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (monicKTracedTripleGeometricPrefixStructureComparison F f g h n v H hr).h ≫
           monicKTracedTripleStageRestriction F w z n =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫ H.h :=
@@ -85,11 +85,11 @@ lemma monicKTracedTripleGeometricPrefixStructureComparison_upper_projection :
 /-- 指定全基底円柱の両全面を保持すれば、次段の全出力比較も同じ全基底像を保つ。 -/
 lemma monicKTracedTripleGeometricPrefixStructureComparison_projection
     (q : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) ⊗ Δ[1] ⟶
-      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj w)).level n).space)
+      (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj w)).level n).space)
         ((kKanSequence (F.obj z)).level (n + 1)).space).right)
-    (hu : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫ q =
+    (hu : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫ q =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫ H.h)
-    (hl : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
+    (hl : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
       fst (Δ[2] : SSet.{u}) Δ[1] ≫ SSet.yonedaEquiv.symm
         (SSet.Edge.CompStruct.compId
           (monicKTracedTripleLeftStageEdgeData F f g h (n + 1)).second).simplex ≫

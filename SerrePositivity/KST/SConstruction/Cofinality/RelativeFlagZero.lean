@@ -34,23 +34,23 @@ lemma WideStageData.vertex_mem {X Y : StableModel.{u}} (f : X ⟶ Y)
       (X := (truncation 2).obj Y.carrier) y).edge :=
     congrArg (fun q => Y.carrier.map q.op y) hθ
   let a := SSet.Truncated.Edge.id (X := (truncation 2).obj Y.carrier) y
-  let s := chosenCofiberSquare a
-  have hi : IsInvertibleEdge a := by
+  let s := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.chosenCofiberSquare a
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a := by
     change IsIso (SSet.Truncated.HomotopyCategory.homMk (SSet.Truncated.Edge.id _))
     have h := SSet.Truncated.HomotopyCategory.homMk_id
       (V := (truncation 2).obj Y.carrier) y
     exact h.symm ▸ (inferInstance : IsIso (𝟙 (HomotopyCategory.mk y : hoFunctor.obj Y.carrier)))
-  let t : CofiberSquare (edgeOfSimplex a.edge) := {
+  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.edge) := {
     toZeroTriangle := s.toZeroTriangle
     bottom_edge := s.bottom_edge
     isPushout := s.isPushout }
-  let x := chosenZeroVertex X.carrier
-  let : IsExactFunctor f.val := stableModelHom_exact f
-  have hz := IsExactFunctor.preservesZero (F := f.val) x.vertex x.isZero
-  have e : VertexIso t.cofiber (f.val.app (Opposite.op ⦋0⦌) x.vertex) :=
+  let x := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex X.carrier
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := stableModelHom_exact f
+  have hz := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := f.val) x.vertex x.isZero
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso t.cofiber (f.val.app (Opposite.op ⦋0⦌) x.vertex) :=
     (s.zero_of_homMk_isIso hi).isZeroHo.iso hz.isZeroHo
-  have hm : a.edge ∈ cofiberLocalizingEdges
-      {z | ∃ v, Nonempty (VertexIso (f.val.app (Opposite.op ⦋0⦌) v) z)} :=
+  have hm : a.edge ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+      {z | ∃ v, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.val.app (Opposite.op ⦋0⦌) v) z)} :=
     ⟨t, f.val.app (Opposite.op ⦋0⦌) x.vertex, ⟨x.vertex, ⟨Iso.refl _⟩⟩, ⟨e⟩⟩
   exact hy ▸ hm
 
@@ -60,11 +60,11 @@ lemma WideStageData.vertex_mem {X Y : StableModel.{u}} (f : X ⟶ Y)
 使われ方：相対旗の零段の包含の同型性。 -/
 lemma multiRelativeFlagPredicate_point (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (v : ((ihom (Δ[0] : SSet.{u})).obj
       (((multiSEndofunctor r).obj ι).obj Y).carrier) _⦋0⦌) :
     multiRelativeFlagPredicate r ι Y (multiWideStageData supply r ι f hf).subcomplex Δ[0] v := by
-  obtain ⟨F, rfl⟩ := (functorVertexEquiv Δ[0] _).surjective v
+  obtain ⟨F, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[0] _).surjective v
   let d := multiWideStageData supply r ι f hf
   let y : (d.subcomplex : SSet.{u}) _⦋0⦌ :=
     ⟨SSet.yonedaEquiv F, d.vertex_mem _ _⟩
@@ -72,7 +72,7 @@ lemma multiRelativeFlagPredicate_point (supply : StableWideCofinalitySupply.{u})
   have he : g ≫ d.subcomplex.ι = F := by
     apply SSet.yonedaEquiv.injective
     exact congrArg Subtype.val (SSet.yonedaEquiv.apply_symm_apply y)
-  exact ⟨g, congrArg functorVertex he⟩
+  exact ⟨g, congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex he⟩
 
 /-- 概要：相対旗の未置換零段の包含は元の一点関手圏との同型。
 方針：全頂点で成立する相対条件を付ける射を逆射とする。
@@ -80,11 +80,11 @@ lemma multiRelativeFlagPredicate_point (supply : StableWideCofinalitySupply.{u})
 使われ方：元の S 図式の零段への接続。 -/
 def multiRelativeFlagPointInclusionIso (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     suppliedMultiRelativeFlags supply r ι f hf Δ[0] ≅
       (ihom (Δ[0] : SSet.{u})).obj (((multiSEndofunctor r).obj ι).obj Y).carrier where
   hom := multiRelativeFlagsInclusion r ι Y (multiWideStageData supply r ι f hf).subcomplex Δ[0]
-  inv := fullSubcomplexLift _ (𝟙 _)
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (𝟙 _)
     (multiRelativeFlagPredicate_point supply r ι f hf)
   hom_inv_id := by
     apply SSet.hom_ext
@@ -101,7 +101,7 @@ def multiRelativeFlagPointInclusionIso (supply : StableWideCofinalitySupply.{u})
 使われ方：同じ元の K 射へ戻る零段比較。 -/
 def multiRelativeFlagZeroIso (supply : StableWideCofinalitySupply.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     suppliedMultiRelativeFlags supply r ι f hf Δ[0] ≅
       (((multiSEndofunctor r).obj ι).obj Y).carrier :=
   multiRelativeFlagPointInclusionIso supply r ι f hf ≪≫ pointFunctorEvaluationIso _

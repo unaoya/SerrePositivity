@@ -79,8 +79,8 @@ def kernelLimOneEquiv :
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
     (comparison X j k r hk).ker ≃
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (coefficients X k) n).right (r + 1)
         (stage (coefficients X k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (coefficients X k) n)) := by
   let := totalization_kanComplex X k
@@ -95,7 +95,7 @@ lemma kernelLimOneEquiv_one :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    kernelLimOneEquiv X j k r hk 1 = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _ := by
+    kernelLimOneEquiv X j k r hk 1 = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _ := by
   let := totalization_kanComplex X k
   let : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
   let : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
@@ -109,7 +109,7 @@ lemma kernelLimOneEquiv_symm_point :
     letI := totalization_kanComplex X k
     letI : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
     letI : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k
-    (kernelLimOneEquiv X j k r hk).symm (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+    (kernelLimOneEquiv X j k r hk).symm (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   let := totalization_kanComplex X k
   let : ∀ n, KanComplex (stage (coefficients X k) n).right := stage_kanComplex X k
   let : ∀ n, HomotopicalAlgebra.Fibration (step (coefficients X k) n).right := step_fibration X k

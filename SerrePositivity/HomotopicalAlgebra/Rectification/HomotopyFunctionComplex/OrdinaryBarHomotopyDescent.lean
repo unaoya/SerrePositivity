@@ -75,7 +75,7 @@ def realizationIso : functor (C := C) hcof hfib ⋙ realization.{v, u} ≅
   NatIso.ofComponents (OrdinaryBarSmallReference.comparisonIso hcof hfib) (by
     intro X Y f
     change AnodyneHomotopy.anodyneQ.map
-        (UniverseLift.map.{max u v} (OrdinaryBarSmallAction.arrow hcof hfib f)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (OrdinaryBarSmallAction.arrow hcof hfib f)) ≫
           (OrdinaryBarSmallReference.comparisonIso hcof hfib Y).hom = _
     rw [OrdinaryBarSmallAction.arrow_map]
     simp only [OrdinaryBarSmallAction.transported, Category.assoc,
@@ -92,8 +92,8 @@ lemma map_isIso {X Y : Cᵒᵖ × C} (f : X ⟶ Y)
   let : R.Faithful := hR.faithful
   have : IsIso (R.map ((functor hcof hfib).map f)) := by
     change IsIso (AnodyneHomotopy.anodyneQ.map
-      (UniverseLift.map.{max u v} (OrdinaryBarSmallAction.arrow hcof hfib f)))
-    exact UniverseLift.anodyneQ_map_isIso_of_weakEquivalence hcof hfib _
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (OrdinaryBarSmallAction.arrow hcof hfib f)))
+    exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.anodyneQ_map_isIso_of_weakEquivalence hcof hfib _
       (OrdinaryBarSmallAction.arrow_weakEquivalence hcof hfib f hs ht)
   exact isIso_of_reflects_iso _ R
 

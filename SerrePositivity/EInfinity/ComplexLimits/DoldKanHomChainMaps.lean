@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.DoldKanComparison.DoldKanIso
-public import SerrePositivity.InfinityCategories.Derived.PinchedHomChainMap
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DoldKanIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedHomChainMap
 
 /-!
 # 元の線形 Hom 模型への鎖写像の全作用
@@ -20,49 +20,49 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve.PinchedHom DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {x' y' : E}
 
 def homModuleChainMap (f : homObject R D x y ⟶ homObject R E x' y') :
-    homModule (R := R) x y ⟶ homModule (R := R) x' y' where
-  app n := ModuleCat.ofHom (pinchedLinearSimplexMap f)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homModule (R := R) x y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homModule (R := R) x' y' where
+  app n := ModuleCat.ofHom (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap f)
   naturality {n m} α := by
     apply ConcreteCategory.hom_ext
     intro s
-    exact pinchedLinearSimplexMap_pullback f α.unop.toOrderHom s
+    exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap_pullback f α.unop.toOrderHom s
 
 lemma pinchedLinearDataMap_signChange (f : homObject R D x y ⟶ homObject R E x' y')
-    {n : ℕ} (s : LinearData R x y n) :
-    pinchedLinearDataMap f (signChangeData s) = signChangeData (pinchedLinearDataMap f s) := by
+    {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData R x y n) :
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearDataMap f (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData s) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearDataMap f s) := by
   funext i
-  change f.f i.val.2 (degreeSign (i.val.1.card - 1) • s i) =
-    degreeSign (i.val.1.card - 1) • f.f i.val.2 (s i)
+  change f.f i.val.2 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.degreeSign (i.val.1.card - 1) • s i) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.degreeSign (i.val.1.card - 1) • f.f i.val.2 (s i)
   exact map_zsmul _ _ _
 
 def standardModuleChainMap (f : homObject R D x y ⟶ homObject R E x' y') :
-    standardModule (R := R) x y ⟶ standardModule (R := R) x' y' :=
-  (standardModuleIso (R := R) x y).inv ≫ homModuleChainMap f ≫
-    (standardModuleIso (R := R) x' y').hom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x' y' :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModuleIso (R := R) x y).inv ≫ homModuleChainMap f ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModuleIso (R := R) x' y').hom
 
 lemma standardModuleChainMap_val (f : homObject R D x y ⟶ homObject R E x' y')
-    (n : SimplexCategoryᵒᵖ) (s : StandardSimplex R x y n.unop.len) :
-    ((standardModuleChainMap f).app n s).val = pinchedLinearDataMap f s.val := by
-  change signChangeData (pinchedLinearDataMap f (signChangeData s.val)) = _
-  rw [← pinchedLinearDataMap_signChange, signChangeData_involutive]
+    (n : SimplexCategoryᵒᵖ) (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StandardSimplex R x y n.unop.len) :
+    ((standardModuleChainMap f).app n s).val = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearDataMap f s.val := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearDataMap f (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData s.val)) = _
+  rw [← pinchedLinearDataMap_signChange, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData_involutive]
 
 lemma homSpaceLiftIso_chainMap (f : homObject R D x y ⟶ homObject R E x' y') :
     SSet.uliftFunctor.{v, u}.map (Functor.whiskerRight (homModuleChainMap f)
-      (forget (ModuleCat R))) ≫ (homSpaceLiftIso (R := R) x' y').hom =
-    (homSpaceLiftIso (R := R) x y).hom ≫ pinchedHomChainMap f := by
+      (forget (ModuleCat R))) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homSpaceLiftIso (R := R) x' y').hom =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.homSpaceLiftIso (R := R) x y).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap f := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
   intro s
-  apply (linearEquiv x' y' n.unop.len).injective
-  change toLinearSimplex (pinchedLinearSimplexMap f s.down).toPinched =
-    toLinearSimplex (pinchedHomChainMapSimplex f s.down.toPinched)
-  rw [pinchedHomChainMapSimplex_linear, LinearSimplex.toLinearSimplex_toPinched,
-    LinearSimplex.toLinearSimplex_toPinched]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.linearEquiv x' y' n.unop.len).injective
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap f s.down).toPinched =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMapSimplex f s.down.toPinched)
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMapSimplex_linear, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.toLinearSimplex_toPinched,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.toLinearSimplex_toPinched]
 
 end SerrePositivity.EInfinity.ComplexLimits

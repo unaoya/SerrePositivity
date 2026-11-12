@@ -42,7 +42,7 @@ abbrev hatGLSpace : SSet.{u} := hatGLMonoidObject A r ⋙ forget MonCat
 @[simp] theorem matrixToComponents_zero_entry
     (s : Matrix (Fin r) (Fin r) (A.obj (op ⦋0⦌))) (i j : Fin r) :
     matrixToComponents A r 0 s i j = (π₀.mk (s i j) : π₀ (ringSpace A)) :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero (ringSpace A) (s i j)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero (ringSpace A) (s i j)
 
 /--
 概要：ĜL_r の辺から各係数の辺を取り出す。

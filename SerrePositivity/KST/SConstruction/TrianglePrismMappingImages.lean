@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.TrianglePrismStaircase
-public import SerrePositivity.InfinityCategories.F1.Coherent.MapSmallness
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.MapSmallness
 public import SerrePositivity.KST.Spectra.CoherentSimplexCompositionFaces
 
 /-! # 同じ合成 prism の三つの coherent 三単体
@@ -27,24 +27,24 @@ def trianglePrismImage (q : Fin 3) : (SimplicialNerve C) _⦋3⦌ :=
 
 /-- 三つの三単体の共通始点は、元の prism の左下頂点の同じ対象。 -/
 def trianglePrismSource : C :=
-  coherentNerveObject (Q.app (Opposite.op ⦋0⦌)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (Q.app (Opposite.op ⦋0⦌)
     (SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 3), SSet.stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
 
 /-- 三つの三単体の共通終点は、元の prism の右上頂点の同じ対象。 -/
 def trianglePrismTarget : C :=
-  coherentNerveObject (Q.app (Opposite.op ⦋0⦌)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (Q.app (Opposite.op ⦋0⦌)
     (SSet.stdSimplex.obj₀Equiv.symm (2 : Fin 3), SSet.stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
 
 /-- 三単体の始点は、共有する元の左下対象を厳密に回収する。 -/
 lemma trianglePrismImage_source (q : Fin 3) :
     (trianglePrismImage Q q).obj (.mk (ULift.up 0)) = trianglePrismSource Q := by
-  rw [trianglePrismImage, coherentMap_simplex_obj]
+  rw [trianglePrismImage, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj]
   fin_cases q <;> rfl
 
 /-- 三単体の終点は、共有する元の右上対象を厳密に回収する。 -/
 lemma trianglePrismImage_target (q : Fin 3) :
     (trianglePrismImage Q q).obj (.mk (ULift.up 3)) = trianglePrismTarget Q := by
-  rw [trianglePrismImage, coherentMap_simplex_obj]
+  rw [trianglePrismImage, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentMap_simplex_obj]
   fin_cases q <;> rfl
 
 /-- 元の三つの Hom は、元の共通両端の同じ Hom である。 -/

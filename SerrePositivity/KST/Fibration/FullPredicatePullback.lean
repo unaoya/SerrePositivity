@@ -23,12 +23,12 @@ lemma isPullback_fullPredicates {Z X Y T : SSet.{u}}
     (hr : ∀ z, R z ↔ P (p.app (Opposite.op ⦋0⦌) z) ∧ Q (q.app (Opposite.op ⦋0⦌) z)) :
     IsPullback (fullPredicateMap p R P (fun z hz => ((hr z).1 hz).1))
       (fullPredicateMap q R Q (fun z hz => ((hr z).1 hz).2))
-      ((fullSubcomplexOnVertices X P).ι ≫ f) ((fullSubcomplexOnVertices Y Q).ι ≫ g) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι ≫ f) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Y Q).ι ≫ g) := by
   let a := fullPredicateMap p R P (fun z hz => ((hr z).1 hz).1)
   let b := fullPredicateMap q R Q (fun z hz => ((hr z).1 hz).2)
-  let ιZ := (fullSubcomplexOnVertices Z R).ι
-  let ιX := (fullSubcomplexOnVertices X P).ι
-  let ιY := (fullSubcomplexOnVertices Y Q).ι
+  let ιZ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Z R).ι
+  let ιX := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X P).ι
+  let ιY := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Y Q).ι
   have ha : a ≫ ιX = ιZ ≫ p := fullPredicateMap_ι _ _ _ _
   have hb : b ≫ ιY = ιZ ≫ q := fullPredicateMap_ι _ _ _ _
   have hw : a ≫ (ιX ≫ f) = b ≫ (ιY ≫ g) := by
@@ -40,16 +40,16 @@ lemma isPullback_fullPredicates {Z X Y T : SSet.{u}}
   have hraw₁ (s : PullbackCone (ιX ≫ f) (ιY ≫ g)) : raw s ≫ q = s.snd ≫ ιY :=
     h.lift_snd _ _ _
   let lift (s : PullbackCone (ιX ≫ f) (ιY ≫ g)) :
-      s.pt ⟶ (fullSubcomplexOnVertices Z R : SSet.{u}) :=
-    fullSubcomplexLift R (raw s) (by
+      s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Z R : SSet.{u}) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift R (raw s) (by
       intro v
       apply (hr _).2
       have he₀ := ConcreteCategory.congr_hom (NatTrans.congr_app (hraw₀ s) (Opposite.op ⦋0⦌)) v
       have he₁ := ConcreteCategory.congr_hom (NatTrans.congr_app (hraw₁ s) (Opposite.op ⦋0⦌)) v
-      exact ⟨(congrArg P he₀).mpr (fullSubcomplexOnVertices_vertex (s.fst.app _ v)),
-        (congrArg Q he₁).mpr (fullSubcomplexOnVertices_vertex (s.snd.app _ v))⟩)
+      exact ⟨(congrArg P he₀).mpr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (s.fst.app _ v)),
+        (congrArg Q he₁).mpr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (s.snd.app _ v))⟩)
   have hl (s : PullbackCone (ιX ≫ f) (ιY ≫ g)) : lift s ≫ ιZ = raw s :=
-    fullSubcomplexLift_ι _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   apply IsPullback.of_isLimit (PullbackCone.IsLimit.mk hw lift ?_ ?_ ?_)
   · intro s
     apply (cancel_mono ιX).1

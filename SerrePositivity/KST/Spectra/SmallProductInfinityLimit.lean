@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.Limits.SpectrumFiniteProducts
 @[expose] public section
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.SmallProduct
 noncomputable section
@@ -28,7 +28,7 @@ def cone (F : Discrete S ⥤ OmegaSpectrum.{u}) : Cone F where
 
 /-- 積の錐の各スペクトル段は点つき単体集合の極限。 -/
 def levelIsLimit (F : Discrete S ⥤ OmegaSpectrum.{u}) (n : ℕ) :
-    IsLimit (spectrumLevelCone (cone F) n) where
+    IsLimit (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumLevelCone (cone F) n) where
   lift s := PointedSmallProduct.lift (fun j ↦ s.π.app (Discrete.mk j))
   fac s j := PointedSmallProduct.lift_projection _ j.as
   uniq s m hm := by
@@ -54,17 +54,17 @@ local instance (X Y : OmegaSpectrum.{u}) : KanComplex (SimplicialCategory.sHom X
 
 /-- 全ての実際の豊穣 Hom で小積錐は極限。 -/
 def homIsLimit (F : Discrete S ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone (cone F) X) :=
-  spectrumHomCone_isLimit_of_levelwise _ (levelIsLimit F) X
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (cone F) X) :=
+  _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumHomCone_isLimit_of_levelwise _ (levelIsLimit F) X
 
 /-- 構成した実際の積の錐を coherent nerve へ送る。 -/
-def infinityCone (F : Discrete S ⥤ OmegaSpectrum.{u}) : JoinCone (strictCoherentDiagram F) :=
-  strictCoherentCone (cone F)
+def infinityCone (F : Discrete S ⥤ OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (cone F)
 
 /-- 任意の小さい離散スペクトル図式の積錐は Sp の実際の ∞ 極限錐。 -/
 lemma infinityCone_isLimit (F : Discrete S ⥤ OmegaSpectrum.{u}) :
-    IsLimitCone (infinityCone F) :=
-  strictCoherentCone_isLimit_of_discrete_homLimit _ (homIsLimit F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (infinityCone F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_discrete_homLimit _ (homIsLimit F)
 
 end
 end SerrePositivity.KST.Spectra.OmegaSpectrum.SmallProduct

@@ -27,35 +27,35 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 
 /-- 同じ実右軸間の全 Hom を、元の右射影そのものを持つ鎖同型で比較する。 -/
 def dgGluingRightAxisHomIso (d e : D) :
-    homObject R (DGGluingObject R C D M)
+    homObject R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
       (dgGluingRightAxisObject R C D M z d) (dgGluingRightAxisObject R C D M z e) ≅
     homObject R D d e :=
-  (dgGluingHomRepresentableIso R C D M
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso R C D M
     (dgGluingRightAxisObject R C D M z d) (dgGluingRightAxisObject R C D M z e)) ≪≫
   (dgCommaZeroSourceIso R D (RightModule R C) M.toFunctor
-    (dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M z d))
-    (dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M z e))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M z d))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingCommaObject R C D M (dgGluingRightAxisObject R C D M z e))
     (dgRepresentableClosedZeroHom R z hz (representable R z))
     (dgRepresentableClosedZeroHom R z hz (M.rightAt e)))
 
 /-- 同じ全 Hom 同型の順射は、元の実右 Hom 射影そのもの。 -/
 lemma dgGluingRightAxisHomIso_hom (d e : D) :
     (dgGluingRightAxisHomIso R C D M z hz d e).hom =
-      dgGluingRightHomMap R C D M
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M
         (dgGluingRightAxisObject R C D M z d) (dgGluingRightAxisObject R C D M z e) :=
-  dgGluingHomRepresentableIso_right R C D M _ _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso_right R C D M _ _
 
 /-- 元の実右軸包含の Hom 作用と元の右射影は、厳密に恒等写像へ合成する。 -/
 lemma dgGluingRightAxis_map_right (d e : D) :
-    (dgGluingRightAxis R C D M z hz).map d e ≫ dgGluingRightHomMap R C D M
+    (dgGluingRightAxis R C D M z hz).map d e ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRightHomMap R C D M
       (dgGluingRightAxisObject R C D M z d) (dgGluingRightAxisObject R C D M z e) =
       𝟙 (homObject R D d e) := by
   have hh := dgFunctorMapOfEq
-    ((dgGluingRightAxis R C D M z hz).comp (dgGluingRight R C D M)) (DGFunctor.id D)
+    ((dgGluingRightAxis R C D M z hz).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M)) (DGFunctor.id D)
     (dgGluingRightAxis_right R C D M z hz) (fun _ => rfl) d e
   change ((dgGluingRightAxis R C D M z hz).map d e ≫
-    (dgGluingRight R C D M).map _ _) ≫ 𝟙 _ = 𝟙 _ at hh
-  rw [Category.comp_id, dgGluingRight_map] at hh
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).map _ _) ≫ 𝟙 _ = 𝟙 _ at hh
+  rw [Category.comp_id, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight_map] at hh
   exact hh
 
 /-- 元の実右軸包含の Hom 作用は、同じ右 Hom 射影同型の逆そのもの。 -/

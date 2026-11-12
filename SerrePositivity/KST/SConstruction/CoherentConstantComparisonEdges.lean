@@ -45,24 +45,24 @@ lemma coherentSimplexCompositionEdge_leftUnit
 lemma coherentNerveCompStruct_comparison_edge_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
-    HEq (coherentSimplexCompositionEdge (coherentNerveCompStruct f g).simplex
+    HEq (coherentSimplexCompositionEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).simplex
       0 1 2 (by decide) (by decide)).edge
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge := by
-  change HEq (PinchedHom.constant (SimplicialCategory.homEquiv' X Z (f ≫ g)) 1)
+  change HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Z (f ≫ g)) 1)
     (SSet.Edge.id (SimplicialCategory.homEquiv' X Z (f ≫ g))).edge
-  exact heq_of_eq (pinchedConstant_one _)
+  exact heq_of_eq (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _)
 
 /-- 元の左恒等合成面の全比較辺も、元の同じ通常射の頂点の恒等辺。 -/
 lemma coherentNerveIdComp_comparison_edge_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y : C} (f : X ⟶ Y) :
     HEq (coherentSimplexCompositionEdge
-      (SSet.Edge.CompStruct.idComp (coherentNerveEdge f)).simplex
+      (SSet.Edge.CompStruct.idComp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)).simplex
       0 1 2 (by decide) (by decide)).edge
       (SSet.Edge.id (SimplicialCategory.homEquiv' X Y f)).edge := by
-  have hn := coherentSimplexCompositionEdge_naturality (coherentNerveEdge f).edge
+  have hn := coherentSimplexCompositionEdge_naturality (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge
     (SimplexCategory.σ (0 : Fin 2)) 0 1 2 (by decide) (by decide)
-  have hu := coherentSimplexCompositionEdge_leftUnit (coherentNerveEdge f).edge 0 1 (by decide)
+  have hu := coherentSimplexCompositionEdge_leftUnit (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge 0 1 (by decide)
   have hc := congrArg (fun k : X ⟶ Y =>
     (SSet.Edge.id (SimplicialCategory.homEquiv' X Y k)).edge) (coherentSimplexArrow_edge f)
   exact (heq_of_eq hn).trans ((heq_of_eq hu).trans (heq_of_eq hc))

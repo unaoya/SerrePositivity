@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentTotalMapNative
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.CoherentCoconeTransportAction
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalMapNative
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentCoconeTransportAction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoEndpointTransport
 
 /-!

@@ -59,7 +59,7 @@ def rationalizationLinearEquiv (X : OmegaSpectrum.{u}) (j : ℤ) :
 規約：q は実際のホモトピー次数 q+2、k はスペクトルの段。
 使われ方：BF 1978 §2、HA §1.4.2。段ごとの群へ係数構造を移す。 -/
 def positiveLevelStableEquiv (X : OmegaSpectrum.{u}) (k q : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X.level k).space.right (q + 1) (X.level k).space.basepoint ≃*
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X.level k).space.right (q + 1) (X.level k).space.basepoint ≃*
       homotopyGroup X ((q : ℤ) + 2 - (k : ℤ)) := by
   have h := homotopyGroupEquivAt X ((q : ℤ) + 2 - (k : ℤ)) k (by omega)
   have hd : degree ((q : ℤ) + 2 - (k : ℤ)) k = q + 2 := by
@@ -73,7 +73,7 @@ def positiveLevelStableEquiv (X : OmegaSpectrum.{u}) (k q : ℕ) :
 規約：q は実際の次数 q+2。零次数と一次群にはこの宣言を使わない。
 使われ方：BF 1978 §2、Goerss–Jardine VIII §2。有限群 cochain の標数零係数。 -/
 instance rationalizationLevelModule (X : OmegaSpectrum.{u}) (k q : ℕ) :
-    Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((rationalization X).level k).space.right
+    Module ℚ (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((rationalization X).level k).space.right
       (q + 1) ((rationalization X).level k).space.basepoint)) :=
   (MulEquiv.toAdditive (positiveLevelStableEquiv (rationalization X) k q)).module ℚ
 

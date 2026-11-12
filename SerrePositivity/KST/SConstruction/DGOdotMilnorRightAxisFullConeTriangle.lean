@@ -17,14 +17,14 @@ open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 
 /-- 概要：元右軸比較の指定 cone 零化を全 native 関手圏の実二単体にする。
 方針：元全 end 二単体を同じ native 全評価で写す。
 規約：元次数 −1 の自然零化を保持。使われ方：元 cofiber 全図式の零化面。 -/
 def dgOdotMilnorRightAxisFullConeTriangle :
-    ((ihom (dgNerve R (P))).obj (dgNerve R (RightModule R (Q)))) _⦋2⦌ :=
+    ((ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (P))).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (RightModule R (Q)))) _⦋2⦌ :=
   (dgFunctorNativeFullFamilyMap R (P) (RightModule R (Q))).app (op ⦋2⦌)
     (dgOdotMilnorRightAxisEndConeTriangle R d)
 

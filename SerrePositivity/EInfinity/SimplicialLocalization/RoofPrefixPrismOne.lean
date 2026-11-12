@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixPrismSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentRightConeFixedFront
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentRightConeFixedFront
 
 /-!
 # 元の混合 coherent 単体の一端は同じ native Hom 比較
@@ -21,15 +21,15 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory SSet MonoidalCategory
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (U : I ⥤ C.category) {X Y : C.category} (p : U ⟶ (Functor.const I).obj X)
   (hp : ∀ i, C.weakEquivalences (p.app i)) (σ : U ⟶ (Functor.const I).obj Y)
   (hU : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (U.map a))
 
 lemma simplex_one {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
     simplex C U p hp σ hU Γ (OrderHom.const _ 1) =
-      coherentHomComparisonSimplex ((familyMap C U p hp σ hU).app (Opposite.op ⦋n⦌) Γ) := by
-  apply FrameHom.CoherentRightCone.diagram_eq_comparison
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex ((familyMap C U p hp σ hU).app (Opposite.op ⦋n⦌) Γ) := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.diagram_eq_comparison
     (frontDiagram C U p Γ (OrderHom.const _ 1)) ((kanHammockSourceFunctor C).obj Y)
     (lastHom C U p hp σ hU Γ (OrderHom.const _ 1))
     (lastHom_comp C U p hp σ hU Γ (OrderHom.const _ 1))
@@ -42,6 +42,6 @@ lemma simplex_one {n : ℕ} (Γ : Fin (n + 1) ⥤ I) :
     (familyMap C U p hp σ hU)
   exact congrArg (fun f : (Δ[n] : SSet.{u}) ⟶ SimplicialCategory.sHom
     ((kanHammockSourceFunctor C).obj X) ((kanHammockSourceFunctor C).obj Y) =>
-      pathLastMaximumMap i ≫ f) h
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap i ≫ f) h
 
 end SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix

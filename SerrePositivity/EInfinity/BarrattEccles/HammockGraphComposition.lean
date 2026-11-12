@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphTransition
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphComposition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GraphComposition
 
 /-!
 # 元の E 代数の固定語の hammock graph の合成
@@ -24,24 +24,24 @@ namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A]
 
 /-- 元の同じ E 代数の固定語の graph の単体的合成。 -/
-def algebraHammockGraphComposition (a b : Hammock.Word) (X Y Z : (operad A).Algebra) :
+def algebraHammockGraphComposition (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : (operad A).Algebra) :
     algebraHammockGraph A a X Y ⊗ algebraHammockGraph A b Y Z ⟶
-      algebraHammockGraph A (Hammock.Word.append a b) X Z := by
+      algebraHammockGraph A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append a b) X Z := by
   let := modelCategory A
-  exact Hammock.graphComposition (weakEquivalences (operad A).Algebra) a b X Y Z
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphComposition (weakEquivalences (operad A).Algebra) a b X Y Z
 
 /-- 全単体の全頂点で、元の同じ二つの zigzag を連結する。 -/
-lemma algebraHammockGraphComposition_vertex (a b : Hammock.Word) (X Y Z : (operad A).Algebra)
+lemma algebraHammockGraphComposition_vertex (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : (operad A).Algebra)
     (n : SimplexCategoryᵒᵖ) (σ : (algebraHammockGraph A a X Y).obj n)
     (τ : (algebraHammockGraph A b Y Z).obj n) (j : Fin (n.unop.len + 1)) :
     ((algebraHammockGraphComposition A a b X Y Z).app n (σ, τ)).obj j =
-      Hammock.ZigzagAppend.obj (σ.obj j) (τ.obj j) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendObjects.obj (σ.obj j) (τ.obj j) := rfl
 
 /-- 全単体の全縦射で、元の同じ弱同値の二つの縦射を連結する。 -/
-lemma algebraHammockGraphComposition_map (a b : Hammock.Word) (X Y Z : (operad A).Algebra)
+lemma algebraHammockGraphComposition_map (a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : (operad A).Algebra)
     (n : SimplexCategoryᵒᵖ) (σ : (algebraHammockGraph A a X Y).obj n)
     (τ : (algebraHammockGraph A b Y Z).obj n) {i j : Fin (n.unop.len + 1)} (h : i ⟶ j) :
     ((algebraHammockGraphComposition A a b X Y Z).app n (σ, τ)).map h =
-      Hammock.ZigzagAppend.map (σ.map h) (τ.map h) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendMorphisms.map (σ.map h) (τ.map h) := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

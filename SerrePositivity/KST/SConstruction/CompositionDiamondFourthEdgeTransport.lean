@@ -17,11 +17,11 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 variable {E : SSet.{u}} [KanComplex E] {x m n z : E _⦋0⦌}
   {a : E.Edge x m} {b : E.Edge m z} {c₀ c₁ : E.Edge x n} {d : E.Edge n z}
-  (H : EndpointFixedEdgeCylinder c₀ c₁) (D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a b c₁ d)
+  (H : EndpointFixedEdgeCylinder c₀ c₁) (D : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a b c₁ d)
 
 /-- 第一全三角形と共通対角辺を同じデータに保持し、第二下面だけを相対移送する。 -/
 def compositionDiamondFourthEdgeTransportData :
-    {T : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a b c₀ d //
+    {T : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a b c₀ d //
       T.first.simplex = D.first.simplex ∧ T.diagonal = D.diagonal} :=
   ⟨⟨D.diagonal, D.first, triangleEdgeTransport H (endpointFixedEdgeCylinderRefl d)
     (endpointFixedEdgeCylinderRefl D.diagonal) D.second⟩, rfl, rfl⟩

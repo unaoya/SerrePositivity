@@ -29,7 +29,7 @@ variable (R : Type u) [CommRing R] (κ : Cardinal.{u}) [Fact κ.IsRegular]
     let I := (dgSuspensionIterationStage R
       (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone
     let d := dgKappaNativeVerdierDiagram R D I
-    FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0))
       (quotientSKernelInfinitySquare d.inclusion d.projection))
   (hrow : ∀ n m : ℕ,
     let D := dgSuspensionUnconditionalIteration R κ hκ A n
@@ -54,16 +54,16 @@ def dgSuspensionUnconditionalFirstRow_relativeComparison (n : ℕ) :
 規約：hIso・hrow に条件付き。独立した hS・I・P・Z の存在入力は取らない。
 使われ方：K-7 c5・d3 の一回の S• fibration 条件の放電を二供給へ分離する。 -/
 theorem dgSuspensionUnconditionalFirstRow_fibration :
-    ∀ n : ℕ, IsPullbackSquare
+    ∀ n : ℕ, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare
       ((dgKappaNativeVerdierDiagram R (dgSuspensionUnconditionalIteration R κ hκ A n)
         (dgSuspensionIterationStage R
           (dgKappaUnconditionalStageProvider.{u, v} R κ hκ) A n).cone).square ≫
-            coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor.{max (u + 1) v} 0)) := by
   intro n
   exact (dgSuspensionUnconditionalFirstRow_relativeComparison R κ hκ A hIso hrow n).isPullback _
 
 variable (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-    F2.Idempotent.IsIdempotentCompletion f.val →
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
       (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
         Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
 

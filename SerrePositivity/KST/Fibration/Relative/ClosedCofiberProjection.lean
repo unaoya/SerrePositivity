@@ -37,7 +37,7 @@ lemma closedCofiberProjection_predicate {B : StableModel.{u}} (P : ClosedStableP
   let s := vertexCofiberSquare (B := flagAmbient B) v
   have hv := cofiberProjection_vertex_simplex (flagAmbient B) v
   change arrowVertexSimplex ((cofiberProjection B.carrier).app (Opposite.op ⦋0⦌) v) =
-    (squareBottomArrow (squareDiagram v.val)).edge at hv
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge at hv
   have hc : (cofiberStableQuotient B).val.app (Opposite.op ⦋0⦌) v = s.cofiber :=
     cofiberVertex_corner (flagAmbient B) v
       (stdSimplex.obj₀Equiv.symm 1, stdSimplex.obj₀Equiv.symm 1)
@@ -46,7 +46,7 @@ lemma closedCofiberProjection_predicate {B : StableModel.{u}} (P : ClosedStableP
     change (True ∧ P.predicate ((cofiberStableQuotient B).val.app _ v)) ↔ _
     simpa only [true_and] using (congrArg P.predicate hc).to_iff
   have ha := closedArrowPredicate_iff P ((cofiberProjection B.carrier).app _ v)
-  have hs : (squareBottomArrow (squareDiagram v.val)).edge ∈ closedStableEdges P ↔
+  have hs : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)).edge ∈ closedStableEdges P ↔
       P.predicate s.cofiber := closedStableEdges_iff_cofiber (B := B) P s
   exact hp.trans (hs.symm.trans (((congrArg (· ∈ closedStableEdges P) hv).to_iff).symm.trans
     ha.symm))
@@ -64,7 +64,7 @@ def closedCofiberProjection {B : StableModel.{u}} (P : ClosedStablePredicate B) 
 /-- 概要：同じ射影の全境界持ち上げ。方針：正確な逆像制限の既存定理。
 規約：追加 instance 仮定なし。使われ方：全 cofiber 選択を保つ比較。 -/
 instance closedCofiberProjection_trivialKanFibration {B : StableModel.{u}}
-    (P : ClosedStablePredicate B) : TrivialKanFibration (closedCofiberProjection P) :=
+    (P : ClosedStablePredicate B) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (closedCofiberProjection P) :=
   fullPredicateMap_trivialKanFibration _ _ _ (closedCofiberProjection_predicate P)
 
 /-- 概要：相対 cofiber と元の W 辺の完全な同値。
@@ -73,12 +73,12 @@ instance closedCofiberProjection_trivialKanFibration {B : StableModel.{u}}
 def closedArrowCofiberEquivalence {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     StableModelEquivalence (relativeCofiberStableModel (ClosedStablePredicate.top B) P)
       (closedArrowModel P) := by
-  let e := qCatEquivalenceOfTrivialKanFibration (closedCofiberProjection P)
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (closedCofiberProjection P)
   exact {
-    hom := ⟨e.hom, (isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence).preservesZero,
-      (isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence).preservesCofiber⟩
-    inv := ⟨e.inv, (isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence).preservesZero,
-      (isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence).preservesCofiber⟩
+    hom := ⟨e.hom, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence).preservesZero,
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence).preservesCofiber⟩
+    inv := ⟨e.inv, (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence).preservesZero,
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence).preservesCofiber⟩
     homInvIso := e.homInvIso
     invHomIso := e.invHomIso }
 

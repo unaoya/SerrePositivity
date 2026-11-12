@@ -53,25 +53,25 @@ abbrev target (X : ResolutionObject C) (Z : C) : SSet.{v} :=
   (SimplicialModel.KanReplacement.functor hcof hfib).obj (ResolutionLiftAction.target X Z)
 
 abbrev comparison (X : ResolutionObject C) (Z : C) :
-    (cosimplicialHom X.resolution.obj).obj Z ⟶ target hcof hfib X Z :=
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj).obj Z ⟶ target hcof hfib X Z :=
   ResolutionLiftAction.comparison X Z ≫
     (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z)
 
 /-- Target functoriality uses only the value-side replacement functor. -/
 abbrev targetFunctor (X : ResolutionObject C) : C ⥤ SSet.{v} :=
-  cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj) ⋙
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj) ⋙
     SimplicialModel.KanReplacement.functor hcof hfib
 
 /-- The original resolution Hom compares naturally with the Kan-valued functor. -/
 def comparisonNatTrans (X : ResolutionObject C) :
-    cosimplicialHom X.resolution.obj ⟶ targetFunctor hcof hfib X where
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj ⟶ targetFunctor hcof hfib X where
   app Z := comparison hcof hfib X Z
   naturality {Z Z'} f := by
-    have hr := (cosimplicialHomMap
+    have hr := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
       (DiagonalFrame.augmentation (ResolutionLiftSpace.frame X).augmentation)).naturality f
     have hu := (SimplicialModel.KanReplacement.unit hcof hfib).naturality
-      ((cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map f)
-    change (cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map f ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map f)
+    change (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map f ≫
         (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z') =
       (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z) ≫
         (targetFunctor hcof hfib X).map f at hu
@@ -103,50 +103,50 @@ lemma target_map_weakEquivalence (X : ResolutionObject C) {Z Z' : C}
 /-- The same actual lift simplices act into a Kan target, without replacing products. -/
 abbrev parameterized (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
     {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) : T ⟶ target hcof hfib X Z :=
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) : T ⟶ target hcof hfib X Z :=
   ResolutionLiftAction.parameterized X Y f Z s t ≫
     (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z)
 
 abbrev action (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C) :
-    ResolutionLiftSpace.obj X Y f ⨯ (cosimplicialHom Y.resolution.obj).obj Z ⟶
+    ResolutionLiftSpace.obj X Y f ⨯ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z ⟶
       target hcof hfib X Z :=
   parameterized hcof hfib X Y f Z prod.fst prod.snd
 
 @[reassoc]
 lemma parameterized_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
     {T U : SSet.{v}} (u : U ⟶ T) (s : T ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) :
     u ≫ parameterized hcof hfib X Y f Z s t =
       parameterized hcof hfib X Y f Z (u ≫ s) (u ≫ t) := by
   rw [← Category.assoc, ResolutionLiftAction.naturality]
 
 lemma parameterized_target_naturality (X Y : ResolutionObject C) (f : X.base ⟶ Y.base)
     {Z Z' : C} (h : Z ⟶ Z') {T : SSet.{v}} (s : T ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
-    parameterized hcof hfib X Y f Z' s (t ≫ (cosimplicialHom Y.resolution.obj).map h) =
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) :
+    parameterized hcof hfib X Y f Z' s (t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).map h) =
       parameterized hcof hfib X Y f Z s t ≫ (targetFunctor hcof hfib X).map h := by
   have hu := (SimplicialModel.KanReplacement.unit hcof hfib).naturality
-    ((cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h)
-  change (cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h ≫
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h)
+  change (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (DiagonalFrame.obj (ResolutionLiftSpace.frame X).obj)).map h ≫
       (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z') =
     (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z) ≫
       (targetFunctor hcof hfib X).map h at hu
   change ResolutionLiftAction.parameterized X Y f Z' s
-      (t ≫ (cosimplicialHom Y.resolution.obj).map h) ≫ _ = (_ ≫ _) ≫ _
+      (t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).map h) ≫ _ = (_ ≫ _) ≫ _
   rw [ResolutionLiftAction.target_naturality, Category.assoc, hu, ← Category.assoc]
 
 lemma ofLift {X Y : ResolutionObject C} (f : X ⟶ Y) (Z : C) {T : SSet.{v}}
     (d : T ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
-    (t : T ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
+    (t : T ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) :
     parameterized hcof hfib X Y f.base Z (d ≫ ResolutionLiftSpace.ofLift f) t =
-      t ≫ (cosimplicialHomMap f.diagram).app Z ≫ comparison hcof hfib X Z := by
+      t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.diagram).app Z ≫ comparison hcof hfib X Z := by
   exact (congrArg (fun k => k ≫
     (SimplicialModel.KanReplacement.unit hcof hfib).app (ResolutionLiftAction.target X Z))
     (ResolutionLiftAction.ofLift f Z d t)).trans (Category.assoc _ _ _)
 
 lemma extends_action (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
     {K L : SSet.{v}} (i : K ⟶ L) [Mono i] (b : K ⟶ ResolutionLiftSpace.obj X Y f)
-    (t : L ⟶ (cosimplicialHom Y.resolution.obj).obj Z) :
+    (t : L ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom Y.resolution.obj).obj Z) :
     ∃ e : L ⟶ ResolutionLiftSpace.obj X Y f, i ≫ e = b ∧
       i ≫ parameterized hcof hfib X Y f Z e t =
         parameterized hcof hfib X Y f Z b (i ≫ t) := by
@@ -157,9 +157,9 @@ lemma extends_action (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) (Z : C)
 
 lemma comparison_piZero_bijective (X : ResolutionObject C) (Z : C) [IsFibrant Z] :
     Function.Bijective (SSet.mapπ₀ (comparison hcof hfib X Z)) := by
-  have : SSet.KanComplex ((cosimplicialHom X.resolution.obj).obj Z) :=
+  have : SSet.KanComplex ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj).obj Z) :=
     cosimplicialHom_kanComplex _ X.resolution.cofibrant X.resolution.homotopicallyConstant Z
-  have : IsFibrant ((cosimplicialHom X.resolution.obj).obj Z) :=
+  have : IsFibrant ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom X.resolution.obj).obj Z) :=
     SimplicialModel.KanReplacement.isFibrant_of_kanComplex hfib _
   have : IsFibrant (target hcof hfib X Z) := SimplicialModel.KanReplacement.isFibrant _ _ _
   have : WeakEquivalence (comparison hcof hfib X Z) := ⟨comparison_weakEquivalence _ _ X Z⟩

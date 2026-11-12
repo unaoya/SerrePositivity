@@ -19,13 +19,13 @@ universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra SSet Opposite Hammock MonoidalCategory
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison SimplicialLocalization
+open SimplicialLocalization
 open scoped Simplicial
 variable {C : Type u} [Category.{v} C] [ModelCategory C] {X Y : C} [IsCofibrant X]
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex) (f : X ⟶ Y)
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
-attribute [local instance] rightFrameHom_kanComplex
+attribute [local instance] _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex
 
 /-- 概要：実 frame 比較の元の単位点は元の持ち上げた通常射の coherent Hom 点と一致する。
 方針：同じ六辺の単位公式と Ex∞ 単位の自然性・元の宇宙比較を合成する。
@@ -37,40 +37,40 @@ lemma rightFrameHammockPinchedEquivalence_unit_arrow_Q :
       (rightFrameHammockUnitPoint q r f 0 ≫
         (rightFrameHammockPinchedEquivalence q r cof Y).hom) =
     AnodyneHomotopy.anodyneQ.map
-      (arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
-          (modelRelativeObject C X) (modelRelativeObject C Y)) := by
-  have h := congrArg (arrowMap (weakEquivalences C) f ≫ ·)
-    (exInfinityUnit.naturality (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) := by
+  have h := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f ≫ ·)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom)
   simp only [Functor.id_map] at h
-  have ha : arrowMap (weakEquivalences C) f ≫ exInfinityUnit.app _ ≫
-      exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
-      arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ := by
-    change arrowMap (weakEquivalences C) f ≫
-      exInfinityUnit.app (colimitGraph (weakEquivalences C) X Y) ≫
-        exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
-      arrowMap (AsSmallComparison.weak (weakEquivalences C)) (AsSmall.up.map f) ≫
-        exInfinityUnit.app (colimitGraph (AsSmallComparison.weak (weakEquivalences C))
+  have ha : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences C) f ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (weakEquivalences C) X Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (AsSmallComparison.colimitIso (weakEquivalences C) X Y).hom =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (AsSmallComparison.weak (weakEquivalences C)) (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (AsSmallComparison.weak (weakEquivalences C))
           (AsSmall.up.obj X) (AsSmall.up.obj Y))
     exact h.symm.trans (by
       simpa only [Category.assoc] using congrArg
-        (fun a => a ≫ exInfinityUnit.app
-          (colimitGraph (AsSmallComparison.weak (weakEquivalences C))
+        (fun a => a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (AsSmallComparison.weak (weakEquivalences C))
             (AsSmall.up.obj X) (AsSmall.up.obj Y)))
         (AsSmallComparison.arrowMap_colimitIso (weakEquivalences C) f))
   exact (rightFrameHammockPinchedEquivalence_unit_Q q r f cof).trans
     (congrArg AnodyneHomotopy.anodyneQ.map
       (by simpa only [Category.assoc] using congrArg (· ≫ kanHammockHomPinchedMap
-        (modelRelativeCategory C) (modelRelativeObject C X) (modelRelativeObject C Y)) ha))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)) ha))
 
 variable {Q : SSet.{max u v}} [Quasicategory Q]
-  (G : nerve (modelRelativeCategory C).category ⟶ Q)
-  (hG : IsLocalization G (weakNerveEdges (modelRelativeCategory C)))
-  (hH : IsLocalization (hammockLocalizationNerveMap (modelRelativeCategory C))
-    (weakNerveEdges (modelRelativeCategory C)))
-  (K : kanHammockNerve (modelRelativeCategory C) ⟶ Q)
-  (e : FunctorIso (hammockLocalizationNerveMap (modelRelativeCategory C) ≫ K) G)
+  (G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q)
+  (hG : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization G (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))
+  (K : kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ⟶ Q)
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫ K) G)
 
 /-- 概要：指定局所化への同じ実比較は元の射を同じ指定二胞体で共役した点へ送る。
 方針：元の局所化辺の零単体公式へ同じ K と両端成分の作用を後合成する。
@@ -82,16 +82,16 @@ lemma rightFrameSpecifiedPinchedEquivalence_unit_Q :
       (rightFrameHammockUnitPoint q r f 0 ≫
         (rightFrameSpecifiedPinchedEquivalence q r cof G hG hH K e Y).hom) =
     AnodyneHomotopy.anodyneQ.map
-      (arrowMap (modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
-        exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (modelRelativeCategory C)
-          (modelRelativeObject C X) (modelRelativeObject C Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).weakEquivalences (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫ kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y) ≫
             ((rightFrameSpecifiedLocalizationData G hG hH K e).pinchedEquivalence
-              (nerveVertex (modelRelativeObject C X))
-              (nerveVertex (modelRelativeObject C Y))).hom) := by
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
+              (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y))).hom) := by
   rw [rightFrameSpecifiedPinchedEquivalence_hom]
   have h := congrArg (fun t => t ≫ AnodyneHomotopy.anodyneQ.map
     ((rightFrameSpecifiedLocalizationData G hG hH K e).pinchedEquivalence
-      (nerveVertex (modelRelativeObject C X)) (nerveVertex (modelRelativeObject C Y))).hom)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y))).hom)
       (rightFrameHammockPinchedEquivalence_unit_arrow_Q q r f cof)
   simpa only [Functor.map_comp, Category.assoc] using h
 

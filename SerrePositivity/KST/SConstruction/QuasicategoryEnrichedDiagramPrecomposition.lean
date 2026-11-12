@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
-public import SerrePositivity.InfinityCategories.F1.Categories.QuasicategoryEnrichedDiagramRestriction
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedDiagramOrdinaryFunctor
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedDiagramRestriction
 
 /-! # 全高次比較の圏での豊穣前合成と評価
 概要：全 Hom に自然な比較の圏に、同じ豊穣関手での前合成と各対象での評価を与える。
@@ -17,7 +17,7 @@ variable {C : Type v} {L : Type w} [Category.{u} C] [SimplicialCategory C]
 
 /-- 元の全高次比較を、同じ豊穣関手で全成分について前合成する通常の関手。 -/
 def quasicategoryEnrichedPrecompositionFunctor (R : EnrichedFunctor SSet.{u} L C) :
-    QuasicategoryEnrichedFunctorCategory C ⥤ QuasicategoryEnrichedFunctorCategory L where
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C ⥤ _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory L where
   obj F := R.comp SSet F
   map η := η.precompose R
   map_id F := by
@@ -31,7 +31,7 @@ def quasicategoryEnrichedPrecompositionFunctor (R : EnrichedFunctor SSet.{u} L C
 
 /-- 元の全高次比較を、同じ一対象の実 quasicategory と実単体的射に評価する。 -/
 def quasicategoryEnrichedEvaluationFunctor (X : C) :
-    QuasicategoryEnrichedFunctorCategory C ⥤ QuasicategoryObject.{u} where
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory C ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.QuasicategoryObject.{u} where
   obj F := F.obj X
   map η := η.val X
   map_id _F := rfl

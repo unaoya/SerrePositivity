@@ -24,7 +24,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 lemma monicKPrismTracedBFCompositionBoundary_projection {x y z : I} (f : x ⟶ y) (g : y ⟶ z) :
     (monicKPrismTracedBFCompositionBoundary F f g).h ≫
         kRawMappingProjection (F.obj x) (F.obj z) =
-      (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismNativeRawComparison F f g).h := by
   rw [← monicKPrismNativeBFComparisonData_composition_boundary, Category.assoc,
     monicKPrismNativeBFComparisonData_projection]
@@ -37,7 +37,7 @@ lemma monicKTracedNativeTriplePrescribedEdge_raw :
         ((monicKTracedNativeTriplePrescribedEdge F f g h).map
           (kRawMappingProjection (F.obj w) (F.obj z))).edge =
       lift (SSet.const (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))) (𝟙 (Δ[1] : SSet.{u})) ≫
-        (nervePoint (compositionStringDirect (f ≫ g) h) ▷ (Δ[1] : SSet.{u})) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect (f ≫ g) h) ▷ (Δ[1] : SSet.{u})) ≫
           (monicKPrismNativeRawComparison F (f ≫ g) h).h := by
   rw [SSet.Edge.map_edge, ← SSet.yonedaEquiv_symm_comp, monicKTracedNativeTriplePrescribedEdge_edge,
     monicKTracedSpectrumCompositionEdge_map, Category.assoc,

@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：逆射の元の ambient 図式。 -/
 def completionRelativeSRawInverse (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier ⟶
       (ihom (arNerve m)).obj ((ihom (stdSimplex.obj n)).obj
@@ -30,7 +30,7 @@ def completionRelativeSRawInverse (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
   (completionRelativeFlagAmbientMap (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) f hf n).val ≫
     (ihom (stdSimplex.obj n)).map
       (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι ≫
-        (internalHomSwapIso (stdSimplex.obj n) (arNerve m)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (stdSimplex.obj n) (arNerve m)
           (((multiSEndofunctor r).obj ι).obj Y).carrier).hom
 
 /-- 概要：逆転置の元の頂点は元の S 値の旗の実際の転置。
@@ -39,31 +39,31 @@ def completionRelativeSRawInverse (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：逆転置の各 Ar 成分の所属判定。 -/
 lemma completionRelativeSRawInverse_vertex (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier _⦋0⦌) :
     (completionRelativeSRawInverse r ι f hf m n).app (Opposite.op ⦋0⦌) v =
-      functorVertex (internalHomFlipHomEquiv (stdSimplex.obj n) (arNerve m)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (stdSimplex.obj n) (arNerve m)
         (((multiSEndofunctor r).obj ι).obj Y).carrier
-        ((functorVertexEquiv (stdSimplex.obj n)
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (stdSimplex.obj n)
           (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier).symm v.val ≫
             (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι)) := by
-  let g := (functorVertexEquiv (stdSimplex.obj n)
+  let g := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (stdSimplex.obj n)
     (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier).symm v.val
-  have hv : functorVertex g = v.val := (functorVertexEquiv _ _).apply_symm_apply v.val
-  change (internalHomSwapIso (stdSimplex.obj n) (arNerve m)
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex g = v.val := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply v.val
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (stdSimplex.obj n) (arNerve m)
     (((multiSEndofunctor r).obj ι).obj Y).carrier).hom.app (Opposite.op ⦋0⦌)
       (((ihom (stdSimplex.obj n)).map
         (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι).app
           (Opposite.op ⦋0⦌) v.val) = _
   have h := congrArg (fun w : ((ihom (stdSimplex.obj n)).obj
       (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier) _⦋0⦌ =>
-    (internalHomSwapIso (stdSimplex.obj n) (arNerve m)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (stdSimplex.obj n) (arNerve m)
       (((multiSEndofunctor r).obj ι).obj Y).carrier).hom.app (Opposite.op ⦋0⦌)
         (((ihom (stdSimplex.obj n)).map
           (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι).app
             (Opposite.op ⦋0⦌) w)) hv.symm
-  exact h.trans (internalHomSwapIso_functorVertex (stdSimplex.obj n) (arNerve m)
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_functorVertex (stdSimplex.obj n) (arNerve m)
     (((multiSEndofunctor r).obj ι).obj Y).carrier
     (g ≫ (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι))
 
@@ -73,20 +73,20 @@ lemma completionRelativeSRawInverse_vertex (r : ℕ) (ι : Fin r → SimplexCate
 使われ方：全部分旗値の内部 Hom への持ち上げ。 -/
 lemma completionRelativeSRawInverse_relative (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier _⦋0⦌) :
-    FunctorVertexSatisfies (arNerve m)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorVertexSatisfies (arNerve m)
       ((ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
       (multiRelativeFlagPredicate r ι Y
         (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n))
       ((completionRelativeSRawInverse r ι f hf m n).app (Opposite.op ⦋0⦌) v) := by
   intro a
-  rw [completionRelativeSRawInverse_vertex, evaluateFunctorAt_functorVertex,
-    internalHomFlipHomEquiv_app_zero]
+  rw [completionRelativeSRawInverse_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.internalHomFlipHomEquiv_app_zero]
   let E := (sStableEvaluation m (((multiSEndofunctor r).obj ι).obj Y) a).val
   have h := completionRelativeSFlag_evaluation r ι f hf m n v a
-  have hv := (functorVertexEquiv (stdSimplex.obj n)
+  have hv := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (stdSimplex.obj n)
     (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier).apply_symm_apply v.val
   exact (congrArg (fun w => multiRelativeFlagPredicate r ι Y
     (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n)
@@ -98,13 +98,13 @@ lemma completionRelativeSRawInverse_relative (r : ℕ) (ι : Fin r → SimplexCa
 使われ方：逆射の gapped 条件の検証。 -/
 def completionRelativeSInverseDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier ⟶
         (ihom (arNerve m)).obj (completionRelativeFlagStableModel r ι f hf n).carrier :=
-  fullSubcomplexLift _ (completionRelativeSRawInverse r ι f hf m n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (completionRelativeSRawInverse r ι f hf m n)
     (completionRelativeSRawInverse_relative r ι f hf m n) ≫
-      fullSubcomplexInternalHomBackward (arNerve m)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexInternalHomBackward (arNerve m)
         ((ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
         (multiRelativeFlagPredicate r ι Y
           (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n))

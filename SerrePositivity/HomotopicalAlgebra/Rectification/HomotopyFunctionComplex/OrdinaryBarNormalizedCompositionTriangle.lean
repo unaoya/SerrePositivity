@@ -51,12 +51,12 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hcof : HomotopicalAlgebra.cofibrations SSet.{v} = MorphismProperty.monomorphisms _)
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
   (P : SSet.{max u v}) {T : SSet.{v}} {X Y Z : D C}
-  (j : UniverseLift.obj.{max u v} T ⟶ P)
-  (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
-  (g : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
-  (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y)
-  (d : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
-  (e : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Z)
+  (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+  (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y)
+  (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C Y Z)
+  (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y)
+  (d : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P Y Z)
+  (e : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Z)
 
 local notation "F" => nativeRestrictionComparison hcof hfib P j
   (lift f g ≫ OrdinaryBarFixedWordResolution.composition C X Y Z) e
@@ -73,16 +73,16 @@ abbrev normalizedNativeCompositionComparison :=
 variable {U : SSet.{v}} (i : U ⟶ T)
 
 lemma normalizedCompositionTriangle_reindex :
-    (normalizedCompositionTriangle hcof hfib P (UniverseLift.map i ≫ j)
-      (UniverseLift.map i ≫ f) (UniverseLift.map i ≫ g)
-      (UniverseLift.map i ≫ c) (UniverseLift.map i ≫ d) (UniverseLift.map i ≫ e)).triangle =
+    (normalizedCompositionTriangle hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ d) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e)).triangle =
     (normalizedCompositionTriangle hcof hfib P j f g c d e).triangle ≫ (pre i).app K := by
   have hb := ComparisonTriangleTransport.hornMap_post F G
-    (nativeRestrictionComparison hcof hfib P (UniverseLift.map i ≫ j)
-      (lift (UniverseLift.map i ≫ f) (UniverseLift.map i ≫ g) ≫
-        OrdinaryBarFixedWordResolution.composition C X Y Z) (UniverseLift.map i ≫ e))
-    (compositionComparison hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f)
-      (UniverseLift.map i ≫ g) (UniverseLift.map i ≫ c) (UniverseLift.map i ≫ d))
+    (nativeRestrictionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (lift (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g) ≫
+        OrdinaryBarFixedWordResolution.composition C X Y Z) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e))
+    (compositionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ d))
     ((pre i).app K) (compositeComparison_reindex hcof hfib P j f g e i)
     (inputComparison_reindex hcof hfib P j f g c d i)
   change NaturalHornFilling.fill K 2 (NormalizedTriangleHorn.section_ K 2 hK) _ = _
@@ -91,15 +91,15 @@ lemma normalizedCompositionTriangle_reindex :
     (KanComparisonTriangle.hornMap F G) i
 
 lemma normalizedNativeCompositionComparison_reindex :
-    (normalizedNativeCompositionComparison hcof hfib P (UniverseLift.map i ≫ j)
-      (UniverseLift.map i ≫ f) (UniverseLift.map i ≫ g)
-      (UniverseLift.map i ≫ c) (UniverseLift.map i ≫ d) (UniverseLift.map i ≫ e)).h =
+    (normalizedNativeCompositionComparison hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ d) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e)).h =
     i ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫
       (normalizedNativeCompositionComparison hcof hfib P j f g c d e).h := by
   change uncurry (SSet.stdSimplex.δ (2 : Fin 3) ≫
-    (normalizedCompositionTriangle hcof hfib P (UniverseLift.map i ≫ j)
-      (UniverseLift.map i ≫ f) (UniverseLift.map i ≫ g)
-      (UniverseLift.map i ≫ c) (UniverseLift.map i ≫ d) (UniverseLift.map i ≫ e)).triangle) = _
+    (normalizedCompositionTriangle hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ g)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ d) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e)).triangle) = _
   rw [normalizedCompositionTriangle_reindex, ← Category.assoc]
   exact uncurry_pre_app K
     (SSet.stdSimplex.δ (2 : Fin 3) ≫

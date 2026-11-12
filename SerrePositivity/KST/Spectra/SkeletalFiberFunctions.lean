@@ -52,10 +52,10 @@ def stageFiberFunctionIso (K : SSet.{u}) (X : PointedSimplicialSet.{u}) (n : ℕ
 使われ方：Goerss–Jardine I §7、VIII §1。境界写像をセルごとの座標で計算する入力。 -/
 def stageFiberFunctionHomotopyEquiv (K : SSet.{u}) (X : PointedSimplicialSet.{u})
     [KanComplex X.right] (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K X n).right r
         (UnbasedPointedMapping.stageFiber K X n).basepoint ≃*
       (relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1) →
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (PointedObject.basedHom (SimplexCell.sphere.{u} (n + 1)) X).right r
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (PointedObject.basedHom (SimplexCell.sphere.{u} (n + 1)) X).right r
           (PointedSimplicialSet.basepoint
             (PointedObject.basedHom (SimplexCell.sphere.{u} (n + 1)) X))) := by
   let S := relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1)
@@ -64,8 +64,8 @@ def stageFiberFunctionHomotopyEquiv (K : SSet.{u}) (X : PointedSimplicialSet.{u}
   let e : (UnbasedPointedMapping.stageFiber K X n).right ≅
       (SimplicialFunctionComplex.pointedObj S H).right :=
     PointedSimplicialSet.forget.mapIso (stageFiberFunctionIso K X n)
-  exact (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso r e
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (stageFiberFunctionIso K X n).hom)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso r e
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (stageFiberFunctionIso K X n).hom)).trans
       (SimplicialFunctionComplex.pointedHomotopyEquiv S H r)
 
 end

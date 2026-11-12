@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperComparison
-public import SerrePositivity.InfinityCategories.Derived.DGStrictNatTransNerveHom
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStrictNatTransNerveHom
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePrecompositionBoundary
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationRestriction
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectingNativeTriangle
@@ -15,7 +15,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectin
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -33,13 +33,13 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "αs" => dgStrictNatTransPostcomp (α) (S)
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
-local notation "δs" => dgStrictNatTransPostcomp (δ) (S)
+local notation "αs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (α) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
+local notation "δs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)
 
 
 local notation "κ" => dgIdentityHomGluingStrictConeInputInvComparison R C F G a h
-local notation "κs" => dgStrictNatTransPostcomp (κ) (S)
+local notation "κs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (κ) (S)
 
 
 local notation "GY" => G.comp (J)
@@ -47,14 +47,14 @@ local notation "FY" => F.comp (J)
 local notation "AS" => DGFunctor.comp (A) (S)
 local notation "BS" => DGFunctor.comp (B) (S)
 local notation "FSS" => DGFunctor.comp (FS) (S)
-local notation "γs" => dgStrictNatTransComp (κs) (δs)
+local notation "γs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (κs) (δs)
 local notation "RS" => dgModuleNaturalConeFunctor R C (BS) (FSS) (γs)
 local notation "NS" => dgModuleNaturalInverseRotationSource R C (FY) (GY) (η)
 local notation "q" => dgModuleNaturalConePrecomposition R C (BS) (AS) (FSS) (κs) (δs)
 local notation "σ" => dgModuleNaturalInverseRotation R C (FY) (GY) (η)
 local notation "ι" => dgModuleNaturalConeInr R C (BS) (FSS) (γs)
 local notation "ιn" => dgModuleNaturalConeInr R C (AS) (FSS) (δs)
-local notation "λ" => dgStrictNatTransComp (ιn) (σ)
+local notation "λ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιn) (σ)
 
 local notation "ρ" => dgIdentityHomGluingInverseRotationUpperRawComparison R C F G a h
 
@@ -62,7 +62,7 @@ local notation "ρ" => dgIdentityHomGluingInverseRotationUpperRawComparison R C 
 方針：元 cone 前合成と元全実逆回転を元順序で合成する。
 規約：新しい逆や成分同値を選ばない。使われ方：元上二単体の指定後辺の回収。 -/
 def dgIdentityHomGluingInverseRotationUpperRawNerveComparison :
-    FunctorIso (dgNerve.map (RS)) (dgNerve.map (GY)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (RS)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (GY)) :=
   (dgModuleNaturalConePrecompositionNerveComparison R C (BS) (AS) (FSS) (κs) (δs)
     (dgIdentityHomGluingInverseRotationStrictInput_isIso R C F G a h)).trans
       (dgModuleNaturalInverseRotationNerveComparison R C (FY) (GY) (η))
@@ -72,24 +72,24 @@ def dgIdentityHomGluingInverseRotationUpperRawNerveComparison :
 規約：元全辺を保持。使われ方：元包含三角形の native 全比較への接続。 -/
 lemma dgIdentityHomGluingInverseRotationUpperRawNerveComparison_hom :
     (dgIdentityHomGluingInverseRotationUpperRawNerveComparison R C F G a h).hom =
-      dgStrictNatTransNerveHom R P (RightModule R C) (ρ) := by
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ρ) := by
   change SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (q).homotopy) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (q).homotopy) ≫
     SSet.Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (σ).homotopy) = _
-  exact (dgStrictNatTrans_homotopyHom_comp R P (RightModule R C) (q) (σ)).symm.trans
-    (dgStrictNatTransNerveHom_spec R P (RightModule R C) (ρ)).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (σ).homotopy) = _
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTrans_homotopyHom_comp R P (RightModule R C) (q) (σ)).symm.trans
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom_spec R P (RightModule R C) (ρ)).symm
 
 /-- 概要：元包含と生 native 全比較の合成は元指定長辺の同じ native 射。
 方針：元全厳密包含等号と native 順射回収を合成する。
 規約：元指定長辺・負符号を保持。使われ方：指定上二単体の境界認証。 -/
 lemma dgIdentityHomGluingInverseRotationUpperRawNerveComparison_inr :
-    dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (ι) ≫
       (dgIdentityHomGluingInverseRotationUpperRawNerveComparison R C F G a h).hom =
-        dgStrictNatTransNerveHom R P (RightModule R C) (λ) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) (λ) := by
   rw [dgIdentityHomGluingInverseRotationUpperRawNerveComparison_hom]
-  exact (dgStrictNatTransNerveHom_comp R P (RightModule R C) (ι) (ρ)).symm.trans
-    (congrArg (fun t => dgStrictNatTransNerveHom R P (RightModule R C) t)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom_comp R P (RightModule R C) (ι) (ρ)).symm.trans
+    (congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R P (RightModule R C) t)
       (dgIdentityHomGluingInverseRotationUpperRawComparison_inr R C F G a h))
 
 /-- 概要：元実始域の指定 native 全比較は元上二単体の生比較の端点回収そのもの。
@@ -97,6 +97,6 @@ lemma dgIdentityHomGluingInverseRotationUpperRawNerveComparison_inr :
 規約：比較値・元辺代表を変更しない。使われ方：元上二単体と実全比較の同時輸送。 -/
 lemma dgIdentityHomGluingInverseRotationStrictNerveComparison_upper :
     dgIdentityHomGluingInverseRotationStrictNerveComparison R C F G a h =
-      F2.functorIsoOfEq (dgIdentityHomGluingInverseRotationUpperRawNerveComparison R C F G a h)
-        (congrArg dgNerve.map (dgIdentityHomGluingInverseRotationStrict_source R C F G a h)) rfl := rfl
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgIdentityHomGluingInverseRotationUpperRawNerveComparison R C F G a h)
+        (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgIdentityHomGluingInverseRotationStrict_source R C F G a h)) rfl := rfl
 end SerrePositivity.KST.SConstruction

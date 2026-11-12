@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.PointedWeightedEnd
 public import SerrePositivity.KST.Spectra.EndInternalHom
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeSecondSource
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource
 
 /-!
 概要：点つき内部 Hom と自由基点を加えた重みの end の交換同型。
@@ -41,12 +41,12 @@ def cotensorDiagramIso (A : PointedSimplicialSet.{u}) (W : I ⥤ SSet.{u})
     EndInternalHom.postDiagram (ihom A) (diagram W D) ≅ diagram W (D ⋙ ihom A) :=
   NatIso.ofComponents
     (fun i ↦ NatIso.ofComponents
-      (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i.unop)) (D.obj j))
+      (fun j ↦ _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (PointedObject.adjoin (W.obj i.unop)) (D.obj j))
       (fun f ↦ by
         dsimp only [EndInternalHom.postDiagram, diagram, Enriched.FunctorCategory.diagram,
           eHomFunctor, Functor.comp, Functor.op, Functor.whiskeringLeft, Functor.whiskeringRight]
         simp only [enrichedOrdinaryCategorySelf_eHomWhiskerLeft]
-        exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_post _ _ _))
+        exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget.natural_post _ _ _))
     (fun f ↦ by
       apply NatTrans.ext
       funext j
@@ -54,7 +54,7 @@ def cotensorDiagramIso (A : PointedSimplicialSet.{u}) (W : I ⥤ SSet.{u})
         eHomFunctor, Functor.comp, Functor.op, Functor.whiskeringLeft, Functor.whiskeringRight,
         NatTrans.comp_app, NatIso.ofComponents_hom_app]
       simp only [enrichedOrdinaryCategorySelf_eHomWhiskerRight]
-      exact _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right _ _ _)
+      exact _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right _ _ _)
 
 /-- 概要：点つき重み付き end と内部 Hom の交換同型。
 方針：内部 Hom の end 保存と二重 Hom の源交換を合成する。

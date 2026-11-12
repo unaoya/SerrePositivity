@@ -54,42 +54,42 @@ lemma exists_interval_lift {E B : SSet.{u}} (p : E ⟶ B)
 structure TracedPathLift {T E B : PointedSimplicialSet.{u}} (q : E ⟶ B)
     {f g : T ⟶ E} (P : VerticalPath (PointedObject.toPoint B) (f ≫ q) (g ≫ q)) where
   path : VerticalPath (PointedObject.toPoint E) f g
-  trace : (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPath (PointedObject.basedHomMap T q)).right
+  trace : (Δ[1] : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPath (PointedObject.basedHomMap T q)).right
   zero : stdSimplex.δ (1 : Fin 2) ≫ trace =
-    pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (PointedObject.basedHomMap T q)).right
+    pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit (PointedObject.basedHomMap T q)).right
   one : stdSimplex.δ (0 : Fin 2) ≫ trace =
-    pointFamily g ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit (PointedObject.basedHomMap T q)).right
-  projection : trace ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection (PointedObject.basedHomMap T q)).right = P.path
-  retraction : trace ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction (PointedObject.basedHomMap T q)).right = path.path
+    pointFamily g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit (PointedObject.basedHomMap T q)).right
+  projection : trace ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection (PointedObject.basedHomMap T q)).right = P.path
+  retraction : trace ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction (PointedObject.basedHomMap T q)).right = path.path
 
 /-- π 同型の写像 path 分解に元の同じ区間全体を持ち上げる。 -/
 def TracedPathLift.choose {T E B : PointedSimplicialSet.{u}}
     [KanComplex E.right] [KanComplex B.right] (q : E ⟶ B)
-    (hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism q.right) {f g : T ⟶ E}
+    (hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism q.right) {f g : T ⟶ E}
     (P : VerticalPath (PointedObject.toPoint B) (f ≫ q) (g ≫ q)) : TracedPathLift q P := by
   let m := PointedObject.basedHomMap T q
-  let homE : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  let homB : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  have hm : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism m.right := post_piIsomorphism T q hq
+  let homE : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  let homB : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  have hm : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism m.right := post_piIsomorphism T q hq
   have hu (a : T ⟶ E) :
-      (pointFamily a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit m).right) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection m).right =
+      (pointFamily a ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit m).right) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection m).right =
         pointFamily (a ≫ q) := by
-    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_projection]
+    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_projection]
     apply SSet.yonedaEquiv.injective
     rw [SSet.yonedaEquiv_comp]
     exact familyVertex_post a q
-  let hex := exists_interval_lift (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection m).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism m hm)
-    (pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit m).right)
-    (pointFamily g ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit m).right) P.path
+  let hex := exists_interval_lift (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection m).right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mappingPathProjection_rlp_of_piIsomorphism m hm)
+    (pointFamily f ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit m).right)
+    (pointFamily g ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit m).right) P.path
     ((hu f).trans P.zero.symm) ((hu g).trans P.one.symm)
   let L := hex.choose
   have hL := hex.choose_spec
-  let R := L ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction m).right
+  let R := L ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction m).right
   have hr (a : T ⟶ E) :
-      (pointFamily a ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit m).right) ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction m).right =
+      (pointFamily a ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit m).right) ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction m).right =
         pointFamily a := by
-    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathUnit_retraction,
+    rw [Category.assoc, ← Under.comp_right, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathUnit_retraction,
       Under.id_right, Category.comp_id]
   have h₀ : stdSimplex.δ (1 : Fin 2) ≫ R = pointFamily f := by
     rw [← Category.assoc, hL.1, hr]

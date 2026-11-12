@@ -18,13 +18,13 @@ open scoped Simplicial
 namespace PerfectLaxQuotient
 local instance productSquareSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B}
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B}
   (d : PerfectLaxQuotient p q)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 元の値と二つの元の実 BF 積に向かう、同じ四頂点の指定同型。 -/
 def productCornerIso (a b : Fin 2) : Σ x : Sp.{u} _⦋0⦌,
-    VertexIso (squareVertex (d.universalValueSquare F) a b) x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.universalValueSquare F) a b) x := by
   refine Fin.cases ?_ (fun a => ?_) a
   · refine Fin.cases ?_ (fun b => ?_) b
     · exact ⟨_, eqToIso (congrArg (fun x => (HomotopyCategory.mk x : hoFunctor.obj Sp.{u}))
@@ -54,11 +54,11 @@ def productCornerIso (a b : Fin 2) : Σ x : Sp.{u} _⦋0⦌,
 
 /-- 元の全正方形の任意の頂点に、指定した同じ移送先と同型を与える。 -/
 def productVertexIsos (v : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) _⦋0⦌) : Σ x : Sp.{u} _⦋0⦌,
-    VertexIso ((d.universalValueSquare F).app (Opposite.op ⦋0⦌) v) x := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((d.universalValueSquare F).app (Opposite.op ⦋0⦌) v) x := by
   let a := stdSimplex.obj₀Equiv v.1
   let b := stdSimplex.obj₀Equiv v.2
   have he : (d.universalValueSquare F).app (Opposite.op ⦋0⦌) v =
-      squareVertex (d.universalValueSquare F) a b := by
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (d.universalValueSquare F) a b := by
     change _ = (d.universalValueSquare F).app _
       (stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.1),
         stdSimplex.obj₀Equiv.symm (stdSimplex.obj₀Equiv v.2))
@@ -78,11 +78,11 @@ def productExtension : (d.productVertexPaths hF).Extension := (d.productVertexPa
 def productSquare : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (d.productExtension hF).target
 
 /-- 元の比較正方形と同じ全単体上で整合する、実関手同型。 -/
-def productComparison : FunctorIso (d.universalValueSquare F) (d.productSquare hF) :=
+def productComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.universalValueSquare F) (d.productSquare hF) :=
   (d.productExtension hF).comparison
 
 /-- 元の全図式の同型で移した同じ実積正方形は、実 Sp の引き戻し。 -/
-lemma productSquare_isPullback : IsPullbackSquare (d.productSquare hF) :=
+lemma productSquare_isPullback : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (d.productSquare hF) :=
   (d.productExtension hF).target_isPullback (d.universalValueSquare_isPullback hF)
 
 end PerfectLaxQuotient

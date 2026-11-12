@@ -32,7 +32,7 @@ lemma mcCarthyThetaDiagram_quotient (X : StableModel.{u}) {m n : ℕ}
   have hd := congrArg gappedDiagram hq
   rw [gappedDiagram_objectSFunctor_map] at hd
   change mcCarthyFiberDiagram X a ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e) ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm 1) = _ at hd
   simp only [zeroSourceCofibersQuotient, ← Category.assoc]
   rw [mcCarthyThetaDiagram_ι]
@@ -53,7 +53,7 @@ lemma mcCarthyThetaObjectMap_zero (X : StableModel.{u}) {m : ℕ}
   intro e
   apply gappedDiagram_injective
   change gappedDiagram (mcCarthyThetaObjectVertex X a e
-    (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n)) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n)) =
       mcCarthyFiberDiagram X a ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e)
   rw [mcCarthyThetaObjectVertex_diagram, arTimeCoordinate_constant, variableTimeImage_zero,
     mcCarthyThetaDiagram_ι]
@@ -73,7 +73,7 @@ lemma mcCarthyThetaObjectMap_one (X : StableModel.{u}) {m : ℕ}
   intro e
   apply gappedDiagram_injective
   change gappedDiagram (mcCarthyThetaObjectVertex X a e
-    (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n)) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n)) =
       gappedDiagram ((objectSConstructionFunctor.map
         (zeroCofiberStableFunctor X (objectSLastDiagonalZeroVertex a) true)).app (Opposite.op ⦋n⦌)
           ((cofiberLeftFiberQuotient X a).app (Opposite.op ⦋n⦌) e))

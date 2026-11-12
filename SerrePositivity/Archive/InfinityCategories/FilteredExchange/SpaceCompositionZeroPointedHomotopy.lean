@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceC
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceCompositionTetrahedronZeroFamily
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyEndpointEquality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyTensorRight
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：零面の実 coslice 円柱を元の全反転 Hom 係数の pointed 族へ移す。

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantFrameRoofWeak
-public import SerrePositivity.InfinityCategories.ModelBridge.ModelBifibrantFrameElements
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelBifibrantFrameElements
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantRightKanShape
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
 public import SerrePositivity.EInfinity.Hammock.AsSmallComparison
@@ -20,7 +20,7 @@ universe u v
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory HomotopicalAlgebra Opposite Hammock
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.HomotopyFunctionComplex SerrePositivity.KST.Comparison
+
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
 
@@ -28,14 +28,14 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 方針：同じ Hom 同型の順逆を全要素圏へ作用させる。
 規約：元の単体・全作用素。使われ方：同じ実二列比較への入口。 -/
 def modelBifibrantSourceFrameIndexIso :
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) ≅
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ≅
       nerve (ULiftHom.{max u v}
-        ((((cosimplicialHom (modelBifibrantFrame X q)).obj Y).Elements)ᵒᵖ)) where
+        ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrame X q)).obj Y).Elements)ᵒᵖ)) where
   hom := { app _ := ↾fun σ => σ ⋙ ULiftHom.down.{0, v, max u v} ⋙
-             (modelBifibrantFrameHomIso X q Y).inv.mapElements.op ⋙ ULiftHom.up
+             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrameHomIso X q Y).inv.mapElements.op ⋙ ULiftHom.up
            naturality _ _ _ := rfl }
   inv := { app _ := ↾fun σ => σ ⋙ ULiftHom.down.{0, v, max u v} ⋙
-             (modelBifibrantFrameHomIso X q Y).hom.mapElements.op ⋙ ULiftHom.up
+             (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantFrameHomIso X q Y).hom.mapElements.op ⋙ ULiftHom.up
            naturality _ _ _ := rfl }
   hom_inv_id := by
     apply NatTrans.ext
@@ -54,29 +54,29 @@ def modelBifibrantSourceFrameIndexIso :
 方針：同じ Hom の包みの同型と元の二列比較を合成する。
 規約：元の全単体。使われ方：balanced 模型への実比較。 -/
 def modelBifibrantSourceFrameRawColimitMap :
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) ⟶
-      colimitGraph (modelRawBifibrantWeak (C := C)) X Y :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (C := C)) X Y :=
   (modelBifibrantSourceFrameIndexIso X Y q).hom ≫ modelBifibrantFrameLeftRoofColimitMap X Y q
 
 /-- 概要：元の全 Hom 単体を同じ balanced bifibrant hammock Hom へ送る。
 方針：同じ AsSmall 全語図式の実同型を合成する。
 規約：同じ元の二列と両端点。使われ方：実 coherent nerve Hom への比較。 -/
 def modelBifibrantSourceFrameColimitMap :
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) ⟶
-      colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
-        (modelBifibrantObject C X) (modelBifibrantObject C Y) :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   modelBifibrantSourceFrameRawColimitMap X Y q ≫
-    (AsSmallComparison.colimitIso (modelRawBifibrantWeak (C := C)) X Y).hom
+    (AsSmallComparison.colimitIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (C := C)) X Y).hom
 
 /-- 概要：元の全 Hom 単体から同じ bifibrant 局所化の pinched Hom への実射。
 方針：同じ二列比較の後に Ex∞ 単位と元の coherent Hom 比較を置く。
 規約：元の局所化頂点。使われ方：実屋根の全 pinched 基準族。 -/
 def modelBifibrantSourceFramePinchedMap :
-    nerve (modelBifibrantSourceFrameElementCategory X Y q) ⟶
-      pinchedHom (modelBifibrantHammockVertex X) (modelBifibrantHammockVertex Y) :=
-  modelBifibrantSourceFrameColimitMap X Y q ≫ exInfinityUnit.app _ ≫
-    kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
-      (modelBifibrantObject C X) (modelBifibrantObject C Y)
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementCategory X Y q) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (modelBifibrantHammockVertex X) (modelBifibrantHammockVertex Y) :=
+  modelBifibrantSourceFrameColimitMap X Y q ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+    kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
 
 variable [(cofibrations C).HasFunctorialFactorization (trivialFibrations C)]
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
@@ -85,7 +85,7 @@ include r in
 方針：同じ実同型と元の frame 比較の弱同値性を合成する。
 規約：第一分解と指定 right frame。使われ方：宇宙調整後の弱比較。 -/
 lemma modelBifibrantSourceFrameRawColimitMap_weak :
-    IsWeakHomotopyEquivalence (modelBifibrantSourceFrameRawColimitMap X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceFrameRawColimitMap X Y q) :=
   (FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
     (modelBifibrantSourceFrameIndexIso X Y q).hom (by infer_instance)).comp
       (modelBifibrantFrameLeftRoofColimitMap_weak X Y q r)
@@ -95,23 +95,23 @@ include r in
 方針：元の raw 弱比較と同じ全語の宇宙同型を合成する。
 規約：元の全単体・全作用素。使われ方：実 pinched 比較への入口。 -/
 lemma modelBifibrantSourceFrameColimitMap_weak :
-    IsWeakHomotopyEquivalence (modelBifibrantSourceFrameColimitMap X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceFrameColimitMap X Y q) :=
   (modelBifibrantSourceFrameRawColimitMap_weak X Y q r).comp
-    (AsSmallComparison.colimitIso_weak (modelRawBifibrantWeak (C := C)) X Y)
+    (AsSmallComparison.colimitIso_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRawBifibrantWeak (C := C)) X Y)
 
 include r in
 /-- 概要：元の全 Hom 単体の同じ bifibrant pinched 比較射は弱同値。
 方針：同じ balanced 比較・Ex∞ 単位・coherent Hom 比較の弱同値性を合成する。
 規約：同じ元の局所化頂点。使われ方：実屋根 cofinality の弱な基準族。 -/
 lemma modelBifibrantSourceFramePinchedMap_weak :
-    IsWeakHomotopyEquivalence (modelBifibrantSourceFramePinchedMap X Y q) := by
-  have hu : IsWeakHomotopyEquivalence (exInfinityUnit.app
-      (colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
-        (modelBifibrantObject C X) (modelBifibrantObject C Y))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceFramePinchedMap X Y q) := by
+  have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y))) :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _
-      (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+      (SSet.anodyneExtensions.Q_inverts _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne _))
   exact (modelBifibrantSourceFrameColimitMap_weak X Y q r).comp
-    (hu.comp (kanHammockHomPinchedMap_weak (modelBifibrantRelativeCategory C)
-      (modelBifibrantObject C X) (modelBifibrantObject C Y)))
+    (hu.comp (kanHammockHomPinchedMap_weak (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)))
 
 end SerrePositivity.EInfinity.SimplicialLocalization

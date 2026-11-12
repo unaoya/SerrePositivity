@@ -29,6 +29,55 @@ class NamespaceTests(unittest.TestCase):
         self.assertEqual(result.decode(), text.replace("  OldModule", "  NewModule")
                          .replace(":= Old.f", ":= _root_.New.f"))
 
+    def test_shared_spelling_rewrites_by_owner_and_rejects_alias_collision(self):
+        plan = Migration({"rows": [
+            {"module": "OldA", "old": "Old.f", "new": "NewA.f"},
+            {"module": "OldB", "old": "Old.f", "new": "NewB.f"},
+        ]})
+        scopes = []
+        for owner, destination in (("OldA", b"_root_.NewA.f"), ("OldB", b"_root_.NewB.f")):
+            data = {"module": "Use" + owner, "source": "Old.f", "commands": [],
+                    "refs": [occurrence("Old.f", "Old.f", "Old.f", owner)]}
+            self.assertEqual(rewrite(data, plan), (destination, []))
+            scopes.append((owner, owner + ".lean", data))
+        with self.assertRaisesRegex(ValueError, "separate the scopes"):
+            select_aliases(scopes, plan)
+
+    def test_removes_only_the_obsolete_plain_open(self):
+        plan = Migration({"rows": [{"module": "A", "old": "Old.f", "new": "New.f"}],
+                          "opens": {"Old": None}})
+        for args, prefix in (("Old", ""), ("Old Keep", "open Keep"), ("Keep Old", "open Keep")):
+            text = "open " + args + "\n#check f\n"
+            stop = text.index("\n")
+            commands = [
+                {"kind": "open", "start": text.index(arg), "stop": text.index(arg) + len(arg),
+                 "mode": "simple", "names": [arg], "command": {"start": 5, "stop": stop}}
+                for arg in args.split()
+            ]
+            ref = occurrence(text, "f", "Old.f", "A", start=stop)
+            result, issues = rewrite({"module": "Use", "source": text, "refs": [ref],
+                                      "commands": commands}, plan)
+            self.assertEqual(issues, [])
+            self.assertEqual(result, (prefix + "\n#check _root_.New.f\n").encode())
+
+        text = "open scoped Old"
+        command = {"kind": "open", "start": 12, "stop": 15, "mode": "scoped",
+                   "names": ["Old"], "command": {"start": 5, "stop": 15}}
+        result, issues = rewrite({"module": "Use", "source": text, "refs": [],
+                                  "commands": [command]}, plan)
+        self.assertIsNone(result)
+        self.assertIn("obsolete namespace", issues[0]["reason"])
+
+    def test_removed_open_qualifies_unmoved_relative_names(self):
+        text = "open Old\n#check Realization.functor\n"
+        ref = occurrence(text, "Realization.functor", "Old.Realization.functor", "Retained")
+        command = {"kind": "open", "start": 5, "stop": 8, "mode": "simple", "names": ["Old"],
+                   "command": {"start": 5, "stop": 8}}
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref],
+                                    "commands": [command]}, Migration({"rows": [], "opens": {"Old": None}}))
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"\n#check _root_.Old.Realization.functor\n")
+
     def test_competing_resolutions_block_the_entire_file(self):
         ref = occurrence("same", "same", "Old.same", "OldModule")
         local = {**ref, "kind": "local", "name": "", "module": ""}
@@ -69,6 +118,98 @@ class NamespaceTests(unittest.TestCase):
                                   "refs": [], "commands": []}, plan)
         self.assertIsNone(result)
         self.assertIn("no semantic source span", issues[0]["reason"])
+
+    def test_field_receiver_and_method_can_have_different_owners(self):
+        text = "x.step"
+        ref = occurrence(text, "step", "Old.Record.step", "Method", kind="field")
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+            {"module": "Method", "old": "Old.Record.step", "new": "New.Record.step"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref], "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"x.step")
+
+    def test_unmoved_extension_on_a_renamed_type_requires_review(self):
+        text = "r.collapseRelative"
+        ref = occurrence(text, "collapseRelative", "Old.Record.collapseRelative", "Consumer", kind="field")
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text, "refs": [ref], "commands": []}, plan)
+        self.assertIsNone(rendered)
+        self.assertIn("unmoved extension on renamed receiver", issues[0]["reason"])
+
+    def test_unmapped_member_of_renamed_declaration_requires_review(self):
+        plan = Migration({"rows": [
+            {"module": "TypeOwner", "old": "Old.Record", "new": "New.Record"},
+            {"module": "TypeOwner", "old": "Old.f", "new": "New.f"},
+        ]})
+        for text, owner, indexed in (("Old.Record.mk", "TypeOwner", True),
+                                      ("Old.Record.mk", "TypeOwner", False),
+                                      ("Old.f_assoc", "TypeOwner", True),
+                                      ("Old.f_assoc", "TypeOwner", False)):
+            refs = [occurrence(text, text, text, owner)] if indexed else []
+            rendered, issues = rewrite({"module": "Uses", "source": text,
+                                        "refs": refs, "commands": []}, plan)
+            self.assertIsNone(rendered)
+            self.assertTrue(issues)
+        # A retained external method remains callable by its original full name.
+        text = "Old.Record.retained"
+        ref = occurrence(text, text, text, "ExternalOwner")
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": [ref], "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, text.encode())
+
+    def test_projection_suffix_has_separate_semantic_span(self):
+        text = "#check Old.functor.map\n"
+        refs = [occurrence(text, "Old.functor", "Old.functor", "Owner"),
+                occurrence(text, "map", "CategoryTheory.Functor.map", "Mathlib", kind="field")]
+        plan = Migration({"rows": [
+            {"module": "Owner", "old": "Old.functor", "new": "New.functor"},
+        ]})
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": refs, "commands": []}, plan)
+        self.assertEqual(issues, [])
+        self.assertEqual(rendered, b"#check _root_.New.functor.map\n")
+        # Without the suffix reference, custom syntax must still be reviewed.
+        rendered, issues = rewrite({"module": "Uses", "source": text,
+                                    "refs": refs[:1], "commands": []}, plan)
+        self.assertIsNone(rendered)
+        self.assertIn("no semantic source span", issues[0]["reason"])
+
+    def test_unresolved_relative_open_with_migration_policy_is_reviewed(self):
+        plan = Migration({"rows": [], "opens": {"IC.DGNerve": None}})
+        for text, first, last, blocked in (("open IC DGNerve\n", "IC", "DGNerve", True),
+                                            ("open CategoryTheory Limits\n", "CategoryTheory", "Limits", False)):
+            stop = len(text.rstrip())
+            commands = [{"kind": "open", "start": text.index(name),
+                         "stop": text.index(name) + len(name), "mode": "simple",
+                         "names": [name] if name == first else [],
+                         "command": {"start": 5, "stop": stop}}
+                        for name in (first, last)]
+            rendered, issues = rewrite({"module": "Uses", "source": text,
+                                        "refs": [], "commands": commands}, plan)
+            if blocked:
+                self.assertIsNone(rendered)
+                self.assertIn("could not be resolved", issues[0]["reason"])
+            else:
+                self.assertEqual(issues, [])
+                self.assertEqual(rendered, text.encode())
+
+    def test_detached_method_adds_a_name_resolution_export(self):
+        text = "def Old.Record.step (n : Nat) := n + 1\n"
+        ref = occurrence(text, "Old.Record.step", "Old.Record.step", "Old", kind="binder")
+        cmd = {"kind": "declaration-command", "start": 0, "stop": len(text.rstrip())}
+        plan = Migration({"rows": [{"module": "Old", "old": "Old.Record.step", "new": "Later.Record.step",
+                                    "field_namespace": "Earlier.Record"}]})
+        data = {"module": "Old", "source": text, "refs": [ref], "commands": [cmd]}
+        result, issues = rewrite(data, plan)
+        self.assertEqual(issues, [])
+        self.assertIn(b"def _root_.Later.Record.step", result)
+        self.assertIn(b"with_weak_namespace _root_.Earlier.Record export _root_.Later.Record (step)", result)
+        self.assertIsNone(rewrite({**data, "commands": []}, plan)[0])
 
     def test_stale_capture_rejected(self):
         with TemporaryDirectory() as directory:
@@ -136,6 +277,37 @@ class ReviewTests(unittest.TestCase):
         self.assertEqual(refreshed[1]["move_approved"], "no")
         self.assertIn("unsure items", changes[0]["reason"])
 
+    def test_stage_1_6_filters_evidence_and_retains_prior_partial_placements(self):
+        paths = {n: f"SerrePositivity/InfinityCategories/{n}.lean"
+                 for n in ("Partial", "Withdrawn", "Mathlib", "NewPartial", "NewNone")}
+
+        def assignment(name, evidence):
+            return {"source": paths[name], "scope": "inside", "action": "move",
+                    "basis": "items", "section": "1.1", "section_tag": "AAAA",
+                    "proposed_path": f"Old/{name}.lean", "evidence": evidence,
+                    "declarations": name, "declaration_items": "1.1.1.1",
+                    "other_declarations": "", "docstring_refs": "", "other_sections": ""}
+
+        items, reviews = [], {}
+        for i, (name, status) in enumerate(
+            (("Partial", "own"), ("Withdrawn", "partial"), ("Mathlib", "mathlib"),
+             ("NewPartial", "partial"), ("NewNone", "none")), 1
+        ):
+            number = f"2.2.1.{i}"
+            items.append({"number": number, "status": "none", "declarations": ""})
+            reviews[number] = {"status_new": status, "verdict": "fix",
+                               "declarations_new": f"{name} @ {paths[name]}:10"}
+        prior = [assignment("Partial", "partial+topic"), assignment("Withdrawn", "declaration")]
+        sections = toc_sections("- Chapter 2 [0002] Tests\n  - 2.2 [BBBB] Other Stuff\n")
+        refreshed, changes = refresh(prior, items, reviews, sections)
+        retained, withdrawn = refreshed
+        self.assertEqual(retained["proposed_path"], prior[0]["proposed_path"])
+        self.assertEqual(retained["partial_placement_retained"], "yes")
+        self.assertEqual(withdrawn["proposed_path"], prior[1]["proposed_path"])
+        self.assertEqual(withdrawn["evidence"], "review-no-correspondence")
+        self.assertEqual({r["source"] for r in changes if r["reason"] == "new source; assign manually"},
+                         {paths["Mathlib"]})
+
     def test_cross_gate_and_missing_chapter(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)
@@ -145,7 +317,7 @@ class ReviewTests(unittest.TestCase):
                 load_reviews(items, root)
             with self.assertRaisesRegex(ValueError, "accept-cross-review"):
                 check_review_gate({}, root, False)
-            with self.assertRaisesRegex(ValueError, "cross-4.md"):
+            with self.assertRaisesRegex(ValueError, "cross report for Ch 4"):
                 check_review_gate({}, root, True)
 
 
@@ -159,9 +331,25 @@ namespace Old
 def f (x : Nat) := x + 1
 structure Box where
   value : Nat
+def destruct (b : Box) : Nat := by
+  cases b with
+  | mk value => exact value
+def destructExplicit (b : Box) : Nat := by
+  cases b with
+  | @mk value => exact value
+def rebuild (b : Box) : Box where
+  value := b.value
+def updateBox (b : Box) : Box := { b with value := 4 }
 namespace Nested
 def result := f 0
 end Nested
+inductive Branch where
+  | bead : Branch
+  | join : Branch → Branch → Branch
+def collapseBranch (b : Branch) : Nat := by
+  cases b with
+  | bead => exact 0
+  | join left right => exact 1
 scoped notation "kRef" => f 1
 end Old
 
@@ -172,6 +360,7 @@ open scoped Old
 def rel := f 3
 def rel2 := ofn 3
 def fully := Old.f 3
+def explicit := @Old.f 5
 def shadow (f : Nat) := f + 1
 def dot (x : Old.Box) := x.value
 def localOpen := open Old in f 4
@@ -186,7 +375,7 @@ def withNotation := kRef
             owner = module_name(path)
             subprocess.run([lean, "--run", str(helper), owner, path, capture.name], cwd=root, check=True)
             data = checked_capture(root, path, capture)
-            symbols = ["Old.f", "Old.Box", "Old.Box.value", "Old.Nested.result"]
+            symbols = ["Old.f", "Old.Box", "Old.Box.mk", "Old.Box.value", "Old.destruct", "Old.destructExplicit", "Old.rebuild", "Old.updateBox", "Old.Nested.result", "Old.Branch", "Old.Branch.bead", "Old.Branch.join", "Old.collapseBranch"]
             plan = Migration({"rows": [{"module": owner, "old": n, "new": n.replace("Old.", "New.Home.", 1)} for n in symbols],
                               "namespaces": {owner: {"Old": "New.Home"}}, "opens": {"Old": "New.Home"}})
             result, issues = rewrite(data, plan)
@@ -194,9 +383,45 @@ def withNotation := kRef
             self.assertIn(b"namespace New.Home", result)
             self.assertIn(b"open _root_.New.Home renaming f -> ofn", result)
             self.assertIn(b"x.value", result)
+            self.assertIn(b"value := ", result)
+            self.assertIn(b"@_root_.New.Home.f", result)
             self.assertIn(b"def shadow (f : Nat) := f + 1", result)
             after.write_bytes(result + b"\nexample : fully = 4 := rfl\nexample : withNotation = 2 := rfl\n")
             subprocess.run([lean, after.name], cwd=root, check=True)
+
+    def test_detached_method_resolves_in_importing_module(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            original = root / "Original.lean"
+            original.write_text("""module
+@[expose] public section
+namespace Old
+structure Record where
+  val : Nat
+def Record.addOffset (n : Nat) (r : Record) := n + r.val
+example (r : Record) : r.addOffset 2 = 2 + r.val := rfl
+end Old
+""")
+            capture = root / "refs.json"
+            subprocess.run([lean, "--run", str(helper), "Original", original.name, capture.name],
+                           cwd=root, check=True)
+            data = checked_capture(root, original.name, capture)
+            plan = Migration({"rows": [
+                {"old": "Old.Record", "new": "Early.Record", "module": "Original"},
+                {"old": "Old.Record.val", "new": "Early.Record.val", "module": "Original"},
+                {"old": "Old.Record.addOffset", "new": "Later.Record.addOffset", "module": "Original",
+                 "field_namespace": "Early.Record"},
+            ], "namespaces": {"Original": {"Old": "Early"}}})
+            rendered, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            (root / "Moved.lean").write_bytes(rendered)
+            subprocess.run([lean, "-o", "Moved.olean", "Moved.lean"], cwd=root, check=True)
+            (root / "Uses.lean").write_text(
+                "import Moved\nexample (r : Early.Record) : r.addOffset 2 = Later.Record.addOffset 2 r := rfl\n")
+            subprocess.run([lean, "Uses.lean"], cwd=root, check=True,
+                           env=dict(os.environ, LEAN_PATH=directory))
 
     @unittest.skipUnless(os.getenv("KLW1_TEST_ALIAS_HELPER"), "set KLW1_TEST_ALIAS_HELPER and LEAN_PATH")
     def test_generated_aliases_elaborate_with_f2_helper(self):

@@ -22,17 +22,17 @@ open scoped Simplicial
 規約：元の射の両像を全 Arrow で保持。使われ方：指定置換射での全源比較。 -/
 lemma hom_naturality_const_component {C : Type u} [Category.{u} C]
     {D : SSet.{u}} [Quasicategory D] {F G : nerve C ⟶ D}
-    (e : FunctorIso F G) {x y : C} (f : x ⟶ y) :
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G) {x y : C} (f : x ⟶ y) :
     Arrow.mk (Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map F).toTruncated ≫
-      functorHomEvaluate e.hom (nerveVertex y)) =
-    Arrow.mk (functorHomEvaluate e.hom (nerveVertex x) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate e.hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex y)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate e.hom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x) ≫
       Truncated.HomotopyCategory.homMk ((nerve.edgeMk f).map G).toTruncated) := by
   let a : (Functor.const C).obj x ⟶ (Functor.const C).obj y := (Functor.const C).map f
-  have h := congrArg (fun α : FunctorHom
+  have h := congrArg (fun α : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
       (nerveMap ((Functor.const C).obj x) ≫ F)
       (nerveMap ((Functor.const C).obj y) ≫ G) =>
-    functorHomEvaluate α (nerveVertex x)) (hom_naturality e a)
-  rw [functorHomEvaluate_comp, functorHomEvaluate_comp] at h
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate α (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x)) (hom_naturality e a)
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate_comp] at h
   have hf := hom_component_arrow F a x
   have hg := hom_component_arrow G a x
   have hx := constRestriction_component_arrow (I := C) e.hom x x

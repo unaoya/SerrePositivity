@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FiberTransportFamily
 
 /-!
 概要：元の全輸送の prism を右結合の表示に移し、元の両端と底を保持する。

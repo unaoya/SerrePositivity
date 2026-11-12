@@ -83,7 +83,7 @@ lemma oneDirectionReducedComparison_localized_isIso (r : ℕ) (X : StableModel.{
 方針：局所化可逆性を L9 の実際のホモトピー群の比較に移す。
 規約：全次数・零次数を含む。使われ方：構造射の源の Kan 模型の同値比較。 -/
 lemma oneDirectionReducedComparison_kan_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (Spectra.PointedKanReplacement.map (oneDirectionReducedComparison r X)).right := by
   apply pointedKanReplacement_map_piIsomorphism_of_localized_isIso
   exact oneDirectionReducedComparison_localized_isIso r X
@@ -109,7 +109,7 @@ def oneDirectionKanComparisonNat (r : ℕ) :
   Functor.whiskerRight (oneDirectionReducedComparisonNat r) Spectra.PointedKanReplacement.functor
 
 local instance (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] :
-    KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
+    KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right := Spectra.loopSpace_kanComplex Y
 
 /-- 概要：一次方向の境界商の比較に Ω を適用する。
 方針：点つき Kan 置換した比較を円からの点つき内部 Hom で写す。
@@ -136,7 +136,7 @@ local instance (r : ℕ) (X : StableModel.{u}) :
 方針：Kan な点つき対象間の π_* 同型を L9 の写像空間へ移す。
 規約：全次数・零次数を含む。使われ方：反復の loop 模型の比較。 -/
 lemma oneDirectionLoopComparison_piIsomorphism (r : ℕ) (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((oneDirectionLoopComparisonNat r).app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((oneDirectionLoopComparisonNat r).app X).right :=
   Spectra.PointedMapping.post_piIsomorphism PointedSimplicialSet.circle
     (Spectra.PointedKanReplacement.map (oneDirectionReducedComparison r X))
     (oneDirectionReducedComparison_kan_piIsomorphism r X)

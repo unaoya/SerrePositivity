@@ -23,7 +23,7 @@ local notation "s" => dgKappaUnconditionalStageProvider R κ hκ
 
 /-- 同じ新提供者上で、元の厳密懸垂入力射を順射として保つ実商の Morita 同値。 -/
 def dgKappaUnconditionalSuspensionMoritaEquivalence :
-    QCatEquivalence (dgKappaSuspensionInfinity R A (s A).cone)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgKappaSuspensionInfinity R A (s A).cone)
       (dgKappaSuspensionInfinity R B (s B).cone) :=
   dgKappaSuspensionMoritaEquivalence R A B (s A).cone (s B).cone
     (dgKappaUnconditionalSuspensionMapData R κ hκ f)
@@ -33,12 +33,12 @@ def dgKappaUnconditionalSuspensionMoritaEquivalence :
 /-- 同値の順射は D-S の元の同じ平坦分解・実商入力射の native nerve そのもの。 -/
 theorem dgKappaUnconditionalSuspensionMoritaEquivalence_hom :
     (dgKappaUnconditionalSuspensionMoritaEquivalence R κ hκ f).hom =
-      dgNerve.map (dgKappaSphereClosureSuspensionInputMap R A B
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
         (perfDGInputHomEquiv R A B f) κ hκ).down := rfl
 
 /-- 元の主導来 Morita 射の、D-S の同じ実懸垂入力射が全 ∞ 圏同値となる。 -/
 theorem dgKappaUnconditionalSuspensionInputMap_isQCatEquivalence_of_morita :
-    IsQCatEquivalence (dgNerve.map (dgKappaSphereClosureSuspensionInputMap R A B
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SuspensionAction.dgKappaSphereClosureSuspensionInputMap R A B
       (perfDGInputHomEquiv R A B f) κ hκ).down) :=
   (dgKappaUnconditionalSuspensionMoritaEquivalence R κ hκ f).isQCatEquivalence
 

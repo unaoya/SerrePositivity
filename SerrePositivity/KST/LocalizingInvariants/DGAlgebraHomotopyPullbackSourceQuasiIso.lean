@@ -22,11 +22,11 @@ variable (R : Type u) [CommRing R] {A A' B C : Mon (Complex R)}
   (f : A ⟶ B) (g : C ⟶ B) (a : A' ⟶ A)
 
 lemma sourceMap_toMappingCocone : (sourceMap R f g a).hom ≫ toMappingCocone R f g =
-    toMappingCocone R (a ≫ f) g ≫ complexMappingCoconeMap (difference R (a ≫ f) g)
+    toMappingCocone R (a ≫ f) g ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R (a ≫ f) g)
       (difference R f g) (sourceSumMap R a) (𝟙 B.X) (sourceDifference_comm R f g a) := by
-  apply dgMappingCocone_hom_ext (difference R f g)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext (difference R f g)
   · rw [Category.assoc, toMappingCocone_fst, Category.assoc,
-      complexMappingCoconeMap_fst, ← Category.assoc, toMappingCocone_fst]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst, ← Category.assoc, toMappingCocone_fst]
     apply biprod.hom_ext
     · rw [Category.assoc, pairHom_fst, Category.assoc, sourceSumMap, biprod.map_fst,
         ← Category.assoc, pairHom_fst]
@@ -37,12 +37,12 @@ lemma sourceMap_toMappingCocone : (sourceMap R f g a).hom ≫ toMappingCocone R 
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
       toMappingCocone_snd, sourceMap_primitive]
     rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
-      complexMappingCoconeMap_snd, Cochain.comp_id, toMappingCocone_snd]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd, Cochain.comp_id, toMappingCocone_snd]
 
 lemma sourceMap_quasiIso (ha : QuasiIso a.hom) : QuasiIso (sourceMap R f g a).hom := by
   have hs : QuasiIso (sourceSumMap R a (C := C)) :=
     cochainBiprodMap_quasiIso a.hom (𝟙 C.X) ha (quasiIso_of_isIso _)
-  have hc : QuasiIso (complexMappingCoconeMap (difference R (a ≫ f) g)
+  have hc : QuasiIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap (difference R (a ≫ f) g)
       (difference R f g) (sourceSumMap R a) (𝟙 B.X) (sourceDifference_comm R f g a)) :=
     cochainMappingCoconeMap_quasiIso _ _ _ _ _ hs (quasiIso_of_isIso _)
   have ht : QuasiIso ((sourceMap R f g a).hom ≫ toMappingCocone R f g) := by

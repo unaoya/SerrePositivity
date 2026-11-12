@@ -20,10 +20,10 @@ open scoped Simplicial
 variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
   (s : (SimplicialNerve C) _⦋3⦌) {W X Y Z : C}
   (f : W ⟶ X) (g : X ⟶ Y) (h : Y ⟶ Z) (fg : W ⟶ Y) (gh : X ⟶ Z)
-  (Tfg : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g)
-    (coherentNerveEdge fg))
-  (Tgh : SSet.Edge.CompStruct (coherentNerveEdge g) (coherentNerveEdge h)
-    (coherentNerveEdge gh))
+  (Tfg : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge fg))
+  (Tgh : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge gh))
   (hfg : (SimplicialNerve C).δ 3 s = Tfg.simplex)
   (hgh : (SimplicialNerve C).δ 0 s = Tgh.simplex)
 
@@ -34,13 +34,13 @@ lemma coherentTetrahedron_vertices :
     s.obj (.mk (ULift.up 0)) = W ∧ s.obj (.mk (ULift.up 1)) = X ∧
       s.obj (.mk (ULift.up 2)) = Y ∧ s.obj (.mk (ULift.up 3)) = Z := by
   have hw : Tfg.simplex.obj (.mk (ULift.up 0)) = W :=
-    congrArg (fun e => (coherentNerveArrowData e).1) Tfg.d₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) Tfg.d₂
   have hx : Tgh.simplex.obj (.mk (ULift.up 0)) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) Tgh.d₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) Tgh.d₂
   have hy : Tgh.simplex.obj (.mk (ULift.up 1)) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) Tgh.d₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) Tgh.d₂
   have hz : Tgh.simplex.obj (.mk (ULift.up 2)) = Z :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) Tgh.d₀
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) Tgh.d₀
   exact ⟨(congrArg (fun t => t.obj (.mk (ULift.up 0))) hfg).trans hw,
     (congrArg (fun t => t.obj (.mk (ULift.up 0))) hgh).trans hx,
     (congrArg (fun t => t.obj (.mk (ULift.up 1))) hgh).trans hy,

@@ -39,7 +39,7 @@ lemma intervalConstant_map {n m : ℕ} (f : ⦋n⦌ ⟶ ⦋m⦌) (i : Fin 2) :
 規約：KST A.3。使われ方：復元した区間射の両端の値。 -/
 lemma integerIntervalComparison_constant_zero (i : Fin 2) :
     integerIntervalComparison.f 0
-      (integerGenerator (SSet.stdSimplex.const 1 i (op ⦋0⦌) :
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 i (op ⦋0⦌) :
         (Δ[1] : SSet.{u}).obj (op ⦋0⦌))) = integerIntervalVertex i :=
   integerIntervalComparisonApp_zero_generator _
 
@@ -48,11 +48,11 @@ lemma integerIntervalComparison_constant_zero (i : Fin 2) :
 規約：KST A.3・A.5。使われ方：AW の区間の正次数の項の消去。 -/
 lemma integerIntervalComparison_constant_succ (n : ℕ) (i : Fin 2) :
     integerIntervalComparison.f (n + 1)
-      (integerGenerator (SSet.stdSimplex.const 1 i (op ⦋n + 1⦌) :
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 i (op ⦋n + 1⦌) :
         (Δ[1] : SSet.{u}).obj (op ⦋n + 1⦌))) = 0 := by
   cases n with
   | zero =>
-    change integerIntervalComparisonApp 1 (integerGenerator _) = _
+    change integerIntervalComparisonApp 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator _) = _
     rw [integerIntervalComparisonApp_one_generator]
     simp only [intervalSimplexVertex_constant, integerIntervalWeight, sub_self, zero_smul]
   | succ n => rfl
@@ -62,7 +62,7 @@ lemma integerIntervalComparison_constant_succ (n : ℕ) (i : Fin 2) :
 規約：KST A.3・A.5。使われ方：AW の N−i 次数の項の消去。 -/
 lemma integerIntervalComparison_constant_of_pos (n : ℕ) (hn : 0 < n) (i : Fin 2) :
     integerIntervalComparison.f n
-      (integerGenerator (SSet.stdSimplex.const 1 i (op ⦋n⦌) :
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator (SSet.stdSimplex.const 1 i (op ⦋n⦌) :
         (Δ[1] : SSet.{u}).obj (op ⦋n⦌))) = 0 := by
   cases n with
   | zero => omega

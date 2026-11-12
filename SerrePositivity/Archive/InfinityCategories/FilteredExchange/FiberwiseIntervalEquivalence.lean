@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwiseIntervalContraction
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakHomotopyInverse
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ContinuousKanWeakFunctoriality
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakHomotopyInverse
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ContinuousKanWeakFunctoriality
 
 /-!
 概要：定値底の path の始点評価は底上の実際のホモトピー逆を持つ。

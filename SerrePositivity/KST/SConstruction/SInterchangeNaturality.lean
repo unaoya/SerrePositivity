@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SDoubleInclusion
 public import SerrePositivity.KST.SConstruction.SInterchangeStableIso
-public import SerrePositivity.InfinityCategories.Kan.SwapNaturality
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SwapNaturality
 
 /-! # 二重 S 交換の完全関手と添字制限に関する自然性
 概要：二重 S の厳密な交換同型は完全関手と両 Ar 添字の面・退化に関して自然。
@@ -26,7 +26,7 @@ lemma sInterchangeStableIso_naturality (m n : ℕ) {X Y : StableModel.{u}} (f : 
     sInterchange m n X.carrier ≫ ((sEndofunctor n).map ((sEndofunctor m).map f)).val
   apply (cancel_mono (sDoubleInclusion n m Y.carrier)).mp
   rw [Category.assoc, sInterchange_doubleInclusion, ← Category.assoc,
-    sDoubleInclusion_postcomp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_postcomp,
+    sDoubleInclusion_postcomp, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_postcomp,
     ← Category.assoc, ← sInterchange_doubleInclusion]
   simpa only [Category.assoc] using (congrArg
     (fun h => sInterchange m n X.carrier ≫ h) (sDoubleInclusion_postcomp n m f)).symm
@@ -43,7 +43,7 @@ lemma sInterchange_outerMap {m m' : ℕ} (n : ℕ) (X : StableModel.{u})
       sInterchange m n X.carrier ≫ ((sEndofunctor n).map ((sEndofunctorMap θ).app X)).val := by
   apply (cancel_mono (sDoubleInclusion n m' X.carrier)).mp
   rw [Category.assoc, sInterchange_doubleInclusion, ← Category.assoc,
-    sDoubleInclusion_outerMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kan.internalHomSwap_pre_left,
+    sDoubleInclusion_outerMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.internalHomSwap_pre_left,
     ← Category.assoc, ← sInterchange_doubleInclusion]
   simpa only [Category.assoc] using (congrArg
     (fun h => sInterchange m n X.carrier ≫ h) (sDoubleInclusion_innerMap n X θ)).symm
@@ -55,7 +55,7 @@ lemma sInterchange_innerMap (m : ℕ) {n n' : ℕ} (X : StableModel.{u})
       sInterchange m n X.carrier ≫ sMap (sConstruction m X.carrier) θ := by
   apply (cancel_mono (sDoubleInclusion n' m X.carrier)).mp
   rw [Category.assoc, sInterchange_doubleInclusion, ← Category.assoc,
-    sDoubleInclusion_innerMap, Category.assoc, internalHomSwapIso_pre,
+    sDoubleInclusion_innerMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_pre,
     ← Category.assoc, ← sInterchange_doubleInclusion]
   simpa only [Category.assoc] using (congrArg
     (fun h => sInterchange m n X.carrier ≫ h)

@@ -47,11 +47,11 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory
 open CategoryTheory.MonoidalClosed
 
 namespace SerrePositivity.SimplicialModel.LargeParameterRelativeChoice
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P)
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P)
 
 include hp in
 lemma terminal_lifting {A K : SSet.{max w v}} (j : A ⟶ K) [Mono j] :
-    HasLiftingProperty j (SSet.stdSimplex.isTerminalObj₀.from (UniverseLift.obj.{w} P)) where
+    HasLiftingProperty j (SSet.stdSimplex.isTerminalObj₀.from (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) where
   sq_hasLift {a _b} _sq := CommSq.HasLift.mk'
     { l := LargeParameterExtension.extend hp j a
       fac_left := LargeParameterExtension.extend_initial hp j a
@@ -61,22 +61,22 @@ include hp in
 /-- Restriction into the lifted small space lifts every large monomorphism. -/
 lemma restriction_lifting {A K U V : SSet.{max w v}} (j : A ⟶ K) [Mono j]
     (l : U ⟶ V) [Mono l] :
-    HasLiftingProperty l ((internalHom.map j.op).app (UniverseLift.obj.{w} P)) := by
+    HasLiftingProperty l ((internalHom.map j.op).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) := by
   let pp := Functor.PushoutObjObj.ofHasPushout (curriedTensor SSet.{max w v}) j l
   let ph := Functor.PullbackObjObj.ofIsTerminal internalHom j
-    (SSet.stdSimplex.isTerminalObj₀.from (UniverseLift.obj.{w} P)) SSet.stdSimplex.isTerminalObj₀
+    (SSet.stdSimplex.isTerminalObj₀.from (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) SSet.stdSimplex.isTerminalObj₀
   have : Mono pp.ι := simplicial_pushoutProduct_mono j l pp
   exact (internalHomAdjunction₂.hasLiftingProperty_iff pp ph).1 (terminal_lifting hp pp.ι)
 
 include hp in
 /-- Lift moving boundary families while retaining an already prescribed entire subfamily. -/
 lemma family_lifting {A K U V : SSet.{max w v}} (j : A ⟶ K) [Mono j]
-    (l : U ⟶ V) [Mono l] (a : K ⊗ U ⟶ UniverseLift.obj.{w} P)
-    (c : A ⊗ V ⟶ UniverseLift.obj.{w} P)
+    (l : U ⟶ V) [Mono l] (a : K ⊗ U ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)
+    (c : A ⊗ V ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)
     (hc : j ▷ U ≫ a = A ◁ l ≫ c) :
-    ∃ e : K ⊗ V ⟶ UniverseLift.obj.{w} P, K ◁ l ≫ e = a ∧ j ▷ V ≫ e = c := by
-  have : HasLiftingProperty l ((pre j).app (UniverseLift.obj.{w} P)) := restriction_lifting hp j l
-  let sq : CommSq (curry a) l ((pre j).app (UniverseLift.obj.{w} P))
+    ∃ e : K ⊗ V ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P, K ◁ l ≫ e = a ∧ j ▷ V ≫ e = c := by
+  have : HasLiftingProperty l ((pre j).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) := restriction_lifting hp j l
+  let sq : CommSq (curry a) l ((pre j).app (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P))
       (curry c) := ⟨by
     apply uncurry_injective
     rw [uncurry_pre_app, uncurry_curry, uncurry_natural_left, uncurry_curry]
@@ -85,7 +85,7 @@ lemma family_lifting {A K U V : SSet.{max w v}} (j : A ⟶ K) [Mono j]
   · rw [← uncurry_natural_left, sq.fac_left, uncurry_curry]
   · rw [← uncurry_pre_app, sq.fac_right, uncurry_curry]
 
-variable {A K : SSet.{max w v}} (j : A ⟶ K) [Mono j] (b : A ⟶ UniverseLift.obj.{w} P)
+variable {A K : SSet.{max w v}} (j : A ⟶ K) [Mono j] (b : A ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)
 
 include hp in
 /-- Extend a family of relative extensions, keeping its entire prescribed domain. -/
@@ -100,7 +100,7 @@ lemma extension {U V : SSet.{max w v}} (l : U ⟶ V) [Mono l]
   exact ⟨sq.lift, sq.fac_left⟩
 
 include hp in
-lemma fillers : UniverseLift.BoundaryFillers (RelativeChoiceSpace.obj j b) :=
+lemma fillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (RelativeChoiceSpace.obj j b) :=
   fun n a => extension hp j b (SSet.boundary.{max w v} n).ι a
 
 def intervalBoundary (s t : SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk 0) ⟶
@@ -168,7 +168,7 @@ def parameterHomotopy : SSet.Homotopy e₀ e₁ where
 
 end ParameterHomotopy
 
-variable (e₀ e₁ : K ⟶ UniverseLift.obj.{w} P) (h₀ : j ≫ e₀ = b) (h₁ : j ≫ e₁ = b)
+variable (e₀ e₁ : K ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) (h₀ : j ≫ e₀ = b) (h₁ : j ≫ e₁ = b)
 
 /-- An actual homotopy fixing all data on A throughout its entire interval. -/
 def fixedHomotopy : RelativeChoiceSpace.FixedBoundaryHomotopy j b e₀ e₁ where

@@ -33,9 +33,9 @@ variable {J : Type v} [Category.{w} J]
 使われ方：Goerss–Jardine I §7。余単体の加法的な cochain の係数。 -/
 def commDiagram (D : J ⥤ PointedSimplicialSet.{u}) [∀ j, KanComplex (D.obj j).right] (k : ℕ) :
     J ⥤ CommGrpCat.{u} where
-  obj j := CommGrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (D.obj j).right (k + 1) (D.obj j).basepoint)
+  obj j := CommGrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (D.obj j).right (k + 1) (D.obj j).basepoint)
   map f := CommGrpCat.ofHom
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := k + 1) (D.map f).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := k + 1) (D.map f).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
   map_id j := by
     ext a
     change pointedHomotopyMap (k + 2) (D.map (𝟙 j)) a = a
@@ -52,7 +52,7 @@ def commDiagramMap {D E : J ⥤ PointedSimplicialSet.{u}}
     [∀ j, KanComplex (D.obj j).right] [∀ j, KanComplex (E.obj j).right]
     (τ : D ⟶ E) (k : ℕ) : commDiagram D k ⟶ commDiagram E k where
   app j := CommGrpCat.ofHom
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := k + 1) (τ.app j).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := k + 1) (τ.app j).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
   naturality i j f := by
     ext a
     change pointedHomotopyMap (k + 2) (τ.app j) (pointedHomotopyMap (k + 2) (D.map f) a) =
@@ -66,7 +66,7 @@ def commDiagramIso {D E : J ⥤ PointedSimplicialSet.{u}}
     (fun j ↦
       let ej : (D.obj j).right ≅ (E.obj j).right := PointedSimplicialSet.forget.mapIso (e.app j)
       MulEquiv.toCommGrpIso (X := (commDiagram D k).obj j) (Y := (commDiagram E k).obj j)
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (k + 1) ej (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (e.app j).hom)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (k + 1) ej (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (e.app j).hom)))
     (fun f ↦ (commDiagramMap e.hom k).naturality f)
 
 /-- 概要：高次ホモトピー群の図式を加法的可換群として表す。

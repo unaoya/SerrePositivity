@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeTerminalTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeTerminalFamilyHomotopy
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorCompositionTriangle
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle
 
 /-!
 概要：元の底を固定する三つの比較円柱を、同じ底の上の三角形の族へ充填する。

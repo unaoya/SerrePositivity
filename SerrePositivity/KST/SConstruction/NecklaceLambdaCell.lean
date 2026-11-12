@@ -15,14 +15,14 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の全 necklace の cubical 生成射を、同じ元の Λ Hom へ送る実 Serre 鎖射。 -/
-def necklaceLambdaCell {K : SSet.{u}} {x y : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) :
+def necklaceLambdaCell {K : SSet.{u}} {x y : K _⦋0⦌} (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) :
     serreCubeComplex A T.necklace.down.dimension ⟶ homObject A (CubicalLambda A K) x y :=
-  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk T.necklace.down.dimension) ≫
+  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk T.necklace.down.dimension) ≫
     (cubicalSerreChains A).map (necklaceCubicalCell T)
 
 /-- 元の全 necklace 可換三角形は、元の同じ Serre 生成射と厳密に可換。 -/
 lemma necklaceLambdaCell_relation {K : SSet.{u}} {x y : K _⦋0⦌}
-    {T U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y} (f : T ⟶ U) :
+    {T U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y} (f : T ⟶ U) :
     (serreConcreteCubeComplexFunctor A).map (necklaceConcreteCubeMap f.necklaceHom) ≫
       necklaceLambdaCell A U = necklaceLambdaCell A T := by
   have h := congrArg ((cubicalSerreChains A).map) (necklaceCubicalCell_relation f)

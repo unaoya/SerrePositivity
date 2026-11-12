@@ -25,7 +25,7 @@ lemma arrow_locallyPresentable [IsLocallyPresentable.{w} C] :
   exact ⟨κ, hκ, { }⟩
 
 variable [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I J
 
@@ -45,7 +45,7 @@ lemma exists_accessible_weakEquivalences :
     AccessibleFactorization.rightFactor_isCardinalAccessible d.fibrationData κ₀
   have : F.IsAccessible.{w} := F.isAccessible_of_isCardinalAccessible κ₀
   have h := exists_accessible_rightClass_inverseImage I F
-  have hI := ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)
+  have hI := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)
   rw [← WeakEquivalenceFilteredColimits.arrowProperty_eq_inverseImage d.fibrationData I hI] at h
   exact h
 

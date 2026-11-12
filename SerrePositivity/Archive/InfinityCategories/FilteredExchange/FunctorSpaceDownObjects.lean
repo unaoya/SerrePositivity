@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorSpaceDown
-public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection
 
 /-!
 概要：関手空間のホモトピー圏の下降を、元の小宇宙の具体的な関手頂点で表示する。

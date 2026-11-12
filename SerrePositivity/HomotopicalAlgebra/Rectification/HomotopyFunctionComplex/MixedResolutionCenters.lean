@@ -49,7 +49,7 @@ def family (q : ResolutionArrowDiagram.Index C) {T : SSet.{v}}
       ((FramedResolution.diagonal (C := C)).obj (ResolutionArrowDiagram.source C q))
       (ResolutionArrowDiagram.target C q).resolution.obj :=
   CosimplicialMapFamily.ofDoubleHom
-    (s ≫ (FiberFunctor.inclusion (ResolutionArrowDiagram.rawProjection C)
+    (s ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (ResolutionArrowDiagram.rawProjection C)
       (ResolutionArrowDiagram.basepoint C)).app q)
 
 lemma family_recovery (q : ResolutionArrowDiagram.Index C) {T : SSet.{v}}

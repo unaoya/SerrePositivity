@@ -23,15 +23,15 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma markedSpine_paste (X : Paths C) (g : FactorTarget.Index W)
-    (p : (FactorTarget.left W X g.val).obj n) (r : (FactorTarget.right W Y g.val).obj n) :
+lemma markedSpine_paste (X : Paths C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
+    (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n) (r : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).obj n) :
     markedSpine W Y n X (FactorTarget.pastePoint W X Y g p r) =
       MarkedSpine.cons X g p (markedSpine W Y n g.val.right r) := by
   have he := markedSpine_nonempty W Y n X
     ((FactorTarget.pasteNonempty W X Y).app n ⟨g, p, r⟩)
   have hc := FactorTarget.pasteNonempty_cut_point W X Y
-    (⟨g, p, r⟩ : (FactorTarget.space W X Y).obj n)
-  exact he.trans (congrArg (fun s : (FactorTarget.space W X Y).obj n =>
+    (⟨g, p, r⟩ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n)
+  exact he.trans (congrArg (fun s : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y).obj n =>
     MarkedSpine.cons X s.1 s.2.1 (markedSpine W Y n s.1.val.right s.2.2)) hc)
 
 lemma markedSpine_glue {X : Paths C} (t : MarkedSpine W Y n X) :
@@ -47,7 +47,7 @@ lemma gluing_extraction (X : Paths C) :
   ext n t
   exact markedSpine_glue W Y t
 
-def markedSpineIso (X : Paths C) : colimitGraph W.paths X Y ≅ MarkedSpine.space W Y X where
+def markedSpineIso (X : Paths C) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y ≅ MarkedSpine.space W Y X where
   hom := extraction W Y X
   inv := MarkedSpine.gluing W Y X
   hom_inv_id := extraction_gluing W Y X

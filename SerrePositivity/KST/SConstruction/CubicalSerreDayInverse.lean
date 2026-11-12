@@ -50,7 +50,7 @@ def cubicalSerreDayInverse (K L : CubicalSet.{u}) :
 
 /-- 全体の逆射は、元の全ての両 cell 上の組み立てを回収する。 -/
 lemma cubicalSerreDayInverse_cell {K L : CubicalSet.{u}}
-    (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
+    (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)) :
     (cubicalSerreCell A c x ⊗ₘ cubicalSerreCell A d y) ≫
         cubicalSerreDayInverse A K L = cubicalSerreDayAssembly A c d x y := by
   have h := (cubicalSerreTensorIsColimit A K L).fac

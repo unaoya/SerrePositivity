@@ -26,15 +26,15 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
   (s : cofibrantSourceRoofProductComma A X Y b)
 
 def cofibrantSourceRoofProductCommaPrefixHomotopy : SSet.Homotopy
-    (toUnit (nerve (Under s)) ≫ Hammock.arrowMap
+    (toUnit (nerve (Under s)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
       (cofibrantAlgebraRelativeCategory A).weakEquivalences
       ((cofibrantSourceRoofProductCommaRightLeg A X Y b).app s))
     (nerveMap (Under.forget s) ≫ cofibrantSourceRoofProductCommaEvaluationRoofMap A X Y b ≫
-      Hammock.precomposePointMap (Hammock.arrowMap
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
         (cofibrantAlgebraRelativeCategory A).weakEquivalences
         ((cofibrantSourceRoofProductCommaEvaluation A X Y b).app s))
         (show (cofibrantAlgebraRelativeCategory A).category from Y)) := by
-  apply stableHomotopyRetarget (Hammock.LeftRoof.Prefix.arrowHomotopy
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (Hammock.LeftRoof.Prefix.arrowHomotopy
     (cofibrantAlgebraRelativeCategory A).weakEquivalences
     (cofibrantSourceRoofProductCommaDiagram A X Y b)
     (cofibrantSourceRoofProductCommaEvaluation A X Y b)
@@ -53,10 +53,10 @@ lemma cofibrantSourceRoofProductCommaPrefixHomotopy_h :
       (cofibrantSourceRoofProductCommaEvaluation_weak A X Y b)
       (cofibrantSourceRoofProductCommaRightLeg A X Y b)
       (fun f => cofibrantSourceRoofProductCommaDiagram_map_weak A X Y b f) s).h ≫
-    Hammock.graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion (cofibrantAlgebraRelativeCategory A).weakEquivalences
       ((cofibrantSourceRoofProductCommaDiagram A X Y b).obj s)
       (show (cofibrantAlgebraRelativeCategory A).category from Y)
-      Hammock.LeftRoof.Precompose.word :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoofPrecomposeWords.word :=
   rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

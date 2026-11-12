@@ -17,13 +17,13 @@ variable (A : Type u) [CommRing A]
 /-- 元の全 native dg 入力族を保つ、同じ実 S_n Perf の厳密豊穣関手。 -/
 def presentedPerfectDGSEnrichedFunctor (n : ℕ) :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} :=
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v} :=
   (presentedPerfectDGEnrichedExactFunctor A).comp SSet (sExactCoreEnrichedEndofunctor n)
 
 /-- 実値は、元のラベル付き Perf の全 gapped S_n と同じ安定模型。 -/
 lemma presentedPerfectDGSEnrichedFunctor_obj (n : ℕ) (C : PerfDGInput.{u, v} A) :
     ((presentedPerfectDGSEnrichedFunctor A n).obj C).obj =
-      sConstruction n (dgNerve A (PresentedPerfectDGObject A C)) := rfl
+      sConstruction n (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) := rfl
 
 /-- 全 Hom の作用は、元の豊穣完全 Perf 作用と実 S_n の core 作用との合成。 -/
 lemma presentedPerfectDGSEnrichedFunctor_map (n : ℕ) (C D : PerfDGInput.{u, v} A) :

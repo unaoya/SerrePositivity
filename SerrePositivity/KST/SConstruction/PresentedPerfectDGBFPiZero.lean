@@ -20,7 +20,7 @@ def presentedPerfectDGBFZeroPiZeroEquiv (X : PerfDGInput.{u, v} A) :
     OmegaSpectrum.homotopyGroup (presentedPerfectDGBFOmegaSpectrum A X) 0 ≃
       π₀ (((presentedPerfectDGBFOmegaSpectrum A X).level 0).space).right :=
   (OmegaSpectrum.homotopyGroupEquivAt (presentedPerfectDGBFOmegaSpectrum A X) 0 0
-    (by decide)).toEquiv.trans _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+    (by decide)).toEquiv.trans _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
 
 /-- 同じ零次群と零空間 π₀ の比較は、元の実 BF 射に自然。 -/
 lemma presentedPerfectDGBFZeroPiZeroEquiv_naturality
@@ -30,10 +30,10 @@ lemma presentedPerfectDGBFZeroPiZeroEquiv_naturality
         (OmegaSpectrum.homotopyMap (presentedPerfectDGBFMap A f) 0 a) =
       mapπ₀ ((presentedPerfectDGBFMap A f).app 0).right
         (presentedPerfectDGBFZeroPiZeroEquiv A X a) := by
-  have h := congrArg _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+  have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
     (OmegaSpectrum.homotopyGroupEquivAt_natural (presentedPerfectDGBFMap A f) 0 0 (by decide) a)
-  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map ((presentedPerfectDGBFMap A f).app 0).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint ((presentedPerfectDGBFMap A f).app 0))
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_map ((presentedPerfectDGBFMap A f).app 0).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint ((presentedPerfectDGBFMap A f).app 0))
     (OmegaSpectrum.homotopyGroupEquivAt (presentedPerfectDGBFOmegaSpectrum A X) 0 0 (by decide) a))
 
 /-- 元の Perf 三角圏 K₀ と、同じ新 BF K 零空間の π₀ の自然比較の同値。 -/

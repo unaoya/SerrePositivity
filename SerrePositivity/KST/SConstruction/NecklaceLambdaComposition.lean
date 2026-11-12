@@ -19,39 +19,39 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の両 necklace の合成は、連結立方体の元の生成射と実 tensor 比較を回収する。 -/
 lemma necklaceCubicalCompose_generator {K : SSet.{u}} {x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
-    cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk T.necklace.down.dimension)
-        (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk U.necklace.down.dimension) ≫
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
+    cubicalDayCubeInclusion (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk T.necklace.down.dimension)
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk U.necklace.down.dimension) ≫
       cubicalDayTensorMap (necklaceCubicalCell T) (necklaceCubicalCell U) ≫
         necklaceCubicalCompose K x y z =
       cubicalYoneda.map (necklaceCubeTensorIso T.necklace U.necklace).hom ≫
-        necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) := by
+        necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) := by
   rw [necklaceCubicalCompose_cell]
   change cubicalDayCubeInclusion _ _ ≫
     ((cubicalDayCubeProjection _ _ ≫
       cubicalYoneda.map (necklaceCubeTensorIso T.necklace U.necklace).hom) ≫
-      necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U)) = _
+      necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U)) = _
   erw [Category.assoc, ← Category.assoc (cubicalDayCubeInclusion _ _),
     cubicalDayCubeInclusion_projection, Category.id_comp]
 
 /-- 元の Serre 分割・両生成射・豊穣合成は、元の連結生成射と実次元移送を回収する。 -/
 lemma necklaceLambdaCell_composition {K : SSet.{u}} {x y z : K _⦋0⦌}
-    (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z) :
+    (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z) :
     (serreCubeTensorIso A T.necklace.down.dimension U.necklace.down.dimension).hom.hom ≫
       (necklaceLambdaCell A T ⊗ₘ necklaceLambdaCell A U) ≫
         eComp (Complex A) (C := CubicalLambda A K) x y z =
       (serreConcreteCubeComplexFunctor A).map (necklaceCubeTensorIso T.necklace U.necklace).hom ≫
-        necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U) := by
+        necklaceLambdaCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U) := by
   have ht := cubicalSerreGenerator_tensor A (necklaceCubicalCell T) (necklaceCubicalCell U)
   have hc := necklaceCubicalCompose_generator T U
   have hg := cubicalSerreGenerator_relation A
     (necklaceCubeTensorIso T.necklace U.necklace).hom
-    (necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge T U))
+    (necklaceCubicalCell (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge T U))
   have hn := cubicalSerreGenerator_naturality A (necklaceCubicalCompose K x y z)
     (cubicalDayCubeInclusion _ _ ≫
       cubicalDayTensorMap (necklaceCubicalCell T) (necklaceCubicalCell U))
   have hd : Functor.OplaxMonoidal.δ (serreConcreteCubeComplexFunctor A)
-      (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk T.necklace.down.dimension) (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk U.necklace.down.dimension) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk T.necklace.down.dimension) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk U.necklace.down.dimension) =
       (serreCubeTensorIso A T.necklace.down.dimension U.necklace.down.dimension).hom.hom :=
     (serreConcreteCubeComplex_cotensorator_hom A _ _).trans rfl
   rw [hd] at ht

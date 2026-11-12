@@ -29,11 +29,11 @@ variable {C : Type uC} [Category.{vC} C] {D : Type uD} [Category.{vD} D]
 include adj hcofC hfibC hcofD hfibD hcofB hfibB in
 lemma adjunction_cosimplicialHomMap_weakEquivalence_iff
     {A B : SimplexCategory ⥤ C} (a : A ⟶ B) (Y : D) :
-    weakEquivalences SSet.{vD} ((cosimplicialHomMap (Functor.whiskerRight a L)).app Y) ↔
-      weakEquivalences SSet.{vC} ((cosimplicialHomMap a).app (R.obj Y)) := by
+    weakEquivalences SSet.{vD} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (Functor.whiskerRight a L)).app Y) ↔
+      weakEquivalences SSet.{vC} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).app (R.obj Y)) := by
   apply SimplicialModel.UniverseLift.weakEquivalences_iff_of_liftedArrowIso
     hcofD hfibD hcofB hfibB hcofC hfibC
-  exact Arrow.isoMk ((adjunctionHomIso adj B).app Y) ((adjunctionHomIso adj A).app Y)
-    (congr_app (adjunctionHomIso_source_naturality adj a) Y).symm
+  exact Arrow.isoMk ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso adj B).app Y) ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso adj A).app Y)
+    (congr_app (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso_source_naturality adj a) Y).symm
 
 end SerrePositivity.HomotopyFunctionComplex

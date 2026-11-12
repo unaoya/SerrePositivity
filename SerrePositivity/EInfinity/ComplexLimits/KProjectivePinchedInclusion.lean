@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedKProjectiveDerivedHom
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorPinchedIso
-public import SerrePositivity.InfinityCategories.Derived.DGFunctorPinchedMap
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFunctorPinchedMap
 
 /-!
 # 元の K-projective Hom 同型の全複体への包含
@@ -21,19 +21,19 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve DoldKanComparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma normalizedKProjectiveHomIso_inclusion (X Y : KProjectiveComplex A) :
     (normalizedKProjectiveHomIso A X Y).hom ≫
-      pinchedHomMap (dgNerve.map (kProjectiveComplexInclusion A))
-        (Simplex.vertex X) (Simplex.vertex Y) ≫
-      (pinchedEndpointIso
-        (dgFunctorNerve_vertex (kProjectiveComplexInclusion A) X)
-        (dgFunctorNerve_vertex (kProjectiveComplexInclusion A) Y)).hom =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (kProjectiveComplexInclusion A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex (kProjectiveComplexInclusion A) X)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex (kProjectiveComplexInclusion A) Y)).hom =
     (normalizedTensorPinchedIso A X.val Y.val).hom := by
-  rw [dgFunctor_pinchedHomMap_eq]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctor_pinchedHomMap_eq]
   have h := doldKanHomPinchedIso_chainMap
     (D := KProjectiveComplex A) (E := Complex A) (x := X) (y := Y)
     (x' := X.val) (y' := Y.val) ((kProjectiveComplexInclusion A).map X Y)
@@ -50,7 +50,7 @@ lemma normalizedKProjectiveHomIso_inclusion (X Y : KProjectiveComplex A) :
     Iso.trans_hom, Functor.mapIso_hom]
   rw [Category.assoc, ← h]
   change _ ≫ (SSet.uliftFunctor.{u + 1, u}.map
-    (𝟙 (doldKanHomSpace (R := A) (D := Complex A) X.val Y.val)) ≫ _) = _
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := A) (D := Complex A) X.val Y.val)) ≫ _) = _
   rw [SSet.uliftFunctor.map_id, Category.id_comp]
 
 end SerrePositivity.EInfinity.ComplexLimits

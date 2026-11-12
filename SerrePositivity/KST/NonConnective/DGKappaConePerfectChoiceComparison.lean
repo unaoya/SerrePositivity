@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaConeChoiceComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulIsoRecovery
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulIsoRecovery
 
 /-!
 概要：実 cone の選択比較を、同じ perfect 安定閉包の包含四角形へ接続する。
@@ -25,33 +25,33 @@ def dgKappaConePerfectChoiceEquivalence :=
 
 /-- 指定同値と元の二つの実導来包含は、同じ P の包含比較で整合する。 -/
 def dgKappaConePerfectChoiceDerivedIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKappaConePerfectChoiceEquivalence R D I J P Q).hom ≫
-        dgStableClosureInclusion R (DGKappaCone R D J) (dgKappaConePerfectObjects R D J) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D J) (dgKappaConePerfectObjects R D J) ≫
           dgKappaConeDerivedComparison R D J)
-      (dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
         dgKappaConeDerivedComparison R D I) := by
   let p := P.isEquivalence.choose
-  let FI := dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
+  let FI := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
     dgKappaConeDerivedComparison R D I
   have eQ := Q.inclusion.precomp p.inv
   have eP := P.inclusion.precomp p.inv
   have eI := p.invHomIso.postcomp FI
   have e := eQ ≪≫ eP.symm ≪≫ eI
-  simpa only [dgKappaConePerfectChoiceEquivalence, QCatEquivalence.trans,
-    QCatEquivalence.symm, IsQCatEquivalence.choose, Category.assoc, Category.id_comp, p, FI]
+  simpa only [dgKappaConePerfectChoiceEquivalence, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.trans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence.symm, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence.choose, Category.assoc, Category.id_comp, p, FI]
     using! e
 
 /-- 元の perfect 包含と cone 比較の四角形は、実 cone 内の全関手同型で可換する。 -/
 def dgKappaConePerfectChoiceInclusionIso :
-    FunctorIso
-      (dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) ≫
         (dgKappaConeChoiceEquivalence R D I J).hom)
       ((dgKappaConePerfectChoiceEquivalence R D I J P Q).hom ≫
-        dgStableClosureInclusion R (DGKappaCone R D J) (dgKappaConePerfectObjects R D J)) := by
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D J) (dgKappaConePerfectObjects R D J)) := by
   apply (dgKappaConeDerivedComparison_isFullyFaithful R D J).preimageFunctorIso
   have eL := (dgKappaConeChoiceEquivalence_inclusionIso R D I J).precomp
-    (dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))
   have eR := dgKappaConePerfectChoiceDerivedIso R D I J P Q
   simpa only [Category.assoc] using! eL ≪≫ eR.symm
 

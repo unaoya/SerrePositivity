@@ -1,11 +1,11 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Quasicategory.SimplexTerminalPullbackFamily
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SimplexTerminalPullbackFamily
 
-public import SerrePositivity.InfinityCategories.Core.Quasicategory.SimplexTerminalArrowFamily
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.SimplexTerminalArrowFamily
 public import SerrePositivity.KST.LocalizingInvariants.PullbackDiagramFamilies
-public import SerrePositivity.InfinityCategories.Stable.ColumnPushout
-public import SerrePositivity.InfinityCategories.Stable.Bicartesian
-public import SerrePositivity.InfinityCategories.Stable.CospanFamilies
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ColumnPushout
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Bicartesian
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CospanFamilies
 
 /-!
 概要：有限線型図式の終端を指定辺に沿って引き戻し、終端の四角形を厳密に固定する。
@@ -30,22 +30,22 @@ variable {X : SSet.{u}} {n : ℕ} (D : (Δ[n] : SSet.{u}) ⟶ X)
     D.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)))
 
 /-- 同じ指定辺を横に並べた列四角形の実 pullback 頂点。 -/
-def terminalPullbackColumnVertex [Quasicategory X] [IsStable X] :
+def terminalPullbackColumnVertex [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
     (pullbackDiagrams X) _⦋0⦌ :=
-  ⟨functorVertex (squareColumnDiagram s), by
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram s), by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    change IsPullbackSquare ((functorVertexEquiv _ _).symm
-      (functorVertexEquiv _ _ (squareColumnDiagram s)))
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram s)))
     rw [Equiv.symm_apply_apply]
-    exact IsStable.pullback_of_pushout_square _ (squareColumnDiagram_isPushout s)⟩
+    exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable.pullback_of_pushout_square _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareColumnDiagram_isPushout s)⟩
 
 /-- 終端の列四角形を固定して、元の cospan 族の全普遍補完を構成する。
 終端での一致は全四角形の実単体の等号であり、同型への置き換えをしない。 -/
-lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [IsStable X] :
+lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X] :
     ∃ F : (Δ[n] : SSet.{u}) ⟶ pullbackDiagrams X,
-      F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs ∧
+      F ≫ pullbackProjection X = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily D s hs ∧
         F.app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (Fin.last n)) =
           terminalPullbackColumnVertex s := by
   let j : (Δ[0] : SSet.{u}) ⟶ Δ[n] :=
@@ -60,18 +60,18 @@ lemma exists_simplexTerminalPullbackFamily [Quasicategory X] [IsStable X] :
     omega
   let a : (Δ[0] : SSet.{u}) ⟶ pullbackDiagrams X :=
     SSet.const (terminalPullbackColumnVertex s)
-  have ha : a ≫ pullbackProjection X = j ≫ _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs := by
-    rw [_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily_last]
+  have ha : a ≫ pullbackProjection X = j ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily D s hs := by
+    rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily_last]
     rw [SSet.const_comp]
     rfl
   obtain ⟨F, hFa, hFd⟩ := exists_relative_stable_pullbackFamily j
-    (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.simplexTerminalCospanFamily D s hs) a ha
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.simplexTerminalCospanFamily D s hs) a ha
   refine ⟨F, hFd, ?_⟩
   have he := ConcreteCategory.congr_hom (NatTrans.congr_app hFa (Opposite.op ⦋0⦌))
     (stdSimplex.obj₀Equiv.symm (0 : Fin 1))
   change F.app (Opposite.op ⦋0⦌)
-    (PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last n)) 0) =
-      PinchedHom.constant (terminalPullbackColumnVertex s) 0 at he
-  simpa only [pinchedConstant_zero] using he
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (Fin.last n)) 0) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (terminalPullbackColumnVertex s) 0 at he
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero] using he
 
 end SerrePositivity.KST.LocalizingInvariants

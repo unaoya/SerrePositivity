@@ -17,12 +17,12 @@ variable (A : Type u) [CommRing A]
 
 /-- 始域・終域の次元を固定した元の両射について、連結鎖比較は自然。 -/
 lemma serreCubeTensorIso_naturality_canonical {n n' m m' : ℕ}
-    (f : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk n') (g : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m') :
+    (f : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk n') (g : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m') :
     serreConcreteCubeMap A (concreteCubeTensorMap f g) ≫ (serreCubeTensorIso A n' m').hom =
       (serreCubeTensorIso A n m).hom ≫
         serreCubeTensorHom A (n := n) (p := n') (m := m) (q := m')
           (serreConcreteCubeMap A f) (serreConcreteCubeMap A g) := by
-  have hl : serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m))) ≫
+  have hl : serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m))) ≫
       (serreCubeTensorIso A n' m).hom = (serreCubeTensorIso A n m).hom ≫
         serreCubeTensorHom A (n := n) (p := n') (m := m) (q := m)
           (serreConcreteCubeMap A f) (𝟙 (serreCubeComonoid A m)) :=
@@ -35,21 +35,21 @@ lemma serreCubeTensorIso_naturality_canonical {n n' m m' : ℕ}
     (X' := serreCubeComonoid A n') (Y := serreCubeComonoid A m) (Y' := serreCubeComonoid A m')
     (serreCubeTensorIso A n m).hom (serreCubeTensorIso A n' m).hom
     (serreCubeTensorIso A n' m').hom
-    (serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m))))
+    (serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m))))
     (serreConcreteCubeMap A (concreteCubeRightBlockHom n' g))
     (serreConcreteCubeMap A f) (serreConcreteCubeMap A g) hl hr
   have hv := (congrArg
-    (fun t : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n + m) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (n' + m') => serreConcreteCubeMap A t)
+    (fun t : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n + m) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (n' + m') => serreConcreteCubeMap A t)
     (concreteCubeTensorMap_factor f g)).trans (serreConcreteCubeMap_comp A _ _)
   calc
-    _ = (serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk m))) ≫
+    _ = (serreConcreteCubeMap A (concreteCubeTensorMap f (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk m))) ≫
         serreConcreteCubeMap A (concreteCubeRightBlockHom n' g)) ≫
           (serreCubeTensorIso A n' m').hom :=
       congrArg (fun t => t ≫ (serreCubeTensorIso A n' m').hom) hv
     _ = _ := ht
 
 /-- 元の具体的な両射に対する、元の連結鎖比較の二変数自然性。 -/
-lemma serreCubeTensorIso_naturality {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube} (f : X ⟶ X') (g : Y ⟶ Y') :
+lemma serreCubeTensorIso_naturality {X X' Y Y' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube} (f : X ⟶ X') (g : Y ⟶ Y') :
     (serreConcreteCubeFunctor A).map (concreteCubeTensorMap f g) ≫
         (serreCubeTensorIso A X'.dimension Y'.dimension).hom =
       (serreCubeTensorIso A X.dimension Y.dimension).hom ≫

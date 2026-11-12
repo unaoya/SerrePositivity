@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberWitnessRestriction
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
 
 /-!
 概要：元の全輸送の始点を実 prism の頂点で固定し、既存 endpointIso の指定値を回収する。

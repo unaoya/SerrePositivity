@@ -31,7 +31,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。セルの π₀ の係数表示。 -/
 def SimplexCell.componentEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     π₀ (PointedObject.basedHom (sphere.{u} (n + 1)) Y).right ≃
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right n Y.basepoint :=
   (π₀Functor.mapIso (PointedSimplicialSet.forget.mapIso
     ((internalHom.flip.obj Y).mapIso (sphereIso.{u} (n + 1)).symm.op))).toEquiv |>.trans
       (SphereSimplex.componentEquiv Y n)
@@ -44,12 +44,12 @@ def SimplexCell.componentEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.righ
 theorem SimplexCell.componentEquiv_familyVertex (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n : ℕ) (f : sphere.{u} (n + 1) ⟶ Y) :
     componentEquiv Y n (π₀.mk (PointedMapping.familyVertex f)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 1)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 1)
         ((sphereIso.{u} (n + 1)).inv ≫ f)) := by
   change SphereSimplex.componentClass Y n
     (mapπ₀ ((MonoidalClosed.pre (sphereIso.{u} (n + 1)).inv).app Y).right
       (π₀.mk (PointedMapping.familyVertex f))) = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre, mapπ₀_mk]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre, mapπ₀_mk]
   erw [PointedMapping.familyVertex_pre, SphereSimplex.componentClass_familyVertex]
 
 /-- 概要：骨格の塔の fiber の π₀ は非退化セル上の正次数係数の関数集合。
@@ -59,11 +59,11 @@ theorem SimplexCell.componentEquiv_familyVertex (Y : PointedSimplicialSet.{u})
 def SkeletalCellAttachment.stageFiberComponentEquiv (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ) :
     π₀ (UnbasedPointedMapping.stageFiber K Y n).right ≃
-      (K.nonDegenerate (n + 1) → _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right n Y.basepoint) :=
+      (K.nonDegenerate (n + 1) → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right n Y.basepoint) :=
   (π₀Functor.mapIso (PointedSimplicialSet.forget.mapIso
     (SkeletalCellAttachment.stageFiberFunctionIso K Y n))).toEquiv |>.trans
       ((SimplicialFunctionComplex.componentEquiv _ _).trans
-        (Equiv.arrowCongr (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1))
+        (Equiv.arrowCongr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1))
           (SimplexCell.componentEquiv Y n)))
 
 namespace SkeletalCellAttachment
@@ -76,7 +76,7 @@ def stageFiberVertex (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : ℕ)
     (f : K.nonDegenerate (n + 1) → (SimplexCell.sphere.{u} (n + 1) ⟶ Y)) :
     (UnbasedPointedMapping.stageFiber K Y n).right _⦋0⦌ :=
   (stageFiberFunctionIso K Y n).inv.right.app _
-    (fun c ↦ PointedMapping.familyVertex (f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1) c)))
+    (fun c ↦ PointedMapping.familyVertex (f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1) c)))
 
 /-- 概要：fiber に実現した球面写像の族の係数は各球面写像の同じ代表の類。
 方針：厳密な同型の往復を消し、各座標の球面の成分公式を適用する。
@@ -88,13 +88,13 @@ theorem stageFiberComponentEquiv_vertex (K : SSet.{u}) (Y : PointedSimplicialSet
     (f : K.nonDegenerate (n + 1) → (SimplexCell.sphere.{u} (n + 1) ⟶ Y))
     (s : K.nonDegenerate (n + 1)) :
     stageFiberComponentEquiv K Y n (π₀.mk (stageFiberVertex K Y n f)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 1)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 1)
         ((SimplexCell.sphereIso.{u} (n + 1)).inv ≫ f s)) := by
   change SimplexCell.componentEquiv Y n
-    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s))
+    (mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialFunctionComplex.eval _ _ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s))
       (mapπ₀ (stageFiberFunctionIso K Y n).hom.right
         (π₀.mk ((stageFiberFunctionIso K Y n).inv.right.app _
-          (fun c ↦ PointedMapping.familyVertex (f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1) c))))))) = _
+          (fun c ↦ PointedMapping.familyVertex (f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1) c))))))) = _
   rw [← mapπ₀_mk]
   erw [← mapπ₀_comp_apply (stageFiberFunctionIso K Y n).inv.right
     (stageFiberFunctionIso K Y n).hom.right]
@@ -104,7 +104,7 @@ theorem stageFiberComponentEquiv_vertex (K : SSet.{u}) (Y : PointedSimplicialSet
   erw [hi, mapπ₀_id_apply, mapπ₀_mk]
   change SimplexCell.componentEquiv Y n
     (π₀.mk (PointedMapping.familyVertex
-      (f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s))))) = _
+      (f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s))))) = _
   rw [Equiv.apply_symm_apply, SimplexCell.componentEquiv_familyVertex]
 
 end SkeletalCellAttachment

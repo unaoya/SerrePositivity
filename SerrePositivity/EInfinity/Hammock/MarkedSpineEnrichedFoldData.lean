@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EnrichedDegreeSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeSimplex
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineFoldSimplex
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineFoldTarget
 public import SerrePositivity.EInfinity.Hammock.MarkedSpineEnrichedCategory
@@ -28,12 +28,12 @@ structure EnrichedFoldData (W : MorphismProperty C) (D : Type uD)
     [EnrichedCategory SSet.{u} D] where
   obj : Paths C → D
   marked : ∀ X Y, AllMarked.nativeSpace W X Y ⟶ obj X ⟶[SSet.{u}] obj Y
-  generator : ∀ g : FactorTarget.Index W, 𝟙_ SSet.{u} ⟶ obj g.val.left ⟶[SSet.{u}] obj g.val.right
+  generator : ∀ g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W, 𝟙_ SSet.{u} ⟶ obj g.val.left ⟶[SSet.{u}] obj g.val.right
   marked_unit : ∀ X,
-    colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ marked X X =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ≫ marked X X =
       eId SSet.{u} (obj X)
   marked_comp : ∀ X Y Z,
-    colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫ marked X Z =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition (⊤ : MorphismProperty (WideSubcategory W.paths)) ⟨X⟩ ⟨Y⟩ ⟨Z⟩ ≫ marked X Z =
       (marked X Y ⊗ₘ marked Y Z) ≫ eComp SSet.{u} (obj X) (obj Y) (obj Z)
 
 namespace EnrichedFoldData
@@ -41,9 +41,9 @@ variable {W : MorphismProperty C} {D : Type uD} [EnrichedCategory SSet.{u} D]
   (F : EnrichedFoldData W D)
 
 def degreeData (n : SimplexCategoryᵒᵖ) :
-    letI := EnrichedDegree.category (D := D) n
-    FoldData W n (EnrichedDegree.Objects D) := by
-  letI := EnrichedDegree.category (D := D) n
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
+    FoldData W n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.Objects D) := by
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
   exact
     { obj := F.obj
       marked := fun {X Y} p => (F.marked X Y).app n p
@@ -54,7 +54,7 @@ def degreeData (n : SimplexCategoryᵒᵖ) :
 
 def foldPoint {X Y : Paths C} (n : SimplexCategoryᵒᵖ) (t : MarkedSpine W Y n X) :
     (F.obj X ⟶[SSet.{u}] F.obj Y).obj n :=
-  @FoldData.fold C _ W n (EnrichedDegree.Objects D) (EnrichedDegree.category n)
+  @FoldData.fold C _ W n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.Objects D) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category n)
     (F.degreeData n) X Y t
 
 end EnrichedFoldData

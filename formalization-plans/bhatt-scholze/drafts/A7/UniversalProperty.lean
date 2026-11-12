@@ -4,8 +4,8 @@ module
 
 public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import SerrePositivity.CommutativeAlgebra.Perfectoid.Defs
-public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.CurryFirstPrecomposition
-public import SerrePositivity.InfinityCategories.F2.Presentable.Supply.LeftClassificationBaseChangeHom
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CurryFirstPrecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.LeftClassificationBaseChangeHom
 -- 本ファイルは drafts/A7/{AnimatedDomain,DiscreteCore,AnimatedPerfectoidization}.lean、drafts/A4/{Perfectoidization,InterfaceFields}.lean、drafts/A5/{PerfectSiteComparison,SemiperfectoidCase}.lean を import する。
 -- G-A7-5 の芯は drafts/A7/DiscreteCore.lean に切り出した（W9-II-24：A5 が import するので本ファイルには置けない）。
 

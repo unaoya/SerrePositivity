@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberExactPostcomposition
+public import SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.CofiberExactPostcomposition
 public import SerrePositivity.KST.LocalizingInvariants.CofiberFamilyComparison
 
 /-!
@@ -18,34 +18,34 @@ open CategoryTheory MonoidalClosed SSet
 open scoped _root_.Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
-variable {X Y : SSet.{u}} [Quasicategory X] [IsStable X]
-  [Quasicategory Y] [IsStable Y] (F : X ⟶ Y) [IsExactFunctor F]
+variable {X Y : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
+  [Quasicategory Y] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable Y] (F : X ⟶ Y) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F]
 
-def exactDiagramComparison : FunctorIso
-    (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F)
+def exactDiagramComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.postcomp F)
     ((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) := by
-  apply ((isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)).postcompose
+  apply ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom Y)).postcompose
     ((ihom (Δ[1] : SSet.{u})).obj X)).isFullyFaithful.preimageVertexIso
-  change FunctorIso
-    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    ((CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.postcomp F) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom Y)
     (((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
-      _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.bottom Y)
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_bottom, ← Category.assoc,
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.bottom Y)
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.postcomp_bottom, ← Category.assoc,
     CofiberDiagrams.lift_bottom, Category.id_comp, Category.assoc,
     CofiberDiagrams.lift_bottom, Category.comp_id]
 
-def exactNaturality : FunctorIso (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _) ≫ F)
-    ((ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _)) := by
-  have h := FunctorIso.postcomp (exactDiagramComparison F)
-    (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
-  have hl : (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp F) ≫
-      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
-        _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _) ≫ F := by
-    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.StablePresentable.Exact.CofiberDiagrams.postcomp_cofiber, ← Category.assoc,
+def exactNaturality : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 _) ≫ F)
+    ((ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber Y (𝟙 _)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp (exactDiagramComparison F)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))
+  have hl : (CofiberDiagrams.lift X (𝟙 _) ≫ _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.postcomp F) ≫
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 _) ≫ F := by
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.HA.StablePresentableInfinityCategories.Exact.postcomp_cofiber, ← Category.assoc,
       ← Category.assoc, CofiberDiagrams.lift_right_target]
   have hr : ((ihom (Δ[1] : SSet.{u})).map F ≫ CofiberDiagrams.lift Y (𝟙 _)) ≫
-      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberDiagrams.right Y ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
-        (ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber Y (𝟙 _) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberDiagrams.right Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) =
+        (ihom (Δ[1] : SSet.{u})).map F ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber Y (𝟙 _) := by
     rw [Category.assoc, ← Category.assoc (CofiberDiagrams.lift Y (𝟙 _)),
       CofiberDiagrams.lift_right_target]
   rw [hl, hr] at h

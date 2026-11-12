@@ -29,7 +29,7 @@ def monicKTracedCompositionOriginalStage (n : ℕ) :=
 /-- 元の補正前の段比較から、同じ BF 比較辺の raw 段評価への全実補正。 -/
 def monicKTracedCompositionStageCorrection (n : ℕ) :=
   familyHomotopyEndpointTransport
-    (functorHomotopyPrecomp (monicKPrismNativeRawStageCorrection F f g n)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (monicKPrismNativeRawStageCorrection F f g n)
       (monicKTracedCompositionIntervalPoint f g)) rfl
     (monicKTracedSpectrumCompositionEdge_raw_evaluation F f g n).symm
 

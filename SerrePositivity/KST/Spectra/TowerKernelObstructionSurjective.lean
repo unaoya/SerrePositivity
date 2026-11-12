@@ -28,10 +28,10 @@ theorem kernelObstruction_surjective
   intro b
   obtain ⟨a, rfl⟩ := Quotient.exists_rep b
   obtain ⟨s, hs, R, hR⟩ := exists_nullHomotopyDifferenceFamily X p r a
-  refine ⟨⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (limitSimplex X p r s hs),
+  refine ⟨⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (limitSimplex X p r s hs),
     limitSimplex_mem_kernel X p r s hs R⟩, ?_⟩
   rw [kernelObstruction_limitSimplex]
-  change _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk _ _ (nullHomotopyDifferenceFamily X p r s hs R) = _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.mk _ _ a
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.mk _ _ (nullHomotopyDifferenceFamily X p r s hs R) = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.mk _ _ a
   rw [hR]
 
 end

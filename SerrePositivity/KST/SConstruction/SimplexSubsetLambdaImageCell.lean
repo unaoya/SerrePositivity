@@ -20,24 +20,24 @@ variable (A : Type u) [CommRing A]
 lemma simplexSubsetLambdaCellAt_image_inj_heq {M N : ℕ}
     (α : Fin (M + 1) →o Fin (N + 1)) (I : Finset (Fin (M + 1)))
     (a b : Fin (M + 1)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
     (hi : Set.InjOn α (I : Set (Fin (M + 1)))) (hJ : 2 ≤ (I.image α).card)
-    (haJ : α a = (I.image α).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ))
-    (hbJ : α b = (I.image α).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty (I.image α) hJ)) :
+    (haJ : α a = (I.image α).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (I.image α) hJ))
+    (hbJ : α b = (I.image α).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty (I.image α) hJ)) :
     HEq (simplexSubsetLambdaCellAt A I a b hI ha hb ≫
       (cubicalLambdaMap A (stdSimplex.map (SimplexCategory.Hom.mk α))).map
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
       (simplexSubsetLambdaCellAt A (I.image α) (α a) (α b) hJ haJ hbJ) := by
   let φ := stdSimplex.map (SimplexCategory.Hom.mk α)
   let T := necklaceInSimplexSubsetAt.{u} I a b hI ha hb
-  let P := (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInPostcompose φ (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)).obj T
+  let P := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInPostcompose φ (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)).obj T
   have he : (simplexSubsetLambdaCellAt A I a b hI ha hb ≫
-      (cubicalLambdaMap A φ).map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b)) =
+      (cubicalLambdaMap A φ).map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b)) =
       eqToHom (congrArg (serreCubeComplex A) (necklaceInSimplexSubset_dimension.{u} I hI).symm) ≫
         necklaceLambdaCell A P :=
     (congrArg (fun f => f ≫ (cubicalLambdaMap A φ).map
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))
       (simplexSubsetLambdaCellAt_necklace A I a b hI ha hb)).trans
         ((Category.assoc _ _ _).trans
           (congrArg (fun f => eqToHom (congrArg (serreCubeComplex A)

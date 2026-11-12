@@ -16,18 +16,18 @@ open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ元の core S 実現の Ex∞ Kan 値。 -/
-def stableCoreSingleKanObject (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) : KanObject.{u} :=
+def stableCoreSingleKanObject (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
   exInfinityClosedKanEnrichedFunctor.obj ⟨coreSRealizationFunctor.obj (stableCategoryModel C)⟩
 
 /-- 一回の反復実現と元の core S 実現は、同じ Ex∞ Kan 対象として等しい。 -/
-theorem stableCoreSingleKan_object_eq (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+theorem stableCoreSingleKan_object_eq (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableMultiKanEnrichedFunctor 0).obj C = stableCoreSingleKanObject C :=
   congrArg (fun V : SSet.{u} => exInfinityClosedKanEnrichedFunctor.obj ⟨V⟩)
     (coreSingleRealization_obj_eq (stableCategoryModel C)).symm
 
 /-- 元の core S 実現を対象表示に使い、同じ全 Hom 作用を保持する。 -/
 def stableCoreSingleKanEnrichedFunctor :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} KanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
   relabelEnrichedObjects (stableMultiKanEnrichedFunctor 0) stableCoreSingleKanObject
     (funext stableCoreSingleKan_object_eq)
 
@@ -38,8 +38,8 @@ theorem stableCoreSingleKanEnrichedFunctor_eq :
 
 /-- 同じ全高次単体を持つ、元の core S 実現と一回の反復実現の ∞ 関手の等号。 -/
 theorem stableCoreSingleKanInfinity_eq :
-    coherentNerveMap stableCoreSingleKanEnrichedFunctor.{u} =
-      coherentNerveMap (stableMultiKanEnrichedFunctor 0) :=
-  congrArg coherentNerveMap stableCoreSingleKanEnrichedFunctor_eq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor.{u} =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0) :=
+  congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor_eq
 
 end SerrePositivity.KST.Fibration

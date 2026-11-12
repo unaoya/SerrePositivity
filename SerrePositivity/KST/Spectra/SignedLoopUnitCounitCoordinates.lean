@@ -59,7 +59,7 @@ lemma signedLoopUnit_post_zero_counit (A X : OmegaSpectrum.{u}) :
       pointedEvaluation A (KanSequence.signedLoopTail X.toKanSequence) 0) ≫
       kanLoopCounit (A.level 0).space (X.level 1).space =
     pointedEvaluation A X.toKanSequence 1 ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (A.sigma 0) (X.level 1).space := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (A.sigma 0) (X.level 1).space := by
   rw [signedLoopUnit_post_zero, kanAdjointParameterLeft_counit]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum

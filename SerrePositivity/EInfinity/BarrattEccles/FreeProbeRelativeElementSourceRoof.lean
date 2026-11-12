@@ -23,7 +23,7 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 規約：実 U 自身を保持。使われ方：元の全屋根の反転。 -/
 lemma freeProbeRelativeElementAugmentation_forget_invertible
     (s : freeProbeRelativeElementIndex A X B) :
-    IsInvertibleEdge ((nerve.edgeMk ((freeProbeRelativeElementAugmentation A X B).app s)).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk ((freeProbeRelativeElementAugmentation A X B).app s)).map
       (cAlgLocalizationSource A ≫ cAlgForgetDerived A)).toTruncated :=
   weakNerveEdges_inverts_arrows (cofibrantAlgebraRelativeCategory A) _
     ((cAlgLocalizationSource_inverts A).comp (cAlgForgetDerived A)) _
@@ -34,7 +34,7 @@ lemma freeProbeRelativeElementAugmentation_forget_invertible
 規約：元の全射を保持。使われ方：全源比較の右側の屋根。 -/
 lemma freeProbeRelativeElementAugmentation_underlying_invertible
     (s : freeProbeRelativeElementIndex A X B) :
-    IsInvertibleEdge ((nerve.edgeMk ((freeProbeRelativeElementAugmentation A X B).app s)).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk ((freeProbeRelativeElementAugmentation A X B).app s)).map
       (cofibrantAlgebraUnderlyingDerivedSource A)).toTruncated :=
   cofibrantAlgebraUnderlyingDerivedSource_map_weak A _
     (freeProbeRelativeElementAugmentation_weak A X B s)
@@ -73,8 +73,8 @@ lemma freeProbeRelativeElementPinched_forget_column_roof_arrow :
     let p := freeProbeRelativeElementAugmentation A X B
     let σ := freeProbeRelativeElementEvaluation A X B
     let F := cAlgLocalizationSource A ≫ cAlgForgetDerived A
-    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
-      pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk ((NerveColumn.augmentationIso F V p
       (freeProbeRelativeElementAugmentation_forget_invertible A X B)).inv ≫
       NerveColumn.hom F σ) := by
@@ -125,8 +125,8 @@ lemma freeProbeRelativeElementPinched_forget_underlying_arrow :
     let σ := freeProbeRelativeElementEvaluation A X B
     let K := freeProbeRelativeElementIndex A X B
     let G := cofibrantAlgebraUnderlyingDerivedSource A
-    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
-      pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk (((cAlgForgetDerived_sourceIso A).precomp
       (nerveMap ((Functor.const K).obj (freeProbeRelativeElementSource A X)))).hom ≫
       (NerveColumn.augmentationIso G V p

@@ -18,26 +18,26 @@ namespace SerrePositivity.KST.Fibration
 /-- 元の底の辺が定値なら、同じ fiber 内の評価 prism で strict transport の可逆性を検出する。 -/
 theorem pullbackStrictTransportMap_constantEdge_localized_isIso
     {I : Type u} [Category.{u} I] {F B : SSet.{u}}
-    (q : F ⟶ B) (k : nerve I ⟶ B) [CocartesianFibration (pullback.snd q k)]
+    (q : F ⟶ B) (k : nerve I ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration (pullback.snd q k)]
     {c d : I} (f : c ⟶ d) (b : B _⦋0⦌)
-    (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b)
-    (hd : k.app (Opposite.op ⦋0⦌) (nerveVertex d) = b)
+    (hc : k.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c) = b)
+    (hd : k.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex d) = b)
     (hf : yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k = SSet.const b) :
     IsIso (AnodyneHomotopy.anodyneQ.map
-      (SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianStrictTransportMap (pullback.snd q k) f)) := by
   let u := pullbackStrictEvaluationAt q k c b hc
   let v := pullbackStrictEvaluationAt q k d b hd
-  let t := SerrePositivity.InfinityCategories.cocartesianStrictTransportMap (pullback.snd q k) f
+  let t := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.cocartesianStrictTransportMap (pullback.snd q k) f
   let H := strictTransportEvaluationPrism (pullback.snd q k) f ≫ pullback.fst q k
   have hp : H ≫ q = SSet.const b := by
     dsimp only [H]
     rw [Category.assoc, pullback.condition, ← Category.assoc,
       strictTransportEvaluationPrism_projection, Category.assoc, hf, SSet.comp_const]
-  have h₀ : prismEndpoint 0 _ ≫ H = u ≫ vertexFiberι q b := by
+  have h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 _ ≫ H = u ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι q b := by
     dsimp only [H]
     rw [← Category.assoc, strictTransportEvaluationPrism_zero, Category.assoc]
     exact (pullbackStrictEvaluationAt_ι q k c b hc).symm
-  have h₁ : prismEndpoint 1 _ ≫ H = (t ≫ v) ≫ vertexFiberι q b := by
+  have h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 _ ≫ H = (t ≫ v) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι q b := by
     dsimp only [H]
     rw [← Category.assoc, strictTransportEvaluationPrism_one, Category.assoc, Category.assoc]
     exact (congrArg (fun m => t ≫ m) (pullbackStrictEvaluationAt_ι q k d b hd).symm).trans
@@ -54,13 +54,13 @@ theorem pullbackStrictTransportMap_constantEdge_localized_isIso
 /-- 同じ厳密 Kan 図式の遷移も、底で定値となる辺を実際の同値に送る。 -/
 theorem cocartesianKanDiagram_map_constantEdge_isQCatEquivalence
     {I : Type u} [Category.{u} I] {F B : SSet.{u}}
-    (q : F ⟶ B) (k : nerve I ⟶ B) [CocartesianFibration (pullback.snd q k)]
+    (q : F ⟶ B) (k : nerve I ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianFibration (pullback.snd q k)]
     {c d : I} (f : c ⟶ d) (b : B _⦋0⦌)
-    (hc : k.app (Opposite.op ⦋0⦌) (nerveVertex c) = b)
-    (hd : k.app (Opposite.op ⦋0⦌) (nerveVertex d) = b)
+    (hc : k.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex c) = b)
+    (hd : k.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex d) = b)
     (hf : yonedaEquiv.symm (nerve.edgeMk f).edge ≫ k = SSet.const b) :
-    IsQCatEquivalence ((cocartesianKanDiagram (pullback.snd q k)).map f) :=
-  _root_.SerrePositivity.InfinityCategories.F1.KanModels.strictKanCompletion_map_isQCatEquivalence _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((cocartesianKanDiagram (pullback.snd q k)).map f) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.strictKanCompletion_map_isQCatEquivalence _
     (pullbackStrictTransportMap_constantEdge_localized_isIso q k f b hc hd hf)
 
 end SerrePositivity.KST.Fibration

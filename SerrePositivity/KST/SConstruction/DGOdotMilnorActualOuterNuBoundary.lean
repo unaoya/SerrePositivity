@@ -22,7 +22,7 @@ local notation "KIn" => dgOdotMilnorFlatKernelInput R d
 local notation "PIn" => dgOdotMilnorCellInput R d
 local notation "VIn" => dgIdentityHomGluingNullInput R (U)
 local notation "DIn" => dgOdotMilnorRightAxisIdentityDifferenceInput R d
-local notation "O" => _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
+local notation "O" => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ dgOdotMilnorActualRectangleDiagram R d
 
 /-- 概要：実外周の元厳密合成辺の同じ固定 ν 完全射。
 方針：元 S 合成辺を直接評価する。
@@ -41,17 +41,17 @@ def dgOdotMilnorActualOuterNullLeftMap :=
 /-- 概要：実外周の元合成商辺は同じ指定終域同値の下で元 cell 商辺と全比較される。
 方針：固定 ν の厳密合成則を保存済み全合成比較へ渡す。
 規約：元厳密合成辺を保持。使われ方：外周の商側の指定比較。 -/
-def dgOdotMilnorActualOuterProjectionComparison : FunctorIso
+def dgOdotMilnorActualOuterProjectionComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotMilnorActualOuterProjectionMap R d).hom ≫
       (dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence R d).hom)
     (dgOdotMilnorCellProjectionExactMap R d).hom := by
   have nu_comp {A₀ A₁ A₂ : PerfDGInput.{u, u + 1} R} (f : A₀ ⟶ A₁) (g : A₁ ⟶ A₂) :
       (dgKInputNuMap R (f ≫ g)).hom = (dgKInputNuMap R f).hom ≫ (dgKInputNuMap R g).hom := by
     rw [dgKInputNuMap_eq, dgKInputNuMap_eq, dgKInputNuMap_eq]
-    exact congrArg _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.hom ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
+    exact congrArg _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.hom ((presentedPerfectDGStableCategoryFunctor R).map_comp f g)
   have h := nu_comp (dgOdotMilnorRightAxisInputMap R d)
     (dgOdotMilnorRightAxisIdentityDifferenceInputMap R d)
-  exact F2.functorIsoOfEq (dgOdotMilnorRightAxisCompositeNuComparison R d)
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgOdotMilnorRightAxisCompositeNuComparison R d)
     ((Category.assoc _ _ _).symm.trans
       (congrArg (fun fm => fm ≫
         (dgOdotMilnorRightAxisDifferenceResolvedValueEquivalence R d).hom) h).symm) rfl
@@ -60,25 +60,25 @@ def dgOdotMilnorActualOuterProjectionComparison : FunctorIso
 方針：元四辺の厳密回収を固定 ν の全一単体回収へ渡す。
 規約：元包含・元合成・元二零辺を保持。使われ方：四辺の指定端点付き比較。 -/
 lemma dgOdotMilnorActualOuter_nu_edges :
-    squareBottomEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgOdotMilnorFlatKernelExactMap R d)
           (dgKInputStableValue_isIdempotentComplete R (KIn))
           (dgKInputStableValue_isIdempotentComplete R (PIn))).edge ∧
-      squareRightEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgOdotMilnorActualOuterProjectionMap R d)
           (dgKInputStableValue_isIdempotentComplete R (PIn))
           (dgKInputStableValue_isIdempotentComplete R (DIn))).edge ∧
-      squareLeftEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgOdotMilnorActualOuterNullLeftMap R d)
           (dgKInputStableValue_isIdempotentComplete R (KIn))
           (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R (VIn)))).edge ∧
-      squareTopEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgOdotMilnorActualRightNullTopMap R d)
           (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R (VIn)))
           (dgKInputStableValue_isIdempotentComplete R (DIn))).edge := by
   have map_edge {A₀ A₁ : PerfDGInput.{u, u + 1} R} (f : A₀ ⟶ A₁)
       (s : (Δ[1] : SSet.{u + 2}) ⟶ (Δ[1] ⊗ Δ[1]))
-      (h : s ≫ (O) = SSet.yonedaEquiv.symm (coherentNerveEdge f).edge) :
+      (h : s ≫ (O) = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) :
       s ≫ (O) ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgKInputNuMap R f)
           (dgKInputStableValue_isIdempotentComplete R A₀)
@@ -94,20 +94,20 @@ lemma dgOdotMilnorActualOuter_nu_edges :
 方針：保存済み元 S 四辺と固定 ν の元全一単体回収を合成する。
 規約：元 thick 核と元全対象商を保持。使われ方：実外周比較の終端四境界。 -/
 lemma dgOdotMilnorKernelNull_nu_edges :
-    squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow (dgOdotMilnorFlatKernelExactMap R d)
         (dgKInputStableValue_isIdempotentComplete R (KIn))
         (dgKInputStableValue_isIdempotentComplete R (PIn))).edge ∧
-    squareRightEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow (dgOdotMilnorCellProjectionExactMap R d)
         (dgKInputStableValue_isIdempotentComplete R (PIn))
         (dgKInputStableValue_isIdempotentComplete R (dgOdotMilnorResolvedInput R d))).edge ∧
-    squareLeftEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgKInputNuMap R (dgFixedNullLeft R (A := KIn)))
         (dgKInputStableValue_isIdempotentComplete R (KIn))
         (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R (KIn)))).edge ∧
-    squareTopEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgKInputNuMap R (dgFixedNullTop R (dgOdotMilnorFlatKernelContracted R d)))
         (dgKInputStableValue_isIdempotentComplete R (dgFixedNullInput R (KIn)))
@@ -115,7 +115,7 @@ lemma dgOdotMilnorKernelNull_nu_edges :
   have map_edge {A₀ A₁ : PerfDGInput.{u, u + 1} R} (f : A₀ ⟶ A₁)
       (s : (Δ[1] : SSet.{u + 2}) ⟶ (Δ[1] ⊗ Δ[1]))
       (h : s ≫ dgOdotMilnorPerfectNullSquare R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge f).edge) :
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) :
       s ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputPerfectNu R = SSet.yonedaEquiv.symm
         (perfectStableArrow (dgKInputNuMap R f)
           (dgKInputStableValue_isIdempotentComplete R A₀)

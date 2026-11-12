@@ -16,7 +16,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の第二辺と既存の同じ cofiber 選択による厳密な切断。 -/
-def completedTwoSectionMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def completedTwoSectionMap {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     (composableWeakArrowModel q).carrier ⟶ (completedTwoModel q).carrier :=
   pullback.lift ((composableWeakNextExact q ≫ (weakArrowCofiberEquivalence q).inv).val)
     (𝟙 _) (by
@@ -26,11 +26,11 @@ def completedTwoSectionMap {B C : _root_.SerrePositivity.InfinityCategories.Stab
       rfl)
 
 /-- 元の二辺への射影は同じ厳密な恒等射を回収する。 -/
-lemma completedTwoSectionMap_forget {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma completedTwoSectionMap_forget {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     completedTwoSectionMap q ≫ (completedTwoForget q).val = 𝟙 _ := pullback.lift_snd _ _ _
 
 /-- 厳密な切断は元の補完を忘れる射影の普遍性の反映により完全。 -/
-def completedTwoSection {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def completedTwoSection {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     composableWeakArrowModel q ⟶ completedTwoModel q :=
   ⟨completedTwoSectionMap q, by
     apply preservesCofiberData_of_trivialProjection (completedTwoForget q).val
@@ -38,19 +38,19 @@ def completedTwoSection {B C : _root_.SerrePositivity.InfinityCategories.Stable.
     exact preservesCofiberData_id _⟩
 
 /-- 完全な切断も元の二辺を厳密に保つ。 -/
-lemma completedTwoSection_forget {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma completedTwoSection_forget {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     completedTwoSection q ≫ completedTwoForget q = 𝟙 _ :=
   Subtype.ext (completedTwoSectionMap_forget q)
 
 /-- 切断で得る相対 cofiber 図式は既存の第二 W 辺の同じ補完。 -/
-lemma completedTwoSection_cofiber {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma completedTwoSection_cofiber {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     completedTwoSection q ≫ completedTwoCofiber q =
       composableWeakNextExact q ≫ (weakArrowCofiberEquivalence q).inv :=
   Subtype.ext (pullback.lift_fst _ _ _)
 
 /-- 切断は object S の後も局所化同型。一般の弱同値の基底変換は仮定しない。 -/
-lemma completedTwoSection_objectS_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+lemma completedTwoSection_objectS_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (objectSConstructionFunctor.map (completedTwoSection q))) := by
   let Q := AnodyneHomotopy.anodyneQ

@@ -20,12 +20,12 @@ local instance d3OutputSpectrumCategory : SimplicialCategory OmegaSpectrum.{u} :
 
 /-- 共通 refined 関手から元の nativeLoop への、B が実際に供給すべき全関手同型の型。 -/
 abbrev NativeLoopComparison :=
-  FunctorIso (coherentNerveMap commonRefinedEnriched.{u})
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched.{u})
     (commonNativeLoopEndpoint ≫ nativeLoop)
 
 /-- 選択済み実 loop 全図式の始点までの比較。ここに未証明の B の本体が残る。 -/
 abbrev ChosenLoopSourceComparison :=
-  FunctorIso (coherentNerveMap commonRefinedEnriched.{u}) commonChosenLoopSource
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched.{u}) commonChosenLoopSource
 
 /-- 実始点までの比較が供給されたとき、元の指定 nativeLoop 比較へ接続する。 -/
 def nativeLoopComparisonOfChosenSource (hB : ChosenLoopSourceComparison.{u}) :

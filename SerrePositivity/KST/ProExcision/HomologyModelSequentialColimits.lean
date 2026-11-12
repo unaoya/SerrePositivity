@@ -24,7 +24,7 @@ open scoped Simplicial
 規約：KST App. A。使われ方：実鎖模型の余極限保存の判定。 -/
 def linearizedChainEvaluationIso (n : ℕ) :
     linearizedChainFunctor.{u} ⋙ HomologicalComplex.eval (ModuleCat.{u} ℤ) (.down ℕ) n ≅
-      (evaluation SimplexCategoryᵒᵖ (Type u)).obj (op ⦋n⦌) ⋙ integerLinearization :=
+      (evaluation SimplexCategoryᵒᵖ (Type u)).obj (op ⦋n⦌) ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization :=
   NatIso.ofComponents (fun _ ↦ Iso.refl _) (fun _ ↦ rfl)
 
 /-- 概要：実自由整数鎖複体は順序余極限を保存する。

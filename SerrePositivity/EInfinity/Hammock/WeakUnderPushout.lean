@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.WeakPushout
-public import SerrePositivity.InfinityCategories.Core.PrecompositionUnderPushout
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionUnderPushout
 
 /-!
 # 元の境界を固定した弱同値の pushout による保存
@@ -23,56 +23,56 @@ open SerrePositivity.InfinityCategories
 
 lemma weak_map_under_of_mono {A : SSet.{u}} (F : Under A ⥤ SSet.{u})
     (hF : ∀ {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y) [Mono f.right],
-      IsWeakHomotopyEquivalence f.right → IsWeakHomotopyEquivalence (F.map f))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f.right → _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (F.map f))
     {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
-    (hf : IsWeakHomotopyEquivalence f.right) : IsWeakHomotopyEquivalence (F.map f) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f.right) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (F.map f) := by
   have hif : Mono (X.hom ≫ f.right) := by rw [Under.w]; infer_instance
-  let Z : Under A := Under.mk (X.hom ≫ relativeEquivalenceMappingCylinderIn X.hom f.right)
+  let Z : Under A := Under.mk (X.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn X.hom f.right)
   have : Mono Z.hom := by dsimp [Z]; infer_instance
-  let g : X ⟶ Z := Under.homMk (relativeEquivalenceMappingCylinderIn X.hom f.right) rfl
+  let g : X ⟶ Z := Under.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn X.hom f.right) rfl
   let s : Y ⟶ Z := Under.homMk
-    (pushout.inr (relativeEquivalenceCylinderEndpoint X.hom false) f.right) (by
-      change Y.hom ≫ _ = X.hom ≫ relativeEquivalenceMappingCylinderIn X.hom f.right
-      rw [relativeEquivalenceMappingCylinderIn_fixed, Under.w])
-  let r : Z ⟶ Y := Under.homMk (relativeEquivalenceMappingCylinderOut X.hom f.right) (by
-    change (X.hom ≫ relativeEquivalenceMappingCylinderIn X.hom f.right) ≫ _ = Y.hom
-    rw [Category.assoc, relativeEquivalenceMappingCylinderIn_out, Under.w])
+    (pushout.inr (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceCylinderEndpoint X.hom false) f.right) (by
+      change Y.hom ≫ _ = X.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn X.hom f.right
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn_fixed, Under.w])
+  let r : Z ⟶ Y := Under.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderOut X.hom f.right) (by
+    change (X.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn X.hom f.right) ≫ _ = Y.hom
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn_out, Under.w])
   have : Mono g.right := by
-    change Mono (relativeEquivalenceMappingCylinderIn X.hom f.right)
+    change Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn X.hom f.right)
     infer_instance
   have : Mono s.right := by
     dsimp [s]
     exact Adhesive.mono_of_isPushout_of_mono_left (IsPushout.of_hasPushout _ _)
-  have hs : IsWeakHomotopyEquivalence s.right :=
-    ((isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint X.hom false).of_isPushout
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence s.right :=
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_relativeEquivalenceCylinderEndpoint X.hom false).of_isPushout
       (IsPushout.of_hasPushout _ _)).isWeakHomotopyEquivalence
   have hsr : s ≫ r = 𝟙 Y := by
     apply Under.UnderMorphism.ext
     exact pushout.inr_desc _ _ _
   have hgr : g ≫ r = f := by
     apply Under.UnderMorphism.ext
-    exact relativeEquivalenceMappingCylinderIn_out X.hom f.right
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.relativeEquivalenceMappingCylinderIn_out X.hom f.right
   have hsr' := congrArg (fun h : Y ⟶ Y => h.right) hsr
   have hgr' := congrArg (fun h : X ⟶ Y => h.right) hgr
   change s.right ≫ r.right = 𝟙 Y.right at hsr'
   change g.right ≫ r.right = f.right at hgr'
-  have hrRight : IsWeakHomotopyEquivalence r.right := by
+  have hrRight : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence r.right := by
     apply hs.cancel_left
     rw [hsr']
-    exact isWeakHomotopyEquivalence_id _
-  have hg : IsWeakHomotopyEquivalence g.right := by
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence g.right := by
     apply hrRight.cancel_right
     rw [hgr']
     exact hf
-  have hr : IsWeakHomotopyEquivalence (F.map r) := by
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (F.map r) := by
     apply (hF s hs).cancel_left
     rw [← F.map_comp, hsr, F.map_id]
-    exact isWeakHomotopyEquivalence_id _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
   have h := (hF g hg).comp hr
   rwa [← F.map_comp, hgr] at h
 
 def monoWeakHomotopyEquivalences : MorphismProperty SSet.{u} :=
-  fun _ _ f => Mono f ∧ IsWeakHomotopyEquivalence f
+  fun _ _ f => Mono f ∧ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f
 
 lemma monoWeakHomotopyEquivalences_cobase :
     monoWeakHomotopyEquivalences.{u}.IsStableUnderCobaseChange where
@@ -82,8 +82,8 @@ lemma monoWeakHomotopyEquivalences_cobase :
 
 lemma weak_underPushout_map {A C : SSet.{u}} (g : A ⟶ C)
     {X Y : Under A} [Mono X.hom] [Mono Y.hom] (f : X ⟶ Y)
-    (hf : IsWeakHomotopyEquivalence f.right) :
-    IsWeakHomotopyEquivalence (((Under.pushout g).map f).right) := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f.right) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (((Under.pushout g).map f).right) := by
   apply weak_map_under_of_mono (Under.pushout g ⋙ Under.forget C) ?_ f hf
   intro X Y _ _ k _ hk
   have := monoWeakHomotopyEquivalences_cobase.{u}
@@ -95,12 +95,12 @@ lemma weakPushout_fixed_base {A B B' C D D' : SSet.{u}}
     (hP : IsPushout i g r s) (hP' : IsPushout i' g r' s')
     (f : B ⟶ B') (h : D ⟶ D') (hi : i ≫ f = i')
     (hr : r ≫ h = f ≫ r') (hs : s ≫ h = s')
-    (hf : IsWeakHomotopyEquivalence f) : IsWeakHomotopyEquivalence h := by
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence f) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence h := by
   have : Mono (Under.mk i).hom := by change Mono i; infer_instance
   have : Mono (Under.mk i').hom := by change Mono i'; infer_instance
   let v : Under.mk i ⟶ Under.mk i' := Under.homMk f hi
   let m := ((Under.pushout g).map v).right
-  have hm : IsWeakHomotopyEquivalence m := weak_underPushout_map g v hf
+  have hm : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence m := weak_underPushout_map g v hf
   have hm₁ : pushout.inl i g ≫ m = f ≫ pushout.inl i' g := pushout.inl_desc _ _ _
   have hm₂ : pushout.inr i g ≫ m = pushout.inr i' g := pushout.inr_desc _ _ _
   have he : hP.isoPushout.hom ≫ m ≫ hP'.isoPushout.inv = h := by
@@ -110,7 +110,7 @@ lemma weakPushout_fixed_base {A B B' C D D' : SSet.{u}}
     · rw [← Category.assoc, ← Category.assoc, hP.inr_isoPushout_hom, Category.assoc,
         ← Category.assoc, hm₂, hP'.inr_isoPushout_inv, hs]
   rw [← he]
-  exact (isPrecompositionEquivalence_of_iso hP.isoPushout).isWeakHomotopyEquivalence.comp
-    (hm.comp (isPrecompositionEquivalence_of_iso hP'.isoPushout.symm).isWeakHomotopyEquivalence)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso hP.isoPushout).isWeakHomotopyEquivalence.comp
+    (hm.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso hP'.isoPushout.symm).isWeakHomotopyEquivalence)
 
 end SerrePositivity.EInfinity.Hammock

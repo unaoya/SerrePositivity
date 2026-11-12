@@ -34,7 +34,7 @@ lemma spectrumStageFixedLeftComposition_pre {A B : OmegaSpectrum.{u}} (f : A ⟶
     lift (SSet.const ((OmegaSpectrum.evaluation A B n).app (Opposite.op ⦋0⦌)
         (SimplicialCategory.homEquiv' _ _ f)))
       (𝟙 (PointedObject.basedHom (B.level n).space C).right) ≫
-      eComp SSet (A.level n).space (B.level n).space C = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f.app n) C := by
+      eComp SSet (A.level n).space (B.level n).space C = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f.app n) C := by
   rw [spectrumStageVertex_familyVertex, pointedFamilyComposition_const_left, Category.id_comp]
 
 end SerrePositivity.KST.SConstruction

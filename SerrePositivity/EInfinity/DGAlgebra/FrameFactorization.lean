@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.DGAlgebra.ModelCategory
-public import SerrePositivity.InfinityCategories.ModelBridge.ModelCofibrantHammockWeak
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelCofibrantHammockWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockNerveEquivalence
 
 /-!
@@ -28,7 +28,7 @@ lemma modelCategory_hasFunctorialFactorization_cofibration_trivialFibration :
       (trivialFibrations (Mon (Complex R))) := by
   let := modelCategory R
   have := modelCategory_cofibrantlyGenerated R
-  exact ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
     (generatingCofibrations (R := R)) (generatingTrivialCofibrations (R := R))
 
 /-- 概要：同じ実自由生成 trivial cofibration も関手的分解を与える。
@@ -40,7 +40,7 @@ lemma modelCategory_hasFunctorialFactorization_trivialCofibration_fibration :
       (fibrations (Mon (Complex R))) := by
   let := modelCategory R
   have := modelCategory_cofibrantlyGenerated R
-  exact ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
     (generatingCofibrations (R := R)) (generatingTrivialCofibrations (R := R))
 
 /-- 概要：実 dg モデルの第一の関手的分解をデータとして公開する。
@@ -71,20 +71,20 @@ def fibrantFactorization :
 使われ方：Sp の全 dg 代数の指定局所化への復帰。 -/
 lemma cofibrantHammockInclusion_weak :
     let := modelCategory R
-    ∀ X Y : (modelCofibrantRelativeCategory (Mon (Complex R))).category,
-      IsWeakHomotopyEquivalence
-        (Hammock.Relative.colimitMap (modelCofibrantToModelRelative (Mon (Complex R))) X Y) := by
+    ∀ X Y : (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantRelativeCategory (Mon (Complex R))).category,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+        (Hammock.Relative.colimitMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative (Mon (Complex R))) X Y) := by
   let := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
-  exact modelCofibrantToModel_colimitMap_weak (Mon (Complex R))
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModel_colimitMap_weak (Mon (Complex R))
 
 /-- 概要：実 cofibrant dg 代数の包含は全 hammock coherent nerve の同値。
 方針：実 I の小対象論法から一般比較の分解仮定を放電する。
 規約：係数環以外の追加仮定なし。使われ方：Sp の全 dg 局所化への復帰。 -/
 lemma cofibrantHammockNerveInclusion_isQCatEquivalence :
     let := modelCategory R
-    IsQCatEquivalence (relativeKanHammockNerve
-      (modelCofibrantToModelRelative (Mon (Complex R)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (relativeKanHammockNerve
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelCofibrantToModelRelative (Mon (Complex R)))) := by
   let := modelCategory R
   have := modelCategory_hasFunctorialFactorization_cofibration_trivialFibration R
   exact modelCofibrantToModel_nerve_isQCatEquivalence (Mon (Complex R))

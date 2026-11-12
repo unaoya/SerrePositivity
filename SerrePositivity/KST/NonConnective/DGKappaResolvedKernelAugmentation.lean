@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaResolvedRelativeRoof
 public import SerrePositivity.KST.NonConnective.DGKappaPerfectInput
-public import SerrePositivity.InfinityCategories.Stable.StableClosureFullyFaithful
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableClosureFullyFaithful
 public import SerrePositivity.DifferentialGraded.Category.Tensor
 
 /-!
@@ -27,47 +27,47 @@ variable (R : Type u) [CommRing R] (D : Type (max (u + 1) v))
 
 /-- 同じ増大による生成頂点の像は、元の cone の同じ perfect 対象の頂点集合そのもの。 -/
 theorem dgKappaResolvedKernel_generators_image :
-    (dgNerve.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I))).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I))).app
       (Opposite.op ⦋0⦌) ''
-        (DGNerve.Simplex.vertex '' resolvedDGNullObjects R (DGKappaCone R D I)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex '' _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I)
           (dgKappaConePerfectObjects R D I)) =
-      DGNerve.Simplex.vertex '' dgKappaConePerfectObjects R D I := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex '' dgKappaConePerfectObjects R D I := by
   ext z
   constructor
   · rintro ⟨_, ⟨x, hx, rfl⟩, rfl⟩
     exact ⟨(DGCategoryCellResolution.augmentation R (DGKappaCone R D I)).obj x, hx,
-      (dgFunctorNerve_vertex _ x).symm⟩
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex _ x).symm⟩
   · rintro ⟨y, hy, rfl⟩
     let x : DGCategoryCellResolution.Source R (DGKappaCone R D I) := ⟨y⟩
-    refine ⟨DGNerve.Simplex.vertex x, ⟨x, hy, rfl⟩, ?_⟩
-    rw [dgFunctorNerve_vertex]
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x, ⟨x, hy, rfl⟩, ?_⟩
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex]
     rfl
 
 /-- 実小核の所属は、同じ増大後の元の perfect 安定閉包の所属と同値。 -/
 theorem dgKappaResolvedKernel_membership_iff
     (x : DGCategoryCellResolution.Source R (DGKappaCone R D I)) :
-    dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
         ((DGCategoryCellResolution.augmentation R (DGKappaCone R D I)).obj x) ↔
-      dgStableClosureProperty R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
-        (resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) x := by
-  let := dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
-  let := dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-  let := dgNerve_isStable_of_pretriangulated R
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureProperty R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) x := by
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R
     (DGCategoryCellResolution.Source R (DGKappaCone R D I))
-  have he := dgCellAugmentationNerve_isQCatEquivalence R (DGKappaCone R D I)
-  let := isExactFunctor_of_isQCatEquivalence he
-  have h := stableVertexClosure_image_iff
-    (dgNerve.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)))
+  have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellAugmentationNerve_isQCatEquivalence R (DGKappaCone R D I)
+  let := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence he
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableVertexClosure_image_iff
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)))
     he.isFullyFaithful
-    (DGNerve.Simplex.vertex '' resolvedDGNullObjects R (DGKappaCone R D I)
-      (dgKappaConePerfectObjects R D I)) (DGNerve.Simplex.vertex x)
-  rw [dgKappaResolvedKernel_generators_image, dgFunctorNerve_vertex] at h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex '' _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I)
+      (dgKappaConePerfectObjects R D I)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)
+  rw [dgKappaResolvedKernel_generators_image, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at h
   exact h
 
 /-- 元の同じ増大を、実小核から元の perfect 安定閉包へ全 Hom ごと制限する。 -/
 def dgKappaResolvedKernelAugmentation : DGFunctor R (dgKappaResolvedKernelKInput R D I)
     (DGFullSubcategory (DGKappaCone R D I)
-      (dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))) :=
   (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)).restrict _ _
     (fun x hx => (dgKappaResolvedKernel_membership_iff R D I x).mpr hx)
 
@@ -75,7 +75,7 @@ def dgKappaResolvedKernelAugmentation : DGFunctor R (dgKappaResolvedKernelKInput
 theorem dgKappaResolvedKernelAugmentation_inclusion :
     (dgKappaResolvedKernelAugmentation R D I).comp
       (dgFullSubcategoryInclusion R (DGKappaCone R D I)
-        (dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))) =
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureProperty R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I))) =
       (dgKappaResolvedKernelInputMap R D I).down.comp
         (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)) :=
   DGFunctor.restrict_comp_inclusion _ _ _ _
@@ -101,18 +101,18 @@ theorem dgKappaResolvedKernelAugmentation_quasiEquivalence :
 
 /-- 同じ実小核の native nerve と P が指定する元の安定閉包との全写像空間の同値。 -/
 def dgKappaResolvedKernelNerveEquivalence :
-    QCatEquivalence (dgNerve R (dgKappaResolvedKernelKInput R D I))
-      (dgStableClosureNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :=
-  dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedKernelAugmentation R D I)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgKappaResolvedKernelKInput R D I))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgQuasiEquivalenceNerveEquivalence (dgKappaResolvedKernelAugmentation R D I)
     (dgKappaResolvedKernelAugmentation_quasiEquivalence R D I)
 
 /-- 元の二つの実包含は、同じ増大を通すと全単体上で厳密に一致する。 -/
 theorem dgKappaResolvedKernelAugmentation_nerve_inclusion :
-    dgNerve.map (dgKappaResolvedKernelAugmentation R D I) ≫
-        dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) =
-      dgNerve.map (dgKappaResolvedKernelInputMap R D I).down ≫
-        dgNerve.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)) := by
-  change dgNerve.map _ ≫ dgNerve.map _ = _
-  rw [← dgNerve.map_comp, ← dgNerve.map_comp, dgKappaResolvedKernelAugmentation_inclusion]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaResolvedKernelAugmentation R D I) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgKappaResolvedKernelInputMap R D I).down ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (DGCategoryCellResolution.augmentation R (DGKappaCone R D I)) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map _ = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, dgKappaResolvedKernelAugmentation_inclusion]
 
 end SerrePositivity.KST.NonConnective

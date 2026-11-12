@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.MappingSquareCornerIdentities
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-! # 指定頂点の元の辺で定数端点を合わせる
 概要：定数端点の実円柱を、指定頂点で保持する元の辺の端点へ厳密に合わせる。

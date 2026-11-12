@@ -17,7 +17,7 @@ public import SerrePositivity.KST.Spectra.SimplexTensorBoundary
 universe u
 
 open CategoryTheory MonoidalCategory SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.SimplexDensity
 
@@ -35,13 +35,13 @@ variable {I : Type u} [SmallCategory I] {W H : I ⥤ SSet.{u}} {A : SSet.{u}}
 def fromCochains (s : SimplexTensorBoundary.diagram A ⟶
     UnderlyingWeightedCochains.obj (discreteLevels W) H) : DiagramFamily W H A where
   app i :=
-    { app n := (weightedSectionsUncurry (s.app n)).app i
+    { app n := (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.app n)).app i
       condition {n m} f k x α a := by
-        have h := congrArg weightedSectionsUncurry (s.naturality f)
-        change weightedSectionsUncurry ((SSet.stdSimplex.map f ▷ A) ≫ s.app m) =
-          weightedSectionsUncurry (s.app n ≫ weightedSectionsPre
+        have h := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.naturality f)
+        change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry ((SSet.stdSimplex.map f ▷ A) ≫ s.app m) =
+          _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.app n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre
             ((discreteLevels W).map f.op) H) at h
-        rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_comp_pre] at h
+        rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre] at h
         have hi := NatTrans.congr_app h i
         have hk := NatTrans.congr_app hi k
         have h' := congr($(hk) (x, (α, a)))
@@ -49,7 +49,7 @@ def fromCochains (s : SimplexTensorBoundary.diagram A ⟶
   naturality {i j} f := by
     apply Family.ext
     intro n
-    exact (weightedSectionsUncurry (s.app n)).naturality f
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (s.app n)).naturality f
 
 /-- 概要：図式上の密度の族の一つの次数を end のパラメーター付き族にする。
 方針：図式上の自然性を各次数で評価する。
@@ -69,15 +69,15 @@ def cochainFamily (s : DiagramFamily W H A) (n : SimplexCategory) :
 使われ方：Goerss–Jardine VIII §1、式 (1.1)。Tot の密度表示の逆射。 -/
 def toCochains (s : DiagramFamily W H A) : SimplexTensorBoundary.diagram A ⟶
     UnderlyingWeightedCochains.obj (discreteLevels W) H where
-  app n := weightedSectionsLift (cochainFamily s n)
+  app n := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (cochainFamily s n)
   naturality n m f := by
-    apply (weightedSectionsHomEquiv _ H (SSet.stdSimplex.obj n ⊗ A)).injective
-    change weightedSectionsUncurry ((SSet.stdSimplex.map f ▷ A) ≫
-        weightedSectionsLift (cochainFamily s m)) =
-      weightedSectionsUncurry (weightedSectionsLift (cochainFamily s n) ≫
-        weightedSectionsPre ((discreteLevels W).map f.op) H)
-    rw [weightedSectionsUncurry_precomp, weightedSectionsUncurry_comp_pre,
-      weightedSectionsUncurry_lift, weightedSectionsUncurry_lift]
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsHomEquiv _ H (SSet.stdSimplex.obj n ⊗ A)).injective
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry ((SSet.stdSimplex.map f ▷ A) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (cochainFamily s m)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsLift (cochainFamily s n) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre ((discreteLevels W).map f.op) H)
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_precomp, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_comp_pre,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry_lift]
     apply NatTrans.ext
     funext i
     apply NatTrans.ext

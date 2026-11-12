@@ -15,20 +15,20 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementUniversalSimplex_augmentation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    (pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
       (homPostcompose X
         ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n))))).app
           (Opposite.op ⦋n⦌) (normalizedTensorElementUniversalSimplex A X Y c) =
-    (DGNerve.pinchedHom A (Complex A) X X).map (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).op
-      (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X X).map (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).op
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
   have h := congrArg (fun f : SSet.uliftFunctor.{u + 1, u}.obj (Δ[n] : SSet.{u}) ⟶
-      DGNerve.pinchedHom A (Complex A) X X =>
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X X =>
       f.app (Opposite.op ⦋n⦌) (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 ⦋n⦌))))
     (normalizedTensorElementUniversalFamily_augmentation A X Y c)
   exact h

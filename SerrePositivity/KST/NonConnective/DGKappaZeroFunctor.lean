@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.DGSwindleInputIso
-public import SerrePositivity.InfinityCategories.Derived.DGClosedZeroVertex
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGClosedZeroVertex
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
 
 /-!

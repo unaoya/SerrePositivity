@@ -23,13 +23,13 @@ namespace SerrePositivity.KST.Fibration.Relative
 
 /-- 概要：同じ B の K-B 図式 API 用の包装。方針：既存構造を使う。
 規約：底は厳密に同じ。使われ方：完全な cofiber 評価。 -/
-def flagAmbient (B : StableModel.{u}) : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u} :=
+def flagAmbient (B : StableModel.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u} :=
   ⟨B.carrier, inferInstance, inferInstance⟩
 
 /-- 概要：P は指定安定閉包と一致する。方針：閉包の生成子で帰納する。
 規約：retract 閉包を使わない。使われ方：全 W 辺の二対三性の消費。 -/
 lemma closedStableClosure_iff {B : StableModel.{u}} (P : ClosedStablePredicate B)
-    (x : B.carrier _⦋0⦌) : StableVertexClosure {x | P.predicate x} x ↔ P.predicate x := by
+    (x : B.carrier _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure {x | P.predicate x} x ↔ P.predicate x := by
   constructor
   · intro h
     induction h with
@@ -40,12 +40,12 @@ lemma closedStableClosure_iff {B : StableModel.{u}} (P : ClosedStablePredicate B
       exact P.pushout_mem t.square ht ih₀ ih₁ (P.zero_mem t.zero_corner)
     | of_fiber t ht _ _ ih₁ ih₂ =>
       exact P.pullback_mem t.square ht ih₁ (P.zero_mem t.zero_corner) ih₂
-  · exact StableVertexClosure.of_mem
+  · exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure.of_mem
 
 /-- 概要：元の P に cofiber を持つ辺。方針：既存の実 cofiber 辺条件。
 規約：商の反転辺で代用しない。使われ方：全旗の所属条件。 -/
 def closedStableEdges {B : StableModel.{u}} (P : ClosedStablePredicate B) :
-    Set (B.carrier _⦋1⦌) := cofiberLocalizingEdges {x | P.predicate x}
+    Set (B.carrier _⦋1⦌) := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges {x | P.predicate x}
 
 /-- 概要：元の全 W 単体の wide 部分複体。方針：全辺条件。
 規約：P 自身を使用。使われ方：旗全体の因子分解。 -/
@@ -57,7 +57,7 @@ def closedStableWide {B : StableModel.{u}} (P : ClosedStablePredicate B) : B.car
 lemma closedStableWide_eq {B : StableModel.{u}} (P : ClosedStablePredicate B) :
     closedStableWide P = stableCofiberWide {x | P.predicate x} := by
   unfold closedStableWide closedStableEdges stableCofiberWide
-  rw [show {x | StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} from
+  rw [show {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} from
     Set.ext (closedStableClosure_iff P)]
 
 /-- 概要：元の W 包含は inner fibration。方針：安定閉包版の公開定理。
@@ -71,12 +71,12 @@ instance closedStableWide_innerFibration {B : StableModel.{u}} (P : ClosedStable
 規約：cofiber の選択に依存しない。使われ方：相対 cofiber 射影の制限。 -/
 lemma closedStableEdges_iff_cofiber {B : StableModel.{u}} (P : ClosedStablePredicate B)
     {x y : B.carrier _⦋0⦌}
-    {f : Truncated.Edge (X := (truncation 2).obj B.carrier) x y} (s : CofiberSquare f) :
+    {f : Truncated.Edge (X := (truncation 2).obj B.carrier) x y} (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.CofiberSquare f) :
     f.edge ∈ closedStableEdges P ↔ P.predicate s.cofiber := by
-  have he : {x | StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} :=
+  have he : {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} :=
     Set.ext (closedStableClosure_iff P)
   unfold closedStableEdges
-  rw [← he, cofiberStableEdges_edge_mem_iff, closedStableClosure_iff]
+  rw [← he, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_edge_mem_iff, closedStableClosure_iff]
 
 /-- 概要：元の cofiber 評価の P 逆像。方針：完全関手で閉条件を引き戻す。
 規約：全矢印図式圏上の条件。使われ方：旗圏の安定性。 -/
@@ -93,7 +93,7 @@ lemma closedArrowPredicate_iff {B : StableModel.{u}} (P : ClosedStablePredicate 
   have hw := ConcreteCategory.congr_hom
     (NatTrans.congr_app (arrowCofiberSection_projection (flagAmbient B))
       (Opposite.op ⦋0⦌)) v
-  have he : (squareBottomArrow (squareDiagram w.val)).edge = arrowVertexSimplex v := by
+  have he : (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareBottomArrow (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram w.val)).edge = arrowVertexSimplex v := by
     rw [← cofiberProjection_vertex_simplex]
     exact congrArg arrowVertexSimplex hw
   have hc := cofiberVertex_corner (flagAmbient B) w

@@ -21,30 +21,30 @@ variable (R : Type u) [CommRing R] (C D : Type v)
   [DGCategory R C] [Small.{u} C] [DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R C κ) (J : DGKappaConeInput R D κ)
   (M : DGKappaSuspensionMapData R C D I J)
-  (hf : IsQCatEquivalence (dgNerve.map M.cone))
-local instance inverseDescentConeStable : IsStable (dgNerve R (DGKappaCone R D J)) :=
-  dgNerve_isStable_of_pretriangulated R _
-local instance inverseDescentSourceStable : IsStable (dgNerve R (DGKappaCone R C I)) :=
-  dgNerve_isStable_of_pretriangulated R _
-local instance inverseDescentQuotientStable : IsStable (dgKappaSuspensionInfinity R C I) :=
+  (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map M.cone))
+local instance inverseDescentConeStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D J)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+local instance inverseDescentSourceStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R C I)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_isStable_of_pretriangulated R _
+local instance inverseDescentQuotientStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (dgKappaSuspensionInfinity R C I) :=
   dgKappaSuspensionInfinity_isStable R C I
 
-local instance inverseDescentKernelStable : IsStable
-    (dgStableClosureNerve R (DGKappaCone R C I) (dgKappaConePerfectObjects R C I)) :=
-  dgStableClosureNerve_isStable R _ _
+local instance inverseDescentKernelStable : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve R (DGKappaCone R C I) (dgKappaConePerfectObjects R C I)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureNerve_isStable R _ _
 
 /-- 同じ指定 cone 同値の逆の後に、元の源の実商射を合成する。 -/
 def dgKappaSuspensionInverseSource :
-    dgNerve R (DGKappaCone R D J) ⟶ dgKappaSuspensionInfinity R C I :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGKappaCone R D J) ⟶ dgKappaSuspensionInfinity R C I :=
   hf.choose.inv ≫ dgKappaSuspensionProjection R C I
 
 theorem dgKappaSuspensionInverseSource_isExact :
-    IsExactFunctor (dgKappaSuspensionInverseSource R C D I J M hf) := by
-  let : IsExactFunctor hf.choose.inv :=
-    isExactFunctor_of_isQCatEquivalence hf.choose.symm.isQCatEquivalence
-  let : IsExactFunctor (dgKappaSuspensionProjection R C I) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionInverseSource R C D I J M hf) := by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor hf.choose.inv :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence hf.choose.symm.isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionProjection R C I) :=
     (dgKappaSuspension_isStableVerdierSequence R C I).quotientExact
-  exact isExactFunctor_comp _ _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _
 
 variable (hr : ∀ x : DGKappaCone R C I,
   M.cone.obj x ∈ dgKappaConePerfectObjects R D J → x ∈ dgKappaConePerfectObjects R C I)
@@ -53,33 +53,33 @@ include hr in
 /-- 逆像の実頂点を回収し、同じ元の perfect 集合の全対象を零化する。 -/
 theorem dgKappaSuspensionInverseSource_kills_generator
     (N : DGKappaCone R D J) (hN : N ∈ dgKappaConePerfectObjects R D J) :
-    IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
-      (Opposite.op ⦋0⦌) (DGNerve.Simplex.vertex N)) := by
-  let x := hf.choose.inv.app (Opposite.op ⦋0⦌) (DGNerve.Simplex.vertex N)
-  obtain ⟨L, hL⟩ := DGNerve.Simplex.vertexEquiv.symm.surjective x
-  change DGNerve.Simplex.vertex L = x at hL
-  have h := hf.choose.invHomIso.app (DGNerve.Simplex.vertex N)
-  change VertexIso ((dgNerve.map M.cone).app (Opposite.op ⦋0⦌) x)
-    (DGNerve.Simplex.vertex N) at h
-  rw [← hL, dgFunctorNerve_vertex] at h
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
+      (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)) := by
+  let x := hf.choose.inv.app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)
+  obtain ⟨L, hL⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.symm.surjective x
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex L = x at hL
+  have h := hf.choose.invHomIso.app (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map M.cone).app (Opposite.op ⦋0⦌) x)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex N) at h
+  rw [← hL, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorNerve_vertex] at h
   have hp := hr L ((dgKappaConePerfectObjects_iff_of_vertexIso R D J h).mpr hN)
-  have hz := resolvedDGQuotientFunctor_kills R (DGKappaCone R C I)
+  have hz := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGQuotientFunctor_kills R (DGKappaCone R C I)
     (dgKappaConePerfectObjects R C I) ⟨L, hp⟩
-  change IsZeroVertex ((dgKappaSuspensionProjection R C I).app (Opposite.op ⦋0⦌) x)
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionProjection R C I).app (Opposite.op ⦋0⦌) x)
   rw [← hL]
   exact hz
 
 include hr in
 /-- 同じ逆源関手は、元の perfect 集合の実安定閉包の全頂点を零化する。 -/
 theorem dgKappaSuspensionInverseSource_kills :
-    ∀ x ∈ Set.range ((dgStableClosureInclusion R (DGKappaCone R D J)
+    ∀ x ∈ Set.range ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion R (DGKappaCone R D J)
       (dgKappaConePerfectObjects R D J)).app (Opposite.op ⦋0⦌)),
-      IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((dgKappaSuspensionInverseSource R C D I J M hf).app
         (Opposite.op ⦋0⦌) x) := by
-  let : IsExactFunctor (dgKappaSuspensionInverseSource R C D I J M hf) :=
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionInverseSource R C D I J M hf) :=
     dgKappaSuspensionInverseSource_isExact R C D I J M hf
   rintro _ ⟨z, rfl⟩
-  exact dgStableClosureInclusion_kills R (DGKappaCone R D J)
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStableClosureInclusion_kills R (DGKappaCone R D J)
     (dgKappaConePerfectObjects R D J) (dgKappaSuspensionInverseSource R C D I J M hf)
     (dgKappaSuspensionInverseSource_kills_generator R C D I J M hf hr) z
 
@@ -91,12 +91,12 @@ def dgKappaSuspensionInverseMap :=
     (dgKappaSuspensionInverseSource_kills R C D I J M hf hr)
 
 theorem dgKappaSuspensionInverseMap_isExact :
-    IsExactFunctor (dgKappaSuspensionInverseMap R C D I J M hf hr) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (dgKappaSuspensionInverseMap R C D I J M hf hr) :=
   dgKappaSuspensionDesc_isExact R D J _ _ _ _
 
 /-- 同じ下降の余単位は、元の cone 同値の逆と元の実商射を回収する。 -/
 def dgKappaSuspensionInverseMap_facIso :
-    FunctorIso (dgKappaSuspensionProjection R D J ≫ dgKappaSuspensionInverseMap R C D I J M hf hr)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKappaSuspensionProjection R D J ≫ dgKappaSuspensionInverseMap R C D I J M hf hr)
       (hf.choose.inv ≫ dgKappaSuspensionProjection R C I) :=
   dgKappaSuspensionDesc_facIso R D J _ _ _ _
 

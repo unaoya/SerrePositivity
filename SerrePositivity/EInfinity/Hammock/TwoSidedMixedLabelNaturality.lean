@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedMixedLabel
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
 /-!
@@ -18,27 +18,27 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabel
-open CategoryTheory Opposite TwoSidedGrothendieck
+open CategoryTheory Opposite
 
 variable {W : Type u} [Category.{u} W] (F : Wᵒᵖ ⥤ Cat.{u, u}) {S T : W ⥤ Type u}
 
-def pulledMap (β : S ⟶ T) : pulledTotal F S ⥤ pulledTotal F T :=
-  contravariantBaseChange β.mapElements ((Functor.Elements.π T).op ⋙ F)
+def pulledMap (β : S ⟶ T) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledTotal F S ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.pulledTotal F T :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantBaseChange β.mapElements ((Functor.Elements.π T).op ⋙ F)
 
 lemma toMixed_projection (S : W ⥤ Type u) :
-    toMixed F S ⋙ Functor.Elements.π (contravariantProjection F ⋙ S) =
-      contravariantBaseChange (Functor.Elements.π S) F := rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S ⋙ Functor.Elements.π (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ S) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantBaseChange (Functor.Elements.π S) F := rfl
 
 lemma pulledMap_projection (β : S ⟶ T) :
-    pulledMap F β ⋙ contravariantBaseChange (Functor.Elements.π T) F =
-      contravariantBaseChange (Functor.Elements.π S) F := rfl
+    pulledMap F β ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantBaseChange (Functor.Elements.π T) F =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantBaseChange (Functor.Elements.π S) F := rfl
 
 lemma toMixed_naturality (β : S ⟶ T) :
-    pulledMap F β ⋙ toMixed F T =
-      toMixed F S ⋙ (Functor.whiskerLeft (contravariantProjection F) β).mapElements := rfl
+    pulledMap F β ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F T =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S ⋙ (Functor.whiskerLeft (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F) β).mapElements := rfl
 
 lemma toMixed_nerveMap_isWeakHomotopyEquivalence (S : W ⥤ Type u) :
-    SerrePositivity.InfinityCategories.IsWeakHomotopyEquivalence (nerveMap (toMixed F S)) :=
-  nerveMap_equivalence_isWeakHomotopyEquivalence (equivalence F S)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.toMixed F S)) :=
+  nerveMap_equivalence_isWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedMixedLabel.equivalence F S)
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedMixedLabel

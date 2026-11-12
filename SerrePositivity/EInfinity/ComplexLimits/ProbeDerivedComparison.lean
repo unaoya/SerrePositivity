@@ -20,12 +20,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories DifferentialGraded DGNerve
+open SerrePositivity.InfinityCategories DifferentialGraded
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def complexProbeDerivedSourceIso :
-    FunctorIso (nerveMap (framedLimitProbeFunctor A) ≫ complexOrdinaryDerivedSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap (framedLimitProbeFunctor A) ≫ complexOrdinaryDerivedSource A)
       (complexOrdinaryDerivedSource A) := by
   have e := complexOrdinaryDerivedNatTransIso A (framedLimitProbeComparisonNatTrans A)
     (framedLimitProbeComparison_quasiIso A)
@@ -34,23 +34,23 @@ def complexProbeDerivedSourceIso :
   rw [hid, Category.id_comp] at e
   exact e
 
-def complexOrdinaryDerivedSource_semifreeVertexIso (K : Semifree A) :
-    VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex K.val))
-      (Simplex.vertex K) := by
-  let z := nerveVertex (ForgetEnrichment.of (Complex A) K : ClosedCategory A (Semifree A))
-  have h₀ : (nerveMap (semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌) z =
-      nerveVertex K.val := by
-    change (nerveMap (semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌)
+def complexOrdinaryDerivedSource_semifreeVertexIso (K : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex K.val))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex K) := by
+  let z := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ForgetEnrichment.of (Complex A) K : ClosedCategory A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A))
+  have h₀ : (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌) z =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex K.val := by
+    change (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.semifreeClosedToComplex A)).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ (ForgetEnrichment.of (Complex A) K)) = _
     rw [nerveMap_app_mk₀]
     rfl
-  have h₁ : (closedNerveInclusion A (Semifree A)).app (Opposite.op ⦋0⦌) z =
-      Simplex.vertex K := by
-    apply (dgNerve.vertexEquiv A (Semifree A)).injective
+  have h₁ : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).app (Opposite.op ⦋0⦌) z =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex K := by
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).injective
     rfl
   exact (eqToIso (congrArg HomotopyCategory.mk
     (congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)) h₀))).symm ≪≫
-      FunctorIso.app (semifreeClosedDerivedSourceIso A) z ≪≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorIso.app (semifreeClosedDerivedSourceIso A) z ≪≫
         eqToIso (congrArg HomotopyCategory.mk h₁)
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -48,7 +48,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 
 /-- The n-simplices are actual maps from the resolution's n-th term. -/
 abbrev hom : (ResolutionObject C)ᵒᵖ ⥤ FibrantObject C ⥤ SSet.{v} :=
-  diagrams.op ⋙ cosimplicialHomBifunctor ⋙
+  diagrams.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙
     (Functor.whiskeringLeft (FibrantObject C) C SSet.{v}).obj FibrantObject.ι
 
 @[simp]

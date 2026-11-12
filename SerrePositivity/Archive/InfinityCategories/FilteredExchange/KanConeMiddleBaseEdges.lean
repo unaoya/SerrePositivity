@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanCon
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeLowerTriangleFaces
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeFirstTetrahedronEdges
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeTriangleIsos
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.TetrahedronEdgeFaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TetrahedronEdgeFaces
 
 /-!
 概要：中央の比較三単体の指定境界関手。

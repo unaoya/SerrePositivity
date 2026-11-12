@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanCommonInputs
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeKanValueImage
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentNativeKanValueMaps
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：左外脚の値比較の第一置換による二段の制限を、元の native 左内脚での制限へ戻す。

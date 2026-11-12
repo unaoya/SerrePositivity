@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentConstantRepresentationLarge
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentConstantRepresentationLarge
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoEndpointTransport
 
 /-!

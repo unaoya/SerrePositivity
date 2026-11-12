@@ -22,37 +22,37 @@ open scoped Simplicial
 variable {I C : Type u} [Category.{u} I] [Category.{u} C] (A : I ⥤ C) (Y : C)
   {E : SSet.{u}} (q : nerve C ⟶ E) (b : (roofTarget A Y q) _⦋0⦌)
 
-def roofTargetOverBaseMap : sliceOver (SSet.yonedaEquiv.symm b) ⟶
-    sliceOver (SSet.yonedaEquiv.symm (nerveVertex (roofTargetDegree A Y q b))) :=
-  sliceOverPostcomp (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ≫
-    (eqToIso (congrArg sliceOver (roofTargetPoint_projection A Y q b))).hom
+def roofTargetOverBaseMap : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm b) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b))) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverPostcomp (SSet.yonedaEquiv.symm b) (roofTargetProjection A Y q) ≫
+    (eqToIso (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (roofTargetPoint_projection A Y q b))).hom
 
 lemma roofTargetOverBaseMap_projection : roofTargetOverBaseMap A Y q b ≫
-    sliceOverProjection (SSet.yonedaEquiv.symm (nerveVertex (roofTargetDegree A Y q b))) =
-      sliceOverProjection (SSet.yonedaEquiv.symm b) ≫ roofTargetProjection A Y q := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b) ≫ roofTargetProjection A Y q := by
   rw [roofTargetOverBaseMap, Category.assoc,
-    SerrePositivity.InfinityCategories.F1B.sliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b),
-    SerrePositivity.InfinityCategories.F1B.sliceOverPostcomp_projection]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverProjection_eqTransport (roofTargetPoint_projection A Y q b),
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverPostcomp_projection]
 
 variable {S : SSet.{u}} (f : S ⟶ roofTarget A Y q)
 
-abbrev roofQuillenSlice := pullback f (sliceOverProjection (SSet.yonedaEquiv.symm b))
+abbrev roofQuillenSlice := pullback f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b))
 
 def roofQuillenSliceOver : roofQuillenSlice A Y q b f ⟶
     nerve (Over (roofTargetDegree A Y q b)) :=
   pullback.snd _ _ ≫ roofTargetOverBaseMap A Y q b ≫
-    (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).inv
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso (roofTargetDegree A Y q b)).inv
 
 lemma roofQuillenSliceOver_projection : roofQuillenSliceOver A Y q b f ≫
     nerveMap (Over.forget (roofTargetDegree A Y q b)) =
-      pullback.fst f (sliceOverProjection (SSet.yonedaEquiv.symm b)) ≫
+      pullback.fst f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b)) ≫
         f ≫ roofTargetProjection A Y q := by
-  have hi : (SerrePositivity.InfinityCategories.F1B.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
+  have hi : (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso (roofTargetDegree A Y q b)).inv ≫
       nerveMap (Over.forget (roofTargetDegree A Y q b)) =
-        sliceOverProjection (SSet.yonedaEquiv.symm
-          (nerveVertex (roofTargetDegree A Y q b))) := by
-    change _ = sliceOverProjection (nervePoint (roofTargetDegree A Y q b))
-    rw [← SerrePositivity.InfinityCategories.F1B.nerveOverIso_projection, Iso.inv_hom_id_assoc]
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (roofTargetDegree A Y q b))) := by
+    change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (roofTargetDegree A Y q b))
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveOverIso_projection, Iso.inv_hom_id_assoc]
   rw [roofQuillenSliceOver, Category.assoc, Category.assoc, hi,
     roofTargetOverBaseMap_projection]
   rw [← Category.assoc, ← pullback.condition, Category.assoc]

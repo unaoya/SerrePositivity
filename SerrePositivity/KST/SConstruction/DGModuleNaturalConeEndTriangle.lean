@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeArrowComp
 public import SerrePositivity.DifferentialGraded.Functor.QuasiEquivalence
-public import SerrePositivity.InfinityCategories.DGNerve.Triangle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Triangle
 
 /-!
 概要：元厳密比較・元 cone 包含・元零化を全 dg 関手圏の実二単体へ束ねる。
@@ -16,10 +16,10 @@ public import SerrePositivity.InfinityCategories.DGNerve.Triangle
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P] [Small.{u} P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 local notation "i" => dgModuleNaturalConeInr R D F G η
 local notation "h" => dgModuleNaturalConeEndNullHomotopy R D F G η
@@ -29,11 +29,11 @@ local notation "h" => dgModuleNaturalConeEndNullHomotopy R D F G η
 規約：元厳密合成を保持。使われ方：元指定零化面の境界。 -/
 lemma dgModuleNaturalConeEndNullHomotopy_d :
     (dgFunctorHom R P (RightModule R D) F (T)).d (-1) 0 (h) =
-      dgStrictNatTransEndElement R P (RightModule R D) (dgStrictNatTransComp η (i)) := by
+      dgStrictNatTransEndElement R P (RightModule R D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp η (i)) := by
   apply dgFunctorHomElement_ext R P (RightModule R D)
   intro x
   rw [dgModuleNaturalConeEndNullHomotopy_d_π, dgStrictNatTransEndElement_π]
-  have hc := dgModuleNaturalConeArrow_cycle R D F (T) (dgStrictNatTransComp η (i)) x
+  have hc := dgModuleNaturalConeArrow_cycle R D F (T) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp η (i)) x
   rw [dgModuleNaturalConeArrow_comp, dgModuleNaturalConeInr_arrow] at hc
   exact hc
 
@@ -43,7 +43,7 @@ lemma dgModuleNaturalConeEndNullHomotopy_d :
 lemma dgModuleNaturalConeEndBoundary_comp :
     compose R (x := F) (y := G) (z := (T)) (dgStrictNatTransEndElement R P (RightModule R D) (i))
       (dgStrictNatTransEndElement R P (RightModule R D) η) (zero_add 0) =
-    dgStrictNatTransEndElement R P (RightModule R D) (dgStrictNatTransComp η (i)) := by
+    dgStrictNatTransEndElement R P (RightModule R D) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp η (i)) := by
   apply dgFunctorHomElement_ext R P (RightModule R D)
   intro x
   change (dgFunctorHomπ R P (RightModule R D) F (T) x).f 0
@@ -66,12 +66,12 @@ lemma dgModuleNaturalConeEndBoundary_comp :
   rw [hc]
   rw [dgStrictNatTransEndElement_π, dgStrictNatTransEndElement_π,
     dgStrictNatTransEndElement_π]
-  simp only [dgStrictNatTransComp, compose, zero_mul, Int.negOnePow_zero, one_smul]
+  simp only [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp, compose, zero_mul, Int.negOnePow_zero, one_smul]
 
 /-- 概要：元比較・元 cone 包含・零辺と同じ end 零化を持つ三角形データ。
 方針：元全合成と微分の二つの end 等号を使用する。
 規約：対象族と指定原始元を変更しない。使われ方：全関手圏の実二単体。 -/
-def dgModuleNaturalConeEndTriangleData : TriangleData R (DGFunctor R P (RightModule R D)) where
+def dgModuleNaturalConeEndTriangleData : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.TriangleData R (DGFunctor R P (RightModule R D)) where
   obj := ![F, G, (T)]
   f01 := dgStrictNatTransEndCycle R P (RightModule R D) η
   f12 := dgStrictNatTransEndCycle R P (RightModule R D) (i)
@@ -90,7 +90,7 @@ def dgModuleNaturalConeEndTriangleData : TriangleData R (DGFunctor R P (RightMod
 /-- 概要：元 cone の指定零化面を全 dg 関手圏の native nerve の実二単体にする。
 方針：同じ end 三角形データをそのまま実単体へ写す。
 規約：元全 Hom と次数 −1 成分を保持。使われ方：全 cone 図式の組立て。 -/
-def dgModuleNaturalConeEndTriangle : Simplex R (DGFunctor R P (RightModule R D)) 2 :=
-  Simplex.ofTriangle (dgModuleNaturalConeEndTriangleData R D F G η)
+def dgModuleNaturalConeEndTriangle : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R (DGFunctor R P (RightModule R D)) 2 :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofTriangle (dgModuleNaturalConeEndTriangleData R D F G η)
 
 end SerrePositivity.KST.SConstruction

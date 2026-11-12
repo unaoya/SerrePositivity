@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeComponents
-public import SerrePositivity.InfinityCategories.Derived.NerveInclusion
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.NerveInclusion
 
 /-!
 概要：実 cone の始頂点を除く面は、元の frame 図式の同じ通常単体である。
@@ -14,35 +14,35 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_tail {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     (normalizedTensorConeData A X Y c).pullback (Fin.succOrderEmb (n + 1)).toOrderHom =
-    (closedNerveSimplex
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
       (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)).toSimplexData := by
-  apply SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk
-    rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
       (Fin.succ_injective _).injOn]
     have he := normalizedTensorConeData_hom_ordinary A X Y c (I.image Fin.succ)
-      a.succ b.succ k (Index.image_two (Fin.succ_injective _).injOn hI)
-      (Index.image_min (Fin.succOrderEmb (n + 1)).monotone
+      a.succ b.succ k (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two (Fin.succ_injective _).injOn hI)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min (Fin.succOrderEmb (n + 1)).monotone
         (by rw [ha]; exact I.isLeast_min' _) _)
-      (Index.image_max (Fin.succOrderEmb (n + 1)).monotone
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max (Fin.succOrderEmb (n + 1)).monotone
         (by rw [hb]; exact I.isGreatest_max' _) _)
       (by rw [Finset.card_image_of_injective _ (Fin.succ_injective _)]; exact hk) a.succ_ne_zero
-    have hp := congrArg Simplex.toSimplexData
-      (closedNerveSimplex_pullback
+    have hp := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.toSimplexData
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback
         ((coneTailOrderHom n).monotone.functor ⋙ c ⋙
           normalizedTensorElementDiagram A X Y ⋙ complexToClosed A)
         (Fin.succOrderEmb (n + 1)).toOrderHom)
-    rw [Simplex.pullback_data] at hp
-    have hh := SimplexData.hom_heq_of_eq hp I a b k hI ha hb hk
-    rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data] at hp
+    have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.hom_heq_of_eq hp I a b k hI ha hb hk
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
       (Fin.succ_injective _).injOn] at hh
     exact eq_of_heq (he.trans hh.symm)
 

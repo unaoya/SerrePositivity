@@ -15,22 +15,22 @@ universe u v
 open CategoryTheory MonoidalClosed SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
 
 /-- 同じ全 native Ind 作用は、元の compact 包含と全関手同型で可換。 -/
 def dgKInputIndNativeFamilyMap_compactIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (dgKInputIndNativeFamilyMap R A B ≫
-        (pre (Compact.kappaCompactInclusion Cardinal.aleph0
+        (pre (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0
           (dgKInputIndCompletion R A))).app _)
       (dgKInputCompactNativeFamilyMap R A B ≫
-        (ihom _).map (Compact.kappaCompactInclusion Cardinal.aleph0
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0
           (dgKInputIndCompletion R B))) := by
   let p := (dgKInputCompactGenerationEquivalence R A).inv
-  let YA := indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj
-  have ej : FunctorIso
-      (Compact.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A))
+  let YA := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj
+  have ej : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0 (dgKInputIndCompletion R A))
       (p ≫ YA) := by
     simpa only [Category.id_comp, p, YA] using!
       (dgKInputCompactGeneration_familyIso R A (𝟙 _)).symm
@@ -48,7 +48,7 @@ def dgKInputIndNativeFamilyMap_compactIso :
     rfl
   have hR : dgKInputIndNativeGeneratorFamily R A B ≫ (pre p).app _ =
       dgKInputCompactNativeFamilyMap R A B ≫
-        (ihom _).map (Compact.kappaCompactInclusion Cardinal.aleph0
+        (ihom _).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactInclusion Cardinal.aleph0
           (dgKInputIndCompletion R B)) := by
     rw [dgKInputCompactNativeFamilyMap_inclusion]
     apply SSet.hom_ext
@@ -75,6 +75,6 @@ theorem dgKInputIndNativeFamilyMap_compactParameterIso_precomp
       (presentedPerfectDGNativeParameter R A B)) (r : S ⟶ T) :
     (dgKInputIndNativeFamilyMap_compactParameterIso R A B a).precomp r =
       dgKInputIndNativeFamilyMap_compactParameterIso R A B (r ≫ a) :=
-  F2.functorIso_precomp_precomp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp _ _ _
 
 end SerrePositivity.KST.NonConnective

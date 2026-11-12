@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.ComplexTensorCochainUnit
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.ComplexTensorCochainUnit
 
 /-!
 概要：二因子の実鎖写像による前合成と、任意次数 cochain の tensor を比較する。
@@ -32,6 +32,6 @@ lemma tensorLeft_precompose (f : K ⟶ P) (g : L ⟶ Q) (n : ℤ) (h : Cochain Q
         (Cochain.ofHom (f ▷ T)) (add_zero n) := by
   rw [tensorHom_def, Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
     ← tensorLeftHom_ofHom, ← tensorLeftHom_cochain_comp,
-    complexLeftTensor_cochain_chain_naturality]
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexLeftTensor_cochain_chain_naturality]
 
 end SerrePositivity.KST.LocalizingInvariants

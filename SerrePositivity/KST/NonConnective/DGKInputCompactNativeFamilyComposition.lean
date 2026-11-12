@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 public import SerrePositivity.KST.NonConnective.DGKInputCompactNativeLiftedComposition
-public import SerrePositivity.InfinityCategories.F2.Presentable.FunctorIsoTensor
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorIsoTensor
 
 /-!
 概要：元の全 native 入力の二項合成を、同じ compact 生成元間の全族で比較する。
@@ -26,26 +26,26 @@ variable (R : Type u) [CommRing R] (A B C : PerfDGInput.{u, v} R)
 規約：全高次入力の積上の関手同型。点ごとの同型や高次整合性で代用しない。
 使われ方：K-7 d4 の元の合成入力と compact 生成元間の作用の照合。 -/
 def dgKInputCompactNativeFamilyMap_compIso :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       ((dgKInputCompactNativeFamilyMap R A B ⊗ₘ dgKInputCompactNativeFamilyMap R B C) ≫
         MonoidalClosed.comp _ _ _)
       (dgKInputCompactNativeParameterComp R A B C ≫ dgKInputCompactNativeFamilyMap R A C) := by
-  let X := F2.Compact.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
+  let X := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
     Cardinal.aleph0 (dgKInputIndCompletion R A)
   let Y := (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
     (dgKInputStableValue R B).obj
-  let Z := F2.Compact.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
+  let Z := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
     Cardinal.aleph0 (dgKInputIndCompletion R C)
   let F := dgKInputCompactNativeLiftedFamilyMap R A B ≫
     (pre (dgKInputCompactGenerationEquivalence R A).inv).app Y
   let G := dgKInputCompactNativeLiftedFamilyMap R B C ≫
     (ihom Y).map (dgKInputCompactGenerationEquivalence R C).hom
   let eB := dgKInputCompactGenerationEquivalence R B
-  have eF : FunctorIso (F ≫ (ihom X).map (eB.hom ≫ eB.inv)) F := by
+  have eF : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (F ≫ (ihom X).map (eB.hom ≫ eB.inv)) F := by
     simpa only [Functor.map_id, Category.comp_id] using!
-      FunctorIso.precomp (eB.homInvIso.map_post X) F
-  have eFG := (F2.Presentable.functorIsoTensor eF
-    (Iso.refl (HomotopyCategory.mk (functorVertex G)))).postcomp (MonoidalClosed.comp X Y Z)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (eB.homInvIso.map_post X) F
+  have eFG := (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorIsoTensor eF
+    (Iso.refl (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex G)))).postcomp (MonoidalClosed.comp X Y Z)
   have hL :
       (dgKInputCompactNativeFamilyMap R A B ⊗ₘ dgKInputCompactNativeFamilyMap R B C) ≫
           MonoidalClosed.comp _ _ _ =
@@ -86,7 +86,7 @@ def dgKInputCompactNativeFamilyMap_compParameterIso
       (presentedPerfectDGNativeParameter R A B))
     (b : T ⟶ (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (presentedPerfectDGNativeParameter R B C)) :=
-  FunctorIso.precomp (dgKInputCompactNativeFamilyMap_compIso R A B C) (lift a b)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgKInputCompactNativeFamilyMap_compIso R A B C) (lift a b)
 
 /-- 概要：任意族の二項合成比較の再制限は、元の再制限族の同じ比較そのもの。
 方針：正本の前合成合成則と元の組の射の自然性を使う。
@@ -98,10 +98,10 @@ theorem dgKInputCompactNativeFamilyMap_compParameterIso_precomp
       (presentedPerfectDGNativeParameter R A B))
     (b : T ⟶ (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (presentedPerfectDGNativeParameter R B C)) (r : S ⟶ T) :
-    FunctorIso.precomp (dgKInputCompactNativeFamilyMap_compParameterIso R A B C a b) r =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (dgKInputCompactNativeFamilyMap_compParameterIso R A B C a b) r =
       dgKInputCompactNativeFamilyMap_compParameterIso R A B C (r ≫ a) (r ≫ b) := by
   unfold dgKInputCompactNativeFamilyMap_compParameterIso
-  rw [F2.functorIso_precomp_precomp]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_precomp]
   rfl
 
 end SerrePositivity.KST.NonConnective

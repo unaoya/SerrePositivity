@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectin
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma compCongr {V : Type*} [Category V] {X Y Z : V}
     (a a' : X ⟶ Y) (b b' : Y ⟶ Z) (ha : a = a') (hb : b = b') :
     a ≫ b = a' ≫ b' := congrArg₂ (fun f g => f ≫ g) ha hb

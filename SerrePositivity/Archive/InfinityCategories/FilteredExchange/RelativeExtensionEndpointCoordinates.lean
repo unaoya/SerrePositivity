@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.RelativeConstFiberEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation
 
 /-!
 概要：実終点の底変換の逆を含めた表示を、元の全延長の同じ制限へ戻す。

@@ -44,6 +44,31 @@ class ParentGroups(unittest.TestCase):
         self.assertEqual(result['status'],'FAIL')
         self.assertTrue(any(c['name']=='N.f._proof_1' for c in result['changes']))
 
+    def test_single_name_export_preserves_generated_proof_attribution(self):
+        source = "namespace N\ndef f : Nat := 0\nend N\n"
+        export = "with_weak_namespace _root_.Q export _root_.N (f)\n"
+        equation = {**row("N.f.eq_1"), "kind": "theorem", "reference_kind": "proof",
+                    "environment_parent": "N.f", "parent_module": "M"}
+        before = snapshot([row("N.f"), equation], source)
+        after = snapshot([row("N.f"), equation], source.replace("end N", export + "end N"))
+        result = compare(before, after)
+        self.assertEqual(result["status"], "PASS")
+        self.assertEqual(result["auxiliary_groups"]["after"],
+                         [{"parent": "N.f", "module": "M", "names": ["N.f.eq_1"]}])
+
+    def test_deprecated_alias_remains_a_source_declaration(self):
+        source = ("namespace N\ndef f : Nat := 0\n"
+                  "deprecated_alias _root_.Old.f := _root_.N.f\nend N\n")
+        parent = {**row("N.f"), "source_range": {"start_line": 2, "end_line": 2, "selection_start_line": 2}}
+        legacy = {**row("Old.f"), "parent_module": "Other", "environment_parent": "Old",
+                  "source_range": {"start_line": 3, "end_line": 3, "selection_start_line": 3}}
+        before = snapshot([parent, legacy], source)
+        after = copy.deepcopy(before)
+        after["declarations"][1]["body_hash"] = "changed alias body"
+        result = compare(before, after)
+        self.assertEqual(result["status"], "FAIL")
+        self.assertEqual(result["changes"][0]["name"], "Old.f")
+
     def test_inlined_helpers_are_recorded_under_parent(self):
         before=snapshot([row('N.f'),{**row('N.f.match_1','N.f'),'reference_kind':'generated'}])
         after=snapshot([row('N.f')])

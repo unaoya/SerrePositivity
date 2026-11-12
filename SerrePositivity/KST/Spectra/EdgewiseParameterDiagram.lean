@@ -21,46 +21,46 @@ variable {I : Type u} [SmallCategory I]
 /-- 係数とパラメータを同時に edgewise 化した実際の係数自然変換。 -/
 def parameterDiagram {H E : I ⥤ SSet.{u}} {B : SSet.{u}}
     (η : H ⋙ tensorRight B ⟶ E) :
-    (H ⋙ edgewiseSubdivisionFunctor) ⋙ tensorRight (edgewiseSubdivision B) ⟶
-      E ⋙ edgewiseSubdivisionFunctor where
-  app i := map (H.obj i) B ≫ edgewiseSubdivisionMap (η.app i)
+    (H ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor) ⋙ tensorRight (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision B) ⟶
+      E ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor where
+  app i := map (H.obj i) B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app i)
   naturality i j f := by
-    change edgewiseSubdivisionMap (H.map f) ▷ edgewiseSubdivision B ≫
-      map (H.obj j) B ≫ edgewiseSubdivisionMap (η.app j) =
-      (map (H.obj i) B ≫ edgewiseSubdivisionMap (η.app i)) ≫ edgewiseSubdivisionMap (E.map f)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (H.map f) ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision B ≫
+      map (H.obj j) B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app j) =
+      (map (H.obj i) B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app i)) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (E.map f)
     have hn := natural (H.map f) (𝟙 B)
-    have hid : edgewiseSubdivisionMap (𝟙 B) = 𝟙 (edgewiseSubdivision B) :=
-      edgewiseSubdivisionFunctor.map_id B
+    have hid : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (𝟙 B) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision B) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor.map_id B
     rw [hid] at hn
     simp only [tensorHom_id] at hn
     rw [← Category.assoc, hn, Category.assoc]
     have hη := η.naturality f
     change H.map f ▷ B ≫ η.app j = η.app i ≫ E.map f at hη
-    have he := congrArg edgewiseSubdivisionMap hη
-    change edgewiseSubdivisionFunctor.map (H.map f ▷ B ≫ η.app j) =
-      edgewiseSubdivisionFunctor.map (η.app i ≫ E.map f) at he
-    rw [edgewiseSubdivisionFunctor.map_comp, edgewiseSubdivisionFunctor.map_comp] at he
-    change edgewiseSubdivisionMap (H.map f ▷ B) ≫ edgewiseSubdivisionMap (η.app j) =
-      edgewiseSubdivisionMap (η.app i) ≫ edgewiseSubdivisionMap (E.map f) at he
+    have he := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap hη
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor.map (H.map f ▷ B ≫ η.app j) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor.map (η.app i ≫ E.map f) at he
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor.map_comp] at he
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (H.map f ▷ B) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app j) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app i) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (E.map f) at he
     rw [he, Category.assoc]
 
 /-- 係数の全パラメータ作用は、係数とパラメータの右射影と可換。 -/
 lemma parameterDiagram_right {H E : I ⥤ SSet.{u}} {B : SSet.{u}}
     (η : H ⋙ tensorRight B ⟶ E) (i : I) :
-    (edgewiseRight (H.obj i) ⊗ₘ edgewiseRight B) ≫ η.app i =
-      (parameterDiagram η).app i ≫ edgewiseRight (E.obj i) := by
-  change _ = (map (H.obj i) B ≫ edgewiseSubdivisionMap (η.app i)) ≫ _
-  rw [Category.assoc, edgewiseRight_naturality, ← Category.assoc, right]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (H.obj i) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight B) ≫ η.app i =
+      (parameterDiagram η).app i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (E.obj i) := by
+  change _ = (map (H.obj i) B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app i)) ≫ _
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight_naturality, ← Category.assoc, right]
 
 /-- 係数の全パラメータ作用は、係数とパラメータの左射影と可換。 -/
 lemma parameterDiagram_left {H E : I ⥤ SSet.{u}} {B : SSet.{u}}
     (η : H ⋙ tensorRight B ⟶ E) (i : I) :
-    (edgewiseLeft (H.obj i) ⊗ₘ edgewiseLeft B) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft (H.obj i) ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft B) ≫
         (Functor.Monoidal.μIso SSet.opFunctor (H.obj i) B).hom ≫
           SSet.opFunctor.map (η.app i) =
-      (parameterDiagram η).app i ≫ edgewiseLeft (E.obj i) := by
-  change _ = (map (H.obj i) B ≫ edgewiseSubdivisionMap (η.app i)) ≫ _
-  conv_rhs => rw [Category.assoc, edgewiseLeft_naturality, ← Category.assoc, left]
+      (parameterDiagram η).app i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft (E.obj i) := by
+  change _ = (map (H.obj i) B ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionMap (η.app i)) ≫ _
+  conv_rhs => rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft_naturality, ← Category.assoc, left]
   simp only [Category.assoc]
 
 

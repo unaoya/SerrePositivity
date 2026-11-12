@@ -22,16 +22,16 @@ local notation "m" => dgOdotQuotientInputMap R d
 lemma dgOdotQuotientInputMap_isMorita (hgen : DGOdotGeneratorConditions R d) :
     (quasiEquivalencePerfectExtension R (P) (Q) (m).down).IsEquivalence := by
   letI : (quasiEquivalencePerfectExtension R
-      (dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
         (dgOdotAlgebraToQuotient R d)).IsEquivalence :=
     dgOdotAlgebraToQuotient_isMorita R d hgen
   exact dgKUniverseLiftFunctor_isMorita R
-    (dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R (dgOdotAlgebra R d)) (dgOdotQuotientInput R d).quotientObject
     (dgOdotAlgebraToQuotient R d)
 
 /-- 同じ ν 辺の元の完全射は、実安定 ∞ 圏の同値。 -/
 lemma dgOdotQuotientInputNuMap_isQCatEquivalence (hgen : DGOdotGeneratorConditions R d) :
-    IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
       (dgKInputStableValue R (P)) (dgKInputStableValue R (Q)) from
         dgKInputNuMap R (m)).hom := by
   letI := dgOdotQuotientInputMap_isMorita R d hgen
@@ -46,12 +46,12 @@ lemma dgOdotQuotientInputKMap_piIsomorphism (hgen : DGOdotGeneratorConditions R 
 
 /-- 同じ固定 K の元の比較辺そのものは Sp で可逆。 -/
 lemma dgOdotQuotientInputKEdge_isInvertible (hgen : DGOdotGeneratorConditions R d) :
-    IsInvertibleEdge ((coherentNerveEdge (m)).map (dgKInputK R)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).map (dgKInputK R)) := by
   letI := dgOdotQuotientInputMap_isMorita R d hgen
   have h := presentedPerfectDGBFInfinityFunctor_morita_isInvertible R (m)
-  exact (isInvertibleEdge_congr
-    (e := edgeOfSimplex ((presentedPerfectDGBFInfinityFunctor R).app
-      (Opposite.op ⦋1⦌) (coherentNerveEdge (m)).edge))
-    (f := (coherentNerveEdge (m)).map (dgKInputK R)) rfl).mp h
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((presentedPerfectDGBFInfinityFunctor R).app
+      (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).edge))
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (m)).map (dgKInputK R)) rfl).mp h
 
 end SerrePositivity.KST.SConstruction

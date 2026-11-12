@@ -13,13 +13,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 private lemma closedHom_heq {P Q P' Q' : Complex A} (hP : P = P') (hQ : Q = Q')
     (f : P ⟶ Q) (g : P' ⟶ Q') (hf : HEq f g) (k : ℤ) :
-    HEq (closedNerveHom ((complexToClosed A).map f) k)
-      (closedNerveHom ((complexToClosed A).map g) k) := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map f) k)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map g) k) := by
   cases hP
   cases hQ
   cases eq_of_heq hf
@@ -28,13 +28,13 @@ private lemma closedHom_heq {P Q P' Q' : Complex A} (hP : P = P') (hQ : Q = Q')
 lemma normalizedTensorElementAugmentedColumn_hom_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
-    HEq ((closedNerveSimplex (normalizedTensorElementAugmentedColumn A X Y c ⋙
+    HEq ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (normalizedTensorElementAugmentedColumn A X Y c ⋙
       complexToClosed A)).hom I a b k hI ha hb hk)
-      (closedNerveHom ((complexToClosed A).map ((normalizedTensorElementAugmentation A X Y).app
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map ((normalizedTensorElementAugmentation A X Y).app
         (c.obj ((Fin.last n).predAboveOrderHom a)))) k) := by
-  have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact PinchedHom.min_ne_last I hI
+  have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.min_ne_last I hI
   have ha' : a = ((Fin.last n).predAboveOrderHom a).castSucc :=
     (complexRightConeIndex_recover a han).symm
   have hab : a ≤ b := by rw [ha, hb]; exact I.min'_le _ (I.max'_mem _)
@@ -52,7 +52,7 @@ lemma normalizedTensorElementAugmentedColumn_hom_last {n : ℕ}
     subst a
     subst b
     exact normalizedTensorElementAugmentedColumn_map_cast_last A X Y c i
-  change HEq (closedNerveHom ((complexToClosed A).map
+  change HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map
     ((normalizedTensorElementAugmentedColumn A X Y c).map (homOfLE hab))) k) _
   exact closedHom_heq A hx hy _ _ (ht a b _ ha' hbl hab) k
 

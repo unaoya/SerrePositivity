@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleReconstructionSupply
 public import SerrePositivity.KST.Fibration.ZeroMiddleControlledTriangleInput
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomIntervalVertices
-public import SerrePositivity.InfinityCategories.F1.Diagrams.CompositionTriangleFaces
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomIntervalVertices
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CompositionTriangleFaces
 
 /-!
 概要：Ind-S (9) の全族再構成を、同じ零中間二胞体の core 始域・全 S• 中間頂点・短辺へ特殊化する。
@@ -20,7 +20,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：元の core 包含を第一短辺として同じ全パラメータで固定する。
@@ -53,10 +53,10 @@ def zeroMiddleFullSLastFamily :
 方針：同じ coherent 二辺のホーンを定値族にする。
 規約：同境界の別の辺に取り替えない。
 使われ方：再構成空間が固定する実境界。 -/
-def zeroMiddleFullSReconstructionHorn : (Λ[2, 1] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u} :=
+def zeroMiddleFullSReconstructionHorn : (Λ[2, 1] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   fst (Λ[2, 1] : SSet.{u + 1}) K ≫
-    composableEdgeHorn (coherentNerveEdge (zeroMiddleControlledFirstMap s))
-      (coherentNerveEdge (zeroMiddleFullSKanComposite s hZ))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (zeroMiddleControlledFirstMap s))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (zeroMiddleFullSKanComposite s hZ))
 
 /-- 概要：同じホーンの第一辺は、指定第一短辺族の標準区間像。
 方針：元の coherent 豊穣頂点比較を使う。
@@ -65,14 +65,14 @@ def zeroMiddleFullSReconstructionHorn : (Λ[2, 1] : SSet.{u + 1}) ⊗ K ⟶ Spac
 theorem zeroMiddleFullSReconstructionHorn_first :
     (horn₂₁.ι₀₁ ▷ K) ≫ zeroMiddleFullSReconstructionHorn s hZ K =
       (Δ[1] ◁ zeroMiddleFullSFirstFamily s K) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))) := by
   rw [zeroMiddleFullSReconstructionHorn, ← Category.assoc, whiskerRight_fst,
-    Category.assoc, composableEdgeHorn_first]
-  rw [← intervalMappingUncurry_precomp, zeroMiddleFullSFirstFamily,
-    SSet.const_comp, coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
-    intervalMappingUncurry_const_vertex]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_first]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, zeroMiddleFullSFirstFamily,
+    SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.intervalMappingUncurry_const_vertex]
   congr 2
 
 /-- 概要：同じホーンの第二辺は、指定第二短辺族の標準区間像。
@@ -82,14 +82,14 @@ theorem zeroMiddleFullSReconstructionHorn_first :
 theorem zeroMiddleFullSReconstructionHorn_last :
     (horn₂₁.ι₁₂ ▷ K) ≫ zeroMiddleFullSReconstructionHorn s hZ K =
       (Δ[1] ◁ zeroMiddleFullSLastFamily s hZ K) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩))) := by
   rw [zeroMiddleFullSReconstructionHorn, ← Category.assoc, whiskerRight_fst,
-    Category.assoc, composableEdgeHorn_last]
-  rw [← intervalMappingUncurry_precomp, zeroMiddleFullSLastFamily,
-    SSet.const_comp, coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
-    intervalMappingUncurry_const_vertex]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.composableEdgeHorn_last]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, zeroMiddleFullSLastFamily,
+    SSet.const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_vertex, Equiv.symm_apply_apply,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.intervalMappingUncurry_const_vertex]
   congr 2
 
 /-- 概要：合成端を元の二短辺の合成に固定する、全長 Hom 族の実空間。
@@ -110,7 +110,7 @@ abbrev zeroMiddleFullSReconstructionLongSpace :=
     (SimplicialCategory.sHom (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
   let c := lift (zeroMiddleFullSFirstFamily s K) (zeroMiddleFullSLastFamily s hZ K) ≫
-    (HomotopyLimits.uliftTensorIso.{u, u + 1}
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.uliftTensorIso.{u, u + 1}
       (SimplicialCategory.sHom (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))) (SimplicialCategory.sHom
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
@@ -119,17 +119,17 @@ abbrev zeroMiddleFullSReconstructionLongSpace :=
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
         (fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩))
         (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
-  vertexFiber ((ihom K).map
-    (evaluateFunctorAt (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ p))))
-    (functorVertex c)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber ((ihom K).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ p))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex c)
 
 /-- 概要：元の二短辺を厳密固定する全パラメータ二胞体の実空間。
 方針：同じホーン全族への制限 fiber を取る。
 規約：長 Hom の指定とは別の実空間として保持する。
 使われ方：再構成された制御二胞体族の行先。 -/
 abbrev zeroMiddleFullSReconstructionTriangleSpace :=
-  vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app SpaceInfinity.{u})
-    (functorVertex (zeroMiddleFullSReconstructionHorn s hZ K))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber ((pre ((horn 2 (1 : Fin 3)).ι ▷ K)).app _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (zeroMiddleFullSReconstructionHorn s hZ K))
 
 /-- 概要：再構成の読出しは各指定点で同じ全 native Hom を返す。
 方針：Ind-S (9) の読出し条件を、同じ実二胞体と実長 Hom の両空間へ特殊化する。
@@ -145,13 +145,13 @@ def zeroMiddleFullSReconstructionRecovery
     (SimplicialCategory.sHom (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
       (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
   ∀ (t : (zeroMiddleFullSReconstructionTriangleSpace s hZ K) _⦋0⦌) (k : K _⦋0⦌),
-    let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+    let Lt := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K ((ihom Pu).obj H)).symm
       ((longHom.app (Opposite.op ⦋0⦌) t).val)
-    let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm t.val
-    let st := SSet.yonedaEquiv ((functorVertexEquiv Δ[2] SpaceInfinity.{u}).symm
+    let Tt := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ K) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm t.val
+    let st := SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv Δ[2] _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm
       ((curry Tt).app (Opposite.op ⦋0⦌) k))
     HEq (Lt.app (Opposite.op ⦋0⦌) k)
-      (functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.uliftFunctor.{u + 1, u}).map
         (st.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)))
 
 /-- 概要：同じ正規化族の直接 path 評価は実共有対角を厳密回収する。
@@ -176,14 +176,14 @@ def zeroMiddleFullSReconstructionDiagonalRecovery
         right := by simp
         left_le := fun k _ => Fin.zero_le k.down
         le_right := fun k _ => Fin.le_last k.down }
-    let Lt := (functorVertexEquiv K ((ihom Pu).obj H)).symm
+    let Lt := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K ((ihom Pu).obj H)).symm
       ((longHom.app (Opposite.op ⦋0⦌) t).val)
     let nt := encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)
-    let Tt := (functorVertexEquiv (Δ[2] ⊗ K) SpaceInfinity.{u}).symm nt.val
+    let Tt := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (Δ[2] ⊗ K) _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}).symm nt.val
     (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ Tt =
-      (Δ[1] ◁ (Lt ≫ evaluateFunctorAt
+      (Δ[1] ◁ (Lt ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
         (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct)))) ≫
-          intervalMappingUncurry (coherentHomIntervalComparison
+          _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
             (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
             (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩)))
 
@@ -197,7 +197,7 @@ def zeroMiddleFullSReconstructionNormalizeComparison
     (longHom : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
       zeroMiddleFullSReconstructionLongSpace s hZ K) : Prop :=
   ∀ t : (zeroMiddleFullSReconstructionTriangleSpace s hZ K) _⦋0⦌,
-    Nonempty (VertexIso t
+    Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso t
       (encode.app (Opposite.op ⦋0⦌) (longHom.app (Opposite.op ⦋0⦌) t)))
 
 /-- 概要：供給命題に条件付きで、同じ実長 Hom 空間から制御二胞体空間への切断がある。

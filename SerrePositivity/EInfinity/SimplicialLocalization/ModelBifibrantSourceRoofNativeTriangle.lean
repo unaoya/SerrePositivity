@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismZero
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismOne
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofNativePrismProjection
-public import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SlicePrismFamilyComposition
 public import SerrePositivity.EInfinity.SimplicialLocalization.ModelBifibrantSourceRoofGeometricLeftCell
 
 /-!
@@ -36,15 +36,15 @@ lemma modelBifibrantSourceRoofProductCommaNative_triangle
         modelBifibrantSourceRoofProductCommaRightCell X Y q b := by
   have hl :
       (β_ (nerve (modelBifibrantSourceRoofProductComma X Y q b)) (Δ[1] : SSet.{max u v})).hom ≫
-        modelBifibrantSourceRoofProductCommaNativePrism X Y q b ≫ sliceOverProjection _ =
+        modelBifibrantSourceRoofProductCommaNativePrism X Y q b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _ =
       (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b).h := by
     rw [modelBifibrantSourceRoofProductCommaNativePrism_projection X Y q b,
       ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  have h := slicePrismFamily_comp (modelBifibrantHammockVertex Y)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.slicePrismFamily_comp (modelBifibrantHammockVertex Y)
     (modelBifibrantSourceRoofProductCommaEvaluationHomotopy X Y q b)
     (modelBifibrantSourceRoofProductCommaRightHomotopy X Y q b)
-    (intervalFamilyHomotopy (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
-      pinchedHomToIntervalMappingSpace _ _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomotopy (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _))
     (modelBifibrantSourceRoofProductCommaNativePrism X Y q b)
     (modelBifibrantSourceRoofProductCommaNativePrism_zero_evaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaNativePrism_one_evaluation X Y q b) hl
@@ -71,7 +71,7 @@ include r in
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofMap_isLeftCofinal :
-    IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (modelBifibrantSourceFrameRoofMap X Y q) :=
   modelBifibrantSourceRoofMap_isLeftCofinal_of_reference_triangle X Y q r
     (modelBifibrantSourceRoofProductReference_triangle X Y q)
 

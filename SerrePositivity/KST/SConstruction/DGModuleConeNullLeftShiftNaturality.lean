@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元次数 −1 加群比較の符号付き自然性は始域 shift 後の次数零自然性を与える。
@@ -41,7 +41,7 @@ lemma dgModuleConeNullLeftShift_naturality {M N M' N' : RightModule R D} {n : �
         ((moduleHomπ R D M M' e).f n a)))
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "T" => dgModuleNaturalConeFunctor R D F G η
 
 /-- 概要：同じ実 cone の元左包含は始域 shift 後に全次数で次数零自然になる。

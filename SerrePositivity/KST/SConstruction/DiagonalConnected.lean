@@ -85,7 +85,7 @@ lemma diagonal_connected_of_zero (X : SimplexCategoryᵒᵖ ⥤ SSet.{u})
 方針：零段の可縮 Kan 性から連結性を得て、零段から対角への写像で移す。
 規約：安定性は不要。使われ方：K 空間の実現の連結性。 -/
 instance diagonalCoreSConstruction_isConnected (C : SSet.{u}) [Quasicategory C]
-    [HasZeroVertex C] : SSet.IsConnected (diagonalCoreSConstruction C) := by
+    [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.HasZeroVertex C] : SSet.IsConnected (diagonalCoreSConstruction C) := by
   have h := coreSConstructionZero_isContractibleKan C
   letI : SSet.IsPreconnected ((simplicialCoreSConstruction C).obj (Opposite.op ⦋0⦌)) :=
     h.piZero_subsingleton

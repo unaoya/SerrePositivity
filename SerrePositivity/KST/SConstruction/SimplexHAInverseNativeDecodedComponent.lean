@@ -20,22 +20,22 @@ variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 lemma cubicalLambdaNativeSimplexData_hom_atDimension {N : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[N] : SSet.{u})) D)
     (I : Finset (Fin (N + 1))) (a b : Fin (N + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) (hk : k = 2 - (I.card : ℤ))
     (d : ℕ) (hd : d = I.card - 2) :
     (cubicalLambdaNativeSimplexData A F).hom I a b k hI ha hb hk =
       eqToHom (congrArg (fun l => (homObject A D
-        (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))).X l)
+        (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)) (F.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))).X l)
         (show -(d : ℤ) = k by rw [hd]; omega))
         (serreCubeTopCellImage A _ d
           (simplexSubsetLambdaCellAtDimension A I a b hI ha hb d hd ≫
-            F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b))) := by
+            F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b))) := by
   subst d
   simpa only [simplexSubsetLambdaCellAtDimension, eqToHom_refl, Category.id_comp] using
     cubicalLambdaNativeSimplexData_hom_normalized A F I a b k hI ha hb hk
 
 /-- 元の任意の昇順列から読む HA 成分は、実逆 dg 関手から再抽出すると厳密に戻る。 -/
-lemma simplexHAInverseFunctor_native_decoded_hom {N : ℕ} (s : DGNerve.Simplex A D N)
+lemma simplexHAInverseFunctor_native_decoded_hom {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N)
     (m : ℕ) (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last m) < b) :
     (cubicalLambdaNativeSimplex A (simplexHAInverseFunctor A s)).hom

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosimplicialHom.ResolutionHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.ResolutionHom
 
 /-! # The simplicial Hom bifunctor of a cosimplicial resolution
 

@@ -3,8 +3,8 @@
 module
 
 public import SerrePositivity.EInfinity.Interface.Theory
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoproductCocone
-public import SerrePositivity.InfinityCategories.Stable.BinaryCoconeEdges
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoproductCocone
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.BinaryCoconeEdges
 
 -- 本ファイルは drafts/A2/{AnimatedAlgebra,DerivedPrismaticCohomology,HodgeTateFiltration}.lean、drafts/DerivedGeneral/CompletionFunctor.lean、
 -- drafts/A1/HodgeTateComparison.lean（Cor 4.12）、drafts/A7/AnimatedDomain.lean、drafts/DerivedGeneral/ScalarRestriction.lean を import する。
@@ -39,7 +39,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.BhattScholze.Prismatic
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity SerrePositivity.BhattScholze.Perfectoidization.Derived
 -- animatedCompletion と completeDiscreteToAnimated は A2-1 だけに依存する A7/AnimatedDomain の定義。
 

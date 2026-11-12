@@ -27,14 +27,14 @@ open scoped Simplicial
 instance cofiberDiagrams_quasicategory (C : SSet.{u}) [Quasicategory C] :
     Quasicategory (cofiberDiagrams C) :=
   inferInstanceAs (Quasicategory
-    (fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) IsCofiberDiagramVertex :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices ((ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj C) IsCofiberDiagramVertex :
       SSet.{u}))
 
 /-- 概要：安定な C の cofiber 正方形全体は安定。
 方針：入力の辺への trivial Kan fibration で関手圏の安定性を反映する。
 規約：既存の安定性の定義を使う。使われ方：反復 S を適用する入力。 -/
-instance cofiberDiagrams_isStable (C : SSet.{u}) [Quasicategory C] [IsStable C] :
-    IsStable (cofiberDiagrams C) := isStable_of_trivialKanFibration (cofiberProjection C)
+instance cofiberDiagrams_isStable (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (cofiberDiagrams C) := isStable_of_trivialKanFibration (cofiberProjection C)
 
 /-- 概要：S₂ の正方形への制限は零対象と全押し出しを保つ。
 方針：trivial Kan fibration の普遍性の保存。
@@ -62,14 +62,14 @@ def sTwoCofiberComparison (X : StableModel.{u}) : sStableModel 2 X ⟶ cofiberSt
 方針：中央正方形への制限の trivial Kan fibration の切断から選ぶ。
 規約：対象ごとの選択には弱めない。使われ方：S₂ 図式への補完。 -/
 def sTwoCofiberSection (C : SSet.{u}) [Quasicategory C] : cofiberDiagrams C ⟶ sConstruction 2 C :=
-  Classical.choose (trivialKanFibration_exists_section (sTwoCofiberRestriction C))
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (sTwoCofiberRestriction C))
 
 /-- 概要：切断による補完は指定した cofiber 正方形を厳密に回収する。
 方針：切断の仕様。
 規約：全単体での等号。使われ方：正方形の図式を保つ補完。 -/
 lemma sTwoCofiberSection_projection (C : SSet.{u}) [Quasicategory C] :
     sTwoCofiberSection C ≫ sTwoCofiberRestriction C = 𝟙 _ :=
-  Classical.choose_spec (trivialKanFibration_exists_section (sTwoCofiberRestriction C))
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section (sTwoCofiberRestriction C))
 
 /-- 概要：切断による補完も零対象と全押し出しを保つ。
 方針：制限による普遍性の反映と、切断の厳密な右逆の式を使う。
@@ -102,16 +102,16 @@ def sTwoCofiberInverse (X : StableModel.{u}) : cofiberStableModel X ⟶ sStableM
 規約：cofiber 正方形は保持するが S₂ の厳密な逆射とは主張しない。
 使われ方：正方形表示との ∞ 圏の同値。 -/
 def sTwoCofiberSection_comparison (C : SSet.{u}) [Quasicategory C] :
-    FunctorIso (sTwoCofiberRestriction C ≫ sTwoCofiberSection C) (𝟙 (sConstruction 2 C)) :=
-  functorIsoOfTrivialKanFibration (sTwoCofiberRestriction C) _ _ (by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (sTwoCofiberRestriction C ≫ sTwoCofiberSection C) (𝟙 (sConstruction 2 C)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorIsoOfTrivialKanFibration (sTwoCofiberRestriction C) _ _ (by
     rw [Category.assoc, sTwoCofiberSection_projection, Category.comp_id, Category.id_comp])
 
 /-- 概要：S₂ と全 cofiber 正方形の quasicategory は同値。
 方針：元の制限写像の trivial Kan fibration から同値を構成する。
 規約：固定零対象の模型への同値は含めない。使われ方：正方形表示への ∞ 圏の比較。 -/
 def sTwoCofiberEquivalence (C : SSet.{u}) [Quasicategory C] :
-    QCatEquivalence (sConstruction 2 C) (cofiberDiagrams C) :=
-  qCatEquivalenceOfTrivialKanFibration (sTwoCofiberRestriction C)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (sConstruction 2 C) (cofiberDiagrams C) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.qCatEquivalenceOfTrivialKanFibration (sTwoCofiberRestriction C)
 
 /-- 概要：任意回数の core S 実現でも正方形表示への比較は弱同値。
 方針：比較の底の trivial Kan fibration に、反復 S・core・対角実現の保存を適用する。
@@ -119,7 +119,7 @@ def sTwoCofiberEquivalence (C : SSet.{u}) [Quasicategory C] :
 lemma sTwoCofiberComparison_realization_localized_isIso (r : ℕ) (X : StableModel.{u}) :
     IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor r).map (sTwoCofiberComparison X))) := by
-  let : TrivialKanFibration (sTwoCofiberComparison X).val :=
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (sTwoCofiberComparison X).val :=
     sTwoCofiberRestriction_trivialKanFibration X.carrier
   exact multiRealizationFunctor_map_localized_isIso r (sTwoCofiberComparison X)
 

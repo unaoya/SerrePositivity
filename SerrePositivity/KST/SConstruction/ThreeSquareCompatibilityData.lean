@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.MappingSquareBoundaryData
-public import SerrePositivity.InfinityCategories.Kan.KanMappingSpanComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanMappingSpanComposition
 
 /-! # 三正方形と三指定三角形からの端点固定の合成比較
 概要：元の六セルの境界を使い、三つの適合辺を保持する実三角形を得る。
@@ -100,12 +100,12 @@ lemma ThreeSquareCompatibilityData.whiskered_relation {E : SSet.{u}}
 /-- Kan 写像空間では、元の三適合辺そのものを三面に持つ実比較三角形がある。 -/
 def ThreeSquareCompatibilityData.comparison {E : SSet.{u}} [KanComplex E]
     (D : ThreeSquareCompatibilityData E) : SSet.Edge.CompStruct D.first D.second D.composite := by
-  have h : IsInvertibleEdge D.upperLeg.toTruncated :=
-    isInvertibleEdge_of_hasFinalHornFillers _ (hasFinalHornFillers_of_kanComplex _)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge D.upperLeg.toTruncated :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.isInvertibleEdge_of_hasFinalHornFillers _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.hasFinalHornFillers_of_kanComplex _)
   letI : IsIso (SSet.HomotopyCategory.homMk D.upperLeg) := h
   have hf : SSet.HomotopyCategory.homMk D.first ≫ SSet.HomotopyCategory.homMk D.second =
       SSet.HomotopyCategory.homMk D.composite :=
     (cancel_epi (SSet.HomotopyCategory.homMk D.upperLeg)).mp D.whiskered_relation
-  exact SSet.Edge.CompStruct.ofTruncated (compStruct_nonempty_of_homMk_fac hf).some
+  exact SSet.Edge.CompStruct.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac hf).some
 
 end SerrePositivity.KST.SConstruction

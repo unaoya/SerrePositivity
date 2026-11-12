@@ -61,7 +61,7 @@ variable [ModelCategory SSet.{v}]
 
 include hcof in
 lemma choice_fillers (q : Centers C) :
-    SimplicialModel.UniverseLift.BoundaryFillers ((choices C).obj q) :=
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((choices C).obj q) :=
   ResolutionArrowDiagram.fillers Cᵒᵖ hcof q
 
 /-- All old point choices in the opposite model extend to one coherent system. -/
@@ -87,7 +87,7 @@ lemma action_selectedPoint (q : Centers C) (A : (FramedResolution C)ᵒᵖ)
     (d : T ⟶ SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0))
     (t : T ⟶ (BiresolutionRightMapping.rawRows.obj m).obj (inputPair C q A)) :
     action C hcof hfib q A m (d ≫ ResolutionArrowDiagram.selectedPoint Cᵒᵖ q) t =
-      t ≫ (cosimplicialHomMap
+      t ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
           (ResolutionObject.lift (ResolutionArrowDiagram.arrow Cᵒᵖ q)).diagram).app
             (sourcePoint C A m) ≫
         KanLiftAction.comparison hcof hfib (ResolutionArrowDiagram.source Cᵒᵖ q).inner

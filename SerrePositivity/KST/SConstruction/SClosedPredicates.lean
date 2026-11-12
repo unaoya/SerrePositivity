@@ -29,7 +29,7 @@ def ClosedStablePredicate.iInter {X : StableModel.{u}} {I : Type v}
 /-- gapped 図式の任意の Ar 成分の評価は完全関手。 -/
 def sStableEvaluation (n : ℕ) (X : StableModel.{u}) (a : (arNerve n) _⦋0⦌) :
     sStableModel n X ⟶ X :=
-  ⟨(gappedSubcomplex n X.carrier).ι ≫ evaluateFunctorAt a,
+  ⟨(gappedSubcomplex n X.carrier).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a,
     ((gappedInclusion_preservesSConstructionData n X.carrier).comp
       (evaluateFunctorAt_preservesSConstructionData a)).toCofiberData⟩
 
@@ -43,6 +43,6 @@ lemma sClosedPredicate_iff {X : StableModel.{u}} (n : ℕ) (P : ClosedStablePred
     (v : (sConstruction n X.carrier) _⦋0⦌) :
     (sClosedPredicate n P).predicate v ↔
       ∀ a : (arNerve n) _⦋0⦌,
-        P.predicate ((evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val) := Iff.rfl
+        P.predicate ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a).app (Opposite.op ⦋0⦌) v.val) := Iff.rfl
 
 end SerrePositivity.KST.SConstruction

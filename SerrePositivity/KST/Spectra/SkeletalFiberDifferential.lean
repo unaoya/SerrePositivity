@@ -31,8 +31,8 @@ variable (K : SSet.{u}) (X : PointedSimplicialSet.{u}) [KanComplex X.right]
 規約：実際のホモトピー次数は r+2 から r+1 へ下がる。
 使われ方：Goerss–Jardine VIII §1。セルの係数表示へ移す幾何的な微分。 -/
 def stageDifferential (n r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stageFiber K X n).right (r + 1) (stageFiber K X n).basepoint →*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stageFiber K X (n + 1)).right r (stageFiber K X (n + 1)).basepoint := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stageFiber K X n).right (r + 1) (stageFiber K X n).basepoint →*
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stageFiber K X (n + 1)).right r (stageFiber K X (n + 1)).basepoint := by
   let p := fun m ↦ (tower K X).map (homOfLE (Nat.le_succ m)).op
   let : ∀ m, Fibration (p m).right := fun m ↦ tower_map_fibration K X _
   exact PointedFibrationTower.differential (fun m ↦ (tower K X).obj (op m)) p n r
@@ -43,7 +43,7 @@ def stageDifferential (n r : ℕ) :
 使われ方：Goerss–Jardine VIII §1。E_1 の複体条件。 -/
 @[simp]
 theorem stageDifferential_comp (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stageFiber K X n).right (r + 2) (stageFiber K X n).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stageFiber K X n).right (r + 2) (stageFiber K X n).basepoint) :
     stageDifferential K X (n + 1) r (stageDifferential K X n (r + 1) a) = 1 := by
   let p := fun m ↦ (tower K X).map (homOfLE (Nat.le_succ m)).op
   let : ∀ m, Fibration (p m).right := fun m ↦ tower_map_fibration K X _

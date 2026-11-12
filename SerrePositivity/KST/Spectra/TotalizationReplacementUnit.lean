@@ -32,7 +32,7 @@ lemma replacementUnit_piIsomorphism
     [∀ j, KanComplex (X.obj j).right] [KanComplex (obj X).right]
     (hX : reedyRight simplex SSet.modelCategoryQuillen.J.rlp
       (terminal.from (X ⋙ PointedSimplicialSet.forget))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (obj X).right) (Y := (replacementObj X).right)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := (obj X).right) (Y := (replacementObj X).right)
       (replacementUnit.app X).right := by
   let : ∀ j, KanComplex ((PointedCosimplicialKanReplacement.obj X).obj j).right :=
     fun j ↦ PointedCosimplicialKanReplacement.kanComplex X j

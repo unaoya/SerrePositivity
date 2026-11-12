@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R]
 
 lemma dgAlgebraMap_id (B : Mon (Complex R)) :
-    dgAlgebraMap R (𝟙 B) = DGFunctor.id (dgAlgebraCategory R B) := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (𝟙 B) = DGFunctor.id (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraCategory R B) := by
   apply EnrichedFunctor.ext (Complex R) (fun x => by cases x; rfl)
   intro x y
   change (𝟙 B.X) ≫ eqToHom _ = 𝟙 B.X
@@ -29,17 +29,17 @@ lemma dgAlgebraMap_id (B : Mon (Complex R)) :
 
 /-- 元の代数恒等射に沿う実 Perf 延長と恒等 ∞ 関手の同型。 -/
 def perfectMapIdentityIso (B : Mon (Complex R)) :
-    FunctorIso (perfectMap R (𝟙 B)).hom (𝟙 _) := by
-  change FunctorIso (dgPerfectExtensionInfinity R _ _ (dgAlgebraMap R (𝟙 B))) (𝟙 _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (perfectMap R (𝟙 B)).hom (𝟙 _) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R _ _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgAlgebraMap R (𝟙 B))) (𝟙 _)
   rw [dgAlgebraMap_id]
   exact dgPerfectExtensionIdentityIso R _
 
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma invariantMap_id_hom (B : Mon (Complex R)) :
     SpectrumHo.hom (invariantMap R Φ (𝟙 B)) = 𝟙 _ := by
   let idP : perfect R B ⟶ perfect R B := 𝟙 _
-  have e : FunctorIso (perfectMap R (𝟙 B)).hom idP.hom := perfectMapIdentityIso R B
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (perfectMap R (𝟙 B)).hom idP.hom := perfectMapIdentityIso R B
   have h := valueMap_hom_eq_of_functorIso Φ (A := perfect R B) (B := perfect R B)
     (F := perfectMap R (𝟙 B)) (G := idP) e
   exact h.trans ((stableValueFunctor Φ).map_id (perfect R B))

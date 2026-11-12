@@ -43,7 +43,7 @@ lemma triangleLeftCancellationCylinderComparisonOver_relative :
 
 /-- 持ち上げた元の全四面体比較の零面を、全出力円柱比較の上面に保持する。 -/
 lemma triangleLeftCancellationCylinderComparisonOver_upper :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationCylinderComparisonOver T U v w p H hr).h =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationComparisonOverData T U v w p H hr).val.h :=
@@ -51,7 +51,7 @@ lemma triangleLeftCancellationCylinderComparisonOver_upper :
 
 /-- 全出力円柱比較の上面の射影は、元の全基底比較の同じ零面そのもの。 -/
 lemma triangleLeftCancellationCylinderComparisonOver_upper_projection :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫
         (triangleLeftCancellationCylinderComparisonOver T U v w p H hr).h ≫ p =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫ H.h := by
   rw [← Category.assoc, triangleLeftCancellationCylinderComparisonOver_upper, Category.assoc,
@@ -60,9 +60,9 @@ lemma triangleLeftCancellationCylinderComparisonOver_upper_projection :
 /-- 全基底円柱の両三角形を指定すれば、出力した全高次円柱も同じ全基底像を保つ。 -/
 lemma triangleLeftCancellationCylinderComparisonOver_projection
     (q : ((Δ[1] : SSet.{u}) ⊗ Δ[1]) ⊗ Δ[1] ⟶ B)
-    (hu : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ▷ (Δ[1] : SSet.{u})) ≫ q =
+    (hu : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ▷ (Δ[1] : SSet.{u})) ≫ q =
       (stdSimplex.δ 0 ▷ (Δ[1] : SSet.{u})) ≫ H.h)
-    (hl : (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
+    (hl : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ▷ (Δ[1] : SSet.{u})) ≫ q =
       fst (Δ[2] : SSet.{u}) Δ[1] ≫
         SSet.yonedaEquiv.symm (SSet.Edge.CompStruct.compId b).simplex ≫ p) :
     (triangleLeftCancellationCylinderComparisonOver T U v w p H hr).h ≫ p = q := by

@@ -3,7 +3,7 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefixFamilyT
 public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
 public import SerrePositivity.EInfinity.FrameHom.NerveColumnRoofNaturality
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedFamilyPostcompArrow
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomotopyClasses
 /-! 概要：実 hammock roof 全族の任意の後合成を元の通常列の全屋根へ戻す。
 方針：全評価三角形の両円柱を同じ後合成で送り、元の左脚の逆を保持する。
 規約：同じ全添字・端点表示・augmentation・評価を保持する。
@@ -17,7 +17,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization.RoofPrefix
 open CategoryTheory SSet MonoidalClosed
 open SerrePositivity.InfinityCategories SerrePositivity.EInfinity.FrameHom
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {I : Type u} [Category.{u} I]
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {I : Type u} [Category.{u} I]
   (V : I ⥤ C.category) {X Y : C.category} (p : V ⟶ (Functor.const I).obj X)
   (hp : ∀ i, C.weakEquivalences (p.app i)) (s : V ⟶ (Functor.const I).obj Y)
   (hV : ∀ {i j} (a : i ⟶ j), C.weakEquivalences (V.map a))
@@ -58,7 +58,7 @@ include hp in
 規約：元の同じ弱射を保持。使われ方：全屋根像の左脚の逆。 -/
 lemma postcomp_augmentation_invertible {E : SSet.{u}}
     (F : kanHammockNerve C ⟶ E) (i : I) :
-    IsInvertibleEdge ((nerve.edgeMk (p.app i)).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge ((nerve.edgeMk (p.app i)).map
       (hammockLocalizationNerveMap C ≫ F)).toTruncated :=
   weakNerveEdges_inverts_arrows C _ ((hammockLocalizationNerveMap_inverts C).comp F) _ (hp i)
 
@@ -70,20 +70,20 @@ lemma coherentAugmentation_postcomp_arrow {E : SSet.{u}}
     (a : V ⟶ (Functor.const I).obj Z) :
     let T := (hoFunctor.map ((ihom (nerve I)).map F)).toFunctor
     Arrow.mk (T.map (Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (coherentAugmentationHomotopy C V a)))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (coherentAugmentationHomotopy C V a)))) =
     Arrow.mk (NerveColumn.hom (hammockLocalizationNerveMap C ≫ F) a) := by
   dsimp only
-  rw [← functorHomotopyPostcomp_hom]
-  have h := functorHomotopy_hom_arrow_of_h_eq
-    (functorHomotopyPostcomp (coherentAugmentationHomotopy C V a) F)
-    (functorHomotopyPostcomp (F1B.nerveNatTransHomotopy a)
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
+  have h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomotopy_hom_arrow_of_h_eq
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (coherentAugmentationHomotopy C V a) F)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy a)
       (hammockLocalizationNerveMap C ≫ F)) (Category.assoc _ _ _)
   refine h.trans ?_
   apply congrArg Arrow.mk
-  rw [functorHomotopyPostcomp_hom]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom]
   have hb : Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (F1B.nerveNatTransHomotopy a)) =
-      F1B.nerveNatTransHom a := F1B.nerveNatTransHomotopy_hom a
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy a)) =
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHom a := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.nerveNatTransHomotopy_hom a
   rw [hb]
   rfl
 
@@ -92,9 +92,9 @@ lemma coherentAugmentation_postcomp_arrow {E : SSet.{u}}
 規約：実全族自身と同じ左脚の逆を保持。使われ方：U の全源比較。 -/
 lemma native_family_postcomp_column_roof_arrow {E : SSet.{u}} [Quasicategory E]
     (F : kanHammockNerve C ⟶ E) :
-    Arrow.mk (intervalFamilyHom ((familyMap C V p hp s hV ≫
-      kanHammockHomPinchedMap C X Y) ≫ pinchedHomMap F _ _ ≫
-        pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom ((familyMap C V p hp s hV ≫
+      kanHammockHomPinchedMap C X Y) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap F _ _ ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
     Arrow.mk ((NerveColumn.augmentationIso (hammockLocalizationNerveMap C ≫ F) V p
       (postcomp_augmentation_invertible C V p hp F)).inv ≫
       NerveColumn.hom (hammockLocalizationNerveMap C ≫ F) s) := by

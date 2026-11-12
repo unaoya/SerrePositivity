@@ -23,7 +23,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory HomotopicalAlgebra Opposite
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel
 
 variable (A : Type u) [CommRing A] (K : Type u) [SmallCategory K]
@@ -36,7 +36,7 @@ def constantDiagramSourceBifunctor :
     (operad A).Algebraᵒᵖ ⥤ (K ⥤ (operad A).Algebra) ⥤ SSet.{u} := by
   let := modelCategory A
   exact (cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.op ⋙
-    cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (operad A).Algebra SSet.{u} ⋙
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ Functor.whiskeringRight K (operad A).Algebra SSet.{u} ⋙
       (Functor.whiskeringRight (K ⥤ (operad A).Algebra) (K ⥤ SSet.{u}) SSet.{u}).obj
         (WeightedCones.coneSpace K (HomotopyWeight.weight K))
 
@@ -64,7 +64,7 @@ lemma constantDiagramSourceMap_app {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
     let := modelCategory A
     (constantDiagramSourceMap A K f).app F =
       (WeightedCones.coneSpace K (HomotopyWeight.weight K)).map
-        (Functor.whiskerLeft F (cosimplicialHomMap
+        (Functor.whiskerLeft F (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap
           ((cosimplicialResolutionFamily (mappingCofibrantFactorization A)).obj.map f))) := rfl
 
 end SerrePositivity.EInfinity.BarrattEccles

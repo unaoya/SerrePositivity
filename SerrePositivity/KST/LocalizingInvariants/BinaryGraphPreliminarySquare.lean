@@ -36,31 +36,31 @@ lemma graph_comm : SpectrumHo.hom b ≫ SpectrumHo.hom (BinaryGraph.graph g) =
 
 include hc in
 lemma exists_square : ∃ s : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u},
-    squareBottomEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge b).edge ∧
-    squareTopEdge ≫ s =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f (𝟙 Y))).edge ∧
-    squareLeftEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge ∧
-    squareRightEdge ≫ s = SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.graph g)).edge :=
-  exists_stableSquare_of_homMk_comm (X := Sp.{u}) (coherentNerveEdge b).toTruncated
-    (coherentNerveEdge (Binary.map f (𝟙 Y))).toTruncated
-    (coherentNerveEdge (Binary.lift a b)).toTruncated
-    (coherentNerveEdge (BinaryGraph.graph g)).toTruncated (graph_comm a b f g hc)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ s =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f (𝟙 Y))).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift a b)).edge ∧
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ s = SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (BinaryGraph.graph g)).edge :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.exists_stableSquare_of_homMk_comm (X := Sp.{u}) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f (𝟙 Y))).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift a b)).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (BinaryGraph.graph g)).toTruncated (graph_comm a b f g hc)
 
 def square : (Δ[1] ⊗ Δ[1] : SSet.{u + 1}) ⟶ Sp.{u} := (exists_square a b f g hc).choose
 
-lemma square_bottom : squareBottomEdge ≫ square a b f g hc =
-    SSet.yonedaEquiv.symm (coherentNerveEdge b).edge := (exists_square a b f g hc).choose_spec.1
+lemma square_bottom : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ square a b f g hc =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge b).edge := (exists_square a b f g hc).choose_spec.1
 
-lemma square_top : squareTopEdge ≫ square a b f g hc =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.map f (𝟙 Y))).edge :=
+lemma square_top : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ square a b f g hc =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.map f (𝟙 Y))).edge :=
   (exists_square a b f g hc).choose_spec.2.1
 
-lemma square_left : squareLeftEdge ≫ square a b f g hc =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (Binary.lift a b)).edge :=
+lemma square_left : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ square a b f g hc =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (Binary.lift a b)).edge :=
   (exists_square a b f g hc).choose_spec.2.2.1
 
-lemma square_right : squareRightEdge ≫ square a b f g hc =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (BinaryGraph.graph g)).edge :=
+lemma square_right : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ square a b f g hc =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (BinaryGraph.graph g)).edge :=
   (exists_square a b f g hc).choose_spec.2.2.2
 
 end SerrePositivity.KST.LocalizingInvariants.BinaryGraphPreliminary

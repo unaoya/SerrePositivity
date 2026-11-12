@@ -11,7 +11,7 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory SerrePositivity.DifferentialGraded
-open SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -21,13 +21,13 @@ lemma normalizedTensorTriangleSimplex_pullback_map {n m : ℕ}
     (normalizedTensorTriangleSimplex A X Y c τ).pullback θ.toOrderHom =
       normalizedTensorTriangleSimplex A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) (τ.comp θ.toOrderHom) := by
-  apply Simplex.ext
-  rw [Simplex.pullback_data]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_data]
   exact normalizedTensorTriangleData_pullback_map A X Y c τ θ
 
 def normalizedTensorTriangleMap :
     (Δ[2] : SSet.{u + 1}) ⊗ nerve (normalizedTensorElementIndex A X Y) ⟶
-      dgNerve A (Complex A) where
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) where
   app _ := ↾fun a => normalizedTensorTriangleSimplex A X Y a.2
     (SSet.stdSimplex.objEquiv a.1).toOrderHom
   naturality _ _ f := by

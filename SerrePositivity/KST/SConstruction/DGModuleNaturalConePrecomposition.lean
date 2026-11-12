@@ -13,12 +13,12 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
   (F G H : DGFunctor R P (RightModule R D))
-  (α : StrictNatTrans F G) (β : StrictNatTrans G H)
-local notation "γ" => dgStrictNatTransComp α β
+  (α : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (β : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G H)
+local notation "γ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp α β
 local notation "CB" => dgModuleNaturalConeFunctor R D G H β
 local notation "CC" => dgModuleNaturalConeFunctor R D F H (γ)
 local notation "ι" => dgModuleNaturalConeInr R D G H β
@@ -44,7 +44,7 @@ lemma dgModuleNaturalConePrecomposition_boundary (x : P) :
 /-- 概要：元合成の cone から後の射の cone への全厳密比較。
 方針：全自然な指定入力を同じ実 descent へ渡す。
 規約：元入力と閉零成分を保持。使われ方：元 connecting cone の比較。 -/
-def dgModuleNaturalConePrecomposition : StrictNatTrans (CC) (CB) :=
+def dgModuleNaturalConePrecomposition : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (CC) (CB) :=
   dgModuleNaturalConeDesc R D F H (CB) (γ) (ι) (s)
     (dgModuleNaturalConePrecomposition_boundary R D F G H α β)
     (dgModuleNaturalConePrecompositionInput_naturality R D F G H α β)

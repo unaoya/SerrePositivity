@@ -12,11 +12,11 @@ public import SerrePositivity.KST.SConstruction.DGHomGluingLoopConeModuleMaps
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type (max (u + 1) v))
   [DGCategory R E] [Small.{u} E]
 local notation "I" => DGFunctor.id E
-local notation "L" => DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
 local notation "family" => dgHomGluingLoopConeFamily R E E E (I) (I)
 local notation "J" => dgSmallPerfectEnvelopeInclusion R E ((L) ⊕ (L)) (family)
 local notation "K" => dgPerfectModuleUnderlying R E (J)

@@ -16,7 +16,7 @@ open SerrePositivity.InfinityCategories
 variable (I C : Type (u + 1)) [Category.{u} I] [Category.{u} C]
 
 lemma nerveMap_const (x : C) :
-    nerveMap ((Functor.const I).obj x) = SSet.const (nerveVertex x) := by
+    nerveMap ((Functor.const I).obj x) = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex x) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext

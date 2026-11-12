@@ -36,7 +36,7 @@ def originalLoopModelMap (X : OmegaSpectrum.{u}) : X ⟶ rationalizationModel X 
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7。模型の群の表示を実際の射に沿って元の対象へ戻す。 -/
 theorem originalLoopModelMap_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((originalLoopModelMap X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((originalLoopModelMap X).app n).right :=
   (signedLoopUnit_levelwise X n).comp
     (levelwiseInverse_levelwise (signedLoopComparison X) (signedLoopComparison_levelwise X) n)
 

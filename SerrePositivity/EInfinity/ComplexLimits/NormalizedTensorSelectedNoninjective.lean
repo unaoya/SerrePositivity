@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorNoninjectiveTop
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorSelectedCard
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 
 /-!
 概要：選択集合上で非単射な作用素による元の選択 cochain は零である。
@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -74,7 +74,7 @@ lemma normalizedTensorElementSelectedCochainAtMax_reindex_noninjective {m n : �
       (normalizedTensorElementDiagram A X Y).obj (c'.obj (ε.toOrderHom (Fin.last r))) :=
     congrArg (fun i => (normalizedTensorElementDiagram A X Y).obj (c'.obj i))
       (normalizedTensorElementSelectionOfCard_last J r hc hJ).symm
-  have h0 := gradedHom_zero_heq (A := A) (x := X) (x' := X) (k := k) (l := k) rfl hy rfl
+  have h0 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (x := X) (x' := X) (k := k) (l := k) rfl hy rfl
   exact eq_of_heq (he.trans ((heq_of_eq hz').trans h0.symm))
 
 end SerrePositivity.EInfinity.ComplexLimits

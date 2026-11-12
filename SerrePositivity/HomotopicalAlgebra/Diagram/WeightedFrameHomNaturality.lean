@@ -25,12 +25,12 @@ abbrev standardFrameFamily : (K ⥤ SimplexCategory ⥤ C) ⥤ SimplexCategory �
   weightedFamily K W ⋙ (Functor.whiskeringLeft SimplexCategory SSet.{w} C).obj SSet.stdSimplex
 
 abbrev standardFrameHomFamily : (K ⥤ SimplexCategory ⥤ C)ᵒᵖ ⥤ C ⥤ SSet.{v} :=
-  (standardFrameFamily K W).op ⋙ cosimplicialHomBifunctor
+  (standardFrameFamily K W).op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor
 
 def standardFrameHomIso (A : K ⥤ SimplexCategory ⥤ C) :
-    cosimplicialHom ((standardFrameFamily K W).obj A) ⋙ SSet.uliftFunctor.{w,v} ≅
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((standardFrameFamily K W).obj A) ⋙ SSet.uliftFunctor.{w,v} ≅
       weightedHom K A W ⋙ SSet.uliftFunctor.{v,w} :=
-  adjunctionHomIso (weightedAdjunction K A W) SSet.stdSimplex ≪≫
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso (weightedAdjunction K A W) SSet.stdSimplex ≪≫
     Functor.isoWhiskerLeft _
       (Functor.isoWhiskerRight QuillenStandardFrame.homIso SSet.uliftFunctor ≪≫
         Functor.leftUnitor _)

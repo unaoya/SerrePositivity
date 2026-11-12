@@ -31,15 +31,15 @@ def dgKappaNativeBFPointedStageSquare (r : ℕ) :
 規約：全四角形の厳密等号。使われ方：K-B の基点忘却した比較への接続。 -/
 lemma dgKappaNativeBFPointedStageSquare_forget (r : ℕ) :
     dgKappaNativeBFPointedStageSquare.{u, v} R D I r ≫
-        coherentNerveMap pointedKanForgetEnriched =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanForgetEnriched =
       dgKappaNativeBFStageSquare.{u, v} R D I r := by
-  have h := (coherentNerveMap_comp
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp
     (stableSBoundaryKanEnrichedFunctor.{max (u + 1) v} r)
     pointedKanForgetEnriched).symm
   have he := congrArg
     (fun F : EnrichedFunctor SSet.{max (u + 1) v}
-      _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{max (u + 1) v} KanObject.{max (u + 1) v} =>
-        coherentNerveMap F)
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{max (u + 1) v} _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{max (u + 1) v} =>
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap F)
     (stableSBoundaryKan_forget.{max (u + 1) v} r)
   exact (Category.assoc _ _ _).trans
     (congrArg ((dgKappaNativeVerdierDiagram.{u, v} R D I).square ≫ ·) (h.trans he))

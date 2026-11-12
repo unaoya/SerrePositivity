@@ -20,7 +20,7 @@ variable (R : Type u) [CommRing R] (A : Mon (Complex R))
 
 lemma primitive_boundary : δ (-1) 0 (primitive R A) +
     Cochain.ofHom ((source R A).hom - (target R A).hom) = 0 := by
-  have h := complexMappingCocone_snd_boundary (difference R A)
+  have h := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_snd_boundary (difference R A)
   change δ (-1) 0 (primitive R A) +
     Cochain.ofHom (endpointsHom R A ≫ difference R A) = 0 at h
   rw [endpointsHom_difference] at h

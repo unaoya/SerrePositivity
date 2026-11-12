@@ -26,7 +26,7 @@ private lemma differential_difference_factor_zero {V : Type*} [Category V] [Prea
   exact sub_eq_zero.mpr hK
 
 /-- 左右の実復元鎖射があれば、元の内部一面での実微分可換性の差は零。 -/
-lemma simplexHADegreeDefect_one_tensor_zero {N : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHADegreeDefect_one_tensor_zero {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (n m : ℕ) (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (n + 1 + m)) < b)
     (F : serreCubeComplex A n ⟶ homObject A D (s.obj (v 0)) (s.obj (simplexHASplitCut n m v)))

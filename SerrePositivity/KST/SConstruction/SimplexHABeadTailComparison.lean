@@ -18,13 +18,13 @@ variable (A : Type u) [CommRing A]
 lemma simplexHABeadTail_cell_canonical_heq {n : ℕ} (T : Finset (Fin (n + 1)))
     (hT : T.Nonempty) (a : Fin (n + 1)) (ha : ∀ t ∈ T, a < t)
     (hI : 2 ≤ (insert a T).card)
-    (hmin : a = (insert a T).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI))
-    (hmax : T.max' hT = (insert a T).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI)) :
-    HEq (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a ha))
+    (hmin : a = (insert a T).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI))
+    (hmax : T.max' hT = (insert a T).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI)) :
+    HEq (simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT a ha))
       (simplexSubsetLambdaCell A (insert a T) hI) := by
   have h := simplexHABeadTail_cell A T hT a ha hI hmin hmax
   have hd : T.card - 1 = (insert a T).card - 2 := by
-    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha)
+    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T a ha)
     omega
   exact (heq_of_eq h).trans
     (simplexSubsetLambdaCellAtDimension_canonical_heq A _ _ _ _ _ _ _ hd)

@@ -27,7 +27,7 @@ lemma kanAdjointStructureInput_restriction (n : ℕ) :
 /-- 元の普遍係数構造区間の制限は、部分対象の入力で作る同じ構造区間。 -/
 lemma kanAdjointParameterStructureInterval_restriction_path (n : ℕ) :
     (kanAdjointParameterStructureInterval X Y φ n).path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).right =
       (kanAdjointParameterStructureInterval X Y (j ≫ φ) n).path := by
   apply PointedMapping.VerticalPath.path_restriction_eq_of_homotopy
@@ -37,7 +37,7 @@ lemma kanAdjointParameterStructureInterval_restriction_path (n : ℕ) :
 /-- 元の構造区間の同じ転置も、境界の帰納構成の同じ構造区間へ射影される。 -/
 lemma kanAdjointTracedStructureInterval_projection_path (n : ℕ) :
     (kanAdjointTracedStructureInterval X Y φ n).path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       (kanAdjointTracedStructureInterval X Y (j ≫ φ) n).path := by
@@ -46,7 +46,7 @@ lemma kanAdjointTracedStructureInterval_projection_path (n : ℕ) :
     (kanAdjointParameterStructureInterval X Y (j ≫ φ) n) j
     (kanAdjointParameterStructureInterval_restriction_path X Y φ j n)
   change (kanAdjointParameterStructureInterval X Y φ n).basedTranspose.path ≫
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
         (n + 1))).right =
     (kanAdjointParameterStructureInterval X Y (j ≫ φ) n).basedTranspose.path
@@ -55,7 +55,7 @@ lemma kanAdjointTracedStructureInterval_projection_path (n : ℕ) :
 /-- 次段修正の構造射への制限は、境界の次段修正を制限した同じ区間へ射影される。 -/
 lemma kanAdjointTracedNextCorrection_projection_path [Mono j.right] (n : ℕ) :
     ((kanAdjointTracedAdjustedStageInterval X Y φ j (n + 1)).pre (X.sigma n)).path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       ((kanAdjointTracedStageComparison X Y (j ≫ φ) (n + 1)).pre (X.sigma n)).path :=
@@ -66,7 +66,7 @@ lemma kanAdjointTracedNextCorrection_projection_path [Mono j.right] (n : ℕ) :
 lemma kanAdjointTracedPreviousCorrection_projection_path [Mono j.right] (n : ℕ) :
     ((kanAdjointTracedAdjustedStageInterval X Y φ j n).suspension.forgetProjection.basedPost
       ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).path ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.mappingPre j (KanSequence.signedLoopTail Y.toKanSequence)).app
           (n + 1))).right =
       ((kanAdjointTracedStageComparison X Y (j ≫ φ) n).suspension.forgetProjection.basedPost

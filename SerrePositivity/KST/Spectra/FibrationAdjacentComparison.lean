@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.RelativePathBoundaryLift
-public import SerrePositivity.InfinityCategories.Kan.SphericalBoundaryReduction
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SphericalBoundaryReduction
 
 /-!
 概要：同じ底の単体を持つ境界定数の持ち上げと定数ホーンの持ち上げを比較する。
@@ -24,7 +24,7 @@ set_option backward.isDefEq.respectTransparency.types false
 
 variable {E B : SSet.{u}} {p : E ⟶ B} {e : E _⦋0⦌} {n : ℕ}
   {s : B.PtSimplex (n + 1) (p.app _ e)}
-  (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift p e s)
+  (U : E.PtSimplex (n + 1) e) (V : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift p e s)
 
 /-- 概要：二つの持ち上げを最後の面の手前へ置く比較ホーンの面。
 方針：残る面は全空間の基点で定数とする。
@@ -72,7 +72,7 @@ lemma compatible : horn.IsCompatible (i := Fin.last (n + 2)) (fun j _ ↦ face U
 lemma face_comp (hU : U.map ≫ p = s.map) (j : Fin (n + 3))
     (_hj : j ≠ Fin.last (n + 2)) :
     face U V j ≫ p = stdSimplex.δ j ≫ stdSimplex.σ (Fin.last n).castSucc ≫ s.map := by
-  rw [_root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SimplexFaces.degenerate_face]
   simp only [face, Fin.ext_iff, Fin.val_last, Fin.val_castSucc, Fin.val_succ]
   split_ifs <;> try (exfalso; omega)
   all_goals simp only [V.map_comp, hU, const_comp]
@@ -94,7 +94,7 @@ theorem exists_lift [Fibration p] (hU : U.map ≫ p = s.map) :
 lemma last_comp (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
     (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) ≫ p = SSet.const (p.app _ e) := by
-  rw [Category.assoc, hφ, _root_.SerrePositivity.InfinityCategories.Kan.SimplexFaces.degenerate_face]
+  rw [Category.assoc, hφ, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.SimplexFaces.degenerate_face]
   exact ite_eq_right (by simp [Fin.ext_iff])
 
 /-- 概要：比較単体の最後の面を fiber へ入れる。
@@ -103,8 +103,8 @@ lemma last_comp (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
 使われ方：Goerss–Jardine I §8。fiber 内の path の族。 -/
 def output (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
-    (Δ[n + 1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.KanFiber p (p.app _ e) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) (last_comp φ hφ)
+    (Δ[n + 1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanFiber p (p.app _ e) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift p (p.app _ e) (stdSimplex.δ (Fin.last (n + 2)) ≫ φ) (last_comp φ hφ)
 
 /-- 概要：出力を fiber から全空間へ戻すと比較単体の最後の面。
 方針：pullback の第一射影を計算する。
@@ -113,8 +113,8 @@ def output (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
 @[reassoc (attr := simp)]
 lemma output_ι (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hφ : φ ≫ p = stdSimplex.σ (Fin.last n).castSucc ≫ s.map) :
-    output φ hφ ≫ _root_.SerrePositivity.InfinityCategories.Kan.fiberι p (p.app _ e) = stdSimplex.δ (Fin.last (n + 2)) ≫ φ :=
-  _root_.SerrePositivity.InfinityCategories.Kan.fiberLift_ι ..
+    output φ hφ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι p (p.app _ e) = stdSimplex.δ (Fin.last (n + 2)) ≫ φ :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberLift_ι ..
 
 /-- 概要：比較出力の非定数面は最後から二番目にだけ現れる。
 方針：二面交換で既知の面へ移し、V の最後の面と U の定数面を計算する。
@@ -125,15 +125,15 @@ lemma output_face (φ : (Δ[n + 2] : SSet.{u}) ⟶ E)
     (hface : ∀ j, j ≠ Fin.last (n + 2) → stdSimplex.δ j ≫ φ = face U V j)
     (j : Fin (n + 2)) :
     stdSimplex.δ j ≫ output φ hφ =
-      if j.val = n then V.boundary.map else SSet.const (_root_.SerrePositivity.InfinityCategories.Kan.fiberPoint p e) := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.fiber_hom_ext p (p.app _ e)
+      if j.val = n then V.boundary.map else SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberPoint p e) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiber_hom_ext p (p.app _ e)
   rw [Category.assoc, output_ι,
     stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
     hface _ (Fin.castSucc_ne_last j)]
   simp only [face, Fin.val_castSucc]
   split_ifs <;> try rw [PtSimplex.δ_map]
   · exact V.boundary_ι.symm
-  all_goals simp only [comp_const, const_comp, _root_.SerrePositivity.InfinityCategories.Kan.fiberι_point]
+  all_goals simp only [comp_const, const_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fiberι_point]
 
 end
 end SerrePositivity.KST.Spectra.AdjacentLiftComparison

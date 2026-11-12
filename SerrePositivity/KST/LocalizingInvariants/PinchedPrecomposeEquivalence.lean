@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.PointwiseUnitComparison
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.PointwiseUnitComparison
 
 /-!
 概要：可逆な h C の射による右写像空間の前合成は実際の同値。
@@ -20,22 +20,22 @@ namespace SerrePositivity.KST.LocalizingInvariants.PinchedPrecompose
 
 variable {X : SSet.{u}} [Quasicategory X] {x x' : X _⦋0⦌}
 
-def equivalence (e : VertexIso x x') (y : X _⦋0⦌) :
-    QCatEquivalence (pinchedHom x' y) (pinchedHom x y) where
-  hom := PinchedInterval.precompose y e.hom
-  inv := PinchedInterval.precompose y e.inv
+def equivalence (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x x') (y : X _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x' y) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y) where
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose y e.hom
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose y e.inv
   homInvIso := by
-    have h := PinchedInterval.precomposeCompIso y e.inv e.hom
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precomposeCompIso y e.inv e.hom
     rw [Iso.inv_hom_id] at h
-    exact h ≪≫ PinchedInterval.precomposeIdIso x' y
+    exact h ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precomposeIdIso x' y
   invHomIso := by
-    have h := PinchedInterval.precomposeCompIso y e.hom e.inv
+    have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precomposeCompIso y e.hom e.inv
     rw [Iso.hom_inv_id] at h
-    exact h ≪≫ PinchedInterval.precomposeIdIso x y
+    exact h ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precomposeIdIso x y
 
 lemma isQCatEquivalence (f : (SSet.HomotopyCategory.mk x : hoFunctor.obj X) ⟶
     SSet.HomotopyCategory.mk x') [IsIso f] (y : X _⦋0⦌) :
-    IsQCatEquivalence (PinchedInterval.precompose y f) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose y f) :=
   (equivalence (asIso f) y).isQCatEquivalence
 
 end SerrePositivity.KST.LocalizingInvariants.PinchedPrecompose

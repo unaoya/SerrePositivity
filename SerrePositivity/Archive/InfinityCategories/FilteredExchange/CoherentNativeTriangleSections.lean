@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanPointedFiberTriangles
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SectionsKan
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SectionsKan
 
 /-!
 概要：元の fiber の全 pointed 三角形を native 錐の三角形上の切断空間へ写す。

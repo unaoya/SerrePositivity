@@ -12,10 +12,10 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
-variable {C D B : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D B)
-  (hC : IsIdempotentComplete C.obj) (hD : IsIdempotentComplete D.obj)
+variable {C D B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D B)
+  (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete C.obj) (hD : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete D.obj)
   {F : perfectStableInfinity.{u} ⟶ Sp.{u}} (hF : IsPerfectLocalizingInvariant F)
 
 /-- 実積の左因子と、元の D の不変量値の比較。 -/
@@ -28,7 +28,7 @@ def IsPerfectLocalizingInvariant.tammeLeftFactorIso :
 /-- 実積の右因子と、元の C の不変量値の比較。 -/
 def IsPerfectLocalizingInvariant.tammeRightFactorIso :
     perfectInvariantHoObject F (perfectStableVertex C hC) ≅ SpectrumHo.obj
-      (SpectrumHo.spectrum (squareHoVertex
+      (SpectrumHo.spectrum (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex
         (hF.sequenceFiberTriangle (tammePerfectSequence p q hC hD)).square 1 1)) :=
   hF.perfectSplitRightFactorIso (tammePerfectSequence p q hC hD)
 

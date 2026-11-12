@@ -19,16 +19,16 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 open scoped Simplicial
 variable {R : Type u} [CommRing R] {D : Type v} [DGCategory R D]
 
 lemma standardDoldKanModuleIso_zero_eval (x y : D) :
-    (standardDoldKanModuleIso (R := R) x y).hom.app (Opposite.op ⦋0⦌) ≫
-      (gammaDegreeZeroIso (connectiveHomComplex (R := R) x y)).hom =
-    (mooreDegreeZeroIso (standardModule (R := R) x y)).inv ≫
-      (standardNormalizationIso (R := R) x y).hom.f 0 :=
-  doldKanAdjunction_zero_eval (standardModule (R := R) x y)
-    (connectiveHomComplex (R := R) x y) (standardNormalizationIso (R := R) x y).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardDoldKanModuleIso (R := R) x y).hom.app (Opposite.op ⦋0⦌) ≫
+      (gammaDegreeZeroIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex (R := R) x y)).hom =
+    (mooreDegreeZeroIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)).inv ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom.f 0 :=
+  doldKanAdjunction_zero_eval (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex (R := R) x y) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardNormalizationIso (R := R) x y).hom
 
 end SerrePositivity.EInfinity.ComplexLimits

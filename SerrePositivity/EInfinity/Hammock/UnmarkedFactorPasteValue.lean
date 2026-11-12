@@ -21,38 +21,38 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FactorTarget
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (X Y : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma pastePoint_value (g : Index W) (p : (left W X g.val).obj n) (r : (right W Y g.val).obj n) :
+lemma pastePoint_value (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n) (r : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).obj n) :
     (colimitValue W X Y).app n (pastePoint W X Y g p r) =
       g.val :: (colimitValue W g.val.right Y).app n r := by
   classical
   have hp := (AllMarked.inclusion_range W X g.val.left n _).1 ⟨p, rfl⟩
-  have hg : GeneratorWord.erase W g.val.hom.toPath = [g.val] := by
+  have hg : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.erase W g.val.hom.toPath = [g.val] := by
     change (if W g.val.hom then [] else [] ++ [g.val]) = _
     rw [ite_eq_right g.property]
     rfl
   have hi := colimitValue_composePoint W X g.val.left g.val.right
-    ((AllMarked.inclusion W X g.val.left).app n p) (arrowPoint W.paths g.val.hom.toPath n)
+    ((AllMarked.inclusion W X g.val.left).app n p) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n)
   have hgen := (colimitValue_arrowPoint W (n := n) g.val.hom.toPath).trans hg
   have hv := (hi.trans (congrArg₂ List.append hp hgen)).trans (List.nil_append [g.val])
   exact (colimitValue_composePoint W X g.val.right Y
-    (composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
-      (arrowPoint W.paths g.val.hom.toPath n)) r).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n)) r).trans
         (congrArg (fun z => List.append z ((colimitValue W g.val.right Y).app n r)) hv)
 
 lemma paste_value : paste W X Y ≫ colimitValue W X Y = wordValue W X Y := by
   ext n s
   exact pastePoint_value W X Y s.1 s.2.1 s.2.2
 
-lemma pastePoint_nonempty (g : Index W) (p : (left W X g.val).obj n)
-    (r : (right W Y g.val).obj n) : (colimitValue W X Y).app n (pastePoint W X Y g p r) ≠ [] :=
+lemma pastePoint_nonempty (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
+    (r : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).obj n) : (colimitValue W X Y).app n (pastePoint W X Y g p r) ≠ [] :=
   fun h => List.cons_ne_nil _ _ ((pastePoint_value W X Y g p r).symm.trans h)
 
-def pasteNonempty : space W X Y ⟶ NonemptyValue.space W X Y where
+def pasteNonempty : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y ⟶ NonemptyValue.space W X Y where
   app _ := ↾fun s => ⟨pastePoint W X Y s.1 s.2.1 s.2.2, pastePoint_nonempty W X Y s.1 s.2.1 s.2.2⟩
   naturality n m θ := by
     apply ConcreteCategory.hom_ext

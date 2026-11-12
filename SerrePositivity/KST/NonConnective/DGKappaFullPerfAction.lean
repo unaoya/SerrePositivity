@@ -17,54 +17,54 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v w
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
 private lemma fullPerfFamilyVertex {A B P : SSet.{w}}
     (F : P ⟶ (ihom A).obj B) (p : P _⦋0⦌) (f : A ⟶ B)
     (h : (SSet.unitHomEquiv P).symm p ≫ F = curry' f) :
-    F.app (Opposite.op ⦋0⦌) p = functorVertex f := by
+    F.app (Opposite.op ⦋0⦌) p = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f := by
   have h := congrArg (SSet.unitHomEquiv _) h
   change F.app (Opposite.op ⦋0⦌)
-    ((SSet.unitHomEquiv P) ((SSet.unitHomEquiv P).symm p)) = functorVertex f at h
+    ((SSet.unitHomEquiv P) ((SSet.unitHomEquiv P).symm p)) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f at h
   simpa only [Equiv.apply_symm_apply] using h
 
-variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
+variable (R : Type u) [CommRing R] (D : Type v) [_root_.SerrePositivity.DifferentialGraded.DGCategory R D] [Small.{u} D]
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 
 /-- 同じ cone の全 native dg 関手圏を、元の Perf の出力宇宙へ移す。 -/
 abbrev dgKappaFullPerfParameter : SSet.{max (u + 1) v} :=
   (SSet.uliftFunctor.{u + 1, max (u + 1) v}).obj
-    (dgNerve R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)))
 
 /-- 同じ全 native 関手族による、元の Perf の全関手空間への実作用。 -/
 def dgKappaFullPerfFamilyMap : dgKappaFullPerfParameter R D I ⟶
-    (ihom (dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))).obj
-      (dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I))) :=
+    (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I)))).obj
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (PresentedPerfectDGObject R (DGKappaCone R D I))) :=
   curry (presentedPerfectDGNativeAction R (DGKappaCone R D I) (DGKappaCone R D I))
 
 /-- 元の同じ厳密 dg 関手を全 native 関手族の実単位射として保持する。 -/
-def dgKappaFullPerfParameterPoint (F : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
+def dgKappaFullPerfParameterPoint (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
     𝟙_ SSet.{max (u + 1) v} ⟶ dgKappaFullPerfParameter R D I :=
-  (SSet.unitHomEquiv _).symm (ULift.up (Simplex.vertex F))
+  (SSet.unitHomEquiv _).symm (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F))
 
 /-- 同じ実単位射は全次数で元の閉単位からの native 定数単体。 -/
 lemma dgKappaFullPerfParameterPoint_app
-    (F : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))
+    (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))
     (n : SimplexCategoryᵒᵖ) (a : (𝟙_ SSet.{max (u + 1) v}).obj n) :
     ((dgKappaFullPerfParameterPoint R D I F).app n a).down =
-      dgNativePointSimplex R (DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))
+      dgNativePointSimplex R (_root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I))
         F n.unop.len := by
-  change (Simplex.vertex F).pullback
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F).pullback
     (SimplexCategory.const n.unop ⦋0⦌ 0).toOrderHom = _
   rw [← dgNativePointSimplex_zero]
   exact dgNativePointSimplex_pullback R _ F _
 
 /-- 全実作用を元の同じ厳密関手に固定すると、元の Perf の全単体作用に戻る。 -/
 lemma dgKappaFullPerfFamilyMap_fixed
-    (F : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
+    (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
     dgKappaFullPerfParameterPoint R D I F ≫ dgKappaFullPerfFamilyMap R D I =
-      curry' (dgNerve.map
+      curry' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
         (presentedPerfectDGAction R (DGKappaCone R D I) (DGKappaCone R D I) F)) := by
   rw [dgKappaFullPerfFamilyMap, ← curry_natural_left, curry', ← id_tensorHom]
   congr 1
@@ -78,11 +78,11 @@ lemma dgKappaFullPerfFamilyMap_fixed
 
 /-- 同じ全作用の指定入力頂点は、元の Perf 厳密作用の関手頂点そのもの。 -/
 lemma dgKappaFullPerfFamilyMap_vertex
-    (F : DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
-    (dgKappaFullPerfFamilyMap R D I).app (Opposite.op ⦋0⦌) (ULift.up (Simplex.vertex F)) =
-      functorVertex (dgNerve.map
+    (F : _root_.SerrePositivity.DifferentialGraded.DGFunctor R (DGKappaCone R D I) (DGKappaCone R D I)) :
+    (dgKappaFullPerfFamilyMap R D I).app (Opposite.op ⦋0⦌) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
         (presentedPerfectDGAction R (DGKappaCone R D I) (DGKappaCone R D I) F)) := by
   exact fullPerfFamilyVertex (dgKappaFullPerfFamilyMap R D I)
-    (ULift.up (Simplex.vertex F)) _ (dgKappaFullPerfFamilyMap_fixed R D I F)
+    (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex F)) _ (dgKappaFullPerfFamilyMap_fixed R D I F)
 
 end SerrePositivity.KST.NonConnective

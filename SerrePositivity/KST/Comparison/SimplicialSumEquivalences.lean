@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Simplicial.SimplicialSum
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialSum
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedCoproducts
 
 /-!
@@ -31,21 +31,21 @@ variable {ι : Type v}
 theorem simplicialSumMap_localized_isIso {A B : ι → SSet.{max u v}}
     (f : ∀ i, A i ⟶ B i)
     (hf : ∀ i, IsIso (AnodyneHomotopy.anodyneQ.map (f i))) :
-    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f)) := by
-  let eA := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct A).coconePointUniqueUpToIso (coproductIsCoproduct A)
-  let eB := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct B).coconePointUniqueUpToIso (coproductIsCoproduct B)
-  have heA i : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion A i ≫ eA.hom = Sigma.ι A i :=
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct A).comp_coconePointUniqueUpToIso_hom (coproductIsCoproduct A) ⟨i⟩
-  have heB i : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion B i ≫ eB.hom = Sigma.ι B i :=
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct B).comp_coconePointUniqueUpToIso_hom (coproductIsCoproduct B) ⟨i⟩
-  have he : _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f ≫ eB.hom = eA.hom ≫ Limits.Sigma.map f := by
-    apply _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+    IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap f)) := by
+  let eA := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct A).coconePointUniqueUpToIso (coproductIsCoproduct A)
+  let eB := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct B).coconePointUniqueUpToIso (coproductIsCoproduct B)
+  have heA i : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion A i ≫ eA.hom = Sigma.ι A i :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct A).comp_coconePointUniqueUpToIso_hom (coproductIsCoproduct A) ⟨i⟩
+  have heB i : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion B i ≫ eB.hom = Sigma.ι B i :=
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct B).comp_coconePointUniqueUpToIso_hom (coproductIsCoproduct B) ⟨i⟩
+  have he : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap f ≫ eB.hom = eA.hom ≫ Limits.Sigma.map f := by
+    apply _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
     intro i
-    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map, Category.assoc, heB,
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map, Category.assoc, heB,
       ← Category.assoc, heA, Sigma.ι_map]
   let Q := AnodyneHomotopy.anodyneQ.{max u v}
   have := KanLocalizedCoproducts.localized_isIso ι f hf
-  have h : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap f) ≫ Q.map eB.hom) := by
+  have h : IsIso (Q.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap f) ≫ Q.map eB.hom) := by
     rw [← Q.map_comp, he, Q.map_comp]
     infer_instance
   exact (isIso_comp_right_iff _ _).mp h

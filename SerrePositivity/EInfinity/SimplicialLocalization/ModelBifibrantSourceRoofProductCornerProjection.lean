@@ -41,9 +41,9 @@ lemma modelBifibrantSourceRoofProductCornerMap_source :
     modelBifibrantSourceRoofProductCornerMap X Y q b ≫ pullback.snd _ _ =
       modelBifibrantSourceRoofProductFirstNerve X Y q b ≫
         modelBifibrantSourceFrameRoofMap X Y q := by
-  have h := roofQuillenDegreeCornerMap_source (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+  have h := roofQuillenDegreeCornerMap_source (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     b (modelBifibrantSourceFrameRoofMap X Y q)
   simp only [modelBifibrantSourceRoofProductCornerMap, Category.assoc, h]
   have h₁ := modelBifibrantSourceRoofDegreeTransportIso_inv_source X Y q b
@@ -58,7 +58,7 @@ lemma modelBifibrantSourceRoofProductCornerMap_source :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaCornerMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-      sliceOverCorner (SSet.yonedaEquiv.symm b) (modelBifibrantSourceRoofProjection X Y q) :=
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (modelBifibrantSourceRoofProjection X Y q) :=
   (modelBifibrantSourceRoofProductCommaIso X Y q b).inv ≫
     modelBifibrantSourceRoofProductCornerMap X Y q b
 
@@ -82,51 +82,51 @@ lemma modelBifibrantSourceRoofProductCommaCornerMap_source :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaCornerMap_diagram :
     (modelBifibrantSourceRoofProductCommaCornerMap X Y q b ≫
-      roofCornerSourceSliceMap (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+      roofCornerSourceSliceMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b) ≫
-      sliceOverProjection (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) =
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y)) =
         nerveMap (modelBifibrantSourceRoofProductCommaDiagram X Y q b) ≫
           SimplicialLocalization.hammockLocalizationNerveMap
-            (modelBifibrantRelativeCategory C) := by
-  have h := roofCornerSourceSliceMap_projection (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C)) b
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) := by
+  have h := roofCornerSourceSliceMap_projection (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b
   have h₁ := modelBifibrantSourceRoofProductCommaCornerMap_source X Y q b
   have h₂ := modelBifibrantSourceFrameRoofMap_degree X Y q
   dsimp only [modelBifibrantHammockVertex]
   calc
     _ = modelBifibrantSourceRoofProductCommaCornerMap X Y q b ≫
         (pullback.snd _ _ ≫ modelBifibrantSourceRoofProjection X Y q ≫
-          (nerveMap (modelBifibrantDKFrame X q) ≫
+          (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
             SimplicialLocalization.hammockLocalizationNerveMap
-              (modelBifibrantRelativeCategory C))) :=
+              (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))) :=
       (Category.assoc _ _ _).trans (congrArg
         (fun g => modelBifibrantSourceRoofProductCommaCornerMap X Y q b ≫ g) h)
     _ = (modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
         modelBifibrantSourceFrameRoofMap X Y q) ≫ modelBifibrantSourceRoofProjection X Y q ≫
-          (nerveMap (modelBifibrantDKFrame X q) ≫
+          (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
             SimplicialLocalization.hammockLocalizationNerveMap
-              (modelBifibrantRelativeCategory C)) := by
+              (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) := by
       simpa only [Category.assoc] using congrArg
         (fun g => g ≫ modelBifibrantSourceRoofProjection X Y q ≫
-          (nerveMap (modelBifibrantDKFrame X q) ≫
+          (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
             SimplicialLocalization.hammockLocalizationNerveMap
-              (modelBifibrantRelativeCategory C))) h₁
+              (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))) h₁
     _ = modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫
-        modelBifibrantSourceFrameElementDegreeNerve X Y q ≫ nerveMap (modelBifibrantDKFrame X q) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegreeNerve X Y q ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
           SimplicialLocalization.hammockLocalizationNerveMap
-            (modelBifibrantRelativeCategory C) := by
+            (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C) := by
       simpa only [Category.assoc] using congrArg
         (fun g => modelBifibrantSourceRoofProductCommaFirstNerve X Y q b ≫ g ≫
-          (nerveMap (modelBifibrantDKFrame X q) ≫
+          (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q) ≫
             SimplicialLocalization.hammockLocalizationNerveMap
-              (modelBifibrantRelativeCategory C))) h₂
+              (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))) h₂
     _ = _ := by
       simp only [← Category.assoc]
       apply congrArg (fun g => g ≫ SimplicialLocalization.hammockLocalizationNerveMap
-        (modelBifibrantRelativeCategory C))
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
       apply SSet.hom_ext
       intro n
       apply ConcreteCategory.hom_ext

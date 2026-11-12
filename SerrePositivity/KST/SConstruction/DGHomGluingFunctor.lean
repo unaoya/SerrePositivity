@@ -25,7 +25,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 
 /-- 元の閉比較そのものから構成する、全 Hom を持つ実 Hom gluing 関手。 -/
 def dgHomGluingFunctor :
-    DGFunctor R P (DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :=
+    DGFunctor R P (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :=
   dgStrictGluingFunctor R C D (dgHomGluingBimodule R C D E p q) L G
     (dgHomGluingComparisonCycle R C D E p q L G a)
     (dgHomGluingComparison_naturality R C D E p q L G a h)
@@ -38,7 +38,7 @@ lemma dgHomGluingFunctor_obj (x : P) :
 /-- 同じ実関手の左射影は、元の左関手そのもの。 -/
 lemma dgHomGluingFunctor_left :
     (dgHomGluingFunctor R C D E p q L G a h).comp
-      (dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)) = L :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R C D (dgHomGluingBimodule R C D E p q)) = L :=
   dgStrictGluingFunctor_left R C D (dgHomGluingBimodule R C D E p q) L G
     (dgHomGluingComparisonCycle R C D E p q L G a)
     (dgHomGluingComparison_naturality R C D E p q L G a h)
@@ -46,7 +46,7 @@ lemma dgHomGluingFunctor_left :
 /-- 同じ実関手の右射影は、元の右関手そのもの。 -/
 lemma dgHomGluingFunctor_right :
     (dgHomGluingFunctor R C D E p q L G a h).comp
-      (dgGluingRight R C D (dgHomGluingBimodule R C D E p q)) = G :=
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D (dgHomGluingBimodule R C D E p q)) = G :=
   dgStrictGluingFunctor_right R C D (dgHomGluingBimodule R C D E p q) L G
     (dgHomGluingComparisonCycle R C D E p q L G a)
     (dgHomGluingComparison_naturality R C D E p q L G a h)

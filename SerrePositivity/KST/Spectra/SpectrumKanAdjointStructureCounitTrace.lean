@@ -23,7 +23,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 lemma kanAdjointTracedStructureInterval_transpose_path (n : ℕ) :
     (kanAdjointTracedStructureInterval X Y φ n).basedTranspose.path =
       (kanAdjointParameterStructureInterval X Y φ n).path := by
-  have he := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A
+  have he := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A
     ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right)
     (kanAdjointTracedStructureInterval_path X Y φ n)
   change (kanAdjointTracedStructureInterval X Y φ n).basedTranspose.path =
@@ -33,16 +33,16 @@ lemma kanAdjointTracedStructureInterval_transpose_path (n : ℕ) :
 /-- 元の合成正方形の構造区間を、同じ counit で評価した実区間。 -/
 def kanAdjointTracedStructureCounitInterval (n : ℕ) :=
   (kanAdjointTracedStructureInterval X Y φ n).basedTranspose.basedPost
-    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)
+    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)
 
 /-- 転置後の counit 像は、元の段座標で計算した同じ実区間の族そのもの。 -/
 lemma kanAdjointTracedStructureCounitInterval_path (n : ℕ) :
     (kanAdjointTracedStructureCounitInterval X Y φ n).path =
       (kanAdjointStructureCounitInterval X Y φ n).path := by
   let P := (kanAdjointParameterStructureInterval X Y φ n).basedPost
-    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)
+    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)
   have he := congrArg (· ≫ (PointedObject.basedHomMap A
-    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 2)).space)).right)
+    (kanLoopCounit (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 2)).space)).right)
     (kanAdjointTracedStructureInterval_transpose_path X Y φ n)
   change (kanAdjointTracedStructureCounitInterval X Y φ n).path = P.path at he
   have hq := PointedMapping.VerticalPath.path_eq_of_homotopy_h_eq

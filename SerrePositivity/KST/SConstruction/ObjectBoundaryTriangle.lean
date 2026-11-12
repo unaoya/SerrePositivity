@@ -29,7 +29,7 @@ lemma objectBoundaryKanComparison_vertex (X : StableModel.{u})
       ((boundaryKanRealizationFunctor 0).obj X).basepoint := by
   have h := ConcreteCategory.congr_hom
     (NatTrans.congr_app (iteratedRealizationToKan_zeroColumn 0 X) (Opposite.op ⦋0⦌))
-      (⟨z, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+      (⟨z, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
         (X := sConstruction 0 X.carrier) z⟩ :
         (coreSConstruction 0 X.carrier) _⦋0⦌)
   rw [NatTrans.comp_app, ConcreteCategory.comp_apply, diagonalZeroColumn_zero] at h
@@ -84,9 +84,9 @@ def objectBoundaryTriangle (X : StableModel.{u})
 /-- 元の S₂ の三辺は、一重 S の実際の基本群で三角形の積の関係を満たす。 -/
 lemma objectBoundaryTriangle_mul (X : StableModel.{u})
     (q : (objectSConstruction X.carrier) _⦋2⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 2 q)) *
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 0 q)) =
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 1 q)) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (objectBoundaryTriangle X q)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 2 q)) *
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 0 q)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (objectBoundaryEdge X ((objectSConstruction X.carrier).δ 1 q)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_eq (objectBoundaryTriangle X q)
 
 end SerrePositivity.KST.SConstruction

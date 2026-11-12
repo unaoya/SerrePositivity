@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSuspensionLoopComparison
 public import SerrePositivity.KST.Spectra.SpectrumNativeLoopFunctor
-public import SerrePositivity.InfinityCategories.F1.Coherent.EdgeEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.EdgeEquiv
 
 /-!
 概要：同じ平坦 dg 懸垂の実相対四角形を明示入力に隔離し、元の固定 K の構造比較を作る。
@@ -33,28 +33,28 @@ structure DGKappaSuspensionRelativeRoofInput where
   /-- D-9：同じ平坦商の実小 dg 核。 -/
   kernel : PerfDGInput.{u, max (u + 1) v} R
   /-- Sp-6：固定 ν の実相対 Verdier 四角形。平坦屋根の供給は D-9。 -/
-  diagram : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
+  diagram : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, max (u + 1) v} R)
   /-- D-9・Sp-6：同じ実核への始点照合。元の Perf・P との照合は別途 K-B。 -/
-  left_eq : squareVertex diagram.square 0 0 = coherentNerveVertex kernel
+  left_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 0 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex kernel
   /-- D-9・Sp-6：同じ平坦 cone の指定入力頂点への照合。 -/
-  middle_eq : squareVertex diagram.square 1 0 =
-    coherentNerveVertex (dgKappaResolvedConeKInput R D I)
+  middle_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 0 =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaResolvedConeKInput R D I)
   /-- D-9・Sp-6：同じ平坦商の指定懸垂頂点への照合。 -/
-  right_eq : squareVertex diagram.square 1 1 = coherentNerveVertex (dgKappaSuspensionKInput R D I)
+  right_eq : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex diagram.square 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKappaSuspensionKInput R D I)
   /-- D-9・Sp-6：元の平坦商射の全一単体との厳密一致。 -/
-  quotient : squareRightEdge ≫ diagram.square =
-    SSet.yonedaEquiv.symm (coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge
+  quotient : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ diagram.square =
+    SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKappaResolvedSuspensionInputMap R D I)).edge
 
 variable (ρ : DGKappaSuspensionRelativeRoofInput R D I) (Z : DGKappaZeroInput R D I)
 
 /-- 同じ実四角形の canonical fiber を、同じ K 懸垂の loop 四角形として保持する。 -/
 def DGKappaSuspensionRelativeRoofInput.loopSquare :
-    LoopSquare (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I))) :=
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I))) :=
   dgKappaSuspensionLoopSquare R D I Z ρ.diagram ρ.middle_eq ρ.right_eq
 
 /-- 同じ元の核 K 頂点から、同じ実 fiber loop への実比較辺。 -/
 def DGKappaSuspensionRelativeRoofInput.loopComparison :
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R ρ.kernel))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R ρ.kernel))
       (ρ.loopSquare R D I Z).vertex :=
   dgKappaSuspensionLoopComparison R D I Z ρ.diagram ρ.middle_eq ρ.right_eq ρ.kernel ρ.left_eq
 
@@ -62,28 +62,28 @@ def DGKappaSuspensionRelativeRoofInput.loopComparison :
 def DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge :
     Truncated.Edge (X := (truncation 2).obj Sp.{max (u + 1) v}) (ρ.loopSquare R D I Z).vertex
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
-  Classical.choose (homotopyCategory_homMk_surjective _ _
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+  Classical.choose (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _
     (OmegaSpectrum.nativeLoopVertexIso (ρ.loopSquare R D I Z)).inv)
 
 /-- 明示相対屋根に条件付きで、選んだ実辺は、同じ固定 native loop 比較の逆同型そのものを表す。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge_hom :
     Truncated.HomotopyCategory.homMk (ρ.nativeLoopInverseEdge R D I Z) =
       (OmegaSpectrum.nativeLoopVertexIso (ρ.loopSquare R D I Z)).inv :=
-  Classical.choose_spec (homotopyCategory_homMk_surjective _ _ _)
+  Classical.choose_spec (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective _ _ _)
 
 /-- 明示相対屋根に条件付きで、同じ固定 native loop への比較辺は可逆。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeLoopInverseEdge_isInvertible :
-    IsInvertibleEdge (ρ.nativeLoopInverseEdge R D I Z) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (ρ.nativeLoopInverseEdge R D I Z) := by
   change IsIso (Truncated.HomotopyCategory.homMk (ρ.nativeLoopInverseEdge R D I Z))
   rw [ρ.nativeLoopInverseEdge_hom R D I Z]
   infer_instance
 
 /-- 元の核 K から固定 native loop K(Σ) への、同じ二辺を合成した全一単体。 -/
 def DGKappaSuspensionRelativeRoofInput.nativeStructureEdge :
-    SSet.Edge (coherentNerveVertex (dgKInputSpectrum R ρ.kernel))
+    SSet.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R ρ.kernel))
       (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-        (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I)))) :=
   SSet.Edge.ofTruncated
     ((ρ.loopComparison R D I Z).toTruncated.comp (ρ.nativeLoopInverseEdge R D I Z))
 
@@ -96,8 +96,8 @@ def DGKappaSuspensionRelativeRoofInput.nativeStructureTriangle :
 
 /-- 明示相対屋根に条件付きで、固定 native loop 比較の可逆性は、同じ元の相対 K 四角形の引き戻し性と同値。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeStructureEdge_isInvertible_iff :
-    IsInvertibleEdge (ρ.nativeStructureEdge R D I Z) ↔
-      IsPullbackSquare (ρ.diagram.square ≫ dgKInputK R) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (ρ.nativeStructureEdge R D I Z) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (ρ.diagram.square ≫ dgKInputK R) := by
   letI : IsIso (Truncated.HomotopyCategory.homMk (ρ.nativeLoopInverseEdge R D I Z)) :=
     ρ.nativeLoopInverseEdge_isInvertible R D I Z
   change IsIso (Truncated.HomotopyCategory.homMk
@@ -110,21 +110,21 @@ theorem DGKappaSuspensionRelativeRoofInput.nativeStructureEdge_isInvertible_iff 
 
 /-- 固定 native loop の元の頂点を、同じ実 BF spectrum として保持する。 -/
 def dgKappaSuspensionNativeLoopSpectrum : OmegaSpectrum.{max (u + 1) v} :=
-  coherentNerveObject (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
-    (coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I))))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (OmegaSpectrum.nativeLoop.app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum R (dgKappaSuspensionKInput R D I))))
 
 /-- 同じ構造比較の全一単体から回収する、元の核 BF K からの厳密 spectrum 射。 -/
 def DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap :
     dgKInputSpectrum R ρ.kernel ⟶ dgKappaSuspensionNativeLoopSpectrum R D I :=
-  coherentNerveEdgeToHom ((ρ.nativeStructureEdge R D I Z).ofEq rfl
-    (coherentNerveVertex_object _).symm)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom ((ρ.nativeStructureEdge R D I Z).ofEq rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm)
 
 /-- 明示相対屋根に条件付きで、回収した厳密 BF 射の辺は、同じ元の構造比較の全一単体そのもの。 -/
 theorem DGKappaSuspensionRelativeRoofInput.nativeStructureBFMap_edge :
-    (coherentNerveEdge (ρ.nativeStructureBFMap R D I Z)).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (ρ.nativeStructureBFMap R D I Z)).edge =
       (ρ.nativeStructureEdge R D I Z).edge := by
-  have he := coherentNerveEdge_hom ((ρ.nativeStructureEdge R D I Z).ofEq rfl
-    (coherentNerveVertex_object _).symm)
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom ((ρ.nativeStructureEdge R D I Z).ofEq rfl
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object _).symm)
   exact congrArg (fun e => e.edge) he
 
 end SerrePositivity.KST.NonConnective

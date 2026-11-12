@@ -42,7 +42,7 @@ def spanCylinderToColimit (F : WalkingSpan ⥤ SSet.{u}) (c : Cocone F) (hc : Is
 @[reassoc] theorem spanCylinderLeft_toColimit (F : WalkingSpan ⥤ SSet.{u})
     (c : Cocone F) (hc : IsColimit c) :
     spanCylinderLeft.app F ≫ spanCylinderToColimit F c hc = c.ι.app .left := by
-  have h : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (F.map WalkingSpan.Hom.fst)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (F.map WalkingSpan.Hom.fst)
       (F.map WalkingSpan.Hom.snd) ≫
       (doubleMappingCylinderCollapse (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd) ≫
         (IsPushout.of_isColimit_cocone hc).isoPushout.inv) = c.ι.app .left := by
@@ -59,7 +59,7 @@ def spanCylinderToColimit (F : WalkingSpan ⥤ SSet.{u}) (c : Cocone F) (hc : Is
 @[reassoc] theorem spanCylinderRight_toColimit (F : WalkingSpan ⥤ SSet.{u})
     (c : Cocone F) (hc : IsColimit c) :
     spanCylinderRight.app F ≫ spanCylinderToColimit F c hc = c.ι.app .right := by
-  have h : _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right (F.map WalkingSpan.Hom.fst)
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right (F.map WalkingSpan.Hom.fst)
       (F.map WalkingSpan.Hom.snd) ≫
       (doubleMappingCylinderCollapse (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd) ≫
         (IsPushout.of_isColimit_cocone hc).isoPushout.inv) = c.ι.app .right := by
@@ -75,7 +75,7 @@ def spanCylinderToColimit (F : WalkingSpan ⥤ SSet.{u}) (c : Cocone F) (hc : Is
 -/
 @[reassoc] theorem spanCylinder_middle_toColimit (F : WalkingSpan ⥤ SSet.{u})
     (c : Cocone F) (hc : IsColimit c) :
-    _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle (F.map WalkingSpan.Hom.fst) (F.map WalkingSpan.Hom.snd) ≫
       spanCylinderToColimit F c hc = fst (F.obj .zero) (Δ[1] : SSet.{u}) ≫ c.ι.app .zero := by
   have hP := (IsPushout.of_isColimit_cocone hc).inl_isoPushout_inv
   rw [spanCylinderToColimit, ← Category.assoc, doubleMappingCylinder_middle_collapse]

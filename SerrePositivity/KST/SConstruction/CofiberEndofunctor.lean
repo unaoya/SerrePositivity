@@ -18,8 +18,8 @@ open scoped Simplicial
 
 /-- 全部分複体への射の完全性は周囲への合成の完全性から反映される。 -/
 lemma preservesCofiberData_fullSubcomplex_of_comp {X Y : SSet.{u}} [Quasicategory Y]
-    (P : Y _⦋0⦌ → Prop) (f : X ⟶ (fullSubcomplexOnVertices Y P : SSet.{u}))
-    (hf : PreservesCofiberData (f ≫ (fullSubcomplexOnVertices Y P).ι)) :
+    (P : Y _⦋0⦌ → Prop) (f : X ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Y P : SSet.{u}))
+    (hf : PreservesCofiberData (f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices Y P).ι)) :
     PreservesCofiberData f := by
   constructor
   · intro z hz
@@ -32,7 +32,7 @@ lemma preservesCofiberData_fullSubcomplex_of_comp {X Y : SSet.{u}} [Quasicategor
 
 /-- 全 cofiber 図式の後合成は完全。 -/
 lemma cofiberPostcomp_preservesCofiberData {C D : SSet.{u}}
-    [Quasicategory C] [IsStable C] [Quasicategory D]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [Quasicategory D]
     (f : C ⟶ D) (hf : PreservesCofiberData f) :
     PreservesCofiberData (cofiberPostcomp f hf) := by
   apply preservesCofiberData_fullSubcomplex_of_comp IsCofiberDiagramVertex
@@ -43,14 +43,14 @@ lemma cofiberPostcomp_preservesCofiberData {C D : SSet.{u}}
 /-- cofiber 図式の後合成は恒等射を保つ。 -/
 lemma cofiberPostcomp_id (C : SSet.{u}) :
     cofiberPostcomp (𝟙 C) (preservesCofiberData_id C) = 𝟙 (cofiberDiagrams C) := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).1
   erw [cofiberPostcomp_ι, CategoryTheory.Functor.map_id]
 
 /-- cofiber 図式の後合成は完全関手の合成を保つ。 -/
 lemma cofiberPostcomp_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E)
     (hf : PreservesCofiberData f) (hg : PreservesCofiberData g) :
     cofiberPostcomp (f ≫ g) (hf.comp hg) = cofiberPostcomp f hf ≫ cofiberPostcomp g hg := by
-  apply (cancel_mono (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).1
+  apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).1
   rw [cofiberPostcomp_ι, Category.assoc, cofiberPostcomp_ι, ← Category.assoc,
     cofiberPostcomp_ι, Functor.map_comp, Category.assoc]
 

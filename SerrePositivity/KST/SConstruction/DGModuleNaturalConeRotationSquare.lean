@@ -13,7 +13,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元包含と厳密に等しい指定包含を用いた回転 lift の指定微分境界。
@@ -70,7 +70,7 @@ private lemma rotationBoundaryOfRecovery {M N : ModuleCategory R D} (f : M ⟶ N
   exact dgModuleRotationLift_boundary R D f ψ hψ hb
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η

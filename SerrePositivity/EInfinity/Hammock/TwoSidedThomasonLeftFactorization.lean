@@ -24,7 +24,7 @@ variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
 lemma weightedLeft_simplex_factorization {n : ℕ} (e : ComposableArrows (labels F G n) n) :
-    FrameHom.Thomason.simplex (TwoSidedGrothendieck.contravariantProjection F ⋙ G)
+    FrameHom.Thomason.simplex (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G)
       (TwoSidedWeightedLeft.simplex F (FrameHom.Thomason.values G n) e) = simplex F G e := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
@@ -33,7 +33,7 @@ lemma weightedLeft_simplex_factorization {n : ℕ} (e : ComposableArrows (labels
 
 lemma weightedLeft_map_factorization :
     TwoSidedWeightedLeft.diagonalMap F G ≫
-      FrameHom.Thomason.map (TwoSidedGrothendieck.contravariantProjection F ⋙ G) = map F G := by
+      FrameHom.Thomason.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F ⋙ G) = map F G := by
   ext n e
   exact weightedLeft_simplex_factorization F G e
 

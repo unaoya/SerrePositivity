@@ -16,7 +16,7 @@ universe u
 
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedHomotopyLimit
 
@@ -32,17 +32,17 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem map_piIsomorphism {I : Type u} [SmallCategory I]
     {D E : I ⥤ PointedSimplicialSet.{u}}
     [∀ i, KanComplex (D.obj i).right] [∀ i, KanComplex (E.obj i).right]
-    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (τ.app i).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (map τ).right := by
+    (τ : D ⟶ E) (hτ : ∀ i, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (τ.app i).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (map τ).right := by
   let : ∀ i, KanComplex ((D ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (D.obj i).right)
   let : ∀ i, KanComplex ((E ⋙ PointedSimplicialSet.forget).obj i) :=
     fun i ↦ inferInstanceAs (KanComplex (E.obj i).right)
-  have h := bousfieldKanMap_homotopyEquivalence
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanMap_homotopyEquivalence
     (Functor.whiskerRight τ PointedSimplicialSet.forget)
     (fun i ↦ pointed_piIsomorphism_homotopyEquivalence (τ.app i) (hτ i))
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-    (weightedSectionsMap (bousfieldKanWeight I) (Functor.whiskerRight τ PointedSimplicialSet.forget))
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsMap (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (Functor.whiskerRight τ PointedSimplicialSet.forget))
   exact kanPiIsomorphism_of_qCatEquivalence _ h.isQCatEquivalence
 
 end

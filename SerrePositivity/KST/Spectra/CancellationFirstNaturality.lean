@@ -30,9 +30,9 @@ namespace LoopExchangePaths
 variable {Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Y' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : Y ⟶ Y') (w : Z ⟶ Z')
   (hc : a ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} w = v ≫ a')
 
 /-- 元の第一辺の前後合成を、同じ交換自然性の二次元射から結ぶ実正方形。 -/

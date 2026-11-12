@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantAlgebraReplacement
-public import SerrePositivity.InfinityCategories.HomotopyLimits.RelativeLocalization
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeLocalization
 
 /-!
 # Cofibrant E 代数と元の全代数の普通の局所化の比較
@@ -33,7 +33,7 @@ def cofibrantAlgebraHoEquivalence :
     (cofibrantAlgebraWeakEquivalences A).Localization ≌
       (weakEquivalences (operad A).Algebra).Localization := by
   let := modelCategory A
-  exact FrameHom.RelativeLocalization.equivalence
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.RelativeLocalization.equivalence
     (cofibrantAlgebraInclusionRelative A) (cofibrantAlgebraReplacementRelative A)
     (cofibrantAlgebraRestrictedComparison A) (cofibrantAlgebraReplacementComparison A)
     (cofibrantAlgebraRestrictedComparison_weakEquivalence A)

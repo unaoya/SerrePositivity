@@ -24,7 +24,7 @@ def kanAssemblyMixedFamily (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
       (PointedObject.basedHom ((oneDirectionKanRealizationFunctor r).obj X)
         ((loopBoundaryKanFunctor (r + 1)).obj Y)).right :=
   pullback.fst
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedKanReplacement.unit.app (oneDirectionReducedRealization r X))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedKanReplacement.unit.app (oneDirectionReducedRealization r X))
       ((loopBoundaryKanFunctor (r + 1)).obj Y)).right
     (SSet.yonedaEquiv.symm (familyVertex
       ((oneDirectionReducedRealizationFunctor r).map f ≫ (kanTargetAssemblyAdjointNat r).app Y)))
@@ -49,7 +49,7 @@ lemma kanAssemblyMixedFamily_source (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶
 lemma kanAssemblyMixedFamily_target (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     kanAssemblyMixedFromTarget r f ≫ kanAssemblyMixedFamily r f =
       kanAssemblyAdjointFamily r Y ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((oneDirectionKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((oneDirectionKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   have h := pointedExtensionTransport_projection
     (PointedKanReplacement.unit.app (oneDirectionReducedRealization r Y))

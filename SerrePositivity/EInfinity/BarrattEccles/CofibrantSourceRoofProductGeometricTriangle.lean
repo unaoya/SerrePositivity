@@ -31,7 +31,7 @@ def cofibrantSourceRoofProductGeometricLeftHomotopy : SSet.Homotopy
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A (cofibrantSourceRoofDegreeAlgebra A X Y b))) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
-  exact stableHomotopyRetarget (roofCornerEvaluationLeftHomotopy (cofibrantDKSourceFrame A X)
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (roofCornerEvaluationLeftHomotopy (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
     (cofibrantSourceRoofProductCommaCornerMap A X Y b))
@@ -43,18 +43,18 @@ def cofibrantSourceRoofProductGeometricRightHomotopy : SSet.Homotopy
     (SSet.const (X := nerve (cofibrantSourceRoofProductComma A X Y b))
       (cofibrantHammockVertex A Y)) := by
   have := cofibrantSourceRoofProjection_leftFibration A X Y
-  exact stableHomotopyRetarget (roofCornerEvaluationRightHomotopy (cofibrantDKSourceFrame A X)
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHomotopyRetarget (roofCornerEvaluationRightHomotopy (cofibrantDKSourceFrame A X)
     (show (cofibrantAlgebraRelativeCategory A).category from Y)
     (SimplicialLocalization.hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)) b
     (cofibrantSourceRoofProductCommaCornerMap A X Y b))
     (cofibrantSourceRoofProductCommaCornerMap_diagram A X Y b) rfl
 
 def cofibrantSourceRoofProductGeometricLeftCell :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (cofibrantSourceRoofProductGeometricLeftHomotopy A X Y b))
 
 def cofibrantSourceRoofProductGeometricRightCell :=
-  SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
+  SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
     (cofibrantSourceRoofProductGeometricRightHomotopy A X Y b))
 
 lemma cofibrantSourceRoofProductGeometric_triangle :

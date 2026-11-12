@@ -32,7 +32,7 @@ def input {A Y Z : PointedSimplicialSet.{u}}
 
 /-- 元の二重 loop 族の外側の円を通常の円へ戻す射影。 -/
 def projection (Z : PointedSimplicialSet.{u}) : LoopExchangePaths.doubleLoop Z ⟶ target Z :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (PointedObject.basedHom CirclePower.space.{u} Z)
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (PointedObject.basedHom CirclePower.space.{u} Z)
 
 /-- 元の符号付き構造比較の左辺。 -/
 def left {A Y Z : PointedSimplicialSet.{u}}
@@ -40,12 +40,12 @@ def left {A Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) : A ⟶ target Z :=
   f ≫ PointedObject.basedHomMap CirclePower.space.{u}
     (Y := Y) (Z := PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u} Z).hom ≫
+    (g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z) ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} PointedSimplicialSet.circle.{u} Z).hom ≫
       PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
         (Y := PointedObject.basedHom CirclePower.space.{u} Z)
         (Z := PointedObject.basedHom CirclePower.space.{u} Z)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z)
 
 /-- 二つの普遍区間の共通端点。元の二度の符号反転を保持する。 -/
 def middle {A Y Z : PointedSimplicialSet.{u}}
@@ -57,7 +57,7 @@ def middle {A Y Z : PointedSimplicialSet.{u}}
 def right {A Y Z : PointedSimplicialSet.{u}}
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) : A ⟶ target Z :=
-  (f ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Y) ≫
+  (f ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Y) ≫
     PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
       (Y := Y) (Z := PointedObject.basedHom CirclePower.space.{u} Z) g
 
@@ -69,24 +69,24 @@ lemma left_eq {A Y Z : PointedSimplicialSet.{u}}
       projection Z := by
   let K : PointedSimplicialSet.{u} := CirclePower.space.{u}
   let C : PointedSimplicialSet.{u} := PointedSimplicialSet.circle.{u}
-  let qZ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} Z
-  let qD := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed CirclePower.unit.{u} (PointedObject.basedHom K Z)
-  let r := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
+  let qZ := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} Z
+  let qD := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed CirclePower.unit.{u} (PointedObject.basedHom K Z)
+  let r := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1)) Z
   let h := f ≫ (ihom K).map g
-  have hs := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.natural_pre_right
+  have hs := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeSecondSource.natural_pre_right
     (C := PointedSimplicialSet.{u}) K CirclePower.unit.{u} Z
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hs
-  change (ihom K).map qZ ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K C Z).hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K K Z).hom ≫ qD at hs
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hs
+  change (ihom K).map qZ ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K C Z).hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K K Z).hom ≫ qD at hs
   have hc := ((MonoidalClosed.pre CirclePower.unit.{u}).naturality r).symm
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hc
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hc
   change qD ≫ (ihom C).map r = (ihom K).map r ≫ qD at hc
   have he : f ≫ (ihom K).map (g ≫ qZ) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K C Z).hom ≫ (ihom C).map r =
-      ((h ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K K Z).hom) ≫ (ihom K).map r) ≫ qD := by
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K C Z).hom ≫ (ihom C).map r =
+      ((h ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K K Z).hom) ≫ (ihom K).map r) ≫ qD := by
     rw [Functor.map_comp]
     simp only [Category.assoc]
-    rw [← Category.assoc ((ihom K).map qZ) (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K C Z).hom
+    rw [← Category.assoc ((ihom K).map qZ) (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K C Z).hom
       ((ihom C).map r), hs]
     simp only [Category.assoc]
     rw [hc]
@@ -101,7 +101,7 @@ lemma right_eq {A Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     right f g = (input f g ≫ 𝟙 (LoopExchangePaths.doubleLoop Z)) ≫ projection Z := by
   have hn := ((MonoidalClosed.pre CirclePower.unit.{u}).naturality g).symm
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hn
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hn
   have he := congrArg (f ≫ ·) hn
   dsimp only [right, input, projection]
   simp only [Category.comp_id, Category.assoc] at he ⊢
@@ -111,7 +111,7 @@ lemma right_eq {A Y Z : PointedSimplicialSet.{u}}
 def firstPath {A Y Z W : PointedSimplicialSet.{u}}
     [KanComplex Z.right] [KanComplex W.right]
     (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     PointedMapping.VerticalPath (PointedObject.toPoint (target Z)) (left f g) (middle f g) :=
@@ -132,7 +132,7 @@ def secondPath {A Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
 lemma firstPath_h {A Y Z W : PointedSimplicialSet.{u}}
     [KanComplex Z.right] [KanComplex W.right]
     (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     (firstPath a ha f g).homotopy.h = (input f g).right ▷ (Δ[1] : SSet.{u}) ≫
@@ -155,7 +155,7 @@ lemma secondPath_h {A Y Z : PointedSimplicialSet.{u}} [KanComplex Z.right]
 lemma firstPath_restriction {A B Y Z W : PointedSimplicialSet.{u}}
     [KanComplex Z.right] [KanComplex W.right]
     (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) (j : B ⟶ A) :
     (firstPath a ha (j ≫ f) g).homotopy.h =
@@ -175,7 +175,7 @@ lemma secondPath_restriction {A B Y Z : PointedSimplicialSet.{u}} [KanComplex Z.
 /-- 元の符号付き随伴比較を、実際の二つの基点固定区間の有限鎖として構成する。 -/
 lemma chain {A Y Z W : PointedSimplicialSet.{u}} [KanComplex Z.right] [KanComplex W.right]
     (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
     (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
     (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z) :
     PointedMapping.VerticalChain (PointedObject.toPoint (target Z)) (left f g) (right f g) :=

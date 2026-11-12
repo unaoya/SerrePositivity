@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite SimplicialLocalization
-open SerrePositivity.SimplicialModel SerrePositivity.KST.Comparison
+open SerrePositivity.SimplicialModel
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 def cofibrantAlgebraKanDKHigherPiZeroEquiv :
@@ -28,18 +28,18 @@ def cofibrantAlgebraKanDKHigherPiZeroEquiv :
         SSet.π₀ (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y) :=
   (cAlgMappingSpaceComponentsIso A
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)).toEquiv.trans
-      (UniverseLiftPiZero.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.equiv (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y))
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_unit
     (z : SSet.π₀ (localizationHom (cofibrantAlgebraRelativeCategory A)
       (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-        (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) z) =
       cofibrantAlgebraDKHigherPiZeroEquiv A X Y z := by
   have h := ConcreteCategory.congr_hom (cAlgMappingSpaceComponentsIso_unit A
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z
-  exact congrArg (UniverseLiftPiZero.down (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y)) h
+  exact congrArg (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.down (((cofibrantAlgebraMappingSpace A).obj (op X)).obj Y)) h
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_eq :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y = cofibrantAlgebraKanDKPiZeroEquiv A X Y := by
@@ -49,7 +49,7 @@ lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_eq :
     (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)
   obtain ⟨t, rfl⟩ := e.surjective z
   change cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-      (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+      (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
         (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y))) t) = _
   rw [cofibrantAlgebraKanDKHigherPiZeroEquiv_unit, cofibrantAlgebraDKHigherPiZeroEquiv_eq]
   change cofibrantAlgebraDKPiZeroEquiv A X Y t =
@@ -65,7 +65,7 @@ lemma cofibrantAlgebraDKHigherPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : 
 
 lemma cofibrantAlgebraKanDKHigherPiZeroEquiv_class {X Y : CofibrantAlgebra A} (f : X ⟶ Y) :
     cofibrantAlgebraKanDKHigherPiZeroEquiv A X Y
-        (SSet.mapπ₀ (exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
+        (SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (localizationHom (cofibrantAlgebraRelativeCategory A)
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)))
           (localizationArrowClass (cofibrantAlgebraRelativeCategory A)
             ((ULiftHom.up.{u, u + 1, u + 1} (C := CofibrantAlgebra A)).map f))) =

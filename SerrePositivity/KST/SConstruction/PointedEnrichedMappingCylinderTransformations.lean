@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedEnrichedMappingCylinderNaturality
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 
 /-! # 同じ実写像円柱の比較を束ねた厳密豊穣自然変換
 概要：全 Hom に自然な元の円柱包含・標的包含・源比較・射影を自然変換に束ねる。
@@ -22,28 +22,28 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 def pointedEnrichedMappingCylinderCylinderTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (F.comp SSet pointedTensorCylinderFunctor) (pointedEnrichedMappingCylinderFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderCylinder F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderCylinder F G t h)
     (pointedEnrichedMappingCylinderCylinder_whisker F G t h)
 
 /-- 同じ標的包含を成分とする厳密豊穣自然変換。 -/
 def pointedEnrichedMappingCylinderTargetTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) G
       (pointedEnrichedMappingCylinderFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderTarget F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderTarget F G t h)
     (pointedEnrichedMappingCylinderTarget_whisker F G t h)
 
 /-- 同じ一端を使う源比較を成分とする厳密豊穣自然変換。 -/
 def pointedEnrichedMappingCylinderSourceTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) F
       (pointedEnrichedMappingCylinderFunctor F G t h) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderSource F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderSource F G t h)
     (pointedEnrichedMappingCylinderSource_whisker F G t h)
 
 /-- 同じ実射影を成分とする厳密豊穣自然変換。 -/
 def pointedEnrichedMappingCylinderProjectionTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (pointedEnrichedMappingCylinderFunctor F G t h) G :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderProjection F G t h)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationOfWhisker _ _ (pointedEnrichedMappingCylinderProjection F G t h)
     (pointedEnrichedMappingCylinderProjection_whisker F G t h)
 
 /-- 円柱包含の成分は元の同じ実射そのもの。 -/

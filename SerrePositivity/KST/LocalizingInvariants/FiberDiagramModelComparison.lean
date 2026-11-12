@@ -25,9 +25,9 @@ local instance diagramModelComparisonCategory : SimplicialCategory OmegaSpectrum
 
 variable {D E : FiberDiagram.{u}} (f : D ⟶ E)
 
-lemma vertex_map_evaluate (i j : Fin 2) : (vertex i j).map f = functorHomEvaluate f
+lemma vertex_map_evaluate (i j : Fin 2) : (vertex i j).map f = _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate f
     (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) :=
-  functorCellToNatTrans_app_eq_evaluate f _
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorCellToNatTrans_app_eq_evaluate f _
 
 def modelComparison : normalized D ⟶ normalized E :=
   HomotopySquareFiberComparison.squareHom (NativeFiber.rightMap D.triangle)

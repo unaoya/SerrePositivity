@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKappaSplitPerfEvaluation
 public import SerrePositivity.DifferentialGraded.Module.Hom.HomotopyAndOperations
-public import SerrePositivity.InfinityCategories.Derived.FullColimitReflection
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FullColimitReflection
 
 /-!
 概要：元の各 Perf ラベルの分裂を、同じ実右 dg 加群の cone へ接続する。
@@ -46,25 +46,25 @@ def dgKappaModuleLabelAction :=
 /-- 元の点ごとの全四角形を、そのまま実右 dg 加群へ送る。 -/
 def dgKappaSplitModuleSquare (Z : DGKappaZeroInput R D I) :=
   (dgKappaSplitPerfPointwiseSquare R D I X Z ≫
-    dgNerve.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) ≫
-      dgNerve.map (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
 
 /-- 上下二胞体を含む実加群四角形は、同じ元の閉分裂四角形のラベル作用像に等しい。 -/
 theorem dgKappaSplitModuleSquare_closed (Z : DGKappaZeroInput R D I) :
     dgKappaSplitModuleSquare R D I X Z =
       dgKappaSplitClosedSquare R D I Z ≫
         nerveMap (dgKappaModuleLabelAction R D I X).onClosed ≫
-          closedNerveInclusion R (RightModule R (DGKappaCone R D I)) := by
+          _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I)) := by
   dsimp only [dgKappaSplitModuleSquare]
   rw [dgKappaSplitPerfPointwiseSquare_closed]
-  simp only [Category.assoc, closedNerveInclusion_dgFunctor]
+  simp only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion_dgFunctor]
   have hc := closedLabelNerve_comp
     (presentedPerfectDGLabelAction R (DGKappaCone R D I) (DGKappaCone R D I) X)
     (presentedPerfectDGEvaluation R (DGKappaCone R D I))
     (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ)
   simpa only [Category.assoc, dgKappaPerfLabelFunctor, dgKappaModuleLabelAction] using
     congrArg (fun m => dgKappaSplitClosedSquare R D I Z ≫ m ≫
-      closedNerveInclusion R (RightModule R (DGKappaCone R D I))) hc
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveInclusion R (RightModule R (DGKappaCone R D I))) hc
 
 /-- 同じ閉注入と右射影の実加群での零合成。 -/
 theorem dgKappaSplitModule_head_tail :
@@ -132,13 +132,13 @@ theorem dgKappaSplitModuleConeSection_projection :
 /-- 同じ点ごとの四角形の全右 dg 加群像の cofiber 性から、元の Perf での性質を反映する。 -/
 theorem dgKappaSplitPerfPointwiseSquare_isPushout_of_module
     (Z : DGKappaZeroInput R D I)
-    (h : IsPushoutSquare ((dgKappaSplitPerfPointwiseSquare R D I X Z ≫
-        dgNerve.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) ≫
-      dgNerve.map (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ))) :
-    IsPushoutSquare (dgKappaSplitPerfPointwiseSquare R D I X Z) := by
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((dgKappaSplitPerfPointwiseSquare R D I X Z ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation R (DGKappaCone R D I))) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R (DGKappaCone R D I) Set.univ))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (dgKappaSplitPerfPointwiseSquare R D I X Z) := by
   apply (dgKappaSplitPerfPointwiseSquare_isPushout_iff_evaluation R D I X Z).mpr
-  apply DGNerve.isColimitCone_of_fullInclusion R (RightModule R (DGKappaCone R D I))
-    (modulePerfectProjectiveOver R (DGKappaCone R D I) Set.univ) (pushoutCocone _)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.isColimitCone_of_fullInclusion R (RightModule R (DGKappaCone R D I))
+    (modulePerfectProjectiveOver R (DGKappaCone R D I) Set.univ) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.pushoutCocone _)
   exact h
 
 end SerrePositivity.KST.NonConnective

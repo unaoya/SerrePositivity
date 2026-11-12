@@ -27,23 +27,23 @@ def unitPoint (W : MorphismProperty C) (X : Paths C) (n : SimplexCategoryᵒᵖ)
     MarkedSpine W X n X := nil X (AllMarked.nativeUnitPoint W X n)
 
 lemma glue_unit (W : MorphismProperty C) (X : Paths C) (n : SimplexCategoryᵒᵖ) :
-    glue (unitPoint W X n) = (colimitUnit W.paths X).app n PUnit.unit :=
+    glue (unitPoint W X n) = (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X).app n PUnit.unit :=
   AllMarked.inclusion_unitPoint W X n
 
 lemma append_left_unit (t : MarkedSpine W Y n X) : append (unitPoint W X n) t = t := by
   apply glue_injective
-  rw [glue_append, glue_unit, ← arrowPoint_identity]
-  exact composePoint_identity_left W.paths (glue t)
+  rw [glue_append, glue_unit, ← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_left W.paths (glue t)
 
 lemma append_right_unit (t : MarkedSpine W Y n X) : append t (unitPoint W Y n) = t := by
   apply glue_injective
-  rw [glue_append, glue_unit, ← arrowPoint_identity]
-  exact composePoint_identity_right W.paths (glue t)
+  rw [glue_append, glue_unit, ← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_right W.paths (glue t)
 
 lemma append_assoc (s : MarkedSpine W Y n X) (t : MarkedSpine W Z n Y)
     (r : MarkedSpine W T n Z) : append (append s t) r = append s (append t r) := by
   apply glue_injective
-  simp only [glue_append, composePoint_assoc]
+  simp only [glue_append, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_assoc]
 
 def unitMap (W : MorphismProperty C) (X : Paths C) : 𝟙_ SSet.{u} ⟶ space W X X where
   app n := ↾fun _ => unitPoint W X n
@@ -53,7 +53,7 @@ def unitMap (W : MorphismProperty C) (X : Paths C) : 𝟙_ SSet.{u} ⟶ space W 
     exact (congrArg (nil X) (AllMarked.nativeUnitPoint_simplex W X θ)).symm
 
 lemma unitMap_gluing (W : MorphismProperty C) (X : Paths C) :
-    unitMap W X ≫ gluing W X X = colimitUnit W.paths X := by
+    unitMap W X ≫ gluing W X X = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W.paths X := by
   ext n p
   exact glue_unit W X n
 

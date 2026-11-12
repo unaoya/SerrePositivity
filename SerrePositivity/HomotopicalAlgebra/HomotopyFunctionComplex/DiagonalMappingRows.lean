@@ -49,8 +49,8 @@ abbrev obj (A : SimplexCategory ⥤ SimplexCategory ⥤ C) (Z : C) :
 /-- The constant original mapping space maps naturally to all outer rows. -/
 def comparison {A : SimplexCategory ⥤ SimplexCategory ⥤ C} {B : SimplexCategory ⥤ C}
     (a : A ⟶ (Functor.const SimplexCategory).obj B) (Z : C) :
-    (Functor.const SimplexCategoryᵒᵖ).obj ((cosimplicialHom B).obj Z) ⟶ obj A Z where
-  app n := (cosimplicialHomMap (a.app n.unop)).app Z
+    (Functor.const SimplexCategoryᵒᵖ).obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom B).obj Z) ⟶ obj A Z where
+  app n := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (a.app n.unop)).app Z
   naturality {n m} f := by
     ext k h
     change (a.app m.unop).app k.unop ≫ h =

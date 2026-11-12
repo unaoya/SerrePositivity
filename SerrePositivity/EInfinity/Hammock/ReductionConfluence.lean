@@ -26,7 +26,7 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X Y : C) (n : SimplexCategoryᵒᵖ)
 
-lemma reduction_local_join {r s t : RawHammock W X Y n}
+lemma reduction_local_join {r s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (hs : Reduction W X Y n r s) (ht : Reduction W X Y n r t) :
     ∃ q, Relation.ReflGen (Reduction W X Y n) s q ∧
       Relation.ReflGen (Reduction W X Y n) t q := by
@@ -42,7 +42,7 @@ lemma reduction_local_join {r s t : RawHammock W X Y n}
       exact ⟨q, hq', hq⟩
     | erase k τ hk => exact erase_erase_join W X Y τ j k hj hk
 
-lemma reduction_church_rosser {r s t : RawHammock W X Y n}
+lemma reduction_church_rosser {r s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (hs : Relation.ReflTransGen (Reduction W X Y n) r s)
     (ht : Relation.ReflTransGen (Reduction W X Y n) r t) :
     Relation.Join (Relation.ReflTransGen (Reduction W X Y n)) s t := by
@@ -51,17 +51,17 @@ lemma reduction_church_rosser {r s t : RawHammock W X Y n}
   obtain ⟨q, hbq, hcq⟩ := reduction_local_join W X Y n hab hac
   exact ⟨q, hbq, hcq.to_reflTransGen⟩
 
-lemma chain_eq_of_reduced {r s : RawHammock W X Y n}
-    (hr : RawHammock.IsReduced W X Y r)
+lemma chain_eq_of_reduced {r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
+    (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.IsReduced W X Y r)
     (h : Relation.ReflTransGen (Reduction W X Y n) r s) : r = s := by
   rcases h.cases_head with he | ⟨t, ht, _⟩
   · exact he
   · exact False.elim (no_reduction_of_reduced W X Y n hr ht)
 
-lemma reduced_representative_unique {r s t : RawHammock W X Y n}
+lemma reduced_representative_unique {r s t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (hs : Relation.ReflTransGen (Reduction W X Y n) r s)
     (ht : Relation.ReflTransGen (Reduction W X Y n) r t)
-    (hsr : RawHammock.IsReduced W X Y s) (htr : RawHammock.IsReduced W X Y t) : s = t := by
+    (hsr : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.IsReduced W X Y s) (htr : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.IsReduced W X Y t) : s = t := by
   obtain ⟨q, hsq, htq⟩ := reduction_church_rosser W X Y n hs ht
   exact (chain_eq_of_reduced W X Y n hsr hsq).trans
     (chain_eq_of_reduced W X Y n htr htq).symm

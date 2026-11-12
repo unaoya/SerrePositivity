@@ -22,7 +22,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 元の全二単体を持つ、元の四辺と共通対角辺の実合成三角形対の保存データ。 -/
 def monicKTracedCoherentTripleCompositionDiamondData :=
-  _root_.SerrePositivity.InfinityCategories.Kan.triangleDiamondCompositionData
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.triangleDiamondCompositionData
     (coherentTriangleMappingEdge (monicKTracedSpectrumMap F f)
       (monicKTracedSpectrumMap F (g ≫ h)) (monicKTracedSpectrumMap F (f ≫ g ≫ h))
       (monicKTracedCoherentComposition F f (g ≫ h)))

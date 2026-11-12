@@ -20,30 +20,30 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve ComplexLimits
+open ComplexLimits
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma freeProbeDerivedUnitNormalizedHom_family (X Y : Complex A) (K : SSet.{u + 1})
     (g : K ⟶ SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A
         ((freeProbeFunctor A).obj X).carrier)).obj Y)) :
-    intervalFamilyHom (g ≫ SSet.uliftFunctor.{u + 1, u}.map
-      ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ SSet.uliftFunctor.{u + 1, u}.map
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map
         ((operad A).freeAlgebraAdjunction.unit.app
           ((ComplexLimits.framedLimitProbeFunctor A).obj X)))).app Y) ≫
       (normalizedTensorPinchedIso A ((ComplexLimits.framedLimitProbeFunctor A).obj X) Y).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-        (Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (Simplex.vertex Y) ≫
-      intervalFunctorMap (complexSemifreeResolutionInfinity A)
-        (Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (Simplex.vertex Y)) =
-    constantFunctorHomMap K (freeProbeDerivedUnitAmbientHom A X) ≫
-      intervalFamilyHom (g ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (complexSemifreeResolutionInfinity A)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((ComplexLimits.framedLimitProbeFunctor A).obj X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (freeProbeDerivedUnitAmbientHom A X) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫
         (normalizedTensorPinchedIso A ((freeProbeFunctor A).obj X).carrier Y).hom ≫
-        pinchedHomToIntervalMappingSpace (X := dgNerve A (Complex A))
-          (Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (Simplex.vertex Y) ≫
-        intervalFunctorMap (complexSemifreeResolutionInfinity A)
-          (Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (Simplex.vertex Y)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (complexSemifreeResolutionInfinity A)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex ((freeProbeFunctor A).obj X).carrier) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) := by
   rw [freeProbeDerivedUnitAmbientHom_eq]
   exact normalizedTensorHom_precomp_family_map A (complexSemifreeResolutionInfinity A)
     (X := ((freeProbeFunctor A).obj X).carrier)

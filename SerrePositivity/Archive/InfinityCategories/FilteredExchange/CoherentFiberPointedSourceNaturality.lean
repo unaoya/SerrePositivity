@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanPointedConeLift
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationTotalMap
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationTotalMap
 
 /-!
 概要：元の fiber 射と pointed 始点族の合成を、縮小前の実際の全空間作用へ同定する。

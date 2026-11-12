@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.SpectrumLoop
 lemma totalGroup_subsingleton (x : hoFunctor.obj diagrams.{u}) (j : ℤ) :
     Subsingleton (NativeFiber.group (fiberDiagramAt x.as.as).triangle 1 0 j) :=
   SpectrumHo.piFunctor_subsingleton_of_isZero _
-    (fullSubcomplexOnVertices_vertex x.as.as).2.1 j
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex x.as.as).2.1 j
 
 lemma boundary_bijective (x : hoFunctor.obj diagrams.{u}) (j : ℤ) :
     Function.Bijective (NativeFiber.boundary (fiberDiagramAt x.as.as).triangle
@@ -51,8 +51,8 @@ def boundaryNatIso (j : ℤ) :
       exact (FiberDiagram.boundary_natural (fiberDiagrams.map f) j a).symm)
 
 def piShiftIso (j : ℤ) :
-    (hoFunctor.map (loopDiagramEvaluation Sp.{u} 0 0)).toFunctor ⋙ SpectrumHo.piFunctor j ≅
-      (hoFunctor.map (loopDiagramEvaluation Sp.{u} 1 1)).toFunctor ⋙
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 0 0)).toFunctor ⋙ SpectrumHo.piFunctor j ≅
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} 1 1)).toFunctor ⋙
         SpectrumHo.piFunctor (j + 1) :=
   ((Functor.isoWhiskerRight (vertexIso 1 1) (SpectrumHo.piFunctor (j + 1))).symm ≪≫
     boundaryNatIso j ≪≫ Functor.isoWhiskerRight (vertexIso 0 0) (SpectrumHo.piFunctor j)).symm

@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 四対象を固定した、元の両 cell の鎖射の tensor。 -/
-def cubicalSerreCellTensor {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+def cubicalSerreCellTensor {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (serreConcreteCubeComplexFunctor A).obj c ⊗
         (serreConcreteCubeComplexFunctor A).obj d ⟶
@@ -57,7 +57,7 @@ lemma cubicalSerreTensorCocone_leg (K L : CubicalSet.{u})
 /-- 元の全ての両 cell の tensor への制限で射を判定する。 -/
 lemma cubicalSerreTensor_hom_ext {K L : CubicalSet.{u}} {T : Complex A}
     {f g : (cubicalSerreChains A).obj K ⊗ (cubicalSerreChains A).obj L ⟶ T}
-    (h : ∀ (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
+    (h : ∀ (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
       cubicalSerreCellTensor A c d x y ≫ f =
         cubicalSerreCellTensor A c d x y ≫ g) : f = g := by
   apply (cubicalSerreTensorIsColimit A K L).hom_ext

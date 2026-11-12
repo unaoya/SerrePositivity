@@ -1,10 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.Categories.PointedSpaces
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
-public import SerrePositivity.InfinityCategories.Core.Limit
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.PointedSpaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoreLimit
 
 /-!
 概要：native な錐全体を、指定した始点の族を保って pointed space へ持ち上げる。

@@ -14,20 +14,20 @@ open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
 
 /-- 元の包含と商の合成を零化する円柱は、同じ相対核包含による元の円柱の制限。 -/
-def quotientSKernelNullCylinder (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+def quotientSKernelNullCylinder (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     simplicialDiagonalFunctor.obj
-      (simplicialSConstruction A.obj ⋙ quasicategoryCoreFunctor) ⊗ (Δ[1] : SSet.{u}) ⟶
+      (simplicialSConstruction A.obj ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor) ⊗ (Δ[1] : SSet.{u}) ⟶
         simplicialDiagonalFunctor.obj
-          (simplicialSConstruction C.obj ⋙ quasicategoryCoreFunctor) :=
+          (simplicialSConstruction C.obj ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor) :=
   (simplicialDiagonalFunctor.map
     (relativeSimplicialSConstructionCoreInclusion (i.hom ≫ q.hom)) ▷ (Δ[1] : SSet.{u})) ≫
       (quotientSKernelDiagonalContractionImage h).h
 
 /-- 同じ制限円柱の零端は、元の相対零図式の商像で指定した同じ点を通る。 -/
-theorem quotientSKernelNullCylinder_zero (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem quotientSKernelNullCylinder_zero (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     SSet.ι₀ ≫ quotientSKernelNullCylinder h =
       toUnit _ ≫ quotientSKernelDiagonalPoint h := by
   rw [quotientSKernelNullCylinder, SSet.ι₀_comp_assoc,
@@ -38,7 +38,7 @@ theorem quotientSKernelNullCylinder_zero (h : _root_.SerrePositivity.InfinityCat
   rw [ht]
 
 /-- 同じ制限円柱の終端は、元の包含の実現射と元の商の実現射の実合成。 -/
-theorem quotientSKernelNullCylinder_one (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+theorem quotientSKernelNullCylinder_one (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     SSet.ι₁ ≫ quotientSKernelNullCylinder h =
       simplicialDiagonalFunctor.map (coreSExactMap i) ≫
         simplicialDiagonalFunctor.map (coreSExactMap q) := by
@@ -47,7 +47,7 @@ theorem quotientSKernelNullCylinder_one (h : _root_.SerrePositivity.InfinityCate
   exact (quotientSKernelRealizationSquare i q).w
 
 /-- 元の包含・商の合成に対する、指定した相対核円柱から来る具体的な零化。 -/
-def quotientSKernelNullHomotopy (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) :
+def quotientSKernelNullHomotopy (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) :
     SSet.Homotopy (toUnit _ ≫ quotientSKernelDiagonalPoint h)
       (simplicialDiagonalFunctor.map (coreSExactMap i) ≫
         simplicialDiagonalFunctor.map (coreSExactMap q)) where

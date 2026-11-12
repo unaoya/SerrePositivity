@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
 
 /-- 零完全関手の一重実現は、同じ零対象の零図式への定値写像。 -/
-lemma singleRealization_constantZero (X : StableModel.{u}) (z : ZeroVertex X.carrier) :
+lemma singleRealization_constantZero (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
     (multiRealizationFunctor 1).map (stableConstantZero X z) =
       SSet.const (Y := (multiRealizationFunctor 1).obj X)
         (coreSConstructionZeroVertex 0 z.vertex z.isZero) := by
@@ -33,7 +33,7 @@ lemma singleRealization_constantZero (X : StableModel.{u}) (z : ZeroVertex X.car
   rfl
 
 /-- 同じ零関手は一重実現の全零境界商上で厳密に零射となる。 -/
-lemma singleBoundary_constantZero (X : StableModel.{u}) (z : ZeroVertex X.carrier) :
+lemma singleBoundary_constantZero (X : StableModel.{u}) (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex X.carrier) :
     boundaryReducedRealizationMap 0 (stableConstantZero X z) = 0 := by
   apply PointedObject.cofiber_hom_ext (zeroDirectionsFatBoundary 1 X).ι
   change boundaryReductionQuotient 0 X ≫

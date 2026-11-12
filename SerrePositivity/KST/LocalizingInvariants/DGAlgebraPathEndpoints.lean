@@ -66,7 +66,7 @@ lemma endpointsHom_difference : endpointsHom R B ≫ difference R B =
 def endpointsHomotopy : Homotopy (source R B).hom (target R B).hom := by
   let h : Cochain (algebra R B).X B.X (-1) := mappingCocone.snd (difference R B)
   have hb : δ (-1) 0 h + Cochain.ofHom (endpointsHom R B ≫ difference R B) = 0 :=
-    complexMappingCocone_snd_boundary (difference R B)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCocone_snd_boundary (difference R B)
   rw [endpointsHom_difference, Cochain.ofHom_sub] at hb
   refine (Cochain.equivHomotopy _ _).symm ⟨-h, ?_⟩
   rw [δ_neg, eq_neg_of_add_eq_zero_left hb, neg_neg]

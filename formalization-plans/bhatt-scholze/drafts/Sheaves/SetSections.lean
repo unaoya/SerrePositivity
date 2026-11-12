@@ -3,21 +3,22 @@
 -- F2 の重み付き切断 API を包むだけで、S8 の層化・局所同値には依存しない。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Tensor.SetSections
-public import SerrePositivity.InfinityCategories.Core.RightFibrationReflection
-public import SerrePositivity.InfinityCategories.Core.TerminalTransport
-public import SerrePositivity.InfinityCategories.F1.Universe.QCatEquivalence
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.QCatEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictNerveMaps
-public import SerrePositivity.InfinityCategories.F2.Idempotent.PointConeLimit
-public import SerrePositivity.InfinityCategories.F1B.Idempotent.PointJoinNerveExt
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.SimplexConeRestriction
+public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSections
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.RightFibrationReflection
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalTransport
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.QCatEquivalence
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.NerveComparison.QCatEquivalence
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseConeRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictNerveMaps
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.PointConeLimit
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.PointJoinNerveExt
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SimplexConeRestriction
 public import Mathlib.CategoryTheory.Limits.Preserves.Shapes.Terminal
-public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
-public import SerrePositivity.InfinityCategories.F2.Presentable.PresentableSmallLimits
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalentConeRestriction
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.ConeNaturality
+public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSectionsNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableSmallLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.EquivalentConeRestriction
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeNaturality
 public import Mathlib.CategoryTheory.Elements
 public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
 -- 本ファイルは drafts/Sheaves/SheafCondition.lean を import する。
@@ -35,7 +36,7 @@ universe u
 open CategoryTheory Limits SSet
 open scoped Simplicial
 namespace SerrePositivity.InfinityCategories.Sheaves
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u + 1}} [Quasicategory E]
 
 /-- 概要：Γ(F, O) の図式：F の元の圏 `F.Elements`（Mathlib `CategoryTheory.Functor.Elements`、射影 `Functor.Elements.π F : F.Elements ⥤ 𝒞ᵒᵖ`）の nerve を
@@ -48,7 +49,7 @@ def sectionsOfDiagram (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
   (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (Functor.Elements.π F)) ≫ O
 
 /-- 概要：E が表示可能なら上の図式は極限をもつ（添字は小さい）。 -/
-theorem sectionsOfDiagram_hasLimit (hE : F2.Presentable.IsPresentable E) (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
+theorem sectionsOfDiagram_hasLimit (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (F : 𝒞ᵒᵖ ⥤ Type u) (O : Presheaf 𝒞 E) :
     HasLimit (sectionsOfDiagram F O) := hE.hasLimit _
 
 /-- 概要：S8-4：切断 Γ(F, O) := lim_{el(F)} O（重み付き極限）。選んだ極限錐の頂点。
@@ -154,7 +155,7 @@ lemma representableSectionsCone_vertex (U : 𝒞) (F : Presheaf 𝒞 E) :
     (representableSectionsCone U F).vertex =
       F.app _ (ULift.up (nerveVertex (Opposite.op U))) := by
   rw [representableSectionsCone, JoinCone.vertex_postcomp,
-    SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
+    SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
   rfl
 
 /-- 元の圏の始対象 (U,id) を、大きい宇宙の点として指定する。 -/
@@ -195,7 +196,7 @@ lemma representableSectionsCone_point_val (U : 𝒞) (F : Presheaf 𝒞 E) :
     apply F2.Idempotent.pointJoinNerve_hom_ext
     · apply SSet.yonedaEquiv.injective
       change (HomotopyLimits.nerveAsSmallIso 𝒞ᵒᵖ).hom.app _ c.vertex = _
-      rw [SerrePositivity.InfinityCategories.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
+      rw [SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift_vertex, F1B.nerveCone_vertex]
       rfl
     · apply SSet.yonedaEquiv.injective
       rw [representableSectionsInitialPoint_eq]

@@ -26,13 +26,13 @@ open CategoryTheory Opposite
 open SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：反復自由相対圏の元の対象の標準表示（Dwyer–Kan）。
 方針：元の対象へ一文字の列の対象写像を反復する。
 規約：自由圏の対象は元の対象を保持する。
 使われ方：全次数の固定 Hom への元の射の移送。 -/
-def freeResolutionGeneratorObject : (n : ℕ) → C.category → (power freeRelativeComonad C n).category
+def freeResolutionGeneratorObject : (n : ℕ) → C.category → (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n).category
   | 0, X => X
   | n + 1, X => (Paths.of _).obj (freeResolutionGeneratorObject n X)
 
@@ -41,7 +41,7 @@ def freeResolutionGeneratorObject : (n : ℕ) → C.category → (power freeRela
 規約：元の comonad の同じ augmentation。
 使われ方：局所化した標準対象と固定表示の同定。 -/
 lemma freeResolutionGeneratorObject_augmentation (n : ℕ) (X : C.category) :
-    (augmentation freeRelativeComonad C n).functor.obj (freeResolutionGeneratorObject C n X) =
+    (augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n).functor.obj (freeResolutionGeneratorObject C n X) =
       X := by
   induction n with
   | zero => rfl
@@ -53,17 +53,17 @@ lemma freeResolutionGeneratorObject_augmentation (n : ℕ) (X : C.category) :
 使われ方：元の自由射を固定 Hom の単体へ移す。 -/
 lemma localizedFreeResolutionObject_generator (n : ℕ) (X : C.category) :
     localizedFreeResolutionObject C (op ⦋n⦌) X =
-      (power freeRelativeComonad C (n + 1)).weakEquivalences.Q.obj
+      (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).weakEquivalences.Q.obj
         (freeResolutionGeneratorObject C (n + 1) X) := by
   apply (localizedFreeResolutionObjectEquiv C (op ⦋n⦌)).injective
   change ((localizedFreeResolutionAugmentation C).app (op ⦋n⦌)).toFunctor.obj
       (localizedFreeResolutionObject C (op ⦋n⦌) X) =
-    (strictLocalizationMap (augmentation freeRelativeComonad C (n + 1))).obj
-      ((power freeRelativeComonad C (n + 1)).weakEquivalences.Q.obj
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap (augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1))).obj
+      ((power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).weakEquivalences.Q.obj
         (freeResolutionGeneratorObject C (n + 1) X))
   rw [localizedFreeResolutionAugmentation_object]
   have h := Functor.congr_obj
-    (strictLocalizationMap_fac (augmentation freeRelativeComonad C (n + 1)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.strictLocalizationMap_fac (augmentation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)))
     (freeResolutionGeneratorObject C (n + 1) X)
   simpa only [Functor.comp_obj, freeResolutionGeneratorObject_augmentation] using h.symm
 
@@ -75,7 +75,7 @@ def localizationResolutionHom (n : ℕ) {X Y : C.category}
     (f : freeResolutionGeneratorObject C (n + 1) X ⟶
       freeResolutionGeneratorObject C (n + 1) Y) : (localizationHom C X Y) _⦋n⦌ :=
   eqToHom (localizedFreeResolutionObject_generator C n X) ≫
-    (power freeRelativeComonad C (n + 1)).weakEquivalences.Q.map f ≫
+    (power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C (n + 1)).weakEquivalences.Q.map f ≫
       eqToHom (localizedFreeResolutionObject_generator C n Y).symm
 
 /-- 概要：標準射の表示は元の恒等射を保つ（Dwyer–Kan）。

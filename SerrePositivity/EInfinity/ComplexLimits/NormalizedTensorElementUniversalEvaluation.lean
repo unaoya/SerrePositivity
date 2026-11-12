@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementUniversalFamily_evaluation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     normalizedTensorElementUniversalFamily A X Y c ≫
-      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
         (homPostcompose X ((normalizedTensorElementEvaluation A X Y).app (c.obj (Fin.last n)))) =
     SSet.uliftFunctor.{u + 1, u}.map
       (SSet.stdSimplex.map (normalizedTensorElementTerminalParameter A X Y c)) ≫
@@ -35,10 +35,10 @@ lemma normalizedTensorElementUniversalFamily_evaluation {n : ℕ}
 lemma normalizedTensorElementUniversalFamily_augmentation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     normalizedTensorElementUniversalFamily A X Y c ≫
-      pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
         (homPostcompose X
           ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n)))) =
-    SSet.const (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
+    SSet.const (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X))) := by
   let l := SSet.uliftFunctor.{u + 1, u}.map
     (SSet.stdSimplex.map (normalizedTensorElementTerminalParameter A X Y c))
   have h := normalizedTensorUniversalSimplex_augmentation_identity A X

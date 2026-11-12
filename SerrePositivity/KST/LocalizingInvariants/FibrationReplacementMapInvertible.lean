@@ -32,7 +32,7 @@ lemma unitPath_hom : SpectrumHo.hom (fibrationReplacementUnit p) ≫ SpectrumHo.
   simpa only [SpectrumHo.hom_comp] using he
 
 lemma map_isInvertible (ha : PiIsomorphism a) :
-    IsInvertibleEdge (coherentNerveEdge (map p q a b h)).toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (map p q a b h)).toTruncated := by
   haveI : IsIso (SpectrumHo.hom (fibrationReplacementUnit p)) :=
     isInvertible_of_piIsomorphism _ (fibrationReplacementUnit_piIsomorphism p)
   haveI : IsIso (SpectrumHo.hom (fibrationReplacementUnit q)) :=

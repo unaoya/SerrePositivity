@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
 public import SerrePositivity.KST.SConstruction.TerminalPathEvaluation
 public import SerrePositivity.KST.Spectra.UnpointedPathEvaluation
-public import SerrePositivity.InfinityCategories.Core.ContractibleKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
 
 /-! # 終点固定 path 空間の全境界充填
 概要：終点固定 path 空間は Kan 標的に対して可縮 Kan 複体になる。
@@ -34,7 +34,7 @@ lemma terminalPathSpace_terminal_rlp (B : PointedSimplicialSet.{u}) [KanComplex 
 
 /-- 終点固定 path 空間は全境界を充填できる可縮 Kan 複体。 -/
 lemma terminalPathSpace_isContractibleKan (B : PointedSimplicialSet.{u}) [KanComplex B.right] :
-    IsContractibleKan (terminalPathSpace B).right := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (terminalPathSpace B).right := by
   intro n b
   let : HasLiftingProperty (boundary.{u} n).ι
       (terminal.from (terminalPathSpace B).right) :=

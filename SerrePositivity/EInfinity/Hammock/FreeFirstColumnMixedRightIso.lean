@@ -22,7 +22,7 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory MonoidalCategory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y Z : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y Z : C.category)
 def freeMixedFirstRightSpaceMap :=
   rightSpaceMap (freeFirstMarkedObjectEquiv C) (freeMixedFirstTargetObjectEquiv C w X Y)
     (freeMixedFirstMarkedObjectEquiv_naturality C w X Y)
@@ -57,10 +57,10 @@ def freeMixedFirstTargetRightSpaceIso :
     rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (forwardBackwardData C w X Y))
       (freeMixedFirstTargetObjectEquiv C w X Y)
       (freeMixedFirstTargetObjectEquiv_naturality C w X Y) Z ≅
-    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y))
+    rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y))
         (freeFirstTargetObjectEquiv C w X Y)
         (freeFirstTargetObjectEquiv_naturality C w X Y) Z ⊗
-      rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (backwardBackwardData C w X Y))
+      rightSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardData C w X Y))
         (freeBackwardFirstTargetObjectEquiv C w X Y)
         (freeBackwardFirstTargetObjectEquiv_naturality C w X Y) Z where
   hom :=

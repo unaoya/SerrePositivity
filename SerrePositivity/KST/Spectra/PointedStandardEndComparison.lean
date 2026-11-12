@@ -13,7 +13,7 @@ public import SerrePositivity.KST.Spectra.PointedTotalizationEndIso
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedTotalization
 noncomputable section
@@ -30,7 +30,7 @@ lemma standardEnd_kanComplex (X : CosimplicialObject PointedSimplicialSet.{u})
   let e : (obj X).right ≅ (PointedWeightedEnd.obj
       (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)).right :=
     PointedSimplicialSet.forget.mapIso (standardEndIso X)
-  exact kanComplex_of_iso e
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso e
 
 /-- 終頂点の重みの前合成は、点つき enriched end でも全基点 π 同型。 -/
 lemma standardEnd_preMap_piIsomorphism
@@ -39,7 +39,7 @@ lemma standardEnd_preMap_piIsomorphism
       (terminal.from (X ⋙ PointedSimplicialSet.forget))) :
     letI := standardEnd_kanComplex X hX
     letI := weightedEnd_kanComplex X hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedWeightedEnd.preMap
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedWeightedEnd.preMap
       CosimplicialLastVertex.weightMap (AsSmall.down ⋙ X)).right := by
   let := kanComplex X ((CosimplicialHornFibration.terminal_iff _).mp hX)
   let := standardEnd_kanComplex X hX
@@ -50,9 +50,9 @@ lemma standardEnd_preMap_piIsomorphism
   let e : (PointedWeightedEnd.obj
       (AsSmall.down ⋙ stdSimplex) (AsSmall.down ⋙ X)).right ≅ (obj X).right :=
     PointedSimplicialSet.forget.mapIso (standardEndIso X).symm
-  have h := (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e).comp
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e).comp
       (weightedEndComparison_piIsomorphism X hX)
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((standardEndIso X).inv ≫ weightedEndComparison X).right at h
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((standardEndIso X).inv ≫ weightedEndComparison X).right at h
   rw [he] at h
   exact h
 

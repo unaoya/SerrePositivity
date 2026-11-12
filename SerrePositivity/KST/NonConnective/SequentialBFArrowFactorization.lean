@@ -92,7 +92,7 @@ lemma sequentialBFArrowRight_rlp (n : ℕ) :
 lemma sequentialBFArrowRight_piIsomorphism :
     OmegaSpectrum.PiIsomorphism (sequentialBFArrowRight f) :=
   OmegaSpectrum.piIsomorphism_of_levelwise _
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (sequentialBFArrowRight_rlp f n))
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (sequentialBFArrowRight_rlp f n))
 
 /-- 左因子の零段は実際の単射。 -/
 instance sequentialBFArrowLeft_zero_mono : Mono ((sequentialBFArrowLeft f).app 0).right :=

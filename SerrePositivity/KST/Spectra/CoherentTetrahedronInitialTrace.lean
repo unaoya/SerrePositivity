@@ -42,7 +42,7 @@ lemma tetrahedronInitialTrace_apex (σ : (SimplicialNerve C) _⦋3⦌) :
     tetrahedronInitialTrace σ = SSet.const
       (((SimplicialNerve C).δ 2 ((SimplicialNerve C).δ 3 σ)).map
         ⟨ULift.up 0⟩ ⟨ULift.up 1⟩ |>.app (Opposite.op ⦋0⦌)
-          (ComposableArrows.mk₀ coherentOnePath)) := by
+          (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath)) := by
   rw [tetrahedronInitialTrace, constantPathParameter_eq_const, SSet.const_comp]
   congr 1
   apply congrArg ((σ.map ⟨ULift.up 0⟩ ⟨ULift.up 1⟩).app (Opposite.op ⦋0⦌))
@@ -67,7 +67,7 @@ lemma tetrahedronInitialTrace_of_apex {σ : (SimplicialNerve C) _⦋3⦌}
       (fun s : (SimplicialNerve C) _⦋1⦌ ↦
         SimplicialCategory.sHom (s.obj ⟨ULift.up 0⟩) (s.obj ⟨ULift.up 1⟩)) h) =
       SSet.const ((τ.map ⟨ULift.up 0⟩ ⟨ULift.up 1⟩).app (Opposite.op ⦋0⦌)
-        (ComposableArrows.mk₀ coherentOnePath)) := by
+        (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath)) := by
   cases h
   rw [eqToHom_refl, Category.comp_id, tetrahedronInitialTrace_apex]
 

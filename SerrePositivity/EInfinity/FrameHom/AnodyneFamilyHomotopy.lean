@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.AnodyneWeakDetection
-public import SerrePositivity.InfinityCategories.F1B.KanComplex.HomotopyClasses
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFamilyInvariance
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.F1BKanComplexHomotopyClasses
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFamilyInvariance
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 # anodyne 局所化の全族の等式から実ホモトピーと全区間族の射を回収する
@@ -41,19 +41,19 @@ lemma homotopy_of_anodyneQ_map_eq {A Z : SSet.{u}} [KanComplex Z] (f g : A ⟶ Z
     (AnodyneWeakDetection.homComponents_inverts Z) f g h
   have hF : (AnodyneWeakDetection.homComponents Z).map f.op =
       (AnodyneWeakDetection.homComponents Z).map g.op := congrArg Quiver.Hom.unop hL
-  have hπ := ConcreteCategory.congr_hom hF (SSet.π₀.mk (functorVertex (𝟙 Z)))
-  apply (functorVertex_piZero_eq_iff_homotopy f g).mp
-  change SSet.π₀.mk (functorVertex (f ≫ 𝟙 Z)) =
-    SSet.π₀.mk (functorVertex (g ≫ 𝟙 Z)) at hπ
+  have hπ := ConcreteCategory.congr_hom hF (SSet.π₀.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (𝟙 Z)))
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex_piZero_eq_iff_homotopy f g).mp
+  change SSet.π₀.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (f ≫ 𝟙 Z)) =
+    SSet.π₀.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (g ≫ 𝟙 Z)) at hπ
   simpa only [Category.comp_id] using hπ
 
 lemma pinchedFamily_intervalHom_eq_of_anodyneQ_eq {K E : SSet.{u}} [Quasicategory E]
-    {x y : E _⦋0⦌} (f g : K ⟶ pinchedHom x y)
+    {x y : E _⦋0⦌} (f g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom x y)
     (h : AnodyneHomotopy.anodyneQ.map f = AnodyneHomotopy.anodyneQ.map g) :
-    intervalFamilyHom (f ≫ pinchedHomToIntervalMappingSpace x y) =
-      intervalFamilyHom (g ≫ pinchedHomToIntervalMappingSpace x y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y) := by
   obtain ⟨H⟩ := homotopy_of_anodyneQ_map_eq f g h
-  exact intervalFamilyHom_eq_of_homotopy
-    (functorHomotopyPostcomp H (pinchedHomToIntervalMappingSpace x y))
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFamilyHom_eq_of_homotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp H (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace x y))
 
 end SerrePositivity.EInfinity.FrameHom

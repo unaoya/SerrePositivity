@@ -31,15 +31,15 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem loopZeroHomotopyEquiv_familyVertex (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (f : PointedSimplicialSet.circle.{u} ⟶ Y) :
     loopZeroHomotopyEquiv Y
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint).symm
           (PointedMapping.familyVertex f))) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f))⁻¹ := by
-  let a := (PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint).symm (PointedMapping.familyVertex f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f))⁻¹ := by
+  let a := (PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint).symm (PointedMapping.familyVertex f)
   let v := (PointedMapping.loopToPath Y).right.app _ (PointedMapping.familyVertex f)
   let s := SimplexBasepoint.rebase (pathEndpoint_basepoint Y).symm (SphereSimplex.equiv Y 1 f)
   have hT : pathVertexContraction Y v ≫ (pathEndpoint Y).right = s.map := by
     rw [pathVertexContraction_endpoint]
-    change (PointedMapping.familyMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y v).right =
+    change (PointedMapping.familyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y v).right =
       (SphereSimplex.equiv Y 1 f).map
     dsimp only [v]
     rw [loopToPath_familyVertex, PointedMapping.familyMap_familyVertex]
@@ -53,8 +53,8 @@ theorem loopZeroHomotopyEquiv_familyVertex (Y : PointedSimplicialSet.{u})
     rfl
   have h := loopZero_penultimate Y s a (pathVertexContraction Y v) hT h₀
     (pathVertexContraction_face_one Y v)
-  have hs : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f) := by
+  have hs : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0 (Iso.refl Y.right) (pathEndpoint_basepoint Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f) := by
     rw [SimplexBasepoint.group_mk]
     congr 1
   rw [hs] at h
@@ -65,23 +65,23 @@ theorem loopZeroHomotopyEquiv_familyVertex (Y : PointedSimplicialSet.{u})
 規約：この逆元を既存の係数同型との比較から消さない。
 使われ方：Goerss–Jardine I §8、VIII §1。零次数の標準比較の向き。 -/
 theorem loopZeroHomotopyEquiv_eq_inv_component (Y : PointedSimplicialSet.{u})
-    [KanComplex Y.right] (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint) :
+    [KanComplex Y.right] (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right 0 (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint) :
     loopZeroHomotopyEquiv Y a =
-      (SphereSimplex.componentEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a))⁻¹ := by
-  obtain ⟨v, hv⟩ := π₀.mk_surjective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a)
+      (SphereSimplex.componentEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero a))⁻¹ := by
+  obtain ⟨v, hv⟩ := π₀.mk_surjective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero a)
   obtain ⟨f, rfl⟩ := (PointedMapping.familyVertexEquiv PointedSimplicialSet.circle Y).surjective v
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint).symm
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint).symm
         (PointedMapping.familyVertex f))) = π₀.mk (PointedMapping.familyVertex f) := by
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.mk _) = _
-    rw [_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
-  have ha : a = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint).symm
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.mk _) = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_mk, Equiv.apply_symm_apply]
+  have ha : a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.mk 0 ((PtSimplex.equiv₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint).symm
       (PointedMapping.familyVertex f)) := by
-    apply _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.injective
+    apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero.injective
     exact hv.symm.trans hp.symm
-  have hc : SphereSimplex.componentEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f) := by
-    change SphereSimplex.componentClass Y 0 (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a) = _
+  have hc : SphereSimplex.componentEquiv Y 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero a) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y 1 f) := by
+    change SphereSimplex.componentClass Y 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero a) = _
     rw [← hv]
     exact SphereSimplex.componentClass_familyVertex Y 0 f
   rw [hc, ha]

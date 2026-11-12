@@ -18,8 +18,8 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ)
 include h
 
 /-- 元の実二単体における、相対 S_n 辺の二対三性。 -/
@@ -34,64 +34,64 @@ theorem relativeSConstruction_twoOfThree (τ : Δ[2] ⟶ sConstruction n B.obj) 
   · intro h₂ h₀
     apply (ht 1).mpr
     intro a
-    exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).1
+    exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).1
       ((ht 2).mp h₂ a) ((ht 0).mp h₀ a)
   · constructor
     · intro h₂ h₁
       apply (ht 0).mpr
       intro a
-      exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.1
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.1
         ((ht 2).mp h₂ a) ((ht 1).mp h₁ a)
     · intro h₀ h₁
       apply (ht 2).mpr
       intro a
-      exact (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.2
+      exact (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences_twoOfThree h (τ ≫ sComponentEvaluation B.obj n a)).2.2
         ((ht 0).mp h₀ a) ((ht 1).mp h₁ a)
 
 /-- 元の S_n の実押し出しに沿う、相対辺条件の保存・反映。 -/
 theorem relativeSConstruction_pushout_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction n B.obj)
-    (hL : IsPushoutSquare L) :
-    (squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
-      (squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
+    (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare L) :
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pushout_iff h (L ≫ sComponentEvaluation B.obj n a)
-    (IsExactFunctor.preservesPushoutSquare (sComponentEvaluation B.obj n a) L hL)
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences_pushout_iff h (L ≫ sComponentEvaluation B.obj n a)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPushoutSquare (sComponentEvaluation B.obj n a) L hL)
 
 /-- 元の S_n の実引き戻しに沿う、相対辺条件の保存・反映。 -/
 theorem relativeSConstruction_pullback_iff (L : Δ[1] ⊗ Δ[1] ⟶ sConstruction n B.obj)
-    (hL : IsPullbackSquare L) :
-    (squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
-      (squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
+    (hL : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare L) :
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareLeftArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) ↔
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow L).edge ∈ (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   rw [relativeSConstruction_mem_edge_iff h, relativeSConstruction_mem_edge_iff h]
   apply forall_congr'
   intro a
-  exact _root_.SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.weakEquivalences_pullback_iff h (L ≫ sComponentEvaluation B.obj n a)
-    (IsExactFunctor.preservesPullbackSquare (sComponentEvaluation B.obj n a) L hL)
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.weakEquivalences_pullback_iff h (L ≫ sComponentEvaluation B.obj n a)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesPullbackSquare (sComponentEvaluation B.obj n a) L hL)
 
 /-- 元の二つの cofiber 図式間の同じホモトピーに対する、相対 S_n 辺の拡大安定性。 -/
-theorem relativeSConstruction_extension (t d : ZeroTriangle (sConstruction n B.obj))
-    (ht : IsCofiberSequence t) (hd : IsCofiberSequence d)
+theorem relativeSConstruction_extension (t d : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle (sConstruction n B.obj))
+    (ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t) (hd : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence d)
     (H : SSet.Homotopy t.square d.square)
-    (h₀ : (componentEdge H (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈
+    (h₀ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 0 0)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌))
-    (h₂ : (componentEdge H (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈
+    (h₂ : (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 1)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌)) :
-    (componentEdge H (squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈
+    (componentEdge H (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1])) 1 0)).edge ∈
       (relativeSConstruction q.hom n).obj (Opposite.op ⦋1⦌) := by
   apply (relativeSConstruction_mem_edge_iff h n _).mpr
   intro a
   let e := sComponentEvaluation B.obj n a
-  let T := t.map e (IsExactFunctor.preservesZero (F := e))
-  let D := d.map e (IsExactFunctor.preservesZero (F := e))
+  let T := t.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := e))
+  let D := d.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := e))
   let K : SSet.Homotopy T.square D.square := {
     h := H.h ≫ e
     h₀ := by rw [← Category.assoc, H.h₀]; rfl
     h₁ := by rw [← Category.assoc, H.h₁]; rfl }
   exact weakEquivalences_extension h T D
-    (IsExactFunctor.preservesCofiber (F := e) t ht)
-    (IsExactFunctor.preservesCofiber (F := e) d hd) K
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber (F := e) t ht)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber (F := e) d hd) K
     ((relativeSConstruction_mem_edge_iff h n _).mp h₀ a)
     ((relativeSConstruction_mem_edge_iff h n _).mp h₂ a)
 

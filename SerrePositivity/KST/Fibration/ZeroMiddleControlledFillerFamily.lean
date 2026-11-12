@@ -17,8 +17,8 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
-  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u})
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+  (K : SSet.{u + 1}) (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
   (hF : ((horn 3 (2 : Fin 4)).ι ▷ K) ≫ F =
     fst (horn 3 (2 : Fin 4) : SSet.{u + 1}) K ≫ zeroMiddleFullSKanHorn s hZ)
 
@@ -47,7 +47,7 @@ include hF in
 theorem zeroMiddleControlledFillerFamily_original :
     (stdSimplex.δ (1 : Fin 4) ▷ K) ≫ F =
       fst (Δ[2] : SSet.{u + 1}) K ≫
-        SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+        SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
           (Opposite.op ⦋2⦌) s) := by
   have he := congrArg (fun G => (horn₃₂.ι₁ ▷ K) ≫ G) hF
   rw [← Category.assoc, ← MonoidalCategory.comp_whiskerRight, horn.ι_ι,
@@ -60,7 +60,7 @@ theorem zeroMiddleControlledFillerFamily_original :
 規約：同じ制御充填 F を保持し、新しい充填を選ばない。
 使われ方：指定全長 Hom の回収後の上側全族比較の実写像。 -/
 def zeroMiddleControlledPrismFamily : ((Δ[2] : SSet.{u + 1}) ⊗ Δ[1]) ⊗ K ⟶
-    SpaceInfinity.{u} := (triangleMiddlePrism ▷ K) ≫ F
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} := (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism ▷ K) ≫ F
 
 /-- 概要：同じ三角柱族は制御された全上側二胞体から始まる。
 方針：元の三角柱写像の始端の厳密式を使う。
@@ -70,7 +70,7 @@ theorem zeroMiddleControlledPrismFamily_zero :
     (SSet.ι₀ ▷ K) ≫ zeroMiddleControlledPrismFamily K F =
       (stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F := by
   rw [zeroMiddleControlledPrismFamily, ← Category.assoc,
-    ← MonoidalCategory.comp_whiskerRight, triangleMiddlePrism_zero]
+    ← MonoidalCategory.comp_whiskerRight, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_zero]
 
 include hF in
 /-- 概要：同じ三角柱族は元の指定 native 二胞体の全族へ厳密に終わる。
@@ -80,10 +80,10 @@ include hF in
 theorem zeroMiddleControlledPrismFamily_one :
     (SSet.ι₁ ▷ K) ≫ zeroMiddleControlledPrismFamily K F =
       fst (Δ[2] : SSet.{u + 1}) K ≫
-        SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+        SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
           (Opposite.op ⦋2⦌) s) := by
   rw [zeroMiddleControlledPrismFamily, ← Category.assoc,
-    ← MonoidalCategory.comp_whiskerRight, triangleMiddlePrism_one]
+    ← MonoidalCategory.comp_whiskerRight, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_one]
   exact zeroMiddleControlledFillerFamily_original s hZ K F hF
 
 /-- 概要：同じ制御三角柱族は、その制御上側の共有対角を全時刻固定する。
@@ -96,7 +96,7 @@ theorem zeroMiddleControlledPrismFamily_diagonal :
       (fst (Δ[1] : SSet.{u + 1}) Δ[1] ▷ K) ≫
         (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ (stdSimplex.δ (2 : Fin 4) ▷ K) ≫ F := by
   rw [zeroMiddleControlledPrismFamily, ← Category.assoc,
-    ← MonoidalCategory.comp_whiskerRight, triangleMiddlePrism_diagonal]
+    ← MonoidalCategory.comp_whiskerRight, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.triangleMiddlePrism_diagonal]
   simp only [MonoidalCategory.comp_whiskerRight, Category.assoc]
 
 end SerrePositivity.KST.Fibration

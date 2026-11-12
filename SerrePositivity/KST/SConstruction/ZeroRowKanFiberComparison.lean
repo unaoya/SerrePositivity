@@ -33,7 +33,7 @@ lemma zeroRowKanFiberComparison_fac (r : ℕ) (X : StableModel.{u})
 /-- 元の零行の Kan 模型と既存の path homotopy fiber の比較は正の全反復で全基点 π_* 同型。 -/
 lemma zeroRowKanFiberComparison_piIsomorphism (r : ℕ) (X : StableModel.{u})
     (b : ((iteratedSRealizationDiagram (r + 1) X).obj (Opposite.op ⦋0⦌)) _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (zeroRowKanFiberComparison (r + 1) X b).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (zeroRowKanFiberComparison (r + 1) X b).right :=
   pointedKanStrictExtension_piIsomorphism (zeroRowPointedFiberComparison (r + 1) X b)
     (zeroRowPointedFiberComparison_localized_isIso r X b)
 

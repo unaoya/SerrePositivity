@@ -20,7 +20,7 @@ def simplexHADecodeSubsetCell {n : ℕ} (m : ℕ) (v : Fin (m + 1) ↪o Fin (n +
     (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (hb : ∀ t ∈ T, v (Fin.last m) < t) :
     serreCubeComplex A (m + T.card - 1) ⟶ homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (T.max' hT)) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (v 0)) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (T.max' hT)) :=
   simplexSubsetLambdaCellAtDimension A (simplexHADecodeSubset m v T) (v 0) (T.max' hT)
     (simplexHADecodeSubset_two m v T hT hb) (simplexHADecodeSubset_min m v T hb).symm
     (simplexHADecodeSubset_max m v T hT hb).symm (m + T.card - 1)

@@ -17,7 +17,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1}) (h9 : zeroMiddleControlledTriangleSupply.{u})
   (ℓ : (zeroMiddleFullSReconstructionLongSpace s hZ K) _⦋0⦌)
 
@@ -41,8 +41,8 @@ def zeroMiddleReconstructedDirectFamily :
       right := by simp
       left_le := fun k _ => Fin.zero_le k.down
       le_right := fun k _ => Fin.le_last k.down }
-  (functorVertexEquiv K ((ihom Pu).obj H)).symm ℓ.val ≫
-    evaluateFunctorAt (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct))
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv K ((ihom Pu).obj H)).symm ℓ.val ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (X := Pu) (Y := H) (ULift.up (ComposableArrows.mk₀ direct))
 
 /-- 概要：再構成上側の共有対角は同じ指定実長 Hom 全族の直接 path 像そのもの。
 方針：読出しの全族回収と encode/read の厳密切断式を合成する。
@@ -51,7 +51,7 @@ def zeroMiddleReconstructedDirectFamily :
 theorem zeroMiddleReconstructedFamily_diagonal :
     (stdSimplex.δ (1 : Fin 3) ▷ K) ≫ zeroMiddleReconstructedFamily s hZ K h9 ℓ =
       (Δ[1] ◁ zeroMiddleReconstructedDirectFamily s hZ K ℓ) ≫
-        intervalMappingUncurry (coherentHomIntervalComparison
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩))
           (stableCoreSingleKanObject (s.obj ⟨ULift.up 2⟩))) := by
   have h := zeroMiddleFullSReconstructionRead_diagonal s hZ K h9

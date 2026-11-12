@@ -19,16 +19,16 @@ open CategoryTheory MonoidalCategory MonoidalClosed
 namespace SerrePositivity.KST.Spectra.KanSequence
 
 local instance ordinaryLoopCriterionKan (Z : PointedSimplicialSet.{u}) [SSet.KanComplex Z.right] :
-    SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 local instance ordinaryMappingCriterionKan (A Z : PointedSimplicialSet.{u})
     [SSet.KanComplex Z.right] : SSet.KanComplex ((ihom A).obj Z).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の構造射の通常円に関する随伴。Kan 円への持ち上げを含まない。 -/
 def ordinaryStructureAdjoint (X : KanSequence.{u}) (n : ℕ) :
-    (X.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (X.level (n + 1)).space :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n)
+    (X.level n).space ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (X.level (n + 1)).space :=
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n)
 
 /-- 随伴族の厳密な構造可換性は、二重随伴の円交換不変性に一致する。 -/
 lemma ordinaryStructureAdjoint_comm_iff (X : KanSequence.{u}) (n : ℕ) :
@@ -37,16 +37,16 @@ lemma ordinaryStructureAdjoint_comm_iff (X : KanSequence.{u}) (n : ℕ) :
       X.sigma n ≫ ordinaryStructureAdjoint X (n + 1)) ↔
     ((ordinaryStructureAdjoint X n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} PointedSimplicialSet.circle.{u}
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} PointedSimplicialSet.circle.{u}
           (X.level (n + 2)).space).hom =
       ordinaryStructureAdjoint X n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))) := by
-  rw [← (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv (X.level n).space
+  rw [← (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv (X.level n).space
     ((mapping PointedSimplicialSet.circle.{u} X).level (n + 2)).space).injective.eq_iff]
   change curry (_ ≫ _) = curry (_ ≫ _) ↔ _
   rw [curry_natural_left, curry_natural_right]
   change ordinaryStructureAdjoint X n ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv ((mapping PointedSimplicialSet.circle.{u} X).level (n + 1)).space
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv ((mapping PointedSimplicialSet.circle.{u} X).level (n + 1)).space
       ((mapping PointedSimplicialSet.circle.{u} X).level (n + 1 + 1)).space
       ((mapping PointedSimplicialSet.circle.{u} X).sigma (n + 1)) =
     ordinaryStructureAdjoint X n ≫
@@ -58,7 +58,7 @@ lemma ordinaryStructureAdjoint_comm_iff (X : KanSequence.{u}) (n : ℕ) :
 def ordinaryStructureAdjointHom (X : KanSequence.{u})
     (h : ∀ n, (ordinaryStructureAdjoint X n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u} PointedSimplicialSet.circle.{u}
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u} PointedSimplicialSet.circle.{u}
           (X.level (n + 2)).space).hom =
       ordinaryStructureAdjoint X n ≫
         (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))) :
@@ -69,7 +69,7 @@ def ordinaryStructureAdjointHom (X : KanSequence.{u})
 /-- Ω 条件の下で二重の構造随伴も全基点 π 同型。交換不変性とは別の条件である。 -/
 lemma ordinaryDoubleStructureAdjoint_piIsomorphism (X : KanSequence.{u})
     (hX : X.OmegaCondition) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (ordinaryStructureAdjoint X n ≫
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (ordinaryStructureAdjoint X n ≫
       (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))).right :=
   (hX n).comp (PointedMapping.post_piIsomorphism PointedSimplicialSet.circle.{u}
     (ordinaryStructureAdjoint X (n + 1)) (hX (n + 1)))
@@ -80,14 +80,14 @@ lemma ordinaryStructureAdjoint_comm_forces_swap_piZero (X : KanSequence.{u})
     (hc : PointedSimplicialSet.circle.{u} ◁ ordinaryStructureAdjoint X n ≫
         (mapping PointedSimplicialSet.circle.{u} X).sigma (n + 1) =
       X.sigma n ≫ ordinaryStructureAdjoint X (n + 1)) :
-    SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+    SSet.mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} (X.level (n + 2)).space).hom.right = id := by
   let f := ordinaryStructureAdjoint X n ≫
     (ihom PointedSimplicialSet.circle.{u}).map (ordinaryStructureAdjoint X (n + 1))
   have hf := ordinaryDoubleStructureAdjoint_piIsomorphism X hX n
   have hs := (hf.piZero_bijective_at (PointedSimplicialSet.basepoint (X.level n).space)).2
   have he := congrArg Under.Hom.right ((ordinaryStructureAdjoint_comm_iff X n).1 hc)
-  change f.right ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
+  change f.right ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso PointedSimplicialSet.circle.{u}
       PointedSimplicialSet.circle.{u} (X.level (n + 2)).space).hom.right = f.right at he
   funext a
   obtain ⟨b, rfl⟩ := hs a

@@ -37,9 +37,9 @@ lemma tetrahedronLastEdge_of_face {s : (SimplicialNerve C) _⦋3⦌}
 /-- 第一座標一の辺は、指定した零番面の同じ復号辺を最初の元の射で前合成する。 -/
 lemma tetrahedronTrace_include_first_specified {X₀ X₁ X₂ X₃ : C}
     (f : X₀ ⟶ X₁) (g : X₁ ⟶ X₂) (k : X₂ ⟶ X₃) (d : X₁ ⟶ X₃)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge g) (coherentNerveEdge k) (coherentNerveEdge d))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d))
     (s : (SimplicialNerve C) _⦋3⦌)
-    (hf : (SimplicialNerve C).map tetrahedronFirstEdgeMap.op s = (coherentNerveEdge f).edge)
+    (hf : (SimplicialNerve C).map tetrahedronFirstEdgeMap.op s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)
     (hT : (SimplicialNerve C).δ 0 s = T.simplex)
     (e : SimplicialCategory.sHom (s.obj (.mk (ULift.up 0)))
       (s.obj (.mk (ULift.up 3))) = SimplicialCategory.sHom X₀ X₃) :
@@ -48,15 +48,15 @@ lemma tetrahedronTrace_include_first_specified {X₀ X₁ X₂ X₃ : C}
       SSet.yonedaEquiv.symm (coherentTriangleMappingEdge g k d T).edge ≫
         eHomWhiskerRight SSet f X₃ := by
   have hx₀ : s.obj (.mk (ULift.up 0)) = X₀ :=
-    congrArg (fun q => (coherentNerveArrowData q).1) hf
+    congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).1) hf
   have hx₁ : s.obj (.mk (ULift.up 1)) = X₁ :=
-    congrArg (fun q => (coherentNerveArrowData q).2.1) hf
+    congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).2.1) hf
   have hx₂ : s.obj (.mk (ULift.up 2)) = X₂ :=
     (congrArg (fun q : (SimplicialNerve C) _⦋2⦌ => q.obj (.mk (ULift.up 1))) hT).trans
-      (congrArg (fun q => (coherentNerveArrowData q).2.1) T.d₂)
+      (congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).2.1) T.d₂)
   have hx₃ : s.obj (.mk (ULift.up 3)) = X₃ :=
     (congrArg (fun q : (SimplicialNerve C) _⦋2⦌ => q.obj (.mk (ULift.up 2))) hT).trans
-      (congrArg (fun q => (coherentNerveArrowData q).2.1) T.d₀)
+      (congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).2.1) T.d₀)
   subst X₀
   subst X₁
   subst X₂
@@ -74,10 +74,10 @@ lemma tetrahedronTrace_include_first_specified {X₀ X₁ X₂ X₃ : C}
 /-- 第二座標一の辺は、指定した三番面の同じ復号辺を最後の元の射で後合成する。 -/
 lemma tetrahedronTrace_include_second_specified {X₀ X₁ X₂ X₃ : C}
     (f : X₀ ⟶ X₁) (g : X₁ ⟶ X₂) (d : X₀ ⟶ X₂) (k : X₂ ⟶ X₃)
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge d))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge d))
     (s : (SimplicialNerve C) _⦋3⦌)
     (hT : (SimplicialNerve C).δ 3 s = T.simplex)
-    (hk : (SimplicialNerve C).map tetrahedronLastEdgeMap.op s = (coherentNerveEdge k).edge)
+    (hk : (SimplicialNerve C).map tetrahedronLastEdgeMap.op s = (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge k).edge)
     (e : SimplicialCategory.sHom (s.obj (.mk (ULift.up 0)))
       (s.obj (.mk (ULift.up 3))) = SimplicialCategory.sHom X₀ X₃) :
     lift (𝟙 (Δ[1] : SSet.{u})) (SSet.const (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) ≫
@@ -86,14 +86,14 @@ lemma tetrahedronTrace_include_second_specified {X₀ X₁ X₂ X₃ : C}
         eHomWhiskerLeft SSet X₀ k := by
   have hx₀ : s.obj (.mk (ULift.up 0)) = X₀ :=
     (congrArg (fun q : (SimplicialNerve C) _⦋2⦌ => q.obj (.mk (ULift.up 0))) hT).trans
-      (congrArg (fun q => (coherentNerveArrowData q).1) T.d₂)
+      (congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).1) T.d₂)
   have hx₁ : s.obj (.mk (ULift.up 1)) = X₁ :=
     (congrArg (fun q : (SimplicialNerve C) _⦋2⦌ => q.obj (.mk (ULift.up 1))) hT).trans
-      (congrArg (fun q => (coherentNerveArrowData q).2.1) T.d₂)
+      (congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).2.1) T.d₂)
   have hx₂ : s.obj (.mk (ULift.up 2)) = X₂ :=
-    congrArg (fun q => (coherentNerveArrowData q).1) hk
+    congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).1) hk
   have hx₃ : s.obj (.mk (ULift.up 3)) = X₃ :=
-    congrArg (fun q => (coherentNerveArrowData q).2.1) hk
+    congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData q).2.1) hk
   subst X₀
   subst X₁
   subst X₂

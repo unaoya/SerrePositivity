@@ -1,7 +1,7 @@
 module
 public import
   SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementUniversalAugmentationLinear
-public import SerrePositivity.InfinityCategories.Derived.PinchedClosedVertexNaturality
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedClosedVertexNaturality
 
 /-!
 概要：元の普遍 cochain の一点成分は、同じ実 augmentation で元の恒等 cochain に送られる。
@@ -15,8 +15,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -28,23 +28,23 @@ lemma normalizedTensorElementUniversalLinear_augmentation_vertex {n : ℕ}
       ((normalizedTensorElementUniversalLinear A X Y c).val.component J 0 hJ (by omega)) =
       (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))).val := by
   let θ := (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom
-  let s : LinearSimplex A X X 0 :=
-    toLinearSimplex (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)))
+  let s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex A X X 0 :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)))
   have hi : Set.InjOn θ (J : Set (Fin (n + 1))) := by
     intro i hi j hj _
     exact (Finset.card_le_one.mp (show J.card ≤ 1 by omega)) i hi j hj
   have himg : J.image θ = (Finset.univ : Finset (Fin 1)) := by
     apply Finset.eq_univ_of_card
     simpa only [Finset.card_image_of_injOn hi, Fintype.card_fin] using hc
-  have hp := LinearData.pullback_component_of_inj (A := A) (D := Complex A) (x := X) (y := X)
+  have hp := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback_component_of_inj (A := A) (D := Complex A) (x := X) (y := X)
     θ s.val J 0 hJ (by omega) hi
-  have hp' : (LinearData.pullback θ s.val).component J 0 hJ (by omega) =
-      pinchedLinearVertexValue (A := A) (D := Complex A) (x := X) (y := X) s := by
-    simpa only [himg, pinchedLinearVertexValue] using hp
-  have h := congrArg (fun t : LinearSimplex A X X n =>
+  have hp' : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback θ s.val).component J 0 hJ (by omega) =
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearVertexValue (A := A) (D := Complex A) (x := X) (y := X) s := by
+    simpa only [himg, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearVertexValue] using hp
+  have h := congrArg (fun t : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex A X X n =>
     t.val.component J 0 hJ (by omega))
       (normalizedTensorElementUniversalLinear_augmentation A X Y c)
   exact h.trans (hp'.trans
-    (pinchedClosedVertex_linearValue A (Complex A) (q := X) (y := X) _))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedClosedVertexNaturality.pinchedClosedVertex_linearValue A (Complex A) (q := X) (y := X) _))
 
 end SerrePositivity.EInfinity.ComplexLimits

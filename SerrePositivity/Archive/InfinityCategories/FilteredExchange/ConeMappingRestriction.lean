@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ConeMappingSpace
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeMappingSpace
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SliceRestrictionRightFibration
-public import SerrePositivity.InfinityCategories.HomotopyLimits.VertexFiberMapLifting
-public import SerrePositivity.InfinityCategories.Core.KanFibrationTools
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.VertexFiberMapLifting
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.KanFibrationTools
 
 /-!
 概要：任意の単射な部分形状への頂点固定の錐空間の制限は Kan fibration。

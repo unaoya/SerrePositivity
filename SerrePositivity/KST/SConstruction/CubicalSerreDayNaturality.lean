@@ -18,7 +18,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の全連結 cell の鎖射の像で、Day tensor の鎖複体からの射を判定できる。 -/
 lemma cubicalSerreDay_hom_ext {K L : CubicalSet.{u}} {T : Complex A}
     {f g : (cubicalSerreChains A).obj (cubicalDayTensor K L) ⟶ T}
-    (h : ∀ (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
+    (h : ∀ (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) (x : K.obj (op c)) (y : L.obj (op d)),
       cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y) ≫ f =
         cubicalSerreCell A (concreteCubeTensorObj c d) (cubicalDayTensorCell c d x y) ≫ g) :
     f = g := by

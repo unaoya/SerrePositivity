@@ -31,8 +31,8 @@ lemma simplexSubsetLambdaCell_necklace_heq {n : ℕ} (I : Finset (Fin (n + 1)))
 /-- 元の指定端点の necklace 生成射は、同じ部分集合の濃度次元の実生成射に戻る。 -/
 lemma necklaceLambdaCell_subsetAt_canonical_heq {n : ℕ} (I : Finset (Fin (n + 1)))
     (a b : Fin (n + 1)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
     HEq (necklaceLambdaCell A (necklaceInSimplexSubsetAt.{u} I a b hI ha hb))
       (simplexSubsetLambdaCell A I hI) := by
   subst a b

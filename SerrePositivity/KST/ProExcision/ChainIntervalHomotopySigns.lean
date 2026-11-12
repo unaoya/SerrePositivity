@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.ChainTensorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.ChainTensorHomotopy
 public import Mathlib.Tactic.Abel
 
 /-!

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains
 public import SerrePositivity.KST.Spectra.NormalizedCochainHomComparison
 
 /-!
@@ -30,30 +30,30 @@ set_option backward.isDefEq.respectTransparency.types false
 def complex (K : SSet.{u}) (M : AddCommGrpCat.{u}) : CochainComplex AddCommGrpCat.{u} ℕ :=
   CochainComplex.of
     (fun n ↦ AddCommGrpCat.of (K.nonDegenerate n → M))
-    (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K M n))
+    (fun n ↦ AddCommGrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K M n))
     (fun n ↦ by
       apply ConcreteCategory.hom_ext
       intro a
-      exact _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential_comp K M n a)
+      exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential_comp K M n a)
 
 /-- 概要：整数の単位係数からの Hom の正規化複体と元の係数の複体は同型。
 方針：各次数の座標ごとの係数の加法同型と、微分の共役の定義を使う。
 規約：整数係数の宇宙は ULift でそろえる。
 使われ方：Goerss–Jardine III §2。正規化のホモトピー比較の係数表示。 -/
 def complexIso (K : SSet.{u}) (M : AddCommGrpCat.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex K (AddCommGrpCat.of (ULift.{u} ℤ)) M ≅ complex K M :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex K (AddCommGrpCat.of (ULift.{u} ℤ)) M ≅ complex K M :=
   HomologicalComplex.Hom.isoOfComponents
-    (fun n ↦ AddEquiv.toAddCommGrpIso (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M n))
+    (fun n ↦ AddEquiv.toAddCommGrpIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.coefficientEquiv K M n))
     (fun i j hij ↦ by
       obtain rfl : i + 1 = j := hij
-      simp only [_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.complex, complex, CochainComplex.of_d]
+      simp only [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.complex, complex, CochainComplex.of_d]
       apply ConcreteCategory.hom_ext
       intro a
-      change _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (i + 1)
-        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M i
-          ((_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M i).symm (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M i a))) =
-        _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.coefficientEquiv K M (i + 1)
-          (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M i a)
+      change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.coefficientEquiv K M (i + 1)
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M i
+          ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.coefficientEquiv K M i).symm (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.coefficientEquiv K M i a))) =
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.coefficientEquiv K M (i + 1)
+          (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedSimplicialCochains.differential K (AddCommGrpCat.of (ULift.{u} ℤ)) M i a)
       rw [AddEquiv.symm_apply_apply])
 
 /-- 概要：通常の整数鎖の Hom の cochain と元の係数の正規化 cochain はホモトピー同値。

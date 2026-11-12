@@ -51,7 +51,7 @@ include sq hi hK in
 lemma exists_homotopy (f f' : P ⟶ K) (H : SSet.Homotopy (g ≫ f) (g ≫ f')) :
     ∃ V : SSet.Homotopy f f',
       g ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ V.h = H.h := by
-  let HA := LargeParameterSquare.changeEndpoints (HomotopyClasses.preHomotopy j H)
+  let HA := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (HomotopyClasses.preHomotopy j H)
     (by rw [← Category.assoc, ← sq.w, Category.assoc])
     (by rw [← Category.assoc, ← sq.w, Category.assoc])
   obtain ⟨HB, hB⟩ := KanMonoRelativeHomotopy.exists_extension i hi hK (u ≫ f) (u ≫ f') HA
@@ -59,7 +59,7 @@ lemma exists_homotopy (f f' : P ⟶ K) (H : SSet.Homotopy (g ≫ f) (g ≫ f')) 
       j ▷ SSet.stdSimplex.obj (SimplexCategory.mk 1) ≫ H.h := by
     rw [hB]
     dsimp only [HA]
-    rw [LargeParameterSquare.changeEndpoints_h]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h]
     rfl
   let tsq := sq.map (tensorRight (SSet.stdSimplex.obj (SimplexCategory.mk 1)))
   let q := tsq.desc HB.h H.h hc

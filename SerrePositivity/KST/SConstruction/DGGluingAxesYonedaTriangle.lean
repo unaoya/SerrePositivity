@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomotopyIso
-public import SerrePositivity.InfinityCategories.Derived.Gluing.TriangleThirdTransport
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.TriangleThirdTransport
 public import SerrePositivity.DifferentialGraded.Module.MaurerCartanTriangulated
 
 /-! # 元の二軸射を保持する実 Yoneda distinguished 三角形
@@ -18,13 +18,13 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  (X : DGGluingObject R C D M)
-local notation "G" => DGGluingObject R C D M
+  (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "Q" => moduleToHomotopy R G
 
 /-- 同じ右軸・元の対象・左軸の代表加群を三頂点とする実三角形。 -/
 def dgGluingAxesYonedaTriangle : Triangle (ModuleHomotopyCategory R G) :=
-  dgGluingTriangleThirdTransport
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTriangleThirdTransport
     (moduleHomotopyConeTriangle R G (dgGluingAxesYonedaRightMap R C D M zc hc X))
     (dgGluingAxesYonedaConeHomotopyIso R C D M zc hc zd hd X)
 
@@ -32,7 +32,7 @@ def dgGluingAxesYonedaTriangle : Triangle (ModuleHomotopyCategory R G) :=
 lemma dgGluingAxesYonedaTriangle_distinguished :
     dgGluingAxesYonedaTriangle R C D M zc hc zd hd X ∈
       distTriang (ModuleHomotopyCategory R G) :=
-  dgGluingTriangleThirdTransport_distinguished _
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingTriangleThirdTransport_distinguished _
     (moduleHomotopyConeTriangle_distinguished R G
       (dgGluingAxesYonedaRightMap R C D M zc hc X)) _
 

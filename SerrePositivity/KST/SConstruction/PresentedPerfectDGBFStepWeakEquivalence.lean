@@ -38,7 +38,7 @@ lemma presentedPerfectDGBFStepSuspensionComparison_localized_isIso
           presentedPerfectDGBFStepSuspensionComparison A r K c X).right) := by
   let _ := hK
   let _ : KanComplex (((presentedPerfectDGBFBoundaryFunctor A r).obj X).obj).right :=
-    Comparison.exInfinity_kanComplex _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
   let a : ((presentedPerfectDGBFBoundaryFunctor A r).obj X).obj ⟶ (K.obj X).obj := c X
   have hp := kanPiIsomorphism_of_localized_isIso a.right hcmp
   exact suspensionImage_isIso_of_piIsomorphism AnodyneHomotopy.anodyneQ

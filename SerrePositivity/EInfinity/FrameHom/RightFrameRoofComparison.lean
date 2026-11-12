@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.ModelBridge.RightFrameFamily
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightFrameFamily
 public import SerrePositivity.EInfinity.FrameHom.ResolutionFixedRightComparison
 public import SerrePositivity.EInfinity.FrameHom.SmallCosimplicialHomElements
 public import SerrePositivity.EInfinity.FrameHom.NerveEquivalenceImage
@@ -36,7 +36,7 @@ abbrev rightFrameRoofCategory (X Y : C) :=
 規約：反対要素圏の表示を明示する。使われ方：全三本矢との共通比較の前段。 -/
 def rightFrameRoofComparison (X Y : C) :
     AsSmall.{max w u v}
-      ((((cosimplicialHom (r.obj.obj (op Y))).obj (op X)).Elements)ᵒᵖ) ⥤
+      ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (r.obj.obj (op Y))).obj (op X)).Elements)ᵒᵖ) ⥤
         rightFrameRoofCategory.{u, v, w} X Y :=
   CosimplicialHomElements.smallToComma.{u, v, w} (r.obj.obj (op Y)) (op X) ⋙
     resolutionFixedRightComparison.{u, v, max w u v} (r.atObject (op Y)) (op X)
@@ -46,7 +46,7 @@ def rightFrameRoofComparison (X Y : C) :
 規約：単体集合のモデル構造と全対象 fibrant の仮定は使わない。
 使われ方：完全な hammock 比較へ進むための右屋根段階の弱同値性。 -/
 lemma rightFrameRoofComparison_isWeakHomotopyEquivalence (X Y : C) :
-    IsWeakHomotopyEquivalence (nerveMap (rightFrameRoofComparison.{u, v, w} r X Y)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (rightFrameRoofComparison.{u, v, w} r X Y)) := by
   apply AnodyneWeakDetection.isWeakHomotopyEquivalence
   have hs : IsIso (AnodyneHomotopy.anodyneQ.map (nerveMap
       (CosimplicialHomElements.smallToComma.{u, v, w} (r.obj.obj (op Y)) (op X)))) :=
@@ -68,7 +68,7 @@ lemma rightFrameRoofComparison_isWeakHomotopyEquivalence (X Y : C) :
 規約：局所化前の実射の等式。使われ方：零単体の回収と輸送。 -/
 lemma rightFrameRoofComparison_middle (X Y : C)
     (s : AsSmall.{max w u v}
-      ((((cosimplicialHom (r.obj.obj (op Y))).obj (op X)).Elements)ᵒᵖ)) :
+      ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (r.obj.obj (op Y))).obj (op X)).Elements)ᵒᵖ)) :
     (((rightFrameRoofComparison.{u, v, w} r X Y).obj s).hom).down.unop =
       (AsSmall.down.obj s).unop.val.unop := rfl
 

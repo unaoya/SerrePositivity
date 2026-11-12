@@ -75,7 +75,7 @@ lemma endpointFixedTriangleHomotopy_relative {a b : E.Edge x y}
 /-- 円柱の元の指定三角形面は、入力した同じ全二単体そのもの。 -/
 lemma endpointFixedTriangleHomotopy_triangle {a b : E.Edge x y}
     (t : SSet.Edge.CompStruct a (SSet.Edge.id y) b) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ (endpointFixedTriangleHomotopy t).h =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ (endpointFixedTriangleHomotopy t).h =
       SSet.yonedaEquiv.symm t.simplex := endpointFixedEdgeSquare_triangle t
 
 end SerrePositivity.KST.SConstruction

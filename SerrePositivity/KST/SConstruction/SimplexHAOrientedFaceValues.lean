@@ -30,7 +30,7 @@ private lemma units_smul_heq (K : Complex A) {p q : ℤ} (h : p = q)
   rfl
 
 /-- 元の HA 向き両面像は、元の生の両面像の線形復元値の同じ向き補正。 -/
-lemma simplexHADegreeLift_oriented_face {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_oriented_face {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (e : Bool) (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     simplexHADegreeLift A s (m + 1) v b hb (-(m : ℤ))
@@ -41,7 +41,7 @@ lemma simplexHADegreeLift_oriented_face {n : ℕ} (s : DGNerve.SimplexData A D n
     simplexHADegreeLift A s (m + 1) v b hb (-(m : ℤ))) _ _
 
 /-- 元の HA 向き零面像の線形復元値は、元の同じ内部頂点削除成分。 -/
-lemma simplexHADegreeLift_oriented_zero_face {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_oriented_zero_face {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     simplexHADegreeLift A s (m + 1) v b hb (-(m : ℤ))
@@ -53,7 +53,7 @@ lemma simplexHADegreeLift_oriented_zero_face {n : ℕ} (s : DGNerve.SimplexData 
       (simplexHADegreeLift_zero_face A s m v b hb i)).trans (units_smul_cancel _ _ _))
 
 /-- 元の HA 向き一面像の線形復元値は、元の同じ内部頂点の HA 切断合成。 -/
-lemma simplexHADegreeLift_oriented_one_face_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADegreeLift_oriented_one_face_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1)) :
     HEq (simplexHADegreeLift A s (m + 1) v b hb (-(m : ℤ))

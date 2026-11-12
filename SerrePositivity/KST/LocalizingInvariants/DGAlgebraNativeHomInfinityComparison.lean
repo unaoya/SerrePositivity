@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraSpecifiedFrameCoherentSource
 public import SerrePositivity.EInfinity.DGAlgebra.HomInfinityComparison
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：元の実 AW 全標的図式を、指定した全擬同型局所化の共変 Hom と比較する。
@@ -24,9 +24,9 @@ attribute [local instance] EInfinity.DGAlgebra.modelCategory
 
 /-- 実選択 right frame の全標的図式は、元の指定局所化の同じ共変 Hom と同型。 -/
 def nativeCellChosenRightHomInfinityIso :
-    FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) := by
   let a := nativeModelInfinityPresentationIso R
   let G := nativeModelQuasiIsoInfinityMap R
   let e := nativeCellChosenRightHammockIso R A ≪≫
@@ -38,27 +38,27 @@ def nativeCellChosenRightHomInfinityIso :
     rw [← Category.assoc, a.inv_hom_id, Category.id_comp]
   have ht : (SSet.uliftFunctor.{u + 2, u + 1}).map a.inv ≫
       ((SSet.uliftFunctor.{u + 2, u + 1}).map G ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) =
       (SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)) := by
     rw [← Category.assoc, ← Functor.map_comp, hq]
-  exact F2.functorIsoOfEq e rfl ht
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e rfl ht
 
 /-- 元の AW 模型の全高次標的自然性を保つ、実導来 Hom 比較。 -/
 def multiplicativeCellMappingHomInfinityIso :
-    FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingInfinityCoherent R A)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
   multiplicativeCellMappingChosenRightCoherentIso R A ≪≫ nativeCellChosenRightHomInfinityIso R A
 
 /-- 指定局所化 Hom への全比較に送った、元の ordinary Hom 単位。
 全標的の同じ自然変換を使い、指定底の点を別に選ばない。 -/
 def nativeCellHomInfinityCoherentUnit :
-    HomotopyCategory.mk (functorVertex
-      (kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
-    HomotopyCategory.mk (functorVertex
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellOrdinaryInfinityKanFunctor R A))) ⟶
+    HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :=
   nativeCellChosenRightMappingCoherentUnit R A ≫ (nativeCellChosenRightHomInfinityIso R A).hom
 
 /-- 元の AW 単位は、同じ全自然比較で指定局所化の同じ単位へ写る。

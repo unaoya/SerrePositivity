@@ -30,20 +30,20 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaDiagram_map_weak
     {s t : modelBifibrantSourceRoofProductComma X Y q b} (f : s ⟶ t) :
-    (modelBifibrantRelativeCategory C).weakEquivalences
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       ((modelBifibrantSourceRoofProductCommaDiagram X Y q b).map f) :=
-  modelBifibrantDKFrame_map_weak X q ((modelBifibrantSourceFrameElementDegree X Y q).map f.left)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame_map_weak X q ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q).map f.left)
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-    Hammock.graph (modelBifibrantRelativeCategory C).weakEquivalences Hammock.LeftRoof.word
-      (modelBifibrantObject C X)
-      (modelBifibrantObject C Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramGraphMap _
-    (Hammock.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation_weak X Y q b)
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
@@ -54,11 +54,11 @@ def modelBifibrantSourceRoofProductCommaAugmentationRoofGraphMap :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaAugmentationRoofMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-    Hammock.colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
-      (modelBifibrantObject C X)
-      (modelBifibrantObject C Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C X)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
-    (Hammock.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation_weak X Y q b)
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
@@ -69,11 +69,11 @@ def modelBifibrantSourceRoofProductCommaAugmentationRoofMap :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 def modelBifibrantSourceRoofProductCommaEvaluationRoofMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-    Hammock.colimitGraph (modelBifibrantRelativeCategory C).weakEquivalences
-      ((modelBifibrantDKFrame X q).obj (modelBifibrantSourceRoofDegree X Y q b))
-      (modelBifibrantObject C Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+      ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q).obj (modelBifibrantSourceRoofDegree X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y) :=
   Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap _
-    (Hammock.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.diagram _ (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
@@ -86,28 +86,28 @@ lemma modelBifibrantSourceRoofProductCommaEvaluationRoofMap_sourceComparison :
     AnodyneHomotopy.anodyneQ.map (modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b) =
       AnodyneHomotopy.anodyneQ.map (modelBifibrantSourceRoofProductCommaAugmentationRoofMap X
         Y q b) ≫
-        AnodyneHomotopy.anodyneQ.map (Hammock.precomposePointMap
-          (Hammock.arrowMap (modelBifibrantRelativeCategory C).weakEquivalences
-            ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)))
-          (modelBifibrantObject C Y)) := by
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
+            ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)))
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)) := by
   have h : (𝟙 (modelBifibrantSourceRoofProductCommaDiagram X Y q b)) ≫
       modelBifibrantSourceRoofProductCommaAugmentation X Y q b =
     modelBifibrantSourceRoofProductCommaEvaluation X Y q b ≫
       (Functor.const (modelBifibrantSourceRoofProductComma X Y q b)).map
-        ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b)) := by
     rw [Category.id_comp]
     exact (modelBifibrantSourceRoofProductCommaAugmentation_triangle X Y q b).symm
   simpa only [Category.id_comp, modelBifibrantSourceRoofProductCommaEvaluationRoofMap,
     modelBifibrantSourceRoofProductCommaAugmentationRoofMap] using
     Hammock.LeftRoof.Precompose.SameUniverse.diagramColimitMap_sourceComparison
-      (modelBifibrantRelativeCategory C).weakEquivalences
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C).weakEquivalences
       (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
       (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation X Y q b)
       (modelBifibrantSourceRoofProductCommaAugmentation_weak X Y q b)
-      (𝟙 _) ((modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b))
+      (𝟙 _) ((_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrameAugmentation X q).app (modelBifibrantSourceRoofDegree X Y q b))
       (modelBifibrantSourceRoofProductCommaRightLeg X Y q b) h
       (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f)
       (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f)

@@ -21,16 +21,16 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberDiagram
 
 def rightRestriction : FiberDiagram.{u} ⥤
     hoFunctor.obj ((ihom (Δ[1] : SSet.{u + 1})).obj Sp.{u}) where
-  obj D := HomotopyCategory.mk (functorVertex (squareRightEdge ≫ D.triangle.square))
-  map f := homPre squareRightEdge f
+  obj D := HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ D.triangle.square))
+  map f := homPre _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge f
   map_id _ := CategoryTheory.Functor.map_id _ _
   map_comp _ _ := CategoryTheory.Functor.map_comp _ _ _
 
 lemma rightRestriction_map_homotopy {D E : FiberDiagram.{u}} (f : D ⟶ E) :
     rightRestriction.map f = Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy
-        (stableHomotopyPrecomp squareRightEdge (comparisonHomotopy f))) := by
-  rw [← homMk_functorEdge_precomp, comparisonHomotopy_hom]
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.stableHomotopyPrecomp _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge (comparisonHomotopy f))) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.homMk_functorEdge_precomp, comparisonHomotopy_hom]
   rfl
 
 lemma rightRestriction_map_injective {D E : FiberDiagram.{u}} {f g : D ⟶ E}

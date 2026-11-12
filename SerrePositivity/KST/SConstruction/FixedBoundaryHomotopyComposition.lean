@@ -23,7 +23,7 @@ lemma fixedBoundaryMappingEdge_image {A T E : SSet.{u}} (j : A ⟶ T) (b : A ⟶
     {f g : T ⟶ E} (hf : j ≫ f = b) (hg : j ≫ g = b) (H : SSet.Homotopy f g)
     (hr : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ b) :
     ((fixedBoundaryMappingEdge j b hf hg H hr).map (fixedBoundaryMappingSpaceι j b)).edge =
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H)).edge := by
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)).edge := by
   apply SSet.yonedaEquiv.symm.injective
   rw [show SSet.yonedaEquiv.symm
       ((fixedBoundaryMappingEdge j b hf hg H hr).map (fixedBoundaryMappingSpaceι j b)).edge =
@@ -42,9 +42,9 @@ structure FixedBoundaryCompositionData {A T E : SSet.{u}} (j : A ⟶ T) (b : A �
   relative : (j ▷ (Δ[1] : SSet.{u})) ≫ homotopy.h = fst A Δ[1] ≫ b
   /-- 元の二円柱と実合成円柱を全三面に保持する。 -/
   triangle : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy homotopy))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy homotopy))
 
 /-- 元の二円柱を同じ全境界の中で実合成し、元の全三角形を保存する。 -/
 def fixedBoundaryCompositionData {A T E : SSet.{u}} [KanComplex E]
@@ -54,11 +54,11 @@ def fixedBoundaryCompositionData {A T E : SSet.{u}} [KanComplex E]
     (hH : (j ▷ (Δ[1] : SSet.{u})) ≫ H.h = fst A Δ[1] ≫ b)
     (hK : (j ▷ (Δ[1] : SSet.{u})) ≫ K.h = fst A Δ[1] ≫ b) :
     FixedBoundaryCompositionData j b H K := by
-  let d := _root_.SerrePositivity.InfinityCategories.Kan.kanMappingComposition (fixedBoundaryMappingEdge j b hf hg H hH)
+  let d := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.kanMappingComposition (fixedBoundaryMappingEdge j b hf hg H hH)
     (fixedBoundaryMappingEdge j b hg hh K hK)
   let e := d.edge.map (fixedBoundaryMappingSpaceι j b)
-  let V := simplicialHomotopyOfFunctorEdge e.toTruncated
-  have he : (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy V)).edge = e.edge := by
+  let V := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge e.toTruncated
+  have he : (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy V)).edge = e.edge := by
     change SSet.yonedaEquiv (curry (uncurry (SSet.yonedaEquiv.symm e.edge))) = _
     rw [curry_uncurry, Equiv.apply_symm_apply]
   have hr : (j ▷ (Δ[1] : SSet.{u})) ≫ V.h = fst A Δ[1] ≫ b := by
@@ -68,8 +68,8 @@ def fixedBoundaryCompositionData {A T E : SSet.{u}} [KanComplex E]
         SSet.yonedaEquiv.symm d.edge.edge ≫ fixedBoundaryMappingSpaceι j b := by
       rw [SSet.yonedaEquiv_symm_comp]
       rfl
-    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, vertexFiberι_comp,
-      SSet.comp_const, uncurry_const_functorVertex]
+    rw [hm, Category.assoc, fixedBoundaryMappingSpaceι, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι_comp,
+      SSet.comp_const, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
   exact ⟨V, hr, (d.triangle.map (fixedBoundaryMappingSpaceι j b)).ofEq
     (fixedBoundaryMappingEdge_image j b hf hg H hH)
     (fixedBoundaryMappingEdge_image j b hg hh K hK) he.symm⟩

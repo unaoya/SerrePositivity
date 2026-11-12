@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockColimitWeakComparison
-public import SerrePositivity.InfinityCategories.ModelBridge.ThreeArrowReducedWeakComparison
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ThreeArrowReducedWeakComparison
 
 /-!
 # 任意可換環の元の Map^h と reduced hammock の弱比較
@@ -42,8 +42,8 @@ lemma mappingSpaceReducedHammockNerveMap_augmentation (X Y : (operad A).Algebra)
 
 lemma mappingSpaceReducedHammockNerveMap_isWeakHomotopyEquivalence
     (X Y : (operad A).Algebra) :
-    IsWeakHomotopyEquivalence (mappingSpaceReducedHammockNerveMap A X Y) := by
-  have hi : IsWeakHomotopyEquivalence (algebraHammockReductionIso A X Y).hom :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (mappingSpaceReducedHammockNerveMap A X Y) := by
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (algebraHammockReductionIso A X Y).hom :=
     FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence _ (by infer_instance)
   exact (mappingSpaceHammockColimitNerveMap_isWeakHomotopyEquivalence A X Y).comp hi
 

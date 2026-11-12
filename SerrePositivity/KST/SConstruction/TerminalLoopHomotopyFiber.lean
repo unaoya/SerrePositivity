@@ -27,27 +27,27 @@ def terminalPathHomotopyFiberProjection {E B : PointedSimplicialSet.{u}} (f : E 
 instance terminalPathHomotopyFiberProjection_fibration {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) [KanComplex B.right] :
     Fibration (terminalPathHomotopyFiberProjection f).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_snd_fibration (terminalPathStart B) f
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_snd_fibration (terminalPathStart B) f
 
 /-- Kan な源と標的の終点固定 homotopy fiber は Kan。 -/
 instance terminalPathHomotopyFiber_kanComplex {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] :
     KanComplex (terminalPathHomotopyFiber f).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_kanComplex (terminalPathStart B) f
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_kanComplex (terminalPathStart B) f
 
 /-- 元の loop と始点評価の基点 fiber の点つき同型。 -/
 def loopPointedTerminalPathFiberIso (B : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B ≅ pointedFiber (terminalPathStart B) :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B ≅ pointedFiber (terminalPathStart B) :=
   Under.isoMk (loopTerminalBasedPathFiberIso B)
     (by
-      exact Under.w (pointedHomOfBasepoint (X := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B)
+      exact Under.w (pointedHomOfBasepoint (X := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B)
         (Y := pointedFiber (terminalPathStart B)) (loopTerminalBasedPathFiberIso B).hom (by
           exact (loopTerminalBasedPathFiberIso_basepoint B).trans
             (PointedSimplicialSet.basepoint_ofVertex _ _).symm)))
 
 /-- 元の円の loop から終点固定 homotopy fiber への点つき包含。 -/
 def loopToTerminalPathHomotopyFiber {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B ⟶ terminalPathHomotopyFiber f :=
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B ⟶ terminalPathHomotopyFiber f :=
   (loopPointedTerminalPathFiberIso B).hom ≫
     (pointedPullbackFiberIso (terminalPathStart B) f).inv ≫
       pointedFiberι (terminalPathHomotopyFiberProjection f)
@@ -61,7 +61,7 @@ lemma loopToTerminalPathHomotopyFiber_projection {E B : PointedSimplicialSet.{u}
 lemma loopToTerminalPathHomotopyFiber_path {E B : PointedSimplicialSet.{u}} (f : E ⟶ B) :
     loopToTerminalPathHomotopyFiber f ≫ pullback.fst (terminalPathStart B) f =
       (loopToTerminalEndpointHomIso B).hom ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B := by
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection terminalIntervalStart.{u}) B := by
   have hc : (pointedPullbackFiberIso (terminalPathStart B) f).inv ≫
       pointedFiberι (terminalPathHomotopyFiberProjection f) ≫
         pullback.fst (terminalPathStart B) f = pointedFiberι (terminalPathStart B) := by
@@ -77,15 +77,15 @@ lemma loopToTerminalPathHomotopyFiber_path {E B : PointedSimplicialSet.{u}} (f :
 
 /-- 可縮 Kan な全空間に対して loop の包含は全基点 π 同型。 -/
 lemma loopToTerminalPathHomotopyFiber_piIsomorphism {E B : PointedSimplicialSet.{u}}
-    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] (hE : IsContractibleKan E.right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (loopToTerminalPathHomotopyFiber f).right := by
+    (f : E ⟶ B) [KanComplex E.right] [KanComplex B.right] (hE : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan E.right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (loopToTerminalPathHomotopyFiber f).right := by
   let a := (loopPointedTerminalPathFiberIso B).hom
   let b := (pointedPullbackFiberIso (terminalPathStart B) f).inv
-  have ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right :=
+  have ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right :=
     kanPiIsomorphism_of_localized_isIso a.right (by infer_instance)
-  have hb : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism b.right :=
+  have hb : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism b.right :=
     kanPiIsomorphism_of_localized_isIso b.right (by infer_instance)
-  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedFiberι (terminalPathHomotopyFiberProjection f)).right :=
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedFiberι (terminalPathHomotopyFiberProjection f)).right :=
     fiberInclusion_piIsomorphism_of_contractible_base
       (terminalPathHomotopyFiberProjection f).right hE (terminalPathHomotopyFiber f).basepoint
   exact ha.comp (hb.comp hi)

@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -32,19 +32,19 @@ private lemma inv_arrow {C : Type*} [Category* C] {x y x' y' : C}
 
 lemma normalizedTensorConePostDerived_inverse_arrow :
     Arrow.mk (SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (functorHomotopyPostcomp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp
       (normalizedTensorConeHomotopy A X Y) (complexSemifreeResolutionInfinity A)))) =
     Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).inv := by
   let K := nerve (normalizedTensorElementIndex A X Y)
   let F := complexSemifreeResolutionInfinity A
   let T := (hoFunctor.map ((ihom K).map F)).toFunctor
-  let c := SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-    (functorHomotopyPostcomp (normalizedTensorConeHomotopy A X Y) F))
-  let e := SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy
-    (functorHomotopyPostcomp (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y) F))
+  let c := SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (normalizedTensorConeHomotopy A X Y) F))
+  let e := SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y) F))
   have he : Arrow.mk e = Arrow.mk (normalizedTensorElementDerivedAugmentationIso A X Y).hom :=
     normalizedTensorDoubleConeSliceEvaluation_derived_arrow A X Y
-  have hi : ∀ (a b : Arrow (SSet.HomotopyCategory ((ihom K).obj (derivedInfinityCategory A)))),
+  have hi : ∀ (a b : Arrow (SSet.HomotopyCategory ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)))),
       a = b → IsIso b.hom → IsIso a.hom := by
     intro a b h hb
     subst b
@@ -58,11 +58,11 @@ lemma normalizedTensorConePostDerived_inverse_arrow :
     have h := congrArg T.map (normalizedTensorDoubleConeSliceEvaluation_triangle A X Y)
     rw [CategoryTheory.Functor.map_comp, CategoryTheory.Functor.map_id] at h
     change T.map (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (normalizedTensorConeHomotopy A X Y))) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedTensorConeHomotopy A X Y))) ≫
       T.map (SSet.Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
           (normalizedTensorDoubleConeSliceEvaluationHomotopy A X Y))) = _ at h
-    rw [← functorHomotopyPostcomp_hom, ← functorHomotopyPostcomp_hom] at h
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom, ← _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom] at h
     exact h
   have hc : c = inv e := by
     calc

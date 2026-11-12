@@ -1,10 +1,10 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanNativeConeLeg
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictNativeConeLeg
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.EdgeSquareTransport
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.SpaceHomotopyClasses
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanNativeConeLeg
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.StrictNativeConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.EdgeSquareTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.SpaceHomotopyClasses
 
 /-!
 概要：区間引き戻しの native 錐の脚を元の Kan 射へ読み戻す。

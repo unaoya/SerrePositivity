@@ -32,7 +32,7 @@ variable (Y : Paths C)
 
 inductive ValueSpine : Paths C → Type u
   | nil (X : Paths C) (p : valueHomType W X Y) : ValueSpine X
-  | cons (X : Paths C) (g : FactorTarget.Index W) (p : valueHomType W X g.val.left)
+  | cons (X : Paths C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : valueHomType W X g.val.left)
       (tail : ValueSpine g.val.right) : ValueSpine X
 
 def valueSpace (Y X : Paths C) : SSet.{u} :=
@@ -52,7 +52,7 @@ lemma evaluatePoint_simplex (θ : n ⟶ m) {X : Paths C} (t : MarkedSpine W Y n 
       (congrArg (fun k => k p) ((AllMarked.nativeValue W X Y).naturality θ))
   | cons X g p t ih =>
     change ValueSpine.cons X g
-      ((AllMarked.nativeValue W X g.val.left).app m ((FactorTarget.left W X g.val).map θ p))
+      ((AllMarked.nativeValue W X g.val.left).app m ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map θ p))
       (evaluatePoint (map θ t)) = _
     rw [ih]
     exact congrArg (fun q => ValueSpine.cons X g q (evaluatePoint t))

@@ -23,7 +23,7 @@ variable {S : PointedSimplicialSet.{u}} (I : ParametricLoopExchangeFamily S)
 variable {P Y Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right) (v : P ⟶ PointedObject.basedHom Z Z')
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right) (v : P ⟶ PointedObject.basedHom Z Z')
 
 /-- 同じ左右の定数二単体を保持した、元の二つの正方形の実際の合成データ。 -/
 def exchangePostPasting :
@@ -35,10 +35,10 @@ def exchangePostPasting :
         ((reversal Y ≫ doublePost h) ≫ TwoLoopSource.standardParametricPost S v)) := by
   let valueKan : KanComplex (PointedObject.basedHom P
       (doubleLoop (PointedObject.basedHom S Z'))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let targetKan : KanComplex (PointedObject.basedHom (doubleLoop Y)
       (PointedObject.basedHom P (doubleLoop (PointedObject.basedHom S Z')))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact SquareAdjustment.ConstantBoundaryPasting.choose _ _ _ _
     (exchangePostProjectionSquare_start I h hh v) (exchangePostProjectionSquare_finish I h hh v)
     (exchangeRestrictedNaturalitySquare_start I h v)

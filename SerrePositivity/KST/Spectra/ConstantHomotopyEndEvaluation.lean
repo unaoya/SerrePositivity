@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.ConstantHomotopyEndIso
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeWeightedEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeWeightedEvaluation
 
 /-!
 概要：定値 homotopy end の写像空間比較を普遍評価で計算する。
@@ -16,7 +16,7 @@ universe u
 
 open CategoryTheory CategoryTheory.Limits MonoidalCategory MonoidalClosed
 open CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 
 namespace SerrePositivity.KST.Spectra
 
@@ -29,12 +29,12 @@ variable (C : Type u) [SmallCategory C] (X : SSet.{u})
 
 @[reassoc]
 lemma constantSectionsIso_inv_evaluation :
-    (nerve C ◁ ((simplicialSectionsFunctor (nerve C)).mapIso
+    (nerve C ◁ ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsFunctor (nerve C)).mapIso
       (constantWeightedNerveOverIso C X)).inv) ≫
-        simplicialSectionsEvaluation (fst (nerve C) X) =
-      simplicialSectionsEvaluation (weightedNerveProjection ((Functor.const C).obj X)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsEvaluation (fst (nerve C) X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection ((Functor.const C).obj X)) ≫
         constantWeightedNerveToProduct C X :=
-  simplicialSectionsMap_evaluation (constantWeightedNerveOverIso C X).inv.left
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsMap_evaluation (constantWeightedNerveOverIso C X).inv.left
     (Over.w (constantWeightedNerveOverIso C X).inv)
 
 /-- 概要：定値 homotopy end の写像空間同型の評価は weighted nerve の係数評価。
@@ -43,26 +43,26 @@ lemma constantSectionsIso_inv_evaluation :
 使われ方：Goerss–Jardine VIII §2。標準比較射の写像空間での具体式。 -/
 lemma constantHomotopyEndIso_uncurry :
     uncurry (constantHomotopyEndIso C X).hom =
-      bousfieldKanWeightedNerveEvaluation ((Functor.const C).obj X) ≫
-        weightedNerveConstantEvaluation C X := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeightedNerveEvaluation ((Functor.const C).obj X) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantEvaluation C X := by
   let H := (Functor.const C).obj X
-  let t := ((simplicialSectionsFunctor (nerve C)).mapIso
+  let t := ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsFunctor (nerve C)).mapIso
     (constantWeightedNerveOverIso C X)).inv
-  change uncurry ((bousfieldKanSectionsMap H ≫ t) ≫ productSectionsToHom (nerve C) X) = _
+  change uncurry ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap H ≫ t) ≫ productSectionsToHom (nerve C) X) = _
   rw [uncurry_natural_left, productSectionsToHom_uncurry, whiskerLeft_comp]
   have h := constantSectionsIso_inv_evaluation C X
-  change (nerve C ◁ t) ≫ simplicialSectionsEvaluation (fst (nerve C) X) = _ at h
+  change (nerve C ◁ t) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsEvaluation (fst (nerve C) X) = _ at h
   calc
-    _ = (nerve C ◁ bousfieldKanSectionsMap H) ≫
-        (simplicialSectionsEvaluation (weightedNerveProjection H) ≫
+    _ = (nerve C ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap H) ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection H) ≫
           constantWeightedNerveToProduct C X) ≫ snd (nerve C) X := by
       simpa only [Category.assoc] using
-        congrArg (fun z ↦ (nerve C ◁ bousfieldKanSectionsMap H) ≫ z ≫ snd (nerve C) X) h
-    _ = ((nerve C ◁ bousfieldKanSectionsMap H) ≫
-        simplicialSectionsEvaluation (weightedNerveProjection H)) ≫
-          weightedNerveConstantEvaluation C X := by
+        congrArg (fun z ↦ (nerve C ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap H) ≫ z ≫ snd (nerve C) X) h
+    _ = ((nerve C ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap H) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.simplicialSectionsEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection H)) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveConstantEvaluation C X := by
       simp [constantWeightedNerveToProduct, Category.assoc]
-    _ = _ := by rw [bousfieldKanSectionsMap_evaluation]
+    _ = _ := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanSectionsMap_evaluation]
 
 end
 

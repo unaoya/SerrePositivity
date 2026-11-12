@@ -1,4 +1,10 @@
-# KL-W1 段 0・段 1 報告
+# KL-W1 段 0〜段 3・取り込み前検証報告
+
+2026-11-12 更新。**停止点 3**。main `f654cdc11` を取り込み、`1304c688ff9e4b2486f547310d07bfc25a2780d7` で root・全 103 監査・verify が成功した。保存比較 v3b 14,606 本の未説明差分 0、Kerodon 属性 672 組一致、5 段の層の違反 0。最新の結果と §9 の配置判断は末尾の「停止点 3」に記載した。
+
+以下の初期調査と経過記録は、その時点の件数・停止点を表す。§15 により共有鍵を使わず、取り込み前の重い検査まで作業枝で完了した。個別の逆向き import の例外案は、停止点 3 での調整役の確認対象。
+
+## 初期記録（停止点 1、2026-11-07）
 
 2026-11-07。調査対象は開始時の main `c56adeef7`。配置・依存・規模の集計はこのスナップショットで固定し、途中で追加された §6 と既存の型確認結果は main `33ce6cfca` から反映した。ここが停止点 1。段 2 の前に Kerodon 対応表の確認が全章 main に入った時点で、暫定の割り当てを一度見直す。
 
@@ -247,3 +253,413 @@ Python の道具はリポジトリ直下から `python3 scripts/refactor/<ファ
 - ビルド鍵を通した小規模 Lean 統合試験 2 件が通過。相対名・完全修飾名・選択的／局所／scoped `open` と投影記法を含むプレビューを再検査した。既存の F-2 実装を読み込んで略記と定理の alias を生成し、外部の試験ファイルから両方を非推奨警告付きで使えることを確かめた。
 - `81e593fb9` 時点の章表で途中プレビューを作り、3,001 項目から 14,966 行の表を再計算した。変更・要確認の記録は 809 件、うち既存行で行き先が変わったものは 32 件、新しい対応元は 5 件。正式モードは未提出の Ch 2 で停止し、正式出力は作らなかった。
 - 実ファイルでもビルド鍵を通した。既存の `PinchedHom/Index` と `PinchedHom/Basic` を §4.6 の候補パスに一時出力し、改名候補 23 件を使って 2 本を順に再検査した。外部の `EInfinity/ComplexLimits/ConeTriangleIndex` から旧名の利用 3 件を抽出した。
+
+## 停止点 1.6 — 章別レビュー後の割り当て差分
+
+2026-11-10。作業枝に main `d0149fd4a` を取り込み、`a12e53be8` の章表と `c29b7be1b` の手順を使用した。`klw1_review_assignment.py --accept-cross-review` の正式モードで、全 10 章 3,553 項目と停止点 1 の割り当て 14,966 行を照合した。出力は [changes.csv](kerodon-layout-stop-1-6/changes.csv)（953 行、見出しを除く）。
+
+| 集計 | 件数 |
+| --- | ---: |
+| 行き先が変わる既存行 | 22（∞ 圏内 21、外部候補 1） |
+| 旧来の宣言根拠を撤回した行 | 172（∞ 圏内 160、外部候補 12） |
+| 割り当て表にない新しい対応元 | 4 |
+| 出力上の行き先の衝突 | 0 |
+| 旧 partial 根拠のまま維持した行 | 437（∞ 圏内 380、外部候補 57） |
+
+新たな配置の根拠は `own`・`both`・`mathlib` の確定行に載る SerrePositivity 側のファイルに限った。Mathlib のファイルは移動候補に含めない。`unsure` は要確認として記録した。旧 partial による割り当ては行き先も従来の根拠欄も維持し、更新表の `partial_placement_retained=yes` と差分表の理由欄で区別した。撤回は、旧宣言根拠があり、今回採用できる宣言根拠がどの節にも残らなかった行を数えた。暫定パスは維持した。
+
+### 行き先が変わる 22 行
+
+パスは `SerrePositivity/` を起点とする。旧・新の数字は Kerodon の節番号。`Project` は旧案の出どころ別配置。
+
+| ソース | 旧 → 新 | 採用した項目 |
+| --- | --- | --- |
+| `EInfinity/FrameHom/AnodyneWeakDetection.lean` | 3.1 → 3.3 | 3.3.6.7、3.3.6.8、3.3.7.4 |
+| `InfinityCategories/Core/Equivalence.lean` | 4.5 → 3.1 | 3.1.5.1、3.1.5.9 |
+| `InfinityCategories/Core/EquivalencePathLifting.lean` | 4.5 → 4.4 | 4.4.5.10 |
+| `InfinityCategories/Core/InitialBoundaryTransport.lean` | 7.1 → 4.2 | 4.2.4.11 |
+| `InfinityCategories/Core/KanCharacterization.lean` | 4.4 → 1.3 | 1.3.5.2 |
+| `InfinityCategories/Core/KanHomotopyEquivalence.lean` | 4.8 → 3.1 | 3.1.5.4 |
+| `InfinityCategories/Core/OuterHornConverse.lean` | 4.4 → 1.4 | 1.4.6.10、1.4.6.12 |
+| `InfinityCategories/F1/FilteredExchange/FilteredPointwiseWeakEquivalences.lean` | Project → 3.2 | 3.2.8.3 |
+| `InfinityCategories/F1/Joins/CosliceTwistedHomComparison.lean` | 4.3 → 8.1 | 8.1.2.11 |
+| `InfinityCategories/F1/Joins/CosliceTwistedHomEquivalence.lean` | 4.3 → 8.1 | 8.1.2.11 |
+| `InfinityCategories/F1/Joins/RelativeJoinPrismCoverage.lean` | 5.2 → 3.1 | 3.1.2.12 |
+| `InfinityCategories/F1/Joins/RelativeJoinPrismInitialPushout.lean` | 5.2 → 3.1 | 3.1.2.12 |
+| `InfinityCategories/F1/TwistedArrow/EdgewiseEnrichedCategory.lean` | 8.1 → 8.6 | 8.6.7.1、8.6.7.2、8.6.7.5 |
+| `InfinityCategories/F1B/Diagrams/OppositeInvolution.lean` | Project → 4.4 | 4.4.1.8 |
+| `InfinityCategories/F1B/Diagrams/OppositeLifting.lean` | Project → 4.4 | 4.4.1.8 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseFunctor.lean` | 7.3 → 4.5 | 4.5.8.1 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseFunctorComponents.lean` | 5.1 → 4.5 | 4.5.8.1 |
+| `InfinityCategories/F1B/Fibrations/FiberwiseHom.lean` | 7.3 → 4.5 | 4.5.8.1、4.5.8.5 |
+| `InfinityCategories/F2/Presentable/AccessibleFunctor.lean` | 9.5 → 9.4 | 9.4.8.1 |
+| `InfinityCategories/F2/Presentable/Definition.lean` | 7.4 → 7.6 | 7.6.6.1、7.6.6.4 |
+| `InfinityCategories/F2/Presentable/Duality/RightUnitContractible.lean` | 9.5 → 4.7 | 4.7.3.14 |
+| `InfinityCategories/F2/Presentable/EquivalenceColimits.lean` | 9.5 → 7.1 | 7.1.4.12 |
+
+外部の `EInfinity/FrameHom/AnodyneWeakDetection.lean` は既存候補の対応節の差分で、§7 で承認された外部移動 4 群の対象外。新しい対応元 4 本は表に追加せず、`changes.csv` に記録した。外部移動の承認フラグは、この見直しでは付けていない。
+
+Python の単体試験 11 件が通過し、差分表から 22 行すべての新しい根拠・437 行の維持・パスの一意性を検算した。段 1.6 はビルドを要さない。調整役による確認のため、ここで停止した。
+
+## 段 2 — Kerodon の Tag
+
+停止点 1.6 の承認 `1d39655f0` を取り込んで着手。全 10 章の `ok`・`fix` かつ `own`・`both` の行を `item-tags.csv` と突き合わせ、SerrePositivity の 610 宣言に 672 組の属性を付けた。カーネル環境で宣言名と所有モジュールが全件一致し、対象宣言の型に `ModelCategory` の仮定は 0 件。対応表で唯一該当する Archive の宣言も対象に含めた。部分対応の注記は今回の範囲外。
+
+ビルド鍵を `--wait 1800` で取り、元の依存成果物を複製した一時領域で、変更した 367 本を再コンパイルした。全 367 本が通過した。`#kerodon_tags` を 16 の import 群で実行し、SerrePositivity の 672 組と照合した。欠落・余分はともに 0 件。Mathlib の既存 13 組は集計対象から除いた。出典と位置は [属性台帳](../../research/kerodon-coverage/kerodon-stage2-tags.csv)、照合した出力は [Lean の一覧](../../research/kerodon-coverage/kerodon-tags-lean.txt)。
+
+## 段 3 — Alexander–Whitney・shuffle・Eilenberg–Zilber 群
+
+承認済みの外部 4 群のうち、Alexander–Whitney・shuffle・Eilenberg–Zilber の import 閉包 56 本を `InfinityCategories/Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/` に移した。移動先と同じ名前空間に改名し、入口を含む利用側 81 本の import または参照を更新した。追跡対象の Lean ソースを調べ、旧 56 モジュールへの import は 0 件だった。旧名を ∞ 圏の外から使う参照の記録に基づき、88 名に `Project/Compatibility/KSTAlexanderWhitney.lean` で非推奨 alias を用意した。
+
+ビルド鍵を `--wait 1800` で取得し、移動先 56 本と互換モジュールをコンパイルした。利用側の `KST.ProExcision.IntegerLinearizationAdjunction` と `HomologicalAlgebra.Cosimplicial.CupCommutativity` も検査した。保存比較 v3b は対象の移動前後 379 宣言で PASS、未説明差分 0 件。移動した宣言の Kerodon 属性 15 組を `#kerodon_tags` で再確認した。
+
+### 並行する枝での追従
+
+作業枝で追加した Lean ファイルのうち追従対象だけをリポジトリ相対パスの JSON 配列 `$files` にし、取り込み前の枝で `python3 scripts/refactor/klw1_namespace.py collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。収集には、各ソースの依存を同じ版でビルドした Lean 成果物を使う。改名表を取り込んだ後、対象ソースの内容を収集時と揃えて、次の一行でプレビューを作る。
+
+```sh
+python3 scripts/refactor/klw1_namespace.py rewrite --root "$PWD" --files "$files" --index "$before_index" --plan scripts/refactor/targets/kl-namespace-map.json --output "$preview"
+```
+
+[`kl-module-map.json`](../../scripts/refactor/targets/kl-module-map.json) は旧 import から新 import への対応表で、[`kl-namespace-map.json`](../../scripts/refactor/targets/kl-namespace-map.json) の `modules` にも同じ対応が入る。プレビューの `review.json` で保留箇所を確認し、検査したソースを枝に反映する。移動先と旧名の両方が必要な場合、旧名を公開する互換モジュールを明示的に import する。現時点の改名表は、この報告で移動済みとした群を対象とする。段 3 全体の停止条件は未達。
+
+### 関手圏の各点ごとの余極限
+
+`KST/SConstruction/FunctorPointwiseColimitExistence` と同じ群に属する依存 4 本を Kerodon §7.1 の `LimitsAndColimits/LimitsAndColimits/` に移した。利用側 19 本を更新し、∞ 圏の外で参照される 11 名を `Project/Compatibility/KSTPointwiseColimits.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 5 本、互換モジュール、利用側の `KST.SConstruction.FunctorInitialVertices` を検査した。保存比較 v3b は 18 宣言で PASS、未説明差分 0 件。
+
+### 局所化の存在
+
+`KST/LocalizingInvariants/GeneralLocalization` と同群の依存 9 本を Kerodon §6.3 の `AdjointFunctors/Localization/` に移した。利用側 7 本を更新し、∞ 圏の外で参照される 5 名を `Project/Compatibility/KSTLocalization.lean` から公開した。ビルド鍵 `--wait 1800` で移動先 10 本と互換モジュールをコンパイルし、`Derived.Localization.GroupoidCompletion` も新しい明示的な import で検査した。保存比較 v3b は 43 宣言で PASS、未説明差分 0 件。移動した Kerodon 属性も Lean で照合した。
+
+### §9 の主題による配置
+
+| 元の `F2/Presentable/` のファイル | 処理と根拠 |
+| --- | --- |
+| `Definition` | `HTT/PresentableInfinityCategories/Definition` に一体で置いた。HTT 5.5.1 の presentable 性が主題。小（余）極限とその保存は同じ API を成し、`HasSmallColimits` は移動前の 144 本のソースに現れる。Kerodon の対応に付けた 6 組の属性を維持した。 |
+| `AccessibleFunctor` | Kerodon §9.4 の `LargeInfinityCategories/CompactGenerationAndAccessibility` に一体で置いた。HTT 5.4.2 にも由来し、二つの中心定義がともに Kerodon §9.4.8.1（Tag 06KY）に当たる。残りはその恒等・合成・濃度変更などの補題。 |
+| `EquivalenceColimits` | `equivalence_isColimitCone_iff` を Kerodon §7.1 の `EquivalenceColimitCones` に分けた。残る二つの κ-filtered 余極限の輸送は `HTT/AccessibleInfinityCategories/EquivalenceColimits`。分割した補題は移動前の 15 本のソースに現れる。 |
+| `Duality/RightUnitContractible` | `initialVertices_isContractibleKan` を Kerodon §4.7 の `InitialVerticesContractible` に分けた。随伴の右関手と実単位に関する残りの宣言は `HTT/PresentableInfinityCategories/RightUnitContractible`。分割した補題は移動前の 2 本のソースに現れる。 |
+
+二つの分割を `split_module.py` で検査した。どちらも HTT に残す宣言から Kerodon に切り出す補題への依存だけがあり、逆向きの依存はなかった。移動先 6 本、外部から参照される 1 名の互換モジュール、および利用側の `AccessibleFunctorEquivalence`、`Duality.LeftUnitContractible`、`ContravariantContinuity` をビルド鍵 `--wait 1800` で検査した。v3b は 30 宣言で PASS、未説明差分 0 件。書き換えた利用側は 313 本で、属性も Lean の出力で再照合した。
+
+`Core/Retracts` も §9 に当たる。頂点 retract の定義とその基本補題 9 宣言を Kerodon §8.5 の `VertexRetractions` に、HTT 5.1.4.2 の頂点条件の retract 閉包 6 宣言を `HTT/RetractsAndIdempotentCompletion/RetractClosure` に分けた。`split_module.py` で、閉包側から頂点 retract 側への依存だけであることを確認した。利用側 62 本を更新した。移動先 2 本、外部利用 5 名の互換モジュールと利用側の `Core.Idempotent.Coherent` を検査し、Kerodon 属性 2 組を再照合した。v3b は 15 宣言で PASS、未説明差分 0 件。
+
+`Core/InitialBoundaryTransport` では、標準単体の最初の頂点についての補題を `split_module.py` で Kerodon §4.2 の `FirstVertexLeftAnodyne` に切り出し、HTT §1.2.12・§2.1.2 に沿った相対始対象の輸送を `HTT/InitialAndFinalObjects/InitialBoundaryTransport` に置いた。残る 3 宣言から切り出した補題への依存は一方向。移動先 2 本、外部利用 1 名の互換モジュールと `Core.TerminalBoundaryTransport` のビルドを通し、利用側 12 本の参照を更新した。v3b は 4 宣言で PASS、未説明差分 0 件。Kerodon 属性 1 組を再照合した。
+
+### Ex∞
+
+Ex∞ の構成、Kan 性、anodyne・ファイブレーション・局所化・モノイダル性と、その専用の補助を Kerodon §3.3 の `KanComplexes/TheExInfinityFunctor/` に移した。割り当て済み 60 本と、Ex∞ 群の外からは集約入口を除いて直接使われない補助 12 本。共有補助の `FiberwiseAnodyne`、`HornRightColimit`、`IntervalBoundaryFamily`、`PairContractionAnodyne`、`PairHomotopyLifting`、`SubcomplexContraction` は `KST/Comparison` に置き、移動した側の参照で境界を明示した。モデル圏を使う引き戻し比較も同じ場所に置いた。
+
+利用側 153 本の import または参照を更新した。互換モジュール `Project/Compatibility/KSTExInfinity.lean` は ∞ 圏の外で参照される 8 名を公開する。ビルド鍵 `--wait 1800` で移動先 72 本、互換モジュール、残留 KST 側の 19 本を依存順に検査した。後者には `ArbitraryBasePullback`、`DiagramExInfinity`、`ExInfinityHomotopyPullback`、`ExInfinitySimplicialMonoid`、`SpanGluing` が含まれる。保存比較 v3b は 271 宣言で PASS、未説明差分 0 件。移動した属性 16 組も `#kerodon_tags` の出力と一致した。
+
+### 集約入口
+
+`public import` だけから成り、∞ 圏の宣言ファイルからは推移的にも import されない 47 本を `Project/Entrypoints/` に移した。利用側 31 本の import と README の入口リンクを更新した。宣言または実装側の利用を持つ候補 6 本は、入口に依存する定義側を調べる対象に残した。移動先 47 本がビルドを通過し、保存比較 v3b で 47 本すべての所有宣言数が前後とも 0 件であることを確かめた。
+
+### 監査とドラフトの参照
+
+Lean の宣言参照索引に載らない監査・ドラフトをソースから照合し、移動済みの旧名 790 箇所と、ドラフトの `IsPresentable` の選択的 `open`・相対参照を更新した。`audit_infinity_presentable.lean` の所有モジュールの検査には分割先を加えた。ドラフトの利用を根拠に `IsPresentable` の旧名も互換モジュールに加えた。書き換えた宣言の新名と公理一覧、追加した互換名は、ビルド鍵 `--wait 1800` で個別に照合した。
+
+### 利用側のフィールドと書き換え道具
+
+先に移動した型に対して、別ファイルに残る 42 メソッドを新しい型名で解決できるようにした。`with_weak_namespace … export …` で既存のメソッドを参照し、宣言の追加や数学的な変更は行っていない。AW を使う 9 本では、構造体を作る式のフィールドラベル 42 箇所を元の相対表記に戻した。合わせて 32 本の変更を、中間依存を含む 377 本の再コンパイルで検査した。
+
+書き換え道具には、型とメソッドが別のモジュールにある場合、構造体のフィールドラベル、`@` 付きの識別子の処理を追加した。16 件の試験が通り、実際の改名表と並行枝向けコマンドでも、旧 AW import と旧名を持つ試験ファイルを新しいパスへ変換し、Lean で検査した。保存比較では、56,004 行の改名表で接頭辞を索引化し、従来のハッシュと同じ結果になることを確認した。
+
+### 段 3 の到達点
+
+作業枝に反映した範囲は、外から移す 4 群 143 本、§9 に該当した 6 本、集約入口 47 本。4 本を分割したため、旧 196 モジュールに対して移動先は 200 本。ここまでの対象ビルドを通し、移動前後の保存比較 v3b は 760 宣言、未説明差分 0 件。集約入口の所有宣言は前後とも 0 件。改名表の 196 モジュールと 775 名を確認し、追跡対象の Lean ソースから移動済みの旧モジュールへの import は 0 件だった。非推奨 alias は、∞ 圏外での利用を確認した 120 名に限った。
+
+残る ∞ 圏内の 14,606 本は一時領域で移動先のソースを生成した。モデル圏の入力 3 本は元ソースを個別にビルドして索引を補った。`KanQuillen` にある既存の文献入力の `sorry` は移動前ソースに由来する。残りのプレビューから import 依存が閉じた先頭 64 本を選び、対象ビルドを通した。保存比較の最初の組では、参照索引の宣言欄に載らない `EnrichedDegree.Objects` が改名表から漏れ、宣言の増減と関連する型・本体で 7 件の差が出た。参照索引の別欄にある定義位置から改名規則を補い、最初の 16 本の再比較では 71 宣言で未説明差分 0 件。先頭 64 本の残りと全体の保存比較は継続課題。全体の改名表には、参照索引の各欄と Lean の保存比較の宣言一覧の照合が必要になる。
+
+暫定配置の import グラフでは、未解決のプロジェクト内 import と循環はともに 0 件、Kerodon の節番号と逆向きの直接 import は 1,425 件。逆向きの辺と実装境界の扱いを確定し、5 層のファイル別設定に反映する作業が残る。**停止点 3 は未達。** 上の追従手順と作業枝の改名表は、反映済みの範囲に対応する。
+
+### 段 3 の分割ビルド
+
+残る移動対象 14,606 本と、対象が使う再コンパイル対象を import の依存順で検査している。当初の再コンパイル対象 2,919 本に、追加分割の移動先 1 本と、依存が変わるタグ所有ファイルを検査するための閉包 8 本を加えた。ビルド済みの成果物と失敗ログを塊ごとに保存し、ソースを修正したモジュールと、その成果物を使うモジュールを再検査する。各回に `--wait 1800` を指定し、取得後の実行は 1,740 秒で終了を要求し、10 秒後に強制終了する。第 13 回は、当時の調整役の指示に従い、取得要求を一つにまとめ、前の塊から 10 分以上空けた。全体を一度に通す確認の前には調整役に知らせる。
+
+| 鍵を取得した回 | 成功 | 失敗 | 保持時間 |
+| --- | ---: | ---: | ---: |
+| 1 | 160 | 0 | 約 84 秒 |
+| 2 | 353 | 47 | 約 205 秒 |
+| 3 | 364 | 36 | 約 217 秒 |
+| 4 | 726 | 74 | 約 435 秒 |
+| 5 | 539 | 87 | 約 319 秒 |
+| 6 | 443 | 77 | 約 267 秒 |
+| 7 | 1,718 | 82 | 約 779 秒 |
+| 8 | 1,766 | 34 | 約 1,062 秒 |
+| 9 | 1,769 | 31 | 約 853 秒 |
+| 10 | 1,756 | 44 | 約 1,161 秒 |
+| 11 | 1,743 | 57 | 約 1,356 秒 |
+| 12 | 1,762 | 38 | 約 1,205 秒 |
+| 13 | 1,615 | 28 | 約 1,660 秒 |
+
+表の件数には修正後の再試行を含む。第 12 回終了時点では、移動先 10,941 本と前提 2,119 本の成果物が有効だった。追加分割による再コンパイルを含む第 13 回の終了時点では、移動先 10,757 本と前提 2,042 本が有効。Lean が生成する補助名を指す既存の非推奨 alias は、左辺を維持して右辺を直した。旧名前空間の `open`、`cases` の枝名、移動で相対解決を失った名前も、ビルド診断と移動前の参照索引に沿って修正している。これらは移動のプレビュー内の進捗。
+
+プレビューの改名表は、第一陣を含む 14,802 本のモジュール経路と、定義元付きの宣言経路 58,438 件を収録している。並行枝向けの一行コマンドをこの表で再実行し、試験ファイルの出力が第一陣で検査済みの出力と一致した。旧名 `IsFullyFaithful.preimageFunctorIso_postcomp` は、利用側によって異なる 2 モジュールの宣言を指す。書き換えでは Lean が記録した定義元を使う。同名の alias が一つの出力に混ざる場合は、利用範囲の分割を要求する。これらを覆う Python 試験を追加し、14 件が通った。Lean を使う 3 件はこの回の試験対象外。
+
+層設定の確認用に、節番号と逆向きの 1,425 辺を移動前の参照索引と突き合わせた。1,136 辺に依存先の宣言への直接参照があり、残り 289 辺は `public import` による再公開。実装境界候補 1,173 辺でも、1,016 辺に直接参照があり、157 辺は再公開だった。これを段 1 の配置・分割案と照合し、残す辺の理由をファイル単位で記録する。
+
+### 保存比較で使う宇宙変数と公理の照合
+
+先頭 64 本の v3b で、401 宣言のうち 9 項目に差が出た。Lean が生成する `Direction.noConfusion` と `Direction.noConfusionType` の宇宙変数名に移動前後のモジュール名が入り、型と本文のハッシュが変わっていた。宣言名と束縛された宇宙変数名を対応させて式を照合すると、両方の型と本文は一致した。
+
+公理一覧では `FreeQuiverCover.Vertex`、`TwoSidedDiagram.Data`、`TwoSidedElements.Hom`、`Word.Hom` とそれらの補助宣言で、Lean がエクスポートした一覧に差があった。帰納型とコンストラクタの循環に対して、キャッシュの走査順により一部の公理が記録されなかった。カーネル環境の型・本文から到達する公理を、各宣言を起点に再計算して、前後が一致することを確かめた。
+
+`decl_snapshot.lean --stable-project` では、宇宙変数を宣言の束縛順で正規化し、プロジェクト内の公理への到達を再計算する。同じオプションを前後両方に指定して再比較し、先頭 64 本の 401 宣言すべてで未説明差分 0 件。残りの保存比較にも同じ指定を使う。
+
+
+
+範囲を広げた比較では、第一陣の改名が抜けた依存名、`@[reassoc]` の生成名、名前解決用の `with_weak_namespace ... export ...` による生成補題の所属判定を補った。差が出た 4 組のうち 3 組を再実行し、1,386 宣言で差分 0 件。生成補題が追加扱いだった 4 件は、修正前のスナップショットでも型・属性・公理一覧が一致していた。比較器に所属判定の回帰試験を追加した。
+
+残る 1 組の生の差 12 件は `DeprecatedAlias` の生成宣言の本文・所属に限られた。元ソースとプレビューの差が `namespace` と `end` の 2 行だけであることを確認し、この置換を元ソースに適用して移動先のモジュール名でコンパイルした。プレビューと `.olean` 本体・private・server、`.ilean`、`.ir`・sig の 6 成果物がバイト単位で一致し、生成宣言を含む 11 宣言の保存比較も差分 0 件。この 12 件は移動による生成結果の差として説明済み。
+
+
+比較範囲を 1,920 本に広げ、前後の環境で定義元が一致する匿名 instance や生成補助宣言の 101 組を改名表に加えた。`LengthZero` と `WordCons` に同じ旧完全修飾名の宣言がある場合は、定義元が混ざらないよう比較群を分けた。既存の `deprecated_alias` をソース上の宣言として認識するように比較器を修正した。差が出た 7 組を再実行し、1,120 本、6,794 宣言で未説明差分 0 件。
+
+### 追加分割と層の再検査
+
+`F2/Presentable/AdjointFunctorTheorem` も §9 の分割候補とした。`split_module.py` で、随伴関手定理から前層の局所性判定への依存が一方向であることを確認した。プレビューでは `exists_rightAdjoint_iff_preservesSmallColimits` を Kerodon §9.5 に置き、局所性判定と連続前層の表現可能性の 2 宣言を `HTT/PresentableInfinityCategories/AdjointRepresentability` に分けた。両方の移動先のビルドと保存比較は継続中。
+
+プレビューの現役 29,314 モジュールの import に循環・未解決のプロジェクト内 import は 0 件。追跡中の Lean ソースに移動済みの旧 import は 0 件。節番号と逆向きの直接 import は、依存先の直接参照がなく別の `public import` 経路が残る 73 辺を 61 モジュールから外した。残る 1,352 辺は、参照する宣言か再公開の理由を辺ごとに記録した。5 層の暫定設定を新しい import グラフに当て、未登録の実装境界、層順の違反、理由未登録の逆向き辺はすべて 0 件。直接 import を外した対象のビルドと保存比較を進めている。
+
+タグ付き 367 本から、モジュール文書で HTT または HA を明記する 93 本を抽出し、主題とタグを付けた宣言を照合した。たとえば `Core/Idempotent/Coherent` の冪等図式と強い分裂、`DGNerve/Pullback` の単調写像による引き戻し、`HomotopyLimits/Presentable/LocalObjects` の局所対象の定義は、そのファイル自体の主題が Kerodon の対応に当たるので一体で置く。
+
+`DGNerve/EdgeHomotopy` の主題は HA Example 1.3.1.8 の、左右の辺ホモトピーと閉零射の境界関係の比較。`edgeClosedEquiv`（Tag 00PZ）とその型に必要な `vertexClosed` を Kerodon §2.5 の `EdgeClosedEquivalence` に分け、比較の残り 9 宣言を `HA/DerivedCategoryModels/EdgeHomotopy` に置いた。`split_module.py` で元ソースと保存データを照合し、HA 側から Kerodon 側への依存だけであることを確認した。プレビューで利用側 72 本を書き換え、前回の成果物のうち依存が変わる 1,876 本を再検査に回した。この分割を加えた状態でも、旧 import、未解決 import、層違反は 0 件。
+
+移動後のタグは、成果物がそろっていた 352 本で 644 組を登録環境から照合し、欠落・余分は 0 件。上の分割を含む最終配置でも残りと合わせて再照合する。並行枝の参照を調べ直したところ、外部互換名の候補集合に増減はなかった。外部利用の 5,956 名について、定義元を分けて署名の依存を集めている。
+
+`WordForwardCore.forwardColumns` の本体差分では、`deriving DecidableEq` で生成された `instDecidableEqDirection` が改名表から漏れていた。カーネル式に現れる 6 定数の移動前後の名前を対応させると、型と本体が一致した。名前を補って 160 本、1,171 宣言を再比較し、未説明差分は 0 件。別ファイルにある同名の private 補助は、比較に限って定義元別の改名規則を保持した。
+
+第 13 回は、取得要求の前に KL-W1 の待機要求をすべて取り下げ、10 分空けてから `--wait 1800` で取得した。保持時間は 27 分 40 秒。`EdgeClosedEquivalence` と HA 側の `EdgeHomotopy`、`FilteredPosetNerve` はビルドを通った。
+
+保存比較ツールは、同じ入力で Lean の `--run` とバイト単位で出力が一致することを確認して、同じ Lean ソースをネイティブ実行した。追加分割後に残っていた成果物 9,254 本を比較した時点では、9,203 本で未説明差分 0 件。51 本で生成名の増減 148 行と、`DGKappaSpanPoset` の生成補助の差 1 行を検出した。前者は同じ定義元と元の宣言位置、後者は `deriving DecidableEq` の補助定数を照合し、比較用の改名表を補った。新しい規則での再比較を行う。
+
+監査のプレビュー 54 本で、Lean の名前引用を含む旧名や旧ファイルパスを更新した。旧名が二つの定義元を指しうる 19 箇所は、前後の監査項目と追加時の履歴を照合した。旧ディレクトリ接頭辞で所有モジュールを選ぶ 14 箇所は、同じ旧ファイル群を `kl-module-map.json` から選ぶ方式に更新し、分割先も監査に含めた。監査の Lean 実行はこれから。
+
+
+### ビルド時間帯の切り替え
+
+`main` の `d8477d799` に入った指示書 §10 と `coordination.md` §2 を確認した。第 13 回の鍵は 19:56:29 JST に返し、続けて予定していた互換名検査の取得要求を取り下げた。以後、一括の検査・保存比較・対象ビルドは 23:00〜翌 08:00 JST に行う。取得には `--wait 1800` を使い、待機がタイムアウトしたときの自動再取得は行わない。夜間の取得後は 08:00 前に終了するよう制限する。昼は改名表、逆向きの import、層、監査と報告の静的な作業に充てる。小さな対象ビルドが必要な場合は 10 分以内。段 4 は調整役の暦に従い夜に行う。
+
+
+## 停止点 3 の報告案
+
+### 逆向きの import と 5 層
+
+1,425 辺を用途で分類した。依存先の宣言を直接使う 1,136 辺は、Kerodon の主題に沿った配置と直接の依存を保つ。直接参照がない 289 辺は公開経路を照合し、代替の公開経路がある 73 辺を 61 ファイルから外した。残る 216 辺は公開の見せ直しに使うため維持する。削除後の実ソースで、73 辺すべてについて代替経路が `public import` だけでつながることを確認した。残す 1,352 辺、削除する 73 辺とその経路、実装境界の例外 1,175 辺は付表に記録した。[逆向き import と実装境界の付表](kerodon-layout-w1-stage3-reverse-imports.md)
+
+| 層 | 割り当てファイル数 | 決まり |
+| --- | ---: | --- |
+| `SharedFoundation` | 198 | 共有の土台。保持した実装境界に推移的に依存しない。 |
+| `Portable` | 6,240 | 可搬な構成。保持した実装境界に推移的に依存しない。 |
+| `Comparison` | 8,396 | 実装への直接 import を許す箇所と根拠を辺ごとに登録する。 |
+| `Entrypoints` | 59 | 入口、監査用の集約、互換名。 |
+| `Consumers` | 1 | 利用側に置く ∞ 圏内の集約。層を明示していない外部の利用側もこの層に属する。 |
+
+互換名の残りを加える前の集計。最終配置プレビューの現役 29,314 モジュールを Python だけで検査し、未解決 import、循環、層順違反、理由のない実装境界と逆向きの辺はすべて 0 件。設定は `layers.json` の `klw1` にまとめた。移動を反映した作業木での再現コマンドは `python3 scripts/refactor/layer_check.py --enforce KLW1 --root "$PWD"`。
+
+
+### Tag の文章と README
+
+既存の項目参照 6,246 件と節・小節参照 3,637 件に Tag を添えた。Kerodon 配下の 7,685 ファイルを照合し、対応節が書かれていなかった 7,672 本に追記した。番号・参照先 198 件と、見出し語 148 件を修正した。番号に対応する Tag の欠落や既存 Tag の不一致は 0 件。編集対象は 7,763 本で、うち 1 本は Archive。docstring を除いたバイト列は前後一致した。
+
+元素 ∞ 圏の旧引用は、底変換、ファイバー、空間値の構成、小節全体の文脈に分けた。Kan fibration の塔の既存引用は付録で項目 Tag を確認した。README の番号照合表を修正し、∞ 圏の README は Kerodon の 51 節の番号・Tag・パス、HTT・HA・Project の役割、5 層の規則を説明する形に整えた。配置プレビュー上で両 README のローカルリンクを照合した。[底変換の Remark 5.6.2.18](https://kerodon.net/tag/0271)、[ファイバーの Example 5.6.2.19](https://kerodon.net/tag/0272)、[空間値の Example 5.6.2.9](https://kerodon.net/tag/026S)、[塔の Corollary 11.9.7.2](https://kerodon.net/tag/01C7)
+
+文書の編集は同じ Lean コードの保存比較を再利用できるよう別のプレビューに保管した。型と本文の比較後に、照合したコードと docstring を合成し、全対象の確認ビルドでは文書も含む最終ソースを使う。
+
+### レーン別の追従表
+
+2026-11-12 10:21:32 JST に再確認した。動いている 4 レーンの追跡済み・未追跡の Lean ソースを import 行のテキスト検索で調べた。枝固有のファイルは各 HEAD と main の merge base からの差分で、作業木の変更も含む。「直すファイル」は枝固有のうち旧 import が直接あるもの。「収集対象」は枝固有の全 Lean ファイルで、推移的な import から解決される旧名も書き換える。継承した旧 import は取り込み側の改名に含まれる。[対象ファイルと参照行](kerodon-layout-stop-3/lane-imports.json)。
+
+HA・HTT・K の地図には現在の枝・作業木がなく、前回記録の HEAD が main の祖先であることを確認した。これらの現在の収集対象は空。実装 4 レーンの枝固有の直接旧 import は 計 11 本だった。推移的な参照を確認するため、計 214 本を収集対象とする。
+
+`$handoff` は配布した `kerodon-layout-stop-3`、`$klw1` は KL-W1 の作業木。`$maps` は最終配置のコミットと同じ版の `kl-module-map.json`・`kl-namespace-map.json` を置いたディレクトリ（`$klw1/scripts/refactor/targets` でもよい）。取り込み前の枝で、各行の `*-files.json` を `$files` にして `python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" --files "$files" --output "$before_index"` を実行する。その同じソースを入力にして、以下の一行で新しい出力先 `$preview` にプレビューを作る。`review.json` とソース差分を確認し、main の取り込みと書き換えを一緒に反映する。
+
+| レーン・枝 | 枝全体で旧 import があるファイル | 直すファイル（旧 import 行数） | 収集対象 | 書き換えの一行 |
+| --- | ---: | ---: | ---: | --- |
+| ⑤a `math/bs-impl` | 17,516 | 11（31 行） | [32](kerodon-layout-stop-3/bs-impl-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-impl-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤b `math/bs-d68` | 17,507 | 0（0 行） | [52](kerodon-layout-stop-3/bs-d68-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-d68-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑤c `math/bs-classical` | 17,507 | 0（0 行） | [18](kerodon-layout-stop-3/bs-classical-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/bs-classical-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| ⑥ `math/scheme` | 17,507 | 0（0 行） | [112](kerodon-layout-stop-3/scheme-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/scheme-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| HA `research/ha-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/ha-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/ha-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| HTT `research/htt-review` | — | 0（0 行） | [0](kerodon-layout-stop-3/htt-review-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/htt-review-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+| K の地図 `research/k-maps` | — | 0（0 行） | [0](kerodon-layout-stop-3/k-maps-files.json) | `python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite --root "$PWD" --files "$handoff/k-maps-files.json" --index "$before_index" --plan "$maps/kl-namespace-map.json" --output "$preview"` |
+
+`kl-module-map.json` は import の改名、`kl-namespace-map.json` は宣言の改名と分割先の定義元を収める。旧名の互換モジュールを使う場合も import は改名表で更新する。ファイルが追加された場合はレーン側でそのパスを収集対象の JSON 配列に加え、改名前の成果物とソースで収集し直す。
+
+### 夜間の検証結果
+
+11-10〜11-11 の夜間枠。集計は 11-11 08:00:20 JST。main の `f68a0abea` を `9bbc07615` に取り込み、草稿 5 本の衝突を解消した。新旧の依存をたどって 28 本を Lean で採取し、7 本の構文を採取結果と照合して補正した。追加 13 本を含む 38 本、旧 import 872 行を配置プレビューで更新した。追加ファイルで外部から使う 16 名を確認して互換名の対象に加えた。
+
+| 確認項目 | 夜間の結果 |
+| --- | --- |
+| 移動先のビルド | 14,436 / 14,606 本。残り 170 本。 |
+| 前提ファイルと互換名 | 2,848 / 2,980 本。互換モジュール 19 / 51 本、対象 alias 5,972 名。 |
+| 保存比較 v3b | 14,233 本を比較し、14,217 本で未説明差分なし。未比較 373 本、現行比較の未説明差分 34 行。 |
+| Lean の Kerodon 属性 | 367 / 367 モジュール、672 / 672 組が完全一致。 |
+| 5 層の Python 検査 | 現役 29,492 モジュール。旧 import 0 件、未解決 import 0 件、層違反 0 件。 |
+| root `lake build SerrePositivity` | 未着手。 |
+| 全監査と verify | 未着手。予定対象は 103 本。段階 II の BS は `audit_bhatt_scholze_stage2.lean`、AlgebraicGeometry は `audit_kst_scheme_lemmas.lean`。 |
+| 共有鍵 | 11-10 23:00:46 JST〜11-11 01:08:43 JST、11-11 06:07:30 JST〜11-11 07:05:37 JST、11-11 07:41:56 JST〜11-11 07:59:39 JST。 |
+
+停止点 3 の条件を満たすまで、一括移動は作業枝に反映しない。夜間の完了通知は 1〜5 が完了したときに発行する。
+
+保存されたビルドエラーのある起点は 7 本。未ビルドの集計には各起点に依存するファイルも含む。
+
+- `SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Compact.LinearHomCohomology`
+- `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleKappaCompactCoproduct`
+- `SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaCovers.CompactStage`
+- `SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.PaddedBackwardInsertionComparison`
+- `SerrePositivity.KST.LocalizingInvariants.SpectrumZeroClass`
+- `SerrePositivity.KST.LocalizingInvariants.StrictCospanConeLegs`
+- `SerrePositivity.KST.SConstruction.PerfectStableHoArrow`
+
+現行の保存比較で差が残るモジュール。
+
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CofinalPartialColimitFamilies`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePieceColimitIso`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.CompatiblePiecePresentations`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IndImageMappedPartialConditions`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PartialFamilyValues`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RelativeSmallPresentationPiece`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialConditions`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedPartialPieces`
+- `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.TwoMappedRefinementPresentation`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeAttachmentOriginalSquares`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeInverseNativeHomSquares`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeNativeHomCoherence`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpecifiedCoconeNativeHomSquare`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomFamily`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleHomParameters`
+- `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.TransportTriangleInitialHom`
+
+### 11-11 昼の修正と再検査の対象
+
+朝の 302 本の内訳を、保存されたビルド結果と依存グラフから求めた。移動先 170 本のうち 164 本、前提 100 本のうち 94 本、互換 32 本の全本に未完了の前提がある。エラーログが残った起点は 7 本。互換モジュールに固有の型エラーは朝のログに残っていなかった。
+
+| 原因 | ソースでの修正 |
+| --- | --- |
+| 移動後に解決できなくなった `open` | `LinearHomCohomology` と `DGModuleKappaCompactCoproduct` の `DoldKanComparison`、`KappaCovers.CompactStage` の `F2`、`PerfectStableHoArrow` の `F2.Idempotent` を外した。必要な移動済み参照は新しい名前で指定されている。 |
+| 利用側で省略していた名前 | `PaddedBackwardInsertionComparison` の `FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence`、`SpectrumZeroClass` の `spectrumPoint`、`StrictCospanConeLegs` の `spectrumPullbackDiagram` を定義元の名前で明示した。旧 `.ilean` の参照と移動後の import 閉包を照合した。 |
+
+7 本を配置プレビューで修正し、対象モジュールの再ビルドは夜に回した。前夜に修正した `GeneratorWord.erase` の非計算可能な互換名の指定も、互換モジュールを再生成するときに保持する。
+
+保存比較の 34 行のうち 18 行は、`local instance : Fact Cardinal.aleph0.IsRegular` 9 宣言の追加・削除の対だった。前後で定義元、ソース範囲、型ハッシュ、属性、公理が対応することを確認し、定義元ごとに改名表を修正した。残る 16 行は局所記法から Lean が生成した 8 宣言の本文と親の差分だった。共有鍵の下で既存の成果物から前後の式を採取し、名前空間と hygiene の識別子、および既存の改名表で同じ定義を指す 2 種の識別子の綴りを対応させた。8 宣言の式が一致し、親の差は記法を定義した名前空間の移動と一致した。この照合結果を該当するビルドと差分行のハッシュに結び付けて保存した。
+
+改名表を更新した時点で、現在の規則で有効な比較は 14,121 本で、未説明差分は 0 行。夜は、朝の未比較 373 本を優先し、改名表の更新で有効期限が切れた 112 本も再比較する。対象は付表に保存した。[朝の未比較 373 本](kerodon-layout-stop-3/overnight-uncompared-373.json)、[改名表更新後に再比較する 112 本](kerodon-layout-stop-3/overnight-recompare-112.json)
+
+08:24 JST 時点の `main`（`6e6a3f9a7`）まで、⑤b・⑥の取り込みを含む差分の import を静的に確認した。前夜に書き換えた差分を保持し、23 時の `main` を取り込んでから、その時点の BS・EInfinity の追加分を再確認する。残りの対象ビルド、保存比較、root ビルド、全監査、verify の順で進める。
+
+### 11-11 昼の再ビルドと保存比較（§11）
+
+11:11 JST 集計。§11 の `main`（`263a6e1fc`）を `e0950c02e` に、§12 と整理券の繰り上げ方式を含む `cac43df5c` を `7415ebbed` に取り込んだ。追加された BS と基盤のファイルには、InfinityCategories の旧配置への直接・推移的な依存がなかった。前夜分の書き換え 38 ファイル・872 import 行を保持し、最新の root・BS の入口と監査の登録も配置プレビューに反映した。
+
+| 確認項目 | 結果 |
+| --- | --- |
+| 移動先のビルド | 14,606 / 14,606 本 |
+| 前提・互換モジュール | 2,980 / 2,980 本（互換 51 / 51 本） |
+| 保存比較 v3b | 14,281 / 14,606 本。未説明 0 行 |
+| 5 層の Python 検査 | 29,694 モジュール、層違反 0 件、旧 import 0 件、未解決 import 0 件 |
+
+共有鍵の保持（JST）は09:18:20〜09:26:07、09:36:49〜10:01:38、10:37:04〜11:04:05。
+
+§13 により昼の大きな枠を終了した。main の `7a689544b` から `with_build_lock.sh` を取り込み、昼の上限を 580 秒、待ちを `--wait 3600` に変更した。次の処理は今夜 23 時の main の取り込み後に行う。
+
+今回、373 本と期限切れ 112 本を合わせた 485 本の比較を実行した。新たに出た 38 行は、3 モジュールの private な補助宣言 19 個の追加・削除だった。定義元とソースを照合して比較用の名前対応を 23 個追加した。これにより期限切れとなった 325 本の再比較を夜に回す。[対象の 325 本](kerodon-layout-stop-3/overnight-recompare-325.json)現在の規則で有効な 14,281 本には未説明の差分がない。
+
+前夜は、対象ビルドが残っていても一定回数の後にスナップショットとタグの処理へ進み、処理列を終了する構成になっていた。01:08 に鍵を返した後、06:07 まで次の枠を開始できなかった。今夜は、各枠の完了後に残件を検査して次の段へ進み、停止が必要なら時刻と理由を報告へ記録する。
+
+残りは移動先 0 本、前提・互換 0 本、未比較 325 本。
+
+### 11-11 夕方の小枠による保存比較（§14）
+
+19:29 JST 集計。main の 267277a0e を 0291ca816 に取り込み、coord 組と鍵の使用履歴を含む新しいスクリプトを使用した。当初は昼の上限を 280 秒、待ちを --wait 3600 に設定した。19:15 の改定後は上限を 170 秒、返却から次の要求までを 60 秒以上とした。
+
+| 確認項目 | 結果 |
+| --- | --- |
+| 移動先・前提・互換のビルド | 17,586 / 17,586 本（移動先 14,606 本、前提・互換 2,980 本）。昼の再ビルド完了時の対象 |
+| 保存比較 v3b | 現行の規則で 14,573 / 14,606 本が一致。未説明 0 行 |
+| 再比較の残り | 33 本 |
+| 鍵の履歴 | 全 14 枠。改定前を含む最長 280.09 秒。19:15 以降は 3 枠、最長 170.05 秒 |
+| 5 層の静的検査 | 現役 29,868 モジュール。層違反 0 件、旧 import 0 件、未解決 import 0 件 |
+
+夕方の処理では、残っていた 325 本のうち 292 本を小さな組に分けて再比較した。型・本文・名前の対応は、移動前後の成果物と現在の改名表で照合した。
+
+19:15 の改定を受け、実行中だった枠は 19:16:48 に約 63 秒で終了して鍵を返した。その後は 60 秒以上空けてから、170 秒の枠で再開した。
+
+19:25:41 JST の枠は 170 秒で打ち切った。移動前の 2 組の採取結果は正常な JSON として保存済みだが、比較の完了には届かなかった。60 秒を空けて状態を確認し、昼の再要求は終了した。[夜に回す残り 33 本](kerodon-layout-stop-3/evening-recompare-33.json)。19:15 改定後の次の要求までの間隔は実測 119.58 秒、81.32 秒で、いずれも 60 秒以上だった。
+
+夜の継続処理は、既存の移動先が全部済んでいても main 差分の参照採取と書き換えを必ず終えてから、最終配置・root ビルドへ進むよう補正した。
+
+追加された main の差分について、import の配置プレビューを更新した。新たに参照採取が必要な EInfinity・BS 等のファイルは夜の作業に含める。root ビルド・全監査・verify は、23 時の main の取り込みと参照の書き換えを終えてから行う。
+
+### 11-11 昼の隙間の継続と再照合
+
+20:37 JST 集計。調整役の継続指示を受けて 19:35 から小枠を再開した。上限 170 秒、返却後から次の要求まで 60 秒以上、`--wait 3600` を、保存比較・タグ・互換名の照合で共通に適用する。
+
+| 確認項目 | 結果 |
+| --- | --- |
+| 保存比較 v3b | 14,606 / 14,606 本が一致。未説明 0 行 |
+| 移動先・前提・互換のビルド | 既報の 17,586 / 17,586 本（移動先 14,606 本、前提・互換 2,980 本） |
+| タグの新たな照合 | 672 / 672 組。対象 367 モジュール。前夜の 672 組の一致に加え、最終配置の成果物で再照合も全件一致 |
+| 外部利用と互換名のソース | 元の 5,956 名と追加 16 名の全 5,972 名が一致。互換 51 モジュール、欠落 0、余分 0 |
+| 互換名の成果物 | 5,972 / 5,972 名を照合済み。元の 5,956 名のうち 5,956 名 |
+| root・全監査・verify | 未着手。23 時以降の対象 |
+
+最後の保存比較で `ModNerve._proof_1` の型差分が 1 行出た。private 略記 `B := PUnit.{1}` の名前が比較表から漏れていたためだった。定義元を指定して前後の型を採取し、宇宙パラメータが同じで、private 定数の名前だけを対応させると式の構造が完全一致することを確認した。比較用の名前対応を 1 件追加し、影響する 6 本・46 宣言を採取し直して、20:11 に全件一致を確認した。Lean のソースの修正は不要だった。[型と成果物の根拠](kerodon-layout-stop-3/private-B-type-explanation.json)。
+
+タグは古い照合結果に頼らず新たな照合セッションで採取し、完了した組を保存する。互換名は同じ旧名の別定義を混ぜない二つの環境に分け、所有元・型・定数そのものの本文・deprecated 属性を確認する。全監査は夜の verify で行う。
+
+完了時の [照合記録](kerodon-layout-stop-3/daytime-preflights-receipt.json) に件数と入出力のハッシュを保存した。互換名の型は 5,690 名で検証済み alias の置換後に構造一致し、残る 282 名も Lean の還元可能な型の等しさの検査に通った。全 5,972 名の本文は対応する定数そのものだった。共有鍵の履歴による返却から次の整理券発行までの最短は 60.068 秒。
+
+夜は 23 時にその時点の main（281f5420f 以降）を取り込んで差分の参照を書き換え、残る確認と段 4 に続ける。二つの鍵のどちらを取得しても自分の保持を確認できるようにし、verify の設定は `VERIFY_JOBS=4 VERIFY_MEMORY_GB=32` に変更した。
+
+## 停止点 3 — 取り込み前の最終検証（2026-11-12）
+
+main `f654cdc11`（⑤c の停止点 4、⑤a の途中、⑥ の AlgebraicGeometry 120 モジュールを含む）を `6a22ffb0a` で取り込んだ。夕方以降の EInfinity・BS 等の参照採取は 147 / 147 本、書き換えは累計 71 ファイル・898 import 行。AlgebraicGeometry には InfinityCategories への依存がなく、配置の書き換えは不要だった。一括移動は `4e656a4c6` で作業枝に反映し、その後の利用側の名前解決の修正を含む **`1304c688ff9e4b2486f547310d07bfc25a2780d7`** を検証した。§15 に従い、ここに記載した root・監査・verify では共有鍵を取得していない。
+
+| 確認項目 | 最終結果 |
+| --- | --- |
+| 対象ビルド | 移動先 14,606 / 14,606 本、前提・互換 2,980 / 2,980 本。移動先の検証用ソースで完了。後続の root・verify は実際の配置で実行 |
+| 保存比較 v3b | 14,606 / 14,606 本。未説明 0 行。第一陣 196 モジュール・760 宣言は既報の比較と合わせて確認 |
+| Kerodon 属性 | 367 モジュール・672 組が一致。欠落・余分 0。own・both の対象だけを付与し、§6 の除外を維持 |
+| 一括移動の互換名 | 所有元付き 5,995 件 / 5,995 件の型・本文・属性等が一致。元の外部利用 5,956 件と main 差分の追加 39 件を含む |
+| 第一陣の互換名 | 120 件。上の 5,995 件と合わせ、今回のレーンで新設した alias 宣言は 6,115 件。以前からある非推奨名とは別集計 |
+| 5 段の層 | 現役 30,226 モジュールで違反 0。旧 import・未解決 import・循環 0 |
+| root ビルド | `lake build SerrePositivity`：成功（30,355 ジョブ、終了コード 0） |
+| 全監査 | 103 / 103 本成功（失敗 0、既知扱い 0）。BS 段階 II・AlgebraicGeometry を含む |
+| verify | PASS（終了コード 0、`gate: true`、監査の省略 0）。`VERIFY_JOBS=6 VERIFY_MEMORY_GB=44`（11-12 09:40 のユーザー判断）。指定された大きい 3 本を排他にし、修正後の実測が未採取の 2 本も同じ排他グループに入れて並列実行。キャッシュによる監査省略や対象限定のフックは使用しない |
+
+[最終の検証記録](kerodon-layout-stop-3/stop-3-final-receipt.json) に、検証した HEAD、main、ビルド・監査の結果、保存比較と alias の件数、入力・出力のハッシュを残した。同じ綴りの旧名が異なる元モジュールにある場合は所有元を区別し、互換名の照合は衝突しない二つの環境に分けた。型と本文の数学的な変更は行っていない。最後に実際の worktree のコンパイル済み成果物からも、367 モジュール・672 組の属性を再照合し、欠落・余分 0 を確認した。互換モジュール 51 本は、5,995 件のカーネル検査に使ったソースとのコード一致を確認し、最終ソースと検査用ソース・成果物のハッシュを記録した。
+
+### §9 の最終配置
+
+以下は `SerrePositivity/InfinityCategories/` 以下のパス。先の経過欄でプレビュー・継続中とした AFT と EdgeHomotopy の分割も、両方の出力を対象ビルドと保存比較に含めて完了した。
+
+| 旧ファイル | 配置 | 判断 |
+| --- | --- | --- |
+| `F2/Presentable/Definition` | `HTT/PresentableInfinityCategories/Definition.lean` | HTT の主題を一体で保持し、対応する宣言に Kerodon 属性を付けた。 |
+| `F2/Presentable/AccessibleFunctor` | `Kerodon/LargeInfinityCategories/CompactGenerationAndAccessibility/AccessibleFunctor.lean` | 中心の定義が Kerodon §9.4 に当たるため一体で配置した。 |
+| `F2/Presentable/EquivalenceColimits` | `HTT/AccessibleInfinityCategories/EquivalenceColimits.lean / Kerodon/LimitsAndColimits/LimitsAndColimits/EquivalenceColimitCones.lean` | 同値による余極限錐の輸送を Kerodon §7.1、κ-filtered 余極限の輸送を HTT に分けた。 |
+| `F2/Presentable/Duality/RightUnitContractible` | `HTT/PresentableInfinityCategories/RightUnitContractible.lean / Kerodon/TheHomotopyTheoryOfInfinityCategories/TruncatedObjectsAndHigherHomotopyCategories/InitialVerticesContractible.lean` | 頂点の可縮性を Kerodon §4.7、実単位と随伴の残りを HTT に分けた。 |
+| `Core/Retracts` | `HTT/RetractsAndIdempotentCompletion/RetractClosure.lean / Kerodon/TheYonedaEmbedding/RetractsAndIdempotents/VertexRetractions.lean` | 頂点 retract を Kerodon §8.5、retract 閉包を HTT に分けた。 |
+| `Core/InitialBoundaryTransport` | `HTT/InitialAndFinalObjects/InitialBoundaryTransport.lean / Kerodon/TheHomotopyTheoryOfInfinityCategories/LeftAndRightFibrations/FirstVertexLeftAnodyne.lean` | 標準単体の最初の頂点の補題を Kerodon §4.2、相対始対象の輸送を HTT に分けた。 |
+| `DGNerve/EdgeHomotopy` | `HA/DerivedCategoryModels/EdgeHomotopy.lean / Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/EdgeClosedEquivalence.lean` | 辺と閉零射の同値および必要な頂点を Kerodon §2.5、HA の比較の残りを HA に分けた。 |
+| `F2/Presentable/AdjointFunctorTheorem` | `Kerodon/LargeInfinityCategories/PresentableInfinityCategories/AdjointFunctorTheorem.lean / HTT/PresentableInfinityCategories/AdjointRepresentability.lean` | 右随伴と余極限保存の判定を Kerodon §9.5、前層の局所性・表現可能性を HTT に分けた。 |
+
+### 利用側・文章・例外案
+
+今回移動しない KST 側の `pointedMappingFunctor`・`spectrumPullbackDiagram` 等は元の定義名を保持し、利用側の参照をその完全修飾名で明示した。利用側では、無効になった `open`、コンストラクタの枝名、移動した型に対して外に残るメソッドの呼び出しを整理した。`cases`・`induction` の枝は `intro` や `@intro` の元の短い名前に保ち、外部の拡張メソッドは元の公開名への明示的な適用にした。移動しない宣言を相対名で使う 14 本では、必要な `open` を保持した。配布用ツールは、短い枝名を維持し、移動した型の未移動メソッドと、改名表にない生成メンバー（コンストラクタ・`reassoc` 等）を `review.json` に出して保留する。さらに、値と射影が別々の参照範囲になる場合も追跡し、解決できない相対 `open` は保留する。固定版 Lean の三つの実例を含む全 23 件の回帰検査が通った。
+
+docstring の項目 Tag 追記は 6,246 箇所、見出しの Tag は 3,638 箇所、節の案内の新設は 7,672 箇所。種別 148 箇所・番号 198 箇所を補正し、未解決の引用・Tag 不一致は 0 件。対象は 7,764 ファイル（現役 7,763、Archive 1）。InfinityCategories の README を配置・節 Tag・5 層の規則に合わせた。旧レーンの README 2 ファイルのリンク 5 箇所も新しい Lean パスに直した。
+
+逆向きの例外は **1,352 辺（直接参照 1,136、public import の見せ直し 216）** の案を維持する。public の元の 289 辺から、他の経路で見せ直せる 73 辺を整理した。層検査の違反 0 は、理由付きの個別例外案を設定した結果であり、例外一覧は停止点 3 での調整役の確認対象とする。
+
+監査スクリプトに残った短い旧名と生成名は、main `f654cdc11` の元ソース 16 本から Lean の参照情報を採取し、定義元を区別して書き換えた。移動しない `DGSuspensionCoherentActionInput.ofSquareFamily` の名前は元に戻した。既存の非推奨メッセージ 5 件は本文と日付を維持し、現在の宣言名とメッセージ中の旧名を区別して、同じ内容を厳密に照合する。値に続く射影 40 箇所は、修正後の Lean の参照情報でも元の所有元と一致した。`open` の削除は個別の import 環境で存在しないと確認した単純な名前だけとし、複数の名前を持つコマンドの有効な部分を保持した。局所化監査は旧 185 モジュールの像を明記し、LocalObjects の 8 本の除外と三公理の条件を維持した。計数は 1,007 から 1,014 宣言になったが、差の 7 件は旧環境で自動名が他のモジュールと衝突していた既存の `Fact Cardinal.aleph0.IsRegular` 局所 instance が、移動後は別の完全修飾名で数えられるためである。[監査の書き換え記録](kerodon-layout-stop-3/audit-rewrite-receipt.json) に、元ソース・参照情報・出力のハッシュと回帰検査の結果を残した。
+
+11-12 09:40 の指示で 3 回目の直列 full verify を停止し、実測を再利用して 6 ジョブ・44 GB で実行し直した。`VERIFY_EXCLUSIVE_AUDITS` に空白区切りで列挙した監査は、同時に一つだけを実行する。対象の一覧・検査内容・合否条件は維持した。今回は `scripts/audit_infinity_f1.lean`・`scripts/audit_infinity_f1b.lean`・`scripts/audit_infinity_core.lean` と、修正後の実測がなかった `scripts/audit_einfinity.lean`・`scripts/audit_infinity_presentable_localization.lean` を指定した。小さい監査はメモリ予算内で並列化し、公理監査と sorry 閉包は従来どおり最後に直列で実行する。スケジューラ 12 件・再試行 12 件の回帰検査が成功した。最終記録には、設定・実測の出所・排他の対象と最大同時数を残した。今回の verify は 37 分 7 秒、最大同時実行 6 本、排他グループの同時実行は最大 1 本だった。監査プロセス木の同時 RSS 合計の観測最大は 39.0 GB（十進）である。
+
+公開する改名表は 14,802 モジュール・58,365 宣言の対応で、二つの表のモジュール対応は全件一致する。並行枝の対象と一行コマンドは上の「レーン別の追従表」を更新した。新しいファイルを作り足した場合はその JSON 一覧に足し、取り込み前の同じソースから参照を採取して、最終版の `$maps/kl-namespace-map.json` でプレビューを作る。未移動メソッド等が保留された場合は、明示呼び出しまたは export を確認し、各レーンで対象ビルドを行う。
+
+ここで停止点 3 を提出し、調整役の確認を待つ。

@@ -51,7 +51,7 @@ def kanAssemblyAdjointChoices (r : ℕ) (X : StableModel.{u}) : SSet.{u} :=
 方針：置換の単位の anodyne 性と loop の Kan 性を使う。
 規約：延長の存在や Ω 条件を追加仮定しない。使われ方：高次の選択の制御。 -/
 lemma kanAssemblyAdjointChoices_isContractibleKan (r : ℕ) (X : StableModel.{u}) :
-    IsContractibleKan (kanAssemblyAdjointChoices r X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanAssemblyAdjointChoices r X) :=
   pointedExtensionSpace_isContractibleKan _ (Spectra.PointedKanReplacement.unit_anodyne _)
     ((kanTargetAssemblyAdjointNat r).app X)
 

@@ -23,8 +23,8 @@ set_option backward.isDefEq.respectTransparency.types false
 /-- 等しい次数の間で、loop の加法表示とその負元は異種等式を保つ。 -/
 lemma loopPositive_neg_heq (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     {m k : ℕ} (h : m = k)
-    (a : Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right m (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint))
-    (b : Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right k (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint))
+    (a : Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right m (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint))
+    (b : Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right k (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint))
     (hab : HEq a b) :
     HEq (-(loopPositiveHomotopyEquiv Y m).toAdditive a)
       (-(loopPositiveHomotopyEquiv Y k).toAdditive b) := by
@@ -39,8 +39,8 @@ theorem coefficientDifferential_alternating_heq (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
     (a : coefficientGroup K Y (n + 1) (r + 1)) (s : K.nonDegenerate (n + 3)) :
     HEq (Additive.ofMul (coefficientDifferential K Y (n + 1) r a s))
-      (      (-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 2 + (r + 1)) Y.basepoint)))
+      (      (-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 2 + (r + 1)) Y.basepoint)))
         (n + 2) (fun t ↦ Additive.ofMul (a t)) s) := by
   induction r generalizing Y with
   | zero => exact heq_of_eq (coefficientDifferential_zero_alternating K Y n a s)
@@ -51,19 +51,19 @@ theorem coefficientDifferential_alternating_heq (K : SSet.{u})
       funext t
       exact e.apply_symm_apply _
     have hd := coefficientDifferential_loopPositive K Y (n + 1) r c s
-    have hc := ih (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) c
+    have hc := ih (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) c
     have hh := loopPositive_neg_heq Y
       (by omega : n + 1 + 1 + 1 + r = n + 2 + (r + 1)) _ _ hc
     have hm := NormalizedValueCochains.differential_map K
-      (M := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right
-        (n + 2 + (r + 1)) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)))
-      (N := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right
+      (M := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right
+        (n + 2 + (r + 1)) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)))
+      (N := AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right
         (n + 2 + (r + 1) + 1) Y.basepoint)))
       e.toAdditive.toAddMonoidHom (n + 2) (fun t ↦ Additive.ofMul (c t)) s
     rw [hi] at hd
     have hd' : Additive.ofMul (coefficientDifferential K Y (n + 1) (r + 1) a s) =
         -(loopPositiveHomotopyEquiv Y (n + 1 + 1 + 1 + r)).toAdditive
-          (Additive.ofMul (coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (n + 1) r c s)) :=
+          (Additive.ofMul (coefficientDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (n + 1) r c s)) :=
       congrArg Additive.ofMul hd
     apply (heq_of_eq hd').trans
     apply hh.trans
@@ -71,7 +71,7 @@ theorem coefficientDifferential_alternating_heq (K : SSet.{u})
     change -e.toAdditive _ = _
     rw [map_zsmul]
     have hmc := congrArg
-      (fun z : Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 2 + (r + 1) + 1) Y.basepoint) ↦
+      (fun z : Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 2 + (r + 1) + 1) Y.basepoint) ↦
         -((-1 : ℤ) ^ (n + 4 + r) • z)) hm.symm
     apply hmc.trans
     have hia : (fun t ↦ e.toAdditive.toAddMonoidHom (Additive.ofMul (c t))) =
@@ -80,29 +80,29 @@ theorem coefficientDifferential_alternating_heq (K : SSet.{u})
       exact congrArg Additive.ofMul (e.apply_symm_apply (a t))
     have hfinal := congrArg
       (fun q : K.nonDegenerate (n + 2) →
-        Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 2 + (r + 1) + 1) Y.basepoint) ↦
-        -((-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-          (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right
+        Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 2 + (r + 1) + 1) Y.basepoint) ↦
+        -((-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+          (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right
             (n + 2 + (r + 1) + 1) Y.basepoint))) (n + 2) q s)) hia
     apply hfinal.trans
     have hsign : -((-1 : ℤ) ^ (n + 4 + r)) = (-1 : ℤ) ^ (n + 4 + (r + 1)) := by
       simpa only [mul_neg_one, Nat.add_assoc] using (pow_succ (-1 : ℤ) (n + 4 + r)).symm
     exact (neg_smul ((-1 : ℤ) ^ (n + 4 + r)) _).symm.trans
-      (congrArg (fun z : ℤ ↦ z • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right
+      (congrArg (fun z : ℤ ↦ z • _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right
           (n + 2 + (r + 1) + 1) Y.basepoint)))
         (n + 2) (fun t ↦ Additive.ofMul (a t)) s) hsign)
 
 /-- 等しい自然数次数のホモトピー群の標準の添字同型。 -/
 def coefficientIndexEquiv (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     {m k : ℕ} (h : m = k) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right m Y.basepoint ≃* _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right k Y.basepoint := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right m Y.basepoint ≃* _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right k Y.basepoint := by
   subst k
   exact MulEquiv.refl _
 
 /-- 添字同型は加法表示の元を異種等式で保持する。 -/
 lemma coefficientIndexEquiv_toAdditive_heq (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
-    {m k : ℕ} (h : m = k) (a : Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right m Y.basepoint)) :
+    {m k : ℕ} (h : m = k) (a : Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right m Y.basepoint)) :
     HEq ((coefficientIndexEquiv Y h).toAdditive a) a := by
   subst k
   rfl
@@ -114,8 +114,8 @@ theorem coefficientDifferential_alternating (K : SSet.{u})
     (coefficientIndexEquiv Y
       (by omega : n + 1 + 1 + 1 + r = n + 2 + (r + 1))).toAdditive
         (Additive.ofMul (coefficientDifferential K Y (n + 1) r a s)) =
-      (-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 2 + (r + 1)) Y.basepoint)))
+      (-1 : ℤ) ^ (n + 4 + r) • _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+        (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 2 + (r + 1)) Y.basepoint)))
         (n + 2) (fun t ↦ Additive.ofMul (a t)) s := by
   apply eq_of_heq
   exact (coefficientIndexEquiv_toAdditive_heq Y _ _).trans

@@ -26,22 +26,22 @@ variable {X : SSet.{u}} [KanComplex X] {x : X _⦋0⦌} {n : ℕ}
 /-- 差の充填の全ての面。欠けていた面には差の球面が現れる。 -/
 lemma filler_face (R S : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (j : Fin (n + 4)) :
-    stdSimplex.δ j ≫ (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex =
-      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S).map else _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face R S j := by
+    stdSimplex.δ j ≫ (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).liftOfKanComplex =
+      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R S).map else _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face R S j := by
   by_cases hj : j.val = n + 1
   · have he : j = (Fin.last (n + 1)).castSucc.castSucc := Fin.ext hj
     subst j
     rw [ite_eq_left hj]
     rfl
   · rw [ite_eq_right hj]
-    exact (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j (fun he ↦ hj (congrArg Fin.val he))
+    exact (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).δ_liftOfKanComplex j (fun he ↦ hj (congrArg Fin.val he))
 
 /-- 三つの差の充填を最後の三面に置く。 -/
 def compositionFace (R S T : PtSimplex.RelStruct .const s (Fin.last (n + 1)))
     (j : Fin (n + 5)) : (Δ[n + 3] : SSet.{u}) ⟶ X :=
-  if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R S).liftOfKanComplex else
-    if j.val = n + 3 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible R T).liftOfKanComplex else
-      if j.val = n + 4 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.compatible S T).liftOfKanComplex else SSet.const x
+  if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R S).liftOfKanComplex else
+    if j.val = n + 3 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible R T).liftOfKanComplex else
+      if j.val = n + 4 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.compatible S T).liftOfKanComplex else SSet.const x
 
 /-- 三つの差の充填の共通面は一致する。 -/
 lemma compositionCompatible (R S T : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
@@ -55,7 +55,7 @@ lemma compositionCompatible (R S T : PtSimplex.RelStruct .const s (Fin.last (n +
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [compositionFace]
-  split_ifs <;> try simp only [filler_face, _root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.face, comp_const]
+  split_ifs <;> try simp only [filler_face, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -67,9 +67,9 @@ lemma composition_output_face
     (R S T : PtSimplex.RelStruct .const s (Fin.last (n + 1))) (j : Fin (n + 4)) :
     stdSimplex.δ j ≫ stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc.castSucc ≫
       (compositionCompatible R S T).liftOfKanComplex =
-      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S).map else
-        if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R T).map else
-          if j.val = n + 3 then (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex S T).map else SSet.const x := by
+      if j.val = n + 1 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R S).map else
+        if j.val = n + 2 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R T).map else
+          if j.val = n + 3 then (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex S T).map else SSet.const x := by
   let q : Fin (n + 4) := (Fin.last n).castSucc.castSucc.castSucc
   have hq : (Fin.last (n + 1)).castSucc.castSucc.castSucc = q.succ := by
     apply Fin.ext; rfl
@@ -109,7 +109,7 @@ lemma composition_output_face
 /-- 欠ける面は差の合成を実現する積の充填。 -/
 def compositionMulStruct
     (R S T : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
-    PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex S T) (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R S) (_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.simplex R T) (Fin.last (n + 1)) where
+    PtSimplex.MulStruct (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex S T) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R S) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.simplex R T) (Fin.last (n + 1)) where
   map := stdSimplex.δ (Fin.last (n + 1)).castSucc.castSucc.castSucc ≫
     (compositionCompatible R S T).liftOfKanComplex
   δ_castSucc_castSucc_map := by
@@ -137,7 +137,7 @@ def compositionMulStruct
 theorem difference_comp
     (R S T : PtSimplex.RelStruct .const s (Fin.last (n + 1))) :
     difference S T * difference R S = difference R T :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mul_eq (compositionMulStruct R S T)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mul_eq (compositionMulStruct R S T)
 
 end
 end SerrePositivity.KST.Spectra.NullHomotopyDifference

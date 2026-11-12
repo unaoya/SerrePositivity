@@ -196,7 +196,7 @@ lemma presentedPerfectDGOneDirectionReducedComparison_family (r : ℕ)
         (oneDirectionReducedComparison r
           (stableCategoryModel (presentedPerfectDGStableCategory.{u, v} A D))) =
     presentedPerfectDGBoundaryReducedFamilyMap.{u, v} A r C D ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (oneDirectionReducedComparison r
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (oneDirectionReducedComparison r
         (stableCategoryModel (presentedPerfectDGStableCategory.{u, v} A C)))
         (boundaryReducedRealization r
           (stableCategoryModel (presentedPerfectDGStableCategory.{u, v} A D))) := by

@@ -15,19 +15,19 @@ This is an ordinary limit theorem, not by itself a homotopy-limit theorem.
 universe w v u
 noncomputable section
 open CategoryTheory CategoryTheory.Limits ConcreteCategory
-open SerrePositivity.HomotopyFunctionComplex
+
 
 namespace SerrePositivity.DiagramModel.MappingLimit
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   (A : SimplexCategory ⥤ K ⥤ C) (Y : C)
 
 abbrev pointwise : Kᵒᵖ ⥤ SSet.{v} :=
-  A.flip.op ⋙ cosimplicialHomBifunctor.flip.obj Y
+  A.flip.op ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor.flip.obj Y
 
 abbrev lifted : Kᵒᵖ ⥤ SSet.{max w v} := pointwise K A Y ⋙ SSet.uliftFunctor.{w,v}
 
 abbrev diagramHom : SSet.{max w v} :=
-  (cosimplicialHom A).obj ((Functor.const K).obj Y)
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj ((Functor.const K).obj Y)
 
 /-- Evaluation at k sends a diagram natural transformation to its k-component. -/
 def cone : Cone (lifted K A Y) where
@@ -85,13 +85,13 @@ lemma iso_hom_π [HasLimit (lifted K A Y)] (k : Kᵒᵖ) :
 variable {Y}
 
 def mapTarget {Z : C} (f : Y ⟶ Z) : lifted K A Y ⟶ lifted K A Z :=
-  Functor.whiskerRight (Functor.whiskerLeft A.flip.op (cosimplicialHomBifunctor.flip.map f))
+  Functor.whiskerRight (Functor.whiskerLeft A.flip.op (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor.flip.map f))
     SSet.uliftFunctor.{w,v}
 
 @[reassoc]
 lemma iso_target_naturality {Z : C} (f : Y ⟶ Z)
     [HasLimit (lifted K A Y)] [HasLimit (lifted K A Z)] :
-    (cosimplicialHom A).map ((Functor.const K).map f) ≫ (iso K A Z).hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map ((Functor.const K).map f) ≫ (iso K A Z).hom =
       (iso K A Y).hom ≫ lim.map (mapTarget K A f) := by
   apply limit.hom_ext
   intro k
@@ -105,12 +105,12 @@ variable {A}
 def mapSource {B : SimplexCategory ⥤ K ⥤ C} (a : A ⟶ B) : lifted K B Y ⟶ lifted K A Y :=
   Functor.whiskerRight (Functor.whiskerRight
     (NatTrans.op ((flipFunctor SimplexCategory K C).map a))
-    (cosimplicialHomBifunctor.flip.obj Y)) SSet.uliftFunctor.{w,v}
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor.flip.obj Y)) SSet.uliftFunctor.{w,v}
 
 @[reassoc]
 lemma iso_source_naturality {B : SimplexCategory ⥤ K ⥤ C} (a : A ⟶ B)
     [HasLimit (lifted K A Y)] [HasLimit (lifted K B Y)] :
-    (cosimplicialHomMap a).app ((Functor.const K).obj Y) ≫ (iso K A Y).hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap a).app ((Functor.const K).obj Y) ≫ (iso K A Y).hom =
       (iso K B Y).hom ≫ lim.map (mapSource K (Y := Y) a) := by
   apply limit.hom_ext
   intro k

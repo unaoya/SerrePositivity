@@ -37,7 +37,7 @@ lemma overlap_first : (Δ[1] ◁ stdSimplex.δ (2 : Fin 3)) ≫ overlap.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change overlapIndex (s i, (2 : Fin 3).succAbove (t i)) =
-    (3 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.preIndex (s i, t i))
+    (3 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.preIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -51,7 +51,7 @@ lemma overlap_last : (Δ[1] ◁ stdSimplex.δ (0 : Fin 3)) ≫ overlap.{u} =
   apply SSet.stdSimplex.ext
   intro i
   change overlapIndex (s i, (0 : Fin 3).succAbove (t i)) =
-    (0 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareDiagonal.postIndex (s i, t i))
+    (0 : Fin 4).succAbove (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.postIndex (s i, t i))
   generalize hs : s i = a
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
@@ -68,27 +68,27 @@ lemma overlap_long : (Δ[1] ◁ stdSimplex.δ (1 : Fin 3)) ≫ overlap.{u} = squ
   generalize ht : t i = b
   fin_cases a <;> fin_cases b <;> rfl
 
-lemma square_lower : squareTriangle 1 ≫ square.{u} = stdSimplex.δ (1 : Fin 4) := by
+lemma square_lower : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ square.{u} = stdSimplex.δ (1 : Fin 4) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   apply SSet.stdSimplex.ext
   intro i
-  change squareIndex ((squareTriangleSimplex.{u} 1).val.1 (s i),
-    (squareTriangleSimplex.{u} 1).val.2 (s i)) = (1 : Fin 4).succAbove (s i)
+  change squareIndex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangleSimplex.{u} 1).val.1 (s i),
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangleSimplex.{u} 1).val.2 (s i)) = (1 : Fin 4).succAbove (s i)
   generalize hs : s i = a
   fin_cases a <;> rfl
 
-lemma square_upper : squareTriangle 0 ≫ square.{u} = stdSimplex.δ (2 : Fin 4) := by
+lemma square_upper : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ square.{u} = stdSimplex.δ (2 : Fin 4) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   intro s
   apply SSet.stdSimplex.ext
   intro i
-  change squareIndex ((squareTriangleSimplex.{u} 0).val.1 (s i),
-    (squareTriangleSimplex.{u} 0).val.2 (s i)) = (2 : Fin 4).succAbove (s i)
+  change squareIndex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangleSimplex.{u} 0).val.1 (s i),
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangleSimplex.{u} 0).val.2 (s i)) = (2 : Fin 4).succAbove (s i)
   generalize hs : s i = a
   fin_cases a <;> rfl
 

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorHomotopyPrismEvaluation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeRestrictedEndpointFibration
-public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TrivialKanFunctorIsoProjection
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIso
 
 /-!
 概要：始点も動く全 prism の普遍持ち上げと元の実 prism を、始点上で比較する。

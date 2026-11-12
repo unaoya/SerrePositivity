@@ -17,19 +17,19 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance companionBKPointSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 local instance companionBKPointHomKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := mappingSpace_kanComplex X Y
 local instance companionBKPointEndKan (X Y : OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram (pointLoopDiagram Y) X)) :=
-  bousfieldKanHolim_kanComplex _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex _
 
 /-- 元の companion の円の射が表す、loop 写像空間の元の単位の点の射。 -/
 def circleCompanionLoopPointMap (z : Sp.{u} _⦋0⦌) :
-    𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (circleEvaluationPointedHom z)).right :=
+    𝟙_ SSet.{u} ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (circleEvaluationPointedHom z)).right :=
   PointedSimplicialSet.unitUnderlyingHom _ (curry' (circleEvaluationCompanionCircleMap z))
 
 /-- companion の単位射の頂点は、元の companion の円の射が表す写像族の頂点。 -/
@@ -46,8 +46,8 @@ lemma circleEvaluationLoopPointMap_vertex (Y : OmegaSpectrum.{u}) :
 
 /-- 元の companion の円の射の点を、指定した元の Hom–BK 比較で送った切断点の射。 -/
 def circleCompanionBKEndPointMap (z : Sp.{u} _⦋0⦌) :
-    𝟙_ SSet.{u} ⟶ bousfieldKanHolim
-      (simplicialHomDiagram (pointLoopDiagram
+    𝟙_ SSet.{u} ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram
         (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (cotensor PointedSimplicialSet.circle
           (nativeCotensorInput PointedSimplicialSet.circle z).val)) :=
@@ -76,7 +76,7 @@ lemma circleCompanionBKEndPoint_component (z : Sp.{u} _⦋0⦌) :
 
 /-- 元の Hom–BK end 内で companion の点から元の恒等射の比較像への実際の辺。 -/
 def circleCompanionBKEndPointEdge (z : Sp.{u} _⦋0⦌) :
-    (bousfieldKanHolim (simplicialHomDiagram
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
       (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
       (cotensor PointedSimplicialSet.circle
         (nativeCotensorInput PointedSimplicialSet.circle z).val))).Edge

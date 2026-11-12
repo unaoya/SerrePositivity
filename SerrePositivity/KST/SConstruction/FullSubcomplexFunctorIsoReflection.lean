@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FullSubcomplexFunctorFaithful
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FullSubcomplexFunctorFaithful
 
 /-! # 全部分複体の包含による関手同型の反映
 概要：包含後に coherent に同型な二つの関手は全部分複体の内部でも関手同型を持つ。
@@ -18,9 +18,9 @@ open scoped Simplicial
 
 /-- 全部分複体の包含後の関手同型を内部の関手同型に戻す。 -/
 def functorIsoOfFullSubcomplexPostcomp {K C : SSet.{u}} [Quasicategory C]
-    (P : C _⦋0⦌ → Prop) {f g : K ⟶ (fullSubcomplexOnVertices C P : SSet.{u})}
-    (e : FunctorIso (f ≫ (fullSubcomplexOnVertices C P).ι)
-      (g ≫ (fullSubcomplexOnVertices C P).ι)) : FunctorIso f g :=
-  (fullSubcomplexFunctorInclusionHoFullyFaithful K C P).preimageIso e
+    (P : C _⦋0⦌ → Prop) {f g : K ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices C P : SSet.{u})}
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices C P).ι)
+      (g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices C P).ι)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g :=
+  (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.fullSubcomplexFunctorInclusionHoFullyFaithful K C P).preimageIso e
 
 end SerrePositivity.KST.SConstruction

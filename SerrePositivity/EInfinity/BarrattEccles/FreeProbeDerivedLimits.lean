@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeDerivedAdjunction
-public import SerrePositivity.InfinityCategories.HomotopyLimits.AdjunctionLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.AdjunctionLimits
 
 /-!
 概要：局所輸送同定の下で、実 U の任意 coherent ∞ 極限保存を証明する。
@@ -18,18 +18,18 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 variable (A : Type u) [CommRing A]
 
 lemma cAlgForgetDerived_mapJoinCone_isLimit_of_transport
     (h : FreeProbeUnitTransportCondition A) {K : SSet.{u + 1}} {p : K ⟶ CAlg_R A}
-    (c : JoinCone p) (hc : IsLimitCone c) :
-    IsLimitCone (mapJoinCone (cAlgForgetDerived A) c) :=
-  mapJoinCone_isLimit_of_adjunction (cAlgFreeForgetDerivedAdjunctionOfTransport A h) c hc
+    (c : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p) (hc : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone c) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.mapJoinCone (cAlgForgetDerived A) c) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCone_isLimit_of_adjunction (cAlgFreeForgetDerivedAdjunctionOfTransport A h) c hc
 
 lemma cAlgForgetDerived_hasLimit_postcomp_of_transport
     (h : FreeProbeUnitTransportCondition A) {K : SSet.{u + 1}} (p : K ⟶ CAlg_R A)
-    (hp : HasLimit p) : HasLimit (p ≫ cAlgForgetDerived A) :=
-  hasLimit_postcomp_of_adjunction (cAlgFreeForgetDerivedAdjunctionOfTransport A h) p hp
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit p) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (p ≫ cAlgForgetDerived A) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasLimit_postcomp_of_adjunction (cAlgFreeForgetDerivedAdjunctionOfTransport A h) p hp
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -15,42 +15,42 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 全入力射列にわたる混合 Kan 延長の coherent な全選択。 -/
 def kanAssemblyCoherentChoices {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) : SSet.{u} :=
-  bousfieldKanHolim (kanAssemblyInputArrowDiagram r F)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (kanAssemblyInputArrowDiagram r F)
 
 /-- 全入力射列にわたる混合比較逆射の coherent な全選択。 -/
 def oneDirectionInverseCoherentChoices {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) : SSet.{u} :=
-  bousfieldKanHolim (oneDirectionInverseInputArrowDiagram r F)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (oneDirectionInverseInputArrowDiagram r F)
 
 /-- 全入力射列の延長選択は可縮 Kan であり、特に存在する。 -/
 lemma kanAssemblyCoherentChoices_isContractibleKan {I : Type u} [SmallCategory I]
-    (r : ℕ) (F : I ⥤ StableModel.{u}) : IsContractibleKan (kanAssemblyCoherentChoices r F) :=
+    (r : ℕ) (F : I ⥤ StableModel.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (kanAssemblyCoherentChoices r F) :=
   contractibleDiagramSelections_isContractibleKan _
     (kanAssemblyInputArrowDiagram_isContractibleKan r F)
 
 /-- 全入力射列の逆射選択は可縮 Kan であり、特に存在する。 -/
 lemma oneDirectionInverseCoherentChoices_isContractibleKan {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) :
-    IsContractibleKan (oneDirectionInverseCoherentChoices r F) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (oneDirectionInverseCoherentChoices r F) :=
   contractibleDiagramSelections_isContractibleKan _
     (oneDirectionInverseInputArrowDiagram_isContractibleKan r F)
 
 /-- 延長の全選択の各点は、各入力射の over 圏の nerve 上の厳密に自然な族を与える。 -/
 def kanAssemblyCoherentFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (v : (kanAssemblyCoherentChoices r F) _⦋0⦌) :
-    bousfieldKanWeight (AssemblyInputArrow I) ⟶ kanAssemblyInputArrowDiagram r F :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AssemblyInputArrow I) ⟶ kanAssemblyInputArrowDiagram r F :=
   diagramSelectionAt _ v
 
 /-- 逆射の全選択の各点は、各入力射の over 圏の nerve 上の厳密に自然な族を与える。 -/
 def oneDirectionInverseCoherentFamily {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) (v : (oneDirectionInverseCoherentChoices r F) _⦋0⦌) :
-    bousfieldKanWeight (AssemblyInputArrow I) ⟶ oneDirectionInverseInputArrowDiagram r F :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AssemblyInputArrow I) ⟶ oneDirectionInverseInputArrowDiagram r F :=
   diagramSelectionAt _ v
 
 /-- 延長の coherent な全選択の族は、任意単射の既存部分を保って補完できる。 -/
@@ -73,10 +73,10 @@ lemma oneDirectionInverseCoherentChoices_relative_lifting {I : Type u} [SmallCat
 lemma kanAssemblyCoherentSection_extension {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {A : SSet.{u}}
     (j : A ⟶ nerve (AssemblyInputArrow I)) [Mono j]
-    (a : A ⟶ weightedNerve (kanAssemblyInputArrowDiagram r F))
-    (h : a ≫ weightedNerveProjection (kanAssemblyInputArrowDiagram r F) = j) :
-    ∃ s : nerve (AssemblyInputArrow I) ⟶ weightedNerve (kanAssemblyInputArrowDiagram r F),
-      j ≫ s = a ∧ s ≫ weightedNerveProjection (kanAssemblyInputArrowDiagram r F) = 𝟙 _ :=
+    (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve (kanAssemblyInputArrowDiagram r F))
+    (h : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (kanAssemblyInputArrowDiagram r F) = j) :
+    ∃ s : nerve (AssemblyInputArrow I) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve (kanAssemblyInputArrowDiagram r F),
+      j ≫ s = a ∧ s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (kanAssemblyInputArrowDiagram r F) = 𝟙 _ :=
   contractibleWeightedDiagram_section_extension _
     (kanAssemblyInputArrowDiagram_isContractibleKan r F) j a h
 
@@ -84,10 +84,10 @@ lemma kanAssemblyCoherentSection_extension {I : Type u} [SmallCategory I]
 lemma oneDirectionInverseCoherentSection_extension {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {A : SSet.{u}}
     (j : A ⟶ nerve (AssemblyInputArrow I)) [Mono j]
-    (a : A ⟶ weightedNerve (oneDirectionInverseInputArrowDiagram r F))
-    (h : a ≫ weightedNerveProjection (oneDirectionInverseInputArrowDiagram r F) = j) :
-    ∃ s : nerve (AssemblyInputArrow I) ⟶ weightedNerve (oneDirectionInverseInputArrowDiagram r F),
-      j ≫ s = a ∧ s ≫ weightedNerveProjection (oneDirectionInverseInputArrowDiagram r F) = 𝟙 _ :=
+    (a : A ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve (oneDirectionInverseInputArrowDiagram r F))
+    (h : a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (oneDirectionInverseInputArrowDiagram r F) = j) :
+    ∃ s : nerve (AssemblyInputArrow I) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerve (oneDirectionInverseInputArrowDiagram r F),
+      j ≫ s = a ∧ s ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.weightedNerveProjection (oneDirectionInverseInputArrowDiagram r F) = 𝟙 _ :=
   contractibleWeightedDiagram_section_extension _
     (oneDirectionInverseInputArrowDiagram_isContractibleKan r F) j a h
 

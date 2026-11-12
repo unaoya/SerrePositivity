@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Word
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word
 public import SerrePositivity.EInfinity.Hammock.WeakPushoutGluing
 public import Mathlib.CategoryTheory.Limits.Shapes.Products
 
@@ -22,7 +22,7 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.InfinityCategories
 
-variable {I : Type} (e : Direction ≃ I) (A : I → SSet.{w})
+variable {I : Type} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction ≃ I) (A : I → SSet.{w})
 
 def twoIndexBinaryCofan : BinaryCofan (A (e .forward)) (A (e .backward)) :=
   BinaryCofan.mk (Sigma.ι A (e .forward)) (Sigma.ι A (e .backward))
@@ -46,8 +46,8 @@ def twoIndexBinaryCofan_isColimit : IsColimit (twoIndexBinaryCofan e A) := by
 
 include e in
 lemma weakTwoIndexCoproduct {B : I → SSet.{w}} (f : ∀ i, A i ⟶ B i)
-    (hf : ∀ i, IsWeakHomotopyEquivalence (f i)) :
-    IsWeakHomotopyEquivalence (Limits.Sigma.map f) := by
+    (hf : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f i)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Limits.Sigma.map f) := by
   have hA := IsPushout.of_is_coproduct (twoIndexBinaryCofan_isColimit e A)
     (initialIsInitial : IsInitial (⊥_ SSet.{w}))
   have hB := IsPushout.of_is_coproduct (twoIndexBinaryCofan_isColimit e B)
@@ -56,6 +56,6 @@ lemma weakTwoIndexCoproduct {B : I → SSet.{w}} (f : ∀ i, A i ⟶ B i)
     (Limits.Sigma.map f)
     (initialIsInitial.hom_ext _ _) (initialIsInitial.hom_ext _ _)
     (Sigma.ι_map _ _) (Sigma.ι_map _ _)
-    (isWeakHomotopyEquivalence_id _) (hf _) (hf _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _) (hf _) (hf _)
 
 end SerrePositivity.EInfinity.Hammock

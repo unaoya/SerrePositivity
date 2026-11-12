@@ -1,10 +1,10 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.DGModuleExtensionYonedaNerveIso
-public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleExtensionYonedaNerveIso
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSubcategoryNerve
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 public import SerrePositivity.DifferentialGraded.Functor.DGFunctorCoherence
 public import SerrePositivity.DifferentialGraded.Perfect.Compact.Enhancement
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
 public import SerrePositivity.KST.SConstruction.PerfectDGExtension
 
 /-!
@@ -26,36 +26,36 @@ variable (R : Type u) [CommRing R] (C D : Type (max (u + 1) v))
 
 /-- 同じ任意宇宙の実 dg 射の Yoneda・Perf 延長四角形を保つ全関手比較。 -/
 def dgKappaPerfectYonedaNaturality :
-    FunctorIso (dgNerve.map (dgPerfectYoneda R C) ≫ dgNerve.map (perfectDGExtension R C D f))
-      (dgNerve.map f ≫ dgNerve.map (dgPerfectYoneda R D)) := by
-  let W := (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
-    ((dgPerfectYoneda R C).comp (perfectDGExtension R C D f))
-  let Z := (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
-    (f.comp (dgPerfectYoneda R D))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R C) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGExtension R C D f))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R D)) := by
+  let W := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R C).comp (perfectDGExtension R C D f))
+  let Z := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
+    (f.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R D))
   have hw : W.comp (perfectDGModuleInclusion R D Set.univ) =
-      (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
         ((dgYoneda R C).comp (dgModuleExtension R C D f)) := by
     dsimp only [W]
     simp only [strictDGFunctor_comp_assoc]
     rw [perfectDGExtension_inclusion,
-      ← strictDGFunctor_comp_assoc (dgPerfectYoneda R C)
+      ← strictDGFunctor_comp_assoc (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R C)
         (perfectDGModuleInclusion R C Set.univ) (dgModuleExtension R C D f),
-      dgPerfectYoneda_inclusion]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda_inclusion]
   have hz : Z.comp (perfectDGModuleInclusion R D Set.univ) =
-      (dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, max (u + 1) v, max (u + 1) v} R C).comp
         (f.comp (dgYoneda R D)) := by
     dsimp only [Z]
-    rw [strictDGFunctor_comp_assoc, strictDGFunctor_comp_assoc, dgPerfectYoneda_inclusion]
-  have h : FunctorIso (dgNerve.map W ≫ dgNerve.map (perfectDGModuleInclusion R D Set.univ))
-      (dgNerve.map Z ≫ dgNerve.map (perfectDGModuleInclusion R D Set.univ)) := by
-    rw [← dgNerve.map_comp, ← dgNerve.map_comp, hw, hz]
-    exact dgModuleExtensionYonedaNerveIso R C D f
-  have e := (dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R D)
+    rw [strictDGFunctor_comp_assoc, strictDGFunctor_comp_assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda_inclusion]
+  have h : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map W ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R D Set.univ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map Z ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (perfectDGModuleInclusion R D Set.univ)) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, hw, hz]
+    exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtensionYonedaNerveIso R C D f
+  have e := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R D)
     (modulePerfectProjectiveOver R D Set.univ)).preimageFunctorIso h
-  have p := e.precomp (dgNerve.map (dgUniverseLiftUp.{u, max (u + 1) v, max (u + 1) v} R C))
-  rw [← dgNerve.map_comp, ← dgNerve.map_comp] at p
-  change FunctorIso (dgNerve.map ((dgPerfectYoneda R C).comp (perfectDGExtension R C D f)))
-    (dgNerve.map (f.comp (dgPerfectYoneda R D))) at p
-  simpa only [dgNerve.map_comp] using p
+  have p := e.precomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp.{u, max (u + 1) v, max (u + 1) v} R C))
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] at p
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R C).comp (perfectDGExtension R C D f)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (f.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R D))) at p
+  simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp] using p
 
 end SerrePositivity.KST.NonConnective

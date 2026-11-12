@@ -37,7 +37,7 @@ lemma compatible : horn.IsCompatible (i := Fin.last (n + 3)) (fun j _ ↦ face R
   have hkb := k.isLt
   have hlt : j.val < k.val := hjk
   simp only [face]
-  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso
@@ -55,7 +55,7 @@ lemma output_face (j : Fin (n + 3)) :
   rw [stdSimplex.δ_comp_δ'_assoc (Fin.castSucc_lt_last j),
     hφ _ (Fin.castSucc_ne_last j)]
   simp only [face, Fin.val_castSucc]
-  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Kan.NullHomotopyDifference.null_face, comp_const]
+  split_ifs <;> try simp only [_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NullHomotopyDifference.null_face, comp_const]
   all_goals (try split_ifs) <;> first
     | rfl
     | (exfalso

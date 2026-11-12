@@ -32,7 +32,7 @@ namespace SerrePositivity.KST.Descent
 
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 /-- 概要：実際の射影的図式は各成分が fibrant であることと同値（補題 3.2）。
 方針：順方向は右 Quillen 評価、逆方向は終対象への各成分の fibration を使う。

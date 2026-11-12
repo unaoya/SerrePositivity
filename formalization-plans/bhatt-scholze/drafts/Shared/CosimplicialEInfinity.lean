@@ -4,10 +4,11 @@ module
 
 public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.Algebra.Homology.Embedding.ExtendHomology
-public import SerrePositivity.InfinityCategories.Derived.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.NerveHomotopy
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 -- 本ファイルは drafts/Shared/CosimplicialCupProduct.lean と drafts/Sheaves/{CechConerveLimit,CAlgValued}.lean を使う。
 -- 11-07（a1-design §10.5）：末尾の 3 節（厳密な自然変換の辺、余単体的 cdga の Tot、Tot と係数制限）は drafts/DerivedGeneral/ScalarRestriction.lean も使う。
 
@@ -45,8 +46,7 @@ variable (E : SerrePositivity.EInfinity.EInfinityTheory.{u})
 
 namespace SerrePositivity.Cosimplicial
 
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.Sheaves
-open SerrePositivity.InfinityCategories.F2.Presentable
+open SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity
 attribute [local instance] HasDerivedCategory.standard
 
@@ -139,7 +139,7 @@ theorem totEInfinity_map_isInvertible {X Y : CosimplicialAlgebra A} (f : X ⟶ Y
 規約：O は層（Cor 3.12 の CAlg 版、`isSheaf_iff_forget`）。
 使われ方：A2 の Δ_0 の CAlg 値 ＝ Čech–Alexander 模型の Tot_{E∞}。 -/
 def derivedGlobalSectionsCAlg_eq_totEInfinity {𝒟 : Type u} [SmallCategory 𝒟]
-    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (E.CAlg A)) (hA : IsPresentable (E.CAlg A))
+    (J : GrothendieckTopology 𝒟) (hJ : Sheafification J (E.CAlg A)) (hA : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg A))
     (O : 𝒟ᵒᵖ ⥤ Under (CommRingCat.of A)) (hO : IsSheaf J (ringPresheafToCAlg (E := E) A O))
     (U : 𝒟) (hU : IsWeaklyTerminal U) (d : CechNerveData U) :
     VertexIso (derivedGlobalSectionsCAlg (E := E) J A hJ hA (ringPresheafToCAlg (E := E) A O))

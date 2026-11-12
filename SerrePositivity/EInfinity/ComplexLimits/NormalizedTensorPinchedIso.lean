@@ -19,20 +19,20 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DoldKanComparison
+open SerrePositivity.HomotopyFunctionComplex
 variable (A : Type u) [CommRing A]
 
 def normalizedTensorPinchedIso (X Y : Complex A) :
-    SSet.uliftFunctor.{u + 1, u}.obj ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y) ≅
-    DGNerve.pinchedHom A (Complex A) X Y :=
+    SSet.uliftFunctor.{u + 1, u}.obj ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y) ≅
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X Y :=
   SSet.uliftFunctor.{u + 1, u}.mapIso (normalizedSimplexTensorHomIso A X Y) ≪≫
-    doldKanHomPinchedIso X Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomPinchedIso X Y
 
 lemma normalizedTensorPinchedIso_precomp {X X' : Complex A} (Y : Complex A) (f : X' ⟶ X) :
     SSet.uliftFunctor.{u + 1, u}.map
-      ((cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((normalizedSimplexTensorFamily A).map f)).app Y) ≫
         (normalizedTensorPinchedIso A X' Y).hom =
-    (normalizedTensorPinchedIso A X Y).hom ≫ pinchedHomChainMap (homPrecompose f Y) := by
+    (normalizedTensorPinchedIso A X Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPrecompose f Y) := by
   dsimp only [normalizedTensorPinchedIso, Iso.trans_hom, Functor.mapIso_hom]
   rw [← Category.assoc, ← SSet.uliftFunctor.map_comp, normalizedTensorDoldKanIso_precomp,
     SSet.uliftFunctor.map_comp, Category.assoc, doldKanHomPinchedIso_chainMap]
@@ -40,9 +40,9 @@ lemma normalizedTensorPinchedIso_precomp {X X' : Complex A} (Y : Complex A) (f :
 
 lemma normalizedTensorPinchedIso_postcomp (X : Complex A) {Y Y' : Complex A} (f : Y ⟶ Y') :
     SSet.uliftFunctor.{u + 1, u}.map
-      ((cosimplicialHom (normalizedSimplexTensor A X)).map f) ≫
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).map f) ≫
         (normalizedTensorPinchedIso A X Y').hom =
-    (normalizedTensorPinchedIso A X Y).hom ≫ pinchedHomChainMap (homPostcompose X f) := by
+    (normalizedTensorPinchedIso A X Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPostcompose X f) := by
   dsimp only [normalizedTensorPinchedIso, Iso.trans_hom, Functor.mapIso_hom]
   rw [← Category.assoc, ← SSet.uliftFunctor.map_comp, normalizedTensorDoldKanIso_postcomp,
     SSet.uliftFunctor.map_comp, Category.assoc, doldKanHomPinchedIso_chainMap]

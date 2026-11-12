@@ -35,7 +35,7 @@ lemma objectToCoreSRealization_simplex (C : SSet.{u}) (n : ℕ)
     (e : (objectSConstruction C) _⦋n⦌) :
     SSet.yonedaEquiv.symm e ≫ objectToCoreSRealization C =
       lift (𝟙 (Δ[n] : SSet.{u}))
-        (SSet.const (⟨e, SerrePositivity.InfinityCategories.quasicategoryCore_vertex
+        (SSet.const (⟨e, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore_vertex
           (X := sConstruction n C) e⟩ : (coreSConstruction n C) _⦋0⦌)) ≫
         diagonalAssembly n (simplicialCoreSConstruction C) := by
   have h := congrArg (fun g => g ≫ diagonalObjectInclusion (simplicialCoreSConstruction C))

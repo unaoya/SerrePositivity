@@ -32,9 +32,9 @@ lemma postnikovPresentedCellMappingDiagram :
 lemma postnikovPresentedCellMappingCoherentDiagram :
     SSet.uliftFunctor.{u + 2, u + 1}.map (nerveMap (postnikovInfinityCospan R B n hn)) ≫
         multiplicativeCellMappingInfinityCoherent R A =
-      kanDiagramCoherentNerve (postnikovCellLargeKanDiagram R A B n hn) := by
-  change _ ≫ kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A) = _
-  rw [kanDiagramCoherentNerve_precomp, postnikovPresentedCellMappingDiagram]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (postnikovCellLargeKanDiagram R A B n hn) := by
+  change _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (multiplicativeCellMappingInfinityKanFunctor R A) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve_precomp, postnikovPresentedCellMappingDiagram]
 
 set_option maxHeartbeats 800000 in -- 元の提示錐と cell 写像錐の型の表示を照合する。
 def postnikovPresentedCellMappingCone : Cone (postnikovCellLargeKanDiagram R A B n hn) :=
@@ -55,7 +55,7 @@ def postnikovPresentedCellMappingConeIso :
 set_option maxHeartbeats 800000 in -- 元の提示の錐へ全図式同型で極限の普遍性を戻す。
 def postnikovPresentedCellMappingCone_isLimit :
     IsLimit (postnikovPresentedCellMappingCone R A B n hn) :=
-  (HomotopyLimits.kanObjectCone_isLimit_of_forget _
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanObjectCone_isLimit_of_forget _
     (postnikovCellLargeKanCone_underlying_isLimit R A B n hn)).ofIsoLimit
       (postnikovPresentedCellMappingConeIso R A B n hn).symm
 

@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.UnitComparisonWeakDetection
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PinchedActionEquivalences
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PinchedActionEquivalences
 public import SerrePositivity.EInfinity.ComplexLimits.PinchedTransportFamily
 /-!
 概要：同じ単位と弱な全 pinched 族による判定を、指定した同型で両端輸送する。
@@ -16,7 +16,7 @@ universe u
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory SSet SerrePositivity.InfinityCategories
 open SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 
 /-- 概要：同じ全族三角形と指定端点同型から標準単位誘導射自身は弱同値。
@@ -24,32 +24,32 @@ open scoped Simplicial
 規約：点ごとのみへ弱めない。使われ方：標準導来単位の写像空間判定。 -/
 lemma unitComparisonTransport_weak {K C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
     (U : C ⟶ D) {a b c d : C.obj (Opposite.op ⦋0⦌)}
-    {z x : D.obj (Opposite.op ⦋0⦌)} (e : VertexIso a b) (t : VertexIso c d)
-    (s : VertexIso z x)
+    {z x : D.obj (Opposite.op ⦋0⦌)} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso a b) (t : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso c d)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso z x)
     (η : (HomotopyCategory.mk x : hoFunctor.obj D) ⟶
       HomotopyCategory.mk (U.app (Opposite.op ⦋0⦌) a))
     (ν : (HomotopyCategory.mk z : hoFunctor.obj D) ⟶
       HomotopyCategory.mk (U.app (Opposite.op ⦋0⦌) b))
-    (p : K ⟶ pinchedHom b c) (r : K ⟶ pinchedHom z (U.app (Opposite.op ⦋0⦌) c))
-    (hp : IsWeakHomotopyEquivalence p) (hr : IsWeakHomotopyEquivalence r)
+    (p : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom b c) (r : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom z (U.app (Opposite.op ⦋0⦌) c))
+    (hp : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence p) (hr : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence r)
     (hu : s.hom ≫ η ≫ (hoFunctor.map U).toFunctor.map e.hom = ν)
-    (hf : constantFunctorHomMap K ν ≫ intervalFamilyHom
-      (p ≫ pinchedHomMap U b c ≫ pinchedHomToIntervalMappingSpace _ _) =
-        intervalFamilyHom (r ≫ pinchedHomToIntervalMappingSpace _ _)) :
-    IsWeakHomotopyEquivalence (intervalFunctorMap U a d ≫
-      intervalPrecompose (U.app (Opposite.op ⦋0⦌) d) η) := by
-  let P := (p ≫ PinchedInterval.precompose c e.hom) ≫ PinchedInterval.postcompose a t.hom
-  let R := (r ≫ PinchedInterval.precompose (U.app (Opposite.op ⦋0⦌) c) s.inv) ≫
-    PinchedInterval.postcompose x ((hoFunctor.map U).toFunctor.map t.hom)
-  have hP : IsWeakHomotopyEquivalence P :=
-    (hp.comp (pinchedPrecompose_isQCatEquivalence_of_isIso e.hom c).isWeakHomotopyEquivalence).comp
-        (pinchedPostcompose_isQCatEquivalence_of_isIso t.hom a).isWeakHomotopyEquivalence
-  have hR : IsWeakHomotopyEquivalence R :=
-    (hr.comp (pinchedPrecompose_isQCatEquivalence_of_isIso s.inv _).isWeakHomotopyEquivalence).comp
-        (pinchedPostcompose_isQCatEquivalence_of_isIso
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ν ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom
+      (p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap U b c ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap U a d ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose (U.app (Opposite.op ⦋0⦌) d) η) := by
+  let P := (p ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose c e.hom) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose a t.hom
+  let R := (r ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.precompose (U.app (Opposite.op ⦋0⦌) c) s.inv) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose x ((hoFunctor.map U).toFunctor.map t.hom)
+  have hP : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence P :=
+    (hp.comp (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPrecompose_isQCatEquivalence_of_isIso e.hom c).isWeakHomotopyEquivalence).comp
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPostcompose_isQCatEquivalence_of_isIso t.hom a).isWeakHomotopyEquivalence
+  have hR : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence R :=
+    (hr.comp (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPrecompose_isQCatEquivalence_of_isIso s.inv _).isWeakHomotopyEquivalence).comp
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pinchedPostcompose_isQCatEquivalence_of_isIso
           ((hoFunctor.map U).toFunctor.map t.hom) x).isWeakHomotopyEquivalence
-  have hi := (pinchedHomToIntervalMappingSpace_isQCatEquivalence a d).isWeakHomotopyEquivalence
-  refine unitComparison_weak_of_probe_family _ (P ≫ pinchedHomToIntervalMappingSpace a d) R
+  have hi := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence a d).isWeakHomotopyEquivalence
+  refine unitComparison_weak_of_probe_family _ (P ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace a d) R
     (hP.comp hi) hR ?_
   have hu' : η ≫ (hoFunctor.map U).toFunctor.map e.hom = s.inv ≫ ν := by
     rw [← hu]
@@ -59,15 +59,15 @@ lemma unitComparisonTransport_weak {K C D : SSet.{u}} [Quasicategory C] [Quasica
     ((hoFunctor.map U).toFunctor.map t.hom) r
   simp only [Category.assoc] at ht
   dsimp only [P, R]
-  rw [Category.assoc, ← Category.assoc (pinchedHomToIntervalMappingSpace a d)
-    (intervalFunctorMap U a d), ← pinchedHomToIntervalMappingSpace_naturality,
-    ← Category.assoc, intervalPrecompose_family, pinchedTransport_forget_family]
+  rw [Category.assoc, ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace a d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap U a d), ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pinchedHomToIntervalMappingSpace_naturality,
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalPrecompose_family, pinchedTransport_forget_family]
   simp only [Category.assoc]
   rw [ht]
-  rw [← Category.assoc (constantFunctorHomMap K η)
-    (constantFunctorHomMap K ((hoFunctor.map U).toFunctor.map e.hom)),
-    ← constantFunctorHomMap_comp, hu', constantFunctorHomMap_comp]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K η)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ((hoFunctor.map U).toFunctor.map e.hom)),
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_comp, hu', _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_comp]
   simp only [Category.assoc]
-  rw [← Category.assoc (constantFunctorHomMap K ν), hf]
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ν), hf]
 
 end SerrePositivity.EInfinity.FrameHom

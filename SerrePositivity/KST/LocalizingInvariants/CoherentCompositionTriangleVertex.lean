@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CoherentCompositionConstantSimplex
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionFixedTriangle
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionSquareEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionFixedTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionSquareEvaluation
 
 /-!
 概要：豊穣合成三角形の通常の射での制限は、元の通常の合成二単体そのものである。
@@ -24,23 +24,23 @@ lemma coherentCompositionFixedTriangle_vertex {C : Type v} [Category.{u} C]
     [SimplicialCategory C] {X Y Z : C} (f : X ⟶ Y) (g : Y ⟶ Z) :
     SSet.yonedaEquiv (lift (𝟙 (Δ[2] : SSet.{max u v}))
       (SSet.const (ULift.up (SimplicialCategory.homEquiv' X Y f))) ≫
-        coherentCompositionFixedTriangle X Y Z g) =
-      (coherentNerveCompStruct f g).simplex := by
-  let st := SSet.yonedaEquiv (squareTriangle.{max u v} 0)
-  rw [coherentCompositionFixedTriangle, ← Category.assoc, SSet.yonedaEquiv_comp]
-  change (coherentCompositionTriangle X Y Z).app (Opposite.op ⦋2⦌)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionFixedTriangle X Y Z g) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct f g).simplex := by
+  let st := SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle.{max u v} 0)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionFixedTriangle, ← Category.assoc, SSet.yonedaEquiv_comp]
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionTriangle X Y Z).app (Opposite.op ⦋2⦌)
     (SSet.yonedaEquiv (𝟙 (Δ[2] : SSet.{max u v})),
-      (ULift.up (PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 2),
-       ULift.up (PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 2))) = _
-  rw [coherentCompositionTriangle, squarePrismTriangle]
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 2),
+       ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 2))) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionTriangle, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.squarePrismTriangle]
   simp only [NatTrans.comp_app, types_comp_apply]
-  change (coherentCompositionSquare X Y Z).app (Opposite.op ⦋2⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionSquare X Y Z).app (Opposite.op ⦋2⦌)
     (st.1, (st.2,
-      (ULift.up (PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 2),
-       ULift.up (PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 2)))) = _
-  rw [coherentCompositionSquare_evaluate_cut]
-  have hc : SimplexCategory.mkHom (coherentPrismCut (stdSimplex.objEquiv st.1).toOrderHom) =
-      PinchedHom.extend (SimplexCategory.δ (2 : Fin 3)) := by
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' X Y f) 2),
+       ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (SimplicialCategory.homEquiv' Y Z g) 2)))) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionSquare_evaluate_cut]
+  have hc : SimplexCategory.mkHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentPrismCut (stdSimplex.objEquiv st.1).toOrderHom) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend (SimplexCategory.δ (2 : Fin 3)) := by
     apply SimplexCategory.Hom.ext
     ext i
     fin_cases i <;> rfl
@@ -48,8 +48,8 @@ lemma coherentCompositionFixedTriangle_vertex {C : Type v} [Category.{u} C]
       (SimplexCategory.δ (2 : Fin 3)).toOrderHom = (OrderHom.id : Fin 2 →o Fin 2) := by
     ext i
     fin_cases i <;> rfl
-  rw [hc, coherentCompositionSimplex_naturality, PinchedHom.constant_pullback,
-    PinchedHom.constant_pullback, ht]
+  rw [hc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentCompositionSimplex_naturality, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant_pullback, ht]
   exact coherentComposition_constant_simplex f g
 
 end SerrePositivity.KST.LocalizingInvariants

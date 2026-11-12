@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {C D : Type v} [Category.{u} C] [Category.{u} D]
   [SimplicialCategory C] [SimplicialCategory D]
@@ -26,11 +26,11 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
 def enrichedFunctorCollageCrossVertexEdge (R : EnrichedFunctor SSet.{u} C D)
     (F : I ⥤ D) (G : I ⥤ C) (i : I) (f : F.obj i ⟶ R.obj (G.obj i)) :
     (EnrichedFunctorCollageInfinity R).Edge
-      ((strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
-        (Opposite.op ⦋0⦌) (ULift.up (nerveVertex i)))
-      ((strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
-        (Opposite.op ⦋0⦌) (ULift.up (nerveVertex i))) :=
-  (coherentNerveEdge (enrichedFunctorCollageCross R f)).ofEq
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
+        (Opposite.op ⦋0⦌) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
+        (Opposite.op ⦋0⦌) (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (enrichedFunctorCollageCross R f)).ofEq
     (strictCoherentDiagram_postcomp_vertex F (enrichedFunctorCollageBottom R) i).symm
     (strictCoherentDiagram_postcomp_vertex G (enrichedFunctorCollageTop R) i).symm
 
@@ -38,30 +38,30 @@ def enrichedFunctorCollageCrossVertexEdge (R : EnrichedFunctor SSet.{u} C D)
 lemma enrichedFunctorCollageTransport_vertex_hom (R : EnrichedFunctor SSet.{u} C D)
     [Quasicategory (EnrichedFunctorCollageInfinity R)]
     {F : I ⥤ D} {G : I ⥤ C}
-    (H : SSet.Homotopy (strictCoherentDiagram F)
-      (strictCoherentDiagram G ≫ coherentNerveMap R))
+    (H : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap R))
     (i : I) (f : F.obj i ⟶ R.obj (G.obj i))
-    (hf : (simplicialHomotopyVertexEdge H (ULift.up (nerveVertex i))).edge =
-      (coherentNerveEdge f).edge) :
+    (hf : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge) :
     SSet.Truncated.HomotopyCategory.homMk
-      (simplicialHomotopyVertexEdge (enrichedFunctorCollageTransportHomotopy R H)
-        (ULift.up (nerveVertex i))).toTruncated =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (enrichedFunctorCollageTransportHomotopy R H)
+        (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).toTruncated =
       SSet.Truncated.HomotopyCategory.homMk
         (enrichedFunctorCollageCrossVertexEdge R F G i f).toTruncated := by
-  let a := ULift.up (nerveVertex i)
+  let a := ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)
   let l := enrichedFunctorCollageInputHomotopy R H
   let r := enrichedFunctorCollageComparisonHomotopy R G
-  have hl : (simplicialHomotopyVertexEdge l a).edge =
-      (coherentNerveEdge ((coherentEnrichedUnderlyingFunctor
+  have hl : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge l a).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor
         (enrichedFunctorCollageBottom R)).map f)).edge := by
     exact (homotopyVertexEdge_postcomp H (enrichedFunctorCollageBottomInfinity R) a).trans
       ((congrArg ((enrichedFunctorCollageBottomInfinity R).app (Opposite.op ⦋1⦌)) hf).trans
         (enrichedNerveMap_edge (enrichedFunctorCollageBottom R) f))
   have hr := enrichedFunctorCollageComparisonHomotopy_vertex_edge R G i
-  have hc : SSet.Edge.CompStruct (simplicialHomotopyVertexEdge l a)
-      (simplicialHomotopyVertexEdge r a) (enrichedFunctorCollageCrossVertexEdge R F G i f) := by
-    refine (coherentNerveCompStruct
-      ((coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f)
+  have hc : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge l a)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge r a) (enrichedFunctorCollageCrossVertexEdge R F G i f) := by
+    refine (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f)
       (enrichedFunctorCollageCross R (𝟙 (R.obj (G.obj i))))).ofEq hl.symm hr.symm ?_
     rw [enrichedFunctorCollageCross_pre, Category.comp_id]
     rfl
@@ -74,37 +74,37 @@ lemma exists_enrichedFunctorCollageTransport_specified_components
     (R : EnrichedFunctor SSet.{u} C D)
     [Quasicategory (EnrichedFunctorCollageInfinity R)]
     {F : I ⥤ D} {G : I ⥤ C}
-    (H : SSet.Homotopy (strictCoherentDiagram F)
-      (strictCoherentDiagram G ≫ coherentNerveMap R))
+    (H : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap R))
     (f : ∀ i, F.obj i ⟶ R.obj (G.obj i))
-    (hf : ∀ i, (simplicialHomotopyVertexEdge H (ULift.up (nerveVertex i))).edge =
-      (coherentNerveEdge (f i)).edge) :
+    (hf : ∀ i, (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (f i)).edge) :
     ∃ H' : SSet.Homotopy
-      (strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R)
-      (strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R),
-      (∀ i, (simplicialHomotopyVertexEdge H' (ULift.up (nerveVertex i))).edge =
-        (coherentNerveEdge (enrichedFunctorCollageCross R (f i))).edge) ∧
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H') =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R),
+      (∀ i, (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H' (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))).edge =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (enrichedFunctorCollageCross R (f i))).edge) ∧
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H') =
         SSet.Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (enrichedFunctorCollageTransportHomotopy R H)) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (enrichedFunctorCollageTransportHomotopy R H)) := by
   let e : ∀ a : ((SSet.uliftFunctor.{v,u}).obj (nerve I)) _⦋0⦌,
       (EnrichedFunctorCollageInfinity R).Edge
-        ((strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
           (Opposite.op ⦋0⦌) a)
-        ((strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
           (Opposite.op ⦋0⦌) a) := by
     rintro ⟨a⟩
-    have ha : a = nerveVertex (a.obj 0) := ComposableArrows.ext₀ rfl
+    have ha : a = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (a.obj 0) := ComposableArrows.ext₀ rfl
     exact (enrichedFunctorCollageCrossVertexEdge R F G (a.obj 0) (f (a.obj 0))).ofEq
-      (congrArg ((strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
+      (congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F ≫ enrichedFunctorCollageBottomInfinity R).app
         (Opposite.op ⦋0⦌)) (congrArg ULift.up ha)).symm
-      (congrArg ((strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
+      (congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram G ≫ enrichedFunctorCollageTopInfinity R).app
         (Opposite.op ⦋0⦌)) (congrArg ULift.up ha)).symm
   obtain ⟨H', he, hh⟩ := exists_homotopy_specified_vertex_edges
     (enrichedFunctorCollageTransportHomotopy R H) e (by
       rintro ⟨a⟩
-      obtain ⟨i, rfl⟩ : ∃ i, a = nerveVertex i := ⟨a.obj 0, ComposableArrows.ext₀ rfl⟩
+      obtain ⟨i, rfl⟩ : ∃ i, a = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i := ⟨a.obj 0, ComposableArrows.ext₀ rfl⟩
       exact enrichedFunctorCollageTransport_vertex_hom R H i (f i) (hf i))
-  exact ⟨H', fun i => he (ULift.up (nerveVertex i)), hh⟩
+  exact ⟨H', fun i => he (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)), hh⟩
 
 end SerrePositivity.KST.SConstruction

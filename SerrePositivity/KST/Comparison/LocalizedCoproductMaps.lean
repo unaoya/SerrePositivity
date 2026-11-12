@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.KanLocalizedLeftProper
-public import SerrePositivity.InfinityCategories.Simplicial.SimplicialCoproductMono
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplicialCoproductMono
 
 /-!
 # 余積と局所化可逆な射

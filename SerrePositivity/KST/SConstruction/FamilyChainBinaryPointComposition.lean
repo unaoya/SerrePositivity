@@ -21,9 +21,9 @@ open scoped Simplicial
 /-- 元の全円柱の実辺の評価像は、同じ円柱の同じ指定点での実辺。 -/
 lemma familyHomotopyEdge_evaluate {U E : SSet.{u}} {f g : U ⟶ E}
     (H : SSet.Homotopy f g) (v : U _⦋0⦌) :
-    ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H)).map
-      (evaluateFunctorAt v)).edge = (simplicialHomotopyVertexEdge H v).edge := by
-  change (evaluateFunctorAt v).app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry H.h)) = _
+    ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).edge = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge H v).edge := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v).app (Opposite.op ⦋1⦌) (SSet.yonedaEquiv (curry H.h)) = _
   rw [← SSet.yonedaEquiv_comp]
   exact homotopyVertexEdge_yoneda H v
 
@@ -35,9 +35,9 @@ variable {U E : SSet.{u}} [KanComplex E] {f g h : U ⟶ E}
 
 /-- 元の同じ全三角形を指定点で評価し、三つの元の同じ実円柱辺を保持する。 -/
 def familyChainBinaryCompositionPointTriangle : SSet.Edge.CompStruct
-    (simplicialHomotopyVertexEdge A.homotopy v) (simplicialHomotopyVertexEdge B.homotopy v)
-    (simplicialHomotopyVertexEdge D.homotopy v) :=
-  ((familyChainBinaryCompositionTriangle A B D ht).map (evaluateFunctorAt v)).ofEq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge A.homotopy v) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge B.homotopy v)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge D.homotopy v) :=
+  ((familyChainBinaryCompositionTriangle A B D ht).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).ofEq
     (familyHomotopyEdge_evaluate A.homotopy v) (familyHomotopyEdge_evaluate B.homotopy v)
     (familyHomotopyEdge_evaluate D.homotopy v)
 
@@ -45,8 +45,8 @@ def familyChainBinaryCompositionPointTriangle : SSet.Edge.CompStruct
 lemma familyChainBinaryCompositionPointTriangle_realization :
     SSet.yonedaEquiv.symm (familyChainBinaryCompositionPointTriangle A B D ht v).simplex =
       SSet.yonedaEquiv.symm (familyChainBinaryCompositionTriangle A B D ht).simplex ≫
-        evaluateFunctorAt v :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v :=
   (SSet.yonedaEquiv_symm_comp (familyChainBinaryCompositionTriangle A B D ht).simplex
-    (evaluateFunctorAt v)).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)).symm
 
 end SerrePositivity.KST.SConstruction

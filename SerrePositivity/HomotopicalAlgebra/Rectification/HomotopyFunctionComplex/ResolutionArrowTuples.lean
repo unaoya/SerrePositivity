@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.ResolutionArrowDiagram
 public import SerrePositivity.HomotopicalAlgebra.Rectification.HomotopyFunctionComplex.CoherentLiftTuples
-public import SerrePositivity.InfinityCategories.Simplicial.VertexTuplesFunctor
+public import SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuplesFunctor
 
 /-!
 # 中断した任意モデル源への一般化：ResolutionArrowTuples
@@ -65,10 +65,10 @@ def strictLifts : Index C ⥤ Type v where
     change (_ ≫ _) ≫ k.val ≫ (_ ≫ _) = _ ≫ (_ ≫ k.val ≫ _) ≫ _
     simp only [Category.assoc]
 
-abbrev tuples : Index C ⥤ SSet.{v} := strictLifts C ⋙ VertexTuples.tupleFunctor
-abbrev vertices : Index C ⥤ SSet.{v} := strictLifts C ⋙ VertexTuples.vertexFunctor
+abbrev tuples : Index C ⥤ SSet.{v} := strictLifts C ⋙ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.tupleFunctor
+abbrev vertices : Index C ⥤ SSet.{v} := strictLifts C ⋙ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.vertexFunctor
 abbrev inclusion : vertices C ⟶ tuples C := Functor.whiskerLeft (strictLifts C)
-  VertexTuples.inclusionNatTrans
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.inclusionNatTrans
 
 abbrev point (q : Index C) (k : StrictLift C q) :
     SSet.stdSimplex.{v}.obj (SimplexCategory.mk 0) ⟶ (fibers C).obj q :=
@@ -91,9 +91,9 @@ lemma point_naturality {q r : Index C} (f : q ⟶ r) (k : StrictLift C q) :
     point C q k ≫ (fibers C).map f = point C r (strictMap C f k) := by
   apply ResolutionLiftSpace.hom_ext
   · change (point C q k ≫ (fibers C).map f) ≫
-        (FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r =
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r =
       point C r (strictMap C f k) ≫
-        (FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FiberFunctor.inclusion (rawProjection C) (basepoint C)).app r
     rw [Category.assoc, map_inclusion, ← Category.assoc]
     change (point C q k ≫ ResolutionLiftSpace.inclusion _ _ _) ≫
         MixedChoiceFunctor.rawPairs.map f.hom =
@@ -109,8 +109,8 @@ lemma point_naturality {q r : Index C} (f : q ⟶ r) (k : StrictLift C q) :
       f.hom.1.unop.map.diagram f.hom.1.unop.frame f.hom.1.unop.over
       (f.hom.1.unop.map.diagram ≫ k.val.diagram) k.val.diagram rfl
     change (LiftSpace.point _ _ k.val.diagram ≫
-        (cosimplicialHomMap f.hom.1.unop.frame).app _) ≫
-          (cosimplicialHom (ResolutionLiftSpace.frame (source C r).inner).obj).map
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.hom.1.unop.frame).app _) ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame (source C r).inner).obj).map
             f.hom.2.diagram = _
     rw [hp, LiftSpace.point_postcomp]
     exact congrArg (LiftSpace.point _ _) (Category.assoc _ _ _)
@@ -118,14 +118,14 @@ lemma point_naturality {q r : Index C} (f : q ⟶ r) (k : StrictLift C q) :
 
 /-- The full old strict-vertex boundary is natural across every center change. -/
 def vertexData : vertices C ⟶ fibers C where
-  app q := VertexTuples.pointsMap (point C q)
+  app q := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point C q)
   naturality {q r} f := by
-    change VertexTuples.verticesMap (strictMap C f) ≫ VertexTuples.pointsMap (point C r) =
-      VertexTuples.pointsMap (point C q) ≫ (fibers C).map f
-    rw [VertexTuples.verticesMap_pointsMap, VertexTuples.pointsMap_postcomp]
-    exact congrArg VertexTuples.pointsMap (funext (fun k => (point_naturality C f k).symm))
+    change _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap (strictMap C f) ≫ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point C r) =
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (point C q) ≫ (fibers C).map f
+    rw [_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.verticesMap_pointsMap, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap_postcomp]
+    exact congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.pointsMap (funext (fun k => (point_naturality C f k).symm))
 
 instance inclusion_mono (q : Index C) : Mono ((inclusion C).app q) :=
-  inferInstanceAs (Mono (VertexTuples.inclusion (StrictLift C q)))
+  inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.inclusion (StrictLift C q)))
 
 end SerrePositivity.HomotopyFunctionComplex.ResolutionArrowTuples

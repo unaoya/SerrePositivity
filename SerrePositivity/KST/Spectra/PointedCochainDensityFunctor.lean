@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndWeightFunctor
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra
 
@@ -41,7 +41,7 @@ def SimplexDensity.pointedTotalizationEndNatIso {I : Type u} [SmallCategory I]
 規約：有限群に限らない通常の係数関手の同型。
 使われ方：Goerss–Jardine VIII §2。hG の係数関手と EG の end の比較。 -/
 def GroupActionCochains.universalCoverEndNatIso (G : Type u) [Group G] :
-    PointedWeightedEnd.functor (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) ≅
+    PointedWeightedEnd.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) ≅
       PointedWeightedEnd.functor (universalCoverDiagram G) :=
   PointedWeightedEnd.weightToFunctor.mapIso (bousfieldKanUniversalCoverIso G).symm.op
 
@@ -51,7 +51,7 @@ def GroupActionCochains.universalCoverEndNatIso (G : Type u) [Group G] :
 使われ方：Goerss–Jardine VIII §§1–2。hG と通常の Tot の射の比較。 -/
 def GroupActionCochains.totalizationEndNatIso (G : Type u) [Group G] :
     weightedCochainsFunctor (universalCoverWeight G) ⋙ PointedTotalization.functor ≅
-      PointedWeightedEnd.functor (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) :=
+      PointedWeightedEnd.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) :=
   SimplexDensity.pointedTotalizationEndNatIso (universalCoverDiagram G) ≪≫
     (universalCoverEndNatIso G).symm
 

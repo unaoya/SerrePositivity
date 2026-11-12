@@ -70,7 +70,7 @@ abbrev fixedBoundary : NerveMovingParameter.System.{u, v} (boundaries C) (smallV
 
 /-- Each object uses precisely its previously selected edge family. -/
 def family : ∀ p : Index C, (parameters C).obj p ⟶
-    UniverseLift.obj.{u} ((smallValues C).obj p)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((smallValues C).obj p)
   | .post X Y W f g => ResolutionArrowSelectedIntervals.postFamily hcof hfib X Y W f g
   | .pre X Y W f g => ResolutionArrowSelectedIntervals.preFamily hcof hfib X Y W f g
 
@@ -100,26 +100,26 @@ lemma coherent_boundary : coherent C hcof hfib ≫
 
 /-- Recover the original small whole postcomparison interval, including every tuple degree. -/
 lemma post_recover (X : FramedResolution C) (Y W : ResolutionObject C)
-    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : UniverseLift.lowerSimplexTensor
+    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (NerveMovingParameter.evaluate (parameters C) (smallValues C) (coherent C hcof hfib)
       (Presentation.post X Y W f g)) =
     RelativeChoiceSpace.family (CoherentLiftRelative.vertexInclusion X.inner Y f)
       (CoherentLiftRelative.postBoundary X.inner Y W f g)
       (CoherentLiftRelative.postEdge hcof hfib X.inner Y W f g) := by
-  exact (congrArg UniverseLift.lowerSimplexTensor
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (coherent_evaluate C hcof hfib (Presentation.post X Y W f g))).trans
       (ResolutionArrowSelectedIntervals.post_recover hcof hfib X Y W f g)
 
 /-- Recover the original small whole precomparison for the actual given frame map. -/
 lemma pre_recover (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
-    (g : Y.inner.base ⟶ W.base) : UniverseLift.lowerSimplexTensor
+    (g : Y.inner.base ⟶ W.base) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (NerveMovingParameter.evaluate (parameters C) (smallValues C) (coherent C hcof hfib)
       (Presentation.pre X Y W f g)) =
     RelativeChoiceSpace.family (CoherentLiftRelative.vertexInclusion Y.inner W g)
       (CoherentLiftRelative.preBoundary X.inner Y.inner W f.map g)
       (CoherentLiftRelative.preEdge hcof hfib X.inner Y.inner W f.map g
         (FramedResolution.frameMap f)) := by
-  exact (congrArg UniverseLift.lowerSimplexTensor
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (coherent_evaluate C hcof hfib (Presentation.pre X Y W f g))).trans
       (ResolutionArrowSelectedIntervals.pre_recover hcof hfib X Y W f g)
 

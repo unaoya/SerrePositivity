@@ -28,15 +28,15 @@ open scoped Simplicial
 -/
 def matrixHomotopyEntryHom (A : SimplicialObject RingCat.{u}) (r : ℕ)
     [KanComplex (ringSpace A)] (a : (matrixSpace A r) _⦋0⦌) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (matrixSpace A r) n a →*
-      (∀ i j : Fin r, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (a i j)) where
-  toFun x i j := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (matrixSpace A r) n a →*
+      (∀ i j : Fin r, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (a i j)) where
+  toFun x i j := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl x
   map_one' := by
     funext i j
-    exact map_one (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl)
+    exact map_one (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl)
   map_mul' x y := by
     funext i j
-    exact map_mul (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl) x y
+    exact map_mul (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (matrixEntryMap A r i j) rfl) x y
 
 /--
 概要：行列のホモトピー群の係数写像は全単射。
@@ -51,21 +51,21 @@ theorem matrixHomotopyEntryHom_bijective (A : SimplicialObject RingCat.{u}) (r :
   · intro x y hxy
     induction x using Quotient.inductionOn with | h f => ?_
     induction y using Quotient.inductionOn with | h g => ?_
-    have he (i j : Fin r) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
-        (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl f) =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl g) :=
+    have he (i j : Fin r) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (matrixEntryMap A r i j) rfl f) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (matrixEntryMap A r i j) rfl g) :=
       congrFun (congrFun hxy i) j
-    have hr (i j : Fin r) := (_root_.SerrePositivity.InfinityCategories.Kan.simplexRel_iff_relStruct (0 : Fin (n + 2))).1
-      ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk_eq_iff _ _).1 (he i j))
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.sound
+    have hr (i j : Fin r) := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.simplexRel_iff_relStruct (0 : Fin (n + 2))).1
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk_eq_iff _ _).1 (he i j))
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.sound
       (matrixRelStruct A r (n + 1) a (fun i j => Classical.choice (hr i j)))
   · intro b
     have hs (i j : Fin r) : ∃ s : (ringSpace A).PtSimplex (n + 1) (a i j),
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = b i j := Quotient.mk_surjective _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = b i j := Quotient.mk_surjective _
     choose f hf using hs
-    refine ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (matrixPtSimplex A r (n + 1) a f), ?_⟩
+    refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (matrixPtSimplex A r (n + 1) a f), ?_⟩
     funext i j
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (matrixEntryMap A r i j) rfl
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (matrixEntryMap A r i j) rfl
       (matrixPtSimplex A r (n + 1) a f)) = b i j
     rw [matrixPtSimplex_entry]
     exact hf i j
@@ -78,8 +78,8 @@ theorem matrixHomotopyEntryHom_bijective (A : SimplicialObject RingCat.{u}) (r :
 -/
 def matrixPositiveHomotopyMulEquiv (A : SimplicialObject RingCat.{u}) (r : ℕ)
     [KanComplex (ringSpace A)] (a : (matrixSpace A r) _⦋0⦌) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (matrixSpace A r) n a ≃*
-      (∀ i j : Fin r, _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (ringSpace A) n (a i j)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (matrixSpace A r) n a ≃*
+      (∀ i j : Fin r, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (ringSpace A) n (a i j)) :=
   MulEquiv.ofBijective (matrixHomotopyEntryHom A r a n)
     (matrixHomotopyEntryHom_bijective A r a n)
 

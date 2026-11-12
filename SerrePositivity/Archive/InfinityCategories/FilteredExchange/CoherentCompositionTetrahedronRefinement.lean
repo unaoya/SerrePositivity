@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionTetrahedronRefinementPaths
-public import SerrePositivity.InfinityCategories.F1.CatInfinity.CoherentTriangleHomotopy
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentPathHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTriangleHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentPathHom
 
 /-!
 概要：合成比較三単体の第二面は元の指定精密化を保持する。

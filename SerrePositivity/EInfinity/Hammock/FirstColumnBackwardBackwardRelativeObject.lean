@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FirstColumnBackwardBackwardData
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeAppendParts
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.BackwardZigzagNativeRelative
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FirstColumnBackwardBackwardData
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeAppendParts
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagNativeRelative
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramTotal
 
 /-!
@@ -20,32 +20,32 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
-open CategoryTheory Opposite Zigzag.FirstBoundary SimplicialLocalization
-variable {C D : RelativeCategory.{u}} (w : Word) {X Y : C.category} {X' Y' : D.category}
+open CategoryTheory Opposite
+variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) {X Y : C.category} {X' Y' : D.category}
     (F : C ⟶ D) (hX : F.functor.obj X = X') (hY : F.functor.obj Y = Y')
-def backwardBackwardRelativeFunctor : backwardBackwardTarget C.weakEquivalences w X Y ⥤
-    backwardBackwardTarget D.weakEquivalences w X' Y' :=
-  (TwoSidedDiagram.totalFunctor.map (backwardBackwardDataMap w F hX hY)).toFunctor
-lemma backwardBackward_relative_head (S : backwardBackwardSource C.weakEquivalences w X Y) :
-    Discrete.mk (BackwardZigzag.markedHomEquiv (BackwardZigzag.value (ZigzagAppend.Part.leftObj
-      ((Zigzag.Relative.fixedFunctor F hX hY).obj S)))) =
-    Discrete.mk ((markedCategoryMap F).map
-      (BackwardZigzag.markedHomEquiv (BackwardZigzag.value (ZigzagAppend.Part.leftObj S))) ≫
+def backwardBackwardRelativeFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardTarget C.weakEquivalences w X Y ⥤
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardTarget D.weakEquivalences w X' Y' :=
+  (TwoSidedDiagram.totalFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardDataMap w F hX hY)).toFunctor
+lemma backwardBackward_relative_head (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardSource C.weakEquivalences w X Y) :
+    Discrete.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedHomEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagDiscrete.value (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.leftObj
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor F hX hY).obj S)))) =
+    Discrete.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap F).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedHomEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagDiscrete.value (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.leftObj S))) ≫
         eqToHom (congrArg (fun T => (⟨T⟩ : WideSubcategory D.weakEquivalences)) hX)) := by
   apply Discrete.ext
-  rw [ZigzagAppend.Part.left_relative_obj F hX hY S]
-  have he := BackwardZigzag.nativeValue_relative F hX rfl (ZigzagAppend.Part.leftObj S)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.left_relative_obj F hX hY S]
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.nativeValue_relative F hX rfl (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.leftObj S)
   simp only [eqToHom_refl, Category.id_comp] at he
   convert he using 1
-lemma backwardBackward_relative_obj (S : backwardBackwardSource C.weakEquivalences w X Y) :
-    backwardBackwardObject D.weakEquivalences w X' Y'
-      ((Zigzag.Relative.fixedFunctor F hX hY).obj S) =
+lemma backwardBackward_relative_obj (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardSource C.weakEquivalences w X Y) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardObject D.weakEquivalences w X' Y'
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor F hX hY).obj S) =
     (backwardBackwardRelativeFunctor w F hX hY).obj
-      (backwardBackwardObject C.weakEquivalences w X Y S) := by
-  apply congrArg₂ (TwoSidedGrothendieck.mk (backwardLeftCoefficient D.weakEquivalences X')
-    (backwardRightCoefficient D.weakEquivalences w Y')
-    (⟨F.functor.obj (ZigzagAppend.Part.jointFunctor.obj S)⟩ : WideSubcategory D.weakEquivalences))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardBackwardObject C.weakEquivalences w X Y S) := by
+  apply congrArg₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardLeftCoefficient D.weakEquivalences X')
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.backwardRightCoefficient D.weakEquivalences w Y')
+    (⟨F.functor.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendPartDiagrams.jointFunctor.obj S)⟩ : WideSubcategory D.weakEquivalences))
   · exact backwardBackward_relative_head w F hX hY S
-  · exact ZigzagAppend.Part.right_relative_obj F hX hY S
+  · exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.right_relative_obj F hX hY S
 
 end SerrePositivity.EInfinity.Hammock.FirstColumn

@@ -38,30 +38,30 @@ lemma cofibrantDKSourceFrameAugmentation_weak (n : AsSmall.{u + 1} SimplexCatego
   cofibrantSourceFrameAugmentation_weak A X (ULift.down n)
 
 lemma sourceFrameIndex_weaklyContractible :
-    IsWeaklyContractible (nerve (AsSmall.{u + 1} SimplexCategory)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (nerve (AsSmall.{u + 1} SimplexCategory)) := by
   let t : AsSmall.{u + 1} SimplexCategory := ⟨⦋0⦌⟩
   have ht : CategoryTheory.Limits.IsTerminal t :=
     CategoryTheory.Limits.IsTerminal.ofUniqueHom
       (fun (n : AsSmall.{u + 1} SimplexCategory) =>
         ⟨SimplexCategory.isTerminalZero.from (ULift.down n)⟩)
       (fun _ _ => ULift.ext (Subsingleton.elim _ _))
-  exact (SerrePositivity.InfinityCategories.F1B.nerveVertex_isTerminal ht).isWeaklyContractible
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.nerveVertex_isTerminal ht).isWeaklyContractible
 
 lemma cofibrantSourceFrameTotal_hasLimit {E : SSet.{u + 1}} [SSet.Quasicategory E]
     (F : nerve (cofibrantAlgebraRelativeCategory A).category ⟶ E)
-    (hF : InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
-    HasLimit (nerveMap (FrameHom.FrameArrows.target (cofibrantDKSourceFrame A X)) ≫ F) := by
+    (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges F (weakNerveEdges (cofibrantAlgebraRelativeCategory A))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.HasLimit (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FrameArrowCategory.target (cofibrantDKSourceFrame A X)) ≫ F) := by
   apply FrameHom.FrameArrows.target_hasLimit_of_inverting_augmentation
     (cofibrantDKSourceFrame A X) (cofibrantDKSourceFrameAugmentation A X) F
   · intro n
     have hw := hF (show ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n) ∈
         weakNerveEdges (cofibrantAlgebraRelativeCategory A) from
       ⟨_, _, _, cofibrantDKSourceFrameAugmentation_weak A X n, rfl⟩)
-    change IsInvertibleEdge
-      ((edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
         ((SSet.truncation 2).map F)) at hw
-    exact (isInvertibleEdge_congr (e :=
-      (edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ ((cofibrantDKSourceFrameAugmentation A X).app n))).map
         ((SSet.truncation 2).map F))
       (f := ((nerve.edgeMk ((cofibrantDKSourceFrameAugmentation A X).app n)).map F).toTruncated)
       rfl).mp hw

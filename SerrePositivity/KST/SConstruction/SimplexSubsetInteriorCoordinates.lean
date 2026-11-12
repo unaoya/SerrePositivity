@@ -13,25 +13,25 @@ namespace SerrePositivity.KST.SConstruction
 
 /-- 元の部分集合の、元の両端の間にある所属内部頂点。 -/
 abbrev SimplexSubsetInterior {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :=
-  {j : Fin (n + 1) // j ∈ I ∧ I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j ∧
-    j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)}
+  {j : Fin (n + 1) // j ∈ I ∧ I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j ∧
+    j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)}
 
 /-- 元の濃度次元の面座標に対応する、元の部分集合の内部頂点。 -/
 def simplexSubsetCoordinateVertex {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (i : Fin (I.card - 2)) : Fin (n + 1) :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).nonjointCoordinate
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder I hI ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).nonjointCoordinate
     (Fin.cast (necklaceInSimplexSubset_dimension.{0} I hI).symm i)).val
 
 /-- 元の座標に対応する元の頂点は、元の部分集合に属する。 -/
 lemma simplexSubsetCoordinateVertex_mem {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (i : Fin (I.card - 2)) : simplexSubsetCoordinateVertex I hI i ∈ I :=
-  _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder_mem I hI _
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder_mem I hI _
 
 /-- 元の座標に対応する元の頂点は、元の両端の厳密な内部にある。 -/
 lemma simplexSubsetCoordinateVertex_bounds {n : ℕ} (I : Finset (Fin (n + 1)))
     (hI : 2 ≤ I.card) (i : Fin (I.card - 2)) :
-    I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < simplexSubsetCoordinateVertex I hI i ∧
-      simplexSubsetCoordinateVertex I hI i < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) :=
+    I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < simplexSubsetCoordinateVertex I hI i ∧
+      simplexSubsetCoordinateVertex I hI i < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) :=
   simplexSubsetNonjoint_bounds I hI _
 
 /-- 元の濃度次元の面座標と、元の所属内部頂点の実際の同値。 -/
@@ -59,8 +59,8 @@ def simplexSubsetInteriorCoordinateEquiv {n : ℕ} (I : Finset (Fin (n + 1)))
           j.property.2.1 j.property.2.2) =
       simplexSubsetEraseCoordinate I hI j.val j.property.1 j.property.2.1 j.property.2.2 :=
       Fin.ext rfl
-    exact (congrArg (fun i => _root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetOrder I hI
-      ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val) hc).trans
+    exact (congrArg (fun i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetOrder I hI
+      ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single (I.card - 1)).nonjointCoordinate i).val) hc).trans
         (simplexSubsetEraseCoordinate_recovery I hI j.val j.property.1
           j.property.2.1 j.property.2.2)
 

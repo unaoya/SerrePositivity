@@ -1,7 +1,7 @@
-import SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedFreeNativeFunctor
-import SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeAction
-import SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceNativeFunctor
-import SerrePositivity.InfinityCategories.Derived.Diagnostics.DGKappaPresentedSourceShiftAction
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedFreeNativeFunctor
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeAction
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceNativeFunctor
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagnostics.DGKappaPresentedSourceShiftAction
 import Lean.Util.CollectAxioms
 
 -- C2: explicit local validation only; this file is not added to the formal audit manifest.

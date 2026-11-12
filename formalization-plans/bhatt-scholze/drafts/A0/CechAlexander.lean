@@ -3,6 +3,7 @@
 module
 
 public import SerrePositivity.BhattScholze.Prismatic.AffineEnvelopeConstruction
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Prismatic.AffinePolynomial
 
 public import Mathlib.AlgebraicTopology.SimplicialObject.Basic
@@ -43,7 +44,7 @@ open scoped Simplicial
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.Sheaves
+
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A) (hP : IsBoundedPrism P)
 variable (R : Type u) [CommRing R] [Algebra (A ⧸ P.ideal) R]
@@ -220,7 +221,7 @@ theorem cechAlexander_isLimitCone_iff (c : JoinCone (structurePresheafDerived P 
 theorem prismaticCohomology_eq_cechAlexanderTot (hP : IsBoundedPrism P)
     (hadm : IsAdmissibleCutoff P R κ)
     (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A))
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A))
     (t : JoinCone (cechShape (cechNerveData P R h κ hκ) ≫ structurePresheafDerived P R κ))
     (ht : IsLimitCone t) :
     (∃ c : JoinCone (structurePresheafDerived P R κ), IsLimitCone c ∧ c.vertex = t.vertex) ∧
@@ -235,7 +236,7 @@ theorem prismaticCohomology_cutoff_invariant (hP : IsBoundedPrism P)
     (hk : IsAdmissibleCutoff P R κ) (hk' : IsAdmissibleCutoff P R κ') (hle : κ ≤ κ')
     (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
     (hJ' : Sheafification (flatTopology P R κ') (derivedInfinityCategory A))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) (h : HasEnvelopes P R) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A)) (h : HasEnvelopes P R) :
     let Ores := restrictCutoffStructure P R hle
     let x := derivedGlobalSections (flatTopology P R κ) hJ hE Ores
     Nonempty (FunctorIso Ores (structurePresheafDerived P R κ)) ∧
@@ -277,7 +278,7 @@ theorem cechAlexanderAffine_computes (hP : IsBoundedPrism P) (r : ℕ) (κ : Car
     [EssentiallySmall.{u} (PrismOver P (prismPolynomialCompletion P (Fin r)) κ)]
     (hk : IsAdmissibleCutoff P (prismPolynomialCompletion P (Fin r)) κ)
     (hJ : Sheafification (flatTopology P (prismPolynomialCompletion P (Fin r)) κ) (derivedInfinityCategory A))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A)) :
     let R := prismPolynomialCompletion P (Fin r)
     let h := hasEnvelopes_of_polynomial P R hP (Fin r) ⟨AlgEquiv.refl⟩
     let O := structurePresheafDerived P R κ

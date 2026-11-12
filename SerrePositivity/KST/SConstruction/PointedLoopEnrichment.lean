@@ -20,12 +20,12 @@ open scoped Simplicial
 
 /-- Loop が点つき内部 Hom に誘導する全単体の作用。 -/
 def pointedLoopHom (X Y : PointedSimplicialSet.{u}) :
-    PointedObject.basedHom X Y ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
+    PointedObject.basedHom X Y ⟶ PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) :=
   curry (MonoidalClosed.comp PointedSimplicialSet.circle.{u} X Y)
 
 /-- Loop の写像空間の作用を評価すると元の内部 Hom の合成になる。 -/
 lemma pointedLoopHom_evaluation (X Y : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X ◁ pointedLoopHom X Y ≫ (ihom.ev (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X)).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) =
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X ◁ pointedLoopHom X Y ≫ (ihom.ev (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X)).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) =
       MonoidalClosed.comp PointedSimplicialSet.circle.{u} X Y :=
   uncurry_curry (MonoidalClosed.comp PointedSimplicialSet.circle.{u} X Y)
 
@@ -40,7 +40,7 @@ lemma pointedLoopHom_curry' {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
 
 /-- Loop の全写像パラメータへの作用は豊穣単位を保つ。 -/
 lemma pointedLoopHom_id (X : PointedSimplicialSet.{u}) :
-    MonoidalClosed.id X ≫ pointedLoopHom X X = MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) := by
+    MonoidalClosed.id X ≫ pointedLoopHom X X = MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) := by
   change MonoidalClosed.id X ≫ pointedLoopHom X X =
     MonoidalClosed.id ((ihom PointedSimplicialSet.circle.{u}).obj X)
   have h := pointedLoopHom_curry' (𝟙 X)
@@ -53,7 +53,7 @@ lemma pointedLoopHom_id (X : PointedSimplicialSet.{u}) :
 lemma pointedLoopHom_comp (X Y Z : PointedSimplicialSet.{u}) :
     MonoidalClosed.comp X Y Z ≫ pointedLoopHom X Z =
       (pointedLoopHom X Y ⊗ₘ pointedLoopHom Y Z) ≫
-        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) := by
+        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) := by
   change MonoidalClosed.comp X Y Z ≫ curry
       (MonoidalClosed.comp PointedSimplicialSet.circle.{u} X Z) =
     (curry (MonoidalClosed.comp PointedSimplicialSet.circle.{u} X Y) ⊗ₘ
@@ -78,7 +78,7 @@ lemma pointedLoopHom_comp (X Y Z : PointedSimplicialSet.{u}) :
 /-- Loop の写像空間の作用は、頂点で元の通常の loop 射を回収する。 -/
 lemma pointedLoopHom_vertex {X Y : PointedSimplicialSet.{u}} (f : X ⟶ Y) :
     (pointedLoopHom X Y).right.app _ (pointedHomVertexEquiv X Y f) =
-      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)
+      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)
         ((ihom PointedSimplicialSet.circle.{u}).map f) := by
   dsimp only [pointedHomVertexEquiv, Equiv.trans_apply, curryHomEquiv']
   change (pointedLoopHom X Y).right.app _
@@ -93,27 +93,27 @@ local instance pointedLoopUnderlying_simplicialCategory :
 lemma pointedLoopHom_simplicial_comp (X Y Z : PointedSimplicialSet.{u}) :
     eComp SSet X Y Z ≫ (pointedLoopHom X Z).right =
       ((pointedLoopHom X Y).right ⊗ₘ (pointedLoopHom Y Z).right) ≫
-        eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z) := by
+        eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z) := by
   change PointedSimplicialSet.productToSmash _ _ ≫
       (MonoidalClosed.comp X Y Z).right ≫ (pointedLoopHom X Z).right =
     ((pointedLoopHom X Y).right ⊗ₘ (pointedLoopHom Y Z).right) ≫
       PointedSimplicialSet.productToSmash _ _ ≫
-        (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Z)).right
+        (MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Z)).right
   rw [← Under.comp_right, pointedLoopHom_comp, Under.comp_right, ← Category.assoc,
     ← PointedSimplicialSet.productToSmash_naturality, Category.assoc]
 
 /-- Loop は通常の単体集合で豊穣化した単位を保つ。 -/
 lemma pointedLoopHom_simplicial_id (X : PointedSimplicialSet.{u}) :
-    eId SSet X ≫ (pointedLoopHom X X).right = eId SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X) := by
+    eId SSet X ≫ (pointedLoopHom X X).right = eId SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X) := by
   change (PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id X).right) ≫
       (pointedLoopHom X X).right =
-    PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace X)).right
+    PointedSimplicialSet.forgetUnit ≫ (MonoidalClosed.id (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace X)).right
   rw [Category.assoc, ← Under.comp_right, pointedLoopHom_id]
 
 /-- 元の loop 対象と全写像空間の作用を持つ単体的豊穣関手。 -/
 def pointedLoopEnrichedFunctor :
     EnrichedFunctor SSet.{u} PointedSimplicialSet.{u} PointedSimplicialSet.{u} where
-  obj := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace
+  obj := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace
   map X Y := (pointedLoopHom X Y).right
   map_id := pointedLoopHom_simplicial_id
   map_comp := pointedLoopHom_simplicial_comp

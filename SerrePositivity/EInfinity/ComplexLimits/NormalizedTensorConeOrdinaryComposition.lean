@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeComponents
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexPostcomposeGraded
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 
 /-!
 概要：実 cone の通常辺と実 cochain の合成を、元の frame 射の後合成に同定する。
@@ -16,25 +16,25 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_hom_ordinary_closed {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hab : a ≤ b) :
     HEq ((normalizedTensorConeData A X Y c).hom I a b 0 hI ha hb hk)
       (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
         ((normalizedTensorElementDiagram A X Y).map
           (c.map (homOfLE ((coneTailOrderHom n).monotone hab)))))).val := by
   exact (normalizedTensorConeData_hom_ordinary A X Y c I a b 0 hI ha hb hk ha0).trans
-    (heq_of_eq (closedNerveHom_zero _))
+    (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero _))
 
 lemma normalizedTensorConeData_ordinary_compose {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha0 : a ≠ 0) (hab : a ≤ b)
     (R : Complex A) (p : ℤ)
     (v : GradedHom A R ((normalizedTensorConeData A X Y c).obj a) p)
@@ -50,7 +50,7 @@ lemma normalizedTensorConeData_ordinary_compose {n : ℕ}
   have hy := normalizedTensorConeObj_ne_zero A X Y c a ha0
   have hz := normalizedTensorConeObj_ne_zero A X Y c b hb0
   have hg := normalizedTensorConeData_hom_ordinary_closed A X Y c I a b hI ha hb hk ha0 hab
-  have he := gradedHom_compose_heq (A := A) rfl hy hz rfl rfl rfl _ _ _ _ hg hv
+  have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq (A := A) rfl hy hz rfl rfl rfl _ _ _ _ hg hv
     (add_zero p) (add_zero p)
   exact he.trans (heq_of_eq (complexPostcompose_graded A R _ p w))
 

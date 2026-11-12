@@ -127,11 +127,11 @@ theorem fibrationReplacement_fac {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
 規約：零次数を含む。
 使われ方：BF 1978 §2、Goerss–Jardine I §7。整数次数群の置換不変性。 -/
 theorem fibrationReplacementUnit_levelwise {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((fibrationReplacementUnit f).app n).right := by
-  have hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((fibrationReplacementComparison f).app n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((fibrationReplacementUnit f).app n).right := by
+  have hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((fibrationReplacementComparison f).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
       (KanSequence.replacementStage (fibrationPath f) n).projection_rlp
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((fibrationReplacementComparison f).app n).right) _ hq
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((fibrationReplacementComparison f).app n).right) _ hq
   rw [show ((fibrationReplacementUnit f).app n).right ≫
       ((fibrationReplacementComparison f).app n).right =
         ((KanSequence.mappingPathComparison (sequenceHom f)).app n).right from

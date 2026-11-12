@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeKanObjects
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanInvertible
 
 /-!
 概要：元の native 比較の coherent な辺を、元の余極限頂点からの可逆頂点円柱にする。

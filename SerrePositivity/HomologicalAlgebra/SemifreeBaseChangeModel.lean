@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomologicalAlgebra.UnboundedSemifreeModel
 public import SerrePositivity.HomologicalAlgebra.RestrictedBaseChangeComplex
-public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
 public import Mathlib.Algebra.Homology.DerivedCategory.KProjective
 
 /-!
@@ -35,10 +35,10 @@ variable {R S : Type u} [CommRing R] [CommRing S]
 使われ方：実際の導来テンソルの模型の比較。 -/
 theorem semifreeBaseChange_map_quasiIso (f : R →+* S)
     {K L : CochainComplex (ModuleCat.{u} R) ℤ} (q : K ⟶ L) [QuasiIso q]
-    (hK : complexSemifree R K) (hL : complexSemifree R L) :
+    (hK : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R K) (hL : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree R L) :
     QuasiIso (((ModuleCat.extendScalars f).mapHomologicalComplex (.up ℤ)).map q) := by
-  letI := complexSemifree_isKProjective R hK
-  letI := complexSemifree_isKProjective R hL
+  letI := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective R hK
+  letI := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective R hL
   have hh := (CochainComplex.IsKProjective.quasiIso_iff q).mp inferInstance
   exact homotopyEquivalences_le_quasiIso _ _ _
     ((ModuleCat.extendScalars f).homotopyEquivalences_mapHomologicalComplex_map q hh)

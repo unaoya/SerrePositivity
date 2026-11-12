@@ -27,11 +27,11 @@ variable (A : Type u) [CommRing A]
 def cAlgLocalizationVertexIsoOfWeak
     {X Y : (cofibrantAlgebraRelativeCategory A).category} (f : X ⟶ Y)
     (hf : (cofibrantAlgebraRelativeCategory A).weakEquivalences f) :
-    VertexIso (cAlgVertexEquiv A X) (cAlgVertexEquiv A Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertexEquiv A X) (cAlgVertexEquiv A Y) :=
   localizationNerveVertexIsoOfWeak (cofibrantAlgebraRelativeCategory A) f hf
 
 def cAlgVertexOfCofibrantIso (X : (cofibrantAlgebraRelativeCategory A).category) :
-    VertexIso (cAlgVertex A ((cofibrantAlgebraDKInclusion A).obj X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A ((cofibrantAlgebraDKInclusion A).obj X))
       (cAlgVertexEquiv A X) :=
   cAlgLocalizationVertexIsoOfWeak A ((cofibrantDKComparison A).app X)
     (cofibrantDKComparison_weak A X)
@@ -40,7 +40,7 @@ def cAlgVertexRepresentative (x : (CAlg_R A) _⦋0⦌) : (operad A).Algebra :=
   (cofibrantAlgebraDKInclusion A).obj ((cAlgVertexEquiv A).symm x)
 
 def cAlgVertexRepresentativeIso (x : (CAlg_R A) _⦋0⦌) :
-    VertexIso (cAlgVertex A (cAlgVertexRepresentative A x)) x :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A (cAlgVertexRepresentative A x)) x :=
   cAlgVertexOfCofibrantIso A ((cAlgVertexEquiv A).symm x) ≪≫
     eqToIso (congrArg HomotopyCategory.mk ((cAlgVertexEquiv A).apply_symm_apply x))
 

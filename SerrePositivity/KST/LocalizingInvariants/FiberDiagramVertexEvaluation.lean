@@ -25,25 +25,25 @@ def diagramInclusion : FiberDiagram.{u} ⥤
   map f := f
 
 lemma vertexEvaluationObj_eq (D : FiberDiagram.{u}) (i j : Fin 2) :
-    (hoFunctor.map (evaluateFunctorAt (Y := Sp.{u})
+    (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Sp.{u})
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor.obj
         (diagramVertex D) = (vertex i j).obj D := by
   apply Truncated.HomotopyCategory.ext
-  exact evaluateFunctorAt_functorVertex
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex
     (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j) D.triangle.square
 
 def vertexEvaluationIso (i j : Fin 2) :
-    diagramInclusion.{u} ⋙ (hoFunctor.map (evaluateFunctorAt
+    diagramInclusion.{u} ⋙ (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (Y := Sp.{u}) (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor ≅
         vertex i j :=
   NatIso.ofComponents (fun D => eqToIso (vertexEvaluationObj_eq D i j)) (by
     intro D E f
-    change (hoFunctor.map (evaluateFunctorAt
+    change (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (Y := Sp.{u}) (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor.map f ≫
       _ = _ ≫ (vertex i j).map f
     rw [vertex_map_evaluate]
-    simp only [functorHomEvaluate, eqToIso.hom, eqToHom_refl]
-    let m := (hoFunctor.map (evaluateFunctorAt
+    simp only [_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate, eqToIso.hom, eqToHom_refl]
+    let m := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (Y := Sp.{u}) (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor.map f
     change m ≫ 𝟙 _ = 𝟙 _ ≫ 𝟙 _ ≫ m ≫ 𝟙 _
     simp only [Category.id_comp, Category.comp_id])

@@ -17,7 +17,7 @@ open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories 
   Spectra
 open scoped Simplicial
 local instance : SimplicialCategory OmegaSpectrum.{u + 1} := OmegaSpectrum.simplicialCategory
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 
 /-- 概要：元四対象の完備性・実商・共通長方形の三認証を保持する接続データ。
 方針：四完備性は D 正本由来、実商は同じ resolved 商の完備化、長方形は明示入力。
@@ -43,20 +43,20 @@ def dgOdotTailCatPerfConnection (v : DGOdotMilnorActualRectangleInput R d h) :
 規約：いずれの認証の存在も主張しない。使われ方：③ の認証を段階的に型照合する。 -/
 def dgOdotTailCatPerfConnectionOfCertificates
     (diagram : (Δ[2] ⊗ Δ[1] : SSet.{u + 2}) ⟶ dgKInputInfinity.{u, u + 1} R)
-    (rightBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
-      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R))
-    (rightComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
-      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary)
-    (outerBoundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R))
-    (outerComparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
-      (_root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary)
-    (boundary : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R)
+    (rightBoundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R))
+    (rightComparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualRightDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 0 ≫ diagram ≫ dgKInputPerfectNu R) rightBoundary)
+    (outerBoundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R))
+    (outerComparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareDiagramIso (dgOdotMilnorActualOuterDiagram R d h).square
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.verdierRectangleFace 1 ≫ diagram ≫ dgKInputPerfectNu R) outerBoundary)
+    (boundary : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleBoundaryIso (diagram ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram)
-    (comparison : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
+    (comparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierRectangleDiagramIso (diagram ≫ dgKInputPerfectNu R)
       (dgOdotMilnorCompletedLaxQuotient R d h).rectangleDiagram boundary)
-    (kernel_vertex : squareVertex ((β_ _ _).hom ≫ pastingSquare diagram 2) 0 0 =
-      coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :
+    (kernel_vertex : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex ((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare diagram 2) 0 0 =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)) :
     DGOdotTailCatPerfConnection R d h :=
   dgOdotTailCatPerfConnection R d h
     ⟨diagram, rightBoundary, rightComparison, outerBoundary, outerComparison,
@@ -70,7 +70,7 @@ variable {R d h} (c : DGOdotTailCatPerfConnection R d h)
 使われ方：e② の実商側結論。 -/
 theorem isFiber {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsFiberSequence (hE.fiberTriangle c.quotient.sequence.presentation) :=
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsFiberSequence (hE.fiberTriangle c.quotient.sequence.presentation) :=
   hE.fiberTriangle_isFiber _
 
 /-- 概要：共通 S 長方形の比較面を同じ不変量が引き戻しへ送る。
@@ -78,7 +78,7 @@ theorem isFiber {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 規約：個別恒等面の認証で代用しない。使われ方：e② の実 S 面の結論。 -/
 theorem actual_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare c.actual.diagram 2) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare c.actual.diagram 2) ≫
       dgKInputPerfectNu R ≫ E) := c.actual.comparison_isPullback hE
 
 /-- 概要：上下指定二単体を保つ全比較で同じ実商の LT 比較面へ接続する。
@@ -86,7 +86,7 @@ theorem actual_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 規約：三認証を全て保持。使われ方：e② の Cat^perf 長方形側結論。 -/
 theorem completed_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsPullbackSquare (((β_ _ _).hom ≫ pastingSquare c.quotient.rectangleDiagram 2) ≫ E) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare c.quotient.rectangleDiagram 2) ≫ E) := by
   rw [c.quotient_eq]
   exact c.actual.completedComparison_isPullback hE
 
@@ -95,16 +95,16 @@ theorem completed_isPullback {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
 規約：実面の三認証とは別の同値先を選ばない。使われ方：e② の LT 極限結論。 -/
 theorem landTammeCone_isLimit {E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}}
     (hE : IsPerfectLocalizingInvariant E) :
-    IsLimitCone (c.quotient.valuePullbackCone hE) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (c.quotient.valuePullbackCone hE) :=
   c.quotient.valuePullbackCone_isLimit hE
 
 /-- 概要：元対角始域の値を、実増大屋根と全長方形の同じ始域成分で回収する。
 方針：三認証入力の既存始域同型を実商へ照合する。
 規約：元始域を別頂点へ置き換えない。使われ方：LT の元始域値の保持。 -/
 def sourceValueIso (E : perfectStableInfinity.{u + 1} ⟶ Sp.{u + 1}) :
-    VertexIso ((dgKInputPerfectNu R ≫ E).app _
-      (coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
-      (squareVertex (((β_ _ _).hom ≫ pastingSquare c.quotient.rectangleDiagram 2) ≫ E) 0 0) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((dgKInputPerfectNu R ≫ E).app _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotDiagonalSourceInput R d)))
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (((β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.pastingSquare c.quotient.rectangleDiagram 2) ≫ E) 0 0) := by
   rw [c.quotient_eq]
   exact c.actual.sourceValueIso E
 end DGOdotTailCatPerfConnection

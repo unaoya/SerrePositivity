@@ -23,15 +23,15 @@ variable {R : Type u} [CommRing R] {K₁ L₁ K₂ L₂ : Complex R}
 
 lemma cochainKernelToCocone_naturality :
     kernel.map d₁ d₂ a b h ≫ cochainKernelToCocone d₂ =
-      cochainKernelToCocone d₁ ≫ complexMappingCoconeMap d₁ d₂ a b h := by
-  apply dgMappingCocone_hom_ext d₂
+      cochainKernelToCocone d₁ ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap d₁ d₂ a b h := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgMappingCocone_hom_ext d₂
   · rw [Category.assoc, cochainKernelToCocone_fst, kernel.lift_ι,
-      Category.assoc, complexMappingCoconeMap_fst, ← Category.assoc,
+      Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst, ← Category.assoc,
       cochainKernelToCocone_fst]
   · rw [Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
       cochainKernelToCocone_snd, Cochain.comp_zero,
       Cochain.ofHom_comp, Cochain.comp_assoc_of_first_is_zero_cochain,
-      complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain,
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_snd, ← Cochain.comp_assoc_of_first_is_zero_cochain,
       cochainKernelToCocone_snd, Cochain.zero_comp]
 
 lemma cochainKernelMap_quasiIso [Epi d₁] [Epi d₂]

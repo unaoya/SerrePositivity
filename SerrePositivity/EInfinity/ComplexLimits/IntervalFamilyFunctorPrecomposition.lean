@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
-public import SerrePositivity.InfinityCategories.F1B.Adjunction.ConstantFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConstantFunctor
 
 /-!
 # 全区間族の前合成方程式の同じ関手による像
@@ -24,13 +24,13 @@ open scoped Simplicial
 
 lemma intervalFamilyFunctorMap_precompose {K C D : SSet.{u}} (F : C ⟶ D)
     {x' x y : C _⦋0⦌} (γ : (HomotopyCategory.mk x' : hoFunctor.obj C) ⟶ HomotopyCategory.mk x)
-    (f : K ⟶ intervalMappingSpace x' y) (g : K ⟶ intervalMappingSpace x y)
-    (h : intervalFamilyHom f = constantFunctorHomMap K γ ≫ intervalFamilyHom g) :
-    intervalFamilyHom (f ≫ intervalFunctorMap F x' y) =
-    constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map γ) ≫
-      intervalFamilyHom (g ≫ intervalFunctorMap F x y) := by
-  rw [intervalFunctorMap_familyHom, h, CategoryTheory.Functor.map_comp,
-    intervalFunctorMap_familyHom, ← constantFunctorHomMap_postcomp K F γ]
+    (f : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x' y) (g : K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x y)
+    (h : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom f = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K γ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom g) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F x' y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K ((hoFunctor.map F).toFunctor.map γ) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap F x y) := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFunctorMap_familyHom, h, CategoryTheory.Functor.map_comp,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalFunctorMap_familyHom, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap_postcomp K F γ]
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
 
 end SerrePositivity.EInfinity.ComplexLimits

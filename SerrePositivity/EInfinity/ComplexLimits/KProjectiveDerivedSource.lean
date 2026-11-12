@@ -28,7 +28,7 @@ def kProjectiveComplexInclusion : DGFunctor A (KProjectiveComplex A) (Complex A)
   dgFullSubcategoryInclusion A (Complex A) (complexKProjective A)
 
 def kProjectiveDerivedSource :
-    dgNerve A (KProjectiveComplex A) ⟶ derivedInfinityCategory A :=
-  dgNerve.map (kProjectiveComplexInclusion A) ≫ complexSemifreeResolutionInfinity A
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (KProjectiveComplex A) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (kProjectiveComplexInclusion A) ≫ complexSemifreeResolutionInfinity A
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -25,16 +25,16 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 前の指定段族を suspension し、元の後続適合円柱と合成する全円柱。 -/
 def monicKPrismCompositeCompatibilityAt (n : ℕ)
-    (v : nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) ⟶ (PointedObject.basedHom
+    (v : nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) ⟶ (PointedObject.basedHom
       ((kOmegaSpectrum (F.obj x)).level n).space ((kKanSequence (F.obj y)).level n).space).right) :=
-  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
-  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)
   lift (fst (P ⊗ Q) Δ[1] ≫ fst P Q ≫ v ≫
       (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
         ((kKanSequence (F.obj y)).level n).space).right)
     (monicKPrismCompositeCompatibility F f g n).h ≫
-      eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj y)).level n).space)
+      eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj y)).level n).space)
         ((kKanSequence (F.obj z)).level (n + 1)).space
 
 /-- 元の後続適合円柱を前の元の段から補正済み段へ運ぶ、実二次元補正有限列。 -/
@@ -44,13 +44,13 @@ def monicKPrismCompositeCompatibilityTransportChain (n : ℕ) :
       (monicKPrismCompositeCompatibilityAt F f g n (monicKPrismTracedStage F f n).val) := by
   let c := familyHomotopyChainMap
     (familyHomotopyChainPrecomp
-      (fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)))
+      (fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)))
       (monicKPrismTracedStage F f n).chain)
     (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
       ((kKanSequence (F.obj y)).level n).space).right
   let d := familyInterchangeCylinderChain c (monicKPrismCompositeCompatibility F f g n).h
-    (eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj y)).level n).space)
+    (eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj y)).level n).space)
       ((kKanSequence (F.obj z)).level (n + 1)).space)
   exact familyHomotopyChainSourceTransport
     (familyHomotopyChainTargetTransport d (by
@@ -61,8 +61,8 @@ def monicKPrismCompositeCompatibilityTransportChain (n : ℕ) :
 lemma monicKPrismCompositeSecondCompatibility_at_stage (n : ℕ) :
     monicKPrismCompositeSecondCompatibility F f g n =
       monicKPrismCompositeCompatibilityAt F f g n (monicKPrismTracedStage F f n).val := by
-  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
-  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)
   let v := fst (P ⊗ Q) (Δ[1] : SSet.{u}) ≫ fst P Q ≫ monicKPrismTracedBFFamily F f ≫
     OmegaSpectrum.evaluation (kOmegaSpectrum (F.obj x)) (kOmegaSpectrum (F.obj y)) n
   have hp : v ≫ (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
@@ -77,7 +77,7 @@ lemma monicKPrismCompositeSecondCompatibility_at_stage (n : ℕ) :
   change lift (v ≫ (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
       ((kOmegaSpectrum (F.obj y)).level n).space).right)
       ((monicKPrismCompositeCompatibility F f g n).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁
           (monicKKanSequenceProjection (F.obj y)).app n)
           ((kKanSequence (F.obj z)).level (n + 1)).space) ≫ _ = _
   rw [pointed_suspension_middle_lift]
@@ -101,13 +101,13 @@ lemma monicKPrismCompositeSecondCompatibilityTransport_trace (n : ℕ) :
     familyHomotopyChainTrace (monicKPrismCompositeSecondCompatibilityTransport F f g n) =
       (familyHomotopyChainTrace (monicKPrismTracedStage F f n).chain).map (fun h =>
         familyInterchangeSquare (monicKPrismCompositeCompatibility F f g n).h
-          ((fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ▷
+          ((fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ▷
             (Δ[1] : SSet.{u})) ≫ h ≫
             (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
               ((kKanSequence (F.obj y)).level n).space).right)
           ((β_ _ _).hom ≫
-            eComp SSet (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
-              (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kKanSequence (F.obj y)).level n).space)
+            eComp SSet (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+              (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kKanSequence (F.obj y)).level n).space)
               ((kKanSequence (F.obj z)).level (n + 1)).space)) := by
   simp only [monicKPrismCompositeSecondCompatibilityTransport,
     monicKPrismCompositeCompatibilityTransportChain, familyHomotopyChainTargetTransport_trace,
@@ -117,15 +117,15 @@ lemma monicKPrismCompositeSecondCompatibilityTransport_trace (n : ℕ) :
 
 /-- 前半補正の射影に現れる元の前の適合円柱の実後合成。 -/
 def monicKPrismCompositeFirstCompatibility (n : ℕ) :=
-  (fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ▷
+  (fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ▷
     (Δ[1] : SSet.{u})) ≫ (monicKPrismRawSequenceCompatibility n F f).h ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
         (kKanSequenceLevelMap (F.map g) (n + 1))).right
 
 /-- 合成補正全体の射影を、元の適合区間・交換面・後続適合区間・前段の後半へ分解する。 -/
 lemma monicKPrismTracedCompositeCorrectionChain_projection_trace (n : ℕ) :
     (familyHomotopyChainTrace (monicKPrismTracedCompositeCorrectionChain F f g (n + 1))).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space) =
       monicKPrismCompositeFirstCompatibility F f g n ::
         ((monicKPrismCompatibilityInterchangeSquares F f g n).map (SSet.ι₀ ≫ ·) ++

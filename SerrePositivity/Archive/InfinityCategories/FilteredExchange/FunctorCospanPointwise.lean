@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorCospanCone
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.ConeValEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeValEquality
 
 /-!
 概要：元の全関手 cospan 錐の評価は、同じ二三角形の native な cospan 錐そのもの。

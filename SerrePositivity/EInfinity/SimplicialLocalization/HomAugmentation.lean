@@ -26,7 +26,7 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 /-- 概要：全解像の augmentation は元の対象の局所化像を回収する（Dwyer–Kan）。
 方針：同じ augmentation の対象同値の順逆則を使う。
@@ -50,7 +50,7 @@ abbrev localizationHomConstant (X Y : C.category) : SSet.{u} :=
 使われ方：π₀ と普通の局所化 Hom の比較。 -/
 def localizationHomAugmentation (X Y : C.category) :
     localizationHom C X Y ⟶ localizationHomConstant C X Y := by
-  let η := FixedObjectHom.coefficientNatTrans (localizedFreeResolution C)
+  let η := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (localizedFreeResolution C)
     ((Functor.const SimplexCategoryᵒᵖ).obj (Cat.of C.weakEquivalences.Localization))
     (localizedFreeResolutionObject C) (fun _ X => C.weakEquivalences.Q.obj X)
     (fun θ X => localizedFreeResolutionObject_naturality C θ X) (fun _ _ => rfl)
@@ -60,7 +60,7 @@ def localizationHomAugmentation (X Y : C.category) :
   intro n m θ
   apply ConcreteCategory.hom_ext
   intro f
-  simp [FixedObjectHom.functor, FixedObjectHom.map]
+  simp [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map]
 
 /-- 概要：固定 Hom の augmentation は元の恒等射を保つ（Dwyer–Kan）。
 方針：元の成分関手の恒等則と対象移送の相殺を使う。
@@ -69,8 +69,8 @@ def localizationHomAugmentation (X Y : C.category) :
 lemma localizationHomAugmentation_identity (X : C.category) (n : SimplexCategoryᵒᵖ) :
     (localizationHomAugmentation C X X).app n (𝟙 (localizedFreeResolutionObject C n X)) =
       𝟙 (C.weakEquivalences.Q.obj X) := by
-  simp [localizationHomAugmentation, FixedObjectHom.coefficientNatTrans,
-    FixedObjectHom.coefficientMap]
+  simp [localizationHomAugmentation, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap]
 
 /-- 概要：固定 Hom の augmentation は元の射の合成を保つ（Dwyer–Kan）。
 方針：元の成分関手の合成則と中間対象の移送の相殺を使う。
@@ -82,8 +82,8 @@ lemma localizationHomAugmentation_composition {X Y Z : C.category}
     (localizationHomAugmentation C X Z).app n (f ≫ g) =
       (localizationHomAugmentation C X Y).app n f ≫
         (localizationHomAugmentation C Y Z).app n g := by
-  simp [localizationHomAugmentation, FixedObjectHom.coefficientNatTrans,
-    FixedObjectHom.coefficientMap, Category.assoc]
+  simp [localizationHomAugmentation, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap, Category.assoc]
 
 /-- 概要：同じ augmentation の比較は単体的 Hom の辺の両端で等しい（Dwyer–Kan）。
 方針：辺を定値の比較先へ送り、両端の顔の等式を合成する。

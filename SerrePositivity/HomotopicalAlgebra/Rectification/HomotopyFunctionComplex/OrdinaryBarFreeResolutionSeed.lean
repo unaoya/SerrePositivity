@@ -130,7 +130,7 @@ lemma one_face1 : one C hcof hfib P ⋙
   rfl
 
 lemma one_degeneracy : degeneracyFunctor (D C) 0 0 ⋙ one C hcof hfib P =
-    zero C hcof hfib P ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ sigma 0 0) := by
+    zero C hcof hfib P ⋙ OrdinaryBarChoiceCategory.reindex hcof hfib (P ◁ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.sigma 0 0) := by
   rw [one, ← CategoryTheory.Functor.assoc, upper_degeneracy, CategoryTheory.Functor.assoc,
     OrdinaryBarFreeResolutionComparison.comparison_degeneracy]
   rw [zero, CategoryTheory.Functor.assoc, ← OrdinaryBarChoiceCategory.reindex_comp,

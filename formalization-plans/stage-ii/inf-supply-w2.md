@@ -1,0 +1,59 @@
+# Codex 指示書 IS-W2：∞ 供給 b — Δ・Δᵒᵖ の橋（G10 と幾何学的実現）
+
+作成：2026-11-12（段階 II の調整役）。宛先：③-b ∞ 供給 b の Codex（⑤b のチャットを転用。BS-D69 停止点 3 の取り込みと KL-W1 の改名への追従の後に始める）。検収：調整役。決定：ユーザー（11-12、`stage-ii-second-half.md`）。正本：[段階 II 後半](stage-ii-second-half.md) の 3b-0〜3b-4、[入口表](../bhatt-scholze/foundation-entry-points.md) §4.1（G10 の依頼の型）、[IS-W1](inf-supply-w1.md) の追記（11-10、G10 の範囲）。
+
+## 0. 目標
+
+厳密な（1 圏の）単体的・余単体的図式のホモトピー余極限・極限（幾何学的実現、Tot）と、準圏の native な余極限・極限の錐を、**全関手の形で、射と指定錐まで**結ぶ。これが段階 II 後半の最長の経路の入口（A1 の HT 比較、A0 の Čech–Alexander、A2、⑤a の sifted・Tot がすべてこれを待つ）。
+
+| 段 | 内容 | 使う側 |
+| --- | --- | --- |
+| 3b-1 | 厳密な Δᵒᵖ 図式（値は D(A) ＝ `derivedInfinityCategory A` の模型 Semifree 複体）の幾何学的実現と、D(A) の native な余極限の錐の橋。頂点・脚・射への自然性まで | ⑤a の sifted（忘却が幾何学的実現を保つ）、A2 |
+| 3b-2 | **G10**：余単体的 A 加群（複体）の D(A) での Δ 上の極限は Tot（交代余面複体の積全複体）で計算される。入口表 §4.1 の `cosimplicialModule_limitCone` を、**X に関手的で、X の射と指定錐まで**比べる形にそろえる。各次数のホモロジーの同型は、錐の脚と標準射が両立する形 | A0（C^• が Δ を計算）、A1、A6 Prop 8.10、⑤a の Tot |
+| 3b-3 | coherent な図式（`Δᵒᵖ`・`Δ` の nerve から D(A) への任意の射）を厳密な図式へ移す比較と、錐の輸送（両方向） | ⑤a の sifted（任意の sifted 形状へ延ばす前段）、A2 |
+| 3b-4 | 値の一般化：(i) CAlg_A（Barratt–Eccles 模型の局所化。忘却 U との両立：U が実現・Tot を保つことを、⑤a が使える形で）、(ii) 点つき Kan 複体（L9 の `CosimplicialTotalization` の Tot が ∞ 極限であること） | ⑤a の `ofCosimplicial_cone`・sifted、A1、K の L9 |
+
+**範囲の外**：任意の sifted 形状への延長（⑤a の 5a-4 で BE 固有部分と一緒に）、非有界な余単体的 cdga の全比較（IS-W1 追記 11-10）、G8・G14・G9（③-a）。
+
+## 1. 段と止めて報告する点
+
+| 段 | 内容 | 止めて報告 |
+| --- | --- | --- |
+| 段 0 | 既存の道具の洗い出しと型案：`HomotopyLimits/BousfieldKan*`（一般の小圏の Kan 値図式の coend が ∞ 余極限、coherent 版）、`HomotopicalAlgebra/Diagram/HomotopyColimit`（cofibrant 置換と比較）、`KST/Spectra/CosimplicialTotalization`（厳密な Tot と Reedy）、`EInfinity/BarrattEccles/DiagramModel`（projective 模型、hocolim の比較）、`F2/Presentable/SiftedColimitPreservation`（`PreservesSmallSiftedColimits` の型）、D(A) の dg nerve と Semifree 模型。3b-1〜3b-4 の各主張の型案（使う側の drafts の型に合わせる：`cosimplicialModule_limitCone`、`totEInfinity_isLimitCone`、`PreservesSmallSiftedColimits`）、証明の筋、不足、規模。**[ModelCategory SSet] を要求する既存の版は使わない**（使えそうな版が全部それなら報告） | **停止点 0**：調整役が確かめる |
+| 段 1 | 3b-1 | 停止点 1 |
+| 段 2 | 3b-2（G10、D(A) 値） | 停止点 2：**これだけで取り込んでよい**（A0・A1・A6 が待つ） |
+| 段 3 | 3b-3 | 停止点 3 |
+| 段 4 | 3b-4 | 停止点 4：IS-W2 の区切り |
+
+- 停止点 0 は承認を待つ。段 1〜4 は「対象のビルドと監査が通り、sorry・公理 0、既存の宣言を変えていない」なら、報告してそのまま次へ進んでよい。取り込みは調整役が停止点ごとに行う。
+- 使う側の drafts の型を変える必要があれば止める（drafts が原典や計画より強い主張を抱えていると分かったときも止めて報告。D76・D77 と同じ扱い）。
+- 規模の上限は段 0 の見込みの 1.3 倍。超えそうなときは報告して止める。止まる前に、それまでの検証済みの分をコミットする。
+
+## 2. 規則
+
+1. 新しい数学は**新規ファイルだけ**。既存の宣言の本文・型・名前は変えない。
+2. sorry・公理・新しい引用を残さない。`[ModelCategory SSet]` のような満たせない仮定を使わない。
+3. 置き場所は KL-W1 の後の配置：一般の ∞ 圏の主張は `InfinityCategories/Kerodon/LimitsAndColimits/` の該当する節（README の節番号・Tag の表に従い、docstring に Kerodon の番号を書く）、HTT・HA 由来は `InfinityCategories/HTT/`・`HA/`、D(A) 固有は `InfinityCategories/HA/DerivedCategoryModels/` か `Project/DerivedCategories/`、CAlg 固有は `EInfinity/`。迷ったら報告に印を付けて `Project/` に置く（調整役が決める）。
+4. 入口と監査への登録は調整役。docstring は日本語の 概要／方針／規約／使われ方 と文献の番号（HTT 4.2.4.1・A.3.3、HA 1.2.4、Kerodon の Tag）。
+5. 主張は**全関手版**（対象ごとの同型で済ませない）。native な錐は指定された頂点・脚を持つ形で返し、「存在する」だけにしない。
+6. ビルドの鍵は `with_build_lock.sh --wait 3600`、整理券は一枚、鍵はビルドの間だけ。main の作業木では編集もビルドもしない。枝は main から `math/inf-supply-b`（worktree は今の `../SerrePositivity-bs-d68` のままでよい）。報告は `stage-ii/report-inf-supply-w2.md`。
+
+## 3. 追記（2026-11-12 午後、調整役）：停止点 0 の承認
+
+段 0 の報告（`report-inf-supply-w2.md`、fb3ddf3e7）を承認する。段 1 に進んでよい。
+
+1. **型の形**：全関手と、同じ頂点・脚・高次単体を持つ指定 join 錐の族（報告 §2）でよい。通常の局所化の自然同型、対象ごとの `HasLimit`/`HasColimit`、通常の sifted colim の創出で代用しない、という方針もそのまま。
+2. **3b-3 の定式化**：strict な複体図式を objectwise 擬同型で ∞ 局所化したものと `Fun(I_J, DA)` の比較（HTT 4.2.4.4 の形）でよい。J は Δ・Δᵒᵖ に固定し、一般の小圏へ広げない。3b-2 を 3b-3 の唯一の証明として待たせない（報告 §7 のとおり）。
+3. **L9 の Tot**：Reedy 条件つきの raw `obj X` と、置換後の無条件版を別名で置く。既存の型は変えない。
+4. **置き場所**：`Project/DerivedCategories/DiagramComparison/` を仮の置き場所として認める。KL-W1 の後の一括レーン（`citation-attributes.md` §7 の 2）が `Project/DerivedCategories/` の分け方を決めるとき、この下のディレクトリはそのまま残すか一括で移す。一般の ∞ 圏の定理になった部分は Kerodon の節へ。旧 `F2/`・旧 `HomotopyLimits/` のパスで新規ファイルを作らない、でよい。
+5. **3b-4 の BE 固有の補助**：③-b が新規ファイルで補う分担でよい。⑤a の既存ファイルは触らない。重複が見えたら作業前に報告する。`forget_preservesSifted` を仮定して実現の保存を示す循環を作らない、という報告の約束も確認した。
+6. **規模と停止**：合計 8,400〜14,800 行は大きいが、段階 II 後半の最長の経路なので認める。停止の基準は**段ごと**に、報告 §7 の各段の上端の 1.3 倍（共通 1,300、3b-1 2,340、3b-2 4,160、3b-3 5,460、3b-4 5,980 行）。超えそうなときは報告して止める。各停止点で見込みと実測の差を報告する。
+7. **取り込み**：停止点 2（G10 の加群版、射と指定錐まで）は単独で取り込む。停止点 1 も、3b-1 が閉じていれば取り込む。
+
+## 4. 追記（2026-11-12 夕、調整役）：3b-1 の上限を 3,500 行に上げる
+
+段 1 の中間停止（bf80c840b、報告 §10：3b-1 の実測 409 行、残り 2,100〜3,100 行、合計 2,500〜3,500 行）を受けて。増えた理由は、既存の coherent bar の native 余錐（`nerve (Δᵒᵖ)` の射列で添字）と直和全複体（単体次数で添字）の比較が別に要ること、既存の二重複体の擬同型の補題が第一象限の版で、横次数 −n・縦次数が非有界の整数の全複体に使えないこと。どちらも避けられない具体的な不足で、後者（非有界の二重複体の道具）は 3b-2 の G10 の積全複体でも使う。
+
+- **判断**：3b-1 の停止の基準を **約 3,500 行**に上げる。超えそうなときは報告して止める。
+- 非有界の二重複体の比較（濾過または鎖ホモトピー）は、3b-2 と共用できる一般の形で `HomologicalAlgebra/` に置く（3b-1 の行数に数えてよい）。
+- 停止点 1 で、§10.3 の表の各行の見込みと実測の差を報告する。

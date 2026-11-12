@@ -26,12 +26,12 @@ lemma presentedPerfectDGSuspensionAssembly_action (r : ℕ) (C D : PerfDGInput.{
         (oneDirectionReducedRealization r
           (stableCategoryModel (presentedPerfectDGStableCategory A D)))).right ≫
       (PointedObject.basedHomMap
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (oneDirectionReducedRealization r
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (oneDirectionReducedRealization r
           (stableCategoryModel (presentedPerfectDGStableCategory A C))))
         (oneDirectionSuspensionAssembly r
           (stableCategoryModel (presentedPerfectDGStableCategory A D)))).right =
     presentedPerfectDGBoundaryReducedFamilyMap A (r + 1) C D ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (oneDirectionSuspensionAssembly r
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (oneDirectionSuspensionAssembly r
         (stableCategoryModel (presentedPerfectDGStableCategory A C)))
         (boundaryReducedRealization (r + 1)
           (stableCategoryModel (presentedPerfectDGStableCategory A D))) := by
@@ -46,13 +46,13 @@ lemma presentedPerfectDGSuspensionAssembly_action (r : ℕ) (C D : PerfDGInput.{
   let b := presentedPerfectDGBoundaryReducedFamilyMap A (r + 1) C D
   let s := presentedPerfectDGOneDirectionAction A (r + 1) C D
   change a ≫ (suspensionHom U V).right ≫
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U) σ').right = b ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre σ W
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U) σ').right = b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre σ W
   apply cofiberTensorFamily_hom_ext
     (P := C ⟶[SSet.{max (u + 1) v}] D) (boundary.{max (u + 1) v} 1).ι
     (oneDirectionFatBoundary (r + 1) X).ι W
   rw [← Category.assoc a (suspensionHom U V).right
-    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U) σ').right]
-  erw [Category.assoc, pointedFamily_post_evaluation (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U)
+    (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U) σ').right]
+  erw [Category.assoc, pointedFamily_post_evaluation (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U)
     (a ≫ (suspensionHom U V).right) σ', pointedFamily_pre_evaluation σ W b]
   ext n z
   have he := suspensionHom_family_app U V a n

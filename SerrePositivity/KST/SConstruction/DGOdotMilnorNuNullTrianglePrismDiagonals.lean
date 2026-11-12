@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "K" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 
@@ -22,8 +22,8 @@ local notation "B" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 方針：元対角面の厳密回収で同じ比較を制限する。
 規約：元実／絶対対角辺を保持。使われ方：元全比較の共有対角側面。 -/
 def dgOdotMilnorNuNullLowerDiagonalHomotopy : SSet.Homotopy
-    (squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
   h := (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 2})) ≫
     (dgOdotMilnorNuNullLowerTriangleHomotopy R d h).h
   h₀ := by
@@ -46,11 +46,11 @@ lemma dgOdotMilnorNuNullLowerDiagonalHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullLowerDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge := by
   have hs : (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u + 2}) ⟶ Δ[1]) ≫
       stdSimplex.δ (1 : Fin 3) = stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
     apply SSet.yonedaEquiv.injective
@@ -75,8 +75,8 @@ lemma dgOdotMilnorNuNullLowerDiagonalHomotopy_paths :
 方針：元対角面の厳密回収で同じ比較を制限する。
 規約：元実／絶対対角辺を保持。使われ方：元全比較の共有対角側面。 -/
 def dgOdotMilnorNuNullUpperDiagonalHomotopy : SSet.Homotopy
-    (squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
   h := (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 2})) ≫
     (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h
   h₀ := by
@@ -99,11 +99,11 @@ lemma dgOdotMilnorNuNullUpperDiagonalHomotopy_paths :
     (stdSimplex.δ (1 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (K : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge ∧
       (stdSimplex.δ (0 : Fin 2) ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullUpperDiagonalHomotopy R d h).h =
       snd Δ[0] Δ[1] ≫ SSet.yonedaEquiv.symm
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (𝟙 (B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}))).edge := by
   have hs : (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u + 2}) ⟶ Δ[1]) ≫
       stdSimplex.δ (1 : Fin 3) = stdSimplex.δ (1 : Fin 2) ≫ stdSimplex.δ (2 : Fin 3) := by
     apply SSet.yonedaEquiv.injective

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumRelativeCornerFamily
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingPreNaturality
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 
 /-!
 概要：元の全 Raw Hom の二変数 corner 写像とその全単射 RLP。
@@ -68,7 +68,7 @@ lemma relativeCorner_snd {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
 @[reassoc] lemma relativeCorner_fst_evaluation {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
     {E Z : KanSequence.{u}} (q : KanSequence.Hom E Z) (n : ℕ) :
     relativeCorner i q ≫ pullback.fst _ _ ≫ evaluation X E n =
-      evaluation R E n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app n) (E.level n).space := by
+      evaluation R E n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app n) (E.level n).space := by
   rw [← Category.assoc, relativeCorner_fst, pre_evaluation]
 
 /-- 概要：corner の標的側の射影の全段評価は元の段射への後合成。
@@ -131,7 +131,7 @@ lemma relativeCorner_trivialKanFibration {X R : OmegaSpectrum.{u}} (i : X ⟶ R)
     (hi : IsSequentialRelativeCofibration i) {E Z : KanSequence.{u}}
     (q : KanSequence.Hom E Z)
     (hq : ∀ n, (MorphismProperty.monomorphisms SSet.{u}).rlp (q.app n).right) :
-    TrivialKanFibration (relativeCorner i q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (relativeCorner i q) :=
   ⟨relativeCorner_rlp_monomorphisms i hi q hq⟩
 
 end SerrePositivity.KST.Spectra.RawSpectrumMapping

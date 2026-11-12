@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGComposeDegreeTransport
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedTerms
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedTerms
 
 /-! # 元の dg 合成と HA 切断合成の異種等号
 概要：元の次数・端点・頂点部分集合の等号を保ち、実合成の値を比較する。
@@ -29,13 +29,13 @@ lemma dgCompose_heq {x y z : D} {p q k p' q' k' : ℤ}
   rfl
 
 /-- 元の頂点集合・両端・次数と切断頂点が一致すれば、同じ HA 切断合成を回収する。 -/
-lemma simplexHACutComposite_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHACutComposite_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     {I J : Finset (Fin (n + 1))} {a b a' b' j j' : Fin (n + 1)} {k k' : ℤ}
-    {hI : 2 ≤ I.card} {ha : a = I.min' (DGNerve.Index.nonempty hI)}
-    {hb : b = I.max' (DGNerve.Index.nonempty hI)} {hk : k = 2 - (I.card : ℤ)}
+    {hI : 2 ≤ I.card} {ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)}
+    {hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)} {hk : k = 2 - (I.card : ℤ)}
     {hj : j ∈ I} {haj : a < j} {hjb : j < b}
-    {hJ : 2 ≤ J.card} {ha' : a' = J.min' (DGNerve.Index.nonempty hJ)}
-    {hb' : b' = J.max' (DGNerve.Index.nonempty hJ)} {hk' : k' = 2 - (J.card : ℤ)}
+    {hJ : 2 ≤ J.card} {ha' : a' = J.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ)}
+    {hb' : b' = J.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ)} {hk' : k' = 2 - (J.card : ℤ)}
     {hj' : j' ∈ J} {haj' : a' < j'} {hjb' : j' < b'}
     (hIJ : I = J) (haa : a = a') (hbb : b = b') (hkk : k = k') (hjj : j = j') :
     HEq (s.cutComposite I a b k hI ha hb hk j hj haj hjb)

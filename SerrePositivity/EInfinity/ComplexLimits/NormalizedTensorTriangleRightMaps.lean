@@ -10,13 +10,13 @@ set_option backward.isDefEq.respectTransparency false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet MonoidalCategory CartesianMonoidalCategory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 lemma normalizedTensorTriangleMap_face12 :
     (SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin 3)) ▷
       nerve (normalizedTensorElementIndex A X Y)) ≫ normalizedTensorTriangleMap A X Y =
-      rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -24,7 +24,7 @@ lemma normalizedTensorTriangleMap_face12 :
   let τ := (SimplexCategory.δ (0 : Fin 3)).toOrderHom.comp
     (SSet.stdSimplex.objEquiv t).toOrderHom
   change normalizedTensorTriangleSimplex A X Y c τ =
-    (rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y).app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ normalizedTensorElementEvaluationJoin A X Y).app
       (Opposite.op ⦋n⦌) (t, c)
   have ht : ∀ i, τ i = 2 ↔ t i ≠ 0 := by
     intro i
@@ -40,7 +40,7 @@ lemma normalizedTensorTriangleMap_face12 :
 lemma normalizedTensorTriangleMap_face02 :
     (SSet.stdSimplex.map (SimplexCategory.δ (1 : Fin 3)) ▷
       nerve (normalizedTensorElementIndex A X Y)) ≫ normalizedTensorTriangleMap A X Y =
-      rightMappingSpacePrism _ ≫ pinchedHomUncurry (normalizedTensorElementPinchedMap A X Y) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomUncurry (normalizedTensorElementPinchedMap A X Y) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
@@ -48,7 +48,7 @@ lemma normalizedTensorTriangleMap_face02 :
   let τ := (SimplexCategory.δ (1 : Fin 3)).toOrderHom.comp
     (SSet.stdSimplex.objEquiv t).toOrderHom
   change normalizedTensorTriangleSimplex A X Y c τ =
-    (rightMappingSpacePrism _ ≫ pinchedHomUncurry
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.rightMappingSpacePrism _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomUncurry
       (normalizedTensorElementPinchedMap A X Y)).app (Opposite.op ⦋n⦌) (t, c)
   have ht : ∀ i, τ i = 2 ↔ t i ≠ 0 := by
     intro i

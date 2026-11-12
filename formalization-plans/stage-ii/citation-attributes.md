@@ -37,3 +37,26 @@
 2. その後に一括レーンを開く。属性と照会のコマンドの実装、README の略号表、既存の対応表（HTT 896 件、HA 645 件、Prisms 287 件、K の地図）の own・partial から属性を自動で付ける。多くのファイルを書き換えるので、夜の bulk として流す。
 3. 付け終わったら、地図を属性から作り直す。
 4. 以後、すべての指示書の規則に「新しい宣言には文献の属性を付ける」を足す。
+
+## 5. 同じ回に行う：InfinityCategories/Project の整理（11-11 夜、ユーザー決定）
+
+KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクトリ・約 5,735 本になる。最大の `DerivedCategories/`（約 3,687 本）は、2,322 本が一つのディレクトリに平らに並ぶ。ファイルの移動は各レーンにもう一度の追従を求めるので、文献の属性の一括レーンと同じ回にまとめる。
+
+1. **文献に当たるものは文献の場所へ**：HTT・HA・Kerodon の対応表（11-11 にすべて完了）で own・partial に当たる宣言を含むファイルは、`Kerodon/`・`HTT/`・`HA/` の対応する節へ移す。K の文献に沿うもの（Verdier 商・gluing など）は、K の文献ごとの置き場を作るか、K の再開まで `Project/` の中で K の話題として分ける。
+2. **残りは話題ごとの下のディレクトリへ**：`DerivedCategories/` なら、写像空間と安定性・擬同型の逆転（roof）・Verdier 商・gluing・コンパクト性と presentable・テンソル・Kan 模型の 7 つ程度。補助の補題は、使う主定理の近くに置けるなら移す。
+3. **使われていないものの片付け**：利用者のない試作（`Derived/Diagnostics` など）や主定理の経路から外れたものは、archive に移すか消すかを決める。ModelCategory SSet の 54 本の片付けと同じ回に行う。
+4. **段 0**：Codex が 13 のディレクトリごとに行き先の案（文献の節・話題の下のディレクトリ・archive）を、対応表を根拠に出す。行き先は昼にユーザーと調整役が決める。道具は KL-W1 のもの（移動・改名・保存比較・追従）を使う。
+
+## 6. 同じ回に行う：BhattScholze の整理（11-12、ユーザー決定）
+
+`SerrePositivity/BhattScholze/`（542 本）を論文の節に合わせる。KL-W1 の Kerodon 配置と同じ考え方。
+
+- 今の対応：§2 → `Delta/`、§3 → `Prism/`、§3 の site・§4・§5・§6 → `Prismatic/`（270 本が平ら）、§7 → `Semiperfectoid/`・`Andre/`、§8 → `Perfectoidization/`・`Inputs/`、§10 → `Almost/`・`PerfectoidIdeal/`。
+- 直すところ：`Prismatic/` を節ごとの下のディレクトリ（site §3.12・§4.1、Čech–Alexander §4.3、結晶 §5、HT §4.2・§6 など）に分ける。節をまたいだファイル（`Prism/Basic/` の Construction 6.1、`Semiperfectoid/` の Ex 7.9 の lci、`Perfectoidization/Derived/` の §10 の部分）を節へ移す。行き先の案は段 0（B1）で、文献の属性の番号と Prisms の地図を根拠に出す。
+
+## 7. 他のレーンとの干渉の避け方（11-12）
+
+1. **移動は「凍結の一晩」に行う（B3）**：その日の夕方までに各レーンの検証済みの分を main に取り込み、夜に一括レーンが移動し、翌朝各レーンが追従する（B4）。移動の夜は各レーンにコミットを控えてもらう（下書きは作業木に置いたまま）。
+2. **③-b の新しいファイルの置き場所は B1 の最初に決める**：`Project/DerivedCategories/` の分け方を先に決め、③-b はその新しいパスに置く。決まるまでは `Project/DerivedCategories/` の直下に置き、移動の計画に含める。
+3. **⑤∞ は B3 の後に開く**：⑤∞ は drafts を `BhattScholze/` に移すので、BS の整理の後にする（`stage-ii-second-half.md` の 5∞-1 の依存）。
+4. 今 BS の本体を触るレーンはない（⑤b・⑤c は ③ に移る）ので、BS の整理は早いほど安全。

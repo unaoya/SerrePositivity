@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.CoherentTrianglePathSets
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.CoherentTrianglePathSets
 
 /-!
 概要：二単体の path は隣接辺では一意、長辺では中間頂点の有無で二種類。

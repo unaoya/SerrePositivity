@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.KST.Comparison.ExInfinityKan
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityKan
 public import SerrePositivity.KST.Comparison.ExInfinityHomotopyPullback
 public import SerrePositivity.KST.Comparison.KanReplacementSquares
 
@@ -30,9 +30,9 @@ variable {D : Type v} [Category.{w} D]
 規約：始域は元の図式そのもの。
 使われ方：元の span と Kan な span の比較。
 -/
-def diagramExInfinityUnit (F : D ⥤ SSet.{u}) : F ⟶ F ⋙ exInfinity where
-  app d := exInfinityUnit.app (F.obj d)
-  naturality {_ _} f := exInfinityUnit.naturality (F.map f)
+def diagramExInfinityUnit (F : D ⥤ SSet.{u}) : F ⟶ F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity where
+  app d := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (F.obj d)
+  naturality {_ _} f := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (F.map f)
 
 /--
 概要：図式の Ex∞ 単位は図式の自然変換と可換である。
@@ -41,10 +41,10 @@ def diagramExInfinityUnit (F : D ⥤ SSet.{u}) : F ⟶ F ⋙ exInfinity where
 使われ方：span の射の可換な比較。
 -/
 theorem diagramExInfinityUnit_naturality {F G : D ⥤ SSet.{u}} (α : F ⟶ G) :
-    α ≫ diagramExInfinityUnit G = diagramExInfinityUnit F ≫ whiskerRight α exInfinity := by
+    α ≫ diagramExInfinityUnit G = diagramExInfinityUnit F ≫ whiskerRight α _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity := by
   apply NatTrans.ext
   funext d
-  exact exInfinityUnit.naturality (α.app d)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality (α.app d)
 
 /--
 概要：図式の Ex∞ 単位は各成分で局所化同型である。
@@ -54,7 +54,7 @@ theorem diagramExInfinityUnit_naturality {F G : D ⥤ SSet.{u}} (α : F ⟶ G) :
 -/
 theorem diagramExInfinityUnit_localized_isIso (F : D ⥤ SSet.{u}) (d : D) :
     IsIso (AnodyneHomotopy.anodyneQ.map ((diagramExInfinityUnit F).app d)) :=
-  inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map (exInfinityUnit.app (F.obj d))))
+  inferInstanceAs (IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app (F.obj d))))
 
 /--
 概要：図式の Ex∞ 置換は各添字の射に沿う四角形のホモトピー引き戻し性を保つ。
@@ -64,7 +64,7 @@ theorem diagramExInfinityUnit_localized_isIso (F : D ⥤ SSet.{u}) (d : D) :
 -/
 theorem diagramExInfinity_arrowSquare_iff {F G : D ⥤ SSet.{u}} (α : F ⟶ G)
     {d e : D} (θ : d ⟶ e) :
-    IsHomotopyPullback (naturalitySquare (diagramArrow θ) (whiskerRight α exInfinity)) ↔
+    IsHomotopyPullback (naturalitySquare (diagramArrow θ) (whiskerRight α _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity)) ↔
       IsHomotopyPullback (naturalitySquare (diagramArrow θ) α) :=
   isHomotopyPullback_exInfinity_iff (naturalitySquare (diagramArrow θ) α)
 

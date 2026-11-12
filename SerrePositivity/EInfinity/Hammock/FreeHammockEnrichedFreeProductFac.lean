@@ -17,42 +17,42 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
   {D : Type uD} [EnrichedCategory SSet.{u} D]
 
 lemma freeProductExtension_marked (P : EnrichedParts W D) :
-    letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     (markedInclusionFunctor W).comp SSet.{u} (freeProductExtension W P) = P.marked := by
-  let := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact congrArg EnrichedParts.marked (freeProductExtension_fac W P)
 
 lemma freeProductExtension_unmarked (P : EnrichedParts W D) :
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     (unmarkedInclusionFunctor W).comp SSet.{u} (freeProductExtension W P) = P.unmarked := by
-  let := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact congrArg EnrichedParts.unmarked (freeProductExtension_fac W P)
 
 lemma freeProduct_hom_ext :
-    letI := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-    letI := DiscreteEnrichment.enrichedCategory
-      (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+      (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     ∀ F G : EnrichedFunctor SSet.{u} (Paths C) D,
       (markedInclusionFunctor W).comp SSet.{u} F = (markedInclusionFunctor W).comp SSet.{u} G →
       (unmarkedInclusionFunctor W).comp SSet.{u} F = (unmarkedInclusionFunctor W).comp SSet.{u} G →
       F = G := by
-  let := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  let := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
-  let := Hammock.enrichedCategory W.paths
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   intro F G hm hu
   exact (freeProductFunctorEquiv W).injective (EnrichedParts.ext hm hu)
 

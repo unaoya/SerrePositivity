@@ -17,15 +17,15 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 零長の元の有限比較の初期成分は、全反復で厳密な同型。 -/
-lemma weakStringFiniteComparison_zero_initial_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakStringFiniteComparison_zero_initial_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     IsIso ((multiRealizationFunctor r).map (weakStringVertexTopExact q ⦋0⦌ 0)) := by
   change IsIso ((multiRealizationFunctor r).map (weakStringZeroExactIso q).hom)
   infer_instance
 
 /-- 零長の元の有限比較自体も、空有限積を含めて全反復で厳密な同型。 -/
-theorem weakStringFiniteComparison_zero_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) : IsIso (weakStringFiniteComparison q 0 r) := by
+theorem weakStringFiniteComparison_zero_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) : IsIso (weakStringFiniteComparison q 0 r) := by
   have := weakStringFiniteComparison_zero_initial_isIso q r
   have he : weakStringFiniteComparison q 0 r ≫
       (finEmptyProductIso ((multiRealizationFunctor r).obj
@@ -42,8 +42,8 @@ theorem weakStringFiniteComparison_zero_isIso {B C : _root_.SerrePositivity.Infi
   exact (isIso_comp_right_iff _ _).mp this
 
 /-- 元の初期頂点と全連続 cofiber の比較は、零長を含む全長・全正有限反復で局所化同型。 -/
-theorem weakStringFiniteComparison_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringFiniteComparison_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (weakStringFiniteComparison q n (r + 1))) := by
   cases n with
   | zero =>

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FiniteGridFunctor
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeEndpointHull
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteGridFunctor
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.QuiverTreeEndpointHull
 public import SerrePositivity.EInfinity.Hammock.QuiverTreeFiniteContractible
 
 /-!
@@ -24,42 +24,42 @@ attribute [local instance] Classical.propDecidable
 
 variable {Q : Type u} [Quiver.{v} Q] (T : WideSubquiver (Quiver.Symmetrify Q))
   [Quiver.Arborescence T] {I : Type w} [Category.{w'} I]
-  [Fintype I] [∀ i j : I, Fintype (i ⟶ j)] {a : Word} {X Y : Paths Q}
-  (F : I ⥤ Zigzag (⊤ : MorphismProperty (Paths Q)) a X Y)
+  [Fintype I] [∀ i j : I, Fintype (i ⟶ j)] {a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths Q}
+  (F : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (⊤ : MorphismProperty (Paths Q)) a X Y)
 
-def hull : Finset Q := QuiverTree.endpointHull T X Y (gridPathSupport F)
+def hull : Finset Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F)
 
-def leftVertex : FiniteQuiver.Vertex (hull T F) :=
-  ⟨X, QuiverTree.endpointHull_left T X Y (gridPathSupport F)⟩
+def leftVertex : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F) :=
+  ⟨X, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_left T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F)⟩
 
-def rightVertex : FiniteQuiver.Vertex (hull T F) :=
-  ⟨Y, QuiverTree.endpointHull_right T X Y (gridPathSupport F)⟩
+def rightVertex : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F) :=
+  ⟨Y, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_right T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F)⟩
 
-def rootedFunctor : letI := FiniteQuiver.quiver (hull T F)
-    I ⥤ Zigzag (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex (hull T F)))) a
-      ((Paths.of (FiniteQuiver.Vertex (hull T F))).obj (leftVertex T F))
-      ((Paths.of (FiniteQuiver.Vertex (hull T F))).obj (rightVertex T F)) := by
-  letI := FiniteQuiver.quiver (hull T F)
-  exact functor (hull T F) F (QuiverTree.endpointHull_left T X Y (gridPathSupport F))
-    (QuiverTree.endpointHull_right T X Y (gridPathSupport F))
-    (QuiverTree.subset_endpointHull T X Y (gridPathSupport F))
+def rootedFunctor : letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
+    I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F)))) a
+      ((Paths.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F))).obj (leftVertex T F))
+      ((Paths.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F))).obj (rightVertex T F)) := by
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteGridFunctor.functor (hull T F) F (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_left T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_right T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subset_endpointHull T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
 
-lemma rootedFunctor_projection : letI := FiniteQuiver.quiver (hull T F)
-    rootedFunctor T F ⋙ Zigzag.Relative.functor (FiniteQuiver.pathRelative (hull T F)) = F := by
-  let := FiniteQuiver.quiver (hull T F)
-  exact functor_projection (hull T F) F
-    (QuiverTree.endpointHull_left T X Y (gridPathSupport F))
-    (QuiverTree.endpointHull_right T X Y (gridPathSupport F))
-    (QuiverTree.subset_endpointHull T X Y (gridPathSupport F))
+lemma rootedFunctor_projection : letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
+    rootedFunctor T F ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pathRelative (hull T F)) = F := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteGridFunctor.functor_projection (hull T F) F
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_left T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_right T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.subset_endpointHull T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F))
 
 lemma rootedHammock_isWeaklyContractible [Quiver.IsThin (Quiver.FreeGroupoid Q)] :
-    letI := FiniteQuiver.quiver (hull T F)
-    IsWeaklyContractible (colimitGraph
-      (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex (hull T F))))
-      ((Paths.of (FiniteQuiver.Vertex (hull T F))).obj (leftVertex T F))
-      ((Paths.of (FiniteQuiver.Vertex (hull T F))).obj (rightVertex T F))) := by
-  let := FiniteQuiver.quiver (hull T F)
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+      (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F))))
+      ((Paths.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F))).obj (leftVertex T F))
+      ((Paths.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex (hull T F))).obj (rightVertex T F))) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver (hull T F)
   exact QuiverTree.finite_colimit_isWeaklyContractible T (hull T F)
-    (QuiverTree.endpointHull_closed T X Y (gridPathSupport F)) _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.endpointHull_closed T X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.gridPathSupport F)) _ _
 
 end SerrePositivity.EInfinity.Hammock.FiniteGrid

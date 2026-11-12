@@ -44,7 +44,7 @@ def pointedExtensionArrowEvaluation {J : Type v} [Category.{w} J]
     {R A L : J ⥤ PointedSimplicialSet.{u}} (η : R ⟶ A) (θ : R ⟶ L) :
     pointedExtensionArrowDiagram η θ ⟶ pointedMappingArrowDiagram A L where
   app x := pullback.fst
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (η.app (assemblyArrowSource x)) (L.obj (assemblyArrowTarget x))).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (η.app (assemblyArrowSource x)) (L.obj (assemblyArrowTarget x))).right
     (SSet.yonedaEquiv.symm (familyVertex
       (R.map (assemblyArrowHom x) ≫ θ.app (assemblyArrowTarget x))))
   naturality _ _ h :=

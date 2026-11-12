@@ -40,7 +40,7 @@ omit [DGCategory A E] [DGCategory A B] [DGCategory A T] [Small.{u} E] [Small.{u}
 lemma dgFunctorNativeIdentity_app (n : SimplexCategoryᵒᵖ) (x : (𝟙_ SSet.{max u v}).obj n) :
     ((dgFunctorNativeIdentity A D).app n x).val =
       dgFunctorNativeIdentitySimplex A D n.unop.len := by
-  change (DGNerve.Simplex.vertex (DGFunctor.id D)).pullback
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (DGFunctor.id D)).pullback
     (SimplexCategory.const n.unop ⦋0⦌ 0).toOrderHom = _
   rw [← dgFunctorNativeIdentitySimplex_zero]
   exact dgFunctorNativeIdentitySimplex_pullback A D _

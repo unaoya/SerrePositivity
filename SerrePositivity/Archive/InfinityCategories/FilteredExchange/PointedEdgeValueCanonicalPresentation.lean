@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedSpaceMorphismEdgeValueIso
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompEndpointTransport
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerCancellation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPrecompEndpointTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerCancellation
 
 /-!
 概要：元の実辺の両端表示を、同じ canonical 区間の指定比較の値へ戻す。

@@ -30,8 +30,8 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 def modelBifibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋n + 1⦌ :=
-  RoofPrefix.simplex (modelBifibrantRelativeCategory C)
+    (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋n + 1⦌ :=
+  RoofPrefix.simplex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
@@ -44,17 +44,17 @@ def modelBifibrantSourceRoofProductCommaNativeSimplex {n : ℕ}
 lemma modelBifibrantSourceRoofProductCommaNativeSimplex_target {n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) :
-    (kanHammockNerve (modelBifibrantRelativeCategory C)).map (PinchedHom.lastVertex n).op
+    (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.lastVertex n).op
       (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t) =
       modelBifibrantHammockVertex Y :=
-  (RoofPrefix.simplex_target (modelBifibrantRelativeCategory C)
+  (RoofPrefix.simplex_target (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
     (modelBifibrantSourceRoofProductCommaDiagram X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation X Y q b)
     (modelBifibrantSourceRoofProductCommaEvaluation_weak X Y q b)
     (modelBifibrantSourceRoofProductCommaRightLeg X Y q b)
     (fun f => modelBifibrantSourceRoofProductCommaDiagram_map_weak X Y q b f) Γ t).trans
-      (hammockLocalizationNerveMap_vertex (modelBifibrantRelativeCategory C)
-        (modelBifibrantObject C Y)).symm
+      (hammockLocalizationNerveMap_vertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)).symm
 
 /-- 概要：同じ bifibrant frame の実屋根・次数・全錐の比較を回収する。
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
@@ -62,12 +62,12 @@ lemma modelBifibrantSourceRoofProductCommaNativeSimplex_target {n : ℕ}
 def modelBifibrantSourceRoofProductCommaNativeSliceSimplex {n : ℕ}
     (Γ : Fin (n + 1) ⥤ modelBifibrantSourceRoofProductComma X Y q b)
     (t : Fin (n + 1) →o Fin 2) :
-    (sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y))) _⦋n⦌ := by
-  refine ⟨(joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (modelBifibrantHammockVertex Y))) _⦋n⦌ := by
+  refine ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
     (modelBifibrantSourceRoofProductCommaNativeSimplex X Y q b Γ t), ?_⟩
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_inr,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inr,
     SSet.yonedaEquiv_symm_naturality_left]
-  exact congrArg (fun z : (kanHammockNerve (modelBifibrantRelativeCategory C)) _⦋0⦌ =>
+  exact congrArg (fun z : (kanHammockNerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) _⦋0⦌ =>
     SSet.yonedaEquiv.symm z) (modelBifibrantSourceRoofProductCommaNativeSimplex_target X Y q b Γ t)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

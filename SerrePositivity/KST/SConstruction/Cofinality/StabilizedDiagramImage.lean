@@ -31,9 +31,9 @@ def sEvaluationBiprodShiftIso (n : ℕ) (Y : StableModel.{u})
     biprod ((hoFunctor.map (sStableEvaluation n Y a).val).toFunctor.obj d)
       ((shiftFunctor (hoFunctor.obj Y.carrier) (1 : ℤ)).obj
         ((hoFunctor.map (sStableEvaluation n Y a).val).toFunctor.obj d)) := by
-  let : IsExactFunctor (sStableEvaluation n Y a).val := stableModelHom_exact _
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (sStableEvaluation n Y a).val := stableModelHom_exact _
   let E := (hoFunctor.map (sStableEvaluation n Y a).val).toFunctor
-  let : E.Additive := exactFunctor_additive _
+  let : E.Additive := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.exactFunctor_additive _
   let : PreservesFiniteBiproducts E := Functor.preservesFiniteBiproductsOfAdditive E
   let : PreservesBinaryBiproducts E := preservesBinaryBiproducts_of_preservesBiproducts E
   exact E.mapBiprod d _ ≪≫ biprod.mapIso (Iso.refl _) ((E.commShiftIso (1 : ℤ)).app d)
@@ -43,7 +43,7 @@ def sEvaluationBiprodShiftIso (n : ℕ) (Y : StableModel.{u})
 規約：密度供給だけに条件付きの補助結果であり、一般共終性は主張しない。
 使われ方：D-22 の同じ射への特殊化を有限 S 図式へ持ち上げる。 -/
 lemma sBiprodShift_mem_image_of_density (n : ℕ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val)
     (hdensity : ∀ d : hoFunctor.obj Y.carrier, ∃ c : hoFunctor.obj X.carrier,
       Nonempty (biprod d ((shiftFunctor (hoFunctor.obj Y.carrier) (1 : ℤ)).obj d) ≅
         (hoFunctor.map f.val).toFunctor.obj c))
@@ -54,7 +54,7 @@ lemma sBiprodShift_mem_image_of_density (n : ℕ) {X Y : StableModel.{u}}
   let w := biprod d ((shiftFunctor (hoFunctor.obj ((sStableModel n Y).carrier)) (1 : ℤ)).obj d)
   obtain ⟨y, hy⟩ := SSet.Truncated.HomotopyCategory.mk_surjective w
   have himage (a : (arNerve n) _⦋0⦌) : ∃ x : X.carrier _⦋0⦌,
-      Nonempty (VertexIso (f.val.app (Opposite.op ⦋0⦌) x)
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.val.app (Opposite.op ⦋0⦌) x)
         ((gappedDiagram y).app (Opposite.op ⦋0⦌) a)) := by
     let E := (hoFunctor.map (sStableEvaluation n Y a).val).toFunctor
     obtain ⟨c, ⟨e⟩⟩ := hdensity (E.obj d)
@@ -63,9 +63,9 @@ lemma sBiprodShift_mem_image_of_density (n : ℕ) {X Y : StableModel.{u}}
     have he : E.obj (HomotopyCategory.mk y) ≅
         biprod (E.obj d) ((shiftFunctor (hoFunctor.obj Y.carrier) (1 : ℤ)).obj (E.obj d)) :=
       E.mapIso (eqToIso hy) ≪≫ sEvaluationBiprodShiftIso n Y a d
-    have hv : functorVertex (gappedDiagram y) = y.val :=
-      (functorVertexEquiv (arNerve n) Y.carrier).apply_symm_apply y.val
-    have ha := evaluateFunctorAt_functorVertex a (gappedDiagram y)
+    have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram y) = y.val :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) Y.carrier).apply_symm_apply y.val
+    have ha := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex a (gappedDiagram y)
     rw [hv] at ha
     exact e.symm ≪≫ he.symm ≪≫ eqToIso (congrArg HomotopyCategory.mk ha)
   obtain ⟨x, ⟨e⟩⟩ := exists_sVertexIso_of_pointwise_image f hf y himage
@@ -77,7 +77,7 @@ lemma sBiprodShift_mem_image_of_density (n : ℕ) {X Y : StableModel.{u}}
 使われ方：反復 S の実現へ進む前の有限図式の補対象回収。 -/
 lemma multiSBiprodShift_mem_image_of_density (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : IsFullyFaithful f.val)
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful f.val)
     (hdensity : ∀ d : hoFunctor.obj Y.carrier, ∃ c : hoFunctor.obj X.carrier,
       Nonempty (biprod d ((shiftFunctor (hoFunctor.obj Y.carrier) (1 : ℤ)).obj d) ≅
         (hoFunctor.map f.val).toFunctor.obj c))

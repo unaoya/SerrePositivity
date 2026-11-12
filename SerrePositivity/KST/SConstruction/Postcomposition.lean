@@ -22,16 +22,16 @@ open scoped Simplicial
 規約：全ての図式の選択を保つ。使われ方：S 構成の射への作用。 -/
 def sPostcomp (n : ℕ) {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
     sConstruction n C ⟶ sConstruction n D :=
-  fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (ihom (arNerve n)).map f) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ ((gappedSubcomplex n C).ι ≫ (ihom (arNerve n)).map f) (by
     intro v
     let F := gappedDiagram v
-    have hv : functorVertex F = v.val := (functorVertexEquiv _ C).apply_symm_apply _
-    change IsGapped ((functorVertexEquiv (arNerve n) D).symm
+    have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F = v.val := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply _
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) D).symm
       (((ihom (arNerve n)).map f).app (Opposite.op ⦋0⦌) v.val))
     rw [← hv]
-    change IsGapped ((functorVertexEquiv (arNerve n) D).symm (functorVertex (F ≫ f)))
-    change IsGapped ((functorVertexEquiv (arNerve n) D).symm
-      (functorVertexEquiv (arNerve n) D (F ≫ f)))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) D).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (F ≫ f)))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) D).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) D (F ≫ f)))
     rw [Equiv.symm_apply_apply]
     exact (gappedDiagram_isGapped v).postcomp f hf)
 
@@ -87,7 +87,7 @@ def simplicialSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstruct
 規約：可逆な辺の保存は core 関手が担う。使われ方：K 空間の射への作用の基礎。 -/
 def simplicialCoreSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructionData f) :
     simplicialCoreSConstruction C ⟶ simplicialCoreSConstruction D :=
-  Functor.whiskerRight (simplicialSPostcomp f hf) quasicategoryCoreFunctor
+  Functor.whiskerRight (simplicialSPostcomp f hf) _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：S• の後合成が対角実現の間に誘導する写像。
 方針：二重単体集合の自然変換を対角で制限する。
@@ -102,12 +102,12 @@ def diagonalSPostcomp {C D : SSet.{u}} (f : C ⟶ D) (hf : PreservesSConstructio
 規約：像の零頂点を使い、既定の零対象との等号は仮定しない。
 使われ方：反復構成の基点と零対象比較。 -/
 lemma sPostcomp_zeroVertex (n : ℕ) {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
-    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     (sPostcomp n f hf).app (Opposite.op ⦋0⦌) (sConstructionZeroVertex n z hz) =
       sConstructionZeroVertex n (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz) := by
   apply Subtype.ext
-  change functorVertex ((SSet.const z : arNerve n ⟶ C) ≫ f) =
-    functorVertex (SSet.const (f.app (Opposite.op ⦋0⦌) z) : arNerve n ⟶ D)
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex ((SSet.const z : arNerve n ⟶ C) ≫ f) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.const (f.app (Opposite.op ⦋0⦌) z) : arNerve n ⟶ D)
   rw [SSet.const_comp]
 
 /-- 概要：対角実現の後合成は恒等射を保つ。
@@ -119,10 +119,10 @@ lemma diagonalSPostcomp_id (C : SSet.{u}) :
   intro d
   apply ConcreteCategory.hom_ext
   intro x
-  change (quasicategoryCoreMap
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap
     (sPostcomp d.unop.len (𝟙 C) (preservesSConstructionData_id C))).app d x = x
   rw [sPostcomp_id]
-  change (quasicategoryCoreFunctor.map (𝟙 (sConstruction d.unop.len C))).app d x = x
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map (𝟙 (sConstruction d.unop.len C))).app d x = x
   rw [CategoryTheory.Functor.map_id]
   rfl
 
@@ -136,18 +136,18 @@ lemma diagonalSPostcomp_comp {C D E : SSet.{u}} (f : C ⟶ D) (g : D ⟶ E)
   intro d
   apply ConcreteCategory.hom_ext
   intro x
-  change (quasicategoryCoreMap (sPostcomp d.unop.len (f ≫ g) (hf.comp hg))).app d x =
-    (quasicategoryCoreMap (sPostcomp d.unop.len g hg)).app d
-      ((quasicategoryCoreMap (sPostcomp d.unop.len f hf)).app d x)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcomp d.unop.len (f ≫ g) (hf.comp hg))).app d x =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcomp d.unop.len g hg)).app d
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sPostcomp d.unop.len f hf)).app d x)
   rw [sPostcomp_comp]
   exact ConcreteCategory.congr_hom (NatTrans.congr_app
-    (quasicategoryCoreFunctor.map_comp (sPostcomp d.unop.len f hf) (sPostcomp d.unop.len g hg)) d) x
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor.map_comp (sPostcomp d.unop.len f hf) (sPostcomp d.unop.len g hg)) d) x
 
 /-- 概要：対角の後合成は零図式の頂点をその像の零図式に送る。
 方針：core の包含後で S_0 の零図式の後合成を使う。
 規約：像の零対象を用いる厳密等号。使われ方：点つき実現写像。 -/
 lemma diagonalSPostcomp_zeroVertex {C D : SSet.{u}} [Quasicategory C] [Quasicategory D]
-    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : IsZeroVertex z) :
+    (f : C ⟶ D) (hf : PreservesSConstructionData f) (z : C _⦋0⦌) (hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex z) :
     (diagonalSPostcomp f hf).app (Opposite.op ⦋0⦌) (coreSConstructionZeroVertex 0 z hz) =
       coreSConstructionZeroVertex 0 (f.app (Opposite.op ⦋0⦌) z) (hf.1 z hz) := by
   apply Subtype.ext

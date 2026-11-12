@@ -24,7 +24,7 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 /-- 次段の元の比較三角形を、元の源構造射への制限へ写した同じ二単体。 -/
 def tracedActualRightDifferenceSourceTriangle (n : ℕ) :=
   SSet.yonedaEquiv.symm (tracedActualStageRightDifference X Y φ (n + 1)).triangle.simplex ≫
-    (PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+    (PointedObject.basedHomMap A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).right
 
 /-- 前段の元の比較三角形を、同じ構造像へ写した二単体。 -/
@@ -37,7 +37,7 @@ def tracedActualRightDifferenceTargetTriangle (n : ℕ) :=
 lemma tracedActualRightDifferenceSourceTriangle_one (n : ℕ) :
     stdSimplex.δ (1 : Fin 3) ≫ tracedActualRightDifferenceSourceTriangle X Y φ n =
       ((tracedActualStageEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [tracedActualRightDifferenceSourceTriangle, ← Category.assoc,
     PointedMapping.BasedPathCodifference.triangle_one]
@@ -47,7 +47,7 @@ lemma tracedActualRightDifferenceSourceTriangle_one (n : ℕ) :
 lemma tracedActualRightDifferenceSourceTriangle_zero (n : ℕ) :
     stdSimplex.δ (0 : Fin 3) ≫ tracedActualRightDifferenceSourceTriangle X Y φ n =
       (((kanAdjointTracedSourceEvaluationInterval X Y (n + 1)).pre φ).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [tracedActualRightDifferenceSourceTriangle, ← Category.assoc,
     PointedMapping.BasedPathCodifference.triangle_zero]
@@ -57,7 +57,7 @@ lemma tracedActualRightDifferenceSourceTriangle_zero (n : ℕ) :
 lemma tracedActualRightDifferenceSourceTriangle_two (n : ℕ) :
     stdSimplex.δ (2 : Fin 3) ≫ tracedActualRightDifferenceSourceTriangle X Y φ n =
       (((tracedActualStageRightDifference X Y φ (n + 1)).path).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path := by
   rw [tracedActualRightDifferenceSourceTriangle, ← Category.assoc,
     PointedMapping.BasedPathCodifference.triangle_two]

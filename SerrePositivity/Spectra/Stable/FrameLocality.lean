@@ -39,7 +39,7 @@ include hcof in
 lemma mappingTest_localizingMap_iff (n : ℕ) (X : C) [IsCofibrant X]
     (E : GeneralSymmetricSpectrum C K) :
     Bousfield.mappingTest cofSp fibSp E (localizingMap K n X) ↔
-      weakEquivalences SSet.{v} ((cosimplicialHom
+      weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
         ((cosimplicialResolutionFamily cofC).obj.obj X)).map
           (adjointStructureMap ((fibrantTarget fibSp).obj E) n)) := by
   let q := cosimplicialResolutionFamily cofC
@@ -82,7 +82,7 @@ include hcof in
 lemma localObjects_localizingMaps_iff {ι : Type t} (G : ι → C)
     [∀ i, IsCofibrant (G i)] (E : GeneralSymmetricSpectrum C K) :
     Bousfield.localObjects cofSp fibSp (localizingMaps K G) E ↔
-      ∀ (n : ℕ) (i : ι), weakEquivalences SSet.{v} ((cosimplicialHom
+      ∀ (n : ℕ) (i : ι), weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom
         ((cosimplicialResolutionFamily cofC).obj.obj (G i))).map
           (adjointStructureMap ((fibrantTarget fibSp).obj E) n)) := by
   constructor

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -30,7 +30,7 @@ lemma normalizedTensorDoubleConeSimplex_obj_reindex {n m : ℕ}
   | cast i =>
     rw [doubleConeOrderHom_castSucc]
     change complexRightConeObj A (normalizedTensorConeSimplex A X Y c) X
-      (prependOrderHom θ.toOrderHom i).castSucc =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom i).castSucc =
       complexRightConeObj A (normalizedTensorConeSimplex A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) X i.castSucc
     rw [complexRightConeObj_castSucc, complexRightConeObj_castSucc]
@@ -44,11 +44,11 @@ lemma normalizedTensorDoubleConeSimplex_pullback_front {n m : ℕ}
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).pullback
         Fin.castSuccOrderEmb.toOrderHom := by
   have hindex : (doubleConeOrderHom θ).comp Fin.castSuccOrderEmb.toOrderHom =
-      Fin.castSuccOrderEmb.toOrderHom.comp (prependOrderHom θ.toOrderHom) := by
+      Fin.castSuccOrderEmb.toOrderHom.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom) := by
     apply DFunLike.ext
     intro i
     exact doubleConeOrderHom_castSucc θ i
-  rw [Simplex.pullback_comp, hindex, ← Simplex.pullback_comp,
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp, hindex, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Pullback.pullback_comp,
     normalizedTensorDoubleConeSimplex_front, normalizedTensorDoubleConeSimplex_front,
     normalizedTensorConeSimplex_pullback_map]
 

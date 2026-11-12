@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKInputClosedComparison
 public import SerrePositivity.KST.SConstruction.CoherentHomIntervalEdgeParameter
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingPostIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingPostIso
 
 /-! # 元の native 比較四角形の ν 像と同じ全 Hom 作用
 概要：固定 S の標準比較四角形を、固定 ν の同じ native Hom 作用で厳密に照合する。
@@ -20,16 +20,16 @@ variable (R : Type u) [CommRing R] {P Q : PerfDGInput.{u, v} R}
 lemma dgKInputNu_intervalFamily {T : SSet.{max (u + 1) v + 1}}
     (a : T ⟶ (SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj
       (SimplicialCategory.sHom P Q)) :
-    intervalMappingUncurry (a ≫ coherentHomIntervalComparison P Q) ≫ dgKInputNu R =
-      intervalMappingUncurry (a ≫ (SSet.uliftFunctor).map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison P Q) ≫ dgKInputNu R =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (a ≫ (SSet.uliftFunctor).map
         ((presentedPerfectDGEnrichedExactFunctor R).map P Q) ≫
-          coherentHomIntervalComparison (presentedPerfectDGStableQCat R P)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison (presentedPerfectDGStableQCat R P)
             (presentedPerfectDGStableQCat R Q)) := by
-  change _ ≫ coherentNerveMap (presentedPerfectDGEnrichedExactFunctor R) = _
-  rw [← intervalMappingPostOfEq_uncurry _ _ _
-    (coherentNerveMap_vertex _ P) (coherentNerveMap_vertex _ Q)]
+  change _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (presentedPerfectDGEnrichedExactFunctor R) = _
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingPostOfEq_uncurry _ _ _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex _ P) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex _ Q)]
   congr 1
-  rw [Category.assoc, coherentHomIntervalComparison_enriched_naturality,
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison_enriched_naturality,
     ← Category.assoc]
   exact Category.assoc _ _ _
 
@@ -46,8 +46,8 @@ def dgKInputClosedIsoParameter : (Δ[1] : SSet.{max (u + 1) v + 1}) ⟶
 /-- 元の標準比較四角形は、同じ指定入力区間の標準 coherent 区間比較そのもの。 -/
 lemma dgKInputClosedIsoSquare_parameter :
     dgKInputClosedIsoSquare R f g e =
-      intervalMappingUncurry
-        (dgKInputClosedIsoParameter R f g e ≫ coherentHomIntervalComparison P Q) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry
+        (dgKInputClosedIsoParameter R f g e ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison P Q) := by
   unfold dgKInputClosedIsoSquare
   congr 1
   exact coherentHomIntervalEdge_parameter f g (dgKInputClosedIsoHomEdge R f g e)
@@ -60,8 +60,8 @@ def dgKInputClosedIsoNuParameter :=
 /-- 元の比較四角形全体の ν 像は、元の入力区間の同じ豊穣作用による標準四角形。 -/
 lemma dgKInputClosedIsoSquare_nu :
     dgKInputClosedIsoSquare R f g e ≫ dgKInputNu R =
-      intervalMappingUncurry (dgKInputClosedIsoNuParameter R f g e ≫
-        coherentHomIntervalComparison (presentedPerfectDGStableQCat R P)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (dgKInputClosedIsoNuParameter R f g e ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison (presentedPerfectDGStableQCat R P)
           (presentedPerfectDGStableQCat R Q)) := by
   rw [dgKInputClosedIsoSquare_parameter]
   exact dgKInputNu_intervalFamily R (dgKInputClosedIsoParameter R f g e)
@@ -69,9 +69,9 @@ lemma dgKInputClosedIsoSquare_nu :
 /-- 完全性と core の包含後に、同じ元の native Perf 関手族の全比較区間を回収する。 -/
 lemma dgKInputClosedIsoNuParameter_ambient :
     dgKInputClosedIsoNuParameter R f g e ≫ (SSet.uliftFunctor).map
-      ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
         (dgKInputStableValue R P) (dgKInputStableValue R Q) :
-          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
             (dgKInputStableValue R P) (dgKInputStableValue R Q)).ι) =
       dgKInputClosedIsoParameter R f g e ≫ (SSet.uliftFunctor).map
         (presentedPerfectDGNativeFamilyMap R P Q) := by

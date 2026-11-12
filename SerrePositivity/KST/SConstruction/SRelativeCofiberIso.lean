@@ -20,7 +20,7 @@ open scoped Simplicial
 def sRelativeRestrictionIso {X : StableModel.{u}} (n : ℕ) (A B : ClosedStablePredicate X) :
     closedSubcategory (sClosedPredicate n (relativeCofiberPredicate A B)) ≅
       relativeCofiberDiagrams (sClosedPredicate n A) (sClosedPredicate n B) :=
-  fullSubcomplexIso (sCofiberIso n X.carrier)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexIso (sCofiberIso n X.carrier)
     (sClosedPredicate n (relativeCofiberPredicate A B)).predicate
     (relativeCofiberPredicate (sClosedPredicate n A) (sClosedPredicate n B)).predicate
     (sCofiber_relativePredicate_iff n A B)

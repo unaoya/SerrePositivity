@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.StandardDoldKanZeroRawEvaluation
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorAugmentationRawIdentity
 public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
-public import SerrePositivity.InfinityCategories.Derived.PinchedClosedStandardConstant
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedClosedStandardConstant
 
 /-!
 # 同じ正規化 augmentation と標準閉恒等辺の Γ 零次数像の一致
@@ -22,32 +22,32 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve DGNerve.HomotopyComparison DoldKanComparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 lemma complexClosedIdentity_value (X : Complex A) :
     (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))).val =
       CochainComplex.HomComplex.Cochain.ofHom (𝟙 X) := by
-  rw [CategoryTheory.Functor.map_id, closedHom_id]
+  rw [CategoryTheory.Functor.map_id, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.closedHom_id]
   change (cycleFromUnit (homComplex A X X) (identity X)).val = _
   rw [identity, cycleFromUnit_unitFromCycle]
 
 def complexIdentityDoldKanVertex (X : Complex A) :
-    (doldKanHomSpace (R := A) (D := Complex A) X X) _⦋0⦌ :=
-  (standardDoldKanModuleIso (R := A) X X).hom.app (Opposite.op ⦋0⦌)
-    (standardConstant (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.doldKanHomSpace (R := A) (D := Complex A) X X) _⦋0⦌ :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardDoldKanModuleIso (R := A) X X).hom.app (Opposite.op ⦋0⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0)
 
 lemma complexIdentityDoldKanVertex_raw (X : Complex A) :
     truncationExtendedZeroInclusion A ComplexShape.embeddingDownNat
       embeddingDownNat_eq_upIntLE_zero rfl (homComplex A X X)
-      ((gammaDegreeZeroIso (connectiveHomComplex (R := A) X X)).hom
+      ((gammaDegreeZeroIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex (R := A) X X)).hom
         (complexIdentityDoldKanVertex A X)) = CochainComplex.HomComplex.Cochain.ofHom (𝟙 X) := by
   have h0 := standardDoldKanModuleIso_zero_raw (R := A) (D := Complex A) X X
-    (standardConstant (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0)
-  have h := standardConstant_singleton
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant_singleton
     (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) (0 : Fin 1)
-  have h' : (standardConstant
+  have h' : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardConstant
       (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))) 0).val.component
       Finset.univ 0 Finset.univ_nonempty (by simp) =
       (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map (𝟙 X))).val := by

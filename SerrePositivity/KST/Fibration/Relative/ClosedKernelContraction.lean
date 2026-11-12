@@ -35,7 +35,7 @@ lemma closedKernelRelativeS_eq_top {B : StableModel.{u}}
     (P : ClosedStablePredicate B) (n : ℕ) :
     relativeSConstruction (closedKernelZeroMap P).hom n = ⊤ :=
   relativeDiagram_eq_top_of_zero _ (sComponentEvaluation (closedStableModel P).carrier n)
-    (fun _ _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
+    (fun _ _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _)
 
 /-- 概要：相対 S_n の包含を順射に持つ全 S_n との同型。
 方針：部分複体の標準同型を合成。

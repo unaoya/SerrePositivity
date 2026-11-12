@@ -9,7 +9,7 @@ public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuatio
 public import SerrePositivity.BhattScholze.Perfectoidization.Derived.ArcValuationMilnor
 public import SerrePositivity.BhattScholze.Prism.Perfectoid.WittQuotientTilt
 public import SerrePositivity.BhattScholze.Perfectoidization.CompletedTensor
-public import SerrePositivity.InfinityCategories.F2.Ind.NativeFilteredPreservation
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.NativeFilteredPreservation
 public import Mathlib.AlgebraicTopology.CechNerve
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import Mathlib.Algebra.Category.Ring.Colimits
@@ -22,6 +22,7 @@ public import Mathlib.RingTheory.WittVector.Truncated
 public import Mathlib.Algebra.Exact.Basic
 public import Mathlib.CategoryTheory.Category.ULift
 public import Mathlib.RingTheory.LocalRing.ResidueField.Ideal
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 -- Cor 8.11 は drafts/A5/{PerfectSiteComparison,InterfaceLimitCone}.lean と drafts/Sheaves/GlobalSections.lean を使う。
 -- 本ファイルは drafts/DerivedGeneral/Truncation.lean の IsCoconnectiveAt も使う。
 -- W9-III-08：2a 後は E3 非依存の芯（仮称 CompletedTensorCore）だけを import する（a9-design §7）。
@@ -382,7 +383,7 @@ theorem cech_exact_of_arcCover_perfectoid {R S : Type u} [CommRing R] [CommRing 
   sorry -- 相対テンソル冪の tilt は completedTensor_tilt。一点族 R♭ → S♭ × R♭[1/a] に
         -- cech_exact_of_arcCover_perfect、G-A6-7、G-A6-5。零の積環は別扱いで、完備な R,S は単位で戻す
 
-open SerrePositivity.InfinityCategories.Sheaves SerrePositivity.EInfinity
+open SerrePositivity.EInfinity
 
 /-- site の opposite を戻し、包含に沿って環とその射を読む。 -/
 def arcPerfdRingFunctor : ((AffPerfd p κ)ᵒᵖ)ᵒᵖ ⥤ CommRingCat.{u} :=
@@ -481,7 +482,7 @@ theorem perfectoidization_eq_arcCohomology
     (R : Type u) [CommRing R] (hR : IsIntegralPerfectoid R p) (hsize : Cardinal.mk R ≤ κ)
     (S : AffCompl p κ) (r : CommRingCat.of R ⟶ (affComplForget p κ).obj S)
     (hJ : Sheafification (arcPerfdSliceTopology p κ S) (E.CAlg R))
-    (hE : F2.Presentable.IsPresentable (E.CAlg R)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (E.CAlg R)) :
     let O := ringPresheafToCAlg (E := E) R
       (unopUnop (ArcPerfdUnder p κ S) ⋙ arcSliceAlgebras p κ R S r)
     ∃ e : SSet.Edge (perfectoidizationCone (E := E) p R (Under.mk r)).vertex

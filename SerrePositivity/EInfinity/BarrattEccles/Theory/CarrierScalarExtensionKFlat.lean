@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
 public import SerrePositivity.DifferentialGraded.Derived.ScalarExtension
 public import SerrePositivity.DifferentialGraded.Tensor.Graded
-public import SerrePositivity.InfinityCategories.Derived.SemifreeBaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeBaseChange
 
 /-!
 # K 平坦な台の semifree 解像度と係数拡大
@@ -35,7 +35,7 @@ variable {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T)
 /-- K 平坦な複体では、D(S) の実際の置換の augmentation は係数拡大後も擬同型。 -/
 lemma complexSemifreeResolutionValueAugmentation_baseChange_quasiIso
     (X : Complex S) (hX : complexKFlat S X) :
-    QuasiIso ((complexBaseChange f).map (complexSemifreeResolutionValueAugmentation S X)) := by
+    QuasiIso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexBaseChange f).map (complexSemifreeResolutionValueAugmentation S X)) := by
   let P := complexSemifreeResolutionValue S X
   have hP : complexKFlat S P.val :=
     moduleSemifree_objectwiseKFlat S PUnit.{1} (fun _ _ => complexKFlat_unit S)

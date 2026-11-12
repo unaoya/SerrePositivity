@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoComponentPre
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentPre
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.VertexIsoCompositionTransport
 public import Mathlib.CategoryTheory.CommSq
 

@@ -43,11 +43,11 @@ private lemma internalMap_evaluation {X Y Z : SSet.{u}} (f : Y ⟶ Z)
   rfl
 
 /-- 全パラメータに自然な完全関手族の四角形は、元の S_n の全作用でも自然。 -/
-lemma sExactParameterizedNaturality (n : ℕ) {C D C' D' : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    {P : SSet.{u}} (a : P ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D : SSet.{u}))
-    (b : P ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C' D' : SSet.{u})) (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C C') (g : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D D')
-    (h : (f.hom ▷ P) ≫ uncurry (b ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C' D').ι) =
-      uncurry (a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι) ≫ g.hom) :
+lemma sExactParameterizedNaturality (n : ℕ) {C D C' D' : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    {P : SSet.{u}} (a : P ⟶ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D : SSet.{u}))
+    (b : P ⟶ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C' D' : SSet.{u})) (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C C') (g : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D D')
+    (h : (f.hom ▷ P) ≫ uncurry (b ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C' D').ι) =
+      uncurry (a ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D).ι) ≫ g.hom) :
     ((sExactMap n f).hom ▷ P) ≫ uncurry (b ≫ sExactFamilyMap n C' D') =
       uncurry (a ≫ sExactFamilyMap n C D) ≫ (sExactMap n g).hom := by
   change (sPostcompCofiber n f.hom
@@ -62,9 +62,9 @@ lemma sExactParameterizedNaturality (n : ℕ) {C D C' D' : _root_.SerrePositivit
   intro m α
   apply ConcreteCategory.hom_ext
   intro q
-  have hb := family_evaluation (b ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C' D').ι) α p.2
+  have hb := family_evaluation (b ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C' D').ι) α p.2
     (f.hom.app m (p.1.val.app m α q))
-  have ha := family_evaluation (a ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors C D).ι) α p.2
+  have ha := family_evaluation (a ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors C D).ι) α p.2
     (p.1.val.app m α q)
   have hh := congrArg (fun z => z.app m (p.1.val.app m α q, P.map α p.2)) h
   change ((MonoidalClosed.comp (arNerve n) C'.obj D'.obj).app k

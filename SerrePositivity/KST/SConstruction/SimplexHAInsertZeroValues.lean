@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の全座標への零端点挿入生成元の HA 値は、同じ内部頂点を削除した値。 -/
-lemma simplexHAGeneratorValue_insert_zero_heq {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHAGeneratorValue_insert_zero_heq {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (q : Fin (m + 1)) (i : SerreCubeGeneratorIndex m)
     (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) :

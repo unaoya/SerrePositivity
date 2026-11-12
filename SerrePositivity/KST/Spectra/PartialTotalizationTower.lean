@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.PointedTotalizationEndIso
 universe u
 open CategoryTheory CategoryTheory.Limits SSet Opposite HomotopicalAlgebra
 open SSet.modelCategoryQuillen
-open SerrePositivity.Reedy SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.Reedy
 namespace SerrePositivity.KST.Spectra.PartialTotalizationTower
 noncomputable section
 set_option backward.isDefEq.respectTransparency false

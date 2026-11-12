@@ -28,11 +28,11 @@ lemma hom_eqToHom {X Y : OmegaSpectrum.{u}} (h : X = Y) :
 
 /-- 元の BF 対象の頂点を復号すると、元の対象へ戻る。 -/
 def spectrumIsoBF (X : OmegaSpectrum.{u}) : spectrum (obj X) ≅ X :=
-  eqToIso (coherentNerveObject_vertex X)
+  eqToIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject_vertex X)
 
 lemma spectrumIsoBF_hom (X : OmegaSpectrum.{u}) :
     hom (spectrumIsoBF X).hom = (spectrumIso (obj X)).hom :=
-  hom_eqToHom (coherentNerveObject_vertex X)
+  hom_eqToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject_vertex X)
 
 /-- 全整数次数で、元の BF 射とホモトピー圏の作用の比較は可換する。 -/
 lemma piMap_hom_naturality {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (j : ℤ) :

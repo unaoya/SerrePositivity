@@ -22,20 +22,20 @@ set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory Opposite
 
 namespace SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements
-open SerrePositivity.HomotopyFunctionComplex
+
 
 variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C) (V : C)
 
 /-- 元の Hom の単体を同じ次数と元の射の comma 対象へ送る。 -/
-def toComma : (((cosimplicialHom A).obj V).Elements)ᵒᵖ ⥤ CostructuredArrow A V where
+def toComma : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ ⥤ CostructuredArrow A V where
   obj s := CostructuredArrow.mk (Y := s.unop.obj.unop) s.unop.val
   map f := CostructuredArrow.homMk f.unop.hom.unop f.unop.map_val
   map_id _ := rfl
   map_comp _ _ := rfl
 
 /-- 元の comma 対象と作用素から同じ Hom の単体と作用素を復元。 -/
-def fromComma : CostructuredArrow A V ⥤ (((cosimplicialHom A).obj V).Elements)ᵒᵖ where
-  obj s := op (((cosimplicialHom A).obj V).elementsMk (op s.left) s.hom)
+def fromComma : CostructuredArrow A V ⥤ (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ where
+  obj s := op (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).elementsMk (op s.left) s.hom)
   map f := (Functor.Elements.homMk f.left.op (CostructuredArrow.w f)).op
   map_id _ := rfl
   map_comp _ _ := rfl
@@ -47,13 +47,13 @@ lemma toComma_fromComma : toComma A V ⋙ fromComma A V = 𝟭 _ := rfl
 lemma fromComma_toComma : fromComma A V ⋙ toComma A V = 𝟭 _ := rfl
 
 /-- 元の全単体の反対要素圏と同じ cosimplicial 図式の comma 圏の明示的な同値。 -/
-def equivalence : (((cosimplicialHom A).obj V).Elements)ᵒᵖ ≌ CostructuredArrow A V :=
+def equivalence : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj V).Elements)ᵒᵖ ≌ CostructuredArrow A V :=
   CategoryTheory.Equivalence.mk (toComma A V) (fromComma A V)
     (eqToIso (toComma_fromComma A V).symm) (eqToIso (fromComma_toComma A V))
 
 /-- 右対象の元の射への後合成と同じ順関手は全対象・全射で厳密に可換。 -/
 lemma toComma_naturality {V W : C} (f : V ⟶ W) :
-    ((cosimplicialHom A).map f).mapElements.op ⋙ toComma A W =
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f).mapElements.op ⋙ toComma A W =
       toComma A V ⋙ CostructuredArrow.map f := rfl
 
 end SerrePositivity.EInfinity.FrameHom.CosimplicialHomElements

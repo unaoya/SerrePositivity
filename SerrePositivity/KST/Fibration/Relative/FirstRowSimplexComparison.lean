@@ -23,10 +23,10 @@ namespace SerrePositivity.KST.Fibration.Relative
 方針：同じ厳密座標四角形による可逆性の同値を各正段に適用する。
 規約：零次元の標準単体も含め、元の商射・全四角形同型を保持する。
 使われ方：Sp の c5 供給と S-1 (a) による c4 を b・d の既存消費側へ渡す。 -/
-def SingleRelativeComparison.ofFirstRowSimplices (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+def SingleRelativeComparison.ofFirstRowSimplices (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map
       (relativeFirstRowSimplexQuotient d.projection n)))
-    (e : FunctorIso (d.square ≫ coherentNerveMap (stableMultiKanEnrichedFunctor 0))
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d.square ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableMultiKanEnrichedFunctor 0))
       (quotientSKernelInfinitySquare d.inclusion d.projection)) :
     SingleRelativeComparison d :=
   SingleRelativeComparison.ofPositiveStages d

@@ -16,7 +16,7 @@ public import SerrePositivity.KST.Spectra.ComponentHomotopyMaps
 universe u
 
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 
@@ -50,7 +50,7 @@ theorem homotopyLimitConeComparison_natural_component
     PointedMapping.componentOf (f.app n ≫ (homotopyLimitConeComparison d).app n) =
       PointedMapping.componentOf ((homotopyLimitConeComparison c).app n ≫
         (homotopyLimitMap τ).app n) := by
-  have hn := PointedWeightedEnd.coneComparison_natural (bousfieldKanWeight I)
+  have hn := PointedWeightedEnd.coneComparison_natural (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
     (KanSequence.levelCone (forgetToKan.mapCone c) n)
     (KanSequence.levelCone (forgetToKan.mapCone d) n) (f.app n)
     (KanSequence.homotopyLimitLevelTransformation (Functor.whiskerRight τ forgetToKan) n)

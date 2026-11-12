@@ -68,10 +68,10 @@ lemma kKanCoherentLevelDiagram_zero {I : Type u} [SmallCategory I]
 /-- 元の K の全段での、実際の loop ∞ 関手への図式全体の Ω 同型。 -/
 def kKanNativeOmegaIso {I : Type u} [SmallCategory I]
     (F : I ⥤ StableModel.{u}) (r : ℕ) :
-    FunctorIso (kKanCoherentLevelDiagram F r)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (kKanCoherentLevelDiagram F r)
       (kKanCoherentLevelDiagram F (r + 1) ≫ pointedKanLoopInfinity) :=
   match r with
-  | 0 => eqToIso (congrArg (fun p => SSet.HomotopyCategory.mk (functorVertex p))
+  | 0 => eqToIso (congrArg (fun p => SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex p))
       (kKanCoherentLevelDiagram_zero F))
   | r + 1 => boundaryAssemblyNativeOmegaIso r F
 

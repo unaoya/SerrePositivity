@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolutionNativeMarkedHom
-public import SerrePositivity.InfinityCategories.Core.PrecompositionTensor
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PrecompositionTensor
 
 /-!
 # 元の指定部分圏の Hom augmentation 自身の弱同値性
@@ -20,13 +20,13 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite SerrePositivity.InfinityCategories
 
-lemma marked_eqToHom_hom {C : RelativeCategory.{u}}
+lemma marked_eqToHom_hom {C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
     {X Y : WideSubcategory C.weakEquivalences} (h : X = Y) :
     (eqToHom h).hom = eqToHom (congrArg WideSubcategory.obj h) := by
   cases h
   rfl
 
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 
 def freeResolutionNativeMarkedHomIso :
     freeResolutionNativeMarkedHom C X Y ≅ freeResolutionMarkedHom C X Y where
@@ -36,7 +36,7 @@ def freeResolutionNativeMarkedHomIso :
         apply ConcreteCategory.hom_ext
         intro f
         apply Subtype.ext
-        change (eqToHom _ ≫ (markedCategoryMap ((freeResolution C).map θ)).map f ≫
+        change (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolution C).map θ)).map f ≫
           eqToHom _).hom = eqToHom _ ≫ ((freeResolution C).map θ).functor.map f.hom ≫ eqToHom _
         simp only [WideSubcategory.comp_def, marked_eqToHom_hom]
         rfl }
@@ -47,7 +47,7 @@ def freeResolutionNativeMarkedHomIso :
         intro f
         apply WideSubcategory.hom_ext
         change (eqToHom _ ≫ ((freeResolution C).map θ).functor.map f.val ≫ eqToHom _) =
-          (eqToHom _ ≫ (markedCategoryMap ((freeResolution C).map θ)).map
+          (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolution C).map θ)).map
             ⟨f.val, f.property⟩ ≫ eqToHom _).hom
         simp only [WideSubcategory.comp_def, marked_eqToHom_hom]
         rfl }
@@ -75,18 +75,18 @@ lemma freeResolutionNativeMarkedHomIso_augmentation :
   apply Subtype.ext
   change (eqToHom _ ≫ ((freeResolutionAugmentationNatTrans C).app n).functor.map f.hom ≫
     eqToHom _) =
-      (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
+      (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
         eqToHom _).hom
   simp only [WideSubcategory.comp_def, marked_eqToHom_hom]
   rfl
 
 lemma freeResolutionNativeMarkedHomAugmentation_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
-  have h := (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeResolutionNativeMarkedHomAugmentation C X Y) := by
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeResolutionNativeMarkedHomIso C X Y)).isWeakHomotopyEquivalence.comp
       (freeResolutionMarkedHomAugmentation_isWeakHomotopyEquivalence C X Y)
   rw [freeResolutionNativeMarkedHomIso_augmentation] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (markedHomSubtypeIso C X Y)).isWeakHomotopyEquivalence.cancel_right h
 
 end SerrePositivity.EInfinity.SimplicialLocalization

@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：元の本質像包含の core S 実現を Ex∞ へ送った射。
@@ -23,11 +23,11 @@ open scoped Simplicial
 使われ方：零次 K 単射・正次数全単射を得る前の次数移動。 -/
 def completionRelativeKanInclusion (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    exInfinity.obj (coreSRealizationFunctor.obj
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
       (closedStableModel (completionImageClosedPredicate r ι f hf))) ⟶
-        exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
-  exInfinity.map (coreSRealizationFunctor.map
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj (((multiSEndofunctor r).obj ι).obj Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map
     (closedStableInclusion (completionImageClosedPredicate r ι f hf)))
 
 /-- 概要：採用済みの二入力下で元の包含は π₁ 単射・二次以上で全単射。
@@ -37,19 +37,19 @@ def completionRelativeKanInclusion (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 lemma completionRelativeKanInclusion_groupConditions_of_inputs
     (supply : KanPullbackCofinalityInput.{u}) (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate r ι f hf))
-    (a : (exInfinity.obj (coreSRealizationFunctor.obj
+    (a : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
       (closedStableModel (completionImageClosedPredicate r ι f hf)))) _⦋0⦌) :
     Function.Injective
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (completionRelativeKanInclusion r ι f hf) (x := a) rfl) ∧
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 1 (completionRelativeKanInclusion r ι f hf) (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (completionRelativeKanInclusion r ι f hf) (x := a) rfl) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (completionRelativeKanInclusion r ι f hf) (x := a) rfl) := by
   let j := completionRelativeKanComparison r ι f hf
   let q := completionRelativeKanProjection r ι f hf
-  have hj : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (j : exInfinity.obj (coreSRealizationFunctor.obj
+  have hj : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (j : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj
         (closedStableModel (completionImageClosedPredicate r ι f hf))) ⟶
           completionRelativeKanPullback r ι f hf) :=
     completionRelativeKanComparison_piIsomorphism_of_input r ι f hf h
@@ -58,10 +58,10 @@ lemma completionRelativeKanInclusion_groupConditions_of_inputs
   have he : j ≫ q = completionRelativeKanInclusion r ι f hf :=
     completionRelativeKanComparison_projection r ι f hf
   rw [← he]
-  have hm (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (j ≫ q) (x := a) rfl =
-      (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n q rfl) ∘ (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n j (x := a) rfl) := by
+  have hm (n : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (j ≫ q) (x := a) rfl =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n q rfl) ∘ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n j (x := a) rfl) := by
     funext b
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_comp n j rfl q rfl rfl b
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_comp n j rfl q rfl rfl b
   constructor
   · rw [hm 1]
     exact hq.1.comp (hj a 1).1

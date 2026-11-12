@@ -17,7 +17,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [EnrichedCategory SSet.{u} D]
@@ -31,18 +31,18 @@ lemma EnrichedParts.ext {F G : EnrichedParts W D} (hm : F.marked = G.marked)
   rfl
 
 lemma EnrichedParts.foldData_parts (G : EnrichedParts W D) : G.foldData.parts = G := by
-  let := Hammock.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
-  let := DiscreteEnrichment.enrichedCategory
-    (C := Paths (MarkedGenerators.quiver (GeneratorPartition.unmarked W)))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory (⊤ : MorphismProperty (WideSubcategory W.paths))
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DiscreteEnrichment.enrichedCategory
+    (C := Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked W)))
   apply EnrichedParts.ext (F := G.foldData.parts) (G := G)
   · apply EnrichedFunctor.ext SSet.{u} (F := G.foldData.markedEnrichedFunctor)
       (G := G.marked) (fun _ => rfl)
     intro X Y
     change G.marked.map X Y ≫ 𝟙 _ = G.marked.map X Y
     exact Category.comp_id _
-  · change FreeDiscreteEnrichment.functorEquiv.symm G.foldData.unmarkedPrefunctor = G.unmarked
-    exact (congrArg FreeDiscreteEnrichment.functorEquiv.symm G.foldData_prefunctor).trans
-      (FreeDiscreteEnrichment.functorEquiv.symm_apply_apply G.unmarked)
+  · change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeDiscreteEnrichment.functorEquiv.symm G.foldData.unmarkedPrefunctor = G.unmarked
+    exact (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeDiscreteEnrichment.functorEquiv.symm G.foldData_prefunctor).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FreeDiscreteEnrichment.functorEquiv.symm_apply_apply G.unmarked)
 
 def enrichedPartsEquiv : EnrichedFoldData W D ≃ EnrichedParts W D where
   toFun := EnrichedFoldData.parts
@@ -51,9 +51,9 @@ def enrichedPartsEquiv : EnrichedFoldData W D ≃ EnrichedParts W D where
   right_inv := EnrichedParts.foldData_parts
 
 def freeProductEnrichedFunctorEquiv (W : MorphismProperty C) :
-    letI := Hammock.enrichedCategory W.paths
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
     EnrichedFunctor SSet.{u} (Paths C) D ≃ EnrichedParts W D := by
-  letI := Hammock.enrichedCategory W.paths
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedCategory.enrichedCategory W.paths
   exact (hammockEnrichedFunctorEquiv W).trans enrichedPartsEquiv
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine

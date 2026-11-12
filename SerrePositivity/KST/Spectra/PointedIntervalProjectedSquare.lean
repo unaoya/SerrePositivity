@@ -36,7 +36,7 @@ def projectedNaturalitySquare {A D D' E E' : PointedSimplicialSet.{u}}
     (H : SSet.Homotopy (P.basedPost v).path (Q.pre v).path) :
     SSet.Homotopy (((P.pre i).basedPost q).basedPost w).path
       ((Q.pre (i ≫ v)).basedPost q').path where
-  h := H.h ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i D').right ≫ (PointedObject.basedHomMap A q').right
+  h := H.h ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i D').right ≫ (PointedObject.basedHomMap A q').right
   h₀ := by
     rw [← Category.assoc, ← Category.assoc, H.h₀]
     exact (projectedPost_path P i v q q' w hq).symm

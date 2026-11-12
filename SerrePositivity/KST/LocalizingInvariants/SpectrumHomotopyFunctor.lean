@@ -26,11 +26,11 @@ local instance homotopyFunctorHomKan (X Y : OmegaSpectrum.{u}) :
 /-- ホモトピー圏の任意の射を、元の端点の BF 射で表す。 -/
 lemma exists_representative {X Y : OmegaSpectrum.{u}} (m : obj X ⟶ obj Y) :
     ∃ f : X ⟶ Y, hom f = m := by
-  obtain ⟨e, he⟩ := homotopyCategory_homMk_surjective
-    (coherentNerveVertex X) (coherentNerveVertex Y) m
-  let a := coherentNerveEdgeToHom (SSet.Edge.ofTruncated e)
+  obtain ⟨e, he⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y) m
+  let a := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (SSet.Edge.ofTruncated e)
   refine ⟨a, ?_⟩
-  have ha := coherentNerveEdge_hom (SSet.Edge.ofTruncated e)
+  have ha := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_hom (SSet.Edge.ofTruncated e)
   exact (congrArg (fun k ↦ SSet.Truncated.HomotopyCategory.homMk
     (SSet.Edge.toTruncated k)) ha).trans he
 
@@ -42,10 +42,10 @@ lemma hom_representative {X Y : OmegaSpectrum.{u}} (m : obj X ⟶ obj Y) :
 
 /-- 元の Sp の任意の頂点を BF 対象へ戻す。 -/
 def spectrum (x : hoFunctor.obj Sp.{u}) : OmegaSpectrum.{u} :=
-  coherentNerveObject x.as.as
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject x.as.as
 
 def spectrumIso (x : hoFunctor.obj Sp.{u}) : obj (spectrum x) ≅ x :=
-  eqToIso (SSet.Truncated.HomotopyCategory.ext (coherentNerveVertex_object x.as.as))
+  eqToIso (SSet.Truncated.HomotopyCategory.ext (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object x.as.as))
 
 def normalize {x y : hoFunctor.obj Sp.{u}} (m : x ⟶ y) :
     obj (spectrum x) ⟶ obj (spectrum y) := (spectrumIso x).hom ≫ m ≫ (spectrumIso y).inv

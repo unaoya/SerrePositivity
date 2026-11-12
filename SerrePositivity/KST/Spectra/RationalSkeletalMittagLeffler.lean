@@ -32,8 +32,8 @@ theorem correction_cohomology_isZero (X : OmegaSpectrum.{u}) (k : ℕ)
 /-- 有限群の nerve から有理化各段への骨格の写像空間の塔は高次群で Mittag–Leffler。 -/
 theorem groupTower_isMittagLeffler (X : OmegaSpectrum.{u}) (k : ℕ)
     (G : Type u) [Group G] [Finite G] (r : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
         ((UnbasedPointedMapping.tower (nerve (AsSmall.{u} (SingleObj G)))
           ((OmegaSpectrum.rationalization X).level k).space).obj (op n)).right (r + 2)
         ((UnbasedPointedMapping.tower (nerve (AsSmall.{u} (SingleObj G)))
@@ -48,8 +48,8 @@ theorem groupTower_isMittagLeffler (X : OmegaSpectrum.{u}) (k : ℕ)
 /-- 実際の有理骨格の塔の高次群の lim¹ の消滅。 -/
 theorem limOne_subsingleton (X : OmegaSpectrum.{u}) (k : ℕ)
     (G : Type u) [Group G] [Finite G] (r : ℕ) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup
         ((UnbasedPointedMapping.tower (nerve (AsSmall.{u} (SingleObj G)))
           ((OmegaSpectrum.rationalization X).level k).space).obj (op n)).right (r + 2)
         ((UnbasedPointedMapping.tower (nerve (AsSmall.{u} (SingleObj G)))
@@ -58,7 +58,7 @@ theorem limOne_subsingleton (X : OmegaSpectrum.{u}) (k : ℕ)
         ((UnbasedPointedMapping.tower (nerve (AsSmall.{u} (SingleObj G)))
           ((OmegaSpectrum.rationalization X).level k).space).map
             (homOfLE (Nat.le_succ n)).op))) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_mittagLeffler _ _ (groupTower_isMittagLeffler X k G r)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.subsingleton_of_mittagLeffler _ _ (groupTower_isMittagLeffler X k G r)
 
 end
 end SerrePositivity.KST.Spectra.RationalSkeletalTower

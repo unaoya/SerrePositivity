@@ -16,9 +16,9 @@ public import SerrePositivity.EInfinity.Hammock.HomLiftColimit
 noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SimplicialLocalization
+open CategoryTheory HomotopicalAlgebra
 variable (A : Type u) [CommRing A]
-def algebraRelativeCategory : RelativeCategory.{u + 1} := by
+def algebraRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} := by
   let := modelCategory A
   exact
     { category := Cat.of (ULiftHom.{u + 1} (operad A).Algebra)

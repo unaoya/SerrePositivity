@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.StandardSimplexCosimplicialHom
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionCylinder
@@ -44,7 +44,7 @@ def cylinder : Cylinder (L.obj (SSet.stdSimplex.{w}.obj (SimplexCategory.mk 0)))
   cosimplicialCylinder (SSet.stdSimplex ⋙ L) (standardMap_weakEquivalence L hcof hw)
 
 lemma cylinder_isGood : (cylinder L hcof hw).IsGood :=
-  cosimplicialCylinder_isGood (SSet.stdSimplex ⋙ L) (reedyCofibrant L hcof)
+  cosimplicialCylinder_isGood (SSet.stdSimplex ⋙ L) (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame.reedyCofibrant L hcof)
     (standardMap_weakEquivalence L hcof hw)
 
 end SerrePositivity.HomotopyFunctionComplex.QuillenStandardFrame

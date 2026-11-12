@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.FibrationIntervalLifting
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.FibrationIntervalLifting
 public import SerrePositivity.KST.Comparison.FibrantTargetLifting
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveStandard
 
@@ -24,12 +24,12 @@ lemma fibration_vertex_surjective_of_connected {E B : SSet.{u}}
     [KanComplex E] [KanComplex B] [SSet.IsPreconnected B]
     (p : E ⟶ B) [Fibration p] (e : E _⦋0⦌) :
     Function.Surjective (p.app (Opposite.op ⦋0⦌)) := by
-  let eB := _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
-  have hB : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy B 0 (p.app _ e)) :=
+  let eB := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (X := B) (x := p.app _ e)
+  have hB : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy B 0 (p.app _ e)) :=
     ⟨fun a b => eB.injective (Subsingleton.elim _ _)⟩
-  apply _root_.SerrePositivity.InfinityCategories.F1.Pointed.fibration_surjective_vertices_of_zero p e
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.fibration_surjective_vertices_of_zero p e
   intro b
-  exact ⟨_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.point 0, hB.elim _ _⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.point 0, hB.elim _ _⟩
 
 /-- Kan 基底上の Kan fibration の頂点全射性は全単体全射性を導く。 -/
 lemma fibration_simplex_surjective_of_vertex_surjective {E B : SSet.{u}} [KanComplex B]

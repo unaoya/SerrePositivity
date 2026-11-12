@@ -15,13 +15,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeAugmentationAt_compose_pair {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) :
     compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
       (normalizedTensorConeAugmentationAt A X Y c b))).val
@@ -38,18 +38,18 @@ lemma normalizedTensorConeAugmentationAt_compose_pair {n : ℕ}
 lemma normalizedTensorConeAugmentationAt_compose {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) :
     compose A (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
       (normalizedTensorConeAugmentationAt A X Y c b))).val
       ((normalizedTensorConeData A X Y c).hom I a b k hI ha hb hk) (add_zero k) =
-      closedNerveHom ((complexToClosed A).map
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map
         (normalizedTensorConeAugmentationAt A X Y c a)) k := by
   by_cases hk0 : k = 0
   · subst hk0
-    rw [closedNerveHom_zero]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero]
     exact normalizedTensorConeAugmentationAt_compose_pair A X Y c I a b hI ha hb hk
-  · rw [closedNerveHom_of_ne _ k hk0]
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ k hk0]
     exact normalizedTensorConeAugmentationAt_compose_of_card_ge_three A X Y c I a b k
       hI ha hb hk (by omega)
 

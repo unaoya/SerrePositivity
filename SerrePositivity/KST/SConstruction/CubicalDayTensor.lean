@@ -18,7 +18,7 @@ open CategoryTheory MonoidalCategory
 open scoped MonoidalCategory.ExternalProduct
 
 /-- 連結積に沿う Day tensor を持つ元の cubical sets。 -/
-abbrev CubicalDaySet := DayFunctor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)
+abbrev CubicalDaySet := DayFunctor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)
 
 /-- Day tensor は全 cubical sets 上で結合・単位の coherent 法則を満たす。 -/
 @[instance_reducible]
@@ -26,7 +26,7 @@ def cubicalDayMonoidal : MonoidalCategory CubicalDaySet.{u} := inferInstance
 
 /-- 元の cubical sets と、Day tensor を使う型との間の同じ前層の圏同値。 -/
 def cubicalDayEquivalence : CubicalDaySet.{u} ≌ CubicalSet.{u} :=
-  DayFunctor.equiv _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ (Type u)
+  DayFunctor.equiv _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ (Type u)
 
 /-- 元の二つの cubical sets の連結に沿う Day tensor。 -/
 def cubicalDayTensor (K L : CubicalSet.{u}) : CubicalSet.{u} :=
@@ -34,7 +34,7 @@ def cubicalDayTensor (K L : CubicalSet.{u}) : CubicalSet.{u} :=
 
 /-- Day tensor を元の二つの cell から生成する左 Kan 延長の単位。 -/
 def cubicalDayTensorUnit (K L : CubicalSet.{u}) :
-    K ⊠ L ⟶ tensor _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCubeᵒᵖ ⋙ cubicalDayTensor K L :=
+    K ⊠ L ⟶ tensor _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCubeᵒᵖ ⋙ cubicalDayTensor K L :=
   DayFunctor.η (DayFunctor.mk K) (DayFunctor.mk L)
 
 /-- 元の Day tensor は仮定なしに左 Kan 延長の普遍性を持つ。 -/

@@ -4,13 +4,14 @@
 module
 
 public import SerrePositivity.BhattScholze.Prism.Basic.OrientedPrism
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Derived.BaseChange
-public import SerrePositivity.InfinityCategories.Derived.Homology
-public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
-public import SerrePositivity.InfinityCategories.Core.NerveCone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.BaseChange
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Homology
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.NerveCone
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.IsPullback.Defs
 public import Mathlib.CategoryTheory.Sites.Sheaf
 -- 本ファイルは drafts/A0/PrismaticSite.lean（site・O_Δ・Δ_{R/A}）、drafts/DerivedGeneral/{Truncation,CompletionFunctor}.lean
@@ -76,7 +77,7 @@ end SerrePositivity.InfinityCategories.Derived
 namespace SerrePositivity.BhattScholze.Prismatic
 
 open SerrePositivity.DerivedCompletion SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.Sheaves
+
 
 variable {p : ℕ} [Fact p.Prime] {A : Type u} [CommRing A] (P : OrientedPrism p A)
 
@@ -220,7 +221,7 @@ theorem reducedStructurePresheafDerived_isSheaf (hκ : IsAdmissibleCutoff P R κ
 使われ方：`prismaticCohomology_eq_cechAlexanderTot`（CechAlexander）。 -/
 theorem prismaticCohomology_isLimit (hκ : IsAdmissibleCutoff P R κ)
     (hJ : Sheafification (flatTopology P R κ) (derivedInfinityCategory A))
-    (hE : F2.Presentable.IsPresentable (derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (derivedInfinityCategory A)) :
     ∃ c : JoinCone (structurePresheafDerived P R κ),
       IsLimitCone c ∧ c.vertex = prismaticCohomology P R κ hJ hE :=
   derivedGlobalSections_of_isSheaf (flatTopology P R κ) hJ hE (structurePresheafDerived_isSheaf P R κ hκ)

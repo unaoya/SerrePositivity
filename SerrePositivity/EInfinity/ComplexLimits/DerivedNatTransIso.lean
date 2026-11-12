@@ -31,21 +31,21 @@ def complexOrdinaryDerivedNatTransHomotopy :
   HomotopyClasses.postHomotopy (complexOrdinaryDerivedSource A) (FrameHom.MixedNerve.homotopy η)
 
 lemma complexOrdinaryDerivedNatTransHomotopy_component (i : I) :
-    (simplicialHomotopyVertexEdge (complexOrdinaryDerivedNatTransHomotopy A η)
-      (nerveVertex i)).edge = ((nerve.edgeMk (η.app i)).map
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (complexOrdinaryDerivedNatTransHomotopy A η)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).edge = ((nerve.edgeMk (η.app i)).map
         (complexOrdinaryDerivedSource A)).edge :=
   congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌))
     (FrameHom.MixedNerve.homotopy_component η i)
 
 def complexOrdinaryDerivedNatTransIso (hη : ∀ i, QuasiIso (η.app i)) :
-    FunctorIso (nerveMap F ≫ complexOrdinaryDerivedSource A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (nerveMap F ≫ complexOrdinaryDerivedSource A)
       (nerveMap G ≫ complexOrdinaryDerivedSource A) := by
-  apply functorIsoOfPointwiseInvertibleHomotopy (complexOrdinaryDerivedNatTransHomotopy A η)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.functorIsoOfPointwiseInvertibleHomotopy (complexOrdinaryDerivedNatTransHomotopy A η)
   intro z
   obtain ⟨i, rfl⟩ := ComposableArrows.mk₀_surjective z
-  exact (isInvertibleEdge_congr
-    (e := (simplicialHomotopyVertexEdge (complexOrdinaryDerivedNatTransHomotopy A η)
-      (nerveVertex i)).toTruncated)
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (complexOrdinaryDerivedNatTransHomotopy A η)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)).toTruncated)
     (f := ((nerve.edgeMk (η.app i)).map (complexOrdinaryDerivedSource A)).toTruncated)
     (complexOrdinaryDerivedNatTransHomotopy_component A η i)).mpr
       (complexOrdinaryDerivedSource_map_weak A (η.app i) (hη i))

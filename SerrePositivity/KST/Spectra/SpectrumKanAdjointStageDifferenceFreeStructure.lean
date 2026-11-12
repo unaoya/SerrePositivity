@@ -35,10 +35,10 @@ def kanAdjointStageDifferenceStructureHomotopy (n : ℕ) :
 
 /-- 同じ構造正方形は、二端点の境界全体を元の始辺の値で固定する。 -/
 lemma kanAdjointStageDifferenceStructureHomotopy_relative (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.{u}.right ▷ (Δ[1] : SSet.{u}) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.{u}.right ▷ (Δ[1] : SSet.{u}) ≫
       (kanAdjointStageDifferenceStructureHomotopy X Y φ j n).h =
     fst ((𝟙_ SSet.{u}) ⨿ (𝟙_ SSet.{u})) (Δ[1] : SSet.{u}) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.right ≫
         (((kanAdjointStageDifference X Y φ j (n + 1)).path).pre (X.sigma n)).path :=
   SquareAdjustment.fixed_endpoints (kanAdjointStageDifferenceStructureHomotopy X Y φ j n) _ _
     (kanAdjointStageDifferenceSquare_left_constant X Y φ j n)
@@ -47,12 +47,12 @@ lemma kanAdjointStageDifferenceStructureHomotopy_relative (n : ℕ) :
 /-- 同じ正方形から得る、両端境界射影に全区間で垂直な自由区間値の構造区間。 -/
 def kanAdjointStageDifferenceFreeStructureInterval (n : ℕ) :
     PointedMapping.VerticalPath
-      ((KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryInclusion
+      ((KanSequence.mappingPre _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryInclusion
         (KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence))).app (n + 1))
       (X.sigma n ≫ kanAdjointStageDifferenceFreeMap X Y φ j (n + 1))
       (PointedSimplicialSet.circle.{u} ◁ kanAdjointStageDifferenceFreeMap X Y φ j n ≫
         (KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).freePath.sigma n) :=
-  (PointedCotensorCoordinates.relativeIntervalOfHomotopy _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right
+  (PointedCotensorCoordinates.relativeIntervalOfHomotopy _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.right
     (kanAdjointStageDifferenceStructureHomotopy X Y φ j n)
     (kanAdjointStageDifferenceStructureHomotopy_relative X Y φ j n)).changeEndpoints
       (kanAdjointStageDifferenceFreeMap_pre X Y φ j n).symm

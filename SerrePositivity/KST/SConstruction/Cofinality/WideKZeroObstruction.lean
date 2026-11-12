@@ -62,21 +62,21 @@ lemma completionKZeroVertexClass_edge (r : ℕ) (ι : Fin r → SimplexCategory�
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌}
     (a : SSet.Edge x y) :
     completionKZeroVertexClass r ι f x.val = completionKZeroVertexClass r ι f y.val := by
-  have ha : a.edge.val ∈ cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
+  have ha : a.edge.val ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val) := by
     simpa only [op_id, CategoryTheory.Functor.map_id, types_id_apply]
       using a.edge.property (𝟙 ⦋1⦌)
   obtain ⟨q, z, hz, ⟨e⟩⟩ := ha
-  have hc := square_bottom_vertices (edgeOfSimplex a.edge.val) q.square q.bottom_edge
+  have hc := square_bottom_vertices (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.edge.val) q.square q.bottom_edge
   have hs := hc.1.trans (congrArg Subtype.val a.src_eq)
   have ht := hc.2.trans (congrArg Subtype.val a.tgt_eq)
-  have hq := TriangulatedK0.mk_triangle (cofiberTriangle q.toZeroTriangle q.isPushout)
+  have hq := TriangulatedK0.mk_triangle (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle q.toZeroTriangle q.isPushout)
     ⟨q.toZeroTriangle, q.isPushout, ⟨Iso.refl _⟩⟩
   change TriangulatedK0.mk
       (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
-      (HomotopyCategory.mk (squareVertex q.square 1 0)) =
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q.square 1 0)) =
     TriangulatedK0.mk (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
-      (HomotopyCategory.mk (squareVertex q.square 0 0)) +
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q.square 0 0)) +
     TriangulatedK0.mk (C := hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier)
       (HomotopyCategory.mk q.cofiber) at hq
   have hq' := hs ▸ ht ▸ hq

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorRestrictedEndpoint
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.RelativeConstFiberEvaluation
-public import SerrePositivity.InfinityCategories.F1.Scaffold.UniversalScaffoldEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.RelativeConstFiberEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.UniversalScaffoldEvaluation
 
 /-!
 概要：底の表示変更と引き戻しを含む相対端点評価の展開を、元の実制限へ同定する。

@@ -51,7 +51,7 @@ def d3BiParameterRightOrder (i j : Fin 2) :
 lemma d3PointedKanBiSquarePair_left (k l : Fin 2) :
     PointedKanInfinity.{u} ◁ d3BiParameterLeftFace k l ≫ d3PointedKanBiSquarePair =
     d3PointedKanSquarePair ≫
-      coherentNerveMap (reindex (C := PointedKanObject.{u}) (d3BiParameterLeftOrder k l)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (reindex (C := PointedKanObject.{u}) (d3BiParameterLeftOrder k l)) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -70,7 +70,7 @@ lemma d3PointedKanBiSquarePair_left (k l : Fin 2) :
 lemma d3PointedKanBiSquarePair_right (i j : Fin 2) :
     PointedKanInfinity.{u} ◁ d3BiParameterRightFace i j ≫ d3PointedKanBiSquarePair =
     d3PointedKanSquarePair ≫
-      coherentNerveMap (reindex (C := PointedKanObject.{u}) (d3BiParameterRightOrder i j)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (reindex (C := PointedKanObject.{u}) (d3BiParameterRightOrder i j)) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -101,7 +101,7 @@ lemma d3PointedKanBiParameterSquare_left (k l : Fin 2) :
     ← Category.assoc (PointedKanInfinity ◁ d3BiParameterLeftFace k l),
     d3PointedKanBiSquarePair_left]
   simp only [Category.assoc]
-  rw [← coherentNerveMap_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
   simp only [d3TensorParameterDiagram, d3PointedKanParameterDiagram_reindex]
 
 /-- 第二方向の全二次元面も、同じテンソルパラメータの制限図式の全族。 -/
@@ -118,7 +118,7 @@ lemma d3PointedKanBiParameterSquare_right (i j : Fin 2) :
     ← Category.assoc (PointedKanInfinity ◁ d3BiParameterRightFace i j),
     d3PointedKanBiSquarePair_right]
   simp only [Category.assoc]
-  rw [← coherentNerveMap_comp]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp]
   simp only [d3TensorParameterDiagram, d3PointedKanParameterDiagram_reindex]
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

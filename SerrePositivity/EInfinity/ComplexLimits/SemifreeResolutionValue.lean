@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionAugmentation
-public import SerrePositivity.InfinityCategories.Derived.DGModuleOutputResolutionAugmentation
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleOutputResolutionAugmentation
 public import SerrePositivity.DifferentialGraded.Derived.Basic
 
 /-!
@@ -20,28 +20,28 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories
-open CategoryTheory DifferentialGraded DGNerve
+open CategoryTheory DifferentialGraded
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
-def complexSemifreeResolutionValue (X : Complex A) : Semifree A :=
+def complexSemifreeResolutionValue (X : Complex A) : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A :=
   (semifreeRingEvaluationDG A).obj
-    (dgModuleOutputResolutionValue A (Complex A) PUnit.{1} (ringConstantDG A) X)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleOutputResolutionValue A (Complex A) PUnit.{1} (ringConstantDG A) X)
 
 def complexSemifreeResolutionValueAugmentation (X : Complex A) :
     (complexSemifreeResolutionValue A X).val ⟶ X :=
   (moduleEvaluation A PUnit.{1} PUnit.unit).map
-    (dgModuleOutputResolutionAugmentation A (Complex A) PUnit.{1} (ringConstantDG A) X)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleOutputResolutionAugmentation A (Complex A) PUnit.{1} (ringConstantDG A) X)
 
 lemma complexSemifreeResolutionValueAugmentation_quasiIso (X : Complex A) :
     QuasiIso (complexSemifreeResolutionValueAugmentation A X) :=
-  dgModuleOutputResolutionAugmentation_quasiIso A (Complex A) PUnit.{1}
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleOutputResolutionAugmentation_quasiIso A (Complex A) PUnit.{1}
     (ringConstantDG A) X PUnit.unit
 
 lemma complexSemifreeResolutionInfinity_vertex (X : Complex A) :
-    (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex X) =
-      Simplex.vertex (complexSemifreeResolutionValue A X) := by
-  apply (Simplex.vertexEquiv (A := A) (D := Semifree A)).injective
+    (complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A X) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv (A := A) (D := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree A)).injective
   rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

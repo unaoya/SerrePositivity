@@ -16,25 +16,25 @@ open SerrePositivity.InfinityCategories LocalizingInvariants
 
 /-- 全 S 方向を同じ次数へ制限した、元の反復 core S• の厳密豊穣図式。 -/
 def stableMultiSCoreDiagonalDiagram (r : ℕ) :
-    SimplicialObject (QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :=
+    SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :=
   multiIndexDiagonal r ⋙ stableMultiSCoreEnrichedDiagram r
 
 /-- 全自然同値入力を反復 core S• 対角図式全体へ送る厳密豊穣関手。 -/
 def stableMultiSCoreObjectEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}
       SimplicialSSetDiagram.{u} :=
   simplicialEnrichedDiagramFunctor (stableMultiSCoreDiagonalDiagram r)
 
 /-- 豊穣作用の実値は、元の同じ全反復 core S• の対角図式。 -/
 lemma stableMultiSCoreObjectEnrichedFunctor_obj (r : ℕ)
-    (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     ((stableMultiSCoreObjectEnrichedFunctor r).obj C).diagram =
       multiIndexDiagonal r ⋙ multiCoreSConstruction r
         (stableCategoryModel (C)) := rfl
 
 /-- 図式全体の各 Hom 射影は、元の同じ多次数の全自然同値入力族を回収する。 -/
 lemma stableMultiSCoreObjectEnrichedFunctor_projection (r : ℕ)
-    (C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ) :
+    (C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) (n : SimplexCategoryᵒᵖ) :
     (stableMultiSCoreObjectEnrichedFunctor r).map C D ≫
       simplicialSSetDiagramProjection
         ((stableMultiSCoreObjectEnrichedFunctor r).obj C)
@@ -45,7 +45,7 @@ lemma stableMultiSCoreObjectEnrichedFunctor_projection (r : ℕ)
 
 /-- 通常の完全射による、元の同じ反復 core S• 対角図式の自然変換。 -/
 def stableMultiSCoreObjectMap (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     (stableMultiSCoreObjectEnrichedFunctor r).obj C ⟶
       (stableMultiSCoreObjectEnrichedFunctor r).obj D :=
   Functor.whiskerLeft (multiIndexDiagonal r)
@@ -55,7 +55,7 @@ def stableMultiSCoreObjectMap (r : ℕ)
 
 /-- 元の通常の完全射では、同じ元の反復 core 自然変換を全段で回収する。 -/
 lemma stableMultiSCoreObjectEnrichedFunctor_hom (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     eHomEquiv SSet.{u} F ≫
       (stableMultiSCoreObjectEnrichedFunctor r).map C D =
         eHomEquiv SSet.{u} (stableMultiSCoreObjectMap r F) := by
@@ -67,7 +67,7 @@ lemma stableMultiSCoreObjectEnrichedFunctor_hom (r : ℕ)
 
 /-- 内部の単体方向も対角に取ると、同じ元の反復実現の実値を回収する。 -/
 lemma stableMultiSCoreObjectEnrichedFunctor_realization (r : ℕ)
-    (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+    (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     Functor.diag SimplexCategoryᵒᵖ ⋙ Functor.uncurry.obj
       ((stableMultiSCoreObjectEnrichedFunctor r).obj C).diagram =
         multiDiagonalCoreSConstruction r
@@ -75,7 +75,7 @@ lemma stableMultiSCoreObjectEnrichedFunctor_realization (r : ℕ)
 
 /-- 通常の完全射の対角像も、同じ元の反復実現の射を厳密に回収する。 -/
 lemma stableMultiSCoreObjectMap_realization (r : ℕ)
-    {C D : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}} (F : C ⟶ D) :
+    {C D : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}} (F : C ⟶ D) :
     Functor.whiskerLeft (Functor.diag SimplexCategoryᵒᵖ)
       (Functor.uncurry.map (show
         ((stableMultiSCoreObjectEnrichedFunctor r).obj C).diagram ⟶

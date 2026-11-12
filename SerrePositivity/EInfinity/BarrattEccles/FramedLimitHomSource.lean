@@ -49,7 +49,7 @@ lemma framedLimitHomPiZeroEquiv_source {Y Z : (operad A).Algebra} (f : Y ⟶ Z)
   let P := framedLimitProbeFunctor A
   have hp (X : (operad A).Algebra) : IsCofibrant (P.obj X) := framedLimitProbe_cofibrant A X
   have hpf (X : (operad A).Algebra) : IsFibrant (op (P.obj X)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e (X : (operad A).Algebra) :=
     HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
       (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)

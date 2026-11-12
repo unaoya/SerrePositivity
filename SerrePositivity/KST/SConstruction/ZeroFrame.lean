@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FirstRow
 public import SerrePositivity.KST.SConstruction.FrameBoundaryExtension
-public import SerrePositivity.InfinityCategories.Core.VertexPrescribedExtension
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.VertexPrescribedExtension
 
 /-! # 第一行と零対角の枠
 概要：第一行に全ての対角を追加した順序部分を扱う。
@@ -88,15 +88,15 @@ def frameNerve (n : ℕ) : SSet.{u} := nerve (FrameAr.{u} n)
 方針：第一行に属する頂点が張る全部分複体を取る。
 規約：(0,0) は除く。使われ方：枠への制限の始域。 -/
 def framePositiveRow (n : ℕ) : (frameNerve.{u} n).Subcomplex :=
-  fullSubcomplexOnVertices (frameNerve n) (fun x ↦ IsPositiveRow (nerveEquiv x).val)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (frameNerve n) (fun x ↦ IsPositiveRow (nerveEquiv x).val)
 
 /-- 概要：第一行の外にある枠の単体はどちらかの端点が対角。
 方針：順序凸性を nerve の頂点条件に書き直す。
 規約：正次元の退化単体も含む。使われ方：枠の相対境界延長。 -/
 lemma frameNerve_diagonal_endpoint {n d : ℕ} (s : (frameNerve.{u} n) _⦋d + 1⦌)
     (hs : s ∉ (framePositiveRow n).obj (Opposite.op ⦋d + 1⦌)) :
-    IsDiagonal (nerveEquiv (simplexFirstVertex s)).val ∨
-    IsDiagonal (nerveEquiv (simplexLastVertex s)).val := by
+    IsDiagonal (nerveEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.simplexFirstVertex s)).val ∨
+    IsDiagonal (nerveEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s)).val := by
   have hn : ¬ ∀ r, IsPositiveRow (s.obj r).val := by
     intro h
     apply hs
@@ -116,7 +116,7 @@ lemma zeroFrame_extend_boundary {X : SSet.{u}} (n d : ℕ)
       ((framePositiveRow n : SSet.{u}) ◁ (boundary (d + 1)).ι) ≫ G)
     (hz : ∀ (x : (frameNerve n) _⦋0⦌), IsDiagonal (nerveEquiv x).val →
       ∀ v : (boundary (d + 1) : SSet.{u}) _⦋0⦌,
-        IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v))) :
+        _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (H.app (Opposite.op ⦋0⦌) (x, v))) :
     ∃ F : frameNerve n ⊗ Δ[d + 1] ⟶ X,
       (frameNerve n ◁ (boundary (d + 1)).ι) ≫ F = H ∧
       ((framePositiveRow n).ι ▷ (Δ[d + 1] : SSet.{u})) ≫ F = G := by

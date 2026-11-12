@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.KST.ProExcision.NormalizedStrictification
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedStrictification
 public import Mathlib.AlgebraicTopology.DoldKan.Decomposition
 
 /-!

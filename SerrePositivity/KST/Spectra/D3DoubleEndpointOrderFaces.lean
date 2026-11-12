@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 private lemma symm_heq {A X : SSet.{u}} {f g f' g' : A ⟶ X}
-    (e : FunctorIso f g) (e' : FunctorIso f' g') (hf : f = f') (hg : g = g')
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (e' : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f' g') (hf : f = f') (hg : g = g')
     (h : HEq e' e) : HEq e'.symm e.symm := by
   subst f' g'
   cases eq_of_heq h
@@ -31,24 +31,24 @@ lemma d3DoubleEndpointLeftTargetIso_value (i j : Fin 2) :
     HEq (d3DoubleEndpointLeftTargetIso.{u} i j)
       (d3PointedKanPreFunctorIso (λ_ (d3EndpointParameterObj.{u} (i, j))).hom) := by
   unfold d3DoubleEndpointLeftTargetIso
-  refine (F2.functorIsoOfEq_heq _ _ _).trans ?_
+  refine (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).trans ?_
   rw [d3PointedKanPreFunctorIso_inv, Iso.symm_symm_eq]
 
 /-- 元の左右単位面比較の全四隅は、同じ左右指定終点比較の合成値を保持する。 -/
 lemma d3DoubleEndpointUnitFacesIso_corner (i j : Fin 2) :
     HEq (d3DoubleEndpointUnitFacesIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity i j))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j))
       ((d3DoubleEndpointLeftTargetIso.{u} i j).symm ≪≫
         d3DoubleEndpointRightTargetIso i j) := by
-  rw [d3DoubleEndpointUnitFacesIso, F2.functorIso_postcomp_trans,
-    F2.functorIso_postcomp_symm]
-  apply functorIso_trans_heq_of_heq
+  rw [d3DoubleEndpointUnitFacesIso, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans,
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_symm]
+  apply _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIso_trans_heq_of_heq
     (by rw [d3DoubleEndpointLeftLoopFamily_corner, d3DoubleEndpointRightLoopFamily_corner])
     (d3PointedKanEndpointLoopDiagram_corner i j).symm
     (by rw [d3DoubleEndpointRightLoopFamily_corner, d3DoubleEndpointLeftLoopFamily_corner])
     _ _ _ _
   · exact symm_heq (d3DoubleEndpointLeftTargetIso i j)
-      (d3EndpointLeftUnitDiagramIso.postcomp (loopDiagramEvaluation PointedKanInfinity i j))
+      (d3EndpointLeftUnitDiagramIso.postcomp (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j))
       (d3PointedKanEndpointLoopDiagram_corner i j).symm
       (by rw [d3DoubleEndpointLeftLoopFamily_corner, d3DoubleEndpointRightLoopFamily_corner])
       ((d3EndpointLeftUnitDiagramIso_corner i j).trans
@@ -58,34 +58,34 @@ lemma d3DoubleEndpointUnitFacesIso_corner (i j : Fin 2) :
 
 /-- 同じ全四次元比較の外側角を、元の同じ実左右面へ厳密表示する。 -/
 def d3DoubleEndpointOrderFaceIso (i j : Fin 2) :
-    FunctorIso (d3DoubleEndpointLeftLoopFamily.{u} i j)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (d3DoubleEndpointLeftLoopFamily.{u} i j)
       (d3DoubleEndpointRightLoopFamily i j) :=
-  F2.functorIsoOfEq (d3DoubleEndpointOrderComparison.postcomp
-    (loopDiagramEvaluation (loopDiagrams PointedKanInfinity) i j))
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3DoubleEndpointOrderComparison.postcomp
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity) i j))
     (d3DoubleEndpointIteratedLeftFamily_corner i j)
     (d3DoubleEndpointIteratedRightFamily_corner i j)
 
 /-- 同じ外側面比較の終点は、同じ元の左右指定終点値の合成。 -/
 lemma d3DoubleEndpointOrderFaceIso_target (i j : Fin 2) :
     HEq ((d3DoubleEndpointOrderFaceIso.{u} i j).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       ((d3DoubleEndpointLeftTargetIso.{u} i j).symm ≪≫
         d3DoubleEndpointRightTargetIso i j) := by
   unfold d3DoubleEndpointOrderFaceIso
-  refine (functorIsoOfEq_postcomp_heq _ _ _ _).trans ?_
-  refine (heq_of_eq (F2.functorIso_postcomp_postcomp _ _ _)).trans ?_
-  have hm : loopDiagramEvaluation (loopDiagrams PointedKanInfinity.{u}) i j ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1 =
-    d3DoubleEndpointInnerTargetProjection ≫ loopDiagramEvaluation PointedKanInfinity i j := by
+  refine (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIsoOfEq_postcomp_heq _ _ _ _).trans ?_
+  refine (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp _ _ _)).trans ?_
+  have hm : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity.{u}) i j ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1 =
+    d3DoubleEndpointInnerTargetProjection ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j := by
     let := d3PointedKanLoopEvaluation_trivial.{u}
     exact (d3LoopDiagramTrivialImage_corner _ i j).symm
-  refine (F2.functorIso_postcomp_heq_of_map_eq d3DoubleEndpointOrderComparison hm).symm.trans ?_
-  refine (heq_of_eq (F2.functorIso_postcomp_postcomp _ _ _)).symm.trans ?_
-  refine (F2.functorIso_postcomp_heq_of_heq d3DoubleEndpointUnitFacesIso _
+  refine (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_heq_of_map_eq d3DoubleEndpointOrderComparison hm).symm.trans ?_
+  refine (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp _ _ _)).symm.trans ?_
+  refine (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_heq_of_heq d3DoubleEndpointUnitFacesIso _
     d3DoubleEndpointIteratedLeftFamily_projection.symm
     d3DoubleEndpointIteratedRightFamily_projection.symm
     d3DoubleEndpointOrderComparison_projection
-    (loopDiagramEvaluation PointedKanInfinity i j)).trans ?_
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity i j)).trans ?_
   exact d3DoubleEndpointUnitFacesIso_corner i j
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

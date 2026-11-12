@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ConePenultimateCuts
-public import SerrePositivity.InfinityCategories.DGNerve.LinearBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearBoundary
 
 /-!
 概要：実 cone の内部削除と最後の切断の添字を、元の普遍 cochain の添字へ移す。
@@ -9,7 +9,7 @@ public import SerrePositivity.InfinityCategories.DGNerve.LinearBoundary
 -/
 @[expose] public section
 namespace SerrePositivity.EInfinity.ComplexLimits.ConeHeadIndex
-open SerrePositivity.InfinityCategories.DGNerve
+
 
 lemma filter_above_succ {n : ℕ} (I : Finset (Fin (n + 2))) (j : Fin (n + 1)) :
     I.filter (j.succ < ·) = ((withoutFirst I).filter (j < ·)).image Fin.succ := by
@@ -19,19 +19,19 @@ lemma filter_above_succ {n : ℕ} (I : Finset (Fin (n + 2))) (j : Fin (n + 1)) :
   | succ i => simp [withoutFirst]
 
 lemma sign_succ {n : ℕ} (I : Finset (Fin (n + 2))) (j : Fin (n + 1)) :
-    Index.sign I j.succ = Index.sign (withoutFirst I) j := by
-  rw [Index.sign, filter_above_succ,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign I j.succ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign (withoutFirst I) j := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.sign, filter_above_succ,
     Finset.card_image_of_injective _ (Fin.succ_injective _)]
   rfl
 
 lemma interior_zero_last {n : ℕ} (I : Finset (Fin (n + 2))) :
-    Index.interior I 0 (Fin.last (n + 1)) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior I 0 (Fin.last (n + 1)) =
       ((withoutFirst I).erase (Fin.last n)).image Fin.succ := by
   ext i
   induction i using Fin.cases with
-  | zero => simp [Index.interior]
+  | zero => simp [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior]
   | succ i =>
-    simp only [Index.interior, Finset.mem_filter, Finset.mem_image, Finset.mem_erase,
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.interior, Finset.mem_filter, Finset.mem_image, Finset.mem_erase,
       withoutFirst, Finset.mem_univ, true_and, Fin.succ_inj,
       exists_eq_right, Fin.succ_pos, true_and]
     constructor
@@ -42,7 +42,7 @@ lemma interior_zero_last {n : ℕ} (I : Finset (Fin (n + 2))) :
         (lt_of_le_of_ne (Fin.le_last i) hi.1)⟩
 
 lemma withoutFirst_left_penultimate_last {n : ℕ} (I : Finset (Fin (n + 2)))
-    (hI : 2 ≤ I.card) (hm : I.max' (Index.nonempty hI) = Fin.last (n + 1)) :
+    (hI : 2 ≤ I.card) (hm : I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI) = Fin.last (n + 1)) :
     withoutFirst (I.filter (· ≤ penultimate I hI)) =
       (withoutFirst I).erase (Fin.last n) := by
   rw [left_filter_penultimate, hm]

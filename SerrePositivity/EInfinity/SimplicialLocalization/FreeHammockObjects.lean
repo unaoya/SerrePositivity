@@ -21,21 +21,21 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 open scoped Simplicial
 
-def freeResolutionObjectEquiv (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
+def freeResolutionObjectEquiv (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
     ((freeResolution C).obj n).category ≃ C.category :=
   Equiv.ofBijective ((freeResolutionAugmentationNatTrans C).app n).functor.obj
     (freeResolutionAugmentation_obj_bijective C n)
 
-def freeResolutionObject (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+def freeResolutionObject (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X : C.category) : ((freeResolution C).obj n).category :=
   (freeResolutionObjectEquiv C n).symm X
 
-lemma freeResolutionObject_augmentation (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
+lemma freeResolutionObject_augmentation (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ)
     (X : C.category) :
     ((freeResolutionAugmentationNatTrans C).app n).functor.obj (freeResolutionObject C n X) = X :=
   (freeResolutionObjectEquiv C n).apply_symm_apply X
 
-lemma freeResolutionObject_naturality (C : RelativeCategory.{u})
+lemma freeResolutionObject_naturality (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
     {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (X : C.category) :
     ((freeResolution C).map θ).functor.obj (freeResolutionObject C n X) =
       freeResolutionObject C m X := by
@@ -56,7 +56,7 @@ lemma freeResolutionObject_naturality (C : RelativeCategory.{u})
   exact (freeResolutionObject_augmentation C n X).trans
     (freeResolutionObject_augmentation C m X).symm
 
-lemma freeResolutionObject_generator (C : RelativeCategory.{u}) (n : ℕ) (X : C.category) :
+lemma freeResolutionObject_generator (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : ℕ) (X : C.category) :
     freeResolutionObject C (op ⦋n⦌) X = freeResolutionGeneratorObject C (n + 1) X := by
   apply (freeResolutionObjectEquiv C (op ⦋n⦌)).injective
   exact (freeResolutionObject_augmentation C _ X).trans

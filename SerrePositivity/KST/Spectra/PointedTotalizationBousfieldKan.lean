@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.PointedWeightedEndBasepoint
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped MonoidalClosed
 
 namespace SerrePositivity.KST.Spectra.PointedTotalization
@@ -27,7 +27,7 @@ lemma bousfieldKanComparison_basepoint (X : CosimplicialObject PointedSimplicial
     (obj X).hom ≫ CosimplicialTotalization.bousfieldKanComparison
       (X ⋙ PointedSimplicialSet.forget) =
     (PointedHomotopyLimit.obj (AsSmall.down ⋙ X)).hom := by
-  apply weightedSections_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro j
   rw [Category.assoc, CosimplicialTotalization.bousfieldKanComparison_π,
     ← Category.assoc]
@@ -35,9 +35,9 @@ lemma bousfieldKanComparison_basepoint (X : CosimplicialObject PointedSimplicial
     CosimplicialTotalization.π (X ⋙ PointedSimplicialSet.forget) (AsSmall.down.obj j)) ≫ _ = _
   rw [CosimplicialTotalization.lift_π]
   change curry (snd _ _ ≫ (X.obj (AsSmall.down.obj j)).hom) ≫ _ =
-    weightedConeComparison _ (PointedHomotopyLimit.basepointCone (AsSmall.down ⋙ X)) ≫ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison _ (PointedHomotopyLimit.basepointCone (AsSmall.down ⋙ X)) ≫ _
   erw [curry_pre_app]
-  erw [weightedConeComparison_π]
+  erw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedConeComparison_π]
   rw [← Category.assoc, whiskerRight_snd]
   rfl
 
@@ -58,11 +58,11 @@ lemma bousfieldKanComparison_naturality {X Y : CosimplicialObject PointedSimplic
 
 /-- BF の段で用いる点つき enriched end への同じ比較射。 -/
 def weightedEndComparison (X : CosimplicialObject PointedSimplicialSet.{u}) :
-    obj X ⟶ PointedWeightedEnd.obj (bousfieldKanWeight _) (AsSmall.down ⋙ X) :=
+    obj X ⟶ PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X) :=
   Under.homMk ((bousfieldKanComparison X).right ≫
-    (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).inv) (by
+    (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).inv) (by
       apply (cancel_mono (PointedWeightedEnd.underlyingIso
-        (bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom).mp
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom).mp
       rw [Category.assoc, Category.assoc, Iso.inv_hom_id, Category.comp_id,
         PointedWeightedEnd.underlyingIso_basepoint]
       exact bousfieldKanComparison_basepoint X)
@@ -71,7 +71,7 @@ def weightedEndComparison (X : CosimplicialObject PointedSimplicialSet.{u}) :
 @[reassoc]
 lemma weightedEndComparison_underlying (X : CosimplicialObject PointedSimplicialSet.{u}) :
     (weightedEndComparison X).right ≫
-      (PointedWeightedEnd.underlyingIso (bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom =
+      (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ X)).hom =
     (bousfieldKanComparison X).right := by
   change (_ ≫ _) ≫ _ = _
   rw [Category.assoc, Iso.inv_hom_id, Category.comp_id]
@@ -80,13 +80,13 @@ lemma weightedEndComparison_underlying (X : CosimplicialObject PointedSimplicial
 lemma weightedEndComparison_naturality {X Y : CosimplicialObject PointedSimplicialSet.{u}}
     (f : X ⟶ Y) :
     map f ≫ weightedEndComparison Y = weightedEndComparison X ≫
-      PointedWeightedEnd.map (bousfieldKanWeight _) (Functor.whiskerLeft AsSmall.down f) := by
+      PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (Functor.whiskerLeft AsSmall.down f) := by
   apply Under.UnderMorphism.ext
   apply (cancel_mono (PointedWeightedEnd.underlyingIso
-    (bousfieldKanWeight _) (AsSmall.down ⋙ Y)).hom).mp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _) (AsSmall.down ⋙ Y)).hom).mp
   change ((map f).right ≫ (weightedEndComparison Y).right) ≫ _ =
     ((weightedEndComparison X).right ≫
-      (PointedWeightedEnd.map (bousfieldKanWeight _)
+      (PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight _)
         (Functor.whiskerLeft AsSmall.down f)).right) ≫ _
   rw [Category.assoc, weightedEndComparison_underlying, Category.assoc,
     PointedWeightedEnd.underlyingIso_natural, ← Category.assoc,

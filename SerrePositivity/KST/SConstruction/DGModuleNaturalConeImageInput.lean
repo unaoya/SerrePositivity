@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConePostcompArrow
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeShiftNull
-public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCone
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleFunctorCone
 
 /-!
 概要：元実 cone の左包含像を同じ realization の全自然な指定入力にする。
@@ -13,12 +13,12 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleFunctorCone
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]
   (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
   (Q : DGFunctor R (RightModule R D) (RightModule R E))
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 

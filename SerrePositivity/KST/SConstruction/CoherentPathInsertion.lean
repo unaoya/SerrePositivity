@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.CoherentSimplexCompositionEdge
-public import SerrePositivity.InfinityCategories.Coherent.CompositionFace
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.OrdinaryComparisonPrism
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionFace
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.OrdinaryComparisonPrism
 
 /-! # Coherent な Path の族への切断点の挿入
 概要：全 Path の族を切断点を通る族へ動かし、既に通る部分を全時刻で固定する。
@@ -53,25 +53,25 @@ lemma coherentPathInsert_eq (hab : a ≤ b) (hbc : b ≤ c) (p : Path a c) (hp :
 /-- 元の全 Path の族から切断点を通る族への実円柱。 -/
 def coherentPathInsertionHomotopy (hab : a ≤ b) (hbc : b ≤ c) :
     SSet.Homotopy (𝟙 (nerve (Path a c))) (nerveMap (coherentPathInsertFunctor hab hbc)) :=
-  ordinaryComparisonHomotopy (coherentPathInsertTransformation hab hbc)
+  _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.ordinaryComparisonHomotopy (coherentPathInsertTransformation hab hbc)
 
 /-- 挿入後の全 Path は指定切断点を通る。 -/
 def coherentPathInsertThrough (hab : a ≤ b) (hbc : b ≤ c) :
-    nerve (Path a c) ⟶ (Coherent.pathThrough (a := a) (c := c) b : SSet.{u}) where
+    nerve (Path a c) ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b : SSet.{u}) where
   app _ := ↾fun F => ⟨(nerveMap (coherentPathInsertFunctor hab hbc)).app _ F,
     fun _ => Or.inr rfl⟩
 
 /-- 切断点を通る族への因子分解は元の挿入関手の nerve そのもの。 -/
 lemma coherentPathInsertThrough_ι (hab : a ≤ b) (hbc : b ≤ c) :
-    coherentPathInsertThrough hab hbc ≫ (Coherent.pathThrough b).ι =
+    coherentPathInsertThrough hab hbc ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).ι =
       nerveMap (coherentPathInsertFunctor hab hbc) := rfl
 
 /-- 切断点を通る全高次単体は挿入円柱の全時刻で固定する。 -/
 lemma coherentPathInsertionHomotopy_relative (hab : a ≤ b) (hbc : b ≤ c) :
-    ((Coherent.pathThrough (a := a) (c := c) b).ι ▷ (Δ[1] : SSet.{u})) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b).ι ▷ (Δ[1] : SSet.{u})) ≫
         (coherentPathInsertionHomotopy hab hbc).h =
-      fst (Coherent.pathThrough (a := a) (c := c) b : SSet.{u}) Δ[1] ≫
-        (Coherent.pathThrough b).ι := by
+      fst (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b : SSet.{u}) Δ[1] ≫
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).ι := by
   apply SSet.hom_ext
   intro n
   apply ConcreteCategory.hom_ext
@@ -130,12 +130,12 @@ lemma coherentPathInsert_endpoint (hab : a ≤ b) (hbc : b ≤ c) :
 
 /-- 端点だけの Path 上で挿入円柱は、以前復号した同じ合成三角形の元の辺。 -/
 lemma coherentPathInsertionHomotopy_endpoint_edge (hab : a ≤ b) (hbc : b ≤ c) :
-    (simplicialHomotopyVertexEdge (coherentPathInsertionHomotopy hab hbc)
-      (nerveVertex (coherentEndpointPath (hab.trans hbc)))).edge =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentPathInsertionHomotopy hab hbc)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath (hab.trans hbc)))).edge =
     (nerve.edgeMk (coherentEndpointPathToComposite hab hbc)).edge := by
   rw [show coherentPathInsertionHomotopy hab hbc =
-    ordinaryComparisonHomotopy (coherentPathInsertTransformation hab hbc) from rfl,
-    ordinaryComparisonHomotopy_vertex]
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.ordinaryComparisonHomotopy (coherentPathInsertTransformation hab hbc) from rfl,
+    _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.ordinaryComparisonHomotopy_vertex]
   refine ComposableArrows.ext₁ rfl (coherentPathInsert_endpoint hab hbc) ?_
   apply InducedCategory.hom_ext
   exact Subsingleton.elim _ _

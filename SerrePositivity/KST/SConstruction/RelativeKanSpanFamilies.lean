@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.KanSpanTriangleLifting
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
-public import SerrePositivity.InfinityCategories.Core.FixedDiagramHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.FixedDiagramHomotopy
 
 /-! # 境界の逆・合成三角形を保持する全パラメータ族
 概要：Kan 写像空間内の二つの辺の族を、指定した境界の逆・合成の証人を保って合成する。
@@ -34,38 +34,38 @@ def relativeKanHomotopySpanData {T U E : SSet.{u}} [KanComplex E]
     (j : T ⟶ U) [Mono j] {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :=
-  relativeKanSpanFamilyData j (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)) t
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :=
+  relativeKanSpanFamilyData j (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)) t
 
 /-- 構成した全パラメータの実合成ホモトピー。 -/
 def relativeKanHomotopySpanComposite {T U E : SSet.{u}} [KanComplex E]
     (j : T ⟶ U) [Mono j] {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
     SSet.Homotopy F G :=
-  simplicialHomotopyOfFunctorEdge (relativeKanHomotopySpanData j a b t).data.edge.toTruncated
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (relativeKanHomotopySpanData j a b t).data.edge.toTruncated
 
 /-- 境界に指定した元の合成辺を、そのまま実ホモトピーへ展開したもの。 -/
 def relativeKanHomotopySpanBoundary {T U E : SSet.{u}}
     (j : T ⟶ U) {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
     SSet.Homotopy (j ≫ F) (j ≫ G) :=
-  simplicialHomotopyOfFunctorEdge t.edge.toTruncated
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge t.edge.toTruncated
 
 /-- 全パラメータの合成円柱は、境界で指定した元の合成円柱を厳密に回収する。 -/
 lemma relativeKanHomotopySpanComposite_restrict {T U E : SSet.{u}} [KanComplex E]
     (j : T ⟶ U) [Mono j] {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E))) :
     (j ▷ (Δ[1] : SSet.{u})) ≫ (relativeKanHomotopySpanComposite j a b t).h =
       (relativeKanHomotopySpanBoundary j a b t).h := by
   change (j ▷ (Δ[1] : SSet.{u})) ≫ MonoidalClosed.uncurry
@@ -79,13 +79,13 @@ lemma relativeKanHomotopySpanComposite_restrict_constant {T U E : SSet.{u}} [Kan
     (j : T ⟶ U) [Mono j] {D F G : U ⟶ E}
     (a : SSet.Homotopy D F) (b : SSet.Homotopy D G)
     (t : KanSpanTriangleData
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
-      ((SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy a)).map ((pre j).app E))
+      ((SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy b)).map ((pre j).app E)))
     (ht : t.edge.edge = (SSet.Truncated.Edge.id
-      (X := (truncation 2).obj ((ihom T).obj E)) (functorVertex (j ≫ F))).edge) :
+      (X := (truncation 2).obj ((ihom T).obj E)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (j ≫ F))).edge) :
     (j ▷ (Δ[1] : SSet.{u})) ≫ (relativeKanHomotopySpanComposite j a b t).h =
       CartesianMonoidalCategory.fst T (Δ[1] : SSet.{u}) ≫ j ≫ F := by
-  exact simplicialHomotopyOfFunctorEdge_pre_eq_constant j (j ≫ F)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.simplicialHomotopyOfFunctorEdge_pre_eq_constant j (j ≫ F)
     (relativeKanHomotopySpanData j a b t).data.edge.toTruncated
     ((relativeKanHomotopySpanData j a b t).composite_edge.trans ht)
 

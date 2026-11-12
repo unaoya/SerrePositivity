@@ -47,14 +47,14 @@ lemma circleEvaluationLoopSimplex_edge (z : Sp.{u} _⦋0⦌) :
 
 /-- companion の元の基本群の類は、同じ元の解像三単体の右辺の類に移る。 -/
 lemma circleCompanionClass_toHom (z : Sp.{u} _⦋0⦌) :
-    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) =
+    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z)) =
       SSet.HomotopyCategory.homMk
         (circleCompanionEdgewiseFramedEdge z .left 2 3 (by decide)) := by
   rw [FundamentalLoop.toHom_mk, circleCompanionSimplex_edge]
 
 /-- 評価の元の基本群の類は、元の普遍評価の loop の辺の類に移る。 -/
 lemma circleEvaluationClass_toHom (z : Sp.{u} _⦋0⦌) :
-    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
+    FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationLoopSimplex z)) =
       SSet.HomotopyCategory.homMk
         (circleEvaluationHomEdge (nativeCotensorInput PointedSimplicialSet.circle z).val) := by
   rw [FundamentalLoop.toHom_mk, circleEvaluationLoopSimplex_edge]
@@ -71,7 +71,7 @@ def circleCompanionEdgewiseDifferenceHom (z : Sp.{u} _⦋0⦌) :
 /-- 元の二つの零ホモトピーの差は、同じ companion の基本群の逆元の像に厳密一致する。 -/
 lemma circleCompanionEdgewise_difference_toHom (z : Sp.{u} _⦋0⦌) :
     circleCompanionEdgewiseDifferenceHom z =
-      FundamentalLoop.toHom ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) := by
+      FundamentalLoop.toHom ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (circleEvaluationCompanionSimplex z))⁻¹) := by
   rw [circleCompanionEdgewiseDifferenceHom, FundamentalLoop.toHom_inv, circleCompanionClass_toHom]
   exact circleCompanionEdgewise_difference_inverse z
 

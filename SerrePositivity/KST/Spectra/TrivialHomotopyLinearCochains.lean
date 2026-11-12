@@ -31,7 +31,7 @@ variable (X : PointedSimplicialSet.{u}) [KanComplex X.right]
 方針：乗法的なホモトピー群へ Additive を施す。
 規約：q は実際の次数 q+2。
 使われ方：Goerss–Jardine I §7、VIII §2。線形 cochain の指定する係数。 -/
-abbrev coefficient (q : ℕ) := Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right (q + 1) X.basepoint)
+abbrev coefficient (q : ℕ) := Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right (q + 1) X.basepoint)
 
 variable (R G : Type u) [CommRing R] [Group G]
 
@@ -61,7 +61,7 @@ def linearDiagramIso (q : ℕ) [Module R (coefficient X q)] :
       (Y := (linearDiagram X R G q ⋙ forget₂ (ModuleCat.{u} R) AddCommGrpCat.{u}).obj n)
       ((MulEquiv.toAdditive (e.app n).groupIsoToMulEquiv).trans
         (additiveFunctionEquiv (Fin n.len → G)
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right (q + 1) X.basepoint))))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right (q + 1) X.basepoint))))
     (fun f ↦ by
       ext a
       funext s

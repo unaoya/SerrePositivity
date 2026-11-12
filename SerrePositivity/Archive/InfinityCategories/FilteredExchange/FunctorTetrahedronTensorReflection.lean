@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTetrahedronPostReindexReflection
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorVertices
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorVertices
 
 /-!
 概要：元の六 native 作用と四面の指定三角形比較を、全始域の底上の制限に沿って保持する。

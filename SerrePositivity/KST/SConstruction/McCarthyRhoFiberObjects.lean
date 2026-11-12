@@ -30,13 +30,13 @@ lemma simplexOrder_map {m n l : ℕ} (σ : ⦋l⦌ ⟶ ⦋n⦌)
 /-- 概要：ρ は入力図式・添字・時刻の等号を保つ。
 方針：入力の等号を消去し、条件の証明の違いを忘れる。
 規約：左 fiber の条件もそれぞれの入力に対するもの。使われ方：依存する入力の自然性。 -/
-lemma mcCarthyRho_congr {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [IsStable C]
-    (z : ZeroVertex C) (A : arNerve m ⟶ C)
+lemma mcCarthyRho_congr {n m : ℕ} {C : SSet.{u}} [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
+    (z : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroVertex C) (A : arNerve m ⟶ C)
     {α α' : Fin (n + 1) →o Fin (m + 1)} {τ τ' : Fin (n + 1) →o Fin 2}
     {E E' : arNerve n ⟶ cofiberDiagrams C}
-    (h : E ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    (h : E ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α ≫ A)
-    (h' : E' ≫ cofiberProjection C ≫ evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
+    (h' : E' ≫ cofiberProjection C ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
       arNerveMap α' ≫ A) (hα : α = α') (hτ : τ = τ') (hE : E = E') :
     mcCarthyRho z A α τ E h = mcCarthyRho z A α' τ' E' h' := by
   subst α'
@@ -103,7 +103,7 @@ def mcCarthyRhoFiberObjectMap (X : StableModel.{u}) {m : ℕ}
         (stdSimplex.objEquiv (mcCarthyFiberParameter X a e)).toOrderHom.comp
           σ.unop.toOrderHom := simplexOrder_map σ.unop (mcCarthyFiberParameter X a e)
     have hc : (arNerveMap σ.unop.toOrderHom ≫ mcCarthyFiberDiagram X a e) ≫
-        cofiberProjection X.carrier ≫ evaluateFunctorAt
+        cofiberProjection X.carrier ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
           (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) =
         arNerveMap ((stdSimplex.objEquiv (mcCarthyFiberParameter X a e)).toOrderHom.comp
           σ.unop.toOrderHom) ≫ gappedDiagram a := by

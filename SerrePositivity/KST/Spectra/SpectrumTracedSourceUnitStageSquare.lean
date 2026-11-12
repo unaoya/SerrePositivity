@@ -36,7 +36,7 @@ def tracedSourceUnitStageSquare (n : ℕ) :
         ((KanSequence.mapping A (KanSequence.signedLoopTail Y.toKanSequence)).sigma n)).path)
     where
   h := (tracedSourceUnitEvaluationSquare X Y φ n).h ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right
   h₀ := by
     rw [← Category.assoc, (tracedSourceUnitEvaluationSquare X Y φ n).h₀]
@@ -51,13 +51,13 @@ def tracedSourceUnitStageSquare (n : ℕ) :
 /-- 源構造作用を段射座標へ戻すと、元の同じ列射への後合成に厳密一致する。 -/
 lemma tracedSourceUnitStructureAction_transpose (n : ℕ) :
     tracedSourceUnitStructureAction X Y φ n ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom =
-    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopParameterHom
         (homOfParameterFamily X Y.toKanSequence A φ)).app (n + 1)) := by
   rw [tracedSourceUnitStructureAction_post, Category.assoc,
-    _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.hom_eq_inv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) A,
+    _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.hom_eq_inv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) A,
     Iso.inv_hom_id, Category.comp_id]
 
 /-- 段射表示の左辺全体は、同じ源構造入力区間への実際の後合成。 -/
@@ -77,7 +77,7 @@ lemma tracedSourceUnitStageSquare_start (n : ℕ) :
 /-- 段射表示でも、右辺全体は同じ厳密な終点の構造頂点で一定。 -/
 lemma tracedSourceUnitStageSquare_finish (n : ℕ) :
     SquareAdjustment.rightSide ≫ (tracedSourceUnitStageSquare X Y φ n).h =
-      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right.app _
           (PointedMapping.familyVertex ((φ ≫ tracedSourceUnitAction X Y n) ≫
             pointedStep X (KanSequence.signedLoopTail Y.toKanSequence) n))) := by

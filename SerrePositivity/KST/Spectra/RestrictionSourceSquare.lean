@@ -76,20 +76,20 @@ lemma restrictionSourceFiberMap_ι (Y : PointedSimplicialSet.{u}) :
 使われ方：Goerss–Jardine VIII §1。セル係数と連結準同型の自然性を接続する。 -/
 @[reassoc]
 lemma restrictionFiberIso_source (Y : PointedSimplicialSet.{u}) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (relativeSourceMap i j a b h) Y ≫
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (relativeSourceMap i j a b h) Y ≫
         (restrictionFiberIso j Y).hom =
       (restrictionFiberIso i Y).hom ≫ restrictionSourceFiberMap i j a b h Y := by
   apply pointedFiber_hom_ext (pre j Y)
   rw [Category.assoc, restrictionFiberIso_hom_ι, Category.assoc,
     restrictionSourceFiberMap_ι, restrictionFiberIso_hom_ι_assoc]
-  have hp := congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f Y)
+  have hp := congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f Y)
     (relativeSourceMap_projection i j a b h)
-  simp only [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp] at hp
+  simp only [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp] at hp
   have hc := congrArg (fun f ↦ f ≫ (freeHomIso D Y).hom) hp
   simp only [Category.assoc] at hc
   have hf := freeHomIso_pre b Y
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre] at hf
-  exact hc.trans (congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre] at hf
+  exact hc.trans (congrArg (fun f ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed
     (pointedCofiberProjection (PointedObject.adjoinFunctor.map i)) Y ≫ f) hf)
 
 instance pre_fibration (f : A ⟶ B) [Mono f] (Y : PointedSimplicialSet.{u})
@@ -103,7 +103,7 @@ instance pre_fibration (f : A ⟶ B) [Mono f] (Y : PointedSimplicialSet.{u})
 使われ方：Goerss–Jardine I §8、VIII §1。骨格の微分のセルへの制限。 -/
 theorem restrictionSourceFiberMap_connecting [Mono i] [Mono j]
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (obj A Y).right (r + 1) (obj A Y).basepoint) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (obj A Y).right (r + 1) (obj A Y).basepoint) :
     pointedGroupMap r (restrictionSourceFiberMap i j a b h Y)
         (pointedConnectingHom (pre i Y) r x) =
       pointedConnectingHom (pre j Y) r (pointedGroupMap (r + 1) (pre a Y) x) :=

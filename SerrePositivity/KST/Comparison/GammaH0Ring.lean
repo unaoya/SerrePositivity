@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.KST.Comparison
 
 open CategoryTheory DifferentialGraded
-open InfinityCategories.DoldKanComparison
+
 open scoped Simplicial
 
 variable {R : Type u} [CommRing R] {D : Type u} [DGCategory R D]
@@ -33,39 +33,39 @@ variable {R : Type u} [CommRing R] {D : Type u} [DGCategory R D]
 使われ方：H⁰ 比較の加法性・乗法性を代表元で証明する。
 -/
 theorem gammaEndPinched_vertex (x : D) (s : GammaEnd (R := R) x 0) :
-    InfinityCategories.DGNerve.PinchedHom.vertexClosedEquiv x x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.vertexClosedEquiv x x
       ((gammaEndPinchedIso (R := R) x).hom.app _ s) =
         (gammaZeroClosedRingEquiv (R := R) x s).asHom := by
   apply (closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
     (ForgetEnrichment.of (Complex R) x)).injective
   let p := (gammaEndPinchedIso (R := R) x).hom.app (Opposite.op ⦋0⦌) s
-  let e := ((InfinityCategories.PinchedHom.vertexEquiv
-    (X := InfinityCategories.dgNerve R D) (InfinityCategories.DGNerve.Simplex.vertex x)
-      (InfinityCategories.DGNerve.Simplex.vertex x) p).toTruncated)
+  let e := ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.vertexEquiv
+    (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x) p).toTruncated)
   let c := closedHomEquiv R D (ForgetEnrichment.of (Complex R) x)
     (ForgetEnrichment.of (Complex R) x)
-  change c (c.symm (InfinityCategories.DGNerve.HomotopyComparison.edgeCycle e)) =
-    c (c.symm (standardZeroEval x x s))
+  change c (c.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeCycle e)) =
+    c (c.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEval x x s))
   rw [c.apply_symm_apply, c.apply_symm_apply]
   apply Subtype.ext
   apply eq_of_heq
-  unfold InfinityCategories.DGNerve.HomotopyComparison.edgeCycle
-  refine (InfinityCategories.DGNerve.HomotopyComparison.castCycle_val_heq
-    (InfinityCategories.DGNerve.HomotopyComparison.edge_source_obj e)
-    (InfinityCategories.DGNerve.HomotopyComparison.edge_target_obj e) _).trans ?_
-  let l := (standardSimplexEquiv (R := R) x x 0).symm s
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edgeCycle
+  refine (_root_.SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.castCycle_val_heq
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edge_source_obj e)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.edge_target_obj e) _).trans ?_
+  let l := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardSimplexEquiv (R := R) x x 0).symm s
   change HEq (l.val.toSimplexData.hom {0, 1} 0 1 0 (by decide) (by decide) (by decide)
-    (by decide)) (standardZeroEval x x s).val
-  have h := InfinityCategories.DGNerve.PinchedHom.LinearData.toSimplexData_hom_last
+    (by decide)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardZeroEval x x s).val
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.toSimplexData_hom_last
     l.val ({0, 1} : Finset (Fin 2)) 0 1 0 (by decide) (by decide) (by decide) (by decide) rfl
   refine h.trans ?_
   apply heq_of_eq
-  change (signChangeData s.val).component _ 0 (by decide) (by decide) =
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData s.val).component _ 0 (by decide) (by decide) =
     s.val.component Finset.univ 0 Finset.univ_nonempty (by simp)
-  rw [signChangeData_component]
-  have hw : InfinityCategories.DGNerve.PinchedHom.withoutLast
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.signChangeData_component]
+  have hw : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.withoutLast
       ({0, 1} : Finset (Fin 2)) = ({0} : Finset (Fin 1)) := by decide
-  simp [degreeSign, hw]
+  simp [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.degreeSign, hw]
 
 /--
 概要：Γ の H⁰ 比較は零単体を閉零射の境界類へ送る。
@@ -77,7 +77,7 @@ theorem gammaEndPiZeroH0Equiv_mk (x : D) (s : GammaEnd (R := R) x 0) :
     gammaEndPiZeroH0Equiv (R := R) x (SSet.π₀.mk s) =
       (toHomotopy R D).map (gammaZeroClosedRingEquiv (R := R) x s).asHom := by
   change (toHomotopy R D).map
-    (InfinityCategories.DGNerve.PinchedHom.vertexClosedEquiv x x
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.vertexClosedEquiv x x
       ((gammaEndPinchedIso (R := R) x).hom.app _ s)) = _
   rw [gammaEndPinched_vertex]
 

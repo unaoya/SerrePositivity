@@ -21,20 +21,20 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 /-- 指定境界辺を保つ全図式の厳密化。 -/
 structure SpecifiedBoundaryIsoNormalization {K L X : SSet.{u}} [Quasicategory X]
-    (j : K ⟶ L) (F : L ⟶ X) (G : K ⟶ X) (e : FunctorIso (j ≫ F) G) where
+    (j : K ⟶ L) (F : L ⟶ X) (G : K ⟶ X) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (j ≫ F) G) where
   diagram : L ⟶ X
   boundary : j ≫ diagram = G
-  edge : SSet.Edge (X := (ihom L).obj X) (functorVertex F) (functorVertex diagram)
-  isInvertible : IsInvertibleEdge (X := (ihom L).obj X) edge.toTruncated
-  restriction : (((pre j).app X).app (Opposite.op ⦋1⦌) edge.edge) = (FunctorIso.edge e).edge
+  edge : SSet.Edge (X := (ihom L).obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex diagram)
+  isInvertible : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (X := (ihom L).obj X) edge.toTruncated
+  restriction : (((pre j).app X).app (Opposite.op ⦋1⦌) edge.edge) = (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge e).edge
 
 namespace SpecifiedBoundaryIsoNormalization
 variable {K L X : SSet.{u}} [Quasicategory X]
-  {j : K ⟶ L} {F : L ⟶ X} {G : K ⟶ X} {e : FunctorIso (j ≫ F) G}
+  {j : K ⟶ L} {F : L ⟶ X} {G : K ⟶ X} {e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (j ≫ F) G}
   (d : SpecifiedBoundaryIsoNormalization j F G e)
 
 /-- 同じ持ち上げ辺から取り出す全図式の同型。 -/
-def iso : FunctorIso F d.diagram :=
+def iso : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F d.diagram :=
   have : IsIso (Truncated.HomotopyCategory.homMk d.edge.toTruncated) := d.isInvertible
   asIso (Truncated.HomotopyCategory.homMk d.edge.toTruncated)
 
@@ -42,11 +42,11 @@ end SpecifiedBoundaryIsoNormalization
 
 /-- 指定された境界同型の辺を変えずに、全図式の境界を厳密化する。 -/
 lemma exists_specifiedBoundaryIsoNormalization {K L X : SSet.{u}} [Quasicategory X]
-    (j : K ⟶ L) [Mono j] (F : L ⟶ X) (G : K ⟶ X) (e : FunctorIso (j ≫ F) G) :
+    (j : K ⟶ L) [Mono j] (F : L ⟶ X) (G : K ⟶ X) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (j ≫ F) G) :
     Nonempty (SpecifiedBoundaryIsoNormalization j F G e) := by
-  let a := SSet.Edge.ofTruncated (X := (ihom K).obj X) (FunctorIso.edge e)
+  let a := SSet.Edge.ofTruncated (X := (ihom K).obj X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge e)
   obtain ⟨d⟩ := exists_specifiedBoundaryEdgeNormalization j F G a
-    (FunctorIso.edge_isInvertible e)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.edge_isInvertible e)
   exact ⟨⟨d.diagram, d.boundary, d.edge, d.isInvertible, d.restriction⟩⟩
 
 end SerrePositivity.KST.LocalizingInvariants

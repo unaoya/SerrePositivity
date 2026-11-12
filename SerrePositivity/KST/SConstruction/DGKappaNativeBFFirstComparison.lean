@@ -22,7 +22,7 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：追加 instance 仮定なし。使われ方：最初の Ω 条件。 -/
 instance dgKappaNativeBFFiniteBase_kanComplex (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
     KanComplex (((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I 0).obj C).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 概要：同じ最初の実 BF 段は Kan 複体。
 方針：同じ豊穣単射置換の Kan 性を使う。
@@ -92,7 +92,7 @@ lemma dgKappaNativeBFFiniteFirstComparison_anodyne
 規約：全次数を保持。使われ方：最初の実 Ω 条件。 -/
 lemma dgKappaNativeBFFiniteFirstComparison_piIsomorphism
     (C : DGKappaNativeBFFiniteInput.{u, v} R D I) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (show ((dgKappaNativeBFFiniteBoundaryFunctor.{u, v} R D I 0).obj C).obj ⟶
         ((dgKappaNativeBFFiniteFirstFunctor.{u, v} R D I).obj C).obj from
           dgKappaNativeBFFiniteFirstComparison.{u, v} R D I C).right :=

@@ -29,7 +29,7 @@ theorem kanPullbackCofinalityInput : KanPullbackCofinalityInput.{u} :=
 使われ方：K-B2-S1 の残る供給を代入して一般主結論を閉じる。 -/
 theorem kSpectrumMap_cofinality_of_relativeFiber_input
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (h : Fibration.Relative.ClosedStableFlagPostPullback
       (completionImageClosedPredicate 0 Fin.elim0 f hf)) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧

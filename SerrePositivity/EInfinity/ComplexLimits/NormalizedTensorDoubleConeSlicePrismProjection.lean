@@ -14,12 +14,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeSlicePrism_projection :
     normalizedTensorDoubleConeSlicePrism A X Y ≫
-      sliceOverProjection (normalizedTensorConePoint A X) = normalizedTensorConePrism A X Y := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (normalizedTensorConePoint A X) = normalizedTensorConePrism A X Y := by
   simp only [normalizedTensorDoubleConeSlicePrism, normalizedTensorConePrism, Category.assoc,
     normalizedTensorDoubleConeOverJoin_projection]
 

@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：全部分複体への順射の定義。 -/
 lemma completionRelativeSTranspose_relative (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier _⦋0⦌) :
     multiRelativeFlagPredicate (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) Y
       (multiWideStageData stableWideCofinalitySupply (r + 1)
@@ -39,11 +39,11 @@ lemma completionRelativeSTranspose_relative (r : ℕ)
 使われ方：相対 fiber 供給の右項の元の S 図式への交換。 -/
 def completionRelativeSTranspose (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier ⟶
       (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
         f hf n).carrier :=
-  fullSubcomplexLift _ (completionRelativeSTransposeDiagram r ι f hf m n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (completionRelativeSTransposeDiagram r ι f hf m n)
     (completionRelativeSTranspose_relative r ι f hf m n)
 
 /-- 概要：元の相対 S 転置は包含後に元の ambient 転置を回収する。
@@ -52,7 +52,7 @@ def completionRelativeSTranspose (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ
 使われ方：逆向きの転置と元の構造射の照合。 -/
 lemma completionRelativeSTranspose_inclusion (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     completionRelativeSTranspose r ι f hf m n ≫
       (completionRelativeFlagAmbientMap (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι) f hf n).val =
         completionRelativeSTransposeDiagram r ι f hf m n := rfl

@@ -21,7 +21,7 @@ def cubeThreeNormalTensor {n p m q : ℕ} (r : CubeThreeNormal n p) (s : CubeThr
 
 /-- 連結した三段表示の元の評価は、元の左右の評価を回収する。 -/
 lemma cubeThreeNormalTensor_vertex_join {n p m q : ℕ}
-    (r : CubeThreeNormal n p) (s : CubeThreeNormal m q) (x : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
+    (r : CubeThreeNormal n p) (s : CubeThreeNormal m q) (x : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n) (y : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) :
     cubeThreeNormalVertex (cubeThreeNormalTensor r s) (cubeVertexJoin x y) =
       cubeVertexJoin (cubeThreeNormalVertex r x) (cubeThreeNormalVertex s y) := by
   dsimp only [cubeThreeNormalVertex, cubeThreeNormalTensor, Function.comp_apply]
@@ -36,9 +36,9 @@ lemma cubeThreeNormalTensor_vertex {n p m q : ℕ}
   cubeVertexTensor_eq_of_join _ _ _ (cubeThreeNormalTensor_vertex_join r s)
 
 /-- 元の二つの生成写像の二ブロック作用は、同じ元の生成射で実現される。 -/
-lemma cubeMapGenerated_tensor {n p m q : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex p}
-    {g : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex q} (hf : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated g) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.CubeMapGenerated (cubeVertexTensor f g) := by
+lemma cubeMapGenerated_tensor {n p m q : ℕ} {f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex p}
+    {g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex q} (hf : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated f) (hg : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated g) :
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeMapGenerated (cubeVertexTensor f g) := by
   obtain ⟨r, hr⟩ := cubeMapGenerated_exists_threeNormal hf
   obtain ⟨s, hs⟩ := cubeMapGenerated_exists_threeNormal hg
   have h := cubeThreeNormalVertex_generated (cubeThreeNormalTensor r s)

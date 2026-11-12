@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.ZeroMiddleFullSComparisonReconstruction
-public import SerrePositivity.InfinityCategories.F1.Diagrams.ControlledTriangleNormalizedFamilySupply
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ControlledTriangleNormalizedFamilySupply
 
 /-!
 概要：Ind-S (9) の実正規化供給を採用済みの全族可逆比較仕様へ代入する。
@@ -25,20 +25,20 @@ namespace SerrePositivity.KST.Fibration
 使われ方：同じ実全 S• 座標の再構成と下側正規化への代入。 -/
 theorem zeroMiddleControlledTriangleComparisonSupply_of_indS9 :
     zeroMiddleControlledTriangleComparisonSupply.{u} :=
-  controlledTriangleNormalizedFamilySupply
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.controlledTriangleNormalizedFamilySupply
 
 /-- 概要：同じ実全 S• 座標で全族可逆比較・native 回収・正規化対角が実供給される。
 方針：元の二短辺と全ホーンを、供給済みの同じ再構成データへ代入する。
 規約：存在仮定は不要。読出し合成は厳密等式ではなく全族関手同型。
 使われ方：K-6 c4 の実上側正規化と共有対角の可逆移送。 -/
 theorem zeroMiddleFullSComparisonReconstruction_supplied
-    (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+    (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
     (K : SSet.{u + 1}) :
     ∃ (encode : zeroMiddleFullSReconstructionLongSpace s hZ K ⟶
         zeroMiddleFullSReconstructionTriangleSpace s hZ K)
       (read : zeroMiddleFullSReconstructionTriangleSpace s hZ K ⟶
         zeroMiddleFullSReconstructionLongSpace s hZ K),
-      Nonempty (FunctorIso (encode ≫ read) (𝟙 _)) ∧
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (encode ≫ read) (𝟙 _)) ∧
       zeroMiddleFullSReconstructionRecovery s hZ K read ∧
       zeroMiddleFullSReconstructionDiagonalRecovery s hZ K encode read ∧
       zeroMiddleFullSReconstructionNormalizeComparison s hZ K encode read :=

@@ -29,7 +29,7 @@ def pre {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (Z : KanSequence.{u}) :
 @[reassoc (attr := simp)]
 lemma pre_evaluation {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (Z : KanSequence.{u}) (n : ℕ) :
     pre f Z ≫ evaluation X Z n =
-      evaluation Y Z n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (f.app n) (Z.level n).space := by
+      evaluation Y Z n ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (f.app n) (Z.level n).space := by
   rw [pre, Category.assoc, Category.assoc, composition_evaluation]
   dsimp only [compositionFamily]
   rw [whiskerRight_comp_tensorHom_assoc, OmegaSpectrum.vertexOfHomMap_evaluation,
@@ -47,14 +47,14 @@ def pointedPre {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (Z : KanSequence.{u}) :
     have he := Under.w (pointedEvaluation Y Z n)
     change (pointedSpace Y Z).hom ≫ evaluation Y Z n = _ at he
     rw [he]
-    exact (Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f.app n) (Z.level n).space)).trans
+    exact (Under.w (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (f.app n) (Z.level n).space)).trans
       (Under.w (pointedEvaluation X Z n)).symm)
 
 @[reassoc (attr := simp)]
 lemma pointedPre_evaluation {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
     (Z : KanSequence.{u}) (n : ℕ) :
     pointedPre f Z ≫ pointedEvaluation X Z n = pointedEvaluation Y Z n ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (f.app n) (Z.level n).space := by
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (f.app n) (Z.level n).space := by
   apply Under.UnderMorphism.ext
   exact pre_evaluation f Z n
 

@@ -43,7 +43,7 @@ def cotensorPre {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) (X : OmegaSpectru
 theorem cotensorPre_comparison {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     (X : OmegaSpectrum.{u}) (n : ℕ) :
     (cotensorPre i X).app n ≫ (cotensorProjection A X).app n =
-      (cotensorProjection B X).app n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space :=
+      (cotensorProjection B X).app n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level n).space :=
   KanSequence.liftHom_fac (X := (cotensor B X).toKanSequence)
     (W := (cotensor A X).toKanSequence) (Z := KanSequence.mapping A X.toKanSequence)
     (cotensor B X).sigma_mono (cotensorProjection A X) (cotensorProjection_rlp A X)
@@ -55,16 +55,16 @@ theorem cotensorPre_comparison {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
 使われ方：Goerss–Jardine I §7、BF 1978 §2。円の Kan 置換を cotensor で比較する。 -/
 theorem cotensorPre_levelwise_of_anodyne {A B : PointedSimplicialSet.{u}} (i : A ⟶ B)
     (hi : anodyneExtensions i.right) (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((cotensorPre i X).app n).right := by
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp i hi _)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((cotensorPre i X).app n).right := by
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level n).space).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp i hi _)
   have hcomp := (cotensorProjection_piIsomorphism B X n).comp hp
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((cotensorProjection A X).app n).right) _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((cotensorProjection A X).app n).right) _
     (cotensorProjection_piIsomorphism A X n)
   have h := congrArg Under.Hom.right (cotensorPre_comparison i X n)
   change ((cotensorPre i X).app n).right ≫ ((cotensorProjection A X).app n).right =
     ((cotensorProjection B X).app n).right ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i (X.level n).space).right at h
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i (X.level n).space).right at h
   rw [h]
   exact hcomp
 

@@ -19,36 +19,36 @@ namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 attribute [local instance] uliftCategory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorElementLiftMap : normalizedTensorElementIndex A X Y ⥤
-    ULiftHom.{u + 1} ((((cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ) :=
+    ULiftHom.{u + 1} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ) :=
   ULiftHom.down ⋙ ULift.downFunctor ⋙ ULiftHom.up
 
 def normalizedTensorElementLiftNerveMap : nerve (normalizedTensorElementIndex A X Y) ⟶
     nerve (ULiftHom.{u + 1}
-      ((((cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) where
+      ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y).Elements)ᵒᵖ)) where
   app _ := ↾fun Γ => Γ ⋙ normalizedTensorElementLiftMap A X Y
   naturality _ _ _ := rfl
 
 def normalizedTensorElementParameterMap : nerve (normalizedTensorElementIndex A X Y) ⟶
     SSet.uliftFunctor.{u + 1, u}.obj
-      ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y) :=
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y) :=
   normalizedTensorElementLiftNerveMap A X Y ≫
     FrameHom.SimplexTerminalNerve.liftedAugmentation.{u, u + 1}
-      ((cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (normalizedSimplexTensor A X)).obj Y)
 
 def normalizedTensorElementPinchedMap : nerve (normalizedTensorElementIndex A X Y) ⟶
-    DGNerve.pinchedHom A (Complex A) X Y :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X Y :=
   normalizedTensorElementParameterMap A X Y ≫ (normalizedTensorPinchedIso A X Y).hom
 
 def normalizedTensorElementDerivedPinchedMap : nerve (normalizedTensorElementIndex A X Y) ⟶
-    pinchedHom (X := derivedInfinityCategory A)
-      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex X))
-      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex Y)) :=
-  normalizedTensorElementPinchedMap A X Y ≫ pinchedHomMap (complexSemifreeResolutionInfinity A)
-    (Simplex.vertex X) (Simplex.vertex Y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X))
+      ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)) :=
+  normalizedTensorElementPinchedMap A X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (complexSemifreeResolutionInfinity A)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Y)
 
 end SerrePositivity.EInfinity.ComplexLimits

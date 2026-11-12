@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.ReplacedWeightEndComparison
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.CosimplicialLastVertex
 noncomputable section
@@ -27,7 +27,7 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
     letI := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
     letI := WeightedEndReedyKan.kanComplex BousfieldKanWeightLatching.weight.{u} X
       BousfieldKanWeightLatching.reedyCofibrant hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsPre
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre
       (Functor.whiskerLeft AsSmall.down cosimplicialMap.{u}) (AsSmall.down ⋙ X)) := by
   let := WeightedEndReedyKan.kanComplex stdSimplex.{u} X ReedyWeightCofibrancy.standard hX
   let := WeightedEndReedyKan.kanComplex BousfieldKanWeightLatching.weight.{u} X
@@ -37,20 +37,20 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
   let := WeightedEndReedyKan.kanComplex
     (CosimplicialKanReplacement.functor.obj BousfieldKanWeightLatching.weight.{u}) X
     ReedyWeightCofibrancy.kanBousfieldKan hX
-  let a : weightedSections (AsSmall.down ⋙ CosimplicialKanReplacement.functor.obj
+  let a : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ CosimplicialKanReplacement.functor.obj
       stdSimplex.{u}) (AsSmall.down ⋙ X) ⟶
-      weightedSections (AsSmall.down ⋙ stdSimplex.{u}) (AsSmall.down ⋙ X) :=
-    weightedSectionsPre (Functor.whiskerLeft AsSmall.down
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ stdSimplex.{u}) (AsSmall.down ⋙ X) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down
     (CosimplicialKanReplacement.unit.app stdSimplex.{u})) (AsSmall.down ⋙ X)
-  let b : weightedSections (AsSmall.down ⋙ CosimplicialKanReplacement.functor.obj
+  let b : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ CosimplicialKanReplacement.functor.obj
       BousfieldKanWeightLatching.weight.{u}) (AsSmall.down ⋙ X) ⟶
-      weightedSections (AsSmall.down ⋙ BousfieldKanWeightLatching.weight.{u})
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (AsSmall.down ⋙ BousfieldKanWeightLatching.weight.{u})
         (AsSmall.down ⋙ X) :=
-    weightedSectionsPre (Functor.whiskerLeft AsSmall.down
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down
     (CosimplicialKanReplacement.unit.app BousfieldKanWeightLatching.weight.{u})) (AsSmall.down ⋙ X)
-  let f := weightedSectionsPre (Functor.whiskerLeft AsSmall.down kanWeightMap.{u})
+  let f := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down kanWeightMap.{u})
     (AsSmall.down ⋙ X)
-  let g := weightedSectionsPre (Functor.whiskerLeft AsSmall.down cosimplicialMap.{u})
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre (Functor.whiskerLeft AsSmall.down cosimplicialMap.{u})
     (AsSmall.down ⋙ X)
   have ha : (MorphismProperty.monomorphisms SSet.{u}).rlp a :=
     ReedyWeightRestrictionLifting.rlp_monomorphisms _
@@ -58,9 +58,9 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
   have hb : (MorphismProperty.monomorphisms SSet.{u}).rlp b :=
     ReedyWeightRestrictionLifting.rlp_monomorphisms _
       (CosimplicialKanReplacement.unit_reedy_anodyne _) X hX
-  have haπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight a ha
-  have hbπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism b := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight b hb
-  have hfπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f := kanWeightPre_piIsomorphism X hX
+  have haπ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight a ha
+  have hbπ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism b := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight b hb
+  have hfπ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f := kanWeightPre_piIsomorphism X hX
   have hw : Functor.whiskerLeft AsSmall.down
         (CosimplicialKanReplacement.unit.app BousfieldKanWeightLatching.weight.{u}) ≫
         Functor.whiskerLeft AsSmall.down kanWeightMap.{u} =
@@ -72,11 +72,11 @@ lemma originalWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
       (AsSmall.down.obj j)).symm
   have he : f ≫ b = a ≫ g := by
     dsimp only [f, b, a, g]
-    rw [← weightedSectionsPre_comp, ← weightedSectionsPre_comp, hw]
-  let : TrivialKanFibration a := ⟨ha⟩
-  obtain ⟨s, hs⟩ := trivialKanFibration_exists_section a
-  have hsπ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism s := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp
-    (by rw [hs]; exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _) haπ
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre_comp, hw]
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration a := ⟨ha⟩
+  obtain ⟨s, hs⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.trivialKanFibration_exists_section a
+  have hsπ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism s := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp
+    (by rw [hs]; exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _) haπ
   have hπ := hsπ.comp (hfπ.comp hbπ)
   have he' : s ≫ (f ≫ b) = g := by rw [he, ← Category.assoc, hs, Category.id_comp]
   rw [he'] at hπ

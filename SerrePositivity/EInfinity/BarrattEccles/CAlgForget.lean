@@ -34,7 +34,7 @@ variable (A : Type u) [CommRing A]
 方針：Hom のみを ULift し、元の擬同型類を引き戻す。
 規約：全複体を使い、cofibrancy の条件を付けない。
 使われ方：CAlg_R の忘却の局所化先。 -/
-def complexRelativeCategory : RelativeCategory.{u + 1} where
+def complexRelativeCategory : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u + 1} where
   category := Cat.of (ULiftHom.{u + 1} (Complex A))
   weakEquivalences := (HomologicalComplex.quasiIso (ModuleCat A) (.up ℤ)).inverseImage
     (ULiftHom.down.{u, u + 1, u + 1} (C := Complex A))

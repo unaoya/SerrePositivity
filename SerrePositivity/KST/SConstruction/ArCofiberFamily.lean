@@ -86,7 +86,7 @@ lemma arCofiberSquareMap_at {n : ℕ} (a : Ar.{u} n) :
 規約：任意の単体集合で成立。使われ方：Ar 上の cofiber 四角形の頂点計算。 -/
 lemma curry_vertex_value {A B C : SSet.{u}} (H : B ⊗ A ⟶ C) (a : A _⦋0⦌) :
     (curry H).app (Opposite.op ⦋0⦌) a =
-      functorVertex (CartesianMonoidalCategory.lift (𝟙 B) (SSet.const a) ≫ H) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (CartesianMonoidalCategory.lift (𝟙 B) (SSet.const a) ≫ H) := by
   have hh : CartesianMonoidalCategory.lift (𝟙 B) (SSet.const a) ≫ H =
       uncurry' ((SSet.unitHomEquiv A).symm a ≫ curry H) := by
     rw [uncurry', uncurry_natural_left, uncurry_curry]
@@ -112,10 +112,10 @@ def arCofiberFamily {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) :
 規約：実際の射の関手頂点による等号。使われ方：族の普遍性を頂点で判定する。 -/
 lemma arCofiberFamily_vertex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) (a : Ar.{u} n) :
     (arCofiberFamily F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a) =
-      functorVertex (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2
         (Fin.zero_le _) le_rfl a.down.property ≫ F) := by
   rw [arCofiberFamily, curry_vertex_value]
-  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C ↦ functorVertex f)
+  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
   have he : CartesianMonoidalCategory.lift (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{u}))
       (SSet.const (ComposableArrows.mk₀ a)) ≫
       (β_ (Δ[1] ⊗ Δ[1] : SSet.{u}) (arNerve n)).hom =
@@ -128,16 +128,16 @@ lemma arCofiberFamily_vertex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) (a :
 規約：C の quasicategory 性・安定性は不要。使われ方：既存の gapped 境界の cofiber 補完。 -/
 def gappedCofiberFamily {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C} (hF : IsGapped F) :
     arNerve n ⟶ cofiberDiagrams C :=
-  fullSubcomplexLift _ (arCofiberFamily F) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (arCofiberFamily F) (by
     intro v
     obtain ⟨a, rfl⟩ := nerveEquiv.symm.surjective v
     change IsCofiberDiagramVertex ((arCofiberFamily F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
     rw [arCofiberFamily_vertex]
     constructor
-    · rw [squareDiagram_functorVertex, arSquare_cofiber_zero_corner]
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_functorVertex, arSquare_cofiber_zero_corner]
       exact hF.1 _
-    · change IsPushoutSquare ((functorVertexEquiv _ C).symm
-        (functorVertexEquiv _ C (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2
+    · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (arSquare 0 a.down.val.1 a.down.val.1 a.down.val.2
           (Fin.zero_le _) le_rfl a.down.property ≫ F)))
       rw [Equiv.symm_apply_apply]
       exact hF.2 _ _ _ _ _ _ _)
@@ -146,13 +146,13 @@ def gappedCofiberFamily {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C} (hF : IsG
 方針：内部 Hom の評価を各次数で計算する。
 規約：任意の単体集合。使われ方：cofiber 四角形の頂点の回収。 -/
 lemma curry_evaluate_vertex {A B C : SSet.{u}} (H : B ⊗ A ⟶ C) (b : B _⦋0⦌) :
-    curry H ≫ evaluateFunctorAt b =
+    curry H ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b =
       CartesianMonoidalCategory.lift (SSet.const b) (𝟙 A) ≫ H := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
   intro a
-  change H.app (Opposite.op ⦋d⦌) (PinchedHom.constant b d, A.map (𝟙 _) a) = _
+  change H.app (Opposite.op ⦋d⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant b d, A.map (𝟙 _) a) = _
   rw [CategoryTheory.Functor.map_id_apply]
   rfl
 
@@ -176,7 +176,7 @@ lemma arCofiberSquareMap_apex (n : ℕ) :
 方針：curry の評価と添字の右上角の恒等式を合わせる。
 規約：gapped 条件は不要。使われ方：復元した cofiber 族の境界の厳密化。 -/
 lemma arCofiberFamily_apex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) :
-    arCofiberFamily F ≫ evaluateFunctorAt
+    arCofiberFamily F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = F := by
   rw [arCofiberFamily, curry_evaluate_vertex]
   have he : CartesianMonoidalCategory.lift
@@ -191,7 +191,7 @@ lemma arCofiberFamily_apex {n : ℕ} {C : SSet.{u}} (F : arNerve n ⟶ C) :
 方針：全部分複体の包含の後で頂点 (1,1) を評価する。
 規約：安定性は定義に不要。使われ方：補完した族から Ar 図式を取り出す。 -/
 def cofiberApex (C : SSet.{u}) : cofiberDiagrams C ⟶ C :=
-  (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2))
 
 /-- 概要：gapped 図式を cofiber 族にして右上角を取ると元の図式。
@@ -199,10 +199,10 @@ def cofiberApex (C : SSet.{u}) : cofiberDiagrams C ⟶ C :=
 規約：厳密な回収の等号。使われ方：相対補完の指定境界の回収。 -/
 lemma gappedCofiberFamily_apex {n : ℕ} {C : SSet.{u}} {F : arNerve n ⟶ C} (hF : IsGapped F) :
     gappedCofiberFamily hF ≫ cofiberApex C = F := by
-  change (gappedCofiberFamily hF ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
+  change (gappedCofiberFamily hF ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm (1 : Fin 2),
       stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = F
-  change arCofiberFamily F ≫ evaluateFunctorAt
+  change arCofiberFamily F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = F
   exact arCofiberFamily_apex F
 

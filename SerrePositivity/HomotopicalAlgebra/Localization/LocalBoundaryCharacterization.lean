@@ -43,7 +43,7 @@ lemma rlp_of_localObjects (S : MorphismProperty C) (targetObject : C) [IsFibrant
         (NonsingularPresentation.cocone (SSet.boundary.{v} n).toSSet)
         (NonsingularPresentation.isColimit (SSet.boundary.{v} n).toSSet)
         (SubcomplexTensor.simplexCocone (SSet.boundary.{v} n)))
-      ((cosimplicialHomMap ((ArrowFrames.inclusion cof).app f)).app targetObject) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((ArrowFrames.inclusion cof).app f)).app targetObject) := by
     rw [SubcomplexTensor.presentationMap_eq]
     exact inferInstanceAs (HasLiftingProperty (SSet.boundary.{v} n).ι
       (ArrowFrames.testMap cof f targetObject))
@@ -64,14 +64,14 @@ lemma localObjects_iff_rlp (S : MorphismProperty C) (Y : C) [IsFibrant Y] :
 
 include hcof hfib in
 lemma localFibrantObjects_iff_rlp (I J : MorphismProperty C)
-    [ModelGeneration.CofibrantlyGenerated.{w} I J] (S : MorphismProperty C) (Y : C) :
+    [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J] (S : MorphismProperty C) (Y : C) :
     localFibrantObjects cof fib S Y ↔
       (LocalFibrantApproximation.generators J cof S).rlp (terminal.from Y) := by
   constructor
   · rintro ⟨hF, hL⟩
     have := hF
     have hJ : J.rlp (terminal.from Y) := by
-      rw [ModelGeneration.CofibrantlyGenerated.rlp_J (I := I) (J := J)]
+      rw [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_J (I := I) (J := J)]
       exact mem_fibrations (terminal.from Y)
     have hS := rlp_of_localObjects cof fib hcof hfib S Y hL
     intro X Z g hg

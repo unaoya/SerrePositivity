@@ -66,7 +66,7 @@ def codiscreteUniversalCoverIso (G : Type u) [Group G] (i : AsSmall.{u} (SingleO
 規約：群の有限性を仮定しない厳密な図式の同型。
 使われ方：Goerss–Jardine VIII §2。hG と群 cochain の Tot の模型比較。 -/
 def bousfieldKanUniversalCoverIso (G : Type u) [Group G] :
-    SerrePositivity.InfinityCategories.HomotopyLimits.bousfieldKanWeight
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight
       (AsSmall.{u} (SingleObj G)) ≅ universalCoverDiagram G :=
   NatIso.ofComponents
     (fun i ↦ GroupOverCodiscrete.nerveIso G i ≪≫ codiscreteUniversalCoverIso G i)

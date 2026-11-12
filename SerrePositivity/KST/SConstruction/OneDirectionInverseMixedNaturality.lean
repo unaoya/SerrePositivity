@@ -26,12 +26,12 @@ lemma oneDirectionInverseMixedFromSource_map (r : ℕ) {X Y : StableModel.{u}} (
       ((oneDirectionInverseMixedFromSource r f).app (Opposite.op ⦋0⦌) v) =
     oneDirectionKanInverseAt r X v ≫ (oneDirectionKanRealizationFunctor r).map f := by
   have h := pointedLiftTransport_vertex
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)) (𝟙 _)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app X)) (𝟙 _)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
     ((boundaryKanRealizationFunctor r).map f)
     (𝟙 _) (oneDirectionMappingPathMap r f) ((boundaryKanRealizationFunctor r).map f)
     (oneDirectionMappingPathMap_projection r f) (by simp) v
-  have hh := congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
+  have hh := congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))
     (h.trans (Category.id_comp _))
   refine hh.trans ?_
   rw [Category.assoc, oneDirectionMappingPathMap_retraction, ← Category.assoc]
@@ -44,13 +44,13 @@ lemma oneDirectionInverseMixedFromTarget_map (r : ℕ) {X Y : StableModel.{u}} (
       ((oneDirectionInverseMixedFromTarget r f).app (Opposite.op ⦋0⦌) v) =
     (boundaryKanRealizationFunctor r).map f ≫ oneDirectionKanInverseAt r Y v := by
   have h := pointedLiftTransport_vertex
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y)) (𝟙 _)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
     ((boundaryKanRealizationFunctor r).map f)
     ((boundaryKanRealizationFunctor r).map f) (𝟙 _) (𝟙 _) (by simp) (by simp) v
   have hh := h.trans (congrArg ((boundaryKanRealizationFunctor r).map f ≫ ·)
     (Category.comp_id _))
-  exact (congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y)) hh).trans
+  exact (congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y)) hh).trans
     (Category.assoc _ _ _)
 
 /-- 逆射の混合パラメーター族は各頂点で混合写像を回収する。 -/
@@ -60,15 +60,15 @@ lemma oneDirectionInverseMixedFamily_vertex (r : ℕ) {X Y : StableModel.{u}} (f
       familyVertex (oneDirectionInverseMixedMap r f v) := by
   let a := (pullback.fst
     (PointedObject.basedHomMap ((boundaryKanRealizationFunctor r).obj X)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))).right
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))).right
     (SSet.yonedaEquiv.symm (familyVertex ((boundaryKanRealizationFunctor r).map f)))).app
     (Opposite.op ⦋0⦌) v
   have ha : a = familyVertex
-      (pointedLiftMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
+      (pointedLiftMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathProjection ((oneDirectionKanComparisonNat r).app Y))
         ((boundaryKanRealizationFunctor r).map f) v) :=
     (familyVertex_familyMap _ _ a).symm
   exact (congrArg ((PointedObject.basedHomMap ((boundaryKanRealizationFunctor r).obj X)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))).right.app
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.mappingPathRetraction ((oneDirectionKanComparisonNat r).app Y))).right.app
       (Opposite.op ⦋0⦌)) ha).trans (familyVertex_post _ _)
 
 /-- 指定した両端の逆射は混合切断空間内の実際の辺で比較できる。 -/

@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementEvaluatedColumn_front {n : ℕ}
@@ -28,19 +28,19 @@ lemma normalizedTensorElementEvaluatedColumn_front {n : ℕ}
 
 lemma normalizedTensorElementEvaluatedColumn_closed_front {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    (closedNerveSimplex
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
       (normalizedTensorElementEvaluatedColumn A X Y c ⋙ complexToClosed A)).pullback
       Fin.castSuccOrderEmb.toOrderHom =
-      closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := by
-  rw [← closedNerveSimplex_pullback]
-  exact congrArg (fun F => closedNerveSimplex (F ⋙ complexToClosed A))
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (c ⋙ normalizedTensorElementDiagram A X Y ⋙ complexToClosed A) := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback]
+  exact congrArg (fun F => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (F ⋙ complexToClosed A))
     (normalizedTensorElementEvaluatedColumn_front A X Y c)
 
 lemma normalizedTensorTriangleFront_Back_hom {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ))
     (h0 : ∀ i ∈ I, τ i ≠ 0) (h2 : ∀ i ∈ I, τ i ≠ 2) :
     HEq ((normalizedTensorTriangleFront A X Y c τ).hom I a b k hI ha hb hk)
@@ -54,12 +54,12 @@ lemma normalizedTensorTriangleFront_Back_hom {n : ℕ}
       (Fin.succOrderEmb (n + 1)).toOrderHom).hom I a b k hI ha hb hk) at hf
   rw [normalizedTensorConeSimplex_tail] at hf
   have he := simplexData_pullback_hom_eqOn
-    (closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
       complexToClosed A)).toSimplexData
     (coneTriangleBackIndex τ) Fin.castSuccOrderEmb.toOrderHom
     I a b k hI ha hb hk (fun i hi => coneTriangleBackIndex_ne_two τ i (h2 i hi))
   change HEq ((normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk)
-    (((closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
+    (((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
       complexToClosed A)).pullback Fin.castSuccOrderEmb.toOrderHom).hom
       I a b k hI ha hb hk) at he
   rw [normalizedTensorElementEvaluatedColumn_closed_front] at he

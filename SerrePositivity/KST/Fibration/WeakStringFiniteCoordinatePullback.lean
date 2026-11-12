@@ -15,16 +15,16 @@ open SerrePositivity.KST.Comparison
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の有限比較の積座標の後合成と、元の初期成分への射影の可換四角形。 -/
-theorem weakStringFiniteInitialPostSquare {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n r : ℕ) :
+theorem weakStringFiniteInitialPostSquare {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n r : ℕ) :
     CommSq (fst _ _) (weakStringFinitePostMap f q n r)
       ((multiRealizationFunctor r).map (topPostExact f)) (fst _ _) :=
   ⟨(weakStringFinitePostMap_initial f q n r).symm⟩
 
 /-- Verdier 列では、同じ有限積座標上の初期成分の実四角形は全長・全正反復で homotopy pullback。 -/
 theorem weakStringFiniteInitialPostSquare_homotopyPullback
-    {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n r : ℕ) :
+    {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n r : ℕ) :
     IsHomotopyPullback (weakStringFiniteInitialPostSquare i q n (r + 1)) :=
   productCoefficientSquare_homotopyPullback _ _
     (weakStringFiniteKernelPostMap_verdier_localized_isIso h n r)

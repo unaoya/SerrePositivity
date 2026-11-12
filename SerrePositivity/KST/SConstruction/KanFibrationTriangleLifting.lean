@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeFamilyRectification
-public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 /-! # 指定した基底三角形と二辺を保つ Kan fibration の充填
 概要：外側の逆三角形と内側の合成三角形を、元の二辺と基底二単体を固定して持ち上げる。
@@ -27,13 +27,13 @@ lemma exists_kanFibration_liftOuterTriangle {E B : SSet.{u}} (q : E ⟶ B) [Fibr
     ∃ g' : E.Edge x₁ x₂, ∃ t' : SSet.Edge.CompStruct f g' h,
       q.app (Opposite.op ⦋2⦌) t'.simplex = t.simplex ∧
         q.app (Opposite.op ⦋1⦌) g'.edge = g.edge := by
-  let : LeftFibration q := ⟨by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration q := ⟨by
     intro A X i hi
     cases hi with
     | @intro n i hn =>
       exact ((SSet.modelCategoryQuillen.fibration_iff q).mp inferInstance) _ (horn_ι_mem_J _ _)⟩
   obtain ⟨g', t', ht'⟩ :=
-    (leftFibration_liftCompStruct q f.toTruncated h.toTruncated g.toTruncated t.toTruncated).some
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.leftFibration_liftCompStruct q f.toTruncated h.toTruncated g.toTruncated t.toTruncated).some
   refine ⟨SSet.Edge.ofTruncated g', SSet.Edge.CompStruct.ofTruncated t', ht', ?_⟩
   have he := congrArg (B.δ (0 : Fin 3)) ht'
   rw [← SSet.δ_naturality_apply] at he

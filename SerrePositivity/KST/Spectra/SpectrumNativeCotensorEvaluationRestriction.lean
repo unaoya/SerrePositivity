@@ -25,10 +25,10 @@ namespace CotensorCompatible
 lemma evaluationNerveFamily_restriction (A : PointedSimplicialSet.{u})
     {K : SSet.{u}} (i : K ⟶ A.right) :
     (𝟙 (SimplicialNerve (Object A)) ⊗ₘ
-        coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction
-          (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) i)) ≫ evaluationNerveFamily A =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction
+          (C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) i)) ≫ evaluationNerveFamily A =
       EnrichedParameterCylinder.nervePair (C := Object A) K ≫
-        coherentNerveMap (restrictedCylinderEnriched A i) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (restrictedCylinderEnriched A i) := by
   rw [evaluationNerveFamily, ← Category.assoc, EnrichedParameterCylinder.nervePair_restriction,
     Category.assoc, evaluationCylinderInfinityMap_restriction]
   rfl
@@ -38,13 +38,13 @@ end CotensorCompatible
 /-- 元の Sp 上の二変数の評価も、制限された元の円柱の評価へ厳密に制限される。 -/
 lemma nativeCotensorEvaluationFamily_restriction (A : PointedSimplicialSet.{u})
     {K : SSet.{u}} (i : K ⟶ A.right) :
-    (𝟙 Sp.{u} ⊗ₘ coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction
-        (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) i)) ≫ nativeCotensorEvaluationFamily A =
+    (𝟙 Sp.{u} ⊗ₘ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction
+        (C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) i)) ≫ nativeCotensorEvaluationFamily A =
       ((CotensorCompatible.sourceInfinityEquivalence A).inv ⊗ₘ 𝟙 _) ≫
         EnrichedParameterCylinder.nervePair (C := CotensorCompatible.Object A) K ≫
-          coherentNerveMap (CotensorCompatible.restrictedCylinderEnriched A i) := by
-  let r := coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.restriction
-    (C := _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{u + 1}) i)
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (CotensorCompatible.restrictedCylinderEnriched A i) := by
+  let r := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.restriction
+    (C := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{u + 1}) i)
   have h :
       (𝟙 Sp.{u} ⊗ₘ r) ≫ ((CotensorCompatible.sourceInfinityEquivalence A).inv ⊗ₘ 𝟙 _) =
       ((CotensorCompatible.sourceInfinityEquivalence A).inv ⊗ₘ 𝟙 _) ≫

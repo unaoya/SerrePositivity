@@ -41,7 +41,7 @@ def cotensor (X : (operad A).Algebra) : SSet.{u}ᵒᵖ ⥤ (operad A).Algebra :=
 使われ方：余テンソルの普遍性と重み付き錐の比較。 -/
 def cotensorHomEquiv (X Y : (operad A).Algebra) (K : SSet.{u}) :
     (Y ⟶ (cotensor A X).obj (op K)) ≃
-      (K ⟶ (cosimplicialHom (rightFrame A X)).obj (op Y)) :=
+      (K ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (rightFrame A X)).obj (op Y)) :=
   (show (Y ⟶ (cotensor A X).obj (op K)) ≃
       ((Realization.functor (rightFrame A X)).obj K ⟶ op Y) from
     { toFun := fun f => f.op

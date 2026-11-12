@@ -44,15 +44,15 @@ lemma finalHorn_not_mem_last_value (m d : ℕ) (s : (Δ[m + 2] : SSet.{u}) _⦋d
     omega
 
 lemma simplexLastVertex_stdSimplex {m d : ℕ} (s : (Δ[m] : SSet.{u}) _⦋d⦌) :
-    simplexLastVertex s = stdSimplex.obj₀Equiv.symm (s (Fin.last d)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s = stdSimplex.obj₀Equiv.symm (s (Fin.last d)) := by
   apply stdSimplex.ext
   intro i
   rfl
 
 lemma finalHorn_missing_last_vertex (m d : ℕ) (s : (Δ[m + 2] : SSet.{u}) _⦋d⦌)
     (hs : s ∉ (horn (m + 2) (Fin.last (m + 2))).obj (Opposite.op ⦋d⦌)) :
-    simplexLastVertex s = stdSimplex.obj₀Equiv.symm ((Fin.last (m + 1)).castSucc) ∨
-      simplexLastVertex s = stdSimplex.obj₀Equiv.symm (Fin.last (m + 2)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s = stdSimplex.obj₀Equiv.symm ((Fin.last (m + 1)).castSucc) ∨
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.simplexLastVertex s = stdSimplex.obj₀Equiv.symm (Fin.last (m + 2)) := by
   rw [simplexLastVertex_stdSimplex]
   exact (finalHorn_not_mem_last_value m d s hs).imp
     (congrArg stdSimplex.obj₀Equiv.symm) (congrArg stdSimplex.obj₀Equiv.symm)

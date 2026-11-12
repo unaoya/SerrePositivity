@@ -17,17 +17,17 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の語の逆次元移送は、元の cube の同じ次元移送の実前合成。 -/
 lemma simplexHABeadWordCell_mpr {n : ℕ} {a b : Fin (n + 1)} {p q : ℕ}
-    (h : p = q) (word : _root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b q) :
-    simplexHABeadWordCell A (Eq.mpr (congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.SimplexHABeadWord n a b) h) word) =
+    (h : p = q) (word : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b q) :
+    simplexHABeadWordCell A (Eq.mpr (congrArg (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.SimplexHABeadWord n a b) h) word) =
       eqToHom (congrArg (serreCubeComplex A) h) ≫ simplexHABeadWordCell A word := by
   cases h
   exact (Category.id_comp _).symm
 
 /-- 元の端点を指定した一 bead の語の実鎖射は、元の同じ部分集合生成射。 -/
 lemma simplexHABeadWordAt_cell {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
-    (a b : Fin (n + 1)) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)) :
-    simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadWordAt I hI a b ha hb) =
+    (a b : Fin (n + 1)) (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)) :
+    simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadWordAt I hI a b ha hb) =
       simplexSubsetLambdaCellAt A I a b hI ha hb := by
   subst a b
   rfl
@@ -35,16 +35,16 @@ lemma simplexHABeadWordAt_cell {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ 
 /-- 元の右側頂点を持つ語の実鎖射は、元の次元移送と同じ部分集合生成射の合成。 -/
 lemma simplexHABeadTail_cell {n : ℕ} (T : Finset (Fin (n + 1))) (hT : T.Nonempty)
     (a : Fin (n + 1)) (ha : ∀ t ∈ T, a < t) (hI : 2 ≤ (insert a T).card)
-    (hmin : a = (insert a T).min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI))
-    (hmax : T.max' hT = (insert a T).max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty _ hI)) :
-    simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail T hT a ha) =
+    (hmin : a = (insert a T).min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI))
+    (hmax : T.max' hT = (insert a T).max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty _ hI)) :
+    simplexHABeadWordCell A (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail T hT a ha) =
       eqToHom (congrArg (serreCubeComplex A)
         (show T.card - 1 = (insert a T).card - 2 by
-          have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha)
+          have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T a ha)
           omega)) ≫ simplexSubsetLambdaCellAt A (insert a T) a (T.max' hT) hI hmin hmax := by
-  have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T a ha)
+  have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T a ha)
   have hd : T.card - 1 = (insert a T).card - 2 := by omega
-  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail
+  unfold _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail
   rw [simplexHABeadWordCell_mpr A hd, simplexHABeadWordAt_cell]
 
 end SerrePositivity.KST.SConstruction

@@ -19,30 +19,30 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock Hammock.FixedObjectDiagram SerrePositivity.InfinityCategories
-variable (C : RelativeCategory.{u}) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
 lemma freeWordDiagonalAugmentation_backward_square :
-    (freeWordDiagonalAugmentation C X Y).app (Word.single .backward) ≫
+    (freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward) ≫
       BackwardZigzag.graphValue =
     singleBackwardDiagonalEvaluation (freeResolution C) (freeResolutionObject C)
       (fun θ X => freeResolutionObject_naturality C θ X) X Y ≫
         freeResolutionCanonicalMarkedHomAugmentation C Y X := by
   ext n σ
   apply WideSubcategory.hom_ext
-  change (BackwardZigzag.value
-    ((Zigzag.Relative.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagDiscrete.value
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor ((freeResolutionAugmentationNatTrans C).app n)
       (freeResolutionObject_augmentation C n X)
       (freeResolutionObject_augmentation C n Y)).obj (σ.obj 0))).val = _
-  rw [BackwardZigzag.value_relative]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzag.value_relative]
   change (eqToHom _ ≫ ((freeResolutionAugmentationNatTrans C).app n).functor.map
-    (BackwardZigzag.value (σ.obj 0)).val ≫ eqToHom _) =
-    (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
-      (eqToHom _ ≫ BackwardZigzag.markedHomEquiv (BackwardZigzag.value (σ.obj 0)) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagDiscrete.value (σ.obj 0)).val ≫ eqToHom _) =
+    (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
+      (eqToHom _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedHomEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.BackwardZigzagDiscrete.value (σ.obj 0)) ≫
         eqToHom _) ≫ eqToHom _).hom
   simp only [Functor.map_comp, WideSubcategory.comp_def, marked_eqToHom_hom,
     eqToHom_map, Category.assoc, eqToHom_trans_assoc, eqToHom_trans]
   rfl
-lemma freeWordDiagonalAugmentation_backward_weak : IsWeakHomotopyEquivalence
-    ((freeWordDiagonalAugmentation C X Y).app (Word.single .backward)) := by
+lemma freeWordDiagonalAugmentation_backward_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
+    ((freeWordDiagonalAugmentation C X Y).app (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .backward)) := by
   apply BackwardZigzag.graphValue_weak.cancel_right
   rw [freeWordDiagonalAugmentation_backward_square]
   exact (singleBackwardDiagonalEvaluation_weak (freeResolution C) (freeResolutionObject C)

@@ -66,7 +66,7 @@ lemma post_fibers (X : FramedResolution C) (Y W : ResolutionObject C)
   · apply (map_inclusion C (post X Y W f g)).trans
     apply Eq.trans ?_ (ResolutionLiftPostcomposition.map_inclusion X.inner Y W f g).symm
     change _ ≫ ((MixedChoiceFunctor.rawBifunctor.map (𝟙 _)).app Y.resolution.obj ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X.inner).obj).map g.diagram) = _
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X.inner).obj).map g.diagram) = _
     rw [CategoryTheory.Functor.map_id]
     exact congrArg (fun k => ResolutionLiftSpace.inclusion X.inner Y f ≫ k)
       (Category.id_comp _)
@@ -78,8 +78,8 @@ lemma pre_fibers (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ 
   apply ResolutionLiftSpace.hom_ext
   · apply (map_inclusion C (pre X Y W f g)).trans
     apply Eq.trans ?_ (LiftSpacePrecomposition.map_inclusion _ _ _ _ _ _ _ _ _ _ _).symm
-    change _ ≫ ((cosimplicialHomMap f.frame).app W.resolution.obj ≫
-      (cosimplicialHom (ResolutionLiftSpace.frame X.inner).obj).map (𝟙 W.resolution.obj)) = _
+    change _ ≫ ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap f.frame).app W.resolution.obj ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (ResolutionLiftSpace.frame X.inner).obj).map (𝟙 W.resolution.obj)) = _
     rw [CategoryTheory.Functor.map_id]
     exact congrArg (fun k => ResolutionLiftSpace.inclusion Y.inner W g ≫ k)
       (Category.comp_id _)
@@ -87,16 +87,16 @@ lemma pre_fibers (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ 
 
 lemma post_tuples (X : FramedResolution C) (Y W : ResolutionObject C)
     (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : (tuples C).map (post X Y W f g) =
-      VertexTuples.map (CoherentLiftRelative.postStrict X.inner Y W f g) := by
-  apply congrArg VertexTuples.map
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (CoherentLiftRelative.postStrict X.inner Y W f g) := by
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map
   funext k
   apply Subtype.ext
   exact Category.id_comp _
 
 lemma pre_tuples (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
     (g : Y.inner.base ⟶ W.base) : (tuples C).map (pre X Y W f g) =
-      VertexTuples.map (CoherentLiftRelative.preStrict X.inner Y.inner W f.map g) := by
-  apply congrArg VertexTuples.map
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map (CoherentLiftRelative.preStrict X.inner Y.inner W f.map g) := by
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.VertexTuples.map
   funext k
   apply Subtype.ext
   exact congrArg (fun k => f.map ≫ k) (Category.comp_id _)
@@ -106,7 +106,7 @@ variable [ModelCategory SSet.{v}]
 open ResolutionArrowComparisonEndpoints
 
 lemma post_left (X : FramedResolution C) (Y W : ResolutionObject C)
-    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : UniverseLift.lower
+    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C)
       (left C hcof) (Arrow.mk (post X Y W f g))) =
     CoherentLiftRelative.postLeft hcof X.inner Y W f g := by
@@ -115,7 +115,7 @@ lemma post_left (X : FramedResolution C) (Y W : ResolutionObject C)
       (post_fibers X Y W f g))
 
 lemma post_right (X : FramedResolution C) (Y W : ResolutionObject C)
-    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : UniverseLift.lower
+    (f : X.inner.base ⟶ Y.base) (g : Y ⟶ W) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C)
       (right C hcof) (Arrow.mk (post X Y W f g))) =
     CoherentLiftRelative.postRight hcof X.inner Y W f g := by
@@ -124,7 +124,7 @@ lemma post_right (X : FramedResolution C) (Y W : ResolutionObject C)
       (post_tuples X Y W f g))
 
 lemma pre_left (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
-    (g : Y.inner.base ⟶ W.base) : UniverseLift.lower
+    (g : Y.inner.base ⟶ W.base) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C)
       (left C hcof) (Arrow.mk (pre X Y W f g))) =
     CoherentLiftRelative.preLeft hcof X.inner Y.inner W f.map g (FramedResolution.frameMap f) := by
@@ -133,7 +133,7 @@ lemma pre_left (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
       (pre_fibers X Y W f g))
 
 lemma pre_right (X Y : FramedResolution C) (W : ResolutionObject C) (f : X ⟶ Y)
-    (g : Y.inner.base ⟶ W.base) : UniverseLift.lower
+    (g : Y.inner.base ⟶ W.base) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower
     (NerveMovingParameter.evaluate (parameter C) (values C)
       (right C hcof) (Arrow.mk (pre X Y W f g))) =
     CoherentLiftRelative.preRight hcof X.inner Y.inner W f.map g := by

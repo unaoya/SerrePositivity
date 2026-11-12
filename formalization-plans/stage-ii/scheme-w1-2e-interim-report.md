@@ -1,0 +1,111 @@
+# 2e 途中の取り込み点（2026-11-11 19:17 JST）
+
+## 選んだコミットと取り込みの範囲
+
+**2e 途中の取り込み点：`d63382a9b7bcbcbff266a5d5f0c9af9ebd9d8cf7`（短縮 `d63382a9b`、`math/scheme` のコミット済み HEAD）。**
+
+この報告の直前のコミットを選ぶ。報告の文書コミットはこのコミットの子であり、Lean の追加は含まない。照合した main は `24c8d0ae928692361b260f93c7fd568b0e3ac085`。この main に未取り込みのコミットは **42 件**。今回の取り込みは停止点 2e の検収とは別で、2e の残りは続ける。
+
+作業木には、選定したコミットより先の新規 Lean 8 本と `AlgebraicGeometry.lean` へのその import の追加があるが、**今回の取り込み点には一切含めない**。この報告は `git commit --only` で文書だけを保存する。
+
+## ビルドと監査
+
+- 選定範囲の新規・変更モジュールと直接 importer `SerrePositivity.AlgebraicGeometry` の対象ビルドは成功済み。ルート全体のビルド・verify は行っていない。
+- 最後の数学コミット `fd2d691f1` の後、公式 `scripts/audit_kst_scheme_lemmas.lean` の監査は **5,544 宣言・標準三公理のみ**（`propext`・`Classical.choice`・`Quot.sound`）。記録は作業用 `scheme-drafts/graded-scalar-compat-audit.log`。
+- main の merge `d63382a9b` では、監査済みの AG のローカル import 閉包と Lean/Lake の入力を照合した。今回さらに、保存済み入力一覧の **597 ファイルの SHA-256 と、選定コミットの blob の SHA-256 を照合し、不一致 0** を確認した。未コミットの作業木の AG ファイルは、この照合に使っていない。
+- ビルド・監査はすべて共有の `scripts/refactor/with_build_lock.sh --wait 3600` を経由し、一回の実行後に鍵を返す。文書の保存は鍵を使わない。
+
+## 登録するモジュール（78 本）
+
+以下は、上記 main と選定コミットの **コミット済み** `SerrePositivity/AlgebraicGeometry.lean` の差分から抽出した追加 import の全件。
+
+```text
+SerrePositivity.AlgebraicGeometry.CechTupleContraction
+SerrePositivity.AlgebraicGeometry.ProjStandardOpen
+SerrePositivity.AlgebraicGeometry.ProjectiveCechComparison
+SerrePositivity.AlgebraicGeometry.ProjectiveCechComparisonNaturality
+SerrePositivity.AlgebraicGeometry.ProjectiveCechComplex
+SerrePositivity.AlgebraicGeometry.ProjectiveCechDevissage
+SerrePositivity.AlgebraicGeometry.ProjectiveCechFiniteRetracts
+SerrePositivity.AlgebraicGeometry.ProjectiveCechFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveCechFunctor
+SerrePositivity.AlgebraicGeometry.ProjectiveCechGradedLocalization
+SerrePositivity.AlgebraicGeometry.ProjectiveCechGradedRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveCechNonemptyComparison
+SerrePositivity.AlgebraicGeometry.ProjectiveFreeCechFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedCechExact
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedChart
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedChartAdditive
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedChartShift
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedFree
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedLocalizationMaps
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedPresentation
+SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousAway
+SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousChart
+SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousChartRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveLaurentChart
+SerrePositivity.AlgebraicGeometry.ProjectiveNatGradedFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveNatGrading
+SerrePositivity.AlgebraicGeometry.ProjectivePolynomialTwistFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveProjStandardSections
+SerrePositivity.AlgebraicGeometry.ProjectiveScalarGradedLocalization
+SerrePositivity.AlgebraicGeometry.ProjectiveScalarLocalization
+SerrePositivity.AlgebraicGeometry.ProjectiveScalarRestrictionComparison
+SerrePositivity.AlgebraicGeometry.ReesFiltrationModule
+SerrePositivity.AlgebraicGeometry.ReesFiltrationMaps
+SerrePositivity.AlgebraicGeometry.ReesFiltrationExact
+SerrePositivity.AlgebraicGeometry.ReesFiltrationAdic
+SerrePositivity.AlgebraicGeometry.ReesFiltrationGrade
+SerrePositivity.AlgebraicGeometry.ReesPolynomialBaseChange
+SerrePositivity.AlgebraicGeometry.ReesExtendedFiltration
+SerrePositivity.AlgebraicGeometry.ReesExtendedModule
+SerrePositivity.AlgebraicGeometry.ReesProjectiveGrading
+SerrePositivity.AlgebraicGeometry.ProjectiveFormalFunctionsBounds
+SerrePositivity.AlgebraicGeometry.ProjectiveLocalizedDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveDirectSumFinitePi
+SerrePositivity.AlgebraicGeometry.ProjectiveGradingFromVariables
+SerrePositivity.AlgebraicGeometry.ProjectiveModuleScalarLocalization
+SerrePositivity.AlgebraicGeometry.ProjectiveDirectSumCech
+SerrePositivity.AlgebraicGeometry.ReesProjectiveFiniteness
+SerrePositivity.AlgebraicGeometry.ProjectiveDirectSumHomology
+SerrePositivity.AlgebraicGeometry.ProjectiveCechDirectSumHomology
+SerrePositivity.AlgebraicGeometry.ProjectiveFormalFunctionsFiltration
+SerrePositivity.AlgebraicGeometry.ReesAdicProjectivePieces
+SerrePositivity.AlgebraicGeometry.ProjectiveDirectSumHomologyInclusion
+SerrePositivity.AlgebraicGeometry.ReesAdicDirectSumGrading
+SerrePositivity.AlgebraicGeometry.ProjectiveLocalizedDirectSumComponents
+SerrePositivity.AlgebraicGeometry.ProjectiveCechDirectSumInclusion
+SerrePositivity.AlgebraicGeometry.ReesAdicLocalizedDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveDirectSumSubmodule
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedLocalizedDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedLocalizationCongr
+SerrePositivity.AlgebraicGeometry.ReesAdicGradedLocalizedDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveLocalizedDirectSumRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedDirectSumRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveModuleScalarGradedLocalization
+SerrePositivity.AlgebraicGeometry.ReesPolynomialCoefficientTowers
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedTransportValues
+SerrePositivity.AlgebraicGeometry.ProjectiveNatGradedChartZero
+SerrePositivity.AlgebraicGeometry.ProjectiveCechRestrictScalars
+SerrePositivity.AlgebraicGeometry.ProjectiveCechRestrictScalarsNaturality
+SerrePositivity.AlgebraicGeometry.ProjectiveLocalizationMapRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedTransportRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedChartDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveNatGradedChartDirectSum
+SerrePositivity.AlgebraicGeometry.ReesAdicProjectiveCechDirectSum
+SerrePositivity.AlgebraicGeometry.ProjectiveModuleScalarLocalizationRestriction
+SerrePositivity.AlgebraicGeometry.ProjectiveGradedScalarRestriction
+SerrePositivity.AlgebraicGeometry.ProjectivePolynomialCoefficientChange
+SerrePositivity.AlgebraicGeometry.ProjectiveCechScalarAction
+```
+
+## この取り込み点での数学的な範囲
+
+Proj 標準開の有限交叉の斉次局所化、標準開の有界な Čech と全タプルの Čech の比較、射影の場合の Čech コホモロジーの有限性、Rees 加群上の同じ有限性、元の多項式環上での実際の Rees 加群の Čech コホモロジーと各 IⁿM の Čech コホモロジーの直和との R 線形な比較までを含む。係数環の変更・係数制限の自然性と、コホモロジー写像のスカラー倍の API も含む。
+
+実際の Rees 次数作用と直和の作用との照合、像と核の一様な評価・像の安定化、形式関数の完備化の同型、§9 の共通アフィン細分・底変換・閉厚化・Frobenius・filtered colimit の整合性は未完。条件付きフィルトレーション評価を、これらの完成とは呼ばない。直前の作業木の 8 本による進展も、この取り込み点の結果としては数えていない。
+
+途中のコホモロジーの主張は、§9 の案 (b) のとおり Čech 版で、導来関手の層コホモロジーとの比較は作らない。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。
+
+残りの見込みは主要な四群（Rees 次数作用の照合、像・核、完備化、§9 の整合性）。この報告は **停止点 2e の完成報告ではない**。

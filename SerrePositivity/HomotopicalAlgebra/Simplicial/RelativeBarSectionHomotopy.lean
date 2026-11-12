@@ -47,7 +47,7 @@ variable {D : Type uD} [Category.{vD} D] {B : Type uB} [Category.{vB} B]
   (α : p.obj d ⟶ b) (β : p.obj e ⟶ b) (k : d ⟶ e) (hk : p.map k ≫ β = α)
 
 def commaSectionHomotopyMap :
-    UniverseLift.obj.{max uD vD vB} (F.obj d) ⊗
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max uD vD vB} (F.obj d) ⊗
         SSet.stdSimplex.{max uD vD v vB}.obj (SimplexCategory.mk 1) ⟶
       (relative p F).obj b where
   app n := ↾fun x => (SSet.stdSimplex.objEquiv x.2).toOrderHom.monotone.functor ⋙
@@ -71,7 +71,7 @@ lemma commaSectionHomotopyMap_zero : SSet.ι₀ ≫ commaSectionHomotopyMap p F 
   rfl
 
 lemma commaSectionHomotopyMap_one : SSet.ι₁ ≫ commaSectionHomotopyMap p F α β k hk =
-    UniverseLift.map.{max uD vD vB} (F.map k) ≫ commaSection p F β := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max uD vD vB} (F.map k) ≫ commaSection p F β := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -90,7 +90,7 @@ Both entire maps, not just their vertex values, are joined by the same actual in
 単体方向と基底方向の自然性を確認し、収縮や局所化の普遍性へ接続する。
 -/
 def commaSectionHomotopy : SSet.Homotopy (commaSection p F α)
-    (UniverseLift.map.{max uD vD vB} (F.map k) ≫ commaSection p F β) where
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max uD vD vB} (F.map k) ≫ commaSection p F β) where
   h := commaSectionHomotopyMap p F α β k hk
   h₀ := commaSectionHomotopyMap_zero p F α β k hk
   h₁ := commaSectionHomotopyMap_one p F α β k hk
@@ -105,7 +105,7 @@ variable {H : Type uH} [Category.{vH} H] (L : SSet.{max uD vD v vB} ⥤ H)
 
 include hL hk in
 lemma commaSection_image_eq : L.map (commaSection p F α) =
-    L.map (UniverseLift.map.{max uD vD vB} (F.map k) ≫ commaSection p F β) :=
+    L.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max uD vD vB} (F.map k) ≫ commaSection p F β) :=
   AnodyneHomotopy.map_homotopy_eq L hL (commaSectionHomotopy p F α β k hk)
 
 end SerrePositivity.SimplicialModel.BarConstruction

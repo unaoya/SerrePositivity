@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.DGNerve.DataComponents
-public import SerrePositivity.InfinityCategories.DGNerve.PinchedTerms
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DataComponents
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedTerms
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 
 /-!
 概要：部分集合上で等しい作用素の引き戻し成分、および定値作用素の全データを比較する。
@@ -13,13 +13,13 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable {A : Type u} [CommRing A] {D : Type v} [DGCategory A D]
 
-lemma simplexData_pullback_hom_eqOn {m n : ℕ} (s : SimplexData A D n)
+lemma simplexData_pullback_hom_eqOn {m n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (α β : Fin (m + 1) →o Fin (n + 1))
     (I : Finset (Fin (m + 1))) (a b : Fin (m + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (he : ∀ i ∈ I, α i = β i) :
     HEq ((s.pullback α).hom I a b k hI ha hb hk)
       ((s.pullback β).hom I a b k hI ha hb hk) := by
@@ -33,8 +33,8 @@ lemma simplexData_pullback_hom_eqOn {m n : ℕ} (s : SimplexData A D n)
   have hbI : b ∈ I := by rw [hb]; exact I.max'_mem _
   by_cases hα : Set.InjOn α (I : Set (Fin (m + 1)))
   · have hβ := hi.mp hα
-    rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hα,
-      SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hβ]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hα,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _ hβ]
     apply s.hom_heq_of_indices_degree
     · exact Finset.image_congr he
     · exact he a haI
@@ -50,15 +50,15 @@ lemma simplexData_pullback_hom_eqOn {m n : ℕ} (s : SimplexData A D n)
       exact (s.pullback_hom_of_collapsed_pair α I a b k hI ha hb hk hα hc).trans
         ((hu (congrArg s.obj (he b hbI))).trans
           (s.pullback_hom_of_collapsed_pair β I a b k hI ha hb hk hβ hc).symm)
-    · rw [SimplexData.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ hα hc,
-        SimplexData.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ hβ hc]
-      exact gradedHom_zero_heq (congrArg s.obj (he a haI)) (congrArg s.obj (he b hbI)) rfl
+    · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ hα hc,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ hβ hc]
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (congrArg s.obj (he a haI)) (congrArg s.obj (he b hbI)) rfl
 
-lemma simplexData_pullback_const {m n : ℕ} (s : SimplexData A D n) (i : Fin (n + 1)) :
+lemma simplexData_pullback_const {m n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n) (i : Fin (n + 1)) :
     s.pullback (OrderHom.const (Fin (m + 1)) i) =
-      (Simplex.vertex (A := A) (s.obj i)).toSimplexData.pullback
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (A := A) (s.obj i)).toSimplexData.pullback
         (OrderHom.const (Fin (m + 1)) (0 : Fin 1)) := by
-  apply SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · rfl
   · apply heq_of_eq
     funext I a b k hI ha hb hk
@@ -72,8 +72,8 @@ lemma simplexData_pullback_const {m n : ℕ} (s : SimplexData A D n) (i : Fin (n
       exact hab (hi haI hbI rfl)
     by_cases hc : I.card = 2
     · exact (s.pullback_hom_of_collapsed_pair _ I a b k hI ha hb hk (hni i) hc).trans
-        ((Simplex.vertex (A := A) (s.obj i)).toSimplexData.pullback_hom_of_collapsed_pair
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (A := A) (s.obj i)).toSimplexData.pullback_hom_of_collapsed_pair
           _ I a b k hI ha hb hk (hni (0 : Fin 1)) hc).symm
-    · rw [SimplexData.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ (hni i) hc,
-        SimplexData.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ (hni (0 : Fin 1)) hc]
+    · rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ (hni i) hc,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj _ _ _ _ _ _ _ _ _ _ (hni (0 : Fin 1)) hc]
 end SerrePositivity.EInfinity.ComplexLimits

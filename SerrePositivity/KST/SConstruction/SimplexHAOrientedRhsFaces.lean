@@ -16,12 +16,12 @@ open scoped BigOperators
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の指定端点・次数の HA 項は、同じ次数の元の HA 向き零面像−一面像の符号倍。 -/
-lemma simplexHADecode_term_oriented_faces {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADecode_term_oriented_faces {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) (i : Fin (m + 1))
     (hI : 2 ≤ (simplexHADecodeSubset (m + 1) v {b}).card)
-    (ha : v 0 = (simplexHADecodeSubset (m + 1) v {b}).min' (DGNerve.Index.nonempty hI))
-    (hM : b = (simplexHADecodeSubset (m + 1) v {b}).max' (DGNerve.Index.nonempty hI))
+    (ha : v 0 = (simplexHADecodeSubset (m + 1) v {b}).min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hM : b = (simplexHADecodeSubset (m + 1) v {b}).max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : -((m + 1 : ℕ) : ℤ) = 2 - ((simplexHADecodeSubset (m + 1) v {b}).card : ℤ)) :
     s.term (simplexHADecodeSubset (m + 1) v {b}) (v 0) b (-((m + 1 : ℕ) : ℤ)) hI ha hM hk
         (v (simplexHAFaceVertex m i)) (simplexHAFaceVertex_mem m v {b} i)
@@ -48,12 +48,12 @@ lemma simplexHADecode_term_oriented_faces {n : ℕ} (s : DGNerve.SimplexData A D
     hOne.symm))
 
 /-- 元の指定端点・次数の HA 右辺は、元の全ての HA 向き零面像−一面像の符号付き和。 -/
-lemma simplexHADecode_rhs_oriented_faces {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHADecode_rhs_oriented_faces {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b)
     (hI : 2 ≤ (simplexHADecodeSubset (m + 1) v {b}).card)
-    (ha : v 0 = (simplexHADecodeSubset (m + 1) v {b}).min' (DGNerve.Index.nonempty hI))
-    (hM : b = (simplexHADecodeSubset (m + 1) v {b}).max' (DGNerve.Index.nonempty hI))
+    (ha : v 0 = (simplexHADecodeSubset (m + 1) v {b}).min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
+    (hM : b = (simplexHADecodeSubset (m + 1) v {b}).max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : -((m + 1 : ℕ) : ℤ) = 2 - ((simplexHADecodeSubset (m + 1) v {b}).card : ℤ)) :
     s.rhs (simplexHADecodeSubset (m + 1) v {b}) (v 0) b
         (-((m + 1 : ℕ) : ℤ)) hI ha hM hk =

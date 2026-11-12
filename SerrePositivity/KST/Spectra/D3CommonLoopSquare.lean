@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 local instance commonLoopSquareSpectrumCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -24,68 +24,68 @@ local instance commonLoopSquareHomKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := OmegaSpectrum.mappingSpace_kanComplex X Y
 
 /-- N_X を実始点とし、元の厳密 tail を終点とする実 loop 四角形。 -/
-def commonLoopSquare (X : OmegaSpectrum.{u}) : LoopSquare (coherentNerveVertex (tail X)) := by
-  let F := coneSquare (commonLoopCone X)
-  have hr : squareRightEdge ≫ F =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (basedPathProjection (tail X))).edge := by
-    rw [coneSquare_right, BasedLoop.diagram, edgeCospan_left]
+def commonLoopSquare (X : OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.LoopSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X)) := by
+  let F := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (commonLoopCone X)
+  have hr : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ F =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathProjection (tail X))).edge := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_right, BasedLoop.diagram, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan_left]
     rfl
-  have ht : squareTopEdge ≫ F =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (fromPoint (tail X))).edge := by
-    rw [coneSquare_top, BasedLoop.diagram, edgeCospan_right]
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ F =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint (tail X))).edge := by
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_top, BasedLoop.diagram, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan_right]
     rfl
-  have hv : squareVertex F 1 1 = coherentNerveVertex (tail X) := by
-    rw [← squareRightEdge_target, hr, Equiv.apply_symm_apply]
-    exact (coherentNerveEdge (basedPathProjection (tail X))).tgt_eq
-  have h₀ : squareVertex F 1 0 = coherentNerveVertex (basedPath (tail X)) := by
-    rw [← squareRightEdge_source, hr, Equiv.apply_symm_apply]
-    exact (coherentNerveEdge (basedPathProjection (tail X))).src_eq
-  have h₁ : squareVertex F 0 1 = coherentNerveVertex spectrumPoint := by
-    rw [← squareTopEdge_source, ht, Equiv.apply_symm_apply]
-    exact (coherentNerveEdge (fromPoint (tail X))).src_eq
+  have hv : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (tail X) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_target, hr, Equiv.apply_symm_apply]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathProjection (tail X))).tgt_eq
+  have h₀ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 1 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (basedPath (tail X)) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareRightEdge_source, hr, Equiv.apply_symm_apply]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathProjection (tail X))).src_eq
+  have h₁ : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex F 0 1 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareTopEdge_source, ht, Equiv.apply_symm_apply]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint (tail X))).src_eq
   exact { square := F
           zero_corner := h₁.symm ▸ pointZeroVertex.isZero
           target_eq := hv
           other_zero := h₀.symm ▸ basedPath_isZeroVertex (tail X)
-          isPullback := coneSquare_isPullback _ (commonLoopCone_isLimit X) }
+          isPullback := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_isPullback _ (commonLoopCone_isLimit X) }
 
 /-- 同じ実 loop 四角形の始点は N_X 自体。 -/
 lemma commonLoopSquare_vertex (X : OmegaSpectrum.{u}) :
-    (commonLoopSquare X).vertex = coherentNerveVertex (commonRefinement X) := by
-  change squareVertex (coneSquare (commonLoopCone X)) 0 0 = _
+    (commonLoopSquare X).vertex = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (commonRefinement X) := by
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (commonLoopCone X)) 0 0 = _
   rw [coneSquare_vertex, commonLoopCone_vertex]
 
 /-- 元の実 loop 四角形から共通四角形へ、同じ共通左脚を持つ図式比較。 -/
 def commonLoopSquareInclusionIso (X : OmegaSpectrum.{u}) :
-    FunctorIso (loopSourceSquare X).square (commonLoopSquare X).square := by
-  have e := VertexIso.map (commonLoopConeIso X)
-    (sliceSquareDiagramMap (BasedLoop.diagram (tail X)))
-  rw [sliceSquareDiagramMap_vertex, sliceSquareDiagramMap_vertex] at e
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (loopSourceSquare X).square (commonLoopSquare X).square := by
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (commonLoopConeIso X)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap (BasedLoop.diagram (tail X)))
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at e
   exact e
 
 /-- 元の固定 cospan を保つ錐比較を、実四角形全体の FunctorIso へ移す。
 これは対象 X ごとの図式比較であり、X 全体の関手自然同型ではない。 -/
 def commonLoopSquareFunctorIso (X : OmegaSpectrum.{u}) :
-    FunctorIso (commonLoopSquare X).square (BasedLoop.square (tail X)).square := by
-  have e := VertexIso.map ((commonLoopConeIso X).symm.trans (loopSourceConeIso X))
-    (sliceSquareDiagramMap (BasedLoop.diagram (tail X)))
-  rw [sliceSquareDiagramMap_vertex, sliceSquareDiagramMap_vertex] at e
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonLoopSquare X).square (BasedLoop.square (tail X)).square := by
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map ((commonLoopConeIso X).symm.trans (loopSourceConeIso X))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap (BasedLoop.diagram (tail X)))
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex, _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.sliceSquareDiagramMap_vertex] at e
   exact e
 
 /-- 実四角形の右辺は元の厳密 tail の path 終点射。 -/
 lemma commonLoopSquare_right (X : OmegaSpectrum.{u}) :
-    squareRightEdge ≫ (commonLoopSquare X).square =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (basedPathProjection (tail X))).edge := by
-  change squareRightEdge ≫ coneSquare (commonLoopCone X) = _
-  rw [coneSquare_right, BasedLoop.diagram, edgeCospan_left]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (commonLoopSquare X).square =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (basedPathProjection (tail X))).edge := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (commonLoopCone X) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_right, BasedLoop.diagram, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan_left]
   rfl
 
 /-- 実四角形の上辺も元の厳密 tail への一点からの射。 -/
 lemma commonLoopSquare_top (X : OmegaSpectrum.{u}) :
-    squareTopEdge ≫ (commonLoopSquare X).square =
-      SSet.yonedaEquiv.symm (coherentNerveEdge (fromPoint (tail X))).edge := by
-  change squareTopEdge ≫ coneSquare (commonLoopCone X) = _
-  rw [coneSquare_top, BasedLoop.diagram, edgeCospan_right]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ (commonLoopSquare X).square =
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fromPoint (tail X))).edge := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare (commonLoopCone X) = _
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.coneSquare_top, BasedLoop.diagram, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.edgeCospan_right]
   rfl
 
 

@@ -6,15 +6,15 @@ public import SerrePositivity.EInfinity.Perfectoidization.TheoryInterface
 public import Mathlib.AlgebraicTopology.SimplexCategory.Augmented.Basic
 public import Mathlib.RingTheory.Flat.FaithfullyFlat.Basic
 public import Mathlib.RingTheory.FinitePresentation
-public import SerrePositivity.InfinityCategories.Core.CocartesianPathSpace
-public import SerrePositivity.InfinityCategories.Core.UniverseLimits
-public import SerrePositivity.InfinityCategories.F1B.NerveComparison.CoconeEquiv
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
-public import SerrePositivity.InfinityCategories.Stable.SquareDiagonal
-public import SerrePositivity.InfinityCategories.Derived.Stability
-public import SerrePositivity.InfinityCategories.Stable.Suspension
-public import SerrePositivity.InfinityCategories.Stable.Loop
-public import SerrePositivity.InfinityCategories.Derived.Tensor.Fixed
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.CocartesianPathSpace
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseLimits
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.CoconeEquiv
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.SquareDiagonal
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Stability
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Suspension
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Loop
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Tensor.Fixed
 -- 取り込み時の依存先：drafts/DerivedGeneral/{ScalarRestriction,CompletionFunctor}.lean。
 
 /-!

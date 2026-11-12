@@ -47,8 +47,8 @@ def circleGeneratingEdge : PointedSimplicialSet.circle.{u}.right.Edge
 /-- 円の生成辺が与える、二対象の評価円柱内の coherent な三角形。 -/
 def circleParameterTriangle : (Δ[2] : SSet.{max u v}) ⟶
     SimplicialNerve
-      (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Object PointedSimplicialSet.circle.{u}.right
-        _root_.SerrePositivity.InfinityCategories.Kan.EnrichedParameterCylinder.Point.{v}) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedParameterCylinderHom.Object PointedSimplicialSet.circle.{u}.right
+        _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.Point.{v}) :=
   EnrichedParameterCylinder.parameterTriangle circleGeneratingEdge
 
 /-- 円の三角形の 1–2 辺は実際の基点評価の辺。 -/

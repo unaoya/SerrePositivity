@@ -26,7 +26,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 /-- 概要：元の全単体を同じ恒等右脚の固定 fiber へ送る。
 方針：元の Hom の全単体と同じ comma の明示的な同値を使う。
 規約：元の射と次数を保つ。使われ方：全図式への元の実包含。 -/
-def fiberNerveMap : nerve (AsSmall.{max u v} ((((cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
+def fiberNerveMap : nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
     nerve ((resolutionDiagram q Y).obj (smallInitial Y)) :=
   nerveMap (CosimplicialHomElements.smallEquivalence.{u, v, max u v} q.obj Y).functor
 
@@ -43,7 +43,7 @@ lemma fiberNerveMap_localized_isIso :
 方針：元の固定 fiber の比較と同じ実 fiber 包含を合成する。
 規約：同じ恒等右脚を使う。使われ方：全左脚との実比較。 -/
 def resolutionNerveMap :
-    nerve (AsSmall.{max u v} ((((cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
+    nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
       nerve (Grothendieck (resolutionDiagram q Y)) :=
   fiberNerveMap q Y ≫ (Thomason.selfLiftIso _).inv ≫
     Thomason.fiberNerveMap (resolutionDiagram q Y) (smallInitial Y)
@@ -63,7 +63,7 @@ lemma resolutionNerveMap_localized_isIso :
 方針：元の全解像図式の後に同じ Grothendieck 比較を置く。
 規約：元の中間射を保つ。使われ方：元の三本矢への実回収。 -/
 def spanDiagramNerveMap :
-    nerve (AsSmall.{max u v} ((((cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
+    nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
       nerve (Grothendieck (spanDiagram (X := X) Y)) :=
   resolutionNerveMap q Y ≫ nerveMap (Grothendieck.map (comparison q Y))
 
@@ -82,10 +82,10 @@ lemma spanDiagramNerveMap_localized_isIso :
 方針：異なる宇宙の同じ comma を down し、元の三射を取り出す。
 規約：元の両端点と中間射を保持。使われ方：元の frame 比較の照合。 -/
 def recoveryNerveMap : nerve (Grothendieck (spanDiagram (X := X) Y)) ⟶
-    nerve (FibrantRightSpans.FibrantSpan X Y) :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.FibrantSpan X Y) :=
   HeterogeneousSmallComma.recoveryNerveMap.{max u v, v, max u v, v, u, v, max u v}
-    (ArrowSpan.leftSliceForget (trivialFibrations C) X) (FibrantRightSpanDiagram.forget Y) ≫
-      (Thomason.selfLiftIso _).hom ≫ nerveMap (FibrantRightSpanDiagram.fromComma X Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations C) X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.forget Y) ≫
+      (Thomason.selfLiftIso _).hom ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fromComma X Y)
 
 omit [IsFibrant Y] in
 /-- 概要：同じ元の三本矢への回収は anodyne 反転後に可逆。
@@ -94,10 +94,10 @@ omit [IsFibrant Y] in
 lemma recoveryNerveMap_localized_isIso :
     IsIso (AnodyneHomotopy.anodyneQ.map (recoveryNerveMap (X := X) Y)) := by
   have := HeterogeneousSmallComma.recoveryNerveMap_localized_isIso
-    (ArrowSpan.leftSliceForget (trivialFibrations C) X) (FibrantRightSpanDiagram.forget Y)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (trivialFibrations C) X) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.forget Y)
   have : IsIso (AnodyneHomotopy.anodyneQ.map
-      (nerveMap (FibrantRightSpanDiagram.fromComma X Y))) :=
-    (NerveEquivalenceImage.imageIso (FibrantRightSpanDiagram.commaEquivalence X Y).symm
+      (nerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fromComma X Y))) :=
+    (NerveEquivalenceImage.imageIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.commaEquivalence X Y).symm
       AnodyneHomotopy.anodyneQ (Localization.inverts _ SSet.anodyneExtensions)).isIso_hom
   dsimp only [recoveryNerveMap]
   rw [Functor.map_comp, Functor.map_comp]
@@ -107,15 +107,15 @@ lemma recoveryNerveMap_localized_isIso :
 方針：同じ全図式への比較と元の三射の回収を合成する。
 規約：元の全単体と全作用素。使われ方：実 hammock の写像空間への比較。 -/
 def fibrantSpanNerveMap :
-    nerve (AsSmall.{max u v} ((((cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
-      nerve (FibrantRightSpans.FibrantSpan X Y) :=
+    nerve (AsSmall.{max u v} ((((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y).Elements)ᵒᵖ)) ⟶
+      nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.FibrantRightSpans.FibrantSpan X Y) :=
   spanDiagramNerveMap q Y ≫ recoveryNerveMap Y
 
 /-- 概要：同じ元の frame 比較は弱ホモトピー同値。
 方針：各実比較射の反転性を同じ anodyne 局所化で合成する。
 規約：元の標的の fibrancy のみを要求。使われ方：一般モデルの frame 比較。 -/
 lemma fibrantSpanNerveMap_isWeakHomotopyEquivalence :
-    IsWeakHomotopyEquivalence (fibrantSpanNerveMap q Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (fibrantSpanNerveMap q Y) := by
   apply AnodyneWeakDetection.isWeakHomotopyEquivalence
   have := spanDiagramNerveMap_localized_isIso q Y
   have := recoveryNerveMap_localized_isIso (X := X) Y

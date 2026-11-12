@@ -18,7 +18,7 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
 
 /-- 同じ充填の面 3 は、元の第一短辺の厳密因子分解を持つ実二胞体。 -/
 theorem zeroMiddleFullSKanTetrahedron_first :
@@ -45,10 +45,10 @@ theorem zeroMiddleFullSKanTetrahedron_last :
 /-- 始端の第一短辺は、元の実 core 包含の同じ全一単体。 -/
 theorem zeroMiddleFullSKanTransportedTriangle_first :
     stdSimplex.δ (2 : Fin 3) ≫ zeroMiddleFullSKanTransportedTriangle s hZ =
-      SSet.yonedaEquiv.symm (coherentNerveEdge
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (show stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
           fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) from
-          SerrePositivity.KST.Comparison.exInfinity.map
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
             (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩)))).edge := by
   unfold zeroMiddleFullSKanTransportedTriangle
   erw [← Category.assoc, ← stdSimplex.δ_comp_δ (by decide : (2 : Fin 3) ≤ 2), Category.assoc,

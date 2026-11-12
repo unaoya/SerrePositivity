@@ -30,9 +30,9 @@ theorem dgKappaSuspensionKChoiceMap_pi_self :
       MonoidHom.id _ := by
   let f := (dgKappaSuspensionStableChoiceEquivalence R A I I P P).hom
   have he := kHomotopyMap_eq_of_exact_functorIso f (𝟙 _)
-    (isExactFunctor_of_isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (dgKappaSuspensionNuChoiceEquivalence R A I I P P).isQCatEquivalence)
-    (isExactFunctor_id _) (dgKappaSuspensionNuChoice_selfIso R A I P) j
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_id _) (dgKappaSuspensionNuChoice_selfIso R A I P) j
   have hk : kHomotopyMap f j = MonoidHom.id _ := he.trans (kHomotopyMap_id _ j)
   simp only [dgKappaSuspensionKChoiceMap, dgKappaFixedKChoiceMap,
     dgKappaFixedKChoiceSOAMap, OmegaSpectrum.homotopyMap_comp]
@@ -51,13 +51,13 @@ theorem dgKappaSuspensionKChoiceMap_pi_comp :
   let f := (dgKappaSuspensionStableChoiceEquivalence R A I J P Q).hom
   let g := (dgKappaSuspensionStableChoiceEquivalence R A J K Q T).hom
   let h := (dgKappaSuspensionStableChoiceEquivalence R A I K P T).hom
-  let : IsExactFunctor f.val := isExactFunctor_of_isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.val := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
     (dgKappaSuspensionNuChoiceEquivalence R A I J P Q).isQCatEquivalence
-  let : IsExactFunctor g.val := isExactFunctor_of_isQCatEquivalence
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor g.val := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
     (dgKappaSuspensionNuChoiceEquivalence R A J K Q T).isQCatEquivalence
   have he := kHomotopyMap_eq_of_exact_functorIso (f ≫ g) h
-    (isExactFunctor_comp f.val g.val)
-    (isExactFunctor_of_isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp f.val g.val)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (dgKappaSuspensionNuChoiceEquivalence R A I K P T).isQCatEquivalence)
     (dgKappaSuspensionNuChoice_compIso R A I J K P Q T) j
   have hk : kHomotopyMap h j = (kHomotopyMap g j).comp (kHomotopyMap f j) :=

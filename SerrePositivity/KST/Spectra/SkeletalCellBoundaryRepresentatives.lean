@@ -28,12 +28,12 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。微分の入力を局所的な充填へ渡す。 -/
 def cellConnectingInput (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     [KanComplex Y.right] (n r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 2)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right (r + 1)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right (r + 1)
       (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).basepoint :=
   pointedGroupMap (r + 1) (UnbasedPointedMapping.pre
-    (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s)) Y)
+    (cellBoundarySource K (n + 2) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s)) Y)
     (pointedGroupMap (r + 1) (pointedFiberι (UnbasedPointedMapping.pre
       (UnbasedPointedMapping.skeletalInclusion K n) Y)) x)
 
@@ -43,22 +43,22 @@ def cellConnectingInput (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
 使われ方：Goerss–Jardine VIII §1。交代微分との比較に用いる実際の代表。 -/
 theorem exists_cellDifferential_boundaryRepresentative (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n r : ℕ)
-    (x : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right (r + 1)
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 2)) :
     ∃ (t : (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right.PtSimplex (r + 2)
         ((UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right.app _
           (UnbasedPointedMapping.obj (Δ[n + 2] : SSet.{u}) Y).basepoint))
-      (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right
+      (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right
         (UnbasedPointedMapping.obj (Δ[n + 2] : SSet.{u}) Y).basepoint t),
       cellConnectingInput K Y n r x s =
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso (r + 1)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso (r + 1)
           (Iso.refl (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
-            (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y)) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) ∧
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint
+            (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk t) ∧
       stageFiberCoefficientEquiv K Y (n + 1) r
           (UnbasedPointedMapping.stageDifferential K Y n r x) s =
         SimplexCell.positiveHomotopyEquiv Y (n + 1) r
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk
             (UnbasedPointedMapping.cofiberBoundarySimplex (boundary (n + 2)).ι Y L)) := by
   obtain ⟨t, L, ht, hL⟩ := UnbasedPointedMapping.exists_connecting_boundaryRepresentative
     (boundary (n + 2)).ι Y r (cellConnectingInput K Y n r x s)

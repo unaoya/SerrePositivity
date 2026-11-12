@@ -23,16 +23,16 @@ variable (X Y : OmegaSpectrum.{u}) {A : PointedSimplicialSet.{u}}
 def kanAdjointTracedUnitStructureSquare (n : ℕ) :
     SSet.Homotopy
       ((((kanAdjointTracedUnitEvaluationInterval X Y φ (n + 1)).basedPost
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space)).path) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right)
       (((OmegaSpectrum.tracedSignedLoopUnitStepInterval Y n).path ≫
         (kanAdjointTracedUnitStructureAction X Y φ n).right) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
           ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right) where
   h := (kanAdjointTracedUnitParameterSquare X Y φ n).h ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right
   h₀ := by rw [← Category.assoc, (kanAdjointTracedUnitParameterSquare X Y φ n).h₀]; rfl
   h₁ := by rw [← Category.assoc, (kanAdjointTracedUnitParameterSquare X Y φ n).h₁]; rfl
@@ -43,30 +43,30 @@ lemma kanAdjointTracedUnitStructureSquare_start (n : ℕ) :
     SquareAdjustment.leftSide ≫ (kanAdjointTracedUnitStructureSquare X Y φ n).h =
       (kanAdjointTracedStructureInterval X Y φ n).path := by
   change SquareAdjustment.leftSide ≫ ((kanAdjointTracedUnitParameterSquare X Y φ n).h ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right) = _
   rw [← Category.assoc, kanAdjointTracedUnitParameterSquare_start]
   have he := kanAdjointTracedStructureInterval_path X Y φ n
   change (kanAdjointTracedStructureInterval X Y φ n).path =
     (kanAdjointParameterStructureInterval X Y φ n).path ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right at he
   exact he.symm
 
 /-- 転置後も、単位の同じ厳密構造頂点の像で終点境界全体が一定。 -/
 lemma kanAdjointTracedUnitStructureSquare_finish (n : ℕ) :
     SquareAdjustment.rightSide ≫ (kanAdjointTracedUnitStructureSquare X Y φ n).h =
-      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right.app _
         (PointedMapping.familyVertex
           ((φ ≫ pointedPost X
               (OmegaSpectrum.sequenceHom (OmegaSpectrum.tracedSignedLoopUnit Y)) ≫
             pointedPost X (OmegaSpectrum.signedLoopProjection Y) ≫
             pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) (n + 1)) ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+            _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
               ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space))) := by
   change SquareAdjustment.rightSide ≫ ((kanAdjointTracedUnitParameterSquare X Y φ n).h ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
       ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right) = _
   rw [← Category.assoc, kanAdjointTracedUnitParameterSquare_finish, SSet.const_comp]
   rfl

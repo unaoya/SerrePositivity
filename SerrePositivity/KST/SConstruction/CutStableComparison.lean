@@ -19,7 +19,7 @@ open scoped Simplicial
 
 /-- 切断 cofiber 比較は零対象と cofiber を保存する。 -/
 lemma cutCofiberComparison_preservesCofiberData (n : ℕ) (k : Fin (n + 1)) (C : SSet.{u})
-    [Quasicategory C] [IsStable C] : PreservesCofiberData (cutCofiberComparison n k C) := by
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : PreservesCofiberData (cutCofiberComparison n k C) := by
   apply preservesCofiberData_fullSubcomplex_of_comp IsCofiberDiagramVertex
   apply PreservesSConstructionData.toCofiberData
   apply preservesSConstructionData_functor_of_pointwise
@@ -27,7 +27,7 @@ lemma cutCofiberComparison_preservesCofiberData (n : ℕ) (k : Fin (n + 1)) (C :
   obtain ⟨i, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective x
   obtain ⟨j, rfl⟩ := stdSimplex.obj₀Equiv.symm.surjective y
   change PreservesSConstructionData (cutCofiberComparison n k C ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _)
   rw [cutCofiberComparison_evaluation]
   exact (preservesCofiberData_sMap C (cutCornerOrder k i j)).toSConstructionData
 
@@ -57,7 +57,7 @@ lemma cutStableComparison_middle (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u
       𝟙 (sStableModel n X) := by
   apply Subtype.ext
   change cutCofiberComparison n k X.carrier ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ evaluateFunctorAt _ = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = _
   rw [cutCofiberComparison_evaluation, cutCornerOrder_one_zero, sMap_id]
   rfl
 

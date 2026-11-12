@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -29,7 +29,7 @@ def normalizedTensorElementSelectedCochain {n : ℕ}
     (J : Finset (Fin (n + 1))) (k : ℤ) (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
     GradedHom A X ((normalizedTensorElementDiagram A X Y).obj
       (c.obj ((normalizedTensorElementSelection J hJ).toOrderHom (Fin.last (J.card - 1))))) k :=
-  LinearData.component (normalizedTensorElementUniversalLinear A X Y
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.component (normalizedTensorElementUniversalLinear A X Y
     ((SimplexCategory.toCat.map (normalizedTensorElementSelection J hJ)).toFunctor ⋙ c)).val
       Finset.univ k Finset.univ_nonempty (by
         have hc : J.card = J.card - 1 + 1 := by have := Finset.card_pos.mpr hJ; omega

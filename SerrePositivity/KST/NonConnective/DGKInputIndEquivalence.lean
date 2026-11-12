@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.NonConnective.DGKInputIndExtension
-public import SerrePositivity.InfinityCategories.F2.Presentable.FilteredGeometricFunctorOperations
-public import SerrePositivity.InfinityCategories.F2.Presentable.EquivalenceColimits
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FilteredGeometricFunctorOperations
+public import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
 
 /-!
 概要：固定 ν 値間の実同値を、元の同じ Indω 間の実同値へ延長する。
@@ -17,40 +17,40 @@ universe u v w
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.NonConnective
-open F2 F2.Ind
+
 local instance indEquivalenceRegular : Fact (Cardinal.aleph0.{w}).IsRegular :=
   Cardinal.fact_isRegular_aleph0
 variable (R : Type u) [CommRing R] (A B : PerfDGInput.{u, v} R)
-  (e : QCatEquivalence
+  (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj (dgKInputStableValue R A).obj)
     ((SSet.uliftFunctor.{max (u + 1) v + 1, max (u + 1) v}).obj (dgKInputStableValue R B).obj))
 
 /-- 同じ ν の指定順逆射から得た、元の二つの Indω の実同値。 -/
-def dgKInputIndEquivalence : QCatEquivalence (dgKInputIndCompletion R A)
+def dgKInputIndEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (dgKInputIndCompletion R A)
     (dgKInputIndCompletion R B) := by
-  let YA := indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj
-  let YB := indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj
+  let YA := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R A).obj
+  let YB := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj
   let F := dgKInputIndExtension R A B (e.hom ≫ YB)
   let G := dgKInputIndExtension R B A (e.inv ≫ YA)
   have hF := dgKInputIndExtension_preservesFilteredColimits R A B (e.hom ≫ YB)
   have hG := dgKInputIndExtension_preservesFilteredColimits R B A (e.inv ≫ YA)
-  have hFG := F2.Presentable.preservesSmallFilteredColimits_comp hF hG
-  have hGF := F2.Presentable.preservesSmallFilteredColimits_comp hG hF
-  have hA := F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
-    (qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R A))).isQCatEquivalence
-  have hB := F2.Presentable.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
-    (qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R B))).isQCatEquivalence
+  have hFG := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallFilteredColimits_comp hF hG
+  have hGF := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallFilteredColimits_comp hG hF
+  have hA := _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R A))).isQCatEquivalence
+  have hB := _root_.SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.equivalence_preservesSmallKappaFilteredColimits Cardinal.aleph0
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (Iso.refl (dgKInputIndCompletion R B))).isQCatEquivalence
   have eF := dgKInputIndExtension_restrictionIso R A B (e.hom ≫ YB)
   have eG := dgKInputIndExtension_restrictionIso R B A (e.inv ≫ YA)
-  have rA₁ : FunctorIso (YA ≫ (F ≫ G)) (e.hom ≫ YB ≫ G) := by
+  have rA₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (YA ≫ (F ≫ G)) (e.hom ≫ YB ≫ G) := by
     simpa only [Category.assoc] using! eF.postcomp G
-  have rA₂ : FunctorIso (e.hom ≫ YB ≫ G) (e.hom ≫ e.inv ≫ YA) := eG.precomp e.hom
-  have rA₃ : FunctorIso (e.hom ≫ e.inv ≫ YA) YA := by
+  have rA₂ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (e.hom ≫ YB ≫ G) (e.hom ≫ e.inv ≫ YA) := eG.precomp e.hom
+  have rA₃ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (e.hom ≫ e.inv ≫ YA) YA := by
     simpa only [Category.assoc, Category.id_comp] using! e.homInvIso.postcomp YA
-  have rB₁ : FunctorIso (YB ≫ (G ≫ F)) (e.inv ≫ YA ≫ F) := by
+  have rB₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (YB ≫ (G ≫ F)) (e.inv ≫ YA ≫ F) := by
     simpa only [Category.assoc] using! eG.postcomp F
-  have rB₂ : FunctorIso (e.inv ≫ YA ≫ F) (e.inv ≫ e.hom ≫ YB) := eF.precomp e.inv
-  have rB₃ : FunctorIso (e.inv ≫ e.hom ≫ YB) YB := by
+  have rB₂ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (e.inv ≫ YA ≫ F) (e.inv ≫ e.hom ≫ YB) := eF.precomp e.inv
+  have rB₃ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (e.inv ≫ e.hom ≫ YB) YB := by
     simpa only [Category.assoc, Category.id_comp] using! e.invHomIso.postcomp YB
   refine ⟨F, G, dgKInputIndFunctorIso_of_restriction R A A (F ≫ G) (𝟙 _) hFG hA ?_,
     dgKInputIndFunctorIso_of_restriction R B B (G ≫ F) (𝟙 _) hGF hB ?_⟩
@@ -60,6 +60,6 @@ def dgKInputIndEquivalence : QCatEquivalence (dgKInputIndCompletion R A)
 /-- 順射は元の指定順射と同じ Yoneda を、同じ制限同値で延長した実関手。 -/
 theorem dgKInputIndEquivalence_hom :
     (dgKInputIndEquivalence R A B e).hom = dgKInputIndExtension R A B
-      (e.hom ≫ indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := rfl
+      (e.hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indYoneda Cardinal.aleph0 (dgKInputStableValue R B).obj) := rfl
 
 end SerrePositivity.KST.NonConnective

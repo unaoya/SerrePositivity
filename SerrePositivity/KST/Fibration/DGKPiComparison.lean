@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGKFixedInterface
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumBFPiTransport
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.IntervalFunctorHom
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalFunctorHom
 
 /-! # 固定 dg K の辺と元の S• スペクトルの整数 π 作用
 
@@ -27,14 +27,14 @@ variable (A : Type u) [CommRing A] {P Q : PerfDGInput.{u, v} A}
 
 /-- 固定 K の同じ辺を、固定頂点比較で元の BF 対象間の辺として表示する。 -/
 def dgKNormalizedEdge (f : P ⟶ Q) :
-    Sp.Edge (coherentNerveVertex (dgKInputSpectrum A P))
-      (coherentNerveVertex (dgKInputSpectrum A Q)) :=
-  ((coherentNerveEdge f).map (dgKInputK A)).ofEq
+    Sp.Edge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum A P))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgKInputSpectrum A Q)) :=
+  ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).ofEq
     (dgKInputK_vertex A P) (dgKInputK_vertex A Q)
 
 /-- 頂点を照合した実 K 辺は、元の S• BF 射の辺そのもの。 -/
 lemma dgKNormalizedEdge_eq (f : P ⟶ Q) :
-    dgKNormalizedEdge A f = coherentNerveEdge (dgKInputSpectrumMap A f) := by
+    dgKNormalizedEdge A f = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgKInputSpectrumMap A f) := by
   apply SSet.Edge.ext
   exact dgKInputK_edge A f
 
@@ -67,7 +67,7 @@ theorem dgKNormalizedEdge_piComparison (f : P ⟶ Q) (j : ℤ) :
 def dgKPiComparison (P : PerfDGInput.{u, v} A) (j : ℤ) :
     (SpectrumHo.piFunctor j).obj
         (HomotopyCategory.mk ((dgKInputK A).app (Opposite.op ⦋0⦌)
-          (coherentNerveVertex P))) ≅
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P))) ≅
       CommGrpCat.of (OmegaSpectrum.homotopyGroup (dgKInputSpectrum A P) j) :=
   (SpectrumHo.piFunctor j).mapIso
     (eqToIso (congrArg HomotopyCategory.mk (dgKInputK_vertex A P))) ≪≫
@@ -77,12 +77,12 @@ def dgKPiComparison (P : PerfDGInput.{u, v} A) (j : ℤ) :
 theorem dgKPiComparison_naturality (f : P ⟶ Q) (j : ℤ) :
     (SpectrumHo.piFunctor j).map
         (Truncated.HomotopyCategory.homMk
-          (((coherentNerveEdge f).map (dgKInputK A)).toTruncated)) ≫
+          (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).toTruncated)) ≫
       (dgKPiComparison A Q j).hom =
         (dgKPiComparison A P j).hom ≫
           CommGrpCat.ofHom (OmegaSpectrum.homotopyMap (dgKInputSpectrumMap A f) j) := by
-  have ht := homMk_transport (dgKInputK_vertex A P) (dgKInputK_vertex A Q)
-    (((coherentNerveEdge f).map (dgKInputK A)).toTruncated)
+  have ht := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport (dgKInputK_vertex A P) (dgKInputK_vertex A Q)
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).toTruncated)
     (dgKNormalizedEdge A f).toTruncated rfl
   have hn := dgKNormalizedEdge_piComparison A f j
   have ht' := congrArg
@@ -99,7 +99,7 @@ theorem dgKPiComparison_naturality (f : P ⟶ Q) (j : ℤ) :
 theorem dgKPiMap_surjective_iff (f : P ⟶ Q) (j : ℤ) :
     Function.Surjective ((SpectrumHo.piFunctor j).map
       (Truncated.HomotopyCategory.homMk
-        (((coherentNerveEdge f).map (dgKInputK A)).toTruncated))).hom ↔
+        (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).map (dgKInputK A)).toTruncated))).hom ↔
       Function.Surjective (OmegaSpectrum.homotopyMap (dgKInputSpectrumMap A f) j) := by
   have hn := dgKPiComparison_naturality A f j
   have hP := ConcreteCategory.bijective_of_isIso (dgKPiComparison A P j).hom

@@ -21,26 +21,26 @@ local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicia
 
 /-- 既存の BF fibration 置換単位は実際の Sp の同値。 -/
 lemma fibrationReplacementUnit_isInvertible {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) :
-    IsInvertibleEdge (coherentNerveEdge (fibrationReplacementUnit f)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fibrationReplacementUnit f)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (fibrationReplacementUnit_levelwise f)
 
 /-- 段ごとの π 同型の fibration 置換の射影も実際の Sp の同値。 -/
 lemma fibrationReplacementProjection_isInvertible {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
-    IsInvertibleEdge (coherentNerveEdge (fibrationReplacementProjection f)) :=
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (fibrationReplacementProjection f)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (fun n ↦
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (SpectrumMappingAcyclic.projection_rlp f hf n))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (SpectrumMappingAcyclic.projection_rlp f hf n))
 
 /-- Reedy 条件下の通常 Tot の比較射は実際の Sp の同値。 -/
 lemma ordinaryTotalizationComparison_isInvertible (X : CosimplicialObject OmegaSpectrum.{u})
     (hX : KanSequence.TotalizationReedy (X ⋙ forgetToKan)) :
-    IsInvertibleEdge (coherentNerveEdge (ordinaryTotalizationComparison X hX)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (ordinaryTotalizationComparison X hX)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _ (ordinaryTotalizationComparison_levelwise X hX)
 
 /-- 任意の図式の Reedy 置換した通常 Tot と元の homotopy Tot は実際の Sp の同値。 -/
 lemma replacedOrdinaryTotalizationComparison_isInvertible
     (X : CosimplicialObject OmegaSpectrum.{u}) :
-    IsInvertibleEdge (coherentNerveEdge (replacedOrdinaryTotalizationComparison X)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (replacedOrdinaryTotalizationComparison X)) :=
   SpectrumMappingAcyclic.isInvertible_of_levelwise _
     (replacedOrdinaryTotalizationComparison_levelwise X)
 

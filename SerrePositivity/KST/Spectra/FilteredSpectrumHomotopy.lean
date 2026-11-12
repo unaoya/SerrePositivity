@@ -66,7 +66,7 @@ def filteredLevelComparison (D : J ⥤ OmegaSpectrum.{u}) (k : ℕ) :
 規約：零次数も含む。
 使われ方：BF 1978 §2、HA §1.4.2。群の余極限の計算へ単射置換を反映する。 -/
 theorem filteredLevelComparison_piIsomorphism (D : J ⥤ OmegaSpectrum.{u}) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (filteredLevelComparison D k).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (filteredLevelComparison D k).right :=
   KanSequence.replacementProjection_piIsomorphism (filteredKanSequence D) k
 
 /-- 概要：filtered Ω 列の BF 対象の整数次数群と余極限の正次数の段の群の同型。
@@ -76,11 +76,11 @@ theorem filteredLevelComparison_piIsomorphism (D : J ⥤ OmegaSpectrum.{u}) (k :
 def filteredSpectrumStageEquiv (D : J ⥤ OmegaSpectrum.{u}) (j : ℤ) (k n : ℕ)
     (hk : -j ≤ (k : ℤ)) (hd : degree j k = n + 1) :
     homotopyGroup (filteredOmegaSpectrum D) j ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (colimit (levelDiagram D k)).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (colimit (levelDiagram D k)).right n
         (colimit (levelDiagram D k)).basepoint :=
   (positiveStageEquiv (filteredOmegaSpectrum D) j k n hk hd).trans
-    (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (filteredLevelComparison D k).right
-      (filteredLevelComparison_piIsomorphism D k) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n (filteredLevelComparison D k).right
+      (filteredLevelComparison_piIsomorphism D k) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _))
 
 /-- 概要：元の整数次数群の filtered colimit と filtered Ω 列の BF 対象の整数次数群の同型。
 方針：図式の段表示、段の群の余極限比較、単射置換の比較同型を順に合成する。
@@ -105,8 +105,8 @@ theorem filteredSpectrumHomotopyIso_ι_stage (D : J ⥤ OmegaSpectrum.{u}) (j : 
         (boundaryStage_admissible j) (boundaryStage_degree j)).toGrpIso.hom =
     (spectrumHomotopyDiagramStageIso D j (boundaryStage j) (boundaryIndex j)
       (boundaryStage_admissible j) (boundaryStage_degree j)).hom.app a ≫
-        GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (n := boundaryIndex j)
-          (colimit.ι (levelDiagram D (boundaryStage j)) a).right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)) := by
+        GrpCat.ofHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (n := boundaryIndex j)
+          (colimit.ι (levelDiagram D (boundaryStage j)) a).right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)) := by
   simp only [filteredSpectrumHomotopyIso, Iso.trans_hom, Iso.symm_hom, Category.assoc,
     Iso.inv_hom_id, Category.comp_id]
   rw [HasColimit.ι_isoOfNatIso_hom_assoc, filteredPointedHomotopyGroupIso_ι]

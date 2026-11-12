@@ -20,7 +20,7 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.ColimitMapComparison
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
 
@@ -119,7 +119,7 @@ def diagramSourceComparison : originalDiagramHom K I J fib ⟶ diagramHom K I J 
     Functor.whiskerRight (HomotopyColimit.replacementComparison K I J)
       (ColimitFrame.resolutionFamily K I J).obj
   exact Functor.whiskerRight (NatTrans.op a)
-    (cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C (K ⥤ C) SSet.{max w v}).obj
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ (Functor.whiskeringLeft C (K ⥤ C) SSet.{max w v}).obj
       (fibrantTarget fib ⋙ (Functor.const K : C ⥤ K ⥤ C)))
 
 lemma diagramSourceComparison_weakEquivalence [ModelCategory SSet.{max w v}]

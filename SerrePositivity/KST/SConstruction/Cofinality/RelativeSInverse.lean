@@ -22,23 +22,23 @@ open scoped Simplicial
 使われ方：逆転置の gapped 性の反映。 -/
 lemma completionRelativeSInverseDiagram_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     completionRelativeSInverseDiagram r ι f hf m n ≫
       (ihom (arNerve m)).map (completionRelativeFlagAmbientMap r ι f hf n).val =
         completionRelativeSRawInverse r ι f hf m n := by
   let P := multiRelativeFlagPredicate r ι Y
     (multiWideStageData stableWideCofinalitySupply r ι f hf).subcomplex (stdSimplex.obj n)
   let C := (ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier
-  let L := fullSubcomplexLift _ (completionRelativeSRawInverse r ι f hf m n)
+  let L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (completionRelativeSRawInverse r ι f hf m n)
     (completionRelativeSRawInverse_relative r ι f hf m n)
-  let B := fullSubcomplexInternalHomBackward (arNerve m) C P
+  let B := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexInternalHomBackward (arNerve m) C P
   have he : B ≫ (ihom (arNerve m)).map
       (completionRelativeFlagAmbientMap r ι f hf n).val =
-        (fullSubcomplexOnVertices _ (FunctorVertexSatisfies (arNerve m) C P)).ι :=
-    fullSubcomplexInternalHomBackward_ι (arNerve m) C P
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorVertexSatisfies (arNerve m) C P)).ι :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.fullSubcomplexInternalHomBackward_ι (arNerve m) C P
   exact (Category.assoc L B ((ihom (arNerve m)).map
     (completionRelativeFlagAmbientMap r ι f hf n).val)).trans
-      ((congrArg (fun h => L ≫ h) he).trans (fullSubcomplexLift_ι _ _ _))
+      ((congrArg (fun h => L ≫ h) he).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _))
 
 /-- 概要：逆転置の元の Ar 図式は包含後に元の旗の転置を回収する。
 方針：族の包含公式を元の関手頂点の表示へ移す。
@@ -46,27 +46,27 @@ lemma completionRelativeSInverseDiagram_inclusion (r : ℕ)
 使われ方：点ごとの gapped 条件の照合。 -/
 lemma completionRelativeSInverseDiagram_vertex_inclusion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier _⦋0⦌) :
-    (functorVertexEquiv (arNerve m) (completionRelativeFlagStableModel r ι f hf n).carrier).symm
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m) (completionRelativeFlagStableModel r ι f hf n).carrier).symm
         ((completionRelativeSInverseDiagram r ι f hf m n).app (Opposite.op ⦋0⦌) v) ≫
       (completionRelativeFlagAmbientMap r ι f hf n).val =
-        internalHomFlipHomEquiv (stdSimplex.obj n) (arNerve m)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (stdSimplex.obj n) (arNerve m)
           (((multiSEndofunctor r).obj ι).obj Y).carrier
-          ((functorVertexEquiv (stdSimplex.obj n)
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (stdSimplex.obj n)
             (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier).symm v.val ≫
               (gappedSubcomplex m (((multiSEndofunctor r).obj ι).obj Y).carrier).ι) := by
   have h := congrArg (fun h => h.app (Opposite.op ⦋0⦌) v)
     (completionRelativeSInverseDiagram_inclusion r ι f hf m n)
   exact (diagramVertex_postcomp (completionRelativeFlagAmbientMap r ι f hf n).val
     ((completionRelativeSInverseDiagram r ι f hf m n).app (Opposite.op ⦋0⦌) v)).symm.trans
-      ((congrArg (functorVertexEquiv (arNerve m)
+      ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
         ((ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)).symm h).trans
-          ((congrArg (functorVertexEquiv (arNerve m)
+          ((congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
             ((ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier)).symm
               (completionRelativeSRawInverse_vertex r ι f hf m n v)).trans
-                ((functorVertexEquiv _ _).symm_apply_apply _)))
+                ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply _)))
 
 /-- 概要：逆転置した元の相対旗値の Ar 図式は gapped。
 方針：元の全部分旗包含で反映し、各旗頂点で元の S 図式を回収する。
@@ -74,10 +74,10 @@ lemma completionRelativeSInverseDiagram_vertex_inclusion (r : ℕ)
 使われ方：元の S 構成への逆射の持ち上げ。 -/
 lemma completionRelativeSInverseDiagram_isGapped (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier _⦋0⦌) :
-    IsGapped ((functorVertexEquiv (arNerve m)
+    IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
       (completionRelativeFlagStableModel r ι f hf n).carrier).symm
         ((completionRelativeSInverseDiagram r ι f hf m n).app (Opposite.op ⦋0⦌) v)) := by
   apply IsGapped.of_fullSubcomplex (multiRelativeFlagPredicate r ι Y
@@ -87,8 +87,8 @@ lemma completionRelativeSInverseDiagram_isGapped (r : ℕ)
   apply (isGapped_functor_iff_pointwise _).mpr
   intro b
   rw [flipFamily_evaluate]
-  exact fullSubcomplexOnVertices_vertex
-    (((functorVertexEquiv (stdSimplex.obj n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (stdSimplex.obj n)
       (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier).symm v.val).app
         (Opposite.op ⦋0⦌) b)
 
@@ -98,7 +98,7 @@ lemma completionRelativeSInverseDiagram_isGapped (r : ℕ)
 使われ方：相対旗の S 交換同型の逆向き。 -/
 def completionRelativeSInverse (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (completionRelativeFlagStableModel (r + 1) (Fin.cons (Opposite.op ⦋m⦌) ι)
       f hf n).carrier ⟶
         (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier :=

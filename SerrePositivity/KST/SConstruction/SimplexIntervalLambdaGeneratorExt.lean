@@ -19,7 +19,7 @@ variable (A : Type u) [CommRing A]
 lemma simplexIntervalLambdaHom_face_top_ext {n : ℕ} (a b : Fin (n + 1)) (hab : a ≤ b)
     {K : Complex A}
     {f g : homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) ⟶ K}
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) ⟶ K}
     (h : ∀ (d : ℕ) (v : CubeFaceNormal d (b.val - a.val - 1)),
       serreCubeTopCellImage A K d
           ((serreCubeFaceNormal A v).hom ≫ (simplexIntervalLambdaHomIso A a b hab).hom ≫ f) =

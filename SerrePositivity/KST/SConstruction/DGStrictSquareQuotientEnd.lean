@@ -12,7 +12,7 @@ noncomputable section
 universe u v w z t
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (E : Type z) [DGCategory R E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
@@ -34,16 +34,16 @@ abbrev dgStrictSquareQuotientEnd :=
 lemma dgStrictSquareQuotientEnd_hom
     (x y : dgStrictSquareQuotientEnd R C D E p q L G h z₀ hz b) :
     homObject R (dgStrictSquareQuotientEnd R C D E p q L G h z₀ hz b) x y =
-      DGQuotient.quotientHom R (DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+      DGQuotient.quotientHom R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
         (dgQuotientImage R (dgStrictSquareDiagonal R C D E p q L G h))
         (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).point
         (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).point := rfl
 
 /-- 元の標準対角の像は、指定 ε により同じ実商の dg nerve 内で零対象となる。 -/
 lemma dgStrictSquareQuotient_diagonal_isZero (x : P) :
-    IsZeroVertex
-      (X := dgNerve R (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).quotientObject)
-      (Simplex.vertex
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex
+      (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).quotientObject)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex
         ((dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).projection.obj
           ((dgStrictSquareDiagonal R C D E p q L G h).obj x))) :=
   (dgStrictSquareQuotientInput R C D E p q L G h z₀ hz b).diagonal_isZero x

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.SkeletalFiberComponents
-public import SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletalSphericalCochain
 
 /-!
 概要：骨格上の球面的係数を同じ境界定数単体で fiber の成分へ実現する。
@@ -43,7 +43,7 @@ theorem stageFiberComponentEquiv_simplexVertex (K : SSet.{u})
     (a : K.nonDegenerate (n + 1) → Y.right.PtSimplex (n + 1) Y.basepoint)
     (s : K.nonDegenerate (n + 1)) :
     stageFiberComponentEquiv K Y n (π₀.mk (stageFiberSimplexVertex K Y n a)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (a s) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (a s) := by
   rw [stageFiberSimplexVertex, stageFiberComponentEquiv_vertex,
     Iso.inv_hom_id_assoc, Equiv.apply_symm_apply]
 
@@ -58,8 +58,8 @@ theorem simplexVertex_cochain (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
       yonedaEquiv.symm s ≫ f = SSet.const Y.basepoint) :
     (fun s ↦ Additive.ofMul (stageFiberComponentEquiv K Y (n + 1)
       (π₀.mk (stageFiberSimplexVertex K Y (n + 1)
-        (fun t ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f h t.val))) s)) =
-      _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f h := by
+        (fun t ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f h t.val))) s)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f h := by
   funext s
   rw [stageFiberComponentEquiv_simplexVertex]
   rfl

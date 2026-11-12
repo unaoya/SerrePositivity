@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.RelativeCompositionPoints
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitIdentityPoint
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitIdentityPoint
 
 /-!
 # 元の相対関手による一列の点と単位点の保存
@@ -26,8 +26,8 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
 
 omit [W.IsMultiplicative] [V.IsMultiplicative] in
 lemma forward_obj (p : X ⟶ Y) :
-    obj F (ForwardZigzag.obj (W := W) p) = ForwardZigzag.obj (W := V) (F.functor.map p) := by
-  apply Zigzag.object_ext
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.obj F (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W) p) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := V) (F.functor.map p) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.object_ext
   · intro j
     change Fin 2 at j
     cases j using Fin.cases with
@@ -40,10 +40,10 @@ lemma forward_obj (p : X ⟶ Y) :
     rfl
 
 lemma arrowSimplex_map (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
-    arrowSimplex W p n ⋙ functor F = arrowSimplex V (F.functor.map p) n := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W p n ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeZigzagFunctor.functor F = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex V (F.functor.map p) n := by
   apply CategoryTheory.Functor.hext (fun _ => forward_obj F p)
   intro d e f
-  apply Zigzag.hom_hext (forward_obj F p) (forward_obj F p)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagExt.hom_hext (forward_obj F p) (forward_obj F p)
   intro j
   change Fin 2 at j
   cases j using Fin.cases with
@@ -59,14 +59,14 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   (F : LocalizerMorphism W V) {X Y : C}
 
 lemma arrowPoint_map (p : X ⟶ Y) (n : SimplexCategoryᵒᵖ) :
-    (colimitMap F X Y).app n (arrowPoint W p n) = arrowPoint V (F.functor.map p) n :=
-  (graphInclusion_point F (arrowSimplex W p n)).trans
-    (congrArg (fun H => (graphInclusion V (F.functor.obj X) (F.functor.obj Y)
-      (Word.single .forward)).app n H) (Zigzag.Relative.arrowSimplex_map F p n))
+    (colimitMap F X Y).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W p n) = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint V (F.functor.map p) n :=
+  (graphInclusion_point F (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W p n)).trans
+    (congrArg (fun H => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion V (F.functor.obj X) (F.functor.obj Y)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)).app n H) (Zigzag.Relative.arrowSimplex_map F p n))
 
 lemma colimitUnit_point (X : C) (n : SimplexCategoryᵒᵖ) :
-    (colimitMap F X X).app n ((colimitUnit W X).app n PUnit.unit) =
-      (colimitUnit V (F.functor.obj X)).app n PUnit.unit := by
-  rw [← arrowPoint_identity, arrowPoint_map, F.functor.map_id, arrowPoint_identity]
+    (colimitMap F X X).app n ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit W X).app n PUnit.unit) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitUnit V (F.functor.obj X)).app n PUnit.unit := by
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity, arrowPoint_map, F.functor.map_id, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_identity]
 
 end SerrePositivity.EInfinity.Hammock.Relative

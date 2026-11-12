@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.Theory
 public import SerrePositivity.EInfinity.BarrattEccles.CAlgQuasiIso
-public import SerrePositivity.InfinityCategories.Derived.StableLimits
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.StableLimits
 public import SerrePositivity.EInfinity.Operad.AlgebraLift
 
 /-!
@@ -89,28 +89,28 @@ lemma schurι_zero_isIso (P : SymmetricSequence (Complex A)) :
 
 /-- 導来自由関手が導来圏の零頂点を始頂点へ送る。 -/
 lemma derivedFreeAtZero_isInitial :
-    IsInitialVertex (atVertex (cAlgFreeDerived A) (derivedInfinityZeroVertex A)) := by
-  apply isInitialVertex_of_intervalMappingSpace_isContractibleKan
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (atVertex (cAlgFreeDerived A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex A)) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.isInitialVertex_of_intervalMappingSpace_isContractibleKan
   intro y
-  exact (((unitMappingSpaceCondition_iff_interval (cAlgFreeForgetDerivedAdjunction A).unitHom).mp
+  exact (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitMappingSpaceCondition_iff_interval (cAlgFreeForgetDerivedAdjunction A).unitHom).mp
     (cAlgFreeForgetDerivedAdjunction A).unitMappingSpaceCondition _ y).isContractibleKan_iff).mpr
-    ((derivedInfinityZeroVertex_isZeroVertex A).1.intervalMappingSpace_isContractibleKan _)
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex_isZeroVertex A).1.intervalMappingSpace_isContractibleKan _)
 
 /-- 零頂点での随伴の自由代数と同じ厳密 probe の比較。 -/
 def derivedFreeAtZeroProbeIso :
-    VertexIso (derivedFreeProbeVertex A (derivedInfinityZeroVertex A))
-      (atVertex (cAlgFreeDerived A) (derivedInfinityZeroVertex A)) := by
-  let x := derivedInfinityZeroVertex A
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (derivedFreeProbeVertex A (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex A))
+      (atVertex (cAlgFreeDerived A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex A)) := by
+  let x := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex A
   let U := cAlgForgetDerived A
-  let p := F1B.unitCommaFiberProjection U x
-  have h := VertexIso.map (derivedFreeProbeUnitCommaAdjunctionIso A x) p
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection U x
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (derivedFreeProbeUnitCommaAdjunctionIso A x) p
   have h₀ := derivedFreeProbeUnitCommaVertex_target A x
-  have h₁ := unitCommaSectionVertex_target_const (A := Δ[0])
+  have h₁ := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex_target_const (A := Δ[0])
     (cAlgFreeForgetDerivedAdjunction A).unitHom x
-  rw [unitCommaFiberTarget_const] at h₁
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberTarget_const] at h₁
   have ht' := congrArg (fun q : (Δ[0] : SSet.{u + 1}) ⟶ CAlg_R A => SSet.yonedaEquiv q) h₁
   simp only [SSet.yonedaEquiv_const] at ht'
-  have ht : atVertex p (unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunction A).unitHom x) =
+  have ht : atVertex p (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaSectionVertex (cAlgFreeForgetDerivedAdjunction A).unitHom x) =
       atVertex (cAlgFreeDerived A) x := ht'
   exact eqToIso (congrArg SSet.HomotopyCategory.mk h₀.symm) ≪≫ h ≪≫
     eqToIso (congrArg SSet.HomotopyCategory.mk ht)
@@ -182,16 +182,16 @@ lemma freeZeroToProbe_quasiIso :
 
 /-- HA §3.2.2 の離散基礎環は既存の CAlg_R の始対象。 -/
 lemma discreteCAlgUnderEmbedding_initial :
-    IsInitialVertex (atVertex (discreteCAlgUnderEmbedding A)
-      (nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (atVertex (discreteCAlgUnderEmbedding A)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (Under.mk (𝟙 (CommRingCat.of A))))) := by
   let B := CommAlgCat.of A A
   let f := (operad A).freeAlgebraFunctor.map
     (0 : (0 : Complex A) ⟶ (ComplexLimits.framedLimitProbeFunctor A).obj 0)
   let e₁ := cAlgVertexIsoOfQuasiIso A f (freeZeroToProbe_quasiIso A)
   let e₂ := cAlgVertexIsoOfQuasiIso A (freeZeroToDiscrete A) (freeZeroToDiscrete_quasiIso A)
-  have e₀ : VertexIso
+  have e₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
       (cAlgVertex A ((freeProbeFunctor A).obj (0 : Complex A)))
-      (atVertex (cAlgFreeDerived A) (derivedInfinityZeroVertex A)) :=
+      (atVertex (cAlgFreeDerived A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityZeroVertex A)) :=
     derivedFreeAtZeroProbeIso A
   have e₃ := discreteCAlgEmbedding_vertexIso A B
   have e₄ := discreteCAlgUnderComparisonIso A B

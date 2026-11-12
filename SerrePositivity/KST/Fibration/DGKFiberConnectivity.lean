@@ -29,7 +29,7 @@ abbrev dgKBFHomotopyFiber {P Q : PerfDGInput.{u, v} A} (f : P ⟶ Q) :=
 /-- 同じ固定 K の実頂点の全負整数 π 群は、元の BF 比較により零群。 -/
 theorem dgKPi_negative_subsingleton (P : PerfDGInput.{u, v} A) (j : ℤ) (hj : j < 0) :
     Subsingleton ((SpectrumHo.piFunctor j).obj
-      (HomotopyCategory.mk ((dgKInputK A).app (Opposite.op ⦋0⦌) (coherentNerveVertex P)))) := by
+      (HomotopyCategory.mk ((dgKInputK A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P)))) := by
   have := presentedPerfectDGBFOmegaSpectrum_negative_subsingleton A P j hj
   exact (dgKPiComparison A P j).commGroupIsoToMulEquiv.injective.subsingleton
 
@@ -52,9 +52,9 @@ theorem dgKBFHomotopyFiber_negative_subsingleton_of_kZero_surjective
 /-- ν 像が Verdier 列なら、同じ固定 K 商射の実 BF fiber の全負整数群は消える。 -/
 theorem dgKBFHomotopyFiber_negative_subsingleton_of_verdier
     {P Q R : PerfDGInput.{u, v} A} (f : P ⟶ Q) (g : Q ⟶ R)
-    (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence
-      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
-      (show _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
+    (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence
+      (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A P) (dgKInputStableValue A Q) from dgKInputNuMap A f)
+      (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (dgKInputStableValue A Q) (dgKInputStableValue A R) from dgKInputNuMap A g))
     (j : ℤ) (hj : j < 0) :
     Subsingleton (OmegaSpectrum.homotopyGroup (dgKBFHomotopyFiber A g) j) :=
   dgKBFHomotopyFiber_negative_subsingleton_of_kZero_surjective A g

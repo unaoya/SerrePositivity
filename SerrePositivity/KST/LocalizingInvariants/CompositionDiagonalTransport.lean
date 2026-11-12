@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.InvertibleEdgeLifting
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.InvertibleEdgeLifting
 
 /-!
 概要：指定された対角のホモトピーに沿って合成三角形を移送し、三次元の証人も保持する。

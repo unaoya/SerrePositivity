@@ -13,7 +13,7 @@ open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory Homoto
 namespace SerrePositivity.DiagramModel.WeightedSourceComparison
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
 
@@ -71,9 +71,9 @@ end SerrePositivity.DiagramModel.WeightedSourceComparison
 namespace SerrePositivity.DiagramModel.WeightedHomotopyColimitFrame
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
 
 abbrev leftFamily : (K ⥤ C) ⥤ SSet.{w} ⥤ C :=
   WeightedSourceComparison.weightedFamily K I J (HomotopyCones.weight Kᵒᵖ IS JS)

@@ -23,16 +23,16 @@ namespace SerrePositivity.KST.LocalizingInvariants
 規約：元の本質像と全単体条件を保持し、SConstruction を import しない。
 使われ方：K-cof の各 S 多次数の wide 部分複体の供給。 -/
 theorem idempotentCompletion_cofiberWide_discrete
-    (C D : SSet.{u}) [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
-    (f : C ⟶ D) [IsExactFunctor f] (h : F2.Idempotent.IsIdempotentCompletion f) :
+    (C D : SSet.{u}) [Quasicategory C] [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
+    (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f) :
     ∃ M : D.Subcomplex,
       (∀ (n : ℕ) (s : D _⦋n⦌), s ∈ M.obj (Opposite.op ⦋n⦌) ↔
-        ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ cofiberLocalizingEdges
-          {y | ∃ x : C _⦋0⦌, Nonempty (VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
+        ∀ θ : ⦋1⦌ ⟶ ⦋n⦌, D.map θ.op s ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
+          {y | ∃ x : C _⦋0⦌, Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (f.app (Opposite.op ⦋0⦌) x) y)}) ∧
       Quasicategory (M : SSet.{u}) ∧
-      ∀ (x : (F2.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
-        0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-          (F2.continuousKanReplacement.obj (M : SSet.{u})) n x) := by
+      ∀ (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (M : SSet.{u})) _⦋0⦌) (n : ℕ),
+        0 < n → Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (M : SSet.{u})) n x) := by
   refine ⟨completionCofiberWide f, ?_, completionCofiberWide_quasicategory f h, ?_⟩
   · intro n s
     exact Iff.rfl

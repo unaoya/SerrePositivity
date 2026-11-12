@@ -13,7 +13,7 @@ public import SerrePositivity.DifferentialGraded.Perfect.EnhancementOperations
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve SSet
+open CategoryTheory DifferentialGraded InfinityCategories SSet
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -31,13 +31,13 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "αs" => dgStrictNatTransPostcomp (α) (S)
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
-local notation "δs" => dgStrictNatTransPostcomp (δ) (S)
+local notation "αs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (α) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
+local notation "δs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)
 
 
 local notation "κ" => dgIdentityHomGluingStrictConeInputInvComparison R C F G a h
-local notation "κs" => dgStrictNatTransPostcomp (κ) (S)
+local notation "κs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (κ) (S)
 
 
 local notation "GY" => G.comp (J)
@@ -45,14 +45,14 @@ local notation "FY" => F.comp (J)
 local notation "AS" => DGFunctor.comp (A) (S)
 local notation "BS" => DGFunctor.comp (B) (S)
 local notation "FSS" => DGFunctor.comp (FS) (S)
-local notation "γs" => dgStrictNatTransComp (κs) (δs)
+local notation "γs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (κs) (δs)
 local notation "RS" => dgModuleNaturalConeFunctor R C (BS) (FSS) (γs)
 local notation "NS" => dgModuleNaturalInverseRotationSource R C (FY) (GY) (η)
 local notation "q" => dgModuleNaturalConePrecomposition R C (BS) (AS) (FSS) (κs) (δs)
 local notation "σ" => dgModuleNaturalInverseRotation R C (FY) (GY) (η)
 local notation "ι" => dgModuleNaturalConeInr R C (BS) (FSS) (γs)
 local notation "ιn" => dgModuleNaturalConeInr R C (AS) (FSS) (δs)
-local notation "λ" => dgStrictNatTransComp (ιn) (σ)
+local notation "λ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιn) (σ)
 
 local notation "ρ" => dgIdentityHomGluingInverseRotationUpperRawComparison R C F G a h
 

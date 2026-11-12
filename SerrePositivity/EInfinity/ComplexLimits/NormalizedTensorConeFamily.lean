@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConePrism
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomCorrespondence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomCorrespondence
 
 /-!
 概要：元の全 cone prism を同じ定値先端から元の frame 図式への関手の射にする。
@@ -15,12 +15,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorConeHomotopy :
-    SSet.Homotopy (SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X))
+    SSet.Homotopy (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X))
       (normalizedTensorElementNerveDiagram A X Y) where
   h := (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom ≫
     normalizedTensorConePrism A X Y
@@ -28,14 +28,14 @@ def normalizedTensorConeHomotopy :
     rw [← Category.assoc]
     have he : SSet.ι₀ (X := nerve (normalizedTensorElementIndex A X Y)) ≫
         (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom =
-        prismEndpoint 0 (nerve (normalizedTensorElementIndex A X Y)) := by rfl
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (nerve (normalizedTensorElementIndex A X Y)) := by rfl
     rw [he]
     exact normalizedTensorConePrism_zero A X Y
   h₁ := by
     rw [← Category.assoc]
     have he : SSet.ι₁ (X := nerve (normalizedTensorElementIndex A X Y)) ≫
         (β_ (nerve (normalizedTensorElementIndex A X Y)) (Δ[1] : SSet.{u + 1})).hom =
-        prismEndpoint 1 (nerve (normalizedTensorElementIndex A X Y)) := by rfl
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (nerve (normalizedTensorElementIndex A X Y)) := by rfl
     rw [he]
     exact normalizedTensorConePrism_one A X Y
   rel := by
@@ -46,9 +46,9 @@ def normalizedTensorConeHomotopy :
     exact False.elim s.1.property
 
 def normalizedTensorConeFamilyHom :
-    FunctorHom (SSet.const ((dgNerve.vertexEquiv A (Complex A)).symm X))
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (SSet.const ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X))
       (normalizedTensorElementNerveDiagram A X Y) :=
   SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (normalizedTensorConeHomotopy A X Y))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedTensorConeHomotopy A X Y))
 
 end SerrePositivity.EInfinity.ComplexLimits

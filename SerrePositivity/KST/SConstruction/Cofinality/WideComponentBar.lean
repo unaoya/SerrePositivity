@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：相対実現の離散成分障害を具体的な群 nerve へ移す。 -/
 def completionWideComponentHeadBarIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf ≅
       nerve (AsSmall.{u} (SingleObj (Multiplicative
         (cutKZeroCokernel 1 (((multiSEndofunctor r).obj ι).map f))))) :=
@@ -36,17 +36,17 @@ def completionWideComponentHeadBarIso (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：同じ全 S 多次数の障害の消滅。 -/
 lemma completionWideComponentHead_higher_of_input (h : GroupNerveHigherVanishingInput.{u})
     (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
-    (x : (F2.continuousKanReplacement.obj
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : ℕ) (hn : 1 < n)
+    (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf)) _⦋0⦌) :
-    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy (F2.continuousKanReplacement.obj
+    Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj
       (completionCokernelHeadIndex r ι ⋙ completionWideComponentDiagram (r + 1) f hf)) n x) := by
-  let e := F2.continuousKanReplacement.mapIso (completionWideComponentHeadBarIso r ι f hf)
-  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy
-      (F2.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj (Multiplicative
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.mapIso (completionWideComponentHeadBarIso r ι f hf)
+  let : Subsingleton (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.continuousKanReplacement.obj (nerve (AsSmall.{u} (SingleObj (Multiplicative
         (cutKZeroCokernel 1 (((multiSEndofunctor r).obj ι).map f))))))) n
           (e.hom.app (Opposite.op ⦋0⦌) x)) :=
     cutCokernelBar_higher_of_input h 1 (((multiSEndofunctor r).obj ι).map f) n hn _
-  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e x n).1)
+  exact Function.Injective.subsingleton ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e x n).1)
 
 end SerrePositivity.KST.SConstruction.Cofinality

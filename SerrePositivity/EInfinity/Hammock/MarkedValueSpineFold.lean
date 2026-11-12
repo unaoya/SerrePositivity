@@ -17,20 +17,20 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor.MarkedSpine
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] {W : MorphismProperty C}
   {D : Type uD} [Category.{vD} D]
-  (K : Quiver.FreeGroupoid (MarkedGenerators.quiver W) ⥤ D)
-  (a : ∀ g : FactorTarget.Index W,
-    K.obj ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).obj g.val.left) ⟶
-      K.obj ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).obj g.val.right))
+  (K : Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) ⥤ D)
+  (a : ∀ g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W,
+    K.obj ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).obj g.val.left) ⟶
+      K.obj ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).obj g.val.right))
 
 namespace ValueSpine
 
 def fold {X Y : Paths C} : ValueSpine W Y X →
-    (K.obj ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).obj X) ⟶
-      K.obj ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).obj Y))
+    (K.obj ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).obj X) ⟶
+      K.obj ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).obj Y))
   | .nil _ p => K.map p
   | .cons _ g p t => K.map p ≫ a g ≫ fold t
 
@@ -44,7 +44,7 @@ lemma fold_compose {X Y Z : Paths C} (t : ValueSpine W Y X) (s : ValueSpine W Z 
   | nil X p => exact fold_precompose K a p s
   | cons X g p t ih => simp only [compose, fold, ih, Category.assoc]
 
-lemma fold_generator (g : FactorTarget.Index W) : fold K a (generator W g) = a g := by
+lemma fold_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : fold K a (generator W g) = a g := by
   change K.map (𝟙 _) ≫ a g ≫ K.map (𝟙 _) = a g
   rw [K.map_id, K.map_id, Category.id_comp, Category.comp_id]
 
@@ -56,7 +56,7 @@ def valueFoldFunctor : letI := valueCategory W
     ValueObjects C ⥤ D := by
   letI := valueCategory W
   exact
-    { obj X := K.obj ((Quiver.FreeGroupoid.of (MarkedGenerators.quiver W)).obj X)
+    { obj X := K.obj ((Quiver.FreeGroupoid.of (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W)).obj X)
       map t := ValueSpine.fold K a t
       map_id X := K.map_id _
       map_comp t s := ValueSpine.fold_compose K a t s }
@@ -67,7 +67,7 @@ lemma valueFoldFunctor_marked : letI := valueCategory W
   exact CategoryTheory.Functor.ext (F := valueMarkedFunctor W ⋙ valueFoldFunctor W K a)
     (G := K) (fun _ => rfl)
 
-lemma valueFoldFunctor_generator (g : FactorTarget.Index W) : letI := valueCategory W
+lemma valueFoldFunctor_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) : letI := valueCategory W
     (valueFoldFunctor W K a).map (ValueSpine.generator W g) = a g :=
   ValueSpine.fold_generator K a g
 

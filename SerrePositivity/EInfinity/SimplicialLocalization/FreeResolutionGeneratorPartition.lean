@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeResolution
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.MarkedGeneratorCategory
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorPartitionUniversal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorPartitionUniversal
 
 /-!
 # 元の自由解像の全次数の指定生成矢と自由積の普遍性
@@ -22,34 +22,34 @@ namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
 open SerrePositivity.HomotopyFunctionComplex
 
-def freeResolutionGeneratorBase (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
-    RelativeCategory.{u} := ComonadResolutionOperators.power freeRelativeComonad C n.unop.len
+def freeResolutionGeneratorBase (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u} := ComonadResolutionOperators.power _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeComonad C n.unop.len
 
-lemma freeResolution_eq_freeGeneratorBase (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
-    (freeResolution C).obj n = freeRelativeFunctor.obj (freeResolutionGeneratorBase C n) := rfl
+lemma freeResolution_eq_freeGeneratorBase (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
+    (freeResolution C).obj n = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.freeRelativeFunctor.obj (freeResolutionGeneratorBase C n) := rfl
 
-def freeResolutionMarkedEquivalence (C : RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
-    Paths (MarkedGenerators.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ≌
+def freeResolutionMarkedEquivalence (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (n : SimplexCategoryᵒᵖ) :
+    Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ≌
       WideSubcategory ((freeResolution C).obj n).weakEquivalences :=
-  MarkedGenerators.equivalence (freeResolutionGeneratorBase C n).weakEquivalences
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.equivalence (freeResolutionGeneratorBase C n).weakEquivalences
 
-lemma freeResolutionMarkedEquivalence_inclusion (C : RelativeCategory.{u})
+lemma freeResolutionMarkedEquivalence_inclusion (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
     (n : SimplexCategoryᵒᵖ) :
     (freeResolutionMarkedEquivalence C n).functor ⋙
       wideSubcategoryInclusion ((freeResolution C).obj n).weakEquivalences =
-        MarkedGenerators.inclusion (freeResolutionGeneratorBase C n).weakEquivalences := rfl
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (freeResolutionGeneratorBase C n).weakEquivalences := rfl
 
-lemma freeResolution_existsUnique_extension (C : RelativeCategory.{u})
+lemma freeResolution_existsUnique_extension (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
     (n : SimplexCategoryᵒᵖ) {D : Type u'} [Category.{v'} D]
-    (F : Paths (MarkedGenerators.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ⥤ D)
-    (G : Paths (MarkedGenerators.quiver
-      (GeneratorPartition.unmarked (freeResolutionGeneratorBase C n).weakEquivalences)) ⥤ D)
+    (F : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver (freeResolutionGeneratorBase C n).weakEquivalences) ⥤ D)
+    (G : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (freeResolutionGeneratorBase C n).weakEquivalences)) ⥤ D)
     (h : ∀ X : (freeResolutionGeneratorBase C n).category, F.obj X = G.obj X) :
     ∃! H : ((freeResolution C).obj n).category ⥤ D,
-      MarkedGenerators.inclusion (freeResolutionGeneratorBase C n).weakEquivalences ⋙ H = F ∧
-        MarkedGenerators.inclusion
-          (GeneratorPartition.unmarked (freeResolutionGeneratorBase C n).weakEquivalences) ⋙ H =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion (freeResolutionGeneratorBase C n).weakEquivalences ⋙ H = F ∧
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.inclusion
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.unmarked (freeResolutionGeneratorBase C n).weakEquivalences) ⋙ H =
             G :=
-  GeneratorPartition.existsUnique_extension (freeResolutionGeneratorBase C n).weakEquivalences F G h
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.existsUnique_extension (freeResolutionGeneratorBase C n).weakEquivalences F G h
 
 end SerrePositivity.EInfinity.SimplicialLocalization

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.FreeCochainWeight
 universe u
 
 open CategoryTheory MonoidalCategory SSet Opposite
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.PointedActionCochains
 
@@ -92,7 +92,7 @@ instance obj_kanComplex {G : Type u} [Group G] (B : Action PointedSimplicialSet.
   let : KanComplex (PointedSimplicialSet.forget.obj
       (PointedWeightedEnd.obj (FreeActionFamily.weight (Fin n → G))
         (FreeActionFamily.pointedCoefficients B))) := FreeActionFamily.pointedEnd_kanComplex _ B
-  exact kanComplex_of_iso (PointedSimplicialSet.forget.mapIso (freeIso B n).symm)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (PointedSimplicialSet.forget.mapIso (freeIso B n).symm)
 
 end
 

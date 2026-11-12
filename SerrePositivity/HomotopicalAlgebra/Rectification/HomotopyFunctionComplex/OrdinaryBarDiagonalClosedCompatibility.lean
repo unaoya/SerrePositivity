@@ -49,10 +49,10 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (P : SSet.{max u v})
 
 lemma mapping_nativeFamily {T : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ OrdinaryBarFixedWordResolution.hom C X Y) :
     lift j f ≫ mapping hcof hfib P X Y =
-      UniverseLift.map.{max u v} (nativeFamily hcof hfib P j f) := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} (nativeFamily hcof hfib P j f) := by
   have h := UniverseLiftClosedCurry.curry_lowerTensor (largeFamily hcof hfib P j f)
   rw [lower_largeFamily] at h
   rw [mapping_family, ← h, Category.assoc, Iso.hom_inv_id, Category.comp_id]

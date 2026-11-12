@@ -23,7 +23,7 @@ open scoped Simplicial
 使われ方：wide 成分の基点を元の始域から指定する。 -/
 def completionCanonicalSourceToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (((multiSEndofunctor r).obj ι).obj X).carrier ⟶
       (LocalizingInvariants.completionCofiberWide
         (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) :=
@@ -36,14 +36,14 @@ def completionCanonicalSourceToWide (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 使われ方：本質像の同型を成分の等号へ移す。 -/
 lemma completionWideComponent_eq_of_vertexIso (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (x y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌)
-    (e : VertexIso x.val y.val) : SSet.π₀.mk x = SSet.π₀.mk y := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x.val y.val) : SSet.π₀.mk x = SSet.π₀.mk y := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
-  obtain ⟨a, ha⟩ := homotopyCategory_homMk_surjective x.val y.val e.hom
-  have hi : IsInvertibleEdge a := by
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
+  obtain ⟨a, ha⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective x.val y.val e.hom
+  have hi : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge a := by
     change IsIso (Truncated.HomotopyCategory.homMk a)
     rw [ha]
     infer_instance
@@ -51,7 +51,7 @@ lemma completionWideComponent_eq_of_vertexIso (r : ℕ)
     ⟨a.edge, LocalizingInvariants.completionCofiberWide_edge F.val
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf) a.edge
         (completionMulti_invertibleEdge_mem r ι f hf a.edge
-          ((isInvertibleEdge_congr (e := a) (f := edgeOfSimplex a.edge) rfl).mp hi))⟩
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := a) (f := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a.edge) rfl).mp hi))⟩
   exact SSet.π₀.sound (SSet.Edge.mk b (Subtype.ext a.src_eq) (Subtype.ext a.tgt_eq))
 
 /-- 概要：元の始域の全頂点の像は一つの wide 成分にある。
@@ -60,14 +60,14 @@ lemma completionWideComponent_eq_of_vertexIso (r : ℕ)
 使われ方：像成分の基点の選択非依存性。 -/
 lemma completionSourceWide_component_eq (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (x y : (((multiSEndofunctor r).obj ι).obj X).carrier _⦋0⦌) :
     SSet.π₀.mk ((completionCanonicalSourceToWide r ι f hf).app (Opposite.op ⦋0⦌) x) =
       SSet.π₀.mk ((completionCanonicalSourceToWide r ι f hf).app (Opposite.op ⦋0⦌) y) := by
-  let z := chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier
-  obtain ⟨a, _⟩ := homotopyCategory_homMk_surjective z.vertex x
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.chosenZeroVertex (((multiSEndofunctor r).obj ι).obj X).carrier
+  obtain ⟨a, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z.vertex x
     (z.isInitial.isInitialHo.to (HomotopyCategory.mk x))
-  obtain ⟨b, _⟩ := homotopyCategory_homMk_surjective z.vertex y
+  obtain ⟨b, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.homotopyCategory_homMk_surjective z.vertex y
     (z.isInitial.isInitialHo.to (HomotopyCategory.mk y))
   exact (SSet.π₀.sound ((SSet.Edge.ofTruncated a).map
     (completionCanonicalSourceToWide r ι f hf))).symm.trans
@@ -80,7 +80,7 @@ lemma completionSourceWide_component_eq (r : ℕ) (ι : Fin r → SimplexCategor
 使われ方：相対旗の回収を基点成分の障害として読む。 -/
 theorem completionWideImageComponent_iff_basepoint (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (x : (((multiSEndofunctor r).obj ι).obj X).carrier _⦋0⦌)
     (y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌) :
@@ -103,7 +103,7 @@ theorem completionWideImageComponent_iff_basepoint (r : ℕ)
 使われ方：加法的 fiber 比較へ渡す基点成分の判定。 -/
 theorem completionRelativeFlag_recovery_iff_basepoint (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected]
     (v : (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K) _⦋0⦌)
     (g : K ⟶ (LocalizingInvariants.completionCofiberWide
@@ -113,7 +113,7 @@ theorem completionRelativeFlag_recovery_iff_basepoint (r : ℕ)
       completionRelativeFlagVertexFunctor r ι f hf v) (k : K _⦋0⦌)
     (x : (((multiSEndofunctor r).obj ι).obj X).carrier _⦋0⦌) :
     (∃ s : ((ihom K).obj (((multiSEndofunctor r).obj ι).obj X).carrier) _⦋0⦌,
-      Nonempty (VertexIso ((multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K).app
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K).app
         (Opposite.op ⦋0⦌) s) v)) ↔
       SSet.π₀.mk (g.app (Opposite.op ⦋0⦌) k) = SSet.π₀.mk
         ((completionCanonicalSourceToWide r ι f hf).app (Opposite.op ⦋0⦌) x) :=

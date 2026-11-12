@@ -74,7 +74,7 @@ lemma choices_kan (X Y : D C) : SSet.modelCategoryQuillen.J.rlp
 
 def family {T : SSet.{max u v}} {X Y : D C} (c : T ⟶ choices hcof hfib P X Y) :
     (P ⊗ baseHom C X Y) ⊗ T ⟶
-      UniverseLift.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib X)).obj (small hcof hfib Y)) :=
   RestrictionDescentChoices.family (parameterAugmentation P X Y)
     (parameterAugmentation_isIso P X Y) (OrdinaryBarClosedHomDescent.target_kan hcof hfib X Y)
     (OrdinaryBarDiagonalClosedAction.mapping hcof hfib P X Y) c
@@ -109,34 +109,34 @@ lemma relative_extension {U V : SSet.{max u v}} {X Y : D C} (j : U ⟶ V) [Mono 
           (comparison hcof hfib P e).h = (comparison hcof hfib P c).h :=
   RestrictionDescentChoices.relative_extension _ _ _ _ _ _
 
-def nativeFamily {T : SSet.{v}} {X Y : D C} (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ baseHom C X Y)
-    (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y) :
+def nativeFamily {T : SSet.{v}} {X Y : D C} (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y) :
     T ⟶ (ihom (small hcof hfib X)).obj (small hcof hfib Y) :=
-  UniverseLift.lower (lift (lift j f) (𝟙 _) ≫ family hcof hfib P c)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (lift (lift j f) (𝟙 _) ≫ family hcof hfib P c)
 
 lemma nativeFamily_substitute {T U : SSet.{v}} {X Y : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ baseHom C X Y)
-    (c : UniverseLift.obj.{max u v} T ⟶ choices hcof hfib P X Y) (i : U ⟶ T) :
-    nativeFamily hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f)
-        (UniverseLift.map i ≫ c) = i ≫ nativeFamily hcof hfib P j f c := by
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ choices hcof hfib P X Y) (i : U ⟶ T) :
+    nativeFamily hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) = i ≫ nativeFamily hcof hfib P j f c := by
   apply (SSet.uliftFunctor.{max u v, v}).map_injective
-  change lift (lift (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f)) (𝟙 _) ≫
-      family hcof hfib P (UniverseLift.map i ≫ c) =
-    UniverseLift.map i ≫ lift (lift j f) (𝟙 _) ≫ family hcof hfib P c
+  change lift (lift (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f)) (𝟙 _) ≫
+      family hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ c) =
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ lift (lift j f) (𝟙 _) ≫ family hcof hfib P c
   rw [family_naturality, ← Category.assoc, lift_whiskerLeft]
   rw [Category.id_comp, ← Category.assoc, comp_lift, comp_lift, Category.comp_id]
 
 lemma native_relative_extension {U V : SSet.{v}} {X Y : D C} (i : U ⟶ V) [Mono i]
-    (j : UniverseLift.obj.{max u v} V ⟶ P)
-    (f : UniverseLift.obj.{max u v} V ⟶ baseHom C X Y)
-    (c : UniverseLift.obj.{max u v} U ⟶ choices hcof hfib P X Y) :
-    ∃ e : UniverseLift.obj.{max u v} V ⟶ choices hcof hfib P X Y,
-      UniverseLift.map i ≫ e = c ∧ i ≫ nativeFamily hcof hfib P j f e =
-        nativeFamily hcof hfib P (UniverseLift.map i ≫ j) (UniverseLift.map i ≫ f) c := by
-  have : Mono (UniverseLift.map.{max u v} i) := UniverseLift.mono_map i
-  obtain ⟨e, he, _, _⟩ := relative_extension hcof hfib P (UniverseLift.map i) c
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ baseHom C X Y)
+    (c : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} U ⟶ choices hcof hfib P X Y) :
+    ∃ e : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} V ⟶ choices hcof hfib P X Y,
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ e = c ∧ i ≫ nativeFamily hcof hfib P j f e =
+        nativeFamily hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ j) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i ≫ f) c := by
+  have : Mono (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{max u v} i) := UniverseLift.mono_map i
+  obtain ⟨e, he, _, _⟩ := relative_extension hcof hfib P (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map i) c
   refine ⟨e, he, ?_⟩
   rw [← nativeFamily_substitute, he]
 

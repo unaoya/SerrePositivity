@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.Limits.SpectrumTowerSequence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SmashJointProjections
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SmashJointProjections
 
 /-!
 概要：塔の極限の懸垂構造射は元の構造射の単射性を保つ。
@@ -29,27 +29,27 @@ lemma towerSequenceSigma_app_injective (X : ℕ → KanSequence.{u})
     Function.Injective ((towerSequenceSigma X d k).right.app m) := by
   intro s t h
   have hj : Function.Injective (fun b ↦ fun n ↦
-      (pointedTowerProjection (fun n ↦ ((X n).level k).space)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level k).space)
         (fun n ↦ (d n).app k) n).right.app m b) := by
     intro b b' hb
     apply Subtype.ext
     funext n
     exact congrFun hb n
-  apply smashMap_jointlyInjective (J := ℕ) PointedSimplicialSet.circle.{u}
-    (pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k))
+  apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.smashMap_jointlyInjective (J := ℕ) PointedSimplicialSet.circle.{u}
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level k).space) (fun n ↦ (d n).app k))
     (fun n ↦ ((X n).level k).space)
-    (fun n ↦ pointedTowerProjection (fun n ↦ ((X n).level k).space)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level k).space)
       (fun n ↦ (d n).app k) n) m hj s t
   intro n
   have : Mono ((X n).sigma k).right := hmono n k
   apply (CategoryTheory.mono_iff_injective (((X n).sigma k).right.app m)).mp
     ((NatTrans.mono_iff_mono_app _).mp inferInstance m)
   have he := congrArg (fun z ↦
-    (pointedTowerProjection (fun n ↦ ((X n).level (k + 1)).space)
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection (fun n ↦ ((X n).level (k + 1)).space)
       (fun n ↦ (d n).app (k + 1)) n).right.app m z) h
-  change ((towerSequenceSigma X d k ≫ pointedTowerProjection _ _ n).right.app m s) =
-    ((towerSequenceSigma X d k ≫ pointedTowerProjection _ _ n).right.app m t) at he
-  rw [towerSequenceSigma, pointedTowerLift_projection] at he
+  change ((towerSequenceSigma X d k ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n).right.app m s) =
+    ((towerSequenceSigma X d k ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerProjection _ _ n).right.app m t) at he
+  rw [towerSequenceSigma, _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLift_projection] at he
   exact he
 
 /-- 概要：単射な構造射を持つ Kan 列の塔の極限の構造射はモノ射。

@@ -41,7 +41,7 @@ lemma oneDirectionAssemblyAdjoint_interval (r : ℕ) (X : StableModel.{u}) :
 
 /-- loop 射の区間上の評価は標的の点つき射との後合成を保つ。 -/
 lemma loop_interval_postcomp {A : SSet.{u}} {B C : PointedSimplicialSet.{u}}
-    (f : A ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right) (k : B ⟶ C) :
+    (f : A ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right) (k : B ⟶ C) :
     (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ A) ≫
       uncurry ((f ≫ ((PointedObject.basedHomFunctor
         PointedSimplicialSet.circle.{u}).map k).right) ≫
@@ -79,7 +79,7 @@ lemma kanTargetAssemblyAdjoint_interval (r : ℕ) (X : StableModel.{u}) :
 
 /-- loop 射の区間上の評価はパラメータの前合成を保つ。 -/
 lemma loop_interval_precomp {A A' : SSet.{u}} (B : PointedSimplicialSet.{u})
-    (a : A ⟶ A') (f : A' ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right) :
+    (a : A ⟶ A') (f : A' ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right) :
     (PointedObject.cofiberQuotient (boundary.{u} 1).ι ▷ A) ≫
       uncurry ((a ≫ f) ≫ PointedObject.basedHomι PointedSimplicialSet.circle.{u} B) =
       ((Δ[1] : SSet.{u}) ◁ a) ≫

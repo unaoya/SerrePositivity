@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CompositionTriangleRelativePrism
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyRepresentative
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyRepresentative
 
 /-!
 概要：元の相対三角形 prism を、同じ二つの図式間のホモトピーとして表示する。
@@ -23,16 +23,16 @@ variable {X : SSet.{u}} {x y z : X _⦋0⦌} (e : X.Edge x y) (f : X.Edge y z)
   (s : X _⦋2⦌) (h₂ : X.δ 2 s = e.edge) (h₀ : X.δ 0 s = f.edge)
 
 lemma vertex_triangle :
-    (pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x f)).app
+    (pullback.fst ((pre (horn 2 1).ι).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.composableHomHornMap x f)).app
       (Opposite.op ⦋0⦌) (vertex e f s h₂ h₀) =
-        functorVertex (SSet.yonedaEquiv.symm s) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm s) := by
   have he := congrArg SSet.yonedaEquiv
-    (compositionCorrespondenceCurry_triangle x f _ (family s)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceCurry_triangle x f _ (family s)
       ((face s e h₂).trans (constant_edge e).symm) (face s f h₀))
   have hc : curry (family s) =
-      (SSet.const (functorVertex (SSet.yonedaEquiv.symm s)) : (Δ[0] : SSet.{u}) ⟶ _) := by
+      (SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm s)) : (Δ[0] : SSet.{u}) ⟶ _) := by
     apply uncurry_injective
-    rw [uncurry_curry, uncurry_const_functorVertex]
+    rw [uncurry_curry, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
     rfl
   rw [SSet.yonedaEquiv_comp, hc] at he
   exact he
@@ -46,22 +46,22 @@ variable {X : SSet.{u}} [Quasicategory X] {x y z : X _⦋0⦌}
   (ht₂ : X.δ 2 t = e.edge) (ht₀ : X.δ 0 t = f.edge)
 
 def diagramEdge : ((ihom (Δ[2] : SSet.{u})).obj X).Edge
-    (functorVertex (SSet.yonedaEquiv.symm s)) (functorVertex (SSet.yonedaEquiv.symm t)) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm s)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm t)) :=
   ((comparison e f s t hs₂ hs₀ ht₂ ht₀).edge.map
-    (pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x f))).ofEq
+    (pullback.fst ((pre (horn 2 1).ι).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.composableHomHornMap x f))).ofEq
       (TriangleVertex.vertex_triangle e f s hs₂ hs₀)
       (TriangleVertex.vertex_triangle e f t ht₂ ht₀)
 
 def homotopy : SSet.Homotopy (SSet.yonedaEquiv.symm s) (SSet.yonedaEquiv.symm t) :=
-  simplicialHomotopyOfFunctorEdge (diagramEdge e f s t hs₂ hs₀ ht₂ ht₀).toTruncated
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyOfFunctorEdge (diagramEdge e f s t hs₂ hs₀ ht₂ ht₀).toTruncated
 
 lemma homotopy_map : (homotopy e f s t hs₂ hs₀ ht₂ ht₀).h =
     prism e f s t hs₂ hs₀ ht₂ ht₀ := by
   change uncurry (SSet.yonedaEquiv.symm
     ((comparison e f s t hs₂ hs₀ ht₂ ht₀).edge.map
-      (pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x f))).edge) = _
-  let j : compositionCorrespondence x f ⟶ (ihom (Δ[2] : SSet.{u})).obj X :=
-    pullback.fst ((pre (horn 2 1).ι).app X) (composableHomHornMap x f)
+      (pullback.fst ((pre (horn 2 1).ι).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.composableHomHornMap x f))).edge) = _
+  let j : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondence x f ⟶ (ihom (Δ[2] : SSet.{u})).obj X :=
+    pullback.fst ((pre (horn 2 1).ι).app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.composableHomHornMap x f)
   have he : SSet.yonedaEquiv.symm
       ((comparison e f s t hs₂ hs₀ ht₂ ht₀).edge.map j).edge =
     SSet.yonedaEquiv.symm (comparison e f s t hs₂ hs₀ ht₂ ht₀).edge.edge ≫ j := by

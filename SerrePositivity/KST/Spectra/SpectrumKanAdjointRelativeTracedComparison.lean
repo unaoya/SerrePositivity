@@ -76,7 +76,7 @@ def kanAdjointRelativeTracedCorrectionInterval (n : ℕ) :
         (kanAdjointTracedBoundaryCoordinate X Y φ j n).coordinate
         (kanAdjointRelativeTracedComparison X Y φ j ≫
           pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n) //
-      P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right =
+      P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right =
         SSet.const (PointedMapping.familyVertex (kanAdjointTracedBoundary X Y φ j ≫
           pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) n)) } := by
   let Q := relativeTracedParameterEvaluationInterval X
@@ -98,11 +98,11 @@ lemma kanAdjointRelativeTracedComparison_evaluation_homotopy (n : ℕ) :
       j.right ▷ (Δ[1] : SSet.{u}) ≫ H.h =
         (kanAdjointTracedBoundaryHomotopy X Y φ j n).h := by
   let targetKan : KanComplex (kanAdjointParameterTarget X Y n).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let P := (kanAdjointTracedBoundaryCoordinate X Y φ j n).interval
   let Q := kanAdjointRelativeTracedCorrectionInterval X Y φ j n
   let R := kanAdjointTracedBoundaryInterval X Y φ j n
-  have hP : P.path ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right =
+  have hP : P.path ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right =
       R.path := by
     apply PointedMapping.VerticalPath.path_restriction_eq_of_homotopy
     rw [KanAdjointBoundaryCoordinate.interval_h]

@@ -13,16 +13,16 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 open SerrePositivity.DifferentialGraded
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 include hI hj hjm hjM in
 /-- 元の左右 cube の次元和は、元の削除部分集合の濃度から二を除いた値。 -/
 lemma simplexSubsetSplit_flat_erase_dimension :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).dimension +
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)).dimension = (I.erase j).card - 2 :=
-  ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_dimension
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).symm.trans
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).dimension +
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1)).dimension = (I.erase j).card - 2 :=
+  ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_dimension
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).symm.trans
       (simplexSubsetSplit_wedge_erase_dimension I hI j hj hjm hjM)
 
 /-- 元の平坦次元への移送と元の tensor cube 比較は、元の濃度次元からの移送そのもの。 -/
@@ -35,8 +35,8 @@ lemma simplexSubsetSplit_source_triangle :
       (simplexSubsetSplit_wedge_erase_dimension I hI j hj hjm hjM).symm).hom :=
   concreteCubeDimensionIso_hom_trans
     (simplexSubsetSplit_flat_erase_dimension I hI j hj hjm hjM).symm
-    ((_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_dimension
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).symm
+    ((_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (· ≤ j)).card - 1)).wedge_dimension
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single ((I.filter (j ≤ ·)).card - 1))).symm
 
 /-- 元の標準鎖一面は、元の平坦 tensor 次元移送と実分割 Serre 生成射を回収する。 -/
 lemma simplexSubsetLambdaSplit_flat_one_face (A : Type u) [CommRing A] :
@@ -44,8 +44,8 @@ lemma simplexSubsetLambdaSplit_flat_one_face (A : Type u) [CommRing A] :
         (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)
           (simplexSubsetEraseNormalizedCoordinate I hI j hj hjm hjM))).hom ≫
       (serreConcreteCubeComplexFunctor A).map
-        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
+        (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2 + 1))
           (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).inv ≫
         simplexSubsetLambdaCell A I hI =
     (serreConcreteCubeComplexFunctor A).map (concreteCubeDimensionIso

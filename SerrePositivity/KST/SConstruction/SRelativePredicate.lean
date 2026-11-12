@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.SClosedStableIso
 public import SerrePositivity.KST.SConstruction.RelativeCofiberModel
-public import SerrePositivity.InfinityCategories.Core.FullSubcomplexIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FullSubcomplexIso
 
 /-! # S/cofiber 交換による相対条件の照合
 概要：相対 E(A,C,B) の全 Ar 成分の条件を、S_n C 内の相対条件と照合する。

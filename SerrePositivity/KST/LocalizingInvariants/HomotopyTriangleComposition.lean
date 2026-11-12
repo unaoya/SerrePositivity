@@ -24,8 +24,8 @@ variable {A X : SSet.{u}} {F G H : A ⟶ X}
   (h₀ : (A ◁ stdSimplex.δ (0 : Fin 3)) ≫ T = Q.h)
   (h₁ : (A ◁ stdSimplex.δ (1 : Fin 3)) ≫ T = R.h)
 
-def composition : Truncated.Edge.CompStruct (functorEdgeOfSimplicialHomotopy P)
-    (functorEdgeOfSimplicialHomotopy Q) (functorEdgeOfSimplicialHomotopy R) where
+def composition : Truncated.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy P)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy Q) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy R) where
   simplex := SSet.yonedaEquiv (curry T)
   d₂ := by
     change ((ihom A).obj X).δ 2 (SSet.yonedaEquiv (curry T)) =
@@ -51,9 +51,9 @@ def composition : Truncated.Edge.CompStruct (functorEdgeOfSimplicialHomotopy P)
 
 include T h₂ h₀ h₁ in
 lemma homMk_comp : Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy P) ≫ Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy Q) =
-    Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy R) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy P) ≫ Truncated.HomotopyCategory.homMk
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy Q) =
+    Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy R) :=
   Truncated.HomotopyCategory.homMk_comp_homMk (composition P Q R T h₂ h₀ h₁)
 
 end SerrePositivity.KST.LocalizingInvariants.HomotopyTriangle

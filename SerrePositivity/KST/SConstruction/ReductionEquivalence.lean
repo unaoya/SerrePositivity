@@ -21,9 +21,9 @@ open scoped Simplicial
 /-- 概要：可縮 Kan 複体から終対象への射は trivial Kan fibration。
 方針：全境界を充填し、終対象の一意性で基底との可換性を得る。
 規約：終対象は cartesian tensor unit。使われ方：商の pushout cube の縦射。 -/
-lemma trivialKanFibration_toUnit_of_contractible {A : SSet.{u}} (hA : IsContractibleKan A) :
-    TrivialKanFibration (toUnit A) := by
-  apply (trivialKanFibration_iff_boundary _).2
+lemma trivialKanFibration_toUnit_of_contractible {A : SSet.{u}} (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan A) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (toUnit A) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro n
   constructor
   intro a b sq
@@ -55,7 +55,7 @@ lemma cofiberQuotient_image_isIso_of_localized_toPoint {D : Type v} [Category.{w
 規約：包含は単射、標的の Kan 性は不要。使われ方：零段を潰した実現との比較。 -/
 lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
     (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
-    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (hA : IsContractibleKan A) :
+    {A B : SSet.{u}} (i : A ⟶ B) [Mono i] (hA : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan A) :
     IsIso (L.map (PointedObject.cofiberQuotient i)) := by
   apply cofiberQuotient_image_isIso_of_localized_toPoint L hL i
   have := trivialKanFibration_toUnit_of_contractible hA
@@ -67,7 +67,7 @@ lemma cofiberQuotient_image_isIso_of_contractible {D : Type v} [Category.{w} D]
 規約：対角の Kan 性は不要。使われ方：従来の実現との自然な比較。 -/
 lemma diagonalReductionQuotient_image_isIso {D : Type v} [Category.{w} D]
     (L : SSet.{u} ⥤ D) (hL : anodyneExtensions.IsInvertedBy L)
-    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (hX : IsContractibleKan (X.obj (Opposite.op ⦋0⦌))) :
+    (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) (hX : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (X.obj (Opposite.op ⦋0⦌))) :
     IsIso (L.map (diagonalReductionQuotient X)) :=
   cofiberQuotient_image_isIso_of_contractible L hL (diagonalZeroColumn X) hX
 
