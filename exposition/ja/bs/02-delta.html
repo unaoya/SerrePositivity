@@ -623,12 +623,12 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </div>
 <div class="box lean">
 <p class="label">Lean</p>
-<p>本体にない。</p>
+<p>二つの例そのものは本体にない。証明で使う「p ねじれなしの環では、Frobenius 持ち上げ \(\psi\) ごとに \(\varphi=\psi\) となる δ 構造がただ一つある」は本体にある：存在と一意性 <code>existsUnique_of_frobeniusLift</code>（<a href="../../../SerrePositivity/BhattScholze/Delta/Basic/DeltaRing.lean">DeltaRing:463</a>）、一意性 <code>eq_of_frobeniusLift_eq</code>（:220）（命題 2.1.3 (2)）。</p>
 </div>
 <div class="box proof">
 <p class="label">証明</p>
 <p>どちらも \(\mathbb Z_p\) 上自由な加群なので p ねじれなしで、命題 2.1.3 (2) により、\(\psi(y)\equiv y^p\bmod p\) を満たす環自己準同型 \(\psi\) ごとに \(\varphi=\psi\) となる δ 構造がただ一つある（\(\mathbb Z_p\) 上ではどの環自己準同型も恒等写像）。(a) \(x\mapsto1\) は \(1^p=1\) なので環準同型で、\(A\) では \(x^p=1\) だから \(\varphi(x)\equiv x^p\)。\(A\subset\mathbb Q_p[x]/(x^p-1)\cong\mathbb Q_p\times\mathbb Q_p(\zeta_p)\) なので被約。(b) \(x\mapsto px\) は \((px)^2=0\) なので環準同型で、\(x^p=0\) かつ \(px\equiv0\bmod p\)。\(x\) は冪零で 0 でない。<br>
-原典は「ただ一つの δ 構造」と書くが、成り立つのは「この \(\varphi\) を持つ δ 構造はただ一つ」という意味で、Frobenius 持ち上げ自体の選び方は一般に一意でない。(b) では任意の \(c\in\mathbb Z_p\) について \(x\mapsto pcx\) も Frobenius 持ち上げ（\(c\ne0\) なら単射）。(a) は \(p\) が奇素数なら Frobenius 持ち上げが \(x\mapsto1\) だけだが（\(\varphi(x)\) は 1 の \(p\) 乗根で \(\equiv1\bmod p\)、\(\mathbb Z_p[\zeta_p]\) で \(\zeta_p^i-1\) の付値は \(1/(p-1)\lt1\)）、\(p=2\) では \(x\mapsto-1\) もそうである。</p>
+原典の「ただ一つ」の読み方（補った）。(b) は原典どおり「\(\varphi(x)=px\) となる δ 構造がただ一つ」で、上の一意性そのもの。Frobenius 持ち上げ自体は一つではなく、任意の \(c\in\mathbb Z_p\) について \(x\mapsto pcx\) も持ち上げ（\(c\ne0\) なら単射）。(a) は「\(A\) の δ 構造がただ一つ」と読めるが、それが正しいのは \(p\) が奇素数のとき：\(\varphi(x)\) は 1 の \(p\) 乗根で \(\equiv1\bmod p\) となるものに限られ、\(\mathbb Z_p[\zeta_p]\) で \(\zeta_p^i-1\) の付値は \(1/(p-1)\lt1\) なので \(\varphi(x)=1\) だけ。\(p=2\) では \(\varphi(x)=-1\) も持ち上げで、δ 構造は二つある（どちらも \(\varphi\) は単射でないので、例としての主張は変わらない）。</p>
 </div>
 
 <h4 class="item">注意 2.4.5（原典 Rem 2.30：導来 Frobenius 持ち上げとしての説明）</h4>
