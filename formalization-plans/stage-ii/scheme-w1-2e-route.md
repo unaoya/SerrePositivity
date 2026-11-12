@@ -2446,3 +2446,48 @@ Rees の射影と同じ核を使って非空交叉ごとの canonical な係数�
 | `reesAdicNativeClosedPushedComplexIso_projection` | 元の係数からの Rees の射影は、実際の切断を引き戻す Čech の射と一致する。 |
 
 段 2e の検証済み実測：**328 本・31,851 行**、入口を含め **32,185 行**。上限 50,000 行内。
+
+
+## 11-13 夜：停止点 2e（bf9767cdc）
+
+停止点の正式報告は [scheme-w1-2e-report.md](scheme-w1-2e-report.md)、全モジュールと宣言の一行ずつの一覧は [scheme-w1-2e-declarations.md](scheme-w1-2e-declarations.md)。最後の束は 8 本・37 宣言・703 行（入口込み 711 行）。対象と直接 importer は 4,542 jobs 成功、別実行の監査は 8,615 宣言・標準三公理のみ。累計 336 本・32,554 行（入口込み 32,896 行）。五つの比較、Čech 版の範囲、最終出力の型と宇宙は正式報告に記録した。夜の指示どおり、取り込みを待たず 2f F0〜F3 へ進む。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjAdicScheme` | Proj の指定した大域スカラーに沿う実際の I 進閉厚化。 |
+| `projectiveProjAdicProjection` | Proj の実際の閉厚化からの射。 |
+| `projectiveProjAdicCechComplex` | 実際の I 進閉厚化の逆像被覆の構造層の Čech 複体。 |
+| `projectiveProjAdicCechComplexIso` | Rees の商の Čech 複体と canonical な実際の閉厚化の Čech 複体の同型。 |
+| `projectiveProjAdicCechTransition` | 実際の厚化間のスキームの射が誘導する Čech の遷移。 |
+| `projectiveProjAdicCechHomology` | 実際の閉厚化の標準開被覆による Čech コホモロジー。 |
+| `projectiveProjAdicCechHomologyTransition` | 実際の厚化間の射が誘導する Čech コホモロジーの遷移。 |
+| `projectiveProjAdicCechHomologyProjection` | 元の構造層から実際の閉厚化への Čech コホモロジーの射影。 |
+| `projectiveProjSourceCechHomology` | 元の Proj の構造層の標準開 Čech コホモロジー。 |
+| `projectiveProjSourceCechHomologyIso` | 元の Proj の標準開被覆の Čech H と、次数零の計算の同型。 |
+| `projectiveProjAdicCechHomologyIso` | 実際の閉厚化の Čech H と、Rees の商による計算の同型。 |
+| `projectiveProjAdicCechHomologyIso_transition` | 閉厚化の Čech H の比較は I 進遷移と可換。 |
+| `projectiveProjAdicCechHomologyIso_projection` | 閉厚化の Čech H の比較は、元の構造層からの射影と可換。 |
+| `projectiveProjAdicCechFamilies` | 実際の閉厚化の Čech コホモロジーの互換族。 |
+| `projectiveProjAdicCechFamiliesEquiv` | Rees の商の互換族と、実際の閉厚化の Čech 互換族の線形同型。 |
+| `projectiveProjAdicCechProjection` | 元の Proj の構造層の Čech 複体から、実際の閉厚化への引き戻し。 |
+| `projectiveProjAdicCechProjection_transition` | 実際の閉厚化への射影は、厚化間の実際の Čech 遷移と可換。 |
+| `projectiveProjAdicCechComplexIso_projection` | Rees の射影を実際の閉厚化へ移す複体の比較は、元の射影と可換。 |
+| `projectiveProjAdicCechComplexIso_transition` | Rees の商と実際の閉厚化の Čech 複体の比較は、I 進遷移に自然。 |
+| `projectiveProjCechFormalFunctions` | 実際の Proj と閉厚化の構造層に対する Čech 版の形式関数の同型。 |
+| `projectiveProjCechFormalFunctions_of_apply` | Čech 形式関数の同型は、元の切断のコホモロジーを実際の閉厚化へ制限する。 |
+| `reesAdicNativeClosedCechComplexIso_projection` | Rees の射影と、実際の閉厚化への構造層の Čech の引き戻しとの一致。 |
+| `reesAdicNativeClosedCechComplexIso_projection_refined` | 実際の引き戻しを恒等添字の細分として書いても、Rees の射影と一致する。 |
+| `schemeAdicBaseChange` | 実際の Iⁿ による閉厚化。 |
+| `schemeAdicBaseChangeProjection` | 閉厚化から元のスキームへの射。 |
+| `schemeAdicBaseChangeStructure` | 閉厚化の商環上の構造射。 |
+| `schemeAdicBaseChange_isPullback` | 定義した閉厚化は、実際に元の構造射の底変換。 |
+| `schemeAdicBaseChangeTransition` | 小さい指数の閉厚化から大きい指数の閉厚化への canonical な射。 |
+| `schemeAdicBaseChangeTransition_projection` | 閉厚化の遷移は、元のスキームへの射と可換。 |
+| `schemeAdicBaseChangeTransition_structure` | 閉厚化の遷移は、基底の商環の射とも可換。 |
+| `schemeAdicBaseChangeTransition_self` | 同じ指数の閉厚化の遷移は恒等射。 |
+| `schemeAdicBaseChangeTransition_comp` | 閉厚化の遷移を二度合成すると、直接の遷移になる。 |
+| `schemeStructureAffineCechPullback_comparison_naturality` | アフィン射の実際の引き戻しは、共通アフィン細分による Čech H の比較と可換。 |
+| `schemeStructureCechPullbackMap_eq_refined` | 同じ逆像被覆への恒等細分を合成しても、実際の引き戻しは変わらない。 |
+| `schemeStructureCechRefinedPullbackMap_comp` | 同じ添字で細分した、構造層の実際の引き戻しはスキームの射の合成と可換。 |
+| `schemeStructureCechPullbackScalar_comp` | 共通の元のスカラーを合成して引き戻すと、各段で引き戻したスカラーの合成になる。 |
+| `schemeStructureCechPreimage_refinement` | 共通の射への可換な三角形は、逆像被覆の細分を与える。 |
