@@ -5597,3 +5597,50 @@ RelativeComplexSpectrum は［一般∞］の移動候補。
 対象ビルド `cyclic-positive-spectrum-02.log` 成功、最終版の警告なし。
 `audit-cyclic-positive.log`：**162 モジュール・1,242 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 91. D79(iii)：orbit の実解像度・指定評価・有限支持
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| CyclicOrbitModel | 52 |
+| CyclicOrbitCoordinateSign | 31 |
+| RegularOrbitCoordinates | 68 |
+| RegularOrbitNaturality | 62 |
+| RegularOrbitDifferential | 55 |
+| CyclicPositiveFiniteCoordinates | 79 |
+| CyclicOrbitResolutionCoordinates | 52 |
+| CofanZeroSupport | 49 |
+
+追加 **448 行**、(iii) **2,541 行**、(ii)+(iii) **9,735 行**。
+
+### 91.1 同じ鎖模型の比較の現在地
+
+逆生成元による Mathlib の実射影解像度を負の余鎖次数へ零延長し、
+元のテンソル余不変関手による直和全複体を固定した。
+同じ項の同型と同じ指定微分（鎖次数が偶数ならノルム、奇数なら逆生成元の差）を照合した。
+
+Hom 側の左正則評価は係数の元の生成元を使い、
+orbit 側の評価は逆元を含む。実余不変射の上でこの差とノルムを証明したので、
+逆生成元の選択が同じ係数微分を与えることを確認できる。
+係数の全射への自然性も、指定された元の射で証明している。
+
+正の Hom の各次数は、同じ切り詰めの項の同型と左正則評価により
+有限な積へ実線形同値で移る。この同値は共通上界を持つ係数射に自然。
+直和全複体の符号との比較用に ε_s = (-1)^{binom(s,2)} と隣接次数の比を固定した。
+CofanZeroSupport は［一般圏］基盤への移動候補。
+
+**正の Hom と実 orbit 全複体の鎖同型、native orbit/Tate との比較、
+T_p の延長、スペクトル的な右 k 作用、P⁰ の全自然変換は未完了**。
+いまは零支持を除いた指定余積の同型と、同じ有限対角線の比較を続けている。
+現時点で 29,000 行の停止基準を超える見込みはない。
+
+### 91.2 検証
+
+`cyclic-orbit-model-01.log`、`regular-orbit-coordinates-02.log`、
+`regular-orbit-naturality-03.log`、`cyclic-orbit-coordinates-01.log`（RegularOrbitDifferential）、
+`cyclic-orbit-coordinates-03.log`（CyclicPositiveFiniteCoordinates）、
+`cofan-zero-support-01.log`（CyclicOrbitResolutionCoordinates）、
+`cofan-zero-support-03.log`：対象成功、最終版の警告なし。
+`audit-orbit-coordinates.log`：**170 モジュール・1,307 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
