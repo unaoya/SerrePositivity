@@ -5644,3 +5644,42 @@ T_p の延長、スペクトル的な右 k 作用、P⁰ の全自然変換は�
 `cofan-zero-support-03.log`：対象成功、最終版の警告なし。
 `audit-orbit-coordinates.log`：**170 モジュール・1,307 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 92. D79(iii)：同じ orbit 全複体の有限座標と符号付き次数同型
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| CoproductZeroSupport | 46 |
+| CyclicOrbitDiagonal | 67 |
+| CyclicOrbitFiniteSum | 42 |
+| CyclicOrbitFiniteCoordinates | 55 |
+| CyclicPositiveOrbitDegreeIso | 56 |
+| CyclicPositiveDifferentialCoordinates | 86 |
+
+追加 **352 行**、(iii) **2,893 行**、(ii)+(iii) **10,087 行**。
+
+### 92.1 実装した同型と残る可換性
+
+`cyclicOrbitTotalDegreeSupportIso` は元の直和全複体の同じ次数の項に対し、
+零の成分を除く指定余積の同型。支持する対角線を 0 ≤ s ≤ d−n に取り直し、
+同じ正則余不変の評価を使って有限な積への `cyclicOrbitTotalDegreeCoordinatesIso` を得た。
+CoproductZeroSupport は［一般圏］基盤への移動候補。
+
+`cyclicPositiveOrbitDegreeIso` は、正の Hom の有限座標と
+ε_s = (-1)^{binom(s,2)} の符号を合成した、**同じ次数の実加群同型**。
+微分との可換性を仮定に入れて組み立てたものではなく、
+**まだ鎖同型とも native orbit 比較とも主張していない**。
+
+Hom 側では、元の切り詰めの包含の可換性から `cyclicPositiveResolution_inv_d` を示した。
+`cyclicPositiveHomCoordinate_delta` は元の Hom 微分の一座標が、
+係数微分と (-1)^{n+1} を掛けた同じ周期係数微分との和であるという等式。
+次は元の orbit 全複体の指定包含射の座標をそろえ、同じ微分との可換性を閉じる。
+
+### 92.2 検証
+
+`cyclic-orbit-diagonal-02.log`、`cyclic-orbit-finite-coordinates-01.log`、
+`cyclic-positive-orbit-degree-02.log`、`cyclic-positive-differential-03.log`：対象成功。
+六本の最終版に警告なし。
+`audit-orbit-finite.log`：**176 モジュール・1,378 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
