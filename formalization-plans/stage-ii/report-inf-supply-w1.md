@@ -756,3 +756,57 @@ main `30ea26711` を取り込み、①に着手。②の宣言は変更してい
 - `weightedConeSimplex_base`：添字の関手で射列を写した cone simplex は、制限した図式の元の simplex と一致する。
 - `weightedCosliceSimplex_base`：元の左 coslice の単体は、添字を制限しても同じ単体である。
 - `weightedCosliceComparison_base`：元の左 coslice 比較の全写像は、weighted nerve の添字制限と厳密に可換である。
+
+
+## 16. 夜の再開：G14 の再見積もり（11-12夜、停止点3ではない）
+
+main `de2dd0a53` を取り込んだ。段2は main に含まれる。夜の指示に従い段3へ着手した。
+新規 `ReflectedRepresentableGenerators.lean` に、小さい底 A の頂点を添字とする
+`reflectedRepresentable L y := L(y(y))`、指定された adjunct 比較、同値性、
+任意の Ho(E) の射への全族自然性を記述した。ビルド・監査結果は次の追記で確定する。
+
+### 上限の見直し
+
+G14 の結論の型・範囲は変えない。元の `yonedaPresheafEvaluation` の順射は
+(1) pinched mapping → 大きい相対写像空間、(2) 小さい相対表示への移送、
+(3) 表現可能 coslice の恒等錐での相対評価、(4) lifted fiber と元の値との比較、の合成。
+対象ごとの同値性は既存だが、この合成全体について、同じ Ho の射の後合成と
+`presheafInfinityEvaluation` の射の対応を渡す定理はまだない。
+`RightFibrationYonedaNaturality` は slice の評価の底上の射への自然性であり、
+この pinched Hom からの合成全体の標的自然性の代用にはならない。
+
+段2の実測（区間模型・相対自然性・小さい表示への接続で約1,400行）を踏まえた保守的な再見積もり：
+
+| 残る接続 | 見込み行数 |
+| --- | ---: |
+| 元の変換辺の後合成と unstraightening の相対後合成（全族） | 450〜700 |
+| 縮小・相対恒等点評価・lifted fiber の標的自然性の合成 | 450〜700 |
+| 随伴と Yoneda の同じ比較射への接続・Ho と ULift の照合 | 250〜400 |
+| 前層の各点可逆性、充満忠実な右随伴の反映、存在の結論 | 300〜450 |
+| 最初の族と検証時の接続修正 | 100〜200 |
+| 合計 | **1,550〜2,450** |
+
+これは必要行数の下界ではなく、短い既存 API が見つからない現時点の実装予測。
+上端が段3の上限1,800行を超えるため、上限超過が見込まれる条件に当たると判断する。
+型を弱めたり自然性を仮定した検出族を結論にしたりはしない。
+検証済みの最初の部品を保存した後、この線の Lean を止め、夜の代替作業 A-1 段0に移る。
+G9・3b-3の実装にはまだ進んでいない。3b-3については IS-W2 §0・§3・§8・§10 と
+③-b報告§21.3・§21.4を確認済み。見込み4,850〜7,150行のうち、全パラメータ・同じ指定余錐の族
+450〜750行は3b-1からの移管分であり、対象ごとの比較だけで完了とはしない。
+
+
+### 検証済みの保存と代替作業の結果
+
+- `52aec0a75`：`ReflectedRepresentableGenerators.lean`、新規1本・58行・4宣言。
+  `reflectedRepresentable` は元の小さい頂点型を添字とする族、
+  `reflectedRepresentableMapping` は同じ随伴の指定比較、
+  `reflectedRepresentableMapping_isQCatEquivalence` はその全写像空間の同値性、
+  `reflectedRepresentableMapping_naturality` は任意のHo(E)の射への全族自然性。
+- 対象ビルド成功（5,870 jobs、`/tmp/is-w1/stage3-build-1.log`）。
+  追加4宣言の監査成功（`/tmp/is-w1/stage3-audit.lean`、`stage3-audit.log`）。
+  全4宣言sorry-free、標準三公理のみ。鍵を解放済み。
+- 未検証のLean下書きは残していない。G14の結論・G9・3b-3は未完成。
+- 夜の指示の代替作業として、[A-1段0](report-bs-infinity-a1-stage0.md)を作成。
+  S1〜S8の型案、本体の再利用、不足、規模、draftsの注意点、配置と順序を整理した。
+  特にCAlg忘却の層化単位の比較と、大きいsiteの小ささの境界は判断点として記録。
+  draftsの型や範囲は変更していない。
