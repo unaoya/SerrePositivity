@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawBoundaryReflection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexPointedLongEndpointEquality
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の四因子境界式との整合を、同じ全 pointed 族の実終点と実長辺の値で判定する。

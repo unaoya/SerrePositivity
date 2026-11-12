@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanModelNativeEquivalence
-public import SerrePositivity.InfinityCategories.F1.Universe.Reflection
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.Reflection
 
 /-!
 概要：各点の元の coherent な錐の極限性から、元の小さい実模型 fiber 比較の同値性を証明。

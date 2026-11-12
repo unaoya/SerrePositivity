@@ -21,7 +21,7 @@ def presentedPerfectDGKanAssemblyLeftTargetFunctor (r : ℕ) :
     EnrichedFunctor SSet.{max (u + 1) v} (PerfDGInput.{u, v} A)
       PointedSSetObject.{max (u + 1) v} :=
   (presentedPerfectDGBoundaryPointedEnrichedFunctor A r).comp SSet
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
 
 /-- 元の Kan S₁ 比較の同じ suspension による、実際の前向き左脚。 -/
 def presentedPerfectDGKanAssemblyLeftMap (r : ℕ) (C : PerfDGInput.{u, v} A) :
@@ -34,8 +34,8 @@ def presentedPerfectDGKanAssemblyLeftTransformation (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{max (u + 1) v}))
       (presentedPerfectDGKanAssemblySourceFunctor A r)
       (presentedPerfectDGKanAssemblyLeftTargetFunctor A r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit)
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose _ _
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit)
     (presentedPerfectDGOneDirectionPointedComparison A r)
 
 /-- 厳密自然変換の成分は、元の同じ Kan 比較の suspension そのもの。 -/

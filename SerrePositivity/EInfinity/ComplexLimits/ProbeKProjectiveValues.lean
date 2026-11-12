@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedSource
 public import SerrePositivity.EInfinity.ComplexLimits.CofibrantKProjective
 public import SerrePositivity.EInfinity.ComplexLimits.FramedLimitProbeFunctor
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionValue
-public import SerrePositivity.InfinityCategories.Derived.SemifreeKProjective
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.SemifreeKProjective
 
 /-!
 # 同じ probe と半自由標的の K-projective な値
@@ -38,6 +38,6 @@ def framedLimitKProjectiveProbe (X : Complex A) : KProjectiveComplex A := by
 
 def semifreeKProjectiveTarget (Y : Complex A) : KProjectiveComplex A :=
   ⟨(complexSemifreeResolutionValue A Y).val,
-    complexSemifree_isKProjective A (complexSemifreeResolutionValue A Y).property⟩
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexSemifree_isKProjective A (complexSemifreeResolutionValue A Y).property⟩
 
 end SerrePositivity.EInfinity.ComplexLimits

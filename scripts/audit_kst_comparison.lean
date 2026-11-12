@@ -725,14 +725,14 @@ run_cmd do
 
 -- CutDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainCutDegeneracy_singleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainCutDegeneracy_singleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCutDegeneracy_singleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCutDegeneracy_singleton
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_castSucc_iff
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_castSucc_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_castSucc_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_castSucc_iff
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_succ_iff
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_succ_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_succ_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_succ_iff
 
 
 -- CylinderBoundary.lean
@@ -800,17 +800,17 @@ run_cmd do
 
 -- DegeneracyFibers.lean
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_val
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_val
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_val
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_val
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_next_fiber
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_next_fiber
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_next_fiber
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_next_fiber
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_self_fiber
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_self_fiber
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_self_fiber
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_self_fiber
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_castSucc
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_castSucc
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_castSucc
 
 
 -- DiagonalRowDesc.lean
@@ -941,26 +941,26 @@ run_cmd do
 
 -- DoubleMappingCylinder.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.cylinderEndpoints
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.cylinderEndpoints
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_middle
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_right
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_zero
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_one
+#check @_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_one
+#print axioms _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_one
 
 
 -- DoubleMappingCylinderCollapse.lean
@@ -986,20 +986,20 @@ run_cmd do
 
 -- DoubleMappingCylinderDesc.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderDesc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderDesc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderDesc.doubleMappingCylinder_hom_ext
 
 
 -- DoubleMappingCylinderEquivalence.lean
@@ -1013,173 +1013,173 @@ run_cmd do
 
 -- DoubleMappingCylinderMap.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_middle_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_middle_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_left_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_right_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinder_right_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DoubleMappingCylinderMap.doubleMappingCylinder_hom_ext
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_id
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_id
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_id
 
-#check @_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinderMap_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.doubleMappingCylinderMap_comp
 
 
 -- DoubleSubdivisionAdjunction.lean
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_naturality_left
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_naturality_left
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_naturality_left
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_naturality_left
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_lastVertex
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHomEquiv_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHomEquiv_lastVertex
 
 
 -- DoubleSubdivisionHornBoundary.lean
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_boundary
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_boundary
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_boundary
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_boundary
 
 
 -- DoubleSubdivisionHornMap.lean
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap
 
-#check @SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_ι
-#print axioms SerrePositivity.KST.Comparison.doubleSubdivisionHornMap_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_ι
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.doubleSubdivisionHornMap_ι
 
 
 -- ExComplexity.lean
 
-#check @SerrePositivity.KST.Comparison.exComplexity
-#print axioms SerrePositivity.KST.Comparison.exComplexity
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity
 
-#check @SerrePositivity.KST.Comparison.exComplexity_mono
-#print axioms SerrePositivity.KST.Comparison.exComplexity_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_mono
 
-#check @SerrePositivity.KST.Comparison.exComplexity_last
-#print axioms SerrePositivity.KST.Comparison.exComplexity_last
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_last
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_last
 
-#check @SerrePositivity.KST.Comparison.exComplexity_zero
-#print axioms SerrePositivity.KST.Comparison.exComplexity_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_zero
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_zero
 
-#check @SerrePositivity.KST.Comparison.exComplexityLevel
-#print axioms SerrePositivity.KST.Comparison.exComplexityLevel
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel
 
-#check @SerrePositivity.KST.Comparison.exComplexityLevel_mem
-#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_mem
 
-#check @SerrePositivity.KST.Comparison.exComplexityLevel_le_iff
-#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_le_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_le_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_le_iff
 
-#check @SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff
-#print axioms SerrePositivity.KST.Comparison.exComplexityLevel_zero_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_zero_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexityLevel_zero_iff
 
 
 -- ExDegeneracyExpansion.lean
 
-#check @SerrePositivity.KST.Comparison.exComplexity_front_face
-#print axioms SerrePositivity.KST.Comparison.exComplexity_front_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_front_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_front_face
 
-#check @SerrePositivity.KST.Comparison.exExpansion_front_degeneracy
-#print axioms SerrePositivity.KST.Comparison.exExpansion_front_degeneracy
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_degeneracy
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_degeneracy
 
-#check @SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
-#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_degeneracy
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_degeneracy
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_degeneracy
 
 
 -- ExDoubleHornFiller.lean
 
-#check @SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller
-#print axioms SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller
 
-#check @SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary
-#print axioms SerrePositivity.KST.Comparison.exDoubleUniversalHornFiller_boundary
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller_boundary
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleUniversalHornFiller_boundary
 
-#check @SerrePositivity.KST.Comparison.exDoubleHornFiller
-#print axioms SerrePositivity.KST.Comparison.exDoubleHornFiller
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller
 
-#check @SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary
-#print axioms SerrePositivity.KST.Comparison.exDoubleHornFiller_boundary
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller_boundary
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exDoubleHornFiller_boundary
 
 
 -- ExDoublePairing.lean
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_double
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_double
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_double_degenerate
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_double_degenerate
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double_degenerate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_double_degenerate
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_notMem_range_of_nonDegenerate
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_notMem_range_of_nonDegenerate
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_notMem_range_of_nonDegenerate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_notMem_range_of_nonDegenerate
 
 
 -- ExExpansionFaces.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion_front_complexity
-#print axioms SerrePositivity.KST.Comparison.exExpansion_front_complexity
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_complexity
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_complexity
 
-#check @SerrePositivity.KST.Comparison.exExpansion_rear_face
-#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_face
 
 
 -- ExExpansionSmallComplexity.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion_eq_degeneracy_of_complexity_lt
-#print axioms SerrePositivity.KST.Comparison.exExpansion_eq_degeneracy_of_complexity_lt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_eq_degeneracy_of_complexity_lt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_eq_degeneracy_of_complexity_lt
 
-#check @SerrePositivity.KST.Comparison.exExpansion_degenerate_of_complexity_lt
-#print axioms SerrePositivity.KST.Comparison.exExpansion_degenerate_of_complexity_lt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_degenerate_of_complexity_lt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_degenerate_of_complexity_lt
 
 
 -- ExInfinity.lean
 
-#check @SerrePositivity.KST.Comparison.exIterate
-#print axioms SerrePositivity.KST.Comparison.exIterate
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate
 
-#check @SerrePositivity.KST.Comparison.exIterate_preservesFiniteLimits
-#print axioms SerrePositivity.KST.Comparison.exIterate_preservesFiniteLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_preservesFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_preservesFiniteLimits
 
-#check @SerrePositivity.KST.Comparison.exSequence
-#print axioms SerrePositivity.KST.Comparison.exSequence
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence
 
-#check @SerrePositivity.KST.Comparison.exSequence_flip_preservesFiniteLimits
-#print axioms SerrePositivity.KST.Comparison.exSequence_flip_preservesFiniteLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence_flip_preservesFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exSequence_flip_preservesFiniteLimits
 
-#check @SerrePositivity.KST.Comparison.exInfinity
-#print axioms SerrePositivity.KST.Comparison.exInfinity
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity
 
-#check @SerrePositivity.KST.Comparison.exInfinity_preservesFiniteLimits
-#print axioms SerrePositivity.KST.Comparison.exInfinity_preservesFiniteLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesFiniteLimits
 
-#check @SerrePositivity.KST.Comparison.exInfinityStage
-#print axioms SerrePositivity.KST.Comparison.exInfinityStage
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage
 
-#check @SerrePositivity.KST.Comparison.exInfinityUnit
-#print axioms SerrePositivity.KST.Comparison.exInfinityUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
 
 
 -- ExInfinityAnodyne.lean
 
-#check @SerrePositivity.KST.Comparison.exInfinityAnodyneSequence
-#print axioms SerrePositivity.KST.Comparison.exInfinityAnodyneSequence
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityAnodyneSequence
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityAnodyneSequence
 
-#check @SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
-#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_anodyne
 
 
 -- ExInfinityBar.lean
@@ -1190,11 +1190,11 @@ run_cmd do
 
 -- ExInfinityFibrations.lean
 
-#check @SerrePositivity.KST.Comparison.exIterate_map_rlp
-#print axioms SerrePositivity.KST.Comparison.exIterate_map_rlp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_map_rlp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exIterate_map_rlp
 
-#check @SerrePositivity.KST.Comparison.exInfinity_map_rlp
-#print axioms SerrePositivity.KST.Comparison.exInfinity_map_rlp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_rlp
 
 
 -- ExInfinityGrouplike.lean
@@ -1214,50 +1214,50 @@ run_cmd do
 
 -- ExInfinityKan.lean
 
-#check @SerrePositivity.KST.Comparison.exInfinity_hornFilling
-#print axioms SerrePositivity.KST.Comparison.exInfinity_hornFilling
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_hornFilling
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_hornFilling
 
-#check @SerrePositivity.KST.Comparison.exInfinity_kanComplex
-#print axioms SerrePositivity.KST.Comparison.exInfinity_kanComplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex
 
 
 -- ExInfinityLocalization.lean
 
-#check @SerrePositivity.KST.Comparison.exInfinity_preservesMonomorphisms
-#print axioms SerrePositivity.KST.Comparison.exInfinity_preservesMonomorphisms
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesMonomorphisms
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_preservesMonomorphisms
 
-#check @SerrePositivity.KST.Comparison.exInfinityUnit_localized_isIso
-#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_localized_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_localized_isIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_localized_isIso
 
-#check @SerrePositivity.KST.Comparison.exInfinityLocalizedUnitIso
-#print axioms SerrePositivity.KST.Comparison.exInfinityLocalizedUnitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityLocalizedUnitIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityLocalizedUnitIso
 
-#check @SerrePositivity.KST.Comparison.exInfinity_map_localized_isIso_iff
-#print axioms SerrePositivity.KST.Comparison.exInfinity_map_localized_isIso_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff
 
 
 -- ExInfinityMonoidal.lean
 
-#check @SerrePositivity.KST.Comparison.exInfinity_monoidal
-#print axioms SerrePositivity.KST.Comparison.exInfinity_monoidal
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_monoidal
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_monoidal
 
-#check @SerrePositivity.KST.Comparison.exInfinityUnit_isMonoidal
-#print axioms SerrePositivity.KST.Comparison.exInfinityUnit_isMonoidal
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_isMonoidal
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit_isMonoidal
 
-#check @SerrePositivity.KST.Comparison.exInfinityMonoidFunctor
-#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidFunctor
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidFunctor
 
-#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit
-#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit
 
-#check @SerrePositivity.KST.Comparison.exInfinityMonoid_kanComplex
-#print axioms SerrePositivity.KST.Comparison.exInfinityMonoid_kanComplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoid_kanComplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoid_kanComplex
 
-#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit_hom
-#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit_hom
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_hom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_hom
 
-#check @SerrePositivity.KST.Comparison.exInfinityMonoidUnit_localized_isIso
-#print axioms SerrePositivity.KST.Comparison.exInfinityMonoidUnit_localized_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_localized_isIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityMonoidUnit_localized_isIso
 
 
 -- ExInfinitySimplicialMonoid.lean
@@ -1286,173 +1286,173 @@ run_cmd do
 
 -- ExInfinityStages.lean
 
-#check @SerrePositivity.KST.Comparison.exInfinity_finite_factorization
-#print axioms SerrePositivity.KST.Comparison.exInfinity_finite_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_finite_factorization
 
-#check @SerrePositivity.KST.Comparison.exInfinityStage_succ
-#print axioms SerrePositivity.KST.Comparison.exInfinityStage_succ
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage_succ
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityStage_succ
 
 
 -- ExPairingBijection.lean
 
-#check @SerrePositivity.KST.Comparison.exTypeOne
-#print axioms SerrePositivity.KST.Comparison.exTypeOne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeOne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeOne
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_mem_typeOne
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_typeOne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeOne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeOne
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_mem_typeTwo_of_typeOne
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_typeTwo_of_typeOne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeTwo_of_typeOne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_typeTwo_of_typeOne
 
-#check @SerrePositivity.KST.Comparison.exPairingEquiv
-#print axioms SerrePositivity.KST.Comparison.exPairingEquiv
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv
 
-#check @SerrePositivity.KST.Comparison.exPairingEquiv_apply
-#print axioms SerrePositivity.KST.Comparison.exPairingEquiv_apply
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv_apply
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingEquiv_apply
 
 
 -- ExPairingCore.lean
 
-#check @SerrePositivity.KST.Comparison.exPairingCore
-#print axioms SerrePositivity.KST.Comparison.exPairingCore
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore
 
-#check @SerrePositivity.KST.Comparison.exPairingCore_isProper
-#print axioms SerrePositivity.KST.Comparison.exPairingCore_isProper
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isProper
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isProper
 
-#check @SerrePositivity.KST.Comparison.exPairing
-#print axioms SerrePositivity.KST.Comparison.exPairing
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing
 
 
 -- ExPairingFaceRank.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion_notMem_typeTwo
-#print axioms SerrePositivity.KST.Comparison.exExpansion_notMem_typeTwo
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_notMem_typeTwo
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_notMem_typeTwo
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt_succ
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt_succ
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt_succ
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt_succ
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_rank_lt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_rank_lt
 
 
 -- ExPairingFaceUniqueness.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion_front_ne_source
-#print axioms SerrePositivity.KST.Comparison.exExpansion_front_ne_source
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_ne_source
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_front_ne_source
 
-#check @SerrePositivity.KST.Comparison.exExpansion_rear_ne_source
-#print axioms SerrePositivity.KST.Comparison.exExpansion_rear_ne_source
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_ne_source
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_rear_ne_source
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_face_unique_succ
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_unique_succ
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique_succ
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique_succ
 
 
 -- ExPairingNondegenerate.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion_mem_degenerate
-#print axioms SerrePositivity.KST.Comparison.exExpansion_mem_degenerate
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_mem_degenerate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_mem_degenerate
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_mem_degenerate
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_degenerate
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_degenerate
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_degenerate
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_source
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_source
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_source
 
 
 -- ExPairingProperness.lean
 
-#check @SerrePositivity.KST.Comparison.exPairingImage
-#print axioms SerrePositivity.KST.Comparison.exPairingImage
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingImage
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingImage
 
-#check @SerrePositivity.KST.Comparison.exTypeTwo
-#print axioms SerrePositivity.KST.Comparison.exTypeTwo
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeTwo
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exTypeTwo
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_face_unique
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_face_unique
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_face_unique
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_target
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_nonDegenerate_target
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_target
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_nonDegenerate_target
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_isUniquelyCodimOneFace
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_isUniquelyCodimOneFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_isUniquelyCodimOneFace
 
 
 -- ExPairingRegular.lean
 
-#check @SerrePositivity.KST.Comparison.exPairingWeakRank
-#print axioms SerrePositivity.KST.Comparison.exPairingWeakRank
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingWeakRank
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingWeakRank
 
-#check @SerrePositivity.KST.Comparison.exPairingCore_isRegular
-#print axioms SerrePositivity.KST.Comparison.exPairingCore_isRegular
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isRegular
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingCore_isRegular
 
-#check @SerrePositivity.KST.Comparison.exPairing_isRegular
-#print axioms SerrePositivity.KST.Comparison.exPairing_isRegular
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing_isRegular
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairing_isRegular
 
 
 -- ExPairingStep.lean
 
-#check @SerrePositivity.KST.Comparison.exExpansion
-#print axioms SerrePositivity.KST.Comparison.exExpansion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion
 
-#check @SerrePositivity.KST.Comparison.exExpansion_face
-#print axioms SerrePositivity.KST.Comparison.exExpansion_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_face
 
-#check @SerrePositivity.KST.Comparison.exExpansion_complexity
-#print axioms SerrePositivity.KST.Comparison.exExpansion_complexity
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_complexity
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exExpansion_complexity
 
-#check @SerrePositivity.KST.Comparison.exComplexity_face
-#print axioms SerrePositivity.KST.Comparison.exComplexity_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exComplexity_face
 
-#check @SerrePositivity.KST.Comparison.exPairingStep
-#print axioms SerrePositivity.KST.Comparison.exPairingStep
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_injective
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_injective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_injective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_injective
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_complexity_iff
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_complexity_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexity_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexity_iff
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_complexityLevel
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_complexityLevel
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexityLevel
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_complexityLevel
 
-#check @SerrePositivity.KST.Comparison.exPairingStep_mem_image_iff
-#print axioms SerrePositivity.KST.Comparison.exPairingStep_mem_image_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_image_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exPairingStep_mem_image_iff
 
 
 -- ExUnit.lean
 
-#check @SerrePositivity.KST.Comparison.exUnitAt
-#print axioms SerrePositivity.KST.Comparison.exUnitAt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt
 
-#check @SerrePositivity.KST.Comparison.exUnitAt_naturality
-#print axioms SerrePositivity.KST.Comparison.exUnitAt_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_naturality
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_naturality
 
-#check @SerrePositivity.KST.Comparison.exUnit
-#print axioms SerrePositivity.KST.Comparison.exUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnit
 
-#check @SerrePositivity.KST.Comparison.exUnitAt_mono
-#print axioms SerrePositivity.KST.Comparison.exUnitAt_mono
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_mono
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_mono
 
 
 -- ExUnitAnodyne.lean
 
-#check @SerrePositivity.KST.Comparison.exUnitRange_anodyne
-#print axioms SerrePositivity.KST.Comparison.exUnitRange_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitRange_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitRange_anodyne
 
-#check @SerrePositivity.KST.Comparison.exUnitAt_anodyne
-#print axioms SerrePositivity.KST.Comparison.exUnitAt_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exUnitAt_anodyne
 
 
 -- FaceIntervals.lean
 
-#check @SerrePositivity.KST.Comparison.liftedFace_injective
-#print axioms SerrePositivity.KST.Comparison.liftedFace_injective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_injective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_injective
 
-#check @SerrePositivity.KST.Comparison.liftedFace_of_below
-#print axioms SerrePositivity.KST.Comparison.liftedFace_of_below
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_of_below
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_of_below
 
-#check @SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
-#print axioms SerrePositivity.KST.Comparison.liftedFace_initialSegment_of_below
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_initialSegment_of_below
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_initialSegment_of_below
 
 
 -- FatAttachmentSpan.lean
@@ -1985,62 +1985,62 @@ run_cmd do
 
 -- FiniteChainGreatest.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChain_exists_greatest
-#print axioms SerrePositivity.KST.Comparison.finiteChain_exists_greatest
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_exists_greatest
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_exists_greatest
 
-#check @SerrePositivity.KST.Comparison.finiteChainGreatest
-#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest
 
-#check @SerrePositivity.KST.Comparison.finiteChainGreatest_mem
-#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_mem
 
-#check @SerrePositivity.KST.Comparison.le_finiteChainGreatest
-#print axioms SerrePositivity.KST.Comparison.le_finiteChainGreatest
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.le_finiteChainGreatest
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.le_finiteChainGreatest
 
-#check @SerrePositivity.KST.Comparison.finiteChainGreatest_map
-#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_map
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_map
 
-#check @SerrePositivity.KST.Comparison.finiteChainGreatest_eq_maximum
-#print axioms SerrePositivity.KST.Comparison.finiteChainGreatest_eq_maximum
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_eq_maximum
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainGreatest_eq_maximum
 
 
 -- FiniteChainIntervals.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainMaximum_singleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainMaximum_singleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_singleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_singleton
 
-#check @SerrePositivity.KST.Comparison.finiteChainMap_singleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainMap_singleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_singleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_singleton
 
-#check @SerrePositivity.KST.Comparison.finiteChainInitialSegment_le_iff
-#print axioms SerrePositivity.KST.Comparison.finiteChainInitialSegment_le_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_le_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_le_iff
 
-#check @SerrePositivity.KST.Comparison.finiteChainInitialSegment_map
-#print axioms SerrePositivity.KST.Comparison.finiteChainInitialSegment_map
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment_map
 
 
 -- FiniteChainUnion.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainOfFinset
-#print axioms SerrePositivity.KST.Comparison.finiteChainOfFinset
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainOfFinset
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainOfFinset
 
-#check @SerrePositivity.KST.Comparison.finiteChainSingleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainSingleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainSingleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainSingleton
 
-#check @SerrePositivity.KST.Comparison.finiteChainUnion
-#print axioms SerrePositivity.KST.Comparison.finiteChainUnion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion
 
-#check @SerrePositivity.KST.Comparison.PreservesFiniteChainUnion
-#print axioms SerrePositivity.KST.Comparison.PreservesFiniteChainUnion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion
 
-#check @SerrePositivity.KST.Comparison.finiteChainUnion_ext
-#print axioms SerrePositivity.KST.Comparison.finiteChainUnion_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion_ext
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainUnion_ext
 
-#check @SerrePositivity.KST.Comparison.PreservesFiniteChainUnion.comp
-#print axioms SerrePositivity.KST.Comparison.PreservesFiniteChainUnion.comp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion.comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.PreservesFiniteChainUnion.comp
 
-#check @SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
-#print axioms SerrePositivity.KST.Comparison.finiteChainMap_preservesUnion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_preservesUnion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_preservesUnion
 
 
 -- FiniteCoverInduction.lean
@@ -2945,50 +2945,50 @@ run_cmd do
 
 -- HornChainBoundary.lean
 
-#check @SerrePositivity.KST.Comparison.hornChainVertex_map_hornFaces
-#print axioms SerrePositivity.KST.Comparison.hornChainVertex_map_hornFaces
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_map_hornFaces
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_map_hornFaces
 
-#check @SerrePositivity.KST.Comparison.hornChainToHorn_boundary
-#print axioms SerrePositivity.KST.Comparison.hornChainToHorn_boundary
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn_boundary
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn_boundary
 
 
 -- HornChainMissingVertex.lean
 
-#check @SerrePositivity.KST.Comparison.hornChainVertex_common_missing
-#print axioms SerrePositivity.KST.Comparison.hornChainVertex_common_missing
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_common_missing
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_common_missing
 
 
 -- HornChainNerve.lean
 
-#check @SerrePositivity.KST.Comparison.hornChainToSimplex
-#print axioms SerrePositivity.KST.Comparison.hornChainToSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex
 
-#check @SerrePositivity.KST.Comparison.hornChainToSimplex_range_le
-#print axioms SerrePositivity.KST.Comparison.hornChainToSimplex_range_le
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex_range_le
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToSimplex_range_le
 
-#check @SerrePositivity.KST.Comparison.hornChainToHorn
-#print axioms SerrePositivity.KST.Comparison.hornChainToHorn
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainToHorn
 
 
 -- HornChainVertices.lean
 
-#check @SerrePositivity.KST.Comparison.HornFaceSet
-#print axioms SerrePositivity.KST.Comparison.HornFaceSet
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceSet
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFaceSet
 
-#check @SerrePositivity.KST.Comparison.hornFaceSet_of_le
-#print axioms SerrePositivity.KST.Comparison.hornFaceSet_of_le
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSet_of_le
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSet_of_le
 
-#check @SerrePositivity.KST.Comparison.hornFaceChoice
-#print axioms SerrePositivity.KST.Comparison.hornFaceChoice
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceChoice
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceChoice
 
-#check @SerrePositivity.KST.Comparison.hornChainVertex
-#print axioms SerrePositivity.KST.Comparison.hornChainVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex
 
-#check @SerrePositivity.KST.Comparison.hornChainVertex_exists_face
-#print axioms SerrePositivity.KST.Comparison.hornChainVertex_exists_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_exists_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_exists_face
 
-#check @SerrePositivity.KST.Comparison.hornChainVertex_of_all_faces
-#print axioms SerrePositivity.KST.Comparison.hornChainVertex_of_all_faces
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_of_all_faces
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornChainVertex_of_all_faces
 
 
 -- HornContraction.lean
@@ -3023,47 +3023,47 @@ run_cmd do
 
 -- HornFaceInclusionAnodyne.lean
 
-#check @SerrePositivity.KST.Comparison.hornFaceAddVertex
-#print axioms SerrePositivity.KST.Comparison.hornFaceAddVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex
 
-#check @SerrePositivity.KST.Comparison.hornFaceAddVertex_mem
-#print axioms SerrePositivity.KST.Comparison.hornFaceAddVertex_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceAddVertex_mem
 
-#check @SerrePositivity.KST.Comparison.hornFaceSingleton_mem
-#print axioms SerrePositivity.KST.Comparison.hornFaceSingleton_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSingleton_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceSingleton_mem
 
-#check @SerrePositivity.KST.Comparison.hornFaceInclusion_anodyne
-#print axioms SerrePositivity.KST.Comparison.hornFaceInclusion_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_anodyne
 
 
 -- HornFaceNerveCover.lean
 
-#check @SerrePositivity.KST.Comparison.hornFaceNerve_missingVertex
-#print axioms SerrePositivity.KST.Comparison.hornFaceNerve_missingVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_missingVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_missingVertex
 
-#check @SerrePositivity.KST.Comparison.hornFaceNerve_faceCover
-#print axioms SerrePositivity.KST.Comparison.hornFaceNerve_faceCover
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_faceCover
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceNerve_faceCover
 
 
 -- HornFacePoset.lean
 
-#check @SerrePositivity.KST.Comparison.HornFacePoset
-#print axioms SerrePositivity.KST.Comparison.HornFacePoset
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.HornFacePoset
 
-#check @SerrePositivity.KST.Comparison.hornFacePoset_partialOrder
-#print axioms SerrePositivity.KST.Comparison.hornFacePoset_partialOrder
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacePoset_partialOrder
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacePoset_partialOrder
 
-#check @SerrePositivity.KST.Comparison.hornFaceInclusion
-#print axioms SerrePositivity.KST.Comparison.hornFaceInclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion
 
-#check @SerrePositivity.KST.Comparison.hornFacesToSimplex
-#print axioms SerrePositivity.KST.Comparison.hornFacesToSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex
 
-#check @SerrePositivity.KST.Comparison.hornFacesToSimplex_range_le
-#print axioms SerrePositivity.KST.Comparison.hornFacesToSimplex_range_le
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex_range_le
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesToSimplex_range_le
 
-#check @SerrePositivity.KST.Comparison.hornFacesLastVertex
-#print axioms SerrePositivity.KST.Comparison.hornFacesLastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesLastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesLastVertex
 
 
 -- HornPreimage.lean
@@ -3098,86 +3098,86 @@ run_cmd do
 
 -- HornSimplexFaceFactorization.lean
 
-#check @SerrePositivity.KST.Comparison.hornSimplexFaceFactorization
-#print axioms SerrePositivity.KST.Comparison.hornSimplexFaceFactorization
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceFactorization
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceFactorization
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceCover
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceCover
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceCover
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceCover
 
 
 -- HornSubdivisionComparison.lean
 
-#check @SerrePositivity.KST.Comparison.hornSimplexOrderHom
-#print axioms SerrePositivity.KST.Comparison.hornSimplexOrderHom
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom
 
-#check @SerrePositivity.KST.Comparison.hornSimplexOrderHom_map_mem
-#print axioms SerrePositivity.KST.Comparison.hornSimplexOrderHom_map_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom_map_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexOrderHom_map_mem
 
-#check @SerrePositivity.KST.Comparison.hornSimplexFaceMap
-#print axioms SerrePositivity.KST.Comparison.hornSimplexFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplexFaceMap
 
-#check @SerrePositivity.KST.Comparison.hornFacesExUnit
-#print axioms SerrePositivity.KST.Comparison.hornFacesExUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison
 
 
 -- HornSubdivisionFaceMaps.lean
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_ambient
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_ambient
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_ambient
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_ambient
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionNerveFaceCover
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionNerveFaceCover
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionNerveFaceCover
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionNerveFaceCover
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_common
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionFaceMap_common
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_common
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionFaceMap_common
 
 
 -- HornSubdivisionInclusion.lean
 
-#check @SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion
-#print axioms SerrePositivity.KST.Comparison.hornSimplex_yoneda_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplex_yoneda_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSimplex_yoneda_inclusion
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_inclusion
 
 
 -- HornSubdivisionIso.lean
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_injective
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_injective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_injective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_injective
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_isIso
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_isIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_isIso
 
 
 -- HornSubdivisionLastVertex.lean
 
-#check @SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex
-#print axioms SerrePositivity.KST.Comparison.hornFacesExUnit_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFacesExUnit_lastVertex
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_lastVertex
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_lastVertex
 
 
 -- HornSubdivisionSurjective.lean
 
-#check @SerrePositivity.KST.Comparison.hornFaceInclusion_nerve_app_injective
-#print axioms SerrePositivity.KST.Comparison.hornFaceInclusion_nerve_app_injective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_nerve_app_injective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornFaceInclusion_nerve_app_injective
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_face
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_face
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_surjective
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_app_surjective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_surjective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_app_surjective
 
-#check @SerrePositivity.KST.Comparison.hornSubdivisionComparison_epi
-#print axioms SerrePositivity.KST.Comparison.hornSubdivisionComparison_epi
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_epi
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.hornSubdivisionComparison_epi
 
 
 -- IntegerCoefficientComparison.lean
@@ -4004,14 +4004,14 @@ run_cmd do
 
 -- NerveChainsLastVertex.lean
 
-#check @SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex
-#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_lastVertex
 
-#check @SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
-#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_naturality
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_naturality
 
-#check @SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
-#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains_lastVertex
 
 
 -- NerveLoopMultiplication.lean
@@ -4064,41 +4064,41 @@ run_cmd do
 
 -- OrderNerveContraction.lean
 
-#check @SerrePositivity.KST.Comparison.orderNerveSubcomplex
-#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex
 
-#check @SerrePositivity.KST.Comparison.orderIntervalMap
-#print axioms SerrePositivity.KST.Comparison.orderIntervalMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderIntervalMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderIntervalMap
 
-#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap
-#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap
 
-#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_zero
-#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_zero
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_zero
 
-#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_one
-#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_one
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_one
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_one
 
-#check @SerrePositivity.KST.Comparison.orderNerveHomotopyMap_mem
-#print axioms SerrePositivity.KST.Comparison.orderNerveHomotopyMap_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveHomotopyMap_mem
 
-#check @SerrePositivity.KST.Comparison.orderNerveSubcomplex_anodyne
-#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplex_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplex_anodyne
 
 
 -- OrderNerveSubcomplexIso.lean
 
-#check @SerrePositivity.KST.Comparison.orderSubtypeInclusion
-#print axioms SerrePositivity.KST.Comparison.orderSubtypeInclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeInclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeInclusion
 
-#check @SerrePositivity.KST.Comparison.orderNerveSubcomplexIso
-#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso
 
-#check @SerrePositivity.KST.Comparison.orderNerveSubcomplexIso_inclusion
-#print axioms SerrePositivity.KST.Comparison.orderNerveSubcomplexIso_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso_inclusion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderNerveSubcomplexIso_inclusion
 
-#check @SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
-#print axioms SerrePositivity.KST.Comparison.orderSubtypeNerve_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeNerve_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.orderSubtypeNerve_anodyne
 
 
 -- OverFinitePresentable.lean
@@ -4682,131 +4682,131 @@ run_cmd do
 
 -- SimplexComponents.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex_class_eq
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex_class_eq
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero
 
 
 -- SimplexConeVertex.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_succ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_succ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_comp
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexConeZero_δ_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexConeZero_δ_zero
 
 
 -- SimplexContraction.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionAt
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionAt
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionAt
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContractionMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContractionMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexContraction
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexContraction
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexMapContraction
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexMapContraction
 
 
 -- SimplexFaceRetraction.lean
 
-#check @SerrePositivity.KST.Comparison.simplexFaceRetraction
-#print axioms SerrePositivity.KST.Comparison.simplexFaceRetraction
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction
 
-#check @SerrePositivity.KST.Comparison.simplexFaceRetraction_section
-#print axioms SerrePositivity.KST.Comparison.simplexFaceRetraction_section
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_section
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_section
 
-#check @SerrePositivity.KST.Comparison.simplexFaceRetraction_recover
-#print axioms SerrePositivity.KST.Comparison.simplexFaceRetraction_recover
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_recover
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_recover
 
-#check @SerrePositivity.KST.Comparison.simplexFaceRetraction_chain
-#print axioms SerrePositivity.KST.Comparison.simplexFaceRetraction_chain
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_chain
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexFaceRetraction_chain
 
 
 -- SimplexImageMono.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono_ι
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_comp_mono_ι
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono_ι
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_comp_mono_ι
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_comp_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_comp_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_comp_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_comp_mono
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_of_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_ι_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexImage_ι_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_ι_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexImage_ι_of_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_of_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexFactorThruImage_of_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_of_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexFactorThruImage_of_epi
 
 
 -- SimplexPrepend.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_succ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_succ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_succ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_succ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_comp
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_comp
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_id
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_id
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_id
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_epi
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_epi
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_mono
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_mono
 
 
 -- SimplexPrependRelations.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ_zero
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ_zero
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ_zero
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_δ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_δ
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplexPrepend_σ
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_σ
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexPrepend_σ
 
 
 -- SimplicialCoproductMono.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialMonoCoprod
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialMonoCoprod
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialMonoCoprod
 
 
 -- SimplicialMonoidInternal.lean
@@ -4832,29 +4832,29 @@ run_cmd do
 
 -- SimplicialSum.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumDesc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumDesc
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_desc
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_desc
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_desc
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSum_hom_ext
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSum_hom_ext
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumIsCoproduct
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumIsCoproduct
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumMap
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumMap
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_map
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_map
 
 
 -- SimplicialSumEquivalences.lean
@@ -4877,20 +4877,20 @@ run_cmd do
 
 -- SimplicialSumPullbacks.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_reindex
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_reindex
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_reindex
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_commSq
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_commSq
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumReindex_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumReindex_isPullback
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.simplicialSumInclusion_isPullback
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplicialSumInclusion_isPullback
 
 
 -- SliceAdjunction.lean
@@ -5237,326 +5237,326 @@ run_cmd do
 
 -- SubdivisionAdjunctionSimplex.lean
 
-#check @SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
-#print axioms SerrePositivity.KST.Comparison.subdivisionHomEquiv_app_down
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHomEquiv_app_down
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHomEquiv_app_down
 
 
 -- SubdivisionAnodyne.lean
 
-#check @SerrePositivity.KST.Comparison.subdivisionHorn_anodyne
-#print axioms SerrePositivity.KST.Comparison.subdivisionHorn_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHorn_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionHorn_anodyne
 
-#check @SerrePositivity.KST.Comparison.ex_map_rlp
-#print axioms SerrePositivity.KST.Comparison.ex_map_rlp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ex_map_rlp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ex_map_rlp
 
-#check @SerrePositivity.KST.Comparison.subdivision_map_anodyne
-#print axioms SerrePositivity.KST.Comparison.subdivision_map_anodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivision_map_anodyne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivision_map_anodyne
 
 
 -- SubdivisionCommonFace.lean
 
-#check @SerrePositivity.KST.Comparison.subdivisionCommonFace
-#print axioms SerrePositivity.KST.Comparison.subdivisionCommonFace
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCommonFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCommonFace
 
 
 -- SubdivisionCommutation.lean
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_le_iff_of_ne
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_iff_of_ne
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_le_iff_of_ne
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut_lt
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_cut_lt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut_lt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_cut_lt
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut_lt
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_cut_lt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut_lt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_cut_lt
 
 
 -- SubdivisionCut.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChain_le_initialSegment
-#print axioms SerrePositivity.KST.Comparison.finiteChain_le_initialSegment
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_le_initialSegment
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChain_le_initialSegment
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_maximum
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_maximum
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_maximum
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_maximum
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_comp
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_comp
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_idempotent
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_idempotent
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_idempotent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_idempotent
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_last
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_last
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_last
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_last
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_zero
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_zero
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_zero
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_comp
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_comp
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_idempotent
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_idempotent
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_idempotent
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_idempotent
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_last
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_last
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_last
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_last
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_zero
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_zero
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_zero
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_lastVertex
 
 
 -- SubdivisionDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy
 
-#check @SerrePositivity.KST.Comparison.liftedFace
-#print axioms SerrePositivity.KST.Comparison.liftedFace
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy
 
-#check @SerrePositivity.KST.Comparison.liftedFace_image_not_mem
-#print axioms SerrePositivity.KST.Comparison.liftedFace_image_not_mem
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_image_not_mem
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_image_not_mem
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_face
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face
 
 
 -- SubdivisionDoubleDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_double
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_double
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_double
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_double
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double_cut
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_double_cut
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double_cut
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_double_cut
 
 
 -- SubdivisionFaceCut.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_map_absorb
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_map_absorb
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_map_absorb
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_map_absorb
 
-#check @SerrePositivity.KST.Comparison.liftedFace_above
-#print axioms SerrePositivity.KST.Comparison.liftedFace_above
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_above
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_above
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_face_absorb
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_face_absorb
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_face_absorb
 
 
 -- SubdivisionFaceDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.liftedFace_special
-#print axioms SerrePositivity.KST.Comparison.liftedFace_special
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_special
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_special
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_face_right
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_face_right
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face_right
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_face_right
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_face_right
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face_right
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_face_right
 
 
 -- SubdivisionFaceLifting.lean
 
-#check @SerrePositivity.KST.Comparison.simplexHom_factor_face
-#print axioms SerrePositivity.KST.Comparison.simplexHom_factor_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexHom_factor_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.simplexHom_factor_face
 
-#check @SerrePositivity.KST.Comparison.subdivisionFace_app_injective
-#print axioms SerrePositivity.KST.Comparison.subdivisionFace_app_injective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_app_injective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_app_injective
 
-#check @SerrePositivity.KST.Comparison.subdivisionFace_avoids
-#print axioms SerrePositivity.KST.Comparison.subdivisionFace_avoids
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_avoids
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_avoids
 
-#check @SerrePositivity.KST.Comparison.subdivisionFace_lift
-#print axioms SerrePositivity.KST.Comparison.subdivisionFace_lift
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_lift
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionFace_lift
 
 
 -- SubdivisionFrontCut.lean
 
-#check @SerrePositivity.KST.Comparison.liftedFace_front_above
-#print axioms SerrePositivity.KST.Comparison.liftedFace_front_above
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_front_above
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedFace_front_above
 
-#check @SerrePositivity.KST.Comparison.subdivisionCutAt_front_face_absorb
-#print axioms SerrePositivity.KST.Comparison.subdivisionCutAt_front_face_absorb
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_front_face_absorb
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionCutAt_front_face_absorb
 
 
 -- SubdivisionFrontDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_front
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_front
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_front
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_front
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front
 
 
 -- SubdivisionFrontFace.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainFrontImage
-#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage
 
-#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_maximum
-#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_maximum
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_maximum
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_maximum
 
-#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_singleton_ge
-#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_singleton_ge
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_singleton_ge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_singleton_ge
 
-#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_of_max_ge
-#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_of_max_ge
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_of_max_ge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_of_max_ge
 
-#check @SerrePositivity.KST.Comparison.finiteChainFrontImage_absorb
-#print axioms SerrePositivity.KST.Comparison.finiteChainFrontImage_absorb
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_absorb
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainFrontImage_absorb
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front_absorb
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_front_absorb
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front_absorb
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_front_absorb
 
 
 -- SubdivisionIntervals.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_initialSegment
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_initialSegment
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_initialSegment
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_initialSegment
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_singleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_singleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_singleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_singleton
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_succ
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_succ
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_succ
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_succ
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_surjective
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_surjective
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_surjective
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_surjective
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_initialSegment
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_initialSegment
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_initialSegment
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_initialSegment
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_singleton
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_singleton
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_singleton
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_singleton
 
 
 -- SubdivisionLastVertex.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainMaximum
-#print axioms SerrePositivity.KST.Comparison.finiteChainMaximum
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum
 
-#check @SerrePositivity.KST.Comparison.finiteChainMaximum_map
-#print axioms SerrePositivity.KST.Comparison.finiteChainMaximum_map
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_map
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_map
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertexAt
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexAt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertex_naturality
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertex_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex_naturality
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex_naturality
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertex
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertex
 
-#check @SerrePositivity.KST.Comparison.finiteChainInitialSegment
-#print axioms SerrePositivity.KST.Comparison.finiteChainInitialSegment
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainInitialSegment
 
-#check @SerrePositivity.KST.Comparison.finiteChainMaximum_initialSegment
-#print axioms SerrePositivity.KST.Comparison.finiteChainMaximum_initialSegment
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_initialSegment
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMaximum_initialSegment
 
-#check @SerrePositivity.KST.Comparison.subdivisionVertexSectionAt
-#print axioms SerrePositivity.KST.Comparison.subdivisionVertexSectionAt
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt
 
-#check @SerrePositivity.KST.Comparison.subdivisionVertexSectionAt_lastVertex
-#print axioms SerrePositivity.KST.Comparison.subdivisionVertexSectionAt_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt_lastVertex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionVertexSectionAt_lastVertex
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexAt_epi
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt_epi
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexAt_epi
 
 
 -- SubdivisionLastVertexMap.lean
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap
 
 
 -- SubdivisionLastVertexSimplex.lean
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap_on_simplex
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap_on_simplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_on_simplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_on_simplex
 
-#check @SerrePositivity.KST.Comparison.subdivisionLastVertexMap_stdSimplex
-#print axioms SerrePositivity.KST.Comparison.subdivisionLastVertexMap_stdSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_stdSimplex
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionLastVertexMap_stdSimplex
 
 
 -- SubdivisionMaximum.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_maximum
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_maximum
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_maximum
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_maximum
 
-#check @SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
-#print axioms SerrePositivity.KST.Comparison.liftedDegeneracy_face_ge
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_face_ge
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.liftedDegeneracy_face_ge
 
 
 -- SubdivisionNerveChains.lean
 
-#check @SerrePositivity.KST.Comparison.nerveSimplexOrderHom
-#print axioms SerrePositivity.KST.Comparison.nerveSimplexOrderHom
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveSimplexOrderHom
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveSimplexOrderHom
 
-#check @SerrePositivity.KST.Comparison.finiteChainMap_comp
-#print axioms SerrePositivity.KST.Comparison.finiteChainMap_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_comp
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainMap_comp
 
-#check @SerrePositivity.KST.Comparison.nerveChainsExUnit
-#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit
 
-#check @SerrePositivity.KST.Comparison.subdivisionNerveChains
-#print axioms SerrePositivity.KST.Comparison.subdivisionNerveChains
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionNerveChains
 
-#check @SerrePositivity.KST.Comparison.nerveChainsExUnit_naturality
-#print axioms SerrePositivity.KST.Comparison.nerveChainsExUnit_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_naturality
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nerveChainsExUnit_naturality
 
 
 -- SubdivisionRearDegeneracy.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_rear
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_rear
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_rear
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_rear
 
-#check @SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_rear
-#print axioms SerrePositivity.KST.Comparison.subdivisionDegeneracyAt_rear
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_rear
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.subdivisionDegeneracyAt_rear
 
 
 -- SubdivisionSimplexCover.lean
 
-#check @_root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover
-#print axioms _root_.SerrePositivity.InfinityCategories.Simplicial.subdivisionSimplexCover
+#check @_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.subdivisionSimplexCover
+#print axioms _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.subdivisionSimplexCover
 
 
 -- SubdivisionUnions.lean
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_mem_iff
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_mem_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_mem_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_mem_iff
 
-#check @SerrePositivity.KST.Comparison.finiteChainCut_preservesUnion
-#print axioms SerrePositivity.KST.Comparison.finiteChainCut_preservesUnion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_preservesUnion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainCut_preservesUnion
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_mem_iff
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_mem_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_mem_iff
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_mem_iff
 
-#check @SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
-#print axioms SerrePositivity.KST.Comparison.finiteChainDegeneracy_preservesUnion
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_preservesUnion
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.finiteChainDegeneracy_preservesUnion
 
 
 -- TelescopeFunctor.lean
@@ -5711,5 +5711,5 @@ run_cmd do
 
 -- UniqueFaceNondegenerate.lean
 
-#check @SerrePositivity.KST.Comparison.nonDegenerate_of_unique_face
-#print axioms SerrePositivity.KST.Comparison.nonDegenerate_of_unique_face
+#check @SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nonDegenerate_of_unique_face
+#print axioms SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.nonDegenerate_of_unique_face

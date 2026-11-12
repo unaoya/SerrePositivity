@@ -23,7 +23,7 @@ def nestedReversal (Y : PointedSimplicialSet.{u}) :
       PointedObject.basedHom space.{u} (PointedObject.basedHom space.{u} Y) :=
   PointedObject.basedHomMap space.{u}
     (Y := PointedObject.basedHom space.{u} Y) (Z := PointedObject.basedHom space.{u} Y)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap.{u} (-1)) Y)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap.{u} (-1)) Y)
 
 /-- 二重 loop の内側の符号を二度反転する区間も、円自身の同じ区間から得る。 -/
 def nestedReversalTwicePath (Y : PointedSimplicialSet.{u}) :
@@ -32,11 +32,11 @@ def nestedReversalTwicePath (Y : PointedSimplicialSet.{u}) :
       (nestedReversal Y ≫ nestedReversal Y)
       (𝟙 (PointedObject.basedHom space.{u} (PointedObject.basedHom space.{u} Y))) := by
   have hs : nestedReversal Y ≫ nestedReversal Y =
-      (ihom space.{u}).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap.{u} (-1)) Y ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap.{u} (-1)) Y) := by
+      (ihom space.{u}).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap.{u} (-1)) Y ≫
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap.{u} (-1)) Y) := by
     exact (CategoryTheory.Functor.map_comp (ihom space.{u})
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap.{u} (-1)) Y)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (integerPowerMap.{u} (-1)) Y)).symm
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap.{u} (-1)) Y)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (integerPowerMap.{u} (-1)) Y)).symm
   have ht : 𝟙 (PointedObject.basedHom space.{u} (PointedObject.basedHom space.{u} Y)) =
       (ihom space.{u}).map (𝟙 (PointedObject.basedHom space.{u} Y)) :=
     (CategoryTheory.Functor.map_id (ihom space.{u}) (PointedObject.basedHom space.{u} Y)).symm

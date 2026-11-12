@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwiseIntervalPullback
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwiseIntervalPullback
 
 /-!
 概要：fiber ごとの path 引き戻しの比較は二入力と path の全座標を保つ。

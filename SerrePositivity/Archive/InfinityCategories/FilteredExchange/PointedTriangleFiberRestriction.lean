@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTransformationPointEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
 
 /-!
 概要：元の全 pointed 三角形を始域 fiber へ制限し元の一点評価を底に保持する。

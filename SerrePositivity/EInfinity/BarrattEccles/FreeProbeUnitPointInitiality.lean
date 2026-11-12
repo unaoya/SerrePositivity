@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.FreeProbeUnitCommaRecovery
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointHomFamilyInitiality
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CommaUnitTransportComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointHomFamilyInitiality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CommaUnitTransportComparison
 
 /-!
 概要：同じ自由単位の comma 候補の始対象性を、その点からの普遍輸送へ還元する。
@@ -19,59 +19,59 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def derivedFreeProbeUnitCommaTargetFiberVertex
-    (x : (derivedInfinityCategory A) _⦋0⦌) :
-    (vertexFiber (F1B.unitCommaFiberProjection (cAlgForgetDerived A) x)
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x)
       (derivedFreeProbeVertex A x)) _⦋0⦌ :=
   ⟨derivedFreeProbeUnitCommaVertex A x, by
-    rw [pinchedConstant_zero]
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero]
     exact derivedFreeProbeUnitCommaVertex_target A x⟩
 
 def derivedFreeProbeUnitCommaTransportMap
-    (x : (derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
-    intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
-      intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
-  parametrizedFiberTransport (F1B.unitCommaFiberProjection (cAlgForgetDerived A) x)
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌) (y : (CAlg_R A) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (derivedFreeProbeVertex A x) y ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace x ((cAlgForgetDerived A).app (Opposite.op ⦋0⦌) y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x)
       (derivedFreeProbeVertex A x) y ≫
-    evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x) ≫
-      F1B.unitCommaFiberToInterval (cAlgForgetDerived A) x y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberToInterval (cAlgForgetDerived A) x y
 
 lemma derivedFreeProbeUnitCommaVertex_isInitial_of_transportIso
-    (x : (derivedInfinityCategory A) _⦋0⦌)
+    (x : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A) _⦋0⦌)
     (h : ∀ y : (CAlg_R A) _⦋0⦌,
-      Nonempty (FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (derivedFreeProbeUnitIntervalMap A x y)
         (derivedFreeProbeUnitCommaTransportMap A x y))) :
-    IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) := by
-  let p := F1B.unitCommaFiberProjection (cAlgForgetDerived A) x
-  have ht (y : (CAlg_R A) _⦋0⦌) : IsQCatEquivalence
-      (parametrizedFiberTransport p (derivedFreeProbeVertex A x) y ≫
-        evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex (derivedFreeProbeUnitCommaVertex A x) := by
+  let p := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberProjection (cAlgForgetDerived A) x
+  have ht (y : (CAlg_R A) _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport p (derivedFreeProbeVertex A x) y ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x)) := by
     have hc := (derivedFreeProbeUnitIntervalMap_isQCatEquivalence A x y).ofFunctorIso
       (h y).some
-    change IsQCatEquivalence ((parametrizedFiberTransport p (derivedFreeProbeVertex A x) y ≫
-      evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x)) ≫
-        F1B.unitCommaFiberToInterval (cAlgForgetDerived A) x y) at hc
-    exact (qCatEquivalenceOfIso (F1B.unitCommaFiberIntervalIso
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport p (derivedFreeProbeVertex A x) y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (derivedFreeProbeUnitCommaTargetFiberVertex A x)) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberToInterval (cAlgForgetDerived A) x y) at hc
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.unitCommaFiberIntervalIso
       (cAlgForgetDerived A) x y)).isQCatEquivalence.cancel_right hc
-  have hi : ∀ (a : (CAlg_R A) _⦋0⦌) (v : (vertexFiber p a) _⦋0⦌),
-      (∀ y, IsQCatEquivalence (parametrizedFiberTransport p a y ≫ evaluateFunctorAt v)) →
-        IsInitialVertex v.val := by
+  have hi : ∀ (a : (CAlg_R A) _⦋0⦌) (v : (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p a) _⦋0⦌),
+      (∀ y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.parametrizedFiberTransport p a y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt v)) →
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsInitialVertex v.val := by
     intro a v hv
     rcases v with ⟨d, hd⟩
-    have ha : p.app (Opposite.op ⦋0⦌) d = a := hd.trans (pinchedConstant_zero a)
+    have ha : p.app (Opposite.op ⦋0⦌) d = a := hd.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_zero a)
     subst a
-    apply isInitialVertex_of_pointHomFamily_equivalence p d
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.isInitialVertex_of_pointHomFamily_equivalence p d
     intro y
-    let : KanComplex (vertexFiber p y) := vertexFiber_kanComplex_of_leftFibration p y
-    have hc := (pointHomIntervalComparison_isQCatEquivalence _ y).comp (hv y)
-    have ha := hc.ofFunctorIso (pointHomTransportActionAt_parametrizedIso p _ y
-      (pointHomSourceVertex p d)).symm
-    exact ha.ofFunctorIso (functorIsoOfSimplicialHomotopy
-      (pointHomActionComparisonHomotopy p d y)).symm
+    let : KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber p y) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex_of_leftFibration p y
+    have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointHomIntervalComparison_isQCatEquivalence _ y).comp (hv y)
+    have ha := hc.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.pointHomTransportActionAt_parametrizedIso p _ y
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointHomSourceVertex p d)).symm
+    exact ha.ofFunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorIsoOfSimplicialHomotopy
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointHomActionComparisonHomotopy p d y)).symm
   exact hi (derivedFreeProbeVertex A x) (derivedFreeProbeUnitCommaTargetFiberVertex A x) ht
 
 end SerrePositivity.EInfinity.BarrattEccles

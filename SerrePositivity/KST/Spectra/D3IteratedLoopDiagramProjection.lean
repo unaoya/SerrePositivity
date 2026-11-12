@@ -20,64 +20,64 @@ namespace SerrePositivity.KST.Spectra
 
 section
 variable {E B : SSet.{u + 1}} [Quasicategory E] [Quasicategory B]
-    (q : E ⟶ B) [TrivialKanFibration q]
+    (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q]
 
 /-- 同じ自明 Kan 射影による全四角形の像を、元の実 loop 全図式へ制限する。 -/
-def d3LoopDiagramTrivialImage : loopDiagrams E ⟶ loopDiagrams B :=
-  fullSubcomplexLift IsLoopDiagramVertex
-    ((fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι ≫
+def d3LoopDiagramTrivialImage : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams E ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams B :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι ≫
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q)
     (by
       intro v
       apply (d3IsLoopDiagramVertex_iff_trivialKan_image q _).mp
-      exact fullSubcomplexOnVertices_vertex v)
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v)
 
 lemma d3LoopDiagramTrivialImage_ι :
-    d3LoopDiagramTrivialImage q ≫ (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι =
-    (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι ≫
+    d3LoopDiagramTrivialImage q ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι ≫
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 同じ射影の全四角形像は、全ての角評価と厳密に交換する。 -/
 lemma d3LoopDiagramTrivialImage_corner (i j : Fin 2) :
-    d3LoopDiagramTrivialImage q ≫ loopDiagramEvaluation B i j =
-      loopDiagramEvaluation E i j ≫ q := by
-  dsimp only [loopDiagramEvaluation]
+    d3LoopDiagramTrivialImage q ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation B i j =
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation E i j ≫ q := by
+  dsimp only [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation]
   rw [← Category.assoc, d3LoopDiagramTrivialImage_ι, Category.assoc,
     OmegaSpectrum.AdjointLoopRelativeBF.d3SquareEvaluation_postcomp]
   exact (Category.assoc _ _ _).symm
 
 /-- 全図式射影の境界充填は、実 loop 部分圏でも元の全パラメータを保って持ち上がる。 -/
-instance d3LoopDiagramTrivialImage_trivial : TrivialKanFibration (d3LoopDiagramTrivialImage q) := by
-  apply (trivialKanFibration_iff_boundary _).mpr
+instance d3LoopDiagramTrivialImage_trivial : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (d3LoopDiagramTrivialImage q) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).mpr
   intro n
   constructor
   intro a b sq
-  have := TrivialKanFibration.mem
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem
     (p := (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q) (boundary n).ι inferInstance
-  let sq' : CommSq (a ≫ (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι)
+  let sq' : CommSq (a ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι)
       (boundary n).ι ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q)
-      (b ≫ (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι) := ⟨by
+      (b ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι) := ⟨by
     rw [Category.assoc, ← d3LoopDiagramTrivialImage_ι, ← Category.assoc,
       sq.w, Category.assoc]⟩
   have hl (v : (Δ[n] : SSet.{u + 1}) _⦋0⦌) :
-      IsLoopDiagramVertex (sq'.lift.app _ v) := by
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (sq'.lift.app _ v) := by
     apply (d3IsLoopDiagramVertex_iff_trivialKan_image q _).mpr
-    change IsLoopDiagramVertex ((sq'.lift ≫
+    change _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex ((sq'.lift ≫
       (ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q).app _ v)
     rw [sq'.fac_right]
     simpa only [NatTrans.comp_app, Subfunctor.ι, types_comp_apply, TypeCat.ofHom_apply] using
-      (fullSubcomplexOnVertices_vertex (b.app _ v))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex (b.app _ v))
   refine CommSq.HasLift.mk' {
-    l := fullSubcomplexLift IsLoopDiagramVertex sq'.lift hl
+    l := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex sq'.lift hl
     fac_left := ?_
     fac_right := ?_ }
-  · apply (cancel_mono (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι).mp
-    rw [Category.assoc, fullSubcomplexLift_ι]
+  · apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι).mp
+    rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
     exact sq'.fac_left
-  · apply (cancel_mono (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι).mp
+  · apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι).mp
     rw [Category.assoc, d3LoopDiagramTrivialImage_ι, ← Category.assoc,
-      fullSubcomplexLift_ι]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι]
     exact sq'.fac_right
 end
 

@@ -18,7 +18,7 @@ lemma necklaceCubicalDayTriple_hom_ext (K : SSet.{u}) (w x y z : K _⦋0⦌)
     {M : CubicalDaySet.{u}}
     {f g : (necklaceCubicalDayMapping K w x ⊗ necklaceCubicalDayMapping K x y) ⊗
       necklaceCubicalDayMapping K y z ⟶ M}
-    (h : ∀ (T : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K w x) (U : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K x y) (V : _root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceIn K y z),
+    (h : ∀ (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K w x) (U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K x y) (V : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceIn K y z),
       ((necklaceCubicalDayCell T ⊗ₘ necklaceCubicalDayCell U) ⊗ₘ
           necklaceCubicalDayCell V) ≫ f =
         ((necklaceCubicalDayCell T ⊗ₘ necklaceCubicalDayCell U) ⊗ₘ

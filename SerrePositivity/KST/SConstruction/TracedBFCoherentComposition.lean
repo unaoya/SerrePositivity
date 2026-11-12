@@ -32,9 +32,9 @@ def monicKTracedCoherentCompositionData :=
 
 /-- 元の BF 境界射二つと合成入力の同じ BF 境界射を結ぶ実合成三角形。 -/
 def monicKTracedCoherentComposition : SSet.Edge.CompStruct
-    (coherentNerveEdge (monicKTracedSpectrumMap F f))
-    (coherentNerveEdge (monicKTracedSpectrumMap F g))
-    (coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g))) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F g))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (monicKTracedSpectrumMap F (f ≫ g))) :=
   (monicKTracedCoherentCompositionData F f g).triangle
 
 /-- 新しい合成面は同じ四面体の第一面そのもの。 -/
@@ -56,7 +56,7 @@ lemma monicKTracedCoherentComposition_comparison_face :
 lemma monicKTracedCoherentComposition_original_face :
     (SimplicialNerve OmegaSpectrum.{u}).δ 0
         (monicKTracedCoherentCompositionData F f g).simplex =
-      (coherentNerveCompStruct (monicKTracedSpectrumMap F f)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (monicKTracedSpectrumMap F f)
         (monicKTracedSpectrumMap F g)).simplex :=
   (monicKTracedCoherentCompositionData F f g).original_face
 

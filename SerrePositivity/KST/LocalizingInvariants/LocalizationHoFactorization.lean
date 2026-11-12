@@ -20,7 +20,7 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 def nerveAdjunctFunctorIso {X : SSet.{u}} {A : Type u} [Category.{u} A]
-    {f g : X ⟶ nerve A} (e : FunctorIso f g) :
+    {f g : X ⟶ nerve A} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) :
     ((nerveAdjunction.homEquiv X (Cat.of A)).symm f).toFunctor ≅
       ((nerveAdjunction.homEquiv X (Cat.of A)).symm g).toFunctor := by
   change (hoFunctor.map f).toFunctor ⋙ (nerveAdjunction.counit.app (Cat.of A)).toFunctor ≅
@@ -29,8 +29,8 @@ def nerveAdjunctFunctorIso {X : SSet.{u}} {A : Type u} [Category.{u} A]
 
 lemma nerveAdjunct_inverts {X : SSet.{u}} {A : Type u} [Category.{u} A]
     (H : hoFunctor.obj X ⥤ A) (W : Set (X _⦋1⦌))
-    (hH : ∀ s ∈ W, IsIso (H.map (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex s)))) :
-    InvertsEdges (nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom) W := by
+    (hH : ∀ s ∈ W, IsIso (H.map (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom) W := by
   let U : X ⟶ nerve A := nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom
   let eA := Cat.equivOfIso (nerveFunctorCompHoFunctorIso.app (Cat.of A))
   have hh : (hoFunctor.map U).toFunctor ⋙ eA.functor = H := by
@@ -38,19 +38,19 @@ lemma nerveAdjunct_inverts {X : SSet.{u}} {A : Type u} [Category.{u} A]
       ((nerveAdjunction.homEquiv X (Cat.of A)).symm_apply_apply H.toCatHom)
   intro s hs
   change IsIso (SSet.Truncated.HomotopyCategory.homMk
-    ((edgeOfSimplex s).map ((truncation 2).map U)))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s).map ((truncation 2).map U)))
   have hm : IsIso (eA.functor.map (SSet.Truncated.HomotopyCategory.homMk
-      ((edgeOfSimplex s).map ((truncation 2).map U)))) := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s).map ((truncation 2).map U)))) := by
     change IsIso (((hoFunctor.map U).toFunctor ⋙ eA.functor).map
-      (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex s)))
+      (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s)))
     rw [hh]
     exact hH s hs
   exact isIso_of_fully_faithful eA.functor _
 
 lemma localizationHo_exists_factorization_of_invertingAdjunct {X Q : SSet.{u}}
-    [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    [Quasicategory Q] (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     {A : Type u} [Category.{u} A] (H : hoFunctor.obj X ⥤ A)
-    (hH : InvertsEdges (nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom) W) :
+    (hH : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom) W) :
     ∃ K : hoFunctor.obj Q ⥤ A, Nonempty ((hoFunctor.map F).toFunctor ⋙ K ≅ H) := by
   obtain ⟨K, ⟨e⟩⟩ := localization_exists_factorization (Y := nerve A) F W hF
     (nerveAdjunction.homEquiv X (Cat.of A) H.toCatHom) hH
@@ -64,9 +64,9 @@ lemma localizationHo_exists_factorization_of_invertingAdjunct {X Q : SSet.{u}}
   exact h
 
 lemma localizationHo_exists_factorization {X Q : SSet.{u}} [Quasicategory Q]
-    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : IsLocalization F W)
+    (F : X ⟶ Q) (W : Set (X _⦋1⦌)) (hF : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization F W)
     {A : Type u} [Category.{u} A] (H : hoFunctor.obj X ⥤ A)
-    (hH : ∀ s ∈ W, IsIso (H.map (SSet.Truncated.HomotopyCategory.homMk (edgeOfSimplex s)))) :
+    (hH : ∀ s ∈ W, IsIso (H.map (SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex s)))) :
     ∃ K : hoFunctor.obj Q ⥤ A, Nonempty ((hoFunctor.map F).toFunctor ⋙ K ≅ H) :=
   localizationHo_exists_factorization_of_invertingAdjunct F W hF H (nerveAdjunct_inverts H W hH)
 

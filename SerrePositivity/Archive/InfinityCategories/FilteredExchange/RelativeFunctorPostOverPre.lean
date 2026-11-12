@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorEnrichedNaturality
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorPostLaws
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorEnrichedNaturality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorPostLaws
 
 /-!
 概要：元の相対始域の前合成と、元の底上の射の native 後合成を厳密に交換する。

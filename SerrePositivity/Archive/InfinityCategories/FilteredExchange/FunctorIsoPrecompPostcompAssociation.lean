@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
 
 /-!
 概要：元の指定同型の二段の後合成と始域制限を、一つの後合成にまとめる。

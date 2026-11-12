@@ -14,23 +14,23 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementUniversalLinear_augmentation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedLinearSimplexMap (D := Complex A) (E := Complex A) (x := X) (x' := X)
       (homPostcompose X
         ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n))))
       (normalizedTensorElementUniversalLinear A X Y c) =
-    LinearSimplex.pullback (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom
-      (toLinearSimplex (pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)))) := by
-  have h := congrArg (toLinearSimplex (A := A) (D := Complex A) (x := X) (y := X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex.pullback (SimplexCategory.const ⦋n⦌ ⦋0⦌ 0).toOrderHom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedClosedVertex A (Complex A) ((complexToClosed A).map (𝟙 X)))) := by
+  have h := congrArg (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.toLinearSimplex (A := A) (D := Complex A) (x := X) (y := X))
     (normalizedTensorElementUniversalSimplex_augmentation A X Y c)
-  exact (pinchedHomChainMapSimplex_linear _ _).symm.trans
-    (h.trans (toLinearSimplex_pullback _ _))
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMapSimplex_linear _ _).symm.trans
+    (h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.toLinearSimplex_pullback _ _))
 
 lemma normalizedTensorElementUniversalLinear_augmentation_zero {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
@@ -38,11 +38,11 @@ lemma normalizedTensorElementUniversalLinear_augmentation_zero {n : ℕ}
     (homPostcompose X
       ((normalizedTensorElementAugmentation A X Y).app (c.obj (Fin.last n)))).f k
       ((normalizedTensorElementUniversalLinear A X Y c).val.component J k
-        (Index.nonempty hJ) hk) = 0 := by
-  have h := congrArg (fun s : LinearSimplex A X X n =>
-      s.val.component J k (Index.nonempty hJ) hk)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ) hk) = 0 := by
+  have h := congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex A X X n =>
+      s.val.component J k (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ) hk)
     (normalizedTensorElementUniversalLinear_augmentation A X Y c)
-  exact h.trans (LinearData.pullback_component_of_not_inj (A := A) (D := Complex A)
-    (x := X) (y := X) _ _ J k (Index.nonempty hJ) hk (not_injOn_constant hJ))
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback_component_of_not_inj (A := A) (D := Complex A)
+    (x := X) (y := X) _ _ J k (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hJ) hk (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.not_injOn_constant hJ))
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -38,18 +38,18 @@ lemma modelBifibrantSourceRoofDegreeTransportIso_inv_over :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCornerMap_normalizedOver :
     modelBifibrantSourceRoofProductCornerMap X Y q b ≫
-      roofCornerNormalizationMap (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+      roofCornerNormalizationMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b ≫
-      roofCornerNormalizedProjection (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b ≫
+      roofCornerNormalizedProjection (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b =
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b =
     modelBifibrantSourceRoofProductOverNerve X Y q b := by
-  have h := roofQuillenDegreeCornerMap_normalizedOver (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+  have h := roofQuillenDegreeCornerMap_normalizedOver (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     b (modelBifibrantSourceFrameRoofMap X Y q)
   simp only [modelBifibrantSourceRoofProductCornerMap, Category.assoc, h]
   exact (congrArg (fun g => (modelBifibrantSourceRoofProductIso X Y q b).hom ≫ g)
@@ -61,19 +61,19 @@ lemma modelBifibrantSourceRoofProductCornerMap_normalizedOver :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofProductCommaCornerMap_normalizedOver :
     modelBifibrantSourceRoofProductCommaCornerMap X Y q b ≫
-      roofCornerNormalizationMap (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+      roofCornerNormalizationMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b ≫
-      roofCornerNormalizedProjection (modelBifibrantDKFrame X q)
-        (modelBifibrantObject C Y)
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b ≫
+      roofCornerNormalizedProjection (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
-          (modelBifibrantRelativeCategory C)) b =
-    nerveMap (CostructuredArrow.toOver (modelBifibrantSourceFrameElementDegree X Y q)
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)) b =
+    nerveMap (CostructuredArrow.toOver (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q)
       (modelBifibrantSourceRoofDegree X Y q b)) := by
   have h : (modelBifibrantSourceRoofProductCommaIso X Y q b).inv ≫
       modelBifibrantSourceRoofProductOverNerve X Y q b =
-    nerveMap (CostructuredArrow.toOver (modelBifibrantSourceFrameElementDegree X Y q)
+    nerveMap (CostructuredArrow.toOver (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantSourceFrameElementDegree X Y q)
       (modelBifibrantSourceRoofDegree X Y q b)) := by
     rw [Iso.inv_comp_eq]
     exact (modelBifibrantSourceRoofProductCommaIso_over X Y q b).symm

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionCurryComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorExtensionCurryComparison
 
 /-!
 概要：元の指定 curry 比較を、同じ実終点の等式による表示変更に沿って保持する。

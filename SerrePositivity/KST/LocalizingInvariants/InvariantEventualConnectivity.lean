@@ -16,8 +16,8 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants
 variable {C : Type v} [Category.{w} C]
-  {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} {U : C ⥤ hoFunctor.obj Sp.{u}}
-  {P : C ⥤ _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {k : ℤ}
+  {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} {U : C ⥤ hoFunctor.obj Sp.{u}}
+  {P : C ⥤ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {k : ℤ}
 
 lemma IsKConnectiveOn.cofinal_levelMap_piProEquivalence
     (h : IsKConnectiveOn Φ U P k) {X Y : ProExcision.Tower C}

@@ -37,7 +37,7 @@ variable {C : Type u} [Category.{v} C] [HasFiniteLimits C] [FinitaryPreExtensive
   {ι : Type z} [Finite ι] (X : ι → C) {Y : C} (g : ∐ X ⟶ Y)
   [ModelCategory SSet.{0}]
   (genI genJ : MorphismProperty SSet.{0})
-  [ModelGeneration.CofibrantlyGenerated.{0} genI genJ]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} genI genJ]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：Čech の零番目の座標での正 rank の検査は基底の作用の弱同値を反映（補題 3.2）。

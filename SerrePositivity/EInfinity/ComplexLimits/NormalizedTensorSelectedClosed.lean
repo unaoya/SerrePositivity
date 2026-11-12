@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementSelectedCochain
-public import SerrePositivity.InfinityCategories.DGNerve.HomHEqAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.HomHEqAlgebra
 
 /-!
 概要：一点を選ぶ最上位普遍 cochain は元の Hom 複体の閉零元である。
@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorElementSelectedCochain_closed {n : ℕ}
@@ -27,7 +27,7 @@ lemma normalizedTensorElementSelectedCochain_closed {n : ℕ}
   have hd : 0 = 1 - ((Finset.univ : Finset (Fin (J.card - 1 + 1))).card : ℤ) := by
     simp [hc]
   have hz : s.val.rhs Finset.univ 0 hd = 0 := by
-    unfold LinearData.rhs
+    unfold _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.rhs
     exact dite_eq_right (by simp [hc])
   exact (s.equation Finset.univ 0 Finset.univ_nonempty hd).trans hz
 
@@ -43,9 +43,9 @@ lemma normalizedTensorElementSelectedCochainAtMax_closed {n : ℕ}
       (normalizedTensorElementSelection_last J hJ)).symm
   have he : HEq (normalizedTensorElementSelectedCochainAtMax A X Y c J 0 hJ (by omega))
       (normalizedTensorElementSelectedCochain A X Y c J 0 hJ (by omega)) := cast_heq _ _
-  have hd := gradedHom_differential_heq (A := A) rfl hy rfl _ _ he
+  have hd := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_differential_heq (A := A) rfl hy rfl _ _ he
   exact eq_of_heq (hd.trans ((heq_of_eq
     (normalizedTensorElementSelectedCochain_closed A X Y c J hJ hc)).trans
-      (gradedHom_zero_heq (A := A) rfl hy rfl).symm))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) rfl hy rfl).symm))
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -23,23 +23,23 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.SpectrumLoop
 
-abbrev diagrams := loopDiagrams Sp.{u}
+abbrev diagrams := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams Sp.{u}
 
 def fiberDiagramAt (x : diagrams.{u} _⦋0⦌) : FiberDiagram.{u} where
-  triangle := ⟨squareDiagram x.val, (fullSubcomplexOnVertices_vertex x).1⟩
-  isFiber := (fullSubcomplexOnVertices_vertex x).2.2
+  triangle := ⟨_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram x.val, (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex x).1⟩
+  isFiber := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex x).2.2
 
 def inclusion : diagrams.{u} ⟶ ((ihom ((Δ[1] : SSet.{u+1}) ⊗ Δ[1])).obj Sp.{u}) :=
-  (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι
 
 def diagramIso (x : hoFunctor.obj diagrams.{u}) :
     FiberDiagram.diagramVertex (fiberDiagramAt x.as.as) ≅ (hoFunctor.map inclusion).toFunctor.obj x :=
   eqToIso (congrArg HomotopyCategory.mk
-    ((functorVertexEquiv _ _).apply_symm_apply x.as.as.val))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).apply_symm_apply x.as.as.val))
 
 def fiberDiagramMap {x y : hoFunctor.obj diagrams.{u}} (f : x ⟶ y) :
     fiberDiagramAt x.as.as ⟶ fiberDiagramAt y.as.as := by
-  change FunctorHom (fiberDiagramAt x.as.as).triangle.square
+  change _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (fiberDiagramAt x.as.as).triangle.square
     (fiberDiagramAt y.as.as).triangle.square
   exact (diagramIso x).hom ≫ (hoFunctor.map inclusion).toFunctor.map f ≫ (diagramIso y).inv
 
@@ -76,13 +76,13 @@ def diagramInclusionIso : fiberDiagrams.{u} ⋙ FiberDiagram.diagramInclusion �
 
 def vertexIso (i j : Fin 2) :
     fiberDiagrams.{u} ⋙ FiberDiagram.vertex i j ≅
-      (hoFunctor.map (loopDiagramEvaluation Sp.{u} i j)).toFunctor := by
-  let ev := (hoFunctor.map (evaluateFunctorAt
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} i j)).toFunctor := by
+  let ev := (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
     (X := (Δ[1] : SSet.{u+1}) ⊗ Δ[1]) (Y := Sp.{u})
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor
   have he : (hoFunctor.map inclusion).toFunctor ⋙ ev =
-      (hoFunctor.map (loopDiagramEvaluation Sp.{u} i j)).toFunctor := by
-    change (hoFunctor.map inclusion ≫ hoFunctor.map (evaluateFunctorAt
+      (hoFunctor.map (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation Sp.{u} i j)).toFunctor := by
+    change (hoFunctor.map inclusion ≫ hoFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (X := (Δ[1] : SSet.{u+1}) ⊗ Δ[1]) (Y := Sp.{u})
       (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j))).toFunctor = _
     rw [← Functor.map_comp]

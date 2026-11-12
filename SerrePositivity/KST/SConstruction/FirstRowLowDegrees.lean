@@ -23,10 +23,10 @@ open scoped Simplicial
 規約：頂点の存在を結論済みとして扱わない。
 使われ方：一般の L1b の残る存在条件と低次数の完成。 -/
 lemma firstRowRestriction_trivialKanFibration_of_vertexSurjective (n : ℕ) (C : SSet.{u})
-    [Quasicategory C] [IsStable C]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (hs : Function.Surjective ((firstRowRestriction n C).app (Opposite.op ⦋0⦌))) :
-    TrivialKanFibration (firstRowRestriction n C) := by
-  apply (trivialKanFibration_iff_boundary _).2
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowRestriction n C) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).2
   intro r
   cases r with
   | zero =>
@@ -45,28 +45,28 @@ lemma firstRowRestriction_trivialKanFibration_of_vertexSurjective (n : ℕ) (C :
 /-- 概要：次数1の第一行の任意の頂点は gapped 図式に厳密に持ち上がる。
 方針：零対角 Ar[1] 図式を構成し、全ての区間正方形が退化することを使う。
 規約：C は安定な quasicategory。使われ方：次数1の零次元の境界 RLP。 -/
-lemma firstRowRestriction_one_vertex_surjective (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma firstRowRestriction_one_vertex_surjective (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     Function.Surjective ((firstRowRestriction 1 C).app (Opposite.op ⦋0⦌)) := by
   intro d
-  let p := (functorVertexEquiv (firstRowNerve 1) C).symm d
+  let p := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (firstRowNerve 1) C).symm d
   obtain ⟨F, hF, hz⟩ := exists_firstRowDiagramWithZeroDiagonal 1 C p
-  let v : (sConstruction 1 C) _⦋0⦌ := ⟨functorVertex F, by
+  let v : (sConstruction 1 C) _⦋0⦌ := ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F, by
     intro α
     have hα : α = 𝟙 ⦋0⦌ := Subsingleton.elim _ _
     rw [hα, op_id, CategoryTheory.Functor.map_id_apply]
-    change IsGapped ((functorVertexEquiv (arNerve 1) C).symm (functorVertexEquiv _ C F))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve 1) C).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C F))
     rw [Equiv.symm_apply_apply]
     exact isGapped_one_of_zero_diagonal F hz⟩
   refine ⟨v, ?_⟩
-  change functorVertex (firstRowInclusion 1 ≫ F) = d
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (firstRowInclusion 1 ≫ F) = d
   rw [hF]
-  exact (functorVertexEquiv _ C).apply_symm_apply d
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).apply_symm_apply d
 
 /-- 概要：次数1の第一行制限は trivial Kan fibration。
 方針：頂点の全射性と全ての正次元の境界 RLP を合わせる。
 規約：C は安定な quasicategory。使われ方：S_1 と C の比較の基底。 -/
 instance firstRowRestriction_one_trivialKanFibration (C : SSet.{u}) [Quasicategory C]
-    [IsStable C] : TrivialKanFibration (firstRowRestriction 1 C) :=
+    [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (firstRowRestriction 1 C) :=
   firstRowRestriction_trivialKanFibration_of_vertexSurjective 1 C
     (firstRowRestriction_one_vertex_surjective C)
 

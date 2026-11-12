@@ -13,12 +13,12 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def doubleConeEndEdgeOrderHom (n : ℕ) : Fin 2 →o Fin (n + 3) :=
-  InfinityCategories.PinchedHom.extendOrderHom (OrderHom.const _ (0 : Fin (n + 2)))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom (OrderHom.const _ (0 : Fin (n + 2)))
 
 lemma doubleConeEndEdgeOrderHom_zero (n : ℕ) :
     doubleConeEndEdgeOrderHom n 0 = (0 : Fin (n + 2)).castSucc := rfl

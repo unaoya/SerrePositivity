@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawFirstChoiceSpecifiedComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawFirstConstantVertexData
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：全第一辺終点比較の後合成も、元の指定一点比較の後合成へ値まで戻す。

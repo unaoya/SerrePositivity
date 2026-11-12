@@ -29,7 +29,7 @@ local instance trivialHomotopyActionUnderlyingKan : KanComplex (Action.trivial G
   inferInstanceAs (KanComplex X.right)
 
 lemma homotopyAction_trivial_ρ (k : ℕ) (g : G)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right k X.basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right k X.basepoint) :
     ((homotopyAction (Action.trivial G X) k).ρ g).asHom a = a := by
   change pointedHomotopyMap (k + 1) (𝟙 X) a = a
   exact pointedHomotopyMap_id X (k + 1) a
@@ -39,7 +39,7 @@ lemma homotopyAction_trivial_ρ (k : ℕ) (g : G)
 規約：k は実際の次数 k+1。
 使われ方：Goerss–Jardine VIII §2。非斉次 cochain の係数を自明作用へ移す。 -/
 def homotopyTrivialIso (k : ℕ) : homotopyAction (Action.trivial G X) k ≅
-    Action.trivial G (GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right k X.basepoint)) :=
+    Action.trivial G (GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right k X.basepoint)) :=
   Action.mkIso (Iso.refl _) (fun g ↦ by
     ext a
     exact homotopyAction_trivial_ρ G X k g a)
@@ -51,7 +51,7 @@ def homotopyTrivialIso (k : ℕ) : homotopyAction (Action.trivial G X) k ≅
 def trivialHomotopyFunctionNatIso (k : ℕ) :
     KanHomotopyGroup.diagram (obj (Action.trivial G X)) k ≅
       GroupCoefficientCochains.obj
-        (Action.trivial G (GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup X.right k X.basepoint))) :=
+        (Action.trivial G (GrpCat.of (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup X.right k X.basepoint))) :=
   homotopyFunctionNatIso (Action.trivial G X) k ≪≫
     (GroupCoefficientCochains.functor G).mapIso (homotopyTrivialIso G X k)
 

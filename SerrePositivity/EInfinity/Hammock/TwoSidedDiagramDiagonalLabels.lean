@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramPartialRows
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.LabelledChainCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LabelledChainCoordinates
 /-!
 # 部分対角に沿う元の両ラベルと全作用素
 
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory Opposite
-variable (D : SimplicialObject Data.{u})
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u})
 def leftLabels (n : SimplexCategoryᵒᵖ) : (D.obj n).baseᵒᵖ ⥤ Type u :=
   ((D.obj n).left ⋙ nerveFunctor).flip.obj n
 
@@ -46,11 +46,11 @@ def rightLabelsMap {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) :
       Cat.Hom.toFunctor K) ((D.map θ).right.naturality h)
 
 abbrev labelCategory (n : SimplexCategoryᵒᵖ) :=
-  TwoSidedElements.Element (leftLabels D n) (rightLabels D n)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.Element (leftLabels D n) (rightLabels D n)
 
 def labelStep {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) : labelCategory D n ⥤ labelCategory D m :=
-  TwoSidedElements.map (leftLabelsMap D θ) (rightLabelsMap D θ) ⋙
-    TwoSidedElements.pre (D.map θ).base (leftLabels D m) (rightLabels D m)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (leftLabelsMap D θ) (rightLabelsMap D θ) ⋙
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pre (D.map θ).base (leftLabels D m) (rightLabels D m)
 
 lemma chainRow_map (k : SimplexCategoryᵒᵖ) {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
     (e : ComposableArrows (labelCategory D n) k.unop.len) :

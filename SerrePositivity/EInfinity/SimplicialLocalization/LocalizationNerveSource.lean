@@ -19,10 +19,10 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def kanHammockLocalizationEquivalence :
-    QCatEquivalence (kanHammockNerve C) (localizationNerve C) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (kanHammockNerve C) (localizationNerve C) :=
   (kanFreeHammockAugmentationNerve_equivalence C).choose.symm.trans
     (kanFreeHammockComparisonNerve_equivalence C).choose
 
@@ -32,11 +32,11 @@ lemma kanHammockLocalizationEquivalence_hom :
         kanFreeHammockComparisonNerve C := rfl
 
 def kanHammockLocalizationComparison :
-    FunctorIso (kanFreeHammockAugmentationNerve C ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (kanFreeHammockAugmentationNerve C ≫
       (kanHammockLocalizationEquivalence C).hom) (kanFreeHammockComparisonNerve C) := by
   have h := (kanFreeHammockAugmentationNerve_equivalence C).choose.homInvIso.postcomp
     (kanFreeHammockComparisonNerve C)
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((kanFreeHammockAugmentationNerve C ≫
       (kanFreeHammockAugmentationNerve_equivalence C).choose.inv) ≫
         kanFreeHammockComparisonNerve C) (𝟙 _ ≫ kanFreeHammockComparisonNerve C) at h
@@ -46,37 +46,37 @@ def localizationNerveSourceMap : nerve C.category ⟶ localizationNerve C :=
   hammockLocalizationNerveMap C ≫ (kanHammockLocalizationEquivalence C).hom
 
 lemma localizationNerveSourceMap_inverts :
-    InvertsEdges (localizationNerveSourceMap C) (weakNerveEdges C) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (localizationNerveSourceMap C) (weakNerveEdges C) :=
   (hammockLocalizationNerveMap_inverts C).comp (kanHammockLocalizationEquivalence C).hom
 
 def kanHammockLocalization_vertexIso (X : C.category) :
-    VertexIso ((kanHammockLocalizationEquivalence C).hom.app (Opposite.op ⦋0⦌)
-      (coherentNerveVertex (show KanHammockCategory C from X)))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((kanHammockLocalizationEquivalence C).hom.app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (show KanHammockCategory C from X)))
       (localizationNerveVertexEquiv C (show KanLocalizationCategory C from X)) := by
   have h := (kanHammockLocalizationComparison C).app
-    (coherentNerveVertex (show KanFreeHammockCategory C from X))
-  change VertexIso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (show KanFreeHammockCategory C from X))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((kanHammockLocalizationEquivalence C).hom.app _
       ((kanFreeHammockAugmentationNerve C).app _
-        (coherentNerveVertex (show KanFreeHammockCategory C from X))))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (show KanFreeHammockCategory C from X))))
     ((kanFreeHammockComparisonNerve C).app _
-      (coherentNerveVertex (show KanFreeHammockCategory C from X))) at h
-  have hl := coherentNerveMap_vertex (kanFreeHammockAugmentationFunctor C)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (show KanFreeHammockCategory C from X))) at h
+  have hl := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (kanFreeHammockAugmentationFunctor C)
     (show KanFreeHammockCategory C from X)
-  have hr := coherentNerveMap_vertex (kanFreeHammockComparisonFunctor C)
+  have hr := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (kanFreeHammockComparisonFunctor C)
     (show KanFreeHammockCategory C from X)
   change (kanFreeHammockAugmentationNerve C).app _ _ =
-    coherentNerveVertex (show KanHammockCategory C from X) at hl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (show KanHammockCategory C from X) at hl
   change (kanFreeHammockComparisonNerve C).app _ _ =
     localizationNerveVertexEquiv C (show KanLocalizationCategory C from X) at hr
   rw [hl, hr] at h
   exact h
 
 def localizationNerveSourceMap_vertexIso (X : C.category) :
-    VertexIso ((localizationNerveSourceMap C).app (Opposite.op ⦋0⦌)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((localizationNerveSourceMap C).app (Opposite.op ⦋0⦌)
       (ComposableArrows.mk₀ X))
       (localizationNerveVertexEquiv C (show KanLocalizationCategory C from X)) := by
-  change VertexIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso
     ((kanHammockLocalizationEquivalence C).hom.app _
       ((hammockLocalizationNerveMap C).app _ (ComposableArrows.mk₀ X))) _
   rw [hammockLocalizationNerveMap_vertex]

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CospanDiagramExtension
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.CospanDiagramExtension
 
 /-!
 概要：両端の重みを固定し、中央の anodyne な射だけに沿って cospan の自然変換を延長する。
@@ -14,7 +14,7 @@ universe u
 open CategoryTheory Limits SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 namespace SerrePositivity.KST.Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 /-- 両端の重みが同型なら、中央の Kan 充填を元の cospan の自然変換へ延長できる。 -/
 lemma exists_cospan_extension_of_central_anodyne
@@ -29,7 +29,7 @@ lemma exists_cospan_extension_of_central_anodyne
   let sq : CommSq (a.app (AsSmall.up.obj .one)) (j.app (AsSmall.up.obj .one))
       (terminal.from (H.obj (AsSmall.up.obj .one)))
       (terminal.from (B.obj (AsSmall.up.obj .one))) := ⟨terminal.hom_ext _ _⟩
-  obtain ⟨b, hb, _⟩ := exists_resized_cospan_diagram_extension j a sq.lift sq.fac_left
+  obtain ⟨b, hb, _⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.exists_resized_cospan_diagram_extension j a sq.lift sq.fac_left
   exact ⟨b, hb⟩
 
 end SerrePositivity.KST.Spectra

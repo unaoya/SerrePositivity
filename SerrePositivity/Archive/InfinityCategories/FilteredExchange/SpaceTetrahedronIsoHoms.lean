@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTetrahedronIsos
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerHom
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerHom
 
 /-!
 概要：四面の指定関手同型と元の辺の類の対応。

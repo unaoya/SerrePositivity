@@ -17,10 +17,10 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SimplicialLocalization
+open CategoryTheory HomotopicalAlgebra
 variable (A : Type u) [CommRing A]
   (X Y : (cofibrantAlgebraRelativeCategory A).category)
-lemma cofibrantAlgebraHammockInclusionMap_normalization (w : Hammock.Word) :
+lemma cofibrantAlgebraHammockInclusionMap_normalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     let := modelCategory A
     Hammock.graphNormalization (cofibrantAlgebraRelativeCategory A).weakEquivalences X Y w ≫
         cofibrantAlgebraHammockInclusionMap A X Y =
@@ -36,11 +36,11 @@ lemma cofibrantAlgebraHammockInclusionMap_normalization (w : Hammock.Word) :
   rw [← Category.assoc, Hammock.Relative.graphNormalization_reducedMap, Category.assoc]
   let Z := (cofibrantAlgebraDKInclusion A).obj X
   let T := (cofibrantAlgebraDKInclusion A).obj Y
-  let t : Hammock.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y ⟶
-      Hammock.graph (Hammock.HomLift.liftedWeak (C := (operad A).Algebra)
+  let t : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (cofibrantAlgebraRelativeCategory A).weakEquivalences w X Y ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph (Hammock.HomLift.liftedWeak (C := (operad A).Algebra)
         (weakEquivalences (operad A).Algebra)) w
         (ULiftHom.objUp.{u + 1, u + 1} Z) (ULiftHom.objUp.{u + 1, u + 1} T) :=
-    (Hammock.Relative.graphDiagramMap (cofibrantToAlgebraDKRelative A) X Y).app w
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagramMap (cofibrantToAlgebraDKRelative A) X Y).app w
   change t ≫ (Hammock.graphNormalization
       (Hammock.HomLift.liftedWeak (C := (operad A).Algebra)
         (weakEquivalences (operad A).Algebra)) _ _ w ≫

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.Spectra.General.Evaluation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.GeneratedLeftClass
@@ -55,15 +55,15 @@ lemma levelGenerators_rlp (P : MorphismProperty C) :
     | map hi =>
       exact ((freeAtAdjunction (K := K) n).hasLiftingProperty_iff _ f).2 (h n _ hi)
 
-variable [ModelCategory C] (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
+variable [ModelCategory C] (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 include I J in
 lemma generatingCofibrations_rlp :
     (levelGenerators K I).rlp = levelProperty K (trivialFibrations C) := by
-  rw [levelGenerators_rlp, CofibrantlyGenerated.rlp_I (I := I) (J := J)]
+  rw [levelGenerators_rlp, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)]
 
 include I J in
 lemma generatingTrivialCofibrations_rlp :
     (levelGenerators K J).rlp = levelProperty K (fibrations C) := by
-  rw [levelGenerators_rlp, CofibrantlyGenerated.rlp_J (I := I) (J := J)]
+  rw [levelGenerators_rlp, _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_J (I := I) (J := J)]
 end SerrePositivity.SpectrumLevelModel

@@ -21,7 +21,7 @@ open CategoryTheory MonoidalCategory
 
 variable {C : Type u} [Category.{u} C]
 
-def generatorMap (W : MorphismProperty C) (g : FactorTarget.Index W) :
+def generatorMap (W : MorphismProperty C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     𝟙_ SSet.{u} ⟶ space W g.val.right g.val.left where
   app n := ↾fun _ => generatorPoint W g n
   naturality _ _ θ := by
@@ -53,10 +53,10 @@ lemma foldMap_marked (X Y : Paths C) : nilMap W Y X ≫ F.foldMap X Y = F.marked
   ext n p
   exact F.foldPoint_nil p
 
-lemma foldMap_generator (g : FactorTarget.Index W) :
+lemma foldMap_generator (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
     generatorMap W g ≫ F.foldMap g.val.left g.val.right = F.generator g := by
   ext n p
-  let := EnrichedDegree.category (D := D) n
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EnrichedDegreeCategory.category (D := D) n
   exact (F.degreeData n).fold_generatorPoint g
 
 def enrichedFunctor :

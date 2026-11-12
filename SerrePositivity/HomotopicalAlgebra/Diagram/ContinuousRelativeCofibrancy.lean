@@ -69,7 +69,7 @@ end SerrePositivity.DiagramModel.ContinuousLifts
 namespace SerrePositivity.DiagramModel.Projective
 variable {K : Type w} [LinearOrder K] [OrderBot K] [SuccOrder K] [WellFoundedLT K]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 lemma fromBottom_cofibration (D : K ⥤ C) [D.IsWellOrderContinuous]
     (hstep : ∀ (k : K), ¬IsMax k → cofibrations C (D.map (homOfLE (Order.le_succ k)))) :

@@ -33,7 +33,7 @@ lemma roofQuillenDegreeCornerMap_normalizedOver :
     roofQuillenDegreeCornerMap A Y q b f ≫ roofCornerNormalizationMap A Y q b ≫
       roofCornerNormalizedProjection A Y q b = pullback.snd _ _ := by
   rw [roofQuillenDegreeCornerMap, Category.assoc, roofCornerNormalizationMap_over,
-    ← Category.assoc (sliceRoofCornerBase _ _ _), sliceRoofCornerBase_fst]
+    ← Category.assoc (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCornerBase _ _ _), _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceRoofCornerBase_fst]
   exact roofQuillenDegreeNormalizationMap_inv_over A Y q b f
 
 end SerrePositivity.EInfinity.FrameHom.FrameArrows

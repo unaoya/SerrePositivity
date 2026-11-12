@@ -21,8 +21,8 @@ open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
-lemma extraction_arrowMap (g : FactorTarget.Index W) :
-    arrowMap W.paths g.val.hom.toPath ≫ extraction W g.val.right g.val.left =
+lemma extraction_arrowMap (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W.paths g.val.hom.toPath ≫ extraction W g.val.right g.val.left =
       MarkedSpine.generatorMap W g := by
   rw [← generatorMap_gluing, Category.assoc, gluing_extraction, Category.comp_id]
 

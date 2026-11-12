@@ -2,8 +2,8 @@ module
 public import SerrePositivity.KST.SConstruction.DGNativeIntervalAugmentation
 public import SerrePositivity.KST.SConstruction.DGFunctorNativeEvaluationPoint
 public import SerrePositivity.KST.SConstruction.DGStrictNatTransHomEnd
-public import SerrePositivity.InfinityCategories.DGNerve.NatTrans
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 public import SerrePositivity.DifferentialGraded.Complexes.TensorJoin
 
 /-!
@@ -17,7 +17,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 open scoped Simplicial
 
 /-- 概要：全 end の単位からの係数挿入を同じ全次数評価へ送る。
@@ -50,13 +50,13 @@ lemma dgFunctorTensorEvalHom_unitInsertion (R : Type u) [CommRing R]
 規約：全入力次数を保持。使われ方：全 HA 成分の照合。 -/
 lemma dgStrictNatTransEndCoefficient_evaluation (R : Type u) [CommRing R] (D E : Type (u + 1))
     [DGCategory R D] [Small.{u} D] [DGCategory R E]
-    {F G : DGFunctor R D E} (η : StrictNatTrans F G)
+    {F G : DGFunctor R D E} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
     (p q : Fin 2) (hm : p ≤ q) {x y : D} {k : ℤ} (a : GradedHom R x y k) :
-    HEq (forward R (((HomotopyComparison.pairObj F G p).map x y).f k a)
-      ((dgFunctorHomπ R D E (HomotopyComparison.pairObj F G p)
-        (HomotopyComparison.pairObj F G q) y).f 0
+    HEq (forward R (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G p).map x y).f k a)
+      ((dgFunctorHomπ R D E (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G p)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G q) y).f 0
         (cycleFromUnit _ (simplexHAEdgeCoefficient R (DGFunctor R D E)
-          (Simplex.ofEdge (HomotopyComparison.pairObj F G)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G)
             (dgStrictNatTransEndCycle R D E η)) p q)).val) (add_zero k))
       (η.transition p q hm a) := by
   fin_cases p <;> fin_cases q
@@ -74,10 +74,10 @@ lemma dgStrictNatTransEndCoefficient_evaluation (R : Type u) [CommRing R] (D E :
   · change HEq (forward R ((F.map (x) (y)).f k _)
       ((dgFunctorHomπ R D E F G (y)).f 0
         (cycleFromUnit _ (unitFromCycle _
-          ((Simplex.ofEdge (HomotopyComparison.pairObj F G)
+          ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G)
             (dgStrictNatTransEndCycle R D E η)).edgeCycle 0 1 (by decide)))).val)
       (add_zero k)) _
-    rw [cycleFromUnit_unitFromCycle, Simplex.edgeCycle_ofEdge]
+    rw [cycleFromUnit_unitFromCycle, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.edgeCycle_ofEdge]
     change HEq (forward R ((F.map (x) (y)).f k _)
       ((dgFunctorHomπ R D E F G (y)).f 0
         (dgStrictNatTransEndElement R D E η)) (add_zero k)) _
@@ -105,19 +105,19 @@ lemma dgStrictNatTransEndCoefficient_evaluation (R : Type u) [CommRing R] (D E :
 規約：全単体次数・退化・元成分の厳密等号。使われ方：元全ホモトピーの回収。 -/
 lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Type (u + 1))
     [DGCategory R D] [Small.{u} D] [DGCategory R E]
-    {F G : DGFunctor R D E} (η : StrictNatTrans F G)
-    {N : ℕ} (s : Simplex R D N) (β : Fin (N + 1) →o Fin 2) :
+    {F G : DGFunctor R D E} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
+    {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R D N) (β : Fin (N + 1) →o Fin 2) :
     (dgNerveTensorSimplex R s
-      ((Simplex.ofEdge (HomotopyComparison.pairObj F G)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G)
         (dgStrictNatTransEndCycle R D E η)).pullback β)).map
           (dgFunctorTensorEvaluation R D E) = η.simplex s β := by
   unfold dgNerveTensorSimplex
   rw [simplexHAInverseFunctor_pullback]
-  apply Simplex.ext
-  apply SimplexData.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · funext a
-    change (HomotopyComparison.pairObj F G (β a)).obj (s.obj a) =
-      StrictNatTrans.phaseObj F G (β a) (s.obj a)
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G (β a)).obj (s.obj a) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans.phaseObj F G (β a) (s.obj a)
     generalize β a = i
     fin_cases i <;> rfl
   · apply Function.hfunext rfl
@@ -145,10 +145,10 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
     intro hk hk' h
     cases h
     subst a b k
-    let a₀ := I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)
-    let b₀ := I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)
+    let a₀ := I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)
+    let b₀ := I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)
     let k₀ : ℤ := 2 - (I.card : ℤ)
-    let e := Simplex.ofEdge (HomotopyComparison.pairObj F G)
+    let e := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G)
       (dgStrictNatTransEndCycle R D E η)
     let l := simplexHAInverseFunctor R s
     let g := DGFunctor.comp
@@ -156,35 +156,35 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
       (simplexHAInverseFunctor R e)
     have hp := cubicalLambdaFunctorPair_edgeBaseChange R D (DGFunctor R D E)
       e l (SSet.stdSimplex.map (SimplexCategory.Hom.mk β))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀)
     let z := simplexSubsetLambdaGenerator R I hI
     change HEq
       ((dgFunctorTensorEvalHom R D E
-        (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀))
-        (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀))).f k₀
+        (l.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀))
+        (l.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀))).f k₀
         (((cubicalLambdaFunctorPair R l g).map
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀)).f k₀ z))
       (η.transition (β a₀) (β b₀) _ (s.hom I a₀ b₀ k₀ hI rfl rfl rfl))
     have hc := congrArg (fun f => (dgFunctorTensorEvalHom R D E
-      (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀))
-      (l.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀))).f k₀ (f.f k₀ z)) hp
+      (l.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀), g.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀))
+      (l.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀), g.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀))).f k₀ (f.f k₀ z)) hp
     apply (heq_of_eq hc).trans
     change HEq
       ((dgFunctorTensorEvalHom R D E
-        (s.obj a₀, HomotopyComparison.pairObj F G (β a₀))
-        (s.obj b₀, HomotopyComparison.pairObj F G (β b₀))).f k₀
+        (s.obj a₀, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G (β a₀))
+        (s.obj b₀, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G (β b₀))).f k₀
         (((ρ_ (homObject R D (s.obj a₀) (s.obj b₀))).inv ≫
           (𝟙 _ ⊗ₘ simplexHAEdgeCoefficient R (DGFunctor R D E) e (β a₀) (β b₀))).f k₀
-          ((l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z)))
+          ((l.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀)).f k₀ z)))
       (η.transition (β a₀) (β b₀) _ (s.hom I a₀ b₀ k₀ hI rfl rfl rfl))
     have hu := dgFunctorTensorEvalHom_unitInsertion R D E
-      (F := HomotopyComparison.pairObj F G (β a₀))
-      (G := HomotopyComparison.pairObj F G (β b₀))
+      (F := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G (β a₀))
+      (G := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G (β b₀))
       (x := s.obj a₀) (y := s.obj b₀)
       (simplexHAEdgeCoefficient R (DGFunctor R D E) e (β a₀) (β b₀))
-      ((l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z)
+      ((l.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀)).f k₀ z)
     apply (heq_of_eq hu).trans
-    have hs : (l.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b₀)).f k₀ z =
+    have hs : (l.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a₀) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b₀)).f k₀ z =
         s.hom I a₀ b₀ k₀ hI rfl rfl rfl :=
       simplexHAInverseFunctor_native_hom R s I a₀ b₀ k₀ hI rfl rfl rfl
     rw [hs]
@@ -196,15 +196,15 @@ lemma dgFunctorNativeStrictNatTrans_simplex (R : Type u) [CommRing R] (D E : Typ
 規約：全写像の厳密等号。使われ方：元関手圏の同じ辺の回収。 -/
 lemma dgFunctorNativeStrictNatTrans_homotopyMap (R : Type u) [CommRing R]
     (D E : Type (u + 1)) [DGCategory R D] [Small.{u} D] [DGCategory R E]
-    {F G : DGFunctor R D E} (η : StrictNatTrans F G) :
-    (𝟙 (dgNerve R D) ⊗ₘ
-      (SSet.yonedaEquiv (X := dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).symm
-        (Simplex.ofEdge (HomotopyComparison.pairObj F G) (dgStrictNatTransEndCycle R D E η))) ≫
+    {F G : DGFunctor R D E} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) :
+    (𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D) ⊗ₘ
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G) (dgStrictNatTransEndCycle R D E η))) ≫
       dgFunctorNativeEvaluation R D E = η.homotopyMap := by
   ext n p
   rcases p with ⟨s, a⟩
   change (dgNerveTensorSimplex R s
-    ((Simplex.ofEdge (HomotopyComparison.pairObj F G)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G)
       (dgStrictNatTransEndCycle R D E η)).pullback
         (SSet.stdSimplex.objEquiv a).toOrderHom)).map
           (dgFunctorTensorEvaluation R D E) = _
@@ -215,23 +215,23 @@ lemma dgFunctorNativeStrictNatTrans_homotopyMap (R : Type u) [CommRing R]
 規約：全写像空間内の辺等号。使われ方：元 cone 面の指定境界照合。 -/
 lemma dgFunctorNativeStrictNatTrans_edge (R : Type u) [CommRing R]
     (D E : Type (u + 1)) [DGCategory R D] [Small.{u} D] [DGCategory R E]
-    {F G : DGFunctor R D E} (η : StrictNatTrans F G) :
+    {F G : DGFunctor R D E} (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) :
     (dgFunctorNativeFullFamilyMap R D E).app (Opposite.op ⦋1⦌)
-      (Simplex.ofEdge (HomotopyComparison.pairObj F G) (dgStrictNatTransEndCycle R D E η)) =
-      (functorEdgeOfSimplicialHomotopy η.homotopy).edge := by
-  let e := Simplex.ofEdge (HomotopyComparison.pairObj F G) (dgStrictNatTransEndCycle R D E η)
-  let i : (Δ[1] : SSet.{u + 1}) ⟶ dgNerve R (DGFunctor R D E) :=
-    (SSet.yonedaEquiv (X := dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).symm e
-  have hm : ((dgNerve R D) ◁ i) ≫ dgFunctorNativeEvaluation R D E = η.homotopyMap :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G) (dgStrictNatTransEndCycle R D E η)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy η.homotopy).edge := by
+  let e := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ofEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.pairObj F G) (dgStrictNatTransEndCycle R D E η)
+  let i : (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R D E) :=
+    (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).symm e
+  have hm : ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D) ◁ i) ≫ dgFunctorNativeEvaluation R D E = η.homotopyMap :=
     dgFunctorNativeStrictNatTrans_homotopyMap R D E η
   have h : i ≫ dgFunctorNativeFullFamilyMap R D E = curry η.homotopyMap :=
     (curry_natural_left i (dgFunctorNativeEvaluation R D E)).symm.trans
-      (congrArg (fun fm : (dgNerve R D) ⊗ (Δ[1] : SSet.{u + 1}) ⟶ dgNerve R E =>
+      (congrArg (fun fm : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D) ⊗ (Δ[1] : SSet.{u + 1}) ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R E =>
         curry fm) hm)
-  have he := congrArg (SSet.yonedaEquiv (X := (ihom (dgNerve R D)).obj (dgNerve R E))
+  have he := congrArg (SSet.yonedaEquiv (X := (ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R E))
     (n := ⦋1⦌)) h
   have hi : SSet.yonedaEquiv i = e :=
-    (SSet.yonedaEquiv (X := dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).apply_symm_apply e
+    (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R (DGFunctor R D E)) (n := ⦋1⦌)).apply_symm_apply e
   exact (congrArg ((dgFunctorNativeFullFamilyMap R D E).app (Opposite.op ⦋1⦌)) hi.symm).trans
     ((SSet.yonedaEquiv_comp i (dgFunctorNativeFullFamilyMap R D E)).symm.trans he)
 

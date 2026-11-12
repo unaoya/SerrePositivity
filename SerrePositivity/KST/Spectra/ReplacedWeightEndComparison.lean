@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.WeightedEndReedyKan
 universe u
 open CategoryTheory CategoryTheory.Limits SSet
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.CosimplicialLastVertex
 noncomputable section
@@ -30,7 +30,7 @@ lemma kanWeightPre_piIsomorphism (X : CosimplicialObject SSet.{u})
     letI := WeightedEndReedyKan.kanComplex
       (CosimplicialKanReplacement.functor.obj BousfieldKanWeightLatching.weight.{u}) X
       ReedyWeightCofibrancy.kanBousfieldKan hX
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (weightedSectionsPre
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre
       (Functor.whiskerLeft AsSmall.down kanWeightMap.{u}) (AsSmall.down ⋙ X)) := by
   let := WeightedEndReedyKan.kanComplex
     (CosimplicialKanReplacement.functor.obj stdSimplex.{u}) X

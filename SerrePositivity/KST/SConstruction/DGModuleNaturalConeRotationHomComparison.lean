@@ -12,7 +12,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma liftCongr {M N T : ModuleCategory R D}
     (f g : M ⟶ N) (ef : f = g)
@@ -48,7 +48,7 @@ private lemma isIsoMapOfPostIso {A B C : ModuleCategory R D}
     ((moduleToHomotopy R D).map e.hom)
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η

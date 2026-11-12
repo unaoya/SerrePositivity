@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 各高次 Path における値が Path 自身に依存しない、元の全豊穣作用の性質。 -/
@@ -28,7 +28,7 @@ def coherentPathActionsConstant {J : Type u} [LinearOrder J]
 lemma coherentStrictDiagramPathActionsConstant {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (F : I ⥤ C) {n : ℕ} (s : (nerve I) _⦋n⦌) :
-    coherentPathActionsConstant ((strictCoherentDiagram F).app _ (ULift.up s)) := by
+    coherentPathActionsConstant ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F).app _ (ULift.up s)) := by
   intro a b d P Q
   rfl
 

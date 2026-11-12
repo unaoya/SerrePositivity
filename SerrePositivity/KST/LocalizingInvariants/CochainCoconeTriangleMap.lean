@@ -22,10 +22,10 @@ variable {R : Type u} [CommRing R] {K L K' L' : Complex R}
   (h : f ≫ b = a ≫ g)
 
 def cochainCoconeTriangleMap : mappingCocone.triangle f ⟶ mappingCocone.triangle g where
-  hom₁ := complexMappingCoconeMap f g a b h
+  hom₁ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap f g a b h
   hom₂ := a
   hom₃ := b
-  comm₁ := (complexMappingCoconeMap_fst f g a b h).symm
+  comm₁ := (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap_fst f g a b h).symm
   comm₂ := h
   comm₃ := by
     symm
@@ -33,7 +33,7 @@ def cochainCoconeTriangleMap : mappingCocone.triangle f ⟶ mappingCocone.triang
       (shiftFunctorCompIsoId (Complex R) (-1 : ℤ) 1 (by omega)).inv.app _) =
       (mappingCone.inr f ≫
       (shiftFunctorCompIsoId (Complex R) (-1 : ℤ) 1 (by omega)).inv.app _) ≫
-        (complexMappingCoconeMap f g a b h)⟦(1 : ℤ)⟧'
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeMap f g a b h)⟦(1 : ℤ)⟧'
     rw [cochainMappingCoconeMap_eq_shift]
     have hc := (mappingCone.triangleMap f g a b h).comm₂
     change mappingCone.inr f ≫ mappingCone.map f g a b h = b ≫ mappingCone.inr g at hc

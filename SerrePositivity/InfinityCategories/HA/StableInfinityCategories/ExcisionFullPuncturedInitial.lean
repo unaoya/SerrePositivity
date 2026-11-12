@@ -1,0 +1,46 @@
+module
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.InitialJoinIso
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionCoreCospanBoundary
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionCorePunctured
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionFullPuncturedIndex
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionFullPuncturedRetraction
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ExcisionSquareGrid
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.OrderRetractionInitial
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PosetInteriorPrism
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.PullbackConeVertex
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThinNerveConeComparison
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.ThinNerveMonomorphism
+
+/-!
+概要：比較格子の初期角を実引き戻しへ置換し、矢印圏の普遍性へ接続する。
+方針：穿孔格子の同じ錐と全非初期単体を厳密に保持する。
+規約：一般安定性を仮定しない。使われ方：HA 1.4.2.15 の第二条件。
+-/
+@[expose] public section
+noncomputable section
+set_option backward.isDefEq.respectTransparency false
+universe u
+open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCategory SSet
+open MorphismProperty
+open scoped Simplicial
+namespace SerrePositivity.InfinityCategories.HA.StableInfinityCategories
+
+lemma excisionCorePuncturedToFull_nerve_mono :
+    Mono (nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCorePuncturedToFull.{u}.toFunctor) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.nerveMap_mono_of_thin_of_obj_injective _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionFullPuncturedToCore_section.injective
+
+lemma excisionCorePuncturedToFull_leftAnodyne :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.leftAnodyneExtensions (nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCorePuncturedToFull.{u}.toFunctor) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.orderRetraction_leftAnodyne _ _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionFullPuncturedToCore_section
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionFullPuncturedToCore_le
+
+lemma excisionCorePuncturedToFull_projection :
+    nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionCorePuncturedToFull.{u}.toFunctor ≫
+      nerveMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.posetSubtypeInclusion _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsExcisionFullPunctured) =
+        nerveMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.posetSubtypeInclusion _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsExcisionCorePunctured) ≫
+          nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridCoreInclusion ≫ nerveMap _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.excisionGridMiddleInclusion := by
+  apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.thinNerveHom_ext_of_vertices
+  intro v
+  rfl
+
+end SerrePositivity.InfinityCategories.HA.StableInfinityCategories

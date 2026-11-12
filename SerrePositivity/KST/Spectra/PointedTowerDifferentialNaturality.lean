@@ -35,7 +35,7 @@ variable {X Y : ℕ → PointedSimplicialSet.{u}}
 規約：fiber の射は隣接段の可換正方形から直接構成する。
 使われ方：Goerss–Jardine VIII §1。実際の幾何的微分の自然性。 -/
 theorem differential_natural (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (pointedFiber (p n)).right (r + 1) (pointedFiber (p n)).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (pointedFiber (p n)).right (r + 1) (pointedFiber (p n)).basepoint) :
     pointedGroupMap r
       (PointedFiberComparison.map (p (n + 1)) (q (n + 1)) (f (n + 2)) (f (n + 1)) (h (n + 1)))
       (differential X p n r a) =

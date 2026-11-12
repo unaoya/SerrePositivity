@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeSourceFrame
-public import SerrePositivity.InfinityCategories.ModelBridge.RightFrameReplacement
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.RightFrameReplacement
 
 /-!
 概要：E2 の実 dg 代数モデルから、比較用の関手的 right resolution を選ぶ。
@@ -26,26 +26,26 @@ attribute [local instance] EInfinity.DGAlgebra.modelCategory EInfinity.DGAlgebra
 def nativeModelFibrationFactorization :
     MorphismProperty.FunctorialFactorizationData (trivialCofibrations (Mon (Complex R)))
       (fibrations (Mon (Complex R))) := by
-  have : ModelGeneration.CofibrantlyGenerated.{u}
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       (EInfinity.DGAlgebra.generatingCofibrations (R := R))
       (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R)) :=
     EInfinity.DGAlgebra.modelCategory_cofibrantlyGenerated R
-  have := ModelGeneration.hasFunctorialFactorization_trivialCofibration_fibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_trivialCofibration_fibration
     (EInfinity.DGAlgebra.generatingCofibrations (R := R))
     (EInfinity.DGAlgebra.generatingTrivialCofibrations (R := R))
   exact MorphismProperty.functorialFactorizationData _ _
 
 def nativeModelRightResolutionFamily :
     CofibrantResolutionFamily (C := (Mon (Complex R))ᵒᵖ) simplex :=
-  EInfinity.FrameHom.rightFrameFamilyOfFactorization (nativeModelFibrationFactorization R)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameFamilyOfFactorization (nativeModelFibrationFactorization R)
 
 def nativeCellChosenRightMappingFunctor (A : Mon (Complex R)) : Mon (Complex R) ⥤ SSet.{u} :=
-  EInfinity.FrameHom.rightFrameHom (nativeModelRightResolutionFamily R) (cellResolution R A)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom (nativeModelRightResolutionFamily R) (cellResolution R A)
 
 lemma nativeCellChosenRightMapping_kanComplex (A B : Mon (Complex R)) :
     SSet.KanComplex ((nativeCellChosenRightMappingFunctor R A).obj B) := by
   have := cellResolution_isCofibrant R A
-  exact EInfinity.FrameHom.rightFrameHom_kanComplex (nativeModelRightResolutionFamily R)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.rightFrameHom_kanComplex (nativeModelRightResolutionFamily R)
     (cellResolution R A) B
 
 end SerrePositivity.KST.LocalizingInvariants.DGAlgebra

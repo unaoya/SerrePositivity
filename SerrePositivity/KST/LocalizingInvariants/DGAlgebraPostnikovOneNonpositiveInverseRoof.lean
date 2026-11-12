@@ -58,7 +58,7 @@ lemma postnikovOneMap_exists_nonpositiveInvariantInverseRoof
     (h₁ : IsProIso ((f.map (nonpositiveInclusion R)).map (groups R 1))) (i : ℕ) :
     ∃ m, ∃ hi : i ≤ m,
     ∃ c : NonpositiveInverseRoof R (f.map (postnikovFunctor R 1)) i m hi,
-      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
+      ∀ (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) (k : ℤ) (h : IsKConnective R Φ k),
         (postnikovOneValueMap R Φ f).app m ≫
             h.roofValue R Φ (postnikov_isConnective R (B.obj m).obj 1) c.roof =
           (invariantTower R Φ (A.map (postnikovFunctor R 1))).transition hi ∧

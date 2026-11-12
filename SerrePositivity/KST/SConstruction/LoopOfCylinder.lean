@@ -46,8 +46,8 @@ lemma circleCylinderDesc_point {A : SSet.{u}} (B : PointedSimplicialSet.{u})
 def loopOfCylinder {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ B.right)
     (h₀ : SSet.ι₀ ≫ h = toUnit A ≫ B.hom)
-    (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) : A ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace B).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry PointedSimplicialSet.circle.{u} B
+    (h₁ : SSet.ι₁ ≫ h = toUnit A ≫ B.hom) : A ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace B).right :=
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry PointedSimplicialSet.circle.{u} B
     (circleCylinderDesc B h h₀ h₁) (circleCylinderDesc_point B h h₀ h₁)
 
 /-- loop 射の通常の uncurry は元の円への降下そのもの。 -/
@@ -56,7 +56,7 @@ lemma loopOfCylinder_uncurry {A : SSet.{u}} (B : PointedSimplicialSet.{u})
     MonoidalClosed.uncurry (loopOfCylinder B h h₀ h₁ ≫
       PointedObject.basedHomι PointedSimplicialSet.circle.{u} B) =
         circleCylinderDesc B h h₀ h₁ := by
-  rw [loopOfCylinder, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, MonoidalClosed.uncurry_curry]
+  rw [loopOfCylinder, _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, MonoidalClosed.uncurry_curry]
 
 /-- 元の円の商射と通常の評価で loop 射を元の区間族へ厳密に戻す。 -/
 lemma loopOfCylinder_raw {A : SSet.{u}} (B : PointedSimplicialSet.{u})

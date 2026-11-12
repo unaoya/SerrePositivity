@@ -23,7 +23,7 @@ open CategoryTheory
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
   {n : SimplexCategoryᵒᵖ}
 
-lemma glue_markedSpine (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+lemma glue_markedSpine (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     MarkedSpine.glue (markedSpine W Y n X x) = x := by
   classical
   by_cases hx : (colimitValue W X Y).app n x = []
@@ -43,7 +43,7 @@ termination_by ((colimitValue W X Y).app n x).length
 decreasing_by exact nonemptyCut_residual_length_lt W ⟨x, hx⟩
 
 lemma extraction_gluing (X : Paths C) :
-    extraction W Y X ≫ MarkedSpine.gluing W Y X = 𝟙 (colimitGraph W.paths X Y) := by
+    extraction W Y X ≫ MarkedSpine.gluing W Y X = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y) := by
   ext n x
   exact glue_markedSpine W Y X x
 

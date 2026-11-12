@@ -14,8 +14,8 @@ open CategoryTheory MonoidalCategory
 open SerrePositivity.DifferentialGraded
 
 /-- 二つの元の削除標準表示を合成して一つの標準表示へ移す。 -/
-def cubeDeletionNormalComp : {n a b : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a →
-    _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal a b → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n b
+def cubeDeletionNormalComp : {n a b : ℕ} → _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a →
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal a b → _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n b
   | _, _, _, .nil, .nil => .nil
   | _, _, _, .drop d, e => .drop (cubeDeletionNormalComp d e)
   | _, _, _, .keep d, .drop e => .drop (cubeDeletionNormalComp d e)
@@ -23,10 +23,10 @@ def cubeDeletionNormalComp : {n a b : ℕ} → _root_.SerrePositivity.InfinityCa
 termination_by structural _n _a _b d _e => d
 
 /-- 削除標準表示の合成は、元の選択添字の合成を回収する。 -/
-lemma cubeDeletionNormalComp_embedding {n a b : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
-    (e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal a b) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding (cubeDeletionNormalComp d e) =
-      _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding d ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding e := by
+lemma cubeDeletionNormalComp_embedding {n a b : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
+    (e : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal a b) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalEmbedding (cubeDeletionNormalComp d e) =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalEmbedding d ∘ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalEmbedding e := by
   induction d generalizing b with
   | nil => cases e; rfl
   | drop d ih =>
@@ -36,26 +36,26 @@ lemma cubeDeletionNormalComp_embedding {n a b : ℕ} (d : _root_.SerrePositivity
     cases e with
     | drop e =>
       funext i
-      simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
+      simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalEmbedding] using
         congrArg Fin.succ (congrFun (ih e) i)
     | keep e =>
       funext i
       refine Fin.cases ?_ (fun i => ?_) i
       · rfl
-      · simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalEmbedding] using
+      · simpa [cubeDeletionNormalComp, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalEmbedding] using
           congrArg Fin.succ (congrFun (ih e) i)
 
 /-- 削除標準表示の合成は、元の頂点関数の合成を厳密に回収する。 -/
-lemma cubeDeletionNormalComp_vertex {n a b : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a)
-    (e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal a b) :
-    _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex (cubeDeletionNormalComp d e) =
-      _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex e ∘ _root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalVertex d := by
+lemma cubeDeletionNormalComp_vertex {n a b : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a)
+    (e : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal a b) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex (cubeDeletionNormalComp d e) =
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex e ∘ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalVertex d := by
   funext x i
   exact congrArg x (congrFun (cubeDeletionNormalComp_embedding d e) i)
 
 /-- 削除標準表示の合成は、元の Serre 射の合成を厳密に回収する。 -/
 lemma serreCubeDeletionNormal_comp (A : Type u) [CommRing A] {n a b : ℕ}
-    (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n a) (e : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal a b) :
+    (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n a) (e : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal a b) :
     serreCubeDeletionNormal A (cubeDeletionNormalComp d e) =
       serreCubeDeletionNormal A d ≫ serreCubeDeletionNormal A e := by
   induction d generalizing b with

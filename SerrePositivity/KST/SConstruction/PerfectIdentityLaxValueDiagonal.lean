@@ -13,9 +13,9 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 variable (F : perfectStableInfinity.{u} ⟶ Sp.{u})
-  (Q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (hQ : IsIdempotentComplete Q.obj)
+  (Q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (hQ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete Q.obj)
 
 /-- 恒等 lax 対角の値の第一射影は、元の同じ値の恒等射。 -/
 lemma perfectIdentityLaxValueDiagonal_fst :
@@ -24,7 +24,7 @@ lemma perfectIdentityLaxValueDiagonal_fst :
       perfectInvariantSpectrumHom F (laxFst (𝟙 Q) (𝟙 Q))
         (perfectLaxCategory_isIdempotentComplete (𝟙 Q) (𝟙 Q) hQ hQ) hQ = 𝟙 _ := by
   have he : (IdentityLax.exactDiagonal Q : Q ⟶ laxCategory (𝟙 Q) (𝟙 Q)) ≫
-      laxFst (𝟙 Q) (𝟙 Q) = 𝟙 Q := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (IdentityLax.diagonal_fst Q)
+      laxFst (𝟙 Q) (𝟙 Q) = 𝟙 Q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (IdentityLax.diagonal_fst Q)
   rw [← perfectInvariantSpectrumHom_comp, he, perfectInvariantSpectrumHom_id]
 
 /-- 恒等 lax 対角の値の第二射影は、元の同じ値の恒等射。 -/
@@ -34,7 +34,7 @@ lemma perfectIdentityLaxValueDiagonal_snd :
       perfectInvariantSpectrumHom F (laxSnd (𝟙 Q) (𝟙 Q))
         (perfectLaxCategory_isIdempotentComplete (𝟙 Q) (𝟙 Q) hQ hQ) hQ = 𝟙 _ := by
   have he : (IdentityLax.exactDiagonal Q : Q ⟶ laxCategory (𝟙 Q) (𝟙 Q)) ≫
-      laxSnd (𝟙 Q) (𝟙 Q) = 𝟙 Q := _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext (IdentityLax.diagonal_snd Q)
+      laxSnd (𝟙 Q) (𝟙 Q) = 𝟙 Q := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext (IdentityLax.diagonal_snd Q)
   rw [← perfectInvariantSpectrumHom_comp, he, perfectInvariantSpectrumHom_id]
 
 variable {F} (hF : IsPerfectLocalizingInvariant F)

@@ -43,7 +43,7 @@ def stageFiberMap (K : SSet.{u}) {Y Z : PointedSimplicialSet.{u}} (p : Y ⟶ Z) 
 使われ方：Goerss–Jardine VIII §1。E_1 の係数の自然性。 -/
 theorem stageDifferential_natural (K : SSet.{u}) {Y Z : PointedSimplicialSet.{u}}
     [KanComplex Y.right] [KanComplex Z.right] (p : Y ⟶ Z) (n r : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stageFiber K Y n).right (r + 1) (stageFiber K Y n).basepoint) :
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stageFiber K Y n).right (r + 1) (stageFiber K Y n).basepoint) :
     pointedGroupMap (X := stageFiber K Y (n + 1)) (Y := stageFiber K Z (n + 1)) r
       (stageFiberMap K (Y := Y) (Z := Z) p (n + 1)) (stageDifferential K Y n r a) =
       stageDifferential K Z n r (pointedGroupMap

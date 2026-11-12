@@ -29,10 +29,10 @@ def dgOdotTailKernelLiftComposite :
 規約：関手同型だけで二単体の存在を代用しない。使われ方：厚核側の実下二単体。 -/
 def dgOdotTailKernelLiftCompStruct : SSet.Edge.CompStruct
     (X := dgKInputInfinity.{u, u + 1} R)
-    (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))
-    (coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d))
-    (coherentNerveEdge (dgOdotTailKernelLiftComposite R d)) :=
-  coherentNerveCompStruct (dgOdotMilnorFlatKernelInputMap R d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTailKernelLiftComposite R d)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct (dgOdotMilnorFlatKernelInputMap R d)
     (dgOdotMilnorRightAxisInputMap R d)
 
 /-- 概要：同じ実合成証人の全二単体。
@@ -46,11 +46,11 @@ def dgOdotTailKernelLiftTriangle : (Δ[2] : SSet.{u + 2}) ⟶ dgKInputInfinity.{
 使われ方：上指定二単体との共有対角・二短辺の照合。 -/
 lemma dgOdotTailKernelLiftTriangle_edges :
     stdSimplex.δ (2 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge ∧
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge ∧
       stdSimplex.δ (0 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge ∧
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge ∧
       stdSimplex.δ (1 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d =
-        SSet.yonedaEquiv.symm (coherentNerveEdge (dgOdotTailKernelLiftComposite R d)).edge := by
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTailKernelLiftComposite R d)).edge := by
   exact ⟨by rw [dgOdotTailKernelLiftTriangle, stdSimplex.δ_comp_yonedaEquiv_symm,
                 (dgOdotTailKernelLiftCompStruct R d).d₂]; rfl,
     by rw [dgOdotTailKernelLiftTriangle, stdSimplex.δ_comp_yonedaEquiv_symm,
@@ -79,37 +79,37 @@ lemma dgOdotTailKernelLiftPerfectTriangle_inclusion :
 lemma dgOdotTailKernelLiftTriangle_nu_edges :
     stdSimplex.δ (2 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorFlatKernelInputMap R d))).edge ∧
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorFlatKernelInputMap R d))).edge ∧
       stdSimplex.δ (0 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d))).edge ∧
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgKInputNuMap R (dgOdotMilnorRightAxisInputMap R d))).edge ∧
       stdSimplex.δ (1 : Fin 3) ≫ dgOdotTailKernelLiftTriangle R d ≫ dgKInputNu R =
         SSet.yonedaEquiv.symm
-          (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow (dgKInputNuMap R (dgOdotTailKernelLiftComposite R d))).edge := by
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow (dgKInputNuMap R (dgOdotTailKernelLiftComposite R d))).edge := by
   have he := dgOdotTailKernelLiftTriangle_edges R d
   refine ⟨?_, ?_, ?_⟩
   · exact (congrArg (fun f => f ≫ dgKInputNu R) he.1).trans
       ((SSet.yonedaEquiv_symm_comp
         (X := dgKInputInfinity.{u, u + 1} R)
-        (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge (dgKInputNu R)).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d)).edge (dgKInputNu R)).symm.trans
           (congrArg SSet.yonedaEquiv.symm (dgKInputNu_edge R (dgOdotMilnorFlatKernelInputMap R d))))
   · exact (congrArg (fun f => f ≫ dgKInputNu R) he.2.1).trans
       ((SSet.yonedaEquiv_symm_comp
         (X := dgKInputInfinity.{u, u + 1} R)
-        (coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge (dgKInputNu R)).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)).edge (dgKInputNu R)).symm.trans
           (congrArg SSet.yonedaEquiv.symm (dgKInputNu_edge R (dgOdotMilnorRightAxisInputMap R d))))
   · exact (congrArg (fun f => f ≫ dgKInputNu R) he.2.2).trans
       ((SSet.yonedaEquiv_symm_comp
         (X := dgKInputInfinity.{u, u + 1} R)
-        (coherentNerveEdge (dgOdotTailKernelLiftComposite R d)).edge (dgKInputNu R)).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTailKernelLiftComposite R d)).edge (dgKInputNu R)).symm.trans
           (congrArg SSet.yonedaEquiv.symm (dgKInputNu_edge R (dgOdotTailKernelLiftComposite R d))))
 
 variable {k' : (dgKInputInfinity.{u, u + 1} R).Edge
-    (coherentNerveVertex (dgOdotMilnorFlatKernelInput R d))
-    (coherentNerveVertex (dgOdotMilnorRightAxisInput R d))}
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorRightAxisInput R d))}
   (H : SSet.Edge.CompStruct
-    (SSet.Edge.id (coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)))
-    (coherentNerveEdge (dgOdotTailKernelLiftComposite R d)) k')
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex (dgOdotMilnorFlatKernelInput R d)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotTailKernelLiftComposite R d)) k')
 
 /-- 概要：指定対角が変わる場合、差を認証する元二単体に沿って同じ下二単体を移送する。
 方針：Sp 正本の三次元証人を同じ固定 S に特殊化する。
@@ -122,8 +122,8 @@ def dgOdotTailKernelLiftDiagonalTransport :
 方針：Sp 正本の第一面を回収する。規約：別の三角形を選び直さない。
 使われ方：新指定対角を持つ上二単体との貼り合わせ。 -/
 def dgOdotTailKernelLiftTransportedCompStruct : SSet.Edge.CompStruct
-    (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))
-    (coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)) k' :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorRightAxisInputMap R d)) k' :=
   (dgOdotTailKernelLiftDiagonalTransport R d H).triangle
 
 /-- 概要：同じ移送四面体は元下二単体・移送下二単体・指定差・元単位面を保持する。
@@ -136,7 +136,7 @@ lemma dgOdotTailKernelLiftDiagonalTransport_faces :
       (dgKInputInfinity R).δ 2 t = H.simplex ∧
       (dgKInputInfinity R).δ 3 t =
         (SSet.Edge.CompStruct.idComp
-          (coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))).simplex :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorFlatKernelInputMap R d))).simplex :=
   ⟨(dgOdotTailKernelLiftDiagonalTransport R d H).d₀, rfl,
     (dgOdotTailKernelLiftDiagonalTransport R d H).d₂,
     (dgOdotTailKernelLiftDiagonalTransport R d H).d₃⟩

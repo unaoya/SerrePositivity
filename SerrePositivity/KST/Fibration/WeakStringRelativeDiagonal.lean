@@ -22,7 +22,7 @@ def simplicialDiagonalFlipIso (X : SimplexCategoryᵒᵖ ⥤ SSet.{u}) :
     exact (X.map θ).naturality θ)
 
 /-- 全面・全退化を保つ交換同型から、元の相対 S の対角を直接回収する。 -/
-def weakStringObjectRelativeDiagonalIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def weakStringObjectRelativeDiagonalIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     simplicialDiagonalFunctor.obj
       (weakStringStableSimplicial q ⋙ objectSConstructionFunctor) ≅
         simplicialDiagonalFunctor.obj (relativeSimplicialSConstruction q.hom) :=

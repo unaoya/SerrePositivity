@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackOriginalInputDetection
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanCospanPointRecognition
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalPullbackInputTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanCospanPointRecognition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalPullbackInputTransport
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SimultaneousTotalDetection
 
 /-!

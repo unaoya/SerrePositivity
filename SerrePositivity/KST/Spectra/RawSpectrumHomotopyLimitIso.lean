@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance rawHomotopyEndSelfEnrichment :
     EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
@@ -27,7 +27,7 @@ variable {I : Type u} [SmallCategory I] (X : OmegaSpectrum.{u}) (D : I ⥤ KanSe
 /-- 元の homotopy end の wedge に点つき Hom を施した実際の wedge。 -/
 def homotopyLimitMappingWedge : Wedge
     (EndRightAdjoint.postDiagram (pointedFunctor X)
-      (KanSequence.weightedDiagram (bousfieldKanWeight I) D)) :=
+      (KanSequence.weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D)) :=
   (KanSequence.homotopyLimitWedge D).map (pointedFunctor X)
 
 /-- 元の homotopy end の wedge は、点つき Hom の後でも実際に極限。 -/
@@ -40,14 +40,14 @@ def homotopyLimitMappingWedge_isLimit : IsLimit (homotopyLimitMappingWedge X D) 
 def homotopyLimitMappingEndIso :
     pointedSpace X (KanSequence.homotopyLimit D) ≅
       end_ (EndRightAdjoint.postDiagram (pointedFunctor X)
-        (KanSequence.weightedDiagram (bousfieldKanWeight I) D)) :=
+        (KanSequence.weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D)) :=
   (homotopyLimitMappingWedge_isLimit X D).conePointUniqueUpToIso (limit.isLimit _)
 
 @[reassoc (attr := simp)]
 lemma homotopyLimitMappingEndIso_hom_π (i : I) :
     (homotopyLimitMappingEndIso X D).hom ≫
         end_.π (EndRightAdjoint.postDiagram (pointedFunctor X)
-          (KanSequence.weightedDiagram (bousfieldKanWeight I) D)) i =
+          (KanSequence.weightedDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D)) i =
       pointedPost X (KanSequence.homotopyLimitEvaluation D i) :=
   IsLimit.conePointUniqueUpToIso_hom_comp
     (homotopyLimitMappingWedge_isLimit X D) (limit.isLimit _) (.left i)
@@ -55,18 +55,18 @@ lemma homotopyLimitMappingEndIso_hom_π (i : I) :
 /-- 元の点つき Hom と homotopy end の、実際の厳密な交換同型。 -/
 def homotopyLimitIso :
     pointedSpace X (KanSequence.homotopyLimit D) ≅
-      PointedWeightedEnd.obj (bousfieldKanWeight I) (D ⋙ pointedFunctor X) :=
-  homotopyLimitMappingEndIso X D ≪≫ weightedDiagramEndIso X (bousfieldKanWeight I) D
+      PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (D ⋙ pointedFunctor X) :=
+  homotopyLimitMappingEndIso X D ≪≫ weightedDiagramEndIso X (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D
 
 /-- 交換同型の順射は、元の射影による後合成と既存の cotensor 交換で計算される。 -/
 @[reassoc]
 lemma homotopyLimitIso_hom_π (i : I) :
     (homotopyLimitIso X D).hom ≫
-        end_.π (PointedWeightedEnd.diagram (bousfieldKanWeight I) (D ⋙ pointedFunctor X)) i =
+        end_.π (PointedWeightedEnd.diagram (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) (D ⋙ pointedFunctor X)) i =
       pointedPost X (KanSequence.homotopyLimitEvaluation D i) ≫
-        (cotensorIso X (D.obj i) (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).hom := by
+        (cotensorIso X (D.obj i) (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).hom := by
   change ((homotopyLimitMappingEndIso X D).hom ≫
-      end_.map (weightedDiagramIso X (bousfieldKanWeight I) D).hom) ≫ end_.π _ i = _
+      end_.map (weightedDiagramIso X (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I) D).hom) ≫ end_.π _ i = _
   rw [Category.assoc, end_.map_π, ← Category.assoc, homotopyLimitMappingEndIso_hom_π]
   rfl
 

@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Pointed.FreePathSpace
+public import SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.FreePathSpace
 public import SerrePositivity.KST.Spectra.PointedMappingFamilyVertices
-public import SerrePositivity.InfinityCategories.Core.ContractibleKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.ContractibleKan
 
 /-! # anodyne 射に沿う点つき延長の可縮な選択空間
 概要：Kan 標的への点つき射の anodyne 延長の選択空間は可縮 Kan 複体。
@@ -22,7 +22,7 @@ open scoped Simplicial
 方針：点つき写像空間の源の制限を指定した頂点で引き戻す。
 規約：等号で固定した厳密な fiber。使われ方：延長の存在と高次の選択。 -/
 def pointedExtensionSpace {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) : SSet.{u} :=
-  pullback (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+  pullback (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))
 
 /-- 概要：延長の空間から一点への射影は trivial Kan fibration。
@@ -30,23 +30,23 @@ def pointedExtensionSpace {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : 
 規約：標的のみ Kan を要求する。使われ方：選択空間の可縮性。 -/
 lemma pointedExtensionSpace_projection_trivialKanFibration {A B Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
-    TrivialKanFibration (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (pullback.snd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))) := by
-  have hp : TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right :=
-    ⟨_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp i hi Z⟩
-  exact ⟨trivialKanFibrations.pullback_snd _ _ hp.mem⟩
+  have hp : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right :=
+    ⟨_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp i hi Z⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.pullback_snd _ _ hp.mem⟩
 
 /-- 概要：点つき延長の選択空間は可縮 Kan。
 方針：一点への射影に全境界を持ち上げる。
 規約：源の Kan 性や追加の延長の存在は仮定しない。使われ方：coherent な Kan 延長。 -/
 lemma pointedExtensionSpace_isContractibleKan {A B Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right] :
-    IsContractibleKan (pointedExtensionSpace i h) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (pointedExtensionSpace i h) := by
   have hp := pointedExtensionSpace_projection_trivialKanFibration i hi h
   intro n b
   have := hp.mem (boundary n).ι inferInstance
   have sq : CommSq b (boundary n).ι
-      (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+      (pullback.snd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h)))
       (stdSimplex.isTerminalObj₀.from (Δ[n] : SSet.{u})) :=
     ⟨stdSimplex.isTerminalObj₀.hom_ext _ _⟩
@@ -58,7 +58,7 @@ lemma pointedExtensionSpace_isContractibleKan {A B Z : PointedSimplicialSet.{u}}
 def pointedExtensionMap {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (v : (pointedExtensionSpace i h) _⦋0⦌) : B ⟶ Z :=
   Spectra.PointedMapping.familyMap B Z
-    ((pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+    ((pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v)
 
 /-- 概要：選択空間から取り出した射は指定した射を厳密に延長する。
@@ -73,18 +73,18 @@ lemma pointedExtensionMap_fac {A B Z : PointedSimplicialSet.{u}} (i : A ⟶ B) (
   unfold pointedExtensionMap
   rw [Spectra.PointedMapping.familyVertex_familyMap]
   have hc := ConcreteCategory.congr_hom (NatTrans.congr_app
-    (pullback.condition (f := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right)
+    (pullback.condition (f := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right)
       (g := SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))) (Opposite.op ⦋0⦌)) v
-  have hv : (pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+  have hv : (pullback.snd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
       (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v =
         SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})) := by
     apply stdSimplex.objEquiv.injective
     exact Subsingleton.elim _ _
-  change (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right.app (Opposite.op ⦋0⦌)
-      ((pullback.fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+  change (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right.app (Opposite.op ⦋0⦌)
+      ((pullback.fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v) =
     (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h)).app (Opposite.op ⦋0⦌)
-      ((pullback.snd (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Z).right
+      ((pullback.snd (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Z).right
         (SSet.yonedaEquiv.symm (Spectra.PointedMapping.familyVertex h))).app (Opposite.op ⦋0⦌) v) at hc
   rw [hv, SSet.yonedaEquiv_symm_app_id] at hc
   exact hc
@@ -105,7 +105,7 @@ lemma pointedExtensionSpace_relative_lifting {A B Z : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (h : A ⟶ Z) [KanComplex Z.right]
     {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ pointedExtensionSpace i h) :
     ∃ b : T ⟶ pointedExtensionSpace i h, j ≫ b = a := by
-  have hp := (isContractibleKan_iff_trivialKanFibration _).1
+  have hp := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration _).1
     (pointedExtensionSpace_isContractibleKan i hi h)
   have := hp.mem j inferInstance
   have sq : CommSq a j (terminal.from (pointedExtensionSpace i h)) (terminal.from T) :=

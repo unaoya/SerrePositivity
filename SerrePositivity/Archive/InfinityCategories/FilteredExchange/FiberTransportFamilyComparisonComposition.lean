@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.FiberTransportFamily
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FiberTransportFamily
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionFiberEndpointComposition
 
 /-!

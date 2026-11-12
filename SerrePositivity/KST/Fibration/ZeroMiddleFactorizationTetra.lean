@@ -17,9 +17,9 @@ open CategoryTheory Limits MonoidalCategory MonoidalClosed CartesianMonoidalCate
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
-variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
+variable (s : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _⦋2⦌) (hZ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (s.obj ⟨ULift.up 1⟩))
   (K : SSet.{u + 1})
 
 /-- 概要：同じ未変更の三面と元の長 Hom を保持する実因子分解族の条件。
@@ -27,13 +27,13 @@ variable (s : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableIn
 規約：同じ零中間二胞体専用で、一般三単体の充填 API ではない。
 使われ方：Ind-S (9b) への実代入と指定欠面の読出し。 -/
 def zeroMiddleFactorizationTetraCondition
-    (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u}) : Prop :=
+    (F : (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u}) : Prop :=
   (stdSimplex.δ (0 : Fin 4) ▷ K) ≫ F =
     fst (Δ[2] : SSet.{u + 1}) K ≫
       SSet.yonedaEquiv.symm (zeroMiddleFullSKanLastTriangle s hZ).simplex ∧
   (stdSimplex.δ (1 : Fin 4) ▷ K) ≫ F =
     fst (Δ[2] : SSet.{u + 1}) K ≫
-      SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s) ∧
   (stdSimplex.δ (3 : Fin 4) ▷ K) ≫ F =
     fst (Δ[2] : SSet.{u + 1}) K ≫
@@ -42,9 +42,9 @@ def zeroMiddleFactorizationTetraCondition
     let t := SSet.yonedaEquiv (lift (𝟙 (Δ[3] : SSet.{u + 1})) (SSet.const k) ≫ F)
     let a := SSet.yonedaEquiv (lift (𝟙 (Δ[2] : SSet.{u + 1})) (SSet.const k) ≫
       fst (Δ[2] : SSet.{u + 1}) K ≫
-        SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+        SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
           (Opposite.op ⦋2⦌) s))
-    HEq ((SpaceInfinity.δ (2 : Fin 4) t).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
+    HEq ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 4) t).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
       (a.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
 
 /-- 概要：供給命題に条件付きで、同じ三面と指定長 Hom を保つ実族が得られる。
@@ -55,28 +55,28 @@ theorem zeroMiddleFactorizationTetra_exists (h9b : zeroMiddleFactorizationTetraS
     ∃ F, zeroMiddleFactorizationTetraCondition s hZ K F := by
   let f : stableCoreSingleKanObject (s.obj ⟨ULift.up 0⟩) ⟶
       fullSRealizationKanObject (s.obj ⟨ULift.up 0⟩) :=
-    exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (s.obj ⟨ULift.up 0⟩))
   let g := zeroMiddleFullSKanComparison s hZ
-  let h := stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.δ 0 s))
+  let h := stableCoreSingleKanMap (stableArrowExactMap (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.δ 0 s))
   let T := fst (Δ[2] : SSet.{u + 1}) K ≫
-    SSet.yonedaEquiv.symm ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+    SSet.yonedaEquiv.symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
       (Opposite.op ⦋2⦌) s)
   apply h9b _ _ _ _ f g h K T
   · dsimp only [T]
     rw [← Category.assoc, whiskerRight_fst, Category.assoc]
     apply congrArg (fun t => fst (Δ[1] : SSet.{u + 1}) K ≫ t)
-    have he := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
-      ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+    have he := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s) (2 : Fin 3)
     exact he.trans (congrArg SSet.yonedaEquiv.symm
       ((zeroMiddleCoreSingleKanTriangle_first s).trans
-        (congrArg (fun q => (coherentNerveEdge q).edge)
+        (congrArg (fun q => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge q).edge)
           (zeroMiddleFullSKanComparison_first s hZ).symm)))
   · dsimp only [T]
     rw [← Category.assoc, whiskerRight_fst, Category.assoc]
     apply congrArg (fun t => fst (Δ[1] : SSet.{u + 1}) K ≫ t)
-    have he := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
-      ((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+    have he := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s) (0 : Fin 3)
     exact he.trans (congrArg SSet.yonedaEquiv.symm (zeroMiddleCoreSingleKanTriangle_last s))
 
@@ -85,7 +85,7 @@ theorem zeroMiddleFactorizationTetra_exists (h9b : zeroMiddleFactorizationTetraS
 規約：供給命題は明示引数で、存在は無条件化しない。
 使われ方：元の三角柱と固定三面比較の共通する実入力。 -/
 def zeroMiddleFactorizationTetra (h9b : zeroMiddleFactorizationTetraSupply.{u}) :
-    (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ SpaceInfinity.{u} :=
+    (Δ[3] : SSet.{u + 1}) ⊗ K ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} :=
   (zeroMiddleFactorizationTetra_exists s hZ K h9b).choose
 
 /-- 概要：選んだ同じ実族は三面と指定長 Hom の条件を保持する。
@@ -103,21 +103,21 @@ theorem zeroMiddleFactorizationTetra_spec (h9b : zeroMiddleFactorizationTetraSup
 使われ方：制御上側と元の全 S• Hom の core 制限の照合。 -/
 theorem zeroMiddleFactorizationTetra_longHom
     (h9b : zeroMiddleFactorizationTetraSupply.{u}) (k : K _⦋0⦌) :
-    HEq ((SpaceInfinity.δ (2 : Fin 4)
+    HEq ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 4)
       (SSet.yonedaEquiv (lift (𝟙 (Δ[3] : SSet.{u + 1})) (SSet.const k) ≫
         zeroMiddleFactorizationTetra s hZ K h9b))).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
-      (((coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app
         (Opposite.op ⦋2⦌) s).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
   have h := (zeroMiddleFactorizationTetra_spec s hZ K h9b).2.2.2 k
-  let a : SpaceInfinity.{u} _⦋2⦌ :=
-    (coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s
+  let a : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} _⦋2⦌ :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap stableCoreSingleKanEnrichedFunctor).app (Opposite.op ⦋2⦌) s
   have he : lift (𝟙 (Δ[2] : SSet.{u + 1})) (SSet.const k) ≫
       fst (Δ[2] : SSet.{u + 1}) K ≫ SSet.yonedaEquiv.symm a =
         SSet.yonedaEquiv.symm a := by
     rw [← Category.assoc, lift_fst, Category.id_comp]
-  have ha := (congrArg (SSet.yonedaEquiv (X := SpaceInfinity.{u})) he).trans
+  have ha := (congrArg (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})) he).trans
     (SSet.yonedaEquiv.apply_symm_apply a)
-  have hm : ∀ a b : SpaceInfinity.{u} _⦋2⦌, a = b →
+  have hm : ∀ a b : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} _⦋2⦌, a = b →
       HEq (a.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) (b.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
     intro a b hab
     subst b

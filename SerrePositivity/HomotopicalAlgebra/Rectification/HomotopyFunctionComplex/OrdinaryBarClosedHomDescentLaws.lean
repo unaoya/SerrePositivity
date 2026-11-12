@@ -51,7 +51,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (P : SSet.{max u v})
 
 lemma native_identity_homotopy {T : SSet.{v}} (X : D C)
-    (j : UniverseLift.obj.{max u v} T ⟶ P) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P) :
     Nonempty (SSet.Homotopy
       (nativeFamily hcof hfib P j (SSet.stdSimplex.isTerminalObj₀.from _ ≫ baseIdentity C X))
       (toUnit T ≫ MonoidalClosed.id (small hcof hfib X))) := by
@@ -61,9 +61,9 @@ lemma native_identity_homotopy {T : SSet.{v}} (X : D C)
     OrdinaryBarDiagonalClosedAction.nativeFamily_identity] using h
 
 lemma native_composition_homotopy {T : SSet.{v}} {X Y Z : D C}
-    (j : UniverseLift.obj.{max u v} T ⟶ P)
-    (f : UniverseLift.obj.{max u v} T ⟶ baseHom C X Y)
-    (g : UniverseLift.obj.{max u v} T ⟶ baseHom C Y Z) :
+    (j : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ P)
+    (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C X Y)
+    (g : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} T ⟶ baseHom C Y Z) :
     Nonempty (SSet.Homotopy
       (nativeFamily hcof hfib P j (lift f g ≫ baseComposition C X Y Z))
       (lift (nativeFamily hcof hfib P j f) (nativeFamily hcof hfib P j g) ≫

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.KanMappingComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition
 public import SerrePositivity.KST.SConstruction.KanFibrationTriangleLifting
 
 /-! # 元の両辺と全基底合成面を保つ実合成の持ち上げ
@@ -21,9 +21,9 @@ variable {E B : SSet.{u}} {x y z : E _⦋0⦌} (a : E.Edge x y) (b : E.Edge y z)
   (p : E ⟶ B)
 
 /-- 元の両辺と、同じ全基底合成辺・全基底合成面を持つ実合成。 -/
-structure KanMappingCompositionOver (R : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition (a.map p) (b.map p)) where
+structure KanMappingCompositionOver (R : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition (a.map p) (b.map p)) where
   /-- 元の同じ二辺を保持する実合成。 -/
-  composition : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition a b
+  composition : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition a b
   /-- 合成辺全体の射影を厳密に保持する。 -/
   edge_eq : composition.edge.map p = R.edge
   /-- 全合成面の射影は元の同じ全基底面。 -/
@@ -32,7 +32,7 @@ structure KanMappingCompositionOver (R : _root_.SerrePositivity.InfinityCategori
 
 /-- 元の二辺を保ち、指定全基底合成辺と全基底合成面を同時に持ち上げる。 -/
 def kanMappingCompositionLiftData [Fibration p]
-    (R : _root_.SerrePositivity.InfinityCategories.Kan.KanMappingComposition (a.map p) (b.map p)) : KanMappingCompositionOver a b p R := by
+    (R : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.KanMappingComposition (a.map p) (b.map p)) : KanMappingCompositionOver a b p R := by
   apply Classical.choice
   obtain ⟨e, T, hT, he⟩ := exists_kanFibration_liftCompositionTriangle p a b R.edge R.triangle
   refine ⟨⟨⟨e, T⟩, SSet.Edge.ext he, ?_⟩⟩

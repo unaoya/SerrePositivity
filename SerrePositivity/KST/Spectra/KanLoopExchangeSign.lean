@@ -25,10 +25,10 @@ noncomputable section
 規約：符号反転は Kan 円の整数次数 -1 の実際の射。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HA §1.4.2。スペクトルの符号を調整する構造射。 -/
 theorem kanLoop_exchange_sign (Z : PointedSimplicialSet.{u}) [KanComplex Z.right] :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u}
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso CirclePower.space.{u} CirclePower.space.{u}
       (PointedObject.basedHom CirclePower.space.{u} Z)).hom.right =
     mapπ₀ (PointedObject.basedHomMap CirclePower.space.{u}
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap.{u} (-1))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap.{u} (-1))
         (PointedObject.basedHom CirclePower.space.{u} Z))).right :=
   (kanDoubleCircleLoop_exchange Z).trans
     (LoopMappingClasses.target_integer_eq_inner_integer CirclePower.space.{u} Z (-1))

@@ -28,12 +28,12 @@ open CategoryTheory Limits
 -/
 theorem isHomotopyPullback_exInfinity_iff {P X Y B : SSet.{u}}
     {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ B} {g : Y ⟶ B} (sq : CommSq a b f g) :
-    IsHomotopyPullback (exInfinity.map_commSq sq) ↔ IsHomotopyPullback sq := by
+    IsHomotopyPullback (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq) ↔ IsHomotopyPullback sq := by
   symm
-  exact isHomotopyPullback_iff_of_localized_isIso sq (exInfinity.map_commSq sq)
-    (exInfinityUnit.app P) (exInfinityUnit.app X) (exInfinityUnit.app Y) (exInfinityUnit.app B)
-    (exInfinityUnit.naturality a) (exInfinityUnit.naturality b)
-    (exInfinityUnit.naturality f) (exInfinityUnit.naturality g)
+  exact isHomotopyPullback_iff_of_localized_isIso sq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map_commSq sq)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app P) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app X) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app Y) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app B)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality a) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality b)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality g)
     inferInstance inferInstance inferInstance inferInstance
 
 end SerrePositivity.KST.Comparison

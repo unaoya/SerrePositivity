@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FiberwisePullbackNativeConeLeg
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanConeHomotopyTriangles
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanNativeConeTriangle
 
 /-!

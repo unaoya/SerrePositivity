@@ -4,6 +4,7 @@ public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacemen
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneHomotopyLocalization
 public import Mathlib.CategoryTheory.Limits.Shapes.Pullback.HasPullback
 public import Mathlib.AlgebraicTopology.SimplicialSet.KanComplex
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # bar 比較に用いるホモトピー引き戻しの模型
@@ -131,6 +132,7 @@ def homotopyPullbackMap {X Y Z X' Y' Z' : SSet.{u}}
 規約：Segal 1974 Proposition 1.6。性質の定義であり、bar の比較定理の仮定ではない。
 使われ方：貼り合わせと対角比較で証明すべき結論の型。
 -/
+@[kerodon 010L]
 def IsHomotopyPullback {P X Y Z : SSet.{u}}
     {a : P ⟶ X} {b : P ⟶ Y} {f : X ⟶ Z} {g : Y ⟶ Z} (sq : CommSq a b f g) : Prop :=
   IsIso (AnodyneHomotopy.anodyneQ.map (homotopyPullbackComparison sq))

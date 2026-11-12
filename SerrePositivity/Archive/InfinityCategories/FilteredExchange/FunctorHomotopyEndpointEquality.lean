@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-!
 概要：元の実ホモトピーを両端の厳密な等式で表示し直す。

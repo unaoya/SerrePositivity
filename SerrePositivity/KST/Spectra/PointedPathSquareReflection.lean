@@ -49,7 +49,7 @@ lemma pathBoundaryHomotopy_h : (pathBoundaryHomotopy P Q).h =
   rw [whiskerRight_fst_assoc]
 
 variable {B : PointedSimplicialSet.{u}} [KanComplex E.right] [KanComplex B.right]
-  (q : E ⟶ B) (hq : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism q.right)
+  (q : E ⟶ B) (hq : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism q.right)
   (H : SSet.Homotopy ((P.basedPost q).path) ((Q.basedPost q).path))
   (hH₀ : SquareAdjustment.leftSide ≫ H.h = SSet.const (familyVertex (f ≫ q)))
   (hH₁ : SquareAdjustment.rightSide ≫ H.h = SSet.const (familyVertex (g ≫ q)))
@@ -58,8 +58,8 @@ variable {B : PointedSimplicialSet.{u}} [KanComplex E.right] [KanComplex B.right
 def pathSquareReflection :
     RelativeHomotopyReflection (PointedObject.basedHomMap T q) (boundary 1).ι H
       (pathBoundaryHomotopy P Q) := by
-  let homE : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
-  let homB : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  let homE : KanComplex (PointedObject.basedHom T E).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
+  let homB : KanComplex (PointedObject.basedHom T B).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   have hv : (pathBoundaryHomotopy P Q).h ≫ (PointedObject.basedHomMap T q).right =
       (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ H.h := by
     have hp : (pathBoundaryHomotopy P Q).h ≫ (PointedObject.basedHomMap T q).right =

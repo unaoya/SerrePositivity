@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.TotalKanProductComparison
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.HomotopyWhiskering
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.TotalKanProductComparison
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.HomotopyWhiskering
 
 /-!
 概要：底で一致する二つの指定ホモトピーを、引き戻し内のホモトピーへまとめる。

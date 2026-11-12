@@ -13,40 +13,40 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeOverSimplex_naturality {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌) :
     normalizedTensorDoubleConeOverSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c) =
-      (sliceOver (normalizedTensorConePoint A X)).map
-        (SimplexCategory.mkHom (prependOrderHom θ.toOrderHom)).op
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (normalizedTensorConePoint A X)).map
+        (SimplexCategory.mkHom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom)).op
         (normalizedTensorDoubleConeOverSimplex A X Y c) := by
   apply Subtype.ext
-  change (joinStdSimplexIso (m + 1) 0).hom ≫
-      (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (m + 1) 0).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
         (normalizedTensorDoubleConeSimplex A X Y ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) =
-    joinMap (SSet.stdSimplex.map (SimplexCategory.mkHom (prependOrderHom θ.toOrderHom)))
-      (𝟙 Δ[0]) ≫ ((joinStdSimplexIso (n + 1) 0).hom ≫
-        (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.stdSimplex.map (SimplexCategory.mkHom (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.prependOrderHom θ.toOrderHom)))
+      (𝟙 Δ[0]) ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫
+        (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
           (normalizedTensorDoubleConeSimplex A X Y c))
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_naturality, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_naturality, Category.assoc,
     SSet.yonedaEquiv_symm_naturality_left]
   have hn := (normalizedTensorDoubleConeSimplex_pullback_map A X Y c θ).symm
-  exact congrArg (fun s : Simplex A (Complex A) (m + 2) =>
-    (joinStdSimplexIso (m + 1) 0).hom ≫
-      (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm s) hn
+  exact congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) (m + 2) =>
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (m + 1) 0).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm s) hn
 
 lemma normalizedTensorDoubleConeOverSimplex_projection {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
-    (sliceOverProjection (normalizedTensorConePoint A X)).app (Opposite.op ⦋n + 1⦌)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (normalizedTensorConePoint A X)).app (Opposite.op ⦋n + 1⦌)
       (normalizedTensorDoubleConeOverSimplex A X Y c) = normalizedTensorConeSimplex A X Y c := by
-  change SSet.yonedaEquiv (joinInl (Δ[n + 1] : SSet.{u + 1}) Δ[0] ≫
-    ((joinStdSimplexIso (n + 1) 0).hom ≫
-      (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+  change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (Δ[n + 1] : SSet.{u + 1}) Δ[0] ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
         (normalizedTensorDoubleConeSimplex A X Y c))) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_inl,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inl,
     ← SSet.yonedaEquiv_naturality, Equiv.apply_symm_apply]
   exact normalizedTensorDoubleConeSimplex_front A X Y c
 

@@ -29,7 +29,7 @@ lemma kanAdjointTracedBoundaryInterval_transpose_path (n : ℕ) :
     change (kanAdjointTracedEvaluationInterval X Y (j ≫ φ) n).path = _
     exact kanAdjointTracedEvaluationInterval_path X Y (j ≫ φ) n
   change (kanAdjointTracedBoundaryInterval X Y φ j n).path ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B (X.level n).space
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B (X.level n).space
       ((KanSequence.signedLoopTail Y.toKanSequence).level n).space).hom.right = _
   rw [hp]
   exact (kanAdjointTracedStageComparison X Y (j ≫ φ) n).basedTranspose_twice_path
@@ -65,7 +65,7 @@ lemma kanAdjointTracedAdjustedStageInterval_projection_path [Mono j.right] (n : 
   let s := kanAdjointTracedBoundaryCoordinate X Y φ j n
   let R := kanAdjointTracedBoundaryInterval X Y φ j n
   have hr : s.interval.path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed j (kanAdjointParameterTarget X Y n)).right = R.path := by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed j (kanAdjointParameterTarget X Y n)).right = R.path := by
     apply PointedMapping.VerticalPath.path_restriction_eq_of_homotopy
     rw [KanAdjointBoundaryCoordinate.interval_h]
     exact s.comparison_boundary

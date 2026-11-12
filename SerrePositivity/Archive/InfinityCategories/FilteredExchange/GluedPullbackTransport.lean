@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Filtered.GluedFiberDetection
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.GluedFiberDetection
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PullbackHomotopy
 
 /-!

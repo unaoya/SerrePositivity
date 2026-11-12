@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTrianglePostThreeEdges
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoComponentTransport
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoComponentTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：元の指定三角形比較を、元の二つの native 後合成の厳密な合成へ表示する。

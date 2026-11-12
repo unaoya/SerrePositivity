@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectFunctor
-public import SerrePositivity.InfinityCategories.Derived.DGModuleResolutionStrictNatTransInvertible
-public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleResolutionStrictNatTransInvertible
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGModuleStrictNatTrans
 
 /-!
 概要：同じ解像度 graph 増大を native 導来加群値の全関手同型として保持する。
@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.Derived.DGModuleStrictNatTrans
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (B : Type (max (u + 1) v))
   [DGCategory R B] [Small.{u} B]
 local notation "P" => DGCategoryCellResolution.Source R B
@@ -47,9 +47,9 @@ lemma dgCellResolvedGraphAugmentationMap_naturality (F : DGFunctor R B B) (x y :
 方針：元の全自然な閉零成分を実変換へ束ねる。規約：元射を保持。
 使われ方：同じ全単体の native 増大比較。 -/
 def dgCellResolvedGraphAugmentationStrictNatTrans (F : DGFunctor R B B) :
-    StrictNatTrans (dgCellResolvedGraphModuleFunctor R B F)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgCellResolvedGraphModuleFunctor R B F)
       (dgCellRestrictedGraphModuleFunctor R B F) :=
-  dgModuleStrictNatTransOfHomNaturality R (P)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R (P)
     (dgCellResolvedGraphAugmentationMap R B F)
     (dgCellResolvedGraphAugmentationMap_naturality R B F)
 
@@ -57,12 +57,12 @@ def dgCellResolvedGraphAugmentationStrictNatTrans (F : DGFunctor R B B) :
 方針：元実増大の全点準同型性を同じ全自然変換に適用する。
 規約：H⁰ の対象別同型だけを結論にしない。使われ方：元 native 成分の全回収。 -/
 lemma dgCellResolvedGraphAugmentationNativeHom_isIso (F : DGFunctor R B B) :
-    IsIso (functorHomPostcomp (dgNerve.map (dgCellResolvedGraphModuleFunctor R B F))
-      (dgNerve.map (dgCellRestrictedGraphModuleFunctor R B F))
-      (dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
-      (dgStrictNatTransNerveHom R (P) (RightModule R (P))
+    IsIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellResolvedGraphModuleFunctor R B F))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellRestrictedGraphModuleFunctor R B F))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R (P) (RightModule R (P))
         (dgCellResolvedGraphAugmentationStrictNatTrans R B F))) :=
-  dgModuleResolution_strictNatTrans_isIso_of_quasiIso R (P) (P)
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolution_strictNatTrans_isIso_of_quasiIso R (P) (P)
     (dgCellResolvedGraphAugmentationMap R B F)
     (dgCellResolvedGraphAugmentationMap_naturality R B F)
     (dgCellResolvedGraph_evaluation_quasiIso R B F)
@@ -71,16 +71,16 @@ lemma dgCellResolvedGraphAugmentationNativeHom_isIso (F : DGFunctor R B B) :
 方針：指定した元増大の関手射をそのまま同型へ束ねる。
 規約：始域・全単体・増大射を保持。使われ方：中央射の native 比較の二縦辺。 -/
 def dgCellResolvedGraphAugmentationNativeComparison (F : DGFunctor R B B) :
-    FunctorIso
-      (dgNerve.map (dgCellResolvedGraphModuleFunctor R B F) ≫
-        dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
-      (dgNerve.map (dgCellRestrictedGraphModuleFunctor R B F) ≫
-        dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellResolvedGraphModuleFunctor R B F) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellRestrictedGraphModuleFunctor R B F) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P)))) := by
   letI := dgCellResolvedGraphAugmentationNativeHom_isIso R B F
-  exact asIso (functorHomPostcomp (dgNerve.map (dgCellResolvedGraphModuleFunctor R B F))
-    (dgNerve.map (dgCellRestrictedGraphModuleFunctor R B F))
-    (dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
-    (dgStrictNatTransNerveHom R (P) (RightModule R (P))
+  exact asIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.functorHomPostcomp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellResolvedGraphModuleFunctor R B F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgCellRestrictedGraphModuleFunctor R B F))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity R (RightModule R (P)) (P) (DGFunctor.id (RightModule R (P))))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransNerveHom R (P) (RightModule R (P))
       (dgCellResolvedGraphAugmentationStrictNatTrans R B F)))
 
 end SerrePositivity.KST.SConstruction

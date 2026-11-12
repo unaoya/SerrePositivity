@@ -17,7 +17,7 @@ universe u v w
 open CategoryTheory Limits MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.Spectra
 open SerrePositivity.KST.LocalizingInvariants SerrePositivity.KST.Fibration
 namespace SerrePositivity.KST.NonConnective
@@ -32,33 +32,33 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, max (u + 1) v} R)
 規約：供給された全四角形比較を使い、対象別同値から自然性を推論しない。
 使われ方：同じ元の BF 零角の零性の検出。 -/
 theorem dgKappaNativeBF_corner_spaceEvaluation_isTerminal (r : ℕ) :
-    IsTerminalVertex (squareVertex (dgKappaNativeBFSquare R D I hBF ≫
-      coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) 0 1) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))) 0 1) := by
   have ht := verdierMultiKanSquare_corner_isTerminal r (dgKappaNativeVerdierDiagram R D I)
-  let k := squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1})) 0 1
-  exact ht.of_vertexIso (VertexIso.map (dgKappaNativeBFMultiSquareIso R D I hBF r)
-    (evaluateFunctorAt k))
+  let k := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (𝟙 (Δ[1] ⊗ Δ[1] : SSet.{max (u + 1) v + 1})) 0 1
+  exact ht.of_vertexIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map (dgKappaNativeBFMultiSquareIso R D I hBF r)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt k))
 
 /-- 概要：同じ供給 BF 四角形の零角は、元の一点スペクトルとの実同型で零。
 方針：元の一点射の全正段の可逆性を、同じ実 Sp 辺へ反映する。
 規約：有限 BF 供給命題だけに条件付き。Sp の安定性や K の局所化性は使わない。
 使われ方：同じ元の BF 四角形から実 fiber を作る零角。 -/
 theorem dgKappaNativeBFSquare_zero_corner :
-    IsZeroVertex (squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1) := by
-  let z := squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1
-  let X := coherentNerveObject z
-  let f := spectrumPoint_isTerminal.from X
-  let e : Sp.Edge z (coherentNerveVertex spectrumPoint.{max (u + 1) v}) :=
-    (coherentNerveEdge f).ofEq (coherentNerveVertex_object z) rfl
-  have he : IsInvertibleEdge e.toTruncated := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1) := by
+  let z := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (dgKappaNativeBFSquare R D I hBF) 0 1
+  let X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject z
+  let f := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal.from X
+  let e : Sp.Edge z (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint.{max (u + 1) v}) :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).ofEq (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object z) rfl
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge e.toTruncated := by
     apply spectrumEdge_isInvertible_of_positive_spaceEvaluation
     intro r
     have hs := dgKappaNativeBF_corner_spaceEvaluation_isTerminal R D I hBF r
-    have ht : IsTerminalVertex
-        ((coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))).app
-          (Opposite.op ⦋0⦌) (coherentNerveVertex spectrumPoint)) := by
-      rw [coherentNerveMap_vertex]
-      apply _root_.SerrePositivity.InfinityCategories.Stable.KanModels.kanVertex_isTerminal_of_localized_toPoint
+    have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.IsTerminalVertex
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (spectrumSpaceEvaluation.{max (u + 1) v} (r + 1))).app
+          (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint)) := by
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex]
+      apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.KanModels.kanVertex_isTerminal_of_localized_toPoint
       change IsIso (SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
         (terminal.from (𝟙_ SSet.{max (u + 1) v})))
       have : IsIso (terminal.from (𝟙_ SSet.{max (u + 1) v})) :=

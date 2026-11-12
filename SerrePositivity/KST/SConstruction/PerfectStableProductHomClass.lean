@@ -50,17 +50,17 @@ lemma perfectStableProduct_homMk_eq_of_projections
 方針：既存の直積比較の忠実性に元の二射影を渡す。
 規約：元の四端点と辺を保持。使われ方：対角比較の端点制限の同時検出。 -/
 lemma stableInfinityProduct_homMk_eq_of_projections
-    {x y : (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}) _⦋0⦌}
+    {x y : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}) _⦋0⦌}
     (f g : SSet.Truncated.Edge
-      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})) x y)
+      (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⊗ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u})) x y)
     (h₀ : SSet.Truncated.HomotopyCategory.homMk (f.map ((truncation 2).map
-      (fst _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))) =
+      (fst _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))) =
         SSet.Truncated.HomotopyCategory.homMk (g.map ((truncation 2).map
-          (fst _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))))
+          (fst _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))))
     (h₁ : SSet.Truncated.HomotopyCategory.homMk (f.map ((truncation 2).map
-      (snd _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u}))) =
+      (snd _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u}))) =
         SSet.Truncated.HomotopyCategory.homMk (g.map ((truncation 2).map
-          (snd _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u})))) :
+          (snd _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u})))) :
     SSet.Truncated.HomotopyCategory.homMk f = SSet.Truncated.HomotopyCategory.homMk g := by
   exact productHomClass f g h₀ h₁
 end SerrePositivity.KST.SConstruction

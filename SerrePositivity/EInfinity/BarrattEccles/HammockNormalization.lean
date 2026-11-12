@@ -23,11 +23,11 @@ open CategoryTheory HomotopicalAlgebra
 namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
-lemma algebraHammockMergeErase_join {k : ℕ} (d : Fin (k + 2) → Hammock.Direction)
+lemma algebraHammockMergeErase_join {k : ℕ} (d : Fin (k + 2) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction)
     (p : Fin (k + 1)) (hp : d p.castSucc = d p.succ) (j : Fin (k + 2))
     {n : SimplexCategoryᵒᵖ}
-    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : Hammock.Word) X Y).obj n)
-    (hτ : ∀ r, Hammock.IdentityColumn (τ.obj r) j) :
+    (τ : (algebraHammockGraph A (⟨k + 2, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
     ∃ s : algebraHammockRaw A X Y n,
       Relation.ReflGen (algebraHammockRawReduction A X Y)
         (algebraHammockMergeRaw A X Y d p hp τ) s ∧

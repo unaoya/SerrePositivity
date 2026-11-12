@@ -27,21 +27,21 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。成分微分と幾何的 coboundary の代表の比較。 -/
 theorem exists_cellComponentDifferential_boundaryRepresentative (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K Y n).right 0
       (UnbasedPointedMapping.stageFiber K Y n).basepoint) (s : K.nonDegenerate (n + 2)) :
     ∃ (t : (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right.PtSimplex 1
         ((UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right.app _
           (UnbasedPointedMapping.obj (Δ[n + 2] : SSet.{u}) Y).basepoint))
-      (L : _root_.SerrePositivity.InfinityCategories.Kan.BoundaryLift (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right
+      (L : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.BoundaryLift (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y).right
         (UnbasedPointedMapping.obj (Δ[n + 2] : SSet.{u}) Y).basepoint t),
       cellComponentConnectingInput K Y n a s =
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfIso 0
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfIso 0
           (Iso.refl (UnbasedPointedMapping.obj (boundary (n + 2) : SSet.{u}) Y).right)
-          (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint
-            (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y)) (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk t) ∧
+          (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint
+            (UnbasedPointedMapping.pre (boundary (n + 2)).ι Y)) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk t) ∧
       stageFiberComponentEquiv K Y (n + 1)
           (UnbasedPointedMapping.stageComponentDifferential K Y n a) s =
-        _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 2)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (SphereSimplex.equiv Y (n + 2)
           ((SimplexCell.sphereIso.{u} (n + 2)).inv ≫
             UnbasedPointedMapping.cofiberBoundaryMap (boundary (n + 2)).ι Y L)) := by
   obtain ⟨t, L, ht, hL⟩ := UnbasedPointedMapping.exists_connectingZero_boundaryRepresentative

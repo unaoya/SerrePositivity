@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockWeakArrows
-public import SerrePositivity.InfinityCategories.F1B.Localization.Localization
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Localization
 
 /-!
 # 元の W の辺を反転する実 hammock nerve 関手
@@ -20,19 +20,19 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def weakNerveEdges : Set ((nerve C.category) _⦋1⦌) :=
   {s | ∃ (X Y : C.category) (f : X ⟶ Y),
     C.weakEquivalences f ∧ s = ComposableArrows.mk₁ f}
 
 lemma hammockLocalizationNerveMap_inverts :
-    InvertsEdges (hammockLocalizationNerveMap C) (weakNerveEdges C) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.InvertsEdges (hammockLocalizationNerveMap C) (weakNerveEdges C) := by
   intro s hs
   obtain ⟨X, Y, f, hf, rfl⟩ := hs
-  apply (isInvertibleEdge_congr (e := (edgeOfSimplex (ComposableArrows.mk₁ f)).map
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex (ComposableArrows.mk₁ f)).map
     ((SSet.truncation 2).map (hammockLocalizationNerveMap C)))
-    (f := (coherentNerveEdge ((kanHammockSourceFunctor C).map f)).toTruncated) ?_).2
+    (f := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kanHammockSourceFunctor C).map f)).toTruncated) ?_).2
   · exact kanHammockSourceFunctor_weak_invertible C f hf
   · exact hammockLocalizationNerveMap_arrow C f
 

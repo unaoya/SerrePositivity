@@ -19,39 +19,39 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の列の指定頂点への完全な評価。 -/
-def weakStringVertexExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+def weakStringVertexExact {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) : weakStringModel q n ⟶ sInputModel B :=
-  ⟨(fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j),
+  ⟨(_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakStringPredicate q n)).ι ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j),
     (closedStableInclusion (weakStringClosedPredicate q n)).property.comp
       (evaluateFunctorAt_preservesSConstructionData (stdSimplex.obj₀Equiv.symm j)).toCofiberData⟩
 
 /-- 頂点評価は元の全ての再添字と厳密に可換する。 -/
-lemma weakStringVertexExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringVertexExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (j : Fin (m.len + 1)) :
     weakStringExactMap q θ ≫ weakStringVertexExact q m j =
       weakStringVertexExact q n (θ.toOrderHom j) := by
   apply Subtype.ext
-  change weakStringMap q θ ≫ ((fullSubcomplexOnVertices _ (weakStringPredicate q m)).ι ≫
-    evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j)) = _
-  rw [← Category.assoc, weakStringMap_ι, Category.assoc, stable_pre_evaluateFunctorAt]
+  change weakStringMap q θ ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ (weakStringPredicate q m)).ι ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (stdSimplex.obj₀Equiv.symm j)) = _
+  rw [← Category.assoc, weakStringMap_ι, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
   rfl
 
 /-- 同じ頂点評価を、全頂点を持つ閉じた部分圏に値を持つ射として保持する。 -/
-def weakStringVertexTopMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+def weakStringVertexTopMap {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     (weakStringModel q n).carrier ⟶ closedSubcategory (ClosedStablePredicate.top (sInputModel B)) :=
-  fullSubcomplexLift _ (weakStringVertexExact q n j).val (fun _ => trivial)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (weakStringVertexExact q n j).val (fun _ => trivial)
 
 /-- 全頂点部分圏の包含は、元の評価を回収する。 -/
-lemma weakStringVertexTopMap_ι {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringVertexTopMap_ι {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     weakStringVertexTopMap q n j ≫
       (closedStableInclusion (ClosedStablePredicate.top (sInputModel B))).val =
         (weakStringVertexExact q n j).val := rfl
 
 /-- K-1 の全頂点部分圏に値を持つ同じ完全な頂点評価。 -/
-def weakStringVertexTopExact {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+def weakStringVertexTopExact {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (n : SimplexCategory) (j : Fin (n.len + 1)) :
     weakStringModel q n ⟶ closedStableModel (ClosedStablePredicate.top (sInputModel B)) :=
   ⟨weakStringVertexTopMap q n j, by
@@ -63,13 +63,13 @@ def weakStringVertexTopExact {B C : _root_.SerrePositivity.InfinityCategories.St
     exact (weakStringVertexExact q n j).property⟩
 
 /-- 全頂点部分圏に値を持つ評価も、元の全ての再添字と厳密に可換する。 -/
-lemma weakStringVertexTopExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma weakStringVertexTopExact_reindex {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     {m n : SimplexCategory} (θ : m ⟶ n) (j : Fin (m.len + 1)) :
     weakStringExactMap q θ ≫ weakStringVertexTopExact q m j =
       weakStringVertexTopExact q n (θ.toOrderHom j) := by
   apply Subtype.ext
   have : Mono (closedStableInclusion (ClosedStablePredicate.top (sInputModel B))).val :=
-    inferInstanceAs (Mono (fullSubcomplexOnVertices (sInputModel B).carrier
+    inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices (sInputModel B).carrier
       (ClosedStablePredicate.top (sInputModel B)).predicate).ι)
   apply (cancel_mono (closedStableInclusion (ClosedStablePredicate.top (sInputModel B))).val).1
   change (weakStringMap q θ ≫ weakStringVertexTopMap q m j) ≫ _ =

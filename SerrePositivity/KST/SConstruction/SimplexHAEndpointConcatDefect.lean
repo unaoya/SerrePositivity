@@ -19,7 +19,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 全小次元の実復元鎖射があれば、任意の内部端点連結生成元の実微分差は零。 -/
-lemma simplexHADegreeDefect_endpoint_concat_zero {N : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHADegreeDefect_endpoint_concat_zero {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (n m : ℕ) (i : SerreCubeGeneratorIndex n) (j : SerreCubeGeneratorIndex m) (ε : Bool)
     (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (n + 1 + m)) < b)

@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTotalMap
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.ContinuousKanSpecifiedHomotopy
-public import SerrePositivity.InfinityCategories.Core.KanHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTotalMap
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.ContinuousKanSpecifiedHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanHomotopyEquivalence
 
 /-!
 概要：指定した全空間円柱を元の余極限頂点の値の間の円柱へ移す。

@@ -20,14 +20,14 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 通常 loop の canonical image を、第一パラメータが端点円の実面へ接続する。 -/
 def d3CanonicalImageLeftDiagramIso :
-    FunctorIso (pointedKanLoopInfinity.{u} ≫ d3PointedKanLoopSection)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanLoopInfinity.{u} ≫ d3PointedKanLoopSection)
       (d3DoubleEndpointRightLoopFamily 0 0) :=
   d3PointedKanEndpointLoopIso.postcomp d3PointedKanLoopSection ≪≫
     d3DoubleEndpointRightModelIso 0 0
 
 /-- 第二パラメータが端点円の実面へも、同じ端点円表示・切断から接続する。 -/
 def d3CanonicalImageRightDiagramIso :
-    FunctorIso (pointedKanLoopInfinity.{u} ≫ d3PointedKanLoopSection)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (pointedKanLoopInfinity.{u} ≫ d3PointedKanLoopSection)
       (d3DoubleEndpointLeftLoopFamily 0 0) :=
   d3PointedKanEndpointLoopIso.postcomp d3PointedKanLoopSection ≪≫
     d3DoubleEndpointLeftModelIso 0 0
@@ -35,20 +35,20 @@ def d3CanonicalImageRightDiagramIso :
 /-- 同じ端点円表示へ切断を後合成した比較は、厳密終点で元の表示そのもの。 -/
 lemma d3EndpointLoopIso_section_target :
     HEq ((d3PointedKanEndpointLoopIso.{u}.postcomp d3PointedKanLoopSection).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1)) d3PointedKanEndpointLoopIso := by
-  refine (heq_of_eq (F2.functorIso_postcomp_postcomp d3PointedKanEndpointLoopIso.{u}
-    d3PointedKanLoopSection (loopDiagramEvaluation PointedKanInfinity 1 1))).trans ?_
-  refine (F2.functorIso_postcomp_heq_of_map_eq d3PointedKanEndpointLoopIso.{u}
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)) d3PointedKanEndpointLoopIso := by
+  refine (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_postcomp d3PointedKanEndpointLoopIso.{u}
+    d3PointedKanLoopSection (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))).trans ?_
+  refine (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_heq_of_map_eq d3PointedKanEndpointLoopIso.{u}
     d3PointedKanLoopSection_target.symm).trans ?_
-  exact heq_of_eq (F2.functorIso_postcomp_id d3PointedKanEndpointLoopIso.{u})
+  exact heq_of_eq (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_id d3PointedKanEndpointLoopIso.{u})
 
 /-- 左 canonical image 比較の終点は、元の端点円表示と指定右単位比較の合成。 -/
 lemma d3CanonicalImageLeftDiagramIso_target :
     HEq (d3CanonicalImageLeftDiagramIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3PointedKanEndpointLoopIso ≪≫ d3DoubleEndpointRightTargetIso 0 0) := by
-  rw [d3CanonicalImageLeftDiagramIso, F2.functorIso_postcomp_trans]
-  exact functorIso_trans_heq_of_heq
+  rw [d3CanonicalImageLeftDiagramIso, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans]
+  exact _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIso_trans_heq_of_heq
     (by rw [Category.assoc, d3PointedKanLoopSection_target, Category.comp_id])
     (by rw [Category.assoc, d3PointedKanLoopSection_target, Category.comp_id]) rfl
     _ _ _ _ d3EndpointLoopIso_section_target (d3KanLoopDiagramIsoOverTarget_target_heq _ _ _)
@@ -56,10 +56,10 @@ lemma d3CanonicalImageLeftDiagramIso_target :
 /-- 右 canonical image 比較の終点も、同じ端点円表示と指定左単位比較を保持。 -/
 lemma d3CanonicalImageRightDiagramIso_target :
     HEq (d3CanonicalImageRightDiagramIso.{u}.postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       (d3PointedKanEndpointLoopIso ≪≫ d3DoubleEndpointLeftTargetIso 0 0) := by
-  rw [d3CanonicalImageRightDiagramIso, F2.functorIso_postcomp_trans]
-  exact functorIso_trans_heq_of_heq
+  rw [d3CanonicalImageRightDiagramIso, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans]
+  exact _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.functorIso_trans_heq_of_heq
     (by rw [Category.assoc, d3PointedKanLoopSection_target, Category.comp_id])
     (by rw [Category.assoc, d3PointedKanLoopSection_target, Category.comp_id]) rfl
     _ _ _ _ d3EndpointLoopIso_section_target (d3KanLoopDiagramIsoOverTarget_target_heq _ _ _)
@@ -67,7 +67,7 @@ lemma d3CanonicalImageRightDiagramIso_target :
 /-- 保持済み canonical image 族は、同じ厳密切断の通常 loop 前合成への終点入力。 -/
 lemma commonChosenStageCanonicalImageFamily_section (n : ℕ) :
     (commonChosenStageLoopDiagramFamily.{u} (n + 1) ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1) ≫
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) ≫
         (pointedKanLoopInfinity ≫ d3PointedKanLoopSection) =
     commonChosenStageCanonicalImageFamily n := by
   dsimp only [commonChosenStageCanonicalImageFamily, d3LoopCanonicalFamily]
@@ -76,12 +76,12 @@ lemma commonChosenStageCanonicalImageFamily_section (n : ℕ) :
 
 /-- 保持済み canonical image 段模型も、同じ終点入力の同じ実右面へ接続する。 -/
 def commonChosenStageCanonicalImageDoubleEndpointIso (n : ℕ) :
-    FunctorIso (commonChosenStageCanonicalImageFamily.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageCanonicalImageFamily.{u} n)
       ((commonChosenStageLoopDiagramFamily (n + 1) ≫
-        loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3DoubleEndpointRightLoopFamily 0 0) :=
-  F2.functorIsoOfEq (d3CanonicalImageLeftDiagramIso.precomp
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) ≫ d3DoubleEndpointRightLoopFamily 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (d3CanonicalImageLeftDiagramIso.precomp
     (commonChosenStageLoopDiagramFamily (n + 1) ≫
-      loopDiagramEvaluation PointedKanInfinity 1 1))
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
     (commonChosenStageCanonicalImageFamily_section n) rfl
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

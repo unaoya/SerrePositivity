@@ -29,29 +29,29 @@ lemma cofiberKZero_vertex (X : StableModel.{u})
         (HomotopyCategory.mk ((cofiberStableSubobject X).val.app _ v)) +
       TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
         (HomotopyCategory.mk ((cofiberStableQuotient X).val.app _ v)) := by
-  have hv := fullSubcomplexOnVertices_vertex v
-  let t : ZeroTriangle X.carrier := ⟨squareDiagram v.val, hv.1⟩
-  have ht : IsCofiberSequence t := hv.2
-  have h := TriangulatedK0.mk_triangle (cofiberTriangle t ht)
+  have hv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices_vertex v
+  let t : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.ZeroTriangle X.carrier := ⟨_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val, hv.1⟩
+  have ht : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsCofiberSequence t := hv.2
+  have h := TriangulatedK0.mk_triangle (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberTriangle t ht)
     ⟨t, ht, ⟨Iso.refl _⟩⟩
-  have he : functorVertex (squareDiagram v.val) = v.val :=
-    (functorVertexEquiv _ X.carrier).apply_symm_apply v.val
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ X.carrier).apply_symm_apply v.val
   change TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk (squareVertex (squareDiagram v.val) 1 0)) =
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 1 0)) =
     TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk (squareVertex (squareDiagram v.val) 0 0)) +
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 0 0)) +
     TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk (squareVertex (squareDiagram v.val) 1 1)) at h
+      (HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val) 1 1)) at h
   change TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk ((evaluateFunctorAt _).app _ v.val)) =
+      (HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _).app _ v.val)) =
     TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk ((evaluateFunctorAt _).app _ v.val)) +
+      (HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _).app _ v.val)) +
     TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
-      (HomotopyCategory.mk ((evaluateFunctorAt _).app _ v.val))
+      (HomotopyCategory.mk ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _).app _ v.val))
   rw [← he]
-  have ev (x y : Fin 2) := evaluateFunctorAt_functorVertex
+  have ev (x y : Fin 2) := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex
     (Y := X.carrier) (stdSimplex.obj₀Equiv.symm x, stdSimplex.obj₀Equiv.symm y)
-    (squareDiagram v.val)
+    (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareDiagram v.val)
   exact (congrArg (fun a => TriangulatedK0.mk (C := hoFunctor.obj X.carrier)
     (HomotopyCategory.mk a)) (ev 1 0)).trans (h.trans
       (congrArg₂ (fun a b =>

@@ -19,12 +19,12 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 variable (A : Type u) [CommRing A]
 
 lemma normalizedTensorHomPinchedSimplex_postcomp (X : Complex A) {Y Z : Complex A}
     (n : SimplexCategory) (g : (normalizedSimplexTensor A X).obj n ⟶ Y) (h : Y ⟶ Z) :
-    normalizedTensorHomPinchedSimplex A X Y n g ≫ pinchedHomChainMap (homPostcompose X h) =
+    normalizedTensorHomPinchedSimplex A X Y n g ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPostcompose X h) =
       normalizedTensorHomPinchedSimplex A X Z n (g ≫ h) := by
   dsimp only [normalizedTensorHomPinchedSimplex]
   rw [Category.assoc, ← normalizedTensorPinchedIso_postcomp, ← Category.assoc,
@@ -40,12 +40,12 @@ lemma normalizedTensorHomPinchedSimplex_reindex (X Y : Complex A) {n m : Simplex
 
 def normalizedTensorUniversalSimplex (X : Complex A) (n : SimplexCategory) :
     SSet.uliftFunctor.{u + 1, u}.obj (SSet.stdSimplex.obj n) ⟶
-      DGNerve.pinchedHom A (Complex A) X ((normalizedSimplexTensor A X).obj n) :=
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PinchedHom.pinchedHom A (Complex A) X ((normalizedSimplexTensor A X).obj n) :=
   normalizedTensorHomPinchedSimplex A X _ n (𝟙 _)
 
 lemma normalizedTensorUniversalSimplex_evaluation (X Y : Complex A) (n : SimplexCategory)
     (g : (normalizedSimplexTensor A X).obj n ⟶ Y) :
-    normalizedTensorUniversalSimplex A X n ≫ pinchedHomChainMap (homPostcompose X g) =
+    normalizedTensorUniversalSimplex A X n ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPostcompose X g) =
       normalizedTensorHomPinchedSimplex A X Y n g := by
   simpa only [normalizedTensorUniversalSimplex, Category.id_comp] using
     normalizedTensorHomPinchedSimplex_postcomp A X n (𝟙 _) g
@@ -55,7 +55,7 @@ lemma normalizedTensorUniversalSimplex_naturality (X : Complex A) {n m : Simplex
     SSet.uliftFunctor.{u + 1, u}.map (SSet.stdSimplex.map f) ≫
       normalizedTensorUniversalSimplex A X m =
     normalizedTensorUniversalSimplex A X n ≫
-      pinchedHomChainMap (homPostcompose X ((normalizedSimplexTensor A X).map f)) := by
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.pinchedHomChainMap (homPostcompose X ((normalizedSimplexTensor A X).map f)) := by
   rw [normalizedTensorUniversalSimplex_evaluation]
   simpa only [normalizedTensorUniversalSimplex, Category.comp_id] using
     normalizedTensorHomPinchedSimplex_reindex A X ((normalizedSimplexTensor A X).obj m) f (𝟙 _)

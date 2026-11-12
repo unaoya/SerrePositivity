@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorConeTerminalComposition
 public import SerrePositivity.EInfinity.ComplexLimits.ConePenultimateCuts
-public import SerrePositivity.InfinityCategories.DGNerve.BoundaryDecomposition
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.BoundaryDecomposition
 
 /-!
 概要：始点と終端を持つ実 cone の最後の切断合成を、同じ普遍成分へ同定する。
@@ -15,24 +15,24 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_cutCompose_penultimate_value {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hc : 3 ≤ I.card) (ha0 : a = 0)
     (hbl : b = Fin.last (n + 1)) (h0 : 0 ∈ I) :
     HEq ((normalizedTensorConeData A X Y c).cutCompose I a b k (penultimate I hI))
       ((k + 1).negOnePow • (normalizedTensorElementUniversalLinear A X Y c).val.component
         (withoutFirst (I.filter (· ≤ penultimate I hI))) (k + 1)
         (withoutFirst_nonempty
-          (Index.left_two (a := a) (by rw [ha]; exact I.min'_mem _) (penultimate_mem I hI)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_two (a := a) (by rw [ha]; exact I.min'_mem _) (penultimate_mem I hI)
             (by rw [ha]; exact min_lt_penultimate I hI hc))
           (Finset.mem_filter.mpr ⟨h0, Fin.zero_le _⟩))
-        (by have hsplit := Index.split_card (penultimate_mem I hI)
+        (by have hsplit := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card (penultimate_mem I hI)
             have hr := (right_card_two_iff_penultimate I hI _ (penultimate_mem I hI)
               (penultimate_lt_max I hI)).mpr rfl
             have hw := card_withoutFirst (I.filter (· ≤ penultimate I hI))
@@ -53,38 +53,38 @@ lemma normalizedTensorConeData_cutCompose_penultimate_value {n : ℕ}
   have hjb : j < b := by rw [hb]; exact penultimate_lt_max I hI
   have ham : IsLeast (I : Set (Fin (n + 2))) a := by rw [ha]; exact I.isLeast_min' _
   have hbm : IsGreatest (I : Set (Fin (n + 2))) b := by rw [hb]; exact I.isGreatest_max' _
-  have hL : 2 ≤ L.card := Index.left_two ham.1 hj haj
-  have hR : 2 ≤ R.card := Index.right_two hj hbm.1 hjb
+  have hL : 2 ≤ L.card := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_two ham.1 hj haj
+  have hR : 2 ≤ R.card := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_two hj hbm.1 hjb
   have hr : R.card = 2 :=
     (right_card_two_iff_penultimate I hI j hj (by rw [← hb]; exact hjb)).mpr rfl
   have hl : 2 - (L.card : ℤ) = k + 1 := by
-    have hsplit : L.card + R.card = I.card + 1 := Index.split_card hj
+    have hsplit : L.card + R.card = I.card + 1 := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj
     omega
   have hkR : (0 : ℤ) = 2 - (R.card : ℤ) := by omega
   have hsum : (2 - (L.card : ℤ)) + (2 - (R.card : ℤ)) = k + 1 := by omega
-  unfold SimplexData.cutCompose
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.cutCompose
   rw [dite_eq_left hsum]
-  rw [SimplexData.homOrZero_eq s R j b _ hR (Index.right_min hj _)
-      (Index.right_max hbm hjb.le _) rfl,
-    SimplexData.homOrZero_eq s L a j _ hL (Index.left_min ham haj.le _)
-      (Index.left_max hj _) rfl]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq s R j b _ hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) rfl,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.homOrZero_eq s L a j _ hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) rfl]
   have ht : HEq
-      (s.hom R j b (2 - (R.card : ℤ)) hR (Index.right_min hj _)
-        (Index.right_max hbm hjb.le _) rfl)
-      (s.hom R j b 0 hR (Index.right_min hj _)
-        (Index.right_max hbm hjb.le _) hkR) :=
+      (s.hom R j b (2 - (R.card : ℤ)) hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) rfl)
+      (s.hom R j b 0 hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) hkR) :=
     s.hom_heq_of_indices_degree rfl rfl rfl hkR.symm
   have hf : HEq
-      (s.hom L a j (2 - (L.card : ℤ)) hL (Index.left_min ham haj.le _)
-        (Index.left_max hj _) rfl)
-      (s.hom L a j (k + 1) hL (Index.left_min ham haj.le _)
-        (Index.left_max hj _) hl.symm) :=
+      (s.hom L a j (2 - (L.card : ℤ)) hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) rfl)
+      (s.hom L a j (k + 1) hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) hl.symm) :=
     s.hom_heq_of_indices_degree rfl rfl rfl hl
-  have hcomp := gradedHom_compose_heq (A := A) rfl rfl rfl hl hkR.symm rfl
+  have hcomp := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq (A := A) rfl rfl rfl hl hkR.symm rfl
     _ _ _ _ ht hf hsum (add_zero (k + 1))
   exact hcomp.trans (normalizedTensorConeData_terminal_compose_mixed A X Y c L R a j b (k + 1)
-    hL (Index.left_min ham haj.le _) (Index.left_max hj _) hl.symm ha0
-    (Finset.mem_filter.mpr ⟨h0, Fin.zero_le _⟩) hR (Index.right_min hj _)
-    (Index.right_max hbm hjb.le _) hkR hbl)
+    hL (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_min ham haj.le _) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.left_max hj _) hl.symm ha0
+    (Finset.mem_filter.mpr ⟨h0, Fin.zero_le _⟩) hR (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_min hj _)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.right_max hbm hjb.le _) hkR hbl)
 
 end SerrePositivity.EInfinity.ComplexLimits

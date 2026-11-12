@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
 public import
-  SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
+  SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorExtensionSpace
 
 /-!
 概要：任意の実単体族を、元の初期値を固定して left fibration へ持ち上げる。

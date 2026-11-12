@@ -63,13 +63,13 @@ lemma completionKZeroVertex_surjective (r : ℕ) (ι : Fin r → SimplexCategory
 使われ方：離散的障害の商群同定の全射側。 -/
 theorem completionWideKZeroObstruction_surjective (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     Function.Surjective (completionWideKZeroObstruction r ι f) := by
   intro z
   obtain ⟨a, rfl⟩ := QuotientAddGroup.mk_surjective z
   obtain ⟨y, hy⟩ := completionKZeroVertex_surjective r ι Y a
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   let v : (LocalizingInvariants.completionCofiberWide F.val : SSet.{u}) _⦋0⦌ :=
     ⟨y, LocalizingInvariants.completionCofiberWide_vertex F.val
       (multiSEndofunctor_map_isIdempotentCompletion r ι f hf) y⟩

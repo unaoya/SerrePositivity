@@ -16,26 +16,26 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
+variable (A : Type u) [CommRing A] (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.RelativeVerdierDiagram (dgKInputNu.{u, v} A))
 
 /-- 元の相対四角形の右辺そのものから回収する、同じ dg 入力射のデータ。 -/
-def dgRelativeRightArrowData := dgInputArrowData A (squareRightArrow d.square).edge
+def dgRelativeRightArrowData := dgInputArrowData A (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.square).edge
 
 /-- 同じ右辺の ν 像は、指定した像の Verdier 提示の元の商辺に厳密に一致する。 -/
 theorem dgRelativeRightArrow_nu_edge :
-    (dgKInputNu A).app (Opposite.op ⦋1⦌) (squareRightArrow d.square).edge =
-      (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.stableArrow d.image.projection).edge := by
+    (dgKInputNu A).app (Opposite.op ⦋1⦌) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.square).edge =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.stableArrow d.image.projection).edge := by
   calc
-    _ = (squareRightArrow (d.square ≫ dgKInputNu A)).edge := rfl
-    _ = (squareRightArrow d.image.square).edge :=
-      congrArg (fun s => (squareRightArrow s).edge) d.image_eq
-    _ = SSet.yonedaEquiv (squareRightEdge ≫ d.image.square) := squareRightArrow_edge _
+    _ = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow (d.square ≫ dgKInputNu A)).edge := rfl
+    _ = (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow d.image.square).edge :=
+      congrArg (fun s => (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow s).edge) d.image_eq
+    _ = SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ d.image.square) := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareRightArrow_edge _
     _ = _ := (congrArg SSet.yonedaEquiv d.image.right_edge).trans
       (SSet.yonedaEquiv.apply_symm_apply _)
 
 /-- 復元した同じ dg 右射の ν 作用は、元の商の普遍性から本質的全射。 -/
 theorem dgRelativeRightArrow_nu_essentiallySurjective :
-    IsEssentiallySurjective (dgKInputNuMap A (dgRelativeRightArrowData A d).2.2).hom :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsEssentiallySurjective (dgKInputNuMap A (dgRelativeRightArrowData A d).2.2).hom :=
   dgInputArrowData_nu_essentiallySurjective A _ d.image.projection
     (dgRelativeRightArrow_nu_edge A d)
     (localization_isEssentiallySurjective d.image.projection.hom _ d.image.isVerdier.quotient)

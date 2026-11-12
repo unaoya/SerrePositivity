@@ -16,7 +16,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -33,7 +33,7 @@ abbrev dgOdotMilnorRightAxisInverseRotationRealizedFamily :=
 規約：商辺だけの関手同型や対象別の比較で代用しない。
 使われ方：固定 ν の全実長方形と指定上下二単体への接続。 -/
 def dgOdotMilnorRightAxisInverseRotationRealizedNerveComparison :
-    FunctorIso (dgNerve.map (dgOdotMilnorRightAxisInverseRotationRealizedFamily R d))
-      (dgNerve.map (dgPerfectModuleUnderlying R (Q) (G))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgOdotMilnorRightAxisInverseRotationRealizedFamily R d))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectModuleUnderlying R (Q) (G))) :=
   dgPerfectComparisonInverseRotationRealizedNerveComparison R (Q) (F) (G) (τ)
 end SerrePositivity.KST.SConstruction

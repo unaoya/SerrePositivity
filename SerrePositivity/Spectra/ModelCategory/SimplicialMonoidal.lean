@@ -54,15 +54,15 @@ lemma pointedSimplicial_isCofibrant (X : PointedSimplicialSet.{u}) : IsCofibrant
 include hCof hFib in
 /-- The free pointed boundary/horn maps generate the inherited model. -/
 lemma pointedSimplicial_cofibrantlyGenerated :
-    SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} := by
-  let : SerrePositivity.ModelGeneration.CofibrantlyGenerated.{u}
+    _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} pointedI.{u} pointedJ.{u} := by
+  let : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u}
       SSet.modelCategoryQuillen.I.{u} SSet.modelCategoryQuillen.J.{u} :=
     simplicial_cofibrantlyGenerated hCof hFib
   constructor
   · exact pointedI_smallObjectArgument
   · exact pointedJ_smallObjectArgument
   · rw [pointedGenerators_rlp,
-      SerrePositivity.ModelGeneration.CofibrantlyGenerated.rlp_I
+      _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I
         (I := SSet.modelCategoryQuillen.I) (J := SSet.modelCategoryQuillen.J),
       trivialFibrations_under_eq, MorphismProperty.under_eq_inverseImage]
   · rw [pointedGenerators_rlp, ← hFib, fibrations_under_def,

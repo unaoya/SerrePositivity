@@ -52,17 +52,17 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] [ModelCategory SSet.{v}
 
 abbrev choiceSpace : SSet.{v} := CoherentLiftMixedComparison.space X' X Y V a f g φ
 
-abbrev direct : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace a f g φ) :=
+abbrev direct : AnchoredChain.simplicial g ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace a f g φ) :=
   AllFactorizationComparison.chainComparison hcof hfib (a.base ≫ f) g ≫
-    UniverseLift.map (CoherentLiftMixedComparison.mapBD hcof X' X Y V a f g φ)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (CoherentLiftMixedComparison.mapBD hcof X' X Y V a f g φ)
 
-abbrev transported : AnchoredChain.simplicial g ⟶ UniverseLift.obj.{u} (choiceSpace a f g φ) :=
+abbrev transported : AnchoredChain.simplicial g ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} (choiceSpace a f g φ) :=
   AllFactorizationComparison.chainComparison hcof hfib f g ≫
-    UniverseLift.map (CoherentLiftMixedComparison.mapAC X' X Y V a f g φ)
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map (CoherentLiftMixedComparison.mapAC X' X Y V a f g φ)
 
 include hcof hfib in
-lemma fillers : UniverseLift.BoundaryFillers (choiceSpace a f g φ) :=
-  LargeParameterExtension.relativeFillers hcof hfib (vertexInclusion X Y f)
+lemma fillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (choiceSpace a f g φ) :=
+  _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.relativeFillers hcof hfib (vertexInclusion X Y f)
     (CoherentLiftMixedComparison.boundary X' X Y V a f g φ)
     (ResolutionLiftSpace.projection X' V (a.base ≫ f ≫ g.base))
     (ResolutionLiftSpace.projection_trivialFibration hcof X' V (a.base ≫ f ≫ g.base))

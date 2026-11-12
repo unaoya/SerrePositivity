@@ -37,10 +37,10 @@ lemma coherentTrianglePath_composite_value
     (p : Path (ULift.up 0 : ULift.{u} (Fin 3)) (ULift.up 2))
     (hp : (ULift.up 1 : ULift.{u} (Fin 3)) ∈ p.I) :
     (s.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌)
-      (nerveVertex p) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p) =
       SimplicialCategory.homEquiv' _ _
         (coherentSimplexArrow s 0 1 (by decide) ≫ coherentSimplexArrow s 1 2 (by decide)) := by
-  rw [coherentTrianglePath_eq_composite p hp, simplicialHom_vertex_comp]
+  rw [coherentTrianglePath_eq_composite p hp, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHom_vertex_comp]
   simp only [coherentSimplexArrow, Equiv.apply_symm_apply]
   exact ConcreteCategory.congr_hom
     (NatTrans.congr_app (s.map_comp (.mk (ULift.up 0)) (.mk (ULift.up 1))
@@ -49,27 +49,27 @@ lemma coherentTrianglePath_composite_value
       (.mk (ULift.up 1))) ⊗ SimplicialCategory.sHom
         (.mk (ULift.up 1) : SimplicialThickening (ULift.{u} (Fin 3))) (.mk (ULift.up 2))).obj
       (Opposite.op ⦋0⦌) from
-        (nerveVertex (coherentEndpointPath (show (ULift.up 0 : ULift.{u} (Fin 3)) ≤
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath (show (ULift.up 0 : ULift.{u} (Fin 3)) ≤
           ULift.up 1 from by decide)),
-         nerveVertex (coherentEndpointPath (show (ULift.up 1 : ULift.{u} (Fin 3)) ≤
+         _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath (show (ULift.up 1 : ULift.{u} (Fin 3)) ≤
           ULift.up 2 from by decide))))
 
 /-- 三辺を保持する元の実三角形では、三頂点 Path は指定した二辺の合成を回収する。 -/
 lemma coherentTrianglePath_specified_composite_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {X Y Z : C} {f : X ⟶ Y} {g : Y ⟶ Z} {h : X ⟶ Z}
-    (T : SSet.Edge.CompStruct (coherentNerveEdge f) (coherentNerveEdge g) (coherentNerveEdge h))
+    (T : SSet.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge g) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge h))
     (p : Path (ULift.up 0 : ULift.{u} (Fin 3)) (ULift.up 2))
     (hp : (ULift.up 1 : ULift.{u} (Fin 3)) ∈ p.I) :
     HEq ((T.simplex.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌)
-      (nerveVertex p)) (SimplicialCategory.homEquiv' _ _ (f ≫ g)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p)) (SimplicialCategory.homEquiv' _ _ (f ≫ g)) := by
   rcases T with ⟨s, h₂, h₀, h₁⟩
   have hx : s.obj (.mk (ULift.up 0)) = X :=
-    congrArg (fun e => (coherentNerveArrowData e).1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).1) h₂
   have hy : s.obj (.mk (ULift.up 1)) = Y :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₂
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₂
   have hz : s.obj (.mk (ULift.up 2)) = Z :=
-    congrArg (fun e => (coherentNerveArrowData e).2.1) h₀
+    congrArg (fun e => (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData e).2.1) h₀
   subst X
   subst Y
   subst Z
@@ -86,8 +86,8 @@ lemma coherentTrianglePath_value_heq
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     {s t : (SimplicialNerve C) _⦋2⦌} (h : s = t)
     (p : Path (ULift.up 0 : ULift.{u} (Fin 3)) (ULift.up 2)) :
-    HEq ((s.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌) (nerveVertex p))
-      ((t.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌) (nerveVertex p)) := by
+    HEq ((s.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p))
+      ((t.map (.mk (ULift.up 0)) (.mk (ULift.up 2))).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex p)) := by
   cases h
   rfl
 

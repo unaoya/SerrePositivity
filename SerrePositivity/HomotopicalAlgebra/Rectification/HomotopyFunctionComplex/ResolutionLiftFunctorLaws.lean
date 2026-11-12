@@ -83,14 +83,14 @@ lemma hom_ext {X Y : ResolutionObject C} {f : X.base ⟶ Y.base} {T : SSet.{v}}
 @[reassoc]
 lemma post_inclusion (X Y W : ResolutionObject C) (f : X.base ⟶ Y.base) (g : Y ⟶ W) :
     ResolutionLiftPostcomposition.map X Y W f g ≫ inclusion X W (f ≫ g.base) =
-      inclusion X Y f ≫ (cosimplicialHom (frame X).obj).map g.diagram :=
+      inclusion X Y f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (frame X).obj).map g.diagram :=
   ResolutionLiftPostcomposition.map_inclusion X Y W f g
 
 @[reassoc]
 lemma pre_inclusion (X Y W : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W.base)
     (φ : ResolutionLiftPrecomposition.FrameMap f) :
     ResolutionLiftPrecomposition.map X Y W f g φ ≫ inclusion X W (f.base ≫ g) =
-      inclusion Y W g ≫ (cosimplicialHomMap φ.val).app W.resolution.obj :=
+      inclusion Y W g ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ.val).app W.resolution.obj :=
   LiftSpacePrecomposition.map_inclusion _ _ _ _ _ _ _ _ _ _ _
 
 @[reassoc]
@@ -108,7 +108,7 @@ lemma post_identity (X Y : ResolutionObject C) (f : X.base ⟶ Y.base) :
     ResolutionLiftPostcomposition.map X Y Y f (𝟙 Y) ≫ baseChange (Category.comp_id f) = 𝟙 _ := by
   apply ResolutionLiftSpace.hom_ext
   · simp only [Category.assoc, baseChange_inclusion, post_inclusion, Category.id_comp]
-    change inclusion X Y f ≫ (cosimplicialHom (frame X).obj).map (𝟙 Y.resolution.obj) = _
+    change inclusion X Y f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (frame X).obj).map (𝟙 Y.resolution.obj) = _
     rw [CategoryTheory.Functor.map_id, Category.comp_id]
   · simp only [Category.assoc, baseChange_projection, ResolutionLiftPostcomposition.map_projection,
       Category.id_comp]
@@ -122,7 +122,7 @@ lemma post_compose (X Y W V : ResolutionObject C) (f : X.base ⟶ Y.base)
   apply ResolutionLiftSpace.hom_ext
   · simp only [Category.assoc, baseChange_inclusion, post_inclusion, post_inclusion_assoc]
     exact (congrArg (fun k => inclusion X Y f ≫ k)
-      ((cosimplicialHom (frame X).obj).map_comp g.diagram h.diagram).symm).trans
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (frame X).obj).map_comp g.diagram h.diagram).symm).trans
         (post_inclusion X Y V f (g ≫ h)).symm
   · simp only [Category.assoc, baseChange_projection, ResolutionLiftPostcomposition.map_projection]
     exact (ResolutionLiftPostcomposition.map_projection X Y V f (g ≫ h)).symm
@@ -132,7 +132,7 @@ lemma pre_identity (X W : ResolutionObject C) (g : X.base ⟶ W.base) :
         baseChange (Category.id_comp g) = 𝟙 _ := by
   apply ResolutionLiftSpace.hom_ext
   · simp only [Category.assoc, baseChange_inclusion, pre_inclusion, Category.id_comp]
-    have hi : (cosimplicialHomMap (ResolutionLiftPrecomposition.identity X).val).app
+    have hi : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (ResolutionLiftPrecomposition.identity X).val).app
         W.resolution.obj = 𝟙 _ := by
       ext n x
       exact Category.id_comp x
@@ -149,10 +149,10 @@ lemma pre_compose (X Y W V : ResolutionObject C) (f : X ⟶ Y) (g : Y ⟶ W)
             baseChange (Category.assoc f.base g.base h) := by
   apply ResolutionLiftSpace.hom_ext
   · simp only [Category.assoc, baseChange_inclusion, pre_inclusion, pre_inclusion_assoc]
-    have hc : (cosimplicialHomMap (ResolutionLiftPrecomposition.compose φ ψ).val).app
+    have hc : (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap (ResolutionLiftPrecomposition.compose φ ψ).val).app
         V.resolution.obj =
-      (cosimplicialHomMap ψ.val).app V.resolution.obj ≫
-        (cosimplicialHomMap φ.val).app V.resolution.obj := by
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ψ.val).app V.resolution.obj ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ.val).app V.resolution.obj := by
       ext n x
       exact Category.assoc _ _ _
     rw [hc]
@@ -170,7 +170,7 @@ lemma interchange (X Y W V : ResolutionObject C) (f : X ⟶ Y) (g : Y.base ⟶ W
   · simp only [Category.assoc, baseChange_inclusion, pre_inclusion, post_inclusion,
       pre_inclusion_assoc, post_inclusion_assoc]
     exact congrArg (fun k => inclusion Y W g ≫ k)
-      ((cosimplicialHomMap φ.val).naturality h.diagram).symm
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap φ.val).naturality h.diagram).symm
   · simp only [Category.assoc, baseChange_projection, pre_projection,
       ResolutionLiftPostcomposition.map_projection]
 

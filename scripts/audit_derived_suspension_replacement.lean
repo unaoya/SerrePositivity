@@ -1,12 +1,12 @@
-import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareReplacement
 import Lean
 /-! 元の全四角形を回収する相対延長：全宣言を三公理以内で監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.NativeDiagramFamilyReplacement,
-    `SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeSquareReplacement]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.NativeDiagramFamilyReplacement,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeSquareReplacement]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -23,6 +23,6 @@ run_cmd do
       throwError "No declarations checked in {modules[position]!}"
   logInfo m!"D suspension replacement audit passed: {counts.foldl (· + ·) (0 : Nat)} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.nativeDiagramFamily_relativeReplacement
-#check SerrePositivity.InfinityCategories.nativeDiagramFamily_exists_replacement
-#check SerrePositivity.InfinityCategories.dgSuspensionNativeSquare_exists_replacement
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.nativeDiagramFamily_relativeReplacement
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.nativeDiagramFamily_exists_replacement
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgSuspensionNativeSquare_exists_replacement

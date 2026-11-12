@@ -21,7 +21,7 @@ attribute [local instance] CategoryTheory.endofunctorMonoidalCategory
 規約：core の定義は α2 のもの。使われ方：座標比較の実現への移送。 -/
 def stableEndofunctorCoreEvaluation (X : StableModel.{u}) :
     (StableModel.{u} ⥤ StableModel.{u}) ⥤ SSet.{u} :=
-  (evaluation StableModel.{u} StableModel.{u}).obj X ⋙ stableModelForget ⋙ quasicategoryCoreFunctor
+  (evaluation StableModel.{u} StableModel.{u}).obj X ⋙ stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：最内側に S を置いた反復の単体的 core 図式。
 方針：自然な合成の自己関手の図式を入力で評価して core に送る。
@@ -57,7 +57,7 @@ def iteratedSRealizationInnerIso (r : ℕ) (X : StableModel.{u}) :
     intro z
     let P := stableSConstructionDiagram X
     let F := diagonalSEndofunctor r
-    let H := stableModelForget ⋙ quasicategoryCoreFunctor
+    let H := stableModelForget ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
     have hn := (F.map f).naturality (P.map f)
     have hh := congrArg (fun k => (H.map k).app d z) hn
     change (H.obj ((F.obj e).obj (P.obj e))).map f

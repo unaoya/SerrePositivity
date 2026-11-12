@@ -1,13 +1,13 @@
-import SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel
+import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel
 import Lean
 /-! 同じ P/Yoneda 比較と全入力への相対延長の全新規宣言を監査する。 -/
 open Lean Elab Command in
 run_cmd do
   let env ← getEnv
   let modules : Array Name := #[
-    `SerrePositivity.InfinityCategories.Derived.NativeArrowRelativeComparison,
-    `SerrePositivity.InfinityCategories.Derived.DGKappaNativePComparison,
-    `SerrePositivity.InfinityCategories.Derived.DGSuspensionNativeNaturalityModel]
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.NativeArrowRelativeComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGKappaNativePComparison,
+    `SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel]
   let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
   let mut counts : Array Nat := modules.map (fun _ => 0)
   for (name, _) in env.constants.toList do
@@ -24,10 +24,10 @@ run_cmd do
       throwError "No declarations checked in {modules[position]!}"
   logInfo m!"D native P audit passed: {counts.foldl (· + ·) (0 : Nat)} declarations in {modules.size} modules."
 
-#check SerrePositivity.InfinityCategories.dgKappaNativePFamily_exists
-#check SerrePositivity.InfinityCategories.DGSuspensionNativeNaturalityModel
-#check SerrePositivity.InfinityCategories.DGSuspensionNativeNaturalityModel.perfectFamily
-#check SerrePositivity.InfinityCategories.DGSuspensionNativeNaturalityModel.perfectComparison_at
-#check SerrePositivity.InfinityCategories.DGSuspensionNativeNaturalityModel.perfectFamily_boundary
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.dgKappaNativePFamily_exists
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel.perfectFamily
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel.perfectComparison_at
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel.perfectFamily_boundary
 
-#check SerrePositivity.InfinityCategories.DGSuspensionNativeNaturalityModel.moritaIso
+#check SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSuspensionNativeNaturalityModel.moritaIso

@@ -14,8 +14,8 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
-open DGNerve.PinchedHom
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -26,10 +26,10 @@ lemma normalizedTensorElementUniversalLinear_component_reindex {n m : ℕ}
       (c.map (homOfLE (Fin.le_last (θ.toOrderHom (Fin.last m))))))).f k
       ((normalizedTensorElementUniversalLinear A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) =
-    LinearData.component
-      (LinearData.pullback θ.toOrderHom (normalizedTensorElementUniversalLinear A X Y c).val)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.component
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback θ.toOrderHom (normalizedTensorElementUniversalLinear A X Y c).val)
       J k hJ hk := by
-  exact (congrArg (fun s : LinearSimplex A X
+  exact (congrArg (fun s : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearSimplex A X
       ((normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n))) m =>
       s.val.component J k hJ hk)
     (normalizedTensorElementUniversalLinear_reindex A X Y c θ)).symm
@@ -45,7 +45,7 @@ lemma normalizedTensorElementUniversalLinear_component_inj {n m : ℕ}
     (normalizedTensorElementUniversalLinear A X Y c).val.component (J.image θ.toOrderHom) k
       (hJ.image θ.toOrderHom) (by rw [Finset.card_image_of_injOn hi]; exact hk) :=
   (normalizedTensorElementUniversalLinear_component_reindex A X Y c θ J k hJ hk).trans
-    (LinearData.pullback_component_of_inj (A := A) (D := Complex A) (x := X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback_component_of_inj (A := A) (D := Complex A) (x := X)
       (y := (normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n)))
       θ.toOrderHom (normalizedTensorElementUniversalLinear A X Y c).val J k hJ hk hi)
 
@@ -58,7 +58,7 @@ lemma normalizedTensorElementUniversalLinear_component_not_inj {n m : ℕ}
       ((normalizedTensorElementUniversalLinear A X Y
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).val.component J k hJ hk) = 0 :=
   (normalizedTensorElementUniversalLinear_component_reindex A X Y c θ J k hJ hk).trans
-    (LinearData.pullback_component_of_not_inj (A := A) (D := Complex A) (x := X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pullback_component_of_not_inj (A := A) (D := Complex A) (x := X)
       (y := (normalizedTensorElementDiagram A X Y).obj (c.obj (Fin.last n)))
       θ.toOrderHom (normalizedTensorElementUniversalLinear A X Y c).val J k hJ hk hi)
 

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordPuncture
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordPuncture
 public import SerrePositivity.EInfinity.Hammock.EraseEmbedding
 
 /-!
@@ -22,25 +22,25 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (X Y : C) {k : ℕ} (d : Fin (k + 1) → Direction) (j : Fin (k + 1))
-  {n : SimplexCategoryᵒᵖ} (τ : (graph W (⟨k + 1, d⟩ : Word) X Y).obj n)
-  (hτ : ∀ r, IdentityColumn (τ.obj r) j)
+  (X Y : C) {k : ℕ} (d : Fin (k + 1) → _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Direction) (j : Fin (k + 1))
+  {n : SimplexCategoryᵒᵖ} (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨k + 1, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).obj n)
+  (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j)
 include hτ
 
-def punctureSimplex : (graph W (Word.puncture d j) X Y).obj n :=
-  Classical.choose (exists_eraseEmbedding W X Y (Word.punctureInclusion d j)
-    (Word.punctureInclusion_injective d j) j (Word.punctureInclusion_range d j) τ hτ)
+def punctureSimplex : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j) X Y).obj n :=
+  Classical.choose (exists_eraseEmbedding W X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_injective d j) j (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_range d j) τ hτ)
 
 lemma punctureSimplex_fac :
-    ((graphDiagram W X Y).map (Word.punctureInclusion d j)).app n
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j)).app n
       (punctureSimplex W X Y d j τ hτ) = τ :=
-  (Classical.choose_spec (exists_eraseEmbedding W X Y (Word.punctureInclusion d j)
-    (Word.punctureInclusion_injective d j) j (Word.punctureInclusion_range d j) τ hτ)).1
+  (Classical.choose_spec (exists_eraseEmbedding W X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_injective d j) j (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_range d j) τ hτ)).1
 
 lemma punctureSimplex_raw_eq :
-    (⟨Word.puncture d j, punctureSimplex W X Y d j τ hτ⟩ : RawHammock W X Y n) =
-      ⟨Word.erase (⟨k + 1, d⟩ : Word) j, eraseSimplex W X Y j τ hτ⟩ :=
-  (Classical.choose_spec (exists_eraseEmbedding W X Y (Word.punctureInclusion d j)
-    (Word.punctureInclusion_injective d j) j (Word.punctureInclusion_range d j) τ hτ)).2
+    (⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.puncture d j, punctureSimplex W X Y d j τ hτ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) =
+      ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase (⟨k + 1, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) j, eraseSimplex W X Y j τ hτ⟩ :=
+  (Classical.choose_spec (exists_eraseEmbedding W X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion d j)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_injective d j) j (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.punctureInclusion_range d j) τ hτ)).2
 
 end SerrePositivity.EInfinity.Hammock

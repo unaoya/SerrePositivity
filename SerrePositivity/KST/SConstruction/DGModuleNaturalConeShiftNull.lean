@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeNullHomotopy
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma mapNegativeNaturality {R : Type u} [CommRing R]
     {C : Type v} {E : Type w} [DGCategory R C] [DGCategory R E]
     (Q : DGFunctor R C E) {A B A' B' : C}
@@ -23,7 +23,7 @@ private lemma mapNegativeNaturality {R : Type u} [CommRing R]
     compose R ((Q.map B B').f n g) ((Q.map A B).f (-1) a) (neg_add_eq_sub 1 n) =
       n.negOnePow • compose R ((Q.map A' B').f (-1) a') ((Q.map A A').f n f)
         (sub_eq_add_neg n 1).symm := by
-  exact (map_compose Q g a (neg_add_eq_sub 1 n)).symm.trans
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.map_compose Q g a (neg_add_eq_sub 1 n)).symm.trans
     ((congrArg ((Q.map A B').f (n - 1)) h).trans
       ((by simp only [Units.smul_def, map_zsmul] :
         (Q.map A B').f (n - 1)
@@ -31,7 +31,7 @@ private lemma mapNegativeNaturality {R : Type u} [CommRing R]
         n.negOnePow • (Q.map A B').f (n - 1)
           (compose R a' f (sub_eq_add_neg n 1).symm)).trans
         (congrArg (fun t => n.negOnePow • t)
-          (map_compose Q a' f (sub_eq_add_neg n 1).symm))))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.map_compose Q a' f (sub_eq_add_neg n 1).symm))))
 /-- 概要：符号付き次数 −1 全自然性を同じ dg 関手の全 Hom 作用で写す。
 方針：元 shift 入力で使用した同じ合成保存の計算を適用する。
 規約：元斉次元と指定符号を保持。使われ方：元実 cone の realization 全比較。 -/
@@ -48,7 +48,7 @@ lemma dgNegativeNaturalityMap {R : Type u} [CommRing R]
   exact mapNegativeNaturality Q a a' f g h
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 
 /-- 概要：同じ元零化元の実 dg shift 像。

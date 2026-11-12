@@ -20,18 +20,18 @@ variable (A : Type u) [CommRing A]
 def simplexSubsetLambdaCell {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     serreCubeComplex A (I.card - 2) ⟶
       homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
-  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
+  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ≫
     (cubicalSerreChains A).map (simplexSubsetCubicalCell I hI)
 
 /-- 元の部分集合の同じ Serre 生成射は、元の Hom 余モノイドへの射。 -/
 def simplexSubsetLambdaCellComonoid {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     serreCubeComonoid A (I.card - 2) ⟶
       cubicalLambdaHomComonoid A (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
-  (cubicalSerreComonoidCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2)) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega)))) :=
+  (cubicalSerreComonoidCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2)) ≫
     (cubicalSerreComonoidFunctor A).map (simplexSubsetCubicalCell I hI)
 
 /-- 元の余モノイド値の生成射の基礎の鎖射は、同じ元の部分集合の生成射。 -/
@@ -42,12 +42,12 @@ lemma simplexSubsetLambdaCellComonoid_hom {n : ℕ}
 /-- 元の部分集合の最高生成元の、元の Λ Hom 内の HA 向きと次数を持つ実像。 -/
 def simplexSubsetLambdaGenerator {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) :
     (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega))))).X (2 - (I.card : ℤ)) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega))))).X (2 - (I.card : ℤ)) :=
   eqToHom (congrArg (fun k =>
     (homObject A (CubicalLambda A (Δ[n] : SSet.{u}))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega))))).X k)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (Finset.card_pos.mp (by omega))))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (Finset.card_pos.mp (by omega))))).X k)
     (show -((I.card - 2 : ℕ) : ℤ) = 2 - (I.card : ℤ) by omega))
       (serreCubeTopCellImage A _ (I.card - 2) (simplexSubsetLambdaCell A I hI))
 

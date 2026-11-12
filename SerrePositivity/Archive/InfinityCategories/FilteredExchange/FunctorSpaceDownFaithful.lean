@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorSpaceDown
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UniverseHomotopyFaithful
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UniverseHomotopyFaithful
 
 /-!
 概要：関手空間の宇宙下降が、元の指定関手同型の等式を反映する。

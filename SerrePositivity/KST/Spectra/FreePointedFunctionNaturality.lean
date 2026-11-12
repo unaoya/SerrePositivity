@@ -60,7 +60,7 @@ lemma pointedFunctionIso_pre {S T : Type u}
     ((PointedWeightedEnd.underlyingIso (weight S) D).hom ≫ (functionIso S C).hom) ≫ functionPre θ C
   rw [← Category.assoc, PointedWeightedEnd.underlyingIso_preMap]
   change ((PointedWeightedEnd.underlyingIso (weight S) D).hom ≫
-      SerrePositivity.InfinityCategories.HomotopyLimits.weightedSectionsPre j (coefficients C)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsPre j (coefficients C)) ≫
         (functionIso T C).hom = _
   rw [Category.assoc, functionIso_pre, ← Category.assoc]
 

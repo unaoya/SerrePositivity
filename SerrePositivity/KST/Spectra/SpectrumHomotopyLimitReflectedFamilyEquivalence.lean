@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance reflectedFamilyEquivalenceSimplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -27,56 +27,56 @@ local instance reflectedFamilyEquivalenceRawCoefficientKan (X : OmegaSpectrum.{u
   RawSpectrumMapping.pointedSpace_kanComplex X (D.obj i).toKanSequence
 local instance reflectedFamilyEquivalenceCoefficientKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) (i : I) :
-    KanComplex ((simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
+    KanComplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X).obj i) := mappingSpace_kanComplex X (D.obj i)
 local instance reflectedFamilyEquivalenceEndKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram D X)) :=
-  bousfieldKanHolim_kanComplex (simplicialHomDiagram D X)
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)
 
 local instance reflectedFamilyEquivalenceEdgewiseCoefficientKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) (i : I) :
-    KanComplex ((simplicialHomDiagram D X ⋙ edgewiseSubdivisionFunctor).obj i) :=
-  inferInstanceAs (KanComplex (edgewiseSubdivision (mappingSpace X (D.obj i))))
+    KanComplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor).obj i) :=
+  inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivision (mappingSpace X (D.obj i))))
 local instance reflectedFamilyEquivalenceOppositeCoefficientKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) (i : I) :
-    KanComplex ((simplicialHomDiagram D X ⋙ SSet.opFunctor).obj i) :=
+    KanComplex ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X ⋙ SSet.opFunctor).obj i) :=
   inferInstanceAs (KanComplex (mappingSpace X (D.obj i)).op)
 local instance reflectedFamilyEquivalenceEdgewiseEndKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram D X ⋙ edgewiseSubdivisionFunctor)) :=
-  bousfieldKanHolim_kanComplex _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseSubdivisionFunctor)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex _
 local instance reflectedFamilyEquivalenceOppositeEndKan (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
-    KanComplex (bousfieldKanHolim (simplicialHomDiagram D X ⋙ SSet.opFunctor)) :=
-  bousfieldKanHolim_kanComplex _
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X ⋙ SSet.opFunctor)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim_kanComplex _
 
 /-- 共通解像の点の全 Hom 比較族は、右射影の可換四角形からホモトピー同値。 -/
 lemma homotopyLimitEdgewiseEndFamily_homotopyEquivalence
     (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
-    IsSimplicialHomotopyEquivalence (homotopyLimitEdgewiseEndFamily D X) := by
-  have hq : IsSimplicialHomotopyEquivalence (homotopyLimitHomEndFamily D X) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (homotopyLimitEdgewiseEndFamily D X) := by
+  have hq : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (homotopyLimitHomEndFamily D X) := by
     rw [homotopyLimitHomEndFamily_eq]
     exact homotopyLimitHomHolim_homotopyEquivalence X D
-  have rightSourceTrivial : TrivialKanFibration
-      (edgewiseRight (mappingSpace X (homotopyLimit D))) :=
-    edgewiseRight_trivialKanFibration _
-  have hs := (isQCatEquivalence_of_trivialKanFibration
-    (edgewiseRight (mappingSpace X (homotopyLimit D)))).isSimplicialHomotopyEquivalence
+  have rightSourceTrivial : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (mappingSpace X (homotopyLimit D))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight_trivialKanFibration _
+  have hs := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseRight (mappingSpace X (homotopyLimit D)))).isSimplicialHomotopyEquivalence
   have h := hs.comp hq
   rw [← homotopyLimitEdgewiseEndFamily_right] at h
-  exact (bousfieldKanEdgewiseRight_homotopyEquivalence (simplicialHomDiagram D X)).cancel_right h
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanEdgewiseRight_homotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X)).cancel_right h
 
 /-- 元の反転 end の点の全 Hom 比較族は、左射影の可換四角形からホモトピー同値。 -/
 lemma homotopyLimitReflectedEndFamily_homotopyEquivalence
     (D : I ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
-    IsSimplicialHomotopyEquivalence (homotopyLimitReflectedEndFamily D X) := by
-  have leftSourceTrivial : TrivialKanFibration
-      (edgewiseLeft (mappingSpace X (homotopyLimit D))) :=
-    edgewiseLeft_trivialKanFibration _
-  have hs := (isQCatEquivalence_of_trivialKanFibration
-    (edgewiseLeft (mappingSpace X (homotopyLimit D)))).isSimplicialHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (homotopyLimitReflectedEndFamily D X) := by
+  have leftSourceTrivial : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft (mappingSpace X (homotopyLimit D))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft_trivialKanFibration _
+  have hs := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isQCatEquivalence_of_trivialKanFibration
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.edgewiseLeft (mappingSpace X (homotopyLimit D)))).isSimplicialHomotopyEquivalence
   have h := (homotopyLimitEdgewiseEndFamily_homotopyEquivalence D X).comp
-    (bousfieldKanEdgewiseLeft_homotopyEquivalence (simplicialHomDiagram D X))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanEdgewiseLeft_homotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram D X))
   rw [homotopyLimitEdgewiseEndFamily_left] at h
   exact hs.cancel_left h
 

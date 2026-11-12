@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.FrameHom.ResolutionCofinality
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CostructuredArrowCofinality
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowSpanComma
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.CostructuredArrowCofinality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma
 public import SerrePositivity.EInfinity.FrameHom.CofinalAnodyneImage
 
 /-!
@@ -36,7 +36,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
 使われ方：固定右脚の costructured arrow の元の関手。 -/
 def smallResolutionLeftForget (X : C) :
     AsSmall.{w} (TrivialFibrationOver X) ⥤ AsSmall.{w} C :=
-  AsSmall.down ⋙ ArrowSpan.leftSliceForget (HomotopicalAlgebra.trivialFibrations C) X ⋙
+  AsSmall.down ⋙ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpanComma.leftSliceForget (HomotopicalAlgebra.trivialFibrations C) X ⋙
     AsSmall.up
 
 /-- 概要：左脚を忘れると元の同じ分解図式を厳密に回収（Low 命題 3.7）。
@@ -66,8 +66,8 @@ def resolutionFixedRightComparison {X : C} (q : CofibrantResolution (C := C) sim
 使われ方：全三本矢の右変数の図式の成分ごとの余終性。 -/
 lemma resolutionFixedRightComparison_isLeftCofinal {X : C}
     (q : CofibrantResolution (C := C) simplex X) (V : C) :
-    IsLeftCofinal (nerveMap (resolutionFixedRightComparison.{u, v, w} q V)) :=
-  costructuredArrowPre_isLeftCofinal _ _ _ (smallResolutionOverFunctor_isLeftCofinal q)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (nerveMap (resolutionFixedRightComparison.{u, v, w} q V)) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.costructuredArrowPre_isLeftCofinal _ _ _ (smallResolutionOverFunctor_isLeftCofinal q)
 
 /-- 概要：各固定右対象で元の同じ比較は弱ホモトピー同値（Low 命題 3.7）。
 方針：同じ比較射の left cofinality を全 Kan 標的による検査へ渡す。
@@ -75,7 +75,7 @@ lemma resolutionFixedRightComparison_isLeftCofinal {X : C}
 使われ方：全図式の元の成分ごとのホモトピー型の比較。 -/
 lemma resolutionFixedRightComparison_isWeakHomotopyEquivalence {X : C}
     (q : CofibrantResolution (C := C) simplex X) (V : C) :
-    IsWeakHomotopyEquivalence (nerveMap (resolutionFixedRightComparison.{u, v, w} q V)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nerveMap (resolutionFixedRightComparison.{u, v, w} q V)) :=
   (resolutionFixedRightComparison_isLeftCofinal q V).isWeakHomotopyEquivalence
 
 /-- 概要：各固定右対象の元の比較は同じ anodyne 局所化で可逆（Low 命題 3.7）。

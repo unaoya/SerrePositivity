@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.ConstantDiagramConeClasses
 public import SerrePositivity.EInfinity.BarrattEccles.FramedLimitConeClasses
 public import SerrePositivity.EInfinity.BarrattEccles.RightSimplicialCones
-public import SerrePositivity.InfinityCategories.ModelBridge.MixedFrameDiagrams
+public import SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams
 
 /-!
 # 通常の錐の二つの族の混合 Hom 内での厳密な照合
@@ -26,7 +26,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 
 open CategoryTheory Limits HomotopicalAlgebra Opposite
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.DiagramModel
 open SerrePositivity.EInfinity.FrameHom.MixedFrame
 
@@ -67,9 +67,9 @@ lemma strictConeFamilies_mixed (F : K ⥤ (operad A).Algebra) (c : Cone F) :
     let R := F ⋙ rightSimplicialFrameFamily A
     let b := Functor.whiskerLeft F (rightSimplicialFrameAugmentation A)
     (constantDiagramHomEquiv A K P F) ((constantDiagramComparison A K).app P ≫ f) ≫
-        leftDiagramComparison K (q.obj.obj P) F R b =
+        _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.leftDiagramComparison K (q.obj.obj P) F R b =
       strictSimplicialConeFamily A K F c ≫
-        rightDiagramComparison K (q.obj.obj P) (q.augmentation.app P) R := by
+        _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.MixedFrameDiagrams.rightDiagramComparison K (q.obj.obj P) (q.augmentation.app P) R := by
   let := modelCategory A
   let q := cosimplicialResolutionFamily (mappingCofibrantFactorization A)
   let P := framedLimitProbe A c.pt

@@ -15,7 +15,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type w} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -31,8 +31,8 @@ local notation "H" => dgIdentityHomGluingFunctor R C F G a h
 /-- 概要：同じ元比較の Yoneda 像を全次数厳密自然変換へ束ねる。
 方針：元閉射と既存の dg 後合成自然性を使う。
 規約：元の比較射を保持。使われ方：同じ実 cone 関手の入力。 -/
-def dgIdentityHomGluingYonedaStrictComparison : StrictNatTrans (F.comp (Y)) (G.comp (Y)) :=
-  dgModuleStrictNatTransOfHomNaturality R C
+def dgIdentityHomGluingYonedaStrictComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (F.comp (Y)) (G.comp (Y)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R C
     (fun x => (Y).onClosed.map (a x))
     (dgClosedComparison_postcomp_naturality R F G (Y) a h)
 

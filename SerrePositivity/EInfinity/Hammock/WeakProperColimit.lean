@@ -21,16 +21,16 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory CategoryTheory.Limits
 open SerrePositivity.InfinityCategories
 
-lemma weakProperColimitMap {F G : Word ⥤ SSet.{w}} (η : F ⟶ G)
+lemma weakProperColimitMap {F G : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (η : F ⟶ G)
     (hF : ProperDiagram F) (hG : ProperDiagram G)
-    (hη : ∀ a, IsWeakHomotopyEquivalence (η.app a)) :
-    IsWeakHomotopyEquivalence (colim.map η) := by
-  have hw := weakSequentialColimitMap (lengthDiagramMap η)
+    (hη : ∀ a, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app a)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map η) := by
+  have hw := weakSequentialColimitMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthDiagramMap η)
     (fun n => weakLengthStageMap η hF hG hη n)
-  have hF' := (isPrecompositionEquivalence_of_iso (lengthColimitIso F))
-  have hG' := (isPrecompositionEquivalence_of_iso (lengthColimitIso G))
+  have hF' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthColimitIso F))
+  have hG' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthColimitIso G))
   apply hF'.isWeakHomotopyEquivalence.cancel_left
-  rw [← lengthColimitIso_naturality]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.lengthColimitIso_naturality]
   exact hw.comp hG'.isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.Hammock

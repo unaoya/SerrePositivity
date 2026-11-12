@@ -17,7 +17,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 lemma dkHammockComparisonIso_postcompose (X : C.category) {Y Z : C.category} (g : Y ⟶ Z) :
     AnodyneHomotopy.anodyneQ.map (localizationPostcompose C X g) ≫

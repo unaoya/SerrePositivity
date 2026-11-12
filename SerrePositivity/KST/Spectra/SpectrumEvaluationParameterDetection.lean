@@ -23,20 +23,20 @@ open RawSpectrumMapping
 local instance parameterDetectionHomKan (K : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
     KanComplex ((ihom K).obj (RawSpectrumMapping.pointedSpace X Y.toKanSequence)).right :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- パラメータの anodyne 射に沿い、元の評価自身の全基点 π 同型性を双方向に移す。 -/
 lemma evaluationPost_piIsomorphism_iff_of_anodyne {A B : PointedSimplicialSet.{u}}
     (i : A ⟶ B) (hi : anodyneExtensions i.right) (X Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost A X Y).right ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost B X Y).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost A X Y).right ↔
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost B X Y).right := by
   have hp := pointedPre_piIsomorphism_of_levelwise (cotensorPre i X)
     (cotensorPre_levelwise_of_anodyne i hi X) Y.toKanSequence
-  have hpost : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+  have hpost : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       ((ihom A).map (pointedPre (cotensorPre i X) Y.toKanSequence)).right :=
     PointedMapping.post_piIsomorphism A (pointedPre (cotensorPre i X) Y.toKanSequence) hp
-  have hpre := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.anodyne_prePointed_rlp i hi
+  have hpre := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.anodyne_prePointed_rlp i hi
       (RawSpectrumMapping.pointedSpace (cotensor B X) Y.toKanSequence))
   have hc := congrArg Under.Hom.right (evaluationPost_parameter i X Y)
   rw [Under.comp_right, Under.comp_right] at hc
@@ -44,10 +44,10 @@ lemma evaluationPost_piIsomorphism_iff_of_anodyne {A B : PointedSimplicialSet.{u
   · intro h
     have hcomp := h.comp hpost
     rw [hc] at hcomp
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hpre
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hcomp hpre
   · intro h
     have hcomp := h.comp hpre
     rw [← hc] at hcomp
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hpost
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hcomp hpost
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.CotensorCompatible

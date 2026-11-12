@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction.Cofinality
 open CategoryTheory SSet Spectra
 open SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 
 /-- 概要：Ex∞ 境界射の群条件は元の境界 Kan 射の同じ群条件を与える。
@@ -41,13 +41,13 @@ lemma boundaryKan_groupConditions_of_exInfinity {X Y : StableModel.{u}} (f : X �
   let i := pointedSOAExInfinityComparison A
   let j := pointedSOAExInfinityComparison B
   have hi (n : ℕ) : Function.Bijective (pointedHomotopyMap n i) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n i.right rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint i)
-      rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint i)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr n i.right rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint i)
+      rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint i)
       ((pointedSOAExInfinityComparison_piIsomorphism A)
         (PointedKanReplacement.obj A.obj).basepoint n)
   have hj (n : ℕ) : Function.Bijective (pointedHomotopyMap n j) :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map_bijective_congr n j.right rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint j)
-      rfl (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint j)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map_bijective_congr n j.right rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint j)
+      rfl (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint j)
       ((pointedSOAExInfinityComparison_piIsomorphism B)
         (PointedKanReplacement.obj B.obj).basepoint n)
   have hm (n : ℕ) : (pointedHomotopyMap n β) ∘ (pointedHomotopyMap n i) =
@@ -69,11 +69,11 @@ lemma boundaryKan_groupConditions_of_exInfinity {X Y : StableModel.{u}} (f : X �
 規約：基点や元の射を置き換えない。
 使われ方：元の K 境界射への最後の次数移動。 -/
 lemma boundaryKan_groupConditions_of_coreS {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (h : ∀ a : (exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
-      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map 1 (exInfinity.map (coreSRealizationFunctor.map f))
+    (h : ∀ a : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (coreSRealizationFunctor.obj X)) _⦋0⦌,
+      Function.Injective (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f))
         (x := a) rfl) ∧
       ∀ n : ℕ, 1 < n → Function.Bijective
-        (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopy.map n (exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopy.map n (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSRealizationFunctor.map f)) (x := a) rfl)) :
     Function.Injective (pointedHomotopyMap 1 ((boundaryKanRealizationFunctor 0).map f)) ∧
       ∀ n : ℕ, 1 < n →
         Function.Bijective (pointedHomotopyMap n ((boundaryKanRealizationFunctor 0).map f)) :=

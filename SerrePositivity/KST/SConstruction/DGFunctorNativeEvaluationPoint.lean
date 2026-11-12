@@ -50,30 +50,30 @@ lemma dgFunctorTensorEvaluation_atPoint (R : Type u) [CommRing R] (D E : Type (u
 規約：全単体次数での厳密等号。使われ方：元全 cone 図式の点評価。 -/
 lemma dgFunctorNativeEvaluation_atPoint (R : Type u) [CommRing R] (D E : Type (u + 1))
     [DGCategory R D] [Small.{u} D] [DGCategory R E] (x : D)
-    {N : ℕ} (t : DGNerve.Simplex R (DGFunctor R D E) N) :
+    {N : ℕ} (t : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex R (DGFunctor R D E) N) :
     (dgNerveTensorSimplex R (dgNativePointSimplex R D x N) t).map
       (dgFunctorTensorEvaluation R D E) = t.map (dgFunctorEvaluationDG R D E x) := by
   have ht := dgNerveTensorSimplex_point_left R x t
   apply (congrArg (fun s => s.map (dgFunctorTensorEvaluation R D E)) ht).trans
-  apply DGNerve.Simplex.ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
   change (t.toSimplexData.map _).map _ = t.toSimplexData.map _
-  rw [← DGNerve.SimplexData.map_comp, dgFunctorTensorEvaluation_atPoint]
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.SimplexData.map_comp, dgFunctorTensorEvaluation_atPoint]
 
 /-- 概要：元 native 全関手族の点評価は同じ dg end 評価の nerve 像。
 方針：元単位頂点での curry 評価と全単体の固定対象則を合成する。
 規約：全単体の厳密等号。使われ方：元 cone 全族の点ごとの普遍性。 -/
 lemma dgFunctorNativeFullFamilyMap_atPoint (R : Type u) [CommRing R] (D E : Type (u + 1))
     [DGCategory R D] [Small.{u} D] [DGCategory R E] (x : D) :
-    dgFunctorNativeFullFamilyMap R D E ≫ evaluateFunctorAt (Y := dgNerve R E) (DGNerve.Simplex.vertex x) =
-      dgNerve.map (dgFunctorEvaluationDG R D E x) := by
-  let v : 𝟙_ SSet.{u + 1} ⟶ dgNerve R D :=
-    (unitHomEquiv _).symm (DGNerve.Simplex.vertex x)
-  have hv : unitHomEquiv _ v = DGNerve.Simplex.vertex x :=
+    dgFunctorNativeFullFamilyMap R D E ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R E) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFunctorEvaluationDG R D E x) := by
+  let v : 𝟙_ SSet.{u + 1} ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R D :=
+    (unitHomEquiv _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x)
+  have hv : unitHomEquiv _ v = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x :=
     (unitHomEquiv _).apply_symm_apply _
-  have h := curry_evaluateFunctorAt_unitHomEquiv (dgFunctorNativeEvaluation R D E) v
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.curry_evaluateFunctorAt_unitHomEquiv (dgFunctorNativeEvaluation R D E) v
   have hvn (n : SimplexCategoryᵒᵖ) (a : (𝟙_ SSet.{u + 1}).obj n) :
       v.app n a = dgNativePointSimplex R D x n.unop.len := by
-    change (DGNerve.Simplex.vertex x).pullback
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x).pullback
       (SimplexCategory.const n.unop ⦋0⦌ 0).toOrderHom = _
     rw [← dgNativePointSimplex_zero R D x]
     exact dgNativePointSimplex_pullback R D x _

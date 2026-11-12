@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanHomotopyRectification
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.IntervalReplacementPath
-public import SerrePositivity.InfinityCategories.F1.Universe.Homotopy
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementPath
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Homotopy
 
 /-!
 概要：元の小さい interval 置換の全 path を持ち上げ、大きい Kan cospan の左脚へ移す。

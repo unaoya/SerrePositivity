@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.CompletionStabilization
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
-public import SerrePositivity.InfinityCategories.F2.Idempotent.FunctorComplete
-public import SerrePositivity.InfinityCategories.F2.Idempotent.CompletenessEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.FunctorComplete
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.CompletenessEquivalence
 
 /-!
 概要：指定された完備化射の全多次数の有限反復 S も冪等完備化となる。
@@ -24,9 +24,9 @@ open scoped Simplicial
 規約：第一行への置換を公開対象にせず、元の S_n に結論する。
 使われ方：有限反復 S の完備標的の構成。 -/
 lemma sStableModel_isIdempotentComplete (n : ℕ) (Y : StableModel.{u})
-    (hY : F2.Idempotent.IsIdempotentComplete Y.carrier) :
-    F2.Idempotent.IsIdempotentComplete (sStableModel n Y).carrier :=
-  (F2.Idempotent.functor_isIdempotentComplete (firstRowNerve n) hY).of_equivalence
+    (hY : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete Y.carrier) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (sStableModel n Y).carrier :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.functor_isIdempotentComplete (firstRowNerve n) hY).of_equivalence
     (firstRowEquivalence n Y.carrier).symm
 
 /-- 概要：独立な全多次数の反復 S は標的の冪等完備性を保つ。
@@ -34,8 +34,8 @@ lemma sStableModel_isIdempotentComplete (n : ℕ) (Y : StableModel.{u})
 規約：零反復を含み、多次数を対角へ制限しない。
 使われ方：全多次数の完備化証拠の第一条件。 -/
 lemma multiS_isIdempotentComplete (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
-    (Y : StableModel.{u}) (hY : F2.Idempotent.IsIdempotentComplete Y.carrier) :
-    F2.Idempotent.IsIdempotentComplete (((multiSEndofunctor r).obj ι).obj Y).carrier := by
+    (Y : StableModel.{u}) (hY : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete Y.carrier) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (((multiSEndofunctor r).obj ι).obj Y).carrier := by
   induction r with
   | zero => exact hY
   | succ r ih =>
@@ -48,8 +48,8 @@ lemma multiS_isIdempotentComplete (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：一般の wide 部分圏 API へ渡す同じ多次数の実入力。 -/
 theorem multiSEndofunctor_map_isIdempotentCompletion (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}}
-    (f : X ⟶ Y) (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
-    F2.Idempotent.IsIdempotentCompletion (((multiSEndofunctor r).obj ι).map f).val := by
+    (f : X ⟶ Y) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (((multiSEndofunctor r).obj ι).map f).val := by
   refine ⟨multiS_isIdempotentComplete r ι Y hf.1,
     multiSEndofunctor_map_isFullyFaithful r ι f hf.2.1, ?_⟩
   intro y

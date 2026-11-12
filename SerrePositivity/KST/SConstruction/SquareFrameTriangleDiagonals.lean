@@ -14,21 +14,21 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet InfinityCategories Loca
 open scoped Simplicial
 variable {X : SSet.{u}} [Quasicategory X]
   {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-  (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g))
+  (H : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare g))
 
 /-- 概要：元上下比較を同じ元共有対角に制限した全ホモトピー。
 方針：元全三角形比較を同じ対角面で制限する。
 規約：元対角を選び直さない。使われ方：上下共有対角の比較。 -/
 def squareFrameTriangleDiagonalHomotopy (j : Fin 2) :
-    SSet.Homotopy (squareDiagonal ≫ f) (squareDiagonal ≫ g) where
+    SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareDiagonal ≫ g) where
   h := (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫ (squareFrameTriangleHomotopy H j).h
   h₀ := by
     rw [← Category.assoc, SSet.ι₀_comp, Category.assoc,
-      (squareFrameTriangleHomotopy H j).h₀, ← Category.assoc, squareTriangle_diagonal]
+      (squareFrameTriangleHomotopy H j).h₀, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle_diagonal]
     rfl
   h₁ := by
     rw [← Category.assoc, SSet.ι₁_comp, Category.assoc,
-      (squareFrameTriangleHomotopy H j).h₁, ← Category.assoc, squareTriangle_diagonal]
+      (squareFrameTriangleHomotopy H j).h₁, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle_diagonal]
     rfl
   rel := by
     apply SSet.hom_ext
@@ -41,13 +41,13 @@ def squareFrameTriangleDiagonalHomotopy (j : Fin 2) :
 方針：同じ元全三角形比較を対角への前合成で写す。
 規約：元対角ホモトピーを保持。使われ方：共有零対角の全関手同型。 -/
 lemma squareFrameTriangleDiagonalHomotopy_isInvertible (j : Fin 2) :
-    IsInvertibleEdge (functorEdgeOfSimplicialHomotopy
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (squareFrameTriangleDiagonalHomotopy H j)) := by
   let p := (pre (stdSimplex.δ (1 : Fin 3))).app X
   have hi := (squareFrameTriangleHomotopy_isInvertible H j).map p
-  have he : (functorEdgeOfSimplicialHomotopy
+  have he : (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy
       (squareFrameTriangleDiagonalHomotopy H j)).edge =
-      ((functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (squareFrameTriangleHomotopy H j)).map
         ((truncation 2).map p)).edge := by
     change SSet.yonedaEquiv (curry ((stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u})) ≫
       (squareFrameTriangleHomotopy H j).h)) =
@@ -57,7 +57,7 @@ lemma squareFrameTriangleDiagonalHomotopy_isInvertible (j : Fin 2) :
       SSet.yonedaEquiv (curry (squareFrameTriangleHomotopy H j).h ≫
         (pre (stdSimplex.δ (1 : Fin 3))).app X)
     rw [curry_pre_app]
-  exact (isInvertibleEdge_congr he).mpr hi
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr he).mpr hi
 
 private lemma diagonalFirstVertex :
     (stdSimplex.δ (1 : Fin 2) : (Δ[0] : SSet.{u}) ⟶ Δ[1]) ≫ stdSimplex.δ (1 : Fin 3) =

@@ -30,8 +30,8 @@ lemma coherentCompositionFaceValues_eq {J : Type u} [LinearOrder J] {a b c : J}
       (R.map (.mk b) (.mk c)).app (Opposite.op ⦋d⦌) P =
         (R.map (.mk b) (.mk c)).app (Opposite.op ⦋d⦌) Q)
     (d : ℕ) (P Q : (nerve (Path a c)) _⦋d⦌)
-    (hP : P ∈ (Coherent.pathThrough b).obj (Opposite.op ⦋d⦌))
-    (hQ : Q ∈ (Coherent.pathThrough b).obj (Opposite.op ⦋d⦌)) :
+    (hP : P ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).obj (Opposite.op ⦋d⦌))
+    (hQ : Q ∈ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).obj (Opposite.op ⦋d⦌)) :
     (R.map (.mk a) (.mk c)).app (Opposite.op ⦋d⦌) P =
       (R.map (.mk a) (.mk c)).app (Opposite.op ⦋d⦌) Q := by
   rw [coherentPathFlag_mapping_comp R hab hbc P hP,
@@ -56,8 +56,8 @@ lemma coherentCompositionFaceMap_eq_const {J : Type u} [LinearOrder J] {a b c : 
     (h₁ : ∀ (d : ℕ) (P Q : (nerve (Path b c)) _⦋d⦌),
       (R.map (.mk b) (.mk c)).app (Opposite.op ⦋d⦌) P =
         (R.map (.mk b) (.mk c)).app (Opposite.op ⦋d⦌) Q)
-    (p : (Coherent.pathThrough (a := a) (c := c) b : SSet.{u}) _⦋0⦌) :
-    (Coherent.pathThrough b).ι ≫ R.map (.mk a) (.mk c) =
+    (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := a) (c := c) b : SSet.{u}) _⦋0⦌) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough b).ι ≫ R.map (.mk a) (.mk c) =
       SSet.const ((R.map (.mk a) (.mk c)).app (Opposite.op ⦋0⦌) p.val) := by
   apply coherentPathMap_eq_const _ p
   intro d P Q

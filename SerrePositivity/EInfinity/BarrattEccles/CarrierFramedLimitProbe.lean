@@ -35,7 +35,7 @@ def carrierProbeFactorization :
       (cofibrations (Complex A)) (trivialFibrations (Complex A)) := by
   let := projectiveModelCategory A
   have := projectiveModelCategory_cofibrantlyGenerated A
-  have := ModelGeneration.hasFunctorialFactorization_cofibration_trivialFibration
+  have := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.hasFunctorialFactorization_cofibration_trivialFibration
     (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A)
   exact MorphismProperty.functorialFactorizationData _ _
 

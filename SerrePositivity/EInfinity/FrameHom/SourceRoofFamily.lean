@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.FrameHom.FibrantSourceReducedFirst
 public import SerrePositivity.EInfinity.FrameHom.FrameIndexAugmentation
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ArrowMapComposition
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ArrowMapComposition
 
 /-!
 概要：固定 source frame の実二列 roof 比較を全標的で自然な一つの族にする。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 open CategoryTheory HomotopicalAlgebra Opposite Hammock
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 open SerrePositivity.SimplicialModel
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
   (X : C)
@@ -26,10 +26,10 @@ variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicat
 方針：元の射の一定単体による後合成を使う。
 規約：余極限の元の豊穣合成。使われ方：全標的の同じ実 roof 族。 -/
 def hammockHomFamily : C ⥤ SSet.{max u v} where
-  obj Y := colimitGraph W X Y
-  map f := postcomposePointMap X (arrowMap W f)
-  map_id Y := by rw [arrowMap_identity, postcomposePointMap_unit]
-  map_comp f g := by rw [postcomposePointMap_comp, composeUnitMaps_arrowMap]
+  obj Y := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y
+  map f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap X (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap W f)
+  map_id Y := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap_identity, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap_unit]
+  map_comp f g := by rw [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.postcomposePointMap_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composeUnitMaps_arrowMap]
 
 variable [ModelCategory C] {X} (q : CofibrantResolution (C := C) simplex X)
 
@@ -37,7 +37,7 @@ variable [ModelCategory C] {X} (q : CofibrantResolution (C := C) simplex X)
 方針：同じ元の後合成を全要素圏へ送る。
 規約：Hom の宇宙だけを揃える。使われ方：実二列 roof 比較の始域。 -/
 def sourceFrameElementsFamily : C ⥤ SSet.{max u v} :=
-  cosimplicialHom q.obj ⋙
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj ⋙
     { obj := fun K => nerve (ULiftHom.{max u v} K.Elementsᵒᵖ)
       map := fun f => nerveMap
         (ULiftHom.down.{0, v, max u v} ⋙ f.mapElements.op ⋙ ULiftHom.up) }
@@ -55,9 +55,9 @@ def sourceRoofFamily : sourceFrameElementsFamily q ⟶
 方針：既存の宇宙持ち上げ augmentation の自然性を使う。
 規約：元の全単体と終端制限。使われ方：元の Hom との全自然比較。 -/
 def sourceFrameElementsAugmentation : sourceFrameElementsFamily q ⟶
-    cosimplicialHom q.obj ⋙ SSet.uliftFunctor.{max u v, v} where
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj ⋙ SSet.uliftFunctor.{max u v, v} where
   app Y := SimplexTerminalNerve.liftedAugmentation.{v, max u v}
-    ((cosimplicialHom q.obj).obj Y)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom q.obj).obj Y)
   naturality _ _ _ := SimplexTerminalNerve.liftedAugmentation_naturality _
 
 end SerrePositivity.EInfinity.FrameHom

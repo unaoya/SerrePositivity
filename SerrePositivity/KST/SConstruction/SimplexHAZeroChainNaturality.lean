@@ -15,7 +15,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の零次元の逆 Hom 鎖射は、元の厳密 dg 関手の後合成と厳密に可換。 -/
-lemma simplexHAZeroChainLift_post {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHAZeroChainLift_post {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     {E : Type w} [DGCategory A E] (F : DGFunctor A D E)
     (v : Fin 1 ↪o Fin (n + 1)) (b : Fin (n + 1)) (hb : v 0 < b) :
     simplexHAZeroChainLift A (s.map F) v b hb =

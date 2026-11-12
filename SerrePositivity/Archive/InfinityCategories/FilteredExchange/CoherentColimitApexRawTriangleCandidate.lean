@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitApexRawBoundaryNaturality
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitRawUniversalTriangleComparison
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedFiberValueToReflection
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulFunctorIsoCoherence
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulFunctorIsoCoherence
 
 /-!
 概要：元の三辺・指定 path の境界比較候補を fiber へ戻し、元の普遍比較との照合を値で判定。

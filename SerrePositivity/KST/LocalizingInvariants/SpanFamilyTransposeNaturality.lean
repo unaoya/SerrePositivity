@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CoconeFamilyTranspose
-public import SerrePositivity.InfinityCategories.F2.Presentable.FlipConstantFunctorHom
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FlipConstantFunctorHom
 
 /-!
 概要：元の二重内部 Hom 交換の反転と図式形状制限との厳密自然性。
@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants
 /-- 元の二重内部 Hom の二度の交換は、全単体写像として恒等。 -/
 @[reassoc]
 lemma spanInternalHomSwap_swap (A B X : SSet.{u}) :
-    (internalHomSwapIso A B X).hom ≫ (internalHomSwapIso B A X).hom = 𝟙 _ := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A B X).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso B A X).hom = 𝟙 _ := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -47,19 +47,19 @@ lemma spanInternalHomSwap_swap (A B X : SSet.{u}) :
 
 /-- 形状側での制限も、同じ元の交換と全単体で可換する。 -/
 lemma spanInternalHomSwap_pre_first {A A' B X : SSet.{u}} (j : A' ⟶ A) :
-    (pre j).app ((ihom B).obj X) ≫ (internalHomSwapIso A' B X).hom =
-      (internalHomSwapIso A B X).hom ≫ (ihom B).map ((pre j).app X) := by
-  have h := congrArg (fun f => (internalHomSwapIso A B X).hom ≫ f)
-    (internalHomSwapIso_pre (A := B) (X := X) j)
-  have hh := congrArg (fun f => f ≫ (internalHomSwapIso A' B X).hom) h
+    (pre j).app ((ihom B).obj X) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A' B X).hom =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A B X).hom ≫ (ihom B).map ((pre j).app X) := by
+  have h := congrArg (fun f => (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A B X).hom ≫ f)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_pre (A := B) (X := X) j)
+  have hh := congrArg (fun f => f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A' B X).hom) h
   simpa only [Category.assoc, spanInternalHomSwap_swap_assoc,
     spanInternalHomSwap_swap, Category.comp_id] using hh.symm
 
 /-- 同じ射の転置は、標的の後合成とも厳密に可換。 -/
 lemma spanInternalHomFlip_post {A B X Y : SSet.{u}} (f : X ⟶ Y)
     (g : A ⟶ (ihom B).obj X) :
-    internalHomFlipHomEquiv A B Y (g ≫ (ihom B).map f) =
-      internalHomFlipHomEquiv A B X g ≫ (ihom A).map f := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A B Y (g ≫ (ihom B).map f) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A B X g ≫ (ihom A).map f := by
   apply uncurry_injective
   change uncurry (curry ((β_ A B).hom ≫ uncurry (g ≫ (ihom B).map f))) =
     uncurry (curry ((β_ A B).hom ≫ uncurry g) ≫ (ihom A).map f)
@@ -69,29 +69,29 @@ lemma spanInternalHomFlip_post {A B X Y : SSet.{u}} (f : X ⟶ Y)
 def spanDiagramFamilyTranspose {A L P X : SSet.{u}}
     (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
     P ⟶ (ihom L).obj ((ihom A).obj X) :=
-  internalHomFlipHomEquiv L P ((ihom A).obj X)
-    (internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (internalHomSwapIso A P X).hom)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv L P ((ihom A).obj X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A P X).hom)
 
 /-- 同じ三変数の転置を二度行うと、元の全単体写像へ厳密に戻る。 -/
 lemma spanDiagramFamilyTranspose_transpose {A L P X : SSet.{u}}
     (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
     spanDiagramFamilyTranspose (spanDiagramFamilyTranspose Q) = Q := by
-  change internalHomFlipHomEquiv L A ((ihom P).obj X)
-    (internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) ≫
-      (internalHomSwapIso P A X).hom) = Q
-  have ht : internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) =
-      internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (internalHomSwapIso A P X).hom :=
-    (internalHomFlipHomEquiv L P ((ihom A).obj X)).symm_apply_apply _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv L A ((ihom P).obj X)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso P A X).hom) = Q
+  have ht : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv P L ((ihom A).obj X) (spanDiagramFamilyTranspose Q) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A P X).hom :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv L P ((ihom A).obj X)).symm_apply_apply _
   rw [ht, Category.assoc, spanInternalHomSwap_swap, Category.comp_id]
-  exact (internalHomFlipHomEquiv A L ((ihom P).obj X)).symm_apply_apply Q
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A L ((ihom P).obj X)).symm_apply_apply Q
 
 /-- 中央の図式形状の制限も、同じ全転置と厳密に可換する。 -/
 lemma spanDiagramFamilyTranspose_pre_diagram {A L L' P X : SSet.{u}} (j : L' ⟶ L)
     (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
     spanDiagramFamilyTranspose (Q ≫ (pre j).app ((ihom P).obj X)) =
       spanDiagramFamilyTranspose Q ≫ (pre j).app ((ihom A).obj X) := by
-  rw [spanDiagramFamilyTranspose, internalHomFlipHomEquiv_pre_app,
-    Category.assoc, internalHomFlipHomEquiv_pre]
+  rw [spanDiagramFamilyTranspose, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre]
   rfl
 
 /-- 同じ全図式族の交換は、元の形状の全制限を保持する。 -/
@@ -99,11 +99,11 @@ lemma spanDiagramFamilyTranspose_pre_shape {A A' L P X : SSet.{u}}
     (j : A' ⟶ A) (Q : A ⟶ (ihom L).obj ((ihom P).obj X)) :
     spanDiagramFamilyTranspose (j ≫ Q) =
       spanDiagramFamilyTranspose Q ≫ (ihom L).map ((pre j).app X) := by
-  rw [spanDiagramFamilyTranspose, internalHomFlipHomEquiv_pre j Q,
+  rw [spanDiagramFamilyTranspose, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre j Q,
     Category.assoc, spanInternalHomSwap_pre_first (B := P) (X := X) j,
     ← Category.assoc]
   exact spanInternalHomFlip_post ((pre j).app X)
-    (internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (internalHomSwapIso A P X).hom)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A L ((ihom P).obj X) Q ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso A P X).hom)
 
 /-- 元のパラメータの制限は、交換後の全図式族の同じ制限になる。 -/
 lemma spanDiagramFamilyTranspose_pre_parameter {A L P P' X : SSet.{u}}
@@ -111,22 +111,22 @@ lemma spanDiagramFamilyTranspose_pre_parameter {A L P P' X : SSet.{u}}
     spanDiagramFamilyTranspose (Q ≫ (ihom L).map ((pre j).app X)) =
       j ≫ spanDiagramFamilyTranspose Q := by
   rw [spanDiagramFamilyTranspose, spanInternalHomFlip_post ((pre j).app X) Q,
-    Category.assoc, internalHomSwapIso_pre (A := A) (X := X) j,
-    ← Category.assoc, internalHomFlipHomEquiv_pre_app j]
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_pre (A := A) (X := X) j,
+    ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv_pre_app j]
   rfl
 
 /-- 元の一つの図式を全パラメータで定値にした場合は、同じ全関手頂点への定値族。 -/
 lemma spanDiagramFamilyTranspose_post_constant {A L X : SSet.{u}} (P : SSet.{u})
     (Q : A ⟶ (ihom L).obj X) :
-    spanDiagramFamilyTranspose (Q ≫ (ihom L).map (constantFunctorMap P X)) =
-      SSet.const (functorVertex (internalHomFlipHomEquiv A L X Q)) := by
-  rw [spanDiagramFamilyTranspose, spanInternalHomFlip_post (constantFunctorMap P X) Q,
-    Category.assoc, F2.Presentable.swap_postcompose_constant,
-    F2.Presentable.flip_postcompose_constant]
+    spanDiagramFamilyTranspose (Q ≫ (ihom L).map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap P X)) =
+      SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv A L X Q)) := by
+  rw [spanDiagramFamilyTranspose, spanInternalHomFlip_post (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap P X) Q,
+    Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.swap_postcompose_constant,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.flip_postcompose_constant]
 
 /-- 定値関手族の各評価は、元の同じ対象を全単体で回収する。 -/
 lemma spanConstantFunctorMap_evaluate (P X : SSet.{u}) (p : P _⦋0⦌) :
-    constantFunctorMap P X ≫ evaluateFunctorAt p = 𝟙 X := by
-  rw [constantFunctorMap, curry_evaluateFunctorAt_vertex, CartesianMonoidalCategory.lift_snd]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap P X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt p = 𝟙 X := by
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorMap, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex, CartesianMonoidalCategory.lift_snd]
 
 end SerrePositivity.KST.LocalizingInvariants

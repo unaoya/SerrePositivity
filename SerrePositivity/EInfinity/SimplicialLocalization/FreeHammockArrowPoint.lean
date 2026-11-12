@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockArrowAugmentation
 public import SerrePositivity.EInfinity.SimplicialLocalization.DKHammockCompositionComparison
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitArrowMap
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitArrowMap
 
 /-!
 # 元の射の点を同じ自由 hammock 比較で回収する
@@ -28,7 +28,7 @@ lemma unitPointMap_comp {K L : SSet.{u}} (p : K _⦋0⦌) (f : K ⟶ L) :
     SSet.unitHomEquiv L ((SSet.unitHomEquiv L).symm (f.app _ p))
   rw [Equiv.apply_symm_apply, Equiv.apply_symm_apply]
 
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 def freeHammockArrowPoint (f : X ⟶ Y) : 𝟙_ SSet.{u} ⟶ freeHammockDiagonal C X Y :=
   (SSet.unitHomEquiv _).symm (freeHammockArrowZero C f)
@@ -44,7 +44,7 @@ lemma freeHammockArrowPoint_comparison (f : X ⟶ Y) :
 
 lemma freeHammockArrowPoint_augmentation (f : X ⟶ Y) :
     freeHammockArrowPoint C f ≫ freeHammockDiagonalAugmentation C X Y =
-      arrowMap C.weakEquivalences f := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f := by
   rw [freeHammockArrowPoint, unitPointMap_comp, freeHammockArrowZero_augmentation]
   apply (SSet.unitHomEquiv _).injective
   exact (SSet.unitHomEquiv _).apply_symm_apply _
@@ -52,7 +52,7 @@ lemma freeHammockArrowPoint_augmentation (f : X ⟶ Y) :
 lemma dkHammockColimitComparisonIso_arrow (f : X ⟶ Y) :
     AnodyneHomotopy.anodyneQ.map (localizationArrowPoint C f) ≫
         (dkHammockColimitComparisonIso C X Y).hom =
-      AnodyneHomotopy.anodyneQ.map (arrowMap C.weakEquivalences f) := by
+      AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f) := by
   rw [← freeHammockArrowPoint_comparison, Functor.map_comp, Category.assoc,
     dkHammockColimitComparisonIso_fac, ← Functor.map_comp, freeHammockArrowPoint_augmentation]
 

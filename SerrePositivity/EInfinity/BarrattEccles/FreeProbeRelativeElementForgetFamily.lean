@@ -26,16 +26,16 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 lemma freeProbeRelativeElementPinched_forget_family_arrow :
     let K := nerve (freeProbeRelativeElementIndex A X B)
     let d := MixedNerve.down (freeProbeElementIndex A X B.obj)
-    Arrow.mk (intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
-      pinchedHomMap (cAlgForgetDerived A) _ _ ≫ pinchedHomToIntervalMappingSpace _ _)) =
-    Arrow.mk (constantFunctorHomMap K
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (freeProbeRelativeElementPinchedMap A X B ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (cAlgForgetDerived A) _ _ ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)) =
+    Arrow.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K
       (cofibrantForgetOrdinaryVertexIso A (freeProbeElementCofibrantSource A X)).hom ≫
-      intervalFamilyHomPrecomp d (freeProbeElementUnderlyingRoofFamily A X B.obj) ≫
-      constantFunctorHomMap K (cofibrantForgetOrdinaryVertexIso A B).inv) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp d (freeProbeElementUnderlyingRoofFamily A X B.obj) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (cofibrantForgetOrdinaryVertexIso A B).inv) := by
   dsimp only
   let J := freeProbeRelativeElementIndex A X B
   let T := (hoFunctor.map ((pre (MixedNerve.down (freeProbeElementIndex A X B.obj))).app
-    (derivedInfinityCategory A))).toFunctor
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).toFunctor
   let eS := (cAlgForgetDerived_sourceIso A).precomp
     (nerveMap ((Functor.const J).obj (freeProbeRelativeElementSource A X)))
   let eB := (cAlgForgetDerived_sourceIso A).precomp
@@ -50,7 +50,7 @@ lemma freeProbeRelativeElementPinched_forget_family_arrow :
   have hr : Arrow.mk r = Arrow.mk (T.map (freeProbeElementUnderlyingRoofFamily A X B.obj)) :=
     (freeProbeRelativeElementUnderlyingRoof_arrow A X B).trans
       (congrArg T.mapArrow.obj (freeProbeElementUnderlyingRoofFamily_arrow A X B.obj)).symm
-  let eB' := constantVertexIso (nerve J) (cofibrantForgetOrdinaryVertexIso A B)
+  let eB' := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantVertexIso (nerve J) (cofibrantForgetOrdinaryVertexIso A B)
   have hb : Arrow.mk eB.hom = Arrow.mk eB'.hom :=
     cofibrantForgetOrdinaryRestriction_hom_arrow A B J
   have hb' : Arrow.mk eB.inv = Arrow.mk eB'.inv := by
@@ -58,7 +58,7 @@ lemma freeProbeRelativeElementPinched_forget_family_arrow :
   have h := RoofPrefix.comp_arrow_eq _ _ _ _
     (RoofPrefix.comp_arrow_eq eS.hom r _ _ hs hr) hb'
   exact (freeProbeRelativeElementPinched_forget_underlying_arrow A X B).trans
-    (by simpa only [r, eS, eB, eB', constantVertexIso, intervalFamilyHomPrecomp,
+    (by simpa only [r, eS, eB, eB', _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.constantVertexIso, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomPrecomp,
       Category.assoc] using h)
 
 end SerrePositivity.EInfinity.BarrattEccles

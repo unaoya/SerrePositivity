@@ -21,11 +21,11 @@ open scoped Simplicial
 def anodyneExtensionVertex {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (f : B ⟶ Z) (hf : i ≫ f = h) : (anodyneExtensionChoices i h) _⦋0⦌ := by
   let q : (Δ[0] : SSet.{u}) ⟶ anodyneExtensionChoices i h :=
-    pullback.lift (SSet.yonedaEquiv.symm (functorVertex f)) (𝟙 _) (by
+    pullback.lift (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)) (𝟙 _) (by
       apply SSet.yonedaEquiv.injective
       rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply, Category.id_comp,
         Equiv.apply_symm_apply]
-      change functorVertex (i ≫ f) = functorVertex h
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (i ≫ f) = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex h
       rw [hf])
   exact q.app (Opposite.op ⦋0⦌) (SSet.yonedaEquiv (𝟙 (Δ[0] : SSet.{u})))
 
@@ -33,8 +33,8 @@ def anodyneExtensionVertex {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
 lemma anodyneExtensionAt_vertex {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
     (f : B ⟶ Z) (hf : i ≫ f = h) :
     anodyneExtensionAt i h (anodyneExtensionVertex i h f hf) = f := by
-  apply (functorVertexEquiv B Z).injective
-  rw [anodyneExtensionAt, Equiv.apply_symm_apply, functorVertexEquiv_apply]
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv B Z).injective
+  rw [anodyneExtensionAt, Equiv.apply_symm_apply, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv_apply]
   dsimp only [anodyneExtensionVertex, anodyneExtensionChoices]
   rw [← ConcreteCategory.comp_apply, ← NatTrans.comp_app, pullback.lift_fst,
     SSet.yonedaEquiv_symm_app_id]
@@ -42,7 +42,7 @@ lemma anodyneExtensionAt_vertex {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z)
 /-- 全選択を同時に評価する、元の延長空間の全パラメータの実族。 -/
 def anodyneExtensionFamily {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) :
     B ⊗ anodyneExtensionChoices i h ⟶ Z :=
-  uncurry (pullback.fst ((pre i).app Z) (SSet.yonedaEquiv.symm (functorVertex h)))
+  uncurry (pullback.fst ((pre i).app Z) (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex h)))
 
 /-- 全選択の実族も、元の指定部分を全パラメータで厳密に回収する。 -/
 lemma anodyneExtensionFamily_fac {A B Z : SSet.{u}} (i : A ⟶ B) (h : A ⟶ Z) :

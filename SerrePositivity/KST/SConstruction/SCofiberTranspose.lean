@@ -23,55 +23,55 @@ def sCofiberRawTranspose (n : ℕ) (C : SSet.{u}) :
     sConstruction n (cofiberDiagrams C) ⟶
       (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj ((ihom (arNerve n)).obj C) :=
   (gappedSubcomplex n (cofiberDiagrams C)).ι ≫
-    (ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
-      (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
+    (ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom
 
 /-- 転置した四角形の頂点は元の cofiber 図式の族の転置。 -/
 lemma sCofiberRawTranspose_vertex (n : ℕ) (C : SSet.{u})
     (v : (sConstruction n (cofiberDiagrams C)) _⦋0⦌) :
     (sCofiberRawTranspose n C).app (Opposite.op ⦋0⦌) v =
-      functorVertex (internalHomFlipHomEquiv (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C
-        (gappedDiagram v ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)) := by
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv (arNerve n) (cofiberDiagrams C)).apply_symm_apply v.val
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C
+        (gappedDiagram v ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)) := by
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) (cofiberDiagrams C)).apply_symm_apply v.val
   have h := congrArg (fun w : ((ihom (arNerve n)).obj (cofiberDiagrams C)) _⦋0⦌ =>
-    (internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom.app
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n) (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom.app
       (Opposite.op ⦋0⦌)
-      (((ihom (arNerve n)).map (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).app
+      (((ihom (arNerve n)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).app
         (Opposite.op ⦋0⦌) w)) hv.symm
   have hp : ((ihom (arNerve n)).map
-      (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).app (Opposite.op ⦋0⦌)
-      (functorVertex (gappedDiagram v)) =
-        functorVertex (gappedDiagram v ≫
-          (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) := rfl
-  have hs := internalHomSwapIso_functorVertex (arNerve n)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v ≫
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) := rfl
+  have hs := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_functorVertex (arNerve n)
     (Δ[1] ⊗ Δ[1] : SSet.{u}) C
-    (gappedDiagram v ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)
-  exact h.trans ((congrArg ((internalHomSwapIso (arNerve n)
+    (gappedDiagram v ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι)
+  exact h.trans ((congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve n)
     (Δ[1] ⊗ Δ[1] : SSet.{u}) C).hom.app (Opposite.op ⦋0⦌)) hp).trans hs)
 
 /-- 転置した族の全四角形の角は gapped な Ar 図式。 -/
-lemma sCofiberRawTranspose_gapped (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C]
+lemma sCofiberRawTranspose_gapped (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (s : ((Δ[1] ⊗ Δ[1] : SSet.{u}) ⊗ sConstruction n (cofiberDiagrams C)) _⦋0⦌) :
-    IsGapped ((functorVertexEquiv (arNerve n) C).symm
+    IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm
       ((uncurry (sCofiberRawTranspose n C)).app (Opposite.op ⦋0⦌) s)) := by
   rcases s with ⟨q, v⟩
-  change IsGapped ((functorVertexEquiv (arNerve n) C).symm
-    ((evaluateFunctorAt q).app (Opposite.op ⦋0⦌)
+  change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) C).symm
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt q).app (Opposite.op ⦋0⦌)
       ((sCofiberRawTranspose n C).app (Opposite.op ⦋0⦌) v)))
-  rw [sCofiberRawTranspose_vertex, evaluateFunctorAt_functorVertex, flipFamily_vertex]
+  rw [sCofiberRawTranspose_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, flipFamily_vertex]
   exact (gappedDiagram_isGapped v).postcomp _
     (cofiberEvaluation_preservesSConstructionData C q)
 
 /-- cofiber 値の S_n 図式の転置は S_n C を値とする四角形の族になる。 -/
-def sCofiberTransposeSquare (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+def sCofiberTransposeSquare (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sConstruction n (cofiberDiagrams C) ⟶
       (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).obj (sConstruction n C) :=
   curry (gappedFamilyLift (uncurry (sCofiberRawTranspose n C))
     (sCofiberRawTranspose_gapped n C))
 
 /-- 転置後の S_n C の包含を通すと元の二重内部 Hom の交換を厳密に回収する。 -/
-lemma sCofiberTransposeSquare_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [IsStable C] :
+lemma sCofiberTransposeSquare_ι (n : ℕ) (C : SSet.{u}) [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] :
     sCofiberTransposeSquare n C ≫
       (ihom (Δ[1] ⊗ Δ[1] : SSet.{u})).map (gappedSubcomplex n C).ι =
         sCofiberRawTranspose n C := by

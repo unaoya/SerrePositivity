@@ -4,9 +4,10 @@
 -- `exists_sheafGeneratingEdges`・`sheafification_exists` を、SpaceValued から `sheafification_exists_spaces` をここへ移した。
 module
 
-public import SerrePositivity.InfinityCategories.F2.Tensor.SetSectionsNaturality
-public import SerrePositivity.InfinityCategories.F2.Presentable.SpacePresentable
-public import SerrePositivity.InfinityCategories.F2.Tensor.Space
+public import SerrePositivity.InfinityCategories.Project.SetWeightedTensors.SetSectionsNaturality
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.SpacePresentable
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.Space
 public import Mathlib.CategoryTheory.Sites.Sieves.Presheaf
 -- 本ファイルは drafts/Sheaves/{SheafCondition,SetSections,GlobalSections}.lean を import する。
 
@@ -43,7 +44,7 @@ namespace SerrePositivity.InfinityCategories.Sheaves
 
 open CategoryTheory Limits SSet MonoidalCategory MonoidalClosed
 open scoped Simplicial
-open F2.Presentable (IsPresentable)
+open _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories (IsPresentable)
 
 variable {𝒞 : Type u} [SmallCategory 𝒞] {E : SSet.{u+1}} [Quasicategory E]
 

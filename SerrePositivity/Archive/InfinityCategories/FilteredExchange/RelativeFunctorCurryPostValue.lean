@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeFunctorCurryConstantFiber
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
 
 /-!
 概要：元の相対 curry の指定比較の後合成を、元の同じ指定値の単一の像へ戻す。

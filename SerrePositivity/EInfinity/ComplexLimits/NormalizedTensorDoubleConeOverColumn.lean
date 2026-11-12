@@ -14,27 +14,27 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeOverDiagram_app {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     ((normalizedTensorDoubleConeOverDiagram A X Y).app (Opposite.op ⦋n⦌) c).val =
-      (joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
-        (closedNerveSimplex
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex
           (normalizedTensorElementAugmentedColumn A X Y c ⋙ complexToClosed A)) := by
-  change (SSet.yonedaEquiv (joinInr (Δ[0] : SSet.{u + 1}) Δ[n] ≫
-    ((pointJoinStdSimplexIso n).hom ≫
-      (SSet.yonedaEquiv (X := sliceOver (normalizedTensorConePoint A X))).symm
+  change (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u + 1}) Δ[n] ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso n).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (normalizedTensorConePoint A X))).symm
         (normalizedTensorDoubleConeOverSimplex A X Y c)))).val = _
-  rw [← Category.assoc, pointJoinStdSimplexIso_inr,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.pointJoinStdSimplexIso_inr,
     SSet.stdSimplex.yonedaEquiv_δ_comp, Equiv.apply_symm_apply]
-  change joinMap (SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin (n + 2)))) (𝟙 Δ[0]) ≫
-    ((joinStdSimplexIso (n + 1) 0).hom ≫
-      (SSet.yonedaEquiv (X := dgNerve A (Complex A))).symm
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.stdSimplex.map (SimplexCategory.δ (0 : Fin (n + 2)))) (𝟙 Δ[0]) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso (n + 1) 0).hom ≫
+      (SSet.yonedaEquiv (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A))).symm
         (normalizedTensorDoubleConeSimplex A X Y c)) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_naturality, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_naturality, Category.assoc,
     SSet.yonedaEquiv_symm_naturality_left]
   have hδ : (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom =
       (Fin.succOrderEmb (n + 1)).toOrderHom := by
@@ -42,11 +42,11 @@ lemma normalizedTensorDoubleConeOverDiagram_app {n : ℕ}
     intro i
     change (0 : Fin (n + 2)).succAbove i = i.succ
     rw [Fin.succAbove_zero]
-  have hs : (dgNerve A (Complex A)).map
-      (InfinityCategories.PinchedHom.extend (SimplexCategory.δ (0 : Fin (n + 2)))).op
+  have hs : (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend (SimplexCategory.δ (0 : Fin (n + 2)))).op
       (normalizedTensorDoubleConeSimplex A X Y c) = normalizedTensorDoubleConeTail A X Y c := by
     change (normalizedTensorDoubleConeSimplex A X Y c).pullback
-      (InfinityCategories.PinchedHom.extendOrderHom
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extendOrderHom
         (SimplexCategory.δ (0 : Fin (n + 2))).toOrderHom) = _
     rw [hδ]
     rfl

@@ -48,7 +48,7 @@ open CategoryTheory.MonoidalClosed
 namespace SerrePositivity.SimplicialModel.NormalizedHornFilling
 variable (K : SSet.{v}) {n : ℕ} (i : Fin (n + 2))
 
-lemma compatible : CompatibleInputUnion.Compatible
+lemma compatible : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.Compatible
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun d => DegenerateHornInput.boundary i d K)
     (fun d => DegenerateHornInput.degeneracy d K) := by

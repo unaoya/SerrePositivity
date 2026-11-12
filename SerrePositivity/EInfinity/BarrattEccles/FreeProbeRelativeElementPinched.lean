@@ -14,7 +14,7 @@ universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory Opposite Hammock SimplicialLocalization
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 
@@ -22,19 +22,19 @@ variable (A : Type u) [CommRing A] (X : Complex A) (B : CofibrantAlgebra A)
 方針：元の全単体写像を同じ比較射で後合成する。
 規約：実局所化源の両頂点を保持。使われ方：全族単位比較。 -/
 def freeProbeRelativeElementPinchedMap : nerve (freeProbeRelativeElementIndex A X B) ⟶
-    pinchedHom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom
       ((cAlgLocalizationSource A).app (op ⦋0⦌)
-        (nerveVertex (freeProbeRelativeElementSource A X)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X)))
       ((cAlgLocalizationSource A).app (op ⦋0⦌)
-        (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B))) :=
   freeProbeRelativeElementRoofMap A X B ≫
-    exInfinityUnit.app _ ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
     kanHammockHomPinchedMap (cofibrantAlgebraRelativeCategory A)
       (freeProbeRelativeElementSource A X) (ULiftHom.objUp.{u + 1, u + 1} B) ≫
-    pinchedHomMap (kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.pinchedHomMap (kanHammockLocalizationEquivalence (cofibrantAlgebraRelativeCategory A)).hom
       ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-        (nerveVertex (freeProbeRelativeElementSource A X)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X)))
       ((hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A)).app (op ⦋0⦌)
-        (nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1} B)))
 
 end SerrePositivity.EInfinity.BarrattEccles

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSQuotient
 public import SerrePositivity.KST.SConstruction.FirstRowFibration
-public import SerrePositivity.InfinityCategories.Core.SubcomplexInverseImageComparison
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.SubcomplexInverseImageComparison
 
 /-!
 概要：元の相対 gapped S• の商比較を、同じ有限第一行の相対図式へ接続する。
@@ -19,28 +19,28 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ)
+variable {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ)
 
-private theorem firstRowCore_preimage (C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) (n : ℕ) :
-    quasicategoryCore (sConstruction n C.obj) =
-      (quasicategoryCore ((ihom (firstRowNerve n)).obj C.obj)).preimage
+private theorem firstRowCore_preimage (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n C.obj) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (firstRowNerve n)).obj C.obj)).preimage
         (firstRowRestriction n C.obj) := by
   ext d s
   change (∀ α : ⦋1⦌ ⟶ d.unop,
-    IsInvertibleEdge (edgeOfSimplex ((sConstruction n C.obj).map α.op s))) ↔
-      ∀ α : ⦋1⦌ ⟶ d.unop, IsInvertibleEdge (edgeOfSimplex
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex ((sConstruction n C.obj).map α.op s))) ↔
+      ∀ α : ⦋1⦌ ⟶ d.unop, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex
         (((ihom (firstRowNerve n)).obj C.obj).map α.op
           ((firstRowRestriction n C.obj).app d s)))
   constructor
   · intro hs α
     rw [← NatTrans.naturality_apply]
-    exact (isInvertibleEdge_congr rfl).mp
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr rfl).mp
       ((hs α).map (firstRowRestriction n C.obj))
   · intro hs α
-    apply (isFullyFaithful_of_trivialKanFibration (firstRowRestriction n C.obj)).reflects_isInvertibleEdge
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isFullyFaithful_of_trivialKanFibration (firstRowRestriction n C.obj)).reflects_isInvertibleEdge
     have hi := hs α
     rw [← NatTrans.naturality_apply] at hi
-    exact (isInvertibleEdge_congr rfl).mpr hi
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr rfl).mpr hi
 
 /-- 概要：同じ第一行制限は元の完全商関手による後合成を厳密に保つ。
 方針：gapped 包含後の後合成と内部 Hom の自然性を使う。
@@ -58,7 +58,7 @@ theorem relativeFirstRow_postcomp :
 規約：局所化性やこの比較の弱同値性は定義に含めない。
 使われ方：Sp の有限線型図式供給を元の相対 S• と接続する場所。 -/
 def relativeFirstRow : ((ihom (firstRowNerve n)).obj B.obj).Subcomplex :=
-  (quasicategoryCore ((ihom (firstRowNerve n)).obj C.obj)).preimage
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore ((ihom (firstRowNerve n)).obj C.obj)).preimage
     ((ihom (firstRowNerve n)).map q.hom)
 
 /-- 概要：元の相対 S_n の全高次条件は、同じ相対第一行の厳密な逆像。
@@ -71,7 +71,7 @@ theorem relativeSConstruction_eq_firstRow_preimage :
   have h := relativeDiagram_eq_fullFunctorCore_preimage q.hom (gappedSubcomplex n B.obj).ι _
     (sPostcomp n q.hom (exactMap_preservesSData q)) rfl
   change relativeSConstruction q.hom n =
-    (quasicategoryCore (sConstruction n C.obj)).preimage
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (sConstruction n C.obj)).preimage
       (sPostcomp n q.hom (exactMap_preservesSData q)) at h
   rw [h, firstRowCore_preimage, ← Subcomplex.preimage_comp,
     relativeFirstRow_postcomp, Subcomplex.preimage_comp]
@@ -101,13 +101,13 @@ theorem relativeFirstRowRestriction_ι :
 規約：有限線型図式の商局所化は仮定しない。
 使われ方：相対 gapped 図式と有限第一行の全高次の比較。 -/
 instance relativeFirstRowRestriction_trivialKanFibration :
-    TrivialKanFibration (relativeFirstRowRestriction q n) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (relativeFirstRowRestriction q n) := by
   let A := relativeFirstRow q n
   let p := firstRowRestriction n B.obj
-  have : TrivialKanFibration (A.fromPreimage p) :=
-    ⟨trivialKanFibrations.of_isPullback (subcomplexInverseImage_isPullback p A).flip
-      TrivialKanFibration.mem⟩
+  have : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (A.fromPreimage p) :=
+    ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.of_isPullback (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.subcomplexInverseImage_isPullback p A).flip
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem⟩
   unfold relativeFirstRowRestriction
-  exact ⟨trivialKanFibrations.comp_mem _ _ TrivialKanFibration.mem TrivialKanFibration.mem⟩
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibrations.comp_mem _ _ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem⟩
 
 end SerrePositivity.KST.Fibration

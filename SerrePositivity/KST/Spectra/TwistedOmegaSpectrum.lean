@@ -26,7 +26,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 
 variable (X : OmegaSpectrum.{u}) (r : KanSequence.Hom X.toKanSequence X.toKanSequence)
-  (hr : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (r.app k).right)
+  (hr : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (r.app k).right)
 
 /-- 概要：自己射の後合成で構造射を変えた BF Ω スペクトル。
 方針：変更後の Kan Ω 列を単射構造射へ置換する。
@@ -73,8 +73,8 @@ theorem twistComparison_projection (k : ℕ) :
 規約：全自然数次数と全ての基点。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。符号変更による群の保存。 -/
 theorem twistComparison_levelwise (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((twistComparison X r hr).app k).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((twistedProjection X r hr).app k).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((twistComparison X r hr).app k).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((twistedProjection X r hr).app k).right) _
     (KanSequence.replacementProjection_piIsomorphism (KanSequence.twist r) k)
   have h := congrArg Under.Hom.right (twistComparison_projection X r hr k)
   change ((twistComparison X r hr).app k).right ≫

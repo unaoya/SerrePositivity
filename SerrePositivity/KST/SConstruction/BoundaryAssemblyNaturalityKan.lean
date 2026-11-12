@@ -32,16 +32,16 @@ def boundaryAssemblyNaturalityParameterUnit (r : ℕ) {X Y : StableModel.{u}} (f
 /-- 二重円筒の Kan 置換は全ての境界を充填する可縮 Kan 複体。 -/
 lemma boundaryAssemblyNaturalityParameters_isContractibleKan (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y) :
-    IsContractibleKan (boundaryAssemblyNaturalityParameters r f) := by
-  have hC := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan (boundaryAssemblyNaturalityParameters r f) := by
+  have hC := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyAdjointChoices_isContractibleKan r Y)
-  have hA := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
+  have hA := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.contractibleKan_tensor (oneDirectionKanInverseChoices_isContractibleKan r X)
     (kanAssemblyMixedChoices_isContractibleKan r f)
-  have hB := _root_.SerrePositivity.InfinityCategories.Core.contractibleKan_tensor (oneDirectionInverseMixedChoices_isContractibleKan r f)
+  have hB := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.contractibleKan_tensor (oneDirectionInverseMixedChoices_isContractibleKan r f)
     (kanAssemblyAdjointChoices_isContractibleKan r Y)
   let a := hA.nonempty.some
   exact kanReplacement_contractible_of_localized_toUnit
-    ((_root_.SerrePositivity.InfinityCategories.Kan.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyPullbackAndHomotopyPushoutSquares.doubleMappingCylinder_left (boundaryAssemblyExtensionMiddle r f)
       (boundaryAssemblyInverseMiddle r f)).app (Opposite.op ⦋0⦌) a)
     (doubleCylinder_toUnit_localized_isIso _ _ hC hA hB)
 
@@ -50,7 +50,7 @@ lemma boundaryAssemblyNaturalityParameters_relative_lifting (r : ℕ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     {S T : SSet.{u}} (j : S ⟶ T) [Mono j] (a : S ⟶ boundaryAssemblyNaturalityParameters r f) :
     ∃ b : T ⟶ boundaryAssemblyNaturalityParameters r f, j ≫ b = a := by
-  have hc := (isContractibleKan_iff_trivialKanFibration _).mp
+  have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration _).mp
     (boundaryAssemblyNaturalityParameters_isContractibleKan r f)
   have := hc.mem j inferInstance
   let sq : CommSq a j (terminal.from (boundaryAssemblyNaturalityParameters r f))
@@ -109,7 +109,7 @@ lemma boundaryAssemblyNaturalityFamily_source (r : ℕ) {X Y : StableModel.{u}} 
 lemma boundaryAssemblyNaturalityFamily_target (r : ℕ) {X Y : StableModel.{u}} (f : X ⟶ Y) :
     boundaryAssemblyNaturalityTarget r f ≫ boundaryAssemblyNaturalityFamily r f =
       boundaryKanAssemblyAdjointFamily r Y ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed ((boundaryKanRealizationFunctor r).map f)
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed ((boundaryKanRealizationFunctor r).map f)
           ((loopBoundaryKanFunctor (r + 1)).obj Y)).right := by
   rw [boundaryAssemblyNaturalityTarget, Category.assoc, boundaryAssemblyNaturalityFamily_unit]
   exact boundaryAssemblyNaturalityCylinderFamily_target r f

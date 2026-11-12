@@ -19,7 +19,7 @@ variable {n : SimplexCategory} {C : Type u} [Category.{v} C] [HasFiniteColimits 
 namespace Gluing
 
 abbrev simplexDesc (s : PushoutCocone (map A sq.le₁₂) (map A sq.le₁₃)) :
-    S₄.toSSet ⟶ (cosimplicialHom A).obj s.pt :=
+    S₄.toSSet ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj s.pt :=
   FiniteTensor.Gluing.simplexDesc A sq.isPushout s
 
 abbrev desc (s : PushoutCocone (map A sq.le₁₂) (map A sq.le₁₃)) : obj S₄ A ⟶ s.pt :=

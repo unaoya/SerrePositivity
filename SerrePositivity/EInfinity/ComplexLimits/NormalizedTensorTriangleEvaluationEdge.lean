@@ -13,14 +13,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 
 private lemma closedHom_heq {P Q P' Q' : Complex A} (hP : P = P') (hQ : Q = Q')
     (f : P ⟶ Q) (g : P' ⟶ Q') (hf : HEq f g) (k : ℤ) :
-    HEq (closedNerveHom ((complexToClosed A).map f) k)
-      (closedNerveHom ((complexToClosed A).map g) k) := by
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map f) k)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map g) k) := by
   cases hP
   cases hQ
   cases eq_of_heq hf
@@ -30,10 +30,10 @@ lemma normalizedTensorTriangleBack_hom_evaluation {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hat : τ a ≠ 2) (hbt : τ b = 2) :
     HEq ((normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk)
-      (closedNerveHom ((complexToClosed A).map
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map
         ((normalizedTensorElementEvaluation A X Y).app (c.obj a))) k) := by
   let Γ := normalizedTensorElementEvaluatedColumn A X Y c
   have hab : a ≤ b := by rw [ha, hb]; exact I.min'_le _ (I.max'_mem _)
@@ -52,8 +52,8 @@ lemma normalizedTensorTriangleBack_hom_evaluation {n : ℕ}
     subst j
     exact normalizedTensorElementEvaluatedColumn_map_cast_last A X Y c a
   unfold normalizedTensorTriangleBack
-  rw [← closedNerveSimplex_pullback]
-  change HEq (closedNerveHom ((complexToClosed A).map
+  rw [← _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex_pullback]
+  change HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom ((complexToClosed A).map
     (Γ.map (homOfLE ((coneTriangleBackIndex τ).monotone hab)))) k) _
   exact closedHom_heq A hx hy _ _
     (hm _ _ (coneTriangleBackIndex_ne_two τ a hat)
@@ -63,7 +63,7 @@ lemma normalizedTensorTriangleData_hom_evaluation_edge {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : (0 : ℤ) = 2 - (I.card : ℤ)) (ha1 : τ a = 1) (hbt : τ b = 2) :
     HEq ((normalizedTensorTriangleData A X Y c τ).hom I a b 0 hI ha hb hk)
       (closedHomEquiv A (Complex A) _ _ ((complexToClosed A).map
@@ -71,6 +71,6 @@ lemma normalizedTensorTriangleData_hom_evaluation_edge {n : ℕ}
   have ha0 : τ a ≠ 0 := by rw [ha1]; decide
   have ha2 : τ a ≠ 2 := by rw [ha1]; decide
   have hh := normalizedTensorTriangleBack_hom_evaluation A X Y c τ I a b 0 hI ha hb hk ha2 hbt
-  rw [closedNerveHom_zero] at hh
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_zero] at hh
   exact (normalizedTensorTriangleData_hom_back A X Y c τ I a b 0 hI ha hb hk hbt ha0).trans hh
 end SerrePositivity.EInfinity.ComplexLimits

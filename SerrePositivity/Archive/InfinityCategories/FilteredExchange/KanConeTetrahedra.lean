@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanNativeConeTriangle
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.KanConeHomotopyTriangles
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedronUpperSides
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConeHomotopyTetrahedronLowerSides
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanConeHomotopyTriangles
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeHomotopyTetrahedronUpperSides
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConeHomotopyTetrahedronLowerSides
 
 /-!
 概要：Kan 図式上の全錐円柱の三つの三単体とその指定面。

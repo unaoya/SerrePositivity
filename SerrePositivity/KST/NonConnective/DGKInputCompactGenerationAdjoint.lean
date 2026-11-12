@@ -30,7 +30,7 @@ def dgKInputCompactGenerationSourceQCat : SSet.QCat.{max (u + 1) v + 1} :=
 規約：非可算 κ の cone と同一視しない。
 使われ方：同じ生成射の二圏表示。 -/
 def dgKInputCompactGenerationTargetQCat : SSet.QCat.{max (u + 1) v + 1} :=
-  ⟨F2.Compact.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
+  ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kappaCompactObjects.{max (u + 1) v, max (u + 1) v + 1}
     Cardinal.aleph0 (dgKInputIndCompletion R A), inferInstance⟩
 /-- 概要：元の compact 生成順射を二圏の一射にする。
 方針：元の単体集合の射を充満部分圏の射に包む。
@@ -92,7 +92,7 @@ def dgKInputCompactGenerationAdjointEquivalence :
 方針：二圏の二射の元の関手空間表示を使う。
 規約：順射・逆射は元の生成同値のまま。
 使われ方：恒等作用と二項合成比較の整合。 -/
-def dgKInputCompactGenerationAdjointCounit : FunctorIso
+def dgKInputCompactGenerationAdjointCounit : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgKInputCompactGenerationEquivalence R A).inv ≫
       (dgKInputCompactGenerationEquivalence R A).hom) (𝟙 _) where
   hom := CatEnrichedOrdinary.Hom.base (dgKInputCompactGenerationAdjointEquivalence R A).counit.hom
@@ -153,10 +153,10 @@ theorem dgKInputCompactGenerationAdjointEquivalence_right_triangle :
 規約：元の作用射・生成順逆射・二項合成の単位を変更せず、既存の恒等比較も保持する。
 使われ方：K-7 d4 の恒等作用と二項合成比較の二圏的整合。 -/
 def dgKInputCompactNativeMap_adjointIdIso :
-    FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKInputCompactNativeMap R A A (𝟙 A)) (𝟙 _) := by
   have hν : (dgKInputNuMap R (𝟙 A)).hom = 𝟙 (dgKInputStableValue R A).obj := by
     rw [dgKInputNuMap_eq]
-    exact congrArg (fun f : SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+    exact congrArg (fun f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
       (dgKInputStableValue R A) (dgKInputStableValue R A) => f.hom)
       ((presentedPerfectDGStableCategoryFunctor R).map_id A)
   unfold dgKInputCompactNativeMap

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.CubeDeletionNormalDetection
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormalDetection
 public import SerrePositivity.KST.SConstruction.SerreCubePrefixNaturality
 
 /-! # 保持・削除標準表示の元の Serre 評価
@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 保持・削除標準表示の元の Serre 余モノイド射による評価。 -/
-def serreCubeDeletionNormal : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n m →
+def serreCubeDeletionNormal : {n m : ℕ} → _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n m →
     (serreCubeComonoid A n ⟶ serreCubeComonoid A m)
   | _, _, .nil => 𝟙 _
   | _, _, .drop d => serreCubeDegeneracy A _ 0 ≫ serreCubeDeletionNormal d
@@ -24,19 +24,19 @@ def serreCubeDeletionNormal : {n m : ℕ} → _root_.SerrePositivity.InfinityCat
 
 /-- 全入力を保持する標準表示は、元の Serre 恒等射。 -/
 lemma serreCubeDeletionNormal_id (n : ℕ) :
-    serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n) = 𝟙 _ := by
+    serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalId n) = 𝟙 _ := by
   induction n with
   | zero => rfl
   | succ n ih =>
-    change (serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalId n) ⊗ₘ
+    change (serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalId n) ⊗ₘ
       𝟙 (serreIntervalComonoid A)) = 𝟙 _
     rw [ih]
     simp
 
 /-- 標準表示の一出力削除は、元の同じ Serre 削除との合成を厳密に回収する。 -/
-lemma serreCubeDeletionNormal_erase {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Kan.CubeDeletionNormal n (m + 1))
+lemma serreCubeDeletionNormal_erase {n m : ℕ} (d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CubeDeletionNormal n (m + 1))
     (i : Fin (m + 1)) :
-    serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) =
+    serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalErase d i) =
       serreCubeDeletionNormal A d ≫ serreCubeDegeneracy A m i := by
   induction n generalizing m with
   | zero => cases d
@@ -44,7 +44,7 @@ lemma serreCubeDeletionNormal_erase {n m : ℕ} (d : _root_.SerrePositivity.Infi
     cases d with
     | drop d =>
       change serreCubeDegeneracy A n 0 ≫
-        serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) = _
+        serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalErase d i) = _
       rw [ih d i]
       exact (Category.assoc _ _ _).symm
     | keep d =>
@@ -56,7 +56,7 @@ lemma serreCubeDeletionNormal_erase {n m : ℕ} (d : _root_.SerrePositivity.Infi
       | succ m =>
         refine Fin.cases ?_ (fun i => ?_) i
         · exact (serreCubeDegeneracy_zero_naturality A (serreCubeDeletionNormal A d)).symm
-        · change serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Kan.cubeDeletionNormalErase d i) ⊗ₘ
+        · change serreCubeDeletionNormal A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.cubeDeletionNormalErase d i) ⊗ₘ
               𝟙 (serreIntervalComonoid A) =
             (serreCubeDeletionNormal A d ⊗ₘ 𝟙 (serreIntervalComonoid A)) ≫
               (serreCubeDegeneracy A m i ⊗ₘ 𝟙 (serreIntervalComonoid A))

@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.Hammock.FreeQuiverEvaluationWeak
 public import SerrePositivity.EInfinity.Hammock.TopEquivalenceWeak
 public import SerrePositivity.EInfinity.Hammock.HammockValueRelative
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.MarkedGeneratorCategory
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory
 
 /-!
 # 元の指定部分圏の hammock の自由 groupoid への評価の弱同値性
@@ -22,13 +22,13 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked
 open CategoryTheory SerrePositivity.InfinityCategories
-open SerrePositivity.EInfinity.SimplicialLocalization
+
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
 
 def nativeFreeEvaluation :
-    WideSubcategory W.paths ⥤ Quiver.FreeGroupoid (MarkedGenerators.quiver W) :=
-  MarkedGenerators.fromWide W ⋙ FreeQuiverCover.positiveEvaluation
+    WideSubcategory W.paths ⥤ Quiver.FreeGroupoid (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.fromWide W ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation
 
 lemma nativeFreeEvaluation_inverts_top :
     (⊤ : MorphismProperty (WideSubcategory W.paths)).IsInvertedBy (nativeFreeEvaluation W) := by
@@ -41,20 +41,20 @@ def nativeValue (X Y : Paths C) : nativeSpace W X Y ⟶
   Zigzag.Value.colimitValue (nativeFreeEvaluation W) (nativeFreeEvaluation_inverts_top W) ⟨X⟩ ⟨Y⟩
 
 lemma nativeValue_isWeakHomotopyEquivalence (X Y : Paths C) :
-    IsWeakHomotopyEquivalence (nativeValue W X Y) := by
-  have he := topEquivalence_colimitMap_weak (MarkedGenerators.equivalence W).symm
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (nativeValue W X Y) := by
+  have he := topEquivalence_colimitMap_weak (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.equivalence W).symm
     (⟨X⟩ : WideSubcategory W.paths) ⟨Y⟩
   have hv := FreeQuiverCover.existingHammockValue_isWeakHomotopyEquivalence
-    (Q := MarkedGenerators.quiver W) X Y
+    (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W) X Y
   have hc := he.comp hv
-  have hn : Relative.colimitMap (topRelative (MarkedGenerators.fromWide W))
+  have hn : Relative.colimitMap (topRelative (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.fromWide W))
       (⟨X⟩ : WideSubcategory W.paths) ⟨Y⟩ ≫
         Zigzag.Value.colimitValue
-          (FreeQuiverCover.positiveEvaluation (Q := MarkedGenerators.quiver W))
-          FreeQuiverCover.positiveEvaluation_inverts_top X Y = nativeValue W X Y := by
-    exact Zigzag.Value.colimitValue_relative (topRelative (MarkedGenerators.fromWide W))
-      FreeQuiverCover.positiveEvaluation FreeQuiverCover.positiveEvaluation_inverts_top
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation (Q := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorPaths.quiver W))
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top X Y = nativeValue W X Y := by
+    exact Zigzag.Value.colimitValue_relative (topRelative (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.MarkedGeneratorCategory.fromWide W))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.positiveEvaluation_inverts_top
       (⟨X⟩ : WideSubcategory W.paths) ⟨Y⟩
-  exact (congrArg IsWeakHomotopyEquivalence hn).mp hc
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence hn).mp hc
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.AllMarked

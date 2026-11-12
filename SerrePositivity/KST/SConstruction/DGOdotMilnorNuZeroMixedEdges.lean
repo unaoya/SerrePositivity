@@ -23,7 +23,7 @@ local notation "Z" => dgKInputStableValue R
 規約：元実合成を保持。使われ方：上混合合成辺の始点。 -/
 def dgOdotMilnorNuZeroMixedStart : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ :=
   (dgOdotMilnorNuZeroCornerNullFactor R d).app (Opposite.op ⦋0⦌)
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (K) (Z)
       (dgOdotMilnorNuZeroActualLeft R d))
 
 /-- 概要：同じ指定零角成分を挟む混合二辺の中間頂点。
@@ -31,7 +31,7 @@ def dgOdotMilnorNuZeroMixedStart : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌
 規約：指定成分と元上辺を保持。使われ方：混合二辺の厳密貼り合わせ。 -/
 def dgOdotMilnorNuZeroMixedMiddle : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ :=
   (dgOdotMilnorNuStandardZeroNullFactor R d).app (Opposite.op ⦋0⦌)
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u + 1} (B)
       (dgOdotMilnorNuZeroComparisonTop R d))
 
 /-- 概要：元の標準零角を経由する混合辺の終点。
@@ -39,7 +39,7 @@ def dgOdotMilnorNuZeroMixedMiddle : DGOdotMilnorNuNullCoherenceSpace R d _⦋0�
 規約：元核と元標準零角。使われ方：上混合合成辺の終点。 -/
 def dgOdotMilnorNuZeroMixedTarget : DGOdotMilnorNuNullCoherenceSpace R d _⦋0⦌ :=
   (dgOdotMilnorNuStandardZeroNullFactor R d).app (Opposite.op ⦋0⦌)
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} (B)
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u + 1} (B)
       (fromZeroCategory (B)))
 
 /-- 概要：指定零角成分を挟む二つの混合合成の中間頂点は厳密に同じ。
@@ -47,26 +47,26 @@ def dgOdotMilnorNuZeroMixedTarget : DGOdotMilnorNuNullCoherenceSpace R d _⦋0�
 規約：比較辺を追加しない。使われ方：指定混合二辺の厳密合成。 -/
 lemma dgOdotMilnorNuZeroMixedMiddle_eq :
     (dgOdotMilnorNuZeroCornerNullFactor R d).app (Opposite.op ⦋0⦌)
-        (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)
+        (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (K) (Z)
           (dgOdotMilnorNuZeroComparisonLeft R d)) = dgOdotMilnorNuZeroMixedMiddle R d := by
   apply Subtype.ext
-  let f : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (K) (B) :=
+  let f : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (K) (B) :=
     ⟨(dgOdotMilnorNuZeroComparisonLeft R d).hom ≫ (dgOdotMilnorNuZeroActualTop R d).hom,
-      @isExactFunctor_comp _ _ _ _ _ (dgOdotMilnorNuZeroComparisonLeft R d).isExact
+      @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.isExactFunctor_comp _ _ _ _ _ (dgOdotMilnorNuZeroComparisonLeft R d).isExact
         (dgOdotMilnorNuZeroActualTop R d).isExact⟩
   have hl : ((dgOdotMilnorNuZeroCornerNullFactor R d).app (Opposite.op ⦋0⦌)
-      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (K) (Z)
-        (dgOdotMilnorNuZeroComparisonLeft R d))).val = _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B) f := by
+      (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (K) (Z)
+        (dgOdotMilnorNuZeroComparisonLeft R d))).val = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv (K) (B) f := by
     rfl
-  have hr : (dgOdotMilnorNuZeroMixedMiddle R d).val = _root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B)
+  have hr : (dgOdotMilnorNuZeroMixedMiddle R d).val = _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv (K) (B)
       (dgOdotMilnorNuStandardZeroComposite R d (dgOdotMilnorNuZeroComparisonTop R d)) :=
     dgOdotMilnorNuStandardZeroNullHom_vertex R d (dgOdotMilnorNuZeroComparisonTop R d)
   have hf : f =
       dgOdotMilnorNuStandardZeroComposite R d (dgOdotMilnorNuZeroComparisonTop R d) := by
-    apply _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap.ext
-    exact Category.assoc (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (K)).hom (fromZeroCategory (Z)).hom
+    apply _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap.ext
+    exact Category.assoc (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (K)).hom (fromZeroCategory (Z)).hom
       (dgOdotMilnorNuZeroActualTop R d).hom
-  exact hl.trans ((congrArg (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctorVertexEquiv (K) (B)) hf).trans hr.symm)
+  exact hl.trans ((congrArg (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctorVertexEquiv (K) (B)) hf).trans hr.symm)
 
 /-- 概要：元左辺比較の同じ実上辺による後合成の実零 Hom 辺。
 方針：実零角経由の全因子分解で元 Hom 辺を写す。

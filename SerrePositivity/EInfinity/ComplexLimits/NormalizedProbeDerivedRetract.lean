@@ -19,22 +19,22 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 def normalizedProbeDerivedRetractHom (Y : Complex A) :
     (HomotopyCategory.mk ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌)
-      (Simplex.vertex (semifreeKProjectiveTarget A Y))) :
-        hoFunctor.obj (derivedInfinityCategory A)) ⟶
-      HomotopyCategory.mk (Simplex.vertex (complexSemifreeResolutionValue A Y)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (semifreeKProjectiveTarget A Y))) :
+        hoFunctor.obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)) ⟶
+      HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A Y)) :=
   ((complexSemifreeResolutionRetractIso A).app
-    (Simplex.vertex (complexSemifreeResolutionValue A Y))).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A Y))).hom
 
 lemma normalizedProbeDerivedHomMap_eq_postcompose (X Y : Complex A) :
     normalizedProbeDerivedHomMap A X Y =
     normalizedKProjectiveDerivedHomMap A
       (framedLimitKProjectiveProbe A X) (semifreeKProjectiveTarget A Y) ≫
-        PinchedInterval.postcompose _ (normalizedProbeDerivedRetractHom A Y) := rfl
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.postcompose _ (normalizedProbeDerivedRetractHom A Y) := rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

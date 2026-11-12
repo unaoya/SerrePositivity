@@ -18,7 +18,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open SerrePositivity.KST.Spectra SerrePositivity.KST.Spectra.OmegaSpectrum
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.LocalizingInvariants.RawFiberComparison
 
 variable {X Y X' Y' : OmegaSpectrum.{u}} (p : X ⟶ Y) (q : X' ⟶ Y')
@@ -39,10 +39,10 @@ lemma comparison_natural : FibrationFiberComparison.map p q a b h ≫ FiberModel
 
 omit hp hq in
 def ordinaryDiagramMap : cospan p (fromPoint Y) ⟶ cospan q (fromPoint Y') :=
-  cospanHomMk b a (𝟙 spectrumPoint) h (point_isInitial.hom_ext _ _)
+  cospanHomMk b a (𝟙 _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint) h (point_isInitial.hom_ext _ _)
 
-def diagramMap : spectrumPullbackDiagram p (fromPoint Y) ⟶
-    spectrumPullbackDiagram q (fromPoint Y') :=
+def diagramMap : _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram p (fromPoint Y) ⟶
+    _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPullbackDiagram q (fromPoint Y') :=
   Functor.whiskerLeft AsSmall.down (ordinaryDiagramMap p q a b h)
 
 lemma cone_condition (i : AsSmall.{u} WalkingCospan) :
@@ -55,10 +55,10 @@ lemma cone_condition (i : AsSmall.{u} WalkingCospan) :
     simpa only [Category.assoc] using
       congrArg (fun r ↦ FiberModel.inclusion p hp ≫ r) h
   · exact (map_inclusion p q a b h).symm
-  · exact spectrumPoint_isTerminal.hom_ext _ _
+  · exact _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint_isTerminal.hom_ext _ _
 
-def coneTransformation : strictConeFunctor (FiberModel.smallCone p) ⟶
-    strictConeFunctor (FiberModel.smallCone q) :=
+def coneTransformation : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor (FiberModel.smallCone p) ⟶
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictConeFunctor (FiberModel.smallCone q) :=
   StrictConeMap.transformation (diagramMap p q a b h) _ _ (map p q a b h)
     (cone_condition p q a b h)
 

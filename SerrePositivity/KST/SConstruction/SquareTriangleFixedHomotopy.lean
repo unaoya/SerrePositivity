@@ -19,14 +19,14 @@ open CategoryTheory CategoryTheory.Limits MonoidalCategory CartesianMonoidalCate
 open SerrePositivity.SimplicialModel.LargeParameterHomotopy
 open scoped Simplicial
 variable {E : SSet.{u}} {f g : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ E}
-  (H : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ g))
-  (K : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f) (_root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ g))
+  (H : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ g))
+  (K : SSet.Homotopy (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ g))
   (hc : (stdSimplex.δ 1 ▷ (Δ[1] : SSet.{u})) ≫ H.h =
     (stdSimplex.δ 1 ▷ (Δ[1] : SSet.{u})) ≫ K.h)
   (hH : ∀ i : Fin 3, (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫ H.h =
-    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.upper ≫ f)
+    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.upper ≫ f)
   (hK : ∀ i : Fin 3, (stdSimplex.δ i ▷ (Δ[1] : SSet.{u})) ≫ K.h =
-    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ f)
+    fst (Δ[1] : SSet.{u}) Δ[1] ≫ stdSimplex.δ i ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ f)
 
 include hH hK
 

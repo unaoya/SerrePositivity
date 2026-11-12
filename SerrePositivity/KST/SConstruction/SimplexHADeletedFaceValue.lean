@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 元の面座標の内部頂点を削除した、同じ端点・自由次数の HA 成分。 -/
-def simplexHADeletedFaceValue {n : ℕ} (s : DGNerve.SimplexData A D n)
+def simplexHADeletedFaceValue {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1)))
     (hT : T.Nonempty) (hb : ∀ t ∈ T, v (Fin.last (m + 1)) < t) (i : Fin (m + 1)) :
     GradedHom A (s.obj (v 0)) (s.obj (T.max' hT)) (-((m + T.card - 1 : ℕ) : ℤ)) :=
@@ -29,7 +29,7 @@ def simplexHADeletedFaceValue {n : ℕ} (s : DGNerve.SimplexData A D n)
       omega)
 
 /-- 元の右端零面添字の語の値は、前段の元の全辺読み替えの値。 -/
-lemma simplexHABeadWordDecode_face_zero_right {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordDecode_face_zero_right {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1)))
     (hT : T.Nonempty) (hb : ∀ t ∈ T, v (Fin.last (m + 1)) < t) :
     HEq (simplexHABeadWordValue A s
@@ -39,7 +39,7 @@ lemma simplexHABeadWordDecode_face_zero_right {n : ℕ} (s : DGNerve.SimplexData
   cases m <;> rfl
 
 /-- 元の全零面の一端点語の評価は、同じ内部頂点を削除した元の HA 成分。 -/
-lemma simplexHABeadWordDecode_face_zero_value {n : ℕ} (s : DGNerve.SimplexData A D n)
+lemma simplexHABeadWordDecode_face_zero_value {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (T : Finset (Fin (n + 1)))
     (hT : T.Nonempty) (hb : ∀ t ∈ T, v (Fin.last (m + 1)) < t) (i : Fin (m + 1)) :
     HEq (simplexHABeadWordValue A s
@@ -72,11 +72,11 @@ lemma simplexHABeadWordDecode_face_zero_value {n : ℕ} (s : DGNerve.SimplexData
           (v (simplexHAFaceVertex (m + 1) j.succ)) := by
       rw [simplexHADecodeSubset_insert_tail, simplexHAFaceVertex_succ]
       rfl
-    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_not_mem T r hb)
+    have hc := Finset.card_insert_of_notMem (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_not_mem T r hb)
     exact (simplexHABeadWordDecode_edge_value A s (m + 1)
       (serreCubeFaceGeneratorIndex false m j) v T hT hb).trans
       ((ih (Fin.castSuccOrderEmb.trans v) (insert r T) (Finset.insert_nonempty r T)
         (simplexHADecodePrefix_insert (m + 1) v T hb) j).trans
-          (s.hom_heq_of_indices_degree he rfl (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexHABeadTail_max T hT r hb) (by omega)))
+          (s.hom_heq_of_indices_degree he rfl (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexHABeadTail_max T hT r hb) (by omega)))
 
 end SerrePositivity.KST.SConstruction

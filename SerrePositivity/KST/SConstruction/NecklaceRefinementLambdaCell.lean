@@ -17,15 +17,15 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の標準単体内の全頂点包含が定める、元の Λ Hom への Serre 生成射。 -/
-def necklaceRefinementLambdaCell (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+def necklaceRefinementLambdaCell (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) :
     serreCubeComplex A T.down.dimension ⟶
       homObject A (CubicalLambda A (Δ[T.down.vertexMax] : SSet.{u}))
         (simplexBeadFirstVertex T.down.vertexMax) (simplexBeadLastVertex T.down.vertexMax) :=
-  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk T.down.dimension) ≫
+  (cubicalSerreChainsCubeIso A).hom.app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk T.down.dimension) ≫
     (cubicalSerreChains A).map (necklaceCubicalCell (necklaceInStandardSimplex T))
 
 /-- 元の refinement の Serre 射は、元の同じ標準単体内の生成射と厳密に可換。 -/
-lemma necklaceRefinementLambdaCell_comparison (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+lemma necklaceRefinementLambdaCell_comparison (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) :
     (serreConcreteCubeComplexFunctor A).map
         (necklaceConcreteCubeMap (necklaceBeadRefinement T)) ≫
       necklaceRefinementLambdaCell A (necklaceBead T.down.vertexMax) =
@@ -42,16 +42,16 @@ lemma necklaceRefinementLambdaCell_comparison (T : _root_.SerrePositivity.Infini
             (congrArg (fun f => (cubicalSerreChainsCubeIso A).hom.app _ ≫ f) h))))
 
 /-- 元の鎖一面と同じ実生成射の合成は、元の三 joint necklace の Serre 生成射を回収する。 -/
-lemma necklaceRefinementLambdaCell_one_face (T : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u})
-    (j : (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).NonjointVertex)
+lemma necklaceRefinementLambdaCell_one_face (T : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u})
+    (j : (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).NonjointVertex)
     (hJ : T.down.joints = {0, j.val.val, T.down.vertexMax}) :
     (serreCubeFace A true T.down.dimension
         (Fin.cast (necklaceRefinementMissingCoordinate_codimension T j hJ)
           (necklaceRefinementMissingCoordinate T j))).hom ≫
       (serreConcreteCubeComplexFunctor A).map
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).dimension)
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1))
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).dimension)
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + 1))
           (necklaceRefinementMissingCoordinate_codimension T j hJ)).inv ≫
         necklaceRefinementLambdaCell A (necklaceBead T.down.vertexMax) =
       necklaceRefinementLambdaCell A T := by
@@ -64,8 +64,8 @@ lemma necklaceRefinementLambdaCell_one_face (T : _root_.SerrePositivity.Infinity
     ((congrArg (fun f => f ≫ necklaceRefinementLambdaCell A (necklaceBead T.down.vertexMax))
       ((congrArg (fun f => f ≫ (serreConcreteCubeComplexFunctor A).map
         (concreteCubeDimensionIso
-          (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Simplicial.NecklaceShape.single T.down.vertexMax).dimension)
-          (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (T.down.dimension + 1))
+          (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.NecklaceShape.single T.down.vertexMax).dimension)
+          (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (T.down.dimension + 1))
           (necklaceRefinementMissingCoordinate_codimension T j hJ)).inv) hf.symm).trans
         (((serreConcreteCubeComplexFunctor A).map_comp _ _).symm.trans h.symm))).trans
           (necklaceRefinementLambdaCell_comparison A T))

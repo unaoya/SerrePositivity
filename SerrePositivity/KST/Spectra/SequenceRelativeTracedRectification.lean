@@ -52,7 +52,7 @@ def relativeTracedNext (n : ℕ) (s : RelativeTracedRectificationStage q b f n) 
   have hRight := congrArg Under.Hom.right (hb (n + 1))
   change (f (n + 1)).right ≫ (q.app (n + 1)).right = (b.app (n + 1)).right at hRight
   have hOver : P.homotopy.h ≫ (q.app (n + 1)).right =
-      fst (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space).right (Δ[1] : SSet.{u}) ≫
+      fst (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space).right (Δ[1] : SSet.{u}) ≫
         (X.sigma n).right ≫ (b.app (n + 1)).right := by
     have hp := P.homotopy_over
     simpa only [Under.comp_right, Category.assoc, hRight] using hp

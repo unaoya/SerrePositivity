@@ -15,14 +15,14 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 
 /-- 概要：c の同じ ⊙→商辺を、順方向を固定した同値にする。
 方針：既存の Morita 比較を使う。規約：辺を選び直さない。
 使われ方：実 ⊙ を終点とする完備化射。 -/
-def dgOdotQuotientNuEquivalence : QCatEquivalence
+def dgOdotQuotientNuEquivalence : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
     (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj
     (dgKInputStableValue R (dgOdotQuotientInputVertex R d)).obj :=
   (dgOdotInputNuMap_isQCatEquivalence R d).choose
@@ -30,17 +30,17 @@ def dgOdotQuotientNuEquivalence : QCatEquivalence
 /-- 概要：商から元の実 ⊙ の ν 値への完全射。
 方針：指定 Morita 辺の同じ逆を使う。規約：一般の商完備化を構成しない。
 使われ方：Cat^perf 版 LT の終点を固定する。 -/
-def dgOdotQuotientCompletion : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap
+def dgOdotQuotientCompletion : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap
     (dgKInputStableValue R (dgOdotQuotientInputVertex R d))
     (dgKInputStableValue R (dgOdotAlgebraInput R d)) :=
   ⟨(dgOdotQuotientNuEquivalence R d).inv,
-    isExactFunctor_of_isQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (dgOdotQuotientNuEquivalence R d).symm.isQCatEquivalence⟩
 
 /-- 概要：完備化と元の Morita 辺の合成は元の ⊙ の恒等へ戻る。
 方針：同じ同値の指定二胞体を保持する。規約：厳密等号は要求しない。
 使われ方：元の ⊙ を保つ比較三角形。 -/
-def dgOdotQuotientCompletion_forward : FunctorIso
+def dgOdotQuotientCompletion_forward : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgKInputNuMap R (dgOdotQuotientInputMap R d)).hom ≫
       (dgOdotQuotientCompletion R d).hom)
     (𝟙 (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj) :=
@@ -49,7 +49,7 @@ def dgOdotQuotientCompletion_forward : FunctorIso
 /-- 概要：逆順の合成も元の同じ商の恒等へ戻る。
 方針：同じ同値のもう一つの二胞体を使う。規約：元の商を変更しない。
 使われ方：c と e の実比較の整合。 -/
-def dgOdotQuotientCompletion_backward : FunctorIso
+def dgOdotQuotientCompletion_backward : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     ((dgOdotQuotientCompletion R d).hom ≫
       (dgKInputNuMap R (dgOdotQuotientInputMap R d)).hom)
     (𝟙 (dgKInputStableValue R (dgOdotQuotientInputVertex R d)).obj) :=
@@ -59,22 +59,22 @@ def dgOdotQuotientCompletion_backward : FunctorIso
 方針：同値の充満忠実性と本質的全射性を既存の retract 条件へ渡す。
 規約：coherent 完備性の供給は明示入力。使われ方：Cat^perf の実列。 -/
 lemma dgOdotQuotientCompletion_isCompletion
-    (hO : IsIdempotentComplete (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj) :
-    IsIdempotentCompletion (dgOdotQuotientCompletion R d).hom := by
+    (hO : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion (dgOdotQuotientCompletion R d).hom := by
   refine ⟨hO, (dgOdotQuotientNuEquivalence R d).symm.isFullyFaithful, ?_⟩
   intro a
   obtain ⟨b, ⟨e⟩⟩ := (dgOdotQuotientNuEquivalence R d).symm.isEssentiallySurjective a
-  exact ⟨b, IsVertexRetractOf.of_iso e.symm⟩
+  exact ⟨b, _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsVertexRetractOf.of_iso e.symm⟩
 
 /-- 概要：Cat^perf に必要な元の四対象の完備性を分離する。
 方針：全 coherent 冪等図式の条件を使う。規約：H⁰ 完備性との比較を自作しない。
 使われ方：具体的供給後も同じ LT の形式的証明を使う入口。 -/
 structure DGOdotCatPerfInput : Prop where
-  source_complete : IsIdempotentComplete
+  source_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete
     (dgKInputStableValue R (dgOdotDiagonalSourceInput R d)).obj
-  left_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotLeftInput R d)).obj
-  right_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotRightInput R d)).obj
-  odot_complete : IsIdempotentComplete (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj
+  left_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (dgKInputStableValue R (dgOdotLeftInput R d)).obj
+  right_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (dgKInputStableValue R (dgOdotRightInput R d)).obj
+  odot_complete : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentComplete (dgKInputStableValue R (dgOdotAlgebraInput R d)).obj
 
 /-- 概要：元の四対象の完備性証人を追加仮定なしに供給する。
 方針：D の実 Perf 完備性を同じ固定 ν 値へ移す。

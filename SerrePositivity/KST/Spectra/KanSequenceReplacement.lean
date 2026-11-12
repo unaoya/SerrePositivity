@@ -40,7 +40,7 @@ namespace PointedSequence
 規約：標的の loop は Kan。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。元の段からの延長データ。 -/
 def adjointToKanNext (X : PointedSequence.{u}) (n : ℕ) :
-    X.level n ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) :=
+    X.level n ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) :=
   MonoidalClosed.curry (X.sigma n ≫ PointedKanReplacement.unit.app (X.level (n + 1)))
 
 /-- 概要：Kan 置換した段から次段の loop への延長された随伴構造射。
@@ -49,7 +49,7 @@ def adjointToKanNext (X : PointedSequence.{u}) (n : ℕ) :
 使われ方：Goerss–Jardine I §7、BF 1978 §2。置換列の構造射の構成。 -/
 def kanReplacementAdjoint (X : PointedSequence.{u}) (n : ℕ) :
     PointedKanReplacement.obj (X.level n) ⟶
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) :=
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) :=
   PointedExtension.extend
     (show X.level n ⟶ PointedKanReplacement.obj (X.level n) from
       PointedKanReplacement.unit.app (X.level n))
@@ -60,7 +60,7 @@ def kanReplacementAdjoint (X : PointedSequence.{u}) (n : ℕ) :
 規約：構造射の単射性と Ω 条件はここでは主張しない。
 使われ方：BF 1978 §2、HTT A.3.3。段ごとの Kan 置換の列への接続。 -/
 def kanReplacementSigma (X : PointedSequence.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (PointedKanReplacement.obj (X.level n)) ⟶
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (PointedKanReplacement.obj (X.level n)) ⟶
       PointedKanReplacement.obj (X.level (n + 1)) :=
   MonoidalClosed.uncurry (kanReplacementAdjoint X n)
 
@@ -72,14 +72,14 @@ theorem kanReplacement_unit_comm (X : PointedSequence.{u}) (n : ℕ) :
     PointedSimplicialSet.circle.{u} ◁ PointedKanReplacement.unit.app (X.level n) ≫
         kanReplacementSigma X n = X.sigma n ≫ PointedKanReplacement.unit.app (X.level (n + 1)) := by
   have h := PointedExtension.comp_extend
-    (Z := _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedKanReplacement.obj (X.level (n + 1))))
+    (Z := _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedKanReplacement.obj (X.level (n + 1))))
     (show X.level n ⟶ PointedKanReplacement.obj (X.level n) from
       PointedKanReplacement.unit.app (X.level n))
     (PointedKanReplacement.unit_anodyne (X.level n)) (adjointToKanNext X n)
   unfold kanReplacementSigma
   rw [← MonoidalClosed.uncurry_natural_left]
   exact (congrArg (fun t : X.level n ⟶
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) ↦ MonoidalClosed.uncurry t) h).trans
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (PointedKanReplacement.obj (X.level (n + 1))) ↦ MonoidalClosed.uncurry t) h).trans
       (MonoidalClosed.uncurry_curry _)
 
 /-- 概要：任意の点つき列を、構造射を備えた Kan 列へ置換する。
@@ -106,7 +106,7 @@ def kanReplacementUnit (X : PointedSequence.{u}) : Hom X X.kanReplacement.toPoin
 使われ方：Goerss–Jardine I §7、BF 1978 §2。Kan な列の段ごとの保存。 -/
 theorem kanReplacementUnit_piIsomorphism (X : PointedSequence.{u}) (n : ℕ)
     [KanComplex (X.level n).right] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := (X.level n).right) (Y := (X.kanReplacement.level n).space.right)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := (X.level n).right) (Y := (X.kanReplacement.level n).space.right)
       (X.kanReplacementUnit.app n).right :=
   PointedKanReplacement.unit_piIsomorphism (X.level n)
 

@@ -1,4 +1,10 @@
-import SerrePositivity.InfinityCategories.F2.Presentable
+import SerrePositivity.InfinityCategories.Project.Entrypoints.Presentable
+import SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
+import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible
+import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones
+import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible
 import Lean.Util.CollectAxioms
 
 /-!
@@ -8,17 +14,28 @@ P レーンの所有モジュールの全宣言について、再帰的に公理
 
 open Lean in
 run_cmd do
+  let oldAuditPrefix1 := `SerrePositivity.InfinityCategories.F2.Presentable
+  let klw1AuditLayout1 ← IO.ofExcept <| Lean.Json.parse (← IO.FS.readFile "scripts/refactor/targets/kl-module-map.json")
+  let klw1AuditLayout1 ← IO.ofExcept klw1AuditLayout1.getObj?
+  let klw1AuditOwners1 := Std.HashSet.ofList (klw1AuditLayout1.toList.filterMap fun (source, dest) =>
+    if oldAuditPrefix1.isPrefixOf source.toName then dest.getStr?.toOption.map String.toName else none)
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (`SerrePositivity.InfinityCategories.F2.Presentable |>.isPrefixOf mod) ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaLimitReflection ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.CoYonedaRestrictedLimits ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.PresheafSliceConeRestriction ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.UniverseConeRestriction ||
-      mod == `SerrePositivity.InfinityCategories.HomotopyLimits.FullyFaithfulPrecompositionColimits do
+    unless (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod || #[`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.AdjointRepresentability, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones, `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible].contains mod) ||
+      mod == `SerrePositivity.InfinityCategories.HTT.AccessibleInfinityCategories.EquivalenceColimits ||
+      mod == `SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition ||
+      mod == `SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.RightUnitContractible ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.AccessibleFunctor ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible ||
+      mod == `SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CoYonedaLimitReflection ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoYonedaRestrictedLimits ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PresheafSliceConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.UniverseConeRestriction ||
+      mod == `SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.FullyFaithfulPrecompositionColimits do
       continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
@@ -27,998 +44,998 @@ run_cmd do
   if count == 0 then throwError "Presentable: no declarations audited"
   logInfo m!"Presentable audit passed: {count} declarations, standard three axioms only."
 
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_common_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationComparisonIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCosliceComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCosliceComparison_fiber
-#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomCommaClassificationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.mappingArrowHomFamilyIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunctionCovariantHomIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_hom_preservesKappaFilteredColimits_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_exists_common_hom_preservationCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafOpposite_functorHom_isIso_of_yoneda
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_densityImages_isLeftKanExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafDensityIsoOfYoneda
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isLimitCone_iff_restrict_equivalentShape
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafElementsRightKanComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRightKanCanonicalCone_restrict_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_oppositeDensityImages_canonicalLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafOppositeDensityIsoOfYoneda
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverse_covariantPointIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverseDiagram_map_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_oppositeDensity_image_isRightKanExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentationCandidate
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentation_restrictionIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafRepresentationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.SendsSmallColimitsToLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsRepresentableSmallSpaceFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isRepresentable_of_sendsSmallColimitsToLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.SendsSmallColimitsToLimits.precomp_op
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fullyFaithfulRepresentableRestrictionIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isRepresentable_iff_equivalence_restriction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sendsSmallColimitsToLimits_iff_equivalence_restriction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflective_isRepresentable_of_local_representation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.representedRestriction_inverts_op_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveUnit_map_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.representedReflectiveUnit_inverts_op_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.compact_iff_retract
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isEssentiallySurjective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_pinchedHomMap_isEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceComparisonOver_fiber_postcomp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceComparisonOver_fiber_equivalence_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isFullyFaithful_iff_cosliceComparisonOver
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationEdge_evaluation_square
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationFiberEvaluation_original_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_generator_cosliceFiber_isEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparison_component_isIso_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomComparison_colimit_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_of_compact_colimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_yoneda_pinchedHomMap_isEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomComparison_limit_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_iff_op
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pinchedHomMap_equivalence_of_source_colimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparisonEquivalence_hom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indRepresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_indEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.equivalence_isColimitCone_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantHomComparisonIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.of_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessible_iff_indEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessible_iff_indEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isAccessibleFunctor_iff_equivalence_conjugate
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_regular_cardinalChangeBound_family
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFilteredPiece_containing
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_nerve_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPieces_cover
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPiece_nerve_properties
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveSubsetLift_inclusion
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveSubsetLift_transition
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFilteredPiece_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredNerveCocone_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredPartialDiagram_hasColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallFiltered_partialColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalAbove_isCardinalFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredAboveCommaEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalValue_coslice_isWeaklyContractible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalValue_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotal_restrict_isColimit_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFilteredTotalDiagram_restrict_fiber
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_leftKanShape_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_exists_leftKanExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nerveMap_isRightCofinal_of_initial_comma
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPieceFiberKanComparison_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPieceFiberKanComparisonUniverse_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallPiece_leftKan_value_isPartialColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitFamily
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanHomUniversal_comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKan_nerveTerminal_colimitValue
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKan_colimitVertexIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPartialColimitPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallFilteredPartialColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_filteredPartialPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_allSimplices_of_isKappaSmall
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_simplexCategory_arrow
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallShape_isCardinalPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallShape_relative_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_tensor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallInternalHom_preservesCardinalFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSSetLimitColimitIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_endIndex_arrow
-#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsLimitIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsFunctor_preservesCardinalFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsCardinalFilteredIso_ι
-#check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanWeight_poset_isKappaSmall
-#check @SerrePositivity.InfinityCategories.F2.Presentable.bousfieldKanHolimFunctor_poset_preservesCardinalFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_ι_π
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedSectionsCotensorIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.weightedConeComparison_cotensor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanCone_isLimit_iff_bousfieldKanComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_forget
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredKanConeColimit_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceDiagramStrictificationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceFamilyStrictificationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceFamilyStrictificationRestrictIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.uliftInitialConeIso_inr
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictificationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.strictConeFamilyStage_recovered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.strictConeFamilyColimit_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictification_stage_isLimit_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictColimitCocone_pointwise
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictColimitCocone_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.thinConeIndex_comparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.withInitialKanCone_coherentMap
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictRealization_stage_map
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStage_isLimit_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyStrictModelColimit_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanDiagramBundle_evaluation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanFamilyRealizedColimitCocone_pointwise
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanFamily_realization_curry
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyModelStrictLimit_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.withInitialFilteredColimit_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_nerve_poset
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointwiseColimitCocone_restrict_rightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coherentCardinalFilteredLimitExchange_poset
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsCardinalChangeBound.lift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_ulift_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaFiltered_ulift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nervePosetUniverseOppositeIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredLimitExchangeShape_ulift_poset_op
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointwiseColimit_of_cardinalExchange
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isMuCompact_smallPosetColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isMuCompact_smallPosetColimit_of_kappaCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactPartialPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_muCompactPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetDiagramCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPosetDiagramCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallPosetDiagramCode.vertex_isMuCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallPosetColimitGeneratorIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.small_fullSubcomplexOnRange
-#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_small_fullSubcomplexOnRange
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaCompactGenerating.exists_smallFamilyPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.quasicategory_of_ulift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFullModelInclusion_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFamilySaturationComparison_isEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.generatorPresentation_of_familySaturation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallFullModelInclusion_isKappaCompactGenerating
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isMuAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.of_cardinalChangeBound
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_larger
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_accessibilityCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_hasSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isPresentable_iff_cocompleteIndEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanInternalHomEnriched
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHom_mapCocone_native
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_preserves_strictCocone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanHomInfinity_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeHom_covariantModelIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalRelativeHomIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanTerminalInfinity_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanTerminalHomInfinityComparisonIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kanHom_covariantModelIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanObject_isKappaCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_spaceCompactCardinal_family
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplicialInternalHomEnriched
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSimplicialHomInfinity_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousReplacementHomIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteKanReplacement_isCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpacePieces_nerve_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceReplacementDiagram_compact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSpacePresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.FiniteSimplicialCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteSimplicialCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteSpaceGeneratorVertex_isCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceCompactGeneratorInclusion_isCompactGenerating
-#check @SerrePositivity.InfinityCategories.F2.Presentable.space_isKappaAccessible_aleph0
-#check @SerrePositivity.InfinityCategories.F2.Presentable.space_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOver_isFinitelyPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.overCellCopiesFunctor_preservesFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftHornCellStep_preservesFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftHornCellStep_extension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement_preservesFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacement_leftFibration
-#check @SerrePositivity.InfinityCategories.F2.Presentable.FiniteOverCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteOverCode
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftHornCellStepUnit_leftAnodyne
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationReplacementUnit_leftAnodyne
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeOverHomTensorEquiv
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeOverHomEvaluationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeOverHom_preservesFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationHomIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverPieces_nerve_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverReplacementCocone_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteOverReplacementDiagram_in_family
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_of_filtered_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeFunctorEnrichedEvaluation_underlying
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeHom_preserves_strictCocone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPointEvaluationIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationStrictCocone_isColimit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationUnit_isInvertible
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.continuousLeftFibrationUnitVertexIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationCocone_isColimit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteLeftFibrationPresentation
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationDiagram_in_family
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationDiagramStrictificationIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.filteredLeftFibrationCocone_isColimit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteRelativeHom_isKappaAccessibleFunctor
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteLeftFibrationReplacement_isCompact
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInclusion_isCompactGenerating
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isKappaAccessible_aleph0
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_isPresentable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_compactGeneratorIndEquivalence
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isPresentable_iff_hasSmallColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInd_hasSmallColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafCompactGeneratorInd_isPresentable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isLocallySmall_of_smallFixedVertexMaps
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isLocallySmall
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.isLocallySmall
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.isLocallySmall
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indInfinity_isPresentable_of_compactGenerating
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison_isQCatEquivalence
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafElementsLeftKanComparison_coconeMap
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafDensity_image_canonicalColimits
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafDensity_image_isLeftKanExtension
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_map_isColimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafUniverseDiagram_isLeftKanExtension
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_isLeftKanExtension
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaWeightLeftKan_restrictionIso
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightDiagram_universeIso
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightFamily_transpose
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.yonedaHomWeightFamily_evaluationIso
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedRestrictionIso
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_liftedIso
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafUniverseDiagram_map_isColimit_arbitraryShape
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.coyonedaInfinityMap_reflects_isLimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.coyonedaInfinityMap_restricted_isLimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaUniverseInclusion_map_isColimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaHomWeightFamily_map_isLimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaLeftKanExtension_preservesSmallSiftedColimits
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isEssentiallySurjective
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestriction_isQCatEquivalence
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaSiftedContinuousRestrictionEquivalence_hom
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.sigmaYoneda_finiteCoproduct_isColimit
-
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_realization
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarObject_degree_coproduct
-#check @SerrePositivity.InfinityCategories.HomotopyLimits.presheafBarDegreeDiagram_representable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasSmallColimits_of_coproducts_geometricRealizations
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasSmallColimits_iff_coproducts_geometricRealizations
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_localLeftKan_colimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_iff_leftKanExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSimplexOpposite_isSiftedInfinity
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasSmallGeometricRealizations
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_discrete_of_finiteRestrictions
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaYoneda_smallDiagram_hasColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_reflectorLeftKan
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflectorAdjunction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_reflector
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaYoneda_smallCoproduct_isInd
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaPresheaf_simplicialIndPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaPresheaf_simplicialIndDiagram
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.mapJoinCocone_isColimit_of_adjunction_of_quasicategoryShape
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_barDegree_isInd
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_bar_realization
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indExtensionHomWeight_liftedIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_fullyFaithful_image_colimit_iso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasLimit_of_fullyFaithful_image_limit_iso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coyonedaInfinityMap_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_coyoneda_limit_representable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fullPresheafHomWeightFamily_map_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_indPresentation_realization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_exists_leftKanExtension_of_filtered_geometric
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaSiftedContinuousRestriction_isQCatEquivalence_of_filtered_geometric
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaComparison_isIso_of_filtered_geometric
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallSiftedColimits_iff_filtered_geometric
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaFilteredGeometricRestriction_isQCatEquivalence
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitPreservation_of_restrictionEquivalences
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitPreservation_of_localLeftKan
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_geometricRealizations
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_iff_finiteCoproducts_sifted
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasSmallColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_finiteCoproducts_sifted
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitFunctor
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitCocone_isColimit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_isColimit
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneApex_homRestriction_bijective
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.constantPointFunctorIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.precompositionHomotopy_constant_naturality
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneApex_homEvaluation_bijective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.constantEndpointUnitHom_evaluation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_evaluation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeUnitHom_bijective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.flipFunctorHomEquiv
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeFunctorUnitPrism_swap
-#check @SerrePositivity.InfinityCategories.F2.Presentable.flip_postcompose_constant_hom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnit_swap
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHomMap_flip
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitUnitHom_bijective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitAdjunction
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nativeCoconeHomApex_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isColimitCone_of_nativeCoconeHomApex_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.colimitFamilyComparison_evaluate_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitParameterCocone_isPointwiseColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.chosenColimitComparison_isIso_iff_preservation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointProjection_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.constantJoinCocone_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.constant_preservesSmallSiftedColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.discreteFamilyUpdate_preservesSmallSiftedColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaFiniteFamilyComparison_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaYonedaFamily_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesFiniteCoproductsOnBase
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesFiniteCoproducts_iff_yoneda
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_yoneda_of_cocomplete
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_of_filtered_geometric
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaLeftKanExtension_preservesSmallColimits_iff
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_preservesSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits.of_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indPresheafReflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_hasSmallLimits_of_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_reflectiveIndModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflector_left_triangle
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorAdjunction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_exists_presheafReflector
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorYonedaUnit_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflector_counit_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorCanonicalColimits_iff_densityImages
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorVertexDensityCocone_val_inclusion
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorIdentity_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorRestriction_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorInclusion_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorYonedaUnit_post
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflector_right_triangle
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorYonedaUnit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorRestrictionYonedaUnit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorRestrictionYonedaUnit_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflector_exists_unit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflectorRestrictionYonedaInverse
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indReflector_exists_counit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.mapJoinCocone_isColimit_of_adjunction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_of_reflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasSmallColimits_of_reflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_presheafReflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.hasSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.hasLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presentable_isLimitCone_iff_representables
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_limitCone_representables
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKanDiagram_hasColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_exists_yonedaLeftKan
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_unit_isIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafYonedaLeftKan_density_image_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveSubcategory_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigmaReflector_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sigma_hasColimit_of_reflector
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fullSubcomplex_hasLimit_of_apex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflective_isLocal_limitCone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflective_mem_limitCone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveSubcategory_hasSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflective_isLimitCone_iff_inclusion
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveIndModel_isLimitCone_iff_evaluation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsPresentable.exists_limitDetectingPresheafModel
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveIndModel_hasSmallColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_isColimitCone_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_fst_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_snd_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_preservesSmallColimits_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isColimitCone_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_snd_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_preservesSmallColimits_iff_components
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_cosliceCone_lift_of_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_unstraighteningCone_lift_of_map_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionDiagram
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallSolutionCone
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_generatorSolution_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_cone_vertex_of_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_generatorSolutionCone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleGeneratorSolutionCone
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneClassificationOver
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneClassificationHom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionClassificationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.solutionConeHomComparison
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.HasSmallLimits.isIdempotentComplete
-#check @SerrePositivity.InfinityCategories.F2.Presentable.unstraightening_isIdempotentComplete_of_smallLimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_id
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationHom_eq_of_relativeVertexIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassificationRetraction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeFunctorIso_of_initial_evaluation_eq
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coslicePointTransport_identity
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coslicePostcomp_identity
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cosliceVertexTransportComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneTransportRelativeComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.conePullbackClassificationRetraction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSolutionLift_isPullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.solutionHom_isRetract
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleGeneratorHomRetract
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.comp_universe
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessibleFunctor.spaceUniverse
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftCanonicalRestrictionRetraction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indLiftedContinuous_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.covariantRepresentable_retract_corepresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.ind_corepresentable_of_continuous_preservesLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsCorepresentableSmallSpaceFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isCorepresentable_of_equivalence_restriction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.accessible_preservesLimits_isCorepresentable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallCovariantHom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibration_exists_initial_of_covariantRepresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_of_covariantHom_representable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_covariantHom_representable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isLimitCone_of_fullyFaithful_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isColimitCone_of_fullyFaithful_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_of_spaceUniverse
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallLimits_of_spaceUniverse
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallHomComposite_isAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallHomComposite_preservesSmallLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_of_accessible_limitPreserving_HomModels
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indYonedaHom_evaluationIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_of_indHomTests
-#check @SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible_of_spaceUniverseFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveContinuous_exists_representation_inverting_units
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.representable_hasSmallSimplexFibers
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallSimplexFibers_op
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallContravariantHom_of_fixedVertexMaps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallContravariantHom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallContravariantHom_map_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallContravariantHom_sendsSmallColimitsToLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallContravariantHomComposite_sendsSmallColimitsToLimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.oppositeCovariantRepresentableIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_of_opposite_leftAdjoint
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_of_contravariantHom_representable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_of_colimitPreserving_representability
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_representability
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.RepresentableInversionDetectsLocality
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveContinuous_isRepresentable_of_inversionLocality
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableContinuous_isRepresentable_of_inversionLocality
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableInfinityObject
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrLFunctorSpace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrRFunctorSpace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrLMappingSpace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrRMappingSpace
-#check @SerrePositivity.InfinityCategories.F2.Presentable.prLMappingSpace_kanComplex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.prRMappingSpace_kanComplex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallColimits.comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PreservesSmallLimits.comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_isColimitCone_iff_pointwise
-#check @SerrePositivity.InfinityCategories.F2.Presentable.evaluateFunctorAt_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.adjunction_isKappaCompact_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.reflectiveImage_isKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheafBaseIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheafIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPresheaf_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorPostcomp_isKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorInd_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functor_isPresentable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableFunctorCondition
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableFunctorCondition_id
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableFunctorCondition.comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctorId
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctorComp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_id_comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_comp_id
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservingFunctor_assoc
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableEnrichedCategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PresentableCoreCategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrL
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PrR
-#check @SerrePositivity.InfinityCategories.F2.Presentable.prL_quasicategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.prR_quasicategory
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorTensorIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_apply
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_comp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_precomp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.functorHomTensorEquiv_postcomp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorUnitHom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorUnitHom_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunctionUnit_homMap_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorAdjunction
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceUniverseDiagram_reflects_small_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_of_spaceUniverse_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallLimits_of_spaceUniverse_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.rightAdjoint_isAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftAdjoint_iff_accessible_preservesLimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafSigmaBaseIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piPresheaf_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheafTensor_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_hasSmallFixedVertexMaps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensorHom_isKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indTensor_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.tensor_isPresentable
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetProjection_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_preservesSmallColimits_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piAdjunction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSet_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presheaf_representableInversionDetectsLocality
-#check @SerrePositivity.InfinityCategories.F2.Presentable.presentableContinuous_isRepresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_rightAdjoint_iff_preservesSmallColimits
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.hom_small
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.vertexIso_small
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallFixedVertexMaps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isKappaAccessibleFunctor_of_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackVertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackVertexCandidate
-#check @SerrePositivity.InfinityCategories.F2.Presentable.PullbackCandidateIndex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateFamily
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateCategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCandidateInclusion_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso_projection_fst
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceIso_projection_snd
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackFamily_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackCandidate_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalFilteredLimitExchangeShape_cospan
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackLimitFamily_isLimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackLimitFamily_apex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaAccessibleFunctor_limitFamily_apex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassification_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesKappaFilteredColimits_limitFamily_apex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftFibrationPullbackClassification_preservesKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceBaseChange_isPullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCosliceLeftMap_leftFibration
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cartesianFibrationClassification_preservesKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pullback_of_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackCandidate_nativeCompactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_imageCompactGenerating_of_cardinalChangeBound
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactPreservingCardinal_of_smallFixedVertexMaps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.SmallRetractIndex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallRetractFamily_iso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactFamily
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactImages_of_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_compactPreservingCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kappaCompactEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.kappaCompactRestriction_equivalenceLifting
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_isPullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactObjects_vertex_isKappaCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentableSpan_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallModelFunctor_comparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallCompactSpanModel_nonempty
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactVertex_smallPosetColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackEdge_of_component_classes
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackVertexIso_of_compatible_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_realizedPullbackCandidate_iso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallNativeCompactPullbackFamily
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallComponentCompactModel_of_component_smallFixedVertexMaps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_catPullbackEquivalence_of_strictSpanEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallSpanPullbackComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallStrictPullbackModel_of_component_models
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallComponentCompactModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_presentablePullback_compactCandidate
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indComparison_isFullyFaithful_of_compact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeOverHom_preservesCardinalFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallRelativeHom_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallConstantPointDiagram_isKappaCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaContinuousSpaceLimitFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_iff_equivalence_universe
-#check @SerrePositivity.InfinityCategories.F2.Presentable.cardinalChangeBound_aleph0
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_smallPosetColimit_universe
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneFamilyAdjunctHom_precomp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coneCounitHom_bijective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.limitConeFamily_apexIso_of_constantAdjunction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesKappaFilteredColimits_limitFamily_apex_of_small
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_smallQuasicategoryColimit_universe
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactVertex_smallQuasicategoryColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactVertex_smallQuasicategoryColimit_of_span
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSubsequenceFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSubsequence_nerve_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.doubleSubsequence_nerve_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialSubsequenceColimitVertexIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequenceColimitVertexIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequenceImageColimitIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallLift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallLift_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_hom_ext
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_quasicategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmall_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_pullback_isKappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.piSSetSmallProjection_isRightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_common_kappaFiltered_cofinal_index
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage_monotone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.iSup_sequentialNerveStage
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerve_map
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageToFinite
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveFiniteToStage
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStage_finite
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso_transition
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerveStage_extension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_extensions
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_inl
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_zero
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSpecifiedEdgeExtension_inr
-#check @SerrePositivity.InfinityCategories.F2.Presentable.joinStdSimplexIso_rightEdge_zero
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexTerminalCocone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_front
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_lastEdge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexTerminalCocone_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.joinStdSimplexIso_rightEdge_lastVertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexSpecifiedEdgeExtension_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialEdgeSimplices
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_simplices
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveSuccessorEdge_simplex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_realizing_edges
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeCocone_edge_extension
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeJoin_edge_extension
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_smallCoproduct
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_preservedRealizations
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasCardinalLT_simplex_of_isKappaSmall
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaSmall_twistedArrow
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_hasSmallKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_filtered_isColimitCone_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_fst_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_snd_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isKappaAccessibleFunctor_iff_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleSpan_compactCardinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessiblePullback_compactCandidate
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeSimplex_edge_extension
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerve_hom_ext_initialSimplex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeSequentialEdgeSimplices
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeSequentialDiagram_realizing_edges
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.point_isKappaAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.point_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointMap_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_hasSmallKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_fst_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleFiber_compactCandidate
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sliceOver_cocone_lifting_colimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_predicateOver_cocone_lifting_colimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOver
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactOver_cocone_of_smallQuasicategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_kappaSmallQuasicategory_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactOver_cocone_of_small
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaFiltered_of_small_tests_equivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOver_model_isKappaFiltered
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverCoconeIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverCoconeForward_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_of_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sliceOver_colimitCone_with_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_isColimitCone_iff_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_hasSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverProjection_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOver_hasSmallKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverProjection_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverPostcomp_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceOverPostcomp_equivalenceLifting
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sliceUnderPostcomp_equivalenceLifting
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackSliceVertex_of_compatible_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactOverVertex_of_compatible_sources
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.familySaturationEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsAccessible.exists_smallFamilySaturationModel
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_subsequencePreservedImageColimitIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactOverVertex_of_sequential_comparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberOverVertex_of_sequential_comparison
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCoslice_hasSmallKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCoslice_isColimitCone_iff_projection_kappaFiltered
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceProjection_isKappaAccessibleFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceDiagonalGraph_isPullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceDiagonalClassification_preservesKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.identityClassification_preservesKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftClassification_baseChange_fst_preservesKappaFilteredColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_edgeCosliceVertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactArrow_presentation_section
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_isColimit_of_rightCofinal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_pointCosliceVertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeCompact_presentation_section
-#check @SerrePositivity.InfinityCategories.F2.Presentable.filteredStage_compact_presentation_section
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_terminalSourceCosliceVertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalSourceCoslice_isColimitCone_iff_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalSource_relative_cocone_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalSource_relative_presentation_section
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_relativeCoslice_splitTriangle
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialEvenFace_rightAnodyne
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSourceCosliceIso_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStage_compact_presentation_section
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compStructCocone_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_old_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_splitCompStruct_of_identity_longEdge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_normalizedCoslice_splitCompStruct
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_finiteAlternating_split
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialEvenFace_successor_join
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_join
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_join
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_old
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_old
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_even
-#check @SerrePositivity.InfinityCategories.F2.Presentable.iteratedCocone_vertex_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_target_face
-#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_source_face
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSourceCosliceIso_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSuccessor_base_join
-#check @SerrePositivity.InfinityCategories.F2.Presentable.finiteStageSuccessor_front
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtension_even_presentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_uncurry
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sourceCosliceRestrictedCocone_leg_uncurry
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_even_join_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.standardAlternatingExtensionCocone_even_presentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_alternatingPresentationSuccessor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.AlternatingPresentationSuccessor.next
-#check @SerrePositivity.InfinityCategories.F2.Presentable.initialAlternatingPresentationStage
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_index_front
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_diagram_old
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentationTower_augmentation_old
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerve_map_cofinalStages
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialNerve_map_cofinalStageSteps
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveStageSimplexIso_prefix
-#check @SerrePositivity.InfinityCategories.F2.Presentable.simplexPrefix_alternating
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_sequentialDiagram_of_cofinalSimplices
-#check @SerrePositivity.InfinityCategories.F2.Presentable.AlternatingPresentationSuccessor.next_sliceDiagram_prefix
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_alternatingPresentationIndexDiagram
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_alternatingPresentationSliceDiagram
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_alternatingPresentationAugmentedDiagram
-#check @SerrePositivity.InfinityCategories.F2.Presentable.splitCoconeExtension_inserted_identity
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveUniverseIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.sequentialNerveUniverseIso_subsequence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nativeSequential_hom_ext
-#check @SerrePositivity.InfinityCategories.F2.Presentable.AlternatingPresentationSuccessor.next_inserted_isTerminal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalValuedDiagramIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingInsertedPoint_initialSimplex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentation_oddSubsequenceIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nativeSequentialInitialSimplex_even
-#check @SerrePositivity.InfinityCategories.F2.Presentable.AlternatingPresentationStage.even_sliceDiagram
-#check @SerrePositivity.InfinityCategories.F2.Presentable.alternatingPresentation_even_diagram_eq
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_nativeAlternatingPresentation
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSliceDiagram_postcomp
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSliceImageMap_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactSliceSource_image_identity_of_filteredPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointIdentityCone_eqToHom
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_pointIdentityCone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberOver_of_normalized_slice
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberOver_of_filteredPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberOver_of_isKappaAccessible
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactSliceSource_image_identity_initial_of_filteredPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.terminalTargetCoconeIso
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_pullbackCocone_of_compatible_components
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackCoconeBaseMap_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.relativeSliceCocone_vertex_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeTransportLeg_sliceDiagram_val
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSliceDiagram_factorization
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_cocone_of_edge_from_vertex
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactSliceCocone_image_identity_of_filteredPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeSliceImageMap_transport
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactActualSliceCocone_image_terminal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullbackSliceBaseMap_point_isTerminal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberSliceCocone_of_terminal_image
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactFiberOver_cocone_of_smallQuasicategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_componentCompactFiberOver_cocone_of_small
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallLeftFibrationModel_of_small_base
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallLeftFibrationModel_of_base_model
-#check @SerrePositivity.InfinityCategories.F2.Presentable.smallKanModel_op
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallRightFibrationModel_of_small_base
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallRightFibrationModel_of_base_model
-#check @SerrePositivity.InfinityCategories.F2.Presentable.predicatePreimageMap
-#check @SerrePositivity.InfinityCategories.F2.Presentable.predicatePreimagePullbackIso
-#check @SerrePositivity.InfinityCategories.F2.Presentable.predicatePreimage_isPullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsLocallySmall.sliceOver_fiber_hasSmallKanModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSlice
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceProjection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_smallCompactSourceSliceModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceRestriction
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceRestriction_equivalenceLifting
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallComponentCompactOverModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pointMap_preservesKappaCompact
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallKappaFilteredFiberCommaModel
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberSliceCocone_comparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_compactSourceSlice_cocone_of_small
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleSliceCocone_image_terminal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_accessibleSliceEdge_image_terminal
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_leftFibration_cocone_of_target_edge
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fullSubcomplexEdgeLift
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOverFst
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactOverFst_inclusion
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fullSubcomplex_coslicePostcomp_isFullyFaithful
-#check @SerrePositivity.InfinityCategories.F2.Presentable.coconeVertexIso_transport_values
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactFiberCocone_with_firstComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.nonempty_compactFiberProjection_under_cocone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.componentCompactFiberOverFst_isRightCofinal
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.compactModel_isKappaCompactGenerating
-#check @SerrePositivity.InfinityCategories.F2.Presentable.IsKappaAccessible.exists_compactModelIndRepresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanAmbientComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanAmbientComparison_isQCatEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.leftKanAmbientComparison_projection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_smallLeftKanShapeModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasColimit_leftKanDiagram_of_locallySmall
-#check @SerrePositivity.InfinityCategories.F2.Presentable.canonicalColimits_of_identityRestriction_bijective
-#check @SerrePositivity.InfinityCategories.F2.Presentable.indEquivalenceImage_canonicalColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_compactIndYonedaModel
-#check @SerrePositivity.InfinityCategories.F2.Presentable.rightFibration_equivalenceLifting
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceKanComparison
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceKanComparison_isQCatEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceDensityCocone
-#check @SerrePositivity.InfinityCategories.F2.Presentable.compactSourceSliceDensityCocone_isColimit
-#check @SerrePositivity.InfinityCategories.F2.Presentable.exists_componentCompactFiberPresentation
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_isAccessible_of_cocomplete_accessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.fiber_isAccessible_of_presentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Duality.presentableAdjointFunctorEquivalence
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isPresentable_of_reflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.LocalObjects.isPresentable_of_localReplacements
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.exists_bousfieldLocalReplacement
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_isReflectiveSubcategory
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldReflection
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalObjects_isPresentable
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_preservesSmallColimits
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isAccessible
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfield_generatedEdges_eq_invertedEdges
-#check @SerrePositivity.InfinityCategories.F2.Presentable.Localization.bousfieldLocalizationFunctor_isLocalization_generatedEdges
-#check @SerrePositivity.InfinityCategories.F2.Presentable.pullback_isPresentable_of_accessiblePullback
-#check @SerrePositivity.InfinityCategories.F2.Presentable.preservesSmallColimits_of_coproducts_finite
-#check @SerrePositivity.InfinityCategories.F2.Presentable.hasPreservedColimit_of_coproducts_finite
-#check @SerrePositivity.InfinityCategories.F2.Presentable.isKappaCompact_functorVertex_of_endFamily
-
-#check @SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible
-#print axioms SerrePositivity.InfinityCategories.F2.Presentable.AccessiblePullback.pullback_isAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_common_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationComparisonIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.adjunctionCosliceComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.adjunctionCosliceComparison_fiber
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.CouplingsOfInfinityCategories.covariantHomCommaClassificationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.CouplingsOfInfinityCategories.mappingArrowHomFamilyIso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.CouplingsOfInfinityCategories.adjunctionCovariantHomIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_hom_preservesKappaFilteredColimits_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_exists_common_hom_preservationCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafOpposite_functorHom_isIso_of_yoneda
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_densityImages_isLeftKanExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafDensityIsoOfYoneda
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isLimitCone_iff_restrict_equivalentShape
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafElementsRightKanComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafRightKanCanonicalCone_restrict_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_oppositeDensityImages_canonicalLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafOppositeDensityIsoOfYoneda
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceUniverse_covariantPointIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceUniverseDiagram_map_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_oppositeDensity_image_isRightKanExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafRepresentationCandidate
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafRepresentation_restrictionIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafRepresentationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.SendsSmallColimitsToLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.IsRepresentableSmallSpaceFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.presheaf_isRepresentable_of_sendsSmallColimitsToLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.SendsSmallColimitsToLimits.precomp_op
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fullyFaithfulRepresentableRestrictionIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isRepresentable_iff_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sendsSmallColimitsToLimits_iff_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflective_isRepresentable_of_local_representation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.representedRestriction_inverts_op_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveUnit_map_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.representedReflectiveUnit_inverts_op_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indInfinity_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.IsKappaCompactGenerating.compact_iff_retract
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.IsKappaAccessible.exists_indComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indComparison_isEssentiallySurjective
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indComparison_generator_pinchedHomMap_isEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.covariantHomComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cosliceComparisonOver_fiber_postcomp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cosliceComparisonOver_fiber_equivalence_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isFullyFaithful_iff_cosliceComparisonOver
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationEdge_evaluation_square
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationFiberEvaluation_original_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indComparison_generator_cosliceFiber_isEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.covariantHomComparison_component_isIso_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomComparison_colimit_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pinchedHomMap_equivalence_of_compact_colimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indComparison_yoneda_pinchedHomMap_isEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomComparison_limit_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pinchedHomMap_equivalence_iff_op
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pinchedHomMap_equivalence_of_source_colimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparisonEquivalence_hom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.exists_indRepresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.IsKappaAccessible.exists_indEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.equivalence_isColimitCone_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.covariantHomComparisonIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_iff_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaCompactGenerating.of_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isKappaAccessible_iff_indEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.isAccessible_iff_indEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isAccessibleFunctor_iff_equivalence_conjugate
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_regular_cardinalChangeBound_family
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.exists_smallFilteredPiece_containing
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.smallFilteredPieces_cover
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredPiece_nerve_properties
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveSubsetLift_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveSubsetLift_transition
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallFilteredPiece_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredNerveCocone_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredPartialDiagram_hasColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallFiltered_partialColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredTotalAbove_isCardinalFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredAboveCommaEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredTotalValue_coslice_isWeaklyContractible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredTotalValue_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredTotal_restrict_isColimit_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFilteredTotalDiagram_restrict_fiber
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallPiece_leftKanShape_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallPiece_exists_leftKanExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nerveMap_isRightCofinal_of_initial_comma
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallPieceFiberKanComparison_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallPieceFiberKanComparisonUniverse_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallPiece_leftKan_value_isPartialColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallPartialColimitFamily
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKanHomUniversal_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKan_nerveTerminal_colimitValue
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKan_colimitVertexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallPartialColimitPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HasSmallFilteredPartialColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_filteredPartialPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.hasCardinalLT_allSimplices_of_isKappaSmall
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasCardinalLT_simplexCategory_arrow
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallShape_isCardinalPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallShape_relative_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaSmall_tensor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallInternalHom_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSSetLimitColimitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasCardinalLT_endIndex_arrow
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.weightedSectionsLimitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.weightedSectionsFunctor_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.weightedSectionsCardinalFilteredIso_ι
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldKanWeight_poset_isKappaSmall
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldKanHolimFunctor_poset_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredConeColimit_ι_π
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredConeColimit_comparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredConeColimit_comparison_isWeakHomotopyEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.weightedSectionsCotensorIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.weightedConeComparison_cotensor
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanCone_isLimit_iff_bousfieldKanComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredKanConeColimit_forget
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredKanConeColimit_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceDiagramStrictificationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceFamilyStrictificationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceFamilyStrictificationRestrictIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.uliftInitialConeIso_inr
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictificationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.strictConeFamilyStage_recovered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.strictConeFamilyColimit_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictification_stage_isLimit_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictColimitCocone_pointwise
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictColimitCocone_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.thinConeIndex_comparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.withInitialKanCone_coherentMap
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictRealization_stage_map
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStage_isLimit_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyStrictModelColimit_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanDiagramBundle_evaluation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanFamilyRealizedColimitCocone_pointwise
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanFamily_realization_curry
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyModelStrictLimit_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.withInitialFilteredColimit_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coherentCardinalFilteredLimitExchange_nerve_poset
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.pointwiseColimitCocone_restrict_rightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.coherentCardinalFilteredLimitExchange_poset
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsCardinalChangeBound.lift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaSmall_ulift_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaFiltered_ulift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nervePosetUniverseOppositeIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.cardinalFilteredLimitExchangeShape_ulift_poset_op
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointwiseColimit_of_cardinalExchange
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isMuCompact_smallPosetColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isMuCompact_smallPosetColimit_of_kappaCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactPartialPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_muCompactPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPosetDiagramCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallPosetDiagramCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallPosetDiagramCode.vertex_isMuCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallPosetColimitGeneratorIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.small_fullSubcomplexOnRange
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ind_small_fullSubcomplexOnRange
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaCompactGenerating.exists_smallFamilyPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.quasicategory_of_ulift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFullModelInclusion_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFamilySaturationComparison_isEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.generatorPresentation_of_familySaturation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallFullModelInclusion_isKappaCompactGenerating
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indInfinity_isMuAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.of_cardinalChangeBound
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_larger
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_accessibilityCardinal
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_hasSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_iff_cocompleteIndEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanInternalHomEnriched
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallKanHom_mapCocone_native
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallKanHomInfinity_preserves_strictCocone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallKanHomInfinity_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeHom_covariantModelIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalRelativeHomIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanTerminalInfinity_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kanTerminalHomInfinityComparisonIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.kanHom_covariantModelIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallKanObject_isKappaCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_spaceCompactCardinal_family
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplicialInternalHomEnriched
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteSimplicialHomInfinity_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousReplacementHomIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteKanReplacement_isCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation.finiteSpacePieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation.finiteSpaceReplacementDiagram_compact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSpacePresentation.exists_finiteSpacePresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteSimplicialCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_finiteSimplicialCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.finiteSpaceGeneratorVertex_isCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.spaceCompactGeneratorInclusion_isCompactGenerating
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.space_isKappaAccessible_aleph0
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.space_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteOverPresentable.finiteOver_isFinitelyPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.overCellCopiesFunctor_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftHornCellStep_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftHornCellStep_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacement
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacement_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacement_leftFibration
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteOverCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_finiteOverCode
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftHornCellStepUnit_leftAnodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationReplacementUnit_leftAnodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeOverHomTensorEquiv
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeOverHomEvaluationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteRelativeOverHom_preservesFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationHomIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteOverPresentation.finiteOverPieces_nerve_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteOverPresentation.finiteOverReplacementCocone_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FiniteOverPresentation.finiteOverReplacementDiagram_in_family
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibration_of_filtered_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeFunctorEnrichedEvaluation_underlying
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteRelativeHom_preserves_strictCocone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPointEvaluationIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationStrictCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationUnit_isInvertible
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.continuousLeftFibrationUnitVertexIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteLeftFibrationCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_finiteLeftFibrationPresentation
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteLeftFibrationDiagram_in_family
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationDiagramStrictificationIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.filteredLeftFibrationCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteRelativeHom_isKappaAccessibleFunctor
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteLeftFibrationReplacement_isCompact
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafCompactGeneratorInclusion_isCompactGenerating
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isKappaAccessible_aleph0
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_isPresentable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheaf_exists_compactGeneratorIndEquivalence
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indInfinity_isPresentable_iff_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafCompactGeneratorInd_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafCompactGeneratorInd_isPresentable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.isLocallySmall_of_smallFixedVertexMaps
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.indInfinity_isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsAccessible.isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.SizeConditionsOnInfinityCategories.IsPresentable.isLocallySmall
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indInfinity_isPresentable_of_compactGenerating
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafElementsLeftKanComparison
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafElementsLeftKanComparison_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafElementsLeftKanComparison_coconeMap
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafDensityLeftKan.presheafDensity_image_canonicalColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresheafDensityLeftKan.presheafDensity_image_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaHomWeightDiagram_map_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafUniverseDiagram_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaHomWeightDiagram_isLeftKanExtension
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaWeightLeftKan_restrictionIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaHomWeightDiagram_universeIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaHomWeightFamily_transpose
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.yonedaHomWeightFamily_evaluationIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaHomWeightFamily_liftedRestrictionIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaHomWeightFamily_liftedIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafUniverseDiagram_map_isColimit_arbitraryShape
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coyonedaInfinityMap_reflects_isLimit
+
+#check @SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.coyonedaInfinityMap_restricted_isLimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaUniverseInclusion_map_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaHomWeightFamily_map_isLimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaLeftKanExtension_preservesSmallSiftedColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isEssentiallySurjective
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestrictionEquivalence
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaSiftedContinuousRestrictionEquivalence_hom
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYoneda_finiteCoproduct_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafBarObject_realization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafBarObject_degree_coproduct
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafBarDegreeDiagram_representable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasSmallColimits_of_coproducts_geometricRealizations
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasSmallColimits_iff_coproducts_geometricRealizations
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_of_localLeftKan_colimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.hasColimit_iff_leftKanExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.smallSimplexOpposite_isSiftedInfinity
+#check @SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.sigma_hasSmallGeometricRealizations
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_discrete_of_finiteRestrictions
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYoneda_smallDiagram_hasColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_exists_reflectorLeftKan
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigmaReflectorAdjunction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_exists_reflector
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYoneda_smallCoproduct_isInd
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheaf_simplicialIndPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaPresheaf_simplicialIndDiagram
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.mapJoinCocone_isColimit_of_adjunction_of_quasicategoryShape
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaReflector_barDegree_isInd
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaReflector_bar_realization
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indExtensionHomWeight_liftedIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_of_fullyFaithful_image_colimit_iso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasLimit_of_fullyFaithful_image_limit_iso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.coyonedaInfinityMap_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_of_coyoneda_limit_representable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fullPresheafHomWeightFamily_map_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_of_indPresentation_realization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_exists_leftKanExtension_of_filtered_geometric
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaSiftedContinuousRestriction_isQCatEquivalence_of_filtered_geometric
+
+#check @SerrePositivity.InfinityCategories.Kerodon.ExactnessAndAnimation.SimplicialObjectsOfInfinityCategories.sigmaComparison_isIso_of_filtered_geometric
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_preservesSmallSiftedColimits_iff_filtered_geometric
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaFilteredGeometricRestriction_isQCatEquivalence
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.colimitPreservation_of_restrictionEquivalences
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.colimitPreservation_of_localLeftKan
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallColimits_of_coproducts_geometricRealizations
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_iff_finiteCoproducts_sifted
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_preservesSmallColimits_iff_finiteCoproducts_sifted
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitFunctor
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitUnit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone_isColimit
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneApex_homRestriction_bijective
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.constantPointFunctorIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.precompositionHomotopy_constant_naturality
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneApex_homEvaluation_bijective
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.constantEndpointUnitHom_evaluation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeUnitHom_evaluation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeUnitHom_bijective
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.flipFunctorHomEquiv
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeFunctorUnitPrism_swap
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.flip_postcompose_constant_hom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitUnit_swap
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitUnitHomMap_flip
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitUnitHom_bijective
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.chosenColimitAdjunction
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nativeCoconeHomApex_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isColimitCone_of_nativeCoconeHomApex_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.colimitFamilyComparison_evaluate_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitParameterCocone_isPointwiseColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.chosenColimitComparison_isIso_iff_preservation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointProjection_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.constantJoinCocone_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.constant_preservesSmallSiftedColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.discreteFamilyUpdate_preservesSmallSiftedColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaFiniteFamilyComparison_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigmaYonedaFamily_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PreservesFiniteCoproductsOnBase
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sigma_preservesFiniteCoproducts_iff_yoneda
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_sifted
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_preservesSmallColimits_iff_yoneda_of_cocomplete
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.TensorProductsOfInfinityCategories.sigma_preservesSmallColimits_iff_yoneda_finiteCoproducts_of_filtered_geometric
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.sigmaLeftKanExtension_preservesSmallColimits_iff
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.sigmaLeftKanExtension_preservesSmallColimits_iff_of_cocomplete
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.PreservesSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.adjunction_preservesSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.HasSmallLimits.of_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indPresheafReflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ind_hasSmallLimits_of_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_reflectiveIndModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflector_left_triangle
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorAdjunction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ind_exists_presheafReflector
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorYonedaUnit_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflector_counit_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorCanonicalColimits_iff_densityImages
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorVertexDensityCocone_val_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorIdentity_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorRestriction_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorInclusion_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorYonedaUnit_post
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflector_right_triangle
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorYonedaUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorRestrictionYonedaUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorRestrictionYonedaUnit_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflector_exists_unit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflectorRestrictionYonedaInverse
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indReflector_exists_counit
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.mapJoinCocone_isColimit_of_adjunction
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.adjunction_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasColimit_of_reflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.hasSmallColimits_of_reflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_presheafReflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.hasLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentable_isLimitCone_iff_representables
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsPresentable.exists_limitCone_representables
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKanDiagram_hasColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheaf_exists_yonedaLeftKan
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKan_unit_isIso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKan_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.presheafYonedaLeftKan_density_image_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sigmaReflector_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sigma_hasColimit_of_reflector
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.fullSubcomplex_hasLimit_of_apex
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_isLocal_limitCone
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_mem_limitCone
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveSubcategory_hasSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflective_isLimitCone_iff_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.reflectiveIndModel_isLimitCone_iff_evaluation
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsPresentable.exists_limitDetectingPresheafModel
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveIndModel_hasSmallColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_isColimitCone_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_fst_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_snd_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_preservesSmallColimits_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_isColimitCone_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_fst_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_snd_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.pullback_preservesSmallColimits_iff_components
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_cosliceCone_lift_of_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_unstraighteningCone_lift_of_map_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSolutionDiagram
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSolutionLift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSolutionLift_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallSolutionCone
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatorSolution_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_cone_vertex_of_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_generatorSolutionCone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleGeneratorSolutionCone
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneClassificationOver
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneClassificationHom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSolutionClassificationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.solutionConeHomComparison
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.HasSmallLimits.isIdempotentComplete
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.unstraightening_isIdempotentComplete_of_smallLimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationHom_id
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationHom_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationHom_eq_of_relativeVertexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassificationRetraction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeFunctorIso_of_initial_evaluation_eq
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coslicePointTransport_identity
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coslicePostcomp_identity
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cosliceVertexTransportComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneTransportRelativeComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.conePullbackClassificationRetraction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSolutionLift_isPullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.solutionHom_isRetract
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleGeneratorHomRetract
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessibleFunctor.comp_universe
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessibleFunctor.spaceUniverse
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftCanonicalRestrictionRetraction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indLiftedContinuous_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.covariantRepresentable_retract_corepresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.ind_corepresentable_of_continuous_preservesLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.IsCorepresentableSmallSpaceFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.isCorepresentable_of_equivalence_restriction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.accessible_preservesLimits_isCorepresentable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_smallCovariantHom
+#check @SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.leftFibration_exists_initial_of_covariantRepresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.exists_leftAdjoint_of_covariantHom_representable
+#check @SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.exists_leftAdjoint_iff_covariantHom_representable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_of_fullyFaithful_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isColimitCone_of_fullyFaithful_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_spaceUniverse
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallLimits_of_spaceUniverse
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallHomComposite_isAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallHomComposite_preservesSmallLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_of_accessible_limitPreserving_HomModels
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indYonedaHom_evaluationIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_indHomTests
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightAdjoint_isAccessible_of_spaceUniverseFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits_of_spaceUniverseFullyFaithful
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveContinuous_exists_representation_inverting_units
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.representable_hasSmallSimplexFibers
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallSimplexFibers_op
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallContravariantHom_of_fixedVertexMaps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_smallContravariantHom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallContravariantHom_map_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallContravariantHom_sendsSmallColimitsToLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallContravariantHomComposite_sendsSmallColimitsToLimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.oppositeCovariantRepresentableIso
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.exists_rightAdjoint_of_opposite_leftAdjoint
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.exists_rightAdjoint_of_contravariantHom_representable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_of_colimitPreserving_representability
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits_of_representability
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.RepresentableInversionDetectsLocality
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.reflectiveContinuous_isRepresentable_of_inversionLocality
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableContinuous_isRepresentable_of_inversionLocality
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits_of_comparisonInterfaces
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableInfinityObject
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrLFunctorSpace
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrRFunctorSpace
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrLMappingSpace
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrRMappingSpace
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.prLMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.prRMappingSpace_kanComplex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PreservesSmallColimits.comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PreservesSmallLimits.comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorSmallColimits.functor_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorSmallColimits.functor_isColimitCone_iff_pointwise
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorSmallColimits.evaluateFunctorAt_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.FunctorSmallColimits.functorPostcomp_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.adjunction_isKappaCompact_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.reflectiveImage_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPresheafBaseIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPresheafIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPresheaf_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorPostcomp_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorInd_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functor_isPresentable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableFunctorCondition
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableFunctorCondition_id
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableFunctorCondition.comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingFunctorId
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingFunctorComp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingFunctor_id_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingFunctor_comp_id
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservingFunctor_assoc
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableEnrichedCategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PresentableCoreCategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrL
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PrR
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.prL_quasicategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.prR_quasicategory
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorTensorIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomTensorEquiv
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomTensorEquiv_apply
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomTensorEquiv_comp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomTensorEquiv_precomp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.functorHomTensorEquiv_postcomp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorUnitHom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorUnitHom_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorAdjunctionUnit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorAdjunctionUnit_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorAdjunctionUnit_homMap_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorAdjunction
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceUniverseDiagram_reflects_small_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_of_spaceUniverse_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesSmallLimits_of_spaceUniverse_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightAdjoint_isAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftAdjoint_iff_accessible_preservesLimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits_of_inversionLocality
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafSigmaBaseIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piPresheaf_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presheafTensor_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensorHom_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indTensor_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.tensor_isPresentable
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetProjection_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_preservesSmallColimits_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piAdjunction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSet_isPresentable
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presheaf_representableInversionDetectsLocality
+#check @SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.presentableContinuous_isRepresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_rightAdjoint_iff_preservesSmallColimits
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocallySmall.hom_small
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocallySmall.vertexIso_small
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_hasSmallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isKappaAccessibleFunctor_of_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackVertexCandidate
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.PullbackCandidateIndex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCandidateFamily
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCandidateCategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCandidateInclusion_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCosliceIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCosliceIso_projection_fst
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCosliceIso_projection_snd
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackFamily_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackCandidate_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalFilteredLimitExchangeShape_cospan
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPullbackLimitFamily_isLimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPullbackLimitFamily_apex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaAccessibleFunctor_limitFamily_apex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPullbackClassification_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesKappaFilteredColimits_limitFamily_apex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftFibrationPullbackClassification_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCosliceBaseChange_isPullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCosliceLeftMap_leftFibration
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cartesianFibrationClassification_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_pullback_of_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackCandidate_nativeCompactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_imageCompactGenerating_of_cardinalChangeBound
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactPreservingCardinal_of_smallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.SmallRetractIndex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallRetractFamily_iso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactFamily
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactImages_of_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_common_compactPreservingCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kappaCompactEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.kappaCompactRestriction_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentCompactObjects_isPullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentCompactObjects_vertex_isKappaCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_presentableSpan_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallModelFunctor_comparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallCompactSpanModel_nonempty
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactVertex_smallPosetColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackEdge_of_component_classes
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackVertexIso_of_compatible_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_realizedPullbackCandidate_iso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallNativeCompactPullbackFamily
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallComponentCompactModel_of_component_smallFixedVertexMaps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_catPullbackEquivalence_of_strictSpanEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallSpanPullbackComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallStrictPullbackModel_of_component_models
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallComponentCompactModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_presentablePullback_compactCandidate
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.indComparison_isFullyFaithful_of_compact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallRelativeOverHom_preservesCardinalFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallRelativeHom_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.smallConstantPointDiagram_isKappaCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.spaceRightAdjoint_isKappaAccessibleFunctor_of_point_compact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_kappaContinuousSpaceLimitFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_iff_equivalence_universe
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.cardinalChangeBound_aleph0
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallPosetColimit_universe
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneFamilyAdjunctHom_precomp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coneCounitHom_bijective
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.limitConeFamily_apexIso_of_constantAdjunction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.preservesKappaFilteredColimits_limitFamily_apex_of_small
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_smallQuasicategoryColimit_universe
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactVertex_smallQuasicategoryColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactVertex_smallQuasicategoryColimit_of_span
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialSubsequenceFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialSubsequence_nerve_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.doubleSubsequence_nerve_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialSubsequenceColimitVertexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_subsequenceColimitVertexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_subsequenceImageColimitIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmall
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmallProjection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmallLift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmallLift_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmall_hom_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.piSSetSmall_quasicategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.piSSetSmall_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.piSSetSmallProjection_pullback_isKappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.piSSetSmallProjection_isRightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.exists_common_kappaFiltered_cofinal_index
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStage
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStage_monotone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.iSup_sequentialNerveStage
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialNerve_map
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStageToFinite
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveFiniteToStage
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStageIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStage_finite
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStageSimplexIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStageSimplexIso_transition
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialNerveStage_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialDiagram_of_extensions
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSpecifiedEdgeExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSpecifiedEdgeExtension_inl
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSpecifiedEdgeExtension_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSpecifiedEdgeExtension_inr
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.joinStdSimplexIso_rightEdge_zero
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexTerminalCocone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexSpecifiedEdgeExtension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexSpecifiedEdgeExtension_front
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexSpecifiedEdgeExtension_lastEdge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexTerminalCocone_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.joinStdSimplexIso_rightEdge_lastVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexSpecifiedEdgeExtension_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialEdgeSimplices
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialDiagram_of_simplices
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveSuccessorEdge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveSuccessorEdge_simplex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialDiagram_realizing_edges
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeCocone_edge_extension
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeJoin_edge_extension
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasPreservedColimit_smallCoproduct
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasPreservedColimit_of_coproducts_preservedRealizations
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasCardinalLT_simplex_of_isKappaSmall
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaSmall_twistedArrow
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_filtered_isColimitCone_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_fst_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_snd_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.pullback_isKappaAccessibleFunctor_iff_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleSpan_compactCardinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessiblePullback_compactCandidate
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeSimplex_edge_extension
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerve_hom_ext_initialSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeSequentialEdgeSimplices
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeSequentialDiagram_realizing_edges
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.point_isKappaAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.point_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointMap_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fiber_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fiber_fst_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleFiber_compactCandidate
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sliceOver_cocone_lifting_colimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_predicateOver_cocone_lifting_colimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactOver
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_componentCompactOver_cocone_of_smallQuasicategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_kappaSmallQuasicategory_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_componentCompactOver_cocone_of_small
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaFiltered_of_small_tests_equivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactOver_model_isKappaFiltered
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sliceOverCoconeIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sliceOverCoconeForward_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_isColimitCone_of_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_sliceOver_colimitCone_with_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_isColimitCone_iff_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_hasSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverProjection_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOver_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverProjection_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.sliceOverPostcomp_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.sliceOverPostcomp_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.sliceUnderPostcomp_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackSliceIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackSliceVertex_of_compatible_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactOverVertex_of_compatible_sources
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.familySaturationEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsAccessible.exists_smallFamilySaturationModel
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_subsequencePreservedImageColimitIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactOverVertex_of_sequential_comparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackSliceBaseMap_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackSliceBaseMap_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberOverVertex_of_sequential_comparison
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_hasSmallKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCoslice_isColimitCone_iff_projection_kappaFiltered
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceProjection_isKappaAccessibleFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceDiagonalGraph_isPullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceDiagonalClassification_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.identityClassification_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftClassification_baseChange_fst_preservesKappaFilteredColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_edgeCosliceVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactArrow_presentation_section
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceRestrictedCocone_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceRestrictedCocone_isColimit_of_rightCofinal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceRestrictedCocone_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_pointCosliceVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeCompact_presentation_section
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.filteredStage_compact_presentation_section
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isKappaCompact_terminalSourceCosliceVertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalSourceCoslice_isColimitCone_iff_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalSource_relative_cocone_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalSource_relative_presentation_section
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_relativeCoslice_splitTriangle
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialEvenFace_rightAnodyne
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteStageSourceCosliceIso_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteStage_compact_presentation_section
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compStructCocone_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.splitCoconeExtension_old_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.splitCoconeExtension_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_splitCompStruct_of_identity_longEdge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_normalizedCoslice_splitCompStruct
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_finiteAlternating_split
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialEvenFace_successor_join
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtension_join
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtensionCocone_join
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtension_old
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtensionCocone_old
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtension_even
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.iteratedCocone_vertex_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.splitCoconeExtension_target_face
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.splitCoconeExtension_source_face
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteStageSourceCosliceIso_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteStageSuccessor_base_join
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.finiteStageSuccessor_front
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtension_even_presentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceRestrictedCocone_uncurry
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sourceCosliceRestrictedCocone_leg_uncurry
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtensionCocone_even_join_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.standardAlternatingExtensionCocone_even_presentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_alternatingPresentationSuccessor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AlternatingPresentationSuccessor.next
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.initialAlternatingPresentationStage
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentationTower
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentationTower_index_front
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentationTower_diagram_old
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentationTower_augmentation_old
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialNerve_map_cofinalStages
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialNerve_map_cofinalStageSteps
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveStageSimplexIso_prefix
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.simplexPrefix_alternating
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_sequentialDiagram_of_cofinalSimplices
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AlternatingPresentationSuccessor.next_sliceDiagram_prefix
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_alternatingPresentationIndexDiagram
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_alternatingPresentationSliceDiagram
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_alternatingPresentationAugmentedDiagram
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.splitCoconeExtension_inserted_identity
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveUniverseIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.sequentialNerveUniverseIso_subsequence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nativeSequential_hom_ext
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AlternatingPresentationSuccessor.next_inserted_isTerminal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalValuedDiagramIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingInsertedPoint_initialSimplex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentation_oddSubsequenceIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nativeSequentialInitialSimplex_even
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.AlternatingPresentationStage.even_sliceDiagram
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.alternatingPresentation_even_diagram_eq
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_nativeAlternatingPresentation
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSliceDiagram_postcomp
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSliceImageMap_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactSliceSource_image_identity_of_filteredPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointIdentityCone_eqToHom
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackSliceBaseMap_pointIdentityCone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberOver_of_normalized_slice
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberOver_of_filteredPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberOver_of_isKappaAccessible
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactSliceSource_image_identity_initial_of_filteredPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.terminalTargetCoconeIso
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_pullbackCocone_of_compatible_components
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackCoconeBaseMap_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.relativeSliceCocone_vertex_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeTransportLeg_sliceDiagram_val
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSliceDiagram_factorization
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_cocone_of_edge_from_vertex
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactSliceCocone_image_identity_of_filteredPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeSliceImageMap_transport
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactActualSliceCocone_image_terminal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullbackSliceBaseMap_point_isTerminal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberSliceCocone_of_terminal_image
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_componentCompactFiberOver_cocone_of_smallQuasicategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_componentCompactFiberOver_cocone_of_small
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallLeftFibrationModel_of_small_base
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallLeftFibrationModel_of_base_model
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.smallKanModel_op
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallRightFibrationModel_of_small_base
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallRightFibrationModel_of_base_model
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.predicatePreimageMap
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.predicatePreimagePullbackIso
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.predicatePreimage_isPullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsLocallySmall.sliceOver_fiber_hasSmallKanModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSlice
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceProjection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_smallCompactSourceSliceModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceRestriction
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceRestriction_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallComponentCompactOverModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pointMap_preservesKappaCompact
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallKappaFilteredFiberCommaModel
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberSliceCocone_comparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_compactSourceSlice_cocone_of_small
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleSliceCocone_image_terminal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_accessibleSliceEdge_image_terminal
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_leftFibration_cocone_of_target_edge
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fullSubcomplexEdgeLift
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactOverFst
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactOverFst_inclusion
+#check @SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.fullSubcomplex_coslicePostcomp_isFullyFaithful
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.coconeVertexIso_transport_values
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactFiberCocone_with_firstComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.nonempty_compactFiberProjection_under_cocone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.componentCompactFiberOverFst_isRightCofinal
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.compactModel_isKappaCompactGenerating
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.IsKappaAccessible.exists_compactModelIndRepresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKanAmbientComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKanAmbientComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.leftKanAmbientComparison_projection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_smallLeftKanShapeModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.hasColimit_leftKanDiagram_of_locallySmall
+#check @SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.Cocompletion.canonicalColimits_of_identityRestriction_bijective
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.indEquivalenceImage_canonicalColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_compactIndYonedaModel
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.rightFibration_equivalenceLifting
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceKanComparison
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceKanComparison_isQCatEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceDensityCocone
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.compactSourceSliceDensityCocone_isColimit
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_componentCompactFiberPresentation
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fiber_isAccessible_of_cocomplete_accessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.fiber_isAccessible_of_presentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.presentableAdjointFunctorEquivalence
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_reflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.isPresentable_of_localReplacements
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_bousfieldLocalReplacement
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_isReflectiveSubcategory
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldReflection
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalObjects_isPresentable
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_preservesSmallColimits
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isAccessible
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfield_generatedEdges_eq_invertedEdges
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.bousfieldLocalizationFunctor_isLocalization_generatedEdges
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.preservesSmallColimits_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.hasPreservedColimit_of_coproducts_finite
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.isKappaCompact_functorVertex_of_endFamily
+
+#check @SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible
+#print axioms SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible
 
 universe u
 
@@ -1026,12 +1043,12 @@ universe u
 open CategoryTheory Limits SSet SerrePositivity.InfinityCategories in
 example {E D B : SSet.{u + 1}} [Quasicategory E] [Quasicategory D] [Quasicategory B]
     (p : E ⟶ B) (q : D ⟶ B)
-    (hp : SerrePositivity.InfinityCategories.F1B.EquivalenceLifting p)
-    (hE : F2.Presentable.IsPresentable E) (hD : F2.Presentable.IsPresentable D)
-    (hB : F2.Presentable.IsPresentable B)
-    (hpc : F2.Presentable.PreservesSmallColimits p)
-    (hqc : F2.Presentable.PreservesSmallColimits q) :
+    (hp : SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.EquivalenceLifting p)
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable E) (hD : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable D)
+    (hB : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable B)
+    (hpc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits p)
+    (hqc : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.PreservesSmallColimits q) :
     letI := hp.innerFibration
-    F2.Presentable.IsPresentable (pullback p q) :=
-  F2.Presentable.pullback_isPresentable_of_accessiblePullback
-    F2.Presentable.AccessiblePullback.pullback_isAccessible p q hp hE hD hB hpc hqc
+    _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (pullback p q) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.pullback_isPresentable_of_accessiblePullback
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.CompactGenerationAndAccessibility.pullback_isAccessible p q hp hE hD hB hpc hqc

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.DiscreteFamily
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.MonoRightLiftingContraction
 
 /-!
@@ -47,29 +47,29 @@ variable {I : Type v} (F : I → SSet.{v})
 
 include hF in
 lemma exists_extension {U V : SSet.{v}} (j : U ⟶ V) [Mono j]
-    (a : U ⟶ total F) (b : V ⟶ PiZeroConstant.discrete I)
-    (hw : a ≫ projection F = j ≫ b) :
-    ∃ l : V ⟶ total F, j ≫ l = a ∧ l ≫ projection F = b := by
-  have hl : ∀ i, ∃ l : DiscreteFiber.obj b i ⟶ F i,
-      DiscreteFiber.map j b i ≫ l = extract F (j ≫ b) a hw i := by
+    (a : U ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total F) (b : V ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.discrete I)
+    (hw : a ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.projection F = j ≫ b) :
+    ∃ l : V ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total F, j ≫ l = a ∧ l ≫ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.projection F = b := by
+  have hl : ∀ i, ∃ l : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.obj b i ⟶ F i,
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.map j b i ≫ l = _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.extract F (j ≫ b) a hw i := by
     intro i
-    have : HasLiftingProperty (DiscreteFiber.map j b i) (terminal.from (F i)) :=
+    have : HasLiftingProperty (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.map j b i) (terminal.from (F i)) :=
       hF i _ inferInstance
-    let sq : CommSq (extract F (j ≫ b) a hw i) (DiscreteFiber.map j b i)
-        (terminal.from (F i)) (terminal.from (DiscreteFiber.obj b i)) := ⟨by simp⟩
+    let sq : CommSq (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.extract F (j ≫ b) a hw i) (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.map j b i)
+        (terminal.from (F i)) (terminal.from (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.obj b i)) := ⟨by simp⟩
     exact ⟨sq.lift, sq.fac_left⟩
   let d := fun i => (hl i).choose
-  refine ⟨assemble F b d, ?_, assemble_projection F b d⟩
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.assemble F b d, ?_, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.assemble_projection F b d⟩
   ext n x
   let i := b.app n (j.app n x)
   have hf := types_congr_hom (congr_app (hl i).choose_spec n)
-    (⟨x, rfl⟩ : (DiscreteFiber.obj (j ≫ b) i).obj n)
-  change assembleFn F b d n (j.app n x) = a.app n x
+    (⟨x, rfl⟩ : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFiber.obj (j ≫ b) i).obj n)
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.assembleFn F b d n (j.app n x) = a.app n x
   calc
-    _ = (⟨i, (d i).app n ⟨j.app n x, rfl⟩⟩ : (total F).obj n) := rfl
-    _ = (⟨i, (extract F (j ≫ b) a hw i).app n ⟨x, rfl⟩⟩ : (total F).obj n) :=
+    _ = (⟨i, (d i).app n ⟨j.app n x, rfl⟩⟩ : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total F).obj n) := rfl
+    _ = (⟨i, (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.extract F (j ≫ b) a hw i).app n ⟨x, rfl⟩⟩ : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.total F).obj n) :=
       congrArg (Sigma.mk i) hf
-    _ = _ := extractFn_spec F (j ≫ b) a hw i n ⟨x, rfl⟩
+    _ = _ := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.extractFn_spec F (j ≫ b) a hw i n ⟨x, rfl⟩
 
 include hF in
 /-- 各離散ファイバーのすべての単射に対する右持ち上げ性から全体の射影の右持ち上げ性を導く。
@@ -79,7 +79,7 @@ include hF in
 元の指定部分を保つ等式は、対角射の二つの分解等式から確認する。
 -/
 lemma projection_mono_rlp :
-    (MorphismProperty.monomorphisms SSet.{v}).rlp (projection F) := by
+    (MorphismProperty.monomorphisms SSet.{v}).rlp (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.projection F) := by
   intro U V j hj
   have : Mono j := hj
   refine ⟨fun {a b} sq => ?_⟩
@@ -87,7 +87,7 @@ lemma projection_mono_rlp :
   exact ⟨⟨{ l := l, fac_left := hl, fac_right := hp }⟩⟩
 
 include hF in
-lemma projection_localized_isIso : IsIso (AnodyneHomotopy.anodyneQ.map (projection F)) :=
+lemma projection_localized_isIso : IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteFamily.projection F)) :=
   MonoRightLiftingContraction.localized_isIso _ (projection_mono_rlp F hF)
 
 end SerrePositivity.SimplicialModel.DiscreteFamily

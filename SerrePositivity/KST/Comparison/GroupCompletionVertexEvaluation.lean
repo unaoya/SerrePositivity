@@ -30,12 +30,12 @@ open SerrePositivity.SimplicialModel
 使われ方：円の写像を bar の辺の具体的な代表と比較する。
 -/
 theorem loopVertex_pullback {X : SSet.{u}} (Y : PointedSimplicialSet.{u})
-    (f : X ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right) (x : X _⦋0⦌) :
+    (f : X ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right) (x : X _⦋0⦌) :
     PointedObject.cofiberQuotient (boundary.{u} 1).ι ≫
         (Spectra.PointedMapping.familyMap PointedSimplicialSet.circle Y (f.app _ x)).right =
       Spectra.PointedMapping.zeroSection (Δ[1] : SSet.{u}) ≫
         uncurry (yonedaEquiv.symm x ≫ f ≫ loopPathRestriction Y ≫
-          PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y) := by
+          PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y) := by
   change _ ≫ (Spectra.PointedMapping.zeroSection _ ≫
     uncurry (yonedaEquiv.symm (f.app _ x) ≫ _)) = _
   rw [← yonedaEquiv_symm_comp, ← Category.assoc,
@@ -62,7 +62,7 @@ theorem groupCompletionVertex_simplex_map (M : SimplicialObject MonCat.{u})
     _ = Spectra.PointedMapping.zeroSection (Δ[1] : SSet.{u}) ≫
         uncurry (yonedaEquiv.symm a ≫ monoidGroupCompletionMap M ≫
           loopPathRestriction (monoidBarKanPointed M) ≫
-            PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval (monoidBarKanPointed M)) :=
+            PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval (monoidBarKanPointed M)) :=
       loopVertex_pullback (monoidBarKanPointed M) (monoidGroupCompletionMap M) a
     _ = _ := by
       rw [monoidGroupCompletionMap_restriction_ι, uncurry_natural_left, uncurry_curry]

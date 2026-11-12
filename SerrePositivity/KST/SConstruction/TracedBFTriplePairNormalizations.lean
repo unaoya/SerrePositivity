@@ -22,7 +22,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 
 /-- 前二射の同じ直接補正正規化を、元の最終段射で後合成した全円柱。 -/
 def monicKTracedTripleFirstPairNormalization (n : ℕ) :=
-  functorHomotopyPostcomp (monicKTracedCompositionStageFirstNormalization F f g n)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (monicKTracedCompositionStageFirstNormalization F f g n)
     (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj w)).level n).space
       (kKanSequenceLevelMap (F.map h) n)).right
 
@@ -46,7 +46,7 @@ lemma monicKTracedTripleFirstPairNormalization_relative (n : ℕ) :
 
 /-- 後二射の同じ直接補正正規化を、元の第一 BF 段射と合成した全円柱。 -/
 def monicKTracedTripleLastPairNormalization (n : ℕ) :=
-  functorHomotopyPostcomp (monicKTracedCompositionStageFirstNormalization F g h n)
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (monicKTracedCompositionStageFirstNormalization F g h n)
     (monicKTracedTripleLastPairStageMap F f z n)
 
 /-- 後二射でも元の全円柱そのものの同じ実合成像を保持する。 -/

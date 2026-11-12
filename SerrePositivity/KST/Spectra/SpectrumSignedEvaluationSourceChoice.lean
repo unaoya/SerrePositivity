@@ -22,7 +22,7 @@ local instance sourceChoiceEvaluationKan (K : PointedSimplicialSet.{u})
     (X Y : OmegaSpectrum.{u}) :
     KanComplex ((ihom K).obj
       (RawSpectrumMapping.pointedSpace (cotensor K X)
-        Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+        Y.toKanSequence)).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 元の評価由来の同じ BF 比較族に、指定した源比較を前合成する。 -/
 def signedEvaluationCompatibleAt (X Y : OmegaSpectrum.{u})
@@ -66,9 +66,9 @@ lemma signedEvaluationCompatibleAt_original (X Y : OmegaSpectrum.{u}) :
 /-- どの段ごとの π 同型の源比較を選んでも、通常の円の元の評価を検出する。 -/
 lemma signedEvaluationCompatibleAt_circle_piIsomorphism_iff (X Y : OmegaSpectrum.{u})
     (e : X ⟶ tail (cotensor CirclePower.space.{u} X))
-    (he : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (e.app n).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (signedEvaluationCompatibleAt X Y e).right ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right := by
+    (he : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (e.app n).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (signedEvaluationCompatibleAt X Y e).right ↔
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right := by
   have hp := pointedPre_piIsomorphism_of_levelwise e he (signedLoopModel Y).toKanSequence
   have ho := pointedPre_piIsomorphism_of_levelwise (originalLoopModelMap X)
     (originalLoopModelMap_levelwise X) (signedLoopModel Y).toKanSequence
@@ -85,14 +85,14 @@ lemma signedEvaluationCompatibleAt_circle_piIsomorphism_iff (X Y : OmegaSpectrum
   constructor
   · intro h
     rw [hb, Under.comp_right] at h
-    have hbase := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp h hp
+    have hbase := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp h hp
     apply (signedEvaluationCompatibleSource_circle_piIsomorphism_iff X Y).mp
     rw [hbo, Under.comp_right]
     exact hbase.comp ho
   · intro h
     have h0 := (signedEvaluationCompatibleSource_circle_piIsomorphism_iff X Y).mpr h
     rw [hbo, Under.comp_right] at h0
-    have hbase := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp h0 ho
+    have hbase := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp h0 ho
     rw [hb, Under.comp_right]
     exact hbase.comp hp
 
@@ -102,8 +102,8 @@ def tracedSignedEvaluationCompatible (X Y : OmegaSpectrum.{u}) :=
 
 /-- トレース付き源比較を使っても、通常の円の元の評価自身の π 同型性と同値。 -/
 lemma tracedSignedEvaluationCompatible_circle_piIsomorphism_iff (X Y : OmegaSpectrum.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (tracedSignedEvaluationCompatible X Y).right ↔
-      _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (tracedSignedEvaluationCompatible X Y).right ↔
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right :=
   signedEvaluationCompatibleAt_circle_piIsomorphism_iff X Y (tracedOriginalLoopModelMap X)
     (tracedOriginalLoopModelMap_levelwise X)
 
@@ -115,7 +115,7 @@ lemma evaluationPost_circle_piIsomorphism_of_traced_comparison_homotopy
     (H : SSet.Homotopy (tracedSignedEvaluationCompatible X Y).right
       (kanAdjointRelativeTracedBFComparison X Y
         (sourceMap CirclePower.space.{u} X Y) j).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right :=
   (tracedSignedEvaluationCompatible_circle_piIsomorphism_iff X Y).mp
     ((kanPiIsomorphism_iff_of_homotopy H).mpr
       (signedEvaluationCompatibleTracedComparison_piIsomorphism X Y j))
@@ -127,20 +127,20 @@ lemma evaluationPost_circle_piIsomorphism_of_raw_traced_homotopy
       (sourceMap CirclePower.space.{u} X Y ≫
         signedEvaluationAt X Y (tracedOriginalLoopModelMap X)).right
       (kanAdjointTracedUnitFamily X Y (sourceMap CirclePower.space.{u} X Y)).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right := by
-  have hφ : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (sourceMap CirclePower.space.{u} X Y).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (evaluationPost PointedSimplicialSet.circle.{u} X Y).right := by
+  have hφ : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (sourceMap CirclePower.space.{u} X Y).right :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _
       (sourceMap_trivialKanFibration CirclePower.space.{u} X Y).mem
   have hr := (kanPiIsomorphism_iff_of_homotopy H).mpr
     (kanAdjointTracedUnitFamily_piIsomorphism X Y (sourceMap CirclePower.space.{u} X Y) hφ)
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedPost X (signedLoopProjection Y)).right :=
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedPost X (signedLoopProjection Y)).right :=
     post_piIsomorphism X (signedLoopProjection Y)
       (fun n => (KanSequence.replacementStage (KanSequence.signedLoopTail Y.toKanSequence)
         n).projection_rlp)
   apply (tracedSignedEvaluationCompatible_circle_piIsomorphism_iff X Y).mp
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (pointedPost X (signedLoopProjection Y)).right) _ hp
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (pointedPost X (signedLoopProjection Y)).right) _ hp
   rw [← Under.comp_right]
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedEvaluationCompatibleAt X Y (tracedOriginalLoopModelMap X) ≫
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedEvaluationCompatibleAt X Y (tracedOriginalLoopModelMap X) ≫
     pointedPost X (signedLoopProjection Y)).right)
   rw [signedEvaluationCompatibleAt_projection]
   exact hr

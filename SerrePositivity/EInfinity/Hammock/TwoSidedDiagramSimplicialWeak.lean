@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
 open CategoryTheory SerrePositivity.InfinityCategories
-variable {D E : SimplicialObject Data.{u}} {O : Type u}
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (q : (n : SimplexCategoryᵒᵖ) → O ≃ (E.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
@@ -27,28 +27,28 @@ variable {D E : SimplicialObject Data.{u}} {O : Type u}
   (hq : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
     (E.map θ).base.obj (q n o) = q m o)
   (τ : D ⟶ E) (hτ : ∀ n o, (τ.app n).base.obj (p n o) = q n o)
-  (hH : ∀ X Y, IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
-  (hL : ∀ X, IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X))
-  (hR : ∀ X, IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X))
+  (hH : ∀ X Y, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (homSpaceMap p q hp hq τ hτ X Y))
+  (hL : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (leftSpaceMap p q hp hq τ hτ X))
+  (hR : ∀ X, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (rightSpaceMap p q hp hq τ hτ X))
 
 include hH hL hR
 
 lemma productMap_weak (k : SimplexCategoryᵒᵖ) (x : Fin (k.unop.len + 1) → O) :
-    IsWeakHomotopyEquivalence (productMap p q hp hq τ hτ k x) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (productMap p q hp hq τ hτ k x) :=
   weakTensor (homProductMap_weak p q hp hq τ hτ hH k x)
     (weakTensor (hL (x (Fin.last k.unop.len))) (hR (x 0)))
 
 lemma chainRowMap_weak (k : SimplexCategoryᵒᵖ) :
-    IsWeakHomotopyEquivalence (chainRowMap τ k) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (chainRowMap τ k) := by
   have hs := IndexedSum.map_weak _ (productMap_weak p q hp hq τ hτ hH hL hR k)
   have hc := hs.comp
-    (isPrecompositionEquivalence_of_iso (productsIso E q hq k).symm).isWeakHomotopyEquivalence
-  change IsWeakHomotopyEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (productsIso E q hq k).symm).isWeakHomotopyEquivalence
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence
     (IndexedSum.map (productMap p q hp hq τ hτ k) ≫ (productsIso E q hq k).inv) at hc
   rw [← productsIso_inv_naturality p q hp hq τ hτ k] at hc
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (productsIso D p hp k).symm).isWeakHomotopyEquivalence.cancel_left hc
 
-lemma diagonalTotalMap_weak : IsWeakHomotopyEquivalence (diagonalTotalMap τ) :=
+lemma diagonalTotalMap_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (diagonalTotalMap τ) :=
   diagonalTotalMap_weak_of_chainRows τ (chainRowMap_weak p q hp hq τ hτ hH hL hR)
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices

@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedFactorPaste
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedRefinedPairing
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorPoint
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedRefinedPairing
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint
 
 /-!
 # 元の一段の切断の貼り戻しによる同じ単体の回収
@@ -19,36 +19,36 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor
-open CategoryTheory Word.CutFactor
+open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C)
-  {w : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
-  (τ : (graph W.paths w X Y).obj n) (h : ∃ j, column W (τ.obj 0) j ≠ [])
+  {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ}
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y).obj n) (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) j ≠ [])
 
-lemma paste_point : (FactorTarget.paste W X Y).app n (point W τ h) =
-    (graphInclusion W.paths X Y w).app n τ := by
-  let i := AttachedPrefix.index W τ h
-  let g := generator W τ h
-  let P := AttachedPrefix.functor W τ h
-  let A := arrowSimplex W.paths g.val.hom.toPath n
-  let R := Attachments.residualFunctor W τ i (AttachedPrefix.nonempty W τ h)
-  have hp : (AllMarked.inclusion W X g.val.left).app n (leftPoint W τ h) =
-      (graphInclusion W.paths X g.val.left (prefixWord w i)).app n P :=
-    congrArg (fun k => k.app n (AttachedPrefix.markedSimplex W τ h))
-      (AllMarked.nativeInclusion_inclusion W X g.val.left (prefixWord w i))
-  have hi := composePoint_inclusions W.paths X g.val.left g.val.right
-    (prefixWord w i) (Word.single .forward) P A
-  have ho := composePoint_inclusions W.paths X g.val.right Y
-    (Word.append (prefixWord w i) (Word.single .forward)) (residualWord w i)
-    (P.prod' A ⋙ ZigzagAppend.functor) R
-  have he := congrArg (fun p => composePoint W.paths X g.val.right Y
-    (composePoint W.paths X g.val.left g.val.right p (arrowPoint W.paths g.val.hom.toPath n))
-    (rightPoint W τ h)) hp
-  have hm := congrArg (fun p => composePoint W.paths X g.val.right Y p (rightPoint W τ h)) hi
+lemma paste_point : (FactorTarget.paste W X Y).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W τ h) =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y w).app n τ := by
+  let i := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W τ h
+  let g := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W τ h
+  let P := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.functor W τ h
+  let A := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths g.val.hom.toPath n
+  let R := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.residualFunctor W τ i (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W τ h)
+  have hp : (AllMarked.inclusion W X g.val.left).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.leftPoint W τ h) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X g.val.left (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord w i)).app n P :=
+    congrArg (fun k => k.app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedSimplex W τ h))
+      (AllMarked.nativeInclusion_inclusion W X g.val.left (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord w i))
+  have hi := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X g.val.left g.val.right
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord w i) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) P A
+  have ho := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X g.val.right Y
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordAppend.append (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord w i) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord w i)
+    (P.prod' A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ZigzagAppendFunctor.functor) R
+  have he := congrArg (fun p => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right p (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.rightPoint W τ h)) hp
+  have hm := congrArg (fun p => _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y p (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.rightPoint W τ h)) hi
   have hf := congrArg
-    (fun F => (graphInclusion W.paths X Y (Attachments.refinedWord w i)).app n F)
-    (Attachments.refinedFunctor_pair W τ i (AttachedPrefix.nonempty W τ h)).symm
+    (fun F => (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinedWord w i)).app n F)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinedFunctor_pair W τ i (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W τ h)).symm
   exact he.trans (hm.trans (ho.trans (hf.trans
-    (Attachments.refinedSimplex_inclusion W τ i (AttachedPrefix.nonempty W τ h)))))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.refinedSimplex_inclusion W τ i (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W τ h)))))
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.FirstFactor

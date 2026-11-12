@@ -56,7 +56,7 @@ abbrev mapThenTarget := (ihom (SSet.horn (n + 1) i).toSSet).map q ≫
   NormalizedHornFilling.section_ L i hL
 
 abbrev inputs : ((ihom (SSet.horn (n + 1) i).toSSet).obj K).Subcomplex :=
-  CompatibleInputUnion.inputs
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.inputs
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun d => DegenerateHornInput.boundary i d K)
 
@@ -86,9 +86,9 @@ lemma same_degeneracy (d : Fin (n + 1)) :
 
 lemma same_inputs : (inputs (K := K) i).ι ≫ sourceThenMap i hK q =
     (inputs (K := K) i).ι ≫ mapThenTarget i hL q := by
-  apply CompatibleInputUnion.hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.hom_ext
   intro d
-  rw [← Category.assoc, ← Category.assoc, CompatibleInputUnion.toInputs_inclusion]
+  rw [← Category.assoc, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs_inclusion]
   exact same_degeneracy i hK hL q d
 
 include hK hL in
@@ -124,7 +124,7 @@ lemma comparison_degeneracy (d : Fin (n + 1)) :
       fst _ (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ≫
         DegenerateHornInput.degeneracy d K ≫
           (ihom (SSet.stdSimplex.obj (SimplexCategory.mk (n + 1)))).map q := by
-  let t := CompatibleInputUnion.toInputs
+  let t := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputUnion.toInputs
     (fun _ : Fin (n + 1) => (ihom (SSet.stdSimplex.obj (SimplexCategory.mk n))).obj K)
     (fun d => DegenerateHornInput.boundary i d K) d
   have ht : t ≫ (inputs (K := K) i).ι = DegenerateHornInput.boundary i d K := rfl

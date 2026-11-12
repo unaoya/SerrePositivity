@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Generators
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Generators
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.Generators
 
@@ -19,6 +19,6 @@ alias boundaryGenerators_smallObjectArgument :=
 alias hornGenerators_smallObjectArgument :=
   SerrePositivity.SimplicialModel.hornGenerators_smallObjectArgument
 alias boundaryGenerators_leftClass := SerrePositivity.SimplicialModel.boundaryGenerators_leftClass
-alias simplicialSet_isCofibrant := SerrePositivity.SimplicialModel.simplicialSet_isCofibrant
+alias simplicialSet_isCofibrant := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.simplicialSet_isCofibrant
 
 end SerrePositivity.SimplicialModelInputs

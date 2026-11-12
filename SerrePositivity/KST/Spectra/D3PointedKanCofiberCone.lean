@@ -18,7 +18,7 @@ universe u
 open CategoryTheory Limits MonoidalCategory SSet HomotopicalAlgebra
 open SSet.modelCategoryQuillen
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 local instance d3CofiberPointedCategory : SimplicialCategory PointedSimplicialSet.{u} :=
@@ -28,15 +28,15 @@ variable {A B : PointedSimplicialSet.{u}} (i : A ⟶ B) (Y : PointedKanObject.{u
 /-- 元の cofiber 正方形を同じ Kan Hom 対象の通常引き戻し錐にする。 -/
 def d3PointedKanCofiberOrdinaryCone :
     PullbackCone
-      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y.obj) :
         (d3PointedKanIhom B).obj Y ⟶ (d3PointedKanIhom A).obj Y)
-      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint A) Y.obj) :
+      (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.toPoint A) Y.obj) :
         (d3PointedKanIhom PointedObject.point).obj Y ⟶ (d3PointedKanIhom A).obj Y) :=
   PullbackCone.mk
-    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection i) Y.obj) :
+    (ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection i) Y.obj) :
       (d3PointedKanIhom (pointedCofiber i)).obj Y ⟶ (d3PointedKanIhom B).obj Y)
     (ObjectProperty.homMk
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.fromPoint (pointedCofiber i)) Y.obj)) (by
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.fromPoint (pointedCofiber i)) Y.obj)) (by
         apply ObjectProperty.hom_ext
         exact (pointedCofiberMapping_isPullback i Y.obj).w)
 
@@ -54,38 +54,38 @@ def d3PointedKanCofiberCone :=
 
 /-- 同じ点つき錐の極限性は、元の Kan 豊穣 Hom でも極限性を与える。 -/
 def d3PointedKanCofiberCone_hom_isLimit (Z : PointedKanObject.{u}) :
-    IsLimit (simplicialHomCone (d3PointedKanCofiberCone i Y) Z) := by
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (d3PointedKanCofiberCone i Y) Z) := by
   have hc : IsLimit (pointedKanProperty.ι.mapCone (d3PointedKanCofiberCone i Y)) :=
     (d3PointedKanCofiberOrdinaryCone_forget_isLimit i Y).whiskerEquivalence
       (AsSmall.equiv : WalkingCospan ≌ AsSmall.{u} WalkingCospan).symm
   change IsLimit (((SimplicialCategory.sHomFunctor PointedKanObject.{u}).obj
     (Opposite.op Z)).mapCone (d3PointedKanCofiberCone i Y))
   rw [d3PointedKanHomFunctor]
-  have hm := isLimitOfPreserves (pointedMappingFunctor Z.obj) hc
+  have hm := isLimitOfPreserves (_root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj) hc
   exact IsLimit.ofIsoLimit hm (CategoryTheory.Functor.mapConeMapCone
-    (H := pointedKanProperty.ι) (H' := pointedMappingFunctor Z.obj)
+    (H := pointedKanProperty.ι) (H' := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.pointedMappingFunctor Z.obj)
     (d3PointedKanCofiberCone i Y))
 
 /-- 元の単射パラメータによる同じ制限錐は、実際の Kan ∞ 極限錐。 -/
 lemma d3PointedKanCofiberCone_isLimit [Mono i.right] :
-    IsLimitCone (strictCoherentCone (d3PointedKanCofiberCone i Y)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (d3PointedKanCofiberCone i Y)) := by
   let f : (d3PointedKanIhom B).obj Y ⟶ (d3PointedKanIhom A).obj Y :=
-    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed i Y.obj)
+    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed i Y.obj)
   let g : (d3PointedKanIhom PointedObject.point).obj Y ⟶ (d3PointedKanIhom A).obj Y :=
-    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.toPoint A) Y.obj)
-  have : Fibration f.hom.right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration i Y.obj
+    ObjectProperty.homMk (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.toPoint A) Y.obj)
+  have : Fibration f.hom.right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration i Y.obj
   have (Z : PointedKanObject.{u}) : Fibration
-      ((simplicialHomDiagram (AsSmall.down ⋙ cospan f g) Z).map
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (AsSmall.down ⋙ cospan f g) Z).map
         (AsSmall.up.map WalkingCospan.Hom.inl)) := by
     change Fibration (eHomWhiskerLeft SSet Z.obj f.hom)
     rw [PointedEnrichment.whiskerLeft_eq]
     exact PointedMapping.post_fibration Z.obj f.hom
-  exact strictCoherentCone_isLimit_of_cospan_homLimit (d3PointedKanCofiberCone i Y)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_cospan_homLimit (d3PointedKanCofiberCone i Y)
     (d3PointedKanCofiberCone_hom_isLimit i Y)
 
 /-- 実端点図式に、元の端点包含の単射性を供給した ∞ 極限錐。 -/
 lemma d3PointedKanEndpointCone_isLimit (Y : PointedKanObject.{u}) :
-    IsLimitCone (strictCoherentCone (d3PointedKanCofiberCone _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y)) :=
-  d3PointedKanCofiberCone_isLimit _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (d3PointedKanCofiberCone _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint Y)) :=
+  d3PointedKanCofiberCone_isLimit _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint Y
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：元の二重実現への自然同型。 -/
 lemma completionClosedSFlagIso_flag_naturality (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ)
     {n k : SimplexCategory} (θ : k ⟶ n) :
     ((sEndofunctor m).map (Fibration.Relative.closedFlagMap
       (completionImageClosedPredicate r ι f hf) θ)).val ≫

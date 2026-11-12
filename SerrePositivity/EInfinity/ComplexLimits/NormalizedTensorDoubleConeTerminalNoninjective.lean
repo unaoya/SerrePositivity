@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorDoubleConeSimplex_pullback_hom_terminal_not_inj {n m : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (θ : ⦋m⦌ ⟶ ⦋n⦌)
     (I : Finset (Fin (m + 3))) (a b : Fin (m + 3)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (m + 2))
     (hn : ¬Set.InjOn (doubleConeOrderHom θ) (I : Set (Fin (m + 3)))) :
     HEq (((normalizedTensorDoubleConeSimplex A X Y c).toSimplexData.pullback
@@ -30,21 +30,21 @@ lemma normalizedTensorDoubleConeSimplex_pullback_hom_terminal_not_inj {n m : ℕ
         ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)).hom I a b k hI ha hb hk) := by
   have hc : I.card ≠ 2 := by
     intro hc
-    have he := Index.collapse_two hn hc
+    have he := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.collapse_two hn hc
       (show IsLeast (I : Set (Fin (m + 3))) a by rw [ha]; exact I.isLeast_min' _)
       (show IsGreatest (I : Set (Fin (m + 3))) b by rw [hb]; exact I.isGreatest_max' _)
     have hal : a = Fin.last (m + 2) := (doubleConeOrderHom_eq_last_iff θ a).mp
       (he.trans (hbl ▸ doubleConeOrderHom_last θ))
-    have han : a ≠ Fin.last (m + 2) := by rw [ha]; exact DGNerve.PinchedHom.min_ne_last I hI
+    have han : a ≠ Fin.last (m + 2) := by rw [ha]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.min_ne_last I hI
     exact han hal
   have hk0 : k ≠ 0 := by omega
-  have hl := SimplexData.pullback_hom_of_not_inj
+  have hl := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_not_inj
     (normalizedTensorDoubleConeSimplex A X Y c).toSimplexData
     (doubleConeOrderHom θ) I a b k hI ha hb hk hn hc
   have hr := complexRightConeData_hom_last_zero A
     (normalizedTensorConeSimplexAugmentation A X Y
       ((SimplexCategory.toCat.map θ).toFunctor ⋙ c)) I a b k hI ha hb hk hbl hk0
-  have hz := gradedHom_zero_heq (A := A) (k := k) (l := k)
+  have hz := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) (k := k) (l := k)
     (normalizedTensorDoubleConeSimplex_obj_reindex A X Y c θ a)
     (normalizedTensorDoubleConeSimplex_obj_reindex A X Y c θ b) rfl
   exact (heq_of_eq hl).trans (hz.trans (heq_of_eq hr.symm))

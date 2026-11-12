@@ -102,13 +102,13 @@ lemma projection_mono_rlp (d : D) :
   KanFibrationLocalizedLifting.of_localized_isIso _ (projection_horn_rlp a d)
     (UniverseLift.horn_terminal_map.{max w v, v} (hK d)) (projection_localized_isIso a ha d)
 
-def relation : DiagramQuotient.Congruence (middle a) := DiagramQuotient.kernel (projection a)
+def relation : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.Congruence (middle a) := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel (projection a)
 
 lemma quotient_small (d : D) (n : SimplexCategoryᵒᵖ) :
     Small.{v} (Quotient ((relation a).rel d n)) := by
   have : Small.{v} (((K ⋙ SSet.uliftFunctor.{max w v, v}).obj d).obj n) :=
     small_of_injective (f := ULift.down) ULift.down_injective
-  exact DiagramQuotient.kernel_small (projection a) d n
+  exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel_small (projection a) d n
 
 include hK ha in
 lemma projection_surjective (d : D) (n : SimplexCategoryᵒᵖ) :
@@ -118,19 +118,19 @@ lemma projection_surjective (d : D) (n : SimplexCategoryᵒᵖ) :
   exact ⟨s.app n z, types_congr_hom (congr_app hs n) z⟩
 
 include hK ha in
-lemma kernelComparison_isIso : IsIso (DiagramQuotient.kernelComparison (projection a)) :=
-  DiagramQuotient.kernelComparison_isIso _ (projection_surjective a hK ha)
+lemma kernelComparison_isIso : IsIso (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernelComparison (projection a)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernelComparison_isIso _ (projection_surjective a hK ha)
 
 include hK ha in
 lemma quotient_boundary_rlp (d : D) :
-    SSet.modelCategoryQuillen.I.rlp ((DiagramQuotient.projection (relation a)).app d) := by
+    SSet.modelCategoryQuillen.I.rlp ((_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection (relation a)).app d) := by
   have := kernelComparison_isIso a hK ha
-  let c := (DiagramQuotient.kernelComparison (projection a)).app d
-  have he : (DiagramQuotient.projection (relation a)).app d =
+  let c := (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernelComparison (projection a)).app d
+  have he : (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.projection (relation a)).app d =
       (projection a).app d ≫ inv c := by
     apply (cancel_mono c).mp
     rw [Category.assoc, IsIso.inv_hom_id, Category.comp_id]
-    exact congr_app (DiagramQuotient.kernel_factorization (projection a)) d
+    exact congr_app (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiagramQuotient.kernel_factorization (projection a)) d
   rw [← SSet.rlp_monomorphisms, he]
   exact (MorphismProperty.monomorphisms _).rlp.comp_mem _ _
     (projection_mono_rlp a hK ha d) ((MorphismProperty.monomorphisms _).rlp.of_isIso _)

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.QuillenStandardFrame
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame
 
 public import SerrePositivity.HomotopicalAlgebra.Diagram.WeightedSourceWeakEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Diagram.FrameWeightedLimit
@@ -22,9 +22,9 @@ open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
 namespace SerrePositivity.DiagramModel.WeightedHomotopyColimitFrame
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{v} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [ModelCategory SSet.{w}]
-  (IS JS : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} IS JS]
+  (IS JS : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IS JS]
   (D : K ⥤ C)
 
 abbrev left : SSet.{w} ⥤ C :=
@@ -45,10 +45,10 @@ def augmentation : frame K I J IS JS D ⟶
       simp }
 
 /-- Both sides are actual simplicial sets, with their original Hom universes explicit. -/
-def homIso : cosimplicialHom (frame K I J IS JS D) ⋙ SSet.uliftFunctor.{w,v} ≅
+def homIso : _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (frame K I J IS JS D) ⋙ SSet.uliftFunctor.{w,v} ≅
     FrameWeightedLimit.weightedHom K IS JS (WeightedSourceComparison.frames K I J D) ⋙
       SSet.uliftFunctor.{v,w} :=
-  adjunctionHomIso (FrameWeightedLimit.adjunction K IS JS (WeightedSourceComparison.frames K I J D))
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.adjunctionHomIso (FrameWeightedLimit.adjunction K IS JS (WeightedSourceComparison.frames K I J D))
     SSet.stdSimplex ≪≫ Functor.isoWhiskerLeft _
       (Functor.isoWhiskerRight QuillenStandardFrame.homIso SSet.uliftFunctor ≪≫
         Functor.leftUnitor _)
@@ -66,7 +66,7 @@ lemma reedyCofibrant : reedyLeft simplex (cofibrations C)
     (WeightedSourceComparison.frames K I J D)
     (fun k => EvaluatedFrame.reedyCofibrant K I J (D, k))
     (fun k => EvaluatedFrame.homotopicallyConstant K I J (D, k))
-  exact QuillenStandardFrame.reedyCofibrant (left K I J IS JS D) hcof
+  exact _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame.reedyCofibrant (left K I J IS JS D) hcof
 
 include hcof hfib hw in
 lemma augmentation_weakEquivalence (n : SimplexCategory) :
@@ -78,7 +78,7 @@ lemma augmentation_weakEquivalence (n : SimplexCategory) :
     (fun k => EvaluatedFrame.reedyCofibrant K I J (D, k))
     (fun k => EvaluatedFrame.homotopicallyConstant K I J (D, k))
   exact (weakEquivalences C).comp_mem _ _
-    (QuillenStandardFrame.augmentation_weakEquivalence (left K I J IS JS D) hcof hw n)
+    (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.QuillenStandardFrame.augmentation_weakEquivalence (left K I J IS JS D) hcof hw n)
     (WeightedSourceComparison.comparison_weakEquivalence K I J IS JS hcof hfib D)
 
 end SerrePositivity.DiagramModel.WeightedHomotopyColimitFrame

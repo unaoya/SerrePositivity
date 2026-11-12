@@ -17,30 +17,30 @@ variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D] [Small.{u} D]
 /-- 元の評価同値の順方向は、同じ全 Hom 恒等の dg 評価の native nerve。 -/
 lemma presentedPerfectDGNerveEquivalence_hom :
     (presentedPerfectDGNerveEquivalence A D).hom =
-      dgNerve.map (presentedPerfectDGEvaluation A D) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D) := rfl
 
 /-- 全 Hom 恒等の実 Perf 評価は、零頂点と全 cofiber 列を保存する。 -/
 lemma presentedPerfectDGEvaluationNerve_isExactFunctor :
-    IsExactFunctor (dgNerve.map (presentedPerfectDGEvaluation A D)) :=
-  isExactFunctor_of_isQCatEquivalence
-    (dgNerve_map_isQCatEquivalence_of_quasiEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D)) :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgNerve_map_isQCatEquivalence_of_quasiEquivalence
       (presentedPerfectDGEvaluation A D) (presentedPerfectDGEvaluation_quasiEquivalence A D))
 
 /-- ラベル付き Perf への射の完全性は、同じ実評価の後合成で判定できる。 -/
 lemma presentedPerfectDGEvaluationNerve_comp_isExactFunctor_iff
     {X : SSet.{max (u + 1) v}} [Quasicategory X]
-    (F : X ⟶ dgNerve A (PresentedPerfectDGObject A D)) :
-    IsExactFunctor (F ≫ dgNerve.map (presentedPerfectDGEvaluation A D)) ↔
-      IsExactFunctor F :=
+    (F : X ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D)) ↔
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F :=
   isExactFunctor_comp_equivalence_iff F (presentedPerfectDGNerveEquivalence A D)
 
 /-- 同じ実評価は、元の安定入力の完全射として使用できる。 -/
 def presentedPerfectDGEvaluationStableMap :
     presentedPerfectDGStableModel A D ⟶ perfectDGStableModel A D Set.univ := by
-  let h : IsExactFunctor (dgNerve.map (presentedPerfectDGEvaluation A D)) :=
+  let h : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D)) :=
     presentedPerfectDGEvaluationNerve_isExactFunctor A D
-  exact ⟨dgNerve.map (presentedPerfectDGEvaluation A D),
+  exact ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D),
     @preservesCofiberData_of_isExactFunctor _ _
-      (dgNerve.map (presentedPerfectDGEvaluation A D)) h⟩
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (presentedPerfectDGEvaluation A D)) h⟩
 
 end SerrePositivity.KST.SConstruction

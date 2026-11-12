@@ -3,7 +3,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingRealizedCompa
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeImageNative
 public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeSquareNative
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingStrictConeNative
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 
 /-!
 概要：元実 gluing cone の realization を元実像射の cone へ全比較する。
@@ -15,7 +15,7 @@ public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   (J : DGFunctor R C (PerfectDGModule R E))
@@ -34,7 +34,7 @@ local notation "G0" => DGFunctor.comp (G.comp (Y)) (V)
 local notation "F1" => DGFunctor.comp F (K)
 local notation "G1" => DGFunctor.comp G (K)
 local notation "ηY" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
-local notation "η0" => dgStrictNatTransPostcomp (ηY) (V)
+local notation "η0" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ηY) (V)
 local notation "εF" => dgPerfectRealizationYonedaRestrictedStrictComparison R E C J F
 local notation "εG" => dgPerfectRealizationYonedaRestrictedStrictComparison R E C J G
 
@@ -60,7 +60,7 @@ lemma dgPerfectRealizationYonedaRestrictedComponent_isIso (x : P) :
 規約：元二軸評価・元全比較を保持。
 使われ方：元実 gluing cone の全 realization 比較の中央因子。 -/
 def dgIdentityHomGluingRealizedStrictConeNerveComparison :
-    FunctorIso (dgNerve.map ((CY).comp (V))) (dgNerve.map (CT)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((CY).comp (V))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CT)) := by
   exact (dgModuleNaturalConeImageNerveComparison R E C (F.comp (Y)) (G.comp (Y))
     (ηY) (V)).symm.trans
       (dgModuleNaturalConeSquareNerveComparison R E (F0) (G0) (F1) (G1)
@@ -72,18 +72,18 @@ def dgIdentityHomGluingRealizedStrictConeNerveComparison :
 規約：元実 cone 入力の同じ全比較を保持。
 使われ方：元実 gluing cone 族を元像射の cone へ接続する第一因子。 -/
 def dgIdentityHomGluingRealizedConeInputNerveComparison :
-    FunctorIso (dgNerve.map ((CB).comp (V))) (dgNerve.map ((CY).comp (V))) :=
-  F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((CB).comp (V))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((CY).comp (V))) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     (((dgIdentityHomGluingStrictConeInputNerveComparison R C F G a h).postcomp
-      (dgNerve.map (V))).symm)
-    (dgNerve.map_comp (CB) (V)).symm (dgNerve.map_comp (CY) (V)).symm
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (V))).symm)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp (CB) (V)).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp (CY) (V)).symm
 
 /-- 概要：元実 gluing cone の realization と元実像射の cone の同じ全比較。
 方針：元実入力全比較・元 cone image 全比較・指定評価 square 全比較を合成。
 規約：対象別存在同値で元全比較を置き換えない。
 使われ方：元実逆回転後の全比較と指定上下二単体の固定 ν 接続。 -/
 def dgIdentityHomGluingRealizedConeNerveComparison :
-    FunctorIso (dgNerve.map ((CB).comp (V))) (dgNerve.map (CT)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((CB).comp (V))) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (CT)) :=
   (dgIdentityHomGluingRealizedConeInputNerveComparison R E C J F G a h).trans
     (dgIdentityHomGluingRealizedStrictConeNerveComparison R E C J F G a h)
 end SerrePositivity.KST.SConstruction

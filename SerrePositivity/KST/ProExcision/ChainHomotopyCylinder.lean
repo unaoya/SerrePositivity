@@ -2,7 +2,7 @@ module
 public import SerrePositivity.KST.ProExcision.ChainIntervalEvaluationChainMap
 public import SerrePositivity.KST.ProExcision.IntegerIntervalComparison
 public import SerrePositivity.KST.ProExcision.NormalizedMapReconstruction
-public import SerrePositivity.KST.ProExcision.NormalizedEZHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.NormalizedEZHomotopy
 
 /-!
 # 鎖ホモトピーから単体的テンソル区間射への復元
@@ -25,10 +25,10 @@ variable {C D : SimplicialObject (ModuleCat.{u} ℤ)} {f g : C ⟶ D}
 規約：KST A.3・A.5。使われ方：自由基底で区間の両端を計算する。 -/
 def chainHomotopyCylinderCore
     (H : Homotopy ((normalizedMooreComplex _).map f) ((normalizedMooreComplex _).map g)) :
-    (alternatingFaceMapComplex _).obj (simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u}))) ⟶
+    (alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ⟶
       (normalizedMooreComplex _).obj D :=
-  alexanderWhitney C (linearizedSpace (Δ[1] : SSet.{u})) ≫
-    chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison ≫
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.alexanderWhitney C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.chainIntegerTensorMap (PInftyToNormalizedMooreComplex C) integerIntervalComparison ≫
       chainHomotopyInterval H
 
 /-- 概要：鎖ホモトピーから正規化した単体的テンソル区間の実鎖写像を作る。
@@ -37,9 +37,9 @@ def chainHomotopyCylinderCore
 使われ方：Dold–Kan による実区間射への復元の入力。 -/
 def chainHomotopyCylinderMap
     (H : Homotopy ((normalizedMooreComplex _).map f) ((normalizedMooreComplex _).map g)) :
-    (normalizedMooreComplex _).obj (simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u}))) ⟶
+    (normalizedMooreComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ⟶
       (normalizedMooreComplex _).obj D :=
-  inclusionOfMooreComplexMap (simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u}))) ≫
+  inclusionOfMooreComplexMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))) ≫
     chainHomotopyCylinderCore H
 
 /-- 概要：正規化鎖ホモトピーを単体的テンソル区間からの実射へ復元する。
@@ -48,7 +48,7 @@ def chainHomotopyCylinderMap
 使われ方：非被約 C(H) の実区間ホモトピーの構成。 -/
 def chainHomotopyCylinderReconstruct
     (H : Homotopy ((normalizedMooreComplex _).map f) ((normalizedMooreComplex _).map g)) :
-    simplicialIntegerTensor C (linearizedSpace (Δ[1] : SSet.{u})) ⟶ D :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.simplicialIntegerTensor C (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})) ⟶ D :=
   normalizedMapReconstruct (chainHomotopyCylinderMap H)
 
 /-- 概要：復元した実単体的区間射の正規化は構成した区間の鎖写像に一致。

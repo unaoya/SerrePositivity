@@ -5,7 +5,7 @@ module
 public import SerrePositivity.EInfinity.Interface.Theory
 public import Mathlib.RingTheory.Finiteness.ModuleFinitePresentation
 public import SerrePositivity.CommutativeAlgebra.AbsolutelyIntegrallyClosed.Etale
-public import SerrePositivity.InfinityCategories.Derived.FiberTriangle
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.FiberTriangle
 public import SerrePositivity.BhattScholze.Andre.Transfinite.Tower
 public import SerrePositivity.HomologicalAlgebra.DerivedCompletion.ModuleComplete.Presentation
 public import SerrePositivity.BhattScholze.Semiperfectoid.CompatibleRootPerfectoid

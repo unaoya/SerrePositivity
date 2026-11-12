@@ -22,27 +22,27 @@ variable (R : Type u) [CommRing R] (D : PerfDGInput.{u, u + 1} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R D κ)
 local notation "C" => dgKappaResolvedConeKInput R D I
 local notation "Q" => dgKappaSuspensionKInput R D I
-local instance strictQuotientSourcePretriangulated : IsDGPretriangulated R (C) :=
-  dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
-local instance strictQuotientTargetPretriangulated : IsDGPretriangulated R (Q) :=
+local instance strictQuotientSourcePretriangulated : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (C) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgCellResolutionSource_isDGPretriangulated R (DGKappaCone R D I)
+local instance strictQuotientTargetPretriangulated : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.IsDGPretriangulated R (Q) :=
   dgKappaSuspension_isDGPretriangulated.{u, u + 1} R D I
 
 /-- 同じ strict 商射と固定 ν の Perf 商辺の全関手自然性四角形。 -/
 def dgKappaStrictQuotientNuNaturality :
-    FunctorIso (dgKNativeValueComparison R (C) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (dgKNativeValueComparison R (C) ≫
       (dgKNativeInputExactMap R (C) (Q)
         ((dgKappaResolvedSuspensionInputMap.{u, u + 1} R D I).down)).hom)
-      (dgNerve.map ((dgKappaResolvedSuspensionInputMap.{u, u + 1} R D I).down) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map ((dgKappaResolvedSuspensionInputMap.{u, u + 1} R D I).down) ≫
         dgKNativeValueComparison R (Q)) :=
   dgKNativeNuNaturality R (C) (Q) ((dgKappaResolvedSuspensionInputMap.{u, u + 1} R D I).down)
 
 /-- 実平坦源のラベル下降。元の全 Hom 複体を保つ。 -/
 def dgKappaStrictQuotientSourceDown : dgKUniverseInput.{u, u + 1, u + 1} R (C) ⟶ C :=
-  ULift.up (dgUniverseLiftDown R (C))
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown R (C))
 
 /-- 実商のラベル下降。元の全 Hom 複体を保つ。 -/
 def dgKappaStrictQuotientTargetDown : dgKUniverseInput.{u, u + 1, u + 1} R (Q) ⟶ Q :=
-  ULift.up (dgUniverseLiftDown R (Q))
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown R (Q))
 
 /-- 宇宙移送した商射を下降させると、元の同じ strict 商射を厳密に回収する。 -/
 theorem dgKappaStrictQuotientInputDown_square :
@@ -50,7 +50,7 @@ theorem dgKappaStrictQuotientInputDown_square :
         dgKappaStrictQuotientTargetDown R D I =
       dgKappaStrictQuotientSourceDown R D I ≫ dgKappaResolvedSuspensionInputMap R D I := by
   apply ULift.ext
-  exact dgUniverseLiftFunctor_comp_down.{u, u + 1, u + 1, u + 1, u + 1}
+  exact _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp_down.{u, u + 1, u + 1, u + 1, u + 1}
     ((dgKappaResolvedSuspensionInputMap.{u, u + 1} R D I).down)
 
 /-- 同じ下降四角形の固定 ν 像は、元の Perf 商辺に厳密に可換する。 -/

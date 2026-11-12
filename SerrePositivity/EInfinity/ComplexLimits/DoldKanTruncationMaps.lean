@@ -19,36 +19,36 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory HomologicalComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {x' y' : E}
 
 lemma connectiveHomComplex_zero_chainMap
     (f : homObject R D x y ⟶ homObject R E x' y') :
     (truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f 0 ≫
-      (connectiveHomComplex_zeroIso (R := R) x' y').hom ≫ (homObject R E x' y').iCycles 0 =
-    (connectiveHomComplex_zeroIso (R := R) x y).hom ≫ (homObject R D x y).iCycles 0 ≫ f.f 0 := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').hom ≫ (homObject R E x' y').iCycles 0 =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x y).hom ≫ (homObject R D x y).iCycles 0 ≫ f.f 0 := by
   have hb : (ComplexShape.embeddingUpIntLE 0).BoundaryLE 0 :=
     (ComplexShape.boundaryLE_embeddingUpIntLE_iff 0 0).mpr rfl
   rw [truncLE'Map_f_eq_cyclesMap f _ hb
     (show (ComplexShape.embeddingUpIntLE 0).f 0 = (0 : ℤ) by simp)]
-  change ((connectiveHomComplex_zeroIso (R := R) x y).hom ≫ cyclesMap f 0 ≫
-      (connectiveHomComplex_zeroIso (R := R) x' y').inv) ≫ _ = _
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x y).hom ≫ cyclesMap f 0 ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_zeroIso (R := R) x' y').inv) ≫ _ = _
   simp only [Category.assoc, Iso.inv_hom_id_assoc]
   rw [cyclesMap_i]
 
 lemma connectiveHomComplex_positive_chainMap
     (f : homObject R D x y ⟶ homObject R E x' y') (n : ℕ) :
     (truncLE'Map f (ComplexShape.embeddingUpIntLE 0)).f (n + 1) ≫
-      (connectiveHomComplex_positiveIso (R := R) x' y' n).hom =
-    (connectiveHomComplex_positiveIso (R := R) x y n).hom ≫ f.f (-(n + 1 : ℤ)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).hom =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).hom ≫ f.f (-(n + 1 : ℤ)) := by
   have hb : ¬ (ComplexShape.embeddingUpIntLE 0).BoundaryLE (n + 1) := by
     rw [ComplexShape.boundaryLE_embeddingUpIntLE_iff]
     omega
   rw [truncLE'Map_f_eq f _ hb
     (show (ComplexShape.embeddingUpIntLE 0).f (n + 1) = -(n + 1 : ℤ) by simp)]
-  change ((connectiveHomComplex_positiveIso (R := R) x y n).hom ≫ f.f (-(n + 1 : ℤ)) ≫
-      (connectiveHomComplex_positiveIso (R := R) x' y' n).inv) ≫ _ = _
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x y n).hom ≫ f.f (-(n + 1 : ℤ)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.connectiveHomComplex_positiveIso (R := R) x' y' n).inv) ≫ _ = _
   simp only [Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 end SerrePositivity.EInfinity.ComplexLimits

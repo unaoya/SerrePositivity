@@ -4,7 +4,7 @@ public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonEnri
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalComparisonWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockDiagonalReductionWeak
 public import SerrePositivity.EInfinity.Hammock.ExInfinityWeakMap
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 # 元の Kan 豊穣比較の各 Hom の同値性
@@ -21,27 +21,27 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
-variable (C : RelativeCategory.{u}) (X Y : KanFreeHammockObjects C)
+open CategoryTheory SerrePositivity.InfinityCategories
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : KanFreeHammockObjects C)
 
 lemma kanFreeHammockAugmentationEnriched_map_weak :
-    IsWeakHomotopyEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y) :=
   Hammock.exInfinity_map_weak _ (freeHammockDiagonalAugmentation_isWeakHomotopyEquivalence C X Y)
 
 lemma kanFreeHammockComparisonEnriched_map_weak :
-    IsWeakHomotopyEquivalence ((kanFreeHammockComparisonEnriched C).map X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((kanFreeHammockComparisonEnriched C).map X Y) :=
   Hammock.exInfinity_map_weak _ (freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y)
 
 lemma kanFreeHammockAugmentationEnriched_map_equivalence :
-    IsQCatEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y) := by
-  change IsQCatEquivalence (exInfinity.map (freeHammockDiagonalAugmentation C X Y))
-  exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((kanFreeHammockAugmentationEnriched C).map X Y) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalAugmentation C X Y))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
     (kanFreeHammockAugmentationEnriched_map_weak C X Y)
 
 lemma kanFreeHammockComparisonEnriched_map_equivalence :
-    IsQCatEquivalence ((kanFreeHammockComparisonEnriched C).map X Y) := by
-  change IsQCatEquivalence (exInfinity.map (freeHammockDiagonalComparison C X Y))
-  exact (isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence ((kanFreeHammockComparisonEnriched C).map X Y) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalComparison C X Y))
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_iff_isQCatEquivalence _).mp
     (kanFreeHammockComparisonEnriched_map_weak C X Y)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

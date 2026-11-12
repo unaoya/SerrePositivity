@@ -18,23 +18,23 @@ variable (A : Type u) [CommRing A] (D E : Type v)
 
 /-- 元の dg 単体の関手作用は、異なる対象宇宙でも全引き戻しを保つ。 -/
 lemma dgNativeSimplex_map_pullback {C : Type w} {B : Type v} [DGCategory A C] [DGCategory A B]
-    {M N : ℕ} (s : DGNerve.Simplex A C N) (F : DGFunctor A C B)
+    {M N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A C N) (F : DGFunctor A C B)
     (α : Fin (M + 1) →o Fin (N + 1)) :
     (s.pullback α).map F = (s.map F).pullback α := by
-  apply DGNerve.Simplex.ext
-  exact DGNerve.SimplexData.map_pullback s.toSimplexData F α
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.ext
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map_pullback s.toSimplexData F α
 
 /-- 元のラベル単体と native 関手族の単体に対する、全次数の実 Perf 右作用。 -/
 def presentedPerfectDGNativeActionSimplex {N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N)
-    (s : DGNerve.Simplex A (DGFunctor A D E) N) :
-    DGNerve.Simplex A (PresentedPerfectDGObject A E) N :=
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A E) N :=
   (dgNerveTensorSimplex A x s).map (presentedPerfectDGRightTensorAction A D E)
 
 /-- 元の実 Perf 右作用の全単体は、退化を含む全単体作用素と可換。 -/
 lemma presentedPerfectDGNativeActionSimplex_pullback {M N : ℕ}
-    (x : DGNerve.Simplex A (PresentedPerfectDGObject A D) N)
-    (s : DGNerve.Simplex A (DGFunctor A D E) N) (α : Fin (M + 1) →o Fin (N + 1)) :
+    (x : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (PresentedPerfectDGObject A D) N)
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (DGFunctor A D E) N) (α : Fin (M + 1) →o Fin (N + 1)) :
     presentedPerfectDGNativeActionSimplex A D E (x.pullback α) (s.pullback α) =
       (presentedPerfectDGNativeActionSimplex A D E x s).pullback α := by
   unfold presentedPerfectDGNativeActionSimplex

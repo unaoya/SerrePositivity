@@ -72,7 +72,7 @@ variable {D : Type uD} [Category.{vD} D] (L : SSet.{max w v} ⥤ D)
   [L.IsLocalization SSet.anodyneExtensions]
 
 def realization : Object.{v} ⥤ D where
-  obj X := L.obj (UniverseLift.obj.{w} X.value)
+  obj X := L.obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} X.value)
   map {X Y} f := UniverseLift.smallLocalizedHomEquiv.{w, v} L X.value Y.value Y.kan f
   map_id X := by
     change L.map (SSet.uliftFunctor.{w, v}.map (𝟙 X.value)) = 𝟙 _

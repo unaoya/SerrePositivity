@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramTriangleComparisonFiber
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ConstantDiagramTransportMap
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorIsoCurryPointComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoCurryPointComparison
 
 /-!
 概要：元の全三角形の比較の一点成分を、同じ実長辺輸送の指定比較の制限へ戻す。

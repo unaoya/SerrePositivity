@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.CompletionZeroComponent
-public import SerrePositivity.InfinityCategories.F2.Compact.ComponentLabels
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.ComponentLabels
 
 /-!
 概要：元の分母 wide 部分複体の各成分で、同じ零分母始域を選ぶ。
@@ -19,8 +19,8 @@ open CategoryTheory SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [IsStable C] [IsStable D]
-  (f : C ⟶ D) [IsExactFunctor f] (h : F2.Idempotent.IsIdempotentCompletion f)
+variable {C D : SSet.{u}} [Quasicategory C] [Quasicategory D] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable D]
+  (f : C ⟶ D) [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f] (h : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f)
 include h
 
 /-- 概要：各成分で選ぶ、同じ成分の全対象への零分母の始域。
@@ -71,7 +71,7 @@ lemma completionComponentSectionVertex_zeroTarget
 使われ方：Sp-7 の全図式収縮の始点と、離散成分への射の切断。 -/
 def completionComponentProjection : (completionCofiberWide f : SSet.{u}) ⟶
     (Functor.const SimplexCategoryᵒᵖ).obj (SSet.π₀ (completionCofiberWide f : SSet.{u})) :=
-  F2.Compact.componentLabelMap _ id
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentLabelMap _ id
 
 /-- 概要：元の零分母始域を定値単体として並べた全成分の切断。
 方針：成分射の全射性と実零分母から、成分を保つ定値単体の切断を作る。

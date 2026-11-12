@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
-public import SerrePositivity.InfinityCategories.F1.Fibrations.VertexIsoMapCoherence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.VertexIsoMapCoherence
 
 /-!
 概要：二つの実作用を含む元の三角形関係を、同じ射で全体として写す。

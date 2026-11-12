@@ -16,7 +16,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalClosed
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance sourceHomotopyEndSelfEnrichment :
     EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
@@ -27,12 +27,12 @@ lemma homotopyLimitSource_component {I : Type u} [SmallCategory I]
     {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (D : I ⥤ KanSequence.{u}) (i : I) :
     pointedPre f (KanSequence.homotopyLimit D) ≫
         pointedPost X (KanSequence.homotopyLimitEvaluation D i) ≫
-          (cotensorIso X (D.obj i) (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).hom =
+          (cotensorIso X (D.obj i) (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).hom =
       pointedPost Y (KanSequence.homotopyLimitEvaluation D i) ≫
-        (cotensorIso Y (D.obj i) (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).hom ≫
-          (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map
+        (cotensorIso Y (D.obj i) (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).hom ≫
+          (ihom (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).map
             (pointedPre f (D.obj i)) := by
-  let A := PointedObject.adjoin ((bousfieldKanWeight I).obj i)
+  let A := PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i)
   have h : pointedPre f (KanSequence.mapping A (D.obj i)) ≫ (cotensorIso X (D.obj i) A).hom =
       (cotensorIso Y (D.obj i) A).hom ≫ (ihom A).map (pointedPre f (D.obj i)) :=
     cotensorComparison_pre_source f (D.obj i) A
@@ -58,9 +58,9 @@ lemma homotopyLimitIso_pre {I : Type u} [SmallCategory I]
     {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (D : I ⥤ KanSequence.{u}) :
     pointedPre f (KanSequence.homotopyLimit D) ≫ (homotopyLimitIso X D).hom =
       (homotopyLimitIso Y D).hom ≫
-        PointedWeightedEnd.map (bousfieldKanWeight I)
+        PointedWeightedEnd.map (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
           (Functor.whiskerLeft D (pointedPreTransformation f)) := by
-  have h := weightedEnd_comparison_natural (bousfieldKanWeight I)
+  have h := weightedEnd_comparison_natural (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
     (Functor.whiskerLeft D (pointedPreTransformation f))
     (𝟙 (pointedSpace Y (KanSequence.homotopyLimit D)))
     (pointedPre f (KanSequence.homotopyLimit D) ≫ (homotopyLimitIso X D).hom)
@@ -68,7 +68,7 @@ lemma homotopyLimitIso_pre {I : Type u} [SmallCategory I]
   simp only [Category.id_comp] at h
   apply h
   intro i
-  let a := (ihom (PointedObject.adjoin ((bousfieldKanWeight I).obj i))).map
+  let a := (ihom (PointedObject.adjoin ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).obj i))).map
     (pointedPre f (D.obj i))
   exact (Category.assoc _ _ _).trans
     ((congrArg (pointedPre f (KanSequence.homotopyLimit D) ≫ ·)

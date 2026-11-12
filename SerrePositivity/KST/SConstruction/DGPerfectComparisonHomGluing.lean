@@ -104,7 +104,7 @@ lemma dgPerfectComparisonMap_hom_naturality (x y : P) :
 方針：元二関手と全自然な閉比較を既存の構成へ渡す。
 規約：元始域と元射を保持。使われ方：右軸から恒等への実比較の実 gluing 表示。 -/
 def dgPerfectComparisonHomGluingFunctor : DGFunctor R P
-    (DGGluingObject R (T) (T)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (T) (T)
       (dgHomGluingBimodule R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T)))) :=
   dgIdentityHomGluingFunctor R (T) (dgPerfectComparisonFirst R E F G)
     (dgPerfectComparisonSecond R E F G) (dgPerfectComparisonMap R E F G τ)
@@ -121,7 +121,7 @@ local notation "U" => DGPerfectComparisonInverseRotationBase R E F G
 方針：同じ実 Hom gluing 表示に構成済み実逆回転を合成する。
 規約：元始域を変更しない。使われ方：resolved 商上の実中央比較。 -/
 def dgPerfectComparisonInverseRotationFunctor : DGFunctor R P
-    (DGGluingObject R (U) (U)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R (U) (U)
       (dgHomGluingBimodule R (U) (U) (U) (DGFunctor.id (U)) (DGFunctor.id (U)))) :=
   (dgPerfectComparisonHomGluingFunctor R E F G τ).comp
     (dgHomGluingInverseRotationFunctor R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T)))
@@ -130,7 +130,7 @@ def dgPerfectComparisonInverseRotationFunctor : DGFunctor R P
 規約：元全 dg 関手の等号。使われ方：実中央射の第一成分。 -/
 lemma dgPerfectComparisonInverseRotationFunctor_left :
     (dgPerfectComparisonInverseRotationFunctor R E F G τ).comp
-      (dgGluingLeft R (U) (U)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (U) (U)
         (dgHomGluingBimodule R (U) (U) (U) (DGFunctor.id (U)) (DGFunctor.id (U)))) =
       (dgPerfectComparisonHomGluingFunctor R E F G τ).comp
         (dgHomGluingLoopConeSmall R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T))) :=
@@ -144,7 +144,7 @@ lemma dgPerfectComparisonInverseRotationFunctor_left :
 規約：元全 dg 関手の等号。使われ方：実中央射の第二成分。 -/
 lemma dgPerfectComparisonInverseRotationFunctor_right :
     (dgPerfectComparisonInverseRotationFunctor R E F G τ).comp
-      (dgGluingRight R (U) (U)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (U) (U)
         (dgHomGluingBimodule R (U) (U) (U) (DGFunctor.id (U)) (DGFunctor.id (U)))) =
       (dgPerfectComparisonHomGluingFunctor R E F G τ).comp
         (dgHomGluingLoopConeShiftedTarget R (T) (T) (T) (DGFunctor.id (T)) (DGFunctor.id (T))) :=

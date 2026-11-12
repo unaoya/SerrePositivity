@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.Fibration.RelativeSQuotientZeroStage
 public import SerrePositivity.KST.Fibration.QuotientSKernelInfinitySquare
-public import SerrePositivity.InfinityCategories.F1.KanModels.KanAnodyneLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.KanAnodyneLocalization
 
 /-!
 概要：正の各段の商比較から、元の全実現商射と実 coherent 核四角形へ接続する。
@@ -21,21 +21,21 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 open SerrePositivity.KST.Comparison
 open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
 
 /-- 正の各段の元の商比較に条件付きで、同じ全実現商射の Ex∞ 像は全写像空間の同値。 -/
 theorem relativeSQuotientKanMap_isQCatEquivalence_of_positive_stages
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
-    IsQCatEquivalence (exInfinity.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
       (simplicialDiagonalFunctor.map (relativeSimplicialQuotientMap q))) := by
-  apply isQCatEquivalence_of_anodyneQ_isIso
-  exact (exInfinity_map_localized_isIso_iff _).mpr
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isQCatEquivalence_of_anodyneQ_isIso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
 
 /-- 正の各段の元の商比較に条件付きで、同じ全 Ex∞ coherent 核四角形が引き戻し。 -/
-theorem quotientSKernelInfinitySquare_isPullback_of_positive_stages (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q)
+theorem quotientSKernelInfinitySquare_isPullback_of_positive_stages (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q)
     (hq : ∀ n : ℕ, IsIso (AnodyneHomotopy.anodyneQ.map (relativeSQuotientMap q (n + 1)))) :
-    IsPullbackSquare (quotientSKernelInfinitySquare i q) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPullbackSquare (quotientSKernelInfinitySquare i q) :=
   quotientSKernelInfinitySquare_isPullback i q h
     (relativeSQuotientRealization_localized_isIso_of_positive_stages q hq)
 

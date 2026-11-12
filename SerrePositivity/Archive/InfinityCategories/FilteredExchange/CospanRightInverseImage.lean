@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CospanRectificationImages
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoWhiskerHEq
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoWhiskerHEq
 
 /-!
 概要：元の cospan 右厳密化の逆同型は、底で元の指定比較そのものに写る。

@@ -19,7 +19,7 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
 
 /-- 元の比較の実 cone へ送る、第三成分を保持した全 Hom 上の厳密 dg 関手。 -/
 def dgHomGluingConeFunctor :
-    DGFunctor R (DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+    DGFunctor R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
       (PerfectDGModule R E) :=
   DGFunctor.ofHomMaps R (dgHomGluingTargetCone R C D E p q)
     (dgHomGluingConeHomMap R C D E p q) (dgHomGluingConeHomMap_unit R C D E p q)
@@ -28,13 +28,13 @@ def dgHomGluingConeFunctor :
 
 /-- 同じ実 dg 関手の対象は元の実 Perf cone そのもの。 -/
 lemma dgHomGluingConeFunctor_obj
-    (X : DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :
+    (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :
     (dgHomGluingConeFunctor R C D E p q).obj X =
       dgHomGluingTargetCone R C D E p q X := rfl
 
 /-- 同じ実 dg 関手の全 Hom 作用は元の第三比較を保持する同じ鎖写像。 -/
 lemma dgHomGluingConeFunctor_map
-    (X Y : DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :
+    (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q)) :
     (dgHomGluingConeFunctor R C D E p q).map X Y =
       dgHomGluingConeHomMap R C D E p q X Y := rfl
 

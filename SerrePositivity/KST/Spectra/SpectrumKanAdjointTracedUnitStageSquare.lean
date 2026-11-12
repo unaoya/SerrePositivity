@@ -51,14 +51,14 @@ lemma kanAdjointTracedUnitStageSquare_start (n : ℕ) :
 /-- 段射表示の終点境界も、同じ厳密な単位構造頂点で全区間が一定。 -/
 lemma kanAdjointTracedUnitStageSquare_finish (n : ℕ) :
     SquareAdjustment.rightSide ≫ (kanAdjointTracedUnitStageSquare X Y φ n).h =
-      SSet.const ((_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+      SSet.const ((_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
         ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space).hom.right.app _
         (PointedMapping.familyVertex
           ((φ ≫ pointedPost X
               (OmegaSpectrum.sequenceHom (OmegaSpectrum.tracedSignedLoopUnit Y)) ≫
             pointedPost X (OmegaSpectrum.signedLoopProjection Y) ≫
             pointedEvaluation X (KanSequence.signedLoopTail Y.toKanSequence) (n + 1)) ≫
-            _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n)
+            _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n)
               ((KanSequence.signedLoopTail Y.toKanSequence).level (n + 1)).space))) :=
   kanAdjointTracedUnitStructureSquare_finish X Y φ n
 

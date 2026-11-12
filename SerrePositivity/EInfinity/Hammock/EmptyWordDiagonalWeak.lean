@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.RelativeEmptyZigzagEquivalence
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.WordDiagonalAugmentation
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeEmptyZigzagEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WordDiagonalAugmentation
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
 public import SerrePositivity.EInfinity.Hammock.NerveWeakTransport
 
@@ -20,8 +20,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram
-open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
-variable (D : SimplicialObject RelativeCategory.{u}) (C : RelativeCategory.{u})
+open CategoryTheory SerrePositivity.InfinityCategories
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
   (p : (i : SimplexCategoryᵒᵖ) → C.category → (D.obj i).category)
   (hp : ∀ {i j : SimplexCategoryᵒᵖ} (θ : i ⟶ j) (X : C.category),
     (D.map θ).functor.obj (p i X) = p j X)
@@ -29,13 +29,13 @@ variable (D : SimplicialObject RelativeCategory.{u}) (C : RelativeCategory.{u})
   (ha : ∀ i X, (A.app i).functor.obj (p i X) = X)
 lemma wordDiagonalAugmentation_empty_weak
     (hA : ∀ i, Function.Injective (A.app i).functor.obj) (X Y : C.category) :
-    IsWeakHomotopyEquivalence ((wordDiagonalAugmentation D C p hp A ha X Y).app Word.empty) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalAugmentation D C p hp A ha X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) := by
   have hd := DoubleSimplicial.diagonalFunctor_map_weak
-    ((graphWordAugmentation D C p hp A ha X Y).app Word.empty) (by
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphWordAugmentation D C p hp A ha X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) (by
       intro n
-      have := Zigzag.Relative.empty_fixed_isEquivalence (A.app n) (ha n X) (ha n Y) (hA n)
+      have := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.empty_fixed_isEquivalence (A.app n) (ha n X) (ha n Y) (hA n)
       exact nerveMap_equivalence_isWeakHomotopyEquivalence
-        (Zigzag.Relative.fixedFunctor (w := Word.empty) (A.app n) (ha n X) (ha n Y)).asEquivalence)
-  exact hd.comp (isPrecompositionEquivalence_of_iso
-    ((wordDiagonalTargetIso C X Y).app Word.empty)).isWeakHomotopyEquivalence
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeFixedZigzagFunctor.fixedFunctor (w := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty) (A.app n) (ha n X) (ha n Y)).asEquivalence)
+  exact hd.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.wordDiagonalTargetIso C X Y).app _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty)).isWeakHomotopyEquivalence
 end SerrePositivity.EInfinity.Hammock.FixedObjectDiagram

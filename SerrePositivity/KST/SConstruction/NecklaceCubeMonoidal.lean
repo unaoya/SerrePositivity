@@ -20,17 +20,17 @@ def necklaceCubeCoreMonoidal : (necklaceConcreteCube.{u}).CoreMonoidal where
   μIso_hom_natural_left := by
     intro X Y f Z
     change concreteCubeTensorMap (necklaceConcreteCubeMap f)
-        (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk Z.down.dimension)) ≫ (necklaceCubeTensorIso Y Z).hom =
-      (necklaceCubeTensorIso X Z).hom ≫ necklaceConcreteCubeMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap f (𝟙 Z))
-    have hid : necklaceConcreteCubeMap (𝟙 Z) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk Z.down.dimension) :=
+        (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk Z.down.dimension)) ≫ (necklaceCubeTensorIso Y Z).hom =
+      (necklaceCubeTensorIso X Z).hom ≫ necklaceConcreteCubeMap (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedgeMap f (𝟙 Z))
+    have hid : necklaceConcreteCubeMap (𝟙 Z) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk Z.down.dimension) :=
       necklaceConcreteCube.map_id Z
     simpa only [hid] using necklaceCubeTensorIso_naturality f (𝟙 Z)
   μIso_hom_natural_right := by
     intro X Y Z f
-    change concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk Z.down.dimension))
+    change concreteCubeTensorMap (𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk Z.down.dimension))
         (necklaceConcreteCubeMap f) ≫ (necklaceCubeTensorIso Z Y).hom =
-      (necklaceCubeTensorIso Z X).hom ≫ necklaceConcreteCubeMap (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedgeMap (𝟙 Z) f)
-    have hid : necklaceConcreteCubeMap (𝟙 Z) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk Z.down.dimension) :=
+      (necklaceCubeTensorIso Z X).hom ≫ necklaceConcreteCubeMap (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedgeMap (𝟙 Z) f)
+    have hid : necklaceConcreteCubeMap (𝟙 Z) = 𝟙 (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk Z.down.dimension) :=
       necklaceConcreteCube.map_id Z
     simpa only [hid] using necklaceCubeTensorIso_naturality (𝟙 Z) f
   associativity := necklaceCubeTensor_associativity
@@ -42,11 +42,11 @@ instance necklaceCubeMonoidal : (necklaceConcreteCube.{u}).Monoidal :=
   necklaceCubeCoreMonoidal.{u}.toMonoidal
 
 /-- 元の tensorator をモノイダル関手から厳密に回収する。 -/
-lemma necklaceCubeMonoidal_tensorator (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+lemma necklaceCubeMonoidal_tensorator (T U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) :
     Functor.LaxMonoidal.μ necklaceConcreteCube T U = (necklaceCubeTensorIso T U).hom := rfl
 
 /-- 元の逆 tensor 比較をモノイダル関手から厳密に回収する。 -/
-lemma necklaceCubeMonoidal_cotensorator (T U : _root_.SerrePositivity.InfinityCategories.Simplicial.Necklace.{u}) :
+lemma necklaceCubeMonoidal_cotensorator (T U : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.Necklace.{u}) :
     Functor.OplaxMonoidal.δ necklaceConcreteCube T U = (necklaceCubeTensorIso T U).inv := rfl
 
 /-- 元の単位比較をモノイダル関手から厳密に回収する。 -/

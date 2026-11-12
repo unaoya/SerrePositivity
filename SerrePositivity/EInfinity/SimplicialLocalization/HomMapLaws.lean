@@ -28,7 +28,7 @@ open CategoryTheory
 方針：局所化解像の恒等則を Hom に評価して対象移送を相殺する。
 規約：全次数の実際の Hom を使う。
 使われ方：豊穣係数射の恒等則。 -/
-lemma localizationHomMap_id (C : RelativeCategory.{u}) (X Y : C.category) :
+lemma localizationHomMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     localizationHomMap (𝟙 C) X Y = 𝟙 (localizationHom C X Y) := by
   apply NatTrans.ext
   funext n
@@ -38,9 +38,9 @@ lemma localizationHomMap_id (C : RelativeCategory.{u}) (X Y : C.category) :
     (NatTrans.congr_app (localizedFreeResolutionFunctor.map_id C) n)
   change ((localizedFreeResolutionMap (𝟙 C)).app n).toFunctor = 𝟭 _ at h
   change (localizationHomMap (𝟙 C) X Y).app n f = f
-  dsimp only [localizationHomMap, FixedObjectHom.coefficientNatTrans,
+  dsimp only [localizationHomMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans,
     TypeCat.ofHom_apply]
-  unfold FixedObjectHom.coefficientMap
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap
   rw [Functor.congr_hom h f]
   simp
 
@@ -48,7 +48,7 @@ lemma localizationHomMap_id (C : RelativeCategory.{u}) (X Y : C.category) :
 方針：全解像の合成則を Hom に評価し、中間対象の移送を相殺する。
 規約：元の相対関手の合成順序を保持する。
 使われ方：豊穣係数射の合成則。 -/
-lemma localizationHomMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E)
+lemma localizationHomMap_comp {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E)
     (X Y : C.category) :
     localizationHomMap (F ≫ G) X Y =
       localizationHomMap F X Y ≫ localizationHomMap G (F.functor.obj X) (F.functor.obj Y) := by
@@ -64,9 +64,9 @@ lemma localizationHomMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G : 
   change (localizationHomMap (F ≫ G) X Y).app n f =
     (localizationHomMap G (F.functor.obj X) (F.functor.obj Y)).app n
       ((localizationHomMap F X Y).app n f)
-  dsimp only [localizationHomMap, FixedObjectHom.coefficientNatTrans,
+  dsimp only [localizationHomMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans,
     TypeCat.ofHom_apply]
-  unfold FixedObjectHom.coefficientMap
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientMap
   rw [Functor.congr_hom h f]
   simp only [Functor.comp_map, Functor.map_comp, eqToHom_map, Category.assoc,
     eqToHom_trans_assoc, eqToHom_trans]
@@ -75,7 +75,7 @@ lemma localizationHomMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G : 
 方針：同じ対象写像と各 Hom の恒等則を束ねる。
 規約：豊穣関手の厳密な等式。
 使われ方：Kan 化の係数関手の恒等則。 -/
-lemma localizationEnrichedMap_id (C : RelativeCategory.{u}) :
+lemma localizationEnrichedMap_id (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) :
     localizationEnrichedMap (𝟙 C) = EnrichedFunctor.id SSet (LocalizationObjects C) := by
   refine EnrichedFunctor.ext SSet (F := localizationEnrichedMap (𝟙 C))
     (G := EnrichedFunctor.id SSet (LocalizationObjects C)) (fun _ => rfl) ?_
@@ -88,7 +88,7 @@ lemma localizationEnrichedMap_id (C : RelativeCategory.{u}) :
 方針：同じ対象写像と各 Hom の合成則を束ねる。
 規約：同じ豊穣構造と合成を保持する。
 使われ方：coherent nerve の係数関手の合成則。 -/
-lemma localizationEnrichedMap_comp {C D E : RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E) :
+lemma localizationEnrichedMap_comp {C D E : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D) (G : D ⟶ E) :
     localizationEnrichedMap (F ≫ G) =
       (localizationEnrichedMap F).comp SSet (localizationEnrichedMap G) := by
   refine EnrichedFunctor.ext SSet (F := localizationEnrichedMap (F ≫ G))

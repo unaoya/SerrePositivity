@@ -15,18 +15,18 @@ open SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Fibration
 
 /-- W 辺の元の終点を零単体図式として抽出する完全関手。 -/
-def weakArrowTargetDiagram {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def weakArrowTargetDiagram {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     weakArrowModel q ⟶ ambientDiagramModel (Δ[0] : SSet.{u}) B :=
   weakArrowAmbientInclusion q ≫ ambientDiagramRestriction B (stdSimplex.δ (0 : Fin 2))
 
 /-- W 辺の元の始点を零単体図式として抽出する完全関手。 -/
-def weakArrowSourceDiagram {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def weakArrowSourceDiagram {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     weakArrowModel q ⟶ ambientDiagramModel (Δ[0] : SSet.{u}) B :=
   weakArrowAmbientInclusion q ≫ ambientDiagramRestriction B (stdSimplex.δ (1 : Fin 2))
 
 /-- 両 W 辺を共有端点上で貼った図式は、全 gapped S_n でも同じ厳密引き戻し。 -/
-theorem composableWeakArrow_sConstruction_isPullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (n : ℕ) :
+theorem composableWeakArrow_sConstruction_isPullback {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (n : ℕ) :
     IsPullback ((sEndofunctor n).map (composableWeakFirstExact q)).val
       ((sEndofunctor n).map (composableWeakNextExact q)).val
       ((sEndofunctor n).map (weakArrowTargetDiagram q)).val

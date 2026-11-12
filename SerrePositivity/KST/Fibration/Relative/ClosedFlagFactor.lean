@@ -23,10 +23,10 @@ namespace SerrePositivity.KST.Fibration.Relative
 /-- 概要：全可逆辺は元の W に属する。方針：同じ安定閉包の既存定理。
 規約：P 自身への所属。使われ方：退化辺の処理。 -/
 lemma closedStableEdges_of_invertible {B : StableModel.{u}} (P : ClosedStablePredicate B)
-    {a : B.carrier _⦋1⦌} (ha : IsInvertibleEdge (edgeOfSimplex a)) : a ∈ closedStableEdges P := by
-  have h := cofiberStableEdges_of_isInvertible {x | P.predicate x} ha
+    {a : B.carrier _⦋1⦌} (ha : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.edgeOfSimplex a)) : a ∈ closedStableEdges P := by
+  have h := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_of_isInvertible {x | P.predicate x} ha
   simpa only [closedStableEdges,
-    show {x | StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} from
+    show {x | _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.StableVertexClosure {x | P.predicate x} x} = {x | P.predicate x} from
     Set.ext (closedStableClosure_iff P)] using h
 
 /-- 概要：一単体での wide 条件は元の W 辺条件と等しい。
@@ -50,7 +50,7 @@ lemma closedStableWide_edge_iff {B : StableModel.{u}} (P : ClosedStablePredicate
         rw [hc, op_comp, CategoryTheory.Functor.map_comp]
         rfl
       rw [he]
-      exact closedStableEdges_of_invertible P (isInvertibleEdge_degenerate v)
+      exact closedStableEdges_of_invertible P (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_degenerate v)
     · simpa only [op_id, CategoryTheory.Functor.map_id_apply] using h
 
 /-- 概要：標準単体の条件と同じ実図式の wide への因子分解。
@@ -58,7 +58,7 @@ lemma closedStableWide_edge_iff {B : StableModel.{u}} (P : ClosedStablePredicate
 規約：元の関手を厳密に回収。使われ方：全旗を貼り合わせる。 -/
 lemma closedFlag_factor_iff {B : StableModel.{u}} (P : ClosedStablePredicate B) (n : ℕ)
     (f : (Δ[n] : SSet.{u}) ⟶ B.carrier) :
-    closedFlagPredicate P ⦋n⦌ (functorVertex f) ↔
+    closedFlagPredicate P ⦋n⦌ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f) ↔
       ∃ g : (Δ[n] : SSet.{u}) ⟶ (closedStableWide P : SSet.{u}),
         g ≫ (closedStableWide P).ι = f := by
   change SSet.yonedaEquiv f ∈ (closedStableWide P).obj _ ↔ _

@@ -87,7 +87,7 @@ def frameCofiberSquareAt {n : ℕ} (a : FrameAr.{u} n) :
 lemma frameCofiberSquareAt_firstRow {n : ℕ} (a : FrameAr.{u} n)
     (ha : a.val.down.val.1 = 0) :
     frameCofiberSquareAt a = CartesianMonoidalCategory.fst _ _ ≫
-      squareBottomEdge ≫ frameCofiberSquareAt a := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ frameCofiberSquareAt a := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -108,7 +108,7 @@ lemma frameCofiberSquareAt_firstRow {n : ℕ} (a : FrameAr.{u} n)
 lemma frameCofiberSquareAt_diagonal {n : ℕ} (a : FrameAr.{u} n)
     (ha : IsDiagonal a.val) :
     frameCofiberSquareAt a = CartesianMonoidalCategory.snd _ _ ≫
-      squareLeftEdge ≫ frameCofiberSquareAt a := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ frameCofiberSquareAt a := by
   apply SSet.hom_ext
   rintro ⟨⟨d⟩⟩
   apply ConcreteCategory.hom_ext
@@ -130,7 +130,7 @@ lemma frameCofiberSquareAt_diagonal {n : ℕ} (a : FrameAr.{u} n)
 使われ方：枠上の cofiber 族の普遍性。 -/
 lemma frameCofiberSquareAt_isPushout {n : ℕ} {C : SSet.{u}} [Quasicategory C]
     (F : frameNerve n ⟶ C) (a : FrameAr.{u} n) :
-    IsPushoutSquare (frameCofiberSquareAt a ≫ F) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare (frameCofiberSquareAt a ≫ F) := by
   rcases a.property with ha | ha
   · have he := congrArg (fun f => f ≫ F) (frameCofiberSquareAt_firstRow a ha)
     rw [Category.assoc] at he
@@ -155,9 +155,9 @@ def frameCofiberFamily {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) :
 lemma frameCofiberFamily_vertex {n : ℕ} {C : SSet.{u}}
     (F : frameNerve n ⟶ C) (a : FrameAr.{u} n) :
     (frameCofiberFamily F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a) =
-      functorVertex (frameCofiberSquareAt a ≫ F) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (frameCofiberSquareAt a ≫ F) := by
   rw [frameCofiberFamily, curry_vertex_value]
-  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C => functorVertex f)
+  apply congrArg (fun f : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ C => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex f)
   rfl
 
 /-- 概要：枠の cofiber 正方形の零角は元の枠の対角である。
@@ -165,7 +165,7 @@ lemma frameCofiberFamily_vertex {n : ℕ} {C : SSet.{u}}
 規約：零対象の性質を仮定せず頂点を同定する。使われ方：零角条件の移送。 -/
 lemma frameCofiberSquareAt_zero_corner {n : ℕ} {C : SSet.{u}}
     (F : frameNerve n ⟶ C) (a : FrameAr.{u} n) :
-    squareVertex (frameCofiberSquareAt a ≫ F) 0 1 =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex (frameCofiberSquareAt a ≫ F) 0 1 =
       F.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀
         (⟨arObj a.val.down.val.1 a.val.down.val.1 le_rfl, Or.inr rfl⟩ : FrameAr n)) := by
   apply congrArg (F.app (Opposite.op ⦋0⦌))
@@ -178,22 +178,22 @@ lemma frameCofiberSquareAt_zero_corner {n : ℕ} {C : SSet.{u}}
 規約：値域は quasicategory、安定性は要求しない。
 使われ方：第一行と対角を変更せず補完する際の既存データ。 -/
 def zeroFrameCofiberFamily {n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (functorVertex F)) :
+    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
     frameNerve n ⟶ cofiberDiagrams C :=
-  fullSubcomplexLift _ (frameCofiberFamily F) (by
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift _ (frameCofiberFamily F) (by
     intro v
     obtain ⟨a, rfl⟩ := nerveEquiv.symm.surjective v
     change IsCofiberDiagramVertex
       ((frameCofiberFamily F).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ a))
     rw [frameCofiberFamily_vertex]
     constructor
-    · rw [squareDiagram_functorVertex, frameCofiberSquareAt_zero_corner]
+    · rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.squareDiagram_functorVertex, frameCofiberSquareAt_zero_corner]
       have hz := hF (ComposableArrows.mk₀
         (⟨arObj a.val.down.val.1 a.val.down.val.1 le_rfl, Or.inr rfl⟩ : FrameAr n)) rfl
-      rw [evaluateFunctorAt_functorVertex] at hz
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at hz
       exact hz
-    · change IsPushoutSquare ((functorVertexEquiv _ C).symm
-        (functorVertexEquiv _ C (frameCofiberSquareAt a ≫ F)))
+    · change _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsPushoutSquare ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ C (frameCofiberSquareAt a ≫ F)))
       rw [Equiv.symm_apply_apply]
       exact frameCofiberSquareAt_isPushout F a)
 
@@ -201,8 +201,8 @@ def zeroFrameCofiberFamily {n : ℕ} {C : SSet.{u}} [Quasicategory C]
 方針：全部分複体の持ち上げの定義を展開する。
 規約：全次数での厳密等号。使われ方：相対境界の一致。 -/
 lemma zeroFrameCofiberFamily_ι {n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (functorVertex F)) :
-    zeroFrameCofiberFamily F hF ≫ (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
+    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
+    zeroFrameCofiberFamily F hF ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι =
       frameCofiberFamily F := rfl
 
 /-- 概要：cofiber 四角形の族の右上角は元の 枠 の区間。
@@ -226,7 +226,7 @@ lemma frameCofiberSquareMap_apex (n : ℕ) :
 方針：curry の評価と添字の右上角の恒等式を合わせる。
 規約：零対角条件は不要。使われ方：復元した cofiber 族の境界の厳密化。 -/
 lemma frameCofiberFamily_apex {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) :
-    frameCofiberFamily F ≫ evaluateFunctorAt
+    frameCofiberFamily F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = F := by
   rw [frameCofiberFamily, curry_evaluate_vertex]
   have he : CartesianMonoidalCategory.lift
@@ -243,10 +243,10 @@ lemma frameCofiberFamily_apex {n : ℕ} {C : SSet.{u}} (F : frameNerve n ⟶ C) 
 規約：quasicategory 性だけを要求し、安定性は不要。
 使われ方：補完後の図式の第一行を指定入力と厳密に一致させる。 -/
 lemma zeroFrameCofiberFamily_apex {n : ℕ} {C : SSet.{u}} [Quasicategory C]
-    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (functorVertex F)) :
+    (F : frameNerve n ⟶ C) (hF : IsZeroFrameVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) :
     zeroFrameCofiberFamily F hF ≫ cofiberApex C = F := by
   change (zeroFrameCofiberFamily F hF ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫ evaluateFunctorAt
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2), stdSimplex.obj₀Equiv.symm (1 : Fin 2)) = F
   rw [zeroFrameCofiberFamily_ι]
   exact frameCofiberFamily_apex F

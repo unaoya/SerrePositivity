@@ -19,11 +19,11 @@ open scoped Simplicial
 /-- 全 Ar 成分の所属条件は実図式の関手同型で保たれる。 -/
 lemma ObjectSInClosed.of_functorIso {X : StableModel.{u}} (P : ClosedStablePredicate X)
     {n : SimplexCategoryᵒᵖ} {v w : (objectSConstruction X.carrier).obj n}
-    (hv : ObjectSInClosed P v) (e : FunctorIso (gappedDiagram v) (gappedDiagram w)) :
+    (hv : ObjectSInClosed P v) (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (gappedDiagram v) (gappedDiagram w)) :
     ObjectSInClosed P w := by
   intro a
-  have ea := VertexIso.map e (evaluateFunctorAt a)
-  rw [evaluateFunctorAt_functorVertex, evaluateFunctorAt_functorVertex] at ea
+  have ea := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt a)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex] at ea
   exact P.of_iso (hv a) ea
 
 /-- θ の quotient の全成分条件は元の fiber の quotient から同型で輸送される。 -/
@@ -42,7 +42,7 @@ lemma mcCarthyThetaObject_quotient_in_closed {X : StableModel.{u}} (B : ClosedSt
       ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e)) := hq.symm ▸ he
   apply ObjectSInClosed.of_functorIso B ht
   rw [gappedDiagram_objectSFunctor_map, mcCarthyThetaObjectVertex_diagram]
-  change FunctorIso
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (mcCarthyFiberDiagram X a ((mcCarthyRhoTerminal X a).app (Opposite.op ⦋n⦌) e) ≫
       (cofiberStableQuotient X).val)
     (variableTimeImage (zeroSourceThetaHomotopy (objectSLastDiagonalZeroVertex a))

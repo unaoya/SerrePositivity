@@ -34,17 +34,17 @@ def relativeFiberVertex (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : ℕ)
 lemma relativeFiberVertex_cellRestrictions (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
     (n : ℕ) (g : UnbasedPointedMapping.skeletalRelativeSource K n ⟶ Y) :
     stageFiberVertex K Y n (fun s ↦ cellRestriction K Y (n + 1) g
-      ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) = relativeFiberVertex K Y n g := by
-  rw [show (fun s ↦ cellRestriction K Y (n + 1) g ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s)) =
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) = relativeFiberVertex K Y n g := by
+  rw [show (fun s ↦ cellRestriction K Y (n + 1) g ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s)) =
       (fun s ↦ Limits.Sigma.ι
         (fun _ : relativeCellComplexOfMono.Cell (K.skeleton (n + 1)).ι (n + 1) ↦
-          SimplexCell.sphere.{u} (n + 1)) ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 1)).symm s) ≫
+          SimplexCell.sphere.{u} (n + 1)) ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 1)).symm s) ≫
             (cellCoproductIso K (n + 1)).inv ≫ ((relativeCofiberIso K (n + 1)).inv ≫ g))
       from rfl, stageFiberVertex_cellMap]
   change (UnbasedPointedMapping.stageFiberIso K Y n).hom.right.app _
     (((MonoidalClosed.pre (relativeCofiberIso K (n + 1)).hom).app Y).right.app _
       (PointedMapping.familyVertex ((relativeCofiberIso K (n + 1)).inv ≫ g))) = _
-  rw [← _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre]
+  rw [← _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre]
   erw [PointedMapping.familyVertex_pre, Iso.hom_inv_id_assoc]
   rfl
 
@@ -76,7 +76,7 @@ lemma skeletalFiberVertex_ι (K : SSet.{u}) (Y : PointedSimplicialSet.{u}) (n : 
             (PointedMapping.familyVertex (relativeMap K Y (n + 1) f hf)) = _
   rw [UnbasedPointedMapping.restrictionFiberIso_hom_ι]
   change (UnbasedPointedMapping.freeHomIso _ Y).hom.right.app _
-    ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection _ ) Y).right.app _
+    ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection _ ) Y).right.app _
       (PointedMapping.familyVertex (relativeMap K Y (n + 1) f hf))) = _
   erw [PointedMapping.familyVertex_pre, relativeMap_projection]
 
@@ -90,14 +90,14 @@ theorem skeletalFiberVertex_eq_simplexVertex (K : SSet.{u}) (Y : PointedSimplici
       SSet.const Y.basepoint) :
     skeletalFiberVertex K Y (n + 1) f hf =
       stageFiberSimplexVertex K Y (n + 1)
-        (fun s ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f
-          (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s.val) := by
+        (fun s ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) s.val) := by
   let g := relativeMap K Y (n + 2) f hf
   have hr : ∀ c : relativeCellComplexOfMono.Cell (K.skeleton (n + 2)).ι (n + 2),
       cellRestriction K Y (n + 2) g c = (SimplexCell.sphereIso.{u} (n + 2)).hom ≫
         (SphereSimplex.equiv Y (n + 2)).symm
-          (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f
-            (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) c.simplex) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) c.simplex) := by
     intro c
     apply (cancel_epi (SimplexCell.sphereIso.{u} (n + 2)).inv).1
     rw [Iso.inv_hom_id_assoc]
@@ -111,8 +111,8 @@ theorem skeletalFiberVertex_eq_simplexVertex (K : SSet.{u}) (Y : PointedSimplici
   congr 1
   funext s
   rw [hr]
-  have hs : ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).symm s).simplex = s.val :=
-    congrArg Subtype.val ((_root_.SerrePositivity.InfinityCategories.Kan.SkeletalCellAttachment.cellEquiv K (n + 2)).apply_symm_apply s)
+  have hs : ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).symm s).simplex = s.val :=
+    congrArg Subtype.val ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cellEquiv K (n + 2)).apply_symm_apply s)
   rw [hs]
 
 /-- 概要：元の骨格射の実際の fiber 成分の係数は既存の骨格 cochain。
@@ -125,10 +125,10 @@ theorem skeletalFiberVertex_cochain (K : SSet.{u}) (Y : PointedSimplicialSet.{u}
       SSet.const Y.basepoint) :
     (fun s ↦ Additive.ofMul (stageFiberComponentEquiv K Y (n + 1)
       (π₀.mk (skeletalFiberVertex K Y (n + 1) f hf)) s)) =
-        _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f
-          (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) := by
   rw [skeletalFiberVertex_eq_simplexVertex]
-  exact simplexVertex_cochain K Y n f (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf)
+  exact simplexVertex_cochain K Y n f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf)
 
 /-- 概要：元の fiber 頂点の成分係数の正規化微分をセルの面の交代和で計算する。
 方針：成分係数を元の骨格 cochain へ戻し、既存の幾何的な面の式を使う。
@@ -139,15 +139,15 @@ theorem skeletalFiberVertex_normalizedDifferential (K : SSet.{u})
     (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ Y.right)
     (hf : UnbasedPointedMapping.skeletalInclusion K (n + 1) ≫ f =
       SSet.const Y.basepoint) (s : K.nonDegenerate (n + 3)) :
-    _root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
-      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup Y.right (n + 1) Y.basepoint))) (n + 2)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
+      (AddCommGrpCat.of (Additive (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup Y.right (n + 1) Y.basepoint))) (n + 2)
       (fun t ↦ Additive.ofMul (stageFiberComponentEquiv K Y (n + 1)
         (π₀.mk (skeletalFiberVertex K Y (n + 1) f hf)) t)) s =
-      _root_.SerrePositivity.InfinityCategories.Kan.SphericalBoundary.alternatingClass (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.simplexValue f
-        (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) (K.δ j s.val)) := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.alternatingClass (fun j ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.simplexValue f
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) (K.δ j s.val)) := by
   erw [skeletalFiberVertex_cochain K Y n f hf]
-  exact _root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.differential_cochain_apply f
-    (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalRealization.lower_constant f hf) s
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.differential_cochain_apply f
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.lower_constant f hf) s
 
 end
 end SerrePositivity.KST.Spectra.SkeletalCellAttachment

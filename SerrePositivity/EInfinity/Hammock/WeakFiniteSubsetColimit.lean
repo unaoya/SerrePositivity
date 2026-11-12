@@ -22,14 +22,14 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory Limits SerrePositivity.InfinityCategories
 
 lemma weakFiniteSubsetColimitMap {Q : Type u} {F G : Finset Q ⥤ SSet.{max u v}}
-    (η : F ⟶ G) (hη : ∀ S, IsWeakHomotopyEquivalence (η.app S)) :
-    IsWeakHomotopyEquivalence (colim.map η) := by
+    (η : F ⟶ G) (hη : ∀ S, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η.app S)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map η) := by
   classical
   let e := AsSmall.equiv.{u, u, max u v} (C := Finset Q)
   let L := e.inverse
   let τ := Functor.whiskerLeft L η
-  have hτ : IsWeakHomotopyEquivalence (colim.map τ) :=
-    F2.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise τ
+  have hτ : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (colim.map τ) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.filteredColimitMap_isWeakHomotopyEquivalence_of_pointwise τ
       (fun i => hη (L.obj i))
   let iF := Functor.Final.colimitIso L F
   let iG := Functor.Final.colimitIso L G
@@ -40,14 +40,14 @@ lemma weakFiniteSubsetColimitMap {Q : Type u} {F G : Finset Q ⥤ SSet.{max u v}
       Functor.Final.ι_colimitIso_hom, ← Category.assoc,
       Functor.Final.ι_colimitIso_hom, colimit.ι_map]
     rfl
-  have hF := (isPrecompositionEquivalence_of_iso iF).isWeakHomotopyEquivalence
-  have hG := (isPrecompositionEquivalence_of_iso iG).isWeakHomotopyEquivalence
+  have hF := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso iF).isWeakHomotopyEquivalence
+  have hG := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso iG).isWeakHomotopyEquivalence
   apply hF.cancel_left
   rw [← hn]
   exact hτ.comp hG
 
 lemma finiteSubsetColimit_isWeaklyContractible {Q : Type u} (F : Finset Q ⥤ SSet.{max u v})
-    (hF : ∀ S, IsWeaklyContractible (F.obj S)) : IsWeaklyContractible (colimit F) := by
+    (hF : ∀ S, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (F.obj S)) : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (colimit F) := by
   classical
   let G := (Functor.const (Finset Q)).obj (⊤_ SSet.{max u v})
   let η : F ⟶ G :=
@@ -58,8 +58,8 @@ lemma finiteSubsetColimit_isWeaklyContractible {Q : Type u} (F : Finset Q ⥤ SS
     (colimit.isColimit G).coconePointUniqueUpToIso
       (isColimitConstCocone (Finset Q) (⊤_ SSet.{max u v}))
   have he : terminal.from (colimit F) = colim.map η ≫ e.hom := terminal.hom_ext _ _
-  change IsWeakHomotopyEquivalence (terminal.from (colimit F))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (terminal.from (colimit F))
   rw [he]
-  exact hw.comp (isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
+  exact hw.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso e).isWeakHomotopyEquivalence
 
 end SerrePositivity.EInfinity.Hammock

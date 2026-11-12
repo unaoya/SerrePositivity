@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
-public import SerrePositivity.InfinityCategories.Kan.MappingSpaceEdges
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceEdges
 
 /-!
 # 写像単体的集合の指定した辺から元の全区間ホモトピーを構成する
@@ -48,19 +48,19 @@ variable {X K : SSet.{v}} {f g : X ⟶ K}
 転置の単射性と自然性により、元の全パラメータ族の等式へ戻す。
 -/
 def ofEdge (e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ (ihom X).obj K)
-    (h₀ : SSet.stdSimplex.δ (1 : Fin 2) ≫ e = LargeParameterSquare.point f)
-    (h₁ : SSet.stdSimplex.δ (0 : Fin 2) ≫ e = LargeParameterSquare.point g) :
+    (h₀ : SSet.stdSimplex.δ (1 : Fin 2) ≫ e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point f)
+    (h₁ : SSet.stdSimplex.δ (0 : Fin 2) ≫ e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point g) :
     SSet.Homotopy f g where
   h := uncurry e
   h₀ := by
     change SSet.ι₀ ≫ uncurry e = f
     rw [← LargeParameterHomotopy.section_zero X, Category.assoc,
-      ← uncurry_natural_left, h₀, LargeParameterSquare.point, uncurry_curry]
+      ← uncurry_natural_left, h₀, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point, uncurry_curry]
     rfl
   h₁ := by
     change SSet.ι₁ ≫ uncurry e = g
     rw [← LargeParameterHomotopy.section_one X, Category.assoc,
-      ← uncurry_natural_left, h₁, LargeParameterSquare.point, uncurry_curry]
+      ← uncurry_natural_left, h₁, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point, uncurry_curry]
     rfl
   rel := by
     apply NatTrans.ext
@@ -68,8 +68,8 @@ def ofEdge (e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ (ihom X).obj 
     exact ConcreteCategory.hom_ext _ _ (fun x => False.elim x.1.property)
 
 lemma ofEdge_h (e : SSet.stdSimplex.{v}.obj (SimplexCategory.mk 1) ⟶ (ihom X).obj K)
-    (h₀ : SSet.stdSimplex.δ (1 : Fin 2) ≫ e = LargeParameterSquare.point f)
-    (h₁ : SSet.stdSimplex.δ (0 : Fin 2) ≫ e = LargeParameterSquare.point g) :
+    (h₀ : SSet.stdSimplex.δ (1 : Fin 2) ≫ e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point f)
+    (h₁ : SSet.stdSimplex.δ (0 : Fin 2) ≫ e = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.point g) :
     (ofEdge e h₀ h₁).h = uncurry e := rfl
 
 end SerrePositivity.SimplicialModel.CurriedHomotopy

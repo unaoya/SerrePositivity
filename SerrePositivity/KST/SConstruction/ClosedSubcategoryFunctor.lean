@@ -21,7 +21,7 @@ def closedSubcategoryMap {X Y : StableModel.{u}}
     (P : ClosedStablePredicate X) (Q : ClosedStablePredicate Y) (f : X ⟶ Y)
     (hf : ∀ x, P.predicate x → Q.predicate (f.val.app (Opposite.op ⦋0⦌) x)) :
     closedSubcategory P ⟶ closedSubcategory Q :=
-  fullSubcomplexLift Q.predicate ((closedStableInclusion P).val ≫ f.val)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift Q.predicate ((closedStableInclusion P).val ≫ f.val)
     (fun x => hf x.val (closedSubcategory_vertex P x))
 
 /-- 制限の包含後の射は元の完全関手との合成。 -/
@@ -30,7 +30,7 @@ lemma closedSubcategoryMap_inclusion {X Y : StableModel.{u}}
     (hf : ∀ x, P.predicate x → Q.predicate (f.val.app (Opposite.op ⦋0⦌) x)) :
     closedSubcategoryMap P Q f hf ≫ (closedStableInclusion Q).val =
       (closedStableInclusion P).val ≫ f.val :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 所属条件を保つ完全関手は全部分圏の完全関手に制限される。 -/
 def closedStableMap {X Y : StableModel.{u}}

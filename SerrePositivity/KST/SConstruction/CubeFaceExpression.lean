@@ -21,9 +21,9 @@ inductive CubeFaceExpression : ℕ → ℕ → Type
 
 /-- 元の面の式を具体的な頂点関数へ評価する。 -/
 def cubeFaceExpressionVertex {n : ℕ} : {m : ℕ} → CubeFaceExpression n m →
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m)
   | _, .id _ => _root_.id
-  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
+  | _, .point p b i => _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
 termination_by structural _m p => p
 
 /-- 元の面の式を定数・保持標準表示へ移す。 -/
@@ -39,7 +39,7 @@ lemma cubeFaceExpressionNormal_vertex {n m : ℕ} (p : CubeFaceExpression n m) :
   | id => exact cubeFaceNormalId_vertex n
   | point p b i ih =>
     change cubeFaceNormalVertex (cubeFaceNormalInsert (cubeFaceExpressionNormal p) b i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexFace b _ i ∘ cubeFaceExpressionVertex p
     rw [cubeFaceNormalInsert_vertex, ih]
 
 open SerrePositivity.DifferentialGraded

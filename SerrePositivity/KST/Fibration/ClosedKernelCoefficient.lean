@@ -28,7 +28,7 @@ variable {B : StableModel.{u}} (P : ClosedStablePredicate B)
 規約：P の retract 閉包を取らない。使われ方：全有限積係数の実同型。 -/
 def closedFlagKernelCoefficientIso :
     closedStableModel (kernelClosedPredicate (closedKernelZeroMap P)) ≅ closedStableModel P :=
-  killedKernelIso (closedKernelZeroMap P) (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
+  killedKernelIso (closedKernelZeroMap P) (fun _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _)
 
 /-- 概要：元の P 包含は同じ全 cofiber の相対入力条件を保つ。
 方針：全 P 対象が元の P へ含まれるという実頂点回収を使う。

@@ -22,10 +22,10 @@ open scoped Simplicial
 使われ方：元の二つの実現順序の照合。 -/
 def completionRelativeCoreHeadDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     SimplexCategoryᵒᵖ ⥤ (SimplexCategoryᵒᵖ ⥤ SSet.{u}) :=
   completionCokernelHeadIndex r ι ⋙ completionRelativeFlagDiagram (r + 1) f hf ⋙
-    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj quasicategoryCoreFunctor
+    (Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
 
 /-- 概要：元の相対実現の二つの対角順序は同じ元の対角で同型。
 方針：各次数で恒等とし、二方向の構造射の自然性を内部次数へ評価する。
@@ -33,7 +33,7 @@ def completionRelativeCoreHeadDiagram (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：供給側の旗を外側とする実現から元の先頭実現への接続。 -/
 def completionRelativeHeadFlipIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     simplicialDiagonalFunctor.obj
       ((completionRelativeCoreHeadDiagram r ι f hf).flip ⋙ simplicialDiagonalFunctor) ≅
         completionRelativeHeadRealization r ι f hf :=
@@ -55,13 +55,13 @@ def completionRelativeHeadFlipIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒ�
 使われ方：K-B2-S1 の右項の高次消滅の消費。 -/
 def completionClosedRelativeRealizationIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     Fibration.Relative.closedRelativeRealization (completionImageClosedPredicate r ι f hf) ≅
       completionRelativeHeadRealization r ι f hf :=
   simplicialDiagonalFunctor.mapIso
     (Functor.isoWhiskerRight (completionClosedSFlagDiagramIso r ι f hf)
       ((Functor.whiskeringRight SimplexCategoryᵒᵖ SSet.{u} SSet.{u}).obj
-        quasicategoryCoreFunctor ⋙ simplicialDiagonalFunctor)) ≪≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor ⋙ simplicialDiagonalFunctor)) ≪≫
           completionRelativeHeadFlipIso r ι f hf
 
 end SerrePositivity.KST.SConstruction.Cofinality

@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (D : Type v) [DGCategory A D]
 
 /-- 元の増大と指定対象の閉単位による native 定数単体。 -/
-def dgNativePointSimplex (x : D) (N : ℕ) : DGNerve.Simplex A D N :=
+def dgNativePointSimplex (x : D) (N : ℕ) : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N :=
   cubicalLambdaNativeSimplex A
     (DGFunctor.comp (cubicalLambdaCounit A (Δ[N] : SSet.{u})) (DGQuotient.pointDGFunctor A D x))
 
@@ -30,13 +30,13 @@ lemma dgNativePointSimplex_pullback (x : D) {M N : ℕ} (α : Fin (M + 1) →o F
 
 /-- 元の native 定数零単体は、指定した同じ対象の頂点。 -/
 lemma dgNativePointSimplex_zero (x : D) :
-    dgNativePointSimplex A D x 0 = DGNerve.Simplex.vertex x := by
-  apply DGNerve.Simplex.vertexEquiv.injective
+    dgNativePointSimplex A D x 0 = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex x := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertexEquiv.injective
   rfl
 
 /-- 元の native 定数単体との右 tensor は、元の固定対象の tensor 包含を回収する。 -/
 lemma dgNerveTensorSimplex_point_right {C : Type w} [DGCategory A C] {N : ℕ}
-    (s : DGNerve.Simplex A C N) (x : D) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A C N) (x : D) :
     dgNerveTensorSimplex A s (dgNativePointSimplex A D x N) =
       s.map (dgTensorIncludeFirst A C D x) := by
   unfold dgNerveTensorSimplex dgNativePointSimplex

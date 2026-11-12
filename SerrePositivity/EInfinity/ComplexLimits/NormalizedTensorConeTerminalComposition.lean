@@ -14,17 +14,17 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open ConeHeadIndex
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorConeData_terminal_compose_mixed {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (L R : Finset (Fin (n + 2))) (a j b : Fin (n + 2)) (k : ℤ)
-    (hL : 2 ≤ L.card) (ha : a = L.min' (Index.nonempty hL))
-    (hj : j = L.max' (Index.nonempty hL)) (hk : k = 2 - (L.card : ℤ))
+    (hL : 2 ≤ L.card) (ha : a = L.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hL))
+    (hj : j = L.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hL)) (hk : k = 2 - (L.card : ℤ))
     (ha0 : a = 0) (h0 : 0 ∈ L) (hR : 2 ≤ R.card)
-    (hjR : j = R.min' (Index.nonempty hR)) (hb : b = R.max' (Index.nonempty hR))
+    (hjR : j = R.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hR)) (hb : b = R.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hR))
     (hkR : (0 : ℤ) = 2 - (R.card : ℤ)) (hbl : b = Fin.last (n + 1)) :
     HEq (compose A ((normalizedTensorConeData A X Y c).hom R j b 0 hR hjR hb hkR)
       ((normalizedTensorConeData A X Y c).hom L a j k hL ha hj hk) (add_zero k))
@@ -67,7 +67,7 @@ lemma normalizedTensorConeData_terminal_compose_mixed {n : ℕ}
     change normalizedTensorConeObj A X Y c b = _
     rw [hbl]
     exact normalizedTensorConeObj_succ A X Y c (Fin.last n)
-  have hcomp := gradedHom_compose_heq (A := A) hx hy hz rfl rfl rfl _ _ _ _ hg' hf
+  have hcomp := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq (A := A) hx hy hz rfl rfl rfl _ _ _ _ hg' hf
     (add_zero k) (add_zero k)
   exact hcomp.trans (heq_of_eq (normalizedTensorElementSelectedCochainAtMax_compose
     A X Y c J k hJ (by have := card_withoutFirst L h0; dsimp only [J]; omega) k.negOnePow))

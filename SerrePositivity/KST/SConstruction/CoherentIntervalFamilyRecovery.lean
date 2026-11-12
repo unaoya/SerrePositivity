@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.RelativeEquivalenceFamilyRecovery
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomEquivalence
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RightIntervalEquivalence
-public import SerrePositivity.InfinityCategories.F1B.MappingSpaces.MappingParameters
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.HomEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.RightIntervalEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.MappingParameters
 
 /-! # Coherent nerve の固定端点の族の相対回収
 概要：固定端点の全区間族を、指定境界を保持する元の豊穣 Hom の族へ戻す。
@@ -24,22 +24,22 @@ variable {C : Type v} [Category.{u} C] [SimplicialCategory C]
 /-- 元の豊穣 Hom から coherent nerve の固定端点の区間模型への比較。 -/
 def coherentMappingIntervalComparison (X Y : C) :
     (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y) ⟶
-      intervalMappingSpace (coherentNerveVertex X) (coherentNerveVertex Y) :=
-  coherentHomComparison X Y ≫ pinchedHomToIntervalMappingSpace _ _
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison X Y ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _
 
 /-- 局所 Kan 性から、元の固定端点比較そのものが同値。 -/
 lemma coherentMappingIntervalComparison_isQCatEquivalence
     [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C) :
-    IsQCatEquivalence (coherentMappingIntervalComparison X Y) :=
-  (coherentHomComparison_isQCatEquivalence X Y).comp
-    (pinchedHomToIntervalMappingSpace_isQCatEquivalence _ _)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (coherentMappingIntervalComparison X Y) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.coherentHomComparison_isQCatEquivalence X Y).comp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace_isQCatEquivalence _ _)
 
 /-- 元の指定豊穣境界を厳密に保つ、固定端点の全区間族の回収。 -/
 def relativeCoherentIntervalFamilyRecovery
     [∀ X Y : C, KanComplex (SimplicialCategory.sHom X Y)] (X Y : C)
     {T U : SSet.{max u v}} (j : T ⟶ U) [Mono j]
     (a : T ⟶ (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y))
-    (b : U ⟶ intervalMappingSpace (coherentNerveVertex X) (coherentNerveVertex Y))
+    (b : U ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y))
     (h : a ≫ coherentMappingIntervalComparison X Y = j ≫ b) :
     RelativeEquivalenceFamilyData (coherentMappingIntervalComparison X Y) j a b :=
   relativeEquivalenceFamilyRecovery _
@@ -51,11 +51,11 @@ def relativeCoherentCylinderFamilyRecovery
     {T U : SSet.{max u v}} (j : T ⟶ U) [Mono j]
     (a : T ⟶ (SSet.uliftFunctor.{v, u}).obj (SimplicialCategory.sHom X Y))
     (H : (Δ[1] : SSet.{max u v}) ⊗ U ⟶ SimplicialNerve C)
-    (h₀ : prismEndpoint 0 U ≫ H = SSet.const (coherentNerveVertex X))
-    (h₁ : prismEndpoint 1 U ≫ H = SSet.const (coherentNerveVertex Y))
-    (h : a ≫ coherentMappingIntervalComparison X Y = j ≫ intervalFamilyCurry H h₀ h₁) :
+    (h₀ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 U ≫ H = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X))
+    (h₁ : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 U ≫ H = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y))
+    (h : a ≫ coherentMappingIntervalComparison X Y = j ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyCurry H h₀ h₁) :
     RelativeEquivalenceFamilyData (coherentMappingIntervalComparison X Y) j a
-      (intervalFamilyCurry H h₀ h₁) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyCurry H h₀ h₁) :=
   relativeCoherentIntervalFamilyRecovery X Y j a _ h
 
 end SerrePositivity.KST.SConstruction

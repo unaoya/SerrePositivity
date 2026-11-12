@@ -44,7 +44,7 @@ def restrictionFiberMap {K L : SSet.{u}} (f : K ⟶ L)
 lemma restrictionFiberIso_hom_ι {K L : SSet.{u}} (f : K ⟶ L)
     (X : PointedSimplicialSet.{u}) :
     (restrictionFiberIso f X).hom ≫ pointedFiberι (pre f X) =
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (pointedCofiberProjection (PointedObject.adjoinFunctor.map f)) X ≫
+      _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (pointedCofiberProjection (PointedObject.adjoinFunctor.map f)) X ≫
         (freeHomIso L X).hom := by
   dsimp only [restrictionFiberIso, Iso.trans_hom, PointedFiberComparison.iso]
   rw [Category.assoc, PointedFiberComparison.map_ι]

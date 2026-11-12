@@ -14,14 +14,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 lemma normalizedTensorTriangleData_term_zero {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 1)) (hj : j ∈ I)
     (haj : a < j) (hjb : j < b) (hbt : τ b = 2) (haz : τ a = 0) (hjz : τ j = 0) :
     HEq ((normalizedTensorTriangleData A X Y c τ).term I a b k hI ha hb hk j hj haj hjb)
@@ -31,10 +31,10 @@ lemma normalizedTensorTriangleData_term_zero {n : ℕ}
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
   have hjx := (normalizedTensorTrianglePinched_obj_zero A X Y c τ j hjz).symm
   have hjt : τ j ≠ 2 := by rw [hjz]; decide
-  dsimp only [SimplexData.term]
-  apply smul_sub_heq_of_obj_eq hx hy
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.term]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.smul_sub_heq_of_obj_eq hx hy
   · exact normalizedTensorTriangleData_hom_pinched A X Y c τ _ _ _ _ _ _ _ _ hbt haz
-  · refine gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
+  · refine _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
     · exact normalizedTensorTriangleData_hom_pinched A X Y c τ _ _ _ _ _ _ _ _ hbt hjz
     · refine (normalizedTensorTriangleData_hom_front A X Y c τ _ _ _ _ _ _ _ _ hjt).trans ?_
       apply normalizedTensorTriangleFront_Pinched_zero_hom A X Y c τ
@@ -46,7 +46,7 @@ lemma normalizedTensorTriangleData_term_two {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (j : Fin (n + 1)) (hj : j ∈ I)
     (haj : a < j) (hjb : j < b) (hbt : τ b = 2) (haz : τ a = 0) (hjt : τ j = 2) :
     HEq ((normalizedTensorTriangleData A X Y c τ).term I a b k hI ha hb hk j hj haj hjb)
@@ -56,10 +56,10 @@ lemma normalizedTensorTriangleData_term_two {n : ℕ}
   have hy := (normalizedTensorTrianglePinched_obj_two A X Y c τ b hbt).symm
   have hjx := (normalizedTensorTrianglePinched_obj_two A X Y c τ j hjt).symm
   have hjz : τ j ≠ 0 := by rw [hjt]; decide
-  dsimp only [SimplexData.term]
-  apply smul_sub_heq_of_obj_eq hx hy
+  dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.term]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.smul_sub_heq_of_obj_eq hx hy
   · exact normalizedTensorTriangleData_hom_pinched A X Y c τ _ _ _ _ _ _ _ _ hbt haz
-  · refine gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
+  · refine _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_compose_heq hx hjx hy rfl rfl rfl _ _ _ _ ?_ ?_ _ _
     · refine (normalizedTensorTriangleData_hom_back A X Y c τ _ _ _ _ _ _ _ _ hbt hjz).trans ?_
       apply normalizedTensorTriangleBack_Pinched_two_hom A X Y c τ
       intro i hi

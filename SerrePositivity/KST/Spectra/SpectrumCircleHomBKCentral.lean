@@ -15,14 +15,14 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleHomCentralSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
 
 /-- 指定した BK collapse を標準の円への元の商写像に続けたパラメーター。 -/
 def circleBKParameter :
-    (bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one) ⟶
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj (AsSmall.up.obj .one) ⟶
       PointedSimplicialSet.circle.{u}.right :=
   cospanBKCollapse.app (AsSmall.up.obj .one) ≫
     PointedObject.cofiberQuotient (boundary.{u} 1).ι
@@ -30,8 +30,8 @@ def circleBKParameter :
 /-- 元の Hom–BK end への比較の中央は、指定した円パラメーターへの制限そのもの。 -/
 lemma pointLoopCircleHomComparison_central (X Y : OmegaSpectrum.{u}) :
     pointLoopCircleHomComparison X Y ≫
-        weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-          (simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one) =
       PointedObject.basedHomι PointedSimplicialSet.circle
           (RawSpectrumMapping.pointedSpace X Y.toKanSequence) ≫
         (pre circleBKParameter.{u}).app (mappingSpace X Y) := by
@@ -48,8 +48,8 @@ lemma pointLoopCircleHomComparison_central (X Y : OmegaSpectrum.{u}) :
 /-- cotensor の実際の比較の中央は、元の Hom 比較と同じ円パラメーターへの制限。 -/
 lemma circleCotensorHomBKComparison_central (X Y : OmegaSpectrum.{u}) :
     circleCotensorHomBKComparison X Y ≫
-        weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-          (simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one) =
       (cotensorMappingEquivalence X Y PointedSimplicialSet.circle).hom ≫
         PointedObject.basedHomι PointedSimplicialSet.circle
           (RawSpectrumMapping.pointedSpace X Y.toKanSequence) ≫
@@ -59,8 +59,8 @@ lemma circleCotensorHomBKComparison_central (X Y : OmegaSpectrum.{u}) :
 /-- 中央の全パラメーターの評価は、元の cotensor 普遍評価への前合成そのもの。 -/
 lemma circleCotensorHomBKComparison_uncurry (X Y : OmegaSpectrum.{u}) :
     uncurry (circleCotensorHomBKComparison X Y ≫
-      weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-        (simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram Y) X) (AsSmall.up.obj .one)) =
       (circleBKParameter.{u} ▷ mappingSpace X (cotensor PointedSimplicialSet.circle Y)) ≫
         uncurry ((cotensorEvaluationPrecomposition X Y PointedSimplicialSet.circle).right ≫
           PointedObject.basedHomι PointedSimplicialSet.circle

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SimplexTerminalAugmentation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.SimplexNerveMonos
 public import SerrePositivity.KST.ProExcision.NerveOppositeIso
 
@@ -64,7 +64,7 @@ instance preservesMonomorphisms : functor.{v}.PreservesMonomorphisms := by
 規約：各成分は元の終端単体の制限そのもの。
 使われ方：cellular な比較の反転性。 -/
 def augmentation : functor.{v} ⟶ 𝟭 _ where
-  app K := SimplexTerminalAugmentation.augmentation K
-  naturality _ _ f := SimplexTerminalAugmentation.naturality _ f
+  app K := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.augmentation K
+  naturality _ _ f := _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SimplexTerminalAugmentation.naturality _ f
 
 end SerrePositivity.EInfinity.FrameHom.SimplexTerminalNerve

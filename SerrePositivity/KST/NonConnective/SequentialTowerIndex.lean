@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.NonConnective.SequentialIndexFunctors
-public import SerrePositivity.InfinityCategories.HomotopyLimits.StrictConeReindex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictConeReindex
 
 /-!
 概要：元の逐次添字の反対と、既存の可算塔の添字の厳密な比較。
@@ -15,7 +15,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 universe u
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.NonConnective
 
 /-- 標準の可算塔の添字から元の逐次添字の反対への実関手。 -/

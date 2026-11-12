@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectRealization
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationRealizedConeBoundary
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectYoneda
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectYoneda
 public import SerrePositivity.KST.SConstruction.DGPerfectStrictNatTransLift
 
 /-!
@@ -14,11 +14,11 @@ public import SerrePositivity.KST.SConstruction.DGPerfectStrictNatTransLift
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type (max (u + 1) v))
   [DGCategory R E] [Small.{u} E]
 local notation "I" => DGFunctor.id E
-local notation "L" => DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
+local notation "L" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R E E (dgHomGluingBimodule R E E E (I) (I))
 local notation "U" => DGHomGluingLoopConeBase R E E E (I) (I)
 local notation "IU" => DGFunctor.id (U)
 local notation "family" => dgHomGluingLoopConeFamily R E E E (I) (I)
@@ -43,7 +43,7 @@ local notation "VP" => dgPerfectRealizationPerfect R (U) E (J)
 方針：元代表を同じ実評価で送る。
 規約：同じ全対象像・全 Hom を保持。使われ方：元包含の実 Perf 始域。 -/
 def dgIdentityInverseRotationPerfectTargetFamily : DGFunctor R (L) (PerfectDGModule R E) :=
-  ((G).comp (dgPerfectYoneda R (U))).comp (VP)
+  ((G).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (U))).comp (VP)
 
 /-- 概要：元右軸 Perf 全族は包含後に元全評価族そのもの。
 方針：元評価の包含則と元 Yoneda の全包含回収を使う。
@@ -51,18 +51,18 @@ def dgIdentityInverseRotationPerfectTargetFamily : DGFunctor R (L) (PerfectDGMod
 lemma dgIdentityInverseRotationPerfectTargetFamily_underlying :
     dgPerfectModuleUnderlying R E (dgIdentityInverseRotationPerfectTargetFamily R E) = (GYV) := by
   change dgPerfectModuleUnderlying R E
-    (((G).comp (dgPerfectYoneda R (U))).comp (VP)) = (GYV)
+    (((G).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (U))).comp (VP)) = (GYV)
   rw [dgPerfectRealizationPerfect_underlying, dgPerfectModuleUnderlying_inclusion]
   exact congrArg (fun f => f.comp (V))
-    ((strictDGFunctor_comp_assoc (G) (dgPerfectYoneda R (U))
+    ((strictDGFunctor_comp_assoc (G) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda R (U))
       (perfectDGModuleInclusion R (U) Set.univ)).trans
-        (congrArg (fun f => (G).comp f) (dgPerfectYoneda_inclusion R (U))))
+        (congrArg (fun f => (G).comp f) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectYoneda_inclusion R (U))))
 
 /-- 概要：元実逆回転 cone の元右包含を同じ実 Perf 全族間に保持する。
 方針：元全 Hom 複体を持つ Perf へ元厳密自然変換を制限する。
 規約：同じ元 cycle と全自然性。使われ方：元二段 Perf 包含辺。 -/
 def dgIdentityInverseRotationPerfectConeInr :
-    StrictNatTrans (dgIdentityInverseRotationPerfectTargetFamily R E)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgIdentityInverseRotationPerfectTargetFamily R E)
       (dgIdentityInverseRotationPerfectRealizedConeFamily R E) :=
   dgPerfectStrictNatTransLift R E
     (dgIdentityInverseRotationPerfectTargetFamily R E)
@@ -75,7 +75,7 @@ def dgIdentityInverseRotationPerfectConeInr :
 方針：同じ元変換の一般の Perf 制限回収を特殊化する。
 規約：元 cycle・全自然性を保持。使われ方：元上二単体の包含辺照合。 -/
 lemma dgIdentityInverseRotationPerfectConeInr_inclusion :
-    HEq (dgStrictNatTransPostcomp (dgIdentityInverseRotationPerfectConeInr R E)
+    HEq (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (dgIdentityInverseRotationPerfectConeInr R E)
       (perfectDGModuleInclusion R E Set.univ)) (dgIdentityInverseRotationRealizedConeInr R E) :=
   dgPerfectStrictNatTransLift_inclusion R E
     (dgIdentityInverseRotationPerfectTargetFamily R E)

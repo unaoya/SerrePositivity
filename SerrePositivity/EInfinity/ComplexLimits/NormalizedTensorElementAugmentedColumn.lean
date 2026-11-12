@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.FrameHom.MixedNerveCoconePrism
-public import SerrePositivity.InfinityCategories.HomotopyLimits.TerminalCoconeSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalCoconeSimplex
 public import SerrePositivity.EInfinity.ComplexLimits.NormalizedTensorElementDiagram
 
 /-!
@@ -29,26 +29,26 @@ def normalizedTensorElementLiftedAugmentationCocone :
 def normalizedTensorElementAugmentedColumn {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     ComposableArrows (Complex A) (n + 1) :=
-  FrameHom.TerminalCoconeSimplex.diagram (normalizedTensorElementLiftedAugmentationCocone A X Y)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram (normalizedTensorElementLiftedAugmentationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1}) ⋙ ULiftHom.down.{u, u + 1, u + 1}
 
 lemma normalizedTensorElementAugmentedColumn_obj_castSucc {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) (i : Fin (n + 1)) :
     (normalizedTensorElementAugmentedColumn A X Y c).obj i.castSucc =
       (normalizedTensorElementDiagram A X Y).obj (c.obj i) := by
-  change ULiftHom.objDown ((FrameHom.TerminalCoconeSimplex.diagram
+  change ULiftHom.objDown ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram
     (normalizedTensorElementLiftedAugmentationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1})).obj i.castSucc) = _
-  rw [FrameHom.TerminalCoconeSimplex.diagram_obj_cast]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_cast]
   rfl
 
 lemma normalizedTensorElementAugmentedColumn_obj_last {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n) :
     (normalizedTensorElementAugmentedColumn A X Y c).obj (Fin.last (n + 1)) = X := by
-  change ULiftHom.objDown ((FrameHom.TerminalCoconeSimplex.diagram
+  change ULiftHom.objDown ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram
     (normalizedTensorElementLiftedAugmentationCocone A X Y)
     (c ⋙ ULiftHom.up.{u, u + 1, u + 1})).obj (Fin.last (n + 1))) = _
-  rw [FrameHom.TerminalCoconeSimplex.diagram_obj_last]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.diagram_obj_last]
   rfl
 
 end SerrePositivity.EInfinity.ComplexLimits

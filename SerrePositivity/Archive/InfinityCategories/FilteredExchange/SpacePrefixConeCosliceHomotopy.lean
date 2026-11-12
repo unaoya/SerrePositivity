@@ -4,7 +4,7 @@ public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceP
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentPrefixConeOne
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentPrefixConeZero
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexSourceConeZeroFace
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-!
 概要：同じ固定始点の最大化 cone から元の実 cone への coslice ホモトピー。

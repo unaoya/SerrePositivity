@@ -20,7 +20,7 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 open CategoryTheory CategoryTheory.Limits CategoryTheory.MonoidalCategory HomotopicalAlgebra
-open SerrePositivity.GeneralSymmetricSpectrum SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.GeneralSymmetricSpectrum
 open SerrePositivity.Quillen SerrePositivity.ModelGeneration
 
 namespace SerrePositivity.SpectrumStabilization
@@ -29,8 +29,8 @@ variable {C : Type u} [Category.{v} C] [MonoidalCategory C] [SymmetricCategory C
   [base : ModelCategory C] [IsQuillenBifunctor (curriedTensor C)] (K : C) [IsCofibrant K]
   [levelModel : ModelCategory (GeneralSymmetricSpectrum C K)]
   [∀ n : ℕ, IsLeftQuillen (freeAt (K := K) n)]
-  (I J : MorphismProperty C) [CofibrantlyGenerated.{w} I J]
-  [CofibrantlyGenerated.{w} (SpectrumLevelModel.levelGenerators K I)
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (SpectrumLevelModel.levelGenerators K I)
     (SpectrumLevelModel.levelGenerators K J)]
   [ModelCategory SSet.{v}]
   (cofSp : MorphismProperty.FunctorialFactorizationData
@@ -61,7 +61,7 @@ lemma StableModelPresentation.enriched_model :
   have := SpectrumLevelModel.general_levelTensor_isQuillen K I J
   have hP : IsQuillenBifunctor (spectrumTensorCotensor (K := K)).tensor :=
     pointwiseTensor_isQuillen
-  have hg : @CofibrantlyGenerated.{w} (GeneralSymmetricSpectrum C K) _ p.localization.model
+  have hg : @_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (GeneralSymmetricSpectrum C K) _ p.localization.model
       (SpectrumLevelModel.levelGenerators K I) p.localization.generators := p.localization.generated
   apply p.isLocalizationModel.enriched_model_of_tensor_compatible (V := C) hcof hfib
     (spectrumTensorCotensor (K := K)) hP I J
@@ -69,7 +69,7 @@ lemma StableModelPresentation.enriched_model :
   intro A B i hi X Y s hs
   have : IsCofibrant A := hdom i hi
   have : Cofibration i :=
-    ⟨(I.le_llp_rlp.trans (cofibrations_eq_generated I J).symm.le) i hi⟩
+    ⟨(I.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J).symm.le) i hi⟩
   have : IsCofibrant B := isCofibrant_of_cofibration i
   exact ⟨p.pointwiseTensor_compatible K cofSp fibSp _ hcof hfib A s hs,
     p.pointwiseTensor_compatible K cofSp fibSp _ hcof hfib B s hs⟩
@@ -80,7 +80,7 @@ lemma StableModelPresentation.monoidal_model_of_original_unit
     @MonoidalModelCategory (GeneralSymmetricSpectrum C K) _ p.localization.model _ := by
   have hF := SpectrumLevelModel.general_levelTensor_isQuillen K I J
   have : IsQuillenBifunctor (curriedTensor (GeneralSymmetricSpectrum C K)) := hF
-  have hg : @CofibrantlyGenerated.{w} (GeneralSymmetricSpectrum C K) _ p.localization.model
+  have hg : @_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} (GeneralSymmetricSpectrum C K) _ p.localization.model
       (SpectrumLevelModel.levelGenerators K I) p.localization.generators := p.localization.generated
   apply p.isLocalizationModel.monoidal_model_of_tensor_compatible hcof hfib
     (SpectrumLevelModel.levelGenerators K I) (SpectrumLevelModel.levelGenerators K J)
@@ -104,7 +104,7 @@ lemma StableModelPresentation.monoidal_model_of_original_unit
     | @map A' B' i' hi =>
       have : IsCofibrant A' := hdom i' hi
       have : Cofibration i' :=
-        ⟨(I.le_llp_rlp.trans (cofibrations_eq_generated I J).symm.le) i' hi⟩
+        ⟨(I.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated I J).symm.le) i' hi⟩
       have : IsCofibrant B' := isCofibrant_of_cofibration i'
       exact ⟨p.freeTensor_compatible K cofSp fibSp _ hcof hfib n A' s hs,
         p.freeTensor_compatible K cofSp fibSp _ hcof hfib n B' s hs⟩

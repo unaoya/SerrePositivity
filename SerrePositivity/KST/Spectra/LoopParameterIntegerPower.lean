@@ -28,7 +28,7 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine I §7。二つの円のどちらで符号を反転するかの比較。 -/
 theorem pre_integer (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (z : ℤ) (a : LoopMappingClasses CirclePower.space.{u} Y) :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z)
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z)
       (PointedObject.basedHom CirclePower.space.{u} Y)).right a = a ^ z := by
   apply (groupEquiv CirclePower.space Y).injective
   rw [map_zpow, groupEquiv_apply, groupEquiv_apply, classEquiv_pre]
@@ -40,10 +40,10 @@ theorem pre_integer (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
 使われ方：BF 1978 §2、HA §1.4.2。符号を置く loop 変数の交換。 -/
 theorem pre_integer_eq_post_integer (Y : PointedSimplicialSet.{u}) [KanComplex Y.right]
     (z : ℤ) :
-    mapπ₀ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z)
+    mapπ₀ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z)
       (PointedObject.basedHom CirclePower.space.{u} Y)).right =
       mapπ₀ (PointedObject.basedHomMap CirclePower.space.{u}
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (CirclePower.integerPowerMap z) Y)).right := by
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (CirclePower.integerPowerMap z) Y)).right := by
   funext a
   exact (pre_integer Y z a).trans (post_integerPower CirclePower.space Y z a).symm
 

@@ -27,7 +27,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 元の単一射の族で保存済みの、同じ補正済み段と全補正列。 -/
 def monicKPrismTracedStage (n : ℕ) :=
   prescribedSequenceFamilyStage (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj y))
-    (nervePoint (coherentArrowStringDirect f))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (coherentArrowStringDirect f))
     (fun n => monicKPrismRawLevelFamily n F f)
     (fun n => monicKPrismRawSequenceCompatibility n F f) (monicKPrismTracedBoundary F f) n
 
@@ -90,8 +90,8 @@ def monicKPrismTracedCompositeCorrectionChain (n : ℕ) :
       (SSet.const (familyVertex (monicKToRawLevelMap (F.map (f ≫ g)) n)))
       (monicKPrismTracedRawComposition F f g ≫
         RawSpectrumMapping.evaluation (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) := by
-  let P := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)
-  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)
+  let P := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)
+  let Q := nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)
   let a := fst P Q ≫ monicKPrismTracedBFFamily F f ≫
     OmegaSpectrum.evaluation (kOmegaSpectrum (F.obj x)) (kOmegaSpectrum (F.obj y)) n
   let b := snd P Q ≫ monicKPrismTracedRawFamily F g ≫

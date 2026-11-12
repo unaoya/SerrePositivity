@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance weightedActionForgetSelfEnrichment :
     EnrichedOrdinaryCategory PointedSimplicialSet.{u} PointedSimplicialSet.{u} :=
@@ -33,7 +33,7 @@ lemma weightedComposition_underlying_evaluation {I : Type u} [SmallCategory I]
       (weightedComposition X Y W D).right ≫
         (end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor X)) i).right ≫
           FreePointedHomRestriction.restrict (W.obj i) (pointedSpace X (D.obj i))) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
         (PointedWeightedEnd.obj W (D ⋙ pointedFunctor Y)).right).hom ≫
         space X Y.toKanSequence ◁
           uncurry ((end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i).right ≫
@@ -55,15 +55,15 @@ lemma unpointedWeightedComposition_underlyingIso_evaluation {I : Type u} [SmallC
     uncurry ((𝟙 (space X Y.toKanSequence) ⊗ₘ
         (PointedWeightedEnd.underlyingIso W (D ⋙ pointedFunctor Y)).hom) ≫
       unpointedWeightedComposition X Y W D ≫
-        weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
         (PointedWeightedEnd.obj W (D ⋙ pointedFunctor Y)).right).hom ≫
         space X Y.toKanSequence ◁
           uncurry ((end_.π (PointedWeightedEnd.diagram W (D ⋙ pointedFunctor Y)) i).right ≫
             FreePointedHomRestriction.restrict (W.obj i) (pointedSpace Y (D.obj i))) ≫
             composition X Y (D.obj i) := by
   rw [id_tensorHom, uncurry_natural_left, uncurry_natural_left,
-    unpointedWeightedComposition_evaluation, _root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_natural_right_assoc]
+    unpointedWeightedComposition_evaluation, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange_natural_right_assoc]
   have h := congrArg uncurry (PointedWeightedEnd.underlyingIso_π W (D ⋙ pointedFunctor Y) i)
   rw [uncurry_natural_left] at h
   rw [← whiskerLeft_comp_assoc (space X Y.toKanSequence), h]
@@ -79,7 +79,7 @@ lemma weightedComposition_underlyingIso {I : Type u} [SmallCategory I]
       (𝟙 (space X Y.toKanSequence) ⊗ₘ
         (PointedWeightedEnd.underlyingIso W (D ⋙ pointedFunctor Y)).hom) ≫
           unpointedWeightedComposition X Y W D := by
-  apply weightedSections_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections_hom_ext
   intro i
   apply uncurry_injective
   conv_lhs => rw [Category.assoc, Category.assoc, PointedWeightedEnd.underlyingIso_π]

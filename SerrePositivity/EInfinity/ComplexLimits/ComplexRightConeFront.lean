@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.EInfinity.ComplexLimits.ComplexRightConeComponents
-public import SerrePositivity.InfinityCategories.DGNerve.DataComponents
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.DataComponents
 
 /-!
 概要：実右 cone の前面は、augmentation を与えた元の dg 単体データと厳密に一致する。
@@ -14,10 +14,10 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
-lemma complexRightConeData_front {n : ℕ} {s : Simplex A (Complex A) n} {X : Complex A}
+lemma complexRightConeData_front {n : ℕ} {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X) :
     (complexRightConeData A η).pullback Fin.castSuccOrderEmb.toOrderHom = s.toSimplexData := by
   have hindex : (Fin.last n).predAboveOrderHom.comp Fin.castSuccOrderEmb.toOrderHom =
@@ -27,8 +27,8 @@ lemma complexRightConeData_front {n : ℕ} {s : Simplex A (Complex A) n} {X : Co
     exact Fin.predAbove_last_castSucc
   have hp : (s.toSimplexData.pullback (Fin.last n).predAboveOrderHom).pullback
       Fin.castSuccOrderEmb.toOrderHom = s.toSimplexData := by
-    rw [SimplexData.pullback_comp, hindex, SimplexData.pullback_id]
-  apply SimplexData.ext
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_comp, hindex, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_id]
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData.ext
   · funext i
     exact complexRightConeObj_castSucc A s X i
   · apply Function.hfunext rfl
@@ -55,18 +55,18 @@ lemma complexRightConeData_front {n : ℕ} {s : Simplex A (Complex A) n} {X : Co
     apply Function.hfunext rfl
     intro hk hk' h
     cases h
-    rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
       (Fin.castSucc_injective _).injOn]
     have he := complexRightConeData_hom_ordinary A η (I.image Fin.castSucc)
-      a.castSucc b.castSucc k (Index.image_two (Fin.castSucc_injective _).injOn hI)
-      (Index.image_min Fin.castSuccOrderEmb.monotone
+      a.castSucc b.castSucc k (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_two (Fin.castSucc_injective _).injOn hI)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_min Fin.castSuccOrderEmb.monotone
         (by rw [ha]; exact I.isLeast_min' _) _)
-      (Index.image_max Fin.castSuccOrderEmb.monotone
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.image_max Fin.castSuccOrderEmb.monotone
         (by rw [hb]; exact I.isGreatest_max' _) _)
       (by rw [Finset.card_image_of_injective _ (Fin.castSucc_injective _)]; exact hk)
       (ne_of_lt (Fin.castSucc_lt_last b))
-    have hh := SimplexData.hom_heq_of_eq hp I a b k hI ha hb hk
-    rw [SimplexData.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
+    have hh := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.hom_heq_of_eq hp I a b k hI ha hb hk
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Reindex.pullback_hom_of_inj _ _ _ _ _ _ _ _ _ _
       (Fin.castSucc_injective _).injOn] at hh
     exact he.trans hh
 

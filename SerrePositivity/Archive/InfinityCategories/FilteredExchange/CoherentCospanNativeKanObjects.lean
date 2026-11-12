@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanNativeComparisonEquivalence
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.KanIntervalPullbackNative
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.KanIntervalPullbackNative
 
 /-!
 概要：元の native 余極限値の二射と比較を Kan 対象間の実際の射として束ねる。

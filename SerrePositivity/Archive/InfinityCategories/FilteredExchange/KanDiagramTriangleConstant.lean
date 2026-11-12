@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.F2.CatInfinity.ConstantCoherentTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.ConstantCoherentTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanConeDiagramEdges
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CatInfinity.StrictCoherentNatTrans
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismLowerSides
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.StrictCoherentNatTrans
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TrianglePrismLowerSides
 
 /-!
 概要：strict な自然変換の円柱に由来する三角形の定値性。

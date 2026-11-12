@@ -25,9 +25,9 @@ lemma pointedMappingIhom_eq_basedHomFunctor (X : PointedSimplicialSet.{u}) :
 
 /-- 内部 curry は、元の通常の射の curry を厳密に回収する。 -/
 lemma suspensionLoopMapping_curry' {X Y : PointedSimplicialSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ⟶ Y) :
+    (f : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ⟶ Y) :
     MonoidalClosed.curry' f ≫ ihomCurry PointedSimplicialSet.circle.{u} X Y =
-      MonoidalClosed.curry' (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y f) := by
+      MonoidalClosed.curry' (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y f) := by
   change curry' f ≫ ihomCurry PointedSimplicialSet.circle.{u} X Y = curry' (curry f)
   apply MonoidalClosed.uncurry_injective
   rw [uncurry_natural_left, uncurry_ihomCurry]
@@ -37,7 +37,7 @@ lemma suspensionLoopMapping_curry' {X Y : PointedSimplicialSet.{u}}
   rw [uncurry_curry, uncurry_natural_left, uncurry_curry]
   change PointedSimplicialSet.circle.{u} ◁ (X ◁ curry' f) ≫
       (α_ PointedSimplicialSet.circle.{u} X _).inv ≫
-        (ihom.ev (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).app Y =
+        (ihom.ev (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).app Y =
     PointedSimplicialSet.circle.{u} ◁ (ρ_ X).hom ≫ f
   rw [associator_inv_naturality_right_assoc,
     MonoidalClosed.whiskerLeft_curry'_ihom_ev_app]
@@ -46,22 +46,22 @@ lemma suspensionLoopMapping_curry' {X Y : PointedSimplicialSet.{u}}
 
 /-- 元の suspension と loop の間の、点つき内部 Hom の実際の同型。 -/
 def suspensionLoopPointedMappingIso (X Y : PointedSimplicialSet.{u}) :
-    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y ≅
-      PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :=
+    PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y ≅
+      PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) :=
   ihomCurryIso PointedSimplicialSet.circle.{u} X Y
 
 /-- 基点固定写像空間の全単体次数での suspension–loop 同型。 -/
 def suspensionLoopMappingIso (X Y : PointedSimplicialSet.{u}) :
-    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y).right ≅
-      (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right :=
+    (PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y).right ≅
+      (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right :=
   (Under.forget _).mapIso (suspensionLoopPointedMappingIso X Y)
 
 /-- 写像空間の同型は頂点で元の随伴の像そのものを返す。 -/
 lemma suspensionLoopMappingIso_vertex {X Y : PointedSimplicialSet.{u}}
-    (f : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X ⟶ Y) :
+    (f : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X ⟶ Y) :
     (suspensionLoopMappingIso X Y).hom.app _
-        (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y f) =
-      pointedHomVertexEquiv X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y f) := by
+        (pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y f) =
+      pointedHomVertexEquiv X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y f) := by
   dsimp only [pointedHomVertexEquiv, Equiv.trans_apply, MonoidalClosed.curryHomEquiv']
   change (ihomCurry PointedSimplicialSet.circle.{u} X Y).right.app _
       (PointedSimplicialSet.unitVertexEquiv _ (curry' f)) = _
@@ -71,10 +71,10 @@ lemma suspensionLoopMappingIso_vertex {X Y : PointedSimplicialSet.{u}}
 /-- 標的での任意の点つき射について、内部 curry は自然。 -/
 lemma suspensionLoopPointedMappingIso_post {X Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ Z) :
-    (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map g ≫ (suspensionLoopPointedMappingIso X Z).hom =
+    (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map g ≫ (suspensionLoopPointedMappingIso X Z).hom =
       (suspensionLoopPointedMappingIso X Y).hom ≫
         (ihom X).map ((ihom PointedSimplicialSet.circle.{u}).map g) := by
-  change (ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map g ≫ ihomCurry PointedSimplicialSet.circle.{u} X Z =
+  change (ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map g ≫ ihomCurry PointedSimplicialSet.circle.{u} X Z =
     ihomCurry PointedSimplicialSet.circle.{u} X Y ≫
       (ihom X).map ((ihom PointedSimplicialSet.circle.{u}).map g)
   apply uncurry_injective
@@ -83,7 +83,7 @@ lemma suspensionLoopPointedMappingIso_post {X Y Z : PointedSimplicialSet.{u}}
   congr 1
   rw [associator_inv_naturality_right_assoc]
   exact congrArg (fun k => (α_ PointedSimplicialSet.circle.{u} X _).inv ≫ k)
-    ((ihom.ev (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).naturality g)
+    ((ihom.ev (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).naturality g)
 
 /-- 源での任意の点つき射についても、内部 curry は自然。 -/
 lemma suspensionLoopPointedMappingIso_pre {X X' Y : PointedSimplicialSet.{u}}
@@ -91,7 +91,7 @@ lemma suspensionLoopPointedMappingIso_pre {X X' Y : PointedSimplicialSet.{u}}
     (MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f)).app Y ≫
         (suspensionLoopPointedMappingIso X Y).hom =
       (suspensionLoopPointedMappingIso X' Y).hom ≫
-        (MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) := by
+        (MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) := by
   change (MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f)).app Y ≫
       ihomCurry PointedSimplicialSet.circle.{u} X Y =
     ihomCurry PointedSimplicialSet.circle.{u} X' Y ≫
@@ -107,7 +107,7 @@ lemma suspensionLoopPointedMappingIso_pre {X X' Y : PointedSimplicialSet.{u}}
 /-- 全単体次数での標的自然性。 -/
 lemma suspensionLoopMappingIso_post {X Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ Z) :
-    ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map g).right ≫ (suspensionLoopMappingIso X Z).hom =
+    ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map g).right ≫ (suspensionLoopMappingIso X Z).hom =
       (suspensionLoopMappingIso X Y).hom ≫
         ((ihom X).map ((ihom PointedSimplicialSet.circle.{u}).map g)).right :=
   congrArg Under.Hom.right (suspensionLoopPointedMappingIso_post (X := X) g)
@@ -118,24 +118,24 @@ lemma suspensionLoopMappingIso_pre {X X' Y : PointedSimplicialSet.{u}}
     ((MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f)).app Y).right ≫
         (suspensionLoopMappingIso X Y).hom =
       (suspensionLoopMappingIso X' Y).hom ≫
-        ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right :=
+        ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right :=
   congrArg Under.Hom.right (suspensionLoopPointedMappingIso_pre (Y := Y) f)
 
 /-- 逆の写像空間同型も、頂点で元の suspension 構造射を厳密に回収する。 -/
 lemma suspensionLoopMappingIso_inv_vertex {X Y : PointedSimplicialSet.{u}}
-    (f : X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) :
+    (f : X ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) :
     (suspensionLoopMappingIso X Y).inv.app _
-        (pointedHomVertexEquiv X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) f) =
-      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X) Y ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y).symm f) := by
+        (pointedHomVertexEquiv X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) f) =
+      pointedHomVertexEquiv (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X) Y ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y).symm f) := by
   have h := congrArg ((suspensionLoopMappingIso X Y).inv.app (Opposite.op ⦋0⦌))
-    (suspensionLoopMappingIso_vertex ((_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv X Y).symm f))
+    (suspensionLoopMappingIso_vertex ((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv X Y).symm f))
   simpa only [Equiv.apply_symm_apply, ← ConcreteCategory.comp_apply,
     ← NatTrans.comp_app, Iso.hom_inv_id, NatTrans.id_app, ConcreteCategory.id_apply] using h.symm
 
 /-- 逆随伴の全単体次数での標的自然性。 -/
 lemma suspensionLoopMappingIso_inv_post {X Y Z : PointedSimplicialSet.{u}}
     (g : Y ⟶ Z) :
-    (suspensionLoopMappingIso X Y).inv ≫ ((ihom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension X)).map g).right =
+    (suspensionLoopMappingIso X Y).inv ≫ ((ihom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension X)).map g).right =
       ((ihom X).map ((ihom PointedSimplicialSet.circle.{u}).map g)).right ≫
         (suspensionLoopMappingIso X Z).inv := by
   apply (cancel_mono (suspensionLoopMappingIso X Z).hom).mp
@@ -147,7 +147,7 @@ lemma suspensionLoopMappingIso_inv_pre {X X' Y : PointedSimplicialSet.{u}}
     (f : X ⟶ X') :
     (suspensionLoopMappingIso X' Y).inv ≫
         ((MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f)).app Y).right =
-      ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right ≫
+      ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right ≫
         (suspensionLoopMappingIso X Y).inv := by
   apply (cancel_mono (suspensionLoopMappingIso X Y).hom).mp
   rw [Category.assoc, suspensionLoopMappingIso_pre, Iso.inv_hom_id_assoc]
@@ -156,9 +156,9 @@ lemma suspensionLoopMappingIso_inv_pre {X X' Y : PointedSimplicialSet.{u}}
 /-- パラメータ族の前合成の厳密な回収式を、逆随伴で全次数同時に移す。 -/
 lemma suspensionLoopMappingFamily_pre {P Q : SSet.{u}}
     {X X' Y : PointedSimplicialSet.{u}} (f : X ⟶ X')
-    (s : Q ⟶ (PointedObject.basedHom X' (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right)
-    (t : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right) (j : Q ⟶ P)
-    (h : j ≫ t = s ≫ ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right) :
+    (s : Q ⟶ (PointedObject.basedHom X' (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right)
+    (t : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right) (j : Q ⟶ P)
+    (h : j ≫ t = s ≫ ((MonoidalClosed.pre f).app (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right) :
     j ≫ (t ≫ (suspensionLoopMappingIso X Y).inv) =
       (s ≫ (suspensionLoopMappingIso X' Y).inv) ≫
         ((MonoidalClosed.pre (PointedSimplicialSet.circle.{u} ◁ f)).app Y).right := by
@@ -168,17 +168,17 @@ lemma suspensionLoopMappingFamily_pre {P Q : SSet.{u}}
 /-- 等化子による具体的な制限を用いる族についても、逆随伴は回収式を保つ。 -/
 lemma suspensionLoopMappingFamily_prePointed {P Q : SSet.{u}}
     {X X' Y : PointedSimplicialSet.{u}} (f : X ⟶ X')
-    (s : Q ⟶ (PointedObject.basedHom X' (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right)
-    (t : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right) (j : Q ⟶ P)
-    (h : j ≫ t = s ≫ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y)).right) :
+    (s : Q ⟶ (PointedObject.basedHom X' (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right)
+    (t : P ⟶ (PointedObject.basedHom X (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right) (j : Q ⟶ P)
+    (h : j ≫ t = s ≫ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y)).right) :
     j ≫ (t ≫ (suspensionLoopMappingIso X Y).inv) =
       (s ≫ (suspensionLoopMappingIso X' Y).inv) ≫
-        (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedSimplicialSet.circle.{u} ◁ f) Y).right := by
-  have hp := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre f (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y))
+        (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedSimplicialSet.circle.{u} ◁ f) Y).right := by
+  have hp := congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre f (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y))
   have h' := h.trans (congrArg (fun k => s ≫ k) hp)
   have hc := suspensionLoopMappingFamily_pre f s t j h'
   have hq := congrArg Under.Hom.right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre (PointedSimplicialSet.circle.{u} ◁ f) Y)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre (PointedSimplicialSet.circle.{u} ◁ f) Y)
   exact hc.trans (congrArg (fun k => (s ≫ (suspensionLoopMappingIso X' Y).inv) ≫ k) hq.symm)
 
 end SerrePositivity.KST.SConstruction

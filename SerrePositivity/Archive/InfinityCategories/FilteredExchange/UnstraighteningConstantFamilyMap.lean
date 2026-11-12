@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.UnstraighteningConstantVertices
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.UnstraighteningConstantVertices
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorSpaceCurrying
 
 /-!
 概要：元の指定変換への定値族の全空間作用を、同じ指定頂点の実際の作用で表示する。

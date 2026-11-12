@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Coherent.ReverseTransportComparison
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.ReverseTransportComparison
 
 /-!
 概要：元の反転合成 prism の底の全族と、その二端を同じ実表示で公開する。

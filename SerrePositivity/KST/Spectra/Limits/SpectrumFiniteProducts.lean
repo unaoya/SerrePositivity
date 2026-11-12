@@ -3,7 +3,7 @@ public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProductSequence
 public import SerrePositivity.KST.Spectra.Limits.SpectrumBinaryProduct
 
 public import Mathlib.CategoryTheory.Limits.Constructions.FiniteProductsOfBinaryProducts
-public import SerrePositivity.InfinityCategories.HomotopyLimits.SpectrumPoint
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.SpectrumPoint
 public import SerrePositivity.KST.Spectra.Limits.SpectrumPoint
 
 /-!
@@ -155,7 +155,7 @@ local instance (X Y : OmegaSpectrum.{u}) : KanComplex (SimplicialCategory.sHom X
 使われ方：HTT 4.2.4.1 の有限離散図式の Hom 条件。 -/
 def spectrumFiniteProductCone_hom_isLimit {J : Type u} [Finite J]
     (F : Discrete J ⥤ OmegaSpectrum.{u}) (X : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone (spectrumFiniteProductCone F) X) :=
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone (spectrumFiniteProductCone F) X) :=
   spectrumHomCone_isLimit_of_levelwise _ (spectrumFiniteProductCone_level_isLimit F) X
 
 /-- 概要：有限離散図式の積の錐を L9 の Sp の錐へ送る。
@@ -163,16 +163,16 @@ def spectrumFiniteProductCone_hom_isLimit {J : Type u} [Finite J]
 規約：底は有限離散図式の nerve、空の添字も許す。
 使われ方：HTT 4.2.4.1、Sp の有限積の公開。 -/
 def spectrumFiniteProductInfinityCone {J : Type u} [Finite J]
-    (F : Discrete J ⥤ OmegaSpectrum.{u}) : JoinCone (strictCoherentDiagram F) :=
-  strictCoherentCone (spectrumFiniteProductCone F)
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentCone (spectrumFiniteProductCone F)
 
 /-- 概要：スペクトルの有限積錐は Sp の実際の極限錐。
 方針：全ての実際の豊穣 Hom の極限性を離散図式の比較定理へ渡す。
 規約：空積を含み、有限性以外の追加仮定は置かない。
 使われ方：HTT 4.2.4.1 の双対、HA §1.4.2、γ3c の Sp の全ての有限積。 -/
 lemma spectrumFiniteProductInfinityCone_isLimit {J : Type u} [Finite J]
-    (F : Discrete J ⥤ OmegaSpectrum.{u}) : IsLimitCone (spectrumFiniteProductInfinityCone F) :=
-  strictCoherentCone_isLimit_of_discrete_homLimit _ (spectrumFiniteProductCone_hom_isLimit F)
+    (F : Discrete J ⥤ OmegaSpectrum.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (spectrumFiniteProductInfinityCone F) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.strictCoherentCone_isLimit_of_discrete_homLimit _ (spectrumFiniteProductCone_hom_isLimit F)
 
 end
 end SerrePositivity.InfinityCategories.HomotopyLimits

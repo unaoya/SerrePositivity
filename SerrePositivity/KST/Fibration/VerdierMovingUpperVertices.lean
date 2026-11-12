@@ -16,45 +16,45 @@ open CategoryTheory MonoidalCategory MonoidalClosed CartesianMonoidalCategory SS
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
-open SerrePositivity.KST.Comparison
+
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌)
   (k : (Δ[1] : SSet.{u + 1}) _⦋0⦌)
 
 /-- 概要：同じ上側族の全入力の始対象は元の Verdier 左端の core Kan 対象。
 方針：同じ第一短辺の全一単体の始対象を評価する。
 規約：対象そのものの等式。使われ方：native Hom 始域の指定座標。 -/
 theorem verdierMovingUpperFamily_source :
-    (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ) k)).obj ⟨ULift.up 0⟩ =
-      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) := by
-  have he : SpaceInfinity.δ (2 : Fin 3)
-      (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ) k)) =
-      (coherentNerveEdge
-        (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left) ⟶
+    (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) k)).obj ⟨ULift.up 0⟩ =
+      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left) := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 3)
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) k)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
+        (show stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left) ⟶
           fullSRealizationKanObject d.left from
-            exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.left)))).edge := by
+            _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (coreSFullRealizationInclusion (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.left)))).edge := by
     apply SSet.yonedaEquiv.symm.injective
     rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply]
     exact verdierMovingUpperFamily_firstEdge d ℓ k
-  have ho := congrArg (fun e : SpaceInfinity.{u} _⦋1⦌ => e.obj ⟨ULift.up 0⟩) he
+  have ho := congrArg (fun e : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} _⦋1⦌ => e.obj ⟨ULift.up 0⟩) he
   exact ho
 
 /-- 概要：同じ上側族の全入力の終対象は元の Verdier 右端の core Kan 対象。
 方針：同じ第二短辺の標準 coherent 辺の終対象を評価する。
 規約：元の動く第二短辺を保持。使われ方：native Hom 終域の指定座標。 -/
 theorem verdierMovingUpperFamily_target :
-    (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ) k)).obj ⟨ULift.up 2⟩ =
-      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right) := by
-  have he : SpaceInfinity.δ (0 : Fin 3)
-      (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ) k)) =
-      (coherentNerveEdge ((SimplicialCategory.homEquiv' (fullSRealizationKanObject d.left)
-        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from d.right))).symm
+    (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) k)).obj ⟨ULift.up 2⟩ =
+      stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right) := by
+  have he : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (0 : Fin 3)
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) k)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((SimplicialCategory.homEquiv' (fullSRealizationKanObject d.left)
+        (stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from d.right))).symm
           ((verdierMovingUpperLastFamily d).app (Opposite.op ⦋0⦌) k).down)).edge := by
     apply SSet.yonedaEquiv.symm.injective
     rw [← stdSimplex.δ_comp_yonedaEquiv_symm, Equiv.symm_apply_apply,
-      ← familyAtVertex_precomp, verdierMovingUpperFamily_last, coherentHomIntervalFamily_vertex]
+      ← _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex_precomp, verdierMovingUpperFamily_last, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.coherentHomIntervalFamily_vertex]
     rfl
-  have ho := congrArg (fun e : SpaceInfinity.{u} _⦋1⦌ => e.obj ⟨ULift.up 1⟩) he
+  have ho := congrArg (fun e : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u} _⦋1⦌ => e.obj ⟨ULift.up 1⟩) he
   exact ho
 
 end SerrePositivity.KST.Fibration

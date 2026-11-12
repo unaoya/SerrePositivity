@@ -56,7 +56,7 @@ variable {C : Type u} [Category.{v} C] [HomotopicalAlgebra.ModelCategory C]
   (hfib : HomotopicalAlgebra.fibrations SSet.{v} = SSet.modelCategoryQuillen.J.{v}.rlp)
 
 abbrev small (b : Cᵒᵖ × C) := OrdinaryBarSmallReference.value hcof hfib b
-abbrev lifted (b : Cᵒᵖ × C) := UniverseLift.obj.{max u v} (small hcof hfib b)
+abbrev lifted (b : Cᵒᵖ × C) := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} (small hcof hfib b)
 abbrev ambient (b : Cᵒᵖ × C) :=
   MonoLocalizedFactorization.middle (OrdinaryBarSmallSubcomplex.toSmall hcof hfib b)
 
@@ -197,11 +197,11 @@ def compositionHomotopy {b c d : Cᵒᵖ × C} (f : b ⟶ c) (g : c ⟶ d) :
   simpa only [arrowLifted, Category.assoc, Category.id_comp, Category.comp_id] using H
 
 def smallArrow {b c : Cᵒᵖ × C} (f : b ⟶ c) : small hcof hfib b ⟶ small hcof hfib c :=
-  UniverseLift.lower (arrowLifted hcof hfib f)
+  _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (arrowLifted hcof hfib f)
 
 def smallCompositionHomotopy {b c d : Cᵒᵖ × C} (f : b ⟶ c) (g : c ⟶ d) :
     SSet.Homotopy
-      (UniverseLift.lower (section_ hcof hfib b ≫ action hcof hfib f ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.lower (section_ hcof hfib b ≫ action hcof hfib f ≫
         action hcof hfib g ≫ projection hcof hfib d))
       (smallArrow hcof hfib f ≫ smallArrow hcof hfib g) :=
   UniverseLift.lowerHomotopy.{max u v, v} (compositionHomotopy hcof hfib f g)
@@ -214,7 +214,7 @@ lemma transferFamily_naturality {b c : Cᵒᵖ × C} (f : b ⟶ c) {T U : SSet.{
 
 def transferred {b c : Cᵒᵖ × C} (f : b ⟶ c) {T : SSet.{max u v}}
     (s : T ⟶ choices hcof hfib f) :
-    T ⟶ UniverseLift.obj.{max u v} ((ihom (small hcof hfib b)).obj (small hcof hfib c)) :=
+    T ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{max u v} ((ihom (small hcof hfib b)).obj (small hcof hfib c)) :=
   curry (transferFamily hcof hfib f s) ≫
     (UniverseLiftParameterHom.closedIso (small hcof hfib b) (small hcof hfib c)).inv
 

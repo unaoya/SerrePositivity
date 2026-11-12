@@ -23,7 +23,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.CotensorClasses
 abbrev target (Z : OmegaSpectrum.{u}) := cotensor CirclePower.space.{u} Z
 abbrev classes (A Z : OmegaSpectrum.{u}) := π₀ (mappingSpace A (target Z))
 abbrev fundamental (A Z : OmegaSpectrum.{u}) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (RawSpectrumMapping.pointedSpace A Z.toKanSequence).right 0
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (RawSpectrumMapping.pointedSpace A Z.toKanSequence).right 0
     (RawSpectrumMapping.pointedSpace A Z.toKanSequence).basepoint
 
 /-- 元の点つき cotensor 比較。 -/
@@ -59,8 +59,8 @@ def pre {A B : OmegaSpectrum.{u}} (f : A ⟶ B) (Z : OmegaSpectrum.{u}) :
 
 def fundamentalPre {A B : OmegaSpectrum.{u}} (f : A ⟶ B) (Z : OmegaSpectrum.{u}) :
     fundamental B Z →* fundamental A Z :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.map (RawSpectrumMapping.pointedPre f Z.toKanSequence).right
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint _)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.map (RawSpectrumMapping.pointedPre f Z.toKanSequence).right
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint _)
 
 /-- 成分比較は前合成を基本群の準同型へ移す。 -/
 lemma equiv_pre {A B : OmegaSpectrum.{u}} (f : A ⟶ B) (Z : OmegaSpectrum.{u})

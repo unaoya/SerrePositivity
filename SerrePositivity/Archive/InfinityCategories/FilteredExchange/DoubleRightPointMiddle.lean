@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.DoubleRightPointCoordinates
-public import SerrePositivity.InfinityCategories.Core.MappingSpaceRightKan
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.MappingSpaceRightKan
 
 /-!
 概要：二重終点の中間を除く全面を、元の標準単体の対応する面へ移す。

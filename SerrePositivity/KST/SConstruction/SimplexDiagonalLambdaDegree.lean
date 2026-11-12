@@ -17,7 +17,7 @@ variable (A : Type u) [CommRing A]
 /-- 元の対角 Λ Hom の非零次数の加群は、元の鎖単位の同じ次数とともに零対象。 -/
 lemma simplexDiagonalLambdaHom_X_isZero {N : ℕ} (a : Fin (N + 1)) (k : ℤ) (hk : k ≠ 0) :
     IsZero ((homObject A (CubicalLambda A (SSet.stdSimplex.obj (SimplexCategory.mk N)))
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a)).X k) :=
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a)).X k) :=
   (isZero_single_obj_X (.up ℤ) 0 (𝟙_ (ModuleCat A)) k hk).of_iso
     (((HomologicalComplex.eval (ModuleCat A) (.up ℤ) k).mapIso
       (simplexDiagonalLambdaHomIso A a)).symm)

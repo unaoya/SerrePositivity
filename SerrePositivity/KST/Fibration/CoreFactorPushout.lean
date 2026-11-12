@@ -15,16 +15,16 @@ open SerrePositivity.InfinityCategories
 lemma coreFactor_iff_of_isPushout {V E P T C : SSet.{u}}
     {i : V ⟶ E} {j : V ⟶ P} {e : E ⟶ T} {p : P ⟶ T}
     (h : IsPushout i j e p) (f : T ⟶ C) :
-    (∃ g : T ⟶ (quasicategoryCore C : SSet.{u}), g ≫ (quasicategoryCore C).ι = f) ↔
-      (∃ g : E ⟶ (quasicategoryCore C : SSet.{u}), g ≫ (quasicategoryCore C).ι = e ≫ f) ∧
-      (∃ g : P ⟶ (quasicategoryCore C : SSet.{u}), g ≫ (quasicategoryCore C).ι = p ≫ f) := by
+    (∃ g : T ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C : SSet.{u}), g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).ι = f) ↔
+      (∃ g : E ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C : SSet.{u}), g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).ι = e ≫ f) ∧
+      (∃ g : P ⟶ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C : SSet.{u}), g ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).ι = p ≫ f) := by
   constructor
   · rintro ⟨g, hg⟩
     exact ⟨⟨e ≫ g, by rw [Category.assoc, hg]⟩,
       ⟨p ≫ g, by rw [Category.assoc, hg]⟩⟩
   · rintro ⟨⟨ge, he⟩, ⟨gp, hp⟩⟩
     have hw : i ≫ ge = j ≫ gp := by
-      apply (cancel_mono (quasicategoryCore C).ι).1
+      apply (cancel_mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore C).ι).1
       rw [Category.assoc, he, ← Category.assoc, h.w, Category.assoc, ← hp, ← Category.assoc]
     refine ⟨h.desc ge gp hw, ?_⟩
     apply h.hom_ext

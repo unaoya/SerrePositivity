@@ -101,7 +101,7 @@ theorem initialCechConeIso_augmentation (A : AugmentedCechDiagram K) :
       (initialCechConstantAdjunction K k hk) A.hom)
 
 variable [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 local instance : IsLocallyPresentable.{u} SSet.{u} :=
   WeightedCones.simplicialSet_isLocallyPresentable

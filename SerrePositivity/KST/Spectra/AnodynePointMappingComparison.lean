@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.AnodyneMappingLifts
-public import SerrePositivity.InfinityCategories.F1.Pointed.MonoRightHomotopyEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.MonoRightHomotopyEquivalence
 
 /-!
 概要：共通の anodyne な頂点包含を保つ射は Kan 標的への前合成で全基点 π 同型。
@@ -24,10 +24,10 @@ set_option backward.isDefEq.respectTransparency.types false
 lemma pre_piIsomorphism_of_commonAnodyne {P A B : SSet.{u}}
     (i : P ⟶ A) (j : P ⟶ B) (hi : anodyneExtensions i) (hj : anodyneExtensions j)
     (f : A ⟶ B) (h : i ≫ f = j) (Y : SSet.{u}) [KanComplex Y] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pre f).app Y) := by
-  have hiπ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms i hi Y)
-  have hjπ := _root_.SerrePositivity.InfinityCategories.F1.Pointed.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kan.anodyne_pre_rlp_monomorphisms j hj Y)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := (pre i).app Y) _ hiπ
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((pre f).app Y) := by
+  have hiπ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_pre_rlp_monomorphisms i hi Y)
+  have hjπ := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.kanPiIsomorphism_of_monoRight _ (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.anodyne_pre_rlp_monomorphisms j hj Y)
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := (pre i).app Y) _ hiπ
   have hh : (pre f).app Y ≫ (pre i).app Y = (pre j).app Y := by
     rw [← NatTrans.comp_app, ← pre_map, h]
   rw [hh]

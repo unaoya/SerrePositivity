@@ -41,20 +41,20 @@ def coherentDiagramCutHomotopy (Q : A ⟶ SimplicialNerve C) {n : ℕ} (p : A _�
 /-- 合成面の全高次単体は、元の図式から復号した実円柱で全時刻にわたり固定。 -/
 lemma coherentDiagramCutHomotopy_relative (Q : A ⟶ SimplicialNerve C) {n : ℕ}
     (p : A _⦋n⦌) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    ((Coherent.pathThrough (a := (ULift.up i : ULift.{u} _)) (c := ULift.up k)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := (ULift.up i : ULift.{u} _)) (c := ULift.up k)
         (ULift.up j)).ι ▷ (Δ[1] : SSet.{u})) ≫
         (coherentDiagramCutHomotopy Q p i j k hij hjk).h =
       CartesianMonoidalCategory.fst
-        (Coherent.pathThrough (a := (ULift.up i : ULift.{u} _)) (c := ULift.up k)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (a := (ULift.up i : ULift.{u} _)) (c := ULift.up k)
           (ULift.up j) : SSet.{u}) Δ[1] ≫
-        (Coherent.pathThrough (ULift.up j)).ι ≫ coherentDiagramPathFamily Q p i k :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.pathThrough (ULift.up j)).ι ≫ coherentDiagramPathFamily Q p i k :=
   coherentPathMappingCutHomotopy_relative (Q.app _ p) hij hjk
 
 /-- 端点 Path 上の辺は元の単体の同じ合成三角形の辺を厳密に回収する。 -/
 lemma coherentDiagramCutHomotopy_endpoint_edge (Q : A ⟶ SimplicialNerve C) {n : ℕ}
     (p : A _⦋n⦌) (i j k : Fin (n + 1)) (hij : i ≤ j) (hjk : j ≤ k) :
-    (simplicialHomotopyVertexEdge (coherentDiagramCutHomotopy Q p i j k hij hjk)
-      (nerveVertex (coherentEndpointPath
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (coherentDiagramCutHomotopy Q p i j k hij hjk)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (coherentEndpointPath
         (show (ULift.up i : ULift.{u} _) ≤ ULift.up k from hij.trans hjk)))).edge =
       (coherentSimplexCompositionEdge (Q.app _ p) i j k hij hjk).edge :=
   coherentPathMappingCutHomotopy_endpoint_edge (Q.app _ p) hij hjk

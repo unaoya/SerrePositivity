@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.RelativeExtensionFiberEndpoint
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.RelativeExtensionFiberEndpoint
 
 /-!
 概要：指定 fiber 終点の頂点等式から、元の全延長の実終点の等式を回収する。

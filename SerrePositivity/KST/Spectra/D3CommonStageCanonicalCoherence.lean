@@ -21,19 +21,19 @@ namespace SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF
 
 /-- 同じ次段 loop 像と厳密終点を共有する標準全図式族。 -/
 def commonChosenStageCanonicalImageFamily (n : ℕ) :
-    SimplicialNerve CommonObject.{u} ⟶ loopDiagrams PointedKanInfinity :=
+    SimplicialNerve CommonObject.{u} ⟶ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagrams PointedKanInfinity :=
   d3LoopCanonicalFamily d3PointedKanLoopSection (commonChosenStageLoopImageFamily n)
 
 /-- 元の段間構造の終点同型そのものを持ち上げた、標準全図式間の指定同型。 -/
 def commonChosenStageCanonicalStructureIso (n : ℕ) :
-    FunctorIso (commonChosenStageCanonicalFamily.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageCanonicalFamily.{u} n)
       (commonChosenStageCanonicalImageFamily n) :=
   d3LoopCanonicalTransport d3PointedKanLoopSection d3PointedKanLoopSection_target
     (commonChosenStageStructureDiagramIso n)
 
 /-- 同じ次段 loop 像から、その同じ終点の標準族への実 fiber 内比較。 -/
 def commonChosenStageCanonicalImageDiagramIso (n : ℕ) :
-    FunctorIso (commonChosenStageLoopImageFamily.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenStageLoopImageFamily.{u} n)
       (commonChosenStageCanonicalImageFamily n) :=
   d3LoopCanonicalDiagramIso d3PointedKanLoopSection d3PointedKanLoopSection_target
     (commonChosenStageLoopImageFamily n)
@@ -48,16 +48,16 @@ lemma commonChosenStageCanonicalStructure_naturality (n : ℕ) :
 /-- 同じ全図式の自然な構造正方形は、実始点の比較でも同じ値を保つ。 -/
 lemma commonChosenStageCanonicalStructure_source (n : ℕ) :
     (commonChosenStageCanonicalDiagramIso.{u} n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫
       (commonChosenStageCanonicalStructureIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) ≪≫
       (commonChosenStageCanonicalImageDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) := by
-  have h := congrArg (fun e ↦ FunctorIso.postcomp e
-    (loopDiagramEvaluation PointedKanInfinity 0 0))
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) := by
+  have h := congrArg (fun e ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp e
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
       (commonChosenStageCanonicalStructure_naturality n)
-  simpa only [F2.functorIso_postcomp_trans] using h
+  simpa only [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans] using h
 
 end SerrePositivity.KST.Spectra.OmegaSpectrum.AdjointLoopRelativeBF

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedSimplex
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GeneratorWordFixedCutLength
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GeneratorWordFixedCutLength
 
 /-!
 # 元の貼り戻しの一文字の列の全行の切断の前後の長さ
@@ -18,36 +18,36 @@ noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
-open CategoryTheory SimplicialLocalization
+open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
 
-lemma column_length_one (S : Zigzag W.paths a X g.val.left)
-    (T : Zigzag W.paths b g.val.right Y) : ((obj W g S T).arrow (columnIndex a b)).length = 1 := by
+lemma column_length_one (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths a X g.val.left)
+    (T : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W.paths b g.val.right Y) : ((obj W g S T).arrow (columnIndex a b)).length = 1 := by
   let L : MorphismProperty (Paths C) := fun _ _ p => p.length = 1
-  exact ((ZigzagAppend.arrow_left_property L _ _ _).trans
-    (ZigzagAppend.arrow_right_property L S
-      (ForwardZigzag.obj (W := W.paths) g.val.hom.toPath) (0 : Fin 1))).2 rfl
+  exact ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrow_left_property L _ _ _).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrow_right_property L S
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ForwardZigzag.obj (W := W.paths) g.val.hom.toPath) (0 : Fin 1))).2 rfl
 
 variable (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
-  (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [])
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
+  (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [])
 
 lemma selected_column_length_one (d : Fin (n.unop.len + 1)) :
-    (((simplex W g σ τ).obj d).arrow (AttachedPrefix.index W (simplex W g σ τ) h)).length = 1 :=
+    (((simplex W g σ τ).obj d).arrow (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h)).length = 1 :=
   (congrArg (fun j => (((simplex W g σ τ).obj d).arrow j).length)
     (simplex_firstColumn W g σ τ h)).trans
       (column_length_one W g (((AllMarked.graphMap W X g.val.left a).app n σ).obj d) (τ.obj d))
 
 lemma cut_left_length_zero (d : Fin (n.unop.len + 1)) :
-    (fixedRowCut W (simplex W g σ τ) (AttachedPrefix.index W (simplex W g σ τ) h)
-      (AttachedPrefix.nonempty W _ h) d).left.length = 0 :=
-  GeneratorWord.FixedCut.left_length_of_one W _ (selected_column_length_one W g σ τ h d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fixedRowCut W (simplex W g σ τ) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h) d).left.length = 0 :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut.left_length_of_one W _ (selected_column_length_one W g σ τ h d)
 
 lemma cut_right_length_zero (d : Fin (n.unop.len + 1)) :
-    (fixedRowCut W (simplex W g σ τ) (AttachedPrefix.index W (simplex W g σ τ) h)
-      (AttachedPrefix.nonempty W _ h) d).right.length = 0 :=
-  GeneratorWord.FixedCut.right_length_of_one W _ (selected_column_length_one W g σ τ h d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.fixedRowCut W (simplex W g σ τ) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W (simplex W g σ τ) h)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h) d).right.length = 0 :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedCut.right_length_of_one W _ (selected_column_length_one W g σ τ h d)
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

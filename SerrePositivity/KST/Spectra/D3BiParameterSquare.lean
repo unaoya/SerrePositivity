@@ -36,7 +36,7 @@ def d3BiParameterSquareOrder {n : ℕ}
 /-- 元の全 Kan 入力と四つの区間を、同じ実順序円柱の nerve へ組み合わせる。 -/
 def d3PointedKanBiSquarePair :
     PointedKanInfinity.{u} ⊗ (((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⊗ (Δ[1] ⊗ Δ[1])) ⟶
-      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Kan.EnrichedOrderedCylinder.Object ((Fin 2 × Fin 2) × (Fin 2 × Fin 2)) PointedKanObject.{u}) where
+      SimplicialNerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.EnrichedOrderedCylinder.Object ((Fin 2 × Fin 2) × (Fin 2 × Fin 2)) PointedKanObject.{u}) where
   app _ := ↾fun ⟨F, t⟩ ↦ simplexPair (d3BiParameterSquareOrder t) F
   naturality {d e} α := by
     apply ConcreteCategory.hom_ext
@@ -57,7 +57,7 @@ lemma d3PointedKanBiSquarePair_corner (i j k l : Fin 2) :
       (SSet.const ((stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j),
         (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm l))) ≫
       d3PointedKanBiSquarePair =
-    coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) ((i, j), (k, l))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stageInclusion (C := PointedKanObject.{u}) ((i, j), (k, l))) := by
   apply SSet.hom_ext
   intro d
   apply ConcreteCategory.hom_ext
@@ -78,16 +78,16 @@ variable (D E : (Fin 2 × Fin 2)ᵒᵖ ⥤ PointedSimplicialSet.{u})
 def d3PointedKanBiParameterSquare : PointedKanInfinity.{u} ⟶
     (ihom (((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⊗ (Δ[1] ⊗ Δ[1]))).obj PointedKanInfinity :=
   curry ((β_ (((Δ[1] : SSet.{u + 1}) ⊗ Δ[1]) ⊗ (Δ[1] ⊗ Δ[1])) PointedKanInfinity).hom ≫
-    d3PointedKanBiSquarePair ≫ coherentNerveMap (d3TensorParameterDiagram D E))
+    d3PointedKanBiSquarePair ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3TensorParameterDiagram D E))
 
 /-- 各角の全関手は、同じ二つの元パラメータのテンソルからの内部 Hom 作用。 -/
 lemma d3PointedKanBiParameterSquare_corner (i j k l : Fin 2) :
     d3PointedKanBiParameterSquare D E ≫
-      evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt ((stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j),
         (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm l)) =
-    coherentNerveMap (d3PointedKanIhom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3PointedKanIhom
       (D.obj (Opposite.op (i, j)) ⊗ E.obj (Opposite.op (k, l)))) := by
-  rw [d3PointedKanBiParameterSquare, curry_evaluateFunctorAt_vertex]
+  rw [d3PointedKanBiParameterSquare, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.curry_evaluateFunctorAt_vertex]
   have hb : lift
       (SSet.const ((stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j),
         (stdSimplex.obj₀Equiv.symm k, stdSimplex.obj₀Equiv.symm l)))
@@ -102,7 +102,7 @@ lemma d3PointedKanBiParameterSquare_corner (i j k l : Fin 2) :
     intro F
     rfl
   rw [← Category.assoc, ← Category.assoc, hb, Category.assoc,
-    ← Category.assoc, d3PointedKanBiSquarePair_corner, ← coherentNerveMap_comp,
+    ← Category.assoc, d3PointedKanBiSquarePair_corner, ← _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp,
     d3TensorParameterDiagram_stage]
 
 /-- 元の二つの実端点四角形を、全 Kan Hom 上の同じ四次元図式として保持する。 -/

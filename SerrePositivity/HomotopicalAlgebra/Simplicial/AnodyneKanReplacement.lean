@@ -26,6 +26,7 @@ public import Mathlib.CategoryTheory.Types.Basic
 public import Mathlib.Combinatorics.Quiver.Basic
 public import Mathlib.Data.Fintype.EquivFin
 public import Mathlib.Data.Fintype.OfMap
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 # hornの小対象論法で作った置換の値が全hornに対する右持ち上げ性を持つ
@@ -65,6 +66,7 @@ open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.SimplicialModel.AnodyneKanReplacement
 
+@[kerodon 00UV]
 def factorization : MorphismProperty.FunctorialFactorizationData
     SSet.anodyneExtensions.{v} SSet.modelCategoryQuillen.J.rlp := by
   rw [SSet.anodyneExtensions_eq_llp_rlp]

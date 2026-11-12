@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.SkeletonFiltration
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.SkeletonFiltration
 public import SerrePositivity.KST.Spectra.PointedWeightedEndPreMap
 
 /-!
@@ -30,7 +30,7 @@ variable {I : Type u} [SmallCategory I]
 規約：n は含める単体の最大次元。
 使われ方：Goerss–Jardine VIII §1。部分 end の重み。 -/
 def weight (W : I ⥤ SSet.{u}) (n : ℕ) : I ⥤ SSet.{u} :=
-  W ⋙ _root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.functor (n + 1)
+  W ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.functor (n + 1)
 
 /-- 概要：重みの有限骨格の間の包含。
 方針：骨格関手の間の自然変換を重みで前合成する。
@@ -38,14 +38,14 @@ def weight (W : I ⥤ SSet.{u}) (n : ℕ) : I ⥤ SSet.{u} :=
 使われ方：Goerss–Jardine VIII §1。部分 end の塔の遷移。 -/
 def weightTransition (W : I ⥤ SSet.{u}) {n m : ℕ} (h : n ≤ m) :
     weight W n ⟶ weight W m :=
-  Functor.whiskerLeft W (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.transition (Nat.add_le_add_right h 1))
+  Functor.whiskerLeft W (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.transition (Nat.add_le_add_right h 1))
 
 /-- 概要：有限骨格の重みから全体の重みへの包含。
 方針：骨格の包含の自然変換を重みで前合成する。
 規約：値は実際の部分複体の包含。
 使われ方：Goerss–Jardine VIII §1。全体から部分 end への制限。 -/
 def weightInclusion (W : I ⥤ SSet.{u}) (n : ℕ) : weight W n ⟶ W :=
-  Functor.whiskerLeft W (_root_.SerrePositivity.InfinityCategories.Kan.SkeletonFiltration.inclusion (n + 1))
+  Functor.whiskerLeft W (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.inclusion (n + 1))
 
 lemma weightTransition_inclusion (W : I ⥤ SSet.{u}) {n m : ℕ} (h : n ≤ m) :
     weightTransition W h ≫ weightInclusion W m = weightInclusion W n := rfl

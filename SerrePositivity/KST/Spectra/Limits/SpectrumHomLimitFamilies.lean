@@ -32,7 +32,7 @@ def spectrumLevelCone (c : Cone F) (n : ℕ) : Cone (F ⋙ spectrumLevelFunctor 
 /-- 概要：スペクトルの錐を指定段の点つき Hom の錐へ写す。
 方針：指定段の Hom 関手で錐を写す。
 規約：X と n を固定する。
-使われ方：Kerodon 7.5.4.6 の各段の Hom の普遍性。 -/
+使われ方：Kerodon 7.5.4.6（Tag 03BB） の各段の Hom の普遍性。 -/
 def spectrumStageHomCone (c : Cone F) (X : OmegaSpectrum.{u}) (n : ℕ) :
     Cone (F ⋙ spectrumStageHomFunctor X n) :=
   (spectrumStageHomFunctor X n).mapCone c
@@ -52,7 +52,7 @@ def spectrumStageHomCone_isLimit (c : Cone F) (X : OmegaSpectrum.{u}) (n : ℕ)
 規約：パラメータは元の錐 s の任意の単体集合 s.pt。
 使われ方：BF 1978 §2、全 Hom パラメータの普遍性の入力。 -/
 def spectrumHomParameterCone (X : OmegaSpectrum.{u}) (n : ℕ)
-    (s : Cone (simplicialHomDiagram F X)) : Cone (F ⋙ spectrumStageHomFunctor X n) :=
+    (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) : Cone (F ⋙ spectrumStageHomFunctor X n) :=
   (Cone.postcompose (Functor.whiskerLeft F (spectrumMappingEvaluation X n))).obj s
 
 /-- 概要：各段で極限となるスペクトルの錐へ、Hom パラメータの族を各段で持ち上げる。
@@ -60,7 +60,7 @@ def spectrumHomParameterCone (X : OmegaSpectrum.{u}) (n : ℕ)
 規約：元の錐 s は Hom 図式上の任意の錐。
 使われ方：HTT 4.2.4.1 の実際の写像空間への普遍射の段ごとの構成。 -/
 def spectrumHomLimitFamily (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) (n : ℕ) :
     s.pt ⟶ (PointedObject.basedHom (X.level n).space (c.pt.level n).space).right :=
   (spectrumStageHomCone_isLimit c X n (hc n)).lift (spectrumHomParameterCone X n s)
 
@@ -69,7 +69,7 @@ def spectrumHomLimitFamily (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone 
 規約：全ての添字 i と全ての段 n についての射の厳密な等式。
 使われ方：BF 1978 §2、スペクトルの構造射との整合性と全 Hom の普遍性の検証。 -/
 lemma spectrumHomLimitFamily_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) (i : I) :
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) (n : ℕ) (i : I) :
     spectrumHomLimitFamily c hc X s n ≫
         (pointedMappingFunctor (X.level n).space).map ((c.π.app i).app n) =
       s.π.app i ≫ OmegaSpectrum.evaluation X (F.obj i) n :=
@@ -80,19 +80,19 @@ lemma spectrumHomLimitFamily_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLeve
 規約：全ての Hom パラメータを同時に扱う。
 使われ方：BF 1978 §2、実際の全写像空間への普遍的な持ち上げの条件。 -/
 lemma spectrumHomLimitFamily_condition (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) (n : ℕ) :
     spectrumHomLimitFamily c hc X s (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space =
       spectrumHomLimitFamily c hc X s n ≫ OmegaSpectrum.mappingStep X c.pt n := by
-  have hb := isLimitOfPreserves (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space))
+  have hb := isLimitOfPreserves (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space))
     (hc (n + 1))
   apply hb.hom_ext
   intro i
   change (spectrumHomLimitFamily c hc X s (n + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space) ≫
-      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map ((c.π.app i).app (n + 1)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (c.pt.level (n + 1)).space) ≫
+      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map ((c.π.app i).app (n + 1)) =
     (spectrumHomLimitFamily c hc X s n ≫ OmegaSpectrum.mappingStep X c.pt n) ≫
-      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)).map ((c.π.app i).app (n + 1))
+      (pointedMappingFunctor (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)).map ((c.π.app i).app (n + 1))
   rw [Category.assoc, pointedMapping_pre_post, ← Category.assoc,
     spectrumHomLimitFamily_fac]
   rw [Category.assoc (spectrumHomLimitFamily c hc X s n)
@@ -107,10 +107,10 @@ lemma spectrumHomLimitFamily_condition (c : Cone F) (hc : ∀ n, IsLimit (spectr
 規約：写像空間の別模型や追加の比較同値は導入しない。
 使われ方：HTT 4.2.4.1 の Sp の豊穣 Hom の極限の普遍性の構成。 -/
 def spectrumHomConeLift (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) :
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) :
     s.pt ⟶ OmegaSpectrum.mappingSpace X c.pt :=
   TruncatedMapping.familyLift (fun n ↦ (X.level n).space) (fun n ↦ (c.pt.level n).space)
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) X.sigma (OmegaSpectrum.mappingStep X c.pt)
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) X.sigma (OmegaSpectrum.mappingStep X c.pt)
     (spectrumHomLimitFamily c hc X s) (spectrumHomLimitFamily_condition c hc X s)
 
 /-- 概要：全写像空間への普遍射を各段で評価すると各段の普遍族になる。
@@ -118,7 +118,7 @@ def spectrumHomConeLift (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n
 規約：全ての段と Hom パラメータに成立する。
 使われ方：BF 1978 §2、豊穣 Hom の普遍射の射影則と一意性の検証。 -/
 lemma spectrumHomConeLift_evaluation (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (n : ℕ) :
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) (n : ℕ) :
     spectrumHomConeLift c hc X s ≫ OmegaSpectrum.evaluation X c.pt n =
       spectrumHomLimitFamily c hc X s n :=
   TruncatedMapping.familyLift_evaluation _ _ _ _ _ _ _ n
@@ -128,8 +128,8 @@ lemma spectrumHomConeLift_evaluation (c : Cone F) (hc : ∀ n, IsLimit (spectrum
 規約：通常の零単体だけでなく全単体集合の射の等式。
 使われ方：HTT 4.2.4.1 の実際の Hom 極限の射影則。 -/
 lemma spectrumHomConeLift_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X)) (i : I) :
-    spectrumHomConeLift c hc X s ≫ (simplicialHomCone c X).π.app i = s.π.app i := by
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X)) (i : I) :
+    spectrumHomConeLift c hc X s ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone c X).π.app i = s.π.app i := by
   apply OmegaSpectrum.mapping_hom_ext
   intro n
   change (spectrumHomConeLift c hc X s ≫
@@ -144,9 +144,9 @@ lemma spectrumHomConeLift_fac (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCo
 規約：Hom パラメータの単体集合は任意。
 使われ方：BF 1978 §2、HTT 4.2.4.1 の豊穣 Hom の極限の一意性。 -/
 lemma spectrumHomConeLift_uniq (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelCone c n))
-    (X : OmegaSpectrum.{u}) (s : Cone (simplicialHomDiagram F X))
+    (X : OmegaSpectrum.{u}) (s : Cone (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram F X))
     (m : s.pt ⟶ OmegaSpectrum.mappingSpace X c.pt)
-    (hm : ∀ i, m ≫ (simplicialHomCone c X).π.app i = s.π.app i) :
+    (hm : ∀ i, m ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone c X).π.app i = s.π.app i) :
     m = spectrumHomConeLift c hc X s := by
   apply OmegaSpectrum.mapping_hom_ext
   intro n
@@ -171,10 +171,10 @@ lemma spectrumHomConeLift_uniq (c : Cone F) (hc : ∀ n, IsLimit (spectrumLevelC
 /-- 概要：L9 の Ω スペクトルの錐が各段で極限なら、実際の豊穣 Hom の錐も極限。
 方針：全パラメータで構成した普遍射と射影則・一意性を束ねる。
 規約：Hom 錐の極限性を追加仮定にしない。段ごとの極限対象の存在・Ω 条件は別途検証する。
-使われ方：HTT 4.2.4.1、BF 1978 §2、Kerodon 7.5.4.6、γ3c の Sp の極限への入力。 -/
+使われ方：HTT 4.2.4.1、BF 1978 §2、Kerodon 7.5.4.6（Tag 03BB）、γ3c の Sp の極限への入力。 -/
 def spectrumHomCone_isLimit_of_levelwise (c : Cone F)
     (hc : ∀ n, IsLimit (spectrumLevelCone c n)) (X : OmegaSpectrum.{u}) :
-    IsLimit (simplicialHomCone c X) where
+    IsLimit (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomCone c X) where
   lift s := spectrumHomConeLift c hc X s
   fac s i := spectrumHomConeLift_fac c hc X s i
   uniq s m hm := spectrumHomConeLift_uniq c hc X s m hm

@@ -21,10 +21,10 @@ variable {C D : Type v} [Category.{u} C] [Category.{u} D]
 /-- 豊穣関手の通常の作用は、単位からの射でも元の写像空間の作用を回収する。 -/
 lemma enrichedCollageUnderlying_map_unit (R : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) :
-    eHomEquiv SSet ((coherentEnrichedUnderlyingFunctor R).map f) =
+    eHomEquiv SSet ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map f) =
       eHomEquiv SSet f ≫ R.map X Y := by
   apply (SSet.unitHomEquiv _).injective
-  exact coherentEnrichedUnderlyingFunctor_vertex R f
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex R f
 
 /-- 元の射 X→RY を、下段 X から上段 Y への実際の射として表す。 -/
 def enrichedFunctorCollageCross (R : EnrichedFunctor SSet.{u} C D)
@@ -35,27 +35,27 @@ def enrichedFunctorCollageCross (R : EnrichedFunctor SSet.{u} C D)
 /-- 下段包含の通常の射は、元の射の豊穣単位表示そのもの。 -/
 lemma enrichedFunctorCollageBottom_map (R : EnrichedFunctor SSet.{u} C D)
     {X Y : D} (f : X ⟶ Y) :
-    (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f =
       (show 𝟙_ SSet ⟶ SimplicialCategory.sHom X Y from eHomEquiv SSet f) := by
   have h := enrichedCollageUnderlying_map_unit (enrichedFunctorCollageBottom R) f
-  change (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f =
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map f =
     eHomEquiv SSet f ≫ 𝟙 _ at h
   exact h.trans (Category.comp_id _)
 
 /-- 上段包含の通常の射も、元の射の豊穣単位表示そのもの。 -/
 lemma enrichedFunctorCollageTop_map (R : EnrichedFunctor SSet.{u} C D)
     {X Y : C} (f : X ⟶ Y) :
-    (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map f =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map f =
       (show 𝟙_ SSet ⟶ SimplicialCategory.sHom X Y from eHomEquiv SSet f) := by
   have h := enrichedCollageUnderlying_map_unit (enrichedFunctorCollageTop R) f
-  change (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map f =
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map f =
     eHomEquiv SSet f ≫ 𝟙 _ at h
   exact h.trans (Category.comp_id _)
 
 /-- 交差射の下段での前合成は、元の値域での射の合成を厳密に回収する。 -/
 lemma enrichedFunctorCollageCross_pre (R : EnrichedFunctor SSet.{u} C D)
     {X X' : D} {Y : C} (a : X ⟶ X') (f : X' ⟶ R.obj Y) :
-    (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map a ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map a ≫
         enrichedFunctorCollageCross R f = enrichedFunctorCollageCross R (a ≫ f) := by
   rw [enrichedFunctorCollageBottom_map]
   change (λ_ (𝟙_ SSet)).inv ≫ (eHomEquiv SSet a ⊗ₘ eHomEquiv SSet f) ≫
@@ -66,15 +66,15 @@ lemma enrichedFunctorCollageCross_pre (R : EnrichedFunctor SSet.{u} C D)
 lemma enrichedFunctorCollageCross_post (R : EnrichedFunctor SSet.{u} C D)
     {X : D} {Y Z : C} (f : X ⟶ R.obj Y) (b : Y ⟶ Z) :
     enrichedFunctorCollageCross R f ≫
-        (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map b =
-      enrichedFunctorCollageCross R (f ≫ (coherentEnrichedUnderlyingFunctor R).map b) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map b =
+      enrichedFunctorCollageCross R (f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map b) := by
   rw [enrichedFunctorCollageTop_map]
   change (λ_ (𝟙_ SSet)).inv ≫ (eHomEquiv SSet f ⊗ₘ eHomEquiv SSet b) ≫
       (𝟙 (SimplicialCategory.sHom X (R.obj Y)) ⊗ₘ R.map Y Z) ≫
         eComp SSet X (R.obj Y) (R.obj Z) =
-    eHomEquiv SSet (f ≫ (coherentEnrichedUnderlyingFunctor R).map b)
+    eHomEquiv SSet (f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map b)
   rw [eHomEquiv_comp]
-  let rb : R.obj Y ⟶ R.obj Z := (coherentEnrichedUnderlyingFunctor R).map b
+  let rb : R.obj Y ⟶ R.obj Z := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map b
   change (λ_ (𝟙_ SSet)).inv ≫ (eHomEquiv SSet f ⊗ₘ eHomEquiv SSet b) ≫
       (𝟙 (SimplicialCategory.sHom X (R.obj Y)) ⊗ₘ R.map Y Z) ≫
         eComp SSet X (R.obj Y) (R.obj Z) =
@@ -87,18 +87,18 @@ lemma enrichedFunctorCollageCross_post (R : EnrichedFunctor SSet.{u} C D)
 
 /-- 下段 RY から上段 Y への交差恒等射は、上段の全ての射について strict に自然。 -/
 def enrichedFunctorCollageComparison (R : EnrichedFunctor SSet.{u} C D) :
-    coherentEnrichedUnderlyingFunctor R ⋙
-        coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R) ⟶
-      coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R ⋙
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R) where
   app Y := enrichedFunctorCollageCross R (𝟙 (R.obj Y))
   naturality {Y Z} b := by
-    change (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map
-        ((coherentEnrichedUnderlyingFunctor R).map b) ≫
+    change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageBottom R)).map
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map b) ≫
           enrichedFunctorCollageCross R (𝟙 (R.obj Z)) =
       enrichedFunctorCollageCross R (𝟙 (R.obj Y)) ≫
-        (coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map b
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (enrichedFunctorCollageTop R)).map b
     rw [enrichedFunctorCollageCross_pre, enrichedFunctorCollageCross_post]
-    let rb : R.obj Y ⟶ R.obj Z := (coherentEnrichedUnderlyingFunctor R).map b
+    let rb : R.obj Y ⟶ R.obj Z := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor R).map b
     change enrichedFunctorCollageCross R (rb ≫ 𝟙 (R.obj Z)) =
       enrichedFunctorCollageCross R (𝟙 (R.obj Y) ≫ rb)
     rw [Category.comp_id, Category.id_comp]

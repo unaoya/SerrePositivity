@@ -36,7 +36,7 @@ def cubicalSerreComonoidCubeUnit : serreConcreteCubeFunctor A ⟶
     exact (cubicalSerreChainsCubeUnit A).naturality f
 
 /-- 元の鎖立方体との各比較は、余モノイド圏で同型。 -/
-instance cubicalSerreComonoidCubeUnit_app_isIso (c : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube) :
+instance cubicalSerreComonoidCubeUnit_app_isIso (c : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube) :
     IsIso ((cubicalSerreComonoidCubeUnit A).app c) := by
   let : IsIso ((Comon.forget (Complex A)).map
       ((cubicalSerreComonoidCubeUnit A).app c)) := by

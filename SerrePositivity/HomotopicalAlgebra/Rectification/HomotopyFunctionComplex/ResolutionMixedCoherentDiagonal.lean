@@ -70,16 +70,16 @@ lemma coherent_evaluate (p : Index C) : NerveMovingParameter.evaluate (intervalP
   NerveMovingFamilyFit.extend_evaluate _ _ _ _ _ _ _ _ _ p
 
 lemma coherent_boundary : coherent C hcof hfib ≫ restriction (boundaryParameters C)
-    (intervalParameters C) (NerveMovingParameter.lifted (smallValues C)) (boundaryInclusion C) =
+    (intervalParameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C)) (boundaryInclusion C) =
       fixedBoundary C hcof := NerveMovingFamilyFit.extend_boundary _ _ _ _ _ _ _ _ _
 
-lemma coherent_recover (p : Index C) : UniverseLift.lowerSimplexTensor
+lemma coherent_recover (p : Index C) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor
     (NerveMovingParameter.evaluate (intervalParameters C) (smallValues C) (coherent C hcof hfib) p)
       =
     RelativeChoiceSpace.family (ResolutionMixedTriangles.oldInclusion C p)
       (ResolutionMixedTriangles.oldBoundary C p) (ResolutionMixedTriangles.oldDiagonal C hcof hfib
         p) :=
-  (congrArg UniverseLift.lowerSimplexTensor (coherent_evaluate C hcof hfib p)).trans
+  (congrArg _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.lowerSimplexTensor (coherent_evaluate C hcof hfib p)).trans
     (ResolutionMixedDiagonalData.recover C hcof hfib p)
 
 lemma coherent_zero : ResolutionMixedEndpointCompatibility.endpoint C (coherent C hcof hfib) 1 =
@@ -87,7 +87,7 @@ lemma coherent_zero : ResolutionMixedEndpointCompatibility.endpoint C (coherent 
       (ResolutionMixedEndpointCompatibility.corner0 C hcof) := by
   change coherent C hcof hfib ≫ restriction _ _ _
     (Functor.whiskerLeft (arrowFunctor C)
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (1 : Fin 2))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (1 : Fin 2))
         (ResolutionArrowComparisonEndpoints.parameter C))) = _
   rw [← ResolutionArrowCylinderFaces.zero]
   change coherent C hcof hfib ≫ restriction _ _ _
@@ -99,7 +99,7 @@ lemma coherent_zero : ResolutionMixedEndpointCompatibility.endpoint C (coherent 
       (ResolutionArrowCylinderBoundary.zeroInclusion C)) = _
   rw [← reindex_restriction, ResolutionArrowCylinderBoundary.system_zero, reindex_expand]
   exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
       (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
         (NerveArrowComparisonComposition.left_reindex (K C) (F C) (chosen C hcof) (arrowFunctor C))
 
@@ -108,7 +108,7 @@ lemma coherent_one : ResolutionMixedEndpointCompatibility.endpoint C (coherent C
       (ResolutionMixedEndpointCompatibility.corner3 C hcof) := by
   change coherent C hcof hfib ≫ restriction _ _ _
     (Functor.whiskerLeft (arrowFunctor C)
-      (NerveCylinderBoundary.vertical (SSet.stdSimplex.δ (0 : Fin 2))
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.vertical (SSet.stdSimplex.δ (0 : Fin 2))
         (ResolutionArrowComparisonEndpoints.parameter C))) = _
   rw [← ResolutionArrowCylinderFaces.one]
   change coherent C hcof hfib ≫ restriction _ _ _
@@ -120,16 +120,16 @@ lemma coherent_one : ResolutionMixedEndpointCompatibility.endpoint C (coherent C
       (ResolutionArrowCylinderBoundary.oneInclusion C)) = _
   rw [← reindex_restriction, ResolutionArrowCylinderBoundary.system_one, reindex_expand]
   exact congrArg (fun a => NerveProductParameter.expand (parameters C)
-    (NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
       (SSet.stdSimplex.obj (SimplexCategory.mk 0)) a)
         (NerveArrowComparisonComposition.right_reindex (K C) (F C) (chosen C hcof) (arrowFunctor C))
 
 
 lemma coherent_vertices : coherent C hcof hfib ≫ restriction
-    (NerveCylinderBoundary.product (vertexParameters C)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.product (vertexParameters C)
       ResolutionArrowCylinderBoundary.interval.{max u v})
-    (intervalParameters C) (NerveMovingParameter.lifted (smallValues C))
-    (NerveCylinderBoundary.horizontal (vertexParameters C) (parameters C)
+    (intervalParameters C) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.DiagramUniverseLift.NerveMovingParameter.lifted (smallValues C))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal (vertexParameters C) (parameters C)
       (ResolutionMixedDiagram.vertexInclusion C)
       ResolutionArrowCylinderBoundary.interval.{max u v}) =
     NerveNaturalBoundary.ofNatTrans _ _
@@ -138,7 +138,7 @@ lemma coherent_vertices : coherent C hcof hfib ≫ restriction
           ResolutionMixedDiagram.vertexBoundary C) := by
   change coherent C hcof hfib ≫ restriction _ _ _
     (Functor.whiskerLeft (arrowFunctor C)
-      (NerveCylinderBoundary.horizontal
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.horizontal
         (ResolutionArrowComparisonEndpoints.vertexParameter C)
         (ResolutionArrowComparisonEndpoints.parameter C)
         (ResolutionArrowComparisonEndpoints.vertexInclusion C)

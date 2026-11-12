@@ -19,7 +19,7 @@ universe u v
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory Limits AlgebraicTopology
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve.PinchedHom DoldKanComparison
+
 variable {R : Type u} [CommRing R] {D E : Type v} [DGCategory R D] [DGCategory R E]
   {x y : D} {x' y' : E}
 
@@ -31,24 +31,24 @@ lemma normalizedMoore_map_arrow {W V : SimplicialObject (ModuleCat.{u} R)}
   simp [normalizedMooreComplex, NormalizedMooreComplex.map]
 
 lemma standardMooreTermIso_map_val (f : homObject R D x y ⟶ homObject R E x' y') (n : ℕ)
-    (s : ((normalizedMooreComplex (ModuleCat R)).obj (standardModule (R := R) x y)).X n) :
-    (((standardMooreTermIso (R := R) x' y' n).hom
+    (s : ((normalizedMooreComplex (ModuleCat R)).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)).X n) :
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x' y' n).hom
       (((normalizedMooreComplex (ModuleCat R)).map (standardModuleChainMap f)).f n s))).val =
     (standardModuleChainMap f).app (Opposite.op (SimplexCategory.mk n))
-      (((standardMooreTermIso (R := R) x y n).hom s).val) := by
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x y n).hom s).val) := by
   have h := ConcreteCategory.congr_hom (normalizedMoore_map_arrow (standardModuleChainMap f) n) s
-  rw [← standardMooreTermIso_hom_subtype x' y', ← standardMooreTermIso_hom_subtype x y] at h
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso_hom_subtype x' y', ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso_hom_subtype x y] at h
   exact h
 
 lemma standardMooreTermIso_map_component (f : homObject R D x y ⟶ homObject R E x' y')
     (n : ℕ) (s : ((normalizedMooreComplex (ModuleCat R)).obj
-      (standardModule (R := R) x y)).X n) (J : Finset (Fin (n + 1))) (k : ℤ)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardModule (R := R) x y)).X n) (J : Finset (Fin (n + 1))) (k : ℤ)
     (hJ : J.Nonempty) (hk : k = 1 - (J.card : ℤ)) :
-    LinearData.component
-      (((standardMooreTermIso (R := R) x' y' n).hom
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.LinearData.component
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x' y' n).hom
         (((normalizedMooreComplex (ModuleCat R)).map (standardModuleChainMap f)).f n s)).val.val)
       J k hJ hk =
-    f.f k ((((standardMooreTermIso (R := R) x y n).hom s).val).val.component J k hJ hk) := by
+    f.f k ((((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.standardMooreTermIso (R := R) x y n).hom s).val).val.component J k hJ hk) := by
   rw [standardMooreTermIso_map_val, standardModuleChainMap_val]
   rfl
 

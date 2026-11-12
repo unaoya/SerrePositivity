@@ -25,14 +25,14 @@ include ht in
 /-- 同じ全 trace と元の全木の式から、元の三円柱は同じ合成関係を満たす。 -/
 lemma familyChainBinaryComposition_class :
     SSet.HomotopyCategory.homMk
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy A.homotopy)) ≫
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy A.homotopy)) ≫
       SSet.HomotopyCategory.homMk
-        (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy B.homotopy)) =
+        (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy B.homotopy)) =
     SSet.HomotopyCategory.homMk
-      (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy D.homotopy)) := by
-  change SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy A.homotopy) ≫
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy B.homotopy) =
-      SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy D.homotopy)
+      (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy D.homotopy)) := by
+  change SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy A.homotopy) ≫
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy B.homotopy) =
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy D.homotopy)
   rw [familyChainCompositionWitness_class A.witness, familyChainCompositionWitness_class B.witness,
     familyChainCompositionWitness_class D.witness]
   have he : familyHomotopyChainTrace c =
@@ -43,10 +43,10 @@ lemma familyChainBinaryComposition_class :
 
 /-- 元の同じ三つの全円柱を三辺に保持する実合成三角形。 -/
 def familyChainBinaryCompositionTriangle [KanComplex E] : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy A.homotopy))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy B.homotopy))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy D.homotopy)) :=
-  (compStruct_nonempty_of_homMk_fac (familyChainBinaryComposition_class A B D ht)).some
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy A.homotopy))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy B.homotopy))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy D.homotopy)) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac (familyChainBinaryComposition_class A B D ht)).some
 
 /-- 第一面は、元の前半の同じ全円柱そのもの。 -/
 lemma familyChainBinaryCompositionTriangle_first [KanComplex E] :

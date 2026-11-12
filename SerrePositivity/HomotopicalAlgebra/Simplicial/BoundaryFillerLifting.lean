@@ -39,7 +39,7 @@ set_option backward.isDefEq.respectTransparency false
 open CategoryTheory CategoryTheory.Limits
 
 namespace SerrePositivity.SimplicialModel.BoundaryFillerLifting
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P)
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P)
   {A K : SSet.{v}} (j : A ⟶ K) [Mono j]
 
 def rule : SkeletalCellGluing.Rule (Q := P) j := by

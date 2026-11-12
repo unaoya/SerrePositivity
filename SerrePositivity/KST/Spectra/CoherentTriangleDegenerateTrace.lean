@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.CoherentSimplexTraces
 public import SerrePositivity.KST.Spectra.CoherentPathCompositionFaces
-public import SerrePositivity.InfinityCategories.F1.Coherent.ArrowData
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.ArrowData
 
 /-!
 概要：始点を重ねた退化二単体の Hom 経路は、元の辺の定値経路である。
@@ -40,7 +40,7 @@ lemma trianglePathInterval_degenerateZero :
   refine CategoryTheory.Functor.ext (fun _ ↦ ?_) ?_
   · exact @Subsingleton.elim
       (Path (ULift.up (0 : Fin 2) : ULift.{u} (Fin 2)) (ULift.up 1))
-      (coherentOnePath_subsingleton _ _) _ _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentOnePath_subsingleton _ _) _ _
   · intro i j f
     exact @Subsingleton.elim _ (pathHom_subsingleton _ _) _ _
 

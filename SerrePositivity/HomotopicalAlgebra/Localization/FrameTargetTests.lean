@@ -27,17 +27,17 @@ lemma cosimplicialHom_map_iff (A : SimplexCategory ⥤ C)
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     (hconst : ∀ {n m : SimplexCategory} (f : n ⟶ m), weakEquivalences C (A.map f))
     {Y Z : C} [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z) :
-    weakEquivalences SSet.{v} ((cosimplicialHom A).map f) ↔
-      weakEquivalences SSet.{v} ((cosimplicialHom A).map ((fibrantTarget fib).map f)) := by
+    weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map f) ↔
+      weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map ((fibrantTarget fib).map f)) := by
   have := cosimplicialHom_isRightQuillen hcof hfib A hA hconst
   have hw (X : C) [IsFibrant X] : weakEquivalences SSet.{v}
-      ((cosimplicialHom A).map ((fibrantTargetComparison fib).app X)) := by
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map ((fibrantTargetComparison fib).app X)) := by
     have := fibrantTarget_isFibrant fib X
     have : IsFibrant ((𝟭 C).obj X) := inferInstanceAs (IsFibrant X)
     have : WeakEquivalence ((fibrantTargetComparison fib).app X) :=
       ⟨fibrantTargetComparison_weakEquivalence fib X⟩
     exact (weakEquivalence_iff _).mp (Quillen.map_weakEquivalence_of_fibrant _ _)
-  have hs := congrArg (cosimplicialHom A).map ((fibrantTargetComparison fib).naturality f)
+  have hs := congrArg (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map ((fibrantTargetComparison fib).naturality f)
   simp only [Functor.map_comp] at hs
   exact FrameArrowTests.weakSquare_iff (weakEquivalences SSet.{v}) _ _ _ _ hs (hw Y) (hw Z)
 
@@ -47,7 +47,7 @@ lemma chosenResolutionHom_map_iff
     (X : C) {Y Z : C} [IsFibrant Y] [IsFibrant Z] (f : Y ⟶ Z) :
     weakEquivalences SSet.{v} (((chosenResolutionHom cof fib).obj (Opposite.op X)).map f) ↔
       weakEquivalences SSet.{v}
-        ((cosimplicialHom ((cosimplicialResolutionFamily cof).obj.obj X)).map f) :=
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((cosimplicialResolutionFamily cof).obj.obj X)).map f) :=
   (cosimplicialHom_map_iff fib hcof hfib _
     ((cosimplicialResolutionFamily cof).cofibrant X)
     ((cosimplicialResolutionFamily cof).atObject X).homotopicallyConstant f).symm

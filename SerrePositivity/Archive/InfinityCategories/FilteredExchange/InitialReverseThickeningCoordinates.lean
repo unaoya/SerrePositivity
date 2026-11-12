@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedConstantSimplex
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ConeInitialParameter
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.WeightedConstantSimplex
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.ConeInitialParameter
 
 /-!
 概要：実際の thickening の反転射を、既存の初点 path の反転関手に一致させる。

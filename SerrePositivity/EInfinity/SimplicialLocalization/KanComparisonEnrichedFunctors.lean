@@ -19,12 +19,12 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory SerrePositivity.KST.Comparison
-variable (C : RelativeCategory.{u})
+open CategoryTheory
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
-abbrev KanHammockObjects := TransportEnrichment exInfinity.{u} (HammockObjects C)
+abbrev KanHammockObjects := TransportEnrichment _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.{u} (HammockObjects C)
 
-abbrev KanFreeHammockObjects := TransportEnrichment exInfinity.{u} (FreeHammockObjects C)
+abbrev KanFreeHammockObjects := TransportEnrichment _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.{u} (FreeHammockObjects C)
 
 def kanFreeHammockAugmentationEnriched :
     EnrichedFunctor SSet.{u} (KanFreeHammockObjects C) (KanHammockObjects C) :=
@@ -36,10 +36,10 @@ def kanFreeHammockComparisonEnriched :
 
 lemma kanFreeHammockAugmentationEnriched_map (X Y : KanFreeHammockObjects C) :
     (kanFreeHammockAugmentationEnriched C).map X Y =
-      exInfinity.map (freeHammockDiagonalAugmentation C X Y) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalAugmentation C X Y) := rfl
 
 lemma kanFreeHammockComparisonEnriched_map (X Y : KanFreeHammockObjects C) :
     (kanFreeHammockComparisonEnriched C).map X Y =
-      exInfinity.map (freeHammockDiagonalComparison C X Y) := rfl
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (freeHammockDiagonalComparison C X Y) := rfl
 
 end SerrePositivity.EInfinity.SimplicialLocalization

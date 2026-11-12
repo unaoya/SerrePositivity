@@ -14,7 +14,7 @@ namespace SerrePositivity.KST.SConstruction
 lemma simplexSubsetSplitLeft_block {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hL : 2 ≤ (I.filter (· ≤ j)).card)
     (v : Fin ((I.filter (· ≤ j)).card - 1 + 1)) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI
       (Finset.filter_subset _ _) v).val = v.val := by
   let k := simplexSubsetVertexIndex I hI j hj
   have hc := simplexSubsetSplitLeft_card I hI j hj hL
@@ -35,9 +35,9 @@ lemma simplexSubsetSplitLeft_block {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 
       change (I.filter (· ≤ j)).card = k.val + 1 at hc
       refine ⟨⟨w.val, by omega⟩, ?_⟩
       exact Fin.ext rfl
-  have hi := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI
+  have hi := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder (I.filter (· ≤ j)) I hL hI
     (Finset.filter_subset _ _)).monotone.strictMono_of_injective
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_injective _ _ hL hI (Finset.filter_subset _ _))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder_injective _ _ hL hI (Finset.filter_subset _ _))
   have he := hi.eq_of_range_eq hf ((simplexSubsetSplitLeft_range I hI j hj hL).trans hr.symm)
   exact congrArg (fun g => (g v).val) he
 
@@ -45,7 +45,7 @@ lemma simplexSubsetSplitLeft_block {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 
 lemma simplexSubsetSplitRight_block {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card)
     (j : Fin (n + 1)) (hj : j ∈ I) (hR : 2 ≤ (I.filter (j ≤ ·)).card)
     (v : Fin ((I.filter (j ≤ ·)).card - 1 + 1)) :
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
       (Finset.filter_subset _ _) v).val =
       (simplexSubsetVertexIndex I hI j hj).val + v.val := by
   let k := simplexSubsetVertexIndex I hI j hj
@@ -70,9 +70,9 @@ lemma simplexSubsetSplitRight_block {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2
       apply Fin.ext
       change k.val + (w.val - k.val) = w.val
       omega
-  have hi := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
+  have hi := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder (I.filter (j ≤ ·)) I hR hI
     (Finset.filter_subset _ _)).monotone.strictMono_of_injective
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetInclusionOrder_injective _ _ hR hI (Finset.filter_subset _ _))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetInclusionOrder_injective _ _ hR hI (Finset.filter_subset _ _))
   have he := hi.eq_of_range_eq hf ((simplexSubsetSplitRight_range I hI j hj hR).trans hr.symm)
   exact congrArg (fun g => (g v).val) he
 

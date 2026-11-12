@@ -89,7 +89,7 @@ theorem externalCechWeightAugmentation_weakEquivalence
     ((weakEquivalences SSet.{u}).comp_mem _ _ (mem_weakEquivalences _) (mem_weakEquivalences _))
     (mem_weakEquivalences _)
 
-variable (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+variable (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：既存の二つの指定ホモトピー錐重みの外積（論文 補題 3.2）。
 方針：実際の射影的 cofibrant 置換から来る二つの重みを使う。

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.EndpointFixedTriangleHomotopy
 public import SerrePositivity.KST.SConstruction.FixedBoundaryCospanComparison
-public import SerrePositivity.InfinityCategories.Kan.TriangleDiamondComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TriangleDiamondComposition
 
 /-! # 共通辺への元の二実三角形から両端固定の直接比較円柱
 概要：元の二辺を共通辺へ結ぶ同じ実三角形から、二辺間の両端固定実比較を得る。
@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {E : SSet.{u}} [KanComplex E] {x y : E _⦋0⦌} {a c : E.Edge x y}
-  (D : _root_.SerrePositivity.InfinityCategories.Kan.CompositionDiamond a (SSet.Edge.id y) c (SSet.Edge.id y))
+  (D : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompositionDiamond a (SSet.Edge.id y) c (SSet.Edge.id y))
 
 /-- 元の共通辺への全二円柱を保持する、元の二辺間の全境界固定比較データ。 -/
 def endpointFixedDiamondComparisonData :
@@ -80,14 +80,14 @@ lemma endpointFixedDiamondComparisonRealization_second :
 
 /-- 第一の元の実三角形全体も、同じ高次比較の中の指定面として厳密に保持する。 -/
 lemma endpointFixedDiamondComparisonRealization_first_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 1) ≫
         endpointFixedDiamondComparisonRealization D = SSet.yonedaEquiv.symm D.first.simplex := by
   rw [endpointFixedDiamondComparisonRealization_first]
   exact endpointFixedTriangleHomotopy_triangle D.first
 
 /-- 第二の元の実三角形全体も、同じ高次比較の中の指定面として厳密に保持する。 -/
 lemma endpointFixedDiamondComparisonRealization_second_triangle :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.SquareTriangles.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.lower ≫ ((Δ[1] : SSet.{u}) ◁ stdSimplex.δ 0) ≫
         endpointFixedDiamondComparisonRealization D = SSet.yonedaEquiv.symm D.second.simplex := by
   rw [endpointFixedDiamondComparisonRealization_second]
   exact endpointFixedTriangleHomotopy_triangle D.second

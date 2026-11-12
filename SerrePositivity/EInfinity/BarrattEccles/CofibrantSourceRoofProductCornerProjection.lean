@@ -48,7 +48,7 @@ lemma cofibrantSourceRoofProductCornerMap_source :
 
 def cofibrantSourceRoofProductCommaCornerMap :
     nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-      sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) :=
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.sliceOverCorner (SSet.yonedaEquiv.symm b) (cofibrantSourceRoofProjection A X Y) :=
   (cofibrantSourceRoofProductCommaIso A X Y b).inv ≫
     cofibrantSourceRoofProductCornerMap A X Y b
 
@@ -69,7 +69,7 @@ lemma cofibrantSourceRoofProductCommaCornerMap_diagram :
         (show (cofibrantAlgebraRelativeCategory A).category from Y)
         (SimplicialLocalization.hammockLocalizationNerveMap
           (cofibrantAlgebraRelativeCategory A)) b) ≫
-      sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) =
         nerveMap (cofibrantSourceRoofProductCommaDiagram A X Y b) ≫
           SimplicialLocalization.hammockLocalizationNerveMap
             (cofibrantAlgebraRelativeCategory A) := by

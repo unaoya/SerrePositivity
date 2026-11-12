@@ -87,7 +87,7 @@ lemma pointwiseWeightedHomPiZeroEquiv_target {F G : K ⥤ C} [IsFibrant F] [IsFi
       (SSet.mapπ₀ ((pointwiseTensorFrameHomIso K W B).app F).hom (SSet.π₀.mk f)) ≫ Q.map g
   have hn : ((pointwiseTensorFrameHomIso K W B).app F).hom ≫
       (pointwiseWeightedHom K W B).map g =
-    (cosimplicialHom (pointwiseTensorFrame K W B)).map g ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (pointwiseTensorFrame K W B)).map g ≫
       ((pointwiseTensorFrameHomIso K W B).app G).hom :=
     ((pointwiseTensorFrameHomIso K W B).hom.naturality g).symm
   rw [← SSet.mapπ₀_comp_apply, hn, SSet.mapπ₀_comp_apply, SSet.mapπ₀_mk,

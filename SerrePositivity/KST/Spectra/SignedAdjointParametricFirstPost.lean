@@ -21,9 +21,9 @@ open LoopExchangePaths
 variable {P A Y Z Z' W W' : PointedSimplicialSet.{u}}
   [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
   (w : P ⟶ PointedObject.basedHom W W')
   (hc : a ≫ PointedMapping.parametricPost PointedSimplicialSet.circle.{u} w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')
@@ -52,7 +52,7 @@ def firstPathParametricPostNaturalitySquare :
 /-- 移送自然性の左境界全体は、元の同じ交換・反転頂点の指定像で一定。 -/
 lemma firstPathParametricPostNaturalitySquare_start :
     SquareAdjustment.leftSide ≫ (firstPathParametricPostNaturalitySquare a ha a' ha' v w hc f g).h =
-      SSet.const (((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (PointedObject.basedHom P (doubleLoop
+      SSet.const (((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (input f g) (PointedObject.basedHom P (doubleLoop
         Z'))).right ≫
         (PointedObject.basedHomMap A (PointedObject.basedHomMap P (projection Z'))).right).app _
           (PointedMapping.familyVertex ((swap Z ≫ reversal Z) ≫ doubleParametricPost v))) := by
@@ -65,7 +65,7 @@ lemma firstPathParametricPostNaturalitySquare_start :
 lemma firstPathParametricPostNaturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (firstPathParametricPostNaturalitySquare a ha a' ha' v w hc f
       g).h =
-      SSet.const (((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (PointedObject.basedHom P (doubleLoop
+      SSet.const (((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (input f g) (PointedObject.basedHom P (doubleLoop
         Z'))).right ≫
         (PointedObject.basedHomMap A (PointedObject.basedHomMap P (projection Z'))).right).app _
           (PointedMapping.familyVertex ((reversal Z ≫ reversal Z) ≫ doubleParametricPost v))) := by

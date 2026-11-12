@@ -21,14 +21,14 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
 
 lemma complexDiagramDerived_vertex (F : I ⥤ Complex A) (i : I) :
-    (nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex i) =
-      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (nerveVertex (F.obj i)) :=
+    (nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) =
+      (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (F.obj i)) :=
   congrArg ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)) (nerveMap_app_mk₀ F i)
 
 def complexDiagramDerivedVertexIso (F : I ⥤ Complex A) (i : I) :
-    VertexIso ((nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex i)) ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex (F.obj i))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i)) ((complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (F.obj i))) :=
   eqToIso (congrArg HomotopyCategory.mk (complexDiagramDerived_vertex A F i))
 
 end SerrePositivity.EInfinity.ComplexLimits

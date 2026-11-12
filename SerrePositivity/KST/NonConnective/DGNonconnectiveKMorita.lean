@@ -66,7 +66,7 @@ theorem dgNonconnectiveKMap_piIsomorphism_of_stagewise_morita :
 
 /-- 同じ実非連結 K 比較の Sp 辺は可逆。 -/
 theorem dgNonconnectiveKMap_isInvertible_of_stagewise_morita :
-    IsInvertibleEdge (coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgNonconnectiveKMap_piIsomorphism_of_stagewise_morita R κ hκ A B η f hf h)
 
@@ -98,7 +98,7 @@ theorem dgNonconnectiveKMap_isInvertible_of_initial_morita
         OmegaSpectrum.homotopyMap (dgKInputSpectrumMap R
           (dgSuspensionUnconditionalIterationMap R κ hκ f₀ n)) (j + n)
           (dgNonconnectiveKStage_piEquiv R κ hκ A n j x)) :
-    IsInvertibleEdge (coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgNonconnectiveKMap R κ hκ A B η)) :=
   OmegaSpectrum.isInvertible_of_piIsomorphism _
     (dgNonconnectiveKMap_piIsomorphism_of_initial_morita R κ hκ A B η f₀ hη)
 

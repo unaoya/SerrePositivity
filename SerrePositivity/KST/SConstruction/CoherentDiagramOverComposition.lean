@@ -14,20 +14,20 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory Limits SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 
 /-- 重みの移送は over 射の実際の一単体も保持する。 -/
 lemma bousfieldKanWeight_overArrow_edge {I : Type u} [SmallCategory I]
     {i j k : I} (h : i ⟶ j) (g : j ⟶ k) :
-    ((bousfieldKanWeight I).map g).app (Opposite.op ⦋1⦌)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I).map g).app (Opposite.op ⦋1⦌)
         (CategoryTheory.nerve.edgeMk (diagramSelectionOverArrow h)).edge =
       (CategoryTheory.nerve.edgeMk ((Over.map g).map (diagramSelectionOverArrow h))).edge :=
   nerveMap_app_mk₁ (Over.map g) (diagramSelectionOverArrow h)
 
 /-- 前の比較辺を後の入力で写し、合成射の始点を厳密に回収する。 -/
 def diagramSelectionCompositionFirstEdge {I : Type u} [SmallCategory I] {D : I ⥤ SSet.{u}}
-    (s : bousfieldKanWeight I ⟶ D) {i j k : I} (h : i ⟶ j) (g : j ⟶ k) :
+    (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I ⟶ D) {i j k : I} (h : i ⟶ j) (g : j ⟶ k) :
     (D.obj k).Edge ((D.map (h ≫ g)).app (Opposite.op ⦋0⦌) (diagramSelectionVertex s i))
       ((D.map g).app (Opposite.op ⦋0⦌) (diagramSelectionVertex s j)) :=
   ((diagramSelectionEdge s h).map (D.map g)).ofEq
@@ -36,7 +36,7 @@ def diagramSelectionCompositionFirstEdge {I : Type u} [SmallCategory I] {D : I �
 
 /-- 同じ over 族から得る指定した二つの比較辺は、合成射の比較辺と実三角形をなす。 -/
 lemma diagramSelectionCompositionTriangle_nonempty {I : Type u} [SmallCategory I]
-    {D : I ⥤ SSet.{u}} (s : bousfieldKanWeight I ⟶ D)
+    {D : I ⥤ SSet.{u}} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I ⟶ D)
     {i j k : I} (h : i ⟶ j) (g : j ⟶ k) :
     Nonempty (SSet.Edge.CompStruct (diagramSelectionCompositionFirstEdge s h g)
       (diagramSelectionEdge s g) (diagramSelectionEdge s (h ≫ g))) := by

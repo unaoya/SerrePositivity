@@ -80,8 +80,8 @@ def emptyIso (A B : Fin 0 → SSet.{u}) : space A ≅ space B where
     funext i
     exact Fin.elim0 i
 
-lemma map_weak (η : ∀ i, A i ⟶ B i) (hη : ∀ i, IsWeakHomotopyEquivalence (η i)) :
-    IsWeakHomotopyEquivalence (map η) := by
+lemma map_weak (η : ∀ i, A i ⟶ B i) (hη : ∀ i, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (η i)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (map η) := by
   induction k with
   | zero =>
     have h : map η = (emptyIso A B).hom := by
@@ -92,11 +92,11 @@ lemma map_weak (η : ∀ i, A i ⟶ B i) (hη : ∀ i, IsWeakHomotopyEquivalence
       funext i
       exact Fin.elim0 i
     rw [h]
-    exact (isPrecompositionEquivalence_of_iso (emptyIso A B)).isWeakHomotopyEquivalence
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (emptyIso A B)).isWeakHomotopyEquivalence
   | succ k ih =>
     have ht := weakTensor (hη 0) (ih (fun i : Fin k => η i.succ) (fun i => hη i.succ))
-    have hc := (isPrecompositionEquivalence_of_iso (splitIso A)).isWeakHomotopyEquivalence.comp ht
+    have hc := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (splitIso A)).isWeakHomotopyEquivalence.comp ht
     rw [← splitIso_naturality η] at hc
-    have hb := (isPrecompositionEquivalence_of_iso (splitIso B)).isWeakHomotopyEquivalence
+    have hb := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso (splitIso B)).isWeakHomotopyEquivalence
     exact hb.cancel_right hc
 end SerrePositivity.EInfinity.Hammock.FiniteProduct

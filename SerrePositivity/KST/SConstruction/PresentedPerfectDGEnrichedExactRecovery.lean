@@ -16,35 +16,35 @@ open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
 private lemma stableQCat_homEquiv_inclusion
-    {X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{w}} (f : X ⟶ Y) :
-    eHomEquiv SSet.{w} f ≫ ((quasicategoryCore
-      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w})).ι ≫
-        (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y).ι) = curry' (C := SSet.{w}) f.hom := by
-  have h : eHomEquiv SSet.{w} f ≫ (quasicategoryCore
-      (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w})).ι =
-        _root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv f := by
-    change quasicategoryCoreUnitHomEquiv _ (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv f) ≫ _ = _
-    rw [quasicategoryCoreUnitHomEquiv_eq, Category.assoc, quasicategoryCoreMap_ι]
-    have hu : quasicategoryCoreUnit ≫ (quasicategoryCore (𝟙_ SSet.{w})).ι = 𝟙 _ := rfl
+    {X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{w}} (f : X ⟶ Y) :
+    eHomEquiv SSet.{w} f ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors X Y : SSet.{w})).ι ≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors X Y).ι) = curry' (C := SSet.{w}) f.hom := by
+  have h : eHomEquiv SSet.{w} f ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors X Y : SSet.{w})).ι =
+        _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv f := by
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCoreUnitHomEquiv _ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv f) ≫ _ = _
+    rw [_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCoreUnitHomEquiv_eq, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap_ι]
+    have hu : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.quasicategoryCoreUnit ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (𝟙_ SSet.{w})).ι = 𝟙 _ := rfl
     rw [← Category.assoc, hu, Category.id_comp]
   exact (Category.assoc _ _ _).symm.trans
-    ((congrArg (fun g : 𝟙_ SSet.{w} ⟶ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y : SSet.{w}) =>
-      g ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors X Y).ι) h).trans
-        (_root_.SerrePositivity.InfinityCategories.Stable.Infinity.exactHomEquiv_ι f))
+    ((congrArg (fun g : 𝟙_ SSet.{w} ⟶ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors X Y : SSet.{w}) =>
+      g ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors X Y).ι) h).trans
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.exactHomEquiv_ι f))
 
 /-- 包含後の豊穣単位射の作用は、同じ元の完全な Perf 射の curry を回収する。 -/
 lemma presentedPerfectDGEnrichedExactFunctor_hom_recovery
     {C D : PerfDGInput.{u, v} A} (F : C ⟶ D) :
     (eHomEquiv SSet.{max (u + 1) v} F ≫ (presentedPerfectDGEnrichedExactFunctor A).map C D) ≫
-      ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+          SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
             (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι) =
       curry' (C := SSet.{max (u + 1) v}) (presentedPerfectDGExactMap A F).hom := by
   change (perfDGInputUnitHomEquiv A C D F ≫ presentedPerfectDGExactCoreFamilyMap A C D) ≫
-    ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
       (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-        SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+        SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
           (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι) = _
   rw [Category.assoc, ← Category.assoc (presentedPerfectDGExactCoreFamilyMap A C D),
     presentedPerfectDGExactCoreFamilyMap_inclusion]
@@ -59,9 +59,9 @@ lemma presentedPerfectDGEnrichedExactFunctor_hom
       eHomEquiv SSet.{max (u + 1) v}
         (show presentedPerfectDGStableQCat A C ⟶ presentedPerfectDGStableQCat A D from
           presentedPerfectDGExactMap A F) := by
-  apply (cancel_mono ((quasicategoryCore (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+  apply (cancel_mono ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
     (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D) :
-      SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors
+      SSet.{max (u + 1) v})).ι ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors
         (presentedPerfectDGStableCategory A C) (presentedPerfectDGStableCategory A D)).ι)).mp
   exact (presentedPerfectDGEnrichedExactFunctor_hom_recovery A F).trans
     (stableQCat_homEquiv_inclusion (show presentedPerfectDGStableQCat A C ⟶

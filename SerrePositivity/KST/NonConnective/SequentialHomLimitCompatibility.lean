@@ -22,7 +22,7 @@ namespace SerrePositivity.KST.NonConnective
 lemma sequentialHomLimitFamily_condition (D : SpectrumSequence.{u}) (Y : KanSequence.{u})
     (s : Cone (sequentialRawHomDiagram D Y)) (k : ℕ) :
     sequentialHomLimitFamily D Y s (k + 1) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((sequentialLevelColimitSpectrum D).sigma k) (Y.level (k + 1)).space =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((sequentialLevelColimitSpectrum D).sigma k) (Y.level (k + 1)).space =
         sequentialHomLimitFamily D Y s k ≫
           RawSpectrumMapping.step (sequentialLevelColimitSpectrum D) Y k := by
   let T := tensorLeft PointedSimplicialSet.circle.{u}
@@ -34,41 +34,41 @@ lemma sequentialHomLimitFamily_condition (D : SpectrumSequence.{u}) (Y : KanSequ
       (isColimitOfPreserves T (colimit.isColimit (OmegaSpectrum.levelDiagram D k))).op)
   apply hc.hom_ext
   intro a
-  have hπ : c.π.app a = _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre
+  have hπ : c.π.app a = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre
       (PointedSimplicialSet.circle.{u} ◁ colimit.ι (OmegaSpectrum.levelDiagram D k) a.unop)
         (Y.level (k + 1)).space :=
-    (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_eq_closedPre _ _)).symm
+    (congrArg Under.Hom.right (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed_eq_closedPre _ _)).symm
   rw [hπ]
   let i := sequentialLevelColimitInjection D a.unop
   have hi : PointedSimplicialSet.circle.{u} ◁ i.app k ≫
       (sequentialLevelColimitSpectrum D).sigma k =
         (D.obj a.unop).sigma k ≫ i.app (k + 1) := i.comm k
   change (sequentialHomLimitFamily D Y s (k + 1) ≫
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((sequentialLevelColimitSpectrum D).sigma k) _) ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k) _ =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((sequentialLevelColimitSpectrum D).sigma k) _) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k) _ =
     (sequentialHomLimitFamily D Y s k ≫
       RawSpectrumMapping.step (sequentialLevelColimitSpectrum D) Y k) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k) _
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k) _
   calc
     _ = sequentialHomLimitFamily D Y s (k + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ i.app k ≫
           (sequentialLevelColimitSpectrum D).sigma k) _ := by
       rw [sequentialPointedPre_comp, Category.assoc]
     _ = sequentialHomLimitFamily D Y s (k + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.obj a.unop).sigma k ≫ i.app (k + 1)) _ :=
-      congrArg (fun q ↦ sequentialHomLimitFamily D Y s (k + 1) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre q _) hi
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.obj a.unop).sigma k ≫ i.app (k + 1)) _ :=
+      congrArg (fun q ↦ sequentialHomLimitFamily D Y s (k + 1) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre q _) hi
     _ = (sequentialHomLimitFamily D Y s (k + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app (k + 1)) _) ≫
-          _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.obj a.unop).sigma k) _ := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app (k + 1)) _) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.obj a.unop).sigma k) _ := by
       rw [sequentialPointedPre_comp, Category.assoc]
     _ = (s.π.app a ≫ RawSpectrumMapping.evaluation (D.obj a.unop) Y (k + 1)) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.obj a.unop).sigma k) _ :=
-      congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((D.obj a.unop).sigma k) _)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.obj a.unop).sigma k) _ :=
+      congrArg (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((D.obj a.unop).sigma k) _)
         (sequentialHomLimitFamily_fac D Y s (k + 1) a)
     _ = (s.π.app a ≫ RawSpectrumMapping.evaluation (D.obj a.unop) Y k) ≫
         RawSpectrumMapping.step (D.obj a.unop) Y k := by
       rw [Category.assoc, RawSpectrumMapping.evaluation_condition, ← Category.assoc]
-    _ = (sequentialHomLimitFamily D Y s k ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (i.app k) _) ≫
+    _ = (sequentialHomLimitFamily D Y s k ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (i.app k) _) ≫
         RawSpectrumMapping.step (D.obj a.unop) Y k :=
       congrArg (· ≫ RawSpectrumMapping.step (D.obj a.unop) Y k)
         (sequentialHomLimitFamily_fac D Y s k a).symm

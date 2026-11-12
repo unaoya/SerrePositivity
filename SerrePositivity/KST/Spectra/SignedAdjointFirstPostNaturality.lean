@@ -20,9 +20,9 @@ open LoopExchangePaths
 variable {A Y Z Z' W W' : PointedSimplicialSet.{u}}
   [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : Z ⟶ Z') (w : W ⟶ W')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : Z ⟶ Z') (w : W ⟶ W')
   (hc : a ≫ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} w = v ≫ a')
   (f : A ⟶ PointedObject.basedHom CirclePower.space.{u} Y)
   (g : Y ⟶ PointedObject.basedHom CirclePower.space.{u} Z)
@@ -46,7 +46,7 @@ def firstPathPostNaturalitySquare :
 /-- 移送自然性の左境界全体は、元の同じ交換・反転頂点の指定像で一定。 -/
 lemma firstPathPostNaturalitySquare_start :
     SquareAdjustment.leftSide ≫ (firstPathPostNaturalitySquare a ha a' ha' v w hc f g).h =
-      SSet.const (((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (doubleLoop Z')).right ≫
+      SSet.const (((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (input f g) (doubleLoop Z')).right ≫
         (PointedObject.basedHomMap A (projection Z')).right).app _
           (PointedMapping.familyVertex ((swap Z ≫ reversal Z) ≫ doublePost v))) := by
   change SquareAdjustment.leftSide ≫
@@ -56,7 +56,7 @@ lemma firstPathPostNaturalitySquare_start :
 /-- 移送自然性の右境界全体も、元の同じ二重反転頂点の指定像で一定。 -/
 lemma firstPathPostNaturalitySquare_finish :
     SquareAdjustment.rightSide ≫ (firstPathPostNaturalitySquare a ha a' ha' v w hc f g).h =
-      SSet.const (((_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (input f g) (doubleLoop Z')).right ≫
+      SSet.const (((_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (input f g) (doubleLoop Z')).right ≫
         (PointedObject.basedHomMap A (projection Z')).right).app _
           (PointedMapping.familyVertex ((reversal Z ≫ reversal Z) ≫ doublePost v))) := by
   change SquareAdjustment.rightSide ≫

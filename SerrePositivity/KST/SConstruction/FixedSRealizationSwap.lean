@@ -42,7 +42,7 @@ def fixedSInnerCoreDiagramIso (m r : ℕ) (X : StableModel.{u}) :
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro d e f
     simp only [Iso.refl_hom, Category.id_comp, Category.comp_id]
-    let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+    let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
     change H.map (((𝟙 (sEndofunctor m) ⊗ₘ (diagonalSEndofunctor r).map f)).app X) =
       H.map (((diagonalSEndofunctor r).map f).app (sStableModel m X))
     congr 1
@@ -63,7 +63,7 @@ def fixedSOneOuterCoreDiagramIso (r : ℕ) (X : StableModel.{u}) :
   NatIso.ofComponents (fun _ => Iso.refl _) (by
     intro d e f
     simp only [Iso.refl_hom, Category.id_comp, Category.comp_id]
-    let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+    let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
     change H.map ((((diagonalSEndofunctor r).map f ⊗ₘ 𝟙 (sEndofunctor 1))).app X) =
       H.map ((sEndofunctor 1).map (((diagonalSEndofunctor r).map f).app X) ≫
         (simplicialStableEndofunctor.map (𝟙 (Opposite.op ⦋1⦌))).app

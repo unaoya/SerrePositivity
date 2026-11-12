@@ -22,7 +22,7 @@ open scoped Simplicial
 使われ方：始域像の成分を離散的に判定する障害条件。 -/
 def completionWideImageComponent (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     SSet.π₀ (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) → Prop :=
   SSet.π₀.lift (fun x => x.val ∈ LocalizingInvariants.completionEssentialImage
@@ -35,7 +35,7 @@ def completionWideImageComponent (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ
 使われ方：具体的な相対旗の一頂点で障害を検査する。 -/
 lemma completionWideImageComponent_mk (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     (x : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌) :
     completionWideImageComponent r ι f hf (SSet.π₀.mk x) ↔
@@ -61,7 +61,7 @@ lemma completionWideFlag_component_independent (r : ℕ)
 使われ方：相対 fiber 比較での始域側の離散的な判定。 -/
 theorem completionRelativeFlag_recovery_iff_imageComponent (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {K : SSet.{u}} [K.IsPreconnected]
     (v : (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf K) _⦋0⦌)
     (g : K ⟶ (LocalizingInvariants.completionCofiberWide
@@ -70,7 +70,7 @@ theorem completionRelativeFlag_recovery_iff_imageComponent (r : ℕ)
       (((multiSEndofunctor r).obj ι).map f).val).ι =
       completionRelativeFlagVertexFunctor r ι f hf v) (k : K _⦋0⦌) :
     (∃ s : ((ihom K).obj (((multiSEndofunctor r).obj ι).obj X).carrier) _⦋0⦌,
-      Nonempty (VertexIso ((multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K).app
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((multiSourceToRelativeFlags stableWideCofinalitySupply r ι f hf K).app
         (Opposite.op ⦋0⦌) s) v)) ↔
       completionWideImageComponent r ι f hf (SSet.π₀.mk (g.app (Opposite.op ⦋0⦌) k)) := by
   have he := congrArg (fun q : K ⟶ (((multiSEndofunctor r).obj ι).obj Y).carrier =>

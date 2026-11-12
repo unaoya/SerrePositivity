@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockHomPinched
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomComparisonVertices
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomComparisonVertices
 
 /-!
 概要：元の hammock 射の pinched 零単体は元の局所化辺そのもの。
@@ -16,23 +16,23 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory SSet Opposite Hammock MonoidalCategory
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
-variable (C : RelativeCategory.{u}) {X Y : C.category}
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) {X Y : C.category}
 
 /-- 概要：同じ元の通常射の Kan hammock 点は元の局所化辺を回収する。
 方針：元の源関手の homTo 公式と原本の coherent Hom 零単体公式を使う。
 規約：辺の厳密な等式。使われ方：frame 単位点の正規化の終端。 -/
 lemma kanHammockHomPinchedMap_arrow_zero (f : X ⟶ Y) :
-    (((arrowMap C.weakEquivalences f ≫ exInfinityUnit.app _ ≫
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
       kanHammockHomPinchedMap C X Y).app (op ⦋0⦌) PUnit.unit)).val =
       (hammockLocalizationNerveMap C).app (op ⦋1⦌) (ComposableArrows.mk₁ f) := by
   simp only [NatTrans.comp_app_apply, kanHammockHomPinchedMap,
-    pinchedEndpointIso_hom_val]
-  change coherentHomComparisonSimplex _ = _
-  rw [coherentHomComparisonSimplex_zero_edge]
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof.pinchedEndpointIso_hom_val]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex _ = _
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomComparisonSimplex_zero_edge]
   rw [hammockLocalizationNerveMap_arrow]
-  rw [coherentNerveEdge_edge]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge_edge]
   congr 2
   apply (SimplicialCategory.homEquiv' _ _).injective
   rw [Equiv.apply_symm_apply]

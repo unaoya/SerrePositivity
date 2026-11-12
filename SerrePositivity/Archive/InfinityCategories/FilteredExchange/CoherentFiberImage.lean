@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeIsoFiberImageLaws
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTriangleFiberIso
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.FunctorEqIso
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.FunctorEqIso
 
 /-!
 概要：元の三角形比較と共通長辺の等式を、指定相対同型の fiber 像として揃える。

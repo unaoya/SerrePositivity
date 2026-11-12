@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.IntervalReplacementKanComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanSpecifiedPathLift
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementKanComparison
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.KanSpecifiedPathLift
 
 /-!
 概要：通常の区間内部 Hom に値を持つ指定 path の全族を Kan fibration に沿って持ち上げる。

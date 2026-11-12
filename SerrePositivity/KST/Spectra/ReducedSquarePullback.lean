@@ -6,7 +6,7 @@ public import SerrePositivity.KST.Spectra.SquareReducedDesc
 概要：二つの円の reduced map を正方形へ引き戻すと四辺で定数となる。
 方針：円の商射の境界条件と二つの軸の定数性を合成する。
 規約：単体集合の射の厳密な等式を使う。
-使われ方：Goerss–Jardine I §7、Kerodon §3.2.3。smash 積から相対三角形への制限。
+使われ方：Goerss–Jardine I §7、Kerodon §3.2.3（Tag 00W3）。smash 積から相対三角形への制限。
 -/
 
 @[expose] public section

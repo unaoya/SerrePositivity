@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.QuiverTreeDeformation
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.QuiverTreeDeformation
 public import SerrePositivity.EInfinity.Hammock.RelativeNaturalWeakComparison
 public import SerrePositivity.EInfinity.Hammock.RelativeFunctorLaws
 
@@ -23,31 +23,31 @@ open CategoryTheory SerrePositivity.InfinityCategories
 attribute [local instance] Classical.propDecidable
 
 variable {Q : Type u} [Quiver.{v} Q] {T : WideSubquiver (Quiver.Symmetrify Q)}
-  [Quiver.Arborescence T] {S : Finset Q} (D : LeafDeletion T S)
+  [Quiver.Arborescence T] {S : Finset Q} (D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeafDeletion T S)
 
 def LeafDeletion.collapseRelative :
-    letI := FiniteQuiver.quiver S
-    LocalizerMorphism (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S)))
-      (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S))) := by
-  letI := FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    LocalizerMorphism (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S)))
+      (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S))) := by
+  letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
   exact ⟨D.collapseFunctor, fun _ _ _ _ => trivial⟩
 
 lemma LeafDeletion.collapse_colimitMap_isWeakHomotopyEquivalence :
-    letI := FiniteQuiver.quiver S
-    ∀ x y : Paths (FiniteQuiver.Vertex S),
-      IsWeakHomotopyEquivalence (Relative.colimitMap D.collapseRelative x y) := by
-  let := FiniteQuiver.quiver S
+    letI := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
+    ∀ x y : Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S),
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative D) x y) := by
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.quiver S
   intro x y
-  have hid : IsWeakHomotopyEquivalence (Relative.colimitMap
-      (LocalizerMorphism.id (⊤ : MorphismProperty (Paths (FiniteQuiver.Vertex S)))) x y) := by
+  have hid : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap
+      (LocalizerMorphism.id (⊤ : MorphismProperty (Paths (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FiniteQuiver.Vertex S)))) x y) := by
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
   cases D.deformation with
   | inl η =>
-    exact (RelativeNatural.weak_iff (F := D.collapseRelative)
+    exact (RelativeNatural.weak_iff (F := (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative D))
       (G := LocalizerMorphism.id _) η (fun _ => trivial) x y).mpr hid
   | inr η =>
     exact (RelativeNatural.weak_iff (F := LocalizerMorphism.id _)
-      (G := D.collapseRelative) η (fun _ => trivial) x y).mp hid
+      (G := (_root_.SerrePositivity.EInfinity.Hammock.QuiverTree.LeafDeletion.collapseRelative D)) η (fun _ => trivial) x y).mp hid
 
 end SerrePositivity.EInfinity.Hammock.QuiverTree

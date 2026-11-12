@@ -59,15 +59,15 @@ lemma monicKPrismNativeProjectedRawComparison_h :
 def monicKPrismNativeBFComparisonBoundaryData :=
   rawHomotopyLiftData (kRawMappingProjection (F.obj x) (F.obj z))
     (kRawMappingProjection_rlp (F.obj x) (F.obj z))
-    (nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeDirectBFFamily F f g)
-    (nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeCompositeBFFamily F f g)
-    (functorHomotopyPrecomp (monicKPrismNativeProjectedRawComparison F f g)
-      (nervePoint (compositionStringDirect f g)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeDirectBFFamily F f g)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ≫ monicKPrismNativeCompositeBFFamily F f g)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp (monicKPrismNativeProjectedRawComparison F f g)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g)))
 
 /-- 先に選んだ同じ BF 境界と元の全 raw 円柱を保持する全精密化族の実比較。 -/
 def monicKPrismNativeBFComparisonData :=
   prescribedRawHomotopyLiftData (kRawMappingProjection (F.obj x) (F.obj z))
-    (kRawMappingProjection_rlp (F.obj x) (F.obj z)) (nervePoint (compositionStringDirect f g))
+    (kRawMappingProjection_rlp (F.obj x) (F.obj z)) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g))
     (monicKPrismNativeDirectBFFamily F f g) (monicKPrismNativeCompositeBFFamily F f g)
     (monicKPrismNativeProjectedRawComparison F f g)
     (monicKPrismNativeBFComparisonBoundaryData F f g).val
@@ -83,7 +83,7 @@ lemma monicKPrismNativeBFComparisonData_projection :
 
 /-- 全精密化族の実比較は、先に選んだ同じ BF 境界円柱の全時刻を回収する。 -/
 lemma monicKPrismNativeBFComparisonData_boundary :
-    (nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nervePoint (compositionStringDirect f g) ▷ (Δ[1] : SSet.{u})) ≫
         (monicKPrismNativeBFComparisonData F f g).val.h =
       (monicKPrismNativeBFComparisonBoundaryData F f g).val.h :=
   (monicKPrismNativeBFComparisonData F f g).property.2

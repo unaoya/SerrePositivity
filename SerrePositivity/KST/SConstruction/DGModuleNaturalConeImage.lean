@@ -13,20 +13,20 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationInv
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R]
   (E : Type v) [DGCategory R E] [Small.{u} E]
   (D : Type (max (u + 1) v)) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
   (Q : DGFunctor R (RightModule R D) (RightModule R E))
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FQ" => DGFunctor.comp F Q
 local notation "GQ" => DGFunctor.comp G Q
 local notation "CQ" => DGFunctor.comp (CF) Q
-local notation "ηQ" => dgStrictNatTransPostcomp η Q
+local notation "ηQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η Q
 local notation "ν" => dgModuleNaturalConeInr R D F G η
-local notation "νQ" => dgStrictNatTransPostcomp (ν) Q
+local notation "νQ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) Q
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "s" => dgModuleNaturalConeImageInput R E D F G η Q
 
@@ -38,7 +38,7 @@ lemma dgModuleNaturalConeImage_boundary (x : P) :
       (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R)
         (dgModuleNaturalConeArrow R E (FQ) (GQ) (ηQ) x ≫
           dgModuleNaturalConeArrow R E (GQ) (CQ) (νQ) x))).val := by
-  exact (SerrePositivity.InfinityCategories.dgModuleFunctorConeInl_d R D E Q (a x)).trans
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleFunctorConeInl_d R D E Q (a x)).trans
     (congrArg (fun t => (cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) t)).val)
       (congrArg₂ (fun p q => p ≫ q)
         (dgModuleNaturalConePostcompArrow R E D F G η Q x).symm
@@ -49,7 +49,7 @@ lemma dgModuleNaturalConeImage_boundary (x : P) :
 方針：元全自然な左包含像と元右包含像を同じ descent へ渡す。
 規約：元全 Hom を保持。使われ方：元実逆回転の realization 全比較。 -/
 def dgModuleNaturalConeImage :
-    StrictNatTrans (dgModuleNaturalConeFunctor R E (FQ) (GQ) (ηQ)) (CQ) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (dgModuleNaturalConeFunctor R E (FQ) (GQ) (ηQ)) (CQ) :=
   dgModuleNaturalConeDesc R E (FQ) (GQ) (CQ) (ηQ) (νQ) (s)
     (dgModuleNaturalConeImage_boundary R E D F G η Q)
     (dgModuleNaturalConeImageInput_naturality R E D F G η Q)

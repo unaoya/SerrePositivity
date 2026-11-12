@@ -68,7 +68,7 @@ def dgKappaCanonicalSuspensionStructureMap (Z : DGKappaZeroInput R D I) :=
 使われ方：K-B3 の既存 hcofinal 付き逐次列へそのまま代入する。 -/
 theorem dgKappaCanonicalSuspensionStructureMap_eq
     (hcofinal : ∀ (X Y : StableModel.{max (u + 1) v}) (f : X ⟶ Y),
-      F2.Idempotent.IsIdempotentCompletion f.val →
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val →
         (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
           Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0))
     (Z : DGKappaZeroInput R D I) :

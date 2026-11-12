@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.FibrationTowerLimitCone
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.FibrationTowerLimitCone
 public import SerrePositivity.KST.Spectra.PointedSkeletalMappingTower
 public import SerrePositivity.KST.Spectra.TowerHomotopyComparison
 
@@ -25,16 +25,16 @@ variable (K : SSet.{u}) (Y : PointedSimplicialSet.{u})
 
 /-- 通常の点つき写像空間の基礎単体集合を、具体的な骨格の塔の極限へ移す。 -/
 def skeletalLimitIso : (obj K Y).right ≅
-    _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ ((tower K Y).obj (op n)).right)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ ((tower K Y).obj (op n)).right)
       (fun n ↦ ((tower K Y).map (homOfLE (Nat.le_succ n)).op).right) :=
   (isLimitOfPreserves PointedSimplicialSet.forget (coneIsLimit K Y)).conePointUniqueUpToIso
-    (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.sequentialConeIsLimit (tower K Y ⋙ PointedSimplicialSet.forget))
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.sequentialConeIsLimit (tower K Y ⋙ PointedSimplicialSet.forget))
 
 /-- 同型の後の座標評価は骨格への通常の制限。 -/
 @[reassoc]
 lemma skeletalLimitIso_hom_projection (n : ℕ) :
     (skeletalLimitIso K Y).hom ≫
-      _root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.projection (fun n ↦ ((tower K Y).obj (op n)).right)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.projection (fun n ↦ ((tower K Y).obj (op n)).right)
         (fun n ↦ ((tower K Y).map (homOfLE (Nat.le_succ n)).op).right) n =
       ((cone K Y).π.app (op n)).right :=
   IsLimit.conePointUniqueUpToIso_hom_comp _ _ _
@@ -48,7 +48,7 @@ lemma skeletalLimitIso_basepoint :
   funext n
   have he := congrArg (fun f : (obj K Y).right ⟶ ((tower K Y).obj (op n)).right ↦
     f.app _ (obj K Y).basepoint) (skeletalLimitIso_hom_projection K Y n)
-  exact he.trans (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint ((cone K Y).π.app (op n)))
+  exact he.trans (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint ((cone K Y).π.app (op n)))
 
 end
 end SerrePositivity.KST.Spectra.UnbasedPointedMapping

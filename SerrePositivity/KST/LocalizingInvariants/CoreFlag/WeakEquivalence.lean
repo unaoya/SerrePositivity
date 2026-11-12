@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.CoreFlag.WeakEquivalence
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.WeakEquivalence
 
-public import SerrePositivity.InfinityCategories.F1.CoreFlag.RowComparison
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.RowComparison
 public import SerrePositivity.EInfinity.Hammock.DoubleSimplicialWeak
 
 /-!
@@ -24,24 +24,24 @@ open EInfinity.Hammock.DoubleSimplicial
 
 /-- 一般の quasicategory の定数 core 旗包含は弱ホモトピー同値。 -/
 lemma inclusion_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
-    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion C) := by
-  have hconst := (isPrecompositionEquivalence_of_iso
-    (diagonalConstantIso C).symm).isWeakHomotopyEquivalence
-  have hrow := diagonalFunctor_map_weak (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion C)
-    (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.rowInclusion_isWeakHomotopyEquivalence C)
-  have htranspose := (isPrecompositionEquivalence_of_iso
-    (_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso C)).isWeakHomotopyEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.inclusion C) := by
+  have hconst := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso C).symm).isWeakHomotopyEquivalence
+  have hrow := diagonalFunctor_map_weak (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.bisimplicialInclusion C)
+    (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.rowInclusion_isWeakHomotopyEquivalence C)
+  have htranspose := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso C)).isWeakHomotopyEquivalence
   have h := hconst.comp (hrow.comp htranspose)
-  change IsWeakHomotopyEquivalence ((diagonalConstantIso C).inv ≫
-    diagonalFunctor.map (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.bisimplicialInclusion C) ≫ (_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonalTransposeIso C).hom) at h
-  rw [_root_.SerrePositivity.InfinityCategories.Stable.CoreFlag.CoreFlag.diagonal_bisimplicialInclusion] at h
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso C).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.bisimplicialInclusion C) ≫ (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonalTransposeIso C).hom) at h
+  rw [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.CoreFlag.diagonal_bisimplicialInclusion] at h
   exact h
 
 /-- 一般の quasicategory の core 旗の対角評価は弱ホモトピー同値。 -/
 lemma counit_isWeakHomotopyEquivalence (C : SSet.{u}) [Quasicategory C] :
-    IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.counit C) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.counit C) := by
   apply (inclusion_isWeakHomotopyEquivalence C).cancel_left
-  rw [_root_.SerrePositivity.InfinityCategories.F1.CoreFlag.CoreFlag.inclusion_counit]
-  exact isWeakHomotopyEquivalence_id C
+  rw [_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.CoreFlag.inclusion_counit]
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id C
 
 end SerrePositivity.KST.LocalizingInvariants.CoreFlag

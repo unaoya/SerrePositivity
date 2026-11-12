@@ -24,9 +24,9 @@ variable {S : PointedSimplicialSet.{u}} (I : ParametricLoopExchangeFamily S)
 variable {P Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right)
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right)
   (h' : Y' ⟶ PointedObject.basedHom S Z')
-  (hh' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h'.right) (v : P ⟶ PointedObject.basedHom Y Y')
+  (hh' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h'.right) (v : P ⟶ PointedObject.basedHom Y Y')
   (w : P ⟶ PointedObject.basedHom Z Z')
   (hc : h ≫ PointedMapping.parametricPost S w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P h')
@@ -34,10 +34,10 @@ variable {P Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanCompl
 /-- 元の二交換区間を結び、指定した射影後の正方形への全トレースを保つ相対反映。 -/
 def exchangeNaturalityReflection :=
   let _valueKan : KanComplex (PointedObject.basedHom P (doubleLoop Y')).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let _imageKan : KanComplex (PointedObject.basedHom P
       (doubleLoop (PointedObject.basedHom S Z'))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   PointedMapping.pathEndpointSquareReflection
     ((LoopExchangeFamily.exchange I.underlying h hh).basedPost (doubleParametricPost v))
     (((LoopExchangeFamily.exchange I.underlying h' hh').basedIhomMap P).pre
@@ -64,10 +64,10 @@ lemma exchangeNaturalitySquare_boundary :
         (SSet.const (PointedMapping.familyVertex (swap Y ≫ doubleParametricPost v)))
         (SSet.const (PointedMapping.familyVertex (reversal Y ≫ doubleParametricPost v))) := by
   let _valueKan : KanComplex (PointedObject.basedHom P (doubleLoop Y')).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let _imageKan : KanComplex (PointedObject.basedHom P
       (doubleLoop (PointedObject.basedHom S Z'))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact PointedMapping.pathEndpointSquareReflection_boundary
     ((LoopExchangeFamily.exchange I.underlying h hh).basedPost (doubleParametricPost v))
     (((LoopExchangeFamily.exchange I.underlying h' hh').basedIhomMap P).pre

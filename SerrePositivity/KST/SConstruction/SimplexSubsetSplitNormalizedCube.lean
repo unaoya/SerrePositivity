@@ -14,15 +14,15 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory
 variable {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
-  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI) < j)
-  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+  (hjm : I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI) < j)
+  (hjM : j < I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
 
 /-- 元の分割共有座標を、元の全体部分集合の濃度次元で読む。 -/
 def simplexSubsetSplitNormalizedCoordinate : Fin (I.card - 2) :=
   Fin.cast (simplexSubsetSplit_whole_dimension I hI j hj
     (simplexSubsetSplitLeft_two I hI j hj hjm) (simplexSubsetSplitRight_two I hI j hj hjM))
     (necklaceRefinementMissingCoordinate
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{0} ((I.filter (· ≤ j)).card - 1))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{0} ((I.filter (· ≤ j)).card - 1))
         (necklaceBead ((I.filter (j ≤ ·)).card - 1)))
       (necklaceWedgeBeadSeam ((I.filter (· ≤ j)).card - 1) ((I.filter (j ≤ ·)).card - 1)
         (by have h := simplexSubsetSplitLeft_two I hI j hj hjm; omega)
@@ -39,7 +39,7 @@ lemma simplexSubsetSplitNormalizedCoordinate_eq :
     (simplexSubsetEraseCoordinate I hI j hj hjm hjM)
   rw [simplexSubsetEraseCoordinate_recovery] at he
   change (necklaceRefinementMissingCoordinate
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{0} ((I.filter (· ≤ j)).card - 1))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{0} ((I.filter (· ≤ j)).card - 1))
       (necklaceBead ((I.filter (j ≤ ·)).card - 1)))
     (necklaceWedgeBeadSeam ((I.filter (· ≤ j)).card - 1) ((I.filter (j ≤ ·)).card - 1)
       (by have h := simplexSubsetSplitLeft_two I hI j hj hjm; omega)
@@ -49,7 +49,7 @@ lemma simplexSubsetSplitNormalizedCoordinate_eq :
 
 /-- 元の実二 bead refinement を、元の削除・全体の濃度次元へ移した実 cube 射。 -/
 def simplexSubsetSplitNormalizedCube :
-    _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2) ⟶ _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2) :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2) ⟶ _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2) :=
   (concreteCubeDimensionIso (simplexSubsetSplit_wedge_erase_dimension
     I hI j hj hjm hjM).symm).hom ≫
     necklaceConcreteCubeMap (necklaceWedgeBeadRefinement.{u}
@@ -61,10 +61,10 @@ def simplexSubsetSplitNormalizedCube :
 /-- 元の濃度次元の分割実 cube 射は、元の削除と同じ座標の標準一面。 -/
 lemma simplexSubsetSplit_normalized_one_face :
     simplexSubsetSplitNormalizedCube.{u} I hI j hj hjm hjM ≫
-      (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk (I.card - 2))
-        (Y := _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk ((I.erase j).card - 2 + 1))
+      (concreteCubeDimensionIso (X := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk (I.card - 2))
+        (Y := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk ((I.erase j).card - 2 + 1))
         (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)).hom =
-    _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true ((I.erase j).card - 2)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true ((I.erase j).card - 2)
       (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM)
         (simplexSubsetEraseNormalizedCoordinate I hI j hj hjm hjM)) := by
   have hL := simplexSubsetSplitLeft_two I hI j hj hjm
@@ -79,11 +79,11 @@ lemma simplexSubsetSplit_normalized_one_face :
     (necklaceConcreteCubeMap (necklaceWedgeBeadRefinement.{u}
       ((I.filter (· ≤ j)).card - 1) ((I.filter (j ≤ ·)).card - 1)))
     (necklaceRefinementMissingCoordinate
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} ((I.filter (· ≤ j)).card - 1))
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{u} ((I.filter (· ≤ j)).card - 1))
         (necklaceBead ((I.filter (j ≤ ·)).card - 1)))
       (necklaceWedgeBeadSeam _ _ hp hq))
     (necklaceWedgeBeadRefinement_one_face _ _ hp hq)
-  exact h.trans (congrArg (fun i => _root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace true ((I.erase j).card - 2)
+  exact h.trans (congrArg (fun i => _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace true ((I.erase j).card - 2)
     (Fin.cast (simplexSubsetErase_normalized_codimension I hI j hj hjm hjM) i))
       (simplexSubsetSplitNormalizedCoordinate_eq I hI j hj hjm hjM))
 

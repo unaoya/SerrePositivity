@@ -45,8 +45,8 @@ def replacementMap {X Y : CosimplicialObject SSet.{u}} (f : X ⟶ Y) :
 使われ方：Goerss–Jardine VII §4、VIII §1。Tot の Kan 模型のホモトピー不変性。 -/
 lemma replacementMap_piIsomorphism {X Y : CosimplicialObject SSet.{u}}
     [∀ j, KanComplex (X.obj j)] [∀ j, KanComplex (Y.obj j)]
-    (f : X ⟶ Y) (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (replacementMap f) := by
+    (f : X ⟶ Y) (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j)) (e₀ : ∀ j, X.obj j _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (replacementMap f) := by
   let : ∀ j, KanComplex ((CosimplicialKanReplacement.functor.obj X).obj j) :=
     fun j ↦ CosimplicialKanReplacement.kanComplex X j
   let : ∀ j, KanComplex ((CosimplicialKanReplacement.functor.obj Y).obj j) :=
@@ -89,8 +89,8 @@ def replacementUnit : functor ⟶ replacementFunctor :=
 lemma replacementMap_piIsomorphism
     {X Y : CosimplicialObject PointedSimplicialSet.{u}}
     [∀ j, KanComplex (X.obj j).right] [∀ j, KanComplex (Y.obj j).right]
-    (f : X ⟶ Y) (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app j).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (replacementMap f).right := by
+    (f : X ⟶ Y) (hf : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app j).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (replacementMap f).right := by
   let : ∀ j, KanComplex ((X ⋙ PointedSimplicialSet.forget).obj j) :=
     fun j ↦ inferInstanceAs (KanComplex (X.obj j).right)
   let : ∀ j, KanComplex ((Y ⋙ PointedSimplicialSet.forget).obj j) :=

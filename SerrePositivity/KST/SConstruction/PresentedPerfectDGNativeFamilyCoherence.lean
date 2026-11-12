@@ -20,8 +20,8 @@ variable (A : Type u) [CommRing A] (D E T : Type v)
 /-- 元の全 native Perf 関手族への実射は、同じ Kan 入力合成を厳密豊穣合成へ送る。 -/
 lemma presentedPerfectDGNativeFamilyMap_comp :
     (presentedPerfectDGNativeFamilyMap A D E ⊗ₘ presentedPerfectDGNativeFamilyMap A E T) ≫
-        MonoidalClosed.comp (dgNerve A (PresentedPerfectDGObject A D))
-          (dgNerve A (PresentedPerfectDGObject A E)) (dgNerve A (PresentedPerfectDGObject A T)) =
+        MonoidalClosed.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A D))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A E)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A T)) =
       presentedPerfectDGNativeParameterComp A D E T ≫ presentedPerfectDGNativeFamilyMap A D T := by
   exact rightActionCurry_comp
     (presentedPerfectDGNativeCoreAction A D E) (presentedPerfectDGNativeCoreAction A E T)

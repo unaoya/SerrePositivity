@@ -20,9 +20,9 @@ open scoped Simplicial
 variable {U E B : SSet.{u}} {a b c : U ⟶ E}
   {first : SSet.Homotopy a b} {second : SSet.Homotopy b c} {direct : SSet.Homotopy a c}
   (t : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy first))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy second))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy direct)))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy second))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy direct)))
   (p : E ⟶ B) {a' b' c' : U ⟶ B}
   (first' : SSet.Homotopy a' b') (second' : SSet.Homotopy b' c')
   (direct' : SSet.Homotopy a' c')
@@ -31,9 +31,9 @@ variable {U E B : SSet.{u}} {a b c : U ⟶ E}
 
 /-- 元の全三角形の同じ後合成を、指定した三円柱の全三面で表示する。 -/
 def familyCompStructImage : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy first'))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy second'))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy direct')) := by
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy first'))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy second'))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy direct')) := by
   refine SSet.Edge.CompStruct.mk
     (SSet.yonedaEquiv (curry (familyCompStructRealization t ≫ p))) ?_ ?_ ?_
   · rw [familyTriangleCurry_face, ← Category.assoc, familyCompStructRealization_first, ← hf]

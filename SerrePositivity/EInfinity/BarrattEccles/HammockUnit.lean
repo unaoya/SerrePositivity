@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.BarrattEccles.HammockGraphColimit
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.Unit
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Unit
 
 /-!
 # 元の E 代数の hammock の空語による単位射
@@ -23,13 +23,13 @@ variable (A : Type u) [CommRing A]
 
 /-- 同じ元の E 代数の空語の graph への単位射。 -/
 def algebraHammockGraphUnit (X : (operad A).Algebra) :
-    𝟙_ SSet.{u + 1} ⟶ algebraHammockGraph A Hammock.Word.empty X X := by
+    𝟙_ SSet.{u + 1} ⟶ algebraHammockGraph A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty X X := by
   let := modelCategory A
-  exact Hammock.graphUnit (weakEquivalences (operad A).Algebra) X
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphUnit (weakEquivalences (operad A).Algebra) X
 
 /-- 同じ元の空語の標準射を通る、全語の余極限への単位射。 -/
 def algebraHammockColimitUnit (X : (operad A).Algebra) :
     𝟙_ SSet.{u + 1} ⟶ algebraHammockColimitGraph A X X :=
-  algebraHammockGraphUnit A X ≫ algebraHammockGraphInclusion A Hammock.Word.empty X X
+  algebraHammockGraphUnit A X ≫ algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.empty X X
 
 end SerrePositivity.EInfinity.BarrattEccles

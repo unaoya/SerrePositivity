@@ -29,17 +29,17 @@ lemma completionFlagLift_iff_simplex_mem (r : ℕ) (ι : Fin r → SimplexCatego
       Fibration.simplexVertexValue n v ∈ M.obj (Opposite.op n) := by
   constructor
   · rintro ⟨g, rfl⟩
-    change SSet.yonedaEquiv ((functorVertexEquiv _ _).symm (functorVertex (g ≫ M.ι))) ∈ _
+    change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (g ≫ M.ι))) ∈ _
     have he := congrArg SSet.yonedaEquiv
-      ((functorVertexEquiv _ _).symm_apply_apply (g ≫ M.ι))
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm_apply_apply (g ≫ M.ι))
     exact (congrArg (fun t => t ∈ M.obj (Opposite.op n)) he).mpr
       (SSet.yonedaEquiv g).property
   · intro hv
     let t : (M : SSet.{u}) _⦋n.len⦌ := ⟨Fibration.simplexVertexValue n v, hv⟩
     let g : stdSimplex.obj n ⟶ (M : SSet.{u}) := SSet.yonedaEquiv.symm t
     refine ⟨g, ?_⟩
-    apply (functorVertexEquiv _ _).symm.injective
-    change g ≫ M.ι = (functorVertexEquiv _ _).symm v
+    apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm.injective
+    change g ≫ M.ι = (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm v
     apply SSet.yonedaEquiv.injective
     exact congrArg Subtype.val (SSet.yonedaEquiv.apply_symm_apply t)
 
@@ -49,7 +49,7 @@ lemma completionFlagLift_iff_simplex_mem (r : ℕ) (ι : Fin r → SimplexCatego
 使われ方：K-B2-S1 の R_P と元の相対 core 旗の照合。 -/
 lemma completionClosedFlagPredicate_iff (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory)
     (v : ((ihom (stdSimplex.obj n)).obj (((multiSEndofunctor r).obj ι).obj Y).carrier) _⦋0⦌) :
     (Fibration.Relative.closedFlagStablePredicate
       (completionImageClosedPredicate r ι f hf) n).predicate v ↔

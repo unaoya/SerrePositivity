@@ -44,11 +44,11 @@ def signedLoopRawComparison (X : OmegaSpectrum.{u}) :
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。BF 置換へ持ち上げる比較の検査。 -/
 theorem signedLoopRawComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopRawComparison X).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopRawComparison X).app n).right := by
   let V := KanSequence.tail (KanSequence.mapping CirclePower.space.{u} X.toKanSequence)
   let r : KanSequence.Hom V V := KanSequence.tailHom
     (KanSequence.mappingPre (CirclePower.integerPowerMap.{u} (-1)) X.toKanSequence)
-  have hr : ∀ k, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (r.app k).right :=
+  have hr : ∀ k, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (r.app k).right :=
     fun k => LoopMappingClasses.pre_neg_one_piIsomorphism (X.level (k + 1)).space
   exact (cotensorProjection_piIsomorphism CirclePower.space X (n + 1)).comp
     (KanSequence.twistMap_piIsomorphism r hr n)
@@ -88,8 +88,8 @@ theorem signedLoopComparison_projection (X : OmegaSpectrum.{u}) (n : ℕ) :
 規約：零次数を含む。
 使われ方：Goerss–Jardine I §7、BF 1978 §2。逆方向の厳密な比較射を作る条件。 -/
 theorem signedLoopComparison_levelwise (X : OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((signedLoopComparison X).app n).right := by
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((signedLoopProjection X).app n).right) _
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((signedLoopComparison X).app n).right := by
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((signedLoopProjection X).app n).right) _
     (KanSequence.replacementProjection_piIsomorphism (KanSequence.signedLoopTail X.toKanSequence) n)
   have h := congrArg Under.Hom.right (signedLoopComparison_projection X n)
   change ((signedLoopComparison X).app n).right ≫ ((signedLoopProjection X).app n).right =

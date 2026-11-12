@@ -31,7 +31,7 @@ namespace SerrePositivity.KST.Descent
 
 variable (K : Type u) [SmallCategory K] (k : K) (hk : IsInitial k)
   [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：置換後の定数重みの指定比較は始対象の成分と置換比較の合成（補題 3.2）。
 方針：始対象での指定錐の式と、同じ錐同型の置換射についての自然性を使う。

@@ -54,7 +54,7 @@ lemma pathVertexContraction_face_one (Y : PointedSimplicialSet.{u})
     intro s
     apply Prod.ext <;> rfl
   rw [pathVertexContraction, ← Category.assoc, h, Category.assoc, pathContraction_zero,
-    ← Category.assoc, comp_toUnit, _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedConstant_eq_const]
+    ← Category.assoc, comp_toUnit, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedConstant_eq_const]
 
 /-- 概要：収縮の辺の終点は指定した path 自体の区間の射。
 方針：収縮の終点評価の式に、頂点の familyMap の評価式を代入する。
@@ -64,16 +64,16 @@ lemma pathVertexContraction_face_one (Y : PointedSimplicialSet.{u})
 lemma pathVertexContraction_endpoint (Y : PointedSimplicialSet.{u})
     (v : (basedPathSpace Y).right _⦋0⦌) :
     pathVertexContraction Y v ≫ (pathEndpoint Y).right =
-      (PointedMapping.familyMap _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y v).right := by
+      (PointedMapping.familyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y v).right := by
   rw [pathVertexContraction, Category.assoc, pathContraction_endpoint]
   change lift (SSet.const v) (𝟙 (Δ[1] : SSet.{u})) ≫
     (β_ (basedPathSpace Y).right (Δ[1] : SSet.{u})).hom ≫ pathEvaluation Y =
-    PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ≫
+    PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.right ≫
       MonoidalClosed.uncurry (SSet.yonedaEquiv.symm v ≫
-        PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y)
+        PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y)
   rw [MonoidalClosed.uncurry_natural_left, ← Category.assoc]
-  have h : PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval.right ◁ SSet.yonedaEquiv.symm v =
+  have h : PointedMapping.zeroSection _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.right ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval.right ◁ SSet.yonedaEquiv.symm v =
       lift (SSet.const v) (𝟙 (Δ[1] : SSet.{u})) ≫
         (β_ (basedPathSpace Y).right (Δ[1] : SSet.{u})).hom := by
     rw [SSet.yonedaEquiv_symm_zero]

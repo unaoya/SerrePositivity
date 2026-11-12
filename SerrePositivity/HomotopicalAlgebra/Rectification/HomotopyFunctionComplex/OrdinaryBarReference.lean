@@ -59,7 +59,7 @@ abbrev point (n : SimplexCategoryᵒᵖ)
     (Y := ((OrdinaryBarEvaluation.raw (C := C)).flip.obj n).elementsMk
       (OrdinaryResolutionPairs.forgetFrames.obj R) x) (𝟙 _)
 
-def sectionMap : UniverseLift.obj.{u} ((OrdinaryBarEvaluation.raw (C := C)).obj
+def sectionMap : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{u} ((OrdinaryBarEvaluation.raw (C := C)).obj
     (OrdinaryResolutionPairs.forgetFrames.obj R)) ⟶
     OrdinaryBarEvaluation.bar R where
   app n := ↾fun x => (Functor.const (Fin (n.unop.len + 1))).obj (point R n x.down)
@@ -77,7 +77,7 @@ abbrev smallAction : ((OrdinaryBarEvaluation.raw (C := C)).obj
     (𝟙 _)
 
 lemma section_evaluation : sectionMap R ≫ OrdinaryBarEvaluation.evaluation R a b =
-    UniverseLift.map.{u} (smallAction R a b) := by
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.map.{u} (smallAction R a b) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext

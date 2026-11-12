@@ -1,7 +1,7 @@
 module
-public import SerrePositivity.InfinityCategories.F1.Transport.FunctorIsoDoubleEvaluation
-public import SerrePositivity.InfinityCategories.F1.Transport.SimplexSectionBaseChange
-public import SerrePositivity.InfinityCategories.F1.StraighteningLeft.SmallUnstraighteningPointFiberEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIsoDoubleEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.SimplexSectionBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallUnstraighteningPointFiberEvaluation
 
 /-! # 同じ指定同型の二重評価は、二変数の転置でも値を保つ -/
 
@@ -17,25 +17,25 @@ namespace SerrePositivity.KST.Fibration
 /-- 内部 Hom を転置して二回評価する写像は、元の二回評価そのもの。 -/
 theorem doubleFunctorEvaluation_transpose {K A Y : SSet.{u}}
     (x : K _⦋0⦌) (a : A _⦋0⦌) :
-    (internalHomSwapIso K A Y).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a x =
-      _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a := by
-  have h := congrArg (fun m => m ≫ evaluateFunctorAt (Y := Y) a)
-    (internalHomSwapIso_evaluate K A Y x)
-  simpa only [Category.assoc, evaluateFunctorAt_post, _root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation] using h
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso K A Y).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) a x =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a := by
+  have h := congrArg (fun m => m ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (Y := Y) a)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_evaluate K A Y x)
+  simpa only [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.evaluateFunctorAt_post, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation] using h
 
 /-- 元の同じ同型を転置後に二重評価しても、元の指定された像を保持する。 -/
 theorem functorIso_transpose_doubleMap {K A Y : SSet.{u}}
-    {F G : K ⟶ (ihom A).obj Y} (e : FunctorIso F G)
+    {F G : K ⟶ (ihom A).obj Y} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso F G)
     (x : K _⦋0⦌) (a : A _⦋0⦌) :
-    HEq (VertexIso.map e.transpose (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a x))
-      (VertexIso.map e (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) x a)) := by
-  unfold FunctorIso.transpose
+    HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e.transpose (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) a x))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) x a)) := by
+  unfold _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.FunctorIso.transpose
   have hmap (f g : (ihom K).obj ((ihom A).obj Y) ⟶ Y) (h : f = g) :
-      HEq (VertexIso.map e f) (VertexIso.map e g) := by
+      HEq (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e f) (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e g) := by
     cases h
     rfl
-  exact (heq_of_eq (F2.vertexIso_map_comp e (internalHomSwapIso K A Y).hom
-    (_root_.SerrePositivity.InfinityCategories.F1.Transport.doubleFunctorEvaluation (Y := Y) a x))).trans
+  exact (heq_of_eq (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.vertexIso_map_comp e (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso K A Y).hom
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.doubleFunctorEvaluation (Y := Y) a x))).trans
       (hmap _ _ (doubleFunctorEvaluation_transpose x a))
 
 end SerrePositivity.KST.Fibration

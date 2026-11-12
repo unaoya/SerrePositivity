@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoTransport
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityLaxCompletedComparison
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorIdentityZeroBoundary
 public import SerrePositivity.KST.SConstruction.PerfectStableArrowSquareComparison
@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.PerfectStableArrowSquareComparis
 noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants F2.Idempotent
+open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "C" => dgKInputStableValue R (dgOdotMilnorIdentityBaseInput R d)
@@ -30,12 +30,12 @@ local notation "hΛ" => perfectLaxCategory_isIdempotentComplete (𝟙 (Q)) (𝟙
 方針：元四辺固定式と同じ ν 全一単体回収を使う。
 規約：元対角を保持。使われ方：右面の包含境界の型照合。 -/
 lemma dgOdotMilnorIdentityNullSquare_perfect_diagonal :
-    squareBottomEdge ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d)) (hC) (hC)).edge := by
   rw [← Category.assoc, (dgOdotMilnorIdentityNullSquare_edges R d).1]
   change SSet.yonedaEquiv.symm ((dgKInputPerfectNu R).app _
-    (coherentNerveEdge (dgOdotMilnorIdentityDiagonalInputMap R d)).edge) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorIdentityDiagonalInputMap R d)).edge) = _
   exact congrArg (fun x : perfectStableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputPerfectNu_edge R (dgOdotMilnorIdentityDiagonalInputMap R d))
 
@@ -43,21 +43,21 @@ lemma dgOdotMilnorIdentityNullSquare_perfect_diagonal :
 方針：元四辺固定式と同じ ν 全一単体回収を使う。
 規約：実 cone 差を保持。使われ方：右面の商境界の型照合。 -/
 lemma dgOdotMilnorIdentityNullSquare_perfect_difference :
-    squareRightEdge ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R =
       SSet.yonedaEquiv.symm (perfectStableArrow
         (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d)) (hC) (hC)).edge := by
   rw [← Category.assoc, (dgOdotMilnorIdentityNullSquare_edges R d).2.1]
   change SSet.yonedaEquiv.symm ((dgKInputPerfectNu R).app _
-    (coherentNerveEdge (dgOdotMilnorIdentityDifferenceInputMap R d)).edge) = _
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgOdotMilnorIdentityDifferenceInputMap R d)).edge) = _
   exact congrArg (fun x : perfectStableInfinity.{u + 1} _⦋1⦌ => SSet.yonedaEquiv.symm x)
     (dgKInputPerfectNu_edge R (dgOdotMilnorIdentityDifferenceInputMap R d))
 
 /-- 概要：同じ元基底値同値を右面始域の指定完全射にする。
 方針：元の順方向とその同値完全性を束ねる。規約：同じ比較を保持。
 使われ方：四辺比較で共通に使う始域成分。 -/
-def dgOdotMilnorIdentityBaseComparison : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (C) (Q) :=
+def dgOdotMilnorIdentityBaseComparison : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (C) (Q) :=
   ⟨(dgOdotMilnorIdentityBaseValueEquivalence R d).hom,
-    isExactFunctor_of_isQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (dgOdotMilnorIdentityBaseValueEquivalence R d).isQCatEquivalence⟩
 
 namespace DGOdotMilnorIdentityLaxComparisonInput
@@ -66,16 +66,16 @@ variable (v : DGOdotMilnorIdentityLaxComparisonInput R d)
 /-- 概要：同じ供給中央同値を指定完全射にする。
 方針：元の順方向の完全性を束ねる。規約：二境界で同じ成分を使う。
 使われ方：実右面の共有中央頂点成分。 -/
-def completedMiddleMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (L) (Λ) :=
+def completedMiddleMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (L) (Λ) :=
   ⟨v.completedGluing.hom,
-    isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence v.completedGluing.isQCatEquivalence⟩
 
 /-- 概要：同じ供給終域同値を元商への指定完全射にする。
 方針：元基底値同値を後合成する。規約：差と零上辺で同じ成分を使う。
 使われ方：実右面の共有終域頂点成分。 -/
-def completedTargetMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (D) (Q) :=
+def completedTargetMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (D) (Q) :=
   ⟨(v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).hom,
-    isExactFunctor_of_isQCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence
       (v.difference.trans (dgOdotMilnorIdentityBaseValueEquivalence R d)).isQCatEquivalence⟩
 
 /-- 概要：元包含辺の全比較と指定二頂点経路を同じ証人に保持する。
@@ -105,7 +105,7 @@ def differenceWitness : PerfectStableArrowSquareWitness
 /-- 概要：供給された全対角比較は元実対角辺と絶対恒等対角辺の区間全比較を与える。
 方針：元基底値同値と供給中央同値を二成分に使う。
 規約：D2 入力に条件付き。使われ方：実右面の指定包含全比較。 -/
-def diagonalArrowComparison : FunctorIso
+def diagonalArrowComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (SSet.yonedaEquiv.symm (perfectStableArrow
       (dgKInputNuMap R (dgOdotMilnorIdentityDiagonalInputMap R d)) (hC) (hC)).edge)
     (SSet.yonedaEquiv.symm (perfectStableArrow (IdentityLax.exactDiagonal (Q))
@@ -117,7 +117,7 @@ def diagonalArrowComparison : FunctorIso
 /-- 概要：供給された全 cone 比較は元実差辺と絶対恒等 lax 差辺の区間全比較を与える。
 方針：同じ供給中央同値と指定終域同値を二成分に使う。
 規約：D2 入力に条件付き。使われ方：実右面の指定商全比較。 -/
-def differenceArrowComparison : FunctorIso
+def differenceArrowComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
     (SSet.yonedaEquiv.symm (perfectStableArrow
       (dgKInputNuMap R (dgOdotMilnorIdentityDifferenceInputMap R d)) (hC) (hC)).edge)
     (SSet.yonedaEquiv.symm (perfectStableArrow (exactLaxDifference (𝟙 (Q)) (𝟙 (Q)))
@@ -128,15 +128,15 @@ def differenceArrowComparison : FunctorIso
 /-- 概要：絶対恒等提示から同じ実右零化面への三つの指定全境界比較。
 方針：元四辺回収と構成した包含・商・零角比較を同じ向きで束ねる。
 規約：全四角形比較の存在は別工程。使われ方：Sp 正本の右面全比較の境界引数。 -/
-def squareBoundary (h : DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.VerdierSquareBoundaryIso
+def squareBoundary (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d) : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.VerdierSquareBoundaryIso
     (dgOdotMilnorActualRightDiagram R d h).square
     (dgOdotMilnorIdentityNullSquare R d ≫ dgKInputPerfectNu R) where
-  inclusion := (F2.functorIsoOfEq (diagonalArrowComparison R d v)
+  inclusion := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (diagonalArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_diagonal R d).symm
     (PerfectVerdierSequence.presentation_bottom (perfectIdentityLaxSequence (Q) (hQ))).symm).symm
-  quotient := (F2.functorIsoOfEq (differenceArrowComparison R d v)
+  quotient := (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (differenceArrowComparison R d v)
     (dgOdotMilnorIdentityNullSquare_perfect_difference R d).symm (by
-      change _ = squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square
+      change _ = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ (perfectIdentityLaxSequence (Q) (hQ)).presentation.square
       rw [PerfectVerdierSequence.presentation_right, perfectIdentityLaxSequence_projection]
       rfl)).symm
   zero := dgOdotMilnorIdentityNullSquareZeroBoundary R d h

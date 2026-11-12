@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.UnmarkedPastedIdentityFunctors
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.EndpointColimitHEq
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitIdentityPoint
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimitHEq
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitIdentityPoint
 
 /-!
 # 元の貼り戻しの二因子の ambient hammock の点の回収
@@ -22,45 +22,45 @@ namespace SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted
 open CategoryTheory
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C)
-  {a b : Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : FactorTarget.Index W)
+  {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {X Y : Paths C} {n : SimplexCategoryᵒᵖ} (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W)
   (σ : (AllMarked.nativeGraph W X g.val.left a).obj n)
-  (τ : (graph W.paths b g.val.right Y).obj n)
-  (h : ∃ j, column W ((simplex W g σ τ).obj 0) j ≠ [])
+  (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths b g.val.right Y).obj n)
+  (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W ((simplex W g σ τ).obj 0) j ≠ [])
 
 lemma prefix_ambient_point :
     let η := simplex W g σ τ
-    let i := AttachedPrefix.index W η h
-    let A : Paths C := (FirstFactor.generator W η h).val.left
+    let i := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W η h
+    let A : Paths C := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W η h).val.left
     let e : A = g.val.left := congrArg (fun t : Quiver.Total C =>
       (show Paths C from t.left)) (simplex_generator W g σ τ h)
-    (EndpointChange.colimitMap W.paths rfl e).app n
-      ((graphInclusion W.paths X A (Word.CutFactor.prefixWord _ i)).app n
-        (Attachments.prefixFunctor W η i (AttachedPrefix.nonempty W _ h))) =
-      (graphInclusion W.paths X g.val.left a).app n
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap W.paths rfl e).app n
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X A (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.prefixWord _ i)).app n
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.prefixFunctor W η i (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths X g.val.left a).app n
         ((AllMarked.graphMap W X g.val.left a).app n σ) := by
   dsimp only
-  exact (EndpointChange.image_heq W.paths (selected_prefix_word W g σ τ h) rfl _ _ _
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.image_heq W.paths (selected_prefix_word W g σ τ h) rfl _ _ _
     (prefix_identity_functor W g σ τ h)).trans
-    ((composePoint_inclusions W.paths X g.val.left g.val.left a (Word.single .forward)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths X g.val.left g.val.left a (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward)
       ((AllMarked.graphMap W X g.val.left a).app n σ)
-      (arrowSimplex W.paths (𝟙 (show Paths C from g.val.left)) n)).symm.trans
-        (composePoint_identity_right W.paths _))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths (𝟙 (show Paths C from g.val.left)) n)).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_right W.paths _))
 
 lemma residual_ambient_point :
     let η := simplex W g σ τ
-    let i := AttachedPrefix.index W η h
-    let B : Paths C := (FirstFactor.generator W η h).val.right
+    let i := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W η h
+    let B : Paths C := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W η h).val.right
     let e : B = g.val.right := congrArg (fun t : Quiver.Total C =>
       (show Paths C from t.right)) (simplex_generator W g σ τ h)
-    (EndpointChange.colimitMap W.paths e rfl).app n
-      ((graphInclusion W.paths B Y (Word.CutFactor.residualWord _ i)).app n
-        (Attachments.residualFunctor W η i (AttachedPrefix.nonempty W _ h))) =
-      (graphInclusion W.paths g.val.right Y b).app n τ := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.EndpointColimit.colimitMap W.paths e rfl).app n
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths B Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord _ i)).app n
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.residualFunctor W η i (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W _ h))) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphInclusion W.paths g.val.right Y b).app n τ := by
   dsimp only
-  exact (EndpointChange.image_heq W.paths (selected_residual_word W g σ τ h) _ rfl _ _
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.image_heq W.paths (selected_residual_word W g σ τ h) _ rfl _ _
     (residual_identity_functor W g σ τ h)).trans
-    ((composePoint_inclusions W.paths g.val.right g.val.right Y (Word.single .forward) b
-      (arrowSimplex W.paths (𝟙 (show Paths C from g.val.right)) n) τ).symm.trans
-        (composePoint_identity_left W.paths _))
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_inclusions W.paths g.val.right g.val.right Y (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.single .forward) b
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowSimplex W.paths (𝟙 (show Paths C from g.val.right)) n) τ).symm.trans
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_identity_left W.paths _))
 
 end SerrePositivity.EInfinity.Hammock.UnmarkedGenerators.Pasted

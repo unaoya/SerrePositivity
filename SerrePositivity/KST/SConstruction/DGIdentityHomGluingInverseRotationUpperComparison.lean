@@ -14,7 +14,7 @@ public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingConeConnectin
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   {P : Type (max (u + 1) v)} [DGCategory R P] (F G : DGFunctor R P C)
   (a : ∀ x, ForgetEnrichment.of (Complex R) (F.obj x) ⟶
@@ -32,13 +32,13 @@ local notation "η" => dgIdentityHomGluingYonedaStrictComparison R C F G a h
 local notation "δ" => dgModuleNaturalConeConnecting R C (F.comp (J)) (G.comp (J)) (η)
 local notation "α" => dgIdentityHomGluingStrictConeInputComparison R C F G a h
 local notation "β" => dgIdentityHomGluingConeConnectingComparison R C F G a h
-local notation "αs" => dgStrictNatTransPostcomp (α) (S)
-local notation "βs" => dgStrictNatTransPostcomp (β) (S)
-local notation "δs" => dgStrictNatTransPostcomp (δ) (S)
+local notation "αs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (α) (S)
+local notation "βs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (β) (S)
+local notation "δs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)
 
 
 local notation "κ" => dgIdentityHomGluingStrictConeInputInvComparison R C F G a h
-local notation "κs" => dgStrictNatTransPostcomp (κ) (S)
+local notation "κs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (κ) (S)
 
 
 local notation "GY" => G.comp (J)
@@ -46,29 +46,29 @@ local notation "FY" => F.comp (J)
 local notation "AS" => DGFunctor.comp (A) (S)
 local notation "BS" => DGFunctor.comp (B) (S)
 local notation "FSS" => DGFunctor.comp (FS) (S)
-local notation "γs" => dgStrictNatTransComp (κs) (δs)
+local notation "γs" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (κs) (δs)
 local notation "RS" => dgModuleNaturalConeFunctor R C (BS) (FSS) (γs)
 local notation "NS" => dgModuleNaturalInverseRotationSource R C (FY) (GY) (η)
 local notation "q" => dgModuleNaturalConePrecomposition R C (BS) (AS) (FSS) (κs) (δs)
 local notation "σ" => dgModuleNaturalInverseRotation R C (FY) (GY) (η)
 local notation "ι" => dgModuleNaturalConeInr R C (BS) (FSS) (γs)
 local notation "ιn" => dgModuleNaturalConeInr R C (AS) (FSS) (δs)
-local notation "λ" => dgStrictNatTransComp (ιn) (σ)
+local notation "λ" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ιn) (σ)
 
 /-- 概要：元指定厳密逆による全実逆回転の生の厳密合成比較。
 方針：同じ cone 前合成比較と元三因子の全比較を合成する。
 規約：元全 Hom を保持。使われ方：包含を保つ実合成二単体。 -/
-def dgIdentityHomGluingInverseRotationUpperRawComparison : StrictNatTrans (RS) (GY) :=
-  dgStrictNatTransComp (q) (σ)
+def dgIdentityHomGluingInverseRotationUpperRawComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (RS) (GY) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (q) (σ)
 local notation "ρ" => dgIdentityHomGluingInverseRotationUpperRawComparison R C F G a h
 
 /-- 概要：生の全逆回転比較の包含制限は元指定長辺そのもの。
 方針：cone 前合成の全包含等号と全厳密合成の結合則を使用する。
 規約：全厳密比較の等号。使われ方：元右包含を保つ実合成面。 -/
 lemma dgIdentityHomGluingInverseRotationUpperRawComparison_inr :
-    dgStrictNatTransComp (ι) (ρ) = (λ) := by
-  exact (dgStrictNatTransComp_assoc (ι) (q) (σ)).symm.trans
-    (congrArg (fun t => dgStrictNatTransComp t (σ))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (ι) (ρ) = (λ) := by
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp_assoc (ι) (q) (σ)).symm.trans
+    (congrArg (fun t => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp t (σ))
       (dgModuleNaturalConePrecomposition_inr R C (BS) (AS) (FSS) (κs) (δs)))
 
 /-- 概要：元包含・全逆回転比較・指定長辺の三辺を持つ実二単体。
@@ -76,7 +76,7 @@ lemma dgIdentityHomGluingInverseRotationUpperRawComparison_inr :
 規約：全三辺を辺の類へ弱めない。
 使われ方：元実逆回転比較の指定包含面。 -/
 def dgIdentityHomGluingInverseRotationUpperRawTriangle :
-    FunctorCompositionTriangle (ι).homotopy (ρ).homotopy (λ).homotopy := by
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (ι).homotopy (ρ).homotopy (λ).homotopy := by
   exact Classical.choice (dgModuleStrictCompositionTriangle_nonempty
     (R := R) (C := C) (FSS) (RS) (GY) (ι) (ρ) (λ)
     (dgIdentityHomGluingInverseRotationUpperRawComparison_inr R C F G a h))

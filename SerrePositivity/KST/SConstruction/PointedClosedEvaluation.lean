@@ -40,8 +40,8 @@ lemma pointedFamily_post_evaluation {P : SSet.{u}} (X : PointedSimplicialSet.{u}
 lemma pointedFamily_pre_evaluation {P : SSet.{u}} {X Y : PointedSimplicialSet.{u}}
     (f : X ⟶ Y) (Z : PointedSimplicialSet.{u})
     (a : P ⟶ (PointedObject.basedHom Y Z).right) :
-    uncurry (a ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre f Z ≫ PointedObject.basedHomι X Z) =
+    uncurry (a ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre f Z ≫ PointedObject.basedHomι X Z) =
       (f.right ▷ P) ≫ uncurry (a ≫ PointedObject.basedHomι Y Z) := by
-  rw [_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
 
 end SerrePositivity.KST.SConstruction

@@ -15,19 +15,19 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 private lemma composeNegLeft {R : Type u} [CommRing R] {E : Type v} [DGCategory R E]
     {x y z : E} {p q n : ℤ} (g : GradedHom R y z q) (f : GradedHom R x y p)
     (hn : p + q = n) : compose R (-g) f hn = -compose R g f hn := by
-  simpa only [zero_sub, zero_compose] using compose_sub_left (0 : GradedHom R y z q) g f hn
+  simpa only [zero_sub, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.zero_compose] using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_sub_left (0 : GradedHom R y z q) g f hn
 private lemma composeNegRight {R : Type u} [CommRing R] {E : Type v} [DGCategory R E]
     {x y z : E} {p q n : ℤ} (g : GradedHom R y z q) (f : GradedHom R x y p)
     (hn : p + q = n) : compose R g (-f) hn = -compose R g f hn := by
-  simpa only [zero_sub, compose_zero] using compose_sub_right g (0 : GradedHom R x y p) f hn
+  simpa only [zero_sub, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_zero] using _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.compose_sub_right g (0 : GradedHom R x y p) f hn
 
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "a" => dgModuleNaturalConeArrow R D F G η
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FS" => F.comp (moduleShiftDG R D 1)

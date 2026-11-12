@@ -16,11 +16,11 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] (E : Type z) [DGCategory R E] [Small.{u} E]
   (p : DGFunctor R C E) (q : DGFunctor R D E)
-  (X Y : DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
+  (X Y : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D (dgHomGluingBimodule R C D E p q))
 
 /-- 同じ三成分作用は元の gluing の捻れた微分を保つ実 Hom 鎖写像。 -/
 def dgHomGluingConeHomMap :
-    dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y ⟶
       homObject R (PerfectDGModule R E) (dgHomGluingTargetCone R C D E p q X)
         (dgHomGluingTargetCone R C D E p q Y) :=
   dgGluingModuleConeHomMap R E
@@ -33,7 +33,7 @@ def dgHomGluingConeHomMap :
 
 /-- 実 Hom 鎖写像は元の左右成分と第三比較を持つ同じ end 元を回収する。 -/
 lemma dgHomGluingConeHomMap_apply (n : ℤ)
-    (a : (dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X n) :
+    (a : (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComplex R C D (dgHomGluingBimodule R C D E p q) X Y).X n) :
     (dgHomGluingConeHomMap R C D E p q X Y).f n a =
       dgGluingModuleConeElement R E
         (dgHomGluingTargetModuleMap R C D E p q X)

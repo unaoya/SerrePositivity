@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorIsoDisplayCurryComponent
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceSimplexPointedRestrictionNaturality
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPrecompCompositionValue
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPrecompCompositionValue
 /-!
 概要：元の curry の指定成分に対する前作用を、元の全比較の係数制限へ戻す。
 方針：両端の頂点表示を明示し、curry・評価・前合成の同じ像を合成する。

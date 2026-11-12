@@ -22,10 +22,10 @@ variable (R : Type u) [CommRing R] {B C : Mon (Complex R)}
   (f : ∀ n, cellStage R B n ⟶ C)
   (hf : ∀ n, cellStageTransition R B n ≫ f (n + 1) = f n)
 
-def cellStageMapCocone : Cocone (homDiagram R (DGAlgebraPoint R B) .star .star) where
+def cellStageMapCocone : Cocone (homDiagram R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star .star) where
   pt := C.X
   ι := NatTrans.ofSequence (fun n => (f n).hom) (fun n => by
-    change (homDiagram R (DGAlgebraPoint R B) .star .star).map
+    change (homDiagram R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star .star).map
       (homOfLE (Nat.le_succ n)) ≫ (f (n + 1)).hom = (f n).hom ≫ 𝟙 _
     dsimp only [homDiagram]
     rw [Functor.ofSequence_map_homOfLE_succ, Category.comp_id]
@@ -41,7 +41,7 @@ lemma cellColimitDescHom_stage (n : ℕ) :
 
 lemma cellColimitDescHom_one :
     η[(cellResolution R B).X] ≫ cellColimitDescHom R f hf = η[C.X] := by
-  change candidateUnit R (DGAlgebraPoint R B) .star ≫ cellColimitDescHom R f hf = _
+  change candidateUnit R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star ≫ cellColimitDescHom R f hf = _
   rw [candidateUnit, Category.assoc]
   change η[(cellStage R B 0).X] ≫
     ((cellStageInclusion R B 0).hom ≫ cellColimitDescHom R f hf) = _
@@ -50,11 +50,11 @@ lemma cellColimitDescHom_one :
 lemma cellColimitDescHom_mul :
     μ[(cellResolution R B).X] ≫ cellColimitDescHom R f hf =
       (cellColimitDescHom R f hf ⊗ₘ cellColimitDescHom R f hf) ≫ μ[C.X] := by
-  apply (candidateTensorIsColimit R (DGAlgebraPoint R B) .star .star .star).hom_ext
+  apply (candidateTensorIsColimit R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star .star .star).hom_ext
   intro n
-  change (stageInclusion R (DGAlgebraPoint R B) n .star .star ⊗ₘ
-    stageInclusion R (DGAlgebraPoint R B) n .star .star) ≫
-      (candidateComposition R (DGAlgebraPoint R B) .star .star .star ≫
+  change (stageInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star ⊗ₘ
+    stageInclusion R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) n .star .star) ≫
+      (candidateComposition R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGAlgebraPoint R B) .star .star .star ≫
         cellColimitDescHom R f hf) = _
   rw [← Category.assoc, candidateComposition_stage, Category.assoc]
   change μ[(cellStage R B n).X] ≫

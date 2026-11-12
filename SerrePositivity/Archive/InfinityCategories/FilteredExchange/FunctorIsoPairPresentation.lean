@@ -1,9 +1,9 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoPair
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerAlgebra
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.VertexIsoTerminalEquality
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoPair
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerAlgebra
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.VertexIsoTerminalEquality
 
 /-!
 概要：同じ第二成分との組にした指定同型を、元の同型の同じ一つの像へ戻す。

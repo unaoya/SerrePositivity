@@ -24,13 +24,13 @@ lemma completionTrW_biprod_map (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
     {a b c d : hoFunctor.obj (((multiSEndofunctor r).obj ι).obj Y).carrier}
     (g : a ⟶ b) (h : c ⟶ d)
-    (hg : (stableHoClosure (LocalizingInvariants.completionEssentialImage
+    (hg : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)).trW g)
-    (hh : (stableHoClosure (LocalizingInvariants.completionEssentialImage
+    (hh : (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)).trW h) :
-    (stableHoClosure (LocalizingInvariants.completionEssentialImage
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)).trW (biprod.map g h) := by
-  let P := stableHoClosure (LocalizingInvariants.completionEssentialImage
+  let P := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
     (((multiSEndofunctor r).obj ι).map f).val)
   apply MorphismProperty.limitsOfShape_le (W := P.trW) (J := Discrete WalkingPair)
   refine MorphismProperty.limitsOfShape.mk' (pair a c) (pair b d)
@@ -52,22 +52,22 @@ lemma completionTrW_biprod_map (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：成分の生成関係へ双積の分母保存を適用する。 -/
 lemma completionTrW_of_wideEdge (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {x y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌}
     (a : SSet.Edge x y) :
-    (stableHoClosure (LocalizingInvariants.completionEssentialImage
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
       (((multiSEndofunctor r).obj ι).map f).val)).trW
         (Truncated.HomotopyCategory.homMk ((a.map
           (LocalizingInvariants.completionCofiberWide
             (((multiSEndofunctor r).obj ι).map f).val).ι).toTruncated)) := by
   let F := ((multiSEndofunctor r).obj ι).map f
-  let : IsExactFunctor F.val := stableModelHom_exact F
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor F.val := stableModelHom_exact F
   have he := LocalizingInvariants.stableClosure_completionEssentialImage F.val
     (multiSEndofunctor_map_isIdempotentCompletion r ι f hf).2.1
-  apply (cofiberStableEdges_iff_trW (LocalizingInvariants.completionEssentialImage F.val)
+  apply (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberStableEdges_iff_trW (LocalizingInvariants.completionEssentialImage F.val)
     ((a.map (LocalizingInvariants.completionCofiberWide F.val).ι).toTruncated)).mp
-  have ha : a.edge.val ∈ cofiberLocalizingEdges
+  have ha : a.edge.val ∈ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.cofiberLocalizingEdges
       (LocalizingInvariants.completionEssentialImage F.val) := by
     simpa only [op_id, CategoryTheory.Functor.map_id, types_id_apply]
       using a.edge.property (𝟙 ⦋1⦌)
@@ -79,7 +79,7 @@ lemma completionTrW_of_wideEdge (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
 使われ方：wide 成分の和の第一変数への降下。 -/
 lemma completionWideObjectClass_biprod_edge_left (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {x y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌}
     (a : SSet.Edge x y)
@@ -88,7 +88,7 @@ lemma completionWideObjectClass_biprod_edge_left (r : ℕ)
       (((multiSEndofunctor r).obj ι).obj Y).carrier) ⊞ b) =
       completionWideObjectClass r ι f hf ((HomotopyCategory.mk y.val : hoFunctor.obj
         (((multiSEndofunctor r).obj ι).obj Y).carrier) ⊞ b) := by
-  let P := stableHoClosure (LocalizingInvariants.completionEssentialImage
+  let P := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.stableHoClosure (LocalizingInvariants.completionEssentialImage
     (((multiSEndofunctor r).obj ι).map f).val)
   let g := Truncated.HomotopyCategory.homMk ((a.map
     (LocalizingInvariants.completionCofiberWide
@@ -103,7 +103,7 @@ lemma completionWideObjectClass_biprod_edge_left (r : ℕ)
 使われ方：wide 成分の和の第二変数への降下。 -/
 lemma completionWideObjectClass_biprod_edge_right (r : ℕ)
     (ι : Fin r → SimplexCategoryᵒᵖ) {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val)
     {x y : (LocalizingInvariants.completionCofiberWide
       (((multiSEndofunctor r).obj ι).map f).val : SSet.{u}) _⦋0⦌}
     (a : SSet.Edge x y)

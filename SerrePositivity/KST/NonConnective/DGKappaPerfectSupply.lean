@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.KappaPerfect.All
+public import SerrePositivity.InfinityCategories.Project.Entrypoints.DerivedKappaPerfectAll
 public import SerrePositivity.KST.NonConnective.DGSuspensionPerfectConnectiveSequence
 public import SerrePositivity.KST.NonConnective.DGSuspensionNativeStageFamily
 
@@ -26,7 +26,7 @@ variable (R : Type u) [CommRing R] {κ : Cardinal.{u}}
 def dgKappaSuppliedStageInput (A : PerfDGInput.{u, max (u + 1) v} R)
     (I : DGKappaConeInput R A κ) : DGSuspensionStageInput R κ A where
   cone := I
-  perfect := dgKappaPerfectInput R A I
+  perfect := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R A I
 
 /-- 概要：P を実供給しても、元の段の cone は同じ I そのもの。
 方針：元の段入力の射影を計算する。
@@ -50,7 +50,7 @@ def dgKappaSuppliedStageProvider
 使われ方：K-7 c5 の独立した P・Perf 同値入力を要しない入口。 -/
 def dgKappaSuppliedKernelPerfEquivalence (A : PerfDGInput.{u, max (u + 1) v} R)
     (I : DGKappaConeInput R A κ) :=
-  dgKappaResolvedKernelPerfEquivalence R A I (dgKappaPerfectInput R A I)
+  dgKappaResolvedKernelPerfEquivalence R A I (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.KappaPerfect.dgKappaPerfectInput R A I)
 
 /-- 概要：同じ cone 供給と零所属だけに条件付きで、元の実反復 BF 列を得る。
 方針：同じ各 I と D-8 e の P を保持する段入力を既存の列へ渡す。

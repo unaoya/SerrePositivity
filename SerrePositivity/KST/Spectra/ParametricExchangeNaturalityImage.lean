@@ -23,9 +23,9 @@ variable {S : PointedSimplicialSet.{u}} (I : ParametricLoopExchangeFamily S)
 variable {P Y Y' Z Z' : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Y'.right]
   [KanComplex Z.right] [KanComplex Z'.right]
   (h : Y ⟶ PointedObject.basedHom S Z)
-  (hh : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h.right)
+  (hh : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h.right)
   (h' : Y' ⟶ PointedObject.basedHom S Z')
-  (hh' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism h'.right) (v : P ⟶ PointedObject.basedHom Y Y')
+  (hh' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism h'.right) (v : P ⟶ PointedObject.basedHom Y Y')
   (w : P ⟶ PointedObject.basedHom Z Z')
   (hc : h ≫ PointedMapping.parametricPost S w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P h')
@@ -42,10 +42,10 @@ def exchangeNaturalityImageData :
         ((reversal Y ≫ doublePost h) ≫ TwoLoopSource.standardParametricPost S w)) := by
   let valueKan : KanComplex (PointedObject.basedHom P
       (doubleLoop (PointedObject.basedHom S Z'))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   let targetKan : KanComplex (PointedObject.basedHom (doubleLoop Y)
       (PointedObject.basedHom P (doubleLoop (PointedObject.basedHom S Z')))).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
   exact SquareAdjustment.ConstantBoundaryCodifference.choose _ _ _ _
     (exchangePostComparisonSquare_start I h hh w) (exchangePostComparisonSquare_finish I h hh w)
     (exchangeAlignedPreSquare_start I h h' hh' v w hc)

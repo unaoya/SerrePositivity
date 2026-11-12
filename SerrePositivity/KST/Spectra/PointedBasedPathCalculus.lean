@@ -46,8 +46,8 @@ lemma changeEndpoints_homotopy_h (H : VerticalPath p f g) {f' g' : A ⟶ E}
 lemma pre_homotopy_h (H : VerticalPath p f g) {T : PointedSimplicialSet.{u}} (i : T ⟶ A) :
     (H.pre i).homotopy.h = i.right ▷ (Δ[1] : SSet.{u}) ≫ H.homotopy.h := by
   rw [homotopy_h, homotopy_h]
-  change uncurry ((H.path ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre i E) ≫ PointedObject.basedHomι T E) = _
-  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
+  change uncurry ((H.path ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre i E) ≫ PointedObject.basedHomι T E) = _
+  rw [Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, ← Category.assoc, uncurry_pre_app]
 
 /-- 後合成で移した区間の実際のホモトピーは、元の区間全体への同じ後合成。 -/
 lemma post_homotopy_h (H : VerticalPath p f g) {E' B' : PointedSimplicialSet.{u}}
@@ -82,8 +82,8 @@ lemma basedPost {A E E' : PointedSimplicialSet.{u}} {f g : A ⟶ E}
     (PointedObject.point_isZero.eq_of_tgt _ _)
 
 /-- loop 値の基点固定区間の有限鎖を、元の評価で uncurry する。 -/
-lemma basedUncurry {A V : PointedSimplicialSet.{u}} {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace V}
-    (H : VerticalChain (PointedObject.toPoint (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace V)) f g) :
+lemma basedUncurry {A V : PointedSimplicialSet.{u}} {f g : A ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace V}
+    (H : VerticalChain (PointedObject.toPoint (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace V)) f g) :
     VerticalChain (PointedObject.toPoint V) (uncurry f) (uncurry g) := by
   have hs := H.suspension.post (PointedObject.toPoint V)
     ((ihom.ev PointedSimplicialSet.circle.{u}).app V)

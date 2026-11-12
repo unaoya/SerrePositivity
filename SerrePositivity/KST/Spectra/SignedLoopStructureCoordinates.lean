@@ -21,7 +21,7 @@ lemma signedAdjoint_structure_left (X : KanSequence.{u}) (n : ℕ) :
     curry (PointedSimplicialSet.circle.{u} ◁ kanAdjoint X n ≫ (signedLoopTail X).sigma n) =
       SignedAdjointPaths.left (kanAdjoint X n) (kanAdjoint X (n + 1)) := by
   erw [curry_natural_left]
-  change kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n) = _
+  change kanAdjoint X n ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((signedLoopTail X).sigma n) = _
   erw [signedLoopTail_adjoint X n, ← kanAdjoint_comparison X (n + 1)]
   rfl
 
@@ -30,7 +30,7 @@ lemma signedAdjoint_structure_right (X : KanSequence.{u}) (n : ℕ) :
     curry (X.sigma n ≫ kanAdjoint X (n + 1)) =
       SignedAdjointPaths.right (kanAdjoint X n) (kanAdjoint X (n + 1)) := by
   erw [curry_natural_right]
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ (X.sigma n) ≫
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ (X.sigma n) ≫
     (ihom PointedSimplicialSet.circle.{u}).map (kanAdjoint X (n + 1)) = _
   erw [← kanAdjoint_comparison X n]
   rfl

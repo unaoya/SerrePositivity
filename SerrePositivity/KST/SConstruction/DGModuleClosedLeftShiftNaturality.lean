@@ -11,7 +11,7 @@ noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory HomologicalComplex CochainComplex HomComplex
-open DifferentialGraded InfinityCategories DGNerve
+open DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：次数零加群比較の全自然性は始域 shift 後の次数一自然性を与える。
@@ -40,7 +40,7 @@ lemma dgModuleClosedLeftShift_naturality {M N M' N' : RightModule R D} {n : ℤ}
         ((moduleHomπ R D M M' e).f n a)))
 
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 
 /-- 概要：元全厳密比較の同じ成分を始域 shift した族は次数一で全自然。
 方針：元厳密自然性へ同じ加群 Hom shift の計算を適用する。

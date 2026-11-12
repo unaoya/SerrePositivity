@@ -20,9 +20,9 @@ lemma simplexSubsetSplit_top_composition_post {n : ℕ}
     (F : DGFunctor A (CubicalLambda A (Δ[n] : SSet.{u})) D)
     (I : Finset (Fin (n + 1))) (hI : 2 ≤ I.card) (j : Fin (n + 1)) (hj : j ∈ I)
     (hL : 2 ≤ (I.filter (· ≤ j)).card) (hR : 2 ≤ (I.filter (j ≤ ·)).card) :
-    let a := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
-    let b := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j
-    let c := _root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))
+    let a := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
+    let b := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j
+    let c := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))
     let T := necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL
     let U := necklaceInSimplexSubsetSplitRight.{u} I hI j hj hR
     serreCubeTopCellImage A (homObject A D (F.obj a) (F.obj c))
@@ -44,8 +44,8 @@ lemma simplexSubsetSplit_top_composition_post {n : ℕ}
       (((serreConcreteCubeComplexFunctor A).map (necklaceCubeTensorIso
         (necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL).necklace
         (necklaceInSimplexSubsetSplitRight.{u} I hI j hj hR).necklace).hom ≫ f) ≫
-        F.map (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))))
+        F.map (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))))
     (simplexSubsetSplitLambdaCell_relation A I hI j hj hL hR)).trans
       (necklaceLambdaCell_top_composition_post A F
         (necklaceInSimplexSubsetSplitLeft I hI j hj hL)

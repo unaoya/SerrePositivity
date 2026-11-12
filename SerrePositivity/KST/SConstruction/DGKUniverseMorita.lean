@@ -17,9 +17,9 @@ variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 元の持ち上げは、対象を下げ・元の射を適用し・対象を上げる同じ厳密合成。 -/
 lemma dgKUniverseLiftFunctor_factorization :
-    dgUniverseLiftFunctor.{u, v, w, r, s} F =
-      (dgUniverseLiftDown.{u, v, r} R D).comp
-        (F.comp (dgUniverseLiftUp.{u, w, s} R E)) := by
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, v, w, r, s} F =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown.{u, v, r} R D).comp
+        (F.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp.{u, w, s} R E)) := by
   apply EnrichedFunctor.ext (Complex R) (fun _ => rfl)
   intro x y
   change F.map x.label.down y.label.down = 𝟙 _ ≫ (F.map x.label.down y.label.down ≫ 𝟙 _)
@@ -28,21 +28,21 @@ lemma dgKUniverseLiftFunctor_factorization :
 /-- 元の Morita 射を対象宇宙へ持ち上げても、同じ実 Perf 延長が同値。 -/
 lemma dgKUniverseLiftFunctor_isMorita
     [(quasiEquivalencePerfectExtension R D E F).IsEquivalence] :
-    (quasiEquivalencePerfectExtension R (DGUniverseLift.{v, r} D)
-      (DGUniverseLift.{w, s} E) (dgUniverseLiftFunctor.{u, v, w, r, s} F)).IsEquivalence := by
-  letI : (quasiEquivalencePerfectExtension R E (DGUniverseLift.{w, s} E)
-      (dgUniverseLiftUp R E)).IsEquivalence :=
-    (quasiEquivalencePerfectEquivalence R E (DGUniverseLift.{w, s} E) (dgUniverseLiftUp R E)
+    (quasiEquivalencePerfectExtension R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, v, w, r, s} F)).IsEquivalence := by
+  letI : (quasiEquivalencePerfectExtension R E (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp R E)).IsEquivalence :=
+    (quasiEquivalencePerfectEquivalence R E (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp R E)
       (dgKUniverseLiftUp_quasiEquivalence R E)).isEquivalence_functor
-  letI : (quasiEquivalencePerfectExtension R D (DGUniverseLift.{w, s} E)
-      (F.comp (dgUniverseLiftUp R E))).IsEquivalence :=
-    dgKPerfectExtension_comp_isEquivalence R D E (DGUniverseLift.{w, s} E) F _
-  letI : (quasiEquivalencePerfectExtension R (DGUniverseLift.{v, r} D) D
-      (dgUniverseLiftDown R D)).IsEquivalence :=
-    (quasiEquivalencePerfectEquivalence R (DGUniverseLift.{v, r} D) D (dgUniverseLiftDown R D)
+  letI : (quasiEquivalencePerfectExtension R D (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E)
+      (F.comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftUp R E))).IsEquivalence :=
+    dgKPerfectExtension_comp_isEquivalence R D E (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) F _
+  letI : (quasiEquivalencePerfectExtension R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) D
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown R D)).IsEquivalence :=
+    (quasiEquivalencePerfectEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) D (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftDown R D)
       (dgKUniverseLiftDown_quasiEquivalence R D)).isEquivalence_functor
   rw [dgKUniverseLiftFunctor_factorization R D E F]
-  exact dgKPerfectExtension_comp_isEquivalence R (DGUniverseLift.{v, r} D) D
-    (DGUniverseLift.{w, s} E) _ _
+  exact dgKPerfectExtension_comp_isEquivalence R (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{v, r} D) D
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.DGUniverseLift.{w, s} E) _ _
 
 end SerrePositivity.KST.SConstruction

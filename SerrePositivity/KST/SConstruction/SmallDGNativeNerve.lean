@@ -20,6 +20,6 @@ def smallDGNativeNerve : SSet.{max (u + 1) (v + 1)} :=
 
 /-- 元の全 native Kan 写像空間から得た小さい厳密 dg 入力の nerve は ∞ 圏。 -/
 instance smallDGNativeNerve_quasicategory : Quasicategory (smallDGNativeNerve.{u, v} A) :=
-  Coherent.simplicialNerve_quasicategory (SmallBundledDGCategory.{u, v} A)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory (SmallBundledDGCategory.{u, v} A)
 
 end SerrePositivity.KST.SConstruction

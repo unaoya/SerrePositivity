@@ -24,17 +24,17 @@ open SerrePositivity.InfinityCategories DifferentialGraded
 open scoped Simplicial
 variable (A : Type u) [CommRing A] [HasDerivedCategory.{w} (ModuleCat.{u} A)]
 
-lemma cAlgUnderlyingDisc_of_iso {x y : (CAlg_R A) _⦋0⦌} (e : VertexIso x y)
+lemma cAlgUnderlyingDisc_of_iso {x y : (CAlg_R A) _⦋0⦌} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x y)
     (h : cAlgUnderlyingDisc A x) : cAlgUnderlyingDisc A y := by
-  let e' := (pathToEdgeHomotopyCategory
-    ((truncation 2).obj (derivedInfinityCategory A))).mapIso
-      (VertexIso.map e (cAlgForgetDerived A))
+  let e' := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.pathToEdgeHomotopyCategory
+    ((truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A))).mapIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso.map e (cAlgForgetDerived A))
   intro i hi
-  exact (h i hi).of_iso ((derivedInfinityHomologyFunctor A i).mapIso e').symm
+  exact (h i hi).of_iso ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityHomologyFunctor A i).mapIso e').symm
 
 lemma discreteCAlgEmbedding_underlyingDisc (B : CommAlgCat.{u} A) :
     cAlgUnderlyingDisc A
-      ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B)) := by
+      ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)) := by
   have : ((discreteAlgebraFunctor A).obj B).carrier.IsLE 0 := by
     change (cochainSingleZero (ModuleCat.of A B)).IsLE 0
     infer_instance
@@ -45,8 +45,8 @@ lemma discreteCAlgEmbedding_underlyingDisc (B : CommAlgCat.{u} A) :
     (cAlgVertex_underlyingDisc A ((discreteAlgebraFunctor A).obj B))
 
 def cAlgUnderlyingDiscDiscreteIso (x : (CAlg_R A) _⦋0⦌) (h : cAlgUnderlyingDisc A x) :
-    VertexIso x ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌)
-      (nerveVertex (zeroDegreeDiscreteAlgebra A (cAlgVertexRepresentative A x)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (zeroDegreeDiscreteAlgebra A (cAlgVertexRepresentative A x)))) := by
   have hx := cAlgUnderlyingDisc_of_iso A (cAlgVertexRepresentativeIso A x).symm h
   have := cAlgVertex_underlyingDisc_isLE A (cAlgVertexRepresentative A x) hx
   have := cAlgVertex_underlyingDisc_isGE A (cAlgVertexRepresentative A x) hx
@@ -55,7 +55,7 @@ def cAlgUnderlyingDiscDiscreteIso (x : (CAlg_R A) _⦋0⦌) (h : cAlgUnderlyingD
 
 theorem cAlgUnderlyingDisc_iff_discrete (x : (CAlg_R A) _⦋0⦌) :
     cAlgUnderlyingDisc A x ↔ ∃ B : CommAlgCat.{u} A,
-      Nonempty (VertexIso x ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (nerveVertex B))) := by
+      Nonempty (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso x ((discreteCAlgEmbedding A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B))) := by
   constructor
   · intro h
     exact ⟨_, ⟨cAlgUnderlyingDiscDiscreteIso A x h⟩⟩

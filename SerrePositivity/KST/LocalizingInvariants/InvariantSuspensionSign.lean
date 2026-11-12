@@ -19,11 +19,11 @@ open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 open SerrePositivity.KST.Spectra.OmegaSpectrum
 namespace SerrePositivity.KST.LocalizingInvariants.IdentityLax
-variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
   (hΦ : IsLocalizingInvariant Φ)
 
 def difference : Binary.obj (value Φ A) (value Φ A) ⟶ value Φ A :=
-  (_root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap hΦ) (𝟙 A) (𝟙 A) (exactLaxDifference (𝟙 A) (𝟙 A))
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap hΦ) (𝟙 A) (𝟙 A) (exactLaxDifference (𝟙 A) (𝟙 A))
 
 lemma difference_C (j : ℤ) (a : valueHomotopyGroup Φ A j) :
     homotopyMap (difference A hΦ) j (homotopyMap (Binary.inl _ _) j a) =
@@ -31,7 +31,7 @@ lemma difference_C (j : ℤ) (a : valueHomotopyGroup Φ A j) :
   have hi : SpectrumHo.hom (valueMap Φ (𝟙 A)) = 𝟙 _ := (stableValueFunctor Φ).map_id A
   have he : SpectrumHo.hom (Binary.inl (value Φ A) (value Φ A) ≫ difference A hΦ) =
       SpectrumHo.hom (valueMap Φ (SuspensionExact.exactMap A)) := by
-    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
+    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap_hom,
       IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_cofiber_C, hi, Category.id_comp]
   have hp := SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, valueHomotopyMap] using
@@ -42,7 +42,7 @@ lemma difference_D (j : ℤ) (a : valueHomotopyGroup Φ A j) :
   have hi : SpectrumHo.hom (valueMap Φ (𝟙 A)) = 𝟙 _ := (stableValueFunctor Φ).map_id A
   have he : SpectrumHo.hom (Binary.inr (value Φ A) (value Φ A) ≫ difference A hΦ) =
       SpectrumHo.hom (𝟙 (value Φ A)) := by
-    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
+    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap_hom,
       IsLocalizingInvariant.laxQuotientProjectionDifferenceHom_cofiber_D, hi, SpectrumHo.hom_id]
   have hp := SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, homotopyMap_id,
@@ -53,7 +53,7 @@ lemma difference_diagonal (j : ℤ) (a : valueHomotopyGroup Φ A j) :
       (homotopyMap (Binary.lift (𝟙 (value Φ A)) (𝟙 (value Φ A))) j a) = 1 := by
   have he : SpectrumHo.hom (Binary.lift (𝟙 (value Φ A)) (𝟙 (value Φ A)) ≫ difference A hΦ) =
       SpectrumHo.hom (0 : value Φ A ⟶ value Φ A) := by
-    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Derived.Lax.IsLocalizingInvariant.laxQuotientProductMap_hom,
+    rw [SpectrumHo.hom_comp, difference, _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Lax.laxQuotientProductMap_hom,
       productDiagonal_difference_zero, SpectrumHo.hom_zero]
   have hp := SpectrumHo.homotopyMap_eq_of_hom_eq _ _ he j
   simpa only [homotopyMap_comp, MonoidHom.comp_apply, Binary.map_zero,
@@ -62,8 +62,8 @@ lemma difference_diagonal (j : ℤ) (a : valueHomotopyGroup Φ A j) :
 end IdentityLax
 
 namespace IsLocalizingInvariant
-variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
-  (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u})
+variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+  (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u})
 
 include hΦ in
 lemma suspension_pi_inv (j : ℤ) (a : valueHomotopyGroup Φ A j) :

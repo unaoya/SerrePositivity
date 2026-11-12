@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
-open CategoryTheory HomotopicalAlgebra SimplicialLocalization Hammock
+open CategoryTheory HomotopicalAlgebra Hammock
 variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 
 lemma cofibrantAlgebraHammockInclusionMap_value :
@@ -37,7 +37,7 @@ lemma cofibrantAlgebraHammockInclusionMap_value :
   let x := cofibrantAlgebraDKObject A X
   let y := cofibrantAlgebraDKObject A Y
   apply (cancel_epi (reducedColimitIso W x y).hom).1
-  apply colimitGraph_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph_hom_ext
   intro w
   simp only [← Category.assoc]
   rw [reducedColimitIso_hom_fac, cofibrantAlgebraHammockInclusionMap_normalization]
@@ -67,7 +67,7 @@ lemma cofibrantAlgebraHammockInclusionMap_components_value
         ((cofibrantAlgebraInclusion A).obj Y)
         (SSet.mapπ₀ (cofibrantAlgebraHammockInclusionMap A
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z) =
-      cofibrantAlgebraDKHoHomMap A X Y (SerrePositivity.SimplicialModel.PiZeroConstant.toComponents
+      cofibrantAlgebraDKHoHomMap A X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.toComponents
         (Zigzag.Value.reducedValue (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q
           (cofibrantAlgebraRelativeCategory A).weakEquivalences.Q_inverts
           (cofibrantAlgebraDKObject A X) (cofibrantAlgebraDKObject A Y)) z) := by

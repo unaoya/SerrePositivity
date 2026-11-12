@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentRightSliceAppendEdge
-public import SerrePositivity.InfinityCategories.F1.Coherent.CompositionPrism
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.CompositionPrism
 
 /-!
 概要：元の二つの Hom の合成 prism と同じ最終射を、一つの実高次図式へ束ねる。

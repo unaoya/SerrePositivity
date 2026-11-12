@@ -3,9 +3,9 @@ module
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraNativeChosenFrameCoherent
 public import SerrePositivity.KST.LocalizingInvariants.DGAlgebraQuasiIsoInfinityVertices
 public import SerrePositivity.EInfinity.DGAlgebra.FrameComparison
-public import SerrePositivity.InfinityCategories.HomotopyLimits.NerveULiftHom
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom
 public import SerrePositivity.EInfinity.FrameHom.NerveAsSmall
-public import SerrePositivity.InfinityCategories.F1B.Localization.WeakDeformationSource
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource
 
 /-!
 概要：E2 の実 right frame 比較を、Sp の元の全擬同型局所化へ適用する。
@@ -29,19 +29,19 @@ attribute [local instance] EInfinity.DGAlgebra.modelCategory
 
 /-- 同じ全対象・全射の二つの宇宙表示の実 nerve 同型。 -/
 def nativeModelInfinityPresentationIso :
-    nerve (modelRelativeCategory (Mon (Complex R))).category ≅
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ≅
       nerve (InfinityPresentation R) :=
-  EInfinity.FrameHom.NerveAsSmall.iso _ ≪≫ (EInfinity.FrameHom.NerveULiftHom.iso _).symm
+  EInfinity.FrameHom.NerveAsSmall.iso _ ≪≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.NerveULiftHom.iso _).symm
 
 /-- E2 の全対象表示上の指定射。標的は元の edgeLocalization のまま。 -/
 def nativeModelQuasiIsoInfinityMap :
-    nerve (modelRelativeCategory (Mon (Complex R))).category ⟶ quasiIsoInfinity R :=
+    nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).category ⟶ quasiIsoInfinity R :=
   (nativeModelInfinityPresentationIso R).hom ≫ quasiIsoInfinityMap R
 
 /-- 源の宇宙表示を変えても元の局所化頂点を厳密に保持する。 -/
 @[simp] lemma nativeModelQuasiIsoInfinityMap_vertex (A : Mon (Complex R)) :
     (nativeModelQuasiIsoInfinityMap R).app (Opposite.op ⦋0⦌)
-      (nerveVertex (modelRelativeObject (Mon (Complex R)) A)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) A)) =
         quasiIsoInfinityVertex R A := rfl
 
 /-- 元の dg 射の局所化辺も全く同じ一単体。 -/
@@ -55,12 +55,12 @@ lemma nativeModelQuasiIsoInfinityMap_edge {A B : Mon (Complex R)} (f : A ⟶ B) 
 
 /-- 同じ実宇宙同型で全擬同型の局所化を輸送する。 -/
 lemma nativeModelQuasiIsoInfinity_isLocalization :
-    IsLocalization (nativeModelQuasiIsoInfinityMap R)
-      (weakNerveEdges (modelRelativeCategory (Mon (Complex R)))) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization (nativeModelQuasiIsoInfinityMap R)
+      (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))) := by
   let a := nativeModelInfinityPresentationIso R
-  apply WeakDeformationSource.transfer a.inv a.hom (quasiIsoInfinityMap R)
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.WeakDeformationSource.transfer a.inv a.hom (quasiIsoInfinityMap R)
     (quasiIsoInfinityEdges R)
-    (weakNerveEdges (modelRelativeCategory (Mon (Complex R))))
+    (weakNerveEdges (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))))
   · intro s hs
     obtain ⟨X, Y, f, rfl⟩ := ComposableArrows.mk₁_surjective s
     refine ⟨_, _, (a.inv.app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f)).hom, ?_,
@@ -81,16 +81,16 @@ lemma nativeModelQuasiIsoInfinity_isLocalization :
 /-- 指定局所化への実比較関手と同じ三角形を保持する。 -/
 def nativeFrameLocalizationComparison :
     EInfinity.FrameHom.CoherentLocalizationComparison
-      (hammockLocalizationNerveMap (modelRelativeCategory (Mon (Complex R))))
+      (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))))
       (nativeModelQuasiIsoInfinityMap R) :=
   EInfinity.DGAlgebra.frameLocalizationComparison R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R)
 
 /-- 元の cell 源と任意標的の選択 right frame は、元の局所化の pinched Hom と同値。 -/
 def nativeCellSpecifiedFramePinchedEquivalence (A B : Mon (Complex R)) :
-    QCatEquivalence
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
       ((nativeCellChosenRightLargeKanFunctor R A).obj B).obj
-      (pinchedHom (quasiIsoInfinityVertex R (cellResolution R A))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (quasiIsoInfinityVertex R (cellResolution R A))
         (quasiIsoInfinityVertex R B)) := by
   exact EInfinity.DGAlgebra.framePinchedEquivalence R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)
@@ -99,7 +99,7 @@ def nativeCellSpecifiedFramePinchedEquivalence (A B : Mon (Complex R)) :
 /-- 実 E2 の六辺比較と指定局所化の三角形を、同じ cell 源に適用する。
 終端の表現可能関手への全図式接続は別途保持する。 -/
 def nativeCellFrameHammockCoherentComparison (A : Mon (Complex R)) :
-    FunctorIso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
       (EInfinity.FrameHom.rightFrameHammockCoherentDiagram
         ((EInfinity.DGAlgebra.sourceFrameFamily R).atObject (cellResolution R A))
         (EInfinity.DGAlgebra.rightFrameFamily R) 0)
@@ -119,15 +119,15 @@ lemma nativeCellSpecifiedFramePinchedEquivalence_unit_Q (A B : Mon (Complex R))
         (EInfinity.DGAlgebra.rightFrameFamily R) f 0 ≫
           (nativeCellSpecifiedFramePinchedEquivalence R A B).hom) =
     SerrePositivity.SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (EInfinity.Hammock.arrowMap
-        (modelRelativeCategory (Mon (Complex R))).weakEquivalences (AsSmall.up.map f) ≫
-        SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
-        kanHammockHomPinchedMap (modelRelativeCategory (Mon (Complex R)))
-          (modelRelativeObject (Mon (Complex R)) (cellResolution R A))
-          (modelRelativeObject (Mon (Complex R)) B) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).weakEquivalences (AsSmall.up.map f) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+        kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) (cellResolution R A))
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B) ≫
         ((nativeFrameLocalizationComparison R).pinchedEquivalence
-          (nerveVertex (modelRelativeObject (Mon (Complex R)) (cellResolution R A)))
-          (nerveVertex (modelRelativeObject (Mon (Complex R)) B))).hom) :=
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) (cellResolution R A)))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B))).hom) :=
   EInfinity.DGAlgebra.framePinchedEquivalence_unit_Q R (nativeModelQuasiIsoInfinityMap R)
     (nativeModelQuasiIsoInfinity_isLocalization R) (cellResolution R A)
     (cellResolution_isCofibrant R A) B f
@@ -135,10 +135,10 @@ lemma nativeCellSpecifiedFramePinchedEquivalence_unit_Q (A B : Mon (Complex R))
 /-- 指定三角形の両端成分で共役すると、元の dg 射の局所化を回収する。 -/
 lemma nativeFrameOriginalArrow_conjugation {A B : Mon (Complex R)} (f : A ⟶ B) :
     let c := nativeFrameLocalizationComparison R
-    let x := nerveVertex (modelRelativeObject (Mon (Complex R)) A)
-    let y := nerveVertex (modelRelativeObject (Mon (Complex R)) B)
+    let x := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) A)
+    let y := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B)
     (c.triangle.toNatIso.app (HomotopyCategory.mk x)).inv ≫
-      (hoFunctor.map (hammockLocalizationNerveMap (modelRelativeCategory (Mon (Complex R))) ≫
+      (hoFunctor.map (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))) ≫
         c.equivalence.hom)).toFunctor.map
           (HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated) ≫
       (c.triangle.toNatIso.app (HomotopyCategory.mk y)).hom =
@@ -152,8 +152,8 @@ lemma nativeFrameOriginalArrow_conjugation {A B : Mon (Complex R)} (f : A ⟶ B)
 /-- 元の AW 写像模型も、同じ実混合比較を通じて指定局所化の Hom と同値。
 これは各標的の実同値であり、全表現可能関手との同型の代用にはしない。 -/
 def multiplicativeCellMappingPinchedEquivalence (A B : Mon (Complex R)) :
-    QCatEquivalence ((multiplicativeCellMappingLargeKanFunctor R A).obj B).obj
-      (pinchedHom (quasiIsoInfinityVertex R (cellResolution R A))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence ((multiplicativeCellMappingLargeKanFunctor R A).obj B).obj
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (quasiIsoInfinityVertex R (cellResolution R A))
         (quasiIsoInfinityVertex R B)) :=
   (nativeCellMixedRightLarge_isQCatEquivalence R A B).choose |>.trans
     ((nativeCellMixedLeftLarge_isQCatEquivalence R A B).choose.symm.trans

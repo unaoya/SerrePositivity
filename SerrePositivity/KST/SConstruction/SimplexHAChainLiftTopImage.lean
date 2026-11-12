@@ -19,7 +19,7 @@ private lemma map_units_smul (M P : ModuleCat.{u} A) (f : M ⟶ P) (e : ℤˣ) (
   simp only [Units.smul_def, map_zsmul]
 
 /-- 元の実 Hom 鎖射の HA 向き最高生成元像は、同じ元の部分集合 HA 成分。 -/
-lemma simplexHAChainLift_top_image {N : ℕ} (s : DGNerve.Simplex A D N) (m : ℕ)
+lemma simplexHAChainLift_top_image {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D N) (m : ℕ)
     (v : Fin (m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1)) (hb : v (Fin.last m) < b) :
     serreCubeTopCellImage A (homObject A D (s.obj (v 0)) (s.obj b)) m
       (simplexHAChainLift A s m v b hb) =

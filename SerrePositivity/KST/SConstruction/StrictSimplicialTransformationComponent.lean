@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformation
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformation
 public import SerrePositivity.KST.Spectra.StrictEnrichedTransformationNerve
 
 /-! # 厳密単体的自然変換の元の通常成分の回収

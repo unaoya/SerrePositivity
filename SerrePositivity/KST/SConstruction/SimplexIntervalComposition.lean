@@ -16,10 +16,10 @@ open CategoryTheory Simplicial SSet
 /-- 元の二区間 bead の連結を、同じ全区間 bead へ送る実 necklace 射。 -/
 def simplexIntervalComposeBeadHom {n : ℕ} (a b c : Fin (n + 1))
     (hab : a ≤ b) (hbc : b ≤ c) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.necklaceWedge (necklaceBead.{u} (b.val - a.val)) (necklaceBead (c.val - b.val)) ⟶
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceWedge (necklaceBead.{u} (b.val - a.val)) (necklaceBead (c.val - b.val)) ⟶
       necklaceBead (c.val - a.val) :=
   (necklaceInToSimplexInterval a c (hab.trans hbc)
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval a b hab)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval a b hab)
       (necklaceInSimplexInterval b c hbc))).necklaceHom
 
 /-- 元の連結の cube 射の元になる necklace 射は、同じ augmentation の可換三角形。 -/
@@ -27,10 +27,10 @@ lemma simplexIntervalComposeBeadHom_triangle {n : ℕ} (a b c : Fin (n + 1))
     (hab : a ≤ b) (hbc : b ≤ c) :
     (simplexIntervalComposeBeadHom.{u} a b c hab hbc).map ≫
         (necklaceInSimplexInterval a c (hab.trans hbc)).map =
-      (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval a b hab)
+      (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval a b hab)
         (necklaceInSimplexInterval b c hbc)).map :=
   (necklaceInToSimplexInterval a c (hab.trans hbc)
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval a b hab)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval a b hab)
       (necklaceInSimplexInterval b c hbc))).w
 
 /-- 元の区間 Hom 比較は、元の Day 合成を連結から全区間への同じ実 cube 射で回収する。 -/
@@ -39,15 +39,15 @@ lemma simplexIntervalCubicalCoreIso_comp {n : ℕ} (a b c : Fin (n + 1))
     cubicalDayTensorMap (simplexIntervalCubicalCoreIso.{u} a b hab).hom
         (simplexIntervalCubicalCoreIso b c hbc).hom ≫
       necklaceCubicalCompose (Δ[n] : SSet.{u})
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c) =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c) =
     (necklaceCubicalTensorIso (necklaceBead (b.val - a.val))
       (necklaceBead (c.val - b.val))).hom ≫
         necklaceCubicalSet.map (simplexIntervalComposeBeadHom.{u} a b c hab hbc) ≫
           (simplexIntervalCubicalCoreIso a c (hab.trans hbc)).hom := by
   have h := simplexIntervalCubicalCoreIso_cell a c (hab.trans hbc)
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.necklaceInWedge (necklaceInSimplexInterval a b hab) (necklaceInSimplexInterval b c hbc))
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.necklaceInWedge (necklaceInSimplexInterval a b hab) (necklaceInSimplexInterval b c hbc))
   exact (necklaceCubicalCompose_cell (Δ[n] : SSet.{u})
-    (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex c)
+    (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex a) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex b) (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex c)
     (necklaceInSimplexInterval a b hab) (necklaceInSimplexInterval b c hbc)).trans
       (congrArg (fun f => (necklaceCubicalTensorIso
         (necklaceBead (b.val - a.val)) (necklaceBead (c.val - b.val))).hom ≫ f) h.symm)

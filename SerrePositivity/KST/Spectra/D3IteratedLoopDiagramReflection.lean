@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3DoubleEndpointJointFamily
-public import SerrePositivity.InfinityCategories.Stable.TrivialFibrationSquares
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.TrivialFibrationSquares
 
 /-!
 概要：自明 Kan 射影による認証から、同じ loop 図式圏内の loop 性を反映する。
@@ -21,15 +21,15 @@ namespace SerrePositivity.KST.Spectra
 
 /-- 同じ全四角形の loop 性は、自明 Kan 射影の下で保存され反映される。 -/
 lemma d3IsLoopDiagramVertex_iff_trivialKan_image {E B : SSet.{u + 1}}
-    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [TrivialKanFibration q]
+    [Quasicategory E] [Quasicategory B] (q : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration q]
     (v : ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj E) _⦋0⦌) :
-    IsLoopDiagramVertex v ↔
-      IsLoopDiagramVertex (((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q).app _ v) := by
-  unfold IsLoopDiagramVertex
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex v ↔
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex (((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).map q).app _ v) := by
+  unfold _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex
   rw [OmegaSpectrum.AdjointLoopRelativeBF.d3SquareDiagram_postcomp]
   exact and_congr
-    (isZeroVertex_iff_map_of_trivialKanFibration q _)
-    (and_congr (isZeroVertex_iff_map_of_trivialKanFibration q _)
-      (isPullbackSquare_iff_postcomp_trivialKanFibration q _))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q _)
+    (and_congr (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isZeroVertex_iff_map_of_trivialKanFibration q _)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isPullbackSquare_iff_postcomp_trivialKanFibration q _))
 
 end SerrePositivity.KST.Spectra

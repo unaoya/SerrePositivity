@@ -38,16 +38,16 @@ lemma mappingIso_parametricPost :
 lemma mappingIso_parametric_conjugate_pre (a : source.{u} ⟶ source.{u})
     (t : LoopExchangePaths.doubleLoop (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z') ⟶
       LoopExchangePaths.doubleLoop (PointedObject.basedHom PointedSimplicialSet.circle.{u} Z'))
-    (ht : _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
+    (ht : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z' ≫ (mappingIso Z').hom = (mappingIso Z').hom ≫ t) :
     (mappingIso Z).inv ≫
       ((PointedMapping.parametricPost source.{u} v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z')) ≫
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z')) ≫
           PointedObject.basedHomMap P (mappingIso Z').hom) =
       parametricLoopPost v ≫ PointedObject.basedHomMap P t := by
-  have h : PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z') ≫
+  have h : PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z') ≫
       PointedObject.basedHomMap P (mappingIso Z').hom =
     PointedObject.basedHomMap P (mappingIso Z').hom ≫ PointedObject.basedHomMap P t := by
-    change (ihom P).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed a Z') ≫ (ihom P).map (mappingIso Z').hom =
+    change (ihom P).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed a Z') ≫ (ihom P).map (mappingIso Z').hom =
       (ihom P).map (mappingIso Z').hom ≫ (ihom P).map t
     rw [← CategoryTheory.Functor.map_comp, ht, CategoryTheory.Functor.map_comp]
   simpa only [parametricLoopPost, Category.assoc] using

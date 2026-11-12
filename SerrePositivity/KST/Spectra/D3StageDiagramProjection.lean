@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.Spectra.D3StageLoopStructureFamily
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
-public import SerrePositivity.InfinityCategories.F1.Fibrations.TrivialKanFunctorIsoProjection
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.TrivialKanFunctorIsoProjection
 
 /-!
 概要：既存の段 loop 図式比較と構造同型を、同じ指定射影後の値まで回収する。
@@ -26,11 +26,11 @@ local instance d3DiagramProjectionSpectrumCategory : SimplicialCategory OmegaSpe
 /-- 回収した実 loop 全図式の構造同型は、周囲の四角形へ戻すと元の指定値そのもの。 -/
 lemma commonChosenStageStructureDiagramIso_projection (n : ℕ) :
     HEq ((commonChosenStageStructureDiagramIso.{u} n).postcomp
-      (fullSubcomplexOnVertices _ IsLoopDiagramVertex).ι)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).ι)
         (commonChosenStageStructureSquareIso n) :=
-  (isFullyFaithful_fullSubcomplexOnVertices_ι
+  (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.isFullyFaithful_fullSubcomplexOnVertices_ι
     ((ihom ((Δ[1] : SSet.{u + 1}) ⊗ Δ[1])).obj PointedKanInfinity)
-      IsLoopDiagramVertex).preimageNormalizedFunctorIso_postcomp_heq
+      _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsLoopDiagramVertex).preimageNormalizedFunctorIso_postcomp_heq
         (commonChosenStageLoopDiagramFamily n) (commonChosenStageLoopImageFamily n)
         (commonChosenStageStructureSquareIso n)
         (commonChosenStageLoopDiagramFamily_ι n).symm
@@ -39,14 +39,14 @@ lemma commonChosenStageStructureDiagramIso_projection (n : ℕ) :
 /-- 同じ実 fiber 内比較の終点射影は、指定厳密等式の同型へ戻る。 -/
 lemma commonChosenStageCanonicalDiagramIso_target (n : ℕ) :
     (commonChosenStageCanonicalDiagramIso.{u} n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 1 1) =
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) =
         eqToIso (congrArg
           (fun v : SimplicialNerve CommonObject.{u} ⟶ PointedKanInfinity ↦
-            SSet.HomotopyCategory.mk (functorVertex v))
+            SSet.HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex v))
           (commonChosenStageCanonicalFamily_target n).symm) := by
   let := d3PointedKanLoopEvaluation_trivial.{u}
-  exact functorIsoOfTrivialKanFibration_postcomp
-    (loopDiagramEvaluation PointedKanInfinity 1 1)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.functorIsoOfTrivialKanFibration_postcomp
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)
     (commonChosenStageLoopDiagramFamily n) (commonChosenStageCanonicalFamily n)
     (commonChosenStageCanonicalFamily_target n).symm
 
@@ -55,21 +55,21 @@ lemma commonChosenStageCanonicalDiagramIso_target (n : ℕ) :
 lemma commonChosenStageSourceLoopIso_diagram_triangle (n : ℕ) :
     HEq ((commonChosenStageSourceLoopIso.{u} n) ≪≫
       d3PointedKanLoopSection_sourceIso.precomp
-        (commonChosenStageLoopDiagramFamily n ≫ loopDiagramEvaluation PointedKanInfinity 1 1))
+        (commonChosenStageLoopDiagramFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
       ((commonChosenStageCanonicalDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0)) := by
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)) := by
   dsimp only [commonChosenStageSourceLoopIso]
   rw [Iso.trans_assoc, Iso.symm_self_id, Iso.trans_refl]
-  exact F2.functorIsoOfEq_heq _ _ _
+  exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _
 
 
 /-- 同じ全図式比較の始点を、元の実始点段の表示にだけ正規化した指定同型。 -/
 def commonChosenStageSourceCanonicalIso (n : ℕ) :
-    FunctorIso (commonChosenLoopSource ≫ coherentNerveMap (d3StageKanEnriched.{u} n))
-      (commonChosenStageCanonicalFamily n ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (commonChosenLoopSource ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched.{u} n))
+      (commonChosenStageCanonicalFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq
     ((commonChosenStageCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0))
     (commonChosenStageLoopDiagramFamily_source n) rfl
 
 /-- 元の始点 loop 比較へ同じ標準表示同型を戻すと、指定全図式の始点比較を回収する。 -/
@@ -77,7 +77,7 @@ lemma commonChosenStageSourceLoopIso_canonical (n : ℕ) :
     commonChosenStageSourceLoopIso.{u} n ≪≫
       d3PointedKanLoopSection_sourceIso.precomp
         (commonChosenStageLoopDiagramFamily n ≫
-          loopDiagramEvaluation PointedKanInfinity 1 1) =
+          _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) =
       commonChosenStageSourceCanonicalIso n := by
   dsimp only [commonChosenStageSourceLoopIso, commonChosenStageSourceCanonicalIso]
   rw [Iso.trans_assoc, Iso.symm_self_id, Iso.trans_refl]
@@ -88,12 +88,12 @@ lemma commonChosenStageRefinedSourceIso_canonical_triangle (n : ℕ) :
       commonChosenStageEndpointLoopIso n ≪≫
         d3PointedKanLoopSection_sourceIso.precomp
           (commonChosenStageLoopDiagramFamily n ≫
-            loopDiagramEvaluation PointedKanInfinity 1 1) := by
+            _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1) := by
   rw [← commonChosenStageSourceLoopIso_canonical]
   let a := commonChosenStageEndpointLoopIso.{u} n
   let b := commonChosenStageSourceLoopIso.{u} n
   let c := d3PointedKanLoopSection_sourceIso.precomp
-    (commonChosenStageLoopDiagramFamily.{u} n ≫ loopDiagramEvaluation PointedKanInfinity 1 1)
+    (commonChosenStageLoopDiagramFamily.{u} n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1)
   change (a ≪≫ b.symm) ≪≫ (b ≪≫ c) = a ≪≫ c
   calc
     _ = a ≪≫ (b.symm ≪≫ b) ≪≫ c := by simp only [Iso.trans_assoc]

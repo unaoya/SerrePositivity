@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.DifferentialGraded.Module.Hom.ColimitsAndRightHom
 public import SerrePositivity.DifferentialGraded.Derived.Basic
-public import SerrePositivity.InfinityCategories.Derived.EnrichedClosedWhiskering
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.EnrichedClosedWhiskering
 
 /-!
 概要：右 dg 加群の実可算直和の全 Hom chain map。
@@ -53,8 +53,8 @@ lemma dgCountableSumHom_id (M : ModuleCategory R D) :
   change (eId (Complex R) M ≫ dgCountableSumHom R D M M) ≫
       eHomWhiskerRight (Complex R) (dgCountableSumInjection R D M n.as) _ = _
   rw [Category.assoc, dgCountableSumHom_injection]
-  exact (enrichedIdentity_postcompose (Complex R) (ModuleCategory R D) _).trans
-    (enrichedIdentity_precompose (Complex R) (ModuleCategory R D) _).symm
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedIdentity_postcompose (Complex R) (ModuleCategory R D) _).trans
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedIdentity_precompose (Complex R) (ModuleCategory R D) _).symm
 
 /-- 可算直和は射影的 dg 加群を射影的 dg 加群へ送る。 -/
 lemma dgCountableSumObj_projective (M : ModuleCategory R D)
@@ -80,7 +80,7 @@ lemma dgCountableSumHom_comp (M N P : ModuleCategory R D) :
   symm
   rw [Category.assoc, eComp_eHomWhiskerRight, tensorHom_def', Category.assoc,
     ← comp_whiskerRight_assoc, dgCountableSumHom_injection]
-  rw [enrichedComposition_middle]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.enrichedComposition_middle]
   rw [← whiskerLeft_comp_assoc, dgCountableSumHom_injection]
 
 /-- 元の実可算直和は、全 Hom chain map を持つ厳密 dg 自己関手。 -/

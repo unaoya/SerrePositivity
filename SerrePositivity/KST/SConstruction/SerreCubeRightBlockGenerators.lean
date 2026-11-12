@@ -15,7 +15,7 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全座標の面で右ブロックの連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_face (n m : ℕ) (b : Bool) (i : Fin (m + 1)) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b m i) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b m i) := by
   induction m with
   | zero =>
     have hi : i = 0 := Fin.eq_zero i
@@ -23,13 +23,13 @@ lemma serreCubeRightBlockNatural_face (n m : ℕ) (b : Bool) (i : Fin (m + 1)) :
     exact serreCubeRightBlockNatural_face_zero A n 0 b
   | succ m ih =>
     refine Fin.cases (serreCubeRightBlockNatural_face_zero A n (m + 1) b) (fun j => ?_) i
-    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeFace b m j) (ih j)
+    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeFace b m j) (ih j)
     rw [concreteCubeRightKeepHom_face] at h
     exact h
 
 /-- 元の全座標の削除で右ブロックの連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_degeneracy (n m : ℕ) (i : Fin (m + 1)) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy m i) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy m i) := by
   induction m with
   | zero =>
     have hi : i = 0 := Fin.eq_zero i
@@ -37,13 +37,13 @@ lemma serreCubeRightBlockNatural_degeneracy (n m : ℕ) (i : Fin (m + 1)) :
     exact serreCubeRightBlockNatural_degeneracy_zero A n 0
   | succ m ih =>
     refine Fin.cases (serreCubeRightBlockNatural_degeneracy_zero A n (m + 1)) (fun j => ?_) i
-    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeDegeneracy m j) (ih j)
+    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeDegeneracy m j) (ih j)
     rw [concreteCubeRightKeepHom_degeneracy] at h
     exact h
 
 /-- 元の全座標の max で右ブロックの連結比較は自然。 -/
 lemma serreCubeRightBlockNatural_connection (n m : ℕ) (i : Fin (m + 1)) :
-    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m i) := by
+    SerreCubeRightBlockNatural A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection m i) := by
   induction m with
   | zero =>
     have hi : i = 0 := Fin.eq_zero i
@@ -51,7 +51,7 @@ lemma serreCubeRightBlockNatural_connection (n m : ℕ) (i : Fin (m + 1)) :
     exact serreCubeRightBlockNatural_connection_zero A n 0
   | succ m ih =>
     refine Fin.cases (serreCubeRightBlockNatural_connection_zero A n (m + 1)) (fun j => ?_) i
-    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Kan.concreteCubeConnection m j) (ih j)
+    have h := serreCubeRightBlockNatural_keep A n (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.concreteCubeConnection m j) (ih j)
     rw [concreteCubeRightKeepHom_connection] at h
     exact h
 

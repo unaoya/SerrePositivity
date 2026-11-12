@@ -39,7 +39,7 @@ variable
     (C := PointedSimplicialSet.{u}) (K := PointedSimplicialSet.circle.{u}))]
   [lp : IsLocallyPresentable.{w} SymmetricSpectrum.{u}]
   (I J : MorphismProperty SymmetricSpectrum.{u})
-  [generation : ModelGeneration.CofibrantlyGenerated.{w} I J]
+  [generation : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   [proper : (weakEquivalences SymmetricSpectrum.{u}).IsStableUnderCobaseChangeAgainst
     (cofibrations SymmetricSpectrum.{u})]
   (hcof : cofibrations SSet.{u} = MorphismProperty.monomorphisms _)
@@ -64,7 +64,7 @@ def ordinarySuspensionLoopEquivalence (hSigma : LSigma.IsEquivalence) : H ≌ H 
       (GeneralSymmetricSpectrum PointedSimplicialSet.{u} PointedSimplicialSet.circle.{u})) := hγ
   have : IsLocallyPresentable.{w}
       (GeneralSymmetricSpectrum PointedSimplicialSet.{u} PointedSimplicialSet.circle.{u}) := lp
-  have : ModelGeneration.CofibrantlyGenerated.{w}
+  have : _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w}
       (C := GeneralSymmetricSpectrum
         PointedSimplicialSet.{u} PointedSimplicialSet.circle.{u}) I J :=
     generation

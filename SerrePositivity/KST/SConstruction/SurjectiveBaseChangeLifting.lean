@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Comparison.SliceAdjunction
-public import SerrePositivity.InfinityCategories.Core.Terminal
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.Terminal
 
 /-! # 単体で全射な基底変換による境界持ち上げ性の検出
 概要：全単体で全射な基底変換の後に自明 Kan fibration となる射は、元から自明 Kan fibration。
@@ -21,8 +21,8 @@ open scoped Simplicial
 lemma trivialKanFibration_of_simplexSurjective_baseChange {E B : SSet.{u}} (t : E ⟶ B)
     (ht : ∀ n : ℕ, Function.Surjective (t.app (Opposite.op ⦋n⦌)))
     {X Y : Over B} (f : X ⟶ Y)
-    [TrivialKanFibration ((sliceFiberFunctor t).map f)] : TrivialKanFibration f.left := by
-  apply (trivialKanFibration_iff_boundary _).mpr
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration ((sliceFiberFunctor t).map f)] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration f.left := by
+  apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary _).mpr
   intro n
   constructor
   intro a b sq
@@ -42,7 +42,7 @@ lemma trivialKanFibration_of_simplexSurjective_baseChange {E B : SSet.{u}} (t : 
   have hqs : q ≫ pullback.snd Y.hom t = pullback.snd X.hom t :=
     sliceFiberFunctor_map_snd t f
   let : HasLiftingProperty (boundary n).ι q :=
-    (trivialKanFibration_iff_boundary q).mp inferInstance n
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.trivialKanFibration_iff_boundary q).mp inferInstance n
   have sq' : CommSq a' (boundary n).ι q b' := by
     constructor
     apply pullback.hom_ext

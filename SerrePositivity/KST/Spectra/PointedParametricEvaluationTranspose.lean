@@ -20,10 +20,10 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 lemma transpose_pre_parametricPost {P K A E V : PointedSimplicialSet.{u}}
     (q : A ⟶ PointedObject.basedHom K E) (v : P ⟶ PointedObject.basedHom E V) :
     transpose (q ≫ parametricPost K v) =
-      (v ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (uncurry q) V) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso K A V).hom := by
+      (v ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (uncurry q) V) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso K A V).hom := by
   have he : q ≫ parametricPost K v =
       (q ≫ PointedObject.basedHomMap K (transpose v)) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso K P V).hom := by
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso K P V).hom := by
     rw [parametricPost_exchange, Category.assoc]
   have ht := (congrArg transpose he).trans (transpose_ihomParameterAction v q)
   have hc := congrArg (v ≫ ·) (ihomParameterAction_eq_adjoint_pre (V := V) q)

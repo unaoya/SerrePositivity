@@ -3,7 +3,7 @@ module
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismZero
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismOne
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceRoofNativePrismProjection
-public import SerrePositivity.InfinityCategories.F1B.SlicePrismFamilyComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.SlicePrismFamilyComposition
 
 /-!
 # 元の native roof 全三角形と実屋根の cofinal 性
@@ -32,15 +32,15 @@ lemma cofibrantSourceRoofProductCommaNative_triangle
         cofibrantSourceRoofProductCommaRightCell A X Y b := by
   have hl :
       (β_ (nerve (cofibrantSourceRoofProductComma A X Y b)) (Δ[1] : SSet.{u + 1})).hom ≫
-        cofibrantSourceRoofProductCommaNativePrism A X Y b ≫ sliceOverProjection _ =
+        cofibrantSourceRoofProductCommaNativePrism A X Y b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection _ =
       (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b).h := by
     rw [cofibrantSourceRoofProductCommaNativePrism_projection A X Y b,
       ← Category.assoc, SymmetricCategory.symmetry, Category.id_comp]
-  have h := slicePrismFamily_comp (cofibrantHammockVertex A Y)
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.slicePrismFamily_comp (cofibrantHammockVertex A Y)
     (cofibrantSourceRoofProductCommaEvaluationHomotopy A X Y b)
     (cofibrantSourceRoofProductCommaRightHomotopy A X Y b)
-    (intervalFamilyHomotopy (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
-      pinchedHomToIntervalMappingSpace _ _))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHomotopy (cofibrantSourceRoofProductCommaNativePinchedMap A X Y b ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _))
     (cofibrantSourceRoofProductCommaNativePrism A X Y b)
     (cofibrantSourceRoofProductCommaNativePrism_zero_evaluation A X Y b)
     (cofibrantSourceRoofProductCommaNativePrism_one_evaluation A X Y b) hl
@@ -56,7 +56,7 @@ lemma cofibrantSourceRoofProductReference_triangle
     (cofibrantSourceRoofProductCommaNative_triangle A X Y b)
 
 lemma cofibrantSourceRoofMap_isLeftCofinal :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) :=
   cofibrantSourceRoofMap_isLeftCofinal_of_native_triangles A X Y
     (cofibrantSourceRoofProductCommaNative_triangle A X Y)
 

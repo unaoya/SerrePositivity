@@ -25,31 +25,31 @@ local instance constantPathCategory : SimplicialCategory OmegaSpectrum.{u} :=
 variable {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
 
 lemma intervalEdge_id : intervalEdge (SSet.Edge.id (vertexOfHom f)) =
-    SSet.Edge.id (intervalMappingVertexOfEdge (coherentNerveEdge f)) := by
+    SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)) := by
   apply SSet.Edge.ext
-  exact (SSet.σ_naturality_apply (coherentHomIntervalComparison X Y) 0
+  exact (SSet.σ_naturality_apply (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y) 0
     (ULift.up (vertexOfHom f))).trans
-      (congrArg (fun z ↦ (intervalMappingSpace
-        (coherentNerveVertex X) (coherentNerveVertex Y)).σ 0 z) (interval_vertex f))
+      (congrArg (fun z ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingSpace
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex Y)).σ 0 z) (interval_vertex f))
 
 lemma arrowEdge_id : arrowEdge (SSet.Edge.id (vertexOfHom f)) =
-    SSet.Edge.id (functorVertex (SSet.yonedaEquiv.symm (coherentNerveEdge f).edge)) := by
-  change (intervalEdge (SSet.Edge.id (vertexOfHom f))).map (vertexFiberι _ _) = _
+    SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).edge)) := by
+  change (intervalEdge (SSet.Edge.id (vertexOfHom f))).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _) = _
   rw [intervalEdge_id]
   apply SSet.Edge.ext
-  exact SSet.σ_naturality_apply (vertexFiberι _ _) 0 _
+  exact SSet.σ_naturality_apply (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι _ _) 0 _
 
 lemma intervalEdge_constant (e : (mappingSpace X Y).Edge (vertexOfHom f) (vertexOfHom f))
     (h : e = SSet.Edge.id (vertexOfHom f)) : (intervalEdge e).edge =
-      PinchedHom.constant (intervalMappingVertexOfEdge (coherentNerveEdge f)) 1 := by
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingVertexOfEdge (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f)) 1 := by
   exact (congrArg (fun k ↦ (intervalEdge k).edge) h).trans
-    ((congrArg SSet.Edge.edge (intervalEdge_id f)).trans (pinchedConstant_one _).symm)
+    ((congrArg SSet.Edge.edge (intervalEdge_id f)).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedConstant_one _).symm)
 
 lemma intervalEdge_congr {f₀ g₀ f₁ g₁ : X ⟶ Y}
     (e₀ : (mappingSpace X Y).Edge (vertexOfHom f₀) (vertexOfHom g₀))
     (e₁ : (mappingSpace X Y).Edge (vertexOfHom f₁) (vertexOfHom g₁))
     (h : e₀.edge = e₁.edge) : (intervalEdge e₀).edge = (intervalEdge e₁).edge :=
-  congrArg (fun z ↦ (coherentHomIntervalComparison X Y).app
+  congrArg (fun z ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentHomIntervalComparison X Y).app
     (Opposite.op ⦋1⦌) (ULift.up z)) h
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumMappingPath

@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.DGPerfectComparisonInverseRotationRealized
 public import SerrePositivity.KST.SConstruction.DGIdentityInverseRotationPerfectRealization
-public import SerrePositivity.InfinityCategories.Derived.DGFullSubcategoryNerve
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGFullSubcategoryNerve
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.FunctorCategories.FullyFaithfulNormalizedIsoRecovery
 
 /-!
 概要：元実逆回転の二段 realization を同じ全関手の strict Perf 値へ持ち上げる。
@@ -14,7 +14,7 @@ public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaith
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve MonoidalCategory
+open CategoryTheory DifferentialGraded InfinityCategories MonoidalCategory
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   {P : Type (max (u + 1) v)} [DGCategory R P] [Small.{u} P]
   (F G : DGFunctor R P (PerfectDGModule R E))
@@ -56,26 +56,26 @@ lemma dgPerfectComparisonInverseRotationPerfectRealizedFamily_underlying :
 方針：元実対象像の全回収で端点だけを移す。
 規約：元全比較の値を保持。使われ方：同じ元比較の Perf 反映。 -/
 def dgPerfectComparisonInverseRotationPerfectModuleComparison :
-    FunctorIso
-      (dgNerve.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ) ≫
-        dgNerve.map (i)) (dgNerve.map G ≫ dgNerve.map (i)) :=
-  F2.functorIsoOfEq (dgPerfectComparisonInverseRotationRealizedNerveComparison R E F G τ)
-    ((congrArg dgNerve.map
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i)) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (dgPerfectComparisonInverseRotationRealizedNerveComparison R E F G τ)
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
       ((dgPerfectComparisonInverseRotationPerfectRealizedFamily_underlying R E F G τ).symm.trans
         (dgPerfectModuleUnderlying_inclusion R E
           (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ)))).trans
-            (dgNerve.map_comp _ (i)))
-    ((congrArg dgNerve.map (dgPerfectModuleUnderlying_inclusion R E G)).trans
-      (dgNerve.map_comp G (i)))
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp _ (i)))
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectModuleUnderlying_inclusion R E G)).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp G (i)))
 
 /-- 概要：元二段実逆回転の全比較を同じ実 Perf nerve 内に保持する。
 方針：元全加群比較を同じ充満忠実包含から持ち上げる。
 規約：対象別同値を使わず全比較を反映。使われ方：固定 ν への元全比較。 -/
 def dgPerfectComparisonInverseRotationPerfectNerveComparison :
-    FunctorIso
-      (dgNerve.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ))
-      (dgNerve.map G) :=
-  (dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R E)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectComparisonInverseRotationPerfectRealizedFamily R E F G τ))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map G) :=
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R E)
     (modulePerfectProjectiveOver R E Set.univ)).preimageFunctorIso
       (dgPerfectComparisonInverseRotationPerfectModuleComparison R E F G τ)
 
@@ -84,8 +84,8 @@ def dgPerfectComparisonInverseRotationPerfectNerveComparison :
 規約：同型の等号を保持。使われ方：元上指定二単体の同じ全比較への接続。 -/
 lemma dgPerfectComparisonInverseRotationPerfectNerveComparison_postcomp :
     (dgPerfectComparisonInverseRotationPerfectNerveComparison R E F G τ).postcomp
-      (dgNerve.map (i)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (i)) =
       dgPerfectComparisonInverseRotationPerfectModuleComparison R E F G τ :=
-  (dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R E)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R E)
     (modulePerfectProjectiveOver R E Set.univ)).preimageFunctorIso_postcomp _
 end SerrePositivity.KST.SConstruction

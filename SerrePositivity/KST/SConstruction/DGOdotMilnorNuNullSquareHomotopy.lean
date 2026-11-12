@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuNullAlignedLowerTriangle
-public import SerrePositivity.InfinityCategories.Core.PushoutHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PushoutHomotopy
 /-!
 概要：元実／絶対零化四角形全体の比較を、元の両二胞体を保って貼り合わせる。
 方針：元上比較と同じ対角を持つ元下比較を、正方形の三角形分解で貼る。
@@ -14,13 +14,13 @@ namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 /-- 概要：元四角形の上三角形の比較を元の実二胞体の表示で保持する。
 方針：同じ元上ホモトピーの二端点を Yoneda の往復で回収する。
 規約：全射は元上比較そのもの。使われ方：正方形全体への貼り合わせ。 -/
 def dgOdotMilnorNuNullSquareUpperHomotopy : SSet.Homotopy
-    (squareTriangle 0 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareTriangle 0 ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
   h := (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h
   h₀ := (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h₀.trans
     (Equiv.symm_apply_apply SSet.yonedaEquiv _)
@@ -36,8 +36,8 @@ def dgOdotMilnorNuNullSquareUpperHomotopy : SSet.Homotopy
 方針：元比較の類を保つ代表の端点だけを Yoneda の往復で回収する。
 規約：元両二胞体を保持。使われ方：元上三角形との厳密な貼り合わせ。 -/
 def dgOdotMilnorNuNullSquareLowerHomotopy : SSet.Homotopy
-    (squareTriangle 1 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
-    (squareTriangle 1 ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ≫ perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) where
   h := (dgOdotMilnorNuNullAlignedLowerTriangleHomotopy R d h).h
   h₀ := (dgOdotMilnorNuNullAlignedLowerTriangleHomotopy R d h).h₀.trans
     (Equiv.symm_apply_apply SSet.yonedaEquiv _)
@@ -64,22 +64,22 @@ lemma dgOdotMilnorNuNullSquareHomotopy_gluing :
 def dgOdotMilnorNuNullSquareHomotopy : SSet.Homotopy
     (dgOdotMilnorPerfectNullSquare R d ≫ dgKInputNu R)
     (perfectVerdierRawSquare (dgOdotMilnorNuPerfectSequence R d h)) :=
-  pushoutHomotopy square_isPushout (dgOdotMilnorNuNullSquareUpperHomotopy R d h)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pushoutHomotopy _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.square_isPushout (dgOdotMilnorNuNullSquareUpperHomotopy R d h)
     (dgOdotMilnorNuNullSquareLowerHomotopy R d h) (dgOdotMilnorNuNullSquareHomotopy_gluing R d h)
 /-- 概要：元全四角形比較の上三角形制限は元上全比較そのもの。
 方針：同じ pushout の左包含の計算。
 規約：元の全射の厳密等号。使われ方：指定上二胞体と短辺比較の回収。 -/
 lemma dgOdotMilnorNuNullSquareHomotopy_upper :
-    (squareTriangle 0 ▷ (Δ[1] : SSet.{u + 2})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 0 ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullSquareHomotopy R d h).h =
       (dgOdotMilnorNuNullUpperTriangleHomotopy R d h).h :=
-  pushoutHomotopy_inl _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pushoutHomotopy_inl _ _ _ _
 /-- 概要：元全四角形比較の下三角形制限は元比較の類を保つ同じ実代表。
 方針：同じ pushout の右包含の計算。
 規約：元の全射の厳密等号。使われ方：指定下二胞体と短辺比較の類の回収。 -/
 lemma dgOdotMilnorNuNullSquareHomotopy_lower :
-    (squareTriangle 1 ▷ (Δ[1] : SSet.{u + 2})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle 1 ▷ (Δ[1] : SSet.{u + 2})) ≫
         (dgOdotMilnorNuNullSquareHomotopy R d h).h =
       (dgOdotMilnorNuNullAlignedLowerTriangleHomotopy R d h).h :=
-  pushoutHomotopy_inr _ _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pushoutHomotopy_inr _ _ _ _
 end SerrePositivity.KST.SConstruction

@@ -35,7 +35,7 @@ def closedFlagTailRestriction {B : StableModel.{u}} (P : ClosedStablePredicate B
 規約：追加モデル構造なし。使われ方：実現比較。 -/
 instance closedFlagTailRestriction_trivialKanFibration {B : StableModel.{u}}
     (P : ClosedStablePredicate B) (n : ℕ) :
-    TrivialKanFibration (closedFlagTailRestriction P n) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (closedFlagTailRestriction P n) := by
   have := standardTailInclusion_pre_trivialKanFibration n B.carrier
   exact fullPredicateMap_trivialKanFibration _ _ _ (closedFlag_tail_iff P n)
 
@@ -62,7 +62,7 @@ theorem closedTail_isPullback {B : StableModel.{u}} (P : ClosedStablePredicate B
     IsPullback (closedTailPrefix P n).val (closedTailEdge P n).val
       (closedTailEndpointDiagram P n).val (closedArrowSourceDiagram P).val := by
   exact isPullback_fullPredicates
-    (isPullback_pre_of_isPushout (standardTail_isPushout n) B.carrier)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.isPullback_pre_of_isPushout (standardTail_isPushout n) B.carrier)
     (closedTailPredicate P n).predicate (closedFlagStablePredicate P ⦋n + 1⦌).predicate
     (closedArrowPredicate P).predicate (fun _ => Iff.rfl)
 

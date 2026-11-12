@@ -17,7 +17,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 補完した二辺模型の元の引き戻しと実普遍性の共同反映を保持する。 -/
-def completedTwoRelativePullback {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) :
+def completedTwoRelativePullback {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) :
     RelativePullback (sInputModel B) (ClosedStablePredicate.top (sInputModel B))
       (kernelClosedPredicate q) where
   total := completedTwoModel q
@@ -29,7 +29,7 @@ def completedTwoRelativePullback {B C : _root_.SerrePositivity.InfinityCategorie
   reflects := completedTwo_jointReflection q
 
 /-- 元の同じ切断を通すと、任意の関手の下で第一辺と既存の第二 cofiber を回収する。 -/
-lemma completedTwoSection_pair {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C)
+lemma completedTwoSection_pair {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C)
     (F : StableModel.{u} ⥤ SSet.{u}) :
     F.map (completedTwoSection q) ≫ (completedTwoRelativePullback q).pair F =
       lift (F.map (composableWeakFirstExact q)) (F.map (composableWeakCofiberExact q 1)) := by
@@ -46,8 +46,8 @@ lemma completedTwoSection_pair {B C : _root_.SerrePositivity.InfinityCategories.
     rfl
 
 /-- 元の接続した二辺から第一辺と同じ第二 cofiber への射対は全正有限反復で局所化同型。 -/
-theorem composableWeakMultiStep_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}}
-    (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+theorem composableWeakMultiStep_localized_isIso {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}}
+    (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (composableWeakMultiStep q (r + 1))) := by
   have := completedTwoSection_multi_localized_isIso q r
   have := (completedTwoRelativePullback q).multiPair_localized_isIso r

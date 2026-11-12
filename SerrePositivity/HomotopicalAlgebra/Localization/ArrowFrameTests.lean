@@ -21,9 +21,9 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
 
 abbrev testMap (f : Arrow C) (Y : C) :
-    (cosimplicialHom ((target cof).obj f)).obj Y ⟶
-      (cosimplicialHom ((source cof).obj f)).obj Y :=
-  (cosimplicialHomMap ((inclusion cof).app f)).app Y
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((target cof).obj f)).obj Y ⟶
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom ((source cof).obj f)).obj Y :=
+  (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((inclusion cof).app f)).app Y
 
 variable [ModelCategory SSet.{v}]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))
@@ -31,7 +31,7 @@ variable [ModelCategory SSet.{v}]
 
 include hcof in
 lemma projectionHom_weakEquivalence (f : Arrow C) (Y : C) [IsFibrant Y] :
-    weakEquivalences SSet.{v} ((cosimplicialHomMap ((projection cof).app f)).app Y) :=
+    weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((projection cof).app f)).app Y) :=
   cosimplicialHomMap_weakEquivalence hcof ((projection cof).app f)
     (target_reedyCofibrant cof f) ((cosimplicialResolutionFamily cof).cofibrant f.right)
     (projection_weakEquivalence cof f) Y
@@ -42,10 +42,10 @@ lemma testMap_replaced_iff (f : Arrow C) (Y : C) :
       mappingTest cof fib Y f.hom := by
   have := fibrantTarget_isFibrant fib Y
   have hp := projectionHom_weakEquivalence cof hcof f ((fibrantTarget fib).obj Y)
-  have hc := congr_app (cosimplicialHomBifunctor.map_comp
+  have hc := congr_app (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor.map_comp
     ((projection cof).app f).op ((inclusion cof).app f).op) ((fibrantTarget fib).obj Y)
   rw [← op_comp, factorization] at hc
-  have he : ((cosimplicialHomMap ((projection cof).app f)).app ((fibrantTarget fib).obj Y)) ≫
+  have he : ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((projection cof).app f)).app ((fibrantTarget fib).obj Y)) ≫
       testMap cof f ((fibrantTarget fib).obj Y) =
     ((chosenResolutionHom cof fib).map f.hom.op).app Y := hc.symm
   change weakEquivalences SSet.{v} (testMap cof f ((fibrantTarget fib).obj Y)) ↔
@@ -67,7 +67,7 @@ lemma testMap_weakEquivalence_iff_replaced (f : Arrow C) (Y : C) [IsFibrant Y] :
     (source_reedyCofibrant cof f) q
   have hB := cosimplicialHom_weakEquivalence_of_fibrant hcof ((target cof).obj f)
     (target_reedyCofibrant cof f) q
-  have hn := (cosimplicialHomMap ((inclusion cof).app f)).naturality q
+  have hn := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap ((inclusion cof).app f)).naturality q
   constructor
   · intro h
     exact (weakEquivalences SSet.{v}).of_precomp _ _ hB

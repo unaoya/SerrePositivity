@@ -24,16 +24,16 @@ def parametricFactoredInterval (P Z' : PointedSimplicialSet.{u}) :
     PointedMapping.VerticalPath
       (PointedObject.toPoint (PointedObject.basedHom P (PointedObject.basedHom I.source Z')))
       (parametricRestriction I P Z' ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z'))
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z'))
       (parametricRestriction I P Z' ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z')) := by
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z')) := by
   have hs : parametricRestriction I P Z' ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z') =
-    (ihom P).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z' ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z') :=
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z') =
+    (ihom P).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z' ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z') :=
       (Functor.map_comp (ihom P) _ _).symm
   have ht : parametricRestriction I P Z' ≫
-      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z') =
-    (ihom P).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.unit Z' ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z') :=
+      PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z') =
+    (ihom P).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.unit Z' ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z') :=
       (Functor.map_comp (ihom P) _ _).symm
   exact ((factoredUniversalInterval I Z').basedIhomMap P).changeEndpoints hs ht
 
@@ -54,7 +54,7 @@ def parametricInputSquare :=
 lemma parametricInputSquare_start :
     SquareAdjustment.leftSide ≫ (parametricInputSquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedMapping.parametricPost I.source v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.first Z'))) := by
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.first Z'))) := by
   change SquareAdjustment.leftSide ≫
     (PointedMapping.VerticalPath.inputSquare (parametricSectionComparison I v)
       (parametricFactoredInterval I P Z')).h = _
@@ -64,7 +64,7 @@ lemma parametricInputSquare_start :
 lemma parametricInputSquare_finish :
     SquareAdjustment.rightSide ≫ (parametricInputSquare I v).h =
       SSet.const (PointedMapping.familyVertex (PointedMapping.parametricPost I.source v ≫
-        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed I.second Z'))) := by
+        PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed I.second Z'))) := by
   change SquareAdjustment.rightSide ≫
     (PointedMapping.VerticalPath.inputSquare (parametricSectionComparison I v)
       (parametricFactoredInterval I P Z')).h = _
@@ -77,24 +77,24 @@ lemma parametricInterval_path :
       ((parametricFactoredInterval I P Z').pre
         (PointedObject.basedHomMap P (extensionSection I Z'))).path := by
   change ((I.path.basedPre Z').path ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (extensionSection I Z')
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (extensionSection I Z')
       (PointedObject.basedHom I.source Z')).right) ≫
         (PointedMapping.ihomAction P (PointedObject.basedHom I.source Z')
           (PointedObject.basedHom I.source Z')).right =
     ((I.path.basedPre Z').path ≫
       (PointedMapping.ihomAction P (PointedObject.basedHom I.target Z')
         (PointedObject.basedHom I.source Z')).right) ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
         (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right
   have h := PointedMapping.ihomAction_pre P (extensionSection I Z')
     (PointedObject.basedHom I.source Z')
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (extensionSection I Z')
+  change _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (extensionSection I Z')
       (PointedObject.basedHom I.source Z') ≫
         PointedMapping.ihomAction P (PointedObject.basedHom I.source Z')
           (PointedObject.basedHom I.source Z') =
     PointedMapping.ihomAction P (PointedObject.basedHom I.target Z')
       (PointedObject.basedHom I.source Z') ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
           (PointedObject.basedHom P (PointedObject.basedHom I.source Z')) at h
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun m => (I.path.basedPre Z').path ≫ m.right) h
@@ -105,19 +105,19 @@ lemma parametricInput_one :
     (((interval I Z').basedIhomMap P).pre (PointedMapping.parametricPost I.source v)).path =
       ((parametricFactoredInterval I P Z').pre (parametricExtensionRight I v)).path := by
   change ((interval I Z').basedIhomMap P).path ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedMapping.parametricPost I.source v)
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedMapping.parametricPost I.source v)
       (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right =
     (parametricFactoredInterval I P Z').path ≫
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (parametricExtensionRight I v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (parametricExtensionRight I v)
         (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right
   rw [parametricInterval_path]
   change ((parametricFactoredInterval I P Z').path ≫
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (PointedObject.basedHomMap P (extensionSection I Z'))
       (PointedObject.basedHom P (PointedObject.basedHom I.source Z'))).right) ≫ _ = _
   dsimp only [parametricExtensionRight]
   simpa only [Under.comp_right, Category.assoc] using
     congrArg (fun q => (parametricFactoredInterval I P Z').path ≫ q.right)
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed_comp (PointedMapping.parametricPost I.source v)
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.PointedMapping.prePointed_comp (PointedMapping.parametricPost I.source v)
         (PointedObject.basedHomMap P (extensionSection I Z'))
         (PointedObject.basedHom P (PointedObject.basedHom I.source Z')))
 

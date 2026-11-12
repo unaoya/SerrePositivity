@@ -15,7 +15,7 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open Spectra
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 open scoped Simplicial
 local instance kOriginalSuspensionPrisms_pointed_simplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -31,12 +31,12 @@ lemma kKanOriginalSuspensionPrism_zero {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n : ℕ} (s : (nerve I) _⦋n⦌) :
     SSet.ι₀ ≫ kKanOriginalSuspensionPrism r F s =
       SSet.yonedaEquiv.symm (ULift.up s) ≫
-        strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor r) ≫
-          coherentNerveMap suspensionEnrichedFunctor := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor r) ≫
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor := by
   have hs : kKanCoherentLevelDiagram F r ≫
-        coherentNerveMap pointedKanInclusionEnriched ≫ coherentNerveMap suspensionEnrichedFunctor =
-      strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor r) ≫
-        coherentNerveMap suspensionEnrichedFunctor := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap pointedKanInclusionEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor r) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap suspensionEnrichedFunctor := by
     rw [← Category.assoc, kKanCoherentLevelDiagram_inclusion]
   have h := homotopySimplexPrism_zero (kKanOriginalSuspensionHomotopy F r)
     (ULift.up s)
@@ -48,7 +48,7 @@ lemma kKanOriginalSuspensionPrism_one {I : Type u} [SmallCategory I]
     (r : ℕ) (F : I ⥤ StableModel.{u}) {n : ℕ} (s : (nerve I) _⦋n⦌) :
     SSet.ι₁ ≫ kKanOriginalSuspensionPrism r F s =
       SSet.yonedaEquiv.symm (ULift.up s) ≫
-        strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1)) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1)) := by
   have h := homotopySimplexPrism_one (kKanOriginalSuspensionHomotopy F r)
     (ULift.up s)
   conv at h => rhs; rw [kKanCoherentLevelDiagram_inclusion F (r + 1)]
@@ -70,10 +70,10 @@ lemma kKanOriginalSuspensionPrism_vertex {I : Type u} [SmallCategory I]
     lift (SSet.const a) (𝟙 (Δ[1] : SSet.{u + 1})) ≫
       kKanOriginalSuspensionPrism r F s =
         SSet.yonedaEquiv.symm
-          (coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).edge := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kKanSequence (F.obj (s.obj (a 0)))).sigma r)).edge := by
   have ha : (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶
       (SSet.uliftFunctor.{u+1,u}).obj (nerve I)).app (Opposite.op ⦋0⦌) a =
-      ULift.up (nerveVertex (s.obj (a 0))) := by
+      ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (s.obj (a 0))) := by
     apply congrArg ULift.up
     exact ComposableArrows.ext₀ rfl
   have h := homotopySimplexPrism_vertex (kKanOriginalSuspensionHomotopy F r)

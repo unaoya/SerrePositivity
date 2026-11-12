@@ -1,8 +1,8 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedTensorCylinder
 public import SerrePositivity.KST.SConstruction.PointedTensorTransformations
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationComposition
-public import SerrePositivity.InfinityCategories.Kan.StrictSimplicialTransformationWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationComposition
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.StrictSimplicialTransformationWhisker
 
 /-! # 元の点つき円柱の両端・射影の厳密豊穣自然変換
 概要：自由点つき区間の実両端と射影を、同じ円柱関手の全 Hom に自然に束ねる。
@@ -19,14 +19,14 @@ open CategoryTheory MonoidalCategory SSet
 def pointedTensorCylinderEndTransformation (i : Fin 2) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u}) pointedTensorCylinderFunctor :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp _ _ _ pointedTensorLeftUnitorInvTransformation
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp _ _ _ pointedTensorLeftUnitorInvTransformation
     (pointedTensorParameterTransformation (pointedTensorIntervalEnd i))
 
 /-- 元の円柱の射影を成分とする、全 Hom の厳密豊穣自然変換。 -/
 def pointedTensorCylinderProjectionTransformation :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u})) pointedTensorCylinderFunctor
       (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u}) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp _ _ _
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp _ _ _
     (pointedTensorParameterTransformation pointedTensorIntervalProjection)
     pointedTensorLeftUnitorTransformation
 
@@ -34,7 +34,7 @@ def pointedTensorCylinderProjectionTransformation :
 lemma pointedTensorCylinderEndTransformation_app (i : Fin 2) (X : PointedSSetObject.{u}) :
     (pointedTensorCylinderEndTransformation i).app X =
       eHomEquiv SSet (pointedTensorCylinderEnd i X) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp_hom
     (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u})
     (pointedTensorEnrichedFunctor (𝟙_ PointedSimplicialSet.{u}))
     pointedTensorCylinderFunctor pointedTensorLeftUnitorInvTransformation
@@ -48,7 +48,7 @@ lemma pointedTensorCylinderEndTransformation_app (i : Fin 2) (X : PointedSSetObj
 lemma pointedTensorCylinderProjectionTransformation_app (X : PointedSSetObject.{u}) :
     pointedTensorCylinderProjectionTransformation.app X =
       eHomEquiv SSet (pointedTensorCylinderProjection X) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationComp_hom pointedTensorCylinderFunctor
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationComp_hom pointedTensorCylinderFunctor
     (pointedTensorEnrichedFunctor (𝟙_ PointedSimplicialSet.{u}))
     (EnrichedFunctor.id SSet.{u} PointedSSetObject.{u})
     (pointedTensorParameterTransformation pointedTensorIntervalProjection)
@@ -65,7 +65,7 @@ lemma pointedTensorCylinderEnd_whisker (i : Fin 2) (X Y : PointedSSetObject.{u})
       pointedTensorCylinderFunctor.map X Y ≫
         eHomWhiskerRight SSet (pointedTensorCylinderEnd i X)
           (pointedTensorCylinderFunctor.obj Y) := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     (pointedTensorCylinderEndTransformation i) (pointedTensorCylinderEnd i)
     (pointedTensorCylinderEndTransformation_app i) X Y
   change 𝟙 (X ⟶[SSet.{u}] Y) ≫ _ = _ at h
@@ -78,7 +78,7 @@ lemma pointedTensorCylinderProjection_whisker (X Y : PointedSSetObject.{u}) :
         eHomWhiskerLeft SSet (pointedTensorCylinderFunctor.obj X)
           (pointedTensorCylinderProjection Y) =
       eHomWhiskerRight SSet (pointedTensorCylinderProjection X) Y := by
-  have h := _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformation_whisker _ _
+  have h := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformation_whisker _ _
     pointedTensorCylinderProjectionTransformation pointedTensorCylinderProjection
     pointedTensorCylinderProjectionTransformation_app X Y
   change _ = 𝟙 (X ⟶[SSet.{u}] Y) ≫ _ at h

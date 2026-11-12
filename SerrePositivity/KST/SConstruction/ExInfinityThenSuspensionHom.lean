@@ -16,14 +16,14 @@ open CategoryTheory MonoidalCategory SSet
 
 /-- 元の通常の点つき射を同じ Ex∞ で写し、元の円で suspension した実射。 -/
 def exInfinityThenSuspensionMap {X Y : PointedSSetObject.{u}} (f : X ⟶ Y) :
-    (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit).obj X ⟶
-      (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit).obj Y :=
+    (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj X ⟶
+      (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).obj Y :=
   PointedSimplicialSet.circle.{u} ◁ (exInfinityPointedKanMap f).hom
 
 /-- 同じ合成豊穣関手の通常射は、元の Ex∞ 射の同じ suspension を回収する。 -/
 lemma exInfinityThenSuspensionFunctor_hom {X Y : PointedSSetObject.{u}} (f : X ⟶ Y) :
     eHomEquiv SSet f ≫
-      (coaugmentedThenSuspensionFunctor Comparison.exInfinity Comparison.exInfinityUnit).map X Y =
+      (coaugmentedThenSuspensionFunctor _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit).map X Y =
       eHomEquiv SSet (exInfinityThenSuspensionMap f) := by
   change eHomEquiv SSet f ≫
     (exInfinityPointedEnrichedFunctor.map X Y ≫
@@ -31,8 +31,8 @@ lemma exInfinityThenSuspensionFunctor_hom {X Y : PointedSSetObject.{u}} (f : X �
   exact (Category.assoc _ _ _).symm.trans
     ((congrArg (fun q => q ≫ pointedSSetSuspensionEnrichedFunctor.map _ _)
       (coaugmentedPointedEnrichedFunctor_hom
-        Comparison.exInfinity Comparison.exInfinityUnit f)).trans
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit f)).trans
         (pointedSSetSuspensionEnrichedFunctor_hom
-          (coaugmentedPointedMap Comparison.exInfinity Comparison.exInfinityUnit f)))
+          (coaugmentedPointedMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit f)))
 
 end SerrePositivity.KST.SConstruction

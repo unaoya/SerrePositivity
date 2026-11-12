@@ -30,7 +30,7 @@ open SerrePositivity.DiagramModel SerrePositivity.Quillen
 namespace SerrePositivity.KST.Descent.CechReindex
 
 variable (K : Type u) [SmallCategory K] [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
   {D : Type uD} [Category.{vD} D] {H : Type uH} [Category.{vH} H]
   (Λ : SSet.{u} ⥤ H) [Λ.IsLocalization (weakEquivalences SSet.{u})]

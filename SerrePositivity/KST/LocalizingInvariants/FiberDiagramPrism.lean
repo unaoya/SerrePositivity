@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.LocalizingInvariants.FiberDiagramCategory
 public import SerrePositivity.KST.LocalizingInvariants.SpectrumEdgePi
-public import SerrePositivity.InfinityCategories.F1B.FunctorCategories.FunctorHomEvaluationNaturality
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHomEvaluationNaturality
 
 /-!
 概要：fiber 図式の任意の射を、元の射の類を保持する正方形の prism で表す。
@@ -24,22 +24,22 @@ namespace SerrePositivity.KST.LocalizingInvariants.FiberDiagram
 variable {D E : FiberDiagram.{u}} (f : D ⟶ E)
 
 def comparisonHomotopy : SSet.Homotopy D.triangle.square E.triangle.square :=
-  functorHomHomotopy f
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy f
 
 lemma comparisonHomotopy_hom : Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (comparisonHomotopy f)) = f :=
-  functorHomHomotopy_hom f
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (comparisonHomotopy f)) = f :=
+  _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_hom f
 
 def comparisonEdge (i j : Fin 2) :
-    Sp.Edge (squareVertex D.triangle.square i j) (squareVertex E.triangle.square i j) :=
-  simplicialHomotopyVertexEdge (comparisonHomotopy f)
+    Sp.Edge (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex D.triangle.square i j) (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex E.triangle.square i j) :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (comparisonHomotopy f)
     (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 
 lemma comparisonEdge_hom (i j : Fin 2) : Truncated.HomotopyCategory.homMk
     (comparisonEdge f i j).toTruncated = (vertex i j).map f := by
-  rw [comparisonEdge, comparisonHomotopy, functorHomHomotopy_component]
+  rw [comparisonEdge, comparisonHomotopy, _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomHomotopy_component]
   symm
-  exact functorCellToNatTrans_app_eq_evaluate f
+  exact _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorCellToNatTrans_app_eq_evaluate f
     (stdSimplex.obj₀Equiv.symm i, stdSimplex.obj₀Equiv.symm j)
 
 def comparisonMap (i j : Fin 2) :

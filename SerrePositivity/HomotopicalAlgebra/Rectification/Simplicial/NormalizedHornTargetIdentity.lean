@@ -43,12 +43,12 @@ variable (K : SSet.{v}) {n : ℕ} (i : Fin (n + 2))
 
 def loop : SSet.Homotopy (NormalizedHornFilling.section_ K i hK)
     (NormalizedHornFilling.section_ K i hK) :=
-  LargeParameterSquare.changeEndpoints (comparison i hK hK (𝟙 K))
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints (comparison i hK hK (𝟙 K))
     (by dsimp only [sourceThenMap]; rw [CategoryTheory.Functor.map_id, Category.comp_id])
     (by dsimp only [mapThenTarget]; rw [CategoryTheory.Functor.map_id, Category.id_comp])
 
 lemma loop_h : (loop K i hK).h = (comparison i hK hK (𝟙 K)).h :=
-  LargeParameterSquare.changeEndpoints_h _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.changeEndpoints_h _ _ _
 
 abbrev constant := KanActualHomotopy.refl (NormalizedHornFilling.section_ K i hK)
 

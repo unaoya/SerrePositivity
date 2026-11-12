@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteUpperFactor
 public import SerrePositivity.KST.SConstruction.DGOdotMilnorNuAbsoluteLowerFactor
-public import SerrePositivity.InfinityCategories.F1.Coherent.HomConstantTransport
+public import SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.HomConstantTransport
 
 /-!
 概要：上下元二単体の全 Hom を同じ零合成空間へ同時に保持する。
@@ -14,16 +14,16 @@ universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory SSet DifferentialGraded InfinityCategories LocalizingInvariants
 open scoped Simplicial
-variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : DGGluingMilnorSquare R d)
+variable (R : Type u) [CommRing R] (d : DGOdotInput R) (h : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingMilnorSquare R d)
 local notation "Src" => dgKInputStableValue R (dgOdotMilnorFlatKernelInput R d)
 local notation "Tgt" => dgKInputStableValue R (dgOdotMilnorResolvedInput R d)
 
-private def absoluteDiagonalNormalize {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
-    (t : Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}, X ⟶ Y) (hs : t.1 = A) (ht : t.2.1 = B) : A ⟶ B :=
+private def absoluteDiagonalNormalize {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}}
+    (t : Σ X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}, X ⟶ Y) (hs : t.1 = A) (ht : t.2.1 = B) : A ⟶ B :=
   eqToHom hs.symm ≫ t.2.2 ≫ eqToHom ht
 
-private lemma absoluteDiagonalNormalize_eq {A B : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}}
-    {t t' : Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}, X ⟶ Y} (he : t = t')
+private lemma absoluteDiagonalNormalize_eq {A B : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}}
+    {t t' : Σ X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}, X ⟶ Y} (he : t = t')
     (hs : t.1 = A) (ht : t.2.1 = B) (hs' : t'.1 = A) (ht' : t'.2.1 = B) :
     absoluteDiagonalNormalize t hs ht = absoluteDiagonalNormalize t' hs' ht' := by
   subst t'
@@ -34,37 +34,37 @@ private lemma absoluteDiagonalNormalize_eq {A B : _root_.SerrePositivity.Infinit
 規約：指定対角の元頂点の等号。使われ方：零成分因子分解の交点の保持。 -/
 lemma dgOdotMilnorNuAbsoluteTriangleHom_diagonal :
     (dgOdotMilnorNuAbsoluteTriangleHom R d h 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
       (dgOdotMilnorNuAbsoluteTriangleHom R d h 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) := by
-  let t (j : Fin 2) : Σ X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}, X ⟶ Y :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) := by
+  let t (j : Fin 2) : Σ X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}, X ⟶ Y :=
     ⟨(dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (0 : Fin 3)⟩,
       (dgOdotMilnorNuAbsoluteNullTriangle R d h j).obj ⟨ULift.up (2 : Fin 3)⟩,
-      (coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuAbsoluteNullTriangle R d h j)).map
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (dgOdotMilnorNuAbsoluteNullTriangle R d h j)).map
         dgOdotMilnorNuNullDiagonalPath.{u}⟩
   have he : t 0 = t 1 := (dgOdotMilnorNuAbsoluteTriangle_diagonal_data R d h 0).symm.trans
-    ((congrArg coherentNerveArrowData (dgOdotMilnorNuAbsoluteTriangle_diagonal R d h)).trans
+    ((congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveArrowData (dgOdotMilnorNuAbsoluteTriangle_diagonal R d h)).trans
       (dgOdotMilnorNuAbsoluteTriangle_diagonal_data R d h 1))
   have hn := absoluteDiagonalNormalize_eq he
     (dgOdotMilnorNuAbsoluteTriangle_source R d h 0) (dgOdotMilnorNuAbsoluteTriangle_target R d h 0)
     (dgOdotMilnorNuAbsoluteTriangle_source R d h 1) (dgOdotMilnorNuAbsoluteTriangle_target R d h 1)
   have hv (j : Fin 2) : (dgOdotMilnorNuAbsoluteTriangleHom R d h j).app (Opposite.op ⦋0⦌)
-      (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
-      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (Src) (Tgt)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
+      SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (Src) (Tgt)
         (absoluteDiagonalNormalize (t j) (dgOdotMilnorNuAbsoluteTriangle_source R d h j)
           (dgOdotMilnorNuAbsoluteTriangle_target R d h j)) := by
-    have hv₀ := coherentEnrichedUnderlyingFunctor_vertex
+    have hv₀ := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor_vertex
       (dgOdotMilnorNuAbsoluteNullTriangle R d h j)
       dgOdotMilnorNuNullDiagonalPath.{u}
     exact (congrArg (fun x => (eqToHom (congrArg₂
-      (fun X Y : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
+      (fun X Y : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1} => SimplicialCategory.sHom X Y)
       (dgOdotMilnorNuAbsoluteTriangle_source R d h j)
       (dgOdotMilnorNuAbsoluteTriangle_target R d h j))).app
         (Opposite.op ⦋0⦌) x) hv₀.symm).trans
-        (simplicialHomVertex_transport (dgOdotMilnorNuAbsoluteTriangle_source R d h j)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialHomVertex_transport (dgOdotMilnorNuAbsoluteTriangle_source R d h j)
           (dgOdotMilnorNuAbsoluteTriangle_target R d h j) (t j).2.2)
   exact (hv 0).trans ((congrArg
-    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u + 1}) (Src) (Tgt)) hn).trans (hv 1).symm)
+    (SimplicialCategory.homEquiv' (C := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u + 1}) (Src) (Tgt)) hn).trans (hv 1).symm)
 
 /-- 概要：絶対提示の元上下二単体の全 Hom の同じ零成分への因子分解。
 方針：構成済みの上・下の実因子分解を同じ番号に束ねる。
@@ -88,12 +88,12 @@ lemma dgOdotMilnorNuAbsoluteTriangleFactor_hom (j : Fin 2) :
 規約：比較辺を追加しない。使われ方：元全境界の貼り合わせ。 -/
 lemma dgOdotMilnorNuAbsoluteTriangleFactor_diagonal :
     (dgOdotMilnorNuAbsoluteTriangleFactor R d h 0).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) =
       (dgOdotMilnorNuAbsoluteTriangleFactor R d h 1).app (Opposite.op ⦋0⦌)
-        (nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex dgOdotMilnorNuNullDiagonalPath.{u}) := by
   apply Subtype.ext
-  exact congrArg (fun x => (quasicategoryCore
-    (_root_.SerrePositivity.InfinityCategories.Stable.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
+  exact congrArg (fun x => (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCore
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.exactFunctors (Src) (Tgt) : SSet.{u + 1})).ι.app (Opposite.op ⦋0⦌) x)
       (dgOdotMilnorNuAbsoluteTriangleHom_diagonal R d h)
 
 end SerrePositivity.KST.SConstruction

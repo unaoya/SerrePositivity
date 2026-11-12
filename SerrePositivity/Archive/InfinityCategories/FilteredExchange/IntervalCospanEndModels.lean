@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.FilteredExchange.StrictKanPullbackEndComparison
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.IntervalReplacementSection
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakWhitehead
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.StrictKanPullbackEndComparison
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.IntervalReplacementSection
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.WeakWhitehead
 
 /-!
 概要：任意の Kan cospan の end と interval 引き戻しを、左脚置換後の同じ end で比較する。

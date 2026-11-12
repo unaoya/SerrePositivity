@@ -27,11 +27,11 @@ def terminalIntervalStart : 𝟙_ PointedSimplicialSet.{u} ⟶ terminalPointedIn
 
 /-- 新しい端点包含の基礎射は既存の端点包含の二つの成分を交換する。 -/
 lemma terminalIntervalStart_right : terminalIntervalStart.{u}.right =
-    (coprod.braiding (𝟙_ SSet.{u}) (𝟙_ SSet.{u})).hom ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right := by
+    (coprod.braiding (𝟙_ SSet.{u}) (𝟙_ SSet.{u})).hom ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.right := by
   change coprod.desc (SSet.const (X := 𝟙_ SSet.{u})
     (stdSimplex.obj₀Equiv.symm (0 : Fin 2)))
     (SSet.const (X := 𝟙_ SSet.{u}) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))) = _
-  apply coprod.hom_ext <;> simp [_root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_right, coprod.braiding]
+  apply coprod.hom_ext <;> simp [_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_right, coprod.braiding]
 
 /-- 終点基点の区間の始点包含は元の単体集合で単射。 -/
 instance terminalIntervalStart_mono : Mono terminalIntervalStart.{u}.right := by
@@ -52,20 +52,20 @@ abbrev terminalPathSpace (B : PointedSimplicialSet.{u}) : PointedSimplicialSet.{
 
 /-- Kan 標的の終点固定 path 空間は Kan。 -/
 instance terminalPathSpace_kanComplex (B : PointedSimplicialSet.{u}) [KanComplex B.right] :
-    KanComplex (terminalPathSpace B).right := _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex _ _
+    KanComplex (terminalPathSpace B).right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex _ _
 
 /-- 終点固定 path の元の始点評価。 -/
 def terminalPathStart (B : PointedSimplicialSet.{u}) : terminalPathSpace B ⟶ B :=
-  _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed terminalIntervalStart B ≫
+  _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed terminalIntervalStart B ≫
     (MonoidalClosed.unitIsoSelf (X := B)).hom
 
 /-- 始点評価は元の端点包含の単射性によって Kan fibration。 -/
 instance terminalPathStart_fibration (B : PointedSimplicialSet.{u}) [KanComplex B.right] :
     Fibration (terminalPathStart B).right := by
   let e := PointedSimplicialSet.forget.mapIso (MonoidalClosed.unitIsoSelf (X := B))
-  let : Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre terminalIntervalStart B) :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_fibration terminalIntervalStart B
-  change Fibration (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre terminalIntervalStart B ≫ e.hom)
+  let : Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre terminalIntervalStart B) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_fibration terminalIntervalStart B
+  change Fibration (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre terminalIntervalStart B ≫ e.hom)
   infer_instance
 
 end SerrePositivity.KST.SConstruction

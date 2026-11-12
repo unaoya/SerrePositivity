@@ -19,7 +19,7 @@ open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.NonConnective
 variable (R : Type u) [CommRing R] (A : PerfDGInput.{u, max (u + 1) v} R)
   {κ : Cardinal.{u}} (I : DGKappaConeInput R A κ)
-  (hA : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R A))
+  (hA : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R A))
 include hA
 
 /-- 固定 ν が零の元の cone では、全対象が同じ perfect 零化集合に属する。 -/
@@ -37,7 +37,7 @@ theorem dgKappaSuspensionModule_acyclic (M : RightModule R (dgKappaSuspensionKIn
 
 /-- 同じ元の実懸垂の固定 ν は、元入力の固定 ν の零性を保つ。 -/
 theorem dgKappaSuspensionStableValue_isZero :
-    _root_.SerrePositivity.InfinityCategories.Stable.Infinity.IsZeroCategory (dgKInputStableValue R (dgKappaSuspensionKInput R A I)) := by
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.IsZeroCategory (dgKInputStableValue R (dgKappaSuspensionKInput R A I)) := by
   apply dgKInputStableValue_isZero_of_derived R (dgKappaSuspensionKInput R A I)
   intro X
   obtain ⟨⟨N⟩⟩ := X

@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.KST.Spectra.SpectrumMappingAcyclic
 public import SerrePositivity.KST.Spectra.SpectrumFibrationReplacement
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedKanWhitehead
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.PointedKanWhitehead
 
 /-!
 概要：BF 射の段ごとの全基点 π 同型は、全ての実際の豊穣 Hom への後合成でも π 同型。
@@ -33,20 +33,20 @@ lemma retraction_rlp {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y) (n : ℕ) :
 
 /-- 元の射が段ごとの π 同型なら、置換から標的への射影も各段で全単射 RLP。 -/
 lemma projection_rlp {X Y : OmegaSpectrum.{u}} (f : X ⟶ Y)
-    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) (n : ℕ) :
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) (n : ℕ) :
     (MorphismProperty.monomorphisms SSet.{u}).rlp
       ((fibrationReplacementProjection f).app n).right :=
   (MorphismProperty.monomorphisms SSet.{u}).rlp.comp_mem _ _
     (KanSequence.replacementStage (fibrationPath f) n).projection_rlp
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.mappingPathProjection_rlp_of_piIsomorphism (f.app n) (hf n))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mappingPathProjection_rlp_of_piIsomorphism (f.app n) (hf n))
 
 /-- BF の段ごとの π 同型は実際のスペクトル Hom 全体でも全基点 π 同型。 -/
 lemma post_piIsomorphism_of_levelwise (A : OmegaSpectrum.{u}) {X Y : OmegaSpectrum.{u}}
-    (f : X ⟶ Y) (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.app n).right) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post A f) := by
+    (f : X ⟶ Y) (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.app n).right) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (post A f) := by
   have hr := post_piIsomorphism A (fibrationReplacementRetraction f) (retraction_rlp f)
-  have hu : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (post A (fibrationReplacementUnit f)) := by
-    apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := post A (fibrationReplacementRetraction f)) _ hr
+  have hu : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (post A (fibrationReplacementUnit f)) := by
+    apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := post A (fibrationReplacementRetraction f)) _ hr
     have he : post A (fibrationReplacementUnit f) ≫
         post A (fibrationReplacementRetraction f) = 𝟙 _ := by
       exact (Functor.map_comp _ _ _).symm.trans
@@ -55,7 +55,7 @@ lemma post_piIsomorphism_of_levelwise (A : OmegaSpectrum.{u}) {X Y : OmegaSpectr
           exact ((SimplicialCategory.sHomFunctor OmegaSpectrum.{u}).obj
             (Opposite.op A)).map_id X)
     rw [he]
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.id _
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.id _
   have hq := post_piIsomorphism A (fibrationReplacementProjection f) (projection_rlp f hf)
   have h := hu.comp hq
   have he : post A (fibrationReplacementUnit f) ≫

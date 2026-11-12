@@ -57,9 +57,9 @@ lemma modelBifibrantSourceRoofDegreeTransportIso_over :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofSliceDegreeMap_eq_generic :
   modelBifibrantSourceRoofSliceDegreeMap X Y q b =
-    roofQuillenSliceDegreeMap (modelBifibrantDKFrame X q)
-      (modelBifibrantObject C Y)
-      (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+    roofQuillenSliceDegreeMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+      (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
       b (modelBifibrantSourceFrameRoofMap X Y q) ≫
         (modelBifibrantSourceRoofDegreeTransportIso X Y q b).hom := by
   apply pullback.hom_ext
@@ -75,9 +75,9 @@ lemma modelBifibrantSourceRoofSliceDegreeMap_eq_generic :
 lemma modelBifibrantSourceRoofSliceDegreeMap_fibration :
     Fibration (modelBifibrantSourceRoofSliceDegreeMap X Y q b) := by
   have := modelBifibrantSourceRoofProjection_leftFibration X Y q
-  have := roofQuillenSliceDegreeMap_fibration (modelBifibrantDKFrame X q)
-    (modelBifibrantObject C Y)
-    (SimplicialLocalization.hammockLocalizationNerveMap (modelBifibrantRelativeCategory C))
+  have := roofQuillenSliceDegreeMap_fibration (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantDKFrame X q)
+    (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
+    (SimplicialLocalization.hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C))
     b (modelBifibrantSourceFrameRoofMap X Y q)
   rw [modelBifibrantSourceRoofSliceDegreeMap_eq_generic]
   infer_instance
@@ -151,7 +151,7 @@ lemma modelBifibrantSourceRoofSliceProductMap_over :
 方針：元の全単体と引き戻し射影の同じ三角形を使う。
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofSliceProductMap_rightFibration :
-    RightFibration (modelBifibrantSourceRoofSliceProductMap X Y q b) where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration (modelBifibrantSourceRoofSliceProductMap X Y q b) where
   mem := by
     intro K L i hi
     cases hi with
@@ -165,8 +165,8 @@ lemma modelBifibrantSourceRoofSliceProductMap_rightFibration :
 規約：同じ元の比較射。使われ方：実 right Kan の余終性。 -/
 lemma modelBifibrantSourceRoofSliceProductMap_fiber_kanComplex
     (v : (nerve (modelBifibrantSourceRoofProductElements X Y q b)) _⦋0⦌) :
-    KanComplex (vertexFiber (modelBifibrantSourceRoofSliceProductMap X Y q b) v) := by
+    KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber (modelBifibrantSourceRoofSliceProductMap X Y q b) v) := by
   have := modelBifibrantSourceRoofSliceProductMap_rightFibration X Y q b
-  exact vertexFiber_kanComplex _ v
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiber_kanComplex _ v
 
 end SerrePositivity.EInfinity.SimplicialLocalization

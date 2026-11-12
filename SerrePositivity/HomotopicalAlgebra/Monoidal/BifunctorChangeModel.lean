@@ -27,8 +27,8 @@ lemma isQuillenBifunctor_change_second (adj : F ⊣₂ G) (adjFlip : F.flip ⊣�
     (hc : m.categoryWithCofibrations.cofibrations = original.categoryWithCofibrations.cofibrations)
     (hw : original.categoryWithWeakEquivalences.weakEquivalences ≤
       m.categoryWithWeakEquivalences.weakEquivalences)
-    (IV JV : MorphismProperty V) [CofibrantlyGenerated.{wV} IV JV]
-    (IC JC : MorphismProperty C) [@CofibrantlyGenerated.{wC} C _ m IC JC]
+    (IV JV : MorphismProperty V) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wV} IV JV]
+    (IC JC : MorphismProperty C) [@_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{wC} C _ m IC JC]
     (hend : ∀ {A B : V} (i : A ⟶ B), IV i →
       @IsLeftQuillen C _ C _ m.categoryWithCofibrations m.categoryWithWeakEquivalences
         m.categoryWithCofibrations m.categoryWithWeakEquivalences (F.obj A) ∧
@@ -51,12 +51,12 @@ lemma isQuillenBifunctor_change_second (adj : F ⊣₂ G) (adjFlip : F.flip ⊣�
   have hcof' {A B : V} (i : A ⟶ B) {X Y : C} (j : X ⟶ Y)
       (sq : F.PushoutObjObj i j) (hi : cofibrations V i) (hj : cofibrations C j) :
       cofibrations C sq.ι := hc.symm.le _ (hcof i j sq hi (hc.le j hj))
-  have hiv : IV ≤ cofibrations V := IV.le_llp_rlp.trans (cofibrations_eq_generated IV JV).symm.le
+  have hiv : IV ≤ cofibrations V := IV.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated IV JV).symm.le
   have hjv : JV ≤ trivialCofibrations V :=
-    JV.le_llp_rlp.trans (trivialCofibrations_eq_generated IV JV).symm.le
-  have hic : IC ≤ cofibrations C := IC.le_llp_rlp.trans (cofibrations_eq_generated IC JC).symm.le
+    JV.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated IV JV).symm.le
+  have hic : IC ≤ cofibrations C := IC.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.cofibrations_eq_generated IC JC).symm.le
   have hjc : JC ≤ trivialCofibrations C :=
-    JC.le_llp_rlp.trans (trivialCofibrations_eq_generated IC JC).symm.le
+    JC.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated IC JC).symm.le
   apply isQuillenBifunctor_of_generators adj adjFlip IV JV IC JC
   · intro A B i hi X Y j hj sq
     exact ⟨hcof' i j sq (hiv i hi) (hic j hj)⟩

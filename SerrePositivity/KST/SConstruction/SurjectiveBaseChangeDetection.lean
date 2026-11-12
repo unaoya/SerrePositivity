@@ -55,9 +55,9 @@ lemma localized_isIso_of_simplexSurjective_fibration_baseChange {E B : SSet.{u}}
     (SSet.modelCategoryQuillen.fibration_iff _).mpr (J.rlp.pullback_fst Y.hom t ht)
   let : KanComplex ((sliceFiberFunctor t).obj Y) :=
     isFibrant_of_fibration (pullback.fst Y.hom t)
-  let : TrivialKanFibration (F.map k) := ⟨KanFibrationLocalizedLifting.of_localized_isIso
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration (F.map k) := ⟨KanFibrationLocalizedLifting.of_localized_isIso
     (F.map k) hkr ((SSet.modelCategoryQuillen.fibration_iff _).mp inferInstance) hk⟩
-  let : TrivialKanFibration k.left :=
+  let : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration k.left :=
     trivialKanFibration_of_simplexSurjective_baseChange t hs k
   have hjl : IsIso (Q.map j.left) := (Localization.inverts Q anodyneExtensions) d.i d.hi
   have hkl : IsIso (Q.map k.left) := map_isIso_of_trivialKanFibration Q

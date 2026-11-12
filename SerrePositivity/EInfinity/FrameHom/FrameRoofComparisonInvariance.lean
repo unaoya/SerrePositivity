@@ -21,25 +21,25 @@ variable {C : Type u} [Category.{v} C] {X Y : C}
 規約：同じ Hom の全係数射を保持。使われ方：共通 frame の全族比較。 -/
 lemma frameSpanSourceIndexMap_localized_isIso
     (hα : IsIso (AnodyneHomotopy.anodyneQ.map (SSet.uliftFunctor.{max u v, v}.map
-      ((cosimplicialHomMap α).app Y)))) :
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y)))) :
     IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (frameSpanSourceIndexMap (Y := Y) A' A α))) := by
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{v, max u v}
-    ((cosimplicialHom A').obj Y)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj Y)
   have := SimplexTerminalNerve.liftedAugmentation_localized_isIso.{v, max u v}
-    ((cosimplicialHom A).obj Y)
+    ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)
   have h := congrArg AnodyneHomotopy.anodyneQ.map
     (SimplexTerminalNerve.liftedAugmentation_naturality.{v, max u v}
-      ((cosimplicialHomMap α).app Y))
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y))
   simp only [Functor.map_comp] at h
   change AnodyneHomotopy.anodyneQ.map
     (nerveMap (frameSpanSourceIndexMap (Y := Y) A' A α)) ≫
     AnodyneHomotopy.anodyneQ.map (SimplexTerminalNerve.liftedAugmentation.{v, max u v}
-      ((cosimplicialHom A').obj Y)) = _ at h
+      ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj Y)) = _ at h
   have hc : IsIso (AnodyneHomotopy.anodyneQ.map
       (nerveMap (frameSpanSourceIndexMap (Y := Y) A' A α)) ≫
       AnodyneHomotopy.anodyneQ.map (SimplexTerminalNerve.liftedAugmentation.{v, max u v}
-        ((cosimplicialHom A').obj Y))) := by
+        ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A').obj Y))) := by
     rw [h]
     infer_instance
   exact (isIso_comp_right_iff _ _).mp hc
@@ -67,8 +67,8 @@ lemma frameLeftRoofColimitMap_comparison :
     exact (NatTrans.congr_app hα n).trans (Category.comp_id _).symm
   have h := frameLeftRoofColimitMap_precompose (Y := Y) W A' A p' hp' p hp hA' hA α
     (𝟙 X) he
-  rw [Functor.map_comp, arrowMap_identity, precomposePointMap_unit] at h
-  have hid := AnodyneHomotopy.anodyneQ.map_id (colimitGraph W X Y)
+  rw [Functor.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap_identity, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap_unit] at h
+  have hid := AnodyneHomotopy.anodyneQ.map_id (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W X Y)
   rw [hid, Category.comp_id] at h
   exact h
 

@@ -33,13 +33,13 @@ def presentedPerfectDGSimplicialObjectEnrichedFunctor :
 lemma presentedPerfectDGSimplicialObjectEnrichedFunctor_obj
     (C : PerfDGInput.{u, v} A) (n : SimplexCategoryᵒᵖ) :
     ((presentedPerfectDGSimplicialObjectEnrichedFunctor A).obj C).diagram.obj n =
-      sConstruction n.unop.len (dgNerve A (PresentedPerfectDGObject A C)) := rfl
+      sConstruction n.unop.len (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) := rfl
 
 /-- 図式全体の実値の全ての面退化は、元の同じ添字制限。 -/
 lemma presentedPerfectDGSimplicialObjectEnrichedFunctor_obj_map
     (C : PerfDGInput.{u, v} A) {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
     ((presentedPerfectDGSimplicialObjectEnrichedFunctor A).obj C).diagram.map f =
-      sMap (dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
+      sMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
 
 /-- 図式全体の Hom を射影すると、同じ元の段の全 native Kan 入力族を回収する。 -/
 lemma presentedPerfectDGSimplicialObjectEnrichedFunctor_projection

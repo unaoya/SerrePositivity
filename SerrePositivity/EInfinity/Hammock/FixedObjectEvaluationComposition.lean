@@ -18,20 +18,20 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u uI vI uO
 namespace SerrePositivity.EInfinity.Hammock.FixedObjectDiagram.LocalizationObjects
-open CategoryTheory SimplicialLocalization
-variable {I : Type uI} [Category.{vI} I] {D : I ⥤ RelativeCategory.{u}}
+open CategoryTheory
+variable {I : Type uI} [Category.{vI} I] {D : I ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   {O : Type uO} (T : LocalizationObjects D O)
 
 lemma colimitValue_composePoint (i : I) (X Y Z : O) (n : SimplexCategoryᵒᵖ)
-    (p : (colimitGraph (D.obj i).weakEquivalences (T.original i X) (T.original i Y)).obj n)
-    (q : (colimitGraph (D.obj i).weakEquivalences (T.original i Y) (T.original i Z)).obj n) :
+    (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (D.obj i).weakEquivalences (T.original i X) (T.original i Y)).obj n)
+    (q : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph (D.obj i).weakEquivalences (T.original i Y) (T.original i Z)).obj n) :
     (T.colimitValue i X Z).app n
-        (composePoint (D.obj i).weakEquivalences (T.original i X) (T.original i Y)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint (D.obj i).weakEquivalences (T.original i X) (T.original i Y)
           (T.original i Z) p q) =
       (T.colimitValue i X Y).app n p ≫ (T.colimitValue i Y Z).app n q := by
   change eqToHom (T.image_eq i X).symm ≫
       (Zigzag.Value.colimitValue (D.obj i).weakEquivalences.Q
-        (D.obj i).weakEquivalences.Q_inverts _ _).app n (composePoint _ _ _ _ p q) ≫
+        (D.obj i).weakEquivalences.Q_inverts _ _).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint _ _ _ _ p q) ≫
           eqToHom (T.image_eq i Z) =
     (eqToHom (T.image_eq i X).symm ≫
       (Zigzag.Value.colimitValue (D.obj i).weakEquivalences.Q

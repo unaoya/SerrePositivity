@@ -17,17 +17,17 @@ universe u v
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SimplicialThickening MonoidalCategory CartesianMonoidalCategory SSet
 open Spectra Spectra.CoherentPathCoordinates SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 
 /-- 元の strict 図式の三角形の Hom 区間は、元の長辺の頂点の定数族そのもの。 -/
 lemma coherentTriangleTrace_strict {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C] (F : I ⥤ C)
     (s : (nerve I) _⦋2⦌) :
-    triangleTrace ((strictCoherentDiagram F).app (Opposite.op ⦋2⦌) (ULift.up s)) =
+    triangleTrace ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F).app (Opposite.op ⦋2⦌) (ULift.up s)) =
       SSet.const (SimplicialCategory.homEquiv' _ _ (F.map (s.map (homOfLE (by decide :
         (0 : Fin 3) ≤ 2))))) := by
-  change trianglePathInterval ≫ (coherentStringDiagramCell (strictCoherentDiagram F) s).map
+  change trianglePathInterval ≫ (coherentStringDiagramCell (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram F) s).map
     (.mk (ULift.up 0)) (.mk (ULift.up 2)) = _
   rw [coherentStringDiagramCell_strict_map F s 0 2 (by decide), SSet.comp_const]
 
@@ -39,7 +39,7 @@ variable {I : Type u} [SmallCategory I] (r : ℕ) (F : I ⥤ StableModel.{u})
 /-- 元の合成 prism の上面は、元の次段の strict 図式の同じ三角形。 -/
 lemma kKanOriginalCompositionImage_top_strict :
     (SimplicialNerve PointedSimplicialSet.{u}).δ 0 (kKanOriginalCompositionImage r F f g 0) =
-      (strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1))).app (Opposite.op ⦋2⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram (F ⋙ kKanSequenceLevelFunctor (r + 1))).app (Opposite.op ⦋2⦌)
         (ULift.up (ComposableArrows.mk₂ f g)) := by
   have h := congrArg SSet.yonedaEquiv
     (kKanOriginalSuspensionPrism_one r F (ComposableArrows.mk₂ f g))
@@ -51,11 +51,11 @@ lemma kKanOriginalCompositionImage_top_strict :
 /-- 元の合成 prism の下面は、元の段の suspension の strict 図式の同じ三角形。 -/
 lemma kKanOriginalCompositionImage_bottom_strict :
     (SimplicialNerve PointedSimplicialSet.{u}).δ 3 (kKanOriginalCompositionImage r F f g 2) =
-      (strictCoherentDiagram ((F ⋙ kKanSequenceLevelFunctor r) ⋙
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.strictCoherentDiagram ((F ⋙ kKanSequenceLevelFunctor r) ⋙
         MonoidalCategory.tensorLeft PointedSimplicialSet.circle.{u})).app (Opposite.op ⦋2⦌)
         (ULift.up (ComposableArrows.mk₂ f g)) := by
   have h := kKanOriginalSuspensionPrism_zero r F (ComposableArrows.mk₂ f g)
-  rw [strictCoherentDiagram_postcomp, suspensionEnrichedUnderlying_eq] at h
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.strictCoherentDiagram_postcomp, suspensionEnrichedUnderlying_eq] at h
   have hv := congrArg SSet.yonedaEquiv h
   simp only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at hv
   refine (trianglePrismImage_face (kKanOriginalCompositionPrism r F f g)

@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.ModelBridge.HA.Basic
+public import SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.Basic
 
 public import SerrePositivity.HomotopicalAlgebra.Localization.LocalBoundaryGenerators
 public import SerrePositivity.HomotopicalAlgebra.Smith.AccessibleGeneratedPair
@@ -21,7 +21,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 
 namespace SerrePositivity.Bousfield.LocalFibrantApproximation
 variable {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (cof : MorphismProperty.FunctorialFactorizationData (cofibrations C) (trivialFibrations C))
   (S : MorphismProperty C)
 
@@ -52,7 +52,7 @@ lemma generators_le_cofibrations : generators J cof S ≤ cofibrations C := by
   apply sup_le
   · intro X Y f hf
     have ht : trivialCofibrations C f :=
-      (J.le_llp_rlp.trans (ModelGeneration.trivialCofibrations_eq_generated I J).symm.le) f hf
+      (J.le_llp_rlp.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.trivialCofibrations_eq_generated I J).symm.le) f hf
     exact ht.1
   · exact LocalBoundaryGenerators.generators_le_cofibrations cof S
 
@@ -70,7 +70,7 @@ omit [IsLocallyPresentable.{w} C] in
 include I in
 lemma right_le_fibrations : (generators J cof S).rlp ≤ fibrations C := by
   have h : (generators J cof S).rlp ≤ J.rlp := MorphismProperty.antitone_rlp le_sup_left
-  exact h.trans (ModelGeneration.CofibrantlyGenerated.rlp_J (I := I) (J := J)).le
+  exact h.trans (_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_J (I := I) (J := J)).le
 
 variable [ModelCategory SSet.{v}]
   (fib : MorphismProperty.FunctorialFactorizationData (trivialCofibrations C) (fibrations C))

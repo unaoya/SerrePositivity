@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalCone
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 
 /-- 概要：元二入力等号の cone 同型は同じ零第三成分の全 Hom 作用と可換。

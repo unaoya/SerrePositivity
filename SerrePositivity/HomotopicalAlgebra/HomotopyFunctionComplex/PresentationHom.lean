@@ -21,7 +21,7 @@ variable {C : Type u} [Category.{v} C] {I : Type w} [Category.{t} I]
   (D : I ⥤ SimplexCategory) (s : Cocone (D ⋙ SSet.stdSimplex.{v}))
   (hs : IsColimit s) (A : SimplexCategory ⥤ C) {Y : C}
 
-def toCocone (f : s.pt ⟶ (cosimplicialHom A).obj Y) :
+def toCocone (f : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) :
     D ⋙ A ⟶ (Functor.const I).obj Y where
   app i := SSet.yonedaEquiv (s.ι.app i ≫ f)
   naturality i k φ := by
@@ -37,27 +37,27 @@ def toCocone (f : s.pt ⟶ (cosimplicialHom A).obj Y) :
 
 abbrev simplexCocone (τ : D ⋙ A ⟶ (Functor.const I).obj Y) :
     Cocone (D ⋙ SSet.stdSimplex.{v}) where
-  pt := (cosimplicialHom A).obj Y
+  pt := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y
   ι :=
-    { app i := (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm (τ.app i)
+    { app i := (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm (τ.app i)
       naturality i k φ := by
         change SSet.stdSimplex.map (D.map φ) ≫
-            (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm (τ.app k) =
-          (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm (τ.app i) ≫ 𝟙 _
+            (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm (τ.app k) =
+          (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm (τ.app i) ≫ 𝟙 _
         rw [Category.comp_id, SSet.yonedaEquiv_symm_naturality_left]
-        apply congrArg (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm
+        apply congrArg (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm
         exact (τ.naturality φ).trans (Category.comp_id _) }
 
 def fromCocone (τ : D ⋙ A ⟶ (Functor.const I).obj Y) :
-    s.pt ⟶ (cosimplicialHom A).obj Y := hs.desc (simplexCocone D A τ)
+    s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y := hs.desc (simplexCocone D A τ)
 
 @[reassoc (attr := simp)]
 lemma ι_fromCocone (τ : D ⋙ A ⟶ (Functor.const I).obj Y) (i : I) :
     s.ι.app i ≫ fromCocone D s hs A τ =
-      (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm (τ.app i) :=
+      (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm (τ.app i) :=
   hs.fac (simplexCocone D A τ) i
 
-def coconeEquiv : (s.pt ⟶ (cosimplicialHom A).obj Y) ≃
+def coconeEquiv : (s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃
     (D ⋙ A ⟶ (Functor.const I).obj Y) where
   toFun := toCocone D s A
   invFun := fromCocone D s hs A
@@ -73,17 +73,17 @@ def coconeEquiv : (s.pt ⟶ (cosimplicialHom A).obj Y) ≃
     rw [ι_fromCocone, Equiv.apply_symm_apply]
 
 def homEquiv [HasColimit (D ⋙ A)] :
-    (s.pt ⟶ (cosimplicialHom A).obj Y) ≃ (colimit (D ⋙ A) ⟶ Y) :=
+    (s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) ≃ (colimit (D ⋙ A) ⟶ Y) :=
   (coconeEquiv D s hs A).trans (colimit.isColimit (D ⋙ A)).homEquiv.symm
 
 @[reassoc (attr := simp)]
-lemma ι_homEquiv [HasColimit (D ⋙ A)] (f : s.pt ⟶ (cosimplicialHom A).obj Y) (i : I) :
+lemma ι_homEquiv [HasColimit (D ⋙ A)] (f : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) (i : I) :
     colimit.ι (D ⋙ A) i ≫ homEquiv D s hs A f = SSet.yonedaEquiv (s.ι.app i ≫ f) :=
   colimit.ι_desc _ _
 
 lemma homEquiv_naturality [HasColimit (D ⋙ A)] {Z : C}
-    (f : s.pt ⟶ (cosimplicialHom A).obj Y) (p : Y ⟶ Z) :
-    homEquiv D s hs A (f ≫ (cosimplicialHom A).map p) = homEquiv D s hs A f ≫ p := by
+    (f : s.pt ⟶ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y) (p : Y ⟶ Z) :
+    homEquiv D s hs A (f ≫ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).map p) = homEquiv D s hs A f ≫ p := by
   apply colimit.hom_ext
   intro i
   rw [ι_homEquiv]
@@ -101,7 +101,7 @@ abbrev tensorMap [HasColimit (D ⋙ A)] (c : Cocone D) : colimit (D ⋙ A) ⟶ A
 
 lemma homEquiv_presentationMap [HasColimit (D ⋙ A)] (c : Cocone D) (h : A.obj c.pt ⟶ Y) :
     homEquiv D s hs A (presentationMap D s hs c ≫
-      (SSet.yonedaEquiv (X := (cosimplicialHom A).obj Y)).symm h) = tensorMap D A c ≫ h := by
+      (SSet.yonedaEquiv (X := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Y)).symm h) = tensorMap D A c ≫ h := by
   apply colimit.hom_ext
   intro i
   rw [ι_homEquiv, ← Category.assoc, ← Category.assoc, colimit.ι_desc]

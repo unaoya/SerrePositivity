@@ -22,7 +22,7 @@ open CategoryTheory HomotopicalAlgebra
 namespace SerrePositivity.EInfinity.BarrattEccles
 variable (A : Type u) [CommRing A] (X Y : (operad A).Algebra)
 
-lemma algebraHammockNormalForm_transition {a b : Hammock.Word} (f : a ⟶ b)
+lemma algebraHammockNormalForm_transition {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b)
     {n : SimplexCategoryᵒᵖ} (τ : (algebraHammockGraph A a X Y).obj n) :
     algebraHammockNormalForm A X Y ⟨b, (algebraHammockGraphMap A f X Y).app n τ⟩ =
       algebraHammockNormalForm A X Y ⟨a, τ⟩ := by
@@ -30,18 +30,18 @@ lemma algebraHammockNormalForm_transition {a b : Hammock.Word} (f : a ⟶ b)
   exact Hammock.normalForm_transition (weakEquivalences (operad A).Algebra) X Y n f τ
 
 /-- 元の固定語の全単体からの正規化。 -/
-def algebraHammockGraphNormalization (w : Hammock.Word) :
+def algebraHammockGraphNormalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     algebraHammockGraph A w X Y ⟶ algebraHammockReducedSimplicialSet A X Y := by
   let := modelCategory A
   exact Hammock.graphNormalization (weakEquivalences (operad A).Algebra) X Y w
 
-lemma algebraHammockGraphNormalization_naturality {a b : Hammock.Word} (f : a ⟶ b) :
+lemma algebraHammockGraphNormalization_naturality {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) :
     algebraHammockGraphMap A f X Y ≫ algebraHammockGraphNormalization A X Y b =
       algebraHammockGraphNormalization A X Y a := by
   let := modelCategory A
   exact Hammock.graphNormalization_naturality (weakEquivalences (operad A).Algebra) X Y f
 
-lemma algebraHammockGraphNormalization_augmentation (w : Hammock.Word) :
+lemma algebraHammockGraphNormalization_augmentation (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     algebraHammockGraphNormalization A X Y w ≫ algebraHammockReducedAugmentation A X Y =
       algebraHammockGraphInclusion A w X Y := by
   let := modelCategory A
@@ -53,7 +53,7 @@ def algebraHammockColimitNormalization :
   let := modelCategory A
   exact Hammock.colimitNormalization (weakEquivalences (operad A).Algebra) X Y
 
-lemma algebraHammockGraphInclusion_colimitNormalization (w : Hammock.Word) :
+lemma algebraHammockGraphInclusion_colimitNormalization (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     algebraHammockGraphInclusion A w X Y ≫ algebraHammockColimitNormalization A X Y =
       algebraHammockGraphNormalization A X Y w := by
   let := modelCategory A
@@ -65,7 +65,7 @@ def algebraHammockReducedColimitIso :
   let := modelCategory A
   exact Hammock.reducedColimitIso (weakEquivalences (operad A).Algebra) X Y
 
-lemma algebraHammockReducedColimitIso_hom_fac (w : Hammock.Word) :
+lemma algebraHammockReducedColimitIso_hom_fac (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) :
     algebraHammockGraphInclusion A w X Y ≫ (algebraHammockReducedColimitIso A X Y).hom =
       algebraHammockGraphNormalization A X Y w := by
   let := modelCategory A

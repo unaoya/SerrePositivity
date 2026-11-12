@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.RelativeHammockEnriched
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanHammockSourceFunctor
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CoherentUnderlyingHo
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentUnderlyingHo
 
 /-!
 概要：同じ相対関手の全 hammock 比較は元の局所化源の射と整合する。
@@ -17,16 +17,16 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Hammock
-open SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
-variable {C D : RelativeCategory.{u}}
+open SerrePositivity.InfinityCategories
+variable {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}}
   (F : LocalizerMorphism C.weakEquivalences D.weakEquivalences)
 
 /-- 概要：元の相対関手の全 Hom 比較は元の通常射の一定単体を保持する。
 方針：同じ全次数の一定点の保存を使う。
 規約：元の射の実像。使われ方：元の局所化辺の照合。 -/
 lemma relativeHammockEnriched_arrowMap {X Y : C.category} (f : X ⟶ Y) :
-    arrowMap C.weakEquivalences f ≫ Relative.colimitMap F X Y =
-      arrowMap D.weakEquivalences (F.functor.map f) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap C.weakEquivalences f ≫ Relative.colimitMap F X Y =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap D.weakEquivalences (F.functor.map f) := by
   apply NatTrans.ext
   funext n
   apply ConcreteCategory.hom_ext
@@ -38,24 +38,24 @@ lemma relativeHammockEnriched_arrowMap {X Y : C.category} (f : X ⟶ Y) :
 規約：全対象・全射の関手等式。使われ方：全 coherent nerve 三角形。 -/
 lemma relativeKanHammockSourceFunctor :
     kanHammockSourceFunctor C ⋙
-      coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F) =
         F.functor ⋙ kanHammockSourceFunctor D := by
   have ho (X : C.category) :
       (kanHammockSourceFunctor C ⋙
-        coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)).obj X =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)).obj X =
           (F.functor ⋙ kanHammockSourceFunctor D).obj X := rfl
   apply Functor.hext ho
   intro X Y f
   apply heq_of_eq
-  change (coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)).map
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)).map
     ((kanHammockSourceFunctor C).map f) = (kanHammockSourceFunctor D).map (F.functor.map f)
   apply (eHomEquiv SSet).injective
-  rw [HomotopyLimits.enrichedUnderlying_eHom_map]
+  rw [_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.enrichedUnderlying_eHom_map]
   change (ForgetEnrichment.homTo SSet ((kanHammockSourceFunctor C).map f)) ≫
-    exInfinity.map (Relative.colimitMap F X Y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (Relative.colimitMap F X Y) =
       ForgetEnrichment.homTo SSet ((kanHammockSourceFunctor D).map (F.functor.map f))
   rw [kanHammockSourceFunctor_homTo, kanHammockSourceFunctor_homTo,
-    Category.assoc, ← exInfinityUnit.naturality, Functor.id_map, ← Category.assoc,
+    Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.naturality, Functor.id_map, ← Category.assoc,
     relativeHammockEnriched_arrowMap]
 
 /-- 概要：元の局所化源は同じ全 hammock coherent nerve 比較と可換。
@@ -65,10 +65,10 @@ lemma relativeKanHammockNerve_source :
     hammockLocalizationNerveMap C ≫ relativeKanHammockNerve F =
       nerveMap F.functor ≫ hammockLocalizationNerveMap D := by
   unfold hammockLocalizationNerveMap relativeKanHammockNerve
-  rw [Category.assoc, ← HomotopyLimits.nerveToCoherent_enriched_naturality,
+  rw [Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.nerveToCoherent_enriched_naturality,
     ← Category.assoc]
   change nerveMap (kanHammockSourceFunctor C ⋙
-    coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)) ≫ _ = _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentEnrichedUnderlyingFunctor (relativeKanHammockFunctor F)) ≫ _ = _
   rw [relativeKanHammockSourceFunctor]
   rfl
 

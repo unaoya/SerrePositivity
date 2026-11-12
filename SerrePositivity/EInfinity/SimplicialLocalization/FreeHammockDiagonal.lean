@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.FreeHammockAugmentation
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 
 /-!
@@ -17,30 +17,30 @@ public import SerrePositivity.EInfinity.Hammock.ReducedColimit
 universe u
 noncomputable section
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock.DoubleSimplicial
+open CategoryTheory
 
-def freeHammockDiagonal (C : RelativeCategory.{u}) (X Y : C.category) : SSet.{u} :=
-  diagonalFunctor.obj (freeHammockResolution C X Y)
+def freeHammockDiagonal (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) : SSet.{u} :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.obj (freeHammockResolution C X Y)
 
-def freeHammockDiagonalAugmentation (C : RelativeCategory.{u}) (X Y : C.category) :
-    freeHammockDiagonal C X Y ⟶ Hammock.colimitGraph C.weakEquivalences X Y :=
-  diagonalFunctor.map (freeHammockAugmentation C X Y) ≫
-    (diagonalConstantIso (Hammock.colimitGraph C.weakEquivalences X Y)).hom
+def freeHammockDiagonalAugmentation (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
+    freeHammockDiagonal C X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map (freeHammockAugmentation C X Y) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalConstantIso (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y)).hom
 
-lemma freeHammockDiagonal_obj (C : RelativeCategory.{u}) (X Y : C.category)
+lemma freeHammockDiagonal_obj (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
     (freeHammockDiagonal C X Y).obj n = ((freeHammockResolution C X Y).obj n).obj n := rfl
 
-lemma freeHammockDiagonalAugmentation_app (C : RelativeCategory.{u}) (X Y : C.category)
+lemma freeHammockDiagonalAugmentation_app (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category)
     (n : SimplexCategoryᵒᵖ) :
     (freeHammockDiagonalAugmentation C X Y).app n = ((freeHammockAugmentation C X Y).app n).app n :=
   rfl
 
-def freeHammockDiagonalReduction (C : RelativeCategory.{u}) (X Y : C.category) :
+def freeHammockDiagonalReduction (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     freeHammockDiagonal C X Y ⟶ Hammock.reducedSimplicialSet C.weakEquivalences X Y :=
   freeHammockDiagonalAugmentation C X Y ≫ (Hammock.reducedColimitIso C.weakEquivalences X Y).hom
 
-lemma freeHammockDiagonalReduction_fac (C : RelativeCategory.{u}) (X Y : C.category) :
+lemma freeHammockDiagonalReduction_fac (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (X Y : C.category) :
     freeHammockDiagonalReduction C X Y ≫ (Hammock.reducedColimitIso C.weakEquivalences X Y).inv =
       freeHammockDiagonalAugmentation C X Y := by
   simp only [freeHammockDiagonalReduction, Category.assoc, Iso.hom_inv_id, Category.comp_id]

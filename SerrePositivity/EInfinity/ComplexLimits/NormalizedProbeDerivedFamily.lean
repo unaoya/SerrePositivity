@@ -21,7 +21,7 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.HomotopyFunctionComplex DGNerve
+
 open scoped Simplicial
 variable (A : Type u) [CommRing A]
 
@@ -31,15 +31,15 @@ lemma normalizedProbeDerivedHomMap_family (X Y : Complex A) (K : SSet.{u + 1})
         (complexSemifreeResolutionValue A Y).val)) :
     let Q := framedLimitKProjectiveProbe A X
     let T := semifreeKProjectiveTarget A Y
-    intervalFamilyHom (g ≫ normalizedProbeDerivedHomMap A X Y ≫
-      pinchedHomToIntervalMappingSpace (X := derivedInfinityCategory A)
-        ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (Simplex.vertex Q))
-        (Simplex.vertex (complexSemifreeResolutionValue A Y))) =
-    intervalFamilyHom (g ≫ (normalizedKProjectiveHomIso A Q T).hom ≫
-      pinchedHomToIntervalMappingSpace (X := dgNerve A (KProjectiveComplex A))
-        (Simplex.vertex Q) (Simplex.vertex T) ≫
-        intervalFunctorMap (kProjectiveDerivedSource A) (Simplex.vertex Q) (Simplex.vertex T)) ≫
-      constantFunctorHomMap K (normalizedProbeDerivedRetractHom A Y) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ normalizedProbeDerivedHomMap A X Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory A)
+        ((kProjectiveDerivedSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Q))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (complexSemifreeResolutionValue A Y))) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (g ≫ (normalizedKProjectiveHomIso A Q T).hom ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace (X := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (KProjectiveComplex A))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Q) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex T) ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFunctorMap (kProjectiveDerivedSource A) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex Q) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex T)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K (normalizedProbeDerivedRetractHom A Y) := by
   dsimp only
   let Q := framedLimitKProjectiveProbe A X
   let T := semifreeKProjectiveTarget A Y
@@ -47,7 +47,7 @@ lemma normalizedProbeDerivedHomMap_family (X Y : Complex A) (K : SSet.{u + 1})
     (g ≫ normalizedKProjectiveDerivedHomMap A Q T)
   rw [normalizedProbeDerivedHomMap_eq_postcompose]
   simp only [Category.assoc] at h ⊢
-  exact h.trans (congrArg (fun h => h ≫ constantFunctorHomMap K
+  exact h.trans (congrArg (fun h => h ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.constantFunctorHomMap K
     (normalizedProbeDerivedRetractHom A Y))
     (normalizedKProjectiveDerivedHomMap_family A Q T K g))
 

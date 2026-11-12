@@ -4,7 +4,7 @@ public import SerrePositivity.KST.SConstruction.DGOdotMilnorCompletion
 public import SerrePositivity.KST.SConstruction.DGSmallPerfectFunctorImage
 public import SerrePositivity.KST.SConstruction.DGHomGluingStrictSquare
 public import SerrePositivity.KST.SConstruction.DGHomGluingConeFunctor
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 
 /-!
 概要：恒等 lax 差の対角・実 cone を、小さい厳密 dg 入力と実 S 二辺で表す。
@@ -20,7 +20,7 @@ open CategoryTheory SSet DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "B" => DGOdotGluing R d
 local notation "Q" => DGQuotient.QuotientObject (DGCategoryCellResolution.Source R (B))
-  (resolvedDGNullObjects R (B)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (B)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 
 /-- 概要：同じ resolved 商の元の小 Perf 基底。

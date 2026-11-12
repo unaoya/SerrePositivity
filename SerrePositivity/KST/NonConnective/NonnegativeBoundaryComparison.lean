@@ -28,7 +28,7 @@ lemma nonnegativeBoundary_degree (n : ℕ) : OmegaSpectrum.degree (n : ℤ) 1 = 
 /-- 同じ BF の一段表示を、単射置換列の段として固定する。 -/
 def nonnegativeBoundaryStage (X : StableModel.{u}) (n : ℕ) :
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) (n : ℤ) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
         ((monicKKanSequence X).level 1).space.basepoint :=
   OmegaSpectrum.positiveStageEquiv (kOmegaSpectrum X) (n : ℤ) 1 n
     (by omega) (nonnegativeBoundary_degree n)
@@ -48,7 +48,7 @@ def monicBoundaryProjection (X : StableModel.{u}) :
 
 /-- 同じ射影の全基点 π 同型。 -/
 lemma monicBoundaryProjection_piIsomorphism (X : StableModel.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (monicBoundaryProjection X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (monicBoundaryProjection X).right :=
   monicKKanSequenceProjection_piIsomorphism X 1
 
 /-- 同じ射影は、元の完全射に関して同じ基点固定成分で自然。 -/
@@ -60,27 +60,27 @@ lemma monicBoundaryProjection_component {X Y : StableModel.{u}} (f : X ⟶ Y) :
 
 /-- 同じ単射置換の一段から、元の一重境界商への群同型。 -/
 def monicBoundaryGroupEquiv (X : StableModel.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
         ((monicKKanSequence X).level 1).space.basepoint ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
         ((boundaryKanRealizationFunctor 0).obj X).basepoint :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism n (monicBoundaryProjection X).right
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism n (monicBoundaryProjection X).right
     (monicBoundaryProjection_piIsomorphism X)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (monicBoundaryProjection X))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (monicBoundaryProjection X))
 
 /-- 同じ比較の順方向は元の射影の群作用そのもの。 -/
 lemma monicBoundaryGroupEquiv_apply (X : StableModel.{u}) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
       ((monicKKanSequence X).level 1).space.basepoint) :
     monicBoundaryGroupEquiv X n a =
       pointedGroupMap n (monicBoundaryProjection X) a :=
-  _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.equivOfPiIsomorphism_apply n (monicBoundaryProjection X).right
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.equivOfPiIsomorphism_apply n (monicBoundaryProjection X).right
     (monicBoundaryProjection_piIsomorphism X)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (monicBoundaryProjection X)) a
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (monicBoundaryProjection X)) a
 
 /-- 同じ単射置換射影の群比較は、元の完全射について自然。 -/
 lemma monicBoundaryGroupEquiv_naturality {X Y : StableModel.{u}} (f : X ⟶ Y) (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((monicKKanSequence X).level 1).space.right n
       ((monicKKanSequence X).level 1).space.basepoint) :
     monicBoundaryGroupEquiv Y n (pointedGroupMap n ((monicKKanSequenceMap f).app 1) a) =
       singleBoundaryGroupMap f n (monicBoundaryGroupEquiv X n a) := by
@@ -96,7 +96,7 @@ lemma monicBoundaryGroupEquiv_naturality {X Y : StableModel.{u}} (f : X ⟶ Y) (
 /-- 同じ連結 BF K の非負整数群を、同じ一重境界商の群で表示する。 -/
 def nonnegativeBoundaryEquiv (X : StableModel.{u}) (n : ℕ) :
     OmegaSpectrum.homotopyGroup (kOmegaSpectrum X) (n : ℤ) ≃*
-      _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup ((boundaryKanRealizationFunctor 0).obj X).right n
         ((boundaryKanRealizationFunctor 0).obj X).basepoint :=
   (nonnegativeBoundaryStage X n).trans (monicBoundaryGroupEquiv X n)
 

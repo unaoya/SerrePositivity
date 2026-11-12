@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra.Path
 variable (R : Type u) [CommRing R] {A B : Mon (Complex R)} (f : A ⟶ B)
 
 lemma mapHom_one : η[(algebra R A).X] ≫ mapHom R f = η[(algebra R B).X] := by
-  apply dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B)
   · change (η[(algebra R A).X] ≫ mapHom R f) ≫ (source R B).hom = _
     rw [Category.assoc, mapHom_source, ← Category.assoc,
@@ -32,17 +32,17 @@ lemma mapHom_one : η[(algebra R A).X] ≫ mapHom R f = η[(algebra R B).X] := b
       IsMonHom.one_hom, IsMonHom.one_hom]
     exact (IsMonHom.one_hom (target R B).hom).symm
   · have hu : (Cochain.ofHom η[(algebra R A).X]).comp
-        (dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
           (identityPoint R A) (identityPoint R A)) (zero_add (-1)) = 0 :=
-      dgFunctorCommaIdentity_comparison R _ _ _ _
-    rw [dgFunctorCommaHomComparison_precompose, mapHom_comparison,
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_comparison R _ _ _ _
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, mapHom_comparison,
       ← Cochain.comp_assoc_of_first_is_zero_cochain, hu, Cochain.zero_comp]
-    exact (dgFunctorCommaIdentity_comparison R _ _ (identityFunctor R B)
+    exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaIdentity_comparison R _ _ (identityFunctor R B)
       (identityPoint R B)).symm
 
 lemma mapHom_mul : μ[(algebra R A).X] ≫ mapHom R f =
     (mapHom R f ⊗ₘ mapHom R f) ≫ μ[(algebra R B).X] := by
-  apply dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
+  apply _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHom_ext R _ _ (identityFunctor R B)
     (identityPoint R B) (identityPoint R B)
   · change (μ[(algebra R A).X] ≫ mapHom R f) ≫ (source R B).hom =
       ((mapHom R f ⊗ₘ mapHom R f) ≫ μ[(algebra R B).X]) ≫ (source R B).hom
@@ -60,19 +60,19 @@ lemma mapHom_mul : μ[(algebra R A).X] ≫ mapHom R f =
     simpa only [Category.assoc] using
       (congrArg (fun h => (mapHom R f ⊗ₘ mapHom R f) ≫ h)
         (IsMonHom.mul_hom (target R B).hom)).symm
-  · have hc (D : Mon (Complex R)) : dgFunctorCommaHomComparison R _ _ (identityFunctor R D)
+  · have hc (D : Mon (Complex R)) : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R _ _ (identityFunctor R D)
         (identityPoint R D) (identityPoint R D) ((algebra R D).X ⊗ (algebra R D).X)
-        μ[(algebra R D).X] = dgFunctorCommaCompositePrimitive R _ _ (identityFunctor R D)
+        μ[(algebra R D).X] = _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaCompositePrimitive R _ _ (identityFunctor R D)
           (identityPoint R D) (identityPoint R D) (identityPoint R D) :=
-      dgFunctorCommaComposition_comparison R _ _ _ _ _ _
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaComposition_comparison R _ _ _ _ _ _
     have hA : (Cochain.ofHom μ[(algebra R A).X]).comp
-        (dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaPrimitive R _ _ (identityFunctor R A)
           (identityPoint R A) (identityPoint R A)) (zero_add (-1)) =
-        dgFunctorCommaCompositePrimitive R _ _ (identityFunctor R A)
+        _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaCompositePrimitive R _ _ (identityFunctor R A)
           (identityPoint R A) (identityPoint R A) (identityPoint R A) := hc A
-    rw [dgFunctorCommaHomComparison_precompose, mapHom_comparison,
+    rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, mapHom_comparison,
       ← Cochain.comp_assoc_of_first_is_zero_cochain, hA,
-      dgFunctorCommaHomComparison_precompose, hc, mapHom_product_comparison]
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison_precompose, hc, mapHom_product_comparison]
 
 def map : algebra R A ⟶ algebra R B := Mon.Hom.mk' (mapHom R f)
   (mapHom_one R f) (mapHom_mul R f)

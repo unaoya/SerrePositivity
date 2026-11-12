@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceCompositionTetrahedronZeroCylinder
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCompositionPrefixInitial
-public import SerrePositivity.InfinityCategories.HomotopyLimits.CosliceSourceIdentity
-public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.CosliceSourceIdentity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ScaffoldFirstVertex
 
 /-!
 概要：零面の元の実 coslice 円柱は同じ始点の恒等 coslice 点を固定する。

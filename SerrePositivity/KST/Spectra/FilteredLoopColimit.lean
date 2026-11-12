@@ -52,7 +52,7 @@ instance loop_preservesFilteredDiagram :
 規約：通常の点つき単体集合の同型。
 使われ方：BF 1978 §2、HA §1.4.2。filtered Ω 列の構造射の比較。 -/
 def loopFilteredColimitIso :
-    colimit (D ⋙ ihom PointedSimplicialSet.circle.{u}) ≅ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (colimit D) :=
+    colimit (D ⋙ ihom PointedSimplicialSet.circle.{u}) ≅ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (colimit D) :=
   (preservesColimitIso (ihom PointedSimplicialSet.circle.{u}) D).symm
 
 /-- 概要：loop と余極限の比較同型を各段へ制限すると cocone 射の loop。

@@ -43,19 +43,19 @@ theorem sConstruction_isPullback_of_gapped_reflection {P X A Y : StableModel.{u}
       IsGapped F ↔ IsGapped (F ≫ p.val) ∧ IsGapped (F ≫ q.val)) :
     IsPullback ((sEndofunctor n).map p).val ((sEndofunctor n).map q).val
       ((sEndofunctor n).map f).val ((sEndofunctor n).map g).val := by
-  let R := fun v => IsGapped ((functorVertexEquiv (arNerve n) P.carrier).symm v)
-  let RX := fun v => IsGapped ((functorVertexEquiv (arNerve n) X.carrier).symm v)
-  let RA := fun v => IsGapped ((functorVertexEquiv (arNerve n) A.carrier).symm v)
+  let R := fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) P.carrier).symm v)
+  let RX := fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) X.carrier).symm v)
+  let RA := fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) A.carrier).symm v)
   have hv : ∀ v, R v ↔ RX (((ihom (arNerve n)).map p.val).app _ v) ∧
       RA (((ihom (arNerve n)).map q.val).app _ v) := by
     intro v
-    obtain ⟨F, rfl⟩ := (functorVertexEquiv (arNerve n) P.carrier).surjective v
-    change IsGapped ((functorVertexEquiv _ _).symm (functorVertex F)) ↔
-      IsGapped ((functorVertexEquiv _ _).symm (functorVertex (F ≫ p.val))) ∧
-        IsGapped ((functorVertexEquiv _ _).symm (functorVertex (F ≫ q.val)))
-    change IsGapped ((functorVertexEquiv _ _).symm ((functorVertexEquiv _ _) F)) ↔
-      IsGapped ((functorVertexEquiv _ _).symm ((functorVertexEquiv _ _) (F ≫ p.val))) ∧
-        IsGapped ((functorVertexEquiv _ _).symm ((functorVertexEquiv _ _) (F ≫ q.val)))
+    obtain ⟨F, rfl⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) P.carrier).surjective v
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F)) ↔
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (F ≫ p.val))) ∧
+        IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (F ≫ q.val)))
+    change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _) F)) ↔
+      IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _) (F ≫ p.val))) ∧
+        IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _).symm ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv _ _) (F ≫ q.val)))
     simpa only [Equiv.symm_apply_apply] using hr F
   have ht := isPullback_fullPredicates (h.map (ihom (arNerve n))) R RX RA hv
   have he : fullPredicateMap ((ihom (arNerve n)).map p.val) R RX

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ColimitCompositionPoints
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.UnmarkedFactorTarget
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ColimitCompositionPoints
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget
 public import SerrePositivity.EInfinity.Hammock.AllMarkedNative
 
 /-!
@@ -24,27 +24,27 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) (X Y : Paths C)
   {n m : SimplexCategoryᵒᵖ}
 
-def pastePoint (g : Index W) (p : (left W X g.val).obj n) (r : (right W Y g.val).obj n) :
-    (colimitGraph W.paths X Y).obj n :=
-  composePoint W.paths X g.val.right Y
-    (composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
-      (arrowPoint W.paths g.val.hom.toPath n)) r
+def pastePoint (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n) (r : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).obj n) :
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n :=
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n)) r
 
-lemma pastePoint_simplex (θ : n ⟶ m) (g : Index W) (p : (left W X g.val).obj n)
-    (r : (right W Y g.val).obj n) :
-    pastePoint W X Y g ((left W X g.val).map θ p) ((right W Y g.val).map θ r) =
-      (colimitGraph W.paths X Y).map θ (pastePoint W X Y g p r) := by
+lemma pastePoint_simplex (θ : n ⟶ m) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
+    (r : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).obj n) :
+    pastePoint W X Y g ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).map θ p) ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.right W Y g.val).map θ r) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).map θ (pastePoint W X Y g p r) := by
   have hp := congrArg (fun k => k p) ((AllMarked.inclusion W X g.val.left).naturality θ)
-  have hi := (congrArg₂ (composePoint W.paths X g.val.left g.val.right) hp
-    (arrowPoint_simplex W.paths θ g.val.hom.toPath).symm).trans
-      (composePoint_simplex W.paths X g.val.left g.val.right θ
-        ((AllMarked.inclusion W X g.val.left).app n p) (arrowPoint W.paths g.val.hom.toPath n))
-  exact (congrArg₂ (composePoint W.paths X g.val.right Y) hi rfl).trans
-    (composePoint_simplex W.paths X g.val.right Y θ
-      (composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
-        (arrowPoint W.paths g.val.hom.toPath n)) r)
+  have hi := (congrArg₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right) hp
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint_simplex W.paths θ g.val.hom.toPath).symm).trans
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_simplex W.paths X g.val.left g.val.right θ
+        ((AllMarked.inclusion W X g.val.left).app n p) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n))
+  exact (congrArg₂ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.right Y) hi rfl).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint_simplex W.paths X g.val.right Y θ
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.composePoint W.paths X g.val.left g.val.right ((AllMarked.inclusion W X g.val.left).app n p)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowPoint W.paths g.val.hom.toPath n)) r)
 
-def paste : space W X Y ⟶ colimitGraph W.paths X Y where
+def paste : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.space W X Y ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y where
   app _ := ↾fun s => pastePoint W X Y s.1 s.2.1 s.2.2
   naturality _ _ θ := by
     apply ConcreteCategory.hom_ext

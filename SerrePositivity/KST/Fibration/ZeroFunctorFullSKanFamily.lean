@@ -19,47 +19,47 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
-open SerrePositivity.KST.Comparison
+
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
 
 /-- 元の全 S• の対角を、そのまま Ex∞ Kan 値として保持する。 -/
-def fullSRealizationKanObject (A : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : KanObject.{u} :=
+def fullSRealizationKanObject (A : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.KanObject.{u} :=
   exInfinityClosedKanEnrichedFunctor.obj
     (simplicialSSetDiagramDiagonalEnrichedFunctor.obj ⟨simplicialSConstruction A.obj⟩)
 
 /-- 元の零値関手の全高次族による、同じ全 S• から core S• への Ex∞ Hom 作用。 -/
-def zeroFunctorFullSKanFamily (A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+def zeroFunctorFullSKanFamily (A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     zeroFunctorLocus A C ⟶
-      (fullSRealizationKanObject A ⟶[SSet.{u}] stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C)) :=
+      (fullSRealizationKanObject A ⟶[SSet.{u}] stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from C)) :=
   zeroFunctorFullSDiagramFamily A C ≫
     simplicialSSetDiagramDiagonalEnrichedFunctor.map _ _ ≫
       exInfinityClosedKanEnrichedFunctor.map _ _
 
 /-- 同じ指定点では、元の全 S• 零値作用の同じ実現射の Ex∞ 表示を回収する。 -/
-theorem zeroFunctorFullSKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A C)
-    (hF : IsZeroVertex (functorVertex F.hom)) :
+theorem zeroFunctorFullSKanFamily_fixed {A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (F : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A C)
+    (hF : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex F.hom)) :
     zeroFunctorParameterPoint F hF ≫ zeroFunctorFullSKanFamily A C =
       eHomEquiv SSet (show fullSRealizationKanObject A ⟶
-        stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat from C) from
-          exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
+        stableCoreSingleKanObject (show _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat from C) from
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialDiagonalFunctor.map (zeroFunctorFullSMap F hF))) := by
   rw [zeroFunctorFullSKanFamily, ← Category.assoc, ← Category.assoc,
     zeroFunctorFullSDiagramFamily_fixed, simplicialSSetDiagramDiagonalEnrichedFunctor_hom]
   exact exInfinityClosedKanEnrichedFunctor_hom _
 
 /-- 同じ全円柱の Ex∞ 評価は、元の実現円柱の strength による像と厳密一致。 -/
-theorem zeroFunctorFullSKanFamily_action (A C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) :
+theorem zeroFunctorFullSKanFamily_action (A C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) :
     uncurry (zeroFunctorFullSKanFamily A C) =
-      coaugmentedTensorRightStrength exInfinity exInfinityUnit
+      coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
           (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)) (zeroFunctorLocus A C) ≫
-        exInfinity.map (simplicialCylinderDiagonal _ _ (zeroFunctorLocus A C)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map (simplicialCylinderDiagonal _ _ (zeroFunctorLocus A C)
           (zeroFunctorFullSCoreNatTrans A C)) := by
   rw [zeroFunctorFullSKanFamily, ← Category.assoc]
-  exact (coaugmentedClosedFamilyMap_strength exInfinity exInfinityUnit
+  exact (coaugmentedClosedFamilyMap_strength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
     (zeroFunctorFullSDiagramFamily A C ≫
       simplicialSSetDiagramDiagonalEnrichedFunctor.map _ _)).trans
-    (congrArg (fun f => coaugmentedTensorRightStrength exInfinity exInfinityUnit
+    (congrArg (fun f => coaugmentedTensorRightStrength _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
       (simplicialDiagonalFunctor.obj (simplicialSConstruction A.obj)) (zeroFunctorLocus A C) ≫
-        exInfinity.map f) (zeroFunctorFullSDiagramFamily_diagonal A C).symm)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map f) (zeroFunctorFullSDiagramFamily_diagonal A C).symm)
 
 end SerrePositivity.KST.Fibration

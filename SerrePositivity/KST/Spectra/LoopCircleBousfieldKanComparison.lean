@@ -15,23 +15,23 @@ set_option backward.isDefEq.respectTransparency.types false
 noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra
 
 /-- 標準の基点付き円の写像空間から、元の BK end への指定した比較射。 -/
 def loopCircleBKComparison (Y : PointedSimplicialSet.{u}) :
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right ⟶ bousfieldKanHolim (loopCoefficient Y) :=
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right ⟶ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanHolim (loopCoefficient Y) :=
   (loopIntervalEndCircleIso Y).inv ≫ cospanBKLoopEndComparison (loopCoefficient Y)
 
 /-- 元の円の写像空間から BK end への比較は、実際の単体的ホモトピー同値。 -/
 lemma loopCircleBKComparison_homotopyEquivalence (Y : PointedSimplicialSet.{u})
-    [KanComplex Y.right] : IsSimplicialHomotopyEquivalence (loopCircleBKComparison Y) := by
+    [KanComplex Y.right] : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsSimplicialHomotopyEquivalence (loopCircleBKComparison Y) := by
   have centralKan : KanComplex ((loopCoefficient Y).obj (AsSmall.up.obj .one)) :=
     inferInstanceAs (KanComplex Y.right)
   obtain ⟨g, ⟨h₁⟩, ⟨h₂⟩⟩ := cospanBKLoopEndComparison_homotopyEquivalence (loopCoefficient Y)
   let e := loopIntervalEndCircleIso Y
   refine ⟨g ≫ e.hom, ?_, ?_⟩
-  · have h := functorHomotopyPostcomp (functorHomotopyPrecomp h₁ e.inv) e.hom
+  · have h := _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPrecomp h₁ e.inv) e.hom
     simpa only [loopCircleBKComparison, e, Category.assoc, Category.id_comp,
       Iso.inv_hom_id] using Nonempty.intro h
   · simpa only [loopCircleBKComparison, e, Category.assoc, Iso.hom_inv_id_assoc]
@@ -41,9 +41,9 @@ lemma loopCircleBKComparison_homotopyEquivalence (Y : PointedSimplicialSet.{u})
 lemma loopCircleBKComparison_π (Y : PointedSimplicialSet.{u})
     (i : AsSmall.{u} WalkingCospan) :
     loopCircleBKComparison Y ≫
-        weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan)) (loopCoefficient Y) i =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)) (loopCoefficient Y) i =
       (loopIntervalEndCircleIso Y).inv ≫
-        weightedSectionsπ loopIntervalWeight (loopCoefficient Y) i ≫
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ loopIntervalWeight (loopCoefficient Y) i ≫
           (pre (cospanBKCollapse.app i)).app ((loopCoefficient Y).obj i) := by
   rw [loopCircleBKComparison, Category.assoc, cospanBKLoopEndComparison_π]
 

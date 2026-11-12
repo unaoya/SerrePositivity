@@ -11,7 +11,7 @@ public import SerrePositivity.KST.SConstruction.CubeRightWhisker
 namespace SerrePositivity.KST.SConstruction
 
 /-- 左右の一座標保持の二つの順序は、元の頂点写像として厳密に一致する。 -/
-lemma cubeVertexKeep_interchange {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Simplicial.CubeVertex m) :
+lemma cubeVertexKeep_interchange {n m : ℕ} (f : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex n → _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.CubeVertex m) :
     cubeVertexLeftKeep (cubeVertexRightKeep f) =
       cubeVertexRightKeep (cubeVertexLeftKeep f) := by
   funext x

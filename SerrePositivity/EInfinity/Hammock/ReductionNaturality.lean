@@ -24,31 +24,31 @@ open CategoryTheory
 variable {C : Type u} [Category.{v} C] {W : MorphismProperty C} [W.IsMultiplicative]
   {X Y : C} {n m : SimplexCategoryᵒᵖ}
 
-lemma map {r s : RawHammock W X Y n} (h : Reduction W X Y n r s) (α : n ⟶ m) :
-    Reduction W X Y m (RawHammock.map W X Y α r) (RawHammock.map W X Y α s) := by
+lemma map {r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n} (h : Reduction W X Y n r s) (α : n ⟶ m) :
+    Reduction W X Y m (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α r) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α s) := by
   cases h with
   | merge d p hp τ =>
-    have he : ((graphDiagram W X Y).map (Word.mergeMap d p hp)).app m
-        ((graph W (⟨_, d⟩ : Word) X Y).map α τ) =
-      (graph W (Word.mergeTarget d p) X Y).map α
-        (((graphDiagram W X Y).map (Word.mergeMap d p hp)).app n τ) :=
-      NatTrans.naturality_apply ((graphDiagram W X Y).map (Word.mergeMap d p hp)) α τ
+    have he : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app m
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨_, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).map α τ) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeTarget d p) X Y).map α
+        (((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)).app n τ) :=
+      NatTrans.naturality_apply ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.mergeMap d p hp)) α τ
     have hh := Reduction.merge (W := W) (X := X) (Y := Y) (n := m) d p hp
-      ((graph W (⟨_, d⟩ : Word) X Y).map α τ)
-    dsimp only [RawHammock.map]
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W (⟨_, d⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) X Y).map α τ)
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map]
     rw [← he]
     exact hh
   | erase j τ hτ =>
     have hh := Reduction.erase (W := W) (X := X) (Y := Y) (n := m) j
-      ((graph W _ X Y).map α τ) (identityColumn_map W X Y j τ hτ α)
-    dsimp only [RawHammock.map]
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W _ X Y).map α τ) (identityColumn_map W X Y j τ hτ α)
+    dsimp only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map]
     rw [← eraseSimplex_map W X Y j τ hτ α]
     exact hh
 
-lemma chain_map {r s : RawHammock W X Y n}
+lemma chain_map {r s : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n}
     (h : Relation.ReflTransGen (Reduction W X Y n) r s) (α : n ⟶ m) :
     Relation.ReflTransGen (Reduction W X Y m)
-      (RawHammock.map W X Y α r) (RawHammock.map W X Y α s) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α r) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock.map W X Y α s) := by
   induction h with
   | refl => exact Relation.ReflTransGen.refl
   | tail _ hs ih => exact ih.tail (map hs α)

@@ -19,17 +19,17 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- 点つき射の厳密な構造正方形は、同じ curry' の Hom 正方形を与える。 -/
 lemma homPoint_step {U V U' V' : PointedSimplicialSet.{u}}
-    (s : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U ⟶ U') (t : _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension V ⟶ V') (f : U ⟶ V) (g : U' ⟶ V')
+    (s : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U ⟶ U') (t : _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension V ⟶ V') (f : U ⟶ V) (g : U' ⟶ V')
     (h : PointedSimplicialSet.circle.{u} ◁ f ≫ t = s ≫ g) :
-    curry' g ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed s V' =
-      curry' f ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension U) t := by
+    curry' g ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed s V' =
+      curry' f ≫ suspensionHom U V ≫ PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension U) t := by
   rw [PointedMapping.curry'_pre, ← Category.assoc, suspensionHom_curry']
   exact (congrArg curry' h.symm).trans (curry'_ihom_map _ _).symm
 
 /-- 任意の Kan 列への厳密な列射の各段は、同じ Hom の単位パラメータで整合する。 -/
 lemma homPoint_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     (f : KanSequence.Hom X.toKanSequence Y) (n : ℕ) :
-    curry' (f.app (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+    curry' (f.app (n + 1)) ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space =
       curry' (f.app n) ≫ pointedStep X Y n := by
   exact homPoint_step (X.sigma n) (Y.sigma n) (f.app n) (f.app (n + 1)) (f.comm n)
 

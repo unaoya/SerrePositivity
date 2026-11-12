@@ -33,7 +33,7 @@ private lemma units_smul_cancel (M : Type u) [AddCommGroup M] (e : ℤˣ) (x : M
   rw [smul_smul, Int.units_mul_self, one_smul]
 
 /-- 元の全正次元の HA 向き最高生成元上で、元の HA 線形復元は微分と可換。 -/
-lemma simplexHADegreeLift_oriented_top_comm {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_oriented_top_comm {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) :
     (homObject A D (s.obj (v 0)) (s.obj b)).d (-((m + 1 : ℕ) : ℤ)) (-(m : ℤ))
@@ -88,7 +88,7 @@ lemma simplexHADegreeLift_oriented_top_comm {n : ℕ} (s : DGNerve.Simplex A D n
     ((simplexHADecode_rhs_oriented_faces A s.toSimplexData m v b hb hI ha hM hk).trans hB.symm))
 
 /-- 元の全正次元の生の最高生成元上で、元の HA 線形復元は微分と可換。 -/
-lemma simplexHADegreeLift_top_comm {n : ℕ} (s : DGNerve.Simplex A D n)
+lemma simplexHADegreeLift_top_comm {n : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A D n)
     (m : ℕ) (v : Fin (m + 2) ↪o Fin (n + 1)) (b : Fin (n + 1))
     (hb : v (Fin.last (m + 1)) < b) :
     (homObject A D (s.obj (v 0)) (s.obj b)).d (-((m + 1 : ℕ) : ℤ)) (-(m : ℤ))

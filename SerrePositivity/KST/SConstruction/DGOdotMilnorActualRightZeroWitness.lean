@@ -13,7 +13,7 @@ noncomputable section
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory SSet DifferentialGraded InfinityCategories LocalizingInvariants
-open F2.Idempotent
+
 open scoped Simplicial
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "U" => DGOdotMilnorRightAxisBase R d
@@ -38,14 +38,14 @@ def dgOdotMilnorActualRightNullTopMap :=
 /-- 概要：元実零角から絶対零角への共有完全射。
 方針：元全対象商からの toZeroCategory を使用する。
 規約：両零側面で同じ辺。使われ方：共有零角の指定経路。 -/
-def dgOdotMilnorActualRightNullZeroMap : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap (Z) _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory.{u + 1} :=
-  _root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Z)
+def dgOdotMilnorActualRightNullZeroMap : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap (Z) _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory.{u + 1} :=
+  _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (Z)
 
 /-- 概要：共有零角成分の Cat^perf 辺は可逆。
 方針：同じ全対象商の指定零頂点同型の逆を回収する。
 規約：元辺を保持。使われ方：零側面比較の端点可逆性。 -/
 lemma dgOdotMilnorActualRightNullZeroMap_isInvertible :
-    IsInvertibleEdge (perfectStableArrow (dgOdotMilnorActualRightNullZeroMap R d)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge (perfectStableArrow (dgOdotMilnorActualRightNullZeroMap R d)
       (hZ) perfectZeroCategory_isIdempotentComplete).toTruncated := by
   change IsIso (dgKFixedNullPerfectZeroIso R (VInput)).inv
   infer_instance
@@ -54,13 +54,13 @@ lemma dgOdotMilnorActualRightNullZeroMap_isInvertible :
 方針：標準零圏への全自然同型を同じ指定二成分で読む。
 規約：両端点の全経路を保持。使われ方：四境界比較の零左側面。 -/
 def dgOdotMilnorActualRightZeroLeftWitness : PerfectStableArrowSquareWitness
-    (dgOdotMilnorActualRightNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.toZeroCategory (Q))
+    (dgOdotMilnorActualRightNullLeftMap R d) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.toZeroCategory (Q))
     (dgOdotMilnorActualRightSourceMap R d) (dgOdotMilnorActualRightNullZeroMap R d)
     (dgKInputStableValue_isIdempotentComplete R (VInput)) (hZ) (hQ)
     perfectZeroCategory_isIdempotentComplete :=
   perfectStableArrowSquareWitness _ _ _ _ _ _ _ _
-    (zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _)
-      (fun _ => _root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _ (fun _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _)
+      (fun _ => _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _))
 
 /-- 概要：元実零上辺の全比較は共有零角成分・商側と同じ終域成分を持つ。
 方針：元零角の零性を同じ元完全射で運び、全零図式を比較する。
@@ -74,16 +74,16 @@ def dgOdotMilnorActualRightZeroTopWitness : PerfectStableArrowSquareWitness
   let f := dgOdotMilnorActualRightNullTopMap R d
   let b := dgOdotMilnorActualRightTargetMap R d
   let g := fromZeroCategory (Q)
-  letI : IsExactFunctor f.hom := f.isExact
-  letI : IsExactFunctor b.hom := b.isExact
-  letI : IsExactFunctor g.hom := g.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor f.hom := f.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor b.hom := b.isExact
+  letI : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor g.hom := g.isExact
   apply perfectStableArrowSquareWitness
-  exact zeroDiagramFunctorIso _ _
-    (fun z => IsExactFunctor.preservesZero (F := b.hom) _
-      (IsExactFunctor.preservesZero (F := f.hom) z
+  exact _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.zeroDiagramFunctorIso _ _
+    (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := b.hom) _
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := f.hom) z
         (dgFixedNullInput_isZeroCategory R (VInput) z)))
-    (fun z => IsExactFunctor.preservesZero (F := g.hom)
+    (fun z => _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero (F := g.hom)
       ((dgOdotMilnorActualRightNullZeroMap R d).hom.app (Opposite.op ⦋0⦌) z)
-      (_root_.SerrePositivity.InfinityCategories.Stable.Exact.zeroCategory_isZero _))
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.zeroCategory_isZero _))
 
 end SerrePositivity.KST.SConstruction

@@ -23,13 +23,13 @@ variable {T H : Type u} [Group T] [Group H]
 使われ方：定数区間による0次比較の終点の一致。 -/
 lemma groupLinearizedMap_zero_eq (f g : T →* H) :
     (groupLinearizedMap f).app (op ⦋0⦌) = (groupLinearizedMap g).app (op ⦋0⦌) := by
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
-  change integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ f)).app (op ⦋0⦌))
-    (integerGenerator x) = integerLinearization.map
-      ((nerveMap (SingleObj.mapHom _ _ g)).app (op ⦋0⦌)) (integerGenerator x)
-  rw [integerLinearization_map_generator, integerLinearization_map_generator]
-  apply congrArg integerGenerator
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((nerveMap (SingleObj.mapHom _ _ f)).app (op ⦋0⦌))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map
+      ((nerveMap (SingleObj.mapHom _ _ g)).app (op ⦋0⦌)) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator]
+  apply congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator
   apply nerveEquiv.injective
   rfl
 
@@ -38,16 +38,16 @@ lemma groupLinearizedMap_zero_eq (f g : T →* H) :
 規約：KST A.5 の0次入力、Lemma 4.16 の帰納基底。
 使われ方：非可換な群 Q の恒等写像にも適用する。 -/
 def groupZeroMHomotopy (f : T →* H) :
-    LinearizedMHomotopy (groupLinearizedMap f) (groupLinearizedMap (1 : T →* H)) 0 where
-  h := linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.LinearizedMHomotopy (groupLinearizedMap f) (groupLinearizedMap (1 : T →* H)) 0 where
+  h := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedCylinderProjection (nerve (SingleObj T)) ≫ groupLinearizedMap f
   h₀ n hn := by
     have h : n = 0 := Nat.eq_zero_of_le_zero hn
     subst n
-    simp only [linearizedEndpoint₀_projection_assoc]
+    simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₀_projection_assoc]
   h₁ n hn := by
     have h : n = 0 := Nat.eq_zero_of_le_zero hn
     subst n
-    simpa only [linearizedEndpoint₁_projection_assoc] using groupLinearizedMap_zero_eq f (1 : T →* H)
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedEndpoint₁_projection_assoc] using groupLinearizedMap_zero_eq f (1 : T →* H)
 
 /-- 概要：同変な群準同型の標準0次ホモトピーは同変。
 方針：同変な射から作る定数区間の同変性を使う。

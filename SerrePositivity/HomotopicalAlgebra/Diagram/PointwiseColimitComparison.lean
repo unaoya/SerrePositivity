@@ -19,7 +19,7 @@ open CategoryTheory CategoryTheory.Limits HomotopicalAlgebra
 namespace SerrePositivity.DiagramModel.PointwiseColimitComparison
 variable (K L : Type w) [SmallCategory K] [SmallCategory L]
   {C : Type u} [Category.{v} C] [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (I J : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
 
 local instance : HasColimitsOfSize.{w, w} C := Smith.locallyPresentable_hasColimits (C := C)
 local instance : HasLimitsOfSize.{w, w} C := Smith.locallyPresentable_hasLimits (C := C)

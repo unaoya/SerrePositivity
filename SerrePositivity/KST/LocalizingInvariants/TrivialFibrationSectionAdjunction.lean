@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.RelativeTerminalAdjunction
-public import SerrePositivity.InfinityCategories.Core.TrivialFibrationEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.TrivialFibrationEquivalence
 
 /-!
 概要：自明 Kan fibration の厳密切断は左右両方の実随伴になる。
@@ -18,27 +18,27 @@ open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
 
 lemma initialBoundary_of_trivialKanFibration {E B : SSet.{u}}
-    (p : E ⟶ B) [TrivialKanFibration p] (x : E _⦋0⦌) : InitialBoundaryLifting p x := by
+    (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p] (x : E _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.InitialBoundaryLifting p x := by
   intro n a b _ sq
-  have := TrivialKanFibration.mem (p := p) (boundary (n + 1)).ι inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := p) (boundary (n + 1)).ι inferInstance
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 lemma terminalBoundary_of_trivialKanFibration {E B : SSet.{u}}
-    (p : E ⟶ B) [TrivialKanFibration p] (x : E _⦋0⦌) : TerminalBoundaryLifting p x := by
+    (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p] (x : E _⦋0⦌) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TerminalBoundaryLifting p x := by
   intro n a b _ sq
-  have := TrivialKanFibration.mem (p := p) (boundary (n + 1)).ι inferInstance
+  have := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration.mem (p := p) (boundary (n + 1)).ι inferInstance
   exact ⟨sq.lift, sq.fac_left, sq.fac_right⟩
 
 variable {E B : SSet.{u}} [Quasicategory E] [Quasicategory B]
-  (p : E ⟶ B) [TrivialKanFibration p] (s : B ⟶ E) (hs : s ≫ p = 𝟙 B)
+  (p : E ⟶ B) [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TrivialKanFibration p] (s : B ⟶ E) (hs : s ≫ p = 𝟙 B)
 
 /-- 指定切断が元の射影の左随伴になる。 -/
-def trivialFibrationSectionLeftAdjunction : QCatAdjunction s p :=
+def trivialFibrationSectionLeftAdjunction : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction s p :=
   adjunctionOfRelativeInitialSection hs (fun x =>
     initialBoundary_of_trivialKanFibration p (s.app (Opposite.op ⦋0⦌) x))
 
 /-- 同じ指定切断が元の射影の右随伴にもなる。 -/
-def trivialFibrationSectionRightAdjunction : QCatAdjunction p s :=
+def trivialFibrationSectionRightAdjunction : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction p s :=
   adjunctionOfRelativeTerminalSection hs (fun x =>
     terminalBoundary_of_trivialKanFibration p (s.app (Opposite.op ⦋0⦌) x))
 

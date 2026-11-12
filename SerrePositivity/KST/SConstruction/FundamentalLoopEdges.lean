@@ -1,6 +1,6 @@
 module
-public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
-public import SerrePositivity.InfinityCategories.Core.HomotopyCategoryBridge
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.HomotopyCategoryBridge
 
 /-! # 境界定数一次単体とホモトピー圏の loop 辺
 概要：既存の基本群の代表と、端点つき loop 辺の代表を厳密に比較する。

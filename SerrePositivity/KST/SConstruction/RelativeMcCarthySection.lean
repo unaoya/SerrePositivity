@@ -51,7 +51,7 @@ lemma relativeMcCarthyFiberSection_quotient {X : StableModel.{u}} (A B : ClosedS
     {m : ℕ} (a : (objectSConstruction (closedSubcategory A)) _⦋m⦌) :
     relativeMcCarthyFiberSection A B a ≫ relativeCofiberLeftFiberQuotient A B a = 𝟙 _ := by
   have : Mono (closedStableInclusion B).val :=
-    inferInstanceAs (Mono (fullSubcomplexOnVertices X.carrier B.predicate).ι)
+    inferInstanceAs (Mono (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices X.carrier B.predicate).ι)
   apply (cancel_mono (objectSConstructionFunctor.map (closedStableInclusion B))).1
   rw [Category.assoc, ← relativeCofiberLeftFiberForget_quotient, ← Category.assoc,
     relativeMcCarthyFiberSection_forget, Category.assoc, mcCarthyFiberSection_quotient]

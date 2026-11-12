@@ -11,29 +11,29 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationCa
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
 private lemma strictCompositeIsIso
     (F G H : DGFunctor R P (RightModule R D))
-    (η : StrictNatTrans F G) (θ : StrictNatTrans G H) (x : P)
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (θ : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans G H) (x : P)
     (hf : IsIso ((moduleToHomotopy R D).map (dgModuleNaturalConeArrow R D F G η x)))
     (hg : IsIso ((moduleToHomotopy R D).map (dgModuleNaturalConeArrow R D G H θ x))) :
     IsIso ((moduleToHomotopy R D).map
-      (dgModuleNaturalConeArrow R D F H (dgStrictNatTransComp η θ) x)) := by
+      (dgModuleNaturalConeArrow R D F H (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp η θ) x)) := by
   haveI := hf
   haveI := hg
   rw [dgModuleNaturalConeArrow_comp, CategoryTheory.Functor.map_comp]
   infer_instance
 private lemma shiftedStrictIsIso (F G : DGFunctor R P (RightModule R D))
-    (η : StrictNatTrans F G) (s : ℤ) (x : P)
+    (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G) (s : ℤ) (x : P)
     (hf : IsIso ((moduleToHomotopy R D).map (dgModuleNaturalConeArrow R D F G η x))) :
     IsIso ((moduleToHomotopy R D).map
       (dgModuleNaturalConeArrow R D (F.comp (moduleShiftDG R D s))
-        (G.comp (moduleShiftDG R D s)) (dgStrictNatTransPostcomp η (moduleShiftDG R D s)) x)) := by
+        (G.comp (moduleShiftDG R D s)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp η (moduleShiftDG R D s)) x)) := by
   rw [dgModuleNaturalConeShiftArrow]
   exact dgModuleShiftMap_isIso R D _ s hf
-variable (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+variable (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "GS" => G.comp (moduleShiftDG R D 1)
@@ -61,6 +61,6 @@ lemma dgModuleNaturalInverseRotation_isIso (x : P) :
       (dgModuleNaturalInverseRotationCancellation_arrow R D G x)).mpr
         (dgModuleSpecifiedCancellation_isIso R D (G.obj x))
   exact strictCompositeIsIso R D (L) ((GS).comp (S)) G
-    (dgStrictNatTransComp (α) (β)) (γ) x
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransComp (α) (β)) (γ) x
     (strictCompositeIsIso R D (L) ((CD).comp (S)) ((GS).comp (S)) (α) (β) x hα hβ) hγ
 end SerrePositivity.KST.SConstruction

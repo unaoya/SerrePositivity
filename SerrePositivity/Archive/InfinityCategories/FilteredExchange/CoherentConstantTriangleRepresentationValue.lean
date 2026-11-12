@@ -3,7 +3,7 @@ module
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentConstantTriangleRepresentation
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentConstantRepresentationLargeValue
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorTriangleTotalComponent
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.RelativeFunctorCurryIsoPresentation
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.RelativeFunctorCurryIsoPresentation
 
 /-!
 概要：元の三角形で作った指定表現の比較の値を、元の大きい比較へ戻す。

@@ -2,7 +2,7 @@ module
 
 public import
 SerrePositivity.Archive.InfinityCategories.FilteredExchange.TransportSquareDiagramChosenComparison
-public import SerrePositivity.InfinityCategories.F1.Transport.IntervalSquareReindex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CartesianFibrations.IntervalSquareReindex
 
 /-!
 概要：任意の実四角形を、全係数と四隅の実値を保って制限する。

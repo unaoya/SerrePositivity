@@ -20,14 +20,14 @@ variable (A : Type u) [CommRing A]
 /-- 元の全多単体 S• Perf を、全 native Kan dg 入力族に自然な図式として保持する。 -/
 def presentedPerfectDGMultiSEnrichedDiagram (r : ℕ) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤
-      QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A) :=
+      _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A) :=
   multiSQuasicategoryEnrichedDiagram r ⋙
     quasicategoryEnrichedPrecompositionFunctor (presentedPerfectDGFullEnrichedFunctor A)
 
 /-- 元の全多単体 core S• Perf と全入力 Hom を同時に保持する実図式。 -/
 def presentedPerfectDGMultiSCoreEnrichedDiagram (r : ℕ) :
     (Fin r → SimplexCategoryᵒᵖ) ⥤
-      QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A) :=
+      _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A) :=
   presentedPerfectDGMultiSEnrichedDiagram A r ⋙ quasicategoryEnrichedObjectCoreFunctor
 
 /-- 全多次数の実 core 値は、元の同じ反復 core S• の値。 -/
@@ -66,7 +66,7 @@ lemma presentedPerfectDGMultiSCoreEnrichedDiagram_hom (r : ℕ)
     eHomEquiv SSet.{max (u + 1) v} F ≫
       ((presentedPerfectDGMultiSCoreEnrichedDiagram A r).obj d).map C D =
         curry' (C := SSet.{max (u + 1) v})
-          (quasicategoryCoreMap (multiSExactMap r d (presentedPerfectDGExactMap A F)).hom) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (multiSExactMap r d (presentedPerfectDGExactMap A F)).hom) := by
   change eHomEquiv SSet.{max (u + 1) v} F ≫
     ((quasicategoryEnrichedCoreFunctor
       ((presentedPerfectDGMultiSEnrichedDiagram A r).obj d)).map C D ≫ 𝟙 _) = _

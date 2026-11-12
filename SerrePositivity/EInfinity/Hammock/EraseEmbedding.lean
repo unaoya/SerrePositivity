@@ -22,14 +22,14 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 variable {C : Type u} [Category.{v} C] (W : MorphismProperty C) [W.IsMultiplicative]
-  (X Y : C) {a b : Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom)
+  (X Y : C) {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom)
   (j : Fin b.length) (hRange : Set.range f.orderHom = {j}ᶜ) {n : SimplexCategoryᵒᵖ}
 
 include hRange
 
 omit [W.IsMultiplicative] in
-lemma identityOutside_of_complement (S : Zigzag W b X Y) (hj : IdentityColumn S j) :
-    IdentityOutside f S := by
+lemma identityOutside_of_complement (S : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Zigzag W b X Y) (hj : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn S j) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityOutside f S := by
   intro l hl
   have hlj : l = j := by
     by_contra h
@@ -40,28 +40,28 @@ lemma identityOutside_of_complement (S : Zigzag W b X Y) (hj : IdentityColumn S 
 
 include hf
 
-lemma erase_raw_eq_of_embedding (σ : (graph W a X Y).obj n)
-    (τ : (graph W b X Y).obj n) (hτ : ∀ r, IdentityColumn (τ.obj r) j)
-    (hfac : ((graphDiagram W X Y).map f).app n σ = τ) :
-    (⟨a, σ⟩ : RawHammock W X Y n) = ⟨Word.erase b j, eraseSimplex W X Y j τ hτ⟩ :=
-  raw_eq_of_embeddings W X Y f (Word.eraseInclusion b j) hf
-    (Word.eraseInclusion_injective b j) (hRange.trans (Word.eraseInclusion_range b j).symm)
+lemma erase_raw_eq_of_embedding (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n)
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W b X Y).obj n) (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j)
+    (hfac : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n σ = τ) :
+    (⟨a, σ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) = ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase b j, eraseSimplex W X Y j τ hτ⟩ :=
+  raw_eq_of_embeddings W X Y f (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion b j) hf
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion_injective b j) (hRange.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.eraseInclusion_range b j).symm)
     n σ (eraseSimplex W X Y j τ hτ) (hfac.trans (eraseSimplex_fac W X Y j τ hτ).symm)
 
-lemma exists_eraseEmbedding (τ : (graph W b X Y).obj n)
-    (hτ : ∀ r, IdentityColumn (τ.obj r) j) :
-    ∃ σ : (graph W a X Y).obj n,
-      ((graphDiagram W X Y).map f).app n σ = τ ∧
-      (⟨a, σ⟩ : RawHammock W X Y n) = ⟨Word.erase b j, eraseSimplex W X Y j τ hτ⟩ := by
-  obtain ⟨σ, hσ⟩ := (graphDiagram_map_range_iff_identityOutside f hf n τ).2
+lemma exists_eraseEmbedding (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W b X Y).obj n)
+    (hτ : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j) :
+    ∃ σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n,
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n σ = τ ∧
+      (⟨a, σ⟩ : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RawHammock W X Y n) = ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word.erase b j, eraseSimplex W X Y j τ hτ⟩ := by
+  obtain ⟨σ, hσ⟩ := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagram_map_range_iff_identityOutside f hf n τ).2
     (fun r => identityOutside_of_complement W X Y f j hRange (τ.obj r) (hτ r))
   exact ⟨σ, hσ, erase_raw_eq_of_embedding W X Y f hf j hRange σ τ hτ hσ⟩
 
-lemma erase_reduction_of_embedding (σ : (graph W a X Y).obj n)
-    (τ : (graph W b X Y).obj n) (hfac : ((graphDiagram W X Y).map f).app n σ = τ) :
+lemma erase_reduction_of_embedding (σ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W a X Y).obj n)
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W b X Y).obj n) (hfac : ((_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y).map f).app n σ = τ) :
     Reduction W X Y n ⟨b, τ⟩ ⟨a, σ⟩ := by
-  have ho := (graphDiagram_map_range_iff_identityOutside f hf n τ).1 ⟨σ, hfac⟩
-  have hj : ∀ r, IdentityColumn (τ.obj r) j := by
+  have ho := (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagram_map_range_iff_identityOutside f hf n τ).1 ⟨σ, hfac⟩
+  have hj : ∀ r, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IdentityColumn (τ.obj r) j := by
     intro r
     apply ho r j
     intro i hi

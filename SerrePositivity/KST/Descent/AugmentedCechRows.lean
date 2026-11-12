@@ -147,7 +147,7 @@ theorem iteratedWeightedCechAugmentation_rowwise
     (Category.id_comp (A.hom.app (k, l)))
 
 variable [ModelCategory SSet.{u}] (I J : MorphismProperty SSet.{u})
-  [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
 
 /-- 概要：各行の実際の指定ホモトピー極限比較を自然に束ねる（補題 3.2）。
 方針：行の関手に既存の指定比較を前合成する。

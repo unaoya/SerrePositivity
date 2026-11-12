@@ -4,7 +4,7 @@ public import SerrePositivity.KST.Fibration.DGNuSBoundaryInfinity
 public import SerrePositivity.KST.SConstruction.StrictSimplicialTransformationComponent
 public import SerrePositivity.KST.SConstruction.OneDirectionWeakComparison
 public import SerrePositivity.KST.SConstruction.PointedKanEnrichedEquivalences
-public import SerrePositivity.KST.Comparison.ExInfinityLocalization
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.ExInfinityLocalization
 
 /-!
 概要：元の S₁ 商比較を同じ Ex∞ に移し、全図式の点つき同型を得る。
@@ -22,13 +22,13 @@ open Fibration SimplicialModel
 方針：元の点つき段関手を同じ Kan 置換へ後合成する。
 規約：全 Hom を保持。使われ方：隣接段の元の左脚の始域。 -/
 def stableOneDirectionKanEnrichedFunctor (r : ℕ) :
-    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u} PointedKanObject.{u} :=
+    EnrichedFunctor SSet.{u} _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u} PointedKanObject.{u} :=
   (stableOneDirectionPointedEnrichedFunctor r).comp SSet exInfinityPointedKanEnrichedFunctor
 
 /-- 概要：同じ元の S₁ 比較の Ex∞ 像。
 方針：同じ点つき比較を Kan 値間の射へ送る。
 規約：元の実比較を保持。使われ方：全族変換の成分。 -/
-def stableOneDirectionKanComparisonMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+def stableOneDirectionKanComparisonMap (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableOneDirectionKanEnrichedFunctor r).obj C ⟶
       (stableSBoundaryKanEnrichedFunctor r).obj C :=
   exInfinityPointedKanMap (stableOneDirectionPointedComparisonMap r C)
@@ -39,13 +39,13 @@ def stableOneDirectionKanComparisonMap (r : ℕ) (C : _root_.SerrePositivity.Inf
 def stableOneDirectionKanComparison (r : ℕ) :
     GradedNatTrans (Center.ofBraidedObj (𝟙_ SSet.{u}))
       (stableOneDirectionKanEnrichedFunctor r) (stableSBoundaryKanEnrichedFunctor r) :=
-  _root_.SerrePositivity.InfinityCategories.Kan.strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
+  _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.strictSimplicialTransformationPostcompose _ _ exInfinityPointedKanEnrichedFunctor
     (stableOneDirectionPointedComparison r)
 
 /-- 概要：変換成分は同じ元の比較の Ex∞ 像。
 方針：厳密豊穣後合成の成分を回収する。
 規約：元の射を固定する。使われ方：可逆性の成分判定。 -/
-lemma stableOneDirectionKanComparison_app (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
+lemma stableOneDirectionKanComparison_app (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
     (stableOneDirectionKanComparison r).app C =
       eHomEquiv SSet (stableOneDirectionKanComparisonMap r C) :=
   exInfinityPointedKanEnrichedFunctor_hom (stableOneDirectionPointedComparisonMap r C)
@@ -53,19 +53,19 @@ lemma stableOneDirectionKanComparison_app (r : ℕ) (C : _root_.SerrePositivity.
 /-- 概要：同じ Kan S₁ 比較は全基点・全次数で π 同型。
 方針：元の比較の局所化可逆性を同じ Ex∞ に移す。
 規約：追加の完備性入力なし。使われ方：元の比較辺の可逆性。 -/
-lemma stableOneDirectionKanComparisonMap_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableQCat.{u}) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (stableOneDirectionKanComparisonMap r C).hom.right := by
+lemma stableOneDirectionKanComparisonMap_piIsomorphism (r : ℕ) (C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableQCat.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (stableOneDirectionKanComparisonMap r C).hom.right := by
   apply kanPiIsomorphism_of_localized_isIso
-  change IsIso (AnodyneHomotopy.anodyneQ.map (Comparison.exInfinity.map
+  change IsIso (AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.map
     (oneDirectionReducedComparison r (stableCategoryModel C)).right))
-  exact (Comparison.exInfinity_map_localized_isIso_iff _).mpr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_map_localized_isIso_iff _).mpr
     (oneDirectionReducedComparison_localized_isIso r (stableCategoryModel C))
 
 /-- 概要：同じ S₁ 比較は全図式を保つ点つき Kan 関手同型。
 方針：元の全族変換と各成分の点つき Whitehead を使う。
 規約：BF 関手を構成しない。使われ方：有限 native 全四角形の隣接段比較。 -/
 def stableOneDirectionKanComparisonFunctorIso (r : ℕ) :
-    FunctorIso (coherentNerveMap (stableOneDirectionKanEnrichedFunctor.{u} r))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (stableOneDirectionKanEnrichedFunctor.{u} r))
       (stableSBoundaryKanInfinityFunctor r) :=
   Spectra.StrictEnrichedTransformation.functorIso _ _ (stableOneDirectionKanComparison r) (by
     intro C

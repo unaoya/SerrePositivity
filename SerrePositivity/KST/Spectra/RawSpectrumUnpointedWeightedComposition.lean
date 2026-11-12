@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingCompositionLaws
 public import SerrePositivity.KST.Spectra.RawSpectrumMappingFunctor
-public import SerrePositivity.InfinityCategories.Kan.HomTensorExchangeEvaluation
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedSectionsParameters
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorExchangeEvaluation
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.WeightedSectionsParameters
 
 /-!
 概要：元の raw Hom の合成による、通常の weighted end の全 Hom パラメータの作用。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 local instance parameterCompositionPointedSimplicialCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -40,9 +40,9 @@ def compositionParameterTransformation (X Y : OmegaSpectrum.{u}) :
 def unpointedWeightedComposition {I : Type u} [SmallCategory I]
     (X Y : OmegaSpectrum.{u}) (W : I ⥤ SSet.{u}) (D : I ⥤ KanSequence.{u}) :
     space X Y.toKanSequence ⊗
-        weightedSections W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) ⟶
-      weightedSections W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) :=
-  (β_ _ _).hom ≫ weightedSectionsParameterMap W
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) :=
+  (β_ _ _).hom ≫ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsParameterMap W
     (Functor.whiskerLeft D (compositionParameterTransformation X Y))
 
 /-- 元の weighted end の作用は、各射影で係数の合成により評価される。 -/
@@ -50,20 +50,20 @@ lemma unpointedWeightedComposition_evaluation {I : Type u} [SmallCategory I]
     (X Y : OmegaSpectrum.{u})
     (W : I ⥤ SSet.{u}) (D : I ⥤ KanSequence.{u}) (i : I) :
     W.obj i ◁ unpointedWeightedComposition X Y W D ≫
-        uncurry (weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
-      (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
-        (weightedSections W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget))).hom ≫
+        uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W ((D ⋙ pointedFunctor X) ⋙ PointedSimplicialSet.forget) i) =
+      (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.HomTensorStrength.exchange (W.obj i) (space X Y.toKanSequence)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget))).hom ≫
         space X Y.toKanSequence ◁
-          uncurry (weightedSectionsπ W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) i) ≫
+          uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) i) ≫
           composition X Y (D.obj i) := by
   rw [unpointedWeightedComposition, whiskerLeft_comp, Category.assoc,
-    weightedSectionsParameterMap_evaluation]
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsParameterMap_evaluation]
   change _ ◁ (β_ _ _).hom ≫ (α_ _ _ _).inv ≫
     _ ▷ _ ≫ (β_ (space Y (D.obj i)) (space X Y.toKanSequence)).hom ≫
       composition X Y (D.obj i) = _
   have h := congrArg (fun f ↦ f ≫ composition X Y (D.obj i))
-    (_root_.SerrePositivity.InfinityCategories.Kan.HomTensorStrength.exchange_evaluation (W.obj i) (space X Y.toKanSequence) _ _
-      (uncurry (weightedSectionsπ W
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.exchange_evaluation (W.obj i) (space X Y.toKanSequence) _ _
+      (uncurry (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ W
         ((D ⋙ pointedFunctor Y) ⋙ PointedSimplicialSet.forget) i)))
   simp only [Category.assoc] at h
   exact h

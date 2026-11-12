@@ -26,17 +26,17 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。成分での幾何的障害計算を群の微分へ運ぶ。 -/
 theorem coefficientDifferential_zero_component (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] (n : ℕ)
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).right 0
-      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n).basepoint)
+    (a : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).right 0
+      (UnbasedPointedMapping.stageFiber K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n).basepoint)
     (s : K.nonDegenerate (n + 1 + 1)) :
     coefficientDifferential K Y n 0
         (fun t ↦ loopPositiveHomotopyEquiv Y (n + 1)
-          (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n 0 a t)) s =
+          (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n 0 a t)) s =
       loopPositiveHomotopyEquiv Y (n + 1)
-        (stageFiberComponentEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) (n + 1)
-          (UnbasedPointedMapping.stageComponentDifferential K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n a) s) := by
+        (stageFiberComponentEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) (n + 1)
+          (UnbasedPointedMapping.stageComponentDifferential K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n a) s) := by
   have hin : (fun t ↦ loopPositiveHomotopyEquiv Y (n + 1)
-      (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y) n 0 a t)) =
+      (stageFiberCoefficientEquiv K (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y) n 0 a t)) =
       stageFiberCoefficientEquiv K Y n 1 (stageFiberLoopPositiveEquiv K Y n 0 a) := by
     funext t
     exact (stageFiberCoefficientEquiv_loopPositive K Y n 0 a t).symm

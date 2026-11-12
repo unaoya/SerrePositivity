@@ -28,15 +28,15 @@ lemma towerSequenceAdjointMap_piIsomorphism (X : ℕ → KanSequence.{u})
     (d : ∀ n, KanSequence.Hom (X (n + 1)) (X n))
     [∀ n k, Fibration ((d n).app k).right]
     (hX : ∀ n, (X n).OmegaCondition) (k : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (towerSequenceAdjointMap X d k).right := by
-  change _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (towerMap
-    (fun n ↦ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((X n).sigma k)).right)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (towerSequenceAdjointMap X d k).right := by
+  change _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.towerMap
+    (fun n ↦ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((X n).sigma k)).right)
     (fun n ↦ congrArg Under.Hom.right ((d n).adjoint_comm k)))
-  exact pointedTowerMap_piIsomorphism
-    (fun n ↦ ((X n).level k).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((X n).level (k + 1)).space)
+  exact _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerMap_piIsomorphism
+    (fun n ↦ ((X n).level k).space) (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((X n).level (k + 1)).space)
     (fun n ↦ (d n).app k)
     (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u} ((d n).app (k + 1)))
-    (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.suspensionLoopEquiv _ _ ((X n).sigma k))
+    (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspensionLoopEquiv _ _ ((X n).sigma k))
     (fun n ↦ (d n).adjoint_comm k) (fun n ↦ hX n k)
 
 /-- 概要：Ω 条件は段ごとの fibration の塔の明示的極限の Kan 列へ保存される。
@@ -48,17 +48,17 @@ lemma towerKanSequence_omega (X : ℕ → KanSequence.{u})
     [∀ n k, Fibration ((d n).app k).right]
     (hX : ∀ n, (X n).OmegaCondition) : (towerKanSequence X d).OmegaCondition := by
   intro k
-  have hi : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
-      (loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
+  have hi : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
         (fun n ↦ (d n).app (k + 1))).hom.right :=
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso
-      (X := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso
+      (X := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ ((X n).level (k + 1)).space)
         (fun n ↦ (d n).app (k + 1)))).right)
-      (Y := (pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((X n).level (k + 1)).space)
+      (Y := (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.pointedTowerLimit (fun n ↦ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((X n).level (k + 1)).space)
         (fun n ↦ PointedObject.basedHomMap PointedSimplicialSet.circle.{u}
           ((d n).app (k + 1)))).right)
       (PointedSimplicialSet.forget.mapIso
-      (loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
+      (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.loopTowerIso (fun n ↦ ((X n).level (k + 1)).space)
         (fun n ↦ (d n).app (k + 1))))
   have h := towerSequenceAdjointMap_piIsomorphism X d hX k
   have he := congrArg Under.Hom.right (towerSequenceSigma_adjoint X d k)

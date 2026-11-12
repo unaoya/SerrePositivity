@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedRightFamilyCoefficient
-public import SerrePositivity.InfinityCategories.HomotopyLimits.PointedRightTransportNaturality
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.PointedRightTransportNaturality
 
 /-!
 概要：動く Kan 点と Kan 射の全族の評価を、同じ区間族の pointed 輸送へ比較する。

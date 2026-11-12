@@ -23,13 +23,13 @@ variable (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {T : PointedSimplicialSet
 /-- 元の同じ全 Hom 区間を二つの構造経路へ評価すると、区間全体が厳密に一致する。 -/
 lemma pointedInterval_evaluation_condition (n : ℕ) :
     ((P.basedPost (pointedEvaluation X Y (n + 1))).basedPost
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space)).path =
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space)).path =
     ((P.basedPost (pointedEvaluation X Y n)).basedPost (pointedStep X Y n)).path := by
   have he := congrArg ((ihom T).map) (pointedEvaluation_condition X Y n)
   simp only [Functor.map_comp] at he
   have hr := congrArg Under.Hom.right he
   change (P.path ≫ ((ihom T).map (pointedEvaluation X Y (n + 1))).right) ≫
-      ((ihom T).map (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space)).right =
+      ((ihom T).map (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space)).right =
     (P.path ≫ ((ihom T).map (pointedEvaluation X Y n)).right) ≫
       ((ihom T).map (pointedStep X Y n)).right
   simpa only [Under.comp_right, Category.assoc] using congrArg (P.path ≫ ·) hr
@@ -42,7 +42,7 @@ lemma pointedInterval_transposed_condition (n : ℕ) :
       ((KanSequence.mapping T Y).sigma n)).path := by
   rw [← basedTranspose_restriction_path, ← basedTranspose_step_path]
   have h := pointedInterval_evaluation_condition X Y P n
-  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso T (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space)
+  have ht := congrArg (· ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso T (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space)
     (Y.level (n + 1)).space).hom.right) h
   exact ht
 

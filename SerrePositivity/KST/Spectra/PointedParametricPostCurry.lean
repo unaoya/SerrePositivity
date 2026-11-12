@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.PointedParametricPostExchange
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensorCotensor
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensorCotensor
 
 /-!
 概要：テンソルからの curry は、同じ標準 ihomAction による全族後合成と厳密に可換。
@@ -20,24 +20,24 @@ namespace SerrePositivity.KST.Spectra.PointedMapping
 /-- 同じ二重 curry は、標準の二つの ihomAction による全族後合成と射全体で可換。 -/
 lemma parametricPost_tensor (A B : PointedSimplicialSet.{u})
     {P Z Z' : PointedSimplicialSet.{u}} (v : P ⟶ PointedObject.basedHom Z Z') :
-    parametricPost (A ⊗ B) v ≫ PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z').hom =
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom ≫ parametricPost B (v ≫ ihomAction A Z Z') := by
+    parametricPost (A ⊗ B) v ≫ PointedObject.basedHomMap P (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z').hom =
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z).hom ≫ parametricPost B (v ≫ ihomAction A Z Z') := by
   rw [parametricPost_exchange (A ⊗ B) v, parametricPost_exchange B (v ≫ ihomAction A Z Z')]
-  change ((ihom (A ⊗ B)).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (A ⊗ B) P Z').hom) ≫
-      (ihom P).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z').hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom ≫ (ihom B).map (parametricPost A v) ≫
-      (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B P ((ihom A).obj Z')).hom
+  change ((ihom (A ⊗ B)).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (A ⊗ B) P Z').hom) ≫
+      (ihom P).map (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z').hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z).hom ≫ (ihom B).map (parametricPost A v) ≫
+      (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B P ((ihom A).obj Z')).hom
   rw [parametricPost_exchange A v]
-  change ((ihom (A ⊗ B)).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso (A ⊗ B) P Z').hom) ≫
-      (ihom P).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z').hom =
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.iso A B Z).hom ≫
-      (ihom B).map ((ihom A).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z').hom) ≫
-        (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B P ((ihom A).obj Z')).hom
+  change ((ihom (A ⊗ B)).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso (A ⊗ B) P Z').hom) ≫
+      (ihom P).map (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z').hom =
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.iso A B Z).hom ≫
+      (ihom B).map ((ihom A).map (transpose v) ≫ (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A P Z').hom) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B P ((ihom A).obj Z')).hom
   have h₀ := congrArg (fun m => (ihom (A ⊗ B)).map (transpose v) ≫ m)
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.tensor_curry A B P Z')
-  have h₁ := congrArg (fun m => m ≫ (ihom B).map (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A P Z').hom ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso B P ((ihom A).obj Z')).hom)
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomTensor.natural_post A B (transpose v))
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.tensor_curry A B P Z')
+  have h₁ := congrArg (fun m => m ≫ (ihom B).map (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A P Z').hom ≫
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso B P ((ihom A).obj Z')).hom)
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomTensor.natural_post A B (transpose v))
   simp only [Category.assoc] at h₀ h₁
   simpa only [Category.assoc, CategoryTheory.Functor.map_comp] using h₀.trans h₁
 

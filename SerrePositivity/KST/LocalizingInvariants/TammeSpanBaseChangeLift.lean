@@ -1,5 +1,5 @@
 module
-public import SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.MarkedSpanFamilies
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.MarkedSpanFamilies
 
 public import SerrePositivity.KST.LocalizingInvariants.SpanBaseChangeFamily
 public import SerrePositivity.KST.LocalizingInvariants.TammeUniversalOre
@@ -20,23 +20,23 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
 
 lemma exists_tammeSpanBaseChangeLift
     (S : (horn 2 0 : SSet.{u}) ⟶ (laxCategory p q).obj)
     (hS : SSet.yonedaEquiv (horn₂₀.ι₀₁ ≫ S) ∈ tammeLocalizingEdges p q)
     (R : (Δ[1] : SSet.{u}) ⊗ Δ[1] ⟶ (laxCategory p q).obj)
-    (hR : squareRightEdge ≫ R = horn₂₀.ι₀₂ ≫ S)
-    (hRb : SSet.yonedaEquiv (squareBottomEdge ≫ R) ∈ tammeLocalizingEdges p q) :
+    (hR : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ R = horn₂₀.ι₀₂ ≫ S)
+    (hRb : SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ R) ∈ tammeLocalizingEdges p q) :
     let X := (laxCategory p q).obj
     let W := tammeLocalizingEdges p q
     let x := (horn₂₀.ι₀₁ ≫ S).app (Opposite.op ⦋0⦌) (stdSimplex.obj₀Equiv.symm (1 : Fin 2))
-    ∃ G : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x,
-      stdSimplex.δ (0 : Fin 2) ≫ G ≫ vertexFiberι (markedSpanSource X W) x ≫
-        markedSpanInclusion X W = SSet.const (functorVertex S) ∧
-      G ≫ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamilyProjection X W x = squareTopEdge ≫ R ∧
-      G ≫ vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
-        (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.squareArrowFamily R := by
+    ∃ G : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily X W x,
+      stdSimplex.δ (0 : Fin 2) ≫ G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫
+        markedSpanInclusion X W = SSet.const (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex S) ∧
+      G ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamilyProjection X W x = _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ R ∧
+      G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x ≫ markedSpanInclusion X W ≫
+        (pre horn₂₀.ι₀₂).app X = _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.squareArrowFamily R := by
   dsimp only
   let X := (laxCategory p q).obj
   let W := tammeLocalizingEdges p q
@@ -63,24 +63,24 @@ lemma exists_tammeSpanBaseChangeLift
     · exact (congrArg (fun a : X _⦋1⦌ => a ∈ W)
         (intervalPrecompositionFamily_edge_one T)).mpr h₀
   let L : (Δ[1] : SSet.{u}) ⟶ markedSpans X W :=
-    fullSubcomplexLift (fun z => spanLeftEdge z ∈ W) F hv
-  have hL : L ≫ markedSpanInclusion X W = F := fullSubcomplexLift_ι _ _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (fun z => spanLeftEdge z ∈ W) F hv
+  have hL : L ≫ markedSpanInclusion X W = F := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
   have hs : L ≫ markedSpanSource X W = SSet.const x := by
-    change (L ≫ markedSpanInclusion X W) ≫ (pre horn₂₀.ι₀₁).app X ≫ evaluateFunctorAt _ = _
+    change (L ≫ markedSpanInclusion X W) ≫ (pre horn₂₀.ι₀₁).app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = _
     rw [hL]
     exact hFs
-  let G : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Derived.Verdier.Fractions.markedSpanFamily X W x :=
-    vertexFiberLift (markedSpanSource X W) x L hs
-  have hG : G ≫ vertexFiberι (markedSpanSource X W) x = L := vertexFiberLift_ι _ _ _ _
+  let G : (Δ[1] : SSet.{u}) ⟶ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Verdier.Fractions.markedSpanFamily X W x :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift (markedSpanSource X W) x L hs
+  have hG : G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x = L := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberLift_ι _ _ _ _
   refine ⟨G, ?_, ?_, ?_⟩
   · change stdSimplex.δ (0 : Fin 2) ≫
-      (G ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W = _
+      (G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W = _
     simpa only [Category.assoc, hG, hL] using hF₁
-  · change (G ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W ≫
-      (pre horn₂₀.ι₀₂).app X ≫ evaluateFunctorAt _ = _
+  · change (G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W ≫
+      (pre horn₂₀.ι₀₂).app X ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt _ = _
     rw [hG, ← Category.assoc, hL]
     exact hFt
-  · change (G ≫ vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W ≫
+  · change (G ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.vertexFiberι (markedSpanSource X W) x) ≫ markedSpanInclusion X W ≫
       (pre horn₂₀.ι₀₂).app X = _
     rw [hG, ← Category.assoc, hL]
     exact hFr

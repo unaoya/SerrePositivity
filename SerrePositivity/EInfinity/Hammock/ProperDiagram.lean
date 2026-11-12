@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.GraphIntersection
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.GraphIntersection
 public import SerrePositivity.EInfinity.Hammock.GraphEmbedding
 
 /-!
@@ -22,11 +22,11 @@ namespace SerrePositivity.EInfinity.Hammock
 open CategoryTheory
 
 /-- Dwyer–Kan §4.4 の全語の図式の proper 性。 -/
-structure ProperDiagram (F : Word ⥤ SSet.{w}) : Prop where
-  map_mono {a b : Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom) : Mono (F.map f)
-  intersection_range {a b c : Word} (f : a ⟶ c) (g : b ⟶ c)
+structure ProperDiagram (F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}) : Prop where
+  map_mono {a b : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ b) (hf : Function.Injective f.orderHom) : Mono (F.map f)
+  intersection_range {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} (f : a ⟶ c) (g : b ⟶ c)
     (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom) :
-    Subfunctor.range (F.map (Word.intersectionInclusion f g)) =
+    Subfunctor.range (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g)) =
       Subfunctor.range (F.map f) ⊓ Subfunctor.range (F.map g)
 
 lemma imageHomOfLe_isIso {K : SSet.{w}} {A B : K.Subcomplex} (h : A = B) :
@@ -36,12 +36,12 @@ lemma imageHomOfLe_isIso {K : SSet.{w}} {A B : K.Subcomplex} (h : A = B) :
   infer_instance
 
 namespace ProperDiagram
-variable {F : Word ⥤ SSet.{w}} (hF : ProperDiagram F) {a b c : Word}
+variable {F : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word ⥤ SSet.{w}} (hF : ProperDiagram F) {a b c : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word}
   (f : a ⟶ c) (g : b ⟶ c) (hf : Function.Injective f.orderHom) (hg : Function.Injective g.orderHom)
 
 /-- 交わりの語の像から、元の二つの部分複体の交わりへの標準包含。 -/
 def intersectionComparison :
-    (Subfunctor.range (F.map (Word.intersectionInclusion f g))).toFunctor ⟶
+    (Subfunctor.range (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g))).toFunctor ⟶
       (Subfunctor.range (F.map f) ⊓ Subfunctor.range (F.map g)).toFunctor :=
   Subfunctor.homOfLe (le_of_eq (hF.intersection_range f g hf hg))
 
@@ -53,15 +53,15 @@ lemma intersectionComparison_isIso : IsIso (intersectionComparison hF f g hf hg)
 lemma intersectionComparison_fac :
     intersectionComparison hF f g hf hg ≫
         (Subfunctor.range (F.map f) ⊓ Subfunctor.range (F.map g)).ι =
-      (Subfunctor.range (F.map (Word.intersectionInclusion f g))).ι :=
+      (Subfunctor.range (F.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.intersectionInclusion f g))).ι :=
   Subfunctor.homOfLe_ι _
 
 end ProperDiagram
 
 /-- 元の全語の graph 図式は proper。 -/
 lemma graphDiagram_proper {C : Type u} [Category.{v} C] (W : MorphismProperty C)
-    [W.IsMultiplicative] (X Y : C) : ProperDiagram (graphDiagram W X Y) where
+    [W.IsMultiplicative] (X Y : C) : ProperDiagram (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Diagram.graphDiagram W X Y) where
   map_mono f hf := graphDiagram_map_mono W f hf X Y
-  intersection_range f g hf hg := graphDiagram_intersection_range f g hf hg
+  intersection_range f g hf hg := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graphDiagram_intersection_range f g hf hg
 
 end SerrePositivity.EInfinity.Hammock

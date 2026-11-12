@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.TwoSidedThomasonNaturality
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedBarBaseChange
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBarBaseChange
 
 /-!
 # 元の二方向 nerve 比較の底の関手への自然性
@@ -24,8 +24,8 @@ variable {V W : Type u} [Category.{u} V] [Category.{u} W]
   (H : V ⥤ W) (F : Wᵒᵖ ⥤ Cat.{u, u}) (G : W ⥤ Cat.{u, u})
 
 lemma simplex_baseChange {n : ℕ} (e : ComposableArrows (labels (H.op ⋙ F) (H ⋙ G) n) n) :
-    simplex (H.op ⋙ F) (H ⋙ G) e ⋙ TwoSidedGrothendieck.baseChange H F G =
-      simplex F G (e ⋙ TwoSidedElements.pre H
+    simplex (H.op ⋙ F) (H ⋙ G) e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.baseChange H F G =
+      simplex F G (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.pre H
         (FrameHom.Thomason.values F n) (FrameHom.Thomason.values G n)) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
@@ -33,8 +33,8 @@ lemma simplex_baseChange {n : ℕ} (e : ComposableArrows (labels (H.op ⋙ F) (H
   rfl
 
 lemma map_baseChange :
-    map (H.op ⋙ F) (H ⋙ G) ≫ nerveMap (TwoSidedGrothendieck.baseChange H F G) =
-      TwoSidedBar.baseChange H (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫ map F G := by
+    map (H.op ⋙ F) (H ⋙ G) ≫ nerveMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.baseChange H F G) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBarBaseChange.baseChange H (F ⋙ nerveFunctor) (G ⋙ nerveFunctor) ≫ map F G := by
   ext n e
   exact simplex_baseChange H F G e
 

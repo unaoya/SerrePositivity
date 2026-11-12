@@ -25,7 +25,7 @@ def terminalPathFamilyFiberMap {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ E.right)
     (h₁ : SSet.ι₁ ≫ h ≫ f.right = toUnit A ≫ B.hom) :
     A ⟶ (terminalPathHomotopyFiber f).right :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).lift
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).lift
     (terminalPathFamily B (h ≫ f.right) h₁) (SSet.ι₀ ≫ h)
     ((terminalPathFamily_start B (h ≫ f.right) h₁).trans (Category.assoc _ _ _).symm)
 
@@ -33,7 +33,7 @@ def terminalPathFamilyFiberMap {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
 def terminalStrictZeroFiberMap {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (a : A ⟶ E.right) (ha : a ≫ f.right = toUnit A ≫ B.hom) :
     A ⟶ (terminalPathHomotopyFiber f).right :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).lift
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).lift
     (toUnit A ≫ (terminalPathSpace B).hom) a (by
       rw [Category.assoc, Under.w]
       exact ha.symm)
@@ -43,7 +43,7 @@ def terminalFiberCylinder {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ E.right)
     (h₁ : SSet.ι₁ ≫ h ≫ f.right = toUnit A ≫ B.hom) :
     A ⊗ (Δ[1] : SSet.{u}) ⟶ (terminalPathHomotopyFiber f).right :=
-  (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).lift
+  (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).lift
     (terminalSuffixFamily B (h ≫ f.right) h₁) h
     (terminalSuffixFamily_start B (h ≫ f.right) h₁)
 
@@ -51,7 +51,7 @@ def terminalFiberCylinder {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
 lemma terminalFiberCylinder_zero {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ E.right) (h₁) :
     SSet.ι₀ ≫ terminalFiberCylinder f h h₁ = terminalPathFamilyFiberMap f h h₁ := by
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).hom_ext
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).hom_ext
   · simp only [terminalFiberCylinder, terminalPathFamilyFiberMap, Category.assoc,
       IsPullback.lift_fst, terminalSuffixFamily_zero]
   · simp only [terminalFiberCylinder, terminalPathFamilyFiberMap, Category.assoc,
@@ -62,7 +62,7 @@ lemma terminalFiberCylinder_one {A : SSet.{u}} {E B : PointedSimplicialSet.{u}}
     (f : E ⟶ B) (h : A ⊗ (Δ[1] : SSet.{u}) ⟶ E.right) (h₁) :
     SSet.ι₁ ≫ terminalFiberCylinder f h h₁ =
       terminalStrictZeroFiberMap f (SSet.ι₁ ≫ h) ((Category.assoc _ _ _).trans h₁) := by
-  apply (_root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedPullback_isPullback (terminalPathStart B) f).hom_ext
+  apply (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedPullback_isPullback (terminalPathStart B) f).hom_ext
   · simp only [terminalFiberCylinder, terminalStrictZeroFiberMap, Category.assoc,
       IsPullback.lift_fst, terminalSuffixFamily_one]
   · simp only [terminalFiberCylinder, terminalStrictZeroFiberMap, Category.assoc,

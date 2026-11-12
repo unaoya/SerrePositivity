@@ -26,23 +26,23 @@ variable {C D : Type u} [Category.{v} C] [Category.{v} D]
   (η : (F.comp G).functor ⟶ 𝟭 C) (hη : ∀ X, W (η.app X))
   (ε : (G.comp F).functor ⟶ 𝟭 D) (hε : ∀ X, V (ε.app X)) (X Y : C)
 include G η hη ε hε
-lemma colimitMap_weak : IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) := by
-  have hc : IsWeakHomotopyEquivalence (Relative.colimitMap (F.comp G) X Y) := by
+lemma colimitMap_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap F X Y) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (F.comp G) X Y) := by
     apply (RelativeNatural.weak_iff (F := F.comp G) (G := LocalizerMorphism.id W) η hη X Y).mpr
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
-  have hd : IsWeakHomotopyEquivalence (Relative.colimitMap (G.comp F)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
+  have hd : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.colimitMap (G.comp F)
       (F.functor.obj X) (F.functor.obj Y)) := by
     apply (RelativeNatural.weak_iff (F := G.comp F) (G := LocalizerMorphism.id V) ε hε
       (F.functor.obj X) (F.functor.obj Y)).mpr
     rw [Relative.colimitMap_id]
-    exact isWeakHomotopyEquivalence_id _
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.isWeakHomotopyEquivalence_id _
   rw [Relative.colimitMap_comp] at hc hd
   exact (weak_middle_of_composites _ _ _ hc hd).cancel_right hc
-lemma reducedMap_weak : IsWeakHomotopyEquivalence (Relative.reducedMap F X Y) := by
-  have hs := (isPrecompositionEquivalence_of_iso
+lemma reducedMap_weak : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (Relative.reducedMap F X Y) := by
+  have hs := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (reducedColimitIso W X Y).symm).isWeakHomotopyEquivalence
-  have ht := (isPrecompositionEquivalence_of_iso
+  have ht := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (reducedColimitIso V (F.functor.obj X) (F.functor.obj Y))).isWeakHomotopyEquivalence
   exact hs.comp ((colimitMap_weak F G η hη ε hε X Y).comp ht)
 end SerrePositivity.EInfinity.Hammock.RelativeEquivalence

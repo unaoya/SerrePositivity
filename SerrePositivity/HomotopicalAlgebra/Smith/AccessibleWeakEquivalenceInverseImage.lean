@@ -20,7 +20,7 @@ namespace SerrePositivity.Smith
 lemma exists_accessible_weakEquivalence_inverseImage
     {C : Type u₁} [Category.{v₁} C] [IsLocallyPresentable.{w} C]
     {E : Type u₂} [Category.{v₂} E] [ModelCategory E] [IsLocallyPresentable.{w} E]
-    (I J : MorphismProperty E) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+    (I J : MorphismProperty E) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
     (F : C ⥤ Arrow E) [F.IsAccessible.{w}] :
     ∃ (κ : Cardinal.{w}) (_ : Fact κ.IsRegular),
       IsCardinalAccessibleCategory
@@ -38,7 +38,7 @@ lemma exists_accessible_weakEquivalence_inverseImage
   have : R.IsAccessible.{w} := R.isAccessible_of_isCardinalAccessible κ₀
   have : (F ⋙ R).IsAccessible.{w} := inferInstance
   have h := exists_accessible_rightClass_inverseImage I (F ⋙ R)
-  have hI := ModelGeneration.CofibrantlyGenerated.rlp_I (I := I) (J := J)
+  have hI := _root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.rlp_I (I := I) (J := J)
   have he : (arrowProperty (weakEquivalences E)).inverseImage F =
       (arrowProperty I.rlp).inverseImage (F ⋙ R) := by
     rw [WeakEquivalenceFilteredColimits.arrowProperty_eq_inverseImage d.fibrationData I hI]

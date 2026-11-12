@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeVertexIsoHomotopy
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorFiberHom
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorFiberHom
 
 /-!
 概要：底を全時刻で固定した元の円柱を同じ fiber 間の円柱へ制限する。

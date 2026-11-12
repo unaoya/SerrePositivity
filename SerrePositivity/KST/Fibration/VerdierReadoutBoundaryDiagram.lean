@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.Fibration.VerdierReadoutBoundaryTriangles
-public import SerrePositivity.InfinityCategories.Core.IntervalBoundary
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.IntervalBoundary
 
 /-!
 概要：元の二つの指定境界二単体を、区間境界上の一つの実全図式へ貼る。
@@ -18,12 +18,12 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 private theorem nativeBoundaryMap_exists
@@ -51,20 +51,20 @@ private theorem nativeBoundaryMap_exists
 theorem verdierReadoutDirectBoundaryMap_exists :
     ∃ F : (Δ[2] : SSet.{u + 1}) ⟶ verdierNativeLongHomTarget d,
       stdSimplex.δ (0 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge ∧
       stdSimplex.δ (2 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge ∧
       stdSimplex.δ (1 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge :=
   nativeBoundaryMap_exists d
-    (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})))
-    (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u})))
-    (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge
     (verdierReadoutDirectBoundaryTriangle_exists d L hL)
 
@@ -82,7 +82,7 @@ def verdierReadoutDirectBoundaryMap :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutDirectBoundaryMap_last :
     stdSimplex.δ (0 : Fin 3) ≫ verdierReadoutDirectBoundaryMap d L hL =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge :=
   (verdierReadoutDirectBoundaryMap_exists d L hL).choose_spec.1
 
@@ -92,7 +92,7 @@ theorem verdierReadoutDirectBoundaryMap_last :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutDirectBoundaryMap_first :
     stdSimplex.δ (2 : Fin 3) ≫ verdierReadoutDirectBoundaryMap d L hL =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge :=
   (verdierReadoutDirectBoundaryMap_exists d L hL).choose_spec.2.1
 
@@ -102,7 +102,7 @@ theorem verdierReadoutDirectBoundaryMap_first :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutDirectBoundaryMap_long :
     stdSimplex.δ (1 : Fin 3) ≫ verdierReadoutDirectBoundaryMap d L hL =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
           (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath.{u}))).edge :=
   (verdierReadoutDirectBoundaryMap_exists d L hL).choose_spec.2.2
 
@@ -114,14 +114,14 @@ include hfull in
 theorem verdierReadoutFullBoundaryMap_exists :
     ∃ F : (Δ[2] : SSet.{u + 1}) ⟶ verdierNativeLongHomTarget d,
       stdSimplex.δ (0 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge ∧
       stdSimplex.δ (2 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge ∧
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge ∧
       stdSimplex.δ (1 : Fin 3) ≫ F = SSet.yonedaEquiv.symm
-        (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge := by
   obtain ⟨e, T, hz⟩ := verdierReadoutFullBoundaryTriangle_exists d L hL hfull
   refine ⟨SSet.yonedaEquiv.symm T.simplex, ?_, ?_, ?_⟩
   all_goals rw [stdSimplex.δ_comp_yonedaEquiv_symm]
@@ -143,8 +143,8 @@ def verdierReadoutFullBoundaryMap :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutFullBoundaryMap_last :
     stdSimplex.δ (0 : Fin 3) ≫ verdierReadoutFullBoundaryMap d L hL hfull =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge :=
   (verdierReadoutFullBoundaryMap_exists d L hL hfull).choose_spec.1
 
 /-- 概要：同じ合成端 境界図式の面 2 を元の実成分へ戻す。
@@ -153,8 +153,8 @@ theorem verdierReadoutFullBoundaryMap_last :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutFullBoundaryMap_first :
     stdSimplex.δ (2 : Fin 3) ≫ verdierReadoutFullBoundaryMap d L hL hfull =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge :=
   (verdierReadoutFullBoundaryMap_exists d L hL hfull).choose_spec.2.1
 
 /-- 概要：同じ合成端 境界図式の面 1 を元の実成分へ戻す。
@@ -163,8 +163,8 @@ theorem verdierReadoutFullBoundaryMap_first :
 使われ方：全境界図式の面適合条件。 -/
 theorem verdierReadoutFullBoundaryMap_long :
     stdSimplex.δ (1 : Fin 3) ≫ verdierReadoutFullBoundaryMap d L hL hfull =
-      SSet.yonedaEquiv.symm (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-          (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u}))).edge :=
+      SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u}))).edge :=
   (verdierReadoutFullBoundaryMap_exists d L hL hfull).choose_spec.2.2
 
 /-- 概要：二つの実境界二単体を区間境界上の全図式にする。
@@ -173,7 +173,7 @@ theorem verdierReadoutFullBoundaryMap_long :
 使われ方：境界を固定した合成二単体族の延長入力。 -/
 def verdierReadoutBoundaryDiagram :
     (boundary 1 : SSet.{u + 1}) ⊗ Δ[2] ⟶ verdierNativeLongHomTarget d :=
-  intervalBoundaryDiagram (verdierReadoutDirectBoundaryMap d L hL)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram (verdierReadoutDirectBoundaryMap d L hL)
     (verdierReadoutFullBoundaryMap d L hL hfull)
 
 /-- 概要：同じ境界図式の零端は元の直接端二単体そのもの。
@@ -181,18 +181,18 @@ def verdierReadoutBoundaryDiagram :
 規約：実全図式の厳密等式。
 使われ方：指定した直接端境界の照合。 -/
 theorem verdierReadoutBoundaryDiagram_zero :
-    intervalBoundaryEndpoint 0 Δ[2] ≫ verdierReadoutBoundaryDiagram d L hL hfull =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 0 Δ[2] ≫ verdierReadoutBoundaryDiagram d L hL hfull =
       verdierReadoutDirectBoundaryMap d L hL :=
-  intervalBoundaryDiagram_zero _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_zero _ _
 
 /-- 概要：同じ境界図式の一端は元の合成端二単体そのもの。
 方針：既存の境界図式の一端回収を適用する。
 規約：実全図式の厳密等式。
 使われ方：指定した合成端境界の照合。 -/
 theorem verdierReadoutBoundaryDiagram_one :
-    intervalBoundaryEndpoint 1 Δ[2] ≫ verdierReadoutBoundaryDiagram d L hL hfull =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryEndpoint 1 Δ[2] ≫ verdierReadoutBoundaryDiagram d L hL hfull =
       verdierReadoutFullBoundaryMap d L hL hfull :=
-  intervalBoundaryDiagram_one _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_one _ _
 
 /-- 概要：全境界図式の面 0 は同じ元の二つの境界成分の全図式。
 方針：境界図式の自然性と同じ二単体の面回収を合成する。
@@ -201,14 +201,14 @@ theorem verdierReadoutBoundaryDiagram_one :
 theorem verdierReadoutBoundaryDiagram_last :
     ((boundary 1 : SSet.{u + 1}) ◁ stdSimplex.δ (0 : Fin 3)) ≫
       verdierReadoutBoundaryDiagram d L hL hfull =
-      intervalBoundaryDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
             (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge)
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
-            (ULift.up (ComposableArrows.mk₀ triangleFullPath))).edge) := by
-  rw [verdierReadoutBoundaryDiagram, intervalBoundaryDiagram_naturality,
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+            (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath))).edge) := by
+  rw [verdierReadoutBoundaryDiagram, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_naturality,
     verdierReadoutDirectBoundaryMap_last, verdierReadoutFullBoundaryMap_last]
 
 /-- 概要：全境界図式の面 2 は同じ元の二つの境界成分の全図式。
@@ -218,14 +218,14 @@ theorem verdierReadoutBoundaryDiagram_last :
 theorem verdierReadoutBoundaryDiagram_first :
     ((boundary 1 : SSet.{u + 1}) ◁ stdSimplex.δ (2 : Fin 3)) ≫
       verdierReadoutBoundaryDiagram d L hL hfull =
-      intervalBoundaryDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
             (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge)
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-            (ULift.up (ComposableArrows.mk₀ triangleFullPath))).edge) := by
-  rw [verdierReadoutBoundaryDiagram, intervalBoundaryDiagram_naturality,
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+            (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath))).edge) := by
+  rw [verdierReadoutBoundaryDiagram, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_naturality,
     verdierReadoutDirectBoundaryMap_first, verdierReadoutFullBoundaryMap_first]
 
 /-- 概要：全境界図式の面 1 は同じ元の二つの境界成分の全図式。
@@ -235,14 +235,14 @@ theorem verdierReadoutBoundaryDiagram_first :
 theorem verdierReadoutBoundaryDiagram_long :
     ((boundary 1 : SSet.{u + 1}) ◁ stdSimplex.δ (1 : Fin 3)) ≫
       verdierReadoutBoundaryDiagram d L hL hfull =
-      intervalBoundaryDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierLowerNativeReadoutHomotopy d L hL)
             (ULift.up (ComposableArrows.mk₀ coherentTriangleDirectPath))).edge)
         (SSet.yonedaEquiv.symm
-          (simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
-            (ULift.up (ComposableArrows.mk₀ triangleFullPath))).edge) := by
-  rw [verdierReadoutBoundaryDiagram, intervalBoundaryDiagram_naturality,
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.simplicialHomotopyVertexEdge (verdierReadoutUpperComparison d)
+            (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath))).edge) := by
+  rw [verdierReadoutBoundaryDiagram, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.intervalBoundaryDiagram_naturality,
     verdierReadoutDirectBoundaryMap_long, verdierReadoutFullBoundaryMap_long]
 
 end SerrePositivity.KST.Fibration

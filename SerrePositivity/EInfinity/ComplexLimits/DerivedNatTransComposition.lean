@@ -29,8 +29,8 @@ lemma complexOrdinaryDerivedNatTransHom_comp {F G H : I ⥤ Complex A}
   have hm {V W : I ⥤ Complex A} (a : V ⟶ W) :
       complexOrdinaryDerivedNatTransHom A a = T.map
         (Truncated.HomotopyCategory.homMk
-          (functorEdgeOfSimplicialHomotopy (FrameHom.MixedNerve.homotopy a))) :=
-    functorHomotopyPostcomp_hom (FrameHom.MixedNerve.homotopy a)
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (FrameHom.MixedNerve.homotopy a))) :=
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp_hom (FrameHom.MixedNerve.homotopy a)
       (complexOrdinaryDerivedSource A)
   rw [hm, hm, hm]
   exact ht

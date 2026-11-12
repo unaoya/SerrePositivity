@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.BarrattEccles
 open CategoryTheory HomotopicalAlgebra Opposite Hammock SerrePositivity.SimplicialModel
-open SerrePositivity.Reedy SerrePositivity.HomotopyFunctionComplex
+open SerrePositivity.Reedy
 variable (A : Type u) [CommRing A] (Y : (operad A).Algebra) {X' X : (operad A).Algebra}
 
 def sourceFramePrecomposeIndexMap (f : X' ⟶ X) :
@@ -49,11 +49,11 @@ lemma sourceFrameReducedHammockNerveMap_precompose (f : X' ⟶ X) :
     (fun a => q'.homotopicallyConstant a) (fun a => q.homotopicallyConstant a)
     (F.obj.map f) f (F.augmentation.naturality f)
   change Q.map (sourceFramePrecomposeIndexMap A Y f ≫
-      (sourceFrameLeftRoofNerveMap A X' Y ≫ algebraHammockGraphInclusion A LeftRoof.word X' Y)) =
-    Q.map (sourceFrameLeftRoofNerveMap A X Y ≫ algebraHammockGraphInclusion A LeftRoof.word X Y) ≫
-      Q.map (precomposePointMap (arrowMap (weakEquivalences (operad A).Algebra) f) Y) at h
+      (sourceFrameLeftRoofNerveMap A X' Y ≫ algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X' Y)) =
+    Q.map (sourceFrameLeftRoofNerveMap A X Y ≫ algebraHammockGraphInclusion A _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.LeftRoof.word X Y) ≫
+      Q.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences (operad A).Algebra) f) Y) at h
   have hn : (algebraHammockReductionIso A X Y).hom ≫ algebraReducedHammockPrecompose A Y f =
-      precomposePointMap (arrowMap (weakEquivalences (operad A).Algebra) f) Y ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.precomposePointMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap (weakEquivalences (operad A).Algebra) f) Y ≫
         (algebraHammockReductionIso A X' Y).hom :=
     reducedColimitIso_precompose (weakEquivalences (operad A).Algebra) Y f
   have hnQ := congrArg Q.map hn

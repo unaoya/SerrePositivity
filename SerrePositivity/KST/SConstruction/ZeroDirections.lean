@@ -131,7 +131,7 @@ instance zeroDirectionsInclusion_mono {r : ℕ} (s : Finset (Fin r)) (X : Stable
 規約：固定外の次数は任意。使われ方：境界の交差の対角の弱可縮性。 -/
 lemma zeroDirectionsDiagram_isContractibleKan {r : ℕ} (s : Finset (Fin r)) (hs : s.Nonempty)
     (X : StableModel.{u}) (d : SimplexCategoryᵒᵖ) :
-    IsContractibleKan ((zeroDirectionsDiagram s X).obj d) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan ((zeroDirectionsDiagram s X).obj d) := by
   obtain ⟨i, hi⟩ := hs
   apply multiCoreSConstruction_isContractibleKan_of_zero_coordinate r X
     ((zeroDirectionsIndex s).obj (fun _ => d)) i

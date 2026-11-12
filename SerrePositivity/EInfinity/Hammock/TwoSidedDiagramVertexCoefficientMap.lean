@@ -17,20 +17,20 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory Opposite
-lemma right_app_transport_congr {A B : Data.{u}} {f g : A ⟶ B} (h : f = g)
+lemma right_app_transport_congr {A B : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {f g : A ⟶ B} (h : f = g)
     (x : A.base) (z : B.base) (hf : f.base.obj x = z) (hg : g.base.obj x = z) :
     f.right.app x ≫ B.right.map (eqToHom hf) =
       g.right.app x ≫ B.right.map (eqToHom hg) := by
   cases h
   rfl
-lemma left_app_transport_congr {A B : Data.{u}} {f g : A ⟶ B} (h : f = g)
+lemma left_app_transport_congr {A B : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {f g : A ⟶ B} (h : f = g)
     (x : A.baseᵒᵖ) (z : B.baseᵒᵖ) (hf : f.base.op.obj x = z) (hg : g.base.op.obj x = z) :
     f.left.app x ≫ B.left.map (eqToHom hf) =
       g.left.app x ≫ B.left.map (eqToHom hg) := by
   cases h
   rfl
 namespace FixedVertices
-variable {D E : SimplicialObject Data.{u}} {O : Type u}
+variable {D E : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}} {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (q : (n : SimplexCategoryᵒᵖ) → O ≃ (E.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
@@ -40,12 +40,12 @@ variable {D E : SimplicialObject Data.{u}} {O : Type u}
   (τ : D ⟶ E) (hτ : ∀ n o, (τ.app n).base.obj (p n o) = q n o)
 
 def rightDiagram (X : O) : SimplicialObject Cat.{u, u} :=
-  Transfunctor.objectDiagram (D ⋙ baseFunctor)
-    (fun n => p n X) (fun θ => hp θ X) (rightTransfunctor D)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.objectDiagram (D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.baseFunctor)
+    (fun n => p n X) (fun θ => hp θ X) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.rightTransfunctor D)
 
 def leftDiagram (X : O) : SimplicialObject Cat.{u, u} :=
-  Transfunctor.objectDiagram (D ⋙ baseFunctor ⋙ Cat.opFunctor)
-    (fun n => op (p n X)) (fun θ => congrArg op (hp θ X)) (leftTransfunctor D)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.objectDiagram (D ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.baseFunctor ⋙ Cat.opFunctor)
+    (fun n => op (p n X)) (fun θ => congrArg op (hp θ X)) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagramTransfunctor.leftTransfunctor D)
 
 def rightDiagramMap (X : O) : rightDiagram p hp X ⟶ rightDiagram q hq X where
   app n := (τ.app n).right.app (p n X) ≫ (E.obj n).right.map (eqToHom (hτ n X))
@@ -57,7 +57,7 @@ def rightDiagramMap (X : O) : rightDiagram p hp X ⟶ rightDiagram q hq X where
     simp only [Category.assoc]
     rw [(τ.app m).right.naturality_assoc, (E.map θ).right.naturality_assoc]
     simp only [Functor.comp_map, eqToHom_map, eqToHom_trans]
-    simpa only [comp_right, NatTrans.comp_app, Functor.whiskerLeft_app,
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.comp_right, NatTrans.comp_app, Functor.whiskerLeft_app,
       eqToHom_map, Category.assoc] using
       right_app_transport_congr (τ.naturality θ) (p n X) (q m X)
         ((congrArg (τ.app m).base.obj (hp θ X)).trans (hτ m X))
@@ -78,18 +78,18 @@ def leftDiagramMap (X : O) : leftDiagram p hp X ⟶ leftDiagram q hq X where
     simp only [Category.assoc]
     rw [(τ.app m).left.naturality_assoc, (E.map θ).left.naturality_assoc]
     simp only [Functor.comp_map, eqToHom_map, eqToHom_trans]
-    simpa only [comp_left, NatTrans.comp_app, Functor.whiskerLeft_app,
+    simpa only [_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.comp_left, NatTrans.comp_app, Functor.whiskerLeft_app,
       eqToHom_map, Category.assoc] using
       left_app_transport_congr (τ.naturality θ) (op (p n X)) (op (q m X))
         (congrArg op ((congrArg (τ.app m).base.obj (hp θ X)).trans (hτ m X)))
         (congrArg op ((congrArg (E.map θ).base.obj (hτ n X)).trans (hq θ X)))
 
 def rightSpaceMap (X : O) : rightSpace D p hp X ⟶ rightSpace E q hq X :=
-  DoubleSimplicial.diagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
     (Functor.whiskerRight (rightDiagramMap p q hp hq τ hτ X) nerveFunctor)
 
 def leftSpaceMap (X : O) : leftSpace D p hp X ⟶ leftSpace E q hq X :=
-  DoubleSimplicial.diagonalFunctor.map
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map
     (Functor.whiskerRight (leftDiagramMap p q hp hq τ hτ X) nerveFunctor)
 
 lemma rightSpaceMap_app (X : O) (n : SimplexCategoryᵒᵖ)

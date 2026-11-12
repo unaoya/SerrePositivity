@@ -27,32 +27,32 @@ include hd in
 lemma coefficient_left : M.actLeft ≫ coefficient M N r =
     ((base M N r).hom ⊗ₘ coefficient M N r) ≫ N.actLeft := by
   have h := IsMonHom.mul_hom r.hom
-  change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul B N at h
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul B N at h
   rw [hom_diagonal M N r d hd] at h
   have hl := congrArg (fun t =>
     (((biprod.inl : A.X ⟶ (algebra A M).X) ⊗ₘ
       (biprod.inr : M.X ⟶ (algebra A M).X)) ≫ t) ≫
         (biprod.snd : (algebra B N).X ⟶ N.X)) h
-  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr] at hl
   rw [tensorHom_comp_tensorHom, biprod.inl_map, biprod.inr_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_lr_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_lr_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 include hd in
 lemma coefficient_right : M.actRight ≫ coefficient M N r =
     (coefficient M N r ⊗ₘ (base M N r).hom) ≫ N.actRight := by
   have h := IsMonHom.mul_hom r.hom
-  change _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul B N at h
+  change _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul A M ≫ r.hom = (r.hom ⊗ₘ r.hom) ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul B N at h
   rw [hom_diagonal M N r d hd] at h
   have hl := congrArg (fun t =>
     (((biprod.inr : M.X ⟶ (algebra A M).X) ⊗ₘ
       (biprod.inl : A.X ⟶ (algebra A M).X)) ≫ t) ≫
         (biprod.snd : (algebra B N).X ⟶ N.X)) h
-  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl] at hl
+  simp only [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl] at hl
   rw [tensorHom_comp_tensorHom, biprod.inr_map, biprod.inl_map,
     ← tensorHom_comp_tensorHom] at hl
-  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Core.Quasicategory.SquareZero.mul_rl_assoc, biprod.inr_snd,
+  simpa only [Category.assoc, biprod.inr_map_assoc, _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Quasicategory.mul_rl_assoc, biprod.inr_snd,
     Category.comp_id] using hl
 
 def coefficientBimoduleMap : M ⟶ bimoduleRestrict (base M N r) N where

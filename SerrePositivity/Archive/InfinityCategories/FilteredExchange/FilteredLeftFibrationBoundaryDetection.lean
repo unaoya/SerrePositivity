@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Derived.PiCriterion.FilteredLeftFibrationRelativeDetection
-public import SerrePositivity.InfinityCategories.Derived.PiCriterion.ContinuousKanUnitHomotopy
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.FilteredLeftFibrationRelativeDetection
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.PiCriterion.ContinuousKanUnitHomotopy
 
 /-!
 概要：全空間の Kan 模型で充填できる有限境界を一つの fiber 内で充填する。

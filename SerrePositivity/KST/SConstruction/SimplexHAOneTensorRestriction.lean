@@ -16,7 +16,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] {D : Type v} [DGCategory A D]
 
 /-- 左右の実鎖射が元の復元を回収すれば、内部一面への制限は同じ実 tensor 合成。 -/
-lemma simplexHADegreeLift_one_tensor_restriction {N : ℕ} (s : DGNerve.SimplexData A D N)
+lemma simplexHADegreeLift_one_tensor_restriction {N : ℕ} (s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.SimplexData A D N)
     (n m : ℕ) (v : Fin (n + 1 + m + 1) ↪o Fin (N + 1)) (b : Fin (N + 1))
     (hb : v (Fin.last (n + 1 + m)) < b)
     (F : serreCubeComplex A n ⟶ homObject A D (s.obj (v 0)) (s.obj (simplexHASplitCut n m v)))

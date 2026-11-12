@@ -23,13 +23,13 @@ open scoped Simplicial
 使われ方：点ごとの gapped 性を検査する生の比較射。 -/
 def completionRelativeSRawTranspose (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier ⟶
       (ihom (stdSimplex.obj n)).obj ((ihom (arNerve m)).obj
         (((multiSEndofunctor r).obj ι).obj Y).carrier) :=
   (gappedSubcomplex m (completionRelativeFlagStableModel r ι f hf n).carrier).ι ≫
     (ihom (arNerve m)).map (completionRelativeFlagAmbientMap r ι f hf n).val ≫
-      (internalHomSwapIso (arNerve m) (stdSimplex.obj n)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n)
         (((multiSEndofunctor r).obj ι).obj Y).carrier).hom
 
 /-- 概要：生の転置の各頂点は元の gapped 族を転置した関手。
@@ -38,21 +38,21 @@ def completionRelativeSRawTranspose (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 使われ方：転置の各成分の gapped 性。 -/
 lemma completionRelativeSRawTranspose_vertex (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (v : (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier _⦋0⦌) :
     (completionRelativeSRawTranspose r ι f hf m n).app (Opposite.op ⦋0⦌) v =
-      functorVertex (internalHomFlipHomEquiv (arNerve m) (stdSimplex.obj n)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.internalHomFlipHomEquiv (arNerve m) (stdSimplex.obj n)
         (((multiSEndofunctor r).obj ι).obj Y).carrier
         (gappedDiagram v ≫ (completionRelativeFlagAmbientMap r ι f hf n).val)) := by
-  have hv : functorVertex (gappedDiagram v) = v.val :=
-    (functorVertexEquiv (arNerve m)
+  have hv : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (gappedDiagram v) = v.val :=
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
       (completionRelativeFlagStableModel r ι f hf n).carrier).apply_symm_apply v.val
-  change (internalHomSwapIso (arNerve m) (stdSimplex.obj n)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso (arNerve m) (stdSimplex.obj n)
     (((multiSEndofunctor r).obj ι).obj Y).carrier).hom.app (Opposite.op ⦋0⦌)
       (((ihom (arNerve m)).map (completionRelativeFlagAmbientMap r ι f hf n).val).app
         (Opposite.op ⦋0⦌) v.val) = _
   rw [← hv]
-  exact internalHomSwapIso_functorVertex (arNerve m) (stdSimplex.obj n)
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.internalHomSwapIso_functorVertex (arNerve m) (stdSimplex.obj n)
     (((multiSEndofunctor r).obj ι).obj Y).carrier
     (gappedDiagram v ≫ (completionRelativeFlagAmbientMap r ι f hf n).val)
 
@@ -62,18 +62,18 @@ lemma completionRelativeSRawTranspose_vertex (r : ℕ) (ι : Fin r → SimplexCa
 使われ方：同じ反復 S 模型を値とする旗への持ち上げ。 -/
 lemma completionRelativeSRawTranspose_gapped (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory)
     (s : (stdSimplex.obj n ⊗
       (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier) _⦋0⦌) :
-    IsGapped ((functorVertexEquiv (arNerve m)
+    IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
       (((multiSEndofunctor r).obj ι).obj Y).carrier).symm
       ((uncurry (completionRelativeSRawTranspose r ι f hf m n)).app (Opposite.op ⦋0⦌) s)) := by
   rcases s with ⟨b, v⟩
-  change IsGapped ((functorVertexEquiv (arNerve m)
+  change IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve m)
     (((multiSEndofunctor r).obj ι).obj Y).carrier).symm
-    ((evaluateFunctorAt b).app (Opposite.op ⦋0⦌)
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b).app (Opposite.op ⦋0⦌)
       ((completionRelativeSRawTranspose r ι f hf m n).app (Opposite.op ⦋0⦌) v)))
-  rw [completionRelativeSRawTranspose_vertex, evaluateFunctorAt_functorVertex, flipFamily_vertex]
+  rw [completionRelativeSRawTranspose_vertex, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt_functorVertex, flipFamily_vertex]
   exact (gappedDiagram_isGapped v).postcomp _
     ((completionRelativeFlagAmbientMap r ι f hf n).property.toSConstructionData.comp
       (evaluateFunctorAt_preservesSConstructionData b))
@@ -84,7 +84,7 @@ lemma completionRelativeSRawTranspose_gapped (r : ℕ) (ι : Fin r → SimplexCa
 使われ方：相対旗の S 交換の具体的な順射。 -/
 def completionRelativeSTransposeDiagram (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (m : ℕ) (n : SimplexCategory) :
     (sStableModel m (completionRelativeFlagStableModel r ι f hf n)).carrier ⟶
       (ihom (stdSimplex.obj n)).obj
         (sStableModel m (((multiSEndofunctor r).obj ι).obj Y)).carrier :=

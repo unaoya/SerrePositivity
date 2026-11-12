@@ -21,12 +21,12 @@ def boundaryKPiZeroFunctor : StableModel.{u} ⥤ Type u :=
 
 /-- 元の K 空間の零次ホモトピー類と連結成分の自然同型。 -/
 def rawKZeroHomotopyPiZeroIso : rawKStageHomotopyFunctor.{u} 0 0 ≅ boundaryKPiZeroFunctor :=
-  NatIso.ofComponents (fun _ => _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero.toIso) (fun {X Y} f => by
+  NatIso.ofComponents (fun _ => _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero.toIso) (fun {X Y} f => by
     apply ConcreteCategory.hom_ext
     intro a
-    change _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero (pointedHomotopyMap 0 (boundaryKSpaceFunctor.map f) a) =
-      SSet.mapπ₀ (boundaryKSpaceFunctor.map f).right (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero a)
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero_map _ _ a)
+    change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero (pointedHomotopyMap 0 (boundaryKSpaceFunctor.map f) a) =
+      SSet.mapπ₀ (boundaryKSpaceFunctor.map f).right (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero a)
+    exact _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero_map _ _ a)
 
 /-- 実際の BF K スペクトルの零次群の基礎集合は元の K 空間の π₀ と自然同型。 -/
 def kHomotopyZeroPiZeroIso :

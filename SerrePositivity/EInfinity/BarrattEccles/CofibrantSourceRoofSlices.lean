@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.BarrattEccles.CofibrantSourceFrameRoof
 public import SerrePositivity.EInfinity.FrameHom.FrameRoofQuillenSlice
-public import SerrePositivity.InfinityCategories.F1B.Cofinality.QuillenALeft
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.QuillenALeft
 
 /-!
 # 元の cofibrant source 屋根の全 Quillen A slice と次数モデル
@@ -32,14 +32,14 @@ abbrev cofibrantSourceRoofProjection : cofibrantSourceRoofTarget A X Y ⟶
     nerve (AsSmall.{u + 1} SimplexCategory) := roofTargetProjection _ _ _
 
 lemma cofibrantSourceFrameArrow_invertible {i j : AsSmall.{u + 1} SimplexCategory}
-    (f : i ⟶ j) : IsInvertibleEdge
+    (f : i ⟶ j) : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.IsInvertibleEdge
       ((nerve.edgeMk ((cofibrantDKSourceFrame A X).map f)).map
         (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))).toTruncated := by
   have hi := kanHammockSourceFunctor_weak_invertible (cofibrantAlgebraRelativeCategory A)
     ((cofibrantDKSourceFrame A X).map f) (cofibrantDKSourceFrame_map_weak A X f)
-  exact (isInvertibleEdge_congr
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.isInvertibleEdge_congr
     (X := kanHammockNerve (cofibrantAlgebraRelativeCategory A))
-    (e := (coherentNerveEdge ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
+    (e := (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge ((kanHammockSourceFunctor (cofibrantAlgebraRelativeCategory A)).map
       ((cofibrantDKSourceFrame A X).map f))).toTruncated)
     (f := ((nerve.edgeMk ((cofibrantDKSourceFrame A X).map f)).map
       (hammockLocalizationNerveMap (cofibrantAlgebraRelativeCategory A))).toTruncated)
@@ -47,10 +47,10 @@ lemma cofibrantSourceFrameArrow_invertible {i j : AsSmall.{u + 1} SimplexCategor
       ((cofibrantDKSourceFrame A X).map f)).symm).mp hi
 
 lemma cofibrantSourceRoofProjection_rightFibration :
-    RightFibration (cofibrantSourceRoofProjection A X Y) := inferInstance
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.RightFibration (cofibrantSourceRoofProjection A X Y) := inferInstance
 
 lemma cofibrantSourceRoofProjection_leftFibration :
-    LeftFibration (cofibrantSourceRoofProjection A X Y) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.LeftAndRightFibrations.LeftFibration (cofibrantSourceRoofProjection A X Y) :=
   roofTargetProjection_leftFibration _ _ _ (cofibrantSourceFrameArrow_invertible A X)
 
 lemma cofibrantSourceRoofTarget_quasicategory :
@@ -59,7 +59,7 @@ lemma cofibrantSourceRoofTarget_quasicategory :
 variable (b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌)
 
 abbrev cofibrantSourceRoofSlice := pullback (cofibrantSourceFrameRoofMap A X Y)
-  (sliceOverProjection (SSet.yonedaEquiv.symm b))
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection (SSet.yonedaEquiv.symm b))
 
 abbrev cofibrantSourceRoofDegree := roofTargetDegree (cofibrantDKSourceFrame A X)
   (show (cofibrantAlgebraRelativeCategory A).category from Y)
@@ -94,10 +94,10 @@ lemma cofibrantSourceRoofSliceDegreeMap_source : cofibrantSourceRoofSliceDegreeM
     pullback.fst _ _ = pullback.fst _ _ := pullback.lift_fst _ _ _
 
 lemma cofibrantSourceRoofMap_isLeftCofinal_iff_slices :
-    IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.IsLeftCofinal (cofibrantSourceFrameRoofMap A X Y) ↔
       ∀ b : (cofibrantSourceRoofTarget A X Y) _⦋0⦌,
-        IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible (cofibrantSourceRoofSlice A X Y b) := by
   have := cofibrantSourceRoofTarget_quasicategory A X Y
-  exact isLeftCofinal_iff_weaklyContractible_slices _
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.isLeftCofinal_iff_weaklyContractible_slices _
 
 end SerrePositivity.EInfinity.BarrattEccles

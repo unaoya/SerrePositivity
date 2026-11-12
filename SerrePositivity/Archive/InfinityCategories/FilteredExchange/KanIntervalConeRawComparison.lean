@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.KanIntervalConeNativeCommutativity
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
 
 /-!
 概要：区間錐の端点を正規化する前の指定脚比較と比較先三角形。

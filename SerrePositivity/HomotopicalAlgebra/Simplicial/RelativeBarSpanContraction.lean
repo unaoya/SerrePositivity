@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarSpan
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.RelativeBarDiagonalContraction
-public import SerrePositivity.InfinityCategories.Kan.UniverseLiftHomotopy
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.UniverseLiftHomotopy
 
 /-!
 # 相対bar比較spanの左脚を収縮する実ホモトピーを構成する
@@ -47,7 +47,7 @@ lemma spanLeft_section_factor (d : D) :
       SSet.uliftFunctor.{vB, max uD vD v}.map
         ((identityAugmentation F).app d ≫ identitySection F d) := by
   let U := SSet.uliftFunctor.{vB, max uD vD v}
-  let e := UniverseLift.iterationIso.{v, max uD vD, vB}.app (F.obj d)
+  let e := _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.iterationIso.{v, max uD vD, vB}.app (F.obj d)
   change (U.map ((identityAugmentation F).app d) ≫ e.hom) ≫
     (e.inv ≫ U.map (identitySection F d)) = _
   rw [Category.assoc, Iso.hom_inv_id_assoc, ← U.map_comp]
@@ -63,7 +63,7 @@ The full diagonal contraction survives the actual lift and wrapper-flattening ma
 -/
 def spanLeftHomotopy (d : D) : SSet.Homotopy (𝟙 ((spanMiddle p F).obj d))
     ((spanLeft p F).app d ≫ spanSection p F d) := by
-  have H := UniverseLift.homotopy.{vB} (identityDiagonalHomotopy F d)
+  have H := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.homotopy.{vB} (identityDiagonalHomotopy F d)
   change SSet.Homotopy
     (SSet.uliftFunctor.{vB, max uD vD v}.map (𝟙 ((relative (𝟭 D) F).obj d)))
     (SSet.uliftFunctor.{vB, max uD vD v}.map

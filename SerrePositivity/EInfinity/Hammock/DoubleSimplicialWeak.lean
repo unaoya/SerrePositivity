@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.DoubleSimplicialDiagonal
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.DoubleSimplicialDiagonal
 public import SerrePositivity.EInfinity.Hammock.WeakAnodyneLocalization
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.DiagonalLocalizedEquivalence
 
@@ -22,8 +22,8 @@ namespace SerrePositivity.EInfinity.Hammock.DoubleSimplicial
 open CategoryTheory SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
 
 lemma diagonalFunctor_map_weak {B D : SimplicialObject SSet.{u}} (f : B ⟶ D)
-    (hf : ∀ n, IsWeakHomotopyEquivalence (f.app n)) :
-    IsWeakHomotopyEquivalence (diagonalFunctor.map f) := by
+    (hf : ∀ n, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (f.app n)) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor.map f) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   change IsIso (AnodyneHomotopy.anodyneQ.map (BisimplicialModel.diagonal.map f))
   exact BisimplicialModel.localized_diagonal_map f

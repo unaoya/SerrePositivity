@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.FullSubcomplexFunctorIsoReflection
 public import SerrePositivity.KST.SConstruction.StableModels
-public import SerrePositivity.InfinityCategories.Core.FunctorComposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorComposition
 
 /-! # S_n の後合成による関手同型の保存
 概要：完全関手の coherent な同型を、S_n 上の元の後合成の関手同型に移す。
@@ -19,11 +19,11 @@ open SerrePositivity.InfinityCategories
 
 /-- S_n の元の完全な後合成は完全関手の関手同型を保つ。 -/
 def sPostcompositionFunctorIso (n : ℕ) {X Y : StableModel.{u}} {f g : X ⟶ Y}
-    (e : FunctorIso f.val g.val) :
-    FunctorIso ((sEndofunctor n).map f).val ((sEndofunctor n).map g).val := by
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f.val g.val) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso ((sEndofunctor n).map f).val ((sEndofunctor n).map g).val := by
   apply functorIsoOfFullSubcomplexPostcomp
-    (fun v => IsGapped ((functorVertexEquiv (arNerve n) Y.carrier).symm v))
-  change FunctorIso (sPostcompCofiber n f.val f.property ≫ (gappedSubcomplex n Y.carrier).ι)
+    (fun v => IsGapped ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.functorVertexEquiv (arNerve n) Y.carrier).symm v))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (sPostcompCofiber n f.val f.property ≫ (gappedSubcomplex n Y.carrier).ι)
     (sPostcompCofiber n g.val g.property ≫ (gappedSubcomplex n Y.carrier).ι)
   rw [sPostcompCofiber_ι, sPostcompCofiber_ι]
   exact (e.map_post (arNerve n)).precomp (gappedSubcomplex n X.carrier).ι

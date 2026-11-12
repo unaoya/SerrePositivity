@@ -51,7 +51,7 @@ lemma hornCompatible : SSet.horn.IsCompatible (hornFaces F G) := by
   | exact (hj rfl).elim
   | exact (hk rfl).elim
   | exact ((not_lt_of_ge (by decide)) hjk).elim
-  | exact (LargeParameterSquare.edge_one G).trans (LargeParameterSquare.edge_one F).symm
+  | exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one G).trans (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.edge_one F).symm
 
 abbrev hornMap : (SSet.horn.{v} 2 2).toSSet ⟶ (ihom T).obj K := (hornCompatible F G).desc
 

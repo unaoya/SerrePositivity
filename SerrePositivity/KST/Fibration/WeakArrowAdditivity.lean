@@ -20,7 +20,7 @@ open SerrePositivity.SimplicialModel
 namespace SerrePositivity.KST.Fibration
 
 /-- 同じ cofiber 補完を使う、W 辺図式の正有限反復実現からの射対。 -/
-def weakArrowMultiAdditivityMap {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+def weakArrowMultiAdditivityMap {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     (multiRealizationFunctor (r + 1)).obj (weakArrowModel q) ⟶
       (multiRealizationFunctor (r + 1)).obj
         (closedStableModel (ClosedStablePredicate.top (sInputModel B))) ⊗
@@ -31,7 +31,7 @@ def weakArrowMultiAdditivityMap {B C : _root_.SerrePositivity.InfinityCategories
 
 /-- W 辺図式の実現の射対は、全ての正有限反復で局所化同型。 -/
 theorem weakArrowMultiAdditivityMap_localized_isIso
-    {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+    {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     IsIso (AnodyneHomotopy.anodyneQ.map (weakArrowMultiAdditivityMap q r)) := by
   have : IsIso (AnodyneHomotopy.anodyneQ.map
       ((multiRealizationFunctor (r + 1)).map (weakArrowCofiberEquivalence q).inv)) :=
@@ -46,7 +46,7 @@ theorem weakArrowMultiAdditivityMap_localized_isIso
   infer_instance
 
 /-- 第一射影は同じ補完の元の subobject 評価である。 -/
-lemma weakArrowMultiAdditivityMap_fst {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakArrowMultiAdditivityMap_fst {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     weakArrowMultiAdditivityMap q r ≫ fst _ _ =
       (multiRealizationFunctor (r + 1)).map (weakArrowCofiberEquivalence q).inv ≫
         (multiRealizationFunctor (r + 1)).map
@@ -57,7 +57,7 @@ lemma weakArrowMultiAdditivityMap_fst {B C : _root_.SerrePositivity.InfinityCate
       (CartesianMonoidalCategory.lift_fst _ _))
 
 /-- 第二射影は同じ補完の元の quotient 評価である。 -/
-lemma weakArrowMultiAdditivityMap_snd {B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C) (r : ℕ) :
+lemma weakArrowMultiAdditivityMap_snd {B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C) (r : ℕ) :
     weakArrowMultiAdditivityMap q r ≫ snd _ _ =
       (multiRealizationFunctor (r + 1)).map (weakArrowCofiberEquivalence q).inv ≫
         (multiRealizationFunctor (r + 1)).map

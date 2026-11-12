@@ -10,13 +10,13 @@ public import SerrePositivity.KST.SConstruction.DGGluingAxesYonedaHomZero
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory Limits DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory Limits DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (zc : C) (hc : IsZero (ForgetEnrichment.of (Complex R) zc))
   (zd : D) (hd : IsZero (ForgetEnrichment.of (Complex R) zd))
-  (X : DGGluingObject R C D M)
-local notation "G" => DGGluingObject R C D M
+  (X : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M)
+local notation "G" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "A" => dgGluingRightAxisObject R C D M zc X.right
 local notation "B" => dgGluingLeftAxisObject R C D M zd X.left
 local notation "Z" => dgGluingRightAxisObject R C D M zc zd
@@ -27,8 +27,8 @@ def dgGluingAxesTriangleLift (Y : G)
     (f : ForgetEnrichment.of (Complex R) A ⟶ ForgetEnrichment.of (Complex R) Y)
     (g : ForgetEnrichment.of (Complex R) Y ⟶ ForgetEnrichment.of (Complex R) B)
     (t : GradedHom R (representable R A) (representable R B) (-1)) :
-    SSet.Truncated.Edge.CompStruct (dgClosedEdge R G f) (dgClosedEdge R G g)
-      (dgClosedEdge R G (0 : ForgetEnrichment.of (Complex R) A ⟶
+    SSet.Truncated.Edge.CompStruct (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R G f) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R G g)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge R G (0 : ForgetEnrichment.of (Complex R) A ⟶
         ForgetEnrichment.of (Complex R) B)) :=
   dgClosedTriangleHomIsoLift (dgYoneda R G) f g 0
     (dgYonedaIso R A (representable R B)).symm rfl t (by

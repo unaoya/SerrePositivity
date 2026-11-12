@@ -16,7 +16,7 @@ noncomputable section
 universe u
 open CategoryTheory Limits MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance companionBKSectionSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -37,8 +37,8 @@ lemma circleCompanionLoopPointMap_ι (z : Sp.{u} _⦋0⦌) :
 /-- companion の BK 点の中央射影は、指定した BK パラメーター上の同じ円の射の評価。 -/
 lemma circleCompanionBKEndPointMap_central (z : Sp.{u} _⦋0⦌) :
     circleCompanionBKEndPointMap z ≫
-      weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-        (simplicialHomDiagram (pointLoopDiagram
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram (pointLoopDiagram
           (nativeCotensorInput PointedSimplicialSet.circle z).val)
           (cotensor PointedSimplicialSet.circle
             (nativeCotensorInput PointedSimplicialSet.circle z).val)) (AsSmall.up.obj .one) =
@@ -77,26 +77,26 @@ lemma circleCompanionBKParameter_rightEdge (z : Sp.{u} _⦋0⦌) :
     simpa only [Category.assoc] using h
   rw [he, SSet.const_comp]
   exact congrArg (fun x ↦ SSet.const (X := (Δ[1] : SSet.{u})) x)
-    (_root_.SerrePositivity.InfinityCategories.F1.Pointed.OmegaSpectrum.pointedMap_basepoint (circleEvaluationCompanionCircleMap z))
+    (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.pointedMap_basepoint (circleEvaluationCompanionCircleMap z))
 
 /-- companion の点を、元の固定 Hom cospan 上の全 BK 重みの切断として読む。 -/
 def circleCompanionBKSection (z : Sp.{u} _⦋0⦌) :
-    bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
-      simplicialHomDiagram
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan) ⟶
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
         (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
         (cotensor PointedSimplicialSet.circle
           (nativeCotensorInput PointedSimplicialSet.circle z).val) :=
-  (ρ_ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))).inv ≫
-    weightedSectionsUncurry (circleCompanionBKEndPointMap z)
+  (ρ_ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsUncurry (circleCompanionBKEndPointMap z)
 
 /-- companion の全切断の中央は、元の円の射の指定した BK パラメーターでの評価。 -/
 lemma circleCompanionBKSection_central (z : Sp.{u} _⦋0⦌) :
     (circleCompanionBKSection z).app (AsSmall.up.obj .one) =
       circleBKParameter.{u} ≫ (circleEvaluationCompanionCircleMap z).right := by
-  change (ρ_ ((bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj
+  change (ρ_ ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan)).obj
       (AsSmall.up.obj .one))).inv ≫ uncurry (circleCompanionBKEndPointMap z ≫
-        weightedSectionsπ (bousfieldKanWeight (AsSmall.{u} WalkingCospan))
-          (simplicialHomDiagram
+        _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSectionsπ (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} WalkingCospan))
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.simplicialHomDiagram
             (pointLoopDiagram (nativeCotensorInput PointedSimplicialSet.circle z).val)
             (cotensor PointedSimplicialSet.circle
               (nativeCotensorInput PointedSimplicialSet.circle z).val))

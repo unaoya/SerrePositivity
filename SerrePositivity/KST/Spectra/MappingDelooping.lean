@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.KanLoopLift
-public import SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchangeTarget
+public import SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchangeTarget
 public import SerrePositivity.KST.Spectra.PostMappingIsomorphism
 
 /-!
@@ -34,7 +34,7 @@ def mappingKanDelooping (A : PointedSimplicialSet.{u})
     PointedObject.basedHom A Y ⟶
       PointedObject.basedHom CirclePower.space.{u} (PointedObject.basedHom A Z) :=
   PointedObject.basedHomMap A (kanLoopLift a) ≫
-    (_root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space.{u} Z).hom
+    (_root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space.{u} Z).hom
 
 /-- 概要：写像空間への delooping 射は元の Ω 条件が同型なら全基点 π_* 同型。
 方針：標的の同型の後合成での保存と源の交換の厳密な同型を合成する。
@@ -43,18 +43,18 @@ def mappingKanDelooping (A : PointedSimplicialSet.{u})
 theorem mappingKanDelooping_piIsomorphism (A : PointedSimplicialSet.{u})
     {Y Z : PointedSimplicialSet.{u}} [KanComplex Y.right] [KanComplex Z.right]
     (a : Y ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} Z)
-    (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (mappingKanDelooping A a).right := by
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (PointedObject.basedHomMap A (kanLoopLift a)).right :=
+    (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (mappingKanDelooping A a).right := by
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (PointedObject.basedHomMap A (kanLoopLift a)).right :=
     PointedMapping.post_piIsomorphism A (kanLoopLift a) (kanLoopLift_piIsomorphism a ha)
-  let e := _root_.SerrePositivity.InfinityCategories.Kan.Pointed.InternalHomExchange.iso A CirclePower.space.{u} Z
+  let e := _root_.SerrePositivity.InfinityCategories.Project.PointedSpaces.InternalHomExchange.iso A CirclePower.space.{u} Z
   have : KanComplex ((ihom A).obj ((ihom CirclePower.space.{u}).obj Z)).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex A (PointedObject.basedHom CirclePower.space Z)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex A (PointedObject.basedHom CirclePower.space Z)
   have : KanComplex ((ihom CirclePower.space.{u}).obj ((ihom A).obj Z)).right :=
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.basedHom_kanComplex CirclePower.space (PointedObject.basedHom A Z)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.basedHom_kanComplex CirclePower.space (PointedObject.basedHom A Z)
   let e' : (PointedObject.basedHom A (PointedObject.basedHom CirclePower.space.{u} Z)).right ≅
       (PointedObject.basedHom CirclePower.space.{u} (PointedObject.basedHom A Z)).right :=
     PointedSimplicialSet.forget.mapIso e
-  have he : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism e.hom.right := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e'
+  have he : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism e.hom.right := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e'
   exact hp.comp he
 
 end

@@ -13,13 +13,13 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
-def normalizedTensorConeMappedHomotopy {C : SSet.{u + 1}} (F : dgNerve A (Complex A) ⟶ C) :
+def normalizedTensorConeMappedHomotopy {C : SSet.{u + 1}} (F : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ C) :
     SSet.Homotopy
-      (SSet.const (F.app (Opposite.op ⦋0⦌) ((dgNerve.vertexEquiv A (Complex A)).symm X)))
+      (SSet.const (F.app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X)))
       (normalizedTensorElementNerveDiagram A X Y ≫ F) where
   h := (normalizedTensorConeHomotopy A X Y).h ≫ F
   h₀ := by
@@ -35,12 +35,12 @@ def normalizedTensorConeMappedHomotopy {C : SSet.{u + 1}} (F : dgNerve A (Comple
     intro s
     exact False.elim s.1.property
 
-def normalizedTensorConeMappedFamilyHom {C : SSet.{u + 1}} (F : dgNerve A (Complex A) ⟶ C) :
-    FunctorHom
-      (SSet.const (F.app (Opposite.op ⦋0⦌) ((dgNerve.vertexEquiv A (Complex A)).symm X)))
+def normalizedTensorConeMappedFamilyHom {C : SSet.{u + 1}} (F : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A) ⟶ C) :
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
+      (SSet.const (F.app (Opposite.op ⦋0⦌) ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X)))
       (normalizedTensorElementNerveDiagram A X Y ≫ F) :=
   SSet.Truncated.HomotopyCategory.homMk
-    (functorEdgeOfSimplicialHomotopy (normalizedTensorConeMappedHomotopy A X Y F))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (normalizedTensorConeMappedHomotopy A X Y F))
 
 lemma normalizedTensorElementNerveDiagram_derived :
     normalizedTensorElementNerveDiagram A X Y ≫ complexSemifreeResolutionInfinity A =
@@ -52,9 +52,9 @@ lemma normalizedTensorElementNerveDiagram_derived :
   rfl
 
 def normalizedTensorConeDerivedFamilyHom :
-    FunctorHom
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom
       (SSet.const ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌)
-        ((dgNerve.vertexEquiv A (Complex A)).symm X)))
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve.vertexEquiv A (Complex A)).symm X)))
       (nerveMap (normalizedTensorElementDiagram A X Y) ≫ complexOrdinaryDerivedSource A) := by
   rw [← normalizedTensorElementNerveDiagram_derived A X Y]
   exact normalizedTensorConeMappedFamilyHom A X Y (complexSemifreeResolutionInfinity A)

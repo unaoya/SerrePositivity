@@ -28,15 +28,15 @@ variable {X Y Z : OmegaSpectrum.{u}} (p : Y ⟶ Z) {f g : X ⟶ Y}
 
 def postTrianglePrism : (Δ[2] : SSet.{u + 1}) ⊗ Δ[1] ⟶ Sp.{u} :=
   (Δ[2] ◁ SSet.yonedaEquiv.symm (postTriangleEdge p e).edge) ≫
-    compositionCorrespondenceEvaluation (coherentNerveVertex X) (coherentNerveEdge p)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceEvaluation (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p)
 
 lemma postTrianglePrism_first :
     (stdSimplex.δ (2 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ postTrianglePrism p e =
       (homotopy e).h := by
   rw [postTrianglePrism, ← Category.assoc, ← whisker_exchange, Category.assoc,
-    compositionCorrespondenceEvaluation_first, ← intervalMappingUncurry_precomp]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceEvaluation_first, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp]
   have he : SSet.yonedaEquiv.symm (postTriangleEdge p e).edge ≫
-      compositionCorrespondenceFirst (coherentNerveVertex X) (coherentNerveEdge p) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceFirst (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p) =
     SSet.yonedaEquiv.symm (intervalEdge e).edge := by
     rw [SSet.yonedaEquiv_symm_comp]
     exact congrArg SSet.yonedaEquiv.symm (postTriangleEdge_first p e)
@@ -46,21 +46,21 @@ lemma postTrianglePrism_first :
 lemma postTrianglePrism_last :
     (stdSimplex.δ (0 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ postTrianglePrism p e =
       fst (Δ[1] : SSet.{u + 1}) Δ[1] ≫
-        SSet.yonedaEquiv.symm (coherentNerveEdge p).edge := by
+        SSet.yonedaEquiv.symm (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p).edge := by
   rw [postTrianglePrism, ← Category.assoc, ← whisker_exchange, Category.assoc,
-    compositionCorrespondenceEvaluation_last, ← Category.assoc, whiskerLeft_fst]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceEvaluation_last, ← Category.assoc, whiskerLeft_fst]
   rfl
 
 lemma postTrianglePrism_diagonal :
     (stdSimplex.δ (1 : Fin 3) ▷ (Δ[1] : SSet.{u + 1})) ≫ postTrianglePrism p e =
       (homotopy (postEdge p e)).h := by
   have he : SSet.yonedaEquiv.symm (postTriangleEdge p e).edge ≫
-      compositionCorrespondenceDiagonal (coherentNerveVertex X) (coherentNerveEdge p) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceDiagonal (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex X) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge p) =
     SSet.yonedaEquiv.symm (intervalEdge (postEdge p e)).edge := by
     rw [SSet.yonedaEquiv_symm_comp]
     exact congrArg SSet.yonedaEquiv.symm (postTriangleEdge_diagonal p e)
   rw [postTrianglePrism, ← Category.assoc, ← whisker_exchange, Category.assoc,
-    ← compositionCorrespondenceDiagonal_uncurry, ← intervalMappingUncurry_precomp, he]
+    ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.compositionCorrespondenceDiagonal_uncurry, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry_precomp, he]
   exact (homotopy_map _).symm
 
 lemma homotopy_map_congr {f₀ g₀ f₁ g₁ : X ⟶ Y}
@@ -68,7 +68,7 @@ lemma homotopy_map_congr {f₀ g₀ f₁ g₁ : X ⟶ Y}
     (e₁ : (mappingSpace X Y).Edge (vertexOfHom f₁) (vertexOfHom g₁))
     (h : e₀.edge = e₁.edge) : (homotopy e₀).h = (homotopy e₁).h := by
   exact (homotopy_map _).trans
-    ((congrArg (fun z ↦ intervalMappingUncurry (SSet.yonedaEquiv.symm z))
+    ((congrArg (fun z ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.intervalMappingUncurry (SSet.yonedaEquiv.symm z))
       (intervalEdge_congr _ _ h)).trans (homotopy_map _).symm)
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumMappingPath

@@ -19,11 +19,11 @@ universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory MonoidalCategory SerrePositivity.InfinityCategories
 open SerrePositivity.SimplicialModel
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def dkHammockColimitComparisonIso (X Y : C.category) :
     AnodyneHomotopy.anodyneQ.obj (localizationHom C X Y) ≅
-      AnodyneHomotopy.anodyneQ.obj (Hammock.colimitGraph C.weakEquivalences X Y) := by
+      AnodyneHomotopy.anodyneQ.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y) := by
   have := Hammock.anodyneQ_map_isIso_of_weak (freeHammockDiagonalComparison C X Y)
     (freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y)
   have := Hammock.anodyneQ_map_isIso_of_weak (freeHammockDiagonalAugmentation C X Y)
@@ -44,8 +44,8 @@ lemma dkHammockColimitComparisonIso_fac (X Y : C.category) :
 def dkHammockProductComparisonIso (X Y Z : C.category) :
     AnodyneHomotopy.anodyneQ.obj (localizationHom C X Y ⊗ localizationHom C Y Z) ≅
       AnodyneHomotopy.anodyneQ.obj
-        (Hammock.colimitGraph C.weakEquivalences X Y ⊗
-          Hammock.colimitGraph C.weakEquivalences Y Z) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y ⊗
+          _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences Y Z) := by
   have := Hammock.anodyneQ_map_isIso_of_weak
     (freeHammockDiagonalComparison C X Y ⊗ₘ freeHammockDiagonalComparison C Y Z)
     (Hammock.weakTensor (freeHammockDiagonalComparison_isWeakHomotopyEquivalence C X Y)
@@ -76,7 +76,7 @@ lemma dkHammockComparison_composition (X Y Z : C.category) :
     AnodyneHomotopy.anodyneQ.map (localizationComposition C X Y Z) ≫
         (dkHammockColimitComparisonIso C X Z).hom =
       (dkHammockProductComparisonIso C X Y Z).hom ≫
-        AnodyneHomotopy.anodyneQ.map (Hammock.colimitComposition C.weakEquivalences X Y Z) := by
+        AnodyneHomotopy.anodyneQ.map (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitComposition C.weakEquivalences X Y Z) := by
   let Q := AnodyneHomotopy.anodyneQ
   have := Hammock.anodyneQ_map_isIso_of_weak
     (freeHammockDiagonalComparison C X Y ⊗ₘ freeHammockDiagonalComparison C Y Z)

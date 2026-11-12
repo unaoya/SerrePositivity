@@ -25,7 +25,7 @@ theorem dgKappaSuspensionInputMap_id :
     dgKappaSuspensionInputMap R D D I I (DGKappaSuspensionMapData.id R D I) =
       𝟙 (dgKappaSuspensionKInput R D I) := by
   let C₀ := DGCategoryCellResolution.Source R (DGKappaCone R D I)
-  let S₀ := resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+  let S₀ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
   apply ULift.ext
   change DGQuotient.quotientDGFunctor R C₀ C₀ (DGFunctor.id C₀) S₀ S₀ _ = DGFunctor.id _
   apply (DGQuotient.universalEquiv R C₀ S₀ (DGQuotient.QuotientObject C₀ S₀)).injective
@@ -43,12 +43,12 @@ variable (E F : Type v) [DGCategory R E] [DGCategory R F] [Small.{u} E] [Small.{
 
 /-- 元の懸垂入力射は、商の同じ標準 ε を全次数 −1 の元として厳密に保持する。 -/
 theorem dgKappaSuspensionInputMap_epsilon
-    (b : resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :
+    (b : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) :
     (((dgKappaSuspensionInputMap R D E I J M).down.map ⟨b.val⟩ ⟨b.val⟩).f (-1)
       (DGQuotient.epsilonElement R (DGCategoryCellResolution.Source R (DGKappaCone R D I))
-        (resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) b)) =
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)) b)) =
       DGQuotient.epsilonElement R (DGCategoryCellResolution.Source R (DGKappaCone R E J))
-        (resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J))
         ⟨M.resolved.obj b.val,
           dgKappaSuspensionMap_preservesNullObjects R D E I J M b.val b.property⟩ :=
   DGQuotient.quotientDGFunctor_epsilon R _ _ _ _ _ _ b
@@ -60,9 +60,9 @@ theorem dgKappaSuspensionInputMap_comp :
   let C₀ := DGCategoryCellResolution.Source R (DGKappaCone R D I)
   let C₁ := DGCategoryCellResolution.Source R (DGKappaCone R E J)
   let C₂ := DGCategoryCellResolution.Source R (DGKappaCone R F K)
-  let S₀ := resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
-  let S₁ := resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J)
-  let S₂ := resolvedDGNullObjects R (DGKappaCone R F K) (dgKappaConePerfectObjects R F K)
+  let S₀ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R D I) (dgKappaConePerfectObjects R D I)
+  let S₁ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R E J) (dgKappaConePerfectObjects R E J)
+  let S₂ := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGKappaCone R F K) (dgKappaConePerfectObjects R F K)
   let qM := DGQuotient.quotientDGFunctor R C₀ C₁ M.resolved S₀ S₁
     (dgKappaSuspensionMap_preservesNullObjects R D E I J M)
   let qN := DGQuotient.quotientDGFunctor R C₁ C₂ N.resolved S₁ S₂

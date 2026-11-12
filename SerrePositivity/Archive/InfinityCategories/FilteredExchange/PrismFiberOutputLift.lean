@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PrismFiberOutputFunctor
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.UniverseDownMappedIsoCancellation
-public import SerrePositivity.InfinityCategories.F1.Universe.FunctorSpace
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FunctorSpace
 
 /-!
 概要：既存の prism 出力を、元の fiber の持ち上げの関手空間への一つの単体的写像に表示する。

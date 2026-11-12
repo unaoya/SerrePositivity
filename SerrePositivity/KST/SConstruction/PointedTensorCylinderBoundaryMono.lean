@@ -15,20 +15,20 @@ open Spectra
 
 /-- 二つの同じ X の余積から、同じ自由点つき境界の右 smash への実同型。 -/
 def pointedTensorBoundaryCoproductIso (X : PointedSimplicialSet.{u}) :
-    X ⨿ X ≅ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} ⊗ X :=
+    X ⨿ X ≅ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary.{u} ⊗ X :=
   (coprodIsCoprod X X).coconePointUniqueUpToIso (pointedTensorBoundaryIsColimit X)
 
 /-- 元の時刻一側の包含は、同じ境界の端点成分を回収する。 -/
 lemma pointedTensorBoundaryCoproductIso_inl (X : PointedSimplicialSet.{u}) :
     (coprod.inl : X ⟶ X ⨿ X) ≫ (pointedTensorBoundaryCoproductIso X).hom =
-      (λ_ X).inv ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryEnd.{u} ▷ X :=
+      (λ_ X).inv ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryEnd.{u} ▷ X :=
   IsColimit.comp_coconePointUniqueUpToIso_hom (coprodIsCoprod X X)
     (pointedTensorBoundaryIsColimit X) ⟨WalkingPair.left⟩
 
 /-- 元の時刻零側の包含は、同じ境界の端点成分を回収する。 -/
 lemma pointedTensorBoundaryCoproductIso_inr (X : PointedSimplicialSet.{u}) :
     (coprod.inr : X ⟶ X ⨿ X) ≫ (pointedTensorBoundaryCoproductIso X).hom =
-      (λ_ X).inv ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeBoundaryStart.{u} ▷ X :=
+      (λ_ X).inv ≫ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeBoundaryStart.{u} ▷ X :=
   IsColimit.comp_coconePointUniqueUpToIso_hom (coprodIsCoprod X X)
     (pointedTensorBoundaryIsColimit X) ⟨WalkingPair.right⟩
 
@@ -51,7 +51,7 @@ instance pointedTensorCylinderBoundary_mono (X : PointedSimplicialSet.{u}) :
   rw [pointedTensorCylinderBoundary_factor]
   change Mono ((pointedTensorBoundaryCoproductIso X).hom.right ≫
     (pointedTensorBoundaryInclusion.{u} ▷ X).right)
-  let i : X ⨿ X ⟶ _root_.SerrePositivity.InfinityCategories.F1.Pointed.freeIntervalBoundary.{u} ⊗ X := (pointedTensorBoundaryCoproductIso X).hom
+  let i : X ⨿ X ⟶ _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.freeIntervalBoundary.{u} ⊗ X := (pointedTensorBoundaryCoproductIso X).hom
   let _ : IsSplitMono i.right := IsSplitMono.mk'
     ⟨(pointedTensorBoundaryCoproductIso X).inv.right,
       congrArg Under.Hom.right (pointedTensorBoundaryCoproductIso X).hom_inv_id⟩

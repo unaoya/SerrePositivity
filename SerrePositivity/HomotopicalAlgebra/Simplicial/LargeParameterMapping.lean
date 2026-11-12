@@ -2,7 +2,7 @@ module
 public import Mathlib.CategoryTheory.Monoidal.Closed.FunctorToTypes
 
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.LargeParameterHomotopy
-public import SerrePositivity.InfinityCategories.Simplicial.BoundaryGluing
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing
 
 /-!
 # 大きいパラメータを持つ写像空間で互換な全面を充填する
@@ -57,23 +57,23 @@ instance boundaryMono (K : SSet.{r}) (d : ℕ) : Mono (K ◁ (SSet.boundary.{r} 
           (fun z : K.obj n × (SSet.stdSimplex.{r}.obj (SimplexCategory.mk d)).obj n => z.2) h)
   exact NatTrans.mono_of_mono_app _
 
-variable {P : SSet.{v}} (hp : UniverseLift.BoundaryFillers P) (K : SSet.{max w v})
+variable {P : SSet.{v}} (hp : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers P) (K : SSet.{max w v})
 
 def fill (d : ℕ)
-    (b : (SSet.boundary.{max w v} d).toSSet ⟶ (ihom K).obj (UniverseLift.obj.{w} P)) :
+    (b : (SSet.boundary.{max w v} d).toSSet ⟶ (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) :
     SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk d) ⟶
-      (ihom K).obj (UniverseLift.obj.{w} P) :=
+      (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) :=
   curry (LargeParameterExtension.extend hp (K ◁ (SSet.boundary.{max w v} d).ι) (uncurry b))
 
 lemma fill_boundary (d : ℕ)
-    (b : (SSet.boundary.{max w v} d).toSSet ⟶ (ihom K).obj (UniverseLift.obj.{w} P)) :
+    (b : (SSet.boundary.{max w v} d).toSSet ⟶ (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) :
     (SSet.boundary.{max w v} d).ι ≫ fill hp K d b = b := by
   apply uncurry_injective
   rw [uncurry_natural_left, fill, uncurry_curry, LargeParameterExtension.extend_initial]
 
 include hp in
 /-- Boundary data in the mapping space retain all maps on the whole parameter K. -/
-lemma fillers : UniverseLift.BoundaryFillers ((ihom K).obj (UniverseLift.obj.{w} P)) :=
+lemma fillers : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers ((ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P)) :=
   fun d b => ⟨fill hp K d b, fill_boundary hp K d b⟩
 
 /- 旧宣言の技術注記：
@@ -87,23 +87,23 @@ Fill a compatible collection of already specified global faces in any dimension 
 -/
 def fillFaces {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk (n + 1)) ⟶
-      (ihom K).obj (UniverseLift.obj.{w} P))) (hf : BoundaryGluing.StandardCompatible f) :
+      (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P))) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible f) :
     SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk (n + 2)) ⟶
-      (ihom K).obj (UniverseLift.obj.{w} P) :=
-  fill hp K (n + 2) (BoundaryGluing.standardDesc f hf)
+      (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P) :=
+  fill hp K (n + 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc f hf)
 
 lemma fillFaces_face {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk (n + 1)) ⟶
-      (ihom K).obj (UniverseLift.obj.{w} P))) (hf : BoundaryGluing.StandardCompatible f)
+      (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P))) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible f)
     (k : Fin (n + 3)) :
     SSet.stdSimplex.δ k ≫ fillFaces hp K f hf = f k := by
   rw [← SSet.boundary.ι_ι, Category.assoc, fillFaces, fill_boundary,
-    BoundaryGluing.standardDesc_fac]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.standardDesc_fac]
 
 /-- The exact prescribed face is retained as a map on K, before currying. -/
 lemma fillFaces_uncurry_face {n : ℕ}
     (f : Fin (n + 3) → (SSet.stdSimplex.{max w v}.obj (SimplexCategory.mk (n + 1)) ⟶
-      (ihom K).obj (UniverseLift.obj.{w} P))) (hf : BoundaryGluing.StandardCompatible f)
+      (ihom K).obj (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} P))) (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing.StandardCompatible f)
     (k : Fin (n + 3)) :
     K ◁ SSet.stdSimplex.δ k ≫ uncurry (fillFaces hp K f hf) = uncurry (f k) := by
   rw [← uncurry_natural_left, fillFaces_face]

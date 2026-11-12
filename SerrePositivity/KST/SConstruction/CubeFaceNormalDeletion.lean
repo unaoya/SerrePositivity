@@ -23,7 +23,7 @@ def cubeFaceNormalDelete : {n m : ℕ} → CubeFaceNormal n (m + 1) →
 lemma cubeFaceNormalDelete_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 1))
     (i : Fin (m + 1)) :
     cubeFaceDeletionResultVertex (cubeFaceNormalDelete d i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy m i ∘ cubeFaceNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy m i ∘ cubeFaceNormalVertex d := by
   induction m generalizing n with
   | zero =>
     have hi : i = 0 := Fin.ext (by omega)
@@ -35,20 +35,20 @@ lemma cubeFaceNormalDelete_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 1))
       refine Fin.cases ?_ (fun i => ?_) i
       · funext x j
         simp [cubeFaceNormalDelete, cubeFaceDeletionResultVertex, cubeFaceNormalVertex,
-          _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+          _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
       · funext x
         change cubeFaceDeletionResultVertex
           (cubeFaceDeletionResultPoint b (cubeFaceNormalDelete d i)) x = _
         rw [cubeFaceDeletionResultPoint_vertex]
         change Fin.cons b (cubeFaceDeletionResultVertex (cubeFaceNormalDelete d i) x) =
-          _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (m + 1) i.succ (Fin.cons b (cubeFaceNormalVertex d x))
+          _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (m + 1) i.succ (Fin.cons b (cubeFaceNormalVertex d x))
         rw [ih d i, cubeVertexDegeneracy_cons]
         rfl
     | keep d =>
       refine Fin.cases ?_ (fun i => ?_) i
       · funext x j
         simp [cubeFaceNormalDelete, cubeFaceDeletionResultVertex, cubeFaceNormalVertex,
-          _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy]
+          _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy]
         rfl
       · funext x
         change cubeFaceDeletionResultVertex
@@ -56,7 +56,7 @@ lemma cubeFaceNormalDelete_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 1))
         rw [cubeFaceDeletionResultKeep_vertex]
         change Fin.cons (x 0)
           (cubeFaceDeletionResultVertex (cubeFaceNormalDelete d i) (fun j => x j.succ)) =
-            _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexDegeneracy (m + 1) i.succ
+            _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexDegeneracy (m + 1) i.succ
               (Fin.cons (x 0) (cubeFaceNormalVertex d (fun j => x j.succ)))
         rw [ih d i, cubeVertexDegeneracy_cons]
         rfl

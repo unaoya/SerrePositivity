@@ -19,14 +19,14 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 /-- 段の境界比較は点つき射でもある。 -/
 def pointedStep (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (n : ℕ) :
     PointedObject.basedHom (X.level n).space (Y.level n).space ⟶
-      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.level (n + 1)).space :=
+      PointedObject.basedHom (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.level (n + 1)).space :=
   suspensionHom (X.level n).space (Y.level n).space ≫
-    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension (X.level n).space) (Y.sigma n)
+    PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension (X.level n).space) (Y.sigma n)
 
 /-- 零写像を基点とする、元の整合写像空間。 -/
 def pointedSpace (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) : PointedSimplicialSet.{u} :=
   Under.mk (lift X Y (fun n ↦ (PointedObject.basedHom (X.level n).space (Y.level n).space).hom)
-    (fun n ↦ (Under.w (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space)).trans
+    (fun n ↦ (Under.w (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space)).trans
       (Under.w (pointedStep X Y n)).symm))
 
 /-- 基点を入れても元の Kan な整合写像単体集合を保つ。 -/
@@ -41,7 +41,7 @@ def pointedEvaluation (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (n : ℕ) :
 @[reassoc]
 lemma pointedEvaluation_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) (n : ℕ) :
     pointedEvaluation X Y (n + 1) ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.prePointed (X.sigma n) (Y.level (n + 1)).space =
+        _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.prePointed (X.sigma n) (Y.level (n + 1)).space =
       pointedEvaluation X Y n ≫ pointedStep X Y n := by
   apply Under.UnderMorphism.ext
   exact evaluation_condition X Y n
@@ -49,7 +49,7 @@ lemma pointedEvaluation_condition (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) 
 /-- 点つき整合族を元の点つき全写像空間へ持ち上げる。 -/
 def pointedLift (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {A : PointedSimplicialSet.{u}}
     (f : ∀ n, A ⟶ PointedObject.basedHom (X.level n).space (Y.level n).space)
-    (hf : ∀ n, (f (n + 1)).right ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+    (hf : ∀ n, (f (n + 1)).right ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       (f n).right ≫ step X Y n) : A ⟶ pointedSpace X Y :=
   Under.homMk (lift X Y (fun n ↦ (f n).right) hf) (by
     apply hom_ext X Y
@@ -61,7 +61,7 @@ def pointedLift (X : OmegaSpectrum.{u}) (Y : KanSequence.{u}) {A : PointedSimpli
 lemma pointedLift_evaluation (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
     {A : PointedSimplicialSet.{u}}
     (f : ∀ n, A ⟶ PointedObject.basedHom (X.level n).space (Y.level n).space)
-    (hf : ∀ n, (f (n + 1)).right ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
+    (hf : ∀ n, (f (n + 1)).right ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (X.sigma n) (Y.level (n + 1)).space =
       (f n).right ≫ step X Y n) (n : ℕ) :
     pointedLift X Y f hf ≫ pointedEvaluation X Y n = f n := by
   apply Under.UnderMorphism.ext

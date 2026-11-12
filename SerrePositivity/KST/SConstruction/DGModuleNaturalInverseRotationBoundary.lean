@@ -13,10 +13,10 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalInverseRotationCa
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
   {P : Type (max (u + 1) v)} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "FS" => F.comp (moduleShiftDG R D 1)
 local notation "GS" => G.comp (moduleShiftDG R D 1)
@@ -35,12 +35,12 @@ local notation "ν" => dgModuleNaturalConeInr R D (CF) (FS) (δ)
 lemma dgModuleNaturalInverseRotationConeShift_inr (x : P) :
     moduleConeInr R D
       (dgModuleNaturalConeArrow R D ((CF).comp (S)) ((FS).comp (S))
-        (dgStrictNatTransPostcomp (δ) (S)) x) ≫
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)) x) ≫
       dgModuleNaturalConeArrow R D (L) ((CD).comp (S)) (α) x =
         moduleShiftMap R D (-1)
           (moduleConeInr R D (dgModuleNaturalConeArrow R D (CF) (FS) (δ) x)) := by
   exact (dgModuleNaturalConeDesc_inr R D ((CF).comp (S)) ((FS).comp (S)) ((CD).comp (S))
-    (dgStrictNatTransPostcomp (δ) (S)) (dgStrictNatTransPostcomp (ν) (S))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (δ) (S)) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgStrictNatTransPostcomp (ν) (S))
     (dgModuleNaturalConeShiftNull R D (CF) (FS) (δ) (-1))
     (dgModuleNaturalConeShiftComparison_boundary R D (CF) (FS) (δ) (-1))
     (dgModuleNaturalConeShiftNull_naturality R D (CF) (FS) (δ) (-1)) x).trans

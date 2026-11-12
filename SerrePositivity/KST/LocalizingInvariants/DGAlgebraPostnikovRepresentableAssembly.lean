@@ -22,52 +22,52 @@ namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 
 private def nativeRepresentableComparison_of_frameComparison
     (R : Type u) [CommRing R] (A : Mon (Complex R))
-    (e : FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
-    FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
-      (homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
   localizationFactorizationIso
     ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R))
     (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R)
-    (IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
     (multiplicativeCellMappingLocalizationChosenTriangleIso R A ≪≫ e)
 
 private lemma nativeRepresentableComparison_precomp
     (R : Type u) [CommRing R] (A : Mon (Complex R))
-    (e : FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+    (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-        homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
-    FunctorIso.precomp (nativeRepresentableComparison_of_frameComparison R A e)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (nativeRepresentableComparison_of_frameComparison R A e)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R)) =
         multiplicativeCellMappingLocalizationChosenTriangleIso R A ≪≫ e := by
   apply Iso.ext
-  let h := localizationPre_fullyFaithful (Y := SpaceInfinity.{u + 1})
+  let h := localizationPre_fullyFaithful (Y := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u + 1})
     ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R))
     (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R)
-    (IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
   exact h.toHoFullyFaithful.map_preimage _
 
 private lemma postnikovInfinityCone_isLimit_of_nativeHomComparison
     (R : Type u) [CommRing R] (B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
     (n : ℤ) (hn : 0 ≤ n)
-    (e : ∀ A : Mon (Complex R), FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
-      (homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
-    IsLimitCone (postnikovInfinityCone R B n hn) := by
+    (e : ∀ A : Mon (Complex R), _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (postnikovInfinityCone R B n hn) := by
   apply (postnikovInfinityCone_isLimit_iff_cellTests R B n hn).mpr
   intro A
   exact (postnikovCellLocalizationCone_isLimit R A B n hn).of_functorIso
-    (FunctorIso.precomp ((e A) ≪≫ F2.Compact.homInfinityCovariant_covariantIso _)
-      (JoinCone.ulift.{u + 1, u + 2} (postnikovInfinityCone R B n hn)).val)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp ((e A) ≪≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.homInfinityCovariant_covariantIso _)
+      (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.JoinCone.ulift.{u + 1, u + 2} (postnikovInfinityCone R B n hn)).val)
 
 private lemma postnikovInfinityCone_isLimit_of_frameHomComparison
     (R : Type u) [CommRing R] (B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
     (n : ℤ) (hn : 0 ≤ n)
     (e : ∀ A : Mon (Complex R),
-      FunctorIso (kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanDiagramCoherentNerve (nativeCellChosenRightInfinityKanFunctor R A))
         ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R) ≫
-          homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
-    IsLimitCone (postnikovInfinityCone R B n hn) :=
+          _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A)))) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (postnikovInfinityCone R B n hn) :=
   postnikovInfinityCone_isLimit_of_nativeHomComparison R B n hn
     (fun A => nativeRepresentableComparison_of_frameComparison R A (e A))
 
@@ -76,19 +76,19 @@ private lemma postnikovInfinityCone_isLimit_of_frameHomComparison
 /-- 実 AW 降下関手は、指定局所化の元の cell 源からの共変 Hom と全自然同型。 -/
 def multiplicativeCellMappingLocalizationHomInfinityIso
     (R : Type u) [CommRing R] (A : Mon (Complex R)) :
-    FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
-      (homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (multiplicativeCellMappingLocalizationFunctor R A)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.homInfinityCovariant (quasiIsoInfinityVertex R (cellResolution R A))) :=
   localizationFactorizationIso
     ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R))
     (ULift.up.{u + 2, u + 1} '' quasiIsoInfinityEdges R)
-    (IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.IsLocalization.ulift.{u + 1, u + 2} (quasiIsoInfinity_isLocalization R))
     (multiplicativeCellMappingLocalizationChosenTriangleIso R A ≪≫
       nativeCellChosenRightHomInfinityIso R A)
 
 /-- 延長した全同型の前合成は、実 E2 比較の同じ指定二胞体を厳密に回収する。 -/
 lemma multiplicativeCellMappingLocalizationHomInfinityIso_precomp
     (R : Type u) [CommRing R] (A : Mon (Complex R)) :
-    FunctorIso.precomp (multiplicativeCellMappingLocalizationHomInfinityIso R A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (multiplicativeCellMappingLocalizationHomInfinityIso R A)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R)) =
         multiplicativeCellMappingLocalizationChosenTriangleIso R A ≪≫
           nativeCellChosenRightHomInfinityIso R A :=
@@ -97,7 +97,7 @@ lemma multiplicativeCellMappingLocalizationHomInfinityIso_precomp
 /-- 同じ前合成公式は、選択 frame の中間表示を外した元の AW 比較を回収する。 -/
 lemma multiplicativeCellMappingLocalizationHomInfinityIso_precomp_aw
     (R : Type u) [CommRing R] (A : Mon (Complex R)) :
-    FunctorIso.precomp (multiplicativeCellMappingLocalizationHomInfinityIso R A)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (multiplicativeCellMappingLocalizationHomInfinityIso R A)
       ((SSet.uliftFunctor.{u + 2, u + 1}).map (quasiIsoInfinityMap R)) =
         multiplicativeCellMappingLocalizationTriangleIso R A ≪≫
           multiplicativeCellMappingHomInfinityIso R A := by
@@ -110,7 +110,7 @@ lemma multiplicativeCellMappingLocalizationHomInfinityIso_precomp_aw
 使われ方：平方零微分摂動による Postnikov 拡大の ∞ 普遍性。 -/
 lemma postnikovInfinityCone_isLimit
     (R : Type u) [CommRing R] (B : Mon (Complex R)) [B.X.IsStrictlyLE 0]
-    (n : ℤ) (hn : 0 ≤ n) : IsLimitCone (postnikovInfinityCone R B n hn) :=
+    (n : ℤ) (hn : 0 ≤ n) : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsLimitCone (postnikovInfinityCone R B n hn) :=
   postnikovInfinityCone_isLimit_of_frameHomComparison R B n hn
     (fun A => nativeCellChosenRightHomInfinityIso R A)
 

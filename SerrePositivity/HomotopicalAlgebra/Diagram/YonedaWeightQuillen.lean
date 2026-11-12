@@ -23,9 +23,9 @@ open SerrePositivity.Reedy
 namespace SerrePositivity.DiagramModel.YonedaWeightQuillen
 variable (K : Type w) [SmallCategory K] {C : Type u} [Category.{w} C]
   [ModelCategory C] [IsLocallyPresentable.{w} C]
-  (IC JC : MorphismProperty C) [ModelGeneration.CofibrantlyGenerated.{w} IC JC]
+  (IC JC : MorphismProperty C) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} IC JC]
   [ModelCategory SSet.{w}]
-  (I J : MorphismProperty SSet.{w}) [ModelGeneration.CofibrantlyGenerated.{w} I J]
+  (I J : MorphismProperty SSet.{w}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{w} I J]
   (hcof : cofibrations SSet.{w} = MorphismProperty.monomorphisms _)
   (hfib : fibrations SSet.{w} = SSet.modelCategoryQuillen.J.{w}.rlp)
   (A : K ⥤ SimplexCategory ⥤ C)

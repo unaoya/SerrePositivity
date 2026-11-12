@@ -13,24 +13,24 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A]
 
 lemma complexRightConeData_hom_last_zero {n : ℕ}
-    {s : Simplex A (Complex A) n} {X : Complex A}
+    {s : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) n} {X : Complex A}
     (η : ComplexSimplexAugmentation A s X)
     (I : Finset (Fin (n + 2))) (a b : Fin (n + 2)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (hbl : b = Fin.last (n + 1)) (hk0 : k ≠ 0) :
     (complexRightConeData A η).hom I a b k hI ha hb hk = 0 := by
-  have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact PinchedHom.min_ne_last I hI
+  have han : a ≠ Fin.last (n + 1) := by rw [ha]; exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.min_ne_last I hI
   have hx : (complexRightConeData A η).obj a =
       s.obj ((Fin.last n).predAboveOrderHom a) := complexRightConeObj_ne_last A s X a han
   have hy : (complexRightConeData A η).obj b = X := by
     change complexRightConeObj A s X b = X
     rw [hbl, complexRightConeObj_last]
   have he := complexRightConeData_hom_last A η I a b k hI ha hb hk hbl
-  rw [closedNerveHom_of_ne _ k hk0] at he
-  exact eq_of_heq (he.trans (gradedHom_zero_heq (A := A) hx hy rfl).symm)
+  rw [_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveHom_of_ne _ k hk0] at he
+  exact eq_of_heq (he.trans (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.gradedHom_zero_heq (A := A) hx hy rfl).symm)
 
 end SerrePositivity.EInfinity.ComplexLimits

@@ -27,21 +27,21 @@ set_option backward.isDefEq.respectTransparency.types false
 使われ方：Goerss–Jardine VIII §1。正規化微分と実際の接続写像の符号付き比較。 -/
 theorem normalizedDifferential_connecting (K : SSet.{u})
     (Y : PointedSimplicialSet.{u}) [KanComplex Y.right] {n : ℕ}
-    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right)
+    (f : (K.skeleton (n + 3) : SSet.{u}) ⟶ (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right)
     (hf : ∀ t : (K.skeleton (n + 3) : SSet.{u}) _⦋n + 1⦌,
-      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)
+      yonedaEquiv.symm t ≫ f = SSet.const (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)
     (s : K.nonDegenerate (n + 3)) :
     (loopPositiveHomotopyEquiv Y (n + 1)).toAdditive
-        (_root_.SerrePositivity.InfinityCategories.Kan.NormalizedValueCochains.differential K
+        (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.NormalizedValueCochains.differential K
           (AddCommGrpCat.of (Additive
-            (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace Y).basepoint)))
-          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kan.SkeletalSphericalCochain.cochain f hf) s) =
+            (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).right (n + 1) (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace Y).basepoint)))
+          (n + 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.cochain f hf) s) =
       (-1 : ℤ) ^ (n + 3) • Additive.ofMul
         (SkeletalCellAttachment.stageFiberComponentEquiv K Y (n + 2)
-          (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyZero.equivPiZero
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyZero.equivPiZero
             (pointedConnectingZero (UnbasedPointedMapping.pre
               (UnbasedPointedMapping.skeletalInclusion K (n + 2)) Y)
-              ((_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹))) s) := by
+              ((_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (UnbasedPointedMapping.loopFamilySimplex Y f))⁻¹))) s) := by
   obtain ⟨H, hH⟩ := exists_extension K Y f
   have hc := congrArg (fun z ↦ (-1 : ℤ) ^ (n + 3) • Additive.ofMul
     (SkeletalCellAttachment.stageFiberComponentEquiv K Y (n + 2) z s))

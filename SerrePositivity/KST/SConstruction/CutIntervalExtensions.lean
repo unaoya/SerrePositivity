@@ -38,24 +38,24 @@ lemma cutLeftIntervalExtension_mem (n : ℕ) (k : Fin (n + 1)) (X : StableModel.
       change min a.val.down.val.2.val k.val = k.val
       exact min_eq_right (a.property.trans a.val.down.property)
   have he := sMap_evaluate_vertex (cutLeftIntervalRetraction n k) v (ComposableArrows.mk₀ a.val)
-  have hz : IsZeroVertex ((evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutLeftIntervalRetraction n k)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ a.val))).app (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v (Fin.last k.val)
-  exact (congrArg IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
 
 /-- Left 側の短い区間から支持部分圏への元の端点収縮による延長。 -/
 def cutLeftIntervalExtensionMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
     sConstruction (k.val) X.carrier ⟶ closedSubcategory (cutLeftSupport n k X) :=
-  fullSubcomplexLift (cutLeftSupport n k X).predicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (cutLeftSupport n k X).predicate
     (sMap X.carrier (cutLeftIntervalRetraction n k)) (cutLeftIntervalExtension_mem n k X)
 
 /-- Left 側の延長の包含は元の端点収縮による制限。 -/
 lemma cutLeftIntervalExtensionMap_inclusion (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
     cutLeftIntervalExtensionMap n k X ≫ (closedStableInclusion (cutLeftSupport n k X)).val =
       sMap X.carrier (cutLeftIntervalRetraction n k) :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- Left 側の短い区間から支持部分圏への完全な延長。 -/
 def cutLeftIntervalExtension (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
@@ -96,24 +96,24 @@ lemma cutRightIntervalExtension_mem (n : ℕ) (k : Fin (n + 1)) (X : StableModel
       change a.val.down.val.2.val - k.val = 0
       exact Nat.sub_eq_zero_of_le a.property
   have he := sMap_evaluate_vertex (cutRightIntervalRetraction n k) v (ComposableArrows.mk₀ a.val)
-  have hz : IsZeroVertex ((evaluateFunctorAt
+  have hz : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
       ((arNerveMap (cutRightIntervalRetraction n k)).app (Opposite.op ⦋0⦌)
         (ComposableArrows.mk₀ a.val))).app (Opposite.op ⦋0⦌) v.val) := by
     rw [ha]
     exact sConstructionVertex_diagonal_isZero v ((0 : Fin (n - k.val + 1)))
-  exact (congrArg IsZeroVertex he).mpr hz
+  exact (congrArg _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.IsZeroVertex he).mpr hz
 
 /-- Right 側の短い区間から支持部分圏への元の端点収縮による延長。 -/
 def cutRightIntervalExtensionMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
     sConstruction (n - k.val) X.carrier ⟶ closedSubcategory (cutRightSupport n k X) :=
-  fullSubcomplexLift (cutRightSupport n k X).predicate
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift (cutRightSupport n k X).predicate
     (sMap X.carrier (cutRightIntervalRetraction n k)) (cutRightIntervalExtension_mem n k X)
 
 /-- Right 側の延長の包含は元の端点収縮による制限。 -/
 lemma cutRightIntervalExtensionMap_inclusion (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
     cutRightIntervalExtensionMap n k X ≫ (closedStableInclusion (cutRightSupport n k X)).val =
       sMap X.carrier (cutRightIntervalRetraction n k) :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- Right 側の短い区間から支持部分圏への完全な延長。 -/
 def cutRightIntervalExtension (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :

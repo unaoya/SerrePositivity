@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.PointedSpanPushoutEnrichedFunctor
-public import SerrePositivity.InfinityCategories.Kan.SimplicialHomWhisker
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.SimplicialHomWhisker
 
 /-! # 元の自然変換による同じ実押し出し射の厳密な回収
 概要：全 Hom の押し出し作用から、元の自然変換による同じ通常の押し出し射を回収する。
@@ -60,10 +60,10 @@ lemma pointedSpanPushoutEnrichedFunctor_hom {X Y : PointedSpanDiagram.{u}} (t : 
   · rw [Category.assoc, pointedSpanPushoutHom_inl X Y]
     change eHomEquiv SSet t ≫ (pointedSpanProjection X Y .left ≫ _) = _
     rw [← Category.assoc, pointedSpanProjection_hom t .left,
-      _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_pre, pointedSpanPushoutInl_map t]
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialHom_pre, pointedSpanPushoutInl_map t]
   · rw [Category.assoc, pointedSpanPushoutHom_inr X Y]
     change eHomEquiv SSet t ≫ (pointedSpanProjection X Y .right ≫ _) = _
     rw [← Category.assoc, pointedSpanProjection_hom t .right,
-      _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Kan.simplicialHom_pre, pointedSpanPushoutInr_map t]
+      _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialHom_post, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.simplicialHom_pre, pointedSpanPushoutInr_map t]
 
 end SerrePositivity.KST.SConstruction

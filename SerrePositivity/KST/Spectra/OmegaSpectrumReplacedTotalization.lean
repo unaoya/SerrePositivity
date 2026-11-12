@@ -32,7 +32,7 @@ def replacedOrdinaryTotalizationComparison (X : CosimplicialObject OmegaSpectrum
 /-- 比較は零次数を含む各段の全基点 π 同型。 -/
 lemma replacedOrdinaryTotalizationComparison_levelwise
     (X : CosimplicialObject OmegaSpectrum.{u}) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((replacedOrdinaryTotalizationComparison X).app n).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((replacedOrdinaryTotalizationComparison X).app n).right :=
   CosimplicialSequenceReedyReplacement.comparison_levelwise (X ⋙ forgetToKan)
     (fun j ↦ (X.obj j).toKanSequence_omega) n
 

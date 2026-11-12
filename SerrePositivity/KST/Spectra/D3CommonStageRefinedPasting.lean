@@ -22,47 +22,47 @@ local instance d3RefinedPastingSpectrumCategory : SimplicialCategory OmegaSpectr
 
 /-- 元の同じ refined／実始点比較の、実段図式を保持する端点表示。 -/
 def commonChosenStageRefinedSourceNormalizedIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
-      (commonChosenStageLoopDiagramFamily n ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq (commonChosenStageRefinedSourceIso n)
-    (by rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
+      (commonChosenStageLoopDiagramFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (commonChosenStageRefinedSourceIso n)
+    (by rw [commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp])
     (commonChosenStageLoopDiagramFamily_source n).symm
 
 private lemma commonStageSourceCanonical_normalized (n : ℕ) :
-    F2.functorIsoOfEq (commonChosenStageSourceCanonicalIso.{u} n)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (commonChosenStageSourceCanonicalIso.{u} n)
       (commonChosenStageLoopDiagramFamily_source n).symm rfl =
     (commonChosenStageCanonicalDiagramIso n).postcomp
-      (loopDiagramEvaluation PointedKanInfinity 0 0) := by
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) := by
   unfold commonChosenStageSourceCanonicalIso
-  exact eq_of_heq ((F2.functorIsoOfEq_heq _ _ _).trans (F2.functorIsoOfEq_heq _ _ _))
+  exact eq_of_heq ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _))
 
 private lemma commonStageEndpointLoop_normalized (n : ℕ) :
-    F2.functorIsoOfEq (commonChosenStageEndpointLoopIso.{u} n)
-      (show coherentNerveMap commonRefinedEnriched ≫ coherentNerveMap (d3StageKanEnriched n) =
-        coherentNerveMap (commonRefinedStageKanEnriched n) from by
-          rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (commonChosenStageEndpointLoopIso.{u} n)
+      (show _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched n) from by
+          rw [commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp])
       (commonChosenStageLoopTarget_enriched n) = commonProjectionStructureQIso n := by
   have h : HEq (commonChosenStageEndpointLoopIso n) (commonStageLoopFunctorIso n) := by
     unfold commonChosenStageEndpointLoopIso
-    exact F2.functorIsoOfEq_heq _ _ _
+    exact _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _
   unfold commonProjectionStructureQIso
-  exact eq_of_heq ((F2.functorIsoOfEq_heq _ _ _).trans
-    (h.trans (F2.functorIsoOfEq_heq _ _ _).symm))
+  exact eq_of_heq ((_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).trans
+    (h.trans (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq_heq _ _ _).symm))
 
 /-- 元の同じ段比較と全図式始点比較の三角形は、指定右射影の同じ表示同型に一致する。 -/
 lemma commonChosenStageRefinedSourceNormalized_triangle (n : ℕ) :
     commonChosenStageRefinedSourceNormalizedIso.{u} n ≪≫
       (commonChosenStageCanonicalDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     commonProjectionStructureQIso n ≪≫ commonChosenStageCanonicalUnitIso n := by
   have h := d3FunctorIso_square_transport
     (commonChosenStageRefinedSourceIso n) (commonChosenStageSourceCanonicalIso n)
     (commonChosenStageEndpointLoopIso n)
     (d3PointedKanLoopSection_sourceIso.precomp
-      (commonChosenStageLoopDiagramFamily n ≫ loopDiagramEvaluation PointedKanInfinity 1 1))
-    (show coherentNerveMap commonRefinedEnriched ≫ coherentNerveMap (d3StageKanEnriched n) =
-      coherentNerveMap (commonRefinedStageKanEnriched n) from by
-        rw [commonRefinedStageKanEnriched, coherentNerveMap_comp])
+      (commonChosenStageLoopDiagramFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 1 1))
+    (show _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap commonRefinedEnriched ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (d3StageKanEnriched n) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched n) from by
+        rw [commonRefinedStageKanEnriched, _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_comp])
     (commonChosenStageLoopDiagramFamily_source n).symm
     (commonChosenStageLoopTarget_enriched n) rfl
     (commonChosenStageRefinedSourceIso_canonical_triangle n)
@@ -74,10 +74,10 @@ lemma commonChosenStageRefinedSourceNormalized_factorization (n : ℕ) :
     commonChosenStageRefinedSourceNormalizedIso.{u} n =
       (commonProjectionStructureQIso n ≪≫ commonChosenStageCanonicalUnitIso n) ≪≫
         ((commonChosenStageCanonicalDiagramIso n).postcomp
-          (loopDiagramEvaluation PointedKanInfinity 0 0)).symm := by
+          (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)).symm := by
   let a := commonChosenStageRefinedSourceNormalizedIso.{u} n
   let d := (commonChosenStageCanonicalDiagramIso.{u} n).postcomp
-    (loopDiagramEvaluation PointedKanInfinity 0 0)
+    (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)
   calc
     _ = (a ≪≫ d) ≪≫ d.symm := by
       simp only [a, Iso.trans_assoc, Iso.self_symm_id, Iso.trans_refl]
@@ -87,11 +87,11 @@ lemma commonChosenStageRefinedSourceNormalized_factorization (n : ℕ) :
 lemma commonChosenStageRefinedSourceNormalized_pasting (n : ℕ) :
     ((commonChosenStageRefinedSourceNormalizedIso.{u} n ≪≫
       (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
       (commonChosenStageLoopedCanonicalDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0)) ≪≫
       (commonChosenStageLoopImageComparison n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     (commonProjectionStructureRefinedIso n ≪≫ commonProjectionStructureLoopQIso n) ≪≫
       commonChosenStageCanonicalImageUnitIso n := by
   rw [commonChosenStageRefinedSourceNormalized_factorization]

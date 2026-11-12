@@ -22,7 +22,7 @@ lemma presentedPerfectDGBoundaryKanEnrichedFunctor_inclusion (r : ℕ)
         (((presentedPerfectDGBoundaryKanEnrichedFunctor A r).obj C).obj)
         (((presentedPerfectDGBoundaryKanEnrichedFunctor A r).obj D).obj) =
       (presentedPerfectDGBoundaryReducedEnrichedFunctor A r).map C D ≫
-        coaugmentedClosedFamilyMap Comparison.exInfinity Comparison.exInfinityUnit
+        coaugmentedClosedFamilyMap _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
           ((presentedPerfectDGBoundaryReducedEnrichedFunctor A r).obj C).obj
           ((presentedPerfectDGBoundaryReducedEnrichedFunctor A r).obj D).obj := by
   exact (Category.assoc _ _ _).trans
@@ -32,7 +32,7 @@ lemma presentedPerfectDGBoundaryKanEnrichedFunctor_inclusion (r : ℕ)
         ((presentedPerfectDGBoundaryPointedEnrichedFunctor A r).obj D))).trans
       ((Category.assoc _ _ _).symm.trans
         (congrArg (fun q => q ≫ coaugmentedClosedFamilyMap
-          Comparison.exInfinity Comparison.exInfinityUnit
+          _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
             ((presentedPerfectDGBoundaryReducedEnrichedFunctor A r).obj C).obj
             ((presentedPerfectDGBoundaryReducedEnrichedFunctor A r).obj D).obj)
           (presentedPerfectDGBoundaryReducedEnrichedFunctor_family A r C D))))
@@ -51,7 +51,7 @@ lemma presentedPerfectDGBoundaryKanUnit_action (r : ℕ) (C D : PerfDGInput.{u, 
     (presentedPerfectDGBoundaryKanEnrichedFunctor_inclusion A r C D)
   exact (congrArg (fun q => ((presentedPerfectDGBoundaryKanUnit A r C).right ▷
     (C ⟶[SSet.{max (u + 1) v}] D)) ≫ q) h).trans
-      ((coaugmentedClosedFamilyMap_action Comparison.exInfinity Comparison.exInfinityUnit
+      ((coaugmentedClosedFamilyMap_action _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit
         ((presentedPerfectDGBoundaryReducedEnrichedFunctor A r).map C D)).trans
           (congrArg (fun q => q ≫ (presentedPerfectDGBoundaryKanUnit A r D).right)
             (uncurry_curry (presentedPerfectDGBoundaryReducedAction A r C D))))

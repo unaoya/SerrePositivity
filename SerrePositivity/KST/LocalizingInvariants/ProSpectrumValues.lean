@@ -72,20 +72,20 @@ end SerrePositivity.KST.LocalizingInvariants.ProSpectrum
 
 namespace SerrePositivity.KST.LocalizingInvariants.ProValue
 open ProExcision
-variable (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u})
+variable (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u})
 
-def tower (A : Tower _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : ProSpectrum.Tower.{u} :=
+def tower (A : Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : ProSpectrum.Tower.{u} :=
   A.map (stableValueFunctor Φ)
 
-def map {A B : Tower _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : LevelHom A B) :
+def map {A B : Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : LevelHom A B) :
     ProSpectrum.LevelHom (tower Φ A) (tower Φ B) := f.map (stableValueFunctor Φ)
 
-def IsPiProZero (A : Tower _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}) : Prop := ProSpectrum.IsPiProZero (tower Φ A)
+def IsPiProZero (A : Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}) : Prop := ProSpectrum.IsPiProZero (tower Φ A)
 
-def IsPiProEquivalence {A B : Tower _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (f : LevelHom A B) : Prop :=
+def IsPiProEquivalence {A B : Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (f : LevelHom A B) : Prop :=
   ProSpectrum.IsPiProEquivalence (map Φ f)
 
-lemma piProEquivalence_of_proIso {A B : Tower _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {f : LevelHom A B}
+lemma piProEquivalence_of_proIso {A B : Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {f : LevelHom A B}
     (hf : IsProIso f) : IsPiProEquivalence Φ f :=
   ProSpectrum.piProEquivalence_of_proIso (hf.map (stableValueFunctor Φ))
 

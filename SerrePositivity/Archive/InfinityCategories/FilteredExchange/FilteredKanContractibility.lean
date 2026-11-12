@@ -1,9 +1,10 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.Filtered.FilteredInfinity
-public import SerrePositivity.InfinityCategories.Core.HornPointJoin
-public import SerrePositivity.InfinityCategories.Core.JoinTensor
-public import SerrePositivity.InfinityCategories.F1B.Homotopy.WeakContractibility
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.FilteredInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.HornPointJoin
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.JoinTensor
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.WeakContractibility
+public import Mathlib.Tactic.CrossRefAttribute
 
 /-!
 概要：Kan 複体では filtered 性と可縮 Kan 性が一致する。
@@ -26,24 +27,24 @@ namespace SerrePositivity.InfinityCategories.F2
 規約：Kan 性を明示的に仮定する。
 使われ方：filtered 空間の可縮性。 -/
 lemma isContractibleKan_of_isFilteredInfinity (C : SSet.{u}) [KanComplex C]
-    [IsFilteredInfinity C] : IsContractibleKan C := by
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity C] : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C := by
   intro n b
-  obtain ⟨c⟩ := IsFilteredInfinity.cocone_nonempty b
-  obtain ⟨F, hF⟩ := KanComplex.hornFilling ((finalHornPointJoinIso n).inv ≫ c.val)
-  have hG : joinMap (boundary n).ι (𝟙 Δ[0]) ≫
-      (joinStdSimplexIso n 0).hom ≫ F = c.val := by
-    rw [← Category.assoc, ← finalHornPointJoinIso_hom_ι, Category.assoc, ← hF]
-    exact (finalHornPointJoinIso n).hom_inv_id_assoc c.val
-  refine ⟨stdSimplex.map (PinchedHom.front n) ≫ F, ?_⟩
+  obtain ⟨c⟩ := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity.cocone_nonempty b
+  obtain ⟨F, hF⟩ := KanComplex.hornFilling ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso n).inv ≫ c.val)
+  have hG : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (boundary n).ι (𝟙 Δ[0]) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ F = c.val := by
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso_hom_ι, Category.assoc, ← hF]
+    exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.finalHornPointJoinIso n).hom_inv_id_assoc c.val
+  refine ⟨stdSimplex.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.front n) ≫ F, ?_⟩
   calc
-    (boundary n).ι ≫ stdSimplex.map (PinchedHom.front n) ≫ F =
-        joinInl (boundary n : SSet.{u}) Δ[0] ≫ c.val := by
+    (boundary n).ι ≫ stdSimplex.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.front n) ≫ F =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl (boundary n : SSet.{u}) Δ[0] ≫ c.val := by
       rw [← hG]
       simp only [← Category.assoc]
-      rw [joinInl_joinMap]
+      rw [_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl_joinMap]
       simp only [Category.assoc]
-      rw [← Category.assoc (joinInl _ _) (joinStdSimplexIso n 0).hom,
-        joinStdSimplexIso_rightPoint_inl]
+      rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl _ _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_inl]
     _ = b := c.property
 
 /-- 概要：可縮 Kan な ∞ 圏は filtered。
@@ -51,12 +52,12 @@ lemma isContractibleKan_of_isFilteredInfinity (C : SSet.{u}) [KanComplex C]
 規約：この方向は有限性を使わず任意形状の余錐を作る。
 使われ方：filtered 性の基本例と Kan 複体における逆方向。 -/
 lemma isFilteredInfinity_of_isContractibleKan {C : SSet.{u}} [Quasicategory C]
-    (hC : IsContractibleKan C) : IsFilteredInfinity C := by
-  have ht := (isContractibleKan_iff_trivialKanFibration C).1 hC
+    (hC : _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C) : _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity C := by
+  have ht := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.isContractibleKan_iff_trivialKanFibration C).1 hC
   constructor
   intro K _ f
-  have := ht.mem (joinInl K Δ[0]) inferInstance
-  have sq : CommSq f (joinInl K Δ[0]) (terminal.from C) (terminal.from _) :=
+  have := ht.mem (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl K Δ[0]) inferInstance
+  have sq : CommSq f (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl K Δ[0]) (terminal.from C) (terminal.from _) :=
     ⟨terminal.hom_ext _ _⟩
   exact ⟨⟨sq.lift, sq.fac_left⟩⟩
 
@@ -64,8 +65,9 @@ lemma isFilteredInfinity_of_isContractibleKan {C : SSet.{u}} [Quasicategory C]
 方針：最後のホーンによる必要性と trivial Kan fibration による十分性を合成する。
 規約：一般の quasicategory の filtered 性を置き換える定義ではない。
 使われ方：filtered な Kan 添字の可縮性の判定。 -/
+@[kerodon 02PL]
 lemma isFilteredInfinity_iff_isContractibleKan (C : SSet.{u}) [KanComplex C] :
-    IsFilteredInfinity C ↔ IsContractibleKan C := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity C ↔ _root_.SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FunctorsOfInfinityCategories.IsContractibleKan C := by
   constructor
   · intro h
     exact isContractibleKan_of_isFilteredInfinity C
@@ -75,7 +77,7 @@ lemma isFilteredInfinity_iff_isContractibleKan (C : SSet.{u}) [KanComplex C] :
 方針：証明した全境界充填から既存の弱可縮性へ接続する。
 規約：Kan 性はこの補題の仮定。使われ方：空間を添字とする cofinality。 -/
 lemma isWeaklyContractible_of_isFilteredKan (C : SSet.{u}) [KanComplex C]
-    [IsFilteredInfinity C] : IsWeaklyContractible C :=
+    [_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FilteredInfinityCategories.IsFilteredInfinity C] : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeaklyContractible C :=
   (isContractibleKan_of_isFilteredInfinity C).isWeaklyContractible
 
 end SerrePositivity.InfinityCategories.F2

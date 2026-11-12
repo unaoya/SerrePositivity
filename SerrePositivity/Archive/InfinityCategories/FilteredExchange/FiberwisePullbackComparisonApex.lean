@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackKanObjects
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.EdgeApexPrism
-public import SerrePositivity.InfinityCategories.F1.Coherent.KanInvertible
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwisePullbackKanObjects
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.EdgeApexPrism
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.KanInvertible
 
 /-!
 概要：実際の全空間 Kan 引き戻し比較を 𝒮 内の指定可逆頂点円柱にする。

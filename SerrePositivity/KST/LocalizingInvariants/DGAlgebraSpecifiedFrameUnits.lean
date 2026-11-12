@@ -72,7 +72,7 @@ lemma multiplicativeCellMappingPinchedEquivalence_unit_Q :
 
 /-- 同じ元の dg 射を ordinary Hom の一定零単体として保持する。 -/
 def nativeCellOrdinaryPoint (f : cellResolution R A ⟶ B) :
-    (𝟙_ SSet.{u + 1}) ⟶ (nativeCellOrdinaryLargeKanFunctor R A ⋙ kanObjectForget).obj B :=
+    (𝟙_ SSet.{u + 1}) ⟶ (nativeCellOrdinaryLargeKanFunctor R A ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.kanObjectForget).obj B :=
   SSet.const (ULift.up f)
 
 /-- 選択 right frame の零単体は E2 の同じ元の射の単位点。 -/
@@ -90,17 +90,17 @@ lemma multiplicativeCellMappingPinchedEquivalence_point_Q (f : cellResolution R 
       ((nativeCellOrdinaryPoint R A B f ≫ (nativeCellMappingUnitLarge R A).app B) ≫
         (multiplicativeCellMappingPinchedEquivalence R A B).hom) =
     SimplicialModel.AnodyneHomotopy.anodyneQ.map
-      (EInfinity.Hammock.arrowMap
-        (EInfinity.SimplicialLocalization.modelRelativeCategory (Mon (Complex R))).weakEquivalences
-        (AsSmall.up.map f) ≫ SerrePositivity.KST.Comparison.exInfinityUnit.app _ ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.arrowMap
+        (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R))).weakEquivalences
+        (AsSmall.up.map f) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
         EInfinity.SimplicialLocalization.kanHammockHomPinchedMap
-          (EInfinity.SimplicialLocalization.modelRelativeCategory (Mon (Complex R)))
-          (EInfinity.SimplicialLocalization.modelRelativeObject (Mon (Complex R)) (cellResolution R A))
-          (EInfinity.SimplicialLocalization.modelRelativeObject (Mon (Complex R)) B) ≫
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory (Mon (Complex R)))
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) (cellResolution R A))
+          (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject (Mon (Complex R)) B) ≫
         ((nativeFrameLocalizationComparison R).pinchedEquivalence
-          (nerveVertex (EInfinity.SimplicialLocalization.modelRelativeObject
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
             (Mon (Complex R)) (cellResolution R A)))
-          (nerveVertex (EInfinity.SimplicialLocalization.modelRelativeObject
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject
             (Mon (Complex R)) B))).hom) := by
   let Q := SimplicialModel.AnodyneHomotopy.anodyneQ
   have h := congrArg (fun t => Q.map (nativeCellOrdinaryPoint R A B f) ≫ t)

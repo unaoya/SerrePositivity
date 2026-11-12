@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.NativeConeLeg
-public import SerrePositivity.InfinityCategories.Core.TerminalUniqueness
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.NativeConeLeg
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.TerminalUniqueness
 
 /-!
 概要：同じ図式上の slice の辺と、二つの錐の脚の合成三角形。
@@ -19,47 +19,47 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.ConeEdgeLeg
 
-variable {K X : SSet.{u}} {p : K ⟶ X} {c d : JoinCone p}
-  (a : SSet.Truncated.Edge (X := (truncation 2).obj (sliceOver p)) c d) (k : K _⦋0⦌)
+variable {K X : SSet.{u}} {p : K ⟶ X} {c d : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p}
+  (a : SSet.Truncated.Edge (X := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p)) c d) (k : K _⦋0⦌)
 
 /-- 元の slice の一単体と指定された図式頂点の張る三角形。 -/
 def triangle : (Δ[2] : SSet.{u}) ⟶ X :=
-  (joinStdSimplexIso 1 0).inv ≫ joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) ≫ a.edge.val
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 1 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) ≫ a.edge.val
 
 /-- 二つの面は元の両端の錐の脚。 -/
 lemma face (i : Fin 2) :
     stdSimplex.δ i.castSucc ≫ triangle a k =
-      F2.coneLegInclusion k ≫ ((sliceOver p).δ i a.edge).val := by
-  have hi : stdSimplex.δ i.castSucc ≫ (joinStdSimplexIso 1 0).inv =
-      (joinStdSimplexIso 0 0).inv ≫ joinMap (stdSimplex.δ i) (𝟙 (Δ[0] : SSet.{u})) := by
-    apply (cancel_epi (joinStdSimplexIso 0 0).hom).1
-    rw [← Category.assoc, ← joinStdSimplexIso_one_vertex i]
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion k ≫ ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver p).δ i a.edge).val := by
+  have hi : stdSimplex.δ i.castSucc ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 1 0).inv =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (stdSimplex.δ i) (𝟙 (Δ[0] : SSet.{u})) := by
+    apply (cancel_epi (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).hom).1
+    rw [← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.joinStdSimplexIso_one_vertex i]
     simp only [Category.assoc, Iso.hom_inv_id, Category.comp_id, Iso.hom_inv_id_assoc]
   rw [triangle, ← Category.assoc, hi]
-  change ((joinStdSimplexIso 0 0).inv ≫
-      joinMap (stdSimplex.δ i) (𝟙 Δ[0])) ≫
-      joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) ≫ a.edge.val =
-    ((joinStdSimplexIso 0 0).inv ≫ joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm k)) ≫
-      joinMap (stdSimplex.δ i) (𝟙 K) ≫ a.edge.val
-  have hj : joinMap (stdSimplex.δ i) (𝟙 (Δ[0] : SSet.{u})) ≫
-      joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) =
-    joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm k) ≫ joinMap (stdSimplex.δ i) (𝟙 K) := by
-    rw [← joinMap_comp, ← joinMap_comp]
+  change ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (stdSimplex.δ i) (𝟙 Δ[0])) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) ≫ a.edge.val =
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm k)) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (stdSimplex.δ i) (𝟙 K) ≫ a.edge.val
+  have hj : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (stdSimplex.δ i) (𝟙 (Δ[0] : SSet.{u})) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[1]) (SSet.yonedaEquiv.symm k) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) (SSet.yonedaEquiv.symm k) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (stdSimplex.δ i) (𝟙 K) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp]
     simp only [Category.id_comp, Category.comp_id]
   simpa only [Category.assoc] using
-    congrArg (fun q ↦ (joinStdSimplexIso 0 0).inv ≫ q ≫ a.edge.val) hj
+    congrArg (fun q ↦ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 0).inv ≫ q ≫ a.edge.val) hj
 
 /-- 残る面は slice 射影による元の比較辺。 -/
 lemma comparison_face :
-    stdSimplex.δ (2 : Fin 3) ≫ triangle a k = joinInl Δ[1] K ≫ a.edge.val := by
-  rw [triangle, ← Category.assoc, ← joinStdSimplexIso_one_inl]
+    stdSimplex.δ (2 : Fin 3) ≫ triangle a k = _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl Δ[1] K ≫ a.edge.val := by
+  rw [triangle, ← Category.assoc, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.joinStdSimplexIso_one_inl]
   simp only [Category.assoc, Iso.hom_inv_id_assoc]
-  rw [← Category.assoc, joinInl_joinMap, Category.id_comp]
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl_joinMap, Category.id_comp]
 
 /-- 比較辺と比較先の脚の合成は、元の錐の脚になる。 -/
 def compStruct : SSet.Truncated.Edge.CompStruct
-    (a.map ((truncation 2).map (sliceOverProjection p))) (F2.nativeConeLeg d k)
-    (F2.nativeConeLeg c k) where
+    (a.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection p))) (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg d k)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c k) where
   simplex := SSet.yonedaEquiv (triangle a k)
   d₂ := by
     change X.δ 2 (SSet.yonedaEquiv (triangle a k)) = _
@@ -68,23 +68,23 @@ def compStruct : SSet.Truncated.Edge.CompStruct
   d₀ := by
     change X.δ 0 (SSet.yonedaEquiv (triangle a k)) = _
     rw [← stdSimplex.yonedaEquiv_δ_comp]
-    have hf : stdSimplex.δ (0 : Fin 3) ≫ triangle a k = F2.coneLegInclusion k ≫ d.val :=
-      (face a k 0).trans (congrArg (fun z : JoinCone p ↦ F2.coneLegInclusion k ≫ z.val)
+    have hf : stdSimplex.δ (0 : Fin 3) ≫ triangle a k = _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion k ≫ d.val :=
+      (face a k 0).trans (congrArg (fun z : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion k ≫ z.val)
         a.tgt_eq)
     exact (congrArg SSet.yonedaEquiv hf).trans (SSet.yonedaEquiv_comp _ _)
   d₁ := by
     change X.δ 1 (SSet.yonedaEquiv (triangle a k)) = _
     rw [← stdSimplex.yonedaEquiv_δ_comp]
-    have hf : stdSimplex.δ (1 : Fin 3) ≫ triangle a k = F2.coneLegInclusion k ≫ c.val :=
-      (face a k 1).trans (congrArg (fun z : JoinCone p ↦ F2.coneLegInclusion k ≫ z.val)
+    have hf : stdSimplex.δ (1 : Fin 3) ≫ triangle a k = _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion k ≫ c.val :=
+      (face a k 1).trans (congrArg (fun z : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.JoinCone p ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.coneLegInclusion k ≫ z.val)
         a.src_eq)
     exact (congrArg SSet.yonedaEquiv hf).trans (SSet.yonedaEquiv_comp _ _)
 
 lemma homMk_naturality :
     SSet.Truncated.HomotopyCategory.homMk
-        (a.map ((truncation 2).map (sliceOverProjection p))) ≫
-      SSet.Truncated.HomotopyCategory.homMk (F2.nativeConeLeg d k) =
-    SSet.Truncated.HomotopyCategory.homMk (F2.nativeConeLeg c k) :=
+        (a.map ((truncation 2).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOverProjection p))) ≫
+      SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg d k) =
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg c k) :=
   SSet.Truncated.HomotopyCategory.homMk_comp_homMk (compStruct a k)
 
 /-- 三頂点の表示を同時に替えても、元の三辺の類の合成式は保たれる。 -/

@@ -16,8 +16,8 @@ noncomputable section
 universe u
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
-open SerrePositivity.InfinityCategories.DGNerve
+open SerrePositivity.InfinityCategories
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance nativeComparisonTrianglesSimplicialCategory : SimplicialCategory OmegaSpectrum.{u} :=
   OmegaSpectrum.simplicialCategory
@@ -40,33 +40,33 @@ lemma circleConeComparisonParameter_horn (k : Limits.WalkingPair) :
 /-- 元の始点の錐の三角形は、元の四角形の lower/upper の三角形そのもの。 -/
 lemma circleNativeComparisonTriangle_square (z : Sp.{u} _⦋0⦌) (k : Limits.WalkingPair) :
     circleNativeComparisonTriangle z k = SSet.yonedaEquiv
-      (squareTriangle (match k with | .left => 1 | .right => 0) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.squareTriangle (match k with | .left => 1 | .right => 0) ≫
         nativeCircleEvaluationSquare z) := by
-  change SSet.yonedaEquiv ((joinStdSimplexIso 0 1).inv ≫
-    joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (circleConeComparisonParameter k) ≫
-    joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.hom ≫
+  change SSet.yonedaEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso 0 1).inv ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 (Δ[0] : SSet.{u + 1})) (circleConeComparisonParameter k) ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (𝟙 Δ[0]) CospanShape.strictCospanHornIso.hom ≫
     (nativeCirclePointLoopCone z).val) = _
-  rw [← Category.assoc (joinMap _ _) (joinMap _ _) _, ← joinMap_comp, Category.id_comp,
+  rw [← Category.assoc (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap _ _) _, ← _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap_comp, Category.id_comp,
     circleConeComparisonParameter_horn]
   cases k
-  · change SSet.yonedaEquiv (cospanConeTriangleLeft ≫ cospanConeSquareIso.hom ≫
+  · change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleLeft ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫
       nativeCircleEvaluationSquare z) = _
-    rw [← Category.assoc, cospanConeSquareIso_left]
-  · change SSet.yonedaEquiv (cospanConeTriangleRight ≫ cospanConeSquareIso.hom ≫
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_left]
+  · change SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeTriangleRight ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso.hom ≫
       nativeCircleEvaluationSquare z) = _
-    rw [← Category.assoc, cospanConeSquareIso_right]
+    rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.cospanConeSquareIso_right]
 
 /-- 左の元の始点の三角形は、元の同じ companion 三角形の頂点評価。 -/
 lemma circleNativeComparisonTriangle_left (z : Sp.{u} _⦋0⦌) :
     circleNativeComparisonTriangle z .left =
-      SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ evaluateFunctorAt z) := by
+      SSet.yonedaEquiv (circleZeroCompanionTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) := by
   rw [circleNativeComparisonTriangle_square, nativeCircleEvaluationSquare_evaluation,
     ← Category.assoc, circleEvaluationFunctorSquare_lower]
 
 /-- 右の元の始点の三角形は、元の同じ参照零三角形の頂点評価。 -/
 lemma circleNativeComparisonTriangle_right (z : Sp.{u} _⦋0⦌) :
     circleNativeComparisonTriangle z .right =
-      SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ evaluateFunctorAt z) := by
+      SSet.yonedaEquiv (circleZeroFunctorTriangle ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt z) := by
   rw [circleNativeComparisonTriangle_square, nativeCircleEvaluationSquare_evaluation,
     ← Category.assoc, circleEvaluationFunctorSquare_upper]
 

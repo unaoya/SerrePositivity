@@ -20,17 +20,17 @@ variable {R : Type u} [CommRing R] {A W : Mon (Complex R)} (N : Bimod A A)
   (a : W ⟶ SquareZero.algebra A N)
 
 def layerInclusion : kernelComplex N ⟶ (model N a).X :=
-  complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) ≫
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) ≫
     (DGAlgebra.HomotopyPullbackModel.complexIso R a (SquareZero.zeroSection A N)).inv
 
 lemma layerInclusion_toCocone : layerInclusion N a ≫
     (DGAlgebra.HomotopyPullbackModel.complexIso R a (SquareZero.zeroSection A N)).hom =
-      complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) := by
+      _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom) := by
   simp only [layerInclusion, Category.assoc, Iso.inv_hom_id, Category.comp_id]
 
 lemma layerInclusion_homology_isIso (j : ℤ) (h₀ : IsZero (W.X.homology (j - 1)))
     (h₁ : IsZero (W.X.homology j)) : IsIso (homologyMap (layerInclusion N a) j) := by
-  let i := complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
+  let i := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
   have : Mono (homologyMap i j) :=
     ((sequence_shortExact N a).homology_exact₁ (j - 1) j
       (by change j - 1 + 1 = j; omega)).mono_g (h₀.eq_of_src _ _)
@@ -44,7 +44,7 @@ lemma layerInclusion_layerHomologyIso (j : ℤ) (h₀ : IsZero (W.X.homology (j 
     (h₁ : IsZero (W.X.homology j)) : homologyMap (layerInclusion N a) j ≫
       (layerHomologyIso N a j h₀ h₁).hom = (kernelHomologyIso N j).hom := by
   let e := DGAlgebra.HomotopyPullbackModel.complexIso R a (SquareZero.zeroSection A N)
-  let i := complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
+  let i := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.complexMappingCoconeBiprodInclusion a.hom (-(SquareZero.zeroSection A N).hom)
   have : Mono (homologyMap i j) :=
     ((sequence_shortExact N a).homology_exact₁ (j - 1) j
       (by change j - 1 + 1 = j; omega)).mono_g (h₀.eq_of_src _ _)

@@ -29,22 +29,22 @@ open scoped _root_.Simplicial
 -/
 theorem basedPathEndpoint_evaluation (Y : PointedSimplicialSet.{u}) :
     (Spectra.pathEndpoint Y).right =
-      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y ≫ Spectra.KanPath.evaluation Y.right 1 := by
+      PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y ≫ Spectra.KanPath.evaluation Y.right 1 := by
   rw [Spectra.pathEndpoint, Under.comp_right, pointedUnitIso_evaluation]
-  change _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint Y ≫
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint Y ≫
     (PointedObject.basedHomι (𝟙_ PointedSimplicialSet.{u}) Y ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right ≫
           (MonoidalClosed.unitIsoSelf (X := Y.right)).hom) = _
-  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre_ι, Category.assoc]
-  have he : (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right).app Y.right ≫
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre_ι, Category.assoc]
+  have he : (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.right).app Y.right ≫
       (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
         (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right =
       (MonoidalClosed.pre (Spectra.KanPath.endpoint 1)).app Y.right := by
-    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl]
+    rw [← NatTrans.comp_app, ← MonoidalClosed.pre_map, _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl]
     rfl
-  change PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.F1.Pointed.pointedInterval Y ≫
-    (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint.right).app Y.right ≫
+  change PointedObject.basedHomι _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.pointedInterval Y ≫
+    (MonoidalClosed.pre _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint.right).app Y.right ≫
     (MonoidalClosed.pre (coprod.inl : 𝟙_ SSet.{u} ⟶
       (𝟙_ PointedSimplicialSet.{u}).right)).app Y.right ≫
       (MonoidalClosed.unitIsoSelf (X := Y.right)).hom = _

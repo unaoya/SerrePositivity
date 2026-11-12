@@ -45,7 +45,7 @@ local instance : IsLocallyPresentable.{u} SSet.{u} :=
   WeightedCones.simplicialSet_isLocallyPresentable
 
 variable [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
 
 /-- 概要：終対象の定数図式は指定ホモトピー比較に関して実際に降下（公理 (1)）。

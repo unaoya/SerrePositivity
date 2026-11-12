@@ -60,8 +60,8 @@ theorem dgSuspensionPerfectTransition_shifted_bijective (n : ℕ) (j : ℤ)
   apply (perfectTransition_ofEq _ _ _ (j + n)).mpr
   rw [SpectrumHo.piMap_edge]
   change Function.Bijective (OmegaSpectrum.homotopyMap
-    (coherentNerveEdgeToHom (coherentNerveEdge _)) (j + n))
-  rw [coherentNerveEdgeToHom_edge]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge _)) (j + n))
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdgeToHom_edge]
   exact dgSuspensionPerfectStructureMap_shifted_bijective R s A Z h n j hj
 
 include h in

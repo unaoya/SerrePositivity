@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.EInfinity.ComplexLimits.KProjectiveDerivedSource
 public import SerrePositivity.EInfinity.ComplexLimits.SemifreeResolutionRetract
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulIso
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulIso
 
 /-!
 # 同じ K-projective 導来源の全関手比較と充満忠実性
@@ -21,44 +21,44 @@ universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open DGNerve
+
 variable (A : Type u) [CommRing A]
 
 def kProjectiveDerivedSourceInclusionIso :
-    FunctorIso (kProjectiveDerivedSource A ≫
-      dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)))
-      (dgNerve.map (kProjectiveComplexInclusion A)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (kProjectiveDerivedSource A ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (kProjectiveComplexInclusion A)) := by
   let I := kProjectiveComplexInclusion A
   let F := I.comp (ringConstantDG A)
-  have hF (X : KProjectiveComplex A) : dgModuleProjectiveProperty A PUnit.{1} (F.obj X) :=
+  have hF (X : KProjectiveComplex A) : _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleProjectiveProperty A PUnit.{1} (F.obj X) :=
     (ringModule_homotopicallyProjective_iff A (ringModule A X.val)).mpr X.property
-  have ep := FunctorIso.postcomp
-    (dgModuleResolvedInfinity_precompIso A (KProjectiveComplex A) (Complex A)
+  have ep := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity_precompIso A (KProjectiveComplex A) (Complex A)
       PUnit.{1} I (ringConstantDG A)).symm
-    (dgNerve.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
-      (dgModuleSemifreeProperty A PUnit.{1})))
-  have e := FunctorIso.postcomp
-    (ep ≪≫ dgModuleResolvedInfinity_inclusionIso A (KProjectiveComplex A) PUnit.{1} F hF)
-    (dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit))
-  have hEval : dgNerve.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
-      (dgModuleSemifreeProperty A PUnit.{1})) ≫
-      dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) =
-    dgNerve.map (semifreeRingEvaluationDG A) ≫
-      dgNerve.map (dgFullSubcategoryInclusion A (Complex A) (complexSemifree A)) := by
-    rw [← dgNerve.map_comp, ← dgNerve.map_comp, semifreeRingEvaluationDG_ambient]
-  have hTarget : dgNerve.map (ringConstantDG A) ≫
-      dgNerve.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) = 𝟙 _ := by
-    rw [← dgNerve.map_comp, ringConstantDG_comp_evaluation, dgNerve.map_id]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty A PUnit.{1})))
+  have e := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.postcomp
+    (ep ≪≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleResolvedInfinity_inclusionIso A (KProjectiveComplex A) PUnit.{1} F hF)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit))
+  have hEval : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleSemifreeProperty A PUnit.{1})) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (semifreeRingEvaluationDG A) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgFullSubcategoryInclusion A (Complex A) (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)) := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, semifreeRingEvaluationDG_ambient]
+  have hTarget : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (ringConstantDG A) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (moduleEvaluationDG A PUnit.{1} PUnit.unit) = 𝟙 _ := by
+    rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ringConstantDG_comp_evaluation, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_id]
   dsimp only [F] at e
-  simp only [dgNerve.map_comp, Category.assoc] at e
+  simp only [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, Category.assoc] at e
   rw [hEval, hTarget, Category.comp_id] at e
   simpa only [kProjectiveDerivedSource, I, complexSemifreeResolutionInfinity,
     semifreeRingEvaluationInfinity, Category.assoc] using e
 
-lemma kProjectiveDerivedSource_isFullyFaithful : IsFullyFaithful (kProjectiveDerivedSource A) := by
-  apply (dgFullSubcategoryInclusionNerve_isFullyFaithful A (Complex A)
-    (complexSemifree A)).cancel_right
+lemma kProjectiveDerivedSource_isFullyFaithful : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (kProjectiveDerivedSource A) := by
+  apply (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful A (Complex A)
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Semifree.complexSemifree A)).cancel_right
   exact (kProjectiveDerivedSourceInclusionIso A).isFullyFaithful_iff.mpr
-    (dgFullSubcategoryInclusionNerve_isFullyFaithful A (Complex A) (complexKProjective A))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful A (Complex A) (complexKProjective A))
 
 end SerrePositivity.EInfinity.ComplexLimits

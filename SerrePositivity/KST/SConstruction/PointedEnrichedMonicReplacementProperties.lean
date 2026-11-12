@@ -23,7 +23,7 @@ variable {C : Type v} [EnrichedCategory SSet.{u} C]
 /-- 同じ元の置換の値は、実際の Ex∞ Kan 複体。 -/
 lemma pointedEnrichedMonicReplacement_kanComplex (X : C) :
     KanComplex (((pointedEnrichedMonicReplacementFunctor F G t h).obj X).obj).right :=
-  Comparison.exInfinity_kanComplex _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity_kanComplex _
 
 /-- 同じ実写像円柱から置換への元の単位は、基礎 anodyne 射。 -/
 lemma pointedEnrichedMonicReplacementUnit_anodyne (X : C) :

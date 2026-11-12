@@ -15,25 +15,25 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] {I : Type (u + 1)} [Category.{u} I]
 
 def complexDiagramAmbientVertexIso (F : I ⥤ Complex A) (i : I) :
-    VertexIso ((nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex i))
-    ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (Simplex.vertex (F.obj i))) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((nerveMap F ≫ complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i))
+    ((complexSemifreeResolutionInfinity A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (F.obj i))) :=
   complexDiagramDerivedVertexIso A F i ≪≫ complexOrdinaryAmbientVertexIso A (F.obj i)
 
 lemma complexOrdinaryDerivedNatTransAmbient_component {F G : I ⥤ Complex A}
     (η : F ⟶ G) (i : I) :
     (complexDiagramAmbientVertexIso A F i).inv ≫
-      functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (nerveVertex i) ≫
+      _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (complexOrdinaryDerivedNatTransHom A η) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex i) ≫
         (complexDiagramAmbientVertexIso A G i).hom =
     (hoFunctor.map (complexSemifreeResolutionInfinity A)).toFunctor.map
       (Truncated.HomotopyCategory.homMk
-        (V := (truncation 2).obj (dgNerve A (Complex A)))
-        (dgClosedEdge A (Complex A) ((complexToClosed A).map (η.app i)))) := by
+        (V := (truncation 2).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (Complex A)))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgClosedEdge A (Complex A) ((complexToClosed A).map (η.app i)))) := by
   have h := congrArg (fun f => (complexOrdinaryAmbientVertexIso A (F.obj i)).inv ≫ f ≫
     (complexOrdinaryAmbientVertexIso A (G.obj i)).hom)
     (complexOrdinaryDerivedNatTransHom_component A η i)

@@ -23,24 +23,24 @@ namespace SerrePositivity.KST.Fibration
 方針：元の実 core 包含の同じ coherent な辺を両側で回収する。
 規約：元の有限二胞体を保持。使われ方：F1 外延性の第一短辺条件。 -/
 theorem verdierMovingUpperFamily_last_standard_delta_two
-    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
-    SpaceInfinity.δ (2 : Fin 3)
-      (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+    (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 3)
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
-      SpaceInfinity.δ (2 : Fin 3) (verdierMovingUpperLastTriangle d).simplex := by
-  have hm : stdSimplex.δ (2 : Fin 3) ≫ familyAtVertex (verdierMovingUpperFamily d ℓ)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (2 : Fin 3) (verdierMovingUpperLastTriangle d).simplex := by
+  have hm : stdSimplex.δ (2 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       stdSimplex.δ (2 : Fin 3) ≫ SSet.yonedaEquiv.symm (verdierMovingUpperLastTriangle d).simplex :=
     (verdierMovingUpperFamily_firstEdge d ℓ _).trans
       (verdierMovingUpperLastTriangle d).δ_two_yonedaEquiv_symm.symm
-  have hs := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
-    (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+  have hs := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+    (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) (2 : Fin 3)
-  have ht := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
+  have ht := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
     (verdierMovingUpperLastTriangle d).simplex (2 : Fin 3)
   have hr : SSet.yonedaEquiv.symm (SSet.yonedaEquiv
-      (familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
-      familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
     Equiv.symm_apply_apply _ _
   apply SSet.yonedaEquiv.symm.injective
   exact hs.symm.trans ((congrArg (fun f => stdSimplex.δ (2 : Fin 3) ≫ f) hr).trans (hm.trans ht))
@@ -49,42 +49,42 @@ theorem verdierMovingUpperFamily_last_standard_delta_two
 方針：元の実包含・商の全 S• 合成作用を両側で同じ coherent 辺へ戻す。
 規約：元の実完全射を保持。使われ方：F1 外延性の第二短辺条件。 -/
 theorem verdierMovingUpperFamily_last_standard_delta_zero
-    (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
-    SpaceInfinity.δ (0 : Fin 3)
-      (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+    (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (ℓ : (verdierMovingUpperLongSpace d) _⦋0⦌) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (0 : Fin 3)
+      (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
-      SpaceInfinity.δ (0 : Fin 3) (verdierMovingUpperLastTriangle d).simplex := by
-  have hm : stdSimplex.δ (0 : Fin 3) ≫ familyAtVertex (verdierMovingUpperFamily d ℓ)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.δ (0 : Fin 3) (verdierMovingUpperLastTriangle d).simplex := by
+  have hm : stdSimplex.δ (0 : Fin 3) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) =
       stdSimplex.δ (0 : Fin 3) ≫ SSet.yonedaEquiv.symm (verdierMovingUpperLastTriangle d).simplex :=
     (verdierMovingUpperFamily_last_lastEdge d ℓ).trans
       (verdierMovingUpperLastTriangle d).δ_zero_yonedaEquiv_symm.symm
-  have hs := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
-    (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+  have hs := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
+    (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) (0 : Fin 3)
-  have ht := stdSimplex.δ_comp_yonedaEquiv_symm (X := SpaceInfinity.{u})
+  have ht := stdSimplex.δ_comp_yonedaEquiv_symm (X := _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.SpaceInfinity.{u})
     (verdierMovingUpperLastTriangle d).simplex (0 : Fin 3)
   have hr : SSet.yonedaEquiv.symm (SSet.yonedaEquiv
-      (familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
-      familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ) (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) :=
     Equiv.symm_apply_apply _ _
   apply SSet.yonedaEquiv.symm.injective
   exact hs.symm.trans ((congrArg (fun f => stdSimplex.δ (0 : Fin 3) ≫ f) hr).trans (hm.trans ht))
 
-variable (d : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u})
+variable (d : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u})
   (L : (Δ[1] : SSet.{u + 1}) ⟶ (ihom ((SSet.uliftFunctor.{u + 1, u}).obj
-    (nerve TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
+    (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))).obj (verdierLowerNativeLongHomTarget d))
   (hL : VerdierLowerNativeReadoutRecovery d L)
-  (hfull : L ≫ evaluateFunctorAt
-    (ULift.up (ComposableArrows.mk₀ triangleFullPath.{u})) =
+  (hfull : L ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+    (ULift.up (ComposableArrows.mk₀ _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.triangleFullPath.{u})) =
       verdierLowerReconstructionCompositeFamily d Δ[1])
 
 variable
   (H : SSet.Homotopy
     ((SSet.uliftFunctor.{u + 1, u}).map (verdierOriginalNativeHomFamily d 0))
-    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve TriangleNativePath.{u}))
+    (SSet.const (X := (SSet.uliftFunctor.{u + 1, u}).obj (nerve _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.TriangleNativePath.{u}))
       (verdierNativeCompositePoint d 1)))
-  (T : FunctorCompositionTriangle (verdierReadoutUpperComparison d)
+  (T : _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorCompositionTriangle (verdierReadoutUpperComparison d)
     (verdierLowerNativeReadoutHomotopy d L hL) H)
   (hT : T.diagram ≫ (pre verdierReadoutPathBoundary.{u}).app _ =
     curry (verdierReadoutBoundaryDiagram d L hL hfull))
@@ -96,20 +96,20 @@ include hT
 方針：両側を同じ元の実合成端の定値全族へ戻し、同じ両端の読出しを反映する。
 規約：二短辺の厳密一致も保持。使われ方：F1 の有限二胞体外延性への第三入力。 -/
 theorem verdierMovingUpperFamily_last_standard_native :
-    HEq ((SSet.yonedaEquiv (familyAtVertex
+    HEq ((SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex
         (verdierMovingUpperFamily d (verdierReadoutMovingLongInput d L hL hfull H T hT))
         (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩)
       ((verdierMovingUpperLastTriangle d).simplex.map ⟨ULift.up 0⟩ ⟨ULift.up 2⟩) := by
   let ℓ := verdierReadoutMovingLongInput d L hL hfull H T hT
-  have hs : (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+  have hs : (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).obj ⟨ULift.up 0⟩ =
       (verdierMovingUpperLastTriangle d).simplex.obj ⟨ULift.up 0⟩ := by
     exact verdierMovingUpperFamily_source d ℓ _
-  have ht : (SSet.yonedaEquiv (familyAtVertex (verdierMovingUpperFamily d ℓ)
+  have ht : (SSet.yonedaEquiv (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.familyAtVertex (verdierMovingUpperFamily d ℓ)
       (stdSimplex.obj₀Equiv.symm (1 : Fin 2)))).obj ⟨ULift.up 2⟩ =
       (verdierMovingUpperLastTriangle d).simplex.obj ⟨ULift.up 2⟩ := by
     exact verdierMovingUpperFamily_target d ℓ _
-  have hc := congrArg functorVertex (verdierMovingUpperLastTriangle_native d)
+  have hc := congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex (verdierMovingUpperLastTriangle_native d)
   exact verdierNativeReadout_vertex_heq hs ht _ _
     ((verdierMovingUpperFamily_last_native d L hL hfull H T hT).symm.trans hc.symm.heq)
 

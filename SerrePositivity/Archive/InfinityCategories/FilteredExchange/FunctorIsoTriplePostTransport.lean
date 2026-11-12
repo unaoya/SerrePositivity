@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoChainTransport
 
-public import SerrePositivity.InfinityCategories.Core.FunctorIsoWhiskerComposition
-public import SerrePositivity.InfinityCategories.Core.FilteredExchange.FunctorIsoChainTransport
+public import SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FunctorIsoWhiskerComposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorIsoChainTransport
 
 /-!
 概要：元の指定後合成射の三射への分解を、同じ指定関手同型の三段の像へ移す。

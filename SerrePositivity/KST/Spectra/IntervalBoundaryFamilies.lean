@@ -53,7 +53,7 @@ lemma intervalBoundary_face_zero : boundary.ι.{u} (0 : Fin 2) =
         intervalBoundaryMap) := by
   apply (cancel_mono (boundary 1).ι).1
   rw [boundary.ι_ι, Category.assoc, Category.assoc, intervalBoundaryMap_ι,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inl, SSet.comp_const, stdSimplex.δ_zero_eq_const]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inl, SSet.comp_const, stdSimplex.δ_zero_eq_const]
 
 /-- 境界の一番目の面も、端点余積の始点成分そのもの。 -/
 lemma intervalBoundary_face_one : boundary.ι.{u} (1 : Fin 2) =
@@ -62,7 +62,7 @@ lemma intervalBoundary_face_one : boundary.ι.{u} (1 : Fin 2) =
         intervalBoundaryMap) := by
   apply (cancel_mono (boundary 1).ι).1
   rw [boundary.ι_ι, Category.assoc, Category.assoc, intervalBoundaryMap_ι,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.intervalEndpoint_inr, SSet.comp_const, stdSimplex.δ_one_eq_const]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.intervalEndpoint_inr, SSet.comp_const, stdSimplex.δ_one_eq_const]
 
 /-- 境界族を終点の面へ制限すると元の終点族。 -/
 lemma intervalBoundaryFamily_zero : boundary.ι (0 : Fin 2) ▷ T ≫

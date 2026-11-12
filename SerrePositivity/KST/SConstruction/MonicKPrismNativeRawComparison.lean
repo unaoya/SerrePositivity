@@ -23,7 +23,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 /-- 元の全適合比較を、同じ全円柱の射影と構造射像の間に表示する。 -/
 def monicKPrismNativeRawCompatibility (n : ℕ) : SSet.Homotopy
     ((monicKPrismNativeLevelComparison F f g (n + 1)).h ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space)
     ((monicKPrismNativeLevelComparison F f g n).h ≫
       RawSpectrumMapping.step (kOmegaSpectrum (F.obj x)) (kKanSequence (F.obj z)) n) :=
@@ -43,12 +43,12 @@ lemma monicKPrismNativeRawCompatibility_boundary (n : ℕ) :
       fst (nerve (CompositionStringParameters f g) ⊗ (SSet.boundary 1).toSSet) Δ[1] ≫
         (nerve (CompositionStringParameters f g) ◁ (SSet.boundary 1).ι) ≫
         (monicKPrismNativeLevelComparison F f g (n + 1)).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
           ((kKanSequence (F.obj z)).level (n + 1)).space := by
   rw [monicKPrismNativeRawCompatibility_h]
   exact familyCylinder_fixed_boundary
-    (functorHomotopyPostcomp (monicKPrismNativeLevelComparison F f g (n + 1))
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+    (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Homotopy.functorHomotopyPostcomp (monicKPrismNativeLevelComparison F f g (n + 1))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space))
     (monicKPrismNativeComparisonCompatibility_source F f g n)
     (monicKPrismNativeComparisonCompatibility_target F f g n)

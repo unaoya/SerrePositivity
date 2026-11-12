@@ -19,15 +19,15 @@ open SerrePositivity.InfinityCategories
 open SerrePositivity.KST.SConstruction
 open SerrePositivity.KST.LocalizingInvariants
 namespace SerrePositivity.KST.Fibration
-variable {A B C : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap B C}
-  (h : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.IsVerdierSequence i q) (n : ℕ)
+variable {A B C : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} {i : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap A B} {q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap B C}
+  (h : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.IsVerdierSequence i q) (n : ℕ)
 
 /-- 元の S_n(D) を、同じ S_n(B) 内の全核図式へ送る全写像空間の同値。 -/
 def verdierSStageKernelEquivalence :
-    QCatEquivalence (sConstruction n A.obj)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence (sConstruction n A.obj)
       (closedSubcategory (sClosedPredicate n (kernelClosedPredicate q))) :=
   ((verdierKernelEquivalence h).sConstruction n).toQCatEquivalence.trans
-    (qCatEquivalenceOfIso (sClosedIso n (kernelClosedPredicate q)))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.qCatEquivalenceOfIso (sClosedIso n (kernelClosedPredicate q)))
 
 /-- 同じ核比較の包含後は、元の Verdier 包含による S 後合成そのもの。 -/
 theorem verdierSStageKernelEquivalence_inclusion :

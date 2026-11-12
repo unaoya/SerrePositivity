@@ -26,54 +26,54 @@ local instance fiberPiHomKan (X Y : OmegaSpectrum.{u}) :
     KanComplex (SimplicialCategory.sHom X Y) := mappingSpace_kanComplex X Y
 
 variable {E B : OmegaSpectrum.{u}} (f : E ⟶ B)
-  (s : FiberSquare (coherentNerveEdge f).toTruncated)
+  (s : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.FiberSquare (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge f).toTruncated)
 
 def comparison := FiberComparison.fiberShortComplexIso (X := Sp.{u}) s
   (FiberModel.homotopyFiberSquare f)
 
-def fiberIso : squareHoVertex s.square 0 0 ≅ SpectrumHo.obj (homotopyFiber f) :=
+def fiberIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0 ≅ SpectrumHo.obj (homotopyFiber f) :=
   ShortComplex.π₁.mapIso (comparison f s) ≪≫ FiberModel.fiberObjectIso f
 
-def totalIso : squareHoVertex s.square 1 0 ≅ SpectrumHo.obj E :=
+def totalIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 0 ≅ SpectrumHo.obj E :=
   ShortComplex.π₂.mapIso (comparison f s) ≪≫ FiberModel.totalObjectIso f
 
-def baseIso : squareHoVertex s.square 1 1 ≅ SpectrumHo.obj B :=
+def baseIso : _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 1 ≅ SpectrumHo.obj B :=
   ShortComplex.π₃.mapIso (comparison f s) ≪≫ FiberModel.baseObjectIso f
 
 lemma bottom_naturality : (fiberIso f s).hom ≫ SpectrumHo.hom (homotopyFiberInclusion f) =
-    squareHoBottom s.square ≫ (totalIso f s).hom := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom s.square ≫ (totalIso f s).hom := by
   change ((comparison f s).hom.τ₁ ≫ (FiberModel.fiberObjectIso f).hom) ≫ _ =
-    squareHoBottom s.square ≫ ((comparison f s).hom.τ₂ ≫ (FiberModel.totalObjectIso f).hom)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom s.square ≫ ((comparison f s).hom.τ₂ ≫ (FiberModel.totalObjectIso f).hom)
   have hc := (comparison f s).hom.comm₁₂
-  change (comparison f s).hom.τ₁ ≫ squareHoBottom (FiberModel.homotopyFiberSquare f).square =
-    squareHoBottom s.square ≫ (comparison f s).hom.τ₂ at hc
+  change (comparison f s).hom.τ₁ ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom (FiberModel.homotopyFiberSquare f).square =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom s.square ≫ (comparison f s).hom.τ₂ at hc
   rw [Category.assoc, FiberModel.bottom_naturality]
   simpa only [Category.assoc] using
     congrArg (fun m ↦ m ≫ (FiberModel.totalObjectIso f).hom) hc
 
 lemma right_naturality : (totalIso f s).hom ≫ SpectrumHo.hom f =
-    squareHoRight s.square ≫ (baseIso f s).hom := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight s.square ≫ (baseIso f s).hom := by
   change ((comparison f s).hom.τ₂ ≫ (FiberModel.totalObjectIso f).hom) ≫ _ =
-    squareHoRight s.square ≫ ((comparison f s).hom.τ₃ ≫ (FiberModel.baseObjectIso f).hom)
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight s.square ≫ ((comparison f s).hom.τ₃ ≫ (FiberModel.baseObjectIso f).hom)
   have hc := (comparison f s).hom.comm₂₃
-  change (comparison f s).hom.τ₂ ≫ squareHoRight (FiberModel.homotopyFiberSquare f).square =
-    squareHoRight s.square ≫ (comparison f s).hom.τ₃ at hc
+  change (comparison f s).hom.τ₂ ≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight (FiberModel.homotopyFiberSquare f).square =
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight s.square ≫ (comparison f s).hom.τ₃ at hc
   rw [Category.assoc, FiberModel.right_naturality]
   simpa only [Category.assoc] using
     congrArg (fun m ↦ m ≫ (FiberModel.baseObjectIso f).hom) hc
 
 def fiberGroupIso (j : ℤ) :
-    (SpectrumHo.piFunctor j).obj (squareHoVertex s.square 0 0) ≅
+    (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 0 0) ≅
       CommGrpCat.of (homotopyGroup (homotopyFiber f) j) :=
   (SpectrumHo.piFunctor j).mapIso (fiberIso f s) ≪≫ SpectrumHo.piComparison _ j
 
 def totalGroupIso (j : ℤ) :
-    (SpectrumHo.piFunctor j).obj (squareHoVertex s.square 1 0) ≅
+    (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 0) ≅
       CommGrpCat.of (homotopyGroup E j) :=
   (SpectrumHo.piFunctor j).mapIso (totalIso f s) ≪≫ SpectrumHo.piComparison _ j
 
 def baseGroupIso (j : ℤ) :
-    (SpectrumHo.piFunctor j).obj (squareHoVertex s.square 1 1) ≅
+    (SpectrumHo.piFunctor j).obj (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoVertex s.square 1 1) ≅
       CommGrpCat.of (homotopyGroup B j) :=
   (SpectrumHo.piFunctor j).mapIso (baseIso f s) ≪≫ SpectrumHo.piComparison _ j
 
@@ -92,12 +92,12 @@ lemma group_naturality {x y : hoFunctor.obj Sp.{u}} {X Y : OmegaSpectrum.{u}}
   rfl
 
 lemma bottom_group_naturality (j : ℤ) :
-    (SpectrumHo.piFunctor j).map (squareHoBottom s.square) ≫ (totalGroupIso f s j).hom =
+    (SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom s.square) ≫ (totalGroupIso f s j).hom =
       (fiberGroupIso f s j).hom ≫ CommGrpCat.ofHom (homotopyMap (homotopyFiberInclusion f) j) :=
   group_naturality _ _ (fiberIso f s) (totalIso f s) (bottom_naturality f s) j
 
 lemma right_group_naturality (j : ℤ) :
-    (SpectrumHo.piFunctor j).map (squareHoRight s.square) ≫ (baseGroupIso f s j).hom =
+    (SpectrumHo.piFunctor j).map (_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight s.square) ≫ (baseGroupIso f s j).hom =
       (totalGroupIso f s j).hom ≫ CommGrpCat.ofHom (homotopyMap f j) :=
   group_naturality _ _ (totalIso f s) (baseIso f s) (right_naturality f s) j
 

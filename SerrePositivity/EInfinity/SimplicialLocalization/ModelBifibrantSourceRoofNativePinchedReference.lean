@@ -18,7 +18,7 @@ universe u v
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory HomotopicalAlgebra Opposite SSet Hammock
 open SerrePositivity.Reedy SerrePositivity.InfinityCategories SerrePositivity.SimplicialModel
-open SerrePositivity.KST.Comparison
+
 open scoped Simplicial
 variable {C : Type u} [Category.{v} C] [ModelCategory C]
   (X Y : BifibrantObject C) (q : CofibrantResolution (C := C) simplex X.obj)
@@ -64,12 +64,12 @@ lemma modelBifibrantSourceRoofProductCommaEvaluationRoofMap_reference_Q :
 規約：同じ元の局所化頂点。使われ方：native prism の基準族。 -/
 def modelBifibrantSourceRoofProductCommaNativePinchedMap :
     nerve (modelBifibrantSourceRoofProductComma X Y q b) ⟶
-      pinchedHom (modelBifibrantHammockVertex
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.pinchedHom (modelBifibrantHammockVertex
         (modelBifibrantSourceRoofDegreeObject X Y q b)) (modelBifibrantHammockVertex Y) :=
-  modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ exInfinityUnit.app _ ≫
-    kanHammockHomPinchedMap (modelBifibrantRelativeCategory C)
-      (modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
-      (modelBifibrantObject C Y)
+  modelBifibrantSourceRoofProductCommaEvaluationRoofMap X Y q b ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinityUnit.app _ ≫
+    kanHammockHomPinchedMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantRelativeCategory C)
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C (modelBifibrantSourceRoofDegreeObject X Y q b))
+      (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelBifibrantObject C Y)
 
 /-- 概要：元の native pinched 族は同じ弱な pinched 基準族と全体で一致する。
 方針：同じ hammock 部分の全等式へ同じ二つの比較を後合成する。
@@ -89,8 +89,8 @@ lemma modelBifibrantSourceRoofProductCommaNativePinchedMap_reference_Q :
 方針：同じ pinched–interval 比較を合成する。
 規約：元の全パラメータ。使われ方：native prism の合成三角形。 -/
 def modelBifibrantSourceRoofProductCommaNativeIntervalCell :=
-  intervalFamilyHom (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
-    pinchedHomToIntervalMappingSpace _ _)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.intervalFamilyHom (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b ≫
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pinchedHomToIntervalMappingSpace _ _)
 
 /-- 概要：同じ native interval 全族の類は元の弱基準 interval 族に一致する。
 方針：同じ pinched 全族の反転後の等式を interval の全関手類へ送る。
@@ -108,7 +108,7 @@ include r in
 方針：同じ反転後の全等式を元の弱基準族で検出する。
 規約：第一分解と指定 right frame。使われ方：実 roof の全弱比較。 -/
 lemma modelBifibrantSourceRoofProductCommaNativePinchedMap_weak :
-    IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (modelBifibrantSourceRoofProductCommaNativePinchedMap X Y q b) := by
   apply FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
   rw [modelBifibrantSourceRoofProductCommaNativePinchedMap_reference_Q]
   exact Hammock.anodyneQ_map_isIso_of_weak _

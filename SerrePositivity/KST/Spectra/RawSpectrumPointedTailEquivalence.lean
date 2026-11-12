@@ -22,19 +22,19 @@ namespace SerrePositivity.KST.Spectra.RawSpectrumMapping
 
 /-- Ω 標的への全 Hom の零段を忘れる元の射は、全基点 π 同型。 -/
 lemma pointedTail_piIsomorphism (X : OmegaSpectrum.{u}) (Y : KanSequence.{u})
-    (hY : Y.OmegaCondition) : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedTail X Y).right := by
+    (hY : Y.OmegaCondition) : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedTail X Y).right := by
   let W := Y.cofibrantOmegaSpectrum hY
   let q := Y.cofibrantOmegaProjection hY
   have hq (n : ℕ) : (MorphismProperty.monomorphisms SSet.{u}).rlp (q.app n).right :=
     (Y.replacementStage n).projection_rlp
-  have hp : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedPost X q).right := post_piIsomorphism X q hq
-  have hr : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism
+  have hp : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedPost X q).right := post_piIsomorphism X q hq
+  have hr : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism
       (pointedPost (OmegaSpectrum.tail X) (KanSequence.tailHom q)).right :=
     post_piIsomorphism (OmegaSpectrum.tail X) (KanSequence.tailHom q) (fun n => hq (n + 1))
-  have ht : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (pointedTail X W.toKanSequence).right := by
+  have ht : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (pointedTail X W.toKanSequence).right := by
     rw [pointedTail_BF_right]
     exact kanPiIsomorphism_of_qCatEquivalence _ (OmegaSpectrum.tailMapping_isQCatEquivalence X W)
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((pointedPost X q).right ≫ (pointedTail X Y).right) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((pointedPost X q).right ≫ (pointedTail X Y).right) := by
     rw [← Under.comp_right, pointedTail_post, Under.comp_right]
     exact ht.comp hr
   exact (_root_.SerrePositivity.KST.Spectra.KanPiIsomorphism.cancel_left_atVertex hp) hc (pointedSpace X W.toKanSequence).basepoint

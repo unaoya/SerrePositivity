@@ -57,7 +57,7 @@ def dgIdentityHomGluingNullInput : PerfDGInput.{u, u + 1} R :=
 規約：元包含を保持。使われ方：上合成三角形の第二短辺。 -/
 def dgIdentityHomGluingNullInputMap :
     dgIdentityHomGluingNullInput R C ⟶ dgIdentityHomGluingGluingInput R C :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgIdentityHomGluingNullInclusion R C))
 
 variable {P : Type (u + 1)} [DGCategory R P]
@@ -92,7 +92,7 @@ variable [Small.{u} P]
 def dgIdentityHomGluingNullFactorInputMap (F : DGFunctor R P (L))
     (hF : ∀ x, dgIdentityHomGluingNullProperty R C (F.obj x)) :
     dgKUniverseInput.{u, u + 1, u + 1} R P ⟶ dgIdentityHomGluingNullInput R C :=
-  ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
+  ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1}
     (dgIdentityHomGluingNullFactor R C F hF))
 
 /-- 概要：固定 S でも元の厳密合成辺を回収する。
@@ -101,10 +101,10 @@ def dgIdentityHomGluingNullFactorInputMap (F : DGFunctor R P (L))
 lemma dgIdentityHomGluingNullFactorInputMap_comp (F : DGFunctor R P (L))
     (hF : ∀ x, dgIdentityHomGluingNullProperty R C (F.obj x)) :
     dgIdentityHomGluingNullFactorInputMap R C F hF ≫ dgIdentityHomGluingNullInputMap R C =
-      ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F) := by
+      ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F) := by
   apply ULift.down_injective
-  exact (dgUniverseLiftFunctor_comp _ _).symm.trans
-    (congrArg (fun T => dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} T)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor_comp _ _).symm.trans
+    (congrArg (fun T => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} T)
       (dgIdentityHomGluingNullFactor_inclusion R C F hF))
 
 /-- 概要：元の厳密合成辺を対角として保つ実 S 上二単体。
@@ -113,16 +113,16 @@ lemma dgIdentityHomGluingNullFactorInputMap_comp (F : DGFunctor R P (L))
 def dgIdentityHomGluingNullFactorTriangle (F : DGFunctor R P (L))
     (hF : ∀ x, dgIdentityHomGluingNullProperty R C (F.obj x)) : SSet.Edge.CompStruct
     (X := dgKInputInfinity.{u, u + 1} R)
-    (coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF))
-    (coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
-    (coherentNerveEdge
-      (ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F))) := by
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
+      (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F))) := by
   have t : SSet.Edge.CompStruct (X := dgKInputInfinity.{u, u + 1} R)
-      (coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF))
-      (coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
-      (coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C F hF ≫
         dgIdentityHomGluingNullInputMap R C)) :=
-    coherentNerveCompStruct _ _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveCompStruct _ _
   exact t.ofEq rfl rfl (by congr 1)
 
 /-- 概要：元の二関手の厳密合成辺を対角に保つ V 因子化の上二単体。
@@ -133,12 +133,12 @@ def dgIdentityHomGluingNullFactorCompositeTriangle
     (k : DGFunctor R P T) (F : DGFunctor R T (L))
     (hF : ∀ x, dgIdentityHomGluingNullProperty R C (F.obj (k.obj x))) :
     SSet.Edge.CompStruct (X := dgKInputInfinity.{u, u + 1} R)
-      (coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C (k.comp F) hF))
-      (coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
-      (coherentNerveEdge
-        ((ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} k) :
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullFactorInputMap R C (k.comp F) hF))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R C))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
+        ((ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} k) :
           dgKUniverseInput.{u, u + 1, u + 1} R P ⟶ dgKUniverseInput.{u, u + 1, u + 1} R T) ≫
-          (ULift.up (dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F) :
+          (ULift.up (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgUniverseLiftFunctor.{u, u + 1, u + 1, u + 1, u + 1} F) :
             dgKUniverseInput.{u, u + 1, u + 1} R T ⟶ dgIdentityHomGluingGluingInput R C))) := by
   have t := dgIdentityHomGluingNullFactorTriangle R C (k.comp F) hF
   exact t.ofEq rfl rfl (by
@@ -168,14 +168,14 @@ def dgIdentityHomGluingNullDomainSquare :
 方針：同じ Sp 正本の構成の仕様を取り出す。
 規約：包含・差・商二辺の厳密等号。使われ方：全指定境界での貼合せ。 -/
 lemma dgIdentityHomGluingNullDomainSquare_edges :
-    squareBottomEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgIdentityHomGluingNullInputMap R C)).edge ∧
-      squareRightEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgIdentityHomGluingDifferenceInputMap R C)).edge ∧
-      squareLeftEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullLeft R (A := dgIdentityHomGluingNullInput R C))).edge ∧
-      squareTopEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
-        (coherentNerveEdge (dgFixedNullTop R (dgIdentityHomGluingNullContracted R C))).edge :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareBottomEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingNullInputMap R C)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareRightEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgIdentityHomGluingDifferenceInputMap R C)).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareLeftEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullLeft R (A := dgIdentityHomGluingNullInput R C))).edge ∧
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.squareTopEdge ≫ dgIdentityHomGluingNullDomainSquare R C = SSet.yonedaEquiv.symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge (dgFixedNullTop R (dgIdentityHomGluingNullContracted R C))).edge :=
   (exists_dgFixedNullSquare R (dgIdentityHomGluingNullInputMap R C)
     (dgIdentityHomGluingDifferenceInputMap R C)
     (dgIdentityHomGluingNullContracted R C) rfl).choose_spec

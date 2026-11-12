@@ -6,8 +6,8 @@ public import SerrePositivity.BhattScholze.Prismatic.PrismOver
 public import SerrePositivity.BhattScholze.Prism.Basic.Rigidity
 public import SerrePositivity.BhattScholze.Prism.Bounded.Completeness
 public import SerrePositivity.CommutativeAlgebra.CompletelyFlat.Basic
-public import SerrePositivity.InfinityCategories.Derived.DiscreteEmbedding
-public import SerrePositivity.InfinityCategories.F2.Presentable.Definition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DiscreteEmbedding
+public import SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.Definition
 public import Mathlib.CategoryTheory.Sites.Grothendieck
 public import Mathlib.CategoryTheory.EssentiallySmall
 public import Mathlib.SetTheory.Cardinal.Arithmetic
@@ -178,7 +178,7 @@ def structurePresheafDerived :
 使われ方：Constr 4.18、Lemma 4.20、A1 の Thm 4.11、A2 の Construction 7.6。 -/
 def prismaticCohomology
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
     (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
   InfinityCategories.Sheaves.derivedGlobalSections (flatTopology P R κ) hJ hE (structurePresheafDerived P R κ)
 
@@ -189,7 +189,7 @@ def prismaticCohomology
 要確認：D(A) の A/d とのテンソルを与える基盤の名前。 -/
 def hodgeTateCohomology
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
     (InfinityCategories.derivedInfinityCategory A) _⦋0⦌ :=
   sorry -- prismaticCohomology ⊗^L_A A/d（`tensorWith`、FlatDescent の `reducedStructurePresheafDerived` と同じ A/d の頂点）
 
@@ -199,7 +199,7 @@ def hodgeTateCohomology
 使われ方：A2 の多項式上の Frobenius、A4 の正の反復（Def 8.2）。 -/
 def prismaticCohomologyFrobenius
     (hJ : InfinityCategories.Sheaves.Sheafification (flatTopology P R κ) (InfinityCategories.derivedInfinityCategory A))
-    (hE : InfinityCategories.F2.Presentable.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
+    (hE : _root_.SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.IsPresentable (InfinityCategories.derivedInfinityCategory A)) :
     let Δ := prismaticCohomology P R κ hJ hE
     let res := InfinityCategories.derivedInfinityRestrictScalars P.deltaStructure.frobeniusLift
     SSet.Edge Δ (res.app (Opposite.op ⦋0⦌) Δ) := by

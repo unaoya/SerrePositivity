@@ -25,8 +25,8 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
   (q : CofibrantResolution (C := C) simplex X)
   (r : CofibrantResolutionFamily (C := Cᵒᵖ) simplex)
   {Q : SSet.{max u v}} [Quasicategory Q]
-  {G : nerve (modelRelativeCategory C).category ⟶ Q}
-  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (modelRelativeCategory C)) G)
+  {G : nerve (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C).category ⟶ Q}
+  (c : CoherentLocalizationComparison (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)) G)
 
 /-- 概要：全同型の順射は同じ実終端・原本 Yoneda・指定輸送の順の合成。
 方針：元の主定義の合成を露出する。
@@ -34,11 +34,11 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C] {X : C}
 lemma rightFrameTerminalHomIso_hom :
     (rightFrameTerminalHomIso q r c).hom =
       (rightFrameHammockTerminalRealizationIso q r).hom ≫
-        (FunctorIso.precomp
-          (kanHammockHomInfinityIso (modelRelativeCategory C) (modelRelativeObject C X))
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp
+          (kanHammockHomInfinityIso (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))
           (SSet.uliftFunctor.{max u v + 1, max u v}.map
-            (hammockLocalizationNerveMap (modelRelativeCategory C)))).hom ≫
-        (c.homInfinityTransport (nerveVertex (modelRelativeObject C X))).hom := rfl
+            (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C)))).hom ≫
+        (c.homInfinityTransport (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X))).hom := rfl
 
 /-- 概要：同じ全図式同型と同じ比較二胞体を一緒に公開する。
 方針：主比較と元の指定データを組にする。
@@ -57,12 +57,12 @@ lemma rightFrameTerminalHomComparison_triangle :
 使われ方：同じ Yoneda 恒等点・実 AsSmall 零単体から指定 G の元の射への回収。 -/
 lemma rightFrameTerminalHomComparison_originalArrow {Y : C} (f : X ⟶ Y) :
     (c.triangle.toNatIso.app (HomotopyCategory.mk
-      (nerveVertex (modelRelativeObject C X)))).inv ≫
-      (hoFunctor.map (hammockLocalizationNerveMap (modelRelativeCategory C) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C X)))).inv ≫
+      (hoFunctor.map (hammockLocalizationNerveMap (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeCategory C) ≫
         c.equivalence.hom)).toFunctor.map
         (HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated) ≫
       (c.triangle.toNatIso.app (HomotopyCategory.mk
-        (nerveVertex (modelRelativeObject C Y)))).hom =
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (_root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.modelRelativeObject C Y)))).hom =
       (hoFunctor.map G).toFunctor.map
         (HomotopyCategory.homMk (nerve.edgeMk (AsSmall.up.map f)).toTruncated) :=
   modelRightFrameOriginalArrow_conjugation G X c.equivalence.hom c.triangle f

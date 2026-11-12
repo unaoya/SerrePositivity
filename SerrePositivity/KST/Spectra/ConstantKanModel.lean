@@ -1,8 +1,8 @@
 module
 
-public import SerrePositivity.InfinityCategories.Kan.DiscreteKanHomotopy
-public import SerrePositivity.InfinityCategories.F2.Compact.DiscreteComponentLabels
-public import SerrePositivity.InfinityCategories.HomotopyLimits.KanLimits
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.DiscreteKanHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.DiscreteComponentLabels
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.KanLimits
 
 /-!
 概要：離散成分を表す定値単体集合を、同じ離散圏の Kan nerve と照合する。
@@ -27,8 +27,8 @@ namespace SerrePositivity.KST.Spectra
 使われ方：Sp-7 の Kan ホモトピー消滅判定の離散標的。 -/
 def constantKanNerveIso (T : Type u) :
     ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u}) ≅ nerve (Discrete T) where
-  hom := F2.Compact.constantToDiscreteNerve T
-  inv := F2.Compact.componentLabelMap _ (F2.Compact.discreteNerveComponent T)
+  hom := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.constantToDiscreteNerve T
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.componentLabelMap _ (_root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.discreteNerveComponent T)
   hom_inv_id := by
     apply SSet.hom_ext
     intro n
@@ -55,7 +55,7 @@ def constantKanNerveIso (T : Type u) :
 使われ方：Sp-7 の Kan ホモトピー消滅判定の離散標的。 -/
 instance constantKanComplex (T : Type u) :
     KanComplex ((Functor.const SimplexCategoryᵒᵖ).obj T : SSet.{u}) := by
-  let := F2.Compact.discreteNerve_kanComplex T
-  exact HomotopyLimits.kanComplex_of_iso (constantKanNerveIso T).symm
+  let := _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.discreteNerve_kanComplex T
+  exact _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.kanComplex_of_iso (constantKanNerveIso T).symm
 
 end SerrePositivity.KST.Spectra

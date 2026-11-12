@@ -22,7 +22,7 @@ def cubeFaceNormalConnectZero : {n m : ℕ} → CubeFaceNormal n (m + 2) →
 /-- 元の右端 connection の正規化は、同じ全頂点の評価を回収する。 -/
 lemma cubeFaceNormalConnectZero_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 2)) :
     cubeFaceConnectionResultVertex (cubeFaceNormalConnectZero d) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m 0 ∘ cubeFaceNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m 0 ∘ cubeFaceNormalVertex d := by
   cases d with
   | point b d =>
     cases b with
@@ -68,7 +68,7 @@ def cubeFaceNormalConnect : {n m : ℕ} → CubeFaceNormal n (m + 2) →
 lemma cubeFaceNormalConnect_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 2))
     (i : Fin (m + 1)) :
     cubeFaceConnectionResultVertex (cubeFaceNormalConnect d i) =
-      _root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i ∘ cubeFaceNormalVertex d := by
+      _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i ∘ cubeFaceNormalVertex d := by
   induction m generalizing n with
   | zero =>
     have hi : i = 0 := Fin.ext (by omega)
@@ -84,7 +84,7 @@ lemma cubeFaceNormalConnect_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 2))
           (cubeFaceConnectionResultPoint b (cubeFaceNormalConnect d i)) x = _
         rw [cubeFaceConnectionResultPoint_vertex, ih d i]
         change Fin.cons (α := fun _ => Bool) b
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i (cubeFaceNormalVertex d x)) = _
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i (cubeFaceNormalVertex d x)) = _
         simp only [Function.comp_apply, cubeFaceNormalVertex, cubeVertexConnection_cons]
     | keep d =>
       refine Fin.cases ?_ (fun i => ?_) i
@@ -94,7 +94,7 @@ lemma cubeFaceNormalConnect_vertex {n m : ℕ} (d : CubeFaceNormal n (m + 2))
           (cubeFaceConnectionResultKeep (cubeFaceNormalConnect d i)) x = _
         rw [cubeFaceConnectionResultKeep_vertex, ih d i]
         change Fin.cons (α := fun _ => Bool) (x 0)
-          (_root_.SerrePositivity.InfinityCategories.Simplicial.cubeVertexConnection m i (cubeFaceNormalVertex d (fun j => x j.succ))) = _
+          (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.cubeVertexConnection m i (cubeFaceNormalVertex d (fun j => x j.succ))) = _
         simp only [Function.comp_apply, cubeFaceNormalVertex, cubeVertexConnection_cons]
 
 end SerrePositivity.KST.SConstruction

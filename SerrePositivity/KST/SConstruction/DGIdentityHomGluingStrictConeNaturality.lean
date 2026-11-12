@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleConeInputIsoFamilyNatura
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 private lemma fullHomNaturalityOfCycle {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] [Small.{u} C] {T : Type w} [DGCategory R T]
     (F G : DGFunctor R T (RightModule R C))
@@ -32,8 +32,8 @@ private lemma fullHomNaturalityOfCycle {R : Type u} [CommRing R]
   apply ModuleCat.hom_ext
   apply LinearMap.ext
   intro z
-  exact (dgModuleHomPostcompose_apply R C (q y) ((F.map x y).f n z)).trans
-    ((h x y n z).trans (dgModuleHomPrecompose_apply R C (q x) ((G.map x y).f n z)).symm)
+  exact (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleHomPostcompose_apply R C (q y) ((F.map x y).f n z)).trans
+    ((h x y n z).trans (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleHomPrecompose_apply R C (q x) ((G.map x y).f n z)).symm)
 
 private lemma factoryCycle {R : Type u} [CommRing R]
     {C : Type v} [DGCategory R C] [Small.{u} C] {T : Type w} [DGCategory R T]
@@ -44,7 +44,7 @@ private lemma factoryCycle {R : Type u} [CommRing R]
       eHomWhiskerLeft (Complex R) (ForgetEnrichment.of (Complex R) (F.obj x)) (q y) =
       G.map x y ≫ eHomWhiskerRight (Complex R) (q x)
         (ForgetEnrichment.of (Complex R) (G.obj y))) (x : T) :
-    (dgModuleStrictNatTransOfHomNaturality R C q h).app x =
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R C q h).app x =
       cycleFromUnit _ (ForgetEnrichment.homTo (Complex R) (q x)) := rfl
 
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
@@ -136,8 +136,8 @@ lemma dgIdentityHomGluingStrictConeInputMap_naturality (x y : P) :
 /-- 概要：元 gluing cone 入力の同じ実同型を保持する全厳密比較。
 方針：元指定閉射と全 Hom 自然性を既存の構成子へ渡す。
 規約：元入力同型を選び直さない。使われ方：全実逆回転の元 cone 始域輸送。 -/
-def dgIdentityHomGluingStrictConeInputComparison : StrictNatTrans (A) (B) :=
-  dgModuleStrictNatTransOfHomNaturality R C
+def dgIdentityHomGluingStrictConeInputComparison : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans (A) (B) :=
+  _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleStrictNatTransOfHomNaturality R C
     (dgIdentityHomGluingStrictConeInputMap R C F G a h)
     (dgIdentityHomGluingStrictConeInputMap_naturality R C F G a h)
 

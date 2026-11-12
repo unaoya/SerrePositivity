@@ -31,7 +31,7 @@ namespace SerrePositivity.KST.Descent.DoubleAugmentedCechDiagram
 
 variable (K L : Type u) [SmallCategory K] [SmallCategory L]
   (A : DoubleAugmentedCechDiagram K L) [ModelCategory SSet.{u}]
-  (I J : MorphismProperty SSet.{u}) [ModelGeneration.CofibrantlyGenerated.{u} I J]
+  (I J : MorphismProperty SSet.{u}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{u} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{u})]
 
 /-- 概要：各行が実際に降下すれば積添字と外側の指定降下は同値（補題 3.2・3.3）。

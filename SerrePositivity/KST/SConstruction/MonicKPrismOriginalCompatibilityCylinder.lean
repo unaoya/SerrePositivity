@@ -26,7 +26,7 @@ variable {I : Type u} [SmallCategory I] (F : I ⥤ StableModel.{u})
 lemma monicKPrismCompositeCompatibilityAt_raw (n : ℕ) :
     monicKPrismCompositeCompatibilityAt F f g n (monicKPrismRawLevelFamily n F f) =
       (monicKPrismCompositeCompatibility F f g n).h ≫
-        _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ monicKToRawLevelMap (F.map f) n)
+        _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ monicKToRawLevelMap (F.map f) n)
           ((kKanSequence (F.obj z)).level (n + 1)).space := by
   let a : ((kOmegaSpectrum (F.obj x)).level n).space ⟶
       ((kKanSequence (F.obj y)).level n).space := monicKToRawLevelMap (F.map f) n
@@ -37,7 +37,7 @@ lemma monicKPrismCompositeCompatibilityAt_raw (n : ℕ) :
     exact pointedHomVertexEquiv_suspension a
   change lift (_ ≫ SSet.const (familyVertex a) ≫ (suspensionHom _ _).right) _ ≫ _ =
     (monicKPrismCompositeCompatibility F f g n).h ≫
-      _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ a)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre (PointedSimplicialSet.circle.{u} ◁ a)
         ((kKanSequence (F.obj z)).level (n + 1)).space
   simp only [SSet.const_comp, SSet.comp_const, hs]
   exact pointedFamilyComposition_const_left _ _

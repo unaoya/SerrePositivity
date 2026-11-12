@@ -21,15 +21,15 @@ variable (X : ℕ → PointedSimplicialSet.{u}) (p : ∀ n, X (n + 1) ⟶ X n)
 
 /-- Milnor 完全列の lim¹ から極限のホモトピー群への実際の単射。 -/
 def limOneBoundary
-    (a : _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
+    (a : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (X n).right (r + 1) (X n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (p n))) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kan.FibrationTower.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.limit (fun n ↦ (X n).right) (fun n ↦ (p n).right))
       r (limitBasepoint X p) :=
   ((kernelLimOneEquiv X p r).symm a).val
 
 /-- Milnor の単射は lim¹ の基点を単位元へ送る。 -/
 @[simp]
-lemma limOneBoundary_point : limOneBoundary X p r (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.point _ _) = 1 := by
+lemma limOneBoundary_point : limOneBoundary X p r (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.point _ _) = 1 := by
   unfold limOneBoundary
   rw [kernelLimOneEquiv_symm_point]
   rfl

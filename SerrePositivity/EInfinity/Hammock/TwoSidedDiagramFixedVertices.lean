@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.FixedVertexChainCoordinates
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates
 public import SerrePositivity.EInfinity.Hammock.TwoSidedDiagramDiagonalLabels
 /-!
 # 元の部分対角の固定頂点表示
@@ -18,7 +18,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram.FixedVertices
 open CategoryTheory Opposite
-variable (D : SimplicialObject Data.{u}) {O : Type u}
+variable (D : SimplicialObject _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u}) {O : Type u}
   (p : (n : SimplexCategoryᵒᵖ) → O ≃ (D.obj n).base)
   (hp : ∀ {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (o : O),
     (D.map θ).base.obj (p n o) = p m o)
@@ -26,25 +26,25 @@ variable (D : SimplicialObject Data.{u}) {O : Type u}
 
 abbrev factors (n : SimplexCategoryᵒᵖ) :=
   Σ x : Fin (k.unop.len + 1) → O,
-    FixedVertexChainCoordinates.Fiber (p n) (leftLabels D n) (rightLabels D n) k.unop.len x
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.Fiber (p n) (leftLabels D n) (rightLabels D n) k.unop.len x
 
 def degreeEquiv (n : SimplexCategoryᵒᵖ) : (chainRow D k).obj n ≃ factors D p k n :=
-  FixedVertexChainCoordinates.equivalence (p n) (leftLabels D n) (rightLabels D n) k.unop.len
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.equivalence (p n) (leftLabels D n) (rightLabels D n) k.unop.len
 
 def map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (e : factors D p k n) : factors D p k m :=
-  ⟨e.1, FixedVertexChainCoordinates.fiberMap (p m) (D.map θ).base
+  ⟨e.1, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.fiberMap (p m) (D.map θ).base
     (leftLabelsMap D θ) (rightLabelsMap D θ) (hp θ) e.1 e.2⟩
 
 lemma degreeEquiv_symm_map {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m) (e : factors D p k n) :
     (degreeEquiv D p k m).symm (map D p hp k θ e) =
       (chainRow D k).map θ ((degreeEquiv D p k n).symm e) := by
   rcases e with ⟨x, v⟩
-  change FixedVertexChainCoordinates.decode (p m) _ _ _ x
-    (FixedVertexChainCoordinates.fiberMap (p m) (D.map θ).base
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.decode (p m) _ _ _ x
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.fiberMap (p m) (D.map θ).base
       (leftLabelsMap D θ) (rightLabelsMap D θ) (hp θ) x v) =
-    (chainRow D k).map θ (FixedVertexChainCoordinates.decode (p n) _ _ _ x v)
+    (chainRow D k).map θ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.decode (p n) _ _ _ x v)
   rw [chainRow_map]
-  exact (FixedVertexChainCoordinates.decode_naturality (p m) (D.map θ).base
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedVertexChainCoordinates.decode_naturality (p m) (D.map θ).base
     (leftLabelsMap D θ) (rightLabelsMap D θ) (hp θ) x v).symm
 
 def space : SSet.{u} where

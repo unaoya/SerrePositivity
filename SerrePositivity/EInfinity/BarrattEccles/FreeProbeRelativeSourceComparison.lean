@@ -23,9 +23,9 @@ variable (A : Type u) [CommRing A] (X : Complex A)
 方針：元の零単体の全後合成を計算する。
 規約：同じ置換対象を保持。使われ方：端点同型の元の成分辺への回収。 -/
 lemma freeProbeCAlgSource_relativeReplacement_vertex :
-    (freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X) =
+    (freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X) =
     (cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-      (nerveVertex (ULiftHom.objUp.{u + 1, u + 1}
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (ULiftHom.objUp.{u + 1, u + 1}
         ((cofibrantAlgebraReplacement A).obj (freeProbeElementCofibrantSource A X).obj))) := by
   apply congrArg ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌))
   exact ComposableArrows.ext₀ rfl
@@ -34,9 +34,9 @@ lemma freeProbeCAlgSource_relativeReplacement_vertex :
 方針：同じ置換 augmentation の実反転辺と零単体の表示等式を使う。
 規約：元の置換比較射を保持。使われ方：実 U の全源自然性による単位の端点照合。 -/
 def freeProbeRelativeFullSourceIso :
-    VertexIso ((freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (nerveVertex X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso ((freeProbeCAlgSource A).app (Opposite.op ⦋0⦌) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X))
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex (freeProbeRelativeElementSource A X))) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X))) := by
   let C := cofibrantAlgebraRelativeCategory A
   let f := (cofibrantDKComparison A).app (freeProbeRelativeElementSource A X)
   have : IsIso (Truncated.HomotopyCategory.homMk
@@ -53,9 +53,9 @@ def freeProbeRelativeFullSourceIso :
 方針：既存の自由源の頂点比較の逆を同じ置換 augmentation の同型へ接続する。
 規約：選択済み頂点を変更しない。使われ方：標準単位比較の自由側端点輸送。 -/
 def freeProbeRelativeChosenSourceIso :
-    VertexIso (cAlgVertex A ((freeProbeFunctor A).obj X))
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.VertexIso (cAlgVertex A ((freeProbeFunctor A).obj X))
       ((cAlgLocalizationSource A).app (Opposite.op ⦋0⦌)
-        (nerveVertex (freeProbeRelativeElementSource A X))) :=
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (freeProbeRelativeElementSource A X))) :=
   (freeProbeCAlgSource_vertexIso A X).symm ≪≫ freeProbeRelativeFullSourceIso A X
 
 /-- 概要：元の全自由源の端点同型の順射は同じ置換 augmentation の局所化像。

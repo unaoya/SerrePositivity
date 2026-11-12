@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.Cofinality.ClosedFlagSupplyIso
-public import SerrePositivity.InfinityCategories.Stable.EquivalenceStability
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.EquivalenceStability
 
 /-!
 概要：元の相対旗自体を安定模型にし、供給側 R_P との完全な同型を保持する。
@@ -23,14 +23,14 @@ open scoped Simplicial
 使われ方：相対旗の安定性の移送。 -/
 def completionClosedFlagEquivalence (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
-    QCatEquivalence
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.QCatEquivalence
       (Fibration.Relative.closedFlagModel (completionImageClosedPredicate r ι f hf) n).carrier
       (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n)) := by
   let e := completionClosedFlagIso r ι f hf n
   exact ⟨e.hom, e.inv,
-    eqToIso (congrArg (fun h => HomotopyCategory.mk (functorVertex h)) e.hom_inv_id),
-    eqToIso (congrArg (fun h => HomotopyCategory.mk (functorVertex h)) e.inv_hom_id)⟩
+    eqToIso (congrArg (fun h => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex h)) e.hom_inv_id),
+    eqToIso (congrArg (fun h => HomotopyCategory.mk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex h)) e.inv_hom_id)⟩
 
 /-- 概要：元の全相対旗は安定である。
 方針：同じ供給側 R_P との同値で安定性を移す。
@@ -38,8 +38,8 @@ def completionClosedFlagEquivalence (r : ℕ) (ι : Fin r → SimplexCategoryᵒ
 使われ方：相対旗の S 構成の入力。 -/
 lemma completionRelativeFlags_isStable (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
-    IsStable (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n)) :=
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n)) :=
   (completionClosedFlagEquivalence r ι f hf n).isStable_iff.mp inferInstance
 
 /-- 概要：元の相対旗そのものの安定模型。
@@ -48,7 +48,7 @@ lemma completionRelativeFlags_isStable (r : ℕ) (ι : Fin r → SimplexCategory
 使われ方：元の相対旗に対する S と実現の適用。 -/
 def completionRelativeFlagStableModel (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) : StableModel.{u} where
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) : StableModel.{u} where
   carrier := suppliedMultiRelativeFlags stableWideCofinalitySupply r ι f hf (stdSimplex.obj n)
   quasicategory := inferInstance
   stable := completionRelativeFlags_isStable r ι f hf n
@@ -59,21 +59,21 @@ def completionRelativeFlagStableModel (r : ℕ) (ι : Fin r → SimplexCategory�
 使われ方：相対 fiber の元の core S 実現への接続。 -/
 def completionClosedFlagStableIso (r : ℕ) (ι : Fin r → SimplexCategoryᵒᵖ)
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) (n : SimplexCategory) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) (n : SimplexCategory) :
     Fibration.Relative.closedFlagModel (completionImageClosedPredicate r ι f hf) n ≅
       completionRelativeFlagStableModel r ι f hf n where
   hom := by
     letI := completionRelativeFlags_isStable r ι f hf n
     let e := completionClosedFlagEquivalence r ι f hf n
-    have hE : IsExactFunctor e.hom := isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
-    exact ⟨e.hom, @IsExactFunctor.preservesZero _ _ e.hom hE,
-      fun t ht => @IsExactFunctor.preservesCofiber _ _ e.hom hE t ht⟩
+    have hE : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.hom := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.isQCatEquivalence
+    exact ⟨e.hom, @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ e.hom hE,
+      fun t ht => @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber _ _ e.hom hE t ht⟩
   inv := by
     letI := completionRelativeFlags_isStable r ι f hf n
     let e := completionClosedFlagEquivalence r ι f hf n
-    have hE : IsExactFunctor e.inv := isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
-    exact ⟨e.inv, @IsExactFunctor.preservesZero _ _ e.inv hE,
-      fun t ht => @IsExactFunctor.preservesCofiber _ _ e.inv hE t ht⟩
+    have hE : _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor e.inv := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.isExactFunctor_of_isQCatEquivalence e.symm.isQCatEquivalence
+    exact ⟨e.inv, @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesZero _ _ e.inv hE,
+      fun t ht => @_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor.preservesCofiber _ _ e.inv hE t ht⟩
   hom_inv_id := Subtype.ext (completionClosedFlagIso r ι f hf n).hom_inv_id
   inv_hom_id := Subtype.ext (completionClosedFlagIso r ι f hf n).inv_hom_id
 

@@ -15,7 +15,7 @@ public import SerrePositivity.KST.Spectra.GroupCochainTotalization
 universe u
 
 open CategoryTheory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.GroupActionCochains
 
@@ -31,7 +31,7 @@ set_option backward.isDefEq.respectTransparency.types false
 def totalizationEndIso (G : Type u) [Group G]
     (D : AsSmall.{u} (SingleObj G) ⥤ PointedSimplicialSet.{u}) :
     PointedTotalization.obj (weightedCochains (universalCoverWeight G) D) ≅
-      PointedWeightedEnd.obj (bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D :=
+      PointedWeightedEnd.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} (SingleObj G))) D :=
   (totalizationEndNatIso G).app D
 
 end

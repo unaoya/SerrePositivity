@@ -20,7 +20,7 @@ open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
 variable (R : Type u) [CommRing R] (B : Mon (Complex R)) [B.X.IsStrictlyLE 0] (n : ℤ)
   {P : Mon (Complex R)} [P.X.IsStrictlyLE 0] (b : P ⟶ postnikov R B n)
-  (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+  (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
 
 lemma IsKConnective.postnikovExtensionBaseChangeBase_connected
     {k : ℤ} (h : IsKConnective R Φ k) (hn : 0 ≤ n) :

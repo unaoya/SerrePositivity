@@ -35,7 +35,7 @@ namespace SerrePositivity.KST.Descent
 variable {C : Type u} [Category.{v} C] [HasFiniteLimits C]
   {V : Type w} [Category.{t} V] {W X Y : C} (cover : W ⟶ Y) (f : X ⟶ Y)
   (U : V ⥤ SSet.{0}) [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：全対象で弱同値な transfer の合成と分裂した底変換から元の実降下を得る（補題 3.2）。

@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.FunctorIsoPointEvaluation
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionEndpoint
+public import SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorIsoPointEvaluation
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorExtensionEndpoint
 
 /-!
 概要：既存の具体的終点比較を元の二延長の同じ指定同型の像として表示する。

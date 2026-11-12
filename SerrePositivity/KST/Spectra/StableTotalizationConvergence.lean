@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Spectra.StableTotalizationMilnorExactness
-public import SerrePositivity.InfinityCategories.Kan.TowerLimOneMittagLeffler
+public import SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOneMittagLeffler
 
 /-!
 概要：BF 整数次数の Milnor 比較の全単射性と lim¹ 消滅、Mittag–Leffler による収束。
@@ -34,8 +34,8 @@ lemma comparison_bijective_iff :
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
     Function.Bijective (comparison D hD hΩ j k r hk) ↔
-      Subsingleton (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.limOne
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+      Subsingleton (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.TowerLimOne.limOne
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
         (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n))) := by
   let := PointedTotalization.kanComplex (D ⋙ KanSequence.levelEvaluation k)
@@ -57,8 +57,8 @@ lemma comparison_bijective_of_mittagLeffler :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
         (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n)) →
       Function.Bijective (comparison D hD hΩ j k r hk) := by
@@ -70,7 +70,7 @@ lemma comparison_bijective_of_mittagLeffler :
     fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
   intro hML
   exact (comparison_bijective_iff D hD hΩ j k r hk).2
-    (_root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.subsingleton_of_mittagLeffler _ _ hML)
+    (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.subsingleton_of_mittagLeffler _ _ hML)
 
 /-- 実際の骨格塔の Mittag–Leffler 条件による全整数次数の収束同型。 -/
 def groupEquivOfMittagLeffler :
@@ -80,8 +80,8 @@ def groupEquivOfMittagLeffler :
       fun n ↦ stage_kanComplex _ (hD k) n
     letI : ∀ n, Fibration (step (D ⋙ KanSequence.levelEvaluation k) n).right :=
       fun n ↦ map_fibration _ (hD k) (Nat.le_succ n)
-    _root_.SerrePositivity.InfinityCategories.Kan.TowerLimOne.IsMittagLeffler
-      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.IsMittagLeffler
+      (fun n ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup (stage (D ⋙ KanSequence.levelEvaluation k) n).right
         (r + 1) (stage (D ⋙ KanSequence.levelEvaluation k) n).basepoint)
       (fun n ↦ pointedGroupMap (r + 1) (step (D ⋙ KanSequence.levelEvaluation k) n)) →
       OmegaSpectrum.homotopyGroup (KanSequence.totalizationSpectrum D hD hΩ) j ≃*

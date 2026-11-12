@@ -13,11 +13,11 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
 def normalizedTensorConeEdgeSimplex (i : normalizedTensorElementIndex A X Y) :
-    Simplex A (Complex A) 1 where
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex A (Complex A) 1 where
   toSimplexData := normalizedTensorConeData A X Y (ComposableArrows.mk₀ i)
   equation I a b k hI ha hb hk := by
     have hi : I.card ≤ 2 := by simpa using I.card_le_univ

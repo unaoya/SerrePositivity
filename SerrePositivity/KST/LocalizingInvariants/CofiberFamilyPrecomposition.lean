@@ -18,11 +18,11 @@ open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants.CofiberFamily
 
-def precompositionIso {A B X : SSet.{u}} [Quasicategory X] [IsStable X]
+def precompositionIso {A B X : SSet.{u}} [Quasicategory X] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable X]
     (a : A ⟶ (ihom (Δ[1] : SSet.{u})).obj X) (i : B ⟶ A) :
-    FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) (_root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (i ≫ a)) := by
-  have h := FunctorIso.precomp (compositionIso X a) i
-  have e : FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X a) ((i ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.Stable.Exact.CofiberFamily.cofiber X (𝟙 _)) := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X a) (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (i ≫ a)) := by
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (compositionIso X a) i
+  have e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (i ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X a) ((i ≫ a) ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Exact.CofiberSquareFamily.cofiber X (𝟙 _)) := by
     simpa only [Category.assoc] using h
   exact e ≪≫ (compositionIso X (i ≫ a)).symm
 

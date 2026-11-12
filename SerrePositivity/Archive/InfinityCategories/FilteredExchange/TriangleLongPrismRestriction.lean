@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.RelativeExtensionRestriction
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.ContractibleVertexIsoNaturality
-public import SerrePositivity.InfinityCategories.F1.Scaffold.ScaffoldFirstVertex
-public import SerrePositivity.InfinityCategories.F1.Transport.PrismLiftSpace
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ScaffoldFirstVertex
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.PrismLiftSpace
 
 /-!
 概要：始点固定の全三角形の延長空間を、同じ長辺の prism 延長空間へ制限する。

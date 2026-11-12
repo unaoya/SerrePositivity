@@ -21,27 +21,27 @@ namespace SerrePositivity.KST.LocalizingInvariants
 
 private lemma opTensorBoundary_natural {A B A' B' : SSet.{u}}
     (f : A ⟶ A') (g : B ⟶ B') :
-    SSet.opFunctor.map (f ⊗ₘ g) ≫ (opTensorIso A' B').inv =
-      (opTensorIso A B).inv ≫ (SSet.opFunctor.map f ⊗ₘ SSet.opFunctor.map g) := rfl
+    SSet.opFunctor.map (f ⊗ₘ g) ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso A' B').inv =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso A B).inv ≫ (SSet.opFunctor.map f ⊗ₘ SSet.opFunctor.map g) := rfl
 
 def initialConeTensorOldIso (A L : SSet.{u}) :
-    (A.op ⊗ join L.op (Δ[0] : SSet.{u})).op ≅ A ⊗ join (Δ[0] : SSet.{u}) L :=
-  (opTensorIso A.op (join L.op (Δ[0] : SSet.{u}))).symm ≪≫
+    (A.op ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op (Δ[0] : SSet.{u})).op ≅ A ⊗ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso A.op (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join L.op (Δ[0] : SSet.{u}))).symm ≪≫
     tensorIso (SSet.opFunctorCompOpFunctorIso.app A) (initialConeOppositeIso L)
 
 def initialConeTensorTailIso (A L : SSet.{u}) :
-    (join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ≅ join (Δ[0] : SSet.{u}) A ⊗ L :=
-  (opTensorIso (join A.op (Δ[0] : SSet.{u})) L.op).symm ≪≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op (Δ[0] : SSet.{u}) ⊗ L.op).op ≅ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ⊗ L :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join A.op (Δ[0] : SSet.{u})) L.op).symm ≪≫
     tensorIso (initialConeOppositeIso A) (SSet.opFunctorCompOpFunctorIso.app L)
 
 def initialConeTensorOverlapIso (A L : SSet.{u}) : (A.op ⊗ L.op).op ≅ A ⊗ L :=
-  (opTensorIso A.op L.op).symm ≪≫
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.opTensorIso A.op L.op).symm ≪≫
     tensorIso (SSet.opFunctorCompOpFunctorIso.app A) (SSet.opFunctorCompOpFunctorIso.app L)
 
 lemma initialConeTensorOldIso_overlap (A L : SSet.{u}) :
-    SSet.opFunctor.map (A.op ◁ joinInl L.op (Δ[0] : SSet.{u})) ≫
+    SSet.opFunctor.map (A.op ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl L.op (Δ[0] : SSet.{u})) ≫
       (initialConeTensorOldIso A L).hom =
-      (initialConeTensorOverlapIso A L).hom ≫ (A ◁ joinInr (Δ[0] : SSet.{u}) L) := by
+      (initialConeTensorOverlapIso A L).hom ≫ (A ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) L) := by
   simp only [initialConeTensorOldIso, initialConeTensorOverlapIso,
     Iso.trans_hom, Iso.symm_hom, tensorIso_hom, ← id_tensorHom]
   rw [← Category.assoc, opTensorBoundary_natural]
@@ -49,9 +49,9 @@ lemma initialConeTensorOldIso_overlap (A L : SSet.{u}) :
     Category.id_comp, Category.comp_id, initialConeOppositeIso_old]
 
 lemma initialConeTensorTailIso_overlap (A L : SSet.{u}) :
-    SSet.opFunctor.map (joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) ≫
+    SSet.opFunctor.map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInl A.op (Δ[0] : SSet.{u}) ▷ L.op) ≫
       (initialConeTensorTailIso A L).hom =
-      (initialConeTensorOverlapIso A L).hom ≫ (joinInr (Δ[0] : SSet.{u}) A ▷ L) := by
+      (initialConeTensorOverlapIso A L).hom ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) A ▷ L) := by
   simp only [initialConeTensorTailIso, initialConeTensorOverlapIso,
     Iso.trans_hom, Iso.symm_hom, tensorIso_hom, ← tensorHom_id]
   rw [← Category.assoc, opTensorBoundary_natural]
@@ -61,9 +61,9 @@ lemma initialConeTensorTailIso_overlap (A L : SSet.{u}) :
 lemma initialConeTensorOldInclusion_view (A L : SSet.{u}) :
     initialConeTensorOldInclusion A L ≫ initialConeTensorCornerInclusion A L =
       (initialConeTensorOldIso A L).hom ≫
-        (joinInr (Δ[0] : SSet.{u}) A ▷ join (Δ[0] : SSet.{u}) L) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) A ▷ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) L) := by
   rw [initialConeTensorOldInclusion, initialConeTensorCornerInclusion,
-    ← Category.assoc, ← SSet.opFunctor.map_comp, F2.Ind.coneTensorCornerInclusion_old]
+    ← Category.assoc, ← SSet.opFunctor.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCornerInclusion_old]
   simp only [initialConeTensorOldIso, Iso.trans_hom, Iso.symm_hom, tensorIso_hom,
     ← tensorHom_id]
   rw [← Category.assoc, opTensorBoundary_natural]
@@ -73,9 +73,9 @@ lemma initialConeTensorOldInclusion_view (A L : SSet.{u}) :
 lemma initialConeTensorTailInclusion_view (A L : SSet.{u}) :
     initialConeTensorTailInclusion A L ≫ initialConeTensorCornerInclusion A L =
       (initialConeTensorTailIso A L).hom ≫
-        (join (Δ[0] : SSet.{u}) A ◁ joinInr (Δ[0] : SSet.{u}) L) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.join (Δ[0] : SSet.{u}) A ◁ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{u}) L) := by
   rw [initialConeTensorTailInclusion, initialConeTensorCornerInclusion,
-    ← Category.assoc, ← SSet.opFunctor.map_comp, F2.Ind.coneTensorCornerInclusion_lower]
+    ← Category.assoc, ← SSet.opFunctor.map_comp, _root_.SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.coneTensorCornerInclusion_lower]
   simp only [initialConeTensorTailIso, Iso.trans_hom, Iso.symm_hom, tensorIso_hom,
     ← id_tensorHom]
   rw [← Category.assoc, opTensorBoundary_natural]

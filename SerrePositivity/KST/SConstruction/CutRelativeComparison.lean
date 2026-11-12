@@ -33,7 +33,7 @@ lemma cutStableComparison_relative_mem (n : ℕ) (k : Fin (n + 1)) (X : StableMo
 def cutRelativeComparisonMap (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :
     sConstruction n X.carrier ⟶
       relativeCofiberDiagrams (cutLeftSupport n k X) (cutRightSupport n k X) :=
-  fullSubcomplexLift
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift
     (relativeCofiberPredicate (cutLeftSupport n k X) (cutRightSupport n k X)).predicate
     (cutStableComparison n k X).val (cutStableComparison_relative_mem n k X)
 
@@ -42,7 +42,7 @@ lemma cutRelativeComparisonMap_inclusion (n : ℕ) (k : Fin (n + 1)) (X : Stable
     cutRelativeComparisonMap n k X ≫
         (relativeCofiberInclusion (cutLeftSupport n k X) (cutRightSupport n k X)).val =
       (cutStableComparison n k X).val :=
-  fullSubcomplexLift_ι _ _ _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexLift_ι _ _ _
 
 /-- 左右の支持部分圏の相対 E への切断比較は完全関手。 -/
 def cutRelativeComparison (n : ℕ) (k : Fin (n + 1)) (X : StableModel.{u}) :

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.GappedIso
 public import SerrePositivity.KST.SConstruction.CofiberMaps
-public import SerrePositivity.InfinityCategories.Core.FunctorEdgePointwise
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FunctorEdgePointwise
 public import Mathlib.AlgebraicTopology.SimplicialSet.ProdStdSimplex
 
 /-! # 頂点ごとに変わる時刻での自然同値の評価
@@ -38,8 +38,8 @@ def intervalMin : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ Δ[1] :=
 規約：任意の単体次数。使われ方：可変時刻の辺の始点での可逆性。 -/
 lemma intervalMin_app_zero {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
     intervalMin.app (Opposite.op ⦋n⦌)
-        (s, PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n) =
-      PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n := by
+        (s, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (0 : Fin 2)) n := by
   apply ULift.ext
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext
@@ -52,7 +52,7 @@ lemma intervalMin_app_zero {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
 規約：任意の単体次数。使われ方：可変時刻の辺の終点での可逆性。 -/
 lemma intervalMin_app_one {n : ℕ} (s : (Δ[1] : SSet.{u}) _⦋n⦌) :
     intervalMin.app (Opposite.op ⦋n⦌)
-      (s, PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n) = s := by
+      (s, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic.PinchedHom.constant (stdSimplex.obj₀Equiv.symm (1 : Fin 2)) n) = s := by
   apply ULift.ext
   apply SimplexCategory.Hom.ext
   apply OrderHom.ext

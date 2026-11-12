@@ -14,7 +14,7 @@ public import SerrePositivity.KST.Spectra.KanSequenceAdjointMap
 @[expose] public section
 universe u
 open CategoryTheory MonoidalCategory MonoidalClosed SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 
 namespace SerrePositivity.KST.Spectra.KanSequence
 noncomputable section
@@ -31,7 +31,7 @@ lemma totalizationComparison_adjoint (D : CosimplicialObject KanSequence.{u}) (n
         (levelDiagram (AsSmall.down ⋙ D) (n + 1))) := by
   exact PointedWeightedEnd.preMap_adjoint
     (I := AsSmall.{u} SimplexCategory)
-    (W := bousfieldKanWeight (AsSmall.{u} SimplexCategory))
+    (W := _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight (AsSmall.{u} SimplexCategory))
     (V := AsSmall.down ⋙ stdSimplex.{u})
     CosimplicialLastVertex.weightMap.{u} (AsSmall.down ⋙ D) n
 
@@ -48,7 +48,7 @@ def totalizationComparison (D : CosimplicialObject KanSequence.{u})
 /-- 構造射と可換な比較は各段で全基点 π 同型。 -/
 lemma totalizationComparison_levelwise (D : CosimplicialObject KanSequence.{u})
     (hD : TotalizationReedy D) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((totalizationComparison D hD).app n).right := by
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((totalizationComparison D hD).app n).right := by
   exact PointedTotalization.standardEnd_preMap_piIsomorphism
     (D ⋙ levelEvaluation n) (hD n)
 

@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitUnitCospan
-public import SerrePositivity.InfinityCategories.Core.CatInfinity.TrianglePrismFaces
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.TrianglePrismFaces
 
 /-!
 概要：元の単位三角柱を、共有面を厳密に保つ三つの三単体へ分解する。

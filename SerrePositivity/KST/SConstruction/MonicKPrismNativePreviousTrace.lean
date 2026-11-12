@@ -14,7 +14,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.KST.SConstruction
 open CategoryTheory MonoidalCategory CartesianMonoidalCategory SSet Spectra
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 open scoped Simplicial
 local instance nativePreviousTracePointedCategory :
     SimplicialCategory PointedSimplicialSet.{u} := PointedEnrichment.simplicialCategory
@@ -33,7 +33,7 @@ lemma monicKPrismCompatibilityInterchangeTrace_one_step (n : ℕ) :
   congr 1
   funext h
   dsimp only [RawSpectrumMapping.step]
-  have hs := suspensionHom_post ((kOmegaSpectrum (F.obj x)).level n).space
+  have hs := _root_.SerrePositivity.InfinityCategories.HomotopyLimits.suspensionHom_post ((kOmegaSpectrum (F.obj x)).level n).space
     (kKanSequenceLevelMap (F.map g) n)
   change (PointedObject.basedHomMap ((kOmegaSpectrum (F.obj x)).level n).space
       (kKanSequenceLevelMap (F.map g) n)).right ≫
@@ -41,23 +41,23 @@ lemma monicKPrismCompatibilityInterchangeTrace_one_step (n : ℕ) :
         ((kKanSequence (F.obj z)).level n).space).right =
     (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
         ((kKanSequence (F.obj y)).level n).space).right ≫
-      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+      (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
         (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map g) n)).right at hs
   calc
-    _ = (fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ▷
+    _ = (fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ▷
         (Δ[1] : SSet.{u})) ≫ h ≫
         (suspensionHom ((kOmegaSpectrum (F.obj x)).level n).space
           ((kKanSequence (F.obj y)).level n).space).right ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
           (PointedSimplicialSet.circle.{u} ◁ kKanSequenceLevelMap (F.map g) n)).right ≫
-        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+        (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
           ((kKanSequence (F.obj z)).sigma n)).right := by
       simp only [← PointedEnrichment.whiskerLeft_eq, eHomWhiskerLeft_comp]
     _ = _ := by
       simpa only [Category.assoc] using congrArg (fun q =>
-        (fst (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString g)) ▷
+        (fst (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f)) (nerve (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString g)) ▷
           (Δ[1] : SSet.{u})) ≫ h ≫ q ≫
-          (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.F1.Pointed.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
+          (PointedObject.basedHomMap (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.suspension ((kOmegaSpectrum (F.obj x)).level n).space)
             ((kKanSequence (F.obj z)).sigma n)).right) hs.symm
 
 /-- 貼り合わせ複体の一境界は、前段の元の前半 trace 全体の同じ構造射の像。 -/

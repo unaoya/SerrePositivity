@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.RelativeFunctorExtensionSpace
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorSpaceCurrying
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.RelativeFunctorExtensionSpace
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.FunctorSpaceCurrying
 
 /-!
 概要：相対延長空間の普遍的な全延長は、全パラメータで同じ元の初期値を保持する。

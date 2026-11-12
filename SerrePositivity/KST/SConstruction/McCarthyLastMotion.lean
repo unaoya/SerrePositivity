@@ -21,7 +21,7 @@ open scoped Simplicial
 規約：α と τ は同じ有限鎖を始域とする。使われ方：μ の Ar 図式の添字。 -/
 def mcCarthyMovedOrder {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) : Fin (n + 1) →o Fin (m + 1) :=
-  (prismLastOrderHom m).comp (τ.prod α)
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastOrderHom m).comp (τ.prod α)
 
 /-- 概要：動かした添字は元の添字以上。
 方針：時刻零は等号、時刻一は最後の頂点への不等式。
@@ -61,7 +61,7 @@ lemma mcCarthyMovedOrder_one {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1)) :
 規約：時刻の切れ目を持つ全ての単体を含む。使われ方：左 fiber のパラメーターの変換。 -/
 lemma mcCarthyMovedOrder_simplex {n m : ℕ} (α : (Δ[m] : SSet.{u}) _⦋n⦌)
     (τ : (Δ[1] : SSet.{u}) _⦋n⦌) :
-    stdSimplex.objEquiv ((prismLastContraction m).app (Opposite.op ⦋n⦌) (τ, α)) =
+    stdSimplex.objEquiv ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.prismLastContraction m).app (Opposite.op ⦋n⦌) (τ, α)) =
       SimplexCategory.mkHom (mcCarthyMovedOrder (stdSimplex.objEquiv α).toOrderHom
         (stdSimplex.objEquiv τ).toOrderHom) := rfl
 
@@ -79,7 +79,7 @@ def mcCarthyArMotion {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
 規約：射の厳密な等号。使われ方：λ の上辺。 -/
 lemma mcCarthyArMotion_zero {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) :
-    prismEndpoint 0 (arNerve n) ≫ mcCarthyArMotion.{u} α τ = arNerveMap α :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 0 (arNerve n) ≫ mcCarthyArMotion.{u} α τ = arNerveMap α :=
   orderPrism_zero _ _ _
 
 /-- 概要：Ar の変換の終点は動かした添字 μ の制限。
@@ -87,7 +87,7 @@ lemma mcCarthyArMotion_zero {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
 規約：射の厳密な等号。使われ方：μ の上辺。 -/
 lemma mcCarthyArMotion_one {n m : ℕ} (α : Fin (n + 1) →o Fin (m + 1))
     (τ : Fin (n + 1) →o Fin 2) :
-    prismEndpoint 1 (arNerve n) ≫ mcCarthyArMotion.{u} α τ =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.prismEndpoint 1 (arNerve n) ≫ mcCarthyArMotion.{u} α τ =
       arNerveMap (mcCarthyMovedOrder α τ) := orderPrism_one _ _ _
 
 /-- 概要：Ar の変換は元の添字と時刻の面・退化の前合成と可換。

@@ -21,10 +21,10 @@ lemma sTwoCofiberComparison_evaluation (X : StableModel.{u})
     (q : (Δ[1] ⊗ Δ[1] : SSet.{u}) _⦋0⦌) :
     (sTwoCofiberComparison X ≫ cofiberStableEvaluation X q).val =
       (gappedSubcomplex 2 X.carrier).ι ≫
-        evaluateFunctorAt (arTwoMiddleSquare.app (Opposite.op ⦋0⦌) q) := by
+        _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt (arTwoMiddleSquare.app (Opposite.op ⦋0⦌) q) := by
   change (sTwoCofiberRestriction X.carrier ≫
-    (fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫ evaluateFunctorAt q = _
-  rw [sTwoCofiberRestriction_ι, Category.assoc, stable_pre_evaluateFunctorAt]
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.fullSubcomplexOnVertices _ IsCofiberDiagramVertex).ι) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt q = _
+  rw [sTwoCofiberRestriction_ι, Category.assoc, _root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.stable_pre_evaluateFunctorAt]
 
 /-- S₂ の中央四角形の subobject・quotient の正の反復実現における射対。 -/
 def sTwoRealizationAdditivityMap (r : ℕ) (X : StableModel.{u}) :

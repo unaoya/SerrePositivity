@@ -19,10 +19,10 @@ open SerrePositivity.InfinityCategories SerrePositivity.KST.SConstruction
 namespace SerrePositivity.KST.Spectra
 
 private lemma d3AlternatingIso_normalize_trans {A X : SSet.{u}}
-    {f g h f' g' h' : A ⟶ X} (e : FunctorIso f g) (d : FunctorIso g h)
+    {f g h f' g' h' : A ⟶ X} (e : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso f g) (d : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso g h)
     (hf : f = f') (hg : g = g') (hh : h = h') :
-    F2.functorIsoOfEq (e ≪≫ d) hf hh =
-      F2.functorIsoOfEq e hf hg ≪≫ F2.functorIsoOfEq d hg hh := by
+    _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq (e ≪≫ d) hf hh =
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq e hf hg ≪≫ _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq d hg hh := by
   subst f' g' h'
   rfl
 
@@ -42,17 +42,17 @@ local instance d3AlternatingSpectrumCategory : SimplicialCategory OmegaSpectrum.
 
 /-- 偶数段は元の同じ比較、奇数段は同じ実全図式反転を保った比較。 -/
 def commonChosenStageAlternatingSourceIso (n : ℕ) :
-    FunctorIso (coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
-      (commonChosenStageLoopDiagramFamily n ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (commonRefinedStageKanEnriched.{u} n))
+      (commonChosenStageLoopDiagramFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
   if Even n then commonChosenStageRefinedSourceNormalizedIso n
   else commonChosenStageRefinedSourceNormalizedIso n ≪≫ commonChosenStageReflection n
 
 /-- 実際に構成した同じ次段比較へ通常 loop を施し、同じ実像へ端点だけ正規化する。 -/
 def commonChosenStageAlternatingLoopSourceIso (n : ℕ) :
-    FunctorIso (coherentNerveMap ((commonRefinedStageKanEnriched.{u} (n + 1)).comp
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap ((commonRefinedStageKanEnriched.{u} (n + 1)).comp
       SSet pointedKanLoopEnrichedFunctor))
-      (commonChosenStageLoopImageFamily n ≫ loopDiagramEvaluation PointedKanInfinity 0 0) :=
-  F2.functorIsoOfEq ((commonChosenStageAlternatingSourceIso (n + 1)).postcomp
+      (commonChosenStageLoopImageFamily n ≫ _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) :=
+  _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIsoOfEq ((commonChosenStageAlternatingSourceIso (n + 1)).postcomp
     pointedKanLoopInfinity) (commonChosenStageRefinedLoopSource_enriched n)
       (commonChosenStageLoopImageFamily_corner n 0 0).symm
 
@@ -64,7 +64,7 @@ lemma commonChosenStageAlternatingLoopSourceIso_eq (n : ℕ) :
   unfold commonChosenStageAlternatingLoopSourceIso commonChosenStageAlternatingSourceIso
   split_ifs
   · rfl
-  · rw [F2.functorIso_postcomp_trans, d3AlternatingIso_normalize_trans _ _ _
+  · rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_postcomp_trans, d3AlternatingIso_normalize_trans _ _ _
       (commonChosenStageLoopImageFamily_corner n 0 0).symm,
       commonChosenStageImageReflection_loop]
     rfl
@@ -73,13 +73,13 @@ lemma commonChosenStageAlternatingLoopSourceIso_eq (n : ℕ) :
 lemma commonChosenStageImageReflection_involution (n : ℕ) :
     commonChosenStageImageReflection.{u} n ≪≫ commonChosenStageImageReflection n =
       Iso.refl _ := by
-  have h := congrArg (fun e ↦ FunctorIso.precomp e (commonChosenStageLoopImageFamily.{u} n))
+  have h := congrArg (fun e ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp e (commonChosenStageLoopImageFamily.{u} n))
     (d3LoopDiagramReflection_involution d3PointedKanLoopSection d3PointedKanLoopSection_target)
-  rw [F2.functorIso_precomp_trans] at h
-  have hr : (show FunctorIso (loopDiagramEvaluation PointedKanInfinity.{u} 0 0)
-      (loopDiagramEvaluation PointedKanInfinity 0 0) from Iso.refl _).precomp
+  rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_trans] at h
+  have hr : (show _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity.{u} 0 0)
+      (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) from Iso.refl _).precomp
         (commonChosenStageLoopImageFamily n) = Iso.refl _ := by
-    rw [F2.functorIso_precomp_eq_mapIso]
+    rw [_root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.functorIso_precomp_eq_mapIso]
     exact Functor.mapIso_refl _ _
   rw [hr] at h
   exact h
@@ -89,7 +89,7 @@ lemma commonChosenStageImageReflection_involution (n : ℕ) :
 lemma commonChosenStageAlternatingSource_structure_iff (n : ℕ) :
     (commonChosenStageAlternatingSourceIso.{u} n ≪≫
       (commonChosenStageStructureDiagramIso n).postcomp
-        (loopDiagramEvaluation PointedKanInfinity 0 0) =
+        (_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.loopDiagramEvaluation PointedKanInfinity 0 0) =
     commonProjectionStructureRefinedIso n ≪≫ commonChosenStageAlternatingLoopSourceIso n) ↔
     commonChosenStageLoopedCanonicalUnitIso.{u} n ≪≫
       commonChosenStageLoopReflectedSourceIso n = commonChosenStageCanonicalImageUnitIso n := by

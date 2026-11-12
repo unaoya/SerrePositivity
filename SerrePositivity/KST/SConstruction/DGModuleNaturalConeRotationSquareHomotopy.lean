@@ -10,7 +10,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleNaturalConeRotationSquar
 noncomputable section
 universe u v w
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 private lemma transportVal {M N : ModuleCategory R D} (f g g' : M ⟶ N)
     (e : g = g') (h : ModuleHomotopy R D f g) :
@@ -18,7 +18,7 @@ private lemma transportVal {M N : ModuleCategory R D} (f g g' : M ⟶ N)
   cases e
   rfl
 variable {P : Type w} [DGCategory R P]
-  (F G : DGFunctor R P (RightModule R D)) (η : StrictNatTrans F G)
+  (F G : DGFunctor R P (RightModule R D)) (η : _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.StrictNatTrans F G)
 local notation "CF" => dgModuleNaturalConeFunctor R D F G η
 local notation "ν" => dgModuleNaturalConeInr R D F G η
 local notation "U" => dgModuleNaturalConeFunctor R D G (CF) (ν)

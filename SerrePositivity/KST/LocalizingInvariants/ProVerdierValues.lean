@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.Stable.Verdier.Fractions.VerdierDiagramCategory
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.Fractions.VerdierDiagramCategory
 public import SerrePositivity.KST.LocalizingInvariants.ProFiberSequence
 
 /-!
@@ -17,26 +17,26 @@ universe u
 open CategoryTheory SSet
 open SerrePositivity.InfinityCategories SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant
-variable {Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
+variable {Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u} ⟶ Sp.{u}} (hΦ : IsLocalizingInvariant Φ)
 
-def fiberDiagramFunctor : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u} ⥤ FiberDiagram.{u} where
+def fiberDiagramFunctor : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u} ⥤ FiberDiagram.{u} where
   obj D := ⟨hΦ.fiberTriangle D, hΦ.fiberTriangle_isFiber D⟩
   map f := homPost Φ f
   map_id D := homPost_id Φ D.square
   map_comp f g := homPost_homComp Φ f g
 
-def proFiberSequence (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) : ProFiberSequence.{u} :=
+def proFiberSequence (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) : ProFiberSequence.{u} :=
   D.map hΦ.fiberDiagramFunctor
 
-lemma proFiberSequence_square (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (n : ℕ) :
+lemma proFiberSequence_square (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (n : ℕ) :
     ((hΦ.proFiberSequence D).obj n).triangle.square = (D.obj n).square ≫ Φ := rfl
 
-lemma proFiberSequence_inclusion (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (n : ℕ) :
+lemma proFiberSequence_inclusion (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (n : ℕ) :
     (ProFiberSequence.inclusion (hΦ.proFiberSequence D)).app n =
-      squareHoBottom ((D.obj n).square ≫ Φ) := rfl
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoBottom ((D.obj n).square ≫ Φ) := rfl
 
-lemma proFiberSequence_projection (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.Stable.Infinity.VerdierDiagram.{u}) (n : ℕ) :
+lemma proFiberSequence_projection (D : ProExcision.Tower _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.VerdierDiagram.{u}) (n : ℕ) :
     (ProFiberSequence.projection (hΦ.proFiberSequence D)).app n =
-      squareHoRight ((D.obj n).square ≫ Φ) := rfl
+      _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareHoRight ((D.obj n).square ≫ Φ) := rfl
 
 end SerrePositivity.KST.LocalizingInvariants.IsLocalizingInvariant

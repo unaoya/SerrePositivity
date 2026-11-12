@@ -13,7 +13,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.ComplexLimits
 open CategoryTheory SSet
-open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories DGNerve
+open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable (A : Type u) [CommRing A] (X Y : Complex A)
 
@@ -21,7 +21,7 @@ lemma normalizedTensorTriangleFront_Pinched_zero_hom {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (h0 : ∀ i ∈ I, τ i = 0) :
     HEq ((normalizedTensorTriangleFront A X Y c τ).hom I a b k hI ha hb hk)
       ((normalizedTensorTrianglePinched A X Y c τ).hom I a b k hI ha hb hk) := by
@@ -37,7 +37,7 @@ lemma normalizedTensorTriangleFront_Pinched_zero_hom {n : ℕ}
   change HEq ((normalizedTensorTrianglePinched A X Y c τ).hom I a b k hI ha hb hk)
     ((p.val.pullback Fin.castSuccOrderEmb.toOrderHom).hom I a b k hI ha hb hk) at he
   have hs : p.val.pullback Fin.castSuccOrderEmb.toOrderHom =
-      (Simplex.vertex (A := A) X).pullback (OrderHom.const _ (0 : Fin 1)) := p.source
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (A := A) X).pullback (OrderHom.const _ (0 : Fin 1)) := p.source
   rw [hs] at he
   exact hf.trans he.symm
 
@@ -45,18 +45,18 @@ lemma normalizedTensorTriangleBack_Pinched_two_hom {n : ℕ}
     (c : ComposableArrows (normalizedTensorElementIndex A X Y) n)
     (τ : Fin (n + 1) →o Fin 3)
     (I : Finset (Fin (n + 1))) (a b : Fin (n + 1)) (k : ℤ) (hI : 2 ≤ I.card)
-    (ha : a = I.min' (Index.nonempty hI)) (hb : b = I.max' (Index.nonempty hI))
+    (ha : a = I.min' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI)) (hb : b = I.max' (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.nonempty hI))
     (hk : k = 2 - (I.card : ℤ)) (h2 : ∀ i ∈ I, τ i = 2) :
     HEq ((normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk)
       ((normalizedTensorTrianglePinched A X Y c τ).hom I a b k hI ha hb hk) := by
   have hf := simplexData_pullback_hom_eqOn
-    (closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.closedNerveSimplex (normalizedTensorElementEvaluatedColumn A X Y c ⋙
       complexToClosed A)).toSimplexData
     (coneTriangleBackIndex τ) (OrderHom.const _ (Fin.last (n + 1)))
     I a b k hI ha hb hk (fun i hi => coneTriangleBackIndex_two τ i (h2 i hi))
   rw [simplexData_pullback_const] at hf
   change HEq ((normalizedTensorTriangleBack A X Y c τ).hom I a b k hI ha hb hk)
-    (((Simplex.vertex (A := A)
+    (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Simplex.vertex (A := A)
       ((normalizedTensorElementEvaluatedColumn A X Y c).obj
         (Fin.last (n + 1)))).toSimplexData.pullback
         (OrderHom.const _ (0 : Fin 1))).hom I a b k hI ha hb hk) at hf
@@ -65,7 +65,7 @@ lemma normalizedTensorTriangleBack_Pinched_two_hom {n : ℕ}
   have he := simplexData_pullback_hom_eqOn p.val.toSimplexData
     (coneTriangleBackIndex τ) (OrderHom.const _ (Fin.last (n + 1)))
     I a b k hI ha hb hk (fun i hi => coneTriangleBackIndex_two τ i (h2 i hi))
-  rw [simplexData_pullback_const, DGNerve.PinchedHom.target_obj] at he
+  rw [simplexData_pullback_const, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.target_obj] at he
   exact hf.trans he.symm
 
 end SerrePositivity.EInfinity.ComplexLimits

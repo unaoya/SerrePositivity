@@ -47,7 +47,7 @@ def dgSuspensionPerfectConnectiveCandidateCocone :=
 
 /-- 段別 I・P・Z に条件付きで、同じ実余錐は全写像空間の余極限。 -/
 theorem dgSuspensionPerfectConnectiveCandidateCocone_isColimit :
-    IsColimitCone (dgSuspensionPerfectConnectiveCandidateCocone R s A Z) :=
+    _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.IsColimitCone (dgSuspensionPerfectConnectiveCandidateCocone R s A Z) :=
   sequentialCandidateColimitCocone_isColimit (dgSuspensionPerfectConnectiveSequence R s A Z)
 
 /-- 段別 I・P・Z に条件付きで、元の同じ固定 K(A) から実余極限への零段の脚。 -/

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping
 public import SerrePositivity.KST.Spectra.AnodyneHomotopyEquivalence
 public import SerrePositivity.HomotopicalAlgebra.Simplicial.AnodyneKanReplacement
 
@@ -90,7 +90,7 @@ instance obj_kanComplex (X : PointedSimplicialSet.{u}) : KanComplex (obj X).righ
 規約：元の対象が Kan である場合の L9 のホモトピー類の比較。
 使われ方：Goerss–Jardine I §7、BF 1978 §2、HTT A.3.3。段の置換の比較。 -/
 theorem unit_piIsomorphism (X : PointedSimplicialSet.{u}) [KanComplex X.right] :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := X.right) (Y := (obj X).right) (unit.app X).right :=
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := X.right) (Y := (obj X).right) (unit.app X).right :=
   kanPiIsomorphism_of_anodyne (A := X.right) (B := (obj X).right)
     (unit.app X).right (unit_anodyne X)
 

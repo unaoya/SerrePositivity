@@ -12,7 +12,7 @@ public import SerrePositivity.KST.SConstruction.DGModuleShiftCancellationNative
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (D : Type v) [DGCategory R D] [Small.{u} D]
 variable {P : Type (max (u + 1) v)} [DGCategory R P]
   (G : DGFunctor R P (RightModule R D))

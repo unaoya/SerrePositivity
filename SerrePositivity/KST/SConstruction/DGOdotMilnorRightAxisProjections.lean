@@ -15,7 +15,7 @@ open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (d : DGOdotInput R)
 local notation "P" => DGCategoryCellResolution.Source R (DGOdotGluing R d)
 local notation "Q" => DGQuotient.QuotientObject (P)
-  (resolvedDGNullObjects R (DGOdotGluing R d)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.resolvedDGNullObjects R (DGOdotGluing R d)
     (dgQuotientImage R (DGLaxQuotientEndInput.diagonal (dgOdotQuotientInput R d))))
 local notation "F" => dgOdotMilnorRightAxisQuotientSource R d
 local notation "G" => dgOdotMilnorRightAxisQuotientTarget R d
@@ -29,7 +29,7 @@ local notation "M" => dgHomGluingBimodule R (U) (U) (U) (DGFunctor.id (U)) (DGFu
 方針：元の厳密な全 dg 射影公式を適用する。規約：同じ resolved 商を保持。
 使われ方：右面の第一成分照合。 -/
 lemma dgOdotMilnorRightAxisLift_left :
-    (dgOdotMilnorRightAxisLift R d).comp (dgGluingLeft R (U) (U) (M)) =
+    (dgOdotMilnorRightAxisLift R d).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingLeft R (U) (U) (M)) =
       (dgPerfectComparisonHomGluingFunctor R (Q) (F) (G) (τ)).comp
         (dgHomGluingLoopConeSmall R (T) (T) (T) (I) (I)) :=
   dgPerfectComparisonInverseRotationFunctor_left R (Q) (F) (G) (τ)
@@ -38,7 +38,7 @@ lemma dgOdotMilnorRightAxisLift_left :
 方針：元の厳密な全 dg 射影公式を適用する。規約：同じ resolved 商を保持。
 使われ方：右面の第二成分照合。 -/
 lemma dgOdotMilnorRightAxisLift_right :
-    (dgOdotMilnorRightAxisLift R d).comp (dgGluingRight R (U) (U) (M)) =
+    (dgOdotMilnorRightAxisLift R d).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R (U) (U) (M)) =
       (dgPerfectComparisonHomGluingFunctor R (Q) (F) (G) (τ)).comp
         (dgHomGluingLoopConeShiftedTarget R (T) (T) (T) (I) (I)) :=
   dgPerfectComparisonInverseRotationFunctor_right R (Q) (F) (G) (τ)

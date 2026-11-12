@@ -1,9 +1,9 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.FunctorUnitFamilyDiagram
-public import SerrePositivity.InfinityCategories.F1.MappingSpaces.IntervalMappingVertexEquivalence
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorFiber
-public import SerrePositivity.InfinityCategories.Core.FunctorHomotopy
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.IntervalMappingVertexEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.FunctorFiber
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorHomotopy
 
 /-!
 概要：元の空間値の比較円柱を、同じ辺と全図式を持つ coherent な変換頂点にする。

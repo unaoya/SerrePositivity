@@ -18,20 +18,20 @@ variable (A : Type u) [CommRing A]
 
 /-- 元の全 native Kan dg 入力族に自然な、同じ実 core S• Perf 図式。 -/
 def presentedPerfectDGCoreSimplicialEnrichedFunctor :
-    SimplicialObject (QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
+    SimplicialObject (_root_.SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.Categories.QuasicategoryEnrichedFunctorCategory (PerfDGInput.{u, v} A)) :=
   presentedPerfectDGSimplicialEnrichedFunctor A ⋙ quasicategoryEnrichedObjectCoreFunctor
 
 /-- 実 core 図式の各段は、同じ元の全 gapped S_n Perf の core。 -/
 lemma presentedPerfectDGCoreSimplicialEnrichedFunctor_obj
     (C : PerfDGInput.{u, v} A) (n : SimplexCategoryᵒᵖ) :
     (((presentedPerfectDGCoreSimplicialEnrichedFunctor A).obj n).obj C).obj =
-      coreSConstruction n.unop.len (dgNerve A (PresentedPerfectDGObject A C)) := rfl
+      coreSConstruction n.unop.len (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) := rfl
 
 /-- 全ての面退化は、元の同じ添字制限の core 射。 -/
 lemma presentedPerfectDGCoreSimplicialEnrichedFunctor_map
     (C : PerfDGInput.{u, v} A) {n m : SimplexCategoryᵒᵖ} (f : n ⟶ m) :
     ((presentedPerfectDGCoreSimplicialEnrichedFunctor A).map f).val C =
-      coreSMap (dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
+      coreSMap (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve A (PresentedPerfectDGObject A C)) f.unop.toOrderHom := rfl
 
 /-- 通常の元の dg 入力射では、同じ cofiber 型 S_n 射の core を回収する。 -/
 lemma presentedPerfectDGCoreSimplicialEnrichedFunctor_hom (n : SimplexCategoryᵒᵖ)
@@ -39,7 +39,7 @@ lemma presentedPerfectDGCoreSimplicialEnrichedFunctor_hom (n : SimplexCategory�
     eHomEquiv SSet.{max (u + 1) v} F ≫
       ((presentedPerfectDGCoreSimplicialEnrichedFunctor A).obj n).map C D =
         curry' (C := SSet.{max (u + 1) v})
-          (quasicategoryCoreMap (sExactMap n.unop.len (presentedPerfectDGExactMap A F)).hom) := by
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreMap (sExactMap n.unop.len (presentedPerfectDGExactMap A F)).hom) := by
   change eHomEquiv SSet.{max (u + 1) v} F ≫
     ((quasicategoryEnrichedCoreFunctor
       ((presentedPerfectDGSimplicialEnrichedFunctor A).obj n)).map C D ≫ 𝟙 _) = _

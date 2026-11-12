@@ -19,7 +19,7 @@ open CategoryTheory SSet
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
 open SerrePositivity.KST.Spectra
 namespace SerrePositivity.KST.LocalizingInvariants.DGAlgebra
-variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
+variable (R : Type u) [CommRing R] (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1})
   {B C : Mon (Complex R)} [B.X.IsStrictlyLE 0] [C.X.IsStrictlyLE 0]
   (f : B ⟶ C) (n : ℤ) (hn : 0 ≤ n)
 

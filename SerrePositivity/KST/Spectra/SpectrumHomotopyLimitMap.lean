@@ -60,10 +60,10 @@ theorem homotopyLimitSpectrumMap_projection (τ : D ⟶ E) (n : ℕ) :
 規約：零次数を含み全ての基点で述べる。
 使われ方：Goerss–Jardine I §7、HA §1.4.2。hG・Tot の係数の置換不変性。 -/
 theorem homotopyLimitSpectrumMap_levelwise (τ : D ⟶ E)
-    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((homotopyLimitSpectrumMap hD hE τ).app n).right := by
+    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app i).app n).right) (n : ℕ) :
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((homotopyLimitSpectrumMap hD hE τ).app n).right := by
   have hc := (homotopyLimitProjection_levelwise D hD n).comp (homotopyLimitMap_levelwise τ hτ n)
-  apply _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp (g := ((homotopyLimitProjection E hE).app n).right) _
+  apply _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp (g := ((homotopyLimitProjection E hE).app n).right) _
     (homotopyLimitProjection_levelwise E hE n)
   have h := congrArg Under.Hom.right (homotopyLimitSpectrumMap_projection hD hE τ n)
   change ((homotopyLimitSpectrumMap hD hE τ).app n).right ≫
@@ -77,7 +77,7 @@ theorem homotopyLimitSpectrumMap_levelwise (τ : D ⟶ E)
 規約：∞ 極限の比較を仮定しない。
 使われ方：HA §1.4.2、BF 1978 §2。hG・Tot の π_* 比較。 -/
 theorem homotopyLimitSpectrumMap_piIsomorphism (τ : D ⟶ E)
-    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism ((τ.app i).app n).right) :
+    (hτ : ∀ i n, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism ((τ.app i).app n).right) :
     OmegaSpectrum.PiIsomorphism (homotopyLimitSpectrumMap hD hE τ) :=
   OmegaSpectrum.piIsomorphism_of_levelwise _ (homotopyLimitSpectrumMap_levelwise hD hE τ hτ)
 

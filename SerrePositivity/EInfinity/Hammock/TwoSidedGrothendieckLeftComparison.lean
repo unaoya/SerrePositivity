@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.TwoSidedGrothendieckDuality
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckDuality
 public import SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieckRightWeak
 
 /-!
@@ -23,19 +23,19 @@ open CategoryTheory Opposite
 variable {W : Type u} [Category.{u} W] {F F' : Wᵒᵖ ⥤ Cat.{u, u}}
   (G : W ⥤ Cat.{u, u})
 
-def leftCoefficientMap (α : F ⟶ F') : total F G ⥤ total F' G :=
-  Grothendieck.pre (contravariantProjection F' ⋙ G) (contravariantMap α)
+def leftCoefficientMap (α : F ⟶ F') : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F G ⥤ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.total F' G :=
+  Grothendieck.pre (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F' ⋙ G) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantMap α)
 
 lemma leftCoefficientMap_projection (α : F ⟶ F') :
-    leftCoefficientMap G α ⋙ projection = projection := rfl
+    leftCoefficientMap G α ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.projection = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.projection := rfl
 
 lemma coefficientMap_factorization {G' : W ⥤ Cat.{u, u}} (α : F ⟶ F') (β : G ⟶ G') :
-    coefficientMap α β = rightCoefficientMap F β ⋙ leftCoefficientMap G' α := rfl
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.coefficientMap α β = rightCoefficientMap F β ⋙ leftCoefficientMap G' α := rfl
 
 lemma leftCoefficientMap_dualFunctor (α : F ⟶ F') :
-    leftCoefficientMap G α ⋙ dualFunctor F' G =
-      dualFunctor F G ⋙
-        (rightCoefficientMap (dualLeft G) (Functor.whiskerRight α Cat.opFunctor)).op := by
+    leftCoefficientMap G α ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor F' G =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor F G ⋙
+        (rightCoefficientMap (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualLeft G) (Functor.whiskerRight α Cat.opFunctor)).op := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro X Y f
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]
@@ -44,11 +44,11 @@ lemma leftCoefficientMap_dualFunctor (α : F ⟶ F') :
   · apply Quiver.Hom.unop_inj
     refine Grothendieck.ext _ _ ?_ ?_
     · rfl
-    · simp [leftCoefficientMap, rightCoefficientMap, dualFunctor, dualMap, homMk,
-        contravariantMap, leftMap, rightMap, baseMap]
+    · simp [leftCoefficientMap, rightCoefficientMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.homMk,
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.leftMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.rightMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.baseMap]
       rfl
-  · simp [leftCoefficientMap, rightCoefficientMap, dualFunctor, dualMap, homMk,
-      contravariantMap, leftMap, rightMap, baseMap]
+  · simp [leftCoefficientMap, rightCoefficientMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualFunctor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.dualMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.homMk,
+      _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieckFunctoriality.contravariantMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.leftMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.rightMap, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.baseMap]
     rfl
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedGrothendieck

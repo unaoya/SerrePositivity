@@ -18,20 +18,20 @@ open SerrePositivity.InfinityCategories
 open scoped Simplicial
 variable {U E : SSet.{u}} [KanComplex E] {f g : U ⟶ E}
   (H K : SSet.Homotopy f g)
-  (e : SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy H) =
-    SSet.Truncated.HomotopyCategory.homMk (functorEdgeOfSimplicialHomotopy K))
+  (e : SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H) =
+    SSet.Truncated.HomotopyCategory.homMk (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K))
 
 /-- 指定した元の二円柱と恒等終辺を全三面に持つ実比較三角形。 -/
 def familyCylinderClassComparisonTriangle : SSet.Edge.CompStruct
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H))
-    (SSet.Edge.id (functorVertex g))
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy K)) := by
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H))
+    (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex g))
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy K)) := by
   apply SSet.Edge.CompStruct.ofTruncated
   apply Nonempty.some
-  apply compStruct_nonempty_of_homMk_fac
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.compStruct_nonempty_of_homMk_fac
   change SSet.HomotopyCategory.homMk
-    (SSet.Edge.ofTruncated (functorEdgeOfSimplicialHomotopy H)) ≫
-      SSet.HomotopyCategory.homMk (SSet.Edge.id (functorVertex g)) = _
+    (SSet.Edge.ofTruncated (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy H)) ≫
+      SSet.HomotopyCategory.homMk (SSet.Edge.id (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorVertex g)) = _
   rw [SSet.HomotopyCategory.homMk_id, Category.comp_id]
   exact e
 
@@ -62,7 +62,7 @@ lemma familyCylinderClassComparison_source :
       (familyCylinderClassComparison H K e).h = fst U (Δ[1] : SSet.{u}) ≫ f := by
   change _ ≫ mappingSquareUncurry _ = _
   rw [mappingSquareUncurry_source, endpointFixedEdgeSquare_vertical_zero,
-    uncurry_const_functorVertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 /-- 比較の終点族も全時刻で厳密に固定される。 -/
 lemma familyCylinderClassComparison_target :
@@ -70,6 +70,6 @@ lemma familyCylinderClassComparison_target :
       (familyCylinderClassComparison H K e).h = fst U (Δ[1] : SSet.{u}) ≫ g := by
   change _ ≫ mappingSquareUncurry _ = _
   rw [mappingSquareUncurry_target, endpointFixedEdgeSquare_vertical_one,
-    uncurry_const_functorVertex]
+    _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.CovariantTransport.uncurry_const_functorVertex]
 
 end SerrePositivity.KST.SConstruction

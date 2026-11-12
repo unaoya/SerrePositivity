@@ -37,7 +37,7 @@ lemma monicKPrismNativePasting_previous_full_trace (n : ℕ) :
 /-- 次段の射影全 trace は、元の第一面・全零境界・出口・共通末尾からなる。 -/
 lemma monicKPrismNativePasting_projected_full_trace (n : ℕ) :
     (familyHomotopyChainTrace (monicKPrismNativeCompositeCorrectionChain F f g (n + 1))).map
-      (· ≫ _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
+      (· ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.PointedMapping.pre ((kOmegaSpectrum (F.obj x)).sigma n)
         ((kKanSequence (F.obj z)).level (n + 1)).space) =
       ((nerve (CompositionStringParameters f g) ◁ stdSimplex.δ 2) ≫
           monicKPrismNativePastingTriangle F f g n ≫ monicKPrismNativePastingMap F f g n) ::

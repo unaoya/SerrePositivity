@@ -59,7 +59,7 @@ lemma lower_recover (a : NerveMovingParameter.System K F) :
     (NerveBiparameterMaps.name_evaluate K F a d)
 
 variable (L : D ⥤ SSet.{max w v}) (i : L ⟶ K)
-  (families : ∀ d, K.obj d ⟶ UniverseLift.obj.{w} (F.obj d))
+  (families : ∀ d, K.obj d ⟶ _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.obj.{w} (F.obj d))
 
 lemma vertices_restriction : NerveMovingParameter.vertices K F families ≫
     Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) 1)
@@ -93,7 +93,7 @@ lemma compatible : NerveMovingParameter.vertices K F families ≫
     Functor.whiskerLeft (lowerInclusion (NerveCoherentFamily.reedy D) 1) target := by
   rw [vertices_restriction, funext he, lower_recover]
 
-variable (hp : ∀ d, UniverseLift.BoundaryFillers (F.obj d)) (hi : ∀ d, Mono (i.app d))
+variable (hp : ∀ d, _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.UniverseLiftFillers.BoundaryFillers (F.obj d)) (hi : ∀ d, Mono (i.app d))
 
 /-- Objectwise equations supply the lower-system fit, with no extra coherent fit input. -/
 def extend : NerveMovingParameter.System K F :=

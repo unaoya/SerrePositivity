@@ -35,8 +35,8 @@ set_option backward.isDefEq.respectTransparency.types false
 theorem hasTotDescent_iff_of_stagewise_piIsomorphism
     {A B : AugmentedTotDiagram.{u}} [KanComplex A.left.right] [KanComplex B.left.right]
     [∀ j, KanComplex (A.right.obj j).right] [∀ j, KanComplex (B.right.obj j).right]
-    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism f.left.right)
-    (hstage : ∀ j, _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (f.right.app j).right) :
+    (f : A ⟶ B) (hf : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism f.left.right)
+    (hstage : ∀ j, _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (f.right.app j).right) :
     HasTotDescent A ↔ HasTotDescent B := by
   have hmap := PointedTotalization.replacementMap_piIsomorphism f.right hstage
   have hsquare := congrArg (fun g ↦ g.right) (totComparison_naturality f)
@@ -44,13 +44,13 @@ theorem hasTotDescent_iff_of_stagewise_piIsomorphism
     (totComparison A).right ≫ (PointedTotalization.replacementMap f.right).right at hsquare
   constructor
   · intro hA
-    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hA hmap
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.comp hA hmap
     rw [← hsquare] at hcomp
     exact KanPiIsomorphism.cancel_left_atVertex hf hcomp
       (PointedSimplicialSet.basepoint A.left)
   · intro hB
-    have hcomp := _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.comp hf hB
+    have hcomp := _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.comp hf hB
     rw [hsquare] at hcomp
-    exact _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_comp hcomp hmap
+    exact _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism.of_comp hcomp hmap
 
 end SerrePositivity.KST.Descent.Main

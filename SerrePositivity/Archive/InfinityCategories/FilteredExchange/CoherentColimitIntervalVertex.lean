@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentColimitLowerTriangle
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.HomotopyVertexPrism
-public import SerrePositivity.InfinityCategories.F1.Yoneda.PresheafDensity.Support.ConstantDiagramTransformation
+public import SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ConstantDiagramTransformation
 
 /-!
 概要：余極限関手の指定辺を、元の両余錐の頂点間の全区間族として読む。

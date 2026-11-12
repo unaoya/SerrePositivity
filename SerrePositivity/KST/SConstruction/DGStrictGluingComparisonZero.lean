@@ -1,6 +1,6 @@
 module
 public import SerrePositivity.KST.SConstruction.DGStrictGluingFunctor
-public import SerrePositivity.InfinityCategories.Derived.Gluing.PrimitiveComparison
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.PrimitiveComparison
 
 /-!
 概要：元全 Hom 自然な閉比較から作った厳密 gluing 関手の第三比較は零である。
@@ -22,32 +22,32 @@ variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (h : ∀ x y,
     G.map x y ≫ M.toFunctor.map (G.obj x) (G.obj y) ≫
       eHomWhiskerRight (Complex R)
-        (dgGluingAugmentation R C D M (dgStrictGluingObject R C D M L G μ x))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingAugmentation R C D M (dgStrictGluingObject R C D M L G μ x))
         (ForgetEnrichment.of (Complex R) (M.toFunctor.obj (G.obj y))) =
     (L.comp (dgYoneda R C)).map x y ≫
       eHomWhiskerLeft (Complex R)
         (ForgetEnrichment.of (Complex R) (representable R (L.obj x)))
-        (dgGluingAugmentation R C D M (dgStrictGluingObject R C D M L G μ y)))
+        (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingAugmentation R C D M (dgStrictGluingObject R C D M L G μ y)))
 local notation "H" => dgStrictGluingFunctor R C D M L G μ h
 
 /-- 概要：同じ元厳密 gluing 関手の全 Hom 上の第三比較は指定零。
 方針：同じ comma 因子分解と零比較の回収を使う。
 規約：全パラメーター複体の等号。使われ方：第三成分零の cone 計算への帰着。 -/
 lemma dgStrictGluingFunctor_comparison_zero (x y : P) :
-    dgGluingHomComparison R C D M ((H).obj x) ((H).obj y)
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComparison R C D M ((H).obj x) ((H).obj y)
       (homObject R P x y) ((H).map x y) = 0 := by
   let A := dgStrictGluingCommaFamily R C D M L G μ h
   have hm : (H).map x y ≫
-      (dgGluingHomRepresentableIso R C D M ((H).obj x) ((H).obj y)).hom =
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomRepresentableIso R C D M ((H).obj x) ((H).obj y)).hom =
       A.toDGFunctor.map x y := by
-    have he : HEq (((H).comp (dgGluingToComma R C D M)).map x y)
+    have he : HEq (((H).comp (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingToComma R C D M)).map x y)
         (A.toDGFunctor.map x y) := by
       rw [dgStrictGluingFunctor_toComma]
     exact eq_of_heq he
-  have he := dgGluingHomComparison_yoneda R C D M ((H).obj x) ((H).obj y)
+  have he := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingHomComparison_yoneda R C D M ((H).obj x) ((H).obj y)
     (homObject R P x y) ((H).map x y)
   rw [hm] at he
-  change (dgFunctorCommaHomComparison R D (RightModule R C) M.toFunctor
+  change (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFunctorCommaHomComparison R D (RightModule R C) M.toFunctor
     (A.obj x) (A.obj y) _ (A.homMap x y)).comp _ _ = _ at he
   erw [A.homMap_comparison x y, Cochain.zero_comp] at he
   exact he.symm

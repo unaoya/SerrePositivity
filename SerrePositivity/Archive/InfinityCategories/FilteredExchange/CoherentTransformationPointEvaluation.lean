@@ -1,7 +1,7 @@
 module
 
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.CoherentTransformationVertexTriangle
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FunctorPrismFiber
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.CoherentTransformationVertexTriangle
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.FunctorPrismFiber
 
 /-!
 概要：元の coherent 変換の全三角形を底の指定頂点で評価する。

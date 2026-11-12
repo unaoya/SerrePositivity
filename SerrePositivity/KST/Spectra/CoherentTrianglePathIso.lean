@@ -21,7 +21,7 @@ namespace SerrePositivity.KST.Spectra.CoherentPathCoordinates
 /-- 二単体の長い path は、その最大内点の二値フラグから厳密に復元できる。 -/
 lemma trianglePath_maximum_recover
     (P : Path (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)) :
-    flaggedPath (fun _ : Fin 1 ↦ pathLastMaximum (i := (0 : Fin 2)) P) = P := by
+    flaggedPath (fun _ : Fin 1 ↦ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximum (i := (0 : Fin 2)) P) = P := by
   apply SimplicialThickening.Path.ext
   ext k
   constructor
@@ -34,8 +34,8 @@ lemma trianglePath_maximum_recover
       rw [he]
       exact P.right
     · fin_cases r
-      have hm := pathLastMaximum_mem (i := (0 : Fin 2)) P
-      change pathLastMaximum (i := (0 : Fin 2)) P = 1 at ha
+      have hm := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximum_mem (i := (0 : Fin 2)) P
+      change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximum (i := (0 : Fin 2)) P = 1 at ha
       rw [ha] at hm
       have he : k = ULift.up (1 : Fin 3) := ULift.ext hr
       rw [he]
@@ -46,12 +46,12 @@ lemma trianglePath_maximum_recover
     · exact Or.inl rfl
     · refine Or.inr (Or.inr ⟨0, rfl, ?_⟩)
       apply le_antisymm (Fin.le_last _) ?_
-      exact le_pathLastMaximum (i := (0 : Fin 2)) P 1 hk
+      exact _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.le_pathLastMaximum (i := (0 : Fin 2)) P 1 hk
     · exact Or.inr (Or.inl rfl)
 
 /-- 最大内点を取り元の区間の path を続けると、元の path の nerve の恒等射。 -/
 lemma trianglePathInterval_maximum_reverse :
-    pathLastMaximumMap (0 : Fin 2) ≫ trianglePathInterval.{u} =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap (0 : Fin 2) ≫ trianglePathInterval.{u} =
       𝟙 (nerve (Path (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2))) := by
   apply SSet.hom_ext
   rintro ⟨⟨n⟩⟩
@@ -66,7 +66,7 @@ lemma trianglePathInterval_maximum_reverse :
 def trianglePathIntervalIso : (Δ[1] : SSet.{u}) ≅
     nerve (Path (ULift.up (0 : Fin 3) : ULift.{u} (Fin 3)) (ULift.up 2)) where
   hom := trianglePathInterval
-  inv := pathLastMaximumMap (0 : Fin 2)
+  inv := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.pathLastMaximumMap (0 : Fin 2)
   hom_inv_id := trianglePathInterval_maximum
   inv_hom_id := trianglePathInterval_maximum_reverse
 

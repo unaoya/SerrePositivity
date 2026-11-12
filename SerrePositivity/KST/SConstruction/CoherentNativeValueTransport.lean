@@ -27,13 +27,13 @@ lemma coherentEqToHom_value_heq {X Y : SSet.{u}} (h : X = Y) {d : ℕ} (x : X _�
 lemma coherentStringNativeMap_value_heq {I : Type u} [SmallCategory I]
     {C : Type v} [Category.{u} C] [SimplicialCategory C]
     (Q : (SSet.uliftFunctor.{v, u}).obj (nerve I) ⟶ SimplicialNerve C)
-    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Kan.CoherentArrowString f) {d : ℕ}
+    {x y : I} {f : x ⟶ y} (s : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CoherentArrowString f) {d : ℕ}
     (P : (nerve (Path (ULift.up 0 : ULift.{u} (Fin (s.length + 1)))
       (ULift.up (Fin.last s.length)))) _⦋d⦌) :
     HEq ((coherentStringNativeMap Q s).app (Opposite.op ⦋d⦌) P)
       (((Q.app _ (ULift.up s.chain)).map (.mk (ULift.up 0))
         (.mk (ULift.up (Fin.last s.length)))).app (Opposite.op ⦋d⦌) P) := by
-  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, Coherent.reobjectFunctor]
+  dsimp only [coherentStringNativeMap, coherentStringDiagramCell, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.reobjectFunctor]
   simp only [NatTrans.comp_app, ConcreteCategory.comp_apply]
   exact (coherentEqToHom_value_heq _ _).trans (coherentEqToHom_value_heq _ _)
 

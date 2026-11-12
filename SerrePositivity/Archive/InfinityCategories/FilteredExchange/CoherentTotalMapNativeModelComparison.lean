@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentTotalMapNativeActionComponents
-public import SerrePositivity.InfinityCategories.F1.UniverseVertexIso
+public import SerrePositivity.InfinityCategories.Project.FibrationAuxiliaries.UniverseVertexIso
 
 /-!
 概要：指定された全空間射の比較を、元の native 単位の模型側比較へ移す。

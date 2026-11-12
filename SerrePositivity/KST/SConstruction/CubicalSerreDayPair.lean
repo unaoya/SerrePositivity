@@ -17,7 +17,7 @@ open SerrePositivity.DifferentialGraded
 variable (A : Type u) [CommRing A]
 
 /-- 元の二つの cell の Serre 鎖を、同じ連結比較によって tensor へ送る。 -/
-def cubicalSerreDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+def cubicalSerreDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     (serreConcreteCubeComplexFunctor A).obj (concreteCubeTensorObj c d) ⟶
       (cubicalSerreChains A).obj K ⊗ (cubicalSerreChains A).obj L :=
@@ -28,7 +28,7 @@ def cubicalSerreDayPair {K L : CubicalSet.{u}} (c d : _root_.SerrePositivity.Inf
       (cubicalSerreCell A c x) (cubicalSerreCell A d y)
 
 /-- 元の両 cell の制限は、同じ連結鎖比較の元の具体的射による前合成。 -/
-lemma cubicalSerreDayPair_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube}
+lemma cubicalSerreDayPair_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube}
     (f : c ⟶ c') (g : d ⟶ d') (x : K.obj (op c')) (y : L.obj (op d')) :
     (serreConcreteCubeComplexFunctor A).map (concreteCubeTensorMap f g) ≫
         cubicalSerreDayPair A c' d' x y =
@@ -40,7 +40,7 @@ lemma cubicalSerreDayPair_restrict {K L : CubicalSet.{u}} {c c' d d' : _root_.Se
 
 /-- 元の二つの前層の射は、元の連結 cell の鎖比較と可換。 -/
 lemma cubicalSerreDayPair_naturality {K K' L L' : CubicalSet.{u}}
-    (f : K ⟶ K') (g : L ⟶ L') (c d : _root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube)
+    (f : K ⟶ K') (g : L ⟶ L') (c d : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube)
     (x : K.obj (op c)) (y : L.obj (op d)) :
     cubicalSerreDayPair A c d x y ≫
         ((cubicalSerreChains A).map f ⊗ₘ (cubicalSerreChains A).map g) =

@@ -22,7 +22,7 @@ open scoped Simplicial
 lemma exchangeDiagramFamily_evaluate {A B K C : SSet.{u}}
     (F : A ⊗ K ⟶ (ihom B).obj C) (b : B _⦋0⦌) :
     lift (SSet.const b) (𝟙 K) ≫ exchangeDiagramFamily F =
-      curry (F ≫ evaluateFunctorAt b) := by
+      curry (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b) := by
   apply uncurry_injective
   rw [uncurry_natural_left, exchangeDiagramFamily, uncurry_curry, uncurry_curry]
   rw [← Category.assoc]
@@ -39,10 +39,10 @@ lemma exchangeDiagramFamily_evaluate {A B K C : SSet.{u}}
 方針：curry の評価と同じ選択の前合成の自然性。
 規約：同型に弱めない。使われ方：ρ の各角の正規化。 -/
 lemma pointwiseDiagramPushoutApex_evaluate {B K C : SSet.{u}}
-    [Quasicategory C] [IsStable C]
+    [Quasicategory C] [_root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable C]
     (F : (horn 2 0 : SSet.{u}) ⊗ K ⟶ (ihom B).obj C) (b : B _⦋0⦌) :
-    pointwiseDiagramPushoutApex F ≫ evaluateFunctorAt b =
-      pointwisePushoutApex (curry (F ≫ evaluateFunctorAt b)) := by
+    pointwiseDiagramPushoutApex F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b =
+      pointwisePushoutApex (curry (F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt b)) := by
   rw [pointwiseDiagramPushoutApex, curry_evaluate_vertex, ← pointwisePushoutApex_pre,
     exchangeDiagramFamily_evaluate]
 

@@ -26,7 +26,7 @@ lemma exists_loop_contraction_of_homMk_eq_id {Z : SSet.{u}} [KanComplex Z]
     ∃ K : SSet.Homotopy s.map (SSet.const x),
       (boundary 1).ι ▷ (Δ[1] : SSet.{u}) ≫ K.h =
         fst (∂Δ[1] : SSet.{u}) (Δ[1] : SSet.{u}) ≫ (boundary 1).ι ≫ s.map := by
-  have hc : _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.mk (.const : Z.PtSimplex 1 x) := by
+  have hc : _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk s = _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.mk (.const : Z.PtSimplex 1 x) := by
     apply FundamentalLoop.toHom_injective
     rw [FundamentalLoop.toHom_mk, FundamentalLoop.toHom_mk,
       FundamentalLoop.edge_const, SSet.HomotopyCategory.homMk_id]
@@ -57,7 +57,7 @@ lemma homMk_eq_id_of_loop_contraction {Z : SSet.{u}} [KanComplex Z]
     h₁ := K.h₁
     rel := by
       rw [hb, s.comm] }
-  have h := congrArg FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kan.KanHomotopyGroup.eq_of_relativeHomotopy H)
+  have h := congrArg FundamentalLoop.toHom (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanHomotopyGroup.eq_of_relativeHomotopy H)
   rw [FundamentalLoop.toHom_mk, FundamentalLoop.toHom_mk,
     FundamentalLoop.edge_const, SSet.HomotopyCategory.homMk_id] at h
   exact h

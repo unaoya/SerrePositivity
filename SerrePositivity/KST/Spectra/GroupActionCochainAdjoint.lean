@@ -46,8 +46,8 @@ def adjointTransformation {G : Type u} [Group G] (A : GroupAction.{u} G) (n : �
 使われ方：Goerss–Jardine VIII §2、HA §1.4.2。cochain の Ω 条件。 -/
 lemma adjointTransformation_piIsomorphism {G : Type u} [Group G]
     (A : GroupAction.{u} G) (n : ℕ) (j : SimplexCategory) :
-    _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism (X := ((level A n).obj j).right)
-      (Y := (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((level A (n + 1)).obj j)).right)
+    _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism (X := ((level A n).obj j).right)
+      (Y := (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((level A (n + 1)).obj j)).right)
       ((adjointTransformation A n).app j).right := by
   let B := (GroupAction.levelFunctor G n).obj A
   let C := (GroupAction.levelFunctor G (n + 1)).obj A
@@ -55,14 +55,14 @@ lemma adjointTransformation_piIsomorphism {G : Type u} [Group G]
   let : KanComplex B.V.right := inferInstanceAs (KanComplex (A.V.level n).space.right)
   let : KanComplex C.V.right := inferInstanceAs (KanComplex (A.V.level (n + 1)).space.right)
   let : KanComplex L.V.right :=
-    inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace (A.V.level (n + 1)).space).right)
+    inferInstanceAs (KanComplex (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace (A.V.level (n + 1)).space).right)
   have h := PointedActionCochains.map_piIsomorphism (GroupAction.adjointMap A n)
     (GroupAction.adjointMap_piIsomorphism A n) j
   let e : ((PointedActionCochains.obj L).obj j).right ≅
-      (_root_.SerrePositivity.InfinityCategories.F1.Pointed.loopSpace ((level A (n + 1)).obj j)).right :=
+      (_root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.loopSpace ((level A (n + 1)).obj j)).right :=
     PointedSimplicialSet.forget.mapIso
       ((PointedActionCochains.cotensorIso PointedSimplicialSet.circle.{u} C).app j).symm
-  exact h.comp (_root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism.of_iso e)
+  exact h.comp (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.KanPiIsomorphism.of_iso e)
 
 end
 

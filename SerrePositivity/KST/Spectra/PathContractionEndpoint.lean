@@ -27,7 +27,7 @@ lemma pathContraction_endpoint (Y : PointedSimplicialSet.{u}) :
     pathContraction Y ≫ (pathEndpoint Y).right =
       (β_ (basedPathSpace Y).right (Δ[1] : SSet.{u})).hom ≫ pathEvaluation Y := by
   rw [Comparison.basedPathEndpoint_evaluation, ← Category.assoc, pathContraction,
-    _root_.SerrePositivity.InfinityCategories.F1.Pointed.PointedMapping.paramCurry_ι, KanPath.evaluation, ← Category.assoc,
+    _root_.SerrePositivity.InfinityCategories.HTT.PointedSimplicialSets.paramCurry_ι, KanPath.evaluation, ← Category.assoc,
     curry_pre_app, KanPath.curry_unit_evaluation]
   change (λ_ ((basedPathSpace Y).right ⊗ (Δ[1] : SSet.{u}))).inv ≫
     KanPath.endpoint 1 ▷ ((basedPathSpace Y).right ⊗ (Δ[1] : SSet.{u})) ≫

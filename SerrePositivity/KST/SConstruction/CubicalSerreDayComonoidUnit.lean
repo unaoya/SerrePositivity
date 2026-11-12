@@ -19,8 +19,8 @@ attribute [local instance] ComonObj.instTensorUnit
 /-- 元の単位生成 cell は、tensor 単位の余モノイドからの射。 -/
 instance cubicalSerreDayUnitGenerator_isComonHom :
     IsComonHom (cubicalSerreDayUnitIso A).inv := by
-  change IsComonHom (cubicalSerreComonoidCell A (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) cubicalDayUnitCell).hom
-  exact (cubicalSerreComonoidCell A (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) cubicalDayUnitCell).isComonHom_hom
+  change IsComonHom (cubicalSerreComonoidCell A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) cubicalDayUnitCell).hom
+  exact (cubicalSerreComonoidCell A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) cubicalDayUnitCell).isComonHom_hom
 
 /-- 元の Day 単位の同型を、同じ対角・増大を保つ余モノイド同型として読む。 -/
 def cubicalSerreDayComonoidUnit :
@@ -32,7 +32,7 @@ def cubicalSerreDayComonoidUnit :
 /-- 元の余モノイド単位の順射は、同じ単位生成 cell。 -/
 lemma cubicalSerreDayComonoidUnit_hom :
     (cubicalSerreDayComonoidUnit A).hom.hom =
-      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Kan.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
+      cubicalSerreCell A (_root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.ConcreteCube.mk 0) cubicalDayUnitCell := rfl
 
 /-- 元の余モノイド単位の逆射は、同じ Serre 増大。 -/
 lemma cubicalSerreDayComonoidUnit_inv :

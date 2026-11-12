@@ -27,7 +27,7 @@ lemma sOneInnerOuterRealizationIso_comparison (r : ℕ) (X : StableModel.{u}) :
           ((multiCoreSConstructionFunctor r).map (stableSOneComparison X)) := by
     apply NatTrans.ext
     funext d
-    let H := stableModelForget.{u} ⋙ quasicategoryCoreFunctor
+    let H := stableModelForget.{u} ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations.quasicategoryCoreFunctor
     change (𝟙 _ ≫ H.map (((diagonalFixedSInterchangeNatIso 1 r).hom.app d).app X)) ≫
       𝟙 _ ≫ H.map (stableSOneComparison (((diagonalSEndofunctor r).obj d).obj X)) =
         H.map (((diagonalSEndofunctor r).obj d).map (stableSOneComparison X))

@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGCellResolvedGraphPerfectFunctor
 public import SerrePositivity.KST.SConstruction.DGGluingAxesComparisons
-public import SerrePositivity.InfinityCategories.Derived.Gluing.Size
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.Size
 
 /-!
 概要：元 gluing の固定 cell source 上で右軸から恒等への実 Perf 比較を構成する。
@@ -17,14 +17,14 @@ open CategoryTheory MonoidalCategory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (C : Type v) [DGCategory R C] [Small.{u} C]
   (D : Type w) [DGCategory R D] [Small.{u} D] (M : Bimodule R C D)
   (z : C) (hz : CategoryTheory.Limits.IsZero (ForgetEnrichment.of (Complex R) z))
-local notation "B" => DGGluingObject R C D M
+local notation "B" => _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.DGGluingObject R C D M
 local notation "P" => DGCategoryCellResolution.Source R (B)
 
 /-- 概要：元 gluing の右射影と元右軸包含の同じ dg 合成。
 方針：元実二関手を合成する。規約：元閉零対象を保持。
 使われ方：元右軸 graph の入力関手。 -/
 def dgGluingCellRightAxisEndofunctor : DGFunctor R (B) (B) :=
-  (dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)
+  (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.Gluing.dgGluingRight R C D M).comp (dgGluingRightAxis R C D M z hz)
 
 /-- 概要：固定 cell source で必要な二つの右制限の射影性の残入力。
 方針：右軸と恒等の同じ標準 graph 解像度を指定する。

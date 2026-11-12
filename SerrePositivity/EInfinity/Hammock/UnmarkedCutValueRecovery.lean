@@ -23,24 +23,24 @@ open CategoryTheory CategoryTheory.Limits
 
 variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) {X Y : Paths C}
 
-lemma point_wordValue {w : Word} {n : SimplexCategoryᵒᵖ}
-    (τ : (graph W.paths w X Y).obj n) (h : ∃ j, column W (τ.obj 0) j ≠ []) :
-    (FactorTarget.wordValue W X Y).app n (point W τ h) = value W (τ.obj 0) := by
-  change (generator W τ h).val ::
-    (colimitValue W (generator W τ h).val.right Y).app n (rightPoint W τ h) = _
-  have hr := colimitValue_inclusion W (generator W τ h).val.right Y
-    (Word.CutFactor.residualWord w (AttachedPrefix.index W τ h))
-    (Attachments.residualFunctor W τ (AttachedPrefix.index W τ h) (AttachedPrefix.nonempty W τ h))
-  exact (congrArg (List.cons (generator W τ h).val) hr).trans
+lemma point_wordValue {w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word} {n : SimplexCategoryᵒᵖ}
+    (τ : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.graph W.paths w X Y).obj n) (h : ∃ j, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedGeneratorColumns.column W (τ.obj 0) j ≠ []) :
+    (FactorTarget.wordValue W X Y).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.point W τ h) = value W (τ.obj 0) := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W τ h).val ::
+    (colimitValue W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W τ h).val.right Y).app n (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.rightPoint W τ h) = _
+  have hr := colimitValue_inclusion W (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W τ h).val.right Y
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.residualWord w (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W τ h))
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedCutAttachmentDiagrams.residualFunctor W τ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.index W τ h) (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedAttachedPrefix.nonempty W τ h))
+  exact (congrArg (List.cons (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorPoint.generator W τ h).val) hr).trans
     (AttachedPrefix.value_cons_residual W τ h 0).symm
 
 lemma colimitCut_wordValue (X Y : Paths C) :
-    colimitCut W X Y ≫ FactorTarget.wordValue W X Y = ambientMap W X Y ≫ colimitValue W X Y := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.colimitCut W X Y ≫ FactorTarget.wordValue W X Y = _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.ambientMap W X Y ≫ colimitValue W X Y := by
   apply colimit.hom_ext
   intro w
-  change inclusion W X Y w ≫ (colimitCut W X Y ≫ FactorTarget.wordValue W X Y) =
-    inclusion W X Y w ≫ (ambientMap W X Y ≫ colimitValue W X Y)
-  rw [← Category.assoc, inclusion_colimitCut, ← Category.assoc, inclusion_ambientMap]
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.colimitCut W X Y ≫ FactorTarget.wordValue W X Y) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion W X Y w ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.ambientMap W X Y ≫ colimitValue W X Y)
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_colimitCut, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorColimit.inclusion_ambientMap]
   ext n τ
   exact (point_wordValue W τ.val τ.property).trans (colimitValue_inclusion W X Y w τ.val).symm
 

@@ -21,9 +21,9 @@ lemma simplexSubsetSplitCubicalTensor_composition {n : ℕ} (I : Finset (Fin (n 
         (necklaceCubicalCell (necklaceInSimplexSubsetSplitLeft.{u} I hI j hj hL))
         (necklaceCubicalCell (necklaceInSimplexSubsetSplitRight I hI j hj hR)) ≫
       necklaceCubicalCompose Δ[n]
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI)))
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex j)
-        (_root_.SerrePositivity.InfinityCategories.Simplicial.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexSubsetNonempty I hI))) =
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.min' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI)))
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex j)
+        (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.standardSimplexVertex (I.max' (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexSubsetNonempty I hI))) =
       (necklaceCubicalTensorIso (necklaceBead ((I.filter (· ≤ j)).card - 1))
         (necklaceBead ((I.filter (j ≤ ·)).card - 1))).hom ≫
       necklaceCubicalSet.map (simplexSubsetSplitRefinement I j hj hL hR) ≫

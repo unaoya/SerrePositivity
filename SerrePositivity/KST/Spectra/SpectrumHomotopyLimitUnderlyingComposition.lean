@@ -15,7 +15,7 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 open CategoryTheory MonoidalCategory SSet
-open SerrePositivity.InfinityCategories.HomotopyLimits
+
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 variable {I : Type u} [SmallCategory I]
 
@@ -23,11 +23,11 @@ variable {I : Type u} [SmallCategory I]
 def homotopyLimitUnderlyingMappingComparison (X : OmegaSpectrum.{u})
     (D : I ⥤ OmegaSpectrum.{u}) :
     mappingSpace X (homotopyLimit D) ⟶
-      weightedSections (bousfieldKanWeight I)
+      _root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.weightedSections (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
         (((D ⋙ forgetToKan) ⋙ RawSpectrumMapping.pointedFunctor X) ⋙
           PointedSimplicialSet.forget) :=
   (homotopyLimitPointedMappingComparison X D).right ≫
-    (PointedWeightedEnd.underlyingIso (bousfieldKanWeight I)
+    (PointedWeightedEnd.underlyingIso (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
       ((D ⋙ forgetToKan) ⋙ RawSpectrumMapping.pointedFunctor X)).hom
 
 /-- 元の BF Hom 比較は、共有の weighted end の全 Hom パラメータの作用に自然。 -/
@@ -35,7 +35,7 @@ lemma homotopyLimitUnderlyingMappingComparison_composition (X Y : OmegaSpectrum.
     (D : I ⥤ OmegaSpectrum.{u}) :
     mappingComposition X Y (homotopyLimit D) ≫ homotopyLimitUnderlyingMappingComparison X D =
       (𝟙 (mappingSpace X Y) ⊗ₘ homotopyLimitUnderlyingMappingComparison Y D) ≫
-        RawSpectrumMapping.unpointedWeightedComposition X Y (bousfieldKanWeight I)
+        RawSpectrumMapping.unpointedWeightedComposition X Y (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.bousfieldKanWeight I)
           (D ⋙ forgetToKan) := by
   have h := congrArg Under.Hom.right
     (homotopyLimitPointedMappingComparison_composition X Y D)

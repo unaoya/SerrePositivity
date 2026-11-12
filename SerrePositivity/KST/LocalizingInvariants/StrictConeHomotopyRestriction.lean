@@ -15,14 +15,14 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory Limits MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.F2
-open SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
+
 namespace SerrePositivity.KST.LocalizingInvariants.StrictConeMap
 
 lemma shape_inr (I : Type u) [SmallCategory I] :
-    joinInr (Δ[0] : SSet.{max u v}) _ ≫ shape.{u, v} I =
-      (nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl := by
-  rw [shape, ← Category.assoc, joinInr_joinMap, Category.assoc, nerveInitialCone_inr,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{max u v}) _ ≫ shape.{u, v} I =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl := by
+  rw [shape, ← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr_joinMap, Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveInitialCone_inr,
     Category.comp_id]
 
 variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
@@ -31,8 +31,8 @@ variable {I : Type u} [SmallCategory I] {C : Type v} [Category.{u} C]
 
 lemma prism_restrict :
     ((Δ[1] : SSet.{max u v}) ◁
-      ((nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl)) ≫
-        largeCoherentPrism (transformation η c d m hm) = strictCoherentNatTransMap η := by
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.nerveAsSmallIso I).hom ≫ nerveMap WithInitial.incl)) ≫
+        largeCoherentPrism (transformation η c d m hm) = _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η := by
   have ho (r : Fin 2) (i : I) :
       ((ComposableArrows.mk₁ (transformation η c d m hm)).obj r).obj
           (WithInitial.of (AsSmall.up.obj i)) = ((ComposableArrows.mk₁ η).obj r).obj i := by
@@ -54,7 +54,7 @@ lemma prism_restrict :
   rintro ⟨⟨n⟩⟩
   apply ConcreteCategory.hom_ext
   rintro ⟨t, ⟨s⟩⟩
-  change enrichedFunctorOfOrderDiagram _ = enrichedFunctorOfOrderDiagram _
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _ = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.enrichedFunctorOfOrderDiagram _
   congr 1
   apply CategoryTheory.Functor.hext
   · intro i
@@ -70,11 +70,11 @@ lemma prism_restrict :
         (s.map (homOfLE (show i.down ≤ j.down from hij)))
 
 lemma homotopy_base :
-    (joinInr (Δ[0] : SSet.{max u v}) _ ▷ (Δ[1] : SSet.{max u v})) ≫
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr (Δ[0] : SSet.{max u v}) _ ▷ (Δ[1] : SSet.{max u v})) ≫
         (homotopy η c d m hm).h =
       (β_ ((SSet.uliftFunctor.{v, u}).obj (nerve I)) Δ[1]).hom ≫
-        strictCoherentNatTransMap η := by
-  change (joinInr _ _ ▷ Δ[1]) ≫ ((shape I ▷ Δ[1]) ≫
+        _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CatInfinity.strictCoherentNatTransMap η := by
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinInr _ _ ▷ Δ[1]) ≫ ((shape I ▷ Δ[1]) ≫
     ((β_ _ Δ[1]).hom ≫ largeCoherentPrism (transformation η c d m hm))) = _
   rw [← Category.assoc, ← comp_whiskerRight, shape_inr, ← Category.assoc,
     BraidedCategory.braiding_naturality_left, Category.assoc, prism_restrict]

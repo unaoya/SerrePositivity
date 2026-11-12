@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory Opposite
 
-variable (C : RelativeCategory.{u})
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 def freeResolutionHomObject (n : SimplexCategoryᵒᵖ) (X : C.category) :
     ((freeResolution C).obj n).category :=
@@ -36,7 +36,7 @@ lemma freeResolutionHomObject_naturality {n m : SimplexCategoryᵒᵖ} (θ : n �
   exact freeResolutionObject_naturality C θ X
 
 def freeResolutionGeneratorHom (X Y : C.category) : SSet.{u} :=
-  FixedObjectHom.functor (freeResolutionUnderlyingDiagram C) (freeResolutionHomObject C)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor (freeResolutionUnderlyingDiagram C) (freeResolutionHomObject C)
     (fun θ X => freeResolutionHomObject_naturality C θ X) X Y
 
 lemma freeResolutionHomObject_augmentation (n : SimplexCategoryᵒᵖ) (X : C.category) :
@@ -46,7 +46,7 @@ lemma freeResolutionHomObject_augmentation (n : SimplexCategoryᵒᵖ) (X : C.ca
 
 def freeResolutionGeneratorHomAugmentation (X Y : C.category) :
     freeResolutionGeneratorHom C X Y ⟶ (Functor.const SimplexCategoryᵒᵖ).obj (X ⟶ Y) := by
-  let η := FixedObjectHom.coefficientNatTrans (freeResolutionUnderlyingDiagram C)
+  let η := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHomFunctoriality.coefficientNatTrans (freeResolutionUnderlyingDiagram C)
     ((Functor.const SimplexCategoryᵒᵖ).obj C.category) (freeResolutionHomObject C)
     (fun _ (X : C.category) => X) (fun θ X => freeResolutionHomObject_naturality C θ X)
     (fun _ _ => rfl) (freeResolutionUnderlyingAugmentation C) id
@@ -55,7 +55,7 @@ def freeResolutionGeneratorHomAugmentation (X Y : C.category) :
   intro n m θ
   apply ConcreteCategory.hom_ext
   intro f
-  simpa [freeResolutionGeneratorHom, FixedObjectHom.functor, FixedObjectHom.map]
+  simpa [freeResolutionGeneratorHom, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.functor, _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.FixedObjectHom.map]
     using ConcreteCategory.congr_hom (η.naturality θ) f
 
 end SerrePositivity.EInfinity.SimplicialLocalization

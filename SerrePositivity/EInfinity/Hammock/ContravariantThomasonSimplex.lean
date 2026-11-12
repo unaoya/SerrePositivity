@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.EInfinity.Hammock.ContravariantThomasonArrows
-public import SerrePositivity.InfinityCategories.F1B.Localization.DwyerKan.ContravariantGrothendieckComponents
+public import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents
 
 /-!
 # 任意の右ラベルを固定した元の反変対角射列
@@ -24,37 +24,37 @@ variable {W : Type u} [Category.{u} W]
   (F : Wᵒᵖ ⥤ Cat.{u, u}) (S : W ⥤ Type u)
   {n : ℕ} (e : ComposableArrows (labels F S n) n)
 
-def vertex (i : Fin (n + 1)) : TwoSidedGrothendieck.contravariantTotal F :=
+def vertex (i : Fin (n + 1)) : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantTotal F :=
   op ⟨op (e.obj i).base, op ((e.obj i).left.obj i)⟩
 
 def arrow {i j : Fin (n + 1)} (h : i ⟶ j) : vertex F S e i ⟶ vertex F S e j :=
-  ContravariantGrothendieck.homMk (e.map h).base (leftArrow F S e h)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.homMk (e.map h).base (leftArrow F S e h)
 
-def simplex : ComposableArrows (TwoSidedGrothendieck.contravariantTotal F) n where
+def simplex : ComposableArrows (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantTotal F) n where
   obj := vertex F S e
   map := arrow F S e
   map_id i := by
-    refine ContravariantGrothendieck.hom_ext_heq _ _ ?_ ?_
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.hom_ext_heq _ _ ?_ ?_
     · change (e.map (𝟙 i)).base = 𝟙 _
       rw [e.map_id]
       rfl
     · exact (leftArrow_id_heq F S e i).trans
-        (ContravariantGrothendieck.fiberMap_id_heq (vertex F S e i)).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.fiberMap_id_heq (vertex F S e i)).symm
   map_comp h l := by
-    refine ContravariantGrothendieck.hom_ext_heq _ _ ?_ ?_
+    refine _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.hom_ext_heq _ _ ?_ ?_
     · change (e.map (h ≫ l)).base = (e.map h).base ≫ (e.map l).base
       rw [e.map_comp]
       rfl
     · exact (leftArrow_comp_heq F S e h l).trans
-        (ContravariantGrothendieck.fiberMap_comp_heq (arrow F S e h) (arrow F S e l)).symm
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.ContravariantGrothendieckComponents.fiberMap_comp_heq (arrow F S e h) (arrow F S e l)).symm
 
 lemma simplex_projection :
-    simplex F S e ⋙ TwoSidedGrothendieck.contravariantProjection F =
-      e ⋙ TwoSidedElements.projection _ _ := rfl
+    simplex F S e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedGrothendieck.contravariantProjection F =
+      e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.projection _ _ := rfl
 
 lemma simplex_operator {m : ℕ} (θ : SimplexCategory.mk m ⟶ SimplexCategory.mk n) :
     simplex F S ((SimplexCategory.toCat.map θ).toFunctor ⋙ e ⋙
-        TwoSidedElements.map ((F ⋙ nerveFunctor).flip.map θ.op) (𝟙 S)) =
+        _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map ((F ⋙ nerveFunctor).flip.map θ.op) (𝟙 S)) =
       (SimplexCategory.toCat.map θ).toFunctor ⋙ simplex F S e := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
@@ -62,7 +62,7 @@ lemma simplex_operator {m : ℕ} (θ : SimplexCategory.mk m ⟶ SimplexCategory.
   rfl
 
 lemma simplex_labels {T : W ⥤ Type u} (β : S ⟶ T) :
-    simplex F S e = simplex F T (e ⋙ TwoSidedElements.map (𝟙 _) β) := by
+    simplex F S e = simplex F T (e ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedElements.map (𝟙 _) β) := by
   refine CategoryTheory.Functor.ext (fun _ => rfl) ?_
   intro i j h
   simp only [eqToHom_refl, Category.id_comp, Category.comp_id]

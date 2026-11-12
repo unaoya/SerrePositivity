@@ -33,8 +33,8 @@ def specifiedHomotopyPostcomp {A X Y : SSet.{u}} {f g : A ⟶ X}
 規約：元全側面を保持。使われ方：実 Cat^perf 境界の StableInfinity 比較。 -/
 def squareFrameHomotopyPostcomp {X Y : SSet.{u}}
     {f g : (Δ[1] ⊗ Δ[1] : SSet.{u}) ⟶ X}
-    (H : _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare f) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare g)) (k : X ⟶ Y) :
-    _root_.SerrePositivity.InfinityCategories.Stable.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (f ≫ k)) (_root_.SerrePositivity.InfinityCategories.F1B.Quasicategory.SquareFrame.ofSquare (g ≫ k)) where
+    (H : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare f) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare g)) (k : X ⟶ Y) :
+    _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Quasicategory.SquareFrameHomotopy (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare (f ≫ k)) (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.Quasicategory.ofSquare (g ≫ k)) where
   bottom := specifiedHomotopyPostcomp H.bottom k
   right := specifiedHomotopyPostcomp H.right k
   left := specifiedHomotopyPostcomp H.left k

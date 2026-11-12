@@ -34,7 +34,7 @@ variable {C : Type u} [Category.{v} C] (A : SimplexCategory ⥤ C)
 規約：すべての単体と作用素は元の圏の射。
 使われ方：両側の frame の比較の共通対象。 -/
 abbrev mixedFunctor : (SimplexCategoryᵒᵖ ⥤ C) ⥤ SSet.{v} :=
-  (Functor.whiskeringRight SimplexCategoryᵒᵖ C SSet.{v}).obj (cosimplicialHom A) ⋙
+  (Functor.whiskeringRight SimplexCategoryᵒᵖ C SSet.{v}).obj (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A) ⋙
     BisimplicialModel.diagonal
 
 /-- 概要：固定した始域から終域の単体的図式への Hom（Hovey §5）。
@@ -50,7 +50,7 @@ abbrev rightHomFunctor (X : C) : (SimplexCategoryᵒᵖ ⥤ C) ⥤ SSet.{v} :=
 使われ方：始域 frame の側から共通の混合 Hom へ移る。 -/
 def leftComparison {Z : C} {R : SimplexCategoryᵒᵖ ⥤ C}
     (b : (Functor.const SimplexCategoryᵒᵖ).obj Z ⟶ R) :
-    (cosimplicialHom A).obj Z ⟶ (mixedFunctor A).obj R where
+    (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z ⟶ (mixedFunctor A).obj R where
   app n := ↾fun h => h ≫ b.app n
   naturality n m f := by
     apply ConcreteCategory.hom_ext
@@ -87,7 +87,7 @@ def rightComparison {X : C} (a : A ⟶ (Functor.const SimplexCategory).obj X)
 規約：全単体作用素で同じ元の射を保持する。
 使われ方：反対圏の frame Hom の不変性を右 Hom へ移す。 -/
 def rightHomIso (X : C) (R : SimplexCategoryᵒᵖ ⥤ C) :
-    (rightHomFunctor X).obj R ≅ (cosimplicialHom R.rightOp).obj (op X) :=
+    (rightHomFunctor X).obj R ≅ (_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom R.rightOp).obj (op X) :=
   NatIso.ofComponents (fun _ => Equiv.toIso
     { toFun := fun h => h.op
       invFun := fun h => h.unop

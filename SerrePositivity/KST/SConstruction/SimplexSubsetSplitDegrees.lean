@@ -36,7 +36,7 @@ lemma simplexSubsetSplit_degree {n : ℕ} (I : Finset (Fin (n + 1))) (hI : 2 ≤
       (2 - (I.card : ℤ)) + 1 := by
   have hl := necklaceInSimplexSubsetSplitLeft_dimension.{u} I hI j hj hL
   have hr := necklaceInSimplexSubsetSplitRight_dimension.{u} I hI j hj hR
-  have hc := DGNerve.Index.split_card hj
+  have hc := _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Index.split_card hj
   omega
 
 end SerrePositivity.KST.SConstruction

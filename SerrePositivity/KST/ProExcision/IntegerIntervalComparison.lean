@@ -37,10 +37,10 @@ lemma intervalSimplexVertex_map {n m : ℕ} (f : ⦋n⦌ ⟶ ⦋m⦌)
 規約：KST A.3・A.5、辺の境界は終点−始点。
 使われ方：実鎖写像へ束ねる区間の比較。 -/
 def integerIntervalComparisonApp : (n : ℕ) →
-    ((alternatingFaceMapComplex _).obj (linearizedSpace (Δ[1] : SSet.{u}))).X n ⟶
+    ((alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))).X n ⟶
       integerChainInterval.X n
-  | 0 => integerLinearization.map (↾fun x ↦ ULift.up (intervalSimplexVertex x 0))
-  | 1 => integerLinearizationDesc (fun x ↦
+  | 0 => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map (↾fun x ↦ ULift.up (intervalSimplexVertex x 0))
+  | 1 => _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc (fun x ↦
       integerIntervalWeight (intervalSimplexVertex x 0) (intervalSimplexVertex x 1) • integerIntervalEdge)
   | _ + 2 => 0
 
@@ -49,46 +49,46 @@ def integerIntervalComparisonApp : (n : ℕ) →
 規約：KST A.3。使われ方：微分の零次と区間の両端。 -/
 @[simp] lemma integerIntervalComparisonApp_zero_generator
     (x : (Δ[1] : SSet.{u}).obj (op ⦋0⦌)) :
-    integerIntervalComparisonApp 0 (integerGenerator x) =
+    integerIntervalComparisonApp 0 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) =
       integerIntervalVertex (intervalSimplexVertex x 0) :=
-  integerLinearization_map_generator _ x
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator _ x
 
 /-- 概要：区間比較の一次は辺の基底を両端の差の重み付き辺へ送る。
 方針：整数線形拡張の基底上の評価。
 規約：KST A.3。使われ方：微分の一次・二次の計算。 -/
 @[simp] lemma integerIntervalComparisonApp_one_generator
     (x : (Δ[1] : SSet.{u}).obj (op ⦋1⦌)) :
-    integerIntervalComparisonApp 1 (integerGenerator x) =
+    integerIntervalComparisonApp 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) =
       integerIntervalWeight (intervalSimplexVertex x 0) (intervalSimplexVertex x 1) • integerIntervalEdge :=
-  integerLinearizationDesc_generator _ x
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearizationDesc_generator _ x
 
 /-- 概要：区間比較は一次から零次への微分と可換。
 方針：辺の境界を両端の差へ同定し、単体の二つの面の値と比較する。
 規約：KST A.3・A.5。使われ方：実区間の鎖写像性の一次。 -/
 lemma integerIntervalComparison_comm_zero :
     integerIntervalComparisonApp.{u} 1 ≫ integerChainInterval.d 1 0 =
-    ((alternatingFaceMapComplex _).obj (linearizedSpace (Δ[1] : SSet.{u}))).d 1 0 ≫
+    ((alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))).d 1 0 ≫
       integerIntervalComparisonApp 0 := by
   change integerIntervalComparisonApp 1 ≫ integerIntervalBoundary = _
   rw [alternatingFaceMapComplex_obj_d,
     AlternatingFaceMapComplex.objD, Fin.sum_univ_two]
   simp only [Fin.val_zero, Fin.val_one, pow_zero, pow_one, one_smul, neg_smul]
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
-  change integerIntervalBoundary (integerIntervalComparisonApp 1 (integerGenerator x)) =
+  change integerIntervalBoundary (integerIntervalComparisonApp 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) =
     integerIntervalComparisonApp 0
-      (((linearizedSpace (Δ[1] : SSet.{u})).δ 0) (integerGenerator x) +
-        -(((linearizedSpace (Δ[1] : SSet.{u})).δ 1) (integerGenerator x)))
+      (((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).δ 0) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) +
+        -(((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).δ 1) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)))
   rw [map_add, map_neg]
   simp only [← sub_eq_add_neg]
-  change integerIntervalBoundary (integerIntervalComparisonApp 1 (integerGenerator x)) =
+  change integerIntervalBoundary (integerIntervalComparisonApp 1 (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) =
     integerIntervalComparisonApp 0
-      (integerLinearization.map ((Δ[1] : SSet.{u}).δ 0) (integerGenerator x)) -
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).δ 0) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) -
     integerIntervalComparisonApp 0
-      (integerLinearization.map ((Δ[1] : SSet.{u}).δ 1) (integerGenerator x))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).δ 1) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x))
   rw [integerIntervalComparisonApp_one_generator, map_smul, integerIntervalBoundary_edge,
-    integerIntervalWeight_vertices, integerLinearization_map_generator,
-    integerLinearization_map_generator, integerIntervalComparisonApp_zero_generator,
+    integerIntervalWeight_vertices, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, integerIntervalComparisonApp_zero_generator,
     integerIntervalComparisonApp_zero_generator]
   rfl
 
@@ -97,30 +97,30 @@ lemma integerIntervalComparison_comm_zero :
 規約：KST A.3・A.5。使われ方：実区間の鎖写像性の二次。 -/
 lemma integerIntervalComparison_comm_one :
     integerIntervalComparisonApp.{u} 2 ≫ integerChainInterval.d 2 1 =
-    ((alternatingFaceMapComplex _).obj (linearizedSpace (Δ[1] : SSet.{u}))).d 2 1 ≫
+    ((alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u}))).d 2 1 ≫
       integerIntervalComparisonApp 1 := by
   have h₂ : integerIntervalComparisonApp.{u} 2 = 0 := rfl
   rw [h₂, Limits.zero_comp, alternatingFaceMapComplex_obj_d,
     AlternatingFaceMapComplex.objD, Fin.sum_univ_three]
   simp only [Fin.val_zero, Fin.val_one, pow_zero, pow_one, one_smul, neg_smul,
     show (-1 : ℤ) ^ ((2 : Fin 3) : ℕ) = 1 from by decide]
-  apply integerLinearization_hom_ext
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_hom_ext
   intro x
   change 0 = integerIntervalComparisonApp 1
-    ((((linearizedSpace (Δ[1] : SSet.{u})).δ 0) (integerGenerator x) +
-      -(((linearizedSpace (Δ[1] : SSet.{u})).δ 1) (integerGenerator x))) +
-        ((linearizedSpace (Δ[1] : SSet.{u})).δ 2) (integerGenerator x))
+    ((((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).δ 0) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x) +
+      -(((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).δ 1) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x))) +
+        ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})).δ 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x))
   rw [map_add, map_add, map_neg]
   simp only [← sub_eq_add_neg]
   change 0 =
     integerIntervalComparisonApp 1
-      (integerLinearization.map ((Δ[1] : SSet.{u}).δ 0) (integerGenerator x)) -
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).δ 0) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) -
     integerIntervalComparisonApp 1
-      (integerLinearization.map ((Δ[1] : SSet.{u}).δ 1) (integerGenerator x)) +
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).δ 1) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x)) +
     integerIntervalComparisonApp 1
-      (integerLinearization.map ((Δ[1] : SSet.{u}).δ 2) (integerGenerator x))
-  rw [integerLinearization_map_generator, integerLinearization_map_generator,
-    integerLinearization_map_generator, integerIntervalComparisonApp_one_generator,
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization.map ((Δ[1] : SSet.{u}).δ 2) (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerGenerator x))
+  rw [_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator,
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.integerLinearization_map_generator, integerIntervalComparisonApp_one_generator,
     integerIntervalComparisonApp_one_generator, integerIntervalComparisonApp_one_generator]
   change 0 = integerIntervalWeight (intervalSimplexVertex x 1) (intervalSimplexVertex x 2) •
       integerIntervalEdge -
@@ -133,7 +133,7 @@ lemma integerIntervalComparison_comm_one :
 規約：KST Definition A.3、Construction A.5、非被約な頂点を保つ。
 使われ方：鎖ホモトピーから単体的テンソル区間写像への復元。 -/
 def integerIntervalComparison :
-    (alternatingFaceMapComplex _).obj (linearizedSpace (Δ[1] : SSet.{u})) ⟶ integerChainInterval :=
+    (alternatingFaceMapComplex _).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.linearizedSpace (Δ[1] : SSet.{u})) ⟶ integerChainInterval :=
   ChainComplex.ofHom integerIntervalComparisonApp (fun n ↦ by
     cases n with
     | zero => exact integerIntervalComparison_comm_zero

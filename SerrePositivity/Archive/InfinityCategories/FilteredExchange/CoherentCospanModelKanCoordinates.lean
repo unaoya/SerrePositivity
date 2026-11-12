@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.CoherentCospanModelKanEquivalence
-public import SerrePositivity.InfinityCategories.F1.FilteredExchange.FiberwisePullbackKanCoordinates
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FiberwisePullbackKanCoordinates
 
 /-!
 概要：元の全空間模型の Kan 比較が保持する二脚と全 path 座標を明示する。

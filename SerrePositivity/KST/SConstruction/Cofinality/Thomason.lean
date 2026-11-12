@@ -22,7 +22,7 @@ open SerrePositivity.InfinityCategories
 使われ方：`(kSpectrumMap_cofinality f hf).1 j hj` と `.2`。 -/
 theorem kSpectrumMap_cofinality
     {X Y : StableModel.{u}} (f : X ⟶ Y)
-    (hf : F2.Idempotent.IsIdempotentCompletion f.val) :
+    (hf : _root_.SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.RetractsAndIdempotents.IsIdempotentCompletion f.val) :
     (∀ j : ℤ, 0 < j → Function.Bijective (OmegaSpectrum.homotopyMap (kSpectrumMap f) j)) ∧
       Function.Injective (OmegaSpectrum.homotopyMap (kSpectrumMap f) 0) :=
   kSpectrumMap_cofinality_of_relativeFiber_input f hf

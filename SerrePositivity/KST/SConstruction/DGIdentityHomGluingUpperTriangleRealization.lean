@@ -1,7 +1,7 @@
 module
 public import SerrePositivity.KST.SConstruction.DGIdentityHomGluingInverseRotationUpperNative
 public import SerrePositivity.KST.SConstruction.DGPerfectRealization
-public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorTrianglePostcomposition
+public import SerrePositivity.InfinityCategories.Project.FilteredExchange.FunctorTrianglePostcomposition
 
 /-!
 概要：元包含・負符号・指定逆回転比較を持つ元上二単体を実 realization で運ぶ。
@@ -13,7 +13,7 @@ public import SerrePositivity.InfinityCategories.F1B.FilteredExchange.FunctorTri
 noncomputable section
 universe u v
 namespace SerrePositivity.KST.SConstruction
-open CategoryTheory DifferentialGraded InfinityCategories DGNerve
+open CategoryTheory DifferentialGraded InfinityCategories
 variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
   (C : Type (max (u + 1) v)) [DGCategory R C] [Small.{u} C]
   (J : DGFunctor R C (PerfectDGModule R E))
@@ -29,7 +29,7 @@ variable (R : Type u) [CommRing R] (E : Type v) [DGCategory R E] [Small.{u} E]
 規約：元包含・指定逆・負符号付き長辺を保持。
 使われ方：元全実逆回転上二単体の実評価側。 -/
 def dgIdentityHomGluingInverseRotationUpperRealizedTriangle :=
-  F2.postcomposeFunctorCompositionTriangle (dgNerve.map (dgPerfectRealization R C E J))
+  _root_.SerrePositivity.InfinityCategories.Project.FilteredExchange.postcomposeFunctorCompositionTriangle (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectRealization R C E J))
     (dgIdentityHomGluingInverseRotationUpperRawTriangle R C F G a h)
 
 /-- 概要：元上二単体の realization は元全二単体の同じ後合成。
@@ -38,6 +38,6 @@ def dgIdentityHomGluingInverseRotationUpperRealizedTriangle :=
 lemma dgIdentityHomGluingInverseRotationUpperRealizedTriangle_diagram :
     (dgIdentityHomGluingInverseRotationUpperRealizedTriangle R E C J F G a h).diagram =
       (dgIdentityHomGluingInverseRotationUpperRawTriangle R C F G a h).diagram ≫
-        (CategoryTheory.ihom (dgNerve R P)).map
-          (dgNerve.map (dgPerfectRealization R C E J)) := rfl
+        (CategoryTheory.ihom (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.dgNerve R P)).map
+          (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectRealization R C E J)) := rfl
 end SerrePositivity.KST.SConstruction

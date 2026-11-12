@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.KST.Comparison.ComponentKan
-public import SerrePositivity.InfinityCategories.Kan.HomotopyGroups
+public import SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.HomotopyGroups
 
 /-!
 # 境界定数単体を選ばれた成分へ持ち上げる
@@ -28,8 +28,8 @@ open scoped _root_.Simplicial
 使われ方：境界定数単体の成分の検査。
 -/
 theorem simplexClass_yoneda_const (X : SSet.{u}) (x : X _⦋0⦌) (n : ℕ) :
-    _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv (SSet.const (X := Δ[n]) x)) = π₀.mk x := by
-  unfold _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass _root_.SerrePositivity.InfinityCategories.Simplicial.simplexVertex
+    _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv (SSet.const (X := Δ[n]) x)) = π₀.mk x := by
+  unfold _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexVertex
   rw [yonedaEquiv_naturality, SSet.comp_const, yonedaEquiv_const]
 
 /--
@@ -39,13 +39,13 @@ theorem simplexClass_yoneda_const (X : SSet.{u}) (x : X _⦋0⦌) (n : ℕ) :
 使われ方：全ての境界定数単体を選んだ部分複体へ持ち上げる。
 -/
 theorem pointedSimplex_class (X : SSet.{u}) {n : ℕ} {x : X _⦋0⦌}
-    (s : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv s.map) = π₀.mk x := by
+    (s : X.PtSimplex (n + 1) x) : _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv s.map) = π₀.mk x := by
   have h := congrArg yonedaEquiv (s.δ_map (0 : Fin (n + 2)))
   rw [stdSimplex.yonedaEquiv_δ_comp] at h
   calc
-    _ = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (X.map (SimplexCategory.δ (0 : Fin (n + 2))).op
-        (yonedaEquiv s.map)) := (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_map X _ _).symm
-    _ = _root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X (yonedaEquiv (SSet.const (X := Δ[n]) x)) := congrArg (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass X) h
+    _ = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (X.map (SimplexCategory.δ (0 : Fin (n + 2))).op
+        (yonedaEquiv s.map)) := (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_map X _ _).symm
+    _ = _root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X (yonedaEquiv (SSet.const (X := Δ[n]) x)) := congrArg (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass X) h
     _ = _ := simplexClass_yoneda_const X x n
 
 /--
@@ -60,7 +60,7 @@ def componentPtSimplexLift (X : SSet.{u}) (P : π₀ X → Prop)
     (componentSubcomplex X P : SSet).PtSimplex (n + 1) x where
   map := componentSimplexLift X P s.map (by
     rw [pointedSimplex_class]
-    exact (_root_.SerrePositivity.InfinityCategories.Simplicial.simplexClass_zero X x.val) ▸ x.property)
+    exact (_root_.SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics.simplexClass_zero X x.val) ▸ x.property)
   comm := by
     apply (cancel_mono (componentSubcomplex X P).ι).mp
     rw [Category.assoc, componentSimplexLift_ι, s.comm]
@@ -76,7 +76,7 @@ def componentPtSimplexLift (X : SSet.{u}) (P : π₀ X → Prop)
 theorem componentPtSimplexLift_map (X : SSet.{u}) (P : π₀ X → Prop)
     (x : (componentSubcomplex X P : SSet) _⦋0⦌) {n : ℕ}
     (s : X.PtSimplex (n + 1) x.val) :
-    _root_.SerrePositivity.InfinityCategories.Kan.mapSimplex (componentSubcomplex X P).ι rfl (componentPtSimplexLift X P x s) = s := by
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.HomotopyGroups.mapSimplex (componentSubcomplex X P).ι rfl (componentPtSimplexLift X P x s) = s := by
   apply RelativeMorphism.ext
   exact componentSimplexLift_ι X P s.map _
 

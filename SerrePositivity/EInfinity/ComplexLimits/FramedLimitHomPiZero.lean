@@ -46,7 +46,7 @@ def framedLimitHomPiZeroEquiv (Y : (Complex A)) (F : K ⥤ (Complex A)) :
     infer_instance
   have := framedLimitProbe_cofibrant A Y
   have : IsFibrant (op (framedLimitProbe A Y)) :=
-    FrameHom.MixedFrame.fibrantOp_of_cofibrant _
+    _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.fibrantOp_of_cofibrant _
   let e := HomotopyWeight.frameConePiZeroLocalizationEquiv Kᵒᵖ (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight K)
     (rightFrameDiagram A K F) (SerrePositivity.EInfinity.HomotopyWeight.framedLimitWeight_cofibrant K)
     (fun k => rightFrame_cofibrant A (F.obj k.unop))

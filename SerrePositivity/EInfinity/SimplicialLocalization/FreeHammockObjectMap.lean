@@ -19,7 +19,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
 open CategoryTheory
-lemma freeResolutionMap_object {C D : RelativeCategory.{u}} (F : C ⟶ D)
+lemma freeResolutionMap_object {C D : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}} (F : C ⟶ D)
     (n : SimplexCategoryᵒᵖ) (X : C.category) :
     ((freeResolutionMap F).app n).functor.obj (freeResolutionObject C n X) =
       freeResolutionObject D n (F.functor.obj X) := by

@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.PinchedHom.Index
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Index
 
 /-!
 概要：最後の頂点を複製する退化は、最後を二回固定した添字制限と可換。

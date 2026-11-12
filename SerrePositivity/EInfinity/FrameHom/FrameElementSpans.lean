@@ -1,6 +1,6 @@
 module
 
-public import SerrePositivity.InfinityCategories.HomotopyLimits.ArrowSpan
+public import SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.ArrowSpan
 public import SerrePositivity.HomotopicalAlgebra.HomotopyFunctionComplex.ResolutionHom
 public import Mathlib.CategoryTheory.Elements
 
@@ -25,7 +25,6 @@ universe u v
 namespace SerrePositivity.EInfinity.FrameHom
 
 open CategoryTheory Opposite
-open SerrePositivity.HomotopyFunctionComplex
 
 variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
   {X Y Z : C} (A : SimplexCategory ⥤ C) (p : A ⟶ (Functor.const SimplexCategory).obj X)
@@ -35,8 +34,8 @@ variable {C : Type u} [Category.{v} C] (L R : MorphismProperty C)
 方針：同じ次数の frame 対象と実際の単体の射を使う。
 規約：両脚と元の中間射を変更しない。
 使われ方：全単体の比較図式の対象。 -/
-def frameElementSpan (s : (((cosimplicialHom A).obj Z).Elements)ᵒᵖ) :
-    ArrowSpan.Object L R X Y where
+def frameElementSpan (s : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ) :
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object L R X Y where
   left := A.obj s.unop.obj.unop
   right := Z
   leftMap := p.app s.unop.obj.unop
@@ -49,7 +48,7 @@ def frameElementSpan (s : (((cosimplicialHom A).obj Z).Elements)ᵒᵖ) :
 方針：単体の元の frame の射と終域の恒等射を使う。
 規約：単体作用素の射と中間射の整合を明示する。
 使われ方：同じ frame Hom の全次数の比較。 -/
-def frameElementSpanMap {s t : (((cosimplicialHom A).obj Z).Elements)ᵒᵖ} (f : s ⟶ t) :
+def frameElementSpanMap {s t : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ} (f : s ⟶ t) :
     frameElementSpan L R A p hp j hj s ⟶ frameElementSpan L R A p hp j hj t where
   left := A.map f.unop.hom.unop
   right := 𝟙 Z
@@ -67,16 +66,16 @@ def frameElementSpanMap {s t : (((cosimplicialHom A).obj Z).Elements)ᵒᵖ} (f 
 方針：対象と全作用素の同じ比較を元の frame の関手則で束ねる。
 規約：要素圏の反対を使い、cosimplicial な射の向きを保持する。
 使われ方：特殊な hammock の nerve との共通比較の図式。 -/
-def frameElementSpanFunctor : (((cosimplicialHom A).obj Z).Elements)ᵒᵖ ⥤ ArrowSpan.Object L R X Y
+def frameElementSpanFunctor : (((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom A).obj Z).Elements)ᵒᵖ ⥤ _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.Object L R X Y
     where
   obj := frameElementSpan L R A p hp j hj
   map := frameElementSpanMap L R A p hp j hj
   map_id s := by
-    apply ArrowSpan.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext
     · exact A.map_id _
     · rfl
   map_comp f g := by
-    apply ArrowSpan.hom_ext
+    apply _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.hom_ext
     · exact A.map_comp f.unop.hom.unop g.unop.hom.unop
     · exact (Category.id_comp _).symm
 

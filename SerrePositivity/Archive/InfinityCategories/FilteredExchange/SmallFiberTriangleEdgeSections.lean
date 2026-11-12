@@ -2,7 +2,7 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallFiberEdgeSectionsBase
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SmallFiberPointedPrismFaces
-public import SerrePositivity.InfinityCategories.HomotopyLimits.WeightedStrictConeFamily
+public import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedStrictConeFamily
 
 /-!
 概要：元の局所全三角形の図式側の切断族を、実際の二 fiber 作用による切断族へ同定する。

@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.SpaceTriangleIso
 public import SerrePositivity.Archive.InfinityCategories.FilteredExchange.PointedOppositeHomAction
-public import SerrePositivity.InfinityCategories.F1.Universe.InvertibleEdge
-public import SerrePositivity.InfinityCategories.Core.Opposite
+public import SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.InvertibleEdge
+public import SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.InfinityCategories.Opposite
 
 /-!
 概要：元の三角形の精密化を反転し、同じ全 Hom の作用族へ送った指定辺を保持する。

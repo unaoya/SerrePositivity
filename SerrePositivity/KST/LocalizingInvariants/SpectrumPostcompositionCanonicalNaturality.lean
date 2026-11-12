@@ -52,18 +52,18 @@ lemma targetPre_canonical : targetPre p e = SpectrumTriangleNormalization.canoni
 
 lemma canonicalPost_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost f p)) ≫
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost f p)) ≫
       SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p e) =
     SpectrumMappingPath.arrowHom e ≫ Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost g p)) := by
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPost g p)) := by
   simpa only [sourcePost_canonical, targetPost_canonical] using post_naturality p e
 
 lemma canonicalPre_naturality :
     Truncated.HomotopyCategory.homMk
-      (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre f p)) =
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre f p)) =
     SpectrumMappingPath.arrowHom (SpectrumMappingPath.postEdge p e) ≫
       Truncated.HomotopyCategory.homMk
-        (functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre g p)) := by
+        (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.functorEdgeOfSimplicialHomotopy (SpectrumTriangleNormalization.canonicalPre g p)) := by
   simpa only [sourcePre_canonical, targetPre_canonical] using pre_naturality p e
 
 end SerrePositivity.KST.LocalizingInvariants.SpectrumPostcomposition

@@ -19,15 +19,15 @@ set_option backward.isDefEq.respectTransparency.types false
 namespace SerrePositivity.EInfinity.Hammock.TwoSidedDiagram
 open CategoryTheory
 
-def rowsFunctor : Data.{u} ⥤ SimplicialObject SSet.{u} where
-  obj A := TwoSidedBar.rows (A.left ⋙ nerveFunctor) (A.right ⋙ nerveFunctor)
-  map f := TwoSidedBar.rowMap (Functor.whiskerRight f.left nerveFunctor)
+def rowsFunctor : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedDiagram.Data.{u} ⥤ SimplicialObject SSet.{u} where
+  obj A := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rows (A.left ⋙ nerveFunctor) (A.right ⋙ nerveFunctor)
+  map f := _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBar.rowMap (Functor.whiskerRight f.left nerveFunctor)
       (Functor.whiskerRight f.right nerveFunctor) ≫
-    TwoSidedBar.baseChangeRows f.base (_ ⋙ nerveFunctor) (_ ⋙ nerveFunctor)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.TwoSidedBarBaseChange.baseChangeRows f.base (_ ⋙ nerveFunctor) (_ ⋙ nerveFunctor)
   map_id A := by ext n k e; rfl
   map_comp f g := by ext n k e; rfl
 
 lemma rowsFunctor_diagonal :
-    rowsFunctor ⋙ DoubleSimplicial.diagonalFunctor = barFunctor := rfl
+    rowsFunctor ⋙ _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.diagonalFunctor = barFunctor := rfl
 
 end SerrePositivity.EInfinity.Hammock.TwoSidedDiagram

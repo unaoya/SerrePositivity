@@ -1,8 +1,8 @@
 module
 
 public import SerrePositivity.KST.LocalizingInvariants.DGExtensionCompositionNerveIso
-public import SerrePositivity.InfinityCategories.Derived.DGPerfectExtensionInfinity
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.Project.DerivedCategories.DGPerfectExtensionInfinity
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 
 /-!
 概要：D の元の実 Perf 延長の合成を、関手 ∞ 圏の実同型で比較する。
@@ -17,7 +17,7 @@ set_option backward.isDefEq.respectTransparency.types false
 universe u v
 open CategoryTheory
 open SerrePositivity.DifferentialGraded SerrePositivity.InfinityCategories
-open SerrePositivity.InfinityCategories.DGNerve
+
 namespace SerrePositivity.KST.LocalizingInvariants
 variable (R : Type u) [CommRing R] (D E T : Type v)
   [DGCategory R D] [Small.{u} D] [DGCategory R E] [Small.{u} E]
@@ -28,31 +28,31 @@ def dgPerfectUnderlying : DGFunctor R (PerfectDGModule R D) (RightModule R D) :=
   dgFullSubcategoryInclusion R (RightModule R D) (modulePerfectProjectiveOver R D Set.univ)
 
 lemma dgPerfectExtensionInfinity_underlying (F : DGFunctor R D E) :
-    dgPerfectExtensionInfinity R D E F ≫ dgNerve.map (dgPerfectUnderlying R E) =
-      dgNerve.map (dgPerfectUnderlying R D) ≫ dgNerve.map (dgModuleExtension R D E F) := by
-  change dgNerve.map (dgPerfectModuleExtension R D E F) ≫
-      dgNerve.map (dgPerfectUnderlying R E) =
-    dgNerve.map (dgPerfectUnderlying R D) ≫ dgNerve.map (dgModuleExtension R D E F)
-  rw [← dgNerve.map_comp, ← dgNerve.map_comp]
-  exact congrArg dgNerve.map (dgFullFunctorRestriction_inclusion R _ _
-    (dgModuleExtension R D E F) _ _ (dgModuleExtension_perfectProjective R D E F))
+    _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R D E F ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R E) =
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R D) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleExtension R D E F) := by
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectModuleExtension R D E F) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R E) =
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R D) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgModuleExtension R D E F)
+  rw [← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp, ← _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.dgNerve.map_comp]
+  exact congrArg _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullFunctorRestriction_inclusion R _ _
+    (dgModuleExtension R D E F) _ _ (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgModuleExtension_perfectProjective R D E F))
 
 /-- 元の二つの実 Perf 延長の合成は、元の合成関手に沿う実 Perf 延長と同型。 -/
 def dgPerfectExtensionCompositionIso (F : DGFunctor R D E) (G : DGFunctor R E T) :
-    FunctorIso (dgPerfectExtensionInfinity R D E F ≫ dgPerfectExtensionInfinity R E T G)
-      (dgPerfectExtensionInfinity R D T (F.comp G)) := by
-  have hi := dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R T)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R D E F ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R E T G)
+      (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R D T (F.comp G)) := by
+  have hi := _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgFullSubcategoryInclusionNerve_isFullyFaithful R (RightModule R T)
     (modulePerfectProjectiveOver R T Set.univ)
   apply hi.preimageFunctorIso
-  change FunctorIso
-    ((dgPerfectExtensionInfinity R D E F ≫ dgPerfectExtensionInfinity R E T G) ≫
-      dgNerve.map (dgPerfectUnderlying R T))
-    (dgPerfectExtensionInfinity R D T (F.comp G) ≫ dgNerve.map (dgPerfectUnderlying R T))
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+    ((_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R D E F ≫ _root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R E T G) ≫
+      _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R T))
+    (_root_.SerrePositivity.InfinityCategories.Project.DerivedCategories.dgPerfectExtensionInfinity R D T (F.comp G) ≫ _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R T))
   rw [Category.assoc, dgPerfectExtensionInfinity_underlying R E T G,
     ← Category.assoc, dgPerfectExtensionInfinity_underlying R D E F,
     dgPerfectExtensionInfinity_underlying R D T (F.comp G)]
   simpa only [Category.assoc] using
     (dgExtensionCompositionInfinityIso R D E T F G).precomp
-      (dgNerve.map (dgPerfectUnderlying R D))
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map (dgPerfectUnderlying R D))
 
 end SerrePositivity.KST.LocalizingInvariants

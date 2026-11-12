@@ -71,8 +71,8 @@ abbrev pointwiseTensorFrame : SimplexCategory ⥤ K ⥤ C :=
 規約：全単体と終域の図式射に自然な実際の同型。
 使われ方：図式の局所化 Hom を重み付き錐で表示する。 -/
 def pointwiseTensorFrameHomIso :
-    cosimplicialHom (pointwiseTensorFrame K W B) ≅ pointwiseWeightedHom K W B :=
-  FrameHom.StandardFrame.homIso _ (pointwiseTensorAdjunction K W B)
+    _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHom (pointwiseTensorFrame K W B) ≅ pointwiseWeightedHom K W B :=
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.homIso _ (pointwiseTensorAdjunction K W B)
 
 /-- 概要：図式の標準 frame の零次は元の各値の重み実現（Hovey §5.4）。
 方針：零単体のテンソル単位同型を各値の実現で送る。
@@ -104,7 +104,7 @@ lemma pointwiseTensorRealization_map_mono {X Y : SSet.{u}} (i : X ⟶ Y) (hi : M
   intro k
   have : Fibration (p.app k) := ⟨(htriv p hp k).1⟩
   have : WeakEquivalence (p.app k) := ⟨(htriv p hp k).2⟩
-  exact FrameHom.target_boundary_rlp B hB (p.app k)
+  exact _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.target_boundary_rlp B hB (p.app k)
 
 /-- 概要：構成した図式の標準 frame は Reedy cofibrant（Hovey §5.4）。
 方針：単射の cofibration 保存を標準単体の境界に適用する。
@@ -112,7 +112,7 @@ lemma pointwiseTensorRealization_map_mono {X Y : SSet.{u}} (i : X ⟶ Y) (hi : M
 使われ方：定値図式の導来 Hom の実際の frame。 -/
 lemma pointwiseTensorFrame_reedyCofibrant :
     reedyLeft simplex (cofibrations (K ⥤ C)) (initial.to (pointwiseTensorFrame K W B)) :=
-  FrameHom.StandardFrame.reedyCofibrant _ (pointwiseTensorRealization_map_mono K W B hW hB htriv)
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.reedyCofibrant _ (pointwiseTensorRealization_map_mono K W B hW hB htriv)
 
 omit htriv
 
@@ -144,7 +144,7 @@ lemma pointwiseTensorRealization_map_anodyne {X Y : SSet.{u}} (i : X ⟶ Y)
 使われ方：定値図式からの局所化 Hom を π₀ で計算する。 -/
 lemma pointwiseTensorFrame_homotopicallyConstant {n m : SimplexCategory} (f : n ⟶ m) :
     weakEquivalences (K ⥤ C) ((pointwiseTensorFrame K W B).map f) :=
-  FrameHom.StandardFrame.homotopicallyConstant _
+  _root_.SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.homotopicallyConstant _
     (fun i hi => (pointwiseTensorRealization_map_anodyne K W B hW hB hconst hfib i hi).2) f
 
 end SerrePositivity.EInfinity.HomotopyWeight

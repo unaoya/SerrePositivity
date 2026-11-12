@@ -137,7 +137,7 @@ open CategoryTheory.MonoidalCategory HomotopicalAlgebra
 open SerrePositivity.DiagramModel SerrePositivity.Quillen
 
 variable [ModelCategory SSet.{0}]
-  (I J : MorphismProperty SSet.{0}) [ModelGeneration.CofibrantlyGenerated.{0} I J]
+  (I J : MorphismProperty SSet.{0}) [_root_.SerrePositivity.InfinityCategories.HA.ModelCategoryComparison.CofibrantlyGenerated.{0} I J]
   [IsQuillenBifunctor (curriedTensor SSet.{0})]
 
 /-- 概要：最小元を付加する添字への制限は実際のホモトピー極限を保つ（補題 3.2）。

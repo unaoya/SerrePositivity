@@ -22,11 +22,11 @@ local instance : SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicia
 lemma fixedSpectrumAction_eq {X : SSet.{u + 1}} [Quasicategory X]
     (K : X ⟶ SimplicialNerve OmegaSpectrum.{u}) {x : X _⦋0⦌}
     (f g : X.Edge x x) (P : OmegaSpectrum.{u}) (F G : P ⟶ P)
-    (hx : K.app _ x = coherentNerveVertex P)
+    (hx : K.app _ x = _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex P)
     (hf : ((f.map K).toTruncated).edge =
-      ((coherentNerveEdge F).toTruncated).edge)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge F).toTruncated).edge)
     (hg : ((g.map K).toTruncated).edge =
-      ((coherentNerveEdge G).toTruncated).edge)
+      ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge G).toTruncated).edge)
     (h : Truncated.HomotopyCategory.homMk f.toTruncated =
       Truncated.HomotopyCategory.homMk g.toTruncated) (j : ℤ) :
     OmegaSpectrum.homotopyMap F j = OmegaSpectrum.homotopyMap G j := by
@@ -34,10 +34,10 @@ lemma fixedSpectrumAction_eq {X : SSet.{u + 1}} [Quasicategory X]
   have h := congrArg ((hoFunctor.map K).toFunctor.map) h
   change Truncated.HomotopyCategory.homMk (f.map K).toTruncated =
     Truncated.HomotopyCategory.homMk (g.map K).toTruncated at h
-  have hF := homMk_transport hx hx (f.map K).toTruncated
-    (coherentNerveEdge F).toTruncated hf
-  have hG := homMk_transport hx hx (g.map K).toTruncated
-    (coherentNerveEdge G).toTruncated hg
+  have hF := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport hx hx (f.map K).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge F).toTruncated hf
+  have hG := _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.homMk_transport hx hx (g.map K).toTruncated
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge G).toTruncated hg
   exact hF.symm.trans ((congrArg (fun a ↦
     eqToHom (congrArg HomotopyCategory.mk hx).symm ≫ a ≫
       eqToHom (congrArg HomotopyCategory.mk hx)) h).trans hG)

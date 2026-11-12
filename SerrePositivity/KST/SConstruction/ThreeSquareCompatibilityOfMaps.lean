@@ -71,12 +71,12 @@ def threeSquareCompatibilityDataOfMaps {E : SSet.{u}}
   let hT₂₂ := mappingTriangleFaceEdge t₂ 2 secondU (ht₂₂.trans hsu.symm)
   let hT₂₁ := mappingTriangleFaceEdge t₂ 1 secondL (ht₂₁.trans hsl.symm)
   refine {
-    origin := squareVertex q₁ 0 0
-    left := squareVertex q₁ 0 1
-    bottom := squareVertex q₁ 1 0
-    upper := squareVertex q₀ 1 0
-    middle := squareVertex q₁ 1 1
-    lower := squareVertex q₂ 0 1
+    origin := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₁ 0 0
+    left := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₁ 0 1
+    bottom := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₁ 1 0
+    upper := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₀ 1 0
+    middle := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₁ 1 1
+    lower := _root_.SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.squareVertex q₂ 0 1
     upperLeg := upper
     lowerLeg := lower
     leftLeg := left

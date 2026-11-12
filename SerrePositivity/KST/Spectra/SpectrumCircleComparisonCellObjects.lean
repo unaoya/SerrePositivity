@@ -15,7 +15,7 @@ noncomputable section
 universe u
 open CategoryTheory MonoidalCategory SSet
 open scoped Simplicial
-open SerrePositivity.InfinityCategories SerrePositivity.InfinityCategories.HomotopyLimits
+open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.Spectra.OmegaSpectrum
 local instance circleComparisonCellObjectsSimplicialCategory :
     SimplicialCategory OmegaSpectrum.{u} := OmegaSpectrum.simplicialCategory
@@ -26,16 +26,16 @@ lemma circleCompanionComparisonTetrahedron_base_fromPoint (z : Sp.{u} _⦋0⦌)
     SSet.yonedaEquiv.symm (stdSimplex.edge 3 2 3 (by decide)) ≫
       SSet.yonedaEquiv.symm (circleCompanionComparisonTetrahedron z k) =
     SSet.yonedaEquiv.symm
-      (coherentNerveEdge
+      (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveEdge
         (fromPoint (nativeCotensorInput PointedSimplicialSet.circle z).val)).edge := by
   rw [circleCompanionComparisonTetrahedron_base]
   apply SSet.yonedaEquiv.injective
   rw [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply,
     circleConeComparisonParameter, Equiv.apply_symm_apply]
-  change (nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌) _ =
-    (nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌)
+  change (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌) _ =
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌)
       (ComposableArrows.mk₁ (fromPoint (nativeCotensorInput PointedSimplicialSet.circle z).val))
-  apply congrArg ((nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌))
+  apply congrArg ((_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.nerveToCoherent OmegaSpectrum.{u}).app (Opposite.op ⦋1⦌))
   cases k
   all_goals
     refine ComposableArrows.ext₁ rfl rfl ?_
@@ -65,7 +65,7 @@ lemma circleCompanionComparisonTetrahedron_obj_one (z : Sp.{u} _⦋0⦌)
 /-- 元の三単体の三番目の頂点は、元の一点 BF スペクトル。 -/
 lemma circleCompanionComparisonTetrahedron_obj_two (z : Sp.{u} _⦋0⦌)
     (k : Limits.WalkingPair) :
-    (circleCompanionComparisonTetrahedron z k).obj ⟨ULift.up 2⟩ = spectrumPoint := by
+    (circleCompanionComparisonTetrahedron z k).obj ⟨ULift.up 2⟩ = _root_.SerrePositivity.InfinityCategories.HomotopyLimits.spectrumPoint := by
   have h := congrArg SSet.yonedaEquiv
     (circleCompanionComparisonTetrahedron_base_fromPoint z k)
   simp only [SSet.yonedaEquiv_comp, Equiv.apply_symm_apply] at h

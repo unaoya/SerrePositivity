@@ -1,8 +1,8 @@
 module
-public import SerrePositivity.InfinityCategories.Stable.Lax.LaxDifferenceRho
+public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.LaxDifferenceRho
 
 public import SerrePositivity.KST.LocalizingInvariants.LaxDifferenceDComparison
-public import SerrePositivity.InfinityCategories.F1.FunctorCategories.FullyFaithfulPostcomposition
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulPostcomposition
 
 /-!
 概要：q の充満忠実な右随伴から、差の右随伴候補 ρ と実際の切断同型を構成する。
@@ -19,7 +19,7 @@ open CategoryTheory MonoidalCategory MonoidalClosed SSet
 open scoped Simplicial
 open SerrePositivity.InfinityCategories
 namespace SerrePositivity.KST.LocalizingInvariants
-variable {C D E : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.Stable.Verdier.ExactMap D E)
+variable {C D E : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.StableCategory.{u}} (p : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap C E) (q : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Verdier.ExactMap D E)
   (v : E.obj ⟶ D.obj)
 
 /-- 元の lax pullback に値を持つ関手 ρ = fromD ∘ v。 -/
@@ -28,19 +28,19 @@ def laxDifferenceRho : E.obj ⟶ (laxCategory p q).obj := v ≫ LaxInclusion.fro
 lemma laxDifferenceRho_snd : laxDifferenceRho p q v ≫ (laxSnd p q).hom = v := by
   rw [laxDifferenceRho, Category.assoc, LaxInclusion.fromD_snd, Category.comp_id]
 
-lemma laxDifferenceRho_fullyFaithful (hv : IsFullyFaithful v) :
-    IsFullyFaithful (laxDifferenceRho p q v) :=
+lemma laxDifferenceRho_fullyFaithful (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (laxDifferenceRho p q v) :=
   hv.comp (LaxInclusion.fromD_fullyFaithful p q)
 
-lemma laxDifferenceRho_postcomp_fullyFaithful (hv : IsFullyFaithful v) (A : SSet.{u}) :
-    IsFullyFaithful ((ihom A).map (laxDifferenceRho p q v)) :=
+lemma laxDifferenceRho_postcomp_fullyFaithful (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v) (A : SSet.{u}) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful ((ihom A).map (laxDifferenceRho p q v)) :=
   (laxDifferenceRho_fullyFaithful p q v hv).postcompose A
 
 /-- ρ に差の関手を続けた合成は恒等関手と実関手同型になる。 -/
-def laxDifferenceRho_sectionIso (a : QCatAdjunction q.hom v) (hv : IsFullyFaithful v) :
-    FunctorIso (laxDifferenceRho p q v ≫ laxDifference p q) (𝟙 E.obj) := by
-  have := _root_.SerrePositivity.InfinityCategories.Stable.Lax.fullyFaithfulRightAdjunction_counitHom_isIso q v a hv
-  have h := FunctorIso.precomp (fromD_differenceIso p q) v
+def laxDifferenceRho_sectionIso (a : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.QCatAdjunction q.hom v) (hv : _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful v) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso (laxDifferenceRho p q v ≫ laxDifference p q) (𝟙 E.obj) := by
+  have := _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Lax.fullyFaithfulRightAdjunction_counitHom_isIso q v a hv
+  have h := _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso.precomp (fromD_differenceIso p q) v
   exact (by simpa only [laxDifferenceRho, Category.assoc] using h) ≪≫ asIso a.counitHom
 
 end SerrePositivity.KST.LocalizingInvariants

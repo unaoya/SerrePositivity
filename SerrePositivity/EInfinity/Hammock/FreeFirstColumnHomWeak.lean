@@ -20,13 +20,13 @@ universe u
 namespace SerrePositivity.EInfinity.Hammock.FirstColumn
 open CategoryTheory SimplicialLocalization SerrePositivity.InfinityCategories
 open TwoSidedDiagram.FixedVertices
-variable (C : RelativeCategory.{u}) (w : Word) (X Y : C.category)
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u}) (w : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.Word) (X Y : C.category)
 def freeFirstTargetObjectEquiv (n : SimplexCategoryᵒᵖ) : C.category ≃
-    (((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y)).obj n).base :=
+    (((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y)).obj n).base :=
   markedObjectEquiv C
 lemma freeFirstTargetObjectEquiv_naturality {n m : SimplexCategoryᵒᵖ} (θ : n ⟶ m)
     (Z : C.category) :
-    ((((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y)).map θ).base.obj
+    ((((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y)).map θ).base.obj
       (freeFirstTargetObjectEquiv C w X Y n Z)) = freeFirstTargetObjectEquiv C w X Y m Z := rfl
 
 def freeFirstSourceHomIso (U V : C.category) :
@@ -36,7 +36,7 @@ def freeFirstSourceHomIso (U V : C.category) :
   NatIso.ofComponents (fun _ => Iso.refl _) (by intros; rfl)
 
 def freeFirstTargetHomIso (U V : C.category) :
-    homSpace ((Functor.const SimplexCategoryᵒᵖ).obj (forwardForwardData C w X Y))
+    homSpace ((Functor.const SimplexCategoryᵒᵖ).obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.forwardForwardData C w X Y))
       (freeFirstTargetObjectEquiv C w X Y) (freeFirstTargetObjectEquiv_naturality C w X Y) U V ≅
     (Functor.const SimplexCategoryᵒᵖ).obj
       ((⟨U⟩ : WideSubcategory C.weakEquivalences) ⟶ ⟨V⟩) :=
@@ -58,19 +58,19 @@ lemma freeFirstSourceHomIso_augmentation (U V : C.category) :
       freeFirstHomSpaceMap C w X Y U V ≫ (freeFirstTargetHomIso C w X Y U V).hom := by
   ext n f
   apply WideSubcategory.hom_ext
-  change (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
+  change (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map
     (eqToHom _ ≫ f ≫ eqToHom _) ≫ eqToHom _).hom =
-      (eqToHom _ ≫ (markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
+      (eqToHom _ ≫ (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.markedCategoryMap ((freeResolutionAugmentationNatTrans C).app n)).map f ≫
         eqToHom _).hom
   simp only [Functor.map_comp, WideSubcategory.comp_def, marked_eqToHom_hom,
     eqToHom_map, Category.assoc, eqToHom_trans_assoc, eqToHom_trans]
 
 lemma freeFirstHomSpaceMap_weak (U V : C.category) :
-    IsWeakHomotopyEquivalence (freeFirstHomSpaceMap C w X Y U V) := by
-  have h := (isPrecompositionEquivalence_of_iso
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsWeakHomotopyEquivalence (freeFirstHomSpaceMap C w X Y U V) := by
+  have h := (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstSourceHomIso C w X Y U V)).isWeakHomotopyEquivalence.comp
       (freeResolutionCanonicalMarkedHomAugmentation_weak C U V)
   rw [freeFirstSourceHomIso_augmentation] at h
-  exact (isPrecompositionEquivalence_of_iso
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.isPrecompositionEquivalence_of_iso
     (freeFirstTargetHomIso C w X Y U V)).isWeakHomotopyEquivalence.cancel_right h
 end SerrePositivity.EInfinity.Hammock.FirstColumn

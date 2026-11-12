@@ -20,9 +20,9 @@ namespace SerrePositivity.KST.Spectra.SignedAdjointPaths
 variable {P A A' Y Y' Z Z' W W' B : PointedSimplicialSet.{u}}
   [KanComplex Z.right] [KanComplex Z'.right] [KanComplex W.right] [KanComplex W'.right]
   (a : Z ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W)
-  (ha : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a.right)
+  (ha : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a.right)
   (a' : Z' ⟶ PointedObject.basedHom PointedSimplicialSet.circle.{u} W')
-  (ha' : _root_.SerrePositivity.InfinityCategories.Kan.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
+  (ha' : _root_.SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.KanPiIsomorphism a'.right) (v : P ⟶ PointedObject.basedHom Z Z')
   (w : P ⟶ PointedObject.basedHom W W')
   (hc : a ≫ PointedMapping.parametricPost PointedSimplicialSet.circle.{u} w =
     PointedMapping.transpose v ≫ PointedObject.basedHomMap P a')

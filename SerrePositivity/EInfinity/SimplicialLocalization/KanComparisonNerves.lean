@@ -2,8 +2,8 @@ module
 
 public import SerrePositivity.EInfinity.SimplicialLocalization.KanComparisonWeak
 public import SerrePositivity.EInfinity.SimplicialLocalization.Nerve
-public import SerrePositivity.InfinityCategories.F1.Coherent.NerveFullyFaithful
-public import SerrePositivity.InfinityCategories.Core.FullyFaithfulEquivalence
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.NerveFullyFaithful
+public import SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.FullyFaithfulEquivalence
 
 /-!
 # 元の Kan 自由 hammock の左右比較の実 coherent nerve 同値
@@ -20,8 +20,8 @@ set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
 universe u
 namespace SerrePositivity.EInfinity.SimplicialLocalization
-open CategoryTheory Hammock SerrePositivity.InfinityCategories SerrePositivity.KST.Comparison
-variable (C : RelativeCategory.{u})
+open CategoryTheory Hammock SerrePositivity.InfinityCategories
+variable (C : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.RelativeCategory.{u})
 
 abbrev KanHammockCategory := ForgetEnrichment SSet.{u} (KanHammockObjects C)
 abbrev KanFreeHammockCategory := ForgetEnrichment SSet.{u} (KanFreeHammockObjects C)
@@ -33,11 +33,11 @@ instance kanFreeHammockSimplicialCategory : SimplicialCategory (KanFreeHammockCa
 
 instance kanHammockHom_kanComplex (X Y : KanHammockCategory C) :
     SSet.KanComplex (SimplicialCategory.sHom X Y) := by
-  change SSet.KanComplex (exInfinity.obj (colimitGraph C.weakEquivalences X Y))
+  change SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph C.weakEquivalences X Y))
   infer_instance
 instance kanFreeHammockHom_kanComplex (X Y : KanFreeHammockCategory C) :
     SSet.KanComplex (SimplicialCategory.sHom X Y) := by
-  change SSet.KanComplex (exInfinity.obj (freeHammockDiagonal C X Y))
+  change SSet.KanComplex (_root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor.exInfinity.obj (freeHammockDiagonal C X Y))
   infer_instance
 
 def kanFreeHammockAugmentationFunctor :
@@ -52,44 +52,44 @@ def kanHammockNerve : SSet.{u} := SimplicialNerve (KanHammockCategory C)
 def kanFreeHammockNerve : SSet.{u} := SimplicialNerve (KanFreeHammockCategory C)
 
 instance kanHammockNerve_quasicategory : SSet.Quasicategory (kanHammockNerve C) :=
-  Coherent.simplicialNerve_quasicategory _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory _
 instance kanFreeHammockNerve_quasicategory : SSet.Quasicategory (kanFreeHammockNerve C) :=
-  Coherent.simplicialNerve_quasicategory _
+  _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.simplicialNerve_quasicategory _
 
 def kanFreeHammockAugmentationNerve : kanFreeHammockNerve C ⟶ kanHammockNerve C :=
-  coherentNerveMap (kanFreeHammockAugmentationFunctor C)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (kanFreeHammockAugmentationFunctor C)
 def kanFreeHammockComparisonNerve : kanFreeHammockNerve C ⟶ localizationNerve C :=
-  coherentNerveMap (kanFreeHammockComparisonFunctor C)
+  _root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap (kanFreeHammockComparisonFunctor C)
 
 lemma kanFreeHammockAugmentationNerve_fullyFaithful :
-    IsFullyFaithful (kanFreeHammockAugmentationNerve C) :=
-  (coherentNerveMap_isFullyFaithful_iff (kanFreeHammockAugmentationFunctor C)).mpr
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (kanFreeHammockAugmentationNerve C) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff (kanFreeHammockAugmentationFunctor C)).mpr
     (fun X Y => kanFreeHammockAugmentationEnriched_map_equivalence C X Y)
 lemma kanFreeHammockComparisonNerve_fullyFaithful :
-    IsFullyFaithful (kanFreeHammockComparisonNerve C) :=
-  (coherentNerveMap_isFullyFaithful_iff (kanFreeHammockComparisonFunctor C)).mpr
+    _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.IsFullyFaithful (kanFreeHammockComparisonNerve C) :=
+  (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.coherentNerveMap_isFullyFaithful_iff (kanFreeHammockComparisonFunctor C)).mpr
     (fun X Y => kanFreeHammockComparisonEnriched_map_equivalence C X Y)
 
 lemma kanFreeHammockAugmentationNerve_equivalence :
-    IsQCatEquivalence (kanFreeHammockAugmentationNerve C) := by
-  apply isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (kanFreeHammockAugmentationNerve C) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (kanFreeHammockAugmentationNerve_fullyFaithful C)
   intro y
   let x : KanFreeHammockCategory C :=
-    coherentNerveObject (C := KanHammockCategory C) y
-  refine ⟨coherentNerveVertex x, ⟨eqToIso (congrArg SSet.HomotopyCategory.mk ?_)⟩⟩
-  exact (coherentNerveMap_vertex (kanFreeHammockAugmentationFunctor C) x).trans
-    (coherentNerveVertex_object (C := KanHammockCategory C) y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := KanHammockCategory C) y
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex x, ⟨eqToIso (congrArg SSet.HomotopyCategory.mk ?_)⟩⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (kanFreeHammockAugmentationFunctor C) x).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object (C := KanHammockCategory C) y)
 
 lemma kanFreeHammockComparisonNerve_equivalence :
-    IsQCatEquivalence (kanFreeHammockComparisonNerve C) := by
-  apply isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.IsQCatEquivalence (kanFreeHammockComparisonNerve C) := by
+  apply _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors.isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective _
     (kanFreeHammockComparisonNerve_fullyFaithful C)
   intro y
   let x : KanFreeHammockCategory C :=
-    coherentNerveObject (C := KanLocalizationCategory C) y
-  refine ⟨coherentNerveVertex x, ⟨eqToIso (congrArg SSet.HomotopyCategory.mk ?_)⟩⟩
-  exact (coherentNerveMap_vertex (kanFreeHammockComparisonFunctor C) x).trans
-    (coherentNerveVertex_object (C := KanLocalizationCategory C) y)
+    _root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveObject (C := KanLocalizationCategory C) y
+  refine ⟨_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex x, ⟨eqToIso (congrArg SSet.HomotopyCategory.mk ?_)⟩⟩
+  exact (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.coherentNerveMap_vertex (kanFreeHammockComparisonFunctor C) x).trans
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.coherentNerveVertex_object (C := KanLocalizationCategory C) y)
 
 end SerrePositivity.EInfinity.SimplicialLocalization

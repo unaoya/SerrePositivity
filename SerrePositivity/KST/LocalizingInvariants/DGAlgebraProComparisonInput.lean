@@ -59,7 +59,7 @@ lemma comparison_piZero_isProIso (h : ∀ j : ℤ, IsProZero (d.defect j)) :
 /-- 同じ元の dg 比較射を、β6 の実不変量値の π-pro 同値へ送る。
 局所化・模型・関手的レベル表示の追加仮定は要求しない。 -/
 lemma invariant_piProEquivalence
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
     (h : ∀ j : ℤ, IsProZero (d.defect j)) :
     ProSpectrum.IsPiProEquivalence
       (invariantLevelMap R Φ (c.comparison.map (nonpositiveInclusion R))) :=
@@ -67,7 +67,7 @@ lemma invariant_piProEquivalence
 
 /-- 指定次数までの実欠損の pro 消滅は、元の不変量値の指定連結度へ移る。 -/
 lemma invariant_piProConnected
-    (Φ : _root_.SerrePositivity.InfinityCategories.Stable.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
+    (Φ : _root_.SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Infinity.StableInfinity.{u + 1} ⟶ Sp.{u + 1}) {k : ℤ} (hΦ : IsKConnective R Φ k)
     (n : ℤ) (hn : 1 ≤ n)
     (h : ∀ j : ℤ, j ≤ n → IsProZero (d.defect j)) :
     ProSpectrum.IsPiProConnected

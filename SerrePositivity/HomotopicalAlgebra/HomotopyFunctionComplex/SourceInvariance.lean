@@ -23,7 +23,7 @@ variable {C : Type u} [Category.{v} C] [ModelCategory C]
 include hcof in
 lemma cosimplicialHomMap_trivialFibration {A B : SimplexCategory ⥤ C} (α : A ⟶ B)
     (hα : reedyLeft simplex (trivialCofibrations C) α) (target : C) [IsFibrant target] :
-    trivialFibrations SSet.{v} ((cosimplicialHomMap α).app target) := by
+    trivialFibrations SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app target) := by
   rw [← MorphismProperty.rlp_eq_of_wfs (cofibrations SSet.{v})
     (trivialFibrations SSet.{v}), hcof, SSet.rlp_monomorphisms]
   intro X Z i hi
@@ -34,14 +34,14 @@ lemma cosimplicialHomMap_trivialFibration {A B : SimplexCategory ⥤ C} (α : A 
   exact boundary_source_lifting α n
 
 abbrev cosimplicialHomSource (Y : C) : (SimplexCategory ⥤ C)ᵒᵖ ⥤ SSet.{v} :=
-  cosimplicialHomBifunctor ⋙ (evaluation C SSet.{v}).obj Y
+  _root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomBifunctor ⋙ (evaluation C SSet.{v}).obj Y
 
 include hcof in
 lemma cosimplicialHomMap_weakEquivalence {A B : SimplexCategory ⥤ C} (α : A ⟶ B)
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     (hB : reedyLeft simplex (cofibrations C) (initial.to B))
     (hα : ∀ n, weakEquivalences C (α.app n)) (Y : C) [IsFibrant Y] :
-    weakEquivalences SSet.{v} ((cosimplicialHomMap α).app Y) := by
+    weakEquivalences SSet.{v} ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) := by
   let := simplexModelCategory C
   have : IsCofibrant A := ⟨hA⟩
   have : IsCofibrant B := ⟨hB⟩
@@ -82,7 +82,7 @@ lemma cosimplicialHomMap_geometricWeakEquivalence
     (hA : reedyLeft simplex (cofibrations C) (initial.to A))
     (hB : reedyLeft simplex (cofibrations C) (initial.to B))
     (hα : ∀ n, weakEquivalences C (α.app n)) (Y : C) [IsFibrant Y] :
-    SimplicialHomotopy.weakEquivalences ((cosimplicialHomMap α).app Y) :=
+    SimplicialHomotopy.weakEquivalences ((_root_.SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom.cosimplicialHomMap α).app Y) :=
   hw ▸ cosimplicialHomMap_weakEquivalence hcof α hA hB hα Y
 
 include hcof in

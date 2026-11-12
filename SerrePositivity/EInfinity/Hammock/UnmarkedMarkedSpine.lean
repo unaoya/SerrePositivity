@@ -25,7 +25,7 @@ variable {C : Type u} [Category.{u} C] (W : MorphismProperty C) (Y : Paths C)
 
 inductive MarkedSpine : Paths C → Type u
   | nil (X : Paths C) (p : (AllMarked.nativeSpace W X Y).obj n) : MarkedSpine X
-  | cons (X : Paths C) (g : FactorTarget.Index W) (p : (FactorTarget.left W X g.val).obj n)
+  | cons (X : Paths C) (g : _root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.Index W) (p : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFactorTarget.left W X g.val).obj n)
       (tail : MarkedSpine g.val.right) : MarkedSpine X
 
 variable {W Y n}
@@ -45,14 +45,14 @@ lemma Spine.marked_word {X : Paths C} (t : Spine W Y n X) : t.marked.word = t.wo
 
 variable (W Y n)
 
-def markedSpine (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) : MarkedSpine W Y n X :=
+def markedSpine (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) : MarkedSpine W Y n X :=
   (spine W Y n X x).marked
 
-lemma markedSpine_word (X : Paths C) (x : (colimitGraph W.paths X Y).obj n) :
+lemma markedSpine_word (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n) :
     (markedSpine W Y n X x).word = (colimitValue W X Y).app n x :=
   (Spine.marked_word (spine W Y n X x)).trans (spine_word W Y n X x)
 
-lemma markedSpine_empty (X : Paths C) (x : (colimitGraph W.paths X Y).obj n)
+lemma markedSpine_empty (X : Paths C) (x : (_root_.SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph W.paths X Y).obj n)
     (hx : (colimitValue W X Y).app n x = []) : markedSpine W Y n X x =
       MarkedSpine.nil X ((AllMarked.emptyLift W X Y).app n ⟨x, hx⟩) := by
   unfold markedSpine

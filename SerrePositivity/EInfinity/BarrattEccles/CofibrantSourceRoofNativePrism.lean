@@ -27,7 +27,7 @@ variable (A : Type u) [CommRing A] (X Y : CofibrantAlgebra A)
 lemma cofibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (PinchedHom.extend α).op
+    (kanHammockNerve (cofibrantAlgebraRelativeCategory A)).map (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.extend α).op
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t) =
     cofibrantSourceRoofProductCommaNativeSimplex A X Y b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) :=
@@ -41,23 +41,23 @@ lemma cofibrantSourceRoofProductCommaNativeSimplex_naturality {m n : ℕ}
 lemma cofibrantSourceRoofProductCommaNativeSliceSimplex_naturality {m n : ℕ}
     (Γ : Fin (n + 1) ⥤ cofibrantSourceRoofProductComma A X Y b)
     (t : Fin (n + 1) →o Fin 2) (α : ⦋m⦌ ⟶ ⦋n⦌) :
-    (sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y))).map α.op
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y))).map α.op
       (cofibrantSourceRoofProductCommaNativeSliceSimplex A X Y b Γ t) =
     cofibrantSourceRoofProductCommaNativeSliceSimplex A X Y b
       (α.toOrderHom.monotone.functor ⋙ Γ) (t.comp α.toOrderHom) := by
   apply Subtype.ext
-  change joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
-    ((joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
+  change _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
+    ((_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso n 0).hom ≫ SSet.yonedaEquiv.symm
       (cofibrantSourceRoofProductCommaNativeSimplex A X Y b Γ t)) = _
-  rw [← Category.assoc, joinStdSimplexIso_rightPoint_naturality, Category.assoc,
+  rw [← Category.assoc, _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.joinStdSimplexIso_rightPoint_naturality, Category.assoc,
     SSet.yonedaEquiv_symm_naturality_left]
   exact congrArg (fun z : (kanHammockNerve (cofibrantAlgebraRelativeCategory A)) _⦋m + 1⦌ =>
-    (joinStdSimplexIso m 0).hom ≫ SSet.yonedaEquiv.symm z)
+    (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.joinStdSimplexIso m 0).hom ≫ SSet.yonedaEquiv.symm z)
     (cofibrantSourceRoofProductCommaNativeSimplex_naturality A X Y b Γ t α)
 
 def cofibrantSourceRoofProductCommaNativePrism :
     (Δ[1] : SSet.{u + 1}) ⊗ nerve (cofibrantSourceRoofProductComma A X Y b) ⟶
-      sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) where
+      _root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.sliceOver (SSet.yonedaEquiv.symm (cofibrantHammockVertex A Y)) where
   app _ := ↾fun a => cofibrantSourceRoofProductCommaNativeSliceSimplex A X Y b a.2
     (stdSimplex.objEquiv a.1).toOrderHom
   naturality := by
