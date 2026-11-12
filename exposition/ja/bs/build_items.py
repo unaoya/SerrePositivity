@@ -229,7 +229,7 @@ VERIFY_NO = ("未確認", "v-no")
 VTAG_RE = re.compile(r'\s*<span class="vtag[^"]*">[^<]*</span>')
 ITEM_RE = re.compile(r'<h4 class="item">(.*?)</h4>(.*?)(?=<h4 class="item">|<h2|<!-- items:begin|</main>)', re.S)
 # 「原典の項目一覧」を置かない章（地図と重複するので外した。見出しのラベルだけ付ける）
-NO_ITEMS_TABLE = {"02-delta.html", "03-prism.html", "04-site.html"}
+NO_ITEMS_TABLE = {"02-delta.html", "03-prism.html", "04-site.html", "05-hodge-tate.html"}
 NUM_RE = re.compile(r"(?:Definition|Def|Lemma|Remark|Rem|Example|Ex|Corollary|Cor|Proposition|Prop|Theorem|Thm|Warning|Warn|Construction|Constr|Notation|Not)\.?\s*(\d+\.\d+)")
 
 
