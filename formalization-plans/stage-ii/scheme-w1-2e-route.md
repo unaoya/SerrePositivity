@@ -1842,3 +1842,162 @@ V のタプルとの交叉で上の cone を作れば、縦方向を V の増大
 既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はない。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は基点 `df035c08e` から **220 本・23,589 行**、入口登録を含め **23,810 行**。50,000 行の停止基準には達していない。
 
 **停止点 2e ではない。** 単位イデアルを生成する一般のアフィン標準被覆は、局所化と有限積の比較を供給してから今回の単元の場合へ渡す必要がある。任意のアフィン被覆の完全性、共通細分の二重図式の実装、cone の完全性から実際の H の同型へ渡す判定と自然性、細分の選択との整合性が残る。動く係数環の標準開と共通係数の図式の照合、および既存の五つの比較同士の可換性も未完。今回の cone の補題の前提を仮定しただけで、一般の共通細分が完成したとはしない。
+
+
+## アフィン標準 Čech の完全性・細分の自然性と選択の独立性（ecd5061a5）
+
+数学コミット **`ecd5061a5`**。新規 **27 モジュール・141 宣言**、本体 **2,387 行**、入口 **27 登録と区切り空行 1 行**、git 差分 **2,415 行**。対象と直接 importer のビルドは **4,452 jobs で成功**。別実行の公理監査は **7,890 宣言・標準三公理のみ**。どちらも共有の `with_build_lock.sh --wait 3600` を使い、一つの待ちを終えてから次の鍵を取った。検証時とコミット時の全 27 ソースおよび入口のハッシュが一致することを確認した。
+
+- 単位イデアルを生成する一般のアフィン標準被覆の増大 Čech の完全性を、被覆元での局所化、有限積との交換、固定頂点の縮約から示した。Mathlib の準連接層の局所化 API を使い、Spec の実際の標準開上の切断へ渡した。
+- 開被覆の有限交叉、細分の実際のコチェイン写像、係数の射への自然性、恒等と合成、二つの添字の選択が同じ Čech H の射を与えることを示した。最後は整数鎖の比較ホモトピーとその台の包含を、切断の制限で評価した。
+- アフィン被覆を有限標準開で細分する存在、アフィン対角の下での実際の共通アフィン被覆、非空有限交叉のアフィン性を供給した。有限標準細分の添字は `Fin n` とし、座標環の宇宙から添字の制約が生じない形にした。
+- 加法的係数比較に沿う完全性の輸送を追加した。大域の係数環と、アフィン座標の係数環の線形構造を同一視しない。
+- cone が完全なら各 H の射が同型となる判定と、二重図式の行の cone に B1 を適用する接続を示した。**これらの完全性の前提をまだ全て実際のアフィン交叉へ供給していない。** `OpenCoverCechResolution` は実際の二重 Čech 構成の入口だが、任意のアフィン被覆の完全性や一般の細分の H の同型が完成したとは数えない。
+
+| モジュール | 宣言 | 主張 |
+|---|---|---|
+| `AffineLocalizingCech` | `cechAwayFactorUnits` | 局所化先では、分母を割る元の冪も可逆に作用する。 |
+| `AffineLocalizingCech` | `cechSpecRestriction` | Spec の大域切断から標準開への制限。 |
+| `AffineLocalizingCech` | `cechBasicOpen_le_of_dvd` | 分母の整除に沿う標準開の包含。 |
+| `AffineLocalizingCech` | `specStandardCechDiagram` | 標準開の交叉上の切断を、積の標準開で表示する係数図式。 |
+| `AffineLocalizingCech` | `specStandardCechSectionIso` | 標準開の切断と大域切断の局所化の同型。 |
+| `AffineLocalizingCech` | `specStandardCechSectionIso_naturality` | 標準開の切断と局所化の比較は、交叉を狭める制限に自然。 |
+| `AffineLocalizingCech` | `specStandardCechDiagramIso` | 局所化を与える前層の、標準開係数図式との自然同型。 |
+| `AffineLocalizingCech` | `specStandardCech_zero_injective` | 局所化を与える前層の標準開被覆では、増大項からの写像は単射。 |
+| `AffineLocalizingCech` | `specStandardCech_exact` | 局所化を与える前層の標準開被覆の増大 Čech 完全性。 |
+| `AffineLocalizingCech` | `cechBasicOpen_denominator` | 分母の積の標準開は、各分母の標準開の有限交叉。 |
+| `AffineLocalizingCech` | `specStandardCechOpenDiagramIso` | 積の標準開による図式と、実際の有限交叉による図式の自然同型。 |
+| `AffineLocalizingCech` | `specStandardOpenCech_exact` | Spec の標準開被覆上の実際の切断の増大 Čech の完全性。 |
+| `AffineModuleLocalizedCech` | `affineModuleLocalizedCechInsertionIsIso` | 被覆元で局所化すれば、その頂点を交叉へ挿入する制限はすべて同型。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_localized_zero_injective` | 各被覆元で局所化すると、増大項からの写像は単射。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_localized_exact` | 各被覆元で局所化した、連続する Čech の余境界は完全。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_zero_injective` | 単位イデアルを生成する元の標準被覆では、増大項の写像は単射。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_exact` | 標準アフィン被覆の増大 Čech の完全性。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherent_isLocalizing` | 準連接層の標準開への制限は、その元での局所化。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherentStandardOpenCech_zero_injective` | 準連接層の標準開被覆の増大項の単射性。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherentStandardOpenCech_exact` | Spec 上の準連接層の標準開被覆の増大 Čech 完全性。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv` | 各交叉の加法的な比較による Čech 項の加法群の同型。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_differential` | 係数の制限と可換な加法的比較は、Čech 微分と可換。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_zero_injective` | 加法的係数比較によって、増大項の単射性を移す。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_exact` | 加法的係数比較によって、増大 Čech の完全性を移す。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv` | 係数の自然同型による、増大項を含む各 Čech 項の同型。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_toLinearMap` | 各項の同型は係数写像で与えられる。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_differential` | 係数の自然同型は微分と可換。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_zero_injective` | 自然同型に沿って増大項の微分の単射性を移す。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_exact` | 自然同型に沿って増大 Čech の完全性を移す。 |
+| `CechHomologyCycleCriterion` | `cechCyclesOf` | 元で与えたサイクルを、短複体の抽象的な cycles の元にする。 |
+| `CechHomologyCycleCriterion` | `cechCyclesOf_value` | 元で与えたサイクルの値は、元の元に戻る。 |
+| `CechHomologyCycleCriterion` | `cechCyclesValue_isCycle` | cycles の元の値は、微分で零になる。 |
+| `CechHomologyCycleCriterion` | `cechHomologyCycleValue` | サイクルの H の類を opcycles に写すと、その値の類になる。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMapCycleValue` | 短複体の射の H 上の写像は、サイクルの値に元の射を適用する。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_surjective_of_cycles` | 目標の各サイクルが境界を除いて持ち上がれば、H の射は全射。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_injective_of_cycles` | 境界への写像を元の境界へ戻せれば、H の射は単射。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_isIso_of_cycles` | サイクルの持ち上げと境界の反映から、各次数の H の同型性を得る。 |
+| `CechLocalizationCochains` | `cechLocalizationFunctorAdditive` | 分数の局所化関手は加法的。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv` | 各 Čech 次数の局所化と、局所化した係数の Čech の項の比較。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_mk` | Čech の各項の局所化比較は、各タプルの分母を保つ。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_differential` | 各項の局所化比較は、増大項を含めて Čech の余境界と可換。 |
+| `CechLocalizationCochains` | `cechLocalizationComplexIso` | 有限被覆の全タプル Čech 複体と、実際の分数の局所化との同型。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_naturality` | 各項の分数の比較は、係数図式の射に自然。 |
+| `CechLocalizationCochains` | `cechLocalizedCochainsDifferential` | 元の Čech の余境界を、分数の局所化の間の写像にする。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_differential_apply` | 局所化した余境界の比較の、元ごとの式。 |
+| `CechLocalizationCochains` | `cechLocalizationCochains_exact_of_exact` | 局所化後の係数図式での完全性は、局所化した二つの余境界の完全性を与える。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv` | 有限積と局所化の線形同型。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv_mk` | 有限積との比較は、すべての成分で同じ分母を保つ。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv_projection` | 有限積との比較の各成分は、射影を局所化した写像である。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction` | 標準開の制限を、さらに外側の分母で局所化した写像。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_surjective` | 追加因子が外側で逆になるなら、局所化した制限は全射。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_injective` | 追加因子が外側で逆になるなら、局所化した制限は単射。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_isIso` | 追加因子を外側で逆にした標準開の制限は、実際の加群の同型。 |
+| `CechProductCoefficients` | `fullCechProductCoefficientDiagram` | 係数図式の成分ごとの直積。 |
+| `CechProductCoefficients` | `fullCechProductCochainsEquiv` | 係数の直積と Čech 項の直積の交換。 |
+| `CechProductCoefficients` | `fullCechProductDifferential_apply` | 直積の交換は Čech 微分と成分ごとに可換。 |
+| `CechProductCoefficients` | `fullCechProduct_zero_injective` | 各係数図式の増大項の微分が単射なら、直積の微分も単射。 |
+| `CechProductCoefficients` | `fullCechProduct_exact` | 各係数図式の増大 Čech が完全なら、直積も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid` | 行の cone を並べた二重図式の項。 |
+| `CechRefinementConeDouble` | `cechRefinementConeHorizontal` | 二重図式の水平方向は、各行の cone の微分。 |
+| `CechRefinementConeDouble` | `cechRefinementConeVertical` | 二重図式の垂直方向は、二つの列方向の射の直積。 |
+| `CechRefinementConeDouble` | `cechRefinementConeVertical_squared` | 列方向の二乗が零なら、cone の列方向の二乗も零。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_commute` | 四角の可換性は、cone の二つの微分の可換性を与える。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_colExact` | 元の二重図式の列が完全なら、cone の各列も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_zero_row_exact` | 正の行の cone と全ての列が完全なら、零番の行の cone も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_homologyMap_isIso` | B1 の二重図式の判定から得る、零番の行の Čech H の同型性。 |
+| `CechRefinementConeHomology` | `cechRefinementCone_quasiIsoAt` | 自然数添字の cone が完全なら、元の射は各次数で quasi-isomorphism。 |
+| `CechRefinementConeHomology` | `cechRefinementCone_homologyMap_isIso` | cone の完全性が与える、元の複体の各次数の H の同型性。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm` | cone の各項に可換四角の成分を適用する。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_differential` | 可換四角の成分は cone の微分と可換。 |
+| `CechRefinementConeMap` | `cechRefinementConeMap` | 可換四角が誘導する cone の射。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_comp` | cone の項への写像は合成を保つ。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_id` | cone の項への恒等写像。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_zero` | cone の項への零写像。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_map` | 生成元の台の条件から、鎖の写像の台の条件を得る。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_single_mem` | 台を指定した生成元の所属。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_boundary` | 境界は指定した頂点集合を保つ。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_prepend` | 集合内の頂点の先頭追加は、その集合を保つ。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_reindex` | 再添字付けは、頂点集合の像へ鎖を送る。 |
+| `CechTupleCarrier` | `cechTupleComparisonHomotopy_stable_carrier` | 鎖写像で保たれる一つの頂点集合は、比較ホモトピーでも保たれる。 |
+| `CechTupleRefinementHomotopy` | `cechRefinementAmbient` | 直和添字の左側を一つ目の写像で右側へ移す。 |
+| `CechTupleRefinementHomotopy` | `cechRefinementProjection` | 直和添字を二つ目の写像により元の目標へ戻す。 |
+| `CechTupleRefinementHomotopy` | `cechTupleRefinementHomotopy` | 二つの再添字付けをつなぐ整数鎖のホモトピー。 |
+| `CechTupleRefinementHomotopy` | `cechTupleRefinementHomotopy_identity` | 再添字付けの比較ホモトピーの方程式。 |
+| `CechTupleRefinementSupport` | `cechTupleRefinementHomotopy_carrier` | ホモトピーの値の頂点は、入力タプルの二つの像に含まれる。 |
+| `CechTupleRefinementSupport` | `cechTupleRefinementHomotopy_support` | ホモトピーの各出力タプルの台は、二つの像の和集合の中にある。 |
+| `CechTupleReindex` | `cechTupleReindex` | 頂点の写像に沿う、タプルの整数鎖の再添字付け。 |
+| `CechTupleReindex` | `cechTupleReindex_single` | 再添字付けはタプルの生成元をそのまま写す。 |
+| `CechTupleReindex` | `cechTupleReindex_comp` | 再添字付けは合成を保つ。 |
+| `CechTupleReindex` | `cechTupleReindex_zero` | 長さ零の再添字付けは、添字の自己写像では恒等。 |
+| `CechTupleReindex` | `cechTupleReindex_boundary` | 頂点の再添字付けは増大境界と可換。 |
+| `CechZeroCochains` | `cechTupleSupport_empty` | 空タプルの台は空集合。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv` | 長さ零の Čech 項と、係数図式の空集合の値の同型。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv_naturality` | 空交叉の係数との同定は、係数図式の射に自然。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv_exact` | 増大項を空交叉の係数へ置き換えても、増大 Čech の完全性は同じ。 |
+| `OpenCoverCech` | `cechOpenIntersection` | 有限個の開集合の交叉。 |
+| `OpenCoverCech` | `cechOpenIntersection_antitone` | 添字集合が増えると交叉は小さくなる。 |
+| `OpenCoverCech` | `openCoverCechDiagram` | 前層を、有限交叉上の切断の共変な係数図式と見る。 |
+| `OpenCoverCech` | `cechOpenIntersection_refinement` | タプルに沿う細分の包含。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains` | 細分による全タプル Čech 項の制限。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_apply` | 細分による制限の成分表示。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_differential` | 細分の制限は余境界と可換。 |
+| `OpenCoverCech` | `openCoverCechRefinementMap` | 細分による Čech 複体の射。 |
+| `OpenCoverCech` | `openCoverCechCoefficientMap` | 係数前層の射が有限交叉の係数図式に誘導する射。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_naturality` | 細分の制限は係数前層の自然変換に自然。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_id` | 恒等細分は恒等写像を与える。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_comp` | 二つの細分を続けた制限は、合成細分の制限。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt` | タプルの整数鎖を、指定した開集合上の切断として評価する。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_single` | 一つのタプルの評価は切断の制限。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_restrict` | 台に現れる全タプルの交叉に入る開集合からは、更に制限できる。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_boundary_single` | 境界の生成元の評価は、余境界のその生成元での評価。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_boundary` | 台に現れる交叉が指定開集合を含めば、境界と余境界は評価で対応する。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_naturality` | 指定開集合での評価は、係数前層の射に自然。 |
+| `OpenCoverCechRefinementHomotopy` | `cechOpenIntersection_refinement_union` | 細分の交叉は、二つの添字の像を合わせた交叉に含まれる。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopy_support` | 比較ホモトピーに現れるタプルの交叉は、細分の交叉を含む。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm` | 細分の二つの選択を比較する Čech の次数一低い成分。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_zero` | 長さ零での比較成分は零。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_boundary` | 比較鎖の境界への評価は、比較コチェインの余境界に対応する。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_identity` | 二つの細分写像は、制限付きの比較成分によるコチェインホモトピーで結ばれる。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopyComponent` | 細分比較の複体としてのホモトピーの成分。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopyComponent_succ` | 連続する次数での比較ホモトピーの成分。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopy` | 同じ細分の二つの添字の選択は、コチェイン写像としてホモトピック。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinement_homologyMap_eq` | Čech H 上の細分の射は、細分の添字の選択によらない。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_naturality` | 細分の複体の射は係数前層の射に自然。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_id` | 恒等細分が誘導する複体の射は恒等。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_comp` | 細分の複体の射は細分の合成を保つ。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinement_homology_naturality` | 各次数の Čech H の細分比較は、係数前層の射に自然。 |
+| `OpenCoverCechResolution` | `openCoverIntersectionPresheaf` | 固定した開集合との交叉上の切断を取る前層。 |
+| `OpenCoverCechResolution` | `openCoverIntersectionPresheafMap` | 固定する開集合を狭めるときの交叉前層の制限。 |
+| `OpenCoverCechResolution` | `openCoverCechResolution` | 開被覆の増大 Čech の一つの項を前層にする。 |
+| `OpenCoverCechResolution` | `openCoverCechResolutionDifferential` | 増大 Čech の余境界は開集合について自然。 |
+| `OpenCoverCechResolution` | `openCoverCechResolutionDifferential_squared` | 前層としての増大 Čech の微分の二乗は零。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover` | 二つの開被覆の交叉による共通細分。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_iSup` | 二つの被覆の交叉も全空間を被覆する。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_le_left` | 共通細分から最初の被覆への包含。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_le_right` | 共通細分から二つ目の被覆への包含。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_isAffineOpen` | アフィン対角のスキームでは、共通細分もアフィン開被覆。 |
+| `SchemeCommonAffineCover` | `cechOpenIntersection_isAffineOpen` | アフィン対角のスキームのアフィン開の非空有限交叉はアフィン。 |
+| `SchemeFinitePrincipalRefinement` | `schemeFinitePrincipalRefinement` | アフィン開集合の任意の開被覆は、単位イデアルを生成する有限標準開被覆で細分できる。 |
+| `SchemeOpenCoverCechIntersections` | `cechOpenIntersection_scheme_preimage` | スキームの逆像は Čech の有限交叉を保つ。 |
+| `SchemeOpenCoverCechIntersections` | `cechOpenIntersection_scheme_image_preimage` | 開埋め込みの像による交叉の表示。 |
+
+既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はなく、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は前回から本体 2,387 行増え、**247 本・25,976 行**、入口の差分を含め **26,225 行**。50,000 行の停止基準には達していない。
+
+**停止点 2e ではない。** 残りは、準連接層のアフィン座標から元の係数への輸送、実際の二重 Čech の各交叉上での完全性の供給、任意のアフィン被覆の完全性と一般の細分の H の同型への適用、動く係数環の標準開との照合、および五つの比較同士の可換性。これらの下書きは監査数とこのコミットには含めない。共通細分の比較の写像は実際の制限であり、非標準の座標や前像の選択はその同型性を証明するためだけに使う。自然性と選択の独立性の証明を、一般の同型性の証明に置き換えない。
