@@ -4893,3 +4893,28 @@ H⁰ 上の自然写像で、その全単射性と元の零次構造射の全単
 最終版の対象に警告なし。監査 `/tmp/bsw16/audit-em-zero-unit.log` は
 **73 本・593 宣言・標準三公理のみ**。sorry・追加公理なし。
 共有入口・共有監査は未変更、鍵返却を回収済み。夜の規則どおり続行。
+
+
+## 74. D79(ii)：指定構造射の標準基点での全次数の全単射性
+
+追加三本は `EilenbergMacLaneUnitDeshift`、`EilenbergMacLaneUnitVertexClass`、
+`EilenbergMacLaneUnitH0Value`（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`、登録候補）。
+計 **221 行**、(ii) の検証済み累計 **4355 行**。
+
+`unitDeshiftAutomorphism` はシフト関手の充満忠実性で同じ指定自己同型を
+実単位の自己同型へ戻す。`signedUnitDeshiftAutomorphism` は零 loop 比較の逆元を
+その実際の自己同型の負号として保持する。
+`gammaSuspensionH0Map_unit` は指定 H⁰ 写像の単位での値を、この自己同型の類と厳密に同定する。
+したがって `gammaAdjointSuspension_bijective_at_basepoint` が閉じた：
+**同じ指定随伴構造射は、全複体・全自然数次数で標準の零基点のホモトピー類に全単射**。
+単位での等式を仮定に残していない。
+
+残りは任意の基点の Ω 条件、native な V の降下、安定 π/H の自然同型。
+任意の基点への移送は、可縮な全空間を持つ cone の固定 fiber を、その各頂点を
+参照点とする接続同値で比較する。底の他の連結成分の同型を仮定する循環は避ける。
+
+対象ビルド `em-unit-deshift-02.log`、`em-unit-h0-value-01.log`（UnitVertexClass の成功）、
+`em-unit-h0-value-02.log` は成功、最終版で警告なし。
+監査 `/tmp/bsw16/audit-em-based-omega.log` は **76 本・627 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則どおり、全基点の比較を続行する。
