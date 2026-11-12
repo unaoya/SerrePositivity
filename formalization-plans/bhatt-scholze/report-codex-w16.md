@@ -3877,3 +3877,193 @@ a の型一覧に未証明の主張は残らない。一般の `coproduct_tensor
 §56 の紙の型一覧から L18 まで完了し、追加照合は I1〜I3 の三件で止まっている。
 次は承認済みの順序どおり経路 B の厳密な前段の残り、続いて橋を待つ間の④の段 0 の準備。
 今回のコミットには、その次の段の Lean の実装を混ぜていない。
+
+## 60. §22：厳密な bar 前段の完了範囲の照合
+
+main `561cecd5d` を fast-forward で取り込み、§22 を読んだ。
+§29 の設計と `3bbb3b2ce` の二本（KL-W1 追従後の現在のソース）を宣言ごとに照合した。
+厳密な前段に未実装の要件は残っていない。追加の包装を作る前に、既存の公開 API が
+すでに満たしている範囲を次表で確定する。
+
+| §29 の要件 | 一般の随伴での供給 | BE への実際の適用 |
+| --- | --- | --- |
+| 全単体図式 B と対象の全関手 | `StrictAdjunctionBar.diagramMap`・`diagramFunctor`・`barFunctor` | `strictBarFunctor` |
+| 増大と対象に関する自然性 | `powerMap_augmentation`・`augmentedFunctor`・`barAugmentedFunctor` | `strictBarAugmentedFunctor` |
+| 忘却後の同じ増大 | `underlyingAugmented` | `strictBarUnderlyingAugmented` |
+| 単位からの追加退化と五つの関係式 | `underlyingExtraDegeneracy` の全欄 | `strictBarUnderlyingExtraDegeneracy` |
+| 追加退化の自然性（全次数と零次） | `underlyingExtraDegeneracy_naturality`・`underlyingExtraDegeneracy_section_naturality` | 実際の `freeAlgebraAdjunction` を代入して使用可能 |
+| 定値図式からの切断と増大との合成 | `underlyingSection`・`underlyingSection_comp_augmentation` | 同じ随伴を代入して使用可能 |
+| 指定された評価射と生成元への照合 | 随伴の余単位・単位 | `strictBarAugmentation_zero`・`strictBarUnderlyingSection_zero` |
+
+一般ファイルは `SerrePositivity/EInfinity/StrictAdjunctionBar.lean`、
+実例は `SerrePositivity/EInfinity/BarrattEccles/Theory/StrictBar.lean`。
+各次数の対象が Gⁿ⁺¹X である式、面と退化の式は、再利用元の
+`ComonadSimplicialResolution.diagram_obj`・`diagram_face`・`diagram_degeneracy`。
+追加退化からの単体的ホモトピーも Mathlib `ExtraDegeneracy.homotopy` を直接使える。
+これらを BE 用の別名として再宣言する必要はない。
+
+実測は従来どおり **266 + 60 = 326 行**、今回の追加 Lean は **0 行**。
+§29 の見込み 390〜620 行より 64〜294 行少なく、上限 1,600 行以内。
+検証根拠は §35 の対象ビルドと全二本・49 宣言の公理監査（標準三公理のみ）。
+今回はソースを変更しておらず、同じ対象の再ビルド・再監査は行わなかった。
+二本の module docstring に残る「未検証下書き」は当時の待機メモで、§35 の検証結果が現在の状態。
+
+§29.1 の cofibrant 入力の取り直しの注意は、a が任意の入力複体で閉じたことで、
+自由比較そのものの適用条件には不要となった。ただし bar の ∞ 図式への移送・実現の同定は
+依然として必要であり、厳密な追加退化から native な余極限性へ飛躍しない。
+これらと Tot・U の比較は、§22 の 3 の担当判断を待つ。
+新規登録モジュールはなし。ここから④の紙の段 0 に進む。
+
+## 61. ④の段 0：G12・M14・M15 の型案と実装の分割案（承認待ち）
+
+### 61.1 現在の到達点と読み直した資料
+
+§31 の下調べを、KL-W1 後の型・a 完了後の API に合わせて更新した。
+読んだ入口は `EInfinity/Interface/Theory.lean`、`BarrattEccles/Theory.lean`、
+`Theory/Assembly.lean`、`drafts/Shared/Descendable.lean` と HTT・HA の項目表。
+項目表・drafts・界面は編集していない。この節の型案は紙上の案で、型検査済み宣言ではない。
+
+今回使えるようになった a は、厳密な自由代数の指定 Hopf 比較の擬同型性を供給する。
+一般の代数への実現による拡張、`forget_preservesSifted`、native な Tot の比較はまだ別の入力である。
+G12・M14・M15 の証明でそれらを供給済みとは数えない。
+
+### 61.2 G12：同じ CAlg の native presentability
+
+入口の型案は既存の欄と完全に同じ。
+
+```lean
+universe u
+namespace SerrePositivity.EInfinity.BarrattEccles
+open SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories
+-- 証明対象（紙の型案）
+example (S : Type u) [CommRing S] :
+    @IsPresentable (barrattEcclesCore.CAlg S)
+      (barrattEcclesCore.quasicategory S) := by
+  -- native accessibility と全小余極限を証明する
+```
+
+現在の `HTT/PresentableInfinityCategories/Definition.lean` の定義は
+`IsAccessible C ∧ HasSmallColimits C`。§31 の旧名 `F2.Presentable` は使わない。
+宇宙 u の全図式の native 余極限と、同じ CAlg の accessibility の両方が要る。
+
+証明の筋は、D(S) 上の誘導された自由・忘却随伴を固定し、実際の BE 代数と
+そのモナドの代数の全準圏比較を作り、accessible なモナドの代数の presentability を適用するもの。
+`derivedInfinityCategory_isPresentable`、`Operad.freeAlgebraAdjunction`、
+`Algebra.forget_isCardinalAccessible`、`freeAlgebra_finitelyPresentable` と
+`AlgebraSiftedColimits.forget_createsSiftedColimitsOfShape` を再利用する。
+`cAlgForgetDerived_conservative` と厳密な bar の分裂はモナド性の入力になる。
+通常圏の filtered 保存を、局所化後の native な保存へそのまま読み替えない。
+
+不足：誘導随伴の全単位・余単位、native な U-split 実現の比較、∞ モナド性、
+accessible なモナドからの accessibility と全小余極限。
+③-b の 3b-2／3b-4 が供給する一般の橋を検収してから、重複を差し引く。
+HTT A.3.7.6 による模型からの直接経路は代替だが、現模型の単体的・組合せ的な仮定と
+同じ native 局所化への比較の不足があるため、cofibrantly generated の事実だけでは採用しない。
+
+地図：HA 3.2.3.5（直接の数学的対応）、HA 4.7.3.5（モナド性）、
+HTT 5.5.1.1（presentability の特徴づけ）、HTT A.3.7.6（代替の模型表示）。
+地図の項目名は照合したが、それらの一般定理が現在すべて証明済みだとはしない。
+
+### 61.3 M14：同じ全自然変換としての P⁰
+
+入口は `EInfinityTheory.powerOp0` の型を保つ。E を全欄の実例の引数とした紙の書き方では、
+次の型と、その同じ α に関する四つの条件を一緒に供給する。
+
+```lean
+-- FunctorHom は Project/LocalizationAndKanExtensionAuxiliaries/FunctorCategories
+(E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+(k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] ⊢
+  FunctorHom (E.forget k) (E.forget k ≫ E.restrictD (frobenius k p))
+```
+
+これは型の表示用で、E の既存の `powerOp0` を証明に使う循環にはしない。
+実装では証明済み欄から固定した BE の `forget`・`restrictD` に対して α を構成し、
+組み立て関数へ渡す。四条件の正確な型は `Theory.lean` の
+`powerOp0_zero`・`powerOp0_pos`・`powerOp0_discrete`・`powerOp0_tot` をそのまま使う。
+零次の式は `restrictD_homologyIso` と `pi0_forget` による同定の後で a ↦ a^p、
+正のホモロジー次数の式は **H⁻ⁿ（n > 0）で零**。
+離散と Tot は、同じ α の成分が指定 Frobenius の射に等しいという条件である。
+
+証明の筋：BE の p 入力の係数解像度と作用から Frobenius 半線形な操作を構成し、
+微分・符号・対称性を照合する。次に弱同値による局所化を通して coherent な全自然変換へ降ろし、
+その変換の値を零次・負のコホモロジー次数・離散入力・Tot の順で計算する。
+既存の `arityRepresentationChain`、BE の作用、係数制限の全関手とホモロジー比較を再利用する。
+a の二色比較は指定射の管理に使えるが、p 入力の操作そのものの代用にはならない。
+
+不足：p 入力の操作と微分の照合、半線形性、局所化での全自然性、四条件の同一変換での証明。
+Tot の条件は G10 と係数制限との比較を待つ。
+直接の出典の対応は §31 と同じ DAG XIII Construction 2.2.6・Remark 2.2.7。
+HTT・HA の項目表にはこの操作の独立番号はなく、周辺の HA 3.1.3・3.2.3.1・4.7.3.5 の
+完成を M14 の証明とは数えない。論文の再照合は実装前の紙の確認に含める。
+
+### 61.4 M15：一般の E∞ 底を保った descendability
+
+入口の型は drafts の既存 API と同じ二つを採用する。
+
+```lean
+(E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+(A : Type u) [CommRing A]
+(R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) ⊢ Prop
+-- IsDescendableOver (E := E) A R B f
+
+(E : SerrePositivity.EInfinity.EInfinityTheory.{u})
+(A : Type u) [CommRing A]
+(R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) (n : ℕ) ⊢ Prop
+-- HasDescentIndexLEOver (E := E) A R B f n
+```
+
+第一の定義は Mod_R(D(A)) で B の生成する thick ⊗-ideal が単位 R を含むこと。
+第二は F := fib(f) として、指定された F^{⊗_R n} → R がその加群圏のホモトピー圏で零であること。
+この指数の零射の条件は定義自体の数学的条件で、a の厳密な指定射の照合の弱化とは別である。
+
+最初に閉じる定理の型案：
+
+```lean
+-- パラメータ E A R B f は上と同じ
+IsDescendableOver (E := E) A R B f ↔
+  ∃ n, HasDescentIndexLEOver (E := E) A R B f n
+```
+
+証明の筋と順序：
+
+1. 一般の BE 代数 R の加群準圏を作り、安定性・相対テンソル・単位・底変換を構成する。
+2. thick ⊗-ideal の生成と指数の有限性の同値を証明する。
+   押し出しでの安定性は drafts の `isDescendableOver_pushout` と同じ型で供給する。
+3. 指数の nilpotence から Amitsur の塔と Tot 降下を導き、
+   `isDescendableOver_tot_equiv` の `AmitsurData` の同じ増大錐を扱う。
+4. RHom の指数 ≤ 2、Frobenius 余極限の指数評価、完備版を一般の底のまま供給する。
+
+不足は一般の R-加群の模型と native な比較、相対テンソルの全構造、
+有限指数と厚い閉包の同値、Amitsur の塔の収束、完備化との整合。
+通常の内部加群の余極限・balanced tensor と `StableVertexClosure` の retract・安定閉包は
+再利用候補だが、全体を離散 A 上の D(A) に落として済ませない。
+RHom と完備版にある `True := by trivial` は証明済み項目には数えず、
+それぞれ一般 R 上の加群・指定射・完備化のデータを入れた主張へ置き換える設計を先に確定する。
+M15 を `EInfinityTheory` の新しい欄として増やさない。
+
+地図：HA 4.2.1.15、4.2.3.5・4.2.3.7、4.5.1.1・4.5.2.1・4.5.3.1 は
+加群と相対テンソルの基盤。直接の descendability は Mathew Definition 3.18・Proposition 3.22、
+指数の利用は BS17 §11.2・Lemma 11.22 に対応する（§31 の出典確認を引き継ぐ）。
+
+### 61.5 規模・分担と停止点
+
+③-b の橋と BE への適用の分担が未確定なので、一般部分と実例を含む幅を保つ。
+以下は追加 Lean（空行・docstring 込み）の初期見込みで、証明済み行数ではない。
+
+| 作業 | 内訳 | 見込み | 段 0 上端の二倍による停止基準 |
+| --- | --- | ---: | ---: |
+| G12 | 一般のモナド性・presentability 2,400〜4,000、BE 適用 600〜1,000 | 3,000〜5,000 | 10,000 |
+| M14 | 操作と値 1,600〜2,800、局所化 600〜1,000、離散・Tot 600〜1,200 | 2,800〜5,000 | 10,000 |
+| M15 | 一般 R-加群 2,500〜4,500、指数 900〜1,500、降下・評価・完備版 1,400〜2,500 | 4,800〜8,500 | 17,000 |
+| **合計** | | **10,600〜18,500** | 各作業で判断 |
+
+各作業の見込みの半分に達した段階で、止まらず実測と残りの見込みを報告する。
+一般部分が他レーンから供給された場合は、適用の費用と重複しないよう再集計する。
+G12 の最初の分担判断はモナド性と presentability の一般部分の担当、
+M14 は p 入力の鎖レベル構成の経路の紙の確認、M15 は一般 R-加群の模型と比較の担当が必要。
+RHom・完備版の正確な入力型は、M15 の実装前に利用側の A5 の担当とすり合わせる。
+ここで未確定の `True` を実装可能な型として承認依頼するものではない。
+
+**④の段 0 の停止点。承認を待つ。** 今回は紙の確認と報告だけで、Lean ソースの変更は零。
+したがって新しい対象ビルド・監査・登録候補はない。共有鍵・整理券も取得していない。
+3b-4 の BE 模型の実現・Tot・U の比較の担当は、§22 の 3 の判断を待つ。
