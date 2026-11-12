@@ -1080,3 +1080,25 @@ R5は作業木で進行中。通常複体の元の閉零射から、既存の一
 `semifreePointEquivalence` を使う実評価を作り、元の擬同型辺の反転まで対象ビルドが通った。
 このR5分は一括監査前なのでまだコミットしていない。coherent図式圏への比較写像の同値性はR2・R3に残る。
 **3b-3の完了・停止点5は主張せず、続行する。**
+
+## 22. R5 の局所化評価の因子化・凍結前の検証済み分（11-13、継続）
+
+`8fecef670`：新規3本・246行・13命名宣言。
+`ComplexDerivedEvaluation` は元の複体・鎖写像の全nerveから既存D(A)への評価を構成。
+`ComplexDerivedQuasiIsomorphisms` は元の擬同型の辺の反転を証明。
+`StrictDiagramEvaluationFactorization` は固定添字での元の評価との等式、
+全図式評価のobjectwise擬同型反転、局所化からの実評価
+`strictDiagramDerivedEvaluation` と
+`FunctorIso (strictDiagramLocalization ≫ strictDiagramDerivedEvaluation) strictComplexDiagramFamily`
+を与える。各点の選択だけでなく全関手圏の局所化普遍性を使用。
+
+対象ビルド成功（4,998 jobs、`/tmp/is-w1/3b3-build-13.log`）。
+13宣言の監査成功（`/tmp/is-w1/3b3-r5-audit.log`、全てsorry-free、標準三公理のみ）。
+R1からの検証済み累計は5本・367行・29命名宣言。
+R5の半自由表示との比較は作業木で継続し、その後R7→R6へ進む。
+R2・R3の充満忠実性・任意coherent図式の厳密化は未着手で、同値性の完了は主張しない。
+上限12,000行・途中報告約5,200行・R6後の報告の条件に変更なし。
+
+B3は18時の確定連絡を待つ予告として扱う。現時点の検証済み分は上のコミットに保存済み。
+凍結確定後は枝へのコミットを控え、翌朝のmain取り込み・改名表への追従を行う。
+未検証分はコミットしない。入口・監査の登録は調整役に委ねる。
