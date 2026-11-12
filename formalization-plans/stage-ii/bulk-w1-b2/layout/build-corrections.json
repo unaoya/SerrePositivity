@@ -5,5 +5,12 @@
     "correction": "Keep original method declaration and proof; weak export on the actual moved predicate namespace.",
     "broader_audit": "13 cross-module members under all 515 renamed public symbols: six authored methods (five already handled), seven generated helpers; no other authored method found.",
     "next_validation": "Rebuild all targets via ordinary Lake and compare full preservation snapshots."
+  },
+  {
+    "path": "SerrePositivity/InfinityCategories/HA/StableInfinityCategories/ZeroTriangleHoMap.lean",
+    "issue": "Existing HA methods kept their correct kernel names, but explicit weak field aliases still targeted the old Project receiver. These namespace operands are absent from ordinary constant reference indexes.",
+    "correction": "Refresh existing export receivers from the moved declaration table, preserving actual method storage names; 51 commands in 22 files.",
+    "scope": "All source files scanned; 3 unrelated formatting changes restored; all 22 changed files already belong to the 9514-module comparison scope.",
+    "next_validation": "Priority builds of ZeroHomotopy and ZeroTriangleHoMap, followed by full target builds and preservation."
   }
 ]

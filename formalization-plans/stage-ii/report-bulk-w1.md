@@ -366,3 +366,5 @@ DerivedCategories は承認済みの主題をさらに分け、移動先で最�
 隔離側では、追加で `scripts/audit/bhatt_scholze.lean` と任意の `check_cleanup_c2.lean` のimport・所有元表も追従させた。後者は正式監査に登録しない。InfinityCategories・BhattScholzeの配置の説明とDiagnosticsのREADMEも適用データへ含めた。付表 `layout/preview-edits.json.gz` は実際の隔離側8,678出力を再現するが、全体検証中なのでB2停止点の完了データとは区別する。
 
 移動後ビルドの最初の不具合は `ZeroHomotopy` の `IsZeroVertex.isZeroHo` だった。Pointedで移した型の略記と、別ファイルに残す拡張メソッドとの名前空間の差によるもの。元の宣言名・証明を保ち、実際の移動先の型の名前空間へ弱いexportを加えた。構造体だけを対象にしていた拡張の調査を、改名する公開515名すべてへ広げ、別ファイルにある13メンバーを洗った。手書き6メソッドのうち5つは既に処置済みで、この1つを追加した。残り7つはコンパイラが生成した補助。修正対象のビルドは7.46秒で成功し、先行する1,920本も修正後のソースで再確認した。全体の保存比較はこれからである（付表 `layout/build-corrections.json`、`field-fix-build.json`）。
+
+続く `HA/StableInfinityCategories/ZeroTriangleHoMap` の不具合は、既存HAメソッドの弱いexportの受け手が旧Project型に残っていたためだった。メソッドの宣言名を移す問題ではなく、通常の定数参照索引に載らない名前空間の指定の問題である。実際の宣言の改名表に基づき、全ソースの既存exportを調べ、22ファイル・51コマンドの受け手を新しい型へ更新した。無関係な3ファイルの整形は元に戻し、22本すべてが既定の9,514本の保存比較の範囲内であることを確かめた。失敗したZeroHomotopyとZeroTriangleHoMapの優先ビルドは合わせて6.41秒で成功した。公開515名の宣言の改名は増やしていない。弱い名前の対応は `layout/weak-export-corrections.json` に宣言の実際の格納先と分けて記録した。
