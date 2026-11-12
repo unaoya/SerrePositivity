@@ -2388,3 +2388,27 @@ IⁿM の包含の像は元の成分の Iⁿ 倍であり、閉厚化への射�
 | `reesAdicProjectiveClosedChartQuotientIso_mk` | 商の同型は、元の標準開の成分を元の Rees の射影で送る。 |
 
 段 2e の検証済み実測：**322 本・31,389 行**、入口を含め **31,717 行**。上限 50,000 行内。
+
+
+## 11-12 夜：共通の核からの係数比較（688d39921）
+
+数学コミット `688d39921`。3 本・7 宣言・135 行、登録を含め 138 行。
+対象と直接 importer のビルドは **4,531 jobs 成功**。別実行の監査は **8,474 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+同じ核を持つ二つの全射を、元の加群の射影と可換な形で比較する。
+元の次数零加群から Proj の実際の非空交叉の切断への比較を係数ごとの線形同型として取り出し、制限への自然性を示した。
+指定した大域スカラーと構造射で束ねた切断代数の比較は、元そのものを変えない。
+**停止点 2e ではない。** 実際の閉厚化への係数写像の核を照合し、Čech 複体・I 進遷移・互換族・形式関数へつなぐ部分を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `cechQuotientComparison` | 同じ核を持つ二つの全射の、共通の元の加群から定まる比較。 |
+| `cechQuotientComparison_projection` | 商の比較は、元の加群からの二つの射影と可換。 |
+| `schemeScalarMorphismSectionModuleEquiv` | 指定した大域スカラーと、それが定める構造射で束ねた切断代数の加群の同型。 |
+| `schemeScalarMorphismSectionModuleEquiv_apply` | スカラーを指定した切断の比較は、元そのものを変えない。 |
+| `projectiveProjNativeNatCechSectionEquiv` | 次数零加群で計算した標準開の非空交叉と、実際の切断の線形同型。 |
+| `projectiveProjNativeNatCechSectionEquiv_naturality` | 元の次数零加群から実際の切断への比較は、非空交叉の制限に自然。 |
+| `projectiveProjCechOpenIntersection_isAffineOpen` | 標準開の非空交叉は実際の Proj のアフィン開。 |
+
+段 2e の検証済み実測：**325 本・31,524 行**、入口を含め **31,855 行**。上限 50,000 行内。
