@@ -266,6 +266,30 @@
     {
       "artifact": "progress-2026-11-13.json",
       "sha256": "3e5be1de4b943473d99d697e4a6117fcb1308759ef3eda8dcfd9f63881e2705f"
+    },
+    {
+      "artifact": "preview-build-complete.json",
+      "sha256": "eaa46fea3a4bf881311d9e3f01d46ae559920a3df9bd1d9ed1ce344f70ec8246"
+    },
+    {
+      "artifact": "cache-portability-complete.json",
+      "sha256": "0449feb7214ac065c0249d9cc87500d42080ad6dd6ef6e4d6fb81d323b8a834b"
+    },
+    {
+      "artifact": "native-tag-metadata-check.json",
+      "sha256": "c3c6ac912342df907f5655ecf7c9ed1957186f1ae01778da2873705bc223848a"
+    },
+    {
+      "artifact": "attribute-metadata-check.json",
+      "sha256": "9090293b2f9dc9e52d4a07e9bf805139c4133e532474b51c074c35a5c84316e0"
+    },
+    {
+      "artifact": "attribute-metadata-filter-correction.json",
+      "sha256": "a367fab191da693ef25def0ce77ec7b6a47e4fa63bee06ff58f4d818c07dd78e"
+    },
+    {
+      "artifact": "doc-cache-pilot-complete.json",
+      "sha256": "b5bc0182afe7d666b2bc2d28d12df6adc9817f28cb190d76691827e65ce9d574"
     }
   ]
 }
