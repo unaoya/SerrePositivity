@@ -1102,3 +1102,33 @@ R2・R3の充満忠実性・任意coherent図式の厳密化は未着手で、�
 B3は18時の確定連絡を待つ予告として扱う。現時点の検証済み分は上のコミットに保存済み。
 凍結確定後は枝へのコミットを控え、翌朝のmain取り込み・改名表への追従を行う。
 未検証分はコミットしない。入口・監査の登録は調整役に委ねる。
+
+## 23. R5・R7 の照合、R6 の実現関手側（11-13、継続）
+
+§22に続く検証済み追加は新規4本・351行・22命名宣言。
+
+| ファイル | 行 | 内容 |
+| --- | ---: | --- |
+| `ComplexDerivedSemifreeComparison` | 140 | 実分解の半自由入力への制限、定数一点加群との比較、元の通常鎖写像の表示を通す閉nerve包含との全FunctorIso |
+| `StrictSemifreeEvaluationComparison` | 110 | 半自由strict図式を通常複体へ忘れる関手、全評価の自然性、3b-1の `strictSemifreeDiagramFamily` と局所化評価との全族比較 |
+| `StrictDiagramEvaluationEndpoints` | 46 | 同じSSet.{u+1}で任意の全パラメーター・指定添字の評価を照合するFunctorIso |
+| `StrictSemifreeRealizationFamily` | 55 | 元の自然変換を同じ `directSumTotalFunctor` で写す実現関手と全nerveの族、元の頂点・辺の像との等式。R6の指定余錐との比較はまだない |
+
+再利用は `dgModuleResolvedInfinity_precompIso`、
+`dgModuleResolvedInfinity_inclusionIso`、`dgSemifreeModulesInclusion_isFullyFaithful`、
+`closedNerveInclusion_dgFunctor`、`FunctorIso.map_post`。
+半自由入力の比較は、包含後の全関手比較を充満忠実性で戻して得た。
+対象ごとの同型の選択から全族の自然性を仮定していない。
+
+対象ビルド成功（7,304 jobs）。追加22宣言の一括監査成功、全てsorry-free・標準三公理のみ。
+入力 `/tmp/is-w1/3b3-r5-r7-audit.lean`、ログ `/tmp/is-w1/3b3-build-23-audit.log`。
+鍵は一枚・`--wait 3600`、対象ビルドと監査の間のみ保持し解放済み。
+登録は調整役。本体の既存宣言、③-bの3b-2・G10・⑤aのファイルは変更・利用していない。
+
+規模の照合：R1は121行（見込み600〜1,000）、R5は386行（500〜900）、
+R7は156行（250〜450）。一般辺局所化と既存の出力分解・全関手同型のAPIを使えた分が小さい。
+R6は実現関手側55行のみで、全族の指定余錐との照合は残る。
+検証済み累計は9本・718行・51命名宣言。
+R2・R3・R4は未着手。比較射の同値性、停止点5、R6の完成は主張しない。
+次は予定どおりR6の指定余錐と元の実現関手・射を同時に比較する。
+12,000行の上限、約5,200行の途中報告、R6後の報告の条件に変更なし。
