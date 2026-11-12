@@ -108,3 +108,111 @@
 | — | S′ の有限段の 3 ファイルが Prismatic/ にある | B3 で `Semiperfectoid/FiniteEnvelopes/` へ（段 0 の案のとおり） |
 | — | 地図とノートの食い違い：**Not 7.1** は地図が正しい（qrsp の定義 `IsQuasiregularSemiperfectoid` は drafts にしかない）。**Lemma 4.8** も地図が正しい（`Prism/PerfectPrismHomLift` にあり、W17 の H5 が有界な標的への一意な持ち上げとして使う。主経路の上）。 | 閉（ノートの側の記述が古い） |
 | — | 原典との差で D 番号のないもの（Ex 2.21 の係数環が ℤ の局所化、Rem 2.37 は通常の Tor、Lemma 3.7 (2) は通常の導来圏、Cor 3.12 の層条件は環値前層と Čech の完全性、Lemma 2.36 (a) は p 完全平坦性から） | 記録のみ（いずれも「定理は特別な場合だけ」の範囲。D 番号は付けない） |
+
+## 7. 原典の節ごとの見直し（ノートのチャット、11-12 から）
+
+ノートのチャットが原典の §2 から順に、節ごとに提案を `research/bs-section-review/` に置く。**A（リファクタ）**はこの台帳の番号で扱いを決める。**B（新しく形式化する項目）**は、E3 の経路に要らないものを「補完」として §8 に並べ、空いたレーンの仕事にする（E3 の sorry 0 を先にする）。
+
+**方針（11-12、ユーザー）**：Lean の docstring は原典の番号で引き、ノートへの参照（ノートの番号、T・BR・R のラベル）を置かない（README の Conventions）。今ある 22 か所（`research/bs-section-review/lean-docstrings-citing-notes.md`）は B3 の docstring の回で原典の番号に置き換える。
+
+### §2 δ 環（`research/bs-section-review/02-delta.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R2-1 Delta の層の向き（三つの importer と移し先の案） | BR41 | B3（提案の表の移し先のとおり。`RegularSequencePDUniversalTor` → ScalarTensorView は §4.2 の片付けで同時に） |
+| R2-2 Lemma 2.32 の節を Basic へ、Frobenius が δ 射の三つの版を一本に | BR5 | 保守（優先。R2-3・R2-4 の前提の循環を切る。ファイルの移動だけなら B3 で、証明の置き換えは保守） |
+| R2-3 Lemma 2.38 の r=1 の旧版を一般版に、階乗部分環への同型 6 つ、`RankOneDP` の並行 | BR6・BR38 | 保守（優先。R2-1 の後） |
+| R2-4 自由 δ 環の Frobenius の平坦性 4 か所を一本に | BR37 | 保守 |
+| R2-5 ℤ の δ 構造（`private integerDelta`）を公開し、ℤ 版の自由 δ 環を相対版の abbrev に | BR4 | 保守（B の Ex 2.6 と一緒に） |
+| R2-6 δ 環のテンソル積：一般形 `tensorDeltaStructure` は 11-10 からある。完全 δ 環の版は二重 | T2-0 → 閉、新 BR45 | T2-0 は閉。BR45（`perfectDeltaTensorStructure` を一般形の系に、未参照 6 宣言）は保守 |
+| R2-7 置き場所：分冪代数（FreeDP*・TruncatedPolynomialBasis・RankOneDP）を `CommutativeAlgebra/DividedPowers/` へ、Def 2.42 の `IsCompletelyRegularRel` を Delta へ | BR32 | B3（B3 の配置案に足す。RegularSequencePD* は Delta に残す） |
+| R2-8 使われていない宣言・ファイル（監査だけが参照する葉 219、未参照 9） | BR8 | 保守（E3 の経路で A0〜A2 が Lemma 2.36〜2.39 を使うかを ⑤∞ で見てから） |
+| R2-9 docstring（BR34 の 2 件、台帳にない 10 件ほど、統合前の名残の見出し 228 か所、ノートの番号の引用 7 ファイル） | BR34・BR25 | B3（docstring の回） |
+| R2-10 小さな一般化（`isDistinguished_iff_of_span_eq` など） | 新 BR46 | 保守 |
+
+## 8. 補完（E3 の経路の外で、原典にあって本体にないもの）
+
+E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕事として、小さいものから。順は ノートのチャットの「推奨」と規模で決める。
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §2 | Ex 2.6 の残り（δ が p 進付値を 1 下げる、δⁿ(pⁿ) は単元）と ℤ の始性の公開 | 小 | R2-5 と一緒（保守） |
+| §2 | Rem 2.27 の右随伴 lim_φ | 小（300〜600 行） | 空いたとき |
+| §2 | Lemma 2.33 の一般形（一般の完全 p 完備 A） | 小 | 空いたとき（Ex 2.20 (3) の ξ の前提） |
+| §2 | Rem 2.40 の前半（D_I(A) は φ の引き戻し） | 小 | 空いたとき |
+| §2 | Rem 2.29 の二つの例（原典の文言は「この φ を持つ δ 構造がただ一つ」と読む） | 小 | 空いたとき |
+| §2 | Lemma 2.43・Cor 2.44 の離散版 | 中 | Prop 3.13 の一般形を形式化するとき（今は変数の場合で足りる） |
+| §2 | 後回し：Rem 2.40 の後半・Warning 2.41、Ex 2.20 (2)〜(4)、Lemma 2.11 の残り・Cor 2.12、Rem 2.13・2.7、Cor 2.31 の圏同値、Lemma 2.18 のエタール部分、Rem 2.22 | 中〜大 | 使う場所が出たとき |
+| §2 | 入れない：Rem 2.3（λ 環）、単体的な版（A2 の後）、Lemma 2.38 の無限列 | — | — |
+
+### §3 prism（`research/bs-section-review/03-prism.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R3-1 `IsBoundedPrism` を `Prism/Basic` へ下ろし、Prism → Prismatic の逆向きの import を消す | 新 BR47 | B3（移動）。`OrientedPrism.isBoundedPrism_of_perfect`（Lemma 3.8 (2)）の新しい補題と、手書きの 22 か所の置き換えは補完（§8）／保守 |
+| R3-2 §3 の本体が §7（Andre・Semiperfectoid）の一般の補題に依存（5 importer） | BR41 に追加 | B3（提案の表の移し先。完全平坦性の閉包性質は `CommutativeAlgebra/CompletelyFlat/` へ、Pair の正則性は `HomologicalAlgebra/DerivedCompletion/Pair/` へ） |
+| R3-3 置き場所（PDCompletionPrism → §7 と一緒に、`Prism/Residue/PrismaticResidue` → HomologicalAlgebra、`PerfectDeltaResidue` → `Andre/Perfection/`、`Prism/Tensor/` → Perfectoidization、Thm 3.10 の芯 4 本 → `Prism/Perfectoid/`） | BR19 ほか | B3 |
+| R3-4 名前空間をそろえる（`Prism/Bounded/Completeness`・`Tilt`・`PerfectPrismHomLift` が `…Andre`） | 新 BR48 | B3（同じ回の改名表に入れられれば。無理なら保守） |
+| R3-5 二重の構成（Lemma 4.8 の二版、零環の prism 二つ、Lemma 3.5 後半の手組み 5 か所、A_inf の模型二つ） | BR13 ほか | 保守。(e) drafts と本体の重なりは §4 の R4-1 へ |
+| R3-6 docstring（ノートを引く 5 か所、古い記述、工程ラベル 67 行） | BR25・BR34 | B3（docstring の回） |
+| R3-7 使われていない宣言 | BR8 | 閉（原典の項目にあたる宣言は、利用者がなくても残す） |
+
+### §4 site（`research/bs-section-review/04-site.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R4-1 drafts の A0・A1 の古典的な部分は本体に置き換わっている（約半分、表のとおり） | BR40 に追加 | **5∞-0**（⑤∞ の最初の段）：drafts を本体の宣言を指す形に書き換え、重なる宣言を drafts から外す。⑤∞ が古い drafts の上に積まないように |
+| R4-2 本体の `flatTopology` は原典どおり（Cor 3.12 で site を示してから位相）。D22 を直す | — | 閉（調整役が a0-design D22 に注記した） |
+| R4-3 設計書・地図の古い記述（design-status の A0-3b・A0-3d・A0-4、a0-design §1・§2.6、a1-design の Lemma 4.10、`PrismOver.lean:59` の docstring） | — | design-status と a1-design は調整役が直した。`PrismOver.lean:59` は B3 の docstring の回 |
+| R4-4 Lemma 4.8 のファイルの名前空間・見出し・置き場所（`Prism/Perfectoid/` へ） | BR48 | B3。有界性の仮定の書き方は BR47 の後に保守 |
+| R4-5 二重の構成（`hodgeTate_iso_polynomial_Zp` の別名、Čech–Alexander の三つの模型、`isCoproduct` の同名、Tor 振幅の定義三つ） | BR39・BR40 | 保守（三つの模型は原典の三つの構成に当たるので残す）。Tor 振幅は 5∞-0 で本体の `HasCochainCompleteTorAmplitude` に寄せる |
+| R4-6 置き場所（Construction61Detection・Reflection → §6、Cor 5.5 を §5 へ） | — | B3 |
+| R4-7 docstring | BR25 | B3 |
+
+### 補完への追加（§3・§4）
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §3 | Def 3.2 の prism の圏（`Category` の instance）、Def 3.2 (3) の平坦な射（`OrientedPrism.Hom.IsFlat`・`IsFaithfullyFlat`、site の定義をその略記に） | 小 | **5∞-0**（Thm 3.10 の圏同値と Rem 4.6 の前提） |
+| §3 | Lemma 3.8 (1)(2) の名前つきの補題（`isBoundedPrism_of_perfect` など）、Lemma 3.5 後半の向き付きの構成子 `OrientedPrism.ofDeltaHom`、Lemma 3.6 の向き付き版、Ex 3.3 | 小 | 5∞-0（BR47 の後） |
+| §3 | **Thm 3.10 の圏同値（絶対版、向き付き）** | 小〜中 | **計画**：Rem 4.6 の同値（G-A5-4）の前提で、5∞-6（A5）の前に。部品はそろっている |
+| §4 | **prismatic site の本質的小ささ**（結晶 site の `CrystallineSiteSmall` と同じ証明。本体の `[EssentiallySmall …]` の仮定を外す） | 小 | **5∞-0** |
+| §4 | **Rem 4.6 の定義**（完全 prism の充満部分圏と誘導位相） | 小 | **5∞-0**（5∞-6 の A5 の前提） |
+| §3・§4 | 後回し：Lemma 3.1 (3)、Lemma 3.7 (3) を圏の同一視として、Lemma 3.9 の付随の主張（BR28 の残り）、Thm 3.10 の perfectoid の定義の差、Cor 3.12 の絶対版 | 小〜中 | 使う場所が出たとき |
+| §3・§4 | 入れない：Def 3.2 の一般の Cartier 因子、Lemma 3.7 (4)、Rem 3.11、Ex 3.14 の一般形、Prop 3.13 の一般形（D21）、Def 4.1 の形式スキーム版、Rem 4.3・4.7・4.13〜4.15、Construction 4.4、Lemma 4.21、Lemma 4.8 の一般の標的、Thm 4.11 の smooth な一般の R | — | E3 に要らない、大きな基盤がない |
+| §4 | 計画済み（⑤∞）：Notation 4.16、Construction 4.18「Δ を計算」と Ō 版、Rem 4.19 の Tot、Lemma 4.20・4.22（5∞-2）、Thm 4.11 の一般の基底と Cor 4.12（5∞-3） | — | — |
+
+### §5・§6 HT 比較（`research/bs-section-review/05-hodge-tate.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R5-1 drafts/A1 の古典部分（CrystallineInput・CrystallineSite・DeRhamComparisonPoly・HodgeTateComparison）は本体に置き換わっている | BR40 に追加（R4-1 を A1 の残り 3 本に広げる） | **5∞-0** |
+| R5-2 Prop 6.2 (b) と Cor 5.5 の一般の結晶 prism（drafts の二つの sorry）を `hodgeTate_iso` の系に | — | **5∞-0**（入らなければ 5∞-3a の最初）。原典との順序の違いは docstring に一行 |
+| R5-3 (a) `arcPadicIntMap` を `HomologicalAlgebra/DerivedCompletion` へ（§6 → §8 の import を消す） | 新 BR50 | B3 |
+| R5-3 (b) `PDCechFrameHomotopy` の汎用の部品（`algebraModule`・`cochainHomotopy`・添字の補題）を `HomologicalAlgebra/Cosimplicial/Algebra` へ | BR50 | B3 |
+| R5-3 (c) §4 の名前で中身が §6.4 の 5 本を §6.4 の側へ | — | B3 |
+| R5-3 (d) 「Crystalline 204」を §0 の (a)〜(e) で分け直す（(e) は `CommutativeAlgebra/DividedPowers/`、R2-7 と同じ行き先） | — | B3 |
+| R5-3 (e) 名前空間（63 本） | BR48 | B3（同じ回の改名表） |
+| R5-4 (a)〜(c) 別名・包み・pd 模型の複数 | BR39 | 保守（模型は D68・D69 が使うので残す） |
+| R5-4 (d) 導来 Nakayama の二つのファイル（`DerivedCompletion/CompleteCochainReduction` と `CochainCompleteDetection`） | 新 BR49 | 保守（統合） |
+| R5-4 (e) Tor 振幅の名前の重なり（drafts の ∞ の型と本体の `Construction61.*`） | BR40 | 5∞-0（BR40 の一本化と一緒に） |
+| R5-5 docstring の工程ラベル（49 行・22 ファイル、「第二比較」を数学の言葉に） | BR25 | B3 の docstring の回 |
+| R5-6 閉包・葉・未使用の宣言 | — | 消さない（∞ の組み立ての入力として使われる予定） |
+| R5-7 設計書の古い記述（second-half の 5∞-3、a1-design の Prop 6.2 の名前・G-A1-12・§2.4 の D77） | — | 閉（調整役が 11-12 夜に直した） |
+
+計画の上の点（§3.1）：
+- 5∞-3 を **5∞-3a（古典：Prop 6.2・Thm 6.3・Cor 5.5 の系、Lemma 4.22 の鎖複体版、G-A1-10）** と **5∞-3b（Cor 4.12 の CAlg 値、D27）** に分けた。5∞-3a は B3・5∞-0 の後に ③-b を待たずに始める。drafts の ∞ の型（`HasFiniteCompleteTorAmplitude`・`baseChangeB`・`affineModuleDiagram`）は古典の型に置き換えてよい。Construction 6.1 の ∞ の型への橋渡し（`moduleReflection`）は 5∞-3b で要るときだけ。
+- Thm 6.4（D69）の ∞ の組み立てを **5∞-4b** として明示した（依存 5∞-2・5∞-3b・5∞-4・3b-4、5∞-6 の前）。
+
+### 補完への追加（§5・§6）
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §5 | Cor 5.5 の一般の結晶 prism（系として） | 小 | 5∞-0 か 5∞-3a（R5-2） |
+| §6 | Prop 6.2（一般の有界向き付き基底、一般の r）・Thm 6.3（多項式の場合） | 中〜大 | 5∞-3a |
+| §5 | 後回し：Not 5.1 の ψ と \(R^{(1)}\)、一般の Thm 5.2、Lemma 5.4 の加群版、Thm 6.4 の一般の基底（D69 の後なら安い） | 小〜中 | 使う場所が出たとき |
+| §5・§6 | 入れない：Rem 5.3、Cor 5.5 の smooth な \(S\)（Lemma 4.21）、Thm 6.3 の étale 局所化 | — | — |
+
+## 9. 追記（2026-11-12 夜）：D79 で界面が KST を import した
+
+D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が `KST.LocalizingInvariants.SpectrumHomotopyFunctor`（Ω スペクトルの準圏 `KST.Spectra.Sp` と `SpectrumHo.piFunctor`）を import するようになった。BS の主定理の閉包に KST のディレクトリが入る。中身は ∞ の一般論（R83 と同じ問題）なので、**R83 の一部として、`KST/Spectra` の Sp と `SpectrumHo` を InfinityCategories（Kerodon か HA の安定 ∞ 圏の節）へ移す**。KL-W1 の改名表は KST/Spectra を含まないので、新しい改名表を作る。時期：B3 に入れられれば B3、無理なら保守の先頭（BS の閉包を直すので優先）。

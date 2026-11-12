@@ -91,3 +91,6 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 - BR25・R21：docstring の工程ラベルを原典の番号へ、書式の欠け（文献の属性の付与と同じ回）。
 - BR8：使われないモジュールの調査（削除は保守）。
 - （11-12 夜、追加）BR34（古い docstring 6 件）、BR41（BS の内側の層の逆向き：Delta/DividedPower → Prismatic・Andre）、BR42（`Semiperfectoid/QuotientPerfectoidization` のファイル名）、R84（空の名前空間）も B3 に含める（`refactor-ledger.md` §5・§6）。
+- （11-12 夜、追加）§2 の見直し（`refactor-ledger.md` §7）：R2-1（BR41 の三つの importer の移し先）、R2-7（分冪代数を `CommutativeAlgebra/DividedPowers/` へ、`IsCompletelyRegularRel` を Delta へ）、R2-9 の docstring と、**ノートを引く docstring 22 か所を原典の番号に置き換える**（ユーザー方針）も B3 に含める。
+- （11-12 夜、追加）§3・§4 の見直し（`refactor-ledger.md` §7）：BR47（`IsBoundedPrism` を `Prism/Basic` へ）、R3-2（§3 → §7 の逆向き 5 importer）、R3-3（Prism/ の §3 でないものの置き場所、Thm 3.10 の芯 4 本を `Prism/Perfectoid/` へ）、BR48（`…Andre` の名前空間をそろえる。同じ回の改名表に入れられれば）、R4-4（Lemma 4.8 のファイルを `Prism/Perfectoid/` へ）、R4-6（Construction61Detection・Reflection を §6 へ、Cor 5.5 を §5 へ）、R3-6・R4-7 の docstring も B3 に含める。
+- （11-12 夜、追加）§5・§6 の見直し（`refactor-ledger.md` §7）：BR50（R5-3 (a) `arcPadicIntMap` を `HomologicalAlgebra/DerivedCompletion` へ、(b) `PDCechFrameHomotopy` の汎用の部品を `HomologicalAlgebra/Cosimplicial/Algebra` へ）、R5-3 (c)（§4 の名前で中身が §6.4 の 5 本を §6.4 の側へ）、R5-3 (d)（「Crystalline 204」を (a)〜(e) で分け直す、(e) は `CommutativeAlgebra/DividedPowers/`）、R5-3 (e)（名前空間 63 本、BR48 の改名表）、R5-5（docstring の工程ラベル 49 行・22 ファイル、BR25）。

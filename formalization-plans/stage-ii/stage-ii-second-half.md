@@ -47,12 +47,15 @@
 | | 6-2 | 2f：BST13 Lemma 3.5〜3.9 | 6-1 |
 | | 6-3 | 2g：BS17 §2 | 6-2 |
 | | 6-4 | 2h：BS17 Thm 4.1 (i) → **恒久引用 2** | 6-3 |
-| ⑤∞ BS の ∞ 側（3a-2 と B3 の後に開く） | 5∞-1 | A-1：∞ 層の一般論 S1〜S8 | 3a-2、3a-3、3a-4、B3（BS の整理） |
+| ⑤∞ BS の ∞ 側（3a-2 と B3 の後に開く） | 5∞-0 | 準備（11-12 夜、`refactor-ledger.md` §7）：drafts の A0・A1 の古典的な部分を本体の宣言に寄せる（R4-1）、Tor 振幅の定義を本体の版に、prism の圏と平坦な射、prismatic site の本質的小ささ、Rem 4.6 の定義、Lemma 3.8 などの小さな補題。§5・§6 の分（11-12 夜）：drafts/A1 の 3 本（CrystallineInput・CrystallineSite・DeRhamComparisonPoly）も本体を指す形に（R5-1）、Prop 6.2 (b) と Cor 5.5 の一般の結晶 prism の二つの sorry を `hodgeTate_iso` の系に（R5-2）、Tor 振幅の定義と名前の重なりの一本化（BR40・R5-4 (e)） | B3 |
+| | 5∞-1 | A-1：∞ 層の一般論 S1〜S8 | 3a-2、3a-3、3a-4、B3（BS の整理） |
 | | 5∞-2 | A0：site の RΓ、C^• が Δ を計算 | 5∞-1、3b-2 |
-| | 5∞-3 | A1：HT 比較の組み立て、D68 の置き換え（**恒久引用 1**） | 3b-2、3b-4 |
-| | 5∞-4 | A2：animated Δ、Künneth、底変換 | 5∞-3、5a-3、5a-4 |
+| | 5∞-3a | A1 の古典の段：Prop 6.2・Thm 6.3（一般の有界向き付き基底の多項式代数の HT 比較、`HodgeTateIsoStatement` は古典の型）、Cor 5.5 の一般の結晶 prism を系に（R5-2）。入力は本体の鎖複体版（Construction 6.1 の保存性・Tor 振幅、Rem 4.19 の項ごとの底変換）と、Lemma 4.22 の鎖複体版（新規）。drafts の ∞ の型（`HasFiniteCompleteTorAmplitude`・`baseChangeB`・`affineModuleDiagram`）は古典の型に置き換えてよい（11-12 夜、§5・§6 の見直し） | B3、5∞-0（③-b を待たない） |
+| | 5∞-3b | A1 の ∞ の段：Cor 4.12 の CAlg 値、D27（site の RΓ と Čech–Alexander 模型の一致の結び） | 5∞-3a、3b-2、3b-4、5∞-2 |
+| | 5∞-4 | A2：animated Δ、Künneth、底変換 | 5∞-3b、5a-3、5a-4 |
+| | 5∞-4b | Thm 6.4（D69）の ∞ の組み立て：関手としての同型 `deRham_iso_polynomial_universal`、`bigZigzagIso`・`polyUnderlying_iso_bigCech`・`transferWittComparison`・`deRham_iso_polynomial_modP`・`deRham_iso_rootAlgebra_modP`（11-12 夜に段を明示） | 5∞-2、5∞-3b、5∞-4、3b-4 |
 | | 5∞-5 | A4：perfectoidization、Lemma 8.4 | 5∞-4、5a-7、5a-8 |
-| | 5∞-6 | A5：Prop 8.5、descendability | 5∞-4、5a-9 |
+| | 5∞-6 | A5：Prop 8.5、descendability | 5∞-4、5a-9、5∞-4b |
 | | 5∞-7 | A6：arc 層、Prop 8.10 の組み立て（**恒久引用 3**） | 5∞-1、6-4 |
 | | 5∞-8 | A7・A8 | 5∞-4 |
 | | 5∞-9 | A9：E3 の組み立て → **主定理の閉包の sorry 0** | 5∞-5〜5∞-8 |
@@ -63,3 +66,8 @@
 - K4 の後、③-a・③-b・⑤a・⑥ は独立に始められ、⑤∞ で合流する。
 - 一括レーンの B3 は各レーンに二度目の追従を求めるので、③ が新しいファイルを置き始める前が理想。B1 に時間がかかるなら ③ を先に始め、B4 を一回増やす。
 - ⑥ の合流（6-4 → 5∞-7）は遅いので、⑥ の遅れは経路に響かない。
+
+## 4. 追記（2026-11-12 夜、§5・§6 の見直しから）
+
+- 5∞-3 を 5∞-3a（古典）と 5∞-3b（∞）に分けた。5∞-3a は ③-b の橋を待たないので、B3 と 5∞-0 の後に、⑤∞ の開始を待たずに始められる。最長の経路の 3b-2 → 5∞-3 → 5∞-4 が短くなる。
+- Thm 6.4（D69）の ∞ の組み立てを 5∞-4b として明示し、5∞-6（A5 の Lemma 8.6 が使う）の依存に足した。

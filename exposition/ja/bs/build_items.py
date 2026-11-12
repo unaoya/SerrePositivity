@@ -7,6 +7,7 @@
 
 書き換える範囲:
   - 各章の <!-- items:begin --> 〜 <!-- items:end --> の間（「原典の項目一覧」の説明と表）
+  - 各章の項目の見出し（h4.item）の確認のラベル（地図の status から。証明の囲みに data-supplemented があれば「補った筋あり」）
   - 00-map.html の <!-- sections:begin --> 〜 <!-- sections:end --> の間（節ごとの集計）
   印の外（本文・原典との差の評価）には触らない。印がまだない章は、初回だけ
   「原典の項目一覧」の見出しの直後の説明の段落と表を印で囲んでから置き換える。
@@ -31,7 +32,8 @@ CHAPTERS = {
     "02-delta.html": [2],
     "03-prism.html": [3],
     "04-site.html": [4],
-    "05-hodge-tate.html": [5, 6],
+    "05-hodge-tate.html": [5],
+    "06-hodge-tate-mixed.html": [6],
     "07-semiperfectoid.html": [7],
     "08-perfection.html": [8],
     "10-almost.html": [10],
@@ -204,7 +206,7 @@ def sections_block(rows) -> str:
             total[s] += n
             cells.append(f'<td class="num">{n or ""}</td>')
         f = chapter_of.get(sec)
-        ch = f'<a href="{f}#items-{f[:2]}">{int(f[:2])}</a>' if f else "—"
+        ch = (f'<a href="{f}">{int(f[:2])}</a>' if f in NO_ITEMS_TABLE else f'<a href="{f}#items-{f[:2]}">{int(f[:2])}</a>') if f else "—"
         lines.append(
             f'<tr><td>§{sec}</td><td>{title}</td><td class="num">{len(sel)}</td>'
             f'<td class="num">{len(needed) or ""}</td>{"".join(cells)}<td>{ch}</td></tr>'
@@ -218,10 +220,53 @@ def sections_block(rows) -> str:
     return "\n".join(lines)
 
 
+# 項目の見出しに付ける確認のラベル（地図の status から）
+VERIFY = {
+    "proved": ("Lean で確認", "v-ok"),
+    "proved_special": ("一部 Lean で確認", "v-part"),
+    "parts_in_body": ("一部 Lean で確認", "v-part"),
+}
+VERIFY_NO = ("未確認", "v-no")
+VTAG_RE = re.compile(r'\s*<span class="vtag[^"]*">[^<]*</span>')
+ITEM_RE = re.compile(r'<h4 class="item">(.*?)</h4>(.*?)(?=<h4 class="item">|<h2|<!-- items:begin|</main>)', re.S)
+# 「原典の項目一覧」を置かない章（地図と重複するので外した。見出しのラベルだけ付ける）
+NO_ITEMS_TABLE = {"02-delta.html", "03-prism.html", "04-site.html", "05-hodge-tate.html", "06-hodge-tate-mixed.html", "07-semiperfectoid.html", "08-perfection.html", "10-almost.html"}
+NUM_RE = re.compile(r"(?:Definition|Def|Lemma|Remark|Rem|Example|Ex|Corollary|Cor|Proposition|Prop|Theorem|Thm|Warning|Warn|Construction|Constr|Notation|Not)\.?\s*(\d+\.\d+)")
+
+
+def label_items(text: str, rows) -> str:
+    """各項目の見出し（h4.item）に、地図の状態から確認のラベルを付け直す。補った筋の印（data-supplemented）があれば添える。"""
+    status = {r["number"]: r["status"] for r in rows}
+    order = ["proved", "proved_special", "parts_in_body"]
+
+    def one(m):
+        head = VTAG_RE.sub("", m.group(1)).rstrip()
+        body = m.group(2)
+        plain = re.sub(r"<[^>]+>", "", head)
+        # 「Lemma 3.7 の後の段落」のような項目は、その番号の状態でなく Lean の囲みで判定する
+        nums = [] if "段落" in plain else [n for n in NUM_RE.findall(plain) if n in status]
+        if nums:
+            st = [status[n] for n in nums]
+            best = min(st, key=lambda s: order.index(s) if s in order else len(order))
+            label, cls = VERIFY.get(best, VERIFY_NO)
+        else:
+            lean = re.search(r'<div class="box lean">(.*?)</div>', body, re.S)
+            has = lean and "<code>" in lean.group(1) and "本体にない" not in lean.group(1)
+            label, cls = ("Lean で確認", "v-ok") if has else VERIFY_NO
+        tags = f' <span class="vtag {cls}">{label}</span>'
+        if "data-supplemented" in body:
+            tags += ' <span class="vtag v-supp">補った筋あり</span>'
+        return f'<h4 class="item">{head}{tags}</h4>{body}'
+
+    return ITEM_RE.sub(one, text)
+
+
 def replace_marked(text: str, tag: str, block: str, fallback: re.Pattern, fname: str) -> str:
     pat = re.compile(rf"<!-- {tag}:begin.*?<!-- {tag}:end -->", re.S)
     if pat.search(text):
         return pat.sub(lambda _: block, text, count=1)
+    if tag == "items" and fname in NO_ITEMS_TABLE:
+        return text  # 項目の表を地図に任せた章（2026-11-12 から。状態は見出しのラベル）
     m = fallback.search(text)
     if not m:
         sys.exit(f"{fname}: 印も、初回に置き換える範囲も見つからない")
@@ -240,7 +285,7 @@ def main() -> None:
         fallback = re.compile(
             rf'<h2 id="items-{num}">[^<]*</h2>\s*(?P<body><p>.*?</table></div>)', re.S
         )
-        outputs[path] = replace_marked(text, "items", chapter_block(rows, sections, missing), fallback, fname)
+        outputs[path] = label_items(replace_marked(text, "items", chapter_block(rows, sections, missing), fallback, fname), rows)
     path = HERE / "00-map.html"
     fallback = re.compile(
         r"<h2>4\. 原典の節と形式化の状況</h2>\s*(?P<body><div class=\"table-wrap\"><table>.*?</table></div>)", re.S

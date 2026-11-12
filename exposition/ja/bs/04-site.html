@@ -19,119 +19,475 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <main>
 <nav class="top"><a href="index.html">目次</a> › 第 4 章</nav>
 <h1>第 4 章　prismatic site と HT 比較の定式化（§4）</h1>
-<p class="meta">基準コミット <code>f970e69f1</code>（2026-11-12。初稿は <code>a0ccccb09</code>、2026-10-25）。方針と差の評価は 2026-11-02 に追記。2026-11-12 に BS-D68・BS-D69・BS-W15・BS-W17 で本体に入った内容を反映した。原典 pp.36–45。E3 に必要な項目だけを載せる（判定は <a href="#items-04">原典の項目一覧</a>、原典との差の評価は <a href="#diff-04">末尾</a>）。</p>
-<p>固定した有界 prism \((A,I)\) と p 完全 smooth な \(A/I\) 代数 \(R\) について、prismatic site \((R/A)_\Delta\) とその構造層のコホモロジー \(\Delta_{R/A}\) を定義し（§4.1）、HT 比較を定式化し（§4.2）、Čech–Alexander 複体で \(\Delta_{R/A}\) を具体的に計算する（§4.3）。形式化の範囲は A0（site と Čech–Alexander）と A1（HT 写像）。本体にあるのは、affine な R の site の圏・平坦位相・構造層の層性（§1）、多項式代数の HT 写像 \(\eta^*\) と Lemma 4.10、HT 比較の主張の型と結晶基底 \((\mathbb Z_p,(p))\) での証明（§2）、Čech–Alexander 模型の組み立て・弱始性・余積・底変換との項ごとの両立（§3）。\(\Delta_{R/A}\) を site の \(R\Gamma\) として定義すること、模型がそれを計算すること、Lemma 4.20・4.22 は drafts にある。</p><div class="box">
-<p class="label">方針（2026-10-25 決定、2026-11-02 追記）</p>
-<p>HT 比較は迂回せず、原論文の経路に沿って形式化する。</p>
-<p><b>2026-11-02</b>：定義は原典のまま入れ、定理だけ E3 に要る特別な場合に絞る。すなわち Def 4.1 の site（圏・平坦位相・構造層）と Not 4.16 の \(\Delta_{R/A}=R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\) をそのまま定義にし、Čech–Alexander 複体（Construction 4.17・4.18）が \(\Delta_{R/A}\) を計算することは定理（脚注 10 と Cor 3.12）にする。\(R\Gamma\) は ∞ 圏的に、D(A) 値前層の層化 \(F\mapsto F^\sharp\) と大域切断 \(\Gamma(F^\sharp)=\lim F^\sharp\) で定義する（設計書 <a href="../../../formalization-plans/bhatt-scholze/infinity-sheaves-design.md">infinity-sheaves-design.md</a>）。層は HTT 6.2.2.6 の意味（Čech 層）で、hypersheaf との差は D17 に記す。大きい site は濃度 \(\le\kappa\) で切り落とす（D16）。向き付き・有界な基底 prism に限り（ノート D5）、完備化は導来完備化の \(H^0\) で、離散性は Lemma 3.7(2) の定理とする。</p>
-<p><b>2026-11-03（Codex レビュー W9 の後）</b>：κ には既定値以上であることに加えて \(\kappa^{\aleph_0}=\kappa\) を課す（<code>IsAdmissibleCutoff</code>、W9-I-11）。cutoff 不変性の定理は envelope の存在 <code>HasEnvelopes P R</code> と admissible な κ ≤ κ′ を仮定し、A0/CechAlexander で Tot との比較の後に置く。Čech–Alexander の余積は頂点の包含 [0]→[n] を脚とする標準形で述べる（BS-D1、2026-11-03）。Construction 4.17 の \(J_0\) の閉包は「\(B\to H^0\) の一変数導来 p 完備化 \((B/J_0B)\) の核」で取り、変数変換後の対の等式はこの閉包で結ぶ（W9-I-09）。Def 2.42（prism の射の \((p,I)\) 完全平坦性）は「\(H^0\) の平坦性と全次数の底変換同型」であって高次ホモロジーの消滅ではない（W9-I-01、D20。基底 \((\mathbb Z_p,(p))\) で \(H_1=\mathbb F_p\)）。完全 prismatic site（Rem 4.6）は A5 で Lemma 4.8 の圏同値により \(\mathrm{Perfd}_{S/}\) と同一視し、その余積は \((T_1\widehat\otimes_S T_2)_{\mathrm{perfd}}\)（Cor 7.3 の普遍性。\(A\) 上の完備テンソル \(B\widehat\otimes_A B'\) では \(S\) の二つの構造射が一致しない、W9-II-06）。κ 不変性は二つの site の間の包含に沿う制限で \(R\Gamma\) を結ぶ可逆な辺として述べ、頂点の等号は主張しない（W9-I-03）。</p>
+<p class="meta">基準コミット <code>29064ce39</code>（2026-11-12。初稿は a0ccccb09、2026-10-25）。原典 pp.36–46。§4 の全項目を載せる（項目ごとの状態の正本は地図 <a href="../../../research/bs-coverage/items.csv">research/bs-coverage/items.csv</a> で、見出しの確認のラベルはそこから付く。原典との差は各項目の見出しの下に置く）。各項目の見出しのラベルは、主張が Lean で確かめられているかを示す（地図から生成）：<span class="vtag v-ok">Lean で確認</span> 本体に原典どおり、<span class="vtag v-part">一部 Lean で確認</span> 特別な場合か部品だけ、<span class="vtag v-no">未確認</span> 本体にない。<span class="vtag v-supp">補った筋あり</span> は原典が省いた所をこのノートで補った証明で、Lean では確かめていない。</p>
+
+<p>固定した有界 prism \((A,I)\) と p 完全 smooth な \(A/I\) 代数 \(R\) について、prismatic site \((R/A)_\Delta\) とその構造層のコホモロジー \(\Delta_{R/A}\) を定義し（4.1）、HT 比較を定式化し（4.2）、Čech–Alexander 複体で \(\Delta_{R/A}\) を具体的に計算する（4.3）。本体にあるのは、affine な \(R\) の site の圏・平坦位相・構造層の層性、多項式代数の HT 写像 \(\eta^*\) と Lemma 4.10、HT 比較の主張の型と結晶基底 \((\mathbb Z_p,(p))\) での証明、Čech–Alexander 模型の組み立て・弱始性・余積・底変換との項ごとの両立。\(\Delta_{R/A}\) を site の \(R\Gamma\) として定義すること、模型がそれを計算すること、Lemma 4.20・4.22 は drafts にある。形式化の設計の決定（site の大きさの切り落とし、\(R\Gamma\) の意味など）は <a href="../../../formalization-plans/bhatt-scholze/a0-design.md">a0-design.md</a> にあり、原典との差として各項目の下に引く。</p>
+
+<h2>4.1 prismatic site</h2>
+<p>有界 prism \((A,I)\) を固定し、\(A\) 上の形式スキームには \((p,I)\) 進位相、\(A/I\) 上の形式スキームには \(p\) 進位相を入れる。この小節では \(p\) 進形式 \(A/I\) スキーム \(X\) の prismatic site \((X/A)_\Delta\) を定め（定義 4.1.1）、その topos の見方（注意 4.1.3）、étale 位相との関係（定義 4.1.4）、位相の取り替え（注意 4.1.5）、完全 site と絶対 site（注意 4.1.6・4.1.7）を述べ、最後に完全 prism からの射の一意な持ち上げ（命題 4.1.8）を示す。本体にあるのは affine の場合の site・平坦位相・構造層が層であること（定義 4.1.1）と、標的が有界な場合の命題 4.1.8。注意 4.1.6 は drafts、他の注意と定義 4.1.4 は本体にない。</p>
+
+<h4 class="item">定義 4.1.1（原典 Def 4.1：prismatic site と構造層） <span class="vtag v-part">一部 Lean で確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(X\) を \(A/I\) 上の \(p\) 進形式スキームとする。\((X/A)_\Delta\) を、有界 prism の射 \((A,I)\to(B,IB)\) と \(A/I\) 上の射 \(\mathrm{Spf}(B/IB)\to X\) の組の圏とする（射は自明なもの）。対象を
+\[(\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to X)\in(X/A)_\Delta\]
+と書く。すなわち対象は、δ-\(A\) 代数 \(B\) と、図式
+\[\begin{array}{ccc}\mathrm{Spf}(B/IB)&\longrightarrow&\mathrm{Spf}(B)\\ {\scriptstyle f}\downarrow&&\downarrow{\scriptstyle g}\\ X&&\\ \downarrow&&\\ \mathrm{Spf}(A/I)&\longrightarrow&\mathrm{Spf}(A)\end{array}\]
+の \(f\)・\(g\) を与えるデータである。射 \((\mathrm{Spf}(C)\leftarrow\mathrm{Spf}(C/IC)\to X)\to(\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to X)\) が<b>平坦被覆</b>であるとは、\((B,IB)\to(C,IC)\) が prism の忠実平坦な射、すなわち \(C\) が \(B\) 上 \((p,IB)\) 完全忠実平坦であること。この平坦被覆で位相を入れた \((X/A)_\Delta\) を \(X/A\) の <b>prismatic site</b> と呼ぶ。</p>
+<p>\((\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to X)\mapsto B\)（resp. \(B/IB\)）は、可換 \(A\) 代数（resp. \(\mathcal O(X)\) 代数）の前層 \(\mathcal O_\Delta\)（resp. \(\overline{\mathcal O}_\Delta\)）を定める。系 3.4.3（原典 Cor 3.12）から、\((X/A)_\Delta\) はこの位相で site になり、\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) は層である。\(\mathcal O_\Delta\) を<b>構造層</b>と呼ぶ。</p>
 </div>
-<h2>1. prismatic site（§4.1）</h2>
-<p><b>Def 4.1.</b> \((X/A)_\Delta\)：有界 prism の射 \((A,I)\to(B,IB)\) と \(\mathrm{Spf}(B/IB)\to X\) の組の圏。被覆は忠実平坦な prism の射。構造層 \(\mathcal O_\Delta(B)=B\)、\(\overline{\mathcal O}_\Delta(B)=B/IB\)。Cor 3.12 で site で、\(\mathcal O_\Delta\) は層。<b>Rem 4.3・4.5</b>：位相（flat・étale・Zariski）によらず同じコホモロジー。<b>Rem 4.6</b>：完全 prismatic site は perfectoid 環への写像の圏と同じ（§8 で使う）。<b>Lemma 4.8</b>：完全 prism \((A,I)\) と任意の prism \((B,J)\) について、環準同型 \(A/I\to B/J\) は prism の射に一意に持ち上がる。<b>証明</b>：\(A=W(\text{完全})\) は p 完全に \(L_{A/\mathbb Z_p}=0\) なので変形理論で \(A\to B\) に一意に持ち上がる。δ 射であることは、\(A\to B\) が逆極限の完全化 \(B^{\mathrm{perf}}=\lim_\varphi B\)（p ねじれなしの完全 δ 環）を経由することから。</p>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>affine の場合だけ：固定した有界な向き付き prism \((A,(d))\)（有界性 <code>IsBoundedPrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver:41</a>）は \(A/d\) の \(p\) 冪ねじれが一様な冪 \(p^N\) で消えること）と \(A/d\) 代数 \(R\) について、\(X=\mathrm{Spf}(R)\) の場合の site。対象 <code>PrismOver</code>（:68）は、有界な向き付き prism \((B,dB)\)、prism の射 \((A,(d))\to(B,dB)\)、\(A/d\) 代数の射 \(R\to B/dB\)（原典の \(\mathrm{Spf}(B/IB)\to X\) の環の側）の組で、台の濃度が \(\le\kappa\) のもの。濃度の上限の既定値 <code>cutoff</code>（:54）は \((\#A+\#R+\aleph_0)^{\aleph_0}\)、許容条件 <code>IsAdmissibleCutoff</code>（:60）は「既定値以上かつ \(\kappa^{\aleph_0}=\kappa\)」。射 <code>PrismOver.Hom</code>（:95）は \(A\) からの射と \(R\) からの射の両方と可換な prism の射。</p>
+<p><b>位相</b>：忠実平坦な射 <code>PrismOver.IsFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCover.lean">FlatCover:40</a>）（\((p,d)\) 完全忠実平坦）一本からなる被覆 <code>flatCoverage</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatSiteSheaf.lean">FlatSiteSheaf:36</a>）が生成する位相 <code>flatTopology</code>（:50）。被覆の押し出しは <code>exists_isPushout_isFaithfullyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatTopologyPushout.lean">FlatTopologyPushout:43</a>）。</p>
+<p><b>構造層</b>：\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) は環値の関手 <code>structureRing</code>・<code>quotientStructureRing</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatSiteSheaf.lean">FlatSiteSheaf:54・61</a>）、\(A\) 代数としての読み替えは <code>prismSiteAlgebras</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver:127</a>、\(A\) の下の環の圏への関手）。層であることは <code>structureRing_isSheaf</code>・<code>quotientStructureRing_isSheaf</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCechDescent.lean">FlatCechDescent:179・184</a>）で、増大 Čech 複体の完全性から層条件を出す一般の判定 <code>isSheaf_of_flatRingCechExact</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCechSheaf.lean">FlatCechSheaf:49</a>）を経由する（系 3.4.3 の Lean の囲みを参照）。</p>
+<p>小さい模型の上の site <code>PrismaticSite</code> とその位相・構造前層は drafts（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:93・106・127</a>）。一般の形式スキーム \(X\) の site は本体にも drafts にもない。</p>
+</div>
+<div class="box proof">
+<p class="label">証明</p>
+<p>主張の後半（site であること、\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) が層であること）は系 3.4.3 そのもの。site の公理（同型・合成・押し出し）は、\(X\) への射のデータが押し出しに沿って一意に引き継がれることを加えれば、有界 prism の圏の場合と同じ：忠実平坦な \((B,IB)\to(C,IC)\) と任意の \((B,IB)\to(B',IB')\) の押し出しは \(C\widehat\otimes_BB'\)（導来 \((p,I)\) 完備化）で、その mod \(I\) の \(\mathrm{Spf}\) は \(\mathrm{Spf}(B'/IB')\to X\) を通して \(X\) の上にある。層条件は対象の \(X\) への射に関係しないので、系 3.4.3 の Čech 余脈体の極限図式がそのまま使える。</p>
+</div>
 <div class="box">
-<p class="label">A0 で要る範囲</p>
-<p>E3 で使うのは affine な R、特に多項式代数だけ。定義は原典どおり site の \(R\Gamma\)（2026-11-02 の方針。それ以前の「Čech–Alexander 複体を定義に使い、site は避ける」見込みは取り下げた）。site の圏・平坦位相・\(\mathcal O_\Delta\) は定義し、Cor 3.12（\(\mathcal O_\Delta\) が層で、忠実平坦な Čech 脈体に沿って導来降下する）は一般の形で証明する。étale 層との関係（Construction 4.4、Rem 4.3・4.5）は要らない。Lemma 7.7(3)・Prop 8.5 と Construction 4.18 が使う「弱終対象の Čech 脈体の totalization が圏上の極限を計算する」という一般論（脚注 10）は、∞ 層の設計書の S3。Lemma 4.8 は、標的が完全 prism なら Thm 3.10 の射の一意持ち上げ（<code>existsUnique_perfectPrismHomLift</code>）で足りる。一般の標的（Prop 7.10 で使う）には変形理論（\(W\)(完全) の p 完全な形式エタール性）と逆極限の完全化が要る（A3）。</p>
+<p class="label">原典との差（D5・D16・D19・D22）</p>
+<p>原典の一般の \(p\) 進形式スキーム \(X\) は扱わず、affine の \(X=\mathrm{Spf}(R)\) に限る。基底は向き付き（D5）で、site の対象も向き付き（基底が向き付きなら剛性で自動、D19）。位相は忠実平坦な単一射の被覆が生成する位相として定義する（D22）。D19・D22 の評価は系 3.4.3 の下にある。台の濃度を \(\kappa\) で切り落とす（D16）。</p>
+<p><b>D16 の評価</b>（原典：Def 4.1 の site は有界 prism 全体（大きい圏））。Lean の違い：台集合の濃度 \(\le\kappa\) の prism（Type u）に切り落とす。\(\kappa=(\#A+\#R+\aleph_0)^{\aleph_0}\) を既定値にし、許容条件は「既定値以上かつ \(\kappa^{\aleph_0}=\kappa\)」（<code>IsAdmissibleCutoff</code>）。これで証明中の構成（Čech–Alexander、押し出し、André 拡大、perfectoid 化、\(p\) 冪根の添加、有限表示近似）が切り落としの中で閉じる。Lean の利点：小さい site で層化と \(\Gamma=\lim\) が存在し、\(\Delta\) が Type u に収まる。大きい平坦 site では一般の前層の層化が存在しないことがある（Waterhouse 1975）ので、層化を使う定義には必須。Lean の欠点：定義に \(\kappa\) が入る。\(\kappa\) 不変性（\(\kappa_0\le\kappa\le\kappa'\) で \(R\Gamma\) が一致）は Cor 3.12 と脚注 10 から出る定理で、\(\mathcal O_\Delta\) についてだけ主張する。どちらが簡単か：原典は集合論の処置を省いている（Stacks の「十分大きい基数で切る」と同じ）。数学的内容は変わらない。方針：Lean を保つ。宇宙を上げる案（Mathlib の ℓ 進コホモロジーの方式）は、基盤の \(D(A)\) と E3 の界面が Type u で閉じているので採らない。</p>
 </div>
 
-<div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Def 4.1</td><td>prismatic site と構造層</td><td class="part">特別な場合（affine）</td><td>対象 <code>PrismOver</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver.lean:68</a>）：\((A,(d))\) 上の有界向き付き prism \((B,dB)\)（有界性は <code>IsBoundedPrism</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver.lean:41</a>、A/d の p 冪ねじれが一様な冪で消えること）、prism の射 \((A,(d))\to(B,dB)\)、A/d 代数の射 \(R\to B/dB\)、台の濃度 \(\le\kappa\)（D16、許容条件 <code>IsAdmissibleCutoff</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver.lean:60</a>）。位相は単一の忠実平坦射で生成する <code>flatTopology</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatSiteSheaf.lean">FlatSiteSheaf.lean:50</a>）。\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) が層であることは <code>structureRing_isSheaf</code>・<code>quotientStructureRing_isSheaf</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCechDescent.lean">FlatCechDescent.lean:179・184</a>）で、増大 Čech 複体の完全性から層条件を出す一般の判定 <code>isSheaf_of_flatRingCechExact</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCechSheaf.lean">FlatCechSheaf.lean:49</a>、Cor 3.12 (c)）を経由する（BS-W15）。原典の一般の形式スキーム X は扱わず affine の R に限る</td></tr>
-<tr><td>Rem 4.6</td><td>完全 prismatic site</td><td class="todo">drafts</td><td>A5。<code>PerfectPrismaticSite</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite.lean:159</a>）に flat 位相 <code>perfectFlatTopology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite.lean:80</a>）、Lemma 4.8 で \(\mathrm{Perfd}_{S/}\) と同値（<code>perfectSiteEquivPerfectoidUnder</code>、同 :267）、余積は \((T_1\widehat\otimes_S T_2)_{\mathrm{perfd}}\)。Lemma 8.4 は A4、Prop 8.5 は A5</td></tr>
-<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td class="ok">済（有界な標的）</td><td>標的が<b>有界</b>な向き付き prism の場合 <code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift.lean:749</a>、一意性 <a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift.lean:199</a>）。Prop 7.10 の有限な \(T\)・\(S'\) の包絡の始性（BS-W17 H5、<code>Semiperfectoid/PerfectEnvelopeInitial</code>・<code>InitialPrismPerfection</code>・<code>Cor73PrismComparison</code>）が、有界な標的への一意な持ち上げとして使う（主経路の上）。標的が完全な場合は Thm 3.10 の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift.lean:522</a>、主経路）。原典は標的を任意の prism とするが、prismatic site の対象は有界なので E3 にはこれで足りる。証明は原典の変形理論（\(L_{A/\mathbb Z_p}\) の消滅）ではなく tilt の比較と Witt 持ち上げの一意性。BS-W7 で André の下から Prism/ へ移した</td></tr>
-</table></div>
+<h4 class="item">注意 4.1.2（原典 Rem 4.2：smooth の仮定） <span class="vtag v-no">未確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>この論文では prismatic site \((X/A)_\Delta\) を、ほとんど常に \(X\) が \(A/I\) 上 smooth な \(p\) 進形式スキームであるという仮定の下で使う。主定理（Hodge–Tate 比較など）はこの仮定なしには成り立たない。後に prismatic コホモロジーを、smooth な場合からの左 Kan 拡張ですべての \(p\) 進形式 \(A/I\) スキームに延ばす。ここではしないが、導来 prismatic site（単体的環を全体で使う）でも同じ定義が得られる。</p>
+<p>以下この小節では、特に断らない限り \(X\) は \(A/I\) 上 smooth な \(p\) 進形式スキームとする。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない（注意なので主張する宣言はない）。本体の site（定義 4.1.1）は \(R\) に smooth の仮定を置かずに定義され、Hodge–Tate 比較は多項式代数の場合に述べる（第 4.2 節）。</p>
+</div>
+<div class="box proof">
+<p class="label">証明</p>
+<p>証明すべき主張はない。左 Kan 拡張による延長は原典 Construction 7.6、導来 prismatic site の方法は原典では扱わない。</p>
+</div>
 
-<h2>2. HT 比較の定式化（§4.2）</h2>
-<p><b>Construction 4.9.</b> \(\overline\Delta_{X/A}=\Delta_{X/A}\otimes^L_AA/I\)。三角形 \(\overline\Delta\{i+1\}\to\Delta\otimes^LI^i/I^{i+2}\to\overline\Delta\{i\}\) の Bockstein \(\beta_I\) で \(H^*(\overline\Delta_{X/A})\{*\}\) は可換 dg 代数になる。\(\eta^0:\mathcal O_X\to H^0\) と \(\eta^1:\Omega^1\to H^1\{1\}\)（\(f\,dg\mapsto f\beta_I(g)\)）から、<b>Lemma 4.10</b>（\(\beta_I(f)^2=0\)、p=2 でだけ非自明、Prop 6.2 から出る）を使って de Rham 複体からの写像 \(\eta^*:\Omega^*_{X/(A/I)}\to H^*(\overline\Delta_{X/A})\{*\}\) に延ばす。向き付きなら捻り \(\{i\}\) は外せる。形式化（D4-03、2026-11-03）：Bockstein は余単体的環 \(C^\bullet\) と各項で正則な d の短完全列 \(0\to C/d\to C/d^2\to C/d\to0\) から作るが、係数は共通の基底環 k（prism の A）に固定した余単体的 k 加群として取る（\(C^0\) は共通の係数環ではない、W9-I-21）。この一般論は本体の <code>regularShortExact</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/PrincipalShortExact.lean">PrincipalShortExact.lean:161</a>）・<code>regularBockstein</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/PrincipalShortExact.lean">PrincipalShortExact.lean:176</a>）と、平方零 <code>bockstein_sq</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/BocksteinClass.lean">BocksteinClass.lean:202</a>）にある。Leibniz 則は正則な持ち上げの計算。</p>
-<p><b>Lean での組み立て（BS-D68、多項式代数の場合）.</b> 基底は一般の有界向き付き prism \((A,(d))\)、R は p 完備多項式代数 \((A/d)\langle X_1,\dots,X_r\rangle\)（<code>affineAlgebra</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateAffineModel.lean">HodgeTateAffineModel.lean:38</a>）。\(\overline\Delta\) の代わりに Rem 4.19 の小さい Čech–Alexander 模型（<code>cechAlexanderAffine</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeConstruction.lean">AffineEnvelopeConstruction.lean:243</a>）の各項を d で割った余単体的環 <code>reducedModel</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateAffineModel.lean">HodgeTateAffineModel.lean:93</a>）のコホモロジー <code>hodgeTateCohomology'</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZero.lean">HodgeTateZero.lean:39</a>）を使い、環構造は交代余面複体の cup 積で与える（D27）。</p>
+<h4 class="item">注意 4.1.3（原典 Rem 4.3：slice topos としての prismatic topos と関手性） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\((\ast/A)_\Delta\) を \((A,I)\) 上の有界 prism 全体の圏に系 3.4.3 のように位相を入れた site とする（これは上の \((\mathrm{Spf}(A/I)/A)_\Delta\) と一致する）。smooth な \(p\) 進形式スキーム \(X\) は \((\ast/A)_\Delta\) 上の前層
+\[h_X(B,IB)=\mathrm{Hom}_{A/I}(\mathrm{Spf}(B/IB),X)\]
+を定め、系 3.4.3 の議論の変形で \(h_X\) は層である。定義をほどくと、\((X/A)_\Delta\) は組 \(((B,IB)\in(\ast/A)_\Delta,\ \eta\in h_X(B,IB))\) の圏に \((\ast/A)_\Delta\) からの位相を入れたものと一致し、特に
+\[\mathrm{Shv}((X/A)_\Delta)\simeq\mathrm{Shv}((\ast/A)_\Delta)_{/h_X}\]
+（slice topos）とみなせる。この見方で関手性が明らかになる：smooth な \(p\) 進形式 \(A/I\) スキームの射 \(f\colon X\to Y\) は層の射 \(h_X\to h_Y\) を与え、slice topos の射 \(\mathrm{Shv}((X/A)_\Delta)\to\mathrm{Shv}((Y/A)_\Delta)\) を引き起こす。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts にもない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>（補った）<b>\(h_X\) が層であること.</b> 忠実平坦な \((B,IB)\to(C,IC)\) について、\(h_X(B)\to h_X(C)\rightrightarrows h_X(C\widehat\otimes_BC)\) が等化子であることを示す。\(\mathrm{Spf}(B/IB)=\mathrm{colim}_n\mathrm{Spec}(B/(I,p^n))\) なので \(h_X(B)=\lim_n\mathrm{Hom}(\mathrm{Spec}(B/(I,p^n)),X)\)（\(p^n=0\) なので \(\mathrm{Spec}(B/(I,p^n))\to X\) はスキーム \(X\otimes\mathbb Z/p^n\) を経由する）。各 \(n\) で \(B/(I,p^n)\to C/(I,p^n)\) は（\((p,I)\) 完全忠実平坦性の定義から）通常の忠実平坦な環の射で、\((C\widehat\otimes_BC)/(I,p^n)=C/(I,p^n)\otimes_{B/(I,p^n)}C/(I,p^n)\)。スキーム \(X\otimes\mathbb Z/p^n\) が表す関手は fpqc 層なので、各 \(n\) で等化子。等化子は極限と交換するので \(n\) について極限を取ればよい。</p>
+<p><b>slice の同一視.</b> 対象の対応は定義から。被覆の定義は \(X\) への射に関係しないので、位相も \((\ast/A)_\Delta\) から誘導されたもの。site \(\mathcal C\) と層 \(F\) について、組 \((U,\eta\in F(U))\) の site（\(\mathcal C\) の \(F\) 上の slice）の層の topos は \(\mathrm{Shv}(\mathcal C)_{/F}\) と同値（topos の局所化の一般論）なので、\(F=h_X\) とおけばよい。関手性は、層の射 \(h_X\to h_Y\) が slice topos の射を与えるという一般論から。</p>
+</div>
+
+<h4 class="item">定義 4.1.4（原典 Construction 4.4：prismatic 層と étale 層） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(f\mathrm{Sch}_{/X}\) を、adic な射 \(U\to X\) を持つ \(p\) 進形式スキーム \(U\) の圏に étale 位相を入れたものとする。\((B,IB)\) を \(\mathrm{Spf}(B/IB)\to X\) に送る自然な関手 \(\mu\colon(X/A)_\Delta\to f\mathrm{Sch}_{/X}\) がある。この関手は命題 2.2.4（原典 Lemma 2.18）により余連続である：有界 prism \((B,IB)\) と \(p\) 完全エタールな射（resp. 被覆）\(B/IB\to C\) に対し、これを mod \(IB\) で持ち上げる δ 環の \((p,I)\) 完全エタールな射（resp. 被覆）\(B\to C\) がただ一つある。したがって topos の射
+\[\mu_X\colon\mathrm{Shv}((X/A)_\Delta)\to\mathrm{Shv}(f\mathrm{Sch}_{/X})\]
+が定まる（[Sta, Tag 00XO]）。制限で定まる topos の射 \(\mathrm{Shv}(f\mathrm{Sch}_{/X})\to\mathrm{Shv}(X_{\mathrm{et}})\) と合成して
+\[\nu_X\colon\mathrm{Shv}((X/A)_\Delta)\to\mathrm{Shv}(X_{\mathrm{et}})\]
+を得る（紛れなければ \(\mu\)・\(\nu\) と書く）。順像 \(\nu_*\) は次のように書ける：エタールな \(U\to X\) について \((U/A)_\Delta\) は被覆を保って \((X/A)_\Delta\) の slice になり、この関手に沿った制限は層を層に送る。定義をほどくと
+\[(\nu_*F)(U\to X)=H^0((U/A)_\Delta,F|_{(U/A)_\Delta}).\]
+すなわち \(\nu\) で prismatic コホモロジーを \(X_{\mathrm{et}}\) 上に局所化できる。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts にもない。本体の site は affine の \(R\) だけなので、\(X_{\mathrm{et}}\) 上の局所化は使わず、\(\Delta_{R/A}\) は site の大域切断として直接定める（第 4.3 節）。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>（補った）<b>余連続性.</b> 示すのは：\(\mu(B,IB)=\mathrm{Spf}(B/IB)\) の étale 被覆 \(\{U_i\to\mathrm{Spf}(B/IB)\}\) は、site の被覆 \((B,IB)\to(C,IC)\) の像で細分される。\(\mathrm{Spf}(B/IB)\) は quasi-compact なので、有限個の affine \(\mathrm{Spf}(C_j)\to U_{i_j}\) で覆い、\(\bar C=\prod_jC_j\) とすれば \(B/IB\to\bar C\) は \(p\) 完全エタールで \(p\) 完全忠実平坦。命題 2.2.4 でこれを \((p,I)\) 完全エタールな δ 環の射 \(B\to C\)（\(C/IC=\bar C\)）に持ち上げる。\(C\) は \(B\) 上 \((p,I)\) 完全忠実平坦（mod \((p,I)\) で忠実平坦、完全平坦性は mod \(I\) の判定と導来中山）なので、命題 3.2.3（原典 Lemma 3.7 (3)）から \((C,IC)\) は有界 prism で、\((B,IB)\to(C,IC)\) は忠実平坦な射。その像 \(\mathrm{Spf}(\bar C)\to\mathrm{Spf}(B/IB)\) は各 \(U_{i_j}\) を経由するので細分になる。余連続な関手は順像が層を層に送る関手 \(\mu_*\) と、その左随伴として完全な \(\mu^{-1}\) を持ち、topos の射を与える（Tag 00XO）。</p>
+<p><b>\(\nu_*\) の式.</b> エタールな \(U\to X\) について、\((U/A)_\Delta\to(X/A)_\Delta\) は \(\mathrm{Spf}(B/IB)\to U\) を \(U\to X\) と合成する関手で、\((X/A)_\Delta\) の \(h_U\)（注意 4.1.3）上の slice と同一視される。被覆の定義は \(X\)・\(U\) への射によらないので被覆を保ち、slice への制限は層を層に送る。\(\nu_*F(U)=\mu_*F(U)=\mathrm{Hom}(h_U,F)\)（\(\mu_*F(V)=\mathrm{Hom}(\mu^{-1}h_V,F)\) で、\(\mu^{-1}h_U=h_U\)）は slice 上の \(F\) の大域切断 \(H^0((U/A)_\Delta,F|_{(U/A)_\Delta})\) に等しい。</p>
+</div>
+
+<h4 class="item">注意 4.1.5（原典 Rem 4.5：位相の取り替え） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>定義 4.1.1 の平坦位相を Zariski・Nisnevich・étale 位相に取り替えても、同じ圏の上の site が得られ、topos の比較の射
+\[\mathrm{Shv}((X/A)_\Delta)\to\mathrm{Shv}((X/A)_{\Delta,\mathrm{et}})\to\mathrm{Shv}((X/A)_{\Delta,\mathrm{Nis}})\to\mathrm{Shv}((X/A)_{\Delta,\mathrm{Zar}})\]
+がある。系 3.4.3 と注意 4.1.3 の見方から、この合成の各射に沿った導来順像は \(\mathcal O_\Delta\)（resp. \(\overline{\mathcal O}_\Delta\)）をそれ自身に送る。特に、\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\) 係数の \(X\) のコホモロジーはどの位相でも計算できる。より一般に、\(D_{(p,I)\text{-comp}}(-)\) の \((p,I)\) 完全忠実平坦降下を使うと、同様のことが \((p,I)\) 完備な複体の crystal \(M\) 係数のコホモロジーにも成り立つ。ここで crystal とは、底変換と両立する対応
+\[\eta:=(\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to X)\in(X/A)_\Delta\ \mapsto\ M(\eta)\in D_{(p,I)\text{-comp}}(B)\]
+のこと。正確には、\(D(\mathrm{PShv}((X/A)_\Delta,\mathcal O_\Delta))\) のこの性質を持つ対象 \(M\) の充満部分圏の対象として定める（crystal の概念は圏 \((X/A)_\Delta\) と前層 \(\mathcal O_\Delta\) だけで決まり、位相によらない）。</p>
+<p>コホモロジーと crystal の概念が位相によらないのに平坦位相を選ぶ理由は、自然さのほかに、「perfectoid」な状況からの quasisyntomic 降下による議論の余地を残すためである（役に立つ平坦被覆の例は原典 Ex 7.12・7.13。[BS21] では \(\mathcal O_K\) の絶対 prismatic site の \(F\) crystal の理解に使われる）。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。Zariski・Nisnevich・étale 位相の site と比較の射は drafts にもない。裏の一般論「位相を粗くしても、細かい方の位相の層である前層の \(R\Gamma\) は変わらない」は drafts の <code>derivedGlobalSections_of_le</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/Sheaves/GlobalSections.lean">drafts/Sheaves/GlobalSections:206</a>、sorry あり）で、完全 site の \(R\Gamma\) が位相によらないこと（原典 Prop 8.5）に使う形。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>（補った）Zariski・Nisnevich・étale の被覆は（\((p,I)\) 完全な意味で）平坦被覆なので、位相は \(\tau_{\mathrm{Zar}}\le\tau_{\mathrm{Nis}}\le\tau_{\mathrm{et}}\le\tau_{\mathrm{fl}}\) と並び、恒等関手が比較の topos の射を与える。その順像は層を（粗い位相の層として）そのまま見る関手。導来順像が \(\mathcal O_\Delta\) を保つことは、\(\mathcal O_\Delta\) の高次コホモロジーが各対象の上でどの位相でも消えることと同じ。系 3.4.3 は、平坦被覆の Čech 余脈体に沿って \(B\to C^\bullet\) が極限図式（高次 Čech コホモロジーが消える）であることを示す。これは粗い位相の被覆（特別な平坦被覆）にも当てはまり、被覆の族は押し出しで閉じているので、Cartan の判定（全対象のすべての被覆で高次 Čech コホモロジーが消えれば層コホモロジーも消える）から、どの位相でも \(H^i(B,\mathcal O_\Delta)=0\)（\(i>0\)）。よって比較の射に沿った \(R\pi_*\mathcal O_\Delta=\mathcal O_\Delta\)。\(\overline{\mathcal O}_\Delta\) も同じ。crystal 係数の場合は、系 3.4.3 の証明の \(\mathrm{Kos}(-;p^n,I^n)\) の忠実平坦降下を \(D_{(p,I)\text{-comp}}\) の降下に置き換えて同じ議論をする。注意 4.1.3 の見方は、\(X\) の site を \((\ast/A)_\Delta\) の slice とみて、\((\ast/A)_\Delta\) での主張から \(X\) の場合を得るのに使う。</p>
+</div>
+
+<h4 class="item">注意 4.1.6（原典 Rem 4.6：完全 prismatic site） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>任意の \(p\) 進形式 \(A/I\) スキーム \(Y\) について、\(B\) が完全である対象 \((\mathrm{Spf}(B)\leftarrow\mathrm{Spf}(B/IB)\to Y)\) の充満部分圏 \((Y/A)_\Delta^{\mathrm{perf}}\subset(Y/A)_\Delta\) に制限して、prismatic site（定義 4.1.1）の変種が定まる。これは同値に、\(A/I\) 上の perfectoid 環 \(R\) と射 \(\mathrm{Spf}(R)\to Y\) の組の圏であり、prism の概念を使わない記述を持つ。完全 prismatic site のコホモロジーは prismatic site のそれとは趣が異なり、原典 §8 で調べる。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts：完全 site <code>PerfectPrismaticSite</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:159</a>）は、\(\varphi_B\) が全単射な対象の充満部分圏（の反対圏）。perfectoid 環 \(R\) の完全 prism を基底とし、\(R\) 代数 \(S\) の上の版 <code>perfectSite</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite:65</a>）とその平坦位相 <code>perfectFlatTopology</code>（:80）、\(S\) の下の perfectoid 環（濃度 \(\le\kappa\)）の圏との同値 <code>perfectSiteEquivPerfectoidUnder</code>（:267、sorry あり）。同値に使う命題 4.1.8 は <code>perfectPrism_hom_lift_unique</code>（:229）で本体の定理を呼ぶ。同値は基底が完全な場合だけ。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>原典は「同値に」の理由を書いていない。（補った）<b>基底 \((A,I)\) が完全な場合.</b> 関手 \((B,IB)\mapsto B/IB\) を考える。対象：定理 3.4.1（原典 Thm 3.10）から \(B/IB\) は perfectoid で、逆に \(A/I\) 上の perfectoid 環 \(R\) について \((A_{\inf}(R),\ker\theta)\) は完全 prism、構造射 \(A/I\to R\) は命題 4.1.8 で prism の射 \((A,I)\to(A_{\inf}(R),\ker\theta)\) に一意に持ち上がる。射：完全 prism \((B,IB)\to(B',IB')\) の射は命題 4.1.8 で \(B/IB\to B'/IB'\) と一対一に対応し、\(A\) からの射と両立することも、\(A\) が完全なので mod \(I\) の両立から命題 4.1.8 の一意性で出る。\(Y\) への射のデータは両辺で同じ \(\mathrm{Spf}(B/IB)\to Y\)。</p>
+<p><b>一般の基底.</b> 命題 4.1.8 の後の注意（原典）が言うように、完全でない \((A,I)\) から完全 prism への射は mod \(I\) の射で決まらない。そのとき、同じ \(B\) と同じ \(A/I\to B/IB\) で \(A\to B\) だけが違う二つの対象は、恒等射 \(B/IB\to B/IB\) の持ち上げが恒等射しかない（命題 4.1.8）ので同型でなく、関手 \((B,IB)\mapsto B/IB\) は同値にならない。したがって原典の「同値に」は、完全な基底の場合（§8 で使う場合）の主張として読む。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D5・D16）</p>
+<p>drafts の完全 site は、定義 4.1.1 の Lean の site（affine・向き付き・濃度 \(\le\kappa\)）の充満部分圏で、perfectoid 環の圏との同値は完全な基底の上でだけ述べる。原典は一般の \(Y\) と一般の基底で述べる。</p>
+</div>
+
+<h4 class="item">注意 4.1.7（原典 Rem 4.7：絶対 prismatic site） <span class="vtag v-no">未確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>任意の \(p\) 進形式スキーム \(X\) について、<b>絶対 prismatic site</b> \((X)_\Delta\) も考えられる。対象は、有界 prism \((B,J)\) と \(p\) 進形式スキームの射 \(\mathrm{Spf}(B/J)\to X\) の組。この論文ではこの概念を本格的には調べないが、次の観察（命題 4.1.8）は後で役に立つ。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts にもない。後で使われる観察（命題 4.1.8）は本体にある。</p>
+</div>
+<div class="box proof">
+<p class="label">証明</p>
+<p>証明すべき主張はない。</p>
+</div>
+
+<h4 class="item">命題 4.1.8（原典 Lemma 4.8：完全 prism からの射の一意な持ち上げ） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\((A,I)\) を perfectoid 環 \(R=A/I\) に対応する完全 prism とする。任意の prism \((B,J)\) について、可換環の射 \(A/I\to B/J\) は prism の射 \((A,I)\to(B,J)\) にただ一つ持ち上がる。</p>
+<p>示唆的な記法では、\(A\in(R)_\Delta\) は始対象（site にするために反対圏に移るので、むしろ終対象）であり、\((R)_\Delta=(R/A)_\Delta\) となる。</p>
+<p>「双対」は成り立たない：prism \((A,I)\) と完全 prism \((B,J)\) について、同じ \(A/I\to B/J\) を引き起こす射 \((A,I)\to(B,J)\) が複数ありうる。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>標的が<b>有界</b>な向き付き prism の場合：<code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:749</a>）。源は \(\varphi\) が全単射な向き付き prism、射は生成元の保存を要求しない。部品：環の射としての一意な持ち上げ <code>existsUnique_perfectPrismRingHomLift_to_bounded</code>（:712）、一意性 <code>perfectPrismHom_ext_to_bounded_target</code>（:199）と <code>ringHom_ext_to_boundedPrism_of_perfect_source</code>（:165）、その計算の核 <code>ringHom_ext_of_pow_add_natCast_mul</code>（:99）、δ 射であること <code>perfectSource_ringHom_isDeltaHom_to_boundedPrism</code>（:368）と一般の \(p\) 進分離な δ 環への版 <code>perfectSource_ringHom_isDeltaHom</code>（:343）、Frobenius との可換性 <code>perfectSource_ringHom_map_frobenius</code>（:271）、\(W_2\) への二つの射の比較 <code>wittTwoHom_ext_of_perfectSource_approximation</code>（:293）。存在に使う tilt の比較 <code>boundedPrism_preTiltQuotientEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Bounded/Tilt.lean">Tilt:398</a>）、Witt 持ち上げの一意性 <code>wittLift_unique</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/Witt/Lift.lean">Lift:74</a>）、\(W(A/p)\cong A\) の <code>perfectPrismWittRecoveryEquiv</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Perfectoid/PerfectPrismPerfectoid.lean">PerfectPrismPerfectoid:240</a>）。標的も完全な場合は定理 3.4.1 (c) の <code>existsUnique_perfectPrismHomLift</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">PerfectPrismHomLift:522</a>）。「始対象」の言い換えと「双対」が成り立たないことは本体にない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>原典の証明.</b> \(A\) は標数 \(p\) の完全環の Witt 環なので、\(L_{A/\mathbb Z_p}\) は導来 \(p\) 完備化の後に消える。\(B\)・\(B/J\) はどちらも導来 \(p\) 完備なので、変形理論により \(\mathrm{Hom}(A,B)\simeq\mathrm{Hom}(A,B/J)\simeq\mathrm{Hom}(A,B/(J,p))\)。よって \(A\to A/I\to B/J\) は環の射 \(\alpha\colon A\to B\) にただ一つ持ち上がる。（補った）有界な場合、\(B\) は \(J\) 進完備（命題 3.2.3 (1)）なので \(B=\lim_nB/J^n\) とし、平方零拡大 \(B/J^{n+1}\to B/J^n\) ごとに持ち上げの障害と自由度が \(\mathrm{Ext}^i(L_{A/\mathbb Z_p},J^n/J^{n+1})\)（\(i=1,0\)）にあり、\(J^n/J^{n+1}\) は導来 \(p\) 完備なので \(L_{A/\mathbb Z_p}\) の \(p\) 完備化の消滅からこれらが消える。\(B/J\to B/(J,p)\) も \(B/J\) の導来 \(p\) 完備性で同様。同じ論法で \(\alpha\) は Frobenius 持ち上げと両立する：\(\varphi_B\circ\alpha\) と \(\alpha\circ\varphi_A\) はどちらも \(A\to B/p\) の同じ射（\(\alpha\) mod \(p\) の Frobenius 合成）の持ち上げ。構成から \(\alpha(I)\subset J\)。残るのは \(\alpha\) が δ 射であること（\(B\) に \(p\) ねじれがありうるので自動ではない）。\(\varphi_A\) は全単射なので、\(a\mapsto(\alpha(\varphi_A^{-n}(a)))_n\) により \(\alpha\) は \(B^{\mathrm{perf}}:=\lim_\varphi B\to B\) を一意に経由する。\(B^{\mathrm{perf}}\) は完全 δ 環なので \(p\) ねじれなし（命題 2.4.3、原典 Lemma 2.28）で、\(\varphi\) 同変な \(A\to B^{\mathrm{perf}}\) は自動的に δ 射（命題 2.1.3 (2)）。\(B^{\mathrm{perf}}\to B\) は構成から δ 射なので、合成 \(\alpha\) も δ 射。</p>
+<p><b>Lean の証明</b>（標的は有界）。<b>存在</b>：有界 prism では、商写像が tilt の同型 \(B^\flat\cong(B/J)^\flat\) を引き起こす。完全環 \(k=A/p\) からの \(k\to(B/J)/p\) を完全化の普遍性で \(k\to(B/J)^\flat\cong B^\flat\) に延ばし、Witt 関手と Fontaine の \(\theta_B\colon W(B^\flat)\to B\) で \(W(k)\to B\) を作り、\(W(k)\cong A\)（系 2.4.6）と合成する。これが mod \(J\) で与えられた射になることは、両者が \(W(k)\to B/J\) の mod \(p\) で一致することと Witt 持ち上げの一意性から。<b>一意性</b>：\(A\) が完全なので任意の \(a\) は \(b^p+pc\) と書ける。\(F\equiv G\) mod \((p,J)\) なら、\(x\equiv y\) mod \(\mathfrak a\)（\(p\in\mathfrak a\)）から \(x^p\equiv y^p\) mod \(\mathfrak a\cdot(x-y)\) となる幾何和の計算で、帰納的に \(F(a)-G(a)\in(p,J)^n\) が全ての \(n\) で成り立ち、\((p,J)\) 進分離性（命題 3.2.3 (1)）から \(F=G\)。<b>δ 射であること</b>：\(B\) は \(p\) 進分離。\(\varphi_B\circ F\) と \(F\circ\varphi_A\) は mod \(p\) で一致するので、同じ一意性の論法で等しい。二つの \(W_2\) への射 \(w_B\circ F\) と \(W_2(F)\circ w_A\) は第 0 座標と ghost 成分が一致するので、第 1 座標の差は \(p\) 倍で消える加法的な導分で、\(a=b^p+pc\) の形から消える。原典の \(B^{\mathrm{perf}}\) は使わない。零環の商（\(B/J=0\)）は別に扱い、そのとき \(B=0\)。</p>
+<p><b>「始対象」.</b> \((R)_\Delta\) の対象 \((B,J)\) と \(R\to B/J\) に対し、射 \((A,I)\to(B,J)\) で mod の射が与えられたものはただ一つなので、各対象は \(A\) の下に一意に置かれ、\((R)_\Delta\) と \((R/A)_\Delta\) が一致する（\((R/A)_\Delta\) の対象では \(J=IB\) は剛性（命題 3.2.1）から自動）。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D5）</p>
+<p>原典の標的は任意の prism、Lean の標的は有界な向き付き prism（D5）。prismatic site の対象は有界なので site の議論にはこれで足りる。証明は原典の変形理論（\(L_{A/\mathbb Z_p}\) の消滅）と \(B^{\mathrm{perf}}\) ではなく、tilt の比較・Fontaine の \(\theta\)・Witt 持ち上げの一意性と、\(p\) 冪近似による直接の剛性・\(W_2\) の比較による。変形理論と余接複体が要らず、δ 射の判定は \(p\) ねじれのある標的にもそのまま効く。代わりに有界性（\((p,J)\) 進完備性）を全面的に使う。</p>
+</div>
+
+<h2>4.2 HT 比較の定式化</h2>
+<p>この小節では有界 prism \((A,I)\) と、\(A/I\) 上の smooth な p 進形式スキーム \(X\) を固定する。prismatic site の構造層を \(X_{\mathrm{\acute et}}\) へ押し出して \(\Delta_{X/A}\) と \(\overline\Delta_{X/A}\) を作り、Bockstein で \(H^*(\overline\Delta_{X/A})\{*\}\) を dg 代数にして、de Rham 複体からの HT 比較の写像 \(\eta^*_X\) を構成する（4.2.1〜4.2.2）。それが同型であるという HT 比較（4.2.3）の証明は §5（標数 p）と §6（一般）で与えられ、ここではその帰結（4.2.4〜4.2.7）を述べる。</p>
+<p>Lean の本体はこの小節を<b>多項式代数の場合</b>に限って持つ：基底は一般の有界向き付き prism \((A,(d))\)、\(X=\mathrm{Spf}\,R\) で \(R=(A/d)\langle X_1,\dots,X_r\rangle\)（<code>affineAlgebra</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateAffineModel.lean">HodgeTateAffineModel:38</a>））。\(\overline\Delta_{R/A}\) の代わりに Rem 4.19 の小さい Čech–Alexander 模型 <code>cechAlexanderAffine</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeConstruction.lean">AffineEnvelopeConstruction:243</a>）の各項を d で割った余単体的環 <code>reducedModel</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateAffineModel.lean">HodgeTateAffineModel:93</a>）を使い、そのコホモロジーを <code>hodgeTateCohomology'</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZero.lean">HodgeTateZero:39</a>）と書く。HT 比較が全単射であることが証明済みなのは結晶基底 \((\mathbb Z_p,(p))\) の場合。</p>
+
+<h4 class="item">定義 4.2.1（原典 Construction 4.9） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>Construction 4.4 の \(\nu\) を使って
+\[ \Delta_{X/A}:=R\nu_*\mathcal O_\Delta\in D(X_{\mathrm{\acute et}},A),\qquad \overline\Delta_{X/A}:=R\nu_*\overline{\mathcal O}_\Delta\in D(X_{\mathrm{\acute et}},\mathcal O_X) \]
+と置く。これらはそれぞれの導来圏の可換代数対象で、\(\overline\Delta_{X/A}\simeq\Delta_{X/A}\otimes^L_AA/I\) が成り立つ。\(A/I\) 加群 M について \(M\{i\}:=M\otimes_{A/I}I^i/I^{i+1}\) と書くと、三角形
+\[ \overline\Delta_{X/A}\{i+1\}\to\Delta_{X/A}\otimes^L_AI^i/I^{i+2}\to\overline\Delta_{X/A}\{i\} \]
+から Bockstein 微分 \(\beta_I\colon H^i(\overline\Delta_{X/A})\{i\}\to H^{i+1}(\overline\Delta_{X/A})\{i+1\}\) が得られる。i を動かすとこれらは次数付き環 \(H^*(\overline\Delta_{X/A})\{*\}\) を dg \(A/I\) 代数にし、その 0 次の項は \(\mathcal O_X\) 代数である。構造写像を \(\eta^0_X\colon\mathcal O_X\to H^0(\overline\Delta_{X/A})\) と書く。Kähler 微分の普遍性から、局所切断 \(f\,dg\) を \(f\beta_I(g)\) へ送る \(\mathcal O_X\) 加群の写像 \(\eta^1_X\colon\Omega^1_{X/(A/I)}\to H^1(\overline\Delta_{X/A})\{1\}\) が得られる。dg 代数 \(H^*(\overline\Delta_{X/A})\{*\}\) は（topos の可換環対象のコホモロジーの一般論で）次数付き可換であり、さらに命題 4.2.2（Lemma 4.10）が成り立つので、de Rham 複体の普遍性により、微分と両立する次数付き \(\mathcal O_X\) 加群の写像 \(\eta^0_X\oplus\eta^1_X\colon\mathcal O_X\oplus\Omega^1_{X/(A/I)}\to H^0(\overline\Delta_{X/A})\oplus H^1(\overline\Delta_{X/A})\{1\}\) は、各項の \(\mathcal O_X\) 加群の構造と両立する可換 dg 代数の写像
+\[ \eta^*_X\colon\Omega^*_{X/(A/I)}\to H^*(\overline\Delta_{X/A})\{*\} \]
+に延びる。prism が distinguished な元 \(d\in I\) で向き付けられていれば \(d^i\) で \(A/I\simeq I^i/I^{i+1}\) なので捻り \(\{i\}\) は外せる（d = p のときは通常そうする）。</p>
+<p>後のための注意：\(\eta^*_X\) の構成は、可換代数対象 \(\Delta_{X/A}\in D(X_{\mathrm{\acute et}},A)\) と \(\Delta_{X/A}\otimes^L_AA/I\) の \(\mathcal O_X\) 代数の構造の組について関手的である。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>多項式代数 \(R=(A/d)\langle X_1,\dots,X_r\rangle\) の場合だけ本体にある（\(\overline\Delta\) は上の模型、向きで捻りを外す）。</p>
 <ul>
-  <li>\(\eta^0\) は <code>hodgeTateMapZero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZero.lean">HodgeTateZero.lean:70</a>）、\(\eta^1\) は <code>hodgeTateMapOne</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneDerivative.lean">HodgeTateOneDerivative.lean:215</a>）。後者はまず完備一次形式の基底 \(dX_j\) 上で <code>htOneOnGenerators</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneGenerators.lean">HodgeTateOneGenerators.lean:64</a>）として定め、一般の \(f\,dg\mapsto f\beta(g)\) の公式は、コホモロジー加群が導来 p 完備であることを使って完備化単位上の等式から延ばす。</li>
-  <li>高次への延長は、未完備の多項式 de Rham 代数の普遍性 <code>SerrePositivity.DeRham.exists_unique_dgHom</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/DeRham/UniversalProperty.lean">UniversalProperty.lean:449</a>：次数 0 の環準同型と次数 1 の加法的写像が、線形性・\(\eta^1(df)=d\eta^0(f)\)・\(\eta^1(\omega)^2=0\) を満たせば、外積と微分を保つ写像に一意に延びる）を当て、係数の完備化への底変換で完備形式に移す。結果が <code>hodgeTateMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:398</a>）で、型 <code>HTAlgebraMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:388</a>）は各次数の線形写像と、\(\eta^0\)・\(\eta^1\) との一致、外積と cup 積の両立、de Rham 微分と Bockstein の両立の組。一意性 <code>hodgeTateMap_unique</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:408</a>）。Bockstein を微分とする A/d 上の次数付き dg 代数は <code>htGradedDGAlgebra</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateGradedDGAlgebra.lean">HodgeTateGradedDGAlgebra.lean:120</a>）。</li>
-  <li>Lemma 4.10 は <code>bockstein_sq_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateBocksteinSquare.lean">HodgeTateBocksteinSquare.lean:65</a>）。p = 2 では一次余輪体 b の cup 平方が \(\delta(b)\) の余境界になること（<code>delta_cochainDifferential_eq_cup_sq</code>・<code>cupBockstein_cup_sq_two</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/BocksteinCupSquare.lean">BocksteinCupSquare.lean:67・99</a>）、奇素数では cup 積の次数付き可換性 <code>SerrePositivity.Cosimplicial.cohomologyCup_comm</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/CupCommutativity.lean">CupCommutativity.lean:846</a>）と 2 が単元であることから。一次形式の像の平方零は <code>hodgeTateMapOne_square_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneSquare.lean">HodgeTateOneSquare.lean:89</a>）。</li>
+  <li><b>Bockstein の一般論</b>：余単体的環 \(C^\bullet\) と各項で正則な d の短完全列 \(0\to C/d\to C/d^2\to C/d\to0\)（係数は共通の基底環 k に固定した余単体的 k 加群として取る）が <code>regularShortExact</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/PrincipalShortExact.lean">PrincipalShortExact:161</a>）、その連結写像が <code>regularBockstein</code>（:176）、平方零が <code>bockstein_sq</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/BocksteinClass.lean">BocksteinClass:202</a>）。加法的コホモロジーへ移したものが <code>cupBockstein</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/Bockstein.lean">Bockstein:69</a>）とその平方零 <code>cupBockstein_sq</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/BocksteinClass.lean">BocksteinClass:186</a>）。模型の上の \(\beta\) は <code>bockstein</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZero.lean">HodgeTateZero:42</a>）。</li>
+  <li><b>dg 代数</b>：環構造は交代余面複体の cup 積（D27）。次数付き可換性は <code>SerrePositivity.Cosimplicial.cohomologyCup_comm</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/CupCommutativity.lean">CupCommutativity:846</a>）。Bockstein を微分とする次数付き dg 代数は <code>htGradedDGAlgebra</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateGradedDGAlgebra.lean">HodgeTateGradedDGAlgebra:120</a>）。</li>
+  <li><b>\(\eta^0\) と \(\eta^1\)</b>：\(\eta^0\) は環準同型 <code>hodgeTateMapZero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZero.lean">HodgeTateZero:70</a>）。\(g\mapsto\beta(\eta^0g)\) は <code>htBocksteinZero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateZeroLeibniz.lean">HodgeTateZeroLeibniz:71</a>）で、Leibniz 則 <code>htBocksteinZero_mul</code>（:84）と、基底の剰余 \(A/d\) の定数で零になること <code>htBocksteinZero_algebraMap</code>（:104）を持つ。\(\eta^1\) は完備一次形式の基底 \(dX_j\) を \(\beta(X_j)\) へ送る <code>htOneOnGenerators</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneGenerators.lean">HodgeTateOneGenerators:64</a>）として定め、<code>hodgeTateMapOne</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneDerivative.lean">HodgeTateOneDerivative:215</a>）と呼ぶ。原典の公式 \(f\,dg\mapsto f\beta(g)\) は <code>hodgeTateMapOne_smul_d</code>（:219）。微分形式は p 完備多項式代数について \(dX_j\) 上の自由加群として直接定義したもの <code>affineForms</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateAffineForms.lean">HodgeTateAffineForms:45</a>、D26）。</li>
+  <li><b>\(\eta^*\) への延長</b>：未完備の多項式 de Rham 代数の普遍性 <code>SerrePositivity.DeRham.exists_unique_dgHom</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/DeRham/UniversalProperty.lean">UniversalProperty:449</a>：次数 0 の環準同型と次数 1 の加法的写像が、線形性・\(\eta^1(df)=d\eta^0(f)\)・\(\eta^1(\omega)^2=0\) を満たせば、外積と微分を保つ写像に一意に延びる）を当て、係数の完備化への底変換で完備形式に移す。平方零の入力は <code>hodgeTateMapOne_square_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateOneSquare.lean">HodgeTateOneSquare:89</a>）。結果が <code>hodgeTateMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap:398</a>）で、その型 <code>HTAlgebraMap</code>（:388）は各次数の線形写像と、\(\eta^0\)・\(\eta^1\) との一致、外積と cup 積の両立、de Rham 微分と Bockstein の両立の組。一意性は <code>hodgeTateMap_unique</code>（:408）。</li>
+  <li>\(\Delta_{X/A}=R\nu_*\mathcal O_\Delta\) と \(\overline\Delta_{X/A}\simeq\Delta_{X/A}\otimes^L_AA/I\)、一般の X、および最後の関手性の注意は本体にない（模型と \(R\Gamma\) の比較は §4.3 の Construction 4.18）。</li>
 </ul>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>原典は構成の各段の確認を省いている。要点を補う（補った）。</p>
+<p>(a) \(\overline\Delta_{X/A}\simeq\Delta_{X/A}\otimes^L_AA/I\)：I は可逆な A 加群なので \(A/I=\mathrm{cone}(I\to A)\) は完全 A 加群で、\(\otimes^L_AA/I\) は \(R\nu_*\) と交換する。各対象 \((B,IB)\) で IB は局所的に B の非零因子で生成されるので（Lemma 3.1）、\(\mathcal O_\Delta\otimes^L_AA/I\simeq\overline{\mathcal O}_\Delta\)。</p>
+<p>(b) 三角形：A 加群の完全列 \(0\to I^{i+1}/I^{i+2}\to I^i/I^{i+2}\to I^i/I^{i+1}\to0\) に \(\Delta_{X/A}\otimes^L_A-\) を施し、\(I^j/I^{j+1}\) が可逆 \(A/I\) 加群であることから \(\Delta_{X/A}\otimes^L_AI^j/I^{j+1}\simeq\overline\Delta_{X/A}\{j\}\)。\(\beta_I\) はこの三角形の連結写像。</p>
+<p>(c) dg 代数：\(\beta_I\circ\beta_I=0\) は、二つの連結写像の合成が \(\Delta\otimes^LI^i/I^{i+3}\) のフィルトレーションの三角形から零になること。Leibniz 則は可換代数対象の平方零拡大 \(\Delta\otimes^LA/I^2\to\overline\Delta\) に付随する Bockstein の一般的性質（模型では、正則な持ち上げで余鎖を計算すればよい）。</p>
+<p>(d) \(\eta^1\)：\(g\mapsto\beta_I(\eta^0g)\) は Leibniz 則から \(\mathcal O_X\) から \(H^1\{1\}\) への導分で、\(A/I\) の定数は \(A/I^2\) へ持ち上がるので零になる。よって \(A/I\) 上の導分で、Kähler 微分の普遍性（p 進完備な意味。値の \(H^1\) は導来 p 完備）から \(\eta^1\) が出る。</p>
+<p>(e) \(\eta^*\) への延長：\(\Omega^*_{X/(A/I)}\) は「\(\mathcal O_X\) 代数の写像 \(\eta^0\) と、\(\eta^1(dg)=\beta\eta^0(g)\) を満たす \(\eta^1\) が与えられ、\(\eta^1\) の像の平方が零」という条件のもとで可換 dg 代数への写像が一意に延びる対象である。次数付き可換性だけからは \(x^2=-x^2\)、つまり \(2x^2=0\) しか出ないので、平方零を命題 4.2.2 で補う。一次形式は局所的に \(\sum f_j\,dg_j\) と書け、交差項は次数付き可換性で消えるので、\(\beta(g)^2=0\) から \(\eta^1(\omega)^2=0\) が出る。</p>
+<p>(f) 捻りの除去：\(d^i\) が \(I^i/I^{i+1}\) の生成元なので \(M\{i\}\cong M\)。</p>
+</div>
 <div class="box">
-<p class="label">原典との差：Lemma 4.10 の証明</p>
+<p class="label">原典との差（D26・D27）</p>
+<p>D26：原典の \(\Omega^1_{X/(A/I)}\) は p 進形式スキームの（連続な）Kähler 微分。本体は p 完備多項式代数について \(dX_j\) 上の自由加群として直接定義する。D27：原典の \(H^*(\overline\Delta_{X/A})\) の環構造は topos の可換環対象のコホモロジーの環。本体は Čech–Alexander 模型の cup 積と Bockstein で与え、CAlg 値の \(\Delta\) との一致は別の一般論に置く（D27 の評価は<a href="06-hodge-tate-mixed.html">第 6 章</a>の定理 6.1.3 の下）。また本体は \(\eta^*\) の存在を、Kähler 微分の普遍性ではなく未完備の多項式 de Rham 代数の普遍性と完備化への底変換で示す。</p>
+</div>
+
+<h4 class="item">命題 4.2.2（原典 Lemma 4.10） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>任意の局所切断 \(f\in\mathcal O_X(U)\) について、f の \(H^0(\overline\Delta_{X/A})(U)\) での像の微分 \(\beta_I(f)\in H^1(\overline\Delta_{X/A})\{1\}(U)\) は平方が零である。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>多項式代数の場合：述語 <code>BetaSquareZero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateBocksteinSquare.lean">HodgeTateBocksteinSquare:60</a>、\(\beta(\eta^0f)\) の cup 平方が零）と <code>bockstein_sq_zero</code>（:65）。p = 2 の場合の一般論は <code>delta_cochainDifferential_eq_cup_sq</code>・<code>cupBockstein_cup_sq_two</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BocksteinCupSquare.lean">BocksteinCupSquare:67・99</a>）、奇素数では <code>SerrePositivity.Cosimplicial.cohomologyCup_comm</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/CupCommutativity.lean">CupCommutativity:846</a>）。原典どおり Prop 6.2 から導く形 <code>bockstein_sq_zero'</code> は drafts（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:358</a>）。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>原典</b>：p が奇数なら自明（次数付き可換性で \(2\beta(f)^2=0\)、2 は p 完備な環で単元）。p = 2 でだけ非自明で、Prop 6.2 から出るとして証明は後回しにする。Prop 6.2 からの導き方は（補った）：f は局所的に \(X\mapsto f\) で定まる射 \(U\to\widehat{\mathbb A}^1_{A/I}\) から来るので、関手性（Bockstein と cup 積の自然性）により \(\beta(f)^2\) は \(\beta(X)^2\in H^2(\overline\Delta_{\mathbb A^1/A})\{2\}\) の引き戻し。Prop 6.2 で \(H^2(\overline\Delta_{\mathbb A^1/A})\cong\Omega^2_{\mathbb A^1}=0\)。</p>
+<p><b>本体の証明</b>（HT 比較を使わない）：模型の上で直接示す。p = 2 のとき、f の持ち上げ \(x\in C^0\) をとると \(\partial x=d\,y\) となる \(y\in C^1\) があり、d が正則なので y は整係数の 1 余輪体で、\(\beta(f)\) は y の類。1 余輪体 y について、余面 \(a=\delta^0y,\ b=\delta^1y,\ c=\delta^2y\) は \(b=a+c\) を満たし、p = 2 の δ 環で \(\delta(a+c)=\delta(a)+\delta(c)-ac\) だから \(\partial(\delta y)=\delta(a)-\delta(b)+\delta(c)=ac=y\cup y\)。よって \(y\cup y\) は余境界で、d で割っても零。p が奇数のときは \(x\cup x=-x\cup x\) と、2 が p 完備な \(R\) で単元であることから。</p>
+</div>
+<div class="box">
+<p class="label">原典との差</p>
 <p>原典は Lemma 4.10 を Prop 6.2（affine 直線の HT 比較）から導く。本体は Čech–Alexander 模型の上で直接示す（p = 2 は \(\delta\) による余境界、奇素数は次数付き可換性）。HT 比較を先に要しないので、\(\eta^*\) の構成が §6 の帰着に依存しない。主張は多項式代数の場合に限る。</p>
 </div>
-<p><b>Thm 4.11</b>（HT 比較）. \(\eta^*\) は dg 代数の同型。特に \(H^i(\overline\Delta_{X/A})\cong\Omega^i\{-i\}\)。証明は第 5 章（§5・§6）。Lean の主張の型は <code>HodgeTateIsoStatement</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:461</a>）：上の <code>hodgeTateMap</code> が全次数で全単射であること。原典の「dg 代数の同型」は、写像が dg 代数の射であること（<code>HTAlgebraMap</code> の組）と各次数の全単射性に分けて述べている。結晶基底 \((\mathbb Z_p,(p))\) では <code>hodgeTate_iso_polynomial_Zp</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCartierAssembly.lean">HodgeTateCartierAssembly.lean:212</a>、第 5 章 Cor 5.5）として証明済み。一般の有界向き付き基底の <code>hodgeTate_iso</code> は drafts（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison.lean:350</a>）。<b>Cor 4.12</b>：\(\Delta_{X/A}\) の形成は有界 prism の任意の底変換と可換（導来 Nakayama で mod I に帰着し、微分形式の底変換から）。</p>
 
-<div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Constr 4.9、Lemma 4.10</td><td>HT 比較の写像、\(\beta_I(f)^2=0\)</td><td class="part">特別な場合</td><td>多項式代数の場合。<code>hodgeTateMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:398</a>）、<code>hodgeTateMap_unique</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:408</a>）、<code>bockstein_sq_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateBocksteinSquare.lean">HodgeTateBocksteinSquare.lean:65</a>）。BS-D68 停止点 3</td></tr>
-<tr><td>Thm 4.11</td><td>HT 比較</td><td class="part">部品</td><td>主張の型 <code>HodgeTateIsoStatement</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap.lean:461</a>）と結晶基底の場合 <code>hodgeTate_iso_polynomial_Zp</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCartierAssembly.lean">HodgeTateCartierAssembly.lean:212</a>）は本体。一般の基底 <code>hodgeTate_iso</code> は drafts（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">HodgeTateComparison.lean:350</a>）。証明は第 5 章</td></tr>
-<tr><td>Cor 4.12</td><td>底変換</td><td class="todo">drafts</td><td>多項式代数の場合 <code>prismaticCohomology_baseChange'</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison.lean:365</a>）、主張の型 <code>PrismaticCohomologyBaseChangeStatement</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean">drafts/A1/HodgeTateMap.lean:87</a>）。Construction 7.6 の底変換の性質に使う</td></tr>
-</table></div>
-
-<h2>3. Čech–Alexander 複体（§4.3）— A0 の中心</h2>
-<p><b>Construction 4.17</b>（弱始対象）. \(B_0\to R\) を A 上の p 完備多項式代数からの全射、\(B=\mathrm{Free}_{\delta,A}(B_0)^\wedge\)（自由 δ-A 代数の完備化）、\(J_0=\ker(B_0\to R)\)。\((B,\ker(B\to(B/J_0B)^\wedge))\) に Prop 3.13 を当てた envelope \(C=B\{J_0B/I\}^\wedge\) が \((R/A)_\Delta\) の弱始対象。<b>証明</b>：任意の対象 D について、\(B_0\to D\) を R→D/ID の持ち上げとして選び（多項式なので選べる）、δ 構造で \(B\to D\) に一意に延ばし、envelope の普遍性で \(C\to D\)。構成は \(B_0\) のテンソル積を \((R/A)_\Delta\) の余積に送る。</p>
-<p><b>Construction 4.18</b>（Čech–Alexander 複体）. \(A\to B_0\) の（完備化した）Čech 脈体 \(B_0^\bullet\) に 4.17 を当てると、\(C^0\) の Čech 脈体 \(C^\bullet\) ができ、\(C^\bullet\) が \(\Delta_{R/A}\)、\(C^\bullet/IC^\bullet\) が \(\overline\Delta_{R/A}\) を計算する（弱始対象の Čech 脈体と層の高次コホモロジーの消滅、脚注 10）。<b>Rem 4.19</b>：\(R=A/I\langle X\rangle\) なら \(B_0=A\langle X\rangle\) と取れ、\(C^\bullet\) は prism の底変換と可換。</p>
-<p><b>Lemma 4.20</b>（底変換）. \(A\to A'\) が有限 \((p,I)\) 完全 Tor 振幅なら \(\Delta_{R/A}\widehat\otimes^L_AA'\cong\Delta_{R'/A'}\)（Čech–Alexander 複体の項ごとの底変換と Lemma 4.22）。<b>Lemma 4.22</b>：有限 J 完全 Tor 振幅の写像に沿う J 完備底変換は、\(D^{\ge0}\) の totalization と可換（n 骨格で示し、Koszul 複体で振幅を評価して極限を取る）。<b>Lemma 4.21</b>（étale 局所化）は多項式代数で済ませるなら不要。</p>
-<p><b>Lean での Construction 4.17・4.18（BS-W17 H3）.</b> 原典の strictly functorial な選び方に合わせ、\(B_0\) は R の台集合上の多項式環で、n 次の項の変数の添字は \(R\times\{0,\dots,n\}\)（<code>cechIndex</code>、<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderEnvelopeData.lean">CechAlexanderEnvelopeData.lean:32</a>）。\(J\) は原典どおり \(B\to\) 一変数導来 p 完備化 \((B/J_0B)\) の \(H^0\) の核。各次数で envelope が有界で cutoff に収まって存在することを仮定 <code>HasEnvelopes</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderEnvelopeData.lean">CechAlexanderEnvelopeData.lean:90</a>）にまとめ、その下で</p>
-<ul>
-  <li>site の余単体的対象 <code>cechAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderAssembly.lean">CechAlexanderAssembly.lean:66</a>、各項 <code>cechAlexanderObj</code>、同 :61）、弱始性 <code>cechAlexanderObj_weaklyInitial</code>（:72）、頂点の包含 [0]→[n] を脚とする標準余積 <code>cechAlexander_isCoproduct</code>（:79）、Čech データ <code>cechAlexanderNerve</code>（:89）を作る。</li>
-  <li>本質的小ささを仮定した小さい site への移送と、反対圏での弱終性は <code>cechSmall_weaklyTerminal</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderSmall.lean">CechAlexanderSmall.lean:56</a>）。</li>
-  <li>A 加群の交代余面複体 <code>cechAlexanderComplex</code> と各項を d で割った複体 <code>cechAlexanderReducedComplex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderComplex.lean">CechAlexanderComplex.lean:53・60</a>）。</li>
-</ul>
-<p><code>HasEnvelopes</code> を実際に満たすのは有限変数の完備多項式 \(R=(A/d)\langle X_1,\dots,X_r\rangle\) の場合で、<code>hasEnvelopes_of_finitePolynomial</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechSiteAffine.lean">BigCechSiteAffine.lean:43</a>）。一般の R での envelope の存在は主張しない（D21）。</p>
-<p><b>大きい枠（BS-D69 P2）.</b> Thm 6.4 で厳密な関手性が要るため、完備多項式環 \(Q\) の全元を各頂点の変数に取る模型 <code>bigCechAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">BigCechAffineEnvelope.lean:420</a>）を置く。添字は <code>BigCechIndex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAlexander.lean">BigCechAlexander.lean:40</a>）、変数の評価は <code>bigCechEval</code>（同 :45）、各項は有界な envelope <code>affineBigCechTerm</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">BigCechAffineEnvelope.lean:404</a>、有界性 :411）。多項式代入を完備化して添字に作用させるので、\(C=A/d\) 上の多項式代数の圏 Poly(C) から余単体的 A 代数への関手になる（基底は有界向き付き prism）。<code>HasEnvelopes</code> で選んだ模型との site 上の自然同型は <code>cechAlexanderBigSiteIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderBigComparison.lean">CechAlexanderBigComparison.lean:62</a>）、Rem 4.19 の有限 affine 枠から選んだ模型の複体への比較が擬同型であることは <code>affineToChosenCech_quasiIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechChosenComparison.lean">AffineCechChosenComparison.lean:72</a>）。これで複体は模型の選び方によらない。</p>
-<p><b>Rem 4.19 の小さい模型（site 側は BS-W17 H4）.</b> \(B_0=A\langle X_1,\dots,X_r\rangle\) の Čech 脈体の envelope を並べた <code>cechAlexanderAffine</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeConstruction.lean">AffineEnvelopeConstruction.lean:243</a>）。標準余積 <code>cechAlexanderAffine_isCoproduct</code>・弱始性 <code>cechAlexanderAffine_weaklyInitial</code>・Čech データ <code>affineCechNerveData</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">AffineCechSiteNerve.lean:33・40・47</a>）。prism の射 \(f:(A,(d))\to(A',(d'))\) との両立は <code>cechAlexanderAffine_baseChange</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechPrismBaseChange.lean">AffineCechPrismBaseChange.lean:49</a>）：各項の完備テンソル積 \(C^n\widehat\otimes_AA'\) に δ 構造と prism を与え、\(A'\) 上の模型の項と両脚・δ 構造・イデアルの像・座標を保つ同型で結ぶ。全単体射に自然な係数変更の余鎖写像は <code>affineCechCoefficientCochainMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechCoefficientComplex.lean">AffineCechCoefficientComplex.lean:46</a>）。これは項ごとの同型で、Tot・\(\Delta\) の底変換の同型（Lemma 4.20）ではない。</p>
-<p><b>Δ を計算すること.</b> \(\Delta_{R/A}\) の定義 <code>prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite.lean:179</a>）と、Rem 4.19 の模型の Tot がそれを計算するという <code>cechAlexanderAffine_computes</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander.lean:277</a>）は drafts。Lemma 4.20 の多項式代数の場合 <code>prismaticCohomology_baseChange</code>・<code>hodgeTateCohomology_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:103・128</a>）と、Lemma 4.22 の一般形 <code>completedBaseChange_tot_comm</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:73</a>）も drafts。Lemma 4.22 の仮定の有限完全 Tor 振幅は、本体では鎖複体の模型の上の <code>HasCochainCompleteTorAmplitude</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean">CochainCompleteTorAmplitude.lean:37</a>）として定義があり、Construction 6.1 の α について上界 3 が示されている（第 5 章）。</p>
+<h4 class="item">定理 4.2.3（原典 Thm 4.11） <span class="vtag v-part">一部 Lean で確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>（Hodge–Tate 比較）上で構成した写像 \(\eta^*_X\colon\Omega^*_{X/(A/I)}\to H^*(\overline\Delta_{X/A})\{*\}\) は dg \(A/I\) 代数の同型である。特に \(\overline\Delta_{X/A}\in D(X_{\mathrm{\acute et}},\mathcal O_X)\) は完全複体で、\(H^i(\overline\Delta_{X/A})\cong\Omega^i_{X/(A/I)}\{-i\}\)。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>主張の型は多項式代数の場合の <code>HodgeTateIsoStatement</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">HodgeTateCompletedMap:461</a>）：<code>hodgeTateMap</code> が全次数で全単射であること。原典の「dg 代数の同型」は、写像が dg 代数の射であること（<code>HTAlgebraMap</code> の組）と各次数の全単射性に分けて述べている。\(\overline\Delta\) が完全複体であることは主張していない。</p>
+<p><b>本体で証明済みの場合</b>：結晶基底 \((\mathbb Z_p,(p))\)（<code>crystallineBasePrism</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CrystallineBase.lean">CrystallineBase:83</a>）、有界性 <code>crystallineBaseBounded</code>（:98））で、\(A/I=\mathbb F_p\)、\(R=\mathbb F_p[X_1,\dots,X_r]\)。<code>hodgeTate_of_deRham_cartier</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCartierAssembly.lean">HodgeTateCartierAssembly:180</a>）と、原典 Cor 5.5 の名で呼ぶ <code>hodgeTate_iso_polynomial_Zp</code>（:212）。証明は、模型のコホモロジーから多項式 de Rham コホモロジーへの加法同型 <code>crystallineChain</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CrystallineChain.lean">CrystallineChain:39</a>）、inverse Cartier 同型 <code>finitePolynomialCartier</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FinitePolynomialCartier.lean">FinitePolynomialCartier:46</a>）、完備形式と通常の形式の同一視 <code>cartierFormsIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CartierCompletedForms.lean">CartierCompletedForms:76</a>）を合成したものが \(\eta^*\) に一致することを、cup 積との両立 <code>crystallineChain_cup</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CrystallineChainProduct.lean">CrystallineChainProduct:54</a>）と生成元 \(X_j\)・\(dX_j\) での一致 <code>crystallineChain_generators</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CrystallineGeneratorClasses.lean">CrystallineGeneratorClasses:83</a>）から示す（詳細は<a href="05-hodge-tate.html">第 5 章</a>）。</p>
+<p>一般の有界向き付き基底の多項式代数の場合 <code>hodgeTate_iso</code> は drafts（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:350</a>）。一般の X は本体にない。</p>
+</div>
+<div class="box proof">
+<p class="label">証明</p>
+<p>原典はここでは証明せず、§5 で標数 p の場合（\(p\in I\)、結晶比較 Thm 5.2 と Cartier 同型から Cor 5.5）、§6 で一般の場合（Construction 6.1 の図式で \(\mathbb F_p[X]/\mathbb Z_p\) に帰着する Prop 6.2、étale 局所化で多項式代数に帰着する Thm 6.3）を示す。<a href="05-hodge-tate.html">第 5 章</a>（標数 p）と<a href="06-hodge-tate-mixed.html">第 6 章</a>（一般の場合）を見よ。</p>
+</div>
 <div class="box">
-<p class="label">A0 の設計で決めること（読んで分かったこと）</p>
-<ul>
-  <li><b>向き付きで足りるか</b>：Construction 4.17 の対象 C・D は、固定した向き付き基底 \((A,(d))\) 上では剛性（Lemma 3.5）により \(IC=dC\) で単項。向き付き prism のまま進められる。</li>
-  <li><b>離散版で足りるか</b>：多項式代数の \(J_0\) は正則列で生成されるので、Prop 3.13 の envelope は離散で平坦（Cor 2.44 の離散版、T2-3）。Čech 脈体の各項も同じ形なので、単体的環は要らない。本体の Čech–Alexander 模型は、各項が通常の（離散な）有界 prism の余単体的対象（<code>cechAlexanderAffine</code>）や余単体的 A 代数（<code>bigCechAlexander</code>）。</li>
-  <li><b>要る部品</b>：自由 δ-A 代数の完備化（既存の相対自由 δ 環 + Lemma 2.17）、δ 環の完備テンソル積（T2-0、Čech 脈体と余積）、Prop 3.13（定義は普遍性、存在は Ex 3.14 の場合の定理。T3-4）、Lemma 4.22（導来完備化と Koszul 複体の一般論、共通基盤の DerivedCompletion にある部品を確認）、弱終対象の Čech 脈体が圏上の極限を計算するという一般論（∞ 層の設計書 S3。∞ 圏側の極限として述べる）。</li>
-  <li><b>\(\Delta_{R/A}\) の定義（2026-11-02）</b>：Not 4.16 どおり \(R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\)。∞ 層の設計書の <code>derivedGlobalSections</code>（層化してから site 上の極限）で、値は D(A)。Čech–Alexander 複体がこれを計算することは、Cor 3.12（\(\mathcal O_\Delta\) は層なので層化で変わらない）と脚注 10 から出る定理。乗法構造（Construction 7.6 の可換代数対象）は A2・A4 で CAlg 値の同じ構成を作って結ぶ（D18）。</li>
-  <li><b>affine 直線の模型</b>：\(R=A/d\langle X\rangle\)、\(B_0=A\langle X\rangle\)（Rem 4.19）。\(C^n\) は \(A\langle X_0,\dots,X_n\rangle\) の δ 完備化に \((X_i-X_j)/d\) を添加した envelope で、具体的に書ける。</li>
-</ul>
+<p class="label">原典との差（D27・D29）</p>
+<p>D27：\(H^*(\overline\Delta)\) とその環構造は Čech–Alexander 模型の上で述べる。D29：原典は Prop 6.2（r = 1）から Lemma 4.21 で一般へ進むが、本体の主張は最初から一般の r の多項式代数で、定理の範囲を多項式代数に絞る。</p>
 </div>
 
-<div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>状況</th><th>Lean（宣言 · ファイル:行）／未形式化なら扱う単位</th></tr>
-<tr><td>Not 4.16</td><td>\(\Delta_{R/A}=R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\)、\(\overline\Delta=\Delta\otimes^L_AA/I\)</td><td class="todo">drafts</td><td>A0。<code>prismaticCohomology</code>・<code>hodgeTateCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite.lean:179・190</a>）。∞ 層の設計書の RΓ（S2）で定義。D16・D17</td></tr>
-<tr><td>Constr 4.17</td><td>弱始対象（多項式代数の envelope）</td><td class="part">特別な場合</td><td><code>HasEnvelopes</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderEnvelopeData.lean">CechAlexanderEnvelopeData.lean:90</a>）の下の組み立て <code>cechAlexander</code>・<code>cechAlexanderObj_weaklyInitial</code>・<code>cechAlexander_isCoproduct</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderAssembly.lean">CechAlexanderAssembly.lean:66・72・79</a>）、小さい site の弱終性 <code>cechSmall_weaklyTerminal</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderSmall.lean">CechAlexanderSmall.lean:56</a>）。存在の供給は有限変数の完備多項式 <code>hasEnvelopes_of_finitePolynomial</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechSiteAffine.lean">BigCechSiteAffine.lean:43</a>、D21）。BS-W17 H3</td></tr>
-<tr><td>Constr 4.18</td><td>Čech–Alexander 複体が \(\Delta_{R/A}\) を計算する</td><td class="part">部品</td><td>複体 <code>cechAlexanderComplex</code>・<code>cechAlexanderReducedComplex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderComplex.lean">CechAlexanderComplex.lean:53・60</a>）、大きい枠 <code>bigCechAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">BigCechAffineEnvelope.lean:420</a>、BS-D69 P2）、選んだ模型との比較 <code>cechAlexanderBigSiteIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderBigComparison.lean">CechAlexanderBigComparison.lean:62</a>）・<code>affineToChosenCech_quasiIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechChosenComparison.lean">AffineCechChosenComparison.lean:72</a>）。「Δ を計算する」は drafts の <code>cechAlexanderAffine_computes</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander.lean:277</a>、脚注 10・Cor 3.12 から）</td></tr>
-<tr><td>Rem 4.19</td><td>affine 直線の底変換と両立する複体</td><td class="part">部品</td><td><code>cechAlexanderAffine</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeConstruction.lean">AffineEnvelopeConstruction.lean:243</a>）、<code>cechAlexanderAffine_isCoproduct</code>・<code>cechAlexanderAffine_weaklyInitial</code>・<code>affineCechNerveData</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">AffineCechSiteNerve.lean:33・40・47</a>）、項ごとの底変換 <code>cechAlexanderAffine_baseChange</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechPrismBaseChange.lean">AffineCechPrismBaseChange.lean:49</a>）。BS-W17 H4。Tot の底変換は Lemma 4.20（drafts）</td></tr>
-<tr><td>Lemma 4.20</td><td>底変換</td><td class="todo">drafts</td><td>多項式代数の場合 <code>prismaticCohomology_baseChange</code>・<code>hodgeTateCohomology_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:103・128</a>）。Construction 6.1(3) の α に沿う場合 <code>crystallineCoverMap_prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison.lean:247</a>）</td></tr>
-<tr><td>Lemma 4.22</td><td>有限 Tor 振幅の完備底変換と totalization</td><td class="todo">drafts</td><td>一般形 <code>completedBaseChange_tot_comm</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:73</a>）。A0・A5 で使う。振幅の鎖複体版の定義 <code>HasCochainCompleteTorAmplitude</code> は本体（<a href="../../../SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean">CochainCompleteTorAmplitude.lean:37</a>）</td></tr>
-</table></div><h2 id="items-04">原典の項目一覧（§4）</h2>
-<!-- items:begin（build_items.py が research/bs-coverage/items.csv から生成。手で直さない） -->
-<p>§4 の全項目。全 22 項目、うち目標に要るもの 14（特別な場合 5、部品 3、drafts 6）。判定：<b>必要性</b>は今の目標（E3 を原典の経路 A0〜A9 で消す）に要るか（<b>一部必要</b>＝項目の一部だけ要る）。<b>状況</b>は <b>済</b>＝本体に原典どおり（sorry なし）、<b>特別な場合</b>＝本体に特別な場合だけ、<b>部品</b>＝証明の主な部品は本体で主張の組み立ては未、<b>drafts</b>＝drafts に型だけ、<b>界面</b>＝E3 の欄として今は引用、<b>設計のみ</b>＝設計書だけ、<b>なし</b>＝どこにもない。Lean の所在は <code>SerrePositivity/BhattScholze/</code> からのパスと行（drafts は <code>formalization-plans/bhatt-scholze/drafts/</code> から）。</p>
-<div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>必要性</th><th>状況</th><th>Lean・備考</th></tr>
-<tr><td>Def 4.1</td><td>prismatic site</td><td>必要</td><td class="part">特別な場合</td><td><code>PrismOver</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">Prismatic/PrismOver:68</a>）、<code>flatTopology</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatSiteSheaf.lean">Prismatic/FlatSiteSheaf:50</a>）、<code>isSheaf_of_flatRingCechExact</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/FlatCechSheaf.lean">Prismatic/FlatCechSheaf:49</a>）。affine・向き付き・濃度 ≤ κ の site と平坦位相、構造層が層であること（BS-W15 K4）。RΓ_Δ（Čech–Alexander による計算）は G10 待ち</td></tr>
-<tr><td>Rem 4.2</td><td>smooth の仮定についての注意</td><td class="no">不要</td><td class="no">—</td><td>smooth の仮定についての注意。E3 に不要</td></tr>
-<tr><td>Rem 4.3</td><td>prismatic topos の slice 表示と関手性</td><td class="no">不要</td><td class="no">—</td><td>prismatic topos の slice 表示と関手性。不要</td></tr>
-<tr><td>Constr 4.4</td><td>prismatic 層と étale 層</td><td class="no">不要</td><td class="no">—</td><td>étale 層との関係（ν_*）。affine の多項式代数に限るので不要</td></tr>
-<tr><td>Rem 4.5</td><td>位相の取り替え</td><td>一部必要</td><td class="todo">drafts</td><td><code>derivedGlobalSections_of_le</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/Sheaves/GlobalSections.lean">drafts/Sheaves/GlobalSections:205</a>）。原典の比較（Zariski・Nisnevich・étale 位相）そのものは不要。裏の一般論「位相を粗くしても層の RΓ は変わらない」（drafts/Sheaves/GlobalSections の derivedGlobalSections_of_le）だけを S2 で使い、A5 の Prop 8.5 が位相によらないことに使う（a0-design に追記、11-07）</td></tr>
-<tr><td>Rem 4.6</td><td>完全 prismatic site</td><td>必要</td><td class="todo">drafts</td><td><code>PerfectPrismaticSite</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:159</a>）、<code>perfectSite</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite:65</a>）、<code>perfectFlatTopology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite:80</a>）、<code>perfectSiteEquivPerfectoidUnder</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite:267</a>）。定義そのまま（完全 prism の充満部分圏＋flat 位相）。perfectoid 環の圏との同値は定理（Lemma 4.8・Thm 3.10、sorry）。Prop 8.5 の site</td></tr>
-<tr><td>Rem 4.7</td><td>絶対 prismatic site</td><td class="no">不要</td><td class="no">—</td><td>絶対 prismatic site。Prop 7.2 用で迂回済み</td></tr>
-<tr><td>Lemma 4.8</td><td>完全 prism からの写像の一意持ち上げ</td><td>一部必要</td><td class="part">特別な場合</td><td><code>existsUnique_perfectPrismHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">Prism/PerfectPrismHomLift:749</a>）、<code>perfectPrismHom_ext_to_bounded_target</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">Prism/PerfectPrismHomLift:199</a>）、<code>existsUnique_perfectPrismRingHomLift_to_bounded</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/PerfectPrismHomLift.lean">Prism/PerfectPrismHomLift:712</a>）、<code>perfectPrism_hom_lift_unique</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSite.lean">drafts/A5/PerfectSite:229</a>）。標的が有界な向き付き prism の場合（site の対象は有界なので十分）。原典の任意の標的は不要。A5 の完全 site ≃ Perfd_{S/} に使う</td></tr>
-<tr><td>Constr 4.9</td><td>HT 比較の写像</td><td>一部必要</td><td class="part">特別な場合</td><td><code>hodgeTateMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">Prismatic/HodgeTateCompletedMap:398</a>）、<code>SerrePositivity.Cosimplicial.cohomologyCup_comm</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/Cosimplicial/CupCommutativity.lean">HomologicalAlgebra/Cosimplicial/CupCommutativity:846</a>）、<code>SerrePositivity.DeRham.exists_unique_dgHom</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/DeRham/UniversalProperty.lean">CommutativeAlgebra/DeRham/UniversalProperty:449</a>）。多項式代数の場合の Hodge–Tate 写像（BS-D68 停止点 3）。一般の R は不要</td></tr>
-<tr><td>Lemma 4.10</td><td>HT 写像の性質</td><td>一部必要</td><td class="part">特別な場合</td><td><code>bockstein_sq_zero</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateBocksteinSquare.lean">Prismatic/HodgeTateBocksteinSquare:65</a>）。多項式代数の場合（BS-D68 停止点 3）</td></tr>
-<tr><td>Thm 4.11</td><td>HT 比較</td><td>一部必要</td><td class="part">部品</td><td><code>HodgeTateIsoStatement</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCompletedMap.lean">Prismatic/HodgeTateCompletedMap:461</a>）、<code>hodgeTate_iso_polynomial_Zp</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/HodgeTateCartierAssembly.lean">Prismatic/HodgeTateCartierAssembly:212</a>）、<code>hodgeTate_iso</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:350</a>）。主張の型（HodgeTateIsoStatement）と結晶基底 (Z_p,(p)) の場合は本体（BS-D68）。一般の有界向き付き基底への帰着（Prop 6.2・Thm 6.3）は drafts</td></tr>
-<tr><td>Cor 4.12</td><td>底変換</td><td>一部必要</td><td class="todo">drafts</td><td><code>prismaticCohomology_baseChange&#x27;</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:365</a>）、<code>PrismaticCohomologyBaseChangeStatement</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean">drafts/A1/HodgeTateMap:87</a>）。多項式代数の場合。Lemma 4.20 の Tor 振幅の仮定を HT 比較の後に外す形。A2 の Construction 7.6(4) で使う</td></tr>
-<tr><td>Rem 4.13</td><td>Higgs 特殊化</td><td class="no">不要</td><td class="no">—</td><td>Higgs 特殊化。不要</td></tr>
-<tr><td>Rem 4.14</td><td>\(A/I^2\) への持ち上げの障害</td><td class="no">不要</td><td class="no">—</td><td>A/I² への持ち上げの障害。不要</td></tr>
-<tr><td>Prop 4.15</td><td>余接複体と \(\tau^{\le 1}\overline{\Delta}\)</td><td class="no">不要</td><td class="no">—</td><td>L_{X/A} ≃ τ≤1 Δ̄{1}[1]。不要（A2 の HT filtration は多項式代数の HT 比較から Kan 延長）</td></tr>
-<tr><td>Not 4.16</td><td>\(\Delta_{R/A}\) の定義（site の RΓ）</td><td>必要</td><td class="todo">drafts</td><td><code>prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:179</a>）、<code>hodgeTateCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:190</a>）、<code>prismaticCohomologyFrobenius</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite:200</a>）、<code>prismaticCohomology_cutoff_invariant</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander:234</a>）。Δ_{R/A} は site の RΓ（Čech 層の層化と Γ、D17）、まず D(A) 値（D18）。κ 不変性は HasEnvelopes 仮定つき</td></tr>
-<tr><td>Constr 4.17</td><td>弱始対象</td><td>必要</td><td class="part">特別な場合</td><td><code>cechAlexanderObj</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderAssembly.lean">Prismatic/CechAlexanderAssembly:61</a>）、<code>isCoproduct</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderCoproduct.lean">Prismatic/CechAlexanderCoproduct:49</a>）、<code>cechSmall_weaklyTerminal</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderSmall.lean">Prismatic/CechAlexanderSmall:56</a>）、<code>cechAlexanderAffine_weaklyInitial</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">Prismatic/AffineCechSiteNerve:40</a>）、<code>cechAlexanderComplex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderComplex.lean">Prismatic/CechAlexanderComplex:53</a>）。BS-W17 H3（11-11）：HasEnvelopes からの C^• の組み立て、標準余積、弱始性（site では弱終）、交代余面複体は本体。存在を供給するのは多項式の場合（D21）。C^• が Δ を計算すること（G10）は drafts</td></tr>
-<tr><td>Constr 4.18</td><td>Čech–Alexander 複体</td><td>必要</td><td class="part">部品</td><td><code>bigCechEval</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAlexander.lean">Prismatic/BigCechAlexander:45</a>）、<code>affineBigCechTerm</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">Prismatic/BigCechAffineEnvelope:404</a>）。大きい枠の Čech–Alexander 模型の項と座標変換（BS-D69 P2）。Δ を計算することは G9・G10 待ち</td></tr>
-<tr><td>Rem 4.19</td><td>affine 直線の底変換と両立する Čech–Alexander 複体</td><td>必要</td><td class="part">部品</td><td><code>cechAlexanderAffine_baseChange</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechPrismBaseChange.lean">Prismatic/AffineCechPrismBaseChange:49</a>）、<code>affineCechNerveData</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">Prismatic/AffineCechSiteNerve:47</a>）、<code>cechAlexanderAffine_isCoproduct</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">Prismatic/AffineCechSiteNerve:33</a>）。BS-W17 H4（11-11）：affine の小さい模型、底変換との項ごとの両立（δ 同型・脚・座標、全単体射に自然）は本体。「Δ を計算する」主張と Tot の底変換は G10 の後</td></tr>
-<tr><td>Lemma 4.20</td><td>底変換</td><td>必要</td><td class="todo">drafts</td><td><code>prismaticCohomology_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange:103</a>）、<code>hodgeTateCohomology_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange:128</a>）、<code>crystallineCoverMap_prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:247</a>）、<code>cechAlexanderAffine_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander:299</a>）。多項式代数の場合の主張の型が drafts/A0/BaseChange にある（11-07 に追加、sorry）。Constr 6.1(3) の α に沿う特別な場合も drafts ／ 11-12 夜更新（ノート本文の更新時）</td></tr>
-<tr><td>Lemma 4.21</td><td>étale 局所化</td><td class="no">不要</td><td class="no">—</td><td>étale 局所化。多項式代数に限り A2 の左 Kan 延長で済ませる</td></tr>
-<tr><td>Lemma 4.22</td><td>完備底変換と totalization</td><td>必要</td><td class="todo">drafts</td><td><code>completedBaseChange_tot_comm</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange:73</a>）、<code>HasFiniteCompleteTorAmplitude</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:210</a>）。一般形の主張の型が drafts/A0/BaseChange にある（completedBaseChange_tot_comm、11-07 に追加、sorry）。Tor 振幅の定義は drafts/A1 と drafts/A0 に二つある（Tor 振幅の定義だけ A1 にある、Koszul 版で c が最大 r ずれる D4-04）。A1・A5（Prop 8.5）でも使う ／ 11-12 夜更新（ノート本文の更新時）</td></tr>
-</table></div>
-<!-- items:end -->
+<h4 class="item">系 4.2.4（原典 Cor 4.12） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(\Delta_{X/A}\in D(X_{\mathrm{\acute et}},A)\) の形成は有界 prism の射 \((A,I)\to(B,IB)\) に沿う底変換と可換である。すなわち \(g\colon X_B:=X\times_{\mathrm{Spf}(A/I)}\mathrm{Spf}(B/IB)\to X\) を射影とすると \((g^*\Delta_{X/A})^\wedge\cong\Delta_{X_B/B}\)。ここで \((-)^\wedge\) は導来 \((p,I)\) 完備化。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts に多項式代数の場合 <code>prismaticCohomology_baseChange'</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison:365</a>）と主張の型 <code>PrismaticCohomologyBaseChangeStatement</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateMap.lean">drafts/A1/HodgeTateMap:87</a>）：向き付き prism の射 \(P\to P'\) について、係数を延長して \(P'\) で完備化した CAlg 値の \(\Delta\) から \(P'\) 上の \(\Delta\) への比較の辺が同型であること。Tor 振幅の仮定つきの底変換は §4.3 の Lemma 4.20。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>比較写像は、\((X_B/B)_\Delta\) の対象を \(X_B\to X\) との合成で \((X/A)_\Delta\) の対象とみなす関手から得る \(g^*\Delta_{X/A}\to\Delta_{X_B/B}\) を完備化したもの。両辺は導来 \((p,I)\) 完備なので、導来 Nakayama（[Sta, Tag 0G1U]）により mod I で同型を示せば足りる。定義 4.2.1 の証明の (a) により mod I の主張は \((g^*\overline\Delta_{X/A})^\wedge\cong\overline\Delta_{X_B/B}\)（完備化は導来 p 完備化）。これは HT 比較と、微分形式 \(\Omega^*\) が底変換と可換であることから出る。</p>
+<p>省かれた点の要点（補った）：Thm 4.11 により \(\overline\Delta_{X/A}\) は有限の Postnikov フィルトレーションを持ち、その次数部分 \(\Omega^i_{X/(A/I)}\{-i\}[-i]\) は局所自由 \(\mathcal O_X\) 加群。\(g^*\) と p 完備化はこれらの三角形を保ち、局所自由加群の p 完備な底変換は \(\Omega^i_{X_B/(B/IB)}\{-i\}\) を与える。比較写像は Construction 4.9 の関手性で \(\eta^*\) と両立するので、各次数部分で同型。</p>
+</div>
 
-<h2 id="diff-04">原典との差の評価</h2>
-<p>この章で原典と定義・経路が違う箇所ごとに、それぞれの利点・欠点を比べる。<b>方針</b>：定義は原典のまま入れ、避けられない差だけを記す。D 番号は全章で通す。</p>
-<div class="table-wrap"><table>
-<tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
-<tr><td>D16</td><td>Def 4.1 の site は有界 prism 全体（大きい圏）</td><td>台集合の濃度 \(\le\kappa\) の prism（Type u）に切り落とす。\(\kappa=(\#A+\#R+\aleph_0)^{\aleph_0}\) を既定値にし、許容条件は「既定値以上かつ \(\kappa^{\aleph_0}=\kappa\)」（<code>IsAdmissibleCutoff</code>、W9-I-11）。これで証明中の構成（Čech–Alexander、押し出し、André 拡大、perfectoid 化、p 冪根、A6 の前段 \(S_0\)、A8 の有限表示近似）が閉じる（Codex W9 第 3 部続き 3 §3.4）</td><td>小さい site で層化と \(\Gamma=\lim\) が存在し、\(\Delta\) が Type u に収まる。大きい平坦 site では一般の前層の層化が存在しないことがある（Waterhouse 1975）ので、層化を使う定義には必須</td><td>定義に \(\kappa\) が入る。\(\kappa\) 不変性（\(\kappa_0\le\kappa\le\kappa'\) で \(R\Gamma\) が一致）は Cor 3.12 と脚注 10 から出る定理で、\(\mathcal O_\Delta\) にだけ主張する</td><td>原典は集合論の処置を省いている（Stacks の「十分大きい基数で切る」と同じ）。数学的内容は変わらない</td><td>Lean を保つ。宇宙を上げる案（Mathlib の ℓ 進コホモロジーの方式）は、基盤の D(A) と E3 の界面が Type u で閉じているので採らない</td></tr>
-<tr><td>D17</td><td>\(R\Gamma\) は 1 topos の層係数コホモロジー（古典的な導来関手。∞ 圏の言葉では hypercomplete な層の大域切断、SAG 2.1.2.3）</td><td>HTT 6.2.2.6 の層（被覆篩に沿う降下。Čech 層）の層化 \(F^\sharp\) と \(\Gamma(F^\sharp)=\lim F^\sharp\) で定義する（∞ 層の設計書 D-S1、案 1）</td><td>hypercover・∞ 連結射・層の t 構造が要らない。§8 の arc 位相の「層」もこの意味</td><td><b>ずれ</b>：非有界な前層 \(F\) では、site の Postnikov 塔が収束しないとき \(\Gamma(F^\sharp)\) と古典的 \(R\Gamma=\Gamma(F^{\mathrm{hyp}})\) が異なりうる（Dugger–Hollander–Isaksen 2004 の例）。有界（特に離散）な Čech 層は hypersheaf なので一致する。E3 までに \(R\Gamma\) を当てる前層（\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\)・完全 site の \(\mathcal O\)・arc 位相の \(\mathcal O\)）はすべて離散</td><td>Čech 層の方が短い。原典は離散な層にしか \(R\Gamma\) を当てない</td><td>案 1 を保つ。\(\mathcal O_\Delta\) について「離散な Čech 層 ⇒ hypersheaf、\(\Gamma\) は古典的 \(R\Gamma\)」を Cor 3.12 の系として定理に置き、<code>derivedGlobalSections</code> の docstring と解説付録 A にも注意を書く。非有界な前層に \(R\Gamma\) を当てる必要が出たら hypersheaf 化を加える</td></tr>
-<tr><td>D18</td><td>\(\Delta_{R/A}\) は（Construction 7.6 で）\((p,I)\) 完備な D(A) の可換代数対象</td><td>まず D(A) の対象として定義し、CAlg 値の同じ構成（層化と \(\Gamma\) を CAlg_R で）を A2・A4 で作って、忘却が極限を保つこと（証明済み）で結ぶ</td><td>E3 の界面が D(R) 版と CAlg 版の二本立てなのと同じ形で、既存の橋がそのまま使える</td><td>二度構成する。CAlg_R の presentable 性は未確認</td><td>—</td><td>A2・A4 の設計で確定</td></tr>
-</table></div>
+<h4 class="item">注意 4.2.5（原典 Rem 4.13） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>（Higgs 特殊化）A は p ねじれなしとする。X が、Frobenius の両立する持ち上げを備えた \((p,I)\) 完全平坦な \((p,I)\) 進形式スキーム \(\mathfrak X/A\) に持ち上がるとする。このとき \(\mathfrak X_{\mathrm{\acute et}}\simeq X_{\mathrm{\acute et}}\) の affine は \((X/A)_\Delta\) の対象を自然に与える：affine \(\mathfrak U\to\mathfrak X\) ごとに図式 \((\mathfrak U\leftarrow\mathfrak U\times_AA/I\to X)\) が \((X/A)_\Delta\) の対象。大域切断をとると \(X_{\mathrm{\acute et}}\) 上の \(E_\infty\) A 代数の \(\varphi\) 同変な写像 \(\Delta_{X/A}\to\mathcal O_{\mathfrak X}\) を得る。mod I をとると、構造写像 \(\mathcal O_X\to\overline\Delta_{X/A}\) を分裂させる \(E_\infty\) \(A/I\) 代数の写像 \(\overline\Delta_{X/A}\to\mathcal O_X\) が定まる。これを Higgs 特殊化と呼び、\(\mathfrak X\)（その δ 構造を含む）の選び方に依存する。</p>
+<p>（脚注 9）用語の理由：\((X/A)_\Delta\) 上の導来 p 完備な \(\mathcal O_\Delta\) 複体の crystal の ∞ 圏は（層化した大域切断で）\(D_{p\text{-comp}}(X,\Delta_{X/A})\) と同値であり、Higgs 特殊化に沿う底変換で、相対余接束の 0 切断での形式完備化 \(\widehat{T^*X}\) 上の準連接層の ∞ 圏と同値になることが示せる。こうして crystal に X 上の位相的冪零な Higgs 場が対応する。原典はこれを証明しない。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>原典は確認を省いている（補った）。\(\mathfrak U=\mathrm{Spf}\,C\) とすると、A が p ねじれなしで C が \((p,I)\) 完全平坦なので C も p ねじれなし（\(C[p]\) は導来 I 完備で、\(C\otimes^L_AA/(p,I)\) が離散であることから \(C[p]=I\,C[p]\)、導来 Nakayama で零）。よって Frobenius の持ち上げは C の δ 構造を定め（Rem 2.2）、\((C,IC)\) は \((A,I)\) 上の prism で、有界性も完全平坦性から出る。よって \((\mathfrak U\leftarrow\mathfrak U\times_AA/I\to X)\) は site の対象で、\(\mathcal O_\Delta\) のこの対象での値は C。大域切断からこの値への評価が \(\Delta_{X/A}(U)\to C\) を与え、étale 局所的に貼り合う。mod I では \(\overline{\mathcal O}_\Delta\) の値は \(C/IC=\mathcal O_X(U)\) で、\(U=\mathfrak U\times_AA/I\) は X の étale な affine で \(C/IC=\mathcal O_X(U)\) だから、合成 \(\mathcal O_X(U)\to\overline\Delta_{X/A}(U)\to C/IC\) はこの対象の構造射、つまり恒等で、分裂が得られる。</p>
+</div>
+
+<h4 class="item">注意 4.2.6（原典 Rem 4.14） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>（mod \(I^2\) への持ち上げの障害）写像 \(\mathcal O_X\to\tau^{\le1}\overline\Delta_{X/A}\) が \(\mathcal O_X\) 加群の写像として分裂することと、X が \(A/I^2\) に持ち上がることは同値である（余接複体はすべて p 完備な意味）。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>原典</b>：非零因子による環の商の余接複体の一般的性質から、X の \(A/I^2\) への持ち上げは \(L_{X/A}\to L_{X/(A/I)}\) の分裂と同値。あとは命題 4.2.7（Prop 4.15）から出る。</p>
+<p><b>補った点</b>：\(A\to A/I\to X\) の推移三角形は \(L_{(A/I)/A}=I/I^2[1]\) と X の smooth 性から \(\mathcal O_X\{1\}[1]\to L_{X/A}\to\Omega^1_{X/(A/I)}\) となる。命題 4.2.7 の同型 \(L_{X/A}\simeq\tau^{\le1}\overline\Delta_{X/A}\{1\}[1]\) で捻りとずらしを戻すと、この三角形は \(\mathcal O_X\to\tau^{\le1}\overline\Delta_{X/A}\to\Omega^1_{X/(A/I)}\{-1\}[-1]\) に移る（\(H^{-1}\) の上で両者の写像が一致することは命題 4.2.7 の証明の中の比較）。三角形の分裂は第一の写像の分裂とも第二の写像の分裂とも同値なので、主張が出る。</p>
+</div>
+
+<h4 class="item">命題 4.2.7（原典 Prop 4.15） <span class="vtag v-no">未確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>自然な同型 \(L_{X/A}\simeq\tau^{\le1}\overline\Delta_{X/A}\{1\}[1]\) がある。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。</p>
+</div>
+<div class="box proof">
+<p class="label">証明</p>
+<p>（原典は証明の概略）<b>写像の構成</b>：\(X=\mathrm{Spf}\,R\) が affine のとき（Not 4.16 にならって環で書く）、∞ 圏 \(D(R)\) の自然な写像 \(\eta_R\colon L_{R/A}\to\overline\Delta_{R/A}\{1\}[1]\) を作る。\((R/A)_\Delta\) の各対象 \((R\to B/IB\leftarrow B)\) について自然な写像
+\[ L_{R/A}\to L_{(B/IB)/B}\simeq I/I^2\otimes^L_{A/I}B/IB[1]\simeq B/IB\{1\}[1] \]
+がある（\(A\to R\to B/IB\) と \(A\to B\to B/IB\) の関手性、IB は局所的に非零因子で生成される）。\((R/A)_\Delta\) 上の導来大域切断をとって \(\eta_R\)。両辺は \(D_{\mathrm{perf}}(X)\) にあるので（右辺は Thm 4.11）、affine 開集合全体の極限で大域化して \(L_{X/A}\to\overline\Delta_{X/A}\{1\}[1]\) を得る。\(L_{X/A}\in D^{\le0}\) なので、これは \(\tau^{\le0}(\overline\Delta_{X/A}\{1\}[1])\simeq\tau^{\le1}\overline\Delta_{X/A}\{1\}[1]\) を経由し、写像 \(\mu\) を得る。</p>
+<p><b>同型であること</b>：両辺のコホモロジー層は抽象的に同型で、次数 −1 に \(\mathcal O_X\{1\}\)、次数 0 に \(\Omega^1_{X/A}\)（左辺は推移三角形、右辺は Thm 4.11）。両辺と \(\mu\) の形成は p 完備な底変換と可換（右辺は Cor 4.12）なので、\(I=(p)\) の場合に帰着する。Thm 4.11 により、\(i=0,1\) の \(H^i(\mu)\) が Thm 4.11 の写像を作った Construction 4.9 の写像と一致することを示せば足りる。この両立は \(X=\mathbb A^1\) に帰着し、構成の底変換との両立で \(A=\mathbb Z_p\) としてよい。この場合の確認を原典は読者に任せる（完全な証明は [ALB19b, Proposition 3.2.1]）。</p>
+<p>（原典の続く段落）\(I=(p)\) の場合は、de Rham 比較（Thm 15.4）を通じて [DI87, Theorem 3.5] と近い。\(A_{\mathrm{inf}}\) コホモロジーでの類似は [BMS18, §8.2]、特異な場合の類似は Rem 15.6、結晶の場合への一般化と応用は [Ill21a, Ill21b]。</p>
+</div>
+
+<h2>4.3 Čech–Alexander 複体</h2>
+<p>prismatic cohomology を具体的な余単体的環で計算する一般論。affine の場合の記号を定め（4.3.1）、多項式代数からの全射の envelope で site の弱始対象を作り（4.3.2）、その Čech 脈体が \(\Delta_{R/A}\) を計算することを示す（4.3.3）。affine 空間の場合には prism の底変換と両立する模型があり（4.3.4）、これを使って底変換（4.3.5）と étale 局所化（4.3.6）を示す。どちらも純代数の補題 4.3.7 に帰着する。</p>
+<p>Lean では site の対象は、固定した向き付き有界 prism \((A,(d))\) の上の有界な向き付き prism \((B,dB)\) と \(R\to B/dB\) の組で、台の濃度が \(\le\kappa\) のもの（原典 Def 4.1 の affine の場合。D5・D16・D19）。剛性（命題 3.2.1、原典 Lemma 3.5）により \(IB=dB\) なので、以下 \(I=(d)\) と書く。</p>
+
+<h4 class="item">定義 4.3.1（原典 Notation 4.16：affine の場合の記号と \(\Delta_{R/A}\)） <span class="vtag v-no">未確認</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\((A,I)\) を有界 prism、\(X\) を滑らかな \(p\) 進形式 \(A/I\) スキームとする。\(X=\mathrm{Spf}(R)\) が affine のとき \((\mathrm{Spf}(R)/A)_\Delta\) を \((R/A)_\Delta\) とも書き、その典型的な対象を図式 \((B\to B/IB\leftarrow R)\)（\((B,IB)\) は \((A,I)\) 上の prism）とみる。対象をスキームではなく環で見るときは、\((R/A)_\Delta\) の圏論的性質も代数の言葉で述べる。たとえば \(R=A/I\) なら \((A\to A/I\leftarrow A/I=R)\in(R/A)_\Delta\) を終対象ではなく<b>始対象</b>と呼ぶ（原典は「\(A=R/I\)」と誤植）。この affine の状況で</p>
+\[\Delta_{R/A}:=R\Gamma(\mathrm{Spec}(R),\Delta_{\mathrm{Spec}(R)/A}),\qquad \overline\Delta_{R/A}:=\Delta_{R/A}\otimes^L_AA/I\]
+<p>とおく。ここで \(\Delta_{X/A}=R\nu_*\mathcal O_\Delta\)（§4.2）なので、\(\Delta_{R/A}=R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\in D(A)\)。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない（drafts）。\(\Delta_{R/A}\) は <code>prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/PrismaticSite.lean">drafts/A0/PrismaticSite.lean:179</a>）：site の小さい模型の上の \(D(A)\) 値前層 <code>structurePresheafDerived</code>（:171。\(B\) を離散な \(A\) 加群として \(D(A)\) に入れる）に、∞ 層の <code>derivedGlobalSections</code>（層化してから大域切断 \(=\) site 上の極限）を当てたもの。層化のデータと \(D(A)\) の presentable 性は仮定として受け取る。\(\overline\Delta_{R/A}\) は <code>hodgeTateCohomology</code>（:190）。</p>
+<p>限り方：\(X\) は affine だけで、\(R\) は任意の \(A/d\) 代数（滑らかさは定義に入らない）。site は濃度 \(\le\kappa\) の対象 <code>PrismOver</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/PrismOver.lean">PrismOver:68</a>）に切り落とした小さい圏（D16）。\(\kappa\) によらないことは、Čech–Alexander 模型の存在を仮定した形で drafts の <code>prismaticCohomology_cutoff_invariant</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander.lean:234</a>）。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D17・D18）</p>
+<p>\(R\Gamma\) は古典的な層係数コホモロジーではなく、Čech 層（被覆篩に沿う降下）としての層化と極限で定義する（D17）。\(\mathcal O_\Delta\) は離散な層なので両者は一致する。値はまず \(D(A)\) の対象で、可換代数対象としての構造（原典 Construction 7.6）は別に作って結ぶ（D18）。</p>
+<p><b>D17 の評価</b>（原典：\(R\Gamma\) は 1 topos の層係数コホモロジー（古典的な導来関手。∞ 圏の言葉では hypercomplete な層の大域切断、SAG 2.1.2.3））。Lean の違い：HTT 6.2.2.6 の層（被覆篩に沿う降下。Čech 層）の層化 \(F^\sharp\) と \(\Gamma(F^\sharp)=\lim F^\sharp\) で定義する（∞ 層の設計書 D-S1、案 1）。Lean の利点：hypercover・∞ 連結射・層の t 構造が要らない。§8 の arc 位相の「層」もこの意味。Lean の欠点：<b>ずれ</b>がある。非有界な前層 \(F\) では、site の Postnikov 塔が収束しないとき \(\Gamma(F^\sharp)\) と古典的 \(R\Gamma=\Gamma(F^{\mathrm{hyp}})\) が異なりうる（Dugger–Hollander–Isaksen 2004 の例）。有界（特に離散）な Čech 層は hypersheaf なので一致し、E3 までに \(R\Gamma\) を当てる前層（\(\mathcal O_\Delta\)・\(\overline{\mathcal O}_\Delta\)・完全 site の \(\mathcal O\)・arc 位相の \(\mathcal O\)）はすべて離散。どちらが簡単か：Čech 層の方が短い。原典は離散な層にしか \(R\Gamma\) を当てない。方針：案 1 を保つ。\(\mathcal O_\Delta\) について「離散な Čech 層 ⇒ hypersheaf、\(\Gamma\) は古典的 \(R\Gamma\)」を Cor 3.12 の系として定理に置く。非有界な前層に \(R\Gamma\) を当てる必要が出たら hypersheaf 化を加える。</p>
+<p><b>D18 の評価</b>（原典：\(\Delta_{R/A}\) は（Construction 7.6 で）\((p,I)\) 完備な \(D(A)\) の可換代数対象）。Lean の違い：まず \(D(A)\) の対象として定義し、CAlg 値の同じ構成（層化と \(\Gamma\) を \(\mathrm{CAlg}_R\) で）を別に作って、忘却が極限を保つこと（証明済み）で結ぶ。Lean の利点：E3 の界面が \(D(R)\) 版と CAlg 版の二本立てなのと同じ形で、既存の橋がそのまま使える。Lean の欠点：二度構成する。\(\mathrm{CAlg}_R\) の presentable 性は未確認。どちらが簡単か：—。方針：A2・A4 の設計で確定。</p>
+</div>
+
+<h4 class="item">命題 4.3.2（原典 Construction 4.17：弱始対象） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(R\) を \(p\) 完全に滑らかな \(A/I\) 代数とする。\(B_0\to R\) を \(A\) 代数の全射で、\(B_0\) は多項式 \(A\) 代数の導来 \((p,I)\) 完備化とする。\(B=\mathrm{Free}_{\delta,A}(B_0)^\wedge\) を自由 δ-\(A\) 代数の導来 \((p,I)\) 完備化とする（\(A\) が有界なので、原典 Lemma 3.7 により古典的な完備化でもよい）。\(J_0=\ker(B_0\to R)\) とおく。\(B_0\to B\) は \(B\) を多項式 \(B_0\) 代数の導来 \((p,I)\) 完備化として表すので、\(R\to R':=(B/J_0B)^\wedge\)（\(p\) 進完備化）も同じ形であり、\(R'\) は \(A/I\) 上 \(p\) 完全に ind-滑らか、\(\ker(B\to R')\) は \(J_0\) が生成する導来 \((p,I)\) 完備なイデアル。対 \((B,\ker(B\to R'))\) に Prop 3.13（命題 3.5.1、例 3.5.2 も参照）を当てると対象 \((C\to C/IC\leftarrow R)\in(R/A)_\Delta\) が得られ、可換図式</p>
+\[\begin{array}{ccccccc}
+A &amp;\to&amp; B_0 &amp;\to&amp; B=\mathrm{Free}_{\delta,A}(B_0)^\wedge &amp;\to&amp; C\\
+\downarrow &amp;&amp; \downarrow &amp;&amp; \downarrow &amp;&amp; \downarrow\\
+A/I &amp;\to&amp; R &amp;\to&amp; R' &amp;\to&amp; C/IC
+\end{array}\]
+<p>（中央の四角は導来 \((p,I)\) 完備な \(A\) 代数の押し出し）に収まる。このとき</p>
+<ol>
+  <li>\((C\to C/IC\leftarrow R)\) は \((R/A)_\Delta\) の<b>弱始対象</b>：任意の対象へ射を持つ。</li>
+  <li>全射 \((B_0\to R)\) から \((C\to C/IC\leftarrow R)\) を作る構成は \(B_0\) について関手的で、\(B_0\) の（完備）テンソル積を \((R/A)_\Delta\) の余積に送る。</li>
+</ol>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>原典 Construction 4.18 の第二段落の関手的な選び方に合わせ、\(B_0\) は \(R\) の台集合上の多項式環で、\(n\) 次の項の変数の添字は \(R\times\{0,\dots,n\}\) <code>cechIndex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderEnvelopeData.lean">CechAlexanderEnvelopeData:32</a>）。\(B\) は完備自由 δ 環 <code>cechFreeDelta</code>（:35）、変数をその添字の元へ送る評価 <code>cechEval</code>（:38）。イデアルは原典どおり \(B\to\) \((B/J_0B)\) の一変数導来 \(p\) 完備化の \(H^0\) の核 <code>cechKernel</code>（:67）。</p>
+<p>envelope の存在は仮定 <code>HasEnvelopes</code>（:90）にまとめる（各次数で envelope が存在し、有界で、濃度が既定の cutoff 以下）。その下で、各項 <code>cechAlexanderObj</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderAssembly.lean">CechAlexanderAssembly:61</a>）、(1) の弱始性 <code>cechAlexanderObj_weaklyInitial</code>（:72）、(2) を Čech 脈体に要る形に限った「\(n\) 次の項は頂点の包含 \([0]\to[n]\) を脚として零次の項の \(n+1\) 個の余積」<code>cechAlexander_isCoproduct</code>（:79）。余積の一般の組み立ては <code>CechAlexanderPresentation.isCoproduct</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderCoproduct.lean">CechAlexanderCoproduct:49</a>）。</p>
+<p><code>HasEnvelopes</code> を実際に満たすのは有限変数の完備多項式 \(R=(A/d)\langle X_1,\dots,X_r\rangle\) の場合で、<code>hasEnvelopes_of_finitePolynomial</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechSiteAffine.lean">BigCechSiteAffine:43</a>）。一般の \(R\) での envelope の存在は主張しない。\(B_0\) についての一般の関手性は述べず、単体射から来る添字の写像についての関手性だけを使う（命題 4.3.3）。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>弱始性.</b> 対象 \((D\to D/ID\leftarrow R)\) を一つ取る。\(B_0\) は多項式 \(A\) 代数の導来 \((p,I)\) 完備化で \(D\) は導来 \((p,I)\) 完備なので、\(A/I\) 代数の射 \(R\to D/ID\) を持ち上げる \(A\) 代数の射 \(B_0\to D\) が選べる（各変数の像を \(D\to D/ID\) で持ち上げる）。\(D\) は δ-\(A\) 代数なので、この選択は δ-\(A\) 代数の射 \(B\to D\) に一意に延びる（自由性と完備化の普遍性、命題 2.2.3（原典 Lemma 2.17））。構成から \(B_0\to D\to D/ID\) は \(B_0\to R\to D/ID\) に等しいので \(J_0\) は \(ID\) に入り、\(ID\) は導来 \((p,I)\) 完備なので（\(D/ID\) が \(p\) 完備で有界）\(J_0\) が生成する導来完備なイデアル \(\ker(B\to R')\) も \(ID\) に入る（補った）。envelope \(C\) の普遍性から δ-\(A\) 代数の分解 \(B\to C\to D\) が一意にある。最後に \(R\to C/IC\to D/ID\) が与えられた \(R\to D/ID\) に一致することは、合成 \(B_0\to B\to C\to D\) が最初に選んだ射で、全射 \(B_0\to R\) と \(D\to D/ID\) のもとで与えられた射と両立していたことから従う。</p>
+<p><b>余積.</b>（補った）二つの全射 \(B_0\to R\)、\(B_0'\to R\) から全射 \(B_0\widehat\otimes_AB_0'\to R\) を作る。剛性（命題 3.2.1）により \((R/A)_\Delta\) の射は \(R\) と両立する δ-\(A\) 代数の射なので、\(C(B_0\widehat\otimes_AB_0')\) から \(D\) への射は、\(B_0\widehat\otimes_AB_0'\to D\) で \(R\to D/ID\) を持ち上げるもの、すなわち \(B_0\to D\) と \(B_0'\to D\) の持ち上げの組と一対一（\(B\) の自由性と \(C\) の普遍性を順に使う）。後者は \(C(B_0)\to D\) と \(C(B_0')\to D\) の組と一対一なので、\(C(B_0\widehat\otimes_AB_0')\) は余積。</p>
+<p>Lean では各変数の像を、標的の剰余への全射で持ち上げて弱始性を示す（変数の添字が \(R\) の元そのものなので、変数の行き先は \(R\to D/ID\) の像の持ち上げとして選べる）。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D21）</p>
+<p>envelope の存在は一般の \(p\) 完全に滑らかな \(R\) では示さず、仮定 <code>HasEnvelopes</code> に置く。それを満たすのは有限変数の完備多項式の場合で、そのとき envelope は（変数変換で）完備自由 δ 代数そのもの（D21、評価は命題 3.5.1 の囲み）。</p>
+</div>
+
+<h4 class="item">命題 4.3.3（原典 Construction 4.18：Čech–Alexander 複体） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(R\) を \(p\) 完全に滑らかな \(A/I\) 代数、\(B_0\to R\) を命題 4.3.2 のとおりとし、\(B_0^\bullet\) を \(A\to B_0\) の導来 \((p,I)\) 完備な Čech 脈体とする。全射の余単体的対象 \((B_0^\bullet\to R)\) に命題 4.3.2 を当てると、余単体的対象 \((C^\bullet\to C^\bullet/IC^\bullet\leftarrow R)\in(R/A)_\Delta\) が得られる。これは \((C^0\to C^0/IC^0\leftarrow R)\) の Čech 脈体であり、\(C^\bullet\)（resp. \(C^\bullet/IC^\bullet\)）は \(\Delta_{R/A}\)（resp. \(\overline\Delta_{R/A}\)）を計算する。</p>
+<p>入力の全射 \(B_0\to R\) は \(R\) について関手的に選べる（たとえば \(B_0\) を集合 \(R\) 上の多項式 \(A\) 代数の \((p,I)\) 完備化とする）。この選び方で \(\Delta_{R/A}\) を計算する厳密に関手的な複体 \(C^\bullet((R/A)_\Delta,\mathcal O_\Delta)\) が得られる。ただしこの複体は prism \((A,I)\) の底変換とは可換でない（\(B_0\) の選び方が底変換と両立しない）。</p>
+<p>（原典脚注 10）topos \(\mathcal X\)、アーベル群の層 \(\mathcal A\)、Čech 脈体 \(X_0^\bullet\) を持つ弱終対象 \(X_0\in\mathcal X\) について、自然な射は同型 \(R\Gamma(\mathcal X,\mathcal A)\simeq R\lim R\Gamma(X_0^\bullet,\mathcal A)\) を与える。したがって \(\mathcal A\) が各 \(X_0^i\) で高次コホモロジーを持たなければ、\(R\Gamma(\mathcal X,\mathcal A)\) は余単体的対象 \(\mathcal A(X_0^\bullet)\) で計算される。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p><b>選んだ模型.</b> <code>HasEnvelopes</code> の下で、site の余単体的対象 <code>cechAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderAssembly.lean">CechAlexanderAssembly:66</a>。単体射を変数の添字の写像として一意に延ばす）、大きい site の Čech データ <code>cechAlexanderNerve</code>（:89）。本質的小ささを仮定した小さい site への移送 <code>cechNerveData</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderSmall.lean">CechAlexanderSmall:47</a>）と、反対圏での弱終性 <code>cechSmall_weaklyTerminal</code>（:56）。\(A\) 加群の交代余面複体（正規化しない）<code>cechAlexanderComplex</code> と各項を \(d\) で割った複体 <code>cechAlexanderReducedComplex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderComplex.lean">CechAlexanderComplex:53・60</a>）。</p>
+<p><b>厳密に関手的な模型.</b> 完備多項式環 \(Q\) の全元を各頂点の変数に取る模型 <code>bigCechAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">BigCechAffineEnvelope:420</a>）。添字 <code>BigCechIndex</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAlexander.lean">BigCechAlexander:40</a>）、変数の評価 <code>bigCechEval</code>（:45）、各項の envelope <code>affineBigCechTerm</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechAffineEnvelope.lean">BigCechAffineEnvelope:404</a>、有界性 :411）。多項式代入を完備化して添字に作用させるので、\(A/d\) 上の有限変数多項式代数の圏 Poly(\(A/d\)) から余単体的 \(A\) 代数への関手になる。site 上の版 <code>bigCechSiteAlexander</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/BigCechSiteAlexander.lean">BigCechSiteAlexander:35</a>）と選んだ模型の、全単体射に自然な同型 <code>cechAlexanderBigSiteIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/CechAlexanderBigComparison.lean">CechAlexanderBigComparison:62</a>）、複体の同型 <code>cechAlexanderBigComplexIso</code>（:71）。</p>
+<p><b>\(\Delta\) を計算すること.</b> 本体にない（drafts）。脚注 10 の ∞ 圏版「\(\mathcal O_\Delta\) 上の錐が極限錐 ⇔ Čech 脈体への制限が極限錐」<code>cechAlexander_isLimitCone_iff</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander.lean:212</a>）、\(\Delta_{R/A}\) と Tot の一致 <code>prismaticCohomology_eq_cechAlexanderTot</code>（:221）。交代余面複体が \(D(A)\) の Tot を表すことは、ここに挙げた宣言には含まれない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>Čech 脈体であること.</b> \(B_0^n=B_0^{\widehat\otimes(n+1)}\) で、命題 4.3.2 (2) により \(C^n\) は \(C^0\) の \(n+1\) 個の余積、脚は頂点の包含 \([0]\to[n]\) から来る射。余単体的構造も余積の普遍性で決まるので、\(C^\bullet\) は \(C^0\) の（環の向きでの）Čech 脈体、site（反対圏）では弱終対象 \(C^0\) の Čech 脈体。</p>
+<p><b>\(\Delta\) を計算すること.</b> \(C^0\) は弱始（site では弱終）なので脚注 10 から \(R\Gamma((R/A)_\Delta,\mathcal O_\Delta)\simeq R\lim_n R\Gamma(C^n,\mathcal O_\Delta)\)。Cor 3.12（系 3.4.3）から \(\mathcal O_\Delta\) は各対象上で高次コホモロジーを持たないので \(R\Gamma(C^n,\mathcal O_\Delta)=C^n\)、よって \(\Delta_{R/A}\simeq R\lim C^\bullet\)。\(\overline\Delta_{R/A}\) は（補った）\(A/I\) が完全な \(A\) 加群（\(I\) は可逆）なので \(-\otimes^L_AA/I\) が極限と交換し、各 \(C^n\) は \(I\) ねじれを持たないので \(C^n\otimes^L_AA/I=C^n/IC^n\)。（\(\overline{\mathcal O}_\Delta\) に直接脚注 10 を当ててもよい。）</p>
+<p><b>脚注 10.</b> 弱終性から \(X_0\to *\) は \(\mathcal X\) で全射。全射 \(X_0\to *\) に対する Čech コホモロジー的降下から主張が従う。前層 topos の場合は Stacks Tag 07JM で、その証明がここにも適用できる。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D21・D23）</p>
+<p>原典の Čech 脈体 \(B_0^\bullet\) は完備テンソル積の反復だが、Lean では変数の添字で直接書く（\(B_0^n=A[X_{R\times[n]}]^\wedge\)、余単体的構造は添字集合の写像から。D23）。対象は同じで、<code>PrismOver</code> に一般の余積がない（一般の Prop 3.13 が要る）ため、余積は Čech 脈体に要るものだけを示す。各項の envelope の存在は仮定で、満たすのは有限変数の完備多項式の場合（D21）。厳密に関手的な模型の定義域は任意の \(R\) ではなく Poly(\(A/d\))。</p>
+</div>
+
+<h4 class="item">注意 4.3.4（原典 Remark 4.19：affine 直線の底変換と両立する Čech–Alexander 複体） <span class="vtag v-part">一部 Lean で確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(R=A/I\langle X\rangle\)（多項式環の \(p\) 進完備化）のとき、命題 4.3.3 の \(B_0\) として \(A[X]\) の導来 \((p,I)\) 完備化と明らかな射 \(B_0\to R\) を取れる。こうして得られる余単体的 δ-\(A\) 代数 \(C^\bullet\) は prism \((A,I)\) の底変換と可換。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>\(r\) 変数 \(R=(A/d)\langle X_1,\dots,X_r\rangle\) の模型 <code>cechAlexanderAffine</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeConstruction.lean">AffineEnvelopeConstruction:243</a>）、各項 <code>affineEnvelopeTerm</code>（:237。差座標で自由変数の envelope を作り、第 0 の copy で剰余への構造射を指定する）。標準余積 <code>cechAlexanderAffine_isCoproduct</code>・各項の弱始性 <code>cechAlexanderAffine_weaklyInitial</code>・小さい site の Čech データ <code>affineCechNerveData</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechSiteNerve.lean">AffineCechSiteNerve:33・40・47</a>）、反対圏での弱終性 <code>affineCechSmall_weaklyTerminal</code>（:53）。</p>
+<p><b>底変換との両立（項ごと）.</b> 有界 prism の射 \(f:(A,(d))\to(A',(d'))\) について、各項の完備テンソル積 \(C^n\widehat\otimes_AA'\) に δ 構造と prism を与え、\(A'\) 上の模型の項と、両脚・δ 構造・イデアルの像・座標を保つ同型で結ぶ <code>cechAlexanderAffine_baseChange</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechPrismBaseChange.lean">AffineCechPrismBaseChange:49</a>）。係数変更は全単体射に自然で、交代余面複体の余鎖写像 <code>affineCechCoefficientCochainMap</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechCoefficientComplex.lean">AffineCechCoefficientComplex:46</a>）を与える。導来の形：各項は \((p,d)\) 完全平坦 <code>affineEnvelopeTerm_completelyFlat</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineEnvelopeDerivedBaseChange.lean">AffineEnvelopeDerivedBaseChange:49</a>）で、完備導来底変換は実際の完備テンソル積で、さらに \(A'\) 側の項そのもので計算される <code>affineEnvelopeTermCompletedBaseChangeIso</code>・<code>affineEnvelopeTermCompletedBaseChangeToTargetIso</code>（:56・99）。これらは項ごとの同型で、Tot・\(\Delta\) の底変換（命題 4.3.5）ではない。</p>
+<p><b>選んだ模型との比較.</b> この模型から命題 4.3.3 の選んだ模型の複体への比較は擬同型 <code>affineToChosenCech_quasiIso</code>（<a href="../../../SerrePositivity/BhattScholze/Prismatic/AffineCechChosenComparison.lean">AffineCechChosenComparison:72</a>）。この模型が \(\Delta_{R/A}\) を計算することは drafts の <code>cechAlexanderAffine_computes</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/CechAlexander.lean">drafts/A0/CechAlexander.lean:277</a>）。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>（補った。原典は証明を書かない）\(B_0^n=A\langle X_0,\dots,X_n\rangle\)、\(B^n=A\{X_0,\dots,X_n\}^\wedge\)（完備自由 δ-\(A\) 代数）で、\(\ker(B^n\to R')\) は \(I\) と \(X_i-X_0\)（\(1\le i\le n\)）で生成される。\(X_0,X_1-X_0,\dots,X_n-X_0\) も \(B^n\) の自由 δ 変数なので、envelope は \(Y_i=(X_i-X_0)/d\) を添加したもの</p>
+\[C^n=A\{X_0,X_1,\dots,X_n\}\{\tfrac{X_1-X_0}d,\dots,\tfrac{X_n-X_0}d\}^\wedge\;\cong\;A\{X_0,Y_1,\dots,Y_n\}^\wedge\]
+<p>（\(X_i=X_0+dY_i\) で \(X_i\) が消える）であり、完備自由 δ-\(A\) 代数そのもの（例 3.5.2 の変数変換した形）。完備自由 δ 代数の構成は係数の底変換と可換なので \(C^n\widehat\otimes_AA'\cong A'\{X_0,Y_1,\dots,Y_n\}^\wedge=C'^n\)。余面・余退化写像は変数 \(X_i\) の添字の付け替えで与えられ、係数によらない式なので、この同型は余単体的構造と両立する。\(C^n\) は \(A\) 上 \((p,I)\) 完全平坦なので、導来の完備底変換も同じものを与える。</p>
+</div>
+<div class="box">
+<p class="label">原典との差</p>
+<p>原典は 1 変数、Lean は \(r\) 変数。「底変換と可換」は Lean では項ごとの同型（全単体射に自然）として示し、Tot の段階の主張は命題 4.3.5 に置く。</p>
+</div>
+
+<h4 class="item">命題 4.3.5（原典 Lemma 4.20：底変換） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(R\) を \(p\) 完全に滑らかな \(A/I\) 代数とし、\((A,I)\to(A',I')\) を有界 prism の射で、\(A\to A'\) が有限の \((p,I)\) 完全 Tor 振幅を持つとする。\(R':=R\widehat\otimes_AA'\) と書くと、自然な射は同型 \(\Delta_{R/A}\widehat\otimes^L_AA'\simeq\Delta_{R'/A'}\) を与え、\(\overline\Delta_{R/A}\) についても同様。</p>
+<p>（原典の続く注意）HT 比較（原典 Thm 4.11）を示した後では Tor 振幅の仮定は外せる（原典 Cor 4.12）。この補題は HT 比較の証明に使うので、この段階では外せない。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない（drafts）。<code>prismaticCohomology_baseChange</code>・<code>hodgeTateCohomology_baseChange</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:103・128</a>）。限り方：\(R=(A/d)\langle X_1,\dots,X_r\rangle\)、\(R'=(A'/d')\langle X_1,\dots,X_r\rangle\) の場合だけ。結論は \(D(A')\) の可逆な辺の存在で、自然な射の指定は含まない。Tor 振幅の仮定は Koszul 版 <code>Derived.HasFiniteCompleteTorAmplitude</code>（:60）。原典 Construction 6.1(3) の α に沿う特別な場合 <code>crystallineCoverMap_prismaticCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A1/HodgeTateComparison.lean">drafts/A1/HodgeTateComparison.lean:247</a>）。</p>
+<p>本体にある部品：項ごとの比較（注意 4.3.4 の Lean）と、α の完全 Tor 振幅の上界 3 <code>crystallineCoverMap_torAmplitude</code>（<a href="../../../SerrePositivity/BhattScholze/Prism/Basic/CrystallineCoverCompleteTor.lean">CrystallineCoverCompleteTor:39</a>。振幅は半自由模型の上の <code>HasCochainCompleteTorAmplitude</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean">CochainCompleteTorAmplitude:37</a>））。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>見れば分かることと Prop 3.13 (2)（命題 3.5.1）の底変換の性質から、命題 4.3.3 の複体の構成は \(A\to A'\) に沿う \((p,I)\) 完備な底変換と弱い意味で可換：余単体的環 \(C^\bullet((R/A)_\Delta,\mathcal O_\Delta)\) の項ごとの導来 \((p,I)\) 完備底変換 \(C^\bullet\widehat\otimes_AA'\) は \(\Delta_{R'/A'}\) を計算する。（補った）実際、\(B_0\widehat\otimes_AA'\to R'\) は再び完備多項式代数からの全射で、\(B\widehat\otimes_AA'\) はその完備自由 δ-\(A'\) 代数、Prop 3.13 (2) により \(C\widehat\otimes_AA'\) はその envelope。\(C^n\) は \(A\) 上 \((p,I)\) 完全平坦なので導来底変換は離散で古典的な完備テンソルに一致する。よって \(C^\bullet\widehat\otimes_AA'\) は \(R'/A'\) に対する命題 4.3.3 の複体。</p>
+<p>あとは、\(A\to A'\) が有限の \((p,I)\) 完全 Tor 振幅を持つので、補題 4.3.7（原典 Lemma 4.22）により \((p,I)\) 完備底変換 \(-\widehat\otimes^L_AA'\) が \((p,I)\) 完備な余単体的 \(A\) 加群の totalization と交換すること（各項は離散なので \(D^{\ge0}\)）。\(\overline\Delta\) は \(\Delta\) の場合を \(I\) で割って従う（補った：\(I\) は可逆なので \(A/I\otimes^L_AA'\) は \(I\otimes_AA'\to A'\) のコファイバー。この射は単射（\(A'\) は \(I'\) ねじれを持たない）で、像は剛性（命題 3.2.1）により \(IA'=I'\)。よって \(A/I\otimes^L_AA'=A'/I'\) で、\(\overline\Delta_{R/A}\widehat\otimes^L_AA'=\Delta_{R/A}\widehat\otimes^L_AA'\otimes^L_{A'}A'/I'\)）。</p>
+</div>
+<div class="box">
+<p class="label">原典との差</p>
+<p>drafts の主張は有限変数の完備多項式代数の場合だけ（使う場面、原典 Construction 6.1(3)・Prop 6.2・Thm 6.4 の帰着はどれも多項式代数）で、「自然な射が同型」ではなく可逆な辺の存在を述べる。Tor 振幅は Koszul 複体で測る（補題 4.3.7 の囲み）。</p>
+</div>
+
+<h4 class="item">命題 4.3.6（原典 Lemma 4.21：étale 局所化） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(R\to S\) を \(p\) 完全に滑らかな \(A/I\) 代数の \(p\) 完全 étale 射とする。このとき自然な射 \(\overline\Delta_{R/A}\widehat\otimes^L_RS\to\overline\Delta_{S/A}\) は同型。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない。drafts にもない。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p><b>関手 \(F\).</b> \(R\to S\) に沿うスカラー制限 \((S/A)_\Delta\to(R/A)_\Delta\) は左随伴 \(F:(R/A)_\Delta\to(S/A)_\Delta\) を持つ（対象を環の図式とみているので左随伴。原典脚注 11）。\((B\to B/IB\leftarrow R)\) に対し、\(p\) 完全 étale な射 \(B/IB\to B/IB\widehat\otimes^L_RS\) は Lemma 2.18（命題 2.2.4）により \((p,I)\) 完全 étale な δ 射 \(B\to B_S\) に一意に変形し、\(F(B\to B/IB\leftarrow R):=(B_S\to B_S/IB_S\simeq B/IB\widehat\otimes^L_RS\leftarrow S)\)。（補った）随伴性：\((S/A)_\Delta\) の対象 \(E\) と \(B\to E\)（\(R\) 上）が与えられると、\(B/IB\widehat\otimes_RS\to E/IE\) が決まり、\(B\to B_S\) の \((p,I)\) 完全 étale 性による持ち上げの一意存在で \(B_S\to E\) が一意に決まる。左随伴なので \(F\) は余積を保ち、弱始対象を弱始対象に送る（\(E\) のスカラー制限への射を随伴で移す）。</p>
+<p><b>本体.</b> 命題 4.3.3 の \((C^\bullet\to C^\bullet/IC^\bullet\leftarrow R)\) を取ると \(C^\bullet/IC^\bullet\) は \(\overline\Delta_{R/A}\) を計算し、これは零次の項（弱始対象）の Čech 脈体。\((D^\bullet\to D^\bullet/ID^\bullet\leftarrow S):=F(C^\bullet\to\cdots)\) は \(F\) が余積と弱始対象を保つので再び弱始対象の Čech 脈体で、\(D^\bullet/ID^\bullet\) は \(\overline\Delta_{S/A}\) を計算する。よって自然な射 \(C^\bullet/IC^\bullet\widehat\otimes^L_RS\to D^\bullet/ID^\bullet\) が同型であることを示せばよい。項ごとには \(F\) の構成から同型。Tot との交換は補題 4.3.7 から（補った：\(C=R\)、\(J=(p)\)、\(R\to S\) は \(p\) 完全平坦なので \(p\) 完全 Tor 振幅 0、各項 \(C^n/IC^n\) は離散で \(D^{\ge0}\)）。</p>
+</div>
+<div class="box">
+<p class="label">原典との差（D24）</p>
+<p>Lean では述べない。HT 比較は有限変数の完備多項式代数の場合に限って示し、滑らかな代数への延長は étale 局所化ではなく、多項式代数からの左 Kan 延長（原典 Construction 7.6 の形）で扱う（D24）。</p>
+</div>
+
+<h4 class="item">命題 4.3.7（原典 Lemma 4.22：完備底変換と totalization） <span class="vtag v-no">未確認</span> <span class="vtag v-supp">補った筋あり</span></h4>
+<div class="box claim">
+<p class="label">主張</p>
+<p>\(C\) を有限生成イデアル \(J\) を持つ可換環、\(C\to C'\) を有限の \(J\) 完全 Tor 振幅を持つ可換環の射とする。このとき \(J\) 完備な底変換関手 \(-\widehat\otimes^L_CC'\) は \(D^{\ge0}\) の totalization と交換する。</p>
+</div>
+<div class="box lean">
+<p class="label">Lean</p>
+<p>本体にない（drafts）。原典の一般形 <code>Derived.completedBaseChange_tot_comm</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A0/BaseChange.lean">drafts/A0/BaseChange.lean:73</a>）：\(J=(x_1,\dots,x_r)\)、\(D^{\ge0}(C)\) に値をとる余単体的対象 \(\Delta\to D(C)\) の極限錐を、完備底変換 <code>completedBaseChange</code> で写すと \(D(C')\) の極限錐。Tor 振幅は <code>Derived.HasFiniteCompleteTorAmplitude</code>（:60）：任意の \(K\in D^{\ge m}(C)\) について \((K\otimes^L_CC')\otimes_{C'}\mathrm{Kos}(C';x)\) の \(H^i\) が \(i\lt m-c\) で零。本体には同じ形の振幅の定義が半自由模型の上に <code>HasCochainCompleteTorAmplitude</code>（<a href="../../../SerrePositivity/HomologicalAlgebra/CochainCompleteTorAmplitude.lean">CochainCompleteTorAmplitude:37</a>）としてある。</p>
+</div>
+<div class="box proof" data-supplemented>
+<p class="label">証明</p>
+<p>\(M^\bullet\) を \(D^{\ge0}\) の余単体的対象、\(M\) をその totalization とし、自然な射 \(\mathrm{Tot}(M^\bullet)\widehat\otimes^L_CC'\simeq\mathrm{Tot}(M^\bullet\widehat\otimes^L_CC')\) を示す。\(M^\bullet\) の代わりに \(n\) 骨格 \(M^{\le n}\) を使えば主張は明らか（補った：\(\mathrm{Tot}(M^{\le n})\) は有限極限で、完備底変換は完全関手）。</p>
+<p><b>帰着.</b> ある \(c\ge0\) があって、\(K\in D^{\ge n}(C)\) なら \(K\widehat\otimes^L_CC'\in D^{\ge n-c}(C')\)（全 \(n\ge0\)）であればよい。（補った）\(\mathrm{Tot}(M^\bullet)\to\mathrm{Tot}(M^{\le n})\) のファイバーは \(D^{\ge n+1}\) にあるので、底変換後はファイバーが \(D^{\ge n+1-c}\)。底変換した側 \(M^\bullet\widehat\otimes^L_CC'\) の各項は \(D^{\ge -c}\) なので、その \(\mathrm{Tot}\to\mathrm{Tot}^{\le n}\) のファイバーも \(D^{\ge n+1-c}\)。よって両辺は次数 \(\lt n-c\) で \(n\) 骨格の場合と一致し、\(n\) は任意。</p>
+<p><b>Koszul 複体による評価.</b> 生成元 \(x_1,\dots,x_r\in J\) を選ぶ。関手 \(K\mapsto(K\otimes^L_CC')\otimes^L_{C'}\mathrm{Kos}(C';x_1,\dots,x_r)\) が \(D^{\ge n}\) を \(D^{\ge n-c}\) に送る \(c\) を見つければよい。実際そのとき同じ \(c\) で任意の \(m\ge1\) について \(K\mapsto(K\otimes^L_CC')\otimes^L_{C'}\mathrm{Kos}(C';x_1^m,\dots,x_r^m)\) も \(D^{\ge n}\) を \(D^{\ge n-c}\) に送り（補った：\(\mathrm{Kos}(x^m)\) は \(\mathrm{Kos}(x)\) の有限回の拡大で、\(D^{\ge n-c}\) は拡大で閉じる）、\(m\) について逆極限を取れば完備化が得られる（\(R\lim\) は \(D^{\ge k}\) を保つ）。さて</p>
+\[(K\otimes^L_CC')\otimes^L_{C'}\mathrm{Kos}(C';x_1,\dots,x_r)\simeq\bigl(K\otimes^L_C\mathrm{Kos}(C;x_1,\dots,x_r)\bigr)\otimes^L_{\mathrm{Kos}(C;x_1,\dots,x_r)}\mathrm{Kos}(C';x_1,\dots,x_r)\]
+<p>で、\(K\mapsto K\otimes^L_C\mathrm{Kos}(C;x)\) は \(D^{\ge n}\) を \(D^{\ge n-r}\) に送り（Koszul 複体は次数 \([-r,0]\) の有限自由複体）、\(N\mapsto N\otimes^L_{\mathrm{Kos}(C;x)}\mathrm{Kos}(C';x)\) は Tor 振幅の仮定からある \(a\) について \(D^{\ge m}\) を \(D^{\ge m-a}\) に送る。よって \(c=a+r\) でよい。</p>
+</div>
+<div class="box">
+<p class="label">原典との差</p>
+<p>Lean の Tor 振幅は標的の Koszul 複体 \(\mathrm{Kos}(C';x)\) で測る（a0-design §2.9 の注意 D4-04）。商 \(C/J\) で測る版とは、\(x\) が標的で正則列でないとき最大 \(r\) だけずれるが、有限であることは同時に成り立ち、主張は同じ。原典の証明が実際に使うのも Koszul 複体の形。</p>
+</div>
 
 <h2>リファクタの候補</h2>
 <p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>

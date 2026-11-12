@@ -92,6 +92,10 @@ layers, and no KST, dg or E∞ code (one remaining model-category dependency, it
   docstring states the source and the scope of what is quoted, applied directly where it is used.
   The two deferred K-theory statements are kept apart from the quotations. Completion is judged
   with `#print axioms` and `#print sorries`, not by the absence of a direct `sorry`.
+- **Citations in docstrings (2026-11-12).** Docstrings cite the source by its own numbering
+  (for example "BS 著者版 Lemma 2.15", "HTT 5.5.2.9", a Kerodon or Stacks tag). They do not cite the
+  study notes (`exposition/`), their numbering, task labels (T2-n) or refactor labels (BR, R); the
+  notes cite Lean, not the other way. Refactor candidates live in `formalization-plans/refactor-ledger.md`.
 - **No hypothesis bundles.** No structure or class whose fields are unproved statements
   (`Setup34`, `LengthAlgebraProps`, `LengthAlgebraData` are not to be reintroduced). Mathematical
   structures (`NormalizedLength`, categories, functors, resolutions) carry their laws, and

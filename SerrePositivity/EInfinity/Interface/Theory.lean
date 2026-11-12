@@ -1,6 +1,8 @@
 module
 
 public import Mathlib.Algebra.CharP.Lemmas
+public import Mathlib.Algebra.Category.Grp.EquivalenceGroupAddGroup
+public import SerrePositivity.KST.LocalizingInvariants.SpectrumHomotopyFunctor
 public import Mathlib.Algebra.Homology.Embedding.CochainComplex
 public import Mathlib.AlgebraicTopology.AlternatingFaceMapComplex
 public import SerrePositivity.EInfinity.Interface.Core
@@ -20,7 +22,7 @@ public import SerrePositivity.InfinityCategories.HA.StableInfinityCategories.Bin
 
 ## 概要
 HA §3.2.2–3.2.4 の忘却と余極限、零次環、係数変更、厳密な入力の実現を指定する。
-DAG XIII Construction 2.2.6 の冪作用は半線形な変換で受け取る。
+DAG XIII Construction 2.2.6 の冪作用はスペクトルへの忘却の自然自己変換で受け取る。
 
 ## 方針
 同じ忘却関手に対する自然比較を保持し、証明済みの中核に残りのデータを加える。
@@ -203,28 +205,43 @@ structure EInfinityTheory extends EInfinityCore.{u} where
       (_root_.SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.TheInfinityCategoryQC.nativeConeLeg (ofCosimplicialCdga_cone S X).val
         (ULift.up (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex (⦋0⦌ : SimplexCategory)))).edge
 
+  /-- D79：同じ導来圏から実際の Ω スペクトルの準圏への忘却。 -/
+  toSpectra (S : Type u) [CommRing S] :
+    SerrePositivity.InfinityCategories.Project.DerivedCategories.derivedInfinityCategory S ⟶
+      SerrePositivity.KST.Spectra.Sp.{u}
+  /-- 係数制限は台のスペクトルを変えない。 -/
+  toSpectra_restrict {S T : Type u} [CommRing S] [CommRing T] (f : S →+* T) :
+    _root_.SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes.FunctorIso
+      (restrictD f ≫ toSpectra S) (toSpectra T)
+  /-- スペクトルの整数 π と複体の H の、射に自然な比較。 -/
+  toSpectra_homologyIso (S : Type u) [CommRing S] (i : ℤ) :
+    hoMap (toSpectra S) ⋙
+      SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor (-i) ⋙
+        CommGrpCat.toAddCommGrp ≅ additiveCohomologyOnHo S i
   powerOp0 (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] :
-    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (forget k) (forget k ≫ restrictD (frobenius k p))
+    _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.FunctorHom (forget k ≫ toSpectra k) (forget k ≫ toSpectra k)
   powerOp0_zero (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (x : (CAlg k) _⦋0⦌) (a : ((pi0 k).obj (SSet.HomotopyCategory.mk x)).right) :
     let e := (pi0_forget k).app (SSet.HomotopyCategory.mk x)
-    let α := (cohomologyOnHo k 0).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x)
-    let res := (restrictD_homologyIso (frobenius k p) 0).app
+    let α := (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor 0 ⋙
+      CommGrpCat.toAddCommGrp).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x)
+    let cmp := (toSpectra_homologyIso k 0).app
       (SSet.HomotopyCategory.mk (atVertex (forget k) x))
-    res.hom (α (e.hom a)) =
-      e.hom (a ^ p)
+    α (cmp.inv (e.hom a)) = cmp.inv (e.hom (a ^ p))
   powerOp0_pos (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (x : (CAlg k) _⦋0⦌) (n : ℤ) (hn : 0 < n) :
-    (cohomologyOnHo k (-n)).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x) = 0
+    (SerrePositivity.KST.LocalizingInvariants.SpectrumHo.piFunctor n ⋙
+      CommGrpCat.toAddCommGrp).map (_root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x) = 0
   powerOp0_discrete (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (B : RingAlgebra k) (f : B ⟶ (restrictRingAlgebra (frobenius k p)).obj B)
       (hf : ∀ a : B.right, f.right.hom a = a ^ p) :
     letI := quasicategory k
     let x := atVertex (discrete k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
-      SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (discrete k ≫ forget k)) ≫
+      (hoMap (toSpectra k)).map (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (discrete k ≫ forget k)) ≫
         (((discrete_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex B)).map (forget k)).hom ≫
-        ((restrict_forget (frobenius k p)).app x).hom
+        ((restrict_forget (frobenius k p)).app x).hom) ≫
+        (((toSpectra_restrict (frobenius k p)).precomp (forget k)).app x).hom
   powerOp0_tot (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p]
       (X : CosimplicialRingAlgebra k)
       (f : X ⟶ X ⋙ restrictRingAlgebra (frobenius k p))
@@ -232,9 +249,10 @@ structure EInfinityTheory extends EInfinityCore.{u} where
     letI := quasicategory k
     let x := atVertex (ofCosimplicial k) (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)
     _root_.SerrePositivity.InfinityCategories.Project.LocalizationAndKanExtensionAuxiliaries.FunctorCategories.functorHomEvaluate (powerOp0 k p) x =
-      SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (ofCosimplicial k ≫ forget k)) ≫
+      (hoMap (toSpectra k)).map (SSet.HomotopyCategory.homMk ((nerve.edgeMk f).map (ofCosimplicial k ≫ forget k)) ≫
         (((ofCosimplicial_restrict (frobenius k p)).app (_root_.SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.nerveVertex X)).map (forget k)).hom ≫
-        ((restrict_forget (frobenius k p)).app x).hom
+        ((restrict_forget (frobenius k p)).app x).hom) ≫
+        (((toSpectra_restrict (frobenius k p)).precomp (forget k)).app x).hom
 
 /-- 自然比較の成分を台の加法同型として読む。 -/
 def EInfinityTheory.restrictD_homology (E : EInfinityTheory.{u})

@@ -54,7 +54,7 @@ Delta が上の層（Prismatic・Andre）を import しているのは三か所�
 
 - 一本化の障害（台帳にない）：ℤ の標準 δ 構造が `private def integerDelta`（`Delta/Distinguished/PrimeLocalIntegers:43`）で、外から使えない。ℤ 上の δ 構造の存在と一意性（`integerFrobenius_exists` :32）も非公開。
 - ℤ 版 `FreeDeltaRing` を名前で使う利用者は 4 ファイル（Distinguished/Universal 19 か所、Free/FreeDeltaFrobeniusFlat 50、Prism/Basic/UniversalOrientedFrobenius 4、drafts A1 3）。比較 `relativeFreeDeltaStructure_int_eq`（:238）は監査だけが使う。
-- 案：ℤ の δ 構造と、ℤ が δ 環の始対象であること（Ex 2.6 の Lean の形）を公開の宣言にし（§2 のノートの例 2.1.17 がこれを必要とする）、`FreeDeltaRing` を相対版の abbrev にする。
+- 案：ℤ の δ 構造と、ℤ が δ 環の始対象であること（Ex 2.6 の Lean の形）を公開の宣言にし（§2 のノートの例 2.1.8 がこれを必要とする）、`FreeDeltaRing` を相対版の abbrev にする。
 
 ### R2-6 δ 環のテンソル積を一本にする（台帳 T2-0 は閉じられる）
 
@@ -88,7 +88,7 @@ Delta が上の層（Prismatic・Andre）を import しているのは三か所�
   - `Delta/Perfect/DeltaPerfection` の規約「lim_φ はない（A3 で要る）」（計画の書き込み）。
   - `Delta/Distinguished/Distinguished:215`「BSBS 著者版」、`Prism/Basic/OrientedPrism:57–58`「判定BS 著者版」（空白の抜け）。
   - 「宣言名・名前空間・型は統合前のまま」が 11 ファイル、節の見出しの「（旧 Delta/…）」が 30 ファイル・228 か所。
-- **ノートの番号を docstring が引いている**：Delta の 7 ファイル（DeltaRing・DeltaQuotient・DeltaColimit・DeltaWitt・RelativeFreeDelta・FreeDeltaRing・FreeDeltaFrobeniusFlat）が「命題 2.1.5 (4)」のようにノートの番号を直接引く。今回の加筆では §2.1 の既存の番号を保った。docstring は原典の番号（BS 著者版 Lemma 2.n）で引く形にそろえるのがよい（推奨）。そうすればノートの番号を振り直せる。
+- **ノートの番号を docstring が引いている**：Delta の 7 ファイル（DeltaRing・DeltaQuotient・DeltaColimit・DeltaWitt・RelativeFreeDelta・FreeDeltaRing・FreeDeltaFrobeniusFlat）が「勉強ノート第 2 章の命題 2.1.5 (4)」のようにノートの番号を引く。**ユーザーの方針（11-12）：Lean の docstring は原典の番号で引き、ノートへの参照は置かない。** 本体全体の一覧は `lean-docstrings-citing-notes.md`（22 か所）。ノートの §2.1 は 11-12 に原典の順に振り直したので、これらの docstring の番号は今のノートとずれている。
 
 ### R2-10 小さな一般化（見立て）
 
@@ -128,7 +128,7 @@ Mathlib（rev e6bbacd0e）にあるもの：Witt ベクトル（Frobenius は一
 
 ## 3. ユーザーに確かめたい点（ノートの側）
 
-1. **§2.1 の番号**：docstring 7 ファイルがノートの番号を引いているため、既存の 2.1.1〜2.1.14 を保ち、新しい三項目（Rem 2.3・Rem 2.5・Ex 2.6）を 2.1.15〜2.1.17 として原典の順の位置に置いた。ページ上で番号が順に並ばない。R2-9 の docstring の直しの後に振り直すか、このままにするか。
+1. **§2.1 の番号**（決定済み、11-12）：Lean の docstring はノートを引かない方針になったので、ノートの §2.1 を原典の順に 2.1.1〜2.1.17 と振り直した。
 2. **Rem 2.29 の読み方**：原典の「ただ一つの δ 構造」は、「この φ を持つ δ 構造がただ一つ」と読まないと成り立たない（\(\mathbb Z_p[x]/(x^2)\) では \(x\mapsto pcx\) も Frobenius の持ち上げ、\(p=2\) の \(\mathbb Z_p[x]/(x^p-1)\) では \(x\mapsto -1\) も）。ノートの証明の中に注として書いた。
 3. **補った証明の筋**：原典が「容易」「同様」とだけ書く所を補った箇所がある（Ex 2.20 (3)(4)、Rem 2.22 の Witt 座標、Def 2.42 の後の二つの段落、Cor 2.44 の手順 4、Warning 2.41 の \(1/p\notin R_i\)、Lemma 2.18 の細部、Rem 2.5 の単体的な延長）。ノートでは補ったことを明記してある。
 4. **原典の誤植と判断した所**：Def 2.42 の後の「\((f_1,\dots,f_r)\pi_0(B)\)」は \((f_1,\dots,f_n)\)、Cor 2.39 の証明の「Remark 2.36」は Rem 2.37、Rem 2.37 末尾の \(D_{(x)}(\mathbb Z_{(p)})\) は \(D_{(x)}(\mathbb Z_{(p)}\{x\})\)。

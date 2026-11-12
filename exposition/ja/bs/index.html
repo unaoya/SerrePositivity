@@ -31,14 +31,15 @@
 <tr><td><a href="02-delta.html">2</a></td><td>δ 環：定義と W₂ 切断、延長、distinguished 元、完全 δ 環、pd 包と envelope の平坦性（§2.5 は Delta/DividedPower の 74 本と照合済み）</td><td>§2</td><td>精読済み</td></tr>
 <tr><td><a href="03-prism.html">3</a></td><td>prism と完全 prism：剛性、有界・完全 prism、完全化、Thm 3.10、prismatic envelope（定義・命題の形、Prism/ の 88 本と André の下の §3 の内容と照合済み）</td><td>§3</td><td>精読済み</td></tr>
 <tr><td><a href="04-site.html">4</a></td><td>prismatic site、HT 比較の定式化、Čech–Alexander 複体（A0）</td><td>§4</td><td>精読済み</td></tr>
-<tr><td><a href="05-hodge-tate.html">5</a></td><td>HT 比較と結晶比較（A1）</td><td>§5・§6</td><td>精読済み（2026-11-03 骨組み反映）</td></tr>
+<tr><td><a href="05-hodge-tate.html">5</a></td><td>標数 p の HT 比較と結晶比較</td><td>§5</td><td>全項目（2026-11-12）</td></tr>
+<tr><td><a href="06-hodge-tate-mixed.html">6</a></td><td>混標数の HT 比較と de Rham 比較</td><td>§6</td><td>全項目（2026-11-12）</td></tr>
 <tr><td><a href="07-semiperfectoid.html">7</a></td><td>semiperfectoid 環の perfectoid 化（Cor 7.3、Thm 7.4）、導来 prismatic コホモロジー（Construction 7.6）、André の補題（Thm 7.14）</td><td>§7</td><td>精読済み</td></tr>
 <tr><td><a href="08-perfection.html">8</a></td><td>一般の perfection：Def 8.2〜Cor 8.14（E3 の欄の大部分）</td><td>§8</td><td>精読済み</td></tr>
 <tr><td><a href="10-almost.html">10</a></td><td>almost 数学と almost purity：Lemma 10.3、Thm 10.9、Thm 10.11</td><td>§10</td><td>精読済み</td></tr>
 </table></div>
 
 <h2>原典との差の方針</h2>
-<p>各章の末尾に「原典の項目一覧」（その節の全項目の必要性と形式化の状況）と「原典との差の評価」（D 番号）を置く。§1 は §2 以降の定義の要約、§9（étale 比較）と §11〜§18 は §8・§10 から参照されないので一覧に含めない。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。HT 比較は迂回せず原論文どおり形式化する（2026-10-25 決定）。</p>
+<p>項目ごとの必要性と形式化の状況の正本は地図 <code>research/bs-coverage/items.csv</code>。見直しの済んだ章（第 2・3 章、2026-11-12 から）は、ノートに項目の表を置かず、各項目の見出しに地図から確認のラベルを付け、原典との差（D 番号の評価を含む）を各項目の下に置く。まだの章は章末に「原典の項目一覧」と「原典との差の評価」がある。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。HT 比較は迂回せず原論文どおり形式化する（2026-10-25 決定）。</p>
 <ul>
   <li><b>Lean の方が簡単で、保つもの</b>：D1（W₂ 切断）、D3（Lemma 2.25）（<a href="02-delta.html">2</a>）、D5（向き付き prism）（<a href="03-prism.html">3</a>）、D10（Prop 7.2 を経由しない Cor 7.3）、D11 の André 経由版（<a href="07-semiperfectoid.html">7</a>）、D13（Lemma 10.3 の Tor 独立性）（<a href="10-almost.html">10</a>）。</li>
   <li><b>原典の方が簡単で、揃えるもの</b>：D6（剛性の仮定、2026-10-26 に揃えた）、D9（Fontaine 比較の正則版。扱いは台帳の BR16）（<a href="03-prism.html">3</a>）、D11（Thm 7.4、W3 で実施済み）（<a href="07-semiperfectoid.html">7</a>）。</li>
@@ -49,7 +50,7 @@
 <h2>読書ルート</h2>
 <ul>
   <li><b>E3 の欄から逆にたどる</b>：第 0 章 §1 の表 → 第 8 章（Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14）→ 第 10 章（Thm 10.11）。何を作れば入力が消えるかを先に把握する。</li>
-  <li><b>原典の順に積み上げる</b>：第 2 章 → 第 3 章 → 第 4 章 → 第 5 章 → 第 7 章 → 第 8 章 → 第 10 章。A0〜A9 の実装順と同じ。</li>
+  <li><b>原典の順に積み上げる</b>：第 2 章 → 第 3 章 → 第 4 章 → 第 5 章 → 第 6 章 → 第 7 章 → 第 8 章 → 第 10 章。A0〜A9 の実装順と同じ。</li>
 </ul>
 
 <h2>リファクタ記録</h2>
@@ -59,8 +60,9 @@
 <ul>
   <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
   <li>原典の項目ごとに見出し（<code>&lt;h4 class="item"&gt;</code>、例「命題 2.2.1（原典 Lemma 2.15）」）を一つ置き、その下に<b>主張</b>・<b>Lean</b>・<b>証明</b>の三つの囲み（<code>box claim</code>・<code>box lean</code>・<code>box proof</code>）をこの順に並べる（2026-11-12 から）。Lean の囲みには対応する宣言名（<code>&lt;code&gt;</code>）とファイル（<code>../../../SerrePositivity/...</code> への相対リンク、「ファイル:行」）を書き、本体にないときは「本体にない」と書く。証明は方針・鍵になる補題まで追い、原典が省いた所を補ったときはそう書く。原典との差は同じ見出しの下の最後に「原典との差」の囲みで置く。</li>
-  <li>原典との差（経路・規約・一般性）は本文では独立した囲みにし、章末の「原典との差の評価」に D 番号で利点・欠点・方針をまとめる。</li>
-  <li>章末に「原典の項目一覧」を置く。中身は地図 <code>research/bs-coverage/items.csv</code> から <code>build_items.py</code> で生成し（印 <code>&lt;!-- items:begin --&gt;</code>〜<code>&lt;!-- items:end --&gt;</code> の間）、手で直さない。項目の状態を変えるときは地図を直して生成し直す。<code>00-map.html</code> の節ごとの表も同じ。</li>
+  <li>議論の正しさは形式化で確かめる。各項目の見出しには <code>build_items.py</code> が地図の状態から確認のラベル（Lean で確認／一部 Lean で確認／未確認）を付ける。原典が省いた所を補った証明は、証明の囲みに <code>data-supplemented</code> を付け、ラベル「補った筋あり」を出す（Lean では確かめていない印）。</li>
+  <li>原典との差（経路・規約・一般性）は、その項目の見出しの下の最後に「原典との差（Dn）」の囲みで置き、D 番号の評価（Lean の違い・利点・欠点・どちらが簡単か・方針）もそこに書く。D 番号は全章で通す。</li>
+  <li>項目の表は地図と重複するのでノートに置かない（見直しの済んだ章から外す。<code>build_items.py</code> の <code>NO_ITEMS_TABLE</code>）。<code>00-map.html</code> の節ごとの集計は地図から生成する。</li>
   <li>リファクタの候補はノートに書かない。コードの問題に気づいたら、事実（何が・どこに・根拠）を <code>research/</code> にまとめ、形式化の調整役に渡す（2026-11-12 から）。</li>
   <li>BS 固有の節として「形式化の状況」（証明済み／界面で引用／未着手を宣言名付きで）を置く。作業項目（旧「形式化の課題」）はノートに書かず、形式化の側で管理する（2026-11-12 から）。</li>
   <li>末尾に「この章で押さえること」を置く。</li>
