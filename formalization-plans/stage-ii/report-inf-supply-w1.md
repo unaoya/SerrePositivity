@@ -931,3 +931,48 @@ E : SSet.{u+1} が presentable なら、ι : Type u と M : ι → E₀ が存�
 - `intervalPostcompose_triangleFamily_exists`：指定辺による元の後合成は、同じ三辺を持つ全パラメータの三角形で表せる。
 - `unstraighteningPostcompositionIso`：指定辺の後合成を元の全空間の相対合成と比較する全パラメータの同型。
 - `unstraighteningPinchedEdgeLiftPostcompositionIso`：元の pinched 後合成は、同じ辺の実際の持ち上げによる相対後合成と全族で同型。
+
+
+## 19. 停止点4：G9-1〜3 完了（11-13朝）
+
+**段4を完了。段4の後の仕事は③-bとB3の状況で調整役が決める指示なので、ここで区切る。**
+3b-3の実装には着手していない。
+
+数学コミット **`0d2db4d50`**。新規3本・121行・4宣言。
+§12の改訂見込み350〜800行に対し121行（下端−229、上端−679）、現行上限1,600行以内。
+完成が途中報告の行数に達する前なので、今回は完成報告を兼ねる。
+短くなった理由は、単体集合版left Quillen A、通常commaの指定同型、right版uliftが既にあり、
+元の写像の比較だけを追加して済んだため。各版の理論を複製していない。
+
+### 型と再利用
+
+- **G9-1 `nerveMap_isLeftCofinal_of_weaklyContractible_comma`**：
+  P・Q : Type u、Category.{u}、F : P ⥤ Q。各 q について `nerve (CostructuredArrow F q)` が弱可縮なら
+  `IsLeftCofinal (nerveMap F)`。`nerveLeftKanShapeIso F q` が射影を保つ元の同型であることを使い、
+  `isLeftCofinal_of_weaklyContractible_slices` へ渡す。始対象の存在やnerveのKan性は仮定しない。
+- **G9-2 `isLeftCofinal_ulift`**：
+  任意の小さい単体集合の射 f がleft cofinalなら `(SSet.uliftFunctor.{v,u}).map f` もleft cofinal。
+  vは任意（要求されたu+1への場合を含む）。`hf.op`、既存 `isRightCofinal_ulift`、
+  `uliftOppositeIso` の矢の同型、反転判定を順に使う。大きい試験fibrationを小さいものに制限していない。
+- **G9-3 `nerve_isWeaklyContractible_of_contractionCospan`**：
+  C : Type u、Category.{u}、v : C、T : C ⥤ C、`𝟭 C ⟶ T` と `const v ⟶ T` があればnerve Cは弱可縮。
+  一般単体集合版 `isWeaklyContractible_of_contractionCospan` も供給。
+  元の二つの自然変換を `nerveNatTransHomotopy` へ移し、Kan標的の関手空間で
+  `functorIsoPrecompositionOfHomotopy_kan` を反転・合成して点への射の弱同値性を得る。
+  Cの始対象・終対象、nerve CのKan性、元の自然変換の逆は要求しない。
+
+### 検証
+
+- 上の3モジュールを同時対象ビルドし成功（2,440 jobs）。ログ `/tmp/is-w1/stage4-build-1.log`。
+- `/tmp/is-w1/stage4-audit.lean` に明示importし全4宣言を監査。`stage4-audit.log` は終了コード0、
+  **4宣言すべてsorry-free、標準三公理のみ**。
+- 鍵は `--wait 3600`、整理券一枚、ビルド・監査中のみ保持し解放済み。
+  `git diff --cached --check` 成功。既存の数学・入口・全体監査登録は変更していない。
+- 停止点3と4の合計は **新規19本・1,005行・25宣言**。
+  各対象監査は完了。登録後のrootビルド・全体F2監査は調整役に委ねる。
+
+### 登録対象
+
+- [WeakContractibleContractionCospan](../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/WeakContractibleContractionCospan.lean)：56行。
+- [LeftCofinalUniverseLift](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/LeftCofinalUniverseLift.lean)：30行。
+- [NerveLeftQuillenA](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/NerveLeftQuillenA.lean)：35行。
