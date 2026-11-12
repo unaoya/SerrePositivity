@@ -4378,3 +4378,23 @@ drafts の sorry を新しい証明として数えていない。
 最初の追加モジュールは `PowerOperation/EilenbergMacLaneLevels`。
 シフト・smart 切断・Γ の実関手と、同じ Γ の正規化が指定切断へ戻る自然同型を供給する。
 ここでは構造射・Ω 条件・V 自体の完成を主張しない。対象ビルドは未回収。
+
+### 65.1 各段・基点・Kan 性の最初の検証済み束
+
+`PowerOperation/` の三本を対象ビルドと監査に通した。
+
+| モジュール | 行数 | 供給 |
+| --- | ---: | --- |
+| EilenbergMacLaneLevels | 50 | 実シフト・smart 切断・Γ の全関手、同じ Dold–Kan の余単位による正規化の自然同型 |
+| EilenbergMacLanePoints | 42 | 単体的加群の零基点を全次数・全射で保持する関手、台の段との一致 |
+| EilenbergMacLaneKan | 39 | 単位からの dg Hom の実 Γ との同型、既存 N4 の線形充填からの Kan 性 |
+| **計** | **131** | |
+
+ビルド `/tmp/bsw16/em-levels-03.log` は成功（3,784 jobs）、新規警告なし。
+監査 `/tmp/bsw16/audit-em-levels.log` は **三本・29 宣言・標準三公理のみ**。
+本体に sorry・追加公理なし。終了を回収し、鍵と整理券を返却済み。
+新規登録候補はこの三本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+共通入口・共通監査は変更しない。
+
+ここで止まらず、π と正規化ホモロジーの既存の一般比較を各段へ接続する。
+構造射・Ω 条件・単射化の全関手性・局所化と native V はまだ未供給。
