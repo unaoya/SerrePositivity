@@ -620,6 +620,10 @@ import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCom
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.StableSourceCompactGeneration
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.IndCompletionsOfInfinityCategories.UnconditionalStableCompactGeneration
 import SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.FinitaryFunctorsAndCompactObjects.FiniteColimitClosureUnconditional
+import SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalTriangleFamilyComposition
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationInitialDiagramSpan
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingDiagramRestriction
+import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingOverNaturality
 import Lean.Util.CollectAxioms
 import Lean.Linter.Deprecated
 
@@ -705,7 +709,7 @@ run_cmd do
   for (name, _) in env.constants.toList do
     let some idx := env.getModuleIdxFor? name | continue
     let mod := env.header.modules[idx.toNat]!.module
-    unless (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod || #[`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.AdjointRepresentability, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones, `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible].contains mod) do continue
+    unless (oldAuditPrefix1.isPrefixOf mod || klw1AuditOwners1.contains mod || #[`SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.AdjointRepresentability, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.EquivalenceColimitCones, `SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TruncatedObjectsAndHigherHomotopyCategories.InitialVerticesContractible, `SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalTriangleFamilyComposition, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationInitialDiagramSpan, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingDiagramRestriction, `SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.RightFibrationMappingOverNaturality].contains mod) do continue
     let axioms ← collectAxioms name
     unless axioms.all (#[``propext, ``Classical.choice, ``Quot.sound].contains ·) do
       throwError "F2: unexpected axioms in {name}: {axioms}"

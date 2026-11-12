@@ -3,7 +3,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.1.1.2,none,,IsRelativeColimitCone は普通の余スライスで相対始対象を判定する。active 余スライスの色への制限と、全ての補助対象との直和で検査する operadic 余極限の条件は見つからなかった。,,not_found,
 3.1.1.3,none,,絶対余極限と相対余極限の比較はある。通常の q-余極限と operadic q-余極限がどちら向きにも含意しない例は確認できなかった。,,not_found,
 3.1.1.4,none,,相対余極限を前合成で移す宣言は準圏同値に関するもので、左 cofinal 射による弱 operadic q-余極限の保存は見つからなかった。,,not_found,
-3.1.1.5,partial,SerrePositivity.InfinityCategories.trivialKanFibration_of_leftFibration_of_isQCatEquivalence @ SerrePositivity/InfinityCategories/F1/Fibrations/LeftFibrationTrivialComparison.lean:42,仮定：準圏間の左ファイブレーションが準圏同値である（Lean は ψ という指定を外し、左ファイブレーション性を仮定）。結論：自明 Kan ファイブレーションになる（ψ に関する同値判定の一方向に一致）。ψ の左ファイブレーション性は型に含まれない。,,found,direction
+3.1.1.5,partial,SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.trivialKanFibration_of_leftFibration_of_isQCatEquivalence @ SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/LeftFibrationTrivialComparison.lean:44,仮定：準圏間の左ファイブレーションが準圏同値である（Lean は ψ という指定を外し、左ファイブレーション性を仮定）。結論：自明 Kan ファイブレーションになる（ψ に関する同値判定の一方向に一致）。ψ の左ファイブレーション性は型に含まれない。,,found,direction
 3.1.1.6,none,,恒等辺の余錐は通常の余極限になる。任意の active 同値について全ての補助対象との直和の弱 operadic 余極限性を与える型は確認できなかった。,,not_found,
 3.1.1.7,none,,相対余錐の境界充填と通常の相対余極限の同値はある。active 条件と色の終点を課した弱 operadic 余極限の境界充填判定は見つからなかった。,,not_found,
 3.1.1.8,none,,点ごとの余極限錐を関手準圏の余極限錐にまとめられる。形状の積から来る余錐を operadic な直和で合成して再び operadic 余極限になる結果は見つからなかった。,,not_found,
@@ -63,7 +63,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.2.2.6,none,,dg operad の forget_reflectsIsomorphisms が反映するのは台複体の厳密な同型。指定の ∞ operad 上の代数間の同値を全ての色での評価で反映する宣言は見つからなかった。,,not_found,
 3.2.2.7,none,,右ファイブレーションの余スライスの比較と左 Kan 拡張を探した。右ファイブレーションに沿う前合成が、指定の充満包含に関する q-相対左 Kan 拡張を保つ型は確認できなかった。,,not_found,
 3.2.2.8,none,,準圏の内部 Hom と局所化に沿う相対関手の比較を確認した。flat categorical fibration に沿う従属内部 Hom が categorical fibration を保ち、相対左 Kan 拡張を移す宣言は見つからなかった。,,not_found,
-3.2.2.9,partial,SerrePositivity.InfinityCategories.exists_pointwiseLimitCone @ SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean:25 | SerrePositivity.InfinityCategories.isLimitCone_iff_pointwise_of_hasPointwiseLimits @ SerrePositivity/InfinityCategories/Core/FunctorPointwiseLimitExistence.lean:84,仮定：任意の二つの単体集合を図式・パラメーターとし、準圏 X で全評価図式が極限を持つ（Lean が強い：底 D が終準圏の場合に限る）。結論：点ごとの極限錐が自然な族に延長でき、関手 ∞ 圏の極限性が点ごとの極限性と同値（一致する絶対極限の特殊例）。,,found,special
+3.2.2.9,partial,SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.exists_pointwiseLimitCone @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/FunctorPointwiseLimitExistence.lean:29 | SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.isLimitCone_iff_pointwise_of_hasPointwiseLimits @ SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/FunctorPointwiseLimitExistence.lean:89,仮定：任意の二つの単体集合を図式・パラメーターとし、準圏 X で全評価図式が極限を持つ（Lean が強い：底 D が終準圏の場合に限る）。結論：点ごとの極限錐が自然な族に延長でき、関手 ∞ 圏の極限性が点ごとの極限性と同値（一致する絶対極限の特殊例）。,,found,special
 3.2.3.1,none,,dg operad の forget_createsSiftedColimitsOfShape と準圏の前層の sifted 余極限を確認した。任意の sifted 単体集合 K に対する代数切断の閉性と色ごとの余極限判定は見つからなかった。,,not_found,
 3.2.3.2,none,,dg operad の sifted 余極限を作る忘却と通常圏の CommMon を確認した。対称モノイダル ∞ 圏で CAlg(C) が指定形状の余極限を持ち、忘却がその余錐を検出する比較は見つからなかった。,,not_found,
 3.2.3.3,none,,dg 代数の余極限構成は図式ごとの有限テンソル冪の保存を仮定し、sifted 形状ではこの仮定を外せる。κ-small な ∞ operad 上の代数に任意の κ-small 余極限を与える型は見つからなかった。,,not_found,
@@ -87,7 +87,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.3.1.2,none,,一色 dg operad は arity 別の演算を束ねる。色列間の写像を零項・同値な単項成分で判定する semi-inert の特徴づけは見つからなかった。,,not_found,
 3.3.1.3,none,,通常の相対関手空間で余デカルト辺の保存が合成で閉じる宣言はある。inert 辺を前合成したとき semi-inert 条件が同値となる結果は見つからなかった。,,not_found,
 3.3.1.4,none,,"関手準圏の余スライスと指定辺で絞った関手空間を確認した。下方閉部分 S で一色を付加し、他の頂点では同値とする active 図式の拡張空間 Ext(σ,S) は見つからなかった。",,not_found,
-3.3.1.5,partial,SerrePositivity.InfinityCategories.kanComplex_of_isGroupoid @ SerrePositivity/InfinityCategories/Core/KanCharacterization.lean:23,仮定：準圏のホモトピー圏が亜群（Lean は Ext の全辺が同値であることを既知とする）。結論：その準圏が Kan 複体となる（Ext が亜群と分かった後の結論に一致）。色の準圏の Kan 性から Ext の全辺の同値性を導く部分は型に含まれない。,,found,component
+3.3.1.5,partial,SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets.kanComplex_of_isGroupoid @ SerrePositivity/InfinityCategories/Kerodon/TheLanguageOfInfinityCategories/FromCategoriesToSimplicialSets/KanCharacterization.lean:26,仮定：準圏のホモトピー圏が亜群（Lean は Ext の全辺が同値であることを既知とする）。結論：その準圏が Kan 複体となる（Ext が亜群と分かった後の結論に一致）。色の準圏の Kan 性から Ext の全辺の同値性を導く部分は型に含まれない。,,found,component
 3.3.1.6,none,,通常の相対関手の制限と右 Kan 延長の境界充填を確認した。Ext の単体添字の前合成と、指定の最初の非付加辺への制限が自明 Kan になる型は見つからなかった。,,not_found,
 3.3.1.7,none,,相対関手空間を底のファイバーに評価できる。追加した色の最終到達先で Ext を余積分解し、各成分を単色終点の Ext と同値にする型は見つからなかった。,,not_found,
 3.3.1.8,none,,準圏同値に沿う余スライスの比較と Kan 複体の Whitehead 比較を確認した。operad の近似に沿う Ext のホモトピー同値は見つからなかった。,,not_found,
@@ -121,7 +121,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.3.3.10,none,,相対関手が指定辺を余デカルト辺に送る型を確認した。加群射の inert 性を、底での inert 性と全ての始点評価 Cartesian 持ち上げの像の inert 性で判定する宣言は見つからなかった。,,not_found,
 3.3.3.11,none,,一般の余スライスと相対余スライスの左ファイブレーションを確認した。Fin∗ の null 射上の写像空間を零からの写像空間と比較し、その可縮性を示す型は見つからなかった。,,not_found,
 3.3.3.12,none,,相対関手の持ち上げ補題と余デカルト底変換を確認した。平坦な null 射の始点評価に沿う相対 Alg の写像が categorical fibration となる結果は見つからなかった。,,not_found,
-3.3.3.13,partial,SerrePositivity.InfinityCategories.fullSubcomplexOnVertices_quasicategory @ SerrePositivity/InfinityCategories/Core/FullSubcomplexFibration.lean:51,仮定：準圏 X と頂点条件 P（HA の相対 Alg の全体が準圏という先行結果を用い、P を inert 保存に取る）。結論：頂点条件による充満部分複体が準圏となる（この成分は一致）。O⊗ への categorical fibration 性は型に含まれない。,,found,component
+3.3.3.13,partial,SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.InnerFibrations.fullSubcomplexOnVertices_quasicategory @ SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/InnerFibrations/FullSubcomplexFibration.lean:56,仮定：準圏 X と頂点条件 P（HA の相対 Alg の全体が準圏という先行結果を用い、P を inert 保存に取る）。結論：頂点条件による充満部分複体が準圏となる（この成分は一致）。O⊗ への categorical fibration 性は型に含まれない。,,found,component
 3.3.3.14,none,,相対関手の前合成の持ち上げ補題を確認した。K_O の null 射の包含で制限する加群から代数への写像について、平坦性を使って categorical fibration を得る宣言は見つからなかった。,,not_found,
 3.3.3.15,none,,相対関手の底ファイバー評価を確認した。始点が h0i の semi-inert 射はすべて null という同定に基づく、加群と相対 Alg の h0i ファイバーの同型は見つからなかった。,,not_found,
 3.3.3.16,none,,準圏同値の引き戻しの前合成比較はある。加群の再引き戻しによる指定比較と、その射影の generalized ∞ operad fibration 性は見つからなかった。,,not_found,
@@ -142,7 +142,7 @@ number,status,declarations,reason,axioms,check,partial_kind
 3.4.1.12,none,,一般の相対極限の定義と存在条件はある。Fin∗ の inert 辺と恒等辺の四角形の持ち上げで、補集合の inert 条件による相対極限判定と延長の存在を与える型は見つからなかった。,,not_found,
 3.4.2.1,partial,ModuleCat.forget₂AddCommGroupIsEquivalence @ Mathlib/Algebra/Category/Grp/ZModuleEquivalence.lean:51,仮定：通常の整数加群とアーベル群（Lean は HA が §3.4 冒頭で挙げる単位代数 ℤ の場合に限る）。結論：整数加群のアーベル群への忘却関手が圏同値となる（この場合の基礎圏で一致）。一般の coherent O の ∞ operad の同値は型に含まれない。,,found,special
 3.4.2.2,none,,固定した充満添字の相対左 Kan 延長全体からの制限が、全局所余極限の存在を仮定すれば自明 Kan となる宣言を確認した。余デカルトに変動する添字のファイバーごとの左 Kan 条件で絞り、実際に延長可能な像 B′ だけを標的にする比較は見つからなかった。,,not_found,
-3.4.2.3,partial,SerrePositivity.InfinityCategories.nonempty_cocartesianEdgeLift @ SerrePositivity/InfinityCategories/F1/Transport/Objects.lean:43,仮定：単体集合の写像 p が余デカルトファイブレーション（Lean は HA の単位を持つ operadic fibration より強く、全ての底の辺で持ち上げがある場合に限る）。結論：指定の始点から底の辺への余デカルト持ち上げがある（semi-inert 辺に適用した結論は一致）。単位から semi-inert 辺だけの持ち上げを構成する部分は型に含まれない。,,found,stronger-hyp
+3.4.2.3,partial,SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TwistedArrowsAndCospans.nonempty_cocartesianEdgeLift @ SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TwistedArrowsAndCospans/Objects.lean:45,仮定：単体集合の写像 p が余デカルトファイブレーション（Lean は HA の単位を持つ operadic fibration より強く、全ての底の辺で持ち上げがある場合に限る）。結論：指定の始点から底の辺への余デカルト持ち上げがある（semi-inert 辺に適用した結論は一致）。単位から semi-inert 辺だけの持ち上げを構成する部分は型に含まれない。,,found,stronger-hyp
 3.4.3.1,none,,相対極限の定義と関手圏での点ごとの極限判定を確認した。可変の O-加群から代数と底への射影について、対角での相対極限の延長と検出を得る型は見つからなかった。,,not_found,
 3.4.3.2,partial,ModuleCat.hasLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:140 | ModuleCat.forget₂AddCommGroup_preservesLimits @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:168 | ModuleCat.forget₂AddCommGroup_reflectsLimit @ Mathlib/Algebra/Category/ModuleCat/Limits.lean:185,仮定：環 A の通常の加群と小さい通常圏の図式（Lean は HA の通常の可換 A-加群からアーベル群への忘却の場合に限る）。結論：加群の極限が存在し、忘却が極限を保存・反映する（固定代数のファイバーでの延長と極限判定の通常圏の場合に一致）。一般の相対 q-極限は型に含まれない。,,found,special
 3.4.3.3,none,,環準同型に沿う通常の制限関手はある。可変代数上の固定色加群の射影が Cartesian であり、Cartesian 辺がその色の基礎圏の同値で検出される型は見つからなかった。,,not_found,
