@@ -51,5 +51,7 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfCoproduct.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/HopfNullaryUnitMap.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/NullaryEvaluation.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardCoefficients.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardCoefficients.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeStandardExt.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeCoefficientCompatibility.lean"
 ]

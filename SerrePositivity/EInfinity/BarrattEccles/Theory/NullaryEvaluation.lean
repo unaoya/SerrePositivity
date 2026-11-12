@@ -127,5 +127,51 @@ lemma nullarySourceInsert_operation :
       rw [hc (∑ _ : Fin m, 0) (by simp)]
       simp only [coefficientUnitInsert, comp_whiskerRight, Category.assoc, C, T]
 
+/-- 零入力係数を各入力で評価して得る、指定された単位入力の有限族。 -/
+def nullaryUnitPower (Y : (operad R).Algebra) (a : ℕ) :
+    𝟙_ (Complex R) ⟶ power Y.carrier a :=
+  (tensorUnitFamilyIso R a).inv ≫ tensorFamilyMap a (fun _ =>
+    (nullaryCoefficientIso R).inv ≫ (ρ_ ((operad R).arity 0)).inv ≫ Y.action 0) ≫
+    eqToHom (tensorFamily_const Y.carrier a)
+
+/-- 係数消去を実際の代数の作用へ移すと、前半の入力への指定単位族の代入となる。 -/
+lemma nullaryPrefixDelete_action (Y : (operad R).Algebra) (a b : ℕ) :
+    (nullaryPrefixDelete R a b ▷ power Y.carrier b) ≫ Y.action b =
+      ((operad R).arity (a + b) ◁ ((λ_ (power Y.carrier b)).inv ≫
+        (nullaryUnitPower R Y a ▷ power Y.carrier b) ≫
+          (appendIso Y.carrier a b).hom)) ≫ Y.action (a + b) := by
+  have ht (i j : ℕ) (h : i = j) :
+      eqToHom (congrArg (fun k => (operad R).arity k ⊗ power Y.carrier k) h) ≫
+        Y.action j = Y.action i := by cases h; exact Category.id_comp _
+  have hv : (nullaryInputFamily R a ≫
+      tensorFamilyMap a (fun _ => (ρ_ ((operad R).arity 0)).inv)) ≫
+      tensorFamilyGenerator Y.carrier (fun j => (operad R).arity j ⊗ power Y.carrier j)
+        Y.action a (fun _ => 0) = nullaryUnitPower R Y a := by
+    simp only [nullaryUnitPower, nullaryInputFamily, tensorFamilyGenerator_asMap,
+      tensorFamilyMap_comp, Category.assoc]
+  calc
+    _ = nullarySourceInsert R Y.carrier a b ≫
+        (operad R).iteratedOperationTensor Y.carrier a b (fun _ => 0) ≫
+        eqToHom (congrArg (fun j => (operad R).arity j ⊗ power Y.carrier j)
+          (by simp : (∑ _ : Fin a, 0) + b = b)) ≫ Y.action b := by
+      simpa only [Category.assoc] using
+        (congrArg (fun q => q ≫ Y.action b)
+          (nullarySourceInsert_operation R Y.carrier a b)).symm
+    _ = _ := by
+      rw [ht ((∑ _ : Fin a, 0) + b) b (by simp), Y.iteratedOperationTensor_action]
+      have h := congrArg (fun f => (operad R).arity (a + b) ◁ (f ▷ power Y.carrier b)) hv
+      simp only [comp_whiskerRight, whiskerLeft_comp] at h
+      simp only [nullarySourceInsert, tensorHom_id, whiskerLeft_comp, comp_whiskerRight,
+        Category.assoc]
+      rw [reassoc_of% h]
+
+/-- 指定単位射の同じ有限族として、零入力族を読む。 -/
+lemma nullaryUnitPower_eq (Y : (operad R).Algebra) (a : ℕ)
+    (h0 : IsIso ((hopf R).counit.map.app (FiniteBijection.of 0))) :
+    nullaryUnitPower R Y a = (tensorUnitFamilyIso R a).inv ≫
+      tensorFamilyMap a (fun _ => (hopfTensorUnitMap (hopf R) h0 Y).hom) ≫
+        eqToHom (tensorFamily_const Y.carrier a) := by
+  rw [nullaryUnitPower, barrattEcclesTensorUnitMap_nullary R h0 Y]
+
 end BarrattEccles
 end SerrePositivity.EInfinity

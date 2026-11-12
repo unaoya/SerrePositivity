@@ -1,4 +1,6 @@
 [
   "SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation",
-  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients"
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility"
 ]

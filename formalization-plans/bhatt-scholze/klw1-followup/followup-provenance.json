@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 53,
+  "combined_body_files": 55,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,20 +23,24 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3414,
+  "a_lines": 3624,
   "a_complete": false,
-  "a_stop": "forecast exceeds approved 3600-line cap",
-  "a_cap": 3600,
+  "a_stop": "forecast exceeds approved 3800-line cap",
+  "a_cap": 3800,
   "a_forecast": [
-    3634,
-    3734
+    3874,
+    3994
   ],
-  "resumed_after_main": "7ed68f3a5",
+  "resumed_after_main": "f5baa8763",
   "resumed_modules": [
     "SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation",
-    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients"
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility"
   ],
-  "resumed_build_targets": 2,
-  "resumed_audited_declarations": 37,
-  "resumed_standard_axioms_only": true
+  "resumed_build_targets": 3,
+  "resumed_audited_declarations": 54,
+  "resumed_standard_axioms_only": true,
+  "resumed_build_log": "/tmp/bsw16/free-coefficient-08.log",
+  "resumed_audit_log": "/tmp/bsw16/audit48.log"
 }
