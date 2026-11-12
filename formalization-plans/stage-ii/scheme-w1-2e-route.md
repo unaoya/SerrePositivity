@@ -1443,3 +1443,42 @@ Mathlib の `LocalizedModule` は、係数加群 A が P 代数である環の�
 原典 Stacks 30.5.2(2) と 30.19.2 の Hⁱ に対応する **Čech 版**として docstring に明記した。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しない。非 flat な H とテンソル積の交換は主張しない。
 
 次は R/J の実際の閉厚化との追加の係数表示を検証する。実際の Čech Frobenius、共通アフィン細分、filtered colimit の比較が残り、**停止点 2e ではない**。最終出力の `AugmentedRingCechExact` と利用側の型は変更していない。
+
+
+## 2026-11-12：R/J のテンソル表示と既存の閉厚化との照合
+
+数学コミット `5d5943541`。対象と直接 importer のビルド成功（4,329 jobs）、別実行の監査は **7,172 宣言・標準三公理のみ**。3 モジュールを登録し、15 件の数学宣言を追加した。前の検証入力 701 の変更は入口の import 追加だけで、新規を含む 704 入力を記録した。共有鍵 `--wait 3600` を一回のビルド・監査ごとに返して実行した。
+
+M⊗_R(R/J) と既存の実際の閉厚化 M/JM を、Mathlib のテンソルと商の比較、および拡大イデアルの作用の係数制限から同定した。R/J 線形な同型へ昇格し、元の R[X] の作用と変更先の (R/J)[X] の作用を保つことを示した。元の M からの射影は m↦m⊗1 の式で一致する。
+
+テンソル像の Proj 次数成分が既存の商係数の閉厚化の次数成分へ対応することを両方向で示し、既存の次数付き加群の同型を標準開へ送る関手を使った。これにより、R/J にテンソルした加群の実際の標準開図式と、前に実装した商係数の閉厚化の図式の同型、および Čech H の同型を得た。元の任意の次数を保つ R[X] 線形写像について、加群の射、標準開の図式、Čech H の三段で自然性を示した。変更先の射は以前からの `reesClosedCoefficientModuleMap`、`reesClosedCoefficientModuleChartMap`、`reesClosedCoefficientModuleCechMap` そのもので、別の条件付きの射へ置き換えていない。
+
+R→R/J の平坦性は仮定しない。ここで同定したのは、基底変更後の加群と既存の閉厚化の **実際の二つの表示**であり、H(M)⊗_R(R/J) と H(M/JM) の交換ではない。新しい自然性は、以前の商係数表示と I 進系・形式関数の自然性へ、同じ商写像を通して合成できる。
+
+登録モジュール：
+
+- `ReesClosedTensorComparison`
+- `ReesClosedTensorChart`
+- `ReesClosedTensorNaturality`
+
+宣言と主張（ローカルな型クラス設定を除く 15 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedTensor_submodule_eq` | 拡大イデアルで定義した一段目の閉厚化は、実際の JM による商。 |
+| `reesClosedTensorEquiv` | 既存の閉厚化と右テンソルの比較。まず元の基底環上で線形に構成する。 |
+| `reesClosedTensorEquiv_tmul_mk` | テンソルと閉厚化の比較は、商環の代表を元の係数の作用として計算する。 |
+| `reesClosedTensorEquiv_smul` | 商係数の作用についても、テンソルと閉厚化の比較は線形。 |
+| `reesClosedTensorCoefficientEquiv` | 既存の R/J 係数の閉厚化との、R/J 線形な同型。 |
+| `reesClosedTensorCoefficientEquiv_tmul_one` | 閉厚化の比較は、元の加群からの射影を保つ。 |
+| `reesClosedTensorEquiv_polynomial_smul` | 商とテンソルの比較は、元の多項式環の作用を保つ。 |
+| `reesClosedTensorPolynomialEquiv` | 既存の閉厚化の多項式係数表示と、テンソルの多項式作用との同型。 |
+| `reesClosedTensorPiece_map_eq` | 次数成分のテンソル像は、既存の R/J 係数の商次数成分に一致する。 |
+| `reesClosedTensorPiece_mem_iff` | 商とのテンソル比較は、元の次数成分を両方向で対応させる。 |
+| `reesClosedTensorChartIso` | R/J にテンソルした加群の標準開図式と、既存の閉厚化の商係数図式との自然同型。 |
+| `reesClosedTensorCechIso` | R/J にテンソルした加群の実際の標準開と、閉厚化の商係数表示の Čech 比較。 |
+| `reesClosedTensorEquiv_naturality` | テンソルと閉厚化の比較は、元の多項式加群の射と可換。 |
+| `reesClosedTensorChartIso_naturality` | R/J による標準開の表示の同型は、次数を保つ加群写像に自然。 |
+| `reesClosedTensorCechIso_naturality` | R/J の実際の閉厚化の Čech 比較は、次数を保つ加群写像に自然。 |
+
+実際の Čech Frobenius、共通アフィン細分、filtered colimit の比較が残り、**停止点 2e ではない**。コホモロジーの docstring は原典 Stacks 30.20.4–30.20.5 の Hⁱ の比較に使う Čech 版と明記した。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しない。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。
