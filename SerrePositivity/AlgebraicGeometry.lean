@@ -847,3 +847,7 @@ public import SerrePositivity.AlgebraicGeometry.CechSupportOutsideCenter
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSupportPower
 
 public import SerrePositivity.AlgebraicGeometry.CechAlgebraAugmentation
+
+public import SerrePositivity.AlgebraicGeometry.AffineSectionAlgebraAugmentation
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraAugmentationInjective
