@@ -72,17 +72,31 @@
 <p>原典のコホモロジー（§4〜§6）と Construction 7.6 は一切使っていない。証明済みの部分は「環の圏での普遍性」で閉じていて、導来対象 \(S_{\mathrm{perfd}}\) はまだ一度も構成されていない。</p>
 
 <h2>4. 原典の節と形式化の状況</h2>
+<!-- sections:begin（build_items.py が research/bs-coverage/items.csv から生成。手で直さない） -->
+<p>原典の節ごとの項目数と、目標（E3 を消す）に要る項目の状況。状況の欄の意味は各章の「原典の項目一覧」と同じ。§1 は §2 以降の要約、§9 と §11〜§18 は今の目標の外で、章を置いていない。</p>
 <div class="table-wrap"><table>
-<tr><th>節</th><th>内容</th><th>状況</th><th>章</th></tr>
-<tr><td>§2</td><td>δ 環</td><td>§2.1〜§2.4 は一般のテンソル積と Ex 2.21 を除いて済み。pd 包（Lemma 2.36・Cor 2.39）は特殊形のみ、Lemma 2.38・§2.6 は未</td><td>2</td></tr>
-<tr><td>§3</td><td>prism、Thm 3.10、Prop 3.13</td><td>Thm 3.10・Lemma 3.5・3.9 済み。Prop 3.13 は向き付きの特殊形のみ</td><td>3</td></tr>
-<tr><td>§4</td><td>prismatic site、Lemma 4.8、Thm 4.11 の定式化</td><td>未形式化（Lemma 4.8 は有界な標的の形で済、André の下）</td><td>4</td></tr>
-<tr><td>§5・§6</td><td>結晶比較、HT 比較</td><td>未形式化</td><td>5</td></tr>
-<tr><td>§7</td><td>Cor 7.3、Thm 7.4、Construction 7.6、Thm 7.14</td><td>Cor 7.3・Thm 7.4・Thm 7.14 済み（別経路）。Construction 7.6 は未</td><td>7</td></tr>
-<tr><td>§8</td><td>Def 8.2〜Cor 8.14</td><td>Prop 8.13 環版のみ。他は E3 の欄として引用</td><td>8</td></tr>
-<tr><td>§10</td><td>Lemma 10.3、Thm 10.9、Thm 10.11</td><td>Lemma 10.3・Remark 10.7 済み。Thm 10.11 は E3 の integral 欄</td><td>10</td></tr>
-<tr><td>§9、§11〜§18</td><td>étale 比較、Nygaard、q-de Rham ほか</td><td>主定理に不要、対象外</td><td>—</td></tr>
+<tr><th>節</th><th>題</th><th>項目</th><th>要る</th><th>済</th><th>特別な場合</th><th>部品</th><th>drafts</th><th>界面</th><th>設計のみ</th><th>なし</th><th>章</th></tr>
+<tr><td>§1</td><td>序</td><td class="num">18</td><td class="num">11</td><td class="num">2</td><td class="num">6</td><td class="num"></td><td class="num">2</td><td class="num">1</td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§2</td><td>δ 環</td><td class="num">44</td><td class="num">33</td><td class="num">24</td><td class="num">9</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="02-delta.html#items-02">2</a></td></tr>
+<tr><td>§3</td><td>prism</td><td class="num">14</td><td class="num">12</td><td class="num">2</td><td class="num">10</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="03-prism.html#items-03">3</a></td></tr>
+<tr><td>§4</td><td>prismatic site と HT 比較の定式化</td><td class="num">22</td><td class="num">14</td><td class="num"></td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num"></td><td class="num">2</td><td class="num"></td><td><a href="04-site.html#items-04">4</a></td></tr>
+<tr><td>§5</td><td>標数 p の場合：HT 比較と結晶比較</td><td class="num">5</td><td class="num">4</td><td class="num"></td><td class="num">2</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="05-hodge-tate.html#items-05">5</a></td></tr>
+<tr><td>§6</td><td>混標数の HT 比較</td><td class="num">4</td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="05-hodge-tate.html#items-05">5</a></td></tr>
+<tr><td>§7</td><td>semiperfectoid 環と混標数の perfection</td><td class="num">15</td><td class="num">9</td><td class="num">3</td><td class="num">1</td><td class="num">3</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="07-semiperfectoid.html#items-07">7</a></td></tr>
+<tr><td>§8</td><td>混標数の perfection：一般の場合</td><td class="num">14</td><td class="num">11</td><td class="num"></td><td class="num">3</td><td class="num">1</td><td class="num">2</td><td class="num">5</td><td class="num"></td><td class="num"></td><td><a href="08-perfection.html#items-08">8</a></td></tr>
+<tr><td>§9</td><td>étale 比較定理</td><td class="num">7</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§10</td><td>almost purity</td><td class="num">13</td><td class="num">7</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="10-almost.html#items-10">10</a></td></tr>
+<tr><td>§11</td><td>perfectoid 環の étale コホモロジー次元</td><td class="num">1</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§12</td><td>qrsp の Nygaard filtration</td><td class="num">11</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§13</td><td>[BMS19] との比較</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§14</td><td>p 進 Tate 捻りと K 理論の奇数次消滅予想</td><td class="num">5</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§15</td><td>Nygaard filtration：相対の場合</td><td class="num">7</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§16</td><td>q 結晶コホモロジーと q de Rham コホモロジー</td><td class="num">22</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§17</td><td>AΩ との比較</td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§18</td><td>比較同型の一意性の判定法</td><td class="num">3</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td colspan="2"><b>計</b></td><td class="num"><b>211</b></td><td class="num"><b>105</b></td><td class="num"><b>34</b></td><td class="num"><b>38</b></td><td class="num"><b>15</b></td><td class="num"><b>10</b></td><td class="num"><b>6</b></td><td class="num"><b>2</b></td><td class="num"><b>0</b></td><td></td></tr>
 </table></div>
+<!-- sections:end -->
 
 <h2>5. E3 を消すための最小部分集合 A0〜A9</h2>
 <p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。合計の計画幅は約 35〜85 人週で、A0〜A3 の不確実性が最も大きい。</p>
