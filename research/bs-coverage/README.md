@@ -14,6 +14,7 @@
 - 集計（11-10 更新：BS-W11〜W13 と BS-D68 の段 2 が入った後。新しいファイル 113 本の docstring の原典番号から候補を出し、読むだけのエージェントが宣言の型を読んで判定、調整役が主な宣言の実在を確かめた。変わったのは 16 項目）：
   - status：none 99、proved_special 35、drafts 30、proved 28、parts_in_body 8、e3_input 7、design_only 4
   - 目標に必要な 105 項目の status：proved_special 31、drafts 29、proved 28、parts_in_body 8、e3_input 6、design_only 2、none 1
+- 11-12 夜の 2 回目の更新（ノート本文の書き直しのとき）：2.6・2.36・2.42・3.7・3.13・7.14 の宣言と note、4.20・4.22 を design_only から drafts に（drafts/A0/BaseChange に型）、3.9 は BR28 の実施を反映。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 15、drafts 12、e3_input 6
 - 11-12 夜の更新（生成器を作った回）：宣言の位置を `check_locations.py` で直した（drafts の行 43 件、drafts → 本体の移動 5 件）。移動に伴い 6.3 を本体に部品に（HT 写像・主張の型・結晶基底の同型は本体、一般の同型は drafts）、3.2・1.8 の note を直した。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 15、drafts 10、e3_input 6、design_only 2
 - 11-11 の更新（BS-W15 の停止点 1・2、BS-D69 の停止点 1 の後）：2.21・2.36・2.38・2.39・3.4 を本体（証明済み）、2.37・2.42 を本体（特別な場合）、4.18・6.4 を本体に部品に。
 - 11-12 夕の更新（BS-D69 停止点 3・BS-W17 停止点 5 の後）：7.3 を本体（特別な場合）に、5.1 を本体に部品に、7.10 に S′ と完全化を追記。目標に必要な 105 項目：proved_special 38、proved 34、parts_in_body 14、drafts 11、e3_input 6、design_only 2

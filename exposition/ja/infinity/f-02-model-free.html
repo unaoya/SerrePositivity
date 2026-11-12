@@ -24,13 +24,13 @@
 
 <p>単体的集合のホモトピー論は、伝統的には Quillen のモデル構造（Kan–Quillen モデル構造）の上で語られる。
 この章では、∞ 圏の基盤に必要な部分が<b>モデル構造なしで</b>展開できること、そして実際にこのリポジトリでそう証明されていることを説明する。
-あわせて、本当にモデル圏が必要な結果（「モデル圏 → ∞」の比較）を ModelBridge に分ける理由を述べる。</p>
+あわせて、本当にモデル圏が必要な結果（「モデル圏 → ∞」の比較）を ∞ 圏論の基盤の外に置く理由を述べる。</p>
 
 <!-- ============================================================ -->
 <h2>1. なぜモデル圏を避けるのか</h2>
 
 <ul>
-  <li><b>証明されていない入力がある。</b>単体的集合の Kan–Quillen モデル構造の存在（Hovey 定理 3.6.5）は、このリポジトリでは引用（<code>sorry</code>）のままである（<code>Inputs/Homotopy/KanQuillen.lean</code> の <code>kanQuillen_model_exists</code>）。主定理の経路にはないが、これに頼ると中核が未証明の入力に依存する。</li>
+  <li><b>証明されていない入力がある。</b>単体的集合の Kan–Quillen モデル構造の存在（Hovey 定理 3.6.5）は、このリポジトリでは引用（<code>sorry</code>）のままである（<code>Inputs/Homotopy/KanQuillen.lean</code> の <code>kanQuillen_model_exists</code>）。主定理の経路にはないが、これに頼ると基盤が未証明の入力に依存する。</li>
   <li><b>仮定の形で入り込むと消せない。</b><code>[ModelCategory SSet]</code> を仮定にした定理は、公理の監査には引っかからない。しかし、その仮定を満たすインスタンスがないので、使う場面では永久に仮定のまま残る（プロジェクトの方針で、主経路では禁止している）。</li>
   <li><b>∞ 圏論は、本来モデル構造なしで書ける。</b>Kerodon は Kan–Quillen モデル構造を使わずに ∞ 圏論を展開している。必要なのは、持ち上げ性質、small object argument、Kan 複体への写像のホモトピー類だけである。</li>
 </ul>
@@ -50,10 +50,10 @@
 \[
 X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \ast
 \]
-<p>つまり、関手的な Kan 置換 \(X \to RX\) である（<code>AnodyneKanReplacement.factorization : FunctorialFactorizationData anodyneExtensions J.rlp</code>、HA/Simplicial/AnodyneKanReplacement.lean:44）。
+<p>つまり、関手的な Kan 置換 \(X \to RX\) である（<code>AnodyneKanReplacement.factorization : FunctorialFactorizationData anodyneExtensions J.rlp</code>、HomotopicalAlgebra/Simplicial/AnodyneKanReplacement.lean:44）。
 これは small object argument（Mathlib）と anodyne の定義だけから作られており、モデル構造は使っていない。</p>
 
-<p>関連する一般的な補題もある：<code>generatedLeft_map</code>（HA/Generated/FunctorClosure.lean:70）。余極限を保つ関手 \(F\) が \(I\) を \(W\) に送るなら、\(I\) から生成される射（\({}^{\text{⧄}}(I^{\text{⧄}})\)）もすべて \(W\) に送る。
+<p>関連する一般的な補題もある：<code>generatedLeft_map</code>（HomotopicalAlgebra/Generated/FunctorClosure.lean:70）。余極限を保つ関手 \(F\) が \(I\) を \(W\) に送るなら、\(I\) から生成される射（\({}^{\text{⧄}}(I^{\text{⧄}})\)）もすべて \(W\) に送る。
 これは、宇宙の持ち上げが anodyne を保つこと、inner anodyne を保つことなどに使われる。</p>
 
 <!-- ============================================================ -->
@@ -61,7 +61,7 @@ X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \as
 
 <h3>3.1 端点の包含は anodyne</h3>
 <p>単体的集合 \(X\) について、端点の包含 \(X \to \Delta^1 \times X\)（\(0\) 側・\(1\) 側）は anodyne である
-（<code>endpoint_zero_anodyne</code>・<code>endpoint_one_anodyne</code>、HA/Simplicial/AnodyneIntervalEndpoints.lean:85・90）。
+（<code>endpoint_zero_anodyne</code>・<code>endpoint_one_anodyne</code>、HomotopicalAlgebra/Simplicial/AnodyneIntervalEndpoints.lean:85・90）。
 証明は、\(\Delta^0 \to \Delta^1\) が anodyne であることと、anodyne と単射の pushout-product が anodyne であること（Mathlib）から出る。</p>
 
 <h3>3.2 anodyne 局所化</h3>
@@ -69,7 +69,7 @@ X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \as
 \[
 \texttt{anodyneQ} : \mathbf{sSet} \to \mathbf{sSet}[\text{anodyne}^{-1}]
 \]
-<p>（<code>anodyneQ := SSet.anodyneExtensions.Q</code>、HA/Simplicial/AnodyneHomotopyLocalization.lean:101）。これは「空間のホモトピー圏」の一つの定義である。
+<p>（<code>anodyneQ := SSet.anodyneExtensions.Q</code>、HomotopicalAlgebra/Simplicial/AnodyneHomotopyLocalization.lean:101）。これは「空間のホモトピー圏」の一つの定義である。
 §3.1 から、ホモトピックな写像は anodyneQ で同じ射になる（<code>map_homotopy_eq</code>、同 :82）。</p>
 
 <!-- ============================================================ -->
@@ -80,7 +80,7 @@ X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \as
 <div class="table-wrap"><table>
 <tr><th>見方</th><th>定義</th><th>宣言</th></tr>
 <tr><td>(a) anodyne 局所化</td><td>\(\texttt{anodyneQ}(f)\) が同型</td><td><code>IsIso (anodyneQ.map f)</code></td></tr>
-<tr><td>(b) Kan 複体による判定</td><td>すべての Kan 複体 \(K\) について、前合成 \([Y, K] \to [X, K]\)（ホモトピー類）が全単射</td><td><code>KanTestDetection.Tests f</code>（HA/Simplicial/KanTestDetection.lean:47）。F1B の <code>IsWeakHomotopyEquivalence</code>（\(\pi_0\mathrm{Fun}(-, Z)\) で同じことを言う）もこの形</td></tr>
+<tr><td>(b) Kan 複体による判定</td><td>すべての Kan 複体 \(K\) について、前合成 \([Y, K] \to [X, K]\)（ホモトピー類）が全単射</td><td><code>KanTestDetection.Tests f</code>（HomotopicalAlgebra/Simplicial/KanTestDetection.lean:47）。<code>IsWeakHomotopyEquivalence</code>（Kerodon/KanComplexes）（\(\pi_0\mathrm{Fun}(-, Z)\) で同じことを言う）もこの形</td></tr>
 <tr><td>(c) Kan 置換と π_*</td><td>\(Rf : RX \to RY\) が π_* 同型</td><td>第 1 章 §3.2 の <code>KanPiIsomorphism</code></td></tr>
 </table></div>
 
@@ -106,26 +106,26 @@ X \xrightarrow{\ \text{anodyne}\ } RX \xrightarrow{\ \text{Kan fibration}\ } \as
 \[
 f : A \to B,\quad \text{各 } n \text{ で } f_n : A_n \to B_n \text{ が弱同値} \ \Longrightarrow\ \mathrm{diag}(f) \text{ は弱同値}
 \]
-<p>（<code>localized_diagonal_map</code>、HA/Simplicial/DiagonalLocalizedEquivalence.lean:55。弱同値は §4 の (a) の意味）。
+<p>（<code>localized_diagonal_map</code>、HomotopicalAlgebra/Simplicial/DiagonalLocalizedEquivalence.lean:55。弱同値は §4 の (a) の意味）。
 docstring にあるとおり、モデル構造は置かずに、anodyne 局所化で可逆性を読んでいる。
 証明は、Reedy 型の単射への分解（境界による分解系 <code>BoundaryFactorization.reedy_wfs</code>）と、§4 の Kan 複体による判定を組み合わせる。</p>
 <p class="meta">ただし、補助のファイル（BisimplicialCofibrancy・QuillenStandardFrame・StandardCosimplicial）が、末尾に Model の節を持っていたり、HomotopyFunctionComplex という名前のディレクトリにあったりする。そのため import の閉包にはモデル圏が入っている（§7）。</p>
 
 <!-- ============================================================ -->
-<h2>6. 本当にモデル圏が要るもの（ModelBridge）</h2>
+<h2>6. 本当にモデル圏が要るもの</h2>
 
-<p>次の結果は、主張そのものがモデル圏についてのものなので、モデル圏を避けることはできない。これらは中核の外の ModelBridge 層に置き、中核からは import しない。</p>
+<p>次の結果は、主張そのものがモデル圏についてのものなので、モデル圏を避けることはできない。これらは基盤の外（InfinityCategories/HTT/ModelCategoryAdjunctions・InfinityCategories/HA/ModelCategoryComparison・InfinityCategories/Project/ModelCategoryComparison、EInfinity/SimplicialLocalization）にある。</p>
 
 <div class="table-wrap"><table>
 <tr><th>結果</th><th>主張</th><th>いまの所在</th></tr>
-<tr><td>Quillen 随伴 → ∞ 随伴</td><td>モデル圏の間の Quillen 随伴 \(L \dashv R\) は、cofibrant かつ fibrant な対象のなす ∞ 圏の間に、導来随伴を誘導する</td><td><code>quillenCfDerivedAdjunction_exists</code>（InfinityCategories/HomotopyLimits/QuillenCfDerivedAdjunction.lean:101）ほか、HL の Quillen 系 42 本</td></tr>
-<tr><td>frame による写像空間</td><td>モデル圏での「導来写像空間」を cosimplicial・simplicial frame で作り、frame の選び方によらないこと（Hovey 第 5 章）</td><td>HA/HomotopyFunctionComplex、HL の ChosenQuillenFrameHom・FixedQuillenFrame* など</td></tr>
+<tr><td>Quillen 随伴 → ∞ 随伴</td><td>モデル圏の間の Quillen 随伴 \(L \dashv R\) は、cofibrant かつ fibrant な対象のなす ∞ 圏の間に、導来随伴を誘導する</td><td><code>quillenCfDerivedAdjunction_exists</code>（InfinityCategories/Kerodon/AdjointFunctors/AdjointFunctorsBetweenInfinityCategories/QuillenCfDerivedAdjunction.lean:103）ほか、HTT/ModelCategoryAdjunctions の QuillenCf*</td></tr>
+<tr><td>frame による写像空間</td><td>モデル圏での「導来写像空間」を cosimplicial・simplicial frame で作り、frame の選び方によらないこと（Hovey 第 5 章）</td><td>HomotopicalAlgebra/HomotopyFunctionComplex、ChosenQuillenFrameHom・FixedQuillenFrame* など</td></tr>
 <tr><td>モデル圏の ∞ 局所化</td><td>モデル圏 \(C\) の hammock 局所化は、弱同値での ∞ 局所化（<code>IsLocalization</code>）である</td><td><code>modelHammock_isLocalization</code>（EInfinity/SimplicialLocalization/ModelHammockLocalization.lean）</td></tr>
-<tr><td>モデル構造の弱同値との比較</td><td>単体的集合にモデル構造が与えられていれば、その弱同値は anodyneQ で可逆な射と一致する</td><td><code>weakEquivalences_iff_anodyneQ_isIso</code>（HA/Simplicial/AnodyneModelDetection.lean:108。モデル構造と射の族の一致を仮定として受け取る）</td></tr>
+<tr><td>モデル構造の弱同値との比較</td><td>単体的集合にモデル構造が与えられていれば、その弱同値は anodyneQ で可逆な射と一致する</td><td><code>weakEquivalences_iff_anodyneQ_isIso</code>（HomotopicalAlgebra/Simplicial/AnodyneModelDetection.lean:108。モデル構造と射の族の一致を仮定として受け取る）</td></tr>
 <tr><td>Kan–Quillen モデル構造の存在</td><td>単体的集合のモデル構造（Hovey 3.6.5）</td><td><code>kanQuillen_model_exists</code>（Inputs/Homotopy/KanQuillen.lean。<b>引用で、sorry</b>。主定理の経路にはない）</td></tr>
 </table></div>
 
-<p>ModelBridge を使うのは中核の外である。具体的には、EInfinity（E∞ 代数のモデル構造から ∞ 圏を作る部分、約 63 本）と、KST/SConstruction の EnrichedFunctorCollageNerve である。
+<p>モデル圏との比較を使うのは基盤の外である。具体的には、EInfinity（E∞ 代数のモデル構造から ∞ 圏を作る部分、約 63 本）と、KST/SConstruction の EnrichedFunctorCollageNerve である。
 「モデル圏で作ったものを ∞ 圏として使う」ときの橋渡しの役割を持つ。</p>
 
 <!-- ============================================================ -->
@@ -136,8 +136,8 @@ docstring にあるとおり、モデル構造は置かずに、anodyne 局所�
 <ol class="checks">
   <li>∞ 圏の基盤に必要な単体的ホモトピー論（Kan 置換、anodyne 局所化、弱同値、対角）は、持ち上げ性質と small object argument だけで展開でき、このリポジトリでもモデル構造なしで証明されている。</li>
   <li>弱同値は「Kan 複体へのホモトピー類で全単射」で定義すればよい。それが anodyne 局所化や π_* での定義と一致することは、<code>anodyneQ_isIso_iff_tests</code> と Whitehead の定理から出る。</li>
-  <li>本当にモデル圏が要るのは「モデル圏 → ∞」の比較（Quillen 随伴、frame、モデル圏の ∞ 局所化）だけで、それは中核の外の ModelBridge に置く。</li>
-  <li>中核にモデル圏が入り込むのは付随的な依存のせいである（2026-10-28 の調べ）。</li>
+  <li>本当にモデル圏が要るのは「モデル圏 → ∞」の比較（Quillen 随伴、frame、モデル圏の ∞ 局所化）だけで、それは基盤の外にある。</li>
+  <li>基盤にモデル圏が入り込むのは付随的な依存のせいである（2026-10-28 の調べ）。</li>
 </ol>
 </main>
 </body>

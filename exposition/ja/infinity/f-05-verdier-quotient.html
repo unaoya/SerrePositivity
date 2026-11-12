@@ -46,7 +46,7 @@
 
 <h3>2.1 ホモトピー圏の水準</h3>
 <p>三角圏の Verdier 商は古典的に、分数（屋根）\(x \xleftarrow{s} x' \xrightarrow{f} y\)（\(s\) の cofiber が \(A\) に入る）で射を表して作る。
-\(W_A\) が Ore 条件を満たすことが鍵である。∞ 圏 \(B\) のホモトピー圏の水準で、それに当たる性質が Stable/CofiberHoDenominators などに証明されている。</p>
+\(W_A\) が Ore 条件を満たすことが鍵である。∞ 圏 \(B\) のホモトピー圏の水準で、それに当たる性質が InfinityCategories/HA/StableInfinityCategories/CofiberHoDenominators などに証明されている。</p>
 <ul>
   <li>\(W_A\) は、ホモトピー圏の三角構造から決まる弱同値の族 <code>trW</code> と一致する（<code>cofiberStableEdges_iff_trW</code>）。</li>
   <li>二つのうち三つの性質（<code>cofiberStableEdges_twoOfThree</code>）。</li>
@@ -63,7 +63,7 @@
 \bigl|\,\mathrm{Span}_W(x, y)\,\bigr| \;\longrightarrow\; \mathrm{Map}_C(qx, qy)
 \]
 <p>ここで \(\mathrm{Span}_W(x, y)\) は、\(x \xleftarrow{w} x' \to y\)（\(w \in W\)）の形の span のなす ∞ 圏、\(|\cdot|\) はその groupoid 完備化（すべての辺を可逆にした Kan 複体）である。</p>
-<p><code>verdierFractionMappingComparison_isFullyFaithful</code>（LI/VerdierSpanCoherentContraction.lean:2328）。span の ∞ 圏は <code>fixedMarkedSpans B.obj (weakEquivalences i) x y</code>、比較写像は <code>fractionMappingComparison</code>。</p>
+<p><code>verdierFractionMappingComparison_isFullyFaithful</code>（InfinityCategories/Project/DerivedCategories/Verdier/Fractions/VerdierSpanCoherentContraction.lean:2333）。span の ∞ 圏は <code>fixedMarkedSpans B.obj (weakEquivalences i) x y</code>、比較写像は <code>fractionMappingComparison</code>。</p>
 </div>
 <p>\(W\) が Ore 型の条件を満たすので、span の圏は（分母について）filtered になる。そのため groupoid 完備化は、分母についての余極限
 \(\operatorname{colim}_{(x' \to x) \in W} \mathrm{Map}_B(x', y)\) とも書ける。これは Nikolaus–Scholze I.3 や 9 人論文の付録 A の公式の ∞ 版である。</p>
@@ -113,8 +113,8 @@ A &amp; \to &amp; B &amp; \to &amp; B/A \\
 \end{array}
 \]
 <ol>
-  <li>\(\mathrm{Ind}\,B\) は安定（<code>ind_isStable_unconditional</code>、F2）。その compact 対象は \(B\) の冪等完備化（<code>compactIndEquivalence</code>、F2/Compact）。<span class="tag">済</span></li>
-  <li>\(\mathrm{Ind}\,A \to \mathrm{Ind}\,B\) は余極限を保つ充満忠実な関手なので、右随伴を持つ（F2 の随伴関手定理）。そのため商は \(\mathrm{Ind}\,A\) の右直交 \((\mathrm{Ind}\,A)^{\perp}\) として、\(\mathrm{Ind}\,B\) の中に Bousfield 局所化で実現できる（F2 の <code>bousfieldReflection</code>）。<span class="tag">一部済</span> ただし Ind が presentable であることには、いまは余極限を持つことを仮定として要する（M3）。</li>
+  <li>\(\mathrm{Ind}\,B\) は安定（<code>ind_isStable_unconditional</code>、Kerodon/LargeInfinityCategories）。その compact 対象は \(B\) の冪等完備化（<code>compactIndEquivalence</code>、InfinityCategories/Kerodon/LargeInfinityCategories/IndCompletionsOfInfinityCategories/CompactIndEquivalence）。<span class="tag">済</span></li>
+  <li>\(\mathrm{Ind}\,A \to \mathrm{Ind}\,B\) は余極限を保つ充満忠実な関手なので、右随伴を持つ（随伴関手定理、Kerodon/LargeInfinityCategories）。そのため商は \(\mathrm{Ind}\,A\) の右直交 \((\mathrm{Ind}\,A)^{\perp}\) として、\(\mathrm{Ind}\,B\) の中に Bousfield 局所化で実現できる（<code>bousfieldReflection</code>、Kerodon/LargeInfinityCategories）。<span class="tag">一部済</span> ただし Ind が presentable であることには、いまは余極限を持つことを仮定として要する（M3）。</li>
   <li>この Bousfield 局所化が安定で、反射が完全であること（M4）。<span class="tag">未着手</span></li>
   <li>Thomason–Neeman：商の compact 対象は \(B\) の像の retract 閉包（M5）。そこから Karoubi 商 \(\mathrm{Idem}(B/A) \simeq (\mathrm{Ind}\,B/\mathrm{Ind}\,A)^\omega\) が得られる（M6）。<span class="tag">未着手</span></li>
   <li>Verdier 商そのもの（冪等完備化をしないもの）は、\(\mathrm{Ind}\,B/\mathrm{Ind}\,A\) の中で \(B\) の像が張る充満部分圏として取り出す。それが局所化の普遍性を満たすことの証明が、別に要る。</li>
@@ -133,7 +133,7 @@ A &amp; \to &amp; B &amp; \to &amp; B/A \\
 <tr><td>宇宙</td><td>同じ宇宙</td><td>一段上がる</td></tr>
 <tr><td>非連結 K との関係</td><td>Calkin 懸垂（\((\mathrm{Ind}_\omega A)^\kappa / A\)）は Verdier 商で書かれる</td><td>Calkin 圏の冪等完備化（Efimov の定義）と相性がよい</td></tr>
 </table></div>
-<p>計画では、整備（段 A〜F）を終えてから主路を決めることにしている。整備の後に、分数の機構が Stable/Verdier/Fractions にまとまった時点で、M2 を直接示せるかどうかを見積もり直すのがよい。
+<p>どちらを主路にするかは形式化の側（<a href="../../../formalization-plans/infinity-foundation-plan.md">infinity-foundation-plan.md</a>）で決める。
 文献の証明は、どちらの型もある。BGT §5 は Ind を経由し、9 人論文の付録 A は分数の計算を使う。</p>
 
 <!-- ============================================================ -->

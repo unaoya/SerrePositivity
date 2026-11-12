@@ -39,10 +39,10 @@
 <h2>1. Core の要点</h2>
 <div class="table-wrap"><table>
 <tr><th>概念</th><th>Lean（InfinityCategories/Core）</th><th>状態</th></tr>
-<tr><td>極限：錐のなす ∞ 圏（slice）の終対象</td><td><code>JoinCone</code>・<code>IsLimitCone</code>・<code>HasLimit</code>（Core/Limit.lean）</td><td><span class="tag">済</span></td></tr>
-<tr><td>∞ 圏の同値：逆向きの関手と、両側の自然同値</td><td><code>IsQCatEquivalence</code>（Core/Equivalence.lean:70）</td><td><span class="tag">済</span></td></tr>
-<tr><td>充満忠実：写像空間の写像がすべて Kan 複体の同値</td><td><code>IsFullyFaithful</code>（Core/FullyFaithful.lean）</td><td><span class="tag">済</span></td></tr>
-<tr><td>写像空間：右 pinched Hom（Kan 複体）</td><td><code>pinchedHom</code>（PinchedHom/Basic.lean:112）、<code>pinchedHom_kanComplex</code></td><td><span class="tag">済</span>（PinchedHom は Core に吸収する予定）</td></tr>
+<tr><td>極限：錐のなす ∞ 圏（slice）の終対象</td><td><code>JoinCone</code>・<code>IsLimitCone</code>・<code>HasLimit</code>（InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/CoreLimit.lean）</td><td><span class="tag">済</span></td></tr>
+<tr><td>∞ 圏の同値：逆向きの関手と、両側の自然同値</td><td><code>IsQCatEquivalence</code>（InfinityCategories/Kerodon/KanComplexes/TheHomotopyTheoryOfKanComplexes/Equivalence.lean:76）</td><td><span class="tag">済</span></td></tr>
+<tr><td>充満忠実：写像空間の写像がすべて Kan 複体の同値</td><td><code>IsFullyFaithful</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/FullFaithfulAndEssentiallySurjectiveFunctors/FullyFaithful.lean）</td><td><span class="tag">済</span></td></tr>
+<tr><td>写像空間：右 pinched Hom（Kan 複体）</td><td><code>pinchedHom</code>（InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/Basic.lean:116）、<code>pinchedHom_kanComplex</code></td><td><span class="tag">済</span>（PinchedHom は Core に吸収する予定）</td></tr>
 <tr><td>自明 Kan fibration は同値</td><td><code>isQCatEquivalence_of_trivialKanFibration</code></td><td><span class="tag">済</span></td></tr>
 </table></div>
 <p>最後の「自明 Kan fibration は同値」は、§3 の存在証明で中心的に使う。</p>
@@ -63,13 +63,13 @@ F^* : \mathrm{Fun}(D, E) \longrightarrow \mathrm{Fun}_W(X, E)
 <pre><code>def IsLocalization {X D : SSet.{u}} (F : X ⟶ D) (W : Set (X _⦋1⦌)) : Prop :=
   ∃ hF : InvertsEdges F W, ∀ (E : SSet.{u}) [Quasicategory E],
     IsQCatEquivalence (localizationPrecomposition F W hF E)</code></pre>
-<p class="meta">InfinityCategories/F1B/Localization/Localization.lean:95。\(\mathrm{Fun}_W(X, E)\) は <code>invertingFunctors X E W</code>。</p>
+<p class="meta">InfinityCategories/Kerodon/AdjointFunctors/Localization/Localization.lean:79。\(\mathrm{Fun}_W(X, E)\) は <code>invertingFunctors X E W</code>。</p>
 
 <div class="box">
 <p class="label">定義の細かい点</p>
 <ul>
   <li><b>\(D\) が quasicategory であることは要求しない。</b>実際、§3 の証明の途中に出てくる「逆辺を貼り付けた単体的集合」は quasicategory ではないが、局所化の普遍性は満たす。</li>
-  <li><b>普遍性を確かめる相手 \(E\) は同じ宇宙 <code>u</code> に限る。</b>宇宙を変える補題（<code>IsLocalization.ulift</code> など、F1B/Localization/Universe*）が別にある。</li>
+  <li><b>普遍性を確かめる相手 \(E\) は同じ宇宙 <code>u</code> に限る。</b>宇宙を変える補題（<code>IsLocalization.ulift</code> など、InfinityCategories/Kerodon/AdjointFunctors/Localization/Universe*）が別にある。</li>
   <li>これは <b>Dwyer–Kan 局所化</b>（一般の局所化）の定義である。Bousfield 局所化（反射的局所化）は、その特別な場合として §6 で扱う。</li>
 </ul>
 </div>
@@ -82,13 +82,13 @@ F^* : \mathrm{Fun}(D, E) \longrightarrow \mathrm{Fun}_W(X, E)
 <p>任意の単体的集合 \(X\) と辺の集合 \(W\) について、quasicategory \(Q\) と、\(W\) での局所化 \(F : X \to Q\) が存在する。</p>
 <pre><code>theorem exists_quasicategory_localization (X : SSet.{u}) (W : Set (X _⦋1⦌)) :
     ∃ (Q : SSet.{u}) (F : X ⟶ Q), Quasicategory Q ∧ IsLocalization F W</code></pre>
-<p class="meta">LI/LocalizationResolution.lean:37。選択した局所化に名前を付けたものが <code>edgeLocalization X W</code>・<code>edgeLocalizationMap</code>（LI/GeneralLocalization.lean）。</p>
+<p class="meta">InfinityCategories/Kerodon/AdjointFunctors/Localization/LocalizationResolution.lean:41。選択した局所化に名前を付けたものが <code>edgeLocalization X W</code>・<code>edgeLocalizationMap</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization/GeneralLocalization.lean）。</p>
 </div>
 
 <p>証明は三段で、どれも第 1・2 章の道具でできている。</p>
 
 <h3>3.1 段 1：可逆な辺の「歩く版」を作る</h3>
-<p>\(\Delta^1\)（一本の辺）を Kan 置換したものを \(J\) とする（<code>walkingEquivalence := AnodyneKanReplacement.functor.obj Δ[1]</code>、LI/WalkingEquivalence.lean:23）。</p>
+<p>\(\Delta^1\)（一本の辺）を Kan 置換したものを \(J\) とする（<code>walkingEquivalence := AnodyneKanReplacement.functor.obj Δ[1]</code>、InfinityCategories/Kerodon/AdjointFunctors/Localization/WalkingEquivalence.lean:25）。</p>
 <ul>
   <li>\(J\) は Kan 複体なので、すべての辺が可逆である。</li>
   <li>包含 \(\Delta^1 \to J\) は anodyne である。</li>
@@ -100,8 +100,8 @@ F^* : \mathrm{Fun}(D, E) \longrightarrow \mathrm{Fun}_W(X, E)
 \[
 P \;=\; X \sqcup_{\coprod_{w \in W} \Delta^1} \coprod_{w \in W} J
 \]
-<p>（<code>inverseAttachment X W</code>、LI/InverseAttachment.lean:45）。\(X \to P\) は \(W\) の辺を可逆な辺に送る。</p>
-<p><b>主張</b>：どの quasicategory \(Y\) についても、制限写像 \(\mathrm{Fun}(P, Y) \to \mathrm{Fun}_W(X, Y)\) は<b>自明 Kan fibration</b> である（<code>inverseAttachmentRestriction_trivialKanFibration</code>、LI/InverseAttachmentUniversal.lean）。</p>
+<p>（<code>inverseAttachment X W</code>、InfinityCategories/Kerodon/AdjointFunctors/Localization/InverseAttachment.lean:47）。\(X \to P\) は \(W\) の辺を可逆な辺に送る。</p>
+<p><b>主張</b>：どの quasicategory \(Y\) についても、制限写像 \(\mathrm{Fun}(P, Y) \to \mathrm{Fun}_W(X, Y)\) は<b>自明 Kan fibration</b> である（<code>inverseAttachmentRestriction_trivialKanFibration</code>、InfinityCategories/Kerodon/AdjointFunctors/Localization/InverseAttachmentUniversal.lean）。</p>
 <p>理由は次のとおり。\(P\) への関手は「\(X\) への関手」と「各 \(J\) への延長」の組である。
 \(W\) を可逆に送る関手なら、各 \(w\) の像は \(Y\) の可逆な辺で、可逆な辺は \(Y\) の core（Kan 複体）に入る。
 \(\Delta^1 \to J\) は anodyne なので、Kan 複体への写像は延び、延長の空間は可縮になる。
@@ -129,23 +129,23 @@ P \xrightarrow{\ j\ (\text{inner anodyne})\ } Q \to \ast,\qquad Q \text{ は qua
 <h2>4. 普遍性からすぐ出ること</h2>
 <div class="table-wrap"><table>
 <tr><th>結果</th><th>宣言</th></tr>
-<tr><td>前合成は充満忠実：\(\mathrm{Fun}(D, E) \to \mathrm{Fun}(X, E)\) は（像の上で）充満忠実</td><td><code>IsLocalization.precomposition_isFullyFaithful</code>（F1B/Localization/UniversalConsequences）</td></tr>
-<tr><td>延長：\(W\) を可逆に送る関手 \(G : X \to E\) は、\(D\) を経由する（自然同値を除いて）</td><td><code>IsLocalization.exists_extension</code>（同）、<code>localizationDescend</code>・<code>localizationDescendIso</code>（LI/LocalizationFactorization.lean:36・41）</td></tr>
-<tr><td>一意性：同じ \(W\) での二つの局所化（quasicategory）は同値</td><td><code>localizationComparisonEquivalence</code>（LI/LocalizationUniqueness.lean:59）</td></tr>
-<tr><td>飽和：局所化で可逆になる辺をすべて \(W\) に加えても、局所化のまま</td><td><code>IsLocalization.saturate</code>・<code>of_subset_invertedEdges</code>（F1B/Localization/Saturation）</td></tr>
-<tr><td>宇宙の移動</td><td><code>IsLocalization.ulift</code>・<code>of_ulift</code>・<code>exists_extension_ulift</code>（F1B/Localization/Universe*）</td></tr>
+<tr><td>前合成は充満忠実：\(\mathrm{Fun}(D, E) \to \mathrm{Fun}(X, E)\) は（像の上で）充満忠実</td><td><code>IsLocalization.precomposition_isFullyFaithful</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization/UniversalConsequences）</td></tr>
+<tr><td>延長：\(W\) を可逆に送る関手 \(G : X \to E\) は、\(D\) を経由する（自然同値を除いて）</td><td><code>IsLocalization.exists_extension</code>（同）、<code>localizationDescend</code>・<code>localizationDescendIso</code>（KST/LocalizingInvariants/LocalizationFactorization.lean:36・41）</td></tr>
+<tr><td>一意性：同じ \(W\) での二つの局所化（quasicategory）は同値</td><td><code>localizationComparisonEquivalence</code>（KST/LocalizingInvariants/LocalizationUniqueness.lean:59）</td></tr>
+<tr><td>飽和：局所化で可逆になる辺をすべて \(W\) に加えても、局所化のまま</td><td><code>IsLocalization.saturate</code>・<code>of_subset_invertedEdges</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization/Saturation）</td></tr>
+<tr><td>宇宙の移動</td><td><code>IsLocalization.ulift</code>・<code>of_ulift</code>・<code>exists_extension_ulift</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization/Universe*）</td></tr>
 </table></div>
 
 <!-- ============================================================ -->
 <h2>5. 判定法：与えられた関手が局所化であることを示す</h2>
 <p>存在定理は抽象的な \(Q\) を作るだけなので、実際には「手元の具体的な関手 \(F : X \to D\) が局所化である」と示したい場面が多い。
-例：Verdier 商の射影、hammock 局所化への関手、反射。F1B/Localization に、そのための判定法がある。</p>
+例：Verdier 商の射影、hammock 局所化への関手、反射。InfinityCategories/Kerodon/AdjointFunctors/Localization に、そのための判定法がある。</p>
 <div class="table-wrap"><table>
 <tr><th>判定法</th><th>条件の形</th><th>宣言</th></tr>
 <tr><td>延長による判定</td><td>前合成が充満忠実で、\(W\) を可逆に送る関手がすべて延びる</td><td><code>isLocalization_of_fullyFaithful_extensions</code>（PrecompositionCriterion）</td></tr>
 <tr><td>変形による判定</td><td>\(X\) の中に、\(D\) を「変形レトラクト」として実現する部分がある（例：cofibrant 置換のある状況）</td><td><code>isLocalization_of_deformation</code>・<code>isLocalization_of_weakDeformation</code>（DeformationLocalization・WeakDeformationSource）</td></tr>
 <tr><td>右 Kan 拡張による判定</td><td>局所的な極限の条件で右 Kan 拡張が存在する</td><td><code>isLocalization_of_rightKan_local_limits</code>（RightKanCriterion）</td></tr>
-<tr><td>反射による判定</td><td>右随伴が充満忠実（反射的部分圏への反射）</td><td><code>ReflectiveLocalization</code>（F1B）、<code>AdjointLocalization.isLocalization</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization）</td></tr>
+<tr><td>反射による判定</td><td>右随伴が充満忠実（反射的部分圏への反射）</td><td><code>ReflectiveLocalization</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization）、<code>AdjointLocalization.isLocalization</code>（InfinityCategories/Kerodon/AdjointFunctors/Localization）</td></tr>
 </table></div>
 <p>最後の「反射による判定」が、Bousfield 局所化を Dwyer–Kan 局所化の特別な場合にしている（§6）。</p>
 
@@ -157,7 +157,7 @@ L : C \to C_{\mathrm{loc}} \ \text{は}\ W_L = \{ f \mid L(f) \text{ が同値} 
 \mathrm{Map}_{C[W_L^{-1}]}(x, y) \simeq \mathrm{Map}_C(x, Ly)
 \]
 <p>抽象的な局所化を \(C\) の中の部分圏として実現でき、写像空間が \(C\) の写像空間で計算できる。これが Bousfield 局所化の利点である。
-presentable な ∞ 圏と射の集合 \(S\) に対しては、\(S\)-局所的な対象への反射が存在する（HTT 5.5.4.15。F2/Presentable/Localization の <code>bousfieldReflection</code>）。
+presentable な ∞ 圏と射の集合 \(S\) に対しては、\(S\)-局所的な対象への反射が存在する（HTT 5.5.4.15。InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/BousfieldReflection の <code>bousfieldReflection</code>）。
 それが \(S\) の生成する強飽和な集まりでの局所化であることは <code>bousfieldLocalizationFunctor_isLocalization_generatedEdges</code> にある。</p>
 <p>逆に、一般の局所化は右随伴を持つとは限らない。例えば、小さい安定 ∞ 圏の Verdier 商は、ふつう右随伴を持たない（第 5 章）。</p>
 
@@ -173,12 +173,12 @@ presentable な ∞ 圏と射の集合 \(S\) に対しては、\(S\)-局所的�
 <tr><th>主張</th><th>数学</th><th>形式化</th></tr>
 <tr><td>\(W\) を可逆に送る</td><td>成り立つ</td><td><code>hammockLocalizationNerveMap_inverts</code>（一般の相対圏で証明済み）</td></tr>
 <tr><td>\(\pi_0\) は 1 圏の局所化（Gabriel–Zisman）の Hom</td><td>成り立つ</td><td>証明済み</td></tr>
-<tr><td>∞ 局所化（<code>IsLocalization</code>）である</td><td>一般の相対圏で成り立つ（Hinich 2016 など。参照は要確認）</td><td><b>モデル圏の場合だけ証明済み</b>（<code>modelHammock_isLocalization</code>。ModelBridge へ）。一般の場合は計画の M11</td></tr>
+<tr><td>∞ 局所化（<code>IsLocalization</code>）である</td><td>一般の相対圏で成り立つ（Hinich 2016 など。参照は要確認）</td><td><b>モデル圏の場合だけ証明済み</b>（<code>modelHammock_isLocalization</code>、EInfinity/SimplicialLocalization）。一般の場合は計画の M11</td></tr>
 </table></div>
 
 <p>hammock 局所化は ∞ 局所化の<b>一つの模型</b>であり、その価値は写像空間が「ジグザグの空間」として具体的に分かることにある。
 §3 の存在定理とは役割が違う。§3 は任意の単体的集合の局所化の存在を与え、hammock は普通の圏の局所化の写像空間を与える。
-M11 が証明されれば、モデル圏を使わずに中核で局所化の写像空間を計算できるようになる。</p>
+M11 が証明されれば、モデル圏を使わずに基盤で局所化の写像空間を計算できるようになる。</p>
 
 <!-- ============================================================ -->
 <h2>8. 局所化に関わる概念の整理</h2>
@@ -186,12 +186,12 @@ M11 が証明されれば、モデル圏を使わずに中核で局所化の写�
 <tr><th>概念</th><th>Dwyer–Kan 局所化との関係</th><th>所在</th></tr>
 <tr><td>Gabriel–Zisman 局所化（1 圏）</td><td>∞ 局所化のホモトピー圏</td><td>Mathlib。比較は <code>fraction_ho_localization</code>（KST/LocalizingInvariants、private）</td></tr>
 <tr><td>分数の計算（Ore 条件）</td><td>局所化の写像空間を屋根で計算する道具</td><td>Mathlib（1 圏）。∞ 版は LI の Verdier 分数（第 5 章）</td></tr>
-<tr><td>反射的局所化・Bousfield 局所化</td><td>特別な場合（右随伴が充満忠実）</td><td>F1B・F2/Presentable</td></tr>
+<tr><td>反射的局所化・Bousfield 局所化</td><td>特別な場合（右随伴が充満忠実）</td><td>InfinityCategories/Kerodon/AdjointFunctors/Localization・InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories</td></tr>
 <tr><td>Verdier 局所化</td><td>特別な場合（安定 ∞ 圏で、cofiber が部分圏に入る射）</td><td>Stable の <code>cofiberLocalizingEdges</code>、<code>IsVerdierSequence</code>（第 4 章）</td></tr>
-<tr><td>hammock 局所化</td><td>普通の圏の局所化の模型（写像空間が具体的）</td><td>EInfinity/SimplicialLocalization → F1B/Localization/DwyerKan</td></tr>
+<tr><td>hammock 局所化</td><td>普通の圏の局所化の模型（写像空間が具体的）</td><td>EInfinity/SimplicialLocalization → InfinityCategories/Kerodon/AdjointFunctors/Localization</td></tr>
 <tr><td>groupoid 完備化</td><td>すべての辺での局所化（結果は Kan 複体）</td><td>LI の GroupoidCompletion*</td></tr>
-<tr><td>anodyne 局所化</td><td>単体的集合の 1 圏を anodyne 射で局所化（空間のホモトピー圏）。∞ 圏の局所化ではなく 1 圏の局所化</td><td>HA/Simplicial の <code>anodyneQ</code>（第 2 章）</td></tr>
-<tr><td>モデル圏の左 Bousfield 局所化</td><td>背後の ∞ 圏で見れば Bousfield 局所化</td><td>HA/Localization（モデル圏なので中核では使わない）</td></tr>
+<tr><td>anodyne 局所化</td><td>単体的集合の 1 圏を anodyne 射で局所化（空間のホモトピー圏）。∞ 圏の局所化ではなく 1 圏の局所化</td><td>HomotopicalAlgebra/Simplicial の <code>anodyneQ</code>（第 2 章）</td></tr>
+<tr><td>モデル圏の左 Bousfield 局所化</td><td>背後の ∞ 圏で見れば Bousfield 局所化</td><td>HomotopicalAlgebra/Localization（モデル圏なので基盤では使わない）</td></tr>
 <tr><td>Drinfeld 商</td><td>dg 圏での Verdier 商の模型</td><td>Derived の <code>dgQuotientNerve</code></td></tr>
 </table></div>
 
