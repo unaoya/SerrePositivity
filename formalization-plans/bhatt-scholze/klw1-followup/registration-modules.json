@@ -7,5 +7,12 @@
   "SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility",
-  "SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality"
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryInputActionEquality",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.OrbitQuotientCompatibility",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.WordQuotientTransport",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardQuotientCompatibility",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardSourceComparison",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardTensorSeparation",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle"
 ]

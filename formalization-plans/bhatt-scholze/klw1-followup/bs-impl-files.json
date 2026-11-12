@@ -58,5 +58,12 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorTargetCompatibility.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/CoinvariantQuotientNaturality.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/InducedQuotientCompatibility.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/SourceQuotientNaturality.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/SourceQuotientNaturality.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/BinaryInputActionEquality.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/OrbitQuotientCompatibility.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/WordQuotientTransport.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardQuotientCompatibility.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardSourceComparison.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardTensorSeparation.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/UnitInputShuffle.lean"
 ]

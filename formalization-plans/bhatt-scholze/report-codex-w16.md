@@ -3617,3 +3617,123 @@ L04 は未証明、L05 以降は未実装で、二つの指定射全体の一致
 全九本の登録待ち一覧は `klw1-followup/registration-modules.json` に更新した。
 共通入口と共通監査への登録は行っていない。
 ここで一覧外の補題についての判断を待ち、bar・sifted・Tot には進まない。
+
+## 58. §21 の再開と追加照合の台帳（進行中）
+
+main `65cfdbe3f` の §21 を取り込み、L04a を実装した。
+`BinaryInputActionEquality` の `binaryTensorInputAction_eq` は、既存の
+`bijectionFunctor_map_permutation` から `MonoidHom.ext`・`End.ext` で証明した。
+この具体的な等式を L03 に渡し、L04 `schurArityOrbitIso_word_quotient` も証明した。
+L04 は直和の逆同型を後合成して指定誘導包含へ戻し、braiding の自然性と
+`inducedCoinvariantTotalIso_inv_inclusion` により閉じた。
+対象ビルド成功：`/tmp/bsw16/orbit-quotient-06.log`。この時点では追加分の公理監査は未実施。
+
+### 58.1 追加照合 I1（使用数 1／3）
+
+L05 の `binaryTensorFixedRepresentationCongr` は語の等式から作る同型である。
+その同型に沿って指定全複体商を運ぶ次の型を追加する。
+§56 では「語の等式の消去」と説明していたが、実装では一般の二つの語を変数として
+等式を消去する必要があるため、その照合を独立の型として明記する。
+新しい構成ではなく、同じ指定商の等式による運搬である。
+
+```lean
+namespace SerrePositivity.EInfinity
+open CategoryTheory HomologicalComplex MonoidalCategory
+open SerrePositivity.DifferentialGraded
+universe u
+variable {R G : Type u} [CommRing R] [Group G]
+lemma coinvariantTotalQuotient_wordCongr (X Y : Complex R) {L : Complex R}
+    {r : ℕ} {w z : BinaryTensorWord r} (h : w = z)
+    (φ : G →* Equiv.Perm (Fin r)) (hw : ∀ g, φ g • w = w)
+    (hz : ∀ g, φ g • z = z) (σ : G →* End L) :
+    coinvariantTotalQuotient (binaryTensorWordFixedAction X Y r w φ hw) σ ≫
+      (inputCoinvariantTotalFunctor (representationCochainComplex σ)).map
+        (binaryTensorFixedRepresentationCongr X Y h φ hw hz).hom =
+    (eqToHom (congrArg (binaryTensorWordObj X Y r) h) ▷ L) ≫
+      coinvariantTotalQuotient (binaryTensorWordFixedAction X Y r z φ hz) σ
+end SerrePositivity.EInfinity
+```
+
+L04a は調整役の承認済み追加で、この 3 枠には数えない。
+
+### 58.2 追加照合 I2（使用数 2／3）
+
+L14 の `operadBlockSwap m n` は `Fin (m + n) ≃ Fin (n + m)` である。
+既存の `Operad.Algebra.equivariance` は同じ arity の置換について述べているため、
+異なる長さの式で表記した同じ作用との照合を次の型で追加する。
+全単射から長さの等式を得てそれを消去し、既存の等変性へ戻すだけであり、
+作用・擬同型・ホモトピーを新しく構成しない。
+
+```lean
+namespace SerrePositivity.EInfinity
+open CategoryTheory MonoidalCategory
+open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
+universe u
+variable {R : Type u} [CommRing R]
+lemma algebra_action_bijection {P : Operad R} (Z : P.Algebra)
+    {m n : ℕ} (e : Fin m ≃ Fin n) :
+    (P.arityBijectionMap e ⊗ₘ tensorPowerEquivMap Z.carrier e) ≫ Z.action n = Z.action m
+end SerrePositivity.EInfinity
+```
+
+再利用する宣言は `Fintype.card_congr`、`tensorPowerEquivMap_perm`、`Z.equivariance`。
+
+### 58.3 追加照合 I3（使用数 3／3）
+
+L13 の四因子の配置を、既存の `tensorμ_natural` と単位子の coherence に
+接続するため、次の照合を独立させる。§56 では四因子の配置を文章でまとめていた。
+二つの単位入力を先に入れて並べ替える射と、並べ替えた場所に同じ単位入力を
+入れる射の一致であり、新しい構成・ホモトピー・擬同型性は含まない。
+
+```lean
+namespace SerrePositivity.EInfinity
+open CategoryTheory MonoidalCategory
+open SerrePositivity.DifferentialGraded
+universe u
+variable {R : Type u} [CommRing R]
+lemma tensorμ_unit_insert {X Y K L M N : Complex R}
+    (f : X ⟶ K) (u : 𝟙_ (Complex R) ⟶ L)
+    (v : 𝟙_ (Complex R) ⟶ M) (g : Y ⟶ N) :
+    (((ρ_ X).inv ≫ (f ⊗ₘ u)) ⊗ₘ ((λ_ Y).inv ≫ (v ⊗ₘ g))) ≫
+      tensorμ K L M N =
+    ((ρ_ X).inv ≫ (f ⊗ₘ v)) ⊗ₘ ((λ_ Y).inv ≫ (u ⊗ₘ g))
+end SerrePositivity.EInfinity
+```
+
+追加枠はこれで使い切った。今後一覧にない第四の照合または新しい数学が
+必要と判明した時点で、その型と漏れた理由を書いて停止する。
+
+### 58.4 一つ目の全体式と単位入力の分離（対象ビルド済み）
+
+`StandardSourceComparison.freeStandardSource_coefficientComparison` により
+**L08 `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M` を元の複体の圏で証明した**。
+L06 は固定 arity の指定標準語、L07 はその全 arity の直和への包含である。
+再添字付けの逆で選ばれる添字も定義で照合し、別の同型への取り替えをしていない。
+最終の警告除去を含む対象ビルドは `/tmp/bsw16/standard-hopf-01.log` で成功。
+同じ呼び出しの `StandardHopfInput` は未検証の下書きで失敗しており、
+呼び出し全体が成功したとは扱わない。
+
+`StandardTensorSeparation` では L10・L11・L12a・L12b と I2 を証明した。
+`UnitInputShuffle` では I3 を証明した。
+ログはそれぞれ `/tmp/bsw16/standard-source-04.log` と `standard-source-05.log`。
+
+| 追加モジュール | 型一覧 | 検証済み行数 |
+| --- | --- | ---: |
+| BinaryInputActionEquality | L04a | 30 |
+| OrbitQuotientCompatibility | L04 | 85 |
+| WordQuotientTransport | I1 | 40 |
+| StandardQuotientCompatibility | L05 | 71 |
+| StandardSourceComparison | L06〜L08 | 86 |
+| StandardTensorSeparation | L10〜L12、I2 | 99 |
+| UnitInputShuffle | I3 | 34 |
+| **追加計** | | **445** |
+
+a の検証済み実測は **4,030 + 445 = 4,475 行**。
+L09 は既存の `binaryTensorStandardPowersIso_inclusion` をそのまま用いる。
+L13〜L18 は未検証で、二つ目の全体式と a 全体はまだ未完了。
+§20 に従い、型一覧の証明中は見込みによる中間停止を繰り返さずに続ける。
+この時点の登録待ちは上の七本を含む計十六本。共通入口と共通監査は編集しない。
+
+七本を含む登録待ち十六本の監査は **120 宣言・標準三公理のみ**で成功。
+ログは `/tmp/bsw16/audit-standard-source.log`。sorry・追加公理はなく、鍵を返却した。
+七本と報告・登録待ち一覧だけをコミットし、未検証の三本は作業木に保持して L13 以降を続ける。
