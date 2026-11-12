@@ -4918,3 +4918,42 @@ H⁰ 上の自然写像で、その全単射性と元の零次構造射の全単
 監査 `/tmp/bsw16/audit-em-based-omega.log` は **76 本・627 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
 夜の規則どおり、全基点の比較を続行する。
+
+
+## 75. D79(ii)：全基点の Ω 列、実スペクトル関手、整数 π/H
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| ContractibleFiberComparison | 84 |
+| EilenbergMacLaneOmegaAllBasepoints | 78 |
+| EilenbergMacLaneOmegaSequence | 52 |
+| EilenbergMacLaneSpectrumFunctor | 43 |
+| EilenbergMacLaneSpectrumCohomology | 51 |
+
+追加 **308 行**、(ii) の検証済み累計 **4663 行**。
+登録候補は表の五本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`ContractibleFiberComparison` は **［一般∞］移動候補**。
+
+`gammaAdjointSuspension_kanPiIsomorphism` が閉じた：**同じ指定随伴構造射は
+全複体・全基点・零次数を含む全次数で π 同型**。
+可縮な全空間を持つ固定 fiber を、その各頂点の接続同値で比較した。
+底の他の連結成分の同型を入力する循環や、加法による translation の新構成は不要だった。
+
+`eilenbergMacLaneSequence_omega` は添字の加法の同じ同型も含めて元の Kan 列を Ω 列にする。
+`eilenbergMacLaneSpectrumFunctor` は全複体と厳密な鎖写像から、既存の逐次単射置換による
+実 `OmegaSpectrum` への関手。準同型の像は全段で π 同型になる。
+`eilenbergMacLaneSpectrumPiCohomologyEquiv` は実スペクトルの整数 π_j と元の H^{-j} の群同型。
+標準計算段の同じ置換射を使い、安定 π を独自の代用品に置き換えていない。
+スペクトルの模型は §65 のまま `KST.Spectra.Sp`、対称スペクトルとの同一視は仮定しない。
+
+**未完了**：この整数比較の全鎖写像での自然性、通常の複体圏の nerve から
+既存 D(A) の dg nerve への coherent な降下、その上での native π/H の関手同型。
+`eilenbergMacLaneOrdinaryNative` は通常の nerve 上の図式であり、V_A 完成とは呼ばない。
+界面や drafts の型の追加変更はない。
+
+対象ビルド `em-contractible-fiber-comparison-02.log`、`em-omega-all-basepoints-01.log`、
+`em-spectrum-functor-01.log`（SpectrumFunctor の成功）、`em-spectrum-cohomology-01.log`
+（OmegaSequence の改行警告修正を含む）は成功。最終版に警告なし。
+監査 `/tmp/bsw16/audit-em-spectrum.log` は **81 本・650 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則どおり、自然性と native な降下へ続行する。
