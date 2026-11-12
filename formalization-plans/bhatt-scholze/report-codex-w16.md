@@ -4528,3 +4528,34 @@ sorry・追加公理なし。終了・鍵返却を回収済み。登録候補は
 一般補助三本は EInfinity 下に置き、将来の場所は調整役に委ねる。
 残りは指定 suspension 射の Ω 条件、その出力の native V と π/H の全自然比較。
 夜の規則に従い、ここでも承認を待たずに (ii) を続ける。
+
+### 65.7 Γ の加法・指定単位と、Ω 列からの native 図式
+
+| 追加モジュール（`PowerOperation/`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneGammaAdditivity | 71 |
+| EilenbergMacLaneGammaBilinearity | 77 |
+| EilenbergMacLaneGammaUnit | 67 |
+| EilenbergMacLaneGammaUnitPoint | 48 |
+| OmegaSequenceReplacementFunctor | 59 |
+| OmegaSequenceNative | 41 |
+
+追加 **363 行**、(ii) の検証済み実測は **1811 行**。
+Γ の標準単体評価とその逆の加法性、指定 AW 積の両変数での加法性を示した。
+`gammaUnitSimplex` は AW 余単位の実随伴像。`gammaUnitPoint` で全単体に整合させ、
+`gammaPair_right_unit_point` は元の指定右単位子そのものを得る等式である。
+この点は零基点とは区別される。
+
+最後の二本は **［一般∞］移動候補**。Ω 列の充満部分圏に同じ逐次単射置換を制限し、
+BF スペクトルへの通常の全関手を得た。`omegaSequenceNative` はその通常の nerve を
+既存 `nerveToCoherent` で native Sp へ送る標準比較。頂点も同じ置換対象である。
+これは一般の coherent 図式の厳密化や D(A) からの降下を済ませたという主張ではない。
+Eilenberg–Mac Lane 列の Ω 条件そのものは引き続き未証明であり、V の実例は未供給。
+
+最終ビルドは `/tmp/bsw16/em-gamma-bilinear-03.log`、
+`/tmp/bsw16/em-native-unit-01.log`（native 比較の成功）、
+`/tmp/bsw16/em-gamma-unitpoint-01.log`。
+監査 `/tmp/bsw16/audit-em-unit.log` は **31 本・327 宣言・標準三公理のみ**。
+最終六本に新規警告・sorry・追加公理なし。終了・鍵返却を回収済み。
+登録候補は表の六本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+次は指定単位の零次数の係数と、基本円を使う Ω 比較の照合を続ける。
