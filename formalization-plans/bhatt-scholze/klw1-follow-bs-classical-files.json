@@ -1,0 +1,20 @@
+[
+  "SerrePositivity/BhattScholze/Prism/Bounded/PDCompletionPrism.lean",
+  "SerrePositivity/BhattScholze/Prism/Perfection/ClassicalPrismPerfection.lean",
+  "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeCompletion.lean",
+  "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeDiagram.lean",
+  "SerrePositivity/BhattScholze/Prismatic/FiniteEnvelopeRawColimit.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/Cor73PrismComparison.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/InitialPrismPerfection.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/PrismInitialCompletion.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootFamilySparseBasis.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedInitial.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationCompletedSurjective.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteAmbient.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationFiniteEnvelopeDiagram.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationPerfection.lean",
+  "SerrePositivity/BhattScholze/Semiperfectoid/RootRelationSubsetRaw.lean",
+  "SerrePositivity/CommutativeAlgebra/DirectLimitRelations.lean",
+  "SerrePositivity/CommutativeAlgebra/PolynomialSubsetQuotient.lean",
+  "SerrePositivity/HomologicalAlgebra/DerivedCompletion/PrincipalCompletionUniformBound.lean"
+]

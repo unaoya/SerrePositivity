@@ -385,3 +385,25 @@ S′ は停止点5aの実 H⁰ 完備化のまま。未完備な通常商との�
 - 基点は停止点5a `218f8939f` のまま。KL-W1 の改名表は未受領なので、独自の改名や KL 枝の直接取り込みは行っていない。停止点5aの14本と今回の4本の main 取り込み・登録は、KL-W1 の取り込み後に調整役の改名表へ追従してから行う。
 
 **今回の絞った範囲で停止点5に到達し、W17 の区切りとして停止する。** S′ 単位の完全忠実平坦性の三つの不足は後回しであり、一般 qrsp の離散性・Δ との同定まで完了したとは扱わない。
+
+## 18. KL-W1 改名追従：参照採取器の失敗により保留（11-12）
+
+開始 HEAD は `ce4bba8f6`、作業木はクリーンで、進行中の検証・未検証の下書きはなかった。配布された `bs-classical-files.json` の18本は枝固有の Lean 全18本と一致し、10:21以後に追加すべきファイルはない。写した一覧は `klw1-follow-bs-classical-files.json`。直接の importer は12本で、すべて対象18本に含まれる。
+
+**main の取り込み前の collect が8本成功後、9本目で失敗したため、指示どおりソースを書き換えずに報告する。** 失敗するのは `Semiperfectoid/RootFamilySparseBasis.lean` の `rootFamilySparseFractionCoordinates_smul`。142行の `rw [add_smul, map_add, ...]`、147行の `simp`、160行の `rw [smul_add, map_add, ...]` が採取器による再解釈で失敗する。最初のエラーは `map_add` の書き換え対象が見つからないもの。停止点5のビルド済みソースをそのまま入力しており、採取前後で変更していない。
+
+再現したコマンド（専用 worktree で `source ~/.zshenv` 後）：
+
+```sh
+klw1=/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout
+zsh scripts/refactor/with_build_lock.sh --wait 3600 -- gtimeout --foreground 1700s \
+  python3 "$klw1/scripts/refactor/klw1_namespace.py" collect --root "$PWD" \
+  --files /tmp/serre-w17/klw1-follow/bs-classical-files.json \
+  --output /tmp/serre-w17/klw1-follow/before_index
+```
+
+- `collect` 終了コード2。ログ：`/tmp/serre-w17/klw1-follow/collect.log`。部分採取8本は同ディレクトリの `before_index/`。このディレクトリは未完で `files.json` がなく、rewrite の入力に使っていない。再採取時には新しい出力先を指定する。
+- **書き換え0ファイル・0行。プレビューと `review.json` は未作成**であり、保留0件と扱わない。main `19f081dcb` 以降の取り込みと移行後の対象ビルドも未実施。改名表・採取器・既存の証明はいずれも変更していない。
+- 採取器が独自のオプションで同期再解釈すること、通常の `lakefile.toml` に `maxSynthPendingDepth = 3` があることは確認したが、失敗との因果は未確認。通常 Lean 実行との比較診断は鍵の待ちに並べた後、ツール修正待ちで止めるため取り下げた。**新しい待ち・ビルド・監査は残っていない。**
+
+KL-W1 側で採取器の扱いを確認・修正してもらってから、同じ18本を main 取り込み前に採取し直し、rewrite・差分確認・main 取り込み・対象と直接の importer のビルドを再開する。W17 の数学の検証結果は §17 のまま。
