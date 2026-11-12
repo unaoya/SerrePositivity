@@ -3737,3 +3737,143 @@ L13〜L18 は未検証で、二つ目の全体式と a 全体はまだ未完了�
 七本を含む登録待ち十六本の監査は **120 宣言・標準三公理のみ**で成功。
 ログは `/tmp/bsw16/audit-standard-source.log`。sorry・追加公理はなく、鍵を返却した。
 七本と報告・登録待ち一覧だけをコミットし、未検証の三本は作業木に保持して L13 以降を続ける。
+
+## 59. a の二つの指定射を厳密に同定（対象ビルド完了）
+
+### 59.1 閉じた主張と一般性
+
+§21 の承認後、`L04a` と §58 の追加照合 I1〜I3 を含む型一覧を証明した。
+第四の一覧外補題、新しい構成・ホモトピー・擬同型性の補題は追加していない。
+L18 の擬同型性は、最初から一覧にある主張である。
+
+今回の三本は `SerrePositivity/EInfinity/BarrattEccles/Theory/` 以下。
+
+| モジュール | 行数 | 証明した一覧項目 |
+| --- | ---: | --- |
+| `StandardHopfInput` | 72 | L13。実際の指定 Hopf 入力を、同じ左右の単位族へ分離。`freeLeftUnitExtension`・`freeRightUnitExtension` は §56 の eL・eR の式の略記 |
+| `StandardUnitAction` | 66 | L14・L15a・L15b。末尾の零入力の作用と、左右の自由生成元への実際の作用 |
+| `FreeHopfStrictComparison` | 59 | L16・L17・L18。二つ目の標準語上の式、全射の厳密な一致、指定自由 Hopf 比較の擬同型性 |
+| **追加計** | **197** | |
+
+二つの全体式は、同じ `freeStandardSource` と `freeStandardTarget` を用いて閉じた。
+
+- `freeStandardSource_coefficientComparison`（L08）：
+  `J ≫ freeSchurCoefficientHomotopyEquiv.hom = M`。
+- `freeStandardSource_hopfComparison`（L16）：
+  `J ≫ freeHopfComparison.hom = M`。
+- `freeHopfComparison_eq_coefficientComparison`（L17）：
+  標準語の射の判別補題から、**元の複体の圏で二つの指定射そのものが等しい**。
+- `freeHopfComparison_quasiIso`（L18）：
+  その等式と既存の鎖ホモトピー同値の擬同型性から、実際の指定自由 Hopf 比較の擬同型性を得た。
+
+ホモトピー圏での一致への置き換えはしていない。
+係数比較の順射を別の選択で作り直したり、Hopf 比較の定義を変更したりもしていない。
+任意の可換環 R と任意の入力複体 X・Y で述べ、cofibrancy・有界性・平坦性を仮定しない。
+従って「任意の cofibrant な入力まで」という a の要求を含む。
+`h0` は以前から指定 Hopf 包含に使う零 arity の余単位の同型性の証明であり、
+新しい K 平坦性・モデル構造などの仮定を足していない。
+
+元の厳密な自由余積比較へは、L18 を局所インスタンスとして供給して既存の
+`hopfCoproductComparison_quasiIso_of_free` を適用できる。
+既存の `freeSumCoproductIso_hopfComparison` が、その余積比較と同じ指定射の一致を保証する。
+このための新しい移送補題を重ねて作っていない。
+一般の代数への bar・幾何学的実現による拡張、全関手版 `coproduct_tensor` は、a の完了とは別の残作業である。
+
+### 59.2 §20.2 の五行：見込みと最終実測
+
+行数は docstring・空行を含む。§22.3・§36.3 の配賦を引き継ぎ、
+一般補助の行数を外へ出さず、各ファイルを一度だけ数える。
+§41 以後の指定包含・商・単位・射全体の照合は、§41.3 の方針どおり第五行へ計上した。
+
+| §20.2 の行 | 元の見込み | 最終実測 | 差（実測−見込み） |
+| --- | ---: | ---: | ---: |
+| 語の指定包含・置換・標準ブロックの作用 | 160〜220 | 673 | +453〜+513 |
+| 固定色数の軌道・標準語の安定化群 | 120〜180 | 433 | +253〜+313 |
+| 誘導表示の射・逆・複体上の同型 | 260〜340 | 788 | +448〜+528 |
+| Schur 複体の両側の分解・再添字付け | 220〜300 | 1,074 | +774〜+854 |
+| 指定 Hopf 比較と係数比較・自由比較の擬同型 | 180〜250 | 1,704 | +1,454〜+1,524 |
+| **計** | **940〜1,290** | **4,672** | **+3,382〜+3,732** |
+
+配賦の検算：第一行は 355 + 231 + `TwoColorSeparatedInput` 87。
+第二行は 200 + 111 + `TwoColorOrbitArity` 59 + `TwoColorOrbitTransport` 63。
+第三行は 347 + 269 + `BinaryTensorOrbitComplex` 69 + `TwoColorInducedComplexInputs` 103。
+第四行は `SchurComplexArity` 114、§40 の残り四本 351、
+§41 の `CoinvariantGroupChange`・`SchurCoefficientOrder`・`InducedCoinvariantTotal`・
+`TwoColorTargetSchur`・`TwoColorSourceSchur`・`ComplexCoproductHomotopy`・`FreeSchurComparison` の 609。
+第五行は §41 の `FreeHopfComparison` 89 と、§44 以後の a の追加 1,615。
+
+### 59.3 §40.2 の四行：見込みと最終実測
+
+§40.3 の検証済み基点は 2,359 行。そこからの追加は **2,313 行**。
+§41.3 の最初の三行の割り付けを保ち、それ以後の指定射の照合を第四行に含める。
+
+| §40.2 の行 | 当時の残りの見込み | その後の最終実測 | 差 |
+| --- | ---: | ---: | ---: |
+| 固定 arity の軌道直和と二色係数の接続 | 100〜140 | 231 | +91〜+131 |
+| 係数と入力の順序・係数作用 | 80〜100 | 124 | +24〜+44 |
+| テンソル側の二色表示 | 230〜330 | 124 | −206〜−106 |
+| 指定射の照合と全体の比較 | 250〜350 | 1,834 | +1,484〜+1,584 |
+| **計** | **660〜920** | **2,313** | **+1,393〜+1,653** |
+
+### 59.4 §55.2 の六行：見込みと最終実測
+
+§55 の基点は 3,953 行。そこからの追加は **719 行**。
+宣言を一つのファイルにまとめた箇所は下に示す連続行の区切りで割り付け、
+ヘッダー・末尾・空行も含めて重複も除外もない。
+
+| §55.2 の行 | 当時の残りの見込み | 最終実測 | 差 |
+| --- | ---: | ---: | ---: |
+| 群変更と指定全複体商 | 25〜40 | 33 | −7〜+8 |
+| 入力射と指定全複体商 | 30〜45 | 74 | +29〜+44 |
+| 標準語の同定 | 20〜35 | 160 | +125〜+140 |
+| 軌道直和から全 Schur 比較 | 35〜50 | 122 | +72〜+87 |
+| 厳密な Hopf 射の標準語上の式 | 95〜135 | 313 | +178〜+218 |
+| 全射の一致と擬同型への復帰 | 15〜25 | 17 | −8〜+2 |
+| **計** | **220〜330** | **719** | **+389〜+499** |
+
+配賦：`SourceQuotientNaturality` の 1〜33 行を第一行、34〜77 行と
+`BinaryInputActionEquality` 30 行を第二行へ置いた。
+第三行は `WordQuotientTransport` 40、`StandardQuotientCompatibility` 71、
+`StandardSourceComparison` 1〜49 行。
+第四行は `OrbitQuotientCompatibility` 85 と `StandardSourceComparison` 50〜86 行。
+第五行は `StandardTensorSeparation` 99、`UnitInputShuffle` 34、
+`StandardHopfInput` 72、`StandardUnitAction` 66、`FreeHopfStrictComparison` 1〜42 行。
+第六行は同ファイル 43〜59 行。
+
+膨らんだ主因は、同型の存在と、その同型が指定商・指定包含・指定単位族を
+保つという式を、旧見込みで短い一接続として扱っていたことである。
+とくに標準語を等式で運ぶ場合と群同型で運ぶ場合、複体の台と自由代数の台、
+有限族の単位挿入とテンソル冪の分離を、別々に照合する必要があった。
+§56 の型一覧を固定してからは、承認された L04a と I1〜I3 だけを補い、
+別経路・セル対・新しい数学へ広げずに閉じた。
+
+最終実測 **4,672 行**は外枠の約 4,600 行に対して **72 行多い**。
+この差を隠すための行の圧縮や別枠への移動は行っていない。
+§20 の「一覧の補題を証明している間は、行数では止まらない」に従って一覧を閉じた。
+a の型一覧に未証明の主張は残らない。一般の `coproduct_tensor` 全体の完了を意味するものではない。
+
+### 59.5 検証・監査・登録
+
+対象 `FreeHopfStrictComparison` のビルドは成功（10,523 jobs）。
+ログは `/tmp/bsw16/standard-hopf-07.log`。
+今回の三本に sorry・追加公理はなく、新しい警告もない。
+依存先に既存の `letI` の style 警告が出るが、その既存宣言は変更していない。
+
+公理監査は `/tmp/bsw16/audit-free-hopf-strict.lean` により、登録待ちの全十九本を対象とする。
+結果は **十九本・146 宣言・標準三公理のみで成功**。
+ログは `/tmp/bsw16/audit-free-hopf-strict.log`。監査の終了コード 0 を回収し、鍵と整理券を返却した。
+これにより **a は完了**。新しい十本は全て対象ビルド・公理監査済みで、未検証の下書きは残らない。
+登録待ち一覧は `klw1-followup/registration-modules.json` に保存する。
+共通入口・共通監査・drafts・既存の公開宣言・界面の型は変更していない。
+
+今回追加の登録対象：
+
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardHopfInput`
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardUnitAction`
+- `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfStrictComparison`
+
+§58 の七本は `9cbb55631`。今回の三本はその後の追加として取り込める。
+
+§56 の紙の型一覧から L18 まで完了し、追加照合は I1〜I3 の三件で止まっている。
+次は承認済みの順序どおり経路 B の厳密な前段の残り、続いて橋を待つ間の④の段 0 の準備。
+今回のコミットには、その次の段の Lean の実装を混ぜていない。

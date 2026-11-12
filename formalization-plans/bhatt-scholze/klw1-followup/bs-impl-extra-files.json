@@ -34,5 +34,8 @@
   "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardQuotientCompatibility.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardSourceComparison.lean",
   "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardTensorSeparation.lean",
-  "SerrePositivity/EInfinity/BarrattEccles/Theory/UnitInputShuffle.lean"
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/UnitInputShuffle.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardHopfInput.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/StandardUnitAction.lean",
+  "SerrePositivity/EInfinity/BarrattEccles/Theory/FreeHopfStrictComparison.lean"
 ]

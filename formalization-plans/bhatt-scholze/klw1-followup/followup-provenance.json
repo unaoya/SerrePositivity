@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 60,
+  "combined_body_files": 70,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,8 +23,8 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 4475,
-  "a_complete": false,
+  "a_lines": 4672,
+  "a_complete": true,
   "a_stop": null,
   "a_cap": 4600,
   "a_forecast": null,
@@ -45,13 +45,16 @@
     "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardQuotientCompatibility",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardSourceComparison",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardTensorSeparation",
-    "SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle"
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardHopfInput",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardUnitAction",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfStrictComparison"
   ],
-  "resumed_build_targets": 7,
-  "resumed_audited_declarations": 120,
+  "resumed_build_targets": 1,
+  "resumed_audited_declarations": 146,
   "resumed_standard_axioms_only": true,
-  "resumed_build_log": "/tmp/bsw16/standard-hopf-01.log (StandardSourceComparison succeeds; uncommitted StandardHopfInput fails)",
-  "resumed_audit_log": "/tmp/bsw16/audit-standard-source.log",
+  "resumed_build_log": "/tmp/bsw16/standard-hopf-07.log",
+  "resumed_audit_log": "/tmp/bsw16/audit-free-hopf-strict.log",
   "a_typed_checklist_commit": "876d5f357",
   "a_typed_checklist_proved": [
     "L01",
@@ -70,11 +73,19 @@
     "L12b",
     "I1",
     "I2",
-    "I3"
+    "I3",
+    "L13",
+    "L14",
+    "L15a",
+    "L15b",
+    "L16",
+    "L17",
+    "L18"
   ],
   "a_extra_identifications": [
     "I1",
     "I2",
     "I3"
-  ]
+  ],
+  "a_final_report_section": 59
 }

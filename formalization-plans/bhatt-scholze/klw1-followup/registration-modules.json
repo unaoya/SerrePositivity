@@ -14,5 +14,8 @@
   "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardQuotientCompatibility",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardSourceComparison",
   "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardTensorSeparation",
-  "SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle"
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardHopfInput",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.StandardUnitAction",
+  "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfStrictComparison"
 ]
