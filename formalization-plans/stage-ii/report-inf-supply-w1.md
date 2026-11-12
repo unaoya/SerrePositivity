@@ -841,3 +841,93 @@ G9・3b-3の実装にはまだ進んでいない。3b-3については IS-W2 §0
 この後の作業木は、縮小表示への後合成自然性・元の表現可能恒等錐での評価の自然性の下書き。
 既存 `uliftRelativeFunctorMap_post` を再利用し、同名の重複は作らない。
 **停止点3ではない。G14の検出性の結論と段4は未完成で、続行する。**
+
+
+## 18. 停止点3：G14 完了（11-13朝）
+
+**G14の結論を完了。報告をコミットし、承認済みの順序で段4へ進む。**
+
+最終数学 `ef94bfeaa`（新規10本・535行）、途中 `81f4f2019`（5本・291行）、先行 `52aec0a75`（1本・58行）。
+段3全体は **新規16本・884行・21宣言**。新規ファイルだけで、既存の宣言の変更なし。
+
+### 結論と証明
+
+`Kerodon.LargeInfinityCategories.PresentableInfinityCategories.exists_detectingFamily`：
+E : SSet.{u+1} が presentable なら、ι : Type u と M : ι → E₀ が存在し、任意の Ho(E) の射 f について
+`IsIso f ↔ ∀ i, IsQCatEquivalence (MorphismSpaces.postcompose (M i) f)`。
+`IsDetectingFamily` はこの右辺を使う元の検出性の定義。自然性・検出性を追加入力にせず、小さい添字を保つ。
+
+小さい前層反映 L ⊣ R を一度固定し、M(a)=L(y(a)) とする。同じ随伴比較の全族自然性、
+元の `yonedaPresheafEvaluation` の後合成自然性、前層の各点可逆性を合成して R(f) を可逆と判定。
+充満忠実な R の Ho での反映により f を可逆とする。順方向は元の逆射による pinched 後合成を逆に使う。
+対象ごとの同値だけに弱めず、全写像空間の FunctorIso を使った。
+
+### 見込みと実測
+
+段0改訂見込み800〜1,600行、§16の再見積もり1,550〜2,450行に対し884行。
+現行上限3,200行以内。完成時点が約1,600行の途中報告点より前なので、今回が完成報告となる。
+短くなった理由は、既存 `leftUnstraighteningMappingFiberHom_parametrizedIso` と
+`pointedTransformationFiberHom_vertex`、標準輸送の値比較を発見して再利用でき、
+四段の自然性を新しい輸送理論を作らず合成できたため。§16の五行以外のまとまりは追加していない。
+小さな同定として独立追加したのは、相対合成の第二成分の固定と相対評価の後合成の2本。
+
+| §16の行 | 実装した内容 |
+| --- | --- |
+| 1 | 元の区間後合成の三角形族、unstraighteningの相対合成、元のpinched後合成と同じ実射の後合成の全族比較 |
+| 2 | 相対表示の大小比較、元の恒等錐での表現可能評価、同じfiberの値比較の自然性 |
+| 3 | 元のYoneda評価の四段の因子分解の全族後合成自然性、指定随伴比較への接続 |
+| 4 | 全表現可能前層による辺と任意のHoの射の検出、可逆射の後合成同値、充満忠実なRの反映 |
+| 5 | 同じ反映から小さい族を構成し、存在の結論まで接続・検証 |
+
+### 検証
+
+- `lake build SerrePositivity.InfinityCategories.Kerodon.LargeInfinityCategories.PresentableInfinityCategories.DetectingFamily`
+  成功（5,898 jobs）。全16本を依存閉包に含む。
+- `/tmp/is-w1/stage3-audit-final.lean`：16本を明示importし全21宣言を `#print axioms`・`#print sorries` で監査。
+  **21宣言すべてsorry-free、標準三公理のみ**。終了コード0。
+- 最終ログ `/tmp/is-w1/stage3-build-28.log`。対象一覧 `stage3-final-files.txt`、宣言一覧 `stage3-final-decls.txt`。
+  いずれも `/tmp/is-w1/`。ビルドと監査は `--wait 3600`、整理券一枚、鍵は実行中だけ保持し解放済み。
+- `git diff --cached --check` 成功。本体入口・全体監査登録は調整役に委ねる。
+
+### 登録対象と宣言
+
+| 新規モジュール | 行数 |
+| --- | ---: |
+| [RelativeFunctorCompositionFixedTarget](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorCompositionFixedTarget.lean) | 43 |
+| [RelativeFunctorUniversePostNaturality](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/RelativeFunctorUniversePostNaturality.lean) | 38 |
+| [SmallRelativePostNaturality](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallRelativePostNaturality.lean) | 58 |
+| [SmallTransformationEdgeFiberValue](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/SmallTransformationEdgeFiberValue.lean) | 49 |
+| [TransformationEdgeFiberValue](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransformationEdgeFiberValue.lean) | 59 |
+| [TransformationEdgeFiberValueComparison](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/ClassificationOfCocartesianFibrations/TransformationEdgeFiberValueComparison.lean) | 54 |
+| [RelativeFunctorEvaluationPostcomposition](../../SerrePositivity/InfinityCategories/Kerodon/FibrationsOfInfinityCategories/FibrationsOverOrdinaryCategories/RelativeFunctorEvaluationPostcomposition.lean) | 37 |
+| [DetectingFamily](../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/DetectingFamily.lean) | 60 |
+| [ReflectedRepresentableGenerators](../../SerrePositivity/InfinityCategories/Kerodon/LargeInfinityCategories/PresentableInfinityCategories/ReflectedRepresentableGenerators.lean) | 58 |
+| [PostcompositionIsoEquivalence](../../SerrePositivity/InfinityCategories/Kerodon/TheHomotopyTheoryOfInfinityCategories/MorphismSpaces/PostcompositionIsoEquivalence.lean) | 32 |
+| [PresheafRepresentableEdgeDetection](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRepresentableEdgeDetection.lean) | 59 |
+| [PresheafRepresentableHomDetection](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/PresheafRepresentableHomDetection.lean) | 48 |
+| [RepresentableUnstraighteningEvaluationPost](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/RepresentableUnstraighteningEvaluationPost.lean) | 51 |
+| [YonedaPresheafEvaluationPostcomposition](../../SerrePositivity/InfinityCategories/Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/YonedaPresheafEvaluationPostcomposition.lean) | 86 |
+| [IntervalPostcompositionTriangle](../../SerrePositivity/InfinityCategories/Project/HomotopyDiagramComparison/IntervalPostcompositionTriangle.lean) | 39 |
+| [SetSectionsUnstraighteningPostcomposition](../../SerrePositivity/InfinityCategories/Project/SetWeightedTensors/SetSectionsUnstraighteningPostcomposition.lean) | 113 |
+
+- `relativeFunctorComposition_const_second`：相対合成の第二成分を固定した族は、同じ底上の射による後合成。
+- `relativeFunctorOverIso_post_hom`：同じ底上の同型と可換四角形による相対 Hom の表示変更は、後合成に自然。
+- `smallLeftUnstraighteningRelativeFunctorIso_post`：元の大小の相対写像空間の比較は、縮小した同じ全空間の射の後合成と厳密に可換。
+- `smallTransformationEdge_fiberValueIso`：元の縮小fiberの値比較は、同じ全変換空間の終点射のfiber作用に全自然。
+- `transformationEdge_pointedFiberValueIso`：元の変換辺のpointed fiberへの作用は、同じ辺の点での値と全fiberで可換。
+- `transformationEdge_fiberValueIso`：同じ元の終点射のfiber作用は、元のfiber値比較の下で各点の空間辺の作用に全自然。
+- `relativeFunctorEvaluate_post`：相対評価は、同じ標的の射がfiberに誘導する射と厳密に可換。
+- `IsDetectingFamily`：元の全 pinched 写像空間の後合成の同値性によって射の可逆性を検出する族。
+- `exists_detectingFamily`：任意の presentable 準圏には、Type u を添字とする実際の写像空間の検出族が存在する。
+- `reflectedRepresentable`：表現可能前層を同じ左随伴で移した、元の小さい頂点型を添字とする族。
+- `reflectedRepresentableMapping`：反映した表現可能対象からの写像空間を、同じ右随伴の像への写像空間に送る。
+- `reflectedRepresentableMapping_isQCatEquivalence`：指定された adjunct 比較は、全写像空間の同値である。
+- `reflectedRepresentableMapping_naturality`：生成族の adjunct 比較は、元の標的の任意の射の後合成に全族で自然。
+- `postcompose_isQCatEquivalence_of_isIso`：可逆な射の元の pinched 後合成は、元の逆射の後合成を逆とする同値。
+- `presheafEdge_isInvertible_of_representable_post`：全表現可能前層からの後合成の同値性は、元の前層の辺の可逆性を検出する。
+- `presheafHom_isIso_of_representable_post`：全表現可能前層からの元の後合成の同値性は、前層のホモトピー圏の射の可逆性を検出。
+- `representableUnstraighteningEvaluation_post`：元の恒等錐による表現可能評価は、標的の射が誘導するfiberの射と厳密に可換。
+- `yonedaPresheafEvaluation_postcomposeIso`：元の Yoneda 評価は標的の元の辺の後合成と、同じ点での空間値の作用に全自然。
+- `intervalPostcompose_triangleFamily_exists`：指定辺による元の後合成は、同じ三辺を持つ全パラメータの三角形で表せる。
+- `unstraighteningPostcompositionIso`：指定辺の後合成を元の全空間の相対合成と比較する全パラメータの同型。
+- `unstraighteningPinchedEdgeLiftPostcompositionIso`：元の pinched 後合成は、同じ辺の実際の持ち上げによる相対後合成と全族で同型。
