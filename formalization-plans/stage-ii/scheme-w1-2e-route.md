@@ -1254,3 +1254,63 @@ S⁻¹(M ⊗_R N) ≃ₗ[P] (S⁻¹M) ⊗_R N
 従って **停止点 2e ではない**。次はこの次数零の接続を進め、既存の閉厚化・I 進系の自然性と合わせる。共通アフィン細分、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較も残っている。導来関手の層コホモロジーとの比較、非平坦なコホモロジーとテンソル積の交換、一般の固有射の有限性・Stein 分解は作っていない。コホモロジーの主張の docstring は原典の Hⁱ の番号と **Čech 版**であることを示し、分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しないと明記した。
 
 全ビルド・監査は共有鍵 `with_build_lock.sh --wait 3600` を経由し、同じ worktree の待ちは一つだけ、鍵は一回ごとに返した。ルート全体のビルドは行っていない。既存の宣言の型・本文、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はない。宇宙の条件と `Module.Finite.small`・`Shrink.linearEquiv` による移送の方針も保つ。
+
+
+## 2026-11-12：基底変更後の多項式作用と次数成分（2e 途中）
+
+実装コミット：`bad8a3243`。対象ビルドと直接の importer `SerrePositivity.AlgebraicGeometry` は成功（4,320 jobs）。監査は **7,000 宣言、標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ**。生成宣言を含む監査対象は前回 6,927 から 73 増えた。5 モジュールと入口の import 追加、計 429 行。既存宣言の型と本文は変更していない。
+
+前の比較の右辺は、元の標準開の係数をテンソル積した図式だった。今回、その接続先になる実際の B[X] 加群 M⊗_R B と次数成分、標準開図式を構成した。
+
+まず交換同型から M⊗_R B の右係数 B の作用を入れ、元の R[X] の作用との可換性を示した。この二つの作用を B⊗_R R[X] の作用にまとめ、多項式環のテンソル比較で B[X] の作用へ移した。係数変更された元の多項式の作用、定数多項式の作用、純テンソル上の単項式の作用をそれぞれ計算し、元の R と R[X]、右係数 B に対するスカラー塔を示した。元の R[X] を B 代数と仮定しない。R[X] 線形な射も実際の B[X] 線形な射へ送れる。
+
+次数 j の成分を (G j)⊗_R B→M⊗_R B の像として定めた。単項式ごとの計算と加法から B[X] の次数付き作用を示し、元の次数を保つ射がこの次数成分も保つことを証明した。ここまでは平坦性を仮定しない。flat な場合は元の次数成分からのテンソル写像が単射なので、(G j)⊗_R B と新しい次数成分の B 線形同型を得た。この次数成分を使った実際の標準開図式と、次数付き加群の射が誘導する図式の射も構成した。
+
+登録したモジュール（すべて `SerrePositivity.AlgebraicGeometry` の下）：
+
+- `TensorCoefficientRightModule`
+- `TensorCoefficientAlgebraModule`
+- `ProjectiveTensorPolynomialModule`
+- `ProjectiveTensorGrading`
+- `ProjectiveTensorGradedChart`
+
+宣言と主張（ローカルな型クラス設定を除く 32 件）：
+
+| 宣言 | 主張 |
+|---|---|
+| `tensorRightCoefficientModule` | 右係数のテンソル積に、交換同型から B 加群構造を入れる。 |
+| `tensorRightCoefficient_smul_tmul` | 係数 B の作用は、純テンソルの右因子への乗法で計算できる。 |
+| `tensorRightCoefficient_scalarTower` | 右係数の B 作用は、元の R 作用と両立する。 |
+| `tensorRightCoefficientComm` | テンソル積の交換同型は、右係数の B 加群構造について B 線形。 |
+| `tensorRightCoefficientComm_tmul` | B 線形な交換同型の、純テンソル上の計算式。 |
+| `tensorRightCoefficientMap` | 元の R 線形写像を、右係数テンソル積の B 線形写像として扱う。 |
+| `tensorRightCoefficient_smulCommClass` | 左因子の P 作用と右係数 B の作用は可換。 |
+| `tensorRightCoefficientAlgebraModule` | 二つの可換な作用をまとめた、B⊗_R P 上の加群構造。 |
+| `tensorRightCoefficientAlgebra_tmul_smul` | テンソル代数の純テンソルの作用は、元の二つの作用の合成。 |
+| `tensorRightCoefficientAlgebra_tmul_tmul` | 二重の純テンソル上の作用は、元の P 作用と B の乗法で計算できる。 |
+| `tensorRightCoefficientAlgebra_coefficient_scalarTower` | テンソル代数の作用は、右係数 B の作用を拡張する。 |
+| `tensorRightCoefficientAlgebra_scalarTower` | テンソル代数の作用は、元の基底 R の作用と両立する。 |
+| `tensorRightCoefficientAlgebraMap` | P 線形な写像は、係数変更後のテンソル代数上でも線形。 |
+| `projectiveTensorPolynomialModule` | 基底変更後の実際の多項式加群構造。 |
+| `projectiveTensorPolynomial_map_smul` | 係数変更した多項式の作用は、元の多項式の作用と一致する。 |
+| `projectiveTensorPolynomial_C_smul` | 定数多項式の作用は、右係数 B の作用に一致する。 |
+| `projectiveTensorPolynomial_monomial_tmul` | 単項式の作用は、元の単項式の作用と右係数の乗法で計算できる。 |
+| `projectiveTensorPolynomial_coefficient_scalarTower` | B[X] の作用は、右係数 B の作用を拡張する。 |
+| `projectiveTensorPolynomial_base_scalarTower` | B[X] の作用は、元の基底 R の作用と両立する。 |
+| `projectiveTensorPolynomial_polynomial_scalarTower` | 基底変更後の多項式作用は、元の R[X] の作用と両立する。 |
+| `projectiveTensorPolynomialMap` | 元の多項式加群の射を、基底変更後の B[X] 線形な射へ送る。 |
+| `projectiveTensorPolynomialMap_tmul` | 基底変更後の多項式加群の射は、純テンソルの元の因子だけに作用する。 |
+| `projectiveTensorPiece` | 基底変更した次数成分は、元の次数成分のテンソル積の像。 |
+| `projectiveTensorPiece_tmul_mem` | 元の次数成分の純テンソルは、基底変更後の同じ次数成分に入る。 |
+| `projectiveTensorPiece_monomial_smul_mem` | 単項式の作用は、テンソル像で定めた次数を加える。 |
+| `projectiveTensorPiece_gradedSMul` | 基底変更後の B[X] の斉次作用は、テンソル像の次数を保つ。 |
+| `projectiveTensorPiece_map_mem` | 次数を保つ元の加群写像は、テンソル像の次数成分も保つ。 |
+| `projectiveTensorGradedModuleChartDiagram` | 基底変更後の B[X] 加群の、指定次数の実際の標準開図式。 |
+| `projectiveTensorPiece_injective` | flat な基底変更では、元の次数成分のテンソル積は全体のテンソル積に単射。 |
+| `projectiveTensorPieceEquiv` | flat な基底変更後の次数成分は、元の次数成分のテンソル積と同型。 |
+| `projectiveTensorPieceEquiv_tmul` | 次数成分の比較は、純テンソルの元を同じ元へ送る。 |
+| `projectiveTensorGradedModuleChartMap` | 次数付き加群の射から、基底変更後の実際の標準開図式の射を得る。 |
+
+**残り。** 今回は、テンソル係数の旧標準開図式と、B[X] 加群の指定次数の斉次局所化からなる新標準開図式との同型までは作っていない。次は、周囲の局所化とテンソル積の既存の比較を指定次数部分へ制限し、B 線形性、標準開の制限射、次数を保つ加群写像との自然性をまとめる。この同型を既存の flat な Čech 比較と合成して、底変換の接続を完了する。共通アフィン細分、実際の Čech Frobenius と p 倍の指数、filtered colimit の比較も残る。従って **停止点 2e ではない**。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と利用側の型は変更していない。大きい宇宙の入口は引き続き `Module.Finite.small` と `Shrink.linearEquiv` で移送する。
+
+全ビルドと監査は共有鍵 `scripts/refactor/with_build_lock.sh --wait 3600` を経由した。同じ worktree の待ちは一つにし、一回の対象ビルド／監査ごとに鍵を返した。ルート全体のビルドは行っていない。入力の保存確認では、前回確認済みの 690 ファイルのうち変更は入口の import 追加だけで、新規 5 ファイルを含む 695 ファイルを記録した。新規宣言に `sorry`・`admit`・追加公理・計算量上限の追加はなく、`git diff --check` も通った。
