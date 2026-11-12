@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 51,
+  "combined_body_files": 53,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,7 +23,20 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3230,
+  "a_lines": 3414,
   "a_complete": false,
-  "a_stop": "forecast 3480\u20133590 exceeds possible 3500-line cap"
+  "a_stop": "forecast exceeds approved 3600-line cap",
+  "a_cap": 3600,
+  "a_forecast": [
+    3634,
+    3734
+  ],
+  "resumed_after_main": "7ed68f3a5",
+  "resumed_modules": [
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients"
+  ],
+  "resumed_build_targets": 2,
+  "resumed_audited_declarations": 37,
+  "resumed_standard_axioms_only": true
 }
