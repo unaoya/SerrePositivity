@@ -5222,3 +5222,48 @@ OmegaSpectrumHoFunctor・NativeHomologyIso は成功。最終版の六本に警�
 監査 `audit-em-derived-functor.log` は **116 本・849 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 全見込み 14,500 行の半分の 7,250 行にはまだ届いていない。夜の規則どおり続行する。
+
+
+## 82. D79(ii) 完了：既存 D(A) の全ホモトピー圏上の π/H 自然同型
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| DGClosedHoComparison | 56 |
+| DGClosedHoFull | 43 |
+| NatIsoFullEssentialDescent | 37 |
+| OrdinaryNerveHoNaturality | 41 |
+| OmegaSpectrumNativeHoComparison | 49 |
+| EilenbergMacLaneNativeDiagram | 65 |
+| SemifreeClosedHoHomology | 56 |
+| EilenbergMacLaneSemifreePiComparison | 58 |
+| EilenbergMacLaneDerivedHomologyIso | 48 |
+
+追加 **453 行**、(ii) の検証済み累計 **7194 行**。
+DGClosedHoComparison・DGClosedHoFull・NatIsoFullEssentialDescent・
+OrdinaryNerveHoNaturality・OmegaSpectrumNativeHoComparison・SemifreeClosedHoHomology は
+**［一般∞］移動候補**。他の三本も V の基盤移管時の比較の対象。
+
+### 82.1 完成した比較と範囲
+
+`eilenbergMacLaneDerived_homologyIso A i` は、界面と同じ型
+
+```lean
+hoMap (eilenbergMacLaneDerived A) ⋙ SpectrumHo.piFunctor (-i) ⋙
+  CommGrpCat.toAddCommGrp ≅ additiveCohomologyOnHo A i
+```
+
+の **全関手の自然同型**。半自由閉零圏から native D(A) のホモトピー圏への
+充満・本質的全射性を証明し、同じ semifreeSourceIso 上の比較を降ろした。
+通常の複体のホモロジーだけで結論を代用していない。
+§81 の実 V と合わせ、要求された **V_{F_p} と π/H 比較までを完了**した。
+一般 A でも同じ構成が使えるが、係数制限に関する全比較は今回の完成範囲に含めない。
+P⁰ とその次数計算、離散・Tot の照合は未完了。次は (iii) の Tate 経路を進める。
+
+### 82.2 検証
+
+`em-derived-homology-03.log`：最終対象ビルド成功（12,561 jobs）。
+追加九本の最終版に警告なし。依存の Interface/Theory に以前からある長行警告は残る。
+`audit-em-derived-homology.log`：**125 本・894 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口と共有監査は未変更。
+見込み上端の半分 7,250 行まであと 56 行。到達時に実測と残見込みを報告し、
+夜の規則どおり停止せず (iii) を続行する。
