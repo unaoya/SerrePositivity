@@ -768,6 +768,24 @@ import SerrePositivity.CategoryTheory.ProCechNerveTransport
 import SerrePositivity.CommutativeAlgebra.Adic.Cardinality
 import SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
 import SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
+import SerrePositivity.BhattScholze.Prism.Bounded.PDCompletionPrism
+import SerrePositivity.BhattScholze.Prism.Perfection.ClassicalPrismPerfection
+import SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeCompletion
+import SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeDiagram
+import SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeRawColimit
+import SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison
+import SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection
+import SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion
+import SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection
+import SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw
+import SerrePositivity.CommutativeAlgebra.DirectLimitRelations
+import SerrePositivity.CommutativeAlgebra.PolynomialSubsetQuotient
+import SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound
 import Lean.Util.CollectAxioms
 
 /-!
@@ -780,6 +798,24 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.BhattScholze.Prism.Bounded.PDCompletionPrism,
+    `SerrePositivity.BhattScholze.Prism.Perfection.ClassicalPrismPerfection,
+    `SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeCompletion,
+    `SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeDiagram,
+    `SerrePositivity.BhattScholze.Prismatic.FiniteEnvelopeRawColimit,
+    `SerrePositivity.BhattScholze.Semiperfectoid.Cor73PrismComparison,
+    `SerrePositivity.BhattScholze.Semiperfectoid.InitialPrismPerfection,
+    `SerrePositivity.BhattScholze.Semiperfectoid.PrismInitialCompletion,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootFamilySparseBasis,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedInitial,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationCompletedSurjective,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteAmbient,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationFiniteEnvelopeDiagram,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationPerfection,
+    `SerrePositivity.BhattScholze.Semiperfectoid.RootRelationSubsetRaw,
+    `SerrePositivity.CommutativeAlgebra.DirectLimitRelations,
+    `SerrePositivity.CommutativeAlgebra.PolynomialSubsetQuotient,
+    `SerrePositivity.HomologicalAlgebra.DerivedCompletion.PrincipalCompletionUniformBound,
     `SerrePositivity.BhattScholze.Prismatic.CompletedPDEnvelopeCardinality,
     `SerrePositivity.BhattScholze.Prismatic.CrystallineBaseRestriction,
     `SerrePositivity.BhattScholze.Prismatic.CrystallineBaseStructureRestriction,
