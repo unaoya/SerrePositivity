@@ -854,3 +854,15 @@ SerrePositivity.CommutativeAlgebra.Adic.Cardinality
 SerrePositivity.CommutativeAlgebra.Localization.AwayEquivalence
 SerrePositivity.CommutativeAlgebra.Localization.AwayGluing
 ```
+
+
+## KL-W1 停止点3の改名への追従完了（2026-11-12 昼）
+
+- 作業開始時の枝は `7280b7ce5`、作業木は clean。検証済みの52本はすべてコミット済みで、未検証の下書きなし。配布された `kerodon-layout-stop-3/bs-d68-files.json` を `/private/tmp/bs-d69-klw1-20261112/files.json` に写し、枝固有の Lean ファイルと未追跡分を照合した。配布一覧との差分は0で、対象は同じ52本。
+- **main 取り込み前**の同じソースと既存成果物から、配布された `klw1_namespace.py collect` で52本すべての参照を収集した。終了コード0。`before_index` は `/private/tmp/bs-d69-klw1-20261112/before_index`。各ソースは収集情報・開始時のハッシュとバイト単位で一致することを確認した。
+- 同じ一覧・ソース・参照情報と最終版 `kl-namespace-map.json` で rewrite のプレビューを作成。終了コード0。**書き換え0本・0行、`review.json` は `{}`、残る保留0**。全52本のプレビューが元ソースとバイト単位で一致したため、ソースの編集は不要だった。追加の互換 alias も作っていない。
+- 使用した改名表は KL-W1 の作業木と取り込む main で同一。SHA-256 は `kl-module-map.json`: `69207c416cb097073875fd482ae08e9d04f55338f0415f9138502ccafb412b1a`、`kl-namespace-map.json`: `cf1fb1a6d1acea4717a60ee8f5497c1e582db7d331526f73f8fc0f7ffa957944`。
+- **追従の merge コミットは `a916536a3`**。main `8f68a475d`（KL-W1 取り込み `19f081dcb` 以降）を専用枝 `math/bs-d68` に取り込んだ。衝突なし。取り込み後も52本はプレビューと同一で、改名表のハッシュも一致した。main の作業木で編集・ビルドはしていない。
+- 書き換えファイルが0本なので、その直接 importer に対する追加ビルド対象も0。移動後の推移的な依存の検証として、**P3 の52本すべてを対象ビルドし成功（4196 jobs、終了コード0）**。ログは `/private/tmp/bs-d69-klw1-20261112/build.log`。`with_build_lock.sh --wait 3600` と1700秒の上限を用い、鍵は対象ビルドの間だけ持った。root ビルドは行っていない。
+- 対象ビルド終了後に鍵を取り直して、一時監査も実行。**52モジュール・588宣言、標準三公理のみ、終了コード0**。ログは `/private/tmp/bs-d69-klw1-20261112/audit.log`。sorry・独自公理0、既存宣言の変更0を維持している。Nakayama の二ファイル、公式の入口・監査は編集していない。
+- 追従結果の一覧・参照収集ログ・プレビュー・空の review・ハッシュの記録は `/private/tmp/bs-d69-klw1-20261112/`。登録候補は上の「P3 全52本、BS 47本・共通5本」の統合一覧どおり。**KL-W1 後の追従と再検証が完了し、停止点3の52本を調整役が取り込める状態**として報告する。一般 I の η の追加一般化は、前節の決定どおり後回しのまま。
