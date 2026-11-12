@@ -1712,3 +1712,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 残るのは指定格子路の両切断の恒等式、全成分の合成と途中の Moore 射影の照合である。正規化 shuffle→AW 全体の恒等式、全単体 Hom／切断比較、native 極限性などを完了済みとは数えない。停止点2は未完、残枠2,855行。約7,900行で実測と残量を報告する。
 
 11-13 昼の B3 凍結予告を受領した。検証済みを上記コードと本報告に保存する。18時の確定連絡で凍結となれば、その後は枝へのコミットを控え、翌朝の main 取り込み・改名表の追従を一括レーンの B4 手順に従って行う。現時点で凍結の確定や改名の先行適用はしていない。
+
+## 51. 3b-2 続行：指定格子路の両切断の恒等式
+
+コード `b16fcbc8a`、新規1本88行。累計 **116本7,233行**。
+
+`DiagramComparison.ShuffleCutValues` で、指定格子路の水平部分の初期 x ステップ、垂直部分の初期 x ステップの濃度を、それぞれ Fin x への明示的な全単射から計算した。この計算により、`awFront ≫ initialShuffle.left` と `awBack ≫ initialShuffle.right` が、それぞれの単体の恒等射であることを証明した。第一のまとまりの対角成分の照合である。
+
+個別検査、鍵付き対象ビルド **1,848 jobs**、累計116本 **1,267宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-49.log`、監査 `/private/tmp/AuditISW2G10HundredSixteen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredsixteen-modules.txt`。鍵は `--wait 3600`、一枚の整理券で順番待ちし、取得後は1,700秒上限でビルド・監査の間だけ使用、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleCutValues
+```
+
+次は、有限和の非対角消滅・対角の一意性・符号・両切断の恒等式を同じ成分の合成へまとめる。正規化 shuffle と AW の間に挟まる対角側の Moore 射影の照合も必要であり、成分の計算だけで最終合成の恒等式が済んだとは数えない。全単体 Hom／切断比較、native 極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,767行。約7,900行で実測と残量を報告する。凍結予告は受領済みだが、今回のコミット時点では確定連絡は未受領。
