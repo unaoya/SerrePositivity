@@ -1,0 +1,340 @@
+{
+  "schema_version": 1,
+  "references": [
+    {
+      "key": "AGH",
+      "title": "Calmès–Dotto–Harpaz–Hebestreit–Land–Moi–Nardin–Nikolaus–Steimle, Hermitian K-theory for stable ∞-categories II",
+      "edition": "arXiv:2009.07224v5",
+      "source": "https://arxiv.org/abs/2009.07224v5",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "arXiv:2009.07224v5",
+          "source": "https://arxiv.org/abs/2009.07224v5"
+        }
+      ],
+      "key_note": "Legacy key proposed in B1 for the nine-author paper; AGH is not the initials of these authors.",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BGT",
+      "title": "Blumberg–Gepner–Tabuada, A universal characterization of higher algebraic K-theory",
+      "edition": "arXiv:1001.2282v4",
+      "source": "research/k-coverage/maps/bgt/toc.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BM18",
+      "title": "Bhatt–Mathew, The arc-topology",
+      "edition": "arXiv:1807.04725v4",
+      "source": "https://arxiv.org/abs/1807.04725v4",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BS17",
+      "title": "Bhatt–Scholze, Projectivity of the Witt vector affine Grassmannian",
+      "edition": "arXiv:1507.06490v3",
+      "source": "https://arxiv.org/abs/1507.06490v3",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BS19",
+      "title": "Bhatt–Scholze, Prisms and prismatic cohomology",
+      "edition": "author version",
+      "source": "paper/refs/BS-prisms-author.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BST13",
+      "title": "Bhatt–Schnell–Scholze",
+      "edition": "arXiv:1307.3763v3",
+      "source": "https://arxiv.org/abs/1307.3763v3",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "BalmerSchlichting",
+      "title": "Balmer–Schlichting",
+      "edition": "2001 刊行版, J. Algebra 236",
+      "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "2001 刊行版, J. Algebra 236",
+          "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/balmschl.pdf"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Barwick",
+      "title": "Barwick",
+      "edition": "arXiv:1204.3607v6",
+      "source": "https://arxiv.org/abs/1204.3607v6",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "arXiv:1204.3607v6",
+          "source": "https://arxiv.org/abs/1204.3607v6"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Drinfeld",
+      "title": "Drinfeld",
+      "edition": "arXiv:math/0210114v7",
+      "source": "https://arxiv.org/abs/math/0210114v7",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "arXiv:math/0210114v7",
+          "source": "https://arxiv.org/abs/math/0210114v7"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Goodwillie",
+      "title": "Goodwillie",
+      "edition": "1986 刊行版, Ann. Math. 124",
+      "source": "https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "1986 刊行版, Ann. Math. 124",
+          "source": "https://www.sas.rochester.edu/mth/sites/doug-ravenel/otherpapers/goodwillie-cyclic.pdf"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "HA",
+      "title": "Lurie, Higher Algebra",
+      "edition": "2017-09-18",
+      "source": "research/ha-coverage/README.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "dotted",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "HTT",
+      "title": "Lurie, Higher Topos Theory",
+      "edition": "2017-04-09",
+      "source": "research/htt-coverage/README.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "dotted",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "KL",
+      "title": "Kuznetsov–Lunts",
+      "edition": "arXiv:1212.6170v1",
+      "source": "https://arxiv.org/abs/1212.6170v1",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "arXiv:1212.6170v1",
+          "source": "https://arxiv.org/abs/1212.6170v1"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "KST",
+      "title": "Kerz–Strunk–Tamme, Algebraic K-theory and descent for blow-ups",
+      "edition": "arXiv:1611.08466v4",
+      "source": "research/k-coverage/maps/kst/toc.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Kerodon",
+      "title": "Lurie, Kerodon",
+      "edition": "stable Tags",
+      "source": "https://kerodon.net",
+      "native_attribute": "kerodon",
+      "verified_edition": true,
+      "number_style": "tag",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "LT",
+      "title": "Land–Tamme, On the K-theory of pullbacks",
+      "edition": "arXiv:1808.05559v3",
+      "source": "research/k-coverage/maps/land-tamme/toc.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Neeman",
+      "title": "Neeman",
+      "edition": "1992 刊行版, Ann. ENS 25",
+      "source": "https://www.numdam.org/articles/10.24033/asens.1659/",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "1992 刊行版, Ann. ENS 25",
+          "source": "https://www.numdam.org/articles/10.24033/asens.1659/"
+        },
+        {
+          "edition": "Bondal–van den Bergh, arXiv:math/0204218v2",
+          "source": "https://arxiv.org/abs/math/0204218v2"
+        },
+        {
+          "edition": "Neeman 2001 Lemma 9.1.5、著者自身の 2011 Reminder 5.1 による再掲",
+          "source": "https://www.numdam.org/item/10.24033/asens.2151.pdf"
+        },
+        {
+          "edition": "arXiv:2009.07224v5",
+          "source": "https://arxiv.org/abs/2009.07224v5"
+        }
+      ],
+      "edition_policy": "Default is the original publication. A row quoting a different work/edition is held until its key and locator are disambiguated; never use the last CSV row as the default.",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Paper",
+      "title": "Positivity of Serre’s Intersection Multiplicity",
+      "edition": "2026-09-23; upstream adc7f1241b42e322a6451854ab7e4b4c146bf78a",
+      "source": "paper/paper.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Rydh",
+      "title": "Rydh, Submersions and effective descent",
+      "edition": "arXiv:0710.2488v3",
+      "source": "https://arxiv.org/abs/0710.2488v3",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Schlichting",
+      "title": "Schlichting",
+      "edition": "公開稿（11.4・11.7・11.10・6.4）",
+      "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/schlneg.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "公開稿（11.4・11.7・11.10・6.4）",
+          "source": "https://webhomes.maths.ed.ac.uk/~v1ranick/papers/schlneg.pdf"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Stacks",
+      "title": "The Stacks project",
+      "edition": "stable Tags",
+      "source": "https://stacks.math.columbia.edu",
+      "native_attribute": "stacks",
+      "verified_edition": true,
+      "number_style": "tag",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "TT",
+      "title": "Thomason–Trobaugh",
+      "edition": "1990 刊行版, Grothendieck Festschrift III",
+      "source": "https://gwern.net/doc/math/1990-thomason.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "1990 刊行版, Grothendieck Festschrift III",
+          "source": "https://gwern.net/doc/math/1990-thomason.pdf"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Tamme",
+      "title": "Tamme, Excision in algebraic K-theory revisited",
+      "edition": "arXiv:1703.03331v3",
+      "source": "research/k-coverage/maps/tamme/toc.md",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Thomason",
+      "title": "Thomason",
+      "edition": "1993 刊行版, Invent. Math. 112",
+      "source": "https://www.digizeitschriften.de/download/pdf/356556735_0112/log23.pdf",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "1993 刊行版, Invent. Math. 112",
+          "source": "https://www.digizeitschriften.de/download/pdf/356556735_0112/log23.pdf"
+        },
+        {
+          "edition": "arXiv:2009.07224v5",
+          "source": "https://arxiv.org/abs/2009.07224v5"
+        }
+      ],
+      "edition_policy": "Default is the original publication. A row quoting a different work/edition is held until its key and locator are disambiguated; never use the last CSV row as the default.",
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    },
+    {
+      "key": "Waldhausen",
+      "title": "Waldhausen",
+      "edition": "1985 刊行版, LNM 1126",
+      "source": "https://noah.nrw/ubbihs/content/titleinfo/5112640",
+      "native_attribute": null,
+      "verified_edition": true,
+      "number_style": "kind and number",
+      "reviewed_sources": [
+        {
+          "edition": "1985 刊行版, LNM 1126",
+          "source": "https://noah.nrw/ubbihs/content/titleinfo/5112640"
+        }
+      ],
+      "edition_provenance": "citation-attributes.md §3 or the reviewed source map; publication existence does not certify each correspondence"
+    }
+  ]
+}

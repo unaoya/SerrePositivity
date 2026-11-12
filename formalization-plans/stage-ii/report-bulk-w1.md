@@ -332,3 +332,15 @@ B4にはレーン別の変更ファイル一覧・マップ・一行のrewrite�
 検討の入力はHTT/HAの全review章、Kerodon/BSのitems、Kの文献別itemsとothers。これらのCSV 26ファイルのパス別SHA-256をソートしたJSONの集約SHA-256は `f9e88c506153f7dc9abe9106f63bfe05767c3e0bae120d2f28c70438312f9237`。調査用の静的集計と仮仕分けは `/tmp/bulk-w1-paper/` にある。集計コードは作業用の一時ファイルで、リポジトリの道具として追加していない。
 
 ここで**停止点0**。属性の実装、対応表の変更、移動・分割・Archive化、ビルドはまだ始めない。行き先、partialの構文/Tag方針、187件の扱い、54本に追加する13本の扱いを調整役・ユーザーの確認に回す。
+
+## B2 準備記録（進行中）
+
+B1 の承認（citation-attributes.md §8）を受けて着手した。これは停止点の提出ではない。入力の本体は `0e8c85420`（main を取り込んだ一括枝）に固定し、本体の移動は `/tmp/bulk-w1-b2/preview/` でだけ試す。main と一括枝の既存 Lean 本体は動かしていない。
+
+新設の `SerrePositivity/Util/Citation.lean` は、独立した永続環境拡張で `@[cite KEY "番号"]`、理由必須の四種類の partial、`#cite_tags KEY` を実装した。Mathlib の Kerodon/Stacks 属性は変更しない。ネイティブ属性の関係は `native` として出し、comment から exact/partial を推定しない。版の正本は `research/bibliography.json`、生成部分との一致検査は `python3 scripts/refactor/bulk_citation_registry.py --check`。25 略号を登録した。others.csv の Thomason・Neeman には複数の文献・版が混在するため、最終行で上書きせず、原著を既定とし、出典が違う対応は属性計画で保留する。AGH は B1 で九人論文に提案した旧ラベルであり、著者の頭文字ではないことを明記した。
+
+属性の検査は、四種の partial、理由の不足、未知の略号、空番号、重複の冪等性と矛盾、import 後の保持、module モードでの後置の属性付与を含む10ケースを通した。読み取り用の `#cite_check` は実際の定義元・宣言範囲・型・型内の定数・公理依存・明示的な ModelCategory SSet 仮定を返す。普通の定義と、実在する ModelCategory SSet 仮定付き補題の照会でも検査した。再解釈は元の Lake 設定（maxSynthPendingDepth=3 等）を引き継ぐ。
+
+元の未解決台帳は main `fd50804df` の `research/coverage-location-refresh/2026-11-12-ledger.json` を正本にした。元の187件は延べ187件・異なる名前とパスの組141件である。当初の再構成187候補は異なる組187件だったため、同じ集合ではなかった。共通124組、元の台帳だけ17組、再構成だけ63組。以後の全件表と検査は正本の187行を保持して行う。
+
+共有鍵は `--wait 3600 --class bulk`、一回580秒の打ち切りで取得する。移動先・前提のビルドと保存比較、属性全件のプレビューは継続中。B2 の停止点で、確定した件数・未説明差分・実測と凍結の所要時間をまとめる。
