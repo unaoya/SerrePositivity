@@ -5488,3 +5488,52 @@ M・N の共通の上界を明示し、**元の指定射 f による後合成そ
 `audit-bounded-quasi.log`：**148 本・1,103 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 上有界な係数の全部分圏と同じ相対 Hom 関手へまとめる作業を続行する。
+
+
+## 88. D79(iii)：同じ射影 p 入力の native スペクトル図式と全 sourceIso
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| BoundedCyclicCoefficients | 64 |
+| BoundedCyclicSpectrum | 71 |
+| TensorPowerHomotopy | 47 |
+| TensorPowerUpperBound | 54 |
+| TensorPowerRepresentationQuasiIso | 31 |
+| BoundedProjectiveTensorInput | 71 |
+| ProjectivePowerSpectrum | 65 |
+
+追加 **403 行**、(iii) **1,698 行**、(ii)+(iii) **8,892 行**。
+TensorPowerHomotopy・TensorPowerUpperBound の一般補題は基盤への移動候補。
+相対図式の各部品も、Tate の実構成が固まった後に配置を検討できる。
+
+### 88.1 到達した実関手
+
+`boundedCyclicHomLocalizer` は、上有界な作用付き係数の元の準同型を保つ
+**同じ完全周期 Hom の実相対関手**。
+`boundedCyclicSpectrum` は、その hammock から native Sp への実関手であり、
+同じ厳密な係数図式へ戻る全 `boundedCyclicSpectrum_sourceIso` を持つ。
+上界は対象ごとに選べ、二対象の間の証明で共通の上界を取った。
+
+`tensorPowerMap_quasiIso_of_KProjective` は、指定射を保つホモトピー同値の
+同じテンソル冪を使って証明した。作用付き入力の準同型性は正確な忘却で反映した。
+上界 n a も同じ符号付き入力に適用している。
+
+`boundedProjectiveTensorInputLocalizer` は、完全入力を含む
+上有界・各項射影の元の複体から、同じ巡回係数模型への相対関手。
+その p 入力・完全周期 Hom・実スペクトル化の合成が **`projectivePowerSpectrum`**。
+`projectivePowerSpectrum_sourceIso` は元の厳密な合成との **全関手の指定同型**。
+対象ごとにスペクトルを選ぶ構成で代用していない。
+
+採用した周期のままの未シフト Hom を使っている。
+**native Tate[-1] との比較、完全入力からの余極限保存延長、
+スペクトル的な右 k 作用、P⁰ の全自然変換はまだ未完了**。
+次は同じ係数類を表す実鎖写像と、そのホモロジー類を照合する。
+
+### 88.2 検証
+
+`bounded-cyclic-coefficients-03.log`・`tensor-input-bounds-homotopy-01.log` の
+BoundedCyclicSpectrum、`tensor-input-bounds-homotopy-03.log`・
+`bounded-projective-tensor-input-01.log`・`projective-power-spectrum-01.log`：対象成功。
+新規七本の最終版に警告なし。
+`audit-projective-power.log`：**155 本・1,173 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
