@@ -1519,3 +1519,975 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 | `projectiveNatGradingInt_chart_pow_mem` | 指定分母の n 冪の分子の p 乗は、p 倍の捻りと p*n 冪の分母に対応する。 |
 
 標準開図式全体の Frobenius とその Čech 写像を具体化する `ProjectiveCechFrobenius.lean` は、通常の係数作用と Frobenius による制限作用の型合わせが未解決なので、入口から外して未コミットの下書きとして残した。係数の代数の射への自然性も下書きで、まだ完成と数えない。既存の n→p*n の I 進評価と実際の厚化の写像への接続、共通アフィン細分、filtered colimit の比較が残る。**停止点 2e ではない。**
+
+
+## 2026-11-12：実際の Čech Frobenius、I 進商と環の閉厚化との照合
+
+数学コミット **`72c7ff525`**。新規 7 モジュール（590 行）と入口の import 7 行、32 件の数学宣言（公開の次数付き構造の instance 二件を含み、local instance は除く）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,339 jobs で成功**。別実行の標準監査は **7,276 宣言・標準三公理のみ**。共有鍵 `--wait 3600` は各ビルド・監査の間だけ持ち、待ちは一つにまとめた。既存の数学宣言の本文・型・名前、および計算量上限は変更していない。sorry・admit・新しい公理も追加していない。
+
+標準開の実際の p 乗写像を、係数を Frobenius で制限した図式への自然変換にし、その Čech H の半線形写像を構成した。未検証だった型合わせは、`ModuleCat.ofHom` の対象を明示し、半線形の `map_smulₛₗ` を使うことで解決した。一般の半線形な係数の可換四角形を H へ送る補題を一つにまとめ、次数を保つ代数の射について、局所化・標準開図式・Čech H の三段の自然性を示した。
+
+この **実際の** Čech Frobenius に既存のイデアル冪の制御を適用し、H 自身の I 進商で n→p*n の写像と遷移との可換性、I 進完備化の半線形写像と元の H からの写像の可換性を示した。遷移の証明を Čech H の内部で展開すると kernel timeout が出たため、一般の半線形加群の補題へ分離して適用した。上限は増やしていない。**H/IⁿH を、閉厚化の H と同一視してはいない。**
+
+さらに、実際の環の商 A/J に元の次数成分の像を入れ、単位・積・多項式作用を保つことを示した。局所化が零環になる場合と、環の商自体が零になる場合も含めた。この実際の商写像と Čech Frobenius の可換性を検証した。Rees の実際の商加群 A/IⁿA と環の商 A/(IⁿA) の R 線形・R[X] 線形な比較を作り、同じ代表元と次数成分を保つことから、標準開図式と Čech H の同型へ送った。
+
+登録モジュール：`FrobeniusAdicQuotient`、`ProjectiveCechFrobenius`、`ProjectiveCechSemilinearNaturality`、`ProjectiveFrobeniusNaturality`、`ProjectiveCechFrobeniusAdic`、`ProjectiveRingQuotientGrading`、`ReesClosedRingComparison`。
+
+| 宣言 | 主張 |
+|---|---|
+| `frobeniusSemilinearShiftedQuotientMap` | 任意の Frobenius 半線形写像は、指数 n を p*n へ送る I 進商の写像を誘導する。 |
+| `frobeniusSemilinearShiftedQuotientMap_mk` | その商写像は、代表元に元の半線形写像を適用する。 |
+| `frobeniusSemilinearShiftedQuotientMap_transition` | 指数を p 倍する商写像は、I 進商の遷移と可換。 |
+| `frobeniusSemilinearCompletionMap_of` | Frobenius 半線形な完備化写像は、元の加群からの写像を保つ。 |
+| `projectiveNatGradedChartFrobenius` | 実際の標準開の指定次数の p 乗写像。捻り d を p*d へ送る。 |
+| `projectiveNatGradedChartFrobenius_val` | 指定次数の写像は、周囲の局所化環の Frobenius の制限。 |
+| `projectiveNatGradedChartFrobeniusNatTrans` | 各標準開の Frobenius は、係数を Frobenius で制限した標準開図式への自然変換。 |
+| `projectiveNatGradedCechFrobenius` | 実際の標準開図式の Čech H の Frobenius 半線形写像。 |
+| `projectiveCechSemilinearHomologyMap_naturality` | 半線形な係数図式の可換四角形は、同じ Čech H の可換四角形を与える。 |
+| `projectiveLocalizedFrobenius_map` | 実際の局所化の Frobenius は、代数の射による局所化の写像と可換。 |
+| `projectiveNatGradedChartFrobeniusNatTrans_naturality` | 標準開図式の Frobenius は、次数を保つ代数の射に自然。 |
+| `projectiveNatGradedCechFrobenius_naturality` | 実際の Čech H の Frobenius は、次数を保つ代数の射に自然。 |
+| `projectiveNatGradedCechFrobenius_ideal_power_control` | 実際の Čech Frobenius は、H の Iⁿ 倍を I^(p*n) 倍へ送る。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap` | 実際の Čech Frobenius が H 自身の I 進商へ誘導する、指数 n→p*n の写像。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap_mk` | この I 進商の写像は、同じ H の代表元に Frobenius を適用する。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap_transition` | 実際の Čech Frobenius の I 進商の写像は、遷移と可換。 |
+| `projectiveNatGradedCechFrobeniusAdicCompletionMap` | 実際の Čech Frobenius の I 進完備化の半線形写像。 |
+| `projectiveNatGradedCechFrobeniusAdicCompletionMap_of` | 実際の Čech Frobenius の完備化は、元の H からの写像を保つ。 |
+| `projectiveRingQuotientGrade` | 実際の商環の次数成分を、元の次数成分の商写像による像として定義する。 |
+| `projectiveRingQuotientGradeGradedMonoid` | 商環の次数成分は、単位と積を保つ。 |
+| `projectiveRingQuotientGradeGradedSMul` | 商環の次数成分は、元の多項式環の次数付き作用を保つ。 |
+| `projectiveRingQuotientProjection_preservesPiece` | 実際の商写像は、元の次数成分を商の同じ次数成分へ送る。 |
+| `projectiveRingQuotient_primeCast_eq_zero` | p の像が零であることは、零環を許す商環でも成り立つ。 |
+| `projectiveRingQuotientCechFrobenius_naturality` | 実際の環の商への射影と、標準開の Čech Frobenius は可換。 |
+| `reesClosedRing_submodule_eq` | Rees の閉厚化の部分加群は、A の拡大イデアルの係数制限。 |
+| `reesClosedRingLinearEquiv` | Rees の商加群表示と、実際の環の閉厚化との R 線形同型。 |
+| `reesClosedRingLinearEquiv_mk` | 環の商との比較は、同じ代表元を持つ剰余類を対応させる。 |
+| `reesClosedRingPolynomialEquiv` | 環の商との比較を、多項式環上の線形同型へ昇格する。 |
+| `reesClosedRingPolynomialEquiv_mk` | 多項式線形な比較も、同じ代表元を送る。 |
+| `reesClosedRingPolynomialEquiv_mem_iff` | 比較は、商の Proj 次数成分を両方向で対応させる。 |
+| `reesClosedRingChartIso` | Rees の閉厚化と実際の環の閉厚化の標準開図式の同型。 |
+| `reesClosedRingCechIso` | Rees の閉厚化と実際の環の商の Čech H の同型。 |
+
+原典の Hⁱ に対応する主張の docstring は「Čech 版」と明記し、Stacks 30.2.6 の比較は形式化しないと記した。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。
+
+残り：`reesClosedRingChartIso`・`reesClosedRingCechIso` と、以前の閉厚化への射影・厚化間の遷移との可換性を、同じ実際の商写像で明示する。その後、閉厚化の Frobenius を互換族と形式関数の同型へ接続する。H 自身の I 進商の n→p*n の写像ができたことだけでは、閉厚化の H の間の指数を移す写像までできたとはしない。共通アフィン細分、filtered colimit の実際の比較も未完。**停止点 2e ではない。**
+
+証拠：作業木の `scheme-drafts/` に、`frobenius-root-importer-build-3.log`、`rees-closed-ring-build.log`、`frobenius-closed-ring-audit.log`、`verified-frobenius-closed-ring.json` を保存した。
+
+
+## 2026-11-12：実際の閉厚化の Frobenius と形式関数の可換性
+
+数学コミット `8e896e65c`。3 モジュール（399 行）・21 件の数学宣言。対象と直接 importer のビルド成功（**4,342 jobs**）。別実行の標準監査は **7,343 宣言・標準三公理のみ**。新規を含め、既存の数学宣言は変更していない。上限の追加・sorry・admit・新しい公理はない。鍵は `--wait 3600`、一回ごとに返却した。
+
+`72c7ff525` の環の商との比較を、既存の Rees の閉厚化への射影と厚化間の遷移に自然にした。多項式線形写像の代表元の計算、標準開図式、Čech H の順に可換性を示した。実際の環の閉厚化の Frobenius を、この構成済みの同型で既存の Rees の Čech H へ戻し、以前からの射影と I 進遷移に可換であることを証明した。
+
+これを実際の閉厚化の互換族へ送り、既存の `adicProjectionCompletionMap_semilinear_naturality_apply` を使って、完備化から互換族への canonical な比較が Frobenius と可換と示した。射影の場合の形式関数の同型の順写像はその比較そのものなので、同型自体の Frobenius の可換性を得た。Noether 性と多項式環上の有限生成性は、形式関数の同型の箇所にだけ仮定する。導来関手の Hⁱ との比較や、H/IⁿH と閉厚化の H の同一視は行わない。
+
+登録：`ReesClosedRingNaturality`、`ReesClosedCechFrobenius`、`ReesClosedCechFrobeniusCompletion`。
+
+| 宣言 | 主張 |
+|---|---|
+| `reesClosedRingPolynomialEquiv_projection` | Rees と環の商の比較は、既存の射影を実際の環の射影へ送る。 |
+| `reesClosedRingTransition` | 実際の環の閉厚化の間の、指数を下げる商射。 |
+| `reesClosedRingTransition_mk` | 環の閉厚化の遷移は、同じ代表元を送る。 |
+| `reesClosedRingPolynomialEquiv_transition` | Rees と環の商の比較は、以前の厚化間の遷移と可換。 |
+| `reesClosedRingTransition_preservesPiece` | 環の閉厚化の遷移は、商の Proj 次数を保つ。 |
+| `reesClosedRingProjectionChartMap` | 環の閉厚化への射影が誘導する標準開図式の射。 |
+| `reesClosedRingTransitionChartMap` | 環の閉厚化の遷移が誘導する標準開図式の射。 |
+| `reesClosedRingChartIso_projection` | 標準開の具体的な比較は、既存の閉厚化への射影と可換。 |
+| `reesClosedRingChartIso_transition` | 標準開の比較は、以前の厚化間の遷移と可換。 |
+| `reesClosedRingCechIso_projection` | 環の商の Čech H の比較は、以前からの閉厚化への射影と可換。 |
+| `reesClosedRingCechIso_transition` | 環の商の Čech H の比較は、既存の I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius` | 実際の商環の Frobenius を、構成済みの同型で Rees 表示の閉厚化の Čech H へ戻す。 |
+| `reesAdicProjectiveClosedCechFrobenius_compare` | Rees 表示へ戻した Frobenius は、環の商の表示の Frobenius そのもの。 |
+| `reesAdicProjectiveClosedCechFrobenius_projection` | 実際の閉厚化の Čech Frobenius は、以前からの閉厚化への射影と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius_transition` | 実際の閉厚化の Čech Frobenius は、既存の I 進遷移と可換。 |
+| `reesAdicProjectiveClosedCechFrobenius_linear_transition` | 遷移の可換性を、互換族への写像に使う半線形写像の合成の等式で述べる。 |
+| `reesAdicProjectiveClosedCechFamiliesFrobenius` | 実際の閉厚化の Čech 互換族に誘導した Frobenius 半線形写像。 |
+| `reesAdicProjectiveClosedCechFamiliesFrobenius_apply` | 互換族の Frobenius は、各厚化の実際の Čech Frobenius を適用する。 |
+| `reesAdicProjectiveClosedCechFrobenius_linear_projection` | 射影の可換性を、半線形写像の合成の等式で述べる。 |
+| `reesAdicProjectiveClosedCechCompletionMap_frobenius` | 完備化から実際の閉厚化の互換族への canonical な写像は、Frobenius と可換。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv_frobenius` | 射影版の形式関数の同型は、実際の Čech Frobenius と可換。 |
+
+上の原典の Hⁱ に関する主張は、名前と docstring で Čech 版と明記し、Stacks 30.2.6 の導来関手との比較は形式化しないとした。最終出力と利用側の `AugmentedRingCechExact` は変更していない。
+
+§9 の残りは、共通アフィン細分、filtered colimit の実際の比較、およびそれらと既存の比較の可換性。閉厚化の n→p*n を移す写像の追加構成は、同じ n の閉厚化の Frobenius と区別して扱う（2f の冪による因子分解に必要）。**停止点 2e ではない。2f は未着手のまま。**
+
+証拠は作業木の `scheme-drafts/rees-closed-frobenius-completion-importer-build.log` と `rees-closed-frobenius-completion-audit.log` に保存した。
+
+
+## 2026-11-12：filtered colimit の Čech H の自然な比較と、実際の局所化・次数成分
+
+数学コミット `df7c1d105`。8 モジュール（754 行）と入口 import 8 行、43 件の数学宣言（公開の instance を含み、local instance は除く）。対象と直接 importer のビルドは **4,352 jobs で成功**、別実行の標準監査は **7,466 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を各実行の間だけ持ち、待ちは一つにまとめた。既存の数学宣言の型・本文・名前と計算量上限は変更していない。
+
+固定した有限被覆の各 Čech 項について、各タプル成分の代表元と等式を一つの有限段へ送ることで、canonical な filtered colimit の比較が全単射であると示した。ここから全タプル Čech 複体が filtered colimit を保つことを導いた。各次数の H との交換は、関手圏の短複体と加群圏の AB5 を使って別に構成した。正次数の H の同型を、B1 の増大完全性の同値だけから導いてはいない。複体と H の比較はともに係数図式の射に自然と示した。最終的な環の増大 Čech 完全性の `isCechExact_colimit` は B1 のものを使い、作り直していない。
+
+実際の加群の局所化を、局所化環とのテンソル積と自然同型で比較し、小さい colimit を保つことを示した。この比較は同じ分子・分母の分数を保ち、図式の射に自然である。局所化が零になる場合も含む。さらに、filtered 図式の遷移で保たれる部分加群の colimit を、各段の像の有向上限と線形同定した。基底環 R と作用の環 P を分けて係数制限し、余極限の分子族の次数成分を構成した。一つの有限段の同じ次数の代表元を持つこと、各段の射が次数を保つこと、分母倍の条件が保たれることを示した。
+
+原典 [Stacks 30.6.1 / 07TB](https://stacks.math.columbia.edu/tag/07TB) は準コンパクト・準分離な射に対する層の filtered colimit と高次順像を扱う。今回の H の比較は、その計算に使う **Čech 版**であり、導来関手との比較は作らない。該当する docstring に原典の番号と Stacks 30.2.6 の比較を形式化しないことを明記した。
+
+登録モジュール：`ProjectiveCechFilteredCochains`、`ProjectiveFilteredHomology`、`ProjectiveCechFilteredComplex`、`ProjectiveFilteredHomologyNaturality`、`ProjectiveCechFilteredNaturality`、`ProjectiveLocalizedColimit`、`ProjectiveFilteredSubmodule`、`ProjectiveGradedColimit`。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveCechCochainsFunctor` | 全タプル Čech の固定した長さの項を、係数図式の関手にする。 |
+| `projectiveCoefficientColimit_exists_rep` | 係数図式の余極限の各交叉の元は、一つの有限段の代表元を持つ。 |
+| `projectiveCoefficientColimit_eq_iff` | 同じ段の係数の余極限での等式は、ある有限段での等式と同値。 |
+| `projectiveCechColimitCochainsMap_ι` | canonical な余極限比較は、各有限段のタプル成分をそのまま送る。 |
+| `projectiveCechColimitCochainsMap_surjective` | 有限被覆の Čech 各項の filtered colimit 比較は全射。 |
+| `projectiveCechColimitCochainsMap_injective` | 有限被覆の Čech 各項の filtered colimit 比較は単射。 |
+| `projectiveCechCochainsFunctorPreservesFilteredColimits` | 有限被覆の全タプル Čech の各項は filtered colimit を保つ。 |
+| `projectiveFilteredShortComplexDiagram` | 短複体の図式を、関手圏の一つの短複体にまとめる。 |
+| `projectiveFilteredShortComplexHomologyDiagramIso` | 関手圏の短複体の H を、各有限段の H の図式と同定する。 |
+| `projectiveFilteredShortComplexHomologyIso` | 短複体の filtered colimit の H は、各段の H の colimit。 |
+| `projectiveFilteredComplexShortComplexIso` | 複体の colimit の短複体を、各項の colimit の短複体と比較する。 |
+| `projectiveFilteredComplexHomologyIso` | 複体の filtered colimit と各次数の H を比較する。 |
+| `projectiveFullCechFunctorPreservesFilteredColimits` | 有限被覆の全タプル Čech 複体は filtered colimit を保つ。 |
+| `projectiveCechFilteredComplexIso` | 有限被覆の Čech 複体と係数図式の filtered colimit の canonical な比較。 |
+| `projectiveCechFilteredHomologyIso` | 有限被覆の Čech H は、係数図式の filtered colimit と交換する。 |
+| `projectiveFilteredShortComplexHomologyDiagramIso_naturality` | 関手圏と各段の短複体の H の比較は、図式の射に自然。 |
+| `projectiveFilteredShortComplexHomologyIso_naturality` | 短複体の filtered colimit の H の比較は、図式の射に自然。 |
+| `projectiveFilteredComplexShortComplexIso_naturality` | 複体の短複体と各項の colimit の比較は、図式の射に自然。 |
+| `projectiveFilteredComplexShortComplexIso_inv_naturality` | 短複体の比較の逆向きも、図式の射に自然。 |
+| `projectiveFilteredComplexHomologyIso_naturality` | 複体の filtered colimit と各次数の H の比較は、図式の射に自然。 |
+| `projectiveCechFilteredComplexIso_naturality` | Čech 複体と filtered colimit の比較は、係数図式の射に自然。 |
+| `projectiveCechFilteredHomologyIso_naturality` | Čech H の filtered colimit 比較は、係数図式の射に自然。 |
+| `projectiveLocalizedModuleFunctor` | 実際の分数の局所化を、元の環上の加群の関手にする。 |
+| `projectiveLocalizedModuleTensorNatIso` | 実際の局所化と、局所化環とのテンソル積を自然に比較する。 |
+| `projectiveLocalizedModuleFunctorPreservesColimits` | 固定した共通の環での実際の局所化は、小さい colimit を保つ。 |
+| `projectiveLocalizedColimitIso` | 実際の局所化と colimit の canonical な比較。 |
+| `projectiveLocalizedColimitIso_fraction` | 局所化の比較は、有限段の分数の同じ分子・分母を保つ。 |
+| `projectiveLocalizedColimitIso_naturality` | 実際の局所化と colimit の比較は、加群図式の射に自然。 |
+| `projectiveFilteredSubmodule` | 余極限内の指定部分を、各段の部分加群の像の上限と定義する。 |
+| `projectiveFilteredSubmodule_directed` | 遷移で保たれる部分加群の像は、有向族をなす。 |
+| `mem_projectiveFilteredSubmodule_iff` | 余極限の指定部分の元は、一つの段の指定部分の代表元を持つ。 |
+| `projectiveFilteredSubmoduleDiagram` | 各段の指定部分加群自身を、加群の filtered 図式とする。 |
+| `projectiveFilteredSubmoduleInclusion` | 各段の指定部分の包含を、図式の包含とする。 |
+| `projectiveFilteredSubmoduleInclusionMono` | 指定部分加群の図式の包含は mono。 |
+| `projectiveFilteredSubmoduleColimit_injective` | 部分加群の filtered colimit からの包含は単射。 |
+| `projectiveFilteredSubmoduleColimit_range` | 部分加群の colimit の像は、有限段の像の有向上限そのもの。 |
+| `projectiveFilteredSubmoduleColimitEquiv` | 部分加群の colimit を、余極限内の具体的な指定部分と線形同定する。 |
+| `projectiveFilteredSubmoduleColimitEquiv_val` | 指定部分の比較は、余極限内の同じ元を送る。 |
+| `projectiveGradedColimitGrade` | P 上の加群図式の余極限に、共通基底 R 上の分子族の像から次数成分を作る。 |
+| `projectiveGradedColimitBaseInclusion` | 各有限段からの P 線形な射を、共通基底 R 上の線形射として扱う。 |
+| `mem_projectiveGradedColimitGrade_iff` | 余極限の次数成分の元は、一段の同じ次数の元で表される。 |
+| `projectiveGradedColimitInclusion_preservesPiece` | 各段からの canonical な射は、同じ Proj 次数の成分を保つ。 |
+| `projectiveGradedColimitGrade_step` | 有限段の分母倍の条件は、余極限の次数成分でも保たれる。 |
+
+**残り。** 固定係数の任意の係数図式の Čech H の比較はできたが、これだけで動く基底の実際の標準開との比較が完了したとはしない。次は、構成した余極限の次数成分を分子族とする `projectiveGradedAway` と、各段の斉次局所化の colimit を比較する。全射性は分子の有限段への持ち上げ、単射性は分母倍での零化と有限段の等式判定による。その同型を実際の標準開の制限と加群の射に自然にし、Čech H の比較と合成する。負の次数の零延長、動く基底の実際の係数変更図式、既存の閉厚化・Frobenius との整合性もそこで確認する。
+
+共通アフィン細分も未完。完備化と filtered colimit の交換、無限積との交換は主張していない。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。**停止点 2e ではない。**
+
+証拠は作業木の `scheme-drafts/cech-filtered-importer-build.log`、`projective-graded-colimit-build-2.log`、`cech-filtered-audit.log` に保存した。次の斉次局所化の接続手順は `scheme-drafts/graded-away-colimit-route.md` にも記録した。
+
+
+## 2026-11-12 夜：新しい上限規則に基づく途中の規模報告
+
+規則は main `f5baa8763` の `coordination.md` §2 と `scheme-w1.md` の夜の追記で確認した。2e の段 0 の見込みは 2d 停止点報告 §3 の **8,000–25,000 行**。停止基準は上端の 2 倍の **50,000 行**。見込みの半分の報告点は、上端の半分 **12,500 行**として早めに報告する。
+
+検証済みの計測点は `0e0f9fc07`（数学 `df7c1d105`）。2d 停止点の報告 `df035c08e` から増えた `AlgebraicGeometry/` の新規 Lean は **205 本・22,140 行**。既存の数学ファイルの差分はなく、入口 `AlgebraicGeometry.lean` の登録追加 **206 行**を含めると **22,346 行**。空行・コメントを含むソース行数で数え、文書・`scheme-drafts/`・ビルド成果物は含めない。main の取り込みで増えた他レーンの `CommutativeAlgebra/` 33 本・3,616 行は 2e の実測に混ぜない。半分の報告点は既に越えているので、この時点で報告して作業を継続する。
+
+| 残る作業 | 現時点の追加行数の見込み |
+|---|---:|
+| 斉次局所化の colimit、実際の標準開・動く基底への接続 | 約 2,000–5,000 |
+| 共通アフィン細分と、各 H の比較・自然性 | 約 5,000–11,000 |
+| 五つの比較同士の整合性と停止点報告の仕上げ | 約 1,000–3,000 |
+| 合計 | **約 8,000–19,000** |
+
+従って合計は現時点で約 **30,000–42,000 行**の見込みであり、新しい停止基準を超える見込みにはまだ至っていない。主な不確かさは、共通アフィン細分の正次数の H の比較（アフィン交叉上の完全性と二重複体の edge map / cone）の接続である。検証済みの前段の API だけでその比較が済んだとは数えない。残りの見込みが変わり、50,000 行を超えそうになった場合は、その時点の検証済みをコミットして報告し、止める。
+
+計測は `git diff --name-only --diff-filter=A df035c08e 0e0f9fc07 -- SerrePositivity/AlgebraicGeometry` の Lean ファイルの各 `git show` の行数を合計した。パス・行数・ハッシュは作業木の `scheme-drafts/size-2e-1112.json` に保存した。最後の検証は対象と直接 importer 4,352 jobs、監査 7,466 宣言・標準三公理のみ。**停止点 2e ではない。**
+
+
+## 追記：一括移動の凍結に向けた途中の取り込み（11-12 午後）
+
+調整役の連絡により、一括レーンの凍結の一晩は停止点 2e を待たずに行う（早くて翌日の夜。具体的な日程はまだ未指定）。指定された日の夕方までに検証済みを枝へコミットして報告し、途中の取り込み点として main に渡す。その夜はコミットを控え、翌朝に改名表で追従する。未検証の Lean は作業木に残し、途中の取り込みの対象に混ぜない。2e の停止点の基準と残りの数学は変更しない。
+
+
+### 共通細分のアフィン側：局所化による完全性の実装候補（紙の調査、未検証）
+
+[Stacks 30.2.1](https://stacks.math.columbia.edu/tag/01X8) の標準被覆の議論を、導来関手の H との比較を経ずに使う。有限標準被覆を与える元の集合 s が単位イデアルを生成するとき、各 f∈s で局所化すれば一つの被覆元が単元になる。そこでその頂点をタプルの先頭へ挿入し、制限写像の逆を使って増大 Čech 複体を縮約する。Mathlib の `exact_of_localized_span`（`RingTheory/LocalProperties/Exactness.lean`）は各局所化での完全性から元の加群の完全性を戻す入口であり、同ファイルの `injective_of_localized_span` が増大項を扱う。有限積と局所化の比較は各次数で有限個のタプルについて行う。無限積と局所化の交換は使わない。
+
+まず任意の係数図式 D で、固定頂点 v の挿入 T→T∪{v} による制限がすべて同型なら、全タプルの先頭挿入が縮約を与えるという加群の補題を切り出す。その後に実際の局所化図式へ特殊化する。単項式の縮約 `projectiveMonomialContraction_identity` の符号計算を参照できるが、一般の係数図式では制限写像とその逆の可換性を追加で示す必要がある。既存の単項式の補題がそのまま任意の係数図式に適用できるとはしない。
+
+これは交叉上の完全性の入口であって、二つの被覆の各正次数の H の比較を閉じるものではない。共通細分の二重図式、全複体への比較の quasi-isomorphism、係数の射への自然性は別に構成する。B1 の増大完全性の同値をこの H の同型と置き換えない。ここに記したものは紙の調査で、検証済みの宣言数には含めない。
+
+
+既存の `CechTupleContraction.lean` の `cechTupleBoundary_prepend` は整数タプル鎖の先頭追加の恒等式を既に供給している。したがって符号相殺をもう一度証明する必要はない。`ProjectiveCechComparison.lean` の `fullCechTranspose_comp` は台を広げない写像用なので、そのまま先頭追加に適用せず、T の代わりに T∪{v} 上で評価する転置を追加する。通常の境界との二つの合成則を示せば、既存の鎖の恒等式を係数付きの先頭挿入の恒等式へ移せる。`scheme-drafts/ProjectiveCechInsertTranspose.lean` と `ProjectiveCechSplitVertex.lean` はこの準備の下書きであり、本体・入口・検証済みの数には未登録。
+
+
+## 斉次局所化から実際の標準開の filtered 比較へ（11-12、650650c96）
+
+数学コミット **`650650c96`**。新規 8 モジュール、数学宣言 **30 件**、本体 **738 行**と入口 8 行、計 **746 行**。対象と直接 importer `SerrePositivity.AlgebraicGeometry` は **4,360 jobs で成功**。別実行の標準監査は **7,579 宣言・標準三公理のみ**。いずれも共有の `with_build_lock.sh --wait 3600` を通し、監査の鍵はビルド終了後に取り直した。未検証の下書きは含めていない。
+
+登録したモジュール：
+
+- `ProjectiveGradedAwayColimit`
+- `ProjectiveGradedAwayColimitValues`
+- `ProjectiveGradedColimitGrading`
+- `ProjectiveGradedColimitNaturality`
+- `ProjectiveNatChartColimit`
+- `ProjectiveNatChartColimitComponent`
+- `ProjectiveNatChartColimitIso`
+- `ProjectiveNatChartColimitNaturality`
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveGradedAwayColimitDiagram` | 各有限段の指定次数の斉次局所化を filtered 図式にする。 |
+| `projectiveGradedAwayColimitCocone` | 有限段から、余極限の分子族の斉次局所化への余錐。 |
+| `projectiveGradedAwayColimitMap` | 斉次局所化の colimit から余極限の斉次局所化への比較射。 |
+| `projectiveGradedAwayColimitMap_ι` | 比較射は各有限段の実際の局所化写像を保つ。 |
+| `projectiveGradedAwayColimitMap_surjective` | 分子の有限段の代表元により比較射は全射。 |
+| `projectiveGradedAwayColimitMap_injective` | 分母倍での零化を有限段へ降ろして比較射の単射性を示す。 |
+| `projectiveGradedAwayColimitEquiv` | 斉次局所化と filtered colimit の比較の線形同型。 |
+| `projectiveGradedAwayColimitEquiv_ι` | 同型は各有限段からの局所化の写像を保つ。 |
+| `projectiveGradedAwayColimitEquiv_ι_value` | 同型を周囲の局所化の写像の値で計算する。 |
+| `projectiveGradedColimitGrade_bot` | 各有限段の零部分から作った余極限の次数成分は零。 |
+| `projectiveGradedColimitGrade_int` | 余極限の次数成分と整数への零延長が交換する。 |
+| `projectiveGradedColimitGradeGradedSMul` | 有限段の次数付き作用を余極限の次数成分へ移す。 |
+| `projectiveGradedColimitMap_preservesPiece` | 次数を保つ図式の射の colimit は、余極限でも同じ次数を保つ。 |
+| `projectiveNatChartColimitDiagram` | 実際の射影標準開の係数図式を各有限段について並べる。 |
+| `projectiveNatChartColimitCocone` | 有限段から余極限の次数付き加群の標準開への余錐。 |
+| `projectiveNatChartColimitMap` | 標準開の制限写像を含む図式全体の canonical な余極限比較。 |
+| `projectiveNatChartColimitNumerator` | 標準開の分子族の余極限と、余極限の次数成分から作る分子族の一致。 |
+| `projectiveNatChartColimitNumerator_map` | 有限段の次数を保つ射は、各標準開の分子族も保つ。 |
+| `projectiveNatChartColimitNumerator_step` | 標準開の分子族は、その分母倍で次の項へ移る。 |
+| `projectiveNatChartColimitComponentDiagramIso` | 各有限交叉の成分図式と固定した分母の斉次局所化の図式を同定する。 |
+| `projectiveNatChartColimitComponentEquiv` | 標準開の各有限交叉で余極限比較を線形同型にする。 |
+| `projectiveNatChartColimitComponentDiagramIso_ι` | 成分図式の同定は各有限段からの射を保つ。 |
+| `projectiveNatChartColimitComponentEquiv_ι_val` | 成分同型と実際の余錐の写像は同じ局所化分数を与える。 |
+| `projectiveNatChartColimitMap_app_isIso` | canonical な標準開比較射は各有限交叉で同型。 |
+| `projectiveNatChartColimitIso` | 標準開間の制限写像を含め、図式全体の比較を同型にする。 |
+| `projectiveNatCechFilteredHomologyIso` | 実際の標準開の Čech H と有限段の Čech H の filtered colimit との同型。 |
+| `projectiveNatChartColimitDiagramMap` | 次数を保つ図式の射を、有限段の標準開の図式の射へ移す。 |
+| `projectiveNatChartColimitTargetMap` | 図式の射の colimit から、余極限の実際の標準開の射を作る。 |
+| `projectiveNatChartColimitMap_naturality` | canonical な標準開の比較射は、次数を保つ図式の射に自然。 |
+| `projectiveNatCechFilteredHomologyIso_naturality` | 実際の標準開の Čech H の余極限比較は、次数を保つ図式の射に自然。 |
+
+
+分母倍での零化を有限段へ降ろすため、分母の非零因子性や基底環の非自明性は仮定しない。負の次数の零延長、空の有限集合の標準開、指定次数の分子族も同じ比較で扱う。成分図式の一致を kernel に大きく展開させる箇所は、明示的な自然同型とその有限段の公式に切り出した。計算量上限は増やしていない。既存の数学宣言の本文・型は変更せず、新しい 8 ファイルと入口登録だけを追加した。`sorry`・`admit`・新しい公理はない。
+
+Čech H の二つの新しい入口は、原典 Stacks 30.6.1 の Hⁱ に対応する **Čech 版**と docstring に明記し、分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しないと記した。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更していない。
+
+**停止点 2e ではない。** 今回の入力は共通の R と多項式環 R[X] 上の filtered な次数付き加群の図式で、出力は余極限の実際の次数成分から作る標準開の図式である。係数環 B_j が動く各段の B_j[X] 上の標準開と、共通係数へ制限したこの図式との照合はまだ別に閉じる必要がある。`projectiveNatCoefficientChartIso` などの既存の係数変更比較、および Frobenius・閉厚化・底変換との可換性を、同じ有限段の写像で接続する。共通アフィン細分の各 H の比較と自然性も未完。今回の標準開の比較だけで、被覆によらないことまで示したとはしない。完備化や無限積と filtered colimit の交換も主張しない。
+
+段 2e の実測は基点 `df035c08e` から新規 **213 本・22,878 行**、入口登録を含め **23,092 行**。他レーンの追加・文書・下書きを含めない。前回の半分の報告点を越えた実測報告は継続して有効で、新しい停止基準 50,000 行には達していない。残りの主な幅は引き続き共通アフィン細分にある。
+
+
+### 共通アフィン細分：mapping cone と B1 による接続案（再開後の紙の作業）
+
+正次数の H の比較の橋として、一般の全複体の edge map の理論を先に作る代わりに、refinement map の cone に B1 の `exact_zero_row_iff_zero_col_of_commute` を適用する案を使う。以下は紙の筋で、Lean で検証済みの結論ではない。
+
+有限アフィン被覆 V が U を細分し、添字写像 ρ により V_j⊂U_{ρ(j)} とする。非増大の Čech 複体の射 r:C(U)→C(V) に対し、負の一項を自然数の第零項へ移した cone を E⁰=C⁰(U)、E^{p+1}=Cᵖ(V)⊕C^{p+1}(U) と置く。微分は第零項で a↦(r(a),−d(a))、以後 (b,a)↦(d(b)+r(a),−d(a))。この cone の完全性と r の各 H の同型性を、サイクル・境界の前像で結ぶ補題を切り出す。導来関手の層コホモロジーとの比較は使わない。
+
+V のタプルとの交叉で上の cone を作れば、縦方向を V の増大 Čech にした二重図式になる。正の縦次数では、交叉全体が V のそのタプルの先頭の開に入り、また U_{ρ(j)} にも入る。両方の横の増大 Čech が固定頂点の先頭挿入で縮約する。共通の増大項の射が恒等なので、そこから非増大の射の cone の完全性を加群の計算で得る。縦の各列は、U のアフィン交叉を V で被覆した増大 Čech、またはその有限直和。従ってその完全性を供給すれば、B1 によって縦次数零の cone の完全性が従う。この段で初めて各 H の同型を結論する。単なる増大完全性の同値を各 H の同型と読み替えない。
+
+アフィンの任意の有限アフィン被覆の完全性は、先に標準被覆の場合を局所化と先頭挿入で証明し、有限標準細分 W を選んで B1 の完全性の比較を使う。V|W の各交叉では、W が入る V の開が一つあるので縮約する。他方向では、アフィン V の交叉へ U の大域関数の標準被覆を制限した形なので、標準被覆の完全性を使う。この順なら、任意のアフィン被覆の完全性を共通細分の H の同型から循環的に導かない。
+
+細分の添字写像によるコチェインの射、合成との整合性、係数の射への自然性、二つの添字写像が与える射のホモトピーも別に供給する。被覆によらない比較を閉じるまで、存在する一つの細分についての同型だけを停止点の条件としない。
+
+
+## 固定頂点の縮約・アフィン標準被覆の単元の場合・refinement cone（eac527fbd）
+
+数学コミット **`eac527fbd`**。新規 **7 モジュール・40 宣言**、本体 **711 行**と入口 7 行、計 **718 行**。対象と直接 importer は **4,367 jobs で成功**。別実行の標準監査は **7,650 宣言・標準三公理のみ**。共有の `with_build_lock.sh --wait 3600` でビルドと監査を一回ずつ別に実行した。未検証の `CechHomologyCycleCriterion.lean` はこのコミットと監査数には含めない。
+
+- `ProjectiveCechSplitVertex`・`ProjectiveCechSplitExact`：固定頂点を挿入する制限がすべて同型である係数図式では、増大項の写像が単射で、各正長のサイクルは境界。符号計算は既存の `cechTupleBoundary_prepend` を、台を一頂点まで広げる転置で移して再利用した。
+- `AffineModuleCechDiagram`・`AffineModuleCechMap`・`AffineModuleCechUnit`：実際の局所化加群の各有限交叉と制限を図式にし、係数の射の恒等・合成を保つ。被覆元の一つが単元なら、上の縮約から増大 Čech の完全性を得る。単位イデアルを生成する一般の場合の完全性とは区別する。
+- `CechRefinementCone`・`CechRefinementConeExactness`：非負次数の射の cone を負一の項から自然数で添字付けし、同じ増大項を保つ二つの完全な列の射では、その cone の第零項の核が零で各正次数のサイクルが境界になる。これは二重図式の正次数の行に用いる加群の計算である。
+
+| モジュール | 宣言 | 主張 |
+|---|---|---|
+| `ProjectiveCechSplitVertex` | `cechInsertVertexFunctor` | 有限集合に固定した頂点を挿入する関手。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertVertexMap` | 係数図式の制限による、頂点挿入の自然変換。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertVertexIso` | 各交叉で頂点挿入の制限が可逆なら、係数図式の自然同型になる。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex` | タプルの先頭への挿入による、挿入後の係数での評価。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex_naturality` | 先頭挿入の評価は、係数図式の射に自然。 |
+| `ProjectiveCechSplitVertex` | `fullCechSplitVertexContraction` | 挿入の制限の逆で係数を戻した、縮約の候補。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose` | 頂点挿入まで台を広げる鎖写像の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_comp_preserving_left` | 挿入まで広げる写像の前に、台を保つ写像を合成する場合の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_comp_preserving_right` | 台を保つ写像の前に、挿入まで広げる写像を合成する場合の転置。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_add` | 挿入を許す転置は鎖写像の和を保つ。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_id` | 恒等写像の挿入を許す転置は、挿入による係数の制限。 |
+| `ProjectiveCechSplitVertex` | `cechTuplePrepend_support_insert` | 先頭追加の像の台は、元の台にその頂点を追加した集合に収まる。 |
+| `ProjectiveCechSplitVertex` | `fullCechInsertTranspose_prepend` | 先頭追加を転置したものは、係数図式への先頭挿入の評価。 |
+| `ProjectiveCechSplitVertex` | `fullCechPrependVertex_identity` | 係数図式付きの先頭挿入と余境界の反交換式。同型性の仮定は不要。 |
+| `ProjectiveCechSplitVertex` | `fullCechSplitVertexContraction_identity` | 挿入の制限が同型なら、係数図式の全タプル Čech コチェインは縮約する。 |
+| `ProjectiveCechSplitExact` | `cechTupleBoundary_prepend_zero` | 長さ零のタプルでは、先頭を追加して境界を取ると元に戻る。 |
+| `ProjectiveCechSplitExact` | `fullCechPrependVertex_zero_differential` | 長さ零の先頭挿入と余境界の合成は、頂点挿入による係数の制限。 |
+| `ProjectiveCechSplitExact` | `fullCechAugmentedDifferential_squared` | 全タプルの余境界の二乗は、長さ零の増大項からも零となる。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertexContraction_zero_identity` | 増大項での縮約も、余境界との合成が恒等になる。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertexDifferential_zero_injective` | 固定頂点による縮約があれば、増大項からの余境界は単射。 |
+| `ProjectiveCechSplitExact` | `fullCechSplitVertex_cycle_boundary` | 固定頂点による縮約があれば、正の長さの各 Čech サイクルは境界。 |
+| `AffineModuleCechDiagram` | `affineModuleAwayRestrictionIso` | 二つの分母が互いに整除するときの局所化加群の同型。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator` | 有限交叉を定める被覆元の積。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator_dvd` | 添字を増やすと、交叉の分母は元の分母の倍数になる。 |
+| `AffineModuleCechDiagram` | `affineModuleCechDiagram` | アフィン標準被覆の各有限交叉での局所化加群の図式。 |
+| `AffineModuleCechDiagram` | `affineCechDenominator_insert_dvd` | 単元の被覆元を追加しても、交叉の分母は元の分母を割る。 |
+| `AffineModuleCechDiagram` | `affineModuleCechDiagram_map_insert_isIso` | 被覆元が単元なら、それを交叉へ追加する制限は同型。 |
+| `CechRefinementCone` | `cechRefinementConeTerm` | 自然数で添字付けした cone の項。 |
+| `CechRefinementCone` | `cechRefinementConeDifferential` | 負一から移した cone の微分。 |
+| `CechRefinementCone` | `cechRefinementConeDifferential_squared` | この添字付けでも cone の微分の二乗は零。 |
+| `CechRefinementCone` | `cechRefinementCone` | 共通アフィン細分の射の完全性を測る、自然数添字の cone。 |
+| `CechRefinementConeExactness` | `cechRefinementCone_zero_kernel` | 増大項で恒等を誘導する射の cone は、第零項で核が零。 |
+| `CechRefinementConeExactness` | `cechRefinementCone_cycle_boundary` | cone の正次数の各サイクルは境界。増大項を保つ二つの完全な列を用いる。 |
+| `AffineModuleCechMap` | `affineModuleCechMap` | 加群写像が誘導する、各有限交叉の局所化加群の図式の射。 |
+| `AffineModuleCechMap` | `affineModuleCechMap_id` | 局所化した係数写像は恒等写像を保つ。 |
+| `AffineModuleCechMap` | `affineModuleCechMap_comp` | 局所化した係数写像は合成を保つ。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnitInsertionIsIso` | 単元の頂点の挿入は、係数図式のすべての成分で同型。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_zero_injective` | 単元の被覆元があれば、増大項からの写像は単射。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_cycle_boundary` | 単元の被覆元があれば、増大 Čech の各サイクルは境界。 |
+| `AffineModuleCechUnit` | `affineModuleCechUnit_exact` | 単元の被覆元があれば、増大 Čech の連続する二つの余境界は完全。 |
+
+
+既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はない。最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は基点 `df035c08e` から **220 本・23,589 行**、入口登録を含め **23,810 行**。50,000 行の停止基準には達していない。
+
+**停止点 2e ではない。** 単位イデアルを生成する一般のアフィン標準被覆は、局所化と有限積の比較を供給してから今回の単元の場合へ渡す必要がある。任意のアフィン被覆の完全性、共通細分の二重図式の実装、cone の完全性から実際の H の同型へ渡す判定と自然性、細分の選択との整合性が残る。動く係数環の標準開と共通係数の図式の照合、および既存の五つの比較同士の可換性も未完。今回の cone の補題の前提を仮定しただけで、一般の共通細分が完成したとはしない。
+
+
+## アフィン標準 Čech の完全性・細分の自然性と選択の独立性（ecd5061a5）
+
+数学コミット **`ecd5061a5`**。新規 **27 モジュール・141 宣言**、本体 **2,387 行**、入口 **27 登録と区切り空行 1 行**、git 差分 **2,415 行**。対象と直接 importer のビルドは **4,452 jobs で成功**。別実行の公理監査は **7,890 宣言・標準三公理のみ**。どちらも共有の `with_build_lock.sh --wait 3600` を使い、一つの待ちを終えてから次の鍵を取った。検証時とコミット時の全 27 ソースおよび入口のハッシュが一致することを確認した。
+
+- 単位イデアルを生成する一般のアフィン標準被覆の増大 Čech の完全性を、被覆元での局所化、有限積との交換、固定頂点の縮約から示した。Mathlib の準連接層の局所化 API を使い、Spec の実際の標準開上の切断へ渡した。
+- 開被覆の有限交叉、細分の実際のコチェイン写像、係数の射への自然性、恒等と合成、二つの添字の選択が同じ Čech H の射を与えることを示した。最後は整数鎖の比較ホモトピーとその台の包含を、切断の制限で評価した。
+- アフィン被覆を有限標準開で細分する存在、アフィン対角の下での実際の共通アフィン被覆、非空有限交叉のアフィン性を供給した。有限標準細分の添字は `Fin n` とし、座標環の宇宙から添字の制約が生じない形にした。
+- 加法的係数比較に沿う完全性の輸送を追加した。大域の係数環と、アフィン座標の係数環の線形構造を同一視しない。
+- cone が完全なら各 H の射が同型となる判定と、二重図式の行の cone に B1 を適用する接続を示した。**これらの完全性の前提をまだ全て実際のアフィン交叉へ供給していない。** `OpenCoverCechResolution` は実際の二重 Čech 構成の入口だが、任意のアフィン被覆の完全性や一般の細分の H の同型が完成したとは数えない。
+
+| モジュール | 宣言 | 主張 |
+|---|---|---|
+| `AffineLocalizingCech` | `cechAwayFactorUnits` | 局所化先では、分母を割る元の冪も可逆に作用する。 |
+| `AffineLocalizingCech` | `cechSpecRestriction` | Spec の大域切断から標準開への制限。 |
+| `AffineLocalizingCech` | `cechBasicOpen_le_of_dvd` | 分母の整除に沿う標準開の包含。 |
+| `AffineLocalizingCech` | `specStandardCechDiagram` | 標準開の交叉上の切断を、積の標準開で表示する係数図式。 |
+| `AffineLocalizingCech` | `specStandardCechSectionIso` | 標準開の切断と大域切断の局所化の同型。 |
+| `AffineLocalizingCech` | `specStandardCechSectionIso_naturality` | 標準開の切断と局所化の比較は、交叉を狭める制限に自然。 |
+| `AffineLocalizingCech` | `specStandardCechDiagramIso` | 局所化を与える前層の、標準開係数図式との自然同型。 |
+| `AffineLocalizingCech` | `specStandardCech_zero_injective` | 局所化を与える前層の標準開被覆では、増大項からの写像は単射。 |
+| `AffineLocalizingCech` | `specStandardCech_exact` | 局所化を与える前層の標準開被覆の増大 Čech 完全性。 |
+| `AffineLocalizingCech` | `cechBasicOpen_denominator` | 分母の積の標準開は、各分母の標準開の有限交叉。 |
+| `AffineLocalizingCech` | `specStandardCechOpenDiagramIso` | 積の標準開による図式と、実際の有限交叉による図式の自然同型。 |
+| `AffineLocalizingCech` | `specStandardOpenCech_exact` | Spec の標準開被覆上の実際の切断の増大 Čech の完全性。 |
+| `AffineModuleLocalizedCech` | `affineModuleLocalizedCechInsertionIsIso` | 被覆元で局所化すれば、その頂点を交叉へ挿入する制限はすべて同型。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_localized_zero_injective` | 各被覆元で局所化すると、増大項からの写像は単射。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_localized_exact` | 各被覆元で局所化した、連続する Čech の余境界は完全。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_zero_injective` | 単位イデアルを生成する元の標準被覆では、増大項の写像は単射。 |
+| `AffineModuleLocalizedCech` | `affineModuleCech_exact` | 標準アフィン被覆の増大 Čech の完全性。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherent_isLocalizing` | 準連接層の標準開への制限は、その元での局所化。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherentStandardOpenCech_zero_injective` | 準連接層の標準開被覆の増大項の単射性。 |
+| `AffineQuasicoherentStandardCech` | `specQuasicoherentStandardOpenCech_exact` | Spec 上の準連接層の標準開被覆の増大 Čech 完全性。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv` | 各交叉の加法的な比較による Čech 項の加法群の同型。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_differential` | 係数の制限と可換な加法的比較は、Čech 微分と可換。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_zero_injective` | 加法的係数比較によって、増大項の単射性を移す。 |
+| `CechAdditiveCoefficientComparison` | `fullCechAdditiveCoefficientEquiv_exact` | 加法的係数比較によって、増大 Čech の完全性を移す。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv` | 係数の自然同型による、増大項を含む各 Čech 項の同型。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_toLinearMap` | 各項の同型は係数写像で与えられる。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_differential` | 係数の自然同型は微分と可換。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_zero_injective` | 自然同型に沿って増大項の微分の単射性を移す。 |
+| `CechCoefficientExactness` | `fullCechCoefficientEquiv_exact` | 自然同型に沿って増大 Čech の完全性を移す。 |
+| `CechHomologyCycleCriterion` | `cechCyclesOf` | 元で与えたサイクルを、短複体の抽象的な cycles の元にする。 |
+| `CechHomologyCycleCriterion` | `cechCyclesOf_value` | 元で与えたサイクルの値は、元の元に戻る。 |
+| `CechHomologyCycleCriterion` | `cechCyclesValue_isCycle` | cycles の元の値は、微分で零になる。 |
+| `CechHomologyCycleCriterion` | `cechHomologyCycleValue` | サイクルの H の類を opcycles に写すと、その値の類になる。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMapCycleValue` | 短複体の射の H 上の写像は、サイクルの値に元の射を適用する。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_surjective_of_cycles` | 目標の各サイクルが境界を除いて持ち上がれば、H の射は全射。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_injective_of_cycles` | 境界への写像を元の境界へ戻せれば、H の射は単射。 |
+| `CechHomologyCycleCriterion` | `cechHomologyMap_isIso_of_cycles` | サイクルの持ち上げと境界の反映から、各次数の H の同型性を得る。 |
+| `CechLocalizationCochains` | `cechLocalizationFunctorAdditive` | 分数の局所化関手は加法的。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv` | 各 Čech 次数の局所化と、局所化した係数の Čech の項の比較。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_mk` | Čech の各項の局所化比較は、各タプルの分母を保つ。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_differential` | 各項の局所化比較は、増大項を含めて Čech の余境界と可換。 |
+| `CechLocalizationCochains` | `cechLocalizationComplexIso` | 有限被覆の全タプル Čech 複体と、実際の分数の局所化との同型。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_naturality` | 各項の分数の比較は、係数図式の射に自然。 |
+| `CechLocalizationCochains` | `cechLocalizedCochainsDifferential` | 元の Čech の余境界を、分数の局所化の間の写像にする。 |
+| `CechLocalizationCochains` | `cechLocalizationCochainsEquiv_differential_apply` | 局所化した余境界の比較の、元ごとの式。 |
+| `CechLocalizationCochains` | `cechLocalizationCochains_exact_of_exact` | 局所化後の係数図式での完全性は、局所化した二つの余境界の完全性を与える。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv` | 有限積と局所化の線形同型。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv_mk` | 有限積との比較は、すべての成分で同じ分母を保つ。 |
+| `CechLocalizationPi` | `cechLocalizationPiEquiv_projection` | 有限積との比較の各成分は、射影を局所化した写像である。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction` | 標準開の制限を、さらに外側の分母で局所化した写像。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_surjective` | 追加因子が外側で逆になるなら、局所化した制限は全射。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_injective` | 追加因子が外側で逆になるなら、局所化した制限は単射。 |
+| `CechLocalizedAwayRestriction` | `cechLocalizedAwayRestriction_isIso` | 追加因子を外側で逆にした標準開の制限は、実際の加群の同型。 |
+| `CechProductCoefficients` | `fullCechProductCoefficientDiagram` | 係数図式の成分ごとの直積。 |
+| `CechProductCoefficients` | `fullCechProductCochainsEquiv` | 係数の直積と Čech 項の直積の交換。 |
+| `CechProductCoefficients` | `fullCechProductDifferential_apply` | 直積の交換は Čech 微分と成分ごとに可換。 |
+| `CechProductCoefficients` | `fullCechProduct_zero_injective` | 各係数図式の増大項の微分が単射なら、直積の微分も単射。 |
+| `CechProductCoefficients` | `fullCechProduct_exact` | 各係数図式の増大 Čech が完全なら、直積も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid` | 行の cone を並べた二重図式の項。 |
+| `CechRefinementConeDouble` | `cechRefinementConeHorizontal` | 二重図式の水平方向は、各行の cone の微分。 |
+| `CechRefinementConeDouble` | `cechRefinementConeVertical` | 二重図式の垂直方向は、二つの列方向の射の直積。 |
+| `CechRefinementConeDouble` | `cechRefinementConeVertical_squared` | 列方向の二乗が零なら、cone の列方向の二乗も零。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_commute` | 四角の可換性は、cone の二つの微分の可換性を与える。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_colExact` | 元の二重図式の列が完全なら、cone の各列も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_zero_row_exact` | 正の行の cone と全ての列が完全なら、零番の行の cone も完全。 |
+| `CechRefinementConeDouble` | `cechRefinementConeGrid_homologyMap_isIso` | B1 の二重図式の判定から得る、零番の行の Čech H の同型性。 |
+| `CechRefinementConeHomology` | `cechRefinementCone_quasiIsoAt` | 自然数添字の cone が完全なら、元の射は各次数で quasi-isomorphism。 |
+| `CechRefinementConeHomology` | `cechRefinementCone_homologyMap_isIso` | cone の完全性が与える、元の複体の各次数の H の同型性。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm` | cone の各項に可換四角の成分を適用する。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_differential` | 可換四角の成分は cone の微分と可換。 |
+| `CechRefinementConeMap` | `cechRefinementConeMap` | 可換四角が誘導する cone の射。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_comp` | cone の項への写像は合成を保つ。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_id` | cone の項への恒等写像。 |
+| `CechRefinementConeMap` | `cechRefinementConeMapTerm_zero` | cone の項への零写像。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_map` | 生成元の台の条件から、鎖の写像の台の条件を得る。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_single_mem` | 台を指定した生成元の所属。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_boundary` | 境界は指定した頂点集合を保つ。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_prepend` | 集合内の頂点の先頭追加は、その集合を保つ。 |
+| `CechTupleCarrier` | `cechTupleChainsOn_reindex` | 再添字付けは、頂点集合の像へ鎖を送る。 |
+| `CechTupleCarrier` | `cechTupleComparisonHomotopy_stable_carrier` | 鎖写像で保たれる一つの頂点集合は、比較ホモトピーでも保たれる。 |
+| `CechTupleRefinementHomotopy` | `cechRefinementAmbient` | 直和添字の左側を一つ目の写像で右側へ移す。 |
+| `CechTupleRefinementHomotopy` | `cechRefinementProjection` | 直和添字を二つ目の写像により元の目標へ戻す。 |
+| `CechTupleRefinementHomotopy` | `cechTupleRefinementHomotopy` | 二つの再添字付けをつなぐ整数鎖のホモトピー。 |
+| `CechTupleRefinementHomotopy` | `cechTupleRefinementHomotopy_identity` | 再添字付けの比較ホモトピーの方程式。 |
+| `CechTupleRefinementSupport` | `cechTupleRefinementHomotopy_carrier` | ホモトピーの値の頂点は、入力タプルの二つの像に含まれる。 |
+| `CechTupleRefinementSupport` | `cechTupleRefinementHomotopy_support` | ホモトピーの各出力タプルの台は、二つの像の和集合の中にある。 |
+| `CechTupleReindex` | `cechTupleReindex` | 頂点の写像に沿う、タプルの整数鎖の再添字付け。 |
+| `CechTupleReindex` | `cechTupleReindex_single` | 再添字付けはタプルの生成元をそのまま写す。 |
+| `CechTupleReindex` | `cechTupleReindex_comp` | 再添字付けは合成を保つ。 |
+| `CechTupleReindex` | `cechTupleReindex_zero` | 長さ零の再添字付けは、添字の自己写像では恒等。 |
+| `CechTupleReindex` | `cechTupleReindex_boundary` | 頂点の再添字付けは増大境界と可換。 |
+| `CechZeroCochains` | `cechTupleSupport_empty` | 空タプルの台は空集合。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv` | 長さ零の Čech 項と、係数図式の空集合の値の同型。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv_naturality` | 空交叉の係数との同定は、係数図式の射に自然。 |
+| `CechZeroCochains` | `fullCechZeroCochainsEquiv_exact` | 増大項を空交叉の係数へ置き換えても、増大 Čech の完全性は同じ。 |
+| `OpenCoverCech` | `cechOpenIntersection` | 有限個の開集合の交叉。 |
+| `OpenCoverCech` | `cechOpenIntersection_antitone` | 添字集合が増えると交叉は小さくなる。 |
+| `OpenCoverCech` | `openCoverCechDiagram` | 前層を、有限交叉上の切断の共変な係数図式と見る。 |
+| `OpenCoverCech` | `cechOpenIntersection_refinement` | タプルに沿う細分の包含。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains` | 細分による全タプル Čech 項の制限。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_apply` | 細分による制限の成分表示。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_differential` | 細分の制限は余境界と可換。 |
+| `OpenCoverCech` | `openCoverCechRefinementMap` | 細分による Čech 複体の射。 |
+| `OpenCoverCech` | `openCoverCechCoefficientMap` | 係数前層の射が有限交叉の係数図式に誘導する射。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_naturality` | 細分の制限は係数前層の自然変換に自然。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_id` | 恒等細分は恒等写像を与える。 |
+| `OpenCoverCech` | `openCoverCechRefinementCochains_comp` | 二つの細分を続けた制限は、合成細分の制限。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt` | タプルの整数鎖を、指定した開集合上の切断として評価する。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_single` | 一つのタプルの評価は切断の制限。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_restrict` | 台に現れる全タプルの交叉に入る開集合からは、更に制限できる。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_boundary_single` | 境界の生成元の評価は、余境界のその生成元での評価。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_boundary` | 台に現れる交叉が指定開集合を含めば、境界と余境界は評価で対応する。 |
+| `OpenCoverCechEvaluation` | `openCoverCechEvaluateAt_naturality` | 指定開集合での評価は、係数前層の射に自然。 |
+| `OpenCoverCechRefinementHomotopy` | `cechOpenIntersection_refinement_union` | 細分の交叉は、二つの添字の像を合わせた交叉に含まれる。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopy_support` | 比較ホモトピーに現れるタプルの交叉は、細分の交叉を含む。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm` | 細分の二つの選択を比較する Čech の次数一低い成分。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_zero` | 長さ零での比較成分は零。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_boundary` | 比較鎖の境界への評価は、比較コチェインの余境界に対応する。 |
+| `OpenCoverCechRefinementHomotopy` | `openCoverCechRefinementHomotopyTerm_identity` | 二つの細分写像は、制限付きの比較成分によるコチェインホモトピーで結ばれる。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopyComponent` | 細分比較の複体としてのホモトピーの成分。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopyComponent_succ` | 連続する次数での比較ホモトピーの成分。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinementHomotopy` | 同じ細分の二つの添字の選択は、コチェイン写像としてホモトピック。 |
+| `OpenCoverCechRefinementIndependence` | `openCoverCechRefinement_homologyMap_eq` | Čech H 上の細分の射は、細分の添字の選択によらない。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_naturality` | 細分の複体の射は係数前層の射に自然。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_id` | 恒等細分が誘導する複体の射は恒等。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinementMap_comp` | 細分の複体の射は細分の合成を保つ。 |
+| `OpenCoverCechRefinementNaturality` | `openCoverCechRefinement_homology_naturality` | 各次数の Čech H の細分比較は、係数前層の射に自然。 |
+| `OpenCoverCechResolution` | `openCoverIntersectionPresheaf` | 固定した開集合との交叉上の切断を取る前層。 |
+| `OpenCoverCechResolution` | `openCoverIntersectionPresheafMap` | 固定する開集合を狭めるときの交叉前層の制限。 |
+| `OpenCoverCechResolution` | `openCoverCechResolution` | 開被覆の増大 Čech の一つの項を前層にする。 |
+| `OpenCoverCechResolution` | `openCoverCechResolutionDifferential` | 増大 Čech の余境界は開集合について自然。 |
+| `OpenCoverCechResolution` | `openCoverCechResolutionDifferential_squared` | 前層としての増大 Čech の微分の二乗は零。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover` | 二つの開被覆の交叉による共通細分。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_iSup` | 二つの被覆の交叉も全空間を被覆する。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_le_left` | 共通細分から最初の被覆への包含。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_le_right` | 共通細分から二つ目の被覆への包含。 |
+| `SchemeCommonAffineCover` | `schemeCommonOpenCover_isAffineOpen` | アフィン対角のスキームでは、共通細分もアフィン開被覆。 |
+| `SchemeCommonAffineCover` | `cechOpenIntersection_isAffineOpen` | アフィン対角のスキームのアフィン開の非空有限交叉はアフィン。 |
+| `SchemeFinitePrincipalRefinement` | `schemeFinitePrincipalRefinement` | アフィン開集合の任意の開被覆は、単位イデアルを生成する有限標準開被覆で細分できる。 |
+| `SchemeOpenCoverCechIntersections` | `cechOpenIntersection_scheme_preimage` | スキームの逆像は Čech の有限交叉を保つ。 |
+| `SchemeOpenCoverCechIntersections` | `cechOpenIntersection_scheme_image_preimage` | 開埋め込みの像による交叉の表示。 |
+
+既存の数学宣言の型・本文は変更していない。新しい sorry・admit・公理・計算量上限はなく、最終出力と利用側の `SerrePositivity.Cech.AugmentedRingCechExact` の型も変更していない。段 2e の実測は前回から本体 2,387 行増え、**247 本・25,976 行**、入口の差分を含め **26,225 行**。50,000 行の停止基準には達していない。
+
+**停止点 2e ではない。** 残りは、準連接層のアフィン座標から元の係数への輸送、実際の二重 Čech の各交叉上での完全性の供給、任意のアフィン被覆の完全性と一般の細分の H の同型への適用、動く係数環の標準開との照合、および五つの比較同士の可換性。これらの下書きは監査数とこのコミットには含めない。共通細分の比較の写像は実際の制限であり、非標準の座標や前像の選択はその同型性を証明するためだけに使う。自然性と選択の独立性の証明を、一般の同型性の証明に置き換えない。
+
+
+## 11-12：実際のアフィン被覆の完全性と細分の H の同型（85d6de297）
+
+数学コミット `85d6de297`。新規 **14 本・64 宣言・1,147 行**、入口を含む git 差分 **1,163 行**。対象と直接 importer は **4,466 jobs で成功**。別実行の公理監査は **7,995 宣言・標準三公理のみで成功**。停止点 2e ではない。一般のアフィン被覆上の増大 Čech の完全性と、実際の細分写像が誘導する各次数の H の同型まで到達した。共通細分の独立性の同型への接続、Proj のネイティブな構造層との R 線形比較と五つの比較の接続は、次の未検証の束に残る。
+
+| 宣言 | 主張・用途 |
+|---|---|
+| `openCoverCechCoefficientIso` | 係数前層の自然同型を有限交叉の係数図式へ移す。 |
+| `openCoverCechAcyclic_of_iso` | 自然同型な係数前層へ、増大 Čech の完全性を移す。 |
+| `openCoverCechAcyclic_of_cycles` | 増大項の核の消滅と、正長の各サイクルの前像から完全性を得る。 |
+| `openCoverCechAcyclic_of_double_zero_row` | 二重 Čech の零番の行の完全性から、元の前層の Čech 完全性を得る。 |
+| `openCoverIntersectionPresheafTopIso` | 全空間との交叉を取る前層は、元の前層と自然に同型。 |
+| `openCoverCechDouble_zero_col_exact` | 元の前層の Čech 完全性から、二重図式の零番の列の完全性を得る。 |
+| `openCoverCechAcyclic_of_refinement` | 細分の完全性と各交叉上の完全性から、元の被覆の増大 Čech 完全性を得る。 |
+| `openCoverCechZeroEquiv` | 開被覆の空タプルの項と、大域切断の同型。 |
+| `openCoverCechZeroEquiv_symm_apply` | 大域切断を空タプルの項へ戻すと、その交叉への制限になる。 |
+| `openCoverCechAugmentation` | 大域切断から各被覆開の切断への対角の制限。 |
+| `openCoverCechAugmentation_eq` | 対角の制限は、空タプルの項からの Čech 微分と一致。 |
+| `openCoverCechAugmentation_squared` | 対角の制限のあとに Čech 微分を適用すると零。 |
+| `openCoverCechAugmentation_injective` | 増大 Čech が完全なら、大域切断からの対角の制限は単射。 |
+| `openCoverCechAugmentation_exact` | 増大 Čech の完全性は、大域切断からの対角の制限でも完全。 |
+| `openCoverCechRefinement_augmentation` | 細分の写像は、共通の大域切断からの増大写像を保つ。 |
+| `openCoverCechDoubleTerm` | 二つの被覆の実際の増大 Čech の二重図式の項。 |
+| `openCoverCechDoubleHorizontal` | 二重 Čech の水平方向の余境界。 |
+| `openCoverCechDoubleVertical` | 二重 Čech の垂直方向の余境界。 |
+| `openCoverCechDoubleHorizontal_squared` | 水平方向の微分の二乗は零。 |
+| `openCoverCechDoubleVertical_squared` | 垂直方向の微分の二乗は零。 |
+| `openCoverCechDouble_commute` | 二つの方向の Čech 微分は可換。 |
+| `openCoverCechDouble_rowExact` | 細分の包含から、正次数の行の完全性を得る。 |
+| `openCoverCechDouble_colExact` | 各水平交叉上の増大 Čech が完全なら、その直積である列も完全。 |
+| `openCoverCechDouble_exact_zero_iff` | 二重 Čech に既存 B1 の零番の行・列の比較を適用する。 |
+| `openCoverCechDiagramFunctor` | 前層から有限交叉の係数図式への関手。 |
+| `openCoverCechDiagramFunctorAdditive` | 有限交叉への制限は、係数の射の加法を保つ。 |
+| `fullCechComplexFunctorAdditive` | 全タプル Čech 複体の係数関手は、射の加法を保つ。 |
+| `openCoverCechFunctor` | 前層から被覆の通常の Čech 複体への関手。 |
+| `openCoverCechFunctorAdditive` | 前層から Čech 複体への関手は加法的。 |
+| `openCoverCechRefinementCone_exact` | 共通増大項を保つ、二つの完全な Čech の細分写像の cone の完全性。 |
+| `openCoverCechRefinement_homologyMap_isIso` | 各交叉上の完全性から、細分の実際の Čech H の射は同型。 |
+| `openCoverCechResolutionRowIso` | 二重 Čech の一つの行の係数を、交叉上の係数図式の直積として表示する。 |
+| `cechOpenIntersection_le_tuple_member` | 正長の交叉は、その中に現れる任意の一つの被覆開に含まれる。 |
+| `openCoverCechResolutionRow_zero_injective` | 細分である二重 Čech の正次数の行では、増大項からの微分は単射。 |
+| `openCoverCechResolutionRow_exact` | 細分である二重 Čech の正次数の行は、増大 Čech として完全。 |
+| `openCoverResolutionZeroIntersection` | 長さ零の被覆交叉を付けても、指定開集合は変わらない。 |
+| `openCoverCechResolutionZeroComponentIso` | 増大 Čech 前層の零項と元の前層の、各開集合での同型。 |
+| `openCoverCechResolutionZeroIso` | 増大 Čech 前層の零項は、開集合について自然に元の前層と同型。 |
+| `cechOpenRestrictedIntersection_eq` | 指定開集合との各交叉の等式を、有限交叉の等式へ移す。 |
+| `openCoverCechRestrictedCoverIso` | 指定開集合内で同じ被覆の、有限交叉の係数図式の自然同型。 |
+| `openCoverCechAcyclic_of_intersection_eq` | 指定開集合内で同じ被覆へ、増大 Čech の完全性を移す。 |
+| `openCoverIntersectionPresheafNestedIso` | 二段階の交叉前層は、交叉した開集合の前層に自然に同型。 |
+| `openCoverIntersectionPresheafNestedIsoOfLe` | 小さい開集合での交叉なら、先の大きい開集合の制限は冗長になる。 |
+| `cechOpenIntersection_insert` | 頂点の挿入に対応する開集合の交叉。 |
+| `openCoverCechSplitIntersection_isIso` | 交叉全体を含む頂点の挿入による、切断の制限は同型。 |
+| `openCoverCechSplitIntersection_zero_injective` | 交叉全体を含む頂点がある場合、増大項の微分は単射。 |
+| `openCoverCechSplitIntersection_exact` | 交叉全体を含む頂点がある前層の増大 Čech の完全性。 |
+| `schemeFiniteCommonOpenCover` | Fin で添字付けした、有限の共通開被覆。 |
+| `schemeFiniteCommonCoverLeft` | 有限の共通被覆から第一の被覆への添字。 |
+| `schemeFiniteCommonCoverRight` | 有限の共通被覆から第二の被覆への添字。 |
+| `schemeFiniteCommonOpenCover_iSup` | 有限共通被覆の全空間の被覆性。 |
+| `schemeFiniteCommonOpenCover_le_left` | 有限共通被覆から第一の被覆への包含。 |
+| `schemeFiniteCommonOpenCover_le_right` | 有限共通被覆から第二の被覆への包含。 |
+| `schemeFiniteCommonOpenCover_isAffineOpen` | アフィン対角の下で、有限共通被覆の各開集合はアフィン。 |
+| `schemeModuleCechPresheaf` | 構造層加群の切断を、大域の係数環上の前層として扱う。 |
+| `schemeModuleAffineCechCoefficientEquiv` | アフィン開埋め込みの座標の切断と、元のスキームの切断の加法群の同型。 |
+| `schemeModuleAffineCechCoefficientEquiv_naturality` | アフィン座標との加法的比較は、交叉を狭める制限に自然。 |
+| `schemeModuleStandardOpenCech_exact` | アフィン開集合の標準開被覆上の、準連接層の増大 Čech 完全性。 |
+| `schemeModuleStandardOpenCech_zero_injective` | アフィン開集合の標準開被覆における、準連接層の増大項の単射性。 |
+| `schemeModuleStandardOpenCech_acyclic` | アフィン標準開被覆の完全性を、増大項の単射性とともにまとめる。 |
+| `schemeModuleStandardOpenCech_restrict` | アフィン標準開被覆の完全性は、小さいアフィン開への制限でも成り立つ。 |
+| `schemeModuleAffineCoverCech_acyclic` | アフィン開集合をちょうど被覆するアフィン開被覆の増大 Čech 完全性。 |
+| `schemeModuleAffineOpenCech_acyclic` | アフィン開と各被覆開との交叉がアフィンで、その開を被覆すれば、増大 Čech は完全。 |
+| `schemeModuleCechRefinement_homologyMap_isIso` | 準連接層のアフィン開被覆の細分は、各次数の Čech H の同型を誘導する。 |
+
+段 2e の検証済み実測：**261 本・27,123 行**、入口を含め **27,388 行**。上限 50,000 行内。次の 18 本の未検証の下書きはこの数に含めない。
+
+
+## 11-12：共通細分の独立性と実際の Proj の Čech への接続（96e18ab78）
+
+数学コミット **`96e18ab78`**。新規 **24 本・65 宣言・1,646 行**、入口を含む差分 **1,671 行**。対象と直接 importer は **4,491 jobs で成功**、別実行の監査は **8,160 宣言・標準三公理のみ**。共通アフィン細分の独立性、係数の射・実際のスキームの引き戻しに対する比較の自然性、実際の Proj の構造層の標準開との R 線形比較、任意の有限アフィン被覆での射影有限性を接続した。
+
+**停止点 2e ではない。** `projectiveProjNativeFilteredHomologyIso` は native な極限の H と、固定した共通係数上の旧 NatChart の各段の H を比較する。各有限段の実際の切断への自然な比較と、動く scalar の grading の carrier の照合はまだ未完である。実際の射影の Čech の引き戻しと旧 NatChart の写像との複体全体の一致、底変換・閉厚化・Frobenius・filtered colimit の五つの比較同士の最終的な可換性も残る。模型の構成は承認どおり 2g に残す。
+
+| 宣言 | 主張・用途 |
+|---|---|
+| `openCoverCechRefinementH` | 実際の細分写像が誘導する Čech H の射。 |
+| `openCoverCechCoefficientH` | 係数前層の射が誘導する Čech H の射。 |
+| `openCoverCechComparisonIso` | 共通細分を用いる、二つの被覆の Čech H の比較。 |
+| `openCoverCechComparisonIso_naturality` | 共通細分による Čech H の比較は係数前層の射に自然。 |
+| `openCoverCechRefinementH_eq` | 細分写像の選択を変えても、誘導される Čech H の射は同じ。 |
+| `openCoverCechComparisonIso_choice` | 同じ共通細分への添字の選択によらず、被覆間の Čech H の比較は同じ。 |
+| `openCoverCechComparisonIso_refine` | 共通細分をさらに細分しても、Čech H の被覆間の比較は変わらない。 |
+| `openCoverCechComparisonIso_trans` | 一つの共通細分で作る三つの Čech H の比較は合成に整合する。 |
+| `openCoverCechAcyclic_restrictScalars` | 係数環を制限しても、増大 Čech の完全性は保たれる。 |
+| `projectiveHomogeneousChartLinearEquiv_fraction` | 次数零のチャートの線形同型は、分子と分母の冪を保つ。 |
+| `projectiveHomogeneousChartLinearEquiv_fraction_reflect` | 斉次分数での表示から、元の多項式加群の局所化での表示を取り戻す。 |
+| `projectiveHomogeneousRingChartMap_denominator` | 多項式環上の写像は、標準開の分母の像を保つ。 |
+| `projectiveHomogeneousRingChartMap_powers` | 標準開の分母の冪の部分モノイドは、係数環の写像で次の段へ移る。 |
+| `projectiveHomogeneousRingChartMap_fraction` | 斉次局所化の写像は、分子に係数の写像を適用し分母の指数を保つ。 |
+| `projectiveHomogeneousChartLinearEquiv_map` | 次数零の加群の写像は、実際の斉次局所化の環の写像と一致する。 |
+| `projectiveNatChartColimitTargetIso` | 指定された実際の極限の加群の標準開と、各有限段の標準開の filtered colimit の同型。 |
+| `projectiveNatCechFilteredHomologyTargetIso` | 指定された実際の極限の係数での Čech H と、有限段の Čech H の余極限との比較。 |
+| `projectiveNatGradedChartIso_inverse_mem` | 指定した次数の同型は、逆写像も同じ次数を保つ。 |
+| `projectiveNatGradedChartIso` | 次数成分を保つ加群の同型が、標準開の係数図式に与える自然同型。 |
+| `projectiveProjCechOpen` | Proj の変数に対応する実際の標準開の族。 |
+| `projectiveProjCechOpen_intersection` | 変数の像の積の標準開は、Čech の有限交叉と一致する。 |
+| `projectiveProjCechSectionLinearEquiv` | 非空交叉の斉次局所化と、構造層の実際の切断との R 線形同型。 |
+| `projectiveProjCechSectionLinearEquiv_naturality` | 非空交叉の R 線形同型は、Čech の制限写像に自然。 |
+| `projectiveProjNativeCechComplexIso` | 斉次局所化で計算した Čech 複体と、実際の標準開の構造層の Čech 複体の同型。 |
+| `projectiveProjNativeNatCechComplexIso` | 指定次数の代数的な複体から、実際の Proj の標準開への比較。 |
+| `projectiveProjNativeStandardCechHomology_finite` | 実際の Proj の構造層の標準開 Čech H の有限性。 |
+| `projectiveProjNativeAffineCechHomology_finite` | 実際の Proj の構造層の、任意の有限アフィン被覆での Čech H の有限性。 |
+| `projectiveProjNativeCech_preimageOpen` | 実際の Proj の標準開の逆像は、次の係数環での同じ標準開。 |
+| `projectiveProjNativeCechMap` | Proj の実際の構造層を引き戻す、標準開の Čech の射。 |
+| `projectiveProjNativeFilteredHomologyIso` | 実際の極限の Proj の構造層の Čech H と、各有限段の次数零 Čech H の余極限の比較。 |
+| `projectiveProjRingMapSections_apply` | 斉次分数の係数の写像は、実際の Proj の構造層の引き戻しそのもの。 この式は閉厚化や底変換の平坦性を必要としない。 |
+| `projectiveProjScalarNaturality_fraction` | 基底環のスカラーの斉次分数は、実際の係数環の写像で保たれる。 |
+| `projectiveScalarToGlobalSections_naturality` | Proj の引き戻しは、元の基底環の大域スカラーを保つ。 |
+| `projectiveScalarToZero` | 基底環のスカラーは零次成分に属する。 |
+| `projectiveScalarToGlobalSections` | 分母 1 のチャートを通る、基底環から Proj の大域切断への写像。 |
+| `projectiveScalarToGlobalSections_restrict` | 大域スカラーの標準開への制限は、同じ定数の斉次分数である。 |
+| `projectiveHomogeneousAway_scalar_mul` | 元の基底環の加群作用は、零次成分を通る定数の乗法に一致する。 |
+| `projectiveProjAwaySectionLinearEquiv` | 正次数の標準開の構造層の環同型は、元の基底環上でも線形。 空交叉の切断は同一視せず、正次数のチャートだけを扱う。 |
+| `projectiveProjAwaySectionLinearEquiv_pow` | 標準開の切断への実際の比較は冪写像と可換。零環となる開も含む。 |
+| `schemeCechPreimageCoefficientIso` | 逆像被覆の有限交叉と、押し出した前層の係数図式の自然同型。 |
+| `schemeCechPreimageComplexIso` | 逆像被覆と押し出した前層の Čech 複体の自然な同型。 |
+| `schemeCechPreimageRefinement_naturality` | 逆像被覆の比較は、細分の制限と可換。 |
+| `schemeCechPullbackMap` | スキームの射に沿う係数の射から、逆像被覆への Čech の射を作る。 |
+| `schemeCechPullbackMap_refinement` | 逆像被覆への Čech の射は、細分の制限と可換。 |
+| `schemeCechPullback_homology_refinement` | 逆像被覆への Čech H の射は、細分の H の射と可換。 |
+| `schemeCechPullback_comparison_naturality` | 共通細分の Čech H の比較は、実際のスキームの引き戻しに自然。 |
+| `schemeModuleCommonAffineCechHomologyIso` | 二つの有限アフィン被覆による、準連接層の Čech H の比較同型。 |
+| `schemeModuleCechComparison_commonRefinement_independent` | 実際の準連接係数の二つの共通アフィン細分による Čech H の比較は同じ。 |
+| `schemeModuleCommonAffineCechScalarHomologyIso` | 二つの有限アフィン被覆による、準連接層の Čech H の比較同型。 |
+| `schemeModuleCechScalarComparison_commonRefinement_independent` | 実際の準連接係数の二つの共通アフィン細分による Čech H の比較は同じ。 |
+| `schemeModuleCechScalarRefinement_homologyMap_isIso` | 準連接層のアフィン被覆の細分比較は、任意の基底環の作用に制限しても同型。 |
+| `schemeStructureModule` | 構造層を、それ自身の上の階数一の加群として扱う。 |
+| `schemeStructureModuleQuasicoherent` | 構造層加群は準連接。 |
+| `schemeStructureCechPresheaf` | 構造層の切断を大域切断の環上で扱う、実際の係数前層。 |
+| `schemeStructureCechPresheaf_smul` | 構造層の切断の大域スカラー作用は、制限した切断の乗法。 |
+| `schemeStructureCechRefinement_homologyMap_isIso` | 構造層のアフィン被覆の細分は、実際の Čech H の同型を誘導する。 |
+| `schemeStructurePrimeCast` | 基底の p = 0 は、空の開も含めすべての切断環へ移る。 |
+| `schemeStructureCechFrobeniusCoefficient` | 構造層の切断の実際の Frobenius。基底のスカラー作用を p 乗でねじる。 |
+| `schemeStructureCechFrobeniusCoefficient_apply` | 構造層の Frobenius の各開上の式は p 乗そのもの。 |
+| `schemeStructureCechPullback_scalar` | 構造層の切断の引き戻しは、大域スカラーの引き戻しと整合する。 |
+| `schemeStructureCechPullbackCoefficient` | 実際の構造層の引き戻しを、固定した基底環上の前層の射として扱う。 |
+| `schemeStructureCechPullbackMap` | スキームの射の、構造層の Čech 複体上の実際の引き戻し。 |
+| `schemeCechRefinedPullbackIntersection_le` | 逆像被覆の細分の有限交叉は、元の有限交叉の逆像に含まれる。 |
+| `schemeStructureCechRefinedPullbackMap` | 逆像被覆への引き戻しと、さらに細分する写像の合成。 |
+| `schemeStructureCechRefinedPullbackMap_apply` | 各タプルでの Čech の引き戻しは、実際の構造層の appLE そのもの。 |
+
+段 2e の検証済み実測：**285 本・28,769 行**、入口を含め **29,059 行**。上限 50,000 行内。未検証の下書きは含めない。
+
+
+## 11-12 夜：実際の底変換と動く基底の射の比較（d01affd63）
+
+**停止点 2e ではない。** 数学コミット `d01affd63`。26 モジュール・89 宣言、1,928 行（入口登録を含め 1,955 行）。
+対象と直接 importer `SerrePositivity.AlgebraicGeometry` は **4,517 jobs 成功**。
+別実行の `scripts/audit_kst_scheme_lemmas.lean` は **8,370 宣言、標準三公理のみ**。
+どちらも共有鍵 `with_build_lock.sh --wait 3600` を実行中だけ取得した。
+既存の宣言は変更せず、新規ファイルと入口の import の追加だけ。sorry・admit・新規公理・計算量上限の追加なし。
+
+到達点：
+
+- 実際の Cartesian なアフィン切断の正方形を元の基底環上のテンソル積と同一視し、左右の入射・純テンソル・制限への自然性を示した。平坦性は不要。
+- `schemeStructureCechBaseChangeComplexIso` と `schemeStructureCechNativeTensorComplexIso` は、実際の逆像被覆の通常の Čech 複体を比較する。空交叉の Γ とテンソル積の交換を仮定しない。`schemeStructureCechNativeFlatBaseChangeIso` の H との交換だけに flat を要求する。
+- `projectiveProjNativeNatCechComplexIso_naturality` は旧次数零加群の計算と実際の Proj の引き戻しを同じ射として照合する。
+- `gradedOriginalProjNativeCechComplexIso`・`gradedOriginalProjCechScalarRestrictionIso`・`gradedOriginalProjNativeCechComplexIso_naturality` は、各段で元の Proj を使ったまま、共通基底上の計算と元の基底のスカラー制限をつなぐ。Mathlib の Proj.map の宇宙の指定に合わせ、射を扱う grading の carrier は環と同じ宇宙に置く。実際の部分加群の次数成分はこの形であり、最終出力の宇宙は変更しない。
+- `projectiveHomogeneousChartLinearEquiv_frobenius`・`gradedOriginalProjNativeChart_frobenius` は実際の切断の p 乗と一致する。`schemeStructureCommonAffineCechFrobenius_naturality` は共通アフィン細分の比較と可換で、細分の同型性は準連接性から供給している。
+
+**未完**：各段を実際の元の Proj の Čech H とした filtered 図式全体の比較と、その余極限、I 進の閉厚化・互換族・既存の Rees の形式関数への接続、および比較同士の可換性の最終照合。
+`projectiveProjNativeFilteredHomologyIso` の従来の型（極限先の native H と旧有限段の H の余極限）だけを、実際の各段の比較の完成とは数えない。
+模型と有限段の存在自体は承認どおり 2g の仕事であり、この束では作っていない。
+最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と利用側の型は変更していない。
+今夜は停止点を報告・コミットした後、取り込みを待たず 2f の F0〜F3 へ進む（11-12 夜の指示）。
+
+登録したモジュール：
+
+- `ProjectiveProjRingMapSectionsOfEq`
+- `ProjectiveProjNativeCechEvaluation`
+- `GradedScalarComponents`
+- `GradedOriginalProjSections`
+- `SchemeAffinePullbackSections`
+- `SchemeScalarMorphism`
+- `SchemeAffinePullbackSectionsNaturality`
+- `SchemeAffineBaseChangeTensor`
+- `SchemeAffineBaseChangeTensorLinear`
+- `ModuleCechScalarExtension`
+- `SchemeStructureCechBaseChangeCoefficient`
+- `ProjectiveProjNativeCechNaturality`
+- `SchemeAffineSectionModule`
+- `SchemeAffineBaseChangeNativeSections`
+- `SchemeStructureCechBaseChangeIso`
+- `ProjectiveProjNativeFrobeniusEvaluation`
+- `GradedOriginalProjCech`
+- `GradedOriginalProjCechScalarRestriction`
+- `GradedOriginalProjRingMapSections`
+- `GradedOriginalProjScalarNaturality`
+- `SchemeStructureCechNativeTensor`
+- `GradedOriginalScalarRingMap`
+- `SchemeStructureCechComparisonNaturality`
+- `GradedOriginalProjCechMaps`
+- `GradedOriginalProjCechNaturality`
+- `GradedOriginalProjFrobeniusEvaluation`
+
+宣言と主張（一行ずつ。生成宣言は監査に含む）：
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjRingMapSections_of_eq` | 同じ値の指定された分母を使う、標準開の構造層の引き戻しの自然性。 |
+| `projectiveProjNativeNatCechComplexIso_apply` | 実際の構造層への複体の比較は、各タプルで非空交叉の切断の同型。 |
+| `projectiveProjNativeCech_intersection_le` | 標準開の交叉は、実際の Proj の射での対応する交叉の逆像に含まれる。 |
+| `projectiveProjNativeCechMap_apply` | 実際の Proj の Čech の射は、タプルごとに構造層の appLE に等しい。 |
+| `gradedScalarComponents` | 元の次数の carrier を、指定した基底環上の部分加群として扱う。 |
+| `mem_gradedScalarComponents` | scalar を指定し直しても、各次数の所属の条件は変わらない。 |
+| `gradedScalarComponentsGradedRing` | scalar を指定し直した次数成分は、同じ分解を持つ次数付き環になる。 |
+| `gradedScalarToOriginal` | scalar を指定した次数付き環から、元の次数付き環への恒等写像。 |
+| `gradedOriginalToScalar` | 元の次数付き環から、scalar を指定した次数付き環への恒等写像。 |
+| `gradedScalarAwayIso` | 同じ carrier を持つ二つの grading の斉次局所化は、環として自然に同型。 |
+| `gradedScalarAwayIso_val` | 二つの grading の比較は、周囲の通常の局所化の値を保つ。 |
+| `gradedScalarAwayIso_awayMap` | carrier の比較は、標準開を狭める斉次局所化の制限と可換。 |
+| `gradedOriginalAwayModule` | generic な grading の斉次局所化の R 加群構造。通常の局所化への単射で移す。 |
+| `gradedScalarAwayLinearEquiv` | 同じ grading の carrier の比較は、指定した基底環上でも線形。 |
+| `gradedScalarComponentsGradedSMul` | 係数環を明示した carrier 上にも、同じ次数付き作用がある。 |
+| `gradedSubmoduleScalarRestrictionMemClass` | 大きい基底環の部分加群は、共通の小さい基底環の作用でも閉じる。 |
+| `gradedOriginalScalarToZero` | 基底環のスカラーは零次成分に属する。 |
+| `gradedOriginalScalarToGlobalSections` | 分母 1 のチャートを通る、基底環から Proj の大域切断への写像。 |
+| `gradedOriginalScalarToGlobalSections_restrict` | 大域スカラーの標準開への制限は、同じ定数の斉次分数である。 |
+| `gradedOriginalAway_scalar_mul` | 元の基底環の加群作用は、零次成分を通る定数の乗法に一致する。 |
+| `gradedOriginalProjAwaySectionLinearEquiv` | 正次数の標準開の構造層の環同型は、元の基底環上でも線形。 |
+| `gradedOriginalProjAwaySectionLinearEquiv_pow` | 標準開の切断への実際の比較は冪写像と可換。零環となる開も含む。 |
+| `gradedOriginalScalarToGlobalSections_comp` | 共通の基底環の大域スカラーは、元の基底環を通る合成と一致する。 |
+| `schemeAffinePullbackSectionIso` | アフィン交叉上の実際の切断は、三つの切断環の canonical な pushout と同型。 |
+| `schemeAffinePullbackSectionIso_inl` | pushout の左の写像は、実際の構造層の引き戻し。 |
+| `schemeAffinePullbackSectionIso_inr` | pushout の右の写像も、実際の構造層の引き戻し。 |
+| `schemeAffinePullbackIntersection_isAffineOpen` | 同じ実際の底変換の交叉はアフィン開である。 |
+| `schemeScalarMorphism` | 大域スカラーが定める、Spec R への構造射。 |
+| `schemeScalarHom` | Spec R への構造射から得られる、大域スカラー。 |
+| `schemeScalarMorphism_appTop` | 構造射に移した大域スカラーを、Γ–Spec の三角恒等式で回収する。 |
+| `schemeScalarHom_scalarMorphism` | 構造射を経由しても、大域スカラーの環準同型は変わらない。 |
+| `schemeScalarHom_naturality` | 実際の構造射の可換な正方形から、切断の引き戻しの scalar の整合性を得る。 |
+| `schemeAffinePullbackSectionIso_naturality` | 底変換の canonical なアフィン切断の比較は、開集合を狭める制限に自然。 |
+| `schemeAffineSectionAlgebra` | 構造射を指定したアフィン開の切断を、基底環上の代数として束ねる。 |
+| `schemeAffineBaseChangeSections_isPushout` | 実際のアフィン切断の正方形を、元の R と A を頂点に持つ pushout に移す。 |
+| `schemeAffineBaseChangeTensorIso` | 実際の底変換のアフィン切断と、元の環上のテンソル積の環同型。 |
+| `schemeAffineBaseChangeTensorIso_left` | テンソル積の左の写像は、底変換先の構造射が誘導する scalar の写像。 |
+| `schemeAffineBaseChangeTensorIso_right` | テンソル積の右の写像は、元の構造層の実際の引き戻し。 |
+| `schemeAffineBaseChangeTensorIso_tmul` | 純テンソルの実際の切断への像は、scalar の像と切断の引き戻しの積。 |
+| `schemeAffineBaseChangeSectionsLinearEquiv` | 実際のアフィン底変換の切断の比較は、底変換先の環上で線形。 |
+| `moduleCechScalarExtension` | スカラーを制限した係数への射の、図式に自然なテンソル積からの延長。 |
+| `moduleCechScalarExtension_one_tmul` | 自然なテンソル積からの射は、1 と元の切断の純テンソルを引き戻す。 |
+| `schemeStructureCechBaseChangePullbackCoefficient` | 基底環の変わる構造層の引き戻し。スカラー制限の合成を明示する。 |
+| `schemeStructureCechBaseChangeDiagramRestriction` | 実際の基底変更から得る、逆像被覆の係数図式への射。 |
+| `schemeStructureCechBaseChangeDiagramMap` | 実際の切断の引き戻しをテンソル積から延長した、自然な係数の射。 |
+| `projectiveProjNativeCechSection_map` | 標準開上の分数の比較は、交叉の実際の切断への引き戻しに自然。 |
+| `projectiveProjNativeNatCechComplexIso_naturality` | 次数零加群の Čech の射は、実際の構造層の Čech の引き戻しと一致する。 |
+| `schemeAffineSectionAlgebra_scalar` | 構造射で定める局所のスカラーは、大域スカラーを制限した切断。 |
+| `schemeAffineSectionModuleEquiv` | 実際の構造層の係数加群と、構造射で束ねた切断環は同じ加群。 |
+| `schemeAffineBaseChangeNativeSectionsEquiv` | アフィン底変換の実際の切断の同型を、元の構造層の係数加群の間で述べる。 |
+| `schemeAffineBaseChangeNativeSectionsEquiv_unit` | 実際の切断の同型は、1 と元の切断の純テンソルを構造層の引き戻しへ送る。 |
+| `schemeStructureCechBaseChangeSectionIso` | アフィン交叉の切断の同型を、逆像被覆の対応する交叉まで輸送する。 |
+| `schemeStructureCechBaseChangeDiagramMap_app` | 自然なテンソル積の射のアフィン交叉での成分は、実際の切断の同型。 |
+| `schemeStructureCechBaseChangeDiagramMap_isIso` | 非空アフィン交叉において、実際の係数の底変換の射は同型。 |
+| `schemeStructureCechBaseChangeComplexIso` | 実際の底変換の切断の Čech 複体は、係数をテンソル積にした Čech 複体と同型。 |
+| `projectiveNatGradedChartZeroFrobenius` | 捻り零の Frobenius は、同じ次数零チャートへの半線形写像。 |
+| `projectiveNatGradedChartZeroFrobenius_val` | 捻り零の Frobenius の周囲の局所化への像。 |
+| `projectiveHomogeneousChartLinearEquiv_frobenius` | 加群のチャートの Frobenius は、実際の斉次局所化の p 乗に一致する。 |
+| `projectiveProjNativeChart_frobenius` | 分数の比較を実際の標準開の切断へ移しても Frobenius は p 乗に一致する。 |
+| `gradedOriginalProjCechOpen` | scalar の指定の前の、元の Proj の標準開。 |
+| `gradedOriginalProjCechOpen_intersection` | 元の Proj の標準開の交叉は、変数の像の積での標準開。 |
+| `gradedOriginalProjCechSectionLinearEquiv` | carrier の正規化前の実際の標準開へ、非空交叉の係数を移す線形同型。 |
+| `gradedOriginalProjCechSectionLinearEquiv_naturality` | carrier の正規化前の切断への比較は、標準開を狭める射に自然。 |
+| `gradedOriginalProjNativeCechComplexIso` | 共通の係数環上の標準開計算と、元の Proj の Čech 複体の同型。 |
+| `gradedOriginalProjCoefficientScalarIso` | 段の基底環での構造層の係数を制限すると、共通の基底環での係数と自然に同型。 |
+| `gradedOriginalProjCechScalarRestrictionIso` | 段ごとの基底環の制限と、同じ実際の Proj の Čech 複体の比較。 |
+| `gradedOriginalProjRingMapSections_of_eq` | 同じ値の指定された分母を使う、標準開の構造層の引き戻しの自然性。 |
+| `gradedOriginalProjRingMapSections_apply` | 元の grading を使う実際の切断への、斉次分数ごとの自然性。 |
+| `gradedOriginalProjScalarNaturality_fraction` | 基底環のスカラーの斉次分数は、実際の係数環の写像で保たれる。 |
+| `gradedOriginalScalarToGlobalSections_naturality` | Proj の引き戻しは、元の基底環の大域スカラーを保つ。 |
+| `schemeStructureCechNativeTensorComplexIso` | 実際のアフィン被覆の逆像の Čech 複体と、元の Čech 複体のテンソル積の同型。 |
+| `schemeStructureCechNativeTensorComplexIso_unit_apply` | 複体の比較は、1 と元の cochain の純テンソルを実際の切断の引き戻しへ送る。 |
+| `schemeStructureCechNativeFlatBaseChangeIso` | 実際の底変換の構造層の Čech H と、flat なテンソル積の比較。 |
+| `gradedOriginalScalarRingMap` | 異なる carrier の次数付き環の射を、共通の基底環の部分加群の次数の射に移す。 |
+| `gradedScalarAwayIso_map` | 共通基底への正規化と、実際の斉次局所化の射は可換。 |
+| `gradedOriginalScalarRingMap_denominator` | 元の grading の射は、標準開の分母を同じ変数の像の積へ送る。 |
+| `gradedOriginalScalarRingMap_powers` | 元の grading の射で標準開の分母の冪を移す包含。 |
+| `gradedOriginalChartLinearEquiv_map` | 共通基底の加群でのチャートの射を、元の grading の斉次局所化の射へ戻す。 |
+| `schemeStructureCommonAffineCechCoefficient_naturality` | 二つのスカラー作用の間の実際の係数の射に対する、被覆比較の自然性。 |
+| `schemeStructureCommonAffineCechFrobenius_naturality` | 実際の構造層の Frobenius は、共通アフィン細分による被覆比較と可換。 |
+| `gradedOriginalProjCech_preimageOpen` | 元の grading の Proj の射は、同じ変数の標準開を引き戻す。 |
+| `gradedOriginalProjNativeCechMap` | 元の二つの grading の間の、実際の構造層の Čech の引き戻し。 |
+| `gradedOriginalProjCech_intersection_le` | 元の grading の標準開の交叉を引き戻す包含。 |
+| `gradedOriginalProjNativeCechMap_apply` | 共通基底上での元の Proj の Čech の射は、実際の appLE の引き戻し。 |
+| `gradedOriginalProjNativeCechComplexIso_apply` | 共通基底の加群の複体と元の Proj の切断の比較を、タプルごとに計算する。 |
+| `gradedOriginalProjNativeCechSection_map` | 標準開上の分数の比較は、交叉の実際の切断への引き戻しに自然。 |
+| `gradedOriginalProjNativeCechComplexIso_naturality` | 次数零加群の Čech の射は、実際の構造層の Čech の引き戻しと一致する。 |
+| `gradedOriginalChartLinearEquiv_frobenius` | 共通基底のチャートの Frobenius は、元の grading の斉次局所化の p 乗と一致。 |
+| `gradedOriginalProjNativeChart_frobenius` | 共通基底での計算を元の Proj の切断へ戻しても、Frobenius は実際の p 乗。 |
+
+段 2e の検証済み実測：**311 本・30,697 行**、入口を含め **31,014 行**。上限 50,000 行内。未検証の下書きを含めない。
+
+
+## 11-12 夜：各有限段も元の Proj とする filtered 比較（08a716c57）
+
+数学コミット `08a716c57`。3 本・9 宣言・185 行、入口登録を含め 188 行。
+対象と直接 importer のビルドは **4,520 jobs 成功**。別実行の監査は **8,409 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行ごとに返却。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+`gradedOriginalProjNativeCechDiagram` は各段の元の Proj の実際の構造層を使う。
+`gradedOriginalProjNativeCechDiagram_map` は、その遷移が元の grading の Proj の実際の引き戻しであることを示す。
+`gradedOriginalProjNativeFilteredHomologyIso` は、極限先と各段の**両方**で元の Proj の実際の Čech H を使う余極限比較。
+模型・環の余極限・次数の照合は 2g が供給する入力であり、比較の同型性そのものを仮定していない。
+各段の元の基底環での H へは、前の `gradedOriginalProjCechScalarRestrictionIso` と係数制限の完全性で接続する。
+
+**停止点 2e ではない。** I 進の実際の閉厚化・互換族への接続と、五つの比較同士の自然性の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `cechDiagramTransport` | 各段の同型に沿って、図式の遷移を移す。 |
+| `cechDiagramTransportIso` | 各段の同型は、移した遷移も含めた図式全体の自然同型。 |
+| `gradedOriginalRingDiagramModule` | 次数付き環の図式を、共通の多項式環上の加群の図式として扱う。 |
+| `gradedOriginalRingDiagramMap` | 元の各段の grading の、環の遷移に沿う次数付き環の射。 |
+| `gradedOriginalRingChartDiagram` | 共通基底上の次数零チャートの、遷移を含めた係数図式。 |
+| `gradedOriginalProjNativeCechDiagram` | 各段で元の Proj の構造層を使う、実際の Čech 複体の図式。 |
+| `gradedOriginalProjNativeCechDiagramIso` | 各段だけでなく、図式全体での次数零チャートと元の Proj の自然同型。 |
+| `gradedOriginalProjNativeCechDiagram_map` | 移した図式の遷移は、元の Proj の実際の構造層の引き戻しそのもの。 |
+| `gradedOriginalProjNativeFilteredHomologyIso` | 各段と極限先の両方で、元の Proj の実際の構造層を使う filtered Čech H の比較。 |
+
+段 2e の検証済み実測：**314 本・30,882 行**、入口を含め **31,202 行**。上限 50,000 行内。
+
+
+## 11-12 夜：閉厚化の実際の切断の商表示（c95341d13）
+
+数学コミット `c95341d13`。5 本・12 宣言・284 行、登録を含め 289 行。
+対象と直接 importer のビルドは **4,525 jobs 成功**。別実行の監査は **8,423 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得して返した。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+実際の Cartesian な閉厚化のアフィン切断は、元の切断環の拡大イデアルによる商と同型であり、
+商への射影は構造層の実際の引き戻しと一致する。全射性と核の拡大イデアルへの一致も示した。
+Rees 側では、IⁿM の各次数の像を Iⁿ 倍と同定し、分子のイデアル倍の局所化と、局所化後の成分のイデアル倍が一致することを示した。
+**非 flat な商に flat 底変換の H の比較を使っていない。**
+
+**停止点 2e ではない。** 両側の核が一致することから Rees の商の係数図式を実際の閉厚化の切断へ移し、
+I 進遷移・互換族・既存の形式関数の同型をつなぐ部分と、五つの比較の自然性の最終照合が残る。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveIdealGradeProjection_mem` | イデアル倍の元を次数 d に射影すると、次数 d の成分のイデアル倍に入る。 |
+| `projectiveHomogeneous_mem_ideal_smul_iff` | 斉次元が全体のイデアル倍に入ることと、同じ次数成分のイデアル倍に入ることは同値。 |
+| `reesAdicProjectiveSubmodule_eq_ideal_smul` | 拡大イデアルで書いた Rees の部分加群は、元の Iⁿ 倍の部分加群そのもの。 |
+| `projectiveGradedFraction_ideal_range` | 指数を固定した分数のイデアル倍の像は、元の像のイデアル倍。 |
+| `projectiveGradedAway_ideal_smul` | 分子の各成分のイデアル倍を局所化すると、局所化の指定成分のイデアル倍になる。 |
+| `reesAdicProjectivePiece_image_eq_ideal_smul` | Rees の IⁿM の自然数次数 d の像は、元の d 成分の Iⁿ 倍。 |
+| `reesAdicProjectiveIntPiece_image_eq_ideal_smul` | 整数への零延長後も、Rees の次数成分の像は同じ Iⁿ 倍。 |
+| `projectiveGradedAwayMap_range_ideal` | 分子ごとの像の等式は、斉次局所化の像を元の指定成分のイデアル倍にする。 |
+| `schemeAffineClosedBaseChangeSectionIso` | 実際の閉厚化のアフィン切断は、元の切断の拡大イデアルによる商。 |
+| `schemeAffineClosedBaseChangeSectionIso_projection` | 元の切断から商へ射影する写像は、実際の閉厚化への引き戻し。 |
+| `schemeAffineClosedBaseChangeSections_surjective` | 実際の閉厚化のアフィン切断への引き戻しは全射。 |
+| `schemeAffineClosedBaseChangeSections_ker` | 実際の閉厚化へのアフィン切断の射の核は、元の切断での拡大イデアル。 |
+
+段 2e の検証済み実測：**319 本・31,166 行**、入口を含め **31,491 行**。上限 50,000 行内。
+
+
+## 11-12 夜：Rees の標準開の核と商（c0fb175e4）
+
+数学コミット `c0fb175e4`。3 本・8 宣言・223 行、登録を含め 226 行。
+対象と直接 importer のビルドは **4,528 jobs 成功**。別実行の監査は **8,453 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+各標準開の指定次数の部分で、Rees の閉厚化の射影の全射性と完全性を取り出した。
+IⁿM の包含の像は元の成分の Iⁿ 倍であり、閉厚化への射影の核も同じ Iⁿ 倍。
+`reesAdicProjectiveClosedChartQuotientIso` は元の係数の Iⁿ 倍による商から Rees の商の標準開への同型で、元の射影と可換。
+非 flat なコホモロジーの底変換は使わず、係数ごとの商の比較を供給する。
+
+**停止点 2e ではない。** 実際の閉厚化の切断との係数の自然同型、I 進遷移と互換族、形式関数への接続と五つの比較の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveNatChartMap_surjective` | 次数ごとに全射な加群の射は、各標準開の指定次数部分へも全射。 |
+| `projectiveNatChartMap_exact` | 次数を保つ完全列は、各標準開の指定次数部分でも完全。 |
+| `reesAdicProjectiveChartInclusion_range_ideal` | IⁿM から元の標準開の次数 d 成分への写像の像は、同じ成分の Iⁿ 倍。 |
+| `reesAdicProjectiveClosedChart_exact` | Rees の閉厚化の列は、各標準開の指定次数部分でも完全。 |
+| `reesAdicProjectiveClosedChartProjection_surjective` | 閉厚化への射影は、各標準開の指定次数部分へ全射。 |
+| `reesAdicProjectiveClosedChartProjection_ker` | 閉厚化への指定次数の標準開の射の核は、元の成分の Iⁿ 倍。 |
+| `reesAdicProjectiveClosedChartQuotientIso` | Rees の閉厚化の標準開は、元の標準開の指定次数成分の Iⁿ 倍による商。 |
+| `reesAdicProjectiveClosedChartQuotientIso_mk` | 商の同型は、元の標準開の成分を元の Rees の射影で送る。 |
+
+段 2e の検証済み実測：**322 本・31,389 行**、入口を含め **31,717 行**。上限 50,000 行内。
+
+
+## 11-12 夜：共通の核からの係数比較（688d39921）
+
+数学コミット `688d39921`。3 本・7 宣言・135 行、登録を含め 138 行。
+対象と直接 importer のビルドは **4,531 jobs 成功**。別実行の監査は **8,474 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+同じ核を持つ二つの全射を、元の加群の射影と可換な形で比較する。
+元の次数零加群から Proj の実際の非空交叉の切断への比較を係数ごとの線形同型として取り出し、制限への自然性を示した。
+指定した大域スカラーと構造射で束ねた切断代数の比較は、元そのものを変えない。
+**停止点 2e ではない。** 実際の閉厚化への係数写像の核を照合し、Čech 複体・I 進遷移・互換族・形式関数へつなぐ部分を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `cechQuotientComparison` | 同じ核を持つ二つの全射の、共通の元の加群から定まる比較。 |
+| `cechQuotientComparison_projection` | 商の比較は、元の加群からの二つの射影と可換。 |
+| `schemeScalarMorphismSectionModuleEquiv` | 指定した大域スカラーと、それが定める構造射で束ねた切断代数の加群の同型。 |
+| `schemeScalarMorphismSectionModuleEquiv_apply` | スカラーを指定した切断の比較は、元そのものを変えない。 |
+| `projectiveProjNativeNatCechSectionEquiv` | 次数零加群で計算した標準開の非空交叉と、実際の切断の線形同型。 |
+| `projectiveProjNativeNatCechSectionEquiv_naturality` | 元の次数零加群から実際の切断への比較は、非空交叉の制限に自然。 |
+| `projectiveProjCechOpenIntersection_isAffineOpen` | 標準開の非空交叉は実際の Proj のアフィン開。 |
+
+段 2e の検証済み実測：**325 本・31,524 行**、入口を含め **31,855 行**。上限 50,000 行内。
+
+
+## 11-12 夜：実際の閉厚化の Čech 複体・H への接続（863487464）
+
+数学コミット `863487464`。3 本・14 宣言・327 行、登録を含め 330 行。
+対象と直接 importer のビルドは **4,534 jobs 成功**。別実行の監査は **8,520 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+実際の Cartesian な閉厚化への、元の次数零加群からの係数写像について、制限への自然性・全射性と核が J 倍であることを示した。
+Rees の射影と同じ核を使って非空交叉ごとの canonical な係数同型を作り、制限に自然であることを示した。
+`reesAdicNativeClosedCechComplexIso` と `reesAdicNativeClosedCechHomologyIso` は、Rees の商の計算を**実際の閉厚化の構造層の Čech 複体・H**へ接続する。
+`reesAdicNativeClosedPushedComplexIso_projection` により、元の係数からの Rees の射影は、元の Proj の切断を実際に引き戻す Čech の射に一致する。
+空交叉の同型も、非 flat な H とテンソル積の交換も仮定していない。
+
+**停止点 2e ではない。** 厚化間の実際の遷移との可換性と、I 進互換族・形式関数への接続、五つの比較の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjPullbackCechPresheaf` | 元の基底のスカラーを実際に引き戻して、構造層の係数前層を作る。 |
+| `projectiveProjClosedPullbackCoefficient` | 非空交叉の次数零加群の係数から、実際に引き戻した切断への線形写像。 |
+| `projectiveProjClosedPullbackCoefficient_apply` | 係数の線形写像は、元の Proj の切断の実際の引き戻しそのもの。 |
+| `projectiveProjClosedPullbackCoefficient_naturality` | 次数零加群から実際の切断への射は、非空交叉の制限に自然。 |
+| `projectiveProjClosedPullbackCoefficient_surjective` | 閉厚化への係数の写像は、実際の切断へ全射。 |
+| `projectiveProjClosedPullbackCoefficient_ker` | 閉厚化の実際の切断への係数の写像の核は、元の係数の J 倍。 |
+| `reesAdicNativeClosedCoefficientIso` | 実際の閉厚化の切断と Rees の商の、非空交叉での canonical な係数同型。 |
+| `reesAdicNativeClosedCoefficientIso_projection_apply` | 係数同型は、元の係数からの射影を実際の引き戻しへ送る。 |
+| `reesAdicNativeClosedCoefficientIso_projection` | 非空交叉の同型は、元の係数からの射影と実際の引き戻しを同じ射にする。 |
+| `reesAdicNativeClosedCoefficientIso_naturality` | 実際の閉厚化の切断への係数同型は、非空交叉の制限に自然。 |
+| `reesAdicNativeClosedPushedComplexIso` | Rees の商の Čech 複体と、実際の切断を押し出した係数の複体との同型。 |
+| `reesAdicNativeClosedCechComplexIso` | Rees の商の Čech 複体と、実際の閉厚化の逆像被覆の Čech 複体との同型。 |
+| `reesAdicNativeClosedCechHomologyIso` | Rees の商の H と、実際の閉厚化の構造層の Čech H の比較。 |
+| `reesAdicNativeClosedPushedComplexIso_projection` | 元の係数からの Rees の射影は、実際の切断を引き戻す Čech の射と一致する。 |
+
+段 2e の検証済み実測：**328 本・31,851 行**、入口を含め **32,185 行**。上限 50,000 行内。
+
+
+## 11-13 夜：停止点 2e（bf9767cdc）
+
+停止点の正式報告は [scheme-w1-2e-report.md](scheme-w1-2e-report.md)、全モジュールと宣言の一行ずつの一覧は [scheme-w1-2e-declarations.md](scheme-w1-2e-declarations.md)。最後の束は 8 本・37 宣言・703 行（入口込み 711 行）。対象と直接 importer は 4,542 jobs 成功、別実行の監査は 8,615 宣言・標準三公理のみ。累計 336 本・32,554 行（入口込み 32,896 行）。五つの比較、Čech 版の範囲、最終出力の型と宇宙は正式報告に記録した。夜の指示どおり、取り込みを待たず 2f F0〜F3 へ進む。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjAdicScheme` | Proj の指定した大域スカラーに沿う実際の I 進閉厚化。 |
+| `projectiveProjAdicProjection` | Proj の実際の閉厚化からの射。 |
+| `projectiveProjAdicCechComplex` | 実際の I 進閉厚化の逆像被覆の構造層の Čech 複体。 |
+| `projectiveProjAdicCechComplexIso` | Rees の商の Čech 複体と canonical な実際の閉厚化の Čech 複体の同型。 |
+| `projectiveProjAdicCechTransition` | 実際の厚化間のスキームの射が誘導する Čech の遷移。 |
+| `projectiveProjAdicCechHomology` | 実際の閉厚化の標準開被覆による Čech コホモロジー。 |
+| `projectiveProjAdicCechHomologyTransition` | 実際の厚化間の射が誘導する Čech コホモロジーの遷移。 |
+| `projectiveProjAdicCechHomologyProjection` | 元の構造層から実際の閉厚化への Čech コホモロジーの射影。 |
+| `projectiveProjSourceCechHomology` | 元の Proj の構造層の標準開 Čech コホモロジー。 |
+| `projectiveProjSourceCechHomologyIso` | 元の Proj の標準開被覆の Čech H と、次数零の計算の同型。 |
+| `projectiveProjAdicCechHomologyIso` | 実際の閉厚化の Čech H と、Rees の商による計算の同型。 |
+| `projectiveProjAdicCechHomologyIso_transition` | 閉厚化の Čech H の比較は I 進遷移と可換。 |
+| `projectiveProjAdicCechHomologyIso_projection` | 閉厚化の Čech H の比較は、元の構造層からの射影と可換。 |
+| `projectiveProjAdicCechFamilies` | 実際の閉厚化の Čech コホモロジーの互換族。 |
+| `projectiveProjAdicCechFamiliesEquiv` | Rees の商の互換族と、実際の閉厚化の Čech 互換族の線形同型。 |
+| `projectiveProjAdicCechProjection` | 元の Proj の構造層の Čech 複体から、実際の閉厚化への引き戻し。 |
+| `projectiveProjAdicCechProjection_transition` | 実際の閉厚化への射影は、厚化間の実際の Čech 遷移と可換。 |
+| `projectiveProjAdicCechComplexIso_projection` | Rees の射影を実際の閉厚化へ移す複体の比較は、元の射影と可換。 |
+| `projectiveProjAdicCechComplexIso_transition` | Rees の商と実際の閉厚化の Čech 複体の比較は、I 進遷移に自然。 |
+| `projectiveProjCechFormalFunctions` | 実際の Proj と閉厚化の構造層に対する Čech 版の形式関数の同型。 |
+| `projectiveProjCechFormalFunctions_of_apply` | Čech 形式関数の同型は、元の切断のコホモロジーを実際の閉厚化へ制限する。 |
+| `reesAdicNativeClosedCechComplexIso_projection` | Rees の射影と、実際の閉厚化への構造層の Čech の引き戻しとの一致。 |
+| `reesAdicNativeClosedCechComplexIso_projection_refined` | 実際の引き戻しを恒等添字の細分として書いても、Rees の射影と一致する。 |
+| `schemeAdicBaseChange` | 実際の Iⁿ による閉厚化。 |
+| `schemeAdicBaseChangeProjection` | 閉厚化から元のスキームへの射。 |
+| `schemeAdicBaseChangeStructure` | 閉厚化の商環上の構造射。 |
+| `schemeAdicBaseChange_isPullback` | 定義した閉厚化は、実際に元の構造射の底変換。 |
+| `schemeAdicBaseChangeTransition` | 小さい指数の閉厚化から大きい指数の閉厚化への canonical な射。 |
+| `schemeAdicBaseChangeTransition_projection` | 閉厚化の遷移は、元のスキームへの射と可換。 |
+| `schemeAdicBaseChangeTransition_structure` | 閉厚化の遷移は、基底の商環の射とも可換。 |
+| `schemeAdicBaseChangeTransition_self` | 同じ指数の閉厚化の遷移は恒等射。 |
+| `schemeAdicBaseChangeTransition_comp` | 閉厚化の遷移を二度合成すると、直接の遷移になる。 |
+| `schemeStructureAffineCechPullback_comparison_naturality` | アフィン射の実際の引き戻しは、共通アフィン細分による Čech H の比較と可換。 |
+| `schemeStructureCechPullbackMap_eq_refined` | 同じ逆像被覆への恒等細分を合成しても、実際の引き戻しは変わらない。 |
+| `schemeStructureCechRefinedPullbackMap_comp` | 同じ添字で細分した、構造層の実際の引き戻しはスキームの射の合成と可換。 |
+| `schemeStructureCechPullbackScalar_comp` | 共通の元のスカラーを合成して引き戻すと、各段で引き戻したスカラーの合成になる。 |
+| `schemeStructureCechPreimage_refinement` | 共通の射への可換な三角形は、逆像被覆の細分を与える。 |

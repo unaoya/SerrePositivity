@@ -285,7 +285,9 @@ theorem prismaticPerfection_coconnective (hR : IsIntegralPerfectoid R p) (S : Ty
     InfinityCategories.Derived.IsCoconnectiveAt A 0
       ((E.forget A).app _ (prismaticPerfection (E := E) p R hR S hS)) := by
   have hforget := cAlgRestrictScalars_forget (E := E) (perfectPrism p R hR).deltaStructure.frobeniusLift
-  sorry -- hforget で D(A) に移す。shift は mod p で P⁰ の作用、正の π は消え、導来 Nakayama
+  sorry -- D79：mod p を F_p 上で Sp に忘却。shift と同じ P⁰ は可逆かつ正の π で零。
+  -- E.toSpectra_homologyIso で H^{−n} の消滅へ戻し、p 完備性と導来 Nakayama。
+  -- P⁰ を D(A) の射へ持ち上げることは使わない。
 
 /-- 概要：Lemma 8.4 (b)：H⁰(Δ_perf) は p ねじれなしで、φ は mod p で Frobenius、よって p 完備な完全 δ 環（A → H⁰ は δ 射）。
 方針（W9-II-04）：X := Δ_perf、C := H⁰ X。長完全列から C[p] = H^{−1}(X/p) = 0 と単射 C/p ↪ H⁰(X/p)（同型ではない）。φ の自然性と P⁰ が H⁰(X/p) で p 乗

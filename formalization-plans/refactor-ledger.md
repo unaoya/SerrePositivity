@@ -181,3 +181,38 @@ E3 の sorry 0 には要らない。レーンが待ちで空いたときの仕�
 | §3・§4 | 後回し：Lemma 3.1 (3)、Lemma 3.7 (3) を圏の同一視として、Lemma 3.9 の付随の主張（BR28 の残り）、Thm 3.10 の perfectoid の定義の差、Cor 3.12 の絶対版 | 小〜中 | 使う場所が出たとき |
 | §3・§4 | 入れない：Def 3.2 の一般の Cartier 因子、Lemma 3.7 (4)、Rem 3.11、Ex 3.14 の一般形、Prop 3.13 の一般形（D21）、Def 4.1 の形式スキーム版、Rem 4.3・4.7・4.13〜4.15、Construction 4.4、Lemma 4.21、Lemma 4.8 の一般の標的、Thm 4.11 の smooth な一般の R | — | E3 に要らない、大きな基盤がない |
 | §4 | 計画済み（⑤∞）：Notation 4.16、Construction 4.18「Δ を計算」と Ō 版、Rem 4.19 の Tot、Lemma 4.20・4.22（5∞-2）、Thm 4.11 の一般の基底と Cor 4.12（5∞-3） | — | — |
+
+### §5・§6 HT 比較（`research/bs-section-review/05-hodge-tate.md`）
+
+| 提案 | 台帳 | 扱い |
+| --- | --- | --- |
+| R5-1 drafts/A1 の古典部分（CrystallineInput・CrystallineSite・DeRhamComparisonPoly・HodgeTateComparison）は本体に置き換わっている | BR40 に追加（R4-1 を A1 の残り 3 本に広げる） | **5∞-0** |
+| R5-2 Prop 6.2 (b) と Cor 5.5 の一般の結晶 prism（drafts の二つの sorry）を `hodgeTate_iso` の系に | — | **5∞-0**（入らなければ 5∞-3a の最初）。原典との順序の違いは docstring に一行 |
+| R5-3 (a) `arcPadicIntMap` を `HomologicalAlgebra/DerivedCompletion` へ（§6 → §8 の import を消す） | 新 BR50 | B3 |
+| R5-3 (b) `PDCechFrameHomotopy` の汎用の部品（`algebraModule`・`cochainHomotopy`・添字の補題）を `HomologicalAlgebra/Cosimplicial/Algebra` へ | BR50 | B3 |
+| R5-3 (c) §4 の名前で中身が §6.4 の 5 本を §6.4 の側へ | — | B3 |
+| R5-3 (d) 「Crystalline 204」を §0 の (a)〜(e) で分け直す（(e) は `CommutativeAlgebra/DividedPowers/`、R2-7 と同じ行き先） | — | B3 |
+| R5-3 (e) 名前空間（63 本） | BR48 | B3（同じ回の改名表） |
+| R5-4 (a)〜(c) 別名・包み・pd 模型の複数 | BR39 | 保守（模型は D68・D69 が使うので残す） |
+| R5-4 (d) 導来 Nakayama の二つのファイル（`DerivedCompletion/CompleteCochainReduction` と `CochainCompleteDetection`） | 新 BR49 | 保守（統合） |
+| R5-4 (e) Tor 振幅の名前の重なり（drafts の ∞ の型と本体の `Construction61.*`） | BR40 | 5∞-0（BR40 の一本化と一緒に） |
+| R5-5 docstring の工程ラベル（49 行・22 ファイル、「第二比較」を数学の言葉に） | BR25 | B3 の docstring の回 |
+| R5-6 閉包・葉・未使用の宣言 | — | 消さない（∞ の組み立ての入力として使われる予定） |
+| R5-7 設計書の古い記述（second-half の 5∞-3、a1-design の Prop 6.2 の名前・G-A1-12・§2.4 の D77） | — | 閉（調整役が 11-12 夜に直した） |
+
+計画の上の点（§3.1）：
+- 5∞-3 を **5∞-3a（古典：Prop 6.2・Thm 6.3・Cor 5.5 の系、Lemma 4.22 の鎖複体版、G-A1-10）** と **5∞-3b（Cor 4.12 の CAlg 値、D27）** に分けた。5∞-3a は B3・5∞-0 の後に ③-b を待たずに始める。drafts の ∞ の型（`HasFiniteCompleteTorAmplitude`・`baseChangeB`・`affineModuleDiagram`）は古典の型に置き換えてよい。Construction 6.1 の ∞ の型への橋渡し（`moduleReflection`）は 5∞-3b で要るときだけ。
+- Thm 6.4（D69）の ∞ の組み立てを **5∞-4b** として明示した（依存 5∞-2・5∞-3b・5∞-4・3b-4、5∞-6 の前）。
+
+### 補完への追加（§5・§6）
+
+| 節 | 項目 | 規模 | 時期 |
+| --- | --- | --- | --- |
+| §5 | Cor 5.5 の一般の結晶 prism（系として） | 小 | 5∞-0 か 5∞-3a（R5-2） |
+| §6 | Prop 6.2（一般の有界向き付き基底、一般の r）・Thm 6.3（多項式の場合） | 中〜大 | 5∞-3a |
+| §5 | 後回し：Not 5.1 の ψ と \(R^{(1)}\)、一般の Thm 5.2、Lemma 5.4 の加群版、Thm 6.4 の一般の基底（D69 の後なら安い） | 小〜中 | 使う場所が出たとき |
+| §5・§6 | 入れない：Rem 5.3、Cor 5.5 の smooth な \(S\)（Lemma 4.21）、Thm 6.3 の étale 局所化 | — | — |
+
+## 9. 追記（2026-11-12 夜）：D79 で界面が KST を import した
+
+D79 (i)（615ceab26）で、E∞ の界面 `EInfinity/Interface/Theory.lean` が `KST.LocalizingInvariants.SpectrumHomotopyFunctor`（Ω スペクトルの準圏 `KST.Spectra.Sp` と `SpectrumHo.piFunctor`）を import するようになった。BS の主定理の閉包に KST のディレクトリが入る。中身は ∞ の一般論（R83 と同じ問題）なので、**R83 の一部として、`KST/Spectra` の Sp と `SpectrumHo` を InfinityCategories（Kerodon か HA の安定 ∞ 圏の節）へ移す**。KL-W1 の改名表は KST/Spectra を含まないので、新しい改名表を作る。時期：B3 に入れられれば B3、無理なら保守の先頭（BS の閉包を直すので優先）。
