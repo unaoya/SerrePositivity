@@ -1918,3 +1918,21 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 残枠 **1,816行**。同じ二射からの全単体 Hom 比較 `FreeProductHomComparison.lean`（42行）は個別検査済み、対象ビルド・監査待ちであり、このコミットには含めない。標準単体の代入後、テンソル側を既存の Dold–Kan Hom と、積側を重み付き切断空間と同定し、指定射のホモトピー同値性を証明することが残る。次数ごとの鎖ホモトピー同値だけから空間の同値性を結論しない。native 極限性等も未完であり、停止点2には達していない。
+
+## 62. 3b-2 続行：指定二射から全単体 Hom 比較へ
+
+コード `8da07570f`、新規 `DiagramComparison.FreeProductHomComparison` 1本42行。累計 **131本8,226行**。
+
+§61の余単体 AW・shuffle に既存の `cosimplicialHomMap` を適用し、両方向の実際の単体的 Hom 射を構成した。標的の全図式射にも自然であり、全次数の作用が指定図式 AW・shuffle の前合成そのものである等式を保持する。第一のまとまりの指定比較射の構成。空間としての同値性はまだ証明していない。
+
+個別検査、鍵付き対象ビルド **2,276 jobs**、累計131本 **1,488宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-62.log`、監査 `/private/tmp/AuditISW2G10HundredThirtyOne.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtyone-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductHomComparison
+```
+
+残枠 **1,774行**。`StandardSimplexParameter.lean`（51行）では、持ち上げた標準単体の自由鎖と既存 `normalizedFunctor` の定数図式の全自然同型、およびテンソル族への輸送を個別検査済み。対象ビルド・監査待ちなので未コミット。
+
+次の接続で必要なのは、図式圏の `linearHomComplex` の Γ とテンソル族からの Hom の同定である。点ごとの既存 `tensorHomEquiv` の始域・標的自然性を使い、添字方向の自然性条件を保持して組み立てる。積側を重み付き切断空間に同定する部分、指定射の空間の同値性、豊穣合成・native 極限性、脚・D(A)・錐の族も未完。これらを省略して停止点2としない。
