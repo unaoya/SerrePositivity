@@ -5683,3 +5683,24 @@ Hom 側では、元の切り詰めの包含の可換性から `cyclicPositiveRes
 六本の最終版に警告なし。
 `audit-orbit-finite.log`：**176 モジュール・1,378 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 93. D79(iii)：元の orbit 包含射の指定座標まで検証
+
+登録候補（`SerrePositivity.EInfinity.PowerOperation.`）：
+FiniteBiproductCoordinates（49 行）、CyclicOrbitSummandCoordinates（80 行）。
+追加 **129 行**、(iii) **3,022 行**、(ii)+(iii) **10,216 行**。
+
+`cyclicOrbitTotalDegreeCoordinates_inclusion` は、元の直和全複体の
+指定包含射を、同じ正則評価・有限双積の指定包含射で表す **元の圏での等式**。
+`cyclicOrbitTotalDegreeCoordinates_inclusion_apply` は、その等式を各座標で評価した
+Kronecker の式。FiniteBiproductCoordinates は［一般圏］基盤への移動候補。
+
+正の Hom と orbit の **次数同型**は実装済みだが、微分可換性による鎖同型はまだ未完了。
+native Tate[-1] の比較・T_p の延長・スペクトル的な右 k 作用・P⁰ の完成も未完了。
+
+`cyclic-orbit-summand-coordinates-02.log`（FiniteBiproductCoordinates）、
+`cyclic-orbit-summand-coordinates-06.log`：対象成功、最終版に警告なし。
+`audit-orbit-inclusions.log`：**178 モジュール・1,386 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+ここまでの検証済み分をコミットし、夜の停止規則に従い次節の規模確認を記録する。
