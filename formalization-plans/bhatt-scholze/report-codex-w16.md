@@ -5537,3 +5537,41 @@ BoundedCyclicSpectrum、`tensor-input-bounds-homotopy-03.log`・
 新規七本の最終版に警告なし。
 `audit-projective-power.log`：**155 本・1,173 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+
+## 89. D79(iii)：単位での同じ p 入力と、指定係数類を表す実射
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| CyclicCoefficientSeed | 53 |
+| CyclicCoefficientSeedHomology | 55 |
+| CyclicTensorUnitComparison | 67 |
+
+追加 **175 行**、(iii) **1,873 行**、(ii)+(iii) **9,067 行**。
+
+### 89.1 同じ単位と指定類の照合
+
+`powerOperationTensorUnitIso` は、元の p 入力の単位での値を、同じ自明な k 係数の
+single 複体へ送る実同型。既存 `tensorUnitPower_permutation` と
+`tensorUnitPowerIso` を使い、作用の恒等性と同じ縮約を保持した。
+`powerOperationUnitResolutionHomIso` により、同じ p 入力と周期 Hom の単位での値が
+元の指定係数 Hom 模型へ実複体同型で戻る。
+
+`powerOperationCoefficientSeed` は、その指定係数 Hom へ単位複体から入る **実鎖写像**。
+同じ左正則評価で 1 を回収し、`powerOperationCoefficientSeed_homology_value` で
+実 H^0 の類も指定比較で 1 に送られることを示した。
+`powerOperationCoefficientSeed_matches_class` はその類を、§84 で固定した
+同じ周期係数模型の H^{-1} の指定類へ送る等式。
+ホモロジー群に任意の射を後から選んだ構成ではない。
+
+native Tate[-1] との比較、同じ境界射の orbit との比較、T_p の延長と
+スペクトル的な右 k 作用の照合はまだ必要。
+特にこの鎖模型の k 線形な係数種を、未証明の右 k 作用の射として扱わない。
+次は同じ周期解像度の正の部分への全自然な制限と、上有界係数の有限支持を進める。
+
+### 89.2 検証
+
+`cyclic-coefficient-seed-02.log`・`cyclic-unit-seed-homology-02.log`：対象成功。
+新規三本の最終版に警告なし。
+`audit-cyclic-seed.log`：**158 本・1,209 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
