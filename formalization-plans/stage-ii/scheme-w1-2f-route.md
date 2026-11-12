@@ -230,3 +230,19 @@ F3 はなお未完。次は導手の四角形を指定された中心 I の商�
 | `frobeniusFiniteModification_exact` | 有限環拡大で Spec 全射、I は有限生成、V(I) 外の局所化が全射なら、左が単射・真ん中で Function.Exact・右が全射。 |
 
 F3 の環論の列は上の明示した局所化の仮定で閉じた。幾何学的な中心外の同型からこの仮定を供給する接続は、F4〜F5 の利用側と合わせて残る。F4 の入口として、通常の全タプル複体は次数 q に長さ q+1 のタプルを持つことを確認した。H⁰ の比較には `CochainComplex.isIso_homologyπ₀` と `ShortComplex.moduleCatCyclesIso` を使う下書きを `scheme-drafts/FullCechH0Kernel.lean` に置いた（未検証・未コミット）。空タプルの増大項との比較を H⁰ の比較と取り違えない。F4〜F8 は未完であり、停止点 2f ではない。
+
+## F4 途中：H⁰ の核と適合する切断の部分環（6c18deb77）
+
+新規 2 本・5 個の明示的宣言・83 行。2f 累計 18 本・1,003 行（入口の import 込み 1,021 行）。対象と直接 importer は 4,564 jobs 成功。別実行の監査は 8,734 宣言・標準三公理のみ。共有鍵 `--wait 3600` を実行ごとに取得・返却した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullCechH0KernelIso` | 通常の全タプル Čech H⁰ は、長さ1の項から長さ2の項への実際の余境界の核と同型。 |
+| `FullRingCechCochains` | 環係数の全タプルの切断族。 |
+| `fullRingCechFace` | 二重点に対する片側の制限を、実際の制限から成る環準同型として構成。 |
+| `fullRingCechEqualizer` | 二つの制限が一致する切断族を、成分ごとの乗法を持つ部分環として定義。 |
+| `mem_fullRingCechEqualizer` | 部分環への所属と、各二重点での制限の一致の同値。 |
+
+H⁰ の核の比較では、複体の next で決まる対象と長さ2の項を定義的に同じと仮定しない。`cyclesIsoSc' 0 0 1` で次数を明示し、余境界の等式が誘導する核の線形同型を合成した。docstring は Čech 版であることと未形式化の Stacks 30.2.6 の比較を明記する。
+
+F4 は未完。部分環の加法群と上の核を同定し、実際の Proj の構造層の標準開に適用して有限性を移す。最初の余境界を二つの制限の差として計算する未検証下書きは `scheme-drafts/FullCechH0Compatible.lean` に置いた。F5〜F8 も残るため、停止点 2f ではない。
