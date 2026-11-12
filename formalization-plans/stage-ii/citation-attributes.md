@@ -26,7 +26,7 @@
 | KST | Kerz–Strunk–Tamme | 同上 |
 | BGT | Blumberg–Gepner–Tabuada | 同上 |
 | TT | Thomason–Trobaugh | 同上 |
-| BST13 | Bhatt–Schnell–Scholze | arXiv:1307.3763 |
+| BST13 | Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities | arXiv:1307.3763v3 |
 | Rydh | Rydh, Submersions and effective descent | arXiv:0710.2488 |
 
 一覧は README の「Conventions」にも置き、文献が増えたら足す。
@@ -71,3 +71,30 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 4. 片付け：KST/Descent の 54 本と逆向きの閉包 13 本（計 67 本）を `Archive/KST/DescentConditional/` へ（`audit_kst_descent_main` は維持）。`ScalarTensorView` → `CommutativeAlgebra/Module/`（互換名を残す）。Diagnostics 4 本は Archive へ。
 
 進め方（B2 の準備、凍結の一晩の時期）は別に相談して決める。B2 の準備（全表、静的検査、隔離したプレビュー）は始めてよい。
+
+## 9. 追記（2026-11-12 夜、調整役）：凍結の一晩の決め方（ユーザー：他のレーンの進み具合次第）
+
+日付は決めず、次の四つがそろった日の夕方に「今夜凍結」と各レーンに伝える（前日に予告）。
+1. B2 が終わり、隔離したプレビューで移動先のビルドと保存比較が通っている。
+2. ⑥ の検証済みの分が途中の取り込み点として main に入っている（11-12 午後の改定：2e の残りが 8,000〜19,000 行で数日以上かかる見込みのため、停止点 2e は待たない）。
+3. ⑤a の a が閉じて main に入っている。
+4. ③-a・③-b は段の途中でよい（検証済みの分をコミットしてあれば追従は import の書き換えだけ）。
+凍結の日：夕方までに各レーンが検証済みをコミット → 調整役が main へ → 夜はコミットを控える → 翌朝 B4 の追従。一晩で足りなければ二晩（B2 の実測で判断）。
+
+## 10. 追記（2026-11-12 夕、調整役）：リファクタの台帳から B3 に入るもの
+
+`refactor-ledger.md` で「B3」とした候補を、凍結の一晩の範囲に足す（B2 の全表に含める）。
+- BR26′：共通基盤から BS への新しい逆向きの import 2 本を解消（5 層の静的検査の層違反として）。
+- BR14：`Andre/PowerRootEnvelope/Audit/` の監査 4 本を scripts/ へ（配置案の「保持」を改める）。
+- BR19：`Prism/Residue/PrismaticResidue` を使う側の節へ。
+- BR32：`Delta/DividedPower/` を原典の項目ごとに下位分割、分冪代数の一般部分を CommutativeAlgebra へ（配置案の「Delta は保持」を改める）。
+- BR25・R21：docstring の工程ラベルを原典の番号へ、書式の欠け（文献の属性の付与と同じ回）。
+- BR8：使われないモジュールの調査（削除は保守）。
+- （11-12 夜、追加）BR34（古い docstring 6 件）、BR41（BS の内側の層の逆向き：Delta/DividedPower → Prismatic・Andre）、BR42（`Semiperfectoid/QuotientPerfectoidization` のファイル名）、R84（空の名前空間）も B3 に含める（`refactor-ledger.md` §5・§6）。
+- （11-12 夜、追加）§2 の見直し（`refactor-ledger.md` §7）：R2-1（BR41 の三つの importer の移し先）、R2-7（分冪代数を `CommutativeAlgebra/DividedPowers/` へ、`IsCompletelyRegularRel` を Delta へ）、R2-9 の docstring と、**ノートを引く docstring 22 か所を原典の番号に置き換える**（ユーザー方針）も B3 に含める。
+- （11-12 夜、追加）§3・§4 の見直し（`refactor-ledger.md` §7）：BR47（`IsBoundedPrism` を `Prism/Basic` へ）、R3-2（§3 → §7 の逆向き 5 importer）、R3-3（Prism/ の §3 でないものの置き場所、Thm 3.10 の芯 4 本を `Prism/Perfectoid/` へ）、BR48（`…Andre` の名前空間をそろえる。同じ回の改名表に入れられれば）、R4-4（Lemma 4.8 のファイルを `Prism/Perfectoid/` へ）、R4-6（Construction61Detection・Reflection を §6 へ、Cor 5.5 を §5 へ）、R3-6・R4-7 の docstring も B3 に含める。
+- （11-12 夜、追加）§5・§6 の見直し（`refactor-ledger.md` §7）：BR50（R5-3 (a) `arcPadicIntMap` を `HomologicalAlgebra/DerivedCompletion` へ、(b) `PDCechFrameHomotopy` の汎用の部品を `HomologicalAlgebra/Cosimplicial/Algebra` へ）、R5-3 (c)（§4 の名前で中身が §6.4 の 5 本を §6.4 の側へ）、R5-3 (d)（「Crystalline 204」を (a)〜(e) で分け直す、(e) は `CommutativeAlgebra/DividedPowers/`）、R5-3 (e)（名前空間 63 本、BR48 の改名表）、R5-5（docstring の工程ラベル 49 行・22 ファイル、BR25）。
+
+## 11. 追記（2026-11-13、調整役）：BST13 の著者名の訂正
+
+略号表の BST13 を **Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities（arXiv:1307.3763v3）** に直した（「Bhatt–Schnell–Scholze」は誤り。ユーザーが原典で確認）。一括レーンの `research/bibliography.json` と報告の表（refactor/kerodon-layout の枝）も属性付けの前に直す。⑥ の docstring は略号 BST13 だけで著者名を書いていない（main・math/scheme とも確認済み）。⑥ の 2f は v3 の Lemma 3.9 の証明に沿い、Remark 3.10 の誤り（Rees の次数移動と環の作用の混同）を避けている。(2) の Stein 分解・Kollár の商を F4・F7 の核と像の評価で置き換える経路も原典の (2) と矛盾しない（ユーザー確認、11-13）。

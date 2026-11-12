@@ -59,8 +59,8 @@ Kerodon・Stacksの完全対応は従来どおり `@[kerodon TAG]`・`@[stacks T
 | KST | Algebraic K-theory and descent for blow-ups、arXiv:1611.08466v4 | 同 `kst/toc.md` |
 | BGT | A universal characterization of higher algebraic K-theory、arXiv:1001.2282v4 | 同 `bgt/toc.md` |
 | TT | Thomason–Trobaugh、1990刊行版、Grothendieck Festschrift III | 同 `others.csv` |
-| BST13 | Bhatt–Schnell–Scholze、arXiv:1307.3763 | 指示書§3（v番号はB2で確認） |
-| Rydh | Submersions and effective descent、arXiv:0710.2488 | 指示書§3（同上） |
+| BST13 | Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities、arXiv:1307.3763v3 | [原典の著者・題目・v3](https://arxiv.org/abs/1307.3763v3)（11-13 訂正） |
+| Rydh | Submersions and effective descent of étale morphisms、arXiv:0710.2488v3 | [原典の著者・題目・v3](https://arxiv.org/abs/0710.2488v3) |
 
 今回のK地図には上の12略号だけでは足りない。`Tamme`（1703.03331v3）、`Paper`（`maps/paper/toc.md` の指定PDF・上流コミット）、`Drinfeld`、`KL`（Kuznetsov–Lunts）、`AGH`（地図の「9人論文」）、`BalmerSchlichting`、`Waldhausen`、`Thomason` 等を登録候補に足す。版は `maps/others.csv` のedition/source_urlを引き継ぐ。BSのArc群が引用する `BM18` も必要だが、今回のBS19表から番号・版を推定して付けない。所蔵資料と既存設計で版を固定してから登録する。未登録の文献を無名のKEYや別文献の番号へ押し込まない。
 
@@ -432,3 +432,9 @@ B2 の停止点には未到達。現在の最終ソースで 8192/9,550 対象�
 Kerodonタグは前後各672組で欠落・余分0。引用属性は1,883組で欠落・余分・内容差・場所の不整合0。最初の読取りではCategoryTheory名前空間の本体2組を落としていた。元のLean照会のJSON出力に両方が存在することを確認し、宣言名の先頭ではなく実際の定義元モジュールでプロジェクトの宣言を判定して全14組の記録を読み直した。Leanや属性の付与先は変更していない。
 
 11-13の昼の規則に合わせ、以後の鍵の取得後にJSTを判定し、8〜23時は外側280秒・worker予算250秒、一束ごとに返して再申請する。7:50以降もこの短い枠にして8時をまたぐ長い枠を避ける。夜は従来の580秒枠を維持する（最新の夜30分以内の上限より短い）。次は互換名・移動した監査4本・通常のprivate宣言を含む全保存比較を進める。B2停止点はまだ未到達。
+
+### 11-13：全25略号の原典での書誌照合
+
+BST13をBhatt–Schwede–Takagi, *The weak ordinarity conjecture and F-singularities*, arXiv:1307.3763v3へ訂正した。mainの§11を含む指示書だけを枝へ反映し、保存比較の数学の基準は維持した。[全25件の照合台帳](bulk-w1-b2/bibliography-primary-check.json) に、原典URL・題目・全著者の姓・版・訂正前の値・確認範囲を保存した。12件の版付きarXivページと、著者公開PDF、原論文のスキャン、刊行元・公的書庫・公式サイトで照合し、bibliography.jsonの題目を完全な題目、著者を独立したauthors欄へ統一した。既存の25のedition文字列は全て維持する。BST13も既にv3だったため、今回の著者・題目の訂正によるLeanのregistryや属性1883組の版の変更はない。
+
+HTTは著者PDF表紙の2017-04-09を確認し、同題目のarXiv v4（2008）と区別する。BS19は著者版のPDFの題目・著者とハッシュを確認し、同題目のarXiv版の番号へ替えない。Schlichtingは既存の公開稿の同一性として保持し、刊行年を推定しない。TTは1990年の原版と2013年の再刊、Waldhausenは1985年と電子化2006年を区別する。Thomasonの旧DigiZeit URLは404だったため、同じ原論文の刊行元DOIへ正本のリンクを直した。未解決の番号対応をこの書誌照合だけで解決扱いにはしない。
