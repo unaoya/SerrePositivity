@@ -4145,3 +4145,145 @@ M14 の最初の仕事として続ける方針の確認を求める。
 今回の成果は実装前の紙の確認と、欠けていた主張の型の特定。
 Lean ソースの変更・ビルド・監査・鍵の取得はなし。M15・G12・Tot の照合は未着手。
 この型の判断がつくまで、M14 の構成を本体へ追加する作業は止める。
+
+## 63. D79 候補：P⁰ の持ち上げと Sp 値への修正の比較（紙、判断待ち）
+
+### 63.1 結論と二案の境界
+
+提案は **案2（原典の Sp 値）を、まず k = F_p に限定して採用する**こと。
+Lemma 8.4 の数学的な議論にはこれで足りる。現在の D(k) 値の欄を供給できたとは主張しない。
+案1には、§62.2 の持ち上げ定理の存在を確定する課題が残る。
+案2にも V と native なスペクトル圏、ホモトピー比較の実装が必要であり、界面の数行の変更だけでは済まない。
+今回は比較の紙の作業だけ。界面・drafts・本体の Lean は変更しない。
+
+出典は §62 の [BS 著者版 §8・Lemma 8.4](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf) と
+[DAG XIII §2.2](https://www.math.ias.edu/~lurie/papers/DAG-XIII.pdf)。
+後者の Example 2.2.5 と Construction 2.2.6 の双加群・指定類による経路を基準とする。
+
+### 63.2 V_k の供給状況と作る経路
+
+本体で確認した範囲：
+
+| 部品 | 読んだ所在 | 供給と限界 |
+| --- | --- | --- |
+| 対称スペクトル、安定局所化 | `Spectra/Stable/LocalizingMaps`・`Replacement`・`EnrichedModel`・`DerivedTensorInverse` | 安定化・局所化の材料。一般の基礎模型や presentation を引数とする宣言もある。D(k) → Sp の完成した全関手ではない |
+| Ω スペクトルと写像空間 | `KST/Spectra.lean` と `KST/Spectra/` | `OmegaSpectrum`、ループ・写像・ホモトピー群の基盤。これを本件の native Sp と同定し、D(k) の全関手へ接続する工程は別 |
+| 安定準圏の一般論 | `InfinityCategories/HA/StableInfinityCategories/` | suspension・loop・exact functor・三角構造。安定性だけから D(k) の Eilenberg–Mac Lane 関手の実例は得られない |
+| 加群の Dold–Kan | `Kerodon/ExamplesOfInfinityCategories/DifferentialGradedCategories/DoldKanIso` | `standardDoldKanModuleIso` は dg Hom の標準模型と Mathlib Γ の同型。対象の非有界複体全体のスペクトル化とは別 |
+| D(k) のホモロジー・安定性 | `Project/DerivedCategories/Homology`・`ModulePiZeroMoore`・`StableHomotopyComparison` | `derivedInfinityHomologyFunctor`、`modulePiZeroMooreEquiv`、`derivedStableHomotopyEquivalence` 等。ホモトピー圏の比較を native な V と取り違えない |
+
+以上と `Eilenberg`・`DoldKan`・spectrum 関連の宣言検索では、
+**要求された V_k と自然な π_n V_k ≅ H^{-n} の比較を一式で使える入口は確認できなかった**。
+名前の検索だけを数学的な不存在の証明とはしない。
+
+構成案：複体を加法群へ忘却し、各整数シフトの適切な connective truncation に Γ を適用する。
+標準ループ比較を指定して Eilenberg–Mac Lane の Ω スペクトルを作る。
+全鎖写像・パラメータ付き写像への自然性、準同型を安定同値へ送ることを示し、
+現在の `derivedInfinityCategory k` の局所化を通して native V_k を得る。
+必要なのは対象ごとのスペクトルだけでなく全関手、自然な整数次数の π/H 比較、
+極限・幾何学的実現との比較、係数を忘れる比較である。
+
+一般の係数制限について V_S ◦ f_* ≃ V_T を持てば、案1の e にも利用できる。
+案2を F_p のみで始める場合は V_{F_p} を先に作り、全 k の係数比較は後へ送れる。
+`[ModelCategory SSet]` を自由な仮定として置く宣言をそのまま適用したことにはしない。
+スペクトルの模型の選択と、既存 KST の Ω スペクトルへの比較の要否を、着手前に調整役と確定する必要がある。
+
+### 63.3 案1：Frobenius 半線形な D(k) への持ち上げ
+
+固定する数学的な型は §62.2 と同じ。
+
+```text
+U_k : CAlg_k → D(k),  V_k : D(k) → Sp,  φ = Frob_k
+α : NatTrans(U_k, φ_* U_k)
+e : NatIso(V_k ◦ φ_*, V_k)
+e ◦ V_k(α) = P⁰_DAG  in Fun(CAlg_k, Sp).
+```
+
+候補経路は、DAG の B に対し指定 Tate 類の右 k 加群射を、
+左作用を φ でねじった双加群の射へ持ち上げ、その射を全入力とテンソルして α を作るもの。
+その後 Tate 境界・BE の p 入力作用との比較を全自然変換として示す。
+B の両作用のホモトピー群での照合と、双加群射の存在・coherence は分けて証明する。
+
+現時点でその双加群の持ち上げの存在を保証する既存宣言・出典の定理は特定していない。
+Warning 2.2.8 が通常の k 線形性を否定することは、Frobenius twist 後の持ち上げの
+存在も不存在も決めない。k = F_p でも coherent な持ち上げが自動的にあると仮定しない。
+したがって案1の総規模には、存在自体の紙の確認という未評価のリスクがある。
+
+この持ち上げが存在し、原典の P⁰ と同一と証明できれば、Lemma 8.4 は通る。
+その際の消滅の論証自体は Sp へ忘却してよく、D(k) の射としての強さを本質的には使わない。
+
+### 63.4 案2：Sp 値の界面と A4 の必要条件
+
+Sp を native 準圏として固定し、W_k := U_k ⋙ V_k（Lean の合成順）とする案。
+型の模式図であり、未実装の Sp を既存の宣言名として扱わない。
+
+```text
+powerOp0Sp : FunctorHom W_k W_k
+π_n : h Sp → AddCommGrp
+π_n V_k(x) ≅ underlyingAddGroup(H^{-n}(x))   -- x と射に自然
+powerOp0_zero : π_0(powerOp0Sp_X) = Frobenius  -- π_0 U と環の比較後
+powerOp0_pos  : ∀ n > 0, π_n(powerOp0Sp_X) = 0
+```
+
+離散・Tot の欄は D(k) の射の等式から h Sp の射の等式へ移す。
+両辺は同じ W_k で忘却し、指定 Frobenius の像と比較する。
+P⁰ を環スペクトルの射や CAlg の辺として要求しない。
+π₀ の環構造は U_k の π₀ の環から比較で運ぶもので、Sp の全対象に環構造を置かない。
+
+A4 の依存の洗い出し：
+
+| 箇所 | 現在の D(k) 依存 | Sp 案の扱い |
+| --- | --- | --- |
+| `Shared/EInfinityPowerOperation.powerOperationZero` | `cohomologyOnHo.map` と `restrictD_homology` により成分を読む | π_n の写像を π/H の自然同型で共役する |
+| 同 `powerOperationZero_natTrans`・`primeField` | D(k) 内の半線形変換、係数制限の恒等比較 | W_{F_p} 上の自己変換。係数 twist の消去は不要 |
+| 同 `powerOperationZero_component` | D(k) のホモトピー圏の射を辺に持ち上げる | Sp の成分と π/H 比較の自然性へ書き換える。D(k) の辺を選ぶ必要はない |
+| 同 `eq_frobenius_discrete`・`eq_frobenius_tot` | 等式の終域が h D(k) | 指定 Frobenius の像との h Sp の等式へ変更 |
+| `A4/Perfectoidization.prismaticPerfection_coconnective` | 結論は D(A) の coconnectivity。現在の証明は sorry と説明コメント | mod p の対象を CAlg_{F_p} へ制限し W_{F_p} で読む。π_n の消滅を π/H 比較で H^{-n} の消滅へ戻す |
+| 同 `prismaticPerfection_h0_perfectDelta` | H⁰ 上の Frobenius、C/p ↪ H⁰(X/p) の単射 | π₀/H⁰ の環と射の比較で足りる。P⁰ 自身を D(A) の射とする必要はない |
+| 同 `perfectoidization_coconnective` | d の正則性と完備性の議論 | 上の二結果から進み、P⁰ の線形な持ち上げを使わない |
+
+したがって **数学の筋は Sp 案で通るが、現在の Shared の定義を無変更で再利用はできない**。
+A4 の結論の型を変える必要はなく、共有の操作の読み方を変える必要がある。
+
+必要な橋を明記する。mod p の対象 X を CAlg_{F_p} に移し、塔の shift の像が
+P⁰ の同じ成分に一致することを、A2 の levelwise Frobenius 比較から得る。
+W_{F_p} の必要な極限と幾何学的実現の保存・比較、変換と指定錐の両立を用いる。
+shift が同値なら π_n(P⁰) は同型で、n > 0 では同時に零なので π_n W(X) = 0。
+π/H 比較から X/p の coconnectivity、p 完備性と導来 Nakayama から X の結論へ進む。
+P⁰ と shift の可換性だけでは、P⁰ の可逆性は導けない。
+
+### 63.5 k = F_p に限定する範囲
+
+**Lemma 8.4 と G-A4-1 には F_p で足りる。** 元の底 A/p 自体を F_p と同一視せず、
+標準写像 F_p → A/p に沿う CAlg の係数制限を用いる。
+Frobenius は F_p を固定するので、制限後には自己変換と shift の比較を述べられる。
+H⁰ の Frobenius は、任意の F_p 代数の台の環で x ↦ x^p と主張できる。
+一般の k の P⁰ を構成したとみなさず、最初の欄を p と CAlg_{ZMod p} に絞る案を推す。
+一般 k の操作が必要になれば、CAlg_k → CAlg_{F_p} と V の係数忘却比較により
+Sp 値の操作を移す経路を別途供給する。
+
+### 63.6 規模の比較と判断点
+
+以下はソースの調査からの初期見込み。全関手・自然性・同じ指定射の照合を含める。
+未知の一般構成が多く、既承認の M14 2,800〜5,000 行を確定した上限として流用しない。
+
+| 部品 | 追加 Lean の見込み |
+| --- | ---: |
+| native Sp の入口・既存 Ω 模型との接続の必要部分 | 1,500〜3,000 |
+| V_{F_p}、π/H の全自然比較、局所化、必要な極限・実現比較 | 2,000〜4,000 |
+| P⁰ の Tate・p 入力・指定類・全自然変換と次数の計算 | 3,000〜5,500 |
+| 離散・Tot・実現の同じ変換の照合と Shared/A4 移行 | 1,000〜2,000 |
+| **案2の F_p 最小範囲** | **7,500〜14,500** |
+| 一般 k の V と係数忘却の比較（必要な場合の追加） | 700〜1,500 |
+| 案1の半線形双加群の持ち上げと原典との全比較（存在が確定した場合のみの追加） | 1,500〜3,500 |
+
+案1は共通の Sp 経路と一般 k の比較も含めて **条件付き 9,700〜19,500 行**。
+持ち上げの存在を紙で確定できない限り、これは完成の保証や費用の上界ではない。
+案2にはその存在問題がなく、Lemma 8.4 の所要の強さに一致するため優先する。
+新しい規模は新しい作業案であり、これを自己承認の実装枠にしない。
+スペクトル側を他レーンが供給する場合は該当部分を差し引き、同じ行数を二重計上しない。
+
+判断してほしい点：案2・F_p 最小範囲の採用、native Sp の模型の選択と V の担当、
+界面と Shared の移行範囲。3b-2／3b-4 の担当決定と、極限・実現比較の費用を合わせる必要がある。
+**ここで紙の比較の停止点として止め、D79 の決定を待つ。**
+Lean の変更・ビルド・監査・鍵の取得はなし。M15・G12 へは進まない。
