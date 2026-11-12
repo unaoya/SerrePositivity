@@ -90,3 +90,4 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 - BR32：`Delta/DividedPower/` を原典の項目ごとに下位分割、分冪代数の一般部分を CommutativeAlgebra へ（配置案の「Delta は保持」を改める）。
 - BR25・R21：docstring の工程ラベルを原典の番号へ、書式の欠け（文献の属性の付与と同じ回）。
 - BR8：使われないモジュールの調査（削除は保守）。
+- （11-12 夜、追加）BR34（古い docstring 6 件）、BR41（BS の内側の層の逆向き：Delta/DividedPower → Prismatic・Andre）、BR42（`Semiperfectoid/QuotientPerfectoidization` のファイル名）、R84（空の名前空間）も B3 に含める（`refactor-ledger.md` §5・§6）。

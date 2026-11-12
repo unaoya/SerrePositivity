@@ -89,3 +89,22 @@
 | R86 | 「安定なら有限極限・有限余極限を持つ」（HA Prop 1.1.3.4 の必要性の向き）の一般の安定 ∞ 圏の instance がない | 計画：③ か ⑤∞ で要る箇所が出たときに足す（今は関手 ∞ 圏などの個別の版で足りている） |
 | — | HA Cor 1.4.2.27（Ω による安定性の判定）は `isStable_of_loopEquivalence`（HA/StableInfinityCategories/LoopEquivalenceStability:20）としてある。計画の「未着手（D-7）」は古い | 閉（記録の訂正） |
 | — | 06 章：交換定理（HTT 5.3.3.3）の作業量（2 万行を超えて未完成）の記録 | 記録のみ（R8・R10 の背景） |
+
+## 6. BS ノート本文の書き直しで分かったこと（`research/bs-refactor-audit/notes-update-facts-2026-11-12.md`、11-12 夜）
+
+| 番号 | 内容（事実の節） | 扱い |
+| --- | --- | --- |
+| BR34 | 古い docstring・見出し 6 件（§1：DeltaLocalization:19、FreeDeltaFrobeniusFlat:29、AndreFlatness:19、Surjectivity の節、PerfectoidAlmost、Derived/Interface の旧見出し） | B3（BR25 と同じ docstring の回） |
+| BR35 | `exists_monicRootPerfectoidExtension` の二重証明（Variants/Auxiliary:1541 と Transfinite/Tower:1172） | 保守（BR10・BR13 と一緒に） |
+| BR36 | `exists_completelyFaithfullyFlat_absolutelyIntegrallyClosed` が三つ（Transfinite の step 仮定版、Andre の仮定なし版、Inputs の版） | 保守（Inputs の版は A9 で E3 を置き換えるときに整理） |
+| BR37 | `freeDeltaFrobenius_isCompletelyFaithfullyFlat`（外から未使用）と `crystallineCompletelyFlat_frobenius`（より一般） | 保守（前者を後者から出すか削除） |
+| BR38 | Lemma 2.38 の r=1 の旧版（`PrincipalDP*` 1,547 行、`Andre/Envelope/PDivision` の二つ）が一般版と並ぶ | 保守（BR6 に含める） |
+| BR39 | 同じ名前の宣言：`exists_perfectoidization_of_finite`（Inputs と Derived/IntegralExistence）、同じファイルの `exists_perfectoidization_of_integral`（:422・:467）・`perfectoidization_excision_isPullback`（:499・:555）、`isCoproduct`（PrismaticFrameCoproduct と CechAlexanderCoproduct）、`baseExtension`（ArcPerfectoidBase と DifferentialGraded/Resolution） | 保守（名前を分ける）。Inputs の版は A9 で |
+| BR40 | 有限完全 Tor 振幅の定義が三つ（drafts の A1・A0 の二つと本体の `HasCochainCompleteTorAmplitude`）、drafts の `bockstein_sq_zero'`・`cechIndex` が本体と重複、drafts の `Construction61Hypotheses`（D77 のとおり） | 計画：⑤∞ が drafts を本体へ移すとき、本体の宣言に置き換える（5∞-2・5∞-3） |
+| BR41 | BS の内側の層の逆向き：`Delta/DividedPower/FrobeniusDivisionPD` が `Prismatic.CrystallineTensorRegularity`・`Andre.Envelope.PDivision` を、`FrobeniusDivisionRegularSequence` が `Andre.PowerRootEnvelope.Completion` を import（§2 が §3〜§7 に依存） | B3（BS の整理の静的検査で、使う補題を Delta 側へ移すか、importer を移す） |
+| BR42 | 名前の紛らわしさ：ファイル `Semiperfectoid/QuotientPerfectoidization` と定義 `QuotientPerfectoidization` の所在の不一致 | B3（ファイル名を中身に合わせる） |
+| BR43 | 名前の紛らわしさ：`perfectoidIdeal` と `perfectoidKernel`（定理名は `perfectoidIdeal_radical`）、`IsAlmostZero` と `IsJAlmostZero`、`perfectoidBaseRing` の docstring の「R₀」 | 保守（docstring の訂正は B3 の docstring の回でよい） |
+| BR44 | `idealTensorEquiv`・`idealBaseChangeEquiv`（Prism/Basic/Rigidity）が外から未使用 | 保守（BR8 の調査に含める） |
+| — | S′ の有限段の 3 ファイルが Prismatic/ にある | B3 で `Semiperfectoid/FiniteEnvelopes/` へ（段 0 の案のとおり） |
+| — | 地図とノートの食い違い：**Not 7.1** は地図が正しい（qrsp の定義 `IsQuasiregularSemiperfectoid` は drafts にしかない）。**Lemma 4.8** も地図が正しい（`Prism/PerfectPrismHomLift` にあり、W17 の H5 が有界な標的への一意な持ち上げとして使う。主経路の上）。 | 閉（ノートの側の記述が古い） |
+| — | 原典との差で D 番号のないもの（Ex 2.21 の係数環が ℤ の局所化、Rem 2.37 は通常の Tor、Lemma 3.7 (2) は通常の導来圏、Cor 3.12 の層条件は環値前層と Čech の完全性、Lemma 2.36 (a) は p 完全平坦性から） | 記録のみ（いずれも「定理は特別な場合だけ」の範囲。D 番号は付けない） |
