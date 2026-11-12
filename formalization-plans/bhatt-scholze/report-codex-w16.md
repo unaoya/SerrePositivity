@@ -4783,3 +4783,21 @@ sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却
 監査 `/tmp/bsw16/audit-em-omega-dimension.log` は **56 本・463 宣言・標準三公理のみ**。
 sorry・追加公理なし。鍵返却を回収済み。共有入口・共有監査は未変更。
 夜の規則どおり止まらず、零次数への帰着と指定基本円の比較を続ける。
+
+
+## 70. D79(ii)：標準基点の全次数を零次数へ帰着
+
+`PointedNaturalIsoDetection`（40 行、**［一般∞］移動候補**）と
+`EilenbergMacLaneOmegaZeroReduction`（39 行）を追加。
+(ii) の検証済み累計 **3229 行**。登録候補はこの二本
+（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+
+`gammaAdjointSuspension_bijective_of_zero` は、全複体での零次数の全単射性を入力に取り、
+同じ指定構造射の標準基点での全次数の全単射性を与える。
+前節の恒等 cone の次数移動と実際の M[-1][1] ≅ M の同型を用いる。
+零次数の全単射性を公理として追加したものではなく、未完了の主張を明示した帰着。
+任意の基点での Ω 条件、native な V、安定 π/H 比較はまだ未完了。
+
+対象ビルド `/tmp/bsw16/em-omega-zero-reduction-01.log` は成功、警告なし。
+監査 `/tmp/bsw16/audit-em-omega-zero.log` は **58 本・465 宣言・標準三公理のみ**。
+sorry・追加公理なし。鍵返却を回収済み。引き続き零次数の指定 π/H 比較を進める。
