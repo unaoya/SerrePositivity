@@ -252,3 +252,26 @@ rightFibrationHomComparison_edgeIso :
 三面と標準後合成の接続は済んだ。次は `coherentDiagramSectionsCone` から指定極限錐への**同じ選択**、`spaceUniverseValueEquivalence`、`spaceValueEquivalence (t.represents.app …)` の逆、`covariantRepresentableValueEquivalence` を順に追う。既存の `coneSectionsNativeComparisonIso`、`representationValueTransportIso`、`unstraighteningValueTransportIso` と今回の錐の辺の比較を再利用する。`sectionsConeFamilyRestriction_fromSections` から最終的な `limitConeMap_homMk_eq_of_coneFamilyIso` に渡す全族同型はまだ構成していない。したがって **G8 の②の完成は主張しない**。
 
 **途中の取り込み点：`b126b94b7`（六本）。** 26件の `#check`・`#print axioms`・`#print sorries` が全件成功し、公理の集合は `propext`・`Classical.choice`・`Quot.sound` のみ、sorry 0（`/tmp/is-w1/faces/audit.log`、一覧 `declarations.txt`、監査入力 `audit.lean`）。六本はそのまま取り込める。入口・全体監査は変更しておらず、F2全体の監査は未実行。段1後段への接続を続ける。
+
+## 9. 新基準での段1の途中報告（11-12、作業継続）
+
+main `f5baa8763` の規模基準の改定を取り込んだ。段1の停止上限は **5,200行**、途中報告の目安は段0の上端2,600行の半分の **1,300行**。現在は検証済み **1,000行**、未検証の新規下書き **358行**、計 **1,358行**（前回の六本を含む）。この時点で一度、止まらずに報告する。
+
+下書きは、正本の選択を保持した G8 後段の因子と厳密な分解式（84行）、表現可能値の接続に使う coslice 側の三角形 prism・三面・元の輸送と区間後合成の比較（274行）。共有鍵の待ちは一枚で、最初の因子の対象ビルドから順に検証する。下書きは検証済みとは数えておらず、数学の未検証分はコミットしていない。
+
+残りの再見積もりは約 **1,500〜2,500行**、完成見込みの合計は約 **2,900〜3,900行**。主な不足は、(1) 実際の `covariantRepresentableValueEquivalence` が経る反転・左右 Hom 比較と同じ後合成の全族比較、(2) `spaceUniverseValueEquivalence` と表現の頂点同型の同じ比較の自然性、(3) 切断錐から指定極限への比較・切断制限・固定端点模型の接続。各頂点の Ho 等式へ弱めず、既存の選択を保つための幅を含めた。上限5,200行を超える見込みは現時点ではなく、作業を続ける。
+
+## 10. 後段の因子と coslice の全族比較（作業継続）
+
+検証済みの六本を `27f37cc66` にコミットした（461行・16宣言）。段1の検証済み累計は **1,461行**。停止点1にはまだ到達していない。
+
+- `HTT/PresentableInfinityCategories/SetWeightSectionsLimitFactorization.lean`（84行・3宣言）：`sectionsLimitValueEquivalence` と `setWeightSectionsLimitTail` は正本と同じ選択を保持する。`tensorSpaceFunctor_setWeightHomNatural_hom_factor` は元の順射が「元の随伴比較 ≫ 元の切断比較 ≫ 同じ後段」の厳密な合成であることを示す。別の同値への置換ではない。
+- `Kerodon/LimitsAndColimits/LimitsAndColimitsOfSpaces/CosliceEdgeTrianglePrism.lean`（117行・5宣言）、`CosliceEdgeTriangleFamily.lean`（75行・3宣言）、`CosliceTransportIntervalComparison.lean`（84行・3宣言）：元の coslice 輸送の同じ証人の三面から、同じ区間比較の全族と標準後合成のホモトピーを得る。
+- 同節 `CosliceTransportRightMappingComparison.lean`（60行・1宣言）：`cosliceTransport_rightMappingIso` は、元の `cosliceFiberRightMappingEquivalence` の順射が、同じ指定辺の輸送と標準後合成を全写像間の同型で結ぶ。
+- `Kerodon/TheYonedaEmbedding/TheYonedaEmbedding/CovariantRepresentableValueNormalization.lean`（41行・1宣言）：元の `covariantRepresentableValueEquivalence` の中で隣り合う反転同値とその逆を、指定された `homInvIso` で相殺する。元の値比較の自然性全体はまだ主張しない。
+
+因子は6,131 jobs、coslice 三本は2,114 jobs、表現可能値の正規化はその前の対象ビルド、右模型への移送は2,116 jobs の対象ビルドで成功。15宣言の個別監査（`/tmp/is-w1/tail-audit.log`）と右模型の1宣言の監査（`coslice-right-audit.log`）は全件成功し、sorry 0・標準三公理のみ。F2全体監査は未実行、入口・監査登録は調整役が行う。
+
+続いて、既存の `cofinalPointSliceOverOpIso`・`pointSliceReverseFiberIso`・`pointCosliceFiberMap` とその座標公式を再利用し、反転した slice fiber の元の比較を、元の coslice の左 pinched 比較へ厳密に照合している。新しい反転・slice 同型そのものは作り直していない。指定極限・宇宙変更・表現可能値を通じた G8 の全族の四角形は未完。
+
+新しい全段の停止上限は、段1 **5,200**、段2 **2,800**、段3 **1,800**、段4 **900行**。途中報告の目安はそれぞれ **1,300・700・450・225行**。
