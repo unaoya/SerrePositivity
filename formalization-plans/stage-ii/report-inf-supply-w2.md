@@ -1762,3 +1762,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 ```
 
 全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,589行。約7,900行で実測と残量を報告する。型の弱化、模型構造の追加、⑤aの既存ファイルの変更はない。
+
+## 54. 3b-2 続行：一般係数の指定自由積 EZ 同値
+
+コード `6bfbd68d8`、新規1本66行。累計 **119本7,477行**。
+
+`DiagramComparison.CoefficientEZEquivalence` で、§53の逆順ホモトピーを `Functor.mapHomotopy` により任意の加法関手へ移した。同じ Moore 比較、負次数延長、係数テンソル同型、最後の自由化同型を使い、既存 `freeProductAlexanderWhitney`・`freeProductShuffle` を hom・inv とする `freeProductEZEquiv` を構成した。任意の可換環 A で、積の A 自由正規化鎖と二因子の正規化鎖のテンソルの間の両方向の鎖ホモトピー同値であり、平坦性は要求しない。第一のまとまりの一般係数への移送である。
+
+個別検査、鍵付き対象ビルド **2,246 jobs**、累計119本 **1,319宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-52.log`、監査 `/private/tmp/AuditISW2G10HundredNineteen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundrednineteen-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CoefficientEZEquivalence
+```
+
+次はホモトピーの図式方向の両立と、元の全単体 Hom／切断比較への接続である。既存 KST の `ChainHomotopySquare` と `MooreHomotopyNaturality.moorePInftyHomotopy_naturality` が逆順ホモトピーの自然性にも使えることを確認したが、その自然性の証明は今回完了済みとは数えない。native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も残る。停止点2は未完、残枠2,523行。約7,900行で実測と残量を報告する。
