@@ -1,0 +1,77 @@
+[
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductDKHom.lean",
+    "added": 4,
+    "removed": 4
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrameHom.lean",
+    "added": 11,
+    "removed": 11
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductFrames.lean",
+    "added": 4,
+    "removed": 4
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductMappingSpace.lean",
+    "added": 11,
+    "removed": 11
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/CoproductNativeUniversal.lean",
+    "added": 17,
+    "removed": 17
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/EnrichedPointPrecomposition.lean",
+    "added": 11,
+    "removed": 11
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproduct.lean",
+    "added": 31,
+    "removed": 31
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductCocone.lean",
+    "added": 15,
+    "removed": 15
+  },
+  {
+    "path": "SerrePositivity/EInfinity/BarrattEccles/Theory/NativeCoproductLegs.lean",
+    "added": 27,
+    "removed": 27
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/CoproductTensorLegs.lean",
+    "added": 6,
+    "removed": 6
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/TensorLegs.lean",
+    "added": 41,
+    "removed": 41
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/TensorUnitClasses.lean",
+    "added": 9,
+    "removed": 9
+  },
+  {
+    "path": "SerrePositivity/EInfinity/Interface/Theory.lean",
+    "added": 56,
+    "removed": 56
+  },
+  {
+    "path": "SerrePositivity/EInfinity/NativeBinaryCoconeHom.lean",
+    "added": 10,
+    "removed": 10
+  },
+  {
+    "path": "SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/LimitsAndColimits/BinaryCoconeApexTransport.lean",
+    "added": 31,
+    "removed": 31
+  }
+]
