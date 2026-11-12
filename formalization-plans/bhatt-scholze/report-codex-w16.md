@@ -2137,3 +2137,68 @@ bar の厳密な前段は §35 のとおり検証済みだが、この不足を�
 経路 B もまず自由比較を必要とするため、現時点で `coproduct_tensor`・その二脚の全実例が無条件に完成したとはしない。
 今回の依頼の下書きの検証順とコミットは全て完了。共有の鍵・整理券を自分は保持しておらず、
 今後は調整役の判断を待つ。KL-W1 の改名表への追従は案内を受けてから行う。
+
+## 37. KL-W1 の追従：取り込み前の collect で drafts の未解決宣言により停止
+
+### 37.1 対象と取り込み前の状態
+
+main への KL-W1 取り込み（`19f081dcb`、案内時の main は `8f68a475d`）を受け、
+`kerodon-layout-w1-report.md` の「レーン別の追従表」を読んだ。
+コードの直前の HEAD は `2ae14588e`、検証済みのコードはすべてコミット済み、未検証の下書きはなかった。
+
+配布の `kerodon-layout-stop-3/bs-impl-files.json` の 32 本へ、10:21 後に追加した
+`SerrePositivity/EInfinity/BarrattEccles/Theory/TwoColorStandardAction.lean` を加え、**33 本**の一覧を作った。
+この一覧は main との merge base からの枝固有の全 Lean 差分と集合として一致し、漏れ・余分とも零。
+リポジトリ内の控えは `formalization-plans/bhatt-scholze/klw1-followup/bs-impl-files.json`。
+実際に渡した一覧と成果物は `/tmp/bsw16/klw1-followup/` に保存した。
+
+### 37.2 実行と停止の根拠
+
+取り込み前の同じソースと成果物から、配布した KL-W1 作業木の道具を使って collect を実行した。
+Lean を使う収集の間だけ `--wait 3600` の鍵を一枚取得した。
+
+```text
+python3 /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py collect
+  --root /Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-bs-impl
+  --files /tmp/bsw16/klw1-followup/bs-impl-files.json
+  --output /tmp/bsw16/klw1-followup/before-index
+```
+
+**本体 31 本の採取まで成功**したが、32 本目の
+`formalization-plans/bhatt-scholze/drafts/A2/BaseChangeAndTensor.lean` で Lean の解決エラーとなり、
+collect が終了コード 2 で止まった。ログは `/tmp/bsw16/klw1-followup/collect.log`。
+
+最初のエラーは同ファイル **43 行目**の
+`unknown namespace SerrePositivity.BhattScholze.Perfectoidization.Derived`。
+続けて `AnimatedAlgebra`、`derivedPrismaticCohomology`、`animatedCompletionUnit` などを解決できず、
+それらの `(E := E)` の引数にも連鎖したエラーが出る。
+このファイルの先頭には、他の drafts を将来 import する旨のコメントがあり、実際の import には入っていない。
+例えば `AnimatedAlgebra` は `drafts/A2/AnimatedAlgebra.lean`、
+`derivedPrismaticCohomology` は `drafts/A2/DerivedPrismaticCohomology.lean`、
+`animatedCompletionUnit` は `drafts/A7/AnimatedDomain.lean` の宣言である。
+今回の A2 の編集は証明方針のコメントだけで、型を変えてはいない。
+
+これは未実装の sorry の警告ではなく、単独での elaboration が成立しない drafts に対する参照採取のエラー。
+実装レーンで仮の宣言を足す、他レーンの drafts を実装する、対象を黙って除く、
+採取していない参照を文字列で推測して書き換える、という対応はしていない。
+「迷う箇所は書き換えず報告、KL-W1 側で道具を直す」という依頼に従い、ここを報告する。
+
+### 37.3 保存物、未実施の段、再開の入口
+
+- `before-index/`：成功した本体 31 本の参照 JSON。collect が中断したため、全 33 本の完了マニフェスト
+  `before-index/files.json` は生成されていない。完全な before_index とは数えない。
+- `before-sources/`・`before-state.json`：全 33 本の改名前のソース、各ソースと二つの改名表の SHA-256、コードの HEAD。
+  停止後も全 33 本のソースのバイト列が採取入力と一致することを確認した。
+- `drafts/Shared/BarrattEcclesTheory.lean`：一覧の最後の一本で、A2 で停止したため**未採取**。
+- `direct-importers-before.json`：検証範囲の準備として、本体の直接 importer 六本、drafts 十四本を列挙した。
+  まだこれらの移行後のビルドを行ったという結果ではない。
+
+**rewrite・プレビューの反映・main の取り込み・移行後の対象ビルドは、すべて未実施。**
+`review.json` もまだ作っていないので、保留零とは報告しない。
+自分の収集プロセスは終了を回収済み、鍵と整理券は返却済み。
+今回コミットするのは対象一覧とこの停止報告だけで、Lean のソースは書き換えていない。
+
+KL-W1 側から、このように単独では解決しない drafts の採取方法の案内・修正を受けた後に、
+同じ入力で必要な採取を完了し、プレビューと review を確認してから main の取り込みへ進む。
+改名を済ませて報告した後に a を再開する、という順序を守る。
+そのときの a の上限は今回の新しい承認どおり **約 3,000 行、3 割の緩めはなし**とする。
