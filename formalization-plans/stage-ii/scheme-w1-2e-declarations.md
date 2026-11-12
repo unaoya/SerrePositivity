@@ -1361,7 +1361,7 @@
 
 | 宣言 | 主張 |
 | --- | --- |
-| `fullCechComplexFunctor_preservesZeroMorphisms` | 型に記載した構造の構成。 |
+| `fullCechComplexFunctor_preservesZeroMorphisms` | 全タプルの Čech 複体を作る関手は零射を保つ。 |
 | `fullCechComplex_shortExact` | 各交叉の係数列が短完全なら、全タプル Čech 複体の列も短完全。 |
 
 ## ProjectiveFullGradedCechExact
@@ -1859,7 +1859,7 @@
 
 | 宣言 | 主張 |
 | --- | --- |
-| `projectiveSumLocalized_isLocalized` | 型に記載した構造の構成。 |
+| `projectiveSumLocalized_isLocalized` | 次数ごとの直和の局所化は、元の直和加群の局所化を与える。 |
 | `projectiveLocalizationToDirectSum` | 直和を局所化してから、各成分の局所化の直和へ送る。 |
 | `projectiveDirectSumToLocalization` | 各成分の包含を局所化し、局所化の直和から直和の局所化へ送る。 |
 | `projectiveDirectSumLocalization_left` | 各成分の包含を局所化し、局所化の直和から直和の局所化へ送る。 |
