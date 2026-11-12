@@ -5704,3 +5704,147 @@ native Tate[-1] の比較・T_p の延長・スペクトル的な右 k 作用・
 `audit-orbit-inclusions.log`：**178 モジュール・1,386 宣言、標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 ここまでの検証済み分をコミットし、夜の停止規則に従い次節の規模確認を記録する。
+
+
+## 94. 夜の停止規則：M14 の残りの規模を再評価し、Lean を止める
+
+### 94.1 確認できたものと、まだ供給されていないもの
+
+検証済み実装は §93 のコミットまで保存した。実測は (ii) 7,194 行、
+(iii) 3,022 行、合計 **10,216 行**（(i) の既存界面・drafts の変更は別）。
+(ii) の native Sp の入口と V・π/H は §63.6 の上端 7,000 行にほぼ収まった。
+一方、(iii) の当初 3,000〜5,500 行は、現在の **鎖模型の部品だけで 3,022 行**を使い、
+以下の三つをまだ含んでいない。§83 の仮置きの残り 4,500〜8,000 行を
+引き続き全体の保証として使うことはできないと判断した。
+
+- `projectivePowerSpectrum`・`boundedCyclicSpectrum`・`cyclicPositiveSpectrum` は
+  実相対図式から Sp への関手と全 sourceIso を持つが、
+  native な homotopy orbit・norm・Tate[-1] との比較ではない。
+  KST の `homotopyFixedPoints` とその native limit cone の部品はあるが、
+  今の調査ではこの入力で使える native orbit→fixed の norm と指定 Tate 境界の
+  全自然比較を発見していない。固定点だけを Tate と呼び替えることはできない。
+- `powerOperationCoefficientSeed` の k 線形な実鎖写像と、その指定 H^0 の計算はある。
+  これは DAG XIII Construction 2.2.6 の **スペクトル的な右 k 加群の射 e**を
+  供給したものではない。新たな右作用とその coherent な照合が必要である。
+  `DGKernelBimoduleIso` 等の dg 双加群の比較も、この非 D(k) 線形な作用の代用にはならない。
+- p 入力の準同型保存・上界・混合色の自由性は証明したが、
+  完全入力上の Tate 構成の exact 性、元の完全 ∞ 圏への全降下、
+  余極限保存延長 T_p と指定類の右作用の比較はまだ必要。
+  鎖レベルの混合色の自由性だけで、これらの全自然変換を得たとはしない。
+
+### 94.2 重複を除いた残りの暫定見込み
+
+| 残る束 | 追加 Lean の見込み | 範囲 |
+| --- | ---: | --- |
+| 正の Hom と実 orbit 全複体 | 900〜1,600 | 同じ指定微分の可換性・全自然な鎖同型 |
+| native orbit・norm・Tate の比較 | 3,000〜5,500 | 現在の p 入力で使う範囲、指定境界と全関手。右 k 作用は次々行 |
+| 完全入力での exact 性・降下・T_p の延長 | 2,800〜4,800 | 同じ p 入力の混合項、完全 ∞ 圏、全自然な余極限保存延長 |
+| スペクトル的な双加群と e | 2,800〜5,000 | 右 k 作用・指定係数類・左作用との区別・全比較 |
+| BE の作用による P⁰ と Rem 2.2.7 | 1,800〜3,200 | 同じ境界から BE の p 項作用への射と係数計算。Tot は次行 |
+| 離散・Tot の最後の照合 | 1,000〜2,000 | G10 後の (iv)。前行との二重計上なし |
+| **残り** | **12,300〜22,100** | |
+| **既知実測と合わせた全体** | **22,516〜32,316** | (i) の小さい変更は別 |
+
+これは未証明の部分の工程見込みであり、数学的な不可能性や下界の主張ではない。
+ただし現時点で上端を **29,000 行**以内にする、既存宣言による検証済みの短縮経路はない。
+当初の「P⁰ の Tate・指定類・全自然変換」の一行の中に、
+鎖模型→native の境界、exact な延長、スペクトル的な右作用という別の未供給の束が残る。
+これらを表の外へ出して行数から除くこともしない。
+
+したがって coordination.md §2「夜の進め方」の **上限を超えそうな場合**として、
+**M14 の Lean はここで止め、M15 の一般 R 加群の段 0 の紙の作業へ移る**。
+上限の引き上げや界面の追加は自己承認しない。朝の判断点は、
+上の native Tate・スペクトル的な module の供給と分担、および M14 の範囲の切り方。
+G10 の有無だけを、現在の鎖同型の未完了の理由にしてはいない。
+承認を求めて今夜の作業を止めず、次節へ進む。
+
+
+## 95. 代わりの作業：M15 の一般 R 加群、§66 の続き（紙のみ）
+
+### 95.1 今夜の実装から再利用できるもの
+
+`eilenbergMacLaneDerived A` は一般の可換係数環 A の既存 D(A) から
+native Sp への実関手であり、`eilenbergMacLaneDerived_homologyIso A i` は
+その全ホモトピー圏の π/H 比較。M15 で台をスペクトルとして読むときは再利用できる。
+一般の E∞ 頂点 R 上の加群をこれで構成したことにはならない。
+係数制限と V の全比較も未供給のままである。
+
+§66 の左加群の通常圏の部品に加え、次の **既存の native dg module** の出力を
+最初の模型の束で再利用する候補として確認した。
+
+| 既存宣言 | 実際に供給するもの | M15 へ接続する前に要るもの |
+| --- | --- | --- |
+| `dgAlgebraDerivedInfinityCategory A B` | B : Mon (Complex A) 上の右半自由 dg 加群の実 ∞ 圏 | BE の厳密代数から同じ dg 代数を作る全関手と、一般 R への降下 |
+| `dgAlgebraDerivedInfinityCategory_isStable` | 同じ dg 代数上の module ∞ 圏の安定性 | E∞ 頂点 R に対する module 圏との比較 |
+| `dgModuleHomSpaceInfinity`・`dgModuleHomSpaceValueEquivalence` | 両変数で coherent な空間値 Hom と同じ Hom end の比較 | R 加群の RHom、相対テンソルとその随伴の比較 |
+| `dgModuleExtensionYonedaNerveIso` | 既存 dg 圏の拡大と同じ Yoneda に対する指定比較 | BE の係数射と、同じ単位加群・指定辺への適用 |
+| `dgKernelTensorIsoNerveOfBimoduleIso`・`dgKernelDerivedInfinity_bimoduleIso` | 実 dg 双加群同型による kernel 関手の比較 | E∞ の相対テンソルと対称性の整合 |
+| `dgBimoduleFunctorHomFunctor_resolvedMap_isIso_of_quasiIso` | 指定した dg 双加群の解決済み射の同型性 | 必要な BE 加群の双加群を実際に供給すること |
+
+`dgAlgebraDerivedInfinityCategory` は一般の非可換 dg 代数を受け取る。
+ここで H^0(R) に落とす必要はない。ただし、それだけでは
+E∞ の相対テンソルの対称性は供給されない。
+
+### 95.2 最初に検査すべき型と射の範囲
+
+以下は **未実装・未型検査の型案**。本体・界面・drafts の宣言の追加ではない。
+`Complex`・BE の operad の名前空間を開いた文脈で記す。
+
+```lean
+-- 厳密 BE 代数の同じ台と、指定した単位・積を持つ dg 代数。
+barrattEcclesAssociativeForget (A : Type u) [CommRing A] :
+  (operad A).Algebra ⥤ Mon (Complex A)
+
+-- 上の関手が構成できた後の、厳密な各入力での候補。
+strictModuleInfinity (X : (operad A).Algebra) : SSet.{u+1} :=
+  dgAlgebraDerivedInfinityCategory A
+    ((barrattEcclesAssociativeForget A).obj X)
+
+-- 同じ唯一の対象で評価して台へ戻す、全射を含む候補。
+strictModuleUnderlying (X : (operad A).Algebra) :
+  strictModuleInfinity X ⟶ derivedInfinityCategory A
+```
+
+最初の検査は、BE の指定零単体の操作から strict な単位・積・結合性が
+元の複体で成立することと、全代数射がそれを保つこと。
+`homologyCommRing` の供給だけではこの型を満たさない。
+この検査が閉じたら、一対象 dg 圏の既存の実 module 構成を適用できる。
+閉じない場合の enveloping algebra の経路は別の設計判断であり、ここで採用しない。
+
+一般の native 頂点 R に対する型は §66.1 の `modulesOver`・`moduleUnit`・
+`algebraAsModule`・`moduleExtend`・`moduleRestrict` のまま。
+これへ進むときは次を同じ指定射で照合する。
+
+1. 厳密 BE の準同型に対する restriction と extension の随伴。
+2. BE の弱同値に対する module ∞ 圏の同値と、台の忘却との全比較。
+3. native な CAlg の射と合成に対する module 圏の降下。
+   頂点ごとに厳密模型を一つ選んで終わりにしない。
+4. E∞ の高次の可換性を使った相対テンソルの対称性・結合性・単位。
+5. 単位から `algebraAsModule f` への指定辺、その fiber、n 重テンソルの指数射。
+
+### 95.3 地図との対応と見込み
+
+`research/ha-coverage/review/ch4.csv` の記載を再確認した。
+4.2.1.15 は通常の `Mon`・`Mod`、4.2.3.5 は通常の内部加群の余極限、
+4.5.2.1 は通常の balanced tensor の特殊例という部分一致であり、
+4.5.3.1 の変わる代数に関する全 module の射影は未供給という判定。
+この地図は native な一般 R の module の既証明性を意味しない。
+
+§66.4 の **2,500〜4,500 行**は、以下の再利用を前提とする暫定見込みとして保持する。
+既存の dg module の安定性や Hom 空間を新しく作り直す費用は加算しない。
+
+| 束 | 追加の暫定見込み | 停止前に供給すべき指定比較 |
+| --- | ---: | --- |
+| 厳密 BE と既存 dg module、native な係数射への降下 | 700〜1,400 | 台・単位・全 restriction/extension・弱同値不変性 |
+| E∞ の相対テンソルと底変換 | 1,200〜2,200 | 対称性・結合性・単位、同じ pushout の辺 |
+| fiber・thick ideal の利用側への接続 | 600〜900 | 同じ単位と指定辺、テンソルによる有限余極限保存 |
+| **計** | **2,500〜4,500** | |
+
+RHom・完備版・Amitsur の Tot の利用側は §66.3 の後続であり、この模型の束と二重計上しない。
+M15 に入るときの担当決定では、上の一般 R の module と相対テンソルの供給者を
+先に確定する必要がある。M14 の **スペクトル的な右 k 作用**と、
+ここでの **R 加群の相対テンソル**には別の比較が要るため、
+一方が終われば他方も終わるという見込みは置かない。
+
+この節は紙のみ。M15 の Lean・新たな界面・drafts の型変更には着手していない。
+今夜の代わりの作業の段 0 として報告する。
