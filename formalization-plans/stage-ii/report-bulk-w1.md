@@ -362,3 +362,5 @@ DerivedCategories は承認済みの主題をさらに分け、移動先で最�
 監査の移動追従も隔離側で準備した。38ファイルのimport・実際に変わる定数名・所有モジュールの表を区別して書き換え、禁止する旧モジュール名は残す。KSTの条件付き監査はarchive側へ分け、通常の監査にはArchive/KST/DescentConditional全体への依存を禁ずる条件を足す。root全体・全監査・verifyはB3の凍結時の工程であり、B2の完了件数に含めない。
 
 検証済みの適用道具は `scripts/refactor/bulk_apply_preview.py`（既定は読取りのみ）、安全性の検査は `test_bulk_apply_preview.py`。Citation の検査は `test_bulk_citation.py --root <作業木> --output <一時ディレクトリ>`。新しいファイルとして追加し、既存の共用採取器・既存スクリプトは変更しない。隔離プレビューの移動後ビルド・全体保存比較は引き続き実行中。
+
+隔離側では、追加で `scripts/audit/bhatt_scholze.lean` と任意の `check_cleanup_c2.lean` のimport・所有元表も追従させた。後者は正式監査に登録しない。InfinityCategories・BhattScholzeの配置の説明とDiagnosticsのREADMEも適用データへ含めた。付表 `layout/preview-edits.json.gz` は実際の隔離側8,678出力を再現するが、全体検証中なのでB2停止点の完了データとは区別する。

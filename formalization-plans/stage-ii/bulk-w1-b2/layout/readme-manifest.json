@@ -1,0 +1,14 @@
+[
+  {
+    "source": "SerrePositivity/InfinityCategories/README.md",
+    "target": "SerrePositivity/InfinityCategories/README.md"
+  },
+  {
+    "source": "SerrePositivity/InfinityCategories/Derived/Diagnostics/README.md",
+    "target": "SerrePositivity/Archive/InfinityCategories/DGKappaDiagnostics/README.md"
+  },
+  {
+    "source": null,
+    "target": "SerrePositivity/BhattScholze/README.md"
+  }
+]

@@ -11,3 +11,11 @@
 - `preview-bundle-summary.json` は作業用の適用束の件数とハッシュ。検証中のため、Leanの修正後は再生成する。
 
 全体の検証の完了までは「B2準備中」である。`directory-tree.md` で配置を比較できる。
+
+`preview-edits.json.gz` は隔離作業木を再現するデータで、本体へは未適用。移動先・前提のビルドと保存比較はまだ実行中である。凍結時には最新mainとの差分を取り込んで作り直す。元ファイルが1個でも変わっていれば、適用道具が書込み前に止める。読取りだけの検査は専用枝のリポジトリ直下で次のとおり。
+
+```sh
+python3 scripts/refactor/bulk_apply_preview.py --root "$PWD" --bundle formalization-plans/stage-ii/bulk-w1-b2/layout/preview-edits.json.gz
+```
+
+`additional-script-rewrites.json` は `audit_*.lean` 以外のBS領域監査と任意のC2診断器の追従。`readme-manifest.json` は配置の説明とArchiveへのREADMEの追従。`public-target-collision-check.json` は改名する公開515名の行き先同士に衝突がない検査で、全宣言の検査の代用ではない。
