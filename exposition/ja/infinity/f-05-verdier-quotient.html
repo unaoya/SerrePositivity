@@ -68,12 +68,6 @@
 <p>\(W\) が Ore 型の条件を満たすので、span の圏は（分母について）filtered になる。そのため groupoid 完備化は、分母についての余極限
 \(\operatorname{colim}_{(x' \to x) \in W} \mathrm{Map}_B(x', y)\) とも書ける。これは Nikolaus–Scholze I.3 や 9 人論文の付録 A の公式の ∞ 版である。</p>
 
-<div class="box refactor">
-<p class="label">注意：この定理は商の存在を仮定している</p>
-<p>定理の仮定は <code>(h : IsVerdierSequence i q)</code> である。つまり「安定な商 \(C\) が与えられたときに、その写像空間を計算する」定理であって、商を作る定理ではない。
-M2（局所化の安定性）の証明にこの機構を使うには、商が安定であることを仮定しない版を先に切り出す必要がある（計画の段 G、M2 の注）。
-span の圏と groupoid 完備化の構成そのもの、および「span の像が局所化の写像空間に入る」部分は、どちらも安定性を使わないはずなので、そこを分けるのが最初の作業になる。</p>
-</div>
 
 <p>この機構は LI の Verdier*（約 131 本）と KST/Fibration の W 分数（約 90 本）、Tamme*（約 23 本）に分かれている。計画の R52 で Stable/Verdier/Fractions に移す。
 Fibration の Weak* と LI の Tamme* には、辺の集合だけが違う複製が 4 対ある。それを一つの一般版にまとめるのは型が変わる作業なので、段 G の R57 で扱う。一般版の仮定は、pullback での安定性だけでは足りず、合成で閉じていることも要る。</p>

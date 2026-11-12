@@ -65,7 +65,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <p><b>Lean での組み立て（Prop 8.13 環版）.</b> 図式 \(S_1\leftarrow S_3\to S_2\) の各環に環としての perfectoid 化が指定されているとき、完備テンソルの \(H^0\) が \(S_1\otimes_{S_3}S_2\) の perfectoid 化であることを、環の普遍性・\(H^0\) の主元完備化の比較・perfectoid 環の完備テンソルの離散性（Lemma 10.3 の一般形）を合わせて示す（<code>prop813CompletedTensorMap_isPerfectoidization</code>、Perfectoidization/PerfectoidizationCompletedTensorCompatibility:102）。perfectoid な底変換の版 <code>prop813BaseChange_exists_algEquiv</code>（Prop813PerfectoidBaseChange:112）。</p>
 <div class="box">
 <p class="label">原典との差</p>
-<p>Prop 8.13 の環版は HT 比較を使わずに示せるが、環として perfectoid 化が存在する場合（semiperfectoid の商など）に限る。A7 で導来版（原典どおり Δ の対称モノイダル性から）ができると、環版はその系になる（<a href="#diff-08">D15</a>、BR31）。</p>
+<p>Prop 8.13 の環版は HT 比較を使わずに示せるが、環として perfectoid 化が存在する場合（semiperfectoid の商など）に限る。A7 で導来版（原典どおり Δ の対称モノイダル性から）ができると、環版はその系になる（<a href="#diff-08">D15</a>）。</p>
 </div>
 
 <div class="table-wrap"><table>
@@ -73,59 +73,42 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版 <code>prop813CompletedTensorMap_isPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">TensorCompatibility:248</a>）、底変換（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">TensorCompatibility:431</a>）。導来版は A7</td></tr>
 <tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td><code>universal</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。A7</td></tr>
 </table></div><h2 id="items-08">原典の項目一覧（§8）</h2>
-<p>§8 一般の perfection の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<!-- items:begin（build_items.py が research/bs-coverage/items.csv から生成。手で直さない） -->
+<p>§8 の全項目。全 14 項目、うち目標に要るもの 11（特別な場合 3、部品 1、drafts 2、界面 5）。判定：<b>必要性</b>は今の目標（E3 を原典の経路 A0〜A9 で消す）に要るか（<b>一部必要</b>＝項目の一部だけ要る）。<b>状況</b>は <b>済</b>＝本体に原典どおり（sorry なし）、<b>特別な場合</b>＝本体に特別な場合だけ、<b>部品</b>＝証明の主な部品は本体で主張の組み立ては未、<b>drafts</b>＝drafts に型だけ、<b>界面</b>＝E3 の欄として今は引用、<b>設計のみ</b>＝設計書だけ、<b>なし</b>＝どこにもない。Lean の所在は <code>SerrePositivity/BhattScholze/</code> からのパスと行（drafts は <code>formalization-plans/bhatt-scholze/drafts/</code> から）。</p>
 <div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>判定</th><th>備考（E3 の欄）</th></tr>
-<tr><td>Not 8.1</td><td>設定</td><td class="ok">済</td><td></td></tr>
-<tr><td>Def 8.2</td><td>perfectoid 化 S_perfd</td><td class="todo">未（界面）</td><td>perfd・unit・h0（A4）</td></tr>
-<tr><td>Ex 8.3</td><td>標数 p の場合</td><td class="no">不要</td><td></td></tr>
-<tr><td>Lemma 8.4</td><td>coconnective</td><td class="todo">未</td><td>A4（後続の証明の入力。界面の欄は削除済み、D44）</td></tr>
-<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td class="todo">未（界面）</td><td>limitCone・limit_isLimit（A5）</td></tr>
-<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td class="todo">未</td><td>A5（Mat16・BS17 の切片）</td></tr>
-<tr><td>Def 8.7、Lemma 8.8</td><td>arc 位相、perfectoid による被覆</td><td class="todo">未</td><td>A6。骨組み：<code>arcTopology_eq_sup</code>・<code>isSheaf_arc_iff_cech</code>・<code>exists_perfectoid_arcCover</code>（drafts/A6/ArcSite、BS-D1）</td></tr>
-<tr><td>Rem 8.9</td><td>より簡単な基底</td><td class="no">不要</td><td></td></tr>
-<tr><td>Prop 8.10、Cor 8.11</td><td>arc 層性</td><td class="todo">未</td><td>A6（BM18・BS17 の切片）</td></tr>
-<tr><td>Cor 8.12</td><td>excision</td><td class="todo">未（界面）</td><td>excision（A6）。環の帰結は界面から証明済み <code>PerfectoidizationExcision</code></td></tr>
-<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td class="part">一部</td><td>環版は済 <code>PerfectoidizationCompletedTensorCompatibility</code>（Perfectoidization）。導来版が A7</td></tr>
-<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td class="todo">未（界面）</td><td>universal（A7）</td></tr>
+<tr><th>項目</th><th>内容</th><th>必要性</th><th>状況</th><th>Lean・備考</th></tr>
+<tr><td>Not 8.1</td><td>設定</td><td>必要</td><td class="todo">drafts</td><td><code>perfectPrism</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:89</a>）、<code>perfectPrismRing</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:64</a>）。記法。perfectoid R の完全 prism の存在は本体の Thm 3.10（非零枝、sorry 0）。E3 用に A_inf(R)=W(PreTilt R) で束ねた perfectPrism は drafts ／ 本体の宣言がすべて補助だったので状況を下げた</td></tr>
+<tr><td>Def 8.2</td><td>perfectoid 化 S_perfd</td><td>必要</td><td class="todo">界面</td><td><code>PerfectoidizationInterfaceE3.perfd</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Perfectoidization/Derived/Interface:673</a>）、<code>prismaticPerfection</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:196</a>）、<code>perfectoidization</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:239</a>）、<code>e3Perfd</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/InterfaceFields.lean">drafts/A4/InterfaceFields:93</a>）。E3 の perfd・unit・h0 欄。drafts に離散版（A4）と原典の定義域の animated 版 prismaticPerfectionAnimated（A7）。Frobenius は A2 待ちの仮置き</td></tr>
+<tr><td>Ex 8.3</td><td>標数 p の場合</td><td>未確定</td><td class="todo">drafts</td><td><code>perfectoidization_charP</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/AfterComparison.lean">drafts/A4/AfterComparison:76</a>）。標数 p で S_perfd = 通常の完全化。Prop 8.5 の後に置く。A6 の tilt の段で要るかは未確認（a4 §5 の 5、W9-III-14）</td></tr>
+<tr><td>Lemma 8.4</td><td>coconnective</td><td>必要</td><td class="todo">界面</td><td><code>prismaticPerfection_coconnective</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:282</a>）、<code>perfectoidization_coconnective</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:314</a>）、<code>prismaticPerfection_h0_perfectDelta</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A4/Perfectoidization.lean">drafts/A4/Perfectoidization:296</a>）。E3 の引用根拠に挙がるが coconnective 欄は 10-26 に削除。証明では Cor 8.14・Prop 8.5・Thm 10.11 に内部で要る。P⁰（M14）待ち</td></tr>
+<tr><td>Prop 8.5</td><td>perfectoid 標的の極限</td><td>必要</td><td class="todo">界面</td><td><code>PerfectoidizationInterfaceE3.limitCone</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Perfectoidization/Derived/Interface:682</a>）、<code>perfectionComparison_isIso</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean">drafts/A5/PerfectSiteComparison:61</a>）、<code>perfectoidization_isLimit_u</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/PerfectSiteComparison.lean">drafts/A5/PerfectSiteComparison:97</a>）、<code>e3LimitCone</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/InterfaceLimitCone.lean">drafts/A5/InterfaceLimitCone:65</a>）。E3 の limitCone・limit_isLimit 欄（Type u 標的の指定極限錐）。drafts に主張と系 1〜4（A 非依存・semiperfectoid で Cor 7.3 と一致）</td></tr>
+<tr><td>Lemma 8.6</td><td>強い降下（descendability）</td><td>必要</td><td class="todo">drafts</td><td><code>prismaticCohomology_rootMap_descendable</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean">drafts/A5/StrongDescent:67</a>）、<code>prismaticPerfection_rootMap_descendable&#x27;</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean">drafts/A5/StrongDescent:75</a>）、<code>rootMap_modP_eq_deRham</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A5/StrongDescent.lean">drafts/A5/StrongDescent:203</a>）。Prop 8.5 の証明の降下段。descendable は Mat16 の定義で置き、de Rham 入力は A1-5（Thm 6.4 の多項式・mod p）</td></tr>
+<tr><td>Def 8.7</td><td>p 進形式スキームの arc 位相</td><td>一部必要</td><td class="part">特別な場合</td><td><code>IsArcCoverFamily</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcSite.lean">Perfectoidization/Derived/ArcSite:126</a>）、<code>arcTopology</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcSite.lean">Perfectoidization/Derived/ArcSite:138</a>）、<code>arcTopologyPerfd</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcSite.lean">Perfectoidization/Derived/ArcSite:147</a>）。affine・p 完備・濃度 ≤ κ 版の arc 位相。形式スキームの site は作らない</td></tr>
+<tr><td>Lemma 8.8</td><td>perfectoid による被覆</td><td>一部必要</td><td class="part">特別な場合</td><td><code>exists_perfectoid_arcCover</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcSite.lean">Perfectoidization/Derived/ArcSite:435</a>）、<code>affPerfdInclusion_isCoverDense</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcSite.lean">Perfectoidization/Derived/ArcSite:506</a>）。affine 版（濃度の上界つきの整 perfectoid 一点被覆、cover-dense）</td></tr>
+<tr><td>Rem 8.9</td><td>より簡単な基底</td><td class="no">不要</td><td class="no">—</td><td>付値環の積による被覆の注意。§9 で使うもので E3 には不要</td></tr>
+<tr><td>Prop 8.10</td><td>arc 層性</td><td>必要</td><td class="part">部品</td><td><code>cechExact_of_milnorTensor</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcCechMilnor.lean">Perfectoidization/Derived/ArcCechMilnor:66</a>）、<code>tilt_rankOneValuationRing</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcValuationTilt.lean">Perfectoidization/Derived/ArcValuationTilt:207</a>）、<code>cechConerve_perfectRing</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/ArcPerfectCech.lean">Perfectoidization/Derived/ArcPerfectCech:24</a>）。BM18 の経路 B（BS-W12）の B1〜B5 は本体。組み立て B6 は ⑥ の BS17 Thm 4.1 (i) 待ち</td></tr>
+<tr><td>Cor 8.11</td><td>arc 降下の系</td><td class="no">不要</td><td class="todo">界面</td><td><code>perfectoidization_eq_arcCohomology</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A6/ArcSheafProperty.lean">drafts/A6/ArcSheafProperty:480</a>）。E3 の引用根拠に挙がるが、設計では fSch 上の RΓ_arc は不要（D55）。E3 で使う S_perfd=Γ(F_S,O) は Prop 8.5 の極限の形。affine 版を記録としてだけ drafts に</td></tr>
+<tr><td>Cor 8.12</td><td>excision</td><td>必要</td><td class="todo">界面</td><td><code>PerfectoidizationInterfaceE3.excision</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Perfectoidization/Derived/Interface:690</a>）、<code>perfectoidization_excision_isPullback</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Excision.lean">Perfectoidization/Derived/Excision:499</a>）、<code>perfectoidization_excision</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A6/Excision.lean">drafts/A6/Excision:279</a>）、<code>e3Excision</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A6/Excision.lean">drafts/A6/Excision:294</a>）。E3 の excision 欄（D(R) で、離散 S・S′）。本体の環版の excision は E3 から導いた定理（sorry 0 だが E3 依存）。drafts の証明は S8 の sectionsOf_pushout 待ち</td></tr>
+<tr><td>Prop 8.13</td><td>完備テンソルとの可換性</td><td>必要</td><td class="part">特別な場合</td><td><code>prop813CompletedTensorMap_isPerfectoidization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">Perfectoidization/TensorCompatibility:248</a>）、<code>exists_prop813BaseChange_of_perfectoid_quotient</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/TensorCompatibility.lean">Perfectoidization/TensorCompatibility:506</a>）、<code>perfectoidization_relativeTensor</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A7/AnimatedPerfectoidization.lean">drafts/A7/AnimatedPerfectoidization:271</a>）。本体は環版だけ（指定済みの環の perfectoid 化を仮定した完備テンソルの可換性、sorry 0、E3 に到達しない）。Cor 8.14 に要る導来版（Δ の対称モノイダル性経由）は drafts</td></tr>
+<tr><td>Cor 8.14</td><td>離散なら普遍 perfectoid 環</td><td>必要</td><td class="todo">界面</td><td><code>PerfectoidizationInterfaceE3.universal</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Perfectoidization/Derived/Interface:679</a>）、<code>perfectoidization_isIntegralPerfectoid_of_discrete</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A7/DiscreteCore.lean">drafts/A7/DiscreteCore:71</a>）、<code>perfectoidization_isPerfectoidization_of_discrete</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean">drafts/A7/UniversalProperty:210</a>）、<code>e3Universal</code>（<a href="../../../formalization-plans/bhatt-scholze/drafts/A7/UniversalProperty.lean">drafts/A7/UniversalProperty:222</a>）。E3 の universal 欄。離散 S に限る（D61、E3 の規約 (iii)）。前半の芯 DiscreteCore は A5 より先に置く</td></tr>
 </table></div>
+<!-- items:end -->
 
 <h2 id="diff-08">原典との差の評価</h2>
 <p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
 <div class="table-wrap"><table>
 <tr><th>番号</th><th>原典</th><th>Lean の違い</th><th>Lean の利点</th><th>Lean の欠点</th><th>どちらが簡単か</th><th>方針</th></tr>
-<tr><td>D15</td><td>Prop 8.13</td><td>導来版（Δ の対称モノイダル性、HT 比較）ではなく、指定済みの環の perfectoid 化の普遍性から環版を証明</td><td>HT 比較なしで証明できる</td><td>環として perfectoid 化が存在する場合だけ。A7 で導来版ができると環版はその系になり、今の証明は重複する</td><td>原典の方が短い（HT 比較があれば一行）</td><td>A7 までは保つ。A7 の後に導来版の系へ置き換える（BR31）</td></tr>
+<tr><td>D15</td><td>Prop 8.13</td><td>導来版（Δ の対称モノイダル性、HT 比較）ではなく、指定済みの環の perfectoid 化の普遍性から環版を証明</td><td>HT 比較なしで証明できる</td><td>環として perfectoid 化が存在する場合だけ。A7 で導来版ができると環版はその系になり、今の証明は重複する</td><td>原典の方が短い（HT 比較があれば一行）</td><td>A7 までは保つ。A7 の後に導来版の系へ置き換える（a7-design）</td></tr>
 </table></div>
 
 <h2>リファクタの候補</h2>
-<div class="box refactor">
-<p class="label">BR31　Prop 8.13 の環版を導来版の系に置き換える（A7 の後）</p>
-<p>Prop 8.13 の環版（Perfectoidization/ の 4 本、約 600 行）は、HT 比較なしで示すために普遍性を手で組み立てている。原典の導来版は Δ の対称モノイダル性から一行で出て、A7 で形式化する。そのときは、環版を導来版と Cor 8.14 の系として述べ直し、今の証明を外す（主張と型は保つ）。</p>
-</div>
-
-<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
-<div class="box refactor">
-<p class="label">BR20　有限直積の perfectoid 性が E3 に依存している</p>
-<p><code>isIntegralPerfectoid_finPi</code>（Perfectoidization/PerfectoidFiniteProduct:21、「perfectoid 環の有限直積は perfectoid」）は、E3 から得た perfectoid 化の存在 <code>Inputs.exists_perfectoidization_of_integral</code> を使って証明されている（確認済み）。CLMST の 3 ファイル（<code>PerfectoidFiniteProductTor</code>、<code>Prop247ConstantRankExcision</code>、<code>KLAicTorFromExcision</code>）が使う。主定理はもともと E3 に依存するので新しい sorry ではないが、BS-0 の消費経路の一覧（stage2 §1）に載っていない E3 の使用箇所。四条件（Fontaine 核の単項性、p 完備性、Frobenius の全射性）は成分ごとに確かめられるので、E3 なしで直接示せるはず。E3 の使用箇所を本当に必要な二つ（存在と excision）に絞るために優先度が高い。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR21　IsPerfectoidization の API を足して手書きの展開を置き換える</p>
-<p>普遍性 <code>hf.2</code> を直接展開している箇所が、<code>PerfectoidFiniteProduct</code>:35、<code>PerfectoidizationSurjectiveMap</code>:40,42、<code>PerfectoidizationTensorCompatibility</code>:66–81、<code>PerfectoidizationBaseChange</code>:38,47、<code>CompletedTensorPerfectoidUniversal</code>:92、<code>PerfectoidizationCompletedTensorCompatibility</code>:154 などにある。既存の <code>lift</code>・<code>lift_unique</code>・<code>map</code> で書けるほか、共通側に二つ足すと重複が消える：(a) <code>IsPerfectoidization.hom_ext</code>（a∘f = b∘f なら a = b）、(b)「u : A → A′ が perfectoid な標的への写像を一意に延ばすなら、f′ が perfectoid 化 ⇔ f′∘u が perfectoid 化」という移送補題。(b) で <code>precomp_ringEquiv</code>、完備化への移送 2 本、<code>completedTensorPerfectoidLift_isPerfectoidization</code> が数行になり、<code>CompletedTensorPerfectoidization</code>:56 と <code>CompletedTensorPerfectoidUniversal</code>:28 の逐語複製（約 30 行）も消える。共通側（CommutativeAlgebra）の変更なので、他の利用先がないことを確かめてから。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR22　底変換・三角図式・Prop 8.13 底変換の共通化と、二つのテンソルのモデル</p>
-<p><code>PerfectoidizationBaseChange</code>:28 と <code>PerfectoidizationTensorCompatibility</code>:55 は、係数テンソルの持ち上げとテンソル積の帰納法による同じ型の証明（各 70 行ほど）。そのままでは特殊化にならないので、「C⊗_P D からの射は左右の制限で決まる」外延性補題と持ち上げの補題を共通にする。<code>prop813BaseChangeMap</code> も三角図式版の特殊化に見える（推測）。また perfectoid 環のテンソルの perfectoid 化に、Witt 余積のモデル（<code>Perfectoidization/WittPresentation/</code> ほか約 720 行）と完備テンソル H⁰ のモデルが並んでいる。Witt モデルの用途は mod p 全単射性と根付き拡大の 2 つだけで、前者は完備テンソル側の普遍性から直接出る見込み。後者が Witt モデル固有の性質を使っていないかの調査が要る。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR23　公開の形</p>
-<p>Prop 8.13 環版の 4 本（<code>Prop813PerfectoidBaseChange</code>、<code>PerfectoidizationCompletedTensorCompatibility</code>、<code>PerfectoidizationTensorCompatibility</code>、<code>CompletedTensorPerfectoidUniversal</code>）は証明済みだが root から到達せず、既定のビルドに入っていない（監査だけが読む）。到達点として挙げている結果なので、集約から公開する。<code>isIntegralPerfectoid_of_ringEquiv</code>（Prism/Perfectoid/PerfectoidRingEquiv:21）は純粋に可換環論の事実で 21 ファイルが使うので、CommutativeAlgebra/IntegralPerfectoid の近くへ移す。<code>PerfectCoefficientTensor</code>（22 行、alias だけ）は利用 4 箇所を直接の名前に切り替えて消せる。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">
   <li>Def 8.2・Lemma 8.4・Prop 8.5・Cor 8.12・Cor 8.14 は E3 の欄として引用中。ここを証明に置き換えるのが目標の中心（A4〜A7）。</li>
   <li>Prop 8.5 の証明は Thm 7.4・Thm 7.14（証明済み）と Prop 7.10（A3）、Lemma 8.6（A5）を使う。Lemma 8.6 は標数 p の de Rham 比較と Cartier 同型（A1）を使う。</li>
-  <li>環としての帰結（excision の引き戻し、Prop 8.13 環版）は証明済みで、界面が満たされれば下流はそのまま使える。Prop 8.13 環版は A7 の後に導来版の系へ置き換える（BR31）。</li>
+  <li>環としての帰結（excision の引き戻し、Prop 8.13 環版）は証明済みで、界面が満たされれば下流はそのまま使える。Prop 8.13 環版は A7 の後に導来版の系へ置き換える（a7-design）。</li>
 </ol>
 </main>
 </body>

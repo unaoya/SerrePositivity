@@ -42,7 +42,7 @@ instance instQuasicategory : SSet.Quasicategory (dgNerve A D)</code></pre>
 
 <div class="box">
 <p class="label">符号の規約（重要）</p>
-<p>コードの微分は次数 +1（cochain）で、合成は通常順 <code>compose A g f h</code> \(=g\circ f\)、Leibniz 則は \(\delta(g\circ f)=\delta g\circ f+(-1)^{|g|}g\circ\delta f\)。HA の chain 次数を負に読み替え、HA の \(f_I\) は符号を変えずに使う。<b>Kerodon Construction 2.5.3.1 とは括弧の順序が逆</b>で、同じ Hom 複体の微分で比べると \(f_I^{\mathrm{Kerodon}}=(-1)^{|I|-2}f_I^{\mathrm{HA}}\) となる。原典の式をそのまま混在させないこと。詳細は <a href="../../../SerrePositivity/InfinityCategories/README.md">InfinityCategories/README.md</a>（実質的に dg nerve の規約文書。R25）。</p>
+<p>コードの微分は次数 +1（cochain）で、合成は通常順 <code>compose A g f h</code> \(=g\circ f\)、Leibniz 則は \(\delta(g\circ f)=\delta g\circ f+(-1)^{|g|}g\circ\delta f\)。HA の chain 次数を負に読み替え、HA の \(f_I\) は符号を変えずに使う。<b>Kerodon Construction 2.5.3.1 とは括弧の順序が逆</b>で、同じ Hom 複体の微分で比べると \(f_I^{\mathrm{Kerodon}}=(-1)^{|I|-2}f_I^{\mathrm{HA}}\) となる。原典の式をそのまま混在させないこと。詳細は <a href="../../../SerrePositivity/InfinityCategories/README.md">InfinityCategories/README.md</a>（実質的に dg nerve の規約文書）。</p>
 </div>
 
 <h3>主な性質</h3>
@@ -121,28 +121,7 @@ abbrev perfectInfinityCategory : SSet.{u + 1} := perfectInfinitySubcomplex S</co
 
 <!-- ============================================================ -->
 <h2>7. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R23　Derived/ にある ∞ 圏の一般論</p>
-<p>Derived/ にも、dg と無関係な一般論が置かれている。</p>
-<ul>
-  <li>局所化の判定：<code>IsLocalization.precomposition_isFullyFaithful</code>、<code>isLocalization_of_fullyFaithful_extensions</code>、<code>isLocalization_of_rightKan_local_limits</code>、変形による判定（Derived/LocalizationPrecompositionCriterion、LocalizationRightKanCriterion、DeformationLocalization）。局所化の定義は F1B/Localization にある（第 4 章）。</li>
-  <li>極限の存在の移送：<code>hasLimit_iff_of_functorIso</code>（Derived/LimitDiagramIso）、<code>hasLimit_of_leftCofinal</code>（Derived/CofinalLimitExistence）。<b>双対の <code>hasColimit_iff_of_functorIso</code> は Stable/ColimitDiagramIso にあり</b>、一組の双対な補題が二つのディレクトリに分かれている。</li>
-</ul>
-<p>R22（Stable/ の一般論）と同じ型で、まとめて Core（極限）と F1B（局所化）に移すのが自然。</p>
-</div>
-<div class="box refactor">
-<p class="label">R24　DGNerve と Derived の循環</p>
-<p>DGNerve/SemifreeLimits が Derived/SemifreeClosure・SemifreeSubcategory を import していて、ディレクトリ単位で DGNerve ↔ Derived が循環している（第 0 章の行列）。semifree 複体についての結果は Derived 側（あるいは DifferentialGraded 側）に置くべきもの。</p>
-</div>
-<div class="box refactor">
-<p class="label">R25　README の位置と範囲</p>
-<p><code>InfinityCategories/README.md</code> は、題が「dg nerve の規約と計算」で、中身も dg nerve の符号の規約と N0〜N6 の記録である。∞ 圏の層全体の README の位置にあるのに、内容は DGNerve/ のもの。DGNerve/README.md に移し、最上位の README は第 0 章のような全体地図（層、入口ファイル、監査スクリプト）にするのがよい。一方で符号の規約そのものは非常に有用で、この章の囲みはそこから要約した。</p>
-</div>
-<div class="box refactor">
-<p class="label">R8（関連）　Derived 内の準重複</p>
-<p>重複調査では、Derived/DGCommaAug*（53 ファイル）と DGModuleAugmentation*（76 ファイル）の間に、類似度が最大 0.96 の組が 17 組あった。また、未追跡の <code>Derived/DGKernelDerivedMapInvertible.lean</code> は既存のファイルと完全に一致していた（並行セッションの作業中と見られる）。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

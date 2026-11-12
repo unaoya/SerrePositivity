@@ -164,19 +164,7 @@ lemma cocartesianStraighteningCoherentMap_finite_isQCatEquivalence (n : ℕ) :
 
 <!-- ============================================================ -->
 <h2>7. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R6（確定）　fibration の基本を一か所に</p>
-<p>cocartesian 辺の定義は F1/CartesianEdge、fibration の定義は F1/CartesianFibration、外側ホーンの相対版の補題は Core/Cocartesian*（14 ファイル）と Core/RelativeOuterHorn* に分かれている。これらは一つの層（たとえば <code>Fibrations/</code>）にまとめるのが自然である。第 1 章の R7（anodyne・fibration の定義の置き場所）と一緒に行える。</p>
-</div>
-<div class="box refactor">
-<p class="label">R11　休止中の Cat<sub>∞</sub> 値 straightening を分ける</p>
-<p>F1/Cocartesian*（3.7 万行）は主経路に使われていないが、F1 の集約ファイルからビルドされている。<code>F1/Cocartesian/</code> のようなサブディレクトリに移し、集約からも外して独立の入口にすれば、F1 の主経路が読みやすくなり、ビルドも軽くなる。休止中の L2・L6 を Auxiliary として凍結した前例と同じ扱いになる。</p>
-</div>
-<div class="box refactor">
-<p class="label">R12　F1 の平らなディレクトリ</p>
-<p>F1 は 2,314 ファイルが一つのディレクトリに並んでいる。§6 の表の役割ごとに、<code>Transport/</code>、<code>StraighteningLeft/</code>、<code>Coherent/</code>、<code>Weighted/</code> などのサブディレクトリに分けると、§4 の主経路がディレクトリ構造から読み取れるようになる。R8（F1/F1B の複製の解消）を先に行ってから取りかかるのがよい。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

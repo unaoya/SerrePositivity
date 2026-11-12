@@ -58,22 +58,25 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 <tr><td>Thm 10.11</td><td>整代数の \(S_{\mathrm{perfd}}\) は離散で perfectoid</td><td class="todo">未（界面）</td><td>E3 の <code>integral</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/Interface.lean">Interface:655</a>）。環の帰結 <code>exists_perfectoidization_of_integral</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean">PerfectoidizationInterface/IntegralExistence:19</a>）、有限代数版 <code>exists_perfectoidization_of_finite</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralExistence.lean">IntegralExistence:477</a>）は界面から証明済み</td></tr>
 <tr><td>Lemma 10.12</td><td>有限表示有限射の層別</td><td class="todo">未</td><td>A8</td></tr>
 </table></div><h2 id="items-10">原典の項目一覧（§10）</h2>
-<p>§10 almost purity の全項目。判定：<b>済</b>＝必要で形式化済み（原典と同じか、それ以上の一般性）、<b>一部</b>＝必要で特殊形だけ形式化済み、<b>未</b>＝必要で未形式化（「界面」は E3 の欄として引用しているもの）、<b>不要</b>＝E3 に不要（迂回済みを含む）。必要性は E3 を消す原典の経路（A0〜A9）で判定し、Lean の所在はモジュール名、括弧内は W2 後のディレクトリ。</p>
+<!-- items:begin（build_items.py が research/bs-coverage/items.csv から生成。手で直さない） -->
+<p>§10 の全項目。全 13 項目、うち目標に要るもの 7（済 3、特別な場合 2、部品 2）。判定：<b>必要性</b>は今の目標（E3 を原典の経路 A0〜A9 で消す）に要るか（<b>一部必要</b>＝項目の一部だけ要る）。<b>状況</b>は <b>済</b>＝本体に原典どおり（sorry なし）、<b>特別な場合</b>＝本体に特別な場合だけ、<b>部品</b>＝証明の主な部品は本体で主張の組み立ては未、<b>drafts</b>＝drafts に型だけ、<b>界面</b>＝E3 の欄として今は引用、<b>設計のみ</b>＝設計書だけ、<b>なし</b>＝どこにもない。Lean の所在は <code>SerrePositivity/BhattScholze/</code> からのパスと行（drafts は <code>formalization-plans/bhatt-scholze/drafts/</code> から）。</p>
 <div class="table-wrap"><table>
-<tr><th>項目</th><th>内容</th><th>判定</th><th>Lean（W2 後）・備考</th></tr>
-<tr><td>Def 10.1</td><td>J-almost zero</td><td class="ok">済</td><td><code>PerfectoidAlmost</code>（Almost）</td></tr>
-<tr><td>Prop 10.2</td><td>almost zero の拡大閉性</td><td class="ok">済</td><td><code>perfectoidIdeal_isAlmostZero_extension</code>（Almost）。圏同値全体は不要</td></tr>
-<tr><td>Lemma 10.3</td><td>J_perfd の冪等性</td><td class="ok">済</td><td><code>lemma103_perfectoidTensor</code>（Almost）</td></tr>
-<tr><td>Prop 10.4</td><td>非有界複体の almost zero</td><td class="part">一部</td><td>B5 で使う部分のみ <code>PerfectoidAlmostExtension</code>（Almost）。A8 で要る範囲を決める</td></tr>
-<tr><td>Lemma 10.5</td><td>連結性の判定</td><td class="todo">未</td><td>A8</td></tr>
-<tr><td>Def 10.6、Prop 10.8</td><td>almost Galois、And18b</td><td class="no">不要</td><td>A8 を四文献で進める場合</td></tr>
-<tr><td>Rem 10.7</td><td>mod pⁿ の冪等性</td><td class="ok">済</td><td><code>PerfectoidIdealIdempotent</code>（Almost）</td></tr>
-<tr><td>Thm 10.9</td><td>almost purity</td><td class="todo">未</td><td>almost-connective の部分だけ（A8）。有限射影性の部分は不要</td></tr>
-<tr><td>Rem 10.10</td><td>注意</td><td class="no">不要</td><td></td></tr>
-<tr><td>Thm 10.11</td><td>整代数の perfectoid 化は離散で perfectoid</td><td class="todo">未（界面）</td><td>integral（A8）。有限代数の環版は界面から証明済み</td></tr>
-<tr><td>Lemma 10.12</td><td>有限表示有限射の層別</td><td class="todo">未</td><td>A8</td></tr>
-<tr><td>Rem 10.13</td><td>可換環論への応用</td><td class="no">不要</td><td></td></tr>
+<tr><th>項目</th><th>内容</th><th>必要性</th><th>状況</th><th>Lean・備考</th></tr>
+<tr><td>Def 10.1</td><td>J-almost zero</td><td>必要</td><td class="ok">済</td><td><code>perfectoidKernel</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostConnectivity.lean">Almost/AlmostConnectivity:38</a>）、<code>IsJAlmostZero</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostConnectivity.lean">Almost/AlmostConnectivity:86</a>）。任意の J について J_perfd と J-almost 零（BS-W13）</td></tr>
+<tr><td>Prop 10.2</td><td>almost zero の拡大閉性</td><td class="no">不要</td><td class="part">特別な場合</td><td><code>perfectoidIdeal_isAlmostZero_extension</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean">Almost/PerfectoidAlmost:470</a>）。本体は単項 J=(g) の perfectoid 核で、導来完備加群の短完全拡大での閉性のみ（sorry 0）。核・余核での閉性と almost 圏 (R/J)_perfd 加群との同値は未。使用先は CLMST</td></tr>
+<tr><td>Lemma 10.3</td><td>J_perfd の冪等性</td><td>必要</td><td class="part">特別な場合</td><td><code>perfectoidIdeal_lemma103</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/Lemma103.lean">Almost/Lemma103:401</a>）、<code>integralPerfectoid_completedQuotientTensorIdeal_isZero</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/Lemma103.lean">Almost/Lemma103:87</a>）、<code>perfectoidIdeal_completedQuotientMul_isIso</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/Lemma103.lean">Almost/Lemma103:445</a>）。三主張とも本体（sorry 0）だが単項 J=(g) の核に限る。一般の perfectoid 商 R→R/K に対する混合積消滅・自己積（integralPerfectoid_*）は一般形。A8-1 の非有界 Prop 10.4 で一般 J 版が必要</td></tr>
+<tr><td>Prop 10.4</td><td>非有界複体の almost zero</td><td>必要</td><td class="part">特別な場合</td><td><code>isAlmostZero_iff_completedTensor_isZero</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean">Almost/AlmostTensorForward:394</a>）、<code>isAlmostZero_of_completedTensor_isZero</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostTensor.lean">Almost/AlmostTensor:191</a>）。一般の J で必要な同値（almost 零 ⇔ J_perfd との完備テンソルが 0）は証明済み。後半の圏同値は作らない（D66）</td></tr>
+<tr><td>Lemma 10.5</td><td>連結性の判定</td><td>必要</td><td class="ok">済</td><td><code>connective_iff_almost</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean">Almost/AlmostTensorForward:480</a>）、<code>isAlmostConnective_iff_completedTensor_connective</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostTensorForward.lean">Almost/AlmostTensorForward:471</a>）。原典どおりの主張（BS-W13）</td></tr>
+<tr><td>Def 10.6</td><td>J-almost G-Galois 拡大</td><td class="no">不要</td><td class="no">—</td><td>J-almost G-Galois 拡大。Thm 10.9 の (3)(4) を省くため形式化しない</td></tr>
+<tr><td>Rem 10.7</td><td>mod pⁿ の冪等性</td><td class="no">不要</td><td class="part">特別な場合</td><td><code>perfectoidIdealMod_idempotent</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/PerfectoidAlmost.lean">Almost/PerfectoidAlmost:343</a>）。本体の perfectoidIdealMod_idempotent（単項 J=(g) の perfectoid 化の核の mod pⁿ 像が冪等）は、原典 Rem 10.7 の一文「J_perfd,n は R/pⁿ の冪等イデアル」の J=(g) の場合（調整役が原典の全文で確認、11-07。前の「ずれの疑い」は誤り）。使用先は CLMST。Galois 条件の mod pⁿ 版の部分は E3 に不要</td></tr>
+<tr><td>Prop 10.8</td><td>André の命題（And18b 1.9.1）</td><td class="no">不要</td><td class="no">—</td><td>André の引用命題。Thm 10.9 の (3)(4) でのみ使われ、設計で省略</td></tr>
+<tr><td>Thm 10.9</td><td>almost purity</td><td>一部必要</td><td class="part">部品</td><td><code>isAlmostZero_iff_forall_gen</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/AlmostGenerators.lean">Almost/AlmostGenerators:155</a>）、<code>trivialCoverComparison_localization_iso</code>（<a href="../../../SerrePositivity/BhattScholze/Almost/FiniteEtaleComparison.lean">Almost/FiniteEtaleComparison:156</a>）、<code>integralClosureCompletion_isModuleComplete</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralClosureCompletion.lean">Perfectoidization/Derived/IntegralClosureCompletion:232</a>）。主イデアルへの帰着、分裂比較環、整閉包の完備化（BS-W13）。組み立ては A6・A7 待ち</td></tr>
+<tr><td>Rem 10.10</td><td>注意</td><td class="no">不要</td><td class="no">—</td><td>almost purity の新証明についての注意。形式化対象外</td></tr>
+<tr><td>Thm 10.11</td><td>整代数の perfectoid 化は離散で perfectoid</td><td>必要</td><td class="part">部品</td><td><code>integral_isFilteredColimit_finitePresentation</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralApproximation.lean">Perfectoidization/Derived/IntegralApproximation:275</a>）、<code>isIntegralPerfectoid_completedFilteredColimit</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/PerfectoidFilteredColimit.lean">Perfectoidization/Derived/PerfectoidFilteredColimit:98</a>）、<code>exists_finitePresentation_approximation_fixedLocalization</code>（<a href="../../../SerrePositivity/BhattScholze/Perfectoidization/Derived/IntegralClosureApproximation.lean">Perfectoidization/Derived/IntegralClosureApproximation:41</a>）。filtered 余極限への帰着、有限表示近似、perfectoid の余極限の完備化（BS-W13）。離散性の本体は A6・A7 待ち。E3 の欄は引き続き Inputs</td></tr>
+<tr><td>Lemma 10.12</td><td>有限表示有限射の層別</td><td>必要</td><td class="ok">済</td><td><code>exists_finiteEtaleStratification</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/EtaleStratification/Stratification.lean">CommutativeAlgebra/EtaleStratification/Stratification:374</a>）、<code>exists_noetherian_finiteEtaleStratification</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/EtaleStratification/Stratification.lean">CommutativeAlgebra/EtaleStratification/Stratification:331</a>）。原典どおり Z_(p) 代数の有限表示有限射（W9-III-07）。UniversalHomeomorphism・EtaleStratification とも sorry 0 を grep で確認</td></tr>
+<tr><td>Rem 10.13</td><td>可換環論への応用</td><td class="no">不要</td><td class="no">—</td><td>Thm 10.9 から [HM17] などを再証明する注意。形式化対象外</td></tr>
 </table></div>
+<!-- items:end -->
 
 <h2 id="diff-10">原典との差の評価</h2>
 <p>この章で原典と経路が違う箇所ごとに、それぞれの証明の利点・欠点を比べる。<b>方針</b>：Lean の経路が原典の証明の簡略化になっていればそれを保ち、原典の方が簡単なら原典に揃える。D 番号は全章で通す。</p>
@@ -84,11 +87,7 @@ td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 </table></div>
 
 <h2>リファクタの候補</h2>
-<p>2026-10-25 の調査（コードの読解と、import グラフからの到達性の計算）による。「root から到達しない」は、既定のビルドでは一度もコンパイルされず、監査スクリプトだけが読むことを意味する。</p>
-<div class="box refactor">
-<p class="label">BR24　almost の言葉で述べ直す</p>
-<p>Almost/ の supported quotient の系列（<code>PerfectoidizationSupportedQuotientKernel</code>:50,77,98、<code>…Linear</code>:30、<code>PerfectoidizationImageComparison</code>:30–55）は、「\(J_{\mathrm{perfd}}\) の全元が x を消す」を毎回手で書いている。共通側の <code>IsAlmostZero</code>・<code>IsAlmostIso</code>（CommutativeAlgebra/Almost/Zero:25、Morphism:34）で述べ直せる。CLMST 側の利用も変わるので規模は中。<code>lemma103_perfectoidTensor</code> の宣言 docstring は一般の perfectoid テンソルを「Lemma 10.3」と呼んでいるが、原典ではこれは Lemma 10.3 の証明中の主張（module docstring は正しい）。<code>Almost/PerfectoidAlmost</code>（17 行）は集約だけのファイル。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

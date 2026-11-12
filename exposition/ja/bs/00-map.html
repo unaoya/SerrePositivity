@@ -72,17 +72,31 @@
 <p>原典のコホモロジー（§4〜§6）と Construction 7.6 は一切使っていない。証明済みの部分は「環の圏での普遍性」で閉じていて、導来対象 \(S_{\mathrm{perfd}}\) はまだ一度も構成されていない。</p>
 
 <h2>4. 原典の節と形式化の状況</h2>
+<!-- sections:begin（build_items.py が research/bs-coverage/items.csv から生成。手で直さない） -->
+<p>原典の節ごとの項目数と、目標（E3 を消す）に要る項目の状況。状況の欄の意味は各章の「原典の項目一覧」と同じ。§1 は §2 以降の要約、§9 と §11〜§18 は今の目標の外で、章を置いていない。</p>
 <div class="table-wrap"><table>
-<tr><th>節</th><th>内容</th><th>状況</th><th>章</th></tr>
-<tr><td>§2</td><td>δ 環</td><td>§2.1〜§2.4 は一般のテンソル積と Ex 2.21 を除いて済み。pd 包（Lemma 2.36・Cor 2.39）は特殊形のみ、Lemma 2.38・§2.6 は未</td><td>2</td></tr>
-<tr><td>§3</td><td>prism、Thm 3.10、Prop 3.13</td><td>Thm 3.10・Lemma 3.5・3.9 済み。Prop 3.13 は向き付きの特殊形のみ</td><td>3</td></tr>
-<tr><td>§4</td><td>prismatic site、Lemma 4.8、Thm 4.11 の定式化</td><td>未形式化（Lemma 4.8 は有界な標的の形で済、André の下）</td><td>4</td></tr>
-<tr><td>§5・§6</td><td>結晶比較、HT 比較</td><td>未形式化</td><td>5</td></tr>
-<tr><td>§7</td><td>Cor 7.3、Thm 7.4、Construction 7.6、Thm 7.14</td><td>Cor 7.3・Thm 7.4・Thm 7.14 済み（別経路）。Construction 7.6 は未</td><td>7</td></tr>
-<tr><td>§8</td><td>Def 8.2〜Cor 8.14</td><td>Prop 8.13 環版のみ。他は E3 の欄として引用</td><td>8</td></tr>
-<tr><td>§10</td><td>Lemma 10.3、Thm 10.9、Thm 10.11</td><td>Lemma 10.3・Remark 10.7 済み。Thm 10.11 は E3 の integral 欄</td><td>10</td></tr>
-<tr><td>§9、§11〜§18</td><td>étale 比較、Nygaard、q-de Rham ほか</td><td>主定理に不要、対象外</td><td>—</td></tr>
+<tr><th>節</th><th>題</th><th>項目</th><th>要る</th><th>済</th><th>特別な場合</th><th>部品</th><th>drafts</th><th>界面</th><th>設計のみ</th><th>なし</th><th>章</th></tr>
+<tr><td>§1</td><td>序</td><td class="num">18</td><td class="num">11</td><td class="num">2</td><td class="num">6</td><td class="num"></td><td class="num">2</td><td class="num">1</td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§2</td><td>δ 環</td><td class="num">44</td><td class="num">33</td><td class="num">24</td><td class="num">9</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="02-delta.html#items-02">2</a></td></tr>
+<tr><td>§3</td><td>prism</td><td class="num">14</td><td class="num">12</td><td class="num">2</td><td class="num">10</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="03-prism.html#items-03">3</a></td></tr>
+<tr><td>§4</td><td>prismatic site と HT 比較の定式化</td><td class="num">22</td><td class="num">14</td><td class="num"></td><td class="num">5</td><td class="num">3</td><td class="num">4</td><td class="num"></td><td class="num">2</td><td class="num"></td><td><a href="04-site.html#items-04">4</a></td></tr>
+<tr><td>§5</td><td>標数 p の場合：HT 比較と結晶比較</td><td class="num">5</td><td class="num">4</td><td class="num"></td><td class="num">2</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="05-hodge-tate.html#items-05">5</a></td></tr>
+<tr><td>§6</td><td>混標数の HT 比較</td><td class="num">4</td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="05-hodge-tate.html#items-05">5</a></td></tr>
+<tr><td>§7</td><td>semiperfectoid 環と混標数の perfection</td><td class="num">15</td><td class="num">9</td><td class="num">3</td><td class="num">1</td><td class="num">3</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="07-semiperfectoid.html#items-07">7</a></td></tr>
+<tr><td>§8</td><td>混標数の perfection：一般の場合</td><td class="num">14</td><td class="num">11</td><td class="num"></td><td class="num">3</td><td class="num">1</td><td class="num">2</td><td class="num">5</td><td class="num"></td><td class="num"></td><td><a href="08-perfection.html#items-08">8</a></td></tr>
+<tr><td>§9</td><td>étale 比較定理</td><td class="num">7</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§10</td><td>almost purity</td><td class="num">13</td><td class="num">7</td><td class="num">3</td><td class="num">2</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td><a href="10-almost.html#items-10">10</a></td></tr>
+<tr><td>§11</td><td>perfectoid 環の étale コホモロジー次元</td><td class="num">1</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§12</td><td>qrsp の Nygaard filtration</td><td class="num">11</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§13</td><td>[BMS19] との比較</td><td class="num">2</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§14</td><td>p 進 Tate 捻りと K 理論の奇数次消滅予想</td><td class="num">5</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§15</td><td>Nygaard filtration：相対の場合</td><td class="num">7</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§16</td><td>q 結晶コホモロジーと q de Rham コホモロジー</td><td class="num">22</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§17</td><td>AΩ との比較</td><td class="num">4</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td>§18</td><td>比較同型の一意性の判定法</td><td class="num">3</td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td class="num"></td><td>—</td></tr>
+<tr><td colspan="2"><b>計</b></td><td class="num"><b>211</b></td><td class="num"><b>105</b></td><td class="num"><b>34</b></td><td class="num"><b>38</b></td><td class="num"><b>15</b></td><td class="num"><b>10</b></td><td class="num"><b>6</b></td><td class="num"><b>2</b></td><td class="num"><b>0</b></td><td></td></tr>
 </table></div>
+<!-- sections:end -->
 
 <h2>5. E3 を消すための最小部分集合 A0〜A9</h2>
 <p>BS-0 調査（<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-stage2.md">bhatt-scholze-stage2.md</a> §3）が原典の証明から切り出した依存順の単位。後段を前段へ逆流させない。合計の計画幅は約 35〜85 人週で、A0〜A3 の不確実性が最も大きい。</p>
@@ -118,32 +132,7 @@
 <p>監査は <code>scripts/audit_bhatt_scholze*.lean</code>（本体・b4・b5・prop813・arc_excision・andre_conditional・refactoring）と <code>scripts/audit_clmst*.lean</code>。実行は <code>lake env lean scripts/&lt;name&gt;.lean</code>。</p>
 
 <h2>7. リファクタの候補</h2>
-<div class="box refactor">
-<p class="label">BR1　直下 618 ファイルの平置き</p>
-<p>（W1 前の記録）主題（δ 環の一般論、prism、根付き拡大、perfectoid 化の普遍性）で分かれていなかった。W1（主題別）・W2（原典の節ごと）・W3・W4 で上の表の形にした。<code>Delta/</code>、<code>Prism/</code>、<code>RootedExtension/</code>、<code>Perfectoidization/</code> のようなサブディレクトリに分ける案がある。外から import されるモジュール（<code>EInfinity/Perfectoidization/</code>、<code>CommutativeAlgebra/Perfectoidization.lean</code>、<code>CLMST/</code>、<code>Inputs/</code>）は公開名を保つ必要があり、<code>scripts/move_module.py</code> を使う。モジュール移動なので、どの章でどこを動かすかを決めてから着手前に確認する。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR2　普遍性の手書き展開の重複（Q10）</p>
-<p><code>RootedKernelSurjectivity</code>・<code>RootedPresentationSurjectivity</code>・<code>RootedIdealSurjectivity</code> の三箇所が、「perfectoid 化の始域を環同型で取り替えても perfectoid 化」を毎回 20 行ほどで手書きしている。同じ主張は共通側に <code>IsPerfectoidization.precomp_ringEquiv</code>（<a href="../../../SerrePositivity/CommutativeAlgebra/PerfectoidizationFunctor.lean">CommutativeAlgebra/PerfectoidizationFunctor.lean</a>、10-17 から存在）として既にあり、三ファイルから import 閉包で見えることも確かめた。<a href="../../../formalization-plans/bhatt-scholze/bhatt-scholze-refactoring.md">リファクタ計画</a> §13 では「共通側に新設する候補」とされていたが、新設は不要で、適用だけで済む。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR3　リファクタ監査 838 行の失敗</p>
-<p><code>scripts/audit_bhatt_scholze_refactoring.lean:838</code> の <code>example</code> が、局所記法 <code>ψ</code> の中の <code>Ideal.Quotient.mk I</code> で環 instance の不一致（<code>AddMonoidAlgebra.ring</code> 経由と期待される <code>RelativeFreeDeltaRing</code> 上の semiring）を起こす。同じ記法が定理のソース側では通る。結論の型の前に <code>let := deltaDivisionSourceEvaluationAlgebra E r</code> があると、<code>I</code> の台が <code>abbrev</code> を開いた <code>MvPolynomial (σ × ℕ) P</code> として推論されるためと見られる。一時ファイルでの試験では、<code>Ideal.Quotient.mk (R := L) I</code> と環を明示すると監査全体が通った（<code>let</code>→<code>letI</code> の変更や module 化では直らない）。</p>
-</div>
-
-<div class="box refactor">
-<p class="label">BR8　どこからも使われないモジュール 173 本</p>
-<p>BS の 1008 本のうち 173 本は、BS の外（CLMST・CommutativeAlgebra・KST・EInfinity）からも、入口（<code>Inputs/</code>）からも、root の集約からも import されない（監査だけが読む）。多いのは <code>Semiperfectoid/RootedExtension/Division</code>（38、W4 で <code>Andre/RootedExtension/</code> へ）、<code>…/DeltaRoot</code>（37）、<code>Delta/DividedPower</code>（24）、<code>Delta/Free</code>・<code>Free/Finite</code>（20）、<code>Prism</code>（19）。途中で使わなくなった経路の残りと見られる。BS-W2 では動かさず、削除するかを後で判断する（一覧は W2 の作業ツリーから再計算する）。主定理の経路に乗るのは 455 本、Rem 7.15 の照合が 265 本、root の集約だけが import するものが 115 本（W1 のスタブ 32 本を含む）。</p>
-</div>
-
-<div class="box refactor">
-<p class="label">BR25　docstring の工程ラベルと書式</p>
-<p>docstring に数学の説明がなく、当時の工程ラベルだけが書かれているものが多い。共通基盤への要求番号（G1・G4・G7・G9・G10）を前提にした宣言 docstring が 30 ファイル・48 行（例：「G9-4の比較で…」）、B3・B4-x を先頭に付けたモジュール見出しが 28 ファイル（例：「B4-5：根付き…」）、A1・A1-b（André の旧工程）への言及が 99 行、F4〜F7・N3・B-I もある。番号の意味は archive の記録にしか書かれていない。概要／方針／規約／使われ方の構造を持たない一行だけのモジュール docstring が 168 ファイル、英語と日本語の一行 docstring の混在もある。ラベルと数学の言葉の対応表を一つ作れば、置き換えは機械的にできる（Codex 向き）。</p>
-</div>
-<div class="box refactor">
-<p class="label">BR26　共通基盤が BS を import している（層の逆転）</p>
-<p><code>CommutativeAlgebra/PerfectoidIdeal</code>、<code>PerfectoidIdealCover</code>、<code>PerfectoidIdealCompatibleRoots</code>、<code>AbsolutelyIntegrallyClosedPerfectoidQuotient</code> の 4 本が、BS のモジュールを（W1 の旧名の転送スタブ経由で）import している。少なくとも新しい名前へ付け替える必要があり、本来はこれらの所在（共通基盤か BS か）を見直すべきもの。CommutativeAlgebra は BS・CLMST 以外の利用先を確かめてから動かす。<code>CommutativeAlgebra/PerfectoidIdealCompatibility</code>（44 行）はどこからも到達しない。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/bs-refactor-audit/box-texts.md">research/bs-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

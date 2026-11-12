@@ -80,3 +80,13 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 3. ⑤a の a が閉じて main に入っている。
 4. ③-a・③-b は段の途中でよい（検証済みの分をコミットしてあれば追従は import の書き換えだけ）。
 凍結の日：夕方までに各レーンが検証済みをコミット → 調整役が main へ → 夜はコミットを控える → 翌朝 B4 の追従。一晩で足りなければ二晩（B2 の実測で判断）。
+
+## 10. 追記（2026-11-12 夕、調整役）：リファクタの台帳から B3 に入るもの
+
+`refactor-ledger.md` で「B3」とした候補を、凍結の一晩の範囲に足す（B2 の全表に含める）。
+- BR26′：共通基盤から BS への新しい逆向きの import 2 本を解消（5 層の静的検査の層違反として）。
+- BR14：`Andre/PowerRootEnvelope/Audit/` の監査 4 本を scripts/ へ（配置案の「保持」を改める）。
+- BR19：`Prism/Residue/PrismaticResidue` を使う側の節へ。
+- BR32：`Delta/DividedPower/` を原典の項目ごとに下位分割、分冪代数の一般部分を CommutativeAlgebra へ（配置案の「Delta は保持」を改める）。
+- BR25・R21：docstring の工程ラベルを原典の番号へ、書式の欠け（文献の属性の付与と同じ回）。
+- BR8：使われないモジュールの調査（削除は保守）。

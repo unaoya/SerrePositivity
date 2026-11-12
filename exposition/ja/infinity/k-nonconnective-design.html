@@ -14,7 +14,7 @@
 <main>
 <nav class="top"><a href="index.html">目次</a> › 設計ノート：非連結 K</nav>
 <h1>非連結 K の設計：関手性をどこに置くか</h1>
-<p class="meta">基準コミット <code>63b823320</code>（2026-10-27）。K-7（K-B3 レーン）の c4 で見つかった問題と、10-27 11:55 の設計変更の整理。このページのパスは <code>SerrePositivity/</code> からの相対パス（∞ 圏の層と KST の両方にまたがるため）。正本は <code>formalization-plans/kst-lanes/L10-nonconnective.md</code>（K-7 計画、v6）と <code>formalization-plans/refactoring-infinity-r2.md</code>（R32・R33）。</p>
+<p class="meta">基準コミット <code>63b823320</code>（2026-10-27）。K-7（K-B3 レーン）の c4 で見つかった問題と、10-27 11:55 の設計変更の整理。このページのパスは <code>SerrePositivity/</code> からの相対パス（∞ 圏の層と KST の両方にまたがるため）。正本は <code>formalization-plans/kst-lanes/L10-nonconnective.md</code>（K-7 計画、v6）と <code>formalization-plans/refactoring-infinity-r2.md</code>。</p>
 
 <!-- ============================================================ -->
 <h2>1. 作りたいもの</h2>
@@ -94,7 +94,7 @@ K^{nc}(\mathcal C)=\operatorname{colim}_r\,\Omega^rK(\Sigma^r\mathcal C)
 <ol>
   <li><b>関手性は ∞ 側で作る</b>：\(\Sigma_\infty\)（Calkin 懸垂）を Ind・compact・Verdier 商の普遍性から ∞ 関手として作り、\(K_\infty\)、\(K^{nc}_\infty=\operatorname{colim}_r\Omega^rK_\infty(\Sigma_\infty^r)\) も ∞ 関手にする。登録するのは \(E:=K^{nc}_\infty\circ\nu\)。合成なので自動的に <code>S ⟶ Sp</code> の射になる。</li>
   <li><b>値は dg 側で計算する</b>：すでに無条件に作ってある dg 側の <code>dgNonconnectiveK A</code>（π の計算、余極限）が、各 A で \(K^{nc}_\infty(\nu A)\) と一致することを<b>対象ごとの比較</b>で示し、dg 側の計算を ∞ 側の値に移す。</li>
-  <li><b>関係のないレーンは継続</b>（K-S•、Sp-2、Sp-3）。c4 に関係する D・D-S・K-B3 の作業は、凍結または診断として保持（R2 計画の R32：反例と剛性定理を主経路の集約から診断用の集約へ移す。R33：凍結候補 41 本の処置）。</li>
+  <li><b>関係のないレーンは継続</b>（K-S•、Sp-2、Sp-3）。c4 に関係する D・D-S・K-B3 の作業は、凍結または診断として保持（扱いは台帳 <code>formalization-plans/refactor-ledger.md</code> の R32・R33）。</li>
 </ol>
 <div class="box">
 <p class="label">役割の線引き</p>
