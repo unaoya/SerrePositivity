@@ -3149,3 +3149,32 @@ a の実測は **3,735 + 64 = 3,799 行**。承認上限は 4,200 行。
 
 登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility` を追加する。
 一覧は六本。共通入口・共通監査は編集していない。
+
+
+## 54. 指定係数比較の順射から元の Schur 商までを接続（実装途中）
+
+`CoinvariantQuotientNaturality`（100 行）を追加した。
+
+- `coinvariantTotalQuotient_naturality_right`：入力を固定した任意の同変な係数射と、指定全複体商の厳密な自然性。
+- `twoColorCoefficientTarget_quotient`：既存の `twoColorComplexInputHomotopyEquiv.hom` を、§53 の具体的な二色表示の図式へ接続。
+- `twoColorCoefficientTarget_schurQuotient`：元の係数優先の順序で、同じ指定係数射と左右の元の arity 商のテンソルに一致すること。
+
+最後の式は左右の `schurArityInputCoinvariantIso` の順射で後合成して検出し、
+`schurArityInputCoinvariantIso_quotient`、braiding の自然性、既存の `tensorμ_braiding` で証明した。
+すべて元の複体の圏の射の等式であり、ホモトピー圏へ弱めていない。
+また `TwoColorTargetCompatibility` に計算上限を変更した理由のコメントを一行追加し、
+linter の指示に従った（64 → 65 行、証明内容は同じ）。
+
+a の実測は **3,799 + 100 + 1 = 3,900 行**。上限は 4,200 行。
+テンソル側の係数射と元の商の式は閉じたが、標準語から誘導表示・軌道直和への始域側と、
+厳密な Hopf 射の標準語上の式、全射の一致・擬同型性への復帰は残っている。
+従って二つの `J ≫ hom = M` 全体の完了を宣言しない。目標は継続中。
+
+対象ビルド成功（`/tmp/bsw16/quotient-naturality-06.log`）。
+別の鍵で七モジュール・80 宣言を監査し、標準三公理のみ
+（`/tmp/bsw16/audit-quotient-naturality.log`）。その後の変更は上記の理由コメントだけで、
+最終ソースと直接の importer のビルドも成功（`/tmp/bsw16/quotient-naturality-07.log`）。
+sorry・追加公理はない。すべて終了を回収し、鍵を返した。
+
+登録待ちに `SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality` を追加する。
+一覧は七本。共通入口・共通監査は変更していない。

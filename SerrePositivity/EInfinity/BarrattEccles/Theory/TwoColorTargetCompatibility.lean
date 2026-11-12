@@ -18,6 +18,7 @@ open SerrePositivity.DifferentialGraded SerrePositivity.TensorPowers
 variable (R : Type u) [CommRing R] (X Y : Complex R) (m n : ℕ)
 
 set_option maxHeartbeats 800000 in
+-- 作用の等式による余不変表示の運搬が、既定の 200000 heartbeats を超えるため。
 /-- 二色の表示同型は、四因子の交換の後の二つの指定商に一致する。 -/
 lemma twoColorTargetSchurIso_quotient :
     coinvariantTotalQuotient

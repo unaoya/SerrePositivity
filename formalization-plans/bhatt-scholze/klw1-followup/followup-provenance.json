@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 57,
+  "combined_body_files": 58,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,7 +23,7 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3799,
+  "a_lines": 3900,
   "a_complete": false,
   "a_stop": null,
   "a_cap": 4200,
@@ -38,11 +38,12 @@
     "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility",
-    "SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility"
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality"
   ],
   "resumed_build_targets": 3,
-  "resumed_audited_declarations": 75,
+  "resumed_audited_declarations": 80,
   "resumed_standard_axioms_only": true,
-  "resumed_build_log": "/tmp/bsw16/target-compatibility-05.log",
-  "resumed_audit_log": "/tmp/bsw16/audit-target-compatibility.log"
+  "resumed_build_log": "/tmp/bsw16/quotient-naturality-07.log",
+  "resumed_audit_log": "/tmp/bsw16/audit-quotient-naturality.log"
 }
