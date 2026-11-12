@@ -1420,3 +1420,26 @@ Mathlib の `LocalizedModule` は、係数加群 A が P 代数である環の�
 | `projectiveTensorChartDiagramIso` | 元の標準開図式のテンソル底変換と、基底変更後の実際の標準開図式との自然同型。 |
 
 今回の自然性は標準開の制限についてのもの。任意の次数付き加群の射に関する自然性と、既存の flat な Čech H 比較との合成は次の束で検証する。R/J の非 flat な H とテンソル積の交換は主張していない。共通アフィン細分、実際の Čech Frobenius、filtered colimit の比較も残る。**停止点 2e ではない。**
+
+
+## 2026-11-12：実際の標準開の flat Čech 比較と加群写像への自然性
+
+対象と直接 importer のビルド成功（4,326 jobs）、別実行の監査は **7,110 宣言・標準三公理のみ**。2 モジュールと入口の import 追加、230 行。前の検証入力 699 の変更は入口の import 追加だけで、新規を含む 701 入力を記録した。ビルド・監査は共有鍵 `--wait 3600` を一回ごとに返して実行した。
+
+標準開図式のテンソル比較を、元の次数を保つ R[X] 線形な加群写像に自然と示した。純テンソルの分数で両経路が同じ分子 f(m)⊗b と同じ分母を持つことを示し、図式全体の四角形へまとめた。これを Čech 複体とコホモロジーへ送り、既存の flat な比較と合成した。
+
+比較先は **基底変更後の B[X] 加群の実際の指定次数の標準開図式の Čech H** であり、旧図式の係数をテンソルしただけの図式からの接続が入った。Noether な元の基底上の有限生成次数付き加群なら、変更先 B の Noether 性を仮定せず、この実際の標準開の Čech H は B 上有限生成と示した。H とテンソル積を交換するところには flat を仮定している。
+
+登録モジュール：`ProjectiveTensorChartNaturality`、`ProjectiveNativeTensorCechBaseChange`。
+
+| 宣言 | 主張 |
+|---|---|
+| `projectiveTensorChartLinearEquiv_map` | 各標準開の実際のテンソル比較は、次数を保つ加群写像と可換。 |
+| `projectiveTensorChartDiagramIso_naturality` | 標準開図式のテンソル比較の自然同型は、次数付き加群の射が誘導する自然変換と可換。 |
+| `projectiveNativeTensorCechIso` | flat なテンソル底変換と、変更後の実際の標準開の Čech H との同型。 |
+| `projectiveNativeTensorCechIso_naturality` | 実際の標準開の Čech flat 比較は、元の次数を保つ加群写像に自然。 |
+| `projectiveNativeTensorCechHomology_finite` | 実際の flat 底変換後の標準開の Čech H は、変更先 B 上有限生成。B の Noether 性は不要。 |
+
+原典 Stacks 30.5.2(2) と 30.19.2 の Hⁱ に対応する **Čech 版**として docstring に明記した。分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しない。非 flat な H とテンソル積の交換は主張しない。
+
+次は R/J の実際の閉厚化との追加の係数表示を検証する。実際の Čech Frobenius、共通アフィン細分、filtered colimit の比較が残り、**停止点 2e ではない**。最終出力の `AugmentedRingCechExact` と利用側の型は変更していない。
