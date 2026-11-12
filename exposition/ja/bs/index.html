@@ -21,7 +21,7 @@
   <li><code>BhattScholze.Inputs.exists_perfectoidizationInterfaceE3</code>（<a href="../../../SerrePositivity/BhattScholze/Inputs/PerfectoidizationInterface.lean">Inputs/PerfectoidizationInterface.lean</a>）：perfectoid 環 \(R\) 上で、導来 perfectoid 化 \(S\mapsto S_{\mathrm{perfd}}\) の性質を束ねた構造 <code>PerfectoidizationInterfaceE3 R p hR</code> が存在する。</li>
   <li>2026-10-25 に E2 レーンが同じ界面を \(E_\infty\) 代数の ∞ 圏 \(\mathrm{CAlg}_R\) で述べ直した（<code>EInfinity.Perfectoidization.PerfectoidizationInterfaceCAlg</code>、そこから <code>toE3</code>）。原典の \(S_{\mathrm{perfd}}\)（Def 8.2）は \(p\) 完備 \(E_\infty\)-\(S\) 代数なので、こちらを構成するのが原典に近い。</li>
 </ul>
-<p>このノートは三つのことを同時に進めるための土台である：(1) 原典を必要な範囲で数学として理解する、(2) 既存コードを読んで原典との対応を記録する、(3) 残りの形式化を Codex に渡せる作業項目に分ける。Lean のコードは Codex が書き、このノートは指示書と検収の根拠になる。</p>
+<p>このノートの目的は二つ：(1) 原典を必要な範囲で数学として理解する、(2) 既存コードを読んで原典との対応を記録する。形式化の計画・作業項目・リファクタの候補は形式化の側（<code>formalization-plans/</code>）で管理し、このノートには書かない（2026-11-12 から）。</p>
 
 <h2>章</h2>
 <p>章の番号は原典の節の番号に合わせる。E3 に必要な項目だけを載せ、形式化済みのものには Lean の所在を付ける。§1 は §2 以降の定義の要約、§9 と §11〜§18 は不要なので章を立てない。</p>
@@ -62,7 +62,7 @@
   <li>原典との差（経路・規約・一般性）は本文では独立した囲みにし、章末の「原典との差の評価」に D 番号で利点・欠点・方針をまとめる。</li>
   <li>章末に「原典の項目一覧」を置く。中身は地図 <code>research/bs-coverage/items.csv</code> から <code>build_items.py</code> で生成し（印 <code>&lt;!-- items:begin --&gt;</code>〜<code>&lt;!-- items:end --&gt;</code> の間）、手で直さない。項目の状態を変えるときは地図を直して生成し直す。<code>00-map.html</code> の節ごとの表も同じ。</li>
   <li>リファクタの候補はノートに書かない。コードの問題に気づいたら、事実（何が・どこに・根拠）を <code>research/</code> にまとめ、形式化の調整役に渡す（2026-11-12 から）。</li>
-  <li>BS 固有の節として「形式化の状況」（証明済み／界面で引用／未着手を宣言名付きで）と「形式化の課題」（Codex へ渡せる粒度の作業項目）を置く。</li>
+  <li>BS 固有の節として「形式化の状況」（証明済み／界面で引用／未着手を宣言名付きで）を置く。作業項目（旧「形式化の課題」）はノートに書かず、形式化の側で管理する（2026-11-12 から）。</li>
   <li>末尾に「この章で押さえること」を置く。</li>
 </ul>
 </main>
