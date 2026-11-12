@@ -1,0 +1,90 @@
+[
+  {
+    "id": "citation-ebddfb8741ecf6adab8c",
+    "original_name": "OrientedPrism.map_ideal_eq",
+    "actual_name": "SerrePositivity.BhattScholze.OrientedPrism.Hom.map_ideal_eq",
+    "original_stated_line": 255,
+    "compiler_range": [
+      254,
+      256
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-34a5b88b93f1385efe90",
+    "original_name": "OrientedPrism.existsUnique_generator_unit",
+    "actual_name": "SerrePositivity.BhattScholze.OrientedPrism.Hom.existsUnique_generator_unit",
+    "original_stated_line": 40,
+    "compiler_range": [
+      39,
+      50
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-660f9edb84248cfcc752",
+    "original_name": "OrientedPrism.idealBaseChangeEquiv",
+    "actual_name": "SerrePositivity.BhattScholze.OrientedPrism.Hom.idealBaseChangeEquiv",
+    "original_stated_line": 183,
+    "compiler_range": [
+      181,
+      187
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-3dc0dc61014c5134ccef",
+    "original_name": "DeltaStructure.existsUnique_deltaPDCompletionStructure",
+    "actual_name": "SerrePositivity.BhattScholze.existsUnique_deltaPDCompletionStructure",
+    "original_stated_line": 460,
+    "compiler_range": [
+      459,
+      491
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-1e03f440323c2684f60b",
+    "original_name": "DeltaStructure.deltaPDCompletionStructure",
+    "actual_name": "SerrePositivity.BhattScholze.deltaPDCompletionStructure",
+    "original_stated_line": 494,
+    "compiler_range": [
+      493,
+      497
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-215fcf2c625c7598d88e",
+    "original_name": "DeltaStructure.existsUnique_deltaPerfectionHom",
+    "actual_name": "SerrePositivity.BhattScholze.existsUnique_deltaPerfectionHom",
+    "original_stated_line": 192,
+    "compiler_range": [
+      191,
+      225
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-95936e95fd18aa04f158",
+    "original_name": "DeltaStructure.deltaPerfection_isPerfect",
+    "actual_name": "SerrePositivity.BhattScholze.deltaPerfection_isPerfect",
+    "original_stated_line": 131,
+    "compiler_range": [
+      130,
+      134
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  },
+  {
+    "id": "citation-a3d531763bba418eded6",
+    "original_name": "DeltaStructure.perfectDeltaWittRecoveryEquiv",
+    "actual_name": "SerrePositivity.BhattScholze.perfectDeltaWittRecoveryEquiv",
+    "original_stated_line": 419,
+    "compiler_range": [
+      418,
+      422
+    ],
+    "reason": "Current owning-file compiler declaration range contains the stated source line; fully qualified declaration and type also confirmed by Lean"
+  }
+]
