@@ -1778,3 +1778,21 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.C
 ```
 
 次はホモトピーの図式方向の両立と、元の全単体 Hom／切断比較への接続である。既存 KST の `ChainHomotopySquare` と `MooreHomotopyNaturality.moorePInftyHomotopy_naturality` が逆順ホモトピーの自然性にも使えることを確認したが、その自然性の証明は今回完了済みとは数えない。native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も残る。停止点2は未完、残枠2,523行。約7,900行で実測と残量を報告する。
+
+## 55. 3b-2 続行：指定逆順 EZ ホモトピーの自然性
+
+コード `1934ab94f`、新規1本79行。累計 **120本7,556行**。
+
+`DiagramComparison.ShuffleAWHomotopyNaturality` で、Moore 収縮への前合成（包含・shuffle）と後合成（AW・射影）の自然性を証明した。既存 KST の Moore 収縮の自然性と `ChainHomotopySquare` の合成則を完全修飾で参照し、実際の `normalizedShuffleAWHomotopy` の両入力の任意の射への自然性を、各次数のホモトピー成分の等式として証明した。第一のまとまりの図式方向の両立である。
+
+最終合成の自動推論が200,000 heartbeatsに達した箇所は、射と中間の四角形を明示して分割し解消した。制限値は変更していない。
+
+依存対象の鍵付きビルド **1,852 jobs**、個別検査、新規対象の鍵付きビルド **1,879 jobs**、累計120本 **1,322宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-dependencies-53.log`・`/private/tmp/isw2-g10-build-54.log`、監査 `/private/tmp/AuditISW2G10HundredTwenty.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredtwenty-modules.txt`。鍵は `--wait 3600`、一枚の整理券、各回1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ShuffleAWHomotopyNaturality
+```
+
+次はこの自然性を一般係数・負次数延長へ運び、図式の重みの比較へつなぐ。全単体 Hom／切断比較、native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,444行。約7,900行で実測と残量を報告する。
