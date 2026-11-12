@@ -201,6 +201,12 @@ class NamespaceTests(unittest.TestCase):
                 self.assertEqual(issues, [])
                 self.assertEqual(rendered, text.encode())
 
+    def test_published_partial_namespace_policies_keep_actual_namespaces(self):
+        plan = json.loads((Path(__file__).parent / "targets/kl-namespace-map.json").read_text())
+        for name in ("SerrePositivity.SimplicialModel", "SerrePositivity.HomotopyFunctionComplex"):
+            self.assertEqual(plan["opens"][name], name)
+        self.assertIsNone(plan["module_opens"]["SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition"]["SerrePositivity.KST.Comparison"])
+
     def test_module_open_policy_keeps_other_consumers_and_qualifies_retained_names(self):
         text = "open Old\n#check retained\n#check moved\n"
         plan = Migration({"rows": [{"module": "Owner", "old": "Old.moved", "new": "New.moved"}],
@@ -495,6 +501,33 @@ end Old
             self.assertEqual(result.returncode, 2)
             self.assertIn("setup module mismatch", result.stderr)
             self.assertFalse((root / "bad.json").exists())
+
+    def test_keep_partial_namespace_when_destination_module_has_another_name(self):
+        lean = os.environ["KLW1_TEST_LEAN"]
+        helper = Path(__file__).with_name("klw1_collect_refs.lean").resolve()
+        with TemporaryDirectory() as directory:
+            root = Path(directory)
+            env = dict(os.environ, LEAN_PATH=directory + os.pathsep + os.environ.get("LEAN_PATH", ""))
+            (root / "Base.lean").write_text("namespace Shared\ndef retained : Nat := 2\nend Shared\n")
+            (root / "Original.lean").write_text("import Base\nnamespace Shared\ndef moved : Nat := 1\nend Shared\nnamespace Removed\ndef extra : Nat := 4\nend Removed\n")
+            for name in ("Base", "Original"):
+                subprocess.run([lean, "-o", name + ".olean", name + ".lean"], cwd=root, env=env, check=True)
+            text = "import Original\nopen Shared Removed\ndef result := moved + retained + extra\nexample : result = 7 := rfl\n"
+            (root / "Uses.lean").write_text(text)
+            subprocess.run([lean, "--run", str(helper), "Uses", "Uses.lean", "refs.json"], cwd=root, env=env, check=True)
+            data = checked_capture(root, "Uses.lean", root / "refs.json")
+            plan = Migration({"modules": {"Original": "MovedLayout"}, "rows": [{"module": "Original", "old": "Shared.moved", "new": "New.Actual.moved"}, {"module": "Original", "old": "Removed.extra", "new": "New.Actual.extra"}], "namespaces": {"Original": {"Shared": "New.Actual"}}, "opens": {"Shared": "Shared", "Removed": "Removed"}, "module_opens": {"Uses": {"Removed": None}}})
+            rendered, issues = rewrite(data, plan)
+            self.assertEqual(issues, [])
+            self.assertIn(b"open Shared", rendered)
+            self.assertIn(b"_root_.New.Actual.moved + retained", rendered)
+            self.assertNotIn(b"open _root_.MovedLayout", rendered)
+            self.assertNotIn(b"open Shared Removed", rendered)
+            self.assertIn(b"_root_.New.Actual.extra", rendered)
+            (root / "MovedLayout.lean").write_text("import Base\nnamespace New.Actual\ndef moved : Nat := 1\ndef extra : Nat := 4\nend New.Actual\n")
+            subprocess.run([lean, "-o", "MovedLayout.olean", "MovedLayout.lean"], cwd=root, env=env, check=True)
+            (root / "After.lean").write_bytes(rendered)
+            subprocess.run([lean, "After.lean"], cwd=root, env=env, check=True)
 
     def test_detached_method_resolves_in_importing_module(self):
         lean = os.environ["KLW1_TEST_LEAN"]

@@ -683,3 +683,23 @@ docstring の項目 Tag 追記は 6,246 箇所、見出しの Tag は 3,638 箇�
 全117本のソースに変更はなく、全 capture で同じヘルパー SHA と `maxSynthPendingDepth = 3` を確認した。⑥は17本ずつの採取を、全件のソース・版・範囲を再照合してから完全な68本の index にまとめた。共有鍵は `--wait 3600` で各採取の間だけ取得し、長い一回は580秒以内に区切った。実 Lean の四つの例を含む回帰検査28件がすべて成功した。[検証記録とソースのハッシュ](kerodon-layout-stop-3/collector-support-receipt.json)。
 
 配布する `*-files.json` は本体だけに絞り、⑤a は確定した31本、⑥は検証済み68本を採用した。`formalization-plans/bhatt-scholze/drafts/`・`scheme-drafts/` 等は含めない。drafts は調整役が文字列として追従させる。⑤b は改名追従を完了して `math/inf-supply-b` へ移行済みなので、旧配置の追従対象は空とする。起動済みの旧 collect と未完成 index を流用せず、修正版を新たに起動して新しい出力先で採取する。上記 index の再利用時も、入力ソースのバイト列の一致を確認する。
+
+## ⑤a 49本の追従：実在しない open の修正（2026-11-12）
+
+`report-codex-w16.md` §42 の再現入力（⑤a `5fe517e63`、`/tmp/bsw16/klw1-followup-49-8267/`）を使い、⑤aとは別の `/tmp/klw1-open-fix/validation` で修正・検証した。共有版は検証がすべて終わるまで変更していない。
+
+原因は採取器ではなく、改名表の `opens` にある二つの行き先だった。旧 `SerrePositivity.SimplicialModel` と `SerrePositivity.HomotopyFunctionComplex` は、未移動の AnodyneHomotopy・UniverseLift・ComonadSimplicialResolution・ComonadResolutionOperators を提供する名前空間である。それを配置先の `HA.ModelCategoryComparison`・`Project.HomotopyDiagramComparison.CosimplicialHom` へ置き換えていたが、これらの名前空間は利用側の import 環境には存在しない。二つの `opens` を旧名への恒等対応に直し、移った宣言の参照だけを完全な新名へ書き換える方針 (a) にした。新しい名前空間の open は追加しない。
+
+最初の対象ビルドで、`EnrichedPointPrecomposition` の同じ複数名前空間の open に、さらに `SerrePositivity.KST.Comparison` が残ることを確認した。このファイルの import からは当該名前空間が消え、使う宣言は移動済みの Ex∞ 等として完全名に書き換わっている。この一ファイルに限って `module_opens` で当該 operand を除く。他の利用側の KST.Comparison は保持する。複数 operand の一つが無効だと有効な SimplicialLocalization 等の open も失敗するため、localizationHom・kanLocalizationUnit 等の未解決が連鎖していた。
+
+| 確認 | 結果 |
+| --- | --- |
+| 同じ元ソース・採取済み参照で rewrite | 49 / 49本、`review.json = {}`、保留0。以前のプレビューとの差は8ファイル |
+| main の取り込み | 検証開始時の main `2e65c20b695158cc1f4bb34e7e330d3efd944cf5`。Interface/Theory の衝突は main の新名と⑤aの CoproductTensorLegs import・coproduct_tensor_legs 節を両方保持。他の変更も元ソースを基準に三方向で適用 |
+| 対象ビルド | 指定55本すべて成功、13,550ジョブ、終了コード0。最終回24.506秒 |
+| 回帰検査 | 30件成功（実 Lean の5例を含む）。配置先モジュール名と実際の名前空間が異なる例、旧 open の保持、単一利用側の不要 operand の除去、移動参照の完全名化をコンパイルまで検査 |
+| ⑤aの保護 | 元49本のソース、および index・MERGE_HEAD・ORIG_HEAD のハッシュが開始前後で一致。未コミット merge を操作していない |
+
+共有鍵は `--wait 3600 --class research` でテスト・対象ビルドの実行中だけ取得した。各ビルドには580秒の上限を付けた。共有の `klw1_namespace.py` と Lean ヘルパーの実行コードは変更不要で、配布改名表の open 方針と回帰テストを修正した。main の Lean や⑤aの作業木への編集は行っていない。
+
+[検証記録](kerodon-layout-stop-3/open-policy-support-receipt.json) に入力・版・ソースとログのハッシュを記録した。修正後の49本プレビューは `/tmp/klw1-open-fix/preview/`、旧プレビューとの差分は `/tmp/klw1-open-fix/preview-open-policy-fix.patch`、main 統合後の検証済みソースは `/tmp/klw1-open-fix/validation/`。既存の merge 済み作業木へ元ソース用のプレビューを丸ごと上書きせず、差分を確認して追従する。

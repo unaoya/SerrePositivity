@@ -59132,7 +59132,7 @@
     "SerrePositivity.EInfinity.SimplicialLocalization": "SerrePositivity.EInfinity.SimplicialLocalization",
     "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorPartition": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization",
     "SerrePositivity.EInfinity.SimplicialLocalization.GeneratorWord.FirstCut": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.UnmarkedFirstCutSandwich",
-    "SerrePositivity.HomotopyFunctionComplex": "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom",
+    "SerrePositivity.HomotopyFunctionComplex": "SerrePositivity.HomotopyFunctionComplex",
     "SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators": "SerrePositivity.HomotopyFunctionComplex.ComonadResolutionOperators",
     "SerrePositivity.HomotopyFunctionComplex.DiagonalFrame": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.HomotopyFunctionComplex.OrdinaryBarFreeResolutionDegeneracyValues": "SerrePositivity.InfinityCategories.Project.SimplicialCombinatorics",
@@ -59394,7 +59394,7 @@
     "SerrePositivity.ModelGeneration": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.ModelGeneration.EvaluationFamily": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
     "SerrePositivity.SimplicialLatching": "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.R72",
-    "SerrePositivity.SimplicialModel": "SerrePositivity.InfinityCategories.HA.ModelCategoryComparison",
+    "SerrePositivity.SimplicialModel": "SerrePositivity.SimplicialModel",
     "SerrePositivity.SimplicialModel.BoundaryGluing": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.SimplicialSets.BoundaryGluing",
     "SerrePositivity.SimplicialModel.CodiscreteNerveExtension": "SerrePositivity.InfinityCategories.Kerodon.TheLanguageOfInfinityCategories.FromCategoriesToSimplicialSets",
     "SerrePositivity.SimplicialModel.CompatibleInputMap": "SerrePositivity.InfinityCategories.Project.KanComplexAuxiliaries.CompatibleInputMap",
@@ -411816,6 +411816,9 @@
     },
     "SerrePositivity.EInfinity.Interface.Theory": {
       "SerrePositivity.InfinityCategories.HomotopyLimits": null
+    },
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.EnrichedPointPrecomposition": {
+      "SerrePositivity.KST.Comparison": null
     }
   }
 }
