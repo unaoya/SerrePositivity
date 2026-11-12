@@ -1648,3 +1648,25 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 逆順の EZ 合成、BK 線形化で使う単位加群の余積との同定、全単体パラメータの Hom／重み付き切断比較との照合は残る。指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族も完了済みとは数えない。既存宣言・⑤aのファイル・入口・公式監査は変更していない。停止点2は未完、残枠3,135行。約7,900行で実測と残りの見込みを報告する。
+
+## 47. 3b-2 続行：指定余積と自由線形重みの同定
+
+コード `e02b135b5`、新規2本137行。累計 **113本7,002行**。
+
+- `HomologicalAlgebra.CopowerUnitFree`（83行）：小さい添字集合 S の単位加群の指定余積と `ModuleCat.free A (ULift S)` の同型を構成した。両方向の指定生成元の像、逆射との合成、全添字写像への自然性を証明した。係数の宇宙は任意のまま。
+- `HomologicalAlgebra.NormalizedLinearWeightFree`（54行）：同じ自然同型を図式圏と単体方向へ運び、既存 `linearizedSimplicialWeight` と自由線形化の比較を得た。重みの全自然変換への自然性、および同じ Moore 正規化・負次数延長による複体の同型を構成した。
+
+第一のまとまりの既存線形化との照合であり、四まとまりの外の主題を追加していない。図式圏の正規化と点ごとの自由積比較の最終照合や、全単体 Hom／切断比較の同値性まで済んだとは数えない。
+
+個別検査と鍵付き対象ビルド **1,835 jobs**、累計113本 **1,239宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-45.log`、監査 `/private/tmp/AuditISW2G10HundredThirteen.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirteen-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.HomologicalAlgebra.CopowerUnitFree
+SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightFree
+```
+
+次の確認候補：実際の全単体比較の第二因子は標準単体である。既存 `EInfinity.ComplexLimits.normalizedSimplexChainContraction`・`normalizedSimplexTensorContraction` を使い、指定 AW と増大写像の両立から必要な同値を得られるか確認する。この候補は未証明であり、一方の EZ ホモトピーだけで結論したものではない。⑤aの既存ファイルには変更を加えない。
+
+指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,998行。約7,900行で実測と残量を報告する。
