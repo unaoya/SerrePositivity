@@ -1,70 +1,74 @@
-# SC-W1 段 2e：停止点報告の下書き（未検収）
+# SC-W1 段 2e：停止点報告（旧下書きを確定）
 
-2026-11-12 09:50 の依頼により作成。**停止点 2e に達したという報告ではない。** ビルド・監査は調整役の停止指示を維持し、実装中と下書きの結果を検証済みとして数えない。停止点でこの文書を更新し、未完の項目がなくなったことを調整役が確認できる形にする。
+2026-11-13 夜。承認済みの射影・Čech 版の範囲で停止点 2e に到達した。数学コミットは **`bf9767cdc`**。
+夜の指示に従い、この報告をコミットした後は取り込みを待たず、[2f の段取り](scheme-w1-2f-route.md) の F0〜F3 に進む。main への取り込み、ルート・下流の全ビルドは調整役が行う。
 
-## 1. 対象と検証の境界
+## 1. 完成した範囲と出力
 
-BS17 Thm 4.1(i) の経路に必要な、射影の場合の有限性・Rees の核と像の評価・形式関数の **Čech 版**が対象。一般の固有射の有限性、Stein 分解、K 用の段 2c、導来関手の層コホモロジーとの比較は範囲に含めない。
+Noether 基底上の有限生成次数付き多項式加群について、標準開の非空有限交叉を指定次数の局所化で計算し、有界な順序付き Čech 複体と全タプルの複体を比較した。単項式の計算から有限生成加群へ移して、各捻り・次数の Čech H の有限性を得た。Rees の次数ごとの直和と H の比較から、核の評価、像の安定化、I 進完備化と各閉厚化の Čech H の互換族との同型を構成した。
 
-直近の検証済み数学コミットは `69ace8712`（局所化と指定次数の Frobenius、半線形 Čech の入口）。対象と直接 importer のビルドは成功（4,332 jobs）、別実行の標準監査は **7,204 宣言・標準三公理 `propext`・`Classical.choice`・`Quot.sound` のみ**。R/J の表示と自然性は `5d5943541`（4,329 jobs、7,172 宣言）。直前の `ffac3c764` では、実際の標準開の flat Čech 比較と加群写像への自然性を検証した（4,326 jobs、7,110 宣言）。main `27f0ea688` は `0314ebff7` で取り込み、その前後で検証した 699 入力が同じことを確認した。
+構造層では、次数零の計算を実際の Proj の切断へ移した。閉厚化の切断への射の核は Iⁿ 倍であり、Rees の射影と同じ核から canonical な比較を得た。厚化のスキームと遷移は実際の底変換と商環の射から構成している。空交叉を大域切断と同一視せず、正の長さのタプルの非空交叉で複体を比較する。
 
-指定次数のテンソル局所化・係数環変更・各標準開・図式全体の比較は `1b359a90e` にコミット済み。前の whnf timeout は成分の同型と純テンソル公式への分割で解消した。計算量上限は増やしていない。
+主な出口：
 
-調整役の 10:02 の合図でビルド・監査を再開し、局所化の Frobenius と半線形な Čech 写像を順に検証している。上の監査数に現在の未コミット部分は含めない。`scheme-drafts/` にある残りの下書きも、検証済みとして数えない。
+| 宣言 | 主張・使い方 |
+| --- | --- |
+| `fullCechOrderedHomologyNatIso` | 有界な順序付き計算と全タプルの Čech H の、図式の射に自然な比較。 |
+| `projectiveNatGradedFullCechHomology_finite` | 有限生成次数付き加群の各捻り・次数の Čech H は基底環上有限。 |
+| `projectiveProjNativeStandardCechHomology_finite` | 実際の Proj の構造層の標準開 Čech H の有限性。 |
+| `projectiveProjNativeAffineCechHomology_finite` | 標準開が被覆する場合、任意の有限アフィン被覆の Čech H の有限性。 |
+| `reesAdicProjectiveCechImageRees_finite` | IⁿM の Čech H の像を集めた Rees 加群の有限性。 |
+| `reesAdicProjectiveClosedCechProjection_shifted_kernel_bound` | 十分厚い閉厚化への制限の核を I の冪で評価する。 |
+| `reesAdicProjectiveClosedCechTransition_range_stabilizes` | 厚化間の像が元の H からの像へ安定する。 |
+| `reesAdicProjectiveClosedCechCompletionLinearEquiv` | 加群・任意の捻りに対する Čech 形式関数の同型。 |
+| `projectiveProjCechFormalFunctions` | 実際の Proj の構造層の Čech H の完備化と、実際の閉厚化の Čech H の互換族の線形同型。 |
+| `projectiveProjCechFormalFunctions_of_apply` | 上の同型は、元の H の元を各閉厚化へ実際に制限する標準写像に一致する。 |
 
-## 2. 射影有限性と形式関数の出力
+構造層の最後の出口は、R 上の次数付き環 S を有限な変数の多項式環上の有限加群として与える形。射影的なブローアップでは、Rees 代数への有限変数の次数を保つ全射からこの形を供給する。任意のアフィン被覆へ移す際の被覆条件・アフィン性は比較 API の明示した入力である。
 
-実装済みの核となる入口は次のとおり。宣言の全一覧と各主張は `scheme-w1-2e-route.md` の各束の表に記録している。停止点では、最終コミットからの宣言一覧を再照合し、この文書または別紙に集約する。ここでは未検証の下書きをその一覧に混ぜない。
+## 2. §9 の五つの比較と自然性
 
-| 宣言 | 出力・用途 |
-|---|---|
-| `projectiveNatGradedFullCechHomology_finite` | Noether 基底上の有限生成次数付き多項式加群の各捻り・次数の Čech H の有限生成性。 |
-| `reesAdicProjectiveCechImageRees_finite` | 各 IⁿM の Čech H の像を合わせた Rees 加群の有限性。 |
-| `reesAdicProjectiveCechImage_bound`、`reesAdicProjectiveCechImage_cofinal` | 元のコホモロジーの I 進フィルトレーションと、Rees の像のフィルトレーションの比較。 |
-| `reesAdicProjectiveClosedCechProjection_shifted_kernel_bound` | 厚化への制限の核を I の冪で評価する。 |
-| `reesAdicProjectiveClosedCechTransition_range_stabilizes` | 実際の閉厚化間の Čech H の像が元の H からの像へ安定する。 |
-| `reesAdicProjectiveClosedCechCompletionLinearEquiv` | canonical な完備化写像を、実際の閉厚化の Čech H の互換族との同型にする。 |
-| `reesClosedCoefficientAdicCechFormalFunctions_module_naturality` | R/J 表示を含む形式関数の比較を、元の次数付き加群の射に自然にする。 |
+| 比較 | 閉じた宣言と到達点 |
+| --- | --- |
+| 共通アフィン細分 | `schemeModuleCommonAffineCechScalarHomologyIso` が有限共通アフィン細分による同型を構成し、`schemeModuleCechScalarComparison_commonRefinement_independent` が共通細分の選択によらないことを示す。`schemeStructureCommonAffineCechCoefficient_naturality` は係数の射に自然。`schemeStructureAffineCechPullback_comparison_naturality` はアフィン射の実際の引き戻しに自然で、四つの細分の同型性を準連接性から供給し、同型性を追加仮定にしない。 |
+| 底変換 | `schemeAffineBaseChangeTensorIso` と左右の入射・純テンソルの式が実際のアフィン切断を同定する。`schemeStructureCechBaseChangeComplexIso`、`schemeStructureCechNativeTensorComplexIso` が逆像被覆の複体を比較する。`schemeStructureCechNativeFlatBaseChangeIso` が flat な H の底変換、`projectiveNativeTensorCechIso_naturality` が加群の射への自然性を与える。複体の切断のテンソル表示に flat は不要、H とテンソル積の交換にだけ要求する。 |
+| 閉厚化 | `schemeAffineClosedBaseChangeSectionIso`・`projectiveProjClosedPullbackCoefficient_ker`・`reesAdicNativeClosedCoefficientIso` が実際の Γ の商を比較する。`projectiveProjAdicCechComplexIso_transition` と `_projection`、`projectiveProjAdicCechHomologyIso_transition` と `_projection` が実際の I 進遷移・射影と可換。`projectiveProjAdicCechFamiliesEquiv` で互換族へ移し、上の形式関数に接続した。R/J の係数表示は `reesClosedCoefficientAdicCechIso_module_naturality`・`reesClosedCoefficientAdicCechFormalFunctions_module_naturality` と整合する。閉厚化の引き戻しと共通細分の整合性は前行のアフィン引き戻しの補題が適用できる。 |
+| Frobenius | `projectiveHomogeneousChartLinearEquiv_frobenius`・`projectiveProjNativeChart_frobenius`・`gradedOriginalProjNativeChart_frobenius` が次数零の写像を実際の切断の p 乗と照合する。`schemeStructureCommonAffineCechFrobenius_naturality` が共通細分と可換。`reesAdicProjectiveClosedCechFrobenius_projection`・`_transition`・`reesAdicProjectiveClosedCechCompletionLinearEquiv_frobenius` は環の商の Frobenius、I 進系、形式関数との可換性を与える。同じ厚化の Frobenius と、厚化の指数を変える因子分解は区別する。後者 n→p^e n と順極限の議論は予定どおり 2f F6 に残す。 |
+| filtered colimit | `gradedOriginalProjNativeFilteredHomologyIso` は有限段・極限先の両側で元の Proj の構造層の Čech H を使う。`gradedOriginalProjNativeCechDiagramIso`・`gradedOriginalProjNativeCechComplexIso_naturality` が各段の実際の射と可換、`gradedOriginalProjCechScalarRestrictionIso` が元の基底からのスカラー制限を比較する。`projectiveFilteredComplexHomologyIso_naturality` は任意の複体図式の射に自然、`projectiveNatCechFilteredHomologyIso_naturality` は次数を保つ加群の図式に自然。有限型模型・次数成分の余極限の存在は 2g の入力であり、2e の同型と混同しない。 |
 
-Rees 次数を移す作用を固定した次数の加群のスカラー作用と混同しない。像の有限性・核の評価・像の安定化を使い、高い I の作用が零であることだけから各 H^q(IⁿM) の零化を導かない。
+各比較は、係数の写像と制限の可換式から複体・H に移している。共通細分の独立性だけを H の同型と読み替えたり、flat な底変換の補題を R/Iⁿ に適用したりしていない。閉厚化では別に全射と同じ核を証明した。
 
-## 3. §9 の五つの比較の到達点
+## 3. 案 (b) と原典の H、宇宙
 
-| 比較 | 現在の検証済み部分 | 未完・下書き | 停止点で必要な証拠 |
-|---|---|---|---|
-| 共通アフィン細分 | 有界な狭義増加版と全タプル版の Čech 比較、B1 の二重 Čech の増大完全性の API。 | 任意の二つの有限アフィン被覆の共通細分について、係数の射に自然な各 H の比較。 | 実際のアフィン交叉の二重図式、交叉上の完全性、全複体への二つの比較とその自然性。B1 の完全性の同値だけを正次数の H の同型と読み替えない。 |
-| 底変換 | `1b359a90e`・`ffac3c764` により、実際の指定次数の標準開図式との自然同型、Čech H の flat 比較、元の次数付き加群の射への自然性まで検証済み。変更先 B の Noether 性なしの有限性も供給。 | 共通細分・Frobenius・実際の近似図式との整合性は、それぞれの未完の群で確認する。 | `projectiveTensorChartDiagramIso`、`projectiveNativeTensorCechIso`、`projectiveNativeTensorCechIso_naturality` が具体的な入口。H とテンソル積の交換には flat を要求する。 |
-| 閉厚化 | 既存の商・I 進遷移・互換族・形式関数の自然性に加え、`5d5943541` で M⊗_R(R/J) と同じ商係数表示との照合を検証した。多項式作用・次数・実際の射影を保ち、標準開と Čech H の比較は元の加群写像に自然。 | 新しい Frobenius の実際の商写像との可換性は未完。 | `reesClosedTensorPolynomialEquiv`、`reesClosedTensorPiece_map_eq`、`reesClosedTensorChartIso_naturality`、`reesClosedTensorCechIso_naturality`。これは二つの閉厚化の表示の同型で、非 flat な H とテンソル積の交換ではない。 |
-| Frobenius | 基底環の I の冪の制御・半線形な完備化に加え、`69ace8712` で零環も許す局所化の Frobenius、その制限射への自然性、指定次数への制限と d→p*d・n→p*n の評価を検証した。一般の半線形な係数図式から Čech H への入口も供給。 | 実際の標準開図式全体の Frobenius の型合わせ、係数の環準同型への自然性、実際の閉厚化・I 進系への接続は未完。 | 空の標準開も含む図式と厚化の因子分解、I 進系・形式関数との自然性。局所化に Nontrivial を追加しない。 |
-| filtered colimit | B1 の `isCechExact_colimit` が最終の環の増大 Čech 完全性を保存する。 | 射影版の標準開・指定次数・Čech H と実際の近似図式の余極限との比較。 | 有限被覆の添字を一つの有限段で固定し、基底環が動く場合も扱う。有限積・局所化・次数成分の比較を射に自然にそろえる。完備化や無限積との交換は仮定しない。 |
+原典 BST13 Lemma 3.9 は Nisnevich の導来大域切断、BS17 Lemma 4.6(i) は fppf の導来大域切断を用いる。Stacks の有限性・形式関数も層コホモロジー Hⁱ の主張である。この実装は承認された案 (b) に従い、中間結果を **Čech 版**として述べ、最終の affine の構造層の Čech 完全性まで直接つなぐ。導来関手の Hⁱ との比較は作っていない。
 
-**この表の未完欄が残る限り、停止点 2e の完成とは報告しない。** 新しい比較の図式が既存の R/J・I 進の自然性と同じ実際の写像を使うことも、検証項目に含める。
+有限性・核と像の評価・形式関数・各 H の比較の docstring に原典の番号、Čech 版であること、分離的なスキーム上の準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）がこの比較は形式化しない旨を記載した。被覆によらないことと射への自然性は §2 の宣言で供給する。
 
-## 4. 案 (b) の条件と、原典の Hⁱ
+最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` と利用側の型は変更していない。2g の二重 Čech には B1 の既存 API を再利用する。
 
-[方針の正本](scheme-w1.md) は §9。以下を停止点で再確認する。
+加群を多項式環と同じ宇宙に置くことは、有限加群の `Module.Finite.small` と `Shrink.linearEquiv` で移送でき、BS17 の使い方を制限しない。Mathlib の Proj.map が要求する grading の carrier も環と同じ宇宙に置いた。大きな宇宙の入口が必要になった箇所で移送を接続する方針は承認どおり。
 
-1. **「Čech 版」の明記。** コホモロジーの主張は名前に `Cech` を含め、docstring に原典の Hⁱ の番号と、「分離的なスキームの準連接層ではアフィン被覆の Čech と一致する（Stacks 30.2.6）が、この比較は形式化しない」を書く。既存の主要な有限性・Rees の評価・形式関数の入口はこの形。追加する比較も同じ条件で確認する。
-2. **被覆によらないこと。** §3 の共通アフィン細分の比較を完成させ、係数の射との自然性を示す。標準被覆を一つ選んで計算が通っただけでは、この条件を満たしたとは数えない。現在は未完。
-3. **五つの比較が射に自然であること。** 底変換と閉厚化は実際の加群の射、Frobenius は実際の半線形写像、filtered colimit は近似の遷移写像から作る。自然性を結論として証明し、比較同型の存在を仮定に加えるだけにはしない。
-4. **最終出力の型。** このレーンの出口は `SerrePositivity.Cech.AugmentedRingCechExact`。それ自体は affine の構造層の増大 Čech 余脈体の完全性で、途中の Hⁱ の定義の置き換えではない。利用側の型も変えない。現状、この束は出口の定義を編集していない。停止点で main との差と利用側を再確認する。
-5. **宇宙。** 有限生成の加群には `Module.Finite.small` と `Shrink.linearEquiv` による移送を使える。多項式環と同じ宇宙の加群で計算したことを一般性の制限にしない。実際に大きい型の入口を追加する箇所では、その移送を明示する。
+一般の固有射の有限性・Stein 分解・導来関手との比較・Noether 近似模型の構成を完成したとは主張しない。前二つは範囲外、模型の構成は 2g の仕事である。
 
-原典の主張は Čech だけで述べられているわけではない。[BST13 Lemma 3.9](https://arxiv.org/pdf/1307.3763v3#page=12) は Nisnevich の導来大域切断、[BS17 Lemma 4.6(i)](https://arxiv.org/pdf/1507.06490#page=16) は fppf の導来大域切断を使う。Stacks の有限性・形式関数も層コホモロジーの Hⁱ。Stacks 30.2.6 のアフィン被覆の比較だけを、Nisnevich・fppf の全ての比較を形式化した証拠としない。承認された案 (b) では、必要な射影の場合の議論を Čech 版で最終出力まで直接つなぎ、これらの導来関手との比較は作らない。
+## 4. 検証と規模
 
-## 5. 検証と宣言一覧の記入欄
+最後の束は **8 モジュール・37 件の名前付き数学宣言・703 行**、入口登録を含め **711 行**。数学コミット `bf9767cdc`。
 
-停止点で以下を実行・記入する。現在は予定であり、実行済みとは数えない。
+- 対象と直接 importer：`lake build SerrePositivity.AlgebraicGeometry`、**4,542 jobs 成功**。
+- 別実行の監査：`lake env lean scripts/audit_kst_scheme_lemmas.lean`、**8,615 宣言、標準三公理 propext・Classical.choice・Quot.sound のみ**。
+- どちらも共有の `scripts/refactor/with_build_lock.sh --wait 3600` を実行中だけ取得し、各実行は 30 分以内。重複の整理券なし。
+- 既存の宣言の変更なし。新規ファイルと AlgebraicGeometry の import の追加のみ。sorry・admit・新規公理・計算量上限の引き上げなし。差分の空白検査も通過。
 
-- 最終の数学コミット、登録した全モジュール、各数学宣言と主張を一行ずつ。
-- 触った対象と直接 importer のビルド結果。共有鍵 `scripts/refactor/with_build_lock.sh --wait 3600` を一回の実行ごとに返す。
-- 別実行の `scripts/audit_kst_scheme_lemmas.lean` の宣言数と公理。
-- `sorry`・`admit`・新しい公理・既存の宣言の変更・計算量上限の追加の確認。
-- 五つの比較とその自然性の具体的な宣言名。証明メモだけを検証結果としない。
-- 最終出力と利用側の型の比較、宇宙の入口、下書きのうち本体に採用しなかったものの記録。
+段 2e の累計は **336 モジュール・32,554 行**、入口の差分を含め **32,896 行**。上限 **50,000 行**内。段 2d の報告 `df035c08e` 以後の新規本体を集計し、文書・下書き・他レーンのソースは含めない。途中の半分の報告点での実測と残りの見込みは route に記録済み。
 
-ルート全体と下流のビルド・main への取り込みは調整役が行う。
+全登録モジュールと、ソースに明示した名前付き数学宣言の一行ずつの主張は [宣言一覧](scheme-w1-2e-declarations.md)。各途中束のコミット・検証・主張の記録は [route](scheme-w1-2e-route.md)。生成宣言と局所インスタンスも標準監査の 8,615 宣言に含む。
 
-## 6. 2f の入口
+作業用の下書きは `scheme-drafts/` に残すが、本体に採用・検証したファイル以外は登録も完成の集計もしていない。古い draft は本体の正本ではない。`.lake/` や `/tmp` に成果を置かない。
 
-[2f の段取り](scheme-w1-2f-route.md) に、型の案、2e の出力との依存関係、不足する補題と規模を記録した。2e の検収後は Frobenius 順極限・nil 不変性・有限射の導手の計算から入る。H⁰ の実際の等化子部分環と、B/IB→H⁰(E) の Frobenius による比較が次の主要な接続になる。一般の固有射の有限性・Stein 分解・Kollár の商は作らない。
+## 5. 次の段
+
+2f は F0〜F3（零環を含む Frobenius 順極限の零判定、冪零不変性、普遍同相、有限射の導手の四角形）から始める。F4 以降で H⁰ の等化子部分環、台の冪による零化、Frobenius の厚化間の因子分解を実際の Čech 複体へ接続する。形式関数の同型だけから Frobenius 順極限の同型を読み替えない。
+
+2f の見込みは 3,000〜9,000 行、停止基準 18,000 行。半分の報告点 4,500 行で止まらず実測と残りを報告する。今夜は停止点でも報告待ちで止めず、承認が要る型・範囲・界面の判断や上限が出た場合に、検証済みをコミットして判断点を書き、2g の紙の段取りへ移る。
+
+正式な入口：[scheme-w1-2e-report.md](scheme-w1-2e-report.md)。
