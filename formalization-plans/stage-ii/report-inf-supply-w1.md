@@ -976,3 +976,83 @@ E : SSet.{u+1} が presentable なら、ι : Type u と M : ι → E₀ が存�
 - [WeakContractibleContractionCospan](../../SerrePositivity/InfinityCategories/Kerodon/KanComplexes/HomotopyGroups/WeakContractibleContractionCospan.lean)：56行。
 - [LeftCofinalUniverseLift](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/LeftCofinalUniverseLift.lean)：30行。
 - [NerveLeftQuillenA](../../SerrePositivity/InfinityCategories/Kerodon/LimitsAndColimits/Cofinality/NerveLeftQuillenA.lean)：35行。
+
+
+## 20. 3b-3 段0（11-13、見込み上端超過のため実装前で停止）
+
+main `bf5536ccc` を取り込んだ。3b-1（登録 `cfa0e8324`）は本体にある。
+IS-W2 §0・§3.2・§8・§10、③-b報告§21.3・§21.4・§38.1〜§38.2を照合した。
+§38は本体側の報告がまだ§21までのため、共有worktree `../SerrePositivity-bs-d68/` の同じ報告を読んだ。
+⑤b枝のmerge・コードimport・編集はしていない。3b-2の未取込ファイル・G10を入力にしない。
+
+### 型案（加群版だけ）
+
+A : Type u、CommRing A。Jは `SimplexCategory` とその反対圏の二つだけ。
+`I_J := (SSet.uliftFunctor.{u+1,0}).obj (nerve J)`、`DA := derivedInfinityCategory A`、
+`D_J := (ihom I_J).obj DA` とする。`Complex A` は本体の dg 複体模型の閉零圏として扱う。
+
+1. `W_J(f) := ∀ j, QuasiIso (f.app j)` を持つ strict な複体図式の相対圏と、その∞局所化模型
+   `S_J := StrictDiagramInfinity A J` を構成する。局所化写像 `q_J : nerve (J ⥤ Complex A) ⟶ S_J` は
+   W_Jの辺を反転し、`IsLocalization q_J W_J` を結論に持つ。W_Jの辺の集合への変換も明示する。
+2. 実評価 `ev_J : S_J ⟶ D_J` と `IsQCatEquivalence ev_J`。
+   下の全関手同型を合わせて返す：
+   `FunctorIso (q_J ≫ ev_J) strictComplexDiagramFamily`。
+   ここで右辺は元のstrict図式の射列をDAへ送る実評価。対象ごとの表示の選択で代用しない。
+3. 任意パラメーター P と `P ⟶ D_J` の族を、同値の逆と単位・余単位の全族同型でS_Jへ運ぶ。
+   対応する join 錐・余錐の族を両方向に運び、往復を元の図式同型に沿う同型として返す。
+   元の頂点を固定した比較、脚・全高次単体の互換、極限性／余極限性の保存を含む。
+4. J=Δᵒᵖについて、strict実現の全パラメーターの関手と
+   `strictSemifreeNativeApexFamily` の FunctorIso、さらに元の標準脚を持つ指定余錐族の比較。
+   これが§38.1第四行の受け渡し。Totの全族比較は③-b、BE値の厳密化は§38.2の③-bに残す。
+
+S_Jの宇宙はDAと同じ u+1 の模型を目標にする。raw hammockの構成の宇宙を無条件に同じと扱わず、
+projectiveなdg図式の模型等で小さいHomと評価を確認する。元の複体を対象ごとに独立選択して固定したまま
+厳密化する主張はしない。strict模型の値を置換できる形で、元の評価との全関手同型を結論にする。
+
+### 本体の再利用
+
+- `DiagramComparison/StrictSemifreeDiagram` の `strictSemifreeEvaluation`・`strictSemifreeDiagram`：
+  strict図式圏の全nerveにわたる実評価。これは局所化後の評価同値そのものではない。
+- `StrictSemifreeColimitFamily` の `strictSemifreeDiagramFamily`・`strictSemifreeColimitFamily_projection`・
+  `strictSemifreeJoinCoconeFamily`・`strictSemifreeNativeApexFamily`：同じ全高次単体の指定余錐族を再利用。
+  その選択だけから具体的実現の全関手比較が出たとは扱わない。
+- `StrictSemifreeRealizationCocone`、`StrictSimplicialDerivedCocone`、`SpecifiedProjectiveCocone`：
+  3b-1の図式ごとの同じ頂点・標準脚の余錐と余極限性を使う。native barを作り直さない。
+- `SemifreePointComparison.semifreePointEquivalence`、`derivedInfinityCategory`、dg nerve・
+  projective加群の既存比較：値のDAへの接続。図式圏の写像空間の比較は別に要る。
+- `HomotopicalAlgebra/Diagram/Projective.modelCategory`・`modelCategory_weakEquivalences`：
+  通常の図式圏のobjectwise弱同値とprojective置換。これは∞関手圏比較を結論には持たない。
+- `DGModuleFunctorResolutionNerve.dgModuleFunctorResolutionSourceNerve_isQCatEquivalence`：
+  dg関手の入力射影の既存比較。任意のcoherent図式からstrict図式への持ち上げを結論に持つものではない。
+- G8の全写像空間の随伴比較は指定余錐の全族自然性、G14は写像の同値性の検出、
+  G9はbarの添字のleft cofinal性・uliftに再利用できる。これらから図式圏の局所化同値を直接結論しない。
+- `ColimitCoconeFamilies` と既存の cone/cocone の関手単体集合・図式同型による比較を輸送へ使う。
+  図式同型の往復を指定錐の全パラメーターで読む接続は新規。
+
+除外する候補：`HomotopicalAlgebra/Rectification/HomotopyFunctionComplex/LocalizedMappingBifunctor`
+は `[ModelCategory SSet]` を要求し、ordinary homotopy category値の族を延長するもので、docstringも
+strictなSSet値rectificationを別課題と明記する。`Rectification/Simplicial/StrictValueObstruction`
+も同じモデル圏仮定を持ち、独立に固定した値を保つ厳密化の障害の定理。どちらも今回の同値の代用にしない。
+
+### 型つきの残りと見込み（新規実装分）
+
+| # | 結論・受け渡しの型 | 不足の中身 | 見込み行数 |
+| --- | --- | --- | ---: |
+| R1 | `q_J` と `IsLocalization q_J W_J`、同じ閉零strict図式からの写像 | projective/dg図式模型とobjectwise擬同型の∞局所化を接続。通常のprojective模型の存在だけでは足りない | 600〜1,000 |
+| R2 | 各X,Yで `pinchedHomMap ev_J X Y` が同値 | 局所化後の図式間の写像空間と、coherent図式の全変換空間の比較。strict自然変換の通常endやH⁰だけでは代用不可 | 2,200〜3,200 |
+| R3 | `IsEssentiallySurjective ev_J` と全関手の逆・単位・余単位 | 任意の `I_J ⟶ DA` のcoherent作用をstrict複体図式へ置換。対象と射の個別表示だけで高次単体を補ったとはしない | 1,800〜2,600 |
+| R4 | 任意Pの錐／余錐族の両方向輸送と往復、極限性／余極限性の保存 | 図式射への自然性、指定頂点・脚・join全体の整合性。既存の錐の比較の接続 | 900〜1,500 |
+| R5 | `FunctorIso (q_J ≫ ev_J) strictComplexDiagramFamily` と同じ元の射の照合 | 局所化の評価と元の全nerve評価の一致。Semifree表示と全複体表示の比較もここに数える | 500〜900 |
+| R6 | strict実現の全関手同型と同じ指定余錐の全族比較 | §8の移管分。3b-1の各図式の同型を元の射・高次単体・標準脚と同時に自然化 | 450〜750 |
+| R7 | 同じ宇宙の型・端点表示の整合性 | 小さいHom・ULiftの同定、同型を通す評価と射影の局所接続。一般の形状へ範囲を広げない | 250〜450 |
+| 合計 | | | **6,700〜10,400** |
+
+§21.3の4,850〜7,150行より上端が増えた理由は、R2・R3で必要なHTT 4.2.4.4の内容を、
+既存の通常図式模型・写像空間の局所比較・3b-1の図式ごとの余錐だけから短く適用できる定理として
+確認できなかったため。特にR2の全変換空間とR3の全高次単体を持つstrict化を分けて数えた。
+これは必要行数の下界ではなく、今回のAPI照合に基づく実装予測。
+
+**上端10,400行が条件付き事前承認の7,150行を超えるため、段0を報告して止める。**
+今回の指示どおり、Lean実装・ビルドには入っていない。新しい数学・drafts・③-b/⑤aのファイルは変更なし。
+配置は全て `Project/DerivedCategories/DiagramComparison/` を候補とし、登録は調整役。
+範囲をstrict図式や対象ごとの同値に狭める変更、自然性・strict表示の存在を仮定する変更はしていない。
