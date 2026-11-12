@@ -60,3 +60,32 @@
 ## 3. 保守の束の時期
 
 段階 II の E3 の sorry 0（5∞-9）の後、または B3 の後に人手が空いたとき。優先は BS の BR6・BR13・BR21 と ∞ の R8（どれも重複の削減）。各回は KL-W1 の道具（改名表、保存比較 v3b、追従の collect/rewrite）を使う。
+
+## 4. 作業項目（旧 BS ノートの「形式化の課題」T2・T3、11-12 夜に取り込み）
+
+原文は `research/bs-notes-tasks/README.md`。状態は Prisms の地図（`research/bs-coverage/items.csv`）で照らした。
+
+| 項目 | 内容 | 状態 | 扱い |
+| --- | --- | --- | --- |
+| T2-0 | 一般のテンソル積への δ 構造（Rem 2.7） | 地図の 2.7 は proved_special（direct limit の δ 構造） | 計画：テンソル積の版は A0 の prism の余積で要るか ⑤∞ の 5∞-2 で確かめる |
+| T2-1 | Lemma 2.38 の r 元版 | 済（W15 K1、2.38 proved） | 閉 |
+| T2-2 | Cor 2.39 の一般形 | 済（W15 K1、2.39 proved） | 閉 |
+| T2-3 | Def 2.42・Lemma 2.43・Cor 2.44 の離散版 | 2.42 は済（W15 K3）、2.43・2.44 は design_only | 計画：E3 の経路で要るかを ⑤∞ で確かめる（D20 は 2.42 だけを使う） |
+| T2-4 | Ex 2.21 | 済（W15 K2） | 閉 |
+| T3-1 | Lemma 3.6（φ(d) が distinguished） | 地図の 3.6 は none（目標に不要） | 閉（不要） |
+| T3-2 | Lemma 3.7 (2)〜(4) | 済（W15 K4、特別な場合） | 閉 |
+| T3-3 | Ex 3.4 | 済（W15 K2） | 閉 |
+| T3-4 | Prop 3.13 の一般形 | D21 で変数の場合だけ（W15 K4）。一般形は不要 | 閉 |
+| T3-5 | Lemma 3.5 の後半（δ 射で prism になる判定） | 地図の 3.5 は proved_special | 計画：A0 の Čech 脈体の各項で要る形か 5∞-2 で確かめる |
+
+## 5. ∞ のノートの片付けで分かったこと（`research/infinity-refactor-audit/README.md` §6、box-texts.md の付録）
+
+| 番号 | 内容 | 扱い |
+| --- | --- | --- |
+| R82 | 局所化の延長の二つの版：`localization_extension_exists`（Project/HomotopyDiagramComparison/LocalizationExtension:25）と `IsLocalization.exists_extension`（Kerodon/AdjointFunctors/Localization/UniversalConsequences:36） | 保守（R8 の重複と一緒に） |
+| R83 | ∞ の一般論が KST（Spectra の Tower* 26 本、SConstruction の Necklace* 45 本、LocalizingInvariants、Fibration の Verdier 分数）・EInfinity/SimplicialLocalization・HomotopicalAlgebra/Simplicial に残る | 計画：KST の分は K の再開の段 0、EInfinity・HomotopicalAlgebra の分は保守（KL-W1 の改名表がこれらを対象にしていないので、移すときは新しい改名表を作る） |
+| R84 | `Kerodon/KanComplexes/HomotopyGroups/PointedKanWhitehead.lean` の空の `namespace SerrePositivity.KST.Spectra` と、それを open していること | B3（小さい片付け） |
+| R85 | 同じ名前 `pinchedHom` が SSet 版（MorphismSpaces/Basic）と dg 版（PinchedHom）にある | 保守（名前を分ける） |
+| R86 | 「安定なら有限極限・有限余極限を持つ」（HA Prop 1.1.3.4 の必要性の向き）の一般の安定 ∞ 圏の instance がない | 計画：③ か ⑤∞ で要る箇所が出たときに足す（今は関手 ∞ 圏などの個別の版で足りている） |
+| — | HA Cor 1.4.2.27（Ω による安定性の判定）は `isStable_of_loopEquivalence`（HA/StableInfinityCategories/LoopEquivalenceStability:20）としてある。計画の「未着手（D-7）」は古い | 閉（記録の訂正） |
+| — | 06 章：交換定理（HTT 5.3.3.3）の作業量（2 万行を超えて未完成）の記録 | 記録のみ（R8・R10 の背景） |
