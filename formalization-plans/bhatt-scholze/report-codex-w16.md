@@ -4499,3 +4499,32 @@ AW を大きい宇宙の Γ の台へ直接適用せず、小さい標準単体�
 逐次単射置換の全自然性、native Sp への全関手とその π/H の全自然比較。
 対象ごとの群同型や列の通常の全関手だけから native V の完成とは扱わない。
 この区切りの後も、夜の規則に従い (ii) の実装を続ける。
+
+### 65.6 逐次単射置換の全関手性と準同型の保存
+
+| 追加モジュール（`PowerOperation/`） | 行数 | 用途 |
+| --- | ---: | --- |
+| PointedFactorizationFunctor | 65 | ［一般∞］移動候補 |
+| KanSequenceReplacementMaps | 91 | ［一般∞］移動候補 |
+| KanSequenceReplacementFunctor | 99 | ［一般∞］移動候補 |
+| EilenbergMacLaneQuasiIso | 47 | Γ の各段の準同型保存 |
+
+追加 **302 行**、(ii) の検証済み実測は **1448 行**。
+既存 `PointedFactorization.factorization` の実 SOA を変更せず、
+正方形の中間対象への作用と左右因子の自然性を公開した。
+既存の `KanSequence.replacementStage` と同じ段を帰納的に使い、
+厳密な列の射への作用、恒等射・合成の保存、元の列への比較自然変換を証明。
+`kanSequenceReplacementMap_piIsomorphism` は同じ比較自然変換の可換式から
+段ごとの全基点 π 同型を移す。Ω 条件をまだ示していない対象を Sp と呼んでいない。
+
+`smartTruncationMap_quasiIso` は零次数の境界を含む実 smart 切断の準同型保存。
+`truncLEIso_inv_naturality` と `quasiIso_extendMap_iff` により、同じ切断射を運ぶ。
+これを Γ の弱同値判定に接続し、元の準同型を各段の全基点 π 同型へ送った。
+
+最終ビルド `/tmp/bsw16/em-replacement-quasi-01.log` は成功（4,764 jobs）、新規警告なし。
+監査 `/tmp/bsw16/audit-em-replacement.log` は **25 本・268 宣言・標準三公理のみ**。
+sorry・追加公理なし。終了・鍵返却を回収済み。登録候補は表の四本
+（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+一般補助三本は EInfinity 下に置き、将来の場所は調整役に委ねる。
+残りは指定 suspension 射の Ω 条件、その出力の native V と π/H の全自然比較。
+夜の規則に従い、ここでも承認を待たずに (ii) を続ける。
