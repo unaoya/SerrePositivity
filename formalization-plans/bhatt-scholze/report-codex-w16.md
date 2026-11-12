@@ -1532,3 +1532,389 @@ a の今回の六本は、未検証の修正を含むため**コードをコミ�
 
 未検証の六本はまだ登録候補の確定一覧に加えない。現在の確定済みの取り込み待ち一覧は §26 の二十本。
 KL-W1 の取り込み後の改名表は、調整役から受け取ってから追従する。
+
+## 28. 検収用の型案：`coproduct_tensor_legs`
+
+### 28.1 名前と正確な型
+
+提案名は **`EInfinityTheory.coproduct_tensor_legs`**。§25 の `7c71d375c` に置いた型を検収用の案として提示する。
+欄を足すことの承認と、今回の具体的な型の検収は分ける。この案は枝にあり、main への取り込み・型の確定は調整役の検収を待つ。
+今回は界面のコードに追加変更をしていない。
+
+```lean
+coproduct_tensor_legs (S : Type u) [CommRing S]
+    (x y : (CAlg S) _⦋0⦌) :
+  TensorCoproductLegCompatibility S toEInfinityCore x y (coprodWith S y)
+    (coprodWith_cocone S x y).val
+    (coprodWith_cocone S x y).property.1 (coproduct_tensor S y)
+```
+
+`TensorCoproductLegCompatibility` の入力は次の型である。
+
+```lean
+(S : Type u) [CommRing S] (E : EInfinityCore.{u})
+(x y : (E.CAlg S) _⦋0⦌) (P : E.CAlg S ⟶ E.CAlg S)
+(c : JoinCocone (binaryPointDiagram x y))
+(hv : c.vertex = atVertex P x)
+(θ : FunctorIso (P ≫ E.forget S)
+  (E.forget S ≫ tensorWith (atVertex (E.forget S) y)))
+```
+
+条件の展開は以下。`θ` は、既存の `coproduct_tensor S y` の**同じ全関手版の同型**である。
+対象ごとに別の同型を選んで条件を満たす型にはしていない。
+
+```lean
+def TensorCoproductLegCompatibility : Prop :=
+  ∀ (ηx : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
+        SSet.HomotopyCategory.mk x)
+    (ηy : (SSet.HomotopyCategory.mk (coreUnitVertex S E) : (E.CAlg S).HomotopyCategory) ⟶
+        SSet.HomotopyCategory.mk y),
+  ∃ (unitX : 𝟙_ (Complex S) ⟶
+        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) x)).val)
+    (unitY : 𝟙_ (Complex S) ⟶
+        (derivedInfinityCategoryVertexEquiv S (atVertex (E.forget S) y)).val),
+    NormalizedTensorUnit S E x ηx unitX ∧ NormalizedTensorUnit S E y ηy unitY ∧
+    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeLeftHom c) ≫
+        (tensorComparisonAtCocone S E x y P c hv θ).hom =
+      derivedTensorInlHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitY ∧
+    (hoFunctor.map (E.forget S)).toFunctor.map (binaryCoconeRightHom c) ≫
+        (tensorComparisonAtCocone S E x y P c hv θ).hom =
+      derivedTensorInrHom S (atVertex (E.forget S) x) (atVertex (E.forget S) y) unitX
+
+```
+
+`binaryCoconeLeftHom c`・`RightHom c` は、指定された native 余錐の**実際の二脚**のホモトピー圏での射。
+`tensorComparisonAtCocone` は頂点の等式 `hv` で始域を正規化した `θ.app x` である。
+右辺の標準射は、同じ semifree 代表の鎖写像
+`(ρ_ _).inv ≫ (𝟙 _ ⊗ₘ unitY)` と `(λ_ _).inv ≫ (unitX ⊗ₘ 𝟙 _)` の D(S) での類を使う。
+
+`NormalizedTensorUnit S E x ηx unitX` は
+
+```lean
+(complexUnitHZeroIso S).inv ≫ HomologicalComplex.homologyMap unitX 0 =
+  coreUnitClass S E x ηx
+```
+
+という条件。`coreUnitClass` は離散基底代数からの射を `E.forget` と H⁰ に送り、
+`E.discrete_forget` と同じ H⁰ の代表比較で読む。任意の閉元を単位として選んで済ませない。
+`discrete_initial` があるので単位代数からの射への量化も空ではない。
+単位複体から semifree 代表への射は H⁰ の類でホモトピー類が決まるため、代表の選択はこの正規化で管理する。
+
+D71 に従い、これらの `Interface/` の型は BE・hammock のモジュールを直接 import せず、その API を使わず、
+欄の型に `[ModelCategory _]` を置かない。D(S) の固定された semifree の API は使う。
+
+### 28.2 A2 の `derivedPrismaticCohomology_tensor` での使い方
+
+A2 の現行の結論は、入力の**任意の指定二項余極限錐** `c` を Δ で写したものが余極限錐となること。
+単に二対象の値が同型であるという結論ではない。
+
+1. 出力側で `E.coprodWith_cocone A (Δ X) (Δ Y)` を取り、その普遍性から
+   `Δ c.vertex` への比較辺 `q` を作る。二脚は Δ を適用した入力の二脚で指定する。
+2. `E.coproduct_tensor A (Δ Y)` で忘却後の比較の始域を `U(Δ X) ⊗ᴸ U(Δ Y)` に移す。
+   **この移送と実際の二脚の整合を保証するのが新欄**である。
+3. 多項式の場合、同じ二つの変数包含が誘導する Künneth 射と `U(q)` を同定する。
+   Hodge–Tate の gr と微分形式の Künneth、完備性による検出で、この指定射が同値と示す。
+4. sifted 表示で一般の入力へ延ばす際は、`coproduct_tensor` の第一変数での全関手版の自然性を使う。
+   対象ごとの任意の同型では、図式の射と比較辺 `q` の同定を運べない。
+5. `forget_conservative` で `q` が可逆と戻し、指定余積錐から比較辺に沿って余極限性を移送する。
+   これで Δ による**同じ錐**の保存となる。
+
+注意：忘却後の「テンソルと二脚」の錐が D(A) の余積錐だとは主張しない。
+D(A) の加法的な余積と、CAlg の余積を忘却したテンソルとは別である。
+
+新欄はホモトピー圏での二脚の可換式を記録する。native な錐の移送に必要な二つの三角形は、
+この等式から固定端点の辺のホモトピーを取り出して作る補助補題が要る。
+二点離散の図式なので、二脚間の追加の相互 coherence はないが、
+**この錐の比較補題そのものは未証明**。それを仮定せずに `IsColimitCone` が直ちに従うとは数えない。
+比較補題が不足するなら、条件を coherent な三角形の選択まで含めるかを実装前に調整役へ戻す。
+
+## 29. 経路 B の厳密な前段の設計（ビルドなし）
+
+### 29.1 実際の随伴と既存の単体的分解
+
+係数環を `A`、`P := BarrattEccles.operad A` とする。既存の厳密な随伴は
+
+```lean
+F := P.freeAlgebraFunctor
+U := Operad.Algebra.forget P
+h := P.freeAlgebraAdjunction  -- F ⊣ U
+G := h.toComonad             -- 代数圏上。台の関手は U ⋙ F
+```
+
+である（合成の記法上 `U ⋙ F` が数学の F U）。余単位は `h.counit`、余乗法は F η U。
+`freeAlgebraAdjunction_unit_app` は単位を `P.schurUnit` に、
+`freeAlgebraAdjunction_counit_app` は余単位を `X.evaluationHom` に同定している。
+
+`HomotopicalAlgebra/HomotopyFunctionComplex/ComonadSimplicialResolution.lean` の
+`SerrePositivity.HomotopyFunctionComplex.ComonadSimplicialResolution` を `R` と略記すると、使う型は
+
+```lean
+strictBar (X : P.Algebra) : SimplicialObject P.Algebra := R.diagram G X
+strictBarAugmentation (X : P.Algebra) :
+  strictBar X ⟶ (SimplicialObject.const P.Algebra).obj X := R.augmentation G X
+strictBarAugmented (X : P.Algebra) : SimplicialObject.Augmented P.Algebra
+```
+
+最後は `left := strictBar X`、`right := X`、`hom := strictBarAugmentation X` の構造体。
+ここにモデル構造・cofibrancy の仮定は不要である。
+
+| 使う既存宣言 | 供給されるもの |
+| --- | --- |
+| `R.diagram`、`diagram_obj` | 通常の `SimplexCategoryᵒᵖ` 上の全図式、Bₙ(X) = Gⁿ⁺¹ X |
+| `R.diagram_face` | `ComonadResolutionOperators.face G X (n+1) i` による面 |
+| `R.diagram_degeneracy` | `ComonadResolutionOperators.degeneracy G X n i` による退化 |
+| `R.augmentation`、`augmentation_app` | 全図式の増大と、反復余単位による各成分 |
+| `ComonadResolutionOperators.face_face`、`degeneracy_face_*`、`degeneracy_degeneracy` | 既存の単体的関係式。書き直さない |
+| `ComonadResolutionOperators.face_augmentation`、`degeneracy_augmentation` | 増大と面・退化の可換性 |
+
+自由・忘却随伴を新たな抽象仮定にせず、これらへ実際の `P.freeAlgebraAdjunction` を代入する。
+ただし、Bₙ が自由代数であることから台の入力まで cofibrant と結論してはならない。
+後段で cofibrant な複体上の自由比較を使うには、入力の cofibrant 置換とその比較が別途必要。
+これは厳密な bar の定義・分裂とは分け、③-b の橋の後の比較の課題に残す。
+
+### 29.2 忘却後の追加退化の型と五つの式
+
+忘却後の増大図式の型は
+
+```lean
+strictBarUnderlyingAugmented (X : P.Algebra) :
+  SimplicialObject.Augmented (Complex A)
+strictBarUnderlyingExtraDegeneracy (X : P.Algebra) :
+  SimplicialObject.Augmented.ExtraDegeneracy (strictBarUnderlyingAugmented X)
+```
+
+`left := strictBar X ⋙ U`、`right := U.obj X`。
+増大の成分を `U.map ((R.augmentation G X).app j)` と定め、自然性は既存の増大の自然性へ
+`U.map` を適用して示す。定値関手との合成が定義上同一であると無理に仮定しない。
+
+Mathlib `AlgebraicTopology/ExtraDegeneracy` の既存の構造体へ、以下を入れる。
+
+- `s' := h.unit.app (U.obj X)`。
+- `s n := h.unit.app (U.obj (ComonadResolutionOperators.power G X (n+1)))`。
+  目標の終域は U Gⁿ⁺² X = U F U Gⁿ⁺¹ X。
+- `s'_comp_ε`：X における随伴の右三角恒等式。
+- `s_comp_δ₀ n`：Gⁿ⁺¹ X における同じ右三角恒等式。
+- `s₀_comp_δ₁`：`U.map (h.counit.app X)` に対する η の自然性。
+- `s_comp_δ n i`：面の後続添字の再帰式 `face_succ` と、U を適用した面に対する η の自然性。
+- `s_comp_σ n i`：退化の後続添字の再帰式 `degeneracy_succ` と、U を適用した退化に対する η の自然性。
+
+追加退化は**忘却後の複体の射**であり、通常は代数射ではない。
+したがって代数圏の bar 自身が分裂しているという誤った強化は行わない。
+`ExtraDegeneracy.section_`・`section_comp_hom`・`homotopy` は構造体を供給した後に再利用できる。
+`OrdinaryBarSourceExtraDegeneracy` は通常の Hom 集合と逆転した単体添字の別の bar なので、
+その実例を BE の bar の分裂として使わない。構造体への包装の参考に限る。
+
+### 29.3 X に関する自然性、規模、境界
+
+`powerMap G f 0 := f`、`powerMap G f (n+1) := G.map (powerMap G f n)` とし、
+面との可換性は余単位の自然性、退化との可換性は余乗法の自然性で帰納する。
+面・退化による通常の単体圏の生成を使って
+
+```lean
+strictBarFunctor : P.Algebra ⥤ SimplicialObject P.Algebra
+strictBarAugmentedFunctor : P.Algebra ⥤ SimplicialObject.Augmented P.Algebra
+```
+
+まで保つ。追加退化の X についての自然性も `h.unit.naturality` から得る。
+対象ごとの分裂しか作らず、後で全関手版に自然性を足す設計にはしない。
+
+| 部分 | 新規 Lean の見込み |
+| --- | ---: |
+| 実随伴の適用、bar・増大・成分の式 | 70〜110 |
+| `powerMap`、X の全関手と増大の自然性 | 130〜200 |
+| U の下の増大、追加退化と関係式、自然性 | 130〜210 |
+| BE の指定単位・評価射の式と公開の包装 | 60〜100 |
+| **計** | **390〜620** |
+
+任意の随伴で成り立つ部分は `EInfinity/` の専用補助ファイルへ置き、一般圏の補助として報告する。
+新しい `InfinityCategories/` のファイルは作らない。既存の Comonad 分解を変更しない。
+上限約 800 行、3 割の緩めも含む既定の停止規則を保つ。
+この見込みには bar の ∞ 図式への移送・実現の同定・cofibrant な自由入力への比較・全関手版のテンソル比較を含めない。
+それらは③-b の取り込み後の作業で、厳密な分裂だけから完了したとは数えない。
+
+## 30. c と段 4 の組み立ての下書きの所在
+
+今回の依頼の c と組み立てについては、先行して書いた本体のコードがあるため、同じ実装を重複して作らない。
+**今回の verify 待機中はビルドも監査もしていない。** 以下は待機前に確認した結果の再掲である。
+
+- c：`Theory/NativeCoproductLegs.lean`（115 行、`7c71d375c`）。
+  `barrattEcclesCoprodWith_cocone_leg_left/right` は採用した native 錐の脚を厳密な二包含の区間全体へ同定する。
+  `barrattEcclesCoproductTensorNat_inl/inr` と `_carrier` は**既存の厳密な自然変換**が
+  その二包含を上の標準テンソル射へ送ることを示す。
+  全関手版の `coproduct_tensor` が未供給なので、§28 の欄の無条件の実例まで証明したとは数えない。
+- 組み立て：`Theory/Assembly.lean`（89 行、`9728984d0`）。
+  `barrattEcclesTheoryOfRemaining` は既証明欄を固定し、残る十八欄だけを引数に取る。
+  引数 `coproduct_tensor_legs` の型は、先行する**同じ引数** `coproduct_tensor` を参照する。
+  忘却の sifted 保存、presentable、テンソル比較・二脚、通常 Tot の四欄、cdga Tot の五欄、P⁰ の五欄が未供給。
+  `baseChange_forget` は追加の K 平坦性仮定なしの本体の証明を代入している。
+- `drafts/Shared/BarrattEcclesTheory.lean` は、この組み立てへ十八欄だけを渡す 49 行の作業用実例。
+  既証明欄の sorry は除去済み。⑤b の A1 二本、⑤c の A0・A3 は触っていない。
+
+§28 の型案の検収で変更が必要になれば、界面、組み立ての対応する引数、作業用実例を同時に追従する。
+その再検証は verify 終了の連絡後に行う。検収前に共通入口や共有監査へ登録しない。
+
+## 31. ④の段 0 の下調べ：G12・M14・M15（紙のみ）
+
+この節は将来の④の設計のための下調べで、W16 の実装範囲を広げるものではない。
+地図は現在の枝の `research/htt-coverage/{items.csv,review/}` と
+`research/ha-coverage/{items.csv,review/}` を読んだ結果であり、CSV は編集しない。
+以下の `none`・`partial` は地図の調査上の分類であり、新しく型検査した証明の判定ではない。
+KL-W1 の改名を先取りせず、現在の main 系統の宣言名・モジュール名を記す。
+
+### 31.1 G12：BE の CAlg の presentable 性
+
+最終の型は既存の界面どおりである。
+
+```lean
+(S : Type u) [CommRing S] ⊢
+  @F2.Presentable.IsPresentable (barrattEcclesCore.CAlg S)
+    (barrattEcclesCore.quasicategory S)
+```
+
+準圏のインスタンスは既存の `barrattEcclesCore.quasicategory S` を明示している。
+`IsPresentable` の中身は同じ宇宙での accessibility と**全ての小さい native 余極限**の存在。
+単に通常の厳密代数圏に余極限があることではない。
+
+再利用できる本体：
+
+- `derivedInfinityCategory_isPresentable`（`Derived/Presentable/DerivedCategory`）：非有界 D(S) の実際の presentable 性。
+- `Operad.freeAlgebraAdjunction`、`Algebra.forget_isCardinalAccessible`、`freeAlgebra_finitelyPresentable`：
+  厳密な自由・忘却、通常圏での filtered 保存と自由像の小ささ。
+- `Operad/AlgebraSiftedColimits.forget_createsSiftedColimitsOfShape`：通常の dg 代数の sifted 余極限。
+- `BarrattEccles.modelCategory`、`modelCategory_cofibrantlyGenerated`：実際に構成された模型と生成族。
+- W16 の `cAlgForgetDerived_conservative` と無条件の係数変更の比較。
+  ただし `forget_preservesSifted` は引き続き未供給である。
+- `F2.Presentable.IsPresentable.of_equivalence`：同じ native 準圏の全同値を**構成できた後**の移送。
+
+地図との対応：
+
+| 地図の項目 | 現在の分類と使い分け |
+| --- | --- |
+| HA 3.2.3.5 | `none`。G12 の直接の数学的対応。全 ∞ オペラッドの一般定理を実装することは D75 の BS 経路の要件ではない |
+| HA 3.2.3.1 | `none`。厳密な sifted 保存から native な保存への橋は未供給。③-b と W16 の BE 固有部分を使う |
+| HA 4.7.3.5 | `partial`。Mathlib の通常圏の Barr–Beck はあるが、U-split 単体図式による ∞ モナド性まではない |
+| HTT 5.5.1.1 | `partial`。presentable から前層反射表示を得る結果はある。CAlg の presentability を前提なしに作る逆方向ではない |
+| HTT A.3.7.6 | `none`。組合せ的な単体模型から native な presentability へ移す汎用比較は地図上未供給 |
+| HA 1.3.5.21 | `partial`。加群の D(S) の presentability は本体にある。CAlg へは別の橋が要る |
+| HTT 5.5.8.15 | `own`。PΣ の filtered・幾何学的実現による全関手の普遍性は再利用候補。ただし CAlg 全体を PΣ と同一視する証明はない |
+
+提案経路は、D(S) の presentability、誘導された自由・忘却随伴、③-b の実現の橋と W16 の sifted 保存を使い、
+**BE に実際に作用する accessible なモナドの代数との全準圏比較**を作るもの。
+その代数圏の accessibility と全小余極限から G12 を得る。
+汎用の HTT A.3.7.6 を作る案は代替であり、現在の BE 模型が simplicial combinatorial であるという追加証明も必要。
+cofibrantly generated だけからその仮定を満たしたことにしない。
+
+不足は、(a) 誘導されたモナドと全 Eilenberg–Moore 準圏、(b) 同じ U の実際のモナド性の比較、
+(c) accessible なモナドから native presentability を得る一般の定理。
+U が保存的・sifted 保存である二条件だけを別の構造体に詰めて、その結論を仮定に入れる実例にはしない。
+
+規模の初期見込み：一般のモナド性・代数圏の橋が供給済みなら BE への適用は **600〜1,000 行**。
+その橋も④で作る場合は一般部分 **2,400〜4,000 行**、適用を合わせ **3,000〜5,000 行**。
+これは未実装の一般部分を含む幅のある見積もりであり、現在の模型の欄だけの小さな証明という見込みではない。
+③-b の完成物を読んだ後、重複する一般部分を差し引いて段 0 で確定する必要がある。
+
+### 31.2 M14：Frobenius 半線形な P⁰
+
+供給する入口は、既存の次の全自然変換である。
+
+```lean
+powerOp0 (k : Type u) [CommRing k] (p : ℕ) [Fact p.Prime] [CharP k p] :
+  FunctorHom (forget k) (forget k ≫ restrictD (frobenius k p))
+```
+
+加えて、同じ変換について π₀ で Frobenius、πₙ（n > 0、つまり H⁻ⁿ）で零、
+離散入力と cosimplicial 可換環の Tot で指定 Frobenius 射に一致する四条件が必要。
+`powerOp0_pos` は H の**負次数**の条件であり、正のコホモロジー次数の消滅と取り違えない。
+単に各ホモロジー群に関数を定義するだけでは界面の型を満たさない。
+
+再利用：BE の `operad` の作用と自由代数、`arityRepresentationChain` と実際の対称群の射影解像度、
+`twoColorCoefficientComparison` など指定係数射を同じ解像度で管理した経験と API、
+W16 の係数制限 `barrattEcclesRestrictD`・`restrictD_homologyIso`・π₀ 比較・離散入力比較。
+ただし二色の係数比較は P⁰ の構成そのものではなく、p 個の入力の巡回対称性を持つ冪作用を供給しない。
+`drafts/Shared/EInfinityPowerOperation.lean` は界面からホモトピー上の作用を読む利用側の型を与えるが、
+`E.powerOp0` を引数として使っているため模型での構成の証拠にはしない。
+
+地図：主な出典は **DAG XIII Construction 2.2.6・Remark 2.2.7** で、HTT・HA の項目表に
+その番号の独立項目はない。対応しない HA の定理番号を P⁰ に割り当てない。
+HA 3.1.3（自由代数）・3.2.3.1（実現等）・4.7.3.5（モナド的な分解）は構成を延ばすための周辺項目であり、
+それらの完成で P⁰ が既に得られるとはしない。HTT の presentable・余極限の項目も操作の係数計算を供給しない。
+
+不足の分解：
+
+1. BE の p 入力の作用から、k 線形ではなく φₖ 半線形な鎖レベルの指定操作を作る。
+   符号、巡回群の作用、微分と作用の整合を含む。既存の通常の Frobenius 環準同型だけでは不足。
+2. その操作を弱同値で局所化して、U 全体の coherent 自然変換として降ろす。
+   ホモロジー上の自然性だけで置き換えない。
+3. 零次と正のホモロジー次数での値を、同じ操作について計算する。
+4. 離散入力と Tot の Frobenius との**同じ変換の成分の一致**を証明する。
+   Tot の比較は G10 と係数制限の比較を待つ。
+
+初期見込み：係数・鎖レベルの操作と値の計算 **1,600〜2,800 行**、
+自然変換と局所化 **600〜1,000 行**、離散・Tot の照合 **600〜1,200 行**、
+**計 2,800〜5,000 行**。p 群の解像度の追加 API が必要なら再見積もりする。
+この段階では実装・新しい界面欄の追加を行わない。
+
+### 31.3 M15：一般の E∞ 底 R 上の descendability
+
+利用側の入口は `drafts/Shared/Descendable.lean` の
+
+```lean
+IsDescendableOver (R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) : Prop
+HasDescentIndexLEOver (R B : (E.CAlg A) _⦋0⦌) (f : SSet.Edge R B) (n : ℕ) : Prop
+```
+
+である。一般の R に対し **Mod_R(D(A))** の thick ⊗-ideal として定義する。
+`R = Δ_T` は離散環であるとは限らない。固定した離散 A の D(A) の定義だけでは Lemma 8.6 に足りない。
+M15 を `EInfinityTheory` に新たな欄として入れる設計にはしない（既存の界面設計の決定）。
+
+再利用できるもの：
+
+- D(A) の `tensorWith`、安定性、fiber/cofiber と極限・Tot の部品。
+- `StableVertexClosure` と、`dgThickClosureProperty_iff_nativeStableRetract` など
+  native な安定閉包と retract の既存比較。これらは指定 dg 部分圏の厚い閉包であり、相対テンソルへの閉性は別途必要。
+- 通常の内部加群の `MonoidalModuleColimits.colimitCoconeLiftsToColimit`、
+  `MonoidalModulePresentability.isLocallyPresentable`、`MonoidalBalancedTensor.symmetricCategory`。
+  通常の対称モノイダル圏内の結果であり、一般の E∞-R 加群の ∞ 圏への比較を供給しない。
+- W16 の指定余積と二脚の比較は将来の Amitsur 図式の構造射の照合に使える。
+  任意の相対テンソル B ⊗ᴸ_R C は、絶対テンソルの欄一つから直ちに得られるものではない。
+
+地図との対応：
+
+| 地図の項目 | 対応と現状 |
+| --- | --- |
+| HA 4.2.1.15 | `partial`。通常圏の内部モノイド・内部加群の型がある。全 E∞ 底の加群準圏ではない |
+| HA 4.2.3.5・4.2.3.7 | `partial`。通常の加群の余極限・局所可呈示性。native の一般の R-加群にする橋が不足 |
+| HA 4.5.1.1 | `partial`。通常の固定可換環の加群圏。一般の可換代数対象への適用は未供給 |
+| HA 4.5.2.1 | `partial`。通常の内部加群の対称モノイダル相対テンソルはある。導来相対テンソルとの全比較が必要 |
+| HA 4.5.3.1 | `none`。基底 R を動かす加群の高次圏と底変換の全体が不足 |
+| HA 1.1.3.3 | `partial`。安定部分圏の一部の判定。thick ⊗-ideal と有限指数判定全体ではない |
+
+descendability 自体の直接の出典は **Mathew Definition 3.18・Proposition 3.22**、
+指数と Frobenius 余極限は **BS17 §11.2・Lemma 11.22**。
+これらを HTT/HA の一般の「降下」項目の完成に数えない。特に HTT §6 のトポスの降下は別の主張である。
+
+不足と順序：
+
+1. 一般の BE 代数 R 上の加群の局所化、安定性、相対テンソルと内部 Hom、底変換の coherent な構成。
+   この模型の構成と、抽象的な数学の一般定理は分ける。
+2. 安定対称モノイダルな加群圏で thick ⊗-ideal・指数を定義し、
+   `descendable ↔ ∃ n, index ≤ n`、底変換・合成・テンソルでの安定性を示す。
+3. 指数から Amitsur の塔の nilpotence／収束を導き、任意の R-加群の Tot 降下へ進む。
+   有限段で塔が一律に分裂する、と未証明に仮定しない。
+4. RHom による指数 ≤ 2、Frobenius 余極限の指数評価、完備版を同じ相対底 R で示す。
+
+`drafts/Shared/Descendable.lean` の一般底の定義はまだ sorry、RHom と完備版の一部は
+`True := by trivial` の印である。これらは必要な主張の証明として数えず、実装前に正しい型を確定する。
+
+初期見込み：一般の R-加群・相対テンソルの模型と比較 **2,500〜4,500 行**、
+thick ⊗-ideal・指数と安定性 **900〜1,500 行**、Amitsur の塔・降下・指数評価と完備版 **1,400〜2,500 行**、
+**計 4,800〜8,500 行**。加群圏の一般部分が供給済みなら残る部分は **2,300〜4,000 行**。
+この幅は一般の E∞ 底を落とさない場合の初期見込みで、離散底だけで完了扱いにはしない。
+
+### 31.4 現在の待機と再開順
+
+今回は紙の検討と既存コード・地図の読取りだけを行った。ビルド・監査は走らせず、鍵も要求していない。
+新たな Lean 実装や既存の界面の変更は加えていない。
+調整役の型の検収を待つ間も独立の紙の作業は可能だが、verify 終了の連絡までは検証しない。
+終了の連絡後は、§27 の作業木に残っている自由比較の六本の型検査と監査から再開する。
+bar の実装は a の区切りの後、③-b を要する実現・Tot はその取り込みの後という順序を保つ。
