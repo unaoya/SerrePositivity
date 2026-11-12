@@ -341,7 +341,7 @@ B1 の承認（citation-attributes.md §8）を受けて着手した。これは
 
 属性の検査は、四種の partial、理由の不足、未知の略号、空番号、重複の冪等性と矛盾、import 後の保持、module モードでの後置の属性付与を含む10ケースを通した。読み取り用の `#cite_check` は実際の定義元・宣言範囲・型・型内の定数・公理依存・明示的な ModelCategory SSet 仮定を返す。普通の定義と、実在する ModelCategory SSet 仮定付き補題の照会でも検査した。再解釈は元の Lake 設定（maxSynthPendingDepth=3 等）を引き継ぐ。
 
-元の未解決台帳は main `fd50804df` の `research/coverage-location-refresh/2026-11-12-ledger.json` を正本にした。元の187件は延べ187件・異なる名前とパスの組141件である。当初の再構成187候補は異なる組187件だったため、同じ集合ではなかった。共通124組、元の台帳だけ17組、再構成だけ63組。以後の全件表と検査は正本の187行を保持して行う。
+元の未解決台帳は main `fd50804df` の `research/coverage-location-refresh/2026-11-12-ledger.json` を正本にした。元の187件は延べ187件・異なる名前とパスの組141件である。当初の再構成187候補は異なる組187件だったため、同じ集合ではなかった。共通124組、元の台帳だけ17組、再構成だけ63組。以後の全件表と検査は正本の187行を保持して行う。当初の候補抽出は原判定の再現ではなかったため、その差分を正本の不足とは扱わない。付属の `refresh_locations.py` を取り込み前の表（`7d8ae8623^`）へ読取り専用でかけ直し、未解決187件・解決3,905件について、各行の全内容と順序も正本と一致することを確認した（付表 `location-refresh-replay-check.json`）。
 
 [付表](bulk-w1-b2/README.md) に元の187行の台帳と照合の差分、正本26表の全9,048行・2,387宣言参照のプレビューを保存した。本体候補1,860件の実在・型・所有元の確認を終え、現時点の案は付与1,835、除外537、保留15。元の台帳のうち宣言解決が必要だった29件も全件解決した。Kerodon partial831行は維持して新しいTagを付けない。これは付与計画の確定であり、移動後の全体検証の完了ではない。
 
@@ -353,7 +353,7 @@ B1 の承認（citation-attributes.md §8）を受けて着手した。これは
 
 DerivedCategories は承認済みの主題をさらに分け、移動先で最大の直下ファイル数は FilteredExchange/KanReplacement の194本。③-b の DiagramComparison は現パスを保持する方針とする。固定したmainにはまだ0本なので、凍結前の差分の取り込みでその4本と後続を追加する。移動表はファイルごとに指定する。Prismatic は承認した節・構成を基に細分し、節をまたぐ引用は同じ宣言への複数引用として保持する。ファイルを複製しない。ModelCategory SSet 付き54本は、逆依存閉包を含む67本を Archive/KST/DescentConditional へ置く。DG診断4本もArchiveへ置く。ScalarTensorViewはCommutativeAlgebra/Moduleへ移す。
 
-旧パスの互換モジュールは外から使われる20本・90名に限る。InfinityCategories外の86名とScalarTensorViewの4名で、instance/simpの二重登録はしない。新しくArchiveへ置く条件付き67本には旧パスの互換モジュールを置かない。既存の無関係なArchive 291本は移植対象に広げない。既存Kerodonタグを持つArchiveの1本だけは照合対象なので、そのimportを更新し検証対象に含める。
+旧パスの互換モジュールは20本・90名に限る。InfinityCategoriesでは外から使われる86名だけにし、ScalarTensorViewは4名の公開APIを保つ。instance/simpの二重登録はしない。新しくArchiveへ置く条件付き67本には旧パスの互換モジュールを置かない。既存の無関係なArchive 291本は移植対象に広げない。既存Kerodonタグを持つArchiveの1本だけは照合対象なので、そのimportを更新し検証対象に含める。
 
 5段の設定はファイル単位を維持する。mainから来た新規5本にも層を割り当てた。元のmainにある§7.4 RightFibrationMappingOverNaturalityから§9.3 PointSlicePostcompIsoへの1辺は、新規例外の案として別表に出す。利用するのは端点スライスの後合成と同型計算で、Ind固有の仮定は使わない。文献への配置を保つ理由はあるが、調整役の承認済み例外と混ぜない。
 

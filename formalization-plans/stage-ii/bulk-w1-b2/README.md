@@ -17,3 +17,5 @@ with gzip.open("attribute-declarations.jsonl.gz", "rt") as source:
 ```
 
 本文の続きは `../report-bulk-w1.md`。独自属性の版は `research/bibliography.json` が正本。属性は数学的対応の新しい証明ではなく、既存レビューの結論を記録する。
+
+`location-refresh-replay-check.json` は付属スクリプトを取り込み前の表に再実行した検査。未解決187行・解決3,905行の全内容と順序が正本と一致した。
