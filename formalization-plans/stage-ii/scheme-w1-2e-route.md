@@ -1519,3 +1519,57 @@ R→R/J の平坦性は仮定しない。ここで同定したのは、基底変
 | `projectiveNatGradingInt_chart_pow_mem` | 指定分母の n 冪の分子の p 乗は、p 倍の捻りと p*n 冪の分母に対応する。 |
 
 標準開図式全体の Frobenius とその Čech 写像を具体化する `ProjectiveCechFrobenius.lean` は、通常の係数作用と Frobenius による制限作用の型合わせが未解決なので、入口から外して未コミットの下書きとして残した。係数の代数の射への自然性も下書きで、まだ完成と数えない。既存の n→p*n の I 進評価と実際の厚化の写像への接続、共通アフィン細分、filtered colimit の比較が残る。**停止点 2e ではない。**
+
+
+## 2026-11-12：実際の Čech Frobenius、I 進商と環の閉厚化との照合
+
+数学コミット **`72c7ff525`**。新規 7 モジュール（590 行）と入口の import 7 行、32 件の数学宣言（公開の次数付き構造の instance 二件を含み、local instance は除く）。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは **4,339 jobs で成功**。別実行の標準監査は **7,276 宣言・標準三公理のみ**。共有鍵 `--wait 3600` は各ビルド・監査の間だけ持ち、待ちは一つにまとめた。既存の数学宣言の本文・型・名前、および計算量上限は変更していない。sorry・admit・新しい公理も追加していない。
+
+標準開の実際の p 乗写像を、係数を Frobenius で制限した図式への自然変換にし、その Čech H の半線形写像を構成した。未検証だった型合わせは、`ModuleCat.ofHom` の対象を明示し、半線形の `map_smulₛₗ` を使うことで解決した。一般の半線形な係数の可換四角形を H へ送る補題を一つにまとめ、次数を保つ代数の射について、局所化・標準開図式・Čech H の三段の自然性を示した。
+
+この **実際の** Čech Frobenius に既存のイデアル冪の制御を適用し、H 自身の I 進商で n→p*n の写像と遷移との可換性、I 進完備化の半線形写像と元の H からの写像の可換性を示した。遷移の証明を Čech H の内部で展開すると kernel timeout が出たため、一般の半線形加群の補題へ分離して適用した。上限は増やしていない。**H/IⁿH を、閉厚化の H と同一視してはいない。**
+
+さらに、実際の環の商 A/J に元の次数成分の像を入れ、単位・積・多項式作用を保つことを示した。局所化が零環になる場合と、環の商自体が零になる場合も含めた。この実際の商写像と Čech Frobenius の可換性を検証した。Rees の実際の商加群 A/IⁿA と環の商 A/(IⁿA) の R 線形・R[X] 線形な比較を作り、同じ代表元と次数成分を保つことから、標準開図式と Čech H の同型へ送った。
+
+登録モジュール：`FrobeniusAdicQuotient`、`ProjectiveCechFrobenius`、`ProjectiveCechSemilinearNaturality`、`ProjectiveFrobeniusNaturality`、`ProjectiveCechFrobeniusAdic`、`ProjectiveRingQuotientGrading`、`ReesClosedRingComparison`。
+
+| 宣言 | 主張 |
+|---|---|
+| `frobeniusSemilinearShiftedQuotientMap` | 任意の Frobenius 半線形写像は、指数 n を p*n へ送る I 進商の写像を誘導する。 |
+| `frobeniusSemilinearShiftedQuotientMap_mk` | その商写像は、代表元に元の半線形写像を適用する。 |
+| `frobeniusSemilinearShiftedQuotientMap_transition` | 指数を p 倍する商写像は、I 進商の遷移と可換。 |
+| `frobeniusSemilinearCompletionMap_of` | Frobenius 半線形な完備化写像は、元の加群からの写像を保つ。 |
+| `projectiveNatGradedChartFrobenius` | 実際の標準開の指定次数の p 乗写像。捻り d を p*d へ送る。 |
+| `projectiveNatGradedChartFrobenius_val` | 指定次数の写像は、周囲の局所化環の Frobenius の制限。 |
+| `projectiveNatGradedChartFrobeniusNatTrans` | 各標準開の Frobenius は、係数を Frobenius で制限した標準開図式への自然変換。 |
+| `projectiveNatGradedCechFrobenius` | 実際の標準開図式の Čech H の Frobenius 半線形写像。 |
+| `projectiveCechSemilinearHomologyMap_naturality` | 半線形な係数図式の可換四角形は、同じ Čech H の可換四角形を与える。 |
+| `projectiveLocalizedFrobenius_map` | 実際の局所化の Frobenius は、代数の射による局所化の写像と可換。 |
+| `projectiveNatGradedChartFrobeniusNatTrans_naturality` | 標準開図式の Frobenius は、次数を保つ代数の射に自然。 |
+| `projectiveNatGradedCechFrobenius_naturality` | 実際の Čech H の Frobenius は、次数を保つ代数の射に自然。 |
+| `projectiveNatGradedCechFrobenius_ideal_power_control` | 実際の Čech Frobenius は、H の Iⁿ 倍を I^(p*n) 倍へ送る。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap` | 実際の Čech Frobenius が H 自身の I 進商へ誘導する、指数 n→p*n の写像。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap_mk` | この I 進商の写像は、同じ H の代表元に Frobenius を適用する。 |
+| `projectiveNatGradedCechFrobeniusAdicQuotientMap_transition` | 実際の Čech Frobenius の I 進商の写像は、遷移と可換。 |
+| `projectiveNatGradedCechFrobeniusAdicCompletionMap` | 実際の Čech Frobenius の I 進完備化の半線形写像。 |
+| `projectiveNatGradedCechFrobeniusAdicCompletionMap_of` | 実際の Čech Frobenius の完備化は、元の H からの写像を保つ。 |
+| `projectiveRingQuotientGrade` | 実際の商環の次数成分を、元の次数成分の商写像による像として定義する。 |
+| `projectiveRingQuotientGradeGradedMonoid` | 商環の次数成分は、単位と積を保つ。 |
+| `projectiveRingQuotientGradeGradedSMul` | 商環の次数成分は、元の多項式環の次数付き作用を保つ。 |
+| `projectiveRingQuotientProjection_preservesPiece` | 実際の商写像は、元の次数成分を商の同じ次数成分へ送る。 |
+| `projectiveRingQuotient_primeCast_eq_zero` | p の像が零であることは、零環を許す商環でも成り立つ。 |
+| `projectiveRingQuotientCechFrobenius_naturality` | 実際の環の商への射影と、標準開の Čech Frobenius は可換。 |
+| `reesClosedRing_submodule_eq` | Rees の閉厚化の部分加群は、A の拡大イデアルの係数制限。 |
+| `reesClosedRingLinearEquiv` | Rees の商加群表示と、実際の環の閉厚化との R 線形同型。 |
+| `reesClosedRingLinearEquiv_mk` | 環の商との比較は、同じ代表元を持つ剰余類を対応させる。 |
+| `reesClosedRingPolynomialEquiv` | 環の商との比較を、多項式環上の線形同型へ昇格する。 |
+| `reesClosedRingPolynomialEquiv_mk` | 多項式線形な比較も、同じ代表元を送る。 |
+| `reesClosedRingPolynomialEquiv_mem_iff` | 比較は、商の Proj 次数成分を両方向で対応させる。 |
+| `reesClosedRingChartIso` | Rees の閉厚化と実際の環の閉厚化の標準開図式の同型。 |
+| `reesClosedRingCechIso` | Rees の閉厚化と実際の環の商の Čech H の同型。 |
+
+原典の Hⁱ に対応する主張の docstring は「Čech 版」と明記し、Stacks 30.2.6 の比較は形式化しないと記した。最終出力と利用側の `AugmentedRingCechExact` の型は変更していない。
+
+残り：`reesClosedRingChartIso`・`reesClosedRingCechIso` と、以前の閉厚化への射影・厚化間の遷移との可換性を、同じ実際の商写像で明示する。その後、閉厚化の Frobenius を互換族と形式関数の同型へ接続する。H 自身の I 進商の n→p*n の写像ができたことだけでは、閉厚化の H の間の指数を移す写像までできたとはしない。共通アフィン細分、filtered colimit の実際の比較も未完。**停止点 2e ではない。**
+
+証拠：作業木の `scheme-drafts/` に、`frobenius-root-importer-build-3.log`、`rees-closed-ring-build.log`、`frobenius-closed-ring-audit.log`、`verified-frobenius-closed-ring.json` を保存した。
