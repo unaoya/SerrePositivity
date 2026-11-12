@@ -5037,3 +5037,52 @@ sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却
 監査 `audit-em-stage-naturality.log` は **87 本・709 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 整数次数の自然性と、§76.2 の指定比較の充満忠実性は続行する。
+
+## 78. D79(ii)：整数 π/H の自然同型と指定正規化屋根の弱同値性
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneSpectrumPiNaturality | 85 |
+| EilenbergMacLaneSpectrumHomologyIso | 38 |
+| ComplexNormalizedCommonFrame | 69 |
+| ComplexNormalizedRoofMaps | 58 |
+| ComplexNormalizedRoofWeak | 95 |
+
+追加 **345 行**、(ii) の検証済み累計 **5429 行**。
+後ろ三本は **［一般∞］移動候補**（複体模型に関する比較）。
+
+### 78.1 整数 π/H の全鎖写像に対する比較
+
+`eilenbergMacLaneSpectrumPiCohomologyEquiv_naturality` を閉じた。
+標準計算段への次数移送の既存自然性と、§77 の同じ置換射の自然性を合成した。
+`eilenbergMacLaneSpectrumPiCohomologyEquiv_apply` は、元の指定比較の順写像と
+計算段の比較の厳密な等式である。局所的な略記を展開して接続することで、
+不要な模型の定義展開による elaboration の時間切れを解消した。
+
+`eilenbergMacLaneSpectrumHomologyIso A j` は、全複体の通常の圏上の
+**関手全体の自然同型**
+`eilenbergMacLaneSpectrumFunctor A ⋙ OmegaSpectrum.homotopyFunctor j ≅
+complexMultiplicativeCohomology A j` である。
+既存 D(A) 上の自然同型とはまだ区別する。
+
+### 78.2 指定屋根の弱同値性
+
+元の標準 frame と正規化テンソル frame の同じ共通置換を使い、左右の実射、
+augmentation の厳密な三角形を明示した。
+全要素圏の実比較の反転性を通して、
+`complexNormalizedTensorRoof_weak` を閉じた。
+これは写像空間の抽象的な同値の存在でなく、同じ全単体の屋根写像そのものの弱同値性。
+`[ModelCategory SSet]` の未供給の仮定はない。
+
+次は同じ全要素屋根を相対圏へ送り、`RoofPrefix.native_family_postcomp_column_roof_arrow`
+と `NerveColumn.roof_naturality` に指定 sourceIso を代入する。
+これで §76.2 の残りの指定比較の実写像空間への作用を照合する。
+D(A) から Sp への V と (ii) の終了はまだ宣言しない。
+
+### 78.3 検証
+
+`em-spectrum-pi-naturality-08.log`、`em-pi-and-roof-03.log` の
+`ComplexNormalizedRoofWeak`、`em-homology-iso-01.log` は成功。
+最終版の五本に警告なし。
+監査 `audit-em-pi-roof.log` は **92 本・743 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
