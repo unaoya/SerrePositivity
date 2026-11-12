@@ -205,7 +205,7 @@ def sections_block(rows) -> str:
             total[s] += n
             cells.append(f'<td class="num">{n or ""}</td>')
         f = chapter_of.get(sec)
-        ch = f'<a href="{f}#items-{f[:2]}">{int(f[:2])}</a>' if f else "—"
+        ch = (f'<a href="{f}">{int(f[:2])}</a>' if f in NO_ITEMS_TABLE else f'<a href="{f}#items-{f[:2]}">{int(f[:2])}</a>') if f else "—"
         lines.append(
             f'<tr><td>§{sec}</td><td>{title}</td><td class="num">{len(sel)}</td>'
             f'<td class="num">{len(needed) or ""}</td>{"".join(cells)}<td>{ch}</td></tr>'
@@ -228,6 +228,8 @@ VERIFY = {
 VERIFY_NO = ("未確認", "v-no")
 VTAG_RE = re.compile(r'\s*<span class="vtag[^"]*">[^<]*</span>')
 ITEM_RE = re.compile(r'<h4 class="item">(.*?)</h4>(.*?)(?=<h4 class="item">|<h2|<!-- items:begin|</main>)', re.S)
+# 「原典の項目一覧」を置かない章（地図と重複するので外した。見出しのラベルだけ付ける）
+NO_ITEMS_TABLE = {"02-delta.html", "03-prism.html"}
 NUM_RE = re.compile(r"(?:Definition|Def|Lemma|Remark|Rem|Example|Ex|Corollary|Cor|Proposition|Prop|Theorem|Thm|Warning|Warn|Construction|Constr|Notation|Not)\.?\s*(\d+\.\d+)")
 
 
@@ -262,6 +264,8 @@ def replace_marked(text: str, tag: str, block: str, fallback: re.Pattern, fname:
     pat = re.compile(rf"<!-- {tag}:begin.*?<!-- {tag}:end -->", re.S)
     if pat.search(text):
         return pat.sub(lambda _: block, text, count=1)
+    if tag == "items" and fname in NO_ITEMS_TABLE:
+        return text  # 項目の表を地図に任せた章（2026-11-12 から。状態は見出しのラベル）
     m = fallback.search(text)
     if not m:
         sys.exit(f"{fname}: 印も、初回に置き換える範囲も見つからない")

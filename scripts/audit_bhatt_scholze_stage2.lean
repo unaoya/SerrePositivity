@@ -836,6 +836,25 @@ import SerrePositivity.EInfinity.Interface.TensorUnitClasses
 import SerrePositivity.EInfinity.NativeBinaryCoconeHom
 import SerrePositivity.EInfinity.StrictAdjunctionBar
 import SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimits.BinaryCoconeApexTransport
+import SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryInputActionEquality
+import SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality
+import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfStrictComparison
+import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients
+import SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt
+import SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation
+import SerrePositivity.EInfinity.BarrattEccles.Theory.OrbitQuotientCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality
+import SerrePositivity.EInfinity.BarrattEccles.Theory.StandardHopfInput
+import SerrePositivity.EInfinity.BarrattEccles.Theory.StandardQuotientCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.StandardSourceComparison
+import SerrePositivity.EInfinity.BarrattEccles.Theory.StandardTensorSeparation
+import SerrePositivity.EInfinity.BarrattEccles.Theory.StandardUnitAction
+import SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility
+import SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle
+import SerrePositivity.EInfinity.BarrattEccles.Theory.WordQuotientTransport
 import Lean.Util.CollectAxioms
 
 /-!
@@ -848,6 +867,25 @@ import Lean.Util.CollectAxioms
 open Lean in
 run_cmd do
   let mods : Array Name := #[
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryInputActionEquality,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.CoinvariantQuotientNaturality,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeHopfStrictComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.InducedQuotientCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.OrbitQuotientCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.SourceQuotientNaturality,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardHopfInput,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardQuotientCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardSourceComparison,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardTensorSeparation,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.StandardUnitAction,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.TwoColorTargetCompatibility,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.UnitInputShuffle,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.WordQuotientTransport,
     `SerrePositivity.EInfinity.BarrattEccles.Theory.AnodyneBinaryProducts,
     `SerrePositivity.EInfinity.BarrattEccles.Theory.Assembly,
     `SerrePositivity.EInfinity.BarrattEccles.Theory.BinaryTensorColorClassification,
