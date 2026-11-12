@@ -1,9 +1,10 @@
-"""Compare unchanged fingerprints using a source projection for new cite metadata.
-Only source-authorship parsing changes: fingerprints/axioms/kernel attributes and
-original generated-name inventories are retained verbatim.
+"""Compare v3b fingerprints with cite projection and owned private row names.
+Native captures qualify source-private references by their defining module.
+Type/body hashes, axioms and kernel attributes remain checked; raw compiler
+inventories remain available without ordinal pairing.
 """
 from pathlib import Path
-import sys,re,json,hashlib,io,contextlib
+import sys,re,json,hashlib,io,contextlib,inspect
 sys.path.insert(0,str(Path(__file__).resolve().parent))
 import compare_snapshots as C
 original=C.declaration_source
@@ -24,6 +25,23 @@ def aux(name,module,authored=()):
  return any(re.fullmatch(r'_aux_'+encoded+r'___(?:macroRules|unexpand)_.+',p) for p in parts)
 
 C.declaration_source=projection;C.notation_auxiliary=aux
+
+def private_owned_functions():
+ # Only actual private rows use owner-scoped user-name normalization. Public
+ # names retain the existing v3b rules. Kernel fingerprints are still compared.
+ source=inspect.getsource(C.normalized)
+ old="return normalize_generated_name(rename(name, mapping), generated_modules)"
+ new="return normalize_generated_name(rename(name, module_map.get('private_normalization', {}).get(module, {}) if row.get('is_private', False) else mapping), generated_modules)"
+ if source.count(old)!=1:raise ValueError('Shared v3b comparator changed; review private ownership handling')
+ scope=dict(vars(C));exec(compile(source.replace(old,new),'<bulk private row ownership>','exec'),scope)
+ normalized=scope['normalized']
+ source=inspect.getsource(C.auxiliary_groups)
+ old="key = (rename(parent, mapping), target)"
+ new="key = (rename(parent, module_map.get('private_normalization', {}).get(module, {}) if row.get('is_private', False) else mapping), target)"
+ if source.count(old)!=1:raise ValueError('Shared auxiliary inventory changed; review private ownership handling')
+ scope=dict(vars(C));exec(compile(source.replace(old,new),'<bulk private auxiliary ownership>','exec'),scope)
+ return normalized,scope['auxiliary_groups']
+C.normalized,C.auxiliary_groups=private_owned_functions()
 def main():
  with contextlib.redirect_stdout(io.StringIO()) as captured:
   status=C.main()

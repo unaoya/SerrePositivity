@@ -159,11 +159,6 @@
       "sha256": "e20fc4177a26796c6994f2b281f1b72ae5c13bd6a319c0a28a85c310d5aafb0f"
     },
     {
-      "source": "bulk-comparator-sensitivity.json",
-      "artifact": "bulk-comparator-sensitivity.json.gz",
-      "sha256": "3b33ec1f3c3d6785e7891475f39a761192a002687cb4467f178257da3b112fbc"
-    },
-    {
       "source": "full-destination-collision-check.json",
       "artifact": "full-destination-collision-check.json.gz",
       "sha256": "1be9ec325f9c8f4987fe8560626c1fb1a4d70f8a01167e60cb4baf42d3065ce7"
@@ -184,14 +179,69 @@
       "sha256": "2e71a1673760ee4addc0cc849525c7a9e92c5098c863bf74e7160660525c685e"
     },
     {
-      "source": "preview-bundle-summary.json",
-      "artifact": "preview-bundle-summary.json.gz",
-      "sha256": "e5e789a5a3df24286f09f58765917d769a8655d1f92c23ae4bf054b9d405bbce"
-    },
-    {
       "source": "main-incremental-refresh.json",
       "artifact": "main-incremental-refresh.json.gz",
       "sha256": "a822b251d5e5666a4a23c4645c886093edf3403edca03cf3cca340d879b84141"
+    },
+    {
+      "source": "sequential-open-collector-check.json",
+      "artifact": "sequential-open-collector-check.json.gz",
+      "sha256": "5f214908d75268114fc3f0881bb90e9d6b680748bb0db736f3aabf3544517244"
+    },
+    {
+      "source": "sequential-open-rewrite-review.json",
+      "artifact": "sequential-open-rewrite-review.json.gz",
+      "sha256": "00131651e41c0bbfcc94cc30ea47d115068aac5181f375810bd0ae075e06166c"
+    },
+    {
+      "source": "final-open-bindings-correction.json",
+      "artifact": "final-open-bindings-correction.json.gz",
+      "sha256": "41f046bfefb756d4bf2cccada23c74083a30cc0110d21eae28dab5b38e5aacc9"
+    },
+    {
+      "source": "named-instance-correction.json",
+      "artifact": "named-instance-correction.json.gz",
+      "sha256": "c222758edeab73350d245d0b45bc782c9ae20c5d2959ae43d817550f0eaa1876"
+    },
+    {
+      "source": "private-snapshot/receipt.json",
+      "artifact": "private-snapshot--receipt.json.gz",
+      "sha256": "91f0f320e1c8563900ed66808cf8953a57d6fdf39e50d264332f3de3e7aa0f39"
+    },
+    {
+      "source": "private-snapshot-runtime-check.json",
+      "artifact": "private-snapshot-runtime-check.json.gz",
+      "sha256": "c83c6726c9e7d3406e3fe0d22b57143aa8c8d6ad75b48fae5acf3db9ffe5f5f9"
+    },
+    {
+      "source": "doc-cache-early-complete.json",
+      "artifact": "doc-cache-early-complete.json.gz",
+      "sha256": "dc3c5d9695345b2baa35fc0525c7e2131ec5da8fe6ed8c53453d3a06e55584bb"
+    },
+    {
+      "source": "r21-doc-format-inventory.json",
+      "artifact": "r21-doc-format-inventory.json.gz",
+      "sha256": "5cc421a9f3859fc7b998cb4a6960886a5fa2411924d42fd756bb55d83cff920b"
+    },
+    {
+      "source": "r21-whitespace-plan.json",
+      "artifact": "r21-whitespace-plan.json.gz",
+      "sha256": "1c9f7c9b0901582d3d3bf942f676edab9ebe19ac102d7c19c11f1e8f7590b62d"
+    },
+    {
+      "source": "replay-application-measurement.json",
+      "artifact": "replay-application-measurement.json.gz",
+      "sha256": "9b4031af9df8c5e8d1595ee7ee3e720d6faad731eff65720047fbaddec3f70b6"
+    },
+    {
+      "source": "preview-bundle-summary.json",
+      "artifact": "preview-bundle-summary.json.gz",
+      "sha256": "8b72d44b4353dbb44d51c9212f0ed4b7d6a6bce95abb789fb4495f6a36f88d04"
+    },
+    {
+      "source": "bulk-comparator-sensitivity.json",
+      "artifact": "bulk-comparator-sensitivity.json.gz",
+      "sha256": "3b33ec1f3c3d6785e7891475f39a761192a002687cb4467f178257da3b112fbc"
     }
   ]
 }

@@ -24,6 +24,13 @@ class ProjectionChecks(unittest.TestCase):
  def test_projection_preserves_offsets(self):
   s='namespace N\nlocal notation "x" => 1\nprivate def f : Nat := x\nend N\n'
   projected=B.projection(s);self.assertEqual(len(s),len(projected));self.assertEqual([i for i,c in enumerate(s) if c=='\n'],[i for i,c in enumerate(projected) if c=='\n'])
+ def test_same_private_user_name_is_normalized_per_owner(self):
+  a=fixture();row=a['declarations'][0];row.update(name='Old.secret',parent='Old.secret',is_private=True,module='A');a['sources']=[];a['declarations'].append(dict(row,module='B'))
+  b=copy.deepcopy(a);b['declarations'][0].update(module='NewA',name='New.secret',parent='New.secret')
+  plan={'modules':{'A':'NewA'},'private_normalization':{'A':{'Old.secret':'New.secret'},'B':{'Old.secret':'Old.secret'}}}
+  self.assertEqual(B.C.compare(a,b,{},plan)['status'],'PASS')
+  b['declarations'][1]['body_hash']='different private value'
+  self.assertEqual(B.C.compare(a,b,{},plan)['status'],'FAIL')
  def test_cli_failure_exit_status_is_not_lost(self):
   with tempfile.TemporaryDirectory() as t:
    root=Path(t);a=fixture();b=copy.deepcopy(a);b['declarations'][0]['body_hash']='24'
