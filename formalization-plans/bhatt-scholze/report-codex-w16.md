@@ -5356,3 +5356,54 @@ sorry・追加公理なし。共有入口・共有監査は未変更。
 sorry・追加公理なし。共有入口・共有監査は未変更。
 次は同じ完全周期解像度からの Hom 複体と、完全入力での比較を進める。
 非有界入力の全次数の積による Hom を、native Tate 関手と無条件に同定しない。
+
+
+## 85. D79(iii)：完全周期 Hom の指定係数比較と有界な係数の非輪状性
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| LinearHomComplexFunctor | 55 |
+| CyclicResolutionHomComplex | 38 |
+| CyclicResolutionSingleHom | 57 |
+| CyclicResolutionSingleHomology | 51 |
+| CyclicResolutionHomNaturality | 89 |
+| BoundedAcyclicHomotopy | 63 |
+| BoundedAcyclicHomComplex | 51 |
+
+追加 **404 行**、(iii) **764 行**、(ii)+(iii) **7,958 行**。
+LinearHomComplexFunctor・BoundedAcyclicHomotopy・BoundedAcyclicHomComplex は
+一般の線形／アーベル圏での補助で、基盤への移動候補。
+
+### 85.1 同じ係数類と全自然比較
+
+指定した左正則完全周期解像度から、作用付き入力への実 `linearHomComplex` を取った。
+`powerOperationTensorResolutionHom` は元の p 入力との合成の全関手。
+自明な離散係数では、同じ Hom 微分そのものが整数全次数で零となる。
+`cyclicResolutionSingleDegreeEquiv` は、その各次数を同じ左正則表現の評価で係数へ送る。
+
+`cyclicResolutionDiscreteHomologyNatIso` は、この Hom の H^i と元の係数加群との
+**全関手の自然同型**。`cyclicResolutionCoefficientClassIso_value` は
+Hom の零次数の 1 に対応する類を、§84 の周期係数模型の負一次の指定類へ送る。
+この零次／負一次の違いは、採用した解像度の周期の規約によるものとして明示した。
+まだ native spectral Tate と同定したという主張ではない。
+
+### 85.2 係数側の有界性を明示した
+
+`homotopyZero_to_acyclic_boundedAbove` は、各項が射影的な P から、
+**上に有界な**非輪状 M への全鎖写像が零にホモトピックであることを示す。
+双対の帰納法は Mathlib の `isKInjective_of_injective_aux` をそのまま使い、
+非輪状な始域側の零範囲から開始する形で証明した。
+`linearHomComplex_acyclic_boundedAbove` は全整数次数の Hom 複体の非輪状性を与える。
+
+周期解像度 P が非有界な係数すべてに対して K 射影的であるとは主張しない。
+この補題は完全な入力を bounded 模型で扱う比較の前段であり、
+一般入力の Tate と余極限保存延長 T_p を区別する。
+
+### 85.3 検証
+
+`cyclic-resolution-hom-01.log`・`cyclic-resolution-single-homology-01.log`・
+`bounded-acyclic-homotopy-02.log`・`bounded-acyclic-hom-complex-02.log`：対象成功。
+七本の最終版に新規警告なし。
+`audit-cyclic-hom.log`：**138 本・1,042 宣言、標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+次は p 入力の混合色の巡回軌道の自由性と、完全入力の Tate 比較を進める。
