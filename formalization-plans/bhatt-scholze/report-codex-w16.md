@@ -4559,3 +4559,93 @@ Eilenberg–Mac Lane 列の Ω 条件そのものは引き続き未証明であ�
 最終六本に新規警告・sorry・追加公理なし。終了・鍵返却を回収済み。
 登録候補は表の六本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
 次は指定単位の零次数の係数と、基本円を使う Ω 比較の照合を続ける。
+
+## 66. 夜の代わりの作業：M15 の一般 R 加群の段 0（紙のみ）
+
+### 66.1 必要な一般性と型の案
+
+`Shared/Descendable.lean` の一般形では、R は `(E.CAlg A)` の任意の頂点。
+R を離散環 A の像に制限した D(A) の thick ideal で代用しない。
+以下は **新しい名前の型案**であり、現存する宣言・検証済みコードではない。
+`EInfinityTheory` に M15 の欄を加える提案でもない。
+
+```lean
+-- E : EInfinityTheory.{u}, A : Type u, [CommRing A]
+-- R B : (E.CAlg A) _⦋0⦌, f : SSet.Edge R B
+modulesOver (E : EInfinityTheory.{u}) (A : Type u) [CommRing A]
+  (R : (E.CAlg A) _⦋0⦌) : SSet.{u+1}
+modulesOverForget (R : (E.CAlg A) _⦋0⦌) :
+  modulesOver E A R ⟶ derivedInfinityCategory A
+moduleUnit (R : (E.CAlg A) _⦋0⦌) : (modulesOver E A R) _⦋0⦌
+algebraAsModule (f : SSet.Edge R B) : (modulesOver E A R) _⦋0⦌
+moduleTensorWith (R : (E.CAlg A) _⦋0⦌) (M : (modulesOver E A R) _⦋0⦌) :
+  modulesOver E A R ⟶ modulesOver E A R
+moduleRestrict (f : SSet.Edge R B) : modulesOver E A B ⟶ modulesOver E A R
+moduleExtend (f : SSet.Edge R B) : modulesOver E A R ⟶ modulesOver E A B
+```
+
+単位加群から `algebraAsModule f` への指定辺が必要であり、台は `E.forget A` が送る f。
+f の fiber は **modulesOver E A R の中で**取る。
+指数 n の射は、その fiber の n 重相対テンソルから同じ単位加群への指定射。
+`HasDescentIndexLEOver` はその射のホモトピー圏での零性、
+`IsDescendableOver` は `algebraAsModule f` の生成する thick ⊗-ideal が同じ単位を含むこと。
+両者を先に同値と定義してしまわず、同値は drafts の定理として証明する。
+
+### 66.2 再利用できる宣言と、まだ比較が要る境界
+
+- `DifferentialGraded.LeftModule`・`LeftModuleCategory`・`leftModuleEvaluationDG`・
+  `leftModuleEvaluation` は dg 圏上の左加群の実構成。
+  `DifferentialGraded.Module.Left.CategoryComparison` の `ringModuleEquivalence` は
+  **定数一対象 dg 圏**での比較。一般の E∞ 頂点 R の加群圏の供給とは別。
+- `CategoryTheory/Monoidal/Mod/BalancedTensor` の `BalancedTensor.obj`・`projection`・
+  `desc`・`moduleBifunctor` は通常の内部加群と実 coequalizer の部品。
+  元の環の単なる H⁰、または hD(A) の中の通常の代数対象へ移して終わりにはできない。
+  derived relative tensor は適切な置換・bar の実現・native な比較を要する。
+- 安定閉包には `StableInfinityCategories/StableVertexExtension`・
+  `StableHoGeneration`・`CofiberLocalizingComposition` の既存の閉包の部品を再利用できる。
+  これらだけでは相対テンソルでの閉性も、R 加群の台との比較も供給されない。
+- 一般の R に関する restriction/extension は、辺の合成、指定された底変換四角形、
+  単位・相対テンソルまでの比較が必要。対象ごとに R の厳密模型を選ぶだけでは
+  `isDescendableOver_pushout`・`isDescendableOver_tensorMaps` の全自然な主張を閉じない。
+
+BE の厳密代数の模型を使う場合でも、単なる通常の可換 dg 環と同一視してはならない。
+BE 代数の可換性は高次の整合を含む。通常の `CommMon` の balanced tensor を
+無条件にそのまま適用する経路は、必要な仮定が供給されていない。
+BE の実例の内部で module の模型と比較を証明し、BS の利用側は模型の中身を参照しない形が必要。
+
+### 66.3 証明の順序と、供給する比較
+
+1. 一般 R の native な module 準圏、その単位と台の忘却を構成する。
+   厳密模型を使う場合は、置換と同値な R に対する module 圏の同値まで含める。
+2. 相対テンソル・restriction/extension の随伴、単位・結合性・対称性、
+   f に沿う底変換の比較を作る。一般の coherent な R への降下を対象ごとの選択で省かない。
+3. 安定性と tensor の有限余極限保存を示し、生成する thick ideal と
+   fiber の指数射の零性の同値に進む。ここは E∞ を直接使わない一般補題へ分けられる。
+4. 既存 drafts の AmitsurData の同じ増大錐を使って Tot 降下へ進む。
+   ③-b の実現・Tot の橋との比較はこの段に置き、単なる次数ごとの同型で代用しない。
+5. RHom・Frobenius colimit の指数評価・完備版を一般 R のまま供給する。
+   drafts の `True := by trivial` は証明済みの項目とは数えない。
+
+HA の地図の対応は §61.4 のまま：4.2.1.15、4.2.3.5・4.2.3.7、
+4.5.1.1・4.5.2.1・4.5.3.1。descendability 自体は Mathew Definition 3.18・
+Proposition 3.22、指数の利用は BS17 §11.2・Lemma 11.22。
+この節は地図上の対応を一般 module 圏の既証明性と読み替えていない。
+
+### 66.4 規模と後で要る分担判断
+
+§61.4 の **一般 R 加群 2,500〜4,500 行**を、次の内訳で追跡する。
+
+| 束 | 見込み（行） | 必須の出力 |
+| --- | ---: | --- |
+| 模型・native 比較 | 800〜1,500 | R と射に関する coherent な module 圏と台 |
+| 相対テンソル・底変換 | 1,000〜1,800 | 単位・結合・対称・restriction/extension の比較 |
+| 安定性・利用側への接続 | 700〜1,200 | fiber・thick ideal の一般性、指定単位と指定辺 |
+| **計** | **2,500〜4,500** | |
+
+これは実測ではなく見込み。一般の coherent な module 構成を他レーンが供給する場合は
+適用の費用と二重計上しない。現存の通常の module API だけで最初の束を閉じられるとは
+まだ確認していないので、M15 着手時に **一般の native module 圏と相対テンソルを誰が供給するか**
+を決める必要がある（調整役の既存の予告どおり）。
+RHom と完備版の正確な入力は A5 の利用側とすり合わせる。
+新しい interface 欄、drafts の型変更、M15 の Lean 実装には着手していない。
+この紙の作業にビルド・監査・新しい整理券は使っていない。M14 の (ii) は続行中。
