@@ -120,3 +120,11 @@ BS-W14 で作った界面 `EInfinityTheory` の実例 `barrattEcclesTheory`（dr
 3. **Tot の群**は G10（3b-2）と 3b-4 の後に 5a-5。
 4. **界面に欄を足す**：`coproduct_tensor` の同型が `coprodWith_cocone` の二脚をテンソルの標準射へ送る条件を、`EInfinityTheory` の欄として足す（名前は ⑤a が提案、§3 の 3 の組み立て関数ではこの欄も引数に）。drafts 33 本は `E` を受け取るだけなので影響は実例の sorry が一つ増えるだけ。A2 の `derivedPrismaticCohomology_tensor` がこの欄を使う。
 5. 止まり方：共通部分（§11）と同じく、超過が 3 割以内なら報告して続け、3 割を超えそうなときだけ止める。
+
+## 13. 追記（2026-11-12、調整役）：`coproduct_tensor_legs` の型の検収（D78）
+
+§28（cb117f8f2、型は 7c71d375c）の型を承認する。
+
+- **承認する点**：`θ` は既存の `coproduct_tensor S y` の同じ全関手の同型で、対象ごとに選び直さない。二脚は `coprodWith_cocone` の実際の二脚。右辺の標準射は、単位 `unitX`・`unitY` を `NormalizedTensorUnit`（H⁰ の類で単位を固定）で正規化した `(ρ_ _).inv ≫ (𝟙 _ ⊗ₘ unitY)` と `(λ_ _).inv ≫ (unitX ⊗ₘ 𝟙 _)` の D(S) での類（HA 3.2.4.7 の「単位による二つの包含」）。単位代数からの射を全称で量化するのは、`discrete_initial` により空でなく、ホモトピーで一意なので問題ない。`Interface/` が BE・hammock を import せず `[ModelCategory _]` を置かない（D71）ことも確認した。
+- **ホモトピー圏での等式で足りる理由**：図式は二点の離散な図式なので、余錐は頂点と二本の辺だけで、二脚の間に高次の coherence はない。ホモトピー圏での等式があれば、各脚について 2 単体の証人が取れ、錐を頂点の同値に沿って移せる。§28.2 の「錐の比較補題」はこの一般の補題として置く：**二点の離散な図式の余錐を、頂点の同値と、ホモトピー圏で二脚が一致する条件のもとで移送すると、余極限性が保たれる**。これは BE と無関係の一般の ∞ 圏の補題なので、`InfinityCategories/Kerodon/LimitsAndColimits/` の該当する節に置く（KL-W1 の取り込みの後）。⑤a が 5a-2 の一部として作る。条件を coherent な三角形の選択まで強める必要はない。
+- 界面の変更は、KL-W1 の取り込みと改名への追従の後に main に入れる。
