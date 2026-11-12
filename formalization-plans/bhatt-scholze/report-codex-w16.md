@@ -4710,3 +4710,26 @@ RHom と完備版の正確な入力は A5 の利用側とすり合わせる。
 `PointedSmashUnitSeed` は **［一般∞］移動候補**として EInfinity 下に置いた。
 共通入口・共通監査は変更していない。監査終了と鍵返却を回収済み。
 この区切りでも止まらず、Γ の cone の比較から Ω 条件へ進む。
+
+
+## 68. D79(ii)：cone の strict fiber と loop 側の保存性
+
+追加五本は `EilenbergMacLaneConeFibration`（62 行）、
+`EilenbergMacLaneConePullback`（57 行）、`EilenbergMacLanePointedLimits`（46 行）、
+`EilenbergMacLaneLoopProperties`（64 行）、`ShortExactPullbackZero`（35 行）。
+計 **264 行**、(ii) の検証済み累計 **2568 行**。
+登録候補はこの五本（接頭辞 `SerrePositivity.EInfinity.PowerOperation.`）。
+`ShortExactPullbackZero` は **［一般∞］移動候補**。
+
+`coneProjection_projectiveFibration` は実際の cone の第三射について既存の次数付き
+section を使う。`gammaCone_isPullback` は回転 cone の短完全列を、同じ四射の
+Γ の引き戻しへ移す。`gammaIdentityCone_zero_piIsomorphism` は恒等射の cone から
+零複体への指定零射の全基点 π 同型。Γ と loop Γ の有限極限・零射の保存、
+loop Γ の実射影 fibration と準同型の保存も証明した。
+指定構造射の Ω 条件と native な V の降下は引き続き未完了。
+
+対象ビルド `em-cone-pullback-02.log`、`em-cone-pullback-04.log`、
+`em-loop-properties-02.log` は成功（最終版で警告なし）。
+監査 `/tmp/bsw16/audit-em-cone-properties.log` は **45 本・420 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更、鍵返却を回収済み。
+夜の規則に従い、報告後も持ち上げ性と接続写像の比較へ続行する。
