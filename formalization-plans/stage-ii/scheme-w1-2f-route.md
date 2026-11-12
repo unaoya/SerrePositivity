@@ -199,3 +199,21 @@ F3 全体は未完。有限段の持ち上げを入力する一般補題まで�
 | `finiteLocalizedSurjective_exists_pow_map_lift` | 有限環拡大で上の局所全射性が成り立ち I が有限生成なら、ある IⁿB のすべての元は A から来る。 |
 
 F3 はなお未完。次は導手の四角形を指定された中心 I の商の四角形へ移し、核の nil 性による左の単射性と合わせて短完全性をまとめる。局所化した線形写像の全射性を幾何学的な中心外の同型から供給する接続も、利用時に明示する。F4〜F8 の H⁰ の環、射影 Čech の台、厚化を経由する Frobenius、全複体への接続を引き続き行う。今回の条件付きの補題を有限変更の完全な定理または停止点 2f とは呼ばない。
+
+## F3 途中：指定中心の四角形への移送（42d61a30b）
+
+新規 4 本・7 宣言・221 行。2f 累計 15 本・841 行（入口の import 込み 856 行）。対象と直接 importer は 4,561 jobs 成功。別実行の監査は 8,681 宣言・標準三公理のみ。共有鍵 `--wait 3600` を実行ごとに取得して返却した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `frobeniusPowerCenter_bijective` | 正の冪の商 A/Iⁿ→A/I は Frobenius 順極限で全単射。 |
+| `surjectiveSpectrum_comap_map_pow_le_radical` | Spec 全射なら f⁻¹(IⁿB) は √(Iⁿ) に含まれる。 |
+| `frobeniusContractedPowerCenter_bijective` | 実際の因子写像 A/Iⁿ→A/f⁻¹(IⁿB) は Frobenius 順極限で全単射。 |
+| `squareLift_transport` | 共通対象からの単射・全射と右下の単射および可換性を使い、四角形の持ち上げを移送する。 |
+| `frobeniusCenterSquare_lift` | Spec 全射かつ I の正の冪の拡大が像に入るなら、B と A/I の順極限で B/IB 上一致する元は A の順極限から同時に持ち上がる。 |
+| `frobeniusDirectLimitMap_injective_of_surjectiveSpectrum` | Spec 全射な環準同型は、Frobenius 順極限で単射。 |
+| `frobeniusFiniteModificationSquare_lift` | 有限環拡大で中心外の局所化した射が全射なら、導手の冪の存在を供給して指定中心の四角形での持ち上げを得る。 |
+
+すべての辺は実際の環準同型・商の因子写像の誘導射である。A/Iⁿ を共通対象にし、B/IⁿB→B/IB の順極限での単射性で一致を反映する。これにより、持ち上げが直ちに I に入ると仮定する誤りを避け、根基の逆像との比較を明示した。
+
+残り：F3 の加法群の短完全列としての取りまとめ、および利用側の幾何学的な中心外の同型との接続。F4〜F8（H⁰ の環、台、厚化を経由する Frobenius、全複体）は未完。停止点 2f ではない。
