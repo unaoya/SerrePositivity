@@ -58,7 +58,7 @@
 <h2>各章の書き方</h2>
 <ul>
   <li>冒頭に基準コミットを書く。並行作業でコードが変わるため。</li>
-  <li>数学の定義・定理を述べ、対応する Lean の宣言名（<code>&lt;code&gt;</code>）とファイル（<code>../../../SerrePositivity/...</code> への相対リンク）を添える。証明は方針・鍵になる補題・Lean での組み立て方まで追う。</li>
+  <li>原典の項目ごとに見出し（<code>&lt;h4 class="item"&gt;</code>、例「命題 2.2.1（原典 Lemma 2.15）」）を一つ置き、その下に<b>主張</b>・<b>Lean</b>・<b>証明</b>の三つの囲み（<code>box claim</code>・<code>box lean</code>・<code>box proof</code>）をこの順に並べる（2026-11-12 から）。Lean の囲みには対応する宣言名（<code>&lt;code&gt;</code>）とファイル（<code>../../../SerrePositivity/...</code> への相対リンク、「ファイル:行」）を書き、本体にないときは「本体にない」と書く。証明は方針・鍵になる補題まで追い、原典が省いた所を補ったときはそう書く。原典との差は同じ見出しの下の最後に「原典との差」の囲みで置く。</li>
   <li>原典との差（経路・規約・一般性）は本文では独立した囲みにし、章末の「原典との差の評価」に D 番号で利点・欠点・方針をまとめる。</li>
   <li>章末に「原典の項目一覧」を置く。中身は地図 <code>research/bs-coverage/items.csv</code> から <code>build_items.py</code> で生成し（印 <code>&lt;!-- items:begin --&gt;</code>〜<code>&lt;!-- items:end --&gt;</code> の間）、手で直さない。項目の状態を変えるときは地図を直して生成し直す。<code>00-map.html</code> の節ごとの表も同じ。</li>
   <li>リファクタの候補はノートに書かない。コードの問題に気づいたら、事実（何が・どこに・根拠）を <code>research/</code> にまとめ、形式化の調整役に渡す（2026-11-12 から）。</li>

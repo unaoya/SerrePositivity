@@ -1,8 +1,11 @@
-# §2 δ 環：リファクタと形式化の計画の提案（2026-11-12）
+# §2 δ 環：リファクタの提案と、形式化の計画の提案（2026-11-12）
 
 作成：ノートのチャット（形式化の調整役ではない）。ユーザーの方針（11-12）で、原典の §2 から順にノートを加筆し、節ごとにリファクタと計画の提案を書く。**扱い（実施・計画への取り込み・不要）は調整役が判断する。** ここでは事実に推奨を添える。
 
 - 基準：main cfa0e8324 前後。読み取りだけのエージェント 7 本（小節ごとのノートの加筆 6 本、コードの見直し 1 本）が調べた。宣言の位置は grep で確かめたもの。規模の見立ては推測。
+- この文書には性質の違う二種類の提案がある。
+  - **A. リファクタの提案（R2-1〜R2-10）**：今ある本体のコードを直す。数学の主張は増えない（置き場所、重複、層の向き、docstring）。
+  - **B. 形式化の計画の提案（§2 の表）**：原典にあって本体にない、または特別な場合しかない項目を、新しく形式化するかどうか。リファクタではない。
 - 「主定理の閉包」は `SerrePositivity.Paper.Statement` の import の推移閉包。
 - 台帳 `formalization-plans/refactor-ledger.md` の番号（BR4・BR5・BR6・BR32・BR34・BR37・BR38・BR41、T2-0・T2-3）にすでにあるものは、今の状態の確認と新しい事実だけを書く。
 
@@ -11,7 +14,7 @@
 - `BhattScholze/Delta/` は 56 ファイル・26,580 行。うち DividedPower が 23 ファイル・9,540 行。
 - 主定理の閉包に入るのは 30 本、入らないのは 26 本。入らない 26 本は BS-W15 の系列（RegularSequencePD*・FreeDP*・FrobeniusDivision*・FrobeniusPushout・Universal・PrimeLocal*・Tensor・HomExt・Division/BaseChange・FreeDeltaFrobeniusFlat）。
 
-## 1. リファクタの提案
+## 1. A. リファクタの提案（今あるコードを直す）
 
 推奨の順（効果と手間の比）で並べる。
 
@@ -94,7 +97,9 @@ Delta が上の層（Prismatic・Andre）を import しているのは三か所�
 - `DeltaPDCompletion` の普遍性（`existsUnique_pdCompletionRingHom`・`existsUnique_deltaPDCompletionHom`）は試験環を同じ宇宙 u に置く。`complete_add`・`complete_of_power` は private。
 - 「完全 p 完備 δ 環からの環準同型は δ 射」の強い形 `Andre.perfectSource_ringHom_isDeltaHom`（`Prism/PerfectPrismHomLift:343`、Andre 名前空間）と、Delta/Perfect の W(k) を源とする弱い版（:434）が並ぶ。Delta/Perfect へ下ろして一本にできる。
 
-## 2. 計画外の項目の形式化の見通し
+## 2. B. 形式化の計画の提案（新しく形式化する項目）
+
+計画外の項目（地図で goal が not_required、または status が none・design_only・proved_special）ごとの見通し。「推奨」の欄は、入れる（今の計画に足す価値がある）・後回し（使う場所が出たら）・入れない、の三つ。
 
 Mathlib（rev e6bbacd0e）にあるもの：Witt ベクトル（Frobenius は一般の R、FV=p は一般、VF=p は CharP、Teichmüller・IsPoly・truncated。単元の判定は体の上だけ）、DividedPowers の基本と分冪代数の Init（包はない）、エタール・FormallyEtale・HenselianRing、fpqc の site。ないもの：δ 環・λ 環、単体的可換環・animated 環、Elkik・van der Kallen、ファイバーごとの平坦性判定。
 
