@@ -344,3 +344,37 @@ IⁿM の包含の像は元の成分の Iⁿ 倍であり、閉厚化への射�
 | `projectiveProjCechOpenIntersection_isAffineOpen` | 標準開の非空交叉は実際の Proj のアフィン開。 |
 
 段 2e の検証済み実測：**325 本・31,524 行**、入口を含め **31,855 行**。上限 50,000 行内。
+
+
+## 11-12 夜：実際の閉厚化の Čech 複体・H への接続（863487464）
+
+数学コミット `863487464`。3 本・14 宣言・327 行、登録を含め 330 行。
+対象と直接 importer のビルドは **4,534 jobs 成功**。別実行の監査は **8,520 宣言、標準三公理のみ**。
+共有鍵 `--wait 3600` は実行中だけ取得。既存の宣言の変更、sorry・admit・新規公理・計算量上限の追加なし。
+
+実際の Cartesian な閉厚化への、元の次数零加群からの係数写像について、制限への自然性・全射性と核が J 倍であることを示した。
+Rees の射影と同じ核を使って非空交叉ごとの canonical な係数同型を作り、制限に自然であることを示した。
+`reesAdicNativeClosedCechComplexIso` と `reesAdicNativeClosedCechHomologyIso` は、Rees の商の計算を**実際の閉厚化の構造層の Čech 複体・H**へ接続する。
+`reesAdicNativeClosedPushedComplexIso_projection` により、元の係数からの Rees の射影は、元の Proj の切断を実際に引き戻す Čech の射に一致する。
+空交叉の同型も、非 flat な H とテンソル積の交換も仮定していない。
+
+**停止点 2e ではない。** 厚化間の実際の遷移との可換性と、I 進互換族・形式関数への接続、五つの比較の最終照合を続ける。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjPullbackCechPresheaf` | 元の基底のスカラーを実際に引き戻して、構造層の係数前層を作る。 |
+| `projectiveProjClosedPullbackCoefficient` | 非空交叉の次数零加群の係数から、実際に引き戻した切断への線形写像。 |
+| `projectiveProjClosedPullbackCoefficient_apply` | 係数の線形写像は、元の Proj の切断の実際の引き戻しそのもの。 |
+| `projectiveProjClosedPullbackCoefficient_naturality` | 次数零加群から実際の切断への射は、非空交叉の制限に自然。 |
+| `projectiveProjClosedPullbackCoefficient_surjective` | 閉厚化への係数の写像は、実際の切断へ全射。 |
+| `projectiveProjClosedPullbackCoefficient_ker` | 閉厚化の実際の切断への係数の写像の核は、元の係数の J 倍。 |
+| `reesAdicNativeClosedCoefficientIso` | 実際の閉厚化の切断と Rees の商の、非空交叉での canonical な係数同型。 |
+| `reesAdicNativeClosedCoefficientIso_projection_apply` | 係数同型は、元の係数からの射影を実際の引き戻しへ送る。 |
+| `reesAdicNativeClosedCoefficientIso_projection` | 非空交叉の同型は、元の係数からの射影と実際の引き戻しを同じ射にする。 |
+| `reesAdicNativeClosedCoefficientIso_naturality` | 実際の閉厚化の切断への係数同型は、非空交叉の制限に自然。 |
+| `reesAdicNativeClosedPushedComplexIso` | Rees の商の Čech 複体と、実際の切断を押し出した係数の複体との同型。 |
+| `reesAdicNativeClosedCechComplexIso` | Rees の商の Čech 複体と、実際の閉厚化の逆像被覆の Čech 複体との同型。 |
+| `reesAdicNativeClosedCechHomologyIso` | Rees の商の H と、実際の閉厚化の構造層の Čech H の比較。 |
+| `reesAdicNativeClosedPushedComplexIso_projection` | 元の係数からの Rees の射影は、実際の切断を引き戻す Čech の射と一致する。 |
+
+段 2e の検証済み実測：**328 本・31,851 行**、入口を含め **32,185 行**。上限 50,000 行内。
