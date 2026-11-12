@@ -828,3 +828,7 @@ public import SerrePositivity.AlgebraicGeometry.CechRingEqualizer
 
 public import SerrePositivity.AlgebraicGeometry.FullCechH0Compatible
 public import SerrePositivity.AlgebraicGeometry.CechAlgebraH0
+
+public import SerrePositivity.AlgebraicGeometry.SchemeSectionAlgebraCech
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionAlgebra
