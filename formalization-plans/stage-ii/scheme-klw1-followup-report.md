@@ -1,68 +1,63 @@
-# ⑥ KL-W1 追従：検証済み本体だけでの再収集
+# ⑥ KL-W1 追従報告
 
-2026-11-12。**追従は未完。採取器自身の Lean エラーで collect が止まったため、rewrite と main の取り込みには進んでいない。** 本体の検証は数学 `69ace8712` まで済んでいる。停止点 2e ではない。
+2026-11-12。修正版 `8267bf808` の共有採取器で、検証済み本体 68 本の新規 collect と rewrite が成功した。`review.json` は `{}`、書き換えは **0 本・0 行**。main `0f30e1f6c`（指定の `23f47736c` 以降）を `math/scheme` に取り込んだ。対象と直接 importer のビルドは成功した（4,332 jobs）。停止点 2e の検収とは別の改名追従である。
 
-## 0. 追従前の検証の区切り
+## 1. 対象と道具
 
-数学 `69ace8712`、記録 `44651feab`。局所化と指定次数の Frobenius、半線形な Čech H の入口の三本をコミット済み。対象と直接 importer `SerrePositivity.AlgebraicGeometry` のビルドは成功（4,332 jobs）、別実行の標準監査は **7,204 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を各実行の間だけ持った。
+[対象一覧](scheme-klw1-followup-files.json) は前回の検証済み本体 **68 本**のまま。数学の基点は `69ace8712`、追従前 HEAD は `3a7f198f3`。前回以降に追加した検証済み Lean はない。全 68 本が `git show 69ace8712:<path>` とバイト単位で一致することを収集前に確認した。
 
-## 1. 今回の対象
+未検証の 49 本（`scheme-drafts/` の 48 本と `AlgebraicGeometry/ProjectiveCechFrobenius.lean`）は対象外。作業木に保存し、main の取り込み前後でソースハッシュが変わっていないことも確認した。検証するときに旧名のエラーが出た場合は、改名表で直す。
 
-午後の指示に従い、[対象一覧](scheme-klw1-followup-files.json) を **検証済み本体 68 本**に絞った。従前の 117 本から、`scheme-drafts/` の 48 本と未検証の `SerrePositivity/AlgebraicGeometry/ProjectiveCechFrobenius.lean` を除外した。下書きのソースは削除せず、作業木に残している。
+道具は指定された共有パスのものを使用した。
 
-68 本の全ソースについて、収集開始前と停止後の両方で `git show 69ace8712:<path>` とバイト単位で一致することを確認した。配布元は次である。
+`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/scripts/refactor/klw1_namespace.py`
 
-`/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/formalization-plans/stage-ii/kerodon-layout-stop-3/scheme-files.json`
+採取器のコミットは `8267bf808`。Python・Lean ヘルパー・その Python 依存二本・両改名表のハッシュが収集前後で一致した。68 capture に計 155,744 件の参照と 959 件の command 記録があり、全 capture の `elaboration.configured` が真で、共通の Lean 採取器ハッシュは次のとおり。
 
-## 2. 新しい出力先での collect と停止原因
+```text
+67ef69cc1b87f500d832146e75870ae1997ea95a4e05ee264ce5d3ef4a13e43a
+```
 
-追従前 HEAD `ac81963eb` で、共有鍵 `with_build_lock.sh --wait 3600` と 1,700 秒の時間制限を通し、一回の collect を実行した。新しい出力先は `scheme-drafts/klw1-followup-1112/before_index_verified/`。旧来の未完成 index は再利用していない。
+## 2. collect・rewrite・review
+
+従前の部分採取は使わず、新しい `scheme-drafts/klw1-followup-1112-fixed/before_index/` へ採取した。collect は共有鍵 `--wait 3600` を通した単独実行（1,700 秒上限）で成功し、終了コードは 0。完成した `files.json` が一覧と一致すること、68 capture の source が実ソースと一致することを確認した。
+
+rewrite と差分確認は鍵の外で実行した。
 
 ```sh
 klw1=/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout
-files="$PWD/formalization-plans/stage-ii/scheme-klw1-followup-files.json"
-before_index="$PWD/formalization-plans/stage-ii/scheme-drafts/klw1-followup-1112/before_index_verified"
+files=formalization-plans/stage-ii/scheme-klw1-followup-files.json
+base=formalization-plans/stage-ii/scheme-drafts/klw1-followup-1112-fixed
 python3 "$klw1/scripts/refactor/klw1_namespace.py" collect \
-  --root "$PWD" --files "$files" --output "$before_index"
+  --root "$PWD" --files "$files" --output "$base/before_index"
+python3 "$klw1/scripts/refactor/klw1_namespace.py" rewrite \
+  --root "$PWD" --files "$files" --index "$base/before_index" \
+  --plan "$klw1/scripts/refactor/targets/kl-namespace-map.json" \
+  --output "$base/preview"
 ```
 
-**50 本の capture が成功**した。51 本目 `ReesClosedThickeningNaturality.lean` を採取しようとした時点で、外部の `klw1_collect_refs.lean` 自身のコンパイルが次の二箇所で失敗した。
-
-```text
-klw1_collect_refs.lean:101:22:
-  failed to synthesize GetElem? (List String) Nat System.FilePath ...
-  (args[3]?).mapM ModuleSetup.load
-klw1_collect_refs.lean:116:24:
-  loadDynlib : System.FilePath → IO Unit
-  expected System.FilePath → Language.ProcessingT IO PUnit
-  config.dynlibs.forM Lean.loadDynlib
-```
-
-収集実行中に、共有の Python と Lean 採取器が未コミットの更新を受けていた。停止時の Lean 採取器には新しい任意引数 `SETUP.json` の処理が加わっていた。これは対象の本体に出たエラーではない。外部の作業木の道具は変更していない。鍵は終了時に返却済み。
-
-collect の終了コードは 2、内部 Lean は 1。成功 50 本の capture は実ソースと再照合済み。失敗した一本と後続 17 本は未収集。全体の `files.json` は生成されていないため、部分 index を完成扱いにしていない。
-
-## 3. review・差分・取り込み・ビルドの状態
-
-| 項目 | 状態 |
+| 確認項目 | 結果 |
 |---|---|
-| 対象 | 検証済み本体 68 本。未検証 49 本は対象外として作業木に保存。 |
-| 新しい collect | 50 本成功、採取器のエラーで停止。完全な index は未生成。 |
-| rewrite | 未実行。 |
-| `review.json` | 未生成。保留件数は未判定であり、0 とはしていない。 |
-| 書き換えた Lean ソース | 0 本・0 行。 |
-| main `19f081dcb` 以降の取り込み | 未実行。 |
-| 追従後の対象・直接 importer のビルド | 未実行。追従前の結果は §0。 |
+| 完全な採取 | 68 / 68 本、collect 終了コード 0 |
+| rewrite | 終了コード 0 |
+| `review.json` | `{}`、保留 0 |
+| 書き換えたファイル | 0 本 |
+| 書き換えた行数 | 追加 0・削除 0 |
+| 取り込み後のソース | 全 68 本がプレビューと一致 |
+| 下書き | 除外した 49 本のソースハッシュを保存・照合済み |
 
-## 4. 証拠と次の手順
+ソース差分 0 は意味参照を採取して得た結果であり、単なる import 行の検索結果ではない。プレビューから反映すべき編集はない。
 
-作業木の `formalization-plans/stage-ii/scheme-drafts/klw1-followup-1112/` に保存した。
+## 3. main の取り込みと対象ビルド
 
-- `verified-only-provenance.json`：68 本のソースハッシュと除外した 49 本。
-- `collect-verified.log`：今回の実行ログと採取器のエラー。
-- `before_index_verified/`：成功した実際の capture 50 本。
-- `collect-verified-failure.json`：成功・失敗・未実行の一覧、終了コード、停止後の道具と改名表のハッシュ。収集中の道具更新があったため、これを全 capture 共通の道具版とは主張しない。
+main `0f30e1f6c7c2c4e7684c8217ffe1010ff36b8e4b` を衝突なく取り込んだ。merge コミットは **`2ed2c017c`**。指定の `23f47736c` が取り込み先の祖先であることを確認した。main の作業木では編集・ビルドしていない。
 
-採取器の修正後、検証済みの同じ 68 本を新しい出力先へ一貫した道具版で収集する。その後、rewrite → `review.json` とソース差分の確認へ進む。保留が出れば書き換えずに報告する。保留がなければ main（`19f081dcb` 以降）を取り込み、プレビューを反映し、対象と直接 importer を共有鍵 `--wait 3600` でビルドする。未検証の下書きは、この取り込み後に検証するときに改名表で追従させる。
+対象ビルドは共有鍵 `--wait 3600` の整理券一つで待った後、単独の `lake build` に一覧の 68 モジュールを指定して実行した。直接 importer `SerrePositivity.AlgebraicGeometry` もこの一覧に含む。ビルド完了で鍵を返却済み。全ルートのビルドは行っていない。
 
-従前の 117 本による収集停止の報告は `ac81963eb` に残っている。今回の対象は午後の指示に従った 68 本であり、旧来の下書きエラーは今回の停止原因ではない。
+ビルド結果：**成功、4,332 jobs、終了コード 0**。
+
+## 4. 証拠と数学の状態
+
+作業木の `formalization-plans/stage-ii/scheme-drafts/klw1-followup-1112-fixed/` に、`provenance-before.json`、`collect.log`、完全な `before_index/`、`preview/` と空の `review.json`、`preview-summary.json`、`merge-before.json`、対象ビルドの `build.py` と `build.log`、総合の `verification.json` を保存した。旧失敗の記録は `3a7f198f3` に残っている。
+
+追従前の検証は数学 `69ace8712` に対する対象・直接 importer のビルド成功（4,332 jobs）、監査 **7,204 宣言・標準三公理のみ**。この監査は追従前の結果であり、追従後に再実行したものではない。今回の追従では数学の宣言は変更していない。2e の残り（§9 の未完の比較など）は引き続き残っており、停止点 2e の完成は主張しない。
