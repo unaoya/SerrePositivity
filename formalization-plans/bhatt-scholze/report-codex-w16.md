@@ -5181,3 +5181,44 @@ probe の像での検出を全頂点へ延ばした。
 `em-hammock-fully-faithful-02.log` は成功。最終版の十本に警告なし。
 監査 `audit-em-fully-faithful.log` は **110 本・821 宣言・標準三公理のみ**。
 sorry・追加公理なし。共有入口・共有監査は未変更。夜の規則どおり続行する。
+
+## 81. D79(ii)：既存 D(A) から native Sp への実 V と全 sourceIso
+
+| 登録候補（`SerrePositivity.EInfinity.PowerOperation.`） | 行数 |
+| --- | ---: |
+| EilenbergMacLaneDerivedFunctor | 58 |
+| ComplexRelativeNerveUp | 35 |
+| EilenbergMacLaneDerivedSourceComparison | 47 |
+| OrdinaryNerveHomotopyFunctor | 32 |
+| OmegaSpectrumHoFunctor | 32 |
+| EilenbergMacLaneNativeHomologyIso | 28 |
+
+追加 **232 行**、(ii) の検証済み累計 **6741 行**。
+ComplexRelativeNerveUp・OrdinaryNerveHomotopyFunctor・OmegaSpectrumHoFunctor は
+**［一般∞］移動候補**。実 V は基礎の k に関する構成なので、将来の基盤移管の対象。
+
+### 81.1 実 V を構成した
+
+同じ比較を本質的全射性と合わせて `complexHammockDerivedEquivalence` にし、
+その逆を通して `eilenbergMacLaneDerived : derivedInfinityCategory A ⟶ KST.Spectra.Sp`
+を構成した。特に要求された V_{F_p} をこの実関手の実例として取れる。
+既存 D(A) や native Sp の定義の変更、関手の存在の追加入力はない。
+
+`eilenbergMacLaneDerived_sourceIso`・`ordinarySourceIso`・`semifreeSourceIso` は、
+元の相対全複体・通常全複体・半自由閉零圏での **全関手の指定同型**。
+対象ごとの同型の存在だけを結論にしていない。
+
+`eilenbergMacLaneNativeHomologyIso` は、元の全複体の通常関手上で、
+native Sp の実際の `SpectrumHo.piFunctor` と H^{-j} との全自然同型。
+残るのは、半自由閉零圏上の全 sourceIso を通し、
+**既存 D(A) のホモトピー圏上**で界面が要求する π/H 自然同型へ降ろす部分。
+したがって (ii) 全体の終了、P⁰ の存在や計算の完了はまだ宣言しない。
+
+### 81.2 検証
+
+`em-derived-functor-02.log`、`em-derived-source-comparison-01.log` の SourceComparison、
+`em-ordinary-nerve-ho-02.log`、`em-native-homology-01.log` の
+OmegaSpectrumHoFunctor・NativeHomologyIso は成功。最終版の六本に警告なし。
+監査 `audit-em-derived-functor.log` は **116 本・849 宣言・標準三公理のみ**。
+sorry・追加公理なし。共有入口・共有監査は未変更。
+全見込み 14,500 行の半分の 7,250 行にはまだ届いていない。夜の規則どおり続行する。
