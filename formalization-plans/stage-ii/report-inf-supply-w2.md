@@ -1670,3 +1670,11 @@ SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightFree
 次の確認候補：実際の全単体比較の第二因子は標準単体である。既存 `EInfinity.ComplexLimits.normalizedSimplexChainContraction`・`normalizedSimplexTensorContraction` を使い、指定 AW と増大写像の両立から必要な同値を得られるか確認する。この候補は未証明であり、一方の EZ ホモトピーだけで結論したものではない。⑤aの既存ファイルには変更を加えない。
 
 指定 native 制限・極限性、標準脚・D(A) 輸送、全図式射・指定錐の族は残る。停止点2は未完、残枠2,998行。約7,900行で実測と残量を報告する。
+
+## 48. 標準単体の収縮による短縮候補の検査
+
+§47末尾の候補を、既存の型と個別 Lean 検査で確認した。`freeNegativeChains (SSet.uliftFunctor.obj Δ[n])` は既存 `BarrattEccles.normalizedFunctor` の値と定義的に一致する。`normalizedSimplexCochainContraction` と `normalizedSimplexTensorContraction` はそのまま適用でき、順方向も `(𝟙 K ⊗ augmentation) ≫ ρ_K` と定義的に一致する。依存対象の鍵付きビルド **2,395 jobs** が成功し、個別検査も終了コード0。ログ `/private/tmp/isw2-g10-dependencies-46.log`・`/private/tmp/isw2-free-simplex-contraction-2.log`。鍵は解放済み。
+
+ただし、これで第一のまとまりの全単体比較を閉じることはできない。各 n での鎖ホモトピー同値は、各 n の鎖写像の集合の全単射ではない。また、重みの図式方向の end を取る比較には、その方向で両立するホモトピーが要る。頂点を選んだ収縮を n ごとに適用しただけでは、必要な全単体の切断空間の比較や、その指定豊穣合成との一致は得られない。これらの橋を省略して同値性を主張しない。
+
+今回の試作は既存定義の包み直しだけで、上記の不足を解消しないため、本体には残さない。個別検査を通した試作は `/private/tmp/isw2-free-simplex-contraction-tested.lean` に保存した。新規登録対象なし、累計 **113本7,002行**のまま。次は、正規化 shuffle→AW の合成の直接の照合を検討する。既存の `normalizedEZHomotopy` が供給する逆順（AW→shuffle）のホモトピーと取り違えない。停止点2は未完であり、四つのまとまり・10,000行上限・約7,900行での中間報告の条件は維持する。
