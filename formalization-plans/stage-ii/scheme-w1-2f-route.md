@@ -246,3 +246,21 @@ F3 の環論の列は上の明示した局所化の仮定で閉じた。幾何�
 H⁰ の核の比較では、複体の next で決まる対象と長さ2の項を定義的に同じと仮定しない。`cyclesIsoSc' 0 0 1` で次数を明示し、余境界の等式が誘導する核の線形同型を合成した。docstring は Čech 版であることと未形式化の Stacks 30.2.6 の比較を明記する。
 
 F4 は未完。部分環の加法群と上の核を同定し、実際の Proj の構造層の標準開に適用して有限性を移す。最初の余境界を二つの制限の差として計算する未検証下書きは `scheme-drafts/FullCechH0Compatible.lean` に置いた。F5〜F8 も残るため、停止点 2f ではない。
+
+## F4 途中：切断の部分代数と Čech H⁰（2b58ad958）
+
+新規 2 本・9 個の明示的宣言・107 行。2f 累計 20 本・1,110 行（入口の import 込み 1,130 行）。対象と直接 importer は 4,566 jobs 成功、別実行の監査は 8,755 宣言・標準三公理のみ。共有鍵 `--wait 3600` を各実行中のみ取得した。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullCechDifferential_one_apply` | 最初の実際の Čech 余境界の成分は二つの制限の差。 |
+| `algebraCechRingDiagram` | 代数係数図式を元の環の図式として扱う。 |
+| `algebraCechModuleDiagram` | 同じ代数係数図式を元の基底環上の加群の図式として扱う。 |
+| `fullAlgebraCechCochainsAlgebra` | 全タプルの切断の代数構造は成分ごとの構造。 |
+| `fullAlgebraCechFace` | 各面の制限を基底環上の代数準同型として扱う。 |
+| `fullAlgebraCechEqualizer` | 二つの制限が一致する切断の部分代数。 |
+| `fullAlgebraCechEqualizer_toSubmodule` | この部分代数の部分加群は、最初の実際の余境界の核。 |
+| `fullAlgebraCechH0Equiv` | 切断の部分代数と通常の Čech H⁰ の線形同型。 |
+| `fullAlgebraCechEqualizer_finite` | Čech H⁰ の有限性を実際の切断の部分代数へ移す。 |
+
+環構造は成分ごとの切断の乗法を制限したものであり、H⁰ に任意の環構造を選んで載せていない。次はスキームの有限交叉の切断をこの CommAlgCat 図式に置き、既存の `schemeStructureCechPresheaf` とそのスカラー制限から来る加群図式を比較して、Proj の有限性を適用する。F4 のその接続、F5〜F8 は未完。停止点 2f ではない。
