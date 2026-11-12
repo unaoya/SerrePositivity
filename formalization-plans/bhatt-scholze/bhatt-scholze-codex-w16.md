@@ -205,3 +205,14 @@ M14 の紙の確認（a49dbc171、報告 §62）で、界面の `powerOp0`（D(k
 案（未決、design-status D79 の改訂候補）：界面の `powerOp0` を coherent な `FunctorHom` から「π_n の上の、CAlg の辺に自然な演算」に弱め、k = F_p では BE の作用から May の方法（ホモロジーの上の P⁰）で直接作る。native な orbit・norm・Tate とスペクトル的な右 k 加群の e は使わない。coherent な Sp 値の P⁰ は補完（HA の基盤）に回す。根拠：性質の欄はどれも成分の主張で、利用者は drafts/A4 の Lemma 8.4 だけ（π_n は filtered 余極限と可換なので辺に沿う自然性で足りる見込み、調整役の読み）。
 
 段 0（紙のみ）で報告すること：(1) drafts/A4 Lemma 8.4 (a)(b) と Shared/EInfinityPowerOperation の全利用が π_n の成分と辺に沿う自然性だけで閉じるか、(2) 新しい型案、(3) May の構成・擬同型不変性・局所化の辺への降下に要るもの、今夜の鎖模型の部品の再利用、(4) `_discrete`・`_tot` の証明と G10 への依存、(5) 見込みの行数。段 0 の後は M15 の段 0（報告 §95）の続きへ。
+
+## 26. 追記（2026-11-13、調整役）：M14 は May 案（D79 の改訂、ユーザー承認）
+
+§96（443f94efa）の比較を受けて。M14 を May 案で進める（design-status D79 の改訂）。
+
+1. 界面の本欄は F_p に限る。一般 k は F_p → k の制限で読む補助（自然同型で共役するだけ）。
+2. `powerOp0 p n` は ho(CAlg F_p) 上の可換群値関手の NatTrans（全整数 n）。`_zero`・`_pos`・`_discrete`・`_tot` は §96.3 の型案で。
+3. coherent な Sp 値の P⁰ と、`powerOperationZero_natTrans`・`_primeField`・`_component` の強い出力は補完へ。今の 10,216 行は消さない。
+4. A4 に要る単体的余単体的模型の実現上の Frobenius 比較は A4 の局所的な補題として M14 の範囲に含める（界面の欄は広げない）。G10 の後の最後の段。
+
+上限は新規の上端 9,950 行の 2 倍、約 20,000 行。半分（約 10,000 行）で止まらずに途中報告。順序：W→BE の型・巡回生成元・ν・D_0 の値（最初の区切り）→ 代表元の独立性・加法性・自然性 → ho(CAlg) への局所化 → 界面・Assembly・Shared/A4 の型の移行 → 離散 → cosimplicial の top operation と `_tot` → filtered 塔の照合 → 二重模型の実現の比較（G10 の後）。界面の型の変更は局所化まで済んだところで報告し、main に入れる。
