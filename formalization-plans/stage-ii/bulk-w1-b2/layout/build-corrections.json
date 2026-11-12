@@ -1,0 +1,9 @@
+[
+  {
+    "path": "SerrePositivity/InfinityCategories/Project/QuasicategoryAuxiliaries/MappingSpaces/ZeroHomotopy.lean",
+    "issue": "A moved predicate abbreviation had an unmoved extension method; original extension inventory considered only type constructors.",
+    "correction": "Keep original method declaration and proof; weak export on the actual moved predicate namespace.",
+    "broader_audit": "13 cross-module members under all 515 renamed public symbols: six authored methods (five already handled), seven generated helpers; no other authored method found.",
+    "next_validation": "Rebuild all targets via ordinary Lake and compare full preservation snapshots."
+  }
+]

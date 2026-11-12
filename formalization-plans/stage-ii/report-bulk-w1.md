@@ -364,3 +364,5 @@ DerivedCategories は承認済みの主題をさらに分け、移動先で最�
 検証済みの適用道具は `scripts/refactor/bulk_apply_preview.py`（既定は読取りのみ）、安全性の検査は `test_bulk_apply_preview.py`。Citation の検査は `test_bulk_citation.py --root <作業木> --output <一時ディレクトリ>`。新しいファイルとして追加し、既存の共用採取器・既存スクリプトは変更しない。隔離プレビューの移動後ビルド・全体保存比較は引き続き実行中。
 
 隔離側では、追加で `scripts/audit/bhatt_scholze.lean` と任意の `check_cleanup_c2.lean` のimport・所有元表も追従させた。後者は正式監査に登録しない。InfinityCategories・BhattScholzeの配置の説明とDiagnosticsのREADMEも適用データへ含めた。付表 `layout/preview-edits.json.gz` は実際の隔離側8,678出力を再現するが、全体検証中なのでB2停止点の完了データとは区別する。
+
+移動後ビルドの最初の不具合は `ZeroHomotopy` の `IsZeroVertex.isZeroHo` だった。Pointedで移した型の略記と、別ファイルに残す拡張メソッドとの名前空間の差によるもの。元の宣言名・証明を保ち、実際の移動先の型の名前空間へ弱いexportを加えた。構造体だけを対象にしていた拡張の調査を、改名する公開515名すべてへ広げ、別ファイルにある13メンバーを洗った。手書き6メソッドのうち5つは既に処置済みで、この1つを追加した。残り7つはコンパイラが生成した補助。修正対象のビルドは7.46秒で成功し、先行する1,920本も修正後のソースで再確認した。全体の保存比較はこれからである（付表 `layout/build-corrections.json`、`field-fix-build.json`）。
