@@ -832,3 +832,8 @@ public import SerrePositivity.AlgebraicGeometry.CechAlgebraH0
 public import SerrePositivity.AlgebraicGeometry.SchemeSectionAlgebraCech
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionAlgebra
+
+public import SerrePositivity.AlgebraicGeometry.AffineCechHomologyVanishing
+
+public import SerrePositivity.AlgebraicGeometry.SupportFromLocalizedTensor
+public import SerrePositivity.AlgebraicGeometry.AffineBaseChangeCechVanishing
