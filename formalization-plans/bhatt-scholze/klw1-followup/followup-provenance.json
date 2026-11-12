@@ -15,7 +15,7 @@
   "merge_commit_pending": false,
   "rewrite_directory": "/tmp/bsw16/klw1-followup-d07-preview",
   "collected_body_files": 49,
-  "combined_body_files": 55,
+  "combined_body_files": 56,
   "build_targets": 56,
   "audited_modules": 50,
   "audited_declarations": 963,
@@ -23,24 +23,25 @@
   "merged_a_commit": "3f26491d1",
   "post_followup_module": "SerrePositivity.EInfinity.BarrattEccles.Theory.HopfNullaryUnitMap",
   "post_followup_audited_declarations": 4,
-  "a_lines": 3639,
+  "a_lines": 3722,
   "a_complete": false,
-  "a_stop": null,
+  "a_stop": "forecast upper bound exceeds approved 4000-line cap; strict equality required by user",
   "a_cap": 4000,
   "a_forecast": [
-    3874,
-    3994
+    3957,
+    4072
   ],
   "resumed_after_main": "f5baa8763",
   "resumed_modules": [
     "SerrePositivity.EInfinity.BarrattEccles.Theory.NullaryEvaluation",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardCoefficients",
     "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeStandardExt",
-    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility"
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.FreeCoefficientCompatibility",
+    "SerrePositivity.EInfinity.BarrattEccles.Theory.ProductQuotientCompatibility"
   ],
   "resumed_build_targets": 3,
-  "resumed_audited_declarations": 56,
+  "resumed_audited_declarations": 69,
   "resumed_standard_axioms_only": true,
-  "resumed_build_log": "/tmp/bsw16/strict-coefficient-01.log",
-  "resumed_audit_log": "/tmp/bsw16/audit-strict-coefficient.log"
+  "resumed_build_log": "/tmp/bsw16/product-quotient-05.log",
+  "resumed_audit_log": "/tmp/bsw16/audit-product-quotient.log"
 }
