@@ -2022,3 +2022,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.D
 残枠 **1,357行**。`FreeChainsAdjunction.lean` で自由加群・Dold–Kan・負次数延長の随伴の合成と図式への持ち上げを個別検査済み（未コミット）。積側は既存の重み付き切断の随伴と合成する。
 
 その接続は持ち上げた添字圏 `AsSmall` も使うため、本枝の新設 `DiagramHomCochains`・`DiagramHomFamilyLift`・`DiagramHomFamilyEquiv`・`DiagramTensorDoldKan` の四本について、添字 `J : Type v` と係数 `A : Type (max u v)` を許す一般化を検査中。`v = 0` で従来の小さい添字圏を含む。main に該当四本が存在しないことを確認済みで、既存の main の宣言・入口・⑤aのファイルは変更しない。この未コミットの一般化を上記監査が検証したとは数えず、再ビルド・再監査する。停止点2は未完。
+
+## 68. 3b-2 続行：自由鎖の随伴と持ち上げ添字への対応
+
+コード `052a11093`、新規 `DiagramComparison.FreeChainsAdjunction` 1本42行。累計 **138本8,685行**。§67で予告した本枝新設四本の宇宙一般化は行数差0。
+
+自由加群・Dold–Kan・負次数延長の既存随伴を合成し、元の自由負次数鎖と実 Dold–Kan 関手の随伴、および図式全体への持ち上げを構成した。四本の一般化は `J : Type v`、`A : Type (max u v)` に変更し、従来の `v = 0` と持ち上げ添字の双方を含む。既存 main の宣言は変更していない。
+
+個別検査、一般化した四本と直接の importer を含む鍵付き対象ビルド **2,570 jobs**、累計138本 **1,579宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-68.log`、監査 `/private/tmp/AuditISW2G10HundredThirtyEight.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtyeight-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeChainsAdjunction
+```
+
+残枠 **1,315行**。`ProductSectionsHom.lean`（51行）は、この随伴と既存の重み付き切断の随伴を合成して、積重みの Hom と元の切断空間を全単体で同定する。個別検査済みで対象ビルド・監査待ち、未コミット。`NormalizedWeightSectionMap.lean` で両端の同型の間に指定 AW・shuffle を置く射を検査中。空間の同値性や native 極限性を、射を構成しただけで完了とは数えない。停止点2は未完。
