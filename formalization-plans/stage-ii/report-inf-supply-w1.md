@@ -1132,3 +1132,37 @@ R6は実現関手側55行のみで、全族の指定余錐との照合は残る�
 R2・R3・R4は未着手。比較射の同値性、停止点5、R6の完成は主張しない。
 次は予定どおりR6の指定余錐と元の実現関手・射を同時に比較する。
 12,000行の上限、約5,200行の途中報告、R6後の報告の条件に変更なし。
+
+## 24. R6 の実現・bar の関手比較（11-13、継続）
+
+追加の検証済み分は新規13本・973行、監査対象45宣言。
+`ProjectiveOutputResolvedComparison`・`ProjectiveComplexEvaluationComparison` は、
+元の実分解の評価を、同じ射影的模型の評価へ全関手同型で比較する。
+`StrictSemifreeRealizationProjective` は元の直和実現関手を同じ射で持ち上げ、
+`strictSemifreeRealizationFamily_projectiveIso` を与える。射影性には3b-1を使用。
+
+`ComplexDerivedNaturalComparison` は既存 `ordinaryNatTransPrism` と
+`functorIsoOfEquivalenceHomotopy` を再利用する。
+`StrictSemifreeReplacementComparison` は、既存の同じ
+`replacementTotalAugmentationNatTrans` を元のstrict図式へ制限し、全関手同型へ運ぶ。
+対象ごとの逆射を自然な族と仮定していない。
+
+`StrictBarGradedFunctor`・`StrictBarNormalizedGradedFunctor` は、元の自然変換の先頭成分を
+同じ射列ラベル・シフトで写す関手と、元のgraded包含・射影の自然性。
+`StrictBarUnnormalizedFunctor` は、同じ `smallStrictBarTotalPointIso` に固定した非正規化barの関手と自然同型。
+`StandardRowCochainNaturality`・`StrictBarColumnNaturality`・`StrictBarDegreeNaturality` は、
+既存の行・余積の自然性から元の比較列の自然性を得る。
+`StrictBarUnnormalizedComponents` は実barの射が各内部次数で元のgraded射そのものと証明し、
+`StrictBarThetaNaturality` はその同じ射とMC項との可換式を各内部次数で証明する。
+比較同型による関手の構成だけから、native余錐との整合性を主張していない。
+
+対象ビルド成功（共通部分7,508 jobs、成分・MC項の比較5,173 jobs）。
+監査ログ `/tmp/is-w1/3b3-build-38-audit.log`：45宣言全てsorry-free、標準三公理のみ。
+入口・全体監査は未登録（調整役）。③-bの3b-2・G10・⑤aのファイルは変更・利用なし。
+
+検証済み累計は22本・1,691行・監査対象96宣言。R6は種の55行を含め実測1,028行で、
+当初の450〜750行を超えた。増分は元の射を保つbarの関手性と比較列の自然性の照合。
+残りは、正規化MC項・元の射影の自然性、元の指定余錐の全パラメーター族、
+元の実現関手と同じapex・脚・HA成分の比較。R6の完成・途中取り込み点はまだ主張しない。
+R2・R3・R4の型・範囲は変更なし。残りを含む全体の暫定見込みは約8,000〜11,300行。
+12,000行の上限を維持し、超過が見込まれる場合は検証済み分をコミットして止める。
