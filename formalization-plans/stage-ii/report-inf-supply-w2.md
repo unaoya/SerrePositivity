@@ -2038,3 +2038,21 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.F
 ```
 
 残枠 **1,315行**。`ProductSectionsHom.lean`（51行）は、この随伴と既存の重み付き切断の随伴を合成して、積重みの Hom と元の切断空間を全単体で同定する。個別検査済みで対象ビルド・監査待ち、未コミット。`NormalizedWeightSectionMap.lean` で両端の同型の間に指定 AW・shuffle を置く射を検査中。空間の同値性や native 極限性を、射を構成しただけで完了とは数えない。停止点2は未完。
+
+## 69. 3b-2 続行：積重み Hom と重み付き切断の全単体同型
+
+コード `007702bd5`、新規 `DiagramComparison.ProductSectionsHom` 1本51行。累計 **139本8,736行**。
+
+持ち上げ標準単体の全自然同型と Yoneda 同型を使い、自由鎖の随伴と既存の重み付き切断の随伴を合成した。積重みの自由鎖からの全単体 Hom を、同じ重み・同じ実 Γ 図式の重み付き切断空間に同定した。第一のまとまりの積側の接続。
+
+個別検査、鍵付き対象ビルド **2,632 jobs**、累計139本 **1,584宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-69.log`、監査 `/private/tmp/AuditISW2G10HundredThirtyNine.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtynine-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductSectionsHom
+```
+
+残枠 **1,264行**。`NormalizedWeightSectionMap.lean` の指定 AW・shuffle による両方向の実単体的射は個別検査済み、対象ビルド・監査待ち。
+
+同値性には、自然な鎖ホモトピーを余単体 Hom の実単体的ホモトピーへ移す接続がなお必要。一般の余単体図式について点ごとの鎖ホモトピーだけで結論してはいけない。直接の経路として、積重みの第二パラメータのグラフを指定 AW に送り、パラメータ鎖への余作用を作る部分を `ProductParameterCoaction.lean` で検査中。余作用の単位則、区間によるホモトピー評価、両端点との等式はこれからで、同値性を証明済みとはしない。既存のモデル圏の frame 比較も確認したが、必要な frame 条件を証明せず適用したり `[ModelCategory SSet]` を追加したりはしない。native 極限性と後続も未完。停止点2ではない。
