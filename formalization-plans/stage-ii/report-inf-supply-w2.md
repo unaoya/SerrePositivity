@@ -4489,3 +4489,105 @@ theorem pointwiseTruncationIso_homEquiv
 登録対象は **`SerrePositivity.HomologicalAlgebra.PointwiseTruncationHomEquiv`**。累計 **223モジュール・13,286行・2,087宣言**、一覧`/private/tmp/isw2-g10-twohundredtwentythree-modules.txt`。外枠14,500行まで残り1,214行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。大きな監査は行っていない。
 
 B02はまだ未完。次は§105の`doldKanHomEquiv_map`を評価関手へ適用し、今回の実切断Hom両立と組み合わせて、元の正規化重みHom同値の点ごとの式にする。その後の指定AW比較と実豊穣合成の全単体の照合、B03〜B08・C・Dは残る。目標「Dまで進めてください」はactiveのまま。
+
+
+## 107. B02の途中：元の正規化重みHomの全図式移送と指定余積生成元の照合
+
+前回の実切断Hom両立は検証・保存できているので、進捗ありとして続行した。指定された正規化比較とΓ比較を、評価関手に適用した係数移送則でつなぎ、図式圏のDold–Kan Hom同値を点ごとの同じ随伴へ移す全自然変換の等式を得た。
+
+さらに、元の`normalizedWeightHomEquiv`が元の零延長随伴とDold–Kan随伴の合成であることを明示し、指定零延長・実切断・Γの比較を通して、点ごとの同じ二随伴に一致させた。最後に、指定余積による正規化Homと自由正規化鎖の同じ随伴を、各単体で元の余積包含の1の像が同じ自由生成元となる既存公式を直接適用して照合した。
+
+### 107.1 型と数え方
+
+以下はB02の同じ係数移送の証明分割。前提計算枠は§105のB02 3/3、照合枠は全体3/3のまま。余積生成元には既存`copowerUnitFreeHom_generator`を証明の中で直接使い、新たな独立した前提計算の宣言を足していない。
+
+最初の2本はHomologicalAlgebra名前空間、`J : Type*`・`[Category* J]`・`C : Type*`・`[Category* C] [Abelian C]`。`normalizedWeightHomEquiv_asAdjunction`はJに依存しない。最後の1本はDiagramComparison名前空間、`A : Type u`・`[CommRing A]`。
+
+登録対象：`SerrePositivity.HomologicalAlgebra.PointwiseDoldKanHomEquiv`
+
+```lean
+theorem pointwiseDoldKanHomEquiv
+    (W : SimplicialObject (J ⥤ C)) (K : ChainComplex (J ⥤ C) ℕ)
+    (f : (normalizedMooreComplex (J ⥤ C)).obj W ⟶ K) :
+    (flipFunctor SimplexCategoryᵒᵖ J C).map
+        ((Abelian.DoldKan.equivalence : SimplicialObject (J ⥤ C) ≌
+          ChainComplex (J ⥤ C) ℕ).toAdjunction.homEquiv W K f) ≫
+      (pointwiseGammaIso J C).inv.app K =
+    (Adjunction.whiskerRight J
+      (Abelian.DoldKan.equivalence : SimplicialObject C ≌ ChainComplex C ℕ).toAdjunction).homEquiv
+      W.flip (complexOfFunctorsToFunctorToComplex.obj K)
+      ((pointwiseMooreIso J C).inv.app W ≫ complexOfFunctorsToFunctorToComplex.map f)
+```
+
+
+登録対象：`SerrePositivity.HomologicalAlgebra.PointwiseNormalizedWeightHom`
+
+```lean
+theorem normalizedWeightHomEquiv_asAdjunction
+    (W : SimplicialObject C) (H : CochainComplex C ℤ)
+    (f : ((normalizedMooreComplex C).obj W).extend ComplexShape.embeddingDownNat ⟶ H) :
+    normalizedWeightHomEquiv W H f =
+      (Abelian.DoldKan.equivalence : SimplicialObject C ≌ ChainComplex C ℕ).toAdjunction.homEquiv
+        W (H.truncLE' (ComplexShape.embeddingUpIntLE 0))
+        ((negativeExtendTruncationAdjunction C).homEquiv _ H f)
+```
+
+```lean
+theorem pointwiseTruncationGammaIso_hom (H : CochainComplex (J ⥤ C) ℤ) :
+    (pointwiseTruncationGammaIso J C).hom.app H =
+      (pointwiseGammaIso J C).inv.app (H.truncLE' (ComplexShape.embeddingUpIntLE 0)) ≫
+        ((Functor.whiskeringRight J (ChainComplex C ℕ) (SimplicialObject C)).obj
+          Abelian.DoldKan.Γ).map ((pointwiseTruncationIso J C).hom.app H)
+```
+
+```lean
+theorem pointwiseNormalizedWeightHomEquiv
+    (W : SimplicialObject (J ⥤ C)) (H : CochainComplex (J ⥤ C) ℤ)
+    (f : ((normalizedMooreComplex (J ⥤ C)).obj W).extend ComplexShape.embeddingDownNat ⟶ H) :
+    (flipFunctor SimplexCategoryᵒᵖ J C).map (normalizedWeightHomEquiv W H f) ≫
+      (pointwiseTruncationGammaIso J C).hom.app H =
+    ((Adjunction.whiskerRight J
+      (Abelian.DoldKan.equivalence : SimplicialObject C ≌ ChainComplex C ℕ).toAdjunction).comp
+        (Adjunction.whiskerRight J (negativeExtendTruncationAdjunction C))).homEquiv
+      W.flip (complexOfFunctorsToFunctorToComplex.obj H)
+      (((Functor.whiskeringRight J (ChainComplex C ℕ) (CochainComplex C ℤ)).obj
+          (ComplexShape.embeddingDownNat.extendFunctor C)).map
+        ((pointwiseMooreIso J C).inv.app W) ≫
+        (pointwiseExtendIso J C ComplexShape.embeddingDownNat).inv.app
+          ((normalizedMooreComplex (J ⥤ C)).obj W) ≫
+        complexOfFunctorsToFunctorToComplex.map f)
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.CopowerNormalizedFreeHom`
+
+```lean
+theorem copowerNormalizedHomEquiv_free (W : SSet.{0}) (H : Complex A)
+    (f : ((normalizedMooreComplex (ModuleCat A)).obj
+      (W ⋙ uliftFunctor.{u,0} ⋙ ModuleCat.free A)).extend
+          ComplexShape.embeddingDownNat ⟶ H) :
+    copowerUnitDiagramHomEquiv A W
+      ((Abelian.DoldKan.Γ : ChainComplex (ModuleCat A) ℕ ⥤ _).obj
+        (H.truncLE' (ComplexShape.embeddingUpIntLE 0)))
+      (normalizedWeightHomEquiv (W ⋙ copowerFunctor (ModuleCat.of A A)) H
+        (HomologicalComplex.extendMap
+          ((normalizedMooreComplex (ModuleCat A)).map
+            (Functor.isoWhiskerLeft W (copowerUnitFreeNatIso A)).hom)
+          ComplexShape.embeddingDownNat ≫ f)) =
+    (freeNegativeChainsAdjunction A).homEquiv (W ⋙ uliftFunctor.{u,0}) H f
+```
+
+### 107.2 検収・登録・コミット
+
+コード **`4fce28163`**（共通2本105行）・**`51a9f6ae2`**（DiagramComparison1本55行）。個別・結合検査`/private/tmp/isw2-point-dk-hom5.log`、`/private/tmp/isw2-point-normalized-hom4.log`、`/private/tmp/isw2-copower-normalized-free3.log`は終了コード0。型の照合は随伴の単位・後合成の成分を明示し、元の比較射のまま行った。計算上限は変更していない。
+
+| 鍵付き対象ビルド | jobs | 新規分のみの監査 | 終了 |
+| --- | ---: | --- | --- |
+| `/private/tmp/isw2-build121.log` | 1,641 | 9宣言（3・6） | 0 |
+| `/private/tmp/isw2-build122.log` | 2,588 | 2宣言 | 0 |
+
+監査は`/private/tmp/AuditISW2G10B02PointwiseHom.lean`・`/private/tmp/AuditISW2G10B02CopowerHom.lean`、どちらも標準三公理のみ。共有鍵は返却済み。累計 **226モジュール・13,446行・2,098宣言**、一覧`/private/tmp/isw2-g10-twohundredtwentysix-modules.txt`。外枠14,500行まで残り1,054行。新公理・sorryなし、既存宣言・⑤a・入口・公式監査・mainの変更なし。登録対象は107.1の3本。大きな監査は行っていない。
+
+### 107.3 残り
+
+B02は未完。今回閉じた全図式の移送と各単体の指定余積生成元の照合を、既存の`normalizedLinearWeightDiagramIso`の元の射と組み合わせて、図式圏の元の線形重みHom同値をA09の同じ自由鎖随伴へつなぐ。その後の指定AW比較・Hom–Tot比較と実豊穣合成の全単体の照合、B03〜B08・C・Dは残る。今回の一般の随伴の式だけでAW合成の等式を済ませたとは扱わない。目標「Dまで進めてください」はactiveのまま。
