@@ -1342,3 +1342,48 @@ projectivePerfCech_blowupSquare_acyclic :
 **停止点 2f に残るもの**：全複体の射の自然性を揃え、共通細分・底変換・R/J 表示・閉厚化・Frobenius 順極限との比較を 2e の既存の射に沿って検収する。続いて登録・許された対象ビルドと監査・停止点報告。数学の核の acyclicity は今回完成したが、この検収前に停止点 2f の完成とはしない。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変えていない。
 
 2f のコミット済み新規本体は **186 モジュール・11,854 行**（既存の入口の追加 263 行込み **12,117 行**）。残りの暫定見込みは **1,500〜5,000 行**（自然性の必要な接続と検収、登録）。上端でも停止基準 18,000 行以内を見込む。
+
+## 2026-11-14 早朝：Frobenius 後の共通アフィン比較と実際の引き戻し（途中、停止点ではない）
+
+数学の採取点は `bd87c9df6`。前の報告 `33173fe72` 以後の比較の束を検証した。F8 の全複体の acyclicity は前報のまま保持し、今回はその係数・被覆・射の比較を進めた。main は `40faa3892` まで読んだが、B3 の凍結を解除する連絡はないため取り込んでいない。ルート登録・ルートビルド・全体監査は行っていない。
+
+### 今回閉じた接続
+
+- `projectiveFilteredComplexMap_quasiIsoAt`、`projectiveSequentialComplexMap_quasiIsoAt`：各段で H に同型を誘導する同じ複体の射は、filtered／自然数の余極限でも同型を誘導する。
+- `frobeniusRingSequentialColimitIso`：任意の環の図式の実際の Frobenius 系の余極限を、各環の実際の Frobenius 順極限の係数図式と同定する。
+- `frobeniusRingSequentialColimitIso_naturality`：この同定は環の図式の実際の射に自然。閉厚化・係数の商などで、同型だけを別に選んでいない。
+- `projectiveIntCechSequentialComplexIso`：有限被覆の整数係数の全タプル複体は自然数順極限と交換する。ULift ℤ の係数移送を使い、切断加群を小さい宇宙へ制限しない。
+- `openCoverSequentialCech_refinement_naturality`：複体の順極限比較は同じ細分写像と可換。
+- `openCoverFrobeniusCechRefinement_quasiIsoAt`：有限段の細分比較を実際の環の Frobenius 順極限後へ渡す。
+- `schemeStructureFrobeniusCechRefinement_quasiIsoAt`：分離的なスキームの有限アフィン細分について、上の有限段の仮定を 2e の準連接層の比較から供給する。結論の同型性・完全性を追加仮定にしていない。
+- `schemeStructurePerfectCommonAffineCechHomologyIso`：Frobenius 係数での二つの有限アフィン被覆の Čech H を、2e と同じ有限共通被覆で比較する。
+- `schemeStructurePerfectCechPullbackMap_refinement`：実際のスキームの射の引き戻しは、Frobenius 順極限後も細分と可換。平坦性を要求しない。
+- `schemeStructurePerfectAffineCechPullback_comparison_naturality`：アフィン射について、上の被覆比較は実際の引き戻しに自然。閉厚化とアフィン底変換も同じ射の特殊例になる。
+- `projectivePerfectNativeCechComplexIso`：F8 の固定した斉次局所化の係数の複体を、実際の Proj の構造層の Frobenius 係数の複体へ移す。非空交叉だけで環の同型を使い、空交叉を大域切断と同一視しない。
+- `projectivePerfectNativeCechComplexIso_apply`：複体の比較の各成分は、同じ非空交叉の実際の環の同型の順極限。
+- `projectivePerfectAffineCechHomologyIso`：F8 の固定した複体の Čech H と、実際の Proj の任意の有限アフィン被覆での Frobenius 係数の Čech H を比較する。
+
+この前の `e71e05069` は増大四角形と全複体の射（恒等・合成まで）、`ed0caed84` は実際の F8 の四角形のデータと canonical な Frobenius 係数、スカラー・閉厚化の射、中心の射の自然性を商の全射性から得る構成を追加した。これらも今回の限定監査に含めた。各宣言の一行の主張は [暫定の全宣言一覧](scheme-w1-2f-declarations.md) に記録した。
+
+### 検証とコミット
+
+| 数学コミット | 検証した束 |
+| --- | --- |
+| `56197ed3a` | filtered quasi-isomorphism、整数係数の細分の自然性、係数環と加群の宇宙の分離。変更した API のルートを除く直接 importer 20 本も成功（2,849 jobs） |
+| `a738d6d99` | 自然数添字への移送（1,679 jobs）、実際の環の Frobenius 系の余極限（1,558 jobs）、整数係数の複体と自然数順極限（1,910 jobs） |
+| `e4c45d499` | Frobenius 後の細分、実際の構造層、共通アフィン比較。既存の被覆比較の直接 importer 4 本も成功（2,877 jobs） |
+| `5236a01a6` | 実際のスキームの引き戻し、アフィン射での被覆比較の自然性。既存の逆像 API の直接 importer も成功（2,882／2,874 jobs） |
+| `12668cb72` | 実際の環の同型の Frobenius 順極限、Proj の native な複体の比較、任意の有限アフィン被覆への比較（1,513／3,271／3,280 jobs） |
+| `bd87c9df6` | 環の図式の射に対する Frobenius 系と余極限の比較の自然性（1,559 jobs） |
+
+限定監査 `scheme-drafts/audit-2f-comparisons.lean` は、前報以後に触った比較の **39 モジュール・397 宣言、propext・Classical.choice・Quot.sound のみ**。生成宣言・private・局所 instance も環境から採取した対象に含む。これは段 2f 全体や AlgebraicGeometry 全体の監査ではない。対象ビルドと監査は全て共有の `with_build_lock.sh --wait 3600` を実行中だけ取得し、待ちは常に一つ。上限を引き上げず、sorry・admit・新しい公理は追加していない。
+
+整数係数で大きい切断加群を扱うため、既存の被覆・filtered H・逆像の比較 API で係数環と加群の宇宙を分離した。宣言名は維持し、旧来の同じ宇宙での特殊化は引き続き使える。各直接 importer の対象ビルドを通した。`ModuleCatFilteredExact` は加法群への忘却関手を使って必要な完全性を供給する。各点の余極限の代表元を取る係数 API 全般を一般化する案は採用せず、その二ファイルの変更は戻して、既存の ULift ℤ の移送を使った。
+
+### 残りと規模
+
+停止点 2f はまだである。残る数学の中心は、今回の `projectivePerfectNativeCechComplexIso` が実際の閉厚化・次数を保つ環の写像と可換であることを 2e の有限段の式から照合し、スカラーと中心の二辺も含めた全複体の比較へ渡す部分。F8 の acyclicity、共通アフィン細分の H の同型、native な被覆比較のアフィン射への自然性は既に供給済みだが、これだけで全複体の全ての比較が検収済みとはしない。続いて登録、許された監査、正式な停止点報告を行う。
+
+累計は **212 新規本体モジュール・13,650 行**、既存の入口の追加 263 行を合わせ **13,913 行**。さらに既存比較 API の宇宙分離等の差分があり、最終集計ではその追加行も別記する。暫定宣言一覧は **678 件のソースに明示した名前付き宣言**で、環境の宣言総数ではない。139 モジュールは入口に直接登録済み、**73 モジュールは凍結後の検収待ち**。作業用のログ・監査・採取スクリプトは worktree の `scheme-drafts/` に置き、.lake や /tmp を成果物の置き場にしていない。
+
+**停止点までの残りの見込み：主要な接続 4〜7 本、追加 1,000〜3,000 行と登録・監査・報告。現在の見込みは停止基準 18,000 行内。** 最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更していない。
