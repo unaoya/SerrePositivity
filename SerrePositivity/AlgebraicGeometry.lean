@@ -998,3 +998,9 @@ public import SerrePositivity.AlgebraicGeometry.SchemeCechSectionSpectrum
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionSpectrum
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveCechFiniteCenterExact
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraEqualizerMap
+
+public import SerrePositivity.AlgebraicGeometry.FullCechH0KernelNaturality
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraH0Naturality
