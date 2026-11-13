@@ -2,11 +2,25 @@
   "status": "INCOMPLETE",
   "checks": [
     {
-      "requirement": "Frozen main unchanged",
-      "proved": false,
+      "requirement": "Frozen mathematical main unchanged; authorized documents allowed",
+      "proved": true,
       "evidence": {
-        "actual": "40faa3892120211786cf463371a356c3fc9de6e1",
-        "expected": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f"
+        "status": "PASS",
+        "frozen_mathematical_main": "c5c4436c0",
+        "frozen_document_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+        "observed_main": "44f965234161ec914f69b157d712c1e3ee52f3ab",
+        "allowed_document_paths": [
+          "formalization-plans/bhatt-scholze/bhatt-scholze-codex-m15.md",
+          "formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md",
+          "formalization-plans/bhatt-scholze/design-status.md",
+          "formalization-plans/coordination.md",
+          "formalization-plans/stage-ii/inf-supply-w1.md",
+          "formalization-plans/stage-ii/inf-supply-w2.md",
+          "formalization-plans/stage-ii/stage-ii-second-half.md"
+        ],
+        "forbidden_changes": [],
+        "authorization": "11-14 coordinator reply: documentation-only formalization-plans/research changes allowed; build/audit changes stop",
+        "checked_at": "2026-11-14T07:24:17.247694"
       }
     },
     {
@@ -66,7 +80,7 @@
     },
     {
       "requirement": "Whole root lake build SerrePositivity",
-      "proved": false,
+      "proved": true,
       "evidence": "root-build-complete.json"
     },
     {
@@ -99,7 +113,7 @@
       "requirement": "Successful heavy processes within 32 GiB and recorded job limits",
       "proved": true,
       "evidence": {
-        "successful_resource_receipts": 298
+        "successful_resource_receipts": 299
       }
     },
     {
@@ -123,7 +137,7 @@
     {
       "requirement": "Preservation-checked source migration committed",
       "proved": true,
-      "evidence": "stopped-source-checkpoint.json"
+      "evidence": "verified-source-checkpoint.json"
     },
     {
       "requirement": "B4 all four branch-ref inventories and non-draft file lists",
@@ -142,6 +156,6 @@
       }
     }
   ],
-  "proved": 18,
+  "proved": 20,
   "requirements": 24
 }

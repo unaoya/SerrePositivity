@@ -1,0 +1,16 @@
+{
+  "command": [
+    "lake",
+    "build",
+    "SerrePositivity"
+  ],
+  "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+  "rc": 0,
+  "reason": null,
+  "seconds": 689.2525234185159,
+  "peak_process_tree_rss_bytes": 10586439680,
+  "peak_lean_or_snapshot_jobs": 4,
+  "threads": "4",
+  "started_local": "2026-11-14T07:11:12.142361",
+  "finished_local": "2026-11-14T07:22:41.395008"
+}
