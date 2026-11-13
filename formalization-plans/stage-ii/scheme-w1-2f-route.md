@@ -1085,3 +1085,20 @@ projectivePerfCechH0DifferenceHom_apply (b : _) :
 ```
 
 保存則の再証明・探索上限の変更はない。共有鍵 --wait 3600 を対象ビルドの間だけ取得。大きい監査とルート登録は保留。2f は未完。H⁰ の短完全列の移送では、比較と逆比較の打ち消しに渡す元を明示して convert すると定義上の等式だけに分離できたが、その等式を一度に rfl で閉じると再帰上限に達する。独立の適用補題を使って照合をさらに小さくする。短完全列、増大写像、F8 と最終検収は引き続き必要。未検証の二ファイルは作業木に保持している。
+
+## 11-14：F6 の複体の H⁰ における短完全列（e218ff2ea）
+
+`ProjectivePerfCechH0Square` の対象ビルドが成功（3,383 jobs）。新規公開宣言は `projectivePerfCechH0_square_exact`：
+
+```lean
+Function.Injective (projectivePerfCechH0Pair (ι := ι) G I p hp hR hA) ∧
+Function.Exact (projectivePerfCechH0Pair (ι := ι) G I p hp hR hA)
+  (projectivePerfCechH0Difference (ι := ι) G I p hp hR hA) ∧
+Function.Surjective (projectivePerfCechH0Difference (ι := ι) G I p hp hR hA)
+```
+
+仮定は Noether 基底、有限生成の斉次代数、標準開の被覆条件、構造射の全射性と中心外の同型、基底・構造環で p が零であること。切断環側の短完全列に、中央項の積の加法同型と閉厚化の H⁰ 比較を適用した。最後の比較の打ち消しは元をすべて指定して convert し、残った定義上の等式を固定定義および `AddMonoidHom.coe_mk`・`ZeroHom.coe_mk` のみで簡約すると閉じた。探索上限・heartbeat・再帰上限を引き上げていない。
+
+共有鍵 --wait 3600 を対象ビルドの間だけ使用。大きい監査・ルート登録・下流ビルドは未実施。実際の差写像の表示の下書き `ProjectivePerfCechH0SquareMaps` は再帰上限に達し、まだ未検証。今回の短完全列では差写像は固定した切断比較を介して定義したものであり、F6 の H⁰ 制限との差の表示および基底側の増大写像との照合を完了したとはしない。
+
+2f 全体は未完。残りは差写像の実際の制限との表示、基底と基底の中心の増大写像との照合、F8 の増大全複体、共通細分・底変換等の停止点の検収と最終報告。最後の型照合で使えなかった独立適用公式の試行は scheme-drafts に退避した。固定した差写像の def は変更していない。
