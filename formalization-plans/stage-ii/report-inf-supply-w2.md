@@ -3952,3 +3952,70 @@ def normalizedBousfieldKanWeightFreeDiagramIso (A : Type u) [CommRing A] :
 今回閉じたのは元の正規化BK係数重みから自由鎖図式への同型であり、A12の反転BK比較と同値性そのものではない。次は、この指定同型と§98の`asSmallLinearHomIso`をHom複体へ運び、元のMoore反転ホモトピー同値、AsSmall・ULift・重み付き切断の指定射を通して、A09の同じ比較を反転BK Holimへ戻す。`normalizedMooreReverse`は既存の**鎖ホモトピー同値の順射**であり、根拠なく厳密な同型として扱わない。全射と同値性を元の指定比較についてそれぞれ検査する。
 
 その後のB（指定豊穣合成・native切断の族・極限性）、C（標準脚・D(A)輸送）、D（全図式射・指定錐族・離散加群入口）は未完。目標の完了条件はDまでの検証済み実装のままで、停止点2の完了報告ではない。
+
+
+## 100. A12の途中：元のΓ Homから同じAsSmall重み付き切断への指定AW比較
+
+mainのみB3で凍結し、各枝のコミットは続けてよいという11-13 23時の連絡に従った。mainの取り込みや入口の登録は行っていない。
+
+元の係数重みの同型を線形Homの始域へ運び、AsSmall制限の指定同型と合成した。そのΓ像の後にA09の元のAW比較を合成し、その同じ比較自身の単体的ホモトピー同値性を示した。これは反転前の接続であり、A12の最終射の代用ではない。
+
+### 100.1 型と数え方
+
+`linearHomSourceIso`はA12の前提計算2/3（既存の前合成の両単位則）。前提計算1/3は§99の正規化自然性。残りはA12の同じ証明の分割。照合枠は全体3/3のまま。LinearHomSourceIsoでは`A : Type u`・`[CommRing A]`・`{C : Type v}`・`[Category.{u} C] [Preadditive C] [Linear A C]`。HAの二本では`A : Type u`・`[CommRing A]`。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearHomSourceIso`
+
+```lean
+def linearHomSourceIso {P P' : CochainComplex C ℤ} (e : P ≅ P') (Q : CochainComplex C ℤ) :
+    linearHomComplex A P Q ≅ linearHomComplex A P' Q
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallHom`
+
+```lean
+def normalizedBKSmallWeight (_A : Type u) : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ) ⥤ SSet.{u}
+```
+
+```lean
+def normalizedBKSmallDiagram (X : CosimplicialObject (Complex A)) :
+    AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ) ⥤ Complex A
+```
+
+```lean
+def normalizedBKSmallHomIso (X : CosimplicialObject (Complex A)) :
+    normalizedBousfieldKanHom X ≅
+      linearHomComplex A
+        ((functorToComplexOfFunctors (AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) (ModuleCat A) (.up ℤ)).obj
+          (freeNegativeChainsDiagram (A := A) (normalizedBKSmallWeight A)))
+        ((functorToComplexOfFunctors (AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) (ModuleCat A) (.up ℤ)).obj
+          (normalizedBKSmallDiagram A X))
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKSmallSections`
+
+```lean
+def normalizedBKCoefficientMap : ULift.{u} ℤ →+* A
+```
+
+```lean
+def normalizedBKSmallSectionsMap (X : CosimplicialObject (Complex A)) :
+    (truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
+      weightedSections (normalizedBKSmallWeight A)
+        (normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A)
+```
+
+```lean
+theorem normalizedBKSmallSectionsMap_equivalence (X : CosimplicialObject (Complex A)) :
+    IsSimplicialHomotopyEquivalence (normalizedBKSmallSectionsMap A X)
+```
+
+### 100.2 検収と残り
+
+コード **`f181b0655`**（上記3本142行）。鍵付き対象ビルド **4,585 jobs**、新規分のみの小さな監査 **16宣言（4・7・5）・標準三公理のみ**。終了コード0、ログ`/private/tmp/isw2-build110.log`、監査`/private/tmp/AuditISW2G10A12SmallSections.lean`。共有鍵は返却済み。個別結合検査のログもエラーなし。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査の変更なし。
+
+累計 **209モジュール・12,402行・1,998宣言**。一覧`/private/tmp/isw2-g10-twohundrednine-modules.txt`。外枠14,500行まで残り2,098行。登録対象は100.1の3本。累計の監査数は既検証分と今回の新規分の合計であり、大きな一括監査を流したという意味ではない。
+
+A12のMoore反転、二重反対圏と元の添字の移送、実豊穣Homとの指定射の照合は残っている。その後のB・C・Dも未完。目標「Dまで進めてください」は継続する。
