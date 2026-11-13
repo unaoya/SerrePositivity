@@ -1,6 +1,6 @@
 # SC-W1 段 2f：モジュールと宣言の検収用一覧
 
-暫定採取点：`bd87c9df6`。停止点 2e の数学コミット `bf9767cdc` 以後に追加した、コミット済みの本体 212 本。停止点 2f の完成を主張する一覧ではない。
+数学の採取点：`32d8faeb7`。停止点 2e の数学コミット `bf9767cdc` 以後に追加した、コミット済みの本体 234 本。停止点の到達点と検証は [停止点報告](scheme-w1-2f-report.md)。
 
 ソースに明示した名前付き宣言と docstring の先頭の主張を列挙する。docstring のない補助宣言にはソースの型を表示する。匿名 instance・構造体の生成宣言は一覧外で、公理監査では別途対象に含める。詳細な到達点と対象ビルドは [route](scheme-w1-2f-route.md)。
 
@@ -62,7 +62,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.AugmentedCechCone`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -76,7 +76,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.AugmentedCechConeMap`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -114,7 +114,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAdditiveExactTransport`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -190,7 +190,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAlgebraFrobeniusH0Cocycle`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -211,7 +211,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAlgebraFrobeniusH0Inclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -221,7 +221,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAlgebraFrobeniusH0Stage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -320,7 +320,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAlgebraSectionEvaluation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -352,7 +352,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAugmentedSquare`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -367,7 +367,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAugmentedSquareMap`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -383,18 +383,32 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechAugmentedSquareSurjectiveMap`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
 | `center_naturality_of_surjective_quotient` | 商が全射なら、中心の辺の可換性は基底・スカラー・制限の可換性から従う。 |
 | `Map.ofSurjectiveQuotient` | 基底から中心への全射を使い、三つの辺を保つデータから四角形の射を作る。 |
 
+## CechAugmentedSquareTransport
+
+モジュール：`SerrePositivity.AlgebraicGeometry.CechAugmentedSquareTransport`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `transport` | 基底と中心は固定し、二つの複体と実際の辺を同型で移す。 |
+| `transportMap` | 移送の実際の四角形の射。 |
+| `transportMap_totalComplexMap_component_isIso` | 移送が誘導する全複体の各項の射は同型。 |
+| `transportTotalComplexIso` | 二つの複体の同型は、増大項も含めた全複体の同型を与える。 |
+| `transport_acyclic` | 元の全複体が acyclic なら、同じ射による移送後の全複体も acyclic。 |
+
 ## CechConeHomologyExactness
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechConeHomologyExactness`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -404,7 +418,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechHomologyCycleLifting`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -450,7 +464,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechZeroTermDifference`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -464,7 +478,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechZeroTermExtension`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -483,7 +497,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CechZeroTermExtensionMap`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -509,7 +523,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.CochainComplexOfExactness`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -519,7 +533,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ColimitInclusionTransport`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -642,12 +656,22 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitModuleIso`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
 | `frobeniusDirectLimitModuleIso` | 環の同型が誘導する、実際の Frobenius 順極限の整数加群の同型。 |
 | `frobeniusDirectLimitModuleIso_of` | 同型の比較は、有限段の元に実際の環の同型を適用する。 |
+
+## FrobeniusDirectLimitModuleIsoNaturality
+
+モジュール：`SerrePositivity.AlgebraicGeometry.FrobeniusDirectLimitModuleIsoNaturality`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `frobeniusDirectLimitModuleIso_naturality` | 環の同型の可換四角は、実際の Frobenius 順極限の整数加群でも可換。 |
 
 ## FrobeniusFiniteModificationExact
 
@@ -700,7 +724,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FrobeniusRingDiagram`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -717,7 +741,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FrobeniusRingSequentialDiagram`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -730,7 +754,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FrobeniusRingSequentialNaturality`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -765,6 +789,16 @@
 | `frobeniusThickeningMap_projection` | 元の環から厚化への写像と反復 Frobenius の可換性。 |
 | `frobeniusThickeningMap_transition` | 厚化を経由する反復 Frobenius は、厚さを下げる遷移と可換。 |
 
+## FullCechComplexHomExt
+
+モジュール：`SerrePositivity.AlgebraicGeometry.FullCechComplexHomExt`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullCechComplex_hom_ext` | 各次数・各タプルで等しい全タプル Čech 複体の二つの射は等しい。 |
+
 ## FullCechH0Compatible
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FullCechH0Compatible`
@@ -789,7 +823,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FullCechH0KernelEvaluation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -810,7 +844,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.FullCechH0ZeroTermCochains`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -895,7 +929,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ModuleCatFilteredExact`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -905,7 +939,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.OpenCoverFrobeniusRefinement`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -920,7 +954,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.OpenCoverFrobeniusRefinementQuasiIso`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -931,7 +965,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.OpenCoverSequentialCech`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -956,7 +990,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveCechFilteredHomologyInclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -966,7 +1000,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveCechFilteredInclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1048,7 +1082,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveCechIntFilteredInclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1134,7 +1168,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveCechIntSequentialInclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1191,7 +1225,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveCechSequentialComplex`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1249,7 +1283,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveChartFrobeniusRingStage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1272,7 +1306,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFilteredComplexQuasiIso`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1283,7 +1317,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFilteredComplexStage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1298,7 +1332,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFilteredHomologyInclusions`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1311,7 +1345,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFrobeniusCanonicalDiagram`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1322,7 +1356,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFrobeniusCanonicalProjection`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1333,7 +1367,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveFrobeniusCanonicalScalar`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1405,7 +1439,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousClosedCenterAdd`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1455,7 +1489,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousFrobeniusChartStage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1479,7 +1513,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousFrobeniusH0Stage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1496,11 +1530,23 @@
 | `projectiveHomogeneousChartLinearEquiv_iteratedFrobenius` | 加群のチャートの反復 Frobenius は、斉次局所化の実際の p^e 乗と一致する。 |
 | `projectiveProjNativeChart_iteratedFrobenius` | 同じ反復 Frobenius は実際の Proj の標準開の切断の p^e 乗に一致する。 |
 
+## ProjectiveHomogeneousRingDiagramMap
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousRingDiagramMap`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveHomogeneousModuleDiagramMap` | 同じ次数零加群の射を、斉次局所化の線形な係数図式へ移す。 |
+| `projectiveHomogeneousModuleDiagramMap_apply` | 移した線形写像は、実際の斉次局所化の環の写像に等しい。 |
+| `projectiveHomogeneousRingDiagramMap` | 実際の環の係数図式の射。 |
+
 ## ProjectiveHomogeneousScalarCocycle
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousScalarCocycle`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1564,7 +1610,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechAugmentedSquare`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1578,7 +1624,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechBlowupSquareTotal`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1591,7 +1637,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechCenterAugmentation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1604,7 +1650,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechCenterCocycle`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1617,7 +1663,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0CenterClass`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1628,7 +1674,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0CenterStage`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1639,7 +1685,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0DifferenceHom`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1651,7 +1697,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0EquivLaws`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1663,7 +1709,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0Evaluation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1678,7 +1724,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0PairEvaluation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1692,7 +1738,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0ScalarCocycle`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1703,7 +1749,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0Square`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1714,7 +1760,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0SquareData`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1729,7 +1775,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0SquareLaws`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1740,7 +1786,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0SquareMaps`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1751,7 +1797,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechH0SquareZero`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1762,7 +1808,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechScalarAugmentation`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1774,7 +1820,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquareAugmentationComparison`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1788,7 +1834,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquareComplexData`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1802,7 +1848,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquareH0Surjective`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1813,7 +1859,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquareKernelComparison`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1824,7 +1870,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquareLowDegree`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1836,7 +1882,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfCechSquarePositive`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1847,17 +1893,44 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectAffineCechComparison`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
 | `projectivePerfectAffineCechHomologyIso` | F8 の固定した複体の Čech H と、任意の有限アフィン被覆の実際の Frobenius 係数での比較。 |
 
+## ProjectivePerfectCartesianSquare
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectCartesianSquare`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `perfectCartesianSquareGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ 1).map (algebraMap R A)) G)` |
+| `projectivePerfectCartesianAugmentedSquare` | F8 の四角形を、実際の Proj と Cartesian な閉厚化 の構造層の係数へ移したもの。 |
+| `projectivePerfectCartesianTotalComplexIso` | F8 の実際の全複体と、native な構造層での全複体の同型。 |
+| `projectivePerfectCartesianSquare_acyclic` | 実際の構造層の Frobenius 係数へ移した射影四角形の増大全複体は acyclic。 |
+| `projectivePerfectCartesianAugmentedSquare_restriction` | 移送した四角形の制限の辺は、実際の構造層の引き戻しそのもの。 |
+
+## ProjectivePerfectCartesianSquareEdges
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectCartesianSquareEdges`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `perfectCartesianEdgesGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ 1).map (algebraMap R A)) G)` |
+| `projectivePerfectCartesianCenterAugmentation` | 実際の閉厚化の構造射のスカラーで定める、中心の零次コチェインへの増大写像。 |
+| `projectivePerfectCartesianAugmentedSquare_center` | 四角形の中心側の辺は、実際の構造射から作った増大写像と同じ。 |
+| `projectivePerfectCartesianAugmentedSquare_scalar_apply` | 四角形の基底側のスカラーは、実際の大域スカラーを制限した Frobenius の写像。 |
+
 ## ProjectivePerfectNativeCechComparison
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectNativeCechComparison`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -1868,6 +1941,55 @@
 | `projectivePerfectNativeCechCoefficientIso_naturality` | 非空交叉の同型は、Frobenius 順極限後も同じ実際の制限写像と可換。 |
 | `projectivePerfectNativeCechComplexIso` | F8 の固定した複体と、実際の Proj の構造層の Frobenius 係数の Čech 複体の同型。 |
 | `projectivePerfectNativeCechComplexIso_apply` | 複体の比較は各タプルで、同じ非空交叉の環の順極限の同型を適用する。 |
+
+## ProjectivePerfectNativeCechMaps
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectNativeCechMaps`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjCechSectionRingIso_map` | 標準開交叉での環の同型は、実際の Proj の appLE に自然。 |
+| `projectivePerfectChartMap` | 実際の斉次局所化の環の写像から作る、F8 の固定した係数図式の射。 |
+| `projectivePerfectNativeCechMap` | Proj の実際のスキームの射から作る、Frobenius 後の標準開の複体の引き戻し。 |
+| `projectivePerfectNativeCechMap_apply` | native な写像の各タプルは、実際の Proj の appLE の環の射の順極限。 |
+
+## ProjectivePerfectNativeCechNaturality
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectNativeCechNaturality`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectivePerfectNativeCechCoefficientIso_map` | 非空交叉の係数の比較は、実際の環の射と可換。 |
+| `projectivePerfectNativeCechComplexIso_naturality_apply` | 複体の比較の自然性を、固定した次数の各タプルで表す。 |
+| `projectivePerfectNativeCechComplexIso_naturality` | 固定した斉次局所化の複体と native な構造層の比較は、実際の環の射に自然。 |
+
+## ProjectivePerfectNativeScalar
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectNativeScalar`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveProjCechSectionRingIso_scalar` | 標準開の切断環の比較は、基底環の実際のスカラーと整合する。 |
+| `projectivePerfectNativeCechComplexIso_scalar` | native な零次コチェインの増大写像は、基底の実際のスカラーの Frobenius 順極限。 |
+
+## ProjectivePerfectNativeSquare
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ProjectivePerfectNativeSquare`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `perfectNativeSquareGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ 1).map (algebraMap R A)) G)` |
+| `projectivePerfectNativeAugmentedSquare` | F8 の四角形を、実際の Proj と次数付き商の Proj の構造層の係数へ移したもの。 |
+| `projectivePerfectNativeTotalComplexIso` | F8 の実際の全複体と、native な構造層での全複体の同型。 |
+| `projectivePerfectNativeSquare_acyclic` | 実際の構造層の Frobenius 係数へ移した射影四角形の増大全複体は acyclic。 |
 
 ## ProjectiveProjCechSectionAlgebraEquiv
 
@@ -1895,7 +2017,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.ProjectiveSequentialComplexQuasiIso`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -2148,6 +2270,145 @@
 | 宣言 | 主張 |
 | --- | --- |
 | `reesClosedLocalizedThickeningFrobenius_transition` | 厚さを下げる実際の線形局所化の射と、厚化 Frobenius は可換。 |
+
+## ReesClosedNativeNonemptyDiagram
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedNativeNonemptyDiagram`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `cechNonemptyIndexFunctor` | 非空有限集合の部分圏から、全ての有限集合の圏への包含。 |
+| `closedNativeNonemptyDiagramGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeNonemptyRingIso` | 非空交叉の環の係数図式と、実際の Cartesian な閉厚化の切断環の自然同型。 |
+
+## ReesClosedNativeSectionComparison
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedNativeSectionComparison`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedNativeSectionGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeSectionLinearEquiv` | 斉次局所化の商の係数と、実際の閉厚化の切断との R 線形同型。 |
+| `reesClosedNativeSectionLinearEquiv_projection` | 線形同型は、斉次局所化の実際の射影を閉厚化の構造層の引き戻しへ送る。 |
+
+## ReesClosedNativeSectionEvaluation
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedNativeSectionEvaluation`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedNativeSectionEvaluationGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeSectionRingIso_hom_apply` | 環の同型の関数部分は、2e からの同じ係数の線形同型。 |
+| `reesClosedNativeSectionRingIso_naturality_hom` | 閉厚化の環の比較と制限の可換性を、環の圏の等式として使う。 |
+
+## ReesClosedNativeSectionNaturality
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedNativeSectionNaturality`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedNativeSectionNaturalityGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeSectionLinearEquiv_naturality` | 商の斉次局所化から実際の切断への線形比較は、非空交叉の制限と可換。 |
+| `reesClosedNativeSectionRingIso_naturality` | 同じ環の同型は、実際の閉厚化の切断環の制限と可換。 |
+
+## ReesClosedNativeSectionRingIso
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedNativeSectionRingIso`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedNativeSectionRingGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedHomogeneousChartProjection_surjective` | 斉次局所化の実際の商への射影は全射。 |
+| `reesClosedNativeSectionRingIso` | 係数の線形同型は、実際の切断の環の同型を与える。 |
+| `reesClosedNativeSectionRingIso_projection` | 実際の環の同型は、斉次局所化の射影を同じ構造層の引き戻しへ送る。 |
+
+## ReesClosedPerfectChartMap
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectChartMap`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectChartGradedRing` | 型クラスの構成：`(n : ℕ) : GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedGradedRingProjection_irrelevant` | 実際の次数付き商は irrelevant ideal の条件を満たし、Proj の射を定める。 |
+| `reesClosedHomogeneousRingDiagramMap_eq` | 閉厚化の商の射は、環の係数図式の一般の写像と同じもの。 |
+| `reesClosedPerfectChartMap_eq` | 一般の写像の構成は、F8 の実際の閉厚化の係数の制限を与える。 |
+
+## ReesClosedPerfectNativeCenter
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeCenter`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectNativeCenterGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeSectionRingIso_scalar` | 閉厚化の環の比較は、元の基底環の実際のスカラーに線形。 |
+
+## ReesClosedPerfectNativeCenterAugmentation
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeCenterAugmentation`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectNativeCenterAugGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedNativeSectionRingIso_center` | 中心の環の写像は、実際の閉厚化の構造射から得るスカラーに対応する。 |
+| `reesClosedPerfectNativePushedCechIso_center` | 実際の中心の増大写像は、構造射のスカラーの Frobenius 順極限。 |
+
+## ReesClosedPerfectNativeCoefficient
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeCoefficient`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectNativeCoefficientGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `projectivePullbackPresheaf_primeCast` | 元の基底の p の零化は、Proj に写るスキームの全ての切断環で成り立つ。 |
+| `reesClosedPerfectNativeNonemptyIso` | 非空交叉の環の自然同型に Frobenius の関手を適用した自然同型。 |
+| `reesClosedPerfectNativePushedCoefficientIso` | 非空交叉の環の同型が誘導する、実際の Frobenius 順極限の係数の同型。 |
+| `reesClosedPerfectNativePushedCoefficientIso_naturality` | 実際の閉厚化の Frobenius 係数の比較は、非空交叉の制限に自然。 |
+| `reesClosedPerfectNativePushedCechIso` | 固定した閉厚化の複体と、実際の閉厚化の切断を押し出した係数の複体の同型。 |
+| `reesClosedPerfectNativePushedCechIso_apply` | 押し出した切断の複体への比較は、各タプルで同じ係数の同型を使う。 |
+| `reesClosedPerfectNativeCechIso` | F8 の固定した閉厚化の複体と、実際の Cartesian な閉厚化の逆像被覆の複体の同型。 |
+
+## ReesClosedPerfectNativeNaturality
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeNaturality`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectNativeGradedRing` | 型クラスの構成：`(n : ℕ) : GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedPerfectNativeCechComplexIso_naturality` | 実際の閉厚化の余鎖写像は、native な Proj の実際の引き戻しと比較を介して一致。 |
+
+## ReesClosedPerfectNativeProjection
+
+モジュール：`SerrePositivity.AlgebraicGeometry.ReesClosedPerfectNativeProjection`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `closedPerfectNativeProjectionGradedRing` | 型クラスの構成：`: GradedRing (projectiveRingQuotientGrade ((I ^ n).map (algebraMap R A)) G)` |
+| `reesClosedPerfectNativePushedCoefficientIso_projection` | 実際の閉厚化への係数の制限は、同じ構造層の引き戻しに対応する。 |
+| `reesClosedPerfectNativePushedCechIso_naturality_apply` | 固定した次数の各タプルで、閉厚化の制限と比較が可換。 |
+| `reesClosedPerfectNativePushedCechIso_naturality` | 押し出した切断の複体への比較は、実際の閉厚化の引き戻しに自然。 |
+| `reesClosedPerfectNativeCechIso_naturality` | 実際の Cartesian な閉厚化の逆像被覆への比較は、実際の構造層の引き戻しに自然。 |
 
 ## ReesClosedRingGrading
 
@@ -2493,7 +2754,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.SchemeStructureIntCechRefinement`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -2505,7 +2766,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.SchemeStructurePerfectAffineCechPullback`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -2516,7 +2777,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.SchemeStructurePerfectCechComparison`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -2526,7 +2787,7 @@
 
 モジュール：`SerrePositivity.AlgebraicGeometry.SchemeStructurePerfectCechPullback`
 
-入口の直接 import 登録：未登録（検収待ち）。
+入口の直接 import 登録：済。
 
 | 宣言 | 主張 |
 | --- | --- |
@@ -2534,6 +2795,17 @@
 | `schemeStructurePerfectPullbackCoefficient` | 実際の切断環の引き戻しに同じ Frobenius 順極限を適用する。 |
 | `schemeStructurePerfectCechPullbackMap` | 実際の構造層の Frobenius 順極限の Čech 複体の引き戻し。 |
 | `schemeStructurePerfectCechPullbackMap_refinement` | 引き戻しは Frobenius 順極限後も同じ細分写像と可換。 |
+
+## SchemeStructurePerfectCechRefinedPullback
+
+モジュール：`SerrePositivity.AlgebraicGeometry.SchemeStructurePerfectCechRefinedPullback`
+
+入口の直接 import 登録：済。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `schemeStructurePerfectCechRefinedPullbackMap` | 逆像への実際の引き戻しと細分の合成。 |
+| `schemeStructurePerfectCechRefinedPullbackMap_apply` | 各タプルの写像は、実際の appLE の環準同型の Frobenius 順極限。 |
 
 ## SquareLiftTransport
 
