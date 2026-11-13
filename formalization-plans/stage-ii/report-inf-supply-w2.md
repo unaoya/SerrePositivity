@@ -3001,3 +3001,101 @@ A06端点と増大写像の切断法則は **`83a842153`** に保存した。`No
 A05aは承認された型の右増大写像則、A05は積側・テンソル側の両単位則を完了した。A06は指定区間の端点・図式自然性・同じ増大写像に対する切断性まで。A06本体の区間評価、両端の評価、前後合成の自然性、A07以降、B・C・Dの各まとまりは未完であり、停止点2の完了報告ではない。
 
 外枠12,500行まで2,357行。型・範囲を弱めず、計算上限を上げず、sorry・新公理なし。既存宣言と⑤aの既存ファイルの変更なし。照合枠は全体3/3、A06の前提計算は端点増大写像の1/3。その他の今回の分割は§14による同じ証明内容の分割として型を報告した。凍結確定の連絡は本記録時点で未受領。
+
+## 90. A06：同じ区間の低次数境界からコチェイン評価を構成
+
+指定された正規化区間を保持し、同じ線形化Δ[1]の交代面複体から評価を構成した。頂点はx,y、非退化な辺はw、高次は零。条件 `d w = y - x` により一次の鎖写像条件が成り立ち、二次は単調な三頂点の三辺の交代和が零であることから成り立つ。Moore正規化の指定包含を前合成し、既存の零延長・smart切断の随伴で元の正規化コチェイン区間からHへの写像へ戻した。
+
+ホモトピー `h : Homotopy f g` のHomコチェインは `δ h = f-g` の向きなので、辺の値として `-h` を用いる。これにより辺の境界はg−fになる。現在は境界データからの評価までで、ホモトピーからのデータの構成と、Rとのテンソルへの転置、両端評価、自然性は未完。
+
+### 90.1 同じA06の証明分割の型
+
+下記4本は新しい模型の比較を導入せず、A06の構成とその鎖写像条件を分けたもの。追加枠に数えない証明分割として型を記録する。名前空間はDiagramComparison。Boundaryでは `{M N : Type*}` とその加法可換群構造、LowDegreesでは `(A : Type u)` と `[CommRing A]` を固定し、`L := (BarrattEccles.linearization A).obj (SSet.stdSimplex.obj ⦋1⦌)` と略記する。
+
+`NormalizedIntervalBoundary`
+
+```lean
+def intervalVertexValue (x y : N) (i : Fin 2) : N
+```
+
+```lean
+def intervalEdgeValue (w : M) (i j : Fin 2) : M
+```
+
+```lean
+theorem interval_vertex_boundary (x y : N) (i j : Fin 2) (hij : i ≤ j) :
+    intervalVertexValue x y j - intervalVertexValue x y i =
+      if i = 0 ∧ j = 1 then y - x else 0
+```
+
+```lean
+theorem interval_edge_boundary (d : M →+ N) (x y : N) (w : M) (hw : d w = y - x)
+    (i j : Fin 2) (hij : i ≤ j) :
+    d (intervalEdgeValue w i j) = intervalVertexValue x y j - intervalVertexValue x y i
+```
+
+```lean
+theorem interval_triangle_boundary (w : M) (f : Fin 3 →o Fin 2) :
+    intervalEdgeValue w (f 1) (f 2) - intervalEdgeValue w (f 0) (f 2) +
+      intervalEdgeValue w (f 0) (f 1) = 0
+```
+
+`NormalizedIntervalLowDegrees`
+
+```lean
+def intervalVertexEvaluation (M : ModuleCat.{u} A) (x y : M) : (L).obj (Opposite.op ⦋0⦌) ⟶ M
+```
+
+```lean
+def intervalEdgeEvaluation (M : ModuleCat.{u} A) (w : M) : (L).obj (Opposite.op ⦋1⦌) ⟶ M
+```
+
+```lean
+theorem interval_evaluation_boundary {M N : ModuleCat.{u} A}
+    (d : M ⟶ N) (x y : N) (w : M) (hw : d w = y - x) :
+    intervalEdgeEvaluation A M w ≫ d =
+      (L).map (SimplexCategory.δ (0 : Fin 2)).op ≫ intervalVertexEvaluation A N x y -
+      (L).map (SimplexCategory.δ (1 : Fin 2)).op ≫ intervalVertexEvaluation A N x y
+```
+
+```lean
+theorem interval_evaluation_triangle (M : ModuleCat.{u} A) (w : M) :
+    (L).map (SimplexCategory.δ (0 : Fin 3)).op ≫ intervalEdgeEvaluation A M w -
+      (L).map (SimplexCategory.δ (1 : Fin 3)).op ≫ intervalEdgeEvaluation A M w +
+      (L).map (SimplexCategory.δ (2 : Fin 3)).op ≫ intervalEdgeEvaluation A M w = 0
+```
+
+`NormalizedIntervalRawChain`
+
+```lean
+def intervalRawChainMap (A : Type u) [CommRing A] (K : ChainComplex (ModuleCat.{u} A) ℕ)
+    (x y : K.X 0) (w : K.X 1) (hw : K.d 1 0 w = y - x) :
+    (alternatingFaceMapComplex (ModuleCat A)).obj
+      ((SerrePositivity.EInfinity.BarrattEccles.linearization A).obj (SSet.stdSimplex.obj ⦋1⦌)) ⟶ K
+```
+
+```lean
+def intervalNormalizedChainMap (A : Type u) [CommRing A]
+    (K : ChainComplex (ModuleCat.{u} A) ℕ) (x y : K.X 0) (w : K.X 1)
+    (hw : K.d 1 0 w = y - x) :
+    (normalizedMooreComplex (ModuleCat A)).obj
+      ((SerrePositivity.EInfinity.BarrattEccles.linearization A).obj (SSet.stdSimplex.obj ⦋1⦌)) ⟶ K
+```
+
+`NormalizedIntervalCochain`
+
+```lean
+def normalizedIntervalCochainMap (A : Type u) [CommRing A]
+    (H : CochainComplex (ModuleCat.{u} A) ℤ)
+    (x y : (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).X 0)
+    (w : (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).X 1)
+    (hw : (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).d 1 0 w = y - x) :
+    (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj ⦋1⦌) ⟶ H
+```
+
+### 90.2 検収と現在地
+
+コード **`1cac2d8b9`**。4本184行（Boundary 39、LowDegrees 67、RawChain 51、Cochain 27）。個別の結合検査 `/private/tmp/isw2-interval-cochain1.log` は終了コード0。鍵付き対象ビルド2,059 jobsと166モジュールの一時監査が終了コード0（`/private/tmp/isw2-build91.log`）。累計 **166モジュール・10,327行・1,758宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSixtySix.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixtysix-modules.txt`。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。共有鍵は返却済み。上表の4本を登録対象へ追加する。
+
+次は同じホモトピーの零次コチェインと次数−1成分をsmart切断へ送るデータの構成。そのため `NormalizedIntervalCycleData.lean` の作業木で既存のcyclesへの持ち上げと切断の項同型を使用している。未検証であり、上記実績に算入しない。A06本体と停止点2は未完。計算上限は上げていない。
