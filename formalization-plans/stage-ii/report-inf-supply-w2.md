@@ -3267,3 +3267,138 @@ theorem normalizedIntervalHom_endpoints {R S : J ⥤ Complex A} (f g : R ⟶ S)
 コード **`c04dbbbbe`**。新規4本290行（VertexValues 71、EndpointValues 102、DiagramTensorUnit 42、HomEndpoints 75）。個別検査 `/private/tmp/isw2-interval-values4.log`、結合検査 `/private/tmp/isw2-interval-endpoint-values2.log`・`/private/tmp/isw2-interval-hom-endpoints2.log` は終了コード0。鍵付き対象ビルドと一時監査も終了コード0（`/private/tmp/isw2-build94.log`：171本・1,806宣言、`/private/tmp/isw2-build95.log`：4,000 jobs・173本・1,810宣言）。累計 **173モジュール・10,757行・1,810宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSeventyThree.lean`、一覧 `/private/tmp/isw2-g10-hundredseventythree-modules.txt`。上の4本を登録対象へ追加する。鍵は返却済み。
 
 A06は本体と指定された両端の厳密等式まで完了。前後合成の自然性は未完で、作業木の `NormalizedIntervalChainNaturality.lean` で同じ自由鎖・正規化鎖評価の後合成を検査中。A07以降・B/C/Dと停止点2は未完。外枠12,500行まで検証済みから1,743行。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし、計算上限変更なし。凍結確定の連絡は未受領。
+
+
+## 93. A06完了：本体・指定両端・全図式射の自然性
+
+同じ自由区間の零次・一次の生成元計算で鎖評価の後合成自然性を示し、既存のsmart切断射のcycles公式・項同型で境界データを移した。既存 `normalizedChainsTruncationHomEquiv_postcomp` でコチェイン評価へ戻し、閉零次射による内部Homの前後合成を適用した。最後に既存テンソル–Homの始域・標的自然性とパラメータ同型の交換則で、元の図式射の自然性を得た。
+
+A06は一覧の型どおり、本体 `normalizedIntervalHom`、指定された二端の厳密等式、全図式射についての前後合成自然性まで完了。ホモトピーの前後合成は右合成の後に左合成をする括弧を採用し、元の `a ≫ f ≫ b` の型に合わせた。新しいホモトピーを選んでいない。
+
+### 93.1 同じA06の証明分割・前提計算の型
+
+`DiagramTensorHomNaturality` の既存同値の前後合成自然性をA06の前提計算 **3/3** として追加。その他は同じ一覧A06の自然性の証明分割（§14）であり、照合枠は全体3/3のまま。最初の四本は `A : Type u` と `[CommRing A]`、HomotopyIntervalNaturalityではさらに `{C : Type v}` と `[Category.{u} C] [Preadditive C] [Linear A C]` を固定する。最後の二本は `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`E := functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)`。
+
+`NormalizedIntervalChainNaturality`
+
+```lean
+theorem intervalRawChainMap_postcomp {K L : ChainComplex (ModuleCat.{u} A) ℕ} (q : K ⟶ L)
+    (x y : K.X 0) (w : K.X 1) (hw : K.d 1 0 w = y - x)
+    (hw' : L.d 1 0 (q.f 1 w) = q.f 0 y - q.f 0 x) :
+    intervalRawChainMap A K x y w hw ≫ q =
+      intervalRawChainMap A L (q.f 0 x) (q.f 0 y) (q.f 1 w) hw'
+```
+
+```lean
+theorem intervalNormalizedChainMap_postcomp {K L : ChainComplex (ModuleCat.{u} A) ℕ} (q : K ⟶ L)
+    (x y : K.X 0) (w : K.X 1) (hw : K.d 1 0 w = y - x)
+    (hw' : L.d 1 0 (q.f 1 w) = q.f 0 y - q.f 0 x) :
+    intervalNormalizedChainMap A K x y w hw ≫ q =
+      intervalNormalizedChainMap A L (q.f 0 x) (q.f 0 y) (q.f 1 w) hw'
+```
+
+
+`NormalizedIntervalTruncationNaturality`
+
+```lean
+theorem intervalTruncCycle_naturality {H H' : CochainComplex (ModuleCat.{u} A) ℤ}
+    (q : H ⟶ H') (z : H.X 0) (hz : H.d 0 1 z = 0) (hz' : H'.d 0 1 (q.f 0 z) = 0) :
+    (truncLE'Map q (ComplexShape.embeddingUpIntLE 0)).f 0 (intervalTruncCycle A H z hz) =
+      intervalTruncCycle A H' (q.f 0 z) hz'
+```
+
+```lean
+theorem intervalTruncEdge_naturality {H H' : CochainComplex (ModuleCat.{u} A) ℤ}
+    (q : H ⟶ H') (w : H.X (-1)) :
+    (truncLE'Map q (ComplexShape.embeddingUpIntLE 0)).f 1 (intervalTruncEdge A H w) =
+      intervalTruncEdge A H' (q.f (-1) w)
+```
+
+
+`NormalizedIntervalCochainNaturality`
+
+```lean
+theorem normalizedIntervalCochainMapOfBoundary_postcomp
+    {H H' : CochainComplex (ModuleCat.{u} A) ℤ} (q : H ⟶ H')
+    (x y : H.X 0) (hx : H.d 0 1 x = 0) (hy : H.d 0 1 y = 0)
+    (w : H.X (-1)) (hw : H.d (-1) 0 w = y - x)
+    (hx' : H'.d 0 1 (q.f 0 x) = 0) (hy' : H'.d 0 1 (q.f 0 y) = 0)
+    (hw' : H'.d (-1) 0 (q.f (-1) w) = q.f 0 y - q.f 0 x) :
+    normalizedIntervalCochainMapOfBoundary A H x y hx hy w hw ≫ q =
+      normalizedIntervalCochainMapOfBoundary A H' (q.f 0 x) (q.f 0 y) hx' hy'
+        (q.f (-1) w) hw'
+```
+
+
+`HomotopyIntervalNaturality`
+
+```lean
+def intervalHomPrePost {R R' S S' : CochainComplex C ℤ} (a : R' ⟶ R) (b : S ⟶ S') :
+    linearHomComplex A R S ⟶ linearHomComplex A R' S'
+```
+
+```lean
+theorem intervalHomPrePost_ofHom {R R' S S' : CochainComplex C ℤ}
+    (a : R' ⟶ R) (b : S ⟶ S') (f : R ⟶ S) :
+    (intervalHomPrePost A a b).f 0 (Cochain.ofHom f) = Cochain.ofHom (a ≫ f ≫ b)
+```
+
+```lean
+theorem intervalHomPrePost_ofHomotopy {R R' S S' : CochainComplex C ℤ}
+    (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S) (h : Homotopy f g) :
+    (intervalHomPrePost A a b).f (-1) (-Cochain.ofHomotopy h) =
+      -Cochain.ofHomotopy ((h.compRight b).compLeft a)
+```
+
+```lean
+theorem homotopyIntervalCochainMap_naturality {R R' S S' : CochainComplex C ℤ}
+    (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S) (h : Homotopy f g) :
+    homotopyIntervalCochainMap A f g h ≫ intervalHomPrePost A a b =
+      homotopyIntervalCochainMap A (a ≫ f ≫ b) (a ≫ g ≫ b)
+        ((h.compRight b).compLeft a)
+```
+
+
+`DiagramTensorHomNaturality`
+
+```lean
+theorem diagramTensorLinearHomEquiv_naturality {R R' S S' : J ⥤ Complex A}
+    (T : Complex A) (a : R' ⟶ R) (b : S ⟶ S') (t : R ⊗ (Functor.const J).obj T ⟶ S) :
+    diagramTensorLinearHomEquiv R' S' T (((a ▷ (Functor.const J).obj T) ≫ t) ≫ b) =
+      diagramTensorLinearHomEquiv R S T t ≫ intervalHomPrePost A ((E).map a) ((E).map b)
+```
+
+
+`NormalizedIntervalHomNaturality`
+
+```lean
+def normalizedIntervalHomotopyPrePost {R R' S S' : J ⥤ Complex A}
+    (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+    Homotopy ((E).map (a ≫ f ≫ b)) ((E).map (a ≫ g ≫ b))
+```
+
+```lean
+theorem normalizedIntervalHom_naturality {R R' S S' : J ⥤ Complex A}
+    (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+    (a ⊗ₘ 𝟙 (freeNegativeChainsDiagram (A
+```
+
+### 93.2 検収
+
+コード **`b86733b2c`**（最初の4本228行）・**`38c1d4b8d`**（最後の2本94行）。個別・結合検査は終了コード0（`/private/tmp/isw2-interval-raw-nat2.log`、`/private/tmp/isw2-trunc-nat2.log`、`/private/tmp/isw2-cochain-interval-nat2.log`、`/private/tmp/isw2-hom-interval-nat2.log`、`/private/tmp/isw2-diagram-interval-nat2.log`、`/private/tmp/isw2-interval-hom-nat3.log`）。鍵付き対象ビルドと一時監査も終了コード0。
+
+| 検収 | 対象ビルド | 累計モジュール | 累計宣言 | ログ |
+| --- | --- | --- | --- | --- |
+| 鎖・切断・コチェイン自然性 | 2,396 jobs | 176 | 1,815 | `/private/tmp/isw2-build96.log` |
+| 内部Hom前後合成 | 2,398 jobs | 177 | 1,826 | `/private/tmp/isw2-build97.log` |
+| 元の図式射の自然性（A06完了） | 3,999 jobs | 179 | 1,831 | `/private/tmp/isw2-build98.log` |
+
+すべて標準三公理のみ。累計 **179モジュール・11,079行・1,831宣言**。一時監査 `/private/tmp/AuditISW2G10HundredSeventyNine.lean`、対象一覧 `/private/tmp/isw2-g10-hundredseventynine-modules.txt`。上の6本を登録対象に追加する。共有鍵は返却済み。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし、計算上限変更なし。凍結確定の連絡は未受領。
+
+### 93.3 次の一覧項目A07への接続と残り
+
+A07では、全余単体方向の指定ホモトピーを各単体次数で評価し、今の `normalizedIntervalHom` を使う。入力のn単体（`G.obj n ⟶ Q`）と区間のn単体（`⦋n⦌ ⟶ ⦋1⦌`）に対し、指定余作用 `δ.app n`、同じ正規化単体射、区間評価、入力射を順に合成する。単体作用素との可換性にはδの自然性とA06の前後合成自然性、両端にはA05の指定単位則とA06の両端等式を使う。二重図式のホモトピーを次数ごとに独立に選ばない。元の全パラメータの自然な成分を評価して使う。
+
+A07以降、B・C・Dの各まとまり、停止点2は未完。本節はA06完了の途中報告であり、停止点2の検収報告ではない。検証済みは外枠12,500行まで残り1,421行。範囲・型は弱めていない。
