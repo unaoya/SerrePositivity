@@ -4777,3 +4777,59 @@ theorem standardDoldKanAW_positive_projected_eval {x y z : D} {n : ℕ}
 ### 110.3 残り
 
 B02は未完。今回の実AW側の評価を、A09の自由鎖AW比較の切断点ごとの値、同じ自由鎖Hom随伴、Hom–Tot比較へ接続して全単体の等式を閉じる必要がある。単なる正規化後の値の回収だけで元の比較射の等式を済ませたとは扱わない。その後にB03〜B08、C、Dが残る。停止点2の完了報告ではなく、目標「Dまで進めてください」はactiveのまま。
+
+
+## 111. 3b-2：外枠に近づいた時点の残工程の再検討と中間停止
+
+### 111.1 authoritative state と短い経路の確認
+
+作業枝`math/inf-supply-b`の検証済みコードは`7000f0623`、報告は`8d8f5ba5a`。作業木はclean、対象ビルド126と新規分監査は終了コード0、実行中のビルドはない。231本の一覧から実ファイルを数え直し、**13,839行**であることを確認した。外枠14,500行まで **661行**。
+
+B02で残るのは、A09の自由鎖AWの各切断の値と§110の実標準AWの各切断の値を、指定随伴・Hom–Tot比較を介して同じ全単体の式へ結ぶこと。§110はこのうち実標準AW側を閉じたもので、自由鎖側と同じ射になったとは数えない。
+
+B04〜B06を短く済ませるため、`ReflectedWeightedNativeCone`・`ReflectedWeightedHomComparison`・`CoherentConeNativeComparison`・`CoherentConeFamilyHomotopy`を読み直した。既存の`reflectedCoherentConeFamilyComparison`とその`_evaluation`は、頂点評価を正しくする選んだ切断の族を与える。しかし、その制限が指定`reflectedWeightedHomComparison`との合成に**等しい**というB06の式は、これらから直接は得られない。既存の族をB04に代入してB06をホモトピーの存在に弱めることはしない。指定重み付き入力から全高次単体の族を構成し、頂点評価と制限を同時に照合する工程が残る。
+
+### 111.2 残量と停止理由
+
+§73の型を維持した見込み。これは実装量の予測であり、数学的な行数下限ではない。特にCとDは未着手であるため、§72.2の見込みを根拠なく縮めない。新しい第五のまとまりは要求していない。
+
+| §72.2／§73のまとまり | 現状と残る型 | 追加見込み |
+| --- | --- | ---: |
+| 正規化テンソル／積重み | A01〜A12完了。残る最終の実合成との照合は以下のB02に数える | 0行 |
+| 指定豊穣Homとnative極限性 | B01完了。B02の自由鎖AW・Hom–Totとの全単体の等式、B03、B04〜B06の指定族と両評価、B07〜B08 | 400〜700行 |
+| 標準脚とD(A)輸送 | C01〜C07未完。元の標準脚、同じ全join射の輸送、元のstrict図式との照合 | 400〜700行 |
+| 全図式射・指定錐の族・離散入口 | D01〜D08未完。全パラメータ族の境界・各点・辺、離散制限、ホモロジー入口 | 500〜900行 |
+| 合計 | | **1,300〜2,300行** |
+
+完成見込みは **15,139〜16,139行**。CとDだけの従来見込み900〜1,600行も、残枠661行を超える。B02の小さい計算補題を足し続けて外枠を使い切るのではなく、「超えそうなら検証済みを保存して報告し止める」という条件に従い、**3b-2の追加Leanはここで中間停止する**。
+
+検証済みの分はすべてコミット済みであり、未検証の下書きはない。停止点2ではない。範囲や型を弱めず、Dを3b-3へ移さず、既存宣言・⑤a・mainを変更せず、外枠を独自に引き上げない。再開には残工程と外枠についての調整が必要。目標「Dまで進めてください」は未達成のまま保持する。今回がこの外枠に関する新たな中間停止の最初のターンであり、goalをcompleteやblockedには変更しない。
+
+## 112. 代わりの紙の作業：3b-4の既存strict模型と3b-3の受け渡しの再確認
+
+この節は読み取りと型案のみ。Leanの宣言・新しい模型内部への参照は追加せず、ビルドの鍵も取得していない。B3の連絡に従いmainをmergeしていない。mainの読み取り時のrefは`40faa3892120211786cf463371a356c3fc9de6e1`。
+
+### 112.1 既存部品との重複を避ける
+
+`BarrattEccles/FramedLimit.lean`には、既に任意の小図式の**全関手**`framedLimitFunctor A K`と台の`framedLimitCarrierIso`がある。`FramedLimitCarrierDerivedComparison.lean`には、複体の通常局所化における`carrierFramedLimitComparisonIso`と、元の通常錐との両立`carrierFramedLimitComparisonIso_cone`がある。したがって、3b-4 §38.2の1・2でBEの右frame/endやその通常局所化の対象比較を新規に作り直す必要はない。これらの既存ファイルは⑤a側の部品として変更しない。実装再開時は新規ファイルで橋だけを作る。
+
+ただし、通常局所化の同型や各対象の台の同型だけを、指定native錐の族を保つ∞関手同型と同一視しない。既存`algebraCAlgSource_underlyingDerivedIso`が与えるのは実Uと元の通常忘却の全比較であり、これと上記通常局所化の比較をつなぐ全高次単体の工程が必要。
+
+紙の略記として、`J = Δ`に固定し、次の二つの全単体的射を比較する段を切り出す（ここでは新しいLean宣言として検査した型ではない）。
+
+```lean
+F_BE := nerveMap (framedLimitFunctor A J) ≫ algebraCAlgSource A ≫ cAlgForgetDerived A
+F_DA := nerveMap (Diagram.forget A J ⋙ ComplexLimits.framedLimitFunctor A J) ≫
+  ComplexLimits.complexOrdinaryDerivedSource A
+-- 必要な強さ：FunctorIso F_BE F_DA と、同じ指定全錐族の輸送の式。
+```
+
+`FreeProbeDerivedLimits.lean`の`cAlgForgetDerived_mapJoinCone_isLimit_of_transport`は、`FreeProbeUnitTransportCondition A`を**明示的に仮定**する。この仮定を無条件の供給済み結果として使わず、⑤a側の供給点を確認する。右Quillen性やprojective図式の全対象fibrant性だけで、通常limを導来limと同定することもしない。
+
+### 112.2 ③-aのR6で使える形と、まだ別の入力
+
+mainを読み取ると、`StrictSemifreeComputedColimitFamily.lean`に`strictSemifreeComputedColimitFamilyIso`と、包含後の同じ全余錐族の比較`strictSemifreeComputedCoconeFamilyIso`がある。`StrictSemifreeRealizationFamily.lean`には、同じ実現全関手の族・頂点・辺の式がある。これらは、§38.1で求めた「3b-1から移したstrict加群図式の全パラメータ比較」に対応する受け取り候補である。B3後のB4で名前と型を引き直して使う。今は枝へ取り込まず、既存ファイルの変更やコピーもしない。
+
+このR6の供給を、任意のcoherent BE図式の厳密化の代わりには使わない。③-aの加群図式の比較は加群値の3b-3であり、BE作用を回復する全coherent図式の比較は§38.2の3として別に残る。strict BE図式の模型計算とそのU比較が済む前から、この追加の厳密化を仮定に押し込んだ主張を作らない。
+
+今回の紙の確認により、3b-4で最初に重複を避ける対象は上記の既存`FramedLimit*`・`CAlgUnderlyingDerivedComparison`、受け取り候補はR6の全余錐族の同型と明確になった。G10（3b-2）は未完のままなので、これを完了扱いして3b-4のLeanへ移ってはいない。
