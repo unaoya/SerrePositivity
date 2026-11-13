@@ -2548,3 +2548,50 @@ R3aにはまだ入っていない。
 
 11-13 23時の連絡に従い、B3中も専用枝のコミットを続ける。mainへの取り込みは行わず、
 対象ビルドと上の小監査だけを行った。
+
+### R2cの値の入力の係数移送（1/3、未検証）
+
+```lean
+lemma complexDerivedEvaluation_eq_ordinarySource :
+  complexDerivedEvaluation A = EInfinity.ComplexLimits.complexOrdinaryDerivedSource A
+def complexDerivedEvaluation_hammockSourceIso :
+  FunctorIso (complexHammockSource A ≫ complexHammockDerivedComparison A)
+    (complexRelativeNerveDown A ≫ complexDerivedEvaluation A)
+```
+
+`ComplexDerivedHammockSource.lean` に置く。前者はR2cの前提計算1/3、
+後者は既存の指定sourceIsoへの係数移送の証明分割。
+⑤aの既存 `ComplexHammockSource` を再利用し、⑤aのファイルは変更しない。
+全複体での `ComplexHammockFullyFaithful` もmainにあることを確認した。
+これは値の比較であり、図式全体でのR2cを既に証明したことにはしない。
+
+### R2cのstrict側のendの表示（前提計算2/3、未検証）
+
+`StrictDiagramFrameSections.lean` に同じright frameの各単体の全成分を、
+全ての添字射の自然性の式を課したsubtypeとして記述する。
+
+```lean
+def StrictDiagramFrameSection (X Y : StrictComplexDiagram A d) (n : SimplexCategoryᵒᵖ) :=
+  { f : ∀ j, X.obj j ⟶ ((strictDiagramFrame A d Y).obj n).obj j //
+    ∀ (i j : strictDiagramIndex d) (a : i ⟶ j),
+      X.map a ≫ f j = f i ≫ ((strictDiagramFrame A d Y).obj n).map a }
+def strictDiagramFrameSectionsIso (X Y : StrictComplexDiagram A d) :
+  (strictDiagramRightFrameMapping A d X).obj Y ≅ strictDiagramFrameSections A d X Y
+```
+
+同じ射を成分として読む係数移送で、R2cの前提計算2/3。単体作用と逆射はその証明分割。
+このstrictなendがhomotopy endを計算することは、ここではまだ証明していない。
+自然性を仮定として加えてR2cを済ませたり、成分ごとの弱同値だけからendの弱同値を出したりしない。
+
+### R2cの前提計算2本の検証結果（11-13 夜）
+
+`ComplexDerivedHammockSource` 36行、`StrictDiagramFrameSections` 89行を対象ビルドで確認した。
+前者は9,395 jobs、後者は9,496 jobs、いずれも成功。
+後者の初回の関手則の名前解決と自然変換の外延性の誤りを修正し、再実行で通した。
+小監査7宣言は標準三公理のみ（`/tmp/is-w1/r2-value-sections-audit.log`）。
+
+R2の実測は9本768行、3b-3累計85本6,814行、選択監査324宣言。
+R2cの前提計算は2/3。残り1枠を新しい数学の仮定の導入には使わない。
+右脚の同値性そのものは未了。次は同じframeの成分表示から、coherent変換空間の
+homotopy endへの比較と、元の評価の誘導射との照合を行う。
+これは§40のR2cの証明の残りで、R3a・R4には入っていない。
