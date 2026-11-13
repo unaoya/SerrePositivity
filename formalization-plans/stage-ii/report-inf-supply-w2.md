@@ -5030,3 +5030,35 @@ theorem freeProductAlexanderWhitney_sum_value
 B02は未完。今回の自由鎖AW側の切断和と、§114の実豊穣合成の逆随伴の切断和を、指定tensor–HomとHom–Totの成分・符号を介して同じ射として照合する。`HomTotalHomogeneousComposition.lean`は、試験対象の次数零の鎖射に限らず任意次数の合成について同じ積射影の成分を合わせる検査中の下書きであり、この検収と累計には含めない。
 
 B03〜B08・C・Dは未完。停止点2a・2bの完了報告ではない。B完了時のC・Dの再見積もりは、Bの実測が揃った所で行う。
+
+
+## 116. B02の途中：Hom–Tot成分の任意次数合成
+
+### 116.1 同じ成分照合の型
+
+元の`homTotalComponent`は、試験対象の次数零の鎖射だけでなく、**任意の整数次数p・qの斉次射の合成**を、同じ積射影による成分で保つことを示した。微分閉性や有界性を追加していない。B02の全Hom単体の成分照合の分割（§14）であり、独立した前提計算・照合の枠を追加しない。B02前提計算3/3、照合全体3/3のまま。
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomTotalHomogeneousComposition`。
+名前空間はHA.DerivedCategoryModels.CosimplicialTotalization、`{A : Type u}`・`[CommRing A]`を固定する。
+
+```lean
+theorem homTotalComponent_homogeneous_comp {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (p q : ℤ) (n : ℕ)
+    (f : Homogeneous P Q p) (g : Homogeneous Q ((productTotalFunctor A).obj X) q) :
+    homTotalComponent P X (p + q) n (f.comp g rfl) =
+      f.comp (homTotalComponent Q X q n g) (by omega)
+```
+
+### 116.2 検収と登録
+
+コード **`950678940`**（1本46行）。個別検査`/private/tmp/isw2-homtotal-homogeneous8.log`は終了コード0。依存するcochain成分の等しい整数添字の移送は、既存の成分式を使い、合同を一段ずつ取り整数等式の所でomegaを適用して閉じた。計算上限は変更していない。
+
+鍵付き対象ビルド`/private/tmp/isw2-build131.log`は **2,287 jobs・終了コード0**。新規分だけの監査`/private/tmp/AuditISW2G10B02HomTotalComposition.lean`は **2宣言・標準三公理のみ**。共有鍵は返却済み。大きな監査・rootビルドは実行していない。
+
+累計 **237モジュール・14,368行・2,142宣言**。一覧は`/private/tmp/isw2-g10-twohundredthirtyseven-modules.txt`、外枠20,000行まで残り5,632行。再開後の追加は6本529行・27宣言。新公理・sorryなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。登録対象は116.1の1本。未検証下書きは残っていない。
+
+### 116.3 残り
+
+B02は未完。実AWの逆随伴の切断和（§114）、自由鎖AWの各切断と全切断和（§115）、Hom–Totの任意次数合成（本節）を、同じ指定重みとtensor–Homの符号付き成分に接続して最終の射の等式を閉じる。これらの部分公式を、B02の最終等式やB03〜B08のnative極限性の代用にしない。
+
+C・Dも未完。停止点2a・2bの検収ではない。新しい外枠と一覧の中で継続し、B完了時にC・Dを実測に基づいて再見積もりする。BE忘却の無条件版の確認は§113.2に記録済み。
