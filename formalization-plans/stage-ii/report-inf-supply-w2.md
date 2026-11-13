@@ -4664,3 +4664,57 @@ theorem normalizedLinearWeightHomEquiv_freeDiagram (W : J ⥤ SSet.{0})
 ### 108.3 残り
 
 B02はまだ未完。元の線形重みHomからA09の自由鎖随伴への射の照合は今回閉じた。残るのは、同じAW比較・Hom–Tot比較と、標準成分模型で定めた実豊穣合成の全単体での一致。その後にB03〜B08の指定native切断の族と極限性、Cの標準脚とD(A)輸送、Dの全図式射・指定錐の族・離散加群入口が残る。今回の随伴の照合をAW合成の一致の代用にしない。目標「Dまで進めてください」はactiveのまま。
+
+
+## 109. B02の途中：実Moore射影を通した標準Hom最上位成分の回収
+
+B3はmainだけの凍結との11-13 23時の連絡に従い、mainを取り込まず、作業枝で検証とコミットを続けた。対象ビルドと新規分だけの監査に限り、大きな監査は実行していない。
+
+### 109.1 部分補題と型
+
+B02の実豊穣合成の成分照合のうち、標準HomをMoore正規化する段を分割した。最上位成分の評価が退化上で消えることを既存の非単射引き戻し公式から示し、Mathlibの既存の退化消滅判定で実射影PInftyを消去する。さらに既存の正規化包含との可換式により、指定射影から正規化最上位評価への合成が元の生の評価になることを示した。射影や比較射を作り直していない。
+
+これはB02の同じ成分照合の証明分割（§14）であり、新しい独立した前提計算や照合の枠を追加しない。前提計算枠はB02 3/3、照合枠は全体3/3のまま。名前空間はDiagramComparison。`{R : Type u}`・`[CommRing R]`・`{D : Type v}`・`[DGCategory R D]`を固定する。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomTopProjection`
+
+```lean
+theorem standardTopEval_degeneraciesVanish (x y : D) (n : ℕ) :
+    DegeneraciesVanish (n := n) (X := standardModule (R := R) x y)
+      (ModuleCat.ofHom (standardTopEval (R := R) x y n))
+```
+
+```lean
+theorem standardTopEval_PInfty (x y : D) (n : ℕ) :
+    (PInfty (X := standardModule (R := R) x y)).f n ≫
+      ModuleCat.ofHom (standardTopEval (R := R) x y n) =
+    ModuleCat.ofHom (standardTopEval (R := R) x y n)
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardHomNormalizedTop`
+
+```lean
+theorem standardMooreTopMap_inclusion (x y : D) (n : ℕ) :
+    standardMooreTopMap (R := R) x y n =
+      (inclusionOfMooreComplexMap (standardModule (R := R) x y)).f (n + 1) ≫
+        ModuleCat.ofHom (standardTopEval (R := R) x y (n + 1))
+```
+
+```lean
+theorem standardMooreTopMap_projection (x y : D) (n : ℕ) :
+    (DoldKan.PInftyToNormalizedMooreComplex (standardModule (R := R) x y)).f (n + 1) ≫
+      standardMooreTopMap (R := R) x y n =
+    ModuleCat.ofHom (standardTopEval (R := R) x y (n + 1))
+```
+
+### 109.2 検収と登録
+
+コード **`a3182379a`**（2本117行）。個別検査`/private/tmp/isw2-top-projection5.log`・`/private/tmp/isw2-normalized-top2.log`は終了コード0。零次数の退化消滅の定義は非公開なので、既存の判定定理を使って処理した。計算上限は変更していない。
+
+最終ソースの鍵付き対象ビルド`/private/tmp/isw2-build125.log`は **3,764 jobs・終了コード0**。新規分だけの監査`/private/tmp/AuditISW2G10B02NormalizedTop.lean`は **4宣言（2・2）・標準三公理のみ**。共有鍵は返却済み。累計 **230モジュール・13,735行・2,111宣言**。対象一覧は`/private/tmp/isw2-g10-twohundredthirty-modules.txt`。外枠14,500行まで残り765行。
+
+新公理・sorryなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。登録対象は109.1の2本。
+
+### 109.3 残り
+
+B02は未完。今回の式はMoore正規化前後の実評価の照合であり、AW比較・Hom–Tot比較と実豊穣合成の全単体の一致を済ませたとは扱わない。そこから指定native切断の族・極限性（B03〜B08）、標準脚・D(A)輸送（C）、全図式射・指定錐の族・離散加群入口（D）へ進む。停止点2の完了報告ではない。
