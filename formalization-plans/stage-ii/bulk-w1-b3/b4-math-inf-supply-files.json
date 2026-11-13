@@ -1,0 +1,11 @@
+[
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ComplexDerivedHammockSource.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramCofibrantVertices.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFrameSections.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramFunctorialFrames.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramLocalizedVertices.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramReedyMappingModel.lean",
+  "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramRightFrameComparison.lean"
+]

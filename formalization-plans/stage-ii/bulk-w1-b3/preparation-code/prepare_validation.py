@@ -61,7 +61,7 @@ while todo:
  for dep in graph[m]:
   if dep in graph and dep.startswith('SerrePositivity.') and dep not in closure:closure.add(dep);todo.append(dep)
 order=list(TopologicalSorter({m:graph[m]&closure for m in closure}).static_order());groups=[order[i:i+100] for i in range(0,len(order),100)]
-plan={'requested':len(requested),'prerequisites':len(closure-requested),'modules':order,'groups':groups,'graph_sources':len(graph),'policy':'B2 approved full target set plus every frozen-main delta library module; Integral retained at original path; dependency closure explicit'}
+plan={'requested':len(requested),'requested_modules':sorted(requested),'prerequisites':len(closure-requested),'modules':order,'groups':groups,'graph_sources':len(graph),'policy':'B2 approved full target set plus every frozen-main delta library module; Integral retained at original path; dependency closure explicit'}
 (w/'target-build-plan.json').write_text(json.dumps(plan,indent=2));print('targets',len(requested),'closure',len(order),'groups',len(groups))
 # Full original B2 comparison coverage plus all frozen-main delta library modules.
 previous=[m for group in json.load(open(old/'preservation-groups.json')) for m in group]

@@ -2,13 +2,14 @@ from pathlib import Path
 import json,gzip,shutil,subprocess,datetime
 w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');d=r/'formalization-plans/stage-ii/bulk-w1-b3';base=json.load(open(w/'baseline.json'));assert subprocess.check_output(['git','rev-parse','main'],cwd=r,text=True).strip()==base['frozen_main']
 for f in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json']:assert (w/f).exists(),f
+subprocess.run(['python3','-B',str(w/'check_target_coverage.py')],check=True)
 a=json.load(open(w/'attribute-metadata-check.json'));assert not any(a[k] for k in ['missing','extra','different','metadata_errors'])
 t=json.load(open(w/'native-tag-metadata-check.json'));assert all(not v['missing'] and not v['extra'] for v in t.values())
 layer=json.load(open(w/'static-layers.json'));assert not any(v['kind']!='reverse-section' for v in layer['violations']),layer['violations'][:3]
 subprocess.run(['python3','-B',str(w/'check_baseline_edges.py')],check=True);edges=json.load(open(w/'baseline-section-edges.json'));assert all(e['exists_in_frozen_main'] and not e['source_moved_in_b3'] and not e['target_moved_in_b3'] for e in edges)
 subprocess.run(['python3','-B',str(w/'full_path_table.py')],check=True)
 subprocess.run(['python3','-B',str(w/'make_declaration_table.py')],check=True)
-for name in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json','attribute-metadata-check.json','native-tag-metadata-check.json','baseline-section-edges.json','delta-collect-complete.json','delta-follow-complete.json','new-main-tiers.json','new-main-foundations.json','owned-private-rules-summary.json','declaration-table-summary.json','full-path-summary.json']:
+for name in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json','attribute-metadata-check.json','native-tag-metadata-check.json','baseline-section-edges.json','delta-collect-complete.json','delta-follow-complete.json','new-main-tiers.json','new-main-foundations.json','owned-private-rules-summary.json','target-build-coverage-check.json','declaration-table-summary.json','full-path-summary.json']:
  shutil.copy2(w/name,d/name)
 for name in ['namespace-map.json','namespace-rewrite-map.json','module-map.json','preservation-module-plan.json','owned-comparison-name-map.json','delta-rewrite-status.json','static-layers.json','full-path-table.json']:
  (d/(name+'.gz')).write_bytes(gzip.compress((w/name).read_bytes(),mtime=0))
