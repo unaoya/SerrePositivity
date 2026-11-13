@@ -1,0 +1,8 @@
+{
+  "status": "PASS",
+  "requested_modules": 10227,
+  "with_prerequisites": 29776,
+  "groups": 298,
+  "source_signature": "cf487be646635faca736e32b1a39a003561a3e2fd0de157058543289202d537e",
+  "peak_process_tree_rss_bytes": 13234946048
+}
