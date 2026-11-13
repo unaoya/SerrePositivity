@@ -7869,6 +7869,84 @@ example : SSet.Quasicategory
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRealizationCocone,
   `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplicialDerivedCocone]
 
+@[noinline] private def derivedAuditExpectedChunk38 : Array Lean.Name := #[
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedNaturalComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedQuasiIsomorphisms,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedSemifreeComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FullFamilyUncurryIso,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.OrderedSimplexDiagonal,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.OrderedSimplexPullback,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.PointShiftInNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProjectiveComplexEvaluationComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProjectiveOutputResolvedComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProjectivePointCoefficientDerivedComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProjectivePointRingPresentation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreeProjectivePointUnit,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallStrictNativeLabelSource,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardRowCochainNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarColumnNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarDegreeNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarGradedFunctor,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeCellApex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeCellFront,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeColumnNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeColumnValues,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeCycleNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeFunctorCocone,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeJoinCells,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeMixedComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeOldComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeParameterRecovery,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeProjectiveCocone,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeProjectiveFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeSimplexComponents,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeSimplexMap,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeSimplexMapAlgebra,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeSimplexMapPullback,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedColumnNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedEvaluationComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedFunctor,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedGradedFunctor,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedThetaNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarThetaNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarUnnormalizedComponents,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarUnnormalizedFunctor,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictClosedVertexEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictCoherentCellEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictCoherentFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictCoherentFamilyEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictComplexDiagram,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationEndpoints,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramEvaluationFactorization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictDiagramLocalization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictFamilyEvaluationNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictModuleCoherentFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictModuleFamilyEvaluationComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeComputedApexComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeComputedCoconePointwise,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeComputedColimitFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeEvaluationComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeFunctorCoconeTransport,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeNormalizedBarApexComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeNormalizedBarRealization,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeNormalizedProjectiveModule,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreePointUnderlyingFunctor,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeProjectiveApex,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeProjectiveFront,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRawDAFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRawDAFrontIso,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRealizationFamily,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeRealizationProjective,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeReplacementComparison,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexCategory,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexCategoryEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexEvaluationAtParameter,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexEvaluationNaturality,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexFunctorEvaluation,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMap,
+  `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMapPullback]
+
 open Lean in
 run_cmd do
   let env ← getEnv
@@ -8358,7 +8436,8 @@ run_cmd do
     derivedAuditExpectedChunk34 ++
     derivedAuditExpectedChunk35 ++
     derivedAuditExpectedChunk36 ++
-    derivedAuditExpectedChunk37
+    derivedAuditExpectedChunk37 ++
+    derivedAuditExpectedChunk38
   let mut count : Nat := 0
   let mut seen : Array Name := #[]
   for (name, _) in env.constants.toList do
