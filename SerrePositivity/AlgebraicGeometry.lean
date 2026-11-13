@@ -984,3 +984,11 @@ public import SerrePositivity.AlgebraicGeometry.ReesClosedFrobeniusRingColimit
 public import SerrePositivity.AlgebraicGeometry.ReesClosedFrobeniusRingCech
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveFrobeniusRingCechPositive
+
+public import SerrePositivity.AlgebraicGeometry.SchemeCompatibleSections
+
+public import SerrePositivity.AlgebraicGeometry.SchemeCechSingletonSections
+
+public import SerrePositivity.AlgebraicGeometry.SchemeCechCompatibleSections
+
+public import SerrePositivity.AlgebraicGeometry.SchemeCechGlobalSections
