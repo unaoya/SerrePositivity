@@ -4239,3 +4239,72 @@ theorem gammaReflectedBKComparison_equivalence (X : CosimplicialObject (Complex 
 累計 **216モジュール・12,841行・2,062宣言**、一覧`/private/tmp/isw2-g10-twohundredsixteen-modules.txt`。外枠14,500行まで残り1,659行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査の変更なし。mainのB3凍結中のため枝だけでコミットした。
 
 A01〜A12・B01が完了。B02の厳密な等式、B03の実豊穣合成自身の同値性、B04〜B08の指定native切断の族と極限性、CとDは未完。次は、元の錐代表へのMoore反転の前合成と、今回の反変end移送の一致を含め、A09の指定AW比較を実豊穣合成へ照合する。単なる同値な空間への置換はしない。今回の区切りは停止点2ではなく、目標「Dまで進めてください」はactiveのまま。
+
+
+## 103. B02の途中：endで運んだ反転は元の錐代表の前合成そのもの
+
+前回のB01までの検証済みコードから続行した。B02の最初の厳密な照合として、指定符号付きend–Hom同型の重みに関する自然性を示した。既存の積射影の自然性と、負次数への零延長の指定行同型で計算し、同じMoore反転を運んだ順射が元の反転鎖射による前合成に等しいことを得た。閉零次元に適用し、元の恒等射から作った錐代表が反転後も既存の`reflectedBousfieldKanConeRepresentative`そのものへ移ることも確認した。
+
+### 103.1 型と数え方
+
+`weightEndHomIso_source_naturality`をB02の前提計算1/3（既存構成の自然性）とする。その行での公式と、HAの三つの反転の等式は同じ証明の分割。照合枠は全体3/3のまま。計算上限は変更していない。最初のファイルでは`A : Type u`・`[CommRing A]`・`{J : Type}`・`[SmallCategory J]`・`{K L : ChainComplex (Jᵒᵖ ⥤ ModuleCat A) ℕ}`。二本目は`{A : Type u}`・`[CommRing A]`。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.WeightEndHomSourceNaturality`
+
+```lean
+theorem extendedChainHomRows_precomp (f : K ⟶ L)
+    (H : CochainComplex (Jᵒᵖ ⥤ ModuleCat A) ℤ) (q : ℤ)
+    (z : Cochain (L.extend ComplexShape.embeddingDownNat) H q) (n : ℕ) :
+    extendedChainHomRows K H q
+      ((intervalHomPrePost A (HomologicalComplex.extendMap f ComplexShape.embeddingDownNat)
+        (𝟙 H)).f q z) n = f.f n ≫ extendedChainHomRows L H q z n
+```
+
+```lean
+theorem weightEndHomIso_source_naturality (f : K ⟶ L) (X : Jᵒᵖ ⥤ Complex A) :
+    (linearWeightEndTotalFunctor A X).map f.op ≫ (weightEndHomIso A K X).hom =
+      (weightEndHomIso A L X).hom ≫
+        intervalHomPrePost A (HomologicalComplex.extendMap f ComplexShape.embeddingDownNat)
+          (𝟙 ((functorToComplexOfFunctors Jᵒᵖ (ModuleCat A) (.up ℤ)).obj X))
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReversePrecomposition`
+
+```lean
+theorem normalizedBKReverseHomotopyEquiv_hom (X : CosimplicialObject (Complex A)) :
+    (normalizedBKReverseHomotopyEquiv X).hom =
+      intervalHomPrePost A
+        (HomologicalComplex.extendMap
+          (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+          ComplexShape.embeddingDownNat)
+        (𝟙 ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+          (doubleOppositeDiagram X)))
+```
+
+```lean
+theorem normalizedBKReverseHomotopyEquiv_ofHom (X : CosimplicialObject (Complex A))
+    (f : normalizedBousfieldKanWeight.extend ComplexShape.embeddingDownNat ⟶
+      (functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram X)) :
+    (normalizedBKReverseHomotopyEquiv X).hom.f 0 (Cochain.ofHom f) =
+      Cochain.ofHom (HomologicalComplex.extendMap
+        (normalizedMooreReverse.app (linearizedSimplicialWeight A bousfieldKanSetWeight))
+        ComplexShape.embeddingDownNat ≫ f)
+```
+
+```lean
+theorem normalizedBKReverseHomotopyEquiv_coneRepresentative (X : CosimplicialObject (Complex A)) :
+    (normalizedBKReverseHomotopyEquiv
+      ((homDiagramFunctor ((productTotalFunctor A).obj X)).obj X)).hom.f 0
+        (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) =
+      Cochain.ofHom (reflectedBousfieldKanConeRepresentative X)
+```
+
+### 103.2 検収と残り
+
+コード **`eb59a7350`**（2本125行）。個別検査`/private/tmp/isw2-weight-end-source4.log`・`/private/tmp/isw2-bk-reverse-precomp4.log`は終了コード0。最初の対象ビルド`/private/tmp/isw2-build115.log`は閉零次元の一般的な書き換えの型照合が200,000 heartbeatsに達して失敗。計算上限を上げず、その部分を各次数の直接計算へ分けた。修正後の鍵付き対象ビルド`/private/tmp/isw2-build116.log`は **4,379 jobs・終了コード0**、新規分のみの監査は **5宣言（2・3）・標準三公理のみ**（`/private/tmp/AuditISW2G10B02Reverse.lean`）。共有鍵は返却済み。
+
+累計 **218モジュール・12,966行・2,067宣言**。一覧`/private/tmp/isw2-g10-twohundredeighteen-modules.txt`。外枠14,500行まで残り1,534行。新公理・sorryなし、既存宣言・⑤a・入口・公式監査・mainの変更なし。
+
+B02はまだ未完。今回閉じたのは反転の前合成との厳密な一致であり、残る指定AW比較・Hom–Tot比較と全単体の実豊穣合成との照合を省略しない。B03の元の比較自身の同値性、B04〜B08、C、Dも未完。Dまでの目標はactiveのまま。
