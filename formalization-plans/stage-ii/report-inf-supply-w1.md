@@ -1924,3 +1924,83 @@ U39では元の正規化barの一点評価・射影的模型と同じapexを比�
 R2〜R4はLeanに入らず、R6の完成後に紙の型つき一覧と見込みを出し直す。
 行数の旧停止は再開の指示で解除済み。外枠20,800行と型つき一覧の枠を維持し、このまま続ける。
 凍結確定の連絡はまだ受けていない。
+
+### U33の前提計算（1/3、形状変更とパラメーター評価）
+
+同じ射影的余錐を同値・形状同型で運んだものと、元の全族の固定パラメーター評価を比較する。
+
+```lean
+lemma strictSemifreeRawDACoconeAt_val (F : StrictSemifreeDiagram A SimplexCategoryᵒᵖ) :
+    (strictSemifreeRawDACoconeAt A F).val =
+      lift (SSet.const (ComposableArrows.mk₀ F))
+        (𝟙 (join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+          (Δ[0] : SSet.{u + 1}))) ≫ strictSemifreeReindexedRawDAJoinFamily A
+```
+
+包装の分割 `strictSemifreeComputedDACoconeMapAt` はこの右辺と同じパラメーター制限を
+計算済みの全族に適用した射。U33の余極限性は既存の同値による保存、形状同型による保存、
+`InitialBoundaryLifting.of_vertexIso` を順に使う。新しい余極限の保存理論は作らない。
+U33は1/3。U20=1/3、U30=2/3、U31=3/3、U32=1/3、U38=1/3、他0/3、照合C1=1/3。
+
+### U34の前提計算（1/3、転置と頂点評価）
+
+同じ共同評価を余錐の関手単体集合で読むと、その頂点はU33の同じ余錐である。
+
+```lean
+lemma strictSemifreeComputedCoconeFunctorMap_vertex
+    (F : StrictSemifreeDiagram A SimplexCategoryᵒᵖ) :
+    (strictSemifreeComputedCoconeFunctorMap A).app (Opposite.op ⦋0⦌)
+        (ComposableArrows.mk₀ F) =
+      functorVertex (strictSemifreeComputedDACoconeAt A F).val
+```
+
+既存の `transposeFunctorFamily_vertex` とU12の評価を使う。U34は1/3。
+その他の使用数はU20=1/3、U30=2/3、U31=3/3、U32=1/3、U33=1/3、U38=1/3、照合C1=1/3。
+
+### U40の前提計算（1/3、apexの共同評価）
+
+```lean
+lemma coconeFamily_apex_evaluation {P I D : SSet.{u + 1}}
+    (f : P ⟶ (ihom (join I (Δ[0] : SSet.{u + 1}))).obj D) :
+    f ≫ coconeApexEvaluation I D =
+      lift (𝟙 P) (SSet.stdSimplex.isTerminalObj₀.from P) ≫
+        (P ◁ joinInr I Δ[0]) ≫ (β_ P (join I Δ[0])).hom ≫ uncurry f
+```
+
+既存の `curry_evaluateFunctorAt_vertex` と終対象の一意性による計算。
+U40は1/3。新しい数学の追加ではなく、既存の評価の法則として記録する。
+
+### U37の前提計算（1/3、既存の全余錐の包含）
+
+```lean
+lemma specifiedCoconeFamily_eq :
+    strictSemifreeCoconeFunctorFamily A SimplexCategoryᵒᵖ =
+      strictSemifreeColimitFamily A SimplexCategoryᵒᵖ ≫
+        (relativeInitialVertices (coconeRestriction
+          ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+            (derivedInfinityCategory A))).ι
+```
+
+既存の非expose定義の計算を私有の証明に局所化し、等式だけ公開する。
+既存ファイルは変更しない。U37は1/3（証明包装の分割は数えない）。
+
+## 38. R6 の同じ全普遍余錐族とapexへの比較（11-13 夜、継続）
+
+- 新規3本344行：`StrictSemifreeComputedCoconePointwise`（103）、
+  `StrictSemifreeComputedColimitFamily`（157）、`StrictSemifreeComputedApexComparison`（84）。
+- U33〜U37・U40を検証。元の同じ全族を固定パラメーターへ制限して余極限性を移し、
+  全族を普遍余錐の全部分圏へ制限、既存の指定全余錐族と比較した。
+  同じ比較のapex評価も通った。対象ごとの別の余錐へ取り替えていない。
+- ビルド87（U33）、93（U34〜U37）、94（U40）成功。
+  監査87・93・95の計13宣言は標準三公理のみ、sorryAxなし。
+  検証済み累計70本5,525行、監査対象261宣言。R6実測4,862行。
+- 既存の非expose定義は、私有の定義計算の証明を公開補題に包んだ。
+  既存ファイルの本文・型・属性は変更していない。
+- U40の `specifiedNativeApex_eq` は既存apexの定義計算（2/3）。
+  型は `strictSemifreeNativeApexFamily A J = lift (𝟙 _) (stdSimplex.isTerminalObj₀.from _) ≫
+  (P ◁ joinInr I Δ[0]) ≫ (β_ P _).hom ≫ uncurry (strictSemifreeCoconeFunctorFamily A J)`
+  （ここでは J=Δᵒᵖ、I・Pは§33の同じ略記）。証明包装は追加に数えない。
+- 残りはU39（同じ正規化barの一点評価と計算済みapex）、U41（U38・U39・U40の合成）。
+  照合C2・C3は未使用。計算上限は既定値。凍結確定の連絡は未受領。
+
+**R6は未完了。このままU39・U41を続ける。R2〜R4のLeanには入らない。**
