@@ -888,3 +888,29 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 **到達点**：斉次標準開の実際の環から作る切断代数 B について、B/IB と閉厚化の切断代数の Frobenius 比較が閉じた。未完は、Proj の構造層の切断代数との環同型、F7 の有限環の四角形への接続、F8 の増大全複体と停止点の自然性の検収。F7 全体や 2f の停止点とはしない。
 
 2f 累計は **125 モジュール・7,961 行（登録込み 8,162 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。最終出力の型も変更していない。
+
+## F7：斉次局所化と Proj の切断代数の比較（ffbfb0c17、11-13）
+
+新規 3 モジュール・11 公開宣言・201 行（登録込み 207 行）。対象ビルド 3,261 jobs、直接 importer 4,674 jobs 成功。別実行の監査は **9,720 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を各ビルド・監査の間だけ取得し、待ちは一つ。main の全ビルドは行っていない。
+
+登録モジュール：`CechAlgebraNonemptyEqualizerEquiv`、`ProjectiveProjCechSectionAlgebraEquiv`、`ProjectiveCechSectionComparison`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullAlgebraCechNonemptyCochainsEquiv` | 非空交叉の代数同型を正の長さのタプルの切断族に適用する代数同型。 |
+| `fullAlgebraCechNonemptyCochainsEquiv_face` | その比較は二つの面の制限と可換。 |
+| `fullAlgebraCechNonemptyCochainsEquiv_mem_iff` | その比較は適合条件を保ち、かつ反映する。 |
+| `fullAlgebraCechNonemptyEqualizerEquiv` | 非空交叉だけの自然な代数同型から得る適合切断代数の同型。 |
+| `fullAlgebraCechNonemptyEqualizerEquiv_apply` | 適合切断の比較は、各成分に指定した同型を適用する。 |
+| `projectiveProjCechSectionAlgEquiv` | 非空の標準開の交叉上で、斉次局所化と実際の構造層の切断を基底上の代数として同定する。 |
+| `projectiveProjCechSectionAlgEquiv_apply` | この代数同型の関数は既存の線形比較と一致する。 |
+| `projectiveProjCechSectionAlgEquiv_naturality` | この比較は実際の標準開の制限写像と可換。 |
+| `projectiveCechSectionAlgebraEquiv` | 斉次局所化と Proj の構造層から作る適合切断代数の基底上の同型。 |
+| `projectiveCechSectionAlgebraEquiv_apply` | 適合切断の同型の成分は実際の標準開への比較。 |
+| `projectiveCechSectionAlgebraEquiv_algebraMap` | この比較は四角形の増大写像である基底スカラーを保つ。 |
+
+線形比較が実際の `Proj.awayToSection` と開集合の等式による制限の合成であることから、積と 1 を保つことを確認した。線形性と 1 の保存から基底スカラーの保存を得る。空交叉の係数を同一視せず、長さ一・二のタプルの非空性と制限の自然性だけで適合条件を移した。Čech 版と Stacks 30.2.6 の非形式化の範囲を主比較の docstring に明記。sorry・新しい公理・探索上限の引き上げはない。
+
+**残り**：この同型で有限切断代数の Spec 全射性・中心外の局所全射性を斉次切断代数へ移し、前の閉厚化の Frobenius 比較と有限変更の四角形を合成する。さらに Frobenius 順極限と Čech H⁰ の比較を実際の写像について照合して F7 を閉じ、F8 の増大全複体と停止点の自然性を検収する。今回の代数同型だけを F7 または停止点 2f の完成とはしない。
+
+2f 累計 **128 モジュール・8,162 行（登録込み 8,369 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力の型は変更していない。
