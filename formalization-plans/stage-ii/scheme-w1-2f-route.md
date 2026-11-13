@@ -914,3 +914,27 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 **残り**：この同型で有限切断代数の Spec 全射性・中心外の局所全射性を斉次切断代数へ移し、前の閉厚化の Frobenius 比較と有限変更の四角形を合成する。さらに Frobenius 順極限と Čech H⁰ の比較を実際の写像について照合して F7 を閉じ、F8 の増大全複体と停止点の自然性を検収する。今回の代数同型だけを F7 または停止点 2f の完成とはしない。
 
 2f 累計 **128 モジュール・8,162 行（登録込み 8,369 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力の型は変更していない。
+
+## F7：閉厚化の切断環を右端とする短完全列（831f85f29、11-13）
+
+新規 3 モジュール・9 公開宣言（局所インスタンス・private 補題を除く）・245 行（登録込み 251 行）。対象ビルド 3,352 jobs、直接 importer 4,677 jobs 成功。別実行の公理監査は **9,764 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ取り、一つの待ちを維持した。全プロジェクトのビルドは行っていない。
+
+登録モジュール：`ProjectiveHomogeneousFiniteCenterExact`、`ProjectiveHomogeneousClosedCenterExact`、`ProjectiveHomogeneousClosedCenterMaps`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveHomogeneousSectionAlgebra_surjectiveSpectrum` | 全射な射影構造射の斉次切断代数の Spec は基底の Spec に全射する。 |
+| `projectiveHomogeneousSectionAlgebra_localized_surjective` | 中心外で構造射が同型なら、基底から斉次切断代数への写像の素点での局所化は全射。 |
+| `projectiveHomogeneousFiniteCenter_exact` | その有限切断代数 B と B/IB による中心の四角形は Frobenius 順極限で短完全。 |
+| `projectiveHomogeneousClosedCenterComparison` | B/IB から閉厚化の適合切断環への実際の比較を Frobenius 順極限へ送る。 |
+| `projectiveHomogeneousClosedCenterDifference` | 商環側の差写像にその比較を合成し、閉厚化の切断環を右端にする。 |
+| `projectiveHomogeneousClosedCenter_exact` | 射影構造射が全射かつ中心外で同型なら、この切断の Frobenius 順極限の列は短完全。 |
+| `projectiveHomogeneousClosedCenterBaseMap` | 基底の中心の環から閉厚化の適合切断への実際の環準同型。 |
+| `projectiveHomogeneousClosedCenterBaseMap_mk` | 基底の中心の代表元は、閉厚化の切断の同じ基底スカラーへ送られる。 |
+| `projectiveHomogeneousClosedCenterDifference_apply` | 完全列の差写像は、元の切断の閉厚化への制限と基底の中心からの射の差に一致する。 |
+
+Spec 全射性は、実際の構造層の切断代数への全射性と、前の束の代数同型の comap の合成から得た。局所全射性は同じ同型の局所化の単射性と、基底スカラーとの可換性で移した。有限変更の完全列の右端に、既存の Rees の核の冪零性・冪の持ち上げから得た全単射を合成した。中心 I と厚化の指数 1 の I^1 は明示的な等式で移送した。差写像の照合は Frobenius 順極限の有限段で計算した。一般的な map_sub の型クラス探索が大きくなった箇所は、環準同型を明示した private 補題に分け、上限を変えずに通した。
+
+**到達点と残り**：切断の Frobenius 順極限で、右端を閉厚化の実際の切断環とする短完全列が閉じた。F7 の指定された型 `H⁰(Cperf(Y))`・`H⁰(Cperf(E))` へは、切断代数の Frobenius 系と各段の Čech H⁰ の自然同型、filtered colimit 比較をつなぐ必要がある。次は整数線形の H⁰ 自然性を使って、`projectiveFrobeniusColimitCechHomologyIso`・`ringDirectLimitIntColimitIso` と同じ実際の写像について照合する。F8 の明示的な増大全複体と、共通細分・底変換等の停止点の自然性の検収も残る。今回を F7 全体または停止点 2f の完成とはしない。
+
+2f 累計 **131 モジュール・8,407 行（登録込み 8,620 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
