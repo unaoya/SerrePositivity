@@ -1034,3 +1034,9 @@ public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionKernelPowe
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionQuotient
 
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionFrobeniusComparison
+
+public import SerrePositivity.AlgebraicGeometry.CechAlgebraNonemptyEqualizerEquiv
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveProjCechSectionAlgebraEquiv
+
+public import SerrePositivity.AlgebraicGeometry.ProjectiveCechSectionComparison
