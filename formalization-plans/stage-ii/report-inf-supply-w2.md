@@ -2584,3 +2584,51 @@ theorem alexanderWhitneyApp_right_zero_degree
 名前空間は既存の `Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories` のAW・整数テンソルを開いた表記。置き場所は `DiagramComparison/AWRightAugmentationCut.lean`。最後以外の切断では第二次数 `n-i` が正なので、仮定hgと整数テンソルの零写像則でその項を消す。A05aではMoore射影と増大写像を合成したgに適用する。まず整数係数のこの計算を閉じ、その後に指定係数移送を戻す。
 
 この記録時点では個別検査中、未コミット。§80の未完下書きも引き続き作業木に保持し、検証済み148本9,182行には算入しない。照合枠3/3、前提計算枠1/3。
+
+### 81.2 前提計算2/3：Moore正規化後の最後の切断
+
+1本目を、既存のMoore包含と二因子の射影で挟む法則。`NormalizedAWRightAugmentationCut.lean` で個別検査中。名前空間は§81.1とDoldKanを開く。
+
+```lean
+theorem normalizedAlexanderWhitney_right_zero_degree
+    (C D : SimplicialObject (ModuleCat.{u} ℤ))
+    {L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
+    (g : (normalizedMooreComplex _).obj D ⟶ L)
+    (hg : ∀ k : ℕ, k ≠ 0 → g.f k = 0) (n : ℕ) :
+  (normalizedAlexanderWhitney C D ≫ chainIntegerTensorMap (𝟙 _) g).f n =
+    (inclusionOfMooreComplexMap (simplicialIntegerTensor C D)).f n ≫
+      integerTensorMap ((PInftyToNormalizedMooreComplex C).f n)
+        (D.map (awBack n (Fin.last n)).op ≫
+          (PInftyToNormalizedMooreComplex D ≫ g).f (n - n)) ≫
+      ιMapBifunctor ((normalizedMooreComplex _).obj C) L integerTensorBifunctor
+        (.down ℕ) n (n - n) n (awDegrees n (Fin.last n))
+```
+
+最後の切断では `awFront n (Fin.last n) = 𝟙 _` であり、第二次数は `n-n`。dependentな次数を不必要に書き換えず、元の直和包含の添字をそのまま保持する。前提計算枠2/3、照合枠3/3。A05aの係数移送後の主張はまだ未完。
+
+## 82. A05aの前提計算2本を検証・保存
+
+§81.1・§81.2の型を変更せず、非正規化AWとMoore正規化AWの右零次切断則を証明した。コードコミット **`0fee2038e`**。いずれも既存AWの最後以外の切断を零にし、最後の前面が恒等であることを使う。正規化版は指定された包含・射影・直和包含を保持する。既存の宣言は変更していない。
+
+| 新規モジュール（DiagramComparison/） | 行数 | 内容 |
+| --- | ---: | --- |
+| AWRightAugmentationCut | 45 | 右因子が零次以外で零のとき、有限切断和は最後の切断に等しい |
+| NormalizedAWRightAugmentationCut | 54 | 同じ公式をMoore包含・射影で挟んだ正規化AWの公式 |
+
+### 82.1 検証
+
+個別の結合ソース検査 `/private/tmp/isw2-a05a-normalized-check6.lean` は終了コード0。続いて `with_build_lock.sh --wait 3600` と1700秒の実行上限で、`NormalizedAWRightAugmentationCut` の対象ビルドと累計の一時監査を実行し、終了コード0を確認した。対象ビルド **1,804 jobs**、累計 **150モジュール・1,697宣言、標準三公理のみ**。新規2本にsorry・新公理なし。鍵は検証終了時に返却済み。
+
+- ログ：`/private/tmp/isw2-build82.log`
+- 監査：`/private/tmp/AuditISW2G10HundredFifty.lean`
+- 対象一覧：`/private/tmp/isw2-g10-hundredfifty-modules.txt`
+
+3b-2の検証済み実測は **9,281行**（§79の9,182行 + 99行）。外枠12,500行まで3,219行。登録すべき追加モジュールは上表の2本であり、入口と公式監査は編集していない。
+
+### 82.2 A05a本体の作業木と残り
+
+`FreeProductAWRightAugmentation.lean` に§80.1と同じ型の証明を開始した。正次数は零延長の零性で閉じ、非正次数は指定の延長項同型・Moore射影の分裂を前合成して、元の自由生成元における等式に帰着した。個別検査 `/private/tmp/isw2-a05a-body1.log` はその負次数の生成元等式が未解決のため終了コード1。**A05aはまだ証明済みではない**。この49行の下書きと、以前の `FrameCoactionCounit.lean` 66行は未コミット・上の検証済み行数に不算入。
+
+次に必要なのは、正規化AWの切断公式を、指定された `normalizedMooreMapIso`・`integerNegativeTensorBaseChangeIso`・自由化比較・負次数延長を通して、同じ `normalizedSimplexCochainContraction` の右増大写像へ接続する成分計算。別の直接AWへの置換や、余単位則を仮定とする型の変更はしていない。A05aが閉じた後にA05の両単位則、A06以降へ進む。停止点2は未完。
+
+前提計算の枠は **2/3**（残り1本）、照合の枠は **3/3** のまま。新しい数学の追加による停止ではなく、承認済みA05aの証明途中の記録。凍結確定の連絡は、この保存時点で未受領。
