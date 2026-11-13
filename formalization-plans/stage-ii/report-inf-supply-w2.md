@@ -2056,3 +2056,35 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.P
 残枠 **1,264行**。`NormalizedWeightSectionMap.lean` の指定 AW・shuffle による両方向の実単体的射は個別検査済み、対象ビルド・監査待ち。
 
 同値性には、自然な鎖ホモトピーを余単体 Hom の実単体的ホモトピーへ移す接続がなお必要。一般の余単体図式について点ごとの鎖ホモトピーだけで結論してはいけない。直接の経路として、積重みの第二パラメータのグラフを指定 AW に送り、パラメータ鎖への余作用を作る部分を `ProductParameterCoaction.lean` で検査中。余作用の単位則、区間によるホモトピー評価、両端点との等式はこれからで、同値性を証明済みとはしない。既存のモデル圏の frame 比較も確認したが、必要な frame 条件を証明せず適用したり `[ModelCategory SSet]` を追加したりはしない。native 極限性と後続も未完。停止点2ではない。
+
+## 70. 3b-2 続行：指定正規化重み比較の両方向の射
+
+コード `2fc8b73dc`、新規 `DiagramComparison.NormalizedWeightSectionMap` 1本43行。累計 **140本8,779行**。
+
+§67と§69の全単体同型の間に、元の AW・shuffle による指定前合成を置き、図式 Hom 複体の実 Dold–Kan 空間と重み付き切断空間の間の両方向の実単体的射を構成した。逆射の法則やホモトピー同値性を、この構成だけで主張してはいない。
+
+個別検査、鍵付き対象ビルド **2,640 jobs**、累計140本 **1,588宣言・標準三公理のみ**の一時監査が成功。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-70.log`、監査 `/private/tmp/AuditISW2G10HundredForty.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredforty-modules.txt`。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionMap
+```
+
+## 71. 3b-2 続行：積パラメータの指定余作用と凍結前の保存
+
+コード `a09e4c437`、新規 `DiagramComparison.ProductParameterCoaction` 1本55行。累計 **141本8,834行**、上限10,000行まで **1,166行**。
+
+積の第二射影のグラフを自由負次数鎖へ送り、指定 AW と合成してパラメータ鎖への余作用を構成した。重みとパラメータの全図式射に対する自然性を証明した。§37.2の第一のまとまりの内部で、余作用の単位則や鎖ホモトピーから実単体的ホモトピーへの輸送はまだ含まない。
+
+個別検査、鍵付き対象ビルド **2,275 jobs**、累計141本 **1,604宣言・標準三公理のみ**の一時監査の成功をログで確認した。対応するビルド・監査のプロセスは終了している。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-71.log`、監査 `/private/tmp/AuditISW2G10HundredFortyOne.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortyone-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProductParameterCoaction
+```
+
+検証済みの Lean は上記まで枝にコミット済み。11-13昼の凍結予告を受領した。確定連絡後は夜の枝へのコミットを控え、翌朝の main 取り込みと改名追従は配布される手順に従う。現時点で凍結確定の連絡は未受領。
+
+停止点2は未完。残るのは、指定全単体比較のホモトピー同値性と指定豊穣 Hom 合成との照合、native 切断・極限性、標準脚と D(A) 輸送、全図式射・指定錐の族・離散加群入口。残枠は小さく、既存の自然な鎖ホモトピーを点ごとに適用しただけで全単体空間の同値性とする短縮はできない。範囲・型は維持し、上限を超えそうな場合は追加実装前に報告する。
