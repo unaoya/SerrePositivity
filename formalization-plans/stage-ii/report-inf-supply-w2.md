@@ -4308,3 +4308,34 @@ theorem normalizedBKReverseHomotopyEquiv_coneRepresentative (X : CosimplicialObj
 累計 **218モジュール・12,966行・2,067宣言**。一覧`/private/tmp/isw2-g10-twohundredeighteen-modules.txt`。外枠14,500行まで残り1,534行。新公理・sorryなし、既存宣言・⑤a・入口・公式監査・mainの変更なし。
 
 B02はまだ未完。今回閉じたのは反転の前合成との厳密な一致であり、残る指定AW比較・Hom–Tot比較と全単体の実豊穣合成との照合を省略しない。B03の元の比較自身の同値性、B04〜B08、C、Dも未完。Dまでの目標はactiveのまま。
+
+
+## 104. B02の途中：元の線形重みHom同値の後合成自然性
+
+指定錐代表から作る単体写像を後合成へ移すため、既存`normalizedLinearWeightHomEquiv`の標的複体射に関する自然性を示した。既存の延長・切断・Dold–KanのHom同値の後合成則を、同じ二変数の生成元評価へ移すもので、元の指定写像と全単体を保持する。
+
+### 104.1 型と枠
+
+HomologicalAlgebra名前空間。`A : Type u`・`[CommRing A]`・`{D : Type v}`・`[Category.{w} D]`。B02の前提計算 **2/3**（既存構成の後合成自然性）とする。1/3は§103のend–Hom同型の重みに関する自然性。照合枠は全体3/3のまま。
+
+```lean
+theorem normalizedLinearWeightHomEquiv_postcomp (W : SimplicialObject (D ⥤ Type))
+    {H H' : CochainComplex (D ⥤ ModuleCat A) ℤ}
+    (f : ((normalizedMooreComplex _).obj (linearizedSimplicialWeight A W)).extend
+      ComplexShape.embeddingDownNat ⟶ H) (g : H ⟶ H') :
+    normalizedLinearWeightHomEquiv A W H' (f ≫ g) =
+      normalizedLinearWeightHomEquiv A W H f ≫
+        Functor.whiskerRight
+          ((Abelian.DoldKan.Γ : ChainComplex (D ⥤ ModuleCat A) ℕ ⥤
+            SimplicialObject (D ⥤ ModuleCat A)).map
+              (truncLE'Map g (ComplexShape.embeddingUpIntLE 0)))
+          ((Functor.whiskeringRight D (ModuleCat A) (Type u)).obj (forget (ModuleCat A)))
+```
+
+### 104.2 検収・登録対象・残り
+
+コード **`be8447d78`**（32行）。個別検査`/private/tmp/isw2-normalized-weight-target1.log`は終了コード0。鍵付き対象ビルド **1,801 jobs**、新規分のみの監査 **1宣言・標準三公理のみ**、終了コード0（`/private/tmp/isw2-build117.log`、`/private/tmp/AuditISW2G10B02Target.lean`）。共有鍵は返却済み。登録対象は **`SerrePositivity.HomologicalAlgebra.NormalizedLinearWeightHomNaturality`**。
+
+累計 **219モジュール・12,998行・2,068宣言**。対象一覧`/private/tmp/isw2-g10-twohundrednineteen-modules.txt`。外枠14,500行まで残り1,502行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。
+
+B02は未完。A09の指定AW比較、既存Hom–Tot比較と、元の標準成分模型の実豊穣合成が全単体で一致する照合が残る。今回の自然性だけでその等式を済ませたとは扱わない。B03〜B08・C・Dも未完で、目標「Dまで進めてください」はactiveのまま。次の区切りはこの全単体の照合である。
