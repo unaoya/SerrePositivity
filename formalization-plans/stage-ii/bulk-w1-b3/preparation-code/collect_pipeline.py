@@ -11,6 +11,8 @@ for i,paths in enumerate(groups):
   p=dest/(rel[:-5].replace('/','.')+'.json')
   if p.exists():assert json.load(open(p))['source'].encode()==(b/rel).read_bytes()
   else:pending.append((i,rel))
+ if all((dest/(rel[:-5].replace('/','.')+'.json')).exists() for rel in paths):
+  (dest/'files.json').write_text(json.dumps(sorted(paths)))
 def one(item):
  i,rel=item;dest=w/'delta-captures'/f'{i:03}';tmp=w/'single-captures'/rel[:-5].replace('/','.')
  if tmp.exists():shutil.rmtree(tmp)

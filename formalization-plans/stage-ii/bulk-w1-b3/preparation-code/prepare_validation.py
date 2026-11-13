@@ -35,11 +35,20 @@ new_tiers={}
 for m in order:
  if m not in missing:continue
  deps={cfg['modules'].get(dep,'Consumers') for dep in graph[m] if dep in graph}
- tier='Comparison' if deps&{'Comparison','Entrypoints','Consumers'} else 'Portable'
- cfg['modules'][m]=tier;new_tiers[m]={'tier':tier,'dependency_tiers':sorted(deps),'rule':'same topological Portable/Comparison rule as B2 plan_layout.py; no exception added'}
+ tier='Consumers' if deps&{'Entrypoints','Consumers'} or any(any(under(dep,p) for p in cfg['implementation_prefixes']) for dep in graph[m]) else 'Comparison' if 'Comparison' in deps else 'Portable'
+ cfg['modules'][m]=tier;new_tiers[m]={'tier':tier,'dependency_tiers':sorted(deps),'rule':'five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed'}
 (w/'new-main-tiers.json').write_text(json.dumps(new_tiers,indent=2))
 (w/'candidate-layers.json').write_text(json.dumps({'klw1':cfg},indent=2))
 active={m:ds for m,ds in graph.items() if not any(under(m,p) for p in cfg['exclude_prefixes'])};report=check(active,cfg);(w/'static-layers.json').write_text(json.dumps(report,ensure_ascii=False,indent=2));print('layers',len(report['violations']),len(graph))
+if not any(v['kind']!='reverse-section' for v in report['violations']):
+ full=json.load(open(r/'scripts/refactor/layers.json'));full['klw1']=cfg
+ (r/'scripts/refactor/layers.json').write_text(json.dumps(full,ensure_ascii=False,indent=2)+'\n')
+ print('Applied exact per-file tiers; no exception added',len(new_tiers),len(new_foundations))
+
+audit_modules={v for v in json.load(open(w/'preservation-module-plan.json'))['modules'].values() if v.startswith('scripts.audit.')}
+backimports=[{'from':m,'to':dep} for m,deps in graph.items() if m.startswith('SerrePositivity.') for dep in deps&audit_modules]
+(w/'audit-library-boundary.json').write_text(json.dumps({'audit_modules':sorted(audit_modules),'library_backimports':backimports},indent=2))
+assert not backimports,backimports
 mm=json.load(open(w/'module-map.json'));base=json.load(open(old/'preview-build-plan.json'))['modules'];delta=json.load(open(w/'before-targets.json'))
 if isinstance(delta,dict):print('unexpected before-target keys',list(delta));raise SystemExit(1)
 # IntegralExistence is the sole B2 destination explicitly retained at its original path.
