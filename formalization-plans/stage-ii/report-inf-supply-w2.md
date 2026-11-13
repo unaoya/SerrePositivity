@@ -2427,3 +2427,26 @@ def curriedDiagramHomotopy {F G : J ⥤ K ⥤ HomologicalComplex C c}
 ```
 
 置き場所 `HomologicalAlgebra/CurriedDiagramHomotopy.lean`。この記録時点では個別検査中、未コミット・累計には未算入。A02ではこれを `Δ × J` の同じ AW・shuffle のホモトピーへ適用し、各パラメータで存在を選び直さない。停止点2は未完。新しい数学の一覧外追加はない。
+
+## 75. A02の同じ成分の添字交換を検証
+
+§74の `HomologicalAlgebra.CurriedDiagramHomotopy` は `72beb3083` に保存。57行、累計 **143本8,927行**。個別検査、鍵付き対象ビルド **1,227 jobs**、累計 **1,630宣言・標準三公理のみ**の監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-75.log`、監査 `/private/tmp/AuditISW2G10HundredFortyThree.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortythree-modules.txt`。鍵は指定どおり `--wait 3600`、一枚、1,700秒上限。A02全体を完了とは数えない。
+
+追加登録対象：
+
+```text
+SerrePositivity.HomologicalAlgebra.CurriedDiagramHomotopy
+```
+
+もう一つ、A02に必要な既存二構成の照合を追加する（追加枠 **2/3**）。重みの射影は `frameWeightDiagram W := CategoryTheory.Prod.snd SimplexCategory J ⋙ W` と固定し、同型の各成分は恒等。
+
+```lean
+def freeProductFrameUncurryIso (A : Type u) [CommRing A]
+    {J : Type v} [Category.{w} J]
+    (W : J ⥤ SSet.{u}) (P : SimplexCategory ⥤ (J ⥤ SSet.{u})) :
+  Functor.uncurry.obj (freeProductFrame A W P) ≅
+    freeNegativeChainsDiagram (A := A)
+      (frameWeightDiagram W ⊗ Functor.uncurry.obj P)
+```
+
+自然性は自由鎖の合成則とテンソルの合成則だけで証明する。同型の存在に新しい数学を使わない。`DiagramComparison.FreeProductFrameUncurry`（39行）は個別検査済み、対象ビルド・監査中、未コミットで上の累計に未算入。検証中のファイルは変更しない。
