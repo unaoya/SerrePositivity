@@ -13,17 +13,17 @@ public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgRestrictionCohe
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgDiscreteRestriction
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZeroDiscrete
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgPiZeroRestriction
-public import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperation
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationDiscrete
 public import SerrePositivity.EInfinity.BarrattEccles.Theory.CAlgCdga
 
 /-!
 # Barratt–Eccles の全界面の条件付き組み立て
 
 概要：HA §3.2.2–3.2.4・May Proposition 2.3 の界面の既証明欄を固定する。
-方針：保存的な忘却・余積錐・係数変更・π₀・厳密 cdga・May の P⁰ と正次数消滅を供給する。
+方針：保存的な忘却・余積錐・係数変更・π₀・厳密 cdga・May の P⁰・零次・正次数・離散比較を供給する。
 規約：未供給のテンソル比較と二脚・sifted・Tot・presentable・スペクトル忘却と比較・冪作用の残る性質だけを引数に取る。
-D79 改訂：素体の ho(CAlg) 上の P⁰ と正次数消滅は構成済みのものに固定する。
-冪作用の残る引数は零次・離散・Tot の成分の性質。coherent な Sp 値の出力は要求しない。
+D79 改訂：素体の ho(CAlg) 上の P⁰ と零次・正次数・離散比較は構成済みのものに固定する。
+冪作用の残る引数は Tot の成分の性質。coherent な Sp 値の出力は要求しない。
 使われ方：BS-W16 段 4。全欄が無条件に構成済みという主張にはしない。
 -/
 
@@ -36,7 +36,7 @@ open CategoryTheory
 open SerrePositivity.InfinityCategories
 attribute [local instance] HasDerivedCategory.standard
 
-/-- 証明済みの欄を固定し、残りの十九欄だけから全 EInfinityTheory を組み立てる。
+/-- 証明済みの欄を固定し、残りの十七欄だけから全 EInfinityTheory を組み立てる。
 同じ全関手版のテンソル同型を、二脚の適合条件の型にも使う。 -/
 def barrattEcclesTheoryOfRemaining :=
   fun forget_preservesSifted presentable coproduct_tensor coproduct_tensor_legs
@@ -44,7 +44,7 @@ def barrattEcclesTheoryOfRemaining :=
     ofCosimplicialCdga ofCosimplicialCdga_cone ofCosimplicialCdga_discrete
     ofCosimplicialCdga_evalZero ofCosimplicialCdga_evalZero_leg
     toSpectra toSpectra_restrict toSpectra_homologyIso
-    powerOp0_zero powerOp0_discrete powerOp0_tot =>
+    powerOp0_tot =>
   ({ toEInfinityCore := barrattEcclesCore
      forget_conservative := @cAlgForgetDerived_conservative
      forget_preservesSifted := forget_preservesSifted
@@ -88,9 +88,9 @@ def barrattEcclesTheoryOfRemaining :=
      toSpectra_restrict := toSpectra_restrict
      toSpectra_homologyIso := toSpectra_homologyIso
      powerOp0 := @barrattEcclesPowerOp0
-     powerOp0_zero := powerOp0_zero
+     powerOp0_zero := @barrattEcclesPowerOp0_zero
      powerOp0_pos := @barrattEcclesPowerOp0_pos
-     powerOp0_discrete := powerOp0_discrete
+     powerOp0_discrete := @barrattEcclesPowerOp0_discrete
      powerOp0_tot := powerOp0_tot } : EInfinityTheory.{u})
 
 end SerrePositivity.EInfinity.BarrattEccles
