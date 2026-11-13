@@ -7875,3 +7875,145 @@ L09a前提計算は2/3、照合I01〜I03は0/3のまま。未使用の前提計�
 検証済みの五本と本報告を保存して判断を待つ。
 G10・native Totの部品や界面の変更は行っていない。
 B3の凍結はmainのみという最新連絡に従い、枝のこの保存は行う。
+
+## 114. R01・R02再開と有限組合せの枠（11-14未明）
+
+BS-W16 §28と最新指示でR01・R02をL09aの部分へ追加し再開する。
+mainは凍結中なので取り込まず、mainの指示書§28を読み取りで確認した。
+枝の編集・コミットは続行可。対象ビルド・小さい専用監査だけを行う。
+
+### 114.1 実装前の有限計算
+
+/tmp/bsw16/check-terminal-cut.py は、切断を非負の区間長の列として独立に列挙し、
+最後の正の区間の長さを一つ下げるR01の逆と、R02の色ごとの頂点列の復元を確認した。
+m=0〜4、q=0〜3、色数1〜3の全ての語（非全射も含む）、全ての色で **122,186例**が一致。
+うち接頭部の色が空で元の出力が非空の例10,378件、末尾の反復が2以上の例15,366件。
+欠けた色を削除したり、末尾を単一の頂点へ潰したりしていない。
+この点検はLean証明の代用にはしない。
+
+### 114.2 追加する有限組合せの補題：L09aの枠1/3
+
+最後の垂直辺を補集合の最大元として選び、その前の辺をFinへ詰める構成を使う。
+`lowerPart s a` は、sのaより小さい元をFin a.valに圧縮した有限集合。
+次を新しい有限組合せの枠 **C01（1/3）** として追加する。
+
+```lean
+card_lowerPart_of_max {N : ℕ} (s : Finset (Fin N)) (a : Fin N)
+    (ha : a ∈ s) (hm : ∀ i ∈ s, i ≤ a) :
+  (lowerPart s a).card + 1 = s.card
+```
+
+所属の式と補集合との可換性は、この制限の定義を評価する証明分割。
+R01・R02本体は今回承認された二本であり、C01のほかの追加枠へ数えない。
+前提計算L09aの2/3、照合の0/3とは別に記録する。
+
+### 114.3 色のfiberのリスト化：有限組合せの枠2/3
+
+R02の定義にある有限集合の昇順列を、経路の頂点の列をfilterする形へ直す。
+新しい有限組合せの枠C02（L09aの2/3）は次の型とする。
+
+```lean
+sort_filter_univ (N : ℕ) (P : Fin N → Prop) [DecidablePred P] :
+  (Finset.univ.filter P).sort (· ≤ ·) =
+    (List.finRange N).filter (fun i => decide (P i))
+```
+
+接頭部・末尾の水平・垂直座標の評価、リストの連結と写像についての計算は、
+R01・R02の同じ構成の証明分割である。新しいBE作用や法則は足していない。
+
+### 114.4 末尾の出現回数：有限組合せの枠3/3
+
+末尾の区間を `terminalSuffixIndex p j = p+j` で列挙する。
+新しい有限組合せC03（L09aの3/3）は次の型とする。
+
+```lean
+terminalSuffix_card {m r : ℕ} (v : Fin (m + 1) → Fin r)
+    (p : Fin (m + 1)) (c : Fin r) :
+  (Finset.univ.filter (fun j : Fin (m - p.val + 1) =>
+    v (terminalSuffixIndex p j) = c)).card = terminalMultiplicity v p c
+```
+
+R02の末尾の `List.replicate` の回数を元のfiberで数える式である。
+一般の新しい有限分解がさらに必要なら、この枠では足さず報告して止まる。
+
+### 114.5 R01・R02の完了と検証
+
+次の8本、計607行を対象ビルドで検証した。
+
+| モジュール（`SerrePositivity.EInfinity.SimplexCuts.` 以下） | 行数 | 内容 |
+| --- | ---: | --- |
+| LowerPart | 60 | 最大元より前の有限集合、C01 |
+| TerminalExtension | 84 | 接頭部から最後の垂直辺と末尾を戻す |
+| TerminalData | 107 | 最後の垂直辺、その区間番号、接頭部 |
+| TerminalEquiv | 72 | 逆写像の一意性、R01 `cutLastVerticalEquiv` |
+| TerminalCoordinates | 84 | 復元した切断の接頭部と末尾の座標 |
+| VertexLists | 70 | 欠けた色を含む頂点列、C02 |
+| TerminalSuffix | 66 | 末尾の反復数、C03 |
+| TerminalTrace | 64 | 頂点列の評価、R02 `verticesList_lastVertical` |
+
+R01の逆は `terminalExtend`。元の経路への復元と復元写像の単射性から同値を作った。
+R02の型は§113.2の承認された型そのままであり、`List.replicate` の回数も
+`terminalMultiplicity` の定義そのまま。全射性の仮定を足していない。
+
+対象ビルド：`lake build SerrePositivity.EInfinity.SimplexCuts.TerminalTrace` 成功
+（`/tmp/bsw16/m14-terminal-trace-03.log`）。新規8本にはLeanの警告なし。
+専用監査：`/tmp/bsw16/audit-m14-terminal.lean`、**8モジュール・104宣言・標準三公理のみ**。
+`/tmp/bsw16/audit-m14-terminal.log` に成功を確認。新規ソースにsorry・追加公理0。
+ビルドと監査はそれぞれ `--wait 3600` の鍵を取り、終了時に返した。
+rootビルド・全体監査・入口の登録はしていない。上記8本を次の登録候補とする。
+
+今回の607行を足すと、改訂MayのM14本体は **5,919行**
+（完成済みMay 4,128 + SimplexCuts既存1,184 + 今回607）。
+半分の12,500行と外枠25,000行には届いていない。
+旧coherent経路の10,216行は削除せず、この改訂Mayの内訳と分けて保持している。
+
+## 115. L09aの符号の再帰で要る四本目の有限分解（11-14未明、停止）
+
+R01・R02からL09aの境界項の対応へ戻り、接頭部の符号を比較した。
+既存の `cutSign` は `intervalLength` と `positionExponent` で
+**元の語の `Surjection.Caesura`** を使う。一方、切断の接頭部の語では
+後続の色の出現を失うので、caesuraは保存されない。
+例：`v=(0,1,0)`、`p=1`、`i=0`。元の語ではcaesuraだが、接頭語 `(0,1)` では違う。
+R02は頂点列を戻す主張であり、元の語での「最後の出現」を接頭語に運ぶ主張ではない。
+そのまま `cutSign s (prefixLabels v p)` を元の語の符号として使うことはできない。
+
+### 115.1 追加が必要な主張の型
+
+次の `prefixPosition` は報告内の記法で、未実装。
+
+```lean
+def prefixPosition {m : ℕ} (p : Fin (m + 1)) (i : Fin (p.val + 1)) :
+    Fin (m + 1) :=
+  ⟨i.val, by have hi := i.isLt; have hp := p.isLt; omega⟩
+
+caesura_prefix_iff {m r : ℕ} (v : Fin (m + 1) → Fin r)
+    (p : Fin (m + 1)) (i : Fin (p.val + 1)) :
+  Surjection.Caesura v (prefixPosition p i) ↔
+    Surjection.Caesura (prefixLabels v p) i ∨
+    ∃ j : Fin (m + 1), p < j ∧ v j = prefixLabels v p i
+```
+
+これは後続の同色のfiberを接頭部内と末尾へ分ける有限分解であり、
+L09aの同じまとまりの追加補題C04として必要になる。
+全射性を足して接頭部に欠ける色を排除することはしない。
+m=0〜4、色数1〜3、全ての語・接頭部・位置の5,384例でこの分解を確認した。
+そのうち1,396例では元の語と接頭部でcaesuraが変わる。
+有限点検は証明の代用ではなく、符号にこの区別が要ることの確認である。
+
+### 115.2 既存APIと停止の理由
+
+`Surjection.Caesuras` には定義、色の置換との可換性、全射語の最後の出現のAPIがある。
+しかし、非全射も許す接頭語への上記の分解は見つからなかった。
+既存のshuffleの混合角の交換・面の一致は利用候補だが、そちらの符号は
+`ShufflePath.sign` であり、BFの色ごとのcaesuraを保持した符号の代わりにはならない。
+
+§113では非全射の接頭部の**頂点列**の復元までを追加として挙げたが、
+元の語のcaesuraを接頭語と末尾に分解する主張を挙げていなかった。
+これはR02の構成の定義評価や相互逆の証明分割ではなく、
+符号計算のための別の色のfiberの分解なので、別枠で記録する。
+有限組合せの追加はC01・C02・C03で3/3に達した。
+前提計算の残り枠を使ってこの第四の有限分解を足すことはしない。
+**承認された枠の停止条件に従い、C04を実装する前にここで停止する。**
+R01・R02の検証済み8本と本報告をコミットして判断を待つ。
+L09aのτ・符号の相殺・微分の等式はまだ証明していない。
+BE作用・operadの法則・Tot・界面は変更せず、G10の部品も作っていない。
