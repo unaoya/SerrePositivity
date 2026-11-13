@@ -1,0 +1,642 @@
+[
+  {
+    "path": "scripts/audit/adams.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/adams.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 58.051967583596706,
+    "peak_process_tree_rss_bytes": 4052467712,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:31:18.501013",
+    "finished_local": "2026-11-14T07:32:16.553369"
+  },
+  {
+    "path": "scripts/audit/bhatt_scholze.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/bhatt_scholze.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 97.54204420745373,
+    "peak_process_tree_rss_bytes": 5067390976,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:32:16.803977",
+    "finished_local": "2026-11-14T07:33:54.346552"
+  },
+  {
+    "path": "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/bs_power_root_envelope/InitialCoefficient.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 10.705678375437856,
+    "peak_process_tree_rss_bytes": 2660057088,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:33:54.582092",
+    "finished_local": "2026-11-14T07:34:05.287912"
+  },
+  {
+    "path": "scripts/audit/bs_power_root_envelope/Unoriented.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/bs_power_root_envelope/Unoriented.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 10.65091529302299,
+    "peak_process_tree_rss_bytes": 2550382592,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:34:05.500318",
+    "finished_local": "2026-11-14T07:34:16.151383"
+  },
+  {
+    "path": "scripts/audit/bs_power_root_envelope/VarpiComparison.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/bs_power_root_envelope/VarpiComparison.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 8.408188665285707,
+    "peak_process_tree_rss_bytes": 1519599616,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:34:16.384889",
+    "finished_local": "2026-11-14T07:34:24.793238"
+  },
+  {
+    "path": "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/bs_power_root_envelope/VarpiComparisonUnconditional.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 10.419523041695356,
+    "peak_process_tree_rss_bytes": 2709618688,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:34:25.005015",
+    "finished_local": "2026-11-14T07:34:35.424684"
+  },
+  {
+    "path": "scripts/audit/clmst.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/clmst.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 75.15930687636137,
+    "peak_process_tree_rss_bytes": 4733075456,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:34:35.651784",
+    "finished_local": "2026-11-14T07:35:50.811501"
+  },
+  {
+    "path": "scripts/audit/dg.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/dg.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 50.006473330780864,
+    "peak_process_tree_rss_bytes": 3789471744,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:35:51.053677",
+    "finished_local": "2026-11-14T07:36:41.060484"
+  },
+  {
+    "path": "scripts/audit/shared.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit/shared.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 98.1443772483617,
+    "peak_process_tree_rss_bytes": 5037490176,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:36:41.335152",
+    "finished_local": "2026-11-14T07:38:19.480043"
+  },
+  {
+    "path": "scripts/audit_adams_action_transport.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_adams_action_transport.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 10.555306958034635,
+    "peak_process_tree_rss_bytes": 3425140736,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:38:19.725253",
+    "finished_local": "2026-11-14T07:38:30.280716"
+  },
+  {
+    "path": "scripts/audit_andre_initial_coefficient.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_andre_initial_coefficient.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.520451791584492,
+    "peak_process_tree_rss_bytes": 4331520000,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:38:30.569504",
+    "finished_local": "2026-11-14T07:38:43.090150"
+  },
+  {
+    "path": "scripts/audit_andre_unoriented.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_andre_unoriented.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 10.618710834532976,
+    "peak_process_tree_rss_bytes": 3778592768,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:38:43.331443",
+    "finished_local": "2026-11-14T07:38:53.950321"
+  },
+  {
+    "path": "scripts/audit_axioms.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_axioms.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 346.4392193350941,
+    "peak_process_tree_rss_bytes": 10438885376,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:38:54.180123",
+    "finished_local": "2026-11-14T07:44:40.620910"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 98.11391333304346,
+    "peak_process_tree_rss_bytes": 3945463808,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:44:40.893566",
+    "finished_local": "2026-11-14T07:46:19.008013"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_andre_conditional.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_andre_conditional.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 18.709270376712084,
+    "peak_process_tree_rss_bytes": 4446240768,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:46:19.255509",
+    "finished_local": "2026-11-14T07:46:37.964967"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_arc_excision.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_arc_excision.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 25.144641125574708,
+    "peak_process_tree_rss_bytes": 4605591552,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:46:38.206306",
+    "finished_local": "2026-11-14T07:47:03.351185"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_b4.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_b4.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 16.729633999988437,
+    "peak_process_tree_rss_bytes": 4635721728,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:47:03.602701",
+    "finished_local": "2026-11-14T07:47:20.332521"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_b5.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_b5.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.583539623767138,
+    "peak_process_tree_rss_bytes": 4300193792,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:47:20.576469",
+    "finished_local": "2026-11-14T07:47:33.160181"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_prop813.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_prop813.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.926147831603885,
+    "peak_process_tree_rss_bytes": 4166582272,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:47:33.399916",
+    "finished_local": "2026-11-14T07:47:46.326264"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_refactoring.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_refactoring.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.724553916603327,
+    "peak_process_tree_rss_bytes": 4307271680,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:47:46.571590",
+    "finished_local": "2026-11-14T07:47:59.296322"
+  },
+  {
+    "path": "scripts/audit_bhatt_scholze_stage2.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_bhatt_scholze_stage2.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 234.75184979103506,
+    "peak_process_tree_rss_bytes": 6769278976,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:47:59.534748",
+    "finished_local": "2026-11-14T07:51:54.287695"
+  },
+  {
+    "path": "scripts/audit_clmst.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_clmst.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 232.96652183495462,
+    "peak_process_tree_rss_bytes": 5170151424,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:51:54.558184",
+    "finished_local": "2026-11-14T07:55:47.525829"
+  },
+  {
+    "path": "scripts/audit_clmst_b3.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_clmst_b3.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 18.773524960502982,
+    "peak_process_tree_rss_bytes": 4709318656,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:55:47.766243",
+    "finished_local": "2026-11-14T07:56:06.540037"
+  },
+  {
+    "path": "scripts/audit_coherent_nerve.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_coherent_nerve.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 16.734368789941072,
+    "peak_process_tree_rss_bytes": 2748137472,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:56:06.786527",
+    "finished_local": "2026-11-14T07:56:23.521085"
+  },
+  {
+    "path": "scripts/audit_derived_cell_projective.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_cell_projective.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 16.577431416139007,
+    "peak_process_tree_rss_bytes": 4358291456,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:56:23.755724",
+    "finished_local": "2026-11-14T07:56:40.273909"
+  },
+  {
+    "path": "scripts/audit_derived_closure_functoriality.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_closure_functoriality.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 53.839870335534215,
+    "peak_process_tree_rss_bytes": 5793021952,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:56:40.509186",
+    "finished_local": "2026-11-14T07:57:34.348354"
+  },
+  {
+    "path": "scripts/audit_derived_coherent_bar.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_coherent_bar.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 16.6462939158082,
+    "peak_process_tree_rss_bytes": 4712775680,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:57:34.603712",
+    "finished_local": "2026-11-14T07:57:51.249888"
+  },
+  {
+    "path": "scripts/audit_derived_coherent_bar_compact.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_coherent_bar_compact.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 27.145553167909384,
+    "peak_process_tree_rss_bytes": 5117870080,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:57:51.490911",
+    "finished_local": "2026-11-14T07:58:18.636152"
+  },
+  {
+    "path": "scripts/audit_derived_coherent_bar_retract.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_coherent_bar_retract.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.788763709366322,
+    "peak_process_tree_rss_bytes": 4385439744,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:58:18.883754",
+    "finished_local": "2026-11-14T07:58:31.672491"
+  },
+  {
+    "path": "scripts/audit_derived_coherent_bar_strict.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_coherent_bar_strict.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 27.195553958415985,
+    "peak_process_tree_rss_bytes": 5444534272,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:58:31.907958",
+    "finished_local": "2026-11-14T07:58:59.103241"
+  },
+  {
+    "path": "scripts/audit_derived_dg_nerve_reflection.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_dg_nerve_reflection.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 12.53500453941524,
+    "peak_process_tree_rss_bytes": 4357963776,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:58:59.342937",
+    "finished_local": "2026-11-14T07:59:11.877857"
+  },
+  {
+    "path": "scripts/audit_derived_gluing.lean",
+    "command": [
+      "env",
+      "LEAN_NUM_THREADS=1",
+      "lake",
+      "env",
+      "lean",
+      "scripts/audit_derived_gluing.lean"
+    ],
+    "cwd": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout",
+    "rc": 0,
+    "reason": null,
+    "seconds": 47.7262033354491,
+    "peak_process_tree_rss_bytes": 6231228416,
+    "peak_lean_or_snapshot_jobs": 1,
+    "threads": "4",
+    "started_local": "2026-11-14T07:59:12.117868",
+    "finished_local": "2026-11-14T07:59:59.843436"
+  }
+]

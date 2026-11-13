@@ -21,7 +21,7 @@ with out.open('w') as log:
    children|=new
   known|=children;peak=max(peak,sum(rows.get(i,(0,0,''))[1] for i in children));peak_lean_jobs=max(peak_lean_jobs,sum(rows.get(i,(0,0,''))[2] in ('lean','snapshot') and rows.get(i,(0,0,''))[1]>16*1024**2 for i in children))
   current=datetime.datetime.now()
-  if peak>32*1024**3:reason='memory budget 32 GiB'
+  if peak>32_000_000_000:reason='memory budget 32 GB'
   elif peak_lean_jobs>4:reason='more than four heavy Lean or snapshot processes'
   elif time.monotonic()-start>a.seconds:reason='bounded batch'
   elif a.night_only and 8<=current.hour<23:reason='daytime boundary'

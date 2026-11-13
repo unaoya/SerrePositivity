@@ -20,7 +20,7 @@
         ],
         "forbidden_changes": [],
         "authorization": "11-14 coordinator reply: documentation-only formalization-plans/research changes allowed; build/audit changes stop",
-        "checked_at": "2026-11-14T07:24:17.247694"
+        "checked_at": "2026-11-14T08:01:21.528803"
       }
     },
     {
@@ -98,7 +98,7 @@
       "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/summary.json"
     },
     {
-      "requirement": "Verify actual configuration 4 jobs / 32 GiB and large-audit exclusion",
+      "requirement": "Verify actual configuration 4 jobs / 32 GB and large-audit exclusion",
       "proved": false,
       "evidence": {
         "runner": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/runner.json"
@@ -110,7 +110,7 @@
       "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/summary.json"
     },
     {
-      "requirement": "Successful heavy processes within 32 GiB and recorded job limits",
+      "requirement": "Successful heavy processes within 32 GB and recorded job limits",
       "proved": true,
       "evidence": {
         "successful_resource_receipts": 299
