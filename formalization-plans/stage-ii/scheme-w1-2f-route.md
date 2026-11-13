@@ -1241,3 +1241,39 @@ ShortComplex.homologyMap (S.mapNatTrans (projectiveFilteredColimitInclusion j)) 
 `projectiveHomogeneousScalarCechIntH0_cocycle` と今回の `projectivePerfCechH0ScalarClass_stage` により、有限段の各標準開上のスカラーから、余極限の比較を経たスカラー類までの接続が得られた。中心の商の元は代表元を持つため、中心側も `projectivePerfCechH0CenterClass_of_mk` と閉厚化へ適用した同じ stage 公式で扱える。ただし、比較の逆を含むこの表示を、実際の標準開環の零次コサイクルの増大写像へ直接同定する最後の照合はまだ必要である。F8 の明示的な増大全複体、共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告も未完。**停止点 2f の完成ではない。**
 
 規模：2e 数学停止点 `bf9767cdc` からの新規コミット済み本体を数え、**163 モジュール・10,250 行**。入口 `AlgebraicGeometry.lean` の既存の追加 263 行込みで **10,513 行**。未検証の下書きは含めない。残りの暫定見込みは **2,500〜6,500 行**（増大写像の最終照合、F8、射に自然な比較の検収と不足の補題）。停止基準 18,000 行以内を見込むが、上端へ近づく場合は再測定して報告する。大きい監査・ルート登録・ルートと下流の全ビルドは凍結中の指示に従い未実施。今回の宣言数を公理監査の宣言数とは扱わない。
+
+## 11-14：実際のスカラー増大写像と、F8 の明示的な増大項付き cone
+
+数学コミット **85375dd57・1fcfe80c2・e52d3c286**。前の報告から新規 10 モジュール・21 公開宣言・607 行。既存 2 ファイルでは基底環と加群の宇宙を分離しただけ（各 2 行変更）。新しい公理・sorry・admit を加えず、探索・heartbeat・再帰上限も変更していない。共有鍵 `--wait 3600` を対象ビルドの間だけ使用した。
+
+宣言と主張：
+
+- `fullCechH0KernelIso_naturality_apply`：既存の H⁰・核の自然性をタプルごとに評価すると、元の係数写像の式になる。
+- `algebraCechFrobeniusH0ColimitIso_inv_of_cocycle`：各有限段の切断に対応する H⁰ 類の零次コサイクルは、各交叉の係数順極限への実際の標準像。
+- `projectiveChartFrobeniusRingColimitIso_ι`：標準開の既存の余極限比較は、有限段からの射を環の系の標準写像へ送る。
+- `projectiveChartFrobeniusRingColimitIso_stage`：有限段の元の像は、実際の斉次局所化の環の同じ段の Frobenius 標準元。
+- `projectiveHomogeneousFrobeniusChartColimitIso`：実際の標準開環の図式と斉次代数係数の順極限の図式の、既存の比較からの合成同型。
+- `projectiveHomogeneousFrobeniusRingCechIso_inv`：既存の複体比較の逆が、上の係数図式の比較の逆から誘導されることの等式。
+- `projectiveHomogeneousFrobeniusChartColimitIso_stage`：斉次代数係数の有限段の元は実際の標準開環の同じ Frobenius 標準元へ移る。
+- `projectivePerfCechH0ScalarClass_of_cocycle`：有限段のスカラー H⁰ 類の零次コサイクルは、各標準開の実際のスカラーの像。
+- `projectivePerfCechH0ScalarClass_cocycle`：同じ公式を Frobenius 順極限の任意の元へ拡張したもの。
+- `projectivePerfCechScalarAugmentation`：各標準開への実際のスカラー環準同型の Frobenius 順極限から作る零次コチェインへの線形写像。定義に H⁰ 比較やその逆を含めない。
+- `projectivePerfCechH0ScalarClass_augmentation`：既存のスカラー H⁰ 類の零次コサイクルと、上の実際の増大写像の一致。
+- `projectivePerfCechScalarAugmentation_cycle`：実際の増大写像の像は零次コサイクル。
+- `cechCycles_lift_of_homology_surjective`：短複体の H の全射性から、目標のサイクルを境界を除いて持ち上げる。
+- `cechCycles_boundary_of_homology_injective`：H の単射性から、境界へ移るサイクルを元の境界へ戻す。
+- `cechRefinementCone_cycle_boundary_of_homology`：H⁰ の全射性と正次数の H の全単射性から、既存の cone の各正次数サイクルは境界。
+- `cochainComplexOf_acyclic_of_injective_exact`：指定した微分の最初が単射で、隣り合う微分がすべて完全なら、`CochainComplex.of` の複体は Mathlib の `Acyclic`。
+- `augmentedCechConeTerm`：増大項、元の複体の零次項、以後の二つの項の直積という、増大項付き cone の明示的な各項。
+- `augmentedCechConeDifferential`：増大項では指定した写像、その先は既存の cone の微分という全微分。
+- `augmentedCechConeDifferential_squared`：増大写像がサイクルへ入るなら、全微分の二乗は零。
+- `augmentedCechCone`：上の項と微分で構成した増大項付き全複体。
+- `augmentedCechCone_acyclic`：増大項の単射性・零次での完全性、H⁰ の全射性、正次数の H の同型性から、構成した全複体が `Acyclic`。
+
+検証：`CechAlgebraFrobeniusH0Cocycle` 2,105 jobs、`ProjectiveChartFrobeniusRingStage` と既存の直接 importer `CechAlgebraH0Naturality` の束 3,248 jobs、`ProjectiveHomogeneousFrobeniusChartStage` 3,278 jobs、`ProjectivePerfCechH0ScalarCocycle` 3,397 jobs、任意の元への公式と `ProjectivePerfCechScalarAugmentation` の束 3,399 jobs の対象は成功。`CechHomologyCycleLifting` は修正後の独立対象 1,606 jobs 成功。`CechConeHomologyExactness` および変更した `CechRefinementCone` の既存の直接 importer 三本（`CechRefinementConeExactness`・`CechRefinementConeMap`・`CechRefinementConeHomology`）の束 1,871 jobs 成功。`AugmentedCechCone` 1,861 jobs 成功。FullCechH0KernelNaturality の直接 importer は新規 Evaluation と既存の IntH0Naturality・H0Naturality をすべて確認した。大きい監査・ルート登録・ルートと下流の全ビルドは未実施。
+
+宇宙：`FullCechH0KernelNaturality` の二宣言と `CechRefinementCone` の既存の定義・補題について、環の宇宙を係数加群の宇宙から分離した。ℤ は Type 0 のまま、係数加群は任意の宇宙で扱える。主張や微分の式は変えていない。
+
+**未完の接続**：基底側の増大写像は実際の各標準開の写像と同定できた。中心側は前の束の代表元の公式に今回のコサイクル公式を適用し、中心の実際の増大写像としてまとめる必要がある。その後 C(Y) の零次項に Perf(R/I) を付けた複体と C(E) の間の差の射を作る。今回の augmentedCechCone に Perf(R) を増大項として渡し、F7 の H⁰ の短完全列で単射性・最初の完全性・H⁰ の全射性を、F6 で正次数の同型性を供給する。**今回の一般判定を実際のブローアップ四角形の F8 の完成とは扱わない。** 共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告も必要で、停止点 2f は未到達。
+
+2f のコミット済み新規本体は **173 モジュール・10,857 行**（2e 数学停止点 bf9767cdc からの新規本体、未検証の下書きを除く）。既存の入口の追加 263 行を含めて **11,120 行**。残りの暫定見込みは **2,000〜6,000 行**。上端でも 18,000 行以内だが、中心の増大写像・F8 の実際の適用・自然性の検収を追って再測定する。
