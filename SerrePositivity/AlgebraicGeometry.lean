@@ -1026,3 +1026,11 @@ public import SerrePositivity.AlgebraicGeometry.CechAlgebraEqualizerAddMap
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousThickeningDiagram
 
 public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionPowerLift
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousThickeningProjection
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionKernelPower
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionQuotient
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionFrobeniusComparison
