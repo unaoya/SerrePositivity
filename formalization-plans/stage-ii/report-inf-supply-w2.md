@@ -2678,3 +2678,62 @@ A05a本体の作業木では、指定増大写像の零次以外での零性を�
 最後の個別検査 `/private/tmp/isw2-a05a-body19.log` は、これらの内部手順にはエラーがなく、負次数の主等式が未解決のため終了コード1。左辺の入力は今や、元の整数Moore射影の係数拡大に対し、元の整数正規化AWの係数拡大を適用する形になった。右辺は第一射影の生成元をMoore射影する明示式。次はAWの切断成分に§81・§83の公式を適用し、同じ右増大写像・右単位子を通した式を右辺と照合する。
 
 `FreeProductAWRightAugmentation.lean` は120行の未完下書きとして作業木に保持する（検証済み9,365行に不算入）。A05a・A05・停止点2は未完。検証済みのコード保存点は引き続き `47d7ebdb1`、前提計算枠3/3・照合枠3/3。凍結確定の連絡は未受領で、未検証コードはコミットしていない。
+
+## 84. A05aを最後の切断へ帰着、余単位の独立補題の追加判断
+
+### 84.1 今回の到達点
+
+A05aの作業木で、整数の正規化AWを非正規化の切断和へ戻し、§83の係数移送の斉次包含公式を適用した。同じ増大写像の零次以外の零性により、右因子の次数が正であるすべての切断成分を消した。有限和を最後の切断 `Fin.last k` だけにする内部計算も通り、A05aの主目標はその一項の等式へ帰着した。`/private/tmp/isw2-a05a-body24.log` はこの段階の主等式だけが未解決で終了コード1。証明全体の成功とは数えない。
+
+最後の切断の値は、係数拡大随伴と既存 `integerTensor_hom_ext` で二つの整数自由生成元に帰着した。入力の自由化比較、前面・後面の純テンソル評価、二つのMoore射影の純テンソル評価は内部の小さい等式として検査を通った。A上の `ULift.module` がφ由来の加群構造と競合していたため、φ由来の `Module simplicialRingCoefficient A` を明記した。切り分け専用 `/private/tmp/isw2-coefficient-pure-probe2.log` は終了コード0。既存の宣言・インスタンスは変更していない。
+
+### 84.2 切り出す主張の型
+
+次の一つを `DiagramComparison/FreeProductAWLastCut.lean` に独立した補題として切り出す案。数学内容は、**指定AWの最後の切断を、同じ係数移送・Moore射影・単体増大写像・右単位子で評価する余単位則**。別の比較模型や新しい第五のまとまりではない。
+
+```lean
+theorem freeProductAlexanderWhitney_last_cut_right_augmentation
+    (A : Type u) [CommRing A] (φ : simplicialRingCoefficient.{u} →+* A)
+    (Z : SSet.{u}) (n : SimplexCategory) (k : ℕ) :
+  let Y := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)
+  let F := integerCoefficientExtension φ
+  let NC := (normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace Z)
+  let ND := (normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace Y)
+  let e0 := Functor.isoWhiskerRight (linearizedTensorIso Z Y) F ≪≫
+    integerCoefficientSimplicialFreeIso φ (Z ⊗ Y)
+  F.map (alexanderWhitneySummand (linearizedSpace Z) (linearizedSpace Y)
+      k (Fin.last k) ≫
+      (chainIntegerTensorMap (PInftyToNormalizedMooreComplex (linearizedSpace Z))
+        (PInftyToNormalizedMooreComplex (linearizedSpace Y))).f k) ≫
+    (((F.mapHomologicalComplex (.down ℕ)).obj (chainIntegerTensor NC ND)).extendXIso
+      ComplexShape.embeddingDownNat (i := k) (i' := -(k : ℤ)) rfl).inv ≫
+    ((negativeMooreTensorCoefficientIso φ (linearizedSpace Z) (linearizedSpace Y)).hom ≫
+      (tensorIso (integerCoefficientFreeChainsIso φ Z)
+        (integerCoefficientFreeChainsIso φ Y)).hom ≫
+      (𝟙 _ ⊗ₘ (normalizedSimplexCochainContraction A n).hom) ≫
+      (ρ_ (freeNegativeChains (A := A) Z)).hom).f (-(k : ℤ)) =
+    e0.hom.app (Opposite.op ⦋k⦌) ≫
+      (ModuleCat.free A).map ((fst Z Y).app (Opposite.op ⦋k⦌)) ≫
+      (PInftyToNormalizedMooreComplex (Z ⋙ ModuleCat.free A)).f k ≫
+      (((normalizedMooreComplex (ModuleCat A)).obj (Z ⋙ ModuleCat.free A)).extendXIso
+        ComplexShape.embeddingDownNat (i := k) (i' := -(k : ℤ)) rfl).inv
+
+```
+
+型だけを `/private/tmp/isw2-a05a-last-cut-type.lean` の命題値の定義として検査し、終了コード0を確認した（ログ `/private/tmp/isw2-a05a-last-cut-type.log`）。これはこの命題の証明ではない。上記の独立宣言はまだ本体に追加していない。
+
+### 84.3 独立補題が必要になった理由と停止
+
+§81〜83では、切断和、Moore正規化後の切断公式、係数移送の斉次包含公式を三つの前提計算として列挙した。しかし最後に残る零次増大写像・右単位子の値の照合を、独立の型として列挙せずA05aの中に展開する見込みだった。
+
+その形で実装を進めると、最後の値の計算の途中で既定の200,000 heartbeatに達する。`/private/tmp/isw2-a05a-body42.log` の一時計測では、係数テンソルの逆比較の値を述べる直前の残量は内部単位518,963（表示上のheartbeatで約519）だった。大きな式全体の書き換えを `conv` で対象箇所に限定し、増大写像の始域も局所名で揃えたが、累計の余裕を確保できていない。計算上限は上げていない。一時的な計測コードは下書きから除去した。
+
+提案は、上記の余単位則を独立に証明し、A05a本体では最後の切断へ帰着した所から適用すること。数学的な不可能性や新たな仮定の必要性ではなく、**型つき一覧の粒度と証明の分割に関する追加判断**である。A05aの型を弱めたり、余単位則を仮定に置いたりはしない。
+
+11-13のユーザー指示（IS-W2 §13）の「法則の補題は、3本まで止まらずに一覧に足してよい」に対し、前提計算枠は既に3/3。照合枠も3/3。この余単位則を4本目の独立補題として黙って追加しないため、ここで追加のLean作業を停止し、上記一補題の追加承認を求める。A05aと同じ第一のまとまりに属し、外枠12,500行の変更は求めない。
+
+### 84.4 保存状態
+
+検証済みの保存点は `47d7ebdb1`、前回の報告は `2acb5b5f3`。**151モジュール・9,365行・1,700宣言、標準三公理のみ**は§83の検収結果から変わらない。今回、新しく完成した本体宣言はないため、鍵付きビルド・監査を成功したとは報告しない。ビルドの鍵は取得しておらず、待機中の整理券もない。
+
+A05aの下書き `FreeProductAWRightAugmentation.lean` は296行、以前の `FrameCoactionCounit.lean` は66行。両方未コミット・検証済み行数に不算入。新しい未検証コードをコミットしていない。既存宣言・⑤aのファイル・入口・公式監査は変更していない。凍結確定の連絡は未受領。A05a・A05・停止点2は引き続き未完。
