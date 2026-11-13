@@ -2632,3 +2632,41 @@ theorem normalizedAlexanderWhitney_right_zero_degree
 次に必要なのは、正規化AWの切断公式を、指定された `normalizedMooreMapIso`・`integerNegativeTensorBaseChangeIso`・自由化比較・負次数延長を通して、同じ `normalizedSimplexCochainContraction` の右増大写像へ接続する成分計算。別の直接AWへの置換や、余単位則を仮定とする型の変更はしていない。A05aが閉じた後にA05の両単位則、A06以降へ進む。停止点2は未完。
 
 前提計算の枠は **2/3**（残り1本）、照合の枠は **3/3** のまま。新しい数学の追加による停止ではなく、承認済みA05aの証明途中の記録。凍結確定の連絡は、この保存時点で未受領。
+
+## 83. 前提計算3/3：係数移送と斉次包含の照合
+
+A05aで整数AWの切断公式を一般Aに移すため、既存の係数移送の成分則を前提計算枠の3本目に追加する。独立の数学的比較を作るのではなく、`integerNegativeTensorBaseChangeIso` の定義に含まれる既存の同型の成分公式を合成する。置き場所は `DiagramComparison/IntegerNegativeTensorCoefficients.lean`。
+
+以下で `F := integerCoefficientExtension φ`、`Kφ := (F.mapHomologicalComplex (.down ℕ)).obj K`、`Lφ := (F.mapHomologicalComplex (.down ℕ)).obj L`。`A : Type u`、`[CommRing A]`、`φ : simplicialRingCoefficient.{u} →+* A`、`K L : ChainComplex (ModuleCat.{u} ℤ) ℕ` を引数とする。
+
+```lean
+theorem integerNegativeTensorBaseChangeIso_ι (i j n : ℕ) (h : i + j = n) :
+    (F).map (ιMapBifunctor K L integerTensorBifunctor (.down ℕ) i j n h) ≫
+      ((((F).mapHomologicalComplex (.down ℕ)).obj (chainIntegerTensor K L)).extendXIso
+        ComplexShape.embeddingDownNat (i := n) (i' := -(n : ℤ)) rfl).inv ≫
+      (integerNegativeTensorBaseChangeIso K L φ).hom.f (-(n : ℤ)) =
+    (ModuleCat.extendScalars φ).map (integerCoefficientTensorIso (K.X i) (L.X j)).inv ≫
+      Functor.OplaxMonoidal.δ (ModuleCat.extendScalars φ)
+        (integerCoefficientModuleFunctor.obj (K.X i))
+        (integerCoefficientModuleFunctor.obj (L.X j)) ≫
+      (((Kφ).extendXIso ComplexShape.embeddingDownNat (i := i) (i' := -(i : ℤ)) rfl).inv ⊗ₘ
+        ((Lφ).extendXIso ComplexShape.embeddingDownNat (i := j) (i' := -(j : ℤ)) rfl).inv) ≫
+      ιTensorObj ((Kφ).extend ComplexShape.embeddingDownNat)
+        ((Lφ).extend ComplexShape.embeddingDownNat) (-(i : ℤ)) (-(j : ℤ)) (-(n : ℤ))
+        (by omega)
+```
+
+前提計算枠3/3、照合枠3/3。追加時点では証明・検査中であり、検証済みの150本・9,281行には算入しない。A05aは引き続き未完。
+
+### 83.1 検証と保存
+
+コード **`47d7ebdb1`**、新規1本84行。個別検査 `/private/tmp/isw2-coefficient-cut13.log` は終了コード0。鍵付きの対象ビルド（`--wait 3600`、実行上限1700秒）は **2,239 jobs** で成功し、続く累計監査も終了コード0。累計 **151モジュール・1,700宣言、標準三公理のみ**、検証済み **9,365行**。追加の3宣言にはLeanが生成した補助宣言を含み、手書きの主張は上記の一つ。sorry・新公理なし、既存宣言の変更なし。
+
+- ログ：`/private/tmp/isw2-build83.log`
+- 一時監査：`/private/tmp/AuditISW2G10HundredFiftyOne.lean`
+- 対象一覧：`/private/tmp/isw2-g10-hundredfiftyone-modules.txt`
+- 登録対象の追加：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.IntegerNegativeTensorCoefficients`
+
+鍵は検証終了時に返却済み。入口と公式監査は変更していない。外枠12,500行まで3,135行。前提計算枠3/3、照合枠3/3。
+
+A05a本体の作業木では、指定増大写像の零次以外での零性を既存の単一複体の零性から得た。また、射影側の右辺はMoore射影の自然性・零延長の指定同型・自由生成元の写像則で、第一成分の生成元をMoore射影して延長へ戻す式まで整理した（`/private/tmp/isw2-a05a-body8.log`、残る主目標があるため終了コード1）。AW側の係数移送との照合が残る。A05a・A05・停止点2はまだ未完であり、下書きはコミットしていない。
