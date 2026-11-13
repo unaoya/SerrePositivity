@@ -501,3 +501,29 @@ F6 は未完。今回の反復 Frobenius は厚化先への実際の写像とし
 F6 の適用順を具体化した。厚さ 1 への制限 u₁ の核の元 x について、十分大きい e を取り、u_(p^e)(F^e x)=0 を厚化 Frobenius の射影比較から得る。F5 と 2e の核の評価で u_(p^e) が単射になるため F^e x=0。像側は、厚化間の像の安定化の段 m 以上に p^e を取り、厚化の因子分解で F^e y を im(u₁) に入れる。この二条件で順極限上の単射性と全射性を証明する。まず厚さ 1 の比較を閉じればよく、各厚さの順極限を先に別々に構成する必要はない。これらの評価の実際の適用と順極限判定は未実装で、F6 の完成は主張しない。
 
 残りの見込み：主要な接続は、F6 の図式・H 上の因子分解と射影比較、核・像評価から順極限への接続、F7 の H⁰ の環と有限射の四角形、F8 の全複体の計 4 束。停止点 2f ではない。凍結の予告は引き続き確定待ち。
+
+## F6 途中：正次数の Frobenius 順極限の全単射性（0a00affc8、11-13）
+
+検証済み 9 モジュール・32 公開宣言・701 行を登録した。対象と直接 importer のビルドは 4,623 jobs 成功。別実行の AlgebraicGeometry 監査は **9,142 宣言・標準三公理のみ**。各実行は共有鍵 `--wait 3600` を経由し、待ちは一つ。未検証の `LinearDirectLimitCocone.lean` は登録・コミットに含めない。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry.` の下）：
+
+| モジュール | 到達点 |
+| --- | --- |
+| `LinearDirectLimitComparison` | 有向系間の写像と、核の eventual vanishing・像の eventual lifting による順極限の単射・全射判定。 |
+| `ProjectiveCechFrobeniusDirectLimit` | 実際の Čech H の Frobenius 順極限と閉厚化への写像、その単射・全射。 |
+| `ProjectiveCechFrobeniusPositive` | 中心の外で同型となる射影的構造射について、正次数の閉厚化への順極限制限は全単射。 |
+| `ProjectiveCechSupportGradedPower` | F5 の台による冪消滅を標準開の次数付き加群表示の Čech H へ移す。 |
+| `ReesClosedCechIntBounds` | 整数係数表示で、十分厚い閉厚化への単射性と遷移像の持ち上げ。 |
+| `ReesClosedCechIntComparison` | 整数係数・Rees・商環の各 H の加法同型、射影と厚さの遷移への自然性。 |
+| `ReesClosedCechIntFrobeniusBounds` | 制限の核は反復 Frobenius で消え、閉厚化側の元の反復は制限の像に入る。 |
+| `ReesClosedCechIntMaps` | 実際の整数係数 Čech H の射影・遷移・厚化 Frobenius と因子分解。 |
+| `ReesClosedCechIntThickening` | 同じ因子分解・射影比較を標準開の図式上で構成。 |
+
+主宣言 `projectiveCechFrobeniusDirectLimit_closed_bijective` は、Noether 基底、有限生成の次数付き加群、標準開の生成条件、中心の外での構造射の同型、標数 p の条件から、正次数 q の実際の Čech H の Frobenius 順極限上の全単射性を示す。核の消滅や像の安定化を未証明の追加仮定として主宣言に残していない。F5 の消滅と 2e の核・像評価を適用した。
+
+**半分の規模の報告**：2f 累計は 77 モジュール・4,462 行（登録を含め 4,567 行）。報告点 4,500 行に達する区切りとして記録する。残りは暫定で F6 の完成に 500〜1,500 行、F7 に 1,500〜3,500 行、F8 に 1,000〜2,500 行、計 3,000〜7,500 行。合計見込み 7,462〜11,962 行は停止基準 18,000 行以内。
+
+F6 はまだ未完。今回の出力は H の順極限であり、完備化ではなく perfection の係数の Čech H との自然な比較を次に作る。代数的順極限の普遍性を圏論的余極限へ渡し、2e の filtered colimit の比較を使う。F7 の次数零の環の比較・有限射の四角形と、F8 の全複体も残る。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更しない。
+
+11-13 の凍結は予告段階。検証済みの上記コミットを途中の取り込み候補として用意した。18 時の確定連絡後は翌朝まで枝へのコミットを控え、未検証の下書きは作業木に残す。翌朝の main 取り込みと改名表による追従は、一括レーンの手順を受けて実施する。
