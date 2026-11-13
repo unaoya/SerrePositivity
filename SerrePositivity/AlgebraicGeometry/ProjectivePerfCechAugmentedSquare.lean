@@ -1,7 +1,7 @@
 module
 
 public import SerrePositivity.AlgebraicGeometry.ProjectivePerfCechBlowupSquareTotal
-public import SerrePositivity.AlgebraicGeometry.CechAugmentedSquareMap
+public import SerrePositivity.AlgebraicGeometry.CechAugmentedSquareSurjectiveMap
 
 /-!
 概要：F8 の実際の四角形を、自然な全複体の構成のデータとして表す。
@@ -72,5 +72,16 @@ theorem projectivePerfCechAugmentedSquare_acyclic :
     (projectivePerfCechAugmentedSquare (ι := ι) G I p hp hR hA hspan).totalComplex.Acyclic := by
   rw [projectivePerfCechAugmentedSquare_totalComplex]
   exact projectivePerfCech_blowupSquare_acyclic (ι := ι) G I p hp hR hA hspan
+
+/-- 実際の基底から中心への商写像は、Frobenius 順極限でも全射。 -/
+theorem projectivePerfCechAugmentedSquare_quotient_surjective :
+    Function.Surjective (projectivePerfCechAugmentedSquare
+      (ι := ι) G I p hp hR hA hspan).quotient := by
+  change Function.Surjective (frobeniusDirectLimitMap p hp hR
+    (frobeniusQuotientPrimeCast p hR (I ^ 1)) (Ideal.Quotient.mk (I ^ 1)))
+  apply frobeniusDirectLimitMap_surjective
+  intro b
+  obtain ⟨r, hr⟩ := Ideal.Quotient.mk_surjective b
+  exact ⟨0, r, by simpa using hr⟩
 
 end SerrePositivity.AlgebraicGeometry
