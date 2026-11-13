@@ -2737,3 +2737,124 @@ theorem freeProductAlexanderWhitney_last_cut_right_augmentation
 検証済みの保存点は `47d7ebdb1`、前回の報告は `2acb5b5f3`。**151モジュール・9,365行・1,700宣言、標準三公理のみ**は§83の検収結果から変わらない。今回、新しく完成した本体宣言はないため、鍵付きビルド・監査を成功したとは報告しない。ビルドの鍵は取得しておらず、待機中の整理券もない。
 
 A05aの下書き `FreeProductAWRightAugmentation.lean` は296行、以前の `FrameCoactionCounit.lean` は66行。両方未コミット・検証済み行数に不算入。新しい未検証コードをコミットしていない。既存宣言・⑤aのファイル・入口・公式監査は変更していない。凍結確定の連絡は未受領。A05a・A05・停止点2は引き続き未完。
+
+## 85. §14の承認を反映し、A05aの証明を分割
+
+11-13のユーザー指示に従い、§84.2の最後の切断の余単位則を同じ型で `FreeProductAWLastCut.lean` に切り出した。証明の分割は追加枠に算入せず、型を本報告へ記録する。前提計算は一覧の補題ごとに3本、照合枠は全体3/3、外枠12,500行の規則を維持する。計算上限は上げていない。
+
+### 85.1 同じMoore射影計算の部分補題
+
+以下二つはA05aで使っている既存のMoore比較と射影の計算を分けたもの。新しい模型を作らない。
+
+`SerrePositivity/HomologicalAlgebra/NormalizedMooreMapProjection.lean`
+
+```lean
+theorem normalizedMooreMapHom_projection :
+    (F.mapHomologicalComplex (.down ℕ)).map (PInftyToNormalizedMooreComplex X) ≫
+      normalizedMooreMapHom F X =
+    (alternatingFaceMapComplexCompMapHomologicalComplexIso F).hom.app X ≫
+      PInftyToNormalizedMooreComplex (X ⋙ F)
+```
+
+`SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/FreeChainsCoefficientProjection.lean`
+
+```lean
+theorem freeChainsCoefficient_projection {A : Type u} [CommRing A]
+    (φ : simplicialRingCoefficient.{u} →+* A) (X : SSet.{u}) :
+    ((integerCoefficientExtension φ).mapHomologicalComplex (.down ℕ)).map
+        (PInftyToNormalizedMooreComplex (linearizedSpace X)) ≫
+      normalizedMooreMapHom (integerCoefficientExtension φ) (linearizedSpace X) ≫
+      (normalizedMooreComplex (ModuleCat A)).map
+        (integerCoefficientSimplicialFreeIso φ X).hom =
+    (alternatingFaceMapComplexCompMapHomologicalComplexIso
+      (integerCoefficientExtension φ)).hom.app (linearizedSpace X) ≫
+      (alternatingFaceMapComplex (ModuleCat A)).map
+        (integerCoefficientSimplicialFreeIso φ X).hom ≫
+      PInftyToNormalizedMooreComplex (X ⋙ ModuleCat.free A)
+```
+
+第一の型では `{C D : Type*}` に圏・アーベル圏、`F : C ⥤ D` に加法性、`X : SimplicialObject C` を仮定する。第二は型に記載の引数を持つ。名前はそれぞれ `SerrePositivity.HomologicalAlgebra`、`DiagramComparison` の名前空間。結合ソースの個別検査 `/private/tmp/isw2-free-projection-check3.log` は終了コード0。鍵付きの対象ビルド・監査を実行中のため、この記録時点では検証済み151本の実績はまだ更新しない。
+
+### 85.2 最後の切断の証明の現在地
+
+独立した `FreeProductAWLastCut.lean` では、係数テンソルの逆比較とδの純テンソル評価を通過し、二因子のMoore比較・自由化比較・零次増大写像・右単位子の値を照合する主等式が残る。個別検査 `/private/tmp/isw2-last-cut5.log` はその主等式が未解決で終了コード1。A05aの元の下書きとともに未コミットで保持し、A05a・A05・停止点2の完了とは数えない。
+
+### 85.3 負次数成分への同じ計算の分割
+
+最後の切断の証明内で、以下の成分等式を使用する。`F := integerCoefficientExtension φ` とし、`A : Type u`、`[CommRing A]`、`φ : simplicialRingCoefficient.{u} →+* A` を固定する。これは§85.1を零延長の成分公式で表す同じ内容の部分計算であり、検査中。独立した新しい数学の補題として追加しない。
+
+```lean
+have hμ (X : SSet.{u}) (r : ℕ) :
+      F.map ((PInftyToNormalizedMooreComplex (linearizedSpace X)).f r) ≫
+        ((((F.mapHomologicalComplex (.down ℕ)).obj
+          ((normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace X))).extendXIso
+          ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv) ≫
+        (extendMap (normalizedMooreMapHom F (linearizedSpace X)) ComplexShape.embeddingDownNat ≫
+          (integerCoefficientFreeChainsIso φ X).hom).f (-(r : ℤ)) =
+      (integerCoefficientSimplicialFreeIso φ X).hom.app (Opposite.op ⦋r⦌) ≫
+        (PInftyToNormalizedMooreComplex (X ⋙ ModuleCat.free A)).f r ≫
+        (((normalizedMooreComplex (ModuleCat A)).obj (X ⋙ ModuleCat.free A)).extendXIso
+          ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+```
+
+### 85.4 成分式と生成元評価の独立した分割
+
+§85.3の内部計算とその自由生成元での値は、再利用時に累計heartbeatを消費しないよう `FreeChainsCoefficientDegrees.lean` に分けた。同じA05aの計算の分割である。個別検査 `/private/tmp/isw2-free-degrees2.log` は終了コード0。型は次のとおり（DiagramComparison名前空間）。
+
+```lean
+theorem freeChainsCoefficient_degree {A : Type u} [CommRing A] (φ : simplicialRingCoefficient.{u} →+* A) (X : SSet.{u}) (r : ℕ) :
+    (integerCoefficientExtension φ).map ((PInftyToNormalizedMooreComplex (linearizedSpace X)).f r) ≫
+      (((((integerCoefficientExtension φ).mapHomologicalComplex (.down ℕ)).obj
+        ((normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace X))).extendXIso
+        ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv) ≫
+      (extendMap (normalizedMooreMapHom (integerCoefficientExtension φ) (linearizedSpace X)) ComplexShape.embeddingDownNat ≫
+        (integerCoefficientFreeChainsIso φ X).hom).f (-(r : ℤ)) =
+    (integerCoefficientSimplicialFreeIso φ X).hom.app (Opposite.op ⦋r⦌) ≫
+      (PInftyToNormalizedMooreComplex (X ⋙ ModuleCat.free A)).f r ≫
+      (((normalizedMooreComplex (ModuleCat A)).obj (X ⋙ ModuleCat.free A)).extendXIso
+        ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+```
+
+```lean
+theorem freeChainsCoefficient_generator_value {A : Type u} [CommRing A] (φ : simplicialRingCoefficient.{u} →+* A) (X : SSet.{u}) (r : ℕ) (a : X.obj (Opposite.op ⦋r⦌)) :
+    ((integerCoefficientFreeChainsIso φ X).hom.f (-(r : ℤ)))
+      ((extendMap (normalizedMooreMapHom (integerCoefficientExtension φ) (linearizedSpace X))
+        ComplexShape.embeddingDownNat).f (-(r : ℤ))
+        ((((((integerCoefficientExtension φ).mapHomologicalComplex (.down ℕ)).obj
+            ((normalizedMooreComplex (ModuleCat ℤ)).obj (linearizedSpace X))).extendXIso
+          ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv)
+          ((integerCoefficientExtension φ).map
+            ((PInftyToNormalizedMooreComplex (linearizedSpace X)).f r)
+            ((integerCoefficientFreeAdjunction φ).unit.app _ a)))) =
+    (((normalizedMooreComplex (ModuleCat A)).obj (X ⋙ ModuleCat.free A)).extendXIso
+      ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+      ((PInftyToNormalizedMooreComplex (X ⋙ ModuleCat.free A)).f r (ModuleCat.freeMk a))
+```
+
+### 85.5 ここまでの検収
+
+`NormalizedMooreMapProjection` は27行、コード `df8a4ca14`。対象ビルド1,331 jobs、152モジュール・1,702宣言、標準三公理のみ（`/private/tmp/isw2-build85.log`）。`FreeChainsCoefficientProjection` は34行、コード `3a3da1089`。対象ビルド2,242 jobs、153モジュール・1,704宣言、標準三公理のみ（`/private/tmp/isw2-build85b.log`）。どちらも `--wait 3600` の鍵付きビルド・一時監査で終了コード0。検証済み実測は9,426行。入口と公式監査は変更していない。
+
+成分・生成元評価の67行は別の鍵付きビルド・154本の一時監査で検査中。最後の切断とA05aの下書きは引き続き未完・未コミット。追加判断を求める停止ではなく、§14の承認内での証明途中。
+
+### 85.6 最後の切断の残る値
+
+§85.4を独立させた結合検査 `/private/tmp/isw2-last-cut-check9.log` では、両因子への生成元評価の適用を通過した。残る主等式は、第一因子が元のA自由生成元のMoore射影・負次数延長となり、第二因子が同じ標準単体増大写像をそのMoore射影へ適用した形。第二因子の零次の値が1であることと、右単位子・最後の前面の恒等性の照合が残る。この検査は主等式が未解決で終了コード1であり、最後の切断の補題の証明完了とは数えない。A05a・A05・停止点2は未完。
+
+### 85.7 標準単体増大写像の零次の値の分割
+
+最後の切断で残る、同じ増大写像の既存の生成元の値を次の型で `StandardParameterAugmentationValues.lean` に分割する。既存 `normalizedSimplexCochainAugmentation_zero_apply` と `normalizedSimplexChainAugmentation_zero` をMoore零次射影へ接続する同じ計算である。検査中であり、検証済み実績へ算入しない。
+
+```lean
+theorem standardParameterAugmentation_moore_generator (A : Type u) [CommRing A]
+    (n : SimplexCategory)
+    (a : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)).obj (Opposite.op ⦋0⦌)) :
+    let W := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⋙ ModuleCat.free A
+    (normalizedSimplexCochainContraction A n).hom.f 0
+      ((((normalizedMooreComplex (ModuleCat A)).obj W).extendXIso
+        ComplexShape.embeddingDownNat (i := 0) (i' := (0 : ℤ)) rfl).inv
+        ((PInftyToNormalizedMooreComplex W).f 0 (ModuleCat.freeMk a))) =
+      (singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv (1 : A)
+```
+
+直接の個別検査では既存依存の `.olean` が9本不足したため、必要な既存ソースだけを一時ファイルに結合して検査している。共有鍵の待機は154モジュールの一件のまま。
