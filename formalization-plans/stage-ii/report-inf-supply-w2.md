@@ -4974,3 +4974,59 @@ theorem normalizedFreeStandardAW_zero_eval (S T : SSet.{u}) (x y z : D)
 B02は未完。今回の実合成の逆随伴の切断和を、A09の同じ自由鎖AWと指定tensor–Hom随伴の切断点ごとの式へ接続する。sourceのMoore射影を一般のAWと可換と仮定するのではなく、同じ生成元評価の後で比較し、包含と射影のsplit則を使う経路を検討している。
 
 `FreeTensorCoefficientGeneratorValues.lean`は、最後の切断の既存係数計算を任意の二次数へ分割する検査中の下書き。上のコミット・行数・監査には含めない。B03〜B08・C・Dも未完であり、今回の区切りは停止点2a・2bの完了報告ではない。Bが完了した時点でC・Dの見込みを実測に基づいて出し直す。
+
+
+## 115. B02の途中：自由鎖AWの任意切断と全切断和の計算
+
+### 115.1 同じ成分照合の分割と型
+
+§114の実合成側の全切断和へ接続するため、A05aで検証した最後の切断の係数計算を、同じ既存構成の任意の二次数・任意の切断点へ分割した。指定係数比較が二因子のMoore射影生成元の純テンソルを、元の負次数延長の純テンソルへ送ることを、既存の斉次包含・係数移送・自由生成元の式から示した。
+
+その式を既存AWの各切断成分へ代入し、対応する前面・後面の射影生成元のテンソルとなる式を閉じた。さらに既存`alexanderWhitneyApp`の有限和の定義から、同じ全切断和の式を得た。始域のMoore射影を勝手に消去せず、整数線形化からの元の成分に対して述べている。
+
+下記はDiagramComparison名前空間、`{A : Type u}`・`[CommRing A]`を固定する。B02の同じ係数・成分計算の証明分割（§14）であり、独立した前提計算や照合の追加ではない。B02前提計算3/3、照合全体3/3はそのまま。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorCoefficientGeneratorValues`
+
+```lean
+def freeNegativeGenerator (X : SSet.{u}) (n : ℕ) (x : X.obj (Opposite.op ⦋n⦌)) :
+    (freeNegativeChains (A := A) X).X (-(n : ℤ))
+```
+
+```lean
+theorem freeTensorCoefficient_projection_value
+    (φ : simplicialRingCoefficient.{u} →+* A) (X Y : SSet.{u})
+    (i j n : ℕ) (h : i + j = n)
+    (x : X.obj (Opposite.op ⦋i⦌)) (y : Y.obj (Opposite.op ⦋j⦌)) :
+    let F
+```
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductAWCutValues`
+
+```lean
+theorem freeProductAlexanderWhitney_cut_value
+    (φ : simplicialRingCoefficient.{u} →+* A) (X Y : SSet.{u})
+    (n : ℕ) (c : Fin (n + 1))
+    (x : X.obj (Opposite.op ⦋n⦌)) (y : Y.obj (Opposite.op ⦋n⦌)) :
+    let F
+```
+
+```lean
+theorem freeProductAlexanderWhitney_sum_value
+    (φ : simplicialRingCoefficient.{u} →+* A) (X Y : SSet.{u})
+    (n : ℕ)
+    (x : X.obj (Opposite.op ⦋n⦌)) (y : Y.obj (Opposite.op ⦋n⦌)) :
+    let F
+```
+
+### 115.2 検収と登録
+
+コード **`13d1ecc09`**（2本209行）。依存順に結合した個別検査`/private/tmp/isw2-free-aw-cut3.log`は終了コード0。鍵付き対象ビルド`/private/tmp/isw2-build130.log`は **4,014 jobs・終了コード0**。新規分のみの監査`/private/tmp/AuditISW2G10B02FreeAWCuts.lean`は **10宣言（7・3）・標準三公理のみ**。共有鍵は返却済み。
+
+累計 **236モジュール・14,322行・2,140宣言**。一覧は`/private/tmp/isw2-g10-twohundredthirtysix-modules.txt`。外枠20,000行まで残り5,678行。新公理・sorryなし。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。大きな監査は実行していない。登録対象は115.1の2本。
+
+### 115.3 残り
+
+B02は未完。今回の自由鎖AW側の切断和と、§114の実豊穣合成の逆随伴の切断和を、指定tensor–HomとHom–Totの成分・符号を介して同じ射として照合する。`HomTotalHomogeneousComposition.lean`は、試験対象の次数零の鎖射に限らず任意次数の合成について同じ積射影の成分を合わせる検査中の下書きであり、この検収と累計には含めない。
+
+B03〜B08・C・Dは未完。停止点2a・2bの完了報告ではない。B完了時のC・Dの再見積もりは、Bの実測が揃った所で行う。
