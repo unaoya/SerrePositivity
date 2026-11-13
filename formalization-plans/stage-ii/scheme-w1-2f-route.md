@@ -732,3 +732,28 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 今回の短完全列の右下は **B/IB の Frobenius 順極限**。閉厚化 E の Čech H⁰ の順極限との比較はまだ必要であり、今回の定理を F7 全体の完成とはしない。次は実際の閉厚化への環の制限を H⁰ の比較へ接続し、2e の核の評価・像の安定化を使って B/IB と E の切断環の Frobenius 比較を得る。その後 F8 の増大全複体へ渡す。最終出力の型は変更しない。
 
 2f 累計は **107 モジュール・6,577 行（登録込み 6,742 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではない。
+
+## F7 途中：適合切断環と Čech H⁰ の比較の自然性（40a140fb9、11-13）
+
+新規 3 モジュール・10 公開宣言・181 行（登録込み 187 行）。対象ビルドは 2,015 jobs、直接 importer は 4,656 jobs 成功。別実行の公理監査は **9,487 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`CechAlgebraEqualizerMap`、`FullCechH0KernelNaturality`、`CechAlgebraH0Naturality`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullAlgebraCechCochainsMap` | 代数係数図式の射が、全タプルの切断族に誘導する成分ごとの代数写像。 |
+| `fullAlgebraCechCochainsMap_face` | この写像は二つの面の制限と可換。 |
+| `fullAlgebraCechEqualizerMap` | 適合切断の部分代数へ制限した実際の代数写像。 |
+| `fullAlgebraCechEqualizerMap_apply` | 各成分は指定された係数図式の射そのもの。 |
+| `fullAlgebraCechEqualizerMap_id` | 恒等係数写像は適合切断の恒等写像を誘導する。 |
+| `fullAlgebraCechEqualizerMap_comp` | 適合切断の写像は係数図式の射の合成を保つ。 |
+| `fullCechH0KernelIso_hom_subtype` | H⁰ と核の比較の後の包含は、homologyπ の逆と cycles の包含の合成。 |
+| `fullCechH0KernelIso_naturality_subtype` | H⁰ の写像と核への比較は、実際の零次項の写像と可換。 |
+| `fullAlgebraCechH0Equiv_kernel` | 適合切断から H⁰ を経て核へ戻すと元の切断族になる。 |
+| `fullAlgebraCechH0Equiv_naturality` | 適合切断環と Čech H⁰ の線形比較は、実際の係数図式の代数写像に自然。 |
+
+2e の核・像の評価は線形な H⁰ の写像に対する結果であり、F7 は環の制限と冪乗を使う。今回の自然性はこの二つを同じ比較の下で一致させるための補題。既存の `fullCechH0KernelIso` をそのまま使い、Mathlib の cycles の包含と homologyπ の自然性で証明した。導来関手との新しい比較や上限の引き上げは行っていない。
+
+次は閉厚化の斉次局所化の射 `reesClosedHomogeneousChartProjection` を代数係数図式の射としてまとめる。既存の `projectiveHomogeneousChartDiagram_map` と `reesClosedHomogeneousChartProjection_compare` で、実際の環の制限と線形な係数写像を照合する。その後、今回の自然性を通して 2e の核の評価・像の安定化を適合切断環に移す。B/IB と閉厚化の切断環の Frobenius 比較、F7 の幾何学的四角形、F8 の増大全複体は未完。
+
+2f 累計は **110 モジュール・6,758 行（登録込み 6,929 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
