@@ -1,0 +1,184 @@
+[
+  {
+    "module": "SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationDiscrete",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.Interface.Theory",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockPinchedComparison",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockPinchedComparison",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockProbeVertices",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockProbeVertices",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexHammockSource",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexNormalizedRoofMaps",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeColumnHom",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementDerivedRoofComparison",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementPinchedFamily",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.Basic",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementPinchedFamily",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementPinchedFamily",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementPinchedFamily",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference",
+    "old": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof",
+    "new": "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.Roof",
+    "mode": "simple",
+    "reason": "retain actual original namespace binding and qualify moved term references individually; do not add destination namespace opens"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementReference",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementSourceRoof",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementTransport",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.FullFaithfulAndEssentiallySurjectiveFunctors",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementTransport",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.ConeFiberHomotopyComparison",
+    "old": "SerrePositivity.KST.Spectra",
+    "new": "SerrePositivity.KST.Spectra",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneDerivedFunctor",
+    "old": "SerrePositivity.InfinityCategories.Project.DerivedCategories",
+    "new": "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.DerivedCategories",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneHammockFunctor",
+    "old": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "new": "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.IsomorphismsAndIsofibrations",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  },
+  {
+    "module": "SerrePositivity.EInfinity.PowerOperation.EilenbergMacLaneLoopComponents",
+    "old": "SerrePositivity.KST.Spectra",
+    "new": "SerrePositivity.KST.Spectra",
+    "mode": "only",
+    "reason": "all compiler-resolved restricted members retain their exact suffix under this actual destination namespace"
+  }
+]

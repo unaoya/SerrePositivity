@@ -1,6 +1,6 @@
 from pathlib import Path
 import json,subprocess,sys,re,tempfile,time
-w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');b=w/'before';plan=json.load(open(w/'namespace-rewrite-map.json'));sys.path.insert(0,str(r/'scripts/refactor'));import bulk_namespace as B;import klw1_namespace as K
+w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');b=w/'before';__import__('refine_open_policies').refine();plan=json.load(open(w/'namespace-rewrite-map.json'));sys.path.insert(0,str(r/'scripts/refactor'));import bulk_namespace as B;import klw1_namespace as K
 migration=K.Migration(plan);out=w/'rewritten-delta';out.mkdir(exist_ok=True);done={};review={}
 for index in sorted((w/'delta-captures').glob('*/files.json')):
  group=index.parent

@@ -1,0 +1,109 @@
+{
+  "frozen_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "observed_local": "2026-11-13T23:44:02.867867",
+  "branches": {
+    "math/inf-supply": {
+      "head": "4e7a480c513b62154bb785a5b17044b44b826792",
+      "candidate_files": 7,
+      "files": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramMappingSpan.lean",
+          "source_sha256": "b6179020957ff8f19eabe7d58bf37f825785600f5bba2a510c61e3acff7c6e18",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CoherentPinchedTransport"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/StrictDiagramModelLocalization.lean",
+          "source_sha256": "02a94e6423eb42d1f5f700e710ff87b7ca5c7918d045d197b9e0d2b9ae2d7c48",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.ModelCategoryComparison.ModelRelative"
+          ],
+          "names": []
+        }
+      ],
+      "files_count": 2,
+      "nonbuild_drafts_excluded": [],
+      "deleted_since_commits": [],
+      "observation": "static exact text references in branch HEAD files touched by commits not reachable from frozen main; unqualified names require original-environment collect for authoritative rewrite"
+    },
+    "math/inf-supply-b": {
+      "head": "f594ede20a67e206bb976de0690ea33ce9cb6417",
+      "candidate_files": 192,
+      "files": [
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/DoldKanClosedPostcomposition.lean",
+          "source_sha256": "3abfd92e2a654f5ed12e644e3c7ba359245e6e2e7bb95bb52c5b806ff1ead905",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGStandardClosedPostcomposition"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientFree.lean",
+          "source_sha256": "697ba6b872411111b906bb8ef0f0abe51393202d8b0d0da5030e701998ff09f6",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGSimplicialRingCoefficientComplex"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorDegrees.lean",
+          "source_sha256": "4b27fc32cf756604567f362d7c854b24da546143fca2a4dc710e213c529ee254",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/IntegerCoefficientTensorValues.lean",
+          "source_sha256": "4274c9e5596ce8e9abfbe8a77ad0cc6fca78733c2d8621bbc90be82e825030ce",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.DerivedCategories.DGIntegerCoefficientTensor"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/ProductSectionsHom.lean",
+          "source_sha256": "215f17fa2e911b68ec0f555ed8db53fbb8dd6842eb6021201dbb3bc5aaeebc7d",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.QuasicategoryAuxiliaries.UniverseJoinSimplexShapes"
+          ],
+          "names": []
+        },
+        {
+          "path": "SerrePositivity/InfinityCategories/Project/DerivedCategories/DiagramComparison/TruncatedDoldKanQuasiIso.lean",
+          "source_sha256": "90da36191f4da1fd1472ac77db6991295b6d666ad3d54ec7f6496895dbe24094",
+          "modules": [
+            "SerrePositivity.InfinityCategories.Project.DerivedCategories.PinchedChainMapQuasiIso"
+          ],
+          "names": []
+        }
+      ],
+      "files_count": 6,
+      "nonbuild_drafts_excluded": [],
+      "deleted_since_commits": [],
+      "observation": "static exact text references in branch HEAD files touched by commits not reachable from frozen main; unqualified names require original-environment collect for authoritative rewrite"
+    },
+    "math/bs-impl": {
+      "head": "0820a8b7a2ff7f7d00baea9ed703021b51488b88",
+      "candidate_files": 22,
+      "files": [],
+      "files_count": 0,
+      "nonbuild_drafts_excluded": [],
+      "deleted_since_commits": [],
+      "observation": "static exact text references in branch HEAD files touched by commits not reachable from frozen main; unqualified names require original-environment collect for authoritative rewrite"
+    },
+    "math/scheme": {
+      "head": "15738a75de5f51cef4d8e724b6568af49e2b0b9f",
+      "candidate_files": 146,
+      "files": [],
+      "files_count": 0,
+      "nonbuild_drafts_excluded": [],
+      "deleted_since_commits": [],
+      "observation": "static exact text references in branch HEAD files touched by commits not reachable from frozen main; unqualified names require original-environment collect for authoritative rewrite"
+    }
+  },
+  "policy": "git references and objects only; no other lane worktree reads or writes"
+}
