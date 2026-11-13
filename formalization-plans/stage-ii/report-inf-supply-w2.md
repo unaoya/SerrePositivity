@@ -2450,3 +2450,27 @@ def freeProductFrameUncurryIso (A : Type u) [CommRing A]
 ```
 
 自然性は自由鎖の合成則とテンソルの合成則だけで証明する。同型の存在に新しい数学を使わない。`DiagramComparison.FreeProductFrameUncurry`（39行）は個別検査済み、対象ビルド・監査中、未コミットで上の累計に未算入。検証中のファイルは変更しない。
+
+## 76. 積frameの同定を検証、A02の両合成へ
+
+`DiagramComparison.FreeProductFrameUncurry` は `4b718e6b8` に保存。39行、累計 **144本8,966行**。個別検査、鍵付き対象ビルド **2,275 jobs**、累計 **1,634宣言・標準三公理のみ**の監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-76.log`、監査 `/private/tmp/AuditISW2G10HundredFortyFour.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortyfour-modules.txt`。鍵は `--wait 3600`、一枚、実行1,700秒上限、検証の間だけ取得。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductFrameUncurry
+```
+
+A02の前向き合成 `freeProductFrameAWShuffleHomotopy` は個別検査済み。`Δ × J` 上のA01を、この指定同型で前後から合成し、§74の添字交換で戻した。全パラメータについて一つの鎖ホモトピーになっている。`FreeProductFrameHomotopies.lean` は逆順も含めて検査中で、まだコミット・累計算入していない。
+
+逆順に用いるテンソル側の照合も明記する。追加枠 **3/3**。A02の証明内の局所同型 `e₀` として実装するが、枠から除外はしない。
+
+```lean
+-- A : Type u、[CommRing A]、J : Type v、[Category.{w} J]、
+-- W : J ⥤ SSet.{u}、P : SimplexCategory ⥤ (J ⥤ SSet.{u})。
+e₀ : Functor.uncurry.obj (freeTensorFrame A W P) ≅
+  freeNegativeChainsDiagram (A := A) (frameWeightDiagram W) ⊗
+    freeNegativeChainsDiagram (A := A) (Functor.uncurry.obj P)
+```
+
+各成分は恒等で、自然性はテンソルと自由鎖の合成則のみ。新しい数学ではない。この後、一覧外の数学または追加枠を超える独立した照合宣言が必要になれば、検証済みを保存して型と理由を報告する。A02以降のA03〜D08は未完で、停止点2ではない。
