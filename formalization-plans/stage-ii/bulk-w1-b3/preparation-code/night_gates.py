@@ -24,6 +24,6 @@ summary={'audits':len(paths),'success':sum(x['rc']==0 for x in results),'failed'
 if failed:raise SystemExit(1)
 (w/'all-audits-complete.json').write_text(json.dumps(summary,indent=2))
 settings=json.load(open('/tmp/bulk-w1-b2/b3-heavy-audit-plan.json'));env=dict(os.environ)
-for key in ['VERIFY_ONLY_AUDITS','VERIFY_SKIP_BUILD','VERIFY_EXTRA_AUDITS']:env.pop(key,None)
+for key in ['VERIFY_ONLY_AUDITS','VERIFY_SKIP_BUILD','VERIFY_EXTRA_AUDITS','VERIFY_BASELINE','SORRY_AUDIT_ROOT','SORRY_AUDIT_ALLOWED']:env.pop(key,None)
 env.update(VERIFY_JOBS='4',VERIFY_MEMORY_GB='32',VERIFY_CACHE='0',VERIFY_EXCLUSIVE_AUDITS=settings['VERIFY_EXCLUSIVE_AUDITS'])
 record=run('full-verify',['zsh','scripts/refactor/verify.sh'],env=env);(w/'full-verify-complete.json').write_text(json.dumps(record,indent=2))
