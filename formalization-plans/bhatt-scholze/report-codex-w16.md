@@ -6450,3 +6450,117 @@ _tot・filtered 塔・二重模型の実現比較は残る。最後の実現比�
 標準三公理のみ**で成功した（/tmp/bsw16/audit-may-additive.log）。
 全宣言の公理を検査し、sorry・追加公理なし。監査の鍵も返却済み。
 今回の十八本と本報告をコミットし、持ち上げた素体の補助の検証へ続ける。
+
+
+## 103. D79 改訂の界面・Assembly・Shared/A4 への接続（11-13、取り込み点）
+
+### 103.1 本欄と宇宙
+
+**EInfinityPrimeField.{u} p := ULift.{u} (ZMod p)** を、模型に依存しない
+Interface/PrimeField.lean に置いた。EInfinityTheory.{u} の基底環は Type u なので、
+素体をその宇宙へ置くための同じ環の持ち上げである。
+**eInfinityPrimeFieldEquiv** は元の ZMod p との環同型、
+**eInfinityPrimeFieldMap p k** は一般の標数 p の k への標準構造射。
+一般 k を界面の本欄へ戻す変更は行っていない。
+
+界面の **homotopyGroupsOnHo k U n := hoMap U ⋙ additiveCohomologyOnHo k (-n)** を使い、
+powerOp0 は次の型へ変更した。
+
+```lean
+powerOp0 (p : ℕ) [Fact p.Prime] (n : ℤ) :
+  homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n ⟶
+    homotopyGroupsOnHo (EInfinityPrimeField.{u} p) (forget (EInfinityPrimeField.{u} p)) n
+```
+
+通常の可換群値の NatTrans で、全整数 n・全 ho(CAlg) 射に自然。
+_zero は pi0_forget の成分で p 乗を読む等式、_pos は n > 0 の成分が零の等式。
+_discrete・_tot は F_p 上の Frobenius の自己射から誘導する写像との、
+**全整数 n の加法群準同型の等式**であり、coherent な Sp 値の辺を要求しない。
+型は §96.3 の案の素体を同じ宇宙に持ち上げたもの。
+toSpectra とその二つの比較の欄は変更せず、旧 10,216 行も削除していない。
+
+### 103.2 同じ規格化からの実例と一般係数での読み出し
+
+素体の持ち上げに必要な係数計算を、F_p の多項式の等式を標準環準同型で移して示した。
+**mayCyclicNorm_baseField**・**mayBaseFieldAdditivityCoefficient_boundary** から、
+同じ閉元・境界・実作用の証明で **mayBaseFieldDClass_add** を得る。
+これは持ち上げた素体にも使える係数計算の補助であり、一般 k の本欄を増やしていない。
+
+**mayNormalizedClass** は同じ D_i を指定係数 c で規格化し、代表元独立性と加法性を証明する。
+実例では c := ULift.up (mayNu p n : ZMod p) とし、全次数のホモロジー比較で局所化する。
+**mayPrimeFieldPowerZero**・**mayPrimeFieldPowerZero_source**・**mayPrimeFieldPowerZero_pos** が
+任意の宇宙の素体の全関手版と同じ指定演算の引き戻し・正次数消滅を与える。
+
+実例の公開名は **barrattEcclesPowerOp0**・**barrattEcclesPowerOp0_pos**。
+Assembly はこの二つを固定し、powerOp0 と powerOp0_pos の引数を外す。
+残り十九欄のうち冪作用については _zero・_discrete・_tot の三つだけが引数に残る。
+零次の旧 p 乗計算をまだ全次数の P⁰ に同定したとは主張しない。
+
+一般 k の利用者のため、Interface/PowerOperation.lean に
+**EInfinityTheory.restrictHomotopyGroupsIso** と **EInfinityTheory.powerOp0Over** を置いた。
+前者は restrict_forget と restrictD_homologyIso を合成する自然同型。
+後者は素体への制限に本欄を適用し、その自然同型で共役するだけの定義である。
+新しい Sp 値の作用や新しい自然性の仮定を追加しない。
+Interface/ には模型の直接 import・模型の API を使う宣言・[ModelCategory _] の欄を足していない。
+
+### 103.3 drafts の移行
+
+Shared/EInfinityPowerOperation の powerOperationZero は powerOp0Over の成分を
+homotopyCohomology で共役して読む型へ移した。
+離散・Tot の比較も、全整数次数のホモロジー写像と係数比較の成分の等式へ移した。
+強い三出力 powerOperationZero_natTrans・_primeField・_component は、
+本ファイルでは作らず補完へ回すことを明記した。
+それらを要求する他の drafts の参照はなかった。
+
+A4/Perfectoidization の Lemma 8.4(a) の証明の筋は、素体へ制限したホモロジー演算を使う形へ変更。
+同じ shift の作用は可逆、正次数の P⁰ は零、係数比較で H^{-n} の消滅へ戻す。
+二重模型の実現上の Frobenius 比較は A4 の局所補題として、G10 の後に残す。
+Lemma 8.4(a)(b) の主張の型は変更していない。
+A1 の二本・A0・A3 は触っていない。drafts はビルドしていない。
+
+### 103.4 登録候補
+
+本段の新規モジュールは次の十五本。
+
+- EInfinity/Interface/：PrimeField、PrimeFieldMap、PowerOperation
+- EInfinity/BarrattEccles/Theory/：MayPowerOperation
+- EInfinity/PowerOperation/：MayNormBaseField、MayBaseFieldPrimitive、MayBaseFieldNormCoefficient、MayBaseFieldDClassAdditivity
+- 同上：MayNormalizedClasses、MayNormalizedNaturalTransformation、MayNormalizedSourceComparison
+- 同上：MayPrimeFieldLocalization、MayPrimeFieldPositive、MayZeroClassComparison、MayUnitEvaluation
+
+最後の二本は、次の零次の接続に使う同じ類の表示と単位評価の補助。
+新規十五本は 693 行、May*.lean の累計は 3,672 行。
+新設の界面・実例四本は別に計132行（May の数に含めない）。既存四ファイルの差分は別記する。
+本段も約 10,000 行の途中報告・約 20,000 行の外枠より下。
+一般∞の五本の移動候補は、指示どおり元の場所のまま。
+共通入口と全体監査への登録は行っていない。
+
+### 103.5 検証と残り
+
+may-interface-01.log で新しい界面・Assembly と直接の利用者 TheoryInterface のビルドが成功した。
+may-interface-02.log で一般係数の補助・May の公開実例・正次数消滅まで成功した。
+後続の最終 Assembly・単位評価・専用監査の結果は、本節の末尾に追記する。
+既存の長行警告は残し、新規補助の非推奨名・未使用セクション引数は抑制せず修正した。
+
+この取り込み点は界面の型の移行と P⁰・正次数消滅の供給であり、M14 全体の完了ではない。
+残りは零次の p 乗との接続、離散、cosimplicial の top operation と _tot、filtered 塔、
+および G10 の後の二重模型の実現比較。次は零次の同じ単位射の照合から続ける。
+
+
+### 103.6 最終検証・取り込み点
+
+**/tmp/bsw16/may-interface-03.log** で、P⁰ と正次数消滅を固定した Assembly と
+MayUnitEvaluation の対象ビルドが成功した。新規十五本の最終ソースに新しい警告なし。
+Assembly・Theory・依存先の既存の長行警告は残る。
+
+**/tmp/bsw16/audit-may-interface.lean** は **60モジュール・638宣言、標準三公理のみ**で成功した
+（/tmp/bsw16/audit-may-interface.log）。May の全54モジュールと、変更した界面・実例・Assembly を検査した。
+本体に sorry・追加公理なし。Interface/ の模型直接 import と [ModelCategory _] の仮定は追加なし。
+ビルドと監査は別々の一回の鍵で行い、どちらの鍵も返却済み。
+root ビルド・全体監査・入口登録は調整役の取り込み時に委ねる。
+
+**取り込み点**：本節の十五本・界面・Assembly・Shared/A4 の移行と報告をコミットする。
+§100〜§102 と未登録分が重ならないよう、登録候補は各節の一覧を使ってほしい。
+次の零次比較の MayRepeatedZeroInput.lean は未検証の新規下書きとして作業木に残し、
+今回のコミットと監査には含めない。
+凍結の確定連絡はまだなく、検証済みの分を18時前に保存した。
