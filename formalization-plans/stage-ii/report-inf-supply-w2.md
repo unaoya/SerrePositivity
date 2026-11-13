@@ -2399,3 +2399,31 @@ D08は入口表の `.homology' i` という紙の略記を、既存の整数次�
 A01から順に進める。A06・A07の区間評価は第一のまとまりに初めから含めた数学であり、後で「同定だけの追加」に数えない。A12/B01/B02も指定豊穣合成との照合として初めから含める。細部の universe・binder・既存 API 名の elaboration は検証対象で、未検証の型案を検収済み宣言と数えない。一覧外の新しい数学が必要なら、その型と漏れた理由を保存して止める。照合だけの追加枠は現在0/3。
 
 行数は外枠12,500行だけで管理する。§72の予測だけを理由に再び止めない。停止点2で§37.2・§72.2の四行と実測を照合し、閉じた後は§38.2の1・2へ進む。凍結確定の連絡はこの記録時点で未受領。確定後はコミットを控え、型案・依存の紙の確認を続ける。
+
+## 74. 一覧A01の検証と、A02の添字交換の照合
+
+A01の二宣言を `DiagramComparison.FreeProductDiagramHomotopies` に実装し、`43f92578d` に保存した。新規1本36行、累計 **142本8,870行**。個別検査、鍵付き対象ビルド **2,273 jobs** と累計 **1,623宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-74.log`、監査 `/private/tmp/AuditISW2G10HundredFortyTwo.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredfortytwo-modules.txt`。`--wait 3600`、一枚の整理券、実行1,700秒上限で検証の間だけ鍵を使用した。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductDiagramHomotopies
+```
+
+A02のため、既存の積添字の構成と二重図式の構成の**成分の並べ替えだけ**の補題を追加する。追加枠 **1/3**。新しいホモトピーの存在定理ではなく、仮定のホモトピーの同じ成分を二重に評価する。型は以下（`J,K,C` は圏、`C` は Preadditive、`c : ComplexShape ι`）。
+
+```lean
+local notation "E₁" => functorToComplexOfFunctors (J × K) C c
+local notation "E₂" =>
+  (Functor.obj (Functor.whiskeringRight J (K ⥤ HomologicalComplex C c)
+    (HomologicalComplex (K ⥤ C) c)) (functorToComplexOfFunctors K C c) ⋙
+    functorToComplexOfFunctors J (K ⥤ C) c)
+
+def curriedDiagramHomotopy {F G : J ⥤ K ⥤ HomologicalComplex C c}
+    (f g : F ⟶ G)
+    (h : Homotopy ((E₁).map (Functor.uncurry.map f))
+      ((E₁).map (Functor.uncurry.map g))) :
+    Homotopy ((E₂).map f) ((E₂).map g)
+```
+
+置き場所 `HomologicalAlgebra/CurriedDiagramHomotopy.lean`。この記録時点では個別検査中、未コミット・累計には未算入。A02ではこれを `Δ × J` の同じ AW・shuffle のホモトピーへ適用し、各パラメータで存在を選び直さない。停止点2は未完。新しい数学の一覧外追加はない。
