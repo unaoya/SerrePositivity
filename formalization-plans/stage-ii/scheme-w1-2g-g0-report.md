@@ -61,3 +61,51 @@
 この束は G0 の「述語、有限族・一射、基本的な保存則」の区切りである。一般の faithfully flat 射・固有全射から付値判定を供給する十分性、試験付値環の宇宙を移す橋、スキームの v 判定・universally subtrusive 性との比較はまだ今回の本体に含まない。既存の `IsProper.eq_valuativeCriterion` や付値拡大の材料を使う必要があり、完成扱いにしない。
 
 Rydh の構造定理・被覆模型を追加仮定として最終出力に残す案も採っていない。G1・G2 の幾何を 2g-1、G3〜G5 の判定と移送を 2g-2 とする新しい区切りを、以後の報告に使う。
+
+## 次の束の型つき一覧（着手前、2026-11-14）
+
+3.10 経路の承認を受け、G0 の残りの最初の束を以下に定める。以下はこの追記時点では未検証の型案であり、対象ビルド後に結果を追記する。既存 API の型は変えない。
+
+1. `exists_valuationSubring_factor_of_injective_local_base`：V は付値整域、R は局所環、K は体、a:V→R は局所準同型、f:R→K に対し f∘a が単射なら、K の付値部分環 W と局所準同型 b:R→W が存在し、W→K∘b=f、b∘a は忠実平坦。
+2. `exists_valuationSubring_extension_of_injective`：付値整域 V から体 K への単射 i は、K の付値部分環 W を経由し、V→W は忠実平坦。1 の a=id で得る。
+3. `isAffineVCover_of_surjective_of_nil_kernel`：f:A→B が全射で ker(f)≤nilradical A なら IsAffineVCover f。試験付値整域への射が nil な核を消すので、同じ試験環へ持ち上げる。
+4. `isAffineVCover_quotient_of_le_nilradical`：J≤nilradical A なら IsAffineVCover (Ideal.Quotient.mk J)。3 の商への特殊化。
+
+1・2 は一般の flat／proper の十分性に必要な付値環拡大を供給する。3・4 は nilimmersion の付値判定を供給する。どちらも G0 の付値判定の束の中であり、Rydh の細分や模型を存在の仮定で代用しない。法則・特殊化・証明分割は本数で区切らず、200 行を超えれば行数も追記する。
+
+3.10 の採用と外枠の変更：G1・G2 の 2g-1 は **25,000 行**、約 **12,000 行**で止まらず途中報告。2g-2 の外枠は 2g-1 の実測後に決める。G0 の残りの後は G1、G2 と続け、停止点 2g-1 では報告して G3 へ進む。main の凍結は継続し、自分の枝だけにコミットする。
+
+### 続く束の型つき一覧（着手前）
+
+- `exists_valuation_lift_of_faithfullyFlat`：V が付値整域、f:V→B が忠実平坦なら、付値整域 W、e:V→W、l:B→W が存在し、e は忠実平坦、l∘f=e。閉点上の素点から flat going-down で一般点上の素点を選び、その剰余体を前の付値部分環の因子化へ渡す。
+- `isAffineVCover_of_faithfullyFlat`：任意の環準同型 f:A→B が忠実平坦なら IsAffineVCover f。任意の A→V でテンソル積へ底変換し、前の持ち上げを適用する。
+
+この束も G0 の付値持ち上げの十分性であり、有限表示は要求しない。局所化と剰余体の間の式、テンソル積の可換式などの法則は同じ報告に型を追記して使う。
+
+### スキーム側の付値判定の束（着手前の型）
+
+- `IsSchemeVCover (f : X ⟶ Y)`：任意の付値整域 V と k:Spec V→Y に対し、付値整域 W、忠実平坦 e:V→W、l:Spec W→X があり、l≫f=Spec(e)≫k。
+- `isSchemeVCover_specMap_iff (f : A→B)`：IsSchemeVCover (Spec.map f) ↔ IsAffineVCover f。Spec の完全忠実性で同じ環準同型へ戻す。
+- `isSchemeVCover_of_proper_surjective (f : X→Y)`：f が固有・全射なら IsSchemeVCover f。試験付値環の分数体上のファイバーの点を取り、残留体への付値拡大と固有性の付値判定で持ち上げる。始域・終域の affine 性は要求しない。
+
+この構成に伴う Spec の合成則・pullback の可換式・環とスキームの量化の移送は本数を区切らず型を記録する。G1 の Rydh の細分自体にはまだ着手しない。
+
+スキーム側の同じ構成の法則として、`IsSchemeVCover.comp`（g と f の v 判定から f≫g の判定）、`IsSchemeVCover.of_comp`（f≫g の判定から g の判定）、`IsSchemeVCover.baseChange`（実際の Cartesian square の pullback への保存）を供給する。これらは定義済みの付値持ち上げの合成・普遍性の法則であり、別の幾何学的構造定理は加えない。
+
+付随する点の法則 `IsSchemeVCover.surjective` は、上の付値判定を各点の剰余体で試して元のスキームの射の全射性を返す型で供給する。特に `IsSchemeVCover.baseChange` と組み合わせれば全ての底変換後の全射性を得る。
+
+
+## 2026-11-14：付値持ち上げの束の検証結果
+
+数学 `5fb95d17b`（付値拡大・nil・忠実平坦、四ファイル 180 行）と `d902118ed`（スキームの判定・固有全射・合成と底変換・全射性、四ファイル 188 行）を検証した。
+
+- 局所環の体への射を支配する付値部分環の構成を使い、付値基底への射が単射なら拡大が忠実平坦となる。
+- 忠実平坦射の付値持ち上げは、閉点上の素点を取った後、flat going-down で一般点上の素点を選び、その剰余体を同じ付値部分環の構成へ渡した。有限表示・Noether 性は要求しない。
+- 固有全射は分数体上のファイバーの点とその剰余体を使い、付値拡大後に Mathlib の固有性の付値判定を適用した。元のスキームの affine 性を要求していない。
+- 環側とスキーム側の判定は `isSchemeVCover_specMap_iff` で同値。スキーム側の合成・細分・Cartesian な底変換と全射性も閉じた。
+
+新しい八モジュールを入口に登録して `lake build SerrePositivity.AlgebraicGeometry` **4,796 jobs 成功**。別実行の標準監査は **10,676 宣言・標準三公理のみ**。共有鍵 `--wait 3600`、待ちは一つ、実行中だけ保持した。計算上限の引き上げ・sorry・admit・新しい公理はない。
+
+G0 累計は **14 新規モジュール・本体 682 行、入口追加 28 行、合計 710 行**。各宣言の型は型つき一覧へ追加した。200 行を超える単独の宣言・証明分割はない。前記 §5 に未実装と記した nil・忠実平坦・固有全射の十分性とスキーム側の橋は今回供給済み。任意の別宇宙の付値試験への移送の一般定理は作っていないが、既存利用側と同じ宇宙の試験を持つ今回の型は保持しており、最終出力を狭めていない。別宇宙の入口が必要になれば、その実際の型を一覧に追加して供給する。
+
+次の G1 は [2g-1 の実装記録](scheme-w1-2g-1-report.md) の着手前の型つき一覧に従い、特殊化の付値環による実現と、v 判定から特殊化の鎖の持ち上げへの接続から始める。2g-1 自体は未完である。

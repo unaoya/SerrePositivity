@@ -233,3 +233,181 @@ theorem IsAffineVCoverFamily.baseChange
 theorem isAffineVCoverFamily_punit_iff {E : Type u} [CommRing E] (h : A →+* E) :
     IsAffineVCoverFamily (fun _ : PUnit.{u + 1} ↦ E) (fun _ ↦ h) ↔ IsAffineVCover h
 ```
+
+
+## 2026-11-14：付値持ち上げの追加束（検証済み）
+
+数学 `5fb95d17b`・`d902118ed`。以下は各新規ファイルの共通文脈と宣言の型。
+
+### ValuationProbeExtension
+
+41 行。共通文脈：
+
+```lean
+universe u
+variable {V R K : Type u} [CommRing V] [IsDomain V] [ValuationRing V]
+variable [CommRing R] [IsLocalRing R] [Field K]
+```
+
+`exists_valuationSubring_factor_of_injective_local_base`
+
+```lean
+theorem exists_valuationSubring_factor_of_injective_local_base
+    (a : V →+* R) [IsLocalHom a] (f : R →+* K)
+    (ha : Function.Injective (f.comp a)) :
+    ∃ (W : ValuationSubring K) (b : R →+* W),
+      IsLocalHom b ∧ (algebraMap W K).comp b = f ∧ (b.comp a).FaithfullyFlat
+```
+
+`exists_valuationSubring_extension_of_injective`
+
+```lean
+theorem exists_valuationSubring_extension_of_injective (i : V →+* K)
+    (hi : Function.Injective i) :
+    ∃ (W : ValuationSubring K) (e : V →+* W),
+      (algebraMap W K).comp e = i ∧ e.FaithfullyFlat
+```
+
+### AffineVCoverNilImmersion
+
+37 行。共通文脈：
+
+```lean
+universe u
+variable {A B : Type u} [CommRing A] [CommRing B]
+```
+
+`isAffineVCover_of_surjective_of_nil_kernel`
+
+```lean
+theorem isAffineVCover_of_surjective_of_nil_kernel (f : A →+* B)
+    (hf : Function.Surjective f) (hn : RingHom.ker f ≤ nilradical A) : IsAffineVCover f
+```
+
+`isAffineVCover_quotient_of_le_nilradical`
+
+```lean
+theorem isAffineVCover_quotient_of_le_nilradical (J : Ideal A) (hJ : J ≤ nilradical A) :
+    IsAffineVCover (Ideal.Quotient.mk J)
+```
+
+### FaithfullyFlatValuationLift
+
+64 行。共通文脈：
+
+```lean
+universe u
+variable {V B : Type u} [CommRing V] [IsDomain V] [ValuationRing V] [CommRing B]
+```
+
+`exists_valuation_lift_of_faithfullyFlat`
+
+```lean
+theorem exists_valuation_lift_of_faithfullyFlat (f : V →+* B) (hf : f.FaithfullyFlat) :
+    ∃ (W : CommRingCat.{u}) (hW : IsDomain W),
+      letI : IsDomain W
+```
+
+### AffineVCoverFaithfullyFlat
+
+38 行。共通文脈：
+
+```lean
+universe u
+variable {A B : Type u} [CommRing A] [CommRing B]
+```
+
+`isAffineVCover_of_faithfullyFlat`
+
+```lean
+theorem isAffineVCover_of_faithfullyFlat (f : A →+* B) (hf : f.FaithfullyFlat) :
+    IsAffineVCover f
+```
+
+### SchemeVCover
+
+47 行。共通文脈：
+
+```lean
+universe u
+```
+
+`IsSchemeVCover`
+
+```lean
+def IsSchemeVCover {X Y : Scheme.{u}} (f : X ⟶ Y) : Prop :=
+  ∀ (V : CommRingCat.{u}) [IsDomain V] [ValuationRing V] (k : Spec V ⟶ Y),
+    ∃ (W : CommRingCat.{u}) (hW : IsDomain W),
+      letI : IsDomain W := hW
+      ValuationRing W ∧ ∃ (e : V →+* W) (l : Spec W ⟶ X),
+        e.FaithfullyFlat ∧ l ≫ f = Spec.map (CommRingCat.ofHom e) ≫ k
+```
+
+`isSchemeVCover_specMap_iff`
+
+```lean
+theorem isSchemeVCover_specMap_iff {A B : Type u} [CommRing A] [CommRing B]
+    (f : A →+* B) :
+    IsSchemeVCover (Spec.map (CommRingCat.ofHom f)) ↔ IsAffineVCover f
+```
+
+### SchemeVCoverProper
+
+58 行。共通文脈：
+
+```lean
+universe u
+```
+
+`isSchemeVCover_of_proper_surjective`
+
+```lean
+theorem isSchemeVCover_of_proper_surjective {X Y : Scheme.{u}}
+    (f : X ⟶ Y) [IsProper f] [Surjective f] : IsSchemeVCover f
+```
+
+### SchemeVCoverComposition
+
+50 行。共通文脈：
+
+```lean
+universe u
+variable {X Y Z : Scheme.{u}}
+```
+
+`IsSchemeVCover.comp`
+
+```lean
+theorem IsSchemeVCover.comp {f : X ⟶ Y} {g : Y ⟶ Z}
+    (hf : IsSchemeVCover f) (hg : IsSchemeVCover g) : IsSchemeVCover (f ≫ g)
+```
+
+`IsSchemeVCover.of_comp`
+
+```lean
+theorem IsSchemeVCover.of_comp {f : X ⟶ Y} {g : Y ⟶ Z}
+    (h : IsSchemeVCover (f ≫ g)) : IsSchemeVCover g
+```
+
+`IsSchemeVCover.baseChange`
+
+```lean
+theorem IsSchemeVCover.baseChange {X' Y' : Scheme.{u}}
+    {a : X' ⟶ X} {b : X' ⟶ Y'} {f : X ⟶ Y} {g : Y' ⟶ Y}
+    (H : IsPullback a b f g) (hf : IsSchemeVCover f) : IsSchemeVCover b
+```
+
+### SchemeVCoverSurjective
+
+33 行。共通文脈：
+
+```lean
+universe u
+```
+
+`IsSchemeVCover.surjective`
+
+```lean
+theorem IsSchemeVCover.surjective {X Y : Scheme.{u}} {f : X ⟶ Y}
+    (hf : IsSchemeVCover f) : Surjective f
+```
