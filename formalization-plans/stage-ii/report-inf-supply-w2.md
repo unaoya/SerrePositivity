@@ -4591,3 +4591,76 @@ theorem copowerNormalizedHomEquiv_free (W : SSet.{0}) (H : Complex A)
 ### 107.3 残り
 
 B02は未完。今回閉じた全図式の移送と各単体の指定余積生成元の照合を、既存の`normalizedLinearWeightDiagramIso`の元の射と組み合わせて、図式圏の元の線形重みHom同値をA09の同じ自由鎖随伴へつなぐ。その後の指定AW比較・Hom–Tot比較と実豊穣合成の全単体の照合、B03〜B08・C・Dは残る。今回の一般の随伴の式だけでAW合成の等式を済ませたとは扱わない。目標「Dまで進めてください」はactiveのまま。
+
+
+## 108. B02の途中：A12の元の比較射と図式自由鎖Hom随伴の厳密な照合
+
+前回の全図式の正規化Hom移送と指定生成元の照合から続行した。まず`freeLinearWeightDiagramIso`の元の順射を評価へ戻した式を示した。成分交換の単位・余単位を打ち消すと、指定零延長比較・Moore比較・交換単位が残る。次に正規化・零延長比較の元の自然性を使い、係数余積から自由加群への指定同型も含め、`normalizedLinearWeightDiagramIso`の元の順射を点ごとの同じ係数移送に同定した。
+
+この評価公式と前回の全図式のHom両立を合成し、元の図式圏の`normalizedLinearWeightHomEquiv`が、A12の同じ比較射の後で、A09が使う同じ`freeNegativeChainsDiagramAdjunction`のHom同値に一致する式を全単体で閉じた。指定余積生成元を各単体で評価しており、比較射を別の同値で置換していない。
+
+### 108.1 型と数え方
+
+下記はB02の同じ係数移送の証明分割。前提計算枠は§105のB02 3/3、照合枠は全体3/3のまま。新しい独立した前提計算・照合の宣言を追加していない。名前空間はDiagramComparison、`A : Type u`・`[CommRing A]`・`{J : Type v}`・`[Category.{w} J]`を固定する。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeDiagramEvaluation`
+
+```lean
+theorem freeLinearWeightDiagramIso_hom_evaluation (W : J ⥤ SSet.{0}) :
+    complexOfFunctorsToFunctorToComplex.map (freeLinearWeightDiagramIso A W).hom =
+      (pointwiseExtendIso J (ModuleCat A) ComplexShape.embeddingDownNat).hom.app
+        ((normalizedMooreComplex _).obj (freeLinearizedSimplicialWeight A W.flip)) ≫
+      Functor.whiskerRight ((pointwiseMooreIso J (ModuleCat A)).hom.app
+        (freeLinearizedSimplicialWeight A W.flip))
+        (ComplexShape.embeddingDownNat.extendFunctor (ModuleCat A)) ≫
+      (functorComplexExchangeUnitIso J (ModuleCat A) (.up ℤ)).hom.app
+        (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0}))
+```
+
+```lean
+theorem normalizedLinearWeightDiagramIso_hom_evaluation (W : J ⥤ SSet.{0}) :
+    Functor.whiskerRight ((pointwiseMooreIso J (ModuleCat A)).inv.app
+        (linearizedSimplicialWeight A W.flip))
+        (ComplexShape.embeddingDownNat.extendFunctor (ModuleCat A)) ≫
+      (pointwiseExtendIso J (ModuleCat A) ComplexShape.embeddingDownNat).inv.app
+        ((normalizedMooreComplex _).obj (linearizedSimplicialWeight A W.flip)) ≫
+      complexOfFunctorsToFunctorToComplex.map (normalizedLinearWeightDiagramIso A W).hom =
+    Functor.whiskerRight ((pointwiseMooreFunctor J (ModuleCat A)).map
+        (linearizedSimplicialWeightFreeIso A W.flip).hom)
+        (ComplexShape.embeddingDownNat.extendFunctor (ModuleCat A)) ≫
+      (functorComplexExchangeUnitIso J (ModuleCat A) (.up ℤ)).hom.app
+        (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0}))
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LinearWeightFreeHomComparison`
+
+```lean
+theorem normalizedLinearWeightHomEquiv_freeDiagram (W : J ⥤ SSet.{0})
+    (H : CochainComplex (J ⥤ ModuleCat A) ℤ)
+    (f : (functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)).obj
+      (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0})) ⟶ H) :
+    (flipFunctor SimplexCategoryᵒᵖ J (Type u)).map
+        (normalizedLinearWeightHomEquiv A W.flip H
+          ((normalizedLinearWeightDiagramIso A W).hom ≫ f)) ≫
+      Functor.whiskerRight ((pointwiseTruncationGammaIso J (ModuleCat A)).hom.app H)
+        ((Functor.whiskeringRight SimplexCategoryᵒᵖ (ModuleCat A) (Type u)).obj
+          (forget (ModuleCat A))) =
+    (freeNegativeChainsDiagramAdjunction A J).homEquiv (W ⋙ SSet.uliftFunctor.{u,0})
+      (complexOfFunctorsToFunctorToComplex.obj H)
+      ((functorComplexExchangeUnitIso J (ModuleCat A) (.up ℤ)).hom.app
+          (freeNegativeChainsDiagram (A := A) (W ⋙ SSet.uliftFunctor.{u,0})) ≫
+        complexOfFunctorsToFunctorToComplex.map f)
+```
+
+### 108.2 検収と登録
+
+コード **`bbcc4861c`**（2本172行）。個別・結合検査`/private/tmp/isw2-linear-weight-evaluation3.log`・`/private/tmp/isw2-linear-free-hom-comparison3.log`は終了コード0。型の照合は元の随伴の合成単位・後合成・指定生成元評価を明示し、計算上限は変更していない。
+
+鍵付き対象ビルド`/private/tmp/isw2-build123.log`は **2,594 jobs・終了コード0**。新規分だけの監査`/private/tmp/AuditISW2G10B02LinearHom.lean`は **9宣言（3・6）・標準三公理のみ**。共有鍵は返却済み。累計 **228モジュール・13,618行・2,107宣言**。直前の226本の一覧を実ファイルから数え直し、13,446行であることも確認した。新しい一覧は`/private/tmp/isw2-g10-twohundredtwentyeight-modules.txt`。外枠14,500行まで残り882行。
+
+新公理・sorryなし、既存宣言・⑤a・入口・公式監査・mainの変更なし。登録対象は108.1の2本。大きな監査は行っていない。
+
+### 108.3 残り
+
+B02はまだ未完。元の線形重みHomからA09の自由鎖随伴への射の照合は今回閉じた。残るのは、同じAW比較・Hom–Tot比較と、標準成分模型で定めた実豊穣合成の全単体での一致。その後にB03〜B08の指定native切断の族と極限性、Cの標準脚とD(A)輸送、Dの全図式射・指定錐の族・離散加群入口が残る。今回の随伴の照合をAW合成の一致の代用にしない。目標「Dまで進めてください」はactiveのまま。
