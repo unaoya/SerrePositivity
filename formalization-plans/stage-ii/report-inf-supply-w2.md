@@ -3124,7 +3124,9 @@ def intervalTruncEdge (w : H.X (-1)) :
 ```lean
 theorem intervalTruncCycle_value (z : H.X 0) (hz : H.d 0 1 z = 0) :
     H.iCycles 0 ((H.truncLE'XIsoCycles (ComplexShape.embeddingUpIntLE 0)
-      (i
+      (i := 0) (i' := 0) (by simp)
+      ((ComplexShape.boundaryLE_embeddingUpIntLE_iff 0 0).mpr rfl)).hom
+      (intervalTruncCycle A H z hz)) = z
 ```
 
 ```lean
@@ -3159,7 +3161,8 @@ def homotopyIntervalCochainMap (A : Type u) [CommRing A]
 ```lean
 def normalizedIntervalHom {R S : J ⥤ Complex A} (f g : R ⟶ S)
     (h : Homotopy ((E).map f) ((E).map g)) :
-    R ⊗ freeNegativeChainsDiagram (A
+    R ⊗ freeNegativeChainsDiagram (A := A) ((Functor.const J).obj
+      ((SSet.uliftFunctor.{max u v,0}).obj (SSet.stdSimplex.{0}.obj ⦋1⦌))) ⟶ S
 ```
 
 ### 91.2 検収と残り
@@ -3382,7 +3385,11 @@ def normalizedIntervalHomotopyPrePost {R R' S S' : J ⥤ Complex A}
 theorem normalizedIntervalHom_naturality {R R' S S' : J ⥤ Complex A}
     (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S)
     (h : Homotopy ((E).map f) ((E).map g)) :
-    (a ⊗ₘ 𝟙 (freeNegativeChainsDiagram (A
+    (a ⊗ₘ 𝟙 (freeNegativeChainsDiagram (A := A) ((Functor.const J).obj
+      ((SSet.uliftFunctor.{max u v,0}).obj (SSet.stdSimplex.{0}.obj ⦋1⦌))))) ≫
+        normalizedIntervalHom f g h ≫ b =
+      normalizedIntervalHom (a ≫ f ≫ b) (a ≫ g ≫ b)
+        (normalizedIntervalHomotopyPrePost a b f g h)
 ```
 
 ### 93.2 検収
@@ -3603,7 +3610,7 @@ theorem freeTensorDiagramHomIso_target_naturality {Q Q' : J ⥤ Complex A} (f : 
     (cosimplicialHom (freeTensorFrame A W (liftedStandardSimplexParameter J))).map f ≫
       (freeTensorDiagramHomIso.{u,u} A Q' W).hom =
     (freeTensorDiagramHomIso.{u,u} A Q W).hom ≫ (truncatedDoldKanFunctor A).map
-      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A
+      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A := A) W) f)
 ```
 
 
@@ -3631,7 +3638,10 @@ theorem freeProductSectionsHomIso_target_naturality (W : J ⥤ SSet.{u})
 ```lean
 theorem normalizedWeightSectionMap_naturality {Q Q' : J ⥤ Complex A} (f : Q ⟶ Q') :
     (truncatedDoldKanFunctor A).map
-      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A
+      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A := A) W) f) ≫
+        normalizedWeightSectionMap A W Q' φ =
+    normalizedWeightSectionMap A W Q φ ≫ (weightedSectionsFunctor W).map
+      ((Functor.whiskeringRight J (Complex A) SSet.{u}).obj (truncatedDoldKanFunctor A) |>.map f)
 ```
 
 ### 96.2 検収と登録対象
@@ -3655,3 +3665,117 @@ theorem normalizedWeightSectionMap_weight_naturality
 ```
 
 自由テンソル側には既存 `diagramTensorLinearHomEquiv_naturality` の前側の特殊化、自由積側には元の随伴Homの始域自然性と`weightedSectionsUncurry_comp_pre`、中間のAWには既存 `freeProductDiagramAW_naturality` を使う。別の重みの置換や別のHom同値を選ばず、元の二同型の始域自然性を照合してA10と同じ合成で結ぶ方針。
+
+
+## 97. A11完了：元の重みの全射に対する指定比較の自然性
+
+今回のgoal「Dまで進めてください」はactiveのまま。前回のgoal turnはA07〜A10の検証済みコード・報告を保存した進捗で、今回は枝がクリーンで`f594ede20`まであることを確かめてA11へ進んだ。
+
+同じ自由鎖関手に重み射を入れ、自由積・自由テンソルのframe射と指定AWの可換性を束ねた。Γ側は同じ図式Homの前合成、切断側は既存`weightedSectionsPre`。自由テンソルHomには既存の転置の始域自然性とパラメータ同型のテンソル交換則、自由積Homには元の随伴Hom回収式と`weightedSectionsUncurry_comp_pre`を使い、一覧A11の指定射自身の等式を閉じた。
+
+### 97.1 一覧A11の分割の型と枠
+
+`NormalizedTensorHomSourceNaturality`はA11の前提計算 **1/3**。`WeightedAdjunctionSourceNaturality`と`ProductSectionsSourceNaturality`は同じ自由積Hom同型の自然性を段に分けたA11の前提計算 **2/3**。他は一覧A11のHpre・frame射の構成と主張の証明分割。照合枠は全体3/3のまま。既存宣言・計算上限は変えていない。
+
+略記：Eは `functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)`。DiagramHomSourceMapは`A : Type (max u v)`・`J : Type v`・`[SmallCategory J]`。FreeFrameWeightMapsは`A : Type u`・`J : Type v`・`[Category.{w} J]`・`N := freeNegativeChainsDiagramFunctor A J`。他は既存入口と同じ`A : Type u`・`J : Type u`・`[SmallCategory J]`。すべての係数環は`[CommRing A]`。
+
+`DiagramHomSourceMap`
+
+```lean
+def diagramHomSourceMap {P P' : J ⥤ Complex A} (a : P' ⟶ P) (Q : J ⥤ Complex A) :
+    linearHomComplex A ((E).obj P) ((E).obj Q) ⟶ linearHomComplex A ((E).obj P') ((E).obj Q)
+```
+
+```lean
+theorem diagramTensorLinearHomEquiv_source {P P' Q : J ⥤ Complex A}
+    (T : Complex A) (a : P' ⟶ P) (t : P ⊗ (Functor.const J).obj T ⟶ Q) :
+    diagramTensorLinearHomEquiv P' Q T ((a ▷ (Functor.const J).obj T) ≫ t) =
+      diagramTensorLinearHomEquiv P Q T t ≫ diagramHomSourceMap a Q
+```
+
+
+`FreeFrameWeightMaps`
+
+```lean
+def freeProductFrameWeightMap : freeProductFrame A W' P ⟶ freeProductFrame A W P
+```
+
+```lean
+def freeTensorFrameWeightMap : freeTensorFrame A W' P ⟶ freeTensorFrame A W P
+```
+
+```lean
+theorem freeProductFrameAW_weight_naturality (φ : simplicialRingCoefficient.{u} →+* A) :
+    freeProductFrameWeightMap A a P ≫ freeProductFrameAW A W P φ =
+      freeProductFrameAW A W' P φ ≫ freeTensorFrameWeightMap A a P
+```
+
+
+`NormalizedTensorHomSourceNaturality`
+
+```lean
+theorem freeTensorDiagramHomIso_weight_naturality {W W' : J ⥤ SSet.{u}}
+    (w : W' ⟶ W) (Q : J ⥤ Complex A) :
+    (cosimplicialHomMap (freeTensorFrameWeightMap A w (liftedStandardSimplexParameter J))).app Q ≫
+      (freeTensorDiagramHomIso.{u,u} A Q W').hom =
+    (freeTensorDiagramHomIso.{u,u} A Q W).hom ≫ (truncatedDoldKanFunctor A).map
+      (diagramHomSourceMap.{u,u} ((freeNegativeChainsDiagramFunctor A J).map w) Q)
+```
+
+
+`WeightedAdjunctionSourceNaturality`
+
+```lean
+theorem weightedSectionsAdjunction_weight_naturality {W W' : J ⥤ SSet.{u}}
+    (w : W' ⟶ W) (K : SSet.{u}) (H : J ⥤ SSet.{u}) (s : W ⊗ (Functor.const J).obj K ⟶ H) :
+    (weightedSectionsAdjunction W').homEquiv K H ((w ▷ (Functor.const J).obj K) ≫ s) =
+      (weightedSectionsAdjunction W).homEquiv K H s ≫ weightedSectionsPre w H
+```
+
+```lean
+theorem freeWeightedAdjunction_weight_naturality {W W' : J ⥤ SSet.{u}}
+    (w : W' ⟶ W) (K : SSet.{u}) (Q : J ⥤ CochainComplex (ModuleCat A) ℤ)
+    (s : (freeNegativeChainsDiagramFunctor A J).obj (W ⊗ (Functor.const J).obj K) ⟶ Q) :
+    ((weightedSectionsAdjunction W').comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv K Q
+      ((freeNegativeChainsDiagramFunctor A J).map (w ▷ (Functor.const J).obj K) ≫ s) =
+    ((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv K Q s ≫
+      weightedSectionsPre w (Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A)
+```
+
+
+`ProductSectionsSourceNaturality`
+
+```lean
+theorem freeProductSectionsHomIso_weight_naturality {W W' : J ⥤ SSet.{u}}
+    (w : W' ⟶ W) (Q : J ⥤ CochainComplex (ModuleCat A) ℤ) :
+    (cosimplicialHomMap (freeProductFrameWeightMap A w (liftedStandardSimplexParameter J))).app Q ≫
+      (freeProductSectionsHomIso A W' Q).hom =
+    (freeProductSectionsHomIso A W Q).hom ≫
+      weightedSectionsPre w (Q ⋙ SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A)
+```
+
+
+`NormalizedWeightSectionSourceNaturality`
+
+```lean
+theorem normalizedWeightSectionMap_weight_naturality {W W' : J ⥤ SSet.{u}}
+    (w : W' ⟶ W) (Q : J ⥤ Complex A) (φ : simplicialRingCoefficient.{u} →+* A) :
+    (truncatedDoldKanFunctor A).map
+      (diagramHomSourceMap.{u,u} ((freeNegativeChainsDiagramFunctor A J).map w) Q) ≫
+        normalizedWeightSectionMap A W' Q φ =
+    normalizedWeightSectionMap A W Q φ ≫ weightedSectionsPre w (Q ⋙ truncatedDoldKanFunctor A)
+```
+
+### 97.2 検収・登録対象
+
+コード **`08a27be94`**。新規6本284行（DiagramHomSourceMap 29、FreeFrameWeightMaps 45、NormalizedTensorHomSourceNaturality 56、WeightedAdjunctionSourceNaturality 48、ProductSectionsSourceNaturality 49、NormalizedWeightSectionSourceNaturality 57）。個別・結合検査は終了コード0（`/private/tmp/isw2-tensor-hom-source-nat3.log`、`/private/tmp/isw2-weighted-adj-source2.log`、`/private/tmp/isw2-weight-section-source-nat2.log`）。
+
+鍵付き対象ビルドは、最初の4本 **2,657 jobs**・最後の2本 **2,659 jobs**、どちらも終了コード0（`/private/tmp/isw2-build104.log`・`/private/tmp/isw2-build105.log`）。監査は新規分だけで、前者 **24宣言**・後者 **6宣言**、すべて標準三公理のみ（`/private/tmp/AuditISW2G10A11Parts.lean`・`/private/tmp/AuditISW2G10A11Finish.lean`）。共有鍵は返却済み。
+
+累計 **198モジュール・11,960行・1,940宣言**。対象一覧 `/private/tmp/isw2-g10-hundredninetyeight-modules.txt`。上記6本を登録対象へ追加する。外枠14,500行まで残り2,540行。新公理・sorryなし、⑤a・入口・公式監査の変更なし。mainのB3凍結中なので取り込みは行っていない。
+
+### 97.3 報告の型引用の訂正と次
+
+§91〜96の五つの型引用（intervalTruncCycle_value、normalizedIntervalHom、normalizedIntervalHom_naturality、freeTensorDiagramHomIso_target_naturality、normalizedWeightSectionMap_naturality）が名前付き引数の`:=`で途中までになっていたため、既検収ソースの完全な型に直した。Leanの宣言には変更がない。抽出は括弧の深さを見て宣言本体の`:=`と区別する方法にした。
+
+A11まで完了、A12・B/C/D・停止点2は未完。A12では、既存の `normalizedBousfieldKanHom` の二重反対圏の添字と、`liftedClosedDiagram` のAsSmall添字を、同じ`smallBousfieldKanWeightDown`とULift・反転の指定射で接続する。`smallBousfieldKanWeightDown`の現在の宣言は射だけを供給しているため、可逆性の既存道具と同じ射の逆の構成を確認中。これは§73 A12に初めから含めた持ち上げの照合であり、別の同値へ置換しない。
