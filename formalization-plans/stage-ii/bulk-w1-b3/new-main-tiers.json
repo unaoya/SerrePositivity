@@ -4,22 +4,12 @@
     "dependency_tiers": [],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictDiagramEvaluation": {
-    "tier": "Portable",
-    "dependency_tiers": [],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.SmallDiagramShape": {
     "tier": "Portable",
     "dependency_tiers": [],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FullFamilyUncurryIso": {
-    "tier": "Portable",
-    "dependency_tiers": [],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalPostcompositionTriangle": {
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.StrictDiagramEvaluation": {
     "tier": "Portable",
     "dependency_tiers": [],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -76,10 +66,39 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FullFamilyUncurryIso": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.PointShiftInNaturality": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockValues": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexMap": {
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockComposition": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "SharedFoundation"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -111,32 +130,10 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.PointShiftInNaturality": {
-    "tier": "Consumers",
-    "dependency_tiers": [
-      "Consumers"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictCoherentFamilyEvaluation": {
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockValues": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SignedShiftBlockComposition": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "SharedFoundation"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -268,25 +265,24 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDiagram": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
       "Comparison",
-      "Consumers",
       "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBlockCoefficients": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarColumns": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -300,25 +296,23 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SmallStrictNativeLabelSource": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Comparison",
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarGradedFunctor": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictModuleCoherentFamily": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Comparison",
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -338,17 +332,16 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNormalizedGradedFunctor": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Comparison",
-      "Consumers"
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictModuleFamilyEvaluationComparison": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers",
+      "Comparison",
       "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -363,6 +356,7 @@
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarDegreeCofan": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -391,9 +385,9 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictFamilyEvaluationNaturality": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers",
+      "Comparison",
       "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -424,6 +418,7 @@
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarBoundaryFaces": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -431,6 +426,7 @@
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.SimplicialRealization.SmallStrictBarThetaValues": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -473,16 +469,9 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeDiagram": {
-    "tier": "Consumers",
+    "tier": "Comparison",
     "dependency_tiers": [
-      "Consumers",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass": {
-    "tier": "Portable",
-    "dependency_tiers": [
+      "Comparison",
       "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -502,34 +491,6 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalPostcomposeIdentityFamily": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceEdgeTriangleFamily": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceTransportIntervalComparison": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces.PostcompositionIsoEquivalence": {
     "tier": "Portable",
     "dependency_tiers": [
@@ -538,13 +499,6 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.LeftUnstraighteningEdgeLiftFamily": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceTransportRightMappingComparison": {
     "tier": "Portable",
     "dependency_tiers": [
       "Portable"
@@ -579,7 +533,56 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
+  "SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.IntervalPostcompositionTriangle": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalConstantFamily": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.AdjointFunctorsBetweenInfinityCategories.IntervalPostcomposeIdentityFamily": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceEdgeTriangleFamily": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceTransportIntervalComparison": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
   "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.NerveLeftQuillenA": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.LimitsAndColimitsOfSpaces.CosliceTransportRightMappingComparison": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.SimplicialCategories.SpaceValueHomClass": {
     "tier": "Portable",
     "dependency_tiers": [
       "Portable"
@@ -604,13 +607,37 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.SemifreePointComparison": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorEvaluationPostcomposition": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorCompositionFixedTarget": {
+    "tier": "Portable",
+    "dependency_tiers": [
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeTransformationShapeRestriction": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedEvaluation": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers",
       "Portable"
     ],
@@ -619,13 +646,7 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedQuasiIsomorphisms": {
     "tier": "Consumers",
     "dependency_tiers": [
-      "Consumers"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedSemifreeComparison": {
-    "tier": "Consumers",
-    "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -660,13 +681,6 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.FibrationsOverOrdinaryCategories.RelativeFunctorEvaluationPostcomposition": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarColumnNaturality": {
     "tier": "Consumers",
     "dependency_tiers": [
@@ -677,14 +691,8 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarDegreeNaturality": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorCompositionFixedTarget": {
-    "tier": "Portable",
-    "dependency_tiers": [
-      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -733,6 +741,14 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeColumnValues": {
     "tier": "Consumers",
     "dependency_tiers": [
@@ -773,6 +789,7 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeMixedComparison": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -781,6 +798,14 @@
     "tier": "Consumers",
     "dependency_tiers": [
       "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedCosliceBaseNaturality": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -809,7 +834,8 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSimplexCategoryEvaluation": {
     "tier": "Consumers",
     "dependency_tiers": [
-      "Consumers"
+      "Consumers",
+      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -856,14 +882,6 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.TheSliceAndJoinConstructions.ConeTransformationShapeRestriction": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictBarNativeFunctorCocone": {
     "tier": "Consumers",
     "dependency_tiers": [
@@ -893,22 +911,6 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.Cofinality.LeftCofinalUniverseLift": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.HomotopyLimitsAndColimits.WeightedCosliceBaseNaturality": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorOverUniverseNaturality": {
     "tier": "Comparison",
     "dependency_tiers": [
@@ -918,22 +920,6 @@
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
   "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.RelativeFunctorUniversePostNaturality": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransformationEdgeFiberValue": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison",
-      "Portable"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransformationEdgeFiberValueComparison": {
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison",
@@ -964,13 +950,6 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallTransformationEdgeFiberValue": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
   "SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CoherentBar.Retract.NativeVertexInclusion": {
     "tier": "Comparison",
     "dependency_tiers": [
@@ -982,6 +961,14 @@
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ComplexDerivedSemifreeComparison": {
+    "tier": "Consumers",
+    "dependency_tiers": [
+      "Comparison",
+      "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -1096,6 +1083,7 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.ProjectiveOutputResolvedComparison": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers",
       "Portable"
     ],
@@ -1244,14 +1232,14 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaPresheafEvaluationPostcomposition": {
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CovariantRepresentableValueNormalization": {
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafRepresentableEdgeDetection": {
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransformationEdgeFiberValue": {
     "tier": "Comparison",
     "dependency_tiers": [
       "Comparison",
@@ -1259,17 +1247,11 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafRepresentableHomDetection": {
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.TransformationEdgeFiberValueComparison": {
     "tier": "Comparison",
     "dependency_tiers": [
-      "Comparison"
-    ],
-    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
-  },
-  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CovariantRepresentableValueNormalization": {
-    "tier": "Comparison",
-    "dependency_tiers": [
-      "Comparison"
+      "Comparison",
+      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -1290,6 +1272,13 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
+  "SerrePositivity.InfinityCategories.Kerodon.FibrationsOfInfinityCategories.ClassificationOfCocartesianFibrations.SmallTransformationEdgeFiberValue": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.ReversedRepresentableValueTransport": {
     "tier": "Comparison",
     "dependency_tiers": [
@@ -1301,8 +1290,16 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeColimitFamily": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers",
       "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.YonedaPresheafEvaluationPostcomposition": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -1322,6 +1319,14 @@
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafRepresentableEdgeDetection": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison",
+      "Portable"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
   "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.CovariantRepresentableCosliceComparison": {
     "tier": "Comparison",
     "dependency_tiers": [
@@ -1333,6 +1338,13 @@
     "tier": "Consumers",
     "dependency_tiers": [
       "Consumers"
+    ],
+    "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
+  },
+  "SerrePositivity.InfinityCategories.Kerodon.TheYonedaEmbedding.TheYonedaEmbedding.PresheafRepresentableHomDetection": {
+    "tier": "Comparison",
+    "dependency_tiers": [
+      "Comparison"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },
@@ -1389,6 +1401,7 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeProjectiveFront": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -1396,6 +1409,7 @@
   "SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StrictSemifreeProjectiveApex": {
     "tier": "Consumers",
     "dependency_tiers": [
+      "Comparison",
       "Consumers"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
@@ -1552,7 +1566,8 @@
   "SerrePositivity.InfinityCategories.HTT.PresentableInfinityCategories.SetWeightElementsInterval": {
     "tier": "Comparison",
     "dependency_tiers": [
-      "Comparison"
+      "Comparison",
+      "Portable"
     ],
     "rule": "five per-file tiers in dependency order; independent IC files Portable, dependencies on Comparison stay Comparison, actual consumers of implementation or Entrypoints remain Consumers; no existing tier or exception changed"
   },

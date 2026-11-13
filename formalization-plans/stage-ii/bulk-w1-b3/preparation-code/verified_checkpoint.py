@@ -6,10 +6,18 @@ a=json.load(open(w/'attribute-metadata-check.json'));assert not any(a[k] for k i
 t=json.load(open(w/'native-tag-metadata-check.json'));assert all(not v['missing'] and not v['extra'] for v in t.values())
 layer=json.load(open(w/'static-layers.json'));assert not any(v['kind']!='reverse-section' for v in layer['violations']),layer['violations'][:3]
 subprocess.run(['python3','-B',str(w/'check_baseline_edges.py')],check=True);edges=json.load(open(w/'baseline-section-edges.json'));assert all(e['exists_in_frozen_main'] and not e['source_moved_in_b3'] and not e['target_moved_in_b3'] for e in edges)
-for name in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json','attribute-metadata-check.json','native-tag-metadata-check.json','baseline-section-edges.json','delta-collect-complete.json','delta-follow-complete.json','new-main-tiers.json','new-main-foundations.json','owned-private-rules-summary.json']:
+subprocess.run(['python3','-B',str(w/'full_path_table.py')],check=True)
+subprocess.run(['python3','-B',str(w/'make_declaration_table.py')],check=True)
+for name in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json','attribute-metadata-check.json','native-tag-metadata-check.json','baseline-section-edges.json','delta-collect-complete.json','delta-follow-complete.json','new-main-tiers.json','new-main-foundations.json','owned-private-rules-summary.json','declaration-table-summary.json','full-path-summary.json']:
  shutil.copy2(w/name,d/name)
-for name in ['namespace-map.json','namespace-rewrite-map.json','module-map.json','preservation-module-plan.json','owned-comparison-name-map.json','delta-rewrite-status.json','static-layers.json']:
+for name in ['namespace-map.json','namespace-rewrite-map.json','module-map.json','preservation-module-plan.json','owned-comparison-name-map.json','delta-rewrite-status.json','static-layers.json','full-path-table.json']:
  (d/(name+'.gz')).write_bytes(gzip.compress((w/name).read_bytes(),mtime=0))
+
+for name in ['declaration-names.jsonl.gz','declaration-inventory-before.jsonl.gz','declaration-inventory-after.jsonl.gz','declaration-generated-groups.jsonl.gz']:shutil.copy2(w/name,d/name)
+subprocess.run(['python3','-B',str(w/'branch_impact.py')],check=True)
+shutil.copy2(w/'b4-branch-impact.json',d/'b4-branch-impact.json')
+for f in w.glob('b4-*-files.json'):shutil.copy2(f,d/f.name)
+shutil.copy2(w/'B4-README.md',d/'B4-README.md')
 code=d/'preparation-code'
 for p in w.glob('*.py'):shutil.copy2(p,code/p.name)
 report=r/'formalization-plans/stage-ii/report-bulk-w1.md';counts=json.load(open(w/'target-build-complete.json'));pres=json.load(open(w/'preservation-complete.json'))

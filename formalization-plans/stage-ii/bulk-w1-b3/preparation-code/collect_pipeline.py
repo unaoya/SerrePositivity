@@ -16,7 +16,7 @@ for i,paths in enumerate(groups):
 def one(item):
  i,rel=item;dest=w/'delta-captures'/f'{i:03}';tmp=w/'single-captures'/rel[:-5].replace('/','.')
  if tmp.exists():shutil.rmtree(tmp)
- tmp.parent.mkdir(exist_ok=True);log=tmp.with_suffix('.log');start=time.monotonic()
+ tmp.parent.mkdir(exist_ok=True);log=Path(str(tmp)+'.log');start=time.monotonic()
  with log.open('w') as f:p=subprocess.run(['gtimeout','--kill-after=3s','900','python3','-B',str(w/'collect_one.py'),str(b),rel,str(tmp)],env=env,stdout=f,stderr=subprocess.STDOUT)
  if p.returncode:errors.append({'path':rel,'rc':p.returncode,'log':str(log)});print('collect failure',rel,p.returncode,flush=True);return
  capture=tmp/(rel[:-5].replace('/','.')+'.json');d=json.load(open(capture));assert d['source'].encode()==(b/rel).read_bytes();capture.replace(dest/capture.name)

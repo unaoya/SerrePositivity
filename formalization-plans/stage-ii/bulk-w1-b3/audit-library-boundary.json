@@ -1,0 +1,9 @@
+{
+  "audit_modules": [
+    "scripts.audit.bs_power_root_envelope.InitialCoefficient",
+    "scripts.audit.bs_power_root_envelope.Unoriented",
+    "scripts.audit.bs_power_root_envelope.VarpiComparison",
+    "scripts.audit.bs_power_root_envelope.VarpiComparisonUnconditional"
+  ],
+  "library_backimports": []
+}
