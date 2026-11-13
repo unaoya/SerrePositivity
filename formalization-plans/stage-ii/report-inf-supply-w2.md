@@ -2858,3 +2858,11 @@ theorem standardParameterAugmentation_moore_generator (A : Type u) [CommRing A]
 ```
 
 直接の個別検査では既存依存の `.olean` が9本不足したため、必要な既存ソースだけを一時ファイルに結合して検査している。共有鍵の待機は154モジュールの一件のまま。
+
+### 85.8 成分・生成元評価の検収と残り
+
+`FreeChainsCoefficientDegrees`（67行）は `e4d2f29c4` に保存した。鍵付き対象ビルド2,359 jobs、一時監査154モジュール・1,706宣言、標準三公理のみで終了コード0（`/private/tmp/isw2-build85c.log`、`/private/tmp/AuditISW2G10HundredFiftyFour.lean`、対象一覧 `/private/tmp/isw2-g10-hundredfiftyfour-modules.txt`）。検証済み実測 **9,493行**。今回の三つの証明分割で計128行増えた。対象のsorry・新公理なし。既存宣言・⑤aのファイル・入口・公式監査は変更していない。鍵は返却済み。
+
+`StandardParameterAugmentationValues` の結合検査 `/private/tmp/isw2-aug-values-check3.log` は終了コード0。これはまだ対象ビルド・累計監査に含めておらず、上の154本に不算入。
+
+最後の切断の結合検査 `/private/tmp/isw2-last-cut-check11.log` は、前面の恒等射の値で通常の `rw` が定義上の一致を見つけられず、その後の検査でも既定heartbeatに達して終了コード1。零次増大写像の値までの接続を追記したが、最後の切断の補題全体は未完。計算上限は上げず、必要な同じ計算の分割を§14の範囲内で続ける。追加承認を求める停止ではない。A05a・A05・停止点2は未完であり、最後の切断・零次増大写像・A05a・A05の各下書きは未コミット。
