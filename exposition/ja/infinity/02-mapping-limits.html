@@ -56,7 +56,7 @@ def pinchedHom {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} where
 <p>左 pinched 写像空間 \(\mathrm{Hom}^L(x,y)\) は、反対圏の右写像空間の反対として定義している。</p>
 <pre><code>def pinchedHomLeft {X : SSet.{u}} (x y : X _⦋0⦌) : SSet.{u} :=
   (pinchedHom (X := X.op) (SSet.opObjEquiv.symm y) (SSet.opObjEquiv.symm x)).op</code></pre>
-<p>Kan 性と \(\pi_0\) の計算は、反対圏を通して右の場合から導かれる（Core/MappingSpaceLeft）。これは第 1 章の R5 で望ましいとした「双対で導く」形の良い例である。左右の写像空間が同値であること（<code>pinchedHomLeftRightEquivalence</code>）は、区間模型を経由して F1/MappingSpaceModelEquivalence で示されている。Core ではなく F1 にある点に注意する。</p>
+<p>Kan 性と \(\pi_0\) の計算は、反対圏を通して右の場合から導かれる（Core/MappingSpaceLeft）。右の場合から双対で導く形になっている。左右の写像空間が同値であること（<code>pinchedHomLeftRightEquivalence</code>）は、区間模型を経由して F1/MappingSpaceModelEquivalence で示されている。Core ではなく F1 にある点に注意する。</p>
 
 <!-- ============================================================ -->
 <h2>2. Kan 複体の言葉</h2>
@@ -200,19 +200,7 @@ def IsEssentiallySurjective {X Y : SSet.{u}} (f : X ⟶ Y) : Prop :=
 
 <!-- ============================================================ -->
 <h2>7. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R8　F1 と F1B の間でファイルが丸ごと複製されている（重要）</p>
-<p>左右の写像空間の比較を追っていたところ、<code>F1/MappingSpaceIntervalComparison.lean</code> と <code>F1B/KanSectionMappingSpaceIntervalComparison.lean</code> が、名前空間（<code>KanSection</code>）と import の違いを除いて同一であることに気づいた。全体を機械的に調べると、正規化した本文が完全に一致する組が <b>17 組</b>（重複分 1,678 行）あり、すべて F1 と F1B の組だった（F1B 側は <code>KanSection*</code> という名前）。レーンを分けたときに複製したものと思われる。改名を伴うほぼ同一のものを含めると、さらに多い可能性がある。F1B 側を消して F1 側を参照させるのが、最も安全で効果がはっきりしたリファクタである。第 3〜4 章で F1・F1B を読むときに、全体を詳しく調べる。</p>
-</div>
-<div class="box refactor">
-<p class="label">R9　写像空間の基本結果の置き場所</p>
-<p>PinchedHom/ には定義と頂点の記述しかなく、Kan 性と \(\pi_0\) は Core/MappingSpace* に、左右の比較は F1/MappingSpaceModelEquivalence にある。写像空間に関する基本的な結果は一か所（たとえば <code>MappingSpace/</code>）にまとめたい。第 0 章で見た「Core → PinchedHom」という逆向きの依存も、これで解消する。</p>
-</div>
-<div class="box refactor">
-<p class="label">R10　ホモトピー同値の三つの言い方</p>
-<p>Kan 複体の間では <code>IsSimplicialHomotopyEquivalence</code> と <code>IsQCatEquivalence</code> が同値で、一般の射には <code>IsPrecompositionEquivalence</code> がある。今のところ使い分けは妥当だが、それぞれの補題（合成、二対三、二対六）が別々に証明されている（EquivalenceCalculus、FullyFaithfulCalculus、PrecompositionEquivalence）。片方から他方へ移す補題を整え、計算規則を一方にまとめる余地がある。優先度は低い。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

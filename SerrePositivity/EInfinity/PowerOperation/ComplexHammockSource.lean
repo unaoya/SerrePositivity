@@ -1,0 +1,98 @@
+module
+
+public import SerrePositivity.EInfinity.ComplexLimits.RightFrames
+public import SerrePositivity.EInfinity.SimplicialLocalization.ModelHammockLocalization
+public import SerrePositivity.EInfinity.SimplicialLocalization.WeakNerveInverts
+public import SerrePositivity.EInfinity.ComplexLimits.OrdinaryDerivedSource
+public import SerrePositivity.KST.LocalizingInvariants.LocalizationFactorization
+
+/-!
+# 元の全複体の hammock の実局所化と既存 D(A) への比較
+
+DAG XIII §2.2 の native な降下への前段。同じ実射影モデルと右 frame の族を使う。
+比較の同値性はまだ主張せず、元の導来源を延長した比較と指定二胞体を作る。
+-/
+
+@[expose] public noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.PowerOperation
+open CategoryTheory HomologicalComplex
+open scoped Simplicial
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization
+open SerrePositivity.InfinityCategories.Project.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.HA.ModelCategoryComparison
+open SerrePositivity.InfinityCategories.Project.DerivedCategories (derivedInfinityCategory)
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories
+open IsomorphismsAndIsofibrations (isInvertibleEdge_congr)
+variable (A : Type u) [CommRing A]
+
+/-- 構成済みの実射影弱同値を持つ、全複体の同じ相対圏。 -/
+def complexRelativeCategory : RelativeCategory.{u + 1} := by
+  let := projectiveModelCategory A
+  exact modelRelativeCategory (Complex A)
+
+/-- 宇宙の表示だけを忘れる同じ通常の複体関手。 -/
+abbrev complexRelativeDown : (complexRelativeCategory A).category ⥤ Complex A := AsSmall.down
+
+/-- 同じ全複体の hammock の native nerve。 -/
+abbrev complexHammockNerve := kanHammockNerve (complexRelativeCategory A)
+
+/-- 同じ hammock への指定局所化写像。 -/
+abbrev complexHammockSource := hammockLocalizationNerveMap (complexRelativeCategory A)
+
+lemma complexHammockSource_isLocalization :
+    IsLocalization (complexHammockSource A) (weakNerveEdges (complexRelativeCategory A)) := by
+  let := projectiveModelCategory A
+  have := projectiveModelCategory_cofibrantlyGenerated A
+  have := hasFunctorialFactorization_cofibration_trivialFibration
+    (projectiveGeneratingCofibrations A) (projectiveGeneratingTrivialCofibrations A)
+  exact modelHammock_isLocalization (rightFrameFamily A)
+
+/-- 異なる Hom 宇宙の通常図式を、同じ全複体の元の図式へ写す。 -/
+def complexRelativeNerveDown : nerve (complexRelativeCategory A).category ⟶ nerve (Complex A) where
+  app _ := ↾fun X => ((complexRelativeDown A).mapComposableArrows _).obj X
+
+lemma complexRelativeNerveDown_mk₁ {X Y : (complexRelativeCategory A).category} (f : X ⟶ Y) :
+    (complexRelativeNerveDown A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f) =
+      ComposableArrows.mk₁ ((complexRelativeDown A).map f) :=
+  ComposableArrows.ext₁ rfl rfl (by simp [complexRelativeNerveDown])
+
+/-- 元の通常導来源を、同じ宇宙表示の相対圏上で読む。 -/
+def complexRelativeDerivedSource :
+    nerve (complexRelativeCategory A).category ⟶ derivedInfinityCategory A :=
+  complexRelativeNerveDown A ≫ complexOrdinaryDerivedSource A
+
+lemma complexRelativeDerivedSource_inverts :
+    InvertsEdges (complexRelativeDerivedSource A) (weakNerveEdges (complexRelativeCategory A)) := by
+  apply weakNerveEdges_inverts_of_arrows (complexRelativeCategory A)
+  intro X Y f hf
+  let := projectiveModelCategory A
+  have hq : QuasiIso ((complexRelativeDown A).map f) := hf
+  have h := complexOrdinaryDerivedSource_map_weak A ((complexRelativeDown A).map f) hq
+  apply (isInvertibleEdge_congr ?_).mp h
+  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+    (ComposableArrows.mk₁ ((complexRelativeDown A).map f)) = _
+  change (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+    (ComposableArrows.mk₁ ((complexRelativeDown A).map f)) =
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+      ((complexRelativeNerveDown A).app (Opposite.op ⦋1⦌) (ComposableArrows.mk₁ f))
+  rw [complexRelativeNerveDown_mk₁]
+
+/-- 全圏局所化の普遍性で作る、既存 D(A) への実比較。 -/
+def complexHammockDerivedComparison : complexHammockNerve A ⟶ derivedInfinityCategory A :=
+  KST.LocalizingInvariants.localizationDescend _ _ (complexHammockSource_isLocalization A)
+    (complexRelativeDerivedSource A) (complexRelativeDerivedSource_inverts A)
+
+/-- 比較は元の全複体の導来源へ、指定全関手の同型で戻る。 -/
+def complexHammockDerivedComparison_sourceIso :
+    FunctorIso (complexHammockSource A ≫ complexHammockDerivedComparison A)
+      (complexRelativeDerivedSource A) :=
+  KST.LocalizingInvariants.localizationDescendIso _ _ (complexHammockSource_isLocalization A)
+    (complexRelativeDerivedSource A) (complexRelativeDerivedSource_inverts A)
+
+end SerrePositivity.EInfinity.PowerOperation

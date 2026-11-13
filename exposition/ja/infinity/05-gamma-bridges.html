@@ -101,29 +101,13 @@ lemma coherentComparison_isQCatEquivalence :
 <tr><td>HomotopyLimits/BousfieldKan*、Weighted*、Space*、Cone*、Cocone*</td><td class="num">約 150</td><td></td><td>γ3</td></tr>
 <tr><td>HomotopyLimits/Quillen*</td><td class="num">34</td><td></td><td>γ4</td></tr>
 <tr><td>HomotopyLimits/Specified*</td><td class="num">104</td><td></td><td>指定した余錐の分岐・三角形のデータ（γ3 の余極限側の内部）</td></tr>
-<tr><td>HomotopyLimits/Local*、Sigma*、Sifted*</td><td class="num">約 90</td><td class="num">約 4,400＋</td><td>Bousfield 局所化と P<sub>Σ</sub>（本来は第 6 章の内容。R16）</td></tr>
+<tr><td>HomotopyLimits/Local*、Sigma*、Sifted*</td><td class="num">約 90</td><td class="num">約 4,400＋</td><td>Bousfield 局所化と P<sub>Σ</sub>（本来は第 6 章の内容）</td></tr>
 <tr><td>HomotopyLimits/ 全体</td><td class="num">1,127</td><td class="num">97,468</td><td></td></tr>
 </table></div>
 
 <!-- ============================================================ -->
 <h2>6. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R16　HomotopyLimits に presentable の素材が入っている</p>
-<p>局所対象・S-同値・強飽和性（Local*、N-4 a〜e）と、P<sub>Σ</sub>・sifted 余極限（Sigma*、Sifted*、N-4 g）が HomotopyLimits/ に置かれている。担当レーン（N）の作業場所がそのままディレクトリになったためで、内容は HTT §5.5 の presentable の理論（第 6 章、F2/Presentable の範囲）に属する。γ 層（古典との橋）から切り離して、<code>Presentable/</code> または <code>Localization/</code> に移すのが自然である。</p>
-</div>
-<div class="box refactor">
-<p class="label">R17　条件付きの API が無条件の定理に追い越されている</p>
-<p>F2/SpaceLimitShapes の <code>HasSpaceLimitsOfShape K</code>（「形 \(K\) の空間値図式はすべて極限を持つ」という仮定）と、それを仮定にとる <code>presheafInfinity_hasLimit_of_spaceLimitsOfShape</code> などが残っている。しかし現在は <code>hasLimit_coherentSpaceDiagram</code> によって、任意の小さい形について無条件に成り立つ。この仮定を一般の定理から導き、条件付きの版を削除するか単なる系にするのがよい（3 ファイルが使用）。並行作業で、先に条件付きの版を作り、後から無条件の版が別の場所で完成したことの名残と思われる。</p>
-</div>
-<div class="box refactor">
-<p class="label">R18　入口と命名</p>
-<ul>
-  <li><code>HomotopyLimits.lean</code> はモジュールの docstring がなく、1,147 個の import を並べているだけである。γ3・γ4 の主定理を示す入口が監査スクリプト（5,477 個の <code>#check</code>）しかない。</li>
-  <li><code>quillenCfBottomEndpoint_wrong</code> は「ある対象が端点 0 の対象ではない」という否定の命題だが、名前からは内容が読めない（たとえば <code>not_quillenCfEndpointObjects_zero_inr</code>）。</li>
-  <li><code>kanDiagramCoherentNerve</code>（strict な図式を coherent な図式に変える γ の基本構成）が F1/ にある。</li>
-</ul>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

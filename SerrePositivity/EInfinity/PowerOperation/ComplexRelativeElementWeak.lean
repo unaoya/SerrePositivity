@@ -1,0 +1,58 @@
+module
+
+public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementRoofMaps
+public import SerrePositivity.EInfinity.PowerOperation.ComplexRelativeElementPinchedFamily
+
+/-!
+# 元の全複体の相対屋根と native な pinched 族の弱同値性
+
+DAG XIII §2.2 の native な降下への前段。同じ正規化屋根の弱同値性を、
+全要素圏の実同型と AsSmall の実同型を通して運ぶ。
+-/
+
+@[expose] public noncomputable section
+set_option backward.isDefEq.respectTransparency false
+set_option backward.isDefEq.respectTransparency.types false
+universe u
+namespace SerrePositivity.EInfinity.PowerOperation
+open CategoryTheory HomotopicalAlgebra Hammock
+open SerrePositivity.DifferentialGraded SerrePositivity.EInfinity.ComplexLimits
+open SerrePositivity.EInfinity.SimplicialLocalization
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheHomotopyTheoryOfKanComplexes
+open SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.MorphismSpaces
+open SerrePositivity.InfinityCategories.Kerodon.KanComplexes.TheExInfinityFunctor
+open SerrePositivity.SimplicialModel
+variable (A : Type u) [CommRing A] (X Y : Complex A)
+
+lemma complexRelativeElementRoofMap_weak :
+    IsWeakHomotopyEquivalence
+      (complexRelativeElementRoofMap A ((framedLimitProbeFunctor A).obj X) Y) := by
+  let := projectiveModelCategory A
+  have hi := (isPrecompositionEquivalence_of_iso
+    (AsSmallComparison.colimitIso (weakEquivalences (Complex A))
+      ((framedLimitProbeFunctor A).obj X) Y).symm).isWeakHomotopyEquivalence
+  apply hi.cancel_right
+  have h := (isPrecompositionEquivalence_of_iso
+    (complexRelativeElementIndexIso A X Y)).isWeakHomotopyEquivalence.comp
+      (complexNormalizedTensorRoof_weak A X Y)
+  exact (complexRelativeElementRoofMap_image A X Y).symm ▸ h
+
+lemma complexRelativeElementHammockPinchedMap_weak :
+    IsWeakHomotopyEquivalence
+      (complexRelativeElementHammockPinchedMap A ((framedLimitProbeFunctor A).obj X) Y) := by
+  have hu := FrameHom.AnodyneWeakDetection.isWeakHomotopyEquivalence
+    (exInfinityUnit.app
+      (SerrePositivity.InfinityCategories.Kerodon.AdjointFunctors.Localization.colimitGraph
+        (complexRelativeCategory A).weakEquivalences
+        ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))
+        ((complexRelativeUp A).obj Y)))
+    (SSet.anodyneExtensions.Q_inverts _ (exInfinityUnit_anodyne _))
+  change IsWeakHomotopyEquivalence
+    ((complexRelativeElementRoofMap A ((framedLimitProbeFunctor A).obj X) Y ≫
+      exInfinityUnit.app _) ≫ kanHammockHomPinchedMap (complexRelativeCategory A)
+        ((complexRelativeUp A).obj ((framedLimitProbeFunctor A).obj X))
+        ((complexRelativeUp A).obj Y))
+  exact ((complexRelativeElementRoofMap_weak A X Y).comp hu).comp
+    (kanHammockHomPinchedMap_weak _ _ _)
+
+end SerrePositivity.EInfinity.PowerOperation

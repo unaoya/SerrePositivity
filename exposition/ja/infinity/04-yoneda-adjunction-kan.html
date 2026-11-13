@@ -21,7 +21,7 @@
   <li><b>F1 側</b>（straightening を使う）：前層 ∞ 圏と Yoneda 埋め込み。Hom 関手は twisted arrow の straightening として作る。</li>
   <li><b>F1B 側</b>（straightening を使わない）：随伴、局所化と反射的部分圏、cofinality、Kan 拡張、通常の圏論との比較。</li>
 </ul>
-<p>F1B は「推移的にも straightening に依存しない」という規則のもとで書かれている。その副作用が R8 の複製である（<a href="r8-duplication.html">記録</a>）。</p>
+<p>F1B は「推移的にも straightening に依存しない」という規則のもとで書かれている。その副作用がコードの複製である（<a href="../../../research/infinity-refactor-audit/r8-duplication.html">記録</a>）。</p>
 
 <!-- ============================================================ -->
 <h2>1. 前層 ∞ 圏</h2>
@@ -73,7 +73,7 @@ def representablePresheafInfinity {C : SSet.{u}} [Quasicategory C] (c : C _⦋0�
 <div class="table-wrap"><table>
 <tr><th>内容</th><th>Lean</th><th>場所</th></tr>
 <tr><td>随伴 ⇒ 写像空間のホモトピー同値 \(\mathrm{Map}_Y(Fx,y)\simeq\mathrm{Map}_X(x,Gy)\)</td><td><code>pinchedMap_isSimplicialHomotopyEquivalence</code></td><td>F1B/AdjunctionPinchedSpaces（区間模型版は AdjunctionMappingSpaces）</td></tr>
-<tr><td>随伴 ⇒ ホモトピー圏の随伴</td><td><code>QCatAdjunction.toHoAdjunction</code></td><td>Stable/AdjunctionHomotopyCategory（R14）</td></tr>
+<tr><td>随伴 ⇒ ホモトピー圏の随伴</td><td><code>QCatAdjunction.toHoAdjunction</code></td><td>Stable/AdjunctionHomotopyCategory</td></tr>
 <tr><td>通常の随伴 ⇔ nerve の随伴</td><td><code>kanNonempty_adjunction_iff_nerveAdjunction</code></td><td>F1B/KanNerveAdjunctionReflection</td></tr>
 </table></div>
 <p>ホモトピー 2-圏での定義は扱いやすい一方で、「関手 ∞ 圏の中の随伴」や「随伴の空間」のような高次の情報は含まない。必要になるのは写像空間の同値までであり、それは上の表のように定理として得られる。</p>
@@ -164,25 +164,13 @@ K\times_C C_{/c}\longrightarrow K\xrightarrow{F_0}D
 <tr><td>F1B/Localization、Reflective*</td><td class="num">6</td><td class="num">584</td><td>局所化、反射的部分圏</td></tr>
 <tr><td>F1B/Cofinal*、Initial*</td><td class="num">29</td><td class="num">2,464</td><td>cofinality、Quillen A</td></tr>
 <tr><td>F1B/Unit*</td><td class="num">46</td><td class="num">4,869</td><td>随伴の単位と comma 圏</td></tr>
-<tr><td>F1B/Kan*（KanSection*・KanNerve* を含む）</td><td class="num">556</td><td class="num">46,941</td><td>Kan 拡張、Kan 複体の補題、古典比較、複製（R8）が混在</td></tr>
+<tr><td>F1B/Kan*（KanSection*・KanNerve* を含む）</td><td class="num">556</td><td class="num">46,941</td><td>Kan 拡張、Kan 複体の補題、古典比較、複製が混在</td></tr>
 </table></div>
 <p>本当に小さいのは「定義と主定理」の部分で、随伴・局所化・反射的部分圏・cofinality を合わせても約 5,000 行しかない。F1B の大部分は Kan 拡張の存在の組み立てである。</p>
 
 <!-- ============================================================ -->
 <h2>9. リファクタの候補</h2>
-
-<div class="box refactor">
-<p class="label">R13　接頭辞 <code>Kan</code> の二重の意味</p>
-<p>F1B では、556 ファイルの名前が <code>Kan</code> で始まる。しかしこれは「Kan 拡張」（KanLeft*、KanRight*、KanGlobal*）、「Kan 複体・Kan fibration」（KanFiber*、KanEquivalence*）、「レーン内の作業名」（KanSection*、KanScaffold*、KanCocartesian*）が混ざったものである。宣言名にも <code>kanNonempty_adjunction_iff_nerveAdjunction</code> のように、Kan 拡張と無関係なのに <code>kan</code> が付いたものがある。少なくともディレクトリは <code>KanExtension/</code>、<code>NerveComparison/</code> などに分け、宣言名の <code>kan</code> 接頭辞は意味のあるものだけに残したい。</p>
-</div>
-<div class="box refactor">
-<p class="label">R14　随伴の基本補題の置き場所</p>
-<p><code>QCatAdjunction.toHoAdjunction</code>（ホモトピー圏への随伴）が Stable/AdjunctionHomotopyCategory にある。随伴の定義（F1B/Adjunction）の直後に置くべき基本的な結果である。R2（<code>IsColimitCone</code> が Stable にある）と同じ型の問題。</p>
-</div>
-<div class="box refactor">
-<p class="label">R15　密度定理の置き場所</p>
-<p>「任意の前層は表現可能前層の余極限」（<code>presheafElementsColimitCocone_isColimit</code>）が F2/Ind/ElementsDiagram にある。Ind とは独立した前層の基本定理なので、F1 の前層・Yoneda の層に置くのが自然。</p>
-</div>
+<p>リファクタの候補は形式化の側の台帳 <a href="../../../formalization-plans/refactor-ledger.md">formalization-plans/refactor-ledger.md</a> で管理する（2026-11-12 に移した）。この節にあった記述の原文は <a href="../../../research/infinity-refactor-audit/box-texts.md">research/infinity-refactor-audit/box-texts.md</a>。</p>
 
 <h2>この章で押さえること</h2>
 <ol class="checks">

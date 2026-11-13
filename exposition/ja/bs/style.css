@@ -83,3 +83,18 @@ td.ok { color: var(--ok); font-weight: 600; white-space: nowrap; }
 td.todo { color: var(--warn); font-weight: 600; white-space: nowrap; }
 td.part { color: var(--accent); font-weight: 600; white-space: nowrap; }
 td.no { color: var(--muted); white-space: nowrap; }
+
+/* 項目ごとの見出しと、主張・Lean・証明の囲み（2026-11-12） */
+h4.item { color: var(--fg, inherit); font-size: 1.02rem; margin: 2rem 0 0.4rem; padding-bottom: 0.15rem; border-bottom: 1px solid var(--rule); }
+h4.item + .box { margin-top: 0.5rem; }
+.box.claim { border-left-color: var(--accent); }
+.box.proof { border-left-color: var(--muted); font-size: 0.95em; }
+.box.lean { font-size: 0.93em; }
+.box.claim + .box, .box.lean + .box, .box.proof + .box { margin-top: 0.5rem; }
+
+/* 項目の確認のラベル（build_items.py が地図から付ける） */
+.vtag { display: inline-block; font-size: 0.72rem; font-weight: 600; padding: 0 0.45em; margin-left: 0.4em; border-radius: 3px; border: 1px solid currentColor; vertical-align: 0.1em; white-space: nowrap; }
+.vtag.v-ok { color: var(--ok); }
+.vtag.v-part { color: var(--accent); }
+.vtag.v-no { color: var(--warn); }
+.vtag.v-supp { color: var(--muted); }
