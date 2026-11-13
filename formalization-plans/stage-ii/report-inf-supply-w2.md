@@ -3779,3 +3779,95 @@ theorem normalizedWeightSectionMap_weight_naturality {W W' : J ⥤ SSet.{u}}
 §91〜96の五つの型引用（intervalTruncCycle_value、normalizedIntervalHom、normalizedIntervalHom_naturality、freeTensorDiagramHomIso_target_naturality、normalizedWeightSectionMap_naturality）が名前付き引数の`:=`で途中までになっていたため、既検収ソースの完全な型に直した。Leanの宣言には変更がない。抽出は括弧の深さを見て宣言本体の`:=`と区別する方法にした。
 
 A11まで完了、A12・B/C/D・停止点2は未完。A12では、既存の `normalizedBousfieldKanHom` の二重反対圏の添字と、`liftedClosedDiagram` のAsSmall添字を、同じ`smallBousfieldKanWeightDown`とULift・反転の指定射で接続する。`smallBousfieldKanWeightDown`の現在の宣言は射だけを供給しているため、可逆性の既存道具と同じ射の逆の構成を確認中。これは§73 A12に初めから含めた持ち上げの照合であり、別の同値へ置換しない。
+
+
+## 98. A12の途中：指定AsSmall重みとHom添字の可逆な移送
+
+既存 `smallBousfieldKanWeightDown` の順射は変更せず、over圏の構造射と全射を元の`AsSmall.up`で持ち上げる逆を構成した。up・downの二合成は厳密な関手の等式で、全次数で同じoverの射列を保つ。その指定重み同型の前合成を、既存`weightedSectionsPre`の二逆則で切断の同型へ送る部品を作った。
+
+同時に、図式複体のAsSmall.downによる制限で、元の線形Hom複体を同じコチェイン成分のup・downで移す同型を作った。微分との可換性は既存`δ_map`による。対象ごとの任意のHom同値は選ばない。
+
+### 98.1 同じ一覧A12の証明分割の型
+
+下記は§73 A12に含めたAsSmall・ULiftとΓ Homの照合の分割であり、一覧外の新しい数学のまとまりではない。前提計算枠・照合枠は追加で使っていない。SmallOverLift・SmallBousfieldKanWeightIsoは`J : Type`・`[SmallCategory J]`、WeightedRestrictionIsoは`I : Type u`・`[SmallCategory I]`・`{W W' : I ⥤ SSet.{u}}`、AsSmallLinearHomは`A : Type u`・`[CommRing A]`・`J : Type`・`[SmallCategory J]`。
+
+`SmallOverLift`
+
+```lean
+def smallOverLift (j : AsSmall.{u} J) : Over ((AsSmall.down : AsSmall.{u} J ⥤ J).obj j) ⥤ Over j
+```
+
+```lean
+theorem smallOverLift_down (j : AsSmall.{u} J) :
+    smallOverLift j ⋙ Over.post (AsSmall.down : AsSmall.{u} J ⥤ J) = 𝟭 _
+```
+
+```lean
+theorem smallOverDown_lift (j : AsSmall.{u} J) :
+    Over.post (AsSmall.down : AsSmall.{u} J ⥤ J) ⋙ smallOverLift j = 𝟭 _
+```
+
+
+`SmallBousfieldKanWeightIso`
+
+```lean
+instance smallBousfieldKanWeightDown_isIso : IsIso (smallBousfieldKanWeightDown.{u} J)
+```
+
+```lean
+def smallBousfieldKanWeightIso :
+    bousfieldKanWeight (AsSmall.{u} J) ≅
+      (AsSmall.down : AsSmall.{u} J ⥤ J) ⋙ bousfieldKanWeight J ⋙ SSet.uliftFunctor.{u,0}
+```
+
+```lean
+theorem smallBousfieldKanWeightIso_hom :
+    (smallBousfieldKanWeightIso.{u} J).hom = smallBousfieldKanWeightDown J
+```
+
+
+`WeightedRestrictionIso`
+
+```lean
+def weightedSectionsWeightIso (e : W ≅ W') (H : I ⥤ SSet.{u}) :
+    weightedSections W' H ≅ weightedSections W H
+```
+
+```lean
+theorem weightedSectionsWeightIso_hom (e : W ≅ W') (H : I ⥤ SSet.{u}) :
+    (weightedSectionsWeightIso e H).hom = weightedSectionsPre e.hom H
+```
+
+
+`AsSmallLinearHom`
+
+```lean
+def asSmallComplexRestriction :
+    CochainComplex (J ⥤ ModuleCat.{u} A) ℤ ⥤ CochainComplex (AsSmall.{u} J ⥤ ModuleCat.{u} A) ℤ
+```
+
+```lean
+def asSmallHomCochainEquiv (P Q : CochainComplex (J ⥤ ModuleCat.{u} A) ℤ) (n : ℤ) :
+    Cochain P Q n ≃ₗ[A]
+      Cochain ((asSmallComplexRestriction A J).obj P) ((asSmallComplexRestriction A J).obj Q) n
+```
+
+```lean
+def asSmallLinearHomIso (P Q : CochainComplex (J ⥤ ModuleCat.{u} A) ℤ) :
+    linearHomComplex A P Q ≅
+      linearHomComplex A ((asSmallComplexRestriction A J).obj P) ((asSmallComplexRestriction A J).obj Q)
+```
+
+### 98.2 検収と登録対象
+
+コード **`ae5bd1dcf`**（最初の3本103行）・**`7e8efb382`**（AsSmallLinearHom 59行）。個別・結合検査 `/private/tmp/isw2-small-bk-weight-iso2.log`、`/private/tmp/isw2-weighted-restriction-iso1.log`、`/private/tmp/isw2-as-small-linear-hom2.log` は終了コード0。計算上限は上げていない。
+
+鍵付き対象ビルドは **1,686 jobs**・**1,841 jobs**、いずれも終了コード0（`/private/tmp/isw2-build106.log`・`/private/tmp/isw2-build107.log`）。監査は新規分だけ：最初の3本 **13宣言**、最後の1本 **13宣言**、すべて標準三公理のみ（`/private/tmp/AuditISW2G10A12Lift.lean`・`/private/tmp/AuditISW2G10A12Hom.lean`）。鍵は返却済み。
+
+累計 **202モジュール・12,122行・1,966宣言**。対象一覧 `/private/tmp/isw2-g10-twohundredtwo-modules.txt`。上記4本を登録対象に追加する（DiagramComparison3本、KerodonのHomotopyLimitsAndColimits1本）。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。外枠14,500行まで残り2,378行。mainのB3凍結中なので、枝内でのコミットだけを行った。
+
+### 98.3 A12の残りとDまでの継続
+
+A12の指定射・同値性はまだ閉じていない。次は同じ正規化BK Homの係数重みを、既存 `normalizedLinearWeightFreeIso`、`normalizedMooreMapIso`、`pointwiseExtendIso`・`mapExtendIso` の指定射で、AsSmall添字の自由鎖図式へ接続する。そのΓ Homへ既存A09の指定比較を適用し、元のMoore反転と単体集合のop、今回の指定重み同型、既存の実Γ Hom図式の同型で `liftedClosedDiagram` の反転BK Holimへ戻す。射の等式と同値性は別々に検証する。
+
+その後に一覧Bの指定豊穣合成との等式・native切断の族・極限性、Cの標準脚とD(A)への輸送、Dの全図式射・指定錐の族・離散加群入口が残る。goal「Dまで進めてください」はactiveのままで、A11や今回の部品を完了条件に置き換えていない。停止点2の完了報告ではない。
