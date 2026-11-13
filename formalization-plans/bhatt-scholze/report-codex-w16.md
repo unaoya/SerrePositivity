@@ -8137,3 +8137,375 @@ L09a・L09の累計 **1,183行**、改訂MayのM14全体 **6,249行**。
 1,000行の途中報告は済み、次は2,000行で報告する。τと境界の相殺は未証明。
 最新のBS-W16 §30に従い、M15・G12は⑤dへ移ったので⑤aから進めない。
 引継ぎ対象の既存の紙の報告は変更しない。mainへの取り込みも行わない。
+
+## 117. 混合角の削除後の出力列（L09a続行）
+
+`/tmp/bsw16/check-corner-sign.py` で全射・隣接非退化の語と混合角を列挙した。
+m=1〜4、q=1〜3、色数1〜3の **9,536例**で、交換後に中間頂点を削除した各色の
+出力列が一致し、BF符号とテンソル境界符号の積が反対になることを確認した。
+これは符号のLean証明の代用にしない。
+C18の列の一致自体は混合角の仮定が要らないので、
+`/tmp/bsw16/check-corner-trace.py` で同じ向きの隣接辺も含む全経路を別に点検した。
+
+```lean
+def deletedTrace {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) : List (Fin r × Fin (q + 1)) :=
+  List.ofFn (fun j => (label s v (k.succAbove j), s.vertical (k.succAbove j)))
+
+deletedTrace_swapSteps {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (a b : Fin (m + q)) (hab : b.val = a.val + 1) :
+  deletedTrace (s.swapSteps a b) v b.castSucc = deletedTrace s v b.castSucc
+```
+
+既存の `horizontal_swapSteps`・`vertical_swapSteps` を同じ省略頂点の補集合上で使う。
+新しいBE作用ではなく、L09aの境界の二項を対応させるための有限列の照合である。
+
+### 117.1 頂点削除を色の面番号へ運ぶ型（C19・C20）
+
+C18は同向きの辺も含む550例で削除後の経路が一致した。
+`check-corner-trace.py` の最初の点検では同向きの辺まで対称差で反転して失敗したため、
+二つの位置の**交換**による像へ直した。Leanの `swapSteps` もこの交換を使う。
+
+`/tmp/bsw16/check-color-erasure.py` で、長さ0〜6・色数1〜3の全語、
+全ての色と範囲外も含む削除位置について、C20の式を点検してからLeanへ入る。
+C19の列はその位置を `succAbove` で飛ばす同じ操作。
+
+```lean
+eraseIdx_ofFn {β : Type*} {N : ℕ} (f : Fin (N + 1) → β) (k : Fin (N + 1)) :
+  (List.ofFn f).eraseIdx k.val = List.ofFn (fun j => f (k.succAbove j))
+selectColor_eraseIdx {r : ℕ} {β : Type*} (c : Fin r) (l : List (Fin r × β)) (k : ℕ) :
+  selectColor c (l.eraseIdx k) =
+    if (l[k]?.map Prod.fst) = some c then
+      (selectColor c l).eraseIdx (selectColor c (l.take k)).length
+    else selectColor c l
+```
+
+削除される色のfiber内の面番号は、元の頂点より前に出た同色の個数である。
+
+### 117.2 出力の面の位置を一つの経路の頂点へまとめる型（C21・C22）
+
+長さ0〜6、色数1〜3の全ての語で、色と色内順位の組を元の位置へ戻す写像が
+全位置を一回ずつ覆い、逆の色と先行同色数も一致することを点検した。
+Leanでは既存の `Finset.orderIsoOfFin` と `Equiv.sigmaFiberEquiv` を合成する。
+
+```lean
+colorPositionEquiv {m q r : ℕ} (s : Cut m q) (u : Surjection.Word r (m + 1)) :
+  (Σ a : Fin r, Fin (outputDegree s u a + 1)) ≃ Fin (m + q + 1)
+outputBoundaryPositionEquiv {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  OutputBoundaryIndex u q ≃ Σ s : Cut (r + d) q, Fin (r + d + q + 1)
+```
+
+前者の正方向は各色の `orderEmbOfFin`、逆の色は `label s u.val k` そのもの。
+零となる境界項を添字から先に消さず、零次の色の唯一の面番号も残す。
+
+### 117.3 出力の角交換の対合（C23〜C25）
+
+m=0〜5、q=0〜4の全経路と全指定頂点で、内部の前後の辺の交換が二回で戻ることを
+点検してから実装する。同向きの辺では元の経路のまま、両端でも恒等とする。
+
+```lean
+def swapAtVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Cut m q :=
+  if h : 0 < k.val ∧ k.val < m + q then
+    s.swapSteps (cornerLeftEdge k h) (cornerRightEdge k h) else s
+swapAtVertex_involutive {m q : ℕ} (k : Fin (m + q + 1)) :
+  Function.Involutive (fun s : Cut m q => swapAtVertex s k)
+vertexCornerPerm (m q : ℕ) : Equiv.Perm (Σ _ : Cut m q, Fin (m + q + 1))
+outputCornerPerm {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Equiv.Perm (OutputBoundaryIndex u q)
+outputCornerPerm_involutive {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Function.Involutive (outputCornerPerm u q)
+```
+
+これは**全境界項のτではない**。混合角以外に残る固定点の境界項は零とは主張せず、
+係数の文字削除・入力の面に対応させる段を別に残す。
+
+### 117.4 実際の色の出力列の削除の型（C26〜C28）
+
+C26〜C28は§117・§117.1の点検済みの列の式を切断へ特殊化する。
+先行同色数がその色の範囲内であることも、同じ26,430例の点検で保持した。
+
+```lean
+vertexRank s v c k :=
+  (selectColor c ((List.ofFn (fun i => (label s v i, s.vertical i))).take k.val)).length
+deletedVerticesList s v k c :=
+  if label s v k = c then (verticesList s v c).eraseIdx (vertexRank s v c k)
+  else verticesList s v c
+
+deletedVerticesList_eq_selectColor {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (k : Fin (m + q + 1)) (c : Fin r) :
+  deletedVerticesList s v k c = selectColor c (deletedTrace s v k)
+deletedVerticesList_swapSteps {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + q)) (hab : b.val = a.val + 1)
+    (c : Fin r) :
+  deletedVerticesList (s.swapSteps a b) v b.castSucc c =
+    deletedVerticesList s v b.castSucc c
+vertexRank_lt_length {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (k : Fin (m + q + 1)) :
+  vertexRank s v (label s v k) k < (verticesList s v (label s v k)).length
+```
+
+### 117.5 昇順fiberの面番号の型（C29・C30）
+
+N=0〜8の全ての部分集合の各昇順位置で、「前の元の数＝順位」を点検してからLeanへ入る。
+
+```lean
+card_filter_lt_orderEmbOfFin {α : Type*} [LinearOrder α] (t : Finset α) {N : ℕ}
+    (h : t.card = N) (j : Fin N) :
+  (t.filter (fun x => x < t.orderEmbOfFin h j)).card = j.val
+colorPositionEquiv_rank {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  ((colorPositions s u.val a).filter (fun k => k < colorPositionEquiv s u ⟨a, j⟩)).card = j.val
+```
+
+### 117.6 列の順位と面番号の一致の型（C31〜C33）
+
+§117.1の26,430例と§117.2の1,227語の順位点検から、列の先行同色数と
+有限集合の順位が一致する式を使う。C31は範囲外のkも含む点検の式の長さである。
+
+```lean
+selectColor_take_ofFn_length {r N : ℕ} {β : Type*} (f : Fin N → Fin r × β)
+    (c : Fin r) (k : ℕ) :
+  (selectColor c ((List.ofFn f).take k)).length =
+    (Finset.univ.filter (fun i => i.val < k ∧ (f i).1 = c)).card
+vertexRank_eq_card {m q r : ℕ} (s : Cut m q) (v : Fin (m + 1) → Fin r)
+    (c : Fin r) (k : Fin (m + q + 1)) :
+  vertexRank s v c k = ((colorPositions s v c).filter (fun i => i < k)).card
+vertexRank_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  vertexRank s u.val a (colorPositionEquiv s u ⟨a, j⟩) = j.val
+```
+
+### 117.7 同じ指定面と頂点列の型（C34〜C36）
+
+正次数0〜4（元の頂点数2〜6）、終域次数0〜3の全ての弱単調写像と全ての削除位置で、
+標準面との合成と頂点列の一文字削除が一致することを点検してからLeanへ入る。
+
+```lean
+simplexVertexList {n q : ℕ} (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) : List (Fin (q + 1))
+simplexVertexList_injective (n q : ℕ) :
+  Function.Injective (fun f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌ => simplexVertexList f)
+simplexVertexList_delta {n q : ℕ}
+    (f : (⦋n + 1⦌ : SimplexCategory) ⟶ ⦋q⦌) (j : Fin (n + 2)) :
+  simplexVertexList (SimplexCategory.δ j ≫ f) = (simplexVertexList f).eraseIdx j.val
+simplexVertexList_face {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) :
+  simplexVertexList (face s u a) = verticesList s u.val a
+```
+
+面の一致をホモトピーで済ませず、元の単体圏の射の一致へ戻すための有限計算。
+
+### 117.8 指定した出力面の列（C37〜C40）
+
+C37〜C39は、§117.2の順位と§117.1の削除の点検の同じ式を指定の面番号で読んだもの。
+C40は§117.7の標準面の点検を正次数で述べ直す。始域の等式による移送は定義評価。
+
+```lean
+vertexRank_symm_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (k : Fin (m + q + 1)) :
+  vertexRank s u.val (label s u.val k) k = ((colorPositionEquiv s u).symm k).2.val
+label_colorPositionEquiv {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1)) :
+  label s u.val (colorPositionEquiv s u ⟨a, j⟩) = a
+deletedTrace_at_outputFace {m q r : ℕ} (s : Cut m q)
+    (u : Surjection.Word r (m + 1)) (a : Fin r) (j : Fin (outputDegree s u a + 1))
+    (c : Fin r) :
+  selectColor c (deletedTrace s u.val (colorPositionEquiv s u ⟨a, j⟩)) =
+    if c = a then (verticesList s u.val a).eraseIdx j.val else verticesList s u.val c
+simplexVertexList_boundaryFace {n q : ℕ} (hn : 0 < n)
+    (f : (⦋n⦌ : SimplexCategory) ⟶ ⦋q⦌) (j : Fin (n + 1)) :
+  simplexVertexList (boundaryFace n hn j ≫ f) = (simplexVertexList f).eraseIdx j.val
+simplexVertexList_cast_source {n n' q : ℕ} (h : n = n')
+    (f : (⦋n'⦌ : SimplexCategory) ⟶ ⦋q⦌) :
+  simplexVertexList (eqToHom (congrArg SimplexCategory.mk h) ≫ f) = simplexVertexList f
+```
+
+### 117.9 混合角と固定点の型（C41〜C43）
+
+m=0〜5、q=0〜4の3,829個の指定頂点付き経路で、非固定点と内部の異向きの二辺が
+ちょうど一致することを先に点検した。
+
+```lean
+swapSteps_eq_self_iff {m q : ℕ} (s : Cut m q) (a b : Fin (m + q)) :
+  s.swapSteps a b = s ↔ (a ∈ s.val ↔ b ∈ s.val)
+MixedVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Prop :=
+  ∃ h : 0 < k.val ∧ k.val < m + q,
+    cornerLeftEdge k h ∈ s.val ↔ cornerRightEdge k h ∉ s.val
+swapAtVertex_ne_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  swapAtVertex s k ≠ s ↔ MixedVertex s k
+mixedVertex_swapAtVertex_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  MixedVertex (swapAtVertex s k) k ↔ MixedVertex s k
+```
+
+ここでの固定点は「出力の角交換」の固定点であり、全体のτの固定点とは区別する。
+
+## 118. 全境界の有限な対応候補を点検（L09a続行）
+
+`/tmp/bsw16/check-boundary-pairing.py` に、経路の指定頂点の次の対応を独立に書いた。
+水平・水平（端点で水平辺の場合も含む）はゼロ長の区間を消して係数の文字削除へ、
+垂直・垂直（端点も含む）は垂直辺を一本消して入力面へ、混合角は前後の辺を交換する。
+水平次数0の余分な係数添字、入力次数0の入力面添字、総次数0の出力添字は固定する。
+逆は、係数位置で水平なゼロ長区間を挿入、入力面の指定レベルで垂直辺を挿入する。
+
+m=0〜5、q=0〜4の **6,070添字**で二回の対応が恒等になることを確認。
+さらにm=0〜4、q=0〜3、色数1〜3の全射・隣接非退化の語について、
+`cutSign`・`deletionCoefficient`・テンソルの境界のKoszul符号・入力面の負号を保ち、
+重複した出力頂点を零とする独立な計算で **38,322項**が反対の値になった。
+これからこの候補をLeanで構成する。有限点検だけからτや境界の等式を宣言しない。
+
+### 118.1 分岐の型（C44〜C46）
+
+```lean
+inductive BoundaryVertexKind
+  | horizontal | vertical | mixed | isolated
+boundaryVertexKind {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : BoundaryVertexKind
+boundaryVertexKind_eq_mixed_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .mixed ↔ MixedVertex s k
+boundaryVertexKind_eq_isolated_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .isolated ↔ m = 0 ∧ q = 0
+```
+
+C44は前後の辺の所属の判定、C45・C46は上記6,070添字の分岐を点検した条件。
+
+### 118.2 水平境界に対応する一頂点の区間（C47・C48）
+
+m=0〜5、q=0〜5の全ての区間長の列で、一頂点のfiberと零長区間の条件を点検してから
+Leanへ入る。区間の非空性と既存の経路の頂点の単射性から証明する。
+
+```lean
+intervalPositions_card_eq_one_iff {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  (intervalPositions s i).card = 1 ↔ lo s i = hi s i
+interval_gap_eq_zero_iff {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  hi s i - lo s i = 0 ↔ (intervalPositions s i).card = 1
+```
+
+### 118.3 語に依らない境界添字と種類の分割（C49・C50）
+
+§118の6,070添字の点検の各分岐を、その種類の部分型に分ける。
+有限の直和への分割は、各指定頂点を一回だけ保持する。
+
+```lean
+abbrev MarkedCut (m q : ℕ) := Σ _ : Cut m q, Fin (m + q + 1)
+abbrev BoundaryVertexOfKind (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b}
+boundaryVertexPartitionEquiv (m q : ℕ) : MarkedCut m q ≃
+  BoundaryVertexOfKind m q .horizontal ⊕ (BoundaryVertexOfKind m q .vertical ⊕
+    (BoundaryVertexOfKind m q .mixed ⊕ BoundaryVertexOfKind m q .isolated))
+abbrev UniversalBoundaryIndex (m q : ℕ) :=
+  MarkedCut m q ⊕ ((Fin (m + 1) × Cut (m - 1) q) ⊕ (Fin (q + 1) × Cut m (q - 1)))
+boundaryBalanceIndexEquiv {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  BoundaryBalanceIndex u q ≃ UniversalBoundaryIndex (r + d) q
+```
+
+最後の同値は出力面の位置の同値を直和へ運ぶだけで、元の境界項の型を変更しない。
+
+### 118.4 端点・内部の判定の評価（C51〜C53）
+
+§118の全指定頂点の分岐の点検と同じ形で、定義を次の式へ評価する。
+
+```lean
+boundaryVertexKind_zero {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  boundaryVertexKind s 0 =
+    if (⟨0, hN⟩ : Fin (m + q)) ∈ s.val then .horizontal else .vertical
+boundaryVertexKind_last {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  boundaryVertexKind s (Fin.last (m + q)) =
+    if (⟨m + q - 1, by omega⟩ : Fin (m + q)) ∈ s.val then .horizontal else .vertical
+boundaryVertexKind_interior {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (h : 0 < k.val ∧ k.val < m + q) :
+  boundaryVertexKind s k =
+    if cornerLeftEdge k h ∈ s.val then
+      if cornerRightEdge k h ∈ s.val then .horizontal else .mixed
+    else if cornerRightEdge k h ∈ s.val then .mixed else .vertical
+```
+
+### 118.5 一頂点のfiberと隣接辺（C54〜C56）
+
+有限単調写像（始域次数0〜5、終域次数0〜3）の全ての指定頂点で、
+fiberが一頂点であることと両側の厳密な増分の条件を点検してからLeanへ入る。
+水平辺の増分自体は、§118の全経路の既存の辺の向きの点検でも確認している。
+
+```lean
+mem_iff_horizontal_lt {m q : ℕ} (s : Cut m q) (a : Fin (m + q)) :
+  a ∈ s.val ↔ s.horizontal a.castSucc < s.horizontal a.succ
+monotone_fiber_singleton_iff {N M : ℕ} (f : Fin (N + 1) →o Fin (M + 1))
+    (k : Fin (N + 1)) :
+  (∀ j, f j = f k → j = k) ↔
+    (∀ a : Fin N, a.succ = k → f a.castSucc < f k) ∧
+    (∀ a : Fin N, a.castSucc = k → f k < f a.succ)
+HorizontalVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) : Prop :=
+  (∀ a : Fin (m + q), a.succ = k → a ∈ s.val) ∧
+  (∀ a : Fin (m + q), a.castSucc = k → a ∈ s.val)
+horizontal_fiber_singleton_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  (∀ j, s.horizontal j = s.horizontal k → j = k) ↔ HorizontalVertex s k
+```
+
+総次数零では左右の辺の条件は空となる点を保持し、零次の余分な係数添字の分岐を潰さない。
+
+### 118.6 水平境界の判定と隣接辺の型（C57〜C60）
+
+§118の全指定頂点の分岐の点検と§118.5のfiberの点検を、同じ左右の辺の条件で述べる。
+
+```lean
+horizontalVertex_interior_iff {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (h : 0 < k.val ∧ k.val < m + q) :
+  HorizontalVertex s k ↔ cornerLeftEdge k h ∈ s.val ∧ cornerRightEdge k h ∈ s.val
+horizontalVertex_zero_iff {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  HorizontalVertex s 0 ↔ (⟨0, hN⟩ : Fin (m + q)) ∈ s.val
+horizontalVertex_last_iff {m q : ℕ} (s : Cut m q) (hN : 0 < m + q) :
+  HorizontalVertex s (Fin.last (m + q)) ↔
+    (⟨m + q - 1, by omega⟩ : Fin (m + q)) ∈ s.val
+boundaryVertexKind_eq_horizontal_iff {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .horizontal ↔ 0 < m + q ∧ HorizontalVertex s k
+```
+
+### 118.7 水平境界と零長区間の型（C61〜C63）
+
+§118の全指定頂点の点検では、水平に分類した頂点の区間は零長であり、水平次数は正。
+§118.2のfiberの点検と同じ条件を合わせる。
+
+```lean
+horizontalVertex_iff_card_eq_one {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  HorizontalVertex s k ↔ (intervalPositions s (s.horizontal k)).card = 1
+boundaryVertexKind_eq_horizontal_gap {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) :
+  boundaryVertexKind s k = .horizontal ↔
+    0 < m + q ∧ hi s (s.horizontal k) - lo s (s.horizontal k) = 0
+horizontal_kind_pos {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .horizontal) : 0 < m
+```
+
+### 118.8 検証済みの区切りと2,000行の途中報告
+
+§117〜§118.7の17モジュール、計 **1,031行**を対象ビルドで検証した。
+`CornerTraces`・`VertexErasure`・`BoundaryPositions`・`CornerInvolution`・`DeletedVertices`・
+`FiberRanks`・`VertexRanks`・`FaceVertexLists`・`BoundaryVertexLists`・`CornerFixedPoints`・
+`BoundaryKinds`・`IntervalSingletons`・`BoundaryPartition`・`BoundaryKindValues`・
+`SingletonFiberSteps`・`HorizontalVertexKinds`・`HorizontalSingletons`。
+名前の接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。次の登録候補一覧はこの17本。
+
+専用監査 `/tmp/bsw16/audit-m14-boundary-fibers.lean` は
+**17モジュール・164宣言・標準三公理のみ**。
+対象ビルドは `/tmp/bsw16/m14-horizontal-singletons-01.log` などに成功を確認。
+新規ソースにsorry・追加公理0、警告も解消。rootや全体監査は回していない。
+
+この時点でL09a・L09の累計 **2,214行**、改訂MayのM14全体 **7,280行**。
+2,000行を越えた途中報告は停止せずチャットでも行った。次は3,000行で報告する。
+全体のτ、BFの境界の相殺・微分の等式はまだ証明していない。
+水平な端点の挿入の同値へ続ける。
+
+### 118.9 水平端点の挿入の同値の型（C64〜C66）
+
+§118の6,070添字の往復の点検のうち、水平な始点・終点を挿入する分岐を使う。
+既存の `BarrattEccles.horizontalInsertionEquiv` へ、固定した頂点の条件を付ける。
+
+```lean
+fixedMarkedCutEquiv {m q : ℕ} (b : BoundaryVertexKind) (k : Fin (m + q + 1)) :
+  {s : Cut m q // boundaryVertexKind s k = b} ≃
+    {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = k}
+horizontalFirstFaceEquiv (m q : ℕ) : Cut m q ≃
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧ t.2 = 0}
+horizontalLastFaceEquiv (m q : ℕ) : Cut m q ≃
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧
+    t.2 = Fin.last (m + 1 + q)}
+```
