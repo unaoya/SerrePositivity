@@ -8017,3 +8017,123 @@ m=0〜4、色数1〜3、全ての語・接頭部・位置の5,384例でこの分
 R01・R02の検証済み8本と本報告をコミットして判断を待つ。
 L09aのτ・符号の相殺・微分の等式はまだ証明していない。
 BE作用・operadの法則・Tot・界面は変更せず、G10の部品も作っていない。
+
+## 116. C04とL09a再開（11-14未明、BS-W16 §29）
+
+C04を§115.1の型そのままで実装する。§115の5,384例の点検を先行確認として使う。
+`PrefixCaesuras.prefixPosition` と `caesura_prefix_iff` を置き、元の語のcaesuraを保持する。
+L09a・L09内の有限組合せは数の枠を撤廃する最新指示に従う。
+追加の型と有限点検をその都度記録し、行数1,000ごとに停止せず報告する。
+BE作用・operad・Tot・界面や別のまとまりの新しい主張の停止規則は維持する。
+
+累計は、L09aの既存境界データ五本246行とR01・R02八本607行の **853行** から数える。
+L09aのために新設した有限組合せのファイルも全て含める。
+mainは凍結中なので取り込まず、自枝で対象ビルド・小さい専用監査だけを行う。
+
+### 116.1 次の有限計算と型
+
+`/tmp/bsw16/check-terminal-endpoints.py` で、接頭切断の全ての区間長から
+復元切断のlo・hiを独立に計算して比較した（m=0〜5、q=0〜4）。
+次のC05・C06は、有限順序の区間fiberの最小・最大で定義したlo・hiの特徴づけ。
+
+```lean
+lo_eq_of_bound {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) (n : ℕ)
+    (j : Fin (m + q + 1)) (hj : s.horizontal j = i) (hv : (s.vertical j).val = n)
+    (hb : ∀ k, s.horizontal k = i → n ≤ (s.vertical k).val) : lo s i = n
+hi_eq_of_bound {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) (n : ℕ)
+    (j : Fin (m + q + 1)) (hj : s.horizontal j = i) (hv : (s.vertical j).val = n)
+    (hb : ∀ k, s.horizontal k = i → (s.vertical k).val ≤ n) : hi s i = n
+```
+
+所属する頂点での上下界は、この特徴づけの証明分割として置く。
+
+### 116.2 端点の界の型（C07〜C09）
+
+上記の区間長による917例の点検で、それぞれの区間の全頂点が次の界を満たすことも確認した。
+`terminalPrefixVertex p k hk` は位置kを同じ値の接頭頂点として読む記法。
+
+```lean
+terminal_lo_lower_bound {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = prefixPosition p i) :
+  lo s i ≤ ((terminalExtend m q p s).vertical k).val
+terminal_hi_upper_bound {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (hip : i.val < p.val) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = prefixPosition p i) :
+  ((terminalExtend m q p s).vertical k).val ≤ hi s i
+terminal_vertical_of_horizontal_gt {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) (hip : p < i) (k : Fin (m + (q + 1) + 1))
+    (hc : (terminalExtend m q p s).horizontal k = i) :
+  (terminalExtend m q p s).vertical k = Fin.last (q + 1)
+```
+
+C07〜C09は色・区間の有限なfiberと端点の評価であり、BE作用の新しい主張ではない。
+
+### 116.3 端点の復元式の型（C10〜C13）
+
+§116.1の917例で次の等式を確認してからLeanへ入る。
+
+```lean
+lo_terminalExtend_prefix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) :
+  lo (terminalExtend m q p s) (prefixPosition p i) = lo s i
+hi_terminalExtend_prefix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (p.val + 1)) (hip : i.val < p.val) :
+  hi (terminalExtend m q p s) (prefixPosition p i) = hi s i
+hi_terminalExtend_at {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q) :
+  hi (terminalExtend m q p s) p = q + 1
+endpoints_terminalExtend_suffix {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) (hip : p < i) :
+  lo (terminalExtend m q p s) i = q + 1 ∧ hi (terminalExtend m q p s) i = q + 1
+```
+
+L09a・L09の累計が1,000行を越えたところで、停止せずチャットでも途中報告した。
+この時点ではC04とlo・hiの特徴づけが検証済み、復元区間の界以降を対象ビルド中。
+τ・符号の相殺は未証明。C05〜C13は端点の有限計算に限っている。
+
+### 116.4 元の語のcaesuraを保持する符号データ（C14〜C17）
+
+次の式では、接頭部のcaesuraに置き換えず、元の語vのcaesuraを使う。
+`prefixIndexOfLE p i h` は値iをFin(p+1)へ読む記法。
+
+```lean
+restoredLo p s i := if h : i ≤ p then lo s (prefixIndexOfLE p i h) else q + 1
+restoredHi p s i := if h : i < p then hi s (prefixIndexOfLE p i h.le) else q + 1
+restoredLength p s v i := restoredHi p s i - restoredLo p s i +
+  if Surjection.Caesura v i then 1 else 0
+restoredSignExponent p s v :=
+  (∑ i, ∑ j, if i < j ∧ v j < v i then
+    restoredLength p s v i * restoredLength p s v j else 0) +
+  ∑ i, if Surjection.Caesura v i then restoredHi p s i else 0
+
+lo_terminalExtend {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) : lo (terminalExtend m q p s) i = restoredLo p s i
+hi_terminalExtend {m q : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (i : Fin (m + 1)) : hi (terminalExtend m q p s) i = restoredHi p s i
+intervalLength_terminalExtend {m q r : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (v : Fin (m + 1) → Fin r) (i : Fin (m + 1)) :
+  intervalLength (terminalExtend m q p s) v i = restoredLength p s v i
+cutSign_terminalExtend {m q r : ℕ} (p : Fin (m + 1)) (s : Cut p.val q)
+    (v : Fin (m + 1) → Fin r) :
+  cutSign (terminalExtend m q p s) v = (-1 : ℤ) ^ restoredSignExponent p s v
+```
+
+C14・C15は917例の端点点検の一括した式。
+C16・C17も、以下の符号点検を先行してから実装に入る。
+元の語を持つ数値の式であり、新しいBE作用やオペラッドの法則は定義しない。
+
+### 116.5 検証済みの区切り（停止せず続行）
+
+C04と端点・符号データの五本を検証した。`PrefixCaesuras` 42行、`IntervalExtrema` 57行、
+`TerminalIntervalBounds` 90行、`TerminalEndpoints` 64行、`TerminalSignData` 77行、計330行。
+符号指数の式はm=0〜3、q=0〜3、色数1〜3の全ての語で **8,206例**一致。
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.TerminalSignData` 成功。
+専用監査は **5モジュール・47宣言・標準三公理のみ**、sorry・追加公理0。
+ログは `/tmp/bsw16/m14-terminal-sign-data-02.log` と
+`/tmp/bsw16/audit-m14-terminal-sign.log`。
+登録候補はこの五本（名前は全て `SerrePositivity.EInfinity.SimplexCuts.` の下）。
+
+L09a・L09の累計 **1,183行**、改訂MayのM14全体 **6,249行**。
+1,000行の途中報告は済み、次は2,000行で報告する。τと境界の相殺は未証明。
+最新のBS-W16 §30に従い、M15・G12は⑤dへ移ったので⑤aから進めない。
+引継ぎ対象の既存の紙の報告は変更しない。mainへの取り込みも行わない。
