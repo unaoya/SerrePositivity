@@ -1,6 +1,8 @@
 from pathlib import Path
 import json,gzip,shutil,subprocess,datetime
-w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');d=r/'formalization-plans/stage-ii/bulk-w1-b3';base=json.load(open(w/'baseline.json'));assert subprocess.check_output(['git','rev-parse','main'],cwd=r,text=True).strip()==base['frozen_main']
+w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');d=r/'formalization-plans/stage-ii/bulk-w1-b3';base=json.load(open(w/'baseline.json'))
+from check_frozen_main import check as check_frozen_main
+check_frozen_main()
 for f in ['target-build-complete.json','moved-audits-complete.json','preservation-complete.json','alias-check-complete.json']:assert (w/f).exists(),f
 subprocess.run(['python3','-B',str(w/'check_target_coverage.py')],check=True)
 subprocess.run(['python3','-B',str(w/'independent_delta_replay.py')],check=True)

@@ -1,10 +1,13 @@
 from pathlib import Path
 import subprocess,json,os,time,datetime
-w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');frozen=json.load(open(w/'baseline.json'))['frozen_main'];assert subprocess.check_output(['git','rev-parse','main'],cwd=r,text=True).strip()==frozen
+w=Path('/tmp/bulk-w1-b3');r=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout')
+from check_frozen_main import check as check_frozen_main
+check_frozen_main()
 assert (w/'preservation-complete.json').exists()
 if not (w/'verified-source-checkpoint.json').exists():subprocess.run(['python3','-B',str(w/'verified_checkpoint.py')],check=True)
 # No gate is selected out and no known-failure baseline is edited here.
 def run(label,cmd,seconds=28800,env=None):
+ check_frozen_main()
  log=w/(label+'.log');p=subprocess.run(['python3','-B',str(w/'guard.py'),'--cwd',str(r),'--log',str(log),'--night-only','--seconds',str(seconds),'--',*cmd],env=env,stdout=subprocess.DEVNULL);print(label,p.returncode,flush=True)
  if p.returncode:raise SystemExit(p.returncode)
  return json.load(open(str(log)+'.json'))
@@ -16,6 +19,7 @@ paths=sorted({str(p.relative_to(r)) for p in (r/'scripts').glob('audit_*.lean')}
 if targets:run('all-audit-prerequisites',['lake','build',*targets])
 out=w/'all-audits';out.mkdir(exist_ok=True);results=[];failed=[]
 for index,path in enumerate(paths):
+ check_frozen_main()
  if 8<=datetime.datetime.now().hour<23:raise SystemExit('Night audit boundary')
  log=out/f'{index:03}.log';env=dict(os.environ,LEAN_NUM_THREADS='1');p=subprocess.run(['python3','-B',str(w/'guard.py'),'--cwd',str(r),'--log',str(log),'--night-only','--seconds','2400','--','env','LEAN_NUM_THREADS=1','lake','env','lean',path],env=env,stdout=subprocess.DEVNULL);record={'path':path,**json.load(open(str(log)+'.json'))};results.append(record);(w/'all-audits-progress.json').write_text(json.dumps(results,indent=2));print('audit',index+1,len(paths),p.returncode,path,flush=True)
  if p.returncode:failed.append(record)

@@ -6,7 +6,13 @@ def record(name,ok,evidence):checks.append({'requirement':name,'proved':bool(ok)
 def load(name):
  p=w/name
  return json.load(open(p)) if p.exists() else None
-base=load('baseline.json');head=subprocess.check_output(['git','rev-parse','main'],cwd=r,text=True).strip();record('Frozen main unchanged',head==base['frozen_main'],{'actual':head,'expected':base['frozen_main']})
+base=load('baseline.json');head=subprocess.check_output(['git','rev-parse','main'],cwd=r,text=True).strip()
+from check_frozen_main import check as check_frozen_main
+try:
+ compatibility=check_frozen_main();compatible=True
+except AssertionError:
+ compatibility=load('main-compatibility-check.json');compatible=False
+record('Frozen mathematical main unchanged; authorized documents allowed',compatible,compatibility)
 for name in ['base-math-scope-check.json','full-source-scope-check.json','independent-delta-replay-check.json','target-build-coverage-check.json','declaration-table-summary.json']:
  d=load(name)
  if name=='declaration-table-summary.json':ok=d is not None and d['unmatched_authored']==0 and d['source_modules']==10195
