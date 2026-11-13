@@ -1,0 +1,25 @@
+{
+  "authorized_by": "11-14 morning coordinator/user message in this thread",
+  "authorized_at_recorded": "2026-11-14T08:24:23.824826",
+  "daytime_audits": "strictly serial; retain actual first-night successes only after identical-source and archived-log checks",
+  "daytime_full_verify": {
+    "VERIFY_JOBS": 3,
+    "VERIFY_MEMORY_GB": 24,
+    "VERIFY_CACHE": 0
+  },
+  "night_optional_full_verify": {
+    "VERIFY_JOBS": 4,
+    "VERIFY_MEMORY_GB": 32
+  },
+  "shared_build_lock": "not used",
+  "night_wait_pid_cancelled": 13368,
+  "current_driver_pid": 18573,
+  "tool_session_id": 67943,
+  "scripts_sha256": {
+    "day_gate_driver.py": "c3d51e78293ad1737ff3c82e4db9687e1626b9990b102a6b70b9664359b09b23",
+    "check_prior_audits.py": "c3876df2db4af2586514e4de94ea9dcf31e73d2af51ef9c414f050feaf805ff5",
+    "guard.py": "aef45217375cfb4d15e7b2e2c8e5b50abbe8e25142d64ae57ff697a326b3b43c",
+    "live_budget_watch.py": "d98fc8210376dec26934e5a3c3ac24656a72f58ce4e9cb7ff298e29a19de78df",
+    "completion_audit.py": "0e6c7c2a71cc6f97498bef39bc58670f79aa1e95478b967d1071cf2db8967f24"
+  }
+}
