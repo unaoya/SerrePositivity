@@ -1234,3 +1234,23 @@ R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持�
 残りは元のnative余錐の全HA写像・全パラメーター族と、元の実現・native apexとの全関手比較。
 R6は未完成。R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
 既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
+
+## 28. R6 の native 列と単体間成分（11-13、継続）
+
+検証済み追加4本・301行、監査対象12宣言。
+`StrictBarNativeColumnNaturality` は元のnative列の厳密自然性を、全内部次数と全Homの両方で示す。
+`StrictBarNativeCycleNaturality` は同じ式を、HA方程式で使う元の閉零cycleの通常順合成へ接続する。
+`SmallStrictNativeLabelSource` は、元の混合成分ラベルの先頭が同じ旧頂点であることを
+添字圏の中で証明する。係数加群の対象が一致することから添字の一致を推論していない。
+`StrictBarNativeSimplexComponents` は、既存の同じnative単体を使い、旧頂点には元の自然変換、
+apexには元の正規化barの射を与える。対象の等式に沿うcycleの移送と同じ成分との異種等号も示した。
+
+対象ビルド成功（5,274 jobs）。ログ `/tmp/is-w1/3b3-build-54-native.log` の最初の監査12宣言は
+全てsorry-free、標準三公理のみ。後段では旧成分の全HA可換式のファイルもビルドが通り、
+混合成分の添字の最後の表示同定を修正中。これらの下書きは今回のコミットに含めない。
+検証済み累計40本・3,113行、監査対象159宣言。R6実測2,450行。
+残りは元のnative余錐の全HA写像を全族へ束ねる接続と、元の実現・native apexとの全関手比較。
+joinの宇宙変更は既存の `Project/QuasicategoryAuxiliaries/UniverseJoinSimplexShapes.uliftCoconeShapeIso` を
+再利用する。対象ごとの余錐の普遍性だけから全関手の比較を主張しない。
+R6は未完成、R2〜R4は未着手。上限12,000行・約5,200行での途中報告は維持。
+既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。入口・監査の登録は調整役。
