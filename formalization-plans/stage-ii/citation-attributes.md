@@ -98,3 +98,7 @@ KL-W1 の最終配置で `InfinityCategories/Project/` は 13 のディレクト
 ## 11. 追記（2026-11-13、調整役）：BST13 の著者名の訂正
 
 略号表の BST13 を **Bhatt–Schwede–Takagi, The weak ordinarity conjecture and F-singularities（arXiv:1307.3763v3）** に直した（「Bhatt–Schnell–Scholze」は誤り。ユーザーが原典で確認）。一括レーンの `research/bibliography.json` と報告の表（refactor/kerodon-layout の枝）も属性付けの前に直す。⑥ の docstring は略号 BST13 だけで著者名を書いていない（main・math/scheme とも確認済み）。⑥ の 2f は v3 の Lemma 3.9 の証明に沿い、Remark 3.10 の誤り（Rees の次数移動と環の作用の混同）を避けている。(2) の Stein 分解・Kollár の商を F4・F7 の核と像の評価で置き換える経路も原典の (2) と矛盾しない（ユーザー確認、11-13）。
+
+## 12. 追記（2026-11-13 17 時、調整役）：凍結は 11-14 の夜に
+
+11-13 の昼に今夜を第一候補として予告したが、B2 の停止点の報告が 18 時に間に合わないので、**11-14 の夜**にずらす（ユーザーと確認）。11-13 の夜は凍結なし、各レーンは普通どおり。一括レーンは夜の鍵（bulk は一つ、長い塊）で B2 の保存比較を仕上げ、**11-14 の 15 時まで**に B2 の停止点を報告する。調整役が検収してユーザーの承認を得たら、18 時に各レーンの検証済みを main に取り込み、凍結を確定する。B3 の範囲は B2 で固めたまま（§7・§8・§10 の分は B3′、`refactor-ledger.md` §7）。
