@@ -2004,3 +2004,121 @@ lemma specifiedCoconeFamily_eq :
   照合C2・C3は未使用。計算上限は既定値。凍結確定の連絡は未受領。
 
 **R6は未完了。このままU39・U41を続ける。R2〜R4のLeanには入らない。**
+
+### 照合C2（2/3）：同じ射影的apexと正規化barの全閉nerve
+
+```lean
+lemma strictSemifreeProjectiveApex :
+  let P := nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ)
+  let I := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
+  lift (𝟙 P) (stdSimplex.isTerminalObj₀.from P) ≫
+    (P ◁ joinInr I Δ[0]) ≫ (P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) =
+    nerveMap (strictSemifreeNormalizedProjectiveModule A) ≫
+      closedNerveInclusion A (ProjectiveDGModules A PUnit.{1})
+```
+
+`strictSemifreeNormalizedProjectiveModule` は元の正規化barと同じ射影的一点加群・同じ射の包装。
+証明分割 `strictClosedVertexEvaluation` の型は、任意の通常関手
+`G : C ⥤ ModuleCategory A PUnit.{1}` に対する
+`lift (𝟙 _) (stdSimplex.isTerminalObj₀.from _) ≫
+ strictSimplexFunctorEvaluation A _ (G ⋙ strictBarClosedVertexFunctor A)
+ = nerveMap G ≫ closedNerveInclusion A _`。
+その局所成分 `closedVertex_pullback_hom` は任意の `α : Fin (n+1) →o Fin 1` で
+`((closedNerveSimplex (Functor.const.obj M)).pullback α).hom T a b k ...
+ = closedNerveHom (𝟙 M) k`。
+既存の引き戻し等式と `data_hom_heq_of_eq` を使い、次数零の単位と高次零成分を比較する。
+新しいHAセルの構成や理論を足さない。これらはC2の証明分割として数える。
+
+### U39の前提計算（1/3）と照合C3（3/3）
+
+```lean
+lemma projectivePointRingPresentation_underlying :
+  projectivePointRingPresentation A ⋙ projectiveRingUnderlyingComplex A =
+    projectivePointCoefficientComplex A
+
+def projectivePointRingPresentation_constantIso :
+  projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed ≅
+    𝟭 (ClosedCategory A (ProjectiveDGModules A PUnit.{1}))
+```
+
+前者は係数移送の法則（U39の1/3）。後者がC3：既存の `ringModule_recover` による
+同じ一点加群の復元の全関手比較で、係数評価の充満忠実性を使う。
+その証明分割 `projectivePointRingPresentation_constant_coefficients` は
+`projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed ⋙
+ projectivePointCoefficientComplex A = projectivePointCoefficientComplex A`。
+射影性は `ringModule_recover` で元の射影性へ移すだけで、新しい射影性の定理を作らない。
+照合の枠はC1・C2・C3の3/3となる。以後、新しい照合が要れば止める。
+
+### U39の前提計算の残り（計3/3）
+
+```lean
+def projectivePointCoefficientDerivedIso :
+  FunctorIso (nerveMap (projectivePointCoefficientComplex A) ≫ complexDerivedEvaluation A)
+    (closedNerveInclusion A (ProjectiveDGModules A PUnit.{1}) ≫
+      (projectivePointEquivalence A).hom)
+
+lemma strictSemifreeNormalizedProjectiveModule_coefficients :
+  strictSemifreeNormalizedProjectiveModule A ⋙ projectivePointCoefficientComplex A =
+    strictSemifreeNormalizedBarComplex A
+```
+
+前者は既存の `complexDerivedEvaluation_projectiveRingIso` とC3の復元の合成、
+後者は同じ正規化加群の係数評価。U39の前提計算はこれで3/3。
+C3では同じ復元比較の強い形
+`projectivePointRingPresentation A ⋙ (projectiveRingComplexConstant A).onClosed = 𝟭 _`
+も証明する。別の照合ではない。
+巨大な `eqToHom` の自然性の簡約を避け、私有の等式消去
+`functorMap_heq_of_eq (e : F = G) (f : M ⟶ N) : HEq (F.map f) (G.map f)`
+（`cases e; rfl`）と、その係数射への適用に分割した。証明分割のみで新しい数学はない。
+全て既定の200,000 heartbeatsのまま検証する。
+
+## 39. R6完成・途中の取り込み点（11-13 夜）
+
+**§33のU01〜U41を完了。R6の途中取り込み候補として報告し、指示どおり止まらずR2〜R4の紙へ進む。**
+
+今回の数学は新規6本521行。
+
+| ファイル（`Project/DerivedCategories/DiagramComparison/`） | 行数 | 内容 |
+| --- | ---: | --- |
+| `StrictClosedVertexEvaluation` | 78 | C2の閉零セルの全HA評価 |
+| `StrictSemifreeNormalizedProjectiveModule` | 64 | 元の正規化barの同じ射影的一点加群への包装 |
+| `StrictSemifreeProjectiveApex` | 84 | C2：同じnative全余錐族のapexの照合 |
+| `ProjectivePointRingPresentation` | 145 | C3：同じ一点加群の係数からの全関手復元 |
+| `ProjectivePointCoefficientDerivedComparison` | 61 | 既存の射影的複体比較への係数移送 |
+| `StrictSemifreeNormalizedBarApexComparison` | 89 | U39・U41：同じ計算済みapex、元の実現、指定apexの全関手同型 |
+
+最終型は§33のとおり：
+
+```lean
+def strictSemifreeNormalizedBarApexIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeComputedApexFamily A)
+
+def strictSemifreeRealizationNativeApexIso :
+  FunctorIso (strictSemifreeRealizationFamily A)
+    (strictSemifreeNativeApexFamily A SimplexCategoryᵒᵖ)
+```
+
+U41はU38の逆、U39、U40を順に合成する。全余錐族自体の比較はU37。
+U39は同じ全族輸送U32のapex制限から作ったため、別々に選んだ点ごとの同型ではない。
+
+検証：`3b3-build-112-final.log` の対象ビルド7,570 jobs成功、同じ鍵の中で
+`3b3-r6-final-112-audit.lean` の17宣言を監査し、全て標準三公理のみ・sorryAxなし。
+C2の先行監査は103、U33〜U40の先行監査は§38を参照。
+既存宣言・入口・全体監査登録・③-b・⑤aのファイルは変更していない。
+`whnf`は係数射のHEqによる小さい等式消去、左右別の合成の正規化で閉じた。
+新規ファイルの計算上限は既定値、上限引き上げなし。
+
+検証済み3b-3の累計 **76本6,046行、選択監査278宣言**。
+R1・R5・R7の663行を除くR6は **5,383行**。
+§20のR6見込み450〜750行に対し、下端＋4,933・上端＋4,633行。
+元のnativeセルの全HA成分・全面退化・全パラメーター自然性のAPIが必要だったことが主因。
+§31の「四行＋未検証6本」はすべて§33の一覧を通して解消した。
+
+枠の最終使用数：前提計算はU20=1/3、U30=2/3、U31=3/3、U32=1/3、
+U33=1/3、U34=1/3、U37=1/3、U38=1/3、U39=3/3、U40=2/3、他0/3。
+照合はC1・C2・C3の3/3。証明の包装・分割を新しい数学として追加していない。
+外枠20,800行まで14,754行を残す。凍結確定の連絡はこの記録時点で未受領。
