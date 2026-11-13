@@ -13,8 +13,8 @@ public import SerrePositivity.AlgebraicGeometry.CechRefinementCone
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory
-universe u
-variable {R : Type u} [CommRing R]
+universe u v
+variable {R : Type v} [CommRing R]
 variable {A B A' B' A'' B'' : CochainComplex (ModuleCat.{u} R) ℕ}
 variable {f : A ⟶ B} {g : A' ⟶ B'} {h : A'' ⟶ B''}
 
