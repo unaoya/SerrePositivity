@@ -1065,3 +1065,23 @@ projectivePerfCechH0Difference_map_add
 配置：零保存は `ProjectivePerfCechH0SquareZero`、加法保存は `ProjectivePerfCechH0SquareLaws`。いずれも関数の def の unfold は補題の証明内だけ。加法保存は中央項の比較の加法保存、単独検証済みの切断環側の加法保存、逆 H⁰ 比較の加法保存を合成した。最後の逆比較の補題にすべての引数を明示し、最後だけ `convert ... using 1` で型照合を分離すると通った。探索上限・heartbeat・再帰上限は一切引き上げていない。sorry・admit・新しい公理は追加していない。
 
 これで調整役の「零・加法の保存を別宣言として検証し、型を報告する」依頼は完了。2f 全体は未完。次はこの二つの保存則で差の加法準同型を組み、H⁰ の短完全列の下書きへ適用する。基底の増大写像、F8 と停止点の自然性の検収も残る。未検証の `ProjectivePerfCechH0Square`・`ProjectivePerfCechH0SquareMaps` は作業木に保持している。
+
+## 11-14：独立保存則から差の加法準同型へ（a0f516a1a）
+
+`ProjectivePerfCechH0DifferenceHom` の小さい対象ビルド（3,382 jobs）成功。検証済みの零・加法保存をフィールドに指定し、固定した差写像を台の関数とする加法準同型を作った。二つの新しい宣言：
+
+```lean
+projectivePerfCechH0DifferenceHom :
+  projectivePerfCechH0 (ι := ι) G p hp hR hA ×
+    FrobeniusDirectLimit (R ⧸ (I ^ 1)) p hp
+      (frobeniusQuotientPrimeCast p hR (I ^ 1)) →+
+  projectivePerfCechH0 (ι := ι)
+    (projectiveRingQuotientGrade ((I ^ 1).map (algebraMap R A)) G) p hp hR
+    (frobeniusQuotientPrimeCast p hA ((I ^ 1).map (algebraMap R A)))
+
+projectivePerfCechH0DifferenceHom_apply (b : _) :
+  projectivePerfCechH0DifferenceHom (ι := ι) G I p hp hR hA b =
+    projectivePerfCechH0Difference (ι := ι) G I p hp hR hA b
+```
+
+保存則の再証明・探索上限の変更はない。共有鍵 --wait 3600 を対象ビルドの間だけ取得。大きい監査とルート登録は保留。2f は未完。H⁰ の短完全列の移送では、比較と逆比較の打ち消しに渡す元を明示して convert すると定義上の等式だけに分離できたが、その等式を一度に rfl で閉じると再帰上限に達する。独立の適用補題を使って照合をさらに小さくする。短完全列、増大写像、F8 と最終検収は引き続き必要。未検証の二ファイルは作業木に保持している。
