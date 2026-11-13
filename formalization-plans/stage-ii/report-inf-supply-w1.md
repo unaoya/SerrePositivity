@@ -2747,3 +2747,258 @@ P-12のendの核心を供給側に依頼するか、③-aの追加の型つき�
 調整役の判断を待つ。Reedy側の局所比較も、上の一般end定理だけで完了したとはしない。
 R2cの完成のための二つの不足と元の評価の照合を区別し、R2自体の完了は主張しない。
 目標「R2を完成」はactiveのまま、blockedの判定はまだ行わない。
+
+## 44. R2c-E・R2c-R：追加承認後の型つき一覧・再見積もり（11-14、紙）
+
+11-14の調整役の追加承認を受け、§43の承認待ちは解消して紙の作業を再開した。
+ユーザーの追加指示に従い、Eの各項目にKerodonのTagとHTTの番号を付す。
+現物は `c6ac2b470`、数学の検証済みは `6f1102459`。既検証の実測は87本7,023行。
+**全体の見込みは17,723〜24,273行。上端が20,800行を3,473行超えるため、
+今回の条件付き承認の停止条件に当たり、新しいLeanには入らない。**
+以下は追加の型案であり、証明済み宣言・本体への仮定の追加ではない。
+
+### 44.1 共通記法・原典の確認
+
+Eの型の中だけで次を略記する。全て実際の既存の単体集合・射。
+
+```lean
+variable {K C : SSet.{v}} [Quasicategory K] [Quasicategory C]
+variable (F G : K ⟶ C)
+-- U := SSet.uliftFunctor.{v + 1, v}
+-- yK := yonedaInfinityMap K
+-- WF := presheafHomWeightDiagram F
+-- WG := presheafHomWeightDiagram G
+-- TF G := twistedArrowHomSpace (functorVertex F) (functorVertex G)
+-- SF G := simplicialSections (functorEndProjection F G)
+-- PF G := pinchedHom (functorVertex F) (functorVertex G)
+```
+
+原典に直接ある主張と、実射の選択を保つLean固有の照合を区別する。
+引用番号は同じ文言の定理だと無条件に主張するものではなく、下の表に「直接」「基礎」「合成」を明記する。
+
+- twisted arrowの基礎：[Kerodon Construction 8.1.1.1, Tag 03JG](https://kerodon.net/tag/03JG)、
+  [Proposition 8.1.1.10, Tag 03JN](https://kerodon.net/tag/03JN)、
+  [Definition 8.3.3.1, Tag 046B](https://kerodon.net/tag/046B)。
+- YonedaとKan：[Kerodon Proposition 8.3.1.3, Tag 03M5](https://kerodon.net/tag/03M5)、
+  [Proposition 7.3.6.1, Tag 0309](https://kerodon.net/tag/0309)、
+  [§8.4.3, Tag 03W8](https://kerodon.net/tag/03W8)。
+- [HTT（著者公開PDF）](https://www.math.ias.edu/~lurie/papers/HTT.pdf)：
+  Proposition 5.1.3.1、Lemma 5.1.5.3、Proposition 4.3.3.7、Proposition 5.2.6.3、
+  Corollary 3.3.3.4を確認する。
+- 関手の写像空間のend表示を**直接**述べる一次文献は、
+  [Gepner–Haugseng–Nikolaus, *Lax colimits and free fibrations in ∞-categories*, Proposition 5.1, pp.13–14](https://www.uni-muenster.de/IVV5WS/WebHop/user/nikolaus/Papers/freepres_arxiv.pdf#page=13)。
+  同証明がHTT 3.3.3.4・5.2.6.3・5.1.3.1へ帰着していることも確認した。
+  **同じend表示を直接述べるHTTの番号は確認できていない。HTTの番号として捏造しない。**
+  またtwisted arrowに関する「5.2.1.11」は同論文ではHigher Algebraの引用であり、
+  HTT 5.2.1.11と取り違えない。
+- 既存ファイルの一部が付しているTag 06NCは§9.5の大きい節のTagであり、
+  end表示そのものの直接のTagではない。今回の一覧の出典をこれだけで済ませない。
+
+### 44.2 R2c-E：一般のend比較（E01〜E06）
+
+既存のYoneda経路を第一候補とする。Gepner–Haugseng–Nikolausの
+presheaf随伴による別経路は、一般の指定比較の自然性の計算が既存経路より短いと確認できた場合の代案。
+単にいずれかの全同値が存在するだけで、元の `twistedFunctorHomToEndSections` の同値性を済ませない。
+
+**E01：指定されたYoneda左Kan比較の同じ成分の可逆性。**
+
+```lean
+lemma homWeightYonedaLeftKanComparison_component_isIso
+    {L : U.obj C ⟶ PresheafInfinity K}
+    (β : SSet.Homotopy yK (U.map F ≫ L))
+    (hβ : IsLeftKanExtension (U.map F) yK L β)
+    (c : C _⦋0⦌) :
+  IsIso (functorHomEvaluate
+    (homWeightYonedaLeftKanComparison F β hβ) (ULift.up c))
+```
+
+密度の局所余錐と指定単位の両立から、選んだ同じ比較の成分を同定する。
+全比較の `IsIso` は既存 `kanFunctorHom_isIso_of_components` への接続という証明分割に含める。
+対象ごとの別の同型を持ってくるだけでは代用しない。
+
+**E02：指定単位による全写像空間のKan普遍性。**
+
+```lean
+def homWeightYonedaLanHomEquivalence (F G : K ⟶ C) :
+  QCatEquivalence
+    (pinchedHom (functorVertex WG) (functorVertex WF))
+    (pinchedHom (functorVertex yK) (functorVertex (U.map G ≫ WF)))
+```
+
+E01と既存の単位の可換式でKan普遍性を指定Hom係数族へ運び、
+全パラメーターの写像空間の同値を得る。
+`kanLeftKanExtension_homUniversal` が返す通常のHomの全単射だけを、
+高次を含む結論と取り違えない。既存 `LeftCanonicalMapping` の全族による判定を使う。
+
+**E03：end切断と元の関手Homの両模型の同値。**
+
+```lean
+def twistedFunctorHomEndEquivalence (F G : K ⟶ C) :
+  QCatEquivalence (U.obj (TF G)) (U.obj (SF G))
+```
+
+`functorEndSectionsYonedaHomEquivalence`、E02、
+`homWeightDiagramHomEquivalence` と元のtwisted Homの模型比較を合成する。
+宇宙を一度上げて比較することを型に明示し、後で元の宇宙へ反映する。
+
+**E04：同じ実比較との全族の照合。**
+
+```lean
+def twistedFunctorHomEndEquivalence_comparison (F G : K ⟶ C) :
+  FunctorIso (twistedFunctorHomEndEquivalence F G).hom
+    (U.map (twistedFunctorHomToEndSections F G))
+```
+
+これはTF Gの全単体上の同じ二写像の比較。
+任意Pと `a : P ⟶ U.obj (TF G)` に前合成した比較は、
+同じFunctorIsoから `precomp a` で取り、Pごとの別の選択を行わない。
+
+**E05：承認された元の一般定理。**
+
+```lean
+lemma twistedFunctorHomToEndSections_isSimplicialHomotopyEquivalence
+    (F G : K ⟶ C) :
+  IsSimplicialHomotopyEquivalence (twistedFunctorHomToEndSections F G)
+```
+
+E03・E04と宇宙移送の反映を使う。K・Cの一般性は保ち、Δなどに狭めない。
+
+**E06：Reedy側が使うpinched模型の同じ比較。**
+
+```lean
+def functorPinchedEndMap (F G : K ⟶ C) : PF G ⟶ SF G
+lemma functorPinchedEndMap_isSimplicialHomotopyEquivalence (F G : K ⟶ C) :
+  IsSimplicialHomotopyEquivalence (functorPinchedEndMap F G)
+```
+
+既存のpinched・coslice・twisted HomのKan模型の比較とE05を合成する包装。
+E06が入力する比較を、R側の三角形でも同じ射として使う。
+
+| 項目 | Kerodonの対応Tag（役割） | HTTの対応番号（役割） | 新規配置案 |
+| --- | --- | --- | --- |
+| E01 | [03M5](https://kerodon.net/tag/03M5)・[03W8](https://kerodon.net/tag/03W8)：Yoneda・密度の基礎 | 5.1.3.1・5.1.5.3：基礎。指定比較の成分の照合は追加証明 | `Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaKanComparison.lean` |
+| E02 | [0309](https://kerodon.net/tag/0309)：Kanの全写像空間の普遍性 | 4.3.3.7：Kan随伴の基礎（別経路なら5.2.6.3） | 同上、必要なら葉を分割 |
+| E03 | [046B](https://kerodon.net/tag/046B)・[03M5](https://kerodon.net/tag/03M5)：Hom分類・Yonedaの合成 | 3.3.3.4・5.1.3.1・5.2.6.3：合成の根拠。直接のend表示はGHN Prop 5.1 | `Kerodon/TheYonedaEmbedding/TwistedArrowsAndCospans/EndSectionsEquivalence.lean` |
+| E04 | [03JG](https://kerodon.net/tag/03JG)・[0309](https://kerodon.net/tag/0309)：元の構成とKan比較を保持 | 3.3.3.4・4.3.3.7の比較の実射を保持する形式化上の追加照合。直接同名の命題ではない | 同節 `EndSectionsComparisonFamily.lean` |
+| E05 | [03JN](https://kerodon.net/tag/03JN)・[046B](https://kerodon.net/tag/046B)・[0309](https://kerodon.net/tag/0309)：twisted arrow/endを組む基礎 | 3.3.3.4・5.1.3.1・5.2.6.3から導く。直接の主張はGHN Prop 5.1 | 同節 `EndSectionsWeakEquivalence.lean` |
+| E06 | [03JV](https://kerodon.net/tag/03JV)：twisted Homのホモトピー輸送 | §1.2.2・3.3.3.4：写像空間模型と切断表示の基礎、E05の系 | 同節 `PinchedEndSections.lean` |
+
+新しい一般定理はKerodonの章・節に置く。R2のファイルに一般定理を埋め込まない。
+既存の `PresentableInfinityCategories/` の葉は再利用し、移動・本文変更はしない。
+E04の全族照合は、今回承認された実比較の主張そのもので、以前の照合枠C1〜C3を再利用したとは数えない。
+E01〜E06それぞれについて、追加の前提計算法則はIS-W2 §14どおり3本まで。
+
+### 44.3 R2c-R：加群のReedy局所比較（RR01〜RR05）
+
+型の中だけで§40.1のI, DA, S, evを使う。
+`F_X := evalVertex A d X : I ⟶ DA`、
+`F_x := (functorVertexEquiv I DA).symm (ev.app (Opposite.op ⦋0⦌) x)` と略記。
+後者は元の同じevの頂点であり、別の評価を選ばない。
+`Γ(F,G) := simplicialSections (functorEndProjection F G)` とする。
+配置はいずれも `Project/DerivedCategories/DiagramComparison/` の新規ファイル。
+
+**RR01：実frameのendからcoherent切断への実比較。**
+
+```lean
+def strictDiagramFrameEndComparison (X Y : StrictComplexDiagram A d) :
+  (SSet.uliftFunctor.{u + 1, u}).obj (strictDiagramFrameMapping A d X Y) ⟶ Γ(F_X,F_Y)
+```
+
+既存の評価frameと同じsource frame・fibrant targetを使い、
+全添字射・全高次単体の整合を持つ切断を作る。
+`StrictDiagramPointFrameEndIso` はstrict側の表示の入口として再利用する。
+
+**RR02：同じ比較の単体的ホモトピー同値性。**
+
+```lean
+lemma strictDiagramFrameEndComparison_isSimplicialHomotopyEquivalence
+    (X Y : StrictComplexDiagram A d) :
+  IsSimplicialHomotopyEquivalence (strictDiagramFrameEndComparison A d X Y)
+```
+
+通常endのKan性ではなく、Reedyのcofibrancy・fibrancyによる相対的な充填を使う。
+各値の `ComplexHammockFullyFaithful` とG8の切断比較へ渡す。
+相対的充填・整合を仮定したレコードを入力に追加して済ませない。
+
+**RR03：最終の同じright frameの模型への移送。**
+
+```lean
+def strictDiagramRightFrameEndEquivalence (x y : S _⦋0⦌) :
+  QCatEquivalence (strictDiagramMappingSpace A d x y) Γ(F_x,F_y)
+```
+
+同じcofibrant表示・両frameの混合比較・元の端点同型を用いる。
+`strictDiagramMappingSpace` の定義や元のspanを変更しない。
+
+**RR04：元のevの作用との全族の三角形。**
+
+```lean
+def strictDiagramRightFrameEndTriangle (x y : S _⦋0⦌) :
+  FunctorIso
+    (strictDiagramMappingRight A d x y ≫ functorPinchedEndMap F_x F_y)
+    (strictDiagramRightFrameEndEquivalence A d x y).hom
+
+def strictDiagramRightFrameEndTriangleFamily (x y : S _⦋0⦌)
+    {P : SSet.{u + 1}} (a : P ⟶ strictDiagramMappingSpace A d x y) :
+  FunctorIso
+    (a ≫ strictDiagramMappingRight A d x y ≫ functorPinchedEndMap F_x F_y)
+    (a ≫ (strictDiagramRightFrameEndEquivalence A d x y).hom)
+
+lemma strictDiagramRightFrameEndTriangleFamily_restrict (x y : S _⦋0⦌)
+    {P Q : SSet.{u + 1}} (r : Q ⟶ P) (a : P ⟶ strictDiagramMappingSpace A d x y) :
+  strictDiagramRightFrameEndTriangleFamily A d x y (r ≫ a) =
+    (strictDiagramRightFrameEndTriangleFamily A d x y a).precomp r
+```
+
+元の `strictDiagramDerivedEvaluation_factor` と同じ係数・端点移送を用いる。
+後の二つは同じ最初のFunctorIsoの前合成として構成する証明分割。
+点ごとの任意の同型や零単体上の一致に弱めない。
+
+**RR05：承認済みR2cの元のspanでの結論。**
+
+```lean
+lemma strictDiagramMappingSpan_right (x y : S _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (strictDiagramMappingSpan A d x y).2.2
+```
+
+E06・RR03・RR04と2-out-of-3を使う。
+続くR2d・R2eは§40.2の型を変えずに証明する。
+RR01〜RR05の新規配置は、例えば `StrictDiagramCoherentEndMap`、
+`StrictDiagramCoherentEndWeak`、`StrictDiagramRightFrameEndComparison`、
+`StrictDiagramRightFrameEndFamily`、`StrictDiagramMappingFullyFaithful` に分ける。
+RR04を含む各項目に前提計算3本まで。新しい別の数学を証明分割と呼んで追加しない。
+
+### 44.4 見込み・外枠との照合（重複なし）
+
+以下は**未実装分だけ**。E・RRを旧R2cの1,000〜1,550行へ単純加算せず、
+それを置き換える。検証済み7,023行にはR2の評価frame・endの977行を含む。
+
+| 新しい一覧の区分 | 未実装の見込み（行） | 見積もりの中身 |
+| --- | ---: | --- |
+| E01 | 650〜1,050 | 同じ局所余錐・指定単位による成分の可逆性 |
+| E02 | 500〜850 | 全パラメーターのKan写像空間への接続 |
+| E03・E05・E06 | 200〜350 | 既存のHom模型・宇宙移送・全同値の合成 |
+| E04 | 450〜750 | 元の実比較との全族照合 |
+| **R2c-E小計** | **1,800〜3,000** | 一般のK・Cのまま |
+| RR01 | 650〜1,050 | 相対条件を保つ実切断比較 |
+| RR02 | 1,400〜2,200 | Reedyの相対充填、strict endと導来的な切断の比較 |
+| RR03 | 600〜1,000 | 最終のright frame・同じ任意端点への移送 |
+| RR04 | 300〜450 | 元のevと全Pの三角形 |
+| RR05 | 150〜250 | 元の右脚へ2-out-of-3を戻す |
+| **R2c-R小計** | **3,100〜4,950** | Γの比較と元の評価の照合を両方含む |
+| R2d・R2e | 500〜700 | §40.2を維持 |
+| R3 | 4,000〜6,500 | §40.3を維持（任意coherent図式のstrict化） |
+| R4 | 1,300〜2,100 | §40.4を維持（両方向の指定錐・余錐の全族） |
+| **未実装合計** | **10,700〜17,250** | |
+| 検証済み | 7,023 | 87本、選択監査338宣言 |
+| **完成までの全体** | **17,723〜24,273** | **上端は外枠より3,473行多い** |
+
+R3を根拠なく削って帳尻を合わせない。E・RRは写像空間の比較であり、
+任意coherent図式をstrict図式へ持ち上げるR3aを既に供給するものではない。
+R4の同じapexと全joinの相対比較も、そのまま残す。
+別証明による短縮が確認できれば見積もりを下げられるが、現時点でその短縮を保証しない。
+
+**結論：11-14の条件付き承認の「超えるときは止まって報告」に従い、この紙の地点で停止。**
+R2c-E・R2c-Rは追加承認されたが、全体の規模について調整役がユーザーに諮るための報告。
+追加のLean実装・対象ビルド・大きい監査は実行していない。
+R2未完のまま、検証済みの範囲と元の全目標を維持する。
