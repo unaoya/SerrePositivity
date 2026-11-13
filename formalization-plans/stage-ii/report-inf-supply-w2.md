@@ -2519,3 +2519,45 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.T
 再開後の一覧の実績は **A01〜A04完了**。独立した照合の追加枠は§74〜76の **3/3**。未コミットのLeanはない。外枠12,500行の残りは3,318行で、行数による中間停止はしない。次はA05の指定余作用の単位則、A06〜A09の区間評価と実単体的Hom比較の同値性へ進む。B01〜D08も引き続き今回の責任であり、停止点2は未完。
 
 A05に再利用できる候補を確認した：`EInfinity.AlexanderWhitney.cochainDiagonal_right_counit` と `cochainCounit_stdSimplex_eq_contraction`。ただし前者の対角と、今回の整数から係数移送した指定AWの一致は型の類似だけでは済ませない。A06の端点に使う零単体の単位同型には既存 `cochainCounit_stdSimplexZero_isIso` が候補となる。これらは現時点の参照候補で、A05・A06の検証完了には数えない。
+
+## 80. A05の展開と、一覧外の右増大写像整合性による停止
+
+A05の積側を `FrameCoactionCounit.lean` の作業木で展開した。各余単体・各図式対象での指定写像の等式へ戻し、正次数は零延長の零性で処理した。負次数は延長の指定同型と Moore 射影の分裂を使って自由生成元での等式へ帰着した。ここまでのスクリプトの残りはその生成元の目標であり、**A05の証明全体は未完**。66行の未検証下書きはコミットせず、検証済み148本9,182行には算入しない。個別検査ログ `/private/tmp/isw2-a05-generators.log` は未解決目標を報告して終了コード1であり、成功した検証とは数えない。
+
+### 80.1 一覧に追加が必要になった数学の補題の型
+
+A05の両単位則への接続に用いる次の二因子AWの法則が、§73の一覧から漏れていた。提案名 `freeProductAlexanderWhitney_right_augmentation`。以下は CategoryTheory、MonoidalCategory、CartesianMonoidalCategory、ComplexLimits、DiagramComparison、Project.DerivedCategories の名前を開いた表記。
+
+```lean
+theorem freeProductAlexanderWhitney_right_augmentation
+    (A : Type u) [CommRing A]
+    (φ : simplicialRingCoefficient.{u} →+* A)
+    (Z : SSet.{u}) (n : SimplexCategory) :
+  freeProductAlexanderWhitney φ Z
+      ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) ≫
+    (𝟙 (freeNegativeChains (A := A) Z) ⊗ₘ
+      (normalizedSimplexCochainContraction A n).hom) ≫
+    (ρ_ (freeNegativeChains (A := A) Z)).hom =
+    freeNegativeChainsMap (A := A)
+      (fst Z ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)))
+```
+
+この**主張の型だけ**を `/private/tmp/isw2-a05-right-augmentation-type.lean` の `rightAugmentationStatement : Prop` として elaboration し、終了コード0を確認した（ログ `/private/tmp/isw2-a05-right-augmentation-type2.log`）。証明を与えたわけではなく、公理や `sorry` で埋めてもいない。
+
+内容は、指定AWの第二因子を同じ単体増大写像で潰すと、元の積から第一因子への射影の自由鎖写像そのものになる、という**厳密な等式**。一般のZを許す必要がある。積側A05には `Z = W.obj j × Δ[n]` を代入し、パラメータグラフを前合成する。テンソル側A05には `Z = Δ[n]` を代入し、対角を前合成する。グラフ／対角と第一射影の合成が恒等であること、および結合子の自然性で、それぞれ元のA05へ戻る。
+
+### 80.2 漏れた理由と既存宣言との差
+
+§73では、A05を既存のAW余単位則と係数移送に接続する内部計算として見込み、上の二因子の法則を型つきで独立に列挙しなかった。これは一覧の粒度が不足していた。
+
+確認した既存 `EInfinity.AlexanderWhitney.cochainDiagonal_right_counit` は、`X : SSet.{0}` に対する別の直接構成の対角と、その構成の `cochainCounit` の法則。今回の左辺は、任意の宇宙のZと持ち上げ標準単体の積に対する `freeProductAlexanderWhitney` であり、`normalizedMooreMapIso`・整数テンソルの係数拡大・負次数延長を経由する。`cochainCounit_stdSimplex_eq_contraction` は増大写像の同定に使えるが、二因子AWの上の法則までは結論しない。
+
+上の法則を作らずA05に成分計算を直接埋め込む形も数学的には考えられる。しかし、必要なAWの右増大写像計算を「実装上の同定」として追加枠から外したり、局所補題として黙って隠したりはしない。今回の停止は数学的な不可能性の主張ではなく、**残補題を型つきで列挙してから進めるという新しい規則に対する不足の報告**である。
+
+### 80.3 保存状態と停止条件
+
+検証済みコードは `f592cd727` まで、直前の検証報告は `f9a44613a`。148本9,182行、最後の対象ビルド2,278 jobsと累計1,695宣言・標準三公理のみの監査は§79のとおり。今回、新しく検証済みと呼べるLean宣言は増えていない。ビルドの鍵は取得していない。
+
+ユーザー指示2「一覧にない新しい数学の補題が要ったら、検証済みをコミットして止まり、その型と一覧から漏れた理由を報告」に従い、**A05の追加証明をここで停止する**。照合追加枠は3/3のままで、この法則を4本目の単なる照合とは扱わない。外枠12,500行による停止ではない。停止点2も未完。
+
+上の一補題を第一のまとまりのA05の前提計算として一覧に加える判断を求める。範囲を別の第五のまとまりへ広げる案ではなく、同じ指定余作用と増大写像を保持するための補題である。承認後はこの法則を証明し、A05の両単位則へ接続してからA06以降へ進む。
