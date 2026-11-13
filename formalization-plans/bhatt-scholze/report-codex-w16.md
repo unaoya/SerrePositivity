@@ -7191,3 +7191,551 @@ AlgebraLimits、Mathlib Dold–Kan の normalized/alternating のホモトピー
 [原典 BF §2.2.3–7](https://arxiv.org/pdf/math/0109158#page=33) の一般の切断と符号を用いる。
 証明の順は L01〜L18 → I01 → L19〜L28。定義・既存構成の組み立ては依存順に挟む。
 完成時が調整役への取り込み点。検証済み小束は枝に保存するが、native Tot の完了とはしない。
+
+### 108.6 実装に伴う証明分割の型と計数（進行中）
+
+L01〜L03 は Outputs・Faces の対象ビルドに成功した（simplex-faces-01.log）。
+L04〜L06 は同じ一覧の範囲で実装中。検証中のファイルはまだコミットしていない。
+型一覧と数え方の紙は **18ca0ea4a** に保存済み。
+
+証明分割の補題は次の型。L02 の頂点数の分割、L03 の狭義単調性、
+L04 の零因子の消滅は、それぞれ一覧の主張の同じ証明を分けたもの。
+
+```lean
+-- L02 の分割（検証済み）。
+colorPositions_card_eq s u a : (colorPositions s u.val a).card = outputDegree s u a + 1
+colorPositions_card_sum s u : ∑ a, (colorPositions s u a).card = m + q + 1
+-- L03 の分割（検証済み）。
+vertices_strictMono (h : Nondegenerate s u.val) (a : Fin r) : StrictMono (vertices s u a)
+-- L04 の分割。
+tensorValue_eq_zero (K : Complex A) (n : ℕ) (d : Fin n → ℕ)
+  (v : ∀ i, K.X (-(d i:ℤ))) (i : Fin n) (h : v i = 0) : tensorValue K n d v = 0
+-- L07 の分割：入力で一つの退化を合成すると、少なくとも一つの色の面が退化する。
+face_comp_sigma_not_mono (s : Cut m (q+1)) (u : Surjection.Word r (m+1))
+  (i : Fin (q+1)) : ∃ a, ¬Mono (face s u a ≫ SimplexCategory.σ i)
+```
+
+L05 の前提計算は次の三本で **3/3**。新しい構成や新しい数学の枠には拡張しない。
+
+```lean
+gen_naturality f q x : (cmap f).f (-(q:ℤ)) (gen A S q x) = gen A T q (f.app _ x)
+tensorValue_map f n d v : (TensorPowers.map f n).f _ (tensorValue K n d v) =
+  tensorValue L n d (fun i => f.f _ (v i))
+component_index_naturality (f : K ⟶ L) (h : i=j) (x : K.X i) :
+  f.f j ((eqToHom (congrArg K.X h)).hom x) =
+    (eqToHom (congrArg L.X h)).hom (f.f i x)
+```
+
+lo・hi の定義に用いる intervalPositions_nonempty は、L01 の既存の horizontal_surjective
+の評価を切り出したもの。照合 I01〜I03 はまだ0/3、その他の L の前提計算も0/3。
+凍結確定の連絡はまだ受けていない。
+
+## 109. L09 の境界計算で一覧外と判定した数学（11-13、型の報告）
+
+L01〜L08 の実装・検証を進める間に、次の L09 の有限和の証明を具体化した。
+一般次元では、テンソルの出力面の削除・χ の文字の削除・入力単体の面の削除を
+対応させ、残る境界項を符号を反転させて対にする必要がある。
+既存 IntervalCuts のその対応は頂点／辺に特殊化されている。
+**§108 の一覧は境界の総和の等式だけを L09 に書き、この対応の構成を型に落としていなかった。**
+
+必要と判断した追加候補は次の型。以下は紙のみで、Lean の定義・証明は追加していない。
+`u : BasisWord (r+1) d`、`u' := positiveWord u` とする。
+全ての退化項・境界次数零の項も零として残した有限添字を使う。
+
+```lean
+abbrev BoundaryBalanceIndex (u : Surjection.BasisWord (r+1) d) (q : ℕ) :=
+  (Σ s : Cut (r+d) q, Σ a : Fin (r+1), Fin (outputDegree s (positiveWord u) a + 1)) ⊕
+  ((Fin (r+d+1) × Cut (r+d-1) q) ⊕ (Fin (q+1) × Cut (r+d) (q-1)))
+```
+
+第一群が出力のテンソルの一面を削除する項、第二群が係数語の一文字を削除する項、
+第三群が入力単体の一面を削除する項。第二・第三群は L09 の右辺から左辺へ移す符号も含める。
+d=0 の第二群、q=0 の第三群、および次数零の出力の面は零とする。
+非全射・隣接値が等しくなる係数語の削除も零として保持する。
+これらの規約で、各添字の実テンソル値を次の型で定義する必要がある。
+
+```lean
+boundaryBalanceTerm (A : Type u) [CommRing A] (S : SSet.{0})
+    (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  BoundaryBalanceIndex u q → S _⦋q⦌ →
+    (power (chains A S) (r+1)).X (-((d+q : ℕ):ℤ) + 1)
+
+-- 追加候補 L09a（未承認・未実装）。
+boundaryBalance_pairing (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  ∃ τ : Equiv.Perm (BoundaryBalanceIndex u q),
+    Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q (τ j) x = -boundaryBalanceTerm A S u q j x)
+```
+
+これは既存の構成の単位・自然性・係数移送の式ではなく、任意次元の境界項の
+**新しい組合せ的な対応と符号の主張**である。L09 の総和の等式より強い項ごとのデータを作るため、
+「heartbeat のための同じ内容の証明分割」や前提計算3本の枠へ自己判断で入れない。
+漏れた理由は、§108 の作成時に L09 のゴールの型で境界計算を一括し、
+その証明に使う一般次元の有限添字の対応を独立の数学として数えなかったこと。
+
+ユーザーの「それ以外の新しい数学の補題が要ったら止まって報告」に従い、
+**L09a の定義・証明には進まない**。先行する L01〜L08 の検証・修正・保存を終えて報告する。
+外枠25,400行を理由にした停止ではない。照合I01〜I03も未使用のまま。
+
+## 110. 方針の再比較：May＋一般 BF と coherent Sp 値 P⁰（11-13、紙・判断待ち）
+
+### 110.1 最新の指示と作業状態
+
+**最新の指示により、5a-5a の切り出しは未決に戻す。Lean の編集・ビルド・監査は停止した。**
+§108 の「承認された独立段」という扱いは、最新の判断としては採用しない。
+以下は実装の再開や界面変更の承認を先取りしない紙の比較である。
+
+指示変更前に、§108 の紙を18ca0ea4aへ保存し、切断の下書きを進めていた。
+新しい切断の11本・**568行**は個別の対象ビルドで通過したが、専用監査・コミットは未実施。
+RawAction（52行）・DegenerateInput（46行）・Normalization（87行）の**185行**は未検証。
+RawAction の語長の cast と自由加群の評価に型検査の失敗が残っている。
+これらの修正を含め、指示変更後は Lean を触っていない。
+既存の§106の三本162行とは区別する。未検証185行を完成分として見込みから引かない。
+最後の対象ビルドのセッションは終了済みで、鍵・整理券を持っていない。
+§108.6・§109 の紙と本節は作業木に保持し、この比較中に追加コミットはしない。
+凍結確定の連絡はまだ受けていない。
+
+### 110.2 残りの新規量を同じ基準で比較する
+
+**既存実測と残りの見込みを混ぜない。** coherent 案の§94.2は、既にV・π/Hの7,194行と
+鎖模型の3,022行を除いた「残り」の表である。そこから10,216行を再度控除しない。
+同様に May の4,128行は完成分であり、§106.3はそれと当時の切断162行を除いた残り。
+
+#### (a) May 案＋一般次元の Berger–Fresse 作用
+
+§106.3の一般BFの三行7,200〜12,700行から、今回の個別コンパイル済み568行を暫定控除する。
+この568行は切断・面・符号・生成元・その自然性の束で、微分・部分合成・cosimplicial代数の
+全関手はまだ含まない。未監査のため、正式な完成認定とは区別した比較用の控除である。
+
+| 残る新規 | §106.3の残り | 現時点の残りの暫定見込み |
+| --- | ---: | ---: |
+| 一般切断・符号・正規化・微分・自然性 | 3,000〜5,500 | 2,432〜4,932 |
+| 単位・置換・部分合成とTRによる同じBE作用 | 3,000〜5,000 | 3,000〜5,000 |
+| 正規化cosimplicial代数の全関手と指定比較 | 1,200〜2,200 | 1,200〜2,200 |
+| **一般BFの残り** | **7,200〜12,700** | **6,632〜12,132** |
+| May係数・ν・Frobeniusの照合 | 1,200〜2,000 | 1,200〜2,000 |
+| native Totの指定比較への適用（G10自体を除く） | 500〜900 | 500〜900 |
+| A4の二重模型の実現比較（G10自体を除く） | 1,500〜2,800 | 1,500〜2,800 |
+| filtered塔・A4の利用側 | 300〜550 | 300〜550 |
+| **残り合計** | **10,700〜18,950** | **10,132〜18,382** |
+
+既存May4,128行・以前の切断162行・今回の568行を加えた完成時の見込みは、
+§106と同じ14,990〜23,240行。作業を進めた分を控除しただけで、見積もり全体を縮めた値ではない。
+568行を正式な完成分と数えない保守的な比較では、残り10,700〜18,950行をそのまま使う。
+
+#### (b) coherent な Sp 値 P⁰
+
+§94以降、こちらの鎖模型→nativeの未完成部分を閉じる実装は進めていない。
+新しいMayのho上のNatTransは、Sp値のFunctorHomを供給しない。
+W→BE・混合色・零次の環比較は再利用候補だが、coherentな演算との同定は別に要るので、
+May4,128行や今回のBF568行を、そのまま次の表から引かない。
+
+| §94.2からの残りの新規 | 現在の見込み | 既存分の控除の扱い |
+| --- | ---: | --- |
+| 正のHomと実orbit全複体の鎖同型 | 900〜1,600 | 次数同型・指定包含・座標は既存。微分可換性は残る |
+| native orbit・norm・Tateの全自然比較 | 3,000〜5,500 | hG本体は既存として既に考慮。比較・norm・指定境界は残る |
+| 完全入力のexact性・降下・T_pの延長 | 2,800〜4,800 | p入力・準同型保存・混合色の自由性は既存として控除済み |
+| スペクトル的な右k作用とe | 2,800〜5,000 | 鎖のseed・H⁰計算は既存。右作用とcoherentな照合は未供給 |
+| BE作用によるP⁰とRem 2.2.7 | 1,800〜3,200 | 既存BE作用を使う。Mayのhoの演算との比較を自動では仮定しない |
+| 離散・Totの最後の照合 | 1,000〜2,000 | 原表のG10後の工程。一般BF作用はこの経路の前提にしない |
+| **§94.2の範囲での残り** | **12,300〜22,100** | **10,216行はこの外側の完成済み実測** |
+
+ただし、公平なBS用の比較には、原表の一行で明示していなかった次も数える必要がある。
+現在のV_AにはsourceIsoとπ/H比較があるが、任意のnative極限・実現を保つという公開定理を
+今回の調査では確認できなかった。Gammaの有限極限保存だけではcosimplicial Totの保存にならない。
+またA4の外側の単体的実現・filtered塔への指定Frobeniusの比較は、§96.5で明示した追加義務である。
+
+coherent案ではこれを一般の自然変換の移送で処理する候補とし、
+Vの必要な極限・実現保存とその指定比較に500〜1,000行、外側の実現・filteredとA4への適用に
+500〜1,400行を**暫定の追加リスク**として置く。
+原表の離散・Totの1,000〜2,000行は成分計算・同じTotへの適用に使い、この二つの一般比較と分ける。
+これを含むBS用の残りは **13,300〜24,500行**。
+この追加1,000〜2,400行は未実装の工程見込みであり、既存宣言で短縮を検証した数字ではない。
+
+両案とも、③-bが供給するG10・一般のnative錐の橋そのものは上の新規量へ加えていない。
+それがゼロ作業という意味ではなく、どちらにも必要な共通の外部依存として別に扱っている。
+
+### 110.3 Totの群は一般BF作用を必須にしない
+
+ここは§106.2の読みを修正する。
+**一般のBerger–Fresse作用が、ofCosimplicialや厳密BE図式のTotを作るために必ず要る、とは言えない。**
+それは厳密な正規化コチェイン代数を先に作る一つの経路であり、native極限を先に作る経路がある。
+
+同じUについて、次は既に無条件で証明済みである。
+
+| ファイル・宣言 | 実際の出力 |
+| --- | --- |
+| BarrattEccles/FreeProbeDerivedFreeForget.lean：cAlgFreeForgetDerivedAdjunction | 既存CAlg_Rと既存D(A)の間の全∞随伴。A可換環のみが入力 |
+| 同：cAlgForgetDerived_mapJoinCone_isLimit | 任意のKと同じ指定極限錐cを、同じUで送った錐が極限錐 |
+| 同：cAlgForgetDerived_hasLimit_postcomp | CAlg側の極限の存在からD(A)側の存在 |
+| BarrattEccles/Theory.lean：barrattEcclesCore.forget_preservesLimits | 上の実定理が既に中核の欄へ代入済み |
+
+OfTransportという条件付き版もあるが、FreeProbeUnitLocalTransport.freeProbeUnitTransportConditionを
+代入した上の無条件版が本体にある。係数拡大・制限の随伴と取り違えていない。
+**Uの極限保存を新たな数千行のBF構成に帰着させる必要はない。**
+
+native先行の手順は次のとおり。
+
+1. Xを離散CAlgのcosimplicial図式へ送り、その**同じnative極限錐**を作る。
+2. Uの上の既存定理で同じ錐をD(A)の極限錐へ送る。
+3. discrete_forgetとG10の全関手・射・指定錐の比較を用い、台を指定した交代余面複体と比較する。
+4. パラメータX全体での極限の関手性によりofCosimplicialを作り、
+   ofCosimplicial_forgetをFunctorIsoとして、_coneを元の指定錐として供給する。
+
+**残る点**：右随伴であることはCAlgの極限の「存在」や、Uが極限を「創出」することの証明ではない。
+D(A)で極限を取って、代数構造が自動で付いたとはしない。
+第一段のCAlgのnative錐の存在・全関手性・厳密なReedy/frame模型との指定比較が③-bの3b-4の仕事である。
+通常のBE代数圏の極限だけを、そのnative極限錐と同一視しない。
+G10の一般部品を本レーンで再実装する案でもない。
+
+| 利用先 | May＋BFの場合 | coherent Spの場合 |
+| --- | --- | --- |
+| ofCosimplicial・_forget・_cone（5a-5） | native先行なら一般BF作用は不要。Mayのn<0の演算計算には別途BF作用が要る | native先行なら一般BF作用は不要 |
+| ③-b 3b-4の厳密BE図式のTotとU | Reedy/frameによるnative錐と既存Uの極限保存で進める経路があり、一般BF作用は必須でない | 同じ。P⁰の選択とは独立 |
+| M14のcosimplicial Frobeniusとの一致 | 現在の直接計算経路は同じBF作用を要する。台の擬同型だけでは足りない | coherentなSp値自然変換と極限保存の比較で進める候補。BF作用を用いる必要はない |
+
+coherent案の最後の行は「各射影でπ_nが一致する」だけの議論ではない。
+離散入力でP⁰とFrobeniusがcoherentな図式の射として一致すること、
+W=U⋙Vの必要な極限保存、および同じ極限錐の射の一意性を使う。
+離散Eilenberg–MacLane対象間の写像空間の0切断性から離散計算を全図式へ運ぶ比較も明記して証明する。
+その後にπ_nを取る。ho上の自然性だけのMay演算にこの手順を適用してはならない。
+外側の単体的実現でもWの該当する保存と指定辺の比較が必要であり、「coherentだから」の一語で省略しない。
+
+### 110.4 KSTで減らせる部分と、減らせない部分
+
+KST/SpectraのBFはBousfield–Friedlanderのスペクトル模型であり、
+ここで検討しているBerger–Fresseの一般コチェイン作用とは別である。
+
+| 既存KST宣言 | coherent経路で再利用する範囲 | 供給したことにならないもの |
+| --- | --- | --- |
+| homotopyFixedPoints、GroupAction.diagramFunctor | 実際の厳密作用図式のhG対象 | orbit、norm、Tate |
+| homotopyFixedPointsInfinityCone・_vertex・_isLimit | **元のhG対象**を頂点とするnative極限錐 | 今の周期係数模型とこの図式との全自然同定 |
+| homotopyFixedPointsMap、OmegaSpectrum.homotopyLimitMap | 同変射・図式の射での実スペクトル射 | orbit→fixedのnorm自然変換 |
+| homotopyTotalizationInfinityCone・_isLimit | 実スペクトルの指定Totのnative極限性 | CAlgやVの極限保存そのもの |
+| GroupActionCochains.levelMap_piIsomorphism、FreeActionFamily.endMap_piIsomorphism | 自由作用のcochain・endの不変性 | Tateのexact性、T_pの全入力への延長、右k作用 |
+
+従ってhG対象・指定錐を新たに作る費用は**ゼロ**。
+ただし§94.1は既にこのKSTのhGとnative錐を認識した上で§94.2を見積もっている。
+3,000〜5,500行からその構成費をもう一度引くのは二重控除になる。
+同じp入力の実作用図式との比較を作った後で、残額の中のhG側をこの既存APIへつなぐ。
+
+今回KST/SpectraとSpectra/の公開宣言を調べた範囲では、
+当該入力のnative homotopy orbit、orbit→fixedのnorm、指定境界を持つTateの全関手、
+スペクトル的な右k作用とeは確認できなかった。
+スペクトルの安定性や一般のcofiberの道具があっても、norm射の構成と自然性・指定境界の同定は別に要る。
+加群上の有限和としてのnormや、鎖の周期Homをnative Tateの定義済み実例と数えない。
+GroupNerveNormalizedCohomologyの正次数消滅はCharZeroの体を仮定するため、F_p係数の代用にはならない。
+
+原典[DAG XIII Construction 2.2.6・Remark 2.2.7・Warning 2.2.8](https://www.math.ias.edu/~lurie/papers/DAG-XIII.pdf#page=35)
+では、指定Tate類からスペクトルの演算を作る。一般kではk線形な演算ではない。
+既存のk線形なpowerOperationCoefficientSeedとそのH⁰の値だけで、
+この右作用・指定類の射eを供給したとはしない。
+[BS Lemma 8.4](https://people.mpim-bonn.mpg.de/scholze/prisms.pdf#page=63) の
+二重模型の実現上のFrobeniusの主張は、どちらの経路でも最後まで範囲に残す。
+
+### 110.5 推奨と判断点
+
+**推奨は、May案を当面維持しつつ、Totの群と3b-4はnative錐先行で進める方針。**
+一般BF作用を共通部品として独立承認する理由に「Totの構成にも必須」を使わない。
+一般BF作用が要るのは、現May経路の同じ作用でのtop operationを直接計算する工程である。
+その仕事の費用はM14の比較から消さず、残り約10,100〜18,400行（保守的には10,700〜18,950行）として示す。
+
+理由は、(1) Mayの演算・局所化・零次・離散までが既に出来ている、
+(2) 残りの型は鎖・切断の有限計算と指定されたBE比較であり、
+(3) coherentへ戻す場合はnative norm/Tate・exactな延長・右k作用eという
+別々の未供給の束が依然として残るため。
+ただし二案の見込みの幅は重なっており、行数の下界やMayが必ず短いという証明ではない。
+coherent出力を今後の∞基盤にも優先して供給する方針なら、その再利用価値を理由に後者を選ぶ判断はあり得る。
+
+coherentへ戻す場合の判断は、残り12,300〜22,100行の元工程と、
+BS用の未積算比較を含めた13,300〜24,500行の暫定見込み、界面を再び強くする範囲・分担をセットで行う。
+現ho値の界面のまま内部だけcoherentな実例を作る案も可能であり、界面変更は必須ではない。
+いずれも自己判断では採用しない。
+
+**本比較を報告して判断を待つ。5a-5aの独立段の新設・Leanの再開・界面の変更はしない。**
+待ちの間はM15の段0の紙だけを進める。
+
+## 111. 判断待ちのM15段0：極限保存と一般R加群の境界（紙のみ、11-13）
+
+§110で再確認したU:CAlg_A→D(A)の全∞随伴と極限保存は完成済みである。
+ただし、これは§95・§97・§107の一般R加群の模型の不足をそのまま解消するものではない。
+
+- 固定したAと、変わるE∞頂点Rを区別する。必要なMod_Rの台の忘却は、
+  上のCAlg_Aの忘却とは始域が違う。
+- §107のdgAlgebraExtensionInfinityと準同型不変性は、厳密BE→同じ台のdg代数という
+  忘却が出来た後の固定模型で再利用する。全Rと全辺への降下・restrictionの右随伴は引き続き必要。
+- CAlgでAmitsur図式のnative極限錐を作ってUで送れても、M15の指定R加群の単位、
+  R→Sのfiber、相対テンソルの反復と指数射の同定は別である。
+  D(A)のテンソルをMod_Rの相対テンソルに読み替えない。
+- coherentなP⁰に必要な「スペクトル的な右k作用e」は、固定した係数kでの構成。
+  それを作るだけで一般のE∞底R上のmodule族・対称相対テンソルを得たとは数えない。
+  逆方向にも、既存のk線形dg双加群だけで一般の非k線形P⁰を得たとはしない。
+
+担当を決める際の最初の受け渡しは、§107.3の五点（同じ台の厳密忘却、拡大・制限の全関手と随伴、
+弱同値・nativeの辺と合成への降下、相対テンソルと底変換、指定単位とfiber・指数射）を維持する。
+一般Rの模型の2,500〜4,500行は暫定のままで、今回の紙の比較から新しい実装の担当や上限を決めない。
+
+本節を含め、最新指示後の作業は報告書のみ。Lean編集・ビルド・監査・追加コミットなし。
+§110の二案の判断を待ち、未検証の下書きは作業木に保持する。
+
+## 112. M14再開：残り全体の型一覧（11-13、実装前の紙）
+
+### 112.1 採用範囲と停止規則
+
+§110に対する最新のユーザー承認でMay案を続ける。
+一般次元のBF作用は**独立段5a-5aではなく、M14の_totの直接計算の部品**とする。
+§108のL01〜L28の数学の型を、このM14の前半の一覧として引き継ぐ。
+§108の独立段という呼称・25,400行の枠は採用しない。
+外枠は**M14全体25,000行（完成したMay4,128行を含む）**、12,500行で途中報告して続行する。
+
+証明の分割は数えず型を記録。前提計算は一覧のLごとに3本、照合は全体3本。
+L05の既存構成の自然性・次数移送の前提計算は§108.6の三本で3/3。
+I01（IntervalCutsとの一致）は予約済み・未使用、I02・I03も未使用。
+それ以外の新しい数学は、検証済みを保存して型と漏れた理由を報告し停止する。
+凍結確定の連絡後はコミットしない。今回まだ確定連絡を受けていない。
+
+最初は未検証185行を修正して検証する。個別ビルド済み568行は専用監査後にコミットする。
+以下の紙の一覧を載せた後、承認待ちを挟まずこの順に進める。
+G10・③-bのnative錐や一般の実現の橋は作らず、受け渡し後の指定比較を適用する。
+5a-5・3b-4に一般BF作用を前提として追加しない。
+
+### 112.2 L01〜L28の補充：境界と合成の有限項の対応
+
+L01〜L28の全型は§108.3・§108.4、証明分割は§108.6に固定したもの。
+L09に対して§109で止めた追加候補を、今回の**実装前の全一覧**にL09aとして含める。
+BoundaryBalanceIndexとboundaryBalanceTermの型・零次数と退化項の規約も§109のとおり。
+
+```lean
+-- L09a：テンソルの面／係数の文字削除／入力の面の符号付き項を対にする。
+boundaryBalance_pairing (u : Surjection.BasisWord (r+1) d) (q : ℕ) :
+  ∃ τ : Equiv.Perm (BoundaryBalanceIndex u q), Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      boundaryBalanceTerm A S u q (τ j) x = -boundaryBalanceTerm A S u q j x)
+```
+
+L12の部分合成についても、有限和の等式だけで添字の対応を省かない。
+`CompositeBalanceIndex u v i q`は、既存OverlapPartitionによる係数合成と一段切断の項と、
+外側の切断のi色の出力を内側で切る二段切断の項の直和。
+`compositeBalanceTerm`は第一群を正、第二群を負とする、同じ実テンソルでの符号付き値。
+正規化で消える合成語・面は零の項として保持する。新規の型は次。
+
+```lean
+-- L12a：二段切断の項の対応。nullaryも含む。
+compositeBalance_pairing (u : Surjection.BasisWord (m+1) d)
+    (v : Surjection.BasisWord n e) (i : Fin (m+1)) (q : ℕ) :
+  ∃ τ : Equiv.Perm (CompositeBalanceIndex u v i q), Function.Involutive τ ∧
+    (∀ j, τ j = j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      compositeBalanceTerm A S u v i q j x = 0) ∧
+    (∀ j, τ j ≠ j → ∀ (A : Type u) [CommRing A] (S : SSet.{0}) (x : S _⦋q⦌),
+      compositeBalanceTerm A S u v i q (τ j) x = -compositeBalanceTerm A S u v i q j x)
+```
+
+上の二つは、既存の符号規約を変えず、各値に現れる面写像の合成とKoszul符号を比較する主張。
+L09a→L09→L10、L12a→L12→L14・L16の順に使う。
+L11の置換、L13の単位、L14のnullary、L15の自然性、L18のTR制限、
+L19〜L28の正規化・convolution等化子・台の指定比較は元の一覧どおり残る。
+
+### 112.3 L29〜L37：同じ係数のtop operationを直接計算する
+
+以下も**紙の新規名・型案（未型検査）**。κ := EInfinityPrimeField.{u} p、
+ν p n := ULift.up (mayNu p n : ZMod p)。r>0のBF作用と同じχ・TRを使う。
+`bfTopScalar p q e : κ`は、eをTRの実基底係数で展開した切断和のtop degreeのスカラー。
+切断符号に加え、L28の**実際の**convolution評価・テンソルの交換・指定次数移送の符号を含める。
+νの逆数となるようにこのスカラーを定義しない。
+`coefficientOf f s`は、Wの自由生成元e_sにfを適用して実BE係数へ運んだ値。
+
+```lean
+-- L29：増大を保つ同変比較の変更が、同じD_iのホモロジー類を変えない。
+mayDClass_comparison (f g : (mayResolution p κ).complex ⟶ (mayArityResolution p κ).complex)
+    (hf : f ≫ (mayArityResolution p κ).π = (mayResolution p κ).π)
+    (hg : g ≫ (mayArityResolution p κ).π = (mayResolution p κ).π)
+    (X : (operad κ).Algebra) (i : ℕ) (j : ℤ) (a : MayClosed X.carrier j) :
+  mayDClassWith f X i j a = mayDClassWith g X i j a
+
+-- L30：計算可能な標準の周期bar比較。Wと同じ右回転生成元・増大を使う。
+canonicalCyclicComparison : (mayResolution p κ).complex ⟶ (mayArityResolution p κ).complex
+canonicalCyclicComparison_augmentation :
+  canonicalCyclicComparison p ≫ (mayArityResolution p κ).π = (mayResolution p κ).π
+canonicalCyclicComparison_even (s : ℕ) :
+  coefficientOf (canonicalCyclicComparison p) (2*s) = canonicalEvenBarSum p s
+canonicalCyclicComparison_odd (s : ℕ) :
+  coefficientOf (canonicalCyclicComparison p) (2*s+1) = canonicalOddBarSum p s
+
+-- L31：非退化top切断の各色は全q単体。§106の積の計算を実作用へ運ぶ。
+bfAction_top_value (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (e : (operad κ).arity p |>.X (-((q*(p-1):ℕ):ℤ)))
+    (a : normalizedComponent X q) :
+  bfRepeatedActionValue X q e a = bfTopScalar p q e • frobeniusNormalizedValue X q a
+
+-- L32：標準bar和のtop係数。全符号を含む零次・一次・帰納式。
+canonicalTop_zero : bfTopScalar p 0 (coefficientOf (canonicalCyclicComparison p) 0) = 1
+canonicalTop_one :
+  bfTopScalar p 1 (coefficientOf (canonicalCyclicComparison p) (p-1)) =
+    (-1 : κ)^((p-1)/2) * (((p-1)/2).factorial : κ)
+canonicalTop_succ (q : ℕ) :
+  bfTopScalar p (q+1) (coefficientOf (canonicalCyclicComparison p) ((q+1)*(p-1))) =
+    (-1 : κ)^((q+1)*((p-1)/2)) * (((p-1)/2).factorial : κ) *
+      bfTopScalar p q (coefficientOf (canonicalCyclicComparison p) (q*(p-1)))
+
+-- L33：巡回bar和で寄与する隣接対の列挙と符号の集計。
+-- SignedTopBarIndexはL32の実有限和の非零添字。signedTopBarWeightはその実係数。
+canonicalTop_pair_count (q : ℕ) :
+  ∑ b : SignedTopBarIndex p q, signedTopBarWeight p q b =
+    (-1 : κ)^(q*(q+1)*((p-1)/2)/2) * (((p-1)/2).factorial : κ)^q
+
+-- L34：逆冪で定義したMayのνとの一致。p=2を含む。
+canonicalTop_normalized (q : ℕ) :
+  ν p (-(q:ℤ)) *
+    bfTopScalar p q (coefficientOf (canonicalCyclicComparison p) (q*(p-1))) = 1
+
+-- L35：同じ正規化した閉元のp乗。codegeneracyと微分を保つ。
+frobeniusNormalized_mem (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (a : normalizedComponent X q) : (a.val^p) ∈ normalizedComponent X q
+frobeniusNormalized_closed (X : CosimplicialRingAlgebra κ) (q : ℕ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (q:ℤ)) :
+  MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (q:ℤ)
+
+-- L36：全整数nの同じMay演算とlevelwise Frobeniusの実ホモロジーでの一致。
+bfMayTopValue (X : CosimplicialRingAlgebra κ) (f : X ⟶ X)
+    (hf : ∀ j a, (f.app j).right.hom a = a^p) (n : ℤ)
+    (a : MayClosed ((bfNormalizedAlgebra κ).obj X).carrier (-n)) :
+  mayNormalizedClass p ((bfNormalizedAlgebra κ).obj X) n ν p n a =
+    mayClosedClass _ (-n) (mayClosedMap ((bfNormalizedAlgebra κ).map f).hom (-n) a)
+
+-- L37：標準単体の同じ余代数によるconvolutionはBE代数の右frame。
+bfSimplexConvolutionFrame (B : (operad κ).Algebra) :
+  SimplexCategory ⥤ (operad κ).Algebraᵒᵖ
+bfSimplexConvolutionFrame_obj (B : (operad κ).Algebra) (q : ℕ) :
+  ((bfSimplexConvolutionFrame B).obj ⦋q⦌).unop =
+    convolutionAlgebra (hopf κ) (simplexBECoalgebra κ q) B
+```
+
+canonicalEvenBarSum / OddBarSum は、Wの周期微分T・Nに対し、BEの実bar収縮で
+自由生成元の像を再帰的に持ち上げた、同じ置換列の有限和。
+偶数では巡回群の元で添字づける各二列の和、奇数では同じ巡回生成元の追加を含む。
+L30で実置換列の式を検証し、L33でその寄与と符号を計算してL32へ渡す。
+計算中に生成元の逆や係数の符号を公開定義の変更で吸収しない。
+L35のclosedは定義の型だけで終わらせず、L26の指定比較でa↦a^pを読む生成元公式も供給する。
+L37はframeのmatching射のfibration・各単体の収縮・augmentationを含める。
+G10の一般native比較をL37の仮定に入れて作ったことにはしない。
+
+### 112.4 L38〜L44：指定native Tot・filtered塔・A4の二重模型
+
+ここで`nativeTot`とそのcone、実現の全関手と指定比較は③-bの供給物を使う。
+以下の型のG10/3b-4の引数は**外部の受け渡しに含まれる証明**であり、
+このレーンで新しい同名の構造を作って仮定を隠すものではない。
+正式な受け渡しの公開名に合わせる際は、数学の範囲を変えず名前を追従する。
+
+```lean
+-- L38：同じBF模型が持つnative錐。標準単体の同じframeで高次成分を作る。
+bfCosimplicialCone (X : CosimplicialRingAlgebra κ) :
+  JoinCone (cosimplicialNerve X ≫ discreteCAlgUnderEmbedding κ)
+bfCosimplicialCone_vertex (X) :
+  (bfCosimplicialCone X).vertex =
+    atVertex (nerveMap (bfNormalizedAlgebra κ) ≫ algebraCAlgSource κ) (nerveVertex X)
+
+-- L39：G10とnative側の同じ錐の全関手比較を適用する。
+bfToNativeTotIso (G10 : SpecifiedG10Comparison κ) (BE : SpecifiedNativeBETotComparison κ) :
+  FunctorIso (nerveMap (bfNormalizedAlgebra κ) ≫ algebraCAlgSource κ) (nativeOfCosimplicial κ)
+bfToNativeTotIso_frobenius (G10) (BE) (X) (f : X ⟶ X) :
+  (bfToNativeTotIso G10 BE).hom.app (nerveVertex X) ≫ nativeTotMap X f =
+    bfNativeMap X f ≫ (bfToNativeTotIso G10 BE).hom.app (nerveVertex X)
+
+-- L40：現界面の_tot。指定された同じFrobenius辺で、全整数次数。
+barrattEcclesPowerOp0_tot (G10) (BE)
+    (X : CosimplicialRingAlgebra κ) (f : X ⟶ X)
+    (hf : ∀ j a, (f.app j).right.hom a = a^p) (n : ℤ) :
+  (barrattEcclesPowerOp0 p n).app (mk (nativeTotVertex X)) =
+    (homotopyGroupsOnHo κ (cAlgForgetDerived κ) n).map
+      (homMk (nativeTotFrobeniusEdge X f))
+
+-- L41：filtered群の余極限における自然な演算の一意性。
+filteredOperation_desc {I : Type u} [SmallCategory I] [IsFiltered I]
+    (D : I ⥤ AddCommGrpCat.{u}) (c : Cocone D) (hc : IsColimit c)
+    (P Q : c.pt ⟶ c.pt)
+    (h : ∀ i, c.ι.app i ≫ P = c.ι.app i ≫ Q) : P = Q
+
+-- L42：同じFrobenius塔のshiftとP⁰。Πの指定余極限保存を入力として明記。
+frobeniusTower_powerOp (D : ℕ ⥤ hoCAlg κ) (f : D ⟶ D)
+    (c : Cocone D) (hc : IsColimit c) (n : ℤ)
+    (hπ : IsColimit ((Π κ n).mapCocone c))
+    (hP : ∀ i, (powerOp0 p n).app (D.obj i) = (Π κ n).map (f.app i)) :
+  (powerOp0 p n).app c.pt = (Π κ n).map (colimitEndomorphism c hc f)
+
+-- L43：単体的余単体的可換Fp代数の同じ厳密二重模型でのMay差の境界。
+-- doubleRealizationModelはBFの各列の作用と、外側の実際のshuffleを使う模型。
+-- F_Xはlevelwise Frobeniusから来る同じ複体射。Hは閉元ごとの明示的な原始元。
+doubleMayDifferencePrimitive (X : SimplicialObject (CosimplicialRingAlgebra κ))
+    (n : ℤ) (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  ∃ H : (doubleRealizationModel X).carrier.X (-n-1),
+    (doubleRealizationModel X).carrier.d (-n-1) (-n) H =
+      mayNormalizedValue p (doubleRealizationModel X) n ν p n a - (F_X.f (-n) a.val)
+
+-- L44：③-bの指定実現の橋を適用したA4-localな全整数次数の比較。
+a4_realization_powerOp (G10) (BERealization : SpecifiedBERealizationComparison κ)
+    (X : SimplicialObject (CosimplicialRingAlgebra κ)) (n : ℤ) :
+  (powerOp0 p n).app (mk (nativeDoubleRealizationVertex X)) =
+    (Π κ n).map (homMk (nativeDoubleFrobeniusEdge X))
+```
+
+L39のappは紙の記法。実際は既存FunctorIsoの辺・自然性と指定join錐の脚を用いる。
+L38〜L40はG10の後。そこに到達したら区切って報告し、外部の橋は作らずM15の紙へ移る。
+L41は通常圏の群の余極限の普遍性。L42でΠがfiltered余極限を保つこと自体は、
+界面の保存の欄／別工程の忘却のsifted保存と既存のホモロジー比較から受け取る。
+その依存を供給せずに、BE実例の全filtered保存までM14で完成したとは報告しない。
+
+L43では単にΠをlevelwiseに取って実現の余極限へ交換しない。
+指定のshuffle・係数の微分・全複体のKoszul符号で差の原始元を作る。
+必要な数学を次の二つとして一覧に含める。
+
+```lean
+-- L43a：同じshuffle実現に沿うBE作用の、全係数・全射での比較。
+doubleRealization_action (X) (r : ℕ) :
+  realizationAction X r = doubleShuffleAction X r
+
+-- L43b：L43の原始元の明示的有限展開の微分。
+-- finiteMayPrimitiveは同じW係数・BF切断・外側のshuffleから定義し、
+-- 入力の閉条件で消える項も、係数微分とともに保持する。
+finiteMayPrimitive_d (X) (n : ℤ)
+    (a : MayClosed (doubleRealizationModel X).carrier (-n)) :
+  (doubleRealizationModel X).carrier.d (-n-1) (-n) (finiteMayPrimitive X n a) =
+    mayNormalizedValue p (doubleRealizationModel X) n ν p n a - F_X.f (-n) a.val
+```
+
+同じ実現模型・指定射・底の全複体との比較は、③-bの正式な受け渡しに照らして適用する。
+その前段に新しい一般の厳密化やnative錐の定理を作らない。
+この一覧にない新しい数学が要ると分かった時点で、その型と漏れた理由を報告する。
+
+### 112.5 証明順・照合の枠
+
+修正・監査→L01〜L08→L09a,L09,L10→L11〜L18（L12aを先に）→I01→L19〜L28→
+L29〜L36→L37,L38→G10/3b-4受け取り後にL39,L40→L41,L42→L43a,L43b,L43,L44。
+L32とL33は組合せの和を先に計算して規格化へ運ぶ。
+新しい独立段の取り込み点は設けず、M14の途中の検証済み分として保存する。
+
+I01以外のI02・I03は未使用。比較の定義の表現差だけなら型を記録してこの枠で処理する。
+比較そのものが新しい数学なら、照合の名で継続しない。
+以上を残り全体の開始時の型一覧とする。承認待ちを挟まず、まず568行の監査と185行の修正へ進む。
+
+### 112.6 最初の568行の監査と保存
+
+/tmp/bsw16/audit-m14-cuts-first.log：**11モジュール・101宣言、標準三公理のみ**で成功。
+568行を保存する。対象はEInfinity/SimplexCuts/の次の11本。
+Outputs、Faces、HomogeneousTensor、NormalizedGenerators、CutTensor、TensorNaturality、
+CutNaturality、Signs、SignedTerms、SignedNaturality、CollapsedFace。
+いずれも個別対象ビルドに通った版から数学の変更なし。sorry・追加公理なし。
+
+以前のExpanded・Balanced・TopTermの162行と合わせ、切断の検証済み部分は730行。
+May4,128行を足した本経路の現在の基礎実測は4,858行。
+RawAction・DegenerateInput・Normalizationの修正中の分は、ここに含めない。
+新規ファイルのdocstringに残る5a-5a L番号は§108の旧一覧の参照であり、
+今後はM14のL番号として読む。独立段を作ったという意味にはしない。
+
+全体の入口登録・rootビルド・全体監査は行っていない。
+本コミットは枝の中間保存で、独立した5a-5aの完成／取り込み点ではない。
+監査の鍵は返却済み。未検証三本の修正版は別の一回の対象ビルドで検証中。
