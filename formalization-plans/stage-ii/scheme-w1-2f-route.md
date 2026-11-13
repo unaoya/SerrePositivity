@@ -618,3 +618,33 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 今回の同型は標準開ごとの整数加群の同型である。標準開の制限写像および閉厚化への写像との自然性、H⁰ の環構造との比較は次の接続として残る。各標準開の同型だけで F6〜F8 全体の完成とはしない。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
 
 2f 累計は **91 モジュール・5,415 行（登録込み 5,548 行）**。残りの主要な束は上記の自然性、F7 の H⁰ の有限環の四角形、F8 の増大全複体。暫定の残り見込み 3,000〜7,500 行、停止基準 18,000 行以内。18 時の凍結の確定連絡が来たら翌朝まで枝へのコミットを控え、下書きと紙の作業を作業木で進める。main への取り込みと全体ビルドは調整役に委ねる。
+
+## F6 途中：標準開の制限に自然な環の順極限の Čech 比較（2b83fb1d2、11-13）
+
+新規 4 モジュール・13 公開宣言・277 行（登録込み 285 行）。対象ビルドは 3,257 jobs 成功。登録した直接 importer は 4,641 jobs 成功。別実行の公理監査は **9,340 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を通し、同じ worktree の待ちは一つに保った。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry`）：`RingDirectLimitIntNaturality`、`FrobeniusDirectLimitIntNaturality`、`ProjectiveChartFrobeniusRestriction`、`ProjectiveFrobeniusRingChartDiagram`。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `ringDirectLimitComparison` | 可換な環の有向系の射から実際の環の順極限の射を構成する。 |
+| `ringDirectLimitComparison_of` | 同じ射は有限段で指定された環の射に一致する。 |
+| `ringDirectLimitIntColimitIso_naturality` | 環の順極限と整数加群の余極限の比較は系の環の射に自然。 |
+| `frobeniusIntDirectSystemNatTrans` | 実際の環の射が整数加群としての Frobenius 系の自然変換を誘導する。 |
+| `frobeniusDirectLimitIntColimitIso_naturality` | 実際の Frobenius 順極限の環の射と同じ整数加群の余極限の射は比較を介して一致する。 |
+| `projectiveChartRingFrobeniusRestriction` | 標準開の環の制限が誘導する反復 Frobenius 系の自然変換。 |
+| `projectiveChartFrobeniusRingSystemIso_restriction` | 係数系と環の系との比較は標準開の制限に自然。 |
+| `projectiveChartFrobeniusRingSystemColimit_restriction` | 同じ可換四角形は系の余極限でも成り立つ。 |
+| `projectiveChartFrobeniusRingColimitIso_restriction` | 前の束の標準開ごとの余極限同型は実際の環の制限を保つ。 |
+| `projectiveFrobeniusRingChartDiagram` | 各標準開の環の Frobenius 順極限を整数加群の係数図式にする。 |
+| `projectiveFrobeniusRingChartDiagram_map` | この図式の写像は標準開の実際の環の制限から誘導される。 |
+| `projectiveFrobeniusRingChartDiagramIso` | 係数順極限と標準開の環の順極限との比較を標準開について自然な同型にする。 |
+| `projectiveFrobeniusRingChartCechIso` | 既存の Frobenius 係数 Čech 複体と、実際の標準開環の順極限の Čech 複体の同型。 |
+
+余極限と標準開での評価との比較には Mathlib の `colimit_map_colimitObjIsoColimitCompEvaluation_hom` を再利用した。`colimMap` と `colim.map` の二つの表示は `colimMap_eq` で明示的にそろえ、heartbeat・再帰深度の上限は変更していない。係数図式の関手律は項ごとの同型で移し、さらにその写像が実際の環の制限から誘導されることを別の宣言で照合している。
+
+残る接続を区別する：今回閉じたのは標準開を狭める制限に関する自然性。閉厚化への射に関する同じ自然性、H⁰ の環構造、F7 の有限環の四角形、F8 の増大全複体は未完。2f 累計は **95 モジュール・5,692 行（登録込み 5,833 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではない。
+
+次の実装の材料を確認した。
+- 閉厚化への係数の射には、2e の `projectiveHomogeneousChartLinearEquiv_map`（`ProjectiveHomogeneousRingChartMap`）がある。次数付き環の写像と多項式環上の代数写像が同じ写像であることから、斉次局所化の実際の環の写像との比較を供給する。今回の一般の環の順極限の自然性と合成する。
+- H⁰ の既存の `affineSchemeSectionAlgebraAugmentation_bijective` は全空間のアフィン性を要求するので、Proj 全体へはそのまま適用しない。`TopCat.Sheaf.existsUnique_gluing'` により、一般の開被覆の `fullAlgebraCechEqualizer` と大域切断を、増大写像を保つ環の同型でつなぐ。この段は高次コホモロジーの消滅や一般の Stein 分解を要求しない。F7 の Spec 全射性にはこの実際の環の比較を使う。
