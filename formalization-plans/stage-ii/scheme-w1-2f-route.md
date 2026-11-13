@@ -648,3 +648,32 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 次の実装の材料を確認した。
 - 閉厚化への係数の射には、2e の `projectiveHomogeneousChartLinearEquiv_map`（`ProjectiveHomogeneousRingChartMap`）がある。次数付き環の写像と多項式環上の代数写像が同じ写像であることから、斉次局所化の実際の環の写像との比較を供給する。今回の一般の環の順極限の自然性と合成する。
 - H⁰ の既存の `affineSchemeSectionAlgebraAugmentation_bijective` は全空間のアフィン性を要求するので、Proj 全体へはそのまま適用しない。`TopCat.Sheaf.existsUnique_gluing'` により、一般の開被覆の `fullAlgebraCechEqualizer` と大域切断を、増大写像を保つ環の同型でつなぐ。この段は高次コホモロジーの消滅や一般の Stein 分解を要求しない。F7 の Spec 全射性にはこの実際の環の比較を使う。
+
+## F6：閉厚化への自然性と標準開環の Čech H の正次数（f8521262a・b24a8233c、11-13）
+
+新規 5 モジュール・14 公開宣言・386 行（登録込み 396 行）。18 時前に対象検証済みの最初の二本を `f8521262a` にコミットした。その後、残る三本を含む対象ビルドは 3,311 jobs 成功。残る三本と登録は `b24a8233c`。直接 importer は 4,646 jobs 成功、別実行の公理監査は **9,398 宣言・標準三公理のみ**。共有鍵 `--wait 3600` を使い、待ちは一つに保った。
+
+登録モジュール（すべて `SerrePositivity.AlgebraicGeometry`）：`ReesClosedRingGrading`、`ReesClosedHomogeneousProjection`、`ReesClosedFrobeniusRingColimit`、`ReesClosedFrobeniusRingCech`、`ProjectiveFrobeniusRingCechPositive`。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `reesClosedRingLinearEquiv_map_piece` | Rees の商の次数成分は、商の線形同型で実際の環の商の次数成分へ移る。 |
+| `reesClosedRingGrade_isInternal` | 基底イデアルによる閉厚化の実際の環の次数成分は内部直和をなす。 |
+| `reesClosedRingGradedRing` | 商環の積と内部直和分解を合わせた次数付き環構造。 |
+| `reesClosedGradedRingProjection` | 閉厚化の構造環への実際の次数付き環の射影。 |
+| `reesClosedHomogeneousChartProjection` | 各標準開で閉厚化への制限を与える、斉次局所化の実際の環準同型。 |
+| `reesClosedHomogeneousChartProjection_compare` | 既存の加群の制限は、この斉次局所化の環の射影に一致する。 |
+| `reesClosedChartRingFrobeniusNatTrans` | 実際の標準開の射影が誘導する反復 Frobenius 系の自然変換。 |
+| `reesClosedChartFrobeniusRingSystemIso_projection` | 係数系と環の系の比較は、閉厚化への射影に自然。 |
+| `reesClosedChartFrobeniusRingColimitIso_projection` | 同じ自然性は、各標準開の Frobenius 順極限の比較で成り立つ。 |
+| `reesClosedFrobeniusRingChartMap` | 標準開環の順極限の係数図式上の閉厚化への制限。 |
+| `reesClosedFrobeniusRingChartMap_app` | この射の各成分は、実際の環の射影が誘導する Frobenius 順極限の射。 |
+| `reesClosedFrobeniusRingCechMap` | 同じ係数図式の制限が誘導する Čech 複体の射。 |
+| `reesClosedFrobeniusRingCechIso_projection` | Čech 複体の二つの表示の同型は、閉厚化への同じ制限と可換。 |
+| `reesClosedFrobeniusRingCechHomologyMap_bijective` | Noether 基底、有限な次数付き加群、標準開の生成条件、中心外での同型、p が素数で係数環・構造環で零、という入力から、標準開環の Frobenius 順極限の Čech H の閉厚化への制限は正次数で全単射。 |
+
+商環の次数成分について、積を保つ構造だけでは斉次局所化の環の比較に足りず、直和分解の供給が必要だった。基底イデアルの作用が各次数射影で保たれることを使い、既存の `HilbertSerre.isInternal_quotientGrade` から商の内部直和を得て、実際の環の商へ移した。この構造は多項式環の添字型に依存しない。有限段の比較は 2e の `projectiveHomogeneousChartLinearEquiv_map`、余極限の比較は既存の環の順極限の自然性と Mathlib の `preservesColimitNatIso` を再利用する。
+
+主定理の核の消滅・像の安定化は、前の F6 の幾何学的入力から得た結果を使い、追加仮定として残していない。原典 BST13 Lemma 3.9・BS17 Lemma 4.6(i) の Hⁱ に対応する途中の主張が Čech 版であることと、Stacks 30.2.6 の導来関手との比較を形式化しないことを docstring に記した。零環や空の中心を排除せず、heartbeat・再帰深度の上限も変えていない。
+
+**到達点**：F6 の正次数の制限の全単射性を、標準開の実際の環の Frobenius 順極限を使う Čech 複体へ、同じ閉厚化への写像で接続した。H⁰ の環構造とその有限環の四角形（F7）、増大全複体（F8）、停止点の全体の自然性の検収は未完。2f 累計は **100 モジュール・6,078 行（登録込み 6,229 行）**。残りは暫定 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
