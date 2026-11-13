@@ -527,3 +527,29 @@ F6 の適用順を具体化した。厚さ 1 への制限 u₁ の核の元 x �
 F6 はまだ未完。今回の出力は H の順極限であり、完備化ではなく perfection の係数の Čech H との自然な比較を次に作る。代数的順極限の普遍性を圏論的余極限へ渡し、2e の filtered colimit の比較を使う。F7 の次数零の環の比較・有限射の四角形と、F8 の全複体も残る。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更しない。
 
 11-13 の凍結は予告段階。検証済みの上記コミットを途中の取り込み候補として用意した。18 時の確定連絡後は翌朝まで枝へのコミットを控え、未検証の下書きは作業木に残す。翌朝の main 取り込みと改名表による追従は、一括レーンの手順を受けて実施する。
+
+## F6 途中：Frobenius の係数関手と順極限比較の自然性（d86327316、11-13）
+
+新規 4 モジュール・13 公開宣言・278 行。対象ビルドは 3,087 jobs、入口への登録を含む直接 importer のビルドは 4,627 jobs 成功。別実行の公理監査は **9,196 宣言・標準三公理のみ**。ビルド・監査とも共有鍵 `--wait 3600` を使い、各時点の待ちは一つ。新規登録は `LinearDirectLimitCocone`、`LinearDirectLimitNaturality`、`ProjectiveCechFrobeniusFunctor`、`ReesClosedFrobeniusFunctor`。いずれも `SerrePositivity.AlgebraicGeometry` の下。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `linearDirectSystemFunctor` | 実際の線形有向系を自然数から加群圏への関手にする。 |
+| `linearDirectSystemCocone` | 代数的な順極限への標準写像を余錐にする。 |
+| `linearDirectSystemIsColimit` | この余錐は圏論的な余極限の普遍性を持つ。 |
+| `linearDirectLimitColimitIso` | 代数的順極限と同じ系の圏論的余極限は同型。 |
+| `linearDirectLimitColimitIso_ι` | 比較同型は各段からの標準写像を保つ。 |
+| `linearDirectSystemNatTrans` | 有向系の可換な段ごとの写像を自然変換にする。 |
+| `linearDirectLimitColimitIso_naturality` | 比較同型は有向系の射に自然。 |
+| `projectiveCechFrobeniusCoefficientFunctor` | 標準開の実際の反復 Frobenius を遷移とする係数図式の関手。 |
+| `projectiveCechFrobeniusHomologyDiagramIso` | 各段で Čech H を取った図式は、前の束の全単射判定に使った有向系と同型。 |
+| `projectiveCechFrobeniusHomologyColimitIso` | 前の束の Frobenius 順極限を、この H の圏論的余極限へ移す。 |
+| `reesClosedRingProjectionChartMap_transition` | 環の商への射影は厚さを下げる標準開の遷移と可換。 |
+| `reesClosedCechIntProjectionDiagram_frobenius` | 閉厚化への制限は標準開の係数図式の反復 Frobenius と可換。 |
+| `reesClosedFrobeniusCoefficientNatTrans` | 実際の閉厚化への制限を Frobenius 係数系の自然変換にする。 |
+
+順極限の整数作用と加法群の標準整数作用の二つの表示には、恒等の加法同型を `AddEquiv.toIntLinearEquiv` で線形同型にする明示的な橋を置いた。加群の台集合や係数環の宇宙は縮小しない。厚化の因子分解と射影比較を合成して係数図式の可換性を証明したので、任意の H の写像を代わりに選んだものではない。
+
+2f 累計は 81 モジュール・4,740 行（登録込み 4,853 行）。前回の半分の規模の報告から 278 行増加。残りの主要な接続は F6 の perfection 係数の Čech H との比較、F7 の次数零の環と有限射の四角形、F8 の全複体。残りの暫定見込みは 3,000〜7,500 行で、停止基準 18,000 行以内。
+
+F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然性を再利用する。現在の定理は係数環と加群、添字圏の宇宙をそろえているため、整数係数を `ULift ℤ` の加群へ環同型に沿って移し、添字は `AsSmall ℕ` へ圏同値で移す道を使う。`scheme-drafts/ProjectiveCechIntLift.lean` はこの係数移送の未検証下書きで、今回の登録・コミットには含めない。perfection の係数図式の Čech H との同型および閉厚化への制限との可換性まで閉じる必要がある。F7・F8 も未完で、停止点 2f ではない。
