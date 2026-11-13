@@ -431,3 +431,41 @@ F5 は正次数と次数零の両方が閉じた。F6〜F8 は未完で、停止
 F6 の完成はまだ主張しない。次は局所化へ移す。既存の `projectiveScalarLocalizationLinearEquiv` とその分数公式で、加群の局所化を環の Away 局所化へ移せる。`IsLocalization.Away.lift` を使い、分母の像が p^e 乗になることから可逆性を供給する。分子・分母の式を用いて指定次数部分へ制限し、Čech 図式へ渡した後、`reesClosedRingCechIso` で Rees 表示へ戻す。厚化の遷移と射影との可換性も同じ比較に通す。
 
 F6 の核側は、十分厚い段への制限の単射性と今回の因子分解を組み合わせる。像側は、厚化間の像の安定化と因子分解で十分高い Frobenius の像を元の H の像へ入れる。これを Frobenius 順極限上の全単射性へ移す作業は未実装。F7 の次数零の商との比較、F8 の全複体も残る。停止点 2f ではない。
+
+## F6 途中：厚化 Frobenius の標準開・Čech と遷移（f716a56b1）
+
+新規 13 本・25 公開宣言（ほか local instance 1）・681 行。2f 累計 62 本・3,280 行（入口の import 込み 3,355 行）。対象と直接 importer は 4,608 jobs 成功。別実行の監査は 8,976 宣言・標準三公理のみ。各実行に共有鍵 `--wait 3600` を使い、待機は一つずつ。報告点 4,500 行、停止基準 18,000 行には達していない。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `awayPowerMap` | 分母を k 乗へ送る環準同型を Away 局所化へ延長する。 |
+| `awayPowerMap_algebraMap` | 局所化の延長は元の環の写像を保つ。 |
+| `awayPowerMap_fraction` | 分子を元の写像、分母の指数を k 倍へ送る。 |
+| `awayPowerMap_scalar` | 局所化の延長は係数環の指定した写像と可換。 |
+| `awayPowerMapSemilinear` | 局所化の延長を半線形写像としてまとめる。 |
+| `awayPowerMapSemilinear_apply` | 半線形表示と元の環準同型の値は一致。 |
+| `projectiveScalarLocalizationLinearEquiv_fraction` | 加群局所化と Away 局所化の比較の分数公式。 |
+| `projectiveLocalizedPowerMap` | 分母を冪に送る写像を標準開の加群局所化へ移す。 |
+| `projectiveLocalizedPowerMap_fraction` | 加群局所化でも分母の指数は k 倍になる。 |
+| `projectiveGradedAwayPowerMap` | 次数を k 倍に送る条件で指定次数の部分へ制限する。 |
+| `projectiveGradedAwayPowerMap_val` | 指定次数の写像は周囲の局所化の写像の制限。 |
+| `projectiveNatGradingInt_map_mem_mul` | 自然数次数を k 倍に送る加法写像は整数への零延長でも次数を k 倍に送る。 |
+| `projectiveNatGradingInt_chart_map_mem_mul` | 分母次数を含む標準開の指定次数を k 倍へ送る。 |
+| `projectiveLocalizedPowerMap_restriction` | 分母を冪に送る写像は標準開を狭める制限と可換。 |
+| `projectiveLocalizedPowerMap_naturality` | 係数の線形写像との可換四角形は局所化後も可換。 |
+| `reesClosedRingThickeningFrobenius_algebraMap` | 実際の閉厚化の係数の像は p^e 乗へ送られる。 |
+| `reesClosedLocalizedThickeningFrobenius` | 実際の閉厚化の局所化に厚さ n→p^e*n の半線形写像を構成する。 |
+| `reesClosedLocalizedThickeningFrobenius_fraction` | 厚化の局所化の分子・分母の p^e 乗の公式。 |
+| `reesClosedChartThickeningFrobenius` | 厚化の写像を実際の標準開の指定次数へ制限する。 |
+| `reesClosedChartThickeningFrobenius_val` | 標準開の写像と周囲の局所化の写像の一致。 |
+| `reesClosedChartThickeningFrobeniusNatTrans` | 標準開の写像を係数制限後の Čech 図式の自然変換にする。 |
+| `reesClosedCechThickeningFrobenius` | 実際の閉厚化の Čech H 上の厚化を経由する反復 Frobenius。 |
+| `reesClosedLocalizedThickeningFrobenius_transition` | 局所化の厚化 Frobenius は厚さを下げる遷移と可換。 |
+| `reesClosedChartThickeningFrobeniusNatTrans_transition` | 厚化の遷移との四角形は実際の標準開図式で可換。 |
+| `reesClosedCechThickeningFrobenius_transition` | 厚化の遷移との可換性は Čech H 上でも成り立つ。 |
+
+標準開が空の場合を排除していない。商環にも局所化にも Nontrivial は課さず、p の像が零であることを使う。Čech H の定義と比較の docstring には原典の Hⁱ と Stacks 30.2.6 の非形式化の比較を明記した。新規モジュールの登録まで検証済みで、未検証の `ProjectiveLocalizedIteratedFrobenius.lean` は今回のコミットに含めていない。
+
+F6 は未完。今回の反復 Frobenius は厚化先への実際の写像として構成できたが、厚さを戻した合成と既存の Frobenius の反復との比較、元の環からの射影との可換性を Čech H へ送る部分が残る。その後 `reesClosedRingCechIso` で既存の Rees 表示へ移し、2e の核の評価・像の安定化と F5 を接続して順極限の全単射性を出す。F7 の次数零の環としての比較と F8 の全複体も残る。停止点 2f ではない。
+
+残りの見込み：主要な接続は F6 の因子分解・射影比較・順極限判定、F7 の H⁰ の環の比較と有限射の四角形、F8 の全複体の計 6 束。補助 API の規模がまだ動くため、現時点で完了時刻は確約しない。今夜の凍結は予告段階で、確定連絡後は枝へのコミットを控える。
