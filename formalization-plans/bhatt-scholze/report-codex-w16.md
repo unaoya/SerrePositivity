@@ -6815,3 +6815,92 @@ Surjection・TR・ShufflePath・テンソルの共通 API は再利用し、区�
 界面・型・範囲は変更しない。一般の BF 作用の供給を含むこの経路の規模・分担を
 調整役が判断できるように不足を明示し、代わりの作業である M15 の段0の紙を進める。
 G10 の取り込みだけでこの不足が解消するとは報告しない。
+
+## 107. M15 段0の続き：弱同値不変性の既存出力と restriction の条件（紙のみ、11-13）
+
+M14 の §106 の規模停止の後、指定された代わりの紙の作業として §95・§97 を続けた。
+M15 の Lean・界面・drafts の型は変更していない。一般 R 加群の担当も自己決定しない。
+
+### 107.1 固定した厳密 BE 模型から既存 dg 加群へ
+
+最初の不足は §97 の barrattEcclesAssociativeForget A のまま。
+標準零単体の単位・合成を元の圏で照合して、台を変えずに Mon (Complex A) へ送る。
+ホモロジー上の結合性や BE→Comm の増大は、この厳密な忘却の代用にならない。
+以下で B_X はその関手の X での値とする。
+
+その後の固定 X の型と、全厳密 BE 射 f による拡大については、
+新しい module ∞ 圏を最初から構成する必要はない。既存宣言を確認した。
+
+| 宣言（InfinityCategories/Project/DerivedCategories/） | 確認した仮定・出力 |
+| --- | --- |
+| dgAlgebraDerivedInfinityCategory A B_X | B_X 上の右半自由 dg 加群の dg nerve |
+| dgAlgebraDerivedInfinityCategory_isStable | 同じ圏の安定性。B_X の可換性を仮定しない |
+| dgAlgebraExtensionInfinity A g | dg 代数射 g:B_X→B_Y に対する実 ∞ 関手 −⊗ᴸ_{B_X}B_Y |
+| dgAlgebraExtensionInfinity_isExactFunctor | その実 ∞ 関手の完全性。A 上の平坦性を追加しない |
+| dgAlgebraMap_quasiEquivalence | QuasiIso g.hom から同じ一対象 dg 関手の準同値 |
+| dgAlgebraExtensionInfinity_isQCatEquivalence_of_quasiIso | QuasiIso g.hom から同じ拡大関手の実 ∞ 圏同値 |
+
+最後の二つは DGAlgebraMoritaInfinity.lean に証明済みで、Morita 同値を新たな仮定にする必要はない。
+特に §95 の「BE の弱同値に対する module 圏の同値」の **厳密な一辺での部分**は、
+台を変えない忘却が完成すれば、この宣言へ直接帰着できる。
+新しい紙の候補の型は次の形となる（assocForget はまだ未供給、未型検査）。
+
+```lean
+strictModuleExtend {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    dgAlgebraDerivedInfinityCategory A (assocForget.obj X) ⟶
+    dgAlgebraDerivedInfinityCategory A (assocForget.obj Y) :=
+  dgAlgebraExtensionInfinity A (assocForget.map f)
+
+strictModuleExtend_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) : IsQCatEquivalence (strictModuleExtend f)
+```
+
+hf は忘却の台の一致を介して同じ dg 代数射の QuasiIso へ運ぶ。
+ただし、この一辺の同値性だけでは、native CAlg の全辺と合成に対する module 圏の族を
+降下したことにはならない。拡大の合成・恒等比較と、その coherence を保つ降下は残る。
+既存 dgModuleExtensionYonedaNerveIso は全関手の比較に利用できるが、
+変わる BE 代数を含む全族をこれだけで供給しているとは数えない。
+
+### 107.2 restriction と随伴で残る型の条件
+
+通常の閉零射の圏では DifferentialGraded.dgModuleExtensionRestrictionAdjunction が
+既に graph 拡大と moduleRestriction の随伴を与えている。
+ただし native な半自由模型で右随伴を作るときは、次の条件を飛ばせない。
+
+DGModuleDerivedFunctor.lean の dgModuleDerivedFunctor とその comparisonIso は、
+入力の dg 関手 F に対して
+
+```lean
+hF : ∀ M, dgModuleProjectiveProperty A D M →
+  dgModuleProjectiveProperty A E (F.obj M)
+```
+
+を要求する。一般の B_X→B_Y の restriction に、この条件を無条件で入れることはできない。
+例えば B_Y 自身は自由な右 B_Y 加群でも、B_X 上の dg 射影的な加群であるとは限らない。
+したがって「既存 dgModuleDerivedFunctor を restriction にそのまま適用」で
+native な右随伴を供給したとはしない。
+
+受け渡しでは、restriction が擬同型を保つことに沿う局所化、または restriction の後の
+指定した解像度との比較を含め、実 ∞ 関手としての右随伴を要求する。
+通常圏の随伴の単位・余単位を、その指定した比較で native に運び、三角形を照合する。
+この不足は §95 の 700〜1,400行の「台・単位・全 restriction/extension・弱同値不変性」
+に含める対象であって、その上へ別枠として二重加算しない。
+
+### 107.3 分担時の受け取り条件と見込み
+
+HA の地図の 4.2.1.15・4.5.2.1 は通常圏の場合の部分一致、4.5.3.1 は未供給という判定のまま。
+一般 R の模型の供給者からは、固定 X の安定圏だけでなく、少なくとも次を同時に受け取る必要がある。
+
+1. 同じ台と単位を持つ厳密 BE→dg 代数の忘却。
+2. 全厳密射の拡大・制限の実 ∞ 関手、随伴、恒等・合成比較。
+3. 弱同値での上記の同値と、native な CAlg の辺・合成への降下。
+4. 同じ一般 R 加群の相対テンソルと、その単位・結合性・対称性・底変換。
+5. M15 の指定した R→S の辺、その fiber と指数射を、この同じ単位とテンソルで読む比較。
+
+§95 の一般 R の束の2,500〜4,500行は暫定のまま。今回、厳密な拡大の弱同値不変性は
+既存宣言で済むことを明確にした一方、restriction の hF を省略できないことも明記した。
+相対テンソルの対称性を結合的 dg 代数への忘却だけから供給したとはしない。
+担当と受け渡す全関手の型を決める前に、この見込みを実装承認や完了数へ読み替えない。
+
+**保存**：§106 の検証済み三本と報告は 9f27a22de に17:54 JSTにコミットした。
+本節は紙のみの追記。凍結確定の連絡はまだ受けていない。
