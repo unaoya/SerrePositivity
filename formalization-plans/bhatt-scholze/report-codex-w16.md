@@ -6564,3 +6564,120 @@ root ビルド・全体監査・入口登録は調整役の取り込み時に委
 次の零次比較の MayRepeatedZeroInput.lean は未検証の新規下書きとして作業木に残し、
 今回のコミットと監査には含めない。
 凍結の確定連絡はまだなく、検証済みの分を18時前に保存した。
+
+
+## 104. M14 の零次の照合（11-13）
+
+### 104.1 厳密代数で閉じた計算
+
+**MayRepeatedZeroInput** は、同じ同次反復入力を零次に移した値と、
+単位複体からの同じ射を全入力へ入れた値の一致を示す。
+**MayZeroActionEvaluation** は、同じ W→BE 比較の零次係数の単位射による評価と
+全次数の mayHomogeneousAction の評価を照合する。
+
+**MayNormalizedZero** で、全次数の mayNormalizedHomology の零次の値を、
+以前の mayDZeroRepresentative_value に接続した。
+mayNormalizedHomology_zero_value は、ν(0)=1 の指定演算について、
+任意の厳密 BE 代数 X の実 H⁰ の環で x ↦ x^p であることを示す。
+源の仮定は [Fact p.Prime]・[CharP k p] であり、H⁰ の環の非自明性は要求しない。
+添字の等式を先に指定する mayNormalizedClass_index_view を使い、
+依存する次数の移送を指定した。同じ元・同じ係数・同じ作用の厳密な照合である。
+
+### 104.2 native な欄への接続の実装
+
+**MayPiZeroSourceComparison** は、既存 barrattEcclesPi0_forget の構成を、
+同じ mayNormalizedHomologySourceIso と照合する。
+忘却前の加群値の比較を mayModuleHomologySourceIso として読み、台の加法群へ忘れると
+同じ比較になることは定義上の等式である。
+mayPiZeroForget_source_square とその各点の等式、および比較による冪の保存を証明した。
+環構造は全て既存の homologyCommRing X であり、同じ H⁰ を返す関手の型に合わせて
+局所インスタンスを明示しているだけである。
+
+**MayZeroIsoTransport** は通常の圏の補助。
+環値関手 P、可換群値関手 H、その指定自然同型、α : H ⟶ H に対し、
+α が零次の環で p 乗を誘導する性質は、対象の同型に沿って運べる。
+新たな coherent な Sp 値の出力や ∞ 圏の仮定は要求しない。
+
+**MayPrimeFieldZeroSource** は、指定演算の源への引き戻しと ν(0)=1 を使って
+上の厳密な計算を源へ運び、ordinaryAlgebraHoSource_isLocalization と
+Mathlib の Localization.essSurj で全 ho(CAlg F_p) 対象へ移す実装である。
+公開実例の欄の名前は **barrattEcclesPowerOp0_zero**（Theory/MayPowerOperationZero）。
+この接続と公開欄は may-native-discrete-02.log でビルドが成功した。公理監査の結果は末尾に記す。
+
+### 104.3 登録候補と検証の範囲
+
+本段の登録候補は、次の七本。
+
+- EInfinity/PowerOperation/：MayRepeatedZeroInput、MayZeroActionEvaluation、MayNormalizedZero
+- 同上：MayPiZeroSourceComparison、MayZeroIsoTransport、MayPrimeFieldZeroSource
+- EInfinity/BarrattEccles/Theory/：MayPowerOperationZero
+
+対象ビルドのログは /tmp/bsw16/may-zero-input-01.log、may-normalized-zero-*.log、
+may-native-zero-*.log。厳密な零次の計算と、π₀ の源の比較・冪の保存までは通っている。
+本体の公理監査・公開欄の検証・最終実測・コミットは本節末尾へ追記する。
+共通入口と全体監査への登録は行っていない。
+
+離散の欄の MayPowerOperationDiscrete.lean も検証が通った。零次の計算と他次数のホモロジー消滅を使う
+実装で、次節に記す。
+18時までには、停止点に届かない場合も検証済みの分を保存する。
+
+
+## 105. M14 の離散比較と Assembly（11-13）
+
+### 105.1 全整数次数の離散比較
+
+**barrattEcclesPowerOp0_discrete** を本体に置いた。
+F_p 上の離散代数 B、環射 f : B → B、全ての元で f(a)=a^p という指定に対し、
+**全整数 n** で同じ P⁰ がこの f によるホモトピー可換群の写像と一致する。
+
+零次では、mayDiscretePiZero_frobenius が barrattEcclesPi0_discrete の自然性と環同型から
+π₀ 上の f を p 乗と同定する。barrattEcclesPowerOp0_zero と
+barrattEcclesPi0_forget の自然性で、同じ H⁰ の比較のもとの等式を得る。
+零次以外では、既存 discreteCAlgUnderEmbedding_underlyingDisc による IsZero から
+台の群を Subsingleton として二つの準同型の一致を示す。
+新しいスペクトルの模型・G10・非自明性の仮定を使っていない。
+
+登録候補は **EInfinity/BarrattEccles/Theory/MayPowerOperationDiscrete.lean** の一本。
+§104 の七本と合わせて本段の新規は八本。
+may-native-discrete-02.log で零次の公開欄と離散の公開欄まで成功した。
+
+### 105.2 組み立て
+
+Assembly は P⁰・零次・正次数・離散比較を全て構成済みのものに固定する。
+**barrattEcclesTheoryOfRemaining の引数は十九欄から十七欄へ**減り、
+冪作用に関して残るのは powerOp0_tot のみ。
+_zero・_discrete を仮定に残した条件付きの供給とはしない。
+他の未供給欄は従来どおり引数として残し、全 EInfinityTheory が無条件に出来たとは主張しない。
+組み立ての最終ビルドと専用監査・実測・コミットの結果は末尾に追記する。
+
+### 105.3 次の範囲
+
+次は指示書 §26 の順で、cosimplicial の top operation と _tot、filtered 塔の照合、
+最後に G10 の後の二重模型の実現比較。
+今回の離散の比較から、全次数の演算が任意の Tot・実現と可換すると推論することはしない。
+指定された BE 作用・規格化 ν・模型の比較を追う必要がある。
+
+
+### 105.4 最終検証・保存
+
+**/tmp/bsw16/may-native-discrete-02.log** で native な零次と全整数次数の離散比較が成功した。
+**/tmp/bsw16/may-zero-discrete-assembly.log** で、それらを固定した Assembly の対象ビルドも成功した。
+新規八本の最終ソースに新しい警告なし。依存先と Assembly の既存の長行警告は残る。
+
+**/tmp/bsw16/audit-may-zero-discrete.lean** は、新規八本と Assembly の
+**9モジュール・62宣言、標準三公理のみ**で成功した
+（/tmp/bsw16/audit-may-zero-discrete.log、17:11 JST 確認）。
+本体に sorry・追加公理なし。[ModelCategory SSet] などの仮定なし。
+ビルドと監査はそれぞれ別の一回の鍵で行い、いずれも返却済み。
+root ビルドと全体監査・入口登録は調整役に委ねる。
+
+本段の新規八本は **559行**。May*.lean の累計は **4,128行**。
+見込みの半分の約10,000行・外枠約20,000行より下である。
+§104.3 の七本と §105.1 の一本を登録候補として報告する。
+検証済み八本・Assembly・本報告を18時前にコミットして保存する。
+凍結の確定連絡はまだ受けていない。
+
+一般 k の補助 powerOp0Over について、この段で新たに示した性質はない。
+Shared の一般 k の性質は drafts のままであり、係数制限のホモロジー比較と
+π₀ の環比較の整合性も、その証明時に確認する必要がある。
+今回の native な F_p の零次・離散比較は、それらの未証明の一般 k の性質を使っていない。
