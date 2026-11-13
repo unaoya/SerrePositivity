@@ -14,8 +14,8 @@ public import SerrePositivity.AlgebraicGeometry.OpenCoverCechComparison
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory TopologicalSpace _root_.AlgebraicGeometry
-universe u
-variable {X Y : Scheme.{u}} {R : Type u} [CommRing R]
+universe u v
+variable {X Y : Scheme.{u}} {R : Type v} [CommRing R]
 variable (f : X ⟶ Y) (P : (Y.Opens)ᵒᵖ ⥤ ModuleCat.{u} R)
 variable (Q : (X.Opens)ᵒᵖ ⥤ ModuleCat.{u} R)
 variable (η : P ⟶ (Opens.map f.base).op ⋙ Q)
