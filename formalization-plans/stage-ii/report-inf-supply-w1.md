@@ -1364,3 +1364,286 @@ R6の残る型と接続、R2〜R4の見込みは§31の表と§20のまま。型
 共有鍵の待ちは一枚ずつとし、最後のプロセス終了で鍵は解放済み。
 既存宣言・③-bの3b-2・G10・⑤aのファイルは変更なし。mainの作業木は編集・ビルドしていない。
 凍結確定の連絡はまだ受けていない。検証済みのコミットとこの報告は18時前に保存した。
+
+## 33. R6 の型つき一覧（11-13 18時の指示による再開）
+
+§31〜32の行数による停止を解除する。外枠20,800行。R6を先に閉じて途中の取り込み点を報告し、
+R2〜R4は別の型つき一覧を紙で出し直して止める。凍結確定の連絡はまだ受けていない。
+
+以下をR6の残りの有限な一覧とする。U01〜U25は未検証6本に現在ある構成と主張の型を全て転記したもの。
+各ブロックの引数・宇宙・openは当該ファイルの冒頭と同じで、定義の本体・証明を省いている。
+構成の前提に新しい自然性・完全性を足さない。U26以降は§31の後三行を個別の出力に分けたもの。
+証明の分割は本数に入れず、型を追記する。前提計算の法則は各U番号ごとに最大3本、
+一覧外の既存構成の照合は全体で最大3本。別の数学が必要なら検証済みを保存して止める。
+計算上限は既定値に戻し、簡約を局所化する。
+
+
+### StrictBarNativeFunctorCocone
+
+```lean
+-- U01
+def strictBarNativeFunctorDiagram : ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ⟶ (ihom (nerve (J ⥤ ModuleCategory A PUnit.{1}))).obj (dgNerve A (RightModule A PUnit.{1}))
+-- U02
+def strictBarNativeFunctorApex : (Δ[0] : SSet.{u + 1}) ⟶ (ihom (nerve (J ⥤ ModuleCategory A PUnit.{1}))).obj (dgNerve A (RightModule A PUnit.{1}))
+-- U03
+def strictBarNativeFunctorOverSimplex {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    (sliceOver (strictBarNativeFunctorApex A J)) _⦋n⦌
+-- U04
+def strictBarNativeFunctorOverSection : ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) ⟶ sliceOver (strictBarNativeFunctorApex A J)
+-- U05
+lemma strictBarNativeFunctorOverSection_projection :
+    strictBarNativeFunctorOverSection A J ≫ sliceOverProjection (strictBarNativeFunctorApex A J) =
+      strictBarNativeFunctorDiagram A J
+-- U06
+def strictBarNativeFunctorCocone : JoinCocone (strictBarNativeFunctorDiagram A J)
+-- U07
+def strictBarNativeJoinFamily : (nerve (J ⥤ ModuleCategory A PUnit.{1})) ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ (dgNerve A (RightModule A PUnit.{1}))
+-- U08
+lemma strictBarNativeJoinFamily_front :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinInl ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) ≫ strictBarNativeJoinFamily A J =
+      (strictModuleCoherentFamily A J (𝟭 (J ⥤ ModuleCategory A PUnit.{1}))).evaluation
+-- U09
+lemma strictBarNativeJoinFamily_apex :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinInr ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) ≫ strictBarNativeJoinFamily A J =
+      strictBarApexCellEvaluation A J
+```
+
+
+### StrictBarNativeJoinCells
+
+```lean
+-- U10
+lemma strictBarNativeFunctorCocone_cell {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    joinMap (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶ ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))))
+        (𝟙 Δ[0]) ≫ (strictBarNativeFunctorCocone A J).val =
+      (joinStdSimplexIso n 0).hom ≫ curry (strictBarNativeCellEvaluation A J s)
+-- U11
+lemma strictBarNativeJoinFamily_cell {n : ℕ} (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ joinMap (SSet.yonedaEquiv.symm (ULift.up s) : (Δ[n] : SSet.{u + 1}) ⟶ ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))))
+        (𝟙 Δ[0])) ≫ strictBarNativeJoinFamily A J =
+      ((nerve (J ⥤ ModuleCategory A PUnit.{1})) ◁ (joinStdSimplexIso n 0).hom) ≫ strictBarNativeCellEvaluation A J s
+```
+
+
+### StrictSimplexEvaluationAtParameter
+
+```lean
+-- U12
+lemma strictFamilyCurry_evaluateAt {K : SSet.{u + 1}}
+    (H : nerve C ⊗ K ⟶ dgNerve A E) (c : C) :
+    MonoidalClosed.curry H ≫
+        SerrePositivity.InfinityCategories.Kerodon.TheHomotopyTheoryOfInfinityCategories.Equivalence.evaluateFunctorAt
+          (ComposableArrows.mk₀ c) =
+      lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 K) ≫ H
+-- U13
+lemma strictSimplexFunctorEvaluation_atParameter {n : ℕ}
+    (F : C ⥤ StrictSimplexCategory A E n) (c : C) :
+    lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 (Δ[n] : SSet.{u + 1})) ≫
+        strictSimplexFunctorEvaluation A E F =
+      SSet.yonedaEquiv.symm (F.obj c).val
+-- U14
+lemma strictBarNativeCellEvaluation_atParameter (J : Type) [SmallCategory J]
+    (F : J ⥤ ModuleCategory A PUnit.{1}) {n : ℕ}
+    (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌) :
+    lift (SSet.const (ComposableArrows.mk₀ F)) (𝟙 (Δ[n + 1] : SSet.{u + 1})) ≫
+        strictBarNativeCellEvaluation A J s =
+      SSet.yonedaEquiv.symm (strictBarNativeSimplex A J F s)
+```
+
+
+### StrictBarNativeParameterRecovery
+
+```lean
+-- U15
+lemma strictSliceOverUncurry_eq_of_values {K L X : SSet.{u + 1}} {p q : L ⟶ X}
+    (hp : p = q) (s : K ⟶ sliceOver p) (t : K ⟶ sliceOver q)
+    (h : ∀ (n : SimplexCategoryᵒᵖ) (a : K.obj n),
+      (s.app n a).val = (t.app n a).val) :
+    sliceOverUncurry s = sliceOverUncurry t
+-- U16
+lemma strictBarNativeFunctorApex_atParameter (F : J ⥤ ModuleCategory A PUnit.{1}) :
+    strictBarNativeFunctorApex A J ≫ evaluateFunctorAt (ComposableArrows.mk₀ F) =
+      SSet.yonedaEquiv.symm
+        (dgCoherentBarNativeApex A PUnit.{1} (smallStrictBarDiagram A F)
+          (dgCoherentBarMaurerCartan_unconditional A PUnit.{1} (smallStrictBarDiagram A F)))
+-- U17
+lemma strictBarNativeFunctorCocone_atParameter (F : J ⥤ ModuleCategory A PUnit.{1}) :
+    (strictBarNativeFunctorCocone A J).val ≫
+        evaluateFunctorAt (ComposableArrows.mk₀ F) =
+      (dgCoherentBarNormalizedNativeCocone A PUnit.{1} (smallStrictBarDiagram A F)
+        (dgCoherentBarMaurerCartan_unconditional A PUnit.{1} (smallStrictBarDiagram A F))).val
+```
+
+
+### StrictBarNativeProjectiveFamily
+
+```lean
+-- U18
+lemma strictBarNormalizedFunctor_projective (F : J ⥤ ModuleCategory A PUnit.{1})
+    (hF : ∀ j, moduleHomotopicallyProjective A PUnit.{1} (F.obj j)) :
+    moduleHomotopicallyProjective A PUnit.{1} ((strictBarNormalizedFunctor A J).obj F)
+-- U19
+def strictBarNativeJoinFamilyAlong :
+    nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ dgNerve A (RightModule A PUnit.{1})
+-- U20
+lemma strictBarNativeJoinFamilyAlong_projective :
+    ∀ z : (nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1})) _⦋0⦌,
+      dgModuleProjectiveProperty A PUnit.{1}
+        (((strictBarNativeJoinFamilyAlong A J T).app _ z).obj 0)
+-- U21
+def strictBarNativeProjectiveJoinFamily :
+    nerve C ⊗ join ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ⟶ dgProjectiveModuleNerve A PUnit.{1}
+-- U22
+lemma strictBarNativeProjectiveJoinFamily_image :
+    strictBarNativeProjectiveJoinFamily A J T hT ≫
+        SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+          (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+            (dgModuleProjectiveProperty A PUnit.{1})) =
+      strictBarNativeJoinFamilyAlong A J T
+```
+
+
+### StrictBarNativeProjectiveCocone
+
+```lean
+-- U23
+def strictBarNativeProjectiveCoconeAt (c : C) :
+    JoinCocone (joinInl ((SSet.uliftFunctor.{u + 1, u}).obj ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}) ≫
+      lift (SSet.const (ComposableArrows.mk₀ c)) (𝟙 _) ≫
+        strictBarNativeProjectiveJoinFamily A J T hT)
+-- U24
+lemma strictBarNativeProjectiveCoconeAt_image (c : C) :
+    (fullInclusionCocone A (RightModule A PUnit.{1}) (dgModuleProjectiveProperty A PUnit.{1})
+      (strictBarNativeProjectiveCoconeAt A J T hT c)).val =
+    (dgCoherentBarNormalizedNativeCoconeUnconditional A PUnit.{1}
+      (smallStrictBarDiagram A (T.obj c))).val
+-- U25
+lemma strictBarNativeProjectiveCoconeAt_isColimit (c : C) :
+    IsColimitCone (strictBarNativeProjectiveCoconeAt A J T hT c)
+```
+
+
+### §31の残る接続の型（U26以降）
+
+以下の略記を固定する。`I₂` と `I` は同一視せず、既存の
+`smallDiagramShapeIso` とjoinの同型で移送する。
+
+```lean
+variable (A : Type u) [CommRing A]
+local notation "J" => SimplexCategoryᵒᵖ
+local notation "C" => StrictSemifreeDiagram A J
+local notation "P" => nerve C
+local notation "I" => (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)
+local notation "I₂" => (SSet.uliftFunctor.{u + 1, u}).obj
+  ((SSet.uliftFunctor.{u, 0}).obj (nerve J))
+local notation "DA" => derivedInfinityCategory A
+
+-- U26: 元の半自由一点図式から台の加群図式への全通常関手。
+def strictSemifreePointUnderlyingFunctor : C ⥤ (J ⥤ ModuleCategory A PUnit.{1})
+
+-- U27: 構成は既存の同じ台の図式を使う。
+lemma strictSemifreePointUnderlyingFunctor_obj (F : C) :
+  (strictSemifreePointUnderlyingFunctor A).obj F =
+    pointSemifreeUnderlyingDiagram A (strictSemifreePointDiagram A F)
+
+-- U28: U21への射影性の入力は結論として供給する。
+lemma strictSemifreePointUnderlyingFunctor_projective (F : C) (j : J) :
+  moduleHomotopicallyProjective A PUnit.{1}
+    (((strictSemifreePointUnderlyingFunctor A).obj F).obj j)
+
+-- U29: U21を既存のprojectivePointEquivalenceで送る同じ全余錐族。
+def strictSemifreeRawDAJoinFamily : P ⊗ join I₂ (Δ[0] : SSet.{u + 1}) ⟶ DA :=
+  strictBarNativeProjectiveJoinFamily A J (strictSemifreePointUnderlyingFunctor A)
+    (strictSemifreePointUnderlyingFunctor_projective A) ≫ (projectivePointEquivalence A).hom
+
+-- U30: 同じjoinの宇宙変更。既存のsmallDiagramShapeIsoの逆を使う。
+def strictSemifreeJoinShapeIso :
+  join I (Δ[0] : SSet.{u + 1}) ≅ join I₂ (Δ[0] : SSet.{u + 1})
+
+-- U31: 下方図式の既存の全関手同型に沿い、同じ全族を輸送する。
+def strictSemifreeComputedDAJoinFamily : P ⊗ join I (Δ[0] : SSet.{u + 1}) ⟶ DA
+lemma strictSemifreeComputedDAJoinFamily_front :
+  (P ◁ joinInl I (Δ[0] : SSet.{u + 1})) ≫ strictSemifreeComputedDAJoinFamily A =
+    strictSemifreeEvaluation A J
+
+-- U32: 輸送は全joinの関手同型を持つ（頂点・辺だけの対応ではない）。
+def strictSemifreeComputedDAJoinFamily_transportIso :
+  FunctorIso ((P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+    strictSemifreeRawDAJoinFamily A) (strictSemifreeComputedDAJoinFamily A)
+
+-- U33: 同じ全族の各パラメーターでの余錐は余極限。
+def strictSemifreeComputedDACoconeAt (F : C) :
+  JoinCocone (joinInl I (Δ[0] : SSet.{u + 1}) ≫
+    lift (SSet.const (ComposableArrows.mk₀ F)) (𝟙 _) ≫
+      strictSemifreeComputedDAJoinFamily A)
+lemma strictSemifreeComputedDACoconeAt_isColimit (F : C) :
+  IsColimitCone (strictSemifreeComputedDACoconeAt A F)
+
+-- U34: 全族を普遍余錐の全部分圏へ制限する。別の族を選び直さない。
+def strictSemifreeComputedColimitFamily : P ⟶ colimitCocones I DA
+lemma strictSemifreeComputedColimitFamily_evaluation :
+  (β_ P (join I (Δ[0] : SSet.{u + 1}))).hom ≫
+    uncurry (strictSemifreeComputedColimitFamily A ≫
+      (relativeInitialVertices (coconeRestriction I DA)).ι) =
+    strictSemifreeComputedDAJoinFamily A
+
+-- U35: 指定されている同じ全下方図式。
+lemma strictSemifreeComputedColimitFamily_projection :
+  strictSemifreeComputedColimitFamily A ≫ colimitCoconeProjection I DA =
+    strictSemifreeDiagramFamily A J
+
+-- U36: 同じ下方図式を持つ全普遍余錐族の既存比較。
+def strictSemifreeComputedColimitFamilyIso :
+  FunctorIso (strictSemifreeComputedColimitFamily A) (strictSemifreeColimitFamily A J)
+
+-- U37: 同じ比較を全余錐へ送る。全高次単体と脚の比較を含む。
+def strictSemifreeComputedCoconeFamilyIso :
+  FunctorIso (strictSemifreeComputedColimitFamily A ≫
+    (relativeInitialVertices (coconeRestriction I DA)).ι)
+    (strictSemifreeCoconeFunctorFamily A J)
+
+-- U38: 元の正規化barの同じ通常関手と複体評価。
+def strictSemifreeNormalizedBarComplex : C ⥤ Complex A :=
+  strictSemifreePointUnderlyingFunctor A ⋙ strictBarNormalizedFunctor A J ⋙
+    moduleEvaluation A PUnit.{1} PUnit.unit
+def strictSemifreeNormalizedBarRealizationIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeRealizationFamily A)
+
+-- U39: 同じ全余錐族のapex。U32のapex制限と既存のprojective複体比較を使う。
+def strictSemifreeComputedApexFamily : P ⟶ DA :=
+  lift (𝟙 _) (SSet.stdSimplex.isTerminalObj₀.from _) ≫
+    (P ◁ joinInr I (Δ[0] : SSet.{u + 1})) ≫ strictSemifreeComputedDAJoinFamily A
+def strictSemifreeNormalizedBarApexIso :
+  FunctorIso (nerveMap (strictSemifreeNormalizedBarComplex A) ≫ complexDerivedEvaluation A)
+    (strictSemifreeComputedApexFamily A)
+
+-- U40: 同じU36・U37のapexへの像。
+def strictSemifreeComputedNativeApexIso :
+  FunctorIso (strictSemifreeComputedApexFamily A) (strictSemifreeNativeApexFamily A J)
+
+-- U41: R6の最終受け渡し。U37と同じ比較から作る。
+def strictSemifreeRealizationNativeApexIso :
+  FunctorIso (strictSemifreeRealizationFamily A) (strictSemifreeNativeApexFamily A J)
+```
+
+U31・U33・U34・U38・U39は構成とその性質を同じ番号で記載した。
+単位・余単位・自然性・係数移送の前提計算：全番号とも0/3から開始。
+一覧外の照合：0/3から開始。既検証52本は追加計算の枠として再度数えない。
+順序はU01〜U25（未検証の解消）→U26〜U41。
+R6完成後は止まらず、R2〜R4の紙の型つき一覧と③-b§38.2の3との照合へ進む。
+
+### U04の証明の分割（追加の数学・計算枠の消費なし）
+
+```lean
+lemma strictBarNativeFunctorOverSimplex_naturality {m n : ℕ}
+    (s : ((SSet.uliftFunctor.{u, 0}).obj (nerve J)) _⦋n⦌)
+    (α : ⦋m⦌ ⟶ ⦋n⦌) :
+    (joinStdSimplexIso m 0).hom ≫ curry (strictBarNativeCellEvaluation A J
+      (((SSet.uliftFunctor.{u, 0}).obj (nerve J)).map α.op s)) =
+    joinMap (SSet.stdSimplex.map α) (𝟙 Δ[0]) ≫
+      ((joinStdSimplexIso n 0).hom ≫ curry (strictBarNativeCellEvaluation A J s))
+```
+
+固定した次元で上式を先に証明し、切断の自然性にはこの式だけを渡す。
+`maxHeartbeats 800000` は取り除いた。型の分解で大きなbarの構成を簡約しない。
