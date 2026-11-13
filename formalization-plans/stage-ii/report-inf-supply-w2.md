@@ -2670,3 +2670,11 @@ theorem integerNegativeTensorBaseChangeIso_ι (i j n : ℕ) (h : i + j = n) :
 鍵は検証終了時に返却済み。入口と公式監査は変更していない。外枠12,500行まで3,135行。前提計算枠3/3、照合枠3/3。
 
 A05a本体の作業木では、指定増大写像の零次以外での零性を既存の単一複体の零性から得た。また、射影側の右辺はMoore射影の自然性・零延長の指定同型・自由生成元の写像則で、第一成分の生成元をMoore射影して延長へ戻す式まで整理した（`/private/tmp/isw2-a05a-body8.log`、残る主目標があるため終了コード1）。AW側の係数移送との照合が残る。A05a・A05・停止点2はまだ未完であり、下書きはコミットしていない。
+
+### 83.2 A05a入力のMoore比較の整理
+
+その後、A05aの未コミット下書きで、入力の自由化比較をMoore射影の自然性で射影の前へ移し、`normalizedMooreMapIso` の逆を定義どおりに展開した。包含と射影の合成を既存の `PInftyToNormalizedMooreComplex_comp_inclusionOfMooreComplexMap` により正規化冪等射へまとめ、既存 `alternatingMapIso_PInfty` と `PInfty_comp_PInftyToNormalizedMooreComplex` で係数移送前の射影へ戻した。追加の独立した補題は導入していない。
+
+最後の個別検査 `/private/tmp/isw2-a05a-body19.log` は、これらの内部手順にはエラーがなく、負次数の主等式が未解決のため終了コード1。左辺の入力は今や、元の整数Moore射影の係数拡大に対し、元の整数正規化AWの係数拡大を適用する形になった。右辺は第一射影の生成元をMoore射影する明示式。次はAWの切断成分に§81・§83の公式を適用し、同じ右増大写像・右単位子を通した式を右辺と照合する。
+
+`FreeProductAWRightAugmentation.lean` は120行の未完下書きとして作業木に保持する（検証済み9,365行に不算入）。A05a・A05・停止点2は未完。検証済みのコード保存点は引き続き `47d7ebdb1`、前提計算枠3/3・照合枠3/3。凍結確定の連絡は未受領で、未検証コードはコミットしていない。
