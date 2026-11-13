@@ -5448,3 +5448,93 @@ theorem diagramTensorLinearHomEquiv_symm_component
 コード **`18d19ebf0`**。鍵付き対象ビルド `/private/tmp/isw2-build137.log` は **2,645 jobs・終了コード0**。新規4本のみの監査 `/private/tmp/AuditISW2G10B02SectionEvaluation.lean` は **9宣言（3・3・1・2）、標準三公理のみ**。共有鍵は返却済み。個別検査の図式逆転置も終了コード0。
 
 新規4本217行、累計 **251モジュール・15,210行・2,189宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftyone-modules.txt`。既存宣言・⑤a・入口・公式監査・mainは変更していない。計算上限を上げず、sorry・新公理0。rootビルド・大きな監査なし。B02、B03〜B08、C、Dは引き続き未完。次は同じtensorパラメータの逆射を各点で展開し、実dg合成の各AW切断和と照合する。
+
+## 123. B02の途中：同じΓパラメータ像の逆転置成分
+
+指定自由tensor Hom同型の逆射を各点で元の図式逆転置へ戻した。標準単体の自由tensor比較は各点の恒等射であり、同じ実Γの射の像を正規化標準単体Hom同値で戻すと元の複体射の後合成となる。この二つの式から、A09へ渡す全パラメータ像の斉次tensor成分を、元の複体射の各次数の作用で計算した。既存構成の自然性・評価・合成則で、新しい数学のまとまりを足していない。
+
+型推論の途中で、恒等tensor則に対象を射として誤って渡したため時間切れが出た。正しい既存則 `tensorHom_id` と `id_whiskerRight` に直し、対象・次数を明記して解消した。計算上限は変更していない。
+
+### 123.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexInverseNaturality`（34行）
+
+```lean
+theorem normalizedSimplexHomEquiv_symm_map {K L : Complex A}
+    (g : K ⟶ L) (n : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj K).obj (Opposite.op n)) :
+    (normalizedSimplexHomEquiv A L n).symm
+      (((truncatedDoldKanFunctor A).map g).app (Opposite.op n) α) =
+      (normalizedSimplexHomEquiv A K n).symm α ≫ g
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeTensorHomInverseEvaluation`（102行）
+
+```lean
+theorem freeTensorStandardSimplexIso_hom_app (W : J ⥤ SSet.{u})
+    (n : SimplexCategory) (j : J) :
+    ((freeTensorStandardSimplexIso A J W).hom.app n).app j = 𝟙 _
+
+theorem freeTensorDiagramHomIso_inv_app (W : J ⥤ SSet.{u})
+    (Q : J ⥤ Complex A) (n : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj
+      (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
+        ((E).obj Q))).obj (Opposite.op n)) (j : J) :
+    ((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op n) α).app j =
+      ((diagramTensorLinearHomEquiv (freeNegativeChainsDiagram (A := A) W) Q
+        ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+          (SSet.stdSimplex.obj n))).symm
+        ((normalizedSimplexHomEquiv A
+          (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
+            ((E).obj Q)) n).symm α)).app j
+
+theorem freeTensorDiagramHomIso_inv_component (W : J ⥤ SSet.{u})
+    (Q : J ⥤ Complex A) (m : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj
+      (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
+        ((E).obj Q))).obj (Opposite.op m)) (j : J)
+    (i q n : ℤ) (hn : i + q = n)
+    (y : ((freeNegativeChainsDiagram (A := A) W).obj j).X i)
+    (x : ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj m)).X q) :
+    (((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op m) α).app j).f n
+      (HomologicalComplex.ιTensorObj
+        ((freeNegativeChainsDiagram (A := A) W).obj j)
+        ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+          (SSet.stdSimplex.obj m)) i q n hn (y ⊗ₜ[A] x)) =
+      (i * q).negOnePow •
+        (diagramCochainAt (freeNegativeChainsDiagram (A := A) W) Q
+          (((normalizedSimplexHomEquiv A
+            (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) W))
+              ((E).obj Q)) m).symm α).f q x) j).v i n hn y
+
+theorem freeTensorDiagramHomIso_inv_map_component (W : J ⥤ SSet.{u})
+    (Q : J ⥤ Complex A) (K : Complex A)
+    (g : K ⟶ linearHomComplex A ((E).obj
+      (freeNegativeChainsDiagram (A := A) W)) ((E).obj Q))
+    (m : SimplexCategory)
+    (α : ((truncatedDoldKanFunctor A).obj K).obj (Opposite.op m))
+    (j : J) (i q n : ℤ) (hn : i + q = n)
+    (y : ((freeNegativeChainsDiagram (A := A) W).obj j).X i)
+    (x : ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj m)).X q) :
+    (((freeTensorDiagramHomIso A Q W).inv.app (Opposite.op m)
+      (((truncatedDoldKanFunctor A).map g).app (Opposite.op m) α)).app j).f n
+      (HomologicalComplex.ιTensorObj
+        ((freeNegativeChainsDiagram (A := A) W).obj j)
+        ((SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+          (SSet.stdSimplex.obj m)) i q n hn (y ⊗ₜ[A] x)) =
+      (i * q).negOnePow •
+        (diagramCochainAt (freeNegativeChainsDiagram (A := A) W) Q
+          (g.f q (((normalizedSimplexHomEquiv A K m).symm α).f q x)) j).v i n hn y
+
+```
+
+### 123.2 検収と残り
+
+コード **`c055f145c`**（2本136行）。結合個別検査 `/private/tmp/isw2-free-tensor-map-combined.log` は終了コード0。最終ソースの鍵付き対象ビルド `/private/tmp/isw2-build138.log` は **2,567 jobs・終了コード0**。新規分だけの監査 `/private/tmp/AuditISW2G10B02InverseParameter.lean` は **5宣言（1・4）、標準三公理のみ**。鍵は `--wait 3600`、一枚の整理券、実行1,700秒上限で使用し、返却済み。
+
+累計 **253モジュール・15,346行・2,194宣言**。外枠20,000行まで残り4,654行。一覧 `/private/tmp/isw2-g10-twohundredfiftythree-modules.txt`。既存宣言・⑤a・入口・公式監査・mainの変更なし。sorry・新公理0、大きな監査・rootビルドなし。未検証下書きはない。
+
+B02の全単体的射の等式、B03〜B08・C・Dは未完。次は今回の逆転置成分と§120の実dg合成成分を、§115のAW全切断和で照合する。Moore射影を無条件に消すことはせず、元の射影・包含と係数比較を保持する。停止点2a・2bの仕様と一覧は弱めない。
