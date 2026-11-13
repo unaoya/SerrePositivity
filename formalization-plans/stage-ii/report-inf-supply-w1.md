@@ -3002,3 +3002,171 @@ R4の同じapexと全joinの相対比較も、そのまま残す。
 R2c-E・R2c-Rは追加承認されたが、全体の規模について調整役がユーザーに諮るための報告。
 追加のLean実装・対象ビルド・大きい監査は実行していない。
 R2未完のまま、検証済みの範囲と元の全目標を維持する。
+
+## 45. R2を先行する再開（11-14、停止点5aまで）
+
+調整役の追加承認を確認した。今回の対象はE01〜E06・RR01〜RR05・R2d・R2e。
+未実装5,400〜8,650行、既検証7,023行と合わせ12,423〜15,673行。
+外枠20,800行に収まる。R3・R4は利用側との範囲判断まで保留し、ここでは着手しない。
+R2e（元の実評価の充満忠実性）を検証した地点を停止点5aとする。
+
+### E01の前提計算1/3・2/3（型、未検証）
+
+`twistedSourceHomUnit_homUniversal` は既存。これを使うため、指定Yoneda単位自身の
+始点固定評価を、同じtwisted arrowの実正方形の分類へ戻す。
+以下の型でUは `SSet.uliftFunctor.{u + 1, u}`、aはAの元の頂点。
+
+```lean
+-- E01-L1（1/3）：指定共同Hom単位は、元のTw(F)の実正方形の分類である。
+lemma functorHomBifunctorUnit_eq_square (F : A ⟶ C) :
+  functorHomBifunctorUnit F =
+    precomposeFunctorHom (uliftTensorIso A.op A).inv
+      (leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+        (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+        (twistedArrowProjection_naturality F))
+
+-- E01-L2（2/3）：指定Yoneda単位の同じ前層成分での評価。
+lemma homWeightYonedaUnit_evaluate_heq (F : A ⟶ C) (a : A _⦋0⦌) :
+  HEq ((hoFunctor.map ((ihom (U.obj A)).map
+      (evaluateFunctorAt (Y := SpaceInfinity.{u})
+        (ULift.up (SSet.opObjEquiv.symm a))))).toFunctor.map (homWeightYonedaUnit F))
+    (precomposeFunctorHom
+      (lift (SSet.const (ULift.up (SSet.opObjEquiv.symm a))) (𝟙 (U.obj A)))
+      (functorHomBifunctorUnit F))
+```
+
+`HomWeightUnitEvaluation.curryFunctorHomCongr_evaluate_heq` と元の実正方形の定義を再利用する。
+これらは新しい単位の選択や、任意の別の同型への変更ではない。
+配置は `Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaUnitSquare.lean`。
+E01のdocstringにKerodon 03M5・03W8、HTT 5.1.3.1・5.1.5.3を、
+基礎となる引用であると区別して記す。E01自身の完成とは扱わない。
+
+### E01の前提計算3/3：始点固定の実引き戻し模型（未検証）
+
+```lean
+def homWeightYonedaSourcePullbackIso (F : A ⟶ C) (a : A _⦋0⦌) :
+  pullback (functorHomBifunctorProjection F F) (twistedArrowSourceInclusion a) ≅
+    pullback (twistedArrowSourceProjection (F.app (Opposite.op ⦋0⦌) a)) F
+lemma homWeightYonedaSourcePullbackIso_postcomp (F : A ⟶ C) (a : A _⦋0⦌) :
+  fiberComparisonBaseChange (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+      (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F)
+      (twistedArrowSourceInclusion a) ≫ (homWeightYonedaSourcePullbackIso F a).hom =
+    pullback.lift (twistedArrowSourcePostcomp F a) (twistedArrowSourceProjection a)
+      (twistedArrowSourcePostcomp_projection F a)
+```
+
+既存の引き戻しの貼り合わせ同型と `twistedArrowSourceInclusion_postcomp` を使う係数移送。
+両射影の計算はこの同じ移送の証明分割として記録する。
+これにより、単位を評価して得る実写像を、普遍性が既知の `twistedSourceHomUnit` の
+全空間写像へ照合する入力を固定する。残る分類後の同じ正方形の照合をE01の証明で行う。
+E01の前提計算はこれで3/3。
+
+## 46. E01の係数移送：検証済みの部分と、追加の合成則（11-14）
+
+### 46.1 検証済み
+
+新規 `Kerodon/TheYonedaEmbedding/Cocompletion/HomWeightYonedaSourcePullback.lean`。
+100行・4宣言。§45のE01-L3の同じ係数移送と、その証明分割だけを実装した。
+
+- `homWeightYonedaSourcePullbackIso`：始点固定した共同Homの引き戻しを、
+  同じ始点固定Hom射影のFによる引き戻しへ移す。
+- `homWeightYonedaSourcePullbackIso_hom_fst_fst`：元のtwisted arrowへの第一射影を保つ。
+- `homWeightYonedaSourcePullbackIso_hom_snd`：元のAへの第二射影を保つ。
+- `homWeightYonedaSourcePullbackIso_postcomp`：元のTw(F)の底変換自身が、
+  同じ始点固定後合成の持ち上げと一致する。
+
+対象ビルド `/tmp/is-w1/e01-source-pullback-3.log` 成功（5,434 jobs）。
+小監査 `/tmp/is-w1/e01-pasting-type-1.log`：4宣言すべて標準三公理のみ。
+この4宣言でE01そのものやR2cの同値性が出たとは扱わない。
+既検証7,023行に100行を加え、3b-3の検証済みは88本・7,123行。
+既存の宣言・入口・監査登録は変更していない。新しい公理・引用・sorryはない。
+
+### 46.2 残る分類後の照合と、数え方による停止
+
+実引き戻しの同型だけでは、指定した分類後の単位の一致はまだ出ない。
+必要なのは、**既存の指定底変換同型自身の合成則**。
+`leftClassificationHom_baseChange` は固定した底写像kに対して全空間射を動かす自然性で、
+下の「二つの底写像k・lの合成」の式ではない。
+`leftClassificationSquareHom_naturality` も底写像を固定するため、これだけでは代用できない。
+`BaseChangeAssociativity*` の既存のcocartesian版は通常の圏のnerve等の別の模型であり、
+一般の準圏K・Cと、この同じleft分類の指定同型を結ぶ宣言は確認できなかった。
+
+必要な型は次。Uは `SSet.uliftFunctor.{u + 1, u}`。
+引き戻しのsndがleft fibrationになる既存のinstanceを入れる。
+HEqは底写像の合成の厳密な等式による端点の違いだけを除き、指定射自身を比較する。
+
+```lean
+lemma leftStraightening_baseChange_pasting
+    {E B D H : SSet.{u}}
+    [Quasicategory B] [Quasicategory D] [Quasicategory H]
+    (p : E ⟶ B) [LeftFibration p] (k : D ⟶ B) (l : H ⟶ D) :
+  HEq (precomposeFunctorHom (U.map l)
+        (leftStraighteningInfinityDiagram_baseChangeIso p k).hom ≫
+      (leftStraighteningInfinityDiagram_baseChangeIso (pullback.snd p k) l).hom ≫
+      leftClassificationHom (pullback.snd (pullback.snd p k) l)
+        (pullback.snd p (l ≫ k)) (pullbackLeftPullbackSndIso p k l).hom
+        (pullbackLeftPullbackSndIso_hom_snd p k l))
+    (leftStraighteningInfinityDiagram_baseChangeIso p (l ≫ k)).hom
+```
+
+この命題の**型だけ**を `/tmp/is-w1/e01-pasting-type.lean` で確認した。
+命題を仮定した完成版や証明は本体に追加していない。
+実際に使うのはpがtwisted arrow射影で、k・lが両変数のFと始点固定包含の場合。
+その特殊化でも指定同型の合成との両立を新たに示す必要がある。
+
+`leftStraighteningInfinityDiagram_baseChangeIso` は単なる引き戻しの射影ではなく、
+共同切断の比較を局所化の充満忠実性で降下した指定同型である。
+したがって、上の式を実引き戻し同型の定義等式として済ませることはできない。
+証明案は、初頂点局所化への制限で等式を検出し、共同切断の二回の底変換と
+同じ貼り合わせ同型を照合してから降下すること。追加の見込みは250〜450行。
+E01の既承認の見込み全体に必ず上乗せするという意味ではない。
+
+これは§45のL1（単位の正方形表示）・L2（curryの評価）・L3（実引き戻しの係数移送）
+とは別の、既存の指定分類に関する合成則で、**E01の前提計算の4本目**になる。
+型を隠してE01の証明分割と呼んだり、別の比較同型を選んで元の指定単位との照合を省いたりしない。
+IS-W2 §14の「前提計算の枠は一覧の補題ごとに3本」に従い、
+この追加則の証明には入らず、検証済みを保存して報告する。
+**停止点5aには未到達。R2は未完。R3・R4には着手していない。**
+
+### 46.3 未検証の作業木
+
+`HomWeightYonedaUnitSquare.lean` 93行は作業木に残し、コミット対象にしない。
+§45のL1・L2について一般のHom作用を介する証明分割を試したが、
+`/tmp/is-w1/e01-local-pair-2.log` で両方ともkernelのdeterministic timeout。
+既定の計算上限を上げていない。上の追加則とは別に、この簡約の局所化も残っている。
+
+数えない証明分割として試した型も記録する（いずれもこの未検証ファイル内）。
+
+```lean
+private lemma precomposeFunctorHom_eq_map {A B X : SSet.{u}}
+    (k : B ⟶ A) {f g : A ⟶ X} (α : FunctorHom f g) :
+  precomposeFunctorHom k α = (hoFunctor.map ((pre k).app X)).toFunctor.map α
+
+private lemma curryEvaluation_of_heq {A B X : SSet.{u}}
+    {f g : A ⊗ B ⟶ X} {f' g' : B ⟶ (ihom A).obj X}
+    (α : FunctorHom f' g') (β : FunctorHom f g)
+    (hf : f' = curry f) (hg : g' = curry g) (h : HEq α (curryFunctorHom β))
+    (a : A _⦋0⦌) :
+  HEq ((hoFunctor.map ((ihom B).map (evaluateFunctorAt (Y := X) a))).toFunctor.map α)
+    (precomposeFunctorHom (lift (SSet.const a) (𝟙 B)) β)
+
+private lemma unitSquare_raw (F : A ⟶ C) :
+  leftClassificationHom (twistedArrowProjection A) (functorHomBifunctorProjection F F)
+      (twistedArrowFunctorComparison F) (twistedArrowFunctorComparison_projection F) ≫
+      (functorHomBifunctorDiagram_classificationIso F F).inv =
+    leftClassificationSquareHom (twistedArrowProjection A) (twistedArrowProjection C)
+      (SSet.opFunctor.map F ⊗ₘ F) (edgewiseSubdivisionMap F)
+      (twistedArrowProjection_naturality F)
+```
+
+今回の増加は検証済み100行、未検証93行。
+行数の外枠20,800を超えたための停止ではなく、追加の前提計算の型を示す地点での停止である。
+
+### 46.4 保存と最終検証
+
+- Leanのコミット：`913bd8036`（新規100行、4宣言）。
+- docstring整備後の最終検証：`/tmp/is-w1/e01-final-local-1.log`。
+  対象ビルド5,434 jobs成功、同じ4宣言の小監査は標準三公理のみ。
+  追加則の型も同じログで確認済み（証明ではない）。
+- 未検証の `HomWeightYonedaUnitSquare.lean` は作業木に保持。
+  mainへの取り込み、大きい監査、入口・監査への登録は行っていない。
