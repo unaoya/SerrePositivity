@@ -8550,3 +8550,362 @@ C04再開後の新規分は、五本330行、十七本1,031行、二本139行、
 §118の38,322項のPython点検を、それらのLean証明として扱っていない。
 G10・Tot・界面・新しいBE作用・operadの法則は作っておらず、M15・G12にも手を付けない。
 main凍結を維持し、以上は自枝の検証済み保存の区切りとして記録する。
+
+## 119. 共通の一覧の数え方へ移行して続行（11-14）
+
+最新のcoordination.md §2に従い、既存の構成の法則（単位・余単位・自然性・係数移送・
+合成則・貼り合わせ）と証明分割に数の枠を置かない。型を報告に記録し、
+200行を超える補題には行数も記す。L09a・L09の有限組合せの事前点検、
+1,000行ごとの途中報告、M14全体25,000行の外枠は維持する。
+mainは凍結中で、自枝の対象ビルド・小さい専用監査だけを行う。
+
+### 119.1 既存の種類の部分型を三分岐へ貼り合わせる型（C69）
+
+総次数N=1〜12の全90頂点で、始点・内部・終点のちょうど一つに属することを確認。
+この有限の位置の判定を、既存の境界種類の部分型に付ける。
+
+```lean
+FirstBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = 0}
+InteriorBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ 0 < t.2.val ∧ t.2.val < m + q}
+LastBoundaryFace (m q : ℕ) (b : BoundaryVertexKind) :=
+  {t : MarkedCut m q // boundaryVertexKind t.1 t.2 = b ∧ t.2 = Fin.last (m + q)}
+boundaryEndpointPartitionEquiv (m q : ℕ) (b : BoundaryVertexKind) (hN : 0 < m + q) :
+  BoundaryVertexOfKind m q b ≃ FirstBoundaryFace m q b ⊕
+    (InteriorBoundaryFace m q b ⊕ LastBoundaryFace m q b)
+```
+
+### 119.2 水平な三分岐の貼り合わせの型（C70・C71）
+
+§118の水平境界の全ての往復の点検と§119.1の位置の分割の点検を使う。
+既存の `finSumFinEquiv`、積の直和への分配、三つの挿入同値を合成する。
+
+```lean
+singletonSlotProdEquiv (X : Type*) : Fin 1 × X ≃ X
+firstInteriorLastIndexEquiv (m : ℕ) : Fin (m + 2) ≃ Fin 1 ⊕ (Fin m ⊕ Fin 1)
+coefficientIndexEndpointEquiv (m q : ℕ) :
+  Fin (m + 2) × Cut m q ≃ Cut m q ⊕ ((Cut m q × Fin m) ⊕ Cut m q)
+horizontalBoundaryFaceEquiv (m q : ℕ) :
+  Fin (m + 2) × Cut m q ≃ BoundaryVertexOfKind (m + 1) q .horizontal
+```
+
+新しい作用や定理を仮定せず、検証済みの水平な三分岐を同じ有限添字に貼り合わせる。
+
+### 119.3 既存の方向交換と境界種類の照合（C72〜C74）
+
+m=0〜5、q=0〜4の全3,829個の指定頂点付き経路で、水平辺の補集合への交換が
+水平・垂直の判定を交換し、混合・単独頂点を保つことを点検してから実装する。
+`setBoundaryKind` は既存の `boundaryVertexKind` と同じ有限判定を、全辺数と集合だけで読む記法。
+
+```lean
+BoundaryVertexKind.exchange : BoundaryVertexKind → BoundaryVertexKind
+BoundaryVertexKind.exchange_involutive : Function.Involutive BoundaryVertexKind.exchange
+setBoundaryKind {N : ℕ} (s : Finset (Fin N)) (k : Fin (N + 1)) : BoundaryVertexKind
+boundaryVertexKind_eq_setBoundaryKind {m q : ℕ} (s : Cut m q)
+    (k : Fin (m + q + 1)) : boundaryVertexKind s k = setBoundaryKind s.val k
+setBoundaryKind_compl {N : ℕ} (s : Finset (Fin N)) (k : Fin (N + 1)) :
+  setBoundaryKind sᶜ k = (setBoundaryKind s k).exchange
+setBoundaryKind_map_finCongr {N N' : ℕ} (h : N = N') (s : Finset (Fin N))
+    (k : Fin (N + 1)) :
+  setBoundaryKind (s.map (finCongr h).toEmbedding) (Fin.cast (congrArg (· + 1) h) k) =
+    setBoundaryKind s k
+boundaryVertexKind_exchange {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1)) :
+  boundaryVertexKind s.exchange (Fin.cast (by omega : m + q + 1 = q + m + 1) k) =
+    (boundaryVertexKind s k).exchange
+```
+
+新しい作用は作らず、既存の `shuffleExchangeEquiv` と有限な辺集合の判定を照合する法則。
+
+### 119.4 垂直境界への既存の同値の移送の型（C75〜C78）
+
+§118の垂直分岐の全ての往復と§119.3の方向交換の点検を使う。
+水平側の同値と方向交換の同値を合成し、別に垂直側の三分岐を作り直さない。
+
+```lean
+markedCutExchangeEquiv (m q : ℕ) : MarkedCut m q ≃ MarkedCut q m
+boundaryKindExchangeEquiv (m q : ℕ) (b : BoundaryVertexKind) :
+  BoundaryVertexOfKind m q b ≃ BoundaryVertexOfKind q m b.exchange
+verticalBoundaryFaceEquiv (m q : ℕ) :
+  Fin (q + 2) × Cut m q ≃ BoundaryVertexOfKind m (q + 1) .vertical
+vertical_kind_pos {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .vertical) : 0 < q
+```
+
+### 119.5 全境界の同じ添字への書き換え（C79〜C82）
+
+既存の水平・垂直の同値を、正の次数と前者の次数への添字で述べ直す。
+混合角の種類の保存と対合の式は、検証済みの角交換の法則の同じ式の書き換え。
+点検は§118の全境界の往復と§117.9の混合角の点検に含まれる。
+
+```lean
+horizontalBoundaryAllEquiv (m q : ℕ) (hm : 0 < m) :
+  Fin (m + 1) × Cut (m - 1) q ≃ BoundaryVertexOfKind m q .horizontal
+verticalBoundaryAllEquiv (m q : ℕ) (hq : 0 < q) :
+  Fin (q + 1) × Cut m (q - 1) ≃ BoundaryVertexOfKind m q .vertical
+mixed_kind_swapAtVertex {m q : ℕ} (s : Cut m q) (k : Fin (m + q + 1))
+    (hk : boundaryVertexKind s k = .mixed) :
+  boundaryVertexKind (swapAtVertex s k) k = .mixed
+vertexCornerPerm_involutive (m q : ℕ) : Function.Involutive (vertexCornerPerm m q)
+```
+
+### 119.6 検証済みの同値を全境界へ貼り合わせる型（C83〜C86）
+
+§118の6,070添字の往復の点検で使った対応を、既存の挿入同値・方向交換・角交換で作る。
+水平・垂直の正の次数を満たさない余分な右辺添字と、単独の出力頂点は固定する。
+
+```lean
+universalBoundaryPartner (m q : ℕ) : UniversalBoundaryIndex m q → UniversalBoundaryIndex m q
+universalBoundaryPartner_involutive (m q : ℕ) : Function.Involutive (universalBoundaryPartner m q)
+universalBoundaryPerm (m q : ℕ) : Equiv.Perm (UniversalBoundaryIndex m q)
+boundaryBalancePerm {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Equiv.Perm (BoundaryBalanceIndex u q)
+boundaryBalancePerm_involutive {r d : ℕ} (u : Surjection.BasisWord (r + 1) d) (q : ℕ) :
+  Function.Involutive (boundaryBalancePerm u q)
+```
+
+これはL09aのτの**添字上の候補**。符号付き境界項の相殺・固定点の値が零であることは
+まだこの宣言に含めず、その証明は残す。候補を前提にL09や作用の法則を宣言しない。
+
+### 119.7 全境界の対合候補の固定点の型（C87・C88）
+
+§118の6,070添字の点検では、対合の固定点は次の零次数の余分な添字だけだった。
+この点検は候補の往復だけでなく、固定点の条件も分類したものとして使う。
+混合角の非固定性は検証済みの `swapAtVertex_ne_iff` の同じ式。
+
+```lean
+mixed_vertexCornerPerm_ne {m q : ℕ} (t : MarkedCut m q)
+    (ht : boundaryVertexKind t.1 t.2 = .mixed) : vertexCornerPerm m q t ≠ t
+universalBoundaryPartner_fixed_iff (m q : ℕ) (i : UniversalBoundaryIndex m q) :
+  universalBoundaryPartner m q i = i ↔
+    match i with
+    | .inl _ => m = 0 ∧ q = 0
+    | .inr (.inl _) => m = 0
+    | .inr (.inr _) => q = 0
+boundaryBalancePerm_fixed_iff {r d : ℕ} (u : Surjection.BasisWord (r + 1) d)
+    (q : ℕ) (i : BoundaryBalanceIndex u q) :
+  boundaryBalancePerm u q i = i ↔
+    universalBoundaryPartner (r + d) q ((boundaryBalanceIndexEquiv u q) i) =
+      (boundaryBalanceIndexEquiv u q) i
+```
+
+### 119.8 L09aの固定点の零の部分
+
+C87の固定点の条件は6,070添字で明示的に再確認した。
+§118の38,322項の符号付き値の点検では、固定点は全て零だった。
+その部分を元の境界項の定義へ戻す。L09aの一覧にある固定点の零の主張の証明分割であり、
+別の作用・定理を追加するものではない。
+
+```lean
+boundaryBalancePerm_fixed_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ)
+    (i : BoundaryBalanceIndex w q) (hi : boundaryBalancePerm w q i = i) (x : S _⦋q⦌) :
+  boundaryBalanceTerm A S w q i x = 0
+```
+
+出力側はr=d=q=0、係数側はd=0、入力側はq=0に帰着する。
+出力側の色の次数は、全頂点数が1である有限濃度評価から零と判定する。
+
+### 119.9 貼り合わせた対合の評価式
+
+以下は検証済みの対合の各分岐の定義評価であり、数の枠を置かない既存構成の法則の補題。
+点検は§118の同じ6,070添字の対応の式を使う。
+
+```lean
+universalBoundaryPartner_horizontal (m q : ℕ) (hm : 0 < m)
+    (t : BoundaryVertexOfKind m q .horizontal) :
+  universalBoundaryPartner m q (.inl t.val) =
+    .inr (.inl ((horizontalBoundaryAllEquiv m q hm).symm t))
+universalBoundaryPartner_vertical (m q : ℕ) (hq : 0 < q)
+    (t : BoundaryVertexOfKind m q .vertical) :
+  universalBoundaryPartner m q (.inl t.val) =
+    .inr (.inr ((verticalBoundaryAllEquiv m q hq).symm t))
+universalBoundaryPartner_mixed (m q : ℕ) (t : BoundaryVertexOfKind m q .mixed) :
+  universalBoundaryPartner m q (.inl t.val) = .inl (vertexCornerPerm m q t.val)
+universalBoundaryPartner_coefficient (m q : ℕ) (hm : 0 < m)
+    (c : Fin (m + 1) × Cut (m - 1) q) :
+  universalBoundaryPartner m q (.inr (.inl c)) = .inl ((horizontalBoundaryAllEquiv m q hm) c).val
+universalBoundaryPartner_input (m q : ℕ) (hq : 0 < q)
+    (v : Fin (q + 1) × Cut m (q - 1)) :
+  universalBoundaryPartner m q (.inr (.inr v)) = .inl ((verticalBoundaryAllEquiv m q hq) v).val
+universalBoundaryPartner_isolated (m q : ℕ) (t : BoundaryVertexOfKind m q .isolated) :
+  universalBoundaryPartner m q (.inl t.val) = .inl t.val
+```
+
+### 119.10 L09aの三群の等式の貼り合わせ
+
+同じ対合の既存の評価式を使う証明分割。三群の仮定は今後閉じる本来の相殺であり、
+未供給の等式を公理や暗黙の前提として最終結果へ入れない。
+
+```lean
+universalBoundaryPartner_neg_of_cases {B : Type*} [AddCommGroup B] (m q : ℕ)
+    (F : UniversalBoundaryIndex m q → B)
+    (hfixed : ∀ i, universalBoundaryPartner m q i = i → F i = 0)
+    (hc : ∀ (hm : 0 < m) (c : Fin (m + 1) × Cut (m - 1) q),
+      F (.inl ((horizontalBoundaryAllEquiv m q hm) c).val) = -F (.inr (.inl c)))
+    (hv : ∀ (hq : 0 < q) (v : Fin (q + 1) × Cut m (q - 1)),
+      F (.inl ((verticalBoundaryAllEquiv m q hq) v).val) = -F (.inr (.inr v)))
+    (hmix : ∀ t : BoundaryVertexOfKind m q .mixed,
+      F (.inl (vertexCornerPerm m q t.val)) = -F (.inl t.val))
+    (i : UniversalBoundaryIndex m q) :
+  F (universalBoundaryPartner m q i) = -F i
+```
+
+実際の境界値については `hfixed` は§119.8で証明済み。
+`hc`・`hv`・`hmix` の符号と指定面の照合が残る。全項の相殺をこの補題だけから主張しない。
+
+### 119.11 実際の境界値の同じ添字への移送の型
+
+既存の境界値を、検証済みの添字の同値に沿って読む定義とその評価の法則。
+元の複体・境界項・界面の型は変えない。
+
+```lean
+universalBoundaryValue (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌) :
+  UniversalBoundaryIndex (r + d) q →
+    (power (chains A S) (r + 1)).X (-((d + q : ℕ) : ℤ) + 1)
+universalBoundaryValue_at_index (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+  universalBoundaryValue A S w q x ((boundaryBalanceIndexEquiv w q) i) =
+    boundaryBalanceTerm A S w q i x
+universalBoundaryValue_partner (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : BoundaryBalanceIndex w q) :
+  universalBoundaryValue A S w q x
+    (universalBoundaryPartner (r + d) q ((boundaryBalanceIndexEquiv w q) i)) =
+      boundaryBalanceTerm A S w q (boundaryBalancePerm w q i) x
+universalBoundaryValue_fixed_zero (A : Type u) [CommRing A] (S : SSet.{0})
+    {r d : ℕ} (w : Surjection.BasisWord (r + 1) d) (q : ℕ) (x : S _⦋q⦌)
+    (i : UniversalBoundaryIndex (r + d) q) (hi : universalBoundaryPartner (r + d) q i = i) :
+  universalBoundaryValue A S w q x i = 0
+```
+
+### 119.12 同方向の削除の指定列の照合（C89・C90）
+
+m=0〜5、q=0〜4の全経路の内部の水平・水平、垂直・垂直の箇所で、
+中間頂点の削除の列が、一本の辺を消した小さい経路の指定座標を一つ飛ばす列と一致することを
+点検してから実装する。Leanでは既存の `horizontalDeletion_horizontal`・
+`horizontalDeletion_vertical`・`verticalDeletion_horizontal`・`verticalDeletion_vertical` を使う。
+
+```lean
+horizontal_deletedTrace {m q r : ℕ} (s : Cut (m + 1) q)
+    (v : Fin (m + 2) → Fin r) (a b : Fin (m + 1 + q)) (hab : b.val = a.val + 1)
+    (ha : a ∈ s.val) (hb : b ∈ s.val) :
+  deletedTrace s v a.succ = List.ofFn (fun k : Fin (m + q + 1) =>
+    (Surjection.erase v (s.horizontal a.succ)
+      (((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩).horizontal k),
+    ((BarrattEccles.horizontalInsertionEquiv m q a).symm ⟨s, ha⟩).vertical k))
+vertical_deletedTrace {m q r : ℕ} (s : Cut m (q + 1))
+    (v : Fin (m + 1) → Fin r) (a b : Fin (m + (q + 1))) (hab : b.val = a.val + 1)
+    (ha : a ∉ s.val) (hb : b ∉ s.val) :
+  deletedTrace s v a.succ = List.ofFn (fun k : Fin (m + q + 1) =>
+    (v (((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩).horizontal k),
+    (s.vertical a.succ).succAbove
+      (((BarrattEccles.verticalInsertionEquiv m q a).symm ⟨s, ha⟩).vertical k)))
+```
+
+### 119.13 符号次数を出力次数へ結ぶ有限濃度の型（C91・C92）
+
+m=0〜5、q=0〜5の4,752個の区間fiberで、位置の連続性と
+「頂点数＝両端の垂直座標の差＋1」を点検してからLeanへ入る。
+
+```lean
+intervalPositions_eq_Icc {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  intervalPositions s i = Finset.Icc
+    ((intervalPositions s i).min' (intervalPositions_nonempty s i))
+    ((intervalPositions s i).max' (intervalPositions_nonempty s i))
+intervalPositions_card {m q : ℕ} (s : Cut m q) (i : Fin (m + 1)) :
+  (intervalPositions s i).card = hi s i - lo s i + 1
+```
+
+### 119.14 各色のcaesuraの濃度（C93〜C95）
+
+長さ1〜6・色数1〜3の全射語の全ての色で、caesuraが最後の一出現を除いた集合であり、
+最後より前の位置であることを点検してからLeanへ入る。
+既存の `Surjection.Word.lastOccurrence` の値と最大性を使う。
+
+```lean
+caesura_iff_lt_lastOccurrence {n l : ℕ} (u : Surjection.Word n l)
+    (c : Fin n) (i : Fin l) (hi : u.val i = c) :
+  Surjection.Caesura u.val i ↔ i < u.lastOccurrence c
+caesura_filter_occurrences {n l : ℕ} (u : Surjection.Word n l) (c : Fin n) :
+  (Surjection.occurrences u.val c).filter (Surjection.Caesura u.val) =
+    (Surjection.occurrences u.val c).erase (u.lastOccurrence c)
+sum_caesura_occurrences_add_one {n l : ℕ} (u : Surjection.Word n l) (c : Fin n) :
+  (∑ i ∈ Surjection.occurrences u.val c, if Surjection.Caesura u.val i then 1 else 0) + 1 =
+    (Surjection.occurrences u.val c).card
+```
+
+### 119.15 出力次数と区間の符号次数（C96・C97）
+
+m=0〜4、q=0〜4の全切断区間長、色数1〜3の全射語の各色で、
+「出力次数＝同じ色の区間の符号次数の和」を点検してからLeanへ入る。
+C96は同じ列の色のfiberを水平座標のfiberに分ける濃度式で、全射性は不要。
+
+```lean
+colorPositions_card_by_intervals {m q r : ℕ} (s : Cut m q)
+    (v : Fin (m + 1) → Fin r) (c : Fin r) :
+  (colorPositions s v c).card =
+    ∑ i ∈ Surjection.occurrences v c, (intervalPositions s i).card
+outputDegree_eq_sum_intervalLength {m q r : ℕ} (s : Cut m q)
+    (v : Surjection.Word r (m + 1)) (c : Fin r) :
+  outputDegree s v c = ∑ i ∈ Surjection.occurrences v.val c, intervalLength s v.val i
+```
+
+出力の境界のKoszul指数と `permutationExponent` を同じ区間の重みで計算するための有限の濃度評価。
+
+### 119.16 既存の逆転数の削除公式と境界符号（C98・C99）
+
+位置数1〜5、色数1〜3の全ての語・非空位置部分集合・その中の削除位置で、
+次の整数指数の式を点検してからLeanへ入る。
+既存の `IntervalCuts.positionInversionCount_erase` に各位置の寄与の恒等式を足す。
+
+```lean
+colorSorting_boundary_term {N r : ℕ} (v : Fin N → Fin r) (a b : Fin N) :
+  positionInversionTerm v a b + positionInversionTerm v b a +
+    (if v b < v a then 1 else 0) + (if b < a ∧ v b = v a then 1 else 0) =
+  (if b < a then 1 else 0) + 2 * positionInversionTerm v a b
+positionInversionCount_boundary {N r : ℕ} (v : Fin N → Fin r)
+    (s : Finset (Fin N)) (a : Fin N) (ha : a ∈ s) :
+  positionInversionCount v s + (s.filter (fun b => v b < v a)).card +
+    (s.filter (fun b => b < a ∧ v b = v a)).card =
+  positionInversionCount v (s.erase a) + (s.filter (fun b => b < a)).card +
+    2 * (∑ b ∈ s, positionInversionTerm v a b)
+colorSorting_boundary_sign {N r : ℕ} (v : Fin N → Fin r)
+    (s : Finset (Fin N)) (a : Fin N) (ha : a ∈ s) :
+  (-1 : ℤ) ^ (positionInversionCount v s + (s.filter (fun b => v b < v a)).card +
+    (s.filter (fun b => b < a ∧ v b = v a)).card) =
+  (-1 : ℤ) ^ positionInversionCount v (s.erase a) *
+    (-1 : ℤ) ^ (s.filter (fun b => b < a)).card
+```
+
+これは有限逆転集合の数え上げと既存の係数の冪の法則に限り、作用やoperadの新しい法則ではない。
+
+### 119.17 検証済みの区切りと3,000行の途中報告
+
+次の15本、計 **902行**を対象ビルドと専用監査で検証した。
+名前の接頭部は全て `SerrePositivity.EInfinity.SimplexCuts.`。
+`BoundaryEndpointPartition`・`HorizontalBoundaryEquiv`・`BoundaryKindExchange`・
+`VerticalBoundaryEquiv`・`BoundaryFaceTransfers`・`UniversalBoundaryPartner`・
+`BoundaryPartnerFixedPoints`・`BoundaryFixedTerms`・`BoundaryPartnerValues`・
+`BoundaryCancellationReduction`・`UniversalBoundaryValues`・`StraightTraceFaces`・
+`IntervalCardinalities`・`ColorCaesuraCounts`・`ColorIntervalDegrees`。
+次の登録候補一覧はこの15本。
+
+専用監査 `/tmp/bsw16/audit-m14-universal-boundary.lean` は
+**15モジュール・157宣言・標準三公理のみ**。
+対象ビルドは `m14-boundary-fixed-terms-01.log`・`m14-boundary-counts-01.log`・
+`m14-color-interval-degrees-02.log` などに成功を確認。新規15本にsorry・追加公理0、Leanの警告なし。
+全てのビルド・監査で `--wait 3600` の整理券を一枚ずつ使い、終了時に返した。
+mainへの取り込み・rootビルド・大きな監査は行っていない。
+
+L09a・L09の累計 **3,255行**、改訂MayのM14全体 **8,321行**。
+3,000行を越えた途中報告は停止せずチャットでも行った。次は4,000行で報告する。
+個々の補題はいずれも200行以下であり、200行を超える補題の追加はない。
+
+全境界の添字の対合候補と、実際の境界項の固定点での零は閉じた。
+水平・垂直の指定列の内部の照合、出力次数と区間の重みの同一視も閉じた。
+一方、三群の符号付き値の相殺 `hc`・`hv`・`hmix` は未完。
+`universalBoundaryPartner_neg_of_cases` はそれらを明示的な前提に取る貼り合わせの補題であり、
+最終のL09aやBFの作用の法則を閉じたとは扱わない。§119.16の有限符号計算へ続ける。
