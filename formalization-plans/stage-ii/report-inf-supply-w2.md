@@ -2866,3 +2866,41 @@ theorem standardParameterAugmentation_moore_generator (A : Type u) [CommRing A]
 `StandardParameterAugmentationValues` の結合検査 `/private/tmp/isw2-aug-values-check3.log` は終了コード0。これはまだ対象ビルド・累計監査に含めておらず、上の154本に不算入。
 
 最後の切断の結合検査 `/private/tmp/isw2-last-cut-check11.log` は、前面の恒等射の値で通常の `rw` が定義上の一致を見つけられず、その後の検査でも既定heartbeatに達して終了コード1。零次増大写像の値までの接続を追記したが、最後の切断の補題全体は未完。計算上限は上げず、必要な同じ計算の分割を§14の範囲内で続ける。追加承認を求める停止ではない。A05a・A05・停止点2は未完であり、最後の切断・零次増大写像・A05a・A05の各下書きは未コミット。
+
+## 86. 最後の切断の純テンソル計算を指定単位で分割
+
+§14に従い、前回の長い純テンソル評価を次の三宣言に分ける。`coefficientUnit` は既存の係数拡大随伴の単位への略記。二つの値公式はいずれも既存の定義から `rfl` で証明でき、`/private/tmp/isw2-tensor-values2.log` は終了コード0。同じA05aの証明の分割であり、照合枠や新しい数学の補題の追加としては数えない。型は次のとおり（DiagramComparison名前空間、`{A : Type u}`、`[CommRing A]`、`φ : simplicialRingCoefficient.{u} →+* A` を固定）。
+
+```lean
+abbrev coefficientUnit (M : ModuleCat.{u} ℤ) :=
+  (simplicialRingIntegerModuleEquivalence.toAdjunction.comp
+    (ModuleCat.extendRestrictScalarsAdj φ)).unit.app M
+```
+
+```lean
+theorem coefficientUnit_tensorMap {M M' N N' : ModuleCat.{u} ℤ}
+    (f : M ⟶ M') (g : N ⟶ N') (x : M) (y : N) :
+    (integerCoefficientExtension φ).map (integerTensorMap f g)
+      (coefficientUnit φ (integerTensor M N) (x ⊗ₜ[ℤ] y)) =
+    coefficientUnit φ (integerTensor M' N') (f x ⊗ₜ[ℤ] g y)
+```
+
+```lean
+theorem coefficientUnit_tensorComparison (M N : ModuleCat.{u} ℤ) (x : M) (y : N) :
+    (Functor.OplaxMonoidal.δ (ModuleCat.extendScalars φ)
+      (integerCoefficientModuleFunctor.obj M) (integerCoefficientModuleFunctor.obj N))
+      (((ModuleCat.extendScalars φ).map (integerCoefficientTensorIso M N).inv)
+        (coefficientUnit φ (integerTensor M N) (x ⊗ₜ[ℤ] y))) =
+    TensorProduct.tmul A
+      (M := (integerCoefficientExtension φ).obj M)
+      (N := (integerCoefficientExtension φ).obj N)
+      (coefficientUnit φ M x) (coefficientUnit φ N y)
+```
+
+`IntegerCoefficientTensorValues.lean` と§85.7の `StandardParameterAugmentationValues.lean` の対象ビルド・156本の一時監査を、共有鍵 `--wait 3600` で開始した。一つの整理券にまとめており、前回の鍵は返却済み。最後の切断の下書きではこの値公式に置換し、未ビルドの既存依存だけを含む一時結合ソースで個別検査中。全体の成功前にコミットしない。
+
+### 86.1 値の部分補題2本の検収
+
+コード `8dc9fc615`：`IntegerCoefficientTensorValues` 41行、`StandardParameterAugmentationValues` 38行。鍵付き対象ビルド3,963 jobs、累計156モジュール・1,710宣言、標準三公理のみで終了コード0（`/private/tmp/isw2-build86.log`）。一時監査 `/private/tmp/AuditISW2G10HundredFiftySix.lean`、対象一覧 `/private/tmp/isw2-g10-hundredfiftysix-modules.txt`。検証済み実測 **9,572行**。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。鍵は返却済み。
+
+最後の切断の結合検査は、公式の引数・適用箇所を明示しても既定heartbeatで未完。既存 `Unitors` の未ビルド依存を含む50モジュールの結合ソースになっていたため、通常のモジュール境界で検査するために既存 `Unitors` のみの対象ビルドを共有鍵 `--wait 3600` で開始した。これは最後の切断の証明成功を意味せず、A05a・A05・停止点2は未完。
