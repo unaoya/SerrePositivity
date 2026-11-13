@@ -4718,3 +4718,62 @@ theorem standardMooreTopMap_projection (x y : D) (n : ℕ) :
 ### 109.3 残り
 
 B02は未完。今回の式はMoore正規化前後の実評価の照合であり、AW比較・Hom–Tot比較と実豊穣合成の全単体の一致を済ませたとは扱わない。そこから指定native切断の族・極限性（B03〜B08）、標準脚・D(A)輸送（C）、全図式射・指定錐の族・離散加群入口（D）へ進む。停止点2の完了報告ではない。
+
+
+## 110. B02の途中：指定DK同型と実AW合成の全正次数の評価
+
+### 110.1 同じ成分照合の分割と型
+
+同じ随伴Homの逆写像の式と、Moore射影の既存の自然性を複体の射として合成した。指定DK同型の像を、同じΓのMoore射影・同じ余単位・同じ正次数項同型で評価すると、元の標準Homの最上位成分を回収する。零次数だけの公式で済ませず、任意の正次数を扱う。
+
+これを実標準合成`standardAW`へ適用し、DK像の実評価が元の`awTerm`の全切断点の和となる式を閉じた。標準合成を別のΓ上の演算に置き換えていない。B02の同じ成分照合の証明分割（§14）であり、独立した前提計算・照合の枠を追加しない。B02前提計算3/3・全体照合3/3はそのまま。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.StandardDoldKanProjectedEvaluation`。
+名前空間はDiagramComparison、`{R : Type u}`・`[CommRing R]`、後二本は`{D : Type v}`・`[DGCategory R D]`。
+
+```lean
+theorem doldKanHomEquiv_projected_eval (W : SimplicialObject (ModuleCat R))
+    (K : ChainComplex (ModuleCat R) ℕ)
+    (f : (normalizedMooreComplex (ModuleCat R)).obj W ⟶ K) (n : ℕ) :
+    (((Abelian.DoldKan.equivalence : SimplicialObject (ModuleCat R) ≌
+      ChainComplex (ModuleCat R) ℕ).toAdjunction.homEquiv W K) f).app (Opposite.op ⦋n⦌) ≫
+      (DoldKan.PInftyToNormalizedMooreComplex (Abelian.DoldKan.Γ.obj K)).f n ≫
+      (Abelian.DoldKan.equivalence.counitIso.hom.app K).f n =
+    (DoldKan.PInftyToNormalizedMooreComplex W).f n ≫ f.f n
+```
+
+```lean
+theorem standardDoldKanModuleIso_positive_projected_eval (x y : D) (n : ℕ) :
+    (standardDoldKanModuleIso (R := R) x y).hom.app (Opposite.op ⦋n + 1⦌) ≫
+      (DoldKan.PInftyToNormalizedMooreComplex
+        (doldKanHomModule (R := R) x y)).f (n + 1) ≫
+      (Abelian.DoldKan.equivalence.counitIso.hom.app
+        (connectiveHomComplex (R := R) x y)).f (n + 1) ≫
+      (connectiveHomComplex_positiveIso (R := R) x y n).hom =
+    ModuleCat.ofHom (standardTopEval (R := R) x y (n + 1))
+```
+
+```lean
+theorem standardDoldKanAW_positive_projected_eval {x y z : D} {n : ℕ}
+    (g : StandardSimplex R y z (n + 1)) (f : StandardSimplex R x y (n + 1)) :
+    ((standardDoldKanModuleIso (R := R) x z).hom.app (Opposite.op ⦋n + 1⦌) ≫
+      (DoldKan.PInftyToNormalizedMooreComplex
+        (doldKanHomModule (R := R) x z)).f (n + 1) ≫
+      (Abelian.DoldKan.equivalence.counitIso.hom.app
+        (connectiveHomComplex (R := R) x z)).f (n + 1) ≫
+      (connectiveHomComplex_positiveIso (R := R) x z n).hom) (standardAW g f) =
+    ∑ j : (Finset.univ : Finset (Fin (n + 2))),
+      awTerm g.val f.val Finset.univ j (-(n + 1 : ℤ)) (by simp)
+```
+
+### 110.2 検収と登録
+
+コード **`7000f0623`**（1本104行）。個別検査`/private/tmp/isw2-dk-projected5.log`は終了コード0。結合則は複体の射のまま整理してから各項へ移し、計算上限は変更していない。
+
+鍵付き対象ビルド`/private/tmp/isw2-build126.log`は **3,765 jobs・終了コード0**。新規分のみの監査`/private/tmp/AuditISW2G10B02ProjectedDK.lean`は **4宣言・標準三公理のみ**。共有鍵は返却済み。累計 **231モジュール・13,839行・2,115宣言**。対象一覧は`/private/tmp/isw2-g10-twohundredthirtyone-modules.txt`、外枠14,500行まで残り661行。
+
+新公理・sorryなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。B3中は対象ビルド・新規分の小さな監査だけとし、枝でコミットを続けた。
+
+### 110.3 残り
+
+B02は未完。今回の実AW側の評価を、A09の自由鎖AW比較の切断点ごとの値、同じ自由鎖Hom随伴、Hom–Tot比較へ接続して全単体の等式を閉じる必要がある。単なる正規化後の値の回収だけで元の比較射の等式を済ませたとは扱わない。その後にB03〜B08、C、Dが残る。停止点2の完了報告ではなく、目標「Dまで進めてください」はactiveのまま。
