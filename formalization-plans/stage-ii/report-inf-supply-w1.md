@@ -2595,3 +2595,87 @@ R2cの前提計算は2/3。残り1枠を新しい数学の仮定の導入には�
 右脚の同値性そのものは未了。次は同じframeの成分表示から、coherent変換空間の
 homotopy endへの比較と、元の評価の誘導射との照合を行う。
 これは§40のR2cの証明の残りで、R3a・R4には入っていない。
+
+## 42. R2c：評価したframeによる値の模型（11-14、実装中）
+
+前回は検証済み2本を `78475b4a0` に保存し、進捗あり。作業木はcleanで再開した。
+R2cの残りを進めるため、以下を同じR2cの証明の分割として記録する。
+
+```lean
+-- 既存Reedy成分則の係数移送：R2cの前提計算3/3。
+lemma strictDiagramEvaluationAt_isQuillen (j : strictDiagramIndex d) :
+  Quillen.IsLeftQuillen ((evaluation (strictDiagramIndex d) (Complex A)).obj j) ∧
+  Quillen.IsRightQuillen ((evaluation (strictDiagramIndex d) (Complex A)).obj j)
+-- 図式のsource frameを、同じ各複体で評価する。
+def strictDiagramEvaluatedSourceFrame (X : StrictComplexDiagram A d)
+  (j : strictDiagramIndex d) : SimplexCategory ⥤ Complex A
+lemma strictDiagramEvaluatedSourceFrame_cofibrant (X : StrictComplexDiagram A d)
+  (j : strictDiagramIndex d) :
+  Reedy.reedyLeft Reedy.simplex (cofibrations (Complex A))
+    (initial.to (strictDiagramEvaluatedSourceFrame A d X j))
+lemma strictDiagramEvaluatedSourceFrame_homotopicallyConstant
+  (X : StrictComplexDiagram A d) (j : strictDiagramIndex d)
+  {m n : SimplexCategory} (a : m ⟶ n) :
+  weakEquivalences (Complex A) ((strictDiagramEvaluatedSourceFrame A d X j).map a)
+lemma strictDiagramFibrantTarget_obj_isFibrant (Y : StrictComplexDiagram A d)
+  (j : strictDiagramIndex d) : IsFibrant ((strictDiagramFibrantTarget A d Y).obj j)
+def strictDiagramPointFrameMapping (X Y : StrictComplexDiagram A d) :
+  (strictDiagramIndex d)ᵒᵖ ⥤ strictDiagramIndex d ⥤ SSet.{u}
+lemma strictDiagramPointFrameMapping_kanComplex (X Y : StrictComplexDiagram A d)
+  (i : (strictDiagramIndex d)ᵒᵖ) (j : strictDiagramIndex d) :
+  KanComplex (((strictDiagramPointFrameMapping A d X Y).obj i).obj j)
+```
+
+最初の法則は `Reedy.cofibration_app`・`fibration_app` と同じobjectwise弱同値の特殊化。
+残りは既存 `reedyCofibrant_of_preservesLatching`、frameの評価、
+`cosimplicialHom_kanComplex` を同じ図式のsource frameとfibrant targetへ入れる証明分割。
+新しい一般モデル構造や数学的仮定は導入しない。
+このKan値の全二変数Homからhomotopy endへの比較がR2cの核心として引き続き残る。
+
+### R2cの二変数frame Homのend（証明分割、未検証）
+
+```lean
+def strictDiagramPointFrameEndWedge (X Y : StrictComplexDiagram A d) :
+  Wedge (strictDiagramPointFrameMapping A d X Y)
+-- 上のwedgeの点は、元の strictDiagramFrameMapping A d X Y。
+def strictDiagramPointFrameEndIsLimit (X Y : StrictComplexDiagram A d) :
+  IsLimit (strictDiagramPointFrameEndWedge A d X Y)
+def strictDiagramPointFrameEndIso (X Y : StrictComplexDiagram A d) :
+  strictDiagramFrameMapping A d X Y ≅ end_ (strictDiagramPointFrameMapping A d X Y)
+lemma strictDiagramPointFrameEnd_kanComplex (X Y : StrictComplexDiagram A d) :
+  KanComplex (end_ (strictDiagramPointFrameMapping A d X Y))
+```
+
+評価したsource frameとfibrant targetの同じHomに、全ての添字射の自然性を課す。
+自然変換の成分からwedgeを作り、その普遍性を全単体上で証明するR2cの証明分割。
+この特定のendのKan性は元の図式圏でのframeのKan性から出す。
+「Kan複体の任意のendはKan」や「通常endとhomotopy endは無条件に一致」を使わない。
+後者の導来的な比較と元のspanの右脚への接続は未了のまま。
+
+### §42の検証・実測（11-14）
+
+- `StrictDiagramEvaluationFrames.lean`：118行、8宣言。対象ビルド成功（2,675 jobs）。
+- `StrictDiagramPointFrameEnd.lean`：91行、6宣言。対象ビルド成功（2,686 jobs）。
+- 14宣言の小監査成功、標準三公理のみ（`/tmp/is-w1/r2-point-end-audit.log`）。
+- 初回の型クラス探索は、図式宇宙0と零対象を明示して局所化した。
+  弱同値の評価はΔ・Δᵒᵖで直接簡約。計算上限は上げていない。
+- 新しい入口・大きい監査は実行していない。直接のimporterは今回のendファイルで、同じ対象ビルドに含まれる。
+
+実測：R2は11本977行、3b-3全体は87本7,023行、選択監査338宣言。
+R2cの前提計算は3/3。今回の二つの補題群は§42の型で先に記録した、
+同じR2cの評価・frame・endの証明分割であり、R2a〜R2eの範囲や仮定を変更していない。
+
+### 次の接続の現状
+
+値側には既存 `ComplexHammockFullyFaithful.complexHammockDerivedComparison_fullyFaithful`、
+coherent側には
+`Kerodon/LargeInfinityCategories/PresentableInfinityCategories/TwistedHomEndSection.lean` の
+`twistedFunctorHomToEndSections`（全関手Homからtwisted endの切断への実比較）がある。
+後者のdocstringどおり、そのファイル自身は比較射を構成するだけで、同値性の証明ではない。
+`FunctorCompactEndReduction` の入力にあるendの極限錐族を、無条件に使用可能な定理と読まない。
+
+次は、今回の特定のReedy frameによるendをcoherentな切断へ比較し、
+元の `strictDiagramDerivedEvaluation` の右脚がその比較であることを証明する。
+今回の通常endの普遍性・Kan性だけから、homotopy endとの一致は結論していない。
+R2c・R2d・R2eは引き続き未了、R2の完成および停止点5の完成は未主張。
+R3aへの着手もない。目標「R2を完成」はactiveのまま。
