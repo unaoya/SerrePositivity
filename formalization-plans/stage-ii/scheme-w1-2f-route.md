@@ -965,3 +965,26 @@ Spec 全射性は、実際の構造層の切断代数への全射性と、前の
 **残り**：一般の代数係数図式について順極限の H⁰ 比較はできた。次はこの同型の係数図式の射に対する自然性を閉厚化の制限について接続し、斉次標準開の係数 Frobenius 系を F6 の `projectiveFrobeniusRingChartDiagram` と照合する。それにより前の短完全列を指定された実際の Čech H⁰ の四角形へ移す。F8 の増大全複体と、共通細分・底変換等の停止点の検収も残る。今回を F7 全体や停止点 2f の完成とはしない。
 
 2f 累計 **134 モジュール・8,693 行（登録込み 8,912 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
+
+## F7：H⁰ 比較の自然性と F6 の環チャートへの接続（4ad55da21、11-13）
+
+新規 3 モジュール・8 公開宣言（private 補題を除く）・211 行（登録込み 217 行）。対象ビルド 3,276 jobs、直接 importer 4,683 jobs 成功。別実行の監査は **9,840 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ取得し、待ちは一つ。探索上限の引き上げ・sorry・新しい公理はない。
+
+登録モジュール：`CechAlgebraFrobeniusNaturality`、`CechAlgebraFrobeniusH0ColimitNaturality`、`ProjectiveHomogeneousFrobeniusH0`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `algebraCechIntMap` | 係数代数の実際の射を、スカラー制限した整数加群図式の射にする。 |
+| `fullAlgebraCechEqualizerAddMap_intMap` | 整数線形として適合切断に誘導した写像は既存の代数写像と同じ関数。 |
+| `algebraCechFrobeniusCoefficientNatTrans` | 係数代数の射が、実際の Frobenius 係数系の自然変換を誘導する。 |
+| `algebraCechFrobeniusH0SystemIso_naturality` | 各段の H⁰ 同型は適合切断の実際の写像と係数系の射を比較する。 |
+| `algebraCechFrobeniusH0ColimitIso_naturality` | 順極限の Čech H⁰ 比較は係数代数の射に自然で、比較後の射は適合切断環の実際の Frobenius 順極限の射。 |
+| `projectiveHomogeneousFrobeniusCoefficientIso` | 多項式加群の標準開係数系と斉次局所化の代数係数系を、同じ Frobenius に沿って同定する。 |
+| `projectiveHomogeneousFrobeniusRingCechIso` | F6 の標準開環の複体と、斉次代数係数の Frobenius 順極限の複体の同型。 |
+| `projectiveHomogeneousFrobeniusRingCechH0Iso` | F6 と同じ `projectiveFrobeniusRingChartDiagram` の Čech H⁰ と、斉次切断環の Frobenius 順極限の同型。 |
+
+各段の H⁰ の自然性、filtered 余極限の自然性、環の順極限と整数加群の余極限の自然性の三つを合成した。F6 への接続は既存の斉次チャートの線形同型を整数スカラーに制限し、実際の反復 Frobenius との可換性を使う。別の複体を F6 のものと呼んで済ませず、既存の `projectiveFrobeniusRingChartCechIso` を通した明示的な複体同型を作った。主 H⁰ 比較の docstring に Čech 版と Stacks 30.2.6 の非形式化を明記。
+
+**残り**：係数代数図式の射に対する順極限の自然性は閉じた。次は `reesClosedFrobeniusCoefficientNatTrans` と `reesClosedHomogeneousAlgebraProjection` が、今回の `projectiveHomogeneousFrobeniusCoefficientIso` を介して同じ射になることを照合する。その可換性と既存の `reesClosedFrobeniusRingCechIso_projection` で、F6 の閉厚化の H⁰ の射と切断の制限を同定し、前の短完全列を移す。基底側の増大写像も同じ比較と揃える。F8 の増大全複体と、共通細分・底変換等の停止点の自然性の検収が引き続き残る。F7 全体または停止点 2f の完成とはしない。
+
+2f 累計 **137 モジュール・8,904 行（登録込み 9,129 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
