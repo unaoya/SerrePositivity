@@ -10,11 +10,11 @@ public import SerrePositivity.InfinityCategories.Project.DerivedCategories.Diagr
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u
+universe u v
 open CategoryTheory MonoidalCategory CochainComplex HomComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
-variable {A : Type u} [CommRing A] {J : Type} [SmallCategory J]
+variable {A : Type (max u v)} [CommRing A] {J : Type v} [SmallCategory J]
 variable (P Q : J ⥤ Complex A) (T : Complex A)
 local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)
 

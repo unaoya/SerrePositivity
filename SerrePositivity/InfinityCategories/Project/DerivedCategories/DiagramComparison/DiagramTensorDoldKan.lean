@@ -13,13 +13,13 @@ public import SerrePositivity.EInfinity.ComplexLimits.NormalizedSimplexTensorHom
 @[expose] public noncomputable section
 set_option backward.isDefEq.respectTransparency false
 set_option backward.isDefEq.respectTransparency.types false
-universe u
+universe u v
 open CategoryTheory MonoidalCategory CochainComplex
 open SerrePositivity.DifferentialGraded SerrePositivity.HomologicalAlgebra
 open SerrePositivity.EInfinity.ComplexLimits
 open SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.CosimplicialHom
 namespace SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison
-variable (A : Type u) [CommRing A] {J : Type} [SmallCategory J]
+variable (A : Type (max u v)) [CommRing A] {J : Type v} [SmallCategory J]
 variable (P Q : J ⥤ Complex A)
 local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)
 
@@ -53,7 +53,7 @@ def normalizedDiagramTensorHomIso :
     exact normalizedSimplexHomEquiv_naturality A _ f.unop _)
 
 /-- 元の自由テンソル族の Hom を、同じ図式 Hom の実 Γ 空間へ戻す。 -/
-def freeTensorDiagramHomIso (X : J ⥤ SSet.{u}) :
+def freeTensorDiagramHomIso (X : J ⥤ SSet.{max u v}) :
     (cosimplicialHom (freeTensorFrame A X (liftedStandardSimplexParameter J))).obj Q ≅
       (truncatedDoldKanFunctor A).obj
         (linearHomComplex A ((E).obj (freeNegativeChainsDiagram (A := A) X)) ((E).obj Q)) :=
