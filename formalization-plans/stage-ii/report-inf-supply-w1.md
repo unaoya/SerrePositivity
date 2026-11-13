@@ -3170,3 +3170,242 @@ private lemma unitSquare_raw (F : A ⟶ C) :
   追加則の型も同じログで確認済み（証明ではない）。
 - 未検証の `HomWeightYonedaUnitSquare.lean` は作業木に保持。
   mainへの取り込み、大きい監査、入口・監査への登録は行っていない。
+
+
+## 47. 指定底変換の合成則の再開（11-14、途中）
+
+§46.2の型のままの合成則の追加承認と、法則・証明分割の数の制限撤廃を確認。
+新しい構成・独立の定理・まとまり外・外枠20,800行で止まる条件を維持する。
+停止点5aは引き続き元の実評価の充満忠実性まで。R3・R4は保留。
+
+既存の `relativeSectionBaseChangeRealizationIso_comp` と
+`straighteningBaseChangeIso_firstVertex` を再利用する。前者は共同切断の
+**同じ指定実現同型**の合成則で、分類後の式そのものではない。
+まず転置と第一変数制限を同じ端点で比較し、次にその既存合成則を転置した。
+この2本（60行＋70行）は対象ビルド成功。
+単体圏への再添字付けのファイルは未検証で、端点移送の簡約を局所化している。
+計算上限を上げず、既存の宣言も変更していない。
+
+以下は合成則の法則・証明分割の型。新しい構成や別の比較射への変更ではない。
+各ファイルのopenとuniverseの下で読む。単体圏のファイルの補助的な異種等式は後掲。
+
+### TransposeFunctorIsoRestriction
+
+```lean
+lemma transposeFunctorHom_precomp {A B I X : SSet.{u}} (q : B ⟶ A)
+    {F G : A ⟶ (ihom I).obj X} (α : FunctorHom F G) :
+    SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.KanExtensions.kanFunctorHomCongr
+        (transposeFunctorFamily_comp q F) (transposeFunctorFamily_comp q G)
+        (transposeFunctorHom (precomposeFunctorHom q α)) =
+      postcomposeFunctorHom ((pre q).app X) (transposeFunctorHom α)
+
+lemma functorIsoTranspose_precomp {A B I X : SSet.{u}} (q : B ⟶ A)
+    {F G : A ⟶ (ihom I).obj X} (e : FunctorIso F G) :
+    diagramIsoCongr (transposeFunctorFamily_comp q F) (transposeFunctorFamily_comp q G)
+        (e.precomp q).transpose = e.transpose.postcomp ((pre q).app X)
+
+```
+
+### SectionDiagramBaseChangePasting
+
+```lean
+def sectionDiagramBaseChangeCompIso {B D T : SSet.{u}}
+    {J : Type u} [Category.{u} J] (k : D ⟶ B) (l : T ⟶ D) (A : Jᵒᵖ ⥤ Over T) :
+    FunctorIso
+      (relativeSectionDiagramInfinity A ≫
+        (pre (leftFibrationInfinityBaseChange (l ≫ k))).app SpaceInfinity.{u})
+      ((relativeSectionDiagramInfinity A ≫
+        (pre (leftFibrationInfinityBaseChange l)).app SpaceInfinity.{u}) ≫
+        (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})
+
+lemma relativeSectionDiagramInfinityBaseChangeIso_comp {B D T : SSet.{u}}
+    {J : Type u} [Category.{u} J] (k : D ⟶ B) (l : T ⟶ D) (A : Jᵒᵖ ⥤ Over T) :
+    sectionDiagramBaseChangeCompIso k l A ≪≫
+      (relativeSectionDiagramInfinityBaseChangeIso l A).postcomp
+        ((pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}) ≪≫
+      relativeSectionDiagramInfinityBaseChangeIso k (A ⋙ Over.map l) =
+        relativeSectionDiagramInfinityBaseChangeIso (l ≫ k) A
+
+```
+
+### SimplexSectionBaseChangePasting
+
+```lean
+lemma simplexSectionBaseChange_target {B D : SSet.{u}} (k : D ⟶ B) :
+    relativeSectionDiagramInfinity (transportSimplexDomainFunctor D ⋙ Over.map k) =
+      (SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)) ≫
+        transportSimplexSectionInfinity B
+
+lemma simplexSectionBaseChange_normalized {B D : SSet.{u}} (k : D ⟶ B) :
+    transportSimplexSectionInfinity_baseChangeIso k =
+      diagramIsoCongr rfl (simplexSectionBaseChange_target k)
+        (relativeSectionDiagramInfinityBaseChangeIso k (transportSimplexDomainFunctor D))
+
+lemma simplexSectionBaseChange_reindexed {B D T : SSet.{u}}
+    (k : D ⟶ B) (l : T ⟶ D) :
+    relativeSectionDiagramInfinityBaseChangeIso k
+        (transportSimplexDomainFunctor T ⋙ Over.map l) =
+      diagramIsoCongr
+        (by rw [← Category.assoc, ← simplexSectionBaseChange_target l])
+        (by rw [← simplexSectionBaseChange_target k, relativeSectionDiagramInfinity_reindex,
+          ← Functor.assoc, transportSimplexDomainFunctor_baseChange])
+        ((transportSimplexSectionInfinity_baseChangeIso k).precomp
+          ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l))))
+
+```
+
+### 47.1 検証済みの途中点（停止せず続行）
+
+`acf003460`：5本・529行、公開18宣言。
+対象ビルドと小監査は `/tmp/is-w1/section-pasting-audit-1.log`：成功、標準三公理のみ。
+3b-3の検証済みは93本・7,652行。未検証の単位評価93行はコミットしていない。
+
+| 法則・証明分割 | 実測行数 | 状態 |
+| --- | ---: | --- |
+| 転置と第一変数制限 | 63 | 検証済み |
+| 転置後の共同切断の指定合成 | 73 | 検証済み |
+| 単体圏の指定再添字付け | 108 | 検証済み |
+| 全単体上の指定三因子の合成 | 159 | 検証済み |
+| 分類Homの全単体切断への制限 | 126 | 検証済み |
+| **合成則の証明分割の小計** | **529** | **一般の底への降下はまだ** |
+
+単一の宣言は200行以下だが、§46.2の法則の証明分割全体では200行を超えたため、
+全ファイルの実測も記す。前の追加250〜450行の見込みは超えた。
+残る降下・実貼り合わせ射の係数作用の照合を400〜700行と見て、
+合成則全体を約929〜1,229行へ見直す。
+R2の残りはE01の未完部分1,000〜1,700、E02〜E06 1,150〜1,950、
+RR01〜RR05 3,100〜4,950、R2d・R2e 500〜700、合計5,750〜9,300行。
+検証済みと合わせ13,402〜16,952行で、外枠20,800行の内側。
+追加の法則のための承認待ちにはせず、このまま進める。
+
+残る数学的な照合は、全単体上で現れた標準貼り合わせ比較を、
+元の引き戻し同型の `leftClassificationHom` と同じ射として回収することと、
+初頂点局所化の忠実性で§46.2の**元の型**の式を降下すること。
+`transportSimplexSectionInfinity_baseChange_pasting` 自体はその最終式ではない。
+
+新しく保存した型（前掲の型と合わせて読む）：
+
+#### SimplexSectionComposite
+
+```lean
+lemma simplexSection_def (T : SSet.{u}) :
+    transportSimplexSectionInfinity T = relativeSectionDiagramInfinity
+      (transportSimplexDomainFunctor T)
+
+def simplexSectionCompIso {B D T : SSet.{u}} (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso
+      (transportSimplexSectionInfinity T ≫
+        (pre (leftFibrationInfinityBaseChange (l ≫ k))).app SpaceInfinity.{u})
+      ((transportSimplexSectionInfinity T ≫
+        (pre (leftFibrationInfinityBaseChange l)).app SpaceInfinity.{u}) ≫
+        (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})
+
+def simplexSectionFirstIso {B D T : SSet.{u}} (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso
+      ((transportSimplexSectionInfinity T ≫
+        (pre (leftFibrationInfinityBaseChange l)).app SpaceInfinity.{u}) ≫
+        (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u})
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)) ≫
+        (transportSimplexSectionInfinity D ≫
+          (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}))
+
+def simplexSectionSecondIso {B D T : SSet.{u}} (k : D ⟶ B) (l : T ⟶ D) :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)) ≫
+        (transportSimplexSectionInfinity D ≫
+          (pre (leftFibrationInfinityBaseChange k)).app SpaceInfinity.{u}))
+      ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor l)) ≫
+        ((SSet.uliftFunctor.{u + 1, u}).map (nerveMap (transportSimplexFunctor k)) ≫
+          transportSimplexSectionInfinity B))
+
+lemma transportSimplexSectionInfinity_baseChange_pasting {B D T : SSet.{u}}
+    (k : D ⟶ B) (l : T ⟶ D) :
+    HEq (simplexSectionCompIso k l ≪≫ simplexSectionFirstIso k l ≪≫
+      simplexSectionSecondIso k l)
+      (transportSimplexSectionInfinity_baseChangeIso (l ≫ k))
+
+```
+
+#### LeftClassificationSimplexRestriction
+
+```lean
+def leftStraighteningSimplexRestrictionIso (B : SSet.{u}) :
+    FunctorIso
+      (leftStraighteningInfinityMap B ≫
+        (pre ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B))).app
+          SpaceInfinity.{u})
+      (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).realization
+
+lemma leftClassificationSimplex_sourceEq {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    functorVertex ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B) ≫
+      leftStraighteningInfinityDiagram p) =
+      (leftStraighteningInfinityMap B ≫
+        (pre ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B))).app
+          SpaceInfinity.{u}).app (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p)
+
+lemma leftClassificationSimplex_targetEq {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    functorVertex (kanDiagramCoherentNerve
+      ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+        (leftFibrationObjectOf p))) =
+      (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).realization.app
+        (Opposite.op ⦋0⦌) (leftFibrationInfinityVertex p)
+
+def leftClassificationSimplexIso {E B : SSet.{u}} (p : E ⟶ B) [LeftFibration p] :
+    FunctorIso
+      ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B) ≫
+        leftStraighteningInfinityDiagram p)
+      (kanDiagramCoherentNerve
+        ((relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).evaluate
+          (leftFibrationObjectOf p)))
+
+lemma leftClassificationSimplex_component {E B : SSet.{u}} (p : E ⟶ B)
+    [LeftFibration p] :
+    normalizedFunctorIsoComponent (leftStraighteningSimplexRestrictionIso B)
+      (leftFibrationInfinityVertex p) (leftClassificationSimplex_sourceEq p)
+      (leftClassificationSimplex_targetEq p) = leftClassificationSimplexIso p
+
+lemma leftClassificationHom_simplexRestriction
+    {E H B : SSet.{u}} [Quasicategory B]
+    (p : E ⟶ B) (q : H ⟶ B) [LeftFibration p] [LeftFibration q]
+    (f : E ⟶ H) (hf : f ≫ q = p) :
+    precomposeFunctorHom
+        ((SSet.uliftFunctor.{u + 1, u}).map (transportSimplexFirstVertexMap B))
+        (leftClassificationHom p q f hf) ≫ (leftClassificationSimplexIso q).hom =
+      (leftClassificationSimplexIso p).hom ≫
+        normalizedVertexHomMap
+          (relativeSectionEnrichedDiagram (transportSimplexDomainFunctor B)).realization
+          (leftClassificationSimplex_targetEq p) (leftClassificationSimplex_targetEq q)
+          (Truncated.HomotopyCategory.homMk (leftFibrationInfinityEdge p q f hf).toTruncated)
+
+```
+
+#### 型移送の私的な証明分割
+
+同型の合成は `Iso.trans_assoc` で明示的に移す。異なる結合括弧を定義等式として
+照合させない。二重の型移送も次の一般補題として一度だけ検証してから適用した。
+いずれも既存の等式消去・制限・合成の法則であり、新しい数学的な入力ではない。
+
+```lean
+private lemma two_mpr_heq {α β γ : Sort (u + 2)}
+    (h₁ : α = β) (h₂ : β = γ) (x : γ) :
+  HEq (Eq.mpr h₁ (Eq.mpr h₂ x)) x
+
+private lemma sectionBaseChangeIso_coeff_heq {B D : SSet.{u}}
+    {J : Type u} [Category.{u} J] (k : D ⟶ B) {A A' : Jᵒᵖ ⥤ Over D}
+    (h : A = A') : HEq (relativeSectionDiagramInfinityBaseChangeIso k A)
+      (relativeSectionDiagramInfinityBaseChangeIso k A')
+
+private lemma isoPrecomp_heq {W X Y : SSet.{u}} {f g f' g' : X ⟶ Y}
+    (e : FunctorIso f g) (e' : FunctorIso f' g') (hf : f = f') (hg : g = g')
+    (he : HEq e e') (q : W ⟶ X) : HEq (e.precomp q) (e'.precomp q)
+
+private lemma isoTrans_heq {A X : SSet.{u}} {f g h f' g' h' : A ⟶ X}
+    (e : FunctorIso f g) (e' : FunctorIso f' g')
+    (d : FunctorIso g h) (d' : FunctorIso g' h')
+    (hf : f = f') (hg : g = g') (hh : h = h')
+    (he : HEq e e') (hd : HEq d d') : HEq (e ≪≫ d) (e' ≪≫ d')
+
+private lemma simplexSectionBaseChange_heq {B D : SSet.{u}} (k : D ⟶ B) :
+  HEq (transportSimplexSectionInfinity_baseChangeIso k)
+    (relativeSectionDiagramInfinityBaseChangeIso k (transportSimplexDomainFunctor D))
+```
