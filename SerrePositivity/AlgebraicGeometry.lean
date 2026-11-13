@@ -1264,3 +1264,19 @@ public import SerrePositivity.AlgebraicGeometry.AffineVCoverBaseChange
 public import SerrePositivity.AlgebraicGeometry.AffineVCoverSpectrum
 
 public import SerrePositivity.AlgebraicGeometry.AffineVCoverFamilyBaseChange
+
+public import SerrePositivity.AlgebraicGeometry.ValuationProbeExtension
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverNilImmersion
+
+public import SerrePositivity.AlgebraicGeometry.FaithfullyFlatValuationLift
+
+public import SerrePositivity.AlgebraicGeometry.AffineVCoverFaithfullyFlat
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCover
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverProper
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverComposition
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverSurjective
