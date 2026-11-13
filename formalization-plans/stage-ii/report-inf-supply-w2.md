@@ -2004,3 +2004,21 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.D
 ```
 
 残枠 **1,436行**。`DiagramTensorDoldKan.lean` で標準単体を代入した全単体同型を検査中。元の自由テンソル族への輸送の型推論が制限に達したため、中間 Hom 同型を指定前合成で明示している。制限値は変更していない。積重み側との同定、空間の同値性、native 極限性と後続の要件は未完で、停止点2ではない。
+
+## 67. 3b-2 続行：図式テンソル Hom と実 Dold–Kan 空間
+
+コード `4daa43593`、新規 `DiagramComparison.DiagramTensorDoldKan` 1本79行。累計 **137本8,643行**。
+
+§66に正規化標準単体を代入し、既存 `normalizedSimplexHomEquiv` と合成して、図式テンソル Hom と元の図式 `linearHomComplex` の実 Dold–Kan 空間との全単体同型を構成した。単体作用素との可換性も証明した。§63の指定同型を前合成して、元の自由テンソル族の Hom へ戻す同型も構成した。第一のまとまりのテンソル側の接続。
+
+上記コミットの個別検査、鍵付き対象ビルド **2,564 jobs**、累計137本 **1,572宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-67.log`、監査 `/private/tmp/AuditISW2G10HundredThirtySeven.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtyseven-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorDoldKan
+```
+
+残枠 **1,357行**。`FreeChainsAdjunction.lean` で自由加群・Dold–Kan・負次数延長の随伴の合成と図式への持ち上げを個別検査済み（未コミット）。積側は既存の重み付き切断の随伴と合成する。
+
+その接続は持ち上げた添字圏 `AsSmall` も使うため、本枝の新設 `DiagramHomCochains`・`DiagramHomFamilyLift`・`DiagramHomFamilyEquiv`・`DiagramTensorDoldKan` の四本について、添字 `J : Type v` と係数 `A : Type (max u v)` を許す一般化を検査中。`v = 0` で従来の小さい添字圏を含む。main に該当四本が存在しないことを確認済みで、既存の main の宣言・入口・⑤aのファイルは変更しない。この未コミットの一般化を上記監査が検証したとは数えず、再ビルド・再監査する。停止点2は未完。
