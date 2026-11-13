@@ -7757,3 +7757,121 @@ L09aのBoundaryIndexの新しい下書きはこの検証済み数とコミット
 それ以前の「確定後は枝へコミットしない」は今回は適用しない。
 本レーンは対象ビルドと小さい専用監査だけを、一回ごとに鍵を取って実行している。
 mainへの取り込み・B4の追従は調整役からの連絡を待つ。
+
+### 112.8 L09aの前提計算1：既存の正規化生成元の微分
+
+既存AlexanderWhitney.generator_dを同じembeddingDownNatへ運ぶ法則を用いる。
+新しい境界の分類ではなく、既存の複体射・指定係数移送の法則としてL09aの前提計算**1/3**。
+内部のchains_d_negはこの同じ移送の証明分割とする。
+
+```lean
+gen_d (A : Type u) [CommRing A] (S : SSet.{0}) (q : ℕ) (x : S _⦋q+1⦌) :
+  (chains A S).d (-((q+1:ℕ):ℤ)) (-(q:ℤ)) (gen A S (q+1) x) =
+    ∑ i : Fin (q+2), (-1:ℤ)^i.val • gen A S q (S.δ i x)
+```
+
+§112.7の三本は **bea1aab1b** に保存済み。次はL09aの有限添字とこの指定微分の計算。
+
+### 112.9 L09aの前提計算2：一つの出力次数を下げる移送
+
+既存の有限和のupdateの式による次数計算を、L09aの前提計算**2/3**として記録する。
+
+```lean
+degreeSum_delete (d : Fin n → ℕ) (i : Fin n) (h : 0 < d i) :
+  degreeSum n (Function.update d i (d i-1)) + 1 = degreeSum n d
+```
+
+これは切断の新しい分類ではなく、境界項を同じ全次数成分へ送るための移送の法則。
+
+## 113. L09aの境界値までの検証と、一覧外の再帰分解での停止（11-13夜）
+
+### 113.1 検証済み・保存する範囲
+
+新しい五本は全てEInfinity/SimplexCuts/。
+
+| モジュール | 行数 | 出力 |
+| --- | ---: | --- |
+| BoundaryIndex | 33 | 出力面・係数語削除・入力面の三群の有限添字 |
+| GeneratorBoundary | 44 | 同じ整数次数の正規化生成元の微分。L09a前提計算1 |
+| BoundaryFaces | 35 | 標準面と一因子の次数を下げる指定移送。L09a前提計算2 |
+| OutputBoundaryTerms | 63 | 出力の一面を削除した実テンソルとBF・Koszul符号 |
+| BoundaryTerms | 71 | 係数語・入力面も含む、同じ次数の三群の境界値 |
+| **計** | **246** | |
+
+対象ビルド：m14-boundary-index-01.log、m14-boundary-prerequisites-01.log、
+m14-output-boundary-01.log、m14-boundary-terms-01.log（いずれも/tmp/bsw16/）。
+BoundaryFacesの未使用変数警告はδの次元を明記して解消し、最終ソースに新しい警告なし。
+小さい専用監査audit-m14-boundary-terms.logは **5モジュール・66宣言、標準三公理のみ**で成功。
+sorry・追加公理なし。鍵はビルドと監査ごとに取り直し、返却済み。
+
+独立な有限計算として、整数係数のテンソルの微分と、χの文字削除＋入力単体の面を
+Pythonで直接比較した。arity1〜3、語次数0〜3、単体次数0〜2の**495例**で一致した。
+これはBF符号の点検であり、一般のL09a・L09のLean証明の代用にはしない。
+
+三群の値は型検査済みだが、**boundaryBalance_pairingも微分等式もまだ証明していない**。
+May4,128行＋切断の検証済み1,184行で、本経路の基礎実測は **5,312行**。
+12,500行の途中報告点・25,000行の外枠で止まったのではない。
+
+### 113.2 一覧外として報告する新しい数学の型
+
+L09aのτを、最後の垂直辺を取り除く再帰で構成する筋を具体化したところ、
+次の二つが必要となった。**紙の新規名・型案、未実装・未型検査**。
+
+```lean
+-- 追加候補 R01。q+1個目の垂直辺の属する区間pで分類し、末尾を除く。
+cutLastVerticalEquiv (m q : ℕ) :
+  Cut m (q+1) ≃ Σ p : Fin (m+1), Cut p.val q
+```
+
+幾何学的には、各区間の長さの列の最後の正の成分pから一を引き、
+pより後の長さ零の区間を除く。逆はその最後に垂直辺を足し、残りの水平辺を戻す。
+既存ShufflePath.vertical_edgeは最後の垂直辺の存在と座標を供給するが、
+**区間数をp+1へ変えた経路とのこの全単射**は今回調べたAPIには見つからなかった。
+ShuffleLastFaceの既存の削除は、経路の最後の辺が垂直という条件の下で固定した水平次数を保つ式で、
+この任意の長さ零の末尾を含む分解をそのまま供給するものではない。
+
+この分解だけでなく、色ごとの出力の復元の法則も必要。
+以下でverticesListは色のfiberを元の順序で列挙してverticalで写したList。
+空のfiberも空リストとして扱い、**ここでは全射性を仮定しない**。
+
+```lean
+def verticesList {m q r : ℕ} (s : Cut m q) (v : Fin (m+1) → Fin r) (c : Fin r) :
+    List (Fin (q+1)) :=
+  ((colorPositions s v c).sort (· ≤ ·)).map (fun i => s.vertical i)
+
+def prefixLabels (v : Fin (m+1) → Fin r) (p : Fin (m+1)) : Fin (p.val+1) → Fin r :=
+  fun i => v ⟨i.val, by omega⟩
+
+def terminalMultiplicity (v : Fin (m+1) → Fin r) (p : Fin (m+1)) (c : Fin r) : ℕ :=
+  (Finset.univ.filter (fun i => p ≤ i ∧ v i = c)).card
+
+-- 追加候補 R02。欠けた色・末尾の重複も保持する、再帰の値の法則。
+verticesList_lastVertical (v : Fin (m+1) → Fin r) (p : Fin (m+1))
+    (s : Cut p.val q) (c : Fin r) :
+  verticesList ((cutLastVerticalEquiv m q).symm ⟨p,s⟩) v c =
+    (verticesList s (prefixLabels v p) c).map Fin.castSucc ++
+      List.replicate (terminalMultiplicity v p c) (Fin.last (q+1))
+```
+
+例えば語(0,1)の最後の垂直辺が第0区間にある切断では、接頭語は(0)となり色1が欠ける。
+それでも元の切断の色1には末尾の頂点が現れる。
+既存L01・L02・faceは**全射語で各色が非空**という型なので、
+そのまま同じarityの接頭語へ再帰適用はできない。
+R02は欠けた色を空のリストとして保持し、末尾で現れる回数を復元する新しい式である。
+サフィックスで色が重複すると、List.replicateの重複を正規化で消す必要がある。
+存在するかどうかのifで頂点を一つだけ付ける式にはしない。
+
+### 113.3 漏れた理由と停止の扱い
+
+§112ではL09aの**全境界項を対にするτの主張**までを型にしたが、
+τを作る再帰のデータと、全射でなくなる接頭部の値の復元を列挙していなかった。
+R01・R02は、既存の単位・余単位・自然性・係数移送の式の評価ではなく、
+入力の単体次元と区間数を同時に変える新しい組合せ的な分解の主張である。
+また単に既存のL09aの証明をelaborationのために同じ式へ分割しただけとは扱わない。
+
+ユーザーの「それ以外の新しい数学の補題が要ったら止まって報告」に従い、
+**R01・R02の実装には入らず、ここで停止する**。
+L09a前提計算は2/3、照合I01〜I03は0/3のまま。未使用の前提計算枠をこの新しい数学に流用しない。
+検証済みの五本と本報告を保存して判断を待つ。
+G10・native Totの部品や界面の変更は行っていない。
+B3の凍結はmainのみという最新連絡に従い、枝のこの保存は行う。
