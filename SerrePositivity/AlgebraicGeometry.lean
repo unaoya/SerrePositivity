@@ -1058,3 +1058,7 @@ public import SerrePositivity.AlgebraicGeometry.CechAlgebraFrobeniusNaturality
 public import SerrePositivity.AlgebraicGeometry.CechAlgebraFrobeniusH0ColimitNaturality
 
 public import SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousFrobeniusH0
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousFrobeniusCoefficientComparison
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousFrobeniusH0Comparison
