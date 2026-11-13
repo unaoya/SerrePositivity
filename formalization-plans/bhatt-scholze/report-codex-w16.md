@@ -8509,3 +8509,44 @@ horizontalLastFaceEquiv (m q : ℕ) : Cut m q ≃
   {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧
     t.2 = Fin.last (m + 1 + q)}
 ```
+
+### 118.10 水平内部面の挿入の同値の型（C67・C68）
+
+§118の6,070添字の往復の点検のうち、内部の水平・水平の分岐を使う。
+既存の `horizontalMarkedEdgeEquiv` と `horizontalCornerEquiv` を合成し、
+角の中間頂点の値をa+1として指定頂点付き経路へ移す。
+
+```lean
+HorizontalInteriorFace (m q : ℕ) :=
+  {t : MarkedCut (m + 1) q // boundaryVertexKind t.1 t.2 = .horizontal ∧
+    0 < t.2.val ∧ t.2.val < m + 1 + q}
+horizontalCornerFaceEquiv (m q : ℕ) :
+  BarrattEccles.HorizontalCorner m q ≃ HorizontalInteriorFace m q
+horizontalInteriorFaceEquiv (m q : ℕ) :
+  Cut m q × Fin m ≃ HorizontalInteriorFace m q
+```
+
+### 118.11 水平な三分岐の同値までの検証済み区切り
+
+`HorizontalEndpointFaces` 53行、`HorizontalInteriorFaces` 86行、計139行を対象ビルドで検証した。
+水平な始点・終点・内部のそれぞれで、小さい切断から水平辺を挿入する同値が閉じた。
+既存のshuffleの角の挿入を利用し、公開宣言の定義は変更していない。
+
+対象ビルド `lake build SerrePositivity.EInfinity.SimplexCuts.HorizontalInteriorFaces` 成功
+（`/tmp/bsw16/m14-horizontal-interior-faces-03.log`）。
+専用監査 `/tmp/bsw16/audit-m14-horizontal-faces.lean` は
+**2モジュール・44宣言・標準三公理のみ**。
+新規二本にsorry・追加公理0、Leanの警告なし。次の登録候補はこの二本も含む。
+それぞれのビルド・監査だけ鍵を取り、終了時に返した。root・全体監査は回していない。
+
+L09a・L09の累計 **2,353行**、改訂MayのM14全体 **7,419行**。
+C04再開後の新規分は、五本330行、十七本1,031行、二本139行、計 **1,500行**。
+外枠25,000行と半分の12,500行には届いていない。
+有限組合せの追加の数では停止しない最新の規則を維持する。
+
+次に残る有限対応は、水平な三分岐を係数の `Fin (m + 2) × Cut m q` へまとめること、
+垂直な始点・終点・内部の対応、および混合角との直和で全体のτを作ること。
+その後の符号と正規化した境界項の反対の値のLean証明も未完。
+§118の38,322項のPython点検を、それらのLean証明として扱っていない。
+G10・Tot・界面・新しいBE作用・operadの法則は作っておらず、M15・G12にも手を付けない。
+main凍結を維持し、以上は自枝の検証済み保存の区切りとして記録する。
