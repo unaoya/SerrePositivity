@@ -1277,3 +1277,68 @@ ShortComplex.homologyMap (S.mapNatTrans (projectiveFilteredColimitInclusion j)) 
 **未完の接続**：基底側の増大写像は実際の各標準開の写像と同定できた。中心側は前の束の代表元の公式に今回のコサイクル公式を適用し、中心の実際の増大写像としてまとめる必要がある。その後 C(Y) の零次項に Perf(R/I) を付けた複体と C(E) の間の差の射を作る。今回の augmentedCechCone に Perf(R) を増大項として渡し、F7 の H⁰ の短完全列で単射性・最初の完全性・H⁰ の全射性を、F6 で正次数の同型性を供給する。**今回の一般判定を実際のブローアップ四角形の F8 の完成とは扱わない。** 共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告も必要で、停止点 2f は未到達。
 
 2f のコミット済み新規本体は **173 モジュール・10,857 行**（2e 数学停止点 bf9767cdc からの新規本体、未検証の下書きを除く）。既存の入口の追加 263 行を含めて **11,120 行**。残りの暫定見込みは **2,000〜6,000 行**。上端でも 18,000 行以内だが、中心の増大写像・F8 の実際の適用・自然性の検収を追って再測定する。
+
+## 11-14：F8 の実際の射影中心の四角形の全複体の acyclicity
+
+数学コミット **aeff8eb47・c3a353de9・a6de086d4**。新規 13 モジュール・42 公開宣言・997 行。F8 の数学的な核となる **実際の全複体の acyclicity** が通った。停止点 2f 全体の検収はまだで、自然性の接続と登録・監査・最終報告を残す。
+
+出口：
+```lean
+projectivePerfCech_blowupSquare_acyclic :
+  (projectivePerfCechBlowupSquareTotalComplex (ι := ι) G I p hp hR hA hspan).Acyclic
+```
+
+仮定は Noether 基底 R、有限な変数の多項式環上の有限生成斉次代数 A、標準開が被覆する hspan、Proj G の構造射の全射性と中心外での同型、p の素数性と R・A での零化。F6 の正次数の同型性と F7 の H⁰ の短完全性を証明済みの宣言から供給しており、完全性・H の同型性・核の評価・像の安定化を追加仮定として残していない。零次は Perf(R)、一次は C(Y)⁰ × Perf(R/I)、以後は C(E) と C(Y) の項の直積。微分は各標準開の実際の環準同型からのスカラー、実際の商、実際の閉厚化への制限と差である。空の中心・空の標準開・零環を除外する仮定は加えていない。
+
+宣言と主張（今回の全件）：
+
+- `fullAlgebraCechSectionEvaluation`：適合切断の部分代数を指定した零次タプルの標準開で評価する代数準同型。
+- `projectiveClosedCenterChartMap`：基底の中心の環から閉厚化の各標準開へ入る実際の環準同型。
+- `projectiveClosedCenterChartMap_mk`：中心の代表元は各標準開で同じ基底スカラーになる。
+- `projectivePerfCechCenterAugmentation`：上の環準同型の Frobenius 順極限から作る中心の零次増大写像。
+- `projectivePerfCechH0CenterClass_of_mk_cocycle`：中心の有限段の代表元の H⁰ 類のコサイクルは実際の増大写像の値。
+- `projectivePerfCechH0CenterClass_augmentation`：同じ一致を中心の順極限の任意の元について示す。
+- `projectivePerfCechCenterAugmentation_cycle`：中心の実際の増大写像の像は零次コサイクル。
+- `cechZeroTermExtensionTerm`：複体の零次項だけを C⁰ × Q にする明示的な項。
+- `cechZeroTermExtensionDifferential`：零次は第一成分への射影と元の微分の合成、正次数は元の微分。
+- `cechZeroTermExtensionDifferential_squared`：この微分の二乗は零。
+- `cechZeroTermExtensionDMap`：同じ線形微分を元の束ねられた加群の間の射として指定する。
+- `cechZeroTermExtension`：中心の零次項を加えた複体。
+- `cechZeroTermExtension_d`：その隣り合う項の微分は指定した微分の射。
+- `cechZeroTermProjectionComponent`：零次は第一成分、正次数は恒等という射影の成分。
+- `cechZeroTermProjection`：元の複体への射影の余鎖写像。
+- `cechZeroTermProjection_epi`：射影の各次数の成分は全射。
+- `cechZeroTermProjection_positive_homology_isIso`：この射影は正次数の H に同型を誘導する。
+- `cechZeroTermDifferenceComponent`：零次は二つの制限の差、正次数は元の射という成分。
+- `cechZeroTermDifference`：中心の増大写像を零次で差し引く実際の余鎖写像。
+- `cechZeroTermDifference_positive_homology`：正次数の H では元の射と射影の合成と同じ射を誘導する。
+- `cechZeroTermDifference_positive_homology_isIso`：元の射が正次数の H で同型なら、差の射もそうなる。
+- `fullCechComplex_d`：実際の通常の Čech 複体の微分は指定したコチェイン微分。
+- `fullCechH0ZeroTermCochainMap`：H⁰ と中心の項の組を、実際の零次コサイクルと中心の項の組へ送る線形写像。
+- `fullCechH0ZeroTermCochainMap_injective`：この写像は単射。
+- `fullCechH0ZeroTermCochainMap_cycle`：その像は零次項拡張のコサイクル。
+- `fullCechH0ZeroTermCochainMap_surjective_cycles`：零次項拡張の全てのコサイクルはこの写像から来る。
+- `projectivePerfCechCenterAugmentation_d`：中心の増大写像は閉厚化の実際の Čech 複体の最初の微分で零になる。
+- `projectivePerfCechSquareSource`：C(Y) の零次項に基底の中心の Frobenius 順極限を加えた実際の複体。
+- `projectivePerfCechSquareDifferenceMap`：実際の閉厚化への制限と中心の増大写像の差の余鎖写像。
+- `projectivePerfCechSquareAugmentation`：基底からスカラーコチェインと基底の中心の元の組への実際の増大写像。
+- `projectivePerfCechSquareDifferenceMap_positive_homology_bijective`：F6 を適用し、実際の差の射が正次数の H に全単射を誘導する。
+- `projectivePerfCechH0Difference_kernel`：固定した F7 の H⁰ の差写像を零次コサイクルへ移すと、実際の差の余鎖写像となる。
+- `projectivePerfCechH0ToSquareCochains`：F7 の中央項を実際の四角形の零次コチェインへ送る加法準同型。
+- `projectivePerfCechH0Pair_cochains`：F7 の組の写像をコサイクルへ移すと、実際の基底の増大写像となる。
+- `projectivePerfCechSquareAugmentation_cycle`：基底の増大写像の像は中心の項を加えた複体のコサイクル。
+- `projectivePerfCechSquareAugmentation_injective`：F7 から実際の基底の増大写像の単射性を得る。
+- `projectivePerfCechSquareDifference_augmentation_zero`：実際の差の余鎖写像と基底の増大写像の合成は零。
+- `projectivePerfCechSquareAugmentation_exact`：F7 の短完全性から、実際の増大写像と cone の最初の微分の完全性を得る。
+- `projectivePerfCechSquareDifferenceMap_homology_zero_surjective`：F7 の全射性から、実際の差の余鎖写像の H⁰ の全射性を得る。
+- `projectivePerfCechSquareAugmentation_cone_cycle`：実際の基底の増大写像は cone の零次サイクルへ入る。
+- `projectivePerfCechBlowupSquareTotalComplex`：射影中心の実際の四角形の明示的な増大全複体。
+- `projectivePerfCech_blowupSquare_acyclic`：F6・F7 を供給し、上の全複体が Mathlib の Acyclic であることを示す。
+
+検証：中心の増大写像の構成は 3,402 jobs、中心のコサイクルの公式は次の対象の束の中で成功。零次項拡張は独立対象 1,857 jobs、差の射の構成と正次数の一般計算は 1,858 jobs 成功。実際の差の射の正次数と核の比較は 3,421 jobs の束で両方成功。H⁰ と零次コサイクルの橋を共有した後の同じ二対象の再ビルドも成功。F7 の増大写像への移送と最初の完全性は 3,418 jobs、実際の差の射の H⁰ の全射性は 3,419 jobs、最終の `ProjectivePerfCechBlowupSquareTotal` は **3,430 jobs 成功**。共有鍵 `--wait 3600` は各ビルドの間だけ取得し、待ちは一つ。heartbeat・再帰上限・探索上限は一切引き上げず、sorry・admit・新しい公理は追加していない。大きい監査・ルート登録・ルートと下流の全ビルドは引き続き未実施。
+
+型の表示の調整：束ねた加群の零次項の直積を作る際は、元の加群の間の射を `hom'` で指定し、勝手に carrier を束ね直さない。実際の差の正次数の同型性への適用では C・E・中心の加群を全て明示すると上限内で通った。H⁰ からコチェインへの比較補助写像は加法準同型で十分であり、整数加群の canonical な構造と直積の構造を定義上同じと仮定していない。全複体とその微分は引き続き整数加群の複体として作っている。
+
+**停止点 2f に残るもの**：全複体の射の自然性を揃え、共通細分・底変換・R/J 表示・閉厚化・Frobenius 順極限との比較を 2e の既存の射に沿って検収する。続いて登録・許された対象ビルドと監査・停止点報告。数学の核の acyclicity は今回完成したが、この検収前に停止点 2f の完成とはしない。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変えていない。
+
+2f のコミット済み新規本体は **186 モジュール・11,854 行**（既存の入口の追加 263 行込み **12,117 行**）。残りの暫定見込みは **1,500〜5,000 行**（自然性の必要な接続と検収、登録）。上端でも停止基準 18,000 行以内を見込む。
