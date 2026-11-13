@@ -469,3 +469,35 @@ F6 の核側は、十分厚い段への制限の単射性と今回の因子分�
 F6 は未完。今回の反復 Frobenius は厚化先への実際の写像として構成できたが、厚さを戻した合成と既存の Frobenius の反復との比較、元の環からの射影との可換性を Čech H へ送る部分が残る。その後 `reesClosedRingCechIso` で既存の Rees 表示へ移し、2e の核の評価・像の安定化と F5 を接続して順極限の全単射性を出す。F7 の次数零の環としての比較と F8 の全複体も残る。停止点 2f ではない。
 
 残りの見込み：主要な接続は F6 の因子分解・射影比較・順極限判定、F7 の H⁰ の環の比較と有限射の四角形、F8 の全複体の計 6 束。補助 API の規模がまだ動くため、現時点で完了時刻は確約しない。今夜の凍結は予告段階で、確定連絡後は枝へのコミットを控える。
+
+## F6 途中：局所化の因子分解と実際の Čech H の反復系（bf7cbbd23）
+
+新規 6 本・17 公開宣言（ほか private 補題 1、local instance 1、自然性の reassoc 生成宣言）・481 行。2f 累計 68 本・3,761 行（入口の import 込み 3,848 行）。対象と直接 importer は 4,614 jobs 成功。別実行の監査は 9,023 宣言・標準三公理のみ。ビルド・監査の実行ごとに共有鍵 `--wait 3600` を使い、同じ worktree の待機を一つに保った。報告点 4,500 行、停止基準 18,000 行の内側。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveLocalizedPowerMap_frobenius` | 局所化へ延長した反復 Frobenius は、実際の局所化環の p^e 乗。 |
+| `reesClosedLocalizedThickeningFrobenius_factor` | 厚化を経由して元の厚さへ戻す合成は、実際の局所化の p^e 乗。 |
+| `reesClosedLocalizedThickeningFrobenius_projection` | 射影後の厚化 Frobenius は、元の局所化の p^e 乗の射影。 |
+| `projectiveCechIntRestrictionComplexIso` | Čech 複体は整数加群への係数制限と交換する。 |
+| `projectiveCechIntRestrictionHomologyIso` | Čech H と整数への係数制限の同型。 |
+| `projectiveCechIntRestrictionComplexIso_naturality` | 複体の整数係数比較は係数図式の射に自然。 |
+| `projectiveCechIntRestrictionHomologyIso_naturality` | Čech H の整数係数比較は係数図式の射に自然。 |
+| `projectiveChartIteratedFrobenius` | 捻り零の各標準開の反復 Frobenius の半線形自己写像。 |
+| `projectiveChartIteratedFrobenius_val` | 各標準開の自己写像の値は周囲の局所化の p^e 乗。 |
+| `projectiveCechIntFrobeniusDiagram` | 捻り零の標準開図式の整数線形な反復 Frobenius。 |
+| `projectiveCechIntFrobeniusDiagram_zero` | 零回の反復は図式の恒等射。 |
+| `projectiveCechIntFrobeniusDiagram_add` | 反復回数の加法は図式の射の合成に対応する。 |
+| `ProjectiveCechIntHomology` | 捻り零の実際の標準開 Čech H を整数加群として読む。 |
+| `projectiveCechIntFrobeniusHomology` | 実際の p^e 乗から誘導される Čech H の線形自己写像。 |
+| `projectiveCechIntFrobeniusHomology_zero` | Čech H の零回の反復は恒等写像。 |
+| `projectiveCechIntFrobeniusHomology_add` | Čech H の反復回数の加法は写像の合成に対応する。 |
+| `projectiveCechIntFrobeniusHomology_directedSystem` | 段差 j−i の反復を遷移とする実際の Čech H の有向系。 |
+
+整数への係数制限は内部の反復則を追うための比較であり、最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更しない。元の係数環は `Type u` のままで、整数環と同じ宇宙へ狭めていない。既存の一般の係数制限のファイルでは二つの環が同じ宇宙に置かれていたため、今回は整数環から任意の宇宙の係数環への専用比較を置いた。複体の比較は各項の恒等写像、H の比較は係数制限の完全性から作り、射への自然性も検証した。半線形写像を単に R 線形とみなしていない。
+
+次の `ReesClosedCechIntThickening.lean` は未検証の下書きであり、今回のコミット・監査には含めない。局所化で検証した因子分解と射影比較を、実際の捻り零の標準開図式に渡す部分。その後 H 関手を適用して、上の検証済みの反復系と同じ写像の式にする。
+
+F6 の適用順を具体化した。厚さ 1 への制限 u₁ の核の元 x について、十分大きい e を取り、u_(p^e)(F^e x)=0 を厚化 Frobenius の射影比較から得る。F5 と 2e の核の評価で u_(p^e) が単射になるため F^e x=0。像側は、厚化間の像の安定化の段 m 以上に p^e を取り、厚化の因子分解で F^e y を im(u₁) に入れる。この二条件で順極限上の単射性と全射性を証明する。まず厚さ 1 の比較を閉じればよく、各厚さの順極限を先に別々に構成する必要はない。これらの評価の実際の適用と順極限判定は未実装で、F6 の完成は主張しない。
+
+残りの見込み：主要な接続は、F6 の図式・H 上の因子分解と射影比較、核・像評価から順極限への接続、F7 の H⁰ の環と有限射の四角形、F8 の全複体の計 4 束。停止点 2f ではない。凍結の予告は引き続き確定待ち。
