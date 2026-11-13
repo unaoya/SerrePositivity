@@ -1,0 +1,7 @@
+{
+  "path": "scripts/audit_einfinity.lean",
+  "before_sha256": "0ea802abe7fa9926b0521b4956fcf5cef57fddd97f198b93cda1cf578f2ef28f",
+  "after_sha256": "6fce44c2f2771091c47ee0ff63629dd943fda73c2620e5856ec8bad652a6d2da",
+  "constant_checks_preserved": true,
+  "only_two_literal_tokens_changed": true
+}
