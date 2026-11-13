@@ -435,3 +435,238 @@ M04 の全 arity における一入力単位則・部分合成則・射保存則
 
 これは 420 / 17,000 行時点の区切り記録で、規模による停止ではない。
 M15 の停止点1には未到達。引き続き M05 の指定比較・M07 の随伴・M08 の合成へ進む。
+
+
+## 3. 共通の厚い閉包と native な graph 随伴（11-14、区切り）
+
+追加の三本も対象ビルドを完了した。
+
+| ファイル（SerrePositivity/ 以下） | 行数 | 明示宣言数 |
+| --- | ---: | ---: |
+| `InfinityCategories/HA/StableInfinityCategories/Thick.lean` | 80 | 5 |
+| `EInfinity/Modules/ThickTensorIdeal.lean` | 57 | 4 |
+| `EInfinity/BarrattEccles/Modules/StrictAdjunction.lean` | 48 | 2 |
+| **今回** | **185** | **11** |
+| **累計（六本）** | **605** | **41** |
+
+### 3.1 共通の芯（M19 の一般部分）
+
+`IsThick` は stable な準圏の頂点述語に対し、零・同型・実 cofiber・実 fiber・
+ホモトピー圏の retract に関する閉性を持つ。
+`thickClosure` を全ての厚い上界の交わりで構成し、生成元の包含・閉性・最小性を証明。
+安定圏一般のファイルは EInfinity に依存しない。
+原典の対応節は HA §1.1.3、HTT §4.4.5。
+
+`EInfinity/Modules/ThickTensorIdeal.lean` の `IsThickTensorIdeal` は共通の
+`IsThick` を継承して、指定した tensorWith の閉性だけを加える。
+`thickTensorIdealGenerated` の閉性と生成元の所属も証明した。
+原典対応は Mathew Definition 3.18。
+これらは M19 の閉包構成の部分証明であり、別の数学的前提を束ねたものではない。
+
+この段階の tensorWith は明示引数であり、BE 相対テンソルの実装済み性は意味しない。
+BE の全族への代入、drafts の有限余極限・shift 表示との比較は未完なので、
+**M19 全体を完了にはしない**。K 側の既存ファイルは編集していない。
+
+### 3.2 M07 の native な随伴と残る型
+
+同じ厳密 BE 射の `dgAlgebraMap` の graph に、既存の `dgKernelAdjunction` を適用し、
+`dgKernelDerivedInfinity_graphIso` と `qcatAdjunctionChangeLeft` で
+**既に指定した strictModuleExtend** を左随伴とする実随伴を構成した。
+実右随伴の名前は `strictModuleAdjointRestrict`。
+
+この随伴は全関手圏での単位・余単位と両三角式を持つ。
+一方、§2 の `strictModuleRestrict` は生の dg 制限を全関手的に解像したもの。
+現時点で両者は別の実関手であり、以下の型の比較が未完：
+
+```lean
+FunctorIso (strictModuleAdjointRestrict f) (strictModuleRestrict f)
+```
+
+この比較と指定された通常の拡大・制限の単位・余単位の接続を証明してから、
+M07 完了と数える。h 上の `dgKernelRightAdjoint_classicalIso` だけを、
+この全関手同型として使用しない。これは M07／C02 の受け渡しの残りで、
+新たな任意 E への輸送や界面欄の追加には進まない。
+
+### 3.3 検証・キャッシュ・現在地
+
+新規三本の対象ビルド成功、累計六本の全41明示宣言の `#print axioms` 小監査成功。
+全て標準三公理のみ、`sorryAx` なし。Lean ソースにも `sorry`・`axiom`・`admit` なし。
+全体ビルド・大きい監査は実施していない。
+
+一般の安定圏の出力先を追加した際、キャッシュ参照ディレクトリの symlink を
+辿って **今回新設した Thick の olean 三ファイルだけ**が main 側のキャッシュへ
+出たことを確認した。自分が作った三ファイルを内容照合後に自分の worktree へ移し、
+共有側の当該三ファイルを除いた。本体ソース・既存成果物は変更していない。
+ビルド補助 `/tmp/m15-target-build.py` を修正し、出力先の各親ディレクトリを
+自分の実ディレクトリへ分離した上で、出力先が自分の worktree 内に解決されることを
+assert するようにした。累計六本の olean の実パスも自分の worktree 内と確認済み。
+
+現在の一覧：M01–M04 完了、M05（台・単位の比較）途中、M06（二関手）構成済み、
+M07（native な graph 随伴は構成済み、同じ restriction への比較）途中、
+M08 未完、M09（拡大の弱同値不変性）検証済み、M19（共通の芯）先行分。
+M10 以降の残り、RHom・完備反射・完備テンソル、A5 の BE 特殊化は未完。
+外枠 17,000 行に対し 605 行。M15 の完成や規模の停止を宣言する区切りではない。
+
+### 3.4 部分補題・構成の型の記録
+
+IS-W2 §14 の証明分割の記録として、ここまでの新設六本の明示宣言の型を列挙する。
+名前空間・open・宇宙・型クラスの文脈は各ソースと同じ。証明本体は含めない。
+構造の欄は各ソースに記載し、ここでは構造の入口を示す。
+
+`EInfinity/BarrattEccles/Modules/AssociativeForget.lean`：
+
+```lean
+def standardOperation (X : (operad A).Algebra) (n : ℕ) :
+    power X.carrier n ⟶ X.carrier
+
+def standardBinary (X : (operad A).Algebra) : X.carrier ⊗ X.carrier ⟶ X.carrier
+
+lemma standardOperation_one (X : (operad A).Algebra) :
+    standardOperation X 1 = (oneIso X.carrier).hom
+
+lemma standardOperation_composite (X : (operad A).Algebra)
+    (m n : ℕ) (i : Fin (m+1)) :
+    standardOperation X (m+n) =
+      (λ_ (power X.carrier (m+n))).inv ≫
+      tensorInsertionAction X.carrier (𝟙_ (Complex A)) m n i
+        ((λ_ (power X.carrier n)).hom ≫ standardOperation X n) ≫
+      standardOperation X (m+1)
+
+lemma standardBinary_assoc (X : (operad A).Algebra) :
+    (standardBinary X ▷ X.carrier) ≫ standardBinary X =
+      (α_ X.carrier X.carrier X.carrier).hom ≫
+        (X.carrier ◁ standardBinary X) ≫ standardBinary X
+
+lemma standardBinary_one_mul (X : (operad A).Algebra) :
+    (standardOperation X 0 ▷ X.carrier) ≫ standardBinary X =
+      (λ_ X.carrier).hom
+
+lemma standardBinary_mul_one (X : (operad A).Algebra) :
+    (X.carrier ◁ standardOperation X 0) ≫ standardBinary X =
+      (ρ_ X.carrier).hom
+
+lemma standardOperation_map {X Y : (operad A).Algebra} (f : X ⟶ Y) (n : ℕ) :
+    standardOperation X n ≫ f.hom =
+      TensorPowers.map f.hom n ≫ standardOperation Y n
+
+def associativeAlgebra (X : (operad A).Algebra) : Mon (Complex A)
+
+def associativeAlgebraMap {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    associativeAlgebra X ⟶ associativeAlgebra Y
+
+def assocForget : (operad A).Algebra ⥤ Mon (Complex A)
+
+lemma assocForget_forget : assocForget A ⋙ Mon.forget (Complex A) =
+    Operad.Algebra.forget (operad A)
+
+```
+
+`EInfinity/BarrattEccles/Modules/StandardCoefficient.lean`：
+
+```lean
+def standardSimplex (n : ℕ) : (simplicial n) _⦋0⦌
+
+lemma simplexEquiv_standardSimplex (n : ℕ) (k : Fin 1) :
+    simplexEquiv n 0 (standardSimplex n) k = 1
+
+def standardCoefficientCycle (n : ℕ) : complexCycles A (complex A n) 0
+
+def standardCoefficient (n : ℕ) : 𝟙_ (Complex A) ⟶ (operad A).arity n
+
+lemma standardCoefficient_unit : standardCoefficient A 1 = (operad A).unit
+
+lemma standardCoefficient_zero_apply (n : ℕ) (a : A) :
+    (standardCoefficient A n).f 0
+      ((singleObjXSelf (.up ℤ) 0 (𝟙_ (ModuleCat A))).inv a) =
+    a • (complexXIso A n 0).inv (normalizedGenerator A n 0 (standardSimplex n))
+
+lemma shuffleSimplex_standard (m n : ℕ) (i : Fin (m + 1)) (s : ShufflePath 0 0) :
+    shuffleSimplex m n i s (standardSimplex (m+1)) (standardSimplex n) =
+      standardSimplex (m+n)
+
+lemma shuffleBilinear_standard (m n : ℕ) (i : Fin (m + 1)) :
+    shuffleBilinear A m n i 0 0
+      (normalizedGenerator A (m+1) 0 (standardSimplex (m+1)))
+      (normalizedGenerator A n 0 (standardSimplex n)) =
+      normalizedGenerator A (m+n) 0 (standardSimplex (m+n))
+
+lemma standardCoefficient_composite (m n : ℕ) (i : Fin (m + 1)) :
+    coefficientComposite m n i (standardCoefficient A (m+1))
+      (standardCoefficient A n) = standardCoefficient A (m+n)
+
+```
+
+`EInfinity/BarrattEccles/Modules/StrictAdjunction.lean`：
+
+```lean
+def strictModuleAdjointRestrict {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictModuleInfinity A Y ⟶ strictModuleInfinity A X
+
+def strictModuleGraphAdjunction {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    QCatAdjunction (strictModuleExtend f) (strictModuleAdjointRestrict f)
+
+```
+
+`EInfinity/BarrattEccles/Modules/StrictModules.lean`：
+
+```lean
+abbrev strictModuleInfinity (X : (operad A).Algebra) : SSet.{u+1}
+
+theorem strictModuleInfinity_isStable (X : (operad A).Algebra) :
+    SerrePositivity.InfinityCategories.HA.StableInfinityCategories.IsStable (strictModuleInfinity A X)
+
+def strictModuleUnderlyingDG (X : (operad A).Algebra) :
+    DGFunctor A (SemifreeDGAlgebraModules A ((assocForget A).obj X))
+      (RightModule A PUnit.{1})
+
+def strictModuleUnderlying (X : (operad A).Algebra) :
+    strictModuleInfinity A X ⟶ derivedInfinityCategory A
+
+def strictModuleUnit (X : (operad A).Algebra) : (strictModuleInfinity A X) _⦋0⦌
+
+def strictModuleExtend {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictModuleInfinity A X ⟶ strictModuleInfinity A Y
+
+def strictModuleRestrict {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    strictModuleInfinity A Y ⟶ strictModuleInfinity A X
+
+theorem strictModuleExtend_isExactFunctor {X Y : (operad A).Algebra} (f : X ⟶ Y) :
+    SerrePositivity.InfinityCategories.Kerodon.LimitsAndColimits.ExamplesOfLimitsAndColimits.IsExactFunctor
+      (strictModuleExtend f)
+
+theorem strictModuleExtend_weak {X Y : (operad A).Algebra} (f : X ⟶ Y)
+    (hf : QuasiIso f.hom) : IsQCatEquivalence (strictModuleExtend f)
+
+```
+
+`InfinityCategories/HA/StableInfinityCategories/Thick.lean`：
+
+```lean
+structure IsThick (C : SSet.{u}) [Quasicategory C] [IsStable C]
+    (P : C _⦋0⦌ → Prop) : Prop
+
+def thickClosure (P : C _⦋0⦌ → Prop) : C _⦋0⦌ → Prop
+
+lemma subset_thickClosure (P : C _⦋0⦌ → Prop) {x} (hx : P x) : thickClosure C P x
+
+lemma thickClosure_isThick (P : C _⦋0⦌ → Prop) : IsThick C (thickClosure C P)
+
+lemma thickClosure_le_iff (P Q : C _⦋0⦌ → Prop) (hQ : IsThick C Q) :
+    (∀ x, thickClosure C P x → Q x) ↔ ∀ x, P x → Q x
+
+```
+
+`EInfinity/Modules/ThickTensorIdeal.lean`：
+
+```lean
+structure IsThickTensorIdeal (C : SSet.{u}) [Quasicategory C] [IsStable C]
+    (tensorWith : C _⦋0⦌ → (C ⟶ C)) (P : C _⦋0⦌ → Prop) extends IsThick C P
+
+def thickTensorIdealGenerated (M : C _⦋0⦌) : C _⦋0⦌ → Prop
+
+lemma generated_isThickTensorIdeal (M : C _⦋0⦌) :
+    IsThickTensorIdeal C tensorWith (thickTensorIdealGenerated C tensorWith M)
+
+lemma mem_generated (M : C _⦋0⦌) : thickTensorIdealGenerated C tensorWith M M
+
+```
