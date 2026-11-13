@@ -553,3 +553,43 @@ F6 はまだ未完。今回の出力は H の順極限であり、完備化で�
 2f 累計は 81 モジュール・4,740 行（登録込み 4,853 行）。前回の半分の規模の報告から 278 行増加。残りの主要な接続は F6 の perfection 係数の Čech H との比較、F7 の次数零の環と有限射の四角形、F8 の全複体。残りの暫定見込みは 3,000〜7,500 行で、停止基準 18,000 行以内。
 
 F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然性を再利用する。現在の定理は係数環と加群、添字圏の宇宙をそろえているため、整数係数を `ULift ℤ` の加群へ環同型に沿って移し、添字は `AsSmall ℕ` へ圏同値で移す道を使う。`scheme-drafts/ProjectiveCechIntLift.lean` はこの係数移送の未検証下書きで、今回の登録・コミットには含めない。perfection の係数図式の Čech H との同型および閉厚化への制限との可換性まで閉じる必要がある。F7・F8 も未完で、停止点 2f ではない。
+
+## F6：係数順極限の Čech 複体の正次数の制限（4d779e247、11-13）
+
+新規 7 モジュール・21 公開宣言・462 行。対象ビルドは 3,291 jobs、登録を含む直接 importer は 4,634 jobs 成功。別実行の公理監査は **9,268 宣言・標準三公理のみ**。ビルド・監査は共有鍵 `--wait 3600` を通し、同じ worktree の待ちは一つに保った。前の整数係数移送の下書きは本体に移して検証済みとした。登録は `ProjectiveCechIntLift`、`ProjectiveCechIntLiftNaturality`、`ProjectiveCechIntFiltered`、`ProjectiveCechIntSequential`、`LinearDirectLimitColimitMap`、`ProjectiveFrobeniusColimitCech`、`ProjectiveCechFrobeniusColimitPositive`（すべて `SerrePositivity.AlgebraicGeometry` の下）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveIntCechLiftDiagram` | 整数加群の係数図式を同じ台集合の ULift ℤ 加群へ移す。 |
+| `projectiveIntCechLiftRoundtripIso` | 整数へ係数制限して戻すと元の図式と同型。 |
+| `projectiveIntCechLiftHomologyIso` | この係数移送は Čech H と交換する。 |
+| `projectiveIntCechLiftFunctor` | 係数移送を係数図式間の関手にまとめる。 |
+| `projectiveIntCechLiftRoundtripIso_inv_naturality` | 係数の往復同型は図式の射に自然。 |
+| `projectiveIntCechLiftHomologyIso_naturality` | 移送の Čech H の比較は図式の射に自然。 |
+| `projectiveIntCechLiftHomologyNatIso` | 係数移送と Čech H の比較を自然同型にまとめる。 |
+| `projectiveCechFilteredHomologyNatIso` | 2e の既存の filtered 余極限比較を自然同型にまとめる。 |
+| `projectiveIntCechFilteredHomologyNatIso` | ULift ℤ への移送を通じ、2e の比較を任意の宇宙の整数加群へ移す。 |
+| `projectiveIntCechFilteredHomologyIso` | 各 filtered 図式の整数係数 Čech H と H の余極限の同型。 |
+| `projectiveIntCechSequentialHomologyNatIso` | 添字を AsSmall ℕ へ圏同値で移し、自然数の順極限の自然同型を得る。 |
+| `projectiveIntCechSequentialHomologyIso` | 自然数の係数図式ごとの Čech H と H の順極限の同型。 |
+| `projectiveIntCechSequentialHomologyIso_naturality` | この同型は実際の係数系の射に自然。 |
+| `linearDirectSystemColimitMap_bijective` | 代数的順極限の全単射判定を同じ圏論的余極限の射へ移す。 |
+| `projectiveFrobeniusColimitCechComplex` | 実際の標準開の Frobenius 係数順極限から全タプル Čech 複体を作る。 |
+| `reesClosedFrobeniusColimitCechMap` | 閉厚化への実際の制限から同じ複体の射を作る。 |
+| `reesClosedFrobeniusColimitCechHomologyMap` | 同じ複体の射が誘導する各次数の Čech H の写像。 |
+| `projectiveFrobeniusColimitCechHomologyIso` | この複体の Čech H は各段の Čech H の順極限と同型。 |
+| `projectiveCechFrobeniusHomologyColimit_closed_bijective` | 正次数の H の圏論的順極限の閉厚化への制限は全単射。 |
+| `projectiveFrobeniusColimitCech_closed_bijective` | Frobenius 係数順極限で作る Čech H の閉厚化への制限は正次数で全単射。 |
+| `reesClosedFrobeniusColimitCechHomologyMap_bijective` | 上の同じ複体の射は正次数の H で全単射を誘導する。 |
+
+中心外で同型な構造射、Noether 基底、有限な次数付き加群、標準開の生成条件、p が素数で係数環・次数付き環で零、という既存の幾何学的入力から正次数の制限の全単射性を得た。核・像評価は前の束で供給済みであり、今回の定理に追加仮定として残していない。係数順極限と H の交換は 2e の `projectiveCechFilteredHomologyIso` とその自然性を再利用し、証明を複製していない。加群の台集合の宇宙を小さくする制限はなく、同じ宇宙の ULift ℤ と同値な添字圏 AsSmall ℕ を通る。I 進完備化の同型を Frobenius 順極限の同型と読み替えていない。
+
+大きな図式の定義展開による同一視は処理量の上限に当たったため、既存の `projectiveCechFrobeniusHomologyDiagramIso` と順極限比較の自然性を明示して移した。heartbeat・再帰深度の上限は変更していない。F6 の正次数の計算は、この実際の Frobenius 係数図式から作る複体のモデルで閉じた。F7・F8 へ渡すときは、標準開の環の `FrobeniusDirectLimit` の表示との項ごとの比較と、H⁰ の環構造との整合性をさらに接続する。この環の表示まで完成したとは主張しない。
+
+2f 累計は **88 モジュール・5,202 行（登録込み 5,329 行）**。半分の規模の報告は前に行っており、停止基準 18,000 行以内。残りの主要な束は、標準開の環の Frobenius 順極限表示との比較、F7 の H⁰ の有限環の四角形、F8 の増大全複体。残りの暫定見込みは 3,000〜7,500 行。
+
+### 次の F7 の接続
+
+- F4 の適合する切断の部分代数を、大域切断へ環として貼る。Mathlib の `TopCat.Sheaf.existsUnique_gluing'` を使い、増大写像と基底のスカラーを保つ。`Scheme.toSpecΓ` を介した因子分解により、元のスキームの全射性から有限環の Spec の全射性を供給する。一般の Stein 分解は作らない。
+- B_Y/IB_Y→B_E の核について、2e の評価で十分厚い段への制限の核を IB_Y に入れる。閉厚化を経由する反復 Frobenius の式で、厚さ 1 の核の元の十分高い p 冪が IB_Y に入る。像側は検証済みの像の安定化と同じ因子分解を使う。H⁰ の環の写像との照合が必要で、単に H の加群の式を環の式と呼ばない。
+- F3 の有限変更の完全な四角形と合わせ、F7 の短完全性を同じ複体の H⁰ に移す。F8 では正次数と次数零を同じ制限写像の全複体へまとめる。停止点 2f はまだであり、最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` は変更しない。
