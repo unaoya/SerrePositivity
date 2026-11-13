@@ -1030,3 +1030,15 @@ projectivePerfCechH0Difference_map_add
 ```
 
 unfold は保存則の補題の中に限定。加法保存では中間の切断環の Frobenius 順極限の Add の推論が依然上限に達している。零保存の成功を加法保存や H⁰ の短完全列の成功とは扱わない。加法保存、短完全列への適用、F8 と自然性の検収は未完。未検証の三ファイルは作業木に残し、このコミットに含めていない。
+
+## 11-13 夜：加法保存の中間補題の分離（af450ff55）
+
+`ProjectiveHomogeneousClosedCenterAdd`（3,353 jobs）と `ProjectivePerfCechH0EquivLaws`（3,380 jobs）の独立対象ビルドが成功。大きい監査・ルート登録は夜の指示に従い保留。探索上限・heartbeat・再帰上限は変更していない。
+
+以下で B は斉次切断代数、C は閉厚化の斉次切断代数、P は FrobeniusDirectLimit、H は F6 の複体の H⁰、e は既存の H⁰ 比較、g は既存の閉厚化の差写像とする。型を省略記法で記す（完全な Lean 型は各宣言にある）。
+
+- `projectiveHomogeneousClosedCenterDifference_add (x y : P(B) × P(R/I)) : g (x+y) = g x + g y`。
+- `projectivePerfCechH0Equiv_symm_apply (z : P(B)) : e.symm z = iso.inv.hom z`。逆加法同型と逆線形写像の関数としての一致。
+- `projectivePerfCechH0Iso_inv_add (z w : P(B)) : iso.inv.hom (z+w) = iso.inv.hom z + iso.inv.hom w`。
+
+H⁰ の差写像全体の `projectivePerfCechH0Difference_map_add` は未検証。中間補題の単独の成功を全体の成功とはしない。定義の等式による照合を三段に分け、さらに一般の逆比較の表示を独立補題にしたが、閉厚化へ代入した最後の型照合で最大再帰深度に達する。下書きは `ProjectivePerfCechH0SquareLaws` に保持し、未検証の Lean をコミットしていない。零保存の独立補題（85a68fc72）は引き続き検証済み。
