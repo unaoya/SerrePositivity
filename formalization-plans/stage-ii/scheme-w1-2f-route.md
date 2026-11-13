@@ -938,3 +938,30 @@ Spec 全射性は、実際の構造層の切断代数への全射性と、前の
 **到達点と残り**：切断の Frobenius 順極限で、右端を閉厚化の実際の切断環とする短完全列が閉じた。F7 の指定された型 `H⁰(Cperf(Y))`・`H⁰(Cperf(E))` へは、切断代数の Frobenius 系と各段の Čech H⁰ の自然同型、filtered colimit 比較をつなぐ必要がある。次は整数線形の H⁰ 自然性を使って、`projectiveFrobeniusColimitCechHomologyIso`・`ringDirectLimitIntColimitIso` と同じ実際の写像について照合する。F8 の明示的な増大全複体と、共通細分・底変換等の停止点の自然性の検収も残る。今回を F7 全体または停止点 2f の完成とはしない。
 
 2f 累計 **131 モジュール・8,407 行（登録込み 8,620 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
+
+## F7：切断の Frobenius 順極限と Čech H⁰ の比較（23afd482d、11-13）
+
+新規 3 モジュール・12 公開宣言（private 補題・局所インスタンスを除く）・286 行（登録込み 292 行）。対象ビルド 2,094 jobs、直接 importer 4,680 jobs 成功。別実行の監査は **9,815 宣言・標準三公理のみ**。共有鍵 `--wait 3600` はビルド・監査の間だけ取り、待ちは一つ。探索上限を引き上げず、sorry・新しい公理を追加していない。
+
+登録モジュール：`CechAlgebraIntH0Naturality`、`CechAlgebraFrobeniusSystem`、`CechAlgebraFrobeniusH0`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `fullAlgebraCechEqualizer_int_kernel_iff` | 適合条件は整数係数の Čech の最初の余境界の核に一致する。 |
+| `fullAlgebraCechIntKernelEquiv` | 適合切断の整数加群とこの核との同型。 |
+| `fullAlgebraCechIntH0Equiv` | 適合切断の加法群と整数係数 Čech H⁰ の同型。 |
+| `fullAlgebraCechIntH0Equiv_kernel` | H⁰ から核へ戻すと元の切断族になる。 |
+| `fullAlgebraCechIntH0Equiv_naturality` | この H⁰ 比較は整数線形な係数図式の射に自然。 |
+| `algebraCech_primeCast` | 基底で p が零なら各交叉の代数で p は零。 |
+| `algebraCechEqualizer_primeCast` | 同じ条件から適合切断代数で p は零。 |
+| `algebraCechIntFrobeniusSystemMap` | 実際の環の Frobenius 遷移を整数線形な係数図式の射にする。 |
+| `algebraCechFrobeniusCoefficientFunctor` | 交叉ごとの Frobenius 遷移を自然数の係数関手にまとめる。 |
+| `fullAlgebraCechEqualizerAddMap_frobenius` | この係数 Frobenius が適合切断に誘導する射は、切断環自身の同じ Frobenius。 |
+| `algebraCechFrobeniusH0SystemIso` | 切断環の Frobenius 系と、各段の整数係数 Čech H⁰ の系の自然同型。 |
+| `algebraCechFrobeniusH0ColimitIso` | Frobenius 係数順極限の Čech H⁰ と、適合切断環の Frobenius 順極限の同型。 |
+
+整数作用について、基底からのスカラー制限と標準の整数倍を明示的に照合した。既存の H⁰ の核の自然性補題には基底環と加群の宇宙を揃えた型があり、整数係数で大きい加群を扱うため、核の包含と homologyπ の自然性の証明を独立した宇宙で private 補題にした。既存の広い依存先は変更していない。各段の Frobenius との可換性を自然同型にまとめ、既存の `projectiveIntCechSequentialHomologyIso` と `ringDirectLimitIntColimitIso` に合成した。主比較は BST13 Lemma 3.8・3.9 の H⁰ に用いる Čech 版と明記し、Stacks 30.2.6 の比較を形式化したとはしていない。
+
+**残り**：一般の代数係数図式について順極限の H⁰ 比較はできた。次はこの同型の係数図式の射に対する自然性を閉厚化の制限について接続し、斉次標準開の係数 Frobenius 系を F6 の `projectiveFrobeniusRingChartDiagram` と照合する。それにより前の短完全列を指定された実際の Čech H⁰ の四角形へ移す。F8 の増大全複体と、共通細分・底変換等の停止点の検収も残る。今回を F7 全体や停止点 2f の完成とはしない。
+
+2f 累計 **134 モジュール・8,693 行（登録込み 8,912 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `AugmentedRingCechExact` の型は変更していない。
