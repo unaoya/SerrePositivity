@@ -2956,3 +2956,48 @@ def normalizedIntervalEndpoint (A : Type u) [CommRing A]
 個別の結合検査 `/private/tmp/isw2-interval-endpoints-check2.log` は終了コード0。44行の新規モジュールの鍵付き対象ビルドと161本の一時監査を `--wait 3600` で開始した。前の鍵は返却済み。まだ成功前のため、この記録時点では検証済み160本へ算入しない。
 
 A06本体の `normalizedIntervalHom`・両端の評価・前後合成に関する自然性はこれから。既存 `HomologicalComplex.cylinder.desc` とその二端評価、`DifferentialGraded.dgInterval` を確認したが、これらのcylinderで指定された正規化単体区間を置き換えて済ませることはしない。使う場合も指定区間・端点への厳密な比較を保つ。A06〜D08と停止点2は未完。追加承認を求める停止ではなく、承認済みの一覧に沿った進行。
+
+### 88.2 A06の前提計算1/3：端点と増大写像
+
+同じ端点が指定増大写像の切断である法則を、A06の前提計算1本目として追加する。図式版は同じ点ごとの法則を束ねる証明分割。型は以下。個別検査 `/private/tmp/isw2-interval-augmentation1.log` は終了コード0。
+
+```lean
+theorem normalizedIntervalEndpointChain_augmentation (A : Type u) [CommRing A] (ε : Fin 2) :
+    normalizedIntervalEndpointChain A ε ≫
+      (normalizedSimplexCochainContraction A ⦋1⦌).hom = 𝟙 _
+```
+
+```lean
+theorem normalizedIntervalEndpoint_augmentation (A : Type u) [CommRing A]
+    (J : Type v) [Category.{w} J] (ε : Fin 2) :
+    normalizedIntervalEndpoint A J ε ≫ (standardParameterAugmentation A J).app ⦋1⦌ = 𝟙 _
+```
+
+共有鍵の同じ待機中の一件へ二本の対象ビルドと162モジュールの監査をまとめた。新しい整理券は発行していない。検証成功までは新規二本をコミット・検証済み実績へ算入しない。
+
+### 88.3 A06本体の次の接続
+
+`normalizedIntervalHom` は指定された `N(Δ[1])` を右因子とする写像として構成する必要がある。内部Homの次数−1コチェインとして同じ鎖ホモトピーを表し、二頂点をf,g、基本1単体をそのコチェインへ送る正規化鎖写像を作り、既存のテンソル–Homの随伴で戻す経路を検討する。図式の自然性は交換関手Eを通したホモトピーの型で与えられており、点ごとの任意選択に置き換えない。
+
+既存cylinderの普遍写像は参考になるが、指定区間とcylinderの別模型の同定を新しい照合として黙って追加しない。照合枠は全体3/3のまま。現在は端点とその増大写像則までであり、上記内部Hom経路の構成・符号・端点評価・前後合成の自然性は未検証。
+
+## 89. A05a・A05完了、A06端点の検収
+
+A06端点と増大写像の切断法則は **`83a842153`** に保存した。`NormalizedIntervalEndpoints` 44行、`NormalizedIntervalEndpointAugmentation` 35行。鍵付き対象ビルド3,979 jobsと162モジュールの一時監査は終了コード0（`/private/tmp/isw2-build90.log`）。累計 **162モジュール・10,143行・1,734宣言、標準三公理のみ**。宣言数にはLean生成の補助宣言も含む。一時監査 `/private/tmp/AuditISW2G10HundredSixtyTwo.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixtytwo-modules.txt`。共有鍵は返却済み、待機中の整理券はない。
+
+§85の検証済み154本からの登録対象は、以下の8本（すべて `SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.` の後に続く名前）。入口・公式監査への登録は行っていない。
+
+| モジュール | 行数 | 保存点 |
+| --- | ---: | --- |
+| IntegerCoefficientTensorValues | 41 | 8dc9fc615 |
+| StandardParameterAugmentationValues | 38 | 8dc9fc615 |
+| StandardParameterRightUnit | 37 | 7d081b8c5 |
+| FreeProductAWLastCut | 169 | 7d081b8c5 |
+| FreeProductAWRightAugmentation | 206 | 6c529dfaf |
+| FrameCoactionCounit | 80 | e0d0f8e53 |
+| NormalizedIntervalEndpoints | 44 | 83a842153 |
+| NormalizedIntervalEndpointAugmentation | 35 | 83a842153 |
+
+A05aは承認された型の右増大写像則、A05は積側・テンソル側の両単位則を完了した。A06は指定区間の端点・図式自然性・同じ増大写像に対する切断性まで。A06本体の区間評価、両端の評価、前後合成の自然性、A07以降、B・C・Dの各まとまりは未完であり、停止点2の完了報告ではない。
+
+外枠12,500行まで2,357行。型・範囲を弱めず、計算上限を上げず、sorry・新公理なし。既存宣言と⑤aの既存ファイルの変更なし。照合枠は全体3/3、A06の前提計算は端点増大写像の1/3。その他の今回の分割は§14による同じ証明内容の分割として型を報告した。凍結確定の連絡は本記録時点で未受領。
