@@ -1988,3 +1988,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.D
 ```
 
 残枠 **1,547行**。`DiagramHomFamilyEquiv.lean`（111行）の各点への評価による逆写像・両合成の法則・図式テンソル–Hom 同値・パラメータ前合成への自然性は個別検査済み、対象ビルド・監査待ち（未コミット）。次に標準単体を代入して既存 `normalizedSimplexHomEquiv` と合成できる。積重み側との同定、空間の同値性、native 極限性、脚・D(A) 輸送、全図式射・指定錐の族は未完。停止点2ではない。
+
+## 66. 3b-2 続行：元の図式 Hom への同値とパラメータ自然性
+
+コード `20b09a216`、新規 `DiagramComparison.DiagramHomFamilyEquiv` 1本111行。累計 **136本8,564行**。
+
+図式 Hom 複体への射を各点に評価する逆写像を構成し、§65の組み立てとの両合成が恒等であることを証明した。§64の転置と合成して、図式テンソルからの射と元の図式 `linearHomComplex` への射を同定し、パラメータ複体の全射による前合成との可換式も証明した。第一のまとまりの図式 Hom の同定の内部。
+
+個別検査、鍵付き対象ビルド **2,071 jobs**、累計136本 **1,557宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-66.log`、監査 `/private/tmp/AuditISW2G10HundredThirtySix.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtysix-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyEquiv
+```
+
+残枠 **1,436行**。`DiagramTensorDoldKan.lean` で標準単体を代入した全単体同型を検査中。元の自由テンソル族への輸送の型推論が制限に達したため、中間 Hom 同型を指定前合成で明示している。制限値は変更していない。積重み側との同定、空間の同値性、native 極限性と後続の要件は未完で、停止点2ではない。
