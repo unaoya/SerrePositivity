@@ -1162,3 +1162,27 @@ projectivePerfCechH0Difference_apply
 ```
 
 2f は未完。有限段での実際のスカラーのコサイクル表示は閉じたが、順極限の H⁰ 比較の有限段からの標準写像との可換性を明示し、今回の ScalarClass を順極限後の複体の増大写像と同定する必要がある。既存の `projectiveIntCechSequentialHomologyIso` と `ringDirectLimitIntColimitIso_of` を同じ標準写像に沿って照合する。基底の中心についても同じ接続が必要。F8 と共通細分・底変換等の最終検収、登録・監査・最終報告は引き続き残る。
+
+## 11-14：filtered 比較と有限段の標準写像（c9430d14d）
+
+新規 2 モジュール・6 公開宣言・105 行。`ProjectiveCechFilteredInclusions`（1,898 jobs）と `ProjectiveFilteredHomologyInclusions`（1,668 jobs）の対象ビルド成功。共有鍵 --wait 3600 を対象ビルドの間だけ取得。大きい監査・ルート登録は保留、探索上限は変更していない。
+
+- `projectiveCechFilteredComplexIso_ι`：有限段の係数の標準写像が誘導する Čech 複体の射を canonical な filtered 比較に合成すると、複体の余極限の標準写像になる。
+- `projectiveCechFilteredComplexIso_inv_ι`：逆比較も同じ標準写像と可換。
+- `projectiveCechFilteredHomologyIso_ι_factor`：有限段の Čech H の射と比較の合成を、複体の余極限の H の標準写像と `projectiveFilteredComplexHomologyIso` の合成へ分離する。
+- `projectiveFilteredColimitInclusion`：評価関手から余極限関手への自然変換。各成分は実際の colimit.ι。
+- `projectiveFilteredShortComplexHomologyInclusion`：短複体の H の比較は、この評価から余極限への標準写像と可換。
+- `projectiveFilteredShortComplexHomologyIso_ι`：短複体の図式の比較について、有限段の標準写像との整合性を示す。評価した短複体の H と図式の各段の H の既存の比較を型に明示している。
+
+最後の型で S = projectiveFilteredShortComplexDiagram D とすると、
+```lean
+ShortComplex.homologyMap (S.mapNatTrans (projectiveFilteredColimitInclusion j)) ≫
+  (projectiveFilteredShortComplexHomologyIso D).hom =
+  (S.mapHomologyIso ((evaluation J (ModuleCat R)).obj j)).hom ≫
+  (projectiveFilteredShortComplexHomologyDiagramIso D).hom.app j ≫
+  colimit.ι (D ⋙ ShortComplex.homologyFunctor (ModuleCat R)) j
+```
+
+`ι_preservesColimitIso_hom/inv` と `ShortComplex.homologyMap_mapNatTrans` を再利用した。新たなコホモロジーや余極限を定義して置き換えていない。結合の表示と局所名は等式の合成および限定した dsimp で揃えた。
+
+2f は未完。次は複体の sc 比較を有限段からの射と照合し、今回の短複体の結果を `projectiveFilteredComplexHomologyIso` へ通す。その後 ULift ℤ と AsSmall ℕ の比較の標準写像との可換性を合成し、Frobenius の各段からの H⁰ 比較を得る。F8・停止点の自然性の検収・登録・監査・最終報告も引き続き必要。
