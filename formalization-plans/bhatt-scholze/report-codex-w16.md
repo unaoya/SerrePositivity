@@ -6374,3 +6374,79 @@ mayPowerZeroHomology は、現段階では **ホモロジー上の自然な関�
 今回の十一本を報告とともにコミットする。新規ファイルだけなので他レーンとの重複なし。
 共通の入口と監査への登録候補は §100・§101.1 の計十七本。
 凍結の確定連絡はまだなく、検証済みを枝に保存した状態にする。
+
+
+## 102. May の加法性・厳密自然変換・ho(CAlg F_p) への局所化（11-13）
+
+### 102.1 今回閉じた主張
+
+May, Proposition 2.3(i)(ii) の代表元独立性（§101）に、加法性を接続した。
+**mayDClass_add** は全 s : ℕ・q : ℤ で、同じ指定 W→BE 比較による D_s の
+実ホモロジー類が閉入力の和に加法的であることを示す。
+**mayPowerZeroAddHom** は、規格化 ν と次数移送の後の P⁰ を、全整数次数の
+実ホモロジーの可換群の準同型に束ねる。
+
+**mayStrictPowerZero** は全厳密 BE 代数射に自然な可換群値の NatTrans。
+**mayHomologySourceIso** は既存の忘却比較・厳密複体の全次数ホモロジー比較から、
+全厳密代数への引き戻しを実ホモロジー関手と同定する。
+**mayLocalizedPowerZero** は ho(CAlg F_p) の全射に自然な同じ P⁰。
+**mayLocalizedPowerZero_source** により、源への引き戻しは同じ指定厳密演算の共役であり、
+局所化で別の演算を選んでいない。
+**mayLocalizedPowerZero_pos** は n > 0 の消滅を自然変換全体の等式で示す。
+
+### 102.2 加法性の実装の筋
+
+[May, Proposition 2.3(ii)](https://www.math.uchicago.edu/~may/PAPERS/10.pdf) の混合差の証明を使った。
+二色語に対する隣接交換・一般置換の符号公式を元のテンソル複体で示し、
+標数 p の巡回作用では符号が消えることを照合した。
+混合語の自由巡回軌道と代表の和から Δ(a,b)=Nc を得る。
+
+同じ W→BE 比較の次の係数に、必要なら T^{p−2} を作用させる。
+§101 の T^{p−1}=N により、その微分は前の指定係数のノルムとなる。
+実 BE 作用の同時置換の等変性で係数の norm と入力の norm を移す。
+ノルム係数そのものが実境界なので、閉混合入力とのテンソルは零類である。
+この最後の一般補助 **mayClosedTensor_class_zero_left** は sphere 射の実鎖ホモトピーを
+テンソルして証明し、平坦性・有界性の仮定を追加していない。
+
+使用した norm は有限群作用の線形写像の和であり、Sp の orbit・norm・Tate の模型は使わない。
+
+### 102.3 登録候補（今回の新規十八本）
+
+全て SerrePositivity/EInfinity/PowerOperation/ の下。
+
+- MayColoredValues、MayWordAdjacent、MayHomogeneousSwap、MayColoredPermutation
+- MayColoredCyclic、MayMixedWordOrbits、MayPureMixedWords、MayMixedInputNorm
+- MayCoefficientNormTransfer、MayCoefficientPrimitive、MayClosedTensor、MayNormCoefficient
+- MayDClassAdditivity、MayPowerZeroAdditivity、MayStrictNaturalTransformation
+- MayHomologySourceComparison、MayLocalizedPowerZero、MayLocalizedPositive
+
+新規十八本 **1,197 行**、検証済み May の累計 **3,111 行・43モジュール**。
+約 10,000 行の途中報告・約 20,000 行の外枠より下。
+共通入口と全体監査の登録は行っていない。他レーンと重なる既存 Lean ファイルへの変更なし。
+
+### 102.4 検証と残り
+
+対象ビルドは /tmp/bsw16/may-localized-05.log で、MayLocalizedPositive まで成功。
+同じ一回のコマンドで追加検査した未検証補助 MayNormBaseField のみが失敗したため、
+コマンド全体の終了値は 1 だった。原因は ZMod.castHom の引数（標数零の等式でなく
+p ∣ p を要求）であり、当該補助だけ修正して後続で検証する。
+検証済み十八本の新規警告は、letI を let に直して消した。依存先の既存の長行警告は残る。
+専用監査の最終結果は本節の末尾に追記する。
+
+局所化までの今回の本体は小さい宇宙の F_p に対するもの。
+EInfinityTheory.{u} の基底環は Type u なので、界面の本欄に置く F_p は ULift して
+同じ宇宙に置く必要がある。そのための素体別名・同じ係数の移送と規格化の補助は、
+まだ未検証の下書きとして作業木に置き、今回の十八本とは分ける。
+界面・Assembly・Shared/A4 の型の移行はまだ行っていない。
+
+零次の以前の p 乗計算と全次数の P⁰ との照合、離散・cosimplicial の top operation、
+_tot・filtered 塔・二重模型の実現比較は残る。最後の実現比較は指示どおり G10 の後。
+旧 10,216 行は削除していない。凍結の確定連絡はまだない。
+
+
+### 102.5 監査完了
+
+/tmp/bsw16/audit-may-additive.lean は、検証済み **43モジュール・467宣言、
+標準三公理のみ**で成功した（/tmp/bsw16/audit-may-additive.log）。
+全宣言の公理を検査し、sorry・追加公理なし。監査の鍵も返却済み。
+今回の十八本と本報告をコミットし、持ち上げた素体の補助の検証へ続ける。
