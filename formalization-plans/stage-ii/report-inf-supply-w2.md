@@ -5324,7 +5324,18 @@ theorem homToNormalizedBousfieldKan_tensor_row (P : Complex A)
     (X : CosimplicialObject (Complex A)) (p : ℤ)
     (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ)
     (j : SimplexCategoryᵒᵖᵒᵖ) (x : ((normalizedBousfieldKanWeight (A := A)).X n).obj j) :
-    let η
+    let η := extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor ((productTotalFunctor A).obj X)).obj X)))
+      0 (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) n
+    let χ := extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) p
+      ((homToNormalizedBousfieldKan P X).f p f) n
+    ((-(n : ℤ)) * p).negOnePow • χ.app j x =
+      compose A (D := Complex A) (p := p) (q := 0 - n) (n := p - n)
+        (x := P) (y := (productTotalFunctor A).obj X)
+        (z := (doubleOppositeDiagram X).obj j) (η.app j x) f (by omega)
 ```
 
 ### 120.2 検収と登録
@@ -5342,3 +5353,98 @@ B02の最終の単体的射の等式、B03〜B08・C・Dは未完。次は同じ
 これまでの「前提計算3/3」「照合3/3」は当時の検収の記録として残すが、**今後の停止判定には使わない**。既存の合成を名前で固定した定義や、指定射の成分評価を分割した今回の補題を、新しい独立の構成の導入とは扱わない。既存構成の法則ではない新しい構成・定理、承認済みまとまりの外、外枠に届く所では停止して報告する。B01〜B08・C01〜C07・D01〜D08と停止点2a・2b、外枠20,000行は維持する。
 
 mainは凍結中なので、追記の確認は読み取りだけとしmergeしていない。自分の枝で作業とコミットを続け、鍵は`--wait 3600`でビルド・小監査の間だけ持つ。
+
+
+## 122. B02の途中：全標準単体の自由随伴評価と図式逆転置
+
+A09の元の比較を、同じAW前合成の自由鎖随伴へ戻す式を全標準単体で証明した。頂点だけの同定ではなく、元のYoneda射・宇宙同型・指定自由随伴を保持している。図式tensor–Homの逆射についても、各点の斉次tensor上のKoszul符号を元の逆転置の成分則で計算した。いずれも既存構成の余単位・評価・合成則で、11-14の新しい数え方に従う。B02の指定単体的射全体の等式は未完。
+
+### 122.1 登録対象・行数・型
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.LiftedStandardSimplexHomEvaluation`（60行）
+
+```lean
+theorem liftedStandardSimplexHomIso_hom_apply (Z : SSet.{u}) (n : SimplexCategory)
+    (f : (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⟶ Z) :
+    (liftedStandardSimplexHomIso Z).hom.app (Opposite.op n) f =
+      f.app (Opposite.op n) (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 n)))
+
+theorem normalizedSimplexHomEquiv_via_freeAdjunction (A : Type u) [CommRing A]
+    (H : Complex A) (n : SimplexCategory)
+    (f : (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj n) ⟶ H) :
+    (liftedStandardSimplexHomIso ((truncatedDoldKanFunctor A).obj H)).hom.app (Opposite.op n)
+      ((freeNegativeChainsAdjunction A).homEquiv
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H f) =
+    normalizedSimplexHomEquiv A H n f
+
+theorem liftedStandardSimplexHomIso_yoneda (Z : SSet.{u}) (n : SimplexCategory)
+    (f : (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⟶ Z) :
+    liftedStandardSimplexIso.{u}.hom.app n ≫
+      SSet.yonedaEquiv.symm ((liftedStandardSimplexHomIso Z).hom.app (Opposite.op n) f) =
+    f
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.FreeProductSectionsHomEvaluation`（61行）
+
+```lean
+theorem weightedFreeChainsAdjunction_uncurry (W : J ⥤ SSet.{u})
+    (Y : SSet.{u}) (Q : J ⥤ Complex A)
+    (f : freeNegativeChainsDiagram (A := A) (W ⊗ (Functor.const J).obj Y) ⟶ Q) :
+    weightedSectionsUncurry
+      (((weightedSectionsAdjunction W).comp (freeNegativeChainsDiagramAdjunction A J)).homEquiv
+        Y Q f) =
+    (freeNegativeChainsDiagramAdjunction A J).homEquiv (W ⊗ (Functor.const J).obj Y) Q f
+
+theorem freeProductSectionsHomIso_uncurry (W : J ⥤ SSet.{u}) (Q : J ⥤ Complex A)
+    (n : SimplexCategory) (f : (freeProductFrame A W (liftedStandardSimplexParameter J)).obj n ⟶ Q) :
+    weightedSectionsUncurry
+      (liftedStandardSimplexIso.{u}.hom.app n ≫ SSet.yonedaEquiv.symm
+        ((freeProductSectionsHomIso A W Q).hom.app (Opposite.op n) f)) =
+    (freeNegativeChainsDiagramAdjunction A J).homEquiv
+      (W ⊗ (Functor.const J).obj
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n))) Q f
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedWeightSectionEvaluation`（56行）
+
+```lean
+theorem normalizedWeightSectionMap_hom_uncurry (W : J ⥤ SSet.{u})
+    (Q : J ⥤ Complex A) (φ : simplicialRingCoefficient.{u} →+* A) (n : SimplexCategory)
+    (f : (freeTensorFrame A W (liftedStandardSimplexParameter J)).obj n ⟶ Q) :
+    weightedSectionsUncurry
+      (liftedStandardSimplexIso.{u}.hom.app n ≫ SSet.yonedaEquiv.symm
+        ((normalizedWeightSectionMap A W Q φ).app (Opposite.op n)
+          ((freeTensorDiagramHomIso.{u,u} A Q W).hom.app (Opposite.op n) f))) =
+    (freeNegativeChainsDiagramAdjunction A J).homEquiv
+      (W ⊗ (Functor.const J).obj
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n))) Q
+      (freeProductDiagramAW φ W ((liftedStandardSimplexParameter J).obj n) ≫ f)
+
+```
+
+`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHomComponents`（40行）
+
+```lean
+theorem diagramTensorLinearHomEquiv_symm_app
+    (f : T ⟶ linearHomComplex A ((E).obj P) ((E).obj Q)) (j : J) :
+    ((diagramTensorLinearHomEquiv P Q T).symm f).app j =
+      (tensorHomEquiv (P.obj j) T (Q.obj j)).symm
+        ((diagramHomFamilyOfHom P Q T f).val j)
+
+theorem diagramTensorLinearHomEquiv_symm_component
+    (f : T ⟶ linearHomComplex A ((E).obj P) ((E).obj Q)) (j : J)
+    (i q n : ℤ) (hn : i + q = n) (y : (P.obj j).X i) (x : T.X q) :
+    (((diagramTensorLinearHomEquiv P Q T).symm f).app j).f n
+      (HomologicalComplex.ιTensorObj (P.obj j) T i q n hn (y ⊗ₜ[A] x)) =
+      (i * q).negOnePow • (diagramCochainAt P Q (f.f q x) j).v i n hn y
+
+```
+
+### 122.2 検収と残り
+
+コード **`18d19ebf0`**。鍵付き対象ビルド `/private/tmp/isw2-build137.log` は **2,645 jobs・終了コード0**。新規4本のみの監査 `/private/tmp/AuditISW2G10B02SectionEvaluation.lean` は **9宣言（3・3・1・2）、標準三公理のみ**。共有鍵は返却済み。個別検査の図式逆転置も終了コード0。
+
+新規4本217行、累計 **251モジュール・15,210行・2,189宣言**。一覧 `/private/tmp/isw2-g10-twohundredfiftyone-modules.txt`。既存宣言・⑤a・入口・公式監査・mainは変更していない。計算上限を上げず、sorry・新公理0。rootビルド・大きな監査なし。B02、B03〜B08、C、Dは引き続き未完。次は同じtensorパラメータの逆射を各点で展開し、実dg合成の各AW切断和と照合する。
