@@ -5238,3 +5238,107 @@ theorem homToNormalizedBousfieldKan_rows_comp {P Q : Complex A}
 B02は未完。今回の指定Hom/BK行の合成と同じKoszul符号を、既に検証したAWの両切断和・指定tensor–Homへ接続して、元の単体的比較射の等式を閉じる。`NormalizedSimplexFreeAdjunction.lean`はA09の標準単体パラメータ側の随伴を同じ恒等生成元で照合する検査中の下書きであり、今回の検収・累計には含めない。
 
 B03〜B08・C・Dも未完。停止点2a・2bの検収ではない。B完了時にC・Dを実測に基づいて再見積もりし、止まらずに進める。
+
+
+## 119. B02の途中：元の錐代表との行の合成と標準単体の自由随伴
+
+### 119.1 型と接続
+
+A09の標準単体パラメータの`normalizedSimplexHomEquiv`が、同じ自由鎖随伴の恒等単体の生成元での評価に一致することを示した。二つの零延長・smart切断Hom同値は、同じ逆写像の式で照合した。自由加群・DK・切断の随伴や生成元を選び直していない。
+
+元の`normalizedBousfieldKanRepresentative`のcochainが、同じ`homToNormalizedBousfieldKan`に移した元の閉元そのものであることも確認した。任意次数の行の合成則を指定終次数rで述べてから後の射を恒等射に特殊化し、元の錐代表の**同じcochain行**への前合成の式を得た。零次数の行の終次数`0-n`を無断で`-n`と同一視するのではなく、元の型を保持する。
+
+以下の型は各モジュールの既存名前空間。係数環は`A : Type u`・`[CommRing A]`（暗黙／明示は各宣言のとおり）。既存の随伴・合成の法則と同じB02の証明分割。
+
+登録対象：`SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.NormalizedSimplexFreeAdjunction`
+
+```lean
+theorem normalizedSimplexHomEquiv_freeAdjunction (H : Complex A) (n : SimplexCategory)
+    (f : (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj n) ⟶ H) :
+    ((freeNegativeChainsAdjunction A).homEquiv
+      ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)) H f).app (Opposite.op n)
+      (ULift.up (SSet.stdSimplex.objEquiv.symm (𝟙 n))) =
+    normalizedSimplexHomEquiv A H n f
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKConeComposition`
+
+```lean
+theorem homToNormalizedBousfieldKan_rows_comp_of_degree {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (p q r : ℤ) (h : p + q = r) (n : ℕ)
+    (f : Homogeneous P Q p) (g : Homogeneous Q ((productTotalFunctor A).obj X) q) :
+    extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) r
+      ((homToNormalizedBousfieldKan P X).f r (f.comp g h)) n =
+    ((n : ℤ) * p).negOnePow •
+      (extendedChainHomRows normalizedBousfieldKanWeight
+        ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+          (doubleOppositeDiagram ((homDiagramFunctor Q).obj X))) q
+        ((homToNormalizedBousfieldKan Q X).f q g) n ≫
+      homDiagramDegreePrecompose X p (q - n) (r - n) (by omega) f)
+```
+
+```lean
+theorem normalizedBousfieldKanRepresentative_cochain (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (f : P ⟶ (productTotalFunctor A).obj X) :
+    Cochain.ofHom (normalizedBousfieldKanRepresentative P X f) =
+      (homToNormalizedBousfieldKan P X).f 0 (Cochain.ofHom f)
+```
+
+```lean
+theorem homToNormalizedBousfieldKan_rows_cone (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ) :
+    extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) p
+      ((homToNormalizedBousfieldKan P X).f p f) n =
+    ((n : ℤ) * p).negOnePow •
+      (extendedChainHomRows normalizedBousfieldKanWeight
+        ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+          (doubleOppositeDiagram ((homDiagramFunctor ((productTotalFunctor A).obj X)).obj X)))
+        0 (Cochain.ofHom (normalizedBousfieldKanConeRepresentative X)) n ≫
+      homDiagramDegreePrecompose X p (0 - n) (p - n) (by omega) f)
+```
+
+### 119.2 検収と登録
+
+コード **`afb2a7c53`**（2本147行：70・77）。個別検査`/private/tmp/isw2-simplex-free-adjunction3.log`・`/private/tmp/isw2-bk-cone-composition3.log`は終了コード0。鍵付き対象ビルド`/private/tmp/isw2-build135.log`は **2,899 jobs・終了コード0**。新規分のみの監査`/private/tmp/AuditISW2G10B02ConeSimplex.lean`は **11宣言（5・6）・標準三公理のみ**。共有鍵は返却済み。
+
+累計 **246モジュール・14,918行・2,178宣言**。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。新公理・sorryなし。大きな監査なし。登録対象は119.1の2本。
+
+## 120. B02の途中：tensor–Hom符号の消去と実dg合成の成分
+
+### 120.1 型と意味
+
+元の指定BK行の任意次数合成の符号`(-1)^(np)`と、tensor逆転置の同じ重み次数に現れる符号`(-1)^((-n)p)`を合わせ、積が1になることを示した。結果は、元の錐代表のcochain行と任意のHomパラメータの**実dg合成`compose`**である。複体の`enrichedComposition`の既存成分式で、通常順の合成とcochain合成も同じ値として計算した。
+
+これは一般の符号つき成分の式で、試験パラメータの閉性や有界性を仮定していない。B02の各AW切断の照合に使う既存構成の合成則。指定単体的射全体の一致は、まだこの一つの成分式で置き換えない。
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKTensorRow`
+
+```lean
+theorem homToNormalizedBousfieldKan_tensor_row (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (p : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) p) (n : ℕ)
+    (j : SimplexCategoryᵒᵖᵒᵖ) (x : ((normalizedBousfieldKanWeight (A := A)).X n).obj j) :
+    let η
+```
+
+### 120.2 検収と登録
+
+コード **`6c03058df`**（1本75行）。個別検査`/private/tmp/isw2-bk-tensor-row2.log`は終了コード0。最終ソースの鍵付き対象ビルド`/private/tmp/isw2-build136.log`は **2,564 jobs・終了コード0**。新規分のみの監査`/private/tmp/AuditISW2G10B02TensorRow.lean`は **2宣言・標準三公理のみ**。共有鍵は返却済み。
+
+累計 **247モジュール・14,993行・2,180宣言**。一覧は`/private/tmp/isw2-g10-twohundredfortyseven-modules.txt`。外枠20,000行まで残り5,007行。計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。新公理・sorryなし。大きな監査・rootビルドなし。登録対象は120.1の1本。未検証下書きはない。
+
+B02の最終の単体的射の等式、B03〜B08・C・Dは未完。次は同じパラメータ随伴・成分式を、A09の重み付き切断Hom同型と実合成の全切断和へ組み込み、反転・添字移送を含む元の比較射の等式へ戻す。
+
+## 121. 11-14の一覧の新しい数え方の適用
+
+調整役の連絡とmainの`coordination.md` §2の追記を読み取り確認した。既存の構成の法則（単位・余単位・自然性・係数移送・合成則・貼り合わせ）と証明分割には本数の枠を置かず、型を報告に書く。200行を超えるものは行数も記録する。本報告では引き続き各検収のファイル行数も併記する。
+
+これまでの「前提計算3/3」「照合3/3」は当時の検収の記録として残すが、**今後の停止判定には使わない**。既存の合成を名前で固定した定義や、指定射の成分評価を分割した今回の補題を、新しい独立の構成の導入とは扱わない。既存構成の法則ではない新しい構成・定理、承認済みまとまりの外、外枠に届く所では停止して報告する。B01〜B08・C01〜C07・D01〜D08と停止点2a・2b、外枠20,000行は維持する。
+
+mainは凍結中なので、追記の確認は読み取りだけとしmergeしていない。自分の枝で作業とコミットを続け、鍵は`--wait 3600`でビルド・小監査の間だけ持つ。
