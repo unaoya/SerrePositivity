@@ -2561,3 +2561,26 @@ theorem freeProductAlexanderWhitney_right_augmentation
 ユーザー指示2「一覧にない新しい数学の補題が要ったら、検証済みをコミットして止まり、その型と一覧から漏れた理由を報告」に従い、**A05の追加証明をここで停止する**。照合追加枠は3/3のままで、この法則を4本目の単なる照合とは扱わない。外枠12,500行による停止ではない。停止点2も未完。
 
 上の一補題を第一のまとまりのA05の前提計算として一覧に加える判断を求める。範囲を別の第五のまとまりへ広げる案ではなく、同じ指定余作用と増大写像を保持するための補題である。承認後はこの法則を証明し、A05の両単位則へ接続してからA06以降へ進む。
+
+## 81. A05aの承認を反映、前提計算の枠を開始
+
+11-13のユーザー指示とmainのIS-W2 §13を確認した。§80.1の型をそのまま **A05a** に追加し、停止を解除する。前提計算の枠は照合枠3/3とは別に管理する。外枠12,500行、凍結確定後はコミットを控える規則も維持する。現時点で凍結確定の連絡は未受領。
+
+### 81.1 前提計算1/3：右因子が零次だけに値を持つ場合のAW切断和
+
+提案・実装名 `alexanderWhitneyApp_right_zero_degree`。既存AWの右余単位計算に使う法則で、新しい比較模型を導入しない。
+
+```lean
+theorem alexanderWhitneyApp_right_zero_degree
+    (C D : SimplicialObject (ModuleCat.{u} ℤ))
+    {K L : ChainComplex (ModuleCat.{u} ℤ) ℕ}
+    (f : (AlgebraicTopology.alternatingFaceMapComplex _).obj C ⟶ K)
+    (g : (AlgebraicTopology.alternatingFaceMapComplex _).obj D ⟶ L)
+    (hg : ∀ k : ℕ, k ≠ 0 → g.f k = 0) (n : ℕ) :
+    alexanderWhitneyApp C D n ≫ (chainIntegerTensorMap f g).f n =
+      alexanderWhitneySummand C D n (Fin.last n) ≫ (chainIntegerTensorMap f g).f n
+```
+
+名前空間は既存の `Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories` のAW・整数テンソルを開いた表記。置き場所は `DiagramComparison/AWRightAugmentationCut.lean`。最後以外の切断では第二次数 `n-i` が正なので、仮定hgと整数テンソルの零写像則でその項を消す。A05aではMoore射影と増大写像を合成したgに適用する。まず整数係数のこの計算を閉じ、その後に指定係数移送を戻す。
+
+この記録時点では個別検査中、未コミット。§80の未完下書きも引き続き作業木に保持し、検証済み148本9,182行には算入しない。照合枠3/3、前提計算枠1/3。
