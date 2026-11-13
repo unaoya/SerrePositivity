@@ -3402,3 +3402,130 @@ theorem normalizedIntervalHom_naturality {R R' S S' : J ⥤ Complex A}
 A07では、全余単体方向の指定ホモトピーを各単体次数で評価し、今の `normalizedIntervalHom` を使う。入力のn単体（`G.obj n ⟶ Q`）と区間のn単体（`⦋n⦌ ⟶ ⦋1⦌`）に対し、指定余作用 `δ.app n`、同じ正規化単体射、区間評価、入力射を順に合成する。単体作用素との可換性にはδの自然性とA06の前後合成自然性、両端にはA05の指定単位則とA06の両端等式を使う。二重図式のホモトピーを次数ごとに独立に選ばない。元の全パラメータの自然な成分を評価して使う。
 
 A07以降、B・C・Dの各まとまり、停止点2は未完。本節はA06完了の途中報告であり、停止点2の検収報告ではない。検証済みは外枠12,500行まで残り1,421行。範囲・型は弱めていない。
+
+
+## 94. A07完了：指定余作用から全単体Homのホモトピーへ
+
+11-13のユーザー承認で3b-2の外枠は **14,500行**。一覧と§14の補題の数え方は維持する。23時の調整役の連絡で、今回のB3はmainだけの凍結と確定し、この枝は作業・コミットを続けてよい。今夜は対象ビルドと新規モジュールの小さな一時監査だけを実行し、mainは取り込まない。B4は追って指定される改名コマンドを待つ。
+
+A07は、同じ二重図式のホモトピーを積添字へ戻してA06へ入れ、指定区間評価を全余単体方向で自然な射にした。指定余作用、区間の単体、区間評価、入力射を合成した区間射を定義し、その単体自然性・両端を示した。点ごとにホモトピーを選んでいない。
+
+### 94.1 A07の証明分割と前提計算の型
+
+`StandardParameterConstant.standardParameter_constant` だけをA07の前提計算 **1/3** とする（既存の増大写像・端点の余単位則）。残りは一覧A07の同じ構成と端点・単体自然性の証明分割（§14）。照合枠は3/3のまま。FrameIntervalHom中の局所`hm`は既存 `Functor.map_id` の適用であり、新しい法則の証明ではない：
+
+```lean
+have hm (W : SimplicialObject (ModuleCat A)) :
+    AlgebraicTopology.NormalizedMooreComplex.map (𝟙 W) = 𝟙 _ :=
+  (AlgebraicTopology.normalizedMooreComplex (ModuleCat A)).map_id W
+```
+
+型の略記：FrameParameterEvaluation・Endpoints・UnderlyingMapでは `{C : Type u} [Category.{v} C] [MonoidalCategory C]`、`{F G P : SimplexCategory ⥤ C}`。FrameIntervalHom・FrameHomHomotopyは `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`D := J ⥤ Complex A`、`P := liftedStandardSimplexParameter J ⋙ freeNegativeChainsDiagramFunctor A J`、`I := P.obj ⦋1⦌`。EEは§73の二重図式交換関手。UncurriedDiagramHomotopyのE₁・E₂は同ファイルと既存CurriedDiagramHomotopyの定義どおり。すべてのAに`[CommRing A]`を固定。
+
+`UncurriedDiagramHomotopy`
+
+```lean
+def uncurriedDiagramHomotopy {F G : J ⥤ K ⥤ HomologicalComplex C c} (f g : F ⟶ G)
+    (h : Homotopy ((E₂).map f) ((E₂).map g)) :
+    Homotopy ((E₁).map (Functor.uncurry.map f)) ((E₁).map (Functor.uncurry.map g))
+```
+
+
+`FrameIntervalHom`
+
+```lean
+def frameIntervalHom {F G : SimplexCategory ⥤ D} (f g : F ⟶ G)
+    (h : Homotopy ((EE).map f) ((EE).map g)) :
+    F ⊗ (Functor.const SimplexCategory).obj I ⟶ G
+```
+
+```lean
+theorem frameIntervalHom_endpoints {F G : SimplexCategory ⥤ D} (f g : F ⟶ G)
+    (h : Homotopy ((EE).map f) ((EE).map g)) :
+    (ρ_ F).inv ≫ (𝟙 F ⊗ₘ (Functor.const SimplexCategory).map
+      (normalizedIntervalEndpoint A J 0)) ≫ frameIntervalHom f g h = f ∧
+    (ρ_ F).inv ≫ (𝟙 F ⊗ₘ (Functor.const SimplexCategory).map
+      (normalizedIntervalEndpoint A J 1)) ≫ frameIntervalHom f g h = g
+```
+
+
+`FrameParameterEvaluation`
+
+```lean
+def frameParameterEvaluation (δ : F ⟶ F ⊗ P)
+    (k : F ⊗ (Functor.const SimplexCategory).obj (P.obj ⦋1⦌) ⟶ G)
+    (n : SimplexCategory) (t : n ⟶ ⦋1⦌) : F.obj n ⟶ G.obj n
+```
+
+```lean
+theorem frameParameterEvaluation_naturality (δ : F ⟶ F ⊗ P)
+    (k : F ⊗ (Functor.const SimplexCategory).obj (P.obj ⦋1⦌) ⟶ G)
+    {m n : SimplexCategory} (s : m ⟶ n) (t : n ⟶ ⦋1⦌) :
+    F.map s ≫ frameParameterEvaluation δ k n t =
+      frameParameterEvaluation δ k m (s ≫ t) ≫ G.map s
+```
+
+
+`FrameParameterEndpoints`
+
+```lean
+theorem frameParameterEvaluation_endpoint
+    (δ : F ⟶ F ⊗ P) (α : P ⟶ 𝟙_ (SimplexCategory ⥤ C))
+    (hδ : δ ≫ (𝟙 F ⊗ₘ α) ≫ (ρ_ F).hom = 𝟙 F)
+    (k : F ⊗ (Functor.const SimplexCategory).obj (P.obj ⦋1⦌) ⟶ G)
+    (e : 𝟙_ C ⟶ P.obj ⦋1⦌) (f : F ⟶ G)
+    (hk : (ρ_ F).inv ≫ (𝟙 F ⊗ₘ (Functor.const SimplexCategory).map e) ≫ k = f)
+    (n : SimplexCategory) (t : n ⟶ ⦋1⦌) (ht : P.map t = α.app n ≫ e) :
+    frameParameterEvaluation δ k n t = f.app n
+```
+
+
+`FrameHomotopyUnderlyingMap`
+
+```lean
+def frameHomotopyUnderlyingMap (δ : F ⟶ F ⊗ P)
+    (k : F ⊗ (Functor.const SimplexCategory).obj (P.obj ⦋1⦌) ⟶ G) (Q : C) :
+    (cosimplicialHom G).obj Q ⊗ (SSet.stdSimplex.{v}.obj ⦋1⦌) ⟶ (cosimplicialHom F).obj Q
+```
+
+
+`StandardParameterConstant`
+
+```lean
+theorem standardParameter_constant (n : SimplexCategory) (ε : Fin 2) :
+    (liftedStandardSimplexParameter J ⋙ freeNegativeChainsDiagramFunctor A J).map
+      (SimplexCategory.const n ⦋1⦌ ε) =
+    (standardParameterAugmentation A J).app n ≫ normalizedIntervalEndpoint A J ε
+```
+
+
+`FrameHomHomotopy`
+
+```lean
+def frameHomHomotopyOfInterval {F G : SimplexCategory ⥤ D}
+    (δ : F ⟶ F ⊗ P)
+    (hδ : δ ≫ (𝟙 F ⊗ₘ standardParameterAugmentation A J) ≫ (ρ_ F).hom = 𝟙 F)
+    (k : F ⊗ (Functor.const SimplexCategory).obj ((P).obj ⦋1⦌) ⟶ G)
+    (f g : F ⟶ G)
+    (hk0 : (ρ_ F).inv ≫ (𝟙 F ⊗ₘ (Functor.const SimplexCategory).map
+      (normalizedIntervalEndpoint A J 0)) ≫ k = f)
+    (hk1 : (ρ_ F).inv ≫ (𝟙 F ⊗ₘ (Functor.const SimplexCategory).map
+      (normalizedIntervalEndpoint A J 1)) ≫ k = g) (Q : D) :
+    SSet.Homotopy ((cosimplicialHomMap f).app Q) ((cosimplicialHomMap g).app Q)
+```
+
+```lean
+def frameHomHomotopyOfChainHomotopy (F G : SimplexCategory ⥤ D)
+    (δ : F ⟶ F ⊗ P)
+    (hδ : δ ≫ (𝟙 F ⊗ₘ standardParameterAugmentation A J) ≫ (ρ_ F).hom = 𝟙 F)
+    (f g : F ⟶ G) (h : Homotopy ((EE).map f) ((EE).map g)) (Q : D) :
+    SSet.Homotopy ((cosimplicialHomMap f).app Q) ((cosimplicialHomMap g).app Q)
+```
+
+### 94.2 検収と登録対象
+
+コード **`9f1fb0f95`**。新規7本339行（UncurriedDiagramHomotopy 34、FrameIntervalHom 73、FrameParameterEvaluation 38、FrameParameterEndpoints 41、FrameHomotopyUnderlyingMap 34、StandardParameterConstant 48、FrameHomHomotopy 71）。個別・結合検査は最終的に終了コード0（`/private/tmp/isw2-frame-interval9.log`、`/private/tmp/isw2-frame-hom-map2.log`、`/private/tmp/isw2-standard-parameter-constant2.log`、`/private/tmp/isw2-frame-hom-homotopy3.log`）。途中の対象ビルド99・100の失敗は、定数区間の恒等射と端点計算の結合順序を明示して修正した。計算上限は上げていない。
+
+鍵付きの最終対象ビルドは **4,008 jobs、終了コード0**（`/private/tmp/isw2-build101.log`）。今夜の連絡に合わせ、監査は新規7モジュールだけ：**58宣言、標準三公理のみ**（`/private/tmp/AuditISW2G10A07.lean`）。既検収179本・1,831宣言と合わせた累計は **186モジュール・11,418行・1,889宣言**。累計対象一覧 `/private/tmp/isw2-g10-hundredeightysix-modules.txt`。上記7本を登録対象へ追加する（共通1本・DiagramComparison6本）。共有鍵は返却済み。
+
+新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。外枠14,500行まで残り3,082行。A07完了、A08は既存の二つのEZホモトピーをA07へ入れる個別検査が通っており、A09の同じ指定射の同値性へ接続中。A08以降は本節の検収数に未算入。B・C・Dと停止点2は未完。
