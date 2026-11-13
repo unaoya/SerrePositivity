@@ -13,8 +13,8 @@ public import SerrePositivity.AlgebraicGeometry.FullCechH0Kernel
 set_option backward.isDefEq.respectTransparency false
 namespace SerrePositivity.AlgebraicGeometry
 open CategoryTheory
-universe u v
-variable {R : Type u} [CommRing R] {ι : Type v} [DecidableEq ι]
+universe u v w
+variable {R : Type w} [CommRing R] {ι : Type v} [DecidableEq ι]
 
 /-- H⁰ と核の比較の後の包含は、homologyπ の逆と cycles の包含の合成。 -/
 theorem fullCechH0KernelIso_hom_subtype (D : Finset ι ⥤ ModuleCat.{u} R) :
