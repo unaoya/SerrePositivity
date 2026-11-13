@@ -1092,6 +1092,14 @@ import SerrePositivity.EInfinity.PowerOperation.MayZeroClassComparison
 import SerrePositivity.EInfinity.PowerOperation.MayZeroCoefficient
 import SerrePositivity.EInfinity.PowerOperation.MayZeroHomology
 import SerrePositivity.EInfinity.PowerOperation.MayZeroOperation
+import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationDiscrete
+import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationZero
+import SerrePositivity.EInfinity.PowerOperation.MayNormalizedZero
+import SerrePositivity.EInfinity.PowerOperation.MayPiZeroSourceComparison
+import SerrePositivity.EInfinity.PowerOperation.MayPrimeFieldZeroSource
+import SerrePositivity.EInfinity.PowerOperation.MayRepeatedZeroInput
+import SerrePositivity.EInfinity.PowerOperation.MayZeroActionEvaluation
+import SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport
 
 /-!
 概要：段階 II で BS の drafts から本体へ移したモジュールを公理監査する。
@@ -2195,7 +2203,15 @@ run_cmd do
     `SerrePositivity.EInfinity.PowerOperation.MayZeroClassComparison,
     `SerrePositivity.EInfinity.PowerOperation.MayZeroCoefficient,
     `SerrePositivity.EInfinity.PowerOperation.MayZeroHomology,
-    `SerrePositivity.EInfinity.PowerOperation.MayZeroOperation]
+    `SerrePositivity.EInfinity.PowerOperation.MayZeroOperation,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationDiscrete,
+    `SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationZero,
+    `SerrePositivity.EInfinity.PowerOperation.MayNormalizedZero,
+    `SerrePositivity.EInfinity.PowerOperation.MayPiZeroSourceComparison,
+    `SerrePositivity.EInfinity.PowerOperation.MayPrimeFieldZeroSource,
+    `SerrePositivity.EInfinity.PowerOperation.MayRepeatedZeroInput,
+    `SerrePositivity.EInfinity.PowerOperation.MayZeroActionEvaluation,
+    `SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport]
   let env ← getEnv
   let mut count : Nat := 0
   for (name, _) in env.constants.toList do

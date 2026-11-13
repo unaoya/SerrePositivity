@@ -3109,3 +3109,11 @@ public import SerrePositivity.EInfinity.PowerOperation.MayZeroClassComparison
 public import SerrePositivity.EInfinity.PowerOperation.MayZeroCoefficient
 public import SerrePositivity.EInfinity.PowerOperation.MayZeroHomology
 public import SerrePositivity.EInfinity.PowerOperation.MayZeroOperation
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationDiscrete
+public import SerrePositivity.EInfinity.BarrattEccles.Theory.MayPowerOperationZero
+public import SerrePositivity.EInfinity.PowerOperation.MayNormalizedZero
+public import SerrePositivity.EInfinity.PowerOperation.MayPiZeroSourceComparison
+public import SerrePositivity.EInfinity.PowerOperation.MayPrimeFieldZeroSource
+public import SerrePositivity.EInfinity.PowerOperation.MayRepeatedZeroInput
+public import SerrePositivity.EInfinity.PowerOperation.MayZeroActionEvaluation
+public import SerrePositivity.EInfinity.PowerOperation.MayZeroIsoTransport
