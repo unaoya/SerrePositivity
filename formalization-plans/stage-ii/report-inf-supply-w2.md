@@ -3568,3 +3568,90 @@ theorem normalizedWeightSectionMap_equivalence :
 コード **`c3000d7aa`**。新規2本84行（FreeProductHomComparisonHomotopies 45、NormalizedWeightSectionEquivalence 39）。個別・結合検査 `/private/tmp/isw2-product-hom-homotopies2.log`・`/private/tmp/isw2-weight-section-equiv1.log` は終了コード0。鍵付き対象ビルド **4,400 jobs、終了コード0**、新規2モジュールだけの一時監査 **11宣言、標準三公理のみ**（`/private/tmp/isw2-build102.log`、`/private/tmp/AuditISW2G10A08A09.lean`）。既検収と合わせた累計は **188モジュール・11,502行・1,900宣言**。一覧 `/private/tmp/isw2-g10-hundredeightyeight-modules.txt`。上記2本を登録対象へ追加。鍵は返却済み。
 
 A10の自由テンソルHom同型の標的自然性の型が既定の200,000 heartbeatsに当たったため、既存の図式Homの標的射を明示する `DiagramHomTargetMap` とその転置の特殊化に分けて検査している。計算上限を上げず、既存宣言も変えていない。これは同じ一覧A10の構成・自然性の分割であり、新しい数学のまとまりを足していない。A10以降・B/C/D・停止点2は未完。外枠14,500行まで検証済みから2,998行。新公理・sorryなし、⑤a・入口・公式監査の変更なし。
+
+
+## 96. A10完了：指定比較の標的の全図式射自然性
+
+Γ側では同じ図式Homの標的射を明示し、切断側では元の`weightedSectionsFunctor`の射を使った。自由テンソルHom同型・自由積Hom同型・指定AW比較の三つの自然性を合成し、一覧A10の等式を閉じた。型推論の200,000 heartbeats超過は、基礎圏と宇宙引数の明示、図式Hom標的射の分離、同型の逆の自然性の相殺による証明で解消した。計算上限は変更していない。
+
+### 96.1 A10の型と前提計算枠
+
+`NormalizedTensorHomTargetNaturality`をA10の前提計算 **1/3**、`ProductSectionsTargetNaturality`の自然性を **2/3** とする。後者の標準単体Hom同型の自然性は、同じ積Hom同型の証明の分割。`DiagramHomTargetMap`と転置の特殊化は同じA10のHmapの構成と既存A06の自然性の特殊化であり、新しい数学ではない。照合枠は全体3/3のまま。
+
+最初のファイルは `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`E := functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)`。他は既存入口と同じ `A : Type u`、`J : Type u`、`[SmallCategory J]`、`W : J ⥤ SSet.{u}`（すべて`[CommRing A]`）。最後の型では `φ : simplicialRingCoefficient.{u} →+* A`。
+
+`DiagramHomTargetMap`
+
+```lean
+def diagramHomTargetMap (P : J ⥤ Complex A) {Q Q' : J ⥤ Complex A} (f : Q ⟶ Q') :
+    linearHomComplex A ((E).obj P) ((E).obj Q) ⟶ linearHomComplex A ((E).obj P) ((E).obj Q')
+```
+
+```lean
+theorem diagramTensorLinearHomEquiv_postcomp (P : J ⥤ Complex A)
+    {Q Q' : J ⥤ Complex A} (T : Complex A) (t : P ⊗ (Functor.const J).obj T ⟶ Q)
+    (f : Q ⟶ Q') :
+    diagramTensorLinearHomEquiv P Q' T (t ≫ f) =
+      diagramTensorLinearHomEquiv P Q T t ≫ diagramHomTargetMap P f
+```
+
+
+`NormalizedTensorHomTargetNaturality`
+
+```lean
+theorem freeTensorDiagramHomIso_target_naturality {Q Q' : J ⥤ Complex A} (f : Q ⟶ Q') :
+    (cosimplicialHom (freeTensorFrame A W (liftedStandardSimplexParameter J))).map f ≫
+      (freeTensorDiagramHomIso.{u,u} A Q' W).hom =
+    (freeTensorDiagramHomIso.{u,u} A Q W).hom ≫ (truncatedDoldKanFunctor A).map
+      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A
+```
+
+
+`ProductSectionsTargetNaturality`
+
+```lean
+theorem liftedStandardSimplexHomIso_naturality {Z Z' : SSet.{u}} (f : Z ⟶ Z') :
+    (cosimplicialHom (SSet.stdSimplex.{0} ⋙ SSet.uliftFunctor.{u,0})).map f ≫
+      (liftedStandardSimplexHomIso Z').hom = (liftedStandardSimplexHomIso Z).hom ≫ f
+```
+
+```lean
+theorem freeProductSectionsHomIso_target_naturality (W : J ⥤ SSet.{u})
+    {Q Q' : J ⥤ CochainComplex (ModuleCat A) ℤ} (f : Q ⟶ Q') :
+    (cosimplicialHom (freeProductFrame A W (liftedStandardSimplexParameter J))).map f ≫
+      (freeProductSectionsHomIso A W Q').hom =
+    (freeProductSectionsHomIso A W Q).hom ≫ (weightedSectionsFunctor W).map
+      ((Functor.whiskeringRight J (CochainComplex (ModuleCat A) ℤ) SSet.{u}).obj
+        (SerrePositivity.EInfinity.ComplexLimits.truncatedDoldKanFunctor A) |>.map f)
+```
+
+
+`NormalizedWeightSectionNaturality`
+
+```lean
+theorem normalizedWeightSectionMap_naturality {Q Q' : J ⥤ Complex A} (f : Q ⟶ Q') :
+    (truncatedDoldKanFunctor A).map
+      (diagramHomTargetMap.{u,u} (freeNegativeChainsDiagram (A
+```
+
+### 96.2 検収と登録対象
+
+コード **`36b42f9be`**。新規4本174行（DiagramHomTargetMap 32、NormalizedTensorHomTargetNaturality 44、ProductSectionsTargetNaturality 47、NormalizedWeightSectionNaturality 51）。最終結合個別検査 `/private/tmp/isw2-weight-section-nat5.log` は終了コード0。鍵付き対象ビルド **2,655 jobs、終了コード0**、新規4モジュールだけの一時監査 **10宣言、標準三公理のみ**（`/private/tmp/isw2-build103.log`、`/private/tmp/AuditISW2G10A10.lean`）。上記4本を登録対象に追加。累計対象一覧 `/private/tmp/isw2-g10-hundredninetytwo-modules.txt`。
+
+既検収分と合わせて **192モジュール・11,676行・1,910宣言**。外枠14,500行まで残り2,824行。共有鍵は返却済み。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。今夜の監査は新規分だけで、root・大きい累計監査は流していない。A10まで完了、A11以降・B/C/D・停止点2は未完。
+
+### 96.3 次の一覧A11への接続（紙）
+
+A11の切断側は既存 `WeightedRestriction.weightedSectionsPre`（実名前空間はKerodon.LimitsAndColimits.HomotopyLimitsAndColimits）を使う。`weightedSectionsUncurry_comp_pre`が元のパラメータ付き自然変換の前合成との等式を持ち、任意の重みの射に使える。Γ側は `intervalHomPrePost` の後側を恒等射に固定し、前側に元の自由鎖図式の射を入れる。型の具体化は以下（`N := freeNegativeChainsDiagramFunctor A J`、Eは上記交換関手）：
+
+```lean
+-- §73 A11。まだ未実装・未検収。
+theorem normalizedWeightSectionMap_weight_naturality
+    {W W' : J ⥤ SSet.{u}} (w : W' ⟶ W) :
+    (truncatedDoldKanFunctor A).map
+      (intervalHomPrePost A ((E).map ((N).map w)) (𝟙 ((E).obj Q))) ≫
+        normalizedWeightSectionMap A W' Q φ =
+      normalizedWeightSectionMap A W Q φ ≫ weightedSectionsPre w (Q ⋙ truncatedDoldKanFunctor A)
+```
+
+自由テンソル側には既存 `diagramTensorLinearHomEquiv_naturality` の前側の特殊化、自由積側には元の随伴Homの始域自然性と`weightedSectionsUncurry_comp_pre`、中間のAWには既存 `freeProductDiagramAW_naturality` を使う。別の重みの置換や別のHom同値を選ばず、元の二同型の始域自然性を照合してA10と同じ合成で結ぶ方針。
