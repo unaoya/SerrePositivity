@@ -1280,3 +1280,7 @@ public import SerrePositivity.AlgebraicGeometry.SchemeVCoverProper
 public import SerrePositivity.AlgebraicGeometry.SchemeVCoverComposition
 
 public import SerrePositivity.AlgebraicGeometry.SchemeVCoverSurjective
+
+public import SerrePositivity.AlgebraicGeometry.ValuationSpecializationDiagram
+
+public import SerrePositivity.AlgebraicGeometry.SchemeVCoverSpecializations
