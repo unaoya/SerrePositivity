@@ -2904,3 +2904,55 @@ theorem coefficientUnit_tensorComparison (M N : ModuleCat.{u} ℤ) (x : M) (y : 
 コード `8dc9fc615`：`IntegerCoefficientTensorValues` 41行、`StandardParameterAugmentationValues` 38行。鍵付き対象ビルド3,963 jobs、累計156モジュール・1,710宣言、標準三公理のみで終了コード0（`/private/tmp/isw2-build86.log`）。一時監査 `/private/tmp/AuditISW2G10HundredFiftySix.lean`、対象一覧 `/private/tmp/isw2-g10-hundredfiftysix-modules.txt`。検証済み実測 **9,572行**。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。鍵は返却済み。
 
 最後の切断の結合検査は、公式の引数・適用箇所を明示しても既定heartbeatで未完。既存 `Unitors` の未ビルド依存を含む50モジュールの結合ソースになっていたため、通常のモジュール境界で検査するために既存 `Unitors` のみの対象ビルドを共有鍵 `--wait 3600` で開始した。これは最後の切断の証明成功を意味せず、A05a・A05・停止点2は未完。
+
+## 87. 承認済みの最後の切断の余単位則を検収
+
+`freeProductAlexanderWhitney_last_cut_right_augmentation` を§84.2と同じ型で証明した。個別検査 `/private/tmp/isw2-last-cut-check19.log` は終了コード0。コード **`7d081b8c5`**（`FreeProductAWLastCut` 169行、`StandardParameterRightUnit` 37行）。鍵付き対象ビルド4,012 jobs、累計 **158モジュール・1,713宣言、標準三公理のみ**で終了コード0（`/private/tmp/isw2-build87.log`、監査 `/private/tmp/AuditISW2G10HundredFiftyEight.lean`、一覧 `/private/tmp/isw2-g10-hundredfiftyeight-modules.txt`）。検証済み実測 **9,778行**。計算上限は既定のまま、sorry・新公理なし。
+
+追加した単位子の部分補題の型は以下。これは同じ最後の切断の計算の分割で、§14により追加枠へ算入しない。
+
+```lean
+theorem standardParameter_right_unit (A : Type u) [CommRing A]
+    (n : SimplexCategory) (P : CochainComplex (ModuleCat A) ℤ)
+    (r : ℕ) (hr : r = 0) (q : ℤ)
+    (a : ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n)).obj (Opposite.op ⦋r⦌))
+    (x : P.X q) :
+    let W := (SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj n) ⋙ ModuleCat.free A
+    (ρ_ P).hom.f q (ιTensorObj P (𝟙_ (CochainComplex (ModuleCat A) ℤ)) q (-(r : ℤ)) q
+      (by subst r; simp) (x ⊗ₜ[A]
+      (normalizedSimplexCochainContraction A n).hom.f (-(r : ℤ))
+        ((((normalizedMooreComplex (ModuleCat A)).obj W).extendXIso
+          ComplexShape.embeddingDownNat (i := r) (i' := -(r : ℤ)) rfl).inv
+          ((PInftyToNormalizedMooreComplex W).f r (ModuleCat.freeMk a))))) = x
+```
+
+A05aの本体は、最後の切断を適用してMoore冪等射の自然性で戻す末尾へ進んだ。まだ全体の検査成功前であり、A05a・A05・停止点2は未完。本体の未検証下書きはコミットしない。既存宣言・⑤a・入口・公式監査の変更なし。共有鍵は返却済み。凍結確定の連絡はこの時点で未受領。
+
+## 88. A05a・A05を完了し、A06の端点へ
+
+A05aは§80.1の型のまま証明・検証を完了した。コード **`6c529dfaf`**（206行）。最後の切断の余単位則を適用し、Moore冪等射の自然性・自由化比較の逆射との合成・指定射影の冪等性で元の第一射影へ戻した。個別検査 `/private/tmp/isw2-a05a-direct4.log`、鍵付き対象ビルド4,013 jobsと159モジュール・1,714宣言の一時監査が終了コード0（`/private/tmp/isw2-build88.log`）。標準三公理のみ。
+
+A05の積側・テンソル側の指定余作用の両単位則も完了。コード **`e0d0f8e53`**（`FrameCoactionCounit` 80行）。積側はA05aとグラフの第一射影、テンソル側は同じA05aと対角の第一射影・結合子の自然性・右単位子のテンソル公式を用いた。個別検査 `/private/tmp/isw2-frame-counit9.log` と対象ビルド4,015 jobs、160モジュール・1,716宣言の一時監査が終了コード0（`/private/tmp/isw2-build89.log`）。標準三公理のみ。検証済み実測 **10,064行**。監査 `/private/tmp/AuditISW2G10HundredSixty.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixty-modules.txt`。sorry・新公理なし、既存の宣言・⑤a・入口・公式監査の変更なし。
+
+### 88.1 A06の入口：同じ正規化区間の二つの端点
+
+`NormalizedIntervalEndpoints.lean` で零単体の指定増大写像が同型である既存の証明を用い、その逆と二つの頂点包含を合成した。全図式の端点も自然変換として定義した。型は以下（DiagramComparison名前空間）。これはA06の同じ内容の分割。
+
+```lean
+def normalizedIntervalEndpointChain (A : Type u) [CommRing A] (ε : Fin 2) :
+    𝟙_ (CochainComplex (ModuleCat A) ℤ) ⟶
+      freeNegativeChains (A := A)
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj ⦋1⦌))
+```
+
+```lean
+def normalizedIntervalEndpoint (A : Type u) [CommRing A]
+    (J : Type v) [Category.{w} J] (ε : Fin 2) :
+    𝟙_ (J ⥤ CochainComplex (ModuleCat A) ℤ) ⟶
+      freeNegativeChainsDiagram (A := A) ((Functor.const J).obj
+        ((SSet.uliftFunctor.{u,0}).obj (SSet.stdSimplex.{0}.obj ⦋1⦌)))
+```
+
+個別の結合検査 `/private/tmp/isw2-interval-endpoints-check2.log` は終了コード0。44行の新規モジュールの鍵付き対象ビルドと161本の一時監査を `--wait 3600` で開始した。前の鍵は返却済み。まだ成功前のため、この記録時点では検証済み160本へ算入しない。
+
+A06本体の `normalizedIntervalHom`・両端の評価・前後合成に関する自然性はこれから。既存 `HomologicalComplex.cylinder.desc` とその二端評価、`DifferentialGraded.dgInterval` を確認したが、これらのcylinderで指定された正規化単体区間を置き換えて済ませることはしない。使う場合も指定区間・端点への厳密な比較を保つ。A06〜D08と停止点2は未完。追加承認を求める停止ではなく、承認済みの一覧に沿った進行。
