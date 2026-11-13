@@ -1010,3 +1010,7 @@ public import SerrePositivity.AlgebraicGeometry.ProjectiveHomogeneousChartAlgebr
 public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousAlgebraProjection
 
 public import SerrePositivity.AlgebraicGeometry.ReesClosedHomogeneousSections
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionH0Comparison
+
+public import SerrePositivity.AlgebraicGeometry.ReesHomogeneousSectionKernelBound
