@@ -757,3 +757,32 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 次は閉厚化の斉次局所化の射 `reesClosedHomogeneousChartProjection` を代数係数図式の射としてまとめる。既存の `projectiveHomogeneousChartDiagram_map` と `reesClosedHomogeneousChartProjection_compare` で、実際の環の制限と線形な係数写像を照合する。その後、今回の自然性を通して 2e の核の評価・像の安定化を適合切断環に移す。B/IB と閉厚化の切断環の Frobenius 比較、F7 の幾何学的四角形、F8 の増大全複体は未完。
 
 2f 累計は **110 モジュール・6,758 行（登録込み 6,929 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
+
+## F7 途中：閉厚化の実際の切断代数と H⁰ の射（79caa299c、11-13）
+
+新規 3 モジュール・14 公開宣言（局所インスタンスを除く）・253 行（登録込み 259 行）。対象ビルドは 3,256 jobs 成功。直接 importer で局所インスタンスの自動生成名と既存モジュールの名前が衝突したため、新規ファイル内の五つの局所インスタンスに固有名を付けた。修正後の直接 importer は 4,659 jobs 成功。別実行の公理監査は **9,539 宣言・標準三公理のみ**。すべて共有鍵 `--wait 3600` を通し、待ちは一つに保った。
+
+登録モジュール：`ProjectiveHomogeneousChartAlgebra`、`ReesClosedHomogeneousAlgebraProjection`、`ReesClosedHomogeneousSections`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `projectiveHomogeneousAwayAlgebra` | 既存の斉次局所化の加群構造と整合する基底環上の代数構造。 |
+| `projectiveHomogeneousChartRestrictionAlgHom` | 標準開の実際の環の制限を、既存の線形写像と同じ代数写像にする。 |
+| `projectiveHomogeneousChartAlgebraDiagram` | 標準開の斉次局所化の代数係数図式。 |
+| `projectiveHomogeneousChartAlgebraDiagram_forget` | 代数図式を加群へ忘却すると、既存の図式と定義的に一致する。 |
+| `reesClosedHomogeneousModuleProjection` | 閉厚化への線形な係数の射を斉次局所化の図式に移す。 |
+| `reesClosedHomogeneousModuleProjection_apply` | 移した線形写像の各成分は、実際の斉次局所化の環の射影。 |
+| `reesClosedHomogeneousChartAlgProjection` | 同じ線形写像を持つ閉厚化への代数写像。 |
+| `reesClosedHomogeneousAlgebraProjection` | 閉厚化への制限を斉次標準開の代数図式の自然変換にする。 |
+| `projectiveHomogeneousSectionAlgebra` | 斉次標準開の実際の環の適合切断部分代数。 |
+| `projectiveHomogeneousSectionH0Equiv` | 適合切断代数と既存の斉次標準開の Čech H⁰ の線形比較。 |
+| `projectiveHomogeneousSectionAlgebra_finite` | 射影有限性から適合切断代数の有限性を得る。 |
+| `reesClosedHomogeneousSectionProjection` | 閉厚化の適合切断代数への実際の代数写像。 |
+| `reesClosedHomogeneousSectionProjection_apply` | その各成分は閉厚化への斉次局所化の環の射影。 |
+| `reesClosedHomogeneousSectionH0Equiv_projection` | 適合切断環の制限と、同じ線形な係数写像が誘導する Čech H⁰ の写像は比較を介して可換。 |
+
+基底の代数構造は既存の加群構造から `Algebra.ofModule` で作り、通常の局所化への単射で積とスカラーの整合性を示した。新しい代数図式の忘却が既存の加群図式と定義的に一致するため、前の束の自然性をそのまま閉厚化に適用できる。有限性と H⁰ の比較では Čech 版であることと、Stacks 30.2.6 の導来関手との比較を形式化しないことを明記した。
+
+未完の接続：この斉次切断代数と Proj の構造層の切断代数との環同型、Rees 側の核・像の評価を今回の射へ移すこと、B/IB と閉厚化の切断環の Frobenius 比較、F7 の幾何学的四角形、F8 の増大全複体。今回の線形比較だけで環の Frobenius 比較の完成とはしない。
+
+2f 累計は **113 モジュール・7,011 行（登録込み 7,188 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
