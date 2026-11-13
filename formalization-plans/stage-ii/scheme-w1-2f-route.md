@@ -677,3 +677,35 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 主定理の核の消滅・像の安定化は、前の F6 の幾何学的入力から得た結果を使い、追加仮定として残していない。原典 BST13 Lemma 3.9・BS17 Lemma 4.6(i) の Hⁱ に対応する途中の主張が Čech 版であることと、Stacks 30.2.6 の導来関手との比較を形式化しないことを docstring に記した。零環や空の中心を排除せず、heartbeat・再帰深度の上限も変えていない。
 
 **到達点**：F6 の正次数の制限の全単射性を、標準開の実際の環の Frobenius 順極限を使う Čech 複体へ、同じ閉厚化への写像で接続した。H⁰ の環構造とその有限環の四角形（F7）、増大全複体（F8）、停止点の全体の自然性の検収は未完。2f 累計は **100 モジュール・6,078 行（登録込み 6,229 行）**。残りは暫定 3,000〜7,500 行、停止基準 18,000 行以内。最終出力 `SerrePositivity.Cech.AugmentedRingCechExact` の型は変更しない。
+
+## F7 途中：一般の開被覆の Čech H⁰ の環と大域切断（611758146、11-13）
+
+新規 4 モジュール・19 公開宣言・330 行（登録込み 338 行）。対象ビルドは 2,844 jobs 成功。直接 importer は 4,650 jobs 成功。別実行の公理監査は **9,452 宣言・標準三公理のみ**。すべて共有鍵 `--wait 3600` を通し、待ちは一つに保った。
+
+登録モジュール：`SchemeCompatibleSections`、`SchemeCechSingletonSections`、`SchemeCechCompatibleSections`、`SchemeCechGlobalSections`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `schemeCompatibleSections` | 開被覆上の適合する切断族の部分環。 |
+| `schemeGlobalToCompatibleSections` | 大域切断の実際の制限が定める環準同型。 |
+| `schemeGlobalToCompatibleSections_apply` | その各成分は構造層の制限写像。 |
+| `schemeGlobalToCompatibleSections_bijective` | 被覆条件のもとで制限写像は全単射。 |
+| `schemeGlobalCompatibleSectionsEquiv` | 大域切断環と適合する切断族の環の同型。 |
+| `cechOpenIntersection_tuple` | タプルの台の交叉とタプルで添字付けた交叉は一致する。 |
+| `cechOpenIntersection_tuple_one` | 一項タプルの交叉は指定された開集合。 |
+| `cechOpenIntersection_tuple_two` | 二項タプルの交叉は二つの開集合の交叉。 |
+| `schemeCechSingletonSectionsEquiv` | Čech の零次切断族と開被覆上の切断族の環同型。 |
+| `schemeCechSingletonSectionsEquiv_recover` | 同型を戻すと元の一項タプルの切断を回収する。 |
+| `schemeCechSingletonSectionsEquiv_face_zero` | 零番目の面写像は交叉への第二成分の制限。 |
+| `schemeCechSingletonSectionsEquiv_face_one` | 一番目の面写像は交叉への第一成分の制限。 |
+| `schemeCechSingletonSectionsEquiv_mem_iff` | Čech の equalizer 条件と層の切断の適合条件は同値。 |
+| `schemeCechCompatibleSectionsEquiv` | Čech の equalizer の環と適合切断環の同型。 |
+| `schemeCechGlobalSectionsEquiv` | 一般の開被覆の Čech の equalizer の環と大域切断環の同型。 |
+| `schemeCechGlobalSectionsEquiv_restrict` | 貼り合わせた大域切断の制限は指定された局所切断。 |
+| `schemeCechGlobalSectionsEquiv_symm_apply` | 同型の逆は構造層の実際の制限写像。 |
+| `schemeCechGlobalSectionsEquiv_symm_algebraMap` | 同型の逆は指定された基底環のスカラーを保つ。 |
+| `schemeCechGlobalSectionsAlgEquiv` | 貼り合わせの同型を基底環上の代数同型にする。 |
+
+全空間のアフィン性を仮定せず、層の一意貼り合わせから構成した。有限被覆や高次の消滅もこの同型には不要。導来関手の比較や Stein 分解は導入していない。最終出力の型は変更しない。
+
+次はこの同型で元の構造射を有限切断環の Spec を介して分解し、元の射の全射性を有限環側に渡す。閉厚化の零次環の Frobenius 比較、F7 の短完全列、F8 の増大全複体は未完。2f 累計は **104 モジュール・6,408 行（登録込み 6,567 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではない。
