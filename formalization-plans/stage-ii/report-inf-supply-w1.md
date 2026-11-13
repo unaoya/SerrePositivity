@@ -1696,3 +1696,63 @@ U15以降は継続中。最初の回復ファイルでは `SimplicialRealization
 同じ対象ビルドの後続で検証する。これらはまだ数学のコミットへ含めない。
 U38の前提計算は§33の1/3、その他は0/3、一覧外の照合は0/3のまま。
 R6完成後は指示どおりR2〜R4の紙の一覧へ進む。凍結確定の連絡はまだ受けていない。
+
+### U20の前提計算（1/3、パラメーター制限の自然性）
+
+U17の元の同じ余錐への回復を、パラメーター関手Tに沿って制限する。
+Tを介した全評価の既存のcurryの自然性だけを使う。
+
+```lean
+lemma strictBarNativeJoinFamilyAlong_atParameter (c : C) :
+    lift (SSet.const (ComposableArrows.mk₀ c))
+        (𝟙 (join ((SSet.uliftFunctor.{u + 1, u}).obj
+          ((SSet.uliftFunctor.{u, 0}).obj (nerve J))) (Δ[0] : SSet.{u + 1}))) ≫
+      strictBarNativeJoinFamilyAlong A J T =
+    (dgCoherentBarNormalizedNativeCoconeUnconditional A PUnit.{1}
+      (smallStrictBarDiagram A (T.obj c))).val
+```
+
+U20の射影性はこの式を零単体で評価してから既存のbarの射影性を使う。
+同じ式はU24にも再利用する。U20は1/3、U38は1/3、その他は0/3、一覧外の照合は0/3。
+
+### U30の前提計算（2/3、join同型の単位）
+
+既存のjoinIsoの前面・apexの法則を指定形状で読む。
+
+```lean
+lemma strictSemifreeJoinShapeIso_inl :
+    joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫
+        (strictSemifreeJoinShapeIso A).hom =
+      (smallDiagramShapeIso.{u} (nerve SimplexCategoryᵒᵖ)).inv ≫
+        joinInl ((SSet.uliftFunctor.{u + 1, u}).obj
+          ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ))) Δ[0]
+
+lemma strictSemifreeJoinShapeIso_inr :
+    joinInr ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫
+        (strictSemifreeJoinShapeIso A).hom =
+      joinInr ((SSet.uliftFunctor.{u + 1, u}).obj
+        ((SSet.uliftFunctor.{u, 0}).obj (nerve SimplexCategoryᵒᵖ))) Δ[0]
+
+```
+
+U20は1/3、U30は2/3、U38は1/3、その他0/3、一覧外の照合0/3。
+
+## 35. R6 の回復と元の実現への全関手比較（11-13 18:27、継続）
+
+追加3本・213行、対象監査11宣言が通った。
+`StrictBarNativeParameterRecovery`（83行、U15〜U17）は、
+全余錐族を固定パラメーターで評価すると元の指定native余錐全体に厳密に戻る比較。
+`StrictSemifreePointUnderlyingFunctor`（42行、U26〜U28）は同じ一点加群図式の全通常関手と射影性。
+`StrictSemifreeNormalizedBarRealization`（88行、U38）は、元の正規化射影・指定全複体同型・
+単体的置換の増大を合成した、元のstrict実現への全関手同型。
+
+対象ビルドは `/tmp/is-w1/3b3-build-74-cocone.log` の成功した3本、
+対象監査11宣言は `/tmp/is-w1/3b3-build-75-cocone.log` の最初。
+全て標準三公理のみ、sorryAxなし。検証済み累計
+**58本・4,505行、監査対象223宣言、R6実測3,842行**。
+
+U18〜U25の射影的余錐への接続は、U20の§33に記載した自然性を使う形で再検証中。
+U29〜U30の構成・単位則は下書きのみで、まだコミットしない。
+前提計算はU20が1/3、U30が2/3、U38が1/3、他は0/3。照合0/3。
+R6は未完成で、残りは§33の型つき一覧のまま。既存宣言・他レーンの持ち分の変更はない。
+凍結確定の連絡はまだ受けていない。
