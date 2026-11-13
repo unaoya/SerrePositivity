@@ -1,0 +1,147 @@
+{
+  "status": "INCOMPLETE",
+  "checks": [
+    {
+      "requirement": "Frozen main unchanged",
+      "proved": false,
+      "evidence": {
+        "actual": "40faa3892120211786cf463371a356c3fc9de6e1",
+        "expected": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f"
+      }
+    },
+    {
+      "requirement": "base-math-scope-check.json",
+      "proved": true,
+      "evidence": "base-math-scope-check.json"
+    },
+    {
+      "requirement": "full-source-scope-check.json",
+      "proved": true,
+      "evidence": "full-source-scope-check.json"
+    },
+    {
+      "requirement": "independent-delta-replay-check.json",
+      "proved": true,
+      "evidence": "independent-delta-replay-check.json"
+    },
+    {
+      "requirement": "target-build-coverage-check.json",
+      "proved": true,
+      "evidence": "target-build-coverage-check.json"
+    },
+    {
+      "requirement": "declaration-table-summary.json",
+      "proved": true,
+      "evidence": "declaration-table-summary.json"
+    },
+    {
+      "requirement": "All targets and prerequisites built",
+      "proved": true,
+      "evidence": "target-build-complete.json"
+    },
+    {
+      "requirement": "Native Kerodon tags preserved without missing/extra",
+      "proved": true,
+      "evidence": "native-tag-metadata-check.json"
+    },
+    {
+      "requirement": "Citation entries/content/edition/source locations match",
+      "proved": true,
+      "evidence": "attribute-metadata-check.json"
+    },
+    {
+      "requirement": "Compatibility aliases including dates and duplicate attrs",
+      "proved": true,
+      "evidence": "alias-check-complete.json"
+    },
+    {
+      "requirement": "Full 10195 original-module preservation",
+      "proved": true,
+      "evidence": "preservation-complete.json"
+    },
+    {
+      "requirement": "Ordinary private ownership retained",
+      "proved": true,
+      "evidence": "owned-private-rules-summary.json"
+    },
+    {
+      "requirement": "Whole root lake build SerrePositivity",
+      "proved": false,
+      "evidence": "root-build-complete.json"
+    },
+    {
+      "requirement": "Every formal audit executed successfully",
+      "proved": false,
+      "evidence": {
+        "inventory": "all-audit-inventory.json",
+        "results": "all-audits-complete.json",
+        "current_discovered": 106
+      }
+    },
+    {
+      "requirement": "Full uncached unrestricted verify gate",
+      "proved": false,
+      "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/summary.json"
+    },
+    {
+      "requirement": "Verify actual configuration 4 jobs / 32 GiB and large-audit exclusion",
+      "proved": false,
+      "evidence": {
+        "runner": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/runner.json"
+      }
+    },
+    {
+      "requirement": "Verify executed exact formal audit set",
+      "proved": false,
+      "evidence": "/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout/.lake/verify/summary.json"
+    },
+    {
+      "requirement": "Successful heavy processes within 32 GiB and recorded job limits",
+      "proved": true,
+      "evidence": {
+        "successful_resource_receipts": 298
+      }
+    },
+    {
+      "requirement": "IntegralExistence retained at authorized original path",
+      "proved": true,
+      "evidence": "module-map.json"
+    },
+    {
+      "requirement": "Approved BS 34 paper reversals retained with actual refs",
+      "proved": true,
+      "evidence": "bs-section-order-check.json"
+    },
+    {
+      "requirement": "No tier/import/cycle violation or new reverse exception",
+      "proved": true,
+      "evidence": {
+        "strict_result": "static-layers.json",
+        "unchanged_frozen_main_debt": "baseline-section-edges.json"
+      }
+    },
+    {
+      "requirement": "Preservation-checked source migration committed",
+      "proved": true,
+      "evidence": "stopped-source-checkpoint.json"
+    },
+    {
+      "requirement": "B4 all four branch-ref inventories and non-draft file lists",
+      "proved": true,
+      "evidence": "b4-branch-impact.json"
+    },
+    {
+      "requirement": "B4 module and owned namespace maps plus one-line rewrite instructions",
+      "proved": true,
+      "evidence": {
+        "maps": [
+          "module-map.json",
+          "namespace-rewrite-map.json"
+        ],
+        "instructions": "B4-README.md"
+      }
+    }
+  ],
+  "proved": 18,
+  "requirements": 24
+}

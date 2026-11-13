@@ -38,7 +38,17 @@ record('Successful heavy processes within 32 GiB and recorded job limits',bool(r
 retained='SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence';plan=load('module-map.json');proposed=json.load(open('/tmp/bulk-w1-b2/preservation-module-plan.json'))['modules'][retained];record('IntegralExistence retained at authorized original path',(r/(retained.replace('.','/')+'.lean')).is_file() and not (r/(proposed.replace('.','/')+'.lean')).exists() and plan.get(retained,retained)==retained,'module-map.json')
 d=load('bs-section-order-check.json');record('Approved BS 34 paper reversals retained with actual refs',d is not None and d.get('edge_set_matches_approved') is True and len(d['paper_section_reverse_edges'])==34 and all('actual_compiler_reference_names' in e and 'approved_reason' in e for e in d['paper_section_reverse_edges']),'bs-section-order-check.json')
 d=load('static-layers.json');b=load('baseline-section-edges.json');record('No tier/import/cycle violation or new reverse exception',d is not None and b is not None and len(d['violations'])==len(b)==15 and all(x['kind']=='reverse-section' for x in d['violations']) and all(x['exists_in_frozen_main'] and not x['source_moved_in_b3'] and not x['target_moved_in_b3'] for x in b),{'strict_result':'static-layers.json','unchanged_frozen_main_debt':'baseline-section-edges.json'})
-d=load('verified-source-checkpoint.json');record('Verified source migration committed',d is not None,'verified-source-checkpoint.json')
+checkpoint_path='verified-source-checkpoint.json' if (w/'verified-source-checkpoint.json').exists() else 'stopped-source-checkpoint.json'
+d=load(checkpoint_path)
+source_paths=['SerrePositivity','SerrePositivity.lean','scripts','research']
+committed=False
+if d is not None:
+ checkpoint_exists=subprocess.run(['git','cat-file','-e',d['head']+'^{commit}'],cwd=r,capture_output=True).returncode==0
+ ancestor=subprocess.run(['git','merge-base','--is-ancestor',d['head'],'HEAD'],cwd=r,capture_output=True).returncode==0
+ checkpoint_same_sources=subprocess.run(['git','diff','--quiet',d['head'],'HEAD','--',*source_paths],cwd=r).returncode==0
+ no_worktree_source_diff=not subprocess.check_output(['git','status','--porcelain','--',*source_paths],cwd=r,text=True).strip()
+ committed=checkpoint_exists and ancestor and checkpoint_same_sources and no_worktree_source_diff
+record('Preservation-checked source migration committed',committed,checkpoint_path)
 impact=load('b4-branch-impact.json');branches={'math/inf-supply','math/inf-supply-b','math/bs-impl','math/scheme'};record('B4 all four branch-ref inventories and non-draft file lists',impact is not None and set(impact['branches'])==branches and all('head' in row and 'collect_files' in row and all(not p.startswith('formalization-plans/') and '/drafts/' not in p for p in row['collect_files']) for row in impact['branches'].values()),'b4-branch-impact.json')
 record('B4 module and owned namespace maps plus one-line rewrite instructions',all((w/p).exists() for p in ['module-map.json','namespace-map.json','namespace-rewrite-map.json','B4-README.md','full-path-summary.json','declaration-names.jsonl.gz']),{'maps':['module-map.json','namespace-rewrite-map.json'],'instructions':'B4-README.md'})
 summary={'status':'PASS' if all(x['proved'] for x in checks) else 'INCOMPLETE','checks':checks,'proved':sum(x['proved'] for x in checks),'requirements':len(checks)};(w/'completion-audit.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2));print(json.dumps({'status':summary['status'],'proved':summary['proved'],'requirements':len(checks),'unproved':[x['requirement'] for x in checks if not x['proved']]},ensure_ascii=False));raise SystemExit(summary['status']!='PASS')
