@@ -1007,3 +1007,26 @@ Spec 全射性は、実際の構造層の切断代数への全射性と、前の
 **残り**：F6 の正次数と F7 の H⁰ で使う閉厚化の射が同じであることが閉じた。次は `projectiveHomogeneousClosedCenter_exact` の短完全列をこの H⁰ 比較で移し、基底および基底の中心からの増大写像を同じ比較と揃える。続いて F8 の明示的な増大全複体と、共通細分・底変換等の停止点の自然性を検収する。F7 全体や停止点 2f の完成とはしない。
 
 2f 累計 **139 モジュール・9,041 行（登録込み 9,270 行）**。残りの暫定見込み 3,000〜7,500 行、停止基準 18,000 行以内。
+
+## 11-13 夜：H⁰ の差写像の保存則の分離（85a68fc72）
+
+調整役の指示に従い、差写像を `ProjectivePerfCechH0SquareData` の関数の def に固定した。零保存は `ProjectivePerfCechH0SquareZero` の別宣言として単独の対象ビルドを通した（3,378 jobs）。探索上限・heartbeat は変更していない。main 凍結中の夜の指示に従い、大きい監査と AlgebraicGeometry 全体の importer ビルドは実行していない。ルートへの登録と監査は未実施。
+
+検証済みの独立補題の型（変数・仮定は同ファイルの一般の射影標準開の設定）：
+```lean
+projectivePerfCechH0Difference_map_zero :
+  projectivePerfCechH0Difference (ι := ι) G I p hp hR hA 0 = 0
+```
+
+加法保存は別の宣言として下書き `ProjectivePerfCechH0SquareLaws` に分離した。予定する型は次のとおりで、まだ検証を通っていない。
+```lean
+projectivePerfCechH0Difference_map_add
+  (x y : projectivePerfCechH0 (ι := ι) G p hp hR hA ×
+    FrobeniusDirectLimit (R ⧸ (I ^ 1)) p hp
+      (frobeniusQuotientPrimeCast p hR (I ^ 1))) :
+  projectivePerfCechH0Difference (ι := ι) G I p hp hR hA (x + y) =
+    projectivePerfCechH0Difference (ι := ι) G I p hp hR hA x +
+    projectivePerfCechH0Difference (ι := ι) G I p hp hR hA y
+```
+
+unfold は保存則の補題の中に限定。加法保存では中間の切断環の Frobenius 順極限の Add の推論が依然上限に達している。零保存の成功を加法保存や H⁰ の短完全列の成功とは扱わない。加法保存、短完全列への適用、F8 と自然性の検収は未完。未検証の三ファイルは作業木に残し、このコミットに含めていない。
