@@ -4339,3 +4339,85 @@ theorem normalizedLinearWeightHomEquiv_postcomp (W : SimplicialObject (D ⥤ Typ
 累計 **219モジュール・12,998行・2,068宣言**。対象一覧`/private/tmp/isw2-g10-twohundrednineteen-modules.txt`。外枠14,500行まで残り1,502行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。
 
 B02は未完。A09の指定AW比較、既存Hom–Tot比較と、元の標準成分模型の実豊穣合成が全単体で一致する照合が残る。今回の自然性だけでその等式を済ませたとは扱わない。B03〜B08・C・Dも未完で、目標「Dまで進めてください」はactiveのまま。次の区切りはこの全単体の照合である。
+
+
+## 105. B02の途中：指定正規化・Γ比較と元のDold–Kan Hom随伴の両立
+
+前回は反転代表と後合成自然性を検証・保存できているので、進捗ありとして続けた。B02の全単体の照合に必要な係数移送について、元の正規化比較`normalizedMooreMapIso`と元のΓ余積比較`gammaMapIso`が同じDold–KanのHom随伴を保つことを示した。任意の加法関手を許すので、図式の評価関手にも適用できる。任意の同値を新たに選ぶ証明ではない。
+
+まず、指定余単位の逆射にMoore包含を後合成すると、同じKaroubi模型の`N₁Γ₀.inv`の実鎖射になると示した。Karoubi単位の自然性と正規化射影で打ち消す。次にΓの恒等添字の和因子が既に正規化されている既存補題を使い、二比較の係数移送の計算を余積包含の自然性に短縮した。Moore包含で戻して指定余単位の両立を得て、最後に元のHom随伴の公式と正規化比較の自然性を適用した。
+
+### 105.1 型と数え方
+
+`doldKanHomEquiv_map`をB02の前提計算 **3/3**（既存構成の係数移送則）とする。余単位の具体式、Karoubi模型での同じ式、余単位の順射・逆射の式は、その同じ証明の分割。1/3は§103、2/3は§104。照合枠は全体3/3のまま。これ以上の独立した前提計算や照合を黙って追加しない。同じ一覧B02の証明分割は§14に従う。
+
+すべてHomologicalAlgebra名前空間。`{C : Type u}`・`[Category.{v} C] [Abelian C]`を固定し、係数移送の二本ではさらに`{D : Type u'}`・`[Category.{v'} D] [Abelian D]`を固定する。
+
+登録対象：`SerrePositivity.HomologicalAlgebra.DoldKanCounitMooreInclusion`
+
+```lean
+theorem doldKanCounitInv_inclusion (K : ChainComplex C ℕ) :
+    (Abelian.DoldKan.equivalence.counitIso.inv.app K) ≫
+      inclusionOfMooreComplexMap ((Abelian.DoldKan.Γ : ChainComplex C ℕ ⥤ _).obj K) =
+      (N₁Γ₀.inv.app K).f
+```
+
+
+登録対象：`SerrePositivity.HomologicalAlgebra.DoldKanCoefficientCounit`
+
+```lean
+theorem doldKanKaroubiCounitInv_map (F : C ⥤ D) [F.Additive] (K : ChainComplex C ℕ) :
+    (F.mapHomologicalComplex (.down ℕ)).map (N₁Γ₀.inv.app K).f ≫
+      (alternatingFaceMapComplexCompMapHomologicalComplexIso F).hom.app (Abelian.DoldKan.Γ.obj K) =
+    (N₁Γ₀.inv.app ((F.mapHomologicalComplex (.down ℕ)).obj K)).f ≫
+      (alternatingFaceMapComplex D).map (gammaMapIso F K).hom
+```
+
+```lean
+theorem doldKanCounitInv_map (F : C ⥤ D) [F.Additive] (K : ChainComplex C ℕ) :
+    (F.mapHomologicalComplex (.down ℕ)).map (Abelian.DoldKan.equivalence.counitIso.inv.app K) ≫
+      normalizedMooreMapHom F (Abelian.DoldKan.Γ.obj K) =
+    Abelian.DoldKan.equivalence.counitIso.inv.app
+        ((F.mapHomologicalComplex (.down ℕ)).obj K) ≫
+      (normalizedMooreComplex D).map (gammaMapIso F K).hom
+```
+
+
+登録対象：`SerrePositivity.HomologicalAlgebra.DoldKanHomCoefficient`
+
+```lean
+theorem doldKanCounit_map (F : C ⥤ D) [F.Additive] (K : ChainComplex C ℕ) :
+    normalizedMooreMapHom F (Abelian.DoldKan.Γ.obj K) ≫
+      (normalizedMooreComplex D).map (gammaMapIso F K).inv ≫
+      Abelian.DoldKan.equivalence.counitIso.hom.app
+        ((F.mapHomologicalComplex (.down ℕ)).obj K) =
+    (F.mapHomologicalComplex (.down ℕ)).map (Abelian.DoldKan.equivalence.counitIso.hom.app K)
+```
+
+```lean
+theorem doldKanHomEquiv_map (F : C ⥤ D) [F.Additive]
+    (W : SimplicialObject C) (K : ChainComplex C ℕ)
+    (f : (normalizedMooreComplex C).obj W ⟶ K) :
+    (Abelian.DoldKan.equivalence : SimplicialObject D ≌ ChainComplex D ℕ).toAdjunction.homEquiv
+      (W ⋙ F) ((F.mapHomologicalComplex (.down ℕ)).obj K)
+      ((normalizedMooreMapIso F W).inv ≫ (F.mapHomologicalComplex (.down ℕ)).map f) ≫
+        (gammaMapIso F K).hom =
+    Functor.whiskerRight
+      ((Abelian.DoldKan.equivalence : SimplicialObject C ≌ ChainComplex C ℕ).toAdjunction.homEquiv
+        W K f) F
+```
+
+### 105.2 検収・コミット・登録
+
+コード **`62ad24b46`**（最初の2本119行）・**`0d3a623aa`**（Hom随伴の1本72行）。個別・結合検査`/private/tmp/isw2-dk-counit-inclusion1.log`、`/private/tmp/isw2-dk-coeff-counit15.log`、`/private/tmp/isw2-dk-hom-coeff5.log`は終了コード0。途中で大きな型のまま余単位を直接書き換える検査が200,000 heartbeatsに達したが、計算上限を上げず、Karoubi模型の同じ射の計算と包含による照合を分離した。
+
+| 検査 | jobs | 新規分のみの監査 | 終了 |
+| --- | ---: | --- | --- |
+| `/private/tmp/isw2-build118.log` | 1,369 | 10宣言（6・4） | 0 |
+| `/private/tmp/isw2-build119.log` | 1,370 | 3宣言 | 0 |
+
+監査は`/private/tmp/AuditISW2G10B02Counit.lean`・`/private/tmp/AuditISW2G10B02HomCoefficient.lean`、どちらも標準三公理のみ。共有鍵は返却済み。新規3本191行を加え、累計 **222モジュール・13,189行・2,081宣言**。対象一覧`/private/tmp/isw2-g10-twohundredtwentytwo-modules.txt`。外枠14,500行まで残り1,311行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。登録対象は105.1の3本。大きな監査は行っていない。
+
+### 105.3 残り
+
+B02は未完。今回の一般の加法関手に関する式を評価関手に適用し、指定零延長・切断のmateと合わせて、元の図式圏の線形重みHom同値を点ごとの自由鎖随伴へ照合する。その後にA09の指定AW比較と元の実豊穣合成の全単体の照合を閉じる。今回のHom随伴の係数両立だけで、AW合成の一致を証明したとは扱わない。B03〜B08・C・Dも未完。目標「Dまで進めてください」はactiveのままで、停止点2の完了報告ではない。
