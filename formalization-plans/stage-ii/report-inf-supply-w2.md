@@ -1968,3 +1968,23 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.D
 ```
 
 残枠 **1,659行**。`DiagramHomCochains.lean` の各次数の評価・組み立て・微分との可換性は個別検査済み。`DiagramHomFamilyLift.lean` で上の族を図式 Hom 複体への鎖写像にする証明を検査中。いずれもまだ未コミット。指定全単体比較の同値性、native 極限性と残る段階は未完であり、停止点2ではない。
+
+## 65. 3b-2 続行：図式 Hom 複体への組み立て
+
+コード `48e70aba5`、新規2本112行。累計 **135本8,453行**。
+
+- `DiagramComparison.DiagramHomCochains`（50行）：図式 cochain の各点での評価、自然性条件つきの族からの組み立て、評価と微分の可換性、各点による外延性を証明した。
+- `DiagramComparison.DiagramHomFamilyLift`（62行）：§64の Hom 射の族を、元の図式圏の `linearHomComplex` への鎖写像にした。線形性と微分可換性を各点の元の射から導いた。
+
+第一のまとまりの図式 Hom 同定の内部。小さい添字圏を対象とし、必要な Δ・Δᵒᵖ を含む。指定射の同値性や native 極限性をこれだけで結論しない。
+
+個別検査、鍵付き対象ビルド **2,070 jobs**、累計135本 **1,536宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-65.log`、監査 `/private/tmp/AuditISW2G10HundredThirtyFive.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtyfive-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomCochains
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramHomFamilyLift
+```
+
+残枠 **1,547行**。`DiagramHomFamilyEquiv.lean`（111行）の各点への評価による逆写像・両合成の法則・図式テンソル–Hom 同値・パラメータ前合成への自然性は個別検査済み、対象ビルド・監査待ち（未コミット）。次に標準単体を代入して既存 `normalizedSimplexHomEquiv` と合成できる。積重み側との同定、空間の同値性、native 極限性、脚・D(A) 輸送、全図式射・指定錐の族は未完。停止点2ではない。
