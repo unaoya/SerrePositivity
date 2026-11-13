@@ -2122,3 +2122,199 @@ R1・R5・R7の663行を除くR6は **5,383行**。
 U33=1/3、U34=1/3、U37=1/3、U38=1/3、U39=3/3、U40=2/3、他0/3。
 照合はC1・C2・C3の3/3。証明の包装・分割を新しい数学として追加していない。
 外枠20,800行まで14,754行を残す。凍結確定の連絡はこの記録時点で未受領。
+
+## 40. R2〜R4の紙の型つき一覧・再見積もり（11-13 夜、ここで停止）
+
+R6の数学コミットは **`b54bb5e12`**（先行のU33〜U40は`15829cad7`）。
+以下は未実装の型案。R2〜R4のLean・ビルドには入らない。
+配置は引き続き `Project/DerivedCategories/DiagramComparison/`。
+③-bの未取り込みの3b-2、G10、⑤aには依存させず、既存ファイルも変更しない。
+
+### 40.1 共通の記号と受け渡し
+
+以下のコード内だけで次を略記する（新しい本体の定義ではない）。
+
+```lean
+variable (A : Type u) [CommRing A] (d : StrictDiagramDirection)
+local notation "J" => strictDiagramIndex d
+local notation "I" => (SSet.uliftFunctor.{u + 1, 0}).obj (nerve J)
+local notation "DA" => derivedInfinityCategory A
+local notation "S" => StrictDiagramInfinity A d
+local notation "D" => (ihom I).obj DA
+local notation "q" => strictDiagramLocalization A d
+local notation "ev" => strictDiagramDerivedEvaluation A d
+-- Pin X x y := Basic.pinchedHom (X := X) x y
+-- qv X := q.app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X)
+-- evalVertex X := (functorVertexEquiv I DA).symm
+--   ((strictComplexDiagramFamily A d).app (Opposite.op ⦋0⦌) (ComposableArrows.mk₀ X))
+```
+
+`d` は二つの方向だけ。`ev`はR5で作った同じ実射を保持する。
+以下で模型や逆を構成するときも、別の評価写像へ結論を差し替えない。
+`IsFullyFaithful` の本体の定義に合わせ、写像空間の結論は
+`IsSimplicialHomotopyEquivalence` とする（H⁰や通常の自然変換の集合には縮めない）。
+
+### 40.2 R2：写像空間の比較（型つき5項目）
+
+R2aの `M・left・right` は証明で構成するデータであり、比較の同値性を仮定するレコードを入力にはしない。
+
+```lean
+-- R2a：両側の全変換空間へ写る同じ解像の模型を構成する。
+def strictDiagramMappingSpan (x y : S _⦋0⦌) :
+  Σ M : SSet.{u + 1}, (M ⟶ Pin S x y) ×
+    (M ⟶ Pin D (ev.app (Opposite.op ⦋0⦌) x) (ev.app (Opposite.op ⦋0⦌) y))
+-- 以下、M・left・rightはこの同じspanの射影。
+
+-- R2b：解像から元のobjectwise局所化の全写像空間へ。
+lemma strictDiagramMappingSpan_left (x y : S _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (left A d x y)
+
+-- R2c：解像からcoherentな全自然変換空間へ。
+lemma strictDiagramMappingSpan_right (x y : S _⦋0⦌) :
+  IsSimplicialHomotopyEquivalence (right A d x y)
+
+-- R2d：二つの比較は指定された同じevの作用を計算する。
+def strictDiagramMappingSpan_square (x y : S _⦋0⦌) :
+  FunctorIso (left A d x y ≫ pinchedHomMap ev x y) (right A d x y)
+
+-- R2e：指定の局所化評価の充満忠実性。
+lemma strictDiagramDerivedEvaluation_isFullyFaithful : IsFullyFaithful ev
+```
+
+筋：projectiveな図式の解像と全Homを使う変換空間の模型を組み、局所化側とcoherent変換側へ比較する。
+R2bで必要なのはobjectwise弱同値の∞局所化としての比較であり、通常のホモトピー圏のroof計算だけでは足りない。
+R2cは対象ごとの `Hom` の積や通常endをそのまま使わず、射・合成・全高次成分の整合を含む。
+R2dの平方も全写像空間の射として証明し、最後に既存の2-out-of-3とG14の検出を使う。
+
+本体にあるのは `strictDiagramLocalization_isLocalization`・`_universal`、元の
+`strictDiagramDerivedEvaluation_factor`、`DGModuleFunctorResolutionNerve` の入力射影の比較。
+最後のものは**既にdg関手がある場合**の道具であり、R2cやR3の存在を供給するとは扱わない。
+G8の全変換空間・切断比較、G14、barの射影性は再利用する。
+不足は上のR2a〜R2dで、R2eはそれらの接続。局所化の頂点が全てqの像だとは無条件に仮定しない。
+解像の入力へ戻す場合には局所化の普遍性による同値と端点の輸送をR2a〜R2bに含める。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R2a：解像・全変換空間の模型 | 800〜1,200 |
+| R2b：objectwise局所化との比較 | 900〜1,350 |
+| R2c：coherent変換空間との比較 | 1,000〜1,550 |
+| R2d・R2e：元の作用の平方・充満忠実性 | 500〜700 |
+| R2計 | **3,200〜4,800** |
+
+### 40.3 R3：任意coherent図式の厳密化（型つき5項目）
+
+```lean
+-- R3a：任意のcoherent図式Fからstrictな複体図式の模型を実際に作る。
+lemma exists_strictComplexDiagram_model (F : I ⟶ DA) :
+  ∃ X : StrictComplexDiagram A d, Nonempty (FunctorIso (evalVertex A d X) F)
+
+-- R3b：元のevの本質的全射性。R5の元の因子化も使う。
+lemma strictDiagramDerivedEvaluation_isEssentiallySurjective :
+  IsEssentiallySurjective ev
+
+-- R3c：順射を元のevに固定した全同値。
+lemma strictDiagramDerivedEvaluation_isQCatEquivalence : IsQCatEquivalence ev
+
+-- R3d：この同値から選ぶ逆。別の対象ごとのstrict化の選択ではない。
+def strictDiagramCoherentInverse : D ⟶ S
+
+def strictDiagramCoherentUnit :
+  FunctorIso (𝟙 S) (ev ≫ strictDiagramCoherentInverse A d)
+
+def strictDiagramCoherentCounit :
+  FunctorIso (strictDiagramCoherentInverse A d ≫ ev) (𝟙 D)
+
+-- R3e：任意のパラメーターと全高次単体への同じ逆・余単位。
+def strictDiagramCoherentFamilyIso {P : SSet.{u + 1}} (F : P ⟶ D) :
+  FunctorIso (F ≫ strictDiagramCoherentInverse A d ≫ ev) F
+```
+
+R3dは逆・単位・余単位の一組の構成として数える。
+R3aでは頂点の複体を個別に選んでからcoherent作用の存在を仮定しない。
+全作用を持つ解像からstrict図式を構成し、元の全coherent図式への同型を結論とする。
+R3b〜R3cは既存の
+`isQCatEquivalence_of_isFullyFaithful_of_isEssentiallySurjective` に接続できる。
+R3d〜R3eの一般の同値の逆と前合成のAPIも既存。
+不足の中心はR3aの全coherent作用のstrictな解像で、G8・G14・G9だけから存在を出したとはしない。
+G9は解像の添字・宇宙変更に使う場合に限る。R6の具体的barの全族自然性は同じ計算部品として再利用する。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R3a：全coherent作用の解像・strict図式への実構成 | 3,300〜5,300 |
+| R3b・R3c：本質的全射性・指定evの同値判定 | 350〜550 |
+| R3d・R3e：逆・単位・余単位と全パラメーター族 | 350〜650 |
+| R3計 | **4,000〜6,500** |
+
+**③-b報告§38.2の3との照合**：今回のR3aのFは任意のcoherentなD(A)図式であり、
+strict図式に範囲を狭めない。R3eは任意Pの全族なので、任意のcoherentなBE図式のU像にも適用できる。
+一方、BE作用を持つstrict表示への持ち上げそのものは、加群のstrict化の結論からは出ない。
+同節が別途必要と明記した「BE図式の局所化→Fun(I,CAlg)の比較、または一般定理のBE模型への適用」は
+③-bの3b-4側に残る。この不足を③-aの加群版の同値だけで済んだとは報告しない。
+R3の入力にBE側のstrict表示の存在を追加することもない。
+
+### 40.4 R4：指定錐・余錐族の両方向輸送（型つき5項目）
+
+下の `JoinCoconeFamily F`・`JoinConeFamily F` は今後の型案。
+前者は `H : P ⊗ join I Δ[0] ⟶ DA` と
+`(P ◁ joinInl I Δ[0]) ≫ H = (β_ P I).hom ≫ uncurry F`、
+後者は `H : P ⊗ join Δ[0] I ⟶ DA` と対応する右端の同じ等式の組である。
+`apex`は同じ零単体端への制限、`IsColimitFamily`・`IsLimitFamily`は全パラメーター頂点の錐の普遍性。
+`RelativeFamilyIso c c'` は全join写像の `FunctorIso` と、同じapexでの比較の辺が恒等であることを含む。
+単なる点ごとのapex同型の族を表す型ではない。
+
+```lean
+-- R4a：図式の全関手同型に沿う余錐・錐の輸送（同じapexを保つ）。
+def transportJoinCoconeFamily {P : SSet.{u + 1}} {F G : P ⟶ D}
+    (e : FunctorIso F G) (c : JoinCoconeFamily F) : JoinCoconeFamily G
+
+def transportJoinConeFamily {P : SSet.{u + 1}} {F G : P ⟶ D}
+    (e : FunctorIso F G) (c : JoinConeFamily F) : JoinConeFamily G
+
+-- R4b：全joinの比較と同じ指定apex。相対比較を実際に返す。
+def transportJoinCoconeFamily_iso (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  RelativeFamilyIso c (transportJoinCoconeFamily e c)
+-- 錐にも同じ型。下方への制限は同じeと一致させる。
+
+-- R4c：同じ逆による往復と、任意のパラメーター制限との整合性。
+def transportJoinCoconeFamily_roundtrip (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  RelativeFamilyIso (transportJoinCoconeFamily e.symm (transportJoinCoconeFamily e c)) c
+-- 錐にも同じ型。任意r : Q ⟶ Pで制限した輸送の相対比較もこの項目。
+
+-- R4d：余極限性・極限性の保存と反映。
+lemma transportJoinCoconeFamily_isColimit (e : FunctorIso F G) (c : JoinCoconeFamily F) :
+  IsColimitFamily (transportJoinCoconeFamily e c) ↔ IsColimitFamily c
+-- 錐ではIsLimitFamilyの同じiff。
+
+-- R4e：R3の同じ余単位に適用し、coherent族と局所化側の模型の族を両方向へ運ぶ。
+def strictDiagramCoconeFamilyComparison {P : SSet.{u + 1}} (F : P ⟶ D) :
+  QCatEquivalence
+    (coconeFamilySpace (F ≫ strictDiagramCoherentInverse A d ≫ ev))
+    (coconeFamilySpace F)
+-- 錐にも同じ型。順逆・往復・同じapex・脚・普遍性はR4a〜R4dのデータを保持する。
+```
+
+`coconeFamilySpace F` は同じ `coconeRestriction` の関手単体集合上の引き戻しで表す予定。
+パラメーターPに準圏性は課さず、既存の関手単体集合と固定apexのsliceの構成を使う。
+R4a〜R4dは元の図式同型に自然な全族の接続で、型名だけを新設して性質を仮定にはしない。
+`exists_cartesian_cocone_lift`、固定apexのslice、`EquivalenceColimitCones`・極限側、
+全族の `FunctorIso.precomp/postcomp`・`fullFamilyUncurryIso` を再利用する。
+元の具体的実現と全余錐族の比較は完成済みR6を再利用し、作り直さない。
+
+| 項目 | 見込み行数 |
+| --- | ---: |
+| R4a・R4b：全族の両方向輸送・指定apexと脚の比較 | 650〜1,050 |
+| R4c：往復・パラメーター制限 | 300〜500 |
+| R4d・R4e：普遍性と同じR3の逆への接続 | 350〜550 |
+| R4計 | **1,300〜2,100** |
+
+### 40.5 全体見込み・停止
+
+未実装は **8,500〜13,400行**。既検証6,046行との合計は **14,546〜19,446行**。
+外枠20,800行との差は上端で1,354行。
+§20のR2〜R4の計4,900〜7,300行から増えたのは、R6の実測に基づき、
+全変換空間の解像と同じ評価への比較、coherent作用のstrict化、固定apexの全族輸送を分けて数え直したため。
+この上端は保証ではない。特にR2c・R3aは既存のHTT 4.2.4.4の適用一行で済むAPIをまだ確認できていない。
+一覧外のまとまりや外枠超過の見込みが出た場合は、その時点で止めて報告する。
+
+**指示どおり、R2〜R4の紙の一覧を出した地点で停止。Lean実装には進まない。**
+R6の途中取り込みと、この一覧の確認を調整役に渡す。共有鍵は解放済み。
