@@ -1952,3 +1952,19 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.S
 ```
 
 残枠 **1,723行**。図式テンソルからの射を自然性条件つきの Hom 射の族へ転置する証明を `DiagramTensorHom.lean` で進めている（未コミット）。図式 Hom 複体との同定、指定比較の空間としての同値性、native 極限性と後続の三まとまりは未完。停止点2ではない。
+
+## 64. 3b-2 続行：自然性条件を保つ図式テンソル–Hom 同値
+
+コード `fb60abd72`、新規 `DiagramComparison.DiagramTensorHom` 1本64行。累計 **133本8,341行**。
+
+図式のテンソルからの射を、各点の Hom 複体への射の族と同定した。族の型には、添字の任意の射について前合成と後合成が一致する条件を含める。既存 `tensorHomEquiv` の始域・標的自然性から両方向を構成し、逆写像の法則とパラメータ複体の全射への自然性を証明した。第一のまとまりの図式 Hom の同定の内部。
+
+個別検査、鍵付き対象ビルド **2,065 jobs**、累計133本 **1,520宣言・標準三公理のみ**の一時監査が成功、終了コード0。`sorry`・独自公理0。ログ `/private/tmp/isw2-g10-build-64.log`、監査 `/private/tmp/AuditISW2G10HundredThirtyThree.lean`、登録待ち一覧 `/private/tmp/isw2-g10-hundredthirtythree-modules.txt`。鍵は `--wait 3600`、一枚の整理券、1,700秒上限でビルド・監査の間だけ使用し、解放済み。
+
+追加登録対象：
+
+```text
+SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.DiagramTensorHom
+```
+
+残枠 **1,659行**。`DiagramHomCochains.lean` の各次数の評価・組み立て・微分との可換性は個別検査済み。`DiagramHomFamilyLift.lean` で上の族を図式 Hom 複体への鎖写像にする証明を検査中。いずれもまだ未コミット。指定全単体比較の同値性、native 極限性と残る段階は未完であり、停止点2ではない。
