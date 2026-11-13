@@ -1209,3 +1209,35 @@ ShortComplex.homologyMap (S.mapNatTrans (projectiveFilteredColimitInclusion j)) 
 各次数の評価関手の `ι_preservesColimitIso_inv`、短複体の H の自然性、前の束の標準写像の公式を使った。最後の表示差は逆同型の表記、関手の obj/map、結合則と限定した dsimp、および関手の恒等射の法則を等式として合成することで揃えた。既存の比較を別の任意の同型で置き換えていない。
 
 2f は未完。この公式を整数係数への ULift ℤ の移送と自然数の添字の AsSmall ℕ の移送に通し、Frobenius 系の有限段の標準写像との H⁰ 比較へつなぐことが次の接続。その後、基底・基底の中心の実際の増大写像と同定し、F8 の全複体と停止点の自然性を検収する。登録・監査・最終報告も残る。
+
+## 11-14：整数係数・自然数添字の標準写像と有限段のスカラー類
+
+数学コミット **8f59dba31・19b4efa71・71230d717**。新規 7 モジュール・9 公開宣言・352 行。以下の対象ビルドが成功した。共有鍵 `--wait 3600` を各ビルドの間だけ使用し、待ちは一つ。heartbeat・再帰上限・探索上限は引き上げていない。
+
+| モジュール | 検証 |
+|---|---|
+| `ColimitInclusionTransport` | 単独の対象ビルド 687 jobs 成功。 |
+| `ProjectiveCechIntFilteredInclusions` | 単独の対象ビルド 1,917 jobs 成功。 |
+| `ProjectiveCechIntSequentialInclusions` | 後続を含む対象ビルド 2,102 jobs、および 3,393 jobs の中で成功。 |
+| `CechAlgebraFrobeniusH0Inclusions` | 対象ビルド 2,102 jobs、および未使用 simp 引数を除いた後の 3,393 jobs の中で成功。 |
+| `CechAlgebraFrobeniusH0Stage` | 単独の対象ビルド 2,103 jobs、逆向きの公式を追加した後の 3,393 jobs の中で成功。 |
+| `ProjectiveHomogeneousFrobeniusH0Stage` | 対象ビルド 3,393 jobs 成功。 |
+| `ProjectivePerfCechH0CenterStage` | 対象ビルド 3,395 jobs 成功。 |
+
+宣言と主張：
+
+- `colimitInclusion_composition`：有限段の標準写像を保つ二つの比較を合成すると、合成関手についても標準写像を保つ。
+- `colimitInclusion_natIso`：自然同型で移送した余極限比較も有限段の標準写像を保つ。
+- `projectiveIntCechFilteredHomologyIso_ι`：既存の整数係数 Čech H の filtered 比較は、有限段からの H の射を同じ段の標準写像へ送る。
+- `projectiveIntCechSequentialHomologyIso_ι`：AsSmall ℕ への添字移送を含む既存の順極限比較も、各自然数段の標準写像を保つ。
+- `algebraCechFrobeniusH0ColimitIso_ι`：Frobenius 系の各段からの Čech H⁰ の射を、切断環の系の標準写像と各段の H⁰ 比較で表示する。
+- `algebraCechFrobeniusH0ColimitIso_stage`：有限段の適合切断の Čech H⁰ の像は、切断環の Frobenius 順極限の同じ段の標準元になる。
+- `algebraCechFrobeniusH0ColimitIso_inv_of`：同じ公式を比較の逆向きで述べ、標準元の逆像を有限段の Čech H⁰ の射で表示する。
+- `projectivePerfCechH0ScalarClass_stage`：実際の標準開環の Čech H⁰ のスカラー類は、有限段の斉次標準開のスカラー類を順極限へ送り、F6 の実際の複体との比較で移したものである。
+- `projectivePerfCechH0CenterClass_of_mk`：基底の中心の有限段の代表元の H⁰ 類は、閉厚化上の同じスカラーの H⁰ 類と一致する。
+
+既存の比較同型を別の同型に置き換えていない。ULift ℤ への係数移送では、余極限を保つ関手の canonical な比較、前の束の Čech H の比較、係数の制限を合成し、既存の自然同型の成分と照合した。AsSmall ℕ では `Final.ι_colimitIso_inv/hom` を用いた。大きい同型全体の change は heartbeat に達したが、成分の hom を先に取り出し、必要な標準写像だけを change し、残りを等式の合成で結ぶと通常の上限で通った。中心側の深い change は再帰上限に達したが、関数へ渡す最後の元だけを conv で書き換えると通った。
+
+`projectiveHomogeneousScalarCechIntH0_cocycle` と今回の `projectivePerfCechH0ScalarClass_stage` により、有限段の各標準開上のスカラーから、余極限の比較を経たスカラー類までの接続が得られた。中心の商の元は代表元を持つため、中心側も `projectivePerfCechH0CenterClass_of_mk` と閉厚化へ適用した同じ stage 公式で扱える。ただし、比較の逆を含むこの表示を、実際の標準開環の零次コサイクルの増大写像へ直接同定する最後の照合はまだ必要である。F8 の明示的な増大全複体、共通細分・底変換等の停止点の自然性の検収、登録・監査・最終報告も未完。**停止点 2f の完成ではない。**
+
+規模：2e 数学停止点 `bf9767cdc` からの新規コミット済み本体を数え、**163 モジュール・10,250 行**。入口 `AlgebraicGeometry.lean` の既存の追加 263 行込みで **10,513 行**。未検証の下書きは含めない。残りの暫定見込みは **2,500〜6,500 行**（増大写像の最終照合、F8、射に自然な比較の検収と不足の補題）。停止基準 18,000 行以内を見込むが、上端へ近づく場合は再測定して報告する。大きい監査・ルート登録・ルートと下流の全ビルドは凍結中の指示に従い未実施。今回の宣言数を公理監査の宣言数とは扱わない。
