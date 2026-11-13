@@ -2318,3 +2318,99 @@ R4a〜R4dは元の図式同型に自然な全族の接続で、型名だけを�
 
 **指示どおり、R2〜R4の紙の一覧を出した地点で停止。Lean実装には進まない。**
 R6の途中取り込みと、この一覧の確認を調整役に渡す。共有鍵は解放済み。
+
+## 41. R2再開：解像Homの入力の照合（11-13 夜、継続）
+
+main `47c4c8e2a` を取り込んだ。§40の型つき一覧とR2→R3→R4の承認を確認。
+R3a前の途中報告・外枠20,800行・計算上限を上げない条件を維持する。
+
+一般projective図式APIの `IsLocallyPresentable (Complex A)` の入力をLeanで確認中。
+Δ・Δᵒᵖに限れば既存の `Reedy.simplexModelCategory`・`simplexOpModelCategory` を使え、
+元のobjectwise擬同型の∞局所化は変わらない。新しいprojectiveモデルの存在定理は作らない。
+R2aの解像の入力として、このReedyモデルと既存の余単体的解像・horn充填を再利用する。
+以下はR2aの構成の分割（まだ未検証）。R2aのspanの両射を作れたとは扱わない。
+
+```lean
+def strictDiagramReedyModelCategory : ModelCategory (StrictComplexDiagram A d)
+lemma strictDiagramReedyModelCategory_weakEquivalences :
+  (strictDiagramReedyModelCategory A d).categoryWithWeakEquivalences.weakEquivalences =
+    strictDiagramQuasiIsos A d
+
+def strictDiagramSourceFrame (X : StrictComplexDiagram A d) :
+  letI := strictDiagramReedyModelCategory A d
+  Reedy.CofibrantResolution Reedy.simplex X
+
+def strictDiagramTargetFactorization (Y : StrictComplexDiagram A d) :
+  letI := strictDiagramReedyModelCategory A d
+  MorphismProperty.MapFactorizationData (trivialCofibrations (StrictComplexDiagram A d))
+    (fibrations (StrictComplexDiagram A d)) (terminal.from Y)
+
+def strictDiagramFibrantTarget (Y : StrictComplexDiagram A d) : StrictComplexDiagram A d
+
+def strictDiagramFibrantTargetComparison (Y : StrictComplexDiagram A d) :
+  Y ⟶ strictDiagramFibrantTarget A d Y
+
+lemma strictDiagramFibrantTargetComparison_quasiIso (Y : StrictComplexDiagram A d) :
+  strictDiagramQuasiIsos A d (strictDiagramFibrantTargetComparison A d Y)
+
+lemma strictDiagramFibrantTarget_isFibrant (Y : StrictComplexDiagram A d) :
+  letI := strictDiagramReedyModelCategory A d
+  IsFibrant (strictDiagramFibrantTarget A d Y)
+
+def strictDiagramFrameMapping (X Y : StrictComplexDiagram A d) : SSet.{u}
+lemma strictDiagramFrameMapping_obj (X Y : StrictComplexDiagram A d) (n : SimplexCategoryᵒᵖ) :
+  (strictDiagramFrameMapping A d X Y).obj n =
+    ((strictDiagramSourceFrame A d X).obj.obj n.unop ⟶ strictDiagramFibrantTarget A d Y)
+lemma strictDiagramFrameMapping_kanComplex (X Y : StrictComplexDiagram A d) :
+  SSet.KanComplex (strictDiagramFrameMapping A d X Y)
+```
+
+いずれも既存のモデル・分解・解像・Kan性の特殊化で、新しいモデル構造や充填理論を足さない。
+モデルの弱同値の等式はR2aの係数移送の法則1/3として記録する。
+比較対象は元の同じ `StrictDiagramInfinity` と `strictDiagramDerivedEvaluation` のまま。
+この段階では対象ごとの解像だけであり、全パラメーター自然性も完了を主張しない。
+
+### R2aの関手的解像の証明分割（未検証）
+
+```lean
+lemma strictDiagramReedy_cof_hasFunctorialFactorization :
+  letI := strictDiagramReedyModelCategory A d
+  (cofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
+    (trivialFibrations (StrictComplexDiagram A d))
+lemma strictDiagramReedy_fib_hasFunctorialFactorization :
+  letI := strictDiagramReedyModelCategory A d
+  (trivialCofibrations (StrictComplexDiagram A d)).HasFunctorialFactorization
+    (fibrations (StrictComplexDiagram A d))
+
+def strictDiagramCofFactorizationData :
+  letI := strictDiagramReedyModelCategory A d
+  (cofibrations (StrictComplexDiagram A d)).FunctorialFactorizationData
+    (trivialFibrations (StrictComplexDiagram A d))
+def strictDiagramFibFactorizationData :
+  letI := strictDiagramReedyModelCategory A d
+  (trivialCofibrations (StrictComplexDiagram A d)).FunctorialFactorizationData
+    (fibrations (StrictComplexDiagram A d))
+
+def strictDiagramResolutionMapping :
+  (StrictComplexDiagram A d)ᵒᵖ ⥤ StrictComplexDiagram A d ⥤ SSet.{u}
+lemma strictDiagramResolutionMapping_kanComplex
+    (X : (StrictComplexDiagram A d)ᵒᵖ) (Y : StrictComplexDiagram A d) :
+  SSet.KanComplex (((strictDiagramResolutionMapping A d).obj X).obj Y)
+```
+
+複体の生成モデルの既存の関手的分解と
+`Reedy.FunctorFactorizationSequence.hasFunctorialFactorization` を直接使う。
+これにより、対象ごとに選ぶ解像だけで全族が自然だとは扱わず、実際の両変数の通常関手を作る。
+型や最終範囲の変更はない。R2aのspan・R2b・R2cはまだ完了していない。
+
+23時の連絡を反映：B3の凍結はmainだけ。専用枝へのコミットは続ける。
+B3取り込み後のB4追従は連絡を待つ。大きい監査は行わず対象ビルドと小監査だけにする。
+
+### 最初の検証済み分
+
+`StrictDiagramReedyMappingModel` 111行の対象ビルド（`r2-reedy-model-3.log`、2,668 jobs）と
+11宣言の小監査（`r2-reedy-model-audit.log`）が通った。標準三公理のみ、sorryAxなし。
+一般projective APIの `IsLocallyPresentable.{u} (Complex A)` の自動合成は失敗を確認したが、
+Reedy構成ではこの追加入力を要求せず、元の弱同値のクラスも保持できた。
+R2の検証済み実測は111行（3b-3累計6,157行）。両変数の関手的解像の新規ファイルは未検証のまま。
+R2a〜R2eの完成を主張せず、引き続きR2aの構成を進める。
