@@ -1,0 +1,17 @@
+{
+  "status": "PASS",
+  "frozen_mathematical_main": "c5c4436c0",
+  "frozen_document_main": "a9dc71e46c167af0a24a9000a4e146b5c94dad8f",
+  "observed_main": "ac3544c4afbd67e2ba86deaba1bd957ae67cef71",
+  "allowed_document_paths": [
+    "formalization-plans/bhatt-scholze/bhatt-scholze-codex-m15.md",
+    "formalization-plans/bhatt-scholze/bhatt-scholze-codex-w16.md",
+    "formalization-plans/coordination.md",
+    "formalization-plans/stage-ii/inf-supply-w1.md",
+    "formalization-plans/stage-ii/inf-supply-w2.md",
+    "formalization-plans/stage-ii/stage-ii-second-half.md"
+  ],
+  "forbidden_changes": [],
+  "authorization": "11-14 coordinator reply: documentation-only formalization-plans/research changes allowed; build/audit changes stop",
+  "checked_at": "2026-11-14T07:11:12.098722"
+}
