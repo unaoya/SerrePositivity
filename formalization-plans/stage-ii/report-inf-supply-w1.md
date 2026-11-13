@@ -1647,3 +1647,52 @@ lemma strictBarNativeFunctorOverSimplex_naturality {m n : ℕ}
 
 固定した次元で上式を先に証明し、切断の自然性にはこの式だけを渡す。
 `maxHeartbeats 800000` は取り除いた。型の分解で大きなbarの構成を簡約しない。
+
+### U38の前提計算（1/3、係数移送）
+
+元の一点定数関手の評価の法則を全図式・全自然変換に移す。次の三表示は一つの係数移送の法則と、
+その値の圏への分割・同じ後合成の帰結であり、新しい数学の三件とは数えない。
+
+```lean
+lemma strictSemifreePointValue_evaluation :
+    (semifreePointConstant A).onClosed ⋙
+      (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+        (dgModuleSemifreeProperty A PUnit.{1})).onClosed ⋙
+      moduleEvaluation A PUnit.{1} PUnit.unit = semifreeUnderlyingComplex A
+
+lemma strictSemifreePointUnderlyingFunctor_evaluation :
+    strictSemifreePointUnderlyingFunctor A ⋙
+      (Functor.whiskeringRight SimplexCategoryᵒᵖ _ _).obj
+        (moduleEvaluation A PUnit.{1} PUnit.unit) =
+      strictSemifreeUnderlyingComplex A .simplicial
+
+lemma strictSemifreePointUnderlyingFunctor_total :
+    strictSemifreePointUnderlyingFunctor A ⋙ strictBarTotalComplexFunctor A SimplexCategoryᵒᵖ =
+      strictSemifreeReplacementRealization A
+
+```
+
+既存の `strictSemifreePointDiagram_coefficients` の係数射の計算を全射に再利用する。
+U38は1/3、他のU番号は0/3、一覧外の照合は0/3。下書きは未検証で、数学のコミットにはまだ含めない。
+
+## 34. R6 U01〜U14 の検証（11-13 18:20、継続）
+
+追加3本・238行を検証した。
+`StrictBarNativeFunctorCocone`（120行）はU01〜U09、
+`StrictBarNativeJoinCells`（39行）はU10〜U11、
+`StrictSimplexEvaluationAtParameter`（79行）はU12〜U14。
+U04は、図形だけの等式の宇宙を明示して先に固定し、後合成の大きな型推論を避けて
+直接書き換えることで、既定のheartbeat上限で通った。上限の引き上げは全て取り除いた。
+U04の分割は§33に記載したものだけ。追加の数学はない。
+U12は既存の `curry_evaluateFunctorAt_unitHomEquiv` を再利用し、単位からの頂点表示を計算した。
+
+対象ビルド成功（5,305 jobs）。`/tmp/is-w1/3b3-build-73-cocone.log` の前段。
+対象監査は全余錐族9宣言、セル・固定パラメーター5宣言の計14宣言で、全て標準三公理のみ。
+全余錐族の9宣言にはsorry検査も通り、残る5宣言にもsorryAxはない。
+検証済み累計**55本・4,292行、監査対象212宣言、R6実測3,629行**。
+
+U15以降は継続中。最初の回復ファイルでは `SimplicialRealization` のopenが抜けていたため、
+名前の指定を直して再検証へ回した。U26〜U28とU38の独立した構成も下書きを用意し、
+同じ対象ビルドの後続で検証する。これらはまだ数学のコミットへ含めない。
+U38の前提計算は§33の1/3、その他は0/3、一覧外の照合は0/3のまま。
+R6完成後は指示どおりR2〜R4の紙の一覧へ進む。凍結確定の連絡はまだ受けていない。
