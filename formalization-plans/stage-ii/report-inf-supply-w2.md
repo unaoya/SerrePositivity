@@ -2122,3 +2122,280 @@ SerrePositivity.InfinityCategories.Project.DerivedCategories.DiagramComparison.P
 §38の境目は維持する。今回完成した自由鎖・正規化・全単体 Hom の部品は加群の比較であり、BE 作用を持つ Tot を構成したものではない。3b-4の U 比較に渡すものは、G10 が完成した際の同じ頂点・脚・高次単体を持つ指定 Tot 錐の族である。現状の `normalizedWeightSectionMap` を代用品として渡さない。
 
 再開後は上表の順でG10を閉じ、停止点2の検証後に§38.2の1・2（strict BE 模型と実 U の比較）へ進む。③-aの3b-3が必要なのは coherent な図式へ拡張する際の評価同値と錐の輸送である。加群値の評価同値から BE 値の厳密化を無条件に推論しない。この紙の整理では鍵を取得せず、BE の新規 Lean も開始していない。
+
+## 73. 3b-2 再開：型つきの残補題一覧（11-13、ユーザー承認）
+
+§72の中間停止を解除する。今回の指示により、停止条件は下記一覧の外の新しい数学と外枠12,500行。現在141本8,834行。既存構成の照合だけの追加は3本までとし、追加時はこの報告に型を書く。下記は紙の宣言案で、証明済み・Leanで全体を elaboration 済みという意味ではない。名前空間の省略・局所略記を以下に固定する。単なる存在や零単体で代用せず、指定射・全単体・全図式射を結論に含める。実装中に型の意味を変更する必要が判明した場合も、その変更を黙って行わない。
+
+### 73.1 共通の記法と第一のまとまり（A01〜A12）
+
+この節では DiagramComparison、CategoryTheory、MonoidalCategory、CosimplicialHom の名前を開く。`A : Type u`、`[CommRing A]`、`J : Type u`、`[SmallCategory J]`、`W : J ⥤ SSet.{u}`、`Q : J ⥤ CochainComplex (ModuleCat A) ℤ`、`φ : simplicialRingCoefficient.{u} →+* A`。以下の略記は型を短く書くためだけのもの。
+
+```lean
+local notation "D" => J ⥤ CochainComplex (ModuleCat A) ℤ
+local notation "E" => functorToComplexOfFunctors J (ModuleCat A) (.up ℤ)
+local notation "P" => liftedStandardSimplexParameter (u := u) J
+local notation "N" => freeNegativeChainsDiagramFunctor A J
+local notation "FP" => freeProductFrame A W P
+local notation "FT" => freeTensorFrame A W P
+local notation "AW" => freeProductFrameAW A W P φ
+local notation "SH" => freeProductFrameShuffle A W P φ
+local notation "NP" => P ⋙ N
+local notation "Γ" => truncatedDoldKanFunctor A
+```
+
+A01は既存の図式 EZ 同値の指定射を取り出す。添字を後で `SimplexCategory × J` として使い、点ごとの存在を選び直さない。
+
+```lean
+-- A01a,b：任意の添字図式 X,Y について。AW・shuffle は既存の指定射。
+def freeProductDiagramAWShuffleHomotopy (X Y : J ⥤ SSet.{u}) :
+  Homotopy
+    ((E).map (freeProductDiagramAW φ X Y ≫ freeProductDiagramShuffle φ X Y))
+    (𝟙 ((E).obj (N.obj (X ⊗ Y))))
+def freeProductDiagramShuffleAWHomotopy (X Y : J ⥤ SSet.{u}) :
+  Homotopy
+    ((E).map (freeProductDiagramShuffle φ X Y ≫ freeProductDiagramAW φ X Y))
+    (𝟙 ((E).obj (N.obj X ⊗ N.obj Y)))
+
+-- A02：余単体方向と J 方向を同時に含む鎖ホモトピー。
+-- EE は Δ ⥤ D を、Δ ⥤ J ⥤ ModuleCat A 値の複体へ交換する関手。
+-- 具体的に whiskeringRight Δ D (CochainComplex (J ⥤ ModuleCat A) ℤ)
+-- の E 像の後に functorToComplexOfFunctors Δ (J ⥤ ModuleCat A) (.up ℤ)。
+def freeProductFrameAWShuffleHomotopy :
+  Homotopy (EE.map (AW ≫ SH)) (𝟙 (EE.obj FP))
+def freeProductFrameShuffleAWHomotopy :
+  Homotopy (EE.map (SH ≫ AW)) (𝟙 (EE.obj FT))
+
+-- A03：正規化された単体の増大写像。全単体で自然な ε。
+def standardParameterAugmentation : NP ⟶ 𝟙_ (SimplexCategory ⥤ D)
+
+-- A04：両 frame のパラメータ余作用。
+def productFrameCoaction : FP ⟶ FP ⊗ NP
+def tensorFrameCoaction : FT ⟶ FT ⊗ NP
+-- productFrameCoaction.app n は既存 freeProductParameterCoaction φ W (P.obj n)。
+-- tensorFrameCoaction は第二因子の対角 AW と associator によるもの。
+
+-- A05：単位則。δ の名前を上の二つにそれぞれ固定した二宣言。
+theorem productFrameCoaction_counit :
+  productFrameCoaction ≫ (𝟙 FP ⊗ₘ standardParameterAugmentation) ≫
+    (ρ_ FP).hom = 𝟙 FP
+theorem tensorFrameCoaction_counit :
+  tensorFrameCoaction ≫ (𝟙 FT ⊗ₘ standardParameterAugmentation) ≫
+    (ρ_ FT).hom = 𝟙 FT
+```
+
+A06〜A08は鎖ホモトピーから単体的ホモトピーへの具体的接続。単なる各 n の鎖ホモトピー同値から空間の同値性を主張しない。
+
+```lean
+-- I := N.obj ((Functor.const J).obj (Δ[1] : SSet.{u}))。
+-- endpoint ε は正規化した 0→1 または 1→1 の頂点と Δ[0] の単位同型で定義。
+def normalizedIntervalEndpoint (ε : Fin 2) : 𝟙_ D ⟶ I
+
+-- A06：同じ鎖ホモトピーの区間による評価。R,S : D。
+def normalizedIntervalHom (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) : R ⊗ I ⟶ S
+theorem normalizedIntervalHom_endpoints (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+  (ρ_ R).inv ≫ (𝟙 R ⊗ₘ normalizedIntervalEndpoint 0) ≫
+      normalizedIntervalHom f g h = f ∧
+  (ρ_ R).inv ≫ (𝟙 R ⊗ₘ normalizedIntervalEndpoint 1) ≫
+      normalizedIntervalHom f g h = g
+-- 自然性も必要：a:R'→R,b:S→S'。h' は h を E.map a,b で前後合成したもの。
+theorem normalizedIntervalHom_naturality
+    (a : R' ⟶ R) (b : S ⟶ S') (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+  (a ⊗ₘ 𝟙 I) ≫ normalizedIntervalHom f g h ≫ b =
+    normalizedIntervalHom (a ≫ f ≫ b) (a ≫ g ≫ b) h'
+
+-- A07：F,G : Δ ⥤ D。δ の自然性は NatTrans の型に含む。
+def frameHomHomotopyOfChainHomotopy (F G : SimplexCategory ⥤ D)
+    (δ : F ⟶ F ⊗ NP)
+    (hδ : δ ≫ (𝟙 F ⊗ₘ standardParameterAugmentation) ≫ (ρ_ F).hom = 𝟙 F)
+    (f g : F ⟶ G) (h : Homotopy (EE.map f) (EE.map g)) (Q : D) :
+  SSet.Homotopy ((cosimplicialHomMap f).app Q) ((cosimplicialHomMap g).app Q)
+
+-- A08：指定二射の両合成のホモトピー（Q に関する NatTrans の成分）。
+def freeProductHomComparison_homotopy (Q : D) :
+  SSet.Homotopy
+    ((freeProductHomReverse A W P φ).app Q ≫
+      (freeProductHomComparison A W P φ).app Q) (𝟙 _)
+def freeProductHomReverse_homotopy (Q : D) :
+  SSet.Homotopy
+    ((freeProductHomComparison A W P φ).app Q ≫
+      (freeProductHomReverse A W P φ).app Q) (𝟙 _)
+
+-- A09：元の指定比較そのものの同値性。
+theorem normalizedWeightSectionMap_equivalence :
+  IsSimplicialHomotopyEquivalence (normalizedWeightSectionMap A W Q φ)
+```
+
+A10〜A12は同じ指定 Hom 比較の自然性と、BK の持ち上げ・反転への接続。後者の照合を新しい数学として数え直さないため初めから一覧に含める。
+
+```lean
+-- A10：Q の全射で可換。Hmap f は Γ.map (図式 linearHom の後合成 f)。
+-- Smap f は weightedSectionsFunctor W が Q⋙Γ の全射を写したもの。
+theorem normalizedWeightSectionMap_naturality (f : Q ⟶ Q') :
+  Hmap f ≫ normalizedWeightSectionMap A W Q' φ =
+    normalizedWeightSectionMap A W Q φ ≫ Smap f
+-- A11：重みの全射 w:W'→W による前合成。Hpre,Spre はそれぞれ
+-- 図式 linearHom と weightedSections の指定前合成（新しい選択ではない）。
+theorem normalizedWeightSectionMap_weight_naturality (w : W' ⟶ W) :
+  Hpre w ≫ normalizedWeightSectionMap A W' Q φ =
+    normalizedWeightSectionMap A W Q φ ≫ Spre w
+
+-- A12：X : CosimplicialObject (Complex A)、T : Complex A。
+-- HΓ := Γ.obj (normalizedBousfieldKanHom ((homDiagramFunctor T).obj X))。
+-- F := liftedClosedDiagram X、t := ForgetEnrichment.of (Complex A) T。
+-- Hol := bousfieldKanHolim (simplicialHomDiagram F t ⋙ SSet.opFunctor)。
+def normalizedBKReflectedSectionsMap (X : CosimplicialObject (Complex A))
+    (T : Complex A) : HΓ.op ⟶ Hol
+theorem normalizedBKReflectedSectionsMap_equivalence (X) (T) :
+  IsSimplicialHomotopyEquivalence (normalizedBKReflectedSectionsMap X T)
+```
+
+A12の射はA09の射に、既存の二重 opposite・AsSmall・ULift・Γ Hom 同型を順に合成する。任意の同値を選んで型だけ合わせることは禁止。反転と持ち上げの各交換はこのA12の構成内で明示する。
+
+### 73.2 第二のまとまり：指定豊穣 Hom と native 極限性（B01〜B08）
+
+`X : CosimplicialObject (Complex A)`、`F := liftedClosedDiagram X`、`z := ForgetEnrichment.of (Complex A) ((productTotalFunctor A).obj X)`、`φX := liftedEnrichedBousfieldKanCone X`、`c := nativeCoherentCone X`、`hz := nativeCoherentCone_vertex X`。`C := ClosedCategory A (Complex A)`。`U := SSet.uliftFunctor.{u+1,u}`。`x : C` を全試験対象とする。`q x := reflectedWeightedHomComparison F z φX x`。
+
+```lean
+-- B01：実 Hom 同型、既存 Hom–Tot 比較、A12 を合成した指定射。
+def gammaReflectedBKComparison (X) (x : C) :
+  (SimplicialCategory.sHom x z).op ⟶
+    bousfieldKanHolim (simplicialHomDiagram F x ⋙ SSet.opFunctor)
+-- B02：実豊穣合成との等式。型だけの同値で代用しない。
+theorem gammaReflectedBKComparison_eq (X) (x : C) :
+  gammaReflectedBKComparison X x = q x
+-- B03：同じ指定射の同値性。
+theorem reflectedBKComparison_equivalence (X) (x : C) :
+  IsSimplicialHomotopyEquivalence (q x)
+
+-- B04：coherentCone_isLimit_of_family_lifts の a。
+def nativeTotConeFamilyLift (X) (x : C) :
+  U.obj (SimplicialCategory.sHom x z).op ⟶
+    coherentConeSectionSpace c.val (coherentNerveVertex x)
+-- B05：同定 ha（頂点の同じ実比較）。
+theorem nativeTotConeFamilyLift_apex (X) (x : C) :
+  nativeTotConeFamilyLift X x ≫ coherentConeApexEvaluation c z hz x =
+    coherentCosliceFiberComparison x z
+-- B06：制限の同定。右辺は既存の全 BK→native 比較との合成。
+theorem nativeTotConeFamilyLift_restriction (X) (x : C) :
+  nativeTotConeFamilyLift X x ≫ coneSectionRestriction c (coherentNerveVertex x) =
+    U.map (q x) ≫ reflectedHomHolimConeComparison F x
+-- B07：he。一般の reflectedHomHolimConeComparison の既存同値性を再利用。
+theorem nativeTotConeFamilyLift_equivalence (X) (x : C) :
+  IsSimplicialHomotopyEquivalence
+    (nativeTotConeFamilyLift X x ≫ coneSectionRestriction c (coherentNerveVertex x))
+-- B08：元の指定錐の native 極限性。
+theorem nativeCoherentCone_isLimit (X) : IsLimitCone (nativeCoherentCone X)
+theorem nativeDGCone_isLimit (X) : IsLimitCone (nativeDGCone X)
+```
+
+B04で別の錐を選ばず、指定余錐の合成の全単体を切断へ送る。B06の右辺の同値性だけを証明してB04・B05を省くことはしない。
+
+### 73.3 第三のまとまり：標準脚と D(A) 輸送（C01〜C07）
+
+以下 `K := (SSet.uliftFunctor.{u+1,u}).obj (nerve (AsSmall.{u} SimplexCategory))`、`R := complexSemifreeResolutionInfinity A`、`DA := derivedInfinityCategory A`。`v n` は K の n の指定頂点（AsSmall・ULift による像）。`standardLeg X n` は `standardZeroLeg A X ≫ X.map (SimplexCategory.const _ _ 0)` という、頂点0を選ぶ標準脚。最後の定数射の実API名は実装時に合わせるが、0以外を選ぶ仕様には変えない。
+
+```lean
+-- C01：raw dg 錐の全脚の実一次単体。edgeMk は閉射の dg 辺。
+theorem nativeDGCone_standardLeg (X) (n : SimplexCategory) :
+  (derivedConeLeg (nativeDGCone X) (v n)).edge =
+    (dgClosedEdge A (Complex A) ((complexToClosed A).map (standardLeg X n))).edge
+-- C02：R による同じ実錐の輸送（raw 極限性から、既存の出力分解判定を適用）。
+def nativeDerivedDiagram (X) : K ⟶ DA := nativeDGDiagram X ≫ R
+def nativeDerivedCone (X) : JoinCone (nativeDerivedDiagram X) :=
+  mapJoinCone R (nativeDGCone X)
+theorem nativeDerivedCone_isLimit (X) : IsLimitCone (nativeDerivedCone X)
+-- C03：元の Tot の指定分解を頂点とする。
+theorem nativeDerivedCone_vertex (X) :
+  (nativeDerivedCone X).vertex =
+    R.app (Opposite.op ⦋0⦌) (Simplex.vertex ((productTotalFunctor A).obj X))
+-- C04：同じ標準脚を輸送する。
+theorem nativeDerivedCone_standardLeg (X) (n) :
+  (derivedConeLeg (nativeDerivedCone X) (v n)).edge =
+    R.app (Opposite.op ⦋1⦌)
+      (dgClosedEdge A (Complex A) ((complexToClosed A).map (standardLeg X n))).edge
+-- C05：nativeDGDiagram の元の strict 図式との照合。
+-- kappa : K ≅ (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)
+-- は AsSmall と ULift の既存指定同型。
+theorem nativeDerivedDiagram_strict (X) :
+  nativeDerivedDiagram X = kappa.hom ≫
+    (SSet.uliftFunctor.{u+1,0}).map (nerveMap X) ≫ complexOrdinaryDerivedSource A
+-- C06：kappa で引き戻した元の図式上の指定錐とその極限性。
+def strictDerivedTotCone (X) :
+  JoinCone ((SSet.uliftFunctor.{u+1,0}).map (nerveMap X) ≫ complexOrdinaryDerivedSource A)
+theorem strictDerivedTotCone_isLimit (X) : IsLimitCone (strictDerivedTotCone X)
+-- C07：全 join 射を保持する輸送の式（脚だけの同定ではない）。
+theorem strictDerivedTotCone_pullback (X) :
+  joinMap (𝟙 Δ[0]) kappa.hom ≫ (strictDerivedTotCone X).val =
+    (nativeDerivedCone X).val
+```
+
+C05の universe の表記は実ソース X の対象宇宙と hom 宇宙を区別して elaboration 時に固定する。普通の図式を無関係な図式同型で置換する内容ではない。もし厳密等式が成立せず指定 FunctorIso による輸送が必要であれば、型の変更として報告する。
+
+### 73.4 第四のまとまり：全図式射・指定錐の族・離散入口（D01〜D08）
+
+`B := nerve (CosimplicialObject (Complex A))`、`K₀ := (SSet.uliftFunctor.{u+1,0}).obj (nerve SimplexCategory)`、`jX : Δ[0] ⟶ B := SSet.yonedaEquiv.symm (nerveVertex X)`。`evalFamily : K₀ ⊗ B ⟶ DA` は評価関手 `(n,X) ↦ X.obj n` の nerve と積・ULift の既存同型、`complexOrdinaryDerivedSource A` の合成。`totFamily : B ⟶ DA := nerveMap (productTotalFunctor A) ≫ complexOrdinaryDerivedSource A`。
+
+```lean
+-- D01：同じ指定全錐の全パラメータ族。
+def derivedTotConeFamily : (join (Δ[0] : SSet.{u+1}) K₀) ⊗ B ⟶ DA
+-- D02：両端を全パラメータで固定する。
+theorem derivedTotConeFamily_boundaries :
+  (joinInl Δ[0] K₀ ⊗ₘ 𝟙 B) ≫ derivedTotConeFamily =
+      (λ_ B).hom ≫ totFamily ∧
+  (joinInr Δ[0] K₀ ⊗ₘ 𝟙 B) ≫ derivedTotConeFamily = evalFamily
+-- D03：各点で同じ全高次単体の錐へ戻る。
+theorem derivedTotConeFamily_at (X) :
+  (ρ_ (join Δ[0] K₀)).inv ≫ (𝟙 _ ⊗ₘ jX) ≫ derivedTotConeFamily =
+    (strictDerivedTotCone X).val
+-- D04：図式射に対応する族の頂点辺は productTotalFunctor.map f の像そのもの。
+theorem derivedTotConeFamily_map {X Y} (f : X ⟶ Y) :
+  totFamily.app (Opposite.op ⦋1⦌) (nerve.edgeMk f).edge =
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋1⦌)
+      (nerve.edgeMk ((productTotalFunctor A).map f)).edge
+```
+
+D01の単体的射の型が全パラメータの単体作用素・合成も含む。D04だけを証明して族の代わりにしない。離散化では既存 `discreteTotalCochainNatIso` の成分を使い、交代余面複体を頂点とする同じ錐を輸送する。
+
+```lean
+-- M : CosimplicialObject (ModuleCat.{u} A)。
+-- disc := discreteDiagramFunctor A、Coch := discreteCochainFunctor A。
+-- discreteModuleSource := nerveMap (HomologicalComplex.single _ (.up ℤ) 0)
+--   ≫ complexOrdinaryDerivedSource A（必要な宇宙同型は固定）。
+-- D05：離散加群版の指定錐。
+def cosimplicialModuleCone (M) :
+  JoinCone ((SSet.uliftFunctor.{u+1,0}).map (nerveMap M) ≫ discreteModuleSource)
+theorem cosimplicialModuleCone_isLimit (M) : IsLimitCone (cosimplicialModuleCone M)
+-- D06：頂点は同じ交代余面複体の像。
+theorem cosimplicialModuleCone_vertex (M) :
+  (cosimplicialModuleCone M).vertex =
+    (complexOrdinaryDerivedSource A).app (Opposite.op ⦋0⦌)
+      (nerveVertex (Coch.obj M))
+-- D07：離散入力についても全図式射・全高次単体を保持する錐族。
+-- Bm := nerve (CosimplicialObject (ModuleCat.{u} A))。
+def cosimplicialModuleConeFamily : (join (Δ[0] : SSet.{u+1}) K₀) ⊗ Bm ⟶ DA
+theorem cosimplicialModuleConeFamily_at (M) :
+  (ρ_ (join Δ[0] K₀)).inv ≫
+    (𝟙 _ ⊗ₘ SSet.yonedaEquiv.symm (nerveVertex M)) ≫ cosimplicialModuleConeFamily =
+      (cosimplicialModuleCone M).val
+-- 境界は D02 の evalFamily を離散化し、頂点は nerveMap Coch≫strictToD。
+theorem cosimplicialModuleConeFamily_boundaries :
+  (joinInl Δ[0] K₀ ⊗ₘ 𝟙 Bm) ≫ cosimplicialModuleConeFamily =
+      (λ_ Bm).hom ≫ nerveMap Coch ≫ complexOrdinaryDerivedSource A ∧
+  (joinInr Δ[0] K₀ ⊗ₘ 𝟙 Bm) ≫ cosimplicialModuleConeFamily = discreteEvalFamily
+-- D08：G10 のホモロジー入口（整数次数の零延長を明記）。
+def cosimplicialModuleCone_homology (M) (i : ℤ) :
+  derivedInfinityHomology A i (cosimplicialModuleCone M).vertex ≃ₗ[A]
+    (Coch.obj M).homology i
+```
+
+D08は入口表の `.homology' i` という紙の略記を、既存の整数次数への零延長 `discreteCochainFunctor` に固定して書いたもの。自然数次数には既存の extend のホモロジー同型で戻す。入口の型を黙って弱めない。
+
+### 73.5 実装順・管理
+
+A01から順に進める。A06・A07の区間評価は第一のまとまりに初めから含めた数学であり、後で「同定だけの追加」に数えない。A12/B01/B02も指定豊穣合成との照合として初めから含める。細部の universe・binder・既存 API 名の elaboration は検証対象で、未検証の型案を検収済み宣言と数えない。一覧外の新しい数学が必要なら、その型と漏れた理由を保存して止める。照合だけの追加枠は現在0/3。
+
+行数は外枠12,500行だけで管理する。§72の予測だけを理由に再び止めない。停止点2で§37.2・§72.2の四行と実測を照合し、閉じた後は§38.2の1・2へ進む。凍結確定の連絡はこの記録時点で未受領。確定後はコミットを控え、型案・依存の紙の確認を続ける。
