@@ -3099,3 +3099,71 @@ def normalizedIntervalCochainMap (A : Type u) [CommRing A]
 コード **`1cac2d8b9`**。4本184行（Boundary 39、LowDegrees 67、RawChain 51、Cochain 27）。個別の結合検査 `/private/tmp/isw2-interval-cochain1.log` は終了コード0。鍵付き対象ビルド2,059 jobsと166モジュールの一時監査が終了コード0（`/private/tmp/isw2-build91.log`）。累計 **166モジュール・10,327行・1,758宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSixtySix.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixtysix-modules.txt`。新公理・sorryなし、既存宣言・⑤a・入口・公式監査の変更なし。共有鍵は返却済み。上表の4本を登録対象へ追加する。
 
 次は同じホモトピーの零次コチェインと次数−1成分をsmart切断へ送るデータの構成。そのため `NormalizedIntervalCycleData.lean` の作業木で既存のcyclesへの持ち上げと切断の項同型を使用している。未検証であり、上記実績に算入しない。A06本体と停止点2は未完。計算上限は上げていない。
+
+
+## 91. A06本体：同じホモトピーから指定正規化区間の図式射を構成
+
+smart切断の零次はcyclesへの持ち上げ、一次は次数−1の項同型で定義した。δh=f−g の規約なので辺には −h を入れる。この内部Homへの区間写像を、既存 `diagramTensorLinearHomEquiv` の逆で戻し、既存 `freeStandardSimplexParameterIso` で同じ自由負鎖の区間へ戻した。点ごとの選択やcylinderへの置換はしていない。
+
+### 91.1 A06の同じ証明の分割の型
+
+以下は一覧A06の構成・境界条件そのものの証明分割（§14）。前提計算枠・照合枠を新しく使わない。最初の二本では `A : Type u`、`[CommRing A]`、CycleDataでは `H : CochainComplex (ModuleCat.{u} A) ℤ` を固定する。Homでは `A : Type (max u v)`、`J : Type v`、`[SmallCategory J]`、`E := functorToComplexOfFunctors J (ModuleCat A) (ComplexShape.up ℤ)`。
+
+`NormalizedIntervalCycleData`
+
+```lean
+def intervalTruncCycle (z : H.X 0) (hz : H.d 0 1 z = 0) :
+    (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).X 0
+```
+
+```lean
+def intervalTruncEdge (w : H.X (-1)) :
+    (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).X 1
+```
+
+```lean
+theorem intervalTruncCycle_value (z : H.X 0) (hz : H.d 0 1 z = 0) :
+    H.iCycles 0 ((H.truncLE'XIsoCycles (ComplexShape.embeddingUpIntLE 0)
+      (i
+```
+
+```lean
+theorem intervalTrunc_boundary (x y : H.X 0) (hx : H.d 0 1 x = 0) (hy : H.d 0 1 y = 0)
+    (w : H.X (-1)) (hw : H.d (-1) 0 w = y - x) :
+    (H.truncLE' (ComplexShape.embeddingUpIntLE 0)).d 1 0 (intervalTruncEdge A H w) =
+      intervalTruncCycle A H y hy - intervalTruncCycle A H x hx
+```
+
+```lean
+def normalizedIntervalCochainMapOfBoundary
+    (x y : H.X 0) (hx : H.d 0 1 x = 0) (hy : H.d 0 1 y = 0)
+    (w : H.X (-1)) (hw : H.d (-1) 0 w = y - x) :
+    (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj (SimplexCategory.mk 1)) ⟶ H
+```
+
+
+`HomotopyIntervalCochain`
+
+```lean
+def homotopyIntervalCochainMap (A : Type u) [CommRing A]
+    {C : Type v} [Category.{u} C] [Preadditive C] [Linear A C]
+    {R S : CochainComplex C ℤ} (f g : R ⟶ S) (h : Homotopy f g) :
+    (SerrePositivity.EInfinity.BarrattEccles.normalizedFunctor A).obj
+      (SSet.stdSimplex.obj ⦋1⦌) ⟶ linearHomComplex A R S
+```
+
+
+`NormalizedIntervalHom`
+
+```lean
+def normalizedIntervalHom {R S : J ⥤ Complex A} (f g : R ⟶ S)
+    (h : Homotopy ((E).map f) ((E).map g)) :
+    R ⊗ freeNegativeChainsDiagram (A
+```
+
+### 91.2 検収と残り
+
+コード **`959f883a5`**。新規3本140行（CycleData 79、HomotopyIntervalCochain 31、Hom 30）。結合個別検査 `/private/tmp/isw2-homotopy-interval1.log` と本体個別検査 `/private/tmp/isw2-diagram-interval1.log` が通り、鍵付き対象ビルドと一時監査はともに終了コード0。168本時点は2,061 jobs・1,779宣言（`/private/tmp/isw2-build92.log`）、本体追加後は既存の零次切断包含の依存も含め3,993 jobs・1,793宣言（`/private/tmp/isw2-build93.log`）。累計 **169モジュール・10,467行・1,793宣言、標準三公理のみ**。一時監査 `/private/tmp/AuditISW2G10HundredSixtyNine.lean`、対象一覧 `/private/tmp/isw2-g10-hundredsixtynine-modules.txt`。上の3本を登録対象に追加する。共有鍵は返却済み。
+
+A06本体の射はできたが、両端の射がf,gに等しいことと前後合成の自然性は未完。作業木の `NormalizedIntervalVertexValues.lean` で零次生成元の値を照合中。A07以降・B/C/D・停止点2は未完。既存宣言、⑤a、入口、公式監査は変えていない。新公理・sorryなし、計算上限変更なし。A06前提計算は1/3、全体照合枠は3/3のまま。外枠12,500行まで検証済みから2,033行。凍結確定の連絡は未受領。
