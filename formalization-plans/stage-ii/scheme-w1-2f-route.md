@@ -834,3 +834,30 @@ F6 は未完。次は 2e の `projectiveCechFilteredHomologyIso` とその自然
 前の束の核の評価と今回の像の安定化により、F7 の Frobenius 比較に必要な二つの評価が実際の斉次切断代数で使える。未完：Frobenius の厚化への因子分解と環の冪乗の照合、Proj の構造層の切断代数との環同型、それらを使う F7 の幾何学的四角形と F8 の増大全複体。評価だけで Frobenius 比較や 2f 全体の完成とはしない。
 
 2f 累計は **118 モジュール・7,439 行（登録込み 7,626 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
+
+## F7 途中：厚化を経由する切断の Frobenius と冪の持ち上げ（72cf663a0、11-13）
+
+新規 3 モジュール・12 公開宣言（局所インスタンスを除く）・235 行（登録込み 241 行）。対象ビルドは 3,263 jobs、直接 importer は 4,667 jobs 成功。別実行の公理監査は **9,650 宣言・標準三公理のみ**。共有鍵 `--wait 3600` をビルド・監査の間だけ使い、待ちは一つに保った。
+
+登録モジュール：`CechAlgebraEqualizerAddMap`、`ReesHomogeneousThickeningDiagram`、`ReesHomogeneousSectionPowerLift`（すべて `SerrePositivity.AlgebraicGeometry`）。
+
+| 宣言 | 主張 |
+| --- | --- |
+| `algebraCechIntDiagram` | 代数係数図式の加法群を整数加群の図式として扱う。 |
+| `fullAlgebraCechCochainsAddMap` | 整数線形な係数写像をタプルごとの加法写像にする。 |
+| `fullAlgebraCechCochainsAddMap_face` | この写像は二つの面の制限と可換。 |
+| `fullAlgebraCechEqualizerAddMap` | 整数線形な係数写像が適合切断の加法群に誘導する写像。 |
+| `fullAlgebraCechEqualizerAddMap_apply` | その成分は指定した係数の射そのもの。 |
+| `reesHomogeneousThickeningDiagram` | 厚化を経由する Frobenius を斉次標準開の整数加群図式の射にする。 |
+| `reesHomogeneousThickeningDiagram_apply` | 各成分は既存の指定次数の写像を標準開の比較で移したもの。 |
+| `reesHomogeneousThickeningDiagram_factor` | 厚化から制限で戻すと、標準開の環の実際の p^e 乗になる。 |
+| `reesHomogeneousSectionThickening` | 厚化 Frobenius を適合切断の加法群へ送る。 |
+| `reesHomogeneousSectionThickening_apply` | 切断の厚化写像の各成分は指定した標準開の写像。 |
+| `reesHomogeneousSectionThickening_factor` | 切断の厚化写像を制限で戻すと、実際の切断環の p^e 乗になる。 |
+| `reesClosedHomogeneousSectionProjection_power_lifts` | Noether 基底・有限生成性・素数 p が基底環と構造環で零という入力から、一様な e が存在し、閉厚化の任意の切断の p^e 乗が元の切断の制限に持ち上がる。 |
+
+基底環上では半線形なので、厚化写像を基底上の代数写像とはしていない。整数加群図式の自然性で適合条件を保ち、制限後の写像が実際の環の冪乗であることを既存の斉次分数の比較で示した。像の安定化に必要な厚さを p^(1+c) で上回らせるため、指数は切断によらず一様。比較の展開が再帰深度に達した箇所は成分補題を分けて解消し、上限は変更していない。
+
+残る単射側では `reesClosedCechIntThickeningDiagram_projection` を同じ標準開の比較で移し、射影後の厚化写像と p^e 乗後の射影を照合する。制限で消える元の p^e 乗を十分厚い制限の核に入れ、前の束のイデアル版の核の評価で IB に入れる。その後 B/IB と閉厚化の切断環の Frobenius 比較を閉じる。Proj の構造層の切断代数との環同型、F7 の幾何学的四角形、F8 の増大全複体は未完。
+
+2f 累計は **121 モジュール・7,674 行（登録込み 7,867 行）**。残りの暫定見込みは 3,000〜7,500 行、停止基準 18,000 行以内。停止点 2f ではなく、最終出力の型も変更していない。
