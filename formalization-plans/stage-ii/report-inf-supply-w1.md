@@ -1822,3 +1822,105 @@ U23の包装は§33の同じ射の分割で通り、計算上限を引き上げ�
 前提計算はU20が1/3、U30が2/3、U31が3/3、U38が1/3、他は0/3。照合0/3。
 次は全下方図式を指定の全評価へ接続し、同じ全余錐族・apexの比較を閉じる。
 凍結確定の連絡はまだ受けていないため、検証済みの分を保存した。
+
+### 照合C1（1/3）：同じ射影的native前面とstrict全評価
+
+U31の二つの既存構成の前面の照合をC1として使う。最終の型は次である。
+
+```lean
+lemma strictSemifreeProjectiveFront :
+  let P := nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ)
+  let I := (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)
+  (P ◁ joinInl I (Δ[0] : SSet.{u + 1})) ≫
+    (P ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) =
+  strictDiagramEvaluation SimplexCategoryᵒᵖ (ClosedCategory A (Semifree A)) ≫
+    closedNerveInclusion A (Semifree A) ≫
+      SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        ((semifreePointConstant A).comp (dgSemifreeToProjective A PUnit.{1}))
+```
+
+まず包含で戻した次の同じ等式を証明し、単射性で戻す。これはC1の証明の分割である。
+
+```lean
+lemma strictSemifreeProjectiveFront_image :
+    (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁
+      joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0]) ≫
+    (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ) ◁ (strictSemifreeJoinShapeIso A).hom) ≫
+      strictBarNativeProjectiveJoinFamily A SimplexCategoryᵒᵖ
+        (strictSemifreePointUnderlyingFunctor A)
+        (strictSemifreePointUnderlyingFunctor_projective A) ≫
+      SerrePositivity.InfinityCategories.Kerodon.ExamplesOfInfinityCategories.DifferentialGradedCategories.Functor.map
+        (dgFullSubcategoryInclusion A (RightModule A PUnit.{1})
+          (dgModuleProjectiveProperty A PUnit.{1})) =
+    (nerveMap (strictSemifreePointUnderlyingFunctor A) ▷
+      (SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) ≫
+      strictDiagramEvaluation SimplexCategoryᵒᵖ (ModuleCategory A PUnit.{1}) ≫
+        closedNerveInclusion A (RightModule A PUnit.{1})
+```
+
+前提計算はU20=1/3、U30=2/3、U31=3/3、U38=1/3、その他0/3。
+照合C1を使用して1/3。新しい数学の一覧外の補題は追加していない。
+
+### U32の前提計算（1/3、評価の余単位）
+
+既存の `functorIsoLiftRight` と評価の後合成で、全族の同型を元の共同評価へ戻す。
+
+```lean
+def fullFamilyUncurryIso {P K D : SSet.{u}} [Quasicategory D]
+    {F G : K ⟶ (ihom P).obj D} (e : FunctorIso F G) :
+    FunctorIso (uncurry F) (uncurry G)
+```
+
+U32は1/3となった。U20=1/3、U30=2/3、U31=3/3、U38=1/3、その他0/3、照合C1のみ1/3。
+
+### U31〜U32の存在部分の分割（数学・前提計算枠の消費なし）
+
+全パラメーターを標的関手圏に入れ、既存の `exists_cartesian_cocone_lift` を使う。
+底の可逆性とcartesian性から持ち上げた辺の可逆性を得る既存の定理を使うので、
+新しい関手圏の持ち上げ理論は作らない。次はU31・U32の同じ主張をcurryした型である。
+
+```lean
+lemma exists_strictSemifreeTransportedFunctorCocone :
+    ∃ g : join ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ))
+        (Δ[0] : SSet.{u + 1}) ⟶
+        (ihom (nerve (StrictSemifreeDiagram A SimplexCategoryᵒᵖ))).obj
+          (derivedInfinityCategory A),
+      joinInl ((SSet.uliftFunctor.{u + 1, 0}).obj (nerve SimplexCategoryᵒᵖ)) Δ[0] ≫ g =
+        strictSemifreeStrictFunctorDiagram A ∧
+      Nonempty (FunctorIso g (strictSemifreeRawFunctorCoconeMap A))
+```
+
+その全関手圏での存在を一度選び、`strictSemifreeComputedFunctorCoconeMap` とする。
+そのuncurryがU31の `strictSemifreeComputedDAJoinFamily`、同じ存在の同型をuncurryしたものがU32。
+元の底の辺は持ち上げの等式で保たれ、全パラメーターを対象別には選ばない。
+
+## 37. R6 の指定前面への全族輸送（約5,200行での途中報告、11-13 夜）
+
+追加4本・350行を検証した。
+`StrictSemifreeProjectiveFront`（113行）は照合C1、元の同じnative前面と全strict DG評価の等式。
+`FullFamilyUncurryIso`（31行）はU32の評価の余単位の全族輸送。
+`StrictSemifreeRawDAFrontIso`（61行）は同じD(A)値の前面から指定全評価へのFunctorIso。
+`StrictSemifreeFunctorCoconeTransport`（145行）はU31〜U32の本体。
+全パラメーターを標的関手圏へ入れ、既存の `exists_cartesian_cocone_lift` で
+元の可逆な底の辺を持ち上げた。既存のcartesian辺の可逆性の判定とuncurryを使い、
+指定前面の全余錐族と、元の全joinの族からの全関手同型を得た。
+
+対象ビルドは `/tmp/is-w1/3b3-build-82-front.log`（7,552 jobs）と
+`/tmp/is-w1/3b3-build-85-transport.log`（7,553 jobs）。
+C1・uncurry・底の比較の4宣言と、輸送の5宣言の監査が全て標準三公理のみ、sorryAxなし。
+検証済み累計**67本・5,181行、監査対象248宣言、R6実測4,518行**。
+
+U01〜U32とU38が完了。残りは§33のU33〜U37・U39〜U41。
+前提計算はU20=1/3、U30=2/3、U31=3/3、U32=1/3、U38=1/3、その他0/3。
+照合はC1のみ1/3。全て計算上限は既定値。
+
+残りの筋は、同じ輸送の全族同型を固定パラメーターへ制限し、U25の同じ余極限性を
+既存の `InitialBoundaryLifting.of_vertexIso` で移す（U33）。その全族を普遍余錐の
+全部分圏へ制限し（U34〜U35）、既存の全余錐族と比較する（U36〜U37）。
+U39では元の正規化barの一点評価・射影的模型と同じapexを比較し、U38と合成してU40〜U41を返す。
+R2〜R4はLeanに入らず、R6の完成後に紙の型つき一覧と見込みを出し直す。
+行数の旧停止は再開の指示で解除済み。外枠20,800行と型つき一覧の枠を維持し、このまま続ける。
+凍結確定の連絡はまだ受けていない。
