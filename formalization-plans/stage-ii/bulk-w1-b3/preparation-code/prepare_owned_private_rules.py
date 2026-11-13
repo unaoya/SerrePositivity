@@ -1,7 +1,7 @@
 """Prepare verification rules from actual source private kernel names."""
 from pathlib import Path
 from collections import defaultdict
-import json,sys,hashlib,re
+import json,sys,hashlib,re,subprocess
 W=Path('/tmp/bulk-w1-b3');R=W/'before';V=Path('/Users/sugakubunka/Documents/LEAN_Projects.nosync/SerrePositivity-kerodon-layout');sys.path.insert(0,str(V/'scripts/refactor'));from klw1_namespace import private_user_name;from compare_snapshots import rename,normalize_generated_name
 plan=json.load(open(W/'preservation-module-plan.json'));private=json.load(open(W/'original-private-names.json'))['rows'];byrow={(r['module'],r['old']):r for r in plan['rows']};owned=defaultdict(dict);expected={};rawrules=json.load(open(W/'comparison-name-map.json'))
 for m,mapping in plan.get('namespaces',{}).items():owned[m].update(mapping)
@@ -44,3 +44,5 @@ for m in targets:
 missing=[{'old_module':m,'old_kernel_name':n,'expected':list(dest)} for (m,n),dest in expected.items() if dest not in actual]
 (W/'private-notation-owned-names.json').write_text(json.dumps(notation_generated,ensure_ascii=False,indent=2));plan['private_normalization']=dict(owned);(W/'preservation-module-plan.json').write_text(json.dumps(plan,ensure_ascii=False,indent=2));(W/'owned-comparison-name-map.json').write_text(json.dumps(rawrules,ensure_ascii=False,indent=2));(W/'owned-private-rules-summary.json').write_text(json.dumps({'before_source_private_bindings':len(private),'after_source_private_bindings':after_private,'raw_kernel_rules':sum(k.startswith('_private.') for k in rawrules),'unchanged_external_private_roots':external_roots,'missing_private_source_bindings':missing,'normalization':'Actual raw private kernel name -> intended/actual defining module + user name; public rules remain the reviewed v3b rules. Scope-specific normalization of private declaration rows avoids cross-module user-name collisions.'},ensure_ascii=False,indent=2));print('owned source-private rules',len(private),after_private,'missing',len(missing),flush=True)
 if missing:raise SystemExit(1)
+
+subprocess.run(['python3','-B',str(W/'guard.py'),'--cwd',str(V),'--log',str(W/'independent-delta-replay.log'),'--night-only','--seconds','1500','--','python3','-B',str(W/'independent_delta_replay.py')],check=True)

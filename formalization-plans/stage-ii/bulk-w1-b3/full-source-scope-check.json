@@ -1,0 +1,14 @@
+{
+  "status": "PASS",
+  "original_lean_files": 33408,
+  "expected_final_lean_files": 33450,
+  "actual_lean_files": 33450,
+  "approved_initial_lean_outputs": 8814,
+  "indexed_frozen_main_rewrites": 686,
+  "missing": [],
+  "extra": [],
+  "different": [],
+  "input_bundle_sha256": "89b1bb8d09706cec1dfbd731bf7d0794a18a0d5d954f55fd22242d1585195a30",
+  "final_tree_sha256": "481b6b33af2824f18f7c99e44678bcd8090b4c289a0d37eeeb784b12ef01a3e4",
+  "policy": "Every tracked original Lean file, including nonbuild drafts, plus the authorized rebased bundle and exact compiler-indexed delta outputs; no unaccounted Lean addition, deletion or edit accepted."
+}

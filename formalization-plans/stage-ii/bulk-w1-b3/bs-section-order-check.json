@@ -1,0 +1,249 @@
+{
+  "modules": 586,
+  "paper_section_reverse_edges": [
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.OrdinaryRoots.Adjoin",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§7",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Andre.TorDescent",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.CompletedBaseChange",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Derived.Excision",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.Derived.IntegralExistence",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Excision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionComparison",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Cover",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.Almost.SupportedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.ExcisionTor",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.CompletedQuotient",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.Finite",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Basic",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Perfectoidization.FiniteComparisonExcision",
+      "to": "SerrePositivity.BhattScholze.PerfectoidIdeal.Tor",
+      "from_section": "§8",
+      "to_section": "§10",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prism.Perfectoid.PerfectoidPrismPresentation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Site.PrismOver",
+      "from_section": "§3",
+      "to_section": "§3.12/4.1",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.CechAlexander.Comparison.AffineCechPrismBaseChange",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.BaseChange.AffineEnvelopeBaseChangeCoefficients",
+      "from_section": "§4",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetraction",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDPolynomialFunctor",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallinePDRetractionSplit",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDDeltaFrobeniusEvaluation",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawBaseChangeQuotient",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Envelopes.PDModelCompletionQuotient",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDRawRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.PDTermRingHomExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDTermReductionLinear",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystalline",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Envelopes.PDEnvelopeCrystallineMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.WittPDPrismMaps",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDegreeZero",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamRowFormsExt",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.PDDeRham.PDDeRhamSubstitutionDifferential",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDFrobeniusLift",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionChainRule",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.PDDeRham.PDDeRhamSubstitutionJacobian",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.PDRawPolynomialSubstitution",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Site.CrystallineSmallCoverMaps",
+      "to": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Comparison.Witt.Comparison.CrystallineBaseStructureRestriction",
+      "from_section": "§5",
+      "to_section": "§6",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.CartierCompletedForms",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineCompletedFreeDelta",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Prismatic.HodgeTate.Affine.HodgeTateCartierAssembly",
+      "to": "SerrePositivity.BhattScholze.Prismatic.Crystalline.Comparison.CrystallineGeneratorClasses",
+      "from_section": "§4.2",
+      "to_section": "§5",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootEnvelope.Source",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.RootFamilyPerfectoid",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.Derived.RootAdjunction",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.TensorPerfectoidization",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    },
+    {
+      "from": "SerrePositivity.BhattScholze.Semiperfectoid.Surjectivity",
+      "to": "SerrePositivity.BhattScholze.Perfectoidization.WittPushout",
+      "from_section": "§7",
+      "to_section": "§8",
+      "status": "paper-section reversal; inspect actual declarations separately from tier violation"
+    }
+  ],
+  "unclassified_aggregate_or_inputs": [
+    "SerrePositivity.BhattScholze.Inputs.PerfectoidizationInterface",
+    "SerrePositivity.BhattScholze.Perfectoid.FiniteProduct"
+  ],
+  "delta_to_later_sections": [],
+  "note": "Section order is an inventory, not a five-tier error rule; retain explicit mathematical dependencies with reasons."
+}
