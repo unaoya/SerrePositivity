@@ -4421,3 +4421,71 @@ theorem doldKanHomEquiv_map (F : C ⥤ D) [F.Additive]
 ### 105.3 残り
 
 B02は未完。今回の一般の加法関手に関する式を評価関手に適用し、指定零延長・切断のmateと合わせて、元の図式圏の線形重みHom同値を点ごとの自由鎖随伴へ照合する。その後にA09の指定AW比較と元の実豊穣合成の全単体の照合を閉じる。今回のHom随伴の係数両立だけで、AW合成の一致を証明したとは扱わない。B03〜B08・C・Dも未完。目標「Dまで進めてください」はactiveのままで、停止点2の完了報告ではない。
+
+
+## 106. B02の途中：実切断同型と元の零延長Hom随伴の両立
+
+前回の指定正規化・Γ比較とHom随伴の両立から続行した。既存の`pointwiseTruncationIso`自身が、図式圏での零延長Hom随伴を点ごとの同じ随伴へ移すことを示した。右随伴の一意性から定めた元のmateの単位則を使い、図式側の調整したHom随伴を元の随伴と指定成分交換の余単位で表す。点ごとの随伴を成分交換から戻すと同じ随伴になることを各成分で確認し、最終の実切断同型についての式を閉じた。
+
+### 106.1 型と数え方
+
+下記4本はB02の係数移送則（§105の前提計算3/3）を元の指定切断mateへ接続する同じ証明の分割。前提計算枠はB02で3/3、照合枠は全体3/3のまま。新たな独立した前提計算や照合を追加していない。名前空間はHomologicalAlgebra、`J : Type*`・`[Category* J]`・`C : Type*`・`[Category* C] [Abelian C]`を固定する。
+
+```lean
+theorem truncationExchangeMate_homEquiv
+    (K : ChainComplex (J ⥤ C) ℕ) (X : J ⥤ CochainComplex C ℤ)
+    (f : ((complexOfFunctorsToFunctorToComplex ⋙
+      (Functor.whiskeringRight J (ChainComplex C ℕ) (CochainComplex C ℤ)).obj
+        (ComplexShape.embeddingDownNat.extendFunctor C)).obj K) ⟶ X) :
+    (diagramTruncationAdjunction J C).homEquiv K X f ≫
+        (truncationExchangeMate J C).hom.app X =
+      (pointwiseTruncationAdjunction J C).homEquiv K X f
+```
+
+```lean
+theorem diagramTruncationHomEquiv_exchange
+    (K : ChainComplex (J ⥤ C) ℕ) (H : CochainComplex (J ⥤ C) ℤ)
+    (f : K.extend ComplexShape.embeddingDownNat ⟶ H) :
+    (diagramTruncationAdjunction J C).homEquiv K
+      (complexOfFunctorsToFunctorToComplex.obj H)
+      ((pointwiseExtendIso J C ComplexShape.embeddingDownNat).inv.app K ≫
+        complexOfFunctorsToFunctorToComplex.map f) =
+    (negativeExtendTruncationAdjunction (J ⥤ C)).homEquiv K H f ≫
+      ((ComplexShape.embeddingUpIntLE 0).truncLE'Functor (J ⥤ C)).map
+        ((functorComplexExchangeCounitIso J C (.up ℤ)).inv.app H)
+```
+
+```lean
+theorem pointwiseTruncationHomEquiv_exchange
+    (K : ChainComplex (J ⥤ C) ℕ) (X : J ⥤ CochainComplex C ℤ)
+    (f : ((complexOfFunctorsToFunctorToComplex ⋙
+      (Functor.whiskeringRight J (ChainComplex C ℕ) (CochainComplex C ℤ)).obj
+        (ComplexShape.embeddingDownNat.extendFunctor C)).obj K) ⟶ X) :
+    complexOfFunctorsToFunctorToComplex.map
+        ((pointwiseTruncationAdjunction J C).homEquiv K X f) ≫
+      (functorComplexExchangeUnitIso J C (.down ℕ)).inv.app
+        (X ⋙ (ComplexShape.embeddingUpIntLE 0).truncLE'Functor C) =
+    (Adjunction.whiskerRight J (negativeExtendTruncationAdjunction C)).homEquiv
+      (complexOfFunctorsToFunctorToComplex.obj K) X f
+```
+
+```lean
+theorem pointwiseTruncationIso_homEquiv
+    (K : ChainComplex (J ⥤ C) ℕ) (H : CochainComplex (J ⥤ C) ℤ)
+    (f : K.extend ComplexShape.embeddingDownNat ⟶ H) :
+    complexOfFunctorsToFunctorToComplex.map
+        ((negativeExtendTruncationAdjunction (J ⥤ C)).homEquiv K H f) ≫
+      (pointwiseTruncationIso J C).hom.app H =
+    (Adjunction.whiskerRight J (negativeExtendTruncationAdjunction C)).homEquiv
+      (complexOfFunctorsToFunctorToComplex.obj K) (complexOfFunctorsToFunctorToComplex.obj H)
+      ((pointwiseExtendIso J C ComplexShape.embeddingDownNat).inv.app K ≫
+        complexOfFunctorsToFunctorToComplex.map f)
+```
+
+### 106.2 検収・登録対象・残り
+
+コード **`ed24d69de`**（新規1本97行）。個別検査`/private/tmp/isw2-point-trunc-hom6.log`は終了コード0。鍵付き対象ビルド **1,536 jobs**・終了コード0、新規分だけの監査 **6宣言・標準三公理のみ**（`/private/tmp/isw2-build120.log`、`/private/tmp/AuditISW2G10B02PointwiseTruncation.lean`）。共有鍵は返却済み。
+
+登録対象は **`SerrePositivity.HomologicalAlgebra.PointwiseTruncationHomEquiv`**。累計 **223モジュール・13,286行・2,087宣言**、一覧`/private/tmp/isw2-g10-twohundredtwentythree-modules.txt`。外枠14,500行まで残り1,214行。新公理・sorryなし、計算上限・既存宣言・⑤a・入口・公式監査・mainの変更なし。大きな監査は行っていない。
+
+B02はまだ未完。次は§105の`doldKanHomEquiv_map`を評価関手へ適用し、今回の実切断Hom両立と組み合わせて、元の正規化重みHom同値の点ごとの式にする。その後の指定AW比較と実豊穣合成の全単体の照合、B03〜B08・C・Dは残る。目標「Dまで進めてください」はactiveのまま。
