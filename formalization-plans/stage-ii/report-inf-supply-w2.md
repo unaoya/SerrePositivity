@@ -5062,3 +5062,179 @@ theorem homTotalComponent_homogeneous_comp {P Q : Complex A}
 B02は未完。実AWの逆随伴の切断和（§114）、自由鎖AWの各切断と全切断和（§115）、Hom–Totの任意次数合成（本節）を、同じ指定重みとtensor–Homの符号付き成分に接続して最終の射の等式を閉じる。これらの部分公式を、B02の最終等式やB03〜B08のnative極限性の代用にしない。
 
 C・Dも未完。停止点2a・2bの検収ではない。新しい外枠と一覧の中で継続し、B完了時にC・Dを実測に基づいて再見積もりする。BE忘却の無条件版の確認は§113.2に記録済み。
+
+
+## 117. B02の途中：元のHom–Tot/BK比較の全行を指定標準重み射で表示
+
+### 117.1 同じ比較の因子分解と型
+
+元のMoore包含・over/bar鎖同型の逆射・先頭頂点の標準重み比較を、`normalizedBKStandardWeightMap`にまとめた。元の`normalizedBousfieldKanHomComparison`が、この同じ射の前合成と既存の符号つきend–Hom同型の合成に**厳密に等しい**ことを証明した。
+
+指定標準重みへの逆比較の各成分を、同じ自由単位Yoneda評価の逆射で同定した。積射影の自然性で任意の鎖重みからの前合成へ移し、元の`homTotalNatIso_hom_component`を代入して、元の`homToNormalizedBousfieldKan`の**任意整数次数q・全鎖次数n**での行表示を得た。指定射と元の積成分・符号を保持する。
+
+以下はHA.DerivedCategoryModels.CosimplicialTotalization名前空間。係数環は`A : Type u`・`[CommRing A]`（各宣言によりAは暗黙／明示）。B02の同じ成分照合の証明分割（§14）であり、独立した前提計算・照合を追加しない。B02前提計算3/3・照合全体3/3のまま。
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.BKWeightComparisonComponents`
+
+```lean
+theorem barWeightEndTotalComparison_app_standard (X : CosimplicialObject (Complex A)) :
+    barWeightEndTotalComparison.app X =
+      (standardWeightEndTotalIso X).inv ≫
+        (linearWeightEndTotalFunctor A (doubleOppositeDiagram X)).map
+          ((alternatingFaceMapComplex _).map
+            (SimplicialRealization.barStandardWeightComparison (ModuleCat.of A A))).op
+```
+
+```lean
+theorem barToBousfieldKanWeightEndComparison_app (X : CosimplicialObject (Complex A)) :
+    barToBousfieldKanWeightEndComparison.app X =
+      (linearWeightEndTotalFunctor A (doubleOppositeDiagram X)).map
+        (barDoubleOppositeOverChainIso SimplexCategory (ModuleCat.of A A)).inv.op
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKStandardWeight`
+
+```lean
+def normalizedBKStandardWeightMap :
+    normalizedBousfieldKanWeight (A := A) ⟶
+      (alternatingFaceMapComplex _).obj (standardSimplexWeight (ModuleCat.of A A))
+```
+
+```lean
+theorem normalizedBousfieldKanHomComparison_standardWeight
+    (X : CosimplicialObject (Complex A)) :
+    normalizedBousfieldKanHomComparison X =
+      (standardWeightEndTotalIso X).inv ≫
+        (linearWeightEndTotalFunctor A (doubleOppositeDiagram X)).map
+          (normalizedBKStandardWeightMap A).op ≫
+        (weightEndHomIso A normalizedBousfieldKanWeight (doubleOppositeDiagram X)).hom
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightTotalInverseEvaluation`
+
+```lean
+theorem standardWeightEndCochainIso_inv_f (X : CosimplicialObject (Complex A)) (n : ℕ) :
+    (standardWeightEndCochainIso X).inv.f n =
+      ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app (doubleOppositeDiagram X)).inv
+```
+
+```lean
+theorem standardWeightEndTotalIso_inv_component
+    (X : CosimplicialObject (Complex A)) (n : ℕ) (q : ℤ) :
+    (standardWeightEndTotalIso X).inv.f q ≫
+      CochainProductTotal.componentπ
+        ((linearWeightEndCochainFunctor A (doubleOppositeDiagram X)).obj
+          (Opposite.op ((alternatingFaceMapComplex _).obj
+            (standardSimplexWeight (ModuleCat.of A A))))) n q =
+    componentπ X n q ≫
+      ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app
+        (doubleOppositeDiagram X)).inv.f (q - n)
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.StandardWeightHomRows`
+
+```lean
+theorem standardWeightHomComparison_rows
+    (K : ChainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat.{u} A) ℕ)
+    (g : K ⟶ (alternatingFaceMapComplex _).obj (standardSimplexWeight (ModuleCat.of A A)))
+    (X : CosimplicialObject (Complex A)) (q : ℤ)
+    (z : ((productTotalFunctor A).obj X).X q) (n : ℕ) :
+    extendedChainHomRows K
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram X)) q
+      ((weightEndHomIso A K (doubleOppositeDiagram X)).hom.f q
+        (((linearWeightEndTotalFunctor A (doubleOppositeDiagram X)).map g.op).f q
+          ((standardWeightEndTotalIso X).inv.f q z))) n =
+    weightEndHomSign n q • (g.f n ≫
+      ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app
+        (doubleOppositeDiagram X)).inv.f (q - n) (componentπ X n q z))
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKRows`
+
+```lean
+theorem homToNormalizedBousfieldKan_rows (P : Complex A)
+    (X : CosimplicialObject (Complex A)) (q : ℤ)
+    (f : Homogeneous P ((productTotalFunctor A).obj X) q) (n : ℕ) :
+    extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) q
+      ((homToNormalizedBousfieldKan P X).f q f) n =
+    weightEndHomSign n q • ((normalizedBKStandardWeightMap A).f n ≫
+      ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))).inv.f (q - n)
+        (homTotalComponent P X q n f))
+```
+
+### 117.2 検収と登録
+
+コード **`98cae95ee`**（5本267行）。結合検査`/private/tmp/isw2-hom-bk-rows2.log`は終了コード0。最初の一括展開ではkernelの既定の計算上限に達したため、既存の前向き射の定理による対象成分を小補題に分けてから関手の合成則を適用した。計算上限を上げていない。
+
+- 鍵付き対象ビルド132：**2,541 jobs・終了コード0**、監査`/private/tmp/AuditISW2G10B02StandardWeight.lean`は **10宣言（2・8）・標準三公理のみ**。
+- 鍵付き対象ビルド133：**2,560 jobs・終了コード0**、監査`/private/tmp/AuditISW2G10B02HomBKRows.lean`は **5宣言（2・1・2）・標準三公理のみ**。
+
+ログ`/private/tmp/isw2-build132.log`・`/private/tmp/isw2-build133.log`。共有鍵は返却済み。累計 **242モジュール・14,635行・2,157宣言**。新公理・sorryなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。大きな監査・rootビルドなし。登録対象は117.1の5本。
+
+## 118. B02の途中：指定BK比較の任意次数合成とKoszul符号
+
+### 118.1 同じ行の合成計算と型
+
+斉次射f（閉性を要求しない）の前合成を、元のHom図式の**次数ごとの加群図式**の自然変換にした。cochain合成の線形性・次数零の図式射との結合則だけを使い、これを鎖射だとは主張していない。既存の自由Yoneda後合成則と同じ同型の逆射則から、同じ逆評価がこの前合成と可換なことを示した。
+
+これと§116のHom–Totの任意次数合成、§117の指定行表示を合わせ、元の`homToNormalizedBousfieldKan`の各行の合成に現れる符号が **(-1)^(np)** であることを証明した。符号は同じ`weightEndHomSign`の式から計算し、選び直していない。
+
+以下も同じ名前空間、`{A : Type u}`・`[CommRing A]`。B02の同じ全パラメータ成分計算の分割（§14）。前提計算3/3・照合3/3の枠を追加しない。
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomDiagramDegreePrecompose`
+
+```lean
+def homDiagramDegreePrecompose {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (p q r : ℤ) (h : p + q = r)
+    (f : Homogeneous P Q p) :
+    doubleOppositeDiagram ((homDiagramFunctor Q).obj X) ⋙
+        HomologicalComplex.eval (ModuleCat A) (.up ℤ) q ⟶
+      doubleOppositeDiagram ((homDiagramFunctor P).obj X) ⋙
+        HomologicalComplex.eval (ModuleCat A) (.up ℤ) r where
+  app j
+```
+
+```lean
+theorem freeUnitWeightEnd_inv_degree_precompose {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (p q r : ℤ) (h : p + q = r)
+    (f : Homogeneous P Q p) (n : ℕ) (z : Homogeneous Q (X.obj ⦋n⦌) q) :
+    ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app
+        (doubleOppositeDiagram ((homDiagramFunctor Q).obj X))).inv.f q z ≫
+      homDiagramDegreePrecompose X p q r h f =
+    ((freeUnitWeightEndNatIso A (Opposite.op ⦋n⦌)).app
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))).inv.f r (f.comp z h)
+```
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.HomToNormalizedBKComposition`
+
+```lean
+theorem homToNormalizedBousfieldKan_rows_comp {P Q : Complex A}
+    (X : CosimplicialObject (Complex A)) (p q : ℤ) (n : ℕ)
+    (f : Homogeneous P Q p) (g : Homogeneous Q ((productTotalFunctor A).obj X) q) :
+    extendedChainHomRows normalizedBousfieldKanWeight
+      ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+        (doubleOppositeDiagram ((homDiagramFunctor P).obj X))) (p + q)
+      ((homToNormalizedBousfieldKan P X).f (p + q) (f.comp g rfl)) n =
+    ((n : ℤ) * p).negOnePow •
+      (extendedChainHomRows normalizedBousfieldKanWeight
+        ((functorToComplexOfFunctors SimplexCategoryᵒᵖᵒᵖ (ModuleCat A) (.up ℤ)).obj
+          (doubleOppositeDiagram ((homDiagramFunctor Q).obj X))) q
+        ((homToNormalizedBousfieldKan Q X).f q g) n ≫
+      homDiagramDegreePrecompose X p (q - n) (p + q - n) (by omega) f)
+```
+
+### 118.2 検収と登録
+
+コード **`c2beef461`**（2本136行）。結合検査`/private/tmp/isw2-bk-hom-composition.log`は終了コード0。鍵付き対象ビルド`/private/tmp/isw2-build134.log`は **2,562 jobs・終了コード0**。新規分だけの監査`/private/tmp/AuditISW2G10B02HomBKComposition.lean`は **10宣言（7・3）・標準三公理のみ**。共有鍵は返却済み。
+
+累計 **244モジュール・14,771行・2,167宣言**、外枠20,000行まで残り5,229行。対象一覧は`/private/tmp/isw2-g10-twohundredfortyfour-modules.txt`。新公理・sorryなし。既存宣言・⑤a・入口・公式監査・mainの変更なし。大きな監査・rootビルドなし。登録対象は118.1の2本。
+
+### 118.3 残り
+
+B02は未完。今回の指定Hom/BK行の合成と同じKoszul符号を、既に検証したAWの両切断和・指定tensor–Homへ接続して、元の単体的比較射の等式を閉じる。`NormalizedSimplexFreeAdjunction.lean`はA09の標準単体パラメータ側の随伴を同じ恒等生成元で照合する検査中の下書きであり、今回の検収・累計には含めない。
+
+B03〜B08・C・Dも未完。停止点2a・2bの検収ではない。B完了時にC・Dを実測に基づいて再見積もりし、止まらずに進める。
