@@ -1,0 +1,6 @@
+{
+  "source_modules": 10195,
+  "leaf_groups": 178,
+  "raw_snapshot_hashes_verified": 356,
+  "policy": "Comparison receipts, reports, capture signatures and process resources; full snapshot bodies remain in the independent local before/after workspace, hashes retained here."
+}

@@ -9,8 +9,8 @@ audit_rc=subprocess.run(['python3','-B',str(W/'completion_audit.py')]).returncod
 from check_frozen_main import check
 check()
 source_head=load('verified-source-checkpoint.json')['head']
-subprocess.run(['git','diff','--exit-code',source_head,'HEAD','--','SerrePositivity','SerrePositivity.lean','scripts','research','lakefile.toml','lean-toolchain'],cwd=R,check=True,stdout=subprocess.DEVNULL)
-assert not subprocess.check_output(['git','status','--porcelain','--','SerrePositivity','SerrePositivity.lean','scripts','research','lakefile.toml','lean-toolchain'],cwd=R,text=True).strip()
+subprocess.run(['git','diff','--exit-code',source_head,'HEAD','--','SerrePositivity','SerrePositivity.lean','scripts','research','lakefile.toml','lakefile.lean','lake-manifest.json','lean-toolchain'],cwd=R,check=True,stdout=subprocess.DEVNULL)
+assert not subprocess.check_output(['git','status','--porcelain','--','SerrePositivity','SerrePositivity.lean','scripts','research','lakefile.toml','lakefile.lean','lake-manifest.json','lean-toolchain'],cwd=R,text=True).strip()
 for name in ['root-build-complete.json','all-audit-inventory.json','all-audits-progress.json','all-audits-results.json','all-audits-complete.json','full-verify-complete.json','main-compatibility-check.json','completion-audit.json','verify-resource-plan.json','second-night-budget-watch.json','second-night-worker-status.json','b4-branch-impact.json']:
  if (W/name).exists():shutil.copy2(W/name,D/name)
 for p in W.glob('b4-*-files.json'):shutil.copy2(p,D/p.name)

@@ -2,6 +2,7 @@
 from pathlib import Path
 from zoneinfo import ZoneInfo
 import datetime,subprocess,json,time,os
+os.environ['TZ']='Asia/Tokyo';time.tzset()
 W=Path('/tmp/bulk-w1-b3');tz=ZoneInfo('Asia/Tokyo');scheduled=datetime.datetime(2026,11,14,23,tzinfo=tz);deadline=datetime.datetime(2026,11,15,8,tzinfo=tz);state=W/'second-night-worker-status.json'
 def status(stage,**extra):
  state.write_text(json.dumps({'pid':os.getpid(),'stage':stage,'scheduled':scheduled.isoformat(),'deadline':deadline.isoformat(),'now':datetime.datetime.now(tz).isoformat(),**extra},ensure_ascii=False,indent=2))
