@@ -4019,3 +4019,192 @@ theorem normalizedBKSmallSectionsMap_equivalence (X : CosimplicialObject (Comple
 累計 **209モジュール・12,402行・1,998宣言**。一覧`/private/tmp/isw2-g10-twohundrednine-modules.txt`。外枠14,500行まで残り2,098行。登録対象は100.1の3本。累計の監査数は既検証分と今回の新規分の合計であり、大きな一括監査を流したという意味ではない。
 
 A12のMoore反転、二重反対圏と元の添字の移送、実豊穣Homとの指定射の照合は残っている。その後のB・C・Dも未完。目標「Dまで進めてください」は継続する。
+
+
+## 101. A12完了：指定Moore反転から元の反転豊穣HomのBK endへ
+
+A12の指定型`normalizedBKReflectedSectionsMap`と、その同じ射自身の単体的ホモトピー同値性を閉じた。元のMoore反転の鎖ホモトピー同値を、既存の反変endと指定end–Hom同型で運ぶ。反転側にも同じ自由重みHom同型とA09の実AW比較を適用し、既存の反転end同型、down・二重反対・upによる指定添字移送、元のsmallBousfieldKanWeightDown、既存の実Γ Hom全自然同型を順に合成した。
+
+反転前の切断空間のKan性は仮定にせず、同じ反転end同型と元のBK endの既存Kan性から得た。これにより既存のopのホモトピー同値性と合成則を、その必要なKan性を持つ形で使用した。
+
+### 101.1 同じ一覧A12の証明分割の型
+
+以下6本はA12に初めから含めた反転・AsSmall・ULift・Γ Homの接続の証明分割である。前提計算枠は§100の2/3、照合枠は全体3/3のまま。新しい数学のまとまりは追加していない。`A : Type u`・`[CommRing A]`を固定する（SmallBKIndexSectionsは環に依存せず、同じ小添字の制限を使う）。以下はすべてHA.DerivedCategoryModels.CosimplicialTotalization名前空間。
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKHom`
+
+```lean
+def reflectedNormalizedBKWeight : ChainComplex (SimplexCategoryᵒᵖᵒᵖ ⥤ ModuleCat A) ℕ
+```
+
+```lean
+def reflectedNormalizedBKHom (X : CosimplicialObject (Complex A)) : Complex A
+```
+
+```lean
+def normalizedBKReverseHomotopyEquiv (X : CosimplicialObject (Complex A)) :
+    HomotopyEquiv (normalizedBousfieldKanHom X) (reflectedNormalizedBKHom X)
+```
+
+```lean
+def normalizedBKReverseSpaceMap (X : CosimplicialObject (Complex A)) :
+    (truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X) ⟶
+      (truncatedDoldKanFunctor A).obj (reflectedNormalizedBKHom X)
+```
+
+```lean
+theorem normalizedBKReverseSpaceMap_equivalence (X : CosimplicialObject (Complex A)) :
+    IsSimplicialHomotopyEquivalence (normalizedBKReverseSpaceMap X)
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallHom`
+
+```lean
+def reflectedNormalizedBKSmallWeight (_A : Type u) : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ) ⥤ SSet.{u}
+```
+
+```lean
+def reflectedNormalizedBKSmallHomIso (X : CosimplicialObject (Complex A)) :
+    reflectedNormalizedBKHom X ≅
+      linearHomComplex A
+        ((functorToComplexOfFunctors (AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) (ModuleCat A) (.up ℤ)).obj
+          (freeNegativeChainsDiagram (A := A) (reflectedNormalizedBKSmallWeight A)))
+        ((functorToComplexOfFunctors (AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)) (ModuleCat A) (.up ℤ)).obj
+          (normalizedBKSmallDiagram A X))
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.ReflectedNormalizedBKSmallSections`
+
+```lean
+def reflectedNormalizedBKSmallSectionsMap (X : CosimplicialObject (Complex A)) :
+    (truncatedDoldKanFunctor A).obj (reflectedNormalizedBKHom X) ⟶
+      weightedSections (reflectedNormalizedBKSmallWeight A)
+        (normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A)
+```
+
+```lean
+theorem reflectedNormalizedBKSmallSectionsMap_equivalence (X : CosimplicialObject (Complex A)) :
+    IsSimplicialHomotopyEquivalence (reflectedNormalizedBKSmallSectionsMap A X)
+```
+
+```lean
+def normalizedBKSmallReflectedComparison (X : CosimplicialObject (Complex A)) :
+    ((truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X)).op ⟶
+      weightedSections (normalizedBKSmallWeight A)
+        ((normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A) ⋙ SSet.opFunctor)
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.SmallBKIndexSections`
+
+```lean
+def smallBKIndexToDouble : AsSmall.{u} SimplexCategory ⥤ AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ)
+```
+
+```lean
+def smallBKIndexFromDouble : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ) ⥤ AsSmall.{u} SimplexCategory
+```
+
+```lean
+def smallBKIndexSectionsMap {I J : Type u} [SmallCategory I] [SmallCategory J]
+    (F : J ⥤ I) (W H : I ⥤ SSet.{u}) :
+    weightedSections W H ⟶ weightedSections (F ⋙ W) (F ⋙ H)
+```
+
+```lean
+theorem smallBKIndexSectionsMap_π {I J : Type u} [SmallCategory I] [SmallCategory J]
+    (F : J ⥤ I) (W H : I ⥤ SSet.{u}) (j : J) :
+    smallBKIndexSectionsMap F W H ≫ weightedSectionsπ (F ⋙ W) (F ⋙ H) j =
+      weightedSectionsπ W H (F.obj j)
+```
+
+```lean
+def smallBKIndexSectionsIso (W H : AsSmall.{u} (SimplexCategoryᵒᵖᵒᵖ) ⥤ SSet.{u}) :
+    weightedSections W H ≅
+      weightedSections (smallBKIndexToDouble ⋙ W) (smallBKIndexToDouble ⋙ H)
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKOriginalSections`
+
+```lean
+def normalizedBKOriginalSectionsIso (X : CosimplicialObject (Complex A)) :
+    weightedSections (normalizedBKSmallWeight A)
+      ((normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A) ⋙ SSet.opFunctor) ≅
+      bousfieldKanHolim
+        (((AsSmall.down : AsSmall.{u} SimplexCategory ⥤ SimplexCategory) ⋙ X ⋙
+          truncatedDoldKanFunctor A) ⋙ SSet.opFunctor)
+```
+
+```lean
+def normalizedBKOriginalSectionsMap (X : CosimplicialObject (Complex A)) :
+    ((truncatedDoldKanFunctor A).obj (normalizedBousfieldKanHom X)).op ⟶
+      bousfieldKanHolim
+        (((AsSmall.down : AsSmall.{u} SimplexCategory ⥤ SimplexCategory) ⋙ X ⋙
+          truncatedDoldKanFunctor A) ⋙ SSet.opFunctor)
+```
+
+```lean
+theorem normalizedBKOriginalSectionsMap_factor (X : CosimplicialObject (Complex A)) :
+    normalizedBKOriginalSectionsMap A X =
+      SSet.opFunctor.map (normalizedBKReverseSpaceMap X ≫
+        reflectedNormalizedBKSmallSectionsMap A X) ≫
+      (SerrePositivity.InfinityCategories.Project.HomotopyDiagramComparison.weightedSectionsReflectedIso
+        (normalizedBKSmallWeight A) (normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A) ≪≫
+          normalizedBKOriginalSectionsIso A X).hom
+```
+
+```lean
+instance reflectedNormalizedBKSmallSections_kan (X : CosimplicialObject (Complex A)) :
+    SSet.KanComplex (weightedSections (reflectedNormalizedBKSmallWeight A)
+      (normalizedBKSmallDiagram A X ⋙ truncatedDoldKanFunctor A))
+```
+
+```lean
+theorem normalizedBKOriginalSectionsMap_equivalence (X : CosimplicialObject (Complex A)) :
+    IsSimplicialHomotopyEquivalence (normalizedBKOriginalSectionsMap A X)
+```
+
+
+登録対象：`SerrePositivity.InfinityCategories.HA.DerivedCategoryModels.CosimplicialTotalization.NormalizedBKReflectedSections`
+
+```lean
+def normalizedBKReflectedHomDiagramIso (X : CosimplicialObject (Complex A)) (T : Complex A) :
+    (((AsSmall.down : AsSmall.{u} SimplexCategory ⥤ SimplexCategory) ⋙
+      (homDiagramFunctor T).obj X ⋙ truncatedDoldKanFunctor A) ⋙ SSet.opFunctor) ≅
+    simplicialHomDiagram (liftedClosedDiagram X) (ForgetEnrichment.of (Complex A) T) ⋙
+      SSet.opFunctor
+```
+
+```lean
+def normalizedBKReflectedSectionsMap (X : CosimplicialObject (Complex A)) (T : Complex A) :
+    ((truncatedDoldKanFunctor A).obj
+      (normalizedBousfieldKanHom ((homDiagramFunctor T).obj X))).op ⟶
+    bousfieldKanHolim (simplicialHomDiagram (liftedClosedDiagram X)
+      (ForgetEnrichment.of (Complex A) T) ⋙ SSet.opFunctor)
+```
+
+```lean
+theorem normalizedBKReflectedSectionsMap_equivalence (X : CosimplicialObject (Complex A))
+    (T : Complex A) : IsSimplicialHomotopyEquivalence (normalizedBKReflectedSectionsMap X T)
+```
+
+### 101.2 検収・コミット・登録
+
+コード **`5fd7f9b7b`**（反転Hom・自由重みHomの2本88行）、**`296461f29`**（反転切断の1本56行）、**`214d21cc5`**（添字移送とA12最終比較の3本235行）。個別・結合検査`/private/tmp/isw2-reflected-bk-hom2.log`、`/private/tmp/isw2-reflected-bk-small1.log`、`/private/tmp/isw2-bk-enriched-sections4.log`は終了コード0。添字の逆則と最終の合成照合は、引数の指定と同じ等式の証明分割で軽くし、計算上限は変更していない。
+
+鍵付き対象ビルド：
+
+| ログ | jobs | 新規分だけの監査 | 終了 |
+| --- | ---: | --- | --- |
+| `/private/tmp/isw2-build111.log` | 4,535 | 15宣言（9・6） | 0 |
+| `/private/tmp/isw2-build112.log` | 4,733 | 5宣言 | 0 |
+| `/private/tmp/isw2-build113.log` | 6,474 | 31宣言（8・10・13） | 0 |
+
+いずれも標準三公理のみ。監査ファイルは`AuditISW2G10A12Reverse.lean`・`AuditISW2G10A12ReflectedSections.lean`・`AuditISW2G10A12Final.lean`（すべて`/private/tmp/`）。鍵は返却済み。今回の379行を加え、累計 **215モジュール・12,781行・2,049宣言**。対象一覧`/private/tmp/isw2-g10-twohundredfifteen-modules.txt`。外枠14,500行まで残り1,719行。累計監査数は検証済みの各新規分の合計。大きな監査・rootビルドは行っていない。既存宣言・⑤a・入口・公式監査の変更、新公理、sorryなし。
+
+### 101.3 残り
+
+A01〜A12まで完了。B01のHom–Tot比較との接続、B02の指定豊穣合成との厳密な等式、B03〜B08のnative切断・極限性、Cの標準脚とD(A)輸送、Dの全図式射・指定錐の族・離散加群入口はまだ残る。とくに今回の反転Homは反変endの移送から定めたので、元の錐代表へのMoore反転の前合成との等式はB02の中で検証する。A12の同値性をB02の厳密な等式の代わりにしない。目標「Dまで進めてください」は継続し、停止点2の完了報告ではない。
